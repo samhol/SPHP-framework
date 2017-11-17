@@ -383,7 +383,7 @@
                     <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSource">setSource</a>(string $source, string $lang)
+                    <a href="#method_setSource">setSource</a>(string $source, string $lang, bool $format = false)
         
                                             <p>Loads the source code from the string</p>                </div>
                 <div class="col-md-2"></div>
@@ -1396,7 +1396,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_setSource">
         <div class="location">at         line 43</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
-    <strong>setSource</strong>(string $source, string $lang)
+    <strong>setSource</strong>(string $source, string $lang, bool $format = false)
         </code>
     </h3>
     <div class="details">
@@ -1418,6 +1418,11 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                 <td>string</td>
                 <td>$lang</td>
                 <td>name of the source code language</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$format</td>
+                <td>sets whether the code should be formatted</td>
             </tr>
             </table>
 

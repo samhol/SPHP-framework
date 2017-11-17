@@ -85,6 +85,8 @@
         
     
 
+            <div class="description">
+            <p>Implements a Foundation framework based menu builder</p>                                </div>
     
     
     
@@ -99,8 +101,7 @@
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuLinkBuilder.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuLinkBuilder">MenuLinkBuilder</abbr></a> $linkBuilder = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -119,7 +120,7 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Navigation\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDefaultTarget">setDefaultTarget</a>(string $target)
+                    <a href="#method_setDefaultTarget">setDefaultTarget</a>(string $target = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -130,10 +131,9 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/SubMenu.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\SubMenu">SubMenu</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_buildSub">buildSub</a>(array $sub)
+                    <a href="#method_buildSub">buildSub</a>(array $data)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Builds a new sub menu from given menu data</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -143,8 +143,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_buildMenu">buildMenu</a>(array $data, <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a> $instance = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Builds a new menu from given menu data</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -154,8 +153,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_buildDropdownMenu">buildDropdownMenu</a>(array $data)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Builds a new drop down menu from given menu data</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -165,8 +163,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_buildAccordionMenu">buildAccordionMenu</a>(array $data)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Builds a new accordion menu from given menu data</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -177,7 +174,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 34</div>
+        <div class="location">at         line 36</div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuLinkBuilder.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuLinkBuilder">MenuLinkBuilder</abbr></a> $linkBuilder = null)
         </code>
@@ -186,6 +183,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -206,7 +205,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMenuType">
-        <div class="location">at         line 46</div>
+        <div class="location">at         line 48</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Navigation\$this">$this</abbr>
     <strong>setMenuType</strong>(string $menuType)
         </code>
@@ -244,9 +243,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultTarget">
-        <div class="location">at         line 56</div>
+        <div class="location">at         line 58</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Navigation\$this">$this</abbr>
-    <strong>setDefaultTarget</strong>(string $target)
+    <strong>setDefaultTarget</strong>(string $target = null)
         </code>
     </h3>
     <div class="details">
@@ -282,23 +281,25 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildSub">
-        <div class="location">at         line 90</div>
+        <div class="location">at         line 93</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/SubMenu.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\SubMenu">SubMenu</abbr></a>
-    <strong>buildSub</strong>(array $sub)
+    <strong>buildSub</strong>(array $data)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Builds a new sub menu from given menu data</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>array</td>
-                <td>$sub</td>
-                <td></td>
+                <td>$data</td>
+                <td>the menu data</td>
             </tr>
             </table>
 
@@ -308,7 +309,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/SubMenu.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\SubMenu">SubMenu</abbr></a></td>
-            <td></td>
+            <td>new sub menu</td>
         </tr>
     </table>
 
@@ -320,7 +321,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildMenu">
-        <div class="location">at         line 102</div>
+        <div class="location">at         line 106</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a>
     <strong>buildMenu</strong>(array $data, <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a> $instance = null)
         </code>
@@ -329,6 +330,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Builds a new menu from given menu data</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -336,7 +339,7 @@
                     <tr>
                 <td>array</td>
                 <td>$data</td>
-                <td></td>
+                <td>the menu data</td>
             </tr>
                     <tr>
                 <td><a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a></td>
@@ -351,7 +354,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a></td>
-            <td></td>
+            <td>new menu</td>
         </tr>
     </table>
 
@@ -363,7 +366,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildDropdownMenu">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 123</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/DropdownMenu.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\DropdownMenu">DropdownMenu</abbr></a>
     <strong>buildDropdownMenu</strong>(array $data)
         </code>
@@ -372,6 +375,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Builds a new drop down menu from given menu data</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -379,7 +384,7 @@
                     <tr>
                 <td>array</td>
                 <td>$data</td>
-                <td></td>
+                <td>the menu data</td>
             </tr>
             </table>
 
@@ -401,7 +406,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildAccordionMenu">
-        <div class="location">at         line 127</div>
+        <div class="location">at         line 133</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\AccordionMenu">AccordionMenu</abbr></a>
     <strong>buildAccordionMenu</strong>(array $data)
         </code>
@@ -410,6 +415,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Builds a new accordion menu from given menu data</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -417,7 +424,7 @@
                     <tr>
                 <td>array</td>
                 <td>$data</td>
-                <td></td>
+                <td>the menu data</td>
             </tr>
             </table>
 

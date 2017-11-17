@@ -170,7 +170,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $path = null, string|boolean $highlightOutput = false, boolean $outputAsHtmlFlow = true)
+                    <a href="#method___construct">__construct</a>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -191,7 +191,7 @@
                     <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___invoke">__invoke</a>(string $path, boolean $highlightOutput = false, string $outputLang = true)
+                    <a href="#method___invoke">__invoke</a>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -209,21 +209,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    boolean
+                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showHtmlFlow">showHtmlFlow</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getHighlightOutput">getHighlightOutput</a>()
+                    <a href="#method_setOutpputHighlighting">setOutpputHighlighting</a>(string $highlightOutput = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -234,18 +223,7 @@
                     <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setOutpputHighlighting">setOutpputHighlighting</a>(boolean $highlightOutput)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setHtmlFlowVisibility">setHtmlFlowVisibility</a>(boolean $showHtmlFlow)
+                    <a href="#method_setHtmlFlowVisibility">setHtmlFlowVisibility</a>(bool $showHtmlFlow)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -258,8 +236,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_buildAccordion">buildAccordion</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Builds a Foundation based accordion component containing the example</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -289,7 +266,7 @@
                     <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/SyntaxHighlightingPane.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane">SyntaxHighlightingPane</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getCodePane">getCodePane</a>($path = null)
+                    <a href="#method_getCodePane">getCodePane</a>()
         
                                             <p>Returns the code panel</p>                </div>
                 <div class="col-md-2"></div>
@@ -336,10 +313,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
+                    static&nbsp;<a href="../../../../Sphp/Html/Apps/Syntaxhighlighting/CodeExampleBuilder.html"><abbr title="Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder">CodeExampleBuilder</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_build">build</a>(string $path, string|boolean $highlightOutput = false, bool $outputAsHtmlFlow = true)
+                    <a href="#method_build">build</a>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         
                                             <p>Prints the PHP Example code and the preferred result</p>                </div>
                 <div class="col-md-2"></div>
@@ -349,7 +326,7 @@
                     static&nbsp;<a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_visualize">visualize</a>(string $path, string|boolean $highlightOutput = false, bool $outputAsHtmlFlow = true)
+                    <a href="#method_visualize">visualize</a>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         
                                             <p>Prints the PHP Example code and the preferred result</p>                </div>
                 <div class="col-md-2"></div>
@@ -362,7 +339,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">at         line 257</div>
+        <div class="location">at         line 234</div>
         <code>                    string
     <strong>getHtml</strong>()
         </code>
@@ -461,9 +438,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 62</div>
+        <div class="location">at         line 64</div>
         <code>                    
-    <strong>__construct</strong>(string $path = null, string|boolean $highlightOutput = false, boolean $outputAsHtmlFlow = true)
+    <strong>__construct</strong>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         </code>
     </h3>
     <div class="details">
@@ -482,15 +459,15 @@
                 <td>the file path of the presented example PHP code</td>
             </tr>
                     <tr>
-                <td>string|boolean</td>
+                <td>string</td>
                 <td>$highlightOutput</td>
                 <td>the language name of the output code
-        or false if highlighted output code should not be visible</td>
+        or <code>null</code> if highlighted output code should not be visible</td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$outputAsHtmlFlow</td>
-                <td>true for executed html result or false for no execution</td>
+                <td>true for showing executed HTML flow</td>
             </tr>
             </table>
 
@@ -501,7 +478,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if the code example path is given and contains no file</td>
+                <td>if the code example path contains no file</td>
             </tr>
             </table>
 
@@ -533,7 +510,7 @@
                     <h3 id="method___invoke">
         <div class="location">at         line 84</div>
         <code>                    <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
-    <strong>__invoke</strong>(string $path, boolean $highlightOutput = false, string $outputLang = true)
+    <strong>__invoke</strong>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         </code>
     </h3>
     <div class="details">
@@ -550,15 +527,15 @@
                 <td>the file path of the presented example PHP code</td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>string</td>
                 <td>$highlightOutput</td>
                 <td>true for highlighted program code as the 
         output presentation, false for html presentation</td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$outputLang</td>
-                <td>the language name of the output code</td>
+                <td>bool</td>
+                <td>$outputAsHtmlFlow</td>
+                <td>true for showing executed HTML flow</td>
             </tr>
             </table>
 
@@ -637,57 +614,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_showHtmlFlow">
-        <div class="location">at         line 110</div>
-        <code>                    boolean
-    <strong>showHtmlFlow</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getHighlightOutput">
-        <div class="location">at         line 114</div>
-        <code>                    
-    <strong>getHighlightOutput</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setOutpputHighlighting">
-        <div class="location">at         line 123</div>
+        <div class="location">at         line 112</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
-    <strong>setOutpputHighlighting</strong>(boolean $highlightOutput)
+    <strong>setOutpputHighlighting</strong>(string $highlightOutput = null)
         </code>
     </h3>
     <div class="details">
@@ -699,7 +629,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>string</td>
                 <td>$highlightOutput</td>
                 <td></td>
             </tr>
@@ -723,9 +653,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setHtmlFlowVisibility">
-        <div class="location">at         line 133</div>
+        <div class="location">at         line 122</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
-    <strong>setHtmlFlowVisibility</strong>(boolean $showHtmlFlow)
+    <strong>setHtmlFlowVisibility</strong>(bool $showHtmlFlow)
         </code>
     </h3>
     <div class="details">
@@ -737,7 +667,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$showHtmlFlow</td>
                 <td></td>
             </tr>
@@ -761,7 +691,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildAccordion">
-        <div class="location">at         line 143</div>
+        <div class="location">at         line 132</div>
         <code>                    <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
     <strong>buildAccordion</strong>()
         </code>
@@ -770,6 +700,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Builds a Foundation based accordion component containing the example</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -777,20 +709,11 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a></td>
-            <td></td>
+            <td>a Foundation based accordion component containing the example</td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -798,7 +721,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildHighlightedOutput">
-        <div class="location">at         line 166</div>
+        <div class="location">at         line 152</div>
         <code>                    <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/SyntaxHighlightingPane.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane">SyntaxHighlightingPane</abbr></a>
     <strong>buildHighlightedOutput</strong>()
         </code>
@@ -835,7 +758,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildHtmlFlow">
-        <div class="location">at         line 186</div>
+        <div class="location">at         line 170</div>
         <code>                    <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Pane.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Pane">Pane</abbr></a>
     <strong>buildHtmlFlow</strong>()
         </code>
@@ -856,15 +779,6 @@
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -872,9 +786,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getCodePane">
-        <div class="location">at         line 201</div>
+        <div class="location">at         line 182</div>
         <code>                    <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/SyntaxHighlightingPane.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane">SyntaxHighlightingPane</abbr></a>
-    <strong>getCodePane</strong>($path = null)
+    <strong>getCodePane</strong>()
         </code>
     </h3>
     <div class="details">
@@ -884,16 +798,6 @@
                     <div class="method-description">
                                     <p>Returns the code panel</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$path</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -912,7 +816,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_useDefaultTitles">
-        <div class="location">at         line 217</div>
+        <div class="location">at         line 194</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
     <strong>useDefaultTitles</strong>()
         </code>
@@ -942,7 +846,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setExamplePaneTitle">
-        <div class="location">at         line 230</div>
+        <div class="location">at         line 207</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
     <strong>setExamplePaneTitle</strong>(string $heading)
         </code>
@@ -982,7 +886,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setOutputSyntaxPaneTitle">
-        <div class="location">at         line 241</div>
+        <div class="location">at         line 218</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
     <strong>setOutputSyntaxPaneTitle</strong>(string $title)
         </code>
@@ -1022,7 +926,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setOutputPaneTitle">
-        <div class="location">at         line 252</div>
+        <div class="location">at         line 229</div>
         <code>                    <abbr title="Sphp\Html\Apps\Syntaxhighlighting\$this">$this</abbr>
     <strong>setOutputPaneTitle</strong>(string $title)
         </code>
@@ -1062,9 +966,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_build">
-        <div class="location">at         line 271</div>
-        <code>        static            <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
-    <strong>build</strong>(string $path, string|boolean $highlightOutput = false, bool $outputAsHtmlFlow = true)
+        <div class="location">at         line 248</div>
+        <code>        static            <a href="../../../../Sphp/Html/Apps/Syntaxhighlighting/CodeExampleBuilder.html"><abbr title="Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder">CodeExampleBuilder</abbr></a>
+    <strong>build</strong>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         </code>
     </h3>
     <div class="details">
@@ -1083,7 +987,7 @@
                 <td>the file path of the presented example PHP code</td>
             </tr>
                     <tr>
-                <td>string|boolean</td>
+                <td>string</td>
                 <td>$highlightOutput</td>
                 <td>the language name of the output code
         or false if highlighted output code should not be visible</td>
@@ -1100,7 +1004,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a></td>
+            <td><a href="../../../../Sphp/Html/Apps/Syntaxhighlighting/CodeExampleBuilder.html"><abbr title="Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder">CodeExampleBuilder</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -1122,9 +1026,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visualize">
-        <div class="location">at         line 285</div>
+        <div class="location">at         line 262</div>
         <code>        static            <a href="../../../../Sphp/Html/Foundation/Sites/Containers/Accordions/Accordion.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion">Accordion</abbr></a>
-    <strong>visualize</strong>(string $path, string|boolean $highlightOutput = false, bool $outputAsHtmlFlow = true)
+    <strong>visualize</strong>(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true)
         </code>
     </h3>
     <div class="details">
@@ -1143,7 +1047,7 @@
                 <td>the file path of the presented example PHP code</td>
             </tr>
                     <tr>
-                <td>string|boolean</td>
+                <td>string</td>
                 <td>$highlightOutput</td>
                 <td>the language name of the output code
         or false if highlighted output code should not be visible</td>
