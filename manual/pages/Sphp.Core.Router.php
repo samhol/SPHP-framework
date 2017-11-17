@@ -2,13 +2,13 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
-$router = \Sphp\Manual\api()->classLinker(Path::class);
-\Sphp\Manual\parseDown(<<<MD
+use Sphp\Manual;
+$router = Manual\api()->classLinker(Path::class);
+Manual\parseDown(<<<MD
 ##Managing absolute paths with a $router singelton object
 
-$router supports transformation of relative filesystem paths to absolute paths for both http urls and local file system.
+$router supports transformation of relative filesystem paths to absolute paths 
+for both http urls and local file system.
 
 **IMPORTANT notes about the constructor:** 
 
@@ -17,5 +17,5 @@ $router supports transformation of relative filesystem paths to absolute paths f
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Core/Router.php", "text", false);
+Manual\visualize("Sphp/Core/Router.php", "text", false);
 

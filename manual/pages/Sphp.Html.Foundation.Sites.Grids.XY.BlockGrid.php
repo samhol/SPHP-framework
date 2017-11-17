@@ -20,4 +20,4 @@ for each breakpoint.
         
 MD
 );
-Manual\example('Sphp/Html/Foundation/Sites/Grids/XY/BlockGrid.php', 'html5')->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Grids/XY/BlockGrid.php')->printHtml();

@@ -2,7 +2,6 @@
 
 namespace Sphp\Config;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -21,8 +20,8 @@ accessible via a static  $instanceMethod method.
 MD
 );
 
-CodeExampleBuilder::build('Sphp/Config/Config.php', 'text', false)
+Manual\example('Sphp/Config/Config.php', 'text', false)
         ->setExamplePaneTitle('Canfiguration manager example')
         ->printHtml();
 
-\Sphp\Manual\loadPage('Sphp.Config.PHP');
+Manual\loadPage('Sphp.Config.PHP');

@@ -72,7 +72,7 @@ items:
       - link: Core components
         href: Sphp.Html.Foundation.Sites.Core
       - link: Grid systems
-        href: Sphp.Html.Foundation.Sites.Grids
+        href: Sphp.Html.Foundation.Sites.Grids.XY
       - link: General Containers
         href: Sphp.Html.Foundation.Sites.Containers
       - ruler: 

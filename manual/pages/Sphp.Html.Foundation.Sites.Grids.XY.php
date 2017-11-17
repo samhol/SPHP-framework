@@ -4,14 +4,8 @@ namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 use Sphp\Manual;
 
-$grid = Manual\api()->classLinker(Grid::class);
-$row = Manual\api()->classLinker(Row::class);
-$col = Manual\api()->classLinker(Column::class);
-$cols = Manual\api()->classLinker(Column::class, 'Columns');
-
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$gridInterface = Manual\api()->classLinker(GridInterface::class);
-$f_GridLink = Manual\foundation()->hyperlink('xy-grid.html', "Foundation Grid layout");
+$f_GridLink = Manual\foundation()->hyperlink('xy-grid.html', 'Foundation Grid layout');
 Manual\parseDown(<<<MD
 #FOUNDATION <small>Grid and Block Grid layouts</small>
 $ns	

@@ -7,8 +7,6 @@ use Sphp\Manual;
 $rowIf = Manual\api()->classLinker(RowInterface::class);
 $colIf = Manual\api()->classLinker(ColumnInterface::class);
 
-$f_GridLink = Manual\foundation()->hyperlink('xy-grid.html', 'Foundation XY Grid layout');
-
 Manual\parseDown(<<<MD
 ##The $colIf <small>and its implementations</small>
 		

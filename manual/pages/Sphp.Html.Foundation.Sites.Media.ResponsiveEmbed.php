@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
-$flexInterface = \Sphp\Manual\api()->classLinker(ResponsiveEmbedInterface::class);
-$flex = \Sphp\Manual\api()->classLinker(ResponsiveEmbed::class);
+use Sphp\Manual;
 
-\Sphp\Manual\parseDown(<<<MD
+$flexInterface = Manual\api()->classLinker(ResponsiveEmbedInterface::class);
+$flex = Manual\api()->classLinker(ResponsiveEmbed::class);
+
+Manual\parseDown(<<<MD
 		
 ##The $flex component implementing $flexInterface for embedded media content
 
@@ -19,4 +19,4 @@ scale the media on any device.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Media/ResponsiveEmbed.php');
+Manual\visualize('Sphp/Html/Foundation/Sites/Media/ResponsiveEmbed.php');

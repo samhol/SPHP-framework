@@ -4,16 +4,16 @@ namespace Sphp\Html\Lists;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-
-$htmlList = \Sphp\Manual\api()->classLinker(AbstractList::class);
-$ol = \Sphp\Manual\api()->classLinker(Ol::class);
-$ul = \Sphp\Manual\api()->classLinker(Ul::class);
-$liInterface = \Sphp\Manual\api()->classLinker(LiInterface::class);
-$li = \Sphp\Manual\api()->classLinker(Li::class);
-$dlLink = \Sphp\Manual\api()->classLinker(Dl::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$w3schools = Apis::w3schools();
-\Sphp\Manual\parseDown(<<<MD
+use Sphp\Manual;
+$htmlList = Manual\api()->classLinker(AbstractList::class);
+$ol = Manual\api()->classLinker(Ol::class);
+$ul = Manual\api()->classLinker(Ul::class);
+$liInterface = Manual\api()->classLinker(LiInterface::class);
+$li = Manual\api()->classLinker(Li::class);
+$dlLink = Manual\api()->classLinker(Dl::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$w3schools = Manual\w3schools();
+Manual\parseDown(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
 $ns	
 This namespace contains object oriented implementations of HTML lists.
@@ -31,7 +31,7 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Html/Lists/Ul.php', null, true);
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
         
 The $ol component (an ordered list) extends $htmlList. It supports indexing in the generated HTML output. 
@@ -50,10 +50,10 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', null, true);
 
-$dtLink = \Sphp\Manual\api()->classLinker(Dt::class);
-$ddLink = \Sphp\Manual\api()->classLinker(Dd::class);
-\Sphp\Manual\parseDown(<<<MD
-##Definition lists: <small>The $dlLink component</small>{#dl}
+$dtLink = Manual\api()->classLinker(Dt::class);
+$ddLink = Manual\api()->classLinker(Dd::class);
+Manual\parseDown(<<<MD
+##Definition lists: <small>The $dlLink component</small>
 	
 The $dlLink component is a list of $dtLink terms and $ddLink descriptions for thee terms.
 $dtLink - $ddLink groups may be terms and definitions, metadata topics and values, questions 
@@ -62,15 +62,14 @@ and answers, or any other groups of name-value data.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Lists/Dl.php', null, true);
-\Sphp\Manual\parseDown(<<<MD
-###References:{#refs}
-        
+Manual\visualize('Sphp/Html/Lists/Dl.php', null, true);
+Manual\parseDown(<<<MD
+###References:
+
 * [<b>w3schools.com</b>: HTML Lists](http://www.w3schools.com/html/html_lists.asp){target=_blank}
 * http://www.w3schools.com/tags/tag_ul.asp
 * http://www.w3schools.com/tags/tag_ol.asp
 * http://www.w3schools.com/tags/tag_li.asp
-        
-        
+ 
 MD
 );

@@ -15,12 +15,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Screen {
-
-  /**
-   * @var Screen 
-   */
-  private static $defaultInstance;
+abstract class Screen {
 
   /**
    * Foundation screen size names
@@ -35,10 +30,6 @@ class Screen {
    * @var string[]
    */
   private static $otherTypes = ['portrait', 'landscape', 'sr'];
-
-  public function __construct(array $sizes = null) {
-    ;
-  }
 
   /**
    * Returns all supported screen type names
