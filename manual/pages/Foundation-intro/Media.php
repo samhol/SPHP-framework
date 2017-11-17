@@ -2,8 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 

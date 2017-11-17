@@ -7,12 +7,12 @@ use Doctrine\ORM\Decorator\EntityManagerDecorator;
 
 $links = new Ul();
 
-$wordPress = Apis::apigen('http://apigen.juzna.cz/doc/WordPress/WordPress/');
+$wordPress = Apis::sami('http://apigen.juzna.cz/doc/WordPress/WordPress/');
 
 $links[] = $wordPress->functionLink('__return_empty_array');
 $links[] = $wordPress->functionLink('_wp_footer_scripts');
 
-$doctrine2 = Apis::apigen('http://www.doctrine-project.org/api/orm/2.4/');
+$doctrine2 = Apis::sami('http://www.doctrine-project.org/api/orm/2.4/');
 $entityManagerDecorator = $doctrine2->classLinker(EntityManagerDecorator::class);
 
 $links->appendMd('###Doctrine 2:');
@@ -20,7 +20,7 @@ $links[] = $entityManagerDecorator;
 $links[] = $entityManagerDecorator->methodLink('getCache', true);
 $links[] = $entityManagerDecorator->methodLink('getCache', false);
 
-$sphpApi = Apis::apigen('http://documentation.samiholck.com/apigen/');
+$sphpApi = Apis::sami('http://playground.samiholck.com/API/sami');
 
 use Sphp\Html\Document;
 
@@ -28,7 +28,7 @@ $document = $sphpApi->classLinker(Document::class);
 
 $links->appendMd('###SPHP framework:');
 $links[] = $document;
-$links[] = $document->methodLink('get');
+$links[] = $document->methodLink('create');
 $links[] = $document->constantLink('HTML5');
 $links[] = $document->classBreadGrumbs();
 $links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE', 'constant Sphp\Regex\FI\DATE');

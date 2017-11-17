@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 use Sphp\Html\Apps\Manual\Apis;
 
@@ -16,6 +16,6 @@ $ns
 MD
 ;
 
-include('Sphp/Html/Foundation/Sites/Grids/GridInterface.php');
+include('Sphp/Html/Foundation/Sites/Grids/XY/Row_fromArray.php');
 echo "</div>";
 

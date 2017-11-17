@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Apps;
-
-$syntaxHighligher = $api->classLinker(SyntaxHighlighter::class);
+namespace Sphp\Html\Apps\Syntaxhighlighting;
+use Sphp\Manual;
+$syntaxHighligher = Manual\api()->classLinker(SyntaxHighlighter::class);
 $syntax1 = (new SyntaxHighlighter())
         ->loadFromFile('manual/snippets/example1.js');
 \Sphp\Manual\parseDown(<<<MD

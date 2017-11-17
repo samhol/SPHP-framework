@@ -2,8 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $videoJs = \Sphp\Manual\api()->classLinker(VideoJs::class);

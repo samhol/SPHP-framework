@@ -195,4 +195,3 @@ class Slider extends AbstractSlider {
   }
 
 }
-

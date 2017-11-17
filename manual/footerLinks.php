@@ -3,9 +3,9 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
 
-$grid = (new BlockGrid(['small-up-2', 'large-up-4']))->addCssClass('collapse');
+$grid = (new BlockGrid('small-up-2', 'large-up-4'))->addCssClass('collapse');
 $grid->append((new Menu())->vertical()
                 ->appendText('JavaScript ' . Document::icon('fa fa-code'))
                 ->appendLink('https://jquery.com/', "jQuery", '_blank')
