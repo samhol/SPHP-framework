@@ -18,4 +18,4 @@ them are treated as complete documents.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Html/Media/Iframe.php", FALSE);
+CodeExampleBuilder::visualize('Sphp/Html/Media/Iframe.php', null);

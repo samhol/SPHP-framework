@@ -14,6 +14,6 @@ This utility class can handle several local file system related operations.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Filesystem/Filesystem.php", false, false);
+CodeExampleBuilder::visualize("Sphp/Filesystem/Filesystem.php", null, false);
 
 

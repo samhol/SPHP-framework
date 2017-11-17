@@ -15,4 +15,4 @@ is valid if it matches the given pattern.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Validators/PatternValidator.php", "php", false);
+CodeExampleBuilder::visualize('Sphp/Validators/PatternValidator.php', 'php', false);

@@ -59,7 +59,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
    * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
    */
-  public function __construct($path = null, $highlightOutput = false, $outputAsHtmlFlow = true) {
+  public function __construct($path = null, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
     if ($path !== null) {
       $this->setPath($path);
     }
@@ -100,6 +100,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
       throw new RuntimeException("The code example path '$path' contains no file");
     }
     $this->path = Filesystem::getFullPath($path);
+    $this->data = Filesystem::executePhpToString($path);
     return $this;
   }
 
@@ -120,7 +121,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @param  boolean $highlightOutput
    * @return $this for a fluent interface
    */
-  public function setOutpputHighlighting($highlightOutput) {
+  public function setOutpputHighlighting(string $highlightOutput = null) {
     $this->outputHl = $highlightOutput;
     return $this;
   }
@@ -149,7 +150,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
             ->allowMultiExpand();
     $accordion->cssClasses()->protect('manual');
     $accordion->append($this->getCodePane());
-    if ($this->getHighlightOutput()) {
+    if ($this->outputHl !== null) {
       $accordion->append($this->buildHighlightedOutput());
     }
     if ($this->showHtmlFlow()) {
@@ -174,7 +175,8 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
       $outputSyntaxPane->useDefaultContentCopyController(true);
     }
     $outputSyntaxPane->setPaneTitle($this->titles[self::OUTPUT_TEXT]);
-    $outputSyntaxPane->executeFromFile($this->path, $this->outputHl);
+    //$outputSyntaxPane->executeFromFile($this->path, $this->outputHl);
+    $outputSyntaxPane->setSource($this->data, $this->outputHl);
     return $outputSyntaxPane;
   }
 
@@ -189,7 +191,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
     }
     $outputPane = (new Pane())->addCssClass('html-output');
     $outputPane->setPaneTitle($this->titles[self::HTMLFLOW]);
-    $outputPane->appendPhpFile($this->path);
+    $outputPane->append($this->data);
     return $outputPane;
   }
 
@@ -198,13 +200,10 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    *
    * @return SyntaxHighlightingPane
    */
-  public function getCodePane($path = null) {
-    if ($path === null) {
-      $path = $this->path;
-    }
+  public function getCodePane(): SyntaxHighlightingPane {
     $codePane = (new SyntaxHighlightingPane());
     $codePane->setPaneTitle($this->titles[self::EXAMPLECODE]);
-    $codePane->loadFromFile($path);
+    $codePane->loadFromFile($this->path);
     return $codePane;
   }
 
@@ -266,9 +265,9 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    *         or false if highlighted output code should not be visible
    * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
    * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
-   * @return Accordion
+   * @return CodeExampleBuilder
    */
-  public static function build(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
+  public static function build(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
     return (new static($path, $highlightOutput, $outputAsHtmlFlow));
   }
 
@@ -282,7 +281,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
    * @return Accordion
    */
-  public static function visualize(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true) {
+  public static function visualize(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
     (new static($path, $highlightOutput, $outputAsHtmlFlow))->buildAccordion()->printHtml();
   }
 

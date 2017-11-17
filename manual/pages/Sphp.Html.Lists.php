@@ -29,7 +29,7 @@ $liInterface into a $li object.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Lists/Ul.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Lists/Ul.php', null, true);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
@@ -48,7 +48,7 @@ This indexing can be numerical or alphabetical.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', null, true);
 
 $dtLink = \Sphp\Manual\api()->classLinker(Dt::class);
 $ddLink = \Sphp\Manual\api()->classLinker(Dd::class);
@@ -62,7 +62,7 @@ and answers, or any other groups of name-value data.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Lists/Dl.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Lists/Dl.php', null, true);
 \Sphp\Manual\parseDown(<<<MD
 ###References:{#refs}
         

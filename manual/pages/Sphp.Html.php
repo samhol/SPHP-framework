@@ -1,23 +1,22 @@
 <?php
 
 namespace Sphp\Html;
-
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$abstractTag = \Sphp\Manual\api()->classLinker(AbstractTag::class);
-$ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
-$documentLink = \Sphp\Manual\api()->classLinker(Document::class);
-$contentInterface = \Sphp\Manual\api()->classLinker(ContentInterface::class);
-$exeption = Apis::phpManual()->classLinker(\Exception::class);
-$componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
-$emptyTag = \Sphp\Manual\api()->classLinker(EmptyTag::class);
-$containerInterface = \Sphp\Manual\api()->classLinker(ContainerInterface::class);
-$containerComponentInterface = \Sphp\Manual\api()->classLinker(ContainerComponentInterface::class);
-$contentTrait = \Sphp\Manual\api()->classLinker(ContentTrait::class);
-$w3schools = Apis::w3schools();
-$nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+$abstractTag = Manual\api()->classLinker(AbstractTag::class);
+$ns = Manual\api()->namespaceLink(__NAMESPACE__);
+$documentLink = Manual\api()->classLinker(Document::class);
+$contentInterface = Manual\api()->classLinker(ContentInterface::class);
+$exeption = Manual\php()->classLinker(\Exception::class);
+$componentInterface = Manual\api()->classLinker(ComponentInterface::class);
+$emptyTag = Manual\api()->classLinker(EmptyTag::class);
+$containerInterface = Manual\api()->classLinker(ContainerInterface::class);
+$containerComponentInterface = Manual\api()->classLinker(ContainerComponentInterface::class);
+$contentTrait = Manual\api()->classLinker(ContentTrait::class);
+$w3schools = Manual\w3schools();
+$nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+Manual\parseDown(<<<MD
 #Introduction to HTML components
 $nsbc
 HTML is the standard markup language used to create Web pages.
@@ -81,8 +80,8 @@ MD
 );
 
 CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
-$containerTag = \Sphp\Manual\api()->classLinker(ContainerTag::class);
-\Sphp\Manual\parseDown(<<<MD
+$containerTag = Manual\api()->classLinker(ContainerTag::class);
+Manual\parseDown(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.
 
@@ -91,7 +90,7 @@ Furthermore all actual framework components implement $componentInterface
 
 MD
 );
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##The $abstractTag class
 
 This Abstract class is the base implementation  for all predefined HTML tag components.
@@ -102,5 +101,5 @@ MD
 );
 //PHPExampleViewer::visualize("Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize("Sphp/Html/AjaxLoaderInterface.php");
-\Sphp\Manual\loadPage("Sphp.Html.AjaxLoaderInterface.php");
+Manual\loadPage("Sphp.Html.AjaxLoaderInterface.php");
 //\Sphp\Manual\loadPage("Sphp.Html.Document.php");

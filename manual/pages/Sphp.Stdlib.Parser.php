@@ -14,4 +14,4 @@ $parser instance can handle file related (reading and writing) operations.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Filesystem/FileObject1.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Filesystem/FileObject1.php', 'text', false);

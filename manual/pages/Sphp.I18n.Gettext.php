@@ -3,9 +3,7 @@
 namespace Sphp\I18n\Gettext;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 
-$php = Apis::phpManual();
 $gettextTranslator = \Sphp\Manual\api()->classLinker(Translator::class);
 
 $gettextNs = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -16,7 +14,6 @@ $gettextNs
   
 A $gettextTranslator object translates given input by using PHP's build in 
 gettext extension.
-        
 
 The underlying technology used in translation is PHP's gettext extension.
  

@@ -51,7 +51,7 @@ validators.
         
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Validators/RequiredValueValidator.php", "php", false);
+CodeExampleBuilder::visualize('Sphp/Validators/RequiredValueValidator.php', 'php', false);
 
 \Sphp\Manual\loadPage('Sphp.Validators.PatternValidator');
 \Sphp\Manual\loadPage('Sphp.Validators.StringLengthValidator');

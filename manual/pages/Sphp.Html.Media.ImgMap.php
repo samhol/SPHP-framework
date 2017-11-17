@@ -23,4 +23,4 @@ $ns
 A $map object is a container for $areaInterface components
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Media/ImageMap.php", false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Media/ImageMap.php', null, true);

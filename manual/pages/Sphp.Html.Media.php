@@ -2,8 +2,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Apps\Manual\Apis;
-
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 \Sphp\Manual\parseDown(<<<MD
