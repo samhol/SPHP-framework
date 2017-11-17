@@ -8,6 +8,7 @@
 namespace Sphp\Manual\MVC;
 
 use Sphp\Html\Foundation\Sites\Navigation\MenuLinkBuilder as SphpMenuLinkBuilder;
+use Sphp\Html\Foundation\Sites\Navigation\MenuLink;
 
 /**
  * Description of MenuBuilder
@@ -24,12 +25,17 @@ class MenuLinkBuilder extends SphpMenuLinkBuilder {
    */
   private $currentPage;
 
-  public function __construct($currentPage = null) {
+  /**
+   * Construct a new instance
+   * 
+   * @param string $currentPage
+   */
+  public function __construct(string $currentPage = null) {
     parent::__construct();
     $this->currentPage = $currentPage;
   }
 
-  public function parseLink(array $linkData) {
+  public function parseLink(array $linkData): MenuLink {
     $link = parent::parseLink($linkData);
     if (array_key_exists('href', $linkData) && $this->currentPage === $linkData['href']) {
       $link->setActive(true);

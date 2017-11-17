@@ -30,7 +30,6 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   private $rootlink;
 
   /**
-   *
    * @var Menu
    */
   private $menu;
@@ -126,8 +125,8 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    * @param  mixed|MenuLabel $r
    * @return $this for a fluent interface
    */
-  public function appendRuler(Ruler $r  = null) {
-    if ($r  === null) {
+  public function appendRuler(Ruler $r = null) {
+    if ($r === null) {
       $r = new Ruler();
     }
     $this->append($r);

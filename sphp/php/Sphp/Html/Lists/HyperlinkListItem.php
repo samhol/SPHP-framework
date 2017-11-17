@@ -9,7 +9,6 @@ namespace Sphp\Html\Lists;
 
 use Sphp\Html\Navigation\HyperlinkContainer;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements a hyperlink type menu item
@@ -29,13 +28,13 @@ class HyperlinkListItem extends HyperlinkContainer implements LiInterface {
    * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    * * If the $content is empty, the $href is also the content of the object.
    *
-   * @param  string|URL $href the URL of the link
+   * @param  string|null $href the URL of the link
    * @param  string $content optional content of the component
-   * @param  string $target optional value of the target attribute
+   * @param  string|null $target optional value of the target attribute
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($href = null, $content = null, $target = null) {
+  public function __construct(string $href = null, $content = null, string $target = null) {
     parent::__construct('li', new Hyperlink($href, $content, $target));
   }
 

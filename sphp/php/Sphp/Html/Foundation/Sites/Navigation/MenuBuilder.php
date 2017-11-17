@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
+ * Implements a Foundation framework based menu builder
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -28,6 +29,7 @@ class MenuBuilder {
   private $linkBuilder;
 
   /**
+   * Constructs a new instance
    * 
    * @param MenuLinkBuilder $linkBuilder
    */
@@ -50,10 +52,10 @@ class MenuBuilder {
 
   /**
    * 
-   * @param  string $target
+   * @param  string|null $target
    * @return $this for a fluent interface
    */
-  public function setDefaultTarget($target) {
+  public function setDefaultTarget(string $target = null) {
     $this->linkBuilder->setDefaultTarget($target);
     return $this;
   }
@@ -83,21 +85,23 @@ class MenuBuilder {
   }
 
   /**
+   * Builds a new sub menu from given menu data
    * 
-   * @param  array $sub
-   * @return SubMenu
+   * @param  array $data the menu data
+   * @return SubMenu new sub menu
    */
-  public function buildSub(array $sub): SubMenu {
-    $instance = new SubMenu($sub['menu']);
-    $this->buildMenu($sub, $instance);
+  public function buildSub(array $data): SubMenu {
+    $instance = new SubMenu($data['menu']);
+    $this->buildMenu($data, $instance);
     return $instance;
   }
 
   /**
+   * Builds a new menu from given menu data
    * 
-   * @param  array $data
+   * @param  array $data the menu data
    * @param  MenuInterface|null $instance
-   * @return MenuInterface
+   * @return MenuInterface new menu
    */
   public function buildMenu(array $data, MenuInterface $instance = null): MenuInterface {
     if ($instance === null) {
@@ -111,8 +115,9 @@ class MenuBuilder {
   }
 
   /**
+   * Builds a new drop down menu from given menu data
    * 
-   * @param  array $data
+   * @param  array $data the menu data
    * @return DropdownMenu new menu instance
    */
   public function buildDropdownMenu(array $data): DropdownMenu {
@@ -120,8 +125,9 @@ class MenuBuilder {
   }
 
   /**
+   * Builds a new accordion menu from given menu data
    * 
-   * @param  array $data
+   * @param  array $data the menu data
    * @return AccordionMenu new menu instance
    */
   public function buildAccordionMenu(array $data): AccordionMenu {

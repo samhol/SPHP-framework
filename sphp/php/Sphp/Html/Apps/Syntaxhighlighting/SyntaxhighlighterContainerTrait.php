@@ -26,7 +26,7 @@ trait SyntaxhighlighterContainerTrait {
    * 
    * @return SyntaxHighlighterInterface the syntax highlighting object
    */
-  abstract public function getSyntaxHighlighter();
+  abstract public function getSyntaxHighlighter(): SyntaxHighlighterInterface;
 
   public function attachContentCopyController(ComponentInterface $button = null) {
     return $this->getSyntaxHighlighter()->attachContentCopyController($button);
@@ -42,8 +42,8 @@ trait SyntaxhighlighterContainerTrait {
     return $this;
   }
 
-  public function setSource(string $source, string $lang) {
-    $this->getSyntaxHighlighter()->setSource($source, $lang);
+  public function setSource(string $source, string $lang, bool $format = false) {
+    $this->getSyntaxHighlighter()->setSource($source, $lang, $format);
     return $this;
   }
 

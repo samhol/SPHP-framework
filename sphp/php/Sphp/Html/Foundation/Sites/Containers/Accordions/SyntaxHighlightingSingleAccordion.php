@@ -40,8 +40,8 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     return $this->getPane()->getSyntaxHighlighter();
   }
 
-  public function setSource(string $source, string $lang) {
-    $this->getHighlighter()->setSource($source, $lang);
+  public function setSource(string $source, string $lang, bool $format = false) {
+    $this->getHighlighter()->setSource($source, $lang, $format);
     return $this;
   }
 

@@ -2,12 +2,11 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$embed = \Sphp\Manual\api()->classLinker(Embed::class);
-$embedTag = Apis::w3schools()->tag('embed');
-\Sphp\Manual\parseDown(<<<MD
+$embed = Manual\api()->classLinker(Embed::class);
+$embedTag = Manual\w3schools()->tag('embed');
+Manual\parseDown(<<<MD
 ##The $embed component
 
 The $embed class models the HTML $embedTag tag. This component can be 
@@ -15,7 +14,7 @@ used for setting external external applications or interactive contents (plug-in
 MD
 );
 
-(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Embed.php", false, true))
-        ->setExamplePaneTitle("HTML &lt;embed&gt; example code")
-        ->setOutputPaneTitle("HTML &lt;embed&gt; example results")
+Manual\example('Sphp/Html/Media/Multimedia/Embed.php', null, true)
+        ->setExamplePaneTitle('HTML &lt;embed&gt; example code')
+        ->setOutputPaneTitle('HTML &lt;embed&gt; example results')
         ->printHtml();

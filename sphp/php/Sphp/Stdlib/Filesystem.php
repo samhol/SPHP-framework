@@ -9,6 +9,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\RuntimeException;
 use SplFileObject;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Tools to work with files and directories
@@ -20,9 +21,10 @@ use SplFileObject;
 abstract class Filesystem {
 
   /**
+   * Checks whether the file exists and is an actual file
    * 
    * @param  string $filename the file to test 
-   * @return boolean
+   * @return boolean true if the pile path point to a file
    */
   public static function isFile(string $filename): bool {
     $path = stream_resolve_include_path($filename);
@@ -34,9 +36,10 @@ abstract class Filesystem {
   }
 
   /**
+   * Solves the full path to file
    * 
-   * @param  string $path
-   * @return string
+   * @param  string $path  relative path to file
+   * @return string full path to file
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public static function getFullPath(string $path): string {
@@ -73,11 +76,11 @@ abstract class Filesystem {
    * @return string the result of the script execution
    * @throws \Sphp\Exceptions\Exception if the parsing fails for any reason
    */
-  public static function executePhpToString($paths): string {
+  public static function executePhpToString(...$paths): string {
     $content = '';
     try {
       ob_start();
-      foreach (is_array($paths) ? $paths : [$paths] as $path) {
+      foreach (Arrays::flatten($paths) as $path) {
         if (!static::isFile($path)) {
           throw new RuntimeException("The path '$path' contains no executable PHP script");
         }
@@ -141,7 +144,6 @@ abstract class Filesystem {
    * @param  string $path the directory path
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
    * @return boolean true on success or false on failure
-   * @link \mkdir()
    */
   public static function mkdir(string $path, int $mode = 0777): bool {
     $result = is_dir($path);

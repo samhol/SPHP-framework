@@ -76,13 +76,13 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    */
   public function __construct() {
     parent::__construct('div');
-    $this->cssClasses()->protect("GeSHi sphp-syntax-highlighter");
+    $this->cssClasses()->protect('GeSHi', 'sphp-syntax-highlighter');
     $this->initGeshi();
     $this->setSyntaxBlockId();
-    $footerText = "Highlighted with <strong>GeSHi " . $this->geshi->get_version() . "</strong>";
+    $footerText = 'Highlighted with <strong>GeSHi ' . $this->geshi->get_version() . '</strong>';
     $this->footer = (new Div($footerText))->addCssClass("foot");
-    $this->buttonArea = (new Div())->addCssClass("button-area");
-    $this->showLineNumbers(TRUE)
+    $this->buttonArea = (new Div())->addCssClass('button-area');
+    $this->showLineNumbers(true)
             ->startLineNumbersAt(1)
             ->useFooter()
             ->setDefaultContentCopyController();
@@ -104,7 +104,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   private function initGeshi() {
     $this->geshi = new GeSHi();
     $this->geshi->enable_classes();
-    $this->geshi->set_overall_class("syntax");
+    $this->geshi->set_overall_class('syntax');
     $this->geshi->set_header_type(GESHI_HEADER_DIV);
     //$this->geshi->set_overall_id(\Sphp\Stdlib\Strings::random());
     return $this;
@@ -137,12 +137,12 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   }
 
   /**
-   * S
+   * Sets what number line numbers should start at
    * 
-   * @param  int $number
+   * @param  int $number the number to start line numbers at
    * @return $this for a fluent interface
    */
-  public function startLineNumbersAt($number) {
+  public function startLineNumbersAt(int $number) {
     $this->geshi->start_line_numbers_at($number);
     return $this;
   }
@@ -205,12 +205,12 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @param  mixed $button the copier button
    * @return $this for a fluent interface
    */
-  public function setDefaultContentCopyController($button = "copy") {
+  public function setDefaultContentCopyController($button = 'copy') {
     if (!($button instanceof ComponentInterface)) {
-      $button = new Button("button", $button);
+      $button = new Button('button', $button);
     }
     $this->copyBtn = $this->attachContentCopyController($button);
-    $this->buttonArea["copy"] = $this->copyBtn;
+    $this->buttonArea['copy'] = $this->copyBtn;
     return $this;
   }
 
@@ -219,7 +219,19 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     return $this;
   }
 
-  public function setSource(string $source, string $lang) {
+  protected function formatCode(string $source, string $lang): string {
+    if ($lang == 'html5') {
+      $source = (new Indenter())->indent($source);
+    } else if ($lang == 'sql') {
+      $source = SqlFormatter::format($source, false);
+    }
+    return $source;
+  }
+
+  public function setSource(string $source, string $lang, bool $format = false) {
+    if ($format) {
+      $source = $this->formatCode($source, $lang);
+    }
     $this->geshi->set_source($source);
     $this->geshi->set_language($lang);
     return $this;
@@ -232,9 +244,6 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
       return $this;
     } catch (\Exception $ex) {
       throw new InvalidArgumentException("The file '$filename' does not exist!");
-    }
-    if (!Filesystem::isFile($filename)) {
-      
     }
   }
 

@@ -22,7 +22,6 @@ class SideNavViewer implements ContentInterface {
   use \Sphp\Html\ContentTrait;
 
   /**
-   *
    * @var array 
    */
   private $data;

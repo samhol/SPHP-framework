@@ -21,13 +21,11 @@ use Sphp\Stdlib\Path;
 class MenuLinkBuilder {
 
   /**
-   *
    * @var type 
    */
   private $defaultTarget = null;
 
   /**
-   *
    * @var type 
    */
   private $currentPage;
@@ -113,21 +111,18 @@ class MenuLinkBuilder {
    * @param  array $linkData
    * @return string
    */
-  protected function parseHref(array $linkData) {
+  protected function parseHref(array $linkData): string {
     if (array_key_exists('href', $linkData)) {
       $href = $linkData['href'];
     } else {
       $href = Path::get()->http();
-      if (array_key_exists('page', $linkData)) {
-        $href .= '?page=' . $linkData['page'];
-      }
     }
     return $href;
   }
 
   /**
    * 
-   * @param array $linkData
+   * @param  array $linkData
    * @return string
    */
   protected function parseTarget(array $linkData) {
@@ -139,7 +134,7 @@ class MenuLinkBuilder {
    * @param  array $linkData
    * @return MenuLink
    */
-  public function parseLink(array $linkData) {
+  public function parseLink(array $linkData): MenuLink {
     $href = $this->parseHref($linkData);
     $target = $this->parseTarget($linkData);
     $link = new MenuLink($href, $linkData['link'], $target);

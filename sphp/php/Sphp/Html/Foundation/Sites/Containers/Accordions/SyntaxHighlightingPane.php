@@ -58,7 +58,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
    * 
    * @return SyntaxHighlighter the inner Syntax highlighting component
    */
-  public function getSyntaxHighlighter() {
+  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
     return $this->hl;
   }
 

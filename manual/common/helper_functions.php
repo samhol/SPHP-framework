@@ -79,12 +79,12 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
  * Creates the PHP Example code and the preferred result
  *
  * @param  string $path the file path of the presented example PHP code
- * @param  string|boolean $highlightOutput the language name of the output code 
- *         or false if highlighted output code should not be visible
- * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+ * @param  string|null $highlightOutput the language name of the output code 
+ *         or `null` if highlighted output code should not be visible
+ * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
  * @return CodeExampleBuilder
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
  */
-function example(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
+function example(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
   return CodeExampleBuilder::build($path, $highlightOutput, $outputAsHtmlFlow);
 }

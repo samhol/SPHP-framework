@@ -50,9 +50,10 @@ interface SyntaxHighlighterInterface extends ContentInterface {
    *
    * @param  string $source the source code to parse
    * @param  string $lang name of the source code language
+   * @param  bool $format sets whether the code should be formatted
    * @return $this for a fluent interface
    */
-  public function setSource(string $source, string $lang);
+  public function setSource(string $source, string $lang, bool $format = false);
 
   /**
    * Reads the source code from an file

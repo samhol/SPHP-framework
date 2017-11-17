@@ -2,19 +2,17 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$video = \Sphp\Manual\api()->classLinker(Video::class);
-$source = \Sphp\Manual\api()->classLinker(Source::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+Manual\parseDown(<<<MD
 #HTML MULTIMEDIA: <small>sound, music, videos, movies, and animations</small>
 $ns 
 MD
 );
 
-\Sphp\Manual\loadPage('Sphp.Html.Media.Multimedia.Video');
-\Sphp\Manual\loadPage('Sphp.Html.Media.Multimedia.Audio');
-\Sphp\Manual\loadPage('Sphp.Html.Media.Multimedia.VideoJs');
-\Sphp\Manual\loadPage('Sphp.Html.Media.Multimedia.VideoPlayerInterface');
-\Sphp\Manual\loadPage('Sphp.Html.Media.Multimedia.Embed');
+Manual\loadPage('Sphp.Html.Media.Multimedia.Video');
+Manual\loadPage('Sphp.Html.Media.Multimedia.Audio');
+Manual\loadPage('Sphp.Html.Media.Multimedia.VideoJs');
+Manual\loadPage('Sphp.Html.Media.Multimedia.VideoPlayerInterface');
+Manual\loadPage('Sphp.Html.Media.Multimedia.Embed');

@@ -28,7 +28,7 @@ which the browser may choose from, based on its media type or codec support.
 MD
 );
 
-(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Video.php", false, true))
+(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Video.php", null, true))
         ->setExamplePaneTitle("HTML5 &lt;video&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
         ->printHtml();
