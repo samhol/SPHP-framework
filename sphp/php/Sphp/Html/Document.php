@@ -10,6 +10,8 @@ namespace Sphp\Html;
 /**
  * Document class contains basic Sphp HTML tag component creation and HTML version handing.
  *
+ * 
+ * @method Span span(mixed $content = null) creates a new span tag component
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -176,6 +178,13 @@ class Document {
       'wbr' => EmptyTag::class,
       'xmp' => ContainerTag::class
   );
+
+  public static function __callStatic($name, $arguments) {
+    // Note: value of $name is case sensitive.
+    $class = new \ReflectionClass(static::$tags[$name]);
+    $instance = $class->newInstanceArgs($arguments);
+    return $instance;
+  }
 
   /**
    * Returns a corresponding HTML object

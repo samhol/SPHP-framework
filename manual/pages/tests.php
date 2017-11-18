@@ -78,11 +78,7 @@ $inter->setQuery('xlarge', 'manual/snippets/loremipsum.html')
         ->printHtml();
 
 
-
-
-
-
-
-
-
+echo \Sphp\Html\Document::span('foo');
+echo \Sphp\Html\Document::a('#', 'hyperlink', '_self');
+echo \Sphp\Html\Document::time(new \DateTime(), 'foo');
 
