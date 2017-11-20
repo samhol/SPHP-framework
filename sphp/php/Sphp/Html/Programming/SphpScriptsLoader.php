@@ -150,31 +150,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    */
   public function appendSPHP() {
     $this
-            ->appendSrc($this->paths['js_root'] . "dist/all.js")
-            ->appendCode('sphp.initialize();');
-    $this->appendVideojs();
-    return $this;
-  }
-
-  /**
-   * Appends JavaScript files for the entire SPHP framework
-   *
-   * @return $this for a fluent interface
-   */
-  public function appendSPHP1() {
-    $this->appendFoundation()
-            ->appendLazyload()
-            ->appendClipboard()
-            ->appendAnyTime()
-            ->appendVideojs()
-            ->appendIonRangeSlider()
-            ->appendSrc($this->paths['vendor'] . 'jquery.qtip.min.js')
-            ->appendSrc($this->paths['app'] . 'commonJqueryPlugins.js')
-            ->appendSrc($this->paths['app'] . 'QtipAdapter.js')
-            ->appendSrc($this->paths['app'] . 'sphp.TechLinks.js')
-            ->appendSrc($this->paths['js_root'] . "sphp.all.js")
+            ->appendSrc('sphp/js/dist/all.js')
             ->appendCode('sphp.initialize();')
-            ->appendSrc($this->paths['app'] . 'sphp.ProgressBar.js');
+            ->appendVideojs();
     return $this;
   }
 

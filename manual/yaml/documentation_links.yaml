@@ -41,7 +41,7 @@ items:
       - link: Introduction
         href: Sphp.Html
       - ruler: 
-      - link: Document factory
+      - link: Component factories
         href: Sphp.Html.Document
       - link: Attribute management
         href: Sphp.Html.Attributes

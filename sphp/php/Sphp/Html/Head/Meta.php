@@ -22,7 +22,7 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Meta extends EmptyTag implements MetaInterface {
+class Meta extends EmptyTag implements MetaData {
 
   /**
    * Constructs a new instance
@@ -229,9 +229,9 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function keywords($keywords): Meta {
+  public static function keywords(...$keywords): Meta {
     if (is_array($keywords)) {
-      $keywords = implode(', ', $keywords);
+      $keywords = implode(', ', \Sphp\Stdlib\Arrays::flatten($keywords));
     }
     return static::namedContent('keywords', $keywords);
   }
@@ -265,7 +265,3 @@ class Meta extends EmptyTag implements MetaInterface {
   }
 
 }
-
-
-
-

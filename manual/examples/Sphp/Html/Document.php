@@ -4,17 +4,19 @@ namespace Sphp\Html;
 
 use Sphp\Html\Head\Meta;
 
-$fooDoc = Document::html("foo");
+Document::html("foo")
+        ->setLanguage("en");
 
-Document::html("foo")->setDocumentTitle("Foo document");
 Document::head("foo")
+        ->setDocumentTitle("Foo document")
         ->addCssSrc("print.css", "print")
         ->addCssSrc("screen.css", "screen")
         ->addMeta(Meta::author('Sami Holck'))
-        ->addMeta(Meta::applicationName('Foobar'))
-        ->addMeta(Meta::keywords(
-                        ['foo', 'bar', 'foobar']));
+        ->addMeta(Meta::applicationName("Foobar"))
+        ->addMeta(Meta::keywords("foo", "bar", "foobar"));
+
 Document::body("foo")->append("Welcome to Foo!")->scripts()
-        ->appendSrc('foo.js')
-        ->appendCode('var foo = 2');
+        ->appendSrc("foo.js")
+        ->appendCode("var foo = 2;");
+
 echo Document::html("foo");

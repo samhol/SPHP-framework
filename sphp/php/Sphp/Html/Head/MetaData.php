@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MetaInterface.php (UTF-8)
+ * MetaData.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -22,7 +22,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MetaInterface extends HeadComponentInterface, NonVisualContentInterface {
+interface MetaData extends HeadContent, NonVisualContentInterface {
 
   /**
    * Checks whether the name attribute exists or not

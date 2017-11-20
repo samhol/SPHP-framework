@@ -3,22 +3,21 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\Programming\ScriptInterface;
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$headNS = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
-$metaIfLnk = \Sphp\Manual\api()->classLinker(HeadComponentInterface::class);
-$head = \Sphp\Manual\api()->classLinker(Head::class);
-$title = \Sphp\Manual\api()->classLinker(Title::class);
-$metaInterface = \Sphp\Manual\api()->classLinker(MetaInterface::class);
-$metaContainer = \Sphp\Manual\api()->classLinker(MetaContainer::class);
-$meta = \Sphp\Manual\api()->classLinker(Meta::class);
-$base = \Sphp\Manual\api()->classLinker(Base::class);
-$link = \Sphp\Manual\api()->classLinker(Link::class);
-$scriptInterface = \Sphp\Manual\api()->classLinker(ScriptInterface::class);
-$w3schools = Apis::w3schools();
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+$headNS = Manual\api()->namespaceLink(__NAMESPACE__);
+$metaIfLnk = Manual\api()->classLinker(HeadContent::class);
+$head = Manual\api()->classLinker(Head::class);
+$title = Manual\api()->classLinker(Title::class);
+$metaInterface = Manual\api()->classLinker(MetaData::class);
+$metaContainer = Manual\api()->classLinker(MetaContainer::class);
+$meta = Manual\api()->classLinker(Meta::class);
+$base = Manual\api()->classLinker(Base::class);
+$link = Manual\api()->classLinker(Link::class);
+$scriptInterface = Manual\api()->classLinker(ScriptInterface::class);
+$w3schools = Manual\w3schools();
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+Manual\parseDown(<<<MD
 #HTML HEAD: <small>meta data manipulation</small>
         
 $ns
@@ -39,16 +38,16 @@ The following PHP classes and interfaces describe HTML meta data components:
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Html/Head/Head1.php", "html5", false);
-\Sphp\Manual\parseDown(<<<MD
+Manual\visualize('Sphp/Html/Head/Head1.php', 'html5', false);
+Manual\parseDown(<<<MD
 ##META DATA OBJECTS: <small>$meta object implementing $metaInterface</small>{#MetaInterface}
 
 $meta class works also as a object factory for $metaInterface objects implementing different meta data properties.
 All $metaInterface types can be stored into a $metaContainer container.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Head/MetaInterface.php", "html5", false);
-\Sphp\Manual\parseDown(<<<MD
+Manual\visualize('Sphp/Html/Head/MetaInterface.php', 'html5', false);
+Manual\parseDown(<<<MD
 ##The $head component and client side scripts
         
 The best practice of placing client side scripts is the end of the page, just inside the closing body tag. 
@@ -59,4 +58,13 @@ By including scripts at the bottom of the page, it is assured that the DOM is re
 to be poked and it is not reguired to delay initialization any further.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Head/Head2.php", "html5", false);
+Manual\visualize('Sphp/Html/Head/Head2.php', 'html5', false);
+
+Manual\parseDown(<<<MD
+##External resources
+
+* A list of everything that *could* go in the <head> of your document https://github.com/joshbuchea/HEAD
+  
+  
+MD
+);

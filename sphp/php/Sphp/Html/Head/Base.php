@@ -21,7 +21,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @filesource
  */
-class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentInterface {
+class Base extends EmptyTag implements HeadContent, NonVisualContentInterface {
 
   /**
    * Constructs a new instance

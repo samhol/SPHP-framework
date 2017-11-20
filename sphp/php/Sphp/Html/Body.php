@@ -55,7 +55,12 @@ class Body extends ContainerTag implements ContentParserInterface {
     $this->scripts = clone $this->scripts;
   }
 
+  public function contentToString(): string {
+    return parent::contentToString().$this->scripts();
+  }
+
   /**
+   * Returns parsed script tags and the closing tag
    * 
    * @return string the script tags and the closing tag
    */

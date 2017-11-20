@@ -8,7 +8,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Head\HeadComponentInterface;
+use Sphp\Html\Head\HeadContent;
 
 /**
  * Implements an HTML &lt;noscript&gt; tag
@@ -18,7 +18,7 @@ use Sphp\Html\Head\HeadComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Noscript extends ContainerTag implements HeadComponentInterface {
+class Noscript extends ContainerTag implements HeadContent {
 
   /**
    * Constructs a new instance

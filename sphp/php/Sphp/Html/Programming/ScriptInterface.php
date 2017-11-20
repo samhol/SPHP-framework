@@ -8,7 +8,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
+use Sphp\Html\Head\HeadContent;
 
 /**
  * Defines script tags
@@ -17,7 +17,7 @@ use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ScriptInterface extends ComponentInterface, HeadComponentInterface {
+interface ScriptInterface extends ComponentInterface, HeadContent {
 
   /**
    * Sets the value of the type attribute

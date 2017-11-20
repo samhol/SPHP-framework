@@ -91,9 +91,9 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   }
 
   /**
-   * Sets the title of the html page
+   * Sets the title of the HTML page
    *
-   * @param  string|Title $title the title of the html page
+   * @param  string|Title $title the title of the HTML page
    * @return $this for a fluent interface
    */
   public function setDocumentTitle($title) {
@@ -122,7 +122,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   }
 
   /**
-   * unsets the default URL and a default target for all links on a page
+   * Removes the default URL and a default target for all links on a page
    *
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
@@ -218,17 +218,17 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function addShortcutIcon(string $href, string $type = 'image/x-icon') {
-    $this->addContent(Link::shortcutIcon($href, $type));
+    $this->add(Link::shortcutIcon($href, $type));
     return $this;
   }
 
   /**
    * Adds content component to the object
    *
-   * @param  HeadComponentInterface $component content the component to add
+   * @param  HeadContent $component content the component to add
    * @return $this for a fluent interface
    */
-  public function addContent(HeadComponentInterface $component) {
+  public function add(HeadContent $component) {
     if ($component instanceof Title) {
       $this->setDocumentTitle($component);
     } else if ($component instanceof Base) {
@@ -257,10 +257,10 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Adds meta data object
    *
-   * @param  MetaInterface $meta
+   * @param  MetaData $meta
    * @return $this for a fluent interface
    */
-  public function addMeta(MetaInterface $meta) {
+  public function addMeta(MetaData $meta) {
     $this->meta->addMeta($meta);
     return $this;
   }

@@ -69,10 +69,10 @@ class MetaContainer implements ContentInterface, IteratorAggregate, TraversableI
   /**
    * Adds a meta data object to the container
    *
-   * @param  MetaInterface $content meta information to add
+   * @param  MetaData $content meta information to add
    * @return $this for a fluent interface
    */
-  public function addMeta(MetaInterface $content) {
+  public function addMeta(MetaData $content) {
     $key = [];
     if ($content->attrExists('charset')) {
       $key[] = 'charset';
