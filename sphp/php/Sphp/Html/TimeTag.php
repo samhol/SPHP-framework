@@ -32,12 +32,12 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
   /**
    * Constructs a new instance
    *
-   * @param  DateTimeInterface $dateTime the datetime object
+   * @param  DateTimeInterface|null $dateTime the datetime object
    * @param  mixed $content optional content of the component
    */
   public function __construct(DateTimeInterface $dateTime = null, $content = null) {
     parent::__construct('time', $content);
-    if ($dateTime !== null) { 
+    if ($dateTime !== null) {
       $this->setDateTime($dateTime);
     }
     if ($dateTime === null) {
@@ -56,7 +56,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
   }
 
   public function setDateTime(DateTimeInterface $dateTime) {
-    $this->attrs()->set('datetime', (string)$dateTime->format('Y-m-d H:i:s'));
+    $this->attrs()->set('datetime', (string) $dateTime->format('Y-m-d H:i:s'));
     $this->dateTime = $dateTime;
     return $this;
   }

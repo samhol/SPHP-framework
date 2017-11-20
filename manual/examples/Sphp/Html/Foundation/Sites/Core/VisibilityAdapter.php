@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Document;
+use Sphp\Html\Factory;
 
-$paragraph = Document::create('p');
+$paragraph = Factory::p();
 $adapter = new VisibilityAdapter($paragraph);
 foreach (array_reverse(Screen::sizes()) as $name) {
   $adapter->getComponent()->append("You are on a <b>$name</b> screen or larger.");
@@ -16,20 +16,20 @@ foreach (array_reverse(Screen::sizes()) as $name) {
           ->hideDownTo($name);
 }
 foreach (Screen::sizes() as $name) {
-  (new VisibilityAdapter(Document::create("p", "show Only For $name")))
+  (new VisibilityAdapter(Factory::p("show Only For $name")))
           ->showOnlyFor($name)
           ->printHtml();
 }
-(new VisibilityAdapter(Document::create("p", "Show between small and large screens")))
+(new VisibilityAdapter(Factory::p("Show between small and large screens")))
         ->showBetweenSizes("small", "large")
         ->printHtml();
-(new VisibilityAdapter(Document::create("p", "Show between medium and xlarge screens")))
+(new VisibilityAdapter(Factory::p("Show between medium and xlarge screens")))
         ->showBetweenSizes("medium", "xlarge")
         ->printHtml();
-(new VisibilityAdapter(Document::create("p", "Show between medium and xxlarge screens")))
+(new VisibilityAdapter(Factory::p("Show between medium and xxlarge screens")))
         ->showBetweenSizes("medium", "xxlarge")
         ->printHtml();
-(new VisibilityAdapter(Document::create("p", "Hide from small and large screens")))
+(new VisibilityAdapter(Factory::p("Hide from small and large screens")))
         ->hideOnlyFromSize("large")->hideOnlyFromSize("small")
         ->printHtml();
 ?>

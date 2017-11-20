@@ -78,7 +78,10 @@ $inter->setQuery('xlarge', 'manual/snippets/loremipsum.html')
         ->printHtml();
 
 
-echo \Sphp\Html\Document::span('foo');
-echo \Sphp\Html\Document::a('#', 'hyperlink', '_self');
-echo \Sphp\Html\Document::time(new \DateTime(), 'foo');
+echo \Sphp\Html\Factory::span('foo');
+echo \Sphp\Html\Factory::a('#', 'hyperlink', '_self');
+echo \Sphp\Html\Factory::time(new \DateTime(), 'foo');
+
+echo \Sphp\Html\Factory::option('foo', 'foo');
+echo \Sphp\Html\Factory::textInput('foo', 'foo');
 

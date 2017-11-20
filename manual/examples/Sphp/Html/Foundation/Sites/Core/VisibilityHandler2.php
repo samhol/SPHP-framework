@@ -2,14 +2,14 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Document;
+use Sphp\Html\Factory;
 
-$ul = Document::create("ul");
+$ul = Factory::ul();
 foreach (Screen::sizes() as $size) {
   $li = "$size screen size: ";
-  $li .= (new VisibilityAdapter(Document::create("span", "yes")))
+  $li .= (new VisibilityAdapter(Factory::span("yes")))
           ->showOnlyFor($size);
-  $li .= (new VisibilityAdapter(Document::create("span", "no")))
+  $li .= (new VisibilityAdapter(Factory::span("no")))
           ->hideOnlyFromSize($size);
   $ul[] = $li;
 }

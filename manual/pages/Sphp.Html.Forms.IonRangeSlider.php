@@ -20,7 +20,7 @@ is a jQuery range slider with CSS3 skin support.
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Forms/Ion/Slider.php', false, true))
+(new CodeExampleBuilder('Sphp/Html/Forms/Ion/Slider.php', null, true))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
@@ -29,7 +29,7 @@ MD
 		
 MD
 );
-(new CodeExampleBuilder('Sphp/Html/Forms/Ion/RangeSlider.php', false, true))
+(new CodeExampleBuilder('Sphp/Html/Forms/Ion/RangeSlider.php', null, true))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

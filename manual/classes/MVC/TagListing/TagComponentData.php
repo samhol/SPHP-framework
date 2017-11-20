@@ -7,7 +7,7 @@
 
 namespace Sphp\Manual\MVC\TagListing;
 
-use Sphp\Html\Document;
+use Sphp\Html\Factory;
 use Sphp\Html\TagInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
@@ -46,7 +46,7 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
   public function __construct(string $par, string $description) {
     $this->call = $par;
     $this->description = $description;
-    $this->component = Document::create($par);
+    $this->component = Factory::$par();
     $this->tagName = $this->component->getTagName();
     $this->ref = new \ReflectionClass($this->component);
   }
@@ -56,7 +56,7 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
   }
 
   public function getDocumentCall() {
-    return "Document::create('" . $this->call . "')";
+    return "Factory::" . $this->call . "()";
   }
 
   public function getComponent(): \Sphp\Html\TagInterface {

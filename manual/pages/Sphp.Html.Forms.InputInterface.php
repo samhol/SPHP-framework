@@ -33,7 +33,7 @@ Framework has many build-in form components that implement basic HTML form eleme
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Forms/Inputs/InputFields.php', false, true))
+(new CodeExampleBuilder('Sphp/Html/Forms/Inputs/InputFields.php', 'html5', true))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Document;
+use Sphp\Html\Factory;
 
-$button = Document::create('button:reset');
-$button->setContent('foo');
+$button = Factory::pushButton('Push me!')->addCssClass('button');
+
 $adapter = new ColourableAdapter($button);
 echo $adapter->setColor('alert');
-echo $adapter->setColor('warning');
+echo $adapter->setColor('success');

@@ -58,7 +58,7 @@ abstract class AbstractTag implements TagInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->attrs, $this->tagName);
+    unset($this->attrs);
   }
 
   /**

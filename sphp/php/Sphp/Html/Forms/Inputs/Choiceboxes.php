@@ -78,7 +78,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return $this for a fluent interface
    */
   protected function addInput($label, $value) {
-    $input = \Sphp\Html\Document::create($this->type);
+    $input = \Sphp\Html\Factory::{$this->type}();
     $input->setName($this->name);
     $input->setValue($value);
     //$input = new InputTag($this->type, $this->name, $value);
