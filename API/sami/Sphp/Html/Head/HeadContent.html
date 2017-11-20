@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Head\MetaInterface | SPHP framework API</title>
+    <title>Sphp\Html\Head\HeadContent | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Head_MetaInterface" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Head_HeadContent" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,31 +66,28 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Head.html">Head</a></li><li class="backslash">\</li><li>MetaInterface</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Head.html">Head</a></li><li class="backslash">\</li><li>HeadContent</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            MetaInterface
+            HeadContent
                 
         </h1>
     </div>
 
     <p>    interface
-    <strong>MetaInterface</strong>        implements
-        <a href="../../../Sphp/Html/Head/HeadComponentInterface.html"><abbr title="Sphp\Html\Head\HeadComponentInterface">HeadComponentInterface</abbr></a>, <a href="../../../Sphp/Html/NonVisualContentInterface.html"><abbr title="Sphp\Html\NonVisualContentInterface">NonVisualContentInterface</abbr></a>
+    <strong>HeadContent</strong>        implements
+        <a href="../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements an HTML &lt;meta&gt; tag</p>            <p>The &lt;meta&gt; tag provides metadata about the HTML document. Metadata will not be displayed on the page,
- but will be machine parsable. Meta elements are typically used to specify page description, keywords, author
- of the document, last modified, and other metadata. The metadata can be used by browsers (how to display
- content or reload page), search engines (keywords), or other web services.</p>                    </div>
+            <p>Defines content for HTML head</p>                                </div>
     
     
     
@@ -247,76 +244,6 @@
         
                                             <p>Checks if an attribute exists</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ComponentInterface.html#method_attrExists"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasNamedContent">hasNamedContent</a>()
-        
-                                            <p>Checks whether the name attribute exists or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasName">hasName</a>(string $name)
-        
-                                            <p>Checks whether the name attribute has the given value or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getName">getName</a>()
-        
-                                            <p>Returns the value of the name attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasHttpEquivContent">hasHttpEquivContent</a>()
-        
-                                            <p>Checks whether the http-equiv attribute exists or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasHttpEquiv">hasHttpEquiv</a>(string $http_equiv)
-        
-                                            <p>Checks whether the http_equiv attribute has the given value or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getHttpEquiv">getHttpEquiv</a>()
-        
-                                            <p>Returns the value of the http_equiv attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasPropertyContent">hasPropertyContent</a>()
-        
-                                            <p>Checks whether the property attribute exists or not</p>                </div>
-                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -918,238 +845,6 @@
         <tr>
             <td>boolean</td>
             <td>(attribute exists)</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasNamedContent">
-        <div class="location">at         line 33</div>
-        <code>                    boolean
-    <strong>hasNamedContent</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the name attribute exists or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the name attribute exists, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasName">
-        <div class="location">at         line 42</div>
-        <code>                    boolean
-    <strong>hasName</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the name attribute has the given value or not</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the name value of the metadata</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the name attribute has the given value, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getName">
-        <div class="location">at         line 51</div>
-        <code>                    string|null
-    <strong>getName</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the name attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td>the value of the name attribute or null if the
-        attribute is not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasHttpEquivContent">
-        <div class="location">at         line 59</div>
-        <code>                    boolean
-    <strong>hasHttpEquivContent</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the http-equiv attribute exists or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the http-equiv attribute exists, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasHttpEquiv">
-        <div class="location">at         line 68</div>
-        <code>                    boolean
-    <strong>hasHttpEquiv</strong>(string $http_equiv)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the http_equiv attribute has the given value or not</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$http_equiv</td>
-                <td>the http_equiv value of the metadata</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the http_equiv attribute has the given value, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getHttpEquiv">
-        <div class="location">at         line 77</div>
-        <code>                    string|null
-    <strong>getHttpEquiv</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the http_equiv attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td>the value of the http_equiv attribute or null if the
-        attribute is not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasPropertyContent">
-        <div class="location">at         line 87</div>
-        <code>                    boolean
-    <strong>hasPropertyContent</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the property attribute exists or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the property attribute exists, otherwise false</td>
         </tr>
     </table>
 
