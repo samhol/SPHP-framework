@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Media\SizeableInterface;
+use Sphp\Html\Media\SizeableMedia;
 use Sphp\Html\Media\SizeableTrait;
-use Sphp\Html\Media\LazyMediaInterface;
+use Sphp\Html\Media\LazyMedia;
 
 /**
  * Implements an HTML &lt;video&gt; tag
@@ -19,7 +19,7 @@ use Sphp\Html\Media\LazyMediaInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Video extends AbstractMultimediaTag implements SizeableInterface, LazyMediaInterface {
+class Video extends AbstractMultimediaTag implements SizeableMedia, LazyMedia {
 
   use SizeableTrait;
 

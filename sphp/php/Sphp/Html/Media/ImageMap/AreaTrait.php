@@ -52,7 +52,7 @@ trait AreaTrait {
    * Sets the relationship between the current document and the linked document
    * 
    * @param  string $rel the value of the rel attribute
-   * @return AreaInterface for PHP Method Chaining
+   * @return Area for PHP Method Chaining
    * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
    */
   public function setRelationship($rel) {

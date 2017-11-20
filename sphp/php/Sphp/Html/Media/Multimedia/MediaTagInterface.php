@@ -24,7 +24,7 @@ interface MediaTagInterface extends TagInterface {
    * @param  MultimediaContentInterface $src a video sources
    * @return $this for a fluent interface
    */
-  public function addMediaSrc(MultimediaSourceInterface $src);
+  public function addMediaSrc(MultimediaSource $src);
 
   /**
    * Sets (replaces) one of the video sources

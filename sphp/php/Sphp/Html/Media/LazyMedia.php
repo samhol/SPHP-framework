@@ -20,7 +20,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LazyMediaInterface extends ContentInterface {
+interface LazyMedia extends ContentInterface {
 
   /**
    * Sets or unsets the media source loading as lazy
@@ -36,7 +36,7 @@ interface LazyMediaInterface extends ContentInterface {
   /**
    * Checks whether the media source loading is lazy
    * 
-   * @return boolean true for lazy loading, false otherwisev
+   * @return boolean true for lazy loading, false otherwise
    */
   public function isLazy(): bool;
 }

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 /**
- * Implements a grid 
+ * Implements a Foundation framework grid 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

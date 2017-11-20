@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Media\SizeableInterface | SPHP framework API</title>
+    <title>Sphp\Html\Media\MediaSource | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Media_SizeableInterface" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Media_MediaSource" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,20 +66,20 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Media.html">Media</a></li><li class="backslash">\</li><li>SizeableInterface</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Media.html">Media</a></li><li class="backslash">\</li><li>MediaSource</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            SizeableInterface
+            MediaSource
                 
         </h1>
     </div>
 
     <p>    interface
-    <strong>SizeableInterface</strong>        implements
+    <strong>MediaSource</strong>        implements
         <a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
 </p>
 
@@ -87,7 +87,7 @@
     
 
             <div class="description">
-            <p>Defines sizing of HTML media components</p>                                </div>
+            <p>Defines an HTML media source</p>            <p>This component represents a media source.</p>                    </div>
     
     
     
@@ -127,82 +127,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasWidth">hasWidth</a>()
-        
-                                            <p>Checks if the component has width defined</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getWidth">getWidth</a>()
-        
-                                            <p>Returns the width of the component (in pixels)</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Media\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWidth">setWidth</a>(int $width)
+                    <a href="#method_setSrc">setSrc</a>(string $src)
         
-                                            <p>Sets the width of the component (in pixels)</p>                </div>
+                                            <p>Sets the path to the media source (The URL of the file)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_unsetWidth">unsetWidth</a>()
+                    <a href="#method_getSrc">getSrc</a>()
         
-                                            <p>Unsets the width of the component</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getHeight">getHeight</a>()
-        
-                                            <p>Returns the height of the component (in pixels)</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasHeight">hasHeight</a>()
-        
-                                            <p>Checks if the component has height defined</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setHeight">setHeight</a>(int $height)
-        
-                                            <p>Sets the height of the component (in pixels)</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_unsetHeight">unsetHeight</a>()
-        
-                                            <p>Unsets the height of the component</p>                </div>
+                                            <p>Returns the path to the media source (The URL of the file)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -311,70 +251,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_hasWidth">
-        <div class="location">at         line 26</div>
-        <code>                    boolean
-    <strong>hasWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks if the component has width defined</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the width is set and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getWidth">
-        <div class="location">at         line 35</div>
-        <code>                    int
-    <strong>getWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the width of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td>width of the component</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setWidth">
-        <div class="location">at         line 43</div>
+                    <h3 id="method_setSrc">
+        <div class="location">at         line 31</div>
         <code>                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
-    <strong>setWidth</strong>(int $width)
+    <strong>setSrc</strong>(string $src)
         </code>
     </h3>
     <div class="details">
@@ -382,15 +262,15 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
+                                    <p>Sets the path to the media source (The URL of the file)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$width</td>
-                <td>the width of the component (in pixels))</td>
+                <td>string</td>
+                <td>$src</td>
+                <td>the path to the media source (The URL of the file)</td>
             </tr>
             </table>
 
@@ -411,10 +291,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_unsetWidth">
-        <div class="location">at         line 50</div>
-        <code>                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
-    <strong>unsetWidth</strong>()
+                    <h3 id="method_getSrc">
+        <div class="location">at         line 38</div>
+        <code>                    string
+    <strong>getSrc</strong>()
         </code>
     </h3>
     <div class="details">
@@ -422,145 +302,15 @@
     
 
                     <div class="method-description">
-                                    <p>Unsets the width of the component</p>                                                </div>
+                                    <p>Returns the path to the media source (The URL of the file)</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\Media\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getHeight">
-        <div class="location">at         line 59</div>
-        <code>                    int
-    <strong>getHeight</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the height of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td>height of the component or <code>false</code> if not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasHeight">
-        <div class="location">at         line 66</div>
-        <code>                    boolean
-    <strong>hasHeight</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks if the component has height defined</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the height is set and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setHeight">
-        <div class="location">at         line 74</div>
-        <code>                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
-    <strong>setHeight</strong>(int $height)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the height of the component (in pixels)</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$height</td>
-                <td>the height of the component (in pixels)</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Media\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unsetHeight">
-        <div class="location">at         line 81</div>
-        <code>                    <abbr title="Sphp\Html\Media\$this">$this</abbr>
-    <strong>unsetHeight</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Unsets the height of the component</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Media\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td>string</td>
+            <td>the path to the media source (The URL of the file)</td>
         </tr>
     </table>
 

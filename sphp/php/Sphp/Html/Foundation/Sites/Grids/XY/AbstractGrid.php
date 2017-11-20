@@ -43,11 +43,11 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
    *    method `__toString()` are allowed.
    * 2. `mixed $content` is transformed to a @link Row} component.
    *
-   * @param  mixed|RowInterface $row a row content or a row component
+   * @param  string $tagname the tag name of the component
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct(string $tagName) {
-    parent::__construct($tagName);
+  public function __construct(string $tagname) {
+    parent::__construct($tagname);
     $this->content = new Container();
     $this->layoutManager = new GridLayoutManager($this);
   }

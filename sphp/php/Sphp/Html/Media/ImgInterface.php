@@ -31,7 +31,7 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ImgInterface extends MediaSourceInterface, SizeableInterface, LazyMediaInterface {
+interface ImgInterface extends MediaSource, SizeableMedia, LazyMedia {
 
   /**
    * Sets the alt attribute (an alternate text for an image).

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Media\LazyMediaInterface;
+use Sphp\Html\Media\LazyMedia;
 use Sphp\Html\Media\LazyMediaSourceTrait;
 use Sphp\Stdlib\Networks\URL;
 
@@ -27,7 +27,7 @@ use Sphp\Stdlib\Networks\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Source extends EmptyTag implements MultimediaSourceInterface, LazyMediaInterface {
+class Source extends EmptyTag implements MultimediaSource, LazyMedia {
 
   use LazyMediaSourceTrait;
 

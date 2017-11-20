@@ -2,9 +2,8 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Manual;
+
 $htmlList = Manual\api()->classLinker(AbstractList::class);
 $ol = Manual\api()->classLinker(Ol::class);
 $ul = Manual\api()->classLinker(Ul::class);
@@ -14,7 +13,7 @@ $dlLink = Manual\api()->classLinker(Dl::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
 Manual\parseDown(<<<MD
-#HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
+#HTML LISTS: <small>unordered, ordered and definition lists</small>
 $ns	
 This namespace contains object oriented implementations of HTML lists.
 
@@ -29,7 +28,7 @@ $liInterface into a $li object.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Lists/Ul.php', null, true);
+Manual\visualize('Sphp/Html/Lists/Ul.php', null, true);
 
 Manual\parseDown(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
@@ -48,7 +47,7 @@ This indexing can be numerical or alphabetical.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', null, true);
+Manual\visualize('Sphp/Html/Lists/Ol.php', null, true);
 
 $dtLink = Manual\api()->classLinker(Dt::class);
 $ddLink = Manual\api()->classLinker(Dd::class);

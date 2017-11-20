@@ -30,7 +30,7 @@ class Label extends ContainerTag {
    * Constructs a new instance
    *
    * @param mixed $content the content of the component
-   * @param string|null $for the id of the element the label is bound to
+   * @param string|IdentifiableInput|null $for the id of the element the label is bound to
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function __construct($content = null, $for = null) {

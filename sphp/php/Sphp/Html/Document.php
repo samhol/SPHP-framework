@@ -8,12 +8,8 @@
 namespace Sphp\Html;
 
 /**
- * Document class contains basic Sphp HTML tag component creation and HTML version handing.
+ * Document class contains basic Sphp HTML tag component creation and HTML version handing
  *
- * 
- * @method Span span(mixed $content = null) creates a new span tag component
- * @method Div div(mixed $content = null) creates a new div tag component
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

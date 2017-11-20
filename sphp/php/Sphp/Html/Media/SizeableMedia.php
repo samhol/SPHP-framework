@@ -16,7 +16,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SizeableInterface extends ContentInterface {
+interface SizeableMedia extends ContentInterface {
 
   /**
    * Checks if the component has width defined
@@ -54,7 +54,7 @@ interface SizeableInterface extends ContentInterface {
    * 
    * *NOTE:* Check if the component has a width defined
    * 
-   * @return int height of the component or `false` if not set
+   * @return int height of the component
    */
   public function getHeight(): int;
 

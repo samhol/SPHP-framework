@@ -2,11 +2,10 @@
 
 namespace Sphp\Stdlib\Networks;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$urlClass = \Sphp\Manual\api()->classLinker(URL::class);
-$parse_url = Apis::phpManual()->functionLink('parse_url');
+$urlClass = Manual\api()->classLinker(URL::class);
+$parse_url = Manual\php()->functionLink('parse_url');
 
 \Sphp\Manual\parseDown(<<<MD
 ##URL manipulation with a $urlClass objects
@@ -40,4 +39,4 @@ URL string is splitted into following custozable parts in an $urlClass object:
 		
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Stdlib/Types/URL.php', 'text', false);
+Manual\visualize('Sphp/Stdlib/Types/URL.php', 'text', false);

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\LazyMediaInterface;
+use Sphp\Html\Media\LazyMedia;
 use Sphp\Html\Media\IframeInterface;
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Media\Iframe;
@@ -33,7 +33,7 @@ use BadMethodCallException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterface, LazyMediaInterface {
+class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterface, LazyMedia {
 
   /**
    *

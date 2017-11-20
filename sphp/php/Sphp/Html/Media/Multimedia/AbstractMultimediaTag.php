@@ -23,13 +23,11 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   use \Sphp\Html\TraversableTrait;
 
   /**
-   *
    * @var Container
    */
   private $sources;
 
   /**
-   *
    * @var Container
    */
   private $tracks;
@@ -37,8 +35,8 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   /**
    * Constructs a new instance
    *
-   * @param  string $tagname the name of the tag
-   * @param  HtmlAttributeManager|null $attrManager optional attribute manager to use in the component
+   * @param string $tagname the name of the tag
+   * @param HtmlAttributeManager|null $attrManager optional attribute manager to use in the component
    * @param mixed $sources optional sources
    */
   public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, $sources = null) {
@@ -68,7 +66,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
             . $this->getTagName() . "&gt; tag!</p>";
   }
 
-  public function addMediaSrc(MultimediaSourceInterface $src) {
+  public function addMediaSrc(MultimediaSource $src) {
     if ($src instanceof Source) {
       $this->sources->append($src);
     }

@@ -24,6 +24,11 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  */
 trait LazyMediaSourceTrait {
 
+  /**
+   * Returns the attribute manager attached to the component
+   * 
+   * @return HtmlAttributeManager the attribute manager
+   */
   abstract public function attrs(): HtmlAttributeManager;
 
   /**

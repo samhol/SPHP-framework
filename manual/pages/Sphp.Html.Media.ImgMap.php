@@ -2,15 +2,16 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
-$map  = \Sphp\Manual\api()->classLinker(Map::class);
-$areaInterface  = \Sphp\Manual\api()->classLinker(AreaInterface::class);
-$rectangle = \Sphp\Manual\api()->classLinker(Rectangle::class);
-$circle = \Sphp\Manual\api()->classLinker(Circle::class);
-$polygon = \Sphp\Manual\api()->classLinker(Polygon::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+use Sphp\Manual;
+
+$map = Manual\api()->classLinker(Map::class);
+$areaInterface = Manual\api()->classLinker(Area::class);
+$rectangle = Manual\api()->classLinker(Rectangle::class);
+$circle = Manual\api()->classLinker(Circle::class);
+$polygon = Manual\api()->classLinker(Polygon::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
+Manual\parseDown(<<<MD
 ##HTML Imagemap components
 $ns
         
@@ -23,4 +24,5 @@ $ns
 A $map object is a container for $areaInterface components
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Media/ImageMap.php', null, true);
+
+Manual\visualize('Sphp/Html/Media/ImageMap.php', null, true);

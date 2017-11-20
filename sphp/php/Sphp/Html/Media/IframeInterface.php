@@ -18,7 +18,7 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface IframeInterface extends LazyMediaInterface, SizeableInterface {
+interface IframeInterface extends LazyMedia, SizeableMedia {
   
 }
 

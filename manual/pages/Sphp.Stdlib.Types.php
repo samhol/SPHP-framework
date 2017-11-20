@@ -3,22 +3,23 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$boolLink = Apis::phpManual()->typeLink('boolean');
-$intLink = Apis::phpManual()->typeLink('integer');
-$floatLink = Apis::phpManual()->typeLink('float');
-$strLink = Apis::phpManual()->typeLink('string');
-$arrLink = Apis::phpManual()->typeLink('array');
-$stringsClass = \Sphp\Manual\api()->classLinker(Strings::class);
-$stringObjectClass = \Sphp\Manual\api()->classLinker(MbString::class);
-$nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+$boolLink = Manual\php()->typeLink('boolean');
+$intLink = Manual\php()->typeLink('integer');
+$floatLink = Manual\php()->typeLink('float');
+$strLink = Manual\php()->typeLink('string');
+$arrLink = Manual\php()->typeLink('array');
+$stringsClass = Manual\api()->classLinker(Strings::class);
+$stringObjectClass = Manual\api()->classLinker(MbString::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+Manual\parseDown(<<<MD
 #STANDARD LIBRARY <small>extensions for PHP core functionality</small>
-$nsbc
+$ns
 
 ##PHP Unicode/multibyte $strLink manipulation
-
+        
+<div class="callout alert" markdown="1">
 ####Unicode Support in PHP
 
 <blockquote class="text-justify" cite="http://www.sitepoint.com/bringing-unicode-to-php-with-portable-utf8/">
@@ -30,7 +31,7 @@ Unicode (and many other character sets) may require more than one byte to repres
 a character. This limitation of PHP affects almost all aspects of string manipulation,
 including (but not limited to) substring extraction, determining string lengths, 
 string splitting, shuffling etc.<cite>www.sitepoint.com</cite></blockquote>
-		
+</div>
 The $stringsClass and the $stringObjectClass classes
 support `UTF-8` multibyte character encoding scheme. The difference between them 
 is that the $stringObjectClass is an object oriented representation of a string 
@@ -47,6 +48,5 @@ MD
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.StringObject');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.Strings');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.Arrays');
-//\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Datetime');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.BitMask');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.URL');

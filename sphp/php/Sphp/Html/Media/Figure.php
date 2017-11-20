@@ -8,7 +8,6 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an HTML &lt;figure&gt; tag
@@ -21,13 +20,11 @@ use Sphp\Stdlib\Networks\URL;
 class Figure extends AbstractComponent implements ImgInterface {
 
   /**
-   *
    * @var Img 
    */
   private $img;
 
   /**
-   *
    * @var FigCaption
    */
   private $caption;
@@ -35,7 +32,7 @@ class Figure extends AbstractComponent implements ImgInterface {
   /**
    * Constructs a new instance
    *
-   * @param  string|URL|Img $img the image path or the image component
+   * @param  string|Img $img the image path or the image component
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
   public function __construct($img = null, $caption = null) {

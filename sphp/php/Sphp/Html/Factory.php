@@ -9,34 +9,30 @@ namespace Sphp\Html;
 
 use Sphp\Exceptions\BadMethodCallException;
 use ReflectionClass;
-use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Media\ImageMap\Rectangle;
-use Sphp\Html\Media\ImageMap\Circle;
-use Sphp\Html\Media\ImageMap\Polygon;
-use Sphp\Html\Headings\H1;
-use Sphp\Html\Headings\H2;
-use Sphp\Html\Headings\H3;
-use Sphp\Html\Headings\H4;
-use Sphp\Html\Headings\H5;
-use Sphp\Html\Headings\H6;
 
 /**
- * Document class contains basic Sphp HTML tag component creation and HTML version handing.
+ * Document class contains basic HTML tag component creation and HTML version handing
  *
+ * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
+ * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
+ * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new `a` tag component
  * 
- * @method Span span(mixed $content = null) creates a new span tag component
- * @method Div div(mixed $content = null) creates a new div tag component
- * @method Hyperlink a(mixed $content = null) creates a new div tag component
- * @method Rectangle rectangle(mixed $content = null) creates a new div tag component
- * @method Polygon polygon(mixed $content = null) creates a new div tag component
- * @method ContainerTag article(mixed $content = null) creates a new div tag component
+ * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new rectangle `area` tag component
+ * @method \Sphp\Html\Media\ImageMap\Polygon polygon(mixed $content = null) creates a new polygon `area` tag component
+ * @method \Sphp\Html\Media\ImageMap\Circle circle(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) creates a new circle `area` tag component
  * 
- * @method H1 h1(mixed $content = null) creates a new `h1` tag component
- * @method H2 h2(mixed $content = null) creates a new `h2` tag component
- * @method H3 h3(mixed $content = null) creates a new `h3` tag component
- * @method H4 h4(mixed $content = null) creates a new `h4` tag component
- * @method H5 h5(mixed $content = null) creates a new `h5` tag component
- * @method H6 h6(mixed $content = null) creates a new `h6` tag component
+ * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a `form` tag component
+ * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a `label` tag component
+ * 
+ * @method \Sphp\Html\Headings\H1 h1(mixed $content = null) creates a new `h1` tag component
+ * @method \Sphp\Html\Headings\H2 h2(mixed $content = null) creates a new `h2` tag component
+ * @method \Sphp\Html\Headings\H3 h3(mixed $content = null) creates a new `h3` tag component
+ * @method \Sphp\Html\Headings\H4 h4(mixed $content = null) creates a new `h4` tag component
+ * @method \Sphp\Html\Headings\H5 h5(mixed $content = null) creates a new `h5` tag component
+ * @method \Sphp\Html\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
+ * 
+ * 
+ * @method Sphp\Html\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -50,12 +46,7 @@ abstract class Factory {
    * @var string[]
    */
   private static $tags = array(
-      'a' => Hyperlink::class,
-      'abbr' => ContainerTag::class,
-      'address' => ContainerTag::class,
-      'rectangle' => Rectangle::class,
-      'polygon' => Polygon::class,
-      'circle' => Circle::class,
+      'a' => Navigation\Hyperlink::class,
       'aside' => Sections\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,
@@ -134,6 +125,9 @@ abstract class Factory {
       'iframe' => Media\Iframe::class,
       'img' => Media\Img::class,
       'map' => Media\ImageMap\Map::class,
+      'rectangle' => Media\ImageMap\Rectangle::class,
+      'polygon' => Media\ImageMap\Polygon::class,
+      'circle' => Media\ImageMap\Circle::class,
       'figcaption' => Media\FigCaption::class,
       'embed' => Media\Multimedia\Embed::class,
       'audio' => Media\Multimedia\Audio::class,
@@ -141,11 +135,6 @@ abstract class Factory {
       'track' => Media\Multimedia\Track::class,
       'video' => Media\Multimedia\Video::class,
       'span' => Span::class,
-      'strong' => ContainerTag::class,
-      'style' => ContainerTag::class,
-      'sub' => ContainerTag::class,
-      'summary' => ContainerTag::class,
-      'sup' => ContainerTag::class,
       'table' => Tables\Table::class,
       'tbody' => Tables\Tbody::class,
       'td' => Tables\Td::class,
@@ -175,6 +164,13 @@ abstract class Factory {
       'article' => ContainerTag::class,
       'b' => ContainerTag::class,
       'small' => ContainerTag::class,
+      'abbr' => ContainerTag::class,
+      'address' => ContainerTag::class,
+      'strong' => ContainerTag::class,
+      'style' => ContainerTag::class,
+      'sub' => ContainerTag::class,
+      'summary' => ContainerTag::class,
+      'sup' => ContainerTag::class,
       'wbr' => EmptyTag::class,
   );
 

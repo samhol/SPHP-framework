@@ -17,7 +17,7 @@ use Sphp\Html\Navigation\HyperlinkTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractArea extends EmptyTag implements AreaInterface {
+abstract class AbstractArea extends EmptyTag implements Area {
 
   use HyperlinkTrait;
 
@@ -71,7 +71,7 @@ abstract class AbstractArea extends EmptyTag implements AreaInterface {
    * Sets the relationship between the current document and the linked document
    * 
    * @param  string $rel the value of the rel attribute
-   * @return AreaInterface for PHP Method Chaining
+   * @return Area for PHP Method Chaining
    * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
    */
   public function setRelationship($rel) {

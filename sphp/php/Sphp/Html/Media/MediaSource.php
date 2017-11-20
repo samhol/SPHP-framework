@@ -20,7 +20,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MediaSourceInterface extends ContentInterface {
+interface MediaSource extends ContentInterface {
 
   /**
    * Sets the path to the media source (The URL of the file)

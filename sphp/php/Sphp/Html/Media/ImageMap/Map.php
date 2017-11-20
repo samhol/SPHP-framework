@@ -28,7 +28,7 @@ class Map extends AbstractContainerComponent {
    * Constructs a new instance
    *
    * @param  string $name the value of the name attribute
-   * @param  null|AreaInterface|AreaInterface[] $areas the value of the name attribute
+   * @param  null|Area|Area[] $areas the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
   public function __construct(string $name = null, $areas = null) {
@@ -71,10 +71,10 @@ class Map extends AbstractContainerComponent {
   /**
    * Sets (replaces) one of the video sources
    *
-   * @param  AreaInterface $area the given part of a table
+   * @param  Area $area the given part of a table
    * @return $this for a fluent interface
    */
-  public function append(AreaInterface $area) {
+  public function append(Area $area) {
     $this->getInnerContainer()->append($area);
     return $this;
   }

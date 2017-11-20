@@ -32,7 +32,6 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
   use TraversableFormTrait;
 
   /**
-   *
    * @var Callout
    */
   private $errorLabel;
