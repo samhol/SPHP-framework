@@ -7,6 +7,8 @@
 
 namespace Sphp\Html;
 
+use Sphp\Html\Head\Head;
+
 /**
  * Document class contains basic Sphp HTML tag component creation and HTML version handing
  *
@@ -15,61 +17,6 @@ namespace Sphp\Html;
  * @filesource
  */
 class Document {
-
-  /**
-   * XHTML 1.0 version
-   */
-  const XHTML_1_0 = 'XHTML 1.0';
-
-  /**
-   * XHTML 1.1 version
-   */
-  const XHTML_1_1 = 'XHTML 1.1';
-
-  /**
-   * HTML5 version
-   */
-  const HTML5 = 'HTML5';
-
-  /**
-   * XHTML5 version
-   */
-  const XHTML5 = 'XHTML5';
-
-  /**
-   * current HTML version used
-   *
-   * @var string
-   */
-  private static $htmlVersion = self::HTML5;
-
-  /**
-   * Sets HTML version used in the application
-   *
-   * @param string $version
-   */
-  public static function setHtmlVersion($version) {
-    self::$htmlVersion = $version;
-  }
-
-  /**
-   * Returns the HTML version used in the application
-   *
-   * @return string HTML version used in the application
-   */
-  public static function getHtmlVersion() {
-    return self::$htmlVersion;
-  }
-
-  /**
-   * Checks if the current HTML version is a subtype of XHTML
-   *
-   * @return boolean true if the current HTML version used is a subtype of
-   *         XHTML and false otherwise
-   */
-  public static function isXHTML() {
-    return self::$htmlVersion == self::XHTML5 || self::$htmlVersion == self::XHTML_1_0 || self::$htmlVersion == self::XHTML_1_1;
-  }
 
   /**
    * the HTML component
@@ -81,14 +28,56 @@ class Document {
   /**
    * Returns the HTML component pointed by the given name
    * 
-   * @param  string $docName the name of the managed document
-   * @return Html the HTML component pointed by the given name
+   * @param  string|null $docName the name of the managed document
+   * @return Html the `html` component pointed by the given name
    */
-  public static function html($docName = 0): Html {
-    if (!array_key_exists($docName, self::$html)) {
-      self::$html[$docName] = new Html();
+  public static function create(string $docName = null, Html $template = null): Html {
+    if (!isset(static::$html[$docName])) {
+      if ($template === null) {
+        $template = new Html();
+      }
+      static::$html[$docName] = $template;
+    }
+    return static::$html[$docName];
+  }
+
+  /**
+   * Returns the root `html` component pointed by the given name
+   * 
+   * @param  string $docName the name of the managed document
+   * @return Html the `html` component pointed by the given name
+   */
+  public static function html(string $docName = null): Html {
+    if (!isset(static::$html[$docName])) {
+      static::create($docName);
     }
     return self::$html[$docName];
+  }
+
+  /**
+   * Returns the HTML `body` component pointed by the given name
+   * 
+   * @param  string $docName the name of the managed document
+   * @return Body the `body` component pointed by the given name
+   */
+  public static function body(string $docName = null): Body {
+    if (!isset(static::$html[$docName])) {
+      throw new InvalidArgumentException("Document $docName is not stored");
+    }
+    return static::html($docName)->body();
+  }
+
+  /**
+   * Returns the HTML `head` component pointed by the given name
+   * 
+   * @param  string $docName the name of the managed document
+   * @return Head the `head` component pointed by the given name
+   */
+  public static function head(string $docName = null): Head {
+    if (!isset(static::$html[$docName])) {
+      throw new InvalidArgumentException("Document $docName is not stored");
+    }
+    return static::html($docName)->head();
   }
 
 }

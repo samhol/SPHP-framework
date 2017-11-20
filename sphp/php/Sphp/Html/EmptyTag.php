@@ -23,11 +23,7 @@ class EmptyTag extends AbstractTag {
     if ($this->attrs()->containsInstances()) {
       $output .= ' ' . $this->attrs();
     }
-    if (Document::isXHTML()) {
-      $output .= ' />';
-    } else {
-      $output .= '>';
-    }
+    $output .= '>';
     return $output;
   }
 

@@ -6,8 +6,6 @@ require_once 'loaders.php';
 
 use Sphp\Stdlib\Path;
 
-Document::setHtmlVersion(Document::HTML5);
-
 $html = Document::html();
 
 $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
@@ -21,7 +19,7 @@ Document::html()->setLanguage('en')->setDocumentTitle($title);
 use Sphp\Html\Head\Meta;
 
 $html->enableSPHP();
-$html->head()
+Document::head()
         ->useFontAwesome()
         //->useFoundationIcons()
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
@@ -50,7 +48,7 @@ $html->head()
                     'demos',
                     'tips']))
         ->addMeta(Meta::description('SPHP framework for web developement'));
-Document::html()->body()->addCssClass('manual');
+Document::body()->addCssClass('manual');
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 Document::html()->startBody();
 
