@@ -22,7 +22,8 @@ Manual\parseDown(<<<MD
         
 $ns
         
-This namespace contains an implementation of the HTML head. This element is a container for metadata (data about data)t.
+This namespace contains an implementation of the HTML head. This element is a 
+container for metadata (data about data)t.
 The $head component implements the HTML head tag and acts as a 
 container for all meta data components (data about data) $metaIfLnk.
 This meta data is data about the HTML document and it is not directly displayed in any browsers.

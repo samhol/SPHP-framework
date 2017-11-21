@@ -1,7 +1,7 @@
 <?php
 
 /**
- * W3schoolsLinker.php (UTF-8)
+ * W3schools.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
