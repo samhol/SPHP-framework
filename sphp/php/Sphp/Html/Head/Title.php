@@ -8,7 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\SimpleContainerTag;
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 
 /**
  * Implements an HTML &lt;title&gt; tag
@@ -18,7 +18,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Title extends SimpleContainerTag implements HeadContent, NonVisualContentInterface {
+class Title extends SimpleContainerTag implements HeadContent, NonVisualContent {
 
   /**
    * Constructs a new instance

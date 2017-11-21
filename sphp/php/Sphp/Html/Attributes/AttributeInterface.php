@@ -75,7 +75,7 @@ interface AttributeInterface {
    * * Returns always `boolean false` if attribute is not present.
    * * return `null` or an empty string for empty attributes.
    * 
-   * @return scalar the value of the attribute
+   * @return bool|int|float|string the value of the attribute
    */
   public function getValue();
 

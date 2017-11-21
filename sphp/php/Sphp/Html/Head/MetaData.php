@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 
 /**
  * Implements an HTML &lt;meta&gt; tag
@@ -22,7 +22,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MetaData extends HeadContent, NonVisualContentInterface {
+interface MetaData extends HeadContent, NonVisualContent {
 
   /**
    * Checks whether the name attribute exists or not

@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Container;
 use Sphp\Html\Programming\ScriptsContainer;
-use Sphp\Html\Programming\ScriptInterface;
+use Sphp\Html\Programming\Script;
 
 /**
  * Implements an HTML &lt;head&gt; tag
@@ -23,7 +23,7 @@ use Sphp\Html\Programming\ScriptInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Head extends AbstractComponent implements NonVisualContentInterface {
+class Head extends AbstractComponent implements NonVisualContent {
 
   /**
    * @var Title 

@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\WrappingContainer;
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 
 /**
  * Implements a row
@@ -51,7 +51,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
    */
   public function __construct($tagname, RowLayoutManager $layoutManager = null) {
     $wrapToCol = function($c) {
-      if ($c instanceof NonVisualContentInterface || $c instanceof ColumnInterface) {
+      if ($c instanceof NonVisualContent || $c instanceof ColumnInterface) {
         return $c;
       } else {
         return new Column($c);

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 
 /**
  * Implements an HTML &lt;base&gt; tag
@@ -21,7 +21,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @filesource
  */
-class Base extends EmptyTag implements HeadContent, NonVisualContentInterface {
+class Base extends EmptyTag implements HeadContent, NonVisualContent {
 
   /**
    * Constructs a new instance

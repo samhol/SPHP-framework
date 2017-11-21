@@ -22,7 +22,7 @@ use Sphp\Html\AbstractTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScriptSrc extends AbstractTag implements ScriptInterface {
+class ScriptSrc extends AbstractTag implements Script {
 
   /**
    * Constructs a new instance
@@ -31,7 +31,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * 
    * This component points to an external script file through the src attribute.
    * 
-   * @param  string $src the url of the script file
+   * @param  string $src the URL of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
@@ -65,7 +65,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function setAsync(bool $async = true) {
-    return $this->setAttr('async', (bool) $async);
+    return $this->setAttr('async', $async);
   }
 
   /**

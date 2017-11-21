@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 use Sphp\Html\Foundation\Sites\Grids\XY\Row;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 use Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface;
 
 /**
@@ -40,7 +40,7 @@ class FormRow extends Row {
    * @return $this for a fluent interface
    */
   public function appendInput(InputInterface $input, array $layout = ['small-12']) {
-    if ($input instanceof NonVisualContentInterface) {
+    if ($input instanceof NonVisualContent) {
       $this->append($input);
     } else if ($input instanceof ColumnInterface) {
       $input->layout()->setLayouts($layout);

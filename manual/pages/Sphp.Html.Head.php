@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\Programming\ScriptInterface;
+use Sphp\Html\Programming\Script;
 use Sphp\Manual;
 
 $headNS = Manual\api()->namespaceLink(__NAMESPACE__);
@@ -14,7 +14,7 @@ $metaContainer = Manual\api()->classLinker(MetaContainer::class);
 $meta = Manual\api()->classLinker(Meta::class);
 $base = Manual\api()->classLinker(Base::class);
 $link = Manual\api()->classLinker(Link::class);
-$scriptInterface = Manual\api()->classLinker(ScriptInterface::class);
+$scriptInterface = Manual\api()->classLinker(Script::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\parseDown(<<<MD
@@ -40,26 +40,9 @@ MD
 );
 
 Manual\visualize('Sphp/Html/Head/Head1.php', 'html5', false);
-Manual\parseDown(<<<MD
-##META DATA OBJECTS: <small>$meta object implementing $metaInterface</small>{#MetaInterface}
 
-$meta class works also as a object factory for $metaInterface objects implementing different meta data properties.
-All $metaInterface types can be stored into a $metaContainer container.
-MD
-);
-Manual\visualize('Sphp/Html/Head/MetaInterface.php', 'html5', false);
-Manual\parseDown(<<<MD
-##The $head component and client side scripts
-        
-The best practice of placing client side scripts is the end of the page, just inside the closing body tag. 
-This guarantees that all of the DOM elements needed are already present on the page. 
-Loading scripts earlier could introduce timing issues and unnesessary usage of 
-`window.onload` or some other method to determine when the DOM is ready to be used. 
-By including scripts at the bottom of the page, it is assured that the DOM is ready 
-to be poked and it is not reguired to delay initialization any further.
-MD
-);
-Manual\visualize('Sphp/Html/Head/Head2.php', 'html5', false);
+Manual\loadPage('Sphp.Html.Head.MetaData');
+Manual\loadPage('Sphp.Html.Head.Scripts');
 
 Manual\parseDown(<<<MD
 ##External resources

@@ -498,5 +498,15 @@ class AttributeManager implements Countable, Iterator {
   public function valid(): bool {
     return false !== current($this->attrs);
   }
+  
+  public function toArray():array {
+    $arr = [];
+    foreach ($this as $name => $attr) {
+      if ($attr->isVisible()) {
+        $arr[$name] = $attr->getValue();
+      }
+    }
+    return $arr;
+  }
 
 }

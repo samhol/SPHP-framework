@@ -5,7 +5,7 @@ namespace Sphp\Html\Programming;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$scriptInterface = \Sphp\Manual\api()->classLinker(ScriptInterface::class);
+$scriptInterface = \Sphp\Manual\api()->classLinker(Script::class);
 $scriptCode = \Sphp\Manual\api()->classLinker(ScriptCode::class);
 $scriptFile = \Sphp\Manual\api()->classLinker(ScriptSrc::class);
 $scriptsContainer = \Sphp\Manual\api()->classLinker(ScriptsContainer::class);

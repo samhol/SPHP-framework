@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 
 /**
  * Implements an HTML &lt;input type="hidden"&gt; tag
@@ -16,7 +16,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HiddenInput extends AbstractInputTag implements NonVisualContentInterface {
+class HiddenInput extends AbstractInputTag implements NonVisualContent {
 
   /**
    * Constructs a new instance

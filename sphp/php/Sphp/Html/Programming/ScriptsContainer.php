@@ -34,7 +34,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
   /**
    * Constructs a new instance
    * 
-   * @param ScriptInterface|ScriptInterface[] $scripts script components
+   * @param Script|Script[] $scripts script components
    */
   public function __construct($scripts = null) {
     $this->container = new Container();
@@ -46,12 +46,12 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
   }
 
   /**
-   * appends a {@link ScriptInterface} component to the container
+   * appends a script component to the container
    * 
-   * @param  ScriptInterface $script
+   * @param  Script $script
    * @return $this for a fluent interface
    */
-  public function append(ScriptInterface $script) {
+  public function append(Script $script) {
     if ($script instanceof ScriptSrc) {
       $this->container->offsetSet($script->getSrc(), $script);
     } else {

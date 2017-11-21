@@ -17,6 +17,6 @@ namespace Sphp\Html;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface NonVisualContentInterface extends ContentInterface {
+interface NonVisualContent extends ContentInterface {
 
 }

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 use Sphp\Html\EmptyTag;
 use Sphp\Stdlib\Strings;
 
@@ -23,7 +23,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Link extends EmptyTag implements HeadContent, NonVisualContentInterface {
+class Link extends EmptyTag implements HeadContent, NonVisualContent {
 
   /**
    * Constructs a new instance

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ScriptInterface.php (UTF-8)
+ * Script.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,13 +11,13 @@ use Sphp\Html\ComponentInterface;
 use Sphp\Html\Head\HeadContent;
 
 /**
- * Defines script tags
+ * Defines an HTML script tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ScriptInterface extends ComponentInterface, HeadContent {
+interface Script extends ComponentInterface, HeadContent {
 
   /**
    * Sets the value of the type attribute

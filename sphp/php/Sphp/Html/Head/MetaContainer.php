@@ -8,10 +8,11 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\ContentInterface;
-use IteratorAggregate;
+use Iterator;
+use Sphp\Stdlib\Arrays;
 use Sphp\Html\Container;
 use Sphp\Html\TraversableInterface;
-use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\NonVisualContent;
 
 /**
  * Class is a container for a {@link MetaInterface} component group
@@ -26,7 +27,7 @@ use Sphp\Html\NonVisualContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MetaContainer implements ContentInterface, IteratorAggregate, TraversableInterface, NonVisualContentInterface {
+class MetaContainer implements ContentInterface, Iterator, TraversableInterface, NonVisualContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;
@@ -34,16 +35,9 @@ class MetaContainer implements ContentInterface, IteratorAggregate, TraversableI
   /**
    * the inner container for the {@link MetaInterface} components
    *
-   * @var Container
+   * @var MetaData[]
    */
-  private $metaTags;
-
-  /**
-   * Constructs a new instance
-   */
-  public function __construct() {
-    $this->metaTags = new Container();
-  }
+  private $metaTags = [];
 
   /**
    * Destroys the instance
@@ -63,7 +57,7 @@ class MetaContainer implements ContentInterface, IteratorAggregate, TraversableI
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->metaTags = clone $this->metaTags;
+    $this->metaTags = Arrays::copy($this->metaTags);
   }
 
   /**
@@ -73,31 +67,69 @@ class MetaContainer implements ContentInterface, IteratorAggregate, TraversableI
    * @return $this for a fluent interface
    */
   public function addMeta(MetaData $content) {
-    $key = [];
     if ($content->attrExists('charset')) {
-      $key[] = 'charset';
-    } if ($content->hasNamedContent()) {
-      $key[] = "name-" . $content->getName();
-    } if ($content->hasHttpEquivContent()) {
-      $key[] = "http-equiv-" . $content->getHttpEquiv();
-    } if ($content->hasPropertyContent()) {
-      $key[] = "property-" . $content->getProperty();
+      $this->metaTags['charset'] = $content;
+    } else if ($content->hasNamedContent()) {
+      $this->metaTags['name'][$content->getName()] = $content;
+    } else if ($content->hasHttpEquivContent()) {
+      $this->metaTags['http-equiv'][$content->getHttpEquiv()] = $content;
+    } else if ($content->hasPropertyContent()) {
+      $this->metaTags['property'][$content->getProperty()] = $content;
     }
-    $k = implode("-", $key);
-    $this->metaTags[$k] = $content;
     return $this;
   }
 
   public function getHtml(): string {
-    return $this->metaTags->getHtml();
-  }
-
-  public function getIterator() {
-    return $this->metaTags->getIterator();
+    return implode('', Arrays::flatten($this->metaTags));
   }
 
   public function count(): int {
     $this->metaTags->count();
   }
 
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->metaTags);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   * 
+   * @return void
+   */
+  public function next() {
+    next($this->metaTags);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->metaTags);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   * 
+   * @return void
+   */
+  public function rewind() {
+    reset($this->metaTags);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->metaTags);
+  }
 }
