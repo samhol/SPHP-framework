@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 require_once('manual/settings.php');
 ob_implicit_flush(true);
 require_once('manual/templates/blocks/head.php');
-
+/*
 $cache = new \Zend\Cache\Storage\Adapter\Filesystem();
 
 $cache->setOptions([
@@ -22,7 +22,7 @@ $plugin = new \Zend\Cache\Storage\Plugin\ExceptionHandler(array(
 $cache->addPlugin($plugin);
 $outputCache = PatternFactory::factory('output', [
             'storage' => $cache
-        ]);
+        ]);*/
 ?>
 <div class="off-canvas-wrapper">
   <div class="off-canvas-absolute position-left" id="bodyOffCanvas" data-off-canvas>
@@ -33,7 +33,7 @@ $outputCache = PatternFactory::factory('output', [
   </div>
   <div class="off-canvas-content" data-off-canvas-content>
     <?php
-    if ($outputCache->start('topbar1212') === false) {
+    if ($outputCache->start('topbar') === false) {
       include('manual/templates/logo-area.php');
       include('manual/templates/menus/topBar.php');
       $outputCache->end();

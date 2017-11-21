@@ -59,7 +59,28 @@ class ExceptionLogger implements ExceptionListener {
   }
 
   public function onException(Throwable $e) {
-    error_log($e->getMessage(), 3, $this->getDestination());
+    error_log($this->parseThrowable($e), 3, $this->getDestination());
+  }
+
+  /**
+   * parses the throwable to a gog message
+   * 
+   * @param  Throwable $t the throwable to mail
+   * @return string log message as a string
+   */
+  protected function parseThrowable(Throwable $t): string {
+    $output = "\nDate: " . date(\DATE_RFC2822) . " " . get_class($t) . " was thrown\n";
+    $output .= "With message: " . $t->getMessage() . ", (code " . $t->getCode() . ")\n";
+    $output .= "----------------------\n";
+    $output .= "on line " . $t->getLine() . " of file '" . $t->getFile() . "'\n";
+    $output .= "----------------------\n";
+    $output .= "Trace:\n" . $t->getTraceAsString() . "\n";
+    if ($t->getPrevious() !== null) {
+      $output .= "----------------------\n";
+      $output .= "Previous exception:\n" . $this->parseThrowable($t->getPrevious()) . "\n";
+    }
+    $output .= "----------------------\n\n";
+    return $output;
   }
 
 }

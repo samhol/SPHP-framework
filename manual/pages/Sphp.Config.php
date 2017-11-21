@@ -11,7 +11,7 @@ Manual\parseDown(<<<MD
 #APPLICATION CONFIGURATION
 $ns
   
-##$config <small>a genereal configuration manager</small>{#Config_Config}
+##$config <small>a genereal configuration manager</small>
 
 A $config object can be used to store any type of PHP variables. An application 
 can have multiple named singleton configuration objects. These objects are 

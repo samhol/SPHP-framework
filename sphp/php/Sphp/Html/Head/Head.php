@@ -237,7 +237,7 @@ class Head extends AbstractComponent implements NonVisualContent {
       $this->links->append($component);
     } else if ($component instanceof Meta) {
       $this->addMeta($component);
-    } else if ($component instanceof ScriptInterface) {
+    } else if ($component instanceof Script) {
       $this->scripts()->append($component);
     } else {
       $this->content()->append($component);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MetaTagContainer.php (UTF-8)
+ * MetaContainer.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,15 +10,14 @@ namespace Sphp\Html\Head;
 use Sphp\Html\ContentInterface;
 use Iterator;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Container;
 use Sphp\Html\TraversableInterface;
 use Sphp\Html\NonVisualContent;
 
 /**
- * Class is a container for a {@link MetaInterface} component group
+ * Container for metadata components
  *
- *  The &lt;meta&gt; tag provides metadata about the HTML document. Metadata will not be displayed on the page,
- *  but will be machine parsable. Meta elements are typically used to specify page description, keywords, author
+ *  The &lt;meta&gt; tag provides meta data about the HTML document. Metadata will not be displayed on the page,
+ *  but will be machine parable. Meta elements are typically used to specify page description, keywords, author
  *  of the document, last modified, and other metadata. The metadata can be used by browsers (how to display
  *  content or reload page), search engines (keywords), or other web services.
  *
@@ -37,7 +36,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    *
    * @var MetaData[]
    */
-  private $metaTags = [];
+  private $metaData = [];
 
   /**
    * Destroys the instance
@@ -46,7 +45,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->metaTags);
+    unset($this->metaData);
   }
 
   /**
@@ -57,7 +56,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->metaTags = Arrays::copy($this->metaTags);
+    $this->metaData = Arrays::copy($this->metaData);
   }
 
   /**
@@ -68,25 +67,24 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    */
   public function addMeta(MetaData $content) {
     if ($content->attrExists('charset')) {
-      $this->metaTags['charset'] = $content;
+      $this->metaData['charset'] = $content;
     } else if ($content->hasNamedContent()) {
-      $this->metaTags['name'][$content->getName()] = $content;
+      $this->metaData['name'][$content->getName()] = $content;
     } else if ($content->hasHttpEquivContent()) {
-      $this->metaTags['http-equiv'][$content->getHttpEquiv()] = $content;
+      $this->metaData['http-equiv'][$content->getHttpEquiv()] = $content;
     } else if ($content->hasPropertyContent()) {
-      $this->metaTags['property'][$content->getProperty()] = $content;
+      $this->metaData['property'][$content->getProperty()] = $content;
     }
     return $this;
   }
 
   public function getHtml(): string {
-    return implode('', Arrays::flatten($this->metaTags));
+    return implode('', Arrays::flatten($this->metaData));
   }
 
   public function count(): int {
-    $this->metaTags->count();
+    $this->metaData->count();
   }
-
 
   /**
    * Returns the current element
@@ -94,7 +92,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * @return mixed the current element
    */
   public function current() {
-    return current($this->metaTags);
+    return current($this->metaData);
   }
 
   /**
@@ -103,7 +101,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * @return void
    */
   public function next() {
-    next($this->metaTags);
+    next($this->metaData);
   }
 
   /**
@@ -112,7 +110,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * @return mixed the key of the current element
    */
   public function key() {
-    return key($this->metaTags);
+    return key($this->metaData);
   }
 
   /**
@@ -121,7 +119,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * @return void
    */
   public function rewind() {
-    reset($this->metaTags);
+    reset($this->metaData);
   }
 
   /**
@@ -130,6 +128,7 @@ class MetaContainer implements ContentInterface, Iterator, TraversableInterface,
    * @return boolean current iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->metaTags);
+    return false !== current($this->metaData);
   }
+
 }

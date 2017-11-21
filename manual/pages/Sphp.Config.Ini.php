@@ -2,7 +2,6 @@
 
 namespace Sphp\Config;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Manual;
 
 $ini = Manual\api()->classLinker(Ini::class);
@@ -20,7 +19,7 @@ a list of all available options in the $iniList.
 MD
 );
 
-CodeExampleBuilder::build('Sphp/Config/Ini.php', 'text', false)
+Manual\example('Sphp/Config/Ini.php', 'text', false)
         ->setExamplePaneTitle('Runtime PHP INI manipulation example')
         ->printHtml();
 

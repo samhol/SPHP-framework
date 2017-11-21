@@ -10,7 +10,8 @@ use ParsedownExtraPlugin;
 
 /**
  * 
- * @param string $content
+ * @param  string $content
+ * @return void
  */
 function parseDown(string $content) {
   echo ParsedownExtraPlugin::instance()->text($content);
@@ -20,6 +21,7 @@ function parseDown(string $content) {
  * 
  * @param  string $page
  * @throws InvalidArgumentException
+ * @return void
  */
 function loadPage(string $page) {
   try {
@@ -91,7 +93,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
  * @param  string $path the file path of the presented example PHP code
  * @param  string|boolean $highlightOutput the language name of the output code 
  *         or false if highlighted output code should not be visible
- * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+ * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
  * @return CodeExampleBuilder
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
  */
@@ -105,7 +107,7 @@ function example(string $path, string $highlightOutput = null, bool $outputAsHtm
  * @param  string $path the file path of the presented example PHP code
  * @param  string|boolean $highlightOutput the language name of the output code 
  *         or false if highlighted output code should not be visible
- * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+ * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
  */
 function visualize(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {

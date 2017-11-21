@@ -140,7 +140,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @return string the relationship between the current document and the linked one
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
-  public function getRel() {
+  public function getRel(): string {
     return $this->attrs()->getValue('rel');
   }
 
@@ -218,12 +218,12 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $media the relationship between the current document and the linked one
    * @param  string $media what media/device the target resource is optimized for
-   * @return self new object
+   * @return Link new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public static function cssSrc(string $href, string $media = 'screen') {
-    return (new Link($href, 'stylesheet', $media))->setType('text/css');
+  public static function cssSrc(string $href, string $media = 'screen'): Link {
+    return (new static($href, 'stylesheet', $media))->setType('text/css');
   }
 
   /**
@@ -231,12 +231,12 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $type the MIME type of the linked document
-   * @return self new object
+   * @return Link new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public static function shortcutIcon(string $href, string $type = 'image/x-icon') {
+  public static function shortcutIcon(string $href, string $type = 'image/x-icon'): Link {
     $link = new static($href, 'icon', 'screen');
     $link->setType($type);
     return $link;

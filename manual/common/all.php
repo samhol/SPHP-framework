@@ -1,7 +1,8 @@
 <?php
 
-require_once 'manual/common/error_handling.php';
-require_once 'manual/common/manual_helper_functions.php';
-require_once 'manual/common/loaders.php';
+require_once 'error_handling.php';
+require_once 'manual_helper_functions.php';
+require_once 'loaders.php';
 require_once 'config.php';
 require_once 'menus.php';
+require_once 'cache.php';

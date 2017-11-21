@@ -8,7 +8,6 @@ $ed = new ErrorDispatcher();
 $ed->addErrorListener(\E_ALL, new CalloutBuilder(true, true), 1);
 $ed->startErrorHandling();
 
-$ed->addExceptionListener(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
+$ed->addExceptionListener(new ExceptionLogger('logs/exceptions.log'));
 $ed->addExceptionListener((new ExceptionPrinter())->showTrace());
 $ed->startExceptionHandling();
-
