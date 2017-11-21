@@ -4,25 +4,13 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 require_once('manual/settings.php');
 ob_implicit_flush(true);
-require_once('manual/templates/blocks/head.php');
-/*
-$cache = new \Zend\Cache\Storage\Adapter\Filesystem();
+$redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
-$cache->setOptions([
-    'ttl' => 1,
-    'cache_dir' => 'cache',
-    'dir_permission' => 0755,
-    'file_permission' => 0666]);
-
-use Zend\Cache\PatternFactory;
-
-$plugin = new \Zend\Cache\Storage\Plugin\ExceptionHandler(array(
-    'throw_exceptions' => false,
-        ));
-$cache->addPlugin($plugin);
-$outputCache = PatternFactory::factory('output', [
-            'storage' => $cache
-        ]);*/
+$cacheSuffix = str_replace(['.', '/'], ['-', ''], $redirect);
+if ($outputCache->start("$cacheSuffix-head") === false) {
+  require_once('manual/templates/blocks/head.php');
+  $outputCache->end();
+}
 ?>
 <div class="off-canvas-wrapper">
   <div class="off-canvas-absolute position-left" id="bodyOffCanvas" data-off-canvas>
@@ -33,7 +21,7 @@ $outputCache = PatternFactory::factory('output', [
   </div>
   <div class="off-canvas-content" data-off-canvas-content>
     <?php
-    if ($outputCache->start('topbar') === false) {
+    if ($outputCache->start("$cacheSuffix-topbar") === false) {
       include('manual/templates/logo-area.php');
       include('manual/templates/menus/topBar.php');
       $outputCache->end();
@@ -51,11 +39,7 @@ $outputCache = PatternFactory::factory('output', [
       <div class="mainContent  small-12 large-9 xlarge-9 column"> 
         <div class="container">
           <?php
-          $p = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-          $man_cache = 'index';
-          if ($p !== null) {
-            $man_cache = str_replace('.', '-', $p);
-          }
+          $man_cache = "$cacheSuffix-content";
           if ($outputCache->start($man_cache) === false) {
             //include('manual/manualBuilder.php');        
             $router->execute();
@@ -70,7 +54,10 @@ $outputCache = PatternFactory::factory('output', [
   </div>
 </div>
 <?php
-include('manual/templates/blocks/footer.php');
-include('manual/templates/backToTopButton.php');
+if ($outputCache->start('footer') === false) {
+  include('manual/templates/blocks/footer.php');
+  include('manual/templates/backToTopButton.php');
+  $outputCache->end();
+}
 
 $html->documentClose();

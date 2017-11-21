@@ -13,12 +13,7 @@ use Sphp\Html\Apps\TechLinkList;
     </div>
 
     <div class="small-12 large-8 xlarge-8 columns end">
-      <?php
-      if ($outputCache->start('footer_links') === false) {
-        include 'footerLinks.php';
-        $outputCache->end();
-      }
-      ?>
+      <?php include 'footerLinks.php'; ?>
     </div>
   </div>
 
