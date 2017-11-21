@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-require_once 'loaders.php';
+//require_once 'loaders.php';
 
 use Sphp\Stdlib\Path;
 

@@ -35,7 +35,7 @@ class TechLinkList extends AbstractContainerComponent {
    * @return $this for a fluent interface
    */
   private function createContent() {
-    $currentUrl = URL::getCurrent()->getHtml();
+    $currentUrl = URL::getCurrentURL();
     $phpVersion = "PHP " . phpversion();
     $this->getInnerContainer()
             ->append((new ImageLink("http://validator.w3.org/check?uri=$currentUrl", '_blank', 'sphp/pics/tech-icons/html5.png', 'HTML5'))

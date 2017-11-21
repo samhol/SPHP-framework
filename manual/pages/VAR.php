@@ -1,5 +1,7 @@
 <?php
 
+use Sphp\Html\Lists\Ul;
+
 function printVar(array $var) {
   foreach ($var as $key => $value) {
     if (is_array($value)) {
@@ -31,10 +33,10 @@ if (isset($_GET['SESSION'])) {
   printVar($_SESSION);
 }
 
-echo '<h1>Loaded extensions</h1>';
-use Sphp\Html\Lists\Ul;
-$ul = new Ul(get_loaded_extensions());
-$ul->printHtml();
-echo "</pre>";
-
+if (isset($_GET['EXT'])) {
+  echo '<h1>Loaded extensions</h1>';
+  $ul = new Ul(get_loaded_extensions());
+  $ul->printHtml();
+  echo "</pre>";
+}
 

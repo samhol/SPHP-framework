@@ -13,21 +13,15 @@ $includePaths = [
     realpath(__DIR__ . '/../'),
     __DIR__,
 ];
-PHP::Config()
+
+\Sphp\Config\PHP::Config()
         ->setErrorReporting(\E_ALL)
         ->setDefaultTimezone('Europe/Helsinki')
         ->setCharacterEncoding('UTF-8')
         ->insertIncludePaths($includePaths);
 
-require_once('_errorHandling.php');
-
-//require_once('doctrine/configuration.php');
-//require_once('session.php');
-require_once('menuArrays.php');
+require_once 'common/all.php';
 
 namespace Sphp\I18n;
 
 Translators::instance()->store('validation', new Gettext\Translator('Sphp.Validation', 'sphp/locale'));
-
-
-

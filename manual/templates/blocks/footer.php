@@ -15,7 +15,7 @@ use Sphp\Html\Apps\TechLinkList;
     <div class="small-12 large-8 xlarge-8 columns end">
       <?php
       if ($outputCache->start('footer_links') === false) {
-        include 'manual/footerLinks.php';
+        include 'footerLinks.php';
         $outputCache->end();
       }
       ?>
@@ -24,7 +24,7 @@ use Sphp\Html\Apps\TechLinkList;
 
   <footer class="text-center">
     <div >
-      <?php include_once 'manual/licenseRevealer.php' ?>
+      <?php include_once 'licenseRevealer.php' ?>
     </div>
   </footer> 
 </div>

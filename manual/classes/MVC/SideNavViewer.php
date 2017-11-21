@@ -33,7 +33,12 @@ class SideNavViewer implements ContentInterface {
    */
   private $nav;
 
-  public function __construct($data, $currentPage = '') {
+  /**
+   * 
+   * @param array $data
+   * @param string $currentPage
+   */
+  public function __construct(array $data, string $currentPage = '') {
     $this->data = $data;
     $this->currentPage = $currentPage;
     $this->buildMenu();
@@ -43,7 +48,7 @@ class SideNavViewer implements ContentInterface {
    * 
    * @return AccordionMenu
    */
-  public function getMenu() {
+  public function getMenu(): AccordionMenu {
     return $this->nav;
   }
 

@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 require_once('manual/settings.php');
 ob_implicit_flush(true);
-require_once('manual/htmlHead.php');
+require_once('manual/templates/blocks/head.php');
 
 $cache = new \Zend\Cache\Storage\Adapter\Filesystem();
 
@@ -70,7 +70,7 @@ $outputCache = PatternFactory::factory('output', [
   </div>
 </div>
 <?php
-include('manual/_footer_.php');
+include('manual/templates/blocks/footer.php');
 include('manual/templates/backToTopButton.php');
 
 $html->documentClose();

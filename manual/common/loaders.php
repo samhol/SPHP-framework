@@ -2,7 +2,7 @@
 
 namespace Sphp\MVC;
 
-require_once('manualTools/main.php');
+require_once('manual_helper_functions.php');
 
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
