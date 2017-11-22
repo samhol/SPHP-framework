@@ -22,7 +22,7 @@ interface VisibilityChanger {
    * 
    * @return $this for a fluent interface
    */
-  public function showForAllScreenSizes();
+  public function showForAll();
 
   /**
    * Hides the component for the given screen sizes only
@@ -36,12 +36,12 @@ interface VisibilityChanger {
    * * `"xxlarge"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string|string[] $screenType the targeted screen size flags as a bitmask
+   * @param  string|string[] $sizes the targeted screen sizes
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyForSize(... $screenType);
+  public function hideOnlyForSize(... $sizes);
 
   /**
    * Shows the component for the given screen sizes only
@@ -55,19 +55,12 @@ interface VisibilityChanger {
    * * `"xxlarge"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string|string[] $screenType the targeted screensize flags as a bitmask
+   * @param  string|string[] $sizes the targeted screen sizes
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor(... $screenType);
-
-  /**
-   * 
-   * 
-   * @return $this for a fluent interface
-   */
-  public function clearVisibilitySettings();
+  public function showOnlyFor(... $sizes);
 
   /**
    * Sets/unsets the component visible only for landscape orientation

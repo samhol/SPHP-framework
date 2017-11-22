@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Screen.php (UTF-8)
+ * ScreenSizes.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,7 +11,7 @@ use Sphp\Exceptions\OutOfRangeException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Defines Screen Sizes and types and implements static screen size parsing functions
+ * Defines Screen Sizes and types and implements screen size parsing functions
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
