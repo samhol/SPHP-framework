@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Span;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
-use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
+use Sphp\Html\Foundation\Sites\Core\Factory;
 
 /**
  * Implements Close Button
@@ -28,7 +28,7 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
   /**
    * the inner label for screen reader text
    *
-   * @var ScreenReaderLabel
+   * @var string 
    */
   private $screenReaderLabel;
 
@@ -41,38 +41,23 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
    * Constructs a new instance
    *
    * @param string $icon Foundation Icon Font name
-   * @param  ScreenReaderLabel|string $screenReaderLabel the screen reader label or its textual content
+   * @param string $screenReaderLabel the screen reader label or its textual content
    */
-  public function __construct($icon, $screenReaderLabel = "") {
+  public function __construct(string $icon, string $screenReaderLabel = null) {
     parent::__construct('button');
     $this->cssClasses()->protect('button');
     $this->attrs()->protect('type', 'button');
-    $this->screenReaderLabel = new ScreenReaderLabel();
     $this->setScreenReaderLabel($screenReaderLabel);
     $this->icon = \Sphp\Html\Icons\Icons::fontAwesome($icon);
   }
 
-  /**
-   * Sets the screen reader-only label
-   * 
-   * @param  ScreenReaderLabel|string $label the screen reader label or its textual content
-   * @return $this for a fluent interface
-   */
-  public function setScreenReaderLabel($label) {
-    if ($label instanceof ScreenReaderLabel) {
-      $this->screenReaderLabel = $label;
-    } else {
-      $this->screenReaderLabel->replaceContent($label);
-    }
+  public function setScreenReaderLabel(string $label = null) {
+    $this->screenReaderLabel = $label;
     return $this;
   }
 
-  public function getScreeReaderLabel() {
-    return $this->screenReaderLabel;
-  }
-
   public function contentToString(): string {
-    return $this->screenReaderLabel . '<span aria-hidden="true">' . $this->icon . '</span>';
+    return Factory::ScreenReaderLabel($this->screenReaderLabel) . '<span aria-hidden="true">' . $this->icon . '</span>';
   }
 
 }

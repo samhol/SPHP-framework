@@ -10,12 +10,12 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface;
-use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
+use Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface;
 use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
-use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
+use Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManager;
+use Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManagerInterface;
 
 /**
  * A component containing multiple radio or checkbox inputs
@@ -57,7 +57,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   private $boxes;
 
   /**
-   *
    * @var ColumnLayoutManager
    */
   private $layout;
@@ -90,7 +89,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   }
 
   /**
-   * Sets the {@link Legend} of the fieldset component
+   * Sets the legend for the fieldset component
    *
    * @param  string|Legend $legend the legend of the fieldset component
    * @return $this for a fluent interface
@@ -105,12 +104,12 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   }
 
   /**
-   * Returns the {@link Legend} of the fieldset component
+   * Returns the legend for the fieldset component
    *
-   * @return Legend the legend of the fieldset component or null
+   * @return Legend the legend component
    * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
    */
-  public function getLegend() {
+  public function getLegend(): Legend {
     return $this->legend;
   }
 

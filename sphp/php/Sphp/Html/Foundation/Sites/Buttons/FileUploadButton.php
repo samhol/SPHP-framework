@@ -13,7 +13,7 @@ use Sphp\Html\Forms\Label;
 use Sphp\Html\Forms\Inputs\FileInput;
 
 /**
- * Implements &lt;input type="submit"&gt; tag as a Foundation Button
+ * Implements &lt;input type="file"&gt; tag as a Foundation Button
  * 
  * A submit button is used to send form data to a server.
  * The data is sent to the page specified in the form's action attribute.
@@ -44,10 +44,10 @@ class FileUploadButton implements IdentifiableInput, ButtonInterface {
    * Constructs a new instance
    *
    * @param  string|null $name the value of name attribute
-   * @param  string|null $buttonText the value of value attribute
+   * @param  string $buttonText the value of value attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function __construct(string $name = null, $buttonText = 'Upload File') {
+  public function __construct(string $name = null, string $buttonText = 'Upload File') {
     $this->fileInput = new FileInput($name);
     $this->fileInput->cssClasses()->protect('show-for-sr', 'fileInput');
     $this->label = new Label($buttonText, $this->fileInput);

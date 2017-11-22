@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$colourableInterface = \Sphp\Manual\api()->classLinker(ColourableInterface::class);
+$colourableInterface = \Sphp\Manual\api()->classLinker(Colourable::class);
 $colourableAdapter = \Sphp\Manual\api()->classLinker(ColourableAdapter::class);
 $ComponentInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
 

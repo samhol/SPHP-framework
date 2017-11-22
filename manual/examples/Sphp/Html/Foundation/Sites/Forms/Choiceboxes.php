@@ -10,20 +10,17 @@ $radioBoxes = [
     "x" => "X"
 ];
 $checkBoxes = [
-    "bball" => "Basketball",
-    "football" => "Football",
-    "cycling" => "Cycling",
-    "running" => "Running",
-    "swimming" => "Swimming"
+    "_basketball_" => "Basketball",
+    "_football_" => "Football"
 ];
 $checkboxes = (new Checkboxes("multiple", $checkBoxes, "Select hobbies:"))
-        ->setOption("lifting", "Weightlifting");
-$checkboxes->layout()->setLayouts(['small-12', 'large-6']);
+        ->setOption("_volleyball_", "Volleyball");
+$checkboxes->layout()->setLayouts('small-12', 'large-6');
 
 $radios = (new Radioboxes("gender", $radioBoxes, "Select a gender:"))
         ->setOption("?", "unknown")
         ->setRequired();
-$radios->layout()->setLayouts(['small-12', 'large-6']);
+$radios->layout()->setLayouts('small-12', 'large-6');
 $form = new GridForm();
 $form->append([$checkboxes, $radios]);
 echo $form;

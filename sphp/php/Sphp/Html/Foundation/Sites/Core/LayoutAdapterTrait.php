@@ -45,26 +45,11 @@ trait LayoutAdapterTrait {
 
   /**
    * 
-   * @param  array $group
-   * @param  string $value
-   * @return $this for a fluent interface
-   */
-  protected function hasOneOf(array $group) {
-    if ($value === null) {
-      $this->cssClasses()->remove($group);
-    } else if (in_array($value, $group)) {
-      $this->cssClasses()->remove($group)->add($value);
-    }
-    return $this;
-  }
-
-  /**
-   * 
    * @param bool $set
    * @param string $classes
    * @return $this
    */
-  public function setBoolean(bool $set = true, string...$classes) {
+  protected function setBoolean(bool $set = true, string...$classes) {
     if ($set) {
       $this->cssClasses()->add($classes);
     } else {

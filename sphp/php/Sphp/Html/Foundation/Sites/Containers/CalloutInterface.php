@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\Foundation\Sites\Core\ColourableInterface;
+use Sphp\Html\Foundation\Sites\Core\Colourable;
 use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 
 /**
@@ -19,6 +19,6 @@ use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface CalloutInterface extends ColourableInterface, ClosableInterface {
+interface CalloutInterface extends Colourable, ClosableInterface {
 
 }

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Core\ColourableInterface;
+use Sphp\Html\Foundation\Sites\Core\Colourable;
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph;
@@ -22,7 +22,7 @@ use Sphp\Html\Sections\Paragraph;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ProgressBar extends AbstractComponent implements ColourableInterface {
+class ProgressBar extends AbstractComponent implements Colourable {
 
   use ColourableTrait;
 

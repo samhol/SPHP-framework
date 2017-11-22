@@ -16,7 +16,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ColourableInterface {
+interface Colourable {
 
   /**
    * Sets the color (a CSS class)

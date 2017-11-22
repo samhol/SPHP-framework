@@ -23,5 +23,5 @@ The example code of the form showing the exaples of $slider object is represente
 MD
 );
 
-Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', false, true)->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', null, true)->printHtml();
 

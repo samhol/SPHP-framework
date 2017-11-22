@@ -18,7 +18,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ColourableLayoutManager extends AbstractLayoutManager implements ColourableInterface {
+class ColourableLayoutManager extends AbstractLayoutManager implements Colourable {
 
   /**
    * CSS classes corresponding to the colors

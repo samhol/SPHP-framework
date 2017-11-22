@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
-use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
+use Sphp\Html\Foundation\Sites\Core\Factory;
 
 /**
  * Implements a Close Button
@@ -27,38 +27,30 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
   /**
    * the inner label for screen reader text
    *
-   * @var ScreenReaderLabel
+   * @var string
    */
   private $screenReaderLabel;
 
   /**
    * Constructs a new instance
    *
-   * @param  ScreenReaderLabel|string $screenReaderLabel the screen reader label or its textual content
+   * @param string $screenReaderLabel the screen reader label text
    */
-  public function __construct($screenReaderLabel = '') {
+  public function __construct(string $screenReaderLabel = null) {
     parent::__construct('button');
     $this->cssClasses()
             ->protect('button dropdown arrow-only');
-    $this->screenReaderLabel = new ScreenReaderLabel();
+    $this->setScreenReaderLabel($screenReaderLabel);
     $this->setScreenReaderLabel($screenReaderLabel);
   }
 
-  public function setScreenReaderLabel($label) {
-    if ($label instanceof ScreenReaderLabel) {
-      $this->screenReaderLabel = $label;
-    } else {
-      $this->screenReaderLabel->replaceContent($label);
-    }
+  public function setScreenReaderLabel(string $label = null) {
+    $this->screenReaderLabel = $label;
     return $this;
   }
 
-  public function getScreeReaderLabel() {
-    return $this->screenReaderLabel;
-  }
-
   public function contentToString(): string {
-    return $this->screenReaderLabel->getHtml();
+    return Factory::ScreenReaderLabel($this->screenReaderLabel)->getHtml();
   }
 
 }

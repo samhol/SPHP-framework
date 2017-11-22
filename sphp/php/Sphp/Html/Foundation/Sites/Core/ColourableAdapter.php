@@ -20,7 +20,7 @@ use Sphp\Stdlib\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ColourableAdapter extends AbstractLayoutManager implements ColourableInterface {
+class ColourableAdapter extends AbstractLayoutManager implements Colourable {
 
   /**
    * CSS classes corresponding to the button style constants

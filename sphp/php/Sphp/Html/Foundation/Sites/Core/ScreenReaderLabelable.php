@@ -23,15 +23,8 @@ interface ScreenReaderLabelable {
   /**
    * Sets the inner label for screen reader text
    * 
-   * @param  ScreenReaderLabel|string $label the screen reader label or its textual content
+   * @param  string $label the screen reader label or its textual content
    * @return $this for a fluent interface
    */
-  public function setScreenReaderLabel($label);
-
-  /**
-   * Returns the inner label for screen reader text
-   * 
-   * @return ScreenReaderLabel the inner label for screen reader text
-   */
-  public function getScreeReaderLabel();
+  public function setScreenReaderLabel(string $label = null);
 }

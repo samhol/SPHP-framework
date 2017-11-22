@@ -18,6 +18,6 @@ MD
 
 Manual\example('Sphp/Html/Foundation/Sites/Forms/AbstractSwitch.php')
         ->buildAccordion()
-        ->addCssClass('form-examples')
+        ->addCssClass('form-example')
         ->printHtml();
 

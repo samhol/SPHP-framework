@@ -11,9 +11,9 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
-use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
 use Sphp\Html\Forms\Inputs\ChoiceboxInterface;
+use Sphp\Html\Foundation\Sites\Core\Factory;
 
 /**
  * Implements an abstract foundation based switch
@@ -41,14 +41,9 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   private $input;
 
   /**
-   * @var Label 
+   * @var string
    */
-  private $paddle;
-
-  /**
-   * @var ScreenReaderLabel
-   */
-  private $screenReaderLabel;
+  private $screenReaderLabel, $inactive, $active;
 
   /**
    * Constructs a new instance
@@ -56,34 +51,47 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * @param Choicebox $box the inner form component
    * @param string|null $srText text for screen readers
    */
-  public function __construct(Choicebox $box, $srText = '') {
+  public function __construct(Choicebox $box, string $srText = null) {
     $box->cssClasses()->protect('switch-input');
     parent::__construct('div');
     $this->input = $box;
     $this->cssClasses()
             ->protect('switch');
     $box->identify();
-    $this->screenReaderLabel = new ScreenReaderLabel($srText);
-    $this->paddle = new Label(null, $this->input);
-    $this->paddle->offsetSet('screenReaderLabel', $this->screenReaderLabel);
-    $this->paddle->cssClasses()
+    $this->setScreenReaderLabel($srText);
+  }
+
+  /**
+   * Creates paddle component for switch
+   * 
+   * @return Label paddle component for switch
+   */
+  protected function createPaddle(): Label {
+    $paddle = new Label();
+    $paddle->setFor($this->input);
+    $paddle->cssClasses()
             ->protect('switch-paddle');
+    if ($this->screenReaderLabel !== null) {
+      $paddle->append(Factory::ScreenReaderLabel($this->screenReaderLabel));
+    }
+    if ($this->active !== null || $this->inactive !== null) {
+      $activeLabel = new Span($this->active);
+      $activeLabel->attrs()
+              ->protect('aria-hidden', 'true')
+              ->classes()->protect('switch-active');
+      $paddle->append($activeLabel);
+      $inactiveLabel = new Span($this->inactive);
+      $inactiveLabel->attrs()
+              ->protect('aria-hidden', 'true')
+              ->classes()->protect('switch-inactive');
+      $paddle->append($inactiveLabel);
+    }
+    return $paddle;
   }
 
-  public function setScreenReaderLabel($label) {
-    if ($label instanceof ScreenReaderLabel) {
-      $this->screenReaderLabel = $label;
-    } else {
-      $this->getScreeReaderLabel()->replaceContent($label);
-    }
+  public function setScreenReaderLabel(string $label = null) {
+    $this->screenReaderLabel = $label;
     return $this;
-  }
-
-  public function getScreeReaderLabel() {
-    if (!($this->screenReaderLabel instanceof ScreenReaderLabel)) {
-      $this->screenReaderLabel = new ScreenReaderLabel();
-    }
-    return $this->screenReaderLabel;
   }
 
   /**
@@ -125,17 +133,9 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * @param  string $inactive the inactive text inside of a switch
    * @return $this for a fluent interface
    */
-  public function setInnerLabels($active, $inactive) {
-    $activeLabel = new Span($active);
-    $activeLabel->attrs()
-            ->protect('aria-hidden', 'true')
-            ->classes()->protect('switch-active');
-    $inactiveLabel = new Span($inactive);
-    $inactiveLabel->attrs()
-            ->protect('aria-hidden', 'true')
-            ->classes()->protect('switch-inactive');
-    $this->paddle->offsetSet('switch-active', $activeLabel);
-    $this->paddle->offsetSet('switch-inactive', $inactiveLabel);
+  public function setInnerLabels(string $active = null, string $inactive = null) {
+    $this->active = $active;
+    $this->inactive = $inactive;
     return $this;
   }
 
@@ -192,7 +192,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   }
 
   public function contentToString(): string {
-    return $this->input->getHtml() . $this->paddle->getHtml();
+    return $this->input->getHtml() . $this->createPaddle()->getHtml();
   }
 
   public function getSubmitValue() {
