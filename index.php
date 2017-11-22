@@ -3,10 +3,11 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 require_once('manual/settings.php');
-ob_implicit_flush(true);
+//ob_implicit_flush(true);
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
-$cacheSuffix = str_replace(['.', '/'], ['-', ''], $redirect);
+$cacheSuffix = str_replace(['.', '/'], ['-', ''], $redirect)."-cache";
+
 if ($outputCache->start("$cacheSuffix-head") === false) {
   require_once('manual/templates/blocks/head.php');
   $outputCache->end();
