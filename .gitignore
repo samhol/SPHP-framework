@@ -50,7 +50,7 @@ Temporary Items
 /nbproject/
 /.projectKnowledge/
 /node_modules/
-/logs/
+#/logs/
 
 robots.txt
 composer.lock
