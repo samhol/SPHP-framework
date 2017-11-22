@@ -26,7 +26,7 @@ foreach (Screen::sizes() as $name) {
 		->showBetweenSizes("medium", "xxlarge")
 		->printHtml();
 (new VisibilityAdapter(Factory::p("Hide from small and large screens")))
-		->hideOnlyFromSize("large")->hideOnlyFromSize("small")
+		->hideOnlyForSize("large")->hideOnlyForSize("small")
 		->printHtml();
 
 

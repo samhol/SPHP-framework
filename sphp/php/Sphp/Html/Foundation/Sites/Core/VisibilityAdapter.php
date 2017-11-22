@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Adapters\AbstractComponentAdapter;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\CssClassifiedComponent;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements Visibility changer functionality
@@ -18,14 +18,14 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityChanger {
+class VisibilityAdapter extends AbstractLayoutManager implements VisibilityChanger {
 
   /**
    * Constructs a new instance
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(CssClassifiedComponent $component) {
     parent::__construct($component);
   }
 
@@ -42,7 +42,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
       $cssClasses[] = "hide-for-$screen-only";
       $cssClasses[] = "hide-for-$screen";
     }
-    $this->getComponent()->cssClasses()
+    $this->cssClasses()
             ->remove($cssClasses);
     return $this;
   }
@@ -57,7 +57,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
     if (!in_array($screenType, Screen::sizes())) {
       throw new InvalidArgumentException("Screen type '$screenType' was not recognized");
     }
-    $this->getComponent()->cssClasses()
+    $this->cssClasses()
             ->add("show-for-$screenType")
             ->remove("hide-for-$screenType");
     return $this;
@@ -75,10 +75,10 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
       throw new InvalidArgumentException("Screen type '$screenSize' was not recognized");
     }
     if ($screenSize == 'small') {
-      $this->getComponent()->cssClasses()
+      $this->cssClasses()
               ->add('hide');
     }
-    $this->getComponent()->cssClasses()
+    $this->cssClasses()
             ->add("hide-for-$screenSize");
     return $this;
   }
@@ -96,12 +96,12 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
     $this->showForAllScreenSizes();
     $upper = Screen::getNextSize($larger);
     if ($upper !== false) {
-      $this->getComponent()->cssClasses()
-              ->add(["hide-for-$upper"]);
+      $this->cssClasses()
+              ->add("hide-for-$upper");
     }
     if ($smaller != 'small') {
-      $this->getComponent()->cssClasses()
-              ->add(["show-for-$smaller", "hide-for-$upper"]);
+      $this->cssClasses()
+              ->add("show-for-$smaller", "hide-for-$upper");
     }
     return $this;
   }
@@ -118,18 +118,21 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * * `"xx-large"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $size the targeted screen size flags as a bitmask
+   * @param  string|string[] $sizes the targeted screen sizes
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyFromSize(string $size) {
-    $this->showForAllScreenSizes();
-    if (Screen::sizeExists($size)) {
-      $this->getComponent()->cssClasses()
-              ->add("hide-for-$size-only");
-    } else {
-      throw new InvalidArgumentException("Screen size '$size' was not recognized");
+  public function hideOnlyForSize(... $sizes) {
+    $sizes = Arrays::flatten($sizes); //hide-for-large-only
+    //$filtered = preg_grep('/^hide-for-(small|medium|large|xlarge|xxlarge)-only$/', $widths);
+    foreach (Arrays::flatten($sizes) as $size) {
+      if (!Screen::sizeExists($size)) {
+        throw new InvalidArgumentException("Screen size '$size' was not recognized");
+      } else {
+        $this->cssClasses()
+                ->add("hide-for-$size-only")->remove("show-for-$size-only");
+      }
     }
     return $this;
   }
@@ -146,31 +149,27 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * * `"xx-large"`: all screen widths from 1921px...
    * 
    * @precondition `$size` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|string $screenType the targeted screen type
+   * @param  int|string $sizes the targeted screen sizes
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor(string $screenType) {
-    $onlyFor = function($size) {
+  public function showOnlyFor(... $sizes) {
+    $sizes = Arrays::flatten($sizes); //hide-for-large-only
+    //$filtered = preg_grep('/^hide-for-(small|medium|large|xlarge|xxlarge)-only$/', $widths);
+    foreach (Arrays::flatten($sizes) as $size) {
       if (!Screen::sizeExists($size)) {
-        throw new InvalidArgumentException("Screen type '$size' was not recognized");
-      }
-      $this->getComponent()->cssClasses()
-              ->add("show-for-$size-only");
-    };
-    if (func_num_args() === 1) {
-      $onlyFor($screenType);
-    } else {
-      foreach (func_get_args() as $screen) {
-        $onlyFor($screen);
+        throw new InvalidArgumentException("Screen size '$size' was not recognized");
+      } else {
+        $this->cssClasses()
+                ->add("show-for-$size-only")->remove("hide-for-$size-only");
       }
     }
     return $this;
   }
 
   /**
-   * Sets the componentvisible for all screen sizes
+   * Sets the component visible for all screen sizes
    * 
    * @return $this for a fluent interface
    */
@@ -182,7 +181,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
       $classes[] = "show-for-$sreenName";
       $classes[] = "show-for-$sreenName-only";
     }
-    $this->getComponent()->cssClasses()
+    $this->cssClasses()
             ->remove($classes);
     return $this;
   }
@@ -238,6 +237,23 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
       $this->getComponent()->cssClasses()
               ->remove('show-for-portrait');
     }
+    return $this;
+  }
+
+  public function setLayouts(...$layouts) {
+    
+  }
+
+  public function unsetLayouts() {
+    $classes = [];
+    foreach (Screen::sizes() as $sreenName) {
+      $classes[] = "hide-for-$sreenName";
+      $classes[] = "hide-for-$sreenName-only";
+      $classes[] = "show-for-$sreenName";
+      $classes[] = "show-for-$sreenName-only";
+    }
+    $this->cssClasses()
+            ->remove($classes);
     return $this;
   }
 

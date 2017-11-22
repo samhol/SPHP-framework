@@ -10,7 +10,7 @@ foreach (Screen::sizes() as $size) {
   $li .= (new VisibilityAdapter(Factory::span("yes")))
           ->showOnlyFor($size);
   $li .= (new VisibilityAdapter(Factory::span("no")))
-          ->hideOnlyFromSize($size);
+          ->hideOnlyForSize($size);
   $ul[] = $li;
 }
 $ul->printHtml();

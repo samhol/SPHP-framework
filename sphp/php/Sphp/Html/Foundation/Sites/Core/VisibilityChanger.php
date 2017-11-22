@@ -32,16 +32,16 @@ interface VisibilityChanger {
    * * `"small"`: screen widths 0px - 640px
    * * `"medium"`: screen widths 641px - 1024px
    * * `"large"`: screen widths 1025px - 1440px)
-   * * `"x-large"`: screen widths 1441px - 1920px
-   * * `"xx-large"`: all screen widths from 1921px...
+   * * `"xlarge"`: screen widths 1441px - 1920px
+   * * `"xxlarge"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenType the targeted screen size flags as a bitmask
+   * @param  string|string[] $screenType the targeted screen size flags as a bitmask
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyFromSize(string $screenType);
+  public function hideOnlyForSize(... $screenType);
 
   /**
    * Shows the component for the given screen sizes only
@@ -51,16 +51,16 @@ interface VisibilityChanger {
    * * `"small"`: screen widths 0px - 640px
    * * `"medium"`: screen widths 641px - 1024px
    * * `"large"`: screen widths 1025px - 1440px)
-   * * `"x-large"`: screen widths 1441px - 1920px
-   * * `"xx-large"`: all screen widths from 1921px...
+   * * `"xlarge"`: screen widths 1441px - 1920px
+   * * `"xxlarge"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenType the targeted screensize flags as a bitmask
+   * @param  string|string[] $screenType the targeted screensize flags as a bitmask
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor(string $screenType);
+  public function showOnlyFor(... $screenType);
 
   /**
    * 

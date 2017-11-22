@@ -34,7 +34,7 @@ Manual\parseDown(<<<MD
 MD
 );
 
-Manual\example('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php')->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php', 'html5')->printHtml();
 Manual\parseDown(<<<MD
 Hiding by Screen Size
         
