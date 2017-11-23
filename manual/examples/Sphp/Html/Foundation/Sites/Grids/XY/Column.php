@@ -7,7 +7,7 @@ $col_2 = new Column("2nd", ['small-2', 'small-push-3']);
 $col_3 = new Column("3rd", ['small-1', 'small-pull-3']);
 $col_4 = new Column("4th", ['small-5', 'small-pull-9']);
 
-(new Grid())
+(new Row())
         ->append($col_1)
         ->append($col_2)
         ->append($col_3)

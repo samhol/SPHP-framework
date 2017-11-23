@@ -16,6 +16,6 @@ $ns
 MD
 ;
 
-include('Sphp/Html/Foundation/Sites/Grids/XY/Row_fromArray.php');
+include('Sphp/Html/Foundation/Sites/Grids/XY/Row.php');
 echo "</div>";
 
