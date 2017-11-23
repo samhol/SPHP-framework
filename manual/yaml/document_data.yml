@@ -104,7 +104,7 @@ Tables:
     tfoot: 'A table footer'
     col: 'Attributes for table columns'
     colgroup: 'Groups of table columns'
-'Style/Sections':
+'Style and Sections':
     style: 'A style definition'
     div: 'A section in a document'
     span: 'A section in a document'
