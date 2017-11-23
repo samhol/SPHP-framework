@@ -3,14 +3,10 @@
 namespace Zend\Cache\Storage;
 
 use Zend\Cache\PatternFactory;
-
+use Sphp\Stdlib\Parser;
 $cache = new Adapter\Filesystem();
 
-$cache->setOptions([
-    'ttl' => 1,
-    'cache_dir' => '/home/int48291/public_html/playground/cache',
-    'dir_permission' => 0755,
-    'file_permission' => 0666]);
+$cache->setOptions(Parser::fromFile('manual/config/cache.yml'));
 
 
 $plugin = new Plugin\ExceptionHandler(['throw_exceptions' => true]);

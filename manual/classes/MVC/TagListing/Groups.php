@@ -19,7 +19,6 @@ use Iterator;
 class Groups implements Iterator {
 
   /**
-   *
    * @var Group[] 
    */
   private $data = [];

@@ -2,9 +2,9 @@
 
 namespace Sphp\MVC;
 
-require_once('manual_helper_functions.php');
-
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
+
+require_once('manual_helper_functions.php');
 
 $loadNotFound = function () {
   include 'manual/templates/error.php';

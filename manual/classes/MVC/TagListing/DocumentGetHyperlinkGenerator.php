@@ -6,7 +6,9 @@
  */
 
 namespace Sphp\Manual\MVC\TagListing;
+
 use Sphp\Html\TagInterface;
+
 /**
  * Description of DocumentGetHyperlink
  *

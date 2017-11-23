@@ -9,13 +9,16 @@ namespace Sphp\Manual\MVC\TagListing;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\Html\ContentInterface;
 
 /**
  * Description of TagListAccordionGenerator
  *
- * @author samih
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
-class TagListAccordionGenerator implements \Sphp\Html\ContentInterface {
+class TagListAccordionGenerator implements ContentInterface {
 
   use \Sphp\Html\ContentTrait;
 

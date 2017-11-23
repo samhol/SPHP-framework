@@ -7,13 +7,15 @@
 
 namespace Sphp\Manual\MVC\TagListing;
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Tables\Table;
+use Sphp\Html\ContentInterface;
 
 /**
  * Description of TagListAccordionGenerator
  *
- * @author samih
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class TagGroupTable implements \Sphp\Html\ContentInterface {
 

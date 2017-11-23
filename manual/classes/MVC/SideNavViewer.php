@@ -25,6 +25,10 @@ class SideNavViewer implements ContentInterface {
    * @var array 
    */
   private $data;
+  
+  /**
+   * @var string 
+   */
   private $currentPage;
 
   /**

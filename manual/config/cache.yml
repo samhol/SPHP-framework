@@ -1,0 +1,6 @@
+#Zend cache settings
+---
+ttl: 1
+cache_dir: /home/int48291/public_html/playground/cache
+dir_permission: 0755
+file_permission: 0666

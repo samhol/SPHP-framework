@@ -10,13 +10,16 @@ namespace Sphp\Manual\MVC\TagListing;
 use Sphp\Html\Factory;
 use Sphp\Html\TagInterface;
 use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Description of TagComponentDataParser
  *
- * @author samih
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
-class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
+class TagComponentData implements Arrayable {
 
   /**
    * @var string 

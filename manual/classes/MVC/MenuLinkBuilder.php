@@ -20,7 +20,6 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuLink;
 class MenuLinkBuilder extends SphpMenuLinkBuilder {
 
   /**
-   *
    * @var string|null
    */
   private $currentPage;
