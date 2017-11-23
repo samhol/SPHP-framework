@@ -3,25 +3,24 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Forms\Form;
-use Sphp\Html\Forms\Inputs\Menus\Select;
 
 $form = new Form();
-$number = (new NumberInput("number"))
+$number = Input::number("number")
         ->setPlaceholder("Number field")
         ->setStep(5)
         ->setMinimum(-10)
         ->setMaximum(10);
 $form[] = $number;
-$form[] = (new TextInput("text"))
+$form[] = Input::text("text")
         ->setPlaceholder("Text field");
-$form[] = (new EmailInput("email"))
+$form[] = Input::email("email")
         ->setPlaceholder("Email field");
-$form[] = (new PasswordInput("password"))
+$form[] = Input::password("password")
         ->setPlaceholder("Password field");
-$form[] = (new Textarea("textarea"))
+$form[] = Input::textarea("textarea")
         ->setPlaceholder("Textarea field")
         ->setRows(5);
-$form[] = (new Select("select"))
+$form[] = Input::select("select")
         ->appendOption("opt1", "Option 1.")
         ->appendOption("opt2", "Option 2.");
 

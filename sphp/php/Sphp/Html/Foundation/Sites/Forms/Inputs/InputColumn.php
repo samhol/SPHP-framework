@@ -19,6 +19,7 @@ use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Forms\Inputs\EmailInput;
+use Sphp\Html\Forms\Inputs\Input;
 
 /**
  * Implements framework based component to create  multi-device layouts
@@ -250,6 +251,34 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   public static function textarea($name, $content = null, $rows = 4, array $layout = ['small-12']) {
     $input = new Textarea($name, $content, $rows);
     return new self($input, $layout);
+  }
+
+  /**
+   * Creates a HTML object
+   *
+   * @param  string $inputType input type
+   * @param  array $arguments 
+   * @return TagInterface the corresponding component
+   * @throws BadMethodCallException
+   */
+  public static function __callStatic(string $inputType, array $arguments): TagInterface {
+    try {
+      $input = \Sphp\Html\Forms\Inputs\Input::__callStatic($arguments);
+    } catch (\Exception $ex) {
+      
+    }
+    if (!isset(static::$tags[$name])) {
+      throw new BadMethodCallException("Method $name does not exist");
+    }
+    if (is_string(static::$tags[$name])) {
+      static::$tags[$name] = new ReflectionClass(static::$tags[$name]);
+    }
+    $reflectionClass = static::$tags[$name];
+    if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
+      array_unshift($arguments, $name);
+    }
+    $instance = static::$tags[$name]->newInstanceArgs($arguments);
+    return $instance;
   }
 
 }
