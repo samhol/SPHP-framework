@@ -22,7 +22,7 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var Groups
+   * @var Group
    */
   private $data;
 
