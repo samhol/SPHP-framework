@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Sections\Aside | SPHP framework API</title>
+    <title>Sphp\Html\Content\Main | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Sections_Aside" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Content_Main" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,33 +66,41 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Sections.html">Sections</a></li><li class="backslash">\</li><li>Aside</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Content.html">Content</a></li><li class="backslash">\</li><li>Main</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Aside
+            Main
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Aside</strong>        extends <a href="../../../Sphp/Html/ContainerTag.html"><abbr title="Sphp\Html\ContainerTag">ContainerTag</abbr></a>
+    <strong>Main</strong>        extends <a href="../../../Sphp/Html/ContainerTag.html"><abbr title="Sphp\Html\ContainerTag">ContainerTag</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements an HTML &lt;aside&gt; tag</p>            <p>This component defines sections in a document, such as chapters, headers,
- footers, or any other sections of the document.</p>                    </div>
+            <p>Description of Main</p>                                </div>
     
             <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../Sphp/Html/Content/ContentCreatorTrait.html"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Description of ContentCreatorTrait
+                </div>
+            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
@@ -300,7 +308,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(mixed $content = null)
+                    <a href="#method___construct">__construct</a>()
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -583,23 +591,47 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a>
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_headings">headings</a>()
+                    <a href="#method_appendParagraph">appendParagraph</a>($content = null)
         
-                                            <p>Returns the heading components tag object</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendParagraph"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a>
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_paragraphs">paragraphs</a>()
+                    <a href="#method_appendH1">appendH1</a>($content = null)
         
-                                            <p>Returns the heading components tag object</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendH1"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendH2">appendH2</a>($content = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendH2"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendArticle">appendArticle</a>($content = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendArticle"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a></small></div>
             </div>
             </div>
 
@@ -1209,9 +1241,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 31</div>
+        <div class="location">at         line 26</div>
         <code>                    
-    <strong>__construct</strong>(mixed $content = null)
+    <strong>__construct</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1221,16 +1253,6 @@
                     <div class="method-description">
                                     <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$content</td>
-                <td>the content of the component</td>
-            </tr>
-            </table>
-
             
             
             
@@ -2175,29 +2197,28 @@ So also an object of any class that implements magic method <code>__toString()</
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_headings">
-        <div class="location">at         line 40</div>
-        <code>                    <a href="../../../Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a>
-    <strong>headings</strong>()
+                    <h3 id="method_appendParagraph">
+        <div class="location">in <a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendParagraph"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a> at         line 25</div>
+        <code>                    
+    <strong>appendParagraph</strong>($content = null)
         </code>
     </h3>
     <div class="details">
             
     
 
-                    <div class="method-description">
-                                    <p>Returns the heading components tag object</p>                                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a></td>
-            <td>the body tag object</td>
-        </tr>
-    </table>
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
             
             
                     </div>
@@ -2205,29 +2226,86 @@ So also an object of any class that implements magic method <code>__toString()</
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_paragraphs">
-        <div class="location">at         line 49</div>
-        <code>                    <a href="../../../Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a>
-    <strong>paragraphs</strong>()
+                    <h3 id="method_appendH1">
+        <div class="location">in <a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendH1"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a> at         line 32</div>
+        <code>                    
+    <strong>appendH1</strong>($content = null)
         </code>
     </h3>
     <div class="details">
             
     
 
-                    <div class="method-description">
-                                    <p>Returns the heading components tag object</p>                                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a></td>
-            <td>the body tag object</td>
-        </tr>
-    </table>
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendH2">
+        <div class="location">in <a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendH2"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a> at         line 39</div>
+        <code>                    
+    <strong>appendH2</strong>($content = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendArticle">
+        <div class="location">in <a href="../../../Sphp/Html/Content/ContentCreatorTrait.html#method_appendArticle"><abbr title="Sphp\Html\Content\ContentCreatorTrait">ContentCreatorTrait</abbr></a> at         line 46</div>
+        <code>                    
+    <strong>appendArticle</strong>($content = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>
