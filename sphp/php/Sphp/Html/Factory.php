@@ -15,6 +15,7 @@ use ReflectionClass;
  *
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
+ * @method \Sphp\Html\Content\Paragraph p(mixed $content = null) creates a new `p` tag component
  * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new `a` tag component
  * 
  * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new rectangle `area` tag component
@@ -47,7 +48,7 @@ abstract class Factory {
    */
   private static $tags = array(
       'a' => Navigation\Hyperlink::class,
-      'aside' => Sections\Aside::class,
+      'aside' => Content\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,
       'br' => EmptyTag::class,
@@ -88,6 +89,7 @@ abstract class Factory {
       'figure' => Media\Figure::class,
       'footer' => ContainerTag::class,
       'header' => ContainerTag::class,
+      'main' => Content\Main::class,
       'hgroup' => ContainerTag::class,
       'h1' => Headings\H1::class,
       'h2' => Headings\H2::class,
@@ -115,12 +117,12 @@ abstract class Factory {
       'dl' => Lists\Dl::class,
       'dt' => Lists\Dt::class,
       'output' => ContainerTag::class,
-      'p' => Sections\Paragraph::class,
+      'p' => Content\Paragraph::class,
       'param' => EmptyTag::class,
       'scriptCode' => Programming\ScriptCode::class,
       'scriptSrc' => Programming\ScriptSrc::class,
       'noscript' => Programming\Noscript::class,
-      'section' => Sections\Section::class,
+      'section' => Content\Section::class,
       'select' => Forms\Inputs\Menus\Select::class,
       'iframe' => Media\Iframe::class,
       'img' => Media\Img::class,
@@ -161,7 +163,7 @@ abstract class Factory {
       'bdo' => ContainerTag::class,
       'big' => ContainerTag::class,
       'blockquote' => ContainerTag::class,
-      'article' => ContainerTag::class,
+      'article' => Content\Article::class,
       'b' => ContainerTag::class,
       'small' => ContainerTag::class,
       'abbr' => ContainerTag::class,

@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Core\Colourable;
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 use Sphp\Html\Span;
-use Sphp\Html\Sections\Paragraph;
+use Sphp\Html\Content\Paragraph;
 
 /**
  * Implements a Progress Bar

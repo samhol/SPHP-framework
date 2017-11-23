@@ -99,7 +99,7 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showForAllScreenSizes">showForAllScreenSizes</a>()
+                    <a href="#method_showForAll">showForAll</a>()
         
                                             <p>Sets the component visible for all screen sizes</p>                </div>
                 <div class="col-md-2"></div>
@@ -109,7 +109,7 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hideOnlyFromSize">hideOnlyFromSize</a>(string $screenType)
+                    <a href="#method_hideOnlyForSize">hideOnlyForSize</a>(string|string[] $sizes)
         
                                             <p>Hides the component for the given screen sizes only</p>                </div>
                 <div class="col-md-2"></div>
@@ -119,20 +119,9 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showOnlyFor">showOnlyFor</a>(string $screenType)
+                    <a href="#method_showOnlyFor">showOnlyFor</a>(string|string[] $sizes)
         
                                             <p>Shows the component for the given screen sizes only</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clearVisibilitySettings">clearVisibilitySettings</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -162,10 +151,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_showForAllScreenSizes">
+                    <h3 id="method_showForAll">
         <div class="location">at         line 25</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>showForAllScreenSizes</strong>()
+    <strong>showForAll</strong>()
         </code>
     </h3>
     <div class="details">
@@ -192,10 +181,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_hideOnlyFromSize">
+                    <h3 id="method_hideOnlyForSize">
         <div class="location">at         line 44</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>hideOnlyFromSize</strong>(string $screenType)
+    <strong>hideOnlyForSize</strong>(string|string[] $sizes)
         </code>
     </h3>
     <div class="details">
@@ -209,8 +198,8 @@
 <li><code>"small"</code>: screen widths 0px - 640px</li>
 <li><code>"medium"</code>: screen widths 641px - 1024px</li>
 <li><code>"large"</code>: screen widths 1025px - 1440px)</li>
-<li><code>"x-large"</code>: screen widths 1441px - 1920px</li>
-<li><code>"xx-large"</code>: all screen widths from 1921px...</li>
+<li><code>"xlarge"</code>: screen widths 1441px - 1920px</li>
+<li><code>"xxlarge"</code>: all screen widths from 1921px...</li>
 </ul>
 </p>                            </div>
                 <div class="tags">
@@ -218,9 +207,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$screenType</td>
-                <td>the targeted screen size flags as a bitmask</td>
+                <td>string|string[]</td>
+                <td>$sizes</td>
+                <td>the targeted screen sizes</td>
             </tr>
             </table>
 
@@ -254,7 +243,7 @@
                     <h3 id="method_showOnlyFor">
         <div class="location">at         line 63</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>showOnlyFor</strong>(string $screenType)
+    <strong>showOnlyFor</strong>(string|string[] $sizes)
         </code>
     </h3>
     <div class="details">
@@ -268,8 +257,8 @@
 <li><code>"small"</code>: screen widths 0px - 640px</li>
 <li><code>"medium"</code>: screen widths 641px - 1024px</li>
 <li><code>"large"</code>: screen widths 1025px - 1440px)</li>
-<li><code>"x-large"</code>: screen widths 1441px - 1920px</li>
-<li><code>"xx-large"</code>: all screen widths from 1921px...</li>
+<li><code>"xlarge"</code>: screen widths 1441px - 1920px</li>
+<li><code>"xxlarge"</code>: all screen widths from 1921px...</li>
 </ul>
 </p>                            </div>
                 <div class="tags">
@@ -277,9 +266,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$screenType</td>
-                <td>the targeted screensize flags as a bitmask</td>
+                <td>string|string[]</td>
+                <td>$sizes</td>
+                <td>the targeted screen sizes</td>
             </tr>
             </table>
 
@@ -310,36 +299,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_clearVisibilitySettings">
-        <div class="location">at         line 70</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>clearVisibilitySettings</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_hideForPortrait">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 71</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
     <strong>hideForPortrait</strong>(bool $hide = true)
         </code>
@@ -379,7 +340,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hideForLandscape">
-        <div class="location">at         line 86</div>
+        <div class="location">at         line 79</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
     <strong>hideForLandscape</strong>(bool $hide = true)
         </code>

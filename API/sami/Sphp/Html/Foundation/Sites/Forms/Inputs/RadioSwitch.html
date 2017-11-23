@@ -272,7 +272,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name = null, string|null $value = null, bool $checked = false, <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $screenReaderLabel = &#039;&#039;)
+                    <a href="#method___construct">__construct</a>(string $name = null, string|null $value = null, bool $checked = false, string $screenReaderLabel = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -339,23 +339,23 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+                    <a href="../../../../../../Sphp/Html/Forms/Label.html"><abbr title="Sphp\Html\Forms\Label">Label</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setScreenReaderLabel">setScreenReaderLabel</a>(<a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $label)
+                    <a href="#method_createPaddle">createPaddle</a>()
         
-                                            <p>Sets the inner label for screen reader text</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setScreenReaderLabel"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a></small></div>
+                                            <p>Creates paddle component for switch</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_createPaddle"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getScreeReaderLabel">getScreeReaderLabel</a>()
+                    <a href="#method_setScreenReaderLabel">setScreenReaderLabel</a>(string $label = null)
         
-                                            <p>Returns the inner label for screen reader text</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_getScreeReaderLabel"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a></small></div>
+                                            <p>Sets the inner label for screen reader text</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setScreenReaderLabel"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -382,7 +382,7 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setInnerLabels">setInnerLabels</a>(string $active, string $inactive)
+                    <a href="#method_setInnerLabels">setInnerLabels</a>(string $active = null, string $inactive = null)
         
                                             <p>Sets the active and inactive text inside of a switch</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setInnerLabels"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a></small></div>
@@ -1106,9 +1106,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 35</div>
+        <div class="location">at         line 34</div>
         <code>                    
-    <strong>__construct</strong>(string $name = null, string|null $value = null, bool $checked = false, <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $screenReaderLabel = &#039;&#039;)
+    <strong>__construct</strong>(string $name = null, string|null $value = null, bool $checked = false, string $screenReaderLabel = null)
         </code>
     </h3>
     <div class="details">
@@ -1137,7 +1137,7 @@
                 <td>is component checked</td>
             </tr>
                     <tr>
-                <td><a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string</td>
+                <td>string</td>
                 <td>$screenReaderLabel</td>
                 <td>the screen reader label or its textual content</td>
             </tr>
@@ -1323,10 +1323,40 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_createPaddle">
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_createPaddle"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 69</div>
+        <code>            protected        <a href="../../../../../../Sphp/Html/Forms/Label.html"><abbr title="Sphp\Html\Forms\Label">Label</abbr></a>
+    <strong>createPaddle</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates paddle component for switch</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../Sphp/Html/Forms/Label.html"><abbr title="Sphp\Html\Forms\Label">Label</abbr></a></td>
+            <td>paddle component for switch</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setScreenReaderLabel">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setScreenReaderLabel"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 73</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setScreenReaderLabel"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 92</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>setScreenReaderLabel</strong>(<a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $label)
+    <strong>setScreenReaderLabel</strong>(string $label = null)
         </code>
     </h3>
     <div class="details">
@@ -1340,7 +1370,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string</td>
+                <td>string</td>
                 <td>$label</td>
                 <td>the screen reader label or its textual content</td>
             </tr>
@@ -1363,38 +1393,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getScreeReaderLabel">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_getScreeReaderLabel"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 82</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>
-    <strong>getScreeReaderLabel</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the inner label for screen reader text</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a></td>
-            <td>the inner label for screen reader text</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setSize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 102</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 110</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\$this">$this</abbr>
     <strong>setSize</strong>(string $size)
         </code>
@@ -1442,7 +1442,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_resetSize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_resetSize"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 115</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_resetSize"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 123</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\$this">$this</abbr>
     <strong>resetSize</strong>()
         </code>
@@ -1472,9 +1472,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setInnerLabels">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setInnerLabels"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 128</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSwitch.html#method_setInnerLabels"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSwitch">AbstractSwitch</abbr></a> at         line 136</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\$this">$this</abbr>
-    <strong>setInnerLabels</strong>(string $active, string $inactive)
+    <strong>setInnerLabels</strong>(string $active = null, string $inactive = null)
         </code>
     </h3>
     <div class="details">

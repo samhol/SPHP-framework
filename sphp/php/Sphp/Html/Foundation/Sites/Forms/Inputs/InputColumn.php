@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
-use Sphp\Html\Sections\Paragraph;
+use Sphp\Html\Content\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
 use Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManager;

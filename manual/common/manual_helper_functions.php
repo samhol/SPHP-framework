@@ -81,8 +81,8 @@ function w3schools(): W3schools {
  * 
  * @return FoundationDocsLinker 
  */
-function Foundation(): FoundationDocsLinker {
-  return Apis::foundation();
+function foundation(): FoundationDocsLinker {
+  return Apis::foundation('foundation');
 }
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;

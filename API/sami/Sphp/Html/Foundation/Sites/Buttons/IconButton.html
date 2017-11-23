@@ -309,7 +309,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $icon, <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $screenReaderLabel = &quot;&quot;)
+                    <a href="#method___construct">__construct</a>(string $icon, string $screenReaderLabel = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -421,17 +421,6 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasOneOf">hasOneOf</a>(array $group)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/LayoutAdapterTrait.html#method_hasOneOf"><abbr title="Sphp\Html\Foundation\Sites\Core\LayoutAdapterTrait">LayoutAdapterTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_setBoolean">setBoolean</a>(bool $set = true, string $classes)
         
                                             <p class="no-description">No description</p>
@@ -485,19 +474,9 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setScreenReaderLabel">setScreenReaderLabel</a>(<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $label)
+                    <a href="#method_setScreenReaderLabel">setScreenReaderLabel</a>(string $label = null)
         
-                                            <p>Sets the screen reader-only label</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getScreeReaderLabel">getScreeReaderLabel</a>()
-        
-                                            <p>Returns the inner label for screen reader text</p>                </div>
+                                            <p>Sets the inner label for screen reader text</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1110,7 +1089,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 46</div>
         <code>                    
-    <strong>__construct</strong>(string $icon, <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $screenReaderLabel = &quot;&quot;)
+    <strong>__construct</strong>(string $icon, string $screenReaderLabel = null)
         </code>
     </h3>
     <div class="details">
@@ -1129,7 +1108,7 @@
                 <td>Foundation Icon Font name</td>
             </tr>
                     <tr>
-                <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string</td>
+                <td>string</td>
                 <td>$screenReaderLabel</td>
                 <td>the screen reader label or its textual content</td>
             </tr>
@@ -1247,7 +1226,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 74</div>
+        <div class="location">at         line 59</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1467,47 +1446,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_hasOneOf">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/LayoutAdapterTrait.html#method_hasOneOf"><abbr title="Sphp\Html\Foundation\Sites\Core\LayoutAdapterTrait">LayoutAdapterTrait</abbr></a> at         line 52</div>
-        <code>            protected        <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>hasOneOf</strong>(array $group)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$group</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setBoolean">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/LayoutAdapterTrait.html#method_setBoolean"><abbr title="Sphp\Html\Foundation\Sites\Core\LayoutAdapterTrait">LayoutAdapterTrait</abbr></a> at         line 67</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/LayoutAdapterTrait.html#method_setBoolean"><abbr title="Sphp\Html\Foundation\Sites\Core\LayoutAdapterTrait">LayoutAdapterTrait</abbr></a> at         line 52</div>
+        <code>            protected        <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
     <strong>setBoolean</strong>(bool $set = true, string $classes)
         </code>
     </h3>
@@ -1549,7 +1490,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setColor">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a> at         line 57</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a> at         line 56</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
     <strong>setColor</strong>(string $style = null)
         </code>
@@ -1715,9 +1656,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setScreenReaderLabel">
-        <div class="location">at         line 61</div>
+        <div class="location">at         line 54</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>setScreenReaderLabel</strong>(<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $label)
+    <strong>setScreenReaderLabel</strong>(string $label = null)
         </code>
     </h3>
     <div class="details">
@@ -1725,13 +1666,13 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the screen reader-only label</p>                                                </div>
+                                    <p>Sets the inner label for screen reader text</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string</td>
+                <td>string</td>
                 <td>$label</td>
                 <td>the screen reader label or its textual content</td>
             </tr>
@@ -1744,36 +1685,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
         <tr>
             <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
             <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getScreeReaderLabel">
-        <div class="location">at         line 70</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>
-    <strong>getScreeReaderLabel</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the inner label for screen reader text</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a></td>
-            <td>the inner label for screen reader text</td>
         </tr>
     </table>
 

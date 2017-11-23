@@ -23,7 +23,7 @@ trait ContainerComponentTrait {
    *
    * @return ContainerInterface the inner content container
    */
-  abstract protected function getInnerContainer();
+  abstract protected function getInnerContainer(): ContainerInterface;
 
   /**
    * Appends content to the component

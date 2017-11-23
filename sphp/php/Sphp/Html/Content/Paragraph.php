@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Sections;
+namespace Sphp\Html\Content;
 
 use Sphp\Html\ContainerTag;
 use Sphp\Html\AjaxLoaderInterface;
@@ -37,6 +37,12 @@ class Paragraph extends ContainerTag implements AjaxLoaderInterface {
 
   public function __invoke($content = null) {
     $this->replaceContent($content);
+    return $this;
+  }
+  
+  public function appendMd(string $md) {
+    $parsed = \ParsedownExtraPlugin::instance()->line($md);
+    $this->append($parsed);
     return $this;
   }
 

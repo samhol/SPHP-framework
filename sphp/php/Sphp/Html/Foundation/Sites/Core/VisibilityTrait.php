@@ -20,14 +20,12 @@ use Sphp\Html\Attributes\ClassAttribute;
  */
 trait VisibilityTrait {
 
-
   /**
    * Returns the class attribute object
    * 
    * @return ClassAttribute the class attribute object
    */
   abstract public function cssClasses(): ClassAttribute;
-
 
   /**
    * 
@@ -68,7 +66,7 @@ trait VisibilityTrait {
   /**
    * **Important!**
    * 
-   * Overrides all previous sreen size related visibility settings
+   * Overrides all previous screen size related visibility settings
    * 
    * @param  string $smaller
    * @param  string $larger
@@ -106,7 +104,7 @@ trait VisibilityTrait {
    *         valid screen size
    */
   public function hideOnlyForSize(... $sizes) {
-    $sizes = Arrays::flatten($sizes); 
+    $sizes = Arrays::flatten($sizes);
     foreach (Arrays::flatten($sizes) as $size) {
       if (!Screen::sizeExists($size)) {
         throw new InvalidArgumentException("Screen size '$size' was not recognized");
@@ -165,7 +163,6 @@ trait VisibilityTrait {
             ->remove($classes);
     return $this;
   }
-
 
   /**
    * Sets/unsets the component visible only for landscape orientation
