@@ -66,7 +66,7 @@ abstract class Filesystem {
         throw new RuntimeException("Parsing the file '$path' failed");
       }
     }
-    return file_get_contents($path, false);
+    return $data;
   }
 
   /**

@@ -12,9 +12,9 @@ Here are grouped lists of the HTML5 components and the corresponding PHP types.
 MD
 );
 
-use Sphp\Stdlib\Reader\Yaml;
+use Sphp\Stdlib\Parser;
 
-$data = (new Yaml())->fromFile('manual/yaml/document_data.yml');
+$data = Parser::getReaderFor('yml')->fromFile('manual/yaml/document_data.yml');
 
 //print_r($data);
 

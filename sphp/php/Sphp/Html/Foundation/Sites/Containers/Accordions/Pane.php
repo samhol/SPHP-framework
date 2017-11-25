@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
+use Sphp\Html\AjaxLoader as AjaxLoaderInterface;
 use Sphp\Html\ContainerTag;
 use Sphp\Html\Div;
 

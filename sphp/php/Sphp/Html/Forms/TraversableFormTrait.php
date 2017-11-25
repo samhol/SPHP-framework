@@ -82,19 +82,4 @@ trait TraversableFormTrait {
     return $this;
   }
 
-  /**
-   * Returns the data presented in the input fields of the form
-   * 
-   * @return mixed[] the data array
-   */
-  public function getData() {
-    $data = [];
-    foreach ($this->getNamedInputComponents() as $val) {
-      $a = [];
-      parse_str($val->getName() . "=" . $val->getValue(), $a);
-      $data = array_merge($data, $a);
-    }
-    return $data;
-  }
-
 }

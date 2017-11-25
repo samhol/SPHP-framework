@@ -18,13 +18,11 @@ use Sphp\Html\Foundation\Sites\Forms\SearchForm;
  */
 class FreefindSearchForm extends SearchForm {
 
-  private $pid, $si, $bcd;
   private $additionalControls = false;
 
-  public function __construct($pid = '', $si = '', $bcd = '', $n = '') {
-
+  public function __construct(array $data = []) {
     parent::__construct('http://search.freefind.com/find.html', 'get');
-    $this->setBcd($bcd)->setN($n)->setPid($pid)->setSi($si);
+    $this->setHiddenData($data);
   }
 
   public function getAdditionalControls() {
@@ -33,46 +31,6 @@ class FreefindSearchForm extends SearchForm {
 
   public function setAdditionalControls($additionalControls) {
     $this->additionalControls = $additionalControls;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $pid the value of the hidden attribute
-   * @return $this for a fluent interface
-   */
-  public function setPid($pid) {
-    $this->getHiddenData()['pid'] = $pid;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $si the value of the hidden attribute
-   * @return $this for a fluent interface
-   */
-  public function setSi($si) {
-    $this->getHiddenData()['si'] = $si;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $bcd the value of the hidden attribute
-   * @return $this for a fluent interface
-   */
-  public function setBcd($bcd) {
-    $this->getHiddenData()['bcd'] = $bcd;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $n the value of the hidden attribute
-   * @return $this for a fluent interface
-   */
-  public function setN($n) {
-    $this->getHiddenData()['n'] = $n;
     return $this;
   }
 

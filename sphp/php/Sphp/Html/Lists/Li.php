@@ -8,7 +8,7 @@
 namespace Sphp\Html\Lists;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\AjaxLoaderInterface;
+use Sphp\Html\AjaxLoader;
 
 /**
  * Implements an HTML-list element &lt;li&gt; tag
@@ -18,7 +18,7 @@ use Sphp\Html\AjaxLoaderInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Li extends ContainerTag implements LiInterface, AjaxLoaderInterface {
+class Li extends ContainerTag implements LiInterface, AjaxLoader {
 
   use \Sphp\Html\AjaxLoaderTrait;
 

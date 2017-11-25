@@ -20,7 +20,8 @@ use Sphp\Html\Attributes\PropertyAttribute;
  */
 trait IdentifiableComponentTrait {
 
-  use ContentTrait;
+  use ContentTrait,
+      IdentifiableTrait;
 
   /**
    * Returns the attribute manager attached to the component
@@ -159,31 +160,6 @@ trait IdentifiableComponentTrait {
    */
   public function attrExists(string $name): bool {
     return $this->attrs()->exists($name);
-  }
-
-  /**
-   * Identifies the element with an unique id attribute.
-   *
-   * **Notes:**
-   *
-   * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
-   * 
-   * @param  int $length the length of the identity value
-   * @return string 
-   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
-   */
-  public function identify(int $length = 16): string {
-    return $this->attrs()->identify($length);
-  }
-
-  /**
-   * Checks whether the identifying attribute is set or not
-   *
-   * @return boolean true if the identity is set, otherwise false
-   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
-   */
-  public function hasId(): bool {
-    return $this->attrs()->hasId();
   }
 
 }

@@ -1,29 +1,32 @@
 <?php
 
 /**
- * Ini.php (UTF-8)
+ * Json.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib\Reader;
+namespace Sphp\Stdlib\Readers;
 
-use Zend\Config\Reader\Ini as ZendIni;
 use Exception;
-use RuntimeException;
+use Zend\Config\Reader\Json as JsonFormat;
 
 /**
- * INI config reader.
+ * Implements JSON reader
+ * 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
-class Ini extends AbstractReader {
+class Json extends AbstractReader {
 
   /**
    *
-   * @var ZendIni 
+   * @var JsonFormat 
    */
   private $parser;
 
   public function __construct() {
-    $this->parser = new ZendIni();
+    $this->parser = new JsonFormat();
   }
 
   public function fromString(string $string) {

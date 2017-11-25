@@ -1,0 +1,6 @@
+## YAML Template.
+---
+
+host: 'mysql:host=Localhost;dbname=int48291_playground;charset=utf8mb4'
+user: 'int48291_player'
+password: '^E1tT{bEs&}-'

@@ -23,8 +23,7 @@ trait ContentCreatorTrait {
   abstract protected function append($content);
 
   public function appendParagraph($content = null): Paragraph {
-    $component = Factory::p();
-    $component->append($content);
+    $component = new Paragraph($content);
     $this->append($component);
     return $component;
   }
@@ -44,8 +43,13 @@ trait ContentCreatorTrait {
   }
 
   public function appendArticle($content = null): Article {
-    $component = Factory::article();
-    $component->append($content);
+    $component = new Article($content);
+    $this->append($component);
+    return $component;
+  }
+
+  public function appendSection($content = null): Section {
+    $component = new Section($content);
     $this->append($component);
     return $component;
   }

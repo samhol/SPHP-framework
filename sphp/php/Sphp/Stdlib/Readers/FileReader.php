@@ -1,11 +1,11 @@
 <?php
 
 /**
- * FileReaderInterface.php (UTF-8)
+ * FileReader.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib\Reader;
+namespace Sphp\Stdlib\Readers;
 
 use Sphp\Exceptions\RuntimeException;
 
@@ -16,7 +16,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface FileReaderInterface {
+interface FileReader {
 
   /**
    * Read from a file and create an array

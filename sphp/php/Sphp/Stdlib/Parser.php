@@ -8,10 +8,11 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Stdlib\Reader\ReaderInterface;
+use Sphp\Exceptions\InvalidAttributeException;
+use Sphp\Stdlib\Readers\Reader;
 
 /**
- * Description of Factory
+ * Implements a general parser factory
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -23,26 +24,24 @@ abstract class Parser {
    * @var string[]
    */
   private static $readers = array(
-      'php' => 'php',
-      'ini' => Reader\Ini::class,
-      'json' => Reader\Json::class,
-      'yaml' => Reader\Yaml::class,
-      'yml' => Reader\Yaml::class,
-      'markdown' => Reader\Markdown::class,
-      'mdown' => Reader\Markdown::class,
-      'mkdn' => Reader\Markdown::class,
-      'md' => Reader\Markdown::class,
-      'mkd' => Reader\Markdown::class,
-      'mdwn' => Reader\Markdown::class,
-      'mdtxt' => Reader\Markdown::class,
-      'mdtext' => Reader\Markdown::class,
-      'text' => Reader\Markdown::class,
-      'Rmd' => Reader\Markdown::class,
+      'ini' => Readers\Ini::class,
+      'json' => Readers\Json::class,
+      'yaml' => Readers\Yaml::class,
+      'yml' => Readers\Yaml::class,
+      'markdown' => Readers\Markdown::class,
+      'mdown' => Readers\Markdown::class,
+      'mkdn' => Readers\Markdown::class,
+      'md' => Readers\Markdown::class,
+      'mkd' => Readers\Markdown::class,
+      'mdwn' => Readers\Markdown::class,
+      'mdtxt' => Readers\Markdown::class,
+      'mdtext' => Readers\Markdown::class,
+      'text' => Readers\Markdown::class,
+      'Rmd' => Readers\Markdown::class,
   );
 
   /**
-   *
-   * @var ReaderInterface[]
+   * @var Reader[]
    */
   private static $instances = [];
 
@@ -52,34 +51,36 @@ abstract class Parser {
    * @return bool
    */
   public static function readerExists(string $type): bool {
-    return array_key_exists($type, static::$readers);
+    return isset(static::$readers[$type]);
   }
 
   /**
-   * 
+   *  
    * @param  string $type
-   * @return ReaderInterface
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @return Reader
+   * @throws InvalidAttributeException
    */
-  public static function getReader(string $type) {
+  public static function getReaderFor(string $type): Reader {
     if (!static::readerExists($type)) {
-      throw new RuntimeException("Unsupported data type: '$type'");
+      throw new InvalidAttributeException("Unsupported data type: '$type'");
     }
     $readerType = static::$readers[$type];
-    if (!array_key_exists($readerType, static::$instances)) {
+    if (!isset(static::$instances[$readerType])) {
       static::$instances[$readerType] = new $readerType;
     }
     return static::$instances[$readerType];
   }
 
   /**
+   * Parses given file to certain output format
    * 
-   * @param  string $filepath
-   * @param  string $extension
-   * @return mixed
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @param  string $filepath path to the input file
+   * @param  string|null $extension optional file type extension
+   * @return mixed parsed output
+   * @throws RuntimeException
+   * @throws InvalidArgumentException
    */
-  public static function fromFile(string$filepath, string $extension = null) {
+  public static function fromFile(string $filepath, string $extension = null) {
     $fullPath = Filesystem::getFullPath($filepath);
     if (!file_exists($fullPath)) {
       throw new RuntimeException(sprintf(
@@ -95,17 +96,8 @@ abstract class Parser {
       }
       $extension = strtolower($pathinfo['extension']);
     }
-    if ($extension === 'php') {
-      if (!is_file($fullPath) || !is_readable($fullPath)) {
-        throw new RuntimeException("File '$filepath' doesn't exist or not readable");
-      }
-      $config = include $filepath;
-    } else if (array_key_exists($extension, static::$readers)) {
-      $reader = static::getReader($extension);
-      $config = $reader->fromFile($fullPath);
-    } else {
-      throw new RuntimeException("Unsupported file type: .$extension");
-    }
+    $reader = static::getReaderFor($extension);
+    $config = $reader->fromFile($fullPath);
     return $config;
   }
 
@@ -118,7 +110,7 @@ abstract class Parser {
    */
   public static function fromString(string $string, string $extension) {
     if (array_key_exists($extension, static::$readers)) {
-      $reader = static::getReader($extension);
+      $reader = static::getReaderFor($extension);
       $parsed = $reader->fromString($string);
     } else {
       throw new RuntimeException("Unsupported data type: .$extension");

@@ -10,12 +10,13 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
- * Trait implements {@link AjaxLoaderInterface} functionality
+ * Trait implements  ajax loader functionality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://api.jquery.com/load/ jQuery load()
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
+ * @link AjaxLoader
  */
 trait AjaxLoaderTrait {
 

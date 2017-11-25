@@ -21,8 +21,33 @@ use ParsedownExtraPlugin;
 class Markdown extends AbstractReader {
 
   public function fromString(string $string) {
+    return $this->parseBlock($string);
+  }
+
+  /**
+   * 
+   * @param  string $string
+   * @return string
+   * @throws RuntimeException
+   */
+  public function parseBlock(string $string): string {
     try {
       $data = ParsedownExtraPlugin::instance()->text($string);
+    } catch (Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    return $data;
+  }
+
+  /**
+   * 
+   * @param  string $string
+   * @return string
+   * @throws RuntimeException
+   */
+  public function parseInline(string $string): string {
+    try {
+      $data = ParsedownExtraPlugin::instance()->line($string);
     } catch (Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }

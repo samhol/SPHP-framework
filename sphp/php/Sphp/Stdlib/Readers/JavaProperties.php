@@ -18,7 +18,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class JavaProperties implements ReaderInterface {
+class JavaProperties implements Reader {
 
   /**
    *

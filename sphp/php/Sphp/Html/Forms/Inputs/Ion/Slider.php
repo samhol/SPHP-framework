@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a jQuery based range slider with skin support

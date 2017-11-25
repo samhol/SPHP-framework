@@ -29,13 +29,6 @@ interface TraversableFormInterface extends FormInterface, \Sphp\Html\Traversable
   public function setData(array $data = [], $filter = true);
 
   /**
-   * Returns the data presented in the input fields of the form
-   * 
-   * @return mixed[] the data object
-   */
-  public function getData();
-
-  /**
    * Appends a hidden variable into the form
    *
    * Appended <var>$name => $value</var> pair is stored into a

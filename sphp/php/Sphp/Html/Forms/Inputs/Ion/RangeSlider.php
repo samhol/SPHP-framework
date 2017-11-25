@@ -28,7 +28,7 @@ class RangeSlider extends AbstractSlider {
    * @param  int $step the length of a single step
    * @throws InvalidArgumentException if the $value is not between the range
    */
-  public function __construct($name = null, int $start = 0, int $end = 100, int $step = 1) {
+  public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step, [$start, $end]);
     $this->attrs()->protect('data-type', 'double');
   }
@@ -38,7 +38,7 @@ class RangeSlider extends AbstractSlider {
    * 
    * @return string separator for double values in input value property
    */
-  public function getInputValueSeparator() {
+  public function getInputValueSeparator(): string {
     $separator = ';';
     if ($this->attrs()->exists('data-input-values-separator')) {
       $separator = $this->attrs()->getValue('data-input-values-separator');
@@ -52,7 +52,7 @@ class RangeSlider extends AbstractSlider {
    * @param  string $separator separator for double values in input value property
    * @return $this for a fluent interface
    */
-  public function setInputValueSeparator($separator) {
+  public function setInputValueSeparator(string $separator) {
     $this->attrs()->set('data-input-values-separator', $separator);
     return $this;
   }

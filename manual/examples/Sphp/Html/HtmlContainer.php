@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Sections\Paragraph;
+use Sphp\Html\Content\Paragraph;
 
 $container = new Container();
 $container["heading"] = (new Headings\H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");

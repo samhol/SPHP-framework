@@ -18,7 +18,7 @@ use DateTimeImmutable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterface {
+class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoader {
 
   use AjaxLoaderTrait;
 

@@ -8,7 +8,7 @@ $documentClass = Manual\api()->classLinker(Document::class);
 $htmlClass = Manual\api()->classLinker(Html::class);
 Manual\parseDown(<<<MD
 ##COMPONENT FACTORIES 
-      
+Framework has several Factory classes for various object types.
 ##The $documentClass class
 This class can be used to create the structure of any HTML document.
         

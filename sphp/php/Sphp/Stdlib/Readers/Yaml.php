@@ -5,14 +5,14 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib\Reader;
+namespace Sphp\Stdlib\Readers;
 
 use Exception;
 use Sphp\Exceptions\RuntimeException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 /**
- * Implements a YAML reader
+ * Implements a YAML to array reader
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

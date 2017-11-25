@@ -20,7 +20,7 @@ namespace Sphp\Html;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Div extends ContainerTag implements AjaxLoaderInterface {
+class Div extends ContainerTag implements AjaxLoader {
 
   use AjaxLoaderTrait;
 

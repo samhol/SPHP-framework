@@ -41,7 +41,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
    */
   private $hiddenData;
 
-  public function __construct($action = null, $method = 'get') {
+  public function __construct(string $action = null, string $method = 'get') {
     parent::__construct('form');
     $this->setAction($action)
             ->setMethod($method)
@@ -91,16 +91,14 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
 
   public function contentToString(): string {
     $output = $this->hiddenData->getHtml();
-    $output .= '
-  <div class="input-group">';
+    $output .= '<div class="input-group">';
     if ($this->showLabel) {
       $output .= '<span class="input-group-label">Search for:</span>';
     }
     $output .= $this->searchField->getHtml();
     $output .= '<div class="input-group-button">
       ' . $this->submitButton->getHtml() . '
-    </div>
-  </div>';
+    </div></div>';
     return $output;
   }
 

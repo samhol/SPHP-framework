@@ -3,15 +3,15 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$table = \Sphp\Manual\api()->classLinker(Table::class);
-$tr = \Sphp\Manual\api()->classLinker(Tr::class);
-$td = \Sphp\Manual\api()->classLinker(Td::class);
-$th = \Sphp\Manual\api()->classLinker(Th::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$w3schools = Apis::w3schools();
-\Sphp\Manual\parseDown(<<<MD
+$table = Manual\api()->classLinker(Table::class);
+$tr = Manual\api()->classLinker(Tr::class);
+$td = Manual\api()->classLinker(Td::class);
+$th = Manual\api()->classLinker(Th::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$w3schools = Manual\w3schools();
+Manual\parseDown(<<<MD
 #HTML TABLES: <small>for tabular data</small>
 
 $ns
@@ -33,25 +33,26 @@ The $td elements are the data containers in the $table.
 The $td elements can contain all sorts of HTML elements like text, images, lists, other tables, etc.
 MD
 );
-$example = new CodeExampleBuilder('Sphp/Html/Tables/Table.php', false, true);
-$example->setExamplePaneTitle('HTML table example');
-$example->printHtml();
-$tableBuilder = \Sphp\Manual\api()->classLinker(TableBuilder::class);
-\Sphp\Manual\parseDown(<<<MD
+Manual\example('Sphp/Html/Tables/Table.php', null, true)
+        ->setExamplePaneTitle('HTML table example')
+        ->printHtml();
+
+$tableBuilder = Manual\api()->classLinker(TableBuilder::class);
+Manual\parseDown(<<<MD
 ##TABLE BUILDER: <small>The $tableBuilder Class</small>
 
 This builder is able to generate tables from data sources
 MD
 );
-$example->setExamplePaneTitle('HTML table builder example');
-$example->setPath('Sphp/Html/Tables/TableBuilder.php');
-$example->printHtml();
-\Sphp\Manual\parseDown(<<<MD
+Manual\example('Sphp/Html/Tables/TableBuilder.php')
+        ->setExamplePaneTitle('HTML table builder example')
+        ->printHtml();
+Manual\parseDown(<<<MD
 ###HTML TABLES FROM CSV-FILES: <small>The $tableBuilder Class as a factory</small>
 
 {$tableBuilder->methodLink('fromCsvFile')} is a factory method for generating tables from CSV files.
 MD
 );
-$example->setExamplePaneTitle('HTML table factory example');
-$example->setPath('Sphp/Html/Tables/Factory.php');
-$example->printHtml();
+Manual\example('Sphp/Html/Tables/Factory.php')
+        ->setExamplePaneTitle('HTML table factory example')
+        ->printHtml();

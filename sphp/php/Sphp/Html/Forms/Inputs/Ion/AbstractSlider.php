@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms\Inputs\Ion;
 use Sphp\Html\Forms\Inputs\AbstractInputTag;
 use Sphp\Html\Forms\Inputs\SliderInterface;
 use Sphp\Html\Forms\Inputs\InputTrait;
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements jQuery range slider with skin support

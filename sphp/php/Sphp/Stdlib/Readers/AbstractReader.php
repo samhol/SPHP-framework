@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib\Reader;
+namespace Sphp\Stdlib\Readers;
 
 use Sphp\Exceptions\RuntimeException;
 
@@ -16,7 +16,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractReader implements ReaderInterface {
+abstract class AbstractReader implements Reader {
 
   public function fromFile($filename) {
     if (!is_file($filename) || !is_readable($filename)) {

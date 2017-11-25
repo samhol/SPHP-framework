@@ -26,7 +26,7 @@ class Document {
   private static $html = [];
 
   /**
-   * Returns the HTML component pointed by the given name
+   * Returns the `html` component pointed by the given name
    * 
    * @param  string|null $docName the name of the managed document
    * @return Html the `html` component pointed by the given name
@@ -55,7 +55,7 @@ class Document {
   }
 
   /**
-   * Returns the HTML `body` component pointed by the given name
+   * Returns the `body` component pointed by the given name
    * 
    * @param  string $docName the name of the managed document
    * @return Body the `body` component pointed by the given name
@@ -68,7 +68,7 @@ class Document {
   }
 
   /**
-   * Returns the HTML `head` component pointed by the given name
+   * Returns the `head` component pointed by the given name
    * 
    * @param  string $docName the name of the managed document
    * @return Head the `head` component pointed by the given name

@@ -15,7 +15,7 @@ echo \ParsedownExtra::instance()->text(<<<TEXT
 TEXT
 );
 
-$form = new FreefindSearchForm('r', '51613081', '&#247;', '0');
+$form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
 $form->showLabel(true);
 
 $form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');

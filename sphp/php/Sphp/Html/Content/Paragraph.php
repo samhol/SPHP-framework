@@ -8,7 +8,7 @@
 namespace Sphp\Html\Content;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\AjaxLoaderInterface;
+use Sphp\Html\AjaxLoader;
 
 /**
  * Implements an HTML &lt;p&gt; tag
@@ -21,7 +21,7 @@ use Sphp\Html\AjaxLoaderInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Paragraph extends ContainerTag implements AjaxLoaderInterface {
+class Paragraph extends ContainerTag implements AjaxLoader {
 
   use \Sphp\Html\AjaxLoaderTrait;
 

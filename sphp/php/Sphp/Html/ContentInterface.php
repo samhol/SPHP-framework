@@ -24,26 +24,26 @@ namespace Sphp\Html;
  */
 interface ContentInterface {
 
-	/**
-	 * Returns the component as HTML markup string
-	 *
-	 * @return string HTML markup of the component
-	 * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
-	 */
-	public function getHtml(): string;
+  /**
+   * Returns the component as HTML markup string
+   *
+   * @return string HTML markup of the component
+   * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
+   */
+  public function getHtml(): string;
 
-	/**
-	 * Returns the component as HTML markup string
-	 *
-	 * @return string HTML markup of the object
-	 * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
-	 */
-	public function __toString(): string;
+  /**
+   * Returns the component as HTML markup string
+   *
+   * @return string HTML markup of the object
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   */
+  public function __toString(): string;
 
-	/**
-	 * Prints the component as HTML markup string
-	 *
-	 * @return $this for a fluent interface
-	 */
-	public function printHtml();
+  /**
+   * Prints the component as HTML markup string
+   *
+   * @return $this for a fluent interface
+   */
+  public function printHtml();
 }

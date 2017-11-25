@@ -1,11 +1,11 @@
 <?php
 
 /**
- * StringReaderInterface.php (UTF-8)
+ * StringReader.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib\Reader;
+namespace Sphp\Stdlib\Readers;
 
 /**
  * Defines a string reader
@@ -14,13 +14,13 @@ namespace Sphp\Stdlib\Reader;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface StringReaderInterface {
+interface StringReader {
 
   /**
-   * Read from a string and create an array
+   * Read from a string and create an parses the input
    *
    * @param  string $string
-   * @return mixed 
+   * @return mixed output 
    */
   public function fromString(string $string);
 }

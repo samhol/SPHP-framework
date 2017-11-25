@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\AjaxLoaderInterface;
+use Sphp\Html\AjaxLoader;
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\ComponentInterface;
 
@@ -20,7 +20,7 @@ use Sphp\Html\ComponentInterface;
  * @filesource
  */
 
-class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoaderInterface {
+class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoader {
 
   /**
    * Constructs a new instance

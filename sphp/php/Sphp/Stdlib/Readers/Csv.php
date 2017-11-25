@@ -5,9 +5,8 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib\Reader;
+namespace Sphp\Stdlib\Readers;
 
-use Zend\Config\Reader\Ini as ZendIni;
 use Exception;
 use Sphp\Exceptions\RuntimeException;
 
@@ -19,16 +18,6 @@ use Sphp\Exceptions\RuntimeException;
  * @filesource
  */
 class Csv extends AbstractReader {
-
-  /**
-   *
-   * @var ZendIni 
-   */
-  private $parser;
-
-  public function __construct() {
-    $this->parser = new ZendIni();
-  }
 
   public function fromString(string $string) {
     try {

@@ -3,13 +3,12 @@
 namespace Sphp\Database;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-
-require_once('manual/PDO/configuration.php');
-$pdo = Apis::phpManual()->classLinker(\PDO::class);
-$db =  \Sphp\Manual\api()->classLinker(DB::class);
-\Sphp\Manual\parseDown(<<<MD
+require_once('manual/common/pdo.php');
+$pdo = Manual\php()->classLinker(\PDO::class);
+$db = Manual\api()->classLinker(DB::class);
+Manual\parseDown(<<<MD
 #DATABASE MANIPULATION <small>using statement builders</small>
 
 $db manages $pdo database connections and acts as a factory for all SQL statement builder objects.
@@ -23,10 +22,10 @@ MD
         ->loadFromFile('Sphp/Database/tables.sql')
         ->printHtml();
 
-\Sphp\Manual\loadPage('Sphp.Database.Insert');
-\Sphp\Manual\loadPage('Sphp.Database.Query');
-\Sphp\Manual\loadPage('Sphp.Database.Update');
-\Sphp\Manual\loadPage('Sphp.Database.Delete');
+Manual\loadPage('Sphp.Database.Insert');
+Manual\loadPage('Sphp.Database.Query');
+Manual\loadPage('Sphp.Database.Update');
+Manual\loadPage('Sphp.Database.Delete');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql');
 //CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'text');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');

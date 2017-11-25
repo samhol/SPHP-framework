@@ -23,7 +23,7 @@ namespace Sphp\Html;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface AjaxLoaderInterface {
+interface AjaxLoader {
 
   /**
    * Prepends the remote content into the component using jQuery Ajax
@@ -40,7 +40,7 @@ interface AjaxLoaderInterface {
    * Appends the remote content into the component using jQuery Ajax
    * 
    * **Important note:** 
-   * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
+   * This method overrides all previous calls of ajax loader methods.
    *
    * @param  string $url the URL to which the request is sent
    * @return $this for a fluent interface
