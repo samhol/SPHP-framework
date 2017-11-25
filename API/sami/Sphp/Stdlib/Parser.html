@@ -86,7 +86,7 @@
     
 
             <div class="description">
-            <p>Description of Factory</p>                                </div>
+            <p>Implements a general parser factory</p>                                </div>
     
     
     
@@ -107,10 +107,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../Sphp/Stdlib/Reader/ReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\ReaderInterface">ReaderInterface</abbr></a>
+                    static&nbsp;<a href="../../Sphp/Stdlib/Readers/Reader.html"><abbr title="Sphp\Stdlib\Readers\Reader">Reader</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getReader">getReader</a>(string $type)
+                    <a href="#method_getReaderFor">getReaderFor</a>(string $type)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -123,8 +123,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_fromFile">fromFile</a>(string $filepath, string $extension = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Parses given file to certain output format</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -146,7 +145,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_readerExists">
-        <div class="location">at         line 54</div>
+        <div class="location">at         line 53</div>
         <code>        static            bool
     <strong>readerExists</strong>(string $type)
         </code>
@@ -183,10 +182,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getReader">
-        <div class="location">at         line 64</div>
-        <code>        static            <a href="../../Sphp/Stdlib/Reader/ReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\ReaderInterface">ReaderInterface</abbr></a>
-    <strong>getReader</strong>(string $type)
+                    <h3 id="method_getReaderFor">
+        <div class="location">at         line 63</div>
+        <code>        static            <a href="../../Sphp/Stdlib/Readers/Reader.html"><abbr title="Sphp\Stdlib\Readers\Reader">Reader</abbr></a>
+    <strong>getReaderFor</strong>(string $type)
         </code>
     </h3>
     <div class="details">
@@ -209,7 +208,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Stdlib/Reader/ReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\ReaderInterface">ReaderInterface</abbr></a></td>
+            <td><a href="../../Sphp/Stdlib/Readers/Reader.html"><abbr title="Sphp\Stdlib\Readers\Reader">Reader</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -219,7 +218,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><abbr title="Sphp\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -231,7 +230,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromFile">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 83</div>
         <code>        static            mixed
     <strong>fromFile</strong>(string $filepath, string $extension = null)
         </code>
@@ -240,6 +239,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Parses given file to certain output format</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -247,12 +248,12 @@
                     <tr>
                 <td>string</td>
                 <td>$filepath</td>
-                <td></td>
+                <td>path to the input file</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$extension</td>
-                <td></td>
+                <td>optional file type extension</td>
             </tr>
             </table>
 
@@ -262,7 +263,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td>parsed output</td>
         </tr>
     </table>
 
@@ -274,6 +275,10 @@
                 <td><a href="../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><abbr title="Sphp\Stdlib\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -283,7 +288,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location">at         line 119</div>
+        <div class="location">at         line 111</div>
         <code>        static            mixed
     <strong>fromString</strong>(string $string, string $extension)
         </code>

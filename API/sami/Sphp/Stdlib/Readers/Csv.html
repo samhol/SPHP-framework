@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Stdlib\Reader\ReaderInterface | SPHP framework API</title>
+    <title>Sphp\Stdlib\Readers\Csv | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Stdlib_Reader_ReaderInterface" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Stdlib_Readers_Csv" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,27 +65,28 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Reader.html">Reader</a></li><li class="backslash">\</li><li>ReaderInterface</li>
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Readers.html">Readers</a></li><li class="backslash">\</li><li>Csv</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ReaderInterface
+            Csv
                 
         </h1>
     </div>
 
-    <p>    interface
-    <strong>ReaderInterface</strong>        implements
-        <a href="../../../Sphp/Stdlib/Reader/StringReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\StringReaderInterface">StringReaderInterface</abbr></a>, <a href="../../../Sphp/Stdlib/Reader/FileReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\FileReaderInterface">FileReaderInterface</abbr></a>
+    <p>    class
+    <strong>Csv</strong>        extends <a href="../../../Sphp/Stdlib/Readers/AbstractReader.html"><abbr title="Sphp\Stdlib\Readers\AbstractReader">AbstractReader</abbr></a>
 </p>
 
         
     
 
+            <div class="description">
+            <p>Implements a CSV data reader</p>                                </div>
     
     
     
@@ -98,20 +99,20 @@
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fromString">fromString</a>(string $string)
+                    <a href="#method_fromFile">fromFile</a>(string $filename)
         
-                                            <p>Read from a string and create an array</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Stdlib/Reader/StringReaderInterface.html#method_fromString"><abbr title="Sphp\Stdlib\Reader\StringReaderInterface">StringReaderInterface</abbr></a></small></div>
+                                            <p>Read from a file and create an array</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Stdlib/Readers/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Readers\AbstractReader">AbstractReader</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fromFile">fromFile</a>(string $filename)
+                    <a href="#method_fromString">fromString</a>(string $string)
         
-                                            <p>Read from a file and create an array</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Stdlib/Reader/FileReaderInterface.html#method_fromFile"><abbr title="Sphp\Stdlib\Reader\FileReaderInterface">FileReaderInterface</abbr></a></small></div>
+                                            <p>Read from a string and create an parses the input</p>                </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -120,48 +121,8 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_fromString">
-        <div class="location">in <a href="../../../Sphp/Stdlib/Reader/StringReaderInterface.html#method_fromString"><abbr title="Sphp\Stdlib\Reader\StringReaderInterface">StringReaderInterface</abbr></a> at         line 25</div>
-        <code>                    mixed
-    <strong>fromString</strong>(string $string)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Read from a string and create an array</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$string</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_fromFile">
-        <div class="location">in <a href="../../../Sphp/Stdlib/Reader/FileReaderInterface.html#method_fromFile"><abbr title="Sphp\Stdlib\Reader\FileReaderInterface">FileReaderInterface</abbr></a> at         line 28</div>
+        <div class="location">in <a href="../../../Sphp/Stdlib/Readers/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Readers\AbstractReader">AbstractReader</abbr></a> at         line 21</div>
         <code>                    mixed
     <strong>fromFile</strong>(string $filename)
         </code>
@@ -203,6 +164,46 @@
             </tr>
             </table>
 
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromString">
+        <div class="location">at         line 22</div>
+        <code>                    mixed
+    <strong>fromString</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Read from a string and create an parses the input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>output</td>
+        </tr>
+    </table>
+
+            
             
                     </div>
     </div>

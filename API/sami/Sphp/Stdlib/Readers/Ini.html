@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Stdlib\Reader\Yaml | SPHP framework API</title>
+    <title>Sphp\Stdlib\Readers\Ini | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Stdlib_Reader_Yaml" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Stdlib_Readers_Ini" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Reader.html">Reader</a></li><li class="backslash">\</li><li>Yaml</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Readers.html">Readers</a></li><li class="backslash">\</li><li>Ini</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Yaml
+            Ini
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Yaml</strong>        extends <a href="../../../Sphp/Stdlib/Reader/AbstractReader.html"><abbr title="Sphp\Stdlib\Reader\AbstractReader">AbstractReader</abbr></a>
+    <strong>Ini</strong>        extends <a href="../../../Sphp/Stdlib/Readers/AbstractReader.html"><abbr title="Sphp\Stdlib\Readers\AbstractReader">AbstractReader</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a YAML reader</p>                                </div>
+            <p>INI config reader.</p>                                </div>
     
     
     
@@ -102,7 +102,18 @@
                     <a href="#method_fromFile">fromFile</a>(string $filename)
         
                                             <p>Read from a file and create an array</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Stdlib/Reader/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Reader\AbstractReader">AbstractReader</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Stdlib/Readers/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Readers\AbstractReader">AbstractReader</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -111,7 +122,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_fromString">fromString</a>(string $string)
         
-                                            <p>Read from a string and create an array</p>                </div>
+                                            <p>Read from a string and create an parses the input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -122,7 +133,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_fromFile">
-        <div class="location">in <a href="../../../Sphp/Stdlib/Reader/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Reader\AbstractReader">AbstractReader</abbr></a> at         line 21</div>
+        <div class="location">in <a href="../../../Sphp/Stdlib/Readers/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Readers\AbstractReader">AbstractReader</abbr></a> at         line 21</div>
         <code>                    mixed
     <strong>fromFile</strong>(string $filename)
         </code>
@@ -170,8 +181,27 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 25</div>
+        <code>                    
+    <strong>__construct</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location">at         line 23</div>
+        <div class="location">at         line 29</div>
         <code>                    mixed
     <strong>fromString</strong>(string $string)
         </code>
@@ -181,7 +211,7 @@
     
 
                     <div class="method-description">
-                                    <p>Read from a string and create an array</p>                                                </div>
+                                    <p>Read from a string and create an parses the input</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -199,7 +229,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td>output</td>
         </tr>
     </table>
 

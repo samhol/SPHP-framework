@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Stdlib\Reader\Csv | SPHP framework API</title>
+    <title>Sphp\Stdlib\Readers\StringReader | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Stdlib_Reader_Csv" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Stdlib_Readers_StringReader" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,28 +65,28 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Reader.html">Reader</a></li><li class="backslash">\</li><li>Csv</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Readers.html">Readers</a></li><li class="backslash">\</li><li>StringReader</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Csv
+            StringReader
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>Csv</strong>        extends <a href="../../../Sphp/Stdlib/Reader/AbstractReader.html"><abbr title="Sphp\Stdlib\Reader\AbstractReader">AbstractReader</abbr></a>
+    <p>    interface
+    <strong>StringReader</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a CSV data reader</p>                                </div>
+            <p>Defines a string reader</p>                                </div>
     
     
     
@@ -99,30 +99,9 @@
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fromFile">fromFile</a>(string $filename)
-        
-                                            <p>Read from a file and create an array</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Stdlib/Reader/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Reader\AbstractReader">AbstractReader</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_fromString">fromString</a>(string $string)
         
-                                            <p>Read from a string and create an array</p>                </div>
+                                            <p>Read from a string and create an parses the input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -132,76 +111,8 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_fromFile">
-        <div class="location">in <a href="../../../Sphp/Stdlib/Reader/AbstractReader.html#method_fromFile"><abbr title="Sphp\Stdlib\Reader\AbstractReader">AbstractReader</abbr></a> at         line 21</div>
-        <code>                    mixed
-    <strong>fromFile</strong>(string $filename)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Read from a file and create an array</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$filename</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if the file doesn't exist or is not readable</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 29</div>
-        <code>                    
-    <strong>__construct</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location">at         line 33</div>
+        <div class="location">at         line 25</div>
         <code>                    mixed
     <strong>fromString</strong>(string $string)
         </code>
@@ -211,7 +122,7 @@
     
 
                     <div class="method-description">
-                                    <p>Read from a string and create an array</p>                                                </div>
+                                    <p>Read from a string and create an parses the input</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -229,7 +140,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td>output</td>
         </tr>
     </table>
 

@@ -110,6 +110,15 @@
                     Trait implements parts of the {@link ContentInterface} interface
                 </div>
             </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../../Sphp/Html/IdentifiableTrait.html"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
+                </div>
+            </div>
             </div>
     
     
@@ -146,6 +155,26 @@
         
                                             <p>Prints the component as HTML markup string</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_identify">identify</a>(int $length = 16)
+        
+                                            <p>Identifies the element with an unique id attribute.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasId">hasId</a>()
+        
+                                            <p>Checks whether the identifying attribute is set or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -246,26 +275,6 @@
         
                                             <p>Checks if an attribute exists</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(int $length = 16)
-        
-                                            <p>Identifies the element with an unique id attribute.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasId">hasId</a>()
-        
-                                            <p>Checks whether the identifying attribute is set or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -606,8 +615,80 @@ not before form submission</p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_identify">
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 34</div>
+        <code>                    string
+    <strong>identify</strong>(int $length = 16)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Identifies the element with an unique id attribute.</p>                    <p><strong>Notes:</strong></p>
+
+<p>HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$length</td>
+                <td>the length of the identity value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasId">
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 44</div>
+        <code>                    boolean
+    <strong>hasId</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the identifying attribute is set or not</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the identity is set, otherwise false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_attrs">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 30</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
         <code>    abstract                <a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
     <strong>attrs</strong>()
         </code>
@@ -637,7 +718,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_cssClasses">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 37</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
         <code>                    <a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
     <strong>cssClasses</strong>()
         </code>
@@ -667,7 +748,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_inlineStyles">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 46</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 47</div>
         <code>                    <a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
     <strong>inlineStyles</strong>()
         </code>
@@ -697,7 +778,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 63</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 64</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>addCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -744,7 +825,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_removeCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 80</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 81</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>removeCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -790,7 +871,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 97</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 98</div>
         <code>                    boolean
     <strong>hasCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -836,7 +917,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 123</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 124</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>setAttr</strong>(string $name, mixed $value = null)
         </code>
@@ -910,7 +991,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_removeAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 134</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 135</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>removeAttr</strong>(string $name)
         </code>
@@ -950,7 +1031,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 150</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 151</div>
         <code>                    mixed
     <strong>getAttr</strong>(string $name)
         </code>
@@ -996,7 +1077,7 @@ not before form submission</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_attrExists">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 160</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
         <code>                    boolean
     <strong>attrExists</strong>(string $name)
         </code>
@@ -1025,78 +1106,6 @@ not before form submission</p>                </div>
         <tr>
             <td>boolean</td>
             <td>(attribute exists)</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_identify">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 175</div>
-        <code>                    string
-    <strong>identify</strong>(int $length = 16)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Identifies the element with an unique id attribute.</p>                    <p><strong>Notes:</strong></p>
-
-<p>HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$length</td>
-                <td>the length of the identity value</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 185</div>
-        <code>                    boolean
-    <strong>hasId</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the identifying attribute is set or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the identity is set, otherwise false</td>
         </tr>
     </table>
 
