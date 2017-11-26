@@ -12,13 +12,14 @@ Here are grouped lists of the HTML5 components and the corresponding PHP types.
 MD
 );
 
-use Sphp\Stdlib\Reader\Yaml;
+use Sphp\Stdlib\Parser;
 
-$data = (new Yaml())->fromFile('manual/yaml/Sphp.Html.Forms.Inputs.Factory.yml');
+$data = Parser::fromFile('manual/yaml/Sphp.Html.Forms.Inputs.Factory.yml');
+echo "<pre>";
+print_r($data);
+echo "</pre>";
 
-//print_r($data);
-
-namespace Sphp\Manual\MVC\TagListing;
+namespace Sphp\Manual\MVC\FactoryViews;
 
 $groups = new Groups($data);
 

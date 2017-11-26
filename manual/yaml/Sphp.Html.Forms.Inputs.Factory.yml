@@ -1,6 +1,6 @@
 ---
-Forms: 
-    form: 'A form'
+Sphp\Html\Forms\inputs\Input:
+  Inputs: 
     hidden: 'A hidden input field'
     text: 'A text input field'
     email: 'An email input field'
@@ -9,15 +9,16 @@ Forms:
     radio: 'A radio input'
     checkbox: 'A checkbox input'
     textarea: 'A text area'
-    pushButton: 'A push button'
-    resetButton: 'A reset button for forms'
-    submitButton: 'A sybmit button for forms'
-    keygen: 'A generated key in a form'
-    output: 'Defines some types of output'
-    label: 'A label for a form control'
-    fieldset: 'A fieldset'
-    legend: 'A title in a fieldset'
-    datalist: 'A dropdown list'
+    #keygen: 'A generated key in a form'
+    #output: 'Defines some types of output'
+    #label: 'A label for a form control'
+    #fieldset: 'A fieldset'
+    #legend: 'A title in a fieldset'
+    #datalist: 'A dropdown list'
     select: 'A selectable list'
     optgroup: 'An option group'
     option: 'An option in a drop-down list'
+  Buttons: 
+    pushButton: 'A push button'
+    reset: 'A reset button for forms'
+    submit: 'A sybmit button for forms'

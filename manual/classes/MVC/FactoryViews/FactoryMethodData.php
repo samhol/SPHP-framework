@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Manual\MVC\TagListing;
+namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Factory;
 use Sphp\Html\TagInterface;
@@ -19,7 +19,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagComponentData implements Arrayable {
+class FactoryMethodData implements Arrayable {
 
   /**
    * @var string 
@@ -46,23 +46,20 @@ class TagComponentData implements Arrayable {
    */
   private $description;
 
-  public function __construct(string $par, string $description) {
+  public function __construct(string $className, string $par, string $description) {
+    $this->factory = $className;
     $this->call = $par;
     $this->description = $description;
-    $this->component = Factory::$par();
+    $this->component = $this->factory::$par();
     $this->tagName = $this->component->getTagName();
     $this->ref = new \ReflectionClass($this->component);
   }
 
-  public function getCall() {
-    return $this->call;
+  public function getMethodtCall(): string {
+    return "$this->factory::" . $this->call . "()";
   }
 
-  public function getDocumentCall() {
-    return "Factory::" . $this->call . "()";
-  }
-
-  public function getComponent(): \Sphp\Html\TagInterface {
+  public function getComponent(): \Sphp\Html\ContentInterface {
     return $this->component;
   }
 

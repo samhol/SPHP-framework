@@ -5,12 +5,12 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Manual\MVC\TagListing;
+namespace Sphp\Manual\MVC\FactoryViews;
 
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Factory;
 use Sphp\Html\TagInterface;
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Description of TagComponentDataParser
@@ -19,7 +19,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagComponentData implements Arrayable {
+abstract class AbstractComponentData implements ComponentData {
 
   /**
    * @var string 
@@ -46,10 +46,10 @@ class TagComponentData implements Arrayable {
    */
   private $description;
 
-  public function __construct(string $par, string $description) {
+  public function __construct(string $factoryClass, string $par, string $description) {
     $this->call = $par;
     $this->description = $description;
-    $this->component = Factory::$par();
+    $this->component = $factoryClass::$par();
     $this->tagName = $this->component->getTagName();
     $this->ref = new \ReflectionClass($this->component);
   }

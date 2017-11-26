@@ -84,7 +84,7 @@ class InputComponentData implements ComponentData {
   }
 
   public function getCallLink(): string {
-    return \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
+    return \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getMethodtCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
   }
 
   private function tagString(): string {

@@ -26,9 +26,9 @@ class Input {
    * @var string[]
    */
   private static $components = array(
-      'pushButton' => Forms\Buttons\Button::class,
-      'resetButton' => Forms\Buttons\Resetter::class,
-      'submitButton' => Forms\Buttons\Submitter::class,
+      'pushButton' => \Sphp\Html\Forms\Buttons\Button::class,
+      'resetButton' => \Sphp\Html\Forms\Buttons\Resetter::class,
+      'submitButton' => \Sphp\Html\Forms\Buttons\Submitter::class,
       'input' => InputTag::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,
@@ -37,8 +37,8 @@ class Input {
       'radio' => Radiobox::class,
       'checkbox' => Checkbox::class,
       'number' => NumberInput::class,
-      'resetInput' => Buttons\Resetter::class,
-      'submitInput' => Buttons\Submitter::class,
+      'reset' => Buttons\Resetter::class,
+      'submit' => Buttons\Submitter::class,
       'optgroup' => Menus\Optgroup::class,
       'option' => Menus\Option::class,
       'textarea' => Textarea::class,
@@ -57,7 +57,7 @@ class Input {
    * @return InputInterface the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): InputInterface {
+  public static function __callStatic(string $name, array $arguments) {
     if (!isset(static::$components[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
