@@ -10,6 +10,7 @@ namespace Sphp\Manual\MVC\FactoryViews;
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Stdlib\Datastructures\Arrayable;
+use ReflectionClass;
 
 /**
  * Description of TagComponentDataParser
@@ -36,7 +37,7 @@ class FactoryMethodData implements Arrayable {
   private $tagName;
 
   /**
-   * @var \ReflectionClass
+   * @var ReflectionClass
    */
   private $componentReflector;
 
@@ -51,13 +52,13 @@ class FactoryMethodData implements Arrayable {
     $this->description = $description;
     $this->component = $this->factory::$par();
     $this->tagName = $this->component->getTagName();
-    $this->componentReflector = new \ReflectionClass($this->component);
+    $this->componentReflector = new ReflectionClass($this->component);
   }
 
   public function getMethodCall(): string {
-    $name = (new \ReflectionClass($this->factory))->getShortName();
-    echo '<pre>';
-    var_dump((new \ReflectionClass($this->factory))->getDocComment());
+    $name = (new ReflectionClass($this->factory))->getShortName();
+    //echo '<pre>';
+    //var_dump((new \ReflectionClass($this->factory))->getDocComment());
     return "$name::$this->call()";
   }
 
@@ -81,10 +82,6 @@ class FactoryMethodData implements Arrayable {
     $arr = [];
     $arr['tag'] = $this->component->getTagName();
     return $arr;
-  }
-
-  public function getCallLink(): string {
-    return \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getMethodtCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
   }
 
   private function tagString(): string {

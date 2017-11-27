@@ -2,8 +2,6 @@
 
 namespace Sphp\Html;
 
-//require_once 'loaders.php';
-
 use Sphp\Stdlib\Path;
 
 $html = Document::html();
@@ -28,8 +26,24 @@ Document::head()
         ->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png?v=2')
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHP framework'))
-        ->addMeta(
-                Meta::keywords('php', 'scss', 'css', 'html', 'html5', 'framework', 'foundation', 'CSS', 'JavaScript', 'DOM', 'Web development', 'tutorials', 'programming', 'references', 'examples', 'source code', 'demos', 'tips'))
+        ->addMeta(Meta::keywords([
+                    'php',
+                    'scss',
+                    'css',
+                    'html',
+                    'html5',
+                    'framework',
+                    'foundation',
+                    'JavaScript',
+                    'DOM',
+                    'Web development',
+                    'tutorials',
+                    'programming',
+                    'references',
+                    'examples',
+                    'source code',
+                    'demos',
+                    'tips']))
         ->addMeta(Meta::description('SPHP framework for web developement'));
 Document::body()->addCssClass('manual');
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');

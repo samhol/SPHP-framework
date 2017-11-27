@@ -4,9 +4,10 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 require_once('manual/settings.php');
 //ob_implicit_flush(true);
+
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
-$cacheSuffix = str_replace(['.', '/'], ['-', ''], $redirect)."-cache";
+$cacheSuffix = str_replace(['.', '/'], ['-', ''], $redirect) . "-cache";
 
 if ($outputCache->start("$cacheSuffix-head") === false) {
   require_once('manual/templates/blocks/head.php');
@@ -41,8 +42,7 @@ if ($outputCache->start("$cacheSuffix-head") === false) {
         <div class="container">
           <?php
           $man_cache = "$cacheSuffix-content";
-          if ($outputCache->start($man_cache) === false) {
-            //include('manual/manualBuilder.php');        
+          if ($outputCache->start($man_cache) === false) {      
             $router->execute();
             $outputCache->end();
           }

@@ -8,7 +8,6 @@ $cache = new Adapter\Filesystem();
 
 $cache->setOptions(Parser::fromFile('manual/config/cache.yml'));
 
-
 $plugin = new Plugin\ExceptionHandler(['throw_exceptions' => true]);
 $cache->addPlugin($plugin);
 $outputCache = PatternFactory::factory('output', [
