@@ -44,7 +44,7 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
       $c = [];
       //$linkText = "&lt;" . $info->getTagName() . "&gt;";
       $c[] = $info->getW3schoolsLink();
-      $c[] = \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": ".$info->getObjectType(), "returns " . $info->getObjectType());
+      $c[] = \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getMethodCall() . ": ".$info->getObjectType(), "returns " . $info->getObjectType());
       $body->appendBodyRow($c);
     }
     return $table;

@@ -7,8 +7,7 @@
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
-use Sphp\Html\Factory;
-use Sphp\Html\TagInterface;
+use Sphp\Html\ContentInterface;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Stdlib\Datastructures\Arrayable;
 
@@ -27,7 +26,7 @@ class FactoryMethodData implements Arrayable {
   private $call;
 
   /**
-   * @var TagInterface 
+   * @var ContentInterface 
    */
   private $component;
 
@@ -39,7 +38,7 @@ class FactoryMethodData implements Arrayable {
   /**
    * @var \ReflectionClass
    */
-  private $ref;
+  private $componentReflector;
 
   /**
    * @var string 
@@ -52,14 +51,17 @@ class FactoryMethodData implements Arrayable {
     $this->description = $description;
     $this->component = $this->factory::$par();
     $this->tagName = $this->component->getTagName();
-    $this->ref = new \ReflectionClass($this->component);
+    $this->componentReflector = new \ReflectionClass($this->component);
   }
 
-  public function getMethodtCall(): string {
-    return "$this->factory::" . $this->call . "()";
+  public function getMethodCall(): string {
+    $name = (new \ReflectionClass($this->factory))->getShortName();
+    echo '<pre>';
+    var_dump((new \ReflectionClass($this->factory))->getDocComment());
+    return "$name::$this->call()";
   }
 
-  public function getComponent(): \Sphp\Html\ContentInterface {
+  public function getComponent(): ContentInterface {
     return $this->component;
   }
 
@@ -72,7 +74,7 @@ class FactoryMethodData implements Arrayable {
   }
 
   public function getObjectType(): string {
-    return $this->ref->getName();
+    return $this->componentReflector->getName();
   }
 
   public function toArray(): array {
