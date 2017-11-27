@@ -11,7 +11,7 @@ use Sphp\Exceptions\BadMethodCallException;
 use ReflectionClass;
 
 /**
- * Document class contains basic HTML tag component creation and HTML version handing
+ * Factory for basic HTML tag component creation
  *
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component

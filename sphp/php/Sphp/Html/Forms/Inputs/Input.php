@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Input.Input (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Forms\Inputs;
@@ -13,10 +12,13 @@ use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Description of Factory
+ * 
  * @method \Sphp\Html\Forms\Inputs\EmailInput email(mixed $content = null) creates a new email inpue component
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  *
- * @author samih
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Input {
 
