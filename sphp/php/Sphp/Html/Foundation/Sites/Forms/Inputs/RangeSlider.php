@@ -26,25 +26,21 @@ class RangeSlider extends AbstractSlider {
   private $name;
 
   /**
-   *
    * @var Span
    */
   private $lowerHandle;
 
   /**
-   *
    * @var Span
    */
   private $upperHandle;
 
   /**
-   *
    * @var HiddenInput
    */
   private $lowerInput;
 
   /**
-   *
    * @var HiddenInput
    */
   private $upperInput;
@@ -52,12 +48,12 @@ class RangeSlider extends AbstractSlider {
   /**
    * Constructs a new instance
    *
-   * @param  string $name the name of the form input
+   * @param string $name the name of the form input
    * @param int $min the minimum value of the slider
    * @param int $max the maximum value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($name = null, int $min = 0, int $max = 100, int $step = 1) {
+  public function __construct(string $name = null, int $min = 0, int $max = 100, int $step = 1) {
     parent::__construct($min, $max, $step);
     $this->attrs()->demand('data-initial-end')
             ->set('data-initial-end', $max);
@@ -90,20 +86,20 @@ class RangeSlider extends AbstractSlider {
   }
 
   /**
-   * Returns the actual (hidden) form element containg the value of the slider
+   * Returns the actual (hidden) form element containing the value of the slider
    * 
-   * @return HiddenInput the actual (hidden) form element containg the value of the slider
+   * @return HiddenInput the actual form element containing the value of the slider
    */
-  private function getStartInput() {
+  private function getStartInput(): HiddenInput {
     return $this->lowerInput;
   }
 
   /**
-   * Returns the actual (hidden) form element containg the value of the slider
+   * Returns the actual (hidden) form element containing the value of the slider
    * 
-   * @return HiddenInput the actual (hidden) form element containg the value of the slider
+   * @return HiddenInput the actual form element containing the value of the slider
    */
-  private function getEndInput() {
+  private function getEndInput(): HiddenInput {
     return $this->upperInput;
   }
 

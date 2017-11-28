@@ -10,7 +10,8 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 use IteratorAggregate;
 use Sphp\Html\Forms\TraversableFormInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\GridInterface;
+use Sphp\Html\Foundation\Sites\Grids\XY\GridInterface;
+use Sphp\Html\Foundation\Sites\Grids\XY\RowInterface;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
 use Sphp\Html\Foundation\Sites\Grids\XY\Grid;
@@ -119,6 +120,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    */
   public function append($row) {
     if (!($row instanceof RowInterface)) {
+     // echo 'fooooooo'.$row;
       $row = new FormRow($row);
     }
     $this->getGrid()->append($row);

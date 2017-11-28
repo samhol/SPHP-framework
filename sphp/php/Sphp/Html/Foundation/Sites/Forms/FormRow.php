@@ -22,6 +22,11 @@ use Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface;
  */
 class FormRow extends Row {
 
+  
+  public function __construct($columns = null, $sizes = null) {
+    parent::__construct($columns, $sizes);
+    $this->layout()->usePadding(true);
+  }
   public function appendColumn($content, array $layout = ['small-12']) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {

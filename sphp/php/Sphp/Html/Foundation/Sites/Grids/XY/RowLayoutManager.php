@@ -53,6 +53,34 @@ class RowLayoutManager extends AlingmentAdapter {
   }
 
   /**
+   * 
+   * @param  bool $margin
+   * @return $this for a fluent interface
+   */
+  public function useMargin(bool $margin = true) {
+    if ($margin) {
+      $this->cssClasses()->add('grid-margin-x');
+    } else {
+      $this->cssClasses()->remove('grid-margin-x');
+    }
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  bool $padding
+   * @return $this for a fluent interface
+   */
+  public function usePadding(bool $padding = true) {
+    if ($padding) {
+      $this->cssClasses()->add('grid-padding-x');
+    } else {
+      $this->cssClasses()->remove('grid-padding-x');
+    }
+    return $this;
+  }
+
+  /**
    * Sets/ the row completely fluid
    *
    * @param  boolean $expanded the target screen size

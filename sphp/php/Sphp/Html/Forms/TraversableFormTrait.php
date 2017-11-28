@@ -65,7 +65,7 @@ trait TraversableFormTrait {
    * **Important:** Works only for single dimensional input names
    * 
    * @param  mixed[] $data
-   * @param  boolean $filter true for enabling the data filtering, ans false otherwise
+   * @param  boolean $filter true for enabling the data filtering, and false otherwise
    * @return TraverableFormInterface for PHP Method Chaining
    */
   public function setData(array $data = [], $filter = true) {
