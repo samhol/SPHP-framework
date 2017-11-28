@@ -9,7 +9,7 @@ namespace Sphp\Html\Content;
 
 use Sphp\Html\Headings\H1;
 use Sphp\Html\Headings\H2;
-use Sphp\Html\Factory;
+use Sphp\Html\TagFactory;
 
 /**
  * Description of ContentCreatorTrait
@@ -29,14 +29,14 @@ trait ContentCreatorTrait {
   }
 
   public function appendH1($content = null): H1 {
-    $component = Factory::h1();
+    $component = TagFactory::h1();
     $component->append($content);
     $this->append($component);
     return $component;
   }
 
   public function appendH2($content = null): H2 {
-    $component = Factory::h2();
+    $component = TagFactory::h2();
     $component->append($content);
     $this->append($component);
     return $component;

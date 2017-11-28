@@ -8,7 +8,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Factory as HtmlFacctory;
+use Sphp\Html\TagFactory as HtmlFacctory;
 use Sphp\Html\Span;
 
 /**

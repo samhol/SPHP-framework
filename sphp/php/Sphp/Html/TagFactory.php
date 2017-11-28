@@ -39,7 +39,7 @@ use ReflectionClass;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Factory {
+abstract class TagFactory {
 
   /**
    * list of tags and their corresponding PHP classes
@@ -187,6 +187,28 @@ abstract class Factory {
   public static function __callStatic(string $name, array $arguments): TagInterface {
     if (!isset(static::$tags[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
+    }
+    if (is_string(static::$tags[$name])) {
+      static::$tags[$name] = new ReflectionClass(static::$tags[$name]);
+    }
+    $reflectionClass = static::$tags[$name];
+    if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
+      array_unshift($arguments, $name);
+    }
+    $instance = static::$tags[$name]->newInstanceArgs($arguments);
+    return $instance;
+  }
+  /**
+   * Creates a HTML object
+   *
+   * @param  string $name the name of the component
+   * @param  array $arguments 
+   * @return TagInterface the corresponding component
+   * @throws BadMethodCallException
+   */
+  public static function create(string $name, array $arguments = []): TagInterface {
+    if (!isset(static::$tags[$name])) {
+      throw new InvalidArgumentException("Method $name does not exist");
     }
     if (is_string(static::$tags[$name])) {
       static::$tags[$name] = new ReflectionClass(static::$tags[$name]);
