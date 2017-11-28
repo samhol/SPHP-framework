@@ -40,6 +40,8 @@ items:
       items:
       - link: Introduction
         href: Sphp.Html
+      - link: Content creation
+        href: Sphp.Html.Content
       - ruler: 
       - link: Component factories
         href: Sphp.Html.Document

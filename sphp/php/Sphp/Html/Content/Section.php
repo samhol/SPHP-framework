@@ -8,13 +8,9 @@
 namespace Sphp\Html\Content;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Headings\HeadingInterface;
 
 /**
  * Implements an HTML &lt;section&gt; tag
- *
- *  This component defines sections in a document, such as chapters, headers, 
- *  footers, or any other sections of the document.
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_section.asp w3schools HTML API
@@ -23,6 +19,8 @@ use Sphp\Html\Headings\HeadingInterface;
  */
 class Section extends ContainerTag {
 
+  use ContentCreatorTrait;
+
   /**
    * Constructs a new instance
    * 
@@ -30,24 +28,6 @@ class Section extends ContainerTag {
    */
   public function __construct($content = null) {
     parent::__construct('section', $content);
-  }
-
-  /**
-   * Returns the heading components tag object
-   *
-   * @return HeadingInterface the body tag object
-   */
-  public function headings() {
-    return $this->getComponentsByObjectType(HeadingInterface::class);
-  }
-
-  /**
-   * Returns the paragraphs in this section
-   *
-   * @return Paragraph the body tag object
-   */
-  public function paragraphs() {
-    return $this->getComponentsByObjectType(Paragraph::class);
   }
 
 }

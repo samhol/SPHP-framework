@@ -7,21 +7,20 @@ use Sphp\Manual;
 $main = Manual\api()->classLinker(Main::class);
 $section = Manual\api()->classLinker(Section::class);
 $aside = Manual\api()->classLinker(Aside::class);
+$article = Manual\api()->classLinker(Article::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\parseDown(<<<MD
 #HTML CONTENT CREATION
 $ns
 
-The content of this namespace enables the creation of the HTML documents in object oriented PHP.
+Classes in this namespace enables the creation of modern HTML documents in object oriented PHP.
 
-##The $main container
-        
-This component specifies the main content of a HTML document. It implements $w3schools->main
-        
-The $w3schools->aside tag defines some content aside from the content it is placed in.
+ * $main implements HTML $w3schools->main tag
+ * $article implements HTML $w3schools->article tag
+ * $section implements HTML $w3schools->section tag
+ * $aside implements HTML $w3schools->aside tag
 
-The aside content should be related to the surrounding content.
 MD
 );
 

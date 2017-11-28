@@ -22,9 +22,11 @@ class Main extends ContainerTag {
 
   /**
    * Constructs a new instance
+   * 
+   * @param  mixed $content optional content of the component
    */
-  public function __construct() {
-    parent::__construct('main');
+  public function __construct($content = null) {
+    parent::__construct('main', $content);
   }
 
 }

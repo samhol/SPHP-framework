@@ -32,22 +32,4 @@ class Aside extends ContainerTag {
     parent::__construct('aside', $content);
   }
 
-  /**
-   * Returns the heading components tag object
-   *
-   * @return HeadingInterface the body tag object
-   */
-  public function headings() {
-    return $this->getComponentsByObjectType(HeadingInterface::class);
-  }
-
-  /**
-   * Returns the heading components tag object
-   *
-   * @return HeadingInterface the body tag object
-   */
-  public function paragraphs() {
-    return $this->getComponentsByObjectType(HeadingInterface::class);
-  }
-
 }

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers
@@ -28,9 +28,8 @@ class ContainerTag extends AbstractContainerTag {
    *    method `__toString()` are allowed.
    *
    * @param  string $tagName the name of the tag
-   * @param  mixed $content the content of the component
+   * @param  mixed $content optional content of the component
    * @throws InvalidArgumentException if the tagname is not valid
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct(string $tagName, $content = null) {
     parent::__construct($tagName);

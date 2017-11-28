@@ -22,9 +22,11 @@ class Article extends ContainerTag {
 
   /**
    * Constructs a new instance
+   * 
+   * @param  mixed $content optional content of the component
    */
-  public function __construct() {
-    parent::__construct('article');
+  public function __construct($content = null) {
+    parent::__construct('article', $content);
   }
 
 }

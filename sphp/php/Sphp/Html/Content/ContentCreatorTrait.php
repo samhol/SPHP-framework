@@ -53,5 +53,22 @@ trait ContentCreatorTrait {
     $this->append($component);
     return $component;
   }
+  /**
+   * Returns the heading components tag object
+   *
+   * @return HeadingInterface the body tag object
+   */
+  public function headings() {
+    return $this->getComponentsByObjectType(HeadingInterface::class);
+  }
+
+  /**
+   * Returns the paragraphs in this section
+   *
+   * @return Paragraph the body tag object
+   */
+  public function paragraphs() {
+    return $this->getComponentsByObjectType(Paragraph::class);
+  }
 
 }
