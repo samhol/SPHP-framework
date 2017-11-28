@@ -44,7 +44,7 @@ abstract class TagFactory {
   /**
    * list of tags and their corresponding PHP classes
    *
-   * @var string[]
+   * @var mixed[]
    */
   private static $tags = array(
       'a' => Navigation\Hyperlink::class,

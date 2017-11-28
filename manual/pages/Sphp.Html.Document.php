@@ -18,3 +18,5 @@ MD
 Manual\visualize('Sphp/Html/Document.php', 'html5', false);
 
 Manual\loadPage('Sphp.Html.Factory');
+
+Manual\loadPage('Sphp.Html.Forms.Inputs.Factory');

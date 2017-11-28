@@ -77,4 +77,3 @@ class NumberInput extends InputTag implements NumberInputInterface {
   }
 
 }
-

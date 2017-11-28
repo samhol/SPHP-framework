@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Factory | SPHP framework API</title>
+    <title>Sphp\Html\TagFactory | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Factory" data-root-path="../../">
+    <body id="class" data-name="class:Sphp_Html_TagFactory" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li>Factory</li>
+                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li>TagFactory</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Factory
+            TagFactory
                 
         </h1>
     </div>
 
     <p>abstract     class
-    <strong>Factory</strong>
+    <strong>TagFactory</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Document class contains basic HTML tag component creation and HTML version handing</p>                                </div>
+            <p>Factory for basic HTML tag component creation</p>                                </div>
     
     
     
@@ -100,6 +100,16 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___callStatic">__callStatic</a>(string $name, array $arguments)
+        
+                                            <p>Creates a HTML object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Html/TagInterface.html"><abbr title="Sphp\Html\TagInterface">TagInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>(string $name, array $arguments = [])
         
                                             <p>Creates a HTML object</p>                </div>
                 <div class="col-md-2"></div>
@@ -265,6 +275,60 @@
         <div class="location">at         line 187</div>
         <code>        static            <a href="../../Sphp/Html/TagInterface.html"><abbr title="Sphp\Html\TagInterface">TagInterface</abbr></a>
     <strong>__callStatic</strong>(string $name, array $arguments)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates a HTML object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the component</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Html/TagInterface.html"><abbr title="Sphp\Html\TagInterface">TagInterface</abbr></a></td>
+            <td>the corresponding component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Exceptions/BadMethodCallException.html"><abbr title="Sphp\Exceptions\BadMethodCallException">BadMethodCallException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">at         line 209</div>
+        <code>        static            <a href="../../Sphp/Html/TagInterface.html"><abbr title="Sphp\Html\TagInterface">TagInterface</abbr></a>
+    <strong>create</strong>(string $name, array $arguments = [])
         </code>
     </h3>
     <div class="details">

@@ -35,7 +35,7 @@ class TagListAccordionGenerator implements ContentInterface {
     $accordions = (new Accordion())
             ->allowAllClosed(true)
             ->allowMultiExpand(true)
-            ->addCssClass('html-ref-tables');
+            ->addCssClass('sphp-factory-tables');
     foreach ($this->data as $val) {
       $accordions->append(new Pane($val->getName(), new TagGroupTable($val)));
     }

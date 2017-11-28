@@ -13,28 +13,23 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
 
 /**
- * Description of TagComponentDataParser
+ * Implements tag factory data
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FactoryMethodData implements Arrayable {
+class TagFactoryMethodData implements Arrayable {
 
   /**
    * @var string 
    */
-  private $call;
+  private $method;
 
   /**
    * @var ContentInterface 
    */
   private $component;
-
-  /**
-   * @var string 
-   */
-  private $tagName;
 
   /**
    * @var ReflectionClass
@@ -46,23 +41,18 @@ class FactoryMethodData implements Arrayable {
    */
   private $description;
 
-  public function __construct(string $className, string $par, string $description) {
-    $this->factory = $className;
-    $this->call = $par;
+  public function __construct(string $factory, string $method, string $description) {
+    $this->factoryCall = (new ReflectionClass($factory))->getShortName() . "::$method()";
     $this->description = $description;
-    $this->component = $this->factory::$par();
-    $this->tagName = $this->component->getTagName();
+    $this->component = $factory::$method();
     $this->componentReflector = new ReflectionClass($this->component);
   }
 
-  public function getMethodCall(): string {
-    $name = (new ReflectionClass($this->factory))->getShortName();
-    //echo '<pre>';
-    //var_dump((new \ReflectionClass($this->factory))->getDocComment());
-    return "$name::$this->call()";
+  public function getFactoryCall(): string {
+    return $this->factoryCall;
   }
 
-  public function getComponent(): ContentInterface {
+  public function getCreatedComponent(): ContentInterface {
     return $this->component;
   }
 
@@ -70,8 +60,8 @@ class FactoryMethodData implements Arrayable {
     return $this->description;
   }
 
-  public function getTagName(): string {
-    return $this->tagName;
+  public function getCreatedObjectReflector(): string {
+    return $this->componentReflector->getName();
   }
 
   public function getObjectType(): string {
@@ -80,7 +70,9 @@ class FactoryMethodData implements Arrayable {
 
   public function toArray(): array {
     $arr = [];
-    $arr['tag'] = $this->component->getTagName();
+    $arr[] = Apis::w3schools()->tag($this->component->getTagName(), $this->tagString(), $this->description);
+    $arr[] = Apis::sami()->classLinker($this->getObjectType())->getLink("$this->factoryCall: ");
+    $arr[] = Apis::sami()->classLinker($this->getObjectType())->getLink($this->getObjectType());
     return $arr;
   }
 
@@ -90,10 +82,6 @@ class FactoryMethodData implements Arrayable {
       $attrs = ' ' . $attrs;
     }
     return '&lt;' . $this->component->getTagName() . $attrs . '&gt;';
-  }
-
-  public function getW3schoolsLink(): string {
-    return Apis::w3schools()->tag($this->component->getTagName(), $this->tagString(), $this->description);
   }
 
 }

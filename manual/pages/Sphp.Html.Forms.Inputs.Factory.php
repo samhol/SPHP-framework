@@ -5,9 +5,10 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Manual;
 
 $factory = Manual\api()->classLinker(Input::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\parseDown(<<<MD
-##The $factory class: <small>a factory for basic HTML components</small>
-
+##The $factory factory: <small>a factory for HTML form components</small>
+$ns
 Here are grouped lists of the HTML5 components and the corresponding PHP types.
 MD
 );
@@ -15,13 +16,18 @@ MD
 use Sphp\Stdlib\Parser;
 
 $data = Parser::fromFile('manual/yaml/Sphp.Html.Forms.Inputs.Factory.yml');
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+//echo "<pre>";
+//print_r($data);
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
 $groups = new Groups($data);
+/* foreach ($groups as $group) {
+  foreach ($group as $item) {
+  echo implode('|',$item->toArray())."\n";
+  }
+  }
+  echo "</pre>"; */
 
 echo new TagListAccordionGenerator($groups);
 //echo "</pre>";

@@ -56,7 +56,7 @@ class Textarea extends ContainerTag implements TextareaInterface {
     return $this;
   }
 
-  public function wrap($wrapType) {
+  public function wrap(string $wrapType = null) {
     $this->attrs()->set('wrap', $wrapType);
     return $this;
   }
@@ -71,12 +71,9 @@ class Textarea extends ContainerTag implements TextareaInterface {
     return $this;
   }
 
-  public function setPlaceholder(string $placeholder) {
+  public function setPlaceholder(string $placeholder = null) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
 
 }
-
-
-

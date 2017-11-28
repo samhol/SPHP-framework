@@ -55,15 +55,8 @@ class Group implements \Iterator {
     return isset($this->data[$offset]);
   }
 
-  public function offsetGet($offset) {
-    if ($this->hasGroup($offset)) {
-      return $this->data[$offset];
-    }
-    throw new \Exception('data does not exist');
-  }
-
-  public function setFactoryMethodData($factoryClass,$offset, $value) {
-    $this->data[$offset] = new FactoryMethodData($factoryClass, $offset, $value);
+  public function setFactoryMethodData($factoryClass, $methodName, $value) {
+    $this->data[$methodName] = new TagFactoryMethodData($factoryClass, $methodName, $value);
   }
 
   public function offsetUnset($offset) {

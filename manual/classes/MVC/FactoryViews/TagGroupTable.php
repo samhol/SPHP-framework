@@ -1,17 +1,16 @@
 <?php
 
 /**
- * TagGroupAccordionGenerator.php (UTF-8)
+ * TagGroupTable.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Tables\Table;
-use Sphp\Html\ContentInterface;
 
 /**
- * Description of TagListAccordionGenerator
+ * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -38,14 +37,10 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
     $table = (new Table())
             ->addCssClass('html-to-php');
     $table->thead()
-            ->appendHeaderRow(['HTML Tag', 'Function call and Object type']);
+            ->appendHeaderRow(['HTML Tag', 'Factory call', 'Object type']);
     $body = $table->tbody();
     foreach ($this->data as $info) {
-      $c = [];
-      //$linkText = "&lt;" . $info->getTagName() . "&gt;";
-      $c[] = $info->getW3schoolsLink();
-      $c[] = \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getMethodCall() . ": ".$info->getObjectType(), "returns " . $info->getObjectType());
-      $body->appendBodyRow($c);
+      $body->appendBodyRow($info->toArray());
     }
     return $table;
   }
