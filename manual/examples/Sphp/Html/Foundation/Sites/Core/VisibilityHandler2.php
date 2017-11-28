@@ -2,14 +2,14 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Factory;
+use Sphp\Html\TagFactory;
 
-$ul = Factory::ul();
+$ul = TagFactory::ul();
 foreach (Screen::sizes() as $size) {
   $li = "$size screen size: ";
-  $li .= (new VisibilityAdapter(Factory::span("yes")))
+  $li .= (new VisibilityAdapter(TagFactory::span("yes")))
           ->showOnlyFor($size);
-  $li .= (new VisibilityAdapter(Factory::span("no")))
+  $li .= (new VisibilityAdapter(TagFactory::span("no")))
           ->hideOnlyForSize($size);
   $ul[] = $li;
 }

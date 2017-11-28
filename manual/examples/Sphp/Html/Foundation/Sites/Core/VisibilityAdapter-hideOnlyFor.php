@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Factory;
+use Sphp\Html\TagFactory;
 
-$paragraph = Factory::p();
+$paragraph = TagFactory::p();
 $adapter = new VisibilityAdapter($paragraph);
 foreach (array_reverse(Screen::sizes()) as $name) {
   $paragraph("You are <em>definitely not</em> on a <b>$name</b> screen.");

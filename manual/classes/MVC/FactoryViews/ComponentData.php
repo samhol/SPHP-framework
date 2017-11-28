@@ -7,7 +7,7 @@
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
-use Sphp\Html\Factory;
+use Sphp\Html\TagFactory;
 use Sphp\Html\TagInterface;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Stdlib\Datastructures\Arrayable;

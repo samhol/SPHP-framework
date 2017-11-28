@@ -8,7 +8,7 @@
 namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Factory;
+use Sphp\Html\TagFactory;
 use Sphp\Html\TagInterface;
 use Sphp\Html\Apps\Manual\Apis;
 

@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Factory;
+use Sphp\Html\TagFactory;
 
-$button = Factory::pushButton('Push me!')->addCssClass('button');
+$button = TagFactory::pushButton('Push me!')->addCssClass('button');
 
 $adapter = new ColourableAdapter($button);
 echo $adapter->setColor('alert');

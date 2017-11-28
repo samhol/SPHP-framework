@@ -1,18 +1,19 @@
 ---
-Basic:
+Sphp\Html\TagFactory:
+  Basic:
     html: 'An html document'
     body: 'The body element'
     p: 'A paragraph'
     hr: 'A horizontal rule'
     br: 'Inserts a single line break'
-Headings:
+  Headings:
     h1: '1st. level header'
     h2: '2nd. level header'
     h3: '3rd. level header'
     h4: '4th. level header'
     h5: '5th. level header'
     h6: '6th. level header'
-Formatting:
+  Formatting:
     abbr: 'An abbreviation'
     address: 'An address element'
     b: 'Bold text'
@@ -45,7 +46,7 @@ Formatting:
     u: 'Text that should be stylistically different from normal text'
     var: 'A variable'
     wbr: 'A possible line-break'
-Forms: 
+  Forms: 
     form: 'A form'
     hiddenInput: 'A hidden input field'
     textInput: 'A text input field'
@@ -67,7 +68,7 @@ Forms:
     select: 'A selectable list'
     optgroup: 'An option group'
     option: 'An option in a drop-down list'
-Media:
+  Media:
     img: 'An image'
     polygon: 'A polygonal area inside an image map'
     circle: 'A circular area inside an image map'
@@ -82,10 +83,10 @@ Media:
     source: 'Multiple media resources for $av components'
     embed: 'External interactive content or plugin'
     iframe: 'An inline sub window (frame)'
-Links:
+  Links:
     a: 'A hyperlink'
     nav: 'Defines navigation links'
-Lists:
+  Lists:
     ul: 'An unordered list'
     ol: 'An ordered list'
     li: 'A list item for ul and ol components'
@@ -93,7 +94,7 @@ Lists:
     dd: 'A definition description'
     dt: 'A definition term $dl'
     menu: 'A menu list'
-Tables:
+  Tables:
     table: 'A table'
     caption: 'A table caption'
     th: 'A table header'
@@ -104,7 +105,7 @@ Tables:
     tfoot: 'A table footer'
     col: 'Attributes for table columns'
     colgroup: 'Groups of table columns'
-'Style and Sections':
+  'Style and Sections':
     style: 'A style definition'
     div: 'A section in a document'
     span: 'A section in a document'
@@ -115,13 +116,13 @@ Tables:
     details: 'Details of an element'
     dialog: 'A dialog (conversation)'
     section: 'A section'
-Head:
+  Head:
     head: 'Information about the document'
     title: 'Document title'
     link: 'A resource reference'
     meta: 'Meta information'
     base: 'A base URL for all the links in a page'
-Programming:
+  Programming:
     scriptCode: 'Contains scripting statements'
     scriptSrc: 'Points to an external script file'
     noscript: 'A noscript section'
