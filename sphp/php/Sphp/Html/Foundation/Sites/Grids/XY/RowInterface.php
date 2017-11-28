@@ -14,13 +14,6 @@ use Sphp\Html\ContentInterface;
  *
  * A Foundation Row is a horizontal block containing vertical {@link ColumnInterface} components.
  *
- * **Important:**
- * 
- * **The sum of the {@link ColumnInterface} widths on a specific screen size in a 
- * {@link self} should not exeed 12**. However if this sum do exeed 12, in most 
- * browser environments the excessive {@link Column} components are floated to 
- * a new 'row'. **HOWEVER!** this behavior is not actively supported.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation grid

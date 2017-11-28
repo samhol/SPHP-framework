@@ -23,11 +23,6 @@ use Sphp\Html\CssClassifiedComponent;
 class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManagerInterface {
 
   /**
-   * @var string[]
-   */
-  public static $stretch = ['fluid', 'full'];
-
-  /**
    * Constructs a new instance
    * 
    * @param CssClassifiedComponent $component
@@ -36,18 +31,21 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
     parent::__construct($component);
     $this->cssClasses()->protect('grid-container');
   }
-
-  public function isStretched(): bool {
-    return $this->cssClasses()->containsOneOf(static::$stretch);
-  }
-
-  public function stretch(string $type = null) {
-    $this->setOneOf(static::$stretch, $type);
+  public function setFluid(bool $fluid = false) {
+    if ($fluid) {
+      $this->cssClasses()->remove('full')->set('fluid');
+    } else {
+      $this->cssClasses()->remove('fluid');
+    }
     return $this;
   }
 
-  public function unStretch() {
-    $this->cssClasses()->remove(static::$stretch);
+  public function setFull(bool $full = false) {
+    if ($full) {
+      $this->cssClasses()->remove('fluid')->set('full');
+    } else {
+      $this->cssClasses()->remove('full');
+    }
     return $this;
   }
 
@@ -58,7 +56,7 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
   }
 
   public function unsetLayouts() {
-    $this->unStretch();
+    $this->setFluid(false)->setFull(false);
     return $this;
   }
 

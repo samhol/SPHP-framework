@@ -21,21 +21,19 @@ use Sphp\Html\Foundation\Sites\Core\LayoutManager;
 interface GridLayoutManagerInterface extends LayoutManager {
 
   /**
-   *
-   * @param string $type
+   * Stretches the content to the full width of the available space
+   * 
+   * @param  boolean $fluid true for stretched false otherwise
    * @return $this for a fluent interface
    */
-  public function stretch(string $type = null);
+  public function setFluid(bool $fluid = false);
 
   /**
-   *
-   * @return bool
-   */
-  public function isStretched(): bool;
-
-  /**
-   *
+   * Stretches the content to the full width of the available space and removes 
+   * grid container padding
+   * 
+   * @param  boolean $full true for stretched false otherwise
    * @return $this for a fluent interface
    */
-  public function unStretch();
+  public function setFull(bool $full = false);
 }

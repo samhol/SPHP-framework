@@ -81,21 +81,6 @@ class RowLayoutManager extends AlingmentAdapter {
   }
 
   /**
-   * Sets/ the row completely fluid
-   *
-   * @param  boolean $expanded the target screen size
-   * @return $this for a fluent interface
-   */
-  public function expand(bool $expanded = true) {
-    if ($expanded) {
-      $this->cssClasses()->add('fluid');
-    } else {
-      $this->cssClasses()->remove('fluid');
-    }
-    return $this;
-  }
-
-  /**
    * Sets the block grid value of the given target screen types
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`

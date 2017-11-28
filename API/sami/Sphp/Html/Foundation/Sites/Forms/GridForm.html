@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>GridForm</strong>        extends <a href="../../../../../Sphp/Html/AbstractComponent.html"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/GridInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\GridInterface">GridInterface</abbr></a>, <a href="../../../../../Sphp/Html/Forms/TraversableFormInterface.html"><abbr title="Sphp\Html\Forms\TraversableFormInterface">TraversableFormInterface</abbr></a>
+        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/GridInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\GridInterface">GridInterface</abbr></a>, <a href="../../../../../Sphp/Html/Forms/TraversableFormInterface.html"><abbr title="Sphp\Html\Forms\TraversableFormInterface">TraversableFormInterface</abbr></a>
 </p>
 
         
@@ -569,20 +569,20 @@ elements, as well as the Foundation Grid ({@link Row}(s) and {@link Column}(s)).
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr>
+                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_append">append</a>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a> $row)
+                    <a href="#method_append">append</a>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\RowInterface">RowInterface</abbr></a> $row)
         
                                             <p>Appends a new row to the grid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr>
+                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_prepend">prepend</a>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a> $row)
+                    <a href="#method_prepend">prepend</a>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\RowInterface">RowInterface</abbr></a> $row)
         
                                             <p>Prepends a new row to the grid</p>                </div>
                 <div class="col-md-2"></div>
@@ -1257,7 +1257,7 @@ elements, as well as the Foundation Grid ({@link Row}(s) and {@link Column}(s)).
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 62</div>
+        <div class="location">at         line 63</div>
         <code>                    
     <strong>__construct</strong>(string $action = null, string $method = null, mixed|null $content = null)
         </code>
@@ -1410,7 +1410,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 106</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1816,7 +1816,7 @@ the browser should display options to fill in the field, based on earlier typed 
             </div>
                     <div class="method-item">
                     <h3 id="method_validation">
-        <div class="location">at         line 100</div>
+        <div class="location">at         line 101</div>
         <code>                    <abbr title="Sphp\Html\Forms\$this">$this</abbr>
     <strong>validation</strong>(bool $validate = true)
         </code>
@@ -2057,7 +2057,7 @@ target attribute defines a name of, or keyword for, a browsing context
             </div>
                     <div class="method-item">
                     <h3 id="method_getHiddenInputs">
-        <div class="location">at         line 86</div>
+        <div class="location">at         line 87</div>
         <code>                    <abbr title="Sphp\Html\Forms\ContainerInterface">ContainerInterface</abbr>
     <strong>getHiddenInputs</strong>()
         </code>
@@ -2110,7 +2110,7 @@ target attribute defines a name of, or keyword for, a browsing context
                     <tr>
                 <td>boolean</td>
                 <td>$filter</td>
-                <td>true for enabling the data filtering, ans false otherwise</td>
+                <td>true for enabling the data filtering, and false otherwise</td>
             </tr>
             </table>
 
@@ -2132,7 +2132,7 @@ target attribute defines a name of, or keyword for, a browsing context
             </div>
                     <div class="method-item">
                     <h3 id="method_getGrid">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 83</div>
         <code>                    
     <strong>getGrid</strong>()
         </code>
@@ -2151,7 +2151,7 @@ target attribute defines a name of, or keyword for, a browsing context
             </div>
                     <div class="method-item">
                     <h3 id="method_setFormErrorMessage">
-        <div class="location">at         line 95</div>
+        <div class="location">at         line 96</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Forms\$this">$this</abbr>
     <strong>setFormErrorMessage</strong>(string $message)
         </code>
@@ -2189,9 +2189,9 @@ target attribute defines a name of, or keyword for, a browsing context
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location">at         line 120</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr>
-    <strong>append</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a> $row)
+        <div class="location">at         line 121</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
+    <strong>append</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\RowInterface">RowInterface</abbr></a> $row)
         </code>
     </h3>
     <div class="details">
@@ -2211,7 +2211,7 @@ using {@link self::toRow()} method.</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a></td>
+                <td>mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\RowInterface">RowInterface</abbr></a></td>
                 <td>$row</td>
                 <td>the new row or the content of the new row</td>
             </tr>
@@ -2222,7 +2222,7 @@ using {@link self::toRow()} method.</li>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr></td>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2235,9 +2235,9 @@ using {@link self::toRow()} method.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_prepend">
-        <div class="location">at         line 139</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr>
-    <strong>prepend</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a> $row)
+        <div class="location">at         line 141</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
+    <strong>prepend</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\RowInterface">RowInterface</abbr></a> $row)
         </code>
     </h3>
     <div class="details">
@@ -2259,7 +2259,7 @@ and the index of the prepended row is 'int(0)'</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a></td>
+                <td>mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/XY/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\RowInterface">RowInterface</abbr></a></td>
                 <td>$row</td>
                 <td>the new row or the content of the new row</td>
             </tr>
@@ -2270,7 +2270,7 @@ and the index of the prepended row is 'int(0)'</li>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr></td>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2283,7 +2283,7 @@ and the index of the prepended row is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 147</div>
+        <div class="location">at         line 149</div>
         <code>                    
     <strong>count</strong>()
         </code>
@@ -2302,7 +2302,7 @@ and the index of the prepended row is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 151</div>
+        <div class="location">at         line 153</div>
         <code>                    
     <strong>getIterator</strong>()
         </code>
@@ -2321,7 +2321,7 @@ and the index of the prepended row is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendHiddenVariable">
-        <div class="location">at         line 166</div>
+        <div class="location">at         line 168</div>
         <code>                    <abbr title="Sphp\Html\Forms\$this">$this</abbr>
     <strong>appendHiddenVariable</strong>(string $name, scalar $value)
         </code>
@@ -2376,7 +2376,7 @@ and the index of the prepended row is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendHiddenVariables">
-        <div class="location">at         line 181</div>
+        <div class="location">at         line 183</div>
         <code>                    <abbr title="Sphp\Html\Forms\$this">$this</abbr>
     <strong>appendHiddenVariables</strong>(array $vars)
         </code>
@@ -2426,7 +2426,7 @@ and the index of the prepended row is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumns">
-        <div class="location">at         line 193</div>
+        <div class="location">at         line 195</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>getColumns</strong>()
         </code>
@@ -2456,7 +2456,7 @@ and the index of the prepended row is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getInputColumns">
-        <div class="location">at         line 202</div>
+        <div class="location">at         line 204</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Forms\ContainerInterface">ContainerInterface</abbr>
     <strong>getInputColumns</strong>()
         </code>
