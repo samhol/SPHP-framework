@@ -10,6 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Container;
 use Sphp\Html\ContainerInterface;
+use Traversable;
 
 /**
  * Implements an abstract Foundation framework based XY Grid container for rows
@@ -80,23 +81,12 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
     return $this;
   }
 
-  public function current() {
-    
-  }
-
-  public function key() {
-    
-  }
-
-  public function next() {
-    
-  }
-
-  public function rewind() {
-    
-  }
-
-  public function getIterator() {
+  /**
+   * Create a new iterator to iterate through Grid content
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): Traversable {
     return $this->content->getIterator();
   }
 

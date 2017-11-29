@@ -428,57 +428,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_current">current</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_key">key</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_next">next</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_rewind">rewind</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
+                    <a target="_blank" href="http://php.net/Traversable">Traversable</a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getIterator">getIterator</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Create a new iterator to iterate through Grid content</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1089,7 +1044,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 49</div>
+        <div class="location">at         line 50</div>
         <code>                    
     <strong>__construct</strong>(string $tagname)
         </code>
@@ -1099,7 +1054,15 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important!</strong></p>
+
+<ol>
+<li>Parameter <code>mixed $content</code> can be of any type that converts to a string
+or to an array of strings. So also objects of any type that implement magic
+method <code>__toString()</code> are allowed.</li>
+<li><code>mixed $content</code> is transformed to a @link Row} component.</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1113,15 +1076,6 @@
 
             
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the tag name of the component is not valid</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -1232,7 +1186,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 67</div>
+        <div class="location">at         line 68</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1381,7 +1335,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumns">
-        <div class="location">at         line 55</div>
+        <div class="location">at         line 56</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>getColumns</strong>()
         </code>
@@ -1411,7 +1365,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location">at         line 59</div>
+        <div class="location">at         line 60</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr>
     <strong>append</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a> $row)
         </code>
@@ -1457,7 +1411,7 @@ using {@link self::toRow()} method.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 71</div>
+        <div class="location">at         line 72</div>
         <code>                    
     <strong>count</strong>()
         </code>
@@ -1476,7 +1430,7 @@ using {@link self::toRow()} method.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_prepend">
-        <div class="location">at         line 75</div>
+        <div class="location">at         line 76</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\$this">$this</abbr>
     <strong>prepend</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a> $row)
         </code>
@@ -1523,85 +1477,9 @@ and the index of the prepended row is 'int(0)'</li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_current">
-        <div class="location">at         line 83</div>
-        <code>                    
-    <strong>current</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_key">
-        <div class="location">at         line 87</div>
-        <code>                    
-    <strong>key</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_next">
-        <div class="location">at         line 91</div>
-        <code>                    
-    <strong>next</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_rewind">
-        <div class="location">at         line 95</div>
-        <code>                    
-    <strong>rewind</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 99</div>
-        <code>                    
+        <div class="location">at         line 89</div>
+        <code>                    <a target="_blank" href="http://php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
     </h3>
@@ -1609,8 +1487,19 @@ and the index of the prepended row is 'int(0)'</li>
             
     
 
+                    <div class="method-description">
+                                    <p>Create a new iterator to iterate through Grid content</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/Traversable">Traversable</a></td>
+            <td>iterator</td>
+        </tr>
+    </table>
+
             
             
                     </div>

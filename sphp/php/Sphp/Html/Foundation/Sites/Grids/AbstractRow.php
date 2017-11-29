@@ -7,9 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\WrappingContainer;
-use Sphp\Html\NonVisualContent;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Container;
 
 /**
  * Implements an abstract Foundation framework based XY Row
@@ -20,7 +19,12 @@ use Sphp\Html\NonVisualContent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractRow extends AbstractContainerTag implements RowInterface {
+abstract class AbstractRow extends AbstractComponent implements \IteratorAggregate, RowInterface {
+
+  /**
+   * @var Container
+   */
+  private $columns;
 
   /**
    * @var RowLayoutManager 
@@ -28,15 +32,9 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
   private $layoutManager;
 
   public function __construct($tagname, RowLayoutManager $layoutManager = null) {
-    $wrapToCol = function($c) {
-      if ($c instanceof NonVisualContent || $c instanceof ColumnInterface) {
-        return $c;
-      } else {
-        return new Column($c);
-      }
-    };
-    parent::__construct($tagname, null, new WrappingContainer($wrapToCol));
+    parent::__construct($tagname, null);
     $this->layoutManager = new RowLayoutManager($this);
+    $this->columns = new Container();
   }
 
   public function layout(): RowLayoutManager {
@@ -52,7 +50,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
       $sizes = ['auto'];
     }
 
-    $this->clear();
+    $this->columns->clear();
     //print_r($sType);
     foreach ($columns as $column) {
       if ($column instanceof ColumnInterface) {
@@ -61,6 +59,34 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
         $this->appendColumn($column, $sizes);
       }
     }
+    return $this;
+  }
+
+  /**
+   * Appends a new Column to the container
+   * 
+   * @param  mixed $column column or column content
+   * @return $this for a fluent interface
+   */
+  public function append($column) {
+    if (!($column instanceof ColumnInterface)) {
+      $column = new Column($column);
+    }
+    $this->columns->append($column);
+    return $this;
+  }
+
+  /**
+   * Appends a new Column to the container
+   * 
+   * @param  mixed $column column or column content
+   * @return $this for a fluent interface
+   */
+  public function prepend($column) {
+    if (!($column instanceof ColumnInterface)) {
+      $column = new Column($column);
+    }
+    $this->columns->prepend($column);
     return $this;
   }
 
@@ -73,6 +99,19 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     $p = new \ParsedownExtraPlugin();
     $this->append(new Column($p->parse($content), $sizes));
     return $this;
+  }
+
+  /**
+   * Create a new iterator to iterate through Row content
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): Traversable {
+    return $this->content->getIterator();
+  }
+
+  public function contentToString(): string {
+    return $this->columns->getHtml();
   }
 
   /**

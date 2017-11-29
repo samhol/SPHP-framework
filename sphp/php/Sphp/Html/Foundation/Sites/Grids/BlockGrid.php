@@ -8,10 +8,10 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\WrappingContainer;
 use Sphp\Html\ContentParser;
+use Sphp\Html\Container;
 
 /**
  * Implements a Foundation framework based XY Block Grid
@@ -28,10 +28,15 @@ use Sphp\Html\ContentParser;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BlockGrid extends AbstractContainerComponent implements IteratorAggregate, ContentParser, TraversableContent {
+class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentParser, TraversableContent {
 
   use \Sphp\Html\TraversableTrait,
       \Sphp\Html\ContentParsingTrait;
+
+  /**
+   * @var Container
+   */
+  private $columns;
 
   /**
    * @var BlockGridLayoutManager 
@@ -39,7 +44,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
   private $layoutManager;
 
   /**
-   * The maximum block grid value (int 12)
+   * The maximum block grid value
    */
   const MAX_GRID = 8;
 
@@ -66,13 +71,8 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @param  array $layout column layout parameters
    */
   public function __construct(...$layout) {
-    $wrapper = function($c) {
-      if (!($c instanceof BlockGridColumnInterface)) {
-        $c = new BlockGridColumn($c);
-      }
-      return $c;
-    };
-    parent::__construct('div', null, new WrappingContainer($wrapper));
+    $this->columns = new Container();
+    parent::__construct('div');
     $this->layoutManager = new BlockGridLayoutManager($this);
     $this->layout()->setLayouts($layout);
   }
@@ -88,8 +88,11 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @return $this for a fluent interface
    */
   public function setColumns(array $columns) {
-    $this->getInnerContainer()->clear();
+    $this->columns->clear();
     foreach ($columns as $column) {
+      if (!($column instanceof BlockGridColumnInterface)) {
+        $column = new BlockGridColumn($column);
+      }
       $this->append($column);
     }
     return $this;
@@ -102,7 +105,10 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @return $this for a fluent interface
    */
   public function append($column) {
-    $this->getInnerContainer()->append($column);
+    if (!($column instanceof BlockGridColumnInterface)) {
+      $column = new BlockGridColumn($column);
+    }
+    $this->columns->append($column);
     return $this;
   }
 
@@ -113,15 +119,19 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @return BlockGridColumn|null
    */
   public function getColumn($index) {
-    return $this->getInnerContainer()->offsetGet($index);
+    return $this->columns->offsetGet($index);
   }
 
   public function getIterator() {
-    return $this->getInnerContainer()->getIterator();
+    return $this->columns->getIterator();
   }
 
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return $this->columns->count();
+  }
+
+  public function contentToString(): string {
+    return $this->columns->getHtml();
   }
 
 }

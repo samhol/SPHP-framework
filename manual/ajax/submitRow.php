@@ -23,5 +23,4 @@ $panel[] = new Div('This row is automatically generated for form data viewing');
 $inputCol = (new Column($panel));
 
 $submitRow = new FormRow($panel);
-$submitRow->layout()->expand(true);
 $submitRow->printHtml();

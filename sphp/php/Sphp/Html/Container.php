@@ -181,7 +181,12 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
     return $result;
   }
 
-  public function getIterator() {
+  /**
+   * Create a new iterator to iterate through content
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): \Traversable {
     return new Iterator($this->components);
   }
 

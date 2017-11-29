@@ -12,7 +12,7 @@ use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
 /**
- * Implements a layout manager for Block Grid columns
+ * Implements a layout manager for a Foundation framework based XY Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation 6

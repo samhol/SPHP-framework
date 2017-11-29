@@ -18,7 +18,7 @@ use Sphp\Html\CssClassifiableContent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface RowInterface extends CssClassifiableContent {
+interface RowInterface extends CssClassifiableContent, \Traversable {
 
   /**
    * Sets the columns of the row (Removes existing content)
@@ -74,16 +74,4 @@ interface RowInterface extends CssClassifiableContent {
    */
   public function append($column);
 
-  /**
-   * Assigns a {@link ColumnInterface} component to the specified offset
-   *
-   * **Notes:**
-   *
-   * * `mixed $columns` can be of any type that converts to a string or to a string[]
-   * * all values of $columns not extending {@link ColumnInterface} are wrapped with {@link Column} object
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param mixed $value the value to set
-   */
-  public function offsetSet($offset, $value);
 }
