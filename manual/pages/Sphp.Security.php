@@ -1,10 +1,12 @@
 <?php
 
 namespace Sphp\Security;
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+
+use Sphp\Manual;
+
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
+Manual\parseDown(<<<MD
 #WEB APPLICATION SECURITY
 $ns
         
@@ -21,15 +23,17 @@ more robust code.
 MD
 );
 
-\Sphp\Manual\loadPage("Sphp.Security.Database.php");
-\Sphp\Manual\loadPage("Sphp.Security.CRSFToken.php");
-\Sphp\Manual\loadPage("Sphp.Security.PasswordInterface.php");
-\Sphp\Manual\parseDown(<<<MD
+Manual\loadPage('Sphp.Security.Database');
+Manual\loadPage('Sphp.Security.CRSFToken');
+Manual\loadPage('Sphp.Security.PasswordInterface');
+
+Manual\parseDown(<<<MD
 ##Input validation
 [Form Input validation](Sphp.Validators){target="_blank"}
 
 MD
 );
-CodeExampleBuilder::build('Sphp/Validators/FormValidator.php', "php", false)
+
+Manual\example('Sphp/Validators/FormValidator.php', 'php', false)
         ->setExamplePaneTitle('FORM input validation example')
         ->printHtml();

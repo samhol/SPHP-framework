@@ -8,6 +8,7 @@ $php = Manual\php();
 $nsLink = Manual\api()->namespaceLink(__NAMESPACE__);
 $collectionInterface = Manual\api()->classLinker(CollectionInterface::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
 Manual\parseDown(<<<MD
 #DATA STRUCTURES
 $ns

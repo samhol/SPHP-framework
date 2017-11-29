@@ -6,6 +6,7 @@ use Sphp\Manual;
 
 $csvFile = Manual\api()->classLinker(CsvFile::class);
 $arrLink = Manual\php()->typeLink('array');
+
 Manual\parseDown(<<<MD
 $csvFile can read and modify <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV-files</a>
 to a multidimensional PHP $arrLink where each 'row' represents a data row in the

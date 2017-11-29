@@ -2,13 +2,12 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$stablePriorityQueue = \Sphp\Manual\api()->classLinker(StablePriorityQueue::class);
-$splPriorityQueue = Apis::phpManual()->classLinker(\SplPriorityQueue::class);
-\Sphp\Manual\parseDown(
-        <<<MD
+$stablePriorityQueue = Manual\api()->classLinker(StablePriorityQueue::class);
+$splPriorityQueue = Manual\php()->classLinker(\SplPriorityQueue::class);
+
+Manual\parseDown(<<<MD
 ##The $stablePriorityQueue class
 
 This class extends the build-in $splPriorityQueue.
@@ -18,4 +17,5 @@ The $stablePriorityQueue is stable whereas the native SPL class is not.
 priority value occur in the order in which they were inserted.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Stdlib/Datastructures/StablePriorityQueue.php", 'text', false);
+
+Manual\visualize('Sphp/Stdlib/Datastructures/StablePriorityQueue.php', 'text', false);

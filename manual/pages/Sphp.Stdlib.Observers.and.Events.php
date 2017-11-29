@@ -9,6 +9,7 @@ $eventInterface = Manual\api()->classLinker(EventInterface::class);
 $eventClass = Manual\api()->classLinker(Event::class);
 $eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::class);
 $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class);
+
 Manual\parseDown(<<<MD
 #EVENTS AND OBSERVERS
 		

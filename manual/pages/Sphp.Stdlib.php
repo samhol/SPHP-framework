@@ -7,7 +7,7 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 $blocks = new BlockGrid('small-up-1', 'large-up-2', 'xlarge-up-3');
 
 $blocks->appendPhpFile('Stdlib.Events-Observers.php');
-$blocks->appendPhpFile('Stdlib.Events-Observers.php');
+$blocks->appendPhpFile('Stdlib.Filesystem.php');
 $blocks->appendPhpFile('Stdlib.Events-Observers.php');
 echo $blocks;
 
