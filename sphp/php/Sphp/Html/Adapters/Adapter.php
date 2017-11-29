@@ -6,7 +6,7 @@
  */
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines an adapter pattern interface for HTML content
@@ -15,6 +15,6 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface Adapter extends ContentInterface {
+interface Adapter extends Content {
 
 }

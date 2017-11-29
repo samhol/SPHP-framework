@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableContent;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\ContainerInterface;
 
@@ -24,7 +24,7 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, TraversableInterface, RowInterface {
+abstract class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, TraversableContent, RowInterface {
 
   use \Sphp\Html\TraversableTrait;
 

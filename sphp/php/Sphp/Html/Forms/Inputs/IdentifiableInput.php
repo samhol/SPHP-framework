@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\IdentifiableComponent;
+use Sphp\Html\IdentifiableContent;
 
 /**
  * Defines required operations for all identifiable input components used in a HTML form
@@ -16,6 +16,6 @@ use Sphp\Html\IdentifiableComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface IdentifiableInput extends InputInterface, IdentifiableComponent {
+interface IdentifiableInput extends InputInterface, IdentifiableContent {
 
 }

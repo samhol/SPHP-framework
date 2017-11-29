@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $abstractTag = Manual\api()->classLinker(AbstractTag::class);
 $ns = Manual\api()->namespaceLink(__NAMESPACE__);
 $documentLink = Manual\api()->classLinker(Document::class);
-$contentInterface = Manual\api()->classLinker(ContentInterface::class);
+$contentInterface = Manual\api()->classLinker(Content::class);
 $exeption = Manual\php()->classLinker(\Exception::class);
 $componentInterface = Manual\api()->classLinker(ComponentInterface::class);
 $emptyTag = Manual\api()->classLinker(EmptyTag::class);

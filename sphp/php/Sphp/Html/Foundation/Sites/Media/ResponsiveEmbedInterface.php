@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines properties for a Foundation Responsive Embed component
@@ -18,7 +18,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ResponsiveEmbedInterface extends ContentInterface {
+interface ResponsiveEmbedInterface extends Content {
 
   /**
    * Sets/unsets the aspect ratio

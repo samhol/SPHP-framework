@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Foundation\Sites\Grids\XY\Column;
-use Sphp\Html\Foundation\Sites\Grids\XY\Row;
+use Sphp\Html\Foundation\Sites\Grids\Column;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 
 $cols1[] = Column::create('align-center', ['small-3']);
 $cols1[] = Column::create('align-center', ['small-3']);

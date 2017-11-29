@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\ComponentInterface;
 
@@ -22,7 +22,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Modal implements ContentInterface, ClosableInterface {
+class Modal implements Content, ClosableInterface {
 
   use \Sphp\Html\ContentTrait;
 

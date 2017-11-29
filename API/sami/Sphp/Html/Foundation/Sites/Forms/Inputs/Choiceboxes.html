@@ -80,7 +80,7 @@
 
     <p>abstract     class
     <strong>Choiceboxes</strong>        extends <a href="../../../../../../Sphp/Html/AbstractComponent.html"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a>        implements
-        <a href="../../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>, <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface">ColumnInterface</abbr></a>
+        <a href="../../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>, <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
 </p>
 
         
@@ -114,6 +114,15 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../../../../Sphp/Html/IdentifiableTrait.html"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../../Sphp/Html/CssClassifiableTrait.html"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -159,6 +168,16 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attrs">attrs</a>()
+        
+                                            <p>Returns the attribute manager attached to the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
@@ -179,23 +198,43 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_attrs">attrs</a>()
-        
-                                            <p>Returns the attribute manager attached to the component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     <a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_cssClasses">cssClasses</a>()
         
                                             <p>Returns the class attribute object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_cssClasses"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCssClass">addCssClass</a>(string|string[] $cssClasses)
+        
+                                            <p>Adds the specified CSS class names</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_addCssClass"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeCssClass">removeCssClass</a>(string|string[] $cssClasses)
+        
+                                            <p>Removes given CSS class names</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_removeCssClass"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasCssClass">hasCssClass</a>(string|string[] $cssClasses)
+        
+                                            <p>Determines whether the given CSS class names exists</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_hasCssClass"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -206,36 +245,6 @@
         
                                             <p>Returns the attribute object containing inline styles</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addCssClass">addCssClass</a>(string|string[] $cssClasses)
-        
-                                            <p>Adds the specified CSS class names</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_removeCssClass">removeCssClass</a>(string|string[] $cssClasses)
-        
-                                            <p>Removes given CSS class names</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasCssClass">hasCssClass</a>(string|string[] $cssClasses)
-        
-                                            <p>Determines whether the given CSS class names exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -349,7 +358,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
+                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_layout">layout</a>()
@@ -415,7 +424,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getName">getName</a>()
         
-                                            <p>Returns the value of name attribute</p>                </div>
+                                            <p>Returns the name of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -425,7 +434,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setName">setName</a>(string $name)
         
-                                            <p>Sets the value of name attribute</p>                </div>
+                                            <p>Sets the name of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -435,7 +444,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isNamed">isNamed</a>()
         
-                                            <p>Checks whether the slider has a name</p>                </div>
+                                            <p>Checks whether the form input has a name</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -455,7 +464,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isEnabled">isEnabled</a>()
         
-                                            <p>Checks whether the option is enabled or not</p>                </div>
+                                            <p>Checks whether the input component is enabled or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -465,7 +474,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setValue">setValue</a>(scalar $value)
         
-                                            <p>Sets the current submission set of the input component</p>                </div>
+                                            <p>Sets  the value of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -475,7 +484,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getSubmitValue">getSubmitValue</a>()
         
-                                            <p>Returns the current submission set of the input component</p>                </div>
+                                            <p>Returns the value of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -595,8 +604,38 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_attrs">
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 26</div>
+        <code>    abstract                <a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
+    <strong>attrs</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the attribute manager attached to the component</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
+            <td>the attribute manager</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 34</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 39</div>
         <code>                    string
     <strong>identify</strong>(int $length = 16)
         </code>
@@ -638,7 +677,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 44</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableTrait">IdentifiableTrait</abbr></a> at         line 49</div>
         <code>                    boolean
     <strong>hasId</strong>()
         </code>
@@ -667,39 +706,9 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_attrs">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
-        <code>    abstract                <a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
-    <strong>attrs</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the attribute manager attached to the component</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
-            <td>the attribute manager</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_cssClasses">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
+        <div class="location">in <a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_cssClasses"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a> at         line 26</div>
+        <code>    abstract                <a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
     <strong>cssClasses</strong>()
         </code>
     </h3>
@@ -727,38 +736,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_inlineStyles">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 47</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
-    <strong>inlineStyles</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the attribute object containing inline styles</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a></td>
-            <td>the attribute object containing inline styles</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_addCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 64</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_addCssClass"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a> at         line 41</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>addCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -805,7 +784,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 81</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_removeCssClass"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a> at         line 58</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>removeCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -851,7 +830,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 98</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/CssClassifiableTrait.html#method_hasCssClass"><abbr title="Sphp\Html\CssClassifiableTrait">CssClassifiableTrait</abbr></a> at         line 75</div>
         <code>                    boolean
     <strong>hasCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -896,8 +875,38 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_inlineStyles">
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 48</div>
+        <code>                    <a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
+    <strong>inlineStyles</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the attribute object containing inline styles</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a></td>
+            <td>the attribute object containing inline styles</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 124</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 74</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>setAttr</strong>(string $name, mixed $value = null)
         </code>
@@ -971,7 +980,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 135</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 85</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>removeAttr</strong>(string $name)
         </code>
@@ -1011,7 +1020,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 151</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 101</div>
         <code>                    mixed
     <strong>getAttr</strong>(string $name)
         </code>
@@ -1057,7 +1066,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_attrExists">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 111</div>
         <code>                    boolean
     <strong>attrExists</strong>(string $name)
         </code>
@@ -1131,6 +1140,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the tag name of the component is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1311,7 +1329,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_layout">
         <div class="location">at         line 87</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
+        <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>layout</strong>()
         </code>
     </h3>
@@ -1325,7 +1343,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a></td>
+            <td><a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -1543,7 +1561,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the value of name attribute</p>                                                </div>
+                                    <p>Returns the name of the form input</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1573,7 +1591,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the value of name attribute</p>                                                </div>
+                                    <p>Sets the name of the form input</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
+passed when submitting a form.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1613,8 +1632,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Checks whether the slider has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
- passed when submitting a form.</p>                            </div>
+                                    <p>Checks whether the form input has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
+passed when submitting a form.</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1685,7 +1704,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Checks whether the option is enabled or not</p>                                                </div>
+                                    <p>Checks whether the input component is enabled or not</p>                                                </div>
                 <div class="tags">
             
             
@@ -1706,7 +1725,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Sets the current submission set of the input component</p>                                                </div>
+                                    <p>Sets  the value of the form input</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1729,6 +1748,15 @@ Disabled input components in a form will not be submitted.</p>                  
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the value is not valid for the input type</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1746,7 +1774,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Returns the current submission set of the input component</p>                                                </div>
+                                    <p>Returns the value of the form input</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>

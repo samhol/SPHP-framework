@@ -51,7 +51,7 @@ class GettextForm extends AbstractComponentGenerator {
     return $this;
   }
 
-  public function generate(): Html\ContentInterface {
+  public function generate(): Html\Content {
 
     $form = new GridForm('manual/gettext/index.php', 'get');
 

@@ -28,7 +28,7 @@ use IteratorAggregate;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractContainerTag extends AbstractContainerComponent implements IteratorAggregate, ContainerComponentInterface, ContentParserInterface {
+class AbstractContainerTag extends AbstractContainerComponent implements IteratorAggregate, ContainerComponentInterface, ContentParser {
 
   use ContainerComponentTrait,
       ContentParsingTrait,

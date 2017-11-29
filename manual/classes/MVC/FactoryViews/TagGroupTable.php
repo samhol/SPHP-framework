@@ -16,7 +16,7 @@ use Sphp\Html\Tables\Table;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagGroupTable implements \Sphp\Html\ContentInterface {
+class TagGroupTable implements \Sphp\Html\Content {
 
   use \Sphp\Html\ContentTrait;
 

@@ -14,7 +14,8 @@ use Sphp\Html\Span;
 use Sphp\Html\Content\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
-use Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManager;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea;
 use Sphp\Html\Forms\Inputs\Menus\Select;
@@ -195,7 +196,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this->label->getHtml() . $this->helper;
   }
 
-  public function layout() {
+  public function layout(): ColumnLayoutManagerInterface {
     return $this->layoutManager;
   }
 

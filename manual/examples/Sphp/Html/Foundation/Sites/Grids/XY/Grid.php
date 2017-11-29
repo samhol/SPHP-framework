@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids\XY;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 $rows[] = new Row(["full"]);
 $rows[] = Row::from(array_fill(0, 15, "auto"));

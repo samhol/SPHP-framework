@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines required operations for all HTML form input components
@@ -16,7 +16,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface InputInterface extends ContentInterface {
+interface InputInterface extends Content {
 
   /**
    * Returns the name of the form input

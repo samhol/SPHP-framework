@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\ComponentInterface;
 
 /**
@@ -22,7 +22,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ContentCopyController implements ContentInterface {
+class ContentCopyController implements Content {
 
   use \Sphp\Html\ContentTrait;
 

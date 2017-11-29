@@ -20,7 +20,7 @@ use Sphp\Html\Programming\SphpScriptsLoader;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Body extends ContainerTag implements ContentParserInterface {
+class Body extends ContainerTag implements ContentParser {
 
   use ContentParsingTrait;
 

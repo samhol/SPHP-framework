@@ -11,7 +11,7 @@ use Sphp\Stdlib\Filesystem;
 use ParsedownExtraPlugin;
 
 /**
- * Trait implements functionality of the {@link ContentParserInterface}
+ * Trait implements functionality of the {@link ContentParser}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

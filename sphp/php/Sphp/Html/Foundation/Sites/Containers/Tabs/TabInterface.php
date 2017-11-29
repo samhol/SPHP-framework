@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines a Tab for Tabs
@@ -18,7 +18,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TabInterface extends ContentInterface {
+interface TabInterface extends Content {
 
   /**
    * 

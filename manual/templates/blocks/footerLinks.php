@@ -4,7 +4,7 @@ namespace Sphp\Html;
 
 use Sphp\Html\Icons\Icons;
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
-use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $grid = (new BlockGrid('small-up-2', 'large-up-4'))->addCssClass('collapse');
 $grid->append((new Menu())->vertical()

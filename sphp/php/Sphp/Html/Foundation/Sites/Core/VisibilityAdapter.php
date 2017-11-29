@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\CssClassifiedComponent;
+use Sphp\Html\CssClassifiableContent;
 use Sphp\Stdlib\Arrays;
 
 /**
@@ -27,7 +27,7 @@ class VisibilityAdapter extends AbstractLayoutManager implements VisibilityChang
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(CssClassifiedComponent $component) {
+  public function __construct(CssClassifiableContent $component) {
     parent::__construct($component);
   }
 

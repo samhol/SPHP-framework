@@ -19,7 +19,7 @@ use Sphp\Html\Programming\ScriptsContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Html extends AbstractComponent implements IteratorAggregate, TraversableInterface, ContentParserInterface {
+class Html extends AbstractComponent implements IteratorAggregate, TraversableContent, ContentParser {
 
   use TraversableTrait;
 

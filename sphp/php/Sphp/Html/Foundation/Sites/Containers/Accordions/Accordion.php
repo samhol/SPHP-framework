@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableContent;
 use ArrayIterator;
 
 /**
@@ -21,7 +21,7 @@ use ArrayIterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Accordion extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface {
+class Accordion extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 

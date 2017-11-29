@@ -39,7 +39,7 @@ class GettextTable extends AbstractComponentGenerator {
     return $this;
   }
 
-  public function generate(): Html\ContentInterface {
+  public function generate(): Html\Content {
     $i = $this->i;
     $table = new Table();
     $table->addCssClass('po-table')

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids\XY;
+namespace Sphp\Html\Foundation\Sites\Grids;
 echo "<pre>";
 var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'auto') === 1);
 var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'medium-auto') === 1);

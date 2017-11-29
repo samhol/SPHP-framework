@@ -107,7 +107,7 @@
                                             
                 </div>
                 <div class="col-md-6">
-                    Trait implements functionality of the {@link ContentParserInterface}
+                    Trait implements functionality of the {@link ContentParser}
                 </div>
             </div>
                     <div class="row">
@@ -163,7 +163,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_append">append</a>($content)
         
-                                            <p>Appends content to the component</p>                </div>
+                                            <p>Appends a new value as the last element</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -208,7 +208,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsBy">getComponentsBy</a>(callable $rules)
@@ -218,7 +218,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>(string|object $type)
@@ -263,7 +263,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_prepend">prepend</a>($content)
         
-                                            <p>Prepends elements to the html component</p>                </div>
+                                            <p>Prepends a new value as the first element</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -514,10 +514,7 @@
     
 
                     <div class="method-description">
-                                    <p>Appends content to the component</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then appends the result to the container</p>                            </div>
+                                    <p>Appends a new value as the last element</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -735,7 +732,7 @@ and then appends the result to the container</p>                            </di
                     <div class="method-item">
                     <h3 id="method_getComponentsBy">
         <div class="location">in <a href="../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 26</div>
-        <code>                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <code>                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
     <strong>getComponentsBy</strong>(callable $rules)
         </code>
     </h3>
@@ -761,7 +758,7 @@ and then appends the result to the container</p>                            </di
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a></td>
             <td>containing matching sub components</td>
         </tr>
     </table>
@@ -775,7 +772,7 @@ and then appends the result to the container</p>                            </di
                     <div class="method-item">
                     <h3 id="method_getComponentsByObjectType">
         <div class="location">in <a href="../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
-        <code>                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <code>                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
     <strong>getComponentsByObjectType</strong>(string|object $type)
         </code>
     </h3>
@@ -801,7 +798,7 @@ and then appends the result to the container</p>                            </di
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a></td>
             <td>containing matching sub components</td>
         </tr>
     </table>
@@ -824,10 +821,7 @@ and then appends the result to the container</p>                            </di
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given to the <code>$content</code>
-and then appends the result to the container</p>                            </div>
+                                    <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -906,10 +900,11 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Prepends elements to the html component</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then prepends the result to the container</p>                            </div>
+                                    <p>Prepends a new value as the first element</p>                    <p><ul>
+<li>The numeric keys of the content will be renumbered starting from zero
+and the index of the prepended value is 'int(0)'</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1103,10 +1098,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Assigns content to the specified offset</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then sets the result to the container to the specified offset</p>                            </div>
+                                    <p>Assigns content to the specified offset</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

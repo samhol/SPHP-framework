@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\CssClassifiedComponent;
+use Sphp\Html\CssClassifiableContent;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
@@ -25,16 +25,16 @@ abstract class AbstractLayoutManager implements LayoutManager {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var CssClassifiedComponent
+   * @var CssClassifiableContent
    */
   private $component;
 
   /**
    * Constructs a new instance
    * 
-   * @param CssClassifiedComponent $component
+   * @param CssClassifiableContent $component
    */
-  public function __construct(CssClassifiedComponent $component) {
+  public function __construct(CssClassifiableContent $component) {
     $this->component = $component;
   }
 

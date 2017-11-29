@@ -8,8 +8,6 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\Attributes\PropertyAttribute;
 
 /**
  * Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
@@ -19,6 +17,13 @@ use Sphp\Html\Attributes\PropertyAttribute;
  * @filesource
  */
 trait IdentifiableTrait {
+
+  /**
+   * Returns the attribute manager attached to the component
+   *
+   * @return HtmlAttributeManager the attribute manager
+   */
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Identifies the element with an unique id attribute.

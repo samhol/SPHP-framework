@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines an HTML media source
@@ -20,7 +20,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MediaSource extends ContentInterface {
+interface MediaSource extends Content {
 
   /**
    * Sets the path to the media source (The URL of the file)

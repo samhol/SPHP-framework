@@ -80,7 +80,7 @@
 
     <p>    interface
     <strong>ContainerInterface</strong>        implements
-        <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>, <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>
+        <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>, <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>
 </p>
 
         
@@ -108,23 +108,53 @@ notation.</li>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getHtml">getHtml</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/Content.html#method_getHtml"><abbr title="Sphp\Html\Content">Content</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/Content.html#method___toString"><abbr title="Sphp\Html\Content">Content</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printHtml">printHtml</a>()
+        
+                                            <p>Prints the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/Content.html#method_printHtml"><abbr title="Sphp\Html\Content">Content</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsBy">getComponentsBy</a>(callable $rules)
         
                                             <p>Returns a collection of sub components that match the search</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/TraversableInterface.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/TraversableContent.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>(string|object $typeName)
         
                                             <p>Returns a collection of sub components that are of the given PHP type</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/TraversableInterface.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/TraversableContent.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -193,9 +223,108 @@ notation.</li>
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../Sphp/Html/Content.html#method_getHtml"><abbr title="Sphp\Html\Content">Content</abbr></a> at         line 33</div>
+        <code>                    string
+    <strong>getHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if html parsing fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../Sphp/Html/Content.html#method___toString"><abbr title="Sphp\Html\Content">Content</abbr></a> at         line 41</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printHtml">
+        <div class="location">in <a href="../../Sphp/Html/Content.html#method_printHtml"><abbr title="Sphp\Html\Content">Content</abbr></a> at         line 48</div>
+        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
+    <strong>printHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prints the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getComponentsBy">
-        <div class="location">in <a href="../../Sphp/Html/TraversableInterface.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a> at         line 28</div>
-        <code>                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <div class="location">in <a href="../../Sphp/Html/TraversableContent.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a> at         line 28</div>
+        <code>                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
     <strong>getComponentsBy</strong>(callable $rules)
         </code>
     </h3>
@@ -221,7 +350,7 @@ notation.</li>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a></td>
             <td>containing matching sub components</td>
         </tr>
     </table>
@@ -234,8 +363,8 @@ notation.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getComponentsByObjectType">
-        <div class="location">in <a href="../../Sphp/Html/TraversableInterface.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a> at         line 36</div>
-        <code>                    <a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <div class="location">in <a href="../../Sphp/Html/TraversableContent.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a> at         line 36</div>
+        <code>                    <a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a>
     <strong>getComponentsByObjectType</strong>(string|object $typeName)
         </code>
     </h3>
@@ -261,7 +390,7 @@ notation.</li>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../Sphp/Html/TraversableContent.html"><abbr title="Sphp\Html\TraversableContent">TraversableContent</abbr></a></td>
             <td>containing matching sub components</td>
         </tr>
     </table>

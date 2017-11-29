@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines required properties for an HTML &lt;form&gt; component
@@ -17,7 +17,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface FormInterface extends ContentInterface {
+interface FormInterface extends Content {
 
   /**
    * Sets the value of the method attribute

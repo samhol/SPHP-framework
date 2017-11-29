@@ -3,8 +3,8 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Manual;
-use Sphp\Html\IdentifiableComponent;
-$identifiableInterface = Manual\api()->classLinker(IdentifiableComponent::class);
+use Sphp\Html\IdentifiableContent;
+$identifiableInterface = Manual\api()->classLinker(IdentifiableContent::class);
 $idAttribute = Manual\api()->classLinker(IdAttribute::class);
 
 

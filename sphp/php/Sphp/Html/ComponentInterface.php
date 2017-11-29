@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ComponentInterface extends IdentifiableComponent, CssClassifiedComponent {
+interface ComponentInterface extends IdentifiableContent, CssClassifiableContent {
 
   /**
    * Returns the attribute manager attached to the component

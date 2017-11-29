@@ -22,7 +22,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
+class CodeExampleBuilder implements \Sphp\Html\Content {
 
   use \Sphp\Html\ContentTrait;
 

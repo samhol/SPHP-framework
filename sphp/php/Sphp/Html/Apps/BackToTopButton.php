@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\Icons\AbstractIcon;
 
@@ -18,7 +18,7 @@ use Sphp\Html\Icons\AbstractIcon;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BackToTopButton implements ContentInterface {
+class BackToTopButton implements Content {
 
   use \Sphp\Html\ContentTrait;
 

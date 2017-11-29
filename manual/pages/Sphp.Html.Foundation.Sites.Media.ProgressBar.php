@@ -2,14 +2,14 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$progressBar = \Sphp\Manual\api()->classLinker(ProgressBar::class);
+$progressBar = Manual\api()->classLinker(ProgressBar::class);
 
-\Sphp\Manual\parseDown(<<<MD
-		
+Manual\parseDown(<<<MD
+
 ##The $progressBar component
 
 A $progressBar represents the progress of a task. It is a browser friendly implementation of native HTML 5 progress element.
@@ -18,7 +18,7 @@ MD
 );
 $fooBarCodePane = new SyntaxHighlightingPane('<code>progressingFooBar.js</code> JavaScript code');
 $fooBarCodePane->loadFromFile('manual/snippets/progressingFooBar.js');
-$example = (new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Media/ProgressBar.php', false, true))
+$example = (new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Media/ProgressBar.php', null, true))
         ->buildAccordion()
         ->prepend($fooBarCodePane)
         ->printHtml();

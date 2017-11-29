@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines a basic menu
@@ -17,7 +17,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MenuInterface extends ContentInterface {
+interface MenuInterface extends Content {
 
   /**
    * Appends a menu item object to the menu

@@ -10,12 +10,13 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 use IteratorAggregate;
 use Sphp\Html\Forms\TraversableFormInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\XY\GridInterface;
-use Sphp\Html\Foundation\Sites\Grids\XY\RowInterface;
+use Sphp\Html\Foundation\Sites\Grids\GridInterface;
+use Sphp\Html\Foundation\Sites\Grids\RowInterface;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
-use Sphp\Html\Foundation\Sites\Grids\XY\Grid;
+use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
+use Sphp\Html\ContainerInterface;
 
 /**
  * Implements a framework form
@@ -120,7 +121,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    */
   public function append($row) {
     if (!($row instanceof RowInterface)) {
-     // echo 'fooooooo'.$row;
+      // echo 'fooooooo'.$row;
       $row = new FormRow($row);
     }
     $this->getGrid()->append($row);
@@ -192,7 +193,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    * 
    * @return ContainerInterface containing all the {@link ColumnInterface} components
    */
-  public function getColumns() {
+  public function getColumns(): ContainerInterface {
     return $this->getComponentsByObjectType(ColumnInterface::class);
   }
 

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines lazy loading of images, videos and other resources
@@ -20,7 +20,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LazyMedia extends ContentInterface {
+interface LazyMedia extends Content {
 
   /**
    * Sets or unsets the media source loading as lazy

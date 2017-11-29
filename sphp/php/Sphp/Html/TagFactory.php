@@ -198,6 +198,7 @@ abstract class TagFactory {
     $instance = static::$tags[$name]->newInstanceArgs($arguments);
     return $instance;
   }
+
   /**
    * Creates a HTML object
    *

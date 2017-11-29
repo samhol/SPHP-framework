@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids\XY;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Manual;
 

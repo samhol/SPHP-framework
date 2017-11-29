@@ -16,7 +16,7 @@ use Sphp\Stdlib\CsvFile;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TableBuilder implements \Sphp\Html\ContentInterface {
+class TableBuilder implements \Sphp\Html\Content {
 
   use \Sphp\Html\ContentTrait;
 

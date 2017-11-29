@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
 use IteratorAggregate;
-use Sphp\Html\ContentInterface;
-use Sphp\Html\TraversableInterface;
+use Sphp\Html\Content;
+use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
 
 /**
@@ -21,7 +21,7 @@ use OutOfBoundsException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface {
+class Tabs implements Content, IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;

@@ -9,7 +9,7 @@ namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Description of TagListAccordionGenerator
@@ -18,7 +18,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagListAccordionGenerator implements ContentInterface {
+class TagListAccordionGenerator implements Content {
 
   use \Sphp\Html\ContentTrait;
 

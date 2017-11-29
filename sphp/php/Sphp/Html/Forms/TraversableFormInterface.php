@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TraversableFormInterface extends FormInterface, \Sphp\Html\TraversableInterface {
+interface TraversableFormInterface extends FormInterface, \Sphp\Html\TraversableContent {
 
   /**
    * Sets the values to the input fields

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\AbstractComponentGenerator;
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use ArrayAccess;
 use Iterator;
 use Sphp\Html\Container;
@@ -20,7 +20,7 @@ use Sphp\Html\Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HiddenInputs extends AbstractComponentGenerator implements ContentInterface, ArrayAccess, Iterator {
+class HiddenInputs extends AbstractComponentGenerator implements Content, ArrayAccess, Iterator {
 
   /**
    * @var HiddenInput[]

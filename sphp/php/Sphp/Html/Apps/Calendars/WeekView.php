@@ -17,7 +17,7 @@ use DateTimeImmutable;
  *
  * @author Sami
  */
-class WeekView implements \Sphp\Html\ContentInterface {
+class WeekView implements \Sphp\Html\Content {
 
   use \Sphp\Html\ContentTrait;
 

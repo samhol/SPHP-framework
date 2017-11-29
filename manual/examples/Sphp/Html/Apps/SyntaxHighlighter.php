@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
-use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $syntax1 = (new SyntaxHighlighter())->loadFromFile(__FILE__);
 

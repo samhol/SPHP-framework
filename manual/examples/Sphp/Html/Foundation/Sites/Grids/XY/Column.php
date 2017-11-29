@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids\XY;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 $col_1 = new Column("1st", ['small-4', 'small-push-9']);
 $col_2 = new Column("2nd", ['small-2', 'small-push-3']);

@@ -10,12 +10,12 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface;
-use Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface;
+use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManager;
-use Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManagerInterface;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
 
 /**
  * A component containing multiple radio or checkbox inputs

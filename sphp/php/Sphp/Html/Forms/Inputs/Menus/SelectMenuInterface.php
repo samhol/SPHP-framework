@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\Forms\Inputs\Validable;
-use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableContent;
 use Sphp\Html\ContainerInterface;
 
 /**
@@ -34,7 +34,7 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SelectMenuInterface extends Validable, TraversableInterface {
+interface SelectMenuInterface extends Validable, TraversableContent {
 
   /**
    * Returns all {@link Option} components in the component

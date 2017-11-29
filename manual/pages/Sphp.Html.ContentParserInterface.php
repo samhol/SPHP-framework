@@ -5,11 +5,11 @@ namespace Sphp\Html;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$contentParserInterface = \Sphp\Manual\api()->classLinker(ContentParserInterface::class);
+$contentParserInterface = \Sphp\Manual\api()->classLinker(ContentParser::class);
 $contentParsingTrait = \Sphp\Manual\api()->classLinker(ContentParsingTrait::class);
 $ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
 $documentLink = \Sphp\Manual\api()->classLinker(Document::class);
-$contentInterface = \Sphp\Manual\api()->classLinker(ContentInterface::class);
+$contentInterface = \Sphp\Manual\api()->classLinker(Content::class);
 $exeption = Apis::phpManual()->classLinker(\Exception::class);
 $componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
 $emptyTag = \Sphp\Manual\api()->classLinker(EmptyTag::class);

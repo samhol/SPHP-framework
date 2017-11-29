@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Icons;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\Lists\Ul;
 use Iterator;
 
@@ -18,7 +18,7 @@ use Iterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BrandIcons implements ContentInterface, Iterator {
+class BrandIcons implements Content, Iterator {
 
   use \Sphp\Html\ContentTrait;
 

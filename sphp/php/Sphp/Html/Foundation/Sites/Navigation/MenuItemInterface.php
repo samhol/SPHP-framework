@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\IdentifiableComponent;
+use Sphp\Html\IdentifiableContent;
 
 /**
  * Defines a menu item for navigation menus
@@ -18,6 +18,6 @@ use Sphp\Html\IdentifiableComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MenuItemInterface extends IdentifiableComponent {
+interface MenuItemInterface extends IdentifiableContent {
   
 }

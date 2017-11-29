@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Foundation\Sites\Adapters;
 
 $bg = (new BlockGrid('small-up-1', 'medium-up-2', 'xlarge-up-4'))

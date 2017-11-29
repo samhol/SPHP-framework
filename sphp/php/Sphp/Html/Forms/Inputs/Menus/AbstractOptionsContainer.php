@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableContent;
 use Traversable;
 
 /**
@@ -31,7 +31,7 @@ use Traversable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractOptionsContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface {
+abstract class AbstractOptionsContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 

@@ -14,7 +14,7 @@ namespace Sphp\Html;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractComponentGenerator implements ContentInterface {
+abstract class AbstractComponentGenerator implements Content {
 
   use ContentTrait;
 
@@ -25,7 +25,7 @@ abstract class AbstractComponentGenerator implements ContentInterface {
   /**
    * Generates an HTML component containing the links
    * 
-   * @return ContentInterface HTML component containing the links
+   * @return Content HTML component containing the links
    */
   abstract public function generate();
 }

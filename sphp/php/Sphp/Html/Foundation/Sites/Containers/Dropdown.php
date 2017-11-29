@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\ComponentInterface;
 
 /**
@@ -22,7 +22,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Dropdown implements ContentInterface {
+class Dropdown implements Content {
 
   use \Sphp\Html\ContentTrait;
 
@@ -43,7 +43,7 @@ class Dropdown implements ContentInterface {
   /**
    * Constructs a new instance
    *
-   * @param  ContentInterface|mixed $trigger the target component for the dropdown functionality
+   * @param  Content|mixed $trigger the target component for the dropdown functionality
    * @param  mixed $dropdown the dropdown or the content of the dropdown
    */
   public function __construct($trigger, $dropdown) {

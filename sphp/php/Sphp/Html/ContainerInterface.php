@@ -27,7 +27,7 @@ use ArrayAccess;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAccess {
+interface ContainerInterface extends TraversableContent, Arrayable, ArrayAccess {
 
   /**
    * Appends a new value as the last element

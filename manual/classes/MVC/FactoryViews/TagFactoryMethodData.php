@@ -7,7 +7,7 @@
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
@@ -27,7 +27,7 @@ class TagFactoryMethodData implements Arrayable {
   private $method;
 
   /**
-   * @var ContentInterface 
+   * @var Content 
    */
   private $component;
 
@@ -52,7 +52,7 @@ class TagFactoryMethodData implements Arrayable {
     return $this->factoryCall;
   }
 
-  public function getCreatedComponent(): ContentInterface {
+  public function getCreatedComponent(): Content {
     return $this->component;
   }
 

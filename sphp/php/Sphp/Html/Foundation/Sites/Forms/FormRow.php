@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Foundation\Sites\Grids\XY\Row;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
 use Sphp\Html\NonVisualContent;
-use Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface;
+use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 
 /**
  * Extends a Foundation Row for form components

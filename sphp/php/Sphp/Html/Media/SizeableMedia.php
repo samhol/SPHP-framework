@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines sizing of HTML media components
@@ -16,7 +16,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SizeableMedia extends ContentInterface {
+interface SizeableMedia extends Content {
 
   /**
    * Checks if the component has width defined

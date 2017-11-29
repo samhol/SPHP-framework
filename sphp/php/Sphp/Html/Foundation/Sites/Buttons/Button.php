@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
-use Sphp\Html\CssClassifiedComponent;
+use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\Resetter;
 use Sphp\Html\Forms\Buttons\Button as PushButton;
@@ -31,9 +31,9 @@ Class Button extends AbstractLayoutManager implements ButtonInterface {
   /**
    * Constructs a new instance
    * 
-   * @param CssClassifiedComponent $component
+   * @param CssClassifiableContent $component
    */
-  public function __construct(CssClassifiedComponent $component) {
+  public function __construct(CssClassifiableContent $component) {
     parent::__construct($component);
     $this->cssClasses()->set('button');
   }

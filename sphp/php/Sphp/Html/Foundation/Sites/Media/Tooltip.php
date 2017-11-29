@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\ContentTrait;
 use Sphp\Html\ComponentInterface;
 
@@ -20,7 +20,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Tooltip implements ContentInterface {
+class Tooltip implements Content {
 
   use ContentTrait;
 

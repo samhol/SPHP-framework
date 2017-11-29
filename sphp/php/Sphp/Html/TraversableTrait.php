@@ -21,7 +21,7 @@ trait TraversableTrait {
    * Returns a collection of sub components that match the search
    *
    * @param  callable $rules a lambda function for testing the sub components
-   * @return TraversableInterface containing matching sub components
+   * @return TraversableContent containing matching sub components
    */
   public function getComponentsBy(callable $rules) {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
@@ -49,7 +49,7 @@ trait TraversableTrait {
    * Returns a collection of sub components that are of the given PHP type
    *
    * @param  string|\object $type the name of the searched PHP object type
-   * @return TraversableInterface containing matching sub components
+   * @return TraversableContent containing matching sub components
    */
   public function getComponentsByObjectType($type) {
     $search = function($element) use ($type) {

@@ -18,7 +18,7 @@ A basic Foundation styled button can be based on almost any HTML tag that has on
 MD
 ;
 
-use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $blockGrid = new BlockGrid();
 

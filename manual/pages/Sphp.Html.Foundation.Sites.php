@@ -13,7 +13,7 @@ $toolsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
       <div class="callout" data-equalizer-watch>
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids\XY;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 $grid = \Sphp\Manual\api()->classLinker(Grid::class);
 $blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);

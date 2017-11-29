@@ -29,7 +29,7 @@ class Document {
    * Returns the `html` component pointed by the given name
    * 
    * @param  string|null $docName the name of the managed document
-   * @return Html the `html` component pointed by the given name
+   * @return Html the singleton `html` component pointed by the given name
    */
   public static function create(string $docName = null, Html $template = null): Html {
     if (!isset(static::$html[$docName])) {
@@ -45,7 +45,7 @@ class Document {
    * Returns the root `html` component pointed by the given name
    * 
    * @param  string $docName the name of the managed document
-   * @return Html the `html` component pointed by the given name
+   * @return Html the singleton `html` component pointed by the given name
    */
   public static function html(string $docName = null): Html {
     if (!isset(static::$html[$docName])) {
@@ -58,7 +58,7 @@ class Document {
    * Returns the `body` component pointed by the given name
    * 
    * @param  string $docName the name of the managed document
-   * @return Body the `body` component pointed by the given name
+   * @return Body the singleton `body` component pointed by the given name
    */
   public static function body(string $docName = null): Body {
     if (!isset(static::$html[$docName])) {
@@ -71,7 +71,7 @@ class Document {
    * Returns the `head` component pointed by the given name
    * 
    * @param  string $docName the name of the managed document
-   * @return Head the `head` component pointed by the given name
+   * @return Head the singleton `head` component pointed by the given name
    */
   public static function head(string $docName = null): Head {
     if (!isset(static::$html[$docName])) {
