@@ -2,19 +2,18 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$php = Apis::phpManual();
-$nsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
-$validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
-$requiredValueValidator = \Sphp\Manual\api()->classLinker(NotEmptyValidator::class);
-$patrnvLink = \Sphp\Manual\api()->classLinker(PatternValidator::class);
-$strLenValLink = \Sphp\Manual\api()->classLinker(StringLengthValidator::class);
-$inputValidator = \Sphp\Manual\api()->classLinker(OptionalValidator::class);
-$alphabetsOnly = \Sphp\Manual\api()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+$php = Manual\php();
+$nsLink = Manual\api()->namespaceLink(__NAMESPACE__);
+$validatorInterface = Manual\api()->classLinker(ValidatorInterface::class);
+$requiredValueValidator = Manual\api()->classLinker(NotEmptyValidator::class);
+$patrnvLink = Manual\api()->classLinker(PatternValidator::class);
+$strLenValLink = Manual\api()->classLinker(StringLengthValidator::class);
+$inputValidator = Manual\api()->classLinker(OptionalValidator::class);
+$alphabetsOnly = Manual\api()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+Manual\parseDown(<<<MD
 #DATA VALIDATION: <small>Introduction</small>
  $ns 
 User input validation is a critical part of any responsive HTML application. 
@@ -51,12 +50,12 @@ validators.
         
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Validators/RequiredValueValidator.php', 'php', false);
+Manual\visualize('Sphp/Validators/RequiredValueValidator.php', 'php', false);
 
-\Sphp\Manual\loadPage('Sphp.Validators.PatternValidator');
-\Sphp\Manual\loadPage('Sphp.Validators.StringLengthValidator');
-\Sphp\Manual\loadPage('Sphp.Validators.ValidatorChain');
-\Sphp\Manual\loadPage('Sphp.Validators.FormValidator');
+Manual\loadPage('Sphp.Validators.PatternValidator');
+Manual\loadPage('Sphp.Validators.StringLengthValidator');
+Manual\loadPage('Sphp.Validators.ValidatorChain');
+Manual\loadPage('Sphp.Validators.FormValidator');
 
 /*\Sphp\Manual\parseDown(<<<MD
 ##Creating custom validators		

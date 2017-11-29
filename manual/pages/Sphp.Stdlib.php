@@ -2,7 +2,17 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+
+$blocks = new BlockGrid('small-up-1', 'large-up-2', 'xlarge-up-3');
+
+$blocks->appendPhpFile('Stdlib.Events-Observers.php');
+$blocks->appendPhpFile('Stdlib.Events-Observers.php');
+$blocks->appendPhpFile('Stdlib.Events-Observers.php');
+echo $blocks;
+
 use Sphp\Html\Apps\Manual\Apis;
+
 $sami = \Sphp\Manual\api();
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
@@ -23,7 +33,7 @@ $blockGrid = new \Sphp\Html\Foundation\Sites\Grids\BlockGrid(['small-up-1', 'med
 $blockGrid->addCssClass('expanded');
 
 $blockGrid->appendMd(
-<<<MD
+        <<<MD
 #####Datastructures:
 The $core namespace includes different collection classes.
                 
@@ -38,14 +48,14 @@ namespace Sphp\Stdlib\Reader;
 
 $readerNs = $sami->namespaceLink(__NAMESPACE__, false);
 $blockGrid->appendMd(
-<<<MD
+        <<<MD
 #####Readers:
 
 $readerNs
 MD
 );
 
-foreach($blockGrid as $block) {
+foreach ($blockGrid as $block) {
   $block->addCssClass('callout');
 }
 echo $blockGrid;
@@ -56,98 +66,95 @@ $toolsLink = $sami->namespaceLink(__NAMESPACE__, false);
   <div class="row expanded small-up-1 medium-up-2 large-up-3" data-equalizer data-equalize-on="medium" data-equalize-by-row="true" id="f-r-1">
     <div class="column">
       <div class="callout" data-equalizer-watch>
-<?php
-
-
-$core = $sami->namespaceLink(__NAMESPACE__, false);
-\Sphp\Manual\parseDown(<<<MD
+        <?php
+        $core = $sami->namespaceLink(__NAMESPACE__, false);
+        \Sphp\Manual\parseDown(<<<MD
 #####Readers:
-
+        
 $readerNs
 MD
-);
-?>
+        );
+        ?>
       </div>
     </div>
     <div class="column">
       <div class="callout" data-equalizer-watch>
-<?php
-
-\Sphp\Manual\parseDown(<<<MD
+        <?php
+        \Sphp\Manual\parseDown(<<<MD
 #####Readers:
 
 $readerNs
 MD
-);
-?>
+        );
+        ?>
       </div>
     </div>
     <div class="column">
       <div class="callout" data-equalizer-watch>
-<?php
+        <?php
 
-namespace Sphp\Stdlib\Events;
+        namespace Sphp\Stdlib\Events;
 
 $eventNs = $sami->namespaceLink(__NAMESPACE__, false);
-\Sphp\Manual\parseDown(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Events
 
 $eventNs
 MD
-);
-?>
+        );
+        ?>
       </div>
     </div>
     <div class="column">
       <div class="callout" data-equalizer-watch>
-<?php
+        <?php
 
-namespace Sphp\Stdlib\Observers;
+        namespace Sphp\Stdlib\Observers;
 
 $observersNs = $sami->namespaceLink(__NAMESPACE__, false);
 
-\Sphp\Manual\parseDown(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Observers:
 $observersNs
 MD
-);
-?>
+        );
+        ?>
       </div>
     </div>
     <div class="column">
       <div class="callout" data-equalizer-watch>
-<?php
+        <?php
 
-namespace Sphp\Html\Foundation\Sites\Forms;
+        namespace Sphp\Html\Foundation\Sites\Forms;
 
 $forms_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
-\Sphp\Manual\parseDown(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Data Filters:
 
 The $forms_ns namespace includes Foundation based forms layouts and client-side form components.
 Visual presentation of Foundation based Forms are built with the Grid. These forms 
 extend basic SPHP forms.
 MD
-);
-?>
+        );
+        ?>
       </div>
     </div>
     <div class="column">
       <div class="callout" data-equalizer-watch>
-<?php
+        <?php
 
-namespace Sphp\Html\Foundation\Sites\Containers;
+        namespace Sphp\Html\Foundation\Sites\Containers;
 
 $cont_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
-\Sphp\Manual\parseDown(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Data Validators:
 
 The $cont_ns namespace includes PHP implementations of useful container elements like Accordions, Tabs and Dropdowns for HTML presentation.
 MD
-);
-?></div>
+        );
+        ?></div>
     </div>
   </div>
 </div>

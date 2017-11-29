@@ -2,14 +2,12 @@
 
 namespace Sphp\I18n;
 
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$php = Apis::phpManual();
-$translatorInteface = \Sphp\Manual\api()->classLinker(TranslatorInterface::class);
-$gettextTranslator  = \Sphp\Manual\api()->classLinker(Gettext\Translator::class);
-$vsprintfLink = Apis::phpManual()->functionLink("vsprintf");
+$translatorInteface = Manual\api()->classLinker(TranslatorInterface::class);
+$vsprintfLink = Manual\php()->functionLink("vsprintf");
+$gettextNs = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$gettextNs = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 ##Human language translations: <small>Using The $translatorInteface</small>
    
@@ -28,5 +26,5 @@ is not supported).
 MD
 );
 
-\Sphp\Manual\loadPage('Sphp.I18n.Gettext');
-\Sphp\Manual\loadPage('Sphp.I18n.Zend');
+Manual\loadPage('Sphp.I18n.Gettext');
+Manual\loadPage('Sphp.I18n.Zend');

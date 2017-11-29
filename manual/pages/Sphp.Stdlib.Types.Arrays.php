@@ -2,12 +2,11 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Manual as Man;
+use Sphp\Manual;
 
-$arraysClass = Man\api()->classLinker(Arrays::class);
-$arrLink = Man\php()->typeLink('array');
-Man\parseDown(<<<MD
+$arraysClass = Manual\api()->classLinker(Arrays::class);
+$arrLink = Manual\php()->typeLink('array');
+Manual\parseDown(<<<MD
 ##The $arraysClass class for PHP's $arrLink manipulation
 
 PHP's $arrLink type can be treated as 
@@ -25,10 +24,10 @@ PHP core and it introduces methods for:
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Stdlib/Types/Arrays1.php', 'text', false);
+Manual\visualize('Sphp/Stdlib/Types/Arrays1.php', 'text', false);
 
-CodeExampleBuilder::visualize('Sphp/Stdlib/Types/Arrays2.php', 'text', false);
+Manual\visualize('Sphp/Stdlib/Types/Arrays2.php', 'text', false);
 
-CodeExampleBuilder::build('Sphp/Stdlib/Types/Arrays3.php', 'text', false)
+Manual\example('Sphp/Stdlib/Types/Arrays3.php', 'text', false)
         ->setExamplePaneTitle('Cloning the content of an array')
         ->printHtml();

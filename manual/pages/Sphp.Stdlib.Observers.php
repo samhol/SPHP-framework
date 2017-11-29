@@ -2,17 +2,16 @@
 
 namespace Sphp\Stdlib\Observers;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 Use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
 
-$observer = \Sphp\Manual\api()->classLinker(Observer::class);
-$subject = \Sphp\Manual\api()->classLinker(Subject::class);
-$callable = Apis::phpManual()->typeLink('callable');
-$observableSubjectTrait = \Sphp\Manual\api()->classLinker(ObservableSubjectTrait::class);
+$observer = Manual\api()->classLinker(Observer::class);
+$subject = Manual\api()->classLinker(Subject::class);
+$callable = Manual\php()->typeLink('callable');
+$observableSubjectTrait = Manual\api()->classLinker(ObservableSubjectTrait::class);
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait
 
 Observer pattern is used when there is one-to-many relationship between objects 
@@ -26,4 +25,4 @@ The $observableSubjectTrait is a trait implementation of $subject interface.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Stdlib/ObservableSubjectTrait.php', 'text', false);
+Manual\visualize('Sphp/Stdlib/ObservableSubjectTrait.php', 'text', false);

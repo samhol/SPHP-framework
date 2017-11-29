@@ -3,7 +3,6 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 
 $bitMask = \Sphp\Manual\api()->classLinker(BitMask::class);
 

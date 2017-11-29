@@ -2,12 +2,11 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$csvFile = \Sphp\Manual\api()->classLinker(CsvFile::class);
-$arrLink = Apis::phpManual()->typeLink('array');
-\Sphp\Manual\parseDown(<<<MD
+$csvFile = Manual\api()->classLinker(CsvFile::class);
+$arrLink = Manual\php()->typeLink('array');
+Manual\parseDown(<<<MD
 $csvFile can read and modify <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV-files</a>
 to a multidimensional PHP $arrLink where each 'row' represents a data row in the
 original CSV-file.
@@ -19,15 +18,10 @@ MD
 //var_dump(stream_resolve_include_path("Sphp/Filesystem/CsvFile.php"));
 //$f = new \SplFileInfo("Sphp/Filesystem/CsvFile.php");
 //var_dump($f->isFile());
-$codeExample = (new CodeExampleBuilder('manual/snippets/example.csv'))
-        ->setHtmlFlowVisibility(false)
-        ->setOutpputHighlighting(false)
+Manual\example('manual/snippets/example.csv', null, false)
         ->setExamplePaneTitle('CSV-file example')
         ->printHtml();
-$codeExample->setPath('Sphp/Filesystem/CsvFile.php')
-        ->setHtmlFlowVisibility(true)
+Manual\example('Sphp/Filesystem/CsvFile.php')
         ->setExamplePaneTitle('PHP script converting a CSV-file to an HTML table')
         ->setOutputPaneTitle('CSV data as a HTML table')
         ->printHtml();
-//CodeExampleBuider::visualize('Sphp/Filesystem/CsvFile.php', false, true);
-//CodeExampleBuider::visualize('Sphp/Filesystem/CsvFile.php', false, true);

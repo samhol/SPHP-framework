@@ -2,23 +2,21 @@
 
 namespace Sphp\I18n\Messages;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Translatable;
+use Sphp\Manual;
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $messageInterface = \Sphp\Manual\api()->classLinker(MessageInterface::class);
 $translatable = \Sphp\Manual\api()->classLinker(Translatable::class);
 $message = \Sphp\Manual\api()->classLinker(Message::class);
-$echo = Apis::phpManual()->functionLink('echo');
-$print = Apis::phpManual()->functionLink('print');
-$string = Apis::phpManual()->typeLink('string');
-$vsprintfLink = Apis::phpManual()->functionLink('vsprintf');
+$string = Manual\php()->typeLink('string');
+$echo = Manual\php()->functionLink('echo');
+$print = Manual\php()->functionLink('print');
+$vsprintfLink = Manual\php()->functionLink('vsprintf');
+$translator = Manual\api()->classLinker(TranslatorInterface::class);
 
-$translator = \Sphp\Manual\api()->classLinker(TranslatorInterface::class);
-
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##Localized verbose messages <small>using $messageInterface objects</small>
 
 $ns
@@ -31,6 +29,6 @@ When a message object is treated as a $string ($echo, $print...)
 it is translated according to the current settings of its $translator object.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/I18n/Messages/MessageInterface.php', 'text', false);
+Manual\visualize('Sphp/I18n/Messages/MessageInterface.php', 'text', false);
 
 

@@ -2,11 +2,11 @@
 
 namespace Sphp\I18n;
 
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$php = Apis::phpManual();
-$gettext = Apis::phpManual()->extensionLink('gettext', 'Gettext');
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$gettext = Manual\php()->extensionLink('gettext', 'Gettext');
+
 \Sphp\Manual\parseDown(<<<MD
 #<span class="strict">I18n:</span> <small>Internationalization and localization</small>
 
@@ -25,7 +25,8 @@ This framework comes with buildin English to Finnish translations:
 MD
 );
 require_once 'manual/examples/Sphp/I18n/Gettext/localeSetting.php';
-\Sphp\Manual\loadPage('Sphp.I18n.TranslatorInterface');
-\Sphp\Manual\loadPage('Sphp.I18n.Messages');
-\Sphp\Manual\loadPage('Sphp.I18n.Collections');
-\Sphp\Manual\loadPage('Sphp.I18n.Datetime');
+
+Manual\loadPage('Sphp.I18n.TranslatorInterface');
+Manual\loadPage('Sphp.I18n.Messages');
+Manual\loadPage('Sphp.I18n.Collections');
+Manual\loadPage('Sphp.I18n.Datetime');

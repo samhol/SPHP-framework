@@ -2,19 +2,18 @@
 
 namespace Sphp\Stdlib\Events;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$eventInterface = \Sphp\Manual\api()->classLinker(EventInterface::class);
-$eventClass = \Sphp\Manual\api()->classLinker(Event::class);
-$eventListenerInterface = \Sphp\Manual\api()->classLinker(EventListenerInterface::class);
-$eventDispatcherInterface = \Sphp\Manual\api()->classLinker(EventDispatcherInterface::class);
-\Sphp\Manual\parseDown(<<<MD
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$eventInterface = Manual\api()->classLinker(EventInterface::class);
+$eventClass = Manual\api()->classLinker(Event::class);
+$eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::class);
+$eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class);
+Manual\parseDown(<<<MD
 #EVENTS AND OBSERVERS
 		
 Event dispatching systems and Observer Design pattern are often used to implement 
-distributed event handling systems they are also key parts in the model–view–controller 
+distributed event handling systems. They are also key parts in the model–view–controller 
 (MVC) architectural pattern.
 
 ##EventDispatcing system: 
@@ -48,6 +47,6 @@ Here are some examples of good event names:
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Stdlib/Events/EventManager.php', 'text', false);
+Manual\visualize('Sphp/Stdlib/Events/EventManager.php', 'text', false);
 
-\Sphp\Manual\loadPage('Sphp.Stdlib.Observers');
+Manual\loadPage('Sphp.Stdlib.Observers');

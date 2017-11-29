@@ -2,7 +2,6 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Manual;
 
 $boolLink = Manual\php()->typeLink('boolean');
@@ -40,13 +39,13 @@ manipulation.
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Stdlib/Types/multibyteStringProblems.php', 'text', false))
+Manual\example('Sphp/Stdlib/Types/multibyteStringProblems.php', 'text', false)
         ->setExamplePaneTitle('Multibyte string example PHP code')
         ->setOutputSyntaxPaneTitle('Multibyte string example results')
         ->printHtml();
 
-\Sphp\Manual\loadPage('Sphp.Stdlib.Types.StringObject');
-\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Strings');
-\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Arrays');
-\Sphp\Manual\loadPage('Sphp.Stdlib.Types.BitMask');
-\Sphp\Manual\loadPage('Sphp.Stdlib.Types.URL');
+Manual\loadPage('Sphp.Stdlib.Types.StringObject');
+Manual\loadPage('Sphp.Stdlib.Types.Strings');
+Manual\loadPage('Sphp.Stdlib.Types.Arrays');
+Manual\loadPage('Sphp.Stdlib.Types.BitMask');
+Manual\loadPage('Sphp.Stdlib.Types.URL');

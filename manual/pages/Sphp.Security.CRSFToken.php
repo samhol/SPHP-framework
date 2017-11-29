@@ -2,7 +2,6 @@
 
 namespace Sphp\Security;
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $crsfToken = \Sphp\Manual\api()->classLinker(CRSFToken::class);

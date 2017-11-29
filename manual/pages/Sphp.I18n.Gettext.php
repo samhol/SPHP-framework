@@ -2,13 +2,12 @@
 
 namespace Sphp\I18n\Gettext;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$gettextTranslator = \Sphp\Manual\api()->classLinker(Translator::class);
+$gettextTranslator = Manual\api()->classLinker(Translator::class);
+$gettextNs = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$gettextNs = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ###A gettext $gettextTranslator
 $gettextNs    
   
@@ -24,4 +23,4 @@ The underlying technology used in translation is PHP's gettext extension.
   * http://php.net/manual/en/function.setlocale.php
 MD
 );
-CodeExampleBuilder::visualize('Sphp/I18n/Gettext/Translator.php', 'text', false);
+Manual\visualize('Sphp/I18n/Gettext/Translator.php', 'text', false);

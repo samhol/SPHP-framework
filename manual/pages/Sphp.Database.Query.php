@@ -3,11 +3,11 @@
 namespace Sphp\Database;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$query = \Sphp\Manual\api()->classLinker(Query::class);
+$query = Manual\api()->classLinker(Query::class);
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##Queries by using $query object 
 
 The $query object executes declarative SELECT queries in SQL databases. It 
@@ -26,6 +26,6 @@ Some essential $query methods:
 MD
 );
 
-CodeExampleBuilder::build('Sphp/Database/Query.php', 'text', false)
+Manual\example('Sphp/Database/Query.php', 'text', false)
         ->setExamplePaneTitle('A Simple QUERY Example')
         ->printHtml();
