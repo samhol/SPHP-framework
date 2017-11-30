@@ -12,8 +12,7 @@ $fileSystem = Manual\api()->classLinker(Filesystem::class);
   $eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::class);
   $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class); */
 Manual\parseDown(<<<MD
-####WORKING WITH FILES
- * $parser instance can handle file related (reading and writing) operations.
- * $fileSystem: This utility class can handle several local file system related operations.
+###[WORKING WITH FILES](Sphp.Stdlib.filemanipulation)
+Framework provides several utilities for file manipulation. 
 MD
 );

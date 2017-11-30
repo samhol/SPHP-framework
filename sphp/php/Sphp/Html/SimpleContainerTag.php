@@ -55,7 +55,7 @@ class SimpleContainerTag extends AbstractTag {
       $this->setContent($content);
     }
   }
-  
+
   public function __destruct() {
     unset($this->content);
     parent::__destruct();

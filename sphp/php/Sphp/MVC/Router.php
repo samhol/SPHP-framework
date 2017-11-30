@@ -13,12 +13,12 @@ use Zend\Stdlib\PriorityQueue;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 
 /**
- * URL router
+ * Implements an URL router
  *
- * URL Router is a web application between the URL and the function executed to 
+ * a router is a web application between the URL and the function executed to 
  * perform a request. The router determines which function to execute for a given URL.
  *
- * <code>
+ * <pre>
  * $router = new Router;
  *
  * // Adding a basic route
@@ -50,7 +50,7 @@ use Sphp\Stdlib\Datastructures\StablePriorityQueue;
  *
  * // Run the router
  * $router->execute();
- * </code>
+ * </pre>
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

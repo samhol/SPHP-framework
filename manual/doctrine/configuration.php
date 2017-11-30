@@ -23,10 +23,10 @@ if ($applicationMode == 'development') {
 $config = new Configuration;
 //$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $config->setMetadataCacheImpl($cache);
-$driverImpl = $config->newDefaultAnnotationDriver('manual/doctrine/entities');
+$driverImpl = $config->newDefaultAnnotationDriver(__DIR__.'/Entities');
 $config->setMetadataDriverImpl($driverImpl);
 $config->setQueryCacheImpl($cache);
-$config->setProxyDir('manual/doctrine/Proxies');
+$config->setProxyDir(__DIR__.'/Proxies');
 $config->setProxyNamespace('Sphp\Doctrine\Proxies');
 
 EntityManagerFactory::setDefaults($dbParams, $config);

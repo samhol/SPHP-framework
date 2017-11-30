@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Objects;
+namespace Sphp\Database\Doctrine\Objects;
 
 /**
  * Interface describes common features for all Objects.

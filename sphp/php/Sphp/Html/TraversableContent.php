@@ -23,15 +23,15 @@ interface TraversableContent extends Traversable, Countable, Content {
    * Returns a collection of sub components that match the search
    *
    * @param  callable $rules a lambda function for testing the sub components
-   * @return TraversableContent containing matching sub components
+   * @return Container containing matching sub components
    */
-  public function getComponentsBy(callable $rules);
+  public function getComponentsBy(callable $rules): Container;
 
   /**
    * Returns a collection of sub components that are of the given PHP type
    *
    * @param  string|\object $typeName the name of the searched PHP object type
-   * @return TraversableContent containing matching sub components
+   * @return Container containing matching sub components
    */
-  public function getComponentsByObjectType($typeName);
+  public function getComponentsByObjectType($typeName): Container;
 }

@@ -1,7 +1,7 @@
 <?php
 
-namespace Sphp\Db\Objects;
-
+namespace Sphp\Database\Doctrine\Objects;
+use Sphp\Database\Doctrine\LocationStorage;
 $em = include 'entityManager.php';
 
 $hydeparkData = [

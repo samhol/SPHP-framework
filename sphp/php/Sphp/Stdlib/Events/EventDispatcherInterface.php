@@ -23,9 +23,9 @@ interface EventDispatcherInterface {
    *
    * @param  string|string[] $event event name(s) of the event(s) the listener listens to
    * @param  EventListenerInterface|\Closure $listener the listener to add 
-   * @param mixed $priority optional priority of the listener: priorities are 
-   *        handled like queues, and multiple attachments added to the same 
-   *        priority queue will be treated in the order of insertion.
+   * @param  mixed $priority optional priority of the listener: priorities are 
+   *         handled like queues, and multiple attachments added to the same 
+   *         priority queue will be treated in the order of insertion.
    * @return $this for a fluent interface
    * @throws \InvalidArgumentException if the `$listener` type is illegal
    * @return $this for a fluent interface

@@ -21,6 +21,13 @@ use Sphp\Html\CssClassifiableContent;
 interface RowInterface extends CssClassifiableContent, \Traversable {
 
   /**
+   * Returns the Row layout manager
+   * 
+   * @return RowLayoutManager the layout manager
+   */
+  public function layout(): RowLayoutManager;
+
+  /**
    * Sets the columns of the row (Removes existing content)
    *
    * **Important:**
@@ -73,5 +80,4 @@ interface RowInterface extends CssClassifiableContent, \Traversable {
    * @return $this for a fluent interface
    */
   public function append($column);
-
 }

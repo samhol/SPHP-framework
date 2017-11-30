@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Sphp\Database\Doctrine;
+namespace Sphp\Database\Doctrine\Objects;
 
 /**
  *

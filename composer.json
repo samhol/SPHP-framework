@@ -26,10 +26,11 @@
   ],
   "require": {
     "php": "^7.0",
-    "doctrine/orm": "*",
+    "doctrine/orm": "2.5.*",
     "sepia/po-parser": "^4.2",
     "imagine/imagine": "^0.7",
     "erusev/parsedown-extra": "^0.7.0",
+    "tovic/parsedown-extra-plugin": "*",
     "geshi/geshi": "^1",
     "pimple/pimple": "*",
     "jdorn/sql-formatter": "^1.2",
@@ -40,8 +41,7 @@
     "zendframework/zend-paginator": "*",
     "zendframework/zend-mail": "*",
     "zurb/foundation": ">=6.3",
-    "symfony/yaml": "^3.0",
-    "tovic/parsedown-extra-plugin": "*"
+    "symfony/yaml": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.2",

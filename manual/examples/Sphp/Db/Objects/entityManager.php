@@ -1,5 +1,8 @@
 <?php
 
-namespace Sphp\Db;
-
-return EntityManagerFactory::get();
+namespace Sphp\Database\Doctrine;
+try {
+  return EntityManagerFactory::get();
+} catch (\Exception $ex) {
+  echo 'foo';
+}

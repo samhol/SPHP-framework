@@ -17,7 +17,7 @@ namespace Sphp\Html;
  * manipulate it with JavaScript.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API
+ * @link    http://www.w3schools.com/tags/tag_span.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -26,7 +26,7 @@ class Span extends ContainerTag {
   /**
    * Constructs a new instance
    *
-   * @param  null|mixed $content optional content of the component
+   * @param null|mixed $content optional content of the component
    */
   public function __construct($content = null) {
     parent::__construct('span', $content);

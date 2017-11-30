@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Objects;
+namespace Sphp\Database\Doctrine\Objects;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
 
@@ -25,5 +25,4 @@ interface ArrayableObjectInterface extends ObjectInterface, Arrayable {
    * @return $this for a fluent interface
    */
   public function fromArray(array $data = []);
-
 }

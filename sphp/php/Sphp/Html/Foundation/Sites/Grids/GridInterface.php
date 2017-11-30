@@ -29,6 +29,13 @@ use Sphp\Html\ContainerInterface;
 interface GridInterface extends CssClassifiableContent, TraversableContent {
 
   /**
+   * Returns the Grid layout manager
+   * 
+   * @return GridLayoutManagerInterface the layout manager
+   */
+  public function layout(): GridLayoutManagerInterface;
+
+  /**
    * Appends a new row to the grid
    *
    * **Important!**
@@ -63,5 +70,5 @@ interface GridInterface extends CssClassifiableContent, TraversableContent {
    * 
    * @return ContainerInterface containing all the {@link ColumnInterface} components
    */
-  public function getColumns():ContainerInterface;
+  public function getColumns(): ContainerInterface;
 }

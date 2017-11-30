@@ -21,7 +21,6 @@ class Row extends AbstractRow {
   /**
    * Constructs a new instance
    *
-   *
    * **Notes:**
    * 
    * * `mixed $columns` can be of any type that converts to a string or to a string[]

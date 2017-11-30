@@ -22,13 +22,11 @@ use Sphp\Exceptions\RuntimeException;
 class CsvFile implements Arrayable, \Iterator {
 
   /**
-   *
    * @var SplFileObject 
    */
   private $file;
 
   /**
-   *
    * @var string 
    */
   private $filename;

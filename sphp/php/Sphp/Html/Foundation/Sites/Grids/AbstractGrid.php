@@ -38,19 +38,16 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
   /**
    * Constructs a new instance
    *
-   * **Important!**
-   *
-   * 1. Parameter `mixed $content` can be of any type that converts to a string 
-   *    or to an array of strings. So also objects of any type that implement magic 
-   *    method `__toString()` are allowed.
-   * 2. `mixed $content` is transformed to a @link Row} component.
-   *
    * @param  string $tagname the tag name of the component
    */
   public function __construct(string $tagname) {
     parent::__construct($tagname);
     $this->content = new Container();
     $this->layoutManager = new GridLayoutManager($this);
+  }
+
+  public function layout(): GridLayoutManagerInterface {
+    return $this->layoutManager;
   }
 
   public function getColumns(): ContainerInterface {

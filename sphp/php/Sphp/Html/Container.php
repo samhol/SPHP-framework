@@ -9,6 +9,7 @@ namespace Sphp\Html;
 
 use IteratorAggregate;
 use Sphp\Stdlib\Arrays;
+use Traversable;
 
 /**
  * Implements a container for HTML components and other textual content
@@ -186,7 +187,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
    *
    * @return Traversable iterator
    */
-  public function getIterator(): \Traversable {
+  public function getIterator(): Traversable {
     return new Iterator($this->components);
   }
 

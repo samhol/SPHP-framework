@@ -11,6 +11,7 @@ use IteratorAggregate;
 use Sphp\Html\Forms\TraversableFormInterface;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Grids\GridInterface;
+use Sphp\Html\Foundation\Sites\Grids\GridLayoutManagerInterface;
 use Sphp\Html\Foundation\Sites\Grids\RowInterface;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
@@ -63,7 +64,6 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    */
   public function __construct(string $action = null, string $method = null, $content = null) {
     parent::__construct('form');
-
     $this->gridContainer = new Grid();
     $this->hiddenInputs = new HiddenInputs();
     if ($action !== null) {
@@ -83,6 +83,10 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
 
   public function getGrid(): Grid {
     return $this->gridContainer;
+  }
+
+  public function layout(): GridLayoutManagerInterface {
+    return $this->getGrid()->layout();
   }
 
   public function getHiddenInputs(): HiddenInputs {
@@ -151,8 +155,8 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     return $this->getGrid()->count();
   }
 
-  public function getIterator() {
-    return $this->getGrid()->getIterator();
+  public function getIterator(): \Traversable {
+    return $this->getGrid();
   }
 
   /**

@@ -13,7 +13,6 @@ namespace Sphp\Html;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
- * @see     \Sphp\HtmlTraversableInterface
  */
 trait TraversableTrait {
 
@@ -21,9 +20,9 @@ trait TraversableTrait {
    * Returns a collection of sub components that match the search
    *
    * @param  callable $rules a lambda function for testing the sub components
-   * @return TraversableContent containing matching sub components
+   * @return Container containing matching sub components
    */
-  public function getComponentsBy(callable $rules) {
+  public function getComponentsBy(callable $rules): Container {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
     $result = new Container();
@@ -49,9 +48,9 @@ trait TraversableTrait {
    * Returns a collection of sub components that are of the given PHP type
    *
    * @param  string|\object $type the name of the searched PHP object type
-   * @return TraversableContent containing matching sub components
+   * @return Container containing matching sub components
    */
-  public function getComponentsByObjectType($type) {
+  public function getComponentsByObjectType($type): Container {
     $search = function($element) use ($type) {
       $result = false;
       if ($element instanceof $type) {

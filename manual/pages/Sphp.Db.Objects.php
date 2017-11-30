@@ -1,10 +1,12 @@
 <?php
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine\Objects;
+
+include_once 'manual/doctrine/configuration.php';
 
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Objects\ObjectInterface;
+use Sphp\Database\Doctrine\Objects\ObjectInterface;
 
 $objectInterface = \Sphp\Manual\api()->classLinker(ObjectInterface::class);
 $dbObjectInterface = \Sphp\Manual\api()->classLinker(DbObjectInterface::class);
@@ -23,7 +25,7 @@ The Doctrine Project is the home to several PHP libraries primarily focused on d
 
 ##The $objectInterface and the $dbObjectInterface
 
-The $objectInterface interface is the base for all database entity objects in the {$api->namespaceLink(__NAMESPACE__)} namespace.
+The $objectInterface interface is the base for all database entity objects in the namespace.
 
 
 This interfaces are the base of all database objects
@@ -36,7 +38,7 @@ MD
         ->setExamplePaneTitle("Geographical address object example")
         ->printHtml();
 
-
+/*
 
 $objectStorageInterface = \Sphp\Manual\api()->classLinker(ObjectStorageInterface::class);
 $iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
@@ -58,3 +60,4 @@ CodeExampleBuilder::visualize("Sphp/Db/Objects/Locations.php", "text", false);
 
 
 \Sphp\Manual\loadPage('Sphp.Db.Objects.Session');
+*/

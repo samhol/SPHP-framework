@@ -5,9 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database\Doctrine;
-
-use Sphp\Objects\AbstractArrayableObject;
+namespace Sphp\Database\Doctrine\Objects;
 
 /**
  * Implements a geographical address

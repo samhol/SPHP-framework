@@ -14,14 +14,13 @@ items:
       items:
       - link: Introduction
         href: Sphp.Stdlib
+        title: Standard library | Introduction
       - ruler: 
       - link: Events and Observers
         href: Sphp.Stdlib.Observers.and.Events
       - ruler: 
       - link: Data filtering
         href: Sphp.Filters
-      - link: Data validation
-        href: Sphp.Validators
       - ruler: 
       - link: Data Structures
         href: Sphp.Stdlib.Datastructures
@@ -35,18 +34,24 @@ items:
       - ruler: 
       - link: I18n
         href: Sphp.I18n
+    - link: Data validation
+      href: Sphp.Validators
     - separator: HTML manipulation
     - menu: HTML core
       items:
       - link: Introduction
         href: Sphp.Html
+        title: HTML | Introduction
       - link: Content creation
         href: Sphp.Html.Content
+        title: HTML | Content
       - ruler: 
-      - link: Component factories
+      - link: Component Factories
         href: Sphp.Html.Document
+        title: HTML | Component Factories
       - link: Attribute management
         href: Sphp.Html.Attributes
+        title: HTML | Attribute management
       - link: Meta data manipulation
         href: Sphp.Html.Head
       - link: Client side scripting 
@@ -54,11 +59,14 @@ items:
       - ruler: 
       - link: Lists
         href: Sphp.Html.Lists
+        title: HTML | Lists
       - link: Tables
         href: Sphp.Html.Tables
+        title: HTML | Tables
       - ruler: 
       - link: Forms
         href: Sphp.Html.Forms
+        title: HTML | Forms
     - menu: HTML media
       items:
       - link: Introduction
