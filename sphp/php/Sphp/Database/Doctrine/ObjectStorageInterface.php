@@ -8,8 +8,9 @@
 namespace Sphp\Database\Doctrine;
 
 use Exception;
-use IteratorAggregate;
+use Traversable;
 use Countable;
+use Sphp\Database\Doctrine\Objects\DbObjectInterface;
 
 /**
  * Defines required properties for a {@link DbObjectInterface} storage
@@ -18,13 +19,13 @@ use Countable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ObjectStorageInterface extends IteratorAggregate, Countable {
+interface ObjectStorageInterface extends Traversable, Countable {
 
   /**
    * 
    * @return string
    */
-  public function getObjectType();
+  public function getObjectType(): string;
 
   /**
    * Finds entities by a single criteria
@@ -54,7 +55,7 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
    * 
    * @return Traversable
    */
-  public function getIterator();
+  public function getIterator(): \Traversable;
 
   /**
    * Finds an Entity of {@link self::getObjectType()}-type by its identifier
@@ -69,7 +70,7 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
    * @param  mixed $id
    * @return boolean
    */
-  public function exists(DbObjectInterface $id);
+  public function exists(DbObjectInterface $id): bool;
 
   /**
    * 
@@ -90,5 +91,5 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
    * @param  DbObjectInterface $object
    * @return boolean
    */
-  public function contains(DbObjectInterface $object);
+  public function contains(DbObjectInterface $object): bool;
 }

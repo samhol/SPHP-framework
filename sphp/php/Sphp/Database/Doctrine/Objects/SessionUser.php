@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database\Doctrine;
+namespace Sphp\Database\Doctrine\Objects;
 
 use Sphp\Core\Security\Password;
 use Sphp\Core\Security\PasswordInterface;
@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="session_users")
  */
-class SessionUser extends AbstractDbObject implements UserInterface {
+class SessionUser extends AbstractArrayableObject implements UserInterface {
 
   /**
    * primary database key
@@ -224,5 +224,6 @@ class SessionUser extends AbstractDbObject implements UserInterface {
         'permissions_mask' => $this->getPermissions()->toInt()
     ];
   }
+
 
 }

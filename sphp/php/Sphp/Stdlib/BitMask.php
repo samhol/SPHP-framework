@@ -10,7 +10,6 @@ namespace Sphp\Stdlib;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Iterator;
 use Sphp\Config\PHP;
-use Sphp\Database\Doctrine\Embeddable;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
 
@@ -22,7 +21,7 @@ use Sphp\Exceptions\OutOfBoundsException;
  * @filesource
  * @Embeddable
  */
-class BitMask implements Arrayable, Embeddable, Iterator {
+class BitMask implements Arrayable, Iterator {
 
   /**
    * @var int 

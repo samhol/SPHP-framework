@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 $locationStorage = new LocationStorage();
 echo "All locations ordered by Country:\n";

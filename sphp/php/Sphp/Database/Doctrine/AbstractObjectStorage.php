@@ -10,8 +10,9 @@ namespace Sphp\Database\Doctrine;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ArrayIterator;
-use Sphp\Db\EntityManagerFactory;
+use Sphp\Database\Doctrine\EntityManagerFactory;
 use Sphp\Stdlib\Datastructures\Collection;
+use Sphp\Database\Doctrine\Objects\DbObjectInterface;
 
 /**
  * Abstract Implementation of a{@link DbObjectInterface} storage
@@ -20,7 +21,7 @@ use Sphp\Stdlib\Datastructures\Collection;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractObjectStorage implements ObjectStorageInterface {
+abstract class AbstractObjectStorage implements \IteratorAggregate, ObjectStorageInterface {
 
   /**
    * the type name of the stored objects
@@ -47,7 +48,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
    * @param string $objectType
    * @param EntityManagerInterface $em
    */
-  public function __construct($objectType, EntityManagerInterface $em = null) {
+  public function __construct(string $objectType, EntityManagerInterface $em = null) {
     $this->type = $objectType;
     if ($em === null) {
       $em = EntityManagerFactory::get();
@@ -57,11 +58,11 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   }
 
   /**
-   * Returns the entity Nameger 
+   * Returns the entity manager
    * 
    * @return EntityManagerInterface
    */
-  public function getManager() {
+  public function getManager(): EntityManagerInterface {
     return $this->em;
   }
 
@@ -73,7 +74,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     return $this->repository;
   }
 
-  public function getObjectType() {
+  public function getObjectType(): string {
     return $this->type;
   }
 
@@ -89,7 +90,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     return $this->getRepository()->findAll();
   }
 
-  public function getIterator() {
+  public function getIterator(): \Traversable {
     return new ArrayIterator($this->getRepository()->findAll());
   }
 
@@ -99,9 +100,11 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     }
     return $this->getRepository()->find($id);
   }
+
   public function get($limit = null, $offset = null, array $orderBy = null) {
     return new Collection($this->getRepository()->findBy([], $orderBy, $limit, $offset));
   }
+
   public function count(): int {
     $query = $this->em->createQuery("SELECT COUNT(t.id) FROM $this->type t");
     $count = $query->getSingleScalarResult();
@@ -133,7 +136,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     return $this;
   }
 
-  public function contains(DbObjectInterface $object) {
+  public function contains(DbObjectInterface $object): bool {
     return $this->em->contains($object);
   }
 

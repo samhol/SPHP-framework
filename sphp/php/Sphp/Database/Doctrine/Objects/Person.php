@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database\Doctrine;
+namespace Sphp\Database\Doctrine\Objects;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -18,7 +18,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="users",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
  */
-class Person extends AbstractDbObject {
+class Person extends AbstractArrayableObject {
 
   /**
    * primary database key

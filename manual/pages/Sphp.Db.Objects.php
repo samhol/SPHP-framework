@@ -4,18 +4,18 @@ namespace Sphp\Database\Doctrine\Objects;
 
 include_once 'manual/doctrine/configuration.php';
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Database\Doctrine\Objects\ObjectInterface;
+use Sphp\Manual;
 
-$objectInterface = \Sphp\Manual\api()->classLinker(ObjectInterface::class);
-$dbObjectInterface = \Sphp\Manual\api()->classLinker(DbObjectInterface::class);
-$geographicalAddress = \Sphp\Manual\api()->classLinker(GeographicalAddressInterface::class);
-$location = \Sphp\Manual\api()->classLinker(Location::class);
-$user = \Sphp\Manual\api()->classLinker(User::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$objectInterface = Manual\api()->classLinker(ObjectInterface::class);
+$dbObjectInterface = Manual\api()->classLinker(DbObjectInterface::class);
+$geographicalAddress = Manual\api()->classLinker(GeographicalAddressInterface::class);
+$location = Manual\api()->classLinker(Location::class);
+$user = Manual\api()->classLinker(User::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 #Diverse database objects
 $ns
 This is an experimental [Doctrine](http://www.doctrine-project.org/) based object mapping database extension. 
@@ -34,7 +34,8 @@ The $dbObjectInterface is implemented by a couple of build-in instantiable class
 
 MD
 );
-(new CodeExampleBuilder("Sphp/Db/Objects/Location.php", "text", false))
+Manual\visualize('Sphp/Db/Objects/Locations.php', 'text', false);
+Manual\example('Sphp/Db/Objects/Location.php', 'text', false)
         ->setExamplePaneTitle("Geographical address object example")
         ->printHtml();
 

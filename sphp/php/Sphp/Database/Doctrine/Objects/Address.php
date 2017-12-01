@@ -15,17 +15,15 @@ namespace Sphp\Database\Doctrine\Objects;
  * @filesource
  * @Embeddable
  */
-class Address extends AbstractArrayableObject implements GeographicalAddressInterface, Embeddable {
+class Address extends AbstractArrayableObject implements GeographicalAddressInterface {
 
   /**
-   *
    * @var string|null
    * @Column(type = "string") 
    */
   private $street;
 
   /**
-   *
    * @var string|null
    * @Column(type = "string") 
    */
@@ -39,14 +37,12 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
   private $city;
 
   /**
-   *
    * @var string|null
    * @Column(type = "string") 
    */
   private $country;
 
   /**
-   *
    * @var string|null
    * @Column(type = "string") 
    */
@@ -98,20 +94,11 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
   }
 
   public function fromArray(array $data = []) {
-    $args = [
-        'id' => \FILTER_VALIDATE_INT,
-        'street' => \FILTER_SANITIZE_STRING,
-        'zipcode' => \FILTER_SANITIZE_STRING,
-        'city' => \FILTER_SANITIZE_STRING,
-        'country' => \FILTER_SANITIZE_STRING,
-        'maplink' => \FILTER_SANITIZE_STRING
-    ];
-    $myinputs = filter_var_array($data, $args, true);
-    $this->setStreet($myinputs['street'])
-            ->setZipcode($myinputs['zipcode'])
-            ->setCity($myinputs['city'])
-            ->setCountry($myinputs['country'])
-            ->setMaplink($myinputs['maplink']);
+    foreach (get_object_vars($this) as $attrName => $attrValue) {
+      if (array_key_exists($attrName, $data)) {
+        $this->{$attrName} = $data[$attrName];
+      }
+    }
     return $this;
   }
 

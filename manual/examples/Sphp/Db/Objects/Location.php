@@ -24,7 +24,7 @@ $locationData[] = [
 
 $locationStorage = new LocationStorage();
 try {
-  $hydepark->insertAsNewInto($em);
+  //$hydepark->insertAsNewInto($em);
 } catch (\Exception $ex) {
   echo "Hydepark is already stored into the database\n";
   $hydepark = $locationStorage->findByName($hydepark);
@@ -41,7 +41,7 @@ $addrs[] = (new Location())
         ->fromArray($locationData[0]);
 
 foreach ($addrs as $location) {
-  if ($location->isManagedBy($em)) {
+  if ($locationStorage->contains($location)) {
     echo "We have $location\n";
   } else {
     echo "We don't have $location\n";

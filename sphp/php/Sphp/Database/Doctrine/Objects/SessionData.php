@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database\Doctrine;
+namespace Sphp\Database\Doctrine\Objects;
 
 use DateTime;
 use Sphp\Util\Permissions;
@@ -19,7 +19,7 @@ use Sphp\Util\Permissions;
  * @Entity
  * @Table(name="sessions",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
  */
-class SessionData extends AbstractDbObject {
+class SessionData extends AbstractArrayableObject {
 
   /**
    * primary database key

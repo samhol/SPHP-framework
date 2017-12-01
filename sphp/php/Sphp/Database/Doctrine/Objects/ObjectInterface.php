@@ -7,6 +7,8 @@
 
 namespace Sphp\Database\Doctrine\Objects;
 
+use Sphp\Stdlib\Datastructures\Arrayable;
+
 /**
  * Interface describes common features for all Objects.
  *
@@ -14,14 +16,15 @@ namespace Sphp\Database\Doctrine\Objects;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ObjectInterface {
+interface ObjectInterface extends Arrayable {
 
   /**
-   * Returns the string representation of the object
+   * Resets all the member values from a given raw data source
    *
-   * @return string the string representation of the object
+   * @param  mixed[] $data raw source data
+   * @return $this for a fluent interface
    */
-  public function __toString();
+  public function fromArray(array $data = []);
 
   /**
    * Determines whether the specified object is equal to the current object

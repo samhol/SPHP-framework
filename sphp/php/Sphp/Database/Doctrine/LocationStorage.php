@@ -9,6 +9,8 @@ namespace Sphp\Database\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Stdlib\Datastructures\Collection;
+use Sphp\Database\Doctrine\Objects\Location;
+use Sphp\Database\Doctrine\Objects\DbObjectInterface;
 
 /**
  * Implements a {@link Location} storage
@@ -17,7 +19,7 @@ use Sphp\Stdlib\Datastructures\Collection;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class LocationStorage extends AbstractObjectStorage {
+class LocationStorage extends AbstractObjectStorage implements \IteratorAggregate {
 
   /**
    * Constructor
@@ -66,7 +68,7 @@ class LocationStorage extends AbstractObjectStorage {
     return $this->findBy(['address.country' => $country], $orderBy, $limit, $offset);
   }
 
-  public function getIterator() {
+  public function getIterator(): \Traversable {
     return new Collection($this->getRepository()->findBy([], ['name' => 'ASC']));
   }
 
@@ -88,7 +90,7 @@ class LocationStorage extends AbstractObjectStorage {
     return $result;
   }
 
-  public function exists(DbObjectInterface $id) {
+  public function exists(DbObjectInterface $id): bool {
     if ($id instanceof Location) {
       $username = $id->getName();
     }

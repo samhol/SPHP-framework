@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * GeographicalAddressInterfaces.php (UTF-8)
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database\Doctrine\Objects;

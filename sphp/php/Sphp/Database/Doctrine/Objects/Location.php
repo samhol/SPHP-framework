@@ -18,7 +18,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="locations",uniqueConstraints={@UniqueConstraint(name="unique_name", columns={"name"})})
  */
-class Location extends AbstractDbObject implements GeographicalAddressInterface {
+class Location extends AbstractArrayableObject implements GeographicalAddressInterface {
 
   /**
    *
@@ -118,6 +118,17 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
     return $this;
   }
 
+  public function __toString(): string {
+    $output = static::class . ":\n";
+    foreach ($this->toArray() as $prop => $val) {
+      if (is_array($val)) {
+        $val = Arrays::implodeWithKeys($val, "\n\t\t", ": ");
+      }
+      $output .= "\t$prop: $val\n";
+    }
+    return $output;
+  }
+
   public function fromArray(array $data = []) {
     $args = [
         'name' => \FILTER_SANITIZE_STRING
@@ -150,27 +161,26 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
    *
    * @param  EntityManagerInterface $em the entity manager
    * @return boolean true, if location name is unique, false otherwise.
-   */
-  public function hasUniqueNameIn(EntityManagerInterface $em) {
+
+    public function hasUniqueNameIn(EntityManagerInterface $em) {
     if ($this->isManagedBy($em)) {
-      $query = $em->createQuery('SELECT COUNT(obj.name) FROM ' . self::class . ' obj WHERE obj.name = :name AND obj.id != :id');
-      $query->setParameter("name", $this->getName());
-      $query->setParameter("id", $this->getPrimaryKey());
+    $query = $em->createQuery('SELECT COUNT(obj.name) FROM ' . self::class . ' obj WHERE obj.name = :name AND obj.id != :id');
+    $query->setParameter("name", $this->getName());
+    $query->setParameter("id", $this->getPrimaryKey());
     } else {
-      $query = $em->createQuery('SELECT COUNT(obj.name) FROM ' . self::class . ' obj WHERE obj.name = :name');
-      $query->setParameter("name", $this->getName());
+    $query = $em->createQuery('SELECT COUNT(obj.name) FROM ' . self::class . ' obj WHERE obj.name = :name');
+    $query->setParameter("name", $this->getName());
     }
     $count = $query->getSingleScalarResult();
     return $count == 0;
-  }
-
-  public function insertAsNewInto(EntityManagerInterface $em) {
-    if (!$this->isManagedBy($em) && $this->hasUniqueNameIn($em)) {
-      $em->persist($this);
-      $em->flush();
-    } else {
-      throw new \RuntimeException('Location cannot be inserted into the manager as a new instance');
     }
-  }
 
+    public function insertAsNewInto(EntityManagerInterface $em) {
+    if (!$this->isManagedBy($em) && $this->hasUniqueNameIn($em)) {
+    $em->persist($this);
+    $em->flush();
+    } else {
+    throw new \RuntimeException('Location cannot be inserted into the manager as a new instance');
+    }
+    } */
 }

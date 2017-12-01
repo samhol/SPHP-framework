@@ -3,7 +3,7 @@
 namespace Doctrine\ORM;
 
 use Doctrine\ORM\Configuration;
-use Sphp\Db\EntityManagerFactory;
+use Sphp\Database\Doctrine\EntityManagerFactory;
 
 $isDevMode = true;
 

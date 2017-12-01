@@ -7,8 +7,6 @@
 
 namespace Sphp\Database\Doctrine\Objects;
 
-use Doctrine\ORM\EntityManagerInterface;
-
 /**
  * Defines common features for all database objects.
  *
@@ -16,7 +14,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface DbObjectInterface extends ArrayableObjectInterface {
+interface DbObjectInterface extends ObjectInterface {
 
   /**
    * Resets all the member values from a given raw data source
@@ -26,27 +24,4 @@ interface DbObjectInterface extends ArrayableObjectInterface {
    */
   public function fromArray(array $data = []);
 
-  /**
-   * Inserts the user as a new instance to the database
-   *
-   * @param  EntityManagerInterface $em the entity manager
-   * @return boolean true if the operation was succesfull, false otherwise
-   */
-  public function isManagedBy(EntityManagerInterface $em);
-
-  /**
-   * Inserts the user as a new instance to the database
-   *
-   * @param  EntityManagerInterface $em the entity manager
-   * @return boolean true if the operation was succesfull, false otherwise
-   */
-  public function insertAsNewInto(EntityManagerInterface $em);
-
-  /**
-   * Inserts the user as a new instance to the database
-   *
-   * @param  EntityManagerInterface $em the entity manager
-   * @return boolean true if the operation was succesfull, false otherwise
-   */
-  public function deleteFrom(EntityManagerInterface $em);
 }

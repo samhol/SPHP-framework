@@ -20,7 +20,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="users",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
  */
-class User extends AbstractDbObject {
+class User extends AbstractArrayableObject {
 
   /**
    * primary database key

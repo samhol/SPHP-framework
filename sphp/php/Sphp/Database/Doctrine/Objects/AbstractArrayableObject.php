@@ -16,7 +16,7 @@ use Sphp\Stdlib\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractArrayableObject implements ArrayableObjectInterface {
+abstract class AbstractArrayableObject implements DbObjectInterface {
 
   /**
    * Constructs a new instance
