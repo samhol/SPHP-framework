@@ -30,7 +30,6 @@ class Person extends AbstractArrayableObject {
   private $id;
 
   /**
-   *
    * @var SessionUser 
    */
   private $sessionUser;

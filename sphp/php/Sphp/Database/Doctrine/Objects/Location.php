@@ -10,7 +10,7 @@ namespace Sphp\Database\Doctrine\Objects;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Implements a geographical location stored into a database
+ * Implements a geographical location
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -18,11 +18,10 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="locations",uniqueConstraints={@UniqueConstraint(name="unique_name", columns={"name"})})
  */
-class Location extends AbstractArrayableObject implements GeographicalAddressInterface {
+class Location extends AbstractArrayableObject {
 
   /**
-   *
-   * @var string|null
+   * @var string
    * @Id @Column(type="string")
    */
   private $name;
@@ -38,27 +37,27 @@ class Location extends AbstractArrayableObject implements GeographicalAddressInt
    *
    * @return string the name of the location
    */
-  public function getName() {
-    return $this->name;
+  public function getName(): string {
+    return (string) $this->name;
   }
 
   /**
    * Sets the name of the location
    *
-   * @param  string $name  the name of the location
+   * @param  string $name the name of the location
    * @return $this for a fluent interface
    */
-  public function setName($name) {
+  public function setName(string $name = null) {
     $this->name = $name;
     return $this;
   }
 
   /**
-   * Returns the full address as an {@link Address} object
+   * Returns the full address as an object
    *
-   * @return Address the full address as an object
+   * @return Address the full address
    */
-  public function getAddress() {
+  public function getAddress(): Address {
     return $this->address;
   }
 
@@ -70,51 +69,6 @@ class Location extends AbstractArrayableObject implements GeographicalAddressInt
    */
   public function setAddress(Address $address) {
     $this->address = $address;
-    return $this;
-  }
-
-  public function getStreet() {
-    return $this->address->getStreet();
-  }
-
-  public function getCity() {
-    return $this->address->getCity();
-  }
-
-  public function getZipcode() {
-    return $this->address->getZipcode();
-  }
-
-  public function getCountry() {
-    return $this->address->getCountry();
-  }
-
-  public function getMaplink() {
-    return $this->address->getMaplink();
-  }
-
-  public function setStreet($streetaddress) {
-    $this->address->setStreet($streetaddress);
-    return $this;
-  }
-
-  public function setCity($city) {
-    $this->address->setCity($city);
-    return $this;
-  }
-
-  public function setZipcode($zipcode) {
-    $this->address->setZipcode($zipcode);
-    return $this;
-  }
-
-  public function setCountry($country) {
-    $this->address->setCountry($country);
-    return $this;
-  }
-
-  public function setMaplink($maplink) {
-    $this->address->setMaplink($maplink);
     return $this;
   }
 

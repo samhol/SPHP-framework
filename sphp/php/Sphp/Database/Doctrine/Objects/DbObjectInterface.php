@@ -23,5 +23,4 @@ interface DbObjectInterface extends ObjectInterface {
    * @return $this for a fluent interface
    */
   public function fromArray(array $data = []);
-
 }

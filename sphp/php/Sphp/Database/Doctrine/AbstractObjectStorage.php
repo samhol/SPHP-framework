@@ -66,6 +66,24 @@ abstract class AbstractObjectStorage implements \IteratorAggregate, ObjectStorag
     return $this->em;
   }
 
+  public function query(): \Doctrine\ORM\QueryBuilder {
+    return $this->em->createQueryBuilder();
+  }
+
+  /**
+   * Confirms the uniqueness of the location name in the repository
+   *
+   * @param  string $needle the location instance or the location name string
+   * @return boolean true, if field value is unique, false otherwise
+   */
+  public function valueNotUsed(string $prop, $value): bool {
+    $query = $this->getManager()
+            ->createQuery("SELECT COUNT(u.$prop) FROM " . $this->getObjectType() . " u WHERE u.$prop = :value");
+    $query->setParameter('value', $value);
+    $result = $query->getSingleScalarResult() == 0;
+    return $result;
+  }
+
   /**
    * 
    * @return ObjectManager

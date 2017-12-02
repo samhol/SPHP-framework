@@ -1,7 +1,9 @@
 <?php
 
 namespace Sphp\Database\Doctrine\Objects;
+
 use Sphp\Database\Doctrine\LocationStorage;
+
 $em = include 'entityManager.php';
 
 $hydeparkData = [
@@ -31,11 +33,11 @@ try {
 }
 $addrs[] = $hydepark;
 //$locations->save($hydepark);
-$addrs[] = (new Location())
-        ->setStreet("Mariankatu 2")
-        ->setZipcode("00170")
-        ->setCity("Helsinki")
-        ->setCountry("Finland");
+$addrs[] = (new Location())->setAddress(
+        (new Address())->setStreet("Mariankatu 2")
+                ->setZipcode("00170")
+                ->setCity("Helsinki")
+                ->setCountry("Finland"));
 
 $addrs[] = (new Location())
         ->fromArray($locationData[0]);

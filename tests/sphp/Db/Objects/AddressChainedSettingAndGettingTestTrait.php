@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine\Objects;
 
 trait AddressChainedSettingAndGettingTestTrait {
 

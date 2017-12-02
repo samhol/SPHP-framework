@@ -103,13 +103,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
   }
 
   public function toArray(): array {
-    return [
-        'street' => $this->getStreet(),
-        'city' => $this->getCity(),
-        'zipcode' => $this->getZipcode(),
-        'country' => $this->getCountry(),
-        'maplink' => $this->getMaplink()
-    ];
+    return get_object_vars($this);
   }
 
   /**

@@ -71,6 +71,7 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
   public function getIterator(): \Traversable {
     return new Collection($this->getRepository()->findBy([], ['name' => 'ASC']));
   }
+  
 
   /**
    * Confirms the uniqueness of the location name in the repository

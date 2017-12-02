@@ -365,7 +365,7 @@ class User extends AbstractArrayableObject {
       }
       if ($val instanceof ArrayableObjectInterface) {
         $result = array_merge($result, $val->toArray());
-      }  else {
+      } else {
         $result[$prop] = $val;
       }
     }
