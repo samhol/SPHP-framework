@@ -14,6 +14,7 @@ $hydeparkData = [
     'country' => 'UK',
     'maplink' => 'https://goo.gl/maps/ZWHMuHB4sd22'
 ];
+var_dump($locationStorage->removeByName($hydeparkData["name"]));
 $hydepark = new Location($hydeparkData);
 $locationData[] = [
     'name' => 'Pikkukakkosen posti',

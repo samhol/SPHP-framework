@@ -29,7 +29,7 @@ interface GeographicalAddressInterface {
    * @param  string $streetaddress the street address
    * @return $this for a fluent interface
    */
-  public function setStreet($streetaddress);
+  public function setStreet(string $streetaddress = null);
 
   /**
    * Returns the zipcode
@@ -44,7 +44,7 @@ interface GeographicalAddressInterface {
    * @param  string|null $zipcode the zipcode
    * @return $this for a fluent interface
    */
-  public function setZipcode($zipcode);
+  public function setZipcode(string $zipcode = null);
 
   /**
    * Returns the city or the district name
@@ -59,7 +59,7 @@ interface GeographicalAddressInterface {
    * @param  string|null $city the city or the district name
    * @return $this for a fluent interface
    */
-  public function setCity($city);
+  public function setCity(string $city = null);
 
   /**
    * Returns the country name
@@ -74,7 +74,7 @@ interface GeographicalAddressInterface {
    * @param  string $country the country name
    * @return $this for a fluent interface
    */
-  public function setCountry($country);
+  public function setCountry(string $country = null);
 
   /**
    * Returns the maplink pointing to the location
@@ -89,5 +89,5 @@ interface GeographicalAddressInterface {
    * @param  string $maplink the maplink to the location
    * @return $this for a fluent interface
    */
-  public function setMaplink($maplink);
+  public function setMaplink(string $maplink = null);
 }

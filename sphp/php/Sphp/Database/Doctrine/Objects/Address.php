@@ -52,7 +52,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
     return $this->street;
   }
 
-  public function setStreet($streetaddress) {
+  public function setStreet(string $streetaddress = null) {
     $this->street = $streetaddress;
     return $this;
   }
@@ -61,7 +61,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
     return $this->zipcode;
   }
 
-  public function setZipcode($zipcode) {
+  public function setZipcode(string $zipcode = null) {
     $this->zipcode = $zipcode;
     return $this;
   }
@@ -70,7 +70,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
     return $this->city;
   }
 
-  public function setCity($city) {
+  public function setCity(string $city = null) {
     $this->city = $city;
     return $this;
   }
@@ -79,7 +79,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
     return $this->country;
   }
 
-  public function setCountry($country) {
+  public function setCountry(string $country = null) {
     $this->country = $country;
     return $this;
   }
@@ -88,7 +88,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
     return $this->maplink;
   }
 
-  public function setMaplink($maplink) {
+  public function setMaplink(string $maplink = null) {
     $this->maplink = $maplink;
     return $this;
   }
