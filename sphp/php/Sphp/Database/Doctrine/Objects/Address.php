@@ -15,7 +15,7 @@ namespace Sphp\Database\Doctrine\Objects;
  * @filesource
  * @Embeddable
  */
-class Address extends AbstractArrayableObject implements GeographicalAddressInterface {
+class Address extends AbstractArrayableObject implements GeographicalAddress {
 
   /**
    * @var string|null

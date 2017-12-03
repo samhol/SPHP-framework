@@ -14,7 +14,7 @@ namespace Sphp\Database\Doctrine\Objects;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface GeographicalAddressInterface {
+interface GeographicalAddress {
 
   /**
    * Returns the street address

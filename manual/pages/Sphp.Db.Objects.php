@@ -10,7 +10,7 @@ use Sphp\Manual;
 
 $objectInterface = Manual\api()->classLinker(ObjectInterface::class);
 $dbObjectInterface = Manual\api()->classLinker(DbObjectInterface::class);
-$geographicalAddress = Manual\api()->classLinker(GeographicalAddressInterface::class);
+$geographicalAddress = Manual\api()->classLinker(GeographicalAddress::class);
 $location = Manual\api()->classLinker(Location::class);
 $user = Manual\api()->classLinker(User::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

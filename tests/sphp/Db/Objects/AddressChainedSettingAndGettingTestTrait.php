@@ -15,7 +15,7 @@ trait AddressChainedSettingAndGettingTestTrait {
    *
    * @param Address $addr
    */
-  public function testSettingAnGettingAndChaining(GeographicalAddressInterface $addr) {
+  public function testSettingAnGettingAndChaining(GeographicalAddress $addr) {
     $this->assertSame($addr->setStreet('foo'), $addr);
     $this->assertSame($addr->getStreet(), 'foo');
     $this->assertSame($addr->setCity('foo'), $addr);

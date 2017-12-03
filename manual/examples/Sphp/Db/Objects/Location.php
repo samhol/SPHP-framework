@@ -5,7 +5,7 @@ namespace Sphp\Database\Doctrine\Objects;
 use Sphp\Database\Doctrine\LocationStorage;
 
 $em = include 'entityManager.php';
-
+$locationStorage = new LocationStorage($em);
 $hydeparkData = [
     'name' => 'Hyde Park',
     'street' => 'W2 2UH',
@@ -14,7 +14,10 @@ $hydeparkData = [
     'country' => 'UK',
     'maplink' => 'https://goo.gl/maps/ZWHMuHB4sd22'
 ];
-var_dump($locationStorage->removeByName($hydeparkData["name"]));
+$locationStorage->removeByName($hydeparkData["name"]);
+var_dump($locationStorage->findByName($hydeparkData["name"]));
+$locationStorage->insertAsNew(new Location($hydeparkData));
+var_dump($locationStorage->findByName($hydeparkData["name"]));
 $hydepark = new Location($hydeparkData);
 $locationData[] = [
     'name' => 'Pikkukakkosen posti',

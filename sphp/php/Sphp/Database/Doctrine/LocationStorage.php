@@ -49,7 +49,7 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
    * @param  string $name the name of the searched location
    * @return Location|null  the location or null if nothing was found
    */
-  public function removeByName($name) {
+  public function removeByName(string $name) {
     $obj = $this->findByName($name);
     if ($obj !== null) {
       $this->getManager()->remove($obj);
