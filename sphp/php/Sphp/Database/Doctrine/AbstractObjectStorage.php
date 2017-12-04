@@ -21,7 +21,7 @@ use Sphp\Database\Doctrine\Objects\DbObjectInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractObjectStorage implements \IteratorAggregate, ObjectStorageInterface {
+abstract class AbstractObjectStorage implements \IteratorAggregate, \Sphp\Stdlib\Datastructures\Arrayable {
 
   /**
    * the type name of the stored objects
@@ -104,7 +104,7 @@ abstract class AbstractObjectStorage implements \IteratorAggregate, ObjectStorag
     return $this->getRepository()->findBy($criteria, $orderBy, $limit, $offset);
   }
 
-  public function findAll() {
+  public function toArray(): array {
     return $this->getRepository()->findAll();
   }
 

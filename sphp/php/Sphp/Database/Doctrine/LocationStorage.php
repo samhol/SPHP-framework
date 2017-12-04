@@ -22,7 +22,7 @@ use Sphp\Database\Doctrine\Objects\DbObjectInterface;
 class LocationStorage extends AbstractObjectStorage implements \IteratorAggregate {
 
   /**
-   * Constructor
+   * Constructs a new instance
    *
    * @param EntityManagerInterface $em
    */
@@ -36,18 +36,15 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
    * @param  string $name the name of the searched location
    * @return Location|null  the location or null if nothing was found
    */
-  public function findByName($name) {
-    if ($name instanceof Location) {
-      $name = $name->getName();
-    }
+  public function findByName(string $name) {
     return $this->getRepository()->findOneBy(['name' => $name]);
   }
 
   /**
-   * Tries to get a location by its unique name
+   * Tries to remove a location by its unique name
    *
-   * @param  string $name the name of the searched location
-   * @return Location|null  the location or null if nothing was found
+   * @param  string $name the name of the location
+   * @return Location|null  removed location or null if nothing was found
    */
   public function removeByName(string $name) {
     $obj = $this->findByName($name);
@@ -55,7 +52,7 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
       $this->getManager()->remove($obj);
       $this->getManager()->flush();
     }
-    return $this;
+    return $obj;
   }
 
   /**

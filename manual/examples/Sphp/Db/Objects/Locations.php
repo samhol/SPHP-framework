@@ -16,6 +16,9 @@ $locationStorage = new LocationStorage();
   echo "\tlocation: {$location->getName()} in {$location->getStreet()}\n";
   } */
 try {
+  foreach ($locationStorage->toArray() as $location) {
+    echo "\n{$location->getName()} in {$location->getAddress()->getCity()}, {$location->getAddress()->getCountry()}";
+}
   $l = $locationStorage->query()
                   ->select('l')
                   ->from(Objects\Location::class, 'l')
