@@ -86,14 +86,4 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
     return $result;
   }
 
-  public function exists(DbObjectInterface $id): bool {
-    if ($id instanceof Location) {
-      $username = $id->getName();
-    }
-    $query = $this->getManager()
-            ->createQuery('SELECT COUNT(obj.id) FROM ' . $this->getObjectType() . " obj WHERE obj.name = :name");
-    $query->setParameter('name', $username);
-    return $query->getSingleScalarResult() == 1;
-  }
-
 }
