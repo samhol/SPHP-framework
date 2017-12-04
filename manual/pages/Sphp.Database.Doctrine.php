@@ -4,7 +4,6 @@ namespace Sphp\Database\Doctrine\Objects;
 
 include_once 'manual/doctrine/configuration.php';
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Database\Doctrine\Objects\ObjectInterface;
 use Sphp\Manual;
 
@@ -34,8 +33,8 @@ The $dbObjectInterface is implemented by a couple of build-in instantiable class
 
 MD
 );
-Manual\visualize('Sphp/Db/Objects/Locations.php', 'text', false);
-Manual\example('Sphp/Db/Objects/Location.php', 'text', false)
+Manual\visualize('Sphp/Database/Doctrine/Locations.php', 'text', false);
+Manual\example('Sphp/Database/Doctrine/Location.php', 'text', false)
         ->setExamplePaneTitle("Geographical address object example")
         ->printHtml();
 

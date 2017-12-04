@@ -4,7 +4,7 @@ namespace Sphp\Database\Doctrine\Objects;
 
 use Sphp\Database\Doctrine\LocationStorage;
 
-$em = include 'entityManager.php';
+$em = \Sphp\Database\Doctrine\EntityManagerFactory::get();
 $locationStorage = new LocationStorage($em);
 $hydeparkData = [
     'name' => 'Hyde Park',

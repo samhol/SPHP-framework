@@ -49,8 +49,7 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
   public function removeByName(string $name) {
     $obj = $this->findByName($name);
     if ($obj !== null) {
-      $this->getManager()->remove($obj);
-      $this->getManager()->flush();
+      $this->remove($obj);
     }
     return $obj;
   }
@@ -61,14 +60,13 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
    * @param  string $country the name of the country
    * @return Location[] all managed objects that have the same country name
    */
-  public function findByCountry($country, array $orderBy = null, $limit = null, $offset = null) {
-    return $this->findBy(['address.country' => $country], $orderBy, $limit, $offset);
+  public function findByCountry(string $country, $limit = null, $offset = null): array {
+    return $this->getRepository()->findBy(['address.country' => $country], ['name' => 'ASC'], $limit, $offset);
   }
 
   public function getIterator(): \Traversable {
     return new Collection($this->getRepository()->findBy([], ['name' => 'ASC']));
   }
-  
 
   /**
    * Confirms the uniqueness of the location name in the repository
@@ -76,7 +74,7 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
    * @param  Location|string $needle the location instance or the location name string
    * @return boolean true, if location name is unique, false otherwise.
    */
-  public function nameNotUsed($needle) {
+  public function nameNotUsed($needle): bool {
     if ($needle instanceof Location) {
       $result = $needle->getName();
     }

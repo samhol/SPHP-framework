@@ -57,13 +57,6 @@ interface ObjectStorageInterface extends Traversable, Countable {
    */
   public function getIterator(): \Traversable;
 
-  /**
-   * Finds an Entity of {@link self::getObjectType()}-type by its identifier
-   *
-   * @param  mixed $id the 
-   * @return DbObjectInterface|null
-   */
-  public function getById($id);
 
   /**
    * 

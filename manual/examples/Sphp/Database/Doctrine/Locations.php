@@ -2,7 +2,8 @@
 
 namespace Sphp\Database\Doctrine;
 
-$locationStorage = new LocationStorage();
+$em = \Sphp\Database\Doctrine\EntityManagerFactory::get();
+$locationStorage = new LocationStorage($em);
 /* echo "All locations ordered by Country:\n";
   foreach ($locationStorage as $location) {
   echo "\tlocation: {$location->getName()} in {$location->getCountry()}\n";
