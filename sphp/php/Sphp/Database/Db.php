@@ -8,7 +8,7 @@
 namespace Sphp\Database;
 
 use PDO;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Database\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a Database statement factory
@@ -76,7 +76,7 @@ class Db {
 
   /**
    * 
-   * @param  string $name
+   * @param  string|null $name
    * @return Db
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
@@ -116,7 +116,7 @@ class Db {
    * @throws \Sphp\Exceptions\BadMethodCallException
    */
   public function __call(string $name, array $arguments = []) {
-    return $this->strategy->generateStatement($name);
+    return $this->strategy->createStatement($name);
   }
 
 }

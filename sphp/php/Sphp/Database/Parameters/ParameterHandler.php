@@ -68,6 +68,7 @@ interface ParameterHandler extends \ArrayAccess, Iterator, Countable, Arrayable 
    * @param  PDOStatement $statement the statement object
    * @return PDOStatement the statement object
    * @throws DatabaseException if the binding fails
+   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function bindTo(PDOStatement $statement): PDOStatement;
 
@@ -77,6 +78,7 @@ interface ParameterHandler extends \ArrayAccess, Iterator, Countable, Arrayable 
    * @param  PDOStatement $statement the statement object
    * @return PDOStatement the statement object
    * @throws DatabaseException if the execution fails
+   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function executeIn(PDOStatement $statement): PDOStatement;
 }

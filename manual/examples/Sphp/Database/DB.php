@@ -14,6 +14,7 @@ echo Db::query()
         ->get('a', 'b', 'c')
         ->groupBy('c')
         ->statementToString();
+
 echo Db::query('foo')
         ->from('t1')
         ->get('a', 'b', 'c')

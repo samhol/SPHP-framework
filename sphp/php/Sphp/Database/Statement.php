@@ -10,6 +10,7 @@ namespace Sphp\Database;
 use PDO;
 use PDOStatement;
 use Sphp\Database\Parameters\ParameterHandler;
+use Sphp\Database\Exceptions\DatabaseException;
 
 /**
  * Interface for database data manipulation
@@ -47,7 +48,7 @@ interface Statement {
    * Returns the database statement object
    *
    * @return PDOStatement the database statement object
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @throws DatabaseException if execution fails
    * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function getStatement(): PDOStatement;
@@ -63,7 +64,7 @@ interface Statement {
    * Executes the database statement
    *
    * @return PDOStatement the result set
-   * @throws \Sphp\Exceptions\RuntimeException if query execution fails
+   * @throws DatabaseException if execution fails
    * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function execute(): PDOStatement;
