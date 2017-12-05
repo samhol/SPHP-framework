@@ -135,8 +135,18 @@ interface Query extends ConditionalStatementInterface, Traversable, \Countable {
    */
   public function orderBy(string ...$columns);
 
+  /**
+   * 
+   * @param  int $limit
+   * @return $this for a fluent interface
+   */
   public function setLimit(int $limit);
 
+  /**
+   * 
+   * @param  int $offset
+   * @return $this for a fluent interface
+   */
   public function setOffset(int $offset);
 
   /**
