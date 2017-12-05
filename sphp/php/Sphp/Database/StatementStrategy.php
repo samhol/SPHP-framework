@@ -8,7 +8,6 @@
 namespace Sphp\Database;
 
 use PDO;
-
 /**
  * Description of InsertStrategy
  *
@@ -39,7 +38,7 @@ class StatementStrategy {
     $this->pdo = $pdo;
   }
 
-  public function generateStatement($className): StatementInterface {
+  public function generateStatement($className): Statement {
 
     //$ns = __NAMESPACE__ . "\\Legacy";
     $result = __NAMESPACE__ . "\\Legacy\\" . ucfirst($className);

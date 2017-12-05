@@ -5,15 +5,13 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database;
+namespace Sphp\Database\Parameters;
 
 use PDO;
 use PDOStatement;
 use PDOException;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Iterator;
-use Sphp\Stdlib\Datastructures\Arrayable;
+use Sphp\Database\Exceptions\DatabaseException;
 
 /**
  * Base class for all SQL Statement classes
@@ -63,13 +61,6 @@ abstract class Parameters implements ParameterHandler {
    */
   abstract public function mergeParams($params);
 
-  /**
-   * 
-   * @param  mixed $name
-   * @param  mixed $value
-   * @param  int $type
-   * @return $this for a fluent interface
-   */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
     $this->params[$name] = $value;
     $this->types[$name] = $type;
@@ -89,14 +80,6 @@ abstract class Parameters implements ParameterHandler {
     return $this;
   }
 
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @param  array $params
-   * @param  int $type
-   * @return $this for a fluent interface
-   */
   public function setParams(array $params, int $type = PDO::PARAM_STR) {
     foreach ($params as $name => $value) {
       $this->setParam($name, $value, $type);
@@ -120,22 +103,6 @@ abstract class Parameters implements ParameterHandler {
     return array_key_exists($offset, $this->params);
   }
 
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return array values that are vulnerable to an SQL injection
-   */
-  public function getParamNames(): array {
-    return array_keys($this->params);
-  }
-
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return array values that are vulnerable to an SQL injection
-   */
   public function getParamType($index): int {
     if (!$this->contains($index)) {
       throw new InvalidArgumentException("param '$index' not found");
@@ -150,11 +117,6 @@ abstract class Parameters implements ParameterHandler {
     return $this->params[$name];
   }
 
-  /**
-   * 
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
   public function bindTo(PDOStatement $statement): PDOStatement {
     try {
       foreach ($this as $name => $value) {
@@ -162,24 +124,17 @@ abstract class Parameters implements ParameterHandler {
       }
       return $statement;
     } catch (PDOException $e) {
-      throw new RuntimeException('Binding failed', 0, $e);
+      throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
     }
   }
 
-  /**
-   * 
-   * 
-   * @param  PDOStatement $statement
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
   public function executeIn(PDOStatement $statement): PDOStatement {
     // print_r($this->toArray());
     try {
       $this->bindTo($statement)->execute();
       return $statement;
     } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage());
+      throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
     }
   }
 
@@ -194,6 +149,8 @@ abstract class Parameters implements ParameterHandler {
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     next($this->params);
@@ -210,6 +167,8 @@ abstract class Parameters implements ParameterHandler {
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     reset($this->params);
@@ -238,14 +197,23 @@ abstract class Parameters implements ParameterHandler {
     return $this->params[$offset];
   }
 
+  /**
+   * 
+   * @param  type $offset
+   * @param  type $value
+   * @return void
+   */
   public function offsetSet($offset, $value) {
     $this->setParam($offset, $value);
-    return $this;
   }
 
+  /**
+   * 
+   * @param  type $offset
+   * @return void
+   */
   public function offsetUnset($offset) {
     $this->unsetParam($offset);
-    return $this;
   }
 
   /**

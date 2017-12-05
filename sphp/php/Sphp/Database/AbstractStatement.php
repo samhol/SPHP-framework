@@ -13,13 +13,13 @@ use PDOException;
 use Sphp\Exceptions\RuntimeException;
 
 /**
- * Base class for all SQL Statement classes
+ * Abstract Base class for any executable `SQL` Statements
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractStatement implements StatementInterface {
+abstract class AbstractStatement implements Statement {
 
   /**
    * @var PDO
@@ -58,19 +58,14 @@ abstract class AbstractStatement implements StatementInterface {
   }
 
   public function getStatement(): PDOStatement {
-    //echo $this->statementToString();
     try {
       return $this->getPDO()->prepare($this->statementToString());
     } catch (PDOException $e) {
-      // echo $this->statementToString();
       throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 
   public function execute(): PDOStatement {
-
-    //var_dump($this->statementToString());
-    //print_r($this->getParams()->toArray());
     try {
       return $this->getParams()->executeIn($this->getStatement());
     } catch (PDOException $e) {

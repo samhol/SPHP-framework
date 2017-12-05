@@ -5,12 +5,15 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database;
+namespace Sphp\Database\Rules;
 
 use Iterator;
+use Sphp\Database\Parameters\ParameterHandler;
+use Sphp\Database\Parameters\SequentialParameters;
 
 /**
  * Implements a collection of rules
+ * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

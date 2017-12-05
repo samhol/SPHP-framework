@@ -7,16 +7,18 @@
 
 namespace Sphp\Database;
 
+use Sphp\Database\Parameters\ParameterHandler;
+use Sphp\Database\Parameters\SequentialParameters;
 use PDO;
 
 /**
- * An implementation of an SQL UPDATE statement
+ * An abstract implementation of an `UPDATE` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractUpdate extends ConditionalStatement implements Update {
+abstract class AbstractUpdate extends AbstractConditionalStatement implements Update {
 
   /**
    * the table that are updated

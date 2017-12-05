@@ -8,13 +8,13 @@
 namespace Sphp\Database;
 
 /**
- * Interface for database data manipulation
+ * Defines basic methods for database data manipulation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface DataManipulationStatement extends StatementInterface {
+interface DataManipulationStatement extends Statement {
 
   /**
    * Executes the data manipulation SQL statement, returning the number of affected rows

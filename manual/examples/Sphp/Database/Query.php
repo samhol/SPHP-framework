@@ -2,6 +2,8 @@
 
 namespace Sphp\Database;
 
+use Sphp\Database\Rules\Rule;
+
 try {
   $query = Db::query()->get('fnames', 'lname', 'country')
           ->from('person LEFT JOIN address ON address.id = person.address')

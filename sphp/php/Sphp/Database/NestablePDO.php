@@ -10,7 +10,7 @@ namespace Sphp\Database;
 use PDO;
 
 /**
- * Represents a connection between PHP and a database server.
+ * Represents a connection between PHP and a database server
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

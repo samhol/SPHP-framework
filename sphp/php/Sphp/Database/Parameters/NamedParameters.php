@@ -5,12 +5,9 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database;
+namespace Sphp\Database\Parameters;
 
 use PDO;
-use PDOStatement;
-use PDOException;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -87,6 +84,11 @@ class NamedParameters extends Parameters {
     return parent::offsetGet($this->standardizeName($offset));
   }
 
+  /**
+   * 
+   * @param  string $offset
+   * @return $this for a fluent interface
+   */
   public function unsetParam($offset) {
     parent::unsetParam($this->standardizeName($offset));
     return $this;

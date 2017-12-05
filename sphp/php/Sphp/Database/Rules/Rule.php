@@ -5,10 +5,12 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database;
+namespace Sphp\Database\Rules;
 
 use PDO;
-
+use Sphp\Database\Parameters\ParameterHandler;
+use Sphp\Database\Parameters\SequentialParameters;
+use Sphp\Database\Utils;
 /**
  * Implements a single rule for comparison operations in SQL queries
  *

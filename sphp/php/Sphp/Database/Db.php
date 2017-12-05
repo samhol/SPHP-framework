@@ -8,12 +8,15 @@
 namespace Sphp\Database;
 
 use PDO;
-use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements a Database manipulator
+ * Implements a Database statement factory
  *  
+ * @method \Sphp\Database\Query query(string $dbName) Returns a new `SELECT` statement object for the named database
+ * @method \Sphp\Database\Delete delete(string $dbName) Returns a new `DELETE` statement object for the named database
+ * @method \Sphp\Database\Update update(string $dbName) Returns a new `UPDATE` statement object for the named database
+ * @method \Sphp\Database\Insert insert(string $dbName) Returns a new `INSERT` statement object for the named database
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -92,7 +95,7 @@ class Db {
    * 
    * @param  string $name
    * @param  array $arguments
-   * @return StatementInterface
+   * @return Statement
    */
   public static function __callStatic(string $name, array $arguments = []) {
     if (count($arguments) > 0) {
@@ -106,19 +109,14 @@ class Db {
   /**
    * 
    *
-   * @method Query query(string $dbName) Returns a new query object for the named database
-   * @method Delete delete(string $dbName)
-   * @method Update update(string $dbName) Returns a new query object for the named database
-   * @method Insert insert(string $dbName)
    * 
    * @param  string $name the type name of the instance created
    * @param  array $arguments
-   * @return StatementInterface
+   * @return Statement
    * @throws \Sphp\Exceptions\BadMethodCallException
    */
   public function __call(string $name, array $arguments = []) {
-      return $this->strategy->generateStatement($name);
-    
+    return $this->strategy->generateStatement($name);
   }
 
 }

@@ -10,13 +10,13 @@ namespace Sphp\Database;
 use Traversable;
 
 /**
- * An implementation of a SQL SELECT statement
+ * Defines a `SELECT` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface Query extends ConditionalStatementInterface, Traversable, \Countable {
+interface Query extends ConditionalStatement, Traversable, \Countable {
 
   /**
    * Sets the list of columns to be included in the final result

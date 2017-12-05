@@ -11,15 +11,16 @@ use PDO;
 use IteratorAggregate;
 use Traversable;
 use ArrayIterator;
+use Sphp\Database\Rules\Clause;
 
 /**
- * An implementation of a SQL SELECT statement
+ * An abstract implementation of a `SELECT` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractQuery extends ConditionalStatement implements IteratorAggregate, Query {
+abstract class AbstractQuery extends AbstractConditionalStatement implements IteratorAggregate, Query {
 
   /**
    * a list of column(s) to be included in the query

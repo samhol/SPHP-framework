@@ -2,6 +2,8 @@
 
 namespace Sphp\Database;
 
+use Sphp\Database\Rules\Rule;
+
 $update = Db::update()
         ->table('locations')
         ->set(['country' => 'United Kingdom'])

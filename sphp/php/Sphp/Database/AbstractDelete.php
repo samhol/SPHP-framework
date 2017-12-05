@@ -8,13 +8,13 @@
 namespace Sphp\Database;
 
 /**
- * An implementation of a SQL DELETE statement
+ * An abstract implementation of a `DELETE` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractDelete extends ConditionalStatement implements Delete {
+abstract class AbstractDelete extends AbstractConditionalStatement implements Delete {
 
   /**
    * the target table

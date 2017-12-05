@@ -1,20 +1,20 @@
 <?php
 
 /**
- * AbstractUpdate.php (UTF-8)
+ * Update.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database;
 
 /**
- * An implementation of an SQL UPDATE statement
+ * Defines an `UPDATE` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface Update extends DataManipulationStatement, ConditionalStatementInterface {
+interface Update extends DataManipulationStatement, ConditionalStatement {
 
   /**
    * Sets the table(s) which are updated

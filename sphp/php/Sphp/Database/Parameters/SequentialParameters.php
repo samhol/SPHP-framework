@@ -5,11 +5,11 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database;
+namespace Sphp\Database\Parameters;
 
 use PDO;
 use Traversable;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Database\Exceptions\InvalidArgumentException;
 
 /**
  * Container for values in prepared SQL statements
@@ -57,13 +57,6 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
     return $this;
   }
 
-  /**
-   * 
-   * @param  string $name
-   * @param  mixed $value
-   * @param  int $type
-   * @return $this for a fluent interface
-   */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
     if ($name !== null && (!is_int($name) || $name <= 0)) {
       throw new InvalidArgumentException('Offset must be zero or a positive integer');

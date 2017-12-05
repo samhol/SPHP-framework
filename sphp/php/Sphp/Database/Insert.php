@@ -1,14 +1,14 @@
 <?php
 
 /**
- * InsertInterface.php (UTF-8)
+ * Insert.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database;
 
 /**
- * Defines an SQL INSERT statement
+ * Defines an `INSERT` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -9,6 +9,7 @@ namespace Sphp\Database;
 
 use PDO;
 use PDOStatement;
+use Sphp\Database\Parameters\ParameterHandler;
 
 /**
  * Interface for database data manipulation
@@ -17,7 +18,7 @@ use PDOStatement;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface StatementInterface {
+interface Statement {
 
   /**
    * Sets the connection object between PHP and a database server

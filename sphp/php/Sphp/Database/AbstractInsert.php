@@ -7,10 +7,12 @@
 
 namespace Sphp\Database;
 
+use Sphp\Database\Parameters\ParameterHandler;
+use Sphp\Database\Parameters\SequentialParameters;
 use Traversable;
 
 /**
- * An abstract implementation of an SQL INSERT statement
+ * An abstract implementation of an `INSERT` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
