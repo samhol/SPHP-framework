@@ -8,8 +8,7 @@
 namespace Sphp\Database;
 
 use Sphp\Database\Parameters\ParameterHandler;
-use Sphp\Database\Parameters\SequentialParameters;
-use Traversable;
+use Sphp\Database\Parameters\SequentialParameterHandler;
 
 /**
  * An abstract implementation of an `INSERT` statement
@@ -55,14 +54,11 @@ abstract class AbstractInsert extends AbstractStatement implements Insert {
   }
 
   public function values(... $values) {
-    $this->valuesFromCollection([$values]);
+    $this->valuesFromArray([$values]);
     return $this;
   }
 
-  public function valuesFromCollection(array $values) {
-    if ($values instanceof Traversable) {
-      $values = iterator_to_array($values);
-    }
+  public function valuesFromArray(array $values) {
     $this->params = $values;
     return $this;
   }
@@ -94,7 +90,7 @@ abstract class AbstractInsert extends AbstractStatement implements Insert {
   }
 
   public function getParams(): ParameterHandler {
-    $p = new SequentialParameters();
+    $p = new SequentialParameterHandler();
     foreach ($this->params as $row) {
       $p->appendParams($row);
     }

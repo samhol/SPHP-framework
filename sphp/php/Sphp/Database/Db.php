@@ -9,6 +9,7 @@ namespace Sphp\Database;
 
 use PDO;
 use Sphp\Database\Exceptions\InvalidArgumentException;
+use Sphp\Database\Exceptions\BadMethodCallException;
 
 /**
  * Implements a Database statement factory
@@ -35,11 +36,6 @@ class Db {
   private $pdo;
 
   /**
-   * @var StatementStrategy
-   */
-  private $strategy;
-
-  /**
    * Constructs a new instance
    *
    * @param  PDO $pdo connection object between PHP and a database server
@@ -47,7 +43,7 @@ class Db {
    */
   public function __construct(PDO $pdo = null) {
     $this->pdo = $pdo;
-    $this->strategy = new StatementStrategy($pdo);
+    //$this->strategy = new StatementStrategy($pdo);
   }
 
   /**
@@ -78,7 +74,7 @@ class Db {
    * 
    * @param  string|null $name
    * @return Db
-   * @throws \Sphp\Exceptions\InvalidArgumentException
+   * @throws InvalidArgumentException
    */
   public static function instance(string $name = null): Db {
     if ($name === null) {
@@ -107,16 +103,42 @@ class Db {
   }
 
   /**
+   * @var string[] 
+   */
+  private $map = [
+      'mysql' => 'MySQL',
+      'sqlsrv' => 'Microsoft'
+  ];
+
+  /**
    * 
    *
    * 
    * @param  string $name the type name of the instance created
    * @param  array $arguments
    * @return Statement
-   * @throws \Sphp\Exceptions\BadMethodCallException
+   * @throws BadMethodCallException
    */
-  public function __call(string $name, array $arguments = []) {
-    return $this->strategy->createStatement($name);
+  public function __call(string $className, array $arguments = []) {
+
+
+    //$ns = __NAMESPACE__ . "\\Legacy";
+    $result = __NAMESPACE__ . "\\Legacy\\" . ucfirst($className);
+    if (!class_exists($result)) {
+      throw new InvalidArgumentException("Statement ($className) cannot be created");
+    }
+    $driverName = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+    if (array_key_exists($driverName, $this->map)) {
+      $try = __NAMESPACE__ . "\\{$this->map[$driverName]}\\$className";
+      //var_dump($try);
+      if (class_exists($try)) {
+        $result = $try;
+      }
+    }
+    //var_dump($result);
+    return new $result($this->pdo);
+
+    // return $this->strategy->createStatement($name);
   }
 
 }

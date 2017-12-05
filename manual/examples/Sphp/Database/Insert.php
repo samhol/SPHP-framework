@@ -30,12 +30,12 @@ try {
   $inserter = Db::insert()
           ->into('address')
           ->columnNames('street', 'zipcode', 'city', 'country')
-          ->valuesFromCollection($hydeparkData);
+          ->valuesFromArray($hydeparkData);
   echo $inserter->statementToString();
   var_dump(Db::insert()
                   ->into('address')
                   ->columnNames('street', 'zipcode', 'city', 'country')
-                  ->valuesFromCollection($hydeparkData)
+                  ->valuesFromArray($hydeparkData)
                   ->affectRows());
 //echo Db::insert()->into('locations')->values($hydeparkData)->affectRows();
 } catch (\Throwable $ex) {

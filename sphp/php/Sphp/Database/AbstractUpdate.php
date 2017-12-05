@@ -8,7 +8,7 @@
 namespace Sphp\Database;
 
 use Sphp\Database\Parameters\ParameterHandler;
-use Sphp\Database\Parameters\SequentialParameters;
+use Sphp\Database\Parameters\SequentialParameterHandler;
 use PDO;
 
 /**
@@ -49,7 +49,7 @@ abstract class AbstractUpdate extends AbstractConditionalStatement implements Up
    */
   public function __construct(PDO $db, Clause $where = null) {
     parent::__construct($db, $where);
-    $this->newData = new SequentialParameters();
+    $this->newData = new SequentialParameterHandler();
   }
 
   /**
@@ -70,7 +70,7 @@ abstract class AbstractUpdate extends AbstractConditionalStatement implements Up
    * @return $this for a fluent interface
    */
   public function set(array $data) {
-    $this->newData = new SequentialParameters($data);
+    $this->newData = new SequentialParameterHandler($data);
     $this->cols = array_keys($data);
     return $this;
   }

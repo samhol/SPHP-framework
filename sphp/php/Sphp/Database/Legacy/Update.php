@@ -10,7 +10,7 @@ namespace Sphp\Database\Legacy;
 use Sphp\Database\AbstractUpdate;
 
 /**
- * An implementation of an SQL UPDATE statement
+ * Legacy implementation of `UPDATE` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

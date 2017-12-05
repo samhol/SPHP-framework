@@ -9,7 +9,7 @@ namespace Sphp\Database\Rules;
 
 use PDO;
 use Sphp\Database\Parameters\ParameterHandler;
-use Sphp\Database\Parameters\SequentialParameters;
+use Sphp\Database\Parameters\SequentialParameterHandler;
 use Sphp\Database\Utils;
 /**
  * Implements a single rule for comparison operations in SQL queries
@@ -73,7 +73,7 @@ class Rule implements RuleInterface {
    * @return ParameterHandler
    */
   public function getParams(): ParameterHandler {
-    $params = new SequentialParameters();
+    $params = new SequentialParameterHandler();
     $params->appendParams($this->params, $this->paramType);
     return $params;
   }

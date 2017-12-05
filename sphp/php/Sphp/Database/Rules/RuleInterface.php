@@ -18,9 +18,24 @@ use Sphp\Database\Parameters\ParameterHandler;
  */
 interface RuleInterface {
 
+  /**
+   * Returns the parameter handler containing used parameters
+   * 
+   * @return ParameterHandler
+   */
   public function getParams(): ParameterHandler;
 
+  /**
+   * Returns the SQL rule as a string
+   *
+   * @return string the SQL rule as a string
+   */
   public function getSQL(): string;
 
+  /**
+   * Returns the SQL rule as a string
+   *
+   * @return string the SQL rule as a string
+   */
   public function __toString(): string;
 }

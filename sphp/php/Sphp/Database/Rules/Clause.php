@@ -9,7 +9,7 @@ namespace Sphp\Database\Rules;
 
 use Iterator;
 use Sphp\Database\Parameters\ParameterHandler;
-use Sphp\Database\Parameters\SequentialParameters;
+use Sphp\Database\Parameters\SequentialParameterHandler;
 
 /**
  * Implements a collection of rules
@@ -73,7 +73,7 @@ class Clause implements RuleInterface, Iterator {
    * @return ParameterHandler
    */
   public function getParams(): ParameterHandler {
-    $params = new SequentialParameters();
+    $params = new SequentialParameterHandler();
     foreach ($this as $part) {
       if ($part instanceof RuleInterface) {
         $parArr = $part->getParams();

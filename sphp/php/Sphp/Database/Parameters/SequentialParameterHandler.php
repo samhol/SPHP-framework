@@ -1,24 +1,25 @@
 <?php
 
 /**
- * SequentialParameters.php (UTF-8)
+ * SequentialParameterHandler.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database\Parameters;
 
+use ArrayAccess;
 use PDO;
 use Traversable;
 use Sphp\Database\Exceptions\InvalidArgumentException;
 
 /**
- * Container for values in prepared SQL statements
+ * Sequential parameter handler
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequentialParameters extends Parameters implements \ArrayAccess {
+class SequentialParameterHandler extends AbstractParameterHandler implements ArrayAccess {
 
   /**
    * Constructs a new instance

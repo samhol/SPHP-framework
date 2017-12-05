@@ -38,7 +38,7 @@ interface Insert extends DataManipulationStatement {
    * @param  array $values
    * @return $this for a fluent interface
    */
-  public function valuesFromCollection(array $values);
+  public function valuesFromArray(array $values);
 
   /**
    * Sets the order and the names of the columns in the INSERT data

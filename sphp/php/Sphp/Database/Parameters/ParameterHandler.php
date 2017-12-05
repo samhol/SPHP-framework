@@ -9,19 +9,20 @@ namespace Sphp\Database\Parameters;
 
 use PDO;
 use PDOStatement;
-use Iterator;
+use Traversable;
 use Countable;
+use ArrayAccess;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Database\Exceptions\DatabaseException;
 
 /**
- * Base class for all SQL Statement classes
+ * Defines a parameter handler
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ParameterHandler extends \ArrayAccess, Iterator, Countable, Arrayable {
+interface ParameterHandler extends ArrayAccess, Traversable, Countable, Arrayable {
 
   /**
    * Stores a parameter to the handler
@@ -31,7 +32,7 @@ interface ParameterHandler extends \ArrayAccess, Iterator, Countable, Arrayable 
    * @param  int $type the PDO parameter type of the parameter
    * @return $this for a fluent interface
    */
-  public function setParam($name, $value);
+  public function setParam($name, $value, int $type = PDO::PARAM_STR);
 
   /**
    * Stores an array of parameter name value pairs

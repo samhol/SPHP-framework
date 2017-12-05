@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaskRunner.php (UTF-8)
+ * NamedParameters.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,13 +11,13 @@ use PDO;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Base class for all SQL Statement classes
+ * Named parameter handler
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class NamedParameters extends Parameters {
+class NamedParameterHandler extends AbstractParameterHandler {
 
   /**
    * Constructs a new instance

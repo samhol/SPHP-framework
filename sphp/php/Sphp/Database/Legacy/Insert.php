@@ -10,7 +10,7 @@ namespace Sphp\Database\Legacy;
 use Sphp\Database\AbstractInsert;
 
 /**
- * An implementation of an SQL INSERT statement
+ * Legacy implementation of `INSERT` statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

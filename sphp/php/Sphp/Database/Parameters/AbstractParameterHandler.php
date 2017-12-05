@@ -1,12 +1,13 @@
 <?php
 
 /**
- * TaskRunner.php (UTF-8)
+ * AbstractParameterHandler.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database\Parameters;
 
+use Iterator;
 use PDO;
 use PDOStatement;
 use PDOException;
@@ -14,13 +15,13 @@ use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Database\Exceptions\DatabaseException;
 
 /**
- * Base class for all SQL Statement classes
+ * Abstract implementation of parameter handler
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Parameters implements ParameterHandler {
+abstract class AbstractParameterHandler implements Iterator, ParameterHandler {
 
   /**
    * @var array
@@ -67,6 +68,13 @@ abstract class Parameters implements ParameterHandler {
     return $this;
   }
 
+  public function setParams(array $params, int $type = PDO::PARAM_STR) {
+    foreach ($params as $name => $value) {
+      $this->setParam($name, $value, $type);
+    }
+    return $this;
+  }
+
   public function unsetParam($name) {
     if ($this->contains($name)) {
       unset($this->paramTypes[$name], $this->params[$name]);
@@ -77,13 +85,6 @@ abstract class Parameters implements ParameterHandler {
   public function unsetParams() {
     $this->paramTypes = [];
     $this->params = [];
-    return $this;
-  }
-
-  public function setParams(array $params, int $type = PDO::PARAM_STR) {
-    foreach ($params as $name => $value) {
-      $this->setParam($name, $value, $type);
-    }
     return $this;
   }
 
@@ -229,11 +230,11 @@ abstract class Parameters implements ParameterHandler {
   /**
    * 
    * @param  \Traversable|array|null $params
-   * @return Parameters
+   * @return AbstractParameterHandler
    */
-  public static function fromArray($params = null): Parameters {
+  public static function fromArray($params = null): AbstractParameterHandler {
     if (\Sphp\Stdlib\Arrays::isIndexed($params)) {
-      $par = new SequentialParameters($params);
+      $par = new SequentialParameterHandler($params);
     } else {
       $par = new NamedParameters($params);
     }
