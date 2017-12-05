@@ -26,6 +26,12 @@ Manual\loadPage('Sphp.Database.Insert');
 Manual\loadPage('Sphp.Database.Query');
 Manual\loadPage('Sphp.Database.Update');
 Manual\loadPage('Sphp.Database.Delete');
+
+Manual\parseDown(<<<MD
+ * https://phpdelusions.net/pdo 
+ * https://www.mysql.com/
+MD
+);
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql');
 //CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'text');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');

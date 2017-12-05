@@ -19,10 +19,10 @@ media content.
 
 Lazy Loading delays loading of $lazyLoader components in long web pages. $lazyLoader 
 components outside of viewport are not loaded until user scrolls to them. Using 
-Lazy Loading on long web pages will make the page load faster. In some cases it 
+Lazy Loading on large web pages will make the page load faster. In some cases it 
 can also help to reduce server load. 
        
-<div class="callout secondary" markdown="1"> 
+<div class="callout secondary small" markdown="1"> 
 ###Lazy Load XT jQuery plugin
 This framework uses Lazy Load XT jQuery plugin. It is Mobile-oriented, fast 
 and extensible jQuery plugin with build-in support of jQueryMobile framework.
