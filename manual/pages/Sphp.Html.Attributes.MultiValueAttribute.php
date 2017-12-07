@@ -9,7 +9,7 @@ $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 $classAttribute = Manual\api()->classLinker(ClassAttribute::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $multiValueAttr class
 		
 The $multiValueAttr implements an attribute that can contain multiple separate 

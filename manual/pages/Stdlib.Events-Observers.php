@@ -4,7 +4,7 @@ namespace Sphp\Stdlib\Events;
 
 use Sphp\Manual;
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###[EVENTS AND OBSERVERS](Sphp.Stdlib.Observers.and.Events)
 
 Event dispatching systems and Observer Design pattern are often used to implement 

@@ -13,7 +13,7 @@ $removeMethodLink = $attributeManager->methodLink("remove", false);
 $requireAttr = $attributeManager->methodLink("demand", false);
 $protect = $attributeManager->methodLink("protect", false);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##HTML attribute management with $htmlAttrMngr class
 
 The $htmlAttrMngr is the base component for the HTML attribute handling in SPHP 

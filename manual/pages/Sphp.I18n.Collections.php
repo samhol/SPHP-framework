@@ -21,7 +21,7 @@ $translatableList = \Sphp\Manual\api()->classLinker(TranslatableCollection::clas
 
 
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Translatable collections <small>managing groups of $translatable objects</small>
 $ns
 $messageCollectionInterfaces is is the base interface for all translatable collections.
@@ -38,7 +38,7 @@ CodeExampleAccordionBuilder::build('Sphp/I18n/Collections/TranslatableCollection
 $messageContainers = \Sphp\Manual\api()->classLinker(TranslatableCollectionInterface::class);
 
 $arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 $translatableList objects can also be nested easily. 
 extends $arrayaccess and the offset value corresponds this topic.
@@ -48,7 +48,7 @@ MD
 CodeExampleAccordionBuilder::build('Sphp/I18n/Collections/TranslatableCollection.nested.php', 'text', false)
         ->setExamplePaneTitle('An example of nesting translatable collections')
         ->printHtml();
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 An instance of $translatablePriorityList is a priority list for handling $translatable objects. It is also a stable priority list.
 

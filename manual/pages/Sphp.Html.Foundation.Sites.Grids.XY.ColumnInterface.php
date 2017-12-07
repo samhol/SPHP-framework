@@ -7,7 +7,7 @@ use Sphp\Manual;
 $rowIf = Manual\api()->classLinker(RowInterface::class);
 $colIf = Manual\api()->classLinker(ColumnInterface::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $colIf <small>and its implementations</small>
 		
 A $colIf defines a single column of a $rowIf in a Grid layout.

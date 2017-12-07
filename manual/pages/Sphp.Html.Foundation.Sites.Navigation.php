@@ -8,7 +8,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $hyperlinkIfLink = Manual\api()->classLinker(HyperlinkInterface::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #FOUNDATION <small>NAVIGATION COMPONENTS</small>
 $ns
         
@@ -20,7 +20,7 @@ MD
 Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
 
 $sideNavClass = Manual\api()->classLinker(AccordionMenu::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $sideNavClass component
 
 The $sideNavClass component provides navigation for the entire site, or for sections of an individual page.
@@ -33,7 +33,7 @@ Manual\example('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')->print
 
 $breadcrumbs = Manual\api()->classLinker(BreadCrumbs::class);
 $breadcrumb = Manual\api()->classLinker(BreadCrumb::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $breadcrumbs container for $breadcrumb components
 
 In general the graphical control element Breadcrumbs or breadcrumb trail is a navigation

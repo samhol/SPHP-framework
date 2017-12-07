@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $delete = \Sphp\Manual\api()->classLinker(Delete::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###Deleting records <small>with $delete object</small>
 
 The $delete object removes one or more records from a table. A subset may be 

@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $embed = Manual\api()->classLinker(Embed::class);
 $embedTag = Manual\w3schools()->tag('embed');
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $embed component
 
 The $embed class models the HTML $embedTag tag. This component can be 

@@ -9,7 +9,7 @@ $slider = \Sphp\Manual\api()->classLinker(Slider::class);
 $rangeSlider = \Sphp\Manual\api()->classLinker(RangeSlider::class);
 $nsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $nsLink namespace containing $slider and $rangeSlider component
 
 These components implement [Ion.RangeSlider](http://ionden.com/a/plugins/ion.rangeSlider/en.html){target="_blank"} 
@@ -24,7 +24,7 @@ MD
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $rangeSlider component for double (range) sliders
 		
 MD

@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $query = Manual\api()->classLinker(Query::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Quering data <small>with $query object</small>
 
 The $query object executes declarative SELECT queries in SQL databases. It 

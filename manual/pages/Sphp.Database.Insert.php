@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $insert = \Sphp\Manual\api()->classLinker(Insert::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Inserting records <small>with $insert object</small>
 		
 The $insert object executes declarative INSERT statement in SQL databases.

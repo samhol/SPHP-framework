@@ -9,7 +9,7 @@ $radioSwitch = Manual\api()->classLinker(RadioSwitch::class);
 $switchBox = Manual\api()->classLinker(SwitchBox::class);
 
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##$radioSwitch and $switchBox components
 
 These components extend $abstractSwitch and Foundation frameworks Switches on clientside

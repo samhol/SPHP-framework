@@ -2,7 +2,7 @@
 
 namespace Sphp\Manual;
 
-parseDown(<<<MD
+md(<<<MD
 #SPHP <small>a framework for responsive web developement using PHP</small>
 <div class="callout alert" markdown="1">
 ##What is Responsive Web Design?

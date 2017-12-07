@@ -10,7 +10,7 @@ $radioSwitch = \Sphp\Manual\api()->classLinker(RadioSwitch::class);
 $switchBox = \Sphp\Manual\api()->classLinker(SwitchBox::class);
 
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Buttons
 
 MD
@@ -20,7 +20,7 @@ MD
         ->buildAccordion()
         ->addCssClass('form-example')
         ->printHtml();
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 MD
 );

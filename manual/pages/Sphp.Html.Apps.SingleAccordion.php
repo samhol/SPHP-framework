@@ -3,7 +3,7 @@
 namespace Sphp\Html\Apps;
 
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 ##The component
 MD

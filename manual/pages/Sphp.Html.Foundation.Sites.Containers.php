@@ -10,7 +10,7 @@ $dropdown = \Sphp\Manual\api()->classLinker(Dropdown::class);
 $modal = \Sphp\Manual\api()->classLinker(Modal::class);
 $callout = \Sphp\Manual\api()->classLinker(Callout::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #FOUNDATION CONTAINERS
 $ns
 This namespace contains Foundation framework based components like $accordions, $tabs, $callout, $modal and $dropdown.

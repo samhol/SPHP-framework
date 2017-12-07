@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $factory = Manual\api()->classLinker(Input::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $factory factory: <small>a factory for HTML form components</small>
 $ns
 Here are grouped lists of the HTML5 components and the corresponding PHP types.

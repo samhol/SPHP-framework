@@ -9,7 +9,7 @@ $imgInterface = \Sphp\Manual\api()->classLinker(ImgInterface::class);
 $img = \Sphp\Manual\api()->classLinker(Img::class);
 $fig = \Sphp\Manual\api()->classLinker(Figure::class);
 $figCaption = \Sphp\Manual\api()->classLinker(FigCaption::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $img and the $fig components
 
 An $img component implements the $imgInterface. 
@@ -27,7 +27,7 @@ MD
 
 CodeExampleAccordionBuilder::visualize('Sphp/Html/Media/Img.php', null, true);
 $figureTag = Apis::w3schools()->tag('figure');
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 The $fig component implements the $figureTag tag. 
 A $fig component consists of an $img component and an optional $figCaption component.
 

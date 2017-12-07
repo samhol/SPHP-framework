@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #WEB APPLICATION SECURITY
 $ns
         
@@ -27,7 +27,7 @@ Manual\loadPage('Sphp.Security.Database');
 Manual\loadPage('Sphp.Security.CRSFToken');
 Manual\loadPage('Sphp.Security.PasswordInterface');
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Input validation
 [Form Input validation](Sphp.Validators){target="_blank"}
 

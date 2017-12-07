@@ -7,7 +7,7 @@ use Sphp\Manual;
 $translator = Manual\api()->classLinker(Translator::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###A Zend based $translator
 $ns    
   

@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 $errorExceptionThrower = \Sphp\Manual\api()->classLinker(ErrorExceptionThrower::class);
 
 $errorException = Apis::phpManual()->classLinker(\ErrorException::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##$errorExceptionThrower <small>for multiple error handlers</small>
 
 $errorExceptionThrower can temporarily convert PHP

@@ -13,7 +13,7 @@ $colIf = Manual\api()->classLinker(ColumnInterface::class);
 $col = Manual\api()->classLinker(Column::class);
 $cols = Manual\api()->classLinker(ColumnInterface::class, 'Columns');
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $rowIf <small>and its implementations</small>
 
 A $rowIf defines a horizontal block containing vertical $colIf components. 

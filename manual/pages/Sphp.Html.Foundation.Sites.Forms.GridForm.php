@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $gridForm = \Sphp\Manual\api()->classLinker(GridForm::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 ##Foundation based forms and other input containers
 

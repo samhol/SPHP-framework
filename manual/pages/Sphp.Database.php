@@ -8,7 +8,7 @@ use Sphp\Manual;
 require_once('manual/common/pdo.php');
 $pdo = Manual\php()->classLinker(\PDO::class);
 $db = Manual\api()->classLinker(DB::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #DATABASE MANIPULATION <small>using statement builders</small>
 
 $db manages $pdo database connections and acts as a factory for all SQL statement builder objects.
@@ -27,7 +27,7 @@ Manual\loadPage('Sphp.Database.Query');
 Manual\loadPage('Sphp.Database.Update');
 Manual\loadPage('Sphp.Database.Delete');
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###References:
         
  * https://phpdelusions.net/pdo 

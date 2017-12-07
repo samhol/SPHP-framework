@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $arrLink = Manual\php()->typeLink('array');
 $parser = Manual\api()->classLinker(Parser::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##PARSING FILETYPES: <small>reading, writing and transforming</small>
 
 $parser instance can handle file related (reading and writing) operations.

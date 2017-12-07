@@ -5,7 +5,7 @@ use Sphp\Manual;
 $syntaxHighligher = Manual\api()->classLinker(SyntaxHighlighter::class);
 $syntax1 = (new SyntaxHighlighter())
         ->loadFromFile('manual/snippets/example1.js');
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 ##The $syntaxHighligher component
 <div class="row"><div class="column small-12 large-5">

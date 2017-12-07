@@ -11,7 +11,7 @@ $try_catch = Apis::phpManual()->hyperLink('language.exceptions.php', 'try/catch'
 $set_exception_handler = Apis::phpManual()->functionLink('set_exception_handler');
 $error = Apis::phpManual()->classLinker(\Error::class);
 $exception = Apis::phpManual()->classLinker(\Exception::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #PHP 7 <small>Error and Exception handling</small>
 $ns
         

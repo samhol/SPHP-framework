@@ -8,7 +8,7 @@ use Sphp\Manual;
 $selectLink = Manual\api()->classLinker(Select::class);
 $option = Manual\api()->classLinker(Option::class);
 $optGroup = Manual\api()->classLinker(Optgroup::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###The $selectLink component
 	
 The $selectLink component is used to create a drop-down list in forms. The $option 

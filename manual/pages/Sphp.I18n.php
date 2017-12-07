@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $gettext = Manual\php()->extensionLink('gettext', 'Gettext');
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #<span class="strict">I18n:</span> <small>Internationalization and localization</small>
 
 $ns

@@ -9,7 +9,7 @@ $colourableInterface = \Sphp\Manual\api()->classLinker(Colourable::class);
 $colourableAdapter = \Sphp\Manual\api()->classLinker(ColourableAdapter::class);
 $ComponentInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
 
 Foundation framework introduces special Visibility CSS classes. With these classes 

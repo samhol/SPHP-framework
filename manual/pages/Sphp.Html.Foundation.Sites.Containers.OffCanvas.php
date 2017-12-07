@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $offCanvas = \Sphp\Manual\api()->classLinker(OffCanvas::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 ##The $offCanvas component
 

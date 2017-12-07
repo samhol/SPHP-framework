@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
 $monthView = $api->classLinker(MonthView::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $monthView component
 MD
 );

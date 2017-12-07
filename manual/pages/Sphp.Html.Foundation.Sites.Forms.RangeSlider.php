@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $rangeSlider = Manual\api()->classLinker(RangeSlider::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 The example code of the form showing the exaples of $rangeSlider object is represented below.
 MD
 );

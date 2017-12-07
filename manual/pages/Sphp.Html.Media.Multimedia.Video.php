@@ -14,7 +14,7 @@ $vjs = \Sphp\Manual\api()->classLinker(VideoJs::class);
 $dailyMotionPlayer = \Sphp\Manual\api()->classLinker(DailyMotionPlayer::class);
 $youtubePlayer = \Sphp\Manual\api()->classLinker(YoutubePlayer::class);
 $vimeoPlayer = \Sphp\Manual\api()->classLinker(VimeoPlayer::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##HTML 5 <small>Audio and Video</small> 
 		
 The $audio and the $video components implement the corresponding HTML5

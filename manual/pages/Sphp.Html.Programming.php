@@ -12,7 +12,7 @@ $scriptsContainer = \Sphp\Manual\api()->classLinker(ScriptsContainer::class);
 $noscript = \Sphp\Manual\api()->classLinker(Noscript::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>
 
 $ns
@@ -46,7 +46,7 @@ $scriptCode component containing statements can be manipulated several ways.
 MD
 );
 CodeExampleAccordionBuilder::visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>{#scriptsContainer}
 MD
 );

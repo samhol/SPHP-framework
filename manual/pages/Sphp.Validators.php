@@ -13,7 +13,7 @@ $strLenValLink = Manual\api()->classLinker(StringLengthValidator::class);
 $inputValidator = Manual\api()->classLinker(OptionalValidator::class);
 $alphabetsOnly = Manual\api()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #DATA VALIDATION: <small>Introduction</small>
  $ns 
 User input validation is a critical part of any responsive HTML application. 

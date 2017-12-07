@@ -8,7 +8,7 @@ $translatorInteface = Manual\api()->classLinker(TranslatorInterface::class);
 $vsprintfLink = Manual\php()->functionLink("vsprintf");
 $gettextNs = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Human language translations: <small>Using The $translatorInteface</small>
    
 The $translatorInteface is the base interface for all human language translation related 

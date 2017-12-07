@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $f_GridLink = Manual\foundation()->XY_grid;
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #FOUNDATION <small>Grid and Block Grid layouts</small>
 $ns	
 This namespace contains Foundation $f_GridLink related interfaces and implementations.

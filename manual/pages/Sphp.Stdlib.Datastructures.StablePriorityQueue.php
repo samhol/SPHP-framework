@@ -7,7 +7,7 @@ use Sphp\Manual;
 $stablePriorityQueue = Manual\api()->classLinker(StablePriorityQueue::class);
 $splPriorityQueue = Manual\php()->classLinker(\SplPriorityQueue::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $stablePriorityQueue class
 
 This class extends the build-in $splPriorityQueue.

@@ -7,7 +7,7 @@ use Sphp\Manual;
 $strLink = Manual\php()->typeLink('string');
 $strings = Manual\api()->classLinker(Strings::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $strings class
 
 $strings class is a static utility class for multibyte PHP $strLink comparison and matching.
@@ -18,7 +18,7 @@ Manual\example('Sphp/Stdlib/Types/Strings1.php', 'text', false)
         ->setOutputSyntaxPaneTitle('String testing results')
         ->printHtml();
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 $strings class has also a couple of handy PHP $strLink manipulation functions.
 MD
 );

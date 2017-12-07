@@ -10,7 +10,7 @@ $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $sami = \Sphp\Manual\api();
 $toolsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #Foundation for sites: <small> a front-end framework for web developement</small>
 $ns
 Foundation is a responsive front-end framework for web developement. It is included in SPHP framework and therefore also all of Foundation 

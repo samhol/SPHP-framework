@@ -5,7 +5,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #HTML MULTIMEDIA: <small>sound, music, videos, movies, and animations</small>
 $ns 
 MD

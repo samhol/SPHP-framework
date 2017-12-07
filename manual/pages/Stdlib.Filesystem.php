@@ -11,7 +11,7 @@ $fileSystem = Manual\api()->classLinker(Filesystem::class);
   $eventClass = Manual\api()->classLinker(Event::class);
   $eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::class);
   $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class); */
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###[WORKING WITH FILES](Sphp.Stdlib.filemanipulation)
 Framework provides several utilities for file manipulation. 
 MD

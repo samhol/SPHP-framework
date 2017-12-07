@@ -9,7 +9,7 @@ $nsLink = Manual\api()->namespaceLink(__NAMESPACE__);
 $collectionInterface = Manual\api()->classLinker(CollectionInterface::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #DATA STRUCTURES
 $ns
 The {$php->extensionLink('SPL', 'Standard PHP Library (SPL)')} provides a set of standard data structures for PHP language. SPHP

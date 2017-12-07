@@ -8,7 +8,7 @@ use Sphp\Manual;
 $formInterface = Manual\api()->classLinker(FormInterface::class);
 $gridForm = Manual\api()->classLinker(GridForm::class);
 $formsNS = Manual\api()->namespaceLink(__NAMESPACE__, false);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Foundation based input components
         
 Foundation based input components extend interfaces defined in $formsNS namespace.

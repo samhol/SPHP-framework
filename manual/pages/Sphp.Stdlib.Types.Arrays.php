@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $arraysClass = Manual\api()->classLinker(Arrays::class);
 $arrLink = Manual\php()->typeLink('array');
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $arraysClass class for PHP's $arrLink manipulation
 
 PHP's $arrLink type can be treated as 

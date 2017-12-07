@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #HTML ATTRIBUTE MANAGEMENT
     
 $ns	

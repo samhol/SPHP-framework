@@ -10,7 +10,7 @@ $left = $topBar->methodLink("left");
 $right = $topBar->methodLink("right");
 //$namespace = $api->namespaceLink(__NAMESPACE__);
 //$topBar = $api->classLinker(TopBar::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $topBar component
 
 A $topBar component can have two sections: a left-hand section $left and a right-hand section $right. 

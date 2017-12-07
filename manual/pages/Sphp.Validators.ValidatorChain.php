@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 $validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
 $validatorAggregate = \Sphp\Manual\api()->classLinker(ValidatorChain::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $validatorAggregate class		
         
 The $validatorAggregate is an aggregation of $validatorInterface objects. It 

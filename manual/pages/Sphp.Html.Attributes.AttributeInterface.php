@@ -16,7 +16,7 @@ $clearMethod = $abstractAttr->methodLink('clear');
 $requireMethod = $abstractAttr->methodLink('demand');
 $lockMethod = $abstractAttr->methodLink('protect');
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##HTML attribute objects <small>implementing $attributeInterface</small>
 		
 Framework defines an abstract $abstractAttr that implements the $attributeInterface. All build in attribute

@@ -12,7 +12,7 @@ $arrLink = Manual\php()->typeLink('array');
 $stringsClass = Manual\api()->classLinker(Strings::class);
 $stringObjectClass = Manual\api()->classLinker(MbString::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #STANDARD LIBRARY <small>extensions for PHP core functionality</small>
 $ns
 

@@ -24,7 +24,7 @@ $e_deprecated = Apis::phpManual()->constantLink('E_COMPILE_WARNING');
 $e_strict = Apis::phpManual()->constantLink('E_STRICT');
 $callable = Apis::phpManual()->typeLink('callable');
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 ##$errorDispatcher <small>object to manage PHP error and exception listeners</small>
 
@@ -33,7 +33,7 @@ This class can manage both PHP errors and uncaught $throwable objects.
 MD
 );
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###$errorDispatcher <small> as PHP Error manager</small>
         
 An $errorDispatcher object replaces PHP's native error handler and sends PHP errors to its error listeners.
@@ -55,7 +55,7 @@ MD
 (new CodeExampleAccordionBuilder('Sphp/Config/ErrorHandling/ErrorDispatcher.php'))
         ->printHtml();
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###$errorDispatcher <small>as a Uncaught $throwable handler</small>
 In PHP 7, most errors are reported by throwing $error exceptions. Both $error and
 $exception implements the $throwable interface. 

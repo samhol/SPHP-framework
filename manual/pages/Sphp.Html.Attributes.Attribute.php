@@ -13,7 +13,7 @@ $attribute = Manual\api()->classLinker(Attribute::class);
 $boolAttr = Manual\api()->classLinker(BooleanAttribute::class);
 
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##$attributeInterface<small>basic defintition of all Attribute objects</small>
 
 MD

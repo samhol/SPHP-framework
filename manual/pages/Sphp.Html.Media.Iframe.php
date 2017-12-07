@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $iframe = \Sphp\Manual\api()->classLinker(Iframe::class);
 $iframeTag = Apis::w3schools()->tag('iframe');
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $iframe component 
 		
 The $iframe class models the HTML $iframeTag tag (HTML inline frame).

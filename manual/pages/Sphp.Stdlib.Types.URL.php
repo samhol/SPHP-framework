@@ -7,7 +7,7 @@ use Sphp\Manual;
 $urlClass = Manual\api()->classLinker(URL::class);
 $parse_url = Manual\php()->functionLink('parse_url');
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##URL manipulation with a $urlClass objects
 
 The syntax for an URL string is: `scheme://[user:pass@]domain:port/path?query#fragment`

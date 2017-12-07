@@ -11,7 +11,7 @@ $subject = Manual\api()->classLinker(Subject::class);
 $callable = Manual\php()->typeLink('callable');
 $observableSubjectTrait = Manual\api()->classLinker(ObservableSubjectTrait::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait
 
 Observer pattern is used when there is one-to-many relationship between objects 

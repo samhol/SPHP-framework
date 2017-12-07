@@ -11,7 +11,7 @@ $componentInterface = Manual\api()->classLinker(\Sphp\Html\ComponentInterface::c
 $lazyLoader = Manual\api()->classLinker(LazyMedia::class);
 $lazyLoaderTrait = Manual\api()->classLinker(LazyMediaSourceTrait::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Sizeable media content and Lazy loading 
   
 $sizeableInterface is implemented by components that display resizeable visual 

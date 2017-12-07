@@ -8,7 +8,7 @@ $alingmentManager = Manual\api()->classLinker(AlingmentAdapter::class);
 $visibilityHandler = Manual\api()->classLinker(VisibilityAdapter::class);
 $ComponentInterface = Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Changing component alignment: <small>using $alingmentManager instance</small> 
 
 Foundation framework introduces special alignment CSS classes. With these classes 

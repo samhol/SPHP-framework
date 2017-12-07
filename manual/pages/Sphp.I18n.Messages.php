@@ -16,7 +16,7 @@ $print = Manual\php()->functionLink('print');
 $vsprintfLink = Manual\php()->functionLink('vsprintf');
 $translator = Manual\api()->classLinker(TranslatorInterface::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Localized verbose messages <small>using $messageInterface objects</small>
 
 $ns

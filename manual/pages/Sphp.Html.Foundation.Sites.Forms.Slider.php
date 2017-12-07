@@ -9,7 +9,7 @@ $rangeSlider = Manual\api()->classLinker(RangeSlider::class);
 $sliderInterface = Manual\api()->classLinker(SliderInterface::class);
 
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##$slider and $rangeSlider components
 
 These components implement $sliderInterface and Foundation frameworks Sliders on clientside

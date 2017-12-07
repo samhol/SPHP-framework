@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #Foundation media components
 
 $ns

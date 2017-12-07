@@ -7,7 +7,7 @@ use Sphp\Manual;
 $gettextTranslator = Manual\api()->classLinker(Translator::class);
 $gettextNs = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###A gettext $gettextTranslator
 $gettextNs    
   

@@ -10,7 +10,7 @@ $aside = Manual\api()->classLinker(Aside::class);
 $article = Manual\api()->classLinker(Article::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #HTML CONTENT CREATION
 $ns
 

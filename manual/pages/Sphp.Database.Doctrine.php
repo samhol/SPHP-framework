@@ -14,7 +14,7 @@ $location = Manual\api()->classLinker(Location::class);
 $user = Manual\api()->classLinker(User::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #Diverse database objects
 $ns
 This is an experimental [Doctrine](http://www.doctrine-project.org/) based object mapping database extension. 

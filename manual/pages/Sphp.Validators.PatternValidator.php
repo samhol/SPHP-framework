@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $patrnvLink = Manual\api()->classLinker(PatternValidator::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $patrnvLink class		
   
 The $patrnvLink validates the input against the given regular expression. The input

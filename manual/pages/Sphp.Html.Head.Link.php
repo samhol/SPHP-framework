@@ -17,7 +17,7 @@ $link = Manual\api()->classLinker(Link::class);
 $scriptInterface = Manual\api()->classLinker(Script::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##$link: <small>a link between a document and an external resource</small>
     
 $link component implements {$w3schools->tag("link")} tag.

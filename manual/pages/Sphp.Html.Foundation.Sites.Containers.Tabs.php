@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $tabs = \Sphp\Manual\api()->classLinker(Tabs::class);
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###The $tabs component
 $ns
 The $tabs component makes it possible to navigate multiple documents in a single container.

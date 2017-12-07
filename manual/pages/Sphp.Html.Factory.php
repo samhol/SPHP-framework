@@ -6,14 +6,14 @@ use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $factory = Manual\api()->classLinker(TagFactory::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $factory class: <small>a factory for basic HTML components</small>
 $ns
 MD
 );
 
 Manual\visualize('Sphp/Html/TagFactory.php', 'html5', true);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###Grouped lists of the HTML5 tags and the corresponding PHP types.
 MD
 );

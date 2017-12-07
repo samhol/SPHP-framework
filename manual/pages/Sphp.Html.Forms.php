@@ -10,7 +10,7 @@ $traversableFormInterface = Manual\api()->classLinker(TraversableFormInterface::
 $inputInterface = Manual\api()->classLinker(InputInterface::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #HTML FORMS
 $ns
 Any HTML form object implement atleast $formIfLink interface. 

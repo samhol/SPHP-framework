@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $pagination = \Sphp\Manual\api()->classLinker(Pagination::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 
 ##The $pagination component
 $ns

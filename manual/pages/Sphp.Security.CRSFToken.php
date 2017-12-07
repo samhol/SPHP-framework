@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $crsfToken = Manual\api()->classLinker(CRSFToken::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Cross-site request forgery protection 
         
 **Good Articles about CRSF:**
@@ -23,7 +23,7 @@ Manual\example('Sphp/Security/CRSFToken.php', 'html5', false)
         ->setExamplePaneTitle('An Example of Token used in a HTML form')
         ->printHtml();
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 1. Tokens are created by calling {$crsfToken->methodLink('generateToken', false)}.
 2. Tokens can be verified by:
   - {$crsfToken->methodLink('verifyInputToken', false)} for user defined type of request data

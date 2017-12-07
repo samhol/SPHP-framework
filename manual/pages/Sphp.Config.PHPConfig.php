@@ -8,7 +8,7 @@ use Sphp\Manual;
 $phpConfig = Manual\api()->classLinker(PHPConfig::class);
 $ini = Manual\api()->classLinker(Ini::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###$phpConfig <small> is a runtime PHP environment manager </small>
        
 $phpConfig object can handle basic runtime PHP environment configuration. Objects configuration 

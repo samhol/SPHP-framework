@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #Standard library
 $ns  
 Standard library contains a set of components for different general purpose scopes.

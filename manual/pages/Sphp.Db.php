@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $sqlException = \Sphp\Manual\api()->classLinker(SQLException::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #DATABASE MANIPULATION: 
 $ns
 The PHP Data Objects $pdo extension defines a lightweight, consistent interface

@@ -18,7 +18,7 @@ $scriptInterface = Manual\api()->classLinker(Script::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##META DATA OBJECTS: <small>$meta object implementing $metaInterface</small>
 
 $meta class works also as a object factory for $metaInterface objects implementing different meta data properties.

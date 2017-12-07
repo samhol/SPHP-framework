@@ -10,7 +10,7 @@ $filterInterface = \Sphp\Manual\api()->classLinker(FilterInterface::class);
 $filterAggregate = \Sphp\Manual\api()->classLinker(FilterAggregate::class);
 $nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $nsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #Customizable value filtering
 $nsbc
 PHP has a variety of functions and classes that can handle data filering. Interfaces and Classes in $nsLink
@@ -25,7 +25,7 @@ MD
 		->setExamplePaneTitle("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##$filterAggregate filter
 
 This filter is an aggregation of other individual filters. These filters can be 
@@ -42,7 +42,7 @@ MD
 		->setExamplePaneTitle("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 $filterInterface can easily be used for filtering PHP $arrLink values.
 MD
 );

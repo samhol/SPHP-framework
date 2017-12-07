@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $calendarDate = \Sphp\Manual\api()->classLinker(DateTime::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Localized datetime and calendar translations
 $ns
 The $calendarDate supports following methods for Date and Time localization.

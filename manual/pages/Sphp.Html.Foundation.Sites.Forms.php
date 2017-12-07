@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #Foundation for sites: <small>Forms and input components</small>
         
 $ns

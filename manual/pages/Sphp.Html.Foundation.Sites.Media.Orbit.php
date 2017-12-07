@@ -9,7 +9,7 @@ $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $orbit = Manual\api()->classLinker(Orbit::class);
 $slide = Manual\api()->classLinker(Slide::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $orbit container and the $slide components
 $ns
 $orbit is a responsive container for image on other content sliders that allows swiping on touch-enabled devices.

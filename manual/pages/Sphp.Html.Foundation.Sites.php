@@ -18,7 +18,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 $grid = \Sphp\Manual\api()->classLinker(Grid::class);
 $blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);
 $core = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #####Grid components:
 The $core namespace includes Foundation based multi-device nestable 12-column $grid implementation and a
 Foundation $blockGrid to evenly split contents of a list within the grid...
@@ -30,7 +30,7 @@ MD
     <div class="cell">
       <div class="callout" data-equalizer-watch>
 <?php
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #####Typography:
 
 Framework's typography is based on a golden ratio modular scale that creates relationships between the elements.
@@ -47,7 +47,7 @@ MD
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
 $btn_ns = $sami->namespaceLink(__NAMESPACE__, false);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #####Buttons
 
 Buttons in $btn_ns namespace are interactive elements that can be used for many purposes. 
@@ -65,7 +65,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 $navi_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #####Navigation:
 $navi_ns namespace includes a complex top bar that supports dropdown navigation, 
 sidebars and many other menu structures.
@@ -82,7 +82,7 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 
 $forms_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #####Forms:
 
 The $forms_ns namespace includes Foundation based forms layouts and client-side form components.
@@ -101,7 +101,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 $cont_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #####Containers:
 
 The $cont_ns namespace includes PHP implementations of useful container elements like Accordions, Tabs and Dropdowns for HTML presentation.

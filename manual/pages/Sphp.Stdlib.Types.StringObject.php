@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 $stringObjectClass = \Sphp\Manual\api()->classLinker(MbString::class);
 $strLink = Apis::phpManual()->typeLink('string');
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###The $stringObjectClass class
 		
 The $stringObjectClass class is a wrapper for a PHP $strLink with any character 

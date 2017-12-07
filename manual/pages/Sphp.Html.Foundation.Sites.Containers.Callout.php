@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Manual;
 
 $callout = \Sphp\Manual\api()->classLinker(Callout::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###The $callout component
 		
 $callout is a Foundation 6 based component that makes it possible to outline 

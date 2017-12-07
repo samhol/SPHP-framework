@@ -19,7 +19,7 @@ $script = Manual\api()->classLinker(Script::class);
 $noscript = Manual\api()->classLinker(Noscript::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #HTML HEAD: <small>meta data manipulation</small>
         
 $ns
@@ -48,7 +48,7 @@ Manual\loadPage('Sphp.Html.Head.Link');
 Manual\loadPage('Sphp.Html.Head.MetaData');
 Manual\loadPage('Sphp.Html.Head.Scripts');
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###References:
 
 * [A list of everything that *could* go in the `head` of your document](https://github.com/joshbuchea/HEAD){target=_blank}

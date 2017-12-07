@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ini = Manual\api()->classLinker(Ini::class);
 $ini_set = Manual\php()->functionLink('ini_set');
 $iniList = Manual\php()->hyperlink('ini.list.php', 'List of php.ini directives');
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###$ini <small>is a runtime PHP ini manager</small>
 
 $ini object contains a set of configuration options (see $ini_set in PHP manual). 

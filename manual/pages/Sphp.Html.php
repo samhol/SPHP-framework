@@ -16,7 +16,7 @@ $containerComponentInterface = Manual\api()->classLinker(ContainerComponentInter
 $contentTrait = Manual\api()->classLinker(ContentTrait::class);
 $w3schools = Manual\w3schools();
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #Introduction to HTML components
 $nsbc
 HTML is the standard markup language used to create Web pages.
@@ -81,7 +81,7 @@ MD
 
 CodeExampleAccordionBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = Manual\api()->classLinker(ContainerTag::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.
 
@@ -90,7 +90,7 @@ Furthermore all actual framework components implement $componentInterface
 
 MD
 );
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $abstractTag class
 
 This Abstract class is the base implementation  for all predefined HTML tag components.

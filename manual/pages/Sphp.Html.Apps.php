@@ -5,7 +5,7 @@ namespace Sphp\Html\Apps;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 #MISCELLANEOUS HTML COMPONENTS AND APPLICATIONS
         
 $ns

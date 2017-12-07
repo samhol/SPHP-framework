@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $collection = \Sphp\Manual\api()->classLinker(Collection::class);
 $collectionInterface = \Sphp\Manual\api()->classLinker(CollectionInterface::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $collection 
 
 This class provides an implementation of $collectionInterface.

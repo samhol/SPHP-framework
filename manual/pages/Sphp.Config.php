@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $config = Manual\api()->classLinker(Config::class);
 $instanceMethod = $config->methodLink('instance', false);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #APPLICATION CONFIGURATION
 $ns
   

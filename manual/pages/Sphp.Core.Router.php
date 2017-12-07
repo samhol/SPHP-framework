@@ -4,7 +4,7 @@ namespace Sphp\Core;
 
 use Sphp\Manual;
 $router = Manual\api()->classLinker(Path::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Managing absolute paths with a $router singelton object
 
 $router supports transformation of relative filesystem paths to absolute paths 

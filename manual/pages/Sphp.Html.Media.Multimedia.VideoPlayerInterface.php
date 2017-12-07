@@ -10,7 +10,7 @@ $abstractVideoPlayer = \Sphp\Manual\api()->classLinker(AbstractVideoPlayer::clas
 $dailyMotionPlayer = \Sphp\Manual\api()->classLinker(DailyMotionPlayer::class);
 $youtubePlayer = \Sphp\Manual\api()->classLinker(YoutubePlayer::class);
 $vimeoPlayer = \Sphp\Manual\api()->classLinker(VimeoPlayer::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Video hosting services <small>Dailymotion, Youtube, Vimeo ,... etc.</small>
         
 The $videoPlayerInterface has  a build-in implementation $abstractVideoPlayer. 

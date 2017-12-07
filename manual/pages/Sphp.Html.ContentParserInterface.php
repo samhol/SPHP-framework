@@ -17,7 +17,7 @@ $containerInterface = \Sphp\Manual\api()->classLinker(ContainerInterface::class)
 $containerComponentInterface = \Sphp\Manual\api()->classLinker(ContainerComponentInterface::class);
 $contentTrait = \Sphp\Manual\api()->classLinker(ContentTrait::class);
 $nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Server side content parsing: <small>$contentParserInterface implementations</small>
 
 1. {$contentInterface->methodLink("getHtml")} returns the component as an HTML string. This method might throw an $exeption) if the execution fails.
@@ -57,7 +57,7 @@ MD
 
 CodeExampleAccordionBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = \Sphp\Manual\api()->classLinker(ContainerTag::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.
 
@@ -66,7 +66,7 @@ Furthermore all actual framework components implement $componentInterface
 
 MD
 );
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The {$api->classLinker(AbstractTag::class)} class
 
 Abstract {$api->classLinker(AbstractTag::class)} class is the base implementation

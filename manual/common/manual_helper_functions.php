@@ -6,15 +6,14 @@ use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\InvalidArgumentException;
-use ParsedownExtraPlugin;
-
+use Sphp\Stdlib\Parser;
 /**
  * 
  * @param  string $content
  * @return void
  */
-function parseDown(string $content) {
-  echo ParsedownExtraPlugin::instance()->text($content);
+function md(string $content) {
+  echo Parser::md()->parseBlock($content);
 }
 
 /**

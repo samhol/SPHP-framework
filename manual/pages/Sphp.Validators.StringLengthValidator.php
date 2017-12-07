@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $strLenValLink = Manual\api()->classLinker(StringLengthValidator::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###The $strLenValLink class	
         
 The $strLenValLink simply validates the input length. This validator supports three 

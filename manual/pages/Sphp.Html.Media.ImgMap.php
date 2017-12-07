@@ -11,7 +11,7 @@ $circle = Manual\api()->classLinker(Circle::class);
 $polygon = Manual\api()->classLinker(Polygon::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##HTML Imagemap components
 $ns
         

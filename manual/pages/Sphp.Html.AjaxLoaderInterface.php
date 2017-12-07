@@ -9,7 +9,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $ajaxLoaderInterface = \Sphp\Manual\api()->classLinker(AjaxLoader::class);
 $ajaxLoaderTrait = \Sphp\Manual\api()->classLinker(AjaxLoaderTrait::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ###Ajax loading the content using the $ajaxLoaderInterface
 Using AJAX to dynamically load information from a PHP file
 MD

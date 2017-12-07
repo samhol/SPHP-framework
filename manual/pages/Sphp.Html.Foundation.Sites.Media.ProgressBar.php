@@ -8,7 +8,7 @@ use Sphp\Manual;
 
 $progressBar = Manual\api()->classLinker(ProgressBar::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 
 ##The $progressBar component
 

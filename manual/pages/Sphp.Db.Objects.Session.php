@@ -10,14 +10,14 @@ $iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
 $sessionUser = \Sphp\Manual\api()->classLinker(SessionUser::class);
 $sessionUsers = \Sphp\Manual\api()->classLinker(SessionUserStorage::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##$sessionUser objects and the $sessionUsers storage component
 $sessionUser
 MD
 );
 CodeExampleAccordionBuilder::visualize('Sphp/Db/Objects/SessionUser.php', 'text', false);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 $sessionUsers
 MD
 );

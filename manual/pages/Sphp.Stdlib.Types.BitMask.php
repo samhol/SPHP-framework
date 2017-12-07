@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $bitMask = Manual\api()->classLinker(BitMask::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Bit manipulation <small>by using $bitMask objects</small>
 
 A $bitMask Implements an collection of bits that grows as needed. The bits of a 

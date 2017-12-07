@@ -14,7 +14,7 @@ $formInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\Forms\FormInterface:
 $traversable = Apis::phpManual()->classLinker(\Traversable::class);
 $arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 $array = Apis::phpManual()->typeLink("array", "arrays");
-\Sphp\Manual\parseDown(
+\Sphp\Manual\md(
         <<<MD
 ##The $formValidator validator		
 A $formValidator is an aggregate of validators validating user inputs data provided 

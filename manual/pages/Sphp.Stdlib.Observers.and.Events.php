@@ -10,7 +10,7 @@ $eventClass = Manual\api()->classLinker(Event::class);
 $eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::class);
 $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #EVENTS AND OBSERVERS
 		
 Event dispatching systems and Observer Design pattern are often used to implement 

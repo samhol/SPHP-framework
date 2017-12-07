@@ -7,7 +7,7 @@ use Sphp\Manual;
 $flexInterface = Manual\api()->classLinker(ResponsiveEmbedInterface::class);
 $flex = Manual\api()->classLinker(ResponsiveEmbed::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 		
 ##The $flex component implementing $flexInterface for embedded media content
 

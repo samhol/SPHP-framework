@@ -19,7 +19,7 @@ $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##The $head component and client side scripts
         
 The best practice of placing client side scripts is the end of the page, just inside the closing body tag. 

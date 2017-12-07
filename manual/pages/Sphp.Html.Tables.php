@@ -11,7 +11,7 @@ $td = Manual\api()->classLinker(Td::class);
 $th = Manual\api()->classLinker(Th::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #HTML TABLES: <small>for tabular data</small>
 
 $ns
@@ -38,7 +38,7 @@ Manual\example('Sphp/Html/Tables/Table.php', null, true)
         ->printHtml();
 
 $tableBuilder = Manual\api()->classLinker(TableBuilder::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##TABLE BUILDER: <small>The $tableBuilder Class</small>
 
 This builder is able to generate tables from data sources
@@ -47,7 +47,7 @@ MD
 Manual\example('Sphp/Html/Tables/TableBuilder.php')
         ->setExamplePaneTitle('HTML table builder example')
         ->printHtml();
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###HTML TABLES FROM CSV-FILES: <small>The $tableBuilder Class as a factory</small>
 
 {$tableBuilder->methodLink('fromCsvFile')} is a factory method for generating tables from CSV files.

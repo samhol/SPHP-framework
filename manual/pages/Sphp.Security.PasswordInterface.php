@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 $passwordInterface = \Sphp\Manual\api()->classLinker(PasswordInterface::class);
 $password = \Sphp\Manual\api()->classLinker(Password::class);
 
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##Managing user Passwords <small>with $password</small>
 $passwordInterface defines a verifiable password. It is implemented in an 
 instantiable class $password.

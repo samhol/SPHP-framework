@@ -12,7 +12,7 @@ $li = Manual\api()->classLinker(Li::class);
 $dlLink = Manual\api()->classLinker(Dl::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>
 $ns	
 This namespace contains object oriented implementations of HTML lists.
@@ -30,7 +30,7 @@ MD
 
 Manual\visualize('Sphp/Html/Lists/Ul.php', null, true);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
         
 The $ol component (an ordered list) extends $htmlList. It supports indexing in the generated HTML output. 
@@ -51,7 +51,7 @@ Manual\visualize('Sphp/Html/Lists/Ol.php', null, true);
 
 $dtLink = Manual\api()->classLinker(Dt::class);
 $ddLink = Manual\api()->classLinker(Dd::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Definition lists: <small>The $dlLink component</small>
 	
 The $dlLink component is a list of $dtLink terms and $ddLink descriptions for thee terms.
@@ -62,7 +62,7 @@ MD
 );
 
 Manual\visualize('Sphp/Html/Lists/Dl.php', null, true);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ###References:
 
 * [<b>w3schools.com</b>: HTML Lists](http://www.w3schools.com/html/html_lists.asp){target=_blank}

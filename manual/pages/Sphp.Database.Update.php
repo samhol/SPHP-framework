@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $update = Manual\api()->classLinker(Update::class);
 
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##Updating records <small>with $update object</small>
 		
 The $update object executes declarative **UPDATE** statement in SQL databases.

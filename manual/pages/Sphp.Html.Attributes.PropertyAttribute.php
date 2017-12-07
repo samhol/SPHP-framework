@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $abstractAttr = \Sphp\Manual\api()->classLinker(AbstractAttribute::class);
 $propertyAttr = \Sphp\Manual\api()->classLinker(PropertyAttribute::class);
-\Sphp\Manual\parseDown(<<<MD
+\Sphp\Manual\md(<<<MD
 ##The $propertyAttr class
 		
 The $propertyAttr implements an attribute that contains multiple name 

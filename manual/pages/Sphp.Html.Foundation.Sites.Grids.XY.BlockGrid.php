@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Manual;
 
 $blockGrid = Manual\api()->classLinker(BlockGrid::class);
-Manual\parseDown(<<<MD
+Manual\md(<<<MD
 ##$blockGrid <small>for equally-sized columns</small>
 	
 Block grids are a shorthand way to create equally-sized columns.
