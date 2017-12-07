@@ -68,10 +68,6 @@ class Clause implements RuleInterface, Iterator {
     return $this;
   }
 
-  /**
-   * 
-   * @return ParameterHandler
-   */
   public function getParams(): ParameterHandler {
     $params = new SequentialParameterHandler();
     foreach ($this as $part) {

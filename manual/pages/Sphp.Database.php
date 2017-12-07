@@ -28,12 +28,9 @@ Manual\loadPage('Sphp.Database.Update');
 Manual\loadPage('Sphp.Database.Delete');
 
 Manual\parseDown(<<<MD
+###References:
+        
  * https://phpdelusions.net/pdo 
  * https://www.mysql.com/
 MD
 );
-//CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql');
-//CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'text');
-//CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');
-//CodeExampleBuilder::visualize('Sphp/Database/DB.Delete.php', 'sql', false);
-//CodeExampleBuilder::visualize('Sphp/Database/DB.Update.php', 'sql', false);

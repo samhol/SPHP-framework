@@ -11,6 +11,7 @@ namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\Content;
 use Sphp\Html\ComponentInterface;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Defines default properties for a syntax highlighter component
@@ -60,7 +61,7 @@ interface SyntaxHighlighterInterface extends Content {
    *
    * @param  string $filename name of the file to read
    * @return $this for a fluent interface
-   * @throws \Exception if the file was not found
+   * @throws RuntimeException if the file was not found
    */
   public function loadFromFile(string $filename);
 }

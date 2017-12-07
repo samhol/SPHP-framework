@@ -2,13 +2,12 @@
 
 namespace Sphp\Database;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Manual;
 
 $query = Manual\api()->classLinker(Query::class);
 
 Manual\parseDown(<<<MD
-##Queries by using $query object 
+##Quering data <small>with $query object</small>
 
 The $query object executes declarative SELECT queries in SQL databases. It 
 retrieves data from one or more SQL tables, or expressions and it
