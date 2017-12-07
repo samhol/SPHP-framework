@@ -25,10 +25,11 @@ class Markdown extends AbstractReader {
   }
 
   /**
+   * Parses both block-level and inline elements
    * 
    * @param  string $string
-   * @return string
-   * @throws RuntimeException
+   * @return string parsed HTML string
+   * @throws RuntimeException if parsing fails
    */
   public function parseBlock(string $string): string {
     try {
@@ -40,10 +41,11 @@ class Markdown extends AbstractReader {
   }
 
   /**
+   * Parses inline elements only 
    * 
-   * @param  string $string
-   * @return string
-   * @throws RuntimeException
+   * @param  string $string input string
+   * @return string parsed HTML string
+   * @throws RuntimeException if parsing fails
    */
   public function parseInline(string $string): string {
     try {

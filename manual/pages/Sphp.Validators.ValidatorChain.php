@@ -3,7 +3,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
 $validatorAggregate = \Sphp\Manual\api()->classLinker(ValidatorChain::class);
@@ -16,4 +16,4 @@ validates the given input against all of its inner $validatorInterface validator
 and the input is valid only if it passes all of them.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Validators/ValidatorChain.php", "php", false);
+CodeExampleAccordionBuilder::visualize("Sphp/Validators/ValidatorChain.php", "php", false);

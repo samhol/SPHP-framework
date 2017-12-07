@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $contentParserInterface = \Sphp\Manual\api()->classLinker(ContentParser::class);
 $contentParsingTrait = \Sphp\Manual\api()->classLinker(ContentParsingTrait::class);
@@ -55,7 +55,7 @@ PHP string. The simplest build in implementor for the $containerInterface is the
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
+CodeExampleAccordionBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = \Sphp\Manual\api()->classLinker(ContainerTag::class);
 \Sphp\Manual\parseDown(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a

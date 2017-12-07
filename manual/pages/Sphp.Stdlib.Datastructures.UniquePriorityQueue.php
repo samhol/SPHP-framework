@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $uniquePriorityQueue = \Sphp\Manual\api()->classLinker(UniquePriorityQueue::class);
@@ -13,4 +13,4 @@ This Implements a set of prioritized objects mapped with corresponding data of a
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Stdlib/Datastructures/UniquePriorityQueue.php", "text", false);
+CodeExampleAccordionBuilder::visualize("Sphp/Stdlib/Datastructures/UniquePriorityQueue.php", "text", false);

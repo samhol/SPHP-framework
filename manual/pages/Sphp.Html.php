@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 use Sphp\Manual;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $abstractTag = Manual\api()->classLinker(AbstractTag::class);
 $ns = Manual\api()->namespaceLink(__NAMESPACE__);
@@ -79,7 +79,7 @@ PHP string.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
+CodeExampleAccordionBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = Manual\api()->classLinker(ContainerTag::class);
 Manual\parseDown(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a

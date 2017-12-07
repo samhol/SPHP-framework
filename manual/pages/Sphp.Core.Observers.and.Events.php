@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Events;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $eventInterface = \Sphp\Manual\api()->classLinker(EventInterface::class);
@@ -51,13 +51,13 @@ MD
 namespace Sphp\Core;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
-CodeExampleBuilder::visualize("Sphp/Core/Events/EventManager.php", "text", false);
+CodeExampleAccordionBuilder::visualize("Sphp/Core/Events/EventManager.php", "text", false);
 
 namespace Sphp\Stdlib\Observers;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 Use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
@@ -80,7 +80,7 @@ implementation of $splSubject interface.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Core/ObservableSubjectTrait.php", "text", false);
+CodeExampleAccordionBuilder::visualize("Sphp/Core/ObservableSubjectTrait.php", "text", false);
 
 \Sphp\Manual\parseDown(<<<MD
 

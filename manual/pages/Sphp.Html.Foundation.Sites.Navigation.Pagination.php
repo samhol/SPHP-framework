@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -16,4 +16,4 @@ of related pages. Moving between pages has become less common with the advent of
 longer pages and AJAX loading.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/Pagination.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/Pagination.php');

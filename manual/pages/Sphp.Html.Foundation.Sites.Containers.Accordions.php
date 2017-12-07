@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 //$ns = $api->namespaceLink(__NAMESPACE__);
@@ -21,5 +21,5 @@ one, or more than one item expanded at a time, depending on the configuration.
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Accordions/Accordions.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Accordions/Accordions.php');
 

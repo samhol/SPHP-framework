@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
+use Sphp\Html\Content;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
@@ -22,7 +23,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CodeExampleBuilder implements \Sphp\Html\Content {
+class CodeExampleAccordionBuilder implements Content {
 
   use \Sphp\Html\ContentTrait;
 
@@ -245,9 +246,9 @@ class CodeExampleBuilder implements \Sphp\Html\Content {
    *         or `null` if highlighted output code should not be visible
    * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
    * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
-   * @return CodeExampleBuilder
+   * @return CodeExampleAccordionBuilder
    */
-  public static function build(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
+  public static function build(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleAccordionBuilder {
     return (new static($path, $highlightOutput, $outputAsHtmlFlow));
   }
 

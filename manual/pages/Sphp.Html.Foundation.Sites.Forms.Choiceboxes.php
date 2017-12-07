@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $choiceboxes = \Sphp\Manual\api()->classLinker(AbstractSwitch::class);
@@ -17,7 +17,7 @@ These components extend $choiceboxes and Foundation frameworks Switches on clien
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/Choiceboxes.php'))
+(new CodeExampleAccordionBuilder('Sphp/Html/Foundation/Sites/Forms/Choiceboxes.php'))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

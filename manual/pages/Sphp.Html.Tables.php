@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Manual;
 
 $table = Manual\api()->classLinker(Table::class);

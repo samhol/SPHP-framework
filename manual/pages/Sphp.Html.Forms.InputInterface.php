@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
@@ -33,7 +33,7 @@ Framework has many build-in form components that implement basic HTML form eleme
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Forms/Inputs/InputFields.php', 'html5', true))
+(new CodeExampleAccordionBuilder('Sphp/Html/Forms/Inputs/InputFields.php', 'html5', true))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

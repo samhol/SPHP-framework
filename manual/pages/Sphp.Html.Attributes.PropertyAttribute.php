@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $abstractAttr = \Sphp\Manual\api()->classLinker(AbstractAttribute::class);
 $propertyAttr = \Sphp\Manual\api()->classLinker(PropertyAttribute::class);
@@ -20,4 +20,4 @@ external style sheet.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Attributes/PropertyAttribute.php", "html5", true);
+CodeExampleAccordionBuilder::visualize("Sphp/Html/Attributes/PropertyAttribute.php", "html5", true);

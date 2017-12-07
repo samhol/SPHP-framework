@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $abstractSwitch = \Sphp\Manual\api()->classLinker(AbstractSwitch::class);
@@ -16,7 +16,7 @@ $switchBox = \Sphp\Manual\api()->classLinker(SwitchBox::class);
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/FileUploadButton.php'))
+(new CodeExampleAccordionBuilder('Sphp/Html/Foundation/Sites/Forms/FileUploadButton.php'))
         ->buildAccordion()
         ->addCssClass('form-example')
         ->printHtml();

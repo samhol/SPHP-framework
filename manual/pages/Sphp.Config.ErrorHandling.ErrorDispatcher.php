@@ -5,7 +5,7 @@ namespace Sphp\Config\ErrorHandling;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Stdlib\Observers\Observer;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $throwable = Apis::phpManual()->classLinker(\Throwable::class);
 $error = Apis::phpManual()->classLinker(\Error::class);
@@ -52,7 +52,7 @@ __<u>NOTE</u>:__ The following error types cannot be handled by $errorDispatcher
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Config/ErrorHandling/ErrorDispatcher.php'))
+(new CodeExampleAccordionBuilder('Sphp/Config/ErrorHandling/ErrorDispatcher.php'))
         ->printHtml();
 
 \Sphp\Manual\parseDown(<<<MD

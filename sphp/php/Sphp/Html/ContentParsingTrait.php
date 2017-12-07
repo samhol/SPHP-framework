@@ -9,6 +9,7 @@ namespace Sphp\Html;
 
 use Sphp\Stdlib\Filesystem;
 use ParsedownExtraPlugin;
+use Sphp\Stdlib\Parser;
 
 /**
  * Trait implements functionality of the {@link ContentParser}
@@ -57,8 +58,8 @@ trait ContentParsingTrait {
    * @return $this for a fluent interface
    */
   public function appendMd(string $md) {
-    $p = new ParsedownExtraPlugin();
-    $this->append($p->text($md));
+    $p = Parser::md();
+    $this->append($p->fromString($md));
     return $this;
   }
 

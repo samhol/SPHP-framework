@@ -2,7 +2,7 @@
 
 namespace Sphp\I18n\Collections;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Translatable;
@@ -32,7 +32,7 @@ $messageCollectionInterfaces is is the base interface for all translatable colle
 
 MD
 );
-CodeExampleBuilder::build('Sphp/I18n/Collections/TranslatableCollection.php', 'text', false)
+CodeExampleAccordionBuilder::build('Sphp/I18n/Collections/TranslatableCollection.php', 'text', false)
         ->setExamplePaneTitle('Basic example of translatable collection')
         ->printHtml();
 $messageContainers = \Sphp\Manual\api()->classLinker(TranslatableCollectionInterface::class);
@@ -45,7 +45,7 @@ extends $arrayaccess and the offset value corresponds this topic.
 
 MD
 );
-CodeExampleBuilder::build('Sphp/I18n/Collections/TranslatableCollection.nested.php', 'text', false)
+CodeExampleAccordionBuilder::build('Sphp/I18n/Collections/TranslatableCollection.nested.php', 'text', false)
         ->setExamplePaneTitle('An example of nesting translatable collections')
         ->printHtml();
 \Sphp\Manual\parseDown(<<<MD
@@ -55,6 +55,6 @@ An instance of $translatablePriorityList is a priority list for handling $transl
 
 MD
 );
-CodeExampleBuilder::build('Sphp/I18n/Collections/PriorityList.php', 'text', false)
+CodeExampleAccordionBuilder::build('Sphp/I18n/Collections/PriorityList.php', 'text', false)
         ->setExamplePaneTitle('An example of nesting translatable collections')
         ->printHtml();

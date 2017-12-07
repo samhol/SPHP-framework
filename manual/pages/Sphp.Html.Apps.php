@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
@@ -17,7 +17,7 @@ MD
 
 
 
-CodeExampleBuilder::visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
 
-CodeExampleBuilder::visualize('Sphp/Html/Apps/misc.php');
-CodeExampleBuilder::visualize('Sphp/Html/Apps/SyntaxHighlighter.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/misc.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/SyntaxHighlighter.php');

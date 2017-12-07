@@ -8,11 +8,16 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Exceptions\InvalidAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Readers\Reader;
 
 /**
  * Implements a general parser factory
+ * 
+ * @method \Sphp\Stdlib\Readers\Markdown md() returns singleton instance of `markdown` reader
+ * @method \Sphp\Stdlib\Readers\Yaml yaml() returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Readers\Ini ini() returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Readers\Json json() returns singleton instance of `json` reader
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -46,18 +51,20 @@ abstract class Parser {
   private static $instances = [];
 
   /**
+   * Checks whether a reader exists for given data type
    * 
-   * @param  string $type
-   * @return bool
+   * @param  string $type data type
+   * @return bool true if a reader exists for given data type and false otherwise
    */
   public static function readerExists(string $type): bool {
     return isset(static::$readers[$type]);
   }
 
   /**
+   * Returns a singleton reader instance of given data type
    *  
-   * @param  string $type
-   * @return Reader
+   * @param  string $type data type
+   * @return Reader a singleton reader instance of given data type
    * @throws InvalidAttributeException
    */
   public static function getReaderFor(string $type): Reader {
@@ -69,6 +76,22 @@ abstract class Parser {
       static::$instances[$readerType] = new $readerType;
     }
     return static::$instances[$readerType];
+  }
+
+  /**
+   * Returns singleton instance of a specific reader object
+   *
+   * @param  string $name the name of the component
+   * @param  array $arguments 
+   * @return Reader the corresponding singleton instance of reader object
+   * @throws BadMethodCallException
+   */
+  public static function __callStatic(string $name, array $arguments): Reader {
+    try {
+      return static::getReaderFor($name);
+    } catch (InvalidArgumentException $ex) {
+      throw new BadMethodCallException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
   /**
@@ -102,11 +125,12 @@ abstract class Parser {
   }
 
   /**
+   * Parses given string to certain output format
    * 
-   * @param  string $string
-   * @param  string $extension
-   * @return mixed
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @param  string $string input string
+   * @param  string $extension data type
+   * @return mixed parsed output
+   * @throws RuntimeException
    */
   public static function fromString(string $string, string $extension) {
     if (array_key_exists($extension, static::$readers)) {

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps\Calendars;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
 $monthView = $api->classLinker(MonthView::class);
@@ -10,4 +10,4 @@ $monthView = $api->classLinker(MonthView::class);
 ##The $monthView component
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Apps/Calendars/MonthView.php");
+CodeExampleAccordionBuilder::visualize("Sphp/Html/Apps/Calendars/MonthView.php");

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $vjs = \Sphp\Manual\api()->classLinker(VideoJs::class);
@@ -14,4 +14,4 @@ The $vjs Implements video.js for PHP.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Html/Media/Multimedia/VideoJs.php");
+CodeExampleAccordionBuilder::visualize("Sphp/Html/Media/Multimedia/VideoJs.php");

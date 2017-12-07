@@ -29,7 +29,7 @@ MD
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Manual as Man;
 
 $ns = Man\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -50,7 +50,7 @@ Components in this namespace are build using HTML $buttonTag tag.
 MD
 );
 
-CodeExampleBuilder::build('Sphp/Html/Forms/Buttons/AbstractButton.php', 'html5')
+CodeExampleAccordionBuilder::build('Sphp/Html/Forms/Buttons/AbstractButton.php', 'html5')
         ->buildAccordion()
         ->addCssClass('form-example')
         ->printHtml();

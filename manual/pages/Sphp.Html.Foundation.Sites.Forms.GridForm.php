@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $gridForm = \Sphp\Manual\api()->classLinker(GridForm::class);
@@ -15,7 +15,7 @@ $gridForm implements a validable Foundation framework based form.
 
 MD
 );
-(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/Inputs/InputColumnInterface.php'))
+(new CodeExampleAccordionBuilder('Sphp/Html/Foundation/Sites/Forms/Inputs/InputColumnInterface.php'))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

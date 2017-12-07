@@ -3,7 +3,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $audio = \Sphp\Manual\api()->classLinker(Audio::class);
 $audioTag = Apis::w3schools()->tag('audio');
@@ -28,7 +28,7 @@ which the browser may choose from, based on its media type or codec support.
 MD
 );
 
-(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Video.php", null, true))
+(new CodeExampleAccordionBuilder("Sphp/Html/Media/Multimedia/Video.php", null, true))
         ->setExamplePaneTitle("HTML5 &lt;video&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
         ->printHtml();

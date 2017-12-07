@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $scriptInterface = \Sphp\Manual\api()->classLinker(Script::class);
@@ -45,9 +45,9 @@ $scriptCode component containing statements can be manipulated several ways.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
+CodeExampleAccordionBuilder::visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
 \Sphp\Manual\parseDown(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>{#scriptsContainer}
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Programming/ScriptsContainer.php", "html5", true);
+CodeExampleAccordionBuilder::visualize("Sphp/Html/Programming/ScriptsContainer.php", "html5", true);

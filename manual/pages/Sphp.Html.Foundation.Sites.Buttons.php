@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\ComponentInterface;
 
@@ -62,13 +62,13 @@ MD
 );
 $splitButton = \Sphp\Manual\api()->classLinker(SplitButton::class);
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
 \Sphp\Manual\parseDown(<<<MD
 ##The $splitButton component
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
 \Sphp\Manual\parseDown(<<<MD
 ##The $btnGroup class
 
@@ -79,7 +79,7 @@ perfectly with the grid component.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
 $stackFor = $btnGroup->methodLink("stackFor", false);
 $unstackFor = $btnGroup->methodLink("unstackFor", false);
 \Sphp\Manual\parseDown(<<<MD
@@ -89,4 +89,4 @@ Foundation stack classes for button groups. Stacking can be removed by using $un
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php');
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php');

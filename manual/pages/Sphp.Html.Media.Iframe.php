@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $iframe = \Sphp\Manual\api()->classLinker(Iframe::class);
@@ -18,4 +18,4 @@ them are treated as complete documents.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Media/Iframe.php', null);
+CodeExampleAccordionBuilder::visualize('Sphp/Html/Media/Iframe.php', null);

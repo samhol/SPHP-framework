@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $slider = \Sphp\Manual\api()->classLinker(Slider::class);
@@ -20,7 +20,7 @@ is a jQuery range slider with CSS3 skin support.
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Forms/Ion/Slider.php', null, true))
+(new CodeExampleAccordionBuilder('Sphp/Html/Forms/Ion/Slider.php', null, true))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
@@ -29,7 +29,7 @@ MD
 		
 MD
 );
-(new CodeExampleBuilder('Sphp/Html/Forms/Ion/RangeSlider.php', null, true))
+(new CodeExampleAccordionBuilder('Sphp/Html/Forms/Ion/RangeSlider.php', null, true))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

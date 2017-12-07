@@ -85,7 +85,7 @@ function foundation(): FoundationDocsLinker {
   return Apis::foundation('foundation');
 }
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 /**
  * Creates the PHP Example code and the preferred result
@@ -94,11 +94,11 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
  * @param  string|boolean $highlightOutput the language name of the output code 
  *         or false if highlighted output code should not be visible
  * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
- * @return CodeExampleBuilder
+ * @return CodeExampleAccordionBuilder
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
  */
-function example(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
-  return CodeExampleBuilder::build($path, $highlightOutput, $outputAsHtmlFlow);
+function example(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleAccordionBuilder {
+  return CodeExampleAccordionBuilder::build($path, $highlightOutput, $outputAsHtmlFlow);
 }
 
 /**
@@ -111,5 +111,5 @@ function example(string $path, string $highlightOutput = null, bool $outputAsHtm
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
  */
 function visualize(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
-  CodeExampleBuilder::visualize($path, $highlightOutput, $outputAsHtmlFlow);
+  CodeExampleAccordionBuilder::visualize($path, $highlightOutput, $outputAsHtmlFlow);
 }

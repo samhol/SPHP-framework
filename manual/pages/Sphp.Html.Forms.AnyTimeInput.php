@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $anyTimeInput = \Sphp\Manual\api()->classLinker(AnyTimeInput::class);
 \Sphp\Manual\parseDown(<<<MD
@@ -12,7 +12,7 @@ $anyTimeInput = \Sphp\Manual\api()->classLinker(AnyTimeInput::class);
 
 MD
 );
-(new CodeExampleBuilder('Sphp/Html/Forms/AnyTimeInput.php'))
+(new CodeExampleAccordionBuilder('Sphp/Html/Forms/AnyTimeInput.php'))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Manual;
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
