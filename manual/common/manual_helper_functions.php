@@ -7,6 +7,7 @@ use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Parser;
+
 /**
  * 
  * @param  string $content
@@ -90,7 +91,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
  * Creates the PHP Example code and the preferred result
  *
  * @param  string $path the file path of the presented example PHP code
- * @param  string|boolean $highlightOutput the language name of the output code 
+ * @param  string|null $highlightOutput the language name of the output code 
  *         or false if highlighted output code should not be visible
  * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
  * @return CodeExampleAccordionBuilder
@@ -104,7 +105,7 @@ function example(string $path, string $highlightOutput = null, bool $outputAsHtm
  * Creates the PHP Example code and the preferred result
  *
  * @param  string $path the file path of the presented example PHP code
- * @param  string|boolean $highlightOutput the language name of the output code 
+ * @param  string|null $highlightOutput the language name of the output code 
  *         or false if highlighted output code should not be visible
  * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
