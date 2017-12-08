@@ -2,15 +2,15 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
+use Sphp\Manual;
 
-$videoPlayerInterface = \Sphp\Manual\api()->classLinker(VideoPlayerInterface::class);
-$abstractVideoPlayer = \Sphp\Manual\api()->classLinker(AbstractVideoPlayer::class);
-$dailyMotionPlayer = \Sphp\Manual\api()->classLinker(DailyMotionPlayer::class);
-$youtubePlayer = \Sphp\Manual\api()->classLinker(YoutubePlayer::class);
-$vimeoPlayer = \Sphp\Manual\api()->classLinker(VimeoPlayer::class);
-\Sphp\Manual\md(<<<MD
+$videoPlayerInterface = Manual\api()->classLinker(VideoPlayerInterface::class);
+$abstractVideoPlayer = Manual\api()->classLinker(AbstractVideoPlayer::class);
+$dailyMotionPlayer = Manual\api()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = Manual\api()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = Manual\api()->classLinker(VimeoPlayer::class);
+
+Manual\md(<<<MD
 ##Video hosting services <small>Dailymotion, Youtube, Vimeo ,... etc.</small>
         
 The $videoPlayerInterface has  a build-in implementation $abstractVideoPlayer. 
@@ -23,7 +23,7 @@ This class is axtended and used for following subscribers.
 MD
 );
 
-(new CodeExampleAccordionBuilder("Sphp/Html/Media/Multimedia/VideoPlayerInterface.php"))
+Manual\example("Sphp/Html/Media/Multimedia/VideoPlayerInterface.php")
         ->setExamplePaneTitle("Example code for Youtube, Vimeo and DailyMotion video")
         ->setOutputPaneTitle("Example results")
         ->printHtml();
