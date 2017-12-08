@@ -23,9 +23,9 @@ use Sphp\Exceptions\RuntimeException;
 interface SyntaxHighlighterInterface extends Content {
 
   /**
-   * Sets the copier button
+   * Attaches a new copy controller
    *
-   * @param  ContentCopyController|ComponentInterface|null $button button or button content
+   * @param  ComponentInterface|null $button button or button content
    * @return ContentCopyController the attached controller
    */
   public function attachContentCopyController(ComponentInterface $button = null);
@@ -64,4 +64,14 @@ interface SyntaxHighlighterInterface extends Content {
    * @throws RuntimeException if the file was not found
    */
   public function loadFromFile(string $filename);
+
+  /**
+   * Executes a PHP file and highlights the resulting output
+   * 
+   * @param  string $path the path that contains the file
+   * @param  string $lang the language name of the output
+   * @return $this for a fluent interface
+   * @throws RuntimeException if the file does not exist
+   */
+  public function executeFromFile(string $path, string $lang = 'text');
 }

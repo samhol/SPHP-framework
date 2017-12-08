@@ -60,7 +60,7 @@ class CodeExampleAccordionBuilder implements Content {
    * @param  string|null $highlightOutput the language name of the output code 
    *         or `null` if highlighted output code should not be visible
    * @param  boolean $outputAsHtmlFlow true for showing executed HTML flow
-   * @throws \Sphp\Exceptions\RuntimeException if the code example path contains no file
+   * @throws RuntimeException if the code example path contains no file
    */
   public function __construct(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
     $this->setPath($path);
@@ -80,7 +80,7 @@ class CodeExampleAccordionBuilder implements Content {
    *         output presentation, false for html presentation
    * @param  boolean $outputAsHtmlFlow true for showing executed HTML flow
    * @return Accordion
-   * @throws \Sphp\Exceptions\RuntimeException if the code example path contains no file
+   * @throws RuntimeException if the code example path contains no file
    */
   public function __invoke(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
     $this->setPath($path)
@@ -94,7 +94,7 @@ class CodeExampleAccordionBuilder implements Content {
    * 
    * @param  string $path the path of the example code
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\RuntimeException if the code example path contains no file
+   * @throws RuntimeException if the code example path contains no file
    */
   public function setPath(string $path) {
     if (!Filesystem::isFile($path)) {

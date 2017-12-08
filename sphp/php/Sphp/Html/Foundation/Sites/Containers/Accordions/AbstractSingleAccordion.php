@@ -21,7 +21,6 @@ use Sphp\Html\AbstractComponent;
 class AbstractSingleAccordion extends AbstractComponent {
 
   /**
-   *
    * @var PaneInterface
    */
   private $pane;
@@ -29,17 +28,17 @@ class AbstractSingleAccordion extends AbstractComponent {
   /**
    * Constructs a new instance
    *
-   * @param PaneInterface|null $pane the inner pane component or null for {@link Pane} instance
+   * @param PaneInterface|null $pane the inner pane component or null
    */
   public function __construct(PaneInterface $pane = null) {
     if ($pane === null) {
       $pane = new Pane();
     }
     parent::__construct('ul');
-    $this->cssClasses()->protect("accordion");
+    $this->cssClasses()->protect('accordion');
     $this->attrs()
-            ->protect("data-allow-all-closed", "true")
-            ->demand("data-accordion");
+            ->protect('data-allow-all-closed', "true")
+            ->demand('data-accordion');
     $this->pane = $pane;
   }
 

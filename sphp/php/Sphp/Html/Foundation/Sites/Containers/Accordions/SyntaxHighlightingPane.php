@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighterInterface;
-use Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
 use Sphp\Html\Foundation\Sites\Buttons\IconButton;
 
@@ -24,7 +23,7 @@ use Sphp\Html\Foundation\Sites\Buttons\IconButton;
  */
 class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterInterface {
 
-  use SyntaxhighlighterContainerTrait;
+  use \Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
 
   /**
    * @var SyntaxHighlighter
@@ -56,7 +55,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
   /**
    * Returns the inner Syntax highlighting component
    * 
-   * @return SyntaxHighlighter the inner Syntax highlighting component
+   * @return SyntaxHighlighterInterface the inner Syntax highlighting component
    */
   public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
     return $this->hl;

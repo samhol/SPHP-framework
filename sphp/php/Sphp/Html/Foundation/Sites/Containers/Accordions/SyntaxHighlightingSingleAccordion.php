@@ -22,6 +22,8 @@ use Sphp\Html\ComponentInterface;
  */
 class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implements SyntaxHighlighterInterface {
 
+  use \Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
+
   /**
    * Constructs a new instance
    * 
@@ -36,33 +38,8 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
    * 
    * @return SyntaxHighlighter the inner Syntax highlighting component
    */
-  public function getHighlighter() {
+  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
     return $this->getPane()->getSyntaxHighlighter();
-  }
-
-  public function setSource(string $source, string $lang, bool $format = false) {
-    $this->getHighlighter()->setSource($source, $lang, $format);
-    return $this;
-  }
-
-  public function loadFromFile(string $filename) {
-    $this->getHighlighter()->loadFromFile($filename);
-    return $this;
-  }
-
-  public function attachContentCopyController(ComponentInterface $button = null) {
-    $this->hl->attachContentCopyController($button);
-    return $this;
-  }
-
-  public function setDefaultContentCopyController($content = 'Copy') {
-    $this->hl->setDefaultContentCopyController($content);
-    return $this;
-  }
-
-  public function useDefaultContentCopyController(bool $use = true) {
-    $this->hl->useDefaultContentCopyController($use);
-    return $this;
   }
 
   /**

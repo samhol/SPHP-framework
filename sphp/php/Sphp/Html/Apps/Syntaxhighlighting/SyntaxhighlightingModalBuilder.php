@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SyntaxhighlightingModalBuilder.php (UTF-8)
+ * SyntaxHighlightingModalBuilder.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,13 +11,9 @@ use Sphp\Html\Content;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\RuntimeException;
 
 /**
- * Implements aModal builder for PHP Example presentation
+ * Implements Modal builder for PHP Example presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -25,7 +21,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SyntaxhighlightingModalBuilder implements Content {
+class SyntaxHighlightingModalBuilder implements Content {
 
   use \Sphp\Html\ContentTrait,
       SyntaxhighlighterContainerTrait;

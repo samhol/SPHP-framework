@@ -14,10 +14,10 @@ use Sphp\Stdlib\Readers\Reader;
 /**
  * Implements a general parser factory
  * 
- * @method \Sphp\Stdlib\Readers\Markdown md() returns singleton instance of `markdown` reader
- * @method \Sphp\Stdlib\Readers\Yaml yaml() returns singleton instance of `yaml` reader
- * @method \Sphp\Stdlib\Readers\Ini ini() returns singleton instance of `yaml` reader
- * @method \Sphp\Stdlib\Readers\Json json() returns singleton instance of `json` reader
+ * @method \Sphp\Stdlib\Readers\Markdown md() Returns singleton instance of `markdown` reader
+ * @method \Sphp\Stdlib\Readers\Yaml yaml() Returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Readers\Ini ini() Returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Readers\Json json() Returns singleton instance of `json` reader
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
