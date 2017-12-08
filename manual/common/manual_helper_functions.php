@@ -19,6 +19,19 @@ function md(string $content) {
 
 /**
  * 
+ * @param  string $content
+ * @return string
+ */
+function inlineMd(string $content, bool $echo = true): string {
+  $parsed = Parser::md()->parseInline($content);
+  if ($echo) {
+    echo $parsed;
+  }
+  return $parsed;
+}
+
+/**
+ * 
  * @param  string $page
  * @throws InvalidArgumentException
  * @return void
@@ -112,4 +125,23 @@ function example(string $path, string $highlightOutput = null, bool $outputAsHtm
  */
 function visualize(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
   CodeExampleAccordionBuilder::visualize($path, $highlightOutput, $outputAsHtmlFlow);
+}
+
+use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlightingModalBuilder;
+use Sphp\Html\Foundation\Sites\Containers\Modal;
+
+/**
+ * 
+ * @param  mixed $trigger
+ * @param  string $path
+ * @param  mixed $title
+ * @return Modal
+ */
+function codeModal($trigger, string $path, $title = 'Source code'): Modal {
+  $modal = new SyntaxHighlightingModalBuilder($trigger, inlineMd($title, false));
+  $modal->loadFromFile($path);
+  $m = $modal->buildModal();
+  $m->getTrigger()->addCssClass('manual-code-modal');
+  $m->setSize('large');
+  return $m;
 }

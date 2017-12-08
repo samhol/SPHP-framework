@@ -7,6 +7,15 @@
   .title {
     padding-bottom: rem-calc(5);
     font-size: rem-calc(24);
-    font-weight: bold;
+    font-weight: 500;
   }
+  @include border-radius(6px);
+  background-color: #fafafa;
+
+}
+.manual-code-modal  {
+  border-bottom: dotted 1px #555;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: $font-family-monospace;
 }
