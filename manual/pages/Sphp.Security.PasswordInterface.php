@@ -2,16 +2,15 @@
 
 namespace Sphp\Security;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
+use Sphp\Manual;
 
-$passwordInterface = \Sphp\Manual\api()->classLinker(PasswordInterface::class);
-$password = \Sphp\Manual\api()->classLinker(Password::class);
+$passwordInterface = Manual\api()->classLinker(PasswordInterface::class);
+$password = Manual\api()->classLinker(Password::class);
 
-\Sphp\Manual\md(<<<MD
+Manual\md(<<<MD
 ##Managing user Passwords <small>with $password</small>
 $passwordInterface defines a verifiable password. It is implemented in an 
 instantiable class $password.
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Security/PasswordInterface.php', 'text', false);
+Manual\visualize('Sphp/Security/PasswordInterface.php', 'text', false);

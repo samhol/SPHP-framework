@@ -2,9 +2,9 @@
 
 namespace Sphp\Security;
 
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-\Sphp\Manual\md(<<<MD
+Manual\md(<<<MD
 ##SQL Injection vulnerabilities
 
 [Database tools](Sphp.Database){target="_blank"} are all         

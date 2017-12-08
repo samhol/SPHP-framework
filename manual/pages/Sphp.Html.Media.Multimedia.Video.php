@@ -2,19 +2,19 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
+use Sphp\Manual;
 
-$audio = \Sphp\Manual\api()->classLinker(Audio::class);
-$audioTag = Apis::w3schools()->tag('audio');
-$video = \Sphp\Manual\api()->classLinker(Video::class);
-$videoTag = Apis::w3schools()->tag('video');
-$source = \Sphp\Manual\api()->classLinker(Source::class);
-$vjs = \Sphp\Manual\api()->classLinker(VideoJs::class);
-$dailyMotionPlayer = \Sphp\Manual\api()->classLinker(DailyMotionPlayer::class);
-$youtubePlayer = \Sphp\Manual\api()->classLinker(YoutubePlayer::class);
-$vimeoPlayer = \Sphp\Manual\api()->classLinker(VimeoPlayer::class);
-\Sphp\Manual\md(<<<MD
+$audio = Manual\api()->classLinker(Audio::class);
+$audioTag = Manual\w3schools()->tag('audio');
+$video = Manual\api()->classLinker(Video::class);
+$videoTag = Manual\w3schools()->tag('video');
+$source = Manual\api()->classLinker(Source::class);
+$vjs = Manual\api()->classLinker(VideoJs::class);
+$dailyMotionPlayer = Manual\api()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = Manual\api()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = Manual\api()->classLinker(VimeoPlayer::class);
+
+Manual\md(<<<MD
 ##HTML 5 <small>Audio and Video</small> 
 		
 The $audio and the $video components implement the corresponding HTML5
@@ -28,7 +28,7 @@ which the browser may choose from, based on its media type or codec support.
 MD
 );
 
-(new CodeExampleAccordionBuilder("Sphp/Html/Media/Multimedia/Video.php", null, true))
+Manual\example("Sphp/Html/Media/Multimedia/Video.php", null, true)
         ->setExamplePaneTitle("HTML5 &lt;video&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
         ->printHtml();

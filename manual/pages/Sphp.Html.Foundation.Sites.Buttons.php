@@ -3,8 +3,8 @@
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\ComponentInterface;
+use Sphp\Manual;
 
 $componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
 $buttonInterface = \Sphp\Manual\api()->classLinker(ButtonInterface::class);
@@ -54,7 +54,8 @@ Predefined size classes:
 MD
 );
 $blockGrid->printHtml();
-\Sphp\Manual\md(<<<MD
+
+Manual\md(<<<MD
 ##$buttonAdapter <small>Converts anything to button style</small>
 
 This adapter can transform most $componentInterface objects to Foundation styled buttons.
@@ -62,14 +63,16 @@ MD
 );
 $splitButton = \Sphp\Manual\api()->classLinker(SplitButton::class);
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
-\Sphp\Manual\md(<<<MD
+Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
+
+Manual\md(<<<MD
 ##The $splitButton component
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
-\Sphp\Manual\md(<<<MD
+Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
+
+Manual\md(<<<MD
 ##The $btnGroup class
 
 A $btnGroup component is a container for $buttonInterface components. A $btnGroup component
@@ -79,14 +82,16 @@ perfectly with the grid component.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
+Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
+
 $stackFor = $btnGroup->methodLink("stackFor", false);
 $unstackFor = $btnGroup->methodLink("unstackFor", false);
-\Sphp\Manual\md(<<<MD
 
+Manual\md(<<<MD
 The orientation of a button group can be changed with method $stackFor  that uses 
 Foundation stack classes for button groups. Stacking can be removed by using $unstackFor method.
 
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php');
+
+Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php');

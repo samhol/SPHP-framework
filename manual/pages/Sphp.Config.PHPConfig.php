@@ -2,7 +2,6 @@
 
 namespace Sphp\Config;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Manual;
 
 $phpConfig = Manual\api()->classLinker(PHPConfig::class);
@@ -18,6 +17,6 @@ environment by simply using multiple instances of $phpConfig.
 MD
 );
 
-CodeExampleAccordionBuilder::build("Sphp/Config/PHPConfig.php", 'text', false)
+Manual\example("Sphp/Config/PHPConfig.php", 'text', false)
         ->setExamplePaneTitle('PHP environment manipulation example')
         ->printHtml();

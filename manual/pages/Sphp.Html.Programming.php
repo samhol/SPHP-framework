@@ -2,17 +2,17 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$scriptInterface = \Sphp\Manual\api()->classLinker(Script::class);
-$scriptCode = \Sphp\Manual\api()->classLinker(ScriptCode::class);
-$scriptFile = \Sphp\Manual\api()->classLinker(ScriptSrc::class);
-$scriptsContainer = \Sphp\Manual\api()->classLinker(ScriptsContainer::class);
-$noscript = \Sphp\Manual\api()->classLinker(Noscript::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-\Sphp\Manual\md(<<<MD
+$scriptInterface = Manual\api()->classLinker(Script::class);
+$scriptCode = Manual\api()->classLinker(ScriptCode::class);
+$scriptFile = Manual\api()->classLinker(ScriptSrc::class);
+$scriptsContainer = Manual\api()->classLinker(ScriptsContainer::class);
+$noscript = Manual\api()->classLinker(Noscript::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$arrayAccess = Manual\php()->classLinker(\ArrayAccess::class);
+
+Manual\md(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>
 
 $ns
@@ -45,9 +45,12 @@ $scriptCode component containing statements can be manipulated several ways.
 
 MD
 );
-CodeExampleAccordionBuilder::visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
-\Sphp\Manual\md(<<<MD
+
+Manual\visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
+
+Manual\md(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>{#scriptsContainer}
 MD
 );
-CodeExampleAccordionBuilder::visualize("Sphp/Html/Programming/ScriptsContainer.php", "html5", true);
+
+Manual\visualize("Sphp/Html/Programming/ScriptsContainer.php", "html5", true);

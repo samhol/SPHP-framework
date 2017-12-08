@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$iframe = \Sphp\Manual\api()->classLinker(Iframe::class);
-$iframeTag = Apis::w3schools()->tag('iframe');
-\Sphp\Manual\md(<<<MD
+$iframe = Manual\api()->classLinker(Iframe::class);
+$iframeTag = Manual\w3schools()->tag('iframe');
+
+Manual\md(<<<MD
 ##The $iframe component 
 		
 The $iframe class models the HTML $iframeTag tag (HTML inline frame).
@@ -18,4 +18,4 @@ them are treated as complete documents.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Media/Iframe.php', null);
+Manual\visualize('Sphp/Html/Media/Iframe.php', null);

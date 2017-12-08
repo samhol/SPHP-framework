@@ -2,18 +2,17 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$stackInterface = \Sphp\Manual\api()->classLinker(StackInterface::class);
-$stack = \Sphp\Manual\api()->classLinker(Stack::class);
-$splStack = Apis::phpManual()->classLinker(\SplStack::class);
+$stackInterface = Manual\api()->classLinker(StackInterface::class);
+$stack = Manual\api()->classLinker(Stack::class);
+$splStack = Manual\php()->classLinker(\SplStack::class);
 
-$queueInterface = \Sphp\Manual\api()->classLinker(QueueInterface::class);
-$queue = \Sphp\Manual\api()->classLinker(Queue::class);
-$splQueue = \Sphp\Manual\api()->classLinker(\SplQueue::class);
+$queueInterface = Manual\api()->classLinker(QueueInterface::class);
+$queue = Manual\api()->classLinker(Queue::class);
+$splQueue = Manual\api()->classLinker(\SplQueue::class);
 
-\Sphp\Manual\md(<<<MD
+Manual\md(<<<MD
 ##Stack and queue implementations
 
 In computer science, a queue represents a First-In-First-Out (FIFO) data
@@ -31,8 +30,10 @@ an instance of $stack can therefore be used as a last-in-first-out (LIFO) stack 
 
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Stdlib/Datastructures/Stack.php', 'text', false);
-\Sphp\Manual\md(<<<MD
+
+Manual\visualize('Sphp/Stdlib/Datastructures/Stack.php', 'text', false);
+
+Manual\md(<<<MD
 ####The $queueInterface and its implementation
 
 The $queue implements the $queueInterface by extending the native $splQueue.
@@ -47,5 +48,6 @@ an instance of $queue can therefore be used as a last-in-first-out (LIFO) stack 
 
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Stdlib/Datastructures/Queue.php', 'text', false);
+
+Manual\visualize('Sphp/Stdlib/Datastructures/Queue.php', 'text', false);
 
