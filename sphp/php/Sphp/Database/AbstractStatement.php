@@ -61,7 +61,7 @@ abstract class AbstractStatement implements Statement {
     try {
       return $this->getPDO()->prepare($this->statementToString());
     } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
+      throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
     }
   }
 

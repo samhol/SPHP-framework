@@ -13,5 +13,6 @@ The $insert object executes declarative INSERT statement in SQL databases.
 		
 MD
 );
+
 Manual\visualize('Sphp/Database/Insert.one.php', 'text', false);
 Manual\visualize('Sphp/Database/Insert.php', 'text', false);

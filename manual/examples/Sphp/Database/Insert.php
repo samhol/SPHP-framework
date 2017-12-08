@@ -32,6 +32,7 @@ try {
           ->columnNames('street', 'zipcode', 'city', 'country')
           ->valuesFromArray($hydeparkData);
   echo $inserter->statementToString();
+  $inserter->affectRows();
   var_dump(Db::insert()
                   ->into('address')
                   ->columnNames('street', 'zipcode', 'city', 'country')
