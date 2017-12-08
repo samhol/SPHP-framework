@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
-use Sphp\Html\Content;
+use Sphp\Html\Div;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
@@ -21,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SyntaxHighlightingModalBuilder implements Content {
+class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
 
   use \Sphp\Html\ContentTrait,
       SyntaxhighlighterContainerTrait;
@@ -32,7 +32,7 @@ class SyntaxHighlightingModalBuilder implements Content {
   private $hl;
 
   /**
-   * @var string 
+   * @var Div 
    */
   private $title;
 
@@ -46,10 +46,16 @@ class SyntaxHighlightingModalBuilder implements Content {
     $this->trigger = $trigger;
     $this->hl = new SyntaxHighlighter();
     $this->title = $title;
+    $this->title = new Div($title);
+    $this->title->addCssClass('title');
   }
 
   public function __destruct() {
     unset($this->hl);
+  }
+
+  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
+    return $this->hl;
   }
 
   /**
@@ -59,7 +65,7 @@ class SyntaxHighlightingModalBuilder implements Content {
    */
   public function buildModal(): Modal {
     $popup = new Popup();
-    $popup->append($this->title);
+    $popup->addCssClass('sphp-syntax-highlighting-modal')->append($this->title);
     $popup->append($this->hl);
     $modal = new Modal($this->trigger, $popup);
     return $modal;
@@ -72,7 +78,7 @@ class SyntaxHighlightingModalBuilder implements Content {
    * @return $this for a fluent interface
    */
   public function setTitle($heading) {
-    $this->title = $heading;
+    $this->title->setContent($heading);
     return $this;
   }
 
@@ -96,20 +102,13 @@ class SyntaxHighlightingModalBuilder implements Content {
 
   /**
    * Prints the PHP Example code and the preferred result
-   *
-   * @param  string $path the file path of the presented example PHP code
-   * @param  string|null $highlightOutput the language name of the output code 
-   *         or `null` if highlighted output code should not be visible
-   * @param  boolean $outputAsHtmlFlow true for executed HTML result or false for no execution
-   * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
-   * @return Accordion
+   * 
+   * @param type $button
+   * @param type $title
+   * @param string $path
    */
-  public static function visualize(string $title, string $path) {
-    (new static($path, $highlightOutput, $outputAsHtmlFlow))->buildAccordion()->printHtml();
-  }
-
-  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
-    return $this->hl;
+  public static function visualize($button,  $title, string $path) {
+    (new static($button, $title))->loadFromFile($path)->printHtml();
   }
 
 }

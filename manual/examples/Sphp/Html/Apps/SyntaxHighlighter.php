@@ -8,8 +8,7 @@ $syntax1 = (new SyntaxHighlighter())->loadFromFile(__FILE__);
 
 
 $syntax2 = (new SyntaxHighlighter())
-        ->loadFromFile(__FILE__)
-        ->startLineNumbersAt(10);
+        ->loadFromFile(__FILE__);
 
 $syntax3 = (new SyntaxHighlighter())
         ->loadFromFile(__FILE__)

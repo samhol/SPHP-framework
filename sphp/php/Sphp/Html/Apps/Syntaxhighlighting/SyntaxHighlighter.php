@@ -83,7 +83,6 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     $this->footer = (new Div($footerText))->addCssClass("foot");
     $this->buttonArea = (new Div())->addCssClass('button-area');
     $this->showLineNumbers(true)
-            ->startLineNumbersAt(1)
             ->useFooter()
             ->setDefaultContentCopyController();
   }
@@ -132,17 +131,6 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   public function setSyntaxBlockId($seed = "geshi_") {
     $this->geshiId = $seed . Strings::random();
     $this->geshi->set_overall_id($this->geshiId);
-    return $this;
-  }
-
-  /**
-   * Sets what number line numbers should start at
-   * 
-   * @param  int $number the number to start line numbers at
-   * @return $this for a fluent interface
-   */
-  public function startLineNumbersAt(int $number) {
-    $this->geshi->start_line_numbers_at($number);
     return $this;
   }
 
@@ -205,22 +193,12 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @param  mixed $button the copier button
    * @return $this for a fluent interface
    */
-  public function setDefaultContentCopyController($button = 'copy') {
-    if (!($button instanceof ComponentInterface)) {
-      $button = new Button('button', $button);
+  public function setDefaultContentCopyController($button = 'Copy') {
+    if (!$button instanceof ComponentInterface) {
+      $button = new Button($button);
     }
     $this->copyBtn = $this->attachContentCopyController($button);
     $this->buttonArea['copy'] = $this->copyBtn;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param string $lang 
-   * @return $this
-   */
-  public function setLanguage(string $lang) {
-    $this->geshi->set_language($lang);
     return $this;
   }
 
@@ -258,14 +236,6 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     }
   }
 
-  /**
-   * Executes a PHP file and highlights the resulting output
-   * 
-   * @param  string $path the path that contains the file
-   * @param  string $lang the language name of the output
-   * @return $this for a fluent interface
-   * @throws RuntimeException if the file does not exist
-   */
   public function executeFromFile(string $path, string $lang = 'text') {
     if (!file_exists($path)) {
       throw new RuntimeException("The file in the '$path' does not exist!");

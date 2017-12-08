@@ -2,6 +2,7 @@
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
-$modal = new SyntaxHighlightingModalBuilders('locations', "<h3>MySQL version of locations table</h3>");
+$modal = new SyntaxHighlightingModalBuilder((new \Sphp\Html\Span('locations'))->addCssClass('button'), "`MySQL` version of locations table");
 $modal->loadFromFile('Sphp/Database/locations.sql');
+
 echo $modal->buildModal()->setSize('large');
