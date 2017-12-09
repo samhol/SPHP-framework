@@ -133,8 +133,4 @@ class Iframe extends EmptyTag implements IframeInterface {
     return $this->getAttr('sandbox');
   }
 
-  public function contentToString(): string {
-    return '';
-  }
-
 }
