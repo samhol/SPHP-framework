@@ -31,19 +31,16 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
       \Sphp\Html\ContentParsingTrait;
 
   /**
-   *
    * @var Button 
    */
   private $prev;
 
   /**
-   *
    * @var Button 
    */
   private $next;
 
   /**
-   *
    * @var boolean 
    */
   private $navButtonsVisible = true;
@@ -63,7 +60,6 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   private $bullets;
 
   /**
-   *
    * @var boolean 
    */
   private $bulletsVisible = true;

@@ -10,7 +10,6 @@ namespace Sphp\Html\Media;
 use Sphp\Html\EmptyTag;
 use Sphp\Images\ImageScaler;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Media\ImageMap\Map;
 
 /**
  * Implements an HTML &lt;img&gt; tag
@@ -59,7 +58,7 @@ class Img extends EmptyTag implements ImgInterface {
   /**
    * Sets the image map used
    * 
-   * @param  string|Map $map the image map name or instance
+   * @param  string|ImageMap\Map $map the image map name or instance
    * @return $this for a fluent interface
    */
   public function useMap($map) {

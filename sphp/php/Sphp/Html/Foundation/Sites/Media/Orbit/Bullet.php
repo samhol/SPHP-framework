@@ -77,7 +77,7 @@ class Bullet extends AbstractComponent {
    * @param  string $description
    * @return $this for a fluent interface
    */
-  public function setSlideDescription($description) {
+  public function setSlideDescription(string $description) {
     $this->srDescriptor->replaceContent($description);
     return $this;
   }

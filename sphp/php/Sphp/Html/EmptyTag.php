@@ -18,12 +18,22 @@ namespace Sphp\Html;
  */
 class EmptyTag extends AbstractTag {
 
+  private $close = false;
+
+  public function __construct(string $tagName, bool $useCloseTag = false, Attributes\HtmlAttributeManager $attrManager = null) {
+    parent::__construct($tagName, $attrManager);
+    $this->close = $useCloseTag;
+  }
+
   public function getHtml(): string {
     $output = '<' . $this->getTagName();
     if ($this->attrs()->containsInstances()) {
       $output .= ' ' . $this->attrs();
     }
     $output .= '>';
+    if ($this->close) {
+      $output .= "</{$this->getTagName()}>";
+    }
     return $output;
   }
 

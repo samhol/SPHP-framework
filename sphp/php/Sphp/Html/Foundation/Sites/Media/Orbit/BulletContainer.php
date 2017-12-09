@@ -26,7 +26,7 @@ class BulletContainer extends AbstractContainerComponent {
    * @param  int $count slide(s)
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($count = 0) {
+  public function __construct(int $count = 0) {
     parent::__construct('nav');
     for ($i = 0; $i < $count; $i++) {
       $this->set($i);
@@ -57,7 +57,7 @@ class BulletContainer extends AbstractContainerComponent {
    * @param  int $slideNo
    * @return Bullet
    */
-  public function get($slideNo) {
+  public function get(int $slideNo) {
     $this->getInnerContainer()->get($slideNo);
     return $this;
   }
@@ -68,7 +68,7 @@ class BulletContainer extends AbstractContainerComponent {
    * @param  int $bulletNo
    * @return $this for a fluent interface
    */
-  public function setActive($bulletNo) {
+  public function setActive(int $bulletNo) {
     foreach ($this->getInnerContainer() as $no => $bullet) {
       if ($no == $bulletNo) {
         $bullet->setActive(true);

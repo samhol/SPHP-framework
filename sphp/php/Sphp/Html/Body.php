@@ -56,7 +56,7 @@ class Body extends ContainerTag implements ContentParser {
   }
 
   public function contentToString(): string {
-    return parent::contentToString().$this->scripts();
+    return parent::contentToString() . $this->scripts();
   }
 
   /**

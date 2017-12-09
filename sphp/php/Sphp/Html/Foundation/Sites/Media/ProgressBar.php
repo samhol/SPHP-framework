@@ -37,11 +37,11 @@ class ProgressBar extends AbstractComponent implements Colourable {
    * @param int $progress
    * @param string|null $name the name of the bar
    */
-  public function __construct($progress, $name = null) {
+  public function __construct(int $progress, string $name = null) {
     parent::__construct('div');
     $this->progressMeter = new Span();
     $this->progressMeter->cssClasses()->protect('progress-meter');
-    $this->progressMeter['progress-meter-text'] = new Paragraph();
+    $this->progressMeter['progress-meter-text'] = new Span();
     $this->progressMeter["progress-meter-text"]->cssClasses()->protect('progress-meter-text');
     $this->identify();
     $this->attrs()
@@ -63,7 +63,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
    * @param  boolean $show true for visible progress text and false otherwise
    * @return $this for a fluent interface
    */
-  public function showProgressText($show = true) {
+  public function showProgressText(bool $show = true) {
     if ($show) {
       $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'visible');
     } else {
@@ -78,7 +78,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
    * @param  string $name the optional bar name for build-in javascript library use
    * @return $this for a fluent interface
    */
-  public function setBarName($name) {
+  public function setBarName(string $name = null) {
     $this->attrs()->set('data-sphp-progressbar-name', $name);
     return $this;
   }
@@ -87,14 +87,14 @@ class ProgressBar extends AbstractComponent implements Colourable {
    * Sets the current progress
    * 
    * @param  int $progress (0-100) the current progress
-   * @param  string $progressText the optional screenreader text describing the current progress
+   * @param  string $progressText the optional screen reader text describing the current progress
    * @return $this for a fluent interface
    */
-  public function setProgress($progress, $progressText = null) {
+  public function setProgress(int $progress, string $progressText = null) {
     if ($progressText === null) {
       $progressText = "$progress%";
     }
-    $this->attrs() 
+    $this->attrs()
             ->set('aria-valuenow', $progress)
             ->set('aria-valuetext', $progressText);
     $this->attrs()->set('title', $progressText);

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\EmptyTag;
 
 /**
  * Implements an HTML &lt;iframe&gt; tag (an inline frame).
@@ -20,7 +20,7 @@ use Sphp\Html\AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Iframe extends AbstractComponent implements IframeInterface {
+class Iframe extends EmptyTag implements IframeInterface {
 
   use LazyMediaSourceTrait,
       SizeableTrait;
@@ -32,8 +32,8 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @param  string $name the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
-  public function __construct($src = null, $name = null) {
-    parent::__construct('iframe');
+  public function __construct(string $src = null, string $name = null) {
+    parent::__construct('iframe', true);
     if ($src !== null) {
       $this->setSrc($src);
     }
@@ -134,7 +134,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
   }
 
   public function contentToString(): string {
-    return '<p>Your browser does not support iframes.</p>';
+    return '';
   }
 
 }

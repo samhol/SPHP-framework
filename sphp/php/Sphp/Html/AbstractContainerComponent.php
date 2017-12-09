@@ -70,7 +70,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    *
    * @return ContainerInterface the content container
    */
-  protected function getInnerContainer():ContainerInterface {
+  protected function getInnerContainer(): ContainerInterface {
     return $this->content;
   }
 

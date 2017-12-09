@@ -15,7 +15,6 @@ use ReflectionClass;
  *
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
- * @method \Sphp\Html\Content\Paragraph p(mixed $content = null) creates a new `p` tag component
  * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new `a` tag component
  * 
  * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new rectangle `area` tag component
@@ -32,8 +31,11 @@ use ReflectionClass;
  * @method \Sphp\Html\Headings\H5 h5(mixed $content = null) creates a new `h5` tag component
  * @method \Sphp\Html\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
  * 
- * 
- * @method Sphp\Html\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
+ * @method \Sphp\Html\Content\Main main(mixed $content = null) creates a new `main` tag component
+ * @method \Sphp\Html\Content\Section section(mixed $content = null) creates a new `section` tag component
+ * @method \Sphp\Html\Content\Aside aside(mixed $content = null) creates a new `aside` tag component
+ * @method \Sphp\Html\Content\Article article(mixed $content = null) creates a new `article` tag component
+ * @method \Sphp\Html\Content\Paragraph p(mixed $content = null) creates a new `p` tag component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

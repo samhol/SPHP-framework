@@ -8,8 +8,9 @@
 namespace Sphp\Html;
 
 /**
- * Trait implements some {@link TraversableInterface} functionality
+ * Trait implements some {@link TraversableContent} functionality
  * 
+ * @link    \Sphp\Html\TraversableContent implemented interface
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

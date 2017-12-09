@@ -40,7 +40,7 @@ abstract class Filesystem {
    * 
    * @param  string $path  relative path to file
    * @return string full path to file
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @throws RuntimeException if the file path cannot be resolved
    */
   public static function getFullPath(string $path): string {
     $fullPath = stream_resolve_include_path($path);
@@ -55,7 +55,7 @@ abstract class Filesystem {
    *
    * @param  string $path the path to the file
    * @return string the result of the script execution
-   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public static function toString(string $path): string {
     if (!static::isFile($path)) {
@@ -74,7 +74,7 @@ abstract class Filesystem {
    *
    * @param  string|string[] $paths the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws \Sphp\Exceptions\Exception if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public static function executePhpToString(...$paths): string {
     $content = '';
@@ -99,7 +99,7 @@ abstract class Filesystem {
    *
    * @param  string $path the path to the ASCII file
    * @return string[] rows of the ASCII file in an array
-   * @throws \Sphp\Exceptions\RuntimeException if the $path points to no actual file
+   * @throws RuntimeException if the $path points to no actual file
    */
   public static function getTextFileRows(string $path): array {
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);

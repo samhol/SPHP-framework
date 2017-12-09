@@ -8,7 +8,6 @@
 namespace Sphp\Html;
 
 use Sphp\Stdlib\Filesystem;
-use ParsedownExtraPlugin;
 use Sphp\Stdlib\Parser;
 
 /**
@@ -32,7 +31,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $path
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
   public function appendRawFile(string $path) {
     $this->append(Filesystem::toString($path));
@@ -44,7 +43,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $path path to the PHP file
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
   public function appendPhpFile(string $path) {
     $this->append(Filesystem::executePhpToString($path));
@@ -56,6 +55,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $md
    * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
   public function appendMd(string $md) {
     $p = Parser::md();
@@ -68,7 +68,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $path
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
   public function appendMdFile(string $path) {
     $this->appendMd(Filesystem::executePhpToString($path));
