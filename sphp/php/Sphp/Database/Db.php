@@ -31,6 +31,14 @@ class Db {
   private static $instances = [];
 
   /**
+   * @var string[] 
+   */
+  private $map = [
+      'mysql' => 'MySQL',
+      'sqlsrv' => 'Microsoft'
+  ];
+
+  /**
    * @var PDO 
    */
   private $pdo;
@@ -103,14 +111,6 @@ class Db {
   }
 
   /**
-   * @var string[] 
-   */
-  private $map = [
-      'mysql' => 'MySQL',
-      'sqlsrv' => 'Microsoft'
-  ];
-
-  /**
    * 
    *
    * 
@@ -120,9 +120,6 @@ class Db {
    * @throws BadMethodCallException
    */
   public function __call(string $className, array $arguments = []) {
-
-
-    //$ns = __NAMESPACE__ . "\\Legacy";
     $result = __NAMESPACE__ . "\\Legacy\\" . ucfirst($className);
     if (!class_exists($result)) {
       throw new InvalidArgumentException("Statement ($className) cannot be created");
@@ -135,10 +132,7 @@ class Db {
         $result = $try;
       }
     }
-    //var_dump($result);
     return new $result($this->pdo);
-
-    // return $this->strategy->createStatement($name);
   }
 
 }
