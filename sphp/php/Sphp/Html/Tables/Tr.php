@@ -47,19 +47,19 @@ class Tr extends AbstractRow {
 
   /**
    * 
-   * @param  mixed $tds
-   * @return self
+   * @param  array $tds
+   * @return Tr
    */
-  public static function fromTds($tds) {
+  public static function fromTds(array $tds): Tr {
     return (new static())->appendTds($tds);
   }
 
   /**
    * 
-   * @param  mixed $ths
-   * @return self
+   * @param  array $ths
+   * @return Tr
    */
-  public static function fromThs($ths) {
+  public static function fromThs(array $ths): Tr {
     return (new static())->appendThs($ths);
   }
 

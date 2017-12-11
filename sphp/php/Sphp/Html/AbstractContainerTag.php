@@ -32,47 +32,12 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
 
   use ContentParsingTrait,
       TraversableTrait;
-  
-  
-  /**
-   * Appends content to the component
-   *
-   * **Important!**
-   *
-   * Parameter `mixed $content` can be of any type and get converted to PHP
-   * strings.
-   *
-   * **HOWEVER:** `$content` is bound by the
-   * properties and purpose of the actual HTML structure the component
-   * represents.
-   *
-   * @param  mixed|mixed[] $content added content
-   * @return $this for a fluent interface
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
-   */
+
   public function append($content) {
     $this->getInnerContainer()->append($content);
     return $this;
   }
 
-  /**
-   * Prepends elements to the html component
-   *
-   * **Important!**
-   *
-   * Parameter `mixed $content` can be of any type that converts to a
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
-   *
-   * **HOWEVER:** `$content` is bound by the
-   * properties and purpose of the actual HTML structure the component
-   * represents.
-   *
-   * **Note:** the numeric keys of the content will be renumbered starting from zero
-   *
-   * @param  mixed|mixed[] $content added content
-   * @return $this for a fluent interface
-   */
   public function prepend($content) {
     $this->getInnerContainer()->prepend($content);
     return $this;
@@ -102,7 +67,13 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
     return $this->getInnerContainer();
   }
 
-  public function offsetExists($offset) {
+  /**
+   * Checks whether an offset exists
+   *
+   * @param  mixed $offset an offset to check for
+   * @return boolean true on success or false on failure
+   */
+  public function offsetExists($offset): bool {
     return $this->getInnerContainer()->offsetExists($offset);
   }
 
@@ -119,28 +90,22 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
   /**
    * Assigns content to the specified offset
    *
-   * **Important!**
-   *
-   * Parameter `mixed $value` can be of any type that converts to a
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param mixed $value the value to set
+   * @param  mixed $offset the offset to assign the value to
+   * @param  mixed $value the value to set
+   * @return void
    */
   public function offsetSet($offset, $value) {
     $this->getInnerContainer()->offsetSet($offset, $value);
-    return $this;
   }
 
   /**
    * Unsets an offset
    *
-   * @param mixed $offset offset to unset
+   * @param  mixed $offset offset to unset
+   * @return void
    */
   public function offsetUnset($offset) {
     $this->getInnerContainer()->offsetUnset($offset);
-    return $this;
   }
 
   /**
@@ -172,4 +137,5 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
   public function exists($value): bool {
     $this->getInnerContainer()->exists($value);
   }
+
 }

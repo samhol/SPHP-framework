@@ -24,7 +24,7 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, TraversableContent, RowInterface {
+abstract class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, TraversableContent, Row {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -46,16 +46,16 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   /**
    * Appends a cell component to the row
    *
-   * @param  CellInterface $cell new cell object
+   * @param  Cell $cell new cell object
    * @return $this for a fluent interface
    */
-  public function append(CellInterface $cell) {
+  public function append(Cell $cell) {
     $this->getInnerContainer()->append($cell);
     return $this;
   }
 
   /**
-   * Creates and appends a new {@link Th} cell to the row
+   * Creates and appends a new &lt;th&gt; component to the row
    *
    * @precondition  $scope == row|col|rowgroup|colgroup
    * @precondition  $colspan >= 1
@@ -67,28 +67,29 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
-   * @return $this for a fluent interface
+   * @return Th appended table cell component
    */
-  public function appendTh($content, string $scope = null, int $colspan = 1, int $rowspan = 1) {
-    $this->append(new Th($content, $scope, $colspan, $rowspan));
-    return $this;
+  public function appendTh($content, string $scope = null, int $colspan = 1, int $rowspan = 1): Th {
+    $th = new Th($content, $scope, $colspan, $rowspan);
+    $this->append($th);
+    return $th;
   }
 
   /**
-   * Creates and appends {@link CellInterface} components to the row
+   * Creates and appends &lt;th&gt; components to the row
    *
-   * @param  mixed|mixed[] $cells cells of the table row
+   * @param  mixed[] $cells cells of the table row
    * @return $this for a fluent interface
    */
-  public function appendThs($cells) {
-    foreach ($this->parseNewCells($cells, Th::class) as $th) {
-      $this->append($th);
+  public function appendThs(array $cells) {
+    foreach ($cells as $th) {
+      $this->appendTh($th);
     }
     return $this;
   }
 
   /**
-   * Creates and appends a new {@link Td} cell to the row
+   * Creates and appends a new &lt;td&gt; component to the row
    *
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
@@ -97,22 +98,23 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @param int $rowspan the value of the rowspan attribute
    * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
-   * @return $this for a fluent interface
+   * @return Td appended table cell component
    */
-  public function appendTd($content, int $colspan = 1, int $rowspan = 1) {
-    $this->append(new Td($content, $colspan, $rowspan));
-    return $this;
+  public function appendTd($content, int $colspan = 1, int $rowspan = 1): Td {
+    $td = new Td($content, $colspan, $rowspan);
+    $this->append($td);
+    return $td;
   }
 
   /**
-   * Creates and appends {@link CellInterface} components to the row
+   * Creates and appends &lt;td&gt; components to the row
    *
-   * @param  mixed|mixed[] $cells cells of the table row
+   * @param  mixed[] $cells cells of the table row
    * @return $this for a fluent interface
    */
-  public function appendTds($cells) {
-    foreach ($this->parseNewCells($cells, Td::class) as $td) {
-      $this->append($td);
+  public function appendTds(array $cells) {
+    foreach ($cells as $td) {
+      $this->appendTd($td);
     }
     return $this;
   }
@@ -120,40 +122,19 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   /**
    * Prepends a cell component to the row
    *
-   * @param  CellInterface $cell new cell object
+   * @param  Cell $cell new cell object
    * @return $this for a fluent interface
    */
-  public function prepend(CellInterface $cell) {
+  public function prepend(Cell $cell) {
     $this->getInnerContainer()->prepend($cell);
     return $this;
   }
 
   /**
-   * Returns the input as an array of components extending {@link TableCell}
+   * Create a new iterator to iterate through cells in the row
    *
-   *  mixed <var>$rawData</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   * <var>$rawData</var> attribute can have two case insensitive values:
-   * 
-   * * 'td' => all mixed <var>$rawData</var> are of type {@link Td}
-   * * 'th' => all mixed <var>$rawData</var> are of type {@link Th}
-   * 
-   * @param  mixed|mixed[] $rawData cells of the table row
-   * @param  string $cellType the default type of the cell `td|th`
-   * @return CellInterface[] table cells
+   * @return Traversable iterator
    */
-  protected function parseNewCells($rawData, $cellType = Td::class) {
-    foreach (is_array($rawData) ? $rawData : [$rawData] as $cell) {
-      if ($cell instanceof CellInterface) {
-        $arr[] = $cell;
-      } else {
-        $arr[] = new $cellType($cell);
-      }
-    }
-    return $arr;
-  }
-
   public function getIterator() {
     return $this->getInnerContainer();
   }

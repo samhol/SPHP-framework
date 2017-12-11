@@ -126,10 +126,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Sets (replaces) a part of a table with the given {@link TableContentInterface} component
    *
-   * @param TableContentInterface $content the given part of a table
+   * @param TableContent $content the given part of a table
    * @return $this for a fluent interface
    */
-  public function setContent(TableContentInterface $content) {
+  public function setContent(TableContent $content) {
     if ($content instanceof Colgroup || $content instanceof Col) {
       $this->setCols($content);
     } else if ($content instanceof Caption) {
@@ -140,7 +140,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
       $this->tbody = $content;
     } else if ($content instanceof Tfoot) {
       $this->tfoot = $content;
-    } else if ($content instanceof Tr || $content instanceof Cell) {
+    } else if ($content instanceof Tr || $content instanceof AbstractCell) {
       $this->tbody->append($content);
     }
     return $this;

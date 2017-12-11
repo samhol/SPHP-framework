@@ -20,17 +20,17 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, ArrayAccess, TraversableContent, TableContentInterface {
+abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableContent, TableContent {
 
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Counts the {@link RowInterface} components in the table
+   * Counts the &lt;tr&gt; components in the table
    */
   const COUNT_NORMAL = 1;
 
   /**
-   * Counts the {@link CellInterface} components in the table
+   * Counts the &lt;td&gt; and &lt;th&gt; components in the table
    */
   const COUNT_CELLS = 2;
 
@@ -68,10 +68,10 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * A mixed `$row` can be of any type that converts to a PHP string
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
-   * @param  RowInterface $row the row being appended
+   * @param  Row $row the row being appended
    * @return $this for a fluent interface
    */
-  public function append(RowInterface $row) {
+  public function append(Row $row) {
     $this->getInnerContainer()->append($row);
     return $this;
   }
@@ -84,12 +84,13 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * A mixed `$row` can be of any type that converts to a PHP string
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
-   * @param  mixed|mixed[] $cells the row being appended
-   * @return $this for a fluent interface
+   * @param  array $cells the row being appended
+   * @return Tr appended table row component
    */
-  public function appendHeaderRow($cells) {
-    $this->append(Tr::fromThs($cells));
-    return $this;
+  public function appendHeaderRow(array $cells): Tr {
+    $row = Tr::fromThs($cells);
+    $this->append($row);
+    return $row;
   }
 
   /**
@@ -100,10 +101,10 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * A mixed `$row` can be of any type that converts to a PHP string
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
-   * @param  mixed|mixed[] $cells the row being appended
+   * @param  array $cells the row being appended
    * @return $this for a fluent interface
    */
-  public function appendBodyRow($cells) {
+  public function appendBodyRow(array $cells) {
     $this->append(Tr::fromTds($cells));
     return $this;
   }
@@ -120,25 +121,8 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @param  mixed|mixed[] $row the row(s) being appended
    * @return $this for a fluent interface
    */
-  public function prepend(RowInterface $row) {
+  public function prepend(Row $row) {
     $this->getInnerContainer()->prepend($row);
-    return $this;
-  }
-
-  /**
-   * Prepends a {@link RowInterface} to the object
-   *
-   * **Notes:**
-   * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-   *  * The numeric keys of the container will be renumbered starting from zero
-   *
-   * @param  mixed|mixed[] $row the row(s) being appended
-   * @return $this for a fluent interface
-   */
-  public function prependTr($row) {
-    $this->prepend(new Tr($row));
     return $this;
   }
 
@@ -168,22 +152,6 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
 
   public function getIterator() {
     return $this->getInnerContainer();
-  }
-
-  public function offsetExists($offset) {
-    return $this->getInnerContainer()->offsetExists($offset);
-  }
-
-  public function offsetGet($offset) {
-    return $this->getInnerContainer()->offsetGet($offset);
-  }
-
-  public function offsetSet($offset, $value) {
-    return $this->getInnerContainer()->offsetSet($offset, $value);
-  }
-
-  public function offsetUnset($offset) {
-    
   }
 
 }

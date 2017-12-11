@@ -19,7 +19,7 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Caption extends SimpleContainerTag implements TableContentInterface {
+class Caption extends SimpleContainerTag implements TableContent {
 
   /**
    * Constructs a new instance

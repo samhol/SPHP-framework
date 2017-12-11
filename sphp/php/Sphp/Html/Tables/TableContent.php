@@ -14,6 +14,6 @@ namespace Sphp\Html\Tables;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TableContentInterface {
+interface TableContent {
   
 }

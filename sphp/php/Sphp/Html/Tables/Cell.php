@@ -1,47 +1,78 @@
 <?php
 
 /**
- * Cell.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * CellInterface.php (UTF-8)
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\ContainerTag;
-
 /**
- * Implements HTML table tag's cells
+ * Interface is the base definition for all {@link Tr} content (table cells)
+ * 
+ * An HTML table has two kinds of cells:
  *
- * @author Sami Holck <sami.holck@gmail.com>
+ *  **Header cells** - contains header information (created with the &lt;th&gt; element).
+ *  The text in &lt;th&gt; elements are bold and centered by default.
+ * 
+ *  **Standard cells** - contains data (created with the &lt;td&gt; element).
+ *  The text in &lt;td&gt; elements are regular and left-aligned by default.
+ * 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
+ * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API
+ * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API
+ * @link    http://dev.w3.org/html5/spec/Overview.html#the-th-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Cell extends ContainerTag implements CellInterface {
+interface Cell extends TableContent {
 
-  public function setColspan(int $value) {
-    if ($value === 1) {
-      $this->attrs()->remove('colspan');
-    } else {
-      $this->attrs()->set('colspan', $value);
-    }
-    return $this;
-  }
+  /**
+   * Sets the value of the colspan attribute
+   *
+   * **Note:** Only Firefox and Opera support colspan="0", which tells the 
+   *  browser to span the cell to the last column of the column group 
+   * (colgroup).
+   *
+   * @precondition  $value >= 1
+   * @param  int $value the value of the colspan attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
+   */
+  public function setColspan(int $value);
 
-  public function getColspan(): int {
-    return (int) $this->getAttr('colspan');
-  }
+  /**
+   * Returns the value of the colspan attribute
+   *
+   * @return int the value of the colspan attribute
+   * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
+   */
+  public function getColspan(): int;
 
-  public function setRowspan(int $value) {
-    if ($value == 1) {
-      $this->attrs()->remove('rowspan');
-    } else {
-      $this->attrs()->set('rowspan', $value);
-    }
-    return $this;
-  }
+  /**
+   * Sets the value of the rowspan attribute
+   *
+   * **Note:** Only Firefox and Opera support rowspan="0", which tells the 
+   *  browser to span the cell to the last row of the table section 
+   *  (thead, tbody, or tfoot).
+   *
+   * @precondition  $value >= 1
+   * @param  int $value the value of the rowspan attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
+   */
+  public function setRowspan(int $value);
 
-  public function getRowspan(): int {
-    return (int) $this->attrs()->getValue('rowspan');
-  }
-
+  /**
+   * Returns the value of the rowspan attribute
+   *
+   * @return int the value of the rowspan attribute
+   * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
+   */
+  public function getRowspan(): int;
 }

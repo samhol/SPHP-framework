@@ -17,7 +17,7 @@ namespace Sphp\Html\Tables;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Th extends Cell {
+class Th extends AbstractCell {
 
   /**
    * Constructs a new instance

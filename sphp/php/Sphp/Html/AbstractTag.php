@@ -80,15 +80,9 @@ abstract class AbstractTag implements TagInterface {
     return $this->tagName;
   }
 
-  //private static $count = 0;
-
   public function attrs(): HtmlAttributeManager {
     if ($this->attrs === null) {
       $this->attrs = new HtmlAttributeManager();
-      //self::$count += 1;
-      //if ((self::$count % 10) === 0) {
-     // echo "\nMan: " . self::$count;
-      //}
     }
     return $this->attrs;
   }

@@ -10,8 +10,7 @@ namespace Sphp\Html\Tables;
 /**
  * Implements an HTML &lt;thead&gt; tag
  *
- *  This component is used to group header content in a 
- *  {@link Table} component.
+ *  This component is used to group header content in a &lt;table&gt; component.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_thead.asp w3schools API

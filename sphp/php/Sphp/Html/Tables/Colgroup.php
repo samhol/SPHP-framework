@@ -17,7 +17,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Colgroup extends ContainerTag implements TableContentInterface {
+class Colgroup extends ContainerTag implements TableContent {
 
   /**
    * Constructs a new instance

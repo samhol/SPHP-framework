@@ -12,7 +12,7 @@ namespace Sphp\Html;
  *
  * **Notes:**
  *
- * Any class extending {@link self} follows these rules:
+ * Any extending class follows these rules:
  * 
  * 1. Any extending class act as a container for other components like 
  *    {@link ContentInterface}, other objects, text, ...etc.

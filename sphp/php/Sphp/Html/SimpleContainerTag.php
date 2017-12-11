@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractSimpleContainerTag.php (UTF-8)
+ * SimpleContainerTag.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,7 +11,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Stdlib\Strings;
 
 /**
- * Class is the base class for all HTML tag components acting as HTML component containers
+ * Base for all simple container tags
  *
  * **Notes:**
  *
@@ -38,9 +38,9 @@ class SimpleContainerTag extends AbstractTag {
    * 
    * **Important!**
    *
-   * 1. Parameter `mixed $content` can be of any type that converts to a string 
-   *    or to an array of strings. So also objects of any type that implement magic 
-   *    method `__toString()` are allowed.
+   * Parameter `mixed $content` can be of any type that converts to a string 
+   * or to an array of strings. So also objects of any type that implement magic 
+   * method `__toString()` are allowed.
    *
    * @param  string $tagName the name of the tag
    * @param  mixed $content the content of the component
