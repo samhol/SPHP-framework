@@ -10,9 +10,10 @@ namespace Sphp\Html\Content;
 use Sphp\Html\ContainerTag;
 
 /**
- * Description of Main
+ * Implements an HTML &lt;main&gt; tag
  *
- * @author  Sami Holck <sami.holck@gmail.com>
+ * @author Sami Holck <sami.holck@gmail.com>
+ * @link    http://www.w3schools.com/tags/tag_main.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
