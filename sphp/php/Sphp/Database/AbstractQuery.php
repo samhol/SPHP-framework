@@ -383,8 +383,9 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
   }
 
   /**
-   * 
-   * @return Traversable
+   * Create a new iterator to iterate through query results
+   *
+   * @return Traversable iterator
    */
   public function getIterator(): Traversable {
     try {
@@ -401,36 +402,15 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
     }
   }
 
-  /**
-   * Executes the SQL query in the given database and returns the result rows as an array
-   *
-   * @return mixed[] result rows as an array
-   * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   */
   public function fetchAll(int $fetch_style = PDO::FETCH_ASSOC): array {
     return $this->execute()->fetchAll($fetch_style);
   }
 
-  /**
-   * Executes the SQL query in the given database and returns the result rows as an array
-   *
-   * @return mixed[] result rows as an array
-   * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   */
-  public function fetchColumn(int $colNum = 0) {
+  public function fetchColumn(int $colNum = 0): array {
     return $this->execute()->fetchColumn($colNum);
   }
 
-  /**
-   * Executes the SQL query in the given database and returns the result rows as an array
-   *
-   * @return mixed[] result rows as an array
-   * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   */
-  public function fetchFirstRow() {
+  public function fetchFirstRow(): array {
     return $this->execute()->fetch(PDO::FETCH_ASSOC);
   }
 

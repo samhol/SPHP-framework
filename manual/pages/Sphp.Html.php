@@ -1,6 +1,7 @@
 <?php
 
 namespace Sphp\Html;
+
 use Sphp\Manual;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
@@ -79,7 +80,7 @@ PHP string.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize("Sphp/Html/HtmlContainer.php");
+CodeExampleAccordionBuilder::visualize('Sphp/Html/HtmlContainer.php');
 $containerTag = Manual\api()->classLinker(ContainerTag::class);
 Manual\md(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
@@ -101,5 +102,10 @@ MD
 );
 //PHPExampleViewer::visualize("Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize("Sphp/Html/AjaxLoaderInterface.php");
-Manual\loadPage("Sphp.Html.AjaxLoaderInterface.php");
+Manual\loadPage('Sphp.Html.AjaxLoaderInterface.php');
 //\Sphp\Manual\loadPage("Sphp.Html.Document.php");
+
+Manual\md(<<<MD
+https://caniuse.com/
+MD
+);

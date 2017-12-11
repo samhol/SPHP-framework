@@ -8,6 +8,8 @@
 namespace Sphp\Database;
 
 use Traversable;
+use Countable;
+use PDO;
 
 /**
  * Defines a `SELECT` statement
@@ -16,13 +18,12 @@ use Traversable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface Query extends ConditionalStatement, Traversable, \Countable {
+interface Query extends ConditionalStatement, Traversable, Countable {
 
   /**
    * Sets the list of columns to be included in the final result
    *
-   * @param  string $columns the column(s) to show (can have multiple
-   *         string parameters)
+   * @param  string $columns the column(s) to show (can have multiple string parameters)
    * @return $this for a fluent interface
    */
   public function get(string ...$columns);
@@ -32,8 +33,7 @@ interface Query extends ConditionalStatement, Traversable, \Countable {
    *
    * The FROM clause can include optional JOIN sub clauses to specify the rules for joining tables.
    *
-   * @param  string $tables the table(s) to show (can have multiple
-   *         string parameters)
+   * @param  string $tables the table(s) to show (can have multiple string parameters)
    * @return $this for a fluent interface
    */
   public function from(string ...$tables);
@@ -179,4 +179,40 @@ interface Query extends ConditionalStatement, Traversable, \Countable {
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function count(): int;
+
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   *
+   * @return mixed[] result rows as an array
+   * @throws \PDOException if there is no database connection or query execution fails
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
+  public function fetchAll(int $fetch_style = PDO::FETCH_ASSOC): array;
+
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   * 
+   * @param int $rowCount
+   * @param int $offset
+   * @return array
+   */
+  public function fetchRows(int $rowCount = null, int $offset = 0): array;
+
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   *
+   * @return mixed[] result rows as an array
+   * @throws \PDOException if there is no database connection or query execution fails
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
+  public function fetchFirstRow(): array;
+
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   *
+   * @return mixed[] result rows as an array
+   * @throws \PDOException if there is no database connection or query execution fails
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
+  public function fetchColumn(int $colNum = 0): array;
 }
