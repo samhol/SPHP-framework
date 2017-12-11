@@ -1,14 +1,16 @@
 <?php
 
 /**
- * HeadingInterface.php (UTF-8)
- * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
+ * AbstractHeading.php (UTF-8)
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Headings;
+namespace Sphp\Html\Flow\Headings;
+
+use Sphp\Html\ContainerTag;
 
 /**
- * Interface represents all HTML headings and sub headings
+ * Abstract implementation of HTML headings and sub headings
  *
  * HTML heading Components rank in importance according to the number in their name.
  * The h1 element is said to have the highest rank, the h6 element has the lowest 
@@ -20,12 +22,10 @@ namespace Sphp\Html\Headings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface HeadingInterface {
+abstract class AbstractHeading extends ContainerTag implements HeadingInterface {
 
-  /**
-   * Returns the heading level (the priority 1-6)
-   *
-   * @return int heading level (the priority)
-   */
-  public function getLevel(): int;
+  public function getLevel(): int {
+    return (int) substr($this->getTagName(), 1);
+  }
+
 }

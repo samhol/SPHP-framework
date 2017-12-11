@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Content;
+namespace Sphp\Html\Flow;
 
 $main = new Main();
 $h1 = $main->appendH1('Main heading');

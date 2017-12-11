@@ -24,18 +24,18 @@ use ReflectionClass;
  * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a `form` tag component
  * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a `label` tag component
  * 
- * @method \Sphp\Html\Headings\H1 h1(mixed $content = null) creates a new `h1` tag component
- * @method \Sphp\Html\Headings\H2 h2(mixed $content = null) creates a new `h2` tag component
- * @method \Sphp\Html\Headings\H3 h3(mixed $content = null) creates a new `h3` tag component
- * @method \Sphp\Html\Headings\H4 h4(mixed $content = null) creates a new `h4` tag component
- * @method \Sphp\Html\Headings\H5 h5(mixed $content = null) creates a new `h5` tag component
- * @method \Sphp\Html\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
+ * @method \Sphp\Html\Flow\Headings\H1 h1(mixed $content = null) creates a new `h1` tag component
+ * @method \Sphp\Html\Flow\Headings\H2 h2(mixed $content = null) creates a new `h2` tag component
+ * @method \Sphp\Html\Flow\Headings\H3 h3(mixed $content = null) creates a new `h3` tag component
+ * @method \Sphp\Html\Flow\Headings\H4 h4(mixed $content = null) creates a new `h4` tag component
+ * @method \Sphp\Html\Flow\Headings\H5 h5(mixed $content = null) creates a new `h5` tag component
+ * @method \Sphp\Html\Flow\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
  * 
- * @method \Sphp\Html\Content\Main main(mixed $content = null) creates a new `main` tag component
- * @method \Sphp\Html\Content\Section section(mixed $content = null) creates a new `section` tag component
- * @method \Sphp\Html\Content\Aside aside(mixed $content = null) creates a new `aside` tag component
- * @method \Sphp\Html\Content\Article article(mixed $content = null) creates a new `article` tag component
- * @method \Sphp\Html\Content\Paragraph p(mixed $content = null) creates a new `p` tag component
+ * @method \Sphp\Html\Flow\Main main(mixed $content = null) creates a new `main` tag component
+ * @method \Sphp\Html\Flow\Section section(mixed $content = null) creates a new `section` tag component
+ * @method \Sphp\Html\Flow\Aside aside(mixed $content = null) creates a new `aside` tag component
+ * @method \Sphp\Html\Flow\Article article(mixed $content = null) creates a new `article` tag component
+ * @method \Sphp\Html\Flow\Paragraph p(mixed $content = null) creates a new `p` tag component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -50,7 +50,7 @@ abstract class TagFactory {
    */
   private static $tags = array(
       'a' => Navigation\Hyperlink::class,
-      'aside' => Content\Aside::class,
+      'aside' => Flow\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,
       'br' => EmptyTag::class,
@@ -91,14 +91,14 @@ abstract class TagFactory {
       'figure' => Media\Figure::class,
       'footer' => ContainerTag::class,
       'header' => ContainerTag::class,
-      'main' => Content\Main::class,
+      'main' => Flow\Main::class,
       'hgroup' => ContainerTag::class,
-      'h1' => Headings\H1::class,
-      'h2' => Headings\H2::class,
-      'h3' => Headings\H3::class,
-      'h4' => Headings\H4::class,
-      'h5' => Headings\H5::class,
-      'h6' => Headings\H6::class,
+      'h1' => Flow\Headings\H1::class,
+      'h2' => Flow\Headings\H2::class,
+      'h3' => Flow\Headings\H3::class,
+      'h4' => Flow\Headings\H4::class,
+      'h5' => Flow\Headings\H5::class,
+      'h6' => Flow\Headings\H6::class,
       'hr' => EmptyTag::class,
       'html' => Html::class,
       'ins' => ContainerTag::class,
@@ -119,13 +119,13 @@ abstract class TagFactory {
       'dl' => Lists\Dl::class,
       'dt' => Lists\Dt::class,
       'output' => ContainerTag::class,
-      'p' => Content\Paragraph::class,
-      'article' => Content\Article::class,
+      'p' => Flow\Paragraph::class,
+      'article' => Flow\Article::class,
       'param' => EmptyTag::class,
       'scriptCode' => Programming\ScriptCode::class,
       'scriptSrc' => Programming\ScriptSrc::class,
       'noscript' => Programming\Noscript::class,
-      'section' => Content\Section::class,
+      'section' => Flow\Section::class,
       'select' => Forms\Inputs\Menus\Select::class,
       'iframe' => Media\Iframe::class,
       'img' => Media\Img::class,

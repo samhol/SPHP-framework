@@ -5,10 +5,10 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Content;
+namespace Sphp\Html\Flow;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Headings\HeadingInterface;
+use Sphp\Html\Flow\Headings\HeadingInterface;
 
 /**
  * Implements an HTML &lt;aside&gt; tag

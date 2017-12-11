@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Headings;
+namespace Sphp\Html\Flow\Headings;
 
 /**
  * Implements a HTML heading of level 2

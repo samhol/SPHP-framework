@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Content;
+namespace Sphp\Html\Flow;
 
 use Sphp\Manual;
 

@@ -5,14 +5,14 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Content;
+namespace Sphp\Html\Flow;
 
-use Sphp\Html\Headings\H1;
-use Sphp\Html\Headings\H2;
-use Sphp\Html\Headings\H3;
-use Sphp\Html\Headings\H4;
-use Sphp\Html\Headings\H5;
-use Sphp\Html\Headings\H6;
+use Sphp\Html\Flow\Headings\H1;
+use Sphp\Html\Flow\Headings\H2;
+use Sphp\Html\Flow\Headings\H3;
+use Sphp\Html\Flow\Headings\H4;
+use Sphp\Html\Flow\Headings\H5;
+use Sphp\Html\Flow\Headings\H6;
 use Sphp\Html\TagFactory;
 
 /**

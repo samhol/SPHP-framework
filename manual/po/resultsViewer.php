@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Headings;
+namespace Sphp\Html\Flow\Headings;
 
 $numResults = count($result);
 if ($numResults > 0) {

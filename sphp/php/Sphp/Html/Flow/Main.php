@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Content;
+namespace Sphp\Html\Flow;
 
 use Sphp\Html\ContainerTag;
 
