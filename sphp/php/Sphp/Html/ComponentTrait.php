@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IdentifiableComponentTrait.php (UTF-8)
+ * ComponentTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -12,16 +12,15 @@ use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
 
 /**
- * Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
+ * Trait implements functionality of {@link ComponentInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait IdentifiableComponentTrait {
+trait ComponentTrait {
 
-  use ContentTrait,
-      IdentifiableTrait,
+  use IdentifiableTrait,
       CssClassifiableTrait;
 
   /**

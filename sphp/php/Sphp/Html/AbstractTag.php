@@ -19,8 +19,9 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @filesource
  */
 abstract class AbstractTag implements TagInterface {
-
-  use IdentifiableComponentTrait;
+  
+  use ContentTrait,
+      ComponentTrait;
 
   /**
    * the tag name of the component

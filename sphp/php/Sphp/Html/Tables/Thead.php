@@ -21,25 +21,9 @@ class Thead extends TableRowContainer {
 
   /**
    * Constructs a new instance
-   * 
-   * **Notes:**
-   * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-   *
-   * @param  null|mixed|mixed[] $rows the row being appended
    */
-  public function __construct($rows = null) {
-    parent::__construct('thead', null, $rows);
-  }
-
-  public function fromArray(array $arr) {
-    foreach ($arr as $tr) {
-      if (!($tr instanceof RowInterface)) {
-        $this->appendHeaderRow($tr);
-      }
-    }
-    return $this;
+  public function __construct() {
+    parent::__construct('thead');
   }
 
 }

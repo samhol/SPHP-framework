@@ -1,13 +1,13 @@
 <?php
 
 /**
- * ScriptFile.php (UTF-8)
+ * ScriptSrc.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\AbstractTag;
+use Sphp\Html\EmptyTag;
 
 /**
  * Implements an HTML &lt;script&gt; tag having script code as its content
@@ -22,7 +22,7 @@ use Sphp\Html\AbstractTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScriptSrc extends AbstractTag implements Script {
+class ScriptSrc extends EmptyTag implements Script {
 
   /**
    * Constructs a new instance
@@ -37,7 +37,7 @@ class ScriptSrc extends AbstractTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function __construct(string $src = '', bool $async = false) {
-    parent::__construct('script');
+    parent::__construct('script', true);
     $this->setSrc($src)->setAsync($async);
   }
 
@@ -83,21 +83,11 @@ class ScriptSrc extends AbstractTag implements Script {
   /**
    * Returns the value of the src attribute
    *
-   * @param  string script's file path
+   * @return string script's file path
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function getSrc() {
     return $this->attrs()->getValue('src');
-  }
-
-  public function getHtml(): string {
-    $attrs = '' . $this->attrs();
-    if ($attrs != '') {
-      $attrs = ' ' . $attrs;
-    }
-    $output = '<' . $this->getTagName() . $attrs . '>';
-    $output .= '</' . $this->getTagName() . '>';
-    return $output;
   }
 
 }

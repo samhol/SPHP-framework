@@ -22,42 +22,20 @@ namespace Sphp\Html\Tables;
 class Tr extends AbstractRow {
 
   /**
-   * Constructs a new instance
-   *
-   * **Notes:**
-   *
-   *  mixed `$cells` can be of any type that converts to a PHP string or to a 
-   *  PHP string[].
-   *
-   * `$cellType` parameter defines the type of the wrapper for`$cells` not instanceof  {@link CellInterface}
-   *  
-   * * `td` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Td} component
-   * * `th` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Th} component
-   *
-   * @param  null|mixed|mixed[] $cells cell(s) of the table row or null for no content
-   * @param  string $cellType the default type of the cell 
-   *         (`td`|`th`)
-   */
-  public function __construct($cells = null) {
-    parent::__construct();
-    if (isset($cells)) {
-      $this->appendTds($cells);
-    }
-  }
-
-  /**
+   * Creates a new &lt;tr&gt; component
    * 
-   * @param  array $tds
-   * @return Tr
+   * @param  array $tds 
+   * @return Tr created &lt;tr&gt; component
    */
   public static function fromTds(array $tds): Tr {
     return (new static())->appendTds($tds);
   }
 
   /**
+   * Creates a new &lt;tr&gt; component
    * 
    * @param  array $ths
-   * @return Tr
+   * @return Tr created &lt;tr&gt; component
    */
   public static function fromThs(array $ths): Tr {
     return (new static())->appendThs($ths);

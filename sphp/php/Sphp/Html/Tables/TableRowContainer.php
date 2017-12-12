@@ -9,8 +9,8 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
 use IteratorAggregate;
-use ArrayAccess;
 use Sphp\Html\TraversableContent;
+use Traversable;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
@@ -25,40 +25,14 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Counts the &lt;tr&gt; components in the table
-   */
-  const COUNT_NORMAL = 1;
-
-  /**
-   * Counts the &lt;td&gt; and &lt;th&gt; components in the table
-   */
-  const COUNT_CELLS = 2;
-
-  /**
    * Constructs a new instance
    * 
-   * **Notes:**
-   * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-   *
    * @param string $tagname
-   * @param HtmlAttributeManager $m
-   * @param null|mixed|mixed[] $rows the row being appended
+   * @param HtmlAttributeManager|null $m
    */
-  public function __construct(string $tagname, HtmlAttributeManager $m = null, array $rows = null) {
+  public function __construct(string $tagname, HtmlAttributeManager $m = null) {
     parent::__construct($tagname, $m);
-    if ($rows !== null) {
-      $this->fromArray($rows);
-    }
   }
-
-  /**
-   * 
-   * @param  array $arr the row being appended
-   * @return $this for a fluent interface
-   */
-  abstract public function fromArray(array $arr);
 
   /**
    * Appends a {@link RowInterface} object to the container object
@@ -77,12 +51,11 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   }
 
   /**
-   * Appends a {@link RowInterface} object to the container object
+   * Appends a &lt;tr&gt; object containing &lt;th&gt; objects
    *
    * **Notes:**
    * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
+   *  * A `$cells` array can contain anything that converts to a PHP string
    *
    * @param  array $cells the row being appended
    * @return Tr appended table row component
@@ -94,31 +67,25 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   }
 
   /**
-   * Appends a {@link RowInterface} object to the container object
+   * Appends a &lt;tr&gt; object containing &lt;td&gt; objects
    *
    * **Notes:**
    * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
+   *  * A `$cells` array can contain anything that converts to a PHP string
    *
    * @param  array $cells the row being appended
-   * @return $this for a fluent interface
+   * @return Tr appended table row component
    */
-  public function appendBodyRow(array $cells) {
-    $this->append(Tr::fromTds($cells));
-    return $this;
+  public function appendBodyRow(array $cells): Tr {
+    $row = Tr::fromTds($cells);
+    $this->append($row);
+    return $row;
   }
 
   /**
-   * Prepends a {@link RowInterface} to the object
+   * Prepends a &lt;tr&gt object
    *
-   * **Notes:**
-   * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-   *  * The numeric keys of the container will be renumbered starting from zero
-   *
-   * @param  mixed|mixed[] $row the row(s) being appended
+   * @param  Row $row the row(s) being appended
    * @return $this for a fluent interface
    */
   public function prepend(Row $row) {
@@ -127,30 +94,21 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   }
 
   /**
-   * Count the number of inserted elements in the table
+   * Count the number of inserted rows in the table
    *
-   * **`$mode` parameter values:**
-   * 
-   * * {@link self::COUNT_ROWS} counts the {@link RowInterface} components in the table
-   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
-   *
-   * @param  int $mode defines the type of the objects to count
-   * @return string number of elements in the html table
+   * @return int number of elements in the HTML table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = 'tr'): int {
-    $num = 0;
-    if ($mode === 'tr') {
-      $num += $this->getInnerContainer()->count();
-    } else if ($mode === 'td') {
-      foreach ($this as $row) {
-        $num += $row->count();
-      }
-    }
-    return $num;
+  public function count(): int {
+    return $this->getInnerContainer()->count();
   }
 
-  public function getIterator() {
+  /**
+   * Create a new iterator to iterate through content
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): Traversable {
     return $this->getInnerContainer();
   }
 
