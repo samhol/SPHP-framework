@@ -89,8 +89,8 @@ class TableBuilder implements \Sphp\Html\Content {
    * @param  int $start
    * @return $this for a fluent interface
    */
-  public function setFirstLineNumber($start) {
-    $this->lineNumbers['start'] = (int) $start;
+  public function setFirstLineNumber(int $start) {
+    $this->lineNumbers['start'] = $start;
     return $this;
   }
 
@@ -144,7 +144,7 @@ class TableBuilder implements \Sphp\Html\Content {
    * @param  array $data
    * @return $this for a fluent interface
    */
-  public function setTfootData($data) {
+  public function setTfootData(array $data) {
     $this->tfootData = $data;
     return $this;
   }
@@ -161,7 +161,7 @@ class TableBuilder implements \Sphp\Html\Content {
    * 
    * @return Tbody
    */
-  public function buildTbody() {
+  public function buildTbody(): Tbody {
     $tbody = new Tbody();
     $lineNumber = $this->getFirstLineNumber();
     foreach ($this->tbodyData as $row) {
@@ -200,7 +200,7 @@ class TableBuilder implements \Sphp\Html\Content {
    * 
    * @return Table
    */
-  public function buildTable() {
+  public function buildTable(): Table {
     $table = new Table();
     if (!empty($this->theadData)) {
       $table->thead($this->buildThead());
