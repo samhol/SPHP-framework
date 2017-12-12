@@ -1,10 +1,8 @@
-var $fname = "Sami",
-        $user = {};
-$user.fname = $fname;
-$user.lname = "Holck";
+var $user2 = {};
+$user2.fname = 'John';
+$user2.lname = "Doe";
 
-function alertUser(user) {
-  alert("User: " + user.fname + " " + user.lname);
-}
+
+printUser($user2);
 
 

@@ -70,19 +70,37 @@ class Modal implements Content, ClosableInterface {
     $this->trigger = $this->createController($trigger);
   }
 
+  /**
+   * 
+   * @return ComponentInterface
+   */
   public function getTrigger(): ComponentInterface {
     return $this->trigger;
   }
 
+  /**
+   * 
+   * @return Popup
+   */
   public function getPopup(): Popup {
     return $this->popup;
   }
 
+  /**
+   * 
+   * @param  ComponentInterface $trigger
+   * @return $this
+   */
   public function setTrigger(ComponentInterface $trigger) {
     $this->trigger = $trigger;
     return $this;
   }
 
+  /**
+   * 
+   * @param  Popup $popup
+   * @return $this
+   */
   public function setPopup(Popup $popup) {
     $this->popup = $popup;
     return $this;

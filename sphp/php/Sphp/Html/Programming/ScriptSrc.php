@@ -29,7 +29,7 @@ class ScriptSrc extends EmptyTag implements Script {
    * 
    * **IMPORTANT:** 
    * 
-   * This component points to an external script file through the src attribute.
+   * This component points to an external script file through the `src` attribute.
    * 
    * @param  string $src the URL of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
@@ -42,8 +42,6 @@ class ScriptSrc extends EmptyTag implements Script {
   }
 
   /**
-   * Sets the value of the type attribute
-   *
    * Specifies the MIME type of the script
    *
    * @param  string $type the value of the type attribute (mime-type)
@@ -51,27 +49,46 @@ class ScriptSrc extends EmptyTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType(string $type) {
-    return $this->setAttr('type', $type);
+    $this->attrs()->set('type', $type);
+    return $this;
   }
 
   /**
-   * Sets the value of the async attribute
+   * Sets whether the script is executed asynchronously
    * 
-   * When present, it specifies that the script will be executed asynchronously as soon as it is available.
-   * Note: The async attribute is only for external scripts (and should only be used if the src attribute is present).
-   *
+   * Asynchronous script will be executed as soon as it is available.
+   * 
    * @param  boolean $async true for asynchronous execution, false otherwise
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
+   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
    */
   public function setAsync(bool $async = true) {
-    return $this->setAttr('async', $async);
+    $this->attrs()
+            ->remove('defer')
+            ->set('async', $async);
+    return $this;
   }
 
   /**
-   * Sets the value of the src attribute
+   * Sets whether the script will not run until after the page has loaded
+   * 
+   * @param  boolean $defer true for deferred execution, false otherwise
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
+   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
+   */
+  public function setDefer(bool $defer = true) {
+    $this->attrs()
+            ->remove('async')
+            ->set('defer', $defer);
+    return $this;
+  }
+
+  /**
+   * Sets the URL of the script file
    *
-   * @param  string $src the file path of the script file
+   * @param  string $src the URL of the script file
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
@@ -81,12 +98,12 @@ class ScriptSrc extends EmptyTag implements Script {
   }
 
   /**
-   * Returns the value of the src attribute
+   * Returns the URL of the script file
    *
-   * @return string script's file path
+   * @return string the URL of the script file
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
-  public function getSrc() {
+  public function getSrc(): string {
     return $this->attrs()->getValue('src');
   }
 

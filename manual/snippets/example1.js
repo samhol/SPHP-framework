@@ -7,5 +7,3 @@ function printUser(user) {
   document.write("<b>User:</b> " + user.fname + " " + user.lname + "<br>");
 }
 printUser($user);
-
-

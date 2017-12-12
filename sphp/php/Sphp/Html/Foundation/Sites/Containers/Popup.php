@@ -125,13 +125,7 @@ class Popup extends Div {
   }
 
   /**
-   * Returns a link component pointing to the Modal component
-   *
-   * **Important!**
-   *
-   * Parameter `mixed $controller` can be of any type that converts to a
-   * string or to an array of strings. So also an object of any class
-   * that implements magic method `__toString()` is allowed.
+   * Returns a controller component pointing to the Modal component
    *
    * @param  ComponentInterface $content the controller component
    * @return ComponentInterface a controller component pointing to this Modal

@@ -9,10 +9,10 @@ $personsSQL = codeModal('persons', 'Sphp/Database/person.sql', 'Example tables a
 md(<<<MD
 
 __SQL table creation codes for example tables:__
-        
- * Example code for $locationsSQL table
- * Example code for $addressSQL table
- * Example code for $personsSQL table
-
+<ol>
+<li>Example code for $locationsSQL table</li>
+<li>Example code for $addressSQL table</li>
+<li>Example code for $personsSQL table</li>
+</ol>
 MD
 );
