@@ -1,14 +1,14 @@
 <?php
 
 /**
- * RowInterface.php (UTF-8)
+ * Row.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Tables;
 
 /**
- * Interface is the base definition for all {@link TableRowContainer} content rows
+ * Interface is the base definition for all HTML &lt;tr&gt; table rows
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API

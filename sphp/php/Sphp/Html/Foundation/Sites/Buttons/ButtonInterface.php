@@ -47,16 +47,6 @@ interface ButtonInterface extends CssClassifiableContent, Colourable {
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
-  public function setDefaultSize();
-  
-  /**
-   * Sets the button size to default
-   * 
-   *  Removes all specified size related CSS classes
-   * 
-   * @return $this for a fluent interface
-   * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
-   */
   public function setExtended(bool $extended = true);
 
   /**

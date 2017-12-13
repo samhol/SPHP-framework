@@ -9,10 +9,10 @@ require_once('../settings.php');
 use Sphp\Html\Foundation\Sites\Grids\Column;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
 use Sphp\Html\Div;
-use Sphp\Html\Foundation\Sites\Buttons\ButtonStyleAdapter;
+use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 
-$submitter = ButtonStyleAdapter::pushButton('See submission data')
+$submitter = Button::pushButton('See submission data')
         ->setColor('alert')
         ->setSize('small');
 

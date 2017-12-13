@@ -12,9 +12,9 @@ $noscript = Manual\api()->classLinker(Noscript::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $arrayAccess = Manual\php()->classLinker(\ArrayAccess::class);
 
-use Sphp\Html\Foundation\Sites\Buttons\ButtonStyleAdapter;
-$b1 = ButtonStyleAdapter::pushButton('example1.js');
-$b2 = ButtonStyleAdapter::pushButton('example2.js');
+use Sphp\Html\Foundation\Sites\Buttons\Button;
+$b1 = Button::pushButton('example1.js');
+$b2 = Button::pushButton('example2.js');
 $code1 = Manual\codeModal('example1.js', 'manual/snippets/example1.js', 'JavaScript example code');
 $code2 = Manual\codeModal('example2.js', 'manual/snippets/example2.js', 'JavaScript example code');
 $tr1 = $code1->getTrigger()->addCssClass('button', 'alert');

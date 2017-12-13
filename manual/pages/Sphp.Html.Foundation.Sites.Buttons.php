@@ -8,7 +8,7 @@ use Sphp\Manual;
 
 $componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
 $buttonInterface = \Sphp\Manual\api()->classLinker(ButtonInterface::class);
-$buttonAdapter = \Sphp\Manual\api()->classLinker(ButtonStyleAdapter::class);
+$buttonAdapter = \Sphp\Manual\api()->classLinker(Button::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $btnGroup = \Sphp\Manual\api()->classLinker(ButtonGroup::class);

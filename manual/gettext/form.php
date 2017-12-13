@@ -37,7 +37,7 @@ $form->append(InputColumn::textarea("description", null, 5)
                 ->setErrorField("Yuo need to write something about yourself"));
 */
 
-use Sphp\Html\Foundation\Sites\Buttons\ButtonStyleAdapter;
-$form->append(ButtonStyleAdapter::submitter("Submit form", "submit"));
+use Sphp\Html\Foundation\Sites\Buttons\Button;
+$form->append(Button::submitter("Submit form", "submit"));
 
 $form->printHtml();

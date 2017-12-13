@@ -10,6 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\CssClassifiableContent;
+use Traversable;
 
 /**
  * Implements a Button Group
@@ -65,7 +66,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function appendHyperlink(string $href, $content, string $target = null) {
-    $this->appendButtons(ButtonStyleAdapter::hyperlink($href, $content, $target));
+    $this->appendButtons(Button::hyperlink($href, $content, $target));
     return $this;
   }
 
@@ -79,7 +80,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    */
   public function appendSubmitter($content = null, $name = null, $value = null) {
-    $this->appendButtons(ButtonStyleAdapter::submitter($content, $name, $value));
+    $this->appendButtons(Button::submitter($content, $name, $value));
     return $this;
   }
 
@@ -90,7 +91,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return $this for a fluent interface
    */
   public function appendResetter($content = null) {
-    $this->appendButtons(ButtonStyleAdapter::resetter($content));
+    $this->appendButtons(Button::resetter($content));
     return $this;
   }
 
@@ -111,11 +112,11 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   }
 
   /**
-   * Returns a new iterator to iterate through inserted {@link ButtonInterface} components
+   * Create a new iterator to iterate through content
    *
-   * @return \ArrayIterator iterator to iterate through inserted {@link ButtonInterface} components
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->getInnerContainer()->getIterator();
   }
 

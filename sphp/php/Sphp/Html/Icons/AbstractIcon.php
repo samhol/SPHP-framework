@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Icons;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\EmptyTag;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
@@ -17,7 +17,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractIcon extends AbstractComponent {
+class AbstractIcon extends EmptyTag {
 
   /**
    * Constructs a new instances
@@ -27,12 +27,8 @@ class AbstractIcon extends AbstractComponent {
    * @throws InvalidArgumentException if the tag name of the component is not valid
    */
   public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
-    parent::__construct($tagName, $attrManager);
+    parent::__construct($tagName, true, $attrManager);
     $this->attrs()->set('aria-hidden', 'true');
-  }
-
-  public function contentToString(): string {
-    return '';
   }
 
 }
