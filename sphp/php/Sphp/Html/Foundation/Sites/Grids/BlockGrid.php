@@ -99,16 +99,18 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   }
 
   /**
-   * Appends a new Column to the container
+   * Appends new Columns to the container
    * 
    * @param  mixed $column column or column content
    * @return $this for a fluent interface
    */
-  public function append($column) {
-    if (!($column instanceof BlockGridColumnInterface)) {
-      $column = new BlockGridColumn($column);
+  public function append(...$column) {
+    foreach ($column as $c) {
+      if (!($c instanceof BlockGridColumnInterface)) {
+        $c = new BlockGridColumn($column);
+      }
+      $this->columns->append($c);
     }
-    $this->columns->append($column);
     return $this;
   }
 

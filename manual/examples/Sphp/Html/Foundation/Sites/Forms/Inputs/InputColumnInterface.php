@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Forms\Inputs\TextInput;
-use Sphp\Html\Foundation\Sites\Buttons\Button;
+use Sphp\Html\Foundation\Sites\Buttons\ButtonStyleAdapter;
 
 $form = (new GridForm())
         ->validation(true)
@@ -35,6 +35,6 @@ $form->append(InputColumn::textarea("description", null, 5)
                 ->setPlaceholder("Something about yourself")
                 ->setErrorField("Yuo need to write something about yourself"));
 
-$form->append(Button::submitter("Submit form", "submit"));
+$form->append(ButtonStyleAdapter::submitter("Submit form", "submit"));
 
 $form->printHtml();

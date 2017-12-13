@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ButtonAdapter.php (UTF-8)
+ * ButtonStyleAdapter.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -16,7 +16,7 @@ use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Span;
 
 /**
- * Implements button styling for Foundation Sites
+ * Implements button styling adapter for Foundation Sites
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -24,7 +24,7 @@ use Sphp\Html\Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-Class Button extends AbstractLayoutManager implements ButtonInterface {
+Class ButtonStyleAdapter extends AbstractLayoutManager implements ButtonInterface {
 
   use ButtonTrait;
 
@@ -53,9 +53,9 @@ Class Button extends AbstractLayoutManager implements ButtonInterface {
    * Creates a new instance adapted from mixed content
    *
    * @param  string|null $from adaptee component or content of the button
-   * @return Button new instance
+   * @return ButtonStyleAdapter new instance
    */
-  public static function create($from) {
+  public static function create($from): ButtonStyleAdapter {
     if (!$from instanceof CssClassifiedComponent) {
       $from = new Span($from);
     }
@@ -73,11 +73,11 @@ Class Button extends AbstractLayoutManager implements ButtonInterface {
    * @param  string|null $href optional URL of the link
    * @param  string|null $content optional the content of the component
    * @param  string|null $target optional value of the target attribute
-   * @return Button new instance
+   * @return ButtonStyleAdapter new instance
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public static function hyperlink($href = null, $content = null, $target = null) {
+  public static function hyperlink($href = null, $content = null, $target = null): ButtonStyleAdapter {
     return new static(new Hyperlink($href, $content, $target));
   }
 
@@ -86,28 +86,40 @@ Class Button extends AbstractLayoutManager implements ButtonInterface {
    * @param  mixed $content optional
    * @param  string|null $name optional
    * @param  string|null $value optional
-   * @return Button new instance
+   * @return ButtonStyleAdapter new instance
    */
-  public static function submitter(string $content = null, $name = null, $value = null) {
+  public static function submitter(string $content = null, $name = null, $value = null): ButtonStyleAdapter {
     return new static(new Submitter($content, $name, $value));
   }
 
   /**
    * 
    * @param  mixed $content
-   * @return Button new instance for form resetting
+   * @return ButtonStyleAdapter new instance for form resetting
    */
-  public static function resetter($content = null) {
+  public static function resetter($content = null): ButtonStyleAdapter {
     return new static(new Resetter($content));
   }
 
   /**
    * 
    * @param  mixed $content
-   * @return Button new instance containing a push button
+   * @return ButtonStyleAdapter new instance containing a push button
    */
-  public static function pushButton($content = null) {
+  public static function pushButton($content = null): ButtonStyleAdapter {
     return new static(new PushButton($content));
+  }
+
+  public function addCssClass(...$cssClasses) {
+    
+  }
+
+  public function hasCssClass(...$cssClasses): bool {
+    return $this->getCompoenet()->hasCssClass($cssClasses);
+  }
+
+  public function removeCssClass(...$cssClasses) {
+    
   }
 
 }

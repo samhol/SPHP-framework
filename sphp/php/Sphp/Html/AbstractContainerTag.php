@@ -33,7 +33,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
   use ContentParsingTrait,
       TraversableTrait;
 
-  public function append($content) {
+  public function append(...$content) {
     $this->getInnerContainer()->append($content);
     return $this;
   }

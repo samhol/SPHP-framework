@@ -21,7 +21,7 @@ use Sphp\Html\CssClassifiableContent;
 interface RowInterface extends CssClassifiableContent, \Traversable {
 
   /**
-   * Returns the Row layout manager
+   * Returns the layout manager
    * 
    * @return RowLayoutManager the layout manager
    */

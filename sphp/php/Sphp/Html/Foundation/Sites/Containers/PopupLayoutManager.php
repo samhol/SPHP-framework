@@ -60,40 +60,28 @@ class PopupLayoutManager extends ColourableLayoutManager {
    * @return $this for a fluent interface
    */
   public function unsetLayouts() {
-    $this->unsetSizing();
+    $this->setSize(null);
     parent::unsetLayouts();
     return $this;
   }
 
   /**
-   * Sets the content padding
-   * 
-   * Predefined paddings:
-   * 
-   * * `'small'` for small padding
-   * * `'default'` for (default) padding
-   * * `'large'` for large padding
-   * 
-   * @param  string|null $size optional CSS class name defining the amount of the content padding
-   * @return $this for a fluent interface
-   * @link   http://foundation.zurb.com/sites/docs/callout.html#sizing Callout Sizing
-   */
-  public function setSize($size) {
-    if (in_array($size, $this->paddings)) {
-      $this->unsetSizing();
-      $this->addCssClass($size);
-    }
-    return $this;
-  }
-
-  /**
-   * Unsets the content padding
+   * Sets the size of the popup
    *
+   * **Available size options:**
+   * 
+   * * `'tiny'`: set the width to 30%
+   * * `'small'`: set the width to 50%
+   * * `'large'`: set the width to 90%
+   * * `'full'`: set the width and height to 100%
+   * 
+   * **Note:** Default on `'small'` screens is 100% (`'full'`) width.
+   * 
+   * @param  string|null $size the size of the component
    * @return $this for a fluent interface
    */
-  public function unsetSizing() {
-    $this->cssClasses()
-            ->remove(self::$sizes);
+  public function setSize(string $size = null) {
+    $this->setOneOf($this->sizes, $size);
     return $this;
   }
 

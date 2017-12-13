@@ -31,7 +31,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    */
   private $layoutManager;
 
-  public function __construct($tagname, RowLayoutManager $layoutManager = null) {
+  public function __construct($tagname) {
     parent::__construct($tagname, null);
     $this->layoutManager = new RowLayoutManager($this);
     $this->columns = new Container();

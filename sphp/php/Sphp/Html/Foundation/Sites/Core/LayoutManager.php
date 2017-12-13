@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Adapters\Adapter;
+use Sphp\Html\Content;
 
 /**
  * Defines a layout manager
@@ -16,7 +16,7 @@ use Sphp\Html\Adapters\Adapter;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LayoutManager extends Adapter {
+interface LayoutManager extends Content {
 
   /**
    * Sets the layouts
@@ -25,11 +25,4 @@ interface LayoutManager extends Adapter {
    * @return $this for a fluent interface
    */
   public function setLayouts(... $layouts);
-
-  /**
-   * Unsets the layout
-   *
-   * @return $this for a fluent interface
-   */
-  public function unsetLayouts();
 }

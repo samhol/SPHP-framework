@@ -21,7 +21,6 @@ trait ButtonTrait {
   use SizeableTrait,
       \Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 
-
   /**
    * Sets the button style as disabled
    * 
@@ -37,6 +36,7 @@ trait ButtonTrait {
   }
 
   /**
+   * Sets/unsets dropdown style
    * 
    * @param  boolean $dropdown
    * @return $this for a fluent interface
@@ -47,6 +47,7 @@ trait ButtonTrait {
   }
 
   /**
+   * Sets/unsets hollow style
    * 
    * @param  boolean $hollow
    * @return $this for a fluent interface

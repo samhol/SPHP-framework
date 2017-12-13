@@ -335,7 +335,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @param  mixed|SlideInterface $slide
    * @return $this for a fluent interface
    */
-  public function append($slide) {
+  public function append(...$slide) {
     if (!($slide instanceof SlideInterface)) {
       $slide = new Slide($slide);
     }

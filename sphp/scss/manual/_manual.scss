@@ -58,6 +58,10 @@ $error-bg: rgba(255,127,80, 0.40);
   background: #eaeaea;
 }
 .mainContent .container  { 
+
+  >.button-group, >.grid-x {
+    @include default-margin();
+  }
   @import "f6-manual-accordion";
   border-left: solid 1px #ccc;
   border-right: solid 1px #ccc;
@@ -127,7 +131,7 @@ $error-bg: rgba(255,127,80, 0.40);
   }
   @import "headings"; 
   @import "hyperlinks"; 
-  
+
   @import "technologies"; 
   @import "grid-examples"; 
 

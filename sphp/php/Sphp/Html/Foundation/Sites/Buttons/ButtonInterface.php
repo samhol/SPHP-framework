@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Content;
+use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Foundation\Sites\Core\Colourable;
 
 /**
@@ -19,7 +19,7 @@ use Sphp\Html\Foundation\Sites\Core\Colourable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ButtonInterface extends Content, Colourable {
+interface ButtonInterface extends CssClassifiableContent, Colourable {
 
   /**
    * Sets the size of the button 

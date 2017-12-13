@@ -12,16 +12,16 @@ $noscript = Manual\api()->classLinker(Noscript::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $arrayAccess = Manual\php()->classLinker(\ArrayAccess::class);
 
-use Sphp\Html\Foundation\Sites\Buttons\Button;
-$b1 = Button::pushButton('example1.js');
-$b2 = Button::pushButton('example2.js');
-$code1 = Manual\codeModal($b1, 'manual/snippets/example1.js', 'JavaScript example code');
-$code2 = Manual\codeModal($b2, 'manual/snippets/example2.js', 'JavaScript example code');
-$code1->getTrigger()->addCssClass('button', 'alert');
-$code2->getTrigger()->addCssClass('button', 'alert');
+use Sphp\Html\Foundation\Sites\Buttons\ButtonStyleAdapter;
+$b1 = ButtonStyleAdapter::pushButton('example1.js');
+$b2 = ButtonStyleAdapter::pushButton('example2.js');
+$code1 = Manual\codeModal('example1.js', 'manual/snippets/example1.js', 'JavaScript example code');
+$code2 = Manual\codeModal('example2.js', 'manual/snippets/example2.js', 'JavaScript example code');
+$tr1 = $code1->getTrigger()->addCssClass('button', 'alert');
+$tr2 = $code2->getTrigger()->addCssClass('button', 'alert');
 $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
-$buttonGroup->appendButton($b1);
-$buttonGroup->appendButton($b2);
+$buttonGroup->appendButtons($b1);
+$buttonGroup->appendButtons($b2);
 Manual\md(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>
 
@@ -37,7 +37,10 @@ is no support for client-side scripting.
 ##$scriptFile component: <small>for external JavaScript files</small>
         
 This component points to an external script file. 
-$buttonGroup
+<div class="button-group">
+$tr1
+$tr2
+</div>
 
 
  **There are several ways an external script can be executed:**

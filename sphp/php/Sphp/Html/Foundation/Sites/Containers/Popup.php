@@ -54,6 +54,11 @@ class Popup extends Div {
     $this->layoutManager = new PopupLayoutManager($this);
   }
 
+  /**
+   * Returns the layout manager
+   * 
+   * @return PopupLayoutManager the layout manager
+   */
   public function layout(): PopupLayoutManager {
     return $this->layoutManager;
   }
@@ -78,36 +83,6 @@ class Popup extends Div {
   }
 
   /**
-   * Sets the size of the component
-   *
-   * **Available size options:**
-   * 
-   * * `'tiny'`: set the width to 30%
-   * * `'small'`: set the width to 50%
-   * * `'large'`: set the width to 90%
-   * * `'full'`: set the width and height to 100%
-   * 
-   * **Note:** Default on `'small'` screens is 100% (`'full'`) width.
-   * 
-   * @param  string $size the size of the component
-   * @return $this for a fluent interface
-   */
-  public function setSize(string $size = null) {
-    $this->layout()->setSize($size);
-    return $this;
-  }
-
-  /**
-   * Resets the size settings of the component
-   *
-   * @return $this for a fluent interface
-   */
-  public function resetSize() {
-    $this->layout()->unsetSizing();
-    return $this;
-  }
-
-  /**
    * Returns the default Modal reveal controller
    * 
    * @return Controller
@@ -117,10 +92,7 @@ class Popup extends Div {
   }
 
   public function contentToString(): string {
-    $output = parent::contentToString();
-
-    $output .= $this->getCloseButton()->getHtml();
-
+    $output = parent::contentToString() . $this->getCloseButton()->getHtml();
     return $output;
   }
 

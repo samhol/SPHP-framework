@@ -35,7 +35,7 @@ interface ContainerInterface extends TraversableContent, Arrayable, ArrayAccess 
    * @param  mixed $value element
    * @return $this for a fluent interface
    */
-  public function append($value);
+  public function append(...$value);
 
   /**
    * Prepends a new value as the first element

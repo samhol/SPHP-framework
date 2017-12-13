@@ -24,7 +24,7 @@ trait ContentParsingTrait {
    * @param  mixed $content
    * @return $this for a fluent interface
    */
-  abstract public function append($content);
+  abstract public function append(...$content);
 
   /**
    * Appends a raw file to the container

@@ -65,13 +65,11 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
     $this->components = Arrays::copy($this->components);
   }
 
-  public function append($content) {
-    if (is_array($content)) {
-      foreach ($content as $cont) {
-        $this->append($cont);
-      }
+  public function append(...$content) {
+    foreach (Arrays::flatten($content) as $cont) {
+      $this->components[] = $cont;
     }
-    $this->components[] = $content;
+
     return $this;
   }
 

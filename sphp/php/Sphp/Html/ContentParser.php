@@ -22,7 +22,7 @@ interface ContentParser extends Content {
    * @param  mixed $content appended content
    * @return $this for a fluent interface
    */
-  public function append($content);
+  public function append(...$content);
 
   /**
    * Appends a raw file to the container

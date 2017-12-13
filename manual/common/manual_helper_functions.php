@@ -142,6 +142,6 @@ function codeModal($trigger, string $path, $title = 'Source code'): Modal {
   $modal->loadFromFile($path);
   $m = $modal->buildModal();
   $m->getTrigger()->addCssClass('manual-code-modal');
-  $m->setSize('large');
+  $m->getPopup()->layout()->setSize('large');
   return $m;
 }

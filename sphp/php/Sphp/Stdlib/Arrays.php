@@ -417,7 +417,7 @@ abstract class Arrays {
    *
    * **Notes:** The keys of the array are not preserved.
    *
-   * @param  array $array
+   * @param  array $array multi-dimensional array
    * @return array the one dimensional result array
    */
   public static function flatten(array $array): array {

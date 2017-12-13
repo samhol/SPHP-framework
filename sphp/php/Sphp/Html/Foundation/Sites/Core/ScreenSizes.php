@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Exceptions\OutOfRangeException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Defines Screen Sizes and types and implements screen size parsing functions
@@ -18,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScreenSizes implements \Iterator, \Countable, \Sphp\Stdlib\Datastructures\Arrayable {
+class ScreenSizes implements \Iterator, \Countable, Arrayable {
 
   /**
    * Foundation screen size names

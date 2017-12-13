@@ -2,18 +2,18 @@
 
 namespace Sphp\Html\Forms\Buttons;
 
-use Sphp\Manual as Man;
+use Sphp\Manual;
 
-$ns1 = Man\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns1 = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$ns2 = Man\api()->namespaceBreadGrumbs("Sphp\Html\Forms\Inputs\Buttons");
+$ns2 = Manual\api()->namespaceBreadGrumbs("Sphp\Html\Forms\Inputs\Buttons");
 
-$buttonInterface = Man\api()->classLinker(ButtonInterface::class);
-$submitter = Man\api()->classLinker(Submitter::class);
-$reseter = Man\api()->classLinker(Resetter::class);
-$button = Man\api()->classLinker(Button::class);
-$buttonTag = Man\w3schools()->tag('button');
-Man\parseDown(<<<MD
+$buttonInterface = Manual\api()->classLinker(ButtonInterface::class);
+$submitter = Manual\api()->classLinker(Submitter::class);
+$reseter = Manual\api()->classLinker(Resetter::class);
+$button = Manual\api()->classLinker(Button::class);
+$buttonTag = Manual\w3schools()->tag('button');
+Manual\md(<<<MD
 ###The $buttonInterface <small>Implementing buttons for HTML forms</small>
         
 $ns1	    
@@ -29,15 +29,14 @@ MD
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Manual as Man;
+use Sphp\Manual;
 
-$ns = Man\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$submitter = Man\api()->classLinker(Submitter::class);
-$reseter = Man\api()->classLinker(Resetter::class);
-$button = Man\api()->classLinker(Button::class);
-$buttonTag = Man\w3schools()->tag('input');
-Man\parseDown(<<<MD
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$submitter = Manual\api()->classLinker(Submitter::class);
+$reseter = Manual\api()->classLinker(Resetter::class);
+$button = Manual\api()->classLinker(Button::class);
+$buttonTag = Manual\w3schools()->tag('input');
+Manual\md(<<<MD
 
 $ns	
       
@@ -50,7 +49,7 @@ Components in this namespace are build using HTML $buttonTag tag.
 MD
 );
 
-CodeExampleAccordionBuilder::build('Sphp/Html/Forms/Buttons/AbstractButton.php', 'html5')
+Manual\example('Sphp/Html/Forms/Buttons/AbstractButton.php', 'html5')
         ->buildAccordion()
         ->addCssClass('form-example')
         ->printHtml();

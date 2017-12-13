@@ -26,26 +26,27 @@ class CloseButton extends AbstractComponent {
   /**
    * Constructs a new instance
    * 
-   * @param string $text the screen reader-only text
+   * @param string $ariaLabel the screen reader-only text
+   * @link  https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html aria-label
    */
-  public function __construct($text = 'close') {
+  public function __construct(string $ariaLabel = 'close') {
     parent::__construct('button');
     $this->attrs()
             ->protect('type', 'button')
             ->demand('data-close');
     $this->cssClasses()->protect('close-button');
-    $this->setAccessibilityTextText($text);
+    $this->setAriaLabel($ariaLabel);
   }
 
   /**
    * Sets the screen reader-only text
    * 
-   * @param  string $text the screen reader-only text
+   * @param  string $label the screen reader-only text
    * @return $this for a fluent interface
    * @link   https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html aria-label
    */
-  public function setAccessibilityTextText($text) {
-    $this->attrs()->setAria('label', $text);
+  public function setAriaLabel(string $label = null) {
+    $this->attrs()->setAria('label', $label);
     return $this;
   }
 

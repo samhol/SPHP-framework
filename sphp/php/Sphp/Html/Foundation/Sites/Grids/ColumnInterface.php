@@ -27,7 +27,9 @@ use Sphp\Html\CssClassifiableContent;
 interface ColumnInterface extends CssClassifiableContent {
 
   /**
-   * @return ColumnLayoutManagerInterface 
+   * Returns the layout manager
+   * 
+   * @return ColumnLayoutManagerInterface the layout manager
    */
   public function layout(): ColumnLayoutManagerInterface;
 }

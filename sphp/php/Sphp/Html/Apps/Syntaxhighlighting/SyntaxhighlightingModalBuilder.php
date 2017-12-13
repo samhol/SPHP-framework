@@ -10,7 +10,6 @@ namespace Sphp\Html\Apps\Syntaxhighlighting;
 use Sphp\Html\Div;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 
 /**
  * Implements Modal builder for PHP Example presentation
@@ -35,6 +34,12 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
    * @var Div 
    */
   private $title;
+
+  /**
+   *
+   * @var string|component 
+   */
+  private $trigger;
 
   /**
    * Constructs a new instance
@@ -107,7 +112,7 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
    * @param type $title
    * @param string $path
    */
-  public static function visualize($button,  $title, string $path) {
+  public static function visualize($button, $title, string $path) {
     (new static($button, $title))->loadFromFile($path)->printHtml();
   }
 

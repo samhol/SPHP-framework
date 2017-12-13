@@ -8,7 +8,7 @@ use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\Checkboxes;
 use Iterator;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
-use Sphp\Html\Foundation\Sites\Buttons\Button;
+use Sphp\Html\Foundation\Sites\Buttons\ButtonStyleAdapter;
 
 class GettextForm extends AbstractComponentGenerator {
 
@@ -67,7 +67,7 @@ class GettextForm extends AbstractComponentGenerator {
 
     $row1 = new FormRow();
     $row->append(InputColumn::text('query', null, ['small-12', 'large-7', 'xlarge-6']));
-    $row->appendColumn(Button::submitter('submit'), ['small-12', 'large-1']);
+    $row->appendColumn(ButtonStyleAdapter::submitter('submit'), ['small-12', 'large-1']);
 
     $form->append($row1);
     $form->append($this->tableGenerator->generate());

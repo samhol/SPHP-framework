@@ -193,7 +193,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
     return $this->head . $this->body;
   }
 
-  public function append($content) {
+  public function append(...$content) {
     $this->body->append($content);
     return $this;
   }

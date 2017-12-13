@@ -87,7 +87,7 @@ class WrappingContainer extends Container {
    * @return $this for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function append($content) {
+  public function append(...$content) {
     parent::append($this->wrap($content));
     return $this;
   }
