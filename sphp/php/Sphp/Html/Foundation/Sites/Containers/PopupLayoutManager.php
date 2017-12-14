@@ -42,7 +42,7 @@ class PopupLayoutManager extends ColourableLayoutManager {
   /**
    * Sets the number of columns within the row for different screen sizes
    * 
-   * @param  string[] $layouts individual layout settings
+   * @param  string[],... $layouts individual layout settings
    * @return $this for a fluent interface
    */
   public function setLayouts(...$layouts) {

@@ -19,7 +19,7 @@ interface ContentParser extends Content {
   /**
    * Appends content to the container
    *
-   * @param  mixed $content appended content
+   * @param  mixed,... $content appended content
    * @return $this for a fluent interface
    */
   public function append(...$content);

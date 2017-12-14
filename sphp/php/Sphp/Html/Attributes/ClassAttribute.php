@@ -114,7 +114,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * 2. An array can be be multidimensional array of atomic string values
    * 3. Duplicate values are ignored
    *
-   * @param  string|string[] $values the values to add
+   * @param  string|string[],... $values the values to add
    * @return $this for a fluent interface
    */
   public function add(...$values) {
@@ -227,7 +227,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * 1. A string parameter can contain multiple comma separated atomic values
    * 2. An array parameter can contain only one atomic value per array value
    *
-   * @param  scalar|scalar[] $values the atomic values to search for
+   * @param  scalar|scalar[],... $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
   public function contains(...$values): bool {
@@ -250,7 +250,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * 1. A string parameter can contain multiple comma separated atomic values
    * 2. An array parameter can contain only one atomic value per array value
    *
-   * @param  string|string[] $values the atomic values to search for
+   * @param  string|string[],... $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
   public function containsOneOf(...$values): bool {

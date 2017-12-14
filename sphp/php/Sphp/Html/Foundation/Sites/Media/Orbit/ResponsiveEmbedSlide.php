@@ -20,7 +20,7 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, ResponsiveEmbedInterface {
+class ResponsiveEmbedSlide extends AbstractComponent implements Slide, ResponsiveEmbedInterface {
 
   use ActivationTrait;
 
@@ -56,11 +56,11 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
   }
 
   /**
-   * Returns the flex component
+   * Returns the inner component
    *
-   * @return ResponsiveEmbed the flex component
+   * @return ResponsiveEmbed the inner component
    */
-  public function getFlex() {
+  public function getFlex(): ResponsiveEmbed {
     return $this->flex;
   }
 
@@ -69,13 +69,8 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
     return $this;
   }
 
-  public function isLazy(): bool {
-    return $this->getFlex()->isLazy();
-  }
-
-  public function setLazy(bool $lazy = true) {
-    $this->getFlex()->setLazy($lazy);
-    return $this;
+  public function contentToString(): string {
+    return $this->flex->getHtml();
   }
 
   /**
@@ -83,9 +78,9 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
    * 
    * @param  string $videoId the id of the YouTube video or playlist
    * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
-   * @return self new instance containing a {@link YoutubePlayer} instance
+   * @return ResponsiveEmbedSlide new instance containing a {@link YoutubePlayer} instance
    */
-  public static function youtube(string $videoId, bool $isPlaylist = false) {
+  public static function youtube(string $videoId, bool $isPlaylist = false): ResponsiveEmbedSlide {
     return new static(ResponsiveEmbed::youtube($videoId, $isPlaylist));
   }
 
@@ -93,9 +88,9 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
    * Returns a new instance containing a {@link VimeoPlayer} instance
    * 
    * @param  string $videoId the id of the Vimeo video
-   * @return self new instance containing a {@link VimeoPlayer} instance
+   * @return ResponsiveEmbedSlide new instance containing a {@link VimeoPlayer} instance
    */
-  public static function vimeo(string $videoId) {
+  public static function vimeo(string $videoId): ResponsiveEmbedSlide {
     return new static(ResponsiveEmbed::vimeo($videoId));
   }
 
@@ -103,14 +98,10 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
    * Returns a new instance containing a {@link DailyMotionPlayer} instance
    * 
    * @param  string $videoId the id of the DailyMotion video
-   * @return self new instance containing a {@link DailyMotionPlayer} instance
+   * @return ResponsiveEmbedSlide new instance containing a {@link DailyMotionPlayer} instance
    */
-  public static function dailymotion(string $videoId) {
+  public static function dailymotion(string $videoId): ResponsiveEmbedSlide {
     return new static(ResponsiveEmbed::dailymotion($videoId));
-  }
-
-  public function contentToString(): string {
-    return $this->flex->getHtml();
   }
 
 }

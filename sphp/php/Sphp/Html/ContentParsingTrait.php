@@ -21,7 +21,7 @@ trait ContentParsingTrait {
 
   /**
    * 
-   * @param  mixed $content
+   * @param  mixed,... $content
    * @return $this for a fluent interface
    */
   abstract public function append(...$content);

@@ -1,16 +1,14 @@
 <?php
 
 /**
- * Slide.php (UTF-8)
+ * SlideInterface.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Lists\Li;
-
 /**
- * Implements a slide for Orbit
+ * Defines a slide for Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -18,19 +16,20 @@ use Sphp\Html\Lists\Li;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Slide extends Li implements SlideInterface {
-
-  use ActivationTrait;
+interface Slide {
 
   /**
-   * Constructs a new instance
-   *
-   * @param  mixed $content the content of the slide
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * Sets the slide as active or not
+   * 
+   * @param  boolean $active true for active and false for inactive
+   * @return $this for a fluent interface
    */
-  public function __construct($content = null) {
-    parent::__construct($content);
-    $this->cssClasses()->protect('orbit-slide');
-  }
+  public function setActive(bool $active = true);
 
+  /**
+   * Checks whether the slide component is set as active or not
+   *
+   * @return boolean true if the slide component is set as active, otherwise false
+   */
+  public function isActive(): bool;
 }

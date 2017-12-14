@@ -126,7 +126,7 @@ class PHPConfig {
   /**
    * Inserts new paths to the include_path configuration option
    * 
-   * @param  string|string[] $paths new include paths
+   * @param  string|string[],... $paths new include paths
    * @return $this for a fluent interface
    * @throws RuntimeException if insertion of given include paths fails
    * @link   http://php.net/manual/en/function.set-include-path.php PHP manual

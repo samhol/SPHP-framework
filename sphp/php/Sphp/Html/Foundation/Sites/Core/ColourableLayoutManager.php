@@ -38,10 +38,6 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
     parent::__construct($component);
   }
 
-  /**
-   * 
-   * @param array $layouts
-   */
   public function setLayouts(...$layouts) {
     $this->unsetColors();
     foreach (is_array($layouts) ? $layouts : [$layouts] as $layout) {

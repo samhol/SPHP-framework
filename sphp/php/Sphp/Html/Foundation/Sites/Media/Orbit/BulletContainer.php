@@ -34,7 +34,7 @@ class BulletContainer extends AbstractComponent {
   public function __construct(int $count = 0) {
     parent::__construct('nav');
     for ($i = 0; $i < $count; $i++) {
-      $this->set($i);
+      $this->setBullet($i);
     }
     $this->cssClasses()->protect('orbit-bullets');
   }

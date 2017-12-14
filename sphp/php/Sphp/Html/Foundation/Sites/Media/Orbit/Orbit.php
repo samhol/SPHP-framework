@@ -9,11 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\ContentParser;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Media\VideoPlayerInterface;
-use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 
 /**
  * Implements a Foundation framework based Orbit
@@ -24,10 +20,9 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Orbit extends AbstractComponent implements IteratorAggregate, ContentParser, TraversableContent {
+class Orbit extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
-  use \Sphp\Html\TraversableTrait,
-      \Sphp\Html\ContentParsingTrait;
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * @var Button 
@@ -47,16 +42,9 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   /**
    * the slide container
    *
-   * @var Ul
+   * @var SlideContainer
    */
   private $slides;
-
-  /**
-   * the bullet container
-   *
-   * @var BulletContainer 
-   */
-  private $bullets;
 
   /**
    * @var boolean 
@@ -66,23 +54,11 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   /**
    * Constructs a new instance
    *
-   * **Notes:**
-   *
-   * 1. `mixed $slides` can be of any type that converts to a PHP string
-   * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
-   * 3. All items of an array are treated according to note (2)
-   * 
-   * @param  null|mixed|mixed[] $slides optional slide(s) or null for none
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @param  string|null $ariaLabel optional Aria label text
    */
-  public function __construct($slides = null, $ariaLabel = '') {
+  public function __construct(string $ariaLabel = null) {
     parent::__construct('div');
-    $this->slides = new Ul();
-    $this->slides->cssClasses()
-            ->protect('orbit-container');
-    $this->bullets = new BulletContainer();
-    $this->bullets->cssClasses()
-            ->protect('orbit-bullets');
+    $this->slides = new SlideContainer();
     $this->prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
     $this->next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
     $this->cssClasses()
@@ -91,21 +67,15 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
             ->protect('role', 'region')
             ->setAria('label', $ariaLabel)
             ->demand('data-orbit');
-    if ($slides !== null) {
-      foreach (is_array($slides) ? $slides : [$slides] as $slide) {
-        $this->append($slide);
-      }
-    }
   }
 
   public function __destruct() {
-    unset($this->slides, $this->bullets, $this->prev, $this->next);
+    unset($this->slides, $this->prev, $this->next);
     parent::__destruct();
   }
 
   public function __clone() {
     $this->slides = clone $this->slides;
-    $this->bullets = clone $this->bullets;
     $this->prev = clone $this->prev;
     $this->next = clone $this->next;
     parent::__clone();
@@ -113,18 +83,10 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
 
   /**
    * 
-   * @return Ul 
+   * @return SlideContainer 
    */
-  private function slides() {
+  public function slides(): SlideContainer {
     return $this->slides;
-  }
-
-  /**
-   * 
-   * @return BulletContainer
-   */
-  private function bullets(): BulletContainer {
-    return $this->bullets;
   }
 
   /**
@@ -304,98 +266,8 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return $this for a fluent interface
    */
   public function setActive($index) {
-    foreach ($this->slides as $no => $slide) {
-      if ($no == $index) {
-        $slide->setActive(true);
-      } else {
-        $slide->setActive(false);
-      }
-    }
-    $this->bullets->setActive($index);
-    /*foreach ($this->bullets as $no => $bullet) {
-      if ($no == $index) {
-        $bullet->setActive(true);
-      } else {
-        $bullet->setActive(false);
-      }
-    }*/
+    $this->slides()->setActive($index);
     return $this;
-  }
-
-  /**
-   * Appends slide(s) to the orbit
-   *
-   * **Notes:**
-   *
-   * 1. `mixed $slides` can be of any type that converts to a PHP string
-   * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
-   * 3. All items of an array are treated according to note (2)
-   *
-   * @param  mixed|SlideInterface $slide
-   * @return $this for a fluent interface
-   */
-  public function append(...$slide) {
-    foreach ($slide as $item) {
-      if (!($item instanceof SlideInterface)) {
-        $item = new Slide($item);
-      }
-      $this->slides()->append($item);
-      $n = $this->slides()->count();
-      $this->bullets()->setBullet(new Bullet($n - 1));
-    }
-    return $this;
-  }
-
-  /**
-   * Appends a new slide component to this orbit
-   *
-   * @param  string|URL|Img $img the image path or the image component
-   * @param  mixed|mixed[] $caption the caption of the slide
-   * @return $this for a fluent interface
-   */
-  public function appendFigure($img, $caption = null) {
-    return $this->append(new FigureSlide($img, $caption));
-  }
-
-  /**
-   * Appends a new slide component to this orbit
-   *
-   * @param  VideoPlayerInterface|FlexVideo $player the image path or the image component
-   * @return $this for a fluent interface
-   */
-  public function appendIframe($player) {
-    return $this->append(new ResponsiveEmbedSlide($player));
-  }
-
-  /**
-   * Appends a new slide component containing a {@link YoutubePlayer} instance
-   * 
-   * @param  string $videoId the id of the YouTube video or playlist
-   * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
-   * @return $this for a fluent interface
-   */
-  public function appendYoutubeVideo($videoId, $isPlaylist = false) {
-    return $this->appendIframe(ResponsiveEmbed::youtube($videoId, $isPlaylist));
-  }
-
-  /**
-   * Appends a new slide component containing a {@link VimeoPlayer} instance
-   * 
-   * @param  string $videoId the id of the Vimeo video
-   * @return $this for a fluent interface
-   */
-  public function appendVimeoVideo($videoId) {
-    return $this->appendIframe(ResponsiveEmbed::vimeo($videoId));
-  }
-
-  /**
-   * Appends a new slide component containing a {@link DailyMotionPlayer} instance
-   * 
-   * @param  string $videoId the id of the DailyMotion video
-   * @return $this for a fluent interface
-   */
-  public function appendDailymotionVideo($videoId) {
-    return $this->appendIframe(ResponsiveEmbed::dailymotion($videoId));
   }
 
   /**
@@ -412,10 +284,11 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   }
 
   public function contentToString(): string {
-    $output = '';
+    $output = '<div class="orbit-wrapper">';
     $output .= $this->prev . $this->next . $this->slides;
+    $output .= '</div>';
     if ($this->bulletsVisible) {
-      $output .= $this->bullets;
+      $output .= $this->slides()->generateBullets();
     }
     return $output;
   }

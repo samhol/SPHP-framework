@@ -33,7 +33,7 @@ trait ActivationTrait {
    * @param  boolean $active true for activation and false for deactivation
    * @return $this for a fluent interface
    */
-  public function setActive($active = true) {
+  public function setActive(bool $active = true) {
     if ($active) {
       $this->cssClasses()->set('is-active');
     } else {
@@ -47,7 +47,7 @@ trait ActivationTrait {
    *
    * @return boolean true if the slide component is set as active, otherwise false
    */
-  public function isActive() {
+  public function isActive(): bool {
     return $this->cssClasses()->contains('is-active');
   }
 

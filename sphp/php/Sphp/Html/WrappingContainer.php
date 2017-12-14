@@ -83,7 +83,7 @@ class WrappingContainer extends Container {
    * Method applies first the inner callback given in constructor to the `$content` 
    * and then appends the result to the container
    *
-   * @param  mixed $content added content
+   * @param  mixed,... $content added content
    * @return $this for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */

@@ -72,7 +72,7 @@ abstract class Filesystem {
   /**
    * Executes a PHP script and returns the result as a string
    *
-   * @param  string|string[] $paths the path to the executable PHP script
+   * @param  string|string[],... $paths the path to the executable PHP script
    * @return string the result of the script execution
    * @throws RuntimeException if the parsing fails for any reason
    */

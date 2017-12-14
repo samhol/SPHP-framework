@@ -20,7 +20,7 @@ use Sphp\Html\Media\FigCaption;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FigureSlide extends AbstractComponent implements SlideInterface {
+class FigureSlide extends AbstractComponent implements Slide {
 
   use ActivationTrait;
 

@@ -224,7 +224,7 @@ class Meta extends EmptyTag implements MetaData {
    * Specifies a comma-separated list of keywords - relevant to the page 
    * (Informs search engines what the page is about).
    * 
-   * @param  string|string[] $keywords a list of keywords
+   * @param  string|string[],... $keywords a list of keywords
    * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute

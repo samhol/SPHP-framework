@@ -81,11 +81,6 @@ class AlingmentAdapter extends AbstractLayoutManager {
     return $this;
   }
 
-  /**
-   * 
-   * @param  string|string[] $layouts
-   * @return $this for a fluent interface
-   */
   public function setLayouts(...$layouts) {
     $flatten = Arrays::flatten($layouts);
     foreach ($flatten as $value) {

@@ -4,9 +4,9 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 $orbit = new Orbit();
 
-$orbit->appendYoutubeVideo("CdMs7eqMvNg")
-        ->appendDailymotionVideo("x2p4pkp")
-        ->appendVimeoVideo("174190102");
+$orbit->slides()->appendYoutubeVideo("CdMs7eqMvNg");
+$orbit->slides()->appendDailymotionVideo("x2p4pkp");
+$orbit->slides()->appendVimeoVideo("174190102");
 foreach ($orbit as $slide) {
   $slide->setAspectRatio('panorama');
 }

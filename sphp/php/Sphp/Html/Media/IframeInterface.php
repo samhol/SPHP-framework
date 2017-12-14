@@ -21,4 +21,3 @@ namespace Sphp\Html\Media;
 interface IframeInterface extends LazyMedia, SizeableMedia {
   
 }
-

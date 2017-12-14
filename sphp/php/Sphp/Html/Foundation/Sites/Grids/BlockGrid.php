@@ -68,7 +68,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * If you use both of those classes combined, you can control the
    * configuration and layout separately for each breakpoint.
    *
-   * @param  array $layout column layout parameters
+   * @param  array $layout,... column layout parameters
    */
   public function __construct(...$layout) {
     $this->columns = new Container();
@@ -101,7 +101,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   /**
    * Appends new Columns to the container
    * 
-   * @param  mixed $column column or column content
+   * @param  mixed,... $column column or column content
    * @return $this for a fluent interface
    */
   public function append(...$column) {

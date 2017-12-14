@@ -7,7 +7,7 @@ use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $orbit = Manual\api()->classLinker(Orbit::class);
-$slide = Manual\api()->classLinker(Slide::class);
+$slide = Manual\api()->classLinker(HtmlSlide::class);
 
 Manual\md(<<<MD
 ##The $orbit container and the $slide components

@@ -28,7 +28,7 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  string $widths column widths for different screens sizes
+   * @param  string $value,... column widths for different screens sizes
    * @return $this for a fluent interface
    */
   public function setWidths(...$value);
@@ -54,7 +54,7 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   /**
    * Sets the column offset values
    *
-   * @param  string|string[] $offsets column offsets for different screens sizes
+   * @param  string|string[],... $offsets column offsets for different screens sizes
    * @return $this for a fluent interface
    */
   public function setOffsets(... $offsets);

@@ -10,7 +10,6 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\LazyMedia;
 use Sphp\Html\Media\IframeInterface;
-use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Media\Iframe;
 use Sphp\Html\Media\ViewerJS;
 use Sphp\Html\Media\Multimedia\DailyMotionPlayer;
@@ -36,13 +35,11 @@ use BadMethodCallException;
 class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterface, LazyMedia {
 
   /**
-   *
    * @var IframeInterface
    */
   private $iframe;
 
   /**
-   *
    * @var ReflectionClass 
    */
   private $reflector;
@@ -50,7 +47,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   /**
    * Constructs a new instance
    *
-   * @param  IframeInterface $media the iframe component
+   * @param  IframeInterface $media the embeddable component
    */
   public function __construct(IframeInterface $media) {
     parent::__construct('div');
@@ -92,9 +89,9 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   }
 
   /**
-   * Sets the actual iframe component
+   * Sets the actual embeddable component
    * 
-   * @param  IframeInterface $media iframe component
+   * @param  IframeInterface $media embeddable component
    * @return $this for a fluent interface
    */
   protected function setIframe(IframeInterface $media) {
@@ -103,9 +100,9 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   }
 
   /**
-   * Returns the actual iframe component
+   * Returns the actual embeddable component
    * 
-   * @return IframeInterface the actual iframe component
+   * @return IframeInterface the actual embeddable component
    */
   public function getIframe(): IframeInterface {
     return $this->iframe;
@@ -136,53 +133,53 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   /**
    * Returns a new instance containing an {@link Iframe} instance
    * 
-   * @param  URL|string $src the path to the presented file
-   * @return self new instance containing a {@link Iframe} instance
+   * @param  string $src the path to the presented file
+   * @return ResponsiveEmbed new instance containing a {@link Iframe} instance
    */
-  public static function fromSrc($src) {
+  public static function fromSrc(string $src): ResponsiveEmbed {
     return new static(new Iframe($src));
   }
 
   /**
    * Returns a new instance containing a {@link ViewerJS} instance
    * 
-   * @param  URL|string $src the path to the presented file
-   * @return self new instance containing a {@link ViewerJS} instance
+   * @param  string $src the path to the presented file
+   * @return ResponsiveEmbed new instance containing a {@link ViewerJS} instance
    */
-  public static function vieverJs($src) {
+  public static function vieverJs(string $src): ResponsiveEmbed {
     return new static(new ViewerJS($src));
   }
 
   /**
-   * Returns a new instance containing a {@link YoutubePlayer} instance
+   * Returns a new instance containing an Youtube video
    * 
    * @param  string $videoId the id of the YouTube video or playlist
    * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
-   * @return self new instance containing a {@link YoutubePlayer} instance
+   * @return ResponsiveEmbed new instance containing an Youtube video
    */
-  public static function youtube(string $videoId, bool $isPlaylist = false) {
+  public static function youtube(string $videoId, bool $isPlaylist = false): ResponsiveEmbed {
     return new static(new YoutubePlayer($videoId, $isPlaylist));
   }
 
   /**
-   * Returns a new instance containing a {@link VimeoPlayer} instance
+   * Returns a new instance containing a Vimeo video
    * 
    * @param  string $videoId the id of the Vimeo video
-   * @return self new instance containing a {@link VimeoPlayer} instance
+   * @return ResponsiveEmbed new instance containing a Vimeo video
    */
-  public static function vimeo($videoId) {
+  public static function vimeo(string $videoId): ResponsiveEmbed {
     $player = new static(new VimeoPlayer($videoId));
     $player->cssClasses()->protect('vimeo');
     return $player;
   }
 
   /**
-   * Returns a new instance containing a {@link DailyMotionPlayer} instance
+   * Returns a new instance containing a DailyMotion video
    * 
    * @param  string $videoId the id of the DailyMotion video
-   * @return self new instance containing a {@link DailyMotionPlayer} instance
+   * @return ResponsiveEmbed new instance containing a DailyMotion video
    */
-  public static function dailymotion($videoId) {
+  public static function dailymotion(string $videoId): ResponsiveEmbed {
     return new static(new DailyMotionPlayer($videoId));
   }
 

@@ -102,7 +102,7 @@ class UniqueCollectionAttribute extends AbstractAttribute implements Iterator, C
    * 2. An array parameter can contain only one atomic value per array value
    * 3. Stores only a single instance of every value (no duplicates)
    *
-   * @param  scalar|scalar[] $values the values to add
+   * @param  scalar|scalar[],... $values the values to add
    * @return $this for a fluent interface
    */
   public function add(...$values) {
