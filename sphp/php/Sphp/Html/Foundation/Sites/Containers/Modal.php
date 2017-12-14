@@ -53,25 +53,28 @@ class Modal implements Content, ClosableInterface {
   }
 
   /**
+   * Returns the opener component
    * 
-   * @return ComponentInterface
+   * @return ComponentInterface the opener component
    */
   public function getTrigger(): ComponentInterface {
     return $this->trigger;
   }
 
   /**
+   * Returns the popup component
    * 
-   * @return Popup
+   * @return Popup the popup component
    */
   public function getPopup(): Popup {
     return $this->popup;
   }
 
   /**
+   * Sets the opener component
    * 
-   * @param  ComponentInterface $trigger
-   * @return $this
+   * @param  ComponentInterface $trigger the opener component
+   * @param mixed $popup the content of the component
    */
   public function setTrigger(ComponentInterface $trigger) {
     $this->trigger = $trigger;
@@ -79,22 +82,14 @@ class Modal implements Content, ClosableInterface {
   }
 
   /**
+   * Sets the popup component
    * 
-   * @param  Popup $popup
-   * @return $this
+   * @param  Popup $popup the popup component
+   * @param mixed $popup the content of the component
    */
   public function setPopup(Popup $popup) {
     $this->popup = $popup;
     return $this;
-  }
-
-  /**
-   * Returns the default Modal reveal controller
-   * 
-   * @return Controller
-   */
-  public function getDefaultController() {
-    return $this->trigger;
   }
 
   public function getHtml(): string {
@@ -124,7 +119,7 @@ class Modal implements Content, ClosableInterface {
     return $this->getPopup()->isClosable();
   }
 
-  public function setClosable( $closable = true) {
+  public function setClosable($closable = true) {
     $this->getPopup()->setClosable($closable);
     return $this;
   }

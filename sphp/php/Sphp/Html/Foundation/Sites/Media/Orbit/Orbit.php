@@ -12,12 +12,11 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\ContentParser;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Navigation\Nav;
 use Sphp\Html\Media\VideoPlayerInterface;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 
 /**
- * Implements a Orbit
+ * Implements a Foundation framework based Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -55,7 +54,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   /**
    * the bullet container
    *
-   * @var Nav 
+   * @var BulletContainer 
    */
   private $bullets;
 
@@ -81,7 +80,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
     $this->slides = new Ul();
     $this->slides->cssClasses()
             ->protect('orbit-container');
-    $this->bullets = new Nav();
+    $this->bullets = new BulletContainer();
     $this->bullets->cssClasses()
             ->protect('orbit-bullets');
     $this->prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
@@ -122,9 +121,9 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
 
   /**
    * 
-   * @return Nav 
+   * @return BulletContainer
    */
-  private function bullets() {
+  private function bullets(): BulletContainer {
     return $this->bullets;
   }
 
@@ -144,8 +143,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
     }
     return $this;
   }
-  
-  
+
   /**
    * Sets the amount of time, in ms, between slide transitions
    * 
@@ -313,13 +311,14 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
         $slide->setActive(false);
       }
     }
-    foreach ($this->bullets as $no => $bullet) {
+    $this->bullets->setActive($index);
+    /*foreach ($this->bullets as $no => $bullet) {
       if ($no == $index) {
         $bullet->setActive(true);
       } else {
         $bullet->setActive(false);
       }
-    }
+    }*/
     return $this;
   }
 
@@ -336,12 +335,14 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return $this for a fluent interface
    */
   public function append(...$slide) {
-    if (!($slide instanceof SlideInterface)) {
-      $slide = new Slide($slide);
+    foreach ($slide as $item) {
+      if (!($item instanceof SlideInterface)) {
+        $item = new Slide($item);
+      }
+      $this->slides()->append($item);
+      $n = $this->slides()->count();
+      $this->bullets()->setBullet(new Bullet($n - 1));
     }
-    $this->slides()->append($slide);
-    $n = $this->slides()->count();
-    $this->bullets()->append(new Bullet($n - 1));
     return $this;
   }
 

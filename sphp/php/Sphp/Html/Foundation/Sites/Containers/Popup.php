@@ -64,11 +64,11 @@ class Popup extends Div {
   }
 
   /**
-   * Returns the Modal reveal controller
+   * Returns the close button
    * 
-   * @return CloseButton
+   * @return CloseButton the close button
    */
-  public function getCloseButton() {
+  public function getCloseButton(): CloseButton {
     return $this->closeButton;
   }
 
