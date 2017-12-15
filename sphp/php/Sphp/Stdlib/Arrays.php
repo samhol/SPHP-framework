@@ -103,7 +103,7 @@ abstract class Arrays {
    * @param  array $haystack
    * @return boolean
    */
-  public static function inArray($needle, array $haystack) {
+  public static function inArray($needle, array $haystack): bool {
     $found = false;
     foreach ($haystack as $item) {
       if ($item === $needle) {

@@ -29,7 +29,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
   /**
    * the inner container
    *
-   * @var [] 
+   * @var array
    */
   private $queue;
 
@@ -117,7 +117,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * @return int|boolean the priority of the value or false if value is not in the queue
    */
   public function getPriority($value): int {
-    $result = 0;
+    $result = -1;
     foreach ($this->queue as $priority => $values) {
       if (in_array($value, $values, true)) {
         $result = $priority;
