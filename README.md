@@ -1,6 +1,7 @@
+# SPHP-framework (SPHPlayground)
 [![Build Status](https://travis-ci.org/samhol/SPHP-framework.svg?branch=v1.0.0)](https://travis-ci.org/samhol/SPHP-framework)
 
-# INTRODUCTION
+## INTRODUCTION
 
 SPHP framework is an open source framework for developing interactive web applications
 and services in object oriented PHP. 
