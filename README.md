@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/samhol/SPHP-framework.svg?branch=v1.0.0)](https://travis-ci.org/samhol/SPHP-framework)
+
 # INTRODUCTION
 
 SPHP framework is an open source framework for developing interactive web applications
