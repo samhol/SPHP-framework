@@ -7,7 +7,9 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Media\IframeInterface;
+use Sphp\Html\Media\Embeddable;
+use Sphp\Html\Media\LazyMedia;
+use Sphp\Html\Media\SizeableMedia;
 
 /**
  * Defines properties for a videoplayer component
@@ -16,7 +18,7 @@ use Sphp\Html\Media\IframeInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface VideoPlayerInterface extends IframeInterface {
+interface VideoPlayerInterface extends Embeddable, LazyMedia, SizeableMedia {
 
   /**
    * Allows or disallows the fullscreen mode of the video 

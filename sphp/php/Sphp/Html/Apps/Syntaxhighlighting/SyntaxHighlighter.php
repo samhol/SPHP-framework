@@ -210,7 +210,8 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    */
   protected function formatCode(string $source, string $lang): string {
     if ($lang == 'html5') {
-      $source = (new Indenter())->indent($source);
+      $indenter = new Indenter();
+      $source = $indenter->indent($source);
     } else if ($lang == 'sql') {
       $source = SqlFormatter::format($source, false);
     }

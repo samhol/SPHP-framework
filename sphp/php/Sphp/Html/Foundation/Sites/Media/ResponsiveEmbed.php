@@ -9,14 +9,12 @@ namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\LazyMedia;
-use Sphp\Html\Media\IframeInterface;
+use Sphp\Html\Media\Embeddable;
 use Sphp\Html\Media\Iframe;
 use Sphp\Html\Media\ViewerJS;
 use Sphp\Html\Media\Multimedia\DailyMotionPlayer;
 use Sphp\Html\Media\Multimedia\VimeoPlayer;
 use Sphp\Html\Media\Multimedia\YoutubePlayer;
-use ReflectionClass;
-use BadMethodCallException;
 
 /**
  * Implements a Responsive embed component
@@ -35,21 +33,16 @@ use BadMethodCallException;
 class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterface, LazyMedia {
 
   /**
-   * @var IframeInterface
+   * @var Embeddable
    */
   private $iframe;
 
   /**
-   * @var ReflectionClass 
-   */
-  private $reflector;
-
-  /**
    * Constructs a new instance
    *
-   * @param  IframeInterface $media the embeddable component
+   * @param  Embeddable $media the embeddable component
    */
-  public function __construct(IframeInterface $media) {
+  public function __construct(Embeddable $media) {
     parent::__construct('div');
     $this->cssClasses()->protect('responsive-embed');
     $this->iframe = $media;
@@ -66,35 +59,12 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   }
 
   /**
-   * Invokes the given method of {@link self} with the rest of the passed arguments.
-   * 
-   * @param  string $name the name of the called method
-   * @param  mixed $arguments
-   * @return mixed
-   * @throws BadMethodCallException
-   */
-  public function __call($name, $arguments) {
-    if ($this->reflector === null) {
-      $this->reflector = new ReflectionClass($this->iframe);
-    }
-    if (!$this->reflector->hasMethod($name)) {
-      throw new BadMethodCallException($name . ' is not a valid method');
-    }
-    $result = \call_user_func_array(array($this->iframe, $name), $arguments);
-    if ($result === $this->iframe) {
-      return $this;
-    } else {
-      return $result;
-    }
-  }
-
-  /**
    * Sets the actual embeddable component
    * 
-   * @param  IframeInterface $media embeddable component
+   * @param  Embeddable $media embeddable component
    * @return $this for a fluent interface
    */
-  protected function setIframe(IframeInterface $media) {
+  protected function setEmbeddable(Embeddable $media) {
     $this->iframe = $media;
     return $this;
   }
@@ -102,9 +72,9 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   /**
    * Returns the actual embeddable component
    * 
-   * @return IframeInterface the actual embeddable component
+   * @return Embeddable the actual embeddable component
    */
-  public function getIframe(): IframeInterface {
+  public function getEmbeddable(): Embeddable {
     return $this->iframe;
   }
 
@@ -118,11 +88,11 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   }
 
   public function isLazy(): bool {
-    return $this->getIframe()->isLazy();
+    return $this->getEmbeddable()->isLazy();
   }
 
   public function setLazy(bool $lazy = true) {
-    $this->getIframe()->setLazy($lazy);
+    $this->getEmbeddable()->setLazy($lazy);
     return $this;
   }
 
@@ -136,7 +106,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    * @param  string $src the path to the presented file
    * @return ResponsiveEmbed new instance containing a {@link Iframe} instance
    */
-  public static function fromSrc(string $src): ResponsiveEmbed {
+  public static function iframe(string $src): ResponsiveEmbed {
     return new static(new Iframe($src));
   }
 

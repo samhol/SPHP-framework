@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IframeInterface.php (UTF-8)
+ * Embeddable.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -18,6 +18,6 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface IframeInterface extends LazyMedia, SizeableMedia {
+interface Embeddable {
   
 }

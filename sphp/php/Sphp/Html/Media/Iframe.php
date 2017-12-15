@@ -20,7 +20,7 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Iframe extends EmptyTag implements IframeInterface {
+class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
 
   use LazyMediaSourceTrait,
       SizeableTrait;
