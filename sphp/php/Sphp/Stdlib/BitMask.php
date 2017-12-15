@@ -134,18 +134,6 @@ class BitMask implements Arrayable, Iterator {
   }
 
   /**
-   * Sets new flags from 1 to 0
-   *
-   * **Notes:** a string <var>$bits</var> is always trated as binary number
-   *
-   * @param int|string|BitMask $bits the flags unset
-   * @return BitMask new instance
-   */
-  public function clear(int $bits): BitMask {
-    return new static($this->mask &= ~$bits);
-  }
-
-  /**
    * Inverts the bits from 1 to 0 and vice versa
    *
    * @return BitMask new inverted instance
@@ -170,36 +158,36 @@ class BitMask implements Arrayable, Iterator {
   }
 
   /**
-   * Returns the current bitmask value as an integer
+   * Returns the integer representation
    *
-   * @return int the current bitmask value as an integer
+   * @return int integer representation
    */
   public function toInt(): int {
     return $this->mask;
   }
 
   /**
-   * Returns the Octal string representation of the bitmask
+   * Returns the Octal string representation
    * 
-   * @return string the hexadecimal representation of the
+   * @return string hexadecimal representation
    */
   public function toOct(): string {
     return decoct($this->mask);
   }
 
   /**
-   * Returns the hexadecimal string representation of the bitmask
+   * Returns the hexadecimal string representation
    * 
-   * @return string the hexadecimal representation
+   * @return string hexadecimal representation
    */
   public function toHex(): string {
     return dechex($this->mask);
   }
 
   /**
-   * Returns the object as a string
+   * Returns the binary string representation
    *
-   * @return string the object as a string
+   * @return string binary representation
    */
   public function binaryRepresentation(): string {
     return str_pad("$this", $this->length(), '0', STR_PAD_LEFT);
@@ -258,15 +246,6 @@ class BitMask implements Arrayable, Iterator {
     }
   }
 
-  public static function fromString(string $value) {
-    $v = str_replace(['#', '0x'], '', $hex);
-    $obj = new MbString($value);
-    if ($obj->startsWith('#') || $obj->startsWith('0x')) {
-      return static::fromHex($value);
-    }
-    return new static(hexdec($v));
-  }
-
   /**
    * 
    * @param  string $binary
@@ -306,6 +285,8 @@ class BitMask implements Arrayable, Iterator {
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     $this->index = 0;
@@ -331,6 +312,8 @@ class BitMask implements Arrayable, Iterator {
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     $this->index++;

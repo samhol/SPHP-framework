@@ -8,7 +8,7 @@
 namespace Sphp\Stdlib\Datastructures;
 
 /**
- * Defines properties of aa arrayable data structure
+ * Defines properties of an object that can be serialized to array
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

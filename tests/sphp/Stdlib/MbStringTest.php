@@ -60,6 +60,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         ['foo', 'f', true],
         ['foo', 'fo', true],
         ['foo', 'foo', true],
+        ['foo', 'fooo', false],
         ['foo', 'F', false],
         ['Foo', 'F', true],
         ["\n", "\n", true],
@@ -89,9 +90,9 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function endsWith(): array {
     return [
-        ["", "", true],
-        ["\n", "\n", true],
-        ["\t", "\t", true],
+        0 => ["", "", true],
+        1 => ["\n", "\n", true],
+        1 => ["\t", "\t", true],
         ["\n\t", "\n\t", true],
         ["0", "0", true],
         ["abc", "c", true],
@@ -109,64 +110,24 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         ["abc", "b", false],
         ["abc", "a", false],
         ["åäö", "ä", false],
-        ["åäö", "å", false],
-        ["åäö", "Ö", false]
+        19 => ["åäö", "å", false],
+        20 => ["åäö", "Ö", false]
     ];
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::startsWith
+   * @covers Sphp\Stdlib\Strings::endsWith
    * @dataProvider endsWith
    * @param string $haystack
    * @param string $needle
    */
-  public function testEndsWith(string $haystack, string $needle) {
+  public function testEndsWith(string $haystack, string $needle, bool $endsWith) {
     $string = MbString::create($haystack);
-    $this->assertTrue($string->endsWith($needle));
-  }
-
-  /**
-   * @covers Sphp\Stdlib\Strings::startsWith
-   * @dataProvider endsWith
-   * @param string $haystack
-   * @param string $needle
-   */
-  public function testStartsEndsWith(string $haystack, string $needle, $expected) {
-    $starts = MbString::create($haystack);
-    $this->assertSame($expected, $starts->startsWith($needle));
-    $rHaystack = Strings::reverse($haystack);
-    $rNeedle = Strings::reverse($needle);
-    $string = MbString::create($rHaystack);
-    $this->assertSame($expected, $string->endsWith($rNeedle));
-  }
-
-  /**
-   * @return array
-   */
-  public function endsNotWith(): array {
-    return [
-        ["", " "],
-        ["\n", "\t"],
-        ["\t", "\n"],
-        ["\n\t", "\t\n"],
-        ["abc", "abC"],
-        ["abc", "b"],
-        ["abc", "a"],
-        ["åäö", "ä"],
-        ["åäö", "å"],
-        ["åäö", "Ö"]
-    ];
-  }
-
-  /**
-   * @covers Sphp\Stdlib\Strings::startsWith
-   * @dataProvider endsNotWith
-   * @param string $haystack
-   * @param string $needle
-   */
-  public function testNotEndsWith(string $haystack, string $needle) {
-    $string = MbString::create($haystack);
-    $this->assertFalse($string->endsWith($needle));
+    if ($endsWith) {
+      $this->assertTrue($string->endsWith($needle));
+    } else {
+      $this->assertFalse($string->endsWith($needle));
+    }
   }
 
   /**
@@ -252,50 +213,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   /**
    * @return array
    */
-  public function isJsonData(): array {
-    return [
-        ['["a", "b"]', true],
-        ['["a", "b"3]', false],
-        ['{
-    "glossary": {
-        "title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
-        }
-    }
-}', true]
-    ];
-  }
-
-  /**
-   * @covers Sphp\Stdlib\Strings::trimRight
-   * @dataProvider isJsonData
-   * @param string $string
-   * @param string $expected
-   */
-  public function testIsJson(string $string, bool $expected) {
-    $this->assertEquals(Strings::isJson($string), $expected);
-  }
-
-  /**
-   * 
-   * @return array
-   */
-  public function matchData() {
+  public function matchData(): array {
     $nordicAlpha = "/^[a-zA-ZåäöÅÄÖ]{1,}$/";
     $attrName = "/^[a-zA-Z][\w:.-]*$/";
     $tagName = "/^([a-z]+[1-6]{0,1})$/";
@@ -325,7 +243,6 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
   public function uppecaseTestData(): array {
@@ -376,39 +293,9 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
-  public function vsprintfData() {
-    $args = ['am' => 'olen', 'lname' => 'Holck', 'fname' => 'Sami', 'zero' => 0, 'I' => 'minä'];
-    return [
-        ["%zero\$d.%zero\$d degrees", $args, '0.0 degrees'],
-        ["%zero\$s degrees", $args, '0 degrees'],
-        ["0%f%a", ['f' => '', 'a' => '0'], '00'],
-        ["%zero\$s123", $args, '0123'],
-        ["test %val\$s ", ['val' => 'x'], 'test x '],
-        ["a%a\$s", ['a' => 'b'], 'ab'],
-        ["I am %fname\$s %lname\$s", $args, 'I am Sami Holck'],
-        ["%I\$s %am\$s %fname\$s, %fname\$s %lname\$s", $args, 'minä olen Sami, Sami Holck']
-    ];
-  }
-
-  /**
-   * @covers \Sphp\Stdlib\Strings::vsprintf
-   * @dataProvider vsprintfData
-   * @param string $string
-   * @param array $args
-   * @param string $expected
-   */
-  public function testVsprintf($string, array $args, $expected) {
-    $this->assertEquals(Strings::vsprintf($string, $args), $expected);
-  }
-
-  /**
-   * 
-   * @return array
-   */
-  public function iterationTestData() {
+  public function iterationTestData(): array {
     return [
         ['foobar', 'UTF-8'],
         ["\t", 'UTF-8'],
@@ -454,7 +341,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::trimRight
+   * @covers Sphp\Stdlib\Strings::isBlank
    * @dataProvider blankTestData
    * @param string $string
    * @param string|null $charsToTrim
@@ -462,14 +349,13 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function testBlank(string $string, bool $expected) {
     $obj = MbString::create($string);
-    //$this->assertEquals("{$obj->trimRight($charsToTrim)}", $expected);
     $this->assertSame($expected, $obj->isBlank());
   }
 
   /**
    * @return array
    */
-  public function hexTestData() {
+  public function hexTestData(): array {
     return [
         ['#', false],
         ['#12a', true],
@@ -508,7 +394,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   /**
    * @return array
    */
-  public function binaryTestData() {
+  public function binaryTestData(): array {
     return [
         ['0', true],
         ['1', true],
@@ -524,7 +410,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::trimRight
+   * @covers Sphp\Stdlib\Strings::isBinary
    * @dataProvider binaryTestData
    * @param string $string
    * @param string|null $charsToTrim

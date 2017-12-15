@@ -10,9 +10,7 @@ namespace Sphp\Validators;
 use Sphp\Stdlib\Arrays;
 
 /**
- * Validates string length
- *
- *  Validates the length of the given string
+ * Validates data against certain haystack
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -28,12 +26,12 @@ class InArrayValidator extends AbstractValidator {
   /**
    * @var boolean 
    */
-  private $strict;
+  private $strict = false;
 
   /**
    * Constructs a new validator
    *
-   * @param array $haystack the haystack
+   * @param array $haystack the haystack to validate against
    */
   public function __construct(array $haystack = []) {
     parent::__construct();
@@ -41,22 +39,40 @@ class InArrayValidator extends AbstractValidator {
     $this->setHaystack($haystack);
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->haystack);
   }
 
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
   public function __clone() {
     $this->haystack = Arrays::copy($this->haystack);
   }
 
+  /**
+   * Returns the haystack to validate against
+   * 
+   * @return array the haystack to validate against
+   */
   public function getHaystack(): array {
     return $this->haystack;
   }
 
   /**
-   * Sets the range of the valid string length
+   * Sets the haystack to validate against
    *
-   * @param  array $haystack the haystack
+   * @param  array $haystack the haystack to validate against
    * @return $this for a fluent interface
    */
   public function setHaystack(array $haystack) {
@@ -65,8 +81,12 @@ class InArrayValidator extends AbstractValidator {
   }
 
   /**
+   * Checks whether the comparison is strict or not
    * 
-   * @return boolean
+   * * **Strict** `===` comparison 
+   * * **Non strict** `==` comparison
+   * 
+   * @return boolean true for strict false otherwise
    */
   public function isStrict(): bool {
     return $this->strict;
@@ -92,15 +112,17 @@ class InArrayValidator extends AbstractValidator {
     foreach ($this->haystack as $other) {
       if ($this->isStrict()) {
         $valid = $this->getValue() === $other;
+      } else if (is_scalar($other) xor is_scalar($value)) {
+        $valid = false;
       } else {
-        $valid = $value == $other;
+        $valid = $other == $this->getValue();
       }
-      if (!$valid) {
+      if ($valid) {
         break;
       }
     }
     if (!$valid) {
-      $this->error(static::INVALID, $value);
+      $this->error(static::INVALID);
     }
     return $valid;
   }

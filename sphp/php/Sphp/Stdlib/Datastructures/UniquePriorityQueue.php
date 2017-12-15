@@ -73,7 +73,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * @param  int $priority the associated priority as a positive integer
    * @return $this for a fluent interface
    */
-  public function enqueue($value, $priority = 0) {
+  public function enqueue($value, int $priority = 0) {
     $oldPriority = $this->getPriority($value);
     //echo "enqueue:$value\n";
     if ($oldPriority === false) {
@@ -116,8 +116,8 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * @param  mixed $value the value to check for
    * @return int|boolean the priority of the value or false if value is not in the queue
    */
-  public function getPriority($value) {
-    $result = false;
+  public function getPriority($value): int {
+    $result = 0;
     foreach ($this->queue as $priority => $values) {
       if (in_array($value, $values, true)) {
         $result = $priority;

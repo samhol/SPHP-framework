@@ -17,6 +17,7 @@ namespace Sphp\Validators;
 class UrlValidator extends AbstractValidator {
 
   public function isValid($value): bool {
+    $this->setValue($value);
     if (!is_string($value)) {
       $value = (string) $value;
     }

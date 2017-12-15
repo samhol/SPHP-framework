@@ -12,7 +12,7 @@ use Sphp\Stdlib\Arrays;
 use UnderflowException;
 
 /**
- * An implementation of a general purpose collection data structure
+ * Implements a general purpose collection data structure
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -66,6 +66,13 @@ abstract class AbstractValidator implements ValidatorInterface {
     unset($this->messageTemplates, $this->errors, $this->value);
   }
 
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
   public function __clone() {
     $this->errors = clone $this->errors;
     $this->messageTemplates = clone $this->messageTemplates;
@@ -109,9 +116,10 @@ abstract class AbstractValidator implements ValidatorInterface {
   }
 
   /**
+   * Sets the error message 
    * 
-   * @param  string $id
-   * @param  array $params
+   * @param  string $id the id of the message
+   * @param  array $params optional message parameters
    * @return $this for a fluent interface
    */
   public function error(string $id, array $params = []) {
@@ -129,8 +137,9 @@ abstract class AbstractValidator implements ValidatorInterface {
   }
 
   /**
+   * Sets the validated value
    * 
-   * @param  mixed $value
+   * @param  mixed $value the validated value
    * @return $this for a fluent interface
    */
   public function setValue($value) {

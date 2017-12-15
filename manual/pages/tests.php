@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Manual;
-
+var_dump (new \stdClass() == 2);
 md(<<<MD
 ```ini
 [XDebug]

@@ -78,11 +78,9 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     $b = new BitMask();
     for ($i = 0; $i < PHP::getBitVersion(); $i++) {
       $b->set($i);
-      $this->assertSame(1, $b->get($i), "Failed asserting that 0 is identical to 1 at position '$i'");
-      echo "$b\n";
-      $b->unset($i);
-      $this->assertSame(0, $b->get($i), "Failed asserting that 0 is identical to 1 at position '$i'");
-      echo "$b\n";
+      $this->assertSame(1, $b->get($i), "Failed asserting that 1 is identical to {$b->get($i)} at position '$i'");
+      $b->unsetBit($i);
+      $this->assertSame(0, $b->get($i), "Failed asserting that 0 is identical to {$b->get($i)} at position '$i'");
     }
   }
 
@@ -233,7 +231,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
         [1, '0x1'],
         [0xf, '0xf'],
         [0x1f, '#1f'],
-        [1, '0b1'],
+        [1, '0001'],
         [-1, '-1'],
         [2147483647, '420000000000000000000'],
         [-1, new BitMask(-1)],

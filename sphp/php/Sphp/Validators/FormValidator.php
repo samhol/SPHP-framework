@@ -9,6 +9,8 @@ namespace Sphp\Validators;
 
 use Sphp\I18n\Collections\TranslatableCollection;
 use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Datastructures\Collection;
+use Traversable;
 
 /**
  * Validates given form data
@@ -41,6 +43,11 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     $this->inputErrors = new TranslatableCollection();
   }
 
+  /**
+   * Returns error concerning each input messages
+   * 
+   * @return TranslatableCollection
+   */
   public function getInputErrors(): TranslatableCollection {
     return $this->inputErrors;
   }
@@ -94,8 +101,8 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    *
    * @return Traversable iterator
    */
-  public function getIterator(): \Traversable {
-    return $this->validators;
+  public function getIterator(): Traversable {
+    return new Collection($this->validators);
   }
 
   /**

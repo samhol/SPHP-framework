@@ -5,9 +5,7 @@ namespace Sphp\Validators;
 class InCollectionValidatorTest extends \PHPUnit\Framework\TestCase {
 
   public function arrayData() {
-    $data = [];
-    $data[] = [[0, 1, null, false, true, '', ' ', "\n", [], new \stdClass()]];
-    return $data;
+    return [[[0, 1, null, false, true, '', ' ', "\n", [], new \stdClass()]]];
   }
 
   /**
@@ -18,33 +16,14 @@ class InCollectionValidatorTest extends \PHPUnit\Framework\TestCase {
   public function testIdentical($data) {
     $validator = new InArrayValidator($data);
     $validator->setStrict(true);
-    foreach ($data as $value) {
-      $this->assertTrue($validator->isValid($value));
+    foreach ($data as $k => $value) {
+      $this->assertTrue($validator->isValid($value), "FOO $k");
     }
     $validator->setStrict(false);
-    foreach ($data as $value) {
-      $this->assertTrue($validator->isValid($value));
+    foreach ($data as $k => $value) {
+      $this->assertTrue($validator->isValid($value), "FOO1 $k");
     }
   }
 
-  /**
-   *
-   * @param string $path
-   * @param mixed $exists
-   */
-  public function testStrict() {
-
-    //$this->assertTrue(Path::get()->isPathFromRoot($path) === $exists);
-  }
-
-  /**
-   *
-   * @dataProvider arrayData
-   * @param array $valid
-   */
-  public function testNotStrict($valid) {
-    $validator = new InArrayValidator($valid);
-    $this->assertTrue($validator->isValid(''));
-  }
 
 }

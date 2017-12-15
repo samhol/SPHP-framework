@@ -13,7 +13,6 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
    */
   public function typeMap() {
     $map = [
-        ['php', true],
         ['ini', true],
         ['json', true],
         ['yaml', true],

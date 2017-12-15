@@ -55,10 +55,6 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    */
   public function startsWith() {
     return [
-        [false, ""],
-        [true, "1"],
-        [true, 1],
-        [null, ""],
         ["\n", "\n"],
         ["\t", "\t"],
         [0, "0"],
@@ -88,9 +84,6 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    */
   public function endsWith() {
     return [
-        [false, ""],
-        [true, "1"],
-        [null, ""],
         ["", ""],
         ["\n", "\n"],
         ["\t", "\t"],
@@ -121,10 +114,6 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    */
   public function endsNotWith() {
     return [
-        [false, false],
-        [true, true],
-        [null, null],
-        ["", null],
         ["", " "],
         ["\n", "\t"],
         ["\t", "\n"],

@@ -148,7 +148,8 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     if ($needle === '') {
       return true;
     } else {
-      return \mb_substr($this->str, -\mb_strlen($needle, $this->encoding), null, $this->encoding) === $needle;
+      $length = \mb_strlen($needle, $this->encoding);
+      return \mb_substr($this->str, -$length, $length, $this->encoding) === $needle;
     }
   }
 
@@ -173,6 +174,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   /**
    * Checks whether the string contains all needles
    *
+   * @param  array $needles
    * @return bool whether the string contains all needles
    */
   public static function containsAll(array $needles): bool {
@@ -213,7 +215,6 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     if ($option === null) {
       $option = 'msr';
     }
-    // echo "pattern:$pattern\n";
     $result = \mb_ereg_replace($pattern, $replacement, $this->str, $option);
     mb_regex_encoding($regexEncoding);
     return new static($result, $this->encoding);
@@ -434,7 +435,6 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   public function valid(): bool {
     return $this->index < $this->length();
   }
-
 
   /**
    * Checks whether a character exists in the query
