@@ -1,5 +1,6 @@
 # SPHP-framework (SPHPlayground)
-[![Build Status](https://travis-ci.org/samhol/SPHP-framework.svg?branch=v1.0.0)](https://travis-ci.org/samhol/SPHP-framework)
+[![Build Status](https://travis-ci.org/samhol/SPHP-framework.svg?branch=master)](https://travis-ci.org/samhol/SPHP-framework)
+
 
 ## INTRODUCTION
 
