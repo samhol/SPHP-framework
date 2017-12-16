@@ -48,7 +48,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
    * @return array
    */
   public function filepathMap(): array {
-    $dir = __DIR__ . '\files\\';
+    $dir = __DIR__ . '/files/';
     $map = [
         [$dir . 'test.md', '<h1 foo="bar">test</h1>'],
         [$dir . 'test.yaml', ['foo' => 'bar']],
