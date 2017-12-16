@@ -106,10 +106,7 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    * @dataProvider settMethodData
    */
   public function testSetMethod($value, $expected) {
-    echo "testSetting\n\n";
     $this->attr->set($value);
-    //var_dump($attr->isDemanded() || boolval($value));
-
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
@@ -157,8 +154,6 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    * @param scalar $props
    */
   public function testLockPropertiesMethod($props) {
-    echo "testLockPropertiesMethod\n";
-    var_dump($props);
     $this->attr->lockProperties($props);
     $this->assertTrue($this->attr->isProtected());
     $this->attr->clear();

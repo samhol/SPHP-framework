@@ -219,7 +219,6 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
    * @return array
    */
   public function equalPairs(): array {
-    echo 'intval of true: ' . intval(true);
     return [
         [0, false],
         [1, true],

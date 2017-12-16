@@ -86,7 +86,6 @@ class StackTest extends \PHPUnit\Framework\TestCase {
    * @expectedExceptionCode 0
    */
   public function testEmpty() {
-    echo "---trait---";
     $this->datastructure->push("value");
     $this->assertFalse($this->datastructure->isEmpty());
     $this->datastructure->pop();

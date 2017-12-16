@@ -70,9 +70,6 @@ class RowTests extends \PHPUnit\Framework\TestCase {
     }
     $this->assertCount($numCols, $this->row);
     foreach ($this->row as $col) {
-      echo "\nsmall:";
-      var_dump($col->getWidth("small"));
-      echo $col->cssClasses();
       $this->assertEquals($col->getWidth("small"), 12);
     }
     $this->checkTypes($this->row);
