@@ -149,11 +149,11 @@ class AbstractObjectStorage implements \IteratorAggregate, \Sphp\Stdlib\Datastru
     return $this->getRepository()->find($id);
   }
 
-  public function offsetSet($offset, $value): void {
+  public function offsetSet($offset, $value) {
     throw new \Exception('fucked up!!!!!!');
   }
 
-  public function offsetUnset($id): void {
+  public function offsetUnset($id) {
     $obj = $this->getRepository()->find($id);
     if ($obj !== null) {
       $this->remove($obj);

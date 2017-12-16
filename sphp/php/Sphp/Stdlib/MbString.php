@@ -401,7 +401,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   /**
    * Rewinds the Iterator to the first element
    */
-  public function rewind(): void {
+  public function rewind() {
     $this->index = 0;
   }
 
@@ -423,7 +423,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     return $this->index;
   }
 
-  public function next(): void {
+  public function next() {
     $this->index++;
   }
 
@@ -464,7 +464,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @return void
    * @throws BadMethodCallException object is immutable
    */
-  public function offsetSet($offset, $value): void {
+  public function offsetSet($offset, $value) {
     throw new BadMethodCallException("Object is immutable, cannot modify chars directly");
   }
 
@@ -474,7 +474,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @return void
    * @throws BadMethodCallException always because object is immutable
    */
-  public function offsetUnset($offset): void {
+  public function offsetUnset($offset) {
     throw new BadMethodCallException("Object is immutable, cannot unset chars directly");
   }
 
