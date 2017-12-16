@@ -5,3 +5,4 @@ php:
   - 7.0
   - 7.1
 
+install: php vendor/vendors.php
