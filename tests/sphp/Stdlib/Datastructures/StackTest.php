@@ -2,13 +2,9 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-require_once 'StackTestTrait.php';
-
 use Exception;
 
 class StackTest extends \PHPUnit\Framework\TestCase {
-
-  use StackTestTrait;
 
   /**
    * @var StackInterface
@@ -46,18 +42,6 @@ class StackTest extends \PHPUnit\Framework\TestCase {
    * @expectedException Exception
    * @expectedExceptionCode 0
    */
-  public function testEmpty() {
-    $this->datastructure->push("value");
-    $this->assertFalse($this->datastructure->isEmpty());
-    $this->datastructure->pop();
-    $this->assertTrue($this->datastructure->isEmpty());
-    $this->datastructure->pop();
-  }
-
-  /**
-   * @expectedException Exception
-   * @expectedExceptionCode 0
-   */
   public function testPeekEmpty() {
     $this->datastructure->peek();
   }
@@ -83,6 +67,31 @@ class StackTest extends \PHPUnit\Framework\TestCase {
       $this->assertSame($value, $this->datastructure->peek());
       $this->assertSame($value, $this->datastructure->pop());
     }
+  }
+
+  /**
+   * @expectedException Exception
+   * @expectedExceptionCode 0
+   */
+  public function testEmpty1() {
+    $this->datastructure->push("value");
+    $this->assertFalse($this->datastructure->isEmpty());
+    $this->datastructure->pop();
+    $this->assertTrue($this->datastructure->isEmpty());
+    $this->datastructure->pop();
+  }
+
+  /**
+   * @expectedException Exception
+   * @expectedExceptionCode 0
+   */
+  public function testEmpty() {
+    echo "---trait---";
+    $this->datastructure->push("value");
+    $this->assertFalse($this->datastructure->isEmpty());
+    $this->datastructure->pop();
+    $this->assertTrue($this->datastructure->isEmpty());
+    $this->datastructure->pop();
   }
 
 }

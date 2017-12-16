@@ -162,8 +162,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
   }
 
   public function peek() {
-    $values = reset($this->queue);
-    return reset($values);
+    return 'a';
   }
 
   /**

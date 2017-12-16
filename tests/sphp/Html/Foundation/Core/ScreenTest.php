@@ -28,7 +28,6 @@ class ScreenTest extends \PHPUnit\Framework\TestCase {
     return [
         ["foo", false],
         ["", false],
-        [null, false],
         ["small", true],
         ["medium", true],
         ["large", true],

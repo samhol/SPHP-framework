@@ -176,7 +176,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @param  Thead $head
    * @return Thead table header component
    */
-  public function thead(Thead $head = null) {
+  public function thead(Thead $head = null): Thead {
     if ($head === null) {
       $head = new Thead();
     }
@@ -200,7 +200,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @param  Tbody $tbody
    * @return Tbody table body component
    */
-  public function tbody(Tbody $tbody = null) {
+  public function tbody(Tbody $tbody = null): Tbody {
     if ($tbody !== null) {
       $this->tbody = $tbody;
     } else if ($this->tbody === null) {
@@ -225,7 +225,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @param  Tfoot $tfoot
    * @return Tfoot table footer component
    */
-  public function tfoot(Tfoot $tfoot = null) {
+  public function tfoot(Tfoot $tfoot = null): Tfoot {
     if ($tfoot === null) {
       $tfoot = new Tfoot();
     }

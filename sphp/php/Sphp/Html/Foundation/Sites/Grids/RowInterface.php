@@ -53,7 +53,7 @@ interface RowInterface extends CssClassifiableContent, \Traversable {
    * @param  array $layout column layout parameters
    * @return $this for a fluent interface
    */
-  public function appendColumn($content, array $layout = ['small-12']);
+  public function appendColumn($content, array $layout = ['auto']);
 
   /**
    * Prepends {@link ColumnInterface} components to the row

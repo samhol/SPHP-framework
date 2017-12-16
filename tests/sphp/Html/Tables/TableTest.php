@@ -49,19 +49,12 @@ class TableTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
-   * @dataProvider bodytData
    * @param mixed $val
    */
-  public function testInsertBody($val) {
-    $this->table->tbody()->fromArray($val);
-    //$this->assertTrue($this->table->tbody()->offsetExists(0));
-    //$this->assertTrue($this->table->offsetExists(1));
-    $this->assertEquals($this->table->count('tr'), 3);
-    $this->assertEquals($this->table->count('td'), 9);
-    $this->table->thead()->fromArray($val);
-    // $this->assertEquals($this->table->count(Table::COUNT_ROWS), 6);
-    // $this->assertEquals($this->table->count(Table::COUNT_CELLS), 18);
+  public function testInsertBody() {
+    $this->table->tbody()->appendBodyRow(range(1, 5));
+    $this->table->tbody()->appendBodyRow(range(1, 5));
+    $this->assertEquals($this->table->count(), 2);
   }
 
   /**

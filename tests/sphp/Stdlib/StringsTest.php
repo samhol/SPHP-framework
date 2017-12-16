@@ -364,7 +364,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return array
    */
-  public function testReverseData() {
+  public function reverseData() {
     return [
         ["SaippuakAuppias", "saippuAkauppiaS"],
         ["a aa a ", " a aa a"],
@@ -377,7 +377,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @covers Sphp\Stdlib\Strings::reverse
-   * @dataProvider testReverseData
+   * @dataProvider reverseData
    * @param string $string
    * @param string $charsToTrim
    * @param string $expected
@@ -390,7 +390,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return array
    */
-  public function testHexadecimalData() {
+  public function hexadecimalData() {
     return [
         ["0f0", true],
         [5, true],
@@ -401,7 +401,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @covers Sphp\Stdlib\Strings::isHexadecimal
-   * @dataProvider testHexadecimalData
+   * @dataProvider hexadecimalData
    * @param string $string
    * @param string $charsToTrim
    * @param string $expected

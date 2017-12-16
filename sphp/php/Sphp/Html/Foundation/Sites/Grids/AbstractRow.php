@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Container;
+use Traversable;
 
 /**
  * Implements an abstract Foundation framework based XY Row
@@ -66,28 +67,28 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * Appends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return $this for a fluent interface
+   * @return ColumnInterface appended column
    */
-  public function append($column) {
+  public function append($column): ColumnInterface {
     if (!($column instanceof ColumnInterface)) {
       $column = new Column($column);
     }
     $this->columns->append($column);
-    return $this;
+    return $column;
   }
 
   /**
-   * Appends a new Column to the container
+   * Prepends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return $this for a fluent interface
+   * @return ColumnInterface prepended column
    */
-  public function prepend($column) {
+  public function prepend($column): ColumnInterfac {
     if (!($column instanceof ColumnInterface)) {
       $column = new Column($column);
     }
     $this->columns->prepend($column);
-    return $this;
+    return $column;
   }
 
   public function appendColumn($content, array $sizes = ['auto']) {
@@ -107,7 +108,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->content->getIterator();
+    return $this->columns->getIterator();
   }
 
   public function contentToString(): string {

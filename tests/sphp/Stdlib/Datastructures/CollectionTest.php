@@ -26,7 +26,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
         [range(-1000, 1000)],
         [[0]],
         [[null]],
-        [[false]],
+        //[[false]],
         [['']],
         [[
         'stdClass' => new \stdClass(),
@@ -151,29 +151,6 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
       $this->assertSame($value, $values[$key]);
     }
     return $this->datastructure;
-  }
-
-  /**
-   * @depends clone testMerge
-   * @param Collection $collection
-   */
-  public function testFilter(Collection $collection) {
-    //$this->datastructure->merge($values);
-    $this->assertTrue($collection->contains(null));
-    $removeNulls = function ($v) {
-      return $v !== null;
-    };
-    $collection->filter($removeNulls);
-    $this->assertFalse($collection->contains(null));
-    $this->assertTrue($collection->contains('string'));
-    $removeStrings = function ($v) {
-      return !is_scalar($v);
-    };
-    $collection->filter($removeStrings);
-    foreach($collection as $val){
-      $this->assertFalse(is_scalar($val));
-    }
-    $this->assertFalse($collection->contains(null));
   }
 
 }

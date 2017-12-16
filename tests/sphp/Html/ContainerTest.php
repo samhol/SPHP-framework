@@ -160,5 +160,3 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
   }
 
 }
-
-

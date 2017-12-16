@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-class AbstractRowTest extends \PHPUnit\Framework\TestCase {
+class RowTests extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var Column
+   * @var Row
    */
   protected $row;
 

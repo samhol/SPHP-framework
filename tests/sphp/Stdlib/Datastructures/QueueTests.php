@@ -2,19 +2,14 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Exception;
-
-abstract class QueueInterfaceTest extends \PHPUnit\Framework\TestCase {
+class QueueTests extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var QueueInterface
+   * @return  Queue
    */
-  protected $q;
-
-  /**
-   * @return  QueueInterface
-   */
-  abstract public function createQueue();
+  public function createQueue() {
+    return new Queue();
+  }
 
   protected function setUp() {
     $this->q = $this->createQueue();
