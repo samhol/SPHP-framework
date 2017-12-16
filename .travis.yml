@@ -12,9 +12,6 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - phpunit --verbose --coverage-clover build/logs/clover.xml
+  - phpunit --verbose --bootstrap tests\bootstrap.php
 
-after_success:
-  - php vendor/bin/coveralls -v
-  
 sudo: false
