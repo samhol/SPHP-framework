@@ -103,14 +103,14 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * Sets the caption text of the table
    * 
    * @param  string|null $caption the caption text of the table
-   * @return $this for a fluent interface
+   * @return Caption table caption component
    */
-  public function setCaption($caption) {
-    if (!($caption instanceof Caption)) {
+  public function setCaption($caption): Caption {
+    if (!$caption instanceof Caption) {
       $caption = new Caption($caption);
     }
     $this->caption = $caption;
-    return $this;
+    return $this->caption;
   }
 
   /**
@@ -152,7 +152,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @param  Colgroup $colgroup
    * @return Colgroup colgroup component
    */
-  public function colgroup(Colgroup $colgroup = null) {
+  public function colgroup(Colgroup $colgroup = null): Colgroup {
     if ($colgroup === null) {
       $colgroup = new Colgroup();
     }
@@ -173,7 +173,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Returns the table header component
    *
-   * @param  Thead $head
+   * @param  Thead|null $head
    * @return Thead table header component
    */
   public function thead(Thead $head = null): Thead {

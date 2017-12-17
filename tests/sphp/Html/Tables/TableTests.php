@@ -2,19 +2,12 @@
 
 namespace Sphp\Html\Tables;
 
-class TableTest extends \PHPUnit\Framework\TestCase {
+class TableTests extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Table
    */
   protected $table;
-
-  /**
-   * @return Container
-   */
-  public function createContainer() {
-    return new Table();
-  }
 
   /**
    * Sets up the fixture, for example, opens a network connection.
@@ -33,14 +26,13 @@ class TableTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
-  public function bodytData() {
+  public function bodytData(): array {
     return [
         [
             [
-                ["rose", 1.25, 15],
+                [range('a', 'b'), range(1, 2), range('c', 'd')],
                 ["daisy", 0.75, 25],
                 ["orchid", 1.15, 7]
             ]
@@ -49,12 +41,17 @@ class TableTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @param mixed $val
    */
-  public function testInsertBody() {
-    $this->table->tbody()->appendBodyRow(range(1, 5));
-    $this->table->tbody()->appendBodyRow(range(1, 5));
-    $this->assertEquals($this->table->count(), 2);
+  public function testParts() {
+    $this->assertSame("$this->table", '<table></table>');
+    $this->table->setCaption('caption');
+    $this->assertSame("$this->table", '<table><caption>caption</caption></table>');
+    $this->table->thead()->appendHeaderRow(range('a', 'b'));
+    $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th><th>b</th></tr></thead></table>');
+    $this->table->tfoot()->appendBodyRow(range('c', 'd'));
+    $this->table->tbody()->appendBodyRow(range(1, 2));
+    $this->assertEquals($this->table->count(), 3);
+    $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th><th>b</th></tr></thead><tfoot><tr><td>c</td><td>d</td></tr></tfoot><tbody><tr><td>1</td><td>2</td></tr></tbody></table>');
   }
 
   /**
@@ -63,12 +60,12 @@ class TableTest extends \PHPUnit\Framework\TestCase {
    * @param mixed $val
    */
   public function tesstPrepend($val) {
-    $this->container->append("foo");
-    $this->container->prepend($val);
-    $this->assertTrue($this->container->groupExists(0));
-    $this->assertTrue($this->container->groupExists(1));
-    $this->assertEquals($this->container->count(), 2);
-    $this->assertEquals($this->container[0], $val);
+    $this->table->append("foo");
+    $this->table->prepend($val);
+    $this->assertTrue($this->table->groupExists(0));
+    $this->assertTrue($this->table->groupExists(1));
+    $this->assertEquals($this->table->count(), 2);
+    $this->assertEquals($this->table[0], $val);
   }
 
   /**
@@ -100,19 +97,6 @@ class TableTest extends \PHPUnit\Framework\TestCase {
     ];
   }
 
-  /**
-   * 
-   * @dataProvider arrayData
-   * @param mixed[] $data
-   */
-  public function tesstClear(array $data) {
-    foreach ($data as $val) {
-      $this->container->append($val);
-    }
-    $this->assertEquals($this->container->count(), count($data));
-    $this->container->clear();
-    $this->assertEquals($this->container->count(), 0);
-  }
 
   /**
    * 
@@ -121,11 +105,11 @@ class TableTest extends \PHPUnit\Framework\TestCase {
    */
   public function tesstIterator(array $data) {
     foreach ($data as $val) {
-      $this->container->append($val);
+      $this->table->append($val);
     }
-    $it = $this->container->getIterator();
+    $it = $this->table->getIterator();
     foreach ($it as $key => $val) {
-      $this->assertEquals($this->container[$key], $val);
+      $this->assertEquals($this->table[$key], $val);
     }
   }
 
@@ -141,20 +125,6 @@ class TableTest extends \PHPUnit\Framework\TestCase {
     $this->container->clear()->append((new Container())->append($val));
     $this->assertTrue($this->container->exists($val));
     $this->assertFalse($this->container->exists("foo"));
-  }
-
-  /**
-   * 
-   */
-  public function tesstClone() {
-    $this->container->append(new Container("a"));
-    $clone = clone $this->container;
-    $this->container[0][0] = "b";
-    //$this->container->clear();
-    $this->assertEquals($clone->count(), 1);
-    $this->assertEquals($clone[0][0], "a");
-
-    $this->assertEquals($this->container[0][0], "b");
   }
 
 }
