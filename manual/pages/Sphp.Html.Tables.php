@@ -8,6 +8,13 @@ $table = Manual\api()->classLinker(Table::class);
 $tr = Manual\api()->classLinker(Tr::class);
 $td = Manual\api()->classLinker(Td::class);
 $th = Manual\api()->classLinker(Th::class);
+$cell =  Manual\api()->classLinker(Cell::class);
+$caption = Manual\api()->classLinker(Caption::class);
+$colgroup = Manual\api()->classLinker(Colgroup::class);
+$col = Manual\api()->classLinker(Col::class);
+$thead =  Manual\api()->classLinker(Thead::class);
+$tbody =  Manual\api()->classLinker(Tbody::class);
+$tfoot =  Manual\api()->classLinker(Tfoot::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
 Manual\md(<<<MD
@@ -21,15 +28,19 @@ two-dimensional data table. Therefore <u>HTML tables should not be used as layou
 
 ##The $table component 
 		
-The $table Implements the HTML {$w3schools->tag("table")}. 
+The structure of a $table object follows closely the specification of a HTML $w3schools->table.
 
-###The structure of the $table component 
-        
-A basic $table is divided into rows with the $tr component (the tr stands for table row).
-A row is divided into data cells with the $td tag. (td stands for table data)
-A row can also be divided into headings with the $th tag. (th stands for table heading)
-The $td elements are the data containers in the $table.
-The $td elements can contain all sorts of HTML elements like text, images, lists, other tables, etc.
+ * The $caption class specifies the caption (or title) of a table
+ * The $colgroup class defines a group of columns within a table
+   * The $col class defines a column within a table and is used for defining 
+   common semantics on all common cells. An instance of it is always within a 
+   $colgroup object.
+ * The $thead class defines a set of rows defining the head of the columns of the table.
+ * The $tbody class groups one or more rows as the body of a table.
+ * The $tbody class groups one or more rows as the body of a table.
+   * The $tr class defines a row of cells in a table. Those are implementaitions of $cell interface.
+     * The $th class implements $cell as header of a group of table cells.
+     * The $td class implements $cell as data container.
 MD
 );
 Manual\example('Sphp/Html/Tables/Table.php', null, true)

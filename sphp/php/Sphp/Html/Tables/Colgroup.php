@@ -7,79 +7,80 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Container;
 
 /**
  * Implements an HTML &lt;colgroup&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools HTML API
+ * @link    http://www.w3schools.com/tags/tag_colgroup.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Colgroup extends ContainerTag implements TableContent {
+class Colgroup extends AbstractComponent implements TableContent {
+
+  /**
+   * @var Container
+   */
+  private $cols;
 
   /**
    * Constructs a new instance
-   *
-   * @param  Col|Col[]|null $cols The ColTag(s) objects that specifies column properties
    */
-  public function __construct($cols = null) {
+  public function __construct() {
     parent::__construct('colgroup');
-    if (isset($cols)) {
-      $this->append($cols);
-    }
+    $this->cols = new Container;
   }
 
   /**
-   * Appends a {@link Col} with a specific span and CSS class values to the colgroup
+   * Appends a new &lt;col&gt; component with specific span
    *
-   * @param  string $span specifies the number of columns a col element should span
-   * @param  string|string[] $cssClasses CSS classes
-   * @return $this for a fluent interface
+   * @param  int $span specifies the number of columns a col element should span
+   * @return Col appended instance
    */
-  public function appendCol(int $span = 1, $cssClasses = '') {
-    $this->append(new Col($span, $cssClasses));
-    return $this;
+  public function appendCol(int $span = 1): Col {
+    $col = new Col($span);
+    $this->append($col);
+    return $col;
   }
 
   /**
    * Appends cols(s) to the colgroup
    *
-   * @param  Col|Col[] $cols The ColTag(s) objects that specifies column properties
+   * @param  Col,... $cols The ColTag(s) objects that specifies column properties
    * @return $this for a fluent interface
    */
-  public function append($cols) {
-    parent::append($cols);
+  public function append(Col ...$cols) {
+    $this->cols->append($cols);
     return $this;
   }
 
   /**
    * Prepends cols(s) to the colgroup
    *
-   * **Important!** The numeric keys of the object will be renumbered starting from zero
-   *
-   * @param  Col|Col[] $cols The ColTag(s) objects that specifies column properties
+   * @param  Col $cols  objects
    * @return $this for a fluent interface
    */
-  public function prepend($cols) {
-    parent::prepend($cols);
+  public function prepend(Col $cols) {
+    $this->cols->prepend($cols);
     return $this;
   }
 
   /**
-   * Assigns a {@link ColTag} object to the specified offset
+   * Prepends a new &lt;col&gt; component with specific span
    *
-   * @param  mixed $offset the offset to assign the value to
-   * @param  Col $colTag the ColTag object to set
-   * @throws \InvalidArgumentException if the type of the $colTag parameter is not {@link ColTag}
-   * @link   http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetSet
+   * @param  int $span specifies the number of columns a col element should span
+   * @return Col prepended instance
    */
-  public function offsetSet($offset, $colTag) {
-    if (!($colTag instanceof Col)) {
-      throw new \InvalidArgumentException('The type of the colTag attribute must be ' . get_class(new Col));
-    }
-    parent::offsetSet($offset, $colTag);
+  public function prependCol(int $span = 1): Col {
+    $col = new Col($span);
+    $this->prepend($col);
+    return $col;
+  }
+
+  public function contentToString(): string {
+    return $this->cols;
   }
 
 }
