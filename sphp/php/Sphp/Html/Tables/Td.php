@@ -31,8 +31,8 @@ class Td extends AbstractCell {
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
    * @param mixed $content the content of the component
-   * @param int $colspan the value of the colspan attribute
-   * @param int $rowspan the value of the rowspan attribute
+   * @param int $colspan specifies the number of columns cell should span
+   * @param int $rowspan specifies the number of rows cell should span
    * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    */

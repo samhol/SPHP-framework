@@ -166,7 +166,7 @@ class TableBuilder implements \Sphp\Html\Content {
     $lineNumber = $this->getFirstLineNumber();
     foreach ($this->tbodyData as $row) {
       if ($this->lineNumbersVisible()) {
-        $th = new Th(($lineNumber++) . '.', 'row');
+        $th = (new Th(($lineNumber++) . '.'))->setScope('row');
         array_unshift($row, $th);
       }
       $tbody->appendBodyRow($row);

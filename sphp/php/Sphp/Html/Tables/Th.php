@@ -32,14 +32,14 @@ class Th extends AbstractCell {
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
    * @param mixed $content the content of the tag
+   * @param int $colspan specifies the number of columns cell should span
+   * @param int $rowspan specifies the number of rows cell should span
    * @param string|null $scope the value of the scope attribute or null for none
-   * @param int $colspan solun colspan attribute value
-   * @param int $rowspan solun rowspan attribute value
-   * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
+   * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
-  public function __construct($content = null, string $scope = null, int $colspan = 1, int $rowspan = 1) {
+  public function __construct($content = null, int $colspan = 1, int $rowspan = 1, string $scope = null) {
     parent::__construct('th', $content);
     if ($scope !== null) {
       $this->setScope($scope);
@@ -56,7 +56,7 @@ class Th extends AbstractCell {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
-  public function setScope(string $scope) {
+  public function setScope(string $scope = null) {
     return $this->setAttr('scope', $scope);
   }
 
@@ -66,8 +66,8 @@ class Th extends AbstractCell {
    * @return string the value of the scope attribute
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
-  public function getScope() {
-    return $this->getAttr('scope');
+  public function getScope(): string {
+    return (string) $this->getAttr('scope');
   }
 
 }

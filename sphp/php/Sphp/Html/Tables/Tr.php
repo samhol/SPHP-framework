@@ -35,34 +35,13 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
     parent::__construct('tr');
   }
 
-  /**
-   * Appends a cell component to the row
-   *
-   * @param  Cell $cell new cell object
-   * @return $this for a fluent interface
-   */
   public function append(Cell $cell) {
     $this->getInnerContainer()->append($cell);
     return $this;
   }
 
-  /**
-   * Creates and appends a new &lt;th&gt; component to the row
-   *
-   * @precondition  $scope == row|col|rowgroup|colgroup
-   * @precondition  $colspan >= 1
-   * @precondition  $rowspan >= 1
-   * @param mixed $content the content of the tag
-   * @param string|null $scope the value of the scope attribute or null for none
-   * @param int $colspan solun colspan attribute value
-   * @param int $rowspan solun rowspan attribute value
-   * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
-   * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
-   * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
-   * @return Th appended table cell component
-   */
-  public function appendTh($content, string $scope = null, int $colspan = 1, int $rowspan = 1): Th {
-    $th = new Th($content, $scope, $colspan, $rowspan);
+  public function appendTh($content, int $colspan = 1, int $rowspan = 1, string $scope = null): Th {
+    $th = new Th($content, $colspan, $rowspan, $scope);
     $this->append($th);
     return $th;
   }
@@ -80,18 +59,6 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
     return $this;
   }
 
-  /**
-   * Creates and appends a new &lt;td&gt; component to the row
-   *
-   * @precondition  $colspan >= 1
-   * @precondition  $rowspan >= 1
-   * @param mixed $content the content of the component
-   * @param int $colspan the value of the colspan attribute
-   * @param int $rowspan the value of the rowspan attribute
-   * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
-   * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
-   * @return Td appended table cell component
-   */
   public function appendTd($content, int $colspan = 1, int $rowspan = 1): Td {
     $td = new Td($content, $colspan, $rowspan);
     $this->append($td);
@@ -117,9 +84,9 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
    * @param  Cell $cell new cell object
    * @return $this for a fluent interface
    */
-  public function prepend(Cell $cell) {
+  public function prepend(Cell $cell): Cell {
     $this->getInnerContainer()->prepend($cell);
-    return $this;
+    return $cell;
   }
 
   /**

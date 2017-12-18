@@ -1,6 +1,8 @@
 <?php
 
-namespace Sphp\Html\Tables;
+namespace Sphp\Tests;
+
+use Sphp\Html\Tables\Table;
 
 class TableTests extends \PHPUnit\Framework\TestCase {
 
@@ -83,48 +85,6 @@ class TableTests extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($this->container->count(), 3);
     $this->assertEquals($this->container[1], $val);
     $this->assertEquals($this->container["a"], $val);
-  }
-
-  /**
-   * 
-   * @return mixed[]
-   */
-  public function arrayData() {
-    return [
-        [range("a", "e")],
-        [array_fill(0, 10, new Container())],
-        [range(1, 100)]
-    ];
-  }
-
-
-  /**
-   * 
-   * @dataProvider arrayData
-   * @param mixed[] $data
-   */
-  public function tesstIterator(array $data) {
-    foreach ($data as $val) {
-      $this->table->append($val);
-    }
-    $it = $this->table->getIterator();
-    foreach ($it as $key => $val) {
-      $this->assertEquals($this->table[$key], $val);
-    }
-  }
-
-  /**
-   * 
-   * @dataProvider appendData
-   * @param mixed $val
-   */
-  public function tesstExists($val) {
-    $this->container->append($val);
-    $this->assertTrue($this->container->exists($val));
-    $this->assertFalse($this->container->exists("foo"));
-    $this->container->clear()->append((new Container())->append($val));
-    $this->assertTrue($this->container->exists($val));
-    $this->assertFalse($this->container->exists("foo"));
   }
 
 }
