@@ -8,6 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\TagInterface;
+use Sphp\Html\TraversableContent;
 
 /**
  * Defines properties HTML multimedia tags
@@ -21,45 +22,46 @@ interface MediaTagInterface extends TagInterface {
   /**
    * Adds multimedia source or track
    *
-   * @param  MultimediaContentInterface $src a video sources
+   * @param  MultimediaSource $src a video sources
    * @return $this for a fluent interface
    */
   public function addMediaSrc(MultimediaSource $src);
 
   /**
-   * Sets (replaces) one of the video sources
+   * Adds a video/audio/image source which the browser may choose from
    *
-   * @param  string|URL $src the URL of the media file
+   * @param  string $src the URL of the media file
    * @param  string $type the media type of the media resource
-   * @return $this for a fluent interface
+   * @return Source added instance
    * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function addSource(string $src, string $type = null);
+  public function addSource(string $src, string $type = null): Source;
 
   /**
    * Returns all the source components associated with the component
    * 
-   * @return Source all the source components
+   * @return TraversableContent all the source components
    */
-  public function getSources();
+  public function getSources(): TraversableContent;
 
   /**
-   * Sets (replaces) one of the video sources
+   * Adds a text track for the media element
    *
    * @param  string $src the URL of the media file
-   * @param  string $srclang the language of the track text data
+   * @param  string $srclang the language of the track text data   
+   * @return Track added instance
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
    */
-  public function addTrack(string $src, string $srclang = null);
+  public function addTrack(string $src, string $srclang = null): Track;
 
   /**
    * Returns all the track components associated with the component
    * 
-   * @return Track all the track components
+   * @return TraversableContent all the track components
    */
-  public function getTracks();
+  public function getTracks(): TraversableContent;
 
   /**
    * Sets whether the video will automatically start playing as soon as it can 

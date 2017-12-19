@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-(new VideoJs())
-        ->addSource("http://techslides.com/demos/sample-videos/small.webm")
-        ->addSource("http://techslides.com/demos/sample-videos/small.ogv")
-        ->addSource("http://techslides.com/demos/sample-videos/small.mp4")
-        ->addSource("http://techslides.com/demos/sample-videos/small.3gp")
-        ->showControls()
+$videoJS = new VideoJs();
+$videoJS->addSource("http://techslides.com/demos/sample-videos/small.webm");
+$videoJS->addSource("http://techslides.com/demos/sample-videos/small.ogv");
+$videoJS->addSource("http://techslides.com/demos/sample-videos/small.mp4");
+$videoJS->addSource("http://techslides.com/demos/sample-videos/small.3gp");
+$videoJS->showControls()
         ->setPoster("manual/pics/LEGO_logo.png")
         ->setWidescreen("4-3")
         ->printHtml();

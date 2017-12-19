@@ -12,6 +12,7 @@ use Sphp\Html\TraversableContent;
 use IteratorAggregate;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\ContainerInterface;
+use Traversable;
 
 /**
  * Implements an HTML &lt;dl&gt; tag
@@ -41,12 +42,24 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
   /**
    * Appends elements to the object
    *
-   * @param  DlContentInterface $it list elements
+   * @param  DlContent $it list elements
    * @return $this for a fluent interface
    */
-  public function append(DlContentInterface $it) {
+  public function append(DlContent $it) {
     $this->getInnerContainer()->append($it);
     return $this;
+  }
+
+  /**
+   * Creates and appends a term to the list
+   *
+   * @param  mixed $content the term content
+   * @return Dt appended instance
+   */
+  public function appendTerm($content): Dt {
+    $dt = new Dt($content);
+    $this->append($dt);
+    return $dt;
   }
 
   /**
@@ -63,6 +76,18 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
       $this->append($term);
     }
     return $this;
+  }
+
+  /**
+   * Creates and appends a description to the list
+   *
+   * @param  mixed $content the description content
+   * @return Dt appended instance
+   */
+  public function appendDescription($content): Dd {
+    $dd = new Dd($content);
+    $this->append($dd);
+    return $dd;
   }
 
   /**
@@ -84,10 +109,10 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
   /**
    * Prepends an item to the object
    * 
-   * @param  DlContentInterface $it list element
+   * @param  DlContent $it list element
    * @return $this for a fluent interface
    */
-  public function prepend(DlContentInterface $it) {
+  public function prepend(DlContent $it) {
     $this->getInnerContainer()->prepend($it);
     return $this;
   }
@@ -96,7 +121,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
     return $this->getInnerContainer()->count();
   }
 
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->getInnerContainer();
   }
 

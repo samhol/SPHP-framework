@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Container;
-use Sphp\Html\ContainerInterface;
+use Sphp\Html\TraversableContent;
 use Traversable;
 
 /**
@@ -50,7 +50,7 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
     return $this->layoutManager;
   }
 
-  public function getColumns(): ContainerInterface {
+  public function getColumns(): TraversableContent {
     return $this->getComponentsByObjectType(ColumnInterface::class);
   }
 

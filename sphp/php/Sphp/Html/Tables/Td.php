@@ -8,10 +8,8 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Implements an HTML &lt;table&gt; tag's cell (&lt;td&gt; tag)
+ * Implements a &lt;td&gt; data cell for an HTML &lt;table&gt;
  * 
- * This defines a standard cell in a {@link Table} component
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

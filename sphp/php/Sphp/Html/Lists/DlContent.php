@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DlContentInterface.php (UTF-8)
+ * DlContent.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -16,6 +16,6 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface DlContentInterface extends ComponentInterface {
+interface DlContent extends ComponentInterface {
   
 }

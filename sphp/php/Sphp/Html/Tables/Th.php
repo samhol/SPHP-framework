@@ -8,10 +8,8 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Implements an HTML &lt;table&gt; tag's header cell (&lt;th&gt; tag)
+ * Implements a &lt;th&gt; header cell for an HTML &lt;table&gt;
  * 
- * This component defines a header cell in a {@link Table} component
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link http://www.w3schools.com/tags/tag_th.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

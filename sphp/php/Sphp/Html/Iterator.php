@@ -70,7 +70,7 @@ class Iterator implements NativeIterator, Content, TraversableContent {
   /**
    * Count the number of inserted elements in the container
    *
-   * @return int number of elements in the html component
+   * @return int number of elements in the HTML component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {

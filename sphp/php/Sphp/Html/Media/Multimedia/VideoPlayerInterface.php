@@ -37,7 +37,7 @@ interface VideoPlayerInterface extends Embeddable, LazyMedia, SizeableMedia {
   public function autoplay(bool $autoplay = true);
 
   /**
-   * Setx the looping on or off
+   * Set the looping on or off
    * 
    * @param  boolean $loop true for on and false for off
    * @return $this for a fluent interface

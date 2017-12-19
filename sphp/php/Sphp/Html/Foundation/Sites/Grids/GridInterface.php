@@ -9,7 +9,6 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\ContainerInterface;
 
 /**
  * Defines a Foundation framework based XY Grid container for rows
@@ -66,9 +65,9 @@ interface GridInterface extends CssClassifiableContent, TraversableContent {
   public function prepend($row);
 
   /**
-   * Returns all {@link ColumnInterface} components from the grid
+   * Returns all column components from the grid
    * 
-   * @return ContainerInterface containing all the {@link ColumnInterface} components
+   * @return TraversableContent containing all the column components
    */
-  public function getColumns(): ContainerInterface;
+  public function getColumns(): TraversableContent;
 }

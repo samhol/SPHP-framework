@@ -7,18 +7,12 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\TraversableContent;
 
 /**
  * Implements an HTML &lt;nav&gt; tag
  *
- * The {@link self} object defines a set of navigation links ({@link HyperlinkInterface}).
- *
- * Notice that NOT all links of a document should be inside a {@link self} object.
- * The {@link self} object is intended only for major block of navigation links.
- *
- * Browsers, such as screen readers for disabled users, can use this element to
- * determine whether to omit the initial rendering of this content.
+ * This object defines a set of navigation links.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_nav.asp w3schools HTML API
@@ -39,9 +33,9 @@ class Nav extends ContainerTag {
   /**
    * Returns the hyperlink sub components
    *
-   * @return ContainerInterface containing {@link HyperlinkInterface} sub components
+   * @return TraversableContent containing {@link HyperlinkInterface} sub components
    */
-  public function hyperlinks() {
+  public function hyperlinks(): TraversableContent {
     return $this->getComponentsByObjectType(HyperlinkInterface::class);
   }
 

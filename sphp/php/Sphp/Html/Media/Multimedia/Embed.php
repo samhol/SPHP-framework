@@ -12,7 +12,6 @@ use Sphp\Html\Media\Embeddable;
 use Sphp\Html\Media\LazyMedia;
 use Sphp\Html\Media\SizeableMedia;
 
-
 /**
  * Implements an HTML &lt;embed&gt; tag
  *

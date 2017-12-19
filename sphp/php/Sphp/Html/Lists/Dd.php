@@ -19,7 +19,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Dd extends ContainerTag implements DlContentInterface {
+class Dd extends ContainerTag implements DlContent {
 
   /**
    * Constructs a new instance
