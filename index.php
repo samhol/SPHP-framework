@@ -15,10 +15,7 @@ if ($outputCache->start("$cacheSuffix-head") === false) {
 }
 ?>
 <div class="off-canvas-wrapper">
-  <div class="off-canvas-absolute position-left" id="bodyOffCanvas" data-off-canvas>
-    <!-- Your menu or Off-canvas content goes here -->
-  </div>
-  <div class="off-canvas-absolute position-right" id="rightBodyOffCanvas" data-off-canvas>
+  <div class="off-canvas position-left" id="bodyOffCanvas" data-off-canvas>
     <!-- Your menu or Off-canvas content goes here -->
   </div>
   <div class="off-canvas-content" data-off-canvas-content>
@@ -29,36 +26,40 @@ if ($outputCache->start("$cacheSuffix-head") === false) {
       $outputCache->end();
     }
     ?>
-    <div class="row expanded small-collapse medium-uncollapse">
-      <div class="column medium-3 large-3 xlarge-2 show-for-large">
-        <?php
-        if ($outputCache->start('sidenav') === false) {
-          include('manual/templates/menus/sidenav.php');
-          $outputCache->end();
-        }
-        ?>
-      </div>
-      <div class="mainContent  small-12 large-9 xlarge-9 column"> 
-        <div class="container">
+    <div class="grid-container fluid">
+      <div class="grid-x grid-margin-x grid-padding-x">
+        <div class="cell medium-3 large-3 xlarge-2 show-for-large">
           <?php
-          $man_cache = "$cacheSuffix-content";
-          if ($outputCache->start($man_cache) === false) {      
-            $router->execute();
+          if ($outputCache->start('sidenav') === false) {
+            include('manual/templates/menus/sidenav.php');
             $outputCache->end();
           }
           ?>
         </div>
-      </div>
-      <div class="show-for-xlarge xlarge-1 column"> 
+        <div class="mainContent  small-12 large-9 xlarge-9 cell"> 
+          <div class="container">
+            <?php
+            $man_cache = "$cacheSuffix-content";
+            if ($outputCache->start($man_cache) === false) {
+              $router->execute();
+              $outputCache->end();
+            }
+            ?>
+          </div>
+        </div>
+        <div class="show-for-xlarge xlarge-1 cell"></div>
       </div>
     </div>
   </div>
-</div>
+
 <?php
 if ($outputCache->start('footer') === false) {
   include('manual/templates/blocks/footer.php');
   include('manual/templates/backToTopButton.php');
   $outputCache->end();
 }
-
+?>
+</div>
+<?php
 $html->documentClose();
+

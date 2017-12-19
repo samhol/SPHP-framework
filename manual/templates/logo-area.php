@@ -4,8 +4,8 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Stdlib\Path;
 ?>
-<div class="row expanded sphp-logo-area">
-  <div class="column small-12 medium-6">
+<div class="grid-x full sphp-logo-area">
+  <div class="cell small-12 medium-6">
     <ul class="logo">
       <li>
         <a href="<?php echo Path::get()->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
@@ -14,7 +14,7 @@ use Sphp\Stdlib\Path;
       </li>
     </ul>
   </div>
-  <div class="column small-12 medium-6 icon-col">
+  <div class="cell small-12 medium-6 icon-col">
     <?php
 
     use Sphp\Html\Icons\BrandIcons;
@@ -28,8 +28,3 @@ $bi = new BrandIcons();
     ?>
   </div>
 </div>
-
-
-
-
-

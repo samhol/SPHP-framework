@@ -3,8 +3,8 @@
 use Sphp\Html\Apps\TechLinkList;
 ?>
 <div class="footer">
-  <div class="row">
-    <div class="small-12 large-4 xlarge-3 columns skull text-center">
+  <div class="grid-x grid-margin-x grid-padding-x">
+    <div class="cell small-12 large-4 xlarge-3 skull text-center">
       <img src="manual/pics/footer_skull.png" alt="skull">
       <?php
       $techLinks = new TechLinkList();
@@ -12,7 +12,7 @@ use Sphp\Html\Apps\TechLinkList;
       ?>
     </div>
 
-    <div class="small-12 large-8 xlarge-8 columns end">
+    <div class="cell small-12 large-8 xlarge-8 end">
       <?php include 'footerLinks.php'; ?>
     </div>
   </div>
