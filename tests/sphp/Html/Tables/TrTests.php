@@ -5,7 +5,6 @@ namespace Sphp\Tests\Html\Tables;
 use Sphp\Html\Tables\Tr;
 use Sphp\Html\Tables\Td;
 use Sphp\Html\Tables\Th;
-use Sphp\Html\Tables\Cell;
 
 class TrTests extends \PHPUnit\Framework\TestCase {
 
@@ -43,19 +42,37 @@ class TrTests extends \PHPUnit\Framework\TestCase {
 
   /**
    * @dataProvider cells
+   * 
+   * @param mixed $data
    */
-  public function testAppend($data) {
+  public function testAppendTd($data) {
     $obj = $this->row->appendTd($data);
+    $this->assertInstanceOf(Td::class, $obj);
     $this->assertSame($data, $obj->offsetGet(0));
   }
 
   /**
    * @dataProvider cells
+   * 
+   * @param mixed $data
+   */
+  public function testAppendTh($data) {
+    $obj = $this->row->appendTh($data);
+    $this->assertInstanceOf(Th::class, $obj);
+    $this->assertSame($data, $obj->offsetGet(0));
+  }
+
+  /**
+   * @dataProvider cells
+   * 
+   * @param mixed $data
    */
   public function testPrepend($data) {
-    $this->row->appendTd('foo');
-    $obj = $this->row->prepend(new Td($data));
-    $this->assertSame($data, $obj->offsetGet(0));
+    $td = $this->row->prepend(new Td($data));
+    $this->assertSame($data, $td->offsetGet(0));
+    $th = $this->row->prepend(new Th($data));
+    $this->assertInstanceOf(Th::class, $th);
+    $this->assertSame($data, $th->offsetGet(0));
   }
 
 }
