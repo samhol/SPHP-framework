@@ -10,7 +10,7 @@ namespace Sphp\Validators;
 use Sphp\I18n\Messages\Message;
 
 /**
- * Description of GreaterThanValidator
+ * Validates data against certain limit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

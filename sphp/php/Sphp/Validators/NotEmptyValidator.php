@@ -7,8 +7,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Stdlib\Strings;
-
 /**
  * Validates that the field has a non empty value
  *

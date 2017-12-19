@@ -10,7 +10,7 @@ namespace Sphp\Validators;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Description of IsInstanceOfValidator
+ * Validates data being an object of certain type
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

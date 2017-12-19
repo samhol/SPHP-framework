@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 /**
- * Description of RangeValidator
+ * Validates data against certain numeric range
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

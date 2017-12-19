@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 /**
- * Description of VhitelistValidator
+ * Validates keys of an array against a whitelist
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

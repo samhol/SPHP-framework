@@ -34,13 +34,11 @@ abstract class AbstractValidator implements ValidatorInterface {
   private $errors;
 
   /**
-   *
    * @var MessageInterface[] 
    */
   private $messageTemplates = [];
 
   /**
-   *
    * @var mixed 
    */
   private $value;
@@ -48,7 +46,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * Constructs a new validator
    *
-   * @param MessageList $error container for the error messages
+   * @param string $error error message
    */
   public function __construct(string $error = 'Invalid value') {
     $this->messageTemplates = [];

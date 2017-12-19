@@ -1,16 +1,14 @@
 <?php
 
 /**
- * InArrayValidator.php (UTF-8)
+ * IdenticalValidator.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Validators;
 
 /**
- * Validates string length
- *
- *  Validates the length of the given string
+ * Validates data against expected value
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -34,9 +32,10 @@ class IdenticalValidator extends AbstractValidator {
    * Constructs a new validator
    *
    * @param mixed $token the haystack
+   * @param string $error error message
    */
-  public function __construct($token, $errormessage = "Value and the token does not match") {
-    parent::__construct($errormessage);
+  public function __construct($token, string $error = 'Value and the token does not match') {
+    parent::__construct($error);
     $this->setToken($token);
   }
 
@@ -45,14 +44,19 @@ class IdenticalValidator extends AbstractValidator {
     parent::__destruct();
   }
 
+  /**
+   * Returns the token to validate against
+   * 
+   * @return mixed $token the token used
+   */
   public function getToken() {
     return $this->token;
   }
 
   /**
-   * Sets the range of the valid string length
+   * Sets the token to validate against
    *
-   * @param mixed[] $token the haystack
+   * @param  mixed $token the token used
    * @return $this for a fluent interface
    */
   public function setToken($token) {
@@ -60,13 +64,19 @@ class IdenticalValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * Checks whether the validation is strict 
+   * 
+   * @return bool true for strict validation and false otherwise
+   */
   public function isStrict(): bool {
     return $this->strict;
   }
 
   /**
+   * Sets whether the validation is strict 
    * 
-   * @param  boolean $strict
+   * @param  boolean $strict true for strict validation and false otherwise
    * @return $this for a fluent interface
    */
   public function setStrict(bool $strict) {
