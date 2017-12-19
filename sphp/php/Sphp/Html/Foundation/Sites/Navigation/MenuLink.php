@@ -31,7 +31,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    *
    * @param  string $href the URL of the link
    * @param  string $content link tag's content
-   * @param  string $target the value of the target attribute
+   * @param  string|null $target optional target frame of the hyperlink
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */

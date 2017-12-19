@@ -28,7 +28,7 @@ if ($outputCache->start("$cacheSuffix-head") === false) {
     ?>
     <div class="grid-container fluid">
       <div class="grid-x grid-margin-x grid-padding-x">
-        <div class="cell medium-3 large-3 xlarge-2 show-for-large">
+        <div class="cell small-12 medium-3 large-3 xlarge-2 show-for-large">
           <?php
           if ($outputCache->start('sidenav') === false) {
             include('manual/templates/menus/sidenav.php');

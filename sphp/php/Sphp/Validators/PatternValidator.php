@@ -52,7 +52,7 @@ class PatternValidator extends AbstractValidator {
 
   /**
    * Sets a regular expression patterns to test.
-   * **Notes:** If all of the patterns is a matches => the cheked string is valid
+   * **Notes:** If all of the patterns is a matches => the checked string is valid
    *
    *  **Note:** If the validable value matches the pattern => the validated
    *  data is valid.

@@ -74,7 +74,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    *
    * @return Head the head tag object
    */
-  public function head() {
+  public function head(): Head {
     return $this->head;
   }
 
@@ -83,7 +83,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    *
    * @return Body the body component
    */
-  public function body() {
+  public function body(): Body {
     return $this->body;
   }
 
@@ -131,14 +131,10 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @param  ScriptsContainer|null $c optional new script container to set
    * @return ScriptsContainer the script container
    */
-  public function scripts(ScriptsContainer $c = null) {
+  public function scripts(ScriptsContainer $c = null): ScriptsContainer {
     return $this->body->scripts($c);
   }
 
-  /**
-   * 
-   * @return string
-   */
   public function getOpeningTag(): string {
     return '<!DOCTYPE html>' . parent::getOpeningTag();
   }
@@ -164,15 +160,16 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   }
 
   /**
+   * Returns the document end
    * 
-   * @return string 
+   * @return string the document end
    */
   public function getDocumentClose(): string {
     return $this->body()->close() . $this->getClosingTag();
   }
 
   /**
-   * 
+   * Prints the component as HTML markup string
    * 
    * @return $this for a fluent interface
    */
@@ -181,6 +178,11 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
     return $this;
   }
 
+  /**
+   * Create a new iterator to iterate through content
+   *
+   * @return Traversable iterator
+   */
   public function getIterator() {
     return $this->body->getIterator();
   }

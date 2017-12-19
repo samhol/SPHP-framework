@@ -65,18 +65,19 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
    *
    * @param  string $href the URL of the link
    * @param  string $content link text
-   * @param  string $target the value of the target attribute
-   * @return $this for a fluent interface
+   * @param  string|null $target optional target frame of the hyperlink
+   * @return BreadCrumb prepended instance
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function prependNew($href = '', $content = null, $target = '_self') {
-    $this->prepend(new BreadCrumb($href, $content, $target));
-    return $this;
+  public function prependNew(string $href, $content = null, string $target = null): BreadCrumb {
+    $item = new BreadCrumb($href, $content, $target);
+    $this->prepend($item);
+    return $item;
   }
 
   /**
-   * Creates and appends new {@link BreadCrumb} to the container
+   * Creates and appends new BreadCrumb object
    *
    * **Notes:**
    * 
@@ -86,14 +87,15 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
    *
    * @param  string $href the URL of the link
    * @param  string $content link text
-   * @param  string $target the value of the target attribute
-   * @return $this for a fluent interface
+   * @param  string|null $target optional target frame of the hyperlink
+   * @return BreadCrumb appended instance
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendNew($href = '', $content = null, $target = '') {
-    $this->append(new BreadCrumb($href, $content, $target));
-    return $this;
+  public function appendNew(string $href, $content = null, string $target = null): BreadCrumb {
+    $item = new BreadCrumb($href, $content, $target);
+    $this->append($item);
+    return $item;
   }
 
   /**

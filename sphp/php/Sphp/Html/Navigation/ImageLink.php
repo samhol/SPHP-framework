@@ -58,12 +58,6 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     }
   }
 
-  /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
-   */
   public function __destruct() {
     unset($this->img);
     parent::__destruct();
