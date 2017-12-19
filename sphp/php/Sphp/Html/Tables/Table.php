@@ -92,7 +92,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     if (is_object($this->tfoot)) {
       $this->tfoot = clone $this->tfoot;
     }
-    parent::__destruct();
+    parent::__clone();
   }
 
   public function contentToString(): string {
@@ -102,7 +102,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Sets the caption text of the table
    * 
-   * @param  string|null $caption the caption text of the table
+   * @param  Caption|string|null $caption the caption object or the content of the caption
    * @return Caption table caption component
    */
   public function setCaption($caption): Caption {

@@ -4,7 +4,7 @@ namespace Sphp\Html\Lists;
 
 use Sphp\Manual;
 
-$htmlList = Manual\api()->classLinker(AbstractList::class);
+$htmlList = Manual\api()->classLinker(StandardList::class);
 $ol = Manual\api()->classLinker(Ol::class);
 $ul = Manual\api()->classLinker(Ul::class);
 $liInterface = Manual\api()->classLinker(LiInterface::class);
@@ -12,6 +12,7 @@ $li = Manual\api()->classLinker(Li::class);
 $dlLink = Manual\api()->classLinker(Dl::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
+
 Manual\md(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>
 $ns	
@@ -19,7 +20,7 @@ This namespace contains object oriented implementations of HTML lists.
 
 ##Unrdered lists: <small>The $ul component</small>{#ul}
 
-The $ul class implements an unordered (bulleted) list (The {$w3schools->tag('ul')}).
+The $ul class implements an unordered (bulleted) list (The $w3schools->ul).
 
 Use the &lt;ul&gt; tag together with the &lt;li&gt; tag to create unordered lists.
 Instances of $htmlList, $ul and $ol classes wrap all inserted content not implementing
@@ -36,7 +37,7 @@ Manual\md(<<<MD
 The $ol component (an ordered list) extends $htmlList. It supports indexing in the generated HTML output. 
 This indexing can be numerical or alphabetical.
 
-* {$ol->methodLink("setType", FALSE)}: sets the kind of marker used in the list
+* {$ol->methodLink("setListType", FALSE)}: sets the kind of marker used in the list
   * `'1'`: Decimal numbers (1, 2, 3, 4) **Default**
   * `'a'`: Alphabetically ordered list, lowercase (a, b, c, d)
   * `'A'`: Alphabetically ordered list, uppercase (A, B, C, D)

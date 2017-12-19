@@ -122,7 +122,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
    *
    * @param  mixed $offset the offset to assign the value to
    * @param  mixed $value the value to set
-   * @return $this for a fluent interface
+   * @return void
    */
   public function offsetSet($offset, $value) {
     if (is_null($offset)) {
@@ -130,14 +130,13 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
     } else {
       $this->components[$offset] = $value;
     }
-    return $this;
   }
 
   /**
    * Unsets an offset
    *
    * @param  mixed $offset offset to unset
-   * @return $this for a fluent interface
+   * @return void
    */
   public function offsetUnset($offset) {
     if ($this->offsetExists($offset)) {

@@ -117,7 +117,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    *
    * @return Img the splitter component
    */
-  public function img() {
+  public function img(): Img {
     return $this->img;
   }
 

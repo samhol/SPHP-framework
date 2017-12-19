@@ -49,7 +49,7 @@ trait HyperlinkTrait {
    * @uses   Strings::htmlEncode()
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
-  public function setHref($href, $encode = true) {
+  public function setHref(string $href, $encode = true) {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
@@ -80,11 +80,11 @@ trait HyperlinkTrait {
    * * The target attribute specifies where to open the linked document.
    * * Only used if the href attribute is present.
    *
-   * @param  string $target the value of the target attribute
+   * @param  string|null $target optional target frame of the hyperlink
    * @return HyperlinkInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function setTarget($target) {
+  public function setTarget(string $target = null) {
     if (!Strings::isEmpty($target)) {
       $this->attrs()->set('target', $target);
     } else {

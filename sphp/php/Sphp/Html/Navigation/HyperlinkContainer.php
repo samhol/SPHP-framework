@@ -51,12 +51,12 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getHyperlink()->getHref();
   }
 
-  public function setHref($href, $encode = true) {
+  public function setHref(string $href, $encode = true) {
     $this->getHyperlink()->setHref($href, $encode);
     return $this;
   }
 
-  public function setTarget($target) {
+  public function setTarget(string $target = null) {
     $this->getHyperlink()->setTarget($target);
     return $this;
   }

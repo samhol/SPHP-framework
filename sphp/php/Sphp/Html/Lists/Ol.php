@@ -8,7 +8,7 @@
 namespace Sphp\Html\Lists;
 
 /**
- * Implements an ordered HTML-list
+ * Implements an ordered HTML-list &lt;ol&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API
@@ -16,7 +16,7 @@ namespace Sphp\Html\Lists;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Ol extends AbstractList {
+class Ol extends StandardList {
 
   /**
    * Constructs a new instance
@@ -28,7 +28,6 @@ class Ol extends AbstractList {
    * 2. All items of an array are treated according to note (1)
    *
    * @param  mixedmixed[]|null $items optional content of the component
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($items = null) {
     parent::__construct('ol');
@@ -90,7 +89,7 @@ class Ol extends AbstractList {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function setType(string $type = '1') {
+  public function setListType(string $type = '1') {
     $this->attrs()->set('type', $type);
     return $this;
   }
@@ -101,7 +100,7 @@ class Ol extends AbstractList {
    * @return string the kind of marker used in the list
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function getType(): string {
+  public function getListType(): string {
     $type = '1';
     if ($this->attrs()->exists('type')) {
       $type = $this->attrs()->getValue('type');

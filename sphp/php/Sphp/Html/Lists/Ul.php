@@ -15,7 +15,7 @@ namespace Sphp\Html\Lists;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Ul extends AbstractList {
+class Ul extends StandardList {
 
   /**
    * Constructs a new instance
@@ -27,7 +27,6 @@ class Ul extends AbstractList {
    * 2. All items of an array are treated according to note (1)
    *
    * @param  mixed|null $items the content of the component
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($items = null) {
     parent::__construct('ul');

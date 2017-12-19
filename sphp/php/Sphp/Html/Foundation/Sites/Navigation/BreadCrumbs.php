@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\TraversableTrait;
@@ -29,9 +29,11 @@ use Sphp\Html\TraversableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
+class BreadCrumbs extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use TraversableTrait;
+
+  private $items;
 
   /**
    * Constructs a new instance
@@ -39,10 +41,10 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * @param mixed $content the value of the target attribute
    */
   public function __construct($content = null) {
-    $ul = new Ul();
-    $ul->cssClasses()->protect('breadcrumbs');
-    parent::__construct('nav', null, $ul);
+    parent::__construct('nav', null);
     $this->cssClasses()->protect('breadcrumbs');
+    $this->items = new Ul();
+    $this->items->cssClasses()->protect('breadcrumbs');
     //$this->attrs()->lock('role', 'navigation');
     $this->attrs()->set('aria-label', 'breadcrumbs');
     if ($content !== null) {
@@ -101,7 +103,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * @return $this for a fluent interface
    */
   public function prepend(BreadCrumb $breadcrumb) {
-    $this->getInnerContainer()->prepend($breadcrumb);
+    $this->items->prepend($breadcrumb);
     return $this;
   }
 
@@ -112,18 +114,20 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * @return $this for a fluent interface
    */
   public function append(BreadCrumb $breadcrumb) {
-    $this->getInnerContainer()->append($breadcrumb);
+    $this->items->append($breadcrumb);
     return $this;
   }
 
   public function getIterator() {
-    return $this->getInnerContainer()
-                    ->getComponentsByObjectType(BreadCrumb::class)
-                    ->getIterator();
+    return $this->items->getIterator();
   }
 
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return $this->items->count();
+  }
+
+  public function contentToString(): string {
+    return $this->items->getHtml();
   }
 
 }

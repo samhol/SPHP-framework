@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IdentifiableComponentTrait.php (UTF-8)
+ * IdentifiableTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
- * Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
+ * Trait implements functionality of {@link IdentifiableContent}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

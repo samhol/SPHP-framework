@@ -15,27 +15,39 @@ use ReflectionClass;
  *
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
- * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new `a` tag component
+ * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new HTML &lt;a&gt; object
  * 
- * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new rectangle `area` tag component
- * @method \Sphp\Html\Media\ImageMap\Polygon polygon(mixed $content = null) creates a new polygon `area` tag component
- * @method \Sphp\Html\Media\ImageMap\Circle circle(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) creates a new circle `area` tag component
+ * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new &lt;area&gt; object
+ * @method \Sphp\Html\Media\ImageMap\Polygon polygon(array $coords = null, string $href = null, string $alt = null) creates a new &lt;area&gt; object
+ * @method \Sphp\Html\Media\ImageMap\Circle circle(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) creates a new &lt;area&gt; object
  * 
- * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a `form` tag component
- * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a `label` tag component
+ * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a `form&gt; object
+ * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a `label&gt; object
  * 
- * @method \Sphp\Html\Flow\Headings\H1 h1(mixed $content = null) creates a new `h1` tag component
- * @method \Sphp\Html\Flow\Headings\H2 h2(mixed $content = null) creates a new `h2` tag component
- * @method \Sphp\Html\Flow\Headings\H3 h3(mixed $content = null) creates a new `h3` tag component
- * @method \Sphp\Html\Flow\Headings\H4 h4(mixed $content = null) creates a new `h4` tag component
- * @method \Sphp\Html\Flow\Headings\H5 h5(mixed $content = null) creates a new `h5` tag component
- * @method \Sphp\Html\Flow\Headings\H6 h6(mixed $content = null) creates a new `h6` tag component
+ * @method \Sphp\Html\Flow\Headings\H1 h1(mixed $content = null) creates a new HTML &lt;h1&gt; object
+ * @method \Sphp\Html\Flow\Headings\H2 h2(mixed $content = null) creates a new HTML &lt;h2&gt; object
+ * @method \Sphp\Html\Flow\Headings\H3 h3(mixed $content = null) creates a new HTML &lt;h3&gt; object
+ * @method \Sphp\Html\Flow\Headings\H4 h4(mixed $content = null) creates a new HTML &lt;h4&gt; object
+ * @method \Sphp\Html\Flow\Headings\H5 h5(mixed $content = null) creates a new HTML &lt;h5&gt; object
+ * @method \Sphp\Html\Flow\Headings\H6 h6(mixed $content = null) creates a new HTML &lt;h6&gt; object
  * 
- * @method \Sphp\Html\Flow\Main main(mixed $content = null) creates a new `main` tag component
- * @method \Sphp\Html\Flow\Section section(mixed $content = null) creates a new `section` tag component
- * @method \Sphp\Html\Flow\Aside aside(mixed $content = null) creates a new `aside` tag component
- * @method \Sphp\Html\Flow\Article article(mixed $content = null) creates a new `article` tag component
- * @method \Sphp\Html\Flow\Paragraph p(mixed $content = null) creates a new `p` tag component
+ * @method \Sphp\Html\Flow\Main main(mixed $content = null) creates a new HTML &lt;main&gt; object
+ * @method \Sphp\Html\Flow\Section section(mixed $content = null) creates a new HTML &lt;section&gt; object
+ * @method \Sphp\Html\Flow\Footer footer(mixed $content = null) creates a new HTML &lt;footer&gt; object
+ * @method \Sphp\Html\Flow\Aside aside(mixed $content = null) creates a new HTML &lt;aside&gt; object
+ * @method \Sphp\Html\Flow\Article article(mixed $content = null) creates a new HTML &lt;article&gt; object
+ * @method \Sphp\Html\Flow\Paragraph p(mixed $content = null) creates a new HTML &lt;p&gt; object
+ * 
+ * @method \Sphp\Html\Tables\Table table(mixed $caption = null) creates a new HTML &lt;table&gt; object
+ * @method \Sphp\Html\Tables\Caption caption(mixed $content = null) creates a new HTML &lt;caption&gt; object
+ * @method \Sphp\Html\Tables\Caption colgroup() creates a new HTML &lt;colgroup&gt; object
+ * @method \Sphp\Html\Tables\Col col(int $span = 1) creates a new HTML &lt;col&gt; object
+ * @method \Sphp\Html\Tables\Thead thead() creates a new HTML &lt;thead&gt; object
+ * @method \Sphp\Html\Tables\Tbody tbody() creates a new HTML &lt;tbody&gt; object
+ * @method \Sphp\Html\Tables\Tfoot tfoot() creates a new HTML &lt;tfoot&gt; object
+ * @method \Sphp\Html\Tables\Tr tr() creates a new HTML &lt;tr&gt; object
+ * @method \Sphp\Html\Tables\Th th(mixed $content = null, int $colspan = 1, int $rowspan = 1, string $scope = null) creates a new HTML &lt;th&gt; object
+ * @method \Sphp\Html\Tables\Td td(mixed $content = null, int $colspan = 1, int $rowspan = 1) creates a new HTML &lt;td&gt; object
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -89,9 +101,9 @@ abstract class TagFactory {
       'div' => Div::class,
       'em' => ContainerTag::class,
       'figure' => Media\Figure::class,
-      'footer' => ContainerTag::class,
       'header' => ContainerTag::class,
       'main' => Flow\Main::class,
+      'footer' => Flow\Footer::class,
       'hgroup' => ContainerTag::class,
       'h1' => Flow\Headings\H1::class,
       'h2' => Flow\Headings\H2::class,
