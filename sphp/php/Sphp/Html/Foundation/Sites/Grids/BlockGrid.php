@@ -44,16 +44,6 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   private $layoutManager;
 
   /**
-   * The maximum block grid value
-   */
-  const MAX_GRID = 8;
-
-  /**
-   * The block grid value is inherited from the smaller screen (int 0)
-   */
-  const INHERITED = 0;
-
-  /**
    * Constructs a new instance
    *
    * **Important!**

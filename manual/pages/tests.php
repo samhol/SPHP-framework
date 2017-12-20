@@ -36,6 +36,26 @@ codeModal('locations', 'Sphp/Database/locations.sql', "`MySQL` version of locati
   <a class="button">Stronger</a>
 </div>
 
+<div class="input-group">
+  <span class="input-group-label">$</span>
+  <input class="input-group-field" type="number">
+  <div class="input-group-button">
+    <input type="reset" class="button" value="Reset">
+    <input type="submit" class="button" value="Submit">
+  </div>
+</div>
+
+<div class="input-group">
+  <input id="ebra" class="input-group-field" type="number">
+  <select class="input-group-field" rows="4"><option>foo</option></select>
+  <div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
+  </div>
+  <span class="input-group-label">$</span>
+  <span class="input-group-label">$</span>
+  <label for="ebra" class="input-group-label">$</label>
+</div>
+
 <?php
 
 

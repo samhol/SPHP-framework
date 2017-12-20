@@ -183,8 +183,7 @@ interface FormInterface extends Content {
    * **Important:** Works only for single dimensional input names
    * 
    * @param  mixed[] $data
-   * @param  boolean $filter true for enabling the data filtering, and false otherwise
    * @return $this for a fluent interface
    */
-  public function setData(array $data = [], $filter = true);
+  public function setData(array $data = []);
 }

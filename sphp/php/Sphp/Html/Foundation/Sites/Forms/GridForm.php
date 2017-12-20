@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms;
 
 use IteratorAggregate;
-use Sphp\Html\Forms\TraversableFormInterface;
+use Sphp\Html\Forms\TraversableForm;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 use Sphp\Html\Foundation\Sites\Grids\GridLayoutManagerInterface;
@@ -17,7 +17,8 @@ use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\ContainerInterface;
+use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Html\TraversableContent;
 
 /**
  * Implements a framework form
@@ -30,7 +31,7 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GridForm extends AbstractComponent implements IteratorAggregate, GridInterface, TraversableFormInterface {
+class GridForm extends AbstractComponent implements IteratorAggregate, GridInterface, TraversableForm {
 
   use TraversableFormTrait;
 
@@ -170,9 +171,10 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    * @return $this for a fluent interface
    * @see    HiddenInput
    */
-  public function appendHiddenVariable($name, $value) {
-    $this->getGrid()->append(new HiddenInput($name, $value));
-    return $this;
+  public function appendHiddenVariable($name, $value):HiddenInput {
+    $input = new HiddenInput($name, $value);
+    $this->getGrid()->append($input);
+    return $input;
   }
 
   /**
@@ -195,18 +197,18 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
   /**
    * Returns all {@link ColumnInterface} components from the grid
    * 
-   * @return ContainerInterface containing all the {@link ColumnInterface} components
+   * @return TraversableContent containing all the {@link ColumnInterface} components
    */
-  public function getColumns(): ContainerInterface {
+  public function getColumns(): TraversableContent {
     return $this->getComponentsByObjectType(ColumnInterface::class);
   }
 
   /**
    * Returns all {@link InputColumnInterface} components from the grid
    * 
-   * @return ContainerInterface containing all the {@link InputColumn} components
+   * @return TraversableContent containing all the {@link InputColumn} components
    */
-  public function getInputColumns() {
+  public function getInputColumns(): TraversableContent {
     return $this->getComponentsByObjectType(InputColumnInterface::class);
   }
 

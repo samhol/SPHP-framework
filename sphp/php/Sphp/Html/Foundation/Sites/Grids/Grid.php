@@ -20,15 +20,6 @@ class Grid extends AbstractGrid {
 
   /**
    * Constructs a new instance
-   *
-   * **Important!**
-   *
-   * 1. Parameter `mixed $content` can be of any type that converts to a string 
-   *    or to an array of strings. So also objects of any type that implement magic 
-   *    method `__toString()` are allowed.
-   * 2. `mixed $content` is transformed to a {@link Row} component.
-   *
-   * @param  mixed|RowInterface $row a row content or a row component
    */
   public function __construct() {
     parent::__construct('div');

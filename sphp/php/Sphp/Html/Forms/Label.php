@@ -108,4 +108,3 @@ class Label extends ContainerTag {
   }
 
 }
-

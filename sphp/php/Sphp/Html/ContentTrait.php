@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use Throwable;
 
 /**
- * Trait implements parts of the {@link ContentInterface} interface
+ * Trait implements parts of the {@link Content} interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -28,5 +28,5 @@ namespace Sphp\Html;
  * @filesource
  */
 interface ContainerComponentInterface extends ComponentInterface, ContainerInterface {
-
+  
 }

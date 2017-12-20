@@ -44,17 +44,17 @@ class Fieldset extends ContainerTag {
   }
 
   /**
-   * Sets the legend of the fieldset component
+   * Sets the legend component
    *
-   * @param  string|Legend $legend the legend of the fielset component
-   * @return $this for a fluent interface
+   * @param  string|Legend $legend the legend component
+   * @return Legend the legend
    */
-  public function setLegend($legend) {
+  public function setLegend($legend): Legend {
     if (!($legend instanceof Legend)) {
       $legend = new Legend($legend);
     }
     $this->legend = $legend;
-    return $this;
+    return $this->legend;
   }
 
   /**
@@ -62,7 +62,7 @@ class Fieldset extends ContainerTag {
    *
    * @return Legend the legend of the fieldset component or null
    */
-  public function getLegend() {
+  public function getLegend(): Legend {
     return $this->legend;
   }
 
@@ -77,7 +77,7 @@ class Fieldset extends ContainerTag {
   }
 
   public function contentToString(): string {
-    return $this->getLegend() . parent::contentToString();
+    return $this->legend . parent::contentToString();
   }
 
 }

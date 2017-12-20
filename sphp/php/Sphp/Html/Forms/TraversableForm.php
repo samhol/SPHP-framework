@@ -1,12 +1,14 @@
 <?php
 
 /**
- * TraversableFormInterface.php (UTF-8)
+ * TraversableForm.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Html\Forms;
 
+use Sphp\Html\TraversableContent;
+use Sphp\Html\Forms\Inputs\HiddenInput;
 /**
  * Defines required properties for a traversable HTML &lt;form&gt; component
  *
@@ -15,7 +17,7 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TraversableFormInterface extends FormInterface, \Sphp\Html\TraversableContent {
+interface TraversableForm extends FormInterface, TraversableContent {
 
   /**
    * Sets the values to the input fields
@@ -36,10 +38,10 @@ interface TraversableFormInterface extends FormInterface, \Sphp\Html\Traversable
    *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
-   * @return $this for a fluent interface
+   * @return HiddenInput appended input instance
    * @see    HiddenInput
    */
-  public function appendHiddenVariable($name, $value);
+  public function appendHiddenVariable($name, $value): HiddenInput;
 
   /**
    * Appends the hidden data to the form
@@ -54,11 +56,11 @@ interface TraversableFormInterface extends FormInterface, \Sphp\Html\Traversable
   public function appendHiddenVariables(array $vars);
 
   /**
-   * Returns all named {@link InputInterface} components in the form
+   * Returns all named input components in the form
    *
-   * @return ContainerInterface containing matching sub components
+   * @return TraversableContent containing matching sub components
    */
-  public function getNamedInputComponents();
+  public function getNamedInputComponents(): TraversableContent;
 
   /**
    * Returns all named {@link HiddenInput} components from the form

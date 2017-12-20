@@ -9,6 +9,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\TraversableTrait;
 use Sphp\Html\ContainerInterface;
+use Sphp\Html\TraversableContent;
 
 /**
  * Trait implements parts of the {@link TraversableFormInterface}
@@ -32,13 +33,9 @@ trait TraversableFormTrait {
    *
    * @return ContainerInterface containing matching sub components
    */
-  public function getNamedInputComponents() {
+  public function getNamedInputComponents(): TraversableContent {
     $search = function($element) {
-      if ($element instanceof InputInterface && $element->isNamed()) {
-        return true;
-      } else {
-        return false;
-      }
+      $element instanceof InputInterface && $element->isNamed();
     };
     return $this->getComponentsBy($search);
   }
@@ -50,11 +47,7 @@ trait TraversableFormTrait {
    */
   public function getHiddenInputs(): Inputs\HiddenInputs {
     $search = function($element) {
-      if ($element instanceof HiddenInput) {
-        return true;
-      } else {
-        return false;
-      }
+      return $element instanceof HiddenInput;
     };
     return $this->getComponentsBy($search);
   }

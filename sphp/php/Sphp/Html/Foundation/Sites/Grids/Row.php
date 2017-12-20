@@ -17,7 +17,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
  * @filesource
  */
 class Row extends AbstractRow {
-  
+
   /**
    * Constructs a new instance
    *
@@ -35,4 +35,5 @@ class Row extends AbstractRow {
       $this->setColumns($columns, $sizes);
     }
   }
+
 }

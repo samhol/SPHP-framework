@@ -22,7 +22,7 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Form extends ContainerTag implements TraversableFormInterface {
+class Form extends ContainerTag implements TraversableForm {
 
   use TraversableFormTrait;
 
@@ -68,9 +68,10 @@ class Form extends ContainerTag implements TraversableFormInterface {
    * @return $this for a fluent interface
    * @see    HiddenInput
    */
-  public function appendHiddenVariable($name, $value) {
-    $this->append(new HiddenInput($name, $value));
-    return $this;
+  public function appendHiddenVariable($name, $value):HiddenInput {
+    $input = new HiddenInput($name, $value);
+    $this->append($input);
+    return $input;
   }
 
   /**

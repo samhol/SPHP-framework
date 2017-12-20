@@ -9,10 +9,10 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\IdentifiableInput;
-use Sphp\Stdlib\Strings;
+use Sphp\Html\Span;
 
 /**
- * Implements a Foundation Framework based input group
+ * Class InputGroup
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -67,11 +67,14 @@ class InputGroup extends AbstractComponent implements IdentifiableInput {
    * 
    * `null` value hides the prefix
    * 
-   * @param  string|null $prefix the content of the prefix
+   * @param  string|null $content the content of the prefix
    * @return $this for a fluent interface
    */
-  public function setPrefix($prefix = null) {
-    $this->prefix = $prefix;
+  public function appendLabel($content) {
+    if (!$content instanceof Span) {
+      $this->prefix = new Span($content);
+    }
+    $this->prefix->setContent($content);
     return $this;
   }
 
@@ -90,7 +93,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInput {
 
   public function contentToString(): string {
     $a = function ($v) {
-      if (!Strings::isEmpty($v)) {
+      if ($v !== null) {
         return '<span class="input-group-label">' . $v . '</span>';
       } else {
         return "";
@@ -100,7 +103,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInput {
   }
 
   public function getSubmitValue() {
-    
+    $this->getInput()->getSubmitValue();
   }
 
 }
