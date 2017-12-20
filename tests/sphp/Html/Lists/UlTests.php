@@ -3,8 +3,6 @@
 namespace Sphp\Tests\Html\Lists;
 
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\LiInterface;
-use Sphp\Html\Lists\Li;
 
 class UlTests extends StandardListTests {
 
