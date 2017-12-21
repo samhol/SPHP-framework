@@ -19,6 +19,7 @@ use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\Forms\Inputs\Buttons\Submitter;
+use Sphp\Html\Forms\Inputs\Buttons\Resetter;
 
 /**
  * Class InputGroup
@@ -112,6 +113,19 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     return $submitter;
   }
 
+  /**
+   * Appends a submitter to the group
+   *
+   * @param  string|null $value the value of value attribute
+   * @param  string|null $name the value of name attribute
+   * @return Resetter appended instance
+   */
+  public function appendResetter(string $value = null):Resetter {
+    $submitter = new Resetter($value);
+    $this->group->append($submitter);
+    return $submitter;
+  }
+  
   public function contentToString(): string {
     $output = '';
     foreach ($this as $component) {

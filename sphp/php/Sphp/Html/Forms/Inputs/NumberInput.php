@@ -16,7 +16,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class NumberInput extends InputTag implements NumericalInput {
+class NumberInput extends InputTag implements NumberInputInterface {
 
   /**
    * Constructs a new instance
@@ -39,17 +39,9 @@ class NumberInput extends InputTag implements NumericalInput {
     return $this;
   }
 
-  public function getMinimum(): int {
-    return (int) $this->attrs()->getValue('min');
-  }
-
   public function setMinimum(int $min) {
     $this->attrs()->set('min', $min);
     return $this;
-  }
-
-  public function getMaximum(): int {
-    return (int) $this->attrs()->getValue('max');
   }
 
   public function setMaximum(int $max) {

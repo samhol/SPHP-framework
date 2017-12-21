@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface NumericalInput extends Validable {
+interface NumberInputInterface extends Validable {
 
   /**
    * Sets the minimum value for input
