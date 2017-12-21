@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms\Inputs\Buttons;
 
 
 /**
- * Implements an HTML &lt;button type="button"&gt; tag
+ * Implements an HTML &lt;input type="button"&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API

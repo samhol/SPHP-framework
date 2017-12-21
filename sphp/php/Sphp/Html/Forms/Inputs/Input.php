@@ -13,9 +13,12 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Description of Factory
  * 
- * @method \Sphp\Html\Forms\Inputs\EmailInput email(mixed $content = null) creates a new email inpue component
- * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
+ * @method \Sphp\Html\Forms\Inputs\EmailInput email(string $name = null, $value = null) creates a new email input
+ * @method \Sphp\Html\Forms\Inputs\NumberInput number(string $name = null, $value = null) creates a new number input
+ * @method \Sphp\Html\Forms\Inputs\TextInput text(string $name = null, $value = null, int $maxlength = null, int $size = null) creates a new text input
  *
+ * @method \Sphp\Html\Forms\Inputs\TextInput push($content = null)
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -31,6 +34,9 @@ class Input {
       'pushButton' => \Sphp\Html\Forms\Buttons\Button::class,
       'resetButton' => \Sphp\Html\Forms\Buttons\Resetter::class,
       'submitButton' => \Sphp\Html\Forms\Buttons\Submitter::class,
+      'push' => \Sphp\Html\Forms\Inputs\Buttons\Button::class,
+      'reset' => \Sphp\Html\Forms\Inputs\Buttons\Resetter::class,
+      'submit' => \Sphp\Html\Forms\Inputs\Buttons\Submitter::class,
       'input' => InputTag::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,

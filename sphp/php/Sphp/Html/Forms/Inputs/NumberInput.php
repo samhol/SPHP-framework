@@ -16,7 +16,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class NumberInput extends InputTag implements NumberInputInterface {
+class NumberInput extends InputTag implements NumericalInput {
 
   /**
    * Constructs a new instance
@@ -27,7 +27,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function __construct($name = null, $value = null) {
+  public function __construct(string $name = null, $value = null) {
     parent::__construct('number', $name, $value);
   }
 

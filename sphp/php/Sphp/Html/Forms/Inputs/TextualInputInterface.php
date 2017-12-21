@@ -29,14 +29,6 @@ interface TextualInputInterface extends PatternValidableInputInterface {
   public function setSize(int $size);
 
   /**
-   * Returns the value of the maxlength attribute
-   *
-   * @return int the value of the maxlength attribute
-   * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
-   */
-  public function getMaxlength();
-
-  /**
    * Sets the value of the maxlength attribute
    *
    *  **Preconditions:** <var>$maxlength > 0</var>
@@ -80,4 +72,3 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    */
   public function autocomplete(bool $allow = true);
 }
-

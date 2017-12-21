@@ -8,8 +8,17 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\IdentifiableInput;
+use Sphp\Html\Forms\Inputs\TextualInputInterface;
 use Sphp\Html\Span;
+use Sphp\Html\Container;
+use IteratorAggregate;
+use Sphp\Html\TraversableContent;
+use Traversable;
+use Sphp\Html\Forms\Buttons\ButtonInterface;
+use Sphp\Html\Forms\Inputs\Input;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\ComponentInterface;
+use Sphp\Html\Forms\Inputs\Buttons\Submitter;
 
 /**
  * Class InputGroup
@@ -19,91 +28,109 @@ use Sphp\Html\Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InputGroup extends AbstractComponent implements IdentifiableInput {
+class InputGroup extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
-  use \Sphp\Html\Forms\Inputs\InputWrapperTrait;
-
-  /**
-   * @var string|null
-   */
-  private $prefix;
+  use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var string|null
+   * @var Container 
    */
-  private $suffix;
+  private $group;
 
   /**
-   * @var IdentifiableInput 
+   * Constructs a new instance
    */
-  private $input;
-
-  /**
-   * 
-   * @param IdentifiableInput $input
-   * @param string|null $prefix the content of the prefix
-   * @param string|null $suffix the content of the suffix
-   */
-  public function __construct(IdentifiableInput $input, $prefix = null, $suffix = null) {
+  public function __construct() {
     parent::__construct('div');
     $this->cssClasses()->protect("input-group");
-    $this->prefix = $prefix;
-    $this->input = $input;
-    $this->suffix = $suffix;
-    $this->input->cssClasses()->protect("input-group-field");
+    $this->group = new Container;
   }
 
-  /**
-   * 
-   * 
-   * @return IdentifiableInput
-   */
-  public function getInput() {
-    return $this->input;
-  }
 
   /**
-   * Sets the content of the prefix
-   * 
-   * `null` value hides the prefix
-   * 
-   * @param  string|null $content the content of the prefix
-   * @return $this for a fluent interface
+   * Appends a span label to the group
+   *
+   * @param  mixed $content the content of the prefix
+   * @return ComponentInterface appended instance
    */
-  public function appendLabel($content) {
-    if (!$content instanceof Span) {
-      $this->prefix = new Span($content);
+  public function append($content): ComponentInterface {
+    if ($content instanceof TextualInputInterface || $content instanceof \Sphp\Html\Forms\Inputs\NumericalInput) {
+      $content->addCssClass('input-group-field');
+      $this->group->append($content);
+    } else if (is_string($content) || $content instanceof Span) {
+      $this->appendLabel($content);
+    } else if ($content instanceof ButtonInterface) {
+      $this->group->append($content);
+    } else {
+      throw new InvalidArgumentException("Content appended to inputgroup is invalid type");
     }
-    $this->prefix->setContent($content);
-    return $this;
+    return $content;
+  }
+
+
+  /**
+   * Appends a span label to the group
+   *
+   * @param  mixed $content the content of the prefix
+   * @return Span appended instance
+   */
+  public function appendLabel($content): Span {
+    if (!$content instanceof Span) {
+      $label = new Span($content);
+    }
+    $label->addCssClass('input-group-label');
+    $this->group->append($content);
+    return $label;
   }
 
   /**
-   * Sets the content of the suffix
+   * Creates and appends an input to the group
    * 
-   * `null` value hides the suffix
-   * 
-   * @param  string|null $suffix the content of the suffix
-   * @return $this for a fluent interface
+   * @param  string $type
+   * @param  string $name
+   * @param  scalar $value
+   * @return TextualInputInterface appended instance
    */
-  public function setSuffix($suffix = null) {
-    $this->suffix = $suffix;
-    return $this;
+  public function appendInput(string $type, string $name = null, $value = null): TextualInputInterface {
+    $input = Input::$type($name, $value);
+    $input->addCssClass('input-group-field');
+    $this->group->append($input);
+    return $input;
+  }
+
+
+  /**
+   * Appends a submitter to the group
+   *
+   * @param  string|null $value the value of value attribute
+   * @param  string|null $name the value of name attribute
+   * @return Submitter appended instance
+   */
+  public function appendSubmitter(string $value = null, string $name = null): Submitter {
+    $submitter = new Submitter($value, $name);
+    $this->group->append($submitter);
+    return $submitter;
   }
 
   public function contentToString(): string {
-    $a = function ($v) {
-      if ($v !== null) {
-        return '<span class="input-group-label">' . $v . '</span>';
+    $output = '';
+    foreach ($this as $component) {
+      if ($component instanceof ButtonInterface) {
+        $component->addCssClass('button');
+        $output .= '<div class="input-group-button">' . $component . '</div>';
       } else {
-        return "";
+        $output .= $component;
       }
-    };
-    return $a($this->prefix) . $this->input->getHtml() . $a($this->suffix);
+    }
+    return $output;
   }
 
-  public function getSubmitValue() {
-    $this->getInput()->getSubmitValue();
+  public function count(): int {
+    return $this->group->count();
+  }
+
+  public function getIterator(): Traversable {
+    return $this->group->getIterator();
   }
 
 }

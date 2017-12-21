@@ -15,18 +15,10 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface NumberInputInterface extends Validable {
+interface NumericalInput extends Validable {
 
   /**
-   * Returns the minimum value of the input
-   *
-   * @return int|boolean  the minimum value of the input or `false` if minimum is not set
-   * @link   http://www.w3schools.com/tags/att_input_min.asp min attribute
-   */
-  public function getMinimum(): int;
-
-  /**
-   * Sets the minimum value of the input
+   * Sets the minimum value for input
    *
    * @param  int|boolean the minimum value of the input or `false` if minimum is not set
    * @return $this for a fluent interface
@@ -35,15 +27,7 @@ interface NumberInputInterface extends Validable {
   public function setMinimum(int $min);
 
   /**
-   * Returns the value of the maxlength attribute
-   *
-   * @return int the value of the maxlength attribute
-   * @link   http://www.w3schools.com/tags/att_input_max.asp max attribute
-   */
-  public function getMaximum(): int;
-
-  /**
-   * Sets the value of the maxlength attribute
+   * Sets the maximum value for input
    *
    *  **Preconditions:** <var>$maxlength > 0</var>
    *
@@ -86,4 +70,3 @@ interface NumberInputInterface extends Validable {
    */
   public function autocomplete(bool $allow = true);
 }
-

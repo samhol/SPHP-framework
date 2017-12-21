@@ -52,13 +52,20 @@ codeModal('locations', 'Sphp/Database/locations.sql', "`MySQL` version of locati
     <input type="submit" class="button" value="Submit">
   </div>
   <span class="input-group-label">$</span>
+    <input type="submit" class="button" value="Submit">
   <span class="input-group-label">$</span>
-  <label for="ebra" class="input-group-label">$</label>
+  <label for="ebra" class="input-group-label">$</label><div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
+  </div>
 </div>
 
 <?php
-
-
+$group = new \Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
+$group->append(new \Sphp\Html\Forms\Inputs\NumberInput('foo'))->setPlaceholder('insert foo');
+$group->append(new \Sphp\Html\Forms\Inputs\EmailInput('foomail'))->setPlaceholder('insert foo');
+$group->appendInput('email','foomail')->setPlaceholder('insert foo');
+$group->appendButton('Submit', 'foo-submit');
+echo $group;
 md(<<<MD
 
 ```
