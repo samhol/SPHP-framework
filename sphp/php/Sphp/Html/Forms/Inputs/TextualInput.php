@@ -17,8 +17,6 @@ namespace Sphp\Html\Forms\Inputs;
  */
 class TextualInput extends InputTag implements TextualInputInterface {
 
-  use PatternValidableTrait;
-
   /**
    * Constructs a new instance
    *
@@ -49,10 +47,6 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this;
   }
 
-  public function getMaxlength() {
-    return $this->attrs()->getValue('maxlength');
-  }
-
   public function setMaxlength(int $maxlength) {
     $this->attrs()->set('maxlength', $maxlength);
     return $this;
@@ -66,6 +60,19 @@ class TextualInput extends InputTag implements TextualInputInterface {
   public function autocomplete(bool $allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
+  }
+
+  public function setPattern(string $pattern) {
+    $this->attrs()->set('pattern', $pattern);
+    return $this;
+  }
+
+  public function getPattern(): string {
+    return (string) $this->attrs()->getValue('pattern');
+  }
+
+  public function hasPattern(): bool {
+    return $this->attrs()->exists('pattern');
   }
 
 }

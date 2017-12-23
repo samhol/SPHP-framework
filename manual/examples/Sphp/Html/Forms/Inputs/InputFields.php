@@ -5,23 +5,23 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\Forms\Form;
 
 $form = new Form();
-$number = Input::number("number")
-        ->setPlaceholder("Number field")
-        ->setStep(5)
-        ->setMinimum(-10)
-        ->setMaximum(10);
+$form[] = "Number range between -10 and 10";
+$number = Factory::number("number")
+        ->setStepLength(5)
+        ->setMin(-10)
+        ->setMax(10);
 $form[] = $number;
-$form[] = Input::text("text")
+$form[] = Factory::text("text")
         ->setPlaceholder("Text field");
-$form[] = Input::email("email")
+$form[] = Factory::email("email")
         ->setPlaceholder("Email field");
-$form[] = Input::password("password")
+$form[] = Factory::password("password")
         ->setPlaceholder("Password field");
-$form[] = Input::textarea("textarea")
+$form[] = Factory::textarea("textarea")
         ->setPlaceholder("Textarea field")
         ->setRows(5);
-$form[] = Input::select("select")
+$form[] = Factory::select("select")
         ->appendOption("opt1", "Option 1.")
         ->appendOption("opt2", "Option 2.");
-
+$form[] = Factory::hidden("hidden", "value");
 $form->printHtml();

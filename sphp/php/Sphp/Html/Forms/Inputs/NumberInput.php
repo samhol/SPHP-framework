@@ -16,14 +16,13 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class NumberInput extends InputTag implements NumberInputInterface {
+class NumberInput extends InputTag implements RangeInput {
 
   /**
    * Constructs a new instance
    *
-   * @precondition  `0 < $size <= $maxlength`
    * @param  string|null $name the value of the  name attribute
-   * @param  string $value the value of the  value attribute
+   * @param  scalar $value the value of the  value attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
@@ -33,27 +32,31 @@ class NumberInput extends InputTag implements NumberInputInterface {
 
   public function setValue($value) {
     if ($value !== false) {
-      $value = (int) $value;
+      $value = (float) $value;
     }
     parent::setValue($value);
     return $this;
   }
 
-  public function setMinimum(int $min) {
+  public function setMin(float $min) {
     $this->attrs()->set('min', $min);
     return $this;
   }
 
-  public function setMaximum(int $max) {
+  public function setMax(float $max) {
     $this->attrs()->set('max', $max);
     return $this;
   }
 
-  public function getStep() {
-    return $this->attrs()->getValue('step');
+  public function getMax(): float {
+    return (float) $this->attrs()->getValue('max');
   }
 
-  public function setStep(int $step) {
+  public function getMin(): float {
+    return (float) $this->attrs()->getValue('min');
+  }
+
+  public function setStepLength(float $step) {
     $this->attrs()->set('step', $step);
     return $this;
   }

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\SliderInterface;
+use Sphp\Html\Forms\Inputs\RangeInput;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -20,16 +20,16 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractSlider extends AbstractComponent implements SliderInterface {
+abstract class AbstractSlider extends AbstractComponent implements RangeInput {
 
   /**
    * Constructs a new instance
    *
-   * @param int $start the start value of the slider
-   * @param int $end the end value of the slider
-   * @param int $step the length of a single step
+   * @param float $start the start value of the slider
+   * @param float $end the end value of the slider
+   * @param float $step the length of a single step
    */
-  public function __construct(int $start = 0, int $end = 100, int $step = 1) {
+  public function __construct(float $start = 0, float $end = 100, float $step = 1) {
     parent::__construct('div');
     $this->cssClasses()->protect('slider');
     $this->attrs()
@@ -45,7 +45,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     $this->setStepLength($step);
   }
 
-  public function setStepLength(int $step = 1) {
+  public function setStepLength(float $step = 1) {
     if ($step <= 0) {
       throw new InvalidArgumentException('The step value is not positive');
     }
@@ -56,13 +56,22 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     $this->attrs()->set('data-step', $step);
     return $this;
   }
-
-  public function getMin(): int {
-    return (int) $this->attrs()->getValue('data-start');
+  
+   public function setMin(float $min) {
+    $this->attrs()->set('data-start', $min);
+    return $this;
   }
 
-  public function getMax(): int {
-    return (int) $this->attrs()->getValue('data-end');
+  public function getMin(): float {
+    return (float) $this->attrs()->getValue('data-start');
+  }
+
+   public function setMax(float $max) {
+    $this->attrs()->set('data-end', $max);
+    return $this;
+  }
+  public function getMax(): float {
+    return (float) $this->attrs()->getValue('data-end');
   }
 
   public function disable(bool $disabled = true) {

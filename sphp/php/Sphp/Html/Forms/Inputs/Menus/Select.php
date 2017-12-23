@@ -34,8 +34,7 @@ use Sphp\Html\ContainerInterface;
  */
 class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
-  use \Sphp\Html\Forms\Inputs\InputTrait,
-      \Sphp\Html\Forms\Inputs\ValidableInputTrait;
+  use \Sphp\Html\Forms\Inputs\InputTrait;
 
   /**
    * Constructs a new instance
@@ -143,6 +142,15 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   public function setSize($size) {
     $this->attrs()->set('size', $size);
     return $this;
+  }
+
+  public function setRequired(bool $required = true) {
+    $this->attrs()->setBoolean('required', $required);
+    return $this;
+  }
+
+  public function isRequired(): bool {
+    return $this->attrExists('required');
   }
 
 }

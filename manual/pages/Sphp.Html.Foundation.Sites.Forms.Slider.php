@@ -2,11 +2,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\SliderInterface;
+use Sphp\Html\Forms\Inputs\RangeInput;
 use Sphp\Manual;
 $slider = Manual\api()->classLinker(Slider::class);
 $rangeSlider = Manual\api()->classLinker(RangeSlider::class);
-$sliderInterface = Manual\api()->classLinker(SliderInterface::class);
+$sliderInterface = Manual\api()->classLinker(RangeInput::class);
 
 
 Manual\md(<<<MD

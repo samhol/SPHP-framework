@@ -19,9 +19,6 @@ use Sphp\Html\ContainerTag;
  */
 class Textarea extends ContainerTag implements TextareaInterface {
 
-  use InputTrait,
-      ValidableInputTrait;
-
   /**
    * Constructs a new instance
    *
@@ -45,6 +42,28 @@ class Textarea extends ContainerTag implements TextareaInterface {
     if ($cols > 0) {
       $this->setCols($cols);
     }
+  }
+
+  public function disable(bool $disabled = true) {
+    $this->attrs()->setBoolean('disabled', $disabled);
+    return $this;
+  }
+
+  public function isEnabled(): bool {
+    return !$this->attrExists('disabled');
+  }
+
+  public function getName(): string {
+    return (string) $this->attrs()->getValue('name');
+  }
+
+  public function setName(string $name) {
+    $this->attrs()->set('name', $name);
+    return $this;
+  }
+
+  public function isNamed(): bool {
+    return $this->attrs()->exists('name');
   }
 
   public function getSubmitValue() {
@@ -74,6 +93,15 @@ class Textarea extends ContainerTag implements TextareaInterface {
   public function setPlaceholder(string $placeholder = null) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;
+  }
+
+  public function setRequired(bool $required = true) {
+    $this->attrs()->setBoolean('required', $required);
+    return $this;
+  }
+
+  public function isRequired(): bool {
+    return $this->attrExists('required');
   }
 
 }

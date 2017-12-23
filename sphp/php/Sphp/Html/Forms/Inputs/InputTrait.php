@@ -38,7 +38,7 @@ trait InputTrait {
    * Sets the value of the name attribute
    *
    * @param  string $name the value of the name attribute
-   * @return InputInterface for PHP Method Chaining
+   * @return $this for a fluent interface
    */
   public function setName(string $name) {
     $this->attrs()->set('name', $name);
@@ -64,7 +64,7 @@ trait InputTrait {
    * Disabled input components in a form will not be submitted.
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return InputInterface for PHP Method Chaining
+   * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
     $this->attrs()->setBoolean('disabled', $disabled);
@@ -81,5 +81,3 @@ trait InputTrait {
   }
 
 }
-
-

@@ -16,9 +16,6 @@ namespace Sphp\Html\Forms\Inputs;
  */
 class FileInput extends AbstractInputTag implements Validable {
 
-  use InputTrait,
-      ValidableInputTrait;
-
   /**
    * Constructs a new instance
    *
@@ -58,6 +55,13 @@ class FileInput extends AbstractInputTag implements Validable {
     return $this;
   }
 
+  public function setRequired(bool $required = true) {
+    $this->attrs()->setBoolean('required', $required);
+    return $this;
+  }
+
+  public function isRequired(): bool {
+    return $this->attrExists('required');
+  }
+
 }
-
-

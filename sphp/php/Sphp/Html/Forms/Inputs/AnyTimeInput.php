@@ -17,7 +17,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AnyTimeInput extends TextInput {
+class AnyTimeInput extends InputTag {
 
   const LANG_FI = "fi";
   const LANG_EN = "en";
@@ -50,12 +50,17 @@ class AnyTimeInput extends TextInput {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function __construct(string $name = "", $value = "", $locale = self::LANG_EN) {
+  public function __construct(string $name = null, $value = null, $locale = self::LANG_EN) {
     parent::__construct($name, $value, 17, 17);
     $this->attrs()->demand('data-anytime');
     $this->identify();
     $this->setDateTimeFormat()
             ->setLocale($locale);
+  }
+
+  public function setPlaceholder(string $placeholder = null) {
+    $this->attrs()->set('placeholder', $placeholder);
+    return $this;
   }
 
   /**

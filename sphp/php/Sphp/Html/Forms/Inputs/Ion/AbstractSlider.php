@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Forms\Inputs\AbstractInputTag;
-use Sphp\Html\Forms\Inputs\SliderInterface;
+use Sphp\Html\Forms\Inputs\RangeInput;
 use Sphp\Html\Forms\Inputs\InputTrait;
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -19,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractSlider extends AbstractInputTag implements SliderInterface {
+abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
 
   use InputTrait;
 
@@ -27,13 +27,13 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Constructs a new instance
    *
    * @param  string|null $name name attribute
-   * @param  int $start the start value of the slider
-   * @param  int $end the end value of the slider
-   * @param  int $step the length of a single step
+   * @param  float $start the start value of the slider
+   * @param  float $end the end value of the slider
+   * @param  float $step the length of a single step
    * @param  mixed $value the initial submit value 
    * @throws InvalidArgumentException if the $value is not between the range
    */
-  public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1, $value = null) {
+  public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1, $value = null) {
     parent::__construct('text', $name);
     if ($value === null) {
       $value = $start;
@@ -52,11 +52,11 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   /**
    * Sets the length of the slider step
    *
-   * @param  int $step the length of the slider step
+   * @param  float $step the length of the slider step
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the step value is below zero
    */
-  public function setStepLength(int $step = 1) {
+  public function setStepLength(float $step = 1) {
     $range = $this->getMax() - $this->getMin();
     if ($step < 0) {
       throw new InvalidArgumentException("Step value ($step) is below zero");
@@ -71,11 +71,11 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   /**
    * Sets the range of the values on the slider
    *
-   * @param  int $min the start point
-   * @param  int $max the end point
+   * @param  float $min the start point
+   * @param  float $max the end point
    * @return $this for a fluent interface
    */
-  public function setRange(int $min, int $max) {
+  public function setRange(float $min, float $max) {
     $this->setMin($min)->setMax($max);
     return $this;
   }
@@ -83,11 +83,10 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   /**
    * Sets the range of the values on the slider
    *
-   * @param  int $start the start point
-   * @param  int $end the end point
+   * @param  float $start the start point
    * @return $this for a fluent interface
    */
-  public function setMin(int $start) {
+  public function setMin(float $start) {
     $this->attrs()->set('data-min', $start);
     return $this;
   }
@@ -95,10 +94,10 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   /**
    * Sets the range of the values on the slider
    *
-   * @param  int $end the end point
+   * @param  float $end the end point
    * @return $this for a fluent interface
    */
-  public function setMax(int $end) {
+  public function setMax(float $end) {
     $this->attrs()->set('data-max', $end);
     return $this;
   }
@@ -131,7 +130,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  string $prefix the prefix for values
    * @return $this for a fluent interface
    */
-  public function setPrefix($prefix) {
+  public function setPrefix(string $prefix) {
     $this->attrs()->set('data-prefix', $prefix);
     return $this;
   }
@@ -142,17 +141,17 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  string $postfix the postfix for values
    * @return $this for a fluent interface
    */
-  public function setPostfix($postfix) {
+  public function setPostfix(string $postfix) {
     $this->attrs()->set('data-postfix', $postfix);
     return $this;
   }
 
-  public function getMax(): int {
-    return (int) $this->attrs()->getValue('data-max');
+  public function getMax(): float {
+    return (float) $this->attrs()->getValue('data-max');
   }
 
-  public function getMin(): int {
-    return (int) $this->attrs()->getValue('data-min');
+  public function getMin(): float {
+    return (float) $this->attrs()->getValue('data-min');
   }
 
 }

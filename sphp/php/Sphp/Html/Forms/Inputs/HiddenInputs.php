@@ -141,4 +141,3 @@ class HiddenInputs extends AbstractComponentGenerator implements Content, ArrayA
   }
 
 }
-

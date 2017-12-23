@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface PatternValidableInputInterface extends Validable {
+interface PatternValidableInput extends Validable {
 
   /**
    * Sets the regular expression pattern that the component's value is checked against

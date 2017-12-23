@@ -20,7 +20,7 @@ use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Forms\Inputs\EmailInput;
-use Sphp\Html\Forms\Inputs\Input;
+use Sphp\Html\Forms\Inputs\Factory;
 
 /**
  * Implements framework based component to create  multi-device layouts
@@ -264,7 +264,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    */
   public static function __callStatic(string $inputType, array $arguments): TagInterface {
     try {
-      $input = \Sphp\Html\Forms\Inputs\Input::__callStatic($arguments);
+      $input = \Sphp\Html\Forms\Inputs\Factory::__callStatic($arguments);
     } catch (\Exception $ex) {
       
     }

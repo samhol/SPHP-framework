@@ -12,7 +12,7 @@ use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
-use Sphp\Html\Forms\Inputs\ChoiceboxInterface;
+use Sphp\Html\Forms\Inputs\BooleanInput;
 use Sphp\Html\Foundation\Sites\Core\Factory;
 
 /**
@@ -24,7 +24,7 @@ use Sphp\Html\Foundation\Sites\Core\Factory;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, ScreenReaderLabelable {
+class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenReaderLabelable {
 
   /**
    * CSS classes corresponding to the size constants

@@ -14,7 +14,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ChoiceboxInterface extends InputInterface {
+interface BooleanInput extends InputInterface {
 
   /**
    * Checks/unchecks the choice

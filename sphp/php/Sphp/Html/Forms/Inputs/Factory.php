@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Input.Input (UTF-8)
+ * Factory.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,11 +11,12 @@ use ReflectionClass;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**
- * Description of Factory
+ * Implements an HTML form component factory
  * 
+ * @method \Sphp\Html\Forms\Inputs\HiddenInput hidden(string $name = null, $value = null) creates a new hidden input
  * @method \Sphp\Html\Forms\Inputs\EmailInput email(string $name = null, $value = null) creates a new email input
  * @method \Sphp\Html\Forms\Inputs\NumberInput number(string $name = null, $value = null) creates a new number input
- * @method \Sphp\Html\Forms\Inputs\TextInput text(string $name = null, $value = null, int $maxlength = null, int $size = null) creates a new text input
+ * @method \Sphp\Html\Forms\Inputs\TextInput text(string $name = null, $value = null) creates a new text input
  *
  * @method \Sphp\Html\Forms\Inputs\TextInput push($content = null)
  * 
@@ -23,7 +24,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Input {
+class Factory {
 
   /**
    * list of tags and their corresponding PHP classes
@@ -35,8 +36,8 @@ class Input {
       'resetButton' => \Sphp\Html\Forms\Buttons\Resetter::class,
       'submitButton' => \Sphp\Html\Forms\Buttons\Submitter::class,
       'push' => \Sphp\Html\Forms\Inputs\Buttons\Button::class,
-      'reset' => \Sphp\Html\Forms\Inputs\Buttons\Resetter::class,
-      'submit' => \Sphp\Html\Forms\Inputs\Buttons\Submitter::class,
+      'reset' => Buttons\Resetter::class,
+      'submit' => Buttons\Submitter::class,
       'input' => InputTag::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,
@@ -45,8 +46,6 @@ class Input {
       'radio' => Radiobox::class,
       'checkbox' => Checkbox::class,
       'number' => NumberInput::class,
-      'reset' => Buttons\Resetter::class,
-      'submit' => Buttons\Submitter::class,
       'optgroup' => Menus\Optgroup::class,
       'option' => Menus\Option::class,
       'textarea' => Textarea::class,
