@@ -16,6 +16,6 @@ use BadMethodCallException as SplBadMethodCallException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BadMethodCallException extends SplBadMethodCallException implements Exception {
+class BadMethodCallException extends SplBadMethodCallException implements SphpException {
   
 }

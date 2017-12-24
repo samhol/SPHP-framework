@@ -17,6 +17,6 @@ use RuntimeException as SplRuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RuntimeException extends SplRuntimeException implements Exception {
+class RuntimeException extends SplRuntimeException implements SphpException {
 
 }

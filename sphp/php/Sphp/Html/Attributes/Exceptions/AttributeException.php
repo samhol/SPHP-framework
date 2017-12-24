@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Attributes\Exceptions;
 
-use Sphp\Exceptions\Exception;
-use Exception as PHPException;
+use Sphp\Exceptions\SphpException;
+use Exception;
 
 /**
  * Description of ImmutableAttributeException
@@ -17,6 +17,6 @@ use Exception as PHPException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AttributeException extends PHPException implements Exception {
+class AttributeException extends Exception implements SphpException {
   
 }

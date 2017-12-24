@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use InvalidArgumentException;
+use Sphp\Html\Exceptions\InvalidStateException;
 
 /**
  * Implements jQuery range slider with skin support
@@ -26,7 +26,7 @@ class RangeSlider extends AbstractSlider {
    * @param  int $start the start value of the slider
    * @param  int $end the end value of the slider
    * @param  int $step the length of a single step
-   * @throws InvalidArgumentException if the $value is not between the range
+   * @throws InvalidStateException if the $value is not between the range
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step, [$start, $end]);
@@ -62,9 +62,9 @@ class RangeSlider extends AbstractSlider {
    *
    * @param  int|int[]|string $value the value of the value attribute
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if parameter(s) are not suitable for range slider
+   * @throws InvalidStateException if parameter(s) are not suitable for range slider
    */
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     if (func_num_args() == 2) {
       $value = func_get_args();
     } else if (is_string($value)) {
@@ -72,14 +72,14 @@ class RangeSlider extends AbstractSlider {
     }
     if (!is_array($value) || count($value) != 2) {
       //var_dump($value);
-      throw new InvalidArgumentException('value is not suitable for range slider component');
+      throw new InvalidStateException('value is not suitable for range slider component');
     }
     $from = reset($value);
     $to = end($value);
     $this->attrs()->set('data-from', $from);
     $this->attrs()->set('data-to', $to);
 
-    parent::setValue($from . $this->getInputValueSeparator() . $to);
+    parent::setSubmitValue($from . $this->getInputValueSeparator() . $to);
     return $this;
   }
 
@@ -89,7 +89,7 @@ class RangeSlider extends AbstractSlider {
    * @return string separator for double values in input value property
    */
   public function getFrom() {
-    $rawValue = $this->getValue();
+    $rawValue = $this->getSubmitValue();
     $arr = explode($this->getInputValueSeparator(), $rawValue, 2);
     return (int) reset($arr);
   }
@@ -100,7 +100,7 @@ class RangeSlider extends AbstractSlider {
    * @return string separator for double values in input value property
    */
   public function getTo() {
-    $rawValue = $this->getValue();
+    $rawValue = $this->getSubmitValue();
     $arr = explode($this->getInputValueSeparator(), $rawValue, 2);
     return (int) end($arr);
   }

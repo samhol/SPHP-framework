@@ -232,7 +232,7 @@ if (!window.console.log) {
     $("[data-sphp-qtip]").qtips();
     // $('.sphp-back-to-top-button').backToTopBtn();
     $("input[data-anytime]").dateTimeInput();
-    $("[data-ion-rangeslider]").initIonRangeSlider();
+    //$("[data-ion-rangeslider]").initIonRangeSlider();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
     $("[data-reveal]").sphpPopup();
 

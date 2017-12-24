@@ -43,7 +43,7 @@ abstract class AbstractInputTag extends EmptyTag implements IdentifiableInput {
       $this->setName($name);
     }
     if ($value !== null) {
-      $this->setValue($value);
+      $this->setSubmitValue($value);
     }
   }
 

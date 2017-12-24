@@ -2,7 +2,8 @@
 
 /**
  * ImageButton.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  */
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
@@ -31,8 +32,8 @@ class SubmitterImage extends AbstractButton implements SubmitterInterface {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function __construct($src = null, $name = null) {
-    parent::__construct('image', $name, $src);
+  public function __construct(string $src = null, string $name = null) {
+    parent::__construct('image', $name);
   }
 
 }

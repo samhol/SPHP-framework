@@ -211,7 +211,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  string|string[] $value the current submission set of the input component
    * @return $this for a fluent interface
    */
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     if (!is_array($value)) {
       $value = [$value];
     }

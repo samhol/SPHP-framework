@@ -69,8 +69,8 @@ class RangeSlider extends AbstractSlider {
             ->demand('data-slider-handle')
             ->protect('role', 'slider')
             ->protect('tabindex', 1);
-    $this->lowerInput = (new HiddenInput())->setValue($min);
-    $this->upperInput = (new HiddenInput())->setValue($max);
+    $this->lowerInput = (new HiddenInput())->setSubmitValue($min);
+    $this->upperInput = (new HiddenInput())->setSubmitValue($max);
     if ($name !== null) {
       $this->setName($name);
     }
@@ -188,7 +188,7 @@ class RangeSlider extends AbstractSlider {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new \InvalidArgumentException("Start value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->getStartInput()->setValue($value);
+    $this->getStartInput()->setSubmitValue($value);
     $this->attrs()->set("data-initial-start", $value);
     return $this;
   }
@@ -197,12 +197,12 @@ class RangeSlider extends AbstractSlider {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new \InvalidArgumentException("Stop value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->getEndInput()->setValue($value);
+    $this->getEndInput()->setSubmitValue($value);
     $this->attrs()->set("data-initial-stop", $value);
     return $this;
   }
 
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     $min = $this->getStartValue();
     $max = $this->getStopValue();
     if (is_array($value) && count($value) >= 2) {

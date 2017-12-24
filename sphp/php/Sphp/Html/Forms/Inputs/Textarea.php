@@ -70,7 +70,7 @@ class Textarea extends ContainerTag implements TextareaInterface {
     return $this->contentToString();
   }
 
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     $this->replaceContent($value);
     return $this;
   }

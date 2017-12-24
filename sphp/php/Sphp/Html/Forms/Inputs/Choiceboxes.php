@@ -80,7 +80,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
   protected function addInput($label, $value) {
     $input = \Sphp\Html\TagFactory::{$this->type}();
     $input->setName($this->name);
-    $input->setValue($value);
+    $input->setSubmitValue($value);
     //$input = new InputTag($this->type, $this->name, $value);
     $this->options[] = $input;
     $this->boxCont[] = (new Label())
@@ -177,7 +177,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @param  string|string[] $value the current submission set of the input component
    * @return $this for a fluent interface
    */
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     if (!is_array($value)) {
       $value = [$value];
     }

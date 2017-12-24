@@ -1,16 +1,17 @@
 <?php
 
 /**
- * AbstractIonSlider.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playground.samiholck.com/)
+ * 
+ * @copyright Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  */
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Forms\Inputs\AbstractInputTag;
 use Sphp\Html\Forms\Inputs\RangeInput;
-use Sphp\Html\Forms\Inputs\InputTrait;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Exceptions\InvalidStateException;
 
 /**
  * Implements jQuery range slider with skin support
@@ -21,8 +22,6 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
 
-  use InputTrait;
-
   /**
    * Constructs a new instance
    *
@@ -31,7 +30,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @param  float $end the end value of the slider
    * @param  float $step the length of a single step
    * @param  mixed $value the initial submit value 
-   * @throws InvalidArgumentException if the $value is not between the range
+   * @throws InvalidStateException if the $value is not between the range
    */
   public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1, $value = null) {
     parent::__construct('text', $name);
@@ -41,7 +40,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     $this->attrs()->demand('data-sphp-ion-slider');
     $this->setRange($start, $end)
             ->setStepLength($step)
-            ->setValue($value);
+            ->setSubmitValue($value);
   }
 
   public function disable(bool $disabled = true) {
@@ -54,15 +53,15 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    *
    * @param  float $step the length of the slider step
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if the step value is below zero
+   * @throws InvalidStateException if the step value is below zero
    */
   public function setStepLength(float $step = 1) {
     $range = $this->getMax() - $this->getMin();
     if ($step < 0) {
-      throw new InvalidArgumentException("Step value ($step) is below zero");
+      throw new InvalidStateException("Step value ($step) is below zero");
     }
     if ($step > $range) {
-      throw new InvalidArgumentException("Step value ($step) is bigger than range ($range)");
+      throw new InvalidStateException("Step value ($step) is bigger than range ($range)");
     }
     $this->attrs()->set('data-step', $step);
     return $this;

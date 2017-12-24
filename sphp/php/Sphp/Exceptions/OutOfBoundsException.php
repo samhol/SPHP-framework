@@ -16,6 +16,6 @@ use OutOfBoundsException as SplOutOfBoundsException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class OutOfBoundsException extends SplOutOfBoundsException implements Exception {
+class OutOfBoundsException extends SplOutOfBoundsException implements SphpException {
   
 }

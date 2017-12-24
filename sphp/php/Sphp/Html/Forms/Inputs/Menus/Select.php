@@ -34,8 +34,6 @@ use Sphp\Html\ContainerInterface;
  */
 class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
-  use \Sphp\Html\Forms\Inputs\InputTrait;
-
   /**
    * Constructs a new instance
    *
@@ -114,7 +112,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     return array_unique($selected);
   }
 
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     return $this->setSelectedValues($value);
   }
 
@@ -151,6 +149,60 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
   public function isRequired(): bool {
     return $this->attrExists('required');
+  }
+  /**
+   * Returns the value of the name attribute.
+   *
+   * @return string name attribute
+   */
+  public function getName(): string {
+    return (string) $this->attrs()->getValue('name');
+  }
+
+  /**
+   * Sets the value of the name attribute
+   *
+   * @param  string $name the value of the name attribute
+   * @return $this for a fluent interface
+   */
+  public function setName(string $name) {
+    $this->attrs()->set('name', $name);
+    return $this;
+  }
+
+  /**
+   * Checks whether the form input has a name
+   *
+   * **Note:** Only form elements with a name attribute will have their values 
+   * passed when submitting a form.
+   *
+   * @return boolean true if the input has a name, otherwise false
+   */
+  public function isNamed(): bool {
+    return $this->attrs()->exists('name');
+  }
+
+  /**
+   * Disables the input component
+   * 
+   * A disabled input component is unusable and un-clickable. 
+   * Disabled input components in a form will not be submitted.
+   *
+   * @param  boolean $disabled true if the component is disabled, otherwise false
+   * @return $this for a fluent interface
+   */
+  public function disable(bool $disabled = true) {
+    $this->attrs()->setBoolean('disabled', $disabled);
+    return $this;
+  }
+
+  /**
+   * Checks whether the input is enabled or not
+   * 
+   * @param  boolean true if the option is enabled, otherwise false
+   */
+  public function isEnabled(): bool {
+    return !$this->attrs()->exists('disabled');
   }
 
 }

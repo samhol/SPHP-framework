@@ -16,6 +16,6 @@ use ErrorException as PhpErrorException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ErrorException extends PhpErrorException implements Exception {
+class ErrorException extends PhpErrorException implements SphpException {
   
 }

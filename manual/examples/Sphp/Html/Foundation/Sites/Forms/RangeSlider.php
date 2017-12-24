@@ -10,12 +10,12 @@ $hours = (new RangeSlider("hour", 0, 23, 1))
 
 $score = (new RangeSlider("triple", 0, 99, 3))
         ->setDescription("two point score:")
-        ->setValue(12);
+        ->setSubmitValue(12);
 //->showValue();
 
 $distance = (new RangeSlider("distance", 100, 200, 1))
         ->setDescription("Distance travelled:")
-        ->setValue([120, 150])
+        ->setSubmitValue([120, 150])
         //->showValue()
         ->setValueUnit("km");
 

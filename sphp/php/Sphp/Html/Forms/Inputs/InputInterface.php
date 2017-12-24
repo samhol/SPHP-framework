@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Content;
-
+use Sphp\Html\Exceptions\InvalidStateException;
 /**
  * Defines required operations for all HTML form input components
  *
@@ -42,7 +42,7 @@ interface InputInterface extends Content {
    * **Note:** Only form elements with a name attribute will have their values 
    * passed when submitting a form.
    *
-   * @return boolean true if the input has a name , otherwise false
+   * @return boolean true if the input has a name, otherwise false
    */
   public function isNamed(): bool;
 
@@ -58,9 +58,9 @@ interface InputInterface extends Content {
    *
    * @param  scalar $value the value of the form input
    * @return $this for a fluent interface
-   * @throws \InvalidArgumentException if the value is not valid for the input type
+   * @throws InvalidStateException if the value is not valid for the input type
    */
-  public function setValue($value);
+  public function setSubmitValue($value);
 
   /**
    * Disables the input component

@@ -187,8 +187,8 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this->input->getSubmitValue();
   }
 
-  public function setValue($value) {
-    $this->input->setValue($value);
+  public function setSubmitValue($value) {
+    $this->input->setSubmitValue($value);
     return $this;
   }
 

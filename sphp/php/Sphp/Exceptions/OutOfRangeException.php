@@ -18,6 +18,6 @@ use OutOfRangeException as SplOutOfRangeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class OutOfRangeException extends SplOutOfRangeException implements Exception {
+class OutOfRangeException extends SplOutOfRangeException implements SphpException {
   
 }

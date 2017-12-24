@@ -13,12 +13,6 @@ use Sphp\Html\Foundation\Sites\Buttons\Button;
 class GettextForm extends AbstractComponentGenerator {
 
   /**
-   *
-   * @var GridForm 
-   */
-  private $form;
-
-  /**
    * @var Iterator 
    */
   private $data;
@@ -60,7 +54,7 @@ class GettextForm extends AbstractComponentGenerator {
 
     $row = new FormRow();
     $typeSelector = new Checkboxes('type', [0b1 => 'singular', 0b10 => 'plural', 0b100 => 'original', 0b1000 => 'translation']);
-    $typeSelector->setValue(['type' => 0b11]);
+    $typeSelector->setSubmitValue(['type' => 0b11]);
     $row->appendColumn($typeSelector, ['small-12', 'large-4', 'xlarge-5']);
 
     $form->append($row);

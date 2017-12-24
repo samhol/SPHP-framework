@@ -2,7 +2,8 @@
 
 /**
  * SubmitButton.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  */
 
 namespace Sphp\Html\Forms\Inputs\Buttons;

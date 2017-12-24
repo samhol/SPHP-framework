@@ -3,6 +3,7 @@
 /**
  * Slider.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  */
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
@@ -50,7 +51,7 @@ class Slider extends AbstractSlider {
             ->protect('role', 'slider')
             ->protect('tabindex', 1);
     $this->input = new HiddenInput();
-    $this->setStepLength($step)->setValue($value);
+    $this->setStepLength($step)->setSubmitValue($value);
   }
 
   /**
@@ -131,7 +132,7 @@ class Slider extends AbstractSlider {
     return $this->getInput()->getName();
   }
 
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     $this->getInput()->setName($name);
     return $this;
   }
@@ -162,11 +163,11 @@ class Slider extends AbstractSlider {
     return $this->getInput()->getSubmitValue();
   }
 
-  public function setValue($value) {
+  public function setSubmitValue($value) {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new \InvalidArgumentException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->getInput()->setValue($value);
+    $this->getInput()->setSubmitValue($value);
     $this->attrs()->set('data-initial-start', $value);
     return $this;
   }

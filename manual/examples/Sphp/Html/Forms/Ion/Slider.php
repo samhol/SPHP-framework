@@ -8,10 +8,10 @@ $form = new Form();
 $form[] = (new Slider("weight", 0, 100, 1))
         ->useGrid(true)
         ->setPostfix("kg")
-        ->setValue(50);
+        ->setSubmitValue(50);
 $form[] = (new Slider("temperature", -100, 100, 1))
         ->useGrid(true)
         ->setPostfix("&deg;C")
-        ->setValue(20);
+        ->setSubmitValue(20);
 
 $form->printHtml();
