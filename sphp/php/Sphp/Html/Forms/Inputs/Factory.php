@@ -13,10 +13,14 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements an HTML form component factory
  * 
+ * @method \Sphp\Html\Forms\Inputs\Menus\Select select(string $name = null, $value = null) creates a new hidden input
  * @method \Sphp\Html\Forms\Inputs\HiddenInput hidden(string $name = null, $value = null) creates a new hidden input
  * @method \Sphp\Html\Forms\Inputs\EmailInput email(string $name = null, $value = null) creates a new email input
  * @method \Sphp\Html\Forms\Inputs\NumberInput number(string $name = null, $value = null) creates a new number input
  * @method \Sphp\Html\Forms\Inputs\TextInput text(string $name = null, $value = null) creates a new text input
+ * @method \Sphp\Html\Forms\Inputs\Radiobox radio(string $name = null, $value = null) creates a new text input
+ * @method \Sphp\Html\Forms\Inputs\Checkbox checkbox(string $name = null, $value = null) creates a new text input
+ * @method \Sphp\Html\Forms\Inputs\PasswordInput password(string $name = null, $value = null) creates a new text input
  *
  * @method \Sphp\Html\Forms\Inputs\TextInput push($content = null)
  * 

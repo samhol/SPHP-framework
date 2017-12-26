@@ -348,7 +348,7 @@ class AttributeManager implements Countable, Iterator {
    * 
    * @return boolean true if the manager has attribute instances and false otherwise
    */
-  public function containsInstances(): bool {
+  public function containsAttributes(): bool {
     return !empty($this->attrs);
   }
 
@@ -498,8 +498,8 @@ class AttributeManager implements Countable, Iterator {
   public function valid(): bool {
     return false !== current($this->attrs);
   }
-  
-  public function toArray():array {
+
+  public function toArray(): array {
     $arr = [];
     foreach ($this as $name => $attr) {
       if ($attr->isVisible()) {

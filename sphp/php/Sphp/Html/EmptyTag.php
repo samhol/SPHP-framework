@@ -27,7 +27,7 @@ class EmptyTag extends AbstractTag {
 
   public function getHtml(): string {
     $output = '<' . $this->getTagName();
-    if ($this->attrs()->containsInstances()) {
+    if ($this->attrs()->containsAttributes()) {
       $output .= ' ' . $this->attrs();
     }
     $output .= '>';

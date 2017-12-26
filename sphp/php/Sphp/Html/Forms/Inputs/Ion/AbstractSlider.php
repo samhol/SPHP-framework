@@ -44,8 +44,19 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attrs()->set('data-disable', (bool) $disabled);
+    $value = $disabled ? 'true' : null;
+    $this->attrs()->set('data-block', $value);
+    $this->attrs()->set('data-disable', $value);
     return $this;
+  }
+
+  /**
+   * Checks whether the input component is enabled or not
+   * 
+   * @param  boolean true if the input component is enabled, otherwise false
+   */
+  public function isEnabled(): bool {
+    return !$this->attrs()->exists('data-disable') && !$this->attrs()->exists('data-block');
   }
 
   /**
@@ -79,26 +90,22 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     return $this;
   }
 
-  /**
-   * Sets the range of the values on the slider
-   *
-   * @param  float $start the start point
-   * @return $this for a fluent interface
-   */
   public function setMin(float $start) {
     $this->attrs()->set('data-min', $start);
     return $this;
   }
 
-  /**
-   * Sets the range of the values on the slider
-   *
-   * @param  float $end the end point
-   * @return $this for a fluent interface
-   */
   public function setMax(float $end) {
     $this->attrs()->set('data-max', $end);
     return $this;
+  }
+
+  public function getMax(): float {
+    return (float) $this->attrs()->getValue('data-max');
+  }
+
+  public function getMin(): float {
+    return (float) $this->attrs()->getValue('data-min');
   }
 
   /**
@@ -143,14 +150,6 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
   public function setPostfix(string $postfix) {
     $this->attrs()->set('data-postfix', $postfix);
     return $this;
-  }
-
-  public function getMax(): float {
-    return (float) $this->attrs()->getValue('data-max');
-  }
-
-  public function getMin(): float {
-    return (float) $this->attrs()->getValue('data-min');
   }
 
 }

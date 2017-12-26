@@ -2,8 +2,6 @@
 
 namespace Sphp\Tests\Html\Tables;
 
-use Sphp\Html\Tables\Th;
-
 class TdTests extends ContainerCellTests {
 
   /**
