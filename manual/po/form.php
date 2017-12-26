@@ -6,10 +6,10 @@ use Sphp\Html\Forms\Foundation\GridForm;
 use Sphp\Html\Forms\Foundation\InputColumn;
 
 $fieldset = new Foundation\GridFieldset("Search messages:");
-$ruleMenu = (new Select\Select("rule"))
-		->appendOption("starts", "Starts with:")
-		->appendOption("contains", "Contains:", TRUE)
-		->appendOption("ends", "Ends with:");
+$ruleMenu = (new Select\Select("rule"));
+		$ruleMenu->appendOption("starts", "Starts with:");
+		$ruleMenu->appendOption("contains", "Contains:", TRUE);
+		$ruleMenu->appendOption("ends", "Ends with:");
 		//->setLabel("Search rule:");
 
 $searchInput = (new Input\TextInput("search"))

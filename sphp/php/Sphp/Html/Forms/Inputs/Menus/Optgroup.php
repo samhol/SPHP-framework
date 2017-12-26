@@ -26,7 +26,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * @link    http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
  * @filesource
  */
-class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInterface {
+class Optgroup extends AbstractOptionsContainer implements MenuComponent {
 
   /**
    * Constructs a new instance
@@ -40,7 +40,7 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
    *    {@link Optgroup} components containing new {@link Option Option($key, $val)} objects
    * 
    * @param string $label specifies a label for an option-group
-   * @param SelectMenuContentInterface|mixed[] $opt the content
+   * @param MenuComponent|mixed[] $opt the content
    */
   public function __construct(string $label = null, $opt = null) {
     parent::__construct('optgroup', $opt);

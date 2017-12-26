@@ -16,6 +16,6 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SelectMenuContentInterface extends ComponentInterface {
+interface MenuComponent extends ComponentInterface {
   
 }

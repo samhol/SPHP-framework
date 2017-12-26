@@ -27,7 +27,7 @@ class MenuFactory {
    * @param  string $name the value of the name attribute
    * @return Select component containing months
    */
-  public static function getContentAsValueMenu(array $content, $name = null) {
+  public static function getContentAsValueMenu(array $content, $name = null): Select {
     return new Select($name, Arrays::valuesToKeys($content));
   }
 
@@ -37,7 +37,7 @@ class MenuFactory {
    * @param  string $name the value of the name attribute
    * @return Select component containing months
    */
-  public static function monthMenu($name = "month", Calendar $c = null) {
+  public static function monthMenu($name = "month", Calendar $c = null): Select {
     if ($c === null) {
       $c = new Calendar();
     }
@@ -51,7 +51,7 @@ class MenuFactory {
    * @param  Calendar $c the calendar instance
    * @return Select component containing weekdays
    */
-  public static function getWeekdayMenu($name = "weekday", Calendar $c = null) {
+  public static function getWeekdayMenu($name = "weekday", Calendar $c = null): Select {
     if ($c === null) {
       $c = new Calendar();
     }
@@ -67,7 +67,7 @@ class MenuFactory {
    * @param  string $name the value of the name attribute
    * @return Select component containing the range
    */
-  public static function rangeMenu($from, $to, $step = 1, $name = null) {
+  public static function rangeMenu($from, $to, $step = 1, $name = null): Select {
     $range = range($from, $to, $step);
     return new Select($name, array_combine($range, $range));
   }

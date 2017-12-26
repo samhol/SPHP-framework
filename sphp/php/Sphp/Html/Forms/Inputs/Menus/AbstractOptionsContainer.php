@@ -8,9 +8,10 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
+use Sphp\Html\Container;
 
 /**
  * Abstract implementation of a select menu content container
@@ -31,9 +32,14 @@ use Traversable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractOptionsContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
+class AbstractOptionsContainer extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
+
+  /**
+   * @var Container 
+   */
+  private $options;
 
   /**
    * Constructs a new instance
@@ -47,24 +53,26 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
    * 
    * @param  string $tagname the name of the tag
-   * @param SelectMenuContentInterface|mixed[] $opt the content
+   * @param MenuComponent|mixed[] $opt the content
    */
   public function __construct(string $tagname, $opt = null) {
     parent::__construct($tagname);
+    $this->options = new Container();
     if (is_array($opt)) {
       $this->appendArray($opt);
     } else if ($opt instanceof SelectMenuContentInterface) {
       $this->append($opt);
     }
   }
+
   /**
    * Prepends content to the component
    *
-   * @param  SelectMenuContentInterface $opt the content
+   * @param  MenuComponent $opt the content
    * @return $this for a fluent interface
    */
-  public function prepend(SelectMenuContentInterface $opt) {
-    $this->getInnerContainer()->prepend($opt);
+  public function prepend(MenuComponent $opt) {
+    $this->options->prepend($opt);
     return $this;
   }
 
@@ -99,13 +107,14 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * @param  string $value the value attribute of the option
    * @param  string $content the textual content of the option
    * @param  boolean $selected whether the option is selected or not
-   * @return $this for a fluent interface
+   * @return Option appended instance
    * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
-  public function appendOption($value, $content = null, $selected = false) {
-    $this->append(new Option($value, $content, $selected));
-    return $this;
+  public function appendOption($value, string $content = null, bool $selected = false): Option {
+    $option = new Option($value, $content, $selected);
+    $this->append($option);
+    return $option;
   }
 
   /**
@@ -119,34 +128,35 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * 3. nested arrays are converted to {@link Optgroup} objects having the root 
    *    key of the nested array as a label of the group
    * 
-   * @param string $label specifies a label for an option-group
-   * @param SelectMenuContentInterface|mixed[] $opt the content 
-   * @param boolean $disabled whether the Optgroup is enabled or not
-   * @return $this for a fluent interface
+   * @param  string $label specifies a label for an option-group
+   * @param  MenuComponent|mixed[] $opt the content 
+   * @param  boolean $disabled whether the Optgroup is enabled or not
+   * @return Optgroup appended instance
    */
-  public function appendOptgroup($label, $opt = null, $disabled = false) {
-    $this->append(new Optgroup($label, $opt, $disabled));
-    return $this;
+  public function appendOptgroup(string $label, $opt = null, bool $disabled = false): Optgroup {
+    $group = new Optgroup($label, $opt, $disabled);
+    $this->append($group);
+    return $group;
   }
 
   /**
    * Appends content to the component
    *
-   * @param  SelectMenuContentInterface $opt the content
+   * @param  MenuComponent $opt the content
    * @return $this for a fluent interface
    */
-  public function append(SelectMenuContentInterface $opt) {
-    $this->getInnerContainer()->append($opt);
+  public function append(MenuComponent $opt) {
+    $this->options->append($opt);
     return $this;
   }
 
   /**
-   * Counts the number of {@link SelectMenuContentInterface} 
+   * Counts the number of menu components
    * 
-   * @return int the number of {@link SelectMenuContentInterface} 
+   * @return int the number of menu components
    */
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return $this->options->count();
   }
 
   /**
@@ -154,8 +164,12 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * 
    * @return Traversable external iterator
    */
-  public function getIterator() {
-    return $this->getInnerContainer();
+  public function getIterator(): Traversable {
+    return $this->options->getIterator();
+  }
+
+  public function contentToString(): string {
+    return $this->options->getHtml();
   }
 
 }

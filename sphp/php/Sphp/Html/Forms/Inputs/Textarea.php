@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\SimpleContainerTag;
 
 /**
  * Implements an HTML &lt;textarea&gt; tag
@@ -17,7 +17,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Textarea extends ContainerTag implements TextareaInterface {
+class Textarea extends SimpleContainerTag implements TextareaInterface {
 
   /**
    * Constructs a new instance
@@ -50,7 +50,7 @@ class Textarea extends ContainerTag implements TextareaInterface {
   }
 
   public function isEnabled(): bool {
-    return !$this->attrExists('disabled');
+    return !$this->attrs()->exists('disabled');
   }
 
   public function getName(): string {
@@ -67,11 +67,11 @@ class Textarea extends ContainerTag implements TextareaInterface {
   }
 
   public function getSubmitValue() {
-    return $this->contentToString();
+    return $this->getContent();
   }
 
   public function setSubmitValue($value) {
-    $this->replaceContent($value);
+    $this->setContent($value);
     return $this;
   }
 

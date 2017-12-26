@@ -86,34 +86,13 @@ class SimpleContainerTag extends AbstractTag {
     return $this->content;
   }
 
-  /**
-   * Returns opening tag with its attributes
-   *
-   * @return string opening tag with attributes
-   */
-  protected function getOpeningTag(): string {
+  public function getHtml(): string {
     $attrs = '' . $this->attrs();
     if ($attrs !== '') {
       $attrs = ' ' . $attrs;
     }
-    return '<' . $this->getTagName() . $attrs . '>';
-  }
-
-  public function contentToString(): string {
-    return Strings::toString($this->content);
-  }
-
-  /**
-   * Returns closing tag
-   *
-   * @return string closing tag
-   */
-  protected function getClosingTag(): string {
-    return '</' . $this->getTagName() . '>';
-  }
-
-  public function getHtml(): string {
-    return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
+    $output = '<' . $this->getTagName() . $attrs . '>';
+    return $output . $this->content . '</' . $this->getTagName() . '>';
   }
 
 }

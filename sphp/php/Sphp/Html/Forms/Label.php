@@ -24,7 +24,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Label extends ContainerTag {
+class Label extends ContainerTag implements LabelInterface {
 
   /**
    * Constructs a new instance
@@ -40,17 +40,6 @@ class Label extends ContainerTag {
     }
   }
 
-  /**
-   * Sets the value of the for attribute
-   *
-   * **Notes:**
-   *
-   * - For attribute specifies which form element a label is bound to.
-   *
-   * @param  string|IdentifiableInput $for the value of the for attribute
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
-   */
   public function setFor($for) {
     if ($for instanceof IdentifiableInput) {
       $for = $for->identify();
@@ -59,30 +48,10 @@ class Label extends ContainerTag {
     return $this;
   }
 
-  /**
-   * Returns the value of the for attribute
-   *
-   * **Note:** for attribute specifies which form element a label is bound to.
-   *
-   * @return string the value of the for attribute
-   * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
-   */
   public function getFor() {
     return $this->attrs()->getValue('for');
   }
 
-  /**
-   * Sets the value of the form attribute
-   *
-   * **Notes:**
-   *
-   * - Specifies a space-separated list of id's to one or more forms the label object belongs to.
-   * - parameter can be an array of id's to one or more forms the object belongs to.
-   *
-   * @param  string|string[] $formIds the value of the form attribute
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_label_form.asp form attribute
-   */
   public function setForms($formIds) {
     if (is_array($formIds)) {
       $formIds = implode(' ', $formIds);
@@ -91,14 +60,6 @@ class Label extends ContainerTag {
     return $this;
   }
 
-  /**
-   * Returns the value(s) of the form attribute
-   *
-   * **Note:** Returns an array of id's to one or more forms the &lt;label&gt; object belongs to.
-   *
-   * @return string[] the value(s) of the form attribute
-   * @link  http://www.w3schools.com/tags/att_label_form.asp form attribute
-   */
   public function getForms(): array {
     $result = [];
     if ($this->attrs()->exists('form')) {

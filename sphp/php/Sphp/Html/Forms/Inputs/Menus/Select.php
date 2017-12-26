@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\ContainerInterface;
+use Sphp\Html\TraversableContent;
 
 /**
  * Implements an HTML &lt;select&gt; tag
@@ -46,10 +46,10 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
    *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
    * 
    * @param string|null $name name attribute
-   * @param SelectMenuContentInterface|mixed[] $opt the content of the menu
+   * @param MenuComponent|mixed[] $opt the content of the menu
    * @param string|string[] $selectedValues the option values selected
    */
-  public function __construct($name = null, $opt = null, $selectedValues = null) {
+  public function __construct(string $name = null, $opt = null, $selectedValues = null) {
     parent::__construct('select', $opt);
     if (isset($name)) {
       $this->setName($name);
@@ -59,21 +59,11 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     }
   }
 
-  /**
-   * Returns all {@link Option} components in the component
-   * 
-   * @return ContainerInterface containing {@link Option} components
-   */
-  public function getOptions() {
+  public function getOptions(): TraversableContent {
     return $this->getComponentsByObjectType(Option::class);
   }
-
-  /**
-   * Returns all the selected {@link Option} components in the component
-   * 
-   * @return ContainerInterface containing selected {@link Option} components
-   */
-  public function getSelectedOptions() {
+  
+  public function getSelectedOptions(): TraversableContent {
     $isSelected = function($component) {
       if ($component instanceof Option) {
         return $component->isSelected();
@@ -84,12 +74,6 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     return $this->getComponentsBy($isSelected);
   }
 
-  /**
-   * Sets the selected options of the menu object
-   *
-   * @param  scalar|scalar[] $selectedValues selected options of the menu object
-   * @return $this for a fluent interface
-   */
   public function setSelectedValues($selectedValues) {
     if (!is_array($selectedValues)) {
       $selectedValues = array($selectedValues);
@@ -116,28 +100,12 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     return $this->setSelectedValues($value);
   }
 
-  /**
-   * Specifies that multiple options can or cannot be selected at once
-   * 
-   * @param  boolean $multiple true if multiple selections are allowed, 
-   *         otherwise false
-   * @return $this for a fluent interface
-   */
-  public function selectMultiple($multiple = true) {
+  public function selectMultiple(bool $multiple = true) {
     $this->attrs()->set('multiple', $multiple);
     return $this;
   }
 
-  /**
-   * Sets the number of the visible {@link Option} components
-   * 
-   * **Note:** In Chrome and Safari, this attribute may not work as 
-   *  expected for size="2" and size="3".
-   * 
-   * @param  int $size the number of the visible {@link Option} components
-   * @return $this for a fluent interface
-   */
-  public function setSize($size) {
+  public function setSize(int $size = null) {
     $this->attrs()->set('size', $size);
     return $this;
   }
@@ -150,57 +118,25 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   public function isRequired(): bool {
     return $this->attrExists('required');
   }
-  /**
-   * Returns the value of the name attribute.
-   *
-   * @return string name attribute
-   */
+
   public function getName(): string {
     return (string) $this->attrs()->getValue('name');
   }
 
-  /**
-   * Sets the value of the name attribute
-   *
-   * @param  string $name the value of the name attribute
-   * @return $this for a fluent interface
-   */
   public function setName(string $name) {
     $this->attrs()->set('name', $name);
     return $this;
   }
 
-  /**
-   * Checks whether the form input has a name
-   *
-   * **Note:** Only form elements with a name attribute will have their values 
-   * passed when submitting a form.
-   *
-   * @return boolean true if the input has a name, otherwise false
-   */
   public function isNamed(): bool {
     return $this->attrs()->exists('name');
   }
 
-  /**
-   * Disables the input component
-   * 
-   * A disabled input component is unusable and un-clickable. 
-   * Disabled input components in a form will not be submitted.
-   *
-   * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return $this for a fluent interface
-   */
   public function disable(bool $disabled = true) {
     $this->attrs()->setBoolean('disabled', $disabled);
     return $this;
   }
 
-  /**
-   * Checks whether the input is enabled or not
-   * 
-   * @param  boolean true if the option is enabled, otherwise false
-   */
   public function isEnabled(): bool {
     return !$this->attrs()->exists('disabled');
   }

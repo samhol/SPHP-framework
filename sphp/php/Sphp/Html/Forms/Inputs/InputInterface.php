@@ -26,12 +26,12 @@ interface InputInterface extends Content {
   public function getName();
 
   /**
-   * Sets the name of the form input
+   * Sets the name of the input
    *
    * **Note:** Only form elements with a name attribute will have their values 
    * passed when submitting a form.
    *
-   * @param  string $name the name of the form input
+   * @param  string $name the name of the input
    * @return $this for a fluent interface
    */
   public function setName(string $name);
@@ -54,29 +54,29 @@ interface InputInterface extends Content {
   public function getSubmitValue();
 
   /**
-   * Sets  the value of the form input
+   * Sets  the value of the input
    *
-   * @param  scalar $value the value of the form input
+   * @param  scalar $value the value of the input
    * @return $this for a fluent interface
    * @throws InvalidStateException if the value is not valid for the input type
    */
   public function setSubmitValue($value);
 
   /**
-   * Disables the input component
+   * Disables the input
    * 
-   * A disabled input component is unusable and un-clickable. 
-   * Disabled input components in a form will not be submitted.
+   * A disabled input is unusable and un-clickable. 
+   * Disabled input in a form will not be submitted.
    *
-   * @param  boolean $disabled true if the component is disabled, otherwise false
+   * @param  boolean $disabled true for disabled, otherwise false
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true);
 
   /**
-   * Checks whether the input component is enabled or not
+   * Checks whether the input is enabled or not
    * 
-   * @param  boolean true if the input component is enabled, otherwise false
+   * @return boolean true if the input is enabled, otherwise false
    */
   public function isEnabled(): bool;
 }

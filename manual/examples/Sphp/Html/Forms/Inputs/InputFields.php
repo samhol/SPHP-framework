@@ -20,8 +20,11 @@ $form[] = Factory::password("password")
 $form[] = Factory::textarea("textarea")
         ->setPlaceholder("Textarea field")
         ->setRows(5);
-$form[] = Factory::select("select")
-        ->appendOption("opt1", "Option 1.")
-        ->appendOption("opt2", "Option 2.");
+
+$select = Factory::select("select");
+$select->appendOption("opt1", "Option 1.");
+$select->appendOption("opt2", "Option 2.");
+$form[] = $select;
+
 $form[] = Factory::hidden("hidden", "value");
 $form->printHtml();
