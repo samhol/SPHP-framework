@@ -52,7 +52,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    * 3. a multidimensional array corresponds to a multidimensional menu structure with 
    *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
    * 
-   * @param  string $tagname the name of the tag
+   * @param string $tagname the name of the tag
    * @param MenuComponent|mixed[] $opt the content
    */
   public function __construct(string $tagname, $opt = null) {
@@ -90,7 +90,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    */
   public function appendArray(array $options) {
     foreach ($options as $index => $option) {
-      if ($option instanceof SelectMenuContentInterface) {
+      if ($option instanceof MenuComponent) {
         $this->append($option);
       } else if (is_array($option)) {
         $this->appendOptgroup($index, $option);

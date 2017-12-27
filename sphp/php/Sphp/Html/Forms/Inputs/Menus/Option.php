@@ -79,23 +79,11 @@ class Option extends SimpleContainerTag implements MenuComponent {
     return $this->attrs()->exists('selected') && $this->isEnabled();
   }
 
-  /**
-   * Disables or enables the option object
-   *
-   * @param  boolean $enabled true if the option is enabled, otherwise false
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_option_disabled.asp disabled attribute
-   */
-  public function setEnabled(bool $enabled = true) {
+  public function disable(bool $enabled = true) {
     $this->attrs()->set('disabled', !$enabled);
     return $this;
   }
 
-  /**
-   * Checks whether the option is enabled or not
-   * 
-   * @param  boolean true if the option is enabled, otherwise false
-   */
   public function isEnabled(): bool {
     return !$this->attrs()->exists('disabled');
   }

@@ -9,7 +9,6 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\Forms\Inputs\Validable;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\ContainerInterface;
 
 /**
  * Defines properties for a select menu in HTML forms

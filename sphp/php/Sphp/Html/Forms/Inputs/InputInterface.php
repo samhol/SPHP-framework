@@ -7,8 +7,9 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Content;
+use Sphp\Html\Forms\FormController;
 use Sphp\Html\Exceptions\InvalidStateException;
+
 /**
  * Defines required operations for all HTML form input components
  *
@@ -16,7 +17,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface InputInterface extends Content {
+interface InputInterface extends FormController {
 
   /**
    * Returns the name of the form input
@@ -61,22 +62,4 @@ interface InputInterface extends Content {
    * @throws InvalidStateException if the value is not valid for the input type
    */
   public function setSubmitValue($value);
-
-  /**
-   * Disables the input
-   * 
-   * A disabled input is unusable and un-clickable. 
-   * Disabled input in a form will not be submitted.
-   *
-   * @param  boolean $disabled true for disabled, otherwise false
-   * @return $this for a fluent interface
-   */
-  public function disable(bool $disabled = true);
-
-  /**
-   * Checks whether the input is enabled or not
-   * 
-   * @return boolean true if the input is enabled, otherwise false
-   */
-  public function isEnabled(): bool;
 }

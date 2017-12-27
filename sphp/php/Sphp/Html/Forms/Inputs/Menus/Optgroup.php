@@ -50,19 +50,9 @@ class Optgroup extends AbstractOptionsContainer implements MenuComponent {
   }
 
   /**
-   * Returns the value of the label attribute
+   * Sets the label for the group
    *
-   * @return string the value of the label attribute
-   * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
-   */
-  public function getLabel() {
-    return $this->attrs()->getValue('label');
-  }
-
-  /**
-   * Sets the value of the label attribute
-   *
-   * @param  string $label the value of the label attribute
+   * @param  string $label the label for the group
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
@@ -71,27 +61,11 @@ class Optgroup extends AbstractOptionsContainer implements MenuComponent {
     return $this;
   }
 
-  /**
-   * Disables the input component
-   * 
-   * A disabled input component is unusable and not clickable. 
-   * Disabled input components in a form will not be submitted.
-   *
-   * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return InputInterface for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
-   */
   public function disable(bool $disabled = true) {
     $this->attrs()->set('disabled', $disabled);
     return $this;
   }
 
-  /**
-   * Checks whether the option is enabled or not
-   * 
-   * @param  boolean true if the option is enabled, otherwise false
-   * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
-   */
   public function isEnabled(): bool {
     return !$this->attrs()->exists('disabled');
   }
