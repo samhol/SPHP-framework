@@ -82,7 +82,7 @@ class Optgroup extends AbstractOptionsContainer implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
    */
   public function disable(bool $disabled = true) {
-    $this->attrs()->set('disabled', (bool) $disabled);
+    $this->attrs()->set('disabled', $disabled);
     return $this;
   }
 
