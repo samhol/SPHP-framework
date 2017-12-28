@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox;
@@ -26,7 +26,7 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements InputInterface, ColumnInterface {
+abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInterface {
 
   /**
    * the type of the individual input component

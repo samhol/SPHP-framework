@@ -65,7 +65,7 @@ class Factory {
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return InputInterface the corresponding component
+   * @return Input the corresponding component
    * @throws BadMethodCallException
    */
   public static function __callStatic(string $name, array $arguments) {

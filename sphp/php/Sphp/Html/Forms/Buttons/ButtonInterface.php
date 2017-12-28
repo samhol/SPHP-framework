@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Forms\Buttons;
 
+use Sphp\Html\Forms\FormController;
+
 /**
  * Defines HTML buttons used in HTML forms
  * 
@@ -14,6 +16,6 @@ namespace Sphp\Html\Forms\Buttons;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ButtonInterface {
+interface ButtonInterface extends FormController {
   
 }

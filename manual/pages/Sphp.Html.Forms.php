@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Manual;
 
 $formIfLink = Manual\api()->classLinker(FormInterface::class);
 $traversableFormInterface = Manual\api()->classLinker(TraversableForm::class);
-$inputInterface = Manual\api()->classLinker(InputInterface::class);
+$inputInterface = Manual\api()->classLinker(Input::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 \Sphp\Manual\md(<<<MD

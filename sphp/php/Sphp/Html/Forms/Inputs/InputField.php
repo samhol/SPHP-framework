@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface InputField extends Validable {
+interface InputField extends ValidableInput {
 
   /**
    * Sets the value of the placeholder attribute

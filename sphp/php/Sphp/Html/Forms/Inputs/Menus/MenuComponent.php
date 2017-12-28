@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 use Sphp\Html\Forms\FormController;
 
 /**
- * Defines menu content components (&lt;option|optgroup&gt;).
+ * Defines &lt;option|optgroup&gt; menu content components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

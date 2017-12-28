@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 
 /**
  * Trait implements the {@link InputInterface} and acts as a wrapper for {@link InputInterface}
@@ -21,7 +21,7 @@ trait InputWrapperTrait {
   /**
    * Returns the actual input component
    * 
-   * @return InputInterface the actual input component
+   * @return Input the actual input component
    */
   abstract public function getInput();
 

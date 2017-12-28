@@ -1,7 +1,7 @@
 <?php
 
 /**
- * InputInterface.php (UTF-8)
+ * Input.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -17,7 +17,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface InputInterface extends FormController {
+interface Input extends FormController {
 
   /**
    * Returns the name of the form input

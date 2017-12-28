@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface Validable extends InputInterface {
+interface ValidableInput extends Input {
 
   /**
    * Sets whether the input must have a value or not before form submission

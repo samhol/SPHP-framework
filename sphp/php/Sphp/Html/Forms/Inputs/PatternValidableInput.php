@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PatternValidableInputInterface.php (UTF-8)
+ * PatternValidableInput.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface PatternValidableInput extends Validable {
+interface PatternValidableInput extends ValidableInput {
 
   /**
    * Sets the regular expression pattern that the component's value is checked against
@@ -37,7 +37,7 @@ interface PatternValidableInput extends Validable {
   public function getPattern();
 
   /**
-   * Checks if a value validation pattern is set for the component
+   * Checks if validation pattern is set for the component
    *
    * @return boolean true if a value validation pattern is set for the 
    *         component, otherwise false

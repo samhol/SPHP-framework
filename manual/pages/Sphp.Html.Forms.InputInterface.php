@@ -7,7 +7,7 @@ use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
 $formIfLink = \Sphp\Manual\api()->classLinker(FormInterface::class);
-$inputInterface = \Sphp\Manual\api()->classLinker(InputInterface::class);
+$inputInterface = \Sphp\Manual\api()->classLinker(Input::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\md(<<<MD
 ##Some form components inheriting $inputInterface

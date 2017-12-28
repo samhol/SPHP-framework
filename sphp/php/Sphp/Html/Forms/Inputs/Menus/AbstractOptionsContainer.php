@@ -14,7 +14,7 @@ use Traversable;
 use Sphp\Html\Container;
 
 /**
- * Abstract implementation of a select menu content container
+ * Abstract implementation of ann HTML &lt;option&gt; component container
 
  * **Notes:**
  *

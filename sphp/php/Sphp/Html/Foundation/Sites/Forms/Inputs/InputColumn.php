@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Flow\Paragraph;
@@ -41,7 +41,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   /**
    * The inner input component
    *
-   * @var InputInterface 
+   * @var Input 
    */
   private $input;
 
@@ -70,10 +70,10 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   /**
    * Constructs a new instance
    *
-   * @param  InputInterface $input the actual input component
+   * @param  Input $input the actual input component
    * @param  string[] $layout the layout parameters
    */
-  public function __construct(InputInterface $input, array $layout = ['small-12']) {
+  public function __construct(Input $input, array $layout = ['small-12']) {
     parent::__construct('div');
     $this->layoutManager = new ColumnLayoutManager($this);
     $this->layout()->setLayouts($layout);
@@ -123,7 +123,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   /**
    * Returns the actual input component
    * 
-   * @return InputInterface the actual input component
+   * @return Input the actual input component
    */
   public function getInput() {
     return $this->input;

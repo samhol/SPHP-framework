@@ -37,4 +37,13 @@ abstract class AbstractButton extends ContainerTag implements ButtonInterface {
     $this->attrs()->protect('type', $type);
   }
 
+  public function disable(bool $disabled = true) {
+    $this->attrs()->setBoolean('disabled', $disabled);
+    return $this;
+  }
+
+  public function isEnabled(): bool {
+    return !$this->attrs()->exists('disabled');
+  }
+
 }

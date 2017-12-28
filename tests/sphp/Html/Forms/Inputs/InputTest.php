@@ -2,20 +2,20 @@
 
 namespace Sphp\Tests\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\Factory;
 
 class InputTests extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var InputInterface
+   * @var Input
    */
   protected $list;
 
   /**
-   * @return InputInterface
+   * @return Input
    */
-  public function createInput(): InputInterface {
+  public function createInput(): Input {
     $this->list = new Ul();
   }
 
@@ -37,9 +37,9 @@ class InputTests extends \PHPUnit\Framework\TestCase {
   /**
    * @dataProvider instances
    * 
-   * @param InputInterface $input
+   * @param Input $input
    */
-  public function testDisabling(InputInterface $input) {
+  public function testDisabling(Input $input) {
     $this->assertTrue($input->isEnabled());
     $input->disable();
     $this->assertFalse($input->isEnabled());
@@ -48,9 +48,9 @@ class InputTests extends \PHPUnit\Framework\TestCase {
   /**
    * @dataProvider instances
    * 
-   * @param InputInterface $input
+   * @param Input $input
    */
-  public function testNaming(InputInterface $input) {
+  public function testNaming(Input $input) {
     $this->assertFalse($input->isNamed());
     $input->setName('foo');
     $this->assertTrue($input->isNamed());

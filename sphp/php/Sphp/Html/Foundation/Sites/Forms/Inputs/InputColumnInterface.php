@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\Html\Forms\Label;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface InputColumnInterface extends ColumnInterface, InputInterface {
+interface InputColumnInterface extends ColumnInterface, Input {
 
   /**
    * Returns the label of the component

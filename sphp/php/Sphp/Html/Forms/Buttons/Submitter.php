@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Buttons;
 
-use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Inputs\Input;
 
 /**
  * Implements &lt;button type="submit"&gt; tag
@@ -21,7 +21,7 @@ use Sphp\Html\Forms\Inputs\InputInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Submitter extends AbstractButton implements SubmitterInterface, InputInterface {
+class Submitter extends AbstractButton implements SubmitterInterface, Input {
 
   use \Sphp\Html\Forms\Inputs\InputTagTrait;
 
