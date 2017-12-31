@@ -11,11 +11,11 @@ use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
-use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
+use Sphp\Html\Forms\Inputs\Factory;
 
 /**
  * A component containing multiple radio or checkbox inputs
@@ -27,6 +27,11 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
  * @filesource
  */
 abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInterface {
+
+  /**
+   * @var string
+   */
+  private $type;
 
   /**
    * the type of the individual input component
@@ -47,14 +52,13 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
    *
    * @var Input[]
    */
-  private $options = array();
-
+  private $options = [];
+  
   /**
-   * the box container
    *
-   * @var Container
+   * @var Label[]
    */
-  private $boxes;
+  private $labels = [];
 
   /**
    * @var ColumnLayoutManager
@@ -68,10 +72,10 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
    * @param scalar[] $values
    * @param mixed $legend
    */
-  public function __construct(string $name = null, array $values = [], $legend = null) {
+  public function __construct(string $type, string $name = null, array $values = [], $legend = null) {
+    $this->type = $type;
     parent::__construct('fieldset');
     $this->legend = new Legend();
-    $this->boxes = new Container();
     $this->setName($name)
             ->setLegend($legend);
     foreach ($values as $value => $label) {
@@ -114,37 +118,28 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
   }
 
   /**
-   * Adds a new input option to the component
-   * 
-   * @param  Choicebox $input
-   * @param  mixed $label
-   * @return $this for a fluent interface
-   */
-  protected function setInput(Choicebox $input, $label) {
-    $index = $input->getSubmitValue();
-    $label = new Label($label, $input);
-    $this->options[$index] = $input;
-    $this->boxes[$index] = $input;
-    $this->boxes[$index . "_label"] = $label;
-    return $this;
-  }
-
-  /**
    * Returns the option fields
    *
-   * @return Choicebox the option fields
+   * @return Choicebox[] the option fields
    */
   protected function getOptionFields() {
     return $this->options;
   }
 
   /**
-   * Sets new options to the form component
-   *
-   * @param  string[] $values
+   * Sets an option to the input
+   * 
+   * @param string $value
+   * @param string $label
+   * @param bool $checked
    * @return $this for a fluent interface
    */
-  abstract public function setOption($value, $label, bool $checked = false);
+  public function setOption(string $value, string $label, bool $checked = false) {
+    $input = Factory::{$this->type}($this->name, $value, $checked);
+    $this->options[$value] = $input;
+    $this->labels[$value] = new Label($label, $input);
+    return $this;
+  }
 
   /**
    * Returns the value of name attribute
@@ -240,12 +235,12 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
     return $submission;
   }
 
-  public function count(): int {
-    return $this->boxes->count();
-  }
-
   public function contentToString(): string {
-    return $this->legend . $this->boxes;
+    $output = $this->legend;
+    foreach ($this->options as $v => $opt) {
+      $output .= $opt . $this->labels[$v];
+    }
+    return $output;
   }
 
 }

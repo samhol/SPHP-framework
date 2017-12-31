@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\Radiobox;
+use Sphp\Html\Forms\Inputs\ValidableInput;
 
 /**
  * A component containing multiple radio inputs
@@ -17,12 +17,10 @@ use Sphp\Html\Forms\Inputs\Radiobox;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Radioboxes extends Choiceboxes {
+class Radioboxes extends Choiceboxes implements ValidableInput {
 
-  public function setOption($value, $label, bool $checked = false) {
-    $input = new Radiobox($this->getName(), $value, $checked);
-    $this->setInput($input, $label);
-    return $this;
+  public function __construct(string $name = null, $values = array(), $legend = null) {
+    parent::__construct('radio', $name, $values, $legend);
   }
 
   /**

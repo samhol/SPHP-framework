@@ -4,6 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\RangeInput;
 use Sphp\Manual;
+
 $slider = Manual\api()->classLinker(Slider::class);
 $rangeSlider = Manual\api()->classLinker(RangeSlider::class);
 $sliderInterface = Manual\api()->classLinker(RangeInput::class);
@@ -23,5 +24,7 @@ The example code of the form showing the exaples of $slider object is represente
 MD
 );
 
-Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', null, true)->printHtml();
-
+Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', null, true)
+        ->buildAccordion()
+        ->addCssClass("form-example")
+        ->printHtml();

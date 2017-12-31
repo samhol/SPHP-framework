@@ -68,7 +68,7 @@ class Slider extends AbstractSlider {
    * 
    * @return HiddenInput the actual (hidden) form element containing the value of the slider
    */
-  private function getInput(): HiddenInput {
+  private function getInput(): \Sphp\Html\Forms\Inputs\Input {
     return $this->input;
   }
 
@@ -192,7 +192,17 @@ class Slider extends AbstractSlider {
   }
 
   public function contentToString(): string {
-    return $this->handle . '<span class="slider-fill" data-slider-fill></span>' . $this->input;
+    return $this->handle . '<span class="slider-fill" data-slider-fill></span>';
+  }
+
+  public function bindInput(\Sphp\Html\Forms\Inputs\Input $input = null): \Sphp\Html\Forms\Inputs\Input {
+    if ($input === null) {
+      $input = new \Sphp\Html\Forms\Inputs\NumberInput();
+    }
+    $this->input = $input;
+    $this->input->setName($this->getName());
+    $this->handle->attrs()->set('aria-controls', $input->identify());
+    return $input;
   }
 
 }

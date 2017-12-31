@@ -16,11 +16,14 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * @filesource
  */
 class Datalist extends AbstractOptionsContainer {
+
   /**
+   * Constructs a new instance
    * 
    * @param type $opt
    */
   public function __construct($opt = null) {
     parent::__construct('datalist', $opt);
   }
+
 }
