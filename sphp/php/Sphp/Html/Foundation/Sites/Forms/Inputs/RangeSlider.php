@@ -11,6 +11,8 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Adapters\VisibilityAdapter;
+use Sphp\Html\Forms\Inputs\Input;
+use Sphp\Html\Forms\Inputs\NumberInput;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -36,12 +38,12 @@ class RangeSlider extends AbstractSlider {
   private $upperHandle;
 
   /**
-   * @var HiddenInput
+   * @var Input
    */
   private $lowerInput;
 
   /**
-   * @var HiddenInput
+   * @var Input
    */
   private $upperInput;
 
@@ -88,7 +90,7 @@ class RangeSlider extends AbstractSlider {
   /**
    * Returns the actual (hidden) form element containing the value of the slider
    * 
-   * @return HiddenInput the actual form element containing the value of the slider
+   * @return Input the actual form element containing the value of the slider
    */
   private function getStartInput(): HiddenInput {
     return $this->lowerInput;
@@ -97,9 +99,9 @@ class RangeSlider extends AbstractSlider {
   /**
    * Returns the actual (hidden) form element containing the value of the slider
    * 
-   * @return HiddenInput the actual form element containing the value of the slider
+   * @return Input the actual form element containing the value of the slider
    */
-  private function getEndInput(): HiddenInput {
+  private function getEndInput(): Input {
     return $this->upperInput;
   }
 
@@ -167,7 +169,35 @@ class RangeSlider extends AbstractSlider {
   public function getStartValue() {
     return $this->getStartInput()->getSubmitValue();
   }
+  /**
+   * 
+   * @param  Input $input
+   * @return Input
+   */
+  public function bindStartValueInput(Input $input = null): Input {
+    if ($input === null) {
+      $input = new NumberInput();
+    }
+    $this->lowerInput = $input;
+    $this->lowerInput->setName($this->getName());
+    $this->lowerHandle->attrs()->set('aria-controls', $input->identify());
+    return $input;
+  }
 
+  /**
+   * 
+   * @param  Input $input
+   * @return Input
+   */
+  public function bindStopValueInput(Input $input = null): Input {
+    if ($input === null) {
+      $input = new NumberInput();
+    }
+    $this->upperInput = $input;
+    $this->upperInput->setName($this->getName());
+    $this->upperHandle->attrs()->set('aria-controls', $input->identify());
+    return $input;
+  }
   /**
    * Returns the end value of the slider
    *

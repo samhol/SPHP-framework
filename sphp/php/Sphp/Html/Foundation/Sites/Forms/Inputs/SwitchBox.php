@@ -30,7 +30,7 @@ class SwitchBox extends AbstractSwitch {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct($name = null, $value = null, bool $checked = false, string $screenReaderLabel = null) {
+  public function __construct(string $name = null, $value = null, bool $checked = false, string $screenReaderLabel = null) {
     parent::__construct(new Checkbox($name, $value, $checked), $screenReaderLabel);
   }
 
