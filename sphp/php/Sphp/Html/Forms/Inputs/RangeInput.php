@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Html\Forms\Inputs;
-
+use Sphp\Html\Exceptions\InvalidStateException;
 /**
  * Defines a slider for HTML forms
  *
@@ -21,7 +21,7 @@ interface RangeInput extends Input {
    *
    * @param  float $step the length of the slider step
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the step value is below zero
+   * @throws InvalidStateException if the step value is below zero or bigger than maximum range
    */
   public function setStepLength(float $step);
 
@@ -30,6 +30,7 @@ interface RangeInput extends Input {
    *
    * @param  float $min the end point
    * @return $this for a fluent interface
+   * @throws InvalidStateException if the step value is below zero
    */
   public function setMin(float $min);
 
@@ -45,6 +46,7 @@ interface RangeInput extends Input {
    *
    * @param  float $max the end point
    * @return $this for a fluent interface
+   * @throws InvalidStateException if the step value is below zero
    */
   public function setMax(float $max);
 

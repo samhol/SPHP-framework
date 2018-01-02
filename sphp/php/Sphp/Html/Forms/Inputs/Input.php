@@ -50,7 +50,7 @@ interface Input extends FormController {
   /**
    * Returns the value of the form input
    *
-   * @return  mixed the value
+   * @return mixed the value
    */
   public function getSubmitValue();
 

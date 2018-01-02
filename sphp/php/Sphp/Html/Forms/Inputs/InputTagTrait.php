@@ -66,7 +66,7 @@ trait InputTagTrait {
   /**
    * Checks whether the input component is enabled or not
    * 
-   * @param  boolean true if the input component is enabled, otherwise false
+   * @return boolean true if the input component is enabled, otherwise false
    */
   public function isEnabled(): bool {
     return !$this->attrs()->exists('disabled');

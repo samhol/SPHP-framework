@@ -27,6 +27,7 @@ class Slider extends AbstractSlider {
    * @param  int $start the start value of the slider
    * @param  int $end the end value of the slider
    * @param  int $step the length of a single step
+   * @throws InvalidStateException if the slider state is invalid
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step);

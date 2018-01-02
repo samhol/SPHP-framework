@@ -14,7 +14,7 @@ use Sphp\Html\Forms\Inputs\RangeInput;
 use Sphp\Html\Exceptions\InvalidStateException;
 
 /**
- * Implements jQuery range slider with skin support
+ * Implements a jQuery range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -29,10 +29,10 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @param  float $start the start value of the slider
    * @param  float $end the end value of the slider
    * @param  float $step the length of a single step
-   * @param  mixed $value the initial submit value 
-   * @throws InvalidStateException if the $value is not between the range
+   * @param  float $value the initial submit value 
+   * @throws InvalidStateException if the slider state is invalid
    */
-  public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1, $value = null) {
+  public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1, float $value = null) {
     parent::__construct('text', $name);
     if ($value === null) {
       $value = $start;
@@ -50,22 +50,10 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     return $this;
   }
 
-  /**
-   * Checks whether the input component is enabled or not
-   * 
-   * @param  boolean true if the input component is enabled, otherwise false
-   */
   public function isEnabled(): bool {
     return !$this->attrs()->exists('data-disable') && !$this->attrs()->exists('data-block');
   }
 
-  /**
-   * Sets the length of the slider step
-   *
-   * @param  float $step the length of the slider step
-   * @return $this for a fluent interface
-   * @throws InvalidStateException if the step value is below zero
-   */
   public function setStepLength(float $step = 1) {
     $range = $this->getMax() - $this->getMin();
     if ($step < 0) {

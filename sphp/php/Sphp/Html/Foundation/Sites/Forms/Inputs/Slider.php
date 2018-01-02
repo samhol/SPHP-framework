@@ -9,6 +9,8 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Html\Forms\Inputs\InputField;
+use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Html\Span;
 use Sphp\Html\Exceptions\InvalidStateException;
 
@@ -29,7 +31,7 @@ class Slider extends AbstractSlider {
   private $handle;
 
   /**
-   * @var HiddenInput
+   * @var InputField
    */
   private $input;
 
@@ -54,11 +56,11 @@ class Slider extends AbstractSlider {
   }
 
   /**
-   * Returns the actual (hidden) form element containing the value of the slider
+   * Returns the form element containing the value of the slider
    * 
-   * @return HiddenInput the actual (hidden) form element containing the value of the slider
+   * @return HiddenInput the form element containing the value of the slider
    */
-  private function getInput(): \Sphp\Html\Forms\Inputs\Input {
+  private function getInput(): InputField {
     return $this->input;
   }
 
@@ -97,20 +99,10 @@ class Slider extends AbstractSlider {
     return $this->getInput()->isNamed();
   }
 
-  /**
-   * Returns the minimum value of the slider
-   *
-   * @return int the minimum value of the slider
-   */
   public function getMin(): float {
     return $this->attrs()->getValue('data-start');
   }
 
-  /**
-   * Returns the maximum value of the slider
-   *
-   * @return int the maximum value of the slider
-   */
   public function getMax(): float {
     return $this->attrs()->getValue('data-end');
   }
@@ -132,9 +124,15 @@ class Slider extends AbstractSlider {
     return $this->handle . '<span class="slider-fill" data-slider-fill></span>';
   }
 
-  public function bindInput(\Sphp\Html\Forms\Inputs\Input $input = null): \Sphp\Html\Forms\Inputs\Input {
+  /**
+   * Binds 
+   * 
+   * @param  InputField|null $input
+   * @return InputField
+   */
+  public function bindInput(InputField $input = null): InputField {
     if ($input === null) {
-      $input = new \Sphp\Html\Forms\Inputs\NumberInput();
+      $input = new NumberInput();
     }
     $this->input = $input;
     $this->input->setName($this->getName());

@@ -24,6 +24,9 @@ use Sphp\Html\Exceptions\InvalidStateException;
  */
 class RangeSlider extends AbstractSlider {
 
+  /**
+   * @var string
+   */
   private $name;
 
   /**
@@ -78,18 +81,18 @@ class RangeSlider extends AbstractSlider {
   }
 
   /**
-   * Returns the actual form component containing the strart value of the range
+   * Returns the form component containing the start value of the range
    * 
-   * @return InputField the actual form component containing the strart value of the range
+   * @return InputField the form component containing the start value of the range
    */
   private function getStartInput(): InputField {
     return $this->lowerInput;
   }
 
   /**
-   * Returns the actual form component containing the end value of the range
+   * Returns the form component containing the end value of the range
    * 
-   * @return InputField the actual form component containing the end value of the range
+   * @return InputField the form component containing the end value of the range
    */
   private function getEndInput(): InputField {
     return $this->upperInput;
