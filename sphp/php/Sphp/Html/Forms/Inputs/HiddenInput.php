@@ -16,7 +16,7 @@ use Sphp\Html\NonVisualContent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HiddenInput extends AbstractInputTag implements NonVisualContent {
+class HiddenInput extends AbstractInputTag implements InputField, NonVisualContent {
 
   /**
    * Constructs a new instance

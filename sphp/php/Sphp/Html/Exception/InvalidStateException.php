@@ -11,10 +11,14 @@ use Exception;
 use Sphp\Exceptions\SphpException;
 
 /**
- * Description of InvalidStateException
+ * Indicates the current state of an object involved in the method invocation 
+ * does not meet the acceptable pre-conditions for the method. Each method which 
+ * changes the call model typically has a set of states in which the object must 
+ * be as a pre-condition for the method. Each method documents the pre-condition 
+ * states for objects. Typically, this method will succeed in the future once 
+ * the object in question has reached the proper state.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-12-24
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

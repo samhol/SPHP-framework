@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\RangeInput;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Exceptions\InvalidStateException;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -47,11 +47,11 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
 
   public function setStepLength(float $step = 1) {
     if ($step <= 0) {
-      throw new InvalidArgumentException('The step value is not positive');
+      throw new InvalidStateException('The step value is not positive');
     }
     $length = $this->getMax() - $this->getMin();
     if ($step > $length) {
-      throw new InvalidArgumentException("The step value '$step' exceeds the maximun value '$length'");
+      throw new InvalidStateException("The step value '$step' exceeds the maximun value '$length'");
     }
     $this->attrs()->set('data-step', $step);
     return $this;
@@ -77,9 +77,9 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
 
   public function disable(bool $disabled = true) {
     if ($disabled) {
-      $this->removeCssClass('disabled');
+      $this->cssClasses()->set('disabled');
     } else {
-      $this->addCssClass('disabled');
+      $$this->cssClasses()->remove('disabled');
     }
     return $this;
   }

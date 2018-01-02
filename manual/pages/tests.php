@@ -26,5 +26,5 @@ codeModal('locations', 'Sphp/Database/locations.sql', "`MySQL` version of locati
   </div>
 
   <input type="number" id="a">
-  <input type="number" id="b">
+  <span name="number" id="b"></span>
 </form>

@@ -2,24 +2,16 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Foundation\Sites\Forms\GridForm as GridForm;
+use Sphp\Html\Foundation\Sites\Forms\GridForm;
 
-$hours = (new RangeSlider("hour", 0, 23, 1))
-        //->showValue()
-        ->setDescription("hour of the day:");
+$hours = (new RangeSlider("hour", 0, 23, 1));
 
 $score = (new RangeSlider("triple", 0, 99, 3))
-        ->setDescription("two point score:")
         ->setSubmitValue(12);
-//->showValue();
 
-$distance = (new RangeSlider("distance", 100, 200, 1))
-        ->setDescription("Distance travelled:")
-        ->setSubmitValue([120, 150])
-        //->showValue()
-        ->setValueUnit("km");
+$distance = (new RangeSlider("distance", 100, 200, .5))
+        ->setSubmitValue([120, 150]);
 
 $form = new GridForm();
 $form->append([$hours, $score, $distance]);
 echo $form;
-?>

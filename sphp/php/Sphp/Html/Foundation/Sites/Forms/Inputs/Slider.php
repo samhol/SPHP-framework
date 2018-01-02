@@ -9,9 +9,8 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
-use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
-use Sphp\Html\Adapters\VisibilityAdapter;
+use Sphp\Html\Exceptions\InvalidStateException;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -55,15 +54,6 @@ class Slider extends AbstractSlider {
   }
 
   /**
-   * Returns the label of the slider
-   * 
-   * @return Label the label describing the slider
-   */
-  private function getInnerLabel() {
-    
-  }
-
-  /**
    * Returns the actual (hidden) form element containing the value of the slider
    * 
    * @return HiddenInput the actual (hidden) form element containing the value of the slider
@@ -85,40 +75,6 @@ class Slider extends AbstractSlider {
       $this->cssClasses()->remove('vertical');
       $this->attrs()->set('data-vertical', 'false');
     }
-    return $this;
-  }
-
-  /**
-   * Sets the visibility of the current slider value
-   * 
-   * @param  boolean $valueVisible true for visible and false for hidden
-   * @return $this for a fluent interface
-   */
-  public function showValue(bool $valueVisible = true) {
-    $vis = new VisibilityAdapter($this->getInnerLabel());
-    $vis->setHidden(!$valueVisible);
-    return $this;
-  }
-
-  /**
-   * Sets the description text of the slider
-   * 
-   * @param  string $description the description text of the slider
-   * @return $this for a fluent interface
-   */
-  public function setDescription($description) {
-    $this->getInnerLabel()["description"] = "$description ";
-    return $this;
-  }
-
-  /**
-   * Sets the unit of the slider value
-   * 
-   * @param  string $unit the unit of the value
-   * @return $this for a fluent interface
-   */
-  public function setValueUnit($unit = "") {
-    $this->getInnerLabel()["unit"] = " $unit";
     return $this;
   }
 
@@ -165,30 +121,11 @@ class Slider extends AbstractSlider {
 
   public function setSubmitValue($value) {
     if ($this->getMin() > $value || $this->getMax() < $value) {
-      throw new \InvalidArgumentException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+      throw new InvalidStateException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
     $this->getInput()->setSubmitValue($value);
     $this->attrs()->set('data-initial-start', $value);
     return $this;
-  }
-
-  /**
-   * Sets whether the input must have a value or not before form submission
-   * 
-   * @param  boolean $required true if the input must have a value before form submission, otherwise false
-   * @return $this for a fluent interface
-   */
-  public function setRequired(bool $required = true) {
-    return $this->getInput()->setRequired($required);
-  }
-
-  /**
-   * Checks whether the input must have a value before form submission
-   *
-   * @return boolean true if the input must have a value before form submission, false otherwise
-   */
-  public function isRequired(): bool {
-    return $this->getInput()->isRequired();
   }
 
   public function contentToString(): string {
