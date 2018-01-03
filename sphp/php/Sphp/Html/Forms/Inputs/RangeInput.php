@@ -6,9 +6,11 @@
  */
 
 namespace Sphp\Html\Forms\Inputs;
+
 use Sphp\Html\Exceptions\InvalidStateException;
+
 /**
- * Defines a slider for HTML forms
+ * Defines a range input for HTML forms
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -17,7 +19,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
 interface RangeInput extends Input {
 
   /**
-   * Sets the length of the slider step
+   * Sets the length of the individual step
    *
    * @param  float $step the length of the slider step
    * @return $this for a fluent interface
@@ -26,13 +28,14 @@ interface RangeInput extends Input {
   public function setStepLength(float $step);
 
   /**
-   * Sets the range of the values on the slider
+   * Sets the minimum and maximum values
    *
-   * @param  float $min the end point
+   * @param  float $min the start point
+   * @param  float $max the end point
    * @return $this for a fluent interface
-   * @throws InvalidStateException if the step value is below zero
+   * @throws InvalidStateException if the range is not valid
    */
-  public function setMin(float $min);
+  public function setRange(float $min, float $max);
 
   /**
    * Returns the minimum value of the slider
@@ -40,15 +43,6 @@ interface RangeInput extends Input {
    * @return float the minimum value of the slider
    */
   public function getMin(): float;
-
-  /**
-   * Sets the range of the values on the slider
-   *
-   * @param  float $max the end point
-   * @return $this for a fluent interface
-   * @throws InvalidStateException if the step value is below zero
-   */
-  public function setMax(float $max);
 
   /**
    * Returns the maximum value of the slider

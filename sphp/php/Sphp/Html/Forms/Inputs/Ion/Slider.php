@@ -37,7 +37,7 @@ class Slider extends AbstractSlider {
   /**
    * Sets the value of the value attribute
    *
-   * @param  int $value the value of the value attribute
+   * @param  mixed $value the value of the value attribute
    * @return $this for a fluent interface
    * @throws InvalidStateException if the $value is not between the range of the slider
    */

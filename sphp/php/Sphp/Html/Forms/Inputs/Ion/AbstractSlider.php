@@ -66,34 +66,18 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     return $this;
   }
 
-  /**
-   * Sets the range of the values on the slider
-   *
-   * @param  float $min the start point
-   * @param  float $max the end point
-   * @return $this for a fluent interface
-   */
   public function setRange(float $min, float $max) {
-    $this->setMin($min)->setMax($max);
+    $this->attrs()->set('data-min', $min);
+    $this->attrs()->set('data-max', $max);
     return $this;
-  }
-
-  public function setMin(float $start) {
-    $this->attrs()->set('data-min', $start);
-    return $this;
-  }
-
-  public function setMax(float $end) {
-    $this->attrs()->set('data-max', $end);
-    return $this;
-  }
-
-  public function getMax(): float {
-    return (float) $this->attrs()->getValue('data-max');
   }
 
   public function getMin(): float {
     return (float) $this->attrs()->getValue('data-min');
+  }
+
+  public function getMax(): float {
+    return (float) $this->attrs()->getValue('data-max');
   }
 
   /**

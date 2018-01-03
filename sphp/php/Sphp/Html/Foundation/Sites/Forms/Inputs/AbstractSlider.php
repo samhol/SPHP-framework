@@ -34,15 +34,12 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
     $this->cssClasses()->protect('slider');
     $this->attrs()
             ->demand('data-start')
-            ->set('data-start', $start)
             ->demand('data-end')
-            ->set('data-end', $end)
             ->demand('data-step')
-            ->set('data-step', $step)
             ->demand('data-initial-start')
             ->set('data-initial-start', $start)
             ->demand('data-slider');
-    $this->setStepLength($step);
+    $this->setRange($start, $end)->setStepLength($step);
   }
 
   public function setStepLength(float $step = 1) {
@@ -57,18 +54,14 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
     return $this;
   }
 
-  public function setMin(float $min) {
+  public function setRange(float $min, float $max) {
     $this->attrs()->set('data-start', $min);
+    $this->attrs()->set('data-end', $max);
     return $this;
   }
 
   public function getMin(): float {
     return (float) $this->attrs()->getValue('data-start');
-  }
-
-  public function setMax(float $max) {
-    $this->attrs()->set('data-end', $max);
-    return $this;
   }
 
   public function getMax(): float {

@@ -8,8 +8,7 @@ $form = new Form();
 $form[] = "Number range between -10 and 10";
 $number = Factory::number("number")
         ->setStepLength(5)
-        ->setMin(-10)
-        ->setMax(10);
+        ->setRange(-10, 10);
 $form[] = $number;
 $form[] = Factory::text("text")
         ->setPlaceholder("Text field");
