@@ -19,6 +19,9 @@ use Sphp\Html\Exceptions\InvalidStateException;
  */
 class RangeSlider extends AbstractSlider {
 
+  private $start;
+  private $end;
+  
   /**
    * Constructs a new instance
    *
@@ -29,7 +32,8 @@ class RangeSlider extends AbstractSlider {
    * @throws InvalidStateException if the slider state is invalid
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
-    parent::__construct($name, $start, $end, $step, [$start, $end]);
+    parent::__construct($name, $start, $end, $step);
+    //$this->
     $this->attrs()->protect('data-type', 'double');
   }
 
@@ -57,13 +61,28 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * Sets the value of the value attribute
-   *
-   * @param  int|int[]|string $value the value of the value attribute
-   * @return $this for a fluent interface
-   * @throws InvalidStateException if parameter(s) are not suitable for range slider
-   */
+
+  public function setStartValue(float $value) {
+    if ($this->getMin() > $value || $this->getMax() < $value) {
+      throw new InvalidStateException("Start value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+    }
+    if ($value >= $this->getTo()) {
+      throw new InvalidStateException("Start value: '$value' cannot be larger than end value");
+    }
+    $this->getStartInput()->setSubmitValue($value);
+    $this->attrs()->set("data-initial-start", $value);
+    return $this;
+  }
+
+  public function setStopValue(float $value) {
+    if ($this->getMin() > $value || $this->getMax() < $value) {
+      throw new InvalidStateException("Stop value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+    }
+    $this->getEndInput()->setSubmitValue($value);
+    $this->attrs()->set("data-initial-stop", $value);
+    return $this;
+  }
+  
   public function setSubmitValue($value) {
     if (func_num_args() == 2) {
       $value = func_get_args();
@@ -78,7 +97,6 @@ class RangeSlider extends AbstractSlider {
     $to = end($value);
     $this->attrs()->set('data-from', $from);
     $this->attrs()->set('data-to', $to);
-
     parent::setSubmitValue($from . $this->getInputValueSeparator() . $to);
     return $this;
   }

@@ -32,15 +32,11 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @param  float $value the initial submit value 
    * @throws InvalidStateException if the slider state is invalid
    */
-  public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1, float $value = null) {
+  public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1) {
     parent::__construct('text', $name);
-    if ($value === null) {
-      $value = $start;
-    }
     $this->attrs()->demand('data-sphp-ion-slider');
     $this->setRange($start, $end)
-            ->setStepLength($step)
-            ->setSubmitValue($value);
+            ->setStepLength($step);
   }
 
   public function disable(bool $disabled = true) {

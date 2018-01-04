@@ -59,7 +59,7 @@ interface Input extends FormController {
    *
    * @param  scalar $value the value of the input
    * @return $this for a fluent interface
-   * @throws InvalidStateException if the value is not valid for the input type
+   * @throws InvalidStateException if value is not suitable for input
    */
   public function setSubmitValue($value);
 }
