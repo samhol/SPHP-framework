@@ -70,7 +70,7 @@ class RangeSlider extends AbstractSlider {
       throw new InvalidStateException("Start value: '$value' cannot be larger than end value");
     }
     $this->getStartInput()->setSubmitValue($value);
-    $this->attrs()->set("data-initial-start", $value);
+    $this->attrs()->set("value", $this->start.$this->getInputValueSeparator().$this->end);
     return $this;
   }
 

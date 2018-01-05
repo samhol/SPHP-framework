@@ -26,5 +26,5 @@ MD
 
 Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', null, true)
         ->buildAccordion()
-        ->addCssClass("form-example")
+        ->addCssClass('form-example')
         ->printHtml();
