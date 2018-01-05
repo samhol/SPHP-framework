@@ -4,11 +4,13 @@
  * Filesystem.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
+
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\RuntimeException;
 use SplFileObject;
 use Sphp\Stdlib\Arrays;
+use Exception;
 
 /**
  * Tools to work with files and directories
@@ -19,76 +21,74 @@ use Sphp\Stdlib\Arrays;
  */
 abstract class Filesystem {
 
-/**
- * Checks whether the file exists and is an actual file
- * 
- * @param  string $filename the file to test 
- * @return boolean true if the pile path point to a file
- */
-public static function isFile(string $filename): bool {
-$path = stream_resolve_include_path($filename);
-if ($path === false) {
-return false;
-} else {
-return is_file($path);
-}
-}
-
-/**
- * Solves the full path to file
- * 
- * @param  string $path  relative path to file
- * @return string full path to file
- * @throws RuntimeException if the file path cannot be resolved
- */
-public static function getFullPath(string $path): string {
-$fullPath = stream_resolve_include_path($path);
-if ($fullPath === false) {
-throw new RuntimeException("The path '$path' does not exist");
-}
-return $fullPath;
-}
-
-/**
- * Returns the entire file as a string
- *
- * @param  string $path the path to the file
- * @return string the result of the script execution
- * @throws RuntimeException if the parsing fails for any reason
- */
-public static function toString(string $path): string {
-if (!static::isFile($path)) {
-throw new RuntimeException("The path '$path' contains no file");
-} else {
-$data = file_get_contents(static::getFullPath($path), false);
-if ($data === false) {
-throw new RuntimeException("Parsing the file '$path' failed");
-}
-}
-return $data;
-}
-
-/**
- * Executes a PHP script and returns the result as a string
- *
- * @param  string|string[],... $paths the path to the executable PHP script
- * @return string the result of the script execution
- * @throws RuntimeException if the parsing fails for any reason
- */
-public static function executePhpToString(...$paths): string {
-$content = '';
-try {
-ob_start();
-foreach (Arrays::flatten($paths) as $path) {
-if (!static::isFile($path)) {
-throw new RuntimeException("The path '$path' contains no executable PHP script");
-}
-include($path);
-}
-$content .= ob_get_contents();
-} catch (\Exception $e) {
-throw new RuntimeException("PHP parsing failed on line #" . $e->getLine().' of file' . $e->getFile(), 0, $e);
+  /**
+   * Checks whether the file exists and is an actual file
+   * 
+   * @param  string $filename the file to test 
+   * @return boolean true if the pile path point to a file
+   */
+  public static function isFile(string $filename): bool {
+    $path = stream_resolve_include_path($filename);
+    if ($path === false) {
+      return false;
+    } else {
+      return is_file($path);
     }
+  }
+
+  /**
+   * Solves the full path to file
+   * 
+   * @param  string $path  relative path to file
+   * @return string full path to file
+   * @throws RuntimeException if the file path cannot be resolved
+   */
+  public static function getFullPath(string $path): string {
+    $fullPath = stream_resolve_include_path($path);
+    if ($fullPath === false) {
+      throw new RuntimeException("The path '$path' does not exist");
+    }
+    return $fullPath;
+  }
+
+  /**
+   * Returns the entire file as a string
+   *
+   * @param  string $path the path to the file
+   * @return string the result of the script execution
+   * @throws RuntimeException if the parsing fails for any reason
+   */
+  public static function toString(string $path): string {
+    if (!static::isFile($path)) {
+      throw new RuntimeException("The path '$path' contains no file");
+    } else {
+      $data = file_get_contents(static::getFullPath($path), false);
+      if ($data === false) {
+        throw new RuntimeException("Parsing the file '$path' failed");
+      }
+    }
+    return $data;
+  }
+
+  /**
+   * Executes a PHP script and returns the result as a string
+   *
+   * @param  string|string[],... $paths the path to the executable PHP script
+   * @return string the result of the script execution
+   * @throws RuntimeException if the $paths points to no actual file
+   * @throws Exception 
+   */
+  public static function executePhpToString(...$paths): string {
+    $content = '';
+    ob_start();
+    foreach (Arrays::flatten($paths) as $path) {
+      if (!static::isFile($path)) {
+        throw new RuntimeException("The path '$path' contains no executable PHP script");
+      }
+      include($path);
+    }
+    $content .= ob_get_contents();
+
     ob_end_clean();
     return $content;
   }

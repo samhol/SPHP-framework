@@ -19,9 +19,6 @@ use Sphp\Html\Exceptions\InvalidStateException;
  */
 class RangeSlider extends AbstractSlider {
 
-  private $start;
-  private $end;
-  
   /**
    * Constructs a new instance
    *
@@ -33,8 +30,8 @@ class RangeSlider extends AbstractSlider {
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step);
-    //$this->
     $this->attrs()->protect('data-type', 'double');
+    $this->setInitialRange($start, $end);
   }
 
   /**
@@ -42,7 +39,7 @@ class RangeSlider extends AbstractSlider {
    * 
    * @return string separator for double values in input value property
    */
-  public function getInputValueSeparator(): string {
+  public function getInputValuesSeparator(): string {
     $separator = ';';
     if ($this->attrs()->exists('data-input-values-separator')) {
       $separator = $this->attrs()->getValue('data-input-values-separator');
@@ -56,71 +53,66 @@ class RangeSlider extends AbstractSlider {
    * @param  string $separator separator for double values in input value property
    * @return $this for a fluent interface
    */
-  public function setInputValueSeparator(string $separator) {
+  public function setInputValuesSeparator(string $separator) {
     $this->attrs()->set('data-input-values-separator', $separator);
     return $this;
   }
 
-
-  public function setStartValue(float $value) {
-    if ($this->getMin() > $value || $this->getMax() < $value) {
-      throw new InvalidStateException("Start value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+  /**
+   * Sets the initial selected range of the slider
+   * 
+   * @param  float $start start of the range
+   * @param  float $stop end of the range
+   * @return $this for a fluent interface
+   * @throws InvalidStateException if the range given is invalid
+   */
+  public function setInitialRange(float $start, float $stop) {
+    if ($start >= $stop) {
+      throw new InvalidStateException("Start of initial range is smaller than the end");
     }
-    if ($value >= $this->getTo()) {
-      throw new InvalidStateException("Start value: '$value' cannot be larger than end value");
+    if ($this->getMin() > $start || $this->getMax() < $start) {
+      throw new InvalidStateException("Start value: '$start' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->getStartInput()->setSubmitValue($value);
-    $this->attrs()->set("value", $this->start.$this->getInputValueSeparator().$this->end);
+    if ($this->getMin() > $stop || $this->getMax() < $stop) {
+      throw new InvalidStateException("Stop value: '$stop' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+    }
+    $this->attrs()->set('data-from', $start);
+    $this->attrs()->set('data-to', $stop);
     return $this;
   }
 
-  public function setStopValue(float $value) {
-    if ($this->getMin() > $value || $this->getMax() < $value) {
-      throw new InvalidStateException("Stop value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
-    }
-    $this->getEndInput()->setSubmitValue($value);
-    $this->attrs()->set("data-initial-stop", $value);
-    return $this;
-  }
-  
   public function setSubmitValue($value) {
     if (func_num_args() == 2) {
       $value = func_get_args();
     } else if (is_string($value)) {
-      $value = explode($this->getInputValueSeparator(), $value, 2);
+      $value = explode($this->getInputValuesSeparator(), $value, 2);
     }
-    if (!is_array($value) || count($value) != 2) {
+    if (!is_array($value) || count($value) !== 2) {
       //var_dump($value);
       throw new InvalidStateException('value is not suitable for range slider component');
     }
     $from = reset($value);
     $to = end($value);
-    $this->attrs()->set('data-from', $from);
-    $this->attrs()->set('data-to', $to);
-    parent::setSubmitValue($from . $this->getInputValueSeparator() . $to);
+    $this->setInitialRange($from, $to);
     return $this;
   }
 
   /**
-   * Returns the separator for double values in input value property
+   * Returns the start position for left handle
    * 
-   * @return string separator for double values in input value property
+   * @return float start position for left handle
    */
-  public function getFrom() {
-    $rawValue = $this->getSubmitValue();
-    $arr = explode($this->getInputValueSeparator(), $rawValue, 2);
-    return (int) reset($arr);
+  public function getFrom(): float {
+    return $this->attrs()->getValue('data-from');
   }
 
   /**
-   * Returns the separator for double values in input value property
+   * Returns the start position for right handle
    * 
-   * @return string separator for double values in input value property
+   * @return float start position for right handle
    */
-  public function getTo() {
-    $rawValue = $this->getSubmitValue();
-    $arr = explode($this->getInputValueSeparator(), $rawValue, 2);
-    return (int) end($arr);
+  public function getTo(): float {
+    return $this->attrs()->getValue('data-to');
   }
 
 }

@@ -6,16 +6,15 @@ use Sphp\Html\Forms\Form;
 
 $form = new Form();
 $form->validation(false)
-        ->append((new RangeSlider("weightRange", 0, 100, 1))
+        ->append((new RangeSlider("weightRange", 0, 10, .5))
                 ->useGrid(true)
                 ->setPostfix("kg")
-                ->setSubmitValue(50, 60))
-        ->append((new RangeSlider("tempRange", -100, 100, 1))
+                ->setInitialRange(1.5, 8))
+        ->append((new RangeSlider("heightRange", 0, 300, 5))
+                ->useGrid(true)
+                ->setPostfix("cm"))
+        ->append((new RangeSlider("tempRange2", -100, 100, 1))
                 ->useGrid(true)
                 ->setPostfix("&deg;C")
-                ->setSubmitValue([20, 30]))
-        ->append((new RangeSlider("tempRange", 0, 40, 1))
-                ->useGrid(true)
-                ->setPostfix("&deg;C")
-                ->setSubmitValue("20;35"))
+                ->setInitialRange(-20, 60))
         ->printHtml();
