@@ -89,22 +89,12 @@ $error-bg: rgba(255,127,80, 0.40);
   }
   @import "sphp-factory-tables"; 
   //@import "breadcrumbs";
-  > p, > ul, > ol > .callout, > .sphp-single-accordion {
+  > p, > ul, > ol, > .sphp-single-accordion {
     margin-left: rem-calc(5);
     margin-right: rem-calc(5); 
   }
 
-  > .callout {
-    @include default-margin();
-    @include border-radius(4px);
-    h1, h2, h3, h4, h5, h6 {
-      border-bottom: 1px solid #888;
-      margin-bottom: rem-calc(8);
-    }
-    > p {
-      margin: rem-calc(3 10 3 10);
-    }
-  }
+  @import "callouts"; 
   > p:not([class]), > blockquote:not([class]) {
     @include default-margin();
     //margin: rem-calc(5 25 15 35); // top right bottom left

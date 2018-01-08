@@ -28,3 +28,8 @@ codeModal('locations', 'Sphp/Database/locations.sql', "`MySQL` version of locati
   <input type="number" id="a">
   <span name="number" id="b"></span>
 </form>
+<pre>
+<?php
+print_r(get_declared_classes());
+?>
+</pre>

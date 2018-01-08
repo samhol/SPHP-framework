@@ -2,30 +2,34 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Forms\FormInterface;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$formIfLink = \Sphp\Manual\api()->classLinker(FormInterface::class);
-$inputInterface = \Sphp\Manual\api()->classLinker(Input::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\md(<<<MD
-##Some form components inheriting $inputInterface
+use Sphp\Html\Forms\FormInterface;
+
+$formIfLink = Manual\api()->classLinker(FormInterface::class);
+$inputInterface = Manual\api()->classLinker(Input::class);
+$formController = Manual\api()->classLinker(\Sphp\Html\Forms\FormController::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+Manual\md(<<<MD
+##Building HTML forms <small>using $formController and $inputInterface components</small>
+
+$formController is the base interface for all functional form content and $inputInterface inherits it.
+Functional form content 
 $ns		
 All of the following components declare an $inputInterface input control for a $formIfLink form.
 
 MD
 );
 
-$baseInput = \Sphp\Manual\api()->classLinker(InputTag::class);
-$textualInput = \Sphp\Manual\api()->classLinker(TextualInput::class);
-$textInput = \Sphp\Manual\api()->classLinker(TextInput::class);
-$textarea = \Sphp\Manual\api()->classLinker(Textarea::class);
+$baseInput = Manual\api()->classLinker(InputTag::class);
+$textualInput = Manual\api()->classLinker(TextualInput::class);
+$textInput = Manual\api()->classLinker(TextInput::class);
+$textarea = Manual\api()->classLinker(Textarea::class);
 
-\Sphp\Manual\md(<<<MD
+Manual\md(<<<MD
 ###Basic input components
         
-Framework has many build-in form components that implement basic HTML form elements like:
+Framework has many build-in form components that implement basic HTML form elements.
  * $baseInput and extending classes for spesific input types like:
         * $textualInput and subtypes like:
               * $textInput
@@ -33,12 +37,12 @@ Framework has many build-in form components that implement basic HTML form eleme
 MD
 );
 
-(new CodeExampleAccordionBuilder('Sphp/Html/Forms/Inputs/InputFields.php', 'html5', true))
+Manual\example('Sphp/Html/Forms/Inputs/InputFields.php', 'html5', true)
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
 
 //\Sphp\Manual\loadPage('Sphp.Html.Forms.Inputs.Choiceboxes');
-\Sphp\Manual\loadPage('Sphp.Html.Forms.Menus.Select');
-\Sphp\Manual\loadPage('Sphp.Html.Forms.AnyTimeInput');
-\Sphp\Manual\loadPage('Sphp.Html.Forms.IonRangeSlider');
+Manual\loadPage('Sphp.Html.Forms.Menus.Select');
+Manual\loadPage('Sphp.Html.Forms.AnyTimeInput');
+Manual\loadPage('Sphp.Html.Forms.IonRangeSlider');

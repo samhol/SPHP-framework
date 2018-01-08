@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Input.php (UTF-8)
- * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>.
+ * SPHPlayground Framework (http://playground.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>.
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Sphp\Html\Forms\Inputs;

@@ -9,20 +9,24 @@ $formIfLink = Manual\api()->classLinker(FormInterface::class);
 $traversableFormInterface = Manual\api()->classLinker(TraversableForm::class);
 $inputInterface = Manual\api()->classLinker(Input::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$w3c = Manual\w3schools();
 
-\Sphp\Manual\md(<<<MD
+Manual\md(<<<MD
 #HTML FORMS
 $ns
-Any HTML form object implement atleast $formIfLink interface. 
-These Form objects are used to build UI and not to handle the form data submitted.
-   
-$formIfLink gives athe basic requirements for any form implementation. Whereas $traversableFormInterface 
-extending $formIfLink is a container for any number of $inputInterface components.
+The HTML $w3c->form element represents a document section that contains interactive controls to submit information to a web server.
+
+<div class="callout alert" markdown="1">        
+###NOTE
+
+Form components in this framework are used to build User Interfaces and not to handle the form data submitted.      
+</div>
+All built-in HTML form objects implement atleast $formIfLink interface. This 
+interface defines the basic form implementation. Whereas $traversableFormInterface 
+is also container for HTML components like $inputInterface.
 
 MD
 );
-\Sphp\Manual\loadPage('Sphp.Html.Forms.InputInterface');
-\Sphp\Manual\loadPage('Sphp.Html.Forms.Buttons');
 
-
-
+Manual\loadPage('Sphp.Html.Forms.InputInterface');
+Manual\loadPage('Sphp.Html.Forms.Buttons');
