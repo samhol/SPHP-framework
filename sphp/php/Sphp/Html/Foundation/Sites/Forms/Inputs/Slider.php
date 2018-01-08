@@ -125,7 +125,7 @@ class Slider extends AbstractSlider {
   }
 
   /**
-   * Binds 
+   * Binds input component for the slider value
    * 
    * @param  InputField|null $input
    * @return InputField

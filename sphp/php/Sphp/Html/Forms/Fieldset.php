@@ -20,7 +20,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Fieldset extends ContainerTag {
+class Fieldset extends ContainerTag implements FormController {
 
   /**
    * the legend of the fieldset component
@@ -66,14 +66,13 @@ class Fieldset extends ContainerTag {
     return $this->legend;
   }
 
-  /**
-   * Activates the Fieldset component
-   *
-   * @param  boolean $enabled true if the component is enabled, otherwise false
-   * @return $this for a fluent interface
-   */
-  public function enable(bool $enabled = true) {
-    return parent::setAttr("disabled", !$enabled);
+  public function disable(bool $disabled = true) {
+    $this->attrs()->setBoolean('disabled', $disabled);
+    return $this;
+  }
+
+  public function isEnabled(): bool {
+    return !$this->attrs()->exists('disabled');
   }
 
   public function contentToString(): string {
