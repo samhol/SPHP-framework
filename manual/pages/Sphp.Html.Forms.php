@@ -16,7 +16,7 @@ Manual\md(<<<MD
 $ns
 The HTML $w3c->form element represents a document section that contains interactive controls to submit information to a web server.
 
-<div class="callout alert" markdown="1">        
+<div class="callout secondary" markdown="1">        
 ###NOTE
 
 Form components in this framework are used to build User Interfaces and not to handle the form data submitted.      

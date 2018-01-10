@@ -4,11 +4,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-> h1 {
-  border-bottom: solid 1px #aaa;
-  //margin: rem-calc(0 0 15 0);  // top right bottom left
-  padding: rem-calc(3 5 3 10); // top right bottom left
-}
+
 > h2, > h3 {
   padding: rem-calc(0 5 0 10); // top right bottom left
   border: solid 1px #aaa;
@@ -22,18 +18,18 @@
   padding: rem-calc(0 5 0 10); // top right bottom left
   line-height: 1.6;
 }
-> h2, > h3, > h4, > h5, > h6 {
+> h1, > h2, > h3, > h4, > h5, > h6 {
   //font-weight: 600;
   margin: rem-calc(0 5 15 5);  // top right bottom left
   padding: rem-calc(3 5 3 10); // top right bottom left
 }
-> h1,> h2, > h3, > h4, > h5, > h6 {
+> h1, > h2, > h3, > h4, > h5, > h6 {
   &:first-child {
     background-color: #eee;
     &.error {
       background-color: $error-bg;
     }
-    margin: rem-calc(0 0 5 0);
+    //margin: rem-calc(0 0 5 0);
     padding: rem-calc(5 15 5 15);
     border: solid 1px #666;
     border-top: none;
@@ -43,7 +39,7 @@
       text-transform: none;
     }
   }
-  a {
+  a.api {
     border: solid 1px #ccc;
     line-height: 1.6;
     @include border-radius(2px);

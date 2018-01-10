@@ -17,13 +17,9 @@ body .footer {
   }
   border-top: 2px solid $footer-border-color;
   background-color: #111111;
-  background: 
-    url('../../manual/pics/parquet_black.jpg');
-  background-repeat: 
-    repeat;
-  background-position: 
-    0 0,
-    top right;
+  background: url('../../manual/pics/parquet_black.jpg');
+  background-repeat: repeat;
+  background-position: 0 0,top right;
   color: #e6e6e6;
   @include box-shadow(#666 0px 6px 20px 10px);
   .skull {
