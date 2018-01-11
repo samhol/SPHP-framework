@@ -25,30 +25,22 @@
     }
   ],
   "require": {
-    "php": "^7.0",
-    "doctrine/common": "<2.8",
-    "doctrine/orm": "<2.6",
-    "doctrine/collections": "<1.5",
-    "doctrine/dbal": "<2.6",
-    "doctrine/inflector": "<1.2",
-    "doctrine/cache": "<1.7",
-    "doctrine/instantiator": "<1.1",
-    "doctrine/annotations": "<1.5",
-    "sepia/po-parser": "^4.2",
-    "imagine/imagine": "^0.7",
-    "erusev/parsedown-extra": "^0.7.0",
+    "php": ">=7.0",
+    "doctrine/orm": ">=2.5",
+    "sepia/po-parser": ">=4.2",
+    "imagine/imagine": ">=0.7",
+    "erusev/parsedown-extra": ">=0.7.0",
     "tovic/parsedown-extra-plugin": "*",
     "geshi/geshi": "^1",
-    "pimple/pimple": "*",
-    "jdorn/sql-formatter": "^1.2",
-    "gajus/dindent": "^2.0",
+    "jdorn/sql-formatter": ">=1.2",
+    "gajus/dindent": ">=2.0",
     "zendframework/zend-cache": "*",
     "zendframework/zend-config": "*",
     "zendframework/zend-i18n": "*",
     "zendframework/zend-paginator": "*",
     "zendframework/zend-mail": "*",
     "zurb/foundation": ">=6.4",
-    "symfony/yaml": "^3.0"
+    "symfony/yaml": ">=3.0"
   },
   "autoload": {
     "psr-4": {

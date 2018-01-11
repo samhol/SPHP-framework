@@ -16,7 +16,7 @@
   sphp.TechLinks = function () {
     //var $irs;
     console.log("sphp.TechLinks() v2");
-    $(".sphp-tech-list .jQuery")
+    $(".foundation .jQuery")
             .attr("title", "jQuery: " + $.fn.jquery);
     $(".sphp-tech-list .Foundation")
             .attr("title", "Foundation: " + sphp.getFoundationVersion());

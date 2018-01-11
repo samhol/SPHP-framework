@@ -1,3 +1,10 @@
+/**
+ * _footer.scss (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
 #engadget-footer-sitemap-container {
   max-width: 100%;
   width: 100%;
@@ -6,9 +13,9 @@
   background-color: $black;
   border-top: 2px solid $footer-border-color;
   border-bottom: 1px solid $footer-border-color;
-  background: url('../../manual/pics/parquet_black.jpg');
-  background-repeat: repeat;
-  background-position: 0 0,top right;
+  background-image: url('../../manual/pics/footer_skull.png'), url('../../manual/pics/parquet_black.jpg');
+  background-repeat: no-repeat,repeat;
+  background-position: center center,0 0;
   #engadget-footer-sitemap { 
     @include grid-row();
     color:$light-gray;
@@ -58,13 +65,13 @@
   margin-top: rem-calc(0);
   background-color: $dark-gray;
   border-top: 2px solid #444;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #222;
   #engadget-footer-social {
     @include grid-row();
     color:$light-gray;
-    padding: rem-calc(30) 0;
+    padding: rem-calc(20 0 30 0);
     a {
-      color:$light-gray !important;
+      //color:$light-gray !important;
     }
     .footer-left {
       @include breakpoint(small) {
@@ -112,8 +119,13 @@
   width: 100%;
   margin: 0 auto;
   margin-top: rem-calc(0);
+  border-top: 2px solid #777;
+  
   background-color: $white;
-
+  background-image: url('../../manual/pics/parquet_dim_white.jpg');
+  background-repeat: repeat;
+  background-position: top left;
+  color:$dark-gray !important;
   #engadget-footer-contact-details { 
     @include grid-row();
     color:$dark-gray;
@@ -163,12 +175,32 @@
           margin: 0;
           padding: 0;
         }
-
-
-      }
-      font-size: 0.9rem;
-      .fa {
-        padding: 0 0.4rem;
+        ul.tech-link-list {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          float: right;
+          li {
+            float: left;
+            a {
+              svg {
+                width: rem-calc(35);
+                height: rem-calc(35);
+                fill: #ccc;
+              }
+              display: block;
+              text-align: center;
+              padding: 0 0.4rem;
+              text-decoration: none;
+            }
+            a:hover {
+              svg {
+                fill: #aaa;
+              }
+            }
+          }
+        }
       }
     }
   }
