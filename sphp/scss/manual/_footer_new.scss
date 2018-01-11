@@ -62,7 +62,7 @@
   #engadget-footer-social {
     @include grid-row();
     color:$light-gray;
-    padding: rem-calc(40) 0;
+    padding: rem-calc(30) 0;
     a {
       color:$light-gray !important;
     }

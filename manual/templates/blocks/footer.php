@@ -30,7 +30,7 @@ $currentUrl = URL::getCurrentURL();
       <h6>Follow</h6>
       <a href="https://github.com/samhol/SPHP-framework"><i class="fa fa-github-square fa-3x" aria-hidden="true"></i></a>
       <a href="https://www.facebook.com/Sami.Petteri.Holck.Playground/"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
-      <a href="https://plus.google.com/b/113942361282002156141/113942361282002156141"><i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i></a>
+        <a href="https://plus.google.com/b/113942361282002156141/113942361282002156141"><i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i></a>
         <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
     </div>
   </footer>
@@ -85,9 +85,9 @@ $currentUrl = URL::getCurrentURL();
           </a>
         </li>
       </ul>
-    </div>
+    </div> 
   </footer>
-  <div>
+  <div class="text-center">
     <?php include_once 'licenseRevealer.php' ?>
   </div>
 </div>
