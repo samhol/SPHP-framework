@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Apps\Manual\Apis;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $grid = \Sphp\Manual\api()->classLinker(GridInterface::class);

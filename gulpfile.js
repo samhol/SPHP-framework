@@ -2,7 +2,8 @@
 var gulp = require('gulp'),
         uglify = require("gulp-uglify"),
         concat = require("gulp-concat"),
-        jshint = require('gulp-jshint');
+        jshint = require('gulp-jshint'),
+        removeUseStrict = require("gulp-remove-use-strict");
 
 gulp.task('build-js', function () {
   gulp.src([

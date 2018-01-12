@@ -21,7 +21,7 @@ It forms a single row in a $gridIf layout, but it can be used as a individual co
 
 MD
 );
-Manual\example('Sphp/Html/Foundation/Sites/Grids/XY/Row.php')
+Manual\example('Sphp/Html/Foundation/Sites/Grids/XY/Row.php', 'html5')
         ->buildAccordion()
         ->addCssClass('grid-example')
         ->printHtml();

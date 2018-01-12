@@ -10,7 +10,6 @@
     "ion-rangeslider": "^2.1.7",
     "jquery": "^3.2.1",
     "lazyloadxt": "^1.1.0"
-    
   },
   "devDependencies": {
     "del": "^3.0.0",
@@ -23,6 +22,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "^3.0.0",
+    "gulp-remove-use-strict": "0.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.1",
     "gulp-uglify": "^3.0.0",

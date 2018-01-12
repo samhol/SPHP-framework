@@ -5,6 +5,9 @@
 
 @charset "UTF-8";
 
+$footer-top-padding: rem-calc(10);
+$footer-border-color: #FAA523;
+
 #engadget-footer-sitemap-container {
   max-width: 100%;
   width: 100%;
@@ -120,7 +123,7 @@
   margin: 0 auto;
   margin-top: rem-calc(0);
   border-top: 2px solid #777;
-  
+
   background-color: $white;
   background-image: url('../../manual/pics/parquet_dim_white.jpg');
   background-repeat: repeat;
@@ -139,6 +142,9 @@
         @include grid-column(12); 
         li {
           display: block;
+          &.photo {
+            margin-top: -50px;
+          }
         }
         text-align: center;
       }
@@ -175,7 +181,7 @@
           margin: 0;
           padding: 0;
         }
-        ul.tech-link-list {
+        ul.tech-links-list {
           list-style-type: none;
           margin: 0;
           padding: 0;

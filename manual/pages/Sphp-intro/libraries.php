@@ -4,8 +4,8 @@ use Sphp\Manual\SoftwareVersions;
 ?>
 
 ##What is currently under the hood?
-<div class="row sphp-intro">
-<div class="column small-12 medium-6" markdown="1">  
+<div class="grid-x sphp-intro">
+<div class="cell small-12 medium-auto" markdown="1">  
 ###Server side:
  * [**ZEND framework** 3.0](https://framework.zend.com/){target="_blank"} — <i class="tech label php"></i>
  * [**Doctrine** <?php echo SoftwareVersions::doctrineCommon(); ?>](http://www.doctrine-project.org/){target="_blank"} — <i class="tech label php"></i><i class="tech label sql"></i>
@@ -19,7 +19,7 @@ use Sphp\Manual\SoftwareVersions;
    * [**... Extra Plugin** <?php echo SoftwareVersions::parsedownExtraPlugin(); ?>](https://github.com/erusev/parsedown-extra){target="_blank"}
 </div>
   
-<div class="column small-12 medium-6" markdown="1"> 
+<div class="cell small-12 medium-auto" markdown="1"> 
 ###Client side:
  * [**jQuery**](http://jQuery.com){.jquery_version target="_blank"} <i class="tech label js"></i>
    * [**Foundation** for Sites](http://foundation.zurb.com/){.foundation_version target="_blank"} <i class="tech label html5" aria-hidden="true"></i><i class="tech label css3"></i><i class="tech label js"></i>
