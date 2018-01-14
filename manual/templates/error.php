@@ -16,9 +16,9 @@ TEXT
 );
 
 $form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
-$form->showLabel(true);
+$form->setLabelText('Search for:');
 
-$form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
+$form->setPlaceholder('keywords in documentation');
 
 (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($form);
 $form->printHtml();

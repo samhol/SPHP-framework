@@ -8,7 +8,8 @@
 namespace Sphp\Html\Apps\Freefind;
 
 use Sphp\Html\Forms\FormInterface;
-use Sphp\Html\Forms\Inputs\TextInput;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
+use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
@@ -26,52 +27,67 @@ class FreefindSearchForm extends AbstractComponent implements FormInterface {
 
   use \Sphp\Html\Forms\FormTrait;
 
-  private $additionalControls = false;
+  /**
+   * @var HiddenInputs
+   */
+  private $hiddenData;
+
+  /**
+   * @var string
+   */
+  private $label;
+
+  /**
+   * @var SearchInput
+   */
+  private $searchField;
+
+  /**
+   * @var Submitter
+   */
+  private $submitButton;
 
   public function __construct(array $data = []) {
     parent::__construct('form');
     $this->setAction('http://search.freefind.com/find.html')
             ->setMethod('get')
             ->setTarget('_self');
+    $this->addCssClass('freefind-form');
     $this->setSubmitButton(new Submitter(Icons::fontAwesome('fa-search')));
     $this->hiddenData = new HiddenInputs();
-    $this->setSearchField(new TextInput());
+    $this->searchField = new SearchInput('query');
+    $this->searchField->setName('query');
+    // $this->searchField->cssClasses()->protect('input-group-field');
     $this->setHiddenData($data);
   }
 
-  public function getAdditionalControls() {
-    return $this->additionalControls;
-  }
-
-  public function setAdditionalControls($additionalControls) {
-    $this->additionalControls = $additionalControls;
-    return $this;
+  protected function build(): InputGroup {
+    $group = new InputGroup();
+    if ($this->label) {
+      $group->appendLabel($this->label);
+    }
+    $group->append($this->searchField);
+    $group->append($this->submitButton);
+    return $group;
   }
 
   public function contentToString(): string {
-    $output = '';
-    if ($this->additionalControls) {
-      $output .= '<a href="http://search.freefind.com/find.html?si=51613081&amp;m=0&amp;p=0">sitemap</a> | ';
-      $output .= '<a href="http://search.freefind.com/find.html?si=51613081&amp;pid=a">advanced</a>';
-    }
-    $output .= $this->hiddenData->getHtml();
-    $output .= '<div class="input-group">';
-    if ($this->showLabel) {
-      $output .= '<span class="input-group-label">Search for:</span>';
-    }
-    $output .= $this->searchField->getHtml();
-    $output .= '<div class="input-group-button">' . $this->submitButton->getHtml() . '</div></div>';
-    return $output;
+    return $this->hiddenData->getHtml() . $this->build();
   }
 
-  public function getSearchField(): TextInput {
-    return $this->searchField;
-  }
-
-  public function setSearchField(TextInput $searchField) {
-    $this->searchField = $searchField;
-    $this->searchField->cssClasses()->protect('input-group-field');
+  /**
+   * Sets the placeholder text for the search field
+   *
+   * @param  string $placeholder the value of the placeholder attribute
+   * @return $this for a fluent interface
+   */
+  public function setPlaceholder(string $placeholder = null) {
+    $this->searchField->setPlaceholder($placeholder);
     return $this;
+  }
+
+  public function getSearchField(): SearchInput {
+    return $this->searchField;
   }
 
   public function getSubmitButton(): SubmitterInterface {
@@ -89,8 +105,9 @@ class FreefindSearchForm extends AbstractComponent implements FormInterface {
     return $this;
   }
 
-  public function showLabel($additionalControls = true) {
-    $this->showLabel = $additionalControls;
+  public function setLabelText(string $text = null) {
+    $this->label = $text;
+    return $this;
   }
 
   public function getHiddenData(): HiddenInputs {
@@ -102,11 +119,7 @@ class FreefindSearchForm extends AbstractComponent implements FormInterface {
     return $this;
   }
 
-  public function getData() {
-    
-  }
-
-  public function setData(array $data = array()) {
+  public function setData(array $data = []) {
     
   }
 

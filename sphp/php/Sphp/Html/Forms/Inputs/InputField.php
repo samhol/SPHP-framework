@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\IdentifiableContent;
-
 /**
  * Defines an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *

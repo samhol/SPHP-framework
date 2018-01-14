@@ -86,9 +86,9 @@ $footer-border-color: #FAA523;
       @include breakpoint(large) { 
         @include grid-column(5);
       }
-      .input-group-field {
-        background: $white
-      }
+      /* .input-group-field {
+         background: $white
+       }*/
     }
 
     .footer-right {
@@ -207,7 +207,11 @@ $footer-border-color: #FAA523;
             }
           }
         }
-      }
+      } 
     }
+  }
+  .license-area {
+    padding-bottom: rem-calc(20);
+    color: $dark-gray;
   }
 }

@@ -21,9 +21,9 @@ $currentUrl = URL::getCurrentURL();
 
         use Sphp\Html\Apps\Freefind\FreefindSearchForm;
 
-        $form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
-        $form->setAdditionalControls(false)->showLabel(false);
-        $form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
+$form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
+        $form->setLabelText(false);
+        $form->setPlaceholder('keywords in documentation');
         $form->printHtml();
         ?>
       </div>
@@ -98,8 +98,8 @@ $currentUrl = URL::getCurrentURL();
       </ul>
     </div> 
   </footer>
-  <div class="text-center">
-<?php include_once 'licenseRevealer.php'; ?>
-  </div>
+  <footer class="license-area text-center">
+    <?php include_once 'licenseRevealer.php'; ?>
+  </footer>
 </div>
 

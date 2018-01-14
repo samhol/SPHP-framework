@@ -17,12 +17,13 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Forms\Inputs\HiddenInput hidden(string $name = null, $value = null) creates a new hidden input
  * @method \Sphp\Html\Forms\Inputs\EmailInput email(string $name = null, $value = null) creates a new email input
  * @method \Sphp\Html\Forms\Inputs\NumberInput number(string $name = null, $value = null) creates a new number input
+ * @method \Sphp\Html\Forms\Inputs\SearchInput search(string $name = null, $value = null) creates a new search input
  * @method \Sphp\Html\Forms\Inputs\TextInput text(string $name = null, $value = null) creates a new text input
  * @method \Sphp\Html\Forms\Inputs\Radiobox radio(string $name = null, $value = null) creates a new text input
  * @method \Sphp\Html\Forms\Inputs\Checkbox checkbox(string $name = null, $value = null) creates a new text input
  * @method \Sphp\Html\Forms\Inputs\PasswordInput password(string $name = null, $value = null) creates a new text input
  *
- * @method \Sphp\Html\Forms\Inputs\TextInput push($content = null)
+ * @method \Sphp\Html\Forms\Inputs\Buttons\Button push($content = null) creates a new push button
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -49,6 +50,7 @@ class Factory {
       'password' => PasswordInput::class,
       'radio' => Radiobox::class,
       'checkbox' => Checkbox::class,
+      'search' => SearchInput::class,
       'number' => NumberInput::class,
       'optgroup' => Menus\Optgroup::class,
       'option' => Menus\Option::class,

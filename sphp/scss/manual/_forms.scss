@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+$input-bg: #eee;
+$focused-input-bg: #fcfcfc;
+$input-border: #cacaca;
+$focused-input-border: #ddd;
+
+form.freefind-form {
+  input[type=search] {
+    @include transition-property(all);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-in-out);
+    background-color: #e3e3e3;
+    &:focus {
+      background-color: #fafafa;
+    }
+  }
+}
+.form-example {
+  textarea, 
+  input[type=text], 
+  input[type=email], 
+  input[type=number], 
+  input[type=search], 
+  input[type=password] {
+    @include transition-property(all);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-in-out);
+    background-color: $input-bg;
+    border-color: $input-border;
+    @include border-radius(2px);
+    &:focus {
+      background-color: $focused-input-bg;
+      border-color: $focused-input-border;
+    }
+  }
+}

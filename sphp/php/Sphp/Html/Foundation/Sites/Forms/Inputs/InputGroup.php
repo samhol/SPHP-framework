@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\TextualInputInterface;
+use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Html\Span;
 use Sphp\Html\Container;
 use IteratorAggregate;
@@ -47,6 +48,29 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     $this->group = new Container;
   }
 
+  /**
+   * Appends a span label to the group
+   *
+   * @param  mixed $content the content of the prefix
+   * @return ComponentInterface appended instance
+   */
+  public function prepend($content): ComponentInterface {
+    if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
+      $content->addCssClass('input-group-field');
+      $this->group->prepend($content);
+    } else if (is_string($content) || $content instanceof Span) {
+      if (!$content instanceof Span) {
+        $content = new Span($content);
+      }
+      $content->addCssClass('input-group-label');
+      $this->prepend($content);
+    } else if ($content instanceof ButtonInterface) {
+      $this->group->prepend($content);
+    } else {
+      throw new InvalidArgumentException("Content appended to inputgroup is invalid type");
+    }
+    return $content;
+  }
 
   /**
    * Appends a span label to the group
@@ -55,7 +79,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @return ComponentInterface appended instance
    */
   public function append($content): ComponentInterface {
-    if ($content instanceof TextualInputInterface || $content instanceof \Sphp\Html\Forms\Inputs\NumericalInput) {
+    if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
       $content->addCssClass('input-group-field');
       $this->group->append($content);
     } else if (is_string($content) || $content instanceof Span) {
@@ -67,7 +91,6 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     }
     return $content;
   }
-
 
   /**
    * Appends a span label to the group
@@ -99,7 +122,6 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     return $input;
   }
 
-
   /**
    * Appends a submitter to the group
    *
@@ -120,12 +142,12 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @param  string|null $name the value of name attribute
    * @return Resetter appended instance
    */
-  public function appendResetter(string $value = null):Resetter {
+  public function appendResetter(string $value = null): Resetter {
     $submitter = new Resetter($value);
     $this->group->append($submitter);
     return $submitter;
   }
-  
+
   public function contentToString(): string {
     $output = '';
     foreach ($this as $component) {
