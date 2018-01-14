@@ -8,7 +8,7 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $grid = (new BlockGrid('small-up-2', 'large-up-4'))->addCssClass('collapse');
 $grid->append((new Menu())->vertical()
-                ->appendText('JavaScript ' . Icons::fontAwesome('fa-code'))
+                ->appendText('JavaScript ' . Icons::devicon('javascript-plain'))
                 ->appendLink('https://jquery.com/', "jQuery", '_blank')
                 ->appendLink('http://foundation.zurb.com/', "Foundation", '_blank')
                 ->appendLink('http://qtip2.com/', 'qTip<sup>2</sup>', '_blank')
@@ -16,20 +16,27 @@ $grid->append((new Menu())->vertical()
                 ->appendLink('http://zeroclipboard.org/', "ZeroClipboard", "_blank")
                 ->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade;', '_blank'));
 $grid->append((new Menu())->vertical()
-                ->appendText("PHP" . Icons::fontAwesome('fa-code'))
+                ->appendText('PHP' . Icons::devicon('php-plain'))
                 ->appendLink('https://github.com/erusev/parsedown-extra', 'Parsedown Extra', '_blank')
                 ->appendLink('http://qbnz.com/highlighter/', 'GeSHi', '_blank')
                 ->appendLink('https://imagine.readthedocs.org', 'Imagine', '_blank')
-                ->appendText('SQL' . Icons::fontAwesome('fa-database'))
-                ->appendLink('https://www.mysql.com/', 'MySQL', '_blank')
-                ->appendLink('http://www.postgresql.org/', 'Postgre SQL', '_blank'));
+                ->appendLink('http://php.net/', 'php.net', '_blank')
+                ->appendText("Frameworks:" . Icons::fontAwesome('fa-database'))
+                ->appendLink('https://github.com/erusev/parsedown-extra', 'Zend', '_blank')
+                ->appendLink('https://github.com/erusev/parsedown-extra', 'Symfony' . Icons::devicon('symfony-original'), '_blank')
+                ->appendLink('http://www.doctrine-project.org/', 'Doctrine' . Icons::devicon('doctrine-plain'), '_blank'));
 $grid->append((new Menu())->vertical()
-                ->appendText('SASS')
+                ->appendText("SQL" . Icons::fontAwesome('fa-database'))
+                ->appendLink('https://www.mysql.com/', 'MySQL', '_blank')
+                ->appendLink('http://www.postgresql.org/', 'Postgre SQL', '_blank')
+                ->appendLink('http://www.postgresql.org/', 'SQLite', '_blank'));
+$grid->append((new Menu())->vertical()
+                ->appendText('SASS & CSS' . Icons::devicon('css3-plain'))
                 ->appendLink('http://sass-lang.com/', 'SASS language', '_blank')
                 ->appendLink('http://thesassway.com/', 'The Sass Way', '_blank')
                 ->appendLink('http://compass-style.org/', 'Compass framework', '_blank')
                 ->appendLink('http://foundation.zurb.com/sites/docs/sass.html', 'Foundation SASS', '_blank'));
-$grid->append((new Menu())->vertical()
+/*$grid->append((new Menu())->vertical()
                 ->appendText('Misc. Tutorials' . Icons::fontAwesome('fa-book'))
                 ->appendLink('https://developer.mozilla.org/', '<b>MDN</b>', '_blank')
                 ->appendLink('http://stackoverflow.com/', 'stack <b>Overflow</b>', '_blank')
@@ -37,5 +44,5 @@ $grid->append((new Menu())->vertical()
                 ->appendLink('http://www.w3schools.com/html/', 'HTML tutorial', '_blank')
                 ->appendLink('http://www.w3schools.com/CSS/', 'CSS tutorial', '_blank')
                 ->appendLink('http://www.w3schools.com/jquery/', 'jQuery tutorial', '_blank')
-                ->appendLink('http://www.w3schools.com/sql/', 'SQL tutorial', '_blank'));
+                ->appendLink('http://www.w3schools.com/sql/', 'SQL tutorial', '_blank'));*/
 $grid->printHtml();

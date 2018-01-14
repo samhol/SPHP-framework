@@ -80,6 +80,18 @@ abstract class Icons {
   }
 
   /**
+   * Generates a Foundation icon
+   * 
+   * @param  string $iconName the icon name
+   * @return Icon the icon object generated
+   */
+  public static function devicon(string $iconName): Icon {
+    if (!Strings::startsWith($iconName, 'devicon-')) {
+      $iconName = 'devicon-' . $iconName;
+    }
+    return new Icon($iconName);
+  }
+  /**
    * Generates a file type icon object using Font Awesome 
    * 
    * @param  string|SplFileInfo $file the file
