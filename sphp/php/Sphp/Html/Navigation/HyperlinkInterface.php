@@ -34,11 +34,10 @@ interface HyperlinkInterface {
    * * If the href attribute is not present, the {@link self} is not a hyperlink.
    *
    * @param  string $href the URL of the link
-   * @param  boolean $encode converts all applicable characters of the $url to HTML entities
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
-  public function setHref(string $href, $encode = true);
+  public function setHref(string $href);
 
   /**
    * Returns the value of the href attribute

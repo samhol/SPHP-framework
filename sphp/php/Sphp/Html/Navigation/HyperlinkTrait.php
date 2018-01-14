@@ -13,14 +13,6 @@ use Sphp\Stdlib\Strings;
 /**
  * Trait implements {@link HyperlinkInterface} for hyperlink functionality
  *
- * If a {@link HyperlinkInterface} component has an href attribute, then it
- * represents a hyperlink (a hypertext anchor). If the component has no href
- * attribute, then the component represents a placeholder for where a link might
- * otherwise have been placed, if it had been relevant.
- *
- * The `target`, `rel`, `media`, `hreflang`, and `type` attributes must be omitted if
- * the `href` attribute is not present.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -43,16 +35,10 @@ trait HyperlinkTrait {
    * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
    * @param  string $href the URL of the link
-   * @param  boolean $encode converts all applicable characters of the $url to
-   *         HTML entities
-   * @return HyperlinkInterface for PHP Method Chaining
-   * @uses   Strings::htmlEncode()
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
-  public function setHref(string $href, $encode = true) {
-    if ($encode) {
-      $href = Strings::htmlEncode($href);
-    }
+  public function setHref(string $href) {
     $this->attrs()->set('href', $href);
     return $this;
   }
@@ -81,7 +67,7 @@ trait HyperlinkTrait {
    * * Only used if the href attribute is present.
    *
    * @param  string|null $target optional target frame of the hyperlink
-   * @return HyperlinkInterface for PHP Method Chaining
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget(string $target = null) {
@@ -115,8 +101,8 @@ trait HyperlinkTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
-  public function setTitle($title) {
-    return $this->setAttr("title", $title);
+  public function setTitle(string $title) {
+    return $this->setAttr('title', $title);
   }
 
 }

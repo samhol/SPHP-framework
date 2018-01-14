@@ -279,7 +279,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
     return $this->slides()->count();
   }
 
-  public function getIterator() {
+  public function getIterator(): \Traversable {
     return $this->slides()->getIterator();
   }
 

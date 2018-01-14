@@ -104,7 +104,8 @@ $cont_ns = $sami->namespaceLink(__NAMESPACE__, false);
 \Sphp\Manual\md(<<<MD
 #####Containers:
 
-The $cont_ns namespace includes PHP implementations of useful container elements like Accordions, Tabs and Dropdowns for HTML presentation.
+The $cont_ns namespace includes PHP implementations of useful container elements 
+like Accordions, Tabs and Dropdowns for HTML presentation.
 MD
 );
 ?></div>
