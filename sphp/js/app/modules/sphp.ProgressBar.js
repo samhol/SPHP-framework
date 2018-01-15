@@ -9,11 +9,15 @@
  */
 (function ($) {
   'use strict';
+  
   /**
-   * 
+   * Replaces the selected part of the attribute value
+   *
+   * @memberOf jQuery.fn#
+   * @method   setProgress
    * @param   {Number} $progress new progress level in percent (0-100)
    * @param   {String} $text new progress level text
-   * @returns {sphp_ProgressBar_L74.$.fn@call;each}
+   * @returns  {jQuery.fn} object for method chaining
    */
   $.fn.setProgress = function ($progress, $text) {
     return this.each(function () {

@@ -3,7 +3,7 @@
 menu: Dependencies
 items:
   - separator: PHP related
-  - link: PHP 5.6 or newer
+  - link: PHP 7.0 or newer
     href: http://php.net/
   - menu: PHP Libraries
     items:

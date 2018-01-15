@@ -46,6 +46,12 @@ $footer-border-color: #FAA523;
         background: rgba(40, 40, 40, 0.3);
         padding: rem-calc(8 15 8 8); // top right bottom left
       }
+      &.menu-ruler {
+        height: 2px; 
+        background: rgba(70, 70, 70, 0.5);
+        margin: rem-calc(2 0 2 0);
+
+      }
       & > a {
         font-size: rem-calc(14);
         color: #e6e6e6;

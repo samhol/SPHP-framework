@@ -12,7 +12,7 @@
 
   /**
    * 
-   * @returns 
+   * @returns  {jQuery.fn} object for method chaining
    */
   manual.techLinksList = function () {
     //var $irs;

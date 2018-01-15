@@ -51,6 +51,7 @@ Temporary Items
 /.projectKnowledge/
 /node_modules/
 /logs/
+/API/
 
 robots.txt
 composer.lock

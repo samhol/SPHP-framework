@@ -3,6 +3,7 @@ var gulp = require('gulp'),
         uglify = require("gulp-uglify"),
         concat = require("gulp-concat"),
         jshint = require('gulp-jshint'),
+        jsdoc = require('gulp-jsdoc3'),
         removeUseStrict = require("gulp-remove-use-strict");
 
 gulp.task('build-js', function () {
@@ -21,4 +22,10 @@ gulp.task('build-js', function () {
           .pipe(uglify())
           .pipe(concat('all.js'))
           .pipe(gulp.dest('sphp/js/dist'));
+});
+
+gulp.task('doc', function (cb) {
+  var config = require('./jsdoc.json');
+  gulp.src(['README.md', './sphp/js/app/modules/*.js', './sphp/js/app/sphp.js'], {read: false})
+          .pipe(jsdoc(config, cb));
 });
