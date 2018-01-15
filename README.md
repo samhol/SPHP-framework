@@ -4,11 +4,9 @@
 
 ## INTRODUCTION
 
-SPHP framework is an open source framework for developing interactive web applications
-and services in object oriented PHP. 
-
-This framework supports many aspects of full stack Web 
-application development. Framework has all the web programming goodies like `PHP`-, `SQL`-, `CSS`-, `SCSS`- and `JavaScript` under its hood, 
+SPHPlayground is an open source framework for developing interactive web applications
+and services in object oriented PHP. SPHPlayground can be a part of full stack Web 
+application development. Framework has many of the web programming goodies like `PHP`-, `SQL`-, `CSS`-, `SCSS`- and `JavaScript` under its hood, 
 but generally deploying framework requires no usage of other programming languages than PHP.
 
       
