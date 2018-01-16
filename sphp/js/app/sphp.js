@@ -106,7 +106,7 @@ if (!window.console.log) {
 }
 
 /**
- * Contains all sph functionality.
+ * Contains all SPHP functionality.
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @name sphp
@@ -190,7 +190,7 @@ if (!window.console.log) {
     return this;
   };
   /**
-   * 
+   *    
    * @returns {sphpL#115.sphp}
    */
   sphp.initBackToTopButtons = function () {

@@ -1,6 +1,7 @@
 Options -MultiViews
     RewriteEngine On
     RewriteRule ^(API/sami) - [L]
+    RewriteRule ^(API/jsdoc) - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
 # compress text, html, javascript, css, xml:
