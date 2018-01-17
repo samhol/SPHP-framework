@@ -4,7 +4,6 @@
  *
  * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
  * 
- * @namespace $
  */
 (function ($) {
   'use strict';
@@ -12,8 +11,7 @@
   /**
    * Sets the Back to top controller
    * 
-   * @memberOf jQuery.fn#
-   * @method   backToTopBtn
+   * @function external:"jQuery.fn".backToTopController
    * @param    {Object} options {content: String the content of the popper,
    *                           delay: int visibility time (default 3000 ms)}
    * @returns  {jQuery.fn} object for method chaining

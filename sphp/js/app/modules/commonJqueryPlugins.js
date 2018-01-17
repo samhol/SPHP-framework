@@ -4,7 +4,6 @@
  *
  * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
  * 
- * @namespace $
  */
 (function ($) {
   'use strict';
@@ -47,7 +46,7 @@
    * Replaces the selected part of the attribute value
    *
    * @memberOf jQuery.fn#
-   * @method   gsubAttr
+   * @method   identify
    * @param    {String} attr the name of the attribute
    * @param    {String} find the replaceable content
    * @param    {String} replace the replacer
@@ -251,7 +250,6 @@
    * jäävät piiloon.
    *
    * @author   Sami Holck <sami.holck@gmail.com>
-   * @update   2012-09-23
    * @memberOf jQuery.fn#
    * @method   addFog
    * @param    {Object} options {zIndex: int div.Fog-elementin z-indeksi (oletus 20000),
@@ -278,7 +276,6 @@
    * Poistaa div.Fog-elementin annettuista jQuery-objekteista
    *
    * @author   Sami Holck <sami.holck@gmail.com>
-   * @since    2012-09-23
    * @memberOf jQuery.fn#
    * @method   removeFog
    * @param    {Object} options {delay: int postumisefektin kesto millisekunneissa (oletus 1000 ms)}
@@ -302,7 +299,6 @@
    * Lomakkeen tekstisyötteen sisällön siistijä
    *
    * @author   Sami Holck <sami.holck@gmail.com>
-   * @since    2012-09-11
    * @memberOf jQuery.fn#
    * @method   cleanVal
    * @returns  {jQuery.fn} object for method chaining
@@ -321,7 +317,6 @@
    * Requires <a href="http://jqueryui.com/">jQuery UI (1.8.19)+ </a>
    *
    * @author   Sami Holck <sami.holck@gmail.com>
-   * @since    2012-09-11
    * @memberOf jQuery.fn#
    * @method   sphpPopup
    * @returns  {jQuery.fn} object for method chaining

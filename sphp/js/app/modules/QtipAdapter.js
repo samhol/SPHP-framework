@@ -4,7 +4,6 @@
  *
  * Requires <a href="http://jquery.com/">jQuery+</a>
  * 
- * @namespace $
  */
 (function ($) {
   'use strict';
@@ -13,7 +12,6 @@
    * Shows the mouse coordinates when ever the mouse is onver the containing document
    * 
    * @memberOf jQuery.fn#
-   * @method   sphMouseCoordinatesViewer
    * @returns  {jQuery.fn} object for method chaining
    */
   $.fn.qtips = function () {

@@ -15,7 +15,7 @@
    */
   manual.techLinksList = function () {
     //var $irs;
-    console.log("sphp.TechLinks() v2");
+    console.log("manual.TechLinks() v2");
     $(".tech-links-list .jQuery")
             .attr("title", "jQuery: " + $.fn.jquery);
     $(".tech-links-list .foundation")

@@ -3,7 +3,6 @@
  * Contains sphp.TechLinks functionality
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @name sphp
  * @namespace sphp
  */
 ;

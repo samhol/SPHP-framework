@@ -5,7 +5,6 @@
  *
  * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
  * 
- * @namespace $
  */
 (function ($) {
   'use strict';
@@ -15,8 +14,8 @@
    *
    * @memberOf jQuery.fn#
    * @method   setProgress
-   * @param   {Number} $progress new progress level in percent (0-100)
-   * @param   {String} $text new progress level text
+   * @param    {Number} $progress new progress level in percent (0-100)
+   * @param    {String} $text new progress level text
    * @returns  {jQuery.fn} object for method chaining
    */
   $.fn.setProgress = function ($progress, $text) {

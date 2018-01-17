@@ -4,7 +4,6 @@
  *
  * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
  * 
- * @namespace $
  */
 (function ($) {
   'use strict';

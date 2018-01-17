@@ -1,20 +1,16 @@
-/**
- * ajax.js (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
- *
- * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
- * 
- * @namespace $
- */
+
 (function ($) {
   'use strict';
-
+/**
+ * The jQuery plugin namespace.
+ * @external "jQuery.fn"
+ * @see {@link http://learn.jquery.com/plugins/|jQuery Plugins}
+ */
   /**
    * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
    * jQuery's Ajax capabilities and places the returned HTML into the object.
    * 
-   * @memberOf jQuery.fn#
-   * @method   sphLoadContent
+   * @function external:"jQuery.fn".sphpAjaxPrepend
    * @returns  {jQuery.fn} object for method chaining
    */
   $.fn.sphpAjaxPrepend = function () {
@@ -53,7 +49,7 @@
    * jQuery's Ajax capabilities and places the returned HTML into the object.
    * 
    * @memberOf jQuery.fn#
-   * @method   sphLoadContent
+   * @method   sphpAjaxAppend
    * @returns  {jQuery.fn} object for method chaining
    */
   $.fn.sphpAjaxAppend = function () {
@@ -95,7 +91,7 @@
    * @method   sphLoadContent
    * @returns  {jQuery.fn} object for method chaining
    */
-  $.fn.sphLoadContent = function () {
+  $.fn.sphpLoadContent = function () {
     return this.each(function () {
       var $this = $(this), $url = $this.attr("data-sph-load");
       $this.addWaitLoader();

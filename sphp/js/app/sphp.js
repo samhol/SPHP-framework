@@ -109,7 +109,6 @@ if (!window.console.log) {
  * Contains all SPHP functionality.
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @name sphp
  * @namespace sphp
  */
 (function (sphp, $, undefined) {
@@ -121,7 +120,6 @@ if (!window.console.log) {
    *
    * @public
    * @static
-   * @memberOf sphp
    * @returns {String} the jQuery version number
    */
   sphp.jQueryVersion = function () {
@@ -133,7 +131,6 @@ if (!window.console.log) {
    *
    * @public
    * @static
-   * @memberOf sphp
    * @returns {String} the Foundation framework version number
    */
   sphp.getFoundationVersion = function () {
@@ -145,7 +142,6 @@ if (!window.console.log) {
    * 
    * @public
    * @static
-   * @memberOf sphp
    * @param   {Boolean} enabled
    * @returns {Boolean} whether the console is enabled or not
    */
@@ -171,6 +167,13 @@ if (!window.console.log) {
     }
   };
 
+  /**
+   * Initializes the clipboard functionality
+   * 
+   * @public
+   * @static
+   * @returns {sphp}
+   */
   sphp.initClipboard = function () {
     if (Clipboard.isSupported()) {
       var clipboard = new Clipboard('[data-clipboard-target]');
@@ -190,8 +193,9 @@ if (!window.console.log) {
     return this;
   };
   /**
+   * Initializes back to top button functionality
    *    
-   * @returns {sphpL#115.sphp}
+   * @returns {sphp}
    */
   sphp.initBackToTopButtons = function () {
     console.log("sphp.initBackToTopButtons()");
@@ -204,7 +208,6 @@ if (!window.console.log) {
    *
    * @public
    * @static
-   * @memberOf sphp
    */
   sphp.initialize = function () {
     sphp.enableConsole(true);

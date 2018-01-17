@@ -1,5 +1,5 @@
 {
-  "name": "sphp-framework",
+  "name": "sphplayground-framework",
   "description": "Multipurpose PHP framework for web applications",
   "author": "Sami Holck <sami.holck@gmail.com>",
   "version": "1.0.0",
@@ -12,8 +12,7 @@
     "lazyloadxt": "^1.1.0"
   },
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-cache": "^0.4.6",
     "gulp-concat": "^2.6.1",
@@ -33,9 +32,9 @@
   },
   "scripts": {
     "postinstall": "gulp build",
-    "do": "gulp finalize",
+    "do": "gulp build",
     "test": "gulp test"
   },
   "license": "ISC",
-  "homepage": "http://www.playground.samiholck.com/"
+  "homepage": "http://playground.samiholck.com/"
 }
