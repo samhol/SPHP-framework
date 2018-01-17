@@ -200,12 +200,11 @@ if (!window.console.log) {
   };
 
   /**
-   * Initializes all sph functionality
+   * Initializes all sphp functionality
    *
    * @public
    * @static
    * @memberOf sphp
-   * @param  {String} http_root the http root url of the application
    */
   sphp.initialize = function () {
     sphp.enableConsole(true);
