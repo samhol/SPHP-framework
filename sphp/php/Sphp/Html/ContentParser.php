@@ -17,45 +17,38 @@ namespace Sphp\Html;
 interface ContentParser extends Content {
 
   /**
-   * Appends content to the container
-   *
-   * @param  mixed,... $content appended content
-   * @return $this for a fluent interface
-   */
-  public function append(...$content);
-
-  /**
    * Appends a raw file to the container
    * 
    * @param  string $path path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
    */
   public function appendRawFile(string $path);
 
   /**
    * Appends an executed PHP file to the container
    * 
-   * @param  string $path
+   * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
    */
   public function appendPhpFile(string $path);
 
   /**
    * Appends a parsed Mark Down string to the container
    * 
-   * @param  string $md path to the file
+   * @param  string $md the path to the file
    * @return $this for a fluent interface
+   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
    */
   public function appendMd(string $md);
 
   /**
    * Appends a parsed Mark Down file to the container
    * 
-   * @param  string $path path to the file
+   * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
    */
   public function appendMdFile(string $path);
 }

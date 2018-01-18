@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Security;
+namespace Sphp\Sessions;
 
 use PDO;
 use Sphp\Db\DatabaseConnector;

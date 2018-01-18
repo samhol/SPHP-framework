@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Security;
+namespace Sphp\Sessions;
 
 use SessionHandlerInterface;
 
@@ -50,21 +50,12 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
     return false;
   }
 
-  private function setLocales() {
-    if (isset($_SESSION['locales']) && is_array($_SESSION['locales'])) {
-      foreach ($_SESSION['locales'] as $category => $locale) {
-        setlocale($category, $locale);
-      }
-    }
-    return $this;
-  }
-
   /**
    * Returns string the id of the current session
    * 
    * @return string the id of the current session
    */
-  public function getSessionId() {
+  public function getSessionId(): string {
     return session_id();
   }
 
@@ -93,19 +84,6 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
     return $this->maxlifetime;
   }
 
-  /**
-   * Sets the locale information for the session
-   *
-   * @param  int $category
-   * @param  string $locale
-   * @return $this for a fluent interface
-   * @link   http://php.net/manual/en/function.setlocale.php
-   */
-  public function setLocale($category, $locale) {
-    setlocale($category, $locale);
-    $_SESSION['locales'][$category] = $locale;
-    return $this;
-  }
 
   /**
    * Is called when the reading in a session is completed. The method calls

@@ -28,11 +28,6 @@ class Password implements PasswordInterface {
   /**
    * Constructs a new instance
    * 
-   * **Important:** <var>$hash</var> type conversions
-   * 
-   * 1. {@link Password} is hashed using {@link Password::getHash()}
-   * 2. All other types are converted to string values using {@link \strval()}
-   * 
    * @param string|PasswordInterface $hash the crypted password string
    */
   protected function __construct($hash) {
@@ -41,10 +36,6 @@ class Password implements PasswordInterface {
     } else {
       $this->hash = strval($hash);
     }
-  }
-
-  public function __toString(): string {
-    return $this->hash;
   }
 
   public function verify($password): bool {
@@ -65,7 +56,7 @@ class Password implements PasswordInterface {
   }
 
   /**
-   * Constructs a new instance
+   * Creates a new instance from plain password
    * 
    * @param string $password uncrypted plain password string
    * @param  int $algo

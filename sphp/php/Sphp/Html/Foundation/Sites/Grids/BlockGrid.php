@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use IteratorAggregate;
+use Traversable;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\ContentParser;
@@ -21,6 +22,12 @@ use Sphp\Html\Container;
  * This component is mobile-first. Code for small screens first,
  * and larger devices will inherit those styles. Customize for
  * larger screens as necessary.
+ *
+ * If you use the small block grid only, the grid will keep its spacing and
+ * configuration no matter the screen size. If you use large block grid
+ * only, the list items will stack on top of each other for small devices.
+ * If you use both of those classes combined, you can control the
+ * configuration and layout separately for each breakpoint.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -46,19 +53,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   /**
    * Constructs a new instance
    *
-   * **Important!**
-   *
-   * This component is mobile-first. Code for small screens first,
-   * and larger devices will inherit those styles. Customize for
-   * larger screens as necessary.
-   *
-   * If you use the small block grid only, the grid will keep its spacing and
-   * configuration no matter the screen size. If you use large block grid
-   * only, the list items will stack on top of each other for small devices.
-   * If you use both of those classes combined, you can control the
-   * configuration and layout separately for each breakpoint.
-   *
-   * @param  array $layout,... column layout parameters
+   * @param  string $layout,... block grid layout parameters
    */
   public function __construct(...$layout) {
     $this->columns = new Container();
@@ -114,7 +109,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
     return $this->columns->offsetGet($index);
   }
 
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->columns->getIterator();
   }
 

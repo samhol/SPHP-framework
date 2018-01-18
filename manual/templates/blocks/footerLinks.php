@@ -13,7 +13,8 @@ $grid->append((new Menu())->vertical()
                 ->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;')
                 ->appendLink('http://playground.samiholck.com/', '&lt;SPHPlayground&gt; manual')
                 ->appendText("Framework APIs " . Icons::fontAwesome('fa-book'))
-                ->appendLink('http://playground.samiholck.com/API/sami/', 'PHP API'));
+                ->appendLink('http://playground.samiholck.com/API/sami/', 'PHP API')
+        ->appendLink('http://playground.samiholck.com/API/jsdoc/', 'JavaScript API'));
 $grid->append((new Menu())->vertical()
                 ->appendText('JavaScript ' . Icons::devicon('javascript-plain'))
                 ->appendLink('https://www.w3.org/standards/webdesign/script.html', 'WEB APIS - <b>W3C</b>')
