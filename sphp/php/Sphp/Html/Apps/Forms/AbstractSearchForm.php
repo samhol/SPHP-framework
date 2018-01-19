@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Freefind;
+namespace Sphp\Html\Apps\Forms;
 
 use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
@@ -23,7 +23,7 @@ use Sphp\Html\AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FreefindSearchForm extends AbstractComponent implements FormInterface {
+abstract class AbstractSearchForm extends AbstractComponent implements FormInterface {
 
   use \Sphp\Html\Forms\FormTrait;
 
@@ -47,18 +47,20 @@ class FreefindSearchForm extends AbstractComponent implements FormInterface {
    */
   private $submitButton;
 
-  public function __construct(array $data = []) {
+  /**
+   * Constructs a new instance
+   * 
+   * @param string $action
+   * @param string $method
+   */
+  public function __construct(string $action, string $method = 'get') {
     parent::__construct('form');
-    $this->setAction('http://search.freefind.com/find.html')
-            ->setMethod('get')
+    $this->setAction($action)
+            ->setMethod($method)
             ->setTarget('_self');
-    $this->addCssClass('freefind-form');
     $this->setSubmitButton(new Submitter(Icons::fontAwesome('fa-search')));
     $this->hiddenData = new HiddenInputs();
-    $this->searchField = new SearchInput('query');
-    $this->searchField->setName('query');
-    // $this->searchField->cssClasses()->protect('input-group-field');
-    $this->setHiddenData($data);
+    $this->searchField = new SearchInput();
   }
 
   protected function build(): InputGroup {
@@ -86,10 +88,18 @@ class FreefindSearchForm extends AbstractComponent implements FormInterface {
     return $this;
   }
 
+  /**
+   * 
+   * @return SearchInput
+   */
   public function getSearchField(): SearchInput {
     return $this->searchField;
   }
 
+  /**
+   * 
+   * @return SubmitterInterface
+   */
   public function getSubmitButton(): SubmitterInterface {
     return $this->submitButton;
   }
@@ -110,6 +120,10 @@ class FreefindSearchForm extends AbstractComponent implements FormInterface {
     return $this;
   }
 
+  /**
+   * 
+   * @return HiddenInputs
+   */
   public function getHiddenData(): HiddenInputs {
     return $this->hiddenData;
   }

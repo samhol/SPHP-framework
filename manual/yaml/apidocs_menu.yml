@@ -1,13 +1,13 @@
-## YAML Template.
+## YAML Template for HTML menu.
 ---
 menu: API docs
 defautTarget: _blank
 items:
   - separator: SPHP framework
-  - link: SPHP PHP API
+  - link: PHP API
     href: API/sami/
-  - link: SPHP JavaScript API
-    href: API/jsdocs/
+  - link: JavaScript API
+    href: API/jsdoc/
   - separator: 'PHP:'
   - link: PHP manual
     href: http://php.net/en/documentation

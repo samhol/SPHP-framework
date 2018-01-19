@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
-use Sphp\Html\Apps\Freefind\FreefindSearchForm;
+use Sphp\Html\Apps\Forms\FreefindSearchForm;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 

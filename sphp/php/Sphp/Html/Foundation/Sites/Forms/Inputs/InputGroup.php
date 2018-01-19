@@ -100,11 +100,11 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    */
   public function appendLabel($content): Span {
     if (!$content instanceof Span) {
-      $label = new Span($content);
+      $content = new Span($content);
     }
-    $label->addCssClass('input-group-label');
+    $content->addCssClass('input-group-label');
     $this->group->append($content);
-    return $label;
+    return $content;
   }
 
   /**

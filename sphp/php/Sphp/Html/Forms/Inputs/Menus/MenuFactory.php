@@ -27,35 +27,8 @@ class MenuFactory {
    * @param  string $name the value of the name attribute
    * @return Select component containing months
    */
-  public static function getContentAsValueMenu(array $content, $name = null): Select {
+  public static function getContentAsValueMenu(array $content, string $name = null): Select {
     return new Select($name, Arrays::valuesToKeys($content));
-  }
-
-  /**
-   * Returns a new {@link Select} component containing months
-   *
-   * @param  string $name the value of the name attribute
-   * @return Select component containing months
-   */
-  public static function monthMenu($name = "month", Calendar $c = null): Select {
-    if ($c === null) {
-      $c = new Calendar();
-    }
-    return new Select($name, $c->getMonths());
-  }
-
-  /**
-   * Returns a new {@link Select} component containing weekdays
-   * 
-   * @param  string $name the value of the name attribute
-   * @param  Calendar $c the calendar instance
-   * @return Select component containing weekdays
-   */
-  public static function getWeekdayMenu($name = "weekday", Calendar $c = null): Select {
-    if ($c === null) {
-      $c = new Calendar();
-    }
-    return new Select($name, $c->getWeekdays());
   }
 
   /**

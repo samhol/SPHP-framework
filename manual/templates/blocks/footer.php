@@ -19,7 +19,7 @@ $currentUrl = URL::getCurrentURL();
         <h6>Search the sites</h6>
         <?php
 
-        use Sphp\Html\Apps\Freefind\FreefindSearchForm;
+        use Sphp\Html\Apps\Forms\FreefindSearchForm;
 
 $form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
         $form->setLabelText(false);
@@ -68,7 +68,7 @@ $form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#24
         </li>
 
         <li>
-          <a href="#">
+          <a href="http://jigsaw.w3.org/css-validator/validator?uri=<?php echo $currentUrl; ?>&profile=css3&usermedium=all&warning=1&vextwarning=&lang=en">
             <svg viewBox="0 0 128 128">
             <path d="M8.76 1l10.055 112.883 45.118 12.58 45.244-12.626 10.063-112.837h-110.48zm89.591 25.862l-3.347 37.605.01.203-.014.467v-.004l-2.378 26.294-.262 2.336-28.36 7.844v.001l-.022.019-28.311-7.888-1.917-21.739h13.883l.985 11.054 15.386 4.17-.004.008v-.002l15.443-4.229 1.632-18.001h-32.282999999999994l-.277-3.043-.631-7.129-.331-3.828h34.748999999999995l1.264-14h-52.926l-.277-3.041-.63-7.131-.332-3.828h69.281l-.331 3.862z"></path>
             </svg>
