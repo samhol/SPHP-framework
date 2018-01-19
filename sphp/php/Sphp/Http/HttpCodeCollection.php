@@ -34,7 +34,7 @@ class HttpCodeCollection implements Iterator {
     if (!is_array(self::$errors)) {
       self::$errors = Parser::fromFile(Path::get()->local('/sphp/yaml/http_errors.yaml'));
     }
-    foreach(self::$errors as $code => $v) {
+    foreach (self::$errors as $code => $v) {
       $this->codes[$code] = new HttpCode($code, $v['message'], $v['description']);
     }
   }
@@ -90,7 +90,7 @@ class HttpCodeCollection implements Iterator {
    * @param  int $code HTTP message code
    * @return boolean
    */
-  public function contains($code) {
+  public function contains(int $code): bool {
     return array_key_exists($code, self::$errors);
   }
 
@@ -134,4 +134,5 @@ class HttpCodeCollection implements Iterator {
   public function valid(): bool {
     return false !== current($this->codes);
   }
+
 }

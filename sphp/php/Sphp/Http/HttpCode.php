@@ -8,7 +8,7 @@
 namespace Sphp\Http;
 
 /**
- * The Logger class is responsible for printing the uncaught exceptions as an HTML element
+ * Implements a http code
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -17,40 +17,39 @@ namespace Sphp\Http;
 class HttpCode {
 
   /**
-   *
    * @var int 
    */
   private $code;
 
   /**
-   *
    * @var string 
    */
   private $message;
 
   /**
-   *
    * @var string 
    */
   private $description;
 
   /**
+   * Construct a new instance
    * 
    * @param int $code
    * @param string $message
    * @param string $description
    */
-  public function __construct($code, $message, $description) {
+  public function __construct(int $code, string $message, string $description) {
     $this->code = $code;
     $this->message = $message;
     $this->description = $description;
   }
 
   /**
+   * Returns the http code
    * 
-   * @return int
+   * @return int the http code
    */
-  public function getCode() {
+  public function getCode(): int {
     return $this->code;
   }
 
@@ -58,7 +57,7 @@ class HttpCode {
    * 
    * @return string
    */
-  public function getMessage() {
+  public function getMessage(): string {
     return $this->message;
   }
 
@@ -66,7 +65,7 @@ class HttpCode {
    * 
    * @return string
    */
-  public function getDescription() {
+  public function getDescription(): string {
     return $this->description;
   }
 
