@@ -19,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @filesource
  */
 abstract class AbstractTag implements TagInterface {
-  
+
   use ContentTrait,
       ComponentTrait;
 

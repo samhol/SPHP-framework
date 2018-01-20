@@ -36,7 +36,6 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
   private $title;
 
   /**
-   *
    * @var string|component 
    */
   private $trigger;

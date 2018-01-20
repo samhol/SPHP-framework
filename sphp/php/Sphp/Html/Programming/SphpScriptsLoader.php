@@ -69,8 +69,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://foundation.zurb.com/ Foundation
    */
   public function appendFoundation() {
-    return $this->appendJQuery()
-                    ->appendSrc('vendor/zurb/foundation/dist/js/foundation.min.js');
+    $this->appendJQuery();
+    $this->appendSrc('vendor/zurb/foundation/dist/js/foundation.min.js');
+    return $this;
   }
 
   /**
@@ -80,8 +81,8 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.ama3.com/anytime/ Any+Time
    */
   public function appendAnyTime() {
-    $this->appendJQuery()
-            ->appendSrc($this->paths['vendor'] . 'anytime.c.js');
+    $this->appendJQuery();
+    $this->appendSrc($this->paths['vendor'] . 'anytime.c.js');
     return $this;
   }
 
@@ -103,19 +104,8 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendLazyload() {
-    $this->appendJQuery()
-            ->appendSrc($this->paths['vendor'] . 'jquery.lazyloadxt.extra.min.js');
-    return $this;
-  }
-
-  /**
-   * Appends JavaScript files for build-in Photoalbum
-   *
-   * @return $this for a fluent interface
-   * @link   http://www.videojs.com/ Video.js
-   */
-  public function appendPhotoAlbum() {
-    $this->appendSrc($this->paths['app'] . 'PhotoAlbum.js');
+    $this->appendJQuery();
+    $this->appendSrc($this->paths['vendor'] . 'jquery.lazyloadxt.extra.min.js');
     return $this;
   }
 
@@ -126,9 +116,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendIonRangeSlider() {
-    $this->appendJQuery()
-            ->appendSrc($this->paths['vendor'] . 'ion.rangeSlider.min.js')
-            ->appendSrc($this->paths['app'] . 'init.ion.rangeSliders.js');
+    $this->appendJQuery();
+    $this->appendSrc($this->paths['vendor'] . 'ion.rangeSlider.min.js');
+    $this->appendSrc($this->paths['app'] . 'init.ion.rangeSliders.js');
     return $this;
   }
 
@@ -149,10 +139,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @return $this for a fluent interface
    */
   public function appendSPHP() {
-    $this
-            ->appendSrc('sphp/js/dist/all.js')
-            ->appendCode('sphp.initialize();')
-            ->appendVideojs();
+    $this->appendSrc('sphp/js/dist/all.js');
+    $this->appendCode('sphp.initialize();');
+    $this->appendVideojs();
     return $this;
   }
 

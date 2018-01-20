@@ -180,7 +180,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
   }
 
   /**
-   * Create a new iterator to iterate through content
+   * Creates a new iterator to iterate through content
    *
    * @return Traversable iterator
    */

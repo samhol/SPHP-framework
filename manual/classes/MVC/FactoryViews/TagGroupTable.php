@@ -7,6 +7,7 @@
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
+use Sphp\Html\Content;
 use Sphp\Html\Tables\Table;
 
 /**
@@ -16,7 +17,7 @@ use Sphp\Html\Tables\Table;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagGroupTable implements \Sphp\Html\Content {
+class TagGroupTable implements Content {
 
   use \Sphp\Html\ContentTrait;
 

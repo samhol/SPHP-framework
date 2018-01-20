@@ -11,6 +11,7 @@ use IteratorAggregate;
 use Sphp\Html\Content;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Container;
+use Traversable;
 
 /**
  * Implements a JavaScript component container
@@ -52,47 +53,56 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
    * @return $this for a fluent interface
    */
   public function append(Script $script) {
-    if ($script instanceof ScriptSrc) {
-      $this->container->offsetSet($script->getSrc(), $script);
-    } else {
-      $this->container->append($script);
-    }
+    $this->container->append($script);
     return $this;
   }
 
   /**
-   * Appends an {@link ScriptSrc} pointing to the given `src`
+   * Appends a script component pointing to the given `src`
    * 
    * @param  string $src the file path of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
-   * @return $this for a fluent interface
+   * @return ScriptSrc appended code component
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function appendSrc(string $src, bool $async = false) {
-    $this->append(new ScriptSrc($src, $async));
-    return $this;
+  public function appendSrc(string $src, bool $async = false): ScriptSrc {
+    $script = new ScriptSrc($src, $async);
+    $this->append($script);
+    return $script;
   }
 
   /**
-   * Appends an {@link ScriptCode} containing script commands
+   * Appends a script component containing script commands
    * 
    * @param  string $code script commands
-   * @return $this for a fluent interface
+   * @return ScriptCode appended code component
    */
-  public function appendCode($code) {
-    $this->append(new ScriptCode($code));
-    return $this;
+  public function appendCode($code): ScriptCode {
+    $script = new ScriptCode($code);
+    $this->append($script);
+    return $script;
   }
-  
+
   public function getHtml(): string {
     return $this->container->getHtml();
   }
 
-  public function getIterator() {
+  /**
+   * Creates a new iterator to iterate through content
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): Traversable {
     return $this->container->getIterator();
   }
 
+  /**
+   * Count the number of inserted script components
+   *
+   * @return int the number of inserted script components
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
   public function count(): int {
     $this->container->count();
   }
