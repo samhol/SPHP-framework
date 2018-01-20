@@ -25,7 +25,7 @@ class DrilldownMenu extends Menu {
   public function __construct($content = null) {
     parent::__construct($content);
     $this->vertical(true);
-    $this->attrs()->demand('data-drilldown');
+    $this->attributes()->demand('data-drilldown');
   }
 
   public function append(MenuItemInterface $content) {

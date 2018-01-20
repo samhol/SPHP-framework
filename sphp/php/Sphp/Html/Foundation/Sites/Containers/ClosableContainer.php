@@ -55,12 +55,12 @@ class ClosableContainer extends Div implements ClosableInterface {
   }
 
   public function setClosable($closable = true) {
-    $this->attrs()->set('data-closable', $closable);
+    $this->attributes()->set('data-closable', $closable);
     return $this;
   }
 
   public function isClosable(): bool {
-    return $this->attrs()->exists('data-closable');
+    return $this->attributes()->exists('data-closable');
   }
 
   public function contentToString(): string {

@@ -15,8 +15,8 @@ Document::head("foo")
         ->addMeta(Meta::applicationName("Foobar"))
         ->addMeta(Meta::keywords("foo", "bar", "foobar"));
 
-Document::body("foo")->append("Welcome to Foo!")->scripts()
-        ->appendSrc("foo.js")
-        ->appendCode("var foo = 2;");
+Document::body("foo")->append("Welcome to Foo!");
+Document::body("foo")->scripts()->appendSrc("foo.js");
+Document::body("foo")->scripts()->appendCode("var foo = 2;");
 
 echo Document::html("foo");

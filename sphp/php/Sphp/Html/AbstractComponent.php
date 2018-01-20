@@ -22,7 +22,7 @@ abstract class AbstractComponent extends AbstractTag {
    * @return string opening tag with attributes
    */
   public function getOpeningTag(): string {
-    $attrs = '' . $this->attrs();
+    $attrs = '' . $this->attributes();
     if ($attrs != '') {
       $attrs = ' ' . $attrs;
     }

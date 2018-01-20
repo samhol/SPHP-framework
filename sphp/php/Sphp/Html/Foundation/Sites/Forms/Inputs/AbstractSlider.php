@@ -32,7 +32,7 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
   public function __construct(float $start = 0, float $end = 100, float $step = 1) {
     parent::__construct('div');
     $this->cssClasses()->protect('slider');
-    $this->attrs()
+    $this->attributes()
             ->demand('data-start')
             ->demand('data-end')
             ->demand('data-step')
@@ -50,22 +50,22 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
     if ($step > $length) {
       throw new InvalidStateException("The step value '$step' exceeds the maximun value '$length'");
     }
-    $this->attrs()->set('data-step', $step);
+    $this->attributes()->set('data-step', $step);
     return $this;
   }
 
   public function setRange(float $min, float $max) {
-    $this->attrs()->set('data-start', $min);
-    $this->attrs()->set('data-end', $max);
+    $this->attributes()->set('data-start', $min);
+    $this->attributes()->set('data-end', $max);
     return $this;
   }
 
   public function getMin(): float {
-    return (float) $this->attrs()->getValue('data-start');
+    return (float) $this->attributes()->getValue('data-start');
   }
 
   public function getMax(): float {
-    return (float) $this->attrs()->getValue('data-end');
+    return (float) $this->attributes()->getValue('data-end');
   }
 
   public function disable(bool $disabled = true) {

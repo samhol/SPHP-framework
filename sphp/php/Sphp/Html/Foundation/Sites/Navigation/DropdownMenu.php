@@ -25,7 +25,7 @@ class DropdownMenu extends Menu {
   public function __construct($content = null) {
     parent::__construct($content);
     $this->cssClasses()->protect('dropdown');
-    $this->attrs()->demand('data-dropdown-menu');
+    $this->attributes()->demand('data-dropdown-menu');
   }
 
   public function append(MenuItemInterface $content) {

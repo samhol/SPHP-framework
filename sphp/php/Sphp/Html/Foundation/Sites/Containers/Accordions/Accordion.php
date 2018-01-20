@@ -33,7 +33,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
   public function __construct($content = null) {
     parent::__construct('ul');
     $this->cssClasses()->protect('accordion');
-    $this->attrs()->demand('data-accordion');
+    $this->attributes()->demand('data-accordion');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $c) {
         $this->append($c);
@@ -113,7 +113,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @return $this for a fluent interface
    */
   public function setSliderSpeed(int $speed) {
-    $this->attrs()->set('data-slide-speed', $speed);
+    $this->attributes()->set('data-slide-speed', $speed);
     return $this;
   }
 
@@ -125,7 +125,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    */
   public function allowMultiExpand(bool $allow = true) {
     $value = $allow ? 'true' : 'false';
-    $this->attrs()->set('data-multi-expand', $value);
+    $this->attributes()->set('data-multi-expand', $value);
     return $this;
   }
 
@@ -137,7 +137,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    */
   public function allowAllClosed(bool $allow = true) {
     $value = $allow ? 'true' : 'false';
-    $this->attrs()->set('data-allow-all-closed', $value);
+    $this->attributes()->set('data-allow-all-closed', $value);
     return $this;
   }
 

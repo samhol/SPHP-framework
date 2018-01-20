@@ -50,7 +50,7 @@ class Img extends EmptyTag implements ImgInterface {
    */
   public function __construct(string $src = '', string $alt = '') {
     parent::__construct('img');
-    $this->attrs()->demand('alt');
+    $this->attributes()->demand('alt');
     $this->setSrc($src)
             ->setAlt($alt);
   }
@@ -68,7 +68,7 @@ class Img extends EmptyTag implements ImgInterface {
     if (!Strings::startsWith($map, '#')) {
       $map = "#$map";
     }
-    $this->attrs()->set('usemap', $map);
+    $this->attributes()->set('usemap', $map);
     return $this;
   }
 
@@ -92,7 +92,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function setAlt(string $alt) {
-    $this->attrs()->set('alt', $alt);
+    $this->attributes()->set('alt', $alt);
     return $this;
   }
 
@@ -105,7 +105,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function getAlt(): string {
-    return $this->attrs()->getValue('alt');
+    return $this->attributes()->getValue('alt');
   }
 
   /**

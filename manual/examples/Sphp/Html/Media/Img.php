@@ -7,7 +7,7 @@ namespace Sphp\Html\Media;
         ->printHtml();
 Img::scale("manual/pics/crossbones.png", 1.2)
         ->setAlt("1.5 x Skull")
-        ->setAttr("title", "1.5 x original Skull")
+        ->setAttribute("title", "1.5 x original Skull")
         ->setLazy(true)
         ->printHtml();
 Img::scale("manual/pics/crossbones.png", 0.5)

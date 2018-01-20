@@ -44,14 +44,14 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
    */
   public function __construct($title = null, $content = null) {
     $div = new Div($content);
-    $div->attrs()->demand('data-tab-content');
+    $div->attributes()->demand('data-tab-content');
     $div->cssClasses()->protect('accordion-content');
     parent::__construct('li', null, $div);
     $this->bar = (new ContainerTag('a', $title));
     $this->bar->cssClasses()->protect('accordion-title');
-    $this->bar->attrs()->protect('href', '#');
+    $this->bar->attributes()->protect('href', '#');
     $this->cssClasses()->protect('accordion-item');
-    $this->attrs()->demand('data-accordion-item');
+    $this->attributes()->demand('data-accordion-item');
   }
 
   /**

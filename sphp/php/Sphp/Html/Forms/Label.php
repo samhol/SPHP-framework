@@ -44,26 +44,26 @@ class Label extends ContainerTag implements LabelInterface {
     if ($for instanceof IdentifiableInput) {
       $for = $for->identify();
     }
-    $this->attrs()->set('for', $for);
+    $this->attributes()->set('for', $for);
     return $this;
   }
 
   public function getFor() {
-    return $this->attrs()->getValue('for');
+    return $this->attributes()->getValue('for');
   }
 
   public function setForms($formIds) {
     if (is_array($formIds)) {
       $formIds = implode(' ', $formIds);
     }
-    $this->attrs()->set('form', $formIds);
+    $this->attributes()->set('form', $formIds);
     return $this;
   }
 
   public function getForms(): array {
     $result = [];
-    if ($this->attrs()->exists('form')) {
-      $result = explode(' ', $this->attrs()->getValue('form'));
+    if ($this->attributes()->exists('form')) {
+      $result = explode(' ', $this->attributes()->getValue('form'));
     }
     return $result;
   }

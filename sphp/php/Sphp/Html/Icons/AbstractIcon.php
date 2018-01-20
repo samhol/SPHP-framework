@@ -28,7 +28,7 @@ class AbstractIcon extends EmptyTag {
    */
   public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, true, $attrManager);
-    $this->attrs()->set('aria-hidden', 'true');
+    $this->attributes()->set('aria-hidden', 'true');
   }
 
 }

@@ -23,7 +23,7 @@ trait IdentifiableTrait {
    *
    * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs(): HtmlAttributeManager;
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Identifies the element with an unique id attribute.
@@ -37,7 +37,7 @@ trait IdentifiableTrait {
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(int $length = 16): string {
-    return $this->attrs()->identify($length);
+    return $this->attributes()->identify($length);
   }
 
   /**
@@ -47,7 +47,7 @@ trait IdentifiableTrait {
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function hasId(): bool {
-    return $this->attrs()->hasId();
+    return $this->attributes()->hasId();
   }
 
 }

@@ -29,17 +29,17 @@ class TabController extends AbstractContainerTag implements TabControllerInterfa
    */
   public function __construct(Tab $tabPanel, $title = null) {
     $innerContainer = new ContainerTag('a', $title);
-    $innerContainer->attrs()->protect('href', '#' . $tabPanel->identify());
+    $innerContainer->attributes()->protect('href', '#' . $tabPanel->identify());
     parent::__construct('li', null, $innerContainer);
     $this->cssClasses()->protect('tabs-title');
   }
 
   public function setActive(bool $active = true) {
     if ($active) {
-      $this->attrs()->setAria('aria-selected', 'true');
+      $this->attributes()->setAria('aria-selected', 'true');
       $this->addCssClass('is-active');
     } else {
-      $this->attrs()->remove('aria-selected');
+      $this->attributes()->remove('aria-selected');
       $this->removeCssClass('is-active');
     }
     return $this;

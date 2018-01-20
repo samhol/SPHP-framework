@@ -59,7 +59,7 @@ class Source extends EmptyTag implements MultimediaSource, LazyMedia {
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function setType(string $type) {
-    $this->attrs()->set('type', $type);
+    $this->attributes()->set('type', $type);
     return $this;
   }
 
@@ -70,7 +70,7 @@ class Source extends EmptyTag implements MultimediaSource, LazyMedia {
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function getType() {
-    return $this->attrs()->getValue('type');
+    return $this->attributes()->getValue('type');
   }
 
 }

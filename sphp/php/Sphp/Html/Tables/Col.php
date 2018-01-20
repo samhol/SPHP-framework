@@ -49,9 +49,9 @@ class Col extends EmptyTag implements TableContent {
    */
   public function setSpan(int $value) {
     if ($value >= 2) {
-      return $this->setAttr('span', $value);
+      return $this->setAttribute('span', $value);
     } else {
-      return $this->removeAttr('span');
+      return $this->removeAttribute('span');
     }
   }
 
@@ -65,7 +65,7 @@ class Col extends EmptyTag implements TableContent {
    * @link   http://www.w3schools.com/tags/att_col_span.asp href attribute
    */
   public function getSpan(): int {
-    $span = (int) $this->getAttr('span');
+    $span = (int) $this->getAttribute('span');
     return $span > 1 ? $span : 1;
   }
 

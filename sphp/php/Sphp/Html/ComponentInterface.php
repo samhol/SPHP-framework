@@ -27,7 +27,7 @@ interface ComponentInterface extends IdentifiableContent, CssClassifiableContent
    * 
    * @return HtmlAttributeManager the attribute manager
    */
-  public function attrs(): HtmlAttributeManager;
+  public function attributes(): HtmlAttributeManager;
 
   /**
    * Returns the attribute object containing inline styles
@@ -58,7 +58,7 @@ interface ComponentInterface extends IdentifiableContent, CssClassifiableContent
    * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute name or value is invalid
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttr(string $name, $value = null);
+  public function setAttribute(string $name, $value = null);
 
   /**
    * Removes given attribute if it is not locked
@@ -67,7 +67,7 @@ interface ComponentInterface extends IdentifiableContent, CssClassifiableContent
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function removeAttr(string $attrName);
+  public function removeAttribute(string $attrName);
 
   /**
    * Returns the value of a given attribute name or an empty string if attribute is not set
@@ -75,7 +75,7 @@ interface ComponentInterface extends IdentifiableContent, CssClassifiableContent
    * @param  string $attrName the name of the attribute
    * @return string the value of the attribute
    */
-  public function getAttr(string $attrName);
+  public function getAttribute(string $attrName);
 
   /**
    * Checks if an attribute exists
@@ -83,7 +83,7 @@ interface ComponentInterface extends IdentifiableContent, CssClassifiableContent
    * @param  string $attrName the name of the attribute
    * @return boolean (attribute exists)
    */
-  public function attrExists(string $attrName): bool;
+  public function attributeExists(string $attrName): bool;
 }
 
 

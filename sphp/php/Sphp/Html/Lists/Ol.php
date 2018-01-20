@@ -46,7 +46,7 @@ class Ol extends StandardList {
    * @link   http://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
    */
   public function setReversed(bool $reversed = true) {
-    $this->attrs()->set('reversed', $reversed);
+    $this->attributes()->set('reversed', $reversed);
     return $this;
   }
 
@@ -61,7 +61,7 @@ class Ol extends StandardList {
    * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
   public function setStart(int $start) {
-    $this->attrs()->set('start', $start);
+    $this->attributes()->set('start', $start);
     return $this;
   }
 
@@ -76,8 +76,8 @@ class Ol extends StandardList {
    */
   public function getStart(): int {
     $start = 1;
-    if ($this->attrs()->exists('start')) {
-      $start = $this->attrs()->getValue('start');
+    if ($this->attributes()->exists('start')) {
+      $start = $this->attributes()->getValue('start');
     }
     return (int) $start;
   }
@@ -90,7 +90,7 @@ class Ol extends StandardList {
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
   public function setListType(string $type = '1') {
-    $this->attrs()->set('type', $type);
+    $this->attributes()->set('type', $type);
     return $this;
   }
 
@@ -102,8 +102,8 @@ class Ol extends StandardList {
    */
   public function getListType(): string {
     $type = '1';
-    if ($this->attrs()->exists('type')) {
-      $type = $this->attrs()->getValue('type');
+    if ($this->attributes()->exists('type')) {
+      $type = $this->attributes()->getValue('type');
     }
     return $type;
   }

@@ -56,7 +56,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @return $this for a fluent interface
    */
   public function setDefault($default = true) {
-    return $this->setAttr('default', (bool) $default);
+    return $this->setAttribute('default', (bool) $default);
   }
 
   /**
@@ -65,7 +65,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @param  boolean true if the track is default, otherwise false
    */
   public function isDefault(): bool {
-    return $this->attrExists('default');
+    return $this->attributeExists('default');
   }
 
   /**
@@ -76,7 +76,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function setSrc(string $src) {
-    return $this->setAttr('src', $src);
+    return $this->setAttribute('src', $src);
   }
 
   /**
@@ -86,7 +86,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function getSrc(): string {
-    return $this->getAttr('src');
+    return $this->getAttribute('src');
   }
 
   /**
@@ -105,7 +105,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_kind.asp kind attribute
    */
   public function setKind(string $kind) {
-    return $this->setAttr('kind', $kind);
+    return $this->setAttribute('kind', $kind);
   }
 
   /**
@@ -123,7 +123,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_kind.asp kind attribute
    */
   public function getKind() {
-    return $this->getAttr('kind');
+    return $this->getAttribute('kind');
   }
 
   /**
@@ -137,7 +137,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
    */
   public function setSrcLang($srclang) {
-    return $this->setAttr('srclang', $srclang);
+    return $this->setAttribute('srclang', $srclang);
   }
 
   /**
@@ -148,7 +148,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
    */
   public function getSrcLang() {
-    return $this->getAttr('srclang');
+    return $this->getAttribute('srclang');
   }
 
   /**
@@ -161,7 +161,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_label.asp label attribute
    */
   public function setLabel($label) {
-    return $this->setAttr('label', $label);
+    return $this->setAttribute('label', $label);
   }
 
   /**
@@ -171,7 +171,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_label.asp label attribute
    */
   public function getLabel() {
-    return $this->getAttr('label');
+    return $this->getAttribute('label');
   }
 
 }

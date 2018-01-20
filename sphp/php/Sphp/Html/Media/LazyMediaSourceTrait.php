@@ -29,7 +29,7 @@ trait LazyMediaSourceTrait {
    * 
    * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs(): HtmlAttributeManager;
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Sets or unsets the media source loading as lazy
@@ -45,12 +45,12 @@ trait LazyMediaSourceTrait {
     if ($lazy && !$this->isLazy()) {
       $src = $this->getSrc();
       $this->setSrc(false);
-      $this->attrs()->classes()->add($classes);
-      $this->attrs()->set('data-src', $src);
+      $this->attributes()->classes()->add($classes);
+      $this->attributes()->set('data-src', $src);
     } else if ($this->isLazy()) {
-      $this->attrs()->classes()->remove($classes);
-      $this->setSrc($this->attrs()->getValue('data-src'));
-      $this->attrs()->remove('data-src');
+      $this->attributes()->classes()->remove($classes);
+      $this->setSrc($this->attributes()->getValue('data-src'));
+      $this->attributes()->remove('data-src');
     }
     return $this;
   }
@@ -61,8 +61,8 @@ trait LazyMediaSourceTrait {
    * @return boolean true if the loading is lazy, false otherwise
    */
   public function isLazy(): bool {
-    return $this->attrs()->exists('data-src') &&
-            $this->attrs()->classes()->contains(['lazy-hidden', 'lazy-loaded']);
+    return $this->attributes()->exists('data-src') &&
+            $this->attributes()->classes()->contains(['lazy-hidden', 'lazy-loaded']);
   }
 
   /**
@@ -76,9 +76,9 @@ trait LazyMediaSourceTrait {
    */
   public function setSrc(string $src) {
     if ($this->isLazy()) {
-      $this->attrs()->set('data-src', $src);
+      $this->attributes()->set('data-src', $src);
     } else {
-      $this->attrs()->set('src', $src);
+      $this->attributes()->set('src', $src);
     }
     return $this;
   }
@@ -93,9 +93,9 @@ trait LazyMediaSourceTrait {
    */
   public function getSrc(): string {
     if ($this->isLazy()) {
-      return $this->attrs()->getValue('data-src');
+      return $this->attributes()->getValue('data-src');
     } else {
-      return $this->attrs()->getValue('src');
+      return $this->attributes()->getValue('src');
     }
   }
 

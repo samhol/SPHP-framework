@@ -23,7 +23,7 @@ trait SizeableTrait {
    * 
    * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs(): HtmlAttributeManager;
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Checks if the component has width defined
@@ -31,7 +31,7 @@ trait SizeableTrait {
    * @return boolean true if the width is set and false otherwise
    */
   public function hasWidth(): bool {
-    return $this->attrs()->exists('width');
+    return $this->attributes()->exists('width');
   }
 
   /**
@@ -42,7 +42,7 @@ trait SizeableTrait {
    * @return int width of the component
    */
   public function getWidth(): int {
-    return (int) $this->attrs()->getValue('width');
+    return (int) $this->attributes()->getValue('width');
   }
 
   /**
@@ -52,7 +52,7 @@ trait SizeableTrait {
    * @return $this for a fluent interface
    */
   public function setWidth(int $width) {
-    $this->attrs()->set('width', $width);
+    $this->attributes()->set('width', $width);
     return $this;
   }
 
@@ -62,7 +62,7 @@ trait SizeableTrait {
    * @return $this for a fluent interface
    */
   public function unsetWidth() {
-    $this->attrs()->remove('width');
+    $this->attributes()->remove('width');
     return $this;
   }
 
@@ -74,7 +74,7 @@ trait SizeableTrait {
    * @return int height of the component or `false` if not set
    */
   public function getHeight(): int {
-    return (int) $this->attrs()->getValue('height');
+    return (int) $this->attributes()->getValue('height');
   }
   /**
    * Checks if the component has height defined
@@ -82,7 +82,7 @@ trait SizeableTrait {
    * @return boolean true if the height is set and false otherwise
    */
   public function hasHeight(): bool {
-    return $this->attrs()->exists('height');
+    return $this->attributes()->exists('height');
   }
 
   /**
@@ -92,7 +92,7 @@ trait SizeableTrait {
    * @return $this for a fluent interface
    */
   public function setHeight(int $height) {
-    $this->attrs()->set('height', $height);
+    $this->attributes()->set('height', $height);
     return $this;
   }
 
@@ -102,7 +102,7 @@ trait SizeableTrait {
    * @return $this for a fluent interface
    */
   public function unsetHeight() {
-    $this->attrs()->remove('height');
+    $this->attributes()->remove('height');
     return $this;
   }
 

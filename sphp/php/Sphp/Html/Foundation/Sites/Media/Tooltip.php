@@ -36,7 +36,7 @@ class Tooltip implements Content {
    */
   public function __construct(ComponentInterface $toolTipped, $tip = null) {
     $this->toolTipped = $toolTipped;
-    $this->toolTipped->attrs()
+    $this->toolTipped->attributes()
             ->demand('data-tooltip')
             ->protect('aria-haspopup', 'true')
             ->set('data-disable-hover', 'false');
@@ -71,7 +71,7 @@ class Tooltip implements Content {
    * @return $this for a fluent interface
    */
   public function setTip($tip) {
-    $this->toolTipped->attrs()->set('title', $tip);
+    $this->toolTipped->attributes()->set('title', $tip);
     return $this;
   }
 

@@ -56,7 +56,7 @@ class PhotoAlbum extends AbstractContainerComponent {
             ->setHeading($albumName)
             ->identify();
     $this->cssClasses()->protect("sphp-photoAlbum reveal-modal full");
-    $this->attrs()->demand("data-reveal");
+    $this->attributes()->demand("data-reveal");
     //->appendScriptPath("sph/js/vendor/jquery.js")
     //->appendScriptPath("sph/js/vendor/jquery.unveil.min.js")
     //->appendScriptPath("sph/js/sphp/PhotoAlbum.js");
@@ -185,11 +185,11 @@ class PhotoAlbum extends AbstractContainerComponent {
     foreach ($files as $img_index => $file) {
       if (ImageUtils::isImagineImage($file)) {
         $img = (new Img("sph/pics/loader.gif", "Photo"))
-                ->setAttr("data-src", \Sphp\Images\SCALER . '?w=91&amp;h=68&amp;src=' . $file);
+                ->setAttribute("data-src", \Sphp\Images\SCALER . '?w=91&amp;h=68&amp;src=' . $file);
         $thumbnailDiv = (new Div(array($img)))
-                ->setAttr("data-dir-path", $file->getPath())
-                ->setAttr("data-file-path", $file)
-                ->setAttr("data-img_index", $img_index)
+                ->setAttribute("data-dir-path", $file->getPath())
+                ->setAttribute("data-file-path", $file)
+                ->setAttribute("data-img_index", $img_index)
                 ->addCssClass("thumbnail")
                 ->setDocumentTitle("Preview picture");
         $thumbnailBrowser[] = $thumbnailDiv;
@@ -217,11 +217,11 @@ class PhotoAlbum extends AbstractContainerComponent {
     foreach ($files as $img_index => $file) {
       if (ImageUtils::isImagineImage($file)) {
         $img = (new Img("sph/pics/loader.gif", "Photo"))
-                ->setAttr("data-src", \Sphp\Images\SCALER . 'src=' . $file)
-                ->setAttr("data-scaler-path", \Sphp\Images\SCALER . "?src=$file");
+                ->setAttribute("data-src", \Sphp\Images\SCALER . 'src=' . $file)
+                ->setAttribute("data-scaler-path", \Sphp\Images\SCALER . "?src=$file");
         $thumbnailDiv = (new Div(array($img)))
-                ->setAttr("data-file-path", $file)
-                ->setAttr("data-img_index", $img_index)
+                ->setAttribute("data-file-path", $file)
+                ->setAttribute("data-img_index", $img_index)
                 ->addCssClass("thumbnail");
         $thumbnailDiv->inlineStyles()->setProperty('display', 'none');
         $photoArea[] = $thumbnailDiv;
@@ -291,9 +291,9 @@ class PhotoAlbum extends AbstractContainerComponent {
         $li = new Li();
         $li->append([new Img("sph/pics/tree/photo.png"), $name])
                 ->addCssClass("file")
-                ->setAttr("data-file-dir-path", $currentDir)
-                ->setAttr("data-file-path", $dir . $name)
-                ->setAttr("data-img_index", $img_index);
+                ->setAttribute("data-file-dir-path", $currentDir)
+                ->setAttribute("data-file-path", $dir . $name)
+                ->setAttribute("data-img_index", $img_index);
         $img_index++;
         $rootComponent->append($li);
       } else if (count($file) > 0) { //directory (not empty)
@@ -303,7 +303,7 @@ class PhotoAlbum extends AbstractContainerComponent {
                 ->append(new Img("sph/pics/tree/openedFolder.png"))
                 ->append($name)
                 ->addCssClass("folder")
-                ->setAttr("data-dir-path", $dir . $name);
+                ->setAttribute("data-dir-path", $dir . $name);
         $li[] = $subComponent;
         $rootComponent->append($li);
         //$li->addStyleName("folder");
@@ -346,8 +346,8 @@ class PhotoAlbum extends AbstractContainerComponent {
    */
   public function getOpeningButton($content) {
     $atag = new HyperlinkButton("#", $content);
-    $atag->setAttr("data-reveal-id", $this->getId())
-            ->setAttr("data-reveal", "");
+    $atag->setAttribute("data-reveal-id", $this->getId())
+            ->setAttribute("data-reveal", "");
     return $atag;
   }
 

@@ -97,7 +97,7 @@ class TopBar extends AbstractBar {
   public function barTitle($title = null) {
     if ($title !== null) {
       $this->titleArea = new Div($title);
-      $this->titleArea->attrs()->classes()->protect('top-bar-title');
+      $this->titleArea->attributes()->classes()->protect('top-bar-title');
 
       $this->titleArea->replaceContent($title);
     } else {

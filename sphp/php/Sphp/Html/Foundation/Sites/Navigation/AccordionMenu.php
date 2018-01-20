@@ -26,7 +26,7 @@ class AccordionMenu extends Menu {
   public function __construct($content = null) {
     parent::__construct($content);
     $this->cssClasses()->protect('vertical accordion-menu');
-    $this->attrs()->demand('data-accordion-menu');
+    $this->attributes()->demand('data-accordion-menu');
   }
 
   public function append(MenuItemInterface $content) {

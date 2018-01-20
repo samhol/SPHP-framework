@@ -100,22 +100,22 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   }
 
   public function autoplay(bool $autoplay = true) {
-    $this->attrs()->set('autoplay', (bool) $autoplay);
+    $this->attributes()->set('autoplay', (bool) $autoplay);
     return $this;
   }
 
   public function loop(bool $loop = true) {
-    $this->attrs()->set('loop', (bool) $loop);
+    $this->attributes()->set('loop', (bool) $loop);
     return $this;
   }
 
   public function mute(bool $muted = true) {
-    $this->attrs()->set('muted', (bool) $muted);
+    $this->attributes()->set('muted', (bool) $muted);
     return $this;
   }
 
   public function showControls(bool $show = true) {
-    $this->attrs()->set('controls', (bool) $show);
+    $this->attributes()->set('controls', (bool) $show);
     return $this;
   }
 

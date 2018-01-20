@@ -20,15 +20,15 @@ abstract class AbstractCell extends ContainerTag implements ContainerCell {
 
   public function setColspan(int $value = null) {
     if ($value <= 1) {
-      $this->attrs()->remove('colspan');
+      $this->attributes()->remove('colspan');
     } else {
-      $this->attrs()->set('colspan', $value);
+      $this->attributes()->set('colspan', $value);
     }
     return $this;
   }
 
   public function getColspan(): int {
-    $span = (int) $this->getAttr('colspan');
+    $span = (int) $this->getAttribute('colspan');
     if ($span < 1) {
       $span = 1;
     }
@@ -37,15 +37,15 @@ abstract class AbstractCell extends ContainerTag implements ContainerCell {
 
   public function setRowspan(int $value = null) {
     if ($value <= 1) {
-      $this->attrs()->remove('rowspan');
+      $this->attributes()->remove('rowspan');
     } else {
-      $this->attrs()->set('rowspan', $value);
+      $this->attributes()->set('rowspan', $value);
     }
     return $this;
   }
 
   public function getRowspan(): int {
-    $span = (int) $this->getAttr('rowspan');
+    $span = (int) $this->getAttribute('rowspan');
     if ($span <= 1) {
       $span = 1;
     }

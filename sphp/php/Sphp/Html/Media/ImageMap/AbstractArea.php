@@ -30,7 +30,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    */
   public function __construct(string $shape, string $href = null, string $alt = null) {
     parent::__construct('area');
-    $this->attrs()->protect('shape', $shape);
+    $this->attributes()->protect('shape', $shape);
     if ($href !== null) {
       $this->setHref($href);
     }
@@ -46,7 +46,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
   public function getShape(): string {
-    return $this->getAttr('shape');
+    return $this->getAttribute('shape');
   }
 
   /**
@@ -57,8 +57,8 @@ abstract class AbstractArea extends EmptyTag implements Area {
    */
   public function getCoordinates(): array {
     $coords = [];
-    if ($this->attrs()->exists('coords')) {
-      $rawCoords = $this->getAttr('coords');
+    if ($this->attributes()->exists('coords')) {
+      $rawCoords = $this->getAttribute('coords');
       $toInt = function($coord) {
         return (int) $coord;
       };
@@ -75,7 +75,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
    */
   public function setRelationship($rel) {
-    $this->attrs()->set('rel', $rel);
+    $this->attributes()->set('rel', $rel);
     return $this;
   }
 
@@ -85,7 +85,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @return string the shape of the area
    */
   public function getRelationship() {
-    return $this->getAttr('shape');
+    return $this->getAttribute('shape');
   }
 
   /**
@@ -106,7 +106,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt($alt) {
-    $this->attrs()->set('alt', $alt);
+    $this->attributes()->set('alt', $alt);
     return $this;
   }
 
@@ -127,7 +127,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function getAlt() {
-    return $this->attrs()->getValue('alt');
+    return $this->attributes()->getValue('alt');
   }
 
 }

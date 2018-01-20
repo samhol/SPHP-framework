@@ -101,44 +101,44 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function selectMultiple(bool $multiple = true) {
-    $this->attrs()->set('multiple', $multiple);
+    $this->attributes()->set('multiple', $multiple);
     return $this;
   }
 
   public function setSize(int $size = null) {
-    $this->attrs()->set('size', $size);
+    $this->attributes()->set('size', $size);
     return $this;
   }
 
   public function setRequired(bool $required = true) {
-    $this->attrs()->setBoolean('required', $required);
+    $this->attributes()->setBoolean('required', $required);
     return $this;
   }
 
   public function isRequired(): bool {
-    return $this->attrExists('required');
+    return $this->attributeExists('required');
   }
 
   public function getName(): string {
-    return (string) $this->attrs()->getValue('name');
+    return (string) $this->attributes()->getValue('name');
   }
 
   public function setName(string $name) {
-    $this->attrs()->set('name', $name);
+    $this->attributes()->set('name', $name);
     return $this;
   }
 
   public function isNamed(): bool {
-    return $this->attrs()->exists('name');
+    return $this->attributes()->exists('name');
   }
 
   public function disable(bool $disabled = true) {
-    $this->attrs()->setBoolean('disabled', $disabled);
+    $this->attributes()->setBoolean('disabled', $disabled);
     return $this;
   }
 
   public function isEnabled(): bool {
-    return !$this->attrs()->exists('disabled');
+    return !$this->attributes()->exists('disabled');
   }
 
 }

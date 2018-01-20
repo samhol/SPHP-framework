@@ -58,7 +58,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
    * @link   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
    */
   public function setAriaLabel($label) {
-    $this->attrs()->setAria('label', $label);
+    $this->attributes()->setAria('label', $label);
     return $this;
   }
 

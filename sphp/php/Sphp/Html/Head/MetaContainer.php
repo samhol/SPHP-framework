@@ -66,7 +66,7 @@ class MetaContainer implements Content, Iterator, TraversableContent, NonVisualC
    * @return $this for a fluent interface
    */
   public function addMeta(MetaData $content) {
-    if ($content->attrExists('charset')) {
+    if ($content->attributeExists('charset')) {
       $this->metaData['charset'] = $content;
     } else if ($content->hasNamedContent()) {
       $this->metaData['name'][$content->getName()] = $content;

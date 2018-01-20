@@ -52,14 +52,14 @@ class AnyTimeInput extends InputTag {
    */
   public function __construct(string $name = null, $value = null, $locale = self::LANG_EN) {
     parent::__construct($name, $value, 17, 17);
-    $this->attrs()->demand('data-anytime');
+    $this->attributes()->demand('data-anytime');
     $this->identify();
     $this->setDateTimeFormat()
             ->setLocale($locale);
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attrs()->set('placeholder', $placeholder);
+    $this->attributes()->set('placeholder', $placeholder);
     return $this;
   }
 
@@ -76,7 +76,7 @@ class AnyTimeInput extends InputTag {
    */
   public function setLocale($locale) {
     $this->locale = $locale;
-    $this->setAttr('data-locale', $locale);
+    $this->setAttribute('data-locale', $locale);
     return $this;
   }
 
@@ -128,7 +128,7 @@ class AnyTimeInput extends InputTag {
    */
   public function setDateTimeFormat($format = '%Y-%m-%d %H:%i') {
     $this->format = $format;
-    $this->setAttr('data-format', $format);
+    $this->setAttribute('data-format', $format);
     return $this;
   }
 

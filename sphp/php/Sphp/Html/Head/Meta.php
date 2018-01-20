@@ -31,11 +31,11 @@ class Meta extends EmptyTag implements MetaData {
    */
   public function __construct(array $attrs = []) {
     parent::__construct('meta');
-    $this->attrs()->merge($attrs);
+    $this->attributes()->merge($attrs);
   }
 
   public function hasNamedContent(): bool {
-    return $this->attrExists('name');
+    return $this->attributeExists('name');
   }
 
   public function hasName(string $name): bool {
@@ -43,11 +43,11 @@ class Meta extends EmptyTag implements MetaData {
   }
 
   public function getName() {
-    return $this->getAttr('name');
+    return $this->getAttribute('name');
   }
 
   public function hasHttpEquivContent(): bool {
-    return $this->attrExists('http-equiv');
+    return $this->attributeExists('http-equiv');
   }
 
   public function hasHttpEquiv(string $http_equiv): bool {
@@ -55,11 +55,11 @@ class Meta extends EmptyTag implements MetaData {
   }
 
   public function getHttpEquiv() {
-    return $this->getAttr('http_equiv');
+    return $this->getAttribute('http_equiv');
   }
 
   public function hasPropertyContent(): bool {
-    return $this->attrExists('property');
+    return $this->attributeExists('property');
   }
 
   /**
@@ -85,7 +85,7 @@ class Meta extends EmptyTag implements MetaData {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function getProperty() {
-    return $this->getAttr('property');
+    return $this->getAttribute('property');
   }
 
   /**

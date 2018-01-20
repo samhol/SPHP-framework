@@ -31,7 +31,7 @@ class Slider extends AbstractSlider {
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step);
-    $this->attrs()->protect('data-type', 'single');
+    $this->attributes()->protect('data-type', 'single');
   }
 
   /**
@@ -45,7 +45,7 @@ class Slider extends AbstractSlider {
     if ($this->getMin() > $value || $value > $this->getMax()) {
       throw new InvalidStateException("The value ($value) of the slider is not between ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->attrs()->set('data-from', $value);
+    $this->attributes()->set('data-from', $value);
     parent::setSubmitValue($value);
     return $this;
   }

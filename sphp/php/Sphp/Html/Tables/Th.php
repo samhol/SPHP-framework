@@ -55,7 +55,7 @@ class Th extends AbstractCell {
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
   public function setScope(string $scope = null) {
-    return $this->setAttr('scope', $scope);
+    return $this->setAttribute('scope', $scope);
   }
 
   /**
@@ -65,7 +65,7 @@ class Th extends AbstractCell {
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
   public function getScope(): string {
-    return (string) $this->getAttr('scope');
+    return (string) $this->getAttribute('scope');
   }
 
 }

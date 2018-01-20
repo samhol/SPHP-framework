@@ -49,7 +49,7 @@ class Popup extends Div {
     parent::__construct($content);
     $this->identify();
     $this->cssClasses()->protect('reveal');
-    $this->attrs()->demand('data-reveal');
+    $this->attributes()->demand('data-reveal');
     $this->closeButton = new CloseButton();
     $this->layoutManager = new PopupLayoutManager($this);
   }
@@ -103,7 +103,7 @@ class Popup extends Div {
    * @return ComponentInterface a controller component pointing to this Modal
    */
   public function createController(ComponentInterface $content): ComponentInterface {
-    $content->setAttr('data-open', $this->identify());
+    $content->setAttribute('data-open', $this->identify());
     return $content;
   }
 

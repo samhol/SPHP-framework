@@ -24,7 +24,7 @@ class MagellanMenu extends Menu {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->attrs()->demand('data-magellan');
+    $this->attributes()->demand('data-magellan');
   }
 
 }

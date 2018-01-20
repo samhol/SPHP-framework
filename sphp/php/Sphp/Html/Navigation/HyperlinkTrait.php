@@ -24,7 +24,7 @@ trait HyperlinkTrait {
    *
    * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs(): HtmlAttributeManager;
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Sets the value of the href attribute (The URL of the link)
@@ -39,7 +39,7 @@ trait HyperlinkTrait {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function setHref(string $href) {
-    $this->attrs()->set('href', $href);
+    $this->attributes()->set('href', $href);
     return $this;
   }
 
@@ -55,7 +55,7 @@ trait HyperlinkTrait {
    * @link http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function getHref() {
-    return $this->attrs()->getValue('href');
+    return $this->attributes()->getValue('href');
   }
 
   /**
@@ -72,9 +72,9 @@ trait HyperlinkTrait {
    */
   public function setTarget(string $target = null) {
     if (!Strings::isEmpty($target)) {
-      $this->attrs()->set('target', $target);
+      $this->attributes()->set('target', $target);
     } else {
-      $this->attrs()->remove('target');
+      $this->attributes()->remove('target');
     }
     return $this;
   }
@@ -91,7 +91,7 @@ trait HyperlinkTrait {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function getTarget() {
-    return $this->attrs()->getValue('target');
+    return $this->attributes()->getValue('target');
   }
 
   /**

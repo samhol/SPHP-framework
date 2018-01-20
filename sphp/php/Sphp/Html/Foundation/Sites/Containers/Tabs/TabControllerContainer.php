@@ -32,7 +32,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
     parent::__construct('ul');
     $this->identify();
     $this->cssClasses()->protect('tabs');
-    $this->attrs()->demand('data-tabs');
+    $this->attributes()->demand('data-tabs');
   }
 
 
@@ -99,7 +99,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    */
   public function matchHeight(bool $match = true) {
     $value = $match ? 'true' : 'false';
-    $this->attrs()->set('data-match-height', $value);
+    $this->attributes()->set('data-match-height', $value);
     return $this;
   }
 

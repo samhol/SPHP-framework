@@ -30,7 +30,7 @@ class SingleAccordion extends AbstractContainerTag {
     $pane = new Pane($paneTitle, $paneContent);
     parent::__construct('ul', null, $pane);
     $this->cssClasses()->protect('accordion');
-    $this->attrs()->demand('data-accordion');
+    $this->attributes()->demand('data-accordion');
   }
 
   /**

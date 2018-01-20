@@ -75,7 +75,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     parent::__construct('ul');
     $this->cssClasses()
             ->protect('pagination');
-    $this->attrs()
+    $this->attributes()
             ->protect('role', 'menubar')
             ->setAria('label', 'Pagination');
     $this->target = $target;
@@ -237,7 +237,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   public function getEllipsis(): Li {
     $ellipsis = new Li();
     $ellipsis->cssClasses()->protect('ellipsis');
-    $ellipsis->attrs()->protect('aria-hidden', 'true');
+    $ellipsis->attributes()->protect('aria-hidden', 'true');
     return $ellipsis;
   }
 

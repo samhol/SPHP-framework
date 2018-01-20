@@ -25,7 +25,7 @@ trait AjaxLoaderTrait {
    *
    * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs(): HtmlAttributeManager;
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Loads the data from the server using jQuery's Ajax capabilities and
@@ -35,7 +35,7 @@ trait AjaxLoaderTrait {
    * @return $this for a fluent interface
    */
   public function ajaxPrepend(string $url) {
-    $this->attrs()
+    $this->attributes()
             ->set('data-sphp-ajax-prepend', $url);
     return $this;
   }
@@ -48,7 +48,7 @@ trait AjaxLoaderTrait {
    * @return $this for a fluent interface
    */
   public function ajaxAppend(string $url) {
-    $this->attrs()
+    $this->attributes()
             ->set('data-sphp-ajax-append', $url);
     return $this;
   }

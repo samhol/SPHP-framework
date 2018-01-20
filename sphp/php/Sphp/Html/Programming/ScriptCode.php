@@ -47,7 +47,7 @@ class ScriptCode extends ContainerTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType(string $type) {
-    return $this->setAttr('type', $type);
+    return $this->setAttribute('type', $type);
   }
 
 }

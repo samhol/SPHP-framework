@@ -50,7 +50,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function setName(string $name) {
-    $this->attrs()->set('name', $name);
+    $this->attributes()->set('name', $name);
     return $this;
   }
 
@@ -61,7 +61,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function getName() {
-    return $this->attrs()->getValue('name');
+    return $this->attributes()->getValue('name');
   }
 
   /**
@@ -75,7 +75,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setSeamless(bool $seamless = true) {
-    return $this->setAttr('seamless', $seamless);
+    return $this->setAttribute('seamless', $seamless);
   }
 
   /**
@@ -103,7 +103,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
   public function setSandbox(string $sandbox) {
-    return $this->setAttr('sandbox', $sandbox);
+    return $this->setAttribute('sandbox', $sandbox);
   }
 
   /**
@@ -130,7 +130,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
   public function getSandbox() {
-    return $this->getAttr('sandbox');
+    return $this->getAttribute('sandbox');
   }
 
 }

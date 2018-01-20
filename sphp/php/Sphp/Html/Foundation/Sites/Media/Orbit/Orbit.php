@@ -63,7 +63,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
     $this->next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
     $this->cssClasses()
             ->protect('orbit');
-    $this->attrs()
+    $this->attributes()
             ->protect('role', 'region')
             ->setAria('label', $ariaLabel)
             ->demand('data-orbit');
@@ -99,9 +99,9 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   public function showBullets($visible = true) {
     $this->bulletsVisible = (boolean) $visible;
     if ($this->bulletsVisible) {
-      $this->attrs()->set('data-bullets', 'true');
+      $this->attributes()->set('data-bullets', 'true');
     } else {
-      $this->attrs()->set('data-bullets', 'false');
+      $this->attributes()->set('data-bullets', 'false');
     }
     return $this;
   }
@@ -116,9 +116,9 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   public function showNavigationButtons($visible = true) {
     $this->navButtonsVisible = (boolean) $visible;
     if ($this->navButtonsVisible) {
-      $this->attrs()->set('data-nav-buttons', 'true');
+      $this->attributes()->set('data-nav-buttons', 'true');
     } else {
-      $this->attrs()->set('data-nav-buttons', 'false');
+      $this->attributes()->set('data-nav-buttons', 'false');
     }
     return $this;
   }
@@ -130,7 +130,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return $this for a fluent interface
    */
   public function autoplay($autoplay = true) {
-    $this->attrs()->set('data-auto-play', $autoplay ? 'true' : 'false');
+    $this->attributes()->set('data-auto-play', $autoplay ? 'true' : 'false');
     return $this;
   }
 
@@ -142,7 +142,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return $this for a fluent interface
    */
   public function setTimerDelay($value = 5000) {
-    $this->attrs()->set('data-timer-delay', $value);
+    $this->attributes()->set('data-timer-delay', $value);
     return $this;
   }
 
@@ -153,7 +153,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return $this for a fluent interface
    */
   public function loop($loop = true) {
-    $this->attrs()->set('data-infinite-wrap', $loop ? 'true' : 'false');
+    $this->attributes()->set('data-infinite-wrap', $loop ? 'true' : 'false');
     return $this;
   }
 
@@ -164,7 +164,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return $this for a fluent interface
    */
   public function accessibility($accessible = true) {
-    $this->attrs()->set('data-accessible', $accessible ? 'true' : 'false');
+    $this->attributes()->set('data-accessible', $accessible ? 'true' : 'false');
     return $this;
   }
 
@@ -175,7 +175,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return $this for a fluent interface
    */
   public function pauseOnHover($pause = true) {
-    $this->attrs()->set('data-pause-on-hover', $pause ? 'true' : 'false');
+    $this->attributes()->set('data-pause-on-hover', $pause ? 'true' : 'false');
     return $this;
   }
 
@@ -188,7 +188,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
   public function setAnimInFromLeft($effect = 'fade-in') {
-    $this->attrs()->set('data-anim-in-from-left', $effect);
+    $this->attributes()->set('data-anim-in-from-left', $effect);
     return $this;
   }
 
@@ -201,7 +201,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
   public function setAnimInFromRight($effect = 'fade-in') {
-    $this->attrs()->set('data-anim-in-from-right', $effect);
+    $this->attributes()->set('data-anim-in-from-right', $effect);
     return $this;
   }
 
@@ -228,7 +228,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
   public function setAnimOutFromLeft($effect = 'fade-out') {
-    $this->attrs()->set('data-anim-out-from-left', $effect);
+    $this->attributes()->set('data-anim-out-from-left', $effect);
     return $this;
   }
 
@@ -241,7 +241,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
   public function setAnimOutFromRight($effect = "fade-out") {
-    $this->attrs()->set('data-anim-out-from-right', $effect);
+    $this->attributes()->set('data-anim-out-from-right', $effect);
     return $this;
   }
 

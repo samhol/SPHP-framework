@@ -43,7 +43,7 @@ class Audio extends AbstractMultimediaTag {
    * @link   http://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
   public function setPreload($preload) {
-    return $this->setAttr('preload', $preload);
+    return $this->setAttribute('preload', $preload);
   }
 
   /**
@@ -61,7 +61,7 @@ class Audio extends AbstractMultimediaTag {
    * @link   http://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
   public function getPreloadOption() {
-    return $this->getAttr('preload');
+    return $this->getAttribute('preload');
   }
 
 }

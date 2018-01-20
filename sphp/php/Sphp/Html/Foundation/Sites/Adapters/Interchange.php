@@ -64,9 +64,9 @@ class Interchange extends AbstractComponentAdapter {
     }
     $value = implode(', ', $queryArr);
     if ($value !== '') {
-      $this->attrs()->set('data-interchange', $value);
+      $this->attributes()->set('data-interchange', $value);
     } else {
-      $this->attrs()->remove('data-interchange');
+      $this->attributes()->remove('data-interchange');
     }
     return $this;
   }

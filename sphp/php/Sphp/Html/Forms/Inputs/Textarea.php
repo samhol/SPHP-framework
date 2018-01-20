@@ -45,25 +45,25 @@ class Textarea extends SimpleContainerTag implements TextareaInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attrs()->setBoolean('disabled', $disabled);
+    $this->attributes()->setBoolean('disabled', $disabled);
     return $this;
   }
 
   public function isEnabled(): bool {
-    return !$this->attrs()->exists('disabled');
+    return !$this->attributes()->exists('disabled');
   }
 
   public function getName(): string {
-    return (string) $this->attrs()->getValue('name');
+    return (string) $this->attributes()->getValue('name');
   }
 
   public function setName(string $name) {
-    $this->attrs()->set('name', $name);
+    $this->attributes()->set('name', $name);
     return $this;
   }
 
   public function isNamed(): bool {
-    return $this->attrs()->exists('name');
+    return $this->attributes()->exists('name');
   }
 
   public function getSubmitValue() {
@@ -76,32 +76,32 @@ class Textarea extends SimpleContainerTag implements TextareaInterface {
   }
 
   public function wrap(string $wrapType = null) {
-    $this->attrs()->set('wrap', $wrapType);
+    $this->attributes()->set('wrap', $wrapType);
     return $this;
   }
 
   public function setRows(int $rows) {
-    $this->attrs()->setInteger('rows', $rows);
+    $this->attributes()->setInteger('rows', $rows);
     return $this;
   }
 
   public function setCols(int $cols) {
-    $this->attrs()->setInteger('cols', $cols);
+    $this->attributes()->setInteger('cols', $cols);
     return $this;
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attrs()->set('placeholder', $placeholder);
+    $this->attributes()->set('placeholder', $placeholder);
     return $this;
   }
 
   public function setRequired(bool $required = true) {
-    $this->attrs()->setBoolean('required', $required);
+    $this->attributes()->setBoolean('required', $required);
     return $this;
   }
 
   public function isRequired(): bool {
-    return $this->attrExists('required');
+    return $this->attributeExists('required');
   }
 
 }

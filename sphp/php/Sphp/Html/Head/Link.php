@@ -37,7 +37,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    */
   public function __construct(string $href = null, string $rel = null, string $media = null) {
     parent::__construct('link');
-    $this->attrs()->demand('rel');
+    $this->attributes()->demand('rel');
     if ($href !== null) {
       $this->setHref($href);
     }
@@ -65,7 +65,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
-    $this->attrs()->set('href', $href);
+    $this->attributes()->set('href', $href);
     return $this;
   }
 
@@ -81,7 +81,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function getHref() {
-    return $this->attrs()->getValue('href');
+    return $this->attributes()->getValue('href');
   }
 
   /**
@@ -111,7 +111,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function setRel(string $rel) {
-    $this->attrs()->set('rel', $rel);
+    $this->attributes()->set('rel', $rel);
     return $this;
   }
 
@@ -141,7 +141,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function getRel(): string {
-    return $this->attrs()->getValue('rel');
+    return $this->attributes()->getValue('rel');
   }
 
   /**
@@ -156,7 +156,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function setType(string $type) {
-    $this->attrs()->set('type', $type);
+    $this->attributes()->set('type', $type);
     return $this;
   }
 
@@ -171,7 +171,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function getType() {
-    return $this->attrs()->getValue('type');
+    return $this->attributes()->getValue('type');
   }
 
   /**
@@ -190,7 +190,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function setMedia(string $media) {
-    $this->attrs()->set('media', $media);
+    $this->attributes()->set('media', $media);
     return $this;
   }
 
@@ -209,7 +209,7 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function getMedia() {
-    return $this->attrs()->getValue('media');
+    return $this->attributes()->getValue('media');
   }
 
   /**

@@ -38,7 +38,7 @@ trait AreaTrait {
    */
   public function getCoordinates(): array {
     $coords = [];
-    if ($this->attrs()->exists('coords')) {
+    if ($this->attributes()->exists('coords')) {
       $rawCoords = $this->getAttr('coords');
       $toInt = function($coord) {
         return (int) $coord;
@@ -56,7 +56,7 @@ trait AreaTrait {
    * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
    */
   public function setRelationship($rel) {
-    $this->attrs()->set('rel', $rel);
+    $this->attributes()->set('rel', $rel);
     return $this;
   }
 
@@ -87,7 +87,7 @@ trait AreaTrait {
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt($alt) {
-    $this->attrs()->set('alt', $alt);
+    $this->attributes()->set('alt', $alt);
     return $this;
   }
 
@@ -108,7 +108,7 @@ trait AreaTrait {
    * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function getAlt() {
-    return $this->attrs()->getValue('alt');
+    return $this->attributes()->getValue('alt');
   }
 
 }

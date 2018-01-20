@@ -76,12 +76,12 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     }
     if ($this->active !== null || $this->inactive !== null) {
       $activeLabel = new Span($this->active);
-      $activeLabel->attrs()
+      $activeLabel->attributes()
               ->protect('aria-hidden', 'true')
               ->classes()->protect('switch-active');
       $paddle->append($activeLabel);
       $inactiveLabel = new Span($this->inactive);
-      $inactiveLabel->attrs()
+      $inactiveLabel->attributes()
               ->protect('aria-hidden', 'true')
               ->classes()->protect('switch-inactive');
       $paddle->append($inactiveLabel);

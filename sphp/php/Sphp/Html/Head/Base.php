@@ -49,7 +49,7 @@ class Base extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    */
   public function setHref(string $href) {
-    return $this->setAttr('href', $href);
+    return $this->setAttribute('href', $href);
   }
 
   /**
@@ -65,7 +65,7 @@ class Base extends EmptyTag implements HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function setTarget(string $target) {
-    return $this->setAttr('target', $target);
+    return $this->setAttribute('target', $target);
   }
 
 }

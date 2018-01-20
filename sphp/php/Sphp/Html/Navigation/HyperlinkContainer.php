@@ -73,7 +73,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setTitle(string $title = null) {
-    $this->getHyperlink()->setAttr("title", $title);
+    $this->getHyperlink()->setAttribute("title", $title);
     return $this;
   }
 

@@ -30,7 +30,7 @@ class RangeSlider extends AbstractSlider {
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step);
-    $this->attrs()->protect('data-type', 'double');
+    $this->attributes()->protect('data-type', 'double');
     $this->setInitialRange($start, $end);
   }
 
@@ -41,8 +41,8 @@ class RangeSlider extends AbstractSlider {
    */
   public function getInputValuesSeparator(): string {
     $separator = ';';
-    if ($this->attrs()->exists('data-input-values-separator')) {
-      $separator = $this->attrs()->getValue('data-input-values-separator');
+    if ($this->attributes()->exists('data-input-values-separator')) {
+      $separator = $this->attributes()->getValue('data-input-values-separator');
     }
     return $separator;
   }
@@ -54,7 +54,7 @@ class RangeSlider extends AbstractSlider {
    * @return $this for a fluent interface
    */
   public function setInputValuesSeparator(string $separator) {
-    $this->attrs()->set('data-input-values-separator', $separator);
+    $this->attributes()->set('data-input-values-separator', $separator);
     return $this;
   }
 
@@ -76,8 +76,8 @@ class RangeSlider extends AbstractSlider {
     if ($this->getMin() > $stop || $this->getMax() < $stop) {
       throw new InvalidStateException("Stop value: '$stop' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->attrs()->set('data-from', $start);
-    $this->attrs()->set('data-to', $stop);
+    $this->attributes()->set('data-from', $start);
+    $this->attributes()->set('data-to', $stop);
     return $this;
   }
 
@@ -103,7 +103,7 @@ class RangeSlider extends AbstractSlider {
    * @return float start position for left handle
    */
   public function getFrom(): float {
-    return $this->attrs()->getValue('data-from');
+    return $this->attributes()->getValue('data-from');
   }
 
   /**
@@ -112,7 +112,7 @@ class RangeSlider extends AbstractSlider {
    * @return float start position for right handle
    */
   public function getTo(): float {
-    return $this->attrs()->getValue('data-to');
+    return $this->attributes()->getValue('data-to');
   }
 
 }

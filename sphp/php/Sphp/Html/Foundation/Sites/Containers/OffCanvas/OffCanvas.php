@@ -62,7 +62,7 @@ class OffCanvas extends AbstractComponent {
     $this->cssClasses()->protect('off-canvas-wrapper');
     $this->offCanvasContent = new Div();
     $this->offCanvasContent->cssClasses()->protect("off-canvas-content");
-    $this->offCanvasContent->attrs()->demand('data-off-canvas-content');
+    $this->offCanvasContent->attributes()->demand('data-off-canvas-content');
   }
 
   /**

@@ -34,7 +34,7 @@ class Radioboxes extends Choiceboxes implements ValidableInput {
       $value = array_pop($value);
     }
     foreach ($this->getOptionFields() as $opt) {
-      if ($opt->getAttr('value') == $value) {
+      if ($opt->getAttribute('value') == $value) {
         $opt->setChecked(true);
       } else {
         $opt->setChecked(false);

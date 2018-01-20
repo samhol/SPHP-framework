@@ -67,12 +67,12 @@ class Fieldset extends ContainerTag implements FormController {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attrs()->setBoolean('disabled', $disabled);
+    $this->attributes()->setBoolean('disabled', $disabled);
     return $this;
   }
 
   public function isEnabled(): bool {
-    return !$this->attrs()->exists('disabled');
+    return !$this->attributes()->exists('disabled');
   }
 
   public function contentToString(): string {

@@ -77,7 +77,7 @@ class TagFactoryMethodData implements Arrayable {
   }
 
   private function tagString(): string {
-    $attrs = '' . $this->component->attrs();
+    $attrs = '' . $this->component->attributes();
     if ($attrs != '') {
       $attrs = ' ' . $attrs;
     }

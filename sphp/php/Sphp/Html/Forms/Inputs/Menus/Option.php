@@ -43,7 +43,7 @@ class Option extends SimpleContainerTag implements MenuComponent {
    * @link    http://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function getValue() {
-    return $this->attrs()->getValue('value');
+    return $this->attributes()->getValue('value');
   }
 
   /**
@@ -54,7 +54,7 @@ class Option extends SimpleContainerTag implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function setValue($value) {
-    $this->attrs()->set('value', $value);
+    $this->attributes()->set('value', $value);
     return $this;
   }
 
@@ -66,7 +66,7 @@ class Option extends SimpleContainerTag implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function setSelected(bool $selected = true) {
-    $this->attrs()->set('selected', $selected);
+    $this->attributes()->set('selected', $selected);
   }
 
   /**
@@ -76,16 +76,16 @@ class Option extends SimpleContainerTag implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function isSelected(): bool {
-    return $this->attrs()->exists('selected') && $this->isEnabled();
+    return $this->attributes()->exists('selected') && $this->isEnabled();
   }
 
   public function disable(bool $enabled = true) {
-    $this->attrs()->set('disabled', !$enabled);
+    $this->attributes()->set('disabled', !$enabled);
     return $this;
   }
 
   public function isEnabled(): bool {
-    return !$this->attrs()->exists('disabled');
+    return !$this->attributes()->exists('disabled');
   }
 
 }

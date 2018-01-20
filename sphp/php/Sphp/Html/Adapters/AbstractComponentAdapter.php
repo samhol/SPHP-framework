@@ -67,8 +67,8 @@ class AbstractComponentAdapter implements Adapter {
     return $this->component->getHtml();
   }
 
-  public function attrs() {
-    return $this->component->attrs();
+  public function attributes() {
+    return $this->component->attributes();
   }
 
 }

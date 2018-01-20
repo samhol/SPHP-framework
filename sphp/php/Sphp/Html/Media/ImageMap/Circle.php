@@ -40,7 +40,7 @@ class Circle extends AbstractArea {
     $coords = split(',', $this->getCoordinates());
     $coords[2] = $radius;
     $coordsString = implode(',', $coords);
-    $this->attrs()->set('coords', $coordsString);
+    $this->attributes()->set('coords', $coordsString);
     return $this;
   }
 
@@ -54,7 +54,7 @@ class Circle extends AbstractArea {
     $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
     $coordsString = implode(',', $coords);
-    $this->attrs()->set('coords', $coordsString);
+    $this->attributes()->set('coords', $coordsString);
     return $this;
   }
 
@@ -68,7 +68,7 @@ class Circle extends AbstractArea {
     $coords = split(',', $this->getCoordinates());
     $coords[1] = $y;
     $coordsString = implode(',', $coords);
-    $this->attrs()->set('coords', $coordsString);
+    $this->attributes()->set('coords', $coordsString);
     return $this;
   }
 
@@ -83,7 +83,7 @@ class Circle extends AbstractArea {
   public function setCoordinates(int $x, int $y, int $radius) {
     $coords = [$x, $y, $radius];
     $coordsString = implode(',', $coords);
-    $this->attrs()->set('coords', $coordsString);
+    $this->attributes()->set('coords', $coordsString);
     return $this;
   }
 

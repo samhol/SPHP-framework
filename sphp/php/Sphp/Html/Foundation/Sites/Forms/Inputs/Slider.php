@@ -47,7 +47,7 @@ class Slider extends AbstractSlider {
     parent::__construct($start, $end, $step);
     $this->handle = new Span();
     $this->handle->cssClasses()->protect('slider-handle');
-    $this->handle->attrs()
+    $this->handle->attributes()
             ->demand('data-slider-handle')
             ->protect('role', 'slider')
             ->protect('tabindex', 1);
@@ -72,10 +72,10 @@ class Slider extends AbstractSlider {
   public function setVertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
-      $this->attrs()->set('data-vertical', 'true');
+      $this->attributes()->set('data-vertical', 'true');
     } else {
       $this->cssClasses()->remove('vertical');
-      $this->attrs()->set('data-vertical', 'false');
+      $this->attributes()->set('data-vertical', 'false');
     }
     return $this;
   }
@@ -100,11 +100,11 @@ class Slider extends AbstractSlider {
   }
 
   public function getMin(): float {
-    return $this->attrs()->getValue('data-start');
+    return $this->attributes()->getValue('data-start');
   }
 
   public function getMax(): float {
-    return $this->attrs()->getValue('data-end');
+    return $this->attributes()->getValue('data-end');
   }
 
   public function getSubmitValue() {
@@ -116,7 +116,7 @@ class Slider extends AbstractSlider {
       throw new InvalidStateException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
     $this->getInput()->setSubmitValue($value);
-    $this->attrs()->set('data-initial-start', $value);
+    $this->attributes()->set('data-initial-start', $value);
     return $this;
   }
 
@@ -136,7 +136,7 @@ class Slider extends AbstractSlider {
     }
     $this->input = $input;
     $this->input->setName($this->getName());
-    $this->handle->attrs()->set('aria-controls', $input->identify());
+    $this->handle->attributes()->set('aria-controls', $input->identify());
     return $input;
   }
 

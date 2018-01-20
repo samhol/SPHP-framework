@@ -87,7 +87,7 @@ class SimpleContainerTag extends AbstractTag {
   }
 
   public function getHtml(): string {
-    $attrs = '' . $this->attrs();
+    $attrs = '' . $this->attributes();
     if ($attrs !== '') {
       $attrs = ' ' . $attrs;
     }

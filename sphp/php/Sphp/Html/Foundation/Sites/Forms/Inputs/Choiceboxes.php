@@ -188,7 +188,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
-    return $this->setAttr("disabled", $disabled);
+    return $this->setAttribute("disabled", $disabled);
   }
 
   /**
@@ -197,7 +197,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
    * @param  boolean true if the option is enabled, otherwise false
    */
   public function isEnabled(): bool {
-    return !$this->attrExists("disabled");
+    return !$this->attributeExists("disabled");
   }
 
   /**
@@ -228,7 +228,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
   public function getSubmitValue() {
     $submission = [];
     foreach ($this->getOptionFields() as $box) {
-      if ($box->attrExists("checked")) {
+      if ($box->attributeExists("checked")) {
         $submission[] = $box->getValue();
       }
     }

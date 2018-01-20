@@ -23,7 +23,7 @@ trait InputTagTrait {
    * @return string name attribute
    */
   public function getName(): string {
-    return (string) $this->attrs()->getValue('name');
+    return (string) $this->attributes()->getValue('name');
   }
 
   /**
@@ -33,7 +33,7 @@ trait InputTagTrait {
    * @return $this for a fluent interface
    */
   public function setName(string $name) {
-    $this->attrs()->set('name', $name);
+    $this->attributes()->set('name', $name);
     return $this;
   }
 
@@ -46,7 +46,7 @@ trait InputTagTrait {
    * @return boolean true if the input has a name, otherwise false
    */
   public function isNamed(): bool {
-    return $this->attrs()->exists('name');
+    return $this->attributes()->exists('name');
   }
 
   /**
@@ -59,7 +59,7 @@ trait InputTagTrait {
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
-    $this->attrs()->setBoolean('disabled', $disabled);
+    $this->attributes()->setBoolean('disabled', $disabled);
     return $this;
   }
 
@@ -69,7 +69,7 @@ trait InputTagTrait {
    * @return boolean true if the input component is enabled, otherwise false
    */
   public function isEnabled(): bool {
-    return !$this->attrs()->exists('disabled');
+    return !$this->attributes()->exists('disabled');
   }
 
   /**
@@ -79,7 +79,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    */
   public function getType(): string {
-    return (string) $this->attrs()->getValue('type');
+    return (string) $this->attributes()->getValue('type');
   }
 
   /**
@@ -89,7 +89,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function getSubmitValue() {
-    return $this->attrs()->getValue('value');
+    return $this->attributes()->getValue('value');
   }
 
   /**
@@ -100,7 +100,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function setSubmitValue($value) {
-    $this->attrs()->set('value', $value);
+    $this->attributes()->set('value', $value);
     return $this;
   }
 

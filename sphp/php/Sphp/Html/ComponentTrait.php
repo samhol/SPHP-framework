@@ -28,7 +28,7 @@ trait ComponentTrait {
    *
    * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs(): HtmlAttributeManager;
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Returns the class attribute object
@@ -36,7 +36,7 @@ trait ComponentTrait {
    * @return ClassAttribute the class attribute object
    */
   public function cssClasses(): ClassAttribute {
-    return $this->attrs()->classes();
+    return $this->attributes()->classes();
   }
 
   /**
@@ -45,7 +45,7 @@ trait ComponentTrait {
    * @return PropertyAttribute the attribute object containing inline styles
    */
   public function inlineStyles(): PropertyAttribute {
-    return $this->attrs()->styles();
+    return $this->attributes()->styles();
   }
 
   /**
@@ -70,8 +70,8 @@ trait ComponentTrait {
    * @throws InvalidAttributeException if the attribute name or value is invalid
    * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttr(string $name, $value = null) {
-    $this->attrs()->set($name, $value);
+  public function setAttribute(string $name, $value = null) {
+    $this->attributes()->set($name, $value);
     return $this;
   }
 
@@ -81,8 +81,8 @@ trait ComponentTrait {
    * @param  string $name the name of the attribute
    * @return $this for a fluent interface
    */
-  public function removeAttr(string $name) {
-    $this->attrs()->remove($name);
+  public function removeAttribute(string $name) {
+    $this->attributes()->remove($name);
     return $this;
   }
 
@@ -97,8 +97,8 @@ trait ComponentTrait {
    * @param  string $name the name of the attribute
    * @return mixed the value of the attribute
    */
-  public function getAttr(string $name) {
-    return $this->attrs()->getValue($name);
+  public function getAttribute(string $name) {
+    return $this->attributes()->getValue($name);
   }
 
   /**
@@ -107,8 +107,8 @@ trait ComponentTrait {
    * @param  string $name the name of the attribute
    * @return boolean (attribute exists)
    */
-  public function attrExists(string $name): bool {
-    return $this->attrs()->exists($name);
+  public function attributeExists(string $name): bool {
+    return $this->attributes()->exists($name);
   }
 
 }

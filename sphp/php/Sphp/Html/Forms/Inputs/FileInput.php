@@ -39,7 +39,7 @@ class FileInput extends AbstractInputTag implements ValidableInput {
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
   public function setFileTypes(string $accept) {
-    $this->attrs()->set('accept', $accept);
+    $this->attributes()->set('accept', $accept);
     return $this;
   }
 
@@ -51,17 +51,17 @@ class FileInput extends AbstractInputTag implements ValidableInput {
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multipleFiles(bool $multiple = true) {
-    $this->attrs()->setBoolean('multiple', $multiple);
+    $this->attributes()->setBoolean('multiple', $multiple);
     return $this;
   }
 
   public function setRequired(bool $required = true) {
-    $this->attrs()->setBoolean('required', $required);
+    $this->attributes()->setBoolean('required', $required);
     return $this;
   }
 
   public function isRequired(): bool {
-    return $this->attrExists('required');
+    return $this->attributeExists('required');
   }
 
 }

@@ -56,7 +56,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoader {
   }
 
   public function setDateTime(DateTimeInterface $dateTime) {
-    $this->attrs()->set('datetime', (string) $dateTime->format('Y-m-d H:i:s'));
+    $this->attributes()->set('datetime', (string) $dateTime->format('Y-m-d H:i:s'));
     $this->dateTime = $dateTime;
     return $this;
   }

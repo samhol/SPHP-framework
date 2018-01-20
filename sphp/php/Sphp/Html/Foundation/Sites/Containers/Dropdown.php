@@ -53,7 +53,7 @@ class Dropdown implements Content {
     $this->dropdown = $dropdown;
     $this->dropdown->identify();
     $this->dropdown->cssClasses()->protect('dropdown-pane');
-    $this->dropdown->attrs()->demand('data-dropdown');
+    $this->dropdown->attributes()->demand('data-dropdown');
     $this->setTrigger($trigger);
   }
 
@@ -158,7 +158,7 @@ class Dropdown implements Content {
       $trigger = new \Sphp\Html\Span($trigger);
     }
     $this->trigger = $trigger
-            ->setAttr('data-toggle', $this->dropdown->identify());
+            ->setAttribute('data-toggle', $this->dropdown->identify());
     return $this;
   }
 
@@ -182,9 +182,9 @@ class Dropdown implements Content {
    */
   public function closeOnBodyClick(bool $flag = true) {
     if ($flag) {
-      $this->dropdown->attrs()->set('data-close-on-click', 'true');
+      $this->dropdown->attributes()->set('data-close-on-click', 'true');
     } else {
-      $this->dropdown->attrs()->set('data-close-on-click', 'false');
+      $this->dropdown->attributes()->set('data-close-on-click', 'false');
     }
     return $this;
   }
@@ -196,9 +196,9 @@ class Dropdown implements Content {
    */
   public function autoFocus(bool $flag = true) {
     if ($flag) {
-      $this->dropdown->attrs()->set('data-auto-focus', 'true');
+      $this->dropdown->attributes()->set('data-auto-focus', 'true');
     } else {
-      $this->dropdown->attrs()->set('data-auto-focus', 'false');
+      $this->dropdown->attributes()->set('data-auto-focus', 'false');
     }
     return $this;
   }

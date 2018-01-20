@@ -39,7 +39,7 @@ class AbstractButton extends EmptyTag implements ButtonInterface {
       throw new InvalidArgumentException("Illegal form button type '$type'");
     }
     parent::__construct('input');
-    $this->attrs()->protect('type', $type);
+    $this->attributes()->protect('type', $type);
     if ($content !== null) {
       $this->setContent($content);
     }
@@ -52,17 +52,17 @@ class AbstractButton extends EmptyTag implements ButtonInterface {
    * @return $this for a fluent interface
    */
   public function setContent(string $content) {
-    $this->attrs()->set('value', $content);
+    $this->attributes()->set('value', $content);
     return $this;
   }
 
   public function disable(bool $disabled = true) {
-    $this->attrs()->setBoolean('disabled', $disabled);
+    $this->attributes()->setBoolean('disabled', $disabled);
     return $this;
   }
 
   public function isEnabled(): bool {
-    return !$this->attrs()->exists('disabled');
+    return !$this->attributes()->exists('disabled');
   }
 
 }

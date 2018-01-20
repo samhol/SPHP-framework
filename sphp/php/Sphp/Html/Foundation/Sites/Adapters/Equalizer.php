@@ -31,7 +31,7 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function __construct(ComponentInterface $equalizer, string $name = null) {
     parent::__construct($equalizer);
-    $attr = $this->attrs()->setIdentifier('data-equalizer');
+    $attr = $this->attributes()->setIdentifier('data-equalizer');
     if ($name === null) {
       $attr->identify();
     } else {
@@ -44,7 +44,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @return string
    */
   public function getEqualizerName(): string {
-    return $this->getComponent()->attrs()->getValue('data-equalizer');
+    return $this->getComponent()->attributes()->getValue('data-equalizer');
   }
 
   /**
@@ -55,9 +55,9 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function equalizeOn(string $screenSize) {
     if ($screenSize != 'all') {
-      $this->getComponent()->attrs()->set('data-equalize-on', $screenSize);
+      $this->getComponent()->attributes()->set('data-equalize-on', $screenSize);
     } else {
-      $this->getComponent()->attrs()->remove('data-equalize-on');
+      $this->getComponent()->attributes()->remove('data-equalize-on');
     }
     return $this;
   }
@@ -70,9 +70,9 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function equalizeByRow(bool $flag = true) {
     if ($flag) {
-      $this->getComponent()->attrs()->set('data-equalize-by-row', 'true');
+      $this->getComponent()->attributes()->set('data-equalize-by-row', 'true');
     } else {
-      $this->getComponent()->attrs()->remove('data-equalize-by-row');
+      $this->getComponent()->attributes()->remove('data-equalize-by-row');
     }
     return $this;
   }
@@ -85,10 +85,10 @@ class Equalizer extends AbstractComponentAdapter {
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function addObserver(ComponentInterface $observer) {
-    if ($observer->attrExists('data-equalizer-watch') && $observer->attrs()->getValue('data-equalizer-watch') !== $this->getEqualizerName()) {
+    if ($observer->attributeExists('data-equalizer-watch') && $observer->attributes()->getValue('data-equalizer-watch') !== $this->getEqualizerName()) {
       throw new \Sphp\Exceptions\InvalidArgumentException('');
     }
-    $observer->setAttr('data-equalizer-watch', $this->getEqualizerName());
+    $observer->setAttribute('data-equalizer-watch', $this->getEqualizerName());
     return $this;
   }
 
@@ -99,7 +99,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    */
   public function removeObserver(ComponentInterface $observer) {
-    $observer->attrs()->remove('data-equalizer-watch');
+    $observer->attributes()->remove('data-equalizer-watch');
     return $this;
   }
 

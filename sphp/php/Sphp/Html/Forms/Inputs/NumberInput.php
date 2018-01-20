@@ -39,31 +39,31 @@ class NumberInput extends InputTag implements RangeInput, InputField {
   }
 
   public function setRange(float $min, float $max) {
-    $this->attrs()->set('min', $min);
-    $this->attrs()->set('max', $max);
+    $this->attributes()->set('min', $min);
+    $this->attributes()->set('max', $max);
     return $this;
   }
 
   public function getMax(): float {
-    return (float) $this->attrs()->getValue('max');
+    return (float) $this->attributes()->getValue('max');
   }
 
   public function getMin(): float {
-    return (float) $this->attrs()->getValue('min');
+    return (float) $this->attributes()->getValue('min');
   }
 
   public function setStepLength(float $step) {
-    $this->attrs()->set('step', $step);
+    $this->attributes()->set('step', $step);
     return $this;
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attrs()->set('placeholder', $placeholder);
+    $this->attributes()->set('placeholder', $placeholder);
     return $this;
   }
 
   public function autocomplete(bool $allow = true) {
-    $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
+    $this->attributes()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }
 

@@ -44,8 +44,8 @@ class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoader {
       $url = $url->getHtml();
     }
     $this->getComponent()
-            ->setAttr("data-sphp-ajax-op", $op)
-            ->setAttr("data-sphp-ajax-url", $url);
+            ->setAttribute("data-sphp-ajax-op", $op)
+            ->setAttribute("data-sphp-ajax-url", $url);
     return $this;
   }
 

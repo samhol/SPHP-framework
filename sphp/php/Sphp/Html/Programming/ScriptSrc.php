@@ -49,7 +49,7 @@ class ScriptSrc extends EmptyTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType(string $type) {
-    $this->attrs()->set('type', $type);
+    $this->attributes()->set('type', $type);
     return $this;
   }
 
@@ -64,7 +64,7 @@ class ScriptSrc extends EmptyTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
    */
   public function setAsync(bool $async = true) {
-    $this->attrs()
+    $this->attributes()
             ->remove('defer')
             ->set('async', $async);
     return $this;
@@ -79,7 +79,7 @@ class ScriptSrc extends EmptyTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function setDefer(bool $defer = true) {
-    $this->attrs()
+    $this->attributes()
             ->remove('async')
             ->set('defer', $defer);
     return $this;
@@ -93,7 +93,7 @@ class ScriptSrc extends EmptyTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function setSrc(string $src) {
-    $this->attrs()->set('src', $src);
+    $this->attributes()->set('src', $src);
     return $this;
   }
 
@@ -104,7 +104,7 @@ class ScriptSrc extends EmptyTag implements Script {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function getSrc(): string {
-    return $this->attrs()->getValue('src');
+    return $this->attributes()->getValue('src');
   }
 
 }
