@@ -34,7 +34,7 @@ class Body extends ContainerTag implements ContentParser {
    *
    * **Important!**
    *
-   * Parameter `mixed $content` can basically be of any type that converts
+   * Parameter `$content` can basically be of any type that converts
    * to a string. So also an object of any class that implements magic method 
    * `__toString()` is allowed.
    *

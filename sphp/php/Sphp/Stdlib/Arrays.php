@@ -364,24 +364,26 @@ abstract class Arrays {
    * @param  string|null $lastGlue optional string between the last two array elements
    * @return string the imploded array
    */
-  public static function implode(array $arr, string $glue = '', string $lastGlue = null): string {
-    if (is_null($lastGlue)) {
-      $lastGlue = $glue;
-    }
-    $flat = self::flatten($arr);
-    $length = count($flat);
+  public static function implode(array $arr, string $glue = ''): string {
     $output = '';
-    if ($length > 2) {
-      for ($i = 0; $i < $length - 2; ++$i) {
-        $output .= Strings::toString(array_shift($flat)) . $glue;
+    static::flatten($arr);
+    foreach ($arr as $value) {
+      if (is_scalar($value) || $value === null) {
+        $output .= $glue . $value;
+      } else if (is_object($value)) {
+        if (method_exists($value, '__toString')) {
+          $output .= $glue . $value;
+        } else if ($value instanceof \Traversable) {
+          $arr = iterator_to_array($value);
+          $output .= $glue . static::implode($arr, $glue);
+        } else {
+          throw new InvalidArgumentException('Object has no string representation');
+        }
+      } else if (is_array($value)) {
+        $output .= $glue . static::implode($value, $glue);
+      } else {
+        throw new InvalidArgumentException('value has no string representation');
       }
-      $output .= Strings::toString(array_shift($flat))
-              . $lastGlue . Strings::toString(array_shift($flat));
-    } else if ($length == 2) {
-      $output = Strings::toString(array_shift($flat))
-              . $lastGlue . Strings::toString(array_shift($flat));
-    } else if ($length == 1) {
-      $output = Strings::toString(array_shift($flat));
     }
     return $output;
   }
