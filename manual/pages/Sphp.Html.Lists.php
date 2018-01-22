@@ -14,7 +14,7 @@ $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
 
 Manual\md(<<<MD
-#HTML LISTS: <small>unordered, ordered and definition lists</small>
+#HTML lists: <small>unordered, ordered and definition lists</small>
 $ns	
 This namespace contains object oriented implementations of HTML lists.
 

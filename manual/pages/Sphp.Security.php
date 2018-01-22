@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-#WEB APPLICATION SECURITY
+#Web application security
 $ns
         
 Security is a process, not a product, and adopting a sound approach to security 

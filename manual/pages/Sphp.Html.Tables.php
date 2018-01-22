@@ -18,7 +18,7 @@ $tfoot =  Manual\api()->classLinker(Tfoot::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Manual\w3schools();
 Manual\md(<<<MD
-#HTML TABLES: <small>for tabular data</small>
+#HTML tables: <small>for tabular data</small>
 
 $ns
 

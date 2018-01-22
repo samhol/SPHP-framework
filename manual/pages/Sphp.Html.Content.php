@@ -11,7 +11,7 @@ $article = Manual\api()->classLinker(Article::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\md(<<<MD
-#HTML CONTENT CREATION
+#HTML content creation
 $ns
 
 Classes in this namespace enables the creation of modern HTML documents in object oriented PHP.

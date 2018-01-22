@@ -53,7 +53,7 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
    * @param string $action
    * @param string $method
    */
-  public function __construct(string $action, string $method = 'get') {
+  public function __construct(string $action = null, string $method = 'get') {
     parent::__construct('form');
     $this->setAction($action)
             ->setMethod($method)

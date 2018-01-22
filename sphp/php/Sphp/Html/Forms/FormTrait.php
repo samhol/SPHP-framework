@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
@@ -75,11 +74,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function setAction(string $url = null) {
-    //$this->actionParams = \Sphp\Tools\Url::getParams($url);
-    //	echo "<pre>";
-    //	print_r($this->actionParams);
-    //	echo "</pre>";
-    $this->attributes()->set('action', Strings::htmlEncode($url));
+    $this->attributes()->set('action', $url);
     return $this;
   }
 

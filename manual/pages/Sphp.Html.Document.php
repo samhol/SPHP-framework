@@ -7,7 +7,7 @@ use Sphp\Manual;
 $documentClass = Manual\api()->classLinker(Document::class);
 $htmlClass = Manual\api()->classLinker(Html::class);
 Manual\md(<<<MD
-##COMPONENT FACTORIES 
+##Component factories 
 Framework has several Factory classes for various object types.
 ##The $documentClass class
 This class can be used to create the structure of any HTML document.

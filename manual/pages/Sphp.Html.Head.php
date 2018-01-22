@@ -20,7 +20,7 @@ $noscript = Manual\api()->classLinker(Noscript::class);
 $w3schools = Manual\w3schools();
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\md(<<<MD
-#HTML HEAD: <small>meta data manipulation</small>
+#HTML head: <small>meta data manipulation</small>
         
 $ns
         

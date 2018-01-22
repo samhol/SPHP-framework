@@ -1,24 +1,27 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
-use Sphp\Html\Apps\Manual\Apis;
 
-$accordion = \Sphp\Manual\api()->classLinker(Accordions\Pane::class);
-$accordions = \Sphp\Manual\api()->classLinker(Accordions\Accordion::class);
-$tabs = \Sphp\Manual\api()->classLinker(Tabs\Tabs::class);
-$dropdown = \Sphp\Manual\api()->classLinker(Dropdown::class);
-$modal = \Sphp\Manual\api()->classLinker(Modal::class);
-$callout = \Sphp\Manual\api()->classLinker(Callout::class);
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\md(<<<MD
-#FOUNDATION CONTAINERS
+use Sphp\Manual;
+
+$accordion = Manual\api()->classLinker(Accordions\Pane::class);
+$accordions = Manual\api()->classLinker(Accordions\Accordion::class);
+$tabs = Manual\api()->classLinker(Tabs\Tabs::class);
+$dropdown = Manual\api()->classLinker(Dropdown::class);
+$modal = Manual\api()->classLinker(Modal::class);
+$callout = Manual\api()->classLinker(Callout::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
+Manual\md(<<<MD
+#Foundation containers
 $ns
 This namespace contains Foundation framework based components like $accordions, $tabs, $callout, $modal and $dropdown.
 MD
 );
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Accordions');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Tabs');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Dropdown');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Callout');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Modals');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.OffCanvas');
+
+Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Accordions');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Tabs');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Dropdown');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Callout');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Modals');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.OffCanvas');

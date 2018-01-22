@@ -5,8 +5,9 @@ namespace Sphp\Html\Attributes;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\md(<<<MD
-#HTML ATTRIBUTE MANAGEMENT
+
+Manual\md(<<<MD
+#HTML attribute management
     
 $ns	
 
@@ -18,5 +19,6 @@ them to function correctly; while in other cases they are optional attributes.
 Standard attributes are supported by a large number of element types.
 MD
 );
+
 Manual\loadPage('Sphp.Html.Attributes.AttributeInterface');
 Manual\loadPage('Sphp.Html.Attributes.AttributeManager');

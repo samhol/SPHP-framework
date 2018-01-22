@@ -47,5 +47,7 @@ Document::head()
         ->addMeta(Meta::description('SPHP framework for web developement'));
 Document::body()->addCssClass('manual');
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
+Document::html()->scripts()->appendSrc('manual/js/ss360Config.js');
+Document::html()->scripts()->appendSrc('https://sitesearch360.com/cdn/sitesearch360-v9.min.js');
 Document::html()->startBody();
 
