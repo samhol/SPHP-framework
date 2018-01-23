@@ -22,8 +22,8 @@ use Sphp\Manual\SoftwareVersions;
 <div class="cell small-12 medium-auto" markdown="1"> 
 ###Client side:
  * [**jQuery**](http://jQuery.com){.jquery_version target="_blank"} <i class="tech label js"></i>
-   * [**Foundation** for Sites](http://foundation.zurb.com/){.foundation_version target="_blank"} <i class="tech label html5" aria-hidden="true"></i><i class="tech label css3"></i><i class="tech label js"></i>
-   * [**Any+Time™**](http://www.ama3.com/anytime/){.anytime_version target="_blank"} <i class="tech label js"></i><i class="tech label css3"></i>
+   * [**Foundation** for Sites](https://foundation.zurb.com/){.foundation_version target="_blank"} <i class="tech label html5" aria-hidden="true"></i><i class="tech label css3"></i><i class="tech label js"></i>
+   * [**Any+Time™**](https://www.ama3.com/anytime/){.anytime_version target="_blank"} <i class="tech label js"></i><i class="tech label css3"></i>
    * [**Lazy Load XT**](http://ressio.github.io/lazy-load-xt/){target="_blank"} <i class="tech label js"></i>
    * [**Ion.RangeSlider**](https://github.com/IonDen/ion.rangeSlider){target="_blank"} <i class="tech label js"></i><i class="tech label css3"></i>
    * [**qTip<sup>2</sup>**](http://qtip2.com/){target="_blank"} <i class="tech label js"></i> <i class="tech label css3"></i>

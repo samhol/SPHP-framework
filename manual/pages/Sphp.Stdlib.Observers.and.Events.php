@@ -11,7 +11,7 @@ $eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::clas
 $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class);
 
 Manual\md(<<<MD
-#EVENTS AND OBSERVERS
+#Events and observers
 		
 Event dispatching systems and Observer Design pattern are often used to implement 
 distributed event handling systems. They are also key parts in the model–view–controller 

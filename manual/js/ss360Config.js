@@ -1,25 +1,11 @@
-/* Create a configuration object */
 
-var res;
-if ($('.sphp-ss360-searchResults').length) {
-  res = {'contentBlock': '.sphp-ss360-searchResults'}; // it exists
-}
-
-var ss360Configa = {
-  /* Your site id */
-  siteId: 'playground.samiholck.com',
-  showSearchSuggestions: false,
-  navigation: 'none',
-  /* A CSS selector that points to your search  box */
-  searchBoxSelector: '.searchBox',
-  searchResultsCaption: 'Found #COUNT# search results for \"#QUERY#\"',
-  searchResults: res,
-  showImagesSuggestions: false,
-  showImagesResults: false,
-  minChars: 2,
-  themeColor: '#444444'
-};
-
+/**
+ * Contains sphp.TechLinks functionality
+ *
+ * @author Sami Holck <sami.holck@gmail.com>
+ * @namespace sphp
+ */
+;
 (function (sphp, $, undefined) {
 
   /**
@@ -32,12 +18,24 @@ var ss360Configa = {
   sphp.ss360ConfigGenerator = function (siteId, selector) {
     this.config = {};
     this.config.siteId = siteId;
-    this.setSearchSelector(selector);
+    this.setSearchSelector(selector).init();
   };
   sphp.ss360ConfigGenerator.prototype = {
     init: function () {
-
-
+      this.setResult();
+      this.config.showSearchSuggestions = false;
+      this.config.navigation = 'none';
+      this.config.searchResultsCaption = 'Found #COUNT# search results for \"#QUERY#\"';
+      this.config.showImagesSuggestions = false;
+      this.config.showImagesResults = false;
+      this.config.minChars = 2;
+      this.config.themeColor = '#444444';
+      this.config.defaultCss = true;
+      this.config.moreResultsButton = 'Show more results';
+      this.config.numResults = 30;
+        // should results be grouped?
+      this.config.groupResults = true;
+      return this;
     },
     /**
      * Runs all the processess needed for the application
@@ -47,18 +45,6 @@ var ss360Configa = {
      */
     create: function () {
       console.log('ss360Config creation');
-
-      //siteId: 'playground.samiholck.com',
-      this.config.showSearchSuggestions = false;
-      this.config.navigation = 'none';
-      /* A CSS selector that points to your search  box */
-      this.config.searchBoxSelector = '.searchBox';
-      this.config.searchResultsCaption = 'Found #COUNT# search results for \"#QUERY#\"';
-      this.config.searchResults = res,
-              this.config.showImagesSuggestions = false;
-      this.config.showImagesResults = false;
-      this.config.minChars = 2;
-      this.config.themeColor = '#444444';
       return this.config;
     },
 
@@ -71,6 +57,18 @@ var ss360Configa = {
     setSearchSelector: function (selector) {
       console.log('setSearchSelector: ' + selector);
       this.config.searchBoxSelector = selector;
+      return this;
+    },
+
+    /**
+     * Sets the selector to the search box(es)
+     * 
+     * @public
+     * @param  {String} themeColor the selector to the search box(es)
+     */
+    setThemeColor: function (themeColor) {
+      console.log('setThemeColor: ' + themeColor);
+      this.config.themeColor = themeColor;
       return this;
     },
 
@@ -116,7 +114,7 @@ var ss360Configa = {
   };
 }(window.sphp = window.sphp || {}, jQuery));
 
-var gen = new sphp.ss360ConfigGenerator('playground.samiholck.com', '.searchBox');
+var gen = new sphp.ss360ConfigGenerator('playground.samiholck.com', '.sphp-ss360-searchBox');
 
 console.log(gen.create());
 

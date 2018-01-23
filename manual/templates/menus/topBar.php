@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
-use Sphp\Html\Apps\Forms\FreefindSearchForm;
+use Sphp\Html\Apps\Forms\SiteSearch360Form;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
@@ -21,7 +21,7 @@ try {
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
   $navi->left()->setContent($leftDrop);
 
-  $form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
+  $form = new SiteSearch360Form('playground.samiholck.com');
   $form->setLabelText(false);
   $form->setPlaceholder('keywords in documentation');
 

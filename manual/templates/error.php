@@ -6,7 +6,7 @@ use Sphp\Html\Adapters\QtipAdapter;
 
 echo \ParsedownExtra::instance()->text(<<<TEXT
 
-#<small>SORRY</small> 404 ERROR <small>The page cannot be found</small>{.error}
+#<small>Sorry</small> 404 ERROR <small>The page cannot be found</small>{.error}
 
 We cannot find the page you are looking for.
 
@@ -19,16 +19,16 @@ Or go to our home page, and use the menus to navigate to a specific section.
 TEXT
 );
 
-$form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
+$form = SiteSearch360Form::create('playground.samiholck.com');
 $form->setLabelText('Search from manual:');
 
 $form->setPlaceholder('keywords in documentation');
 
 (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($form);
 $form->printHtml();
-
+echo $form->createResultComponent();
 echo \ParsedownExtra::instance()->text(<<<TEXT
-This page allows you to search through the API documentation for specific terms. Enter your search words into the box below and click "submit". The search will be performed on namespaces, classes, interfaces, traits, functions, and methods.
+This field allows you to search through the API documentation for specific terms. Enter your search words into the box below and click "submit". The search will be performed on namespaces, classes, interfaces, traits, functions, and methods.
 TEXT
 );
 $samiForm = new SamiApiSearchForm('http://playground.samiholck.com/API/sami/');

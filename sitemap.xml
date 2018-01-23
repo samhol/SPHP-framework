@@ -6,169 +6,197 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+
 <url>
   <loc>http://playground.samiholck.com/</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Config</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Core</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Config.ErrorHandling</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Stdlib.filemanipulation</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Security</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Stdlib.Datastructures</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Stdlib</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Stdlib.Observers.and.Events</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://playground.samiholck.com/Sphp.Stdlib.Types</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Filters</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Validators</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Stdlib.Datastructures</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://playground.samiholck.com/Sphp.Stdlib.Types</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://playground.samiholck.com/Sphp.Stdlib.filemanipulation</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://playground.samiholck.com/Sphp.Database</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.I18n</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Db.Objects</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Validators</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://playground.samiholck.com/Sphp.Html.Content</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Document</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Attributes</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Head</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Programming</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Lists</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Tables</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Forms</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Media</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Media.Multimedia</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Html.Foundation</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Core</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Grids</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Grids.XY</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Containers</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Bars</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Navigation</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Buttons</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Media</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Forms</loc>
-  <changefreq>daily</changefreq>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/ref.array</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/?page=Sphp.Html.Foundation.Sites.Navigation</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/language.variables.php</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/namespace-Sphp.Html.html</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://playground.samiholck.com/grid.html</loc>
-  <changefreq>daily</changefreq>
+  <loc>http://playground.samiholck.com/namespace-Sphp.Html.Foundation.html</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
   <priority>0.64</priority>
 </url>
+<url>
+  <loc>http://playground.samiholck.com/namespace-Sphp.Html.Foundation.Navigation.html</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://playground.samiholck.com/class-Sphp.Html.Foundation.Navigation.BreadCrumbs.html</loc>
+  <lastmod>2018-01-23T08:25:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>

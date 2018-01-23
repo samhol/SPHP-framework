@@ -78,6 +78,7 @@ items:
       items:
       - link: Introduction
         href: Sphp.Html.Foundation
+        title: Foundation Introduction
       - ruler: 
       - link: Core components
         href: Sphp.Html.Foundation.Sites.Core

@@ -19,9 +19,9 @@ $currentUrl = URL::getCurrentURL();
         <h6>Search the sites</h6>
         <?php
 
-        use Sphp\Html\Apps\Forms\FreefindSearchForm;
+        use Sphp\Html\Apps\Forms\SiteSearch360Form;
 
-$form = new FreefindSearchForm(['pid' => 'r', 'si' => '51613081', 'bcd' => '&#247;', 'n' => '0']);
+$form = new SiteSearch360Form('playground.samiholck.com');
         $form->setLabelText(false);
         $form->setPlaceholder('keywords in documentation');
         $form->printHtml();

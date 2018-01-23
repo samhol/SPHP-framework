@@ -47,6 +47,7 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
    */
   private $submitButton;
 
+private $queryVisible = false;
   /**
    * Constructs a new instance
    * 
@@ -71,6 +72,11 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
     $group->append($this->searchField);
     $group->append($this->submitButton);
     return $group;
+  }
+
+  public function showCurrentQueryWords(bool $show) {
+    $this->queryVisible = $show;
+    return $this;
   }
 
   public function contentToString(): string {

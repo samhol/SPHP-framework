@@ -9,7 +9,7 @@ $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $hyperlinkIfLink = Manual\api()->classLinker(HyperlinkInterface::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
 Manual\md(<<<MD
-#FOUNDATION <small>NAVIGATION COMPONENTS</small>
+#Foundation <small>navigation components</small>
 $ns
         
 This namespace contains object oriented PHP implementations of Foundation navigation components.
