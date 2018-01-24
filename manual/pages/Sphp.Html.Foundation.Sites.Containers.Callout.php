@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Manual;
 
 $callout = \Sphp\Manual\api()->classLinker(Callout::class);

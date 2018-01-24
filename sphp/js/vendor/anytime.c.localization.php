@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Net;
+namespace Sphp\Http\Headers;
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -11,12 +11,12 @@ include_once(__DIR__ . '/../../settings.php');
 
 Headers::setContentType('application/json');
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\I18n\Gettext;
 
 use Sphp\Stdlib\Arrays;
 
-var_dump(Locale::setMessageLocale('fi_FI'));
-$calendar = new Calendar();
+//var_dump(Locale::setMessageLocale('fi_FI'));
+$calendar = new \Sphp\I18n\Datetime\DateTime();
 $messages = [
     'firstDOW' => 1,
     'labelTitle' => 'Valitse päivämäärä ja kellonaika',
