@@ -9,7 +9,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi_FI\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 2.0.6\n"
+
+msgid "hours"
+msgstr "tunnit"
+
+msgid "minutes"
+msgstr "minuutit"
+
+msgid "seconds"
+msgstr "sekunnit"
 
 msgid "year"
 msgstr "vuosi"
@@ -20,60 +29,8 @@ msgstr "kuukausi"
 msgid "week"
 msgstr "viikko"
 
-# Number translations
-msgid "one"
-msgstr "yksi"
-
-msgid "first"
-msgstr "ensimmäinen"
-
-msgid "1st"
-msgstr "1."
-
-msgid "two"
-msgstr "kaksi"
-
-msgid "second"
-msgstr "toinen"
-
-msgid "2nd"
-msgstr "2."
-
-msgid "three"
-msgstr "kolme"
-
-msgid "third"
-msgstr "kolmas"
-
-msgid "3rd"
-msgstr "3."
-
-msgid "four"
-msgstr "neljä"
-
-msgid "fourth"
-msgstr "neljäs"
-
-msgid "4th"
-msgstr "4."
-
-msgid "five"
-msgstr "viisi"
-
-msgid "six"
-msgstr "kuusi"
-
-msgid "seven"
-msgstr "seitsemän"
-
-msgid "eight"
-msgstr "kahdeksan"
-
-msgid "nine"
-msgstr "yhdeksän"
-
-msgid "ninth"
-msgstr "yhdeksäs"
+msgid "day"
+msgstr "päivä"
 
 # week day names
 msgid "Monday"

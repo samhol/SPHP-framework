@@ -1,36 +1,250 @@
 <?php
 
 /**
- * CalendarUtils.php (UTF-8)
- * Copyright (c) 2018 Sami Holck <sami.holck@gmail.com>
+ * Calendar.php (UTF-8)
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\I18n\Datetime;
 
+use Sphp\I18n\Gettext\Translator;
+use Sphp\I18n\TranslatorInterface;
+use Sphp\Stdlib\Arrays;
+
 /**
- * Description of CalendarUtils
+ * Class localizes weekday and month names
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-01-24
+ * @since   2012-02-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class CalendarUtils {
 
-  private static $days = array(
-      1 => 'Monday',
-      2 => 'Tuesday',
-      3 => 'Wednesday',
-      4 => 'Thursday',
-      5 => 'Friday',
-      6 => 'Saturday',
-      7 => 'Sunday',
-  );
+  /**
+   * January
+   */
+  const JAN = 1;
 
-  public static function getWeekdayNames(): array {
-    $days = static::$days;
-    $translator = new \Sphp\I18n\Gettext\Translator('Sphp.Datetime', 'sphp/locale');
-    return $translator->translateArray($days);
+  /**
+   * February
+   */
+  const FEB = 2;
+
+  /**
+   * March
+   */
+  const MAR = 3;
+
+  /**
+   * April
+   */
+  const APR = 4;
+
+  /**
+   * April
+   */
+  const MAY = 5;
+
+  /**
+   * June
+   */
+  const JUN = 6;
+
+  /**
+   * July
+   */
+  const JUL = 7;
+
+  /**
+   * August
+   */
+  const AUG = 8;
+
+  /**
+   * September
+   */
+  const SEP = 9;
+
+  /**
+   * October
+   */
+  const OCT = 10;
+
+  /**
+   * November
+   */
+  const NOV = 11;
+
+  /**
+   * December
+   */
+  const DEC = 12;
+
+  /**
+   * month names in english
+   *
+   * @var array[string]
+   */
+  private static $months = [
+      self::JAN => 'January',
+      self::FEB => 'February',
+      self::MAR => 'March',
+      self::APR => 'April',
+      self::MAY => 'May',
+      self::JUN => 'June',
+      self::JUL => 'July',
+      self::AUG => 'August',
+      self::SEP => 'September',
+      self::OCT => 'October',
+      self::NOV => 'November',
+      self::DEC => 'December'];
+
+  /**
+   * monday
+   */
+  const MON = 1;
+
+  /**
+   * tuesday
+   */
+  const TUE = 2;
+
+  /**
+   * wednesday
+   */
+  const WED = 3;
+
+  /**
+   * thursday
+   */
+  const THU = 4;
+
+  /**
+   * friday
+   */
+  const FRI = 5;
+
+  /**
+   * saturday
+   */
+  const SAT = 6;
+
+  /**
+   * Sunday
+   */
+  const SUN = 7;
+
+  /**
+   * week day names in English
+   *
+   * @var string[]
+   */
+  private static $weekdays = [
+      self::MON => 'Monday',
+      self::TUE => "Tuesday",
+      self::WED => 'Wednesday',
+      self::THU => 'Thursday',
+      self::FRI => 'Friday',
+      self::SAT => 'Saturday',
+      self::SUN => 'Sunday'];
+  private $translator;
+
+  /**
+   * Constructs a new instance
+   *
+   * @param  Translator|null $translator the translator component
+   */
+  public function __construct(TranslatorInterface $translator = null) {
+    if ($translator !== null) {
+      $this->translator = $translator;
+    } else {
+      $this->translator = new Translator();
+    }
+  }
+
+  /**
+   * Returns the name or the abbreviation of the given weekday number
+   *
+   * @param  int $wd weekday number (1-7)
+   * @param  int|null $length optional length of the weekday string
+   * @return string the name or the abbreviation of the given weekday number
+   */
+  public function getWeekdayName($wd, $length = null) {
+    $day = $this->translator->get(self::$weekdays[$wd]);
+    if ($length > 0) {
+      $day = substr($day, 0, $length);
+    }
+    return $day;
+  }
+
+  /**
+   * Returns the names or the abbreviations of the weekday names
+   *
+   * **Note:** array structure is <var>[weekday number] => "Weekday name"</var>.
+   *
+   * @param  int|null $length optional length of a individual weekday string
+   * @param  int $firstDay optional number of the first weekday
+   * @return string[] the names or the abbreviations of the weekday names
+   */
+  public function getWeekdays($length = null, $firstDay = self::MON) {
+    $days = Arrays::copy(self::$weekdays);
+    if ($firstDay !== self::MON) {
+      $first = array_slice(self::$weekdays, $firstDay - 1);
+      $last = array_slice(self::$weekdays, 0, (7 - count($first)));
+      $sequence = array_merge($first, $last);
+      //$sequence = [];
+      //print_r($sequence);
+      foreach ($sequence as $name) {
+        $key = array_search($name, self::$weekdays);
+        $d[$key] = $name;
+      }
+      //print_r($d);
+      $days = $d;
+    }
+    $translations = $this->translator->translateArray($days);
+    if ($length > 0) {
+      foreach ($translations as $number => $day) {
+        $translations[$number] = substr($day, 0, $length);
+      }
+    }
+    return $translations;
+  }
+
+  /**
+   * Returns the name or the abbreviation of the given month number
+   *
+   * @param  int $month month number (1-12)
+   * @param  int|null $length optional length of the month string
+   * @return string the name or the abbreviation of the given month number
+   */
+  public function getMonthName($month = null, $length = null) {
+    if ($month === null) {
+      $month = (int) date("m");
+    }
+    $monthName = $this->translator->get(self::$months[$month]);
+    if ($length > 0) {
+      $monthName = mb_substr($monthName, 0, $length);
+    }
+    return $monthName;
+  }
+
+  /**
+   * Returns the names or the abbreviations of the month names
+   *
+   * **Note:** array structure is <var>[month number] => "month name"</var>.
+   *
+   * @param  int|null $length optional length of a individual month name string
+   * @return string[] the names or the abbreviations of the month names
+   */
+  public function getMonths($length = null) {
+    $months = $this->translator->translateArray(self::$months);
+    if ($length > 0) {
+      foreach ($months as $number => $month) {
+        $months[$number] = substr($month, 0, $length);
+      }
+    }
+    return $months;
   }
 
 }

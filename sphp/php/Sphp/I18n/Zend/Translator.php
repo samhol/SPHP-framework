@@ -155,12 +155,13 @@ class Translator extends AbstractTranslator {
 
   /**
    * 
-   * @param type $lang
-   * @param type $directory
-   * @param type $domain
-   * @return self new instance
+   * @param  string $type
+   * @param  string $baseDir
+   * @param  string $pattern
+   * @param  string $textDomain
+   * @return Translator
    */
-  public static function fromFilePattern($type, $baseDir, $pattern, $textDomain = 'default') {
+  public static function fromFilePattern(string $type, string $baseDir, string $pattern, string $textDomain = 'default'): Translator {
     $t = new ZendTranslator();
     $t->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
     return new static($t);

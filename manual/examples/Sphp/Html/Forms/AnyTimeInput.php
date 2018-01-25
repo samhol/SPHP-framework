@@ -6,7 +6,7 @@ use Sphp\Html\Forms\Form;
 use Sphp\Html\Forms\Label;
 
 $datetimeInput = (new AnyTimeInput("datetime"))
-        ->setPlaceholder("what ever time...");
+        ->setPlaceholder("what ever time...")->setLocale('fi');
 
 $form = (new Form());
 

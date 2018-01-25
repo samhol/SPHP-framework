@@ -10,6 +10,7 @@ namespace Sphp\I18n;
 use Sphp\Config\Locale;
 use Sphp\Validators\StringFormatValidator;
 use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Abstract implementation for natural language translator
  *

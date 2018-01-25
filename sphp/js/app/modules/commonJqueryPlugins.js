@@ -175,6 +175,7 @@
    */
   $.fn.dateTimeInput = function () {
     return this.each(function () {
+      console.log("$.fn.dateTimeInput()");
       var $this = $(this), datetime_fi_locale = {
         format: "%d.%m.%Y %H:%i",
         firstDOW: 1,
@@ -198,6 +199,17 @@
       if ($this.attr("data-locale") === "fi") {
         locale = datetime_fi_locale;
         console.log(locale);
+        $.ajax({
+          dataType: "json",
+          url: 'sphp/ajax/anytime.c.localization.php',
+          data: {'lang': 'fi_FI'},
+          success: function (data) {
+            $.each(data, function (key, val) {
+
+              console.log("key, val : " + key +", "+ val);
+            });
+          }
+        });
       }
       if ($this.attr("data-format")) {
         locale.format = $input.attr("data-format");
