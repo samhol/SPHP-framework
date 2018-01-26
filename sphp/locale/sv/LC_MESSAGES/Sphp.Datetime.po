@@ -3,98 +3,97 @@ msgstr ""
 "Project-Id-Version: SPHPlayground\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fi_FI\n"
+"Language: sv\n"
 "X-Generator: Poedit 2.0.6\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 msgid "Select a Date and Time"
-msgstr "Valitse päivämäärä ja kellonaika"
+msgstr "Välja datum och tiden"
 
 msgid "hours"
-msgstr "tunnit"
+msgstr "timmar"
 
 msgid "minutes"
-msgstr "minuutit"
+msgstr "minuter"
 
 msgid "seconds"
-msgstr "sekunnit"
+msgstr "sekunder"
 
 msgid "year"
-msgstr "vuosi"
+msgstr "år"
 
 msgid "month"
-msgstr "kuukausi"
+msgstr "månad"
 
 msgid "week"
-msgstr "viikko"
+msgstr "vecka"
 
 msgid "day"
-msgstr "päivä"
+msgstr "dag"
 
 # week day names
 msgid "Monday"
-msgstr "maanantai"
+msgstr "måndag"
 
 msgid "Tuesday"
-msgstr "tiistai"
+msgstr "tisdag"
 
 msgid "Wednesday"
-msgstr "keskiviikko"
+msgstr "onsdag"
 
 msgid "Thursday"
-msgstr "torstai"
+msgstr "torsdag"
 
 msgid "Friday"
-msgstr "perjantai"
+msgstr "fredag"
 
 msgid "Saturday"
-msgstr "lauantai"
+msgstr "lördag"
 
 msgid "Sunday"
-msgstr "sunnuntai"
+msgstr "söndag"
 
 # month names
 msgid "January"
-msgstr "tammikuu"
+msgstr "januari"
 
 msgid "February"
-msgstr "helmikuu"
+msgstr "februari"
 
 msgid "March"
-msgstr "maaliskuu"
+msgstr "mars"
 
 msgid "April"
-msgstr "huhtikuu"
+msgstr "april"
 
 msgid "May"
-msgstr "toukokuu"
+msgstr "maj"
 
 msgid "June"
-msgstr "kesäkuu"
+msgstr "juni"
 
 msgid "July"
-msgstr "heinäkuu"
+msgstr "juli"
 
 msgid "August"
-msgstr "elokuu"
+msgstr "augusti"
 
 msgid "September"
-msgstr "syyskuu"
+msgstr "september"
 
 msgid "October"
-msgstr "lokakuu"
+msgstr "oktober"
 
 msgid "November"
-msgstr "marraskuu"
+msgstr "november"
 
 msgid "December"
-msgstr "joulukuu"
+msgstr "december"
 
 msgid "%s th of %s %s"
 msgstr "%s. %sta %s"

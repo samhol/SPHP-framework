@@ -49,7 +49,7 @@ abstract class Locale {
    * @return boolean true if the setting was successful and false otherwise
    */
   public static function setMessageLocale(string $locale): bool {
-    return self::setLocale(\LC_MESSAGES, $locale);
+    return static::setLocale(\LC_MESSAGES, $locale);
   }
 
   /**
@@ -78,7 +78,7 @@ abstract class Locale {
    * @return string the current locale setting for date and time formatting
    */
   public static function getDatetimeLocale(): string {
-    return self::getLocale(LC_TIME);
+    return static::getLocale(LC_TIME);
   }
 
   /**

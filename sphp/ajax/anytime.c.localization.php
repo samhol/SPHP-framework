@@ -16,35 +16,44 @@ Headers::setContentType('application/json');
 //namespace Sphp\I18n\Gettext;
 
 use Sphp\Stdlib\Arrays;
-use Sphp\Config\Locale;
+use Sphp\Stdlib\Filesystem;
 
 $lang = filter_input(INPUT_GET, 'lang', FILTER_SANITIZE_STRING);
-if ($lang !== null) {
-  Locale::setMessageLocale($lang);
+if ($lang === null) {
+  $lang = 'en_US';
+  //Locale::setMessageLocale($lang);
   //var_dump(Locale::setMessageLocale($lang));
 }
 
 use Sphp\I18n\Datetime\CalendarUtils;
-$translator = Translator::fromFilePattern('gettext', 'sphp/locale/', '%s/LC_MESSAGES/Sphp.Defaults.mo', 'Sphp.Defaults');
-$translator->setUsedDomain("Sphp.Defaults")->setLang('fi_FI');
-echo $translator->getLang('Monday');
-echo $translator->get('Monday');
+
+//$t = new gt('Sphp.Defaults', 'sphp/locale');
+//
+//$t->setLang('fi_FI');
+//echo $t->get('Monday');
+//echo Filesystem::getFullPath(__DIR__.'/../locale/');
+$translator = Translator::fromFilePattern('gettext', Filesystem::getFullPath(__DIR__ . '/../locale/'), '%s/LC_MESSAGES/Sphp.Datetime.mo', 'Sphp.Datetime')
+        ->setUsedDomain('Sphp.Datetime')
+        ->setLang($lang);
+//echo $translator->getLang('Monday');
+//echo $translator->get('Monday');
 $cal = new CalendarUtils($translator);
 $messages = [
-    'foo' => $lang,
-    'firstDOW' => 1,
-    'labelTitle' => 'Valitse päivämäärä ja kellonaika',
+    //'foo' => $lang,
+    //'locale' => Locale::getMessageLocale(),
+    //'firstDOW' => 1,
+    'labelTitle' => 'Select a Date and Time',
     'labelYear' => 'year',
     'labelMonth' => 'month',
     'labelDayOfMonth' => 'day',
     'labelHour' => 'hours',
     'labelMinute' => 'minutes',
     'labelSecond' => 'seconds',
-    'dayAbbreviations' => Arrays::setSequential($cal->getWeekdays(2)),
-    'dayNames' => Arrays::setSequential($cal->getWeekdays()),
-    'monthAbbreviations' => Arrays::setSequential($cal->getMonths(3)),
-    'monthNames' => Arrays::setSequential($cal->getMonths())
 ];
+$messages['dayAbbreviations'] = Arrays::setSequential($cal->getWeekdays(2));
+$messages['dayNames'] = Arrays::setSequential($cal->getWeekdays());
+$messages['monthAbbreviations'] = Arrays::setSequential($cal->getMonths(3));
+$messages['monthNames'] = Arrays::setSequential($cal->getMonths());
 
 
 //print_r(array_intersect($calendar->getWeekdays(NULL, Calendar::WED), $calendar->getWeekdays(NULL, Calendar::SUN)));

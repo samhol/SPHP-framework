@@ -1,7 +1,8 @@
 <?php
 
 namespace Sphp\I18n\Zend;
-
+use Sphp\Config\Locale;
+  Locale::setMessageLocale('en_US');
 $translator = Translator::fromFilePattern("gettext", "sphp/locale/", "%s/LC_MESSAGES/Sphp.Defaults.mo", "Sphp.Defaults")
         ->setUsedDomain("Sphp.Defaults")
         ->setLang("fi_FI");

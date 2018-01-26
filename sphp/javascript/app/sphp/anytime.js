@@ -14,7 +14,7 @@
    * @param {String} siteId The site id
    * @param {String} selector the selector to the search box(es)
    */
-  sphp.anyTimeBuilder = function () {
+  sphp.AnyTimeBuilder = function () {
     this.config = {};
     this.config.siteId = siteId;
     this.setSearchSelector(selector);
@@ -34,7 +34,7 @@
     this.config.showErrors = true;
     return this;
   };
-  sphp.anyTimeBuilder.prototype = {
+  sphp.AnyTimeBuilder.prototype = {
 
     /**
      * Runs all the processess needed for the application
