@@ -19,6 +19,7 @@ use Sphp\Stdlib\Arrays;
 use Sphp\Stdlib\Filesystem;
 
 $lang = filter_input(INPUT_GET, 'lang', FILTER_SANITIZE_STRING);
+$heading = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
 if ($lang === null) {
   $lang = 'en_US';
   //Locale::setMessageLocale($lang);
@@ -38,6 +39,7 @@ $translator = Translator::fromFilePattern('gettext', Filesystem::getFullPath(__D
 //echo $translator->getLang('Monday');
 //echo $translator->get('Monday');
 $cal = new CalendarUtils($translator);
+$cal->setFirstDayOfWeek(CalendarUtils::SUN);
 $messages = [
     //'foo' => $lang,
     //'locale' => Locale::getMessageLocale(),
@@ -50,8 +52,8 @@ $messages = [
     'labelMinute' => 'minutes',
     'labelSecond' => 'seconds',
 ];
-$messages['dayAbbreviations'] = Arrays::setSequential($cal->getWeekdays(2));
-$messages['dayNames'] = Arrays::setSequential($cal->getWeekdays());
+$messages['dayAbbreviations'] = $cal->getWeekdays(2);
+$messages['dayNames'] = $cal->getWeekdays();
 $messages['monthAbbreviations'] = Arrays::setSequential($cal->getMonths(3));
 $messages['monthNames'] = Arrays::setSequential($cal->getMonths());
 

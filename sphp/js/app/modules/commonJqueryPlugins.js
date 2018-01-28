@@ -11,7 +11,7 @@
     var ret;
     // If no items in the collection, return
     if (!this.length) {
-      return typeof arg == "undefined" ? this : null;
+      return typeof arg === "undefined" ? this : null;
     }
     // Getter overload (no argument passed)
     if (!arg) {

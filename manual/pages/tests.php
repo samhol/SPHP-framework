@@ -8,6 +8,7 @@ codeModal('locations', 'Sphp/Database/locations.sql', "`MySQL` version of locati
 <input class="searchBox" id="searchBox1" type="search" placeholder="search1" />
 <input type="radio" name="fname" placeholder="First name"><br>
 <input type="range" name="lname" placeholder="Last name"><br>
+<input type="text" id="vw" name="foo" data-sphp-locale="fi_FI" placeholder="foo date" data-anytime><br>
 
 <?php
 $group = new \Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;

@@ -64,7 +64,7 @@ trait FormTrait {
    *
    * The action attribute specifies where to send the form-data when a form is submitted.
    *
-   * **Possible <var>$url</var> values:**
+   * **Possible `$url` values:**
    *
    * * An absolute URL - points to another web site 'http://www.example.com/example.htm'
    * * A relative URL - points to a file within a web site 'example.htm'
@@ -181,14 +181,14 @@ trait FormTrait {
    * target attribute defines a name of, or keyword for, a browsing context
    * (e.g. tab, window, or inline frame).
    *
-   * **<var>$target</var> values:**
+   * **`$target` values:**
    *
    * 
-   * * <var>_blank</var>: The response is displayed in a new window or tab
-   * * <var>_self</var>: The response is displayed in the same frame (this is default)
-   * * <var>_parent</var>: The response is displayed in the parent frame
-   * * <var>_top</var>: The response is displayed in the full body of the window
-   * * <var>framename</var>: The response is displayed in a named iframe
+   * * `_blank`: The response is displayed in a new window or tab
+   * * `_self`: The response is displayed in the same frame (this is default)
+   * * `_parent`: The response is displayed in the parent frame
+   * * `_top`: The response is displayed in the full body of the window
+   * * `framename`: The response is displayed in a named iframe
    * 
    * @param  string $target the value of the target attribute
    * @return $this for a fluent interface

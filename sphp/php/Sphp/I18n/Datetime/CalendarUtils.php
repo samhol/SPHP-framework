@@ -148,7 +148,16 @@ class CalendarUtils {
       self::FRI => 'Friday',
       self::SAT => 'Saturday',
       self::SUN => 'Sunday'];
+
+  /**
+   * @var Translator|null 
+   */
   private $translator;
+
+  /**
+   * @var int 
+   */
+  private $fwd = self::MON;
 
   /**
    * Constructs a new instance
@@ -163,6 +172,41 @@ class CalendarUtils {
     }
   }
 
+  public function setTranslator(Translator $translator = null) {
+    $this->translator = $translator;
+    return $this;
+  }
+
+  /**
+   * 
+   * @return bool
+   */
+  public function hasTranslator(): bool {
+    return $this->translator !== null;
+  }
+
+  protected function translate($items) {
+    if ($this->hasTranslator()) {
+      if (is_array($items)) {
+        $items = $this->translator->translateArray($items);
+      } else if (is_string($items)) {
+        $items = $this->translator->get($items);
+      }
+    }
+    return $items;
+  }
+
+  /**
+   * 
+   * 
+   * @param  int $wd optional number of the first weekday
+   * @return $this for a fluent interface
+   */
+  public function setFirstDayOfWeek(int $wd = self::MON) {
+    $this->fwd = $wd;
+    return $this;
+  }
+
   /**
    * Returns the name or the abbreviation of the given weekday number
    *
@@ -171,7 +215,7 @@ class CalendarUtils {
    * @return string the name or the abbreviation of the given weekday number
    */
   public function getWeekdayName($wd, $length = null) {
-    $day = $this->translator->get(self::$weekdays[$wd]);
+    $day = $this->translate(self::$weekdays[$wd]);
     if ($length > 0) {
       $day = substr($day, 0, $length);
     }
@@ -184,25 +228,20 @@ class CalendarUtils {
    * **Note:** array structure is <var>[weekday number] => "Weekday name"</var>.
    *
    * @param  int|null $length optional length of a individual weekday string
-   * @param  int $firstDay optional number of the first weekday
    * @return string[] the names or the abbreviations of the weekday names
    */
-  public function getWeekdays($length = null, $firstDay = self::MON) {
-    $days = Arrays::copy(self::$weekdays);
-    if ($firstDay !== self::MON) {
-      $first = array_slice(self::$weekdays, $firstDay - 1);
+  public function getWeekdays(int $length = null) {
+    $sequence = static::$weekdays;
+    if ($this->fwd !== self::MON) {
+      $first = array_slice(self::$weekdays, $this->fwd - 1);
       $last = array_slice(self::$weekdays, 0, (7 - count($first)));
       $sequence = array_merge($first, $last);
       //$sequence = [];
       //print_r($sequence);
-      foreach ($sequence as $name) {
-        $key = array_search($name, self::$weekdays);
-        $d[$key] = $name;
-      }
       //print_r($d);
-      $days = $d;
+      //$days = $d;
     }
-    $translations = $this->translator->translateArray($days);
+    $translations = $this->translate($sequence);
     if ($length > 0) {
       foreach ($translations as $number => $day) {
         $translations[$number] = substr($day, 0, $length);
@@ -218,11 +257,11 @@ class CalendarUtils {
    * @param  int|null $length optional length of the month string
    * @return string the name or the abbreviation of the given month number
    */
-  public function getMonthName($month = null, $length = null) {
+  public function getMonthName(int $month = null, int $length = null) {
     if ($month === null) {
-      $month = (int) date("m");
+      $month = (int) date('m');
     }
-    $monthName = $this->translator->get(self::$months[$month]);
+    $monthName = $this->translate(self::$months[$month]);
     if ($length > 0) {
       $monthName = mb_substr($monthName, 0, $length);
     }
@@ -237,8 +276,8 @@ class CalendarUtils {
    * @param  int|null $length optional length of a individual month name string
    * @return string[] the names or the abbreviations of the month names
    */
-  public function getMonths($length = null) {
-    $months = $this->translator->translateArray(self::$months);
+  public function getMonths(int $length = null) {
+    $months = $this->translate(self::$months);
     if ($length > 0) {
       foreach ($months as $number => $month) {
         $months[$number] = substr($month, 0, $length);

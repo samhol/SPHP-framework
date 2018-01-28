@@ -61,7 +61,7 @@ class Form extends ContainerTag implements TraversableForm {
   /**
    * Appends a hidden variable to the form
    *
-   * The <var>$name => $value</var> pair is stored into a {@link HiddenInput} component.
+   * The `$name => $value` pair is stored into a {@link HiddenInput} component.
    *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
@@ -77,7 +77,7 @@ class Form extends ContainerTag implements TraversableForm {
   /**
    * Appends the hidden data to the form
    *
-   * Appended <var>$key => $value</var> pairs are stored into 
+   * Appended `$key => $value` pairs are stored into 
    *  {@link HiddenInput} components.
    *
    * @param  string[] $vars name => value pairs

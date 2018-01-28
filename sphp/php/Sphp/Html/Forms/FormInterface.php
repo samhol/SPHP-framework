@@ -177,13 +177,4 @@ interface FormInterface extends Content {
    */
   public function getTarget();
 
-  /**
-   * Sets the values to the input fields
-   *
-   * **Important:** Works only for single dimensional input names
-   * 
-   * @param  mixed[] $data
-   * @return $this for a fluent interface
-   */
-  public function setData(array $data = []);
 }

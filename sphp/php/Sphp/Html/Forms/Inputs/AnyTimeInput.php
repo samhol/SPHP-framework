@@ -10,7 +10,8 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements a Any+Time datetime-input widget
  *
- * **Note!** This element uses Any+Time DatePicker/TimePicker AJAX Calendar Widget for its functionality.
+ * **Note!** This element uses Any+Time DatePicker/TimePicker AJAX Calendar 
+ * Widget for its functionality.
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.ama3.com/anytime/ Any+Time Calendar Widget
@@ -18,23 +19,6 @@ namespace Sphp\Html\Forms\Inputs;
  * @filesource
  */
 class AnyTimeInput extends InputTag {
-
-  //const LANG_FI = "fi";
-  //const LANG_EN = "en";
-
-  /**
-   * used language
-   *
-   * @var string
-   */
- // private $locale = self::LANG_EN;
-
-  /**
-   * used datetime format
-   *
-   * @var string
-   */
- // private $format = "%Y-%m-%d %H:%i";
 
   /**
    * Constructs a new instance
@@ -64,8 +48,7 @@ class AnyTimeInput extends InputTag {
    * @return $this for a fluent interface
    */
   public function setLocale(string $locale = null) {
-    //$this->locale = $locale;
-    $this->setAttribute('data-locale', $locale);
+    $this->setAttribute('data-sphp-locale', $locale);
     return $this;
   }
 
@@ -116,7 +99,6 @@ class AnyTimeInput extends InputTag {
    * @return $this for a fluent interface
    */
   public function setDateTimeFormat(string $format = '%Y-%m-%d %H:%i') {
-    //$this->format = $format;
     $this->setAttribute('data-format', $format);
     return $this;
   }

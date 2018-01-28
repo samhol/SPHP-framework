@@ -52,27 +52,4 @@ trait TraversableFormTrait {
     return $this->getComponentsBy($search);
   }
 
-  /**
-   * Sets the values to the input fields
-   *
-   * **Important:** Works only for single dimensional input names
-   * 
-   * @param  mixed[] $data
-   * @param  boolean $filter true for enabling the data filtering, and false otherwise
-   * @return TraverableFormInterface for PHP Method Chaining
-   */
-  public function setData(array $data = [], $filter = true) {
-    if ($filter) {
-      $data = filter_var_array($data, \FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-      //print_r($data);
-    }
-    foreach ($this->getNamedInputComponents() as $input) {
-      $inputName = $input->getName();
-      if (array_key_exists($inputName, $data)) {
-        $input->setValue($data[$inputName]);
-      }
-    }
-    return $this;
-  }
-
 }

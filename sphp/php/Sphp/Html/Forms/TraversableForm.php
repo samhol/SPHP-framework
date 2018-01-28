@@ -9,6 +9,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Forms\Inputs\HiddenInput;
+
 /**
  * Defines required properties for a traversable HTML &lt;form&gt; component
  *
@@ -20,20 +21,9 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
 interface TraversableForm extends FormInterface, TraversableContent {
 
   /**
-   * Sets the values to the input fields
-   *
-   * **Important:** Works only for single dimensional input names
-   * 
-   * @param  mixed[] $data
-   * @param  boolean $filter true for enabling the data filtering, ans false otherwise
-   * @return $this for a fluent interface
-   */
-  public function setData(array $data = [], $filter = true);
-
-  /**
    * Appends a hidden variable into the form
    *
-   * Appended <var>$name => $value</var> pair is stored into a
+   * Appended `$name => $value` pair is stored into a
    *  {@link HiddenInput} object
    *
    * @param  string $name th name of the hidden variable
@@ -46,7 +36,7 @@ interface TraversableForm extends FormInterface, TraversableContent {
   /**
    * Appends the hidden data to the form
    *
-   * Appended <var>$key => $value</var> pairs are stored into 
+   * Appended `$key => $value` pairs are stored into 
    *  {@link HiddenInput} components.
    *
    * @param  string[] $vars name => value pairs

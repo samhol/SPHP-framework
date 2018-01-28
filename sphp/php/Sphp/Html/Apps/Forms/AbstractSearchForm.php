@@ -46,8 +46,8 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
    * @var Submitter
    */
   private $submitButton;
+  private $queryVisible = false;
 
-private $queryVisible = false;
   /**
    * Constructs a new instance
    * 
@@ -137,10 +137,6 @@ private $queryVisible = false;
   public function setHiddenData(array $hiddenData) {
     $this->hiddenData->setVariables($hiddenData);
     return $this;
-  }
-
-  public function setData(array $data = []) {
-    
   }
 
 }
