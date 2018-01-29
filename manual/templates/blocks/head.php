@@ -21,7 +21,6 @@ Document::head()
         ->useFontAwesome()
         //->useFoundationIcons()
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
-        ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')
         ->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png?v=2')
         ->addMeta(Meta::author('Sami Holck'))
@@ -47,8 +46,7 @@ Document::head()
         ->addMeta(Meta::description('SPHP framework for web developement'));
 Document::body()->addCssClass('manual');
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
-//Document::html()->scripts()->appendSrc('sphp/javascript/app/sphp/anytime.js');
-Document::html()->scripts()->appendSrc('manual/js/ss360Config.js');
+Document::html()->scripts()->appendSrc('sphp/javascript/dist/ss360.min.js');
 Document::html()->scripts()->appendSrc('https://sitesearch360.com/cdn/sitesearch360-v9.min.js');
 Document::html()->startBody();
 

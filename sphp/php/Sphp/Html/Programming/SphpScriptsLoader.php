@@ -139,7 +139,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @return $this for a fluent interface
    */
   public function appendSPHP() {
-    $this->appendSrc('sphp/js/dist/all.js');
+    $this->appendSrc('sphp/javascript/dist/all.js');
     $this->appendCode('sphp.initialize();');
     $this->appendVideojs();
     return $this;

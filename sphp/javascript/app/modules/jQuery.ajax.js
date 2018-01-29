@@ -1,11 +1,11 @@
 
 (function ($) {
   'use strict';
-/**
- * The jQuery plugin namespace.
- * @external "jQuery.fn"
- * @see {@link http://learn.jquery.com/plugins/|jQuery Plugins}
- */
+  /**
+   * The jQuery plugin namespace.
+   * @external "jQuery.fn"
+   * @see {@link http://learn.jquery.com/plugins/|jQuery Plugins}
+   */
   /**
    * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
    * jQuery's Ajax capabilities and places the returned HTML into the object.
@@ -18,17 +18,13 @@
       var $this = $(this),
               $url = $this.attr("data-sphp-ajax-prepend"),
               $content = $("<div>");
-              var d = new Date();
       console.log("initializing Sphp ajax prepending...");
-      console.log(d.getSeconds());
       $this.appendSpinner();
       $this.on("sphp-ajax-prepend-finished", function () {
         console.log("SPHP Ajax prepending finished...");
         $(this).foundation();
         $this.removeSpinners({duration: 1000});
         $this.removeAttr("data-sphp-ajax-prepend");
-        d = new Date();
-        console.log(d.getSeconds());
       });
       $content = $("<div>").load($url, function (response, status, xhr) {
         if (status === "error") {
@@ -57,17 +53,13 @@
       var $this = $(this),
               $url = $this.attr("data-sphp-ajax-append"),
               $content = $("<div>");
-              var d = new Date();
       console.log("initializing Sphp ajax appending...");
-      console.log(d.getSeconds());
       $this.appendSpinner();
       $this.on("sphp-ajax-append-finished", function () {
         console.log("SPHP Ajax appending finished...");
         $(this).foundation();
         $this.removeSpinners({duration: 1000});
         $this.removeAttr("data-sphp-ajax-append");
-        d = new Date();
-        console.log(d.getSeconds());
       });
       $content = $("<div>").load($url, function (response, status, xhr) {
         if (status === "error") {

@@ -43,59 +43,6 @@
  * @event external:$.fn#sph-sa-opened
  */
 
-/**
- * Pattern for class inheritance in JavaScript
- *
- * <b>Notes:</b>
- * The constructor function of the parent class is not inherited.
- * So even if you need it to be called. you have to do it by yourself.
- *
- * @param {Object} base inherited parent class
- */
-Function.prototype.subclass = function (base) {
-  'use strict';
-  var C = Function.prototype.subclass.nonconstructor;
-  C.prototype = base.prototype;
-  this.prototype = new C();
-};
-Function.prototype.subclass.nonconstructor = function () {
-  'use strict';
-};
-
-Function.prototype.inheritsFrom = function (ParentClassOrObject) {
-  'use strict';
-  if (ParentClassOrObject.constructor == Function) {
-    //Normal Inheritance 
-    this.prototype = new ParentClassOrObject();
-    this.prototype.constructor = this;
-    this.prototype.parent = ParentClassOrObject.prototype;
-  } else {
-    //Pure Virtual Inheritance 
-    this.prototype = ParentClassOrObject;
-    this.prototype.constructor = this;
-    this.prototype.parent = ParentClassOrObject;
-  }
-  return this;
-};
-
-/**
- * Returns the string with every occurence of a given pattern replaced by string.
- *
- * @function external:String#gsub
- * @param  {String} pattern target text to be replaced
- * @param  {String} replacement replacer text
- * @return {String} gsubbed string
- */
-String.prototype.gsub = function (pattern, replacement) {
-  'use strict';
-  var strText = this, intIndexOfMatch = strText.indexOf(pattern);
-  while (intIndexOfMatch !== -1) {
-    strText = strText.replace(pattern, replacement);
-    intIndexOfMatch = strText.indexOf(pattern);
-  }
-  return strText;
-};
-
 if (!window.console) {
   window.console = {};
 }
@@ -246,4 +193,5 @@ if (!window.console.log) {
   };
 
 }(window.sphp = window.sphp || {}, jQuery));
+
 

@@ -41,41 +41,6 @@
     return this;
   };
 
-
-  /**
-   * Replaces the selected part of the attribute value
-   *
-   * @memberOf jQuery.fn#
-   * @method   identify
-   * @param    {String} attr the name of the attribute
-   * @param    {String} find the replaceable content
-   * @param    {String} replace the replacer
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.identify = function () {
-
-    return this.each(function () {
-      var $this = $(this);
-      $this.attr('id', sphp.generateUniqueId());
-    });
-  };
-  /**
-   * Replaces the selected part of the attribute value
-   *
-   * @memberOf jQuery.fn#
-   * @method   gsubAttr
-   * @param    {String} attr the name of the attribute
-   * @param    {String} find the replaceable content
-   * @param    {String} replace the replacer
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.gsubAttr = function (attr, find, replace) {
-    return this.each(function () {
-      var $this = $(this), $attrValue = $this.attr(attr);
-      $this.attr(attr, $attrValue.gsub(find, replace));
-    });
-  };
-
   /**
    * Shows a quick popup text over the element
    * 
@@ -162,64 +127,6 @@
       $(window).resize(function () {
         setValues();
       });
-    });
-  };
-
-  /**
-   * Sets the dateTimeInput
-   * 
-   * @memberOf jQuery.fn#
-   * @method   dateTimeInput
-   * 
-   * @returns {$.fn} for fluent interface
-   */
-  $.fn.dateTimeInput = function () {
-    return this.each(function () {
-      console.log("$.fn.dateTimeInput()");
-      var $this = $(this),
-              $lang,
-              $input = $("input[data-anytime]"),
-              locale = {};
-      console.log($input.attr("data-locale"));
-      if ($this.attr("data-locale").length) {
-        $lang = $this.attr("data-locale");
-        //locale = datetime_fi_locale;
-        console.log($lang);
-        $.ajax({
-          dataType: "json",
-          url: 'sphp/ajax/anytime.c.localization.php',
-          data: {'lang': $lang},
-          success: function (settings) {
-            console.log(settings);
-            locale = settings;
-
-          }
-        });
-        $.getJSON("sphp/ajax/anytime.c.localization.php", {'lang': $lang}, function (settings) {
-          console.log("localization success");
-          console.log(settings);
-          locale = settings;
-        }).done(function () {
-          console.log("second success");
-        }).fail(function () {
-          console.log("localization error");
-        }).always(function () {
-          console.log("localization complete");
-
-        });
-        /*jqxhr.complete(function () {
-         console.log("second complete");
-         });*/
-      }
-      if ($this.attr("data-format")) {
-        locale.format = $input.attr("data-format");
-      } else {
-        locale.format = "%Y-%m-%d %H:%i";
-      }
-      locale.firstDOW = 1;
-      console.log("LOCALE:");
-      console.log(locale);
-      $this.AnyTime_picker(locale);
     });
   };
 
