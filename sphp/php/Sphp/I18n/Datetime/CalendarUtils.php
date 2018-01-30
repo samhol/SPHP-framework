@@ -101,27 +101,27 @@ class CalendarUtils {
       self::DEC => 'December'];
 
   /**
-   * monday
+   * Monday
    */
   const MON = 1;
 
   /**
-   * tuesday
+   * Tuesday
    */
   const TUE = 2;
 
   /**
-   * wednesday
+   * Wednesday
    */
   const WED = 3;
 
   /**
-   * thursday
+   * Thursday
    */
   const THU = 4;
 
   /**
-   * friday
+   * Friday
    */
   const FRI = 5;
 
@@ -172,6 +172,12 @@ class CalendarUtils {
     }
   }
 
+  /**
+   * Sets the translator
+   * 
+   * @param  Translator|null $translator the translator or `null` for no translator
+   * @return $this for a fluent interface
+   */
   public function setTranslator(Translator $translator = null) {
     $this->translator = $translator;
     return $this;

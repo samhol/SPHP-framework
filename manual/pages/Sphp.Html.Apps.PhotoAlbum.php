@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Apps;
-
+use Sphp\Manual;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $photoAlbum = \Sphp\Manual\api()->classLinker(PhotoAlbum::class);
@@ -9,5 +9,5 @@ $photoAlbum = \Sphp\Manual\api()->classLinker(PhotoAlbum::class);
 ##The $photoAlbum component
 MD
 );
-$syntax = (new CodeExampleAccordionBuilder())->loadFromFile("Sphp/Html/Apps/PhotoAlbum.php");
-include_once("Sphp/Html/Apps/PhotoAlbum.php");
+Manual\example("Sphp/Html/Apps/PhotoAlbum.php", null, false)->printHtml();
+include_once("manual/examples/Sphp/Html/Apps/PhotoAlbum.php");

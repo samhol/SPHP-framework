@@ -2,22 +2,24 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
+use Sphp\Manual;
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-\Sphp\Manual\md(<<<MD
-#MISCELLANEOUS HTML COMPONENTS AND APPLICATIONS
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
+Manual\md(<<<MD
+#Miscellaneous HTML components and applications
         
 $ns
 MD
 );
 
-\Sphp\Manual\loadPage('Sphp.Html.Apps.SyntaxHighlighter');
-\Sphp\Manual\loadPage('Sphp.Html.Apps.SingleAccordion');
-
-
+Manual\loadPage('Sphp.Html.Apps.SyntaxHighlighter');
+Manual\loadPage('Sphp.Html.Apps.SearchForms');
+Manual\loadPage('Sphp.Html.Apps.PhotoAlbum');
+/*
 
 CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
 
 CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/misc.php');
 CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/SyntaxHighlighter.php');
+*/

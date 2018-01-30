@@ -13,7 +13,7 @@ use Sphp\Stdlib\Arrays;
 use Sphp\Images\Images as ImageUtils;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton;
-use Sphp\Html\Foundation\Structure\Row;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Tables\Th;
 use Sphp\Html\Lists\Ul;
@@ -49,7 +49,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @param string $albumPaths the paths to the files/folders presented in this album
    * @param string $albumName the title of the albumo
    */
-  public function __construct($albumPaths = ALBUM_PATH, $albumName = "Photo album") {
+  public function __construct($albumPaths = null, $albumName = "Photo album") {
     parent::__construct('div');
     $this->setAlbumPaths($albumPaths)
             ->build()
@@ -73,15 +73,17 @@ class PhotoAlbum extends AbstractContainerComponent {
    */
   private function build() {
     $this->getInnerContainer()
-            ->set("heading", (new Div())->addCssClass("header"))
-            ->set("body", (new Row())->addCssClass("content sphp-photoalbum-row collapse"))
-            ->set("footer", (new Div('<strong>&laquo; A:L:B:U:M:Z:T:&Euml;:R &raquo;</strong> COPYRIGHT &copy; Sami Holck 2007-' . date("Y")))->addCssClass("footer"));
+            ->offsetSet("heading", (new Div())->addCssClass("header"));
+
+    $this->getInnerContainer()->offsetSet("body", (new Row())->addCssClass("content sphp-photoalbum-row collapse"));
+
+    $this->getInnerContainer()->offsetSet("footer", (new Div('<strong>&laquo; A:L:B:U:M:Z:T:&Euml;:R &raquo;</strong> COPYRIGHT &copy; Sami Holck 2007-' . date("Y")))->addCssClass("footer"));
 
     $this->getBody()
             ->appendColumn((new Div($this->getSubFolders($this->albumPaths)->removeCssClass("files")))
-                    ->addCssClass("folderView"), 0, 3)
-            ->appendColumn($this->getPreviewer($this->albumPaths), 12, 9)
-            ->appendColumn($this->generateThumbnailBrowser($this->albumPaths), 12);
+                    ->addCssClass("folderView"), ['small-12', 'medium-3'])
+            ->appendColumn($this->getPreviewer($this->albumPaths), ['small-12', 'medium-9'])
+            ->appendColumn($this->generateThumbnailBrowser($this->albumPaths), ['small-12']);
     return $this;
   }
 
@@ -91,7 +93,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return Div the head section of the album
    */
   private function getHead() {
-    return $this->getInnerContainer()->get("heading");
+    return $this->getInnerContainer()->offsetGet("heading");
   }
 
   /**
@@ -100,7 +102,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return Row the body section of the album
    */
   private function getBody() {
-    return $this->getInnerContainer()->get("body");
+    return $this->getInnerContainer()->offsetGet("body");
   }
 
   /**
@@ -109,7 +111,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return Div the footer section of the album
    */
   private function getFoot() {
-    return $this->getInnerContainer()->get("footer");
+    return $this->getInnerContainer()->offsetGet("footer");
   }
 
   /**
@@ -184,14 +186,12 @@ class PhotoAlbum extends AbstractContainerComponent {
     //print_r($files);
     foreach ($files as $img_index => $file) {
       if (ImageUtils::isImagineImage($file)) {
-        $img = (new Img("sph/pics/loader.gif", "Photo"))
-                ->setAttribute("data-src", \Sphp\Images\SCALER . '?w=91&amp;h=68&amp;src=' . $file);
+        $img = (new Img("sph/pics/loader.gif", "Photo"));
         $thumbnailDiv = (new Div(array($img)))
                 ->setAttribute("data-dir-path", $file->getPath())
-                ->setAttribute("data-file-path", $file)
+                ->setAttribute("data-file-path", "$file")
                 ->setAttribute("data-img_index", $img_index)
-                ->addCssClass("thumbnail")
-                ->setDocumentTitle("Preview picture");
+                ->addCssClass("thumbnail");
         $thumbnailBrowser[] = $thumbnailDiv;
       }
     }
@@ -216,12 +216,8 @@ class PhotoAlbum extends AbstractContainerComponent {
             ->addCssClass("prevImg");
     foreach ($files as $img_index => $file) {
       if (ImageUtils::isImagineImage($file)) {
-        $img = (new Img("sph/pics/loader.gif", "Photo"))
-                ->setAttribute("data-src", \Sphp\Images\SCALER . 'src=' . $file)
-                ->setAttribute("data-scaler-path", \Sphp\Images\SCALER . "?src=$file");
+        $img = (new Img("sph/pics/loader.gif", "Photo"));
         $thumbnailDiv = (new Div(array($img)))
-                ->setAttribute("data-file-path", $file)
-                ->setAttribute("data-img_index", $img_index)
                 ->addCssClass("thumbnail");
         $thumbnailDiv->inlineStyles()->setProperty('display', 'none');
         $photoArea[] = $thumbnailDiv;
