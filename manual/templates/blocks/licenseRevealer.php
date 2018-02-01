@@ -7,7 +7,7 @@ use Sphp\Stdlib\StopWatch;
 $license = (new Modal('SPHP license'));
 $license->getTrigger()->addCssClass('license');
 $license->getPopup()->layout()->setSize('large');
-$license->getPopup()->appendMdFile('LICENSE.md')->addCssClass('license');
+$license->getPopup()->appendMdFile('LICENSE.md')->addCssClass('gnu-license');
 ?>
 Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.
 <?php $license->printHtml(); ?> ||

@@ -8,10 +8,11 @@ md(<<<MD
 ##What is Responsive Web Design?
 Responsive Web Design makes a web page look good and be easy to use on all devices (desktops, tablets, and phones).
 Web pages should not leave out information to fit smaller devices, but rather adapt its content to fit any device:
- </div>       
+</div>       
+
 MD
 );
-
+loadPage('tech-carousel');
 
 loadPage('Sphp-intro/orbit.php');
 loadPage('Sphp.Html.Foundation.Sites');

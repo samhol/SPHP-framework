@@ -216,8 +216,16 @@ $footer-border-color: #FAA523;
       } 
     }
   }
-  .license-area {
+  .license {
     padding-bottom: rem-calc(20);
     color: $dark-gray;
   }
+}
+
+.gnu-license {
+  padding-bottom: rem-calc(20);
+  background: #fafafa;
+  background-image: url(manual/pics/official-gnu.svg) no-repeat top left;
+  background-size: contain;
+
 }

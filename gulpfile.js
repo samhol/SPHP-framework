@@ -8,6 +8,7 @@ var build, gulp = require('gulp'),
 function build_js() {
   return gulp.src([
     './node_modules/jquery/dist/jquery.js',
+    './node_modules/slick-carousel/slick/slick.min.js',
     './node_modules/foundation-sites/dist/js/foundation.js',
     './node_modules/clipboard/dist/clipboard.js',
     './node_modules/lazyloadxt/dist/jquery.lazyloadxt.extra.js',
@@ -23,6 +24,18 @@ function build_js() {
           .pipe(gulp.dest('sphp/javascript/dist'));
 }
 
+function copy_scss() {
+  return gulp.src([
+    './node_modules/slick-carousel/slick/*.scss'
+  ])
+          .pipe(gulp.dest('sphp/scss/vendor/slick-carousel'));
+}
+function copy_fonts() {
+  return gulp.src([ 
+    './node_modules/slick-carousel/slick/fonts/*'
+  ])
+          .pipe(gulp.dest('sphp/css/fonts'));
+}
 function build_ss360() {
   return gulp.src([
     './sphp/javascript/app/ss360/*.js'
@@ -43,7 +56,10 @@ function doc(cb) {
 //exports.build_js = build_js;
 //exports.doc = doc;
 
-build = gulp.series(build_js, doc, build_ss360);
+build = gulp.series(build_js, build_ss360);
+build_docs = gulp.series(build, doc);
+copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts);
 
 gulp.task('build', build);
 gulp.task('default', build);
+gulp.task('copy:scss+fonts', copy_scss_and_fonts);

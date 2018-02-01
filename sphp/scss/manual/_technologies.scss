@@ -4,6 +4,63 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
+$icons: (
+sphp: #333,
+html5: #E44D26,
+gulp: #EB4A4B,
+css3: #1572B6,
+js: #fc1,
+postgresql: #336791,
+mysql: #00618A,
+node-js: #83CD29,
+doctrine: #F56D39,
+symfony: #1A171B,
+zend: #68B604,
+foundation: #008CBA,
+php: #6181B6,
+sass: #CB6699,
+github: #222,
+);
+[data-slick] {
+  div {
+    outline : none;
+    cursor: pointer;
+    svg {
+      margin: rem-calc(10 30);
+      @include opacity(.8);
+      @include transition-property(all);
+      @include transition-duration(0.5s);
+      @include transition-timing-function(ease-in-out);
+      &.sphp .left, &.sphp .right {
+        fill: #ce752d;
+      }
+      path {
+        fill: #888;
+        @include opacity(.8);
+        @include transition-property(all);
+        @include transition-duration(0.5s);
+        @include transition-timing-function(ease-in-out);
+      }
+      &:hover {
+        margin: rem-calc(8 28);
+        @include opacity(1);
+        @each $name, $icon in $icons {
+          &.#{$name} path {
+            fill: $icon;
+          }
+        }
+      }
+    }
+  }
+}
+
+.package-def {
+  border: solid 1px #aaa;
+  @include border-radius(5px);
+  margin: rem-calc(5 30);
+  padding: rem-calc(10 10);
+}
+
 .tech {
   font-style: normal;
   display: inline-block;
