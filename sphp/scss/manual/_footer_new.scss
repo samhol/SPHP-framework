@@ -224,8 +224,10 @@ $footer-border-color: #FAA523;
 
 .gnu-license {
   padding-bottom: rem-calc(20);
-  background: #fafafa;
-  background-image: url(manual/pics/official-gnu.svg) no-repeat top left;
+  background-color: #fafafa;
+  background-image: url(http://playground.samiholck.com/manual/pics/official-gnu.svg);
+  background-position: left top;
+  background-repeat: no-repeat;
   background-size: contain;
 
 }

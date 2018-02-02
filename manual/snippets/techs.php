@@ -4,4 +4,4 @@ namespace Sphp\Stdlib;
 
 include '../settings.php';
 
-echo Parser::fromFile('manual/snippets/techs.md');
+echo Parser::fromFile('manual/snippets/techs.html', 'md');
