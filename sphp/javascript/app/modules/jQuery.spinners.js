@@ -24,12 +24,13 @@
       console.log("appending spinner...");
       $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
       $loader = $('<span/>', {
-        'class': 'sphp-loader',
+        'class': 'sphp-loader spinner',
         css: {
           'z-index': $o.zIndex,
           position: 'relative',
-          left: '0px',
-          top: '0px'}
+          //left: '0px',
+          //top: '0px'
+        }
       });
       $loader.append('<img src="sphp/pics/spinner.gif" alt="Loading...">');
       $loader.appendTo($this);

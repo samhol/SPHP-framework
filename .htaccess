@@ -2,6 +2,7 @@ Options -MultiViews
     RewriteEngine On
     RewriteRule ^(API/sami) - [L]
     RewriteRule ^(API/jsdoc) - [L]
+    RewriteRule ^([a-z0-9]+).svg /manual/ajax/svg.php?id=$1 [QSA,L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
 # compress text, html, javascript, css, xml:
@@ -12,10 +13,12 @@ AddOutputFilterByType DEFLATE text/css
 AddOutputFilterByType DEFLATE application/xml
 AddOutputFilterByType DEFLATE application/xhtml+xml
 AddOutputFilterByType DEFLATE application/rss+xml
-AddOutputFilterByType DEFLATE application/javascript
-AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE text/x-javascript
 
 # Or, compress certain file types by extension:
 <files *.php>
 SetOutputFilter DEFLATE
 </files>
+# prevent mime based attacks
+Header set X-Content-Type-Options "nosniff"

@@ -30,7 +30,7 @@ class DropdownMenu extends Menu {
 
   public function append(MenuItemInterface $content) {
     if ($content instanceof SubMenu) {
-      $content->addCssClass('is-dropdown-submenu-parent');
+      $content->addCssClass('sphp-hide-fouc-on-load');
     }
     parent::append($content);
     return $this;

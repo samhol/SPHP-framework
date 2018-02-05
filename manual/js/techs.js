@@ -1,15 +1,14 @@
 $(function () {
   //$('.sphp-tech-slick').children('svg').hide();
-  
   $(".sphp-tech-slick svg").hide();
-  
+
   $('.sphp-tech-slick').on('init', function (event, slick) {
     console.log(event);
     console.log(slick);
     console.log('init: ' + $(this).find('svg').length);
-    // left
     console.log('init: ' + $(this).find('svg').length);
-    //$('.sphp-tech-slick svg').toggle();
+    $('.sphp-tech-slick svg').toggle();
+
   });
   $('.sphp-tech-slick').slick({
     dots: true,

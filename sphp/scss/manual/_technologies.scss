@@ -36,6 +36,7 @@ github: #222,
       }
     }
     svg {
+      //position: absolute; 
       @include opacity(.8);
       @include transition-property(all);
       @include transition-duration(0.5s);

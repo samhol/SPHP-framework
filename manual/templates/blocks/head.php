@@ -23,6 +23,7 @@ Document::head()
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')
         ->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png?v=2')
+        ->add(Head\Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHP framework'))
         ->addMeta(Meta::keywords([

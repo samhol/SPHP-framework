@@ -242,4 +242,19 @@ class Link extends EmptyTag implements HeadContent, NonVisualContent {
     return $link;
   }
 
+  /**
+   * Creates a new &lt;link&gt; object
+   *
+   * @param  string $href the location of the linked document
+   * @param  string $rel the relationship between the current document and the linked one
+   * @param  string $media what media/device the target resource is optimized for
+   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
+   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
+   */
+  public static function create(string $href = null, string $rel = null, string $media = null): Link {
+    $link = new static($href, $rel, $media);
+    return $link;
+  }
+
 }

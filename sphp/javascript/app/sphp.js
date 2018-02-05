@@ -60,7 +60,7 @@ if (!window.console.log) {
  */
 (function (sphp, $, undefined) {
   "use strict";
-  var consoleLog = console.log, foundationVersion;
+  var consoleLog = console.log;
 
   /**
    * Returns the jQuery version number
@@ -81,7 +81,6 @@ if (!window.console.log) {
    * @returns {String} the Foundation framework version number
    */
   sphp.getFoundationVersion = function () {
-    //console.log("sphp.getFoundationVersion():" + Foundation.version);
     return Foundation.version;
   };
   /**
@@ -115,11 +114,23 @@ if (!window.console.log) {
   };
 
   /**
+   * Returns the Foundation framework version number
+   *
+   * @public
+   * @static
+   * @returns {sphp} for fluent interface
+   */
+  sphp.preventFoundationFouc = function () {
+    console.log("sphp.preventFoundationFouc()");
+    $('.sphp-hide-fouc-on-load').removeClass('sphp-hide-fouc-on-load');
+  };
+
+  /**
    * Initializes the clipboard functionality
    * 
    * @public
    * @static
-   * @returns {sphp}
+   * @returns {sphp} for fluent interface
    */
   sphp.initClipboard = function () {
     if (Clipboard.isSupported()) {
@@ -158,6 +169,7 @@ if (!window.console.log) {
    */
   sphp.initialize = function () {
     sphp.enableConsole(true);
+    sphp.preventFoundationFouc();
     console.log("sphp.initialize()");
     sphp.initClipboard().initBackToTopButtons();
     //var $ajaxLoaders = $("[data-sphp-ajax-url]");

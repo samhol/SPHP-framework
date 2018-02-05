@@ -266,7 +266,7 @@ class Head extends AbstractComponent implements NonVisualContent {
   }
 
   public function contentToString(): string {
-    return $this->title . $this->base . $this->meta . $this->links . $this->scripts;
+    return $this->meta . $this->title . $this->base . $this->links . $this->scripts;
   }
 
 }
