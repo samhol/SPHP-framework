@@ -74,7 +74,7 @@
       console.log("insertClassToTitle:");
       var $this = $(this),
               $classes;
-     $classes = $this.attr("class");
+      $classes = $this.attr("class");
       $this.attr("title", $classes);
     });
   };
@@ -84,5 +84,5 @@ $(document).ready(function () {
   'use strict';
   $(".manual.accordion.form-example form, .manual .mainContent>form").insertSubmisionFunctionality();
   $(" .grid-example .columns").insertClassToTitle();
-  
+
 });

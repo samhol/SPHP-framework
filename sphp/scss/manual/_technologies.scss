@@ -21,12 +21,21 @@ php: #6181B6,
 sass: #CB6699,
 github: #222,
 );
-[data-slick] {
-  div {
+.sphp-tech-slick {
+  div.sphp-info-button {
     outline : none;
     cursor: pointer;
+    padding: rem-calc(10 30);
+    &:hover, &.sphp-is-active {
+      padding: rem-calc(8 28);
+      @include opacity(1);
+      @each $name, $icon in $icons {
+        &.#{$name} svg path {
+          fill: $icon;
+        }
+      }
+    }
     svg {
-      margin: rem-calc(10 30);
       @include opacity(.8);
       @include transition-property(all);
       @include transition-duration(0.5s);
@@ -41,24 +50,42 @@ github: #222,
         @include transition-duration(0.5s);
         @include transition-timing-function(ease-in-out);
       }
-      &:hover {
-        margin: rem-calc(8 28);
-        @include opacity(1);
-        @each $name, $icon in $icons {
-          &.#{$name} path {
-            fill: $icon;
-          }
-        }
-      }
+
     }
   }
 }
 
 .package-def {
+  @include box-shadow(#ccc 3px 0px 8px 4px);
+  @include box-shadow(#ccc 0px 3px 8px 4px);
   border: solid 1px #aaa;
   @include border-radius(5px);
   margin: rem-calc(5 30);
-  padding: rem-calc(10 10);
+  //padding: rem-calc(10 10);
+  h2 {
+    background-color: #eee;
+    border-bottom: solid 1px #aaa;
+    margin: rem-calc(1);  // top right bottom left
+    padding: rem-calc(3 5 3 10); // top right bottom left
+  }
+  p {
+    margin: rem-calc(10 20);
+  }
+  .menu {
+    margin: rem-calc(10 20);
+    li {
+      border:  solid 1px #fff;
+      @include border-radius(3px);
+    }
+    a {
+      border:  solid 1px #ccc;
+      @include border-radius(2px);
+      background-color: #e6e6e6;
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
 }
 
 .tech {
