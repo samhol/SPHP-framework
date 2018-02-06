@@ -7,7 +7,7 @@
  */
 
 namespace Sphp\Html\Foundation\Sites\Core;
-
+use Sphp\Html\TagFactory;
 use Sphp\Html\Span;
 
 /**
@@ -18,8 +18,9 @@ use Sphp\Html\Span;
 class Factory {
 
   //put your code here
-  public static function ScreenReaderLabel(string $text = null): Span {
+  public static function screenReaderLabel(string $text = null, string $tag = 'span'): Span {
     $label = new Span($text);
+    $label = TagFactory::$tag($text);
     $label->cssClasses()->protect('show-for-sr');
     return $label;
   }

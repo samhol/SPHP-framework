@@ -126,7 +126,7 @@ class CalloutBuilder implements ErrorListener {
     //$this->setClasses($callout, $errno);  fa-exclamation-circle
     $callout->append("<h2>". $this->getIcon($errno) . $this->getTypeString($errno) . ": <small>" . $errstr . "</small></h2>");
     if ($this->showFile) {
-      $callout->append("on line <strong>$errline</strong> of file: <strong>" . $errfile . "</strong>");
+      $callout->append("on line <strong>$errline</strong> of file: <wbr>" . $errfile);
     }
     echo $callout;
   }

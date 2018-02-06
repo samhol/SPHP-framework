@@ -57,7 +57,7 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
   }
 
   public function contentToString(): string {
-    return Factory::ScreenReaderLabel($this->screenReaderLabel) . '<span aria-hidden="true">' . $this->icon . '</span>';
+    return Factory::screenReaderLabel($this->screenReaderLabel) . '<span aria-hidden="true">' . $this->icon . '</span>';
   }
 
 }

@@ -17,7 +17,7 @@ $observer = \Sphp\Manual\api()->classLinker(Observer::class);
 In PHP 7, most errors are reported by throwing $error exceptions. Both $error and
 $exception implements the $throwable interface. 
   
-__<u>NOTE</u>:__ It is important to note that Script execution will stop after 
+__NOTE:__ It is important to note that Script execution will stop after 
 a handler is called.
 
 MD

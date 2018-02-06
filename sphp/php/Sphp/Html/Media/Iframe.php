@@ -133,4 +133,16 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
     return $this->getAttribute('sandbox');
   }
 
+  /**
+   * Sets the title of the iframe
+   *
+   * @param  string $title the title of the iframe
+   * @return $this for a fluent interface
+   * @link   https://www.w3schools.com/tags/att_global_title.asp title attribute
+   */
+  public function setTitle(string $title = null) {
+    $this->attributes()->set('title', $title);
+    return $this;
+  }
+
 }

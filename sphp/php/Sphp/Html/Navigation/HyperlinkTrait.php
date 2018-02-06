@@ -8,7 +8,6 @@
 namespace Sphp\Html\Navigation;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Stdlib\Strings;
 
 /**
  * Trait implements {@link HyperlinkInterface} for hyperlink functionality
@@ -71,10 +70,9 @@ trait HyperlinkTrait {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget(string $target = null) {
-    if (!Strings::isEmpty($target)) {
-      $this->attributes()->set('target', $target);
-    } else {
-      $this->attributes()->remove('target');
+    $this->attributes()->set('target', $target);
+    if ($this->getTarget() === '_blank') {
+      $this->setRel('noopener noreferrer');
     }
     return $this;
   }
@@ -102,7 +100,38 @@ trait HyperlinkTrait {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setTitle(string $title) {
-    return $this->setAttr('title', $title);
+    return $this->attributes()->set('title', $title);
+  }
+
+  /**
+   * Returns the value of the target attribute
+   *
+   * **Notes:**
+   *
+   * * The target attribute specifies where to open the linked document.
+   * * Only used if the href attribute is present.
+   *
+   * @return string the value of the target attribute
+   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   */
+  public function getRel() {
+    return $this->attributes()->getValue('rel');
+  }
+
+  /**
+   * Sets the relationship between the current document and the linked document
+   *
+   * **Notes:**
+   *
+   * * Only used if the href attribute is present.
+   *
+   * @param  string|null $rel optional relationship between the current document and the linked document
+   * @return $this for a fluent interface
+   * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
+   */
+  public function setRel(string $rel = null) {
+     $this->attributes()->set('rel', $rel);
+     return $this;
   }
 
 }

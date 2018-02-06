@@ -156,7 +156,7 @@ class ThrowableCallout extends Callout {
         $err1 = new Li();
         if (array_key_exists('line', $traceRow) && array_key_exists("file", $traceRow)) {
           $err1->append("on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
-                  ->append(" of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
+                  ->append(" of file <span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
         }
         $err1->append("" . $this->parseFunction($traceRow));
         $output->append($err1);

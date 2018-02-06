@@ -60,7 +60,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     $this->getHyperlink()->setTarget($target);
     return $this;
   }
-  
+
   public function getTarget() {
     return $this->getHyperlink()->getTarget();
   }
@@ -75,6 +75,15 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
   public function setTitle(string $title = null) {
     $this->getHyperlink()->setAttribute("title", $title);
     return $this;
+  }
+
+  public function setRel(string $rel = null) {
+    $this->getHyperlink()->setRel($rel);
+    return $this;
+  }
+
+  public function getRel() {
+    return $this->getHyperlink()->getRel();
   }
 
 }

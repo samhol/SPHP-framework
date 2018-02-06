@@ -20,6 +20,11 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
 class AbstractIcon extends EmptyTag {
 
   /**
+   * @var string 
+   */
+  private $sreenreaderText;
+
+  /**
    * Constructs a new instances
    * 
    * @param  string $tagName the tag name of the component
@@ -29,6 +34,19 @@ class AbstractIcon extends EmptyTag {
   public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, true, $attrManager);
     $this->attributes()->set('aria-hidden', 'true');
+  }
+
+  public function setSreenreaderText(string $sreenreaderText = null) {
+    $this->sreenreaderText = $sreenreaderText;
+    return $this;
+  }
+
+  public function getHtml(): string {
+    $output = parent::getHtml();
+    if ($this->sreenreaderText !== null) {
+      $output .= \Sphp\Html\Foundation\Sites\Core\Factory::screenReaderLabel($this->sreenreaderText);
+    }
+    return $output;
   }
 
 }

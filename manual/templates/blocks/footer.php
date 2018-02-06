@@ -30,10 +30,22 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     </div>
     <div class="footer-right">
       <h6>Follow</h6>
-      <a href="https://github.com/samhol/SPHP-framework"><i class="fa fa-github-square fa-3x" aria-hidden="true"></i></a>
-      <a href="https://www.facebook.com/Sami.Petteri.Holck.Playground/"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
-        <a href="https://plus.google.com/b/113942361282002156141/113942361282002156141"><i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i></a>
+      <a href="https://github.com/samhol/SPHP-framework">
+        <i class="fa fa-github-square fa-3x" aria-hidden="true"></i>
+        <span class="show-for-sr">GitHub repository</span>
+      </a>
+      <a href="https://www.facebook.com/Sami.Petteri.Holck.Playground/">
+        <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+        <span class="show-for-sr">Facebook page</span>
+      </a>
+      <a href="https://plus.google.com/b/113942361282002156141/113942361282002156141">
+        <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+        <span class="show-for-sr">Google plus page</span>
+      </a>
+      <a href="https://twitter.com/SPHPframework">
         <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
+        <span class="show-for-sr">Twitter page</span>
+      </a>
     </div>
   </footer>
 </div>
@@ -92,7 +104,16 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     </div> 
   </footer>
   <footer class="license-area text-center">
-    <?php include_once 'licenseRevealer.php'; ?>
+    <?php
+
+    use Sphp\Stdlib\StopWatch;
+    ?>
+    Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.
+    <a href="license.php" target="license">GNU license</a> ||
+    <b>Script executed in:</b>
+    <i><?php echo StopWatch::getEcecutionTime() ?> seconds</i>
+    <b>PHP Peak memory:</b>
+    <i><?php echo number_format(memory_get_usage(true) / 1048576, 2) . " MB\n" ?></i>
   </footer>
 </div>
 

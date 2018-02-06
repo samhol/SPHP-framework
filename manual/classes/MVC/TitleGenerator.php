@@ -38,6 +38,9 @@ class TitleGenerator {
   }
 
   public function createTitleFor(string $page): string {
+    if ($page === '') {
+      $title = 'Introduction | SPHPlayground';
+    } else {
     $title = 'SPHPlayground';
     foreach ($this->titleData as $pair) {
       if ($pair['href'] === $page) {
@@ -48,6 +51,7 @@ class TitleGenerator {
         }
         break;
       }
+    }
     }
     return $title;
   }

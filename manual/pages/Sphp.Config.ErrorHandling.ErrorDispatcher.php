@@ -36,7 +36,7 @@ Manual\md(<<<MD
 An $errorDispatcher object replaces PHP's native error handler and sends PHP errors to its error listeners.
 An Error listener must be a $callable or of $errorListener type.
 
-__<u>NOTE</u>:__ The following error types cannot be handled by $errorDispatcher
+__NOTE:__ The following error types cannot be handled by $errorDispatcher
         
  * $e_fatal 
  * $e_error
@@ -59,7 +59,7 @@ $exception implements the $throwable interface.
   
 An Exception listener must be a $callable or of $exceptionListener type.
         
-__<u>NOTE</u>:__ It is important to note that Script execution will stop after 
+__NOTE:__ It is important to note that Script execution will stop after 
 a handler is called.
 
 MD

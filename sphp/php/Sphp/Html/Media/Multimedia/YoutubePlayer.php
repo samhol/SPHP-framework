@@ -34,7 +34,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
       
     }
     $this->cssClasses()->protect('youtube-player');
-    //$this->attributes()->lock('type', 'text/html');
+    $this->setTitle('Youtube video');
   }
 
   /**

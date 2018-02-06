@@ -1,3 +1,13 @@
+# prevent mime based attacks
+Header set X-Content-Type-Options "nosniff"
+# One year for image files
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+Header set Cache-Control "max-age=31536000, public"
+</filesMatch>
+# One month for css and js
+<filesMatch ".(css|js)$">
+Header set Cache-Control "max-age=2628000, public"
+</filesMatch>
 Options -MultiViews
     RewriteEngine On
     RewriteRule ^(API/sami) - [L]
@@ -20,5 +30,4 @@ AddOutputFilterByType DEFLATE text/x-javascript
 <files *.php>
 SetOutputFilter DEFLATE
 </files>
-# prevent mime based attacks
-Header set X-Content-Type-Options "nosniff"
+

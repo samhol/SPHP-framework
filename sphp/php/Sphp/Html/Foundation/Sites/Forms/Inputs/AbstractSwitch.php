@@ -72,7 +72,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     $paddle->cssClasses()
             ->protect('switch-paddle');
     if ($this->screenReaderLabel !== null) {
-      $paddle->append(Factory::ScreenReaderLabel($this->screenReaderLabel));
+      $paddle->append(Factory::screenReaderLabel($this->screenReaderLabel));
     }
     if ($this->active !== null || $this->inactive !== null) {
       $activeLabel = new Span($this->active);
