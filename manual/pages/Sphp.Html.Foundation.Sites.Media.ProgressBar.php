@@ -3,7 +3,6 @@
 namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 use Sphp\Manual;
 
 $progressBar = Manual\api()->classLinker(ProgressBar::class);
@@ -18,7 +17,7 @@ MD
 );
 $fooBarCodePane = new SyntaxHighlightingPane('<code>progressingFooBar.js</code> JavaScript code');
 $fooBarCodePane->loadFromFile('manual/snippets/progressingFooBar.js');
-$example = (new CodeExampleAccordionBuilder('Sphp/Html/Foundation/Sites/Media/ProgressBar.php', null, true))
+\Sphp\Manual\example('Sphp/Html/Foundation/Sites/Media/ProgressBar.php', null, true)
         ->buildAccordion()
         ->prepend($fooBarCodePane)
         ->printHtml();

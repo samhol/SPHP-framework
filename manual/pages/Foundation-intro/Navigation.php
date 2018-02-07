@@ -2,8 +2,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Apps\Manual\Apis;
-
 $toolsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

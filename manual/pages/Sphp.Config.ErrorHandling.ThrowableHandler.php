@@ -2,13 +2,12 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Stdlib\Observers\Observer;
 
-$throwable = Apis::phpManual()->classLinker(\Throwable::class);
-$error = Apis::phpManual()->classLinker(\Error::class);
-$exception = Apis::phpManual()->classLinker(\Exception::class);
+$throwable = \Sphp\Manual\php()->classLinker(\Throwable::class);
+$error = \Sphp\Manual\php()->classLinker(\Error::class);
+$exception = \Sphp\Manual\php()->classLinker(\Exception::class);
 $observer = \Sphp\Manual\api()->classLinker(Observer::class);
 \Sphp\Manual\md(
         <<<MD

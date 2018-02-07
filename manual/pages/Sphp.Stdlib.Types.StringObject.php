@@ -2,11 +2,8 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-
 $stringObjectClass = \Sphp\Manual\api()->classLinker(MbString::class);
-$strLink = Apis::phpManual()->typeLink('string');
+$strLink = \Sphp\Manual\php()->typeLink('string');
 
 \Sphp\Manual\md(<<<MD
 ###The $stringObjectClass class
@@ -17,5 +14,5 @@ encoding. Therefore it can deal with the issues concerning multibyte encodings i
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Stdlib/Types/StringObject.php', 'text', false);
+\Sphp\Manual\visualize('Sphp/Stdlib/Types/StringObject.php', 'text', false);
 

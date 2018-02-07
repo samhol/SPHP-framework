@@ -2,19 +2,24 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Apps\Manual\Apis;
-
 $apigen = \Sphp\Manual\api();
 $ns = $apigen->namespaceBreadGrumbs(__NAMESPACE__);
 
 use Sphp\Config\Config;
+
 $rootNs = $apigen->namespaceLink(__NAMESPACE__);
 $configNs = $apigen->classLinker(Config::class)->namespaceLink();
+
 use Sphp\Stdlib\Events\EventInterface as EventInterface;
+
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();
+
 use Sphp\I18n\Gettext\Translator;
+
 $gettextNs = $apigen->classLinker(Translator::class)->namespaceLink();
+
 use Sphp\Stdlib\Strings;
+
 $typesNs = $apigen->classLinker(Strings::class)->namespaceLink();
 echo <<<MD
 ##Introduction:

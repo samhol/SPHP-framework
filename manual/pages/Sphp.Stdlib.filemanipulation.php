@@ -2,9 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Apps\Manual\Apis;
-
-$php = Apis::phpManual();
+$php = \Sphp\Manual\php();
 $arrLink = $php->typeLink("array");
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\md(<<<MD

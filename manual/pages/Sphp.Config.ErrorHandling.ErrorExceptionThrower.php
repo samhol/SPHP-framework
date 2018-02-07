@@ -2,12 +2,9 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-
 $errorExceptionThrower = \Sphp\Manual\api()->classLinker(ErrorExceptionThrower::class);
+$errorException = \Sphp\Manual\php()->classLinker(\ErrorException::class);
 
-$errorException = Apis::phpManual()->classLinker(\ErrorException::class);
 \Sphp\Manual\md(<<<MD
 ##$errorExceptionThrower <small>for multiple error handlers</small>
 
@@ -17,5 +14,5 @@ errors or warnings to $errorException objects and then re-set the PHP error hand
 MD
 );
 
-(new CodeExampleAccordionBuilder('Sphp/Config/ErrorHandling/ErrorExceptionThrower.php'))
+\Sphp\Manual\example('Sphp/Config/ErrorHandling/ErrorExceptionThrower.php')
         ->printHtml();

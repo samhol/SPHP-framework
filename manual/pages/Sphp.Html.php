@@ -3,7 +3,6 @@
 namespace Sphp\Html;
 
 use Sphp\Manual;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
 
 $abstractTag = Manual\api()->classLinker(AbstractTag::class);
 $ns = Manual\api()->namespaceLink(__NAMESPACE__);
@@ -17,6 +16,7 @@ $containerComponentInterface = Manual\api()->classLinker(ContainerComponentInter
 $contentTrait = Manual\api()->classLinker(ContentTrait::class);
 $w3schools = Manual\w3schools();
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
 Manual\md(<<<MD
 #Introduction to HTML components
 $nsbc
@@ -80,7 +80,7 @@ PHP string.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/HtmlContainer.php');
+\Sphp\Manual\visualize('Sphp/Html/HtmlContainer.php');
 $containerTag = Manual\api()->classLinker(ContainerTag::class);
 Manual\md(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a

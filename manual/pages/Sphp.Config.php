@@ -8,7 +8,7 @@ $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $config = Manual\api()->classLinker(Config::class);
 $instanceMethod = $config->methodLink('instance', false);
 Manual\md(<<<MD
-#APPLICATION CONFIGURATION
+#Application configuration
 $ns
   
 ##$config <small>a genereal configuration manager</small>

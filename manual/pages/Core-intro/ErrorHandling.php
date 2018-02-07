@@ -2,10 +2,8 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Apps\Manual\Apis;
-
 $apigen = \Sphp\Manual\api();
-$phpManual = Apis::phpManual();
+$phpManual = \Sphp\Manual\php();
 $nsLink = $apigen->namespaceLink(__NAMESPACE__);
 $errorExceptionThrower = $apigen->classLinker(ErrorExceptionThrower::class);
 $try_catch = $phpManual->hyperLink("language.exceptions.php", "try/catch");

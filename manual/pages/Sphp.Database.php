@@ -8,7 +8,7 @@ require_once('manual/common/pdo.php');
 $pdo = Manual\php()->classLinker(\PDO::class);
 $db = Manual\api()->classLinker(DB::class);
 Manual\md(<<<MD
-#DATABASE MANIPULATION <small>using statement builders</small>
+#Database manipulation <small>using statement builders</small>
 
 $db manages $pdo database connections and acts as a factory for all SQL statement builder objects.
 

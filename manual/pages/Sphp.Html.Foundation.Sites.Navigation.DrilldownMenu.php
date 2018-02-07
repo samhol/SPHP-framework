@@ -4,7 +4,6 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
-use Sphp\Html\Apps\Manual\Apis;
 
 $hyperlinkIfLink = \Sphp\Manual\api()->classLinker(HyperlinkInterface::class);
 $menuInterface = \Sphp\Manual\api()->classLinker(MenuInterface::class);

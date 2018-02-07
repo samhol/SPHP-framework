@@ -4,6 +4,7 @@ namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Manual;
 use Sphp\Html\Forms\Inputs\RangeInput;
+
 $rangeInput = Manual\api()->classLinker(RangeInput::class);
 $slider = Manual\api()->classLinker(Slider::class);
 $rangeSlider = Manual\api()->classLinker(RangeSlider::class);

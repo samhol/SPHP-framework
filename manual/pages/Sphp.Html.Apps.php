@@ -18,8 +18,8 @@ Manual\loadPage('Sphp.Html.Apps.SearchForms');
 Manual\loadPage('Sphp.Html.Apps.PhotoAlbum');
 /*
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
+\Sphp\Manual\visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/misc.php');
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Apps/SyntaxHighlighter.php');
+\Sphp\Manual\visualize('Sphp/Html/Apps/misc.php');
+\Sphp\Manual\visualize('Sphp/Html/Apps/SyntaxHighlighter.php');
 */

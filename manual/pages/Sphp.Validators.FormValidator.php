@@ -2,18 +2,14 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-
 $validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
-
 $inputValidator = \Sphp\Manual\api()->classLinker(OptionalValidator::class);
-
 $formValidator = \Sphp\Manual\api()->classLinker(FormValidator::class);
 $formInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\Forms\FormInterface::class);
-$traversable = Apis::phpManual()->classLinker(\Traversable::class);
-$arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-$array = Apis::phpManual()->typeLink("array", "arrays");
+$traversable = \Sphp\Manual\php()->classLinker(\Traversable::class);
+$arrayaccess = \Sphp\Manual\php()->classLinker(\ArrayAccess::class);
+$array = \Sphp\Manual\php()->typeLink('array', 'arrays');
+
 \Sphp\Manual\md(
         <<<MD
 ##The $formValidator validator		
@@ -28,4 +24,5 @@ $formValidator supports two ways of manipulating validators for named input data
  2. By using chainable object oriented methods 
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Validators/FormValidator.php', 'php', false);
+
+\Sphp\Manual\visualize('Sphp/Validators/FormValidator.php', 'php', false);

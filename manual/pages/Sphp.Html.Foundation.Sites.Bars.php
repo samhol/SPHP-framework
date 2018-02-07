@@ -4,8 +4,6 @@ namespace Sphp\Html\Foundation\Sites\Bars;
 
 use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
 use Sphp\Html\Foundation\Sites\Navigation\DropdownMenu;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 
 $titleBar = \Sphp\Manual\api()->classLinker(TitleBar::class);
 $topBar = \Sphp\Manual\api()->classLinker(TopBar::class);
@@ -24,8 +22,7 @@ These navigation bars can be used with menus implemented in $navigationNs namesp
 MD
 );
 
-
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/TitleBar.php');
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Containers/TitleBar.php');
 \Sphp\Manual\md(<<<MD
 ##Foundation Top Bar: <small>The $topBar component</small>
         
@@ -33,4 +30,4 @@ Top Bar component is a simple wrapper around menu components.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');

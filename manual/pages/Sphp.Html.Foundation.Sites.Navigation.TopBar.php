@@ -2,9 +2,6 @@
 
 namespace Sphp\Html\Foundation\Bars;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
-
 $topBar = \Sphp\Manual\api()->classLinker(TopBar::class);
 $left = $topBar->methodLink("left");
 $right = $topBar->methodLink("right");
@@ -20,4 +17,4 @@ Below is an example of $topBar object similar to the one seen on top of each pag
 
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Bars/TopBar.php');
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Bars/TopBar.php');

@@ -2,9 +2,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
-
 $imgInterface = \Sphp\Manual\api()->classLinker(ImgInterface::class);
 $img = \Sphp\Manual\api()->classLinker(Img::class);
 $fig = \Sphp\Manual\api()->classLinker(Figure::class);
@@ -25,8 +22,8 @@ $img provides static factory methods for showing resized image components.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Media/Img.php', null, true);
-$figureTag = Apis::w3schools()->tag('figure');
+\Sphp\Manual\visualize('Sphp/Html/Media/Img.php', null, true);
+$figureTag = \Sphp\Manual\w3schools()->tag('figure');
 \Sphp\Manual\md(<<<MD
 The $fig component implements the $figureTag tag. 
 A $fig component consists of an $img component and an optional $figCaption component.
@@ -37,5 +34,5 @@ it should not affect the flow of the document.
 MD
 );
 
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Media/Figure.php', null, true);
+\Sphp\Manual\visualize('Sphp/Html/Media/Figure.php', null, true);
 

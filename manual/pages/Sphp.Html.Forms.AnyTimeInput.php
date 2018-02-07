@@ -2,9 +2,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
 $anyTimeInput = \Sphp\Manual\api()->classLinker(AnyTimeInput::class);
+
 \Sphp\Manual\md(<<<MD
 ###The $anyTimeInput component
 	
@@ -12,7 +11,8 @@ $anyTimeInput = \Sphp\Manual\api()->classLinker(AnyTimeInput::class);
 
 MD
 );
-(new CodeExampleAccordionBuilder('Sphp/Html/Forms/AnyTimeInput.php'))
+
+\Sphp\Manual\example('Sphp/Html/Forms/AnyTimeInput.php')
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

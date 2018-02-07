@@ -1,9 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Core; 
-
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+namespace Sphp\Html\Foundation\Sites\Core;
 
 $colourableInterface = \Sphp\Manual\api()->classLinker(Colourable::class);
 $colourableAdapter = \Sphp\Manual\api()->classLinker(ColourableAdapter::class);
@@ -30,4 +27,4 @@ $colourableAdapter provides a straightforward adapter for any $ComponentInterfac
 to be used as a $colourableInterface component.
 MD
 );
-CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Core/ColourableAdapter.php');
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Core/ColourableAdapter.php');

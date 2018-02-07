@@ -2,15 +2,13 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Apps\Manual\Apis;
-
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $errorDispatcher = \Sphp\Manual\api()->classLinker(ErrorDispatcher::class);
 $errorExceptionThrower = \Sphp\Manual\api()->classLinker(ErrorExceptionThrower::class);
-$try_catch = Apis::phpManual()->hyperLink('language.exceptions.php', 'try/catch');
-$set_exception_handler = Apis::phpManual()->functionLink('set_exception_handler');
-$error = Apis::phpManual()->classLinker(\Error::class);
-$exception = Apis::phpManual()->classLinker(\Exception::class);
+$try_catch = \Sphp\Manual\php()->hyperLink('language.exceptions.php', 'try/catch');
+$set_exception_handler = \Sphp\Manual\php()->functionLink('set_exception_handler');
+$error = \Sphp\Manual\php()->classLinker(\Error::class);
+$exception = \Sphp\Manual\php()->classLinker(\Exception::class);
 \Sphp\Manual\md(<<<MD
 #PHP 7 <small>Error and Exception handling</small>
 $ns
