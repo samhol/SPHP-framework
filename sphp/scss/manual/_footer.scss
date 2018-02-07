@@ -5,93 +5,61 @@
 
 @charset "UTF-8";
 
-@import "compass/css3";
-
 $footer-top-padding: rem-calc(10);
 $footer-border-color: #FAA523;
 
-body .footer {
-  padding-top: 0;
-  > div {
-    padding-top: rem-calc(15);
-  }
+#engadget-footer-sitemap-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: rem-calc(0);
+  background-color: $black;
   border-top: 2px solid $footer-border-color;
-  background-color: #111111;
-  background: url('../../manual/pics/parquet_black.jpg');
-  background-repeat: repeat;
-  background-position: 0 0,top right;
-  color: #e6e6e6;
-  @include box-shadow(#666 0px 6px 20px 10px);
-  .skull {
-    padding-top: $footer-top-padding;
-    padding-bottom: $footer-top-padding;
-  }
-  .social-etc {
-    padding-top: $footer-top-padding;
-    .icons{
-      padding: 0;
-      li {
-        margin: rem-calc(5);
+  border-bottom: 1px solid $footer-border-color;
+  background-image: url('../../manual/pics/footer_skull.png'), url('../../manual/pics/parquet_black.jpg');
+  background-repeat: no-repeat,repeat;
+  background-position: center center,0 0;
+  #engadget-footer-sitemap { 
+    @include grid-row();
+    color:$light-gray;
+    padding: rem-calc(60) 0;
+    .links {
+      @include breakpoint(small) {
+        @include grid-layout(2, '.link-column', $grid-column-gutter);
       }
-      button:hover i, a:hover i {
-        $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
-        text-shadow:
-          0px -1px 0px rgba(255, 153, 51, 1),
-          0px 1px 0px rgba(255, 153, 51,1);
-        @include opacity(1);
+      @include breakpoint(large) {
+        @include grid-layout(4, '.link-column', $grid-column-gutter);
       }
-      i {
-        font-size: rem-calc(40);
-        @include opacity(0.7);
-        margin: rem-calc(3);
-        text-shadow:
-          0px -1px 0px rgba(255, 153, 51, 1),
-          0px 1px 0px rgba(255, 153, 51,1);
+
+      .link-column:not(:last-child) {
+        border-right: 1px solid $light-gray
       }
-      @include breakpoint(large down) {
-        > li {
-          display: inline;
-          text-align: center;
+    }	 li { 
+      a {
+        i {
+          margin-right: rem-calc(5);
+          @include opacity(0.7);
         }
       }
-      @include breakpoint(xlarge) {
-        > li {
-          display: block;
-        }
-      }
-    }
-    a {
-      font-weight: 300; 
-      font-size: rem-calc(14);
-      color: #e6e6e6;
-      &:hover { 
-        color: #fff !important;
-        text-shadow:
-          0px -1px 0px rgba(190,190,190,0.2),
-          0px 1px 0px rgba(190,190,190,1);
-      }
-    } 
-  }
-  .column > .menu.vertical {
-    margin: rem-calc(4);
-  }
-  .menu.vertical {
-    li {
-      color: #fcfcfc;
-      margin-bottom: rem-calc(2);
       &.menu-text {
-        font-size: rem-calc(15);
-        .fa {
+        i {
           float: right;
           @include opacity(0.7);
         }
+        font-size: rem-calc(17);
         @include border-radius(3px);
         border: solid 1px rgba(70, 70, 70, 0.3); 
         background: rgba(40, 40, 40, 0.3);
         padding: rem-calc(8 15 8 8); // top right bottom left
       }
+      &.menu-ruler {
+        height: 2px; 
+        background: rgba(70, 70, 70, 0.5);
+        margin: rem-calc(2 0 2 0);
+
+      }
       & > a {
-        font-size: rem-calc(13);
+        font-size: rem-calc(14);
         color: #e6e6e6;
         border: solid 1px transparent; 
         padding: rem-calc(8 10 8 14);
@@ -102,48 +70,157 @@ body .footer {
         }
       }
     }
+
   }
-
-  .dropdown-pane {
-    border: solid 1px $footer-border-color;
-    background: rgba(40, 40, 40, 0.4);
-    color: #fff;
-    @include opacity(0.7);
-    @include border-radius(4px);
-  }; 
-
-  footer {
-    padding: rem-calc(5);
-    font-size: rem-calc(13);
-    color: #fff;
-    //background-color: #000;
-    padding: rem-calc(5 0 5 0); //top right bottom left
-    margin: 0;
-    display: block;
-    border-top: solid 1px rgba(70, 70, 70, 0.5); 
-    background: rgba(40, 40, 40, 0.4);
-
+}
+#engadget-footer-social-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: rem-calc(0);
+  background-color: $dark-gray;
+  border-top: 2px solid #444;
+  border-bottom: 1px solid #222;
+  #engadget-footer-social {
+    @include grid-row();
+    color:$light-gray;
+    padding: rem-calc(20 0 30 0);
     a {
-      font-size: rem-calc(13);
-      color: #ddd !important;
-      padding: 0; //top right bottom left
-      margin: 0; //top right bottom left
-      text-shadow:
-        0px -1px 0px rgba(190,190,190,0.2),
-        0px 1px 0px rgba(190,190,190,1);
-    }; 
-    a:hover { 
-      color: #fff !important;
-      text-shadow:
-        0px -1px 0px rgba(190,190,190,0.2),
-        0px 1px 0px rgba(190,190,190,1);
-    }; 
-  }; 
-  a.browser {
-    @include opacity(0.5);
-    &:hover {
-      @include opacity(0.8);
-    };
-  }; 
+      //color:$light-gray !important;
+    }
+    .footer-left {
+      @include breakpoint(small) {
+        @include grid-column(12);
+      }
+      @include breakpoint(medium) { 
+        @include grid-column(6);
+      }
+      @include breakpoint(large) { 
+        @include grid-column(5);
+      }
+      /* .input-group-field {
+         background: $white
+       }*/
+    }
 
-}; 
+    .footer-right {
+      text-align: right;
+      @include breakpoint(small) {
+        @include grid-column(12); 
+      }
+      @include breakpoint(medium) {
+        @include grid-column(6);
+      }
+    }
+    .fa {
+      padding: 0 0 0 0.6rem;
+      color: #e5e5e5; 
+      &:hover {
+        color: #fff; 
+      }
+    }
+    h2 {
+      color: $white;
+    }
+    p {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+#engadget-footer-contact-details-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: rem-calc(0);
+  border-top: 2px solid #777;
+
+  background-color: $white;
+  background-image: url('../../manual/pics/parquet_dim_white.jpg');
+  background-repeat: repeat;
+  background-position: top left;
+  color:$dark-gray !important;
+  #engadget-footer-contact-details { 
+    @include grid-row();
+    color:$dark-gray;
+    padding: rem-calc(20) 0;
+    a {
+      color:$dark-gray !important;
+    }
+
+    .footer-left {
+      @include breakpoint(small) {
+        @include grid-column(12); 
+        li {
+          display: block;
+          &.photo {
+            margin-top: -50px;
+          }
+        }
+        text-align: center;
+      }
+      @include breakpoint(medium) {
+        @include grid-column(6); 
+        text-align: left;
+      }
+      @include breakpoint(large) { 
+        @include grid-column(8);
+        ul {
+          margin-bottom: 0;
+        }
+        li {
+          display: inline-block;
+        }	 
+      }
+      font-size: 0.9rem;
+      .fa {
+        padding: 0 0.4rem;
+      }
+    }
+    .footer-right {
+      @include breakpoint(small) {
+        @include hide-for-only(small);
+      }
+      @include breakpoint(medium) {
+        @include grid-column(6); 
+      }
+      @include breakpoint(large) {
+        @include grid-column(4);
+        text-align: right;
+        ul,li {
+          padding-top: 1.6rem;
+          margin: 0;
+          padding: 0;
+        }
+        ul.tech-links-list {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          float: right;
+          li {
+            float: left;
+            a {
+              svg {
+                width: rem-calc(35);
+                height: rem-calc(35);
+                fill: #ccc;
+              }
+              display: block;
+              text-align: center;
+              padding: 0 0.4rem;
+              text-decoration: none;
+            }
+            a:hover {
+              svg {
+                fill: #aaa;
+              }
+            }
+          }
+        }
+      } 
+    }
+  }
+}
+
