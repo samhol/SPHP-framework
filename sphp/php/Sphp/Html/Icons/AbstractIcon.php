@@ -9,6 +9,7 @@ namespace Sphp\Html\Icons;
 
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Foundation\Sites\Core\Factory;
 
 /**
  * Abstract Implementation of an icon based on fonts and HTML tags
@@ -36,6 +37,11 @@ class AbstractIcon extends EmptyTag {
     $this->attributes()->set('aria-hidden', 'true');
   }
 
+  /**
+   * 
+   * @param  string $sreenreaderText 
+   * @return $this for a fluent interface
+   */
   public function setSreenreaderText(string $sreenreaderText = null) {
     $this->sreenreaderText = $sreenreaderText;
     return $this;
@@ -44,7 +50,7 @@ class AbstractIcon extends EmptyTag {
   public function getHtml(): string {
     $output = parent::getHtml();
     if ($this->sreenreaderText !== null) {
-      $output .= \Sphp\Html\Foundation\Sites\Core\Factory::screenReaderLabel($this->sreenreaderText);
+      $output .= Factory::screenReaderLabel($this->sreenreaderText);
     }
     return $output;
   }

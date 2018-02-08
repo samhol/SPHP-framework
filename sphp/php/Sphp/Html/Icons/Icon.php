@@ -19,11 +19,13 @@ class Icon extends AbstractIcon {
   /**
    * Constructs a new instance
    * 
-   * @param string $classes the icon name
+   * @param string|string[] $classes the icon name
+   * @param string $screenreaderLabel
    */
-  public function __construct(string ... $classes) {
+  public function __construct($classes, string $screenreaderLabel = null) {
     parent::__construct('i');
     $this->cssClasses()->protect($classes);
+    $this->setSreenreaderText($screenreaderLabel);
   }
 
 }

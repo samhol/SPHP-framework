@@ -10,6 +10,7 @@ namespace Sphp\Html\Icons;
 use Sphp\Html\Content;
 use Sphp\Html\Lists\Ul;
 use Iterator;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Description of BrandIcons
@@ -21,11 +22,6 @@ use Iterator;
 class BrandIcons implements Content, Iterator {
 
   use \Sphp\Html\ContentTrait;
-
-  const GITHUB = 'github';
-  const FACEBOOK = 'facebook';
-  const GOOGLE_PLUS = 'google-plus';
-  const TWITTER = 'twitter';
 
   /**
    * @var AbstractIcon[] 
@@ -42,82 +38,79 @@ class BrandIcons implements Content, Iterator {
   }
 
   /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->icons);
+  }
+
+  /**
+   * Appends a link pointing to a Github page
    * 
-   * @param  string $url
-   * @param  string|null $target optional target of  the hyperlink
+   * @param  string $url the URL of the link
+   * @param  string $screenReaderLabel text visible for screen readers
+   * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  public function setGithub(string $url = null, string $target = null) {
-    if ($url === null) {
-      $url = 'https://www.github.com/';
-    }
-    $this->setIcon(static::GITHUB, (new HyperlinkIcon($url, Icons::fontAwesome('github'), $target)));
+  public function setGithub(string $url = 'https://www.github.com/', string $screenReaderLabel = 'Link to Github repository', string $target = null) {
+    $this->appendIcon($url, Icons::fontAwesome('github', $screenReaderLabel), $target);
     return $this;
   }
 
   /**
+   * Appends a link pointing to a Facebook page
    * 
-   * @param  string $url
-   * @param  string|null $target optional target of  the hyperlink
+   * @param  string $url the URL of the link
+   * @param  string $screenReaderLabel text visible for screen readers
+   * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  public function setFacebook(string $url = null, string $target = null) {
-    if ($url === null) {
-      $url = 'https://www.facebook.com/';
-    }
-    $this->setIcon(static::FACEBOOK, (new HyperlinkIcon($url, Icons::fontAwesome('facebook-square'), $target)));
+  public function appendFacebook(string $url = 'https://www.facebook.com/', string $screenReaderLabel = 'Link to Facebook', string $target = null) {
+    $this->appendIcon($url, Icons::fontAwesome('facebook-square', $screenReaderLabel), $target);
     return $this;
   }
 
   /**
+   * Appends a link pointing to a Twitter page
    * 
-   * @param  string $url
-   * @param  string|null $target optional target of  the hyperlink
+   * @param  string $url the URL of the link
+   * @param  string $screenReaderText text visible for screen readers
+   * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  public function setTwitter(string $url = 'https://twitter.com/', string $target = null) {
-    $this->setIcon(static::TWITTER, HyperlinkIcon::fontAwesome($url, 'twitter', $target));
+  public function appendTwitter(string $url = 'https://twitter.com/', string $screenReaderText = 'Link to Twitter page', string $target = null) {
+    $this->appendIcon($url, Icons::fontAwesome('twitter', $screenReaderText), $target);
     return $this;
   }
 
   /**
+   * Appends a link pointing to a Google+ page
    * 
-   * @param  string $url
-   * @param  string|null $target optional target of  the hyperlink
+   * @param  string $url the URL of the link
+   * @param  string $screenReaderText text visible for screen readers
+   * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  public function setGooglePlus(string $url = null, string $target = null) {
-    if ($url === null) {
-      $url = 'https://plus.google.com/';
-    }
-    $this->setIcon(static::GOOGLE_PLUS, (new HyperlinkIcon($url, Icons::fontAwesome('google-plus-square'), $target)));
+  public function appendGooglePlus(string $url = 'https://plus.google.com/', string $screenReaderText = 'Link to Twitter page', string $target = null) {
+    $this->appendIcon($url, Icons::fontAwesome('google-plus-square', $screenReaderText), $target);
     return $this;
   }
 
   /**
+   * Appends a link
    * 
-   * @param  string $index
-   * @return HyperlinkIcon
-   * @throws \Sphp\Exceptions\RuntimeException if there is no icon at the given index
-   */
-  public function get(string $index): HyperlinkIcon {
-    if (array_key_exists($index, $this->icons)) {
-      return $this->icons[$index];
-    } else {
-      throw new \Sphp\Exceptions\RuntimeException("There is no Hyperlink icon at index '$index'");
-    }
-    return null;
-  }
-
-  /**
-   * 
-   * @param  string $index
-   * @param  HyperlinkIcon $icon
+   * @param  string $url the URL of the link
+   * @param  Icon $icon the icon object acting as link
+   * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  protected function setIcon(string $index, HyperlinkIcon $icon) {
-    $this->icons[$index] = $icon;
-    $icon->addCssClass($index);
+  protected function appendIcon(string $url, Icon $icon, string $target = null) {
+    $hyperlink = new Hyperlink($url, $icon, $target);
+    $hyperlink->addCssClass('brand-icon');
+    $this->icons[$url] = $hyperlink;
     return $this;
   }
 
@@ -138,6 +131,8 @@ class BrandIcons implements Content, Iterator {
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     next($this->icons);
@@ -154,6 +149,8 @@ class BrandIcons implements Content, Iterator {
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     reset($this->icons);

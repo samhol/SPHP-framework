@@ -59,7 +59,7 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
     $this->setAction($action)
             ->setMethod($method)
             ->setTarget('_self');
-    $this->setSubmitButton(new Submitter(Icons::fontAwesome('fa-search')));
+    $this->setSubmitButton(new Submitter(Icons::fontAwesome('fa-search', 'Search')));
     $this->hiddenData = new HiddenInputs();
     $this->searchField = new SearchInput();
   }

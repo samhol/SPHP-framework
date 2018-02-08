@@ -7,15 +7,6 @@
 
 namespace Sphp\Html\Apps\Forms;
 
-use Sphp\Html\Forms\FormInterface;
-use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
-use Sphp\Html\Forms\Inputs\SearchInput;
-use Sphp\Html\Forms\Buttons\SubmitterInterface;
-use Sphp\Html\Forms\Buttons\Submitter;
-use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\Icons\Icons;
-use Sphp\Html\AbstractComponent;
-
 /**
  * Implements a Sami PHP API search form
  *

@@ -20,6 +20,9 @@ use Sphp\Stdlib\Strings;
  */
 abstract class Icons {
 
+  /**
+   * @var string[] 
+   */
   private static $fileTypeMap = [
       'pdf' => 'file-pdf-o',
       'zip' => 'file-archive-o',
@@ -59,11 +62,11 @@ abstract class Icons {
    * @return Icon the icon object generated
    * @link   http://fontawesome.io/ Font Awesome site
    */
-  public static function fontAwesome(string $iconName): Icon {
+  public static function fontAwesome(string $iconName, string $screenReaderText = null): Icon {
     if (!Strings::startsWith($iconName, 'fa-')) {
       $iconName = "fa-$iconName";
     }
-    return new Icon('fa', $iconName);
+    return new Icon(['fa', $iconName], $screenReaderText);
   }
 
   /**
@@ -72,25 +75,26 @@ abstract class Icons {
    * @param  string $iconName the icon name
    * @return Icon the icon object generated
    */
-  public static function foundation(string $iconName): Icon {
+  public static function foundation(string $iconName, string $screenReaderText = null): Icon {
     if (!Strings::startsWith($iconName, 'fi-')) {
       $iconName = 'fi-' . $iconName;
     }
-    return new Icon('fi', $iconName);
+    return new Icon(['fi', $iconName], $screenReaderText);
   }
 
   /**
-   * Generates a Foundation icon
+   * Generates a Devicon icon
    * 
    * @param  string $iconName the icon name
    * @return Icon the icon object generated
    */
-  public static function devicon(string $iconName): Icon {
+  public static function devicon(string $iconName, string $screenReaderText = null): Icon {
     if (!Strings::startsWith($iconName, 'devicon-')) {
       $iconName = 'devicon-' . $iconName;
     }
-    return new Icon($iconName);
+    return new Icon($iconName, $screenReaderText);
   }
+
   /**
    * Generates a file type icon object using Font Awesome 
    * 
@@ -98,7 +102,7 @@ abstract class Icons {
    * @return Icon the icon object generated
    * @throws InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file): Icon {
+  public static function fileType($file, string $screenReaderText = null): Icon {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {
@@ -110,7 +114,7 @@ abstract class Icons {
     } else {
       $icon = 'file-o';
     }
-    return static::fontAwesome($icon);
+    return static::fontAwesome($icon, $screenReaderText);
   }
 
 }

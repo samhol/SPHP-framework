@@ -8,7 +8,6 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Stdlib\Strings;
 
 /**
  * Base for all simple container tags
