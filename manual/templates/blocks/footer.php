@@ -5,15 +5,16 @@ use Sphp\Stdlib\Networks\URL;
 $currentUrl = URL::getCurrentURL();
 ?>
 
-<div id="engadget-footer-sitemap-container">
-  <footer id="engadget-footer-sitemap">
+<div class="engadget-footer">
+<div class="sitemap-container">
+  <footer class="sitemap">
     <div class="links">
       <?php include 'manual/templates/blocks/footerLinks.php'; ?>
     </div>
   </footer>
 </div>
-<div id="engadget-footer-social-container">
-  <footer id="engadget-footer-social">
+<div class="engadget-footer social-container">
+  <footer class="social">
     <div class="footer-left">
       <div class="newsletter">
         <h6>Search the sites</h6>
@@ -49,8 +50,8 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     </div>
   </footer>
 </div>
-<div id="engadget-footer-contact-details-container">
-  <footer id="engadget-footer-contact-details">
+<div class="engadget-footer contact-details-container">
+  <footer class="contact-details">
     <div class="footer-left">
       <div class="contact-details">
         <ul>
@@ -121,4 +122,4 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     <i><?php echo number_format(memory_get_usage(true) / 1048576, 2) . " MB\n" ?></i>
   </footer>
 </div>
-
+</div>

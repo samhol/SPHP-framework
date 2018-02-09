@@ -8,7 +8,7 @@
 $footer-top-padding: rem-calc(10);
 $footer-border-color: #FAA523;
 
-#engadget-footer-sitemap-container {
+.engadget-footer-sitemap-container {
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
@@ -19,7 +19,7 @@ $footer-border-color: #FAA523;
   background-image: url('../../manual/pics/footer_skull.png'), url('../../manual/pics/parquet_black.jpg');
   background-repeat: no-repeat,repeat;
   background-position: center center,0 0;
-  #engadget-footer-sitemap { 
+  .engadget-footer-sitemap { 
     @include grid-row();
     color:$light-gray;
     padding: rem-calc(60) 0;
@@ -73,7 +73,7 @@ $footer-border-color: #FAA523;
 
   }
 }
-#engadget-footer-social-container {
+.engadget-footer-social-container {
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
@@ -81,7 +81,7 @@ $footer-border-color: #FAA523;
   background-color: $dark-gray;
   border-top: 2px solid #444;
   border-bottom: 1px solid #222;
-  #engadget-footer-social {
+  .engadget-footer-social {
     @include grid-row();
     color:$light-gray;
     padding: rem-calc(20 0 30 0);
@@ -129,7 +129,7 @@ $footer-border-color: #FAA523;
   }
 }
 
-#engadget-footer-contact-details-container {
+.engadget-footer-contact-details-container {
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
@@ -141,7 +141,7 @@ $footer-border-color: #FAA523;
   background-repeat: repeat;
   background-position: top left;
   color:$dark-gray !important;
-  #engadget-footer-contact-details { 
+  .engadget-footer-contact-details { 
     @include grid-row();
     color:$dark-gray;
     padding: rem-calc(20) 0;

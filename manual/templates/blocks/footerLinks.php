@@ -6,15 +6,15 @@ use Sphp\Html\Icons\Icons;
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$grid = (new BlockGrid('small-up-2', 'large-up-4'))->addCssClass('collapse');
+$grid = (new BlockGrid('small-up-1', 'medium-up-2', 'large-up-4'));
 $grid->append((new Menu())->vertical()
                 ->appendText('Who uses it?' . Icons::fontAwesome('fa-users'))
                 ->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi')
                 ->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;')
-                ->appendLink('http://playground.samiholck.com/', '&lt;SPHPlayground&gt; manual')
+                ->appendLink('http://playground.samiholck.com/', 'SPHPlayground manual')
                 ->appendText('Framework APIs' . Icons::fontAwesome('fa-book'))
-                ->appendLink('http://playground.samiholck.com/API/sami/', 'PHP API')
-                ->appendLink('http://playground.samiholck.com/API/jsdoc/', 'JavaScript API'));
+                ->appendLink('http://playground.samiholck.com/API/sami/', Icons::devicon('php-plain') . 'PHP API')
+                ->appendLink('http://playground.samiholck.com/API/jsdoc/', Icons::devicon('javascript-plain') . 'JavaScript API'));
 $grid->append((new Menu())->vertical()
                 ->appendText('JavaScript ' . Icons::devicon('javascript-plain'))
                 ->appendLink('https://www.w3.org/standards/webdesign/script.html', 'WEB APIS - <b>W3C</b>')
