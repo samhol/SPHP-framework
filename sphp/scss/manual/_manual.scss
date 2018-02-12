@@ -38,9 +38,7 @@ $error-bg: rgba(255,127,80, 0.40);
 
 @import "api-stuff";
 @import "form-submission-viewer";
-@import "license-page";
-@import "footer/footer";
-@import "error-pages";
+@import "footer";
 @import 'topbar';
 @import 'gettext-form';
 @import "forms"; 
@@ -65,7 +63,7 @@ $error-bg: rgba(255,127,80, 0.40);
   >.button-group, >.grid-x {
     @include default-margin();
   }
-  @import "f6-manual-accordion";
+  @import "example-accordion";
   border-left: solid 1px #ccc;
   border-right: solid 1px #ccc;
   //@include border-radius(4px);

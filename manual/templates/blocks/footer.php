@@ -3,13 +3,12 @@
 use Sphp\Stdlib\Networks\URL;
 
 $currentUrl = URL::getCurrentURL();
+
 ?>
 
 <div class="engadget-footer sitemap-container">
   <footer class="sitemap">
-    <div class="grid-container links">
-      <?php include 'manual/templates/blocks/footerLinks.php'; ?>
-    </div>
+    <?php include 'manual/templates/blocks/footerLinks.php'; ?>
   </footer>
 </div>
 <div class="engadget-footer social-container">

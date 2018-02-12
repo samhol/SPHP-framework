@@ -12,9 +12,11 @@ Document::html()->setLanguage('en');
 use Sphp\Html\Head\Meta;
 
 Document::head()
-        ->enableSPHP()
+        //->enableSPHP()
+        ->setBaseAddr('http://playground.samiholck.com/')
         ->setDocumentTitle('License | SPHPlayground framework')
-        ->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png')
+        ->addShortcutIcon('manual/pics/S-logo.png')
+        ->add(Head\Link::stylesheet('manual/css/license/license.css'))
         ->add(Head\Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHPlayground framework'))
@@ -23,7 +25,7 @@ Document::head()
                     'license',
                     'SPHPlayground']))
         ->addMeta(Meta::description('License for SPHPlayground framework'));
-Document::body()->addCssClass('license');
+Document::body()->addCssClass('gnu-license');
 Document::html()->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\Grid;
