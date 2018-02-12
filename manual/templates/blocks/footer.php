@@ -5,10 +5,9 @@ use Sphp\Stdlib\Networks\URL;
 $currentUrl = URL::getCurrentURL();
 ?>
 
-<div class="engadget-footer">
-<div class="sitemap-container">
+<div class="engadget-footer sitemap-container">
   <footer class="sitemap">
-    <div class="links">
+    <div class="grid-container links">
       <?php include 'manual/templates/blocks/footerLinks.php'; ?>
     </div>
   </footer>
@@ -121,5 +120,4 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     <b>PHP Peak memory:</b>
     <i><?php echo number_format(memory_get_usage(true) / 1048576, 2) . " MB\n" ?></i>
   </footer>
-</div>
 </div>
