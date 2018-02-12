@@ -15,6 +15,6 @@ clientside properties are available. Here is a small collection of features
 available.
 MD
 );
-
+Manual\loadPage('foundation-carousel');
 Manual\loadPage('Sphp.Html.Foundation.Sites');
 Manual\loadPage('Sphp.Html.Foundation-orbit-intro');
