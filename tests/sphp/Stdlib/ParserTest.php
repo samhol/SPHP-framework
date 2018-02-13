@@ -2,7 +2,6 @@
 
 namespace Sphp\Stdlib;
 
-use Exception;
 use RuntimeException;
 
 class ParserTest extends \PHPUnit\Framework\TestCase {
