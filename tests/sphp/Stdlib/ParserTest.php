@@ -8,7 +8,6 @@ use RuntimeException;
 class ParserTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * 
    * @return array
    */
   public function typeMap() {
@@ -44,7 +43,6 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
   public function filepathMap(): array {
@@ -84,17 +82,8 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
    * @param boolean $expected
    */
   public function testExceptions($file, $expected) {
-    try {
-      Parser::fromFile('foo.md');
-    } catch (Exception $ex) {
-      $this->assertTrue($ex instanceof RuntimeException);
-    }
-
-    try {
-      Parser::fromFile('foo.php');
-    } catch (Exception $ex) {
-      $this->assertTrue($ex instanceof RuntimeException);
-    }
+    $this->expectException(RuntimeException::class);
+    Parser::fromFile('foo.md');
   }
 
 }
