@@ -20,7 +20,6 @@ use Zend\Config\Reader\Json as JsonFormat;
 class Json extends AbstractReader {
 
   /**
-   *
    * @var JsonFormat 
    */
   private $parser;
@@ -35,6 +34,23 @@ class Json extends AbstractReader {
     } catch (Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
+  }
+
+  /**
+   * processConfig(): defined by AbstractWriter.
+   *
+   * @param  array $config
+   * @return string
+   * @throws RuntimeException if encoding errors occur.
+   */
+  public function encode(array $config): string {
+    $serialized = json_encode($config, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+
+    if (false === $serialized) {
+      throw new RuntimeException(json_last_error_msg());
+    }
+
+    return $serialized;
   }
 
 }

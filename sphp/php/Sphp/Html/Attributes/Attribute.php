@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 class Attribute extends AbstractAttribute {
 
   /**
-   * @var mixed 
+   * @var scalar|null 
    */
   private $value = false;
 
@@ -28,7 +28,7 @@ class Attribute extends AbstractAttribute {
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param scalar $value optional value of the attribute
+   * @param scalar|null $value optional value of the attribute
    */
   public function __construct(string $name, $value = false) {
     parent::__construct($name);
