@@ -43,4 +43,7 @@ $json->set(<<<JSON
 JSON
 );
 echo $json;
+
+
 ?>
+<?php echo file_get_contents("http://playground.samiholck.com/facebook.svg"); ?>

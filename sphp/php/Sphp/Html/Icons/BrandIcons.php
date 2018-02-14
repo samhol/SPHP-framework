@@ -19,12 +19,11 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BrandIcons implements Content, Iterator {
+class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterator {
 
-  use \Sphp\Html\ContentTrait;
 
   /**
-   * @var AbstractIcon[] 
+   * @var Ul[] 
    */
   private $icons;
 
@@ -32,9 +31,9 @@ class BrandIcons implements Content, Iterator {
    * Constructs a new instance
    */
   public function __construct() {
-    //parent::__construct('ul');
-    $this->icons = [];
-    //$this->cssClasses()->lock('brand-icons');
+    parent::__construct('div');
+    $this->icons = new Ul();
+    $this->addCssClass('brand-icons', 'rounded', 'logo');
   }
 
   /**
@@ -56,7 +55,7 @@ class BrandIcons implements Content, Iterator {
    * @return $this for a fluent interface
    */
   public function setGithub(string $url = 'https://www.github.com/', string $screenReaderLabel = 'Link to Github repository', string $target = null) {
-    $this->appendIcon($url, Icons::fontAwesome('github', $screenReaderLabel), $target);
+    $this->appendIcon($url, Icons::fontAwesome('github', $screenReaderLabel), $target)->addCssClass('github');
     return $this;
   }
 
@@ -68,8 +67,9 @@ class BrandIcons implements Content, Iterator {
    * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  public function appendFacebook(string $url = 'https://www.facebook.com/', string $screenReaderLabel = 'Link to Facebook', string $target = null) {
-    $this->appendIcon($url, Icons::fontAwesome('facebook-square', $screenReaderLabel), $target);
+  public function appendFacebook(string $url = 'https://www.facebook.com/', string $screenReaderLabel = 'Link to Facebook page', string $target = null) {
+    $this->appendIcon($url, Icons::fontAwesome('facebook-square', $screenReaderLabel), $target)
+            ->addCssClass('facebook');
     return $this;
   }
 
@@ -82,7 +82,8 @@ class BrandIcons implements Content, Iterator {
    * @return $this for a fluent interface
    */
   public function appendTwitter(string $url = 'https://twitter.com/', string $screenReaderText = 'Link to Twitter page', string $target = null) {
-    $this->appendIcon($url, Icons::fontAwesome('twitter', $screenReaderText), $target);
+    $this->appendIcon($url, Icons::fontAwesome('twitter', $screenReaderText), $target)
+            ->addCssClass('twitter');
     return $this;
   }
 
@@ -94,8 +95,9 @@ class BrandIcons implements Content, Iterator {
    * @param  string|null $target optional target of the hyperlink
    * @return $this for a fluent interface
    */
-  public function appendGooglePlus(string $url = 'https://plus.google.com/', string $screenReaderText = 'Link to Twitter page', string $target = null) {
-    $this->appendIcon($url, Icons::fontAwesome('google-plus-square', $screenReaderText), $target);
+  public function appendGooglePlus(string $url = 'https://plus.google.com/', string $screenReaderText = 'Link to Google plus page', string $target = null) {
+    $this->appendIcon($url, Icons::fontAwesome('google-plus-square', $screenReaderText), $target)
+            ->addCssClass('google-plus');
     return $this;
   }
 
@@ -105,19 +107,34 @@ class BrandIcons implements Content, Iterator {
    * @param  string $url the URL of the link
    * @param  Icon $icon the icon object acting as link
    * @param  string|null $target optional target of the hyperlink
-   * @return $this for a fluent interface
+   * @return Hyperlink
    */
-  protected function appendIcon(string $url, Icon $icon, string $target = null) {
+  protected function appendIcon(string $url, Icon $icon, string $target = null): Hyperlink {
     $hyperlink = new Hyperlink($url, $icon, $target);
     $hyperlink->addCssClass('brand-icon');
-    $this->icons[$url] = $hyperlink;
-    return $this;
+    $this->icons[] = $hyperlink;
+    return $hyperlink;
   }
 
-  public function getHtml(): string {
+  /*public function getHtml(): string {
     $ul = new Ul($this->icons);
     $ul->addCssClass('brand-icons', 'rounded', 'logo');
     return $ul->getHtml();
+  }*/
+  
+  /**
+   * 
+   * @param  array $group
+   * @param  string $value
+   * @return $this for a fluent interface
+   */
+  protected function setOneOf(array $group, string $value = null) {
+    if ($value === null) {
+      $this->cssClasses()->remove($group);
+    } else if (in_array($value, $group)) {
+      $this->cssClasses()->remove($group)->add($value);
+    }
+    return $this;
   }
 
   /**
@@ -163,6 +180,10 @@ class BrandIcons implements Content, Iterator {
    */
   public function valid(): bool {
     return false !== current($this->icons);
+  }
+
+  public function contentToString(): string {
+    return $this->icons->getHtml();
   }
 
 }
