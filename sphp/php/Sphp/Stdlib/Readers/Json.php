@@ -9,6 +9,7 @@ namespace Sphp\Stdlib\Readers;
 
 use Exception;
 use Zend\Config\Reader\Json as JsonFormat;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Implements JSON reader
