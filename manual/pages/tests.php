@@ -47,3 +47,6 @@ echo $json;
 
 ?>
 <?php echo file_get_contents("http://playground.samiholck.com/facebook.svg"); ?>
+<?php echo file_get_contents("sphp/svg/facebook.svg", true); 
+
+echo \Sphp\Html\Media\SvgLoader::load('sphp')?>
