@@ -3,9 +3,46 @@
 namespace Sphp\Manual;
 
 use Sphp\Html\Attributes\JsonAttribute;
-
+echo "<pre>";
 $json = new JsonAttribute('json', '{ "foo": "bar" }');
 $json['foo1'] = 'bar';
+$p = new \Sphp\Stdlib\Readers\Json();
+$arr = $p->fromString(<<<JSON
+        {
+    "dots": true,
+    "infinite": true,
+    "speed": 300,
+    "slidesToShow": 4,
+    "slidesToScroll": 1,
+    "autoplay": true,
+    "autoplaySpeed": 2000,
+    "responsive": [
+      {
+        "breakpoint": 1024,
+        "settings": {
+          "slidesToShow": 3,
+          "dots": true
+        }
+      },
+      {
+        "breakpoint": 600,
+        "settings": {
+          "slidesToShow": 2,
+          "dots": false
+        }
+      },
+      {
+        "breakpoint": 480,
+        "settings": {
+          "slidesToShow": 1,
+          "dots": false
+        }
+      }
+    ]
+  }
+JSON
+);
+print_r($arr);
 echo $json;
 $json->set(<<<JSON
         {
@@ -50,3 +87,4 @@ echo $json;
 <?php echo file_get_contents("sphp/svg/facebook.svg", true); 
 
 echo \Sphp\Html\Media\SvgLoader::load('sphp')?>
+</pre>

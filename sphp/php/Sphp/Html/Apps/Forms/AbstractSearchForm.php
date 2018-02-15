@@ -13,7 +13,7 @@ use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\Icons\Icons;
+use Sphp\Html\Media\Icons\Icons;
 use Sphp\Html\AbstractComponent;
 
 /**

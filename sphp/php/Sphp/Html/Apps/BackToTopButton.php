@@ -9,7 +9,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\Content;
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Icons\AbstractIcon;
+use Sphp\Html\Media\Icons\AbstractIcon;
 
 /**
  * Implements a back to top button for the web page

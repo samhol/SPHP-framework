@@ -73,7 +73,7 @@ class JsonAttribute extends AbstractAttribute implements ArrayAccess, Iterator, 
       $output .= $this->getName();
       $value = $this->getValue();
       if (is_string($value)) {
-        $output .= "='$value'";
+        $output .= "='$value' data-foo";
       }
     }
     return $output;
@@ -264,14 +264,6 @@ class JsonAttribute extends AbstractAttribute implements ArrayAccess, Iterator, 
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    if (!empty($this->data)) {
-      $output = '';
-      foreach ($this->data as $k => $v) {
-        $output .= sprintf($this->form, $k, $v);
-      }
-    } else {
-      $output = $this->isDemanded();
-    }
     $p = new Json();
     return $p->encode($this->data);
   }

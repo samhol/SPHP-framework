@@ -9,8 +9,8 @@ namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Config\ErrorHandling\ErrorListener;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
-use Sphp\Html\Icons\Icons;
-use Sphp\Html\Icons\Icon;
+use Sphp\Html\Media\Icons\Icons;
+use Sphp\Html\Media\Icons\Icon;
 
 /**
  * Implements a callout builder for PHP error message presentation

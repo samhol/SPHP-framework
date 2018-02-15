@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Icons;
+namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\Content;
 use Sphp\Html\Lists\Ul;
@@ -13,7 +13,7 @@ use Iterator;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Description of BrandIcons
+ * Implements brand icon links
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -21,9 +21,8 @@ use Sphp\Html\Navigation\Hyperlink;
  */
 class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterator {
 
-
   /**
-   * @var Ul[] 
+   * @var Ul
    */
   private $icons;
 
@@ -116,12 +115,6 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
     return $hyperlink;
   }
 
-  /*public function getHtml(): string {
-    $ul = new Ul($this->icons);
-    $ul->addCssClass('brand-icons', 'rounded', 'logo');
-    return $ul->getHtml();
-  }*/
-  
   /**
    * 
    * @param  array $group

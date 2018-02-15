@@ -45,7 +45,7 @@ class Json extends AbstractReader {
    * @throws RuntimeException if encoding errors occur.
    */
   public function encode(array $config): string {
-    $serialized = json_encode($config, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    $serialized = json_encode($config, JSON_UNESCAPED_SLASHES);
 
     if (false === $serialized) {
       throw new RuntimeException(json_last_error_msg());

@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Icons;
+namespace Sphp\Html\Media\Icons;
 
 /**
  * Implements icon based on fonts and HTML tags

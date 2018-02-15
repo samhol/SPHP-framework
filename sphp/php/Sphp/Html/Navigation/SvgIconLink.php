@@ -5,11 +5,9 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Icons;
+namespace Sphp\Html\Navigation;
 
-use Sphp\Html\EmptyTag;
-use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Foundation\Sites\Core\Factory;
+use Sphp\Html\AbstractComponent;
 
 /**
  * Abstract Implementation of an icon based on fonts and HTML tags
@@ -18,7 +16,11 @@ use Sphp\Html\Foundation\Sites\Core\Factory;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractIcon extends EmptyTag {
+class SvgIconLink extends AbstractComponent implements HyperlinkInterface {
+
+  use HyperlinkTrait;
+
+  private $svg;
 
   /**
    * @var string 
@@ -28,13 +30,12 @@ class AbstractIcon extends EmptyTag {
   /**
    * Constructs a new instances
    * 
-   * @param  string $tagName the tag name of the component
-   * @param  HtmlAttributeManager $attrManager
-   * @throws InvalidArgumentException if the tag name of the component is not valid
+   * @param  string $svg the SVG source for the icon
    */
-  public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
-    parent::__construct($tagName, true, $attrManager);
-    $this->attributes()->set('aria-hidden', 'true');
+  public function __construct(string $svg) {
+    parent::__construct('a');
+    $this->svg = $svg;
+    //$this->attributes()->set('aria-hidden', 'true');
   }
 
   /**
@@ -47,8 +48,8 @@ class AbstractIcon extends EmptyTag {
     return $this;
   }
 
-  public function getHtml(): string {
-    $output = parent::getHtml();
+  public function contentToString(): string {
+    $output = $this->svg;
     if ($this->sreenreaderText !== null) {
       $output .= Factory::screenReaderLabel($this->sreenreaderText);
     }

@@ -10,7 +10,6 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
-use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an image that acts as a hyperlink
@@ -74,7 +73,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 
    * `data-src` attribute instead of the `src` attribute
    *
-   * @param  string|URL $src the path to the image source (The URL of the image file)
+   * @param  string $src the path to the image source (The URL of the image file)
    * @return $this for a fluent interface
    */
   public function setSrc(string $src) {

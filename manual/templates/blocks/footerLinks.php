@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Icons\Icons;
+use Sphp\Html\Media\Icons\Icons;
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 

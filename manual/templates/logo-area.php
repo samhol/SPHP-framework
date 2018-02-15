@@ -18,7 +18,7 @@ use Sphp\Config\Config;
   <div class="cell small-12 medium-6 icon-col">
     <?php
 
-    use Sphp\Html\Icons\BrandIcons;
+    use Sphp\Html\Media\Icons\BrandIcons;
 
 $bi = new BrandIcons();
     $bi->setGithub('https://github.com/samhol/SPHP-framework', 'Gihub repository', 'github');
