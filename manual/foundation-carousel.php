@@ -5,12 +5,13 @@ namespace Sphp\Html\Apps\Slick;
 $settings = [
     'dots' => true,
     'infinite' => true,
-    'speed' => 300,
+    'speed' => 1000,
     'slidesToShow' => 3,
     'slidesToScroll' => 1,
     'autoplay' => true,
     'autoplaySpeed' => 2000,
-    'responsive' => [
+    'responsive' =>
+    [
         [
             'breakpoint' => 1024,
             'settings' => [
@@ -36,6 +37,7 @@ $settings = [
 ];
 $carousel = new Carousel();
 $carousel->setProperty($settings);
+$carousel->addCssClass('manual-info-text');
 
 namespace Sphp\Html\Foundation;
 

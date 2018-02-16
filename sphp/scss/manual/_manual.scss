@@ -137,7 +137,7 @@ $error-bg: rgba(255,127,80, 0.40);
   > div.wrapper {
     @include default-margin();
   }
-  @import "orbit-intro";
+  @import "carousels";
 }
 
 @import "body";
