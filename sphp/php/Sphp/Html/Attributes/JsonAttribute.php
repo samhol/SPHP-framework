@@ -39,11 +39,6 @@ class JsonAttribute extends AbstractAttribute implements ArrayAccess, Iterator, 
   private $lockedProps = [];
 
   /**
-   * @var string
-   */
-  private $form;
-
-  /**
    * @var Json
    */
   private $parser;
@@ -264,8 +259,7 @@ class JsonAttribute extends AbstractAttribute implements ArrayAccess, Iterator, 
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    $p = new Json();
-    return $p->encode($this->data);
+    return json_encode($this->data, JSON_UNESCAPED_SLASHES);
   }
 
   /**

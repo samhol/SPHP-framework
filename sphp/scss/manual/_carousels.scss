@@ -1,6 +1,31 @@
 .manual-info-text {
-  .slick-slide {
+  article.wrapper {
+    h2 {
+      border-bottom: dashed 1px #aaa;
+    }
+    .menu {
+      margin: rem-calc(5 3);
+      li {
+        margin-right: rem-calc(1);
+        a {
+          border: solid 1px #aaa;
+          @include border-radius(3px);
+        }
+      }
+      .sphp {
+        background-color: #FF8000;
+      }
+      .foundation {
+        background-color: #d7ecfa;
+      }
+    }
+    p {
+      margin: rem-calc(5 6);
+      text-align: justify;
+    }
+    margin: rem-calc(0 5);
     padding: rem-calc(0 5);
+    height: 100%;
   }
 }
 .foundation-intro, .orbit.intro {
