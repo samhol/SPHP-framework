@@ -61,7 +61,7 @@ class AbstractBar extends AbstractComponent {
    *
    * @return BarContentAreaInterface the left side menu area component
    */
-  public function left() {
+  public function left():BarContentAreaInterface {
     return $this->leftArea;
   }
 

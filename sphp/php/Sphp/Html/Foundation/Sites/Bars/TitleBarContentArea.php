@@ -18,7 +18,7 @@ use Sphp\Html\Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TitleBarContentArea extends BarContentArea {
+class TitleBarContentArea extends \Sphp\Html\AbstractComponent {
 
   private $side;
 
@@ -81,9 +81,9 @@ class TitleBarContentArea extends BarContentArea {
 
   public function contentToString(): string {
     if ($this->side === 'left') {
-      return $this->menuButton . $this->title . parent::contentToString();
+      return $this->menuButton . 'foobar' . $this->title;
     } else {
-      return parent::contentToString() . $this->title . $this->menuButton;
+      return $this->title . $this->menuButton;
     }
   }
 

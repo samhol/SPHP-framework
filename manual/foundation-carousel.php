@@ -14,9 +14,16 @@ $settings = [
     'responsive' =>
     [
         [
-            'breakpoint' => 1024,
+            'breakpoint' => 1200,
             'settings' => [
                 'slidesToShow' => 3,
+                'dots' => true
+            ]
+        ],
+        [
+            'breakpoint' => 1024,
+            'settings' => [
+                'slidesToShow' => 2,
                 'dots' => true
             ]
         ],
@@ -69,12 +76,14 @@ namespace Sphp\Html\Foundation\Sites\Media;
 $media_ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
-##Grid components:
-<ul class="menu">
-  <li><a class="foundation button" href="https://foundation.zurb.com/sites/docs/xy-grid.html">Foundation</a></li>
-  <li><a class="sphp button" href="Sphp.Html.Foundation.Sites.Grids.XY">Manual</a></li>
-  <li><a class="alert button" href="http://playground.samiholck.com/API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a></li>
-</ul>
+##Grids:
+
+<div class="button-group small">
+  <a class="foundation button" href="https://foundation.zurb.com/sites/docs/xy-grid.html">Foundation</a>
+  <a class="sphp button" href="Sphp.Html.Foundation.Sites.Grids.XY">Manual</a>
+  <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Forms.html">API</a>
+</div>
+
 The $core namespace includes Foundation based multi-device nestable 12-column $grid implementation and a
 Foundation $blockGrid to evenly split contents of a list within the grid...
 
@@ -94,10 +103,10 @@ MD
 $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
 ##Buttons:
-<ul class="menu">
-  <li><a class="sphp button" href="http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Buttons">Manual</a></li>
-  <li><a class="alert button" href="http://playground.samiholck.com/API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a></li>
-</ul>
+<div class="button-group small">
+  <a class="sphp button" href="Sphp.Html.Foundation.Sites.Buttons">Manual</a>
+  <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a>
+</div>
 Buttons in $btn_ns namespace are interactive elements that can be used for many purposes. 
 A basic Foundation styled button can be based on almost any HTML tag that has one CSS-class.
 
@@ -110,11 +119,11 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbedInterface;
 $responsiveEmbed = \Sphp\Manual\api()->classLinker(ResponsiveEmbedInterface::class);
 $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
-##Media components:
-<ul class="menu">
-  <li><a class="sphp button" href="http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Buttons">Manual</a></li>
-  <li><a class="alert button" href="http://playground.samiholck.com/API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a></li>
-</ul>
+##Media:
+<div class="button-group small">
+  <a class="sphp button" href="Sphp.Html.Foundation.Sites.Buttons">Manual</a>
+  <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a>
+</div>
 Foundation based UI components for multimedia are located in $media_ns namespace. 
         
 As an example $responsiveEmbed is a container for embedded content like videos, maps, 
@@ -125,11 +134,11 @@ MD
 );
 $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
-##Navigation components:
-<ul class="menu">
-  <li><a class="alert button" href="Sphp.Html.Foundation.Sites.Forms">Manual</a></li>
-  <li><a class="alert button" href="http://playground.samiholck.com/API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a></li>
-</ul>
+##Navigation:
+<div class="button-group small">
+  <a class="alert button" href="Sphp.Html.Foundation.Sites.Forms">Manual</a>
+  <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a>
+</div>
 $navi_ns namespace contains many Foundation navigation components implemented in object oriented PHP.
 These  components can be combined to form more complex, robust responsive navigation 
 solutions. For example this namespace contains a complex top bar that supports dropdown navigation, 
@@ -141,10 +150,10 @@ MD
 $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
 ##Forms:
-<ul class="menu">
-  <li><a class="alert button" href="Sphp.Html.Foundation.Sites.Forms">Manual</a></li>
-  <li><a class="alert button" href="http://playground.samiholck.com/API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a></li>
-</ul>
+<div class="button-group small">
+  <a class="alert button" href="Sphp.Html.Foundation.Sites.Forms">Manual</a>
+  <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Forms.html">PHP API</a>
+</div>
 PHP Implementations of Foundation based Forms and Form components are in The $forms_ns namespace.
 This namespace includes layouts and controllers for responsive HTML form design.
 Visual presentation of these forms is built using Foundation Grid.
@@ -158,10 +167,10 @@ $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
 ##Containers:
         
-<ul class="menu">
-  <li><a class="sphp button" href="http://playground.samiholck.com/Sphp.Html.Foundation.Sites.Containers">Manual</a></li>
-  <li><a class="api button" href="http://playground.samiholck.com/API/sami/Sphp/Html/Foundation/Sites/Containers.html">PHP API</a></li>
-</ul>
+<div class="button-group small">
+  <a class="sphp button" href="Sphp.Html.Foundation.Sites.Containers">Manual</a>
+  <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Containers.html">PHP API</a>
+</div>
 
 The $cont_ns namespace includes PHP implementations of useful container elements 
 like Accordions, Tabs and Dropdowns for HTML UI presentation.

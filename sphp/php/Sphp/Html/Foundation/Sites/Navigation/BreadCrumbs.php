@@ -20,7 +20,7 @@ use Sphp\Html\TraversableTrait;
  * interfaces. It allows users to keep track of their locations 
  * within programs or documents.
  * 
- * {@link self} component shows a navigation trail for users clicking through a 
+ * This component shows a navigation trail for users clicking through a 
  * site or app. They'll fill out 100% of the width of their parent container.
  *
  * @author  Sami Holck <sami.holck@gmail.com>

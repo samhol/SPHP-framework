@@ -28,5 +28,4 @@ use Sphp\Html\SimpleContainerTag;
   public function __construct(string $tagname = 'div') {
     parent::__construct($tagname);
   }
-
 }

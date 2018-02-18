@@ -22,18 +22,11 @@ use Sphp\Html\Div;
 class TopBar extends AbstractBar {
 
   /**
-   * The topbar Foundation options
-   *
-   * @var Div
-   */
-  private $titleArea;
-
-  /**
    * Constructs a new instance
    *
    * @param mixed $title the title of the Top Bar component
    */
-  public function __construct($title = null, BarContentArea $left = null, BarContentArea $right = null) {
+  public function __construct(BarContentArea $left = null, BarContentArea $right = null) {
     if ($left === null) {
       $left = new BarContentArea('div');
     }
@@ -43,7 +36,6 @@ class TopBar extends AbstractBar {
     }
     $right->cssClasses()->protect('top-bar-right');
     parent::__construct('div', $left, $right);
-    $this->barTitle($title);
     $this->cssClasses()->protect('top-bar');
   }
 
@@ -65,53 +57,9 @@ class TopBar extends AbstractBar {
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function stackFor($screenSize = 'small') {
-    $this->setDefaultStacking();
-    if (in_array($screenSize, static::$stackScreens)) {
-      if ($screenSize !== 'small') {
-        $this->addCssClass("stacked-for-$screenSize");
-      }
-    } else {
-      throw new InvalidArgumentException("Screen size '$screenSize' was not recognized");
-    }
+  public function stackFor(string $screenSize = null) {
+    $this->cssClasses()->removePattern('/^(stacked-for-(small|medium|large|xlarge|xxlarge)+$/')->add("stacked-for-$screenSize");
     return $this;
-  }
-
-  /**
-   * Unstacks the stacked buttons in the given screen sizes
-   * 
-   * @return $this for a fluent interface
-   */
-  public function setDefaultStacking() {
-    $this->cssClasses()
-            ->remove(['stacked-for-large', 'stacked-for-medium']);
-    return $this;
-  }
-
-  /**
-   * Sets and Returns the title area component
-   *
-   * @param  mixed $title the title content of the Navigator component
-   * @return $this for a fluent interface
-   */
-  public function barTitle($title = null) {
-    if ($title !== null) {
-      $this->titleArea = new Div($title);
-      $this->titleArea->attributes()->classes()->protect('top-bar-title');
-
-      $this->titleArea->replaceContent($title);
-    } else {
-      $this->titleArea = null;
-    }
-    return $this;
-  }
-
-  public function contentToString(): string {
-    $output = '';
-    if ($this->titleArea !== null) {
-      $output .= $this->titleArea->getHtml();
-    }
-    return $output . parent::contentToString();
   }
 
 }

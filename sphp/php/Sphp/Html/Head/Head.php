@@ -139,7 +139,8 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
   public function useFontAwesome() {
-    return $this->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+    $this->appendScriptSrc("https://use.fontawesome.com/releases/v5.0.6/js/all.js");
+    return $this;//->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
   }
 
   /**

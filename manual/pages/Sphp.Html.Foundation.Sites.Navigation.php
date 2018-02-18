@@ -39,7 +39,13 @@ Manual\md(<<<MD
 In general the graphical control element Breadcrumbs or breadcrumb trail is a navigation
 aid used in user interfaces. It allows users to keep track of their locations within
 programs or documents <span class="label">from Wikipedia</span>.
+        
+The graphical control element {@link self} is a navigation aid used in user 
+interfaces. It allows users to keep track of their locations within programs or documents.
 
+This component shows a navigation trail for users clicking through a 
+site or app. They'll fill out 100% of the width of their parent container.
+        
 The $breadcrumbs component is a container for individual $breadcrumb components whereas
 A $breadcrumb is basically just an implementation of $hyperlinkIfLink.
 

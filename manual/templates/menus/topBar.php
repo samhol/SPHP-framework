@@ -10,6 +10,7 @@ use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
 try {
   $navi = new TopBar();
+  $navi->stackFor('medium');
   $navi->addCssClass('sphp-manual');
 
   //$manual = (new SubMenu('Documentation'));
