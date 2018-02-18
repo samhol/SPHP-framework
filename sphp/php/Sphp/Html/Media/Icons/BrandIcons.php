@@ -31,8 +31,8 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    */
   public function __construct() {
     parent::__construct('div');
-    $this->icons = new Ul();
-    $this->addCssClass('brand-icons', 'rounded', 'logo');
+    $this->icons = [];
+    $this->addCssClass('sphp-brand-links', 'logo');
   }
 
   /**
@@ -67,7 +67,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    * @return $this for a fluent interface
    */
   public function appendFacebook(string $url = 'https://www.facebook.com/', string $screenReaderLabel = 'Link to Facebook page', string $target = null) {
-    $this->appendIcon($url, Icons::fontAwesome('facebook-square', $screenReaderLabel), $target)
+    $this->appendIcon($url, new Icon(['fab', 'fa-facebook'], $screenReaderLabel), $target)
             ->addCssClass('facebook');
     return $this;
   }
@@ -110,7 +110,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    */
   protected function appendIcon(string $url, Icon $icon, string $target = null): Hyperlink {
     $hyperlink = new Hyperlink($url, $icon, $target);
-    $hyperlink->addCssClass('brand-icon');
+    $hyperlink->addCssClass('sphp-brand-link');
     $this->icons[] = $hyperlink;
     return $hyperlink;
   }
@@ -176,7 +176,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
   }
 
   public function contentToString(): string {
-    return $this->icons->getHtml();
+    return implode('', $this->icons);
   }
 
 }

@@ -3,13 +3,12 @@
 namespace Sphp\Html\Foundation\Sites\Bars;
 
 use Sphp\Html\Foundation\Sites\Bars\TitleBar;
+
 $titlebar = new TitleBar();
 $titlebar->left()->setTitle('Foo');
 $titlebar->left()->setMenuButton(new MenuButton('foo'));
 $titlebar->right()->setMenuButton(new MenuButton());
 $titlebar->printHtml();
-
-
 ?>
 
 <div class="title-bar">
@@ -20,4 +19,15 @@ $titlebar->printHtml();
   <div class="title-bar-right">
     <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
   </div>
+</div>
+<div class="sphp-brand-links">
+  <a class="sphp-brand-link facebook rounded" href="#">
+    <i class="fab fa-facebook-square"></i>
+  </a>
+  <a class="sphp-brand-link twitter" href="#">
+    <i class="fab fa-twitter-square"></i>
+  </a>
+  <a class="sphp-brand-link github" href="#">
+    <i class="fab fa-github-square"></i>
+  </a>
 </div>

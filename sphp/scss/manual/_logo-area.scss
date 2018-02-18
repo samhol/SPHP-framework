@@ -9,15 +9,15 @@
 .sphp-logo-area {
   margin-bottom: 0;
   background: rgba(255, 255, 255, 0.75);
-  .logo, .brand-icons ul {  
+  .logo {  
     margin: rem-calc(10);
     list-style: none;
   }
   .icon-col {
-    li {
-      margin-right: rem-calc(5);
+    div.sphp-brand-links {
+      float:right;
     }
-    a {
+    a.sphp-brand-icon {
       border: solid 1px #000;
       @include border-radius(8px);
       @include opacity(.8);
@@ -27,25 +27,19 @@
         @include opacity(1);
         @include box-shadow(rgba(gray, 0.6) 0 0 25px, rgba(black, 0.5) 0 0 3px 1px);
       }
-    }
-    @include breakpoint(small) {
-      text-align: left;
-      i {
+
+      @include breakpoint(small) {
         font-size: rem-calc(20);
         width: rem-calc(30);
         height: rem-calc(30);
         line-height: rem-calc(30);
       }
-    }
-    @include breakpoint(medium) {
-      text-align: right; 
-      i {
+      @include breakpoint(medium) {
         font-size: rem-calc(30);
         width: rem-calc(50);
         height: rem-calc(50);
         line-height: rem-calc(50);
       }
-    }
-  } 
-
+    } 
+  }
 }

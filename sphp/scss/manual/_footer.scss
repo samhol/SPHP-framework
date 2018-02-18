@@ -46,7 +46,7 @@ $sitemap-border-highlight-color: rgba(70, 70, 70, 0.5);
                 border-color: $sitemap-border-highlight-color; 
                 background: rgba(40, 40, 40, 0.4);
               }
-              i {
+              i, svg {
                 float: left;
                 margin-left: rem-calc(-20);
                 margin-right: rem-calc(5);
@@ -54,7 +54,7 @@ $sitemap-border-highlight-color: rgba(70, 70, 70, 0.5);
               }
             }
             &.menu-text {
-              i {
+              i, svg {
                 float: right;
                 @include opacity(0.7);
               }

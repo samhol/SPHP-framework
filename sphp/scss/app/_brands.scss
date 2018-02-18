@@ -33,13 +33,23 @@ blogger:    (color: white, background: #fb8f3d),
 soundcloud: (color: white, background: #ff3a00),
 pdf:        (color: white, background: #ff3a00)
 );
-
-.brand-icon, .brand-icons {
+a.sphp-brand-link { 
   @include transition-property(all);
   @include transition-duration(0.3s);
   @include transition-timing-function(ease-in-out);
+  //@include border-radius(5px);
+  border: solid 1px #555;
   text-align: center;
-  display: inline-block;
+  font-size: rem-calc(30);
+  width: rem-calc(50);
+  height: rem-calc(50);
+  line-height: rem-calc(50);
+  &.small {
+    font-size: rem-calc(20);
+    width: rem-calc(30);
+    height: rem-calc(30);
+    line-height: rem-calc(30);
+  }
   &.circle { 
     @include border-radius(50%);
   }
@@ -54,21 +64,6 @@ pdf:        (color: white, background: #ff3a00)
     color: rgba(255, 255, 255, 1);
     //@include box-shadow(#333 1px 1px 3px);
   }
-  i {
-    font-size: rem-calc(30);
-    width: rem-calc(50);
-    height: rem-calc(50);
-    line-height: rem-calc(50);
-    &.small {
-      font-size: rem-calc(20);
-      width: rem-calc(30);
-      height: rem-calc(30);
-      line-height: rem-calc(30);
-    }
-    // text-align: center;
-    //color: #FFF;
-    //color: rgba(255, 255, 255, 0.8);
-  };
   @each $brand, $icon in $brand-icons {
     &.#{$brand} {
       background-color: map-get($icon, background);
@@ -79,29 +74,11 @@ pdf:        (color: white, background: #ff3a00)
     }
   }
 }
-.brand-icons.circle a, a.brand-icon.circle { 
-  @include border-radius(50%);
-}
-.brand-icons.rounded a, a.brand-icon.rounded {
-  @include border-radius(5px);
-}
-.brand-icons.flat a, a.brand-icon.flat {
-  @include border-radius(0);
-}
-.brand-icons.zoom a, a.brand-icon.zoom {
-  @include transform(scale(1.1, 1.1));
-}
-.brand-icons.rotate a, a.brand-icon.rotate {
-  @include transform(rotate(360deg));
-}
-
-.brand-icons ul {
-  list-style: none;
-  display: inline-block;
-  //margin: rem-calc(20 0 20 10);
-  padding: 0;
-  li {
-    display: inline-block;
+.sphp-brand-links {
+  overflow: auto;
+  .sphp-brand-link {
+    display: block;
+    float: left;
     margin: rem-calc(1);
   }
 }

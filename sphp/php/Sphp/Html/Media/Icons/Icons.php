@@ -66,7 +66,7 @@ abstract class Icons {
     if (!Strings::startsWith($iconName, 'fa-')) {
       $iconName = "fa-$iconName";
     }
-    return new Icon(['fa', $iconName], $screenReaderText);
+    return new Icon(['fas', $iconName], $screenReaderText);
   }
 
   /**
