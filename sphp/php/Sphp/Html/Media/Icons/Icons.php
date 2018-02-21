@@ -96,6 +96,16 @@ abstract class Icons {
   }
 
   /**
+   * Generates a Devicon icon
+   * 
+   * @param  string $iconName the icon name
+   * @return Icon the icon object generated
+   */
+  public static function create( $icon, string $screenReaderText = null): Icon {
+    return new Icon($icon, $screenReaderText);
+  }
+
+  /**
    * Generates a file type icon object using Font Awesome 
    * 
    * @param  string|SplFileInfo $file the file

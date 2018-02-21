@@ -23,7 +23,7 @@ class AbstractIcon extends EmptyTag {
   /**
    * @var string 
    */
-  private $sreenreaderText;
+  private $sreenreaderLabel;
 
   /**
    * Constructs a new instances
@@ -39,18 +39,18 @@ class AbstractIcon extends EmptyTag {
 
   /**
    * 
-   * @param  string $sreenreaderText 
+   * @param  string $sreenreaderLabel 
    * @return $this for a fluent interface
    */
-  public function setSreenreaderText(string $sreenreaderText = null) {
-    $this->sreenreaderText = $sreenreaderText;
+  public function setSreenreaderText(string $sreenreaderLabel = null) {
+    $this->sreenreaderLabel = $sreenreaderLabel;
     return $this;
   }
 
   public function getHtml(): string {
     $output = parent::getHtml();
-    if ($this->sreenreaderText !== null) {
-      $output .= Factory::screenReaderLabel($this->sreenreaderText);
+    if ($this->sreenreaderLabel !== null) {
+      $output .= Factory::screenReaderLabel($this->sreenreaderLabel);
     }
     return $output;
   }

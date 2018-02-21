@@ -7,7 +7,7 @@
       margin: rem-calc(5 3);
       a {
         border: solid 1px #aaa;
-        @include border-radius(3px);
+        //@include border-radius(3px);
       }
       .sphp {
         background-color: #FF8000;

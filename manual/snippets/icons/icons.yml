@@ -1,0 +1,3363 @@
+500px:
+  label: 500px
+  styles:
+    - brands
+accessible-icon:
+  label: Accessible Icon
+  styles:
+    - brands
+accusoft:
+  label: Accusoft
+  styles:
+    - brands
+address-book:
+  label: Address Book
+  styles:
+    - solid
+    - regular
+address-card:
+  label: Address Card
+  styles:
+    - solid
+    - regular
+adjust:
+  label: adjust
+  styles:
+    - solid
+adn:
+  label: App.net
+  styles:
+    - brands
+adversal:
+  label: Adversal
+  styles:
+    - brands
+affiliatetheme:
+  label: affiliatetheme
+  styles:
+    - brands
+algolia:
+  label: Algolia
+  styles:
+    - brands
+align-center:
+  label: align-center
+  styles:
+    - solid
+align-justify:
+  label: align-justify
+  styles:
+    - solid
+align-left:
+  label: align-left
+  styles:
+    - solid
+align-right:
+  label: align-right
+  styles:
+    - solid
+amazon:
+  label: Amazon
+  styles:
+    - brands
+amazon-pay:
+  label: Amazon Pay
+  styles:
+    - brands
+ambulance:
+  label: ambulance
+  styles:
+    - solid
+american-sign-language-interpreting:
+  label: American Sign Language Interpreting
+  styles:
+    - solid
+amilia:
+  label: Amilia
+  styles:
+    - brands
+anchor:
+  label: Anchor
+  styles:
+    - solid
+android:
+  label: Android
+  styles:
+    - brands
+angellist:
+  label: AngelList
+  styles:
+    - brands
+angle-double-down:
+  label: Angle Double Down
+  styles:
+    - solid
+angle-double-left:
+  label: Angle Double Left
+  styles:
+    - solid
+angle-double-right:
+  label: Angle Double Right
+  styles:
+    - solid
+angle-double-up:
+  label: Angle Double Up
+  styles:
+    - solid
+angle-down:
+  label: angle-down
+  styles:
+    - solid
+angle-left:
+  label: angle-left
+  styles:
+    - solid
+angle-right:
+  label: angle-right
+  styles:
+    - solid
+angle-up:
+  label: angle-up
+  styles:
+    - solid
+angrycreative:
+  label: Angry Creative
+  styles:
+    - brands
+angular:
+  label: Angular
+  styles:
+    - brands
+app-store:
+  label: App Store
+  styles:
+    - brands
+app-store-ios:
+  label: iOS App Store
+  styles:
+    - brands
+apper:
+  label: Apper Systems AB
+  styles:
+    - brands
+apple:
+  label: Apple
+  styles:
+    - brands
+apple-pay:
+  label: Apple Pay
+  styles:
+    - brands
+archive:
+  label: Archive
+  styles:
+    - solid
+arrow-alt-circle-down:
+  label: Alternate Arrow Circle Down
+  styles:
+    - solid
+    - regular
+arrow-alt-circle-left:
+  label: Alternate Arrow Circle Left-circle-o-left
+  styles:
+    - solid
+    - regular
+arrow-alt-circle-right:
+  label: Alternate Arrow Circle Right-circle-o-right
+  styles:
+    - solid
+    - regular
+arrow-alt-circle-up:
+  label: Alternate Arrow Circle Up-circle-o-up
+  styles:
+    - solid
+    - regular
+arrow-circle-down:
+  label: Arrow Circle Down
+  styles:
+    - solid
+arrow-circle-left:
+  label: Arrow Circle Left
+  styles:
+    - solid
+arrow-circle-right:
+  label: Arrow Circle Right
+  styles:
+    - solid
+arrow-circle-up:
+  label: Arrow Circle Up
+  styles:
+    - solid
+arrow-down:
+  label: arrow-down
+  styles:
+    - solid
+arrow-left:
+  label: arrow-left
+  styles:
+    - solid
+arrow-right:
+  label: arrow-right
+  styles:
+    - solid
+arrow-up:
+  label: arrow-up
+  styles:
+    - solid
+arrows-alt:
+  label: Alternate Arrows
+  styles:
+    - solid
+arrows-alt-h:
+  label: Alternate Arrows Horizontal
+  styles:
+    - solid
+arrows-alt-v:
+  label: Alternate Arrows Vertical
+  styles:
+    - solid
+assistive-listening-systems:
+  label: Assistive Listening Systems
+  styles:
+    - solid
+asterisk:
+  label: asterisk
+  styles:
+    - solid
+asymmetrik:
+  label: 'Asymmetrik, Ltd.'
+  styles:
+    - brands
+at:
+  label: At
+  styles:
+    - solid
+audible:
+  label: Audible
+  styles:
+    - brands
+audio-description:
+  label: Audio Description
+  styles:
+    - solid
+autoprefixer:
+  label: Autoprefixer
+  styles:
+    - brands
+avianex:
+  label: avianex
+  styles:
+    - brands
+aviato:
+  label: Aviato
+  styles:
+    - brands
+aws:
+  label: Amazon Web Services (AWS)
+  styles:
+    - brands
+backward:
+  label: backward
+  styles:
+    - solid
+balance-scale:
+  label: Balance Scale
+  styles:
+    - solid
+ban:
+  label: ban
+  styles:
+    - solid
+bandcamp:
+  label: Bandcamp
+  styles:
+    - brands
+barcode:
+  label: barcode
+  styles:
+    - solid
+bars:
+  label: Bars
+  styles:
+    - solid
+baseball-ball:
+  label: Baseball Ball
+  styles:
+    - solid
+basketball-ball:
+  label: Basketball Ball
+  styles:
+    - solid
+bath:
+  label: Bath
+  styles:
+    - solid
+battery-empty:
+  label: Battery Empty
+  styles:
+    - solid
+battery-full:
+  label: Battery Full
+  styles:
+    - solid
+battery-half:
+  label: Battery 1/2 Full
+  styles:
+    - solid
+battery-quarter:
+  label: Battery 1/4 Full
+  styles:
+    - solid
+battery-three-quarters:
+  label: Battery 3/4 Full
+  styles:
+    - solid
+bed:
+  label: Bed
+  styles:
+    - solid
+beer:
+  label: beer
+  styles:
+    - solid
+behance:
+  label: Behance
+  styles:
+    - brands
+behance-square:
+  label: Behance Square
+  styles:
+    - brands
+bell:
+  label: bell
+  styles:
+    - solid
+    - regular
+bell-slash:
+  label: Bell Slash
+  styles:
+    - solid
+    - regular
+bicycle:
+  label: Bicycle
+  styles:
+    - solid
+bimobject:
+  label: BIMobject
+  styles:
+    - brands
+binoculars:
+  label: Binoculars
+  styles:
+    - solid
+birthday-cake:
+  label: Birthday Cake
+  styles:
+    - solid
+bitbucket:
+  label: Bitbucket
+  styles:
+    - brands
+bitcoin:
+  label: Bitcoin
+  styles:
+    - brands
+bity:
+  label: Bity
+  styles:
+    - brands
+black-tie:
+  label: Font Awesome Black Tie
+  styles:
+    - brands
+blackberry:
+  label: BlackBerry
+  styles:
+    - brands
+blind:
+  label: Blind
+  styles:
+    - solid
+blogger:
+  label: Blogger
+  styles:
+    - brands
+blogger-b:
+  label: Blogger B
+  styles:
+    - brands
+bluetooth:
+  label: Bluetooth
+  styles:
+    - brands
+bluetooth-b:
+  label: Bluetooth
+  styles:
+    - brands
+bold:
+  label: bold
+  styles:
+    - solid
+bolt:
+  label: Lightning Bolt
+  styles:
+    - solid
+bomb:
+  label: Bomb
+  styles:
+    - solid
+book:
+  label: book
+  styles:
+    - solid
+bookmark:
+  label: bookmark
+  styles:
+    - solid
+    - regular
+bowling-ball:
+  label: Bowling Ball
+  styles:
+    - solid
+braille:
+  label: Braille
+  styles:
+    - solid
+briefcase:
+  label: Briefcase
+  styles:
+    - solid
+btc:
+  label: BTC
+  styles:
+    - brands
+bug:
+  label: Bug
+  styles:
+    - solid
+building:
+  label: Building
+  styles:
+    - solid
+    - regular
+bullhorn:
+  label: bullhorn
+  styles:
+    - solid
+bullseye:
+  label: Bullseye
+  styles:
+    - solid
+buromobelexperte:
+  label: Büromöbel-Experte GmbH & Co. KG.
+  styles:
+    - brands
+bus:
+  label: Bus
+  styles:
+    - solid
+buysellads:
+  label: BuySellAds
+  styles:
+    - brands
+calculator:
+  label: Calculator
+  styles:
+    - solid
+calendar:
+  label: Calendar
+  styles:
+    - solid
+    - regular
+calendar-alt:
+  label: Alternate Calendar
+  styles:
+    - solid
+    - regular
+calendar-check:
+  label: Calendar Check
+  styles:
+    - solid
+    - regular
+calendar-minus:
+  label: Calendar Minus
+  styles:
+    - solid
+    - regular
+calendar-plus:
+  label: Calendar Plus
+  styles:
+    - solid
+    - regular
+calendar-times:
+  label: Calendar Times
+  styles:
+    - solid
+    - regular
+camera:
+  label: camera
+  styles:
+    - solid
+camera-retro:
+  label: Retro Camera
+  styles:
+    - solid
+car:
+  label: Car
+  styles:
+    - solid
+caret-down:
+  label: Caret Down
+  styles:
+    - solid
+caret-left:
+  label: Caret Left
+  styles:
+    - solid
+caret-right:
+  label: Caret Right
+  styles:
+    - solid
+caret-square-down:
+  label: Caret Square Down
+  styles:
+    - solid
+    - regular
+caret-square-left:
+  label: Caret Square Left
+  styles:
+    - solid
+    - regular
+caret-square-right:
+  label: Caret Square Right
+  styles:
+    - solid
+    - regular
+caret-square-up:
+  label: Caret Square Up
+  styles:
+    - solid
+    - regular
+caret-up:
+  label: Caret Up
+  styles:
+    - solid
+cart-arrow-down:
+  label: Shopping Cart Arrow Down
+  styles:
+    - solid
+cart-plus:
+  label: Add to Shopping Cart
+  styles:
+    - solid
+cc-amazon-pay:
+  label: Amazon Pay Credit Card
+  styles:
+    - brands
+cc-amex:
+  label: American Express Credit Card
+  styles:
+    - brands
+cc-apple-pay:
+  label: Apple Pay Credit Card
+  styles:
+    - brands
+cc-diners-club:
+  label: Diner's Club Credit Card
+  styles:
+    - brands
+cc-discover:
+  label: Discover Credit Card
+  styles:
+    - brands
+cc-jcb:
+  label: JCB Credit Card
+  styles:
+    - brands
+cc-mastercard:
+  label: MasterCard Credit Card
+  styles:
+    - brands
+cc-paypal:
+  label: Paypal Credit Card
+  styles:
+    - brands
+cc-stripe:
+  label: Stripe Credit Card
+  styles:
+    - brands
+cc-visa:
+  label: Visa Credit Card
+  styles:
+    - brands
+centercode:
+  label: Centercode
+  styles:
+    - brands
+certificate:
+  label: certificate
+  styles:
+    - solid
+chart-area:
+  label: Area Chart
+  styles:
+    - solid
+chart-bar:
+  label: Bar Chart
+  styles:
+    - solid
+    - regular
+chart-line:
+  label: Line Chart
+  styles:
+    - solid
+chart-pie:
+  label: Pie Chart
+  styles:
+    - solid
+check:
+  label: Check
+  styles:
+    - solid
+check-circle:
+  label: Check Circle
+  styles:
+    - solid
+    - regular
+check-square:
+  label: Check Square
+  styles:
+    - solid
+    - regular
+chess:
+  label: Chess
+  styles:
+    - solid
+chess-bishop:
+  label: Chess Bishop
+  styles:
+    - solid
+chess-board:
+  label: Chess Board
+  styles:
+    - solid
+chess-king:
+  label: Chess King
+  styles:
+    - solid
+chess-knight:
+  label: Chess Knight
+  styles:
+    - solid
+chess-pawn:
+  label: Chess Pawn
+  styles:
+    - solid
+chess-queen:
+  label: Chess Queen
+  styles:
+    - solid
+chess-rook:
+  label: Chess Rook
+  styles:
+    - solid
+chevron-circle-down:
+  label: Chevron Circle Down
+  styles:
+    - solid
+chevron-circle-left:
+  label: Chevron Circle Left
+  styles:
+    - solid
+chevron-circle-right:
+  label: Chevron Circle Right
+  styles:
+    - solid
+chevron-circle-up:
+  label: Chevron Circle Up
+  styles:
+    - solid
+chevron-down:
+  label: chevron-down
+  styles:
+    - solid
+chevron-left:
+  label: chevron-left
+  styles:
+    - solid
+chevron-right:
+  label: chevron-right
+  styles:
+    - solid
+chevron-up:
+  label: chevron-up
+  styles:
+    - solid
+child:
+  label: Child
+  styles:
+    - solid
+chrome:
+  label: Chrome
+  styles:
+    - brands
+circle:
+  label: Circle
+  styles:
+    - solid
+    - regular
+circle-notch:
+  label: Circle Notched
+  styles:
+    - solid
+clipboard:
+  label: Clipboard
+  styles:
+    - solid
+    - regular
+clock:
+  label: Clock
+  styles:
+    - solid
+    - regular
+clone:
+  label: Clone
+  styles:
+    - solid
+    - regular
+closed-captioning:
+  label: Closed Captioning
+  styles:
+    - solid
+    - regular
+cloud:
+  label: Cloud
+  styles:
+    - solid
+cloud-download-alt:
+  label: Cloud Download-alt
+  styles:
+    - solid
+cloud-upload-alt:
+  label: Cloud Upload-alt
+  styles:
+    - solid
+cloudscale:
+  label: cloudscale.ch
+  styles:
+    - brands
+cloudsmith:
+  label: Cloudsmith
+  styles:
+    - brands
+cloudversify:
+  label: cloudversify
+  styles:
+    - brands
+code:
+  label: Code
+  styles:
+    - solid
+code-branch:
+  label: Code Branch
+  styles:
+    - solid
+codepen:
+  label: Codepen
+  styles:
+    - brands
+codiepie:
+  label: Codie Pie
+  styles:
+    - brands
+coffee:
+  label: Coffee
+  styles:
+    - solid
+cog:
+  label: cog
+  styles:
+    - solid
+cogs:
+  label: cogs
+  styles:
+    - solid
+columns:
+  label: Columns
+  styles:
+    - solid
+comment:
+  label: comment
+  styles:
+    - solid
+    - regular
+comment-alt:
+  label: Alternate Comment
+  styles:
+    - solid
+    - regular
+comments:
+  label: comments
+  styles:
+    - solid
+    - regular
+compass:
+  label: Compass
+  styles:
+    - solid
+    - regular
+compress:
+  label: Compress
+  styles:
+    - solid
+connectdevelop:
+  label: Connect Develop
+  styles:
+    - brands
+contao:
+  label: Contao
+  styles:
+    - brands
+copy:
+  label: Copy
+  styles:
+    - solid
+    - regular
+copyright:
+  label: Copyright
+  styles:
+    - solid
+    - regular
+cpanel:
+  label: cPanel
+  styles:
+    - brands
+creative-commons:
+  label: Creative Commons
+  styles:
+    - brands
+credit-card:
+  label: Credit Card
+  styles:
+    - solid
+    - regular
+crop:
+  label: crop
+  styles:
+    - solid
+crosshairs:
+  label: Crosshairs
+  styles:
+    - solid
+css3:
+  label: CSS 3 Logo
+  styles:
+    - brands
+css3-alt:
+  label: Alternate CSS3 Logo
+  styles:
+    - brands
+cube:
+  label: Cube
+  styles:
+    - solid
+cubes:
+  label: Cubes
+  styles:
+    - solid
+cut:
+  label: Cut
+  styles:
+    - solid
+cuttlefish:
+  label: Cuttlefish
+  styles:
+    - brands
+d-and-d:
+  label: Dungeons & Dragons
+  styles:
+    - brands
+dashcube:
+  label: DashCube
+  styles:
+    - brands
+database:
+  label: Database
+  styles:
+    - solid
+deaf:
+  label: Deaf
+  styles:
+    - solid
+delicious:
+  label: Delicious Logo
+  styles:
+    - brands
+deploydog:
+  label: deploy.dog
+  styles:
+    - brands
+deskpro:
+  label: Deskpro
+  styles:
+    - brands
+desktop:
+  label: Desktop
+  styles:
+    - solid
+deviantart:
+  label: deviantART
+  styles:
+    - brands
+digg:
+  label: Digg Logo
+  styles:
+    - brands
+digital-ocean:
+  label: Digital Ocean
+  styles:
+    - brands
+discord:
+  label: Discord
+  styles:
+    - brands
+discourse:
+  label: Discourse
+  styles:
+    - brands
+dochub:
+  label: DocHub
+  styles:
+    - brands
+docker:
+  label: Docker
+  styles:
+    - brands
+dollar-sign:
+  label: Dollar Sign
+  styles:
+    - solid
+dot-circle:
+  label: Dot Circle
+  styles:
+    - solid
+    - regular
+download:
+  label: Download
+  styles:
+    - solid
+draft2digital:
+  label: Draft2digital
+  styles:
+    - brands
+dribbble:
+  label: Dribbble
+  styles:
+    - brands
+dribbble-square:
+  label: Dribbble Square
+  styles:
+    - brands
+dropbox:
+  label: Dropbox
+  styles:
+    - brands
+drupal:
+  label: Drupal Logo
+  styles:
+    - brands
+dyalog:
+  label: Dyalog
+  styles:
+    - brands
+earlybirds:
+  label: Earlybirds
+  styles:
+    - brands
+edge:
+  label: Edge Browser
+  styles:
+    - brands
+edit:
+  label: Edit
+  styles:
+    - solid
+    - regular
+eject:
+  label: eject
+  styles:
+    - solid
+elementor:
+  label: Elementor
+  styles:
+    - brands
+ellipsis-h:
+  label: Horizontal Ellipsis
+  styles:
+    - solid
+ellipsis-v:
+  label: Vertical Ellipsis
+  styles:
+    - solid
+ember:
+  label: Ember
+  styles:
+    - brands
+empire:
+  label: Galactic Empire
+  styles:
+    - brands
+envelope:
+  label: Envelope
+  styles:
+    - solid
+    - regular
+envelope-open:
+  label: Envelope Open
+  styles:
+    - solid
+    - regular
+envelope-square:
+  label: Envelope Square
+  styles:
+    - solid
+envira:
+  label: Envira Gallery
+  styles:
+    - brands
+eraser:
+  label: eraser
+  styles:
+    - solid
+erlang:
+  label: Erlang
+  styles:
+    - brands
+ethereum:
+  label: Ethereum
+  styles:
+    - brands
+etsy:
+  label: Etsy
+  styles:
+    - brands
+euro-sign:
+  label: Euro Sign
+  styles:
+    - solid
+exchange-alt:
+  label: Alternate Exchange
+  styles:
+    - solid
+exclamation:
+  label: exclamation
+  styles:
+    - solid
+exclamation-circle:
+  label: Exclamation Circle
+  styles:
+    - solid
+exclamation-triangle:
+  label: Exclamation Triangle
+  styles:
+    - solid
+expand:
+  label: Expand
+  styles:
+    - solid
+expand-arrows-alt:
+  label: Alternate Expand Arrows
+  styles:
+    - solid
+expeditedssl:
+  label: ExpeditedSSL
+  styles:
+    - brands
+external-link-alt:
+  label: Alternate External Link
+  styles:
+    - solid
+external-link-square-alt:
+  label: Alternate External Link Square
+  styles:
+    - solid
+eye:
+  label: Eye
+  styles:
+    - solid
+eye-dropper:
+  label: Eye Dropper
+  styles:
+    - solid
+eye-slash:
+  label: Eye Slash
+  styles:
+    - solid
+    - regular
+facebook:
+  label: Facebook
+  styles:
+    - brands
+facebook-f:
+  label: Facebook F
+  styles:
+    - brands
+facebook-messenger:
+  label: Facebook Messenger
+  styles:
+    - brands
+facebook-square:
+  label: Facebook Square
+  styles:
+    - brands
+fast-backward:
+  label: fast-backward
+  styles:
+    - solid
+fast-forward:
+  label: fast-forward
+  styles:
+    - solid
+fax:
+  label: Fax
+  styles:
+    - solid
+female:
+  label: Female
+  styles:
+    - solid
+fighter-jet:
+  label: fighter-jet
+  styles:
+    - solid
+file:
+  label: File
+  styles:
+    - solid
+    - regular
+file-alt:
+  label: Alternate File
+  styles:
+    - solid
+    - regular
+file-archive:
+  label: Archive File
+  styles:
+    - solid
+    - regular
+file-audio:
+  label: Audio File
+  styles:
+    - solid
+    - regular
+file-code:
+  label: Code File
+  styles:
+    - solid
+    - regular
+file-excel:
+  label: Excel File
+  styles:
+    - solid
+    - regular
+file-image:
+  label: Image File
+  styles:
+    - solid
+    - regular
+file-pdf:
+  label: PDF File
+  styles:
+    - solid
+    - regular
+file-powerpoint:
+  label: Powerpoint File
+  styles:
+    - solid
+    - regular
+file-video:
+  label: Video File
+  styles:
+    - solid
+    - regular
+file-word:
+  label: Word File
+  styles:
+    - solid
+    - regular
+film:
+  label: Film
+  styles:
+    - solid
+filter:
+  label: Filter
+  styles:
+    - solid
+fire:
+  label: fire
+  styles:
+    - solid
+fire-extinguisher:
+  label: fire-extinguisher
+  styles:
+    - solid
+firefox:
+  label: Firefox
+  styles:
+    - brands
+first-order:
+  label: First Order
+  styles:
+    - brands
+firstdraft:
+  label: firstdraft
+  styles:
+    - brands
+flag:
+  label: flag
+  styles:
+    - solid
+    - regular
+flag-checkered:
+  label: flag-checkered
+  styles:
+    - solid
+flask:
+  label: Flask
+  styles:
+    - solid
+flickr:
+  label: Flickr
+  styles:
+    - brands
+flipboard:
+  label: Flipboard
+  styles:
+    - brands
+fly:
+  label: Fly
+  styles:
+    - brands
+folder:
+  label: Folder
+  styles:
+    - solid
+    - regular
+folder-open:
+  label: Folder Open
+  styles:
+    - solid
+    - regular
+font:
+  label: font
+  styles:
+    - solid
+font-awesome:
+  label: Font Awesome
+  styles:
+    - brands
+font-awesome-alt:
+  label: Alternate Font Awesome
+  styles:
+    - brands
+font-awesome-flag:
+  label: Font Awesome Flag
+  styles:
+    - brands
+fonticons:
+  label: Fonticons
+  styles:
+    - brands
+fonticons-fi:
+  label: Fonticons Fi
+  styles:
+    - brands
+football-ball:
+  label: Football Ball
+  styles:
+    - solid
+fort-awesome:
+  label: Fort Awesome
+  styles:
+    - brands
+fort-awesome-alt:
+  label: Alternate Fort Awesome
+  styles:
+    - brands
+forumbee:
+  label: Forumbee
+  styles:
+    - brands
+forward:
+  label: forward
+  styles:
+    - solid
+foursquare:
+  label: Foursquare
+  styles:
+    - brands
+free-code-camp:
+  label: Free Code Camp
+  styles:
+    - brands
+freebsd:
+  label: FreeBSD
+  styles:
+    - brands
+frown:
+  label: Frown
+  styles:
+    - solid
+    - regular
+futbol:
+  label: Futbol
+  styles:
+    - solid
+    - regular
+gamepad:
+  label: Gamepad
+  styles:
+    - solid
+gavel:
+  label: Gavel
+  styles:
+    - solid
+gem:
+  label: Gem
+  styles:
+    - solid
+    - regular
+genderless:
+  label: Genderless
+  styles:
+    - solid
+get-pocket:
+  label: Get Pocket
+  styles:
+    - brands
+gg:
+  label: GG Currency
+  styles:
+    - brands
+gg-circle:
+  label: GG Currency Circle
+  styles:
+    - brands
+gift:
+  label: gift
+  styles:
+    - solid
+git:
+  label: Git
+  styles:
+    - brands
+git-square:
+  label: Git Square
+  styles:
+    - brands
+github:
+  label: GitHub
+  styles:
+    - brands
+github-alt:
+  label: Alternate GitHub
+  styles:
+    - brands
+github-square:
+  label: GitHub Square
+  styles:
+    - brands
+gitkraken:
+  label: GitKraken
+  styles:
+    - brands
+gitlab:
+  label: GitLab
+  styles:
+    - brands
+gitter:
+  label: Gitter
+  styles:
+    - brands
+glass-martini:
+  label: Martini Glass
+  styles:
+    - solid
+glide:
+  label: Glide
+  styles:
+    - brands
+glide-g:
+  label: Glide G
+  styles:
+    - brands
+globe:
+  label: Globe
+  styles:
+    - solid
+gofore:
+  label: Gofore
+  styles:
+    - brands
+golf-ball:
+  label: Golf Ball
+  styles:
+    - solid
+goodreads:
+  label: Goodreads
+  styles:
+    - brands
+goodreads-g:
+  label: Goodreads G
+  styles:
+    - brands
+google:
+  label: Google Logo
+  styles:
+    - brands
+google-drive:
+  label: Google Drive
+  styles:
+    - brands
+google-play:
+  label: Google Play
+  styles:
+    - brands
+google-plus:
+  label: Google Plus
+  styles:
+    - brands
+google-plus-g:
+  label: Google Plus G
+  styles:
+    - brands
+google-plus-square:
+  label: Google Plus Square
+  styles:
+    - brands
+google-wallet:
+  label: Google Wallet
+  styles:
+    - brands
+graduation-cap:
+  label: Graduation Cap
+  styles:
+    - solid
+gratipay:
+  label: Gratipay (Gittip)
+  styles:
+    - brands
+grav:
+  label: Grav
+  styles:
+    - brands
+gripfire:
+  label: 'Gripfire, Inc.'
+  styles:
+    - brands
+grunt:
+  label: Grunt
+  styles:
+    - brands
+gulp:
+  label: Gulp
+  styles:
+    - brands
+h-square:
+  label: H Square
+  styles:
+    - solid
+hacker-news:
+  label: Hacker News
+  styles:
+    - brands
+hacker-news-square:
+  label: Hacker News Square
+  styles:
+    - brands
+hand-lizard:
+  label: Lizard (Hand)
+  styles:
+    - solid
+    - regular
+hand-paper:
+  label: Paper (Hand)
+  styles:
+    - solid
+    - regular
+hand-peace:
+  label: Peace (Hand)
+  styles:
+    - solid
+    - regular
+hand-point-down:
+  label: Hand Pointing Down
+  styles:
+    - solid
+    - regular
+hand-point-left:
+  label: Hand Pointing Left
+  styles:
+    - solid
+    - regular
+hand-point-right:
+  label: Hand Pointing Right
+  styles:
+    - solid
+    - regular
+hand-point-up:
+  label: Hand Pointing Up
+  styles:
+    - solid
+    - regular
+hand-pointer:
+  label: Pointer (Hand)
+  styles:
+    - solid
+    - regular
+hand-rock:
+  label: Rock (Hand)
+  styles:
+    - solid
+    - regular
+hand-scissors:
+  label: Scissors (Hand)
+  styles:
+    - solid
+    - regular
+hand-spock:
+  label: Spock (Hand)
+  styles:
+    - solid
+    - regular
+handshake:
+  label: Handshake
+  styles:
+    - solid
+    - regular
+hashtag:
+  label: Hashtag
+  styles:
+    - solid
+hdd:
+  label: HDD
+  styles:
+    - solid
+    - regular
+heading:
+  label: heading
+  styles:
+    - solid
+headphones:
+  label: headphones
+  styles:
+    - solid
+heart:
+  label: Heart
+  styles:
+    - solid
+    - regular
+heartbeat:
+  label: Heartbeat
+  styles:
+    - solid
+hips:
+  label: Hips
+  styles:
+    - brands
+hire-a-helper:
+  label: HireAHelper
+  styles:
+    - brands
+history:
+  label: History
+  styles:
+    - solid
+hockey-puck:
+  label: Hockey Puck
+  styles:
+    - solid
+home:
+  label: home
+  styles:
+    - solid
+hooli:
+  label: Hooli
+  styles:
+    - brands
+hospital:
+  label: hospital
+  styles:
+    - solid
+    - regular
+hotjar:
+  label: Hotjar
+  styles:
+    - brands
+hourglass:
+  label: Hourglass
+  styles:
+    - solid
+    - regular
+hourglass-end:
+  label: Hourglass End
+  styles:
+    - solid
+hourglass-half:
+  label: Hourglass Half
+  styles:
+    - solid
+hourglass-start:
+  label: Hourglass Start
+  styles:
+    - solid
+houzz:
+  label: Houzz
+  styles:
+    - brands
+html5:
+  label: HTML 5 Logo
+  styles:
+    - brands
+hubspot:
+  label: HubSpot
+  styles:
+    - brands
+i-cursor:
+  label: I Beam Cursor
+  styles:
+    - solid
+id-badge:
+  label: Identification Badge
+  styles:
+    - solid
+    - regular
+id-card:
+  label: Identification Card
+  styles:
+    - solid
+    - regular
+image:
+  label: Image
+  styles:
+    - solid
+    - regular
+images:
+  label: Images
+  styles:
+    - solid
+    - regular
+imdb:
+  label: IMDB
+  styles:
+    - brands
+inbox:
+  label: inbox
+  styles:
+    - solid
+indent:
+  label: Indent
+  styles:
+    - solid
+industry:
+  label: Industry
+  styles:
+    - solid
+info:
+  label: Info
+  styles:
+    - solid
+info-circle:
+  label: Info Circle
+  styles:
+    - solid
+instagram:
+  label: Instagram
+  styles:
+    - brands
+internet-explorer:
+  label: Internet-explorer
+  styles:
+    - brands
+ioxhost:
+  label: ioxhost
+  styles:
+    - brands
+italic:
+  label: italic
+  styles:
+    - solid
+itunes:
+  label: iTunes
+  styles:
+    - brands
+itunes-note:
+  label: Itunes Note
+  styles:
+    - brands
+jenkins:
+  label: Jenkis
+  styles:
+    - brands
+joget:
+  label: Joget
+  styles:
+    - brands
+joomla:
+  label: Joomla Logo
+  styles:
+    - brands
+js:
+  label: JavaScript (JS)
+  styles:
+    - brands
+js-square:
+  label: JavaScript (JS) Square
+  styles:
+    - brands
+jsfiddle:
+  label: jsFiddle
+  styles:
+    - brands
+key:
+  label: key
+  styles:
+    - solid
+keyboard:
+  label: Keyboard
+  styles:
+    - solid
+    - regular
+keycdn:
+  label: KeyCDN
+  styles:
+    - brands
+kickstarter:
+  label: Kickstarter
+  styles:
+    - brands
+kickstarter-k:
+  label: Kickstarter K
+  styles:
+    - brands
+korvue:
+  label: KORVUE
+  styles:
+    - brands
+language:
+  label: Language
+  styles:
+    - solid
+laptop:
+  label: Laptop
+  styles:
+    - solid
+laravel:
+  label: Laravel
+  styles:
+    - brands
+lastfm:
+  label: last.fm
+  styles:
+    - brands
+lastfm-square:
+  label: last.fm Square
+  styles:
+    - brands
+leaf:
+  label: leaf
+  styles:
+    - solid
+leanpub:
+  label: Leanpub
+  styles:
+    - brands
+lemon:
+  label: Lemon
+  styles:
+    - solid
+    - regular
+less:
+  label: Less
+  styles:
+    - brands
+level-down-alt:
+  label: Level Down-alt
+  styles:
+    - solid
+level-up-alt:
+  label: Level Up-alt
+  styles:
+    - solid
+life-ring:
+  label: Life Ring
+  styles:
+    - solid
+    - regular
+lightbulb:
+  label: Lightbulb
+  styles:
+    - solid
+    - regular
+line:
+  label: Line
+  styles:
+    - brands
+link:
+  label: Link
+  styles:
+    - solid
+linkedin:
+  label: LinkedIn
+  styles:
+    - brands
+linkedin-in:
+  label: LinkedIn In
+  styles:
+    - brands
+linode:
+  label: Linode
+  styles:
+    - brands
+linux:
+  label: Linux
+  styles:
+    - brands
+lira-sign:
+  label: Turkish Lira Sign
+  styles:
+    - solid
+list:
+  label: list
+  styles:
+    - solid
+list-alt:
+  label: list-alt
+  styles:
+    - solid
+    - regular
+list-ol:
+  label: list-ol
+  styles:
+    - solid
+list-ul:
+  label: list-ul
+  styles:
+    - solid
+location-arrow:
+  label: location-arrow
+  styles:
+    - solid
+lock:
+  label: lock
+  styles:
+    - solid
+lock-open:
+  label: Lock Open
+  styles:
+    - solid
+long-arrow-alt-down:
+  label: Alternate Long Arrow Down
+  styles:
+    - solid
+long-arrow-alt-left:
+  label: Alternate Long Arrow Left
+  styles:
+    - solid
+long-arrow-alt-right:
+  label: Alternate Long Arrow Right
+  styles:
+    - solid
+long-arrow-alt-up:
+  label: Alternate Long Arrow Up
+  styles:
+    - solid
+low-vision:
+  label: Low Vision
+  styles:
+    - solid
+lyft:
+  label: lyft
+  styles:
+    - brands
+magento:
+  label: Magento
+  styles:
+    - brands
+magic:
+  label: magic
+  styles:
+    - solid
+magnet:
+  label: magnet
+  styles:
+    - solid
+male:
+  label: Male
+  styles:
+    - solid
+map:
+  label: Map
+  styles:
+    - solid
+    - regular
+map-marker:
+  label: map-marker
+  styles:
+    - solid
+map-marker-alt:
+  label: Map Marker-alt
+  styles:
+    - solid
+map-pin:
+  label: Map Pin
+  styles:
+    - solid
+map-signs:
+  label: Map Signs
+  styles:
+    - solid
+mars:
+  label: Mars
+  styles:
+    - solid
+mars-double:
+  label: Mars Double
+  styles:
+    - solid
+mars-stroke:
+  label: Mars Stroke
+  styles:
+    - solid
+mars-stroke-h:
+  label: Mars Stroke Horizontal
+  styles:
+    - solid
+mars-stroke-v:
+  label: Mars Stroke Vertical
+  styles:
+    - solid
+maxcdn:
+  label: MaxCDN
+  styles:
+    - brands
+medapps:
+  label: MedApps
+  styles:
+    - brands
+medium:
+  label: Medium
+  styles:
+    - brands
+medium-m:
+  label: Medium M
+  styles:
+    - brands
+medkit:
+  label: medkit
+  styles:
+    - solid
+medrt:
+  label: MRT
+  styles:
+    - brands
+meetup:
+  label: Meetup
+  styles:
+    - brands
+meh:
+  label: Meh
+  styles:
+    - solid
+    - regular
+mercury:
+  label: Mercury
+  styles:
+    - solid
+microchip:
+  label: Microchip
+  styles:
+    - solid
+microphone:
+  label: microphone
+  styles:
+    - solid
+microphone-slash:
+  label: Microphone Slash
+  styles:
+    - solid
+microsoft:
+  label: Microsoft
+  styles:
+    - brands
+minus:
+  label: minus
+  styles:
+    - solid
+minus-circle:
+  label: Minus Circle
+  styles:
+    - solid
+minus-square:
+  label: Minus Square
+  styles:
+    - solid
+    - regular
+mix:
+  label: Mix
+  styles:
+    - brands
+mixcloud:
+  label: Mixcloud
+  styles:
+    - brands
+mizuni:
+  label: Mizuni
+  styles:
+    - brands
+mobile:
+  label: Mobile Phone
+  styles:
+    - solid
+mobile-alt:
+  label: Alternate Mobile
+  styles:
+    - solid
+modx:
+  label: MODX
+  styles:
+    - brands
+monero:
+  label: Monero
+  styles:
+    - brands
+money-bill-alt:
+  label: Money Bill-alt
+  styles:
+    - solid
+    - regular
+moon:
+  label: Moon
+  styles:
+    - solid
+    - regular
+motorcycle:
+  label: Motorcycle
+  styles:
+    - solid
+mouse-pointer:
+  label: Mouse Pointer
+  styles:
+    - solid
+music:
+  label: Music
+  styles:
+    - solid
+napster:
+  label: Napster
+  styles:
+    - brands
+neuter:
+  label: Neuter
+  styles:
+    - solid
+newspaper:
+  label: Newspaper
+  styles:
+    - solid
+    - regular
+nintendo-switch:
+  label: Nintendo Switch
+  styles:
+    - brands
+node:
+  label: Node.js
+  styles:
+    - brands
+node-js:
+  label: Node.js JS
+  styles:
+    - brands
+npm:
+  label: npm
+  styles:
+    - brands
+ns8:
+  label: NS8
+  styles:
+    - brands
+nutritionix:
+  label: Nutritionix
+  styles:
+    - brands
+object-group:
+  label: Object Group
+  styles:
+    - solid
+    - regular
+object-ungroup:
+  label: Object Ungroup
+  styles:
+    - solid
+    - regular
+odnoklassniki:
+  label: Odnoklassniki
+  styles:
+    - brands
+odnoklassniki-square:
+  label: Odnoklassniki Square
+  styles:
+    - brands
+opencart:
+  label: OpenCart
+  styles:
+    - brands
+openid:
+  label: OpenID
+  styles:
+    - brands
+opera:
+  label: Opera
+  styles:
+    - brands
+optin-monster:
+  label: Optin Monster
+  styles:
+    - brands
+osi:
+  label: Open Source Initiative
+  styles:
+    - brands
+outdent:
+  label: Outdent
+  styles:
+    - solid
+page4:
+  label: page4 Corporation
+  styles:
+    - brands
+pagelines:
+  label: Pagelines
+  styles:
+    - brands
+paint-brush:
+  label: Paint Brush
+  styles:
+    - solid
+palfed:
+  label: Palfed
+  styles:
+    - brands
+paper-plane:
+  label: Paper Plane
+  styles:
+    - solid
+    - regular
+paperclip:
+  label: Paperclip
+  styles:
+    - solid
+paragraph:
+  label: paragraph
+  styles:
+    - solid
+paste:
+  label: Paste
+  styles:
+    - solid
+patreon:
+  label: Patreon
+  styles:
+    - brands
+pause:
+  label: pause
+  styles:
+    - solid
+pause-circle:
+  label: Pause Circle
+  styles:
+    - solid
+    - regular
+paw:
+  label: Paw
+  styles:
+    - solid
+paypal:
+  label: Paypal
+  styles:
+    - brands
+pen-square:
+  label: Pen Square
+  styles:
+    - solid
+pencil-alt:
+  label: Alternate Pencil
+  styles:
+    - solid
+percent:
+  label: Percent
+  styles:
+    - solid
+periscope:
+  label: Periscope
+  styles:
+    - brands
+phabricator:
+  label: Phabricator
+  styles:
+    - brands
+phoenix-framework:
+  label: Phoenix Framework
+  styles:
+    - brands
+phone:
+  label: Phone
+  styles:
+    - solid
+phone-square:
+  label: Phone Square
+  styles:
+    - solid
+phone-volume:
+  label: Phone Volume
+  styles:
+    - solid
+php:
+  label: PHP
+  styles:
+    - brands
+pied-piper:
+  label: Pied Piper Logo
+  styles:
+    - brands
+pied-piper-alt:
+  label: Alternate Pied Piper Logo
+  styles:
+    - brands
+pied-piper-pp:
+  label: Pied Piper PP Logo (Old)
+  styles:
+    - brands
+pinterest:
+  label: Pinterest
+  styles:
+    - brands
+pinterest-p:
+  label: Pinterest P
+  styles:
+    - brands
+pinterest-square:
+  label: Pinterest Square
+  styles:
+    - brands
+plane:
+  label: plane
+  styles:
+    - solid
+play:
+  label: play
+  styles:
+    - solid
+play-circle:
+  label: Play Circle
+  styles:
+    - solid
+    - regular
+playstation:
+  label: PlayStation
+  styles:
+    - brands
+plug:
+  label: Plug
+  styles:
+    - solid
+plus:
+  label: plus
+  styles:
+    - solid
+plus-circle:
+  label: Plus Circle
+  styles:
+    - solid
+plus-square:
+  label: Plus Square
+  styles:
+    - solid
+    - regular
+podcast:
+  label: Podcast
+  styles:
+    - solid
+pound-sign:
+  label: Pound Sign
+  styles:
+    - solid
+power-off:
+  label: Power Off
+  styles:
+    - solid
+print:
+  label: print
+  styles:
+    - solid
+product-hunt:
+  label: Product Hunt
+  styles:
+    - brands
+pushed:
+  label: Pushed
+  styles:
+    - brands
+puzzle-piece:
+  label: Puzzle Piece
+  styles:
+    - solid
+python:
+  label: Python
+  styles:
+    - brands
+qq:
+  label: QQ
+  styles:
+    - brands
+qrcode:
+  label: qrcode
+  styles:
+    - solid
+question:
+  label: Question
+  styles:
+    - solid
+question-circle:
+  label: Question Circle
+  styles:
+    - solid
+    - regular
+quidditch:
+  label: Quidditch
+  styles:
+    - solid
+quinscape:
+  label: QuinScape
+  styles:
+    - brands
+quora:
+  label: Quora
+  styles:
+    - brands
+quote-left:
+  label: quote-left
+  styles:
+    - solid
+quote-right:
+  label: quote-right
+  styles:
+    - solid
+random:
+  label: random
+  styles:
+    - solid
+ravelry:
+  label: Ravelry
+  styles:
+    - brands
+react:
+  label: React
+  styles:
+    - brands
+rebel:
+  label: Rebel Alliance
+  styles:
+    - brands
+recycle:
+  label: Recycle
+  styles:
+    - solid
+red-river:
+  label: red river
+  styles:
+    - brands
+reddit:
+  label: reddit Logo
+  styles:
+    - brands
+reddit-alien:
+  label: reddit Alien
+  styles:
+    - brands
+reddit-square:
+  label: reddit Square
+  styles:
+    - brands
+redo:
+  label: Redo
+  styles:
+    - solid
+redo-alt:
+  label: Alternate Redo
+  styles:
+    - solid
+registered:
+  label: Registered Trademark
+  styles:
+    - solid
+    - regular
+rendact:
+  label: Rendact
+  styles:
+    - brands
+renren:
+  label: Renren
+  styles:
+    - brands
+reply:
+  label: Reply
+  styles:
+    - solid
+reply-all:
+  label: reply-all
+  styles:
+    - solid
+replyd:
+  label: replyd
+  styles:
+    - brands
+resolving:
+  label: Resolving
+  styles:
+    - brands
+retweet:
+  label: Retweet
+  styles:
+    - solid
+road:
+  label: road
+  styles:
+    - solid
+rocket:
+  label: rocket
+  styles:
+    - solid
+rocketchat:
+  label: Rocket.Chat
+  styles:
+    - brands
+rockrms:
+  label: Rockrms
+  styles:
+    - brands
+rss:
+  label: rss
+  styles:
+    - solid
+rss-square:
+  label: RSS Square
+  styles:
+    - solid
+ruble-sign:
+  label: Ruble Sign
+  styles:
+    - solid
+rupee-sign:
+  label: Indian Rupee Sign
+  styles:
+    - solid
+safari:
+  label: Safari
+  styles:
+    - brands
+sass:
+  label: Sass
+  styles:
+    - brands
+save:
+  label: Save
+  styles:
+    - solid
+    - regular
+schlix:
+  label: SCHLIX
+  styles:
+    - brands
+scribd:
+  label: Scribd
+  styles:
+    - brands
+    - solid
+search-minus:
+  label: Search Minus
+  styles:
+    - solid
+search-plus:
+  label: Search Plus
+  styles:
+    - solid
+searchengin:
+  label: Searchengin
+  styles:
+    - brands
+sellcast:
+  label: Sellcast
+  styles:
+    - brands
+sellsy:
+  label: Sellsy
+  styles:
+    - brands
+server:
+  label: Server
+  styles:
+    - solid
+servicestack:
+  label: Servicestack
+  styles:
+    - brands
+share:
+  label: Share
+  styles:
+    - solid
+share-alt:
+  label: Alternate Share
+  styles:
+    - solid
+share-alt-square:
+  label: Alternate Share Square
+  styles:
+    - solid
+share-square:
+  label: Share Square
+  styles:
+    - solid
+    - regular
+shekel-sign:
+  label: Shekel Sign
+  styles:
+    - solid
+shield-alt:
+  label: Alternate Shield
+  styles:
+    - solid
+ship:
+  label: Ship
+  styles:
+    - solid
+shirtsinbulk:
+  label: Shirts in Bulk
+  styles:
+    - brands
+shopping-bag:
+  label: Shopping Bag
+  styles:
+    - solid
+shopping-basket:
+  label: Shopping Basket
+  styles:
+    - solid
+shopping-cart:
+  label: shopping-cart
+  styles:
+    - solid
+shower:
+  label: Shower
+  styles:
+    - solid
+sign-in-alt:
+  label: Alternate Sign In
+  styles:
+    - solid
+sign-language:
+  label: Sign Language
+  styles:
+    - solid
+sign-out-alt:
+  label: Alternate Sign Out
+  styles:
+    - solid
+signal:
+  label: signal
+  styles:
+    - solid
+simplybuilt:
+  label: SimplyBuilt
+  styles:
+    - brands
+sistrix:
+  label: SISTRIX
+  styles:
+    - brands
+sitemap:
+  label: Sitemap
+  styles:
+    - solid
+skyatlas:
+  label: skyatlas
+  styles:
+    - brands
+skype:
+  label: Skype
+  styles:
+    - brands
+slack:
+  label: Slack Logo
+  styles:
+    - brands
+slack-hash:
+  label: Slack Hashtag
+  styles:
+    - brands
+sliders-h:
+  label: Horizontal Sliders
+  styles:
+    - solid
+slideshare:
+  label: Slideshare
+  styles:
+    - brands
+smile:
+  label: Smile
+  styles:
+    - solid
+    - regular
+snapchat:
+  label: Snapchat
+  styles:
+    - brands
+snapchat-ghost:
+  label: Snapchat Ghost
+  styles:
+    - brands
+snapchat-square:
+  label: Snapchat Square
+  styles:
+    - brands
+snowflake:
+  label: Snowflake
+  styles:
+    - solid
+    - regular
+sort:
+  label: Sort
+  styles:
+    - solid
+sort-alpha-down:
+  label: Sort Alpha Down
+  styles:
+    - solid
+sort-alpha-up:
+  label: Sort Alpha Up
+  styles:
+    - solid
+sort-amount-down:
+  label: Sort Amount Down
+  styles:
+    - solid
+sort-amount-up:
+  label: Sort Amount Up
+  styles:
+    - solid
+sort-down:
+  label: Sort Down (Descending)
+  styles:
+    - solid
+sort-numeric-down:
+  label: Sort Numeric Down
+  styles:
+    - solid
+sort-numeric-up:
+  label: Sort Numeric Up
+  styles:
+    - solid
+sort-up:
+  label: Sort Up (Ascending)
+  styles:
+    - solid
+soundcloud:
+  label: SoundCloud
+  styles:
+    - brands
+space-shuttle:
+  label: Space Shuttle
+  styles:
+    - solid
+speakap:
+  label: Speakap
+  styles:
+    - brands
+spinner:
+  label: Spinner
+  styles:
+    - solid
+spotify:
+  label: Spotify
+  styles:
+    - brands
+square:
+  label: Square
+  styles:
+    - solid
+    - regular
+square-full:
+  label: Square Full
+  styles:
+    - solid
+stack-exchange:
+  label: Stack Exchange
+  styles:
+    - brands
+stack-overflow:
+  label: Stack Overflow
+  styles:
+    - brands
+star:
+  label: Star
+  styles:
+    - solid
+    - regular
+star-half:
+  label: star-half
+  styles:
+    - solid
+    - regular
+staylinked:
+  label: StayLinked
+  styles:
+    - brands
+steam:
+  label: Steam
+  styles:
+    - brands
+steam-square:
+  label: Steam Square
+  styles:
+    - brands
+steam-symbol:
+  label: Steam Symbol
+  styles:
+    - brands
+step-backward:
+  label: step-backward
+  styles:
+    - solid
+step-forward:
+  label: step-forward
+  styles:
+    - solid
+stethoscope:
+  label: Stethoscope
+  styles:
+    - solid
+sticker-mule:
+  label: Sticker Mule
+  styles:
+    - brands
+sticky-note:
+  label: Sticky Note
+  styles:
+    - solid
+    - regular
+stop:
+  label: stop
+  styles:
+    - solid
+stop-circle:
+  label: Stop Circle
+  styles:
+    - solid
+    - regular
+stopwatch:
+  label: Stopwatch
+  styles:
+    - solid
+strava:
+  label: Strava
+  styles:
+    - brands
+street-view:
+  label: Street View
+  styles:
+    - solid
+strikethrough:
+  label: Strikethrough
+  styles:
+    - solid
+stripe:
+  label: Stripe
+  styles:
+    - brands
+stripe-s:
+  label: Stripe S
+  styles:
+    - brands
+studiovinari:
+  label: Studio Vinari
+  styles:
+    - brands
+stumbleupon:
+  label: StumbleUpon Logo
+  styles:
+    - brands
+stumbleupon-circle:
+  label: StumbleUpon Circle
+  styles:
+    - brands
+subscript:
+  label: subscript
+  styles:
+    - solid
+subway:
+  label: Subway
+  styles:
+    - solid
+suitcase:
+  label: Suitcase
+  styles:
+    - solid
+sun:
+  label: Sun
+  styles:
+    - solid
+    - regular
+superpowers:
+  label: Superpowers
+  styles:
+    - brands
+superscript:
+  label: superscript
+  styles:
+    - solid
+supple:
+  label: Supple
+  styles:
+    - brands
+sync:
+  label: Sync
+  styles:
+    - solid
+sync-alt:
+  label: Alternate Sync
+  styles:
+    - solid
+table:
+  label: table
+  styles:
+    - solid
+table-tennis:
+  label: Table Tennis
+  styles:
+    - solid
+tablet:
+  label: tablet
+  styles:
+    - solid
+tablet-alt:
+  label: Alternate Tablet
+  styles:
+    - solid
+tachometer-alt:
+  label: Alternate Tachometer
+  styles:
+    - solid
+tag:
+  label: tag
+  styles:
+    - solid
+tags:
+  label: tags
+  styles:
+    - solid
+tasks:
+  label: Tasks
+  styles:
+    - solid
+taxi:
+  label: Taxi
+  styles:
+    - solid
+telegram:
+  label: Telegram
+  styles:
+    - brands
+telegram-plane:
+  label: Telegram Plane
+  styles:
+    - brands
+tencent-weibo:
+  label: Tencent Weibo
+  styles:
+    - brands
+terminal:
+  label: Terminal
+  styles:
+    - solid
+text-height:
+  label: text-height
+  styles:
+    - solid
+text-width:
+  label: text-width
+  styles:
+    - solid
+th:
+  label: th
+  styles:
+    - solid
+th-large:
+  label: th-large
+  styles:
+    - solid
+th-list:
+  label: th-list
+  styles:
+    - solid
+themeisle:
+  label: ThemeIsle
+  styles:
+    - brands
+thermometer-empty:
+  label: Thermometer Empty
+  styles:
+    - solid
+thermometer-full:
+  label: Thermometer Full
+  styles:
+    - solid
+thermometer-half:
+  label: Thermometer 1/2 Full
+  styles:
+    - solid
+thermometer-quarter:
+  label: Thermometer 1/4 Full
+  styles:
+    - solid
+thermometer-three-quarters:
+  label: Thermometer 3/4 Full
+  styles:
+    - solid
+thumbs-down:
+  label: thumbs-down
+  styles:
+    - solid
+    - regular
+thumbs-up:
+  label: thumbs-up
+  styles:
+    - solid
+    - regular
+thumbtack:
+  label: Thumbtack
+  styles:
+    - solid
+ticket-alt:
+  label: Alternate Ticket
+  styles:
+    - solid
+times:
+  label: Times
+  styles:
+    - solid
+times-circle:
+  label: Times Circle
+  styles:
+    - solid
+    - regular
+tint:
+  label: tint
+  styles:
+    - solid
+toggle-off:
+  label: Toggle Off
+  styles:
+    - solid
+toggle-on:
+  label: Toggle On
+  styles:
+    - solid
+trademark:
+  label: Trademark
+  styles:
+    - solid
+train:
+  label: Train
+  styles:
+    - solid
+transgender:
+  label: Transgender
+  styles:
+    - solid
+transgender-alt:
+  label: Alternate Transgender
+  styles:
+    - solid
+trash:
+  label: Trash
+  styles:
+    - solid
+trash-alt:
+  label: Alternate Trash
+  styles:
+    - solid
+    - regular
+tree:
+  label: Tree
+  styles:
+    - solid
+trello:
+  label: Trello
+  styles:
+    - brands
+tripadvisor:
+  label: TripAdvisor
+  styles:
+    - brands
+trophy:
+  label: trophy
+  styles:
+    - solid
+truck:
+  label: truck
+  styles:
+    - solid
+tty:
+  label: TTY
+  styles:
+    - solid
+tumblr:
+  label: Tumblr
+  styles:
+    - brands
+tumblr-square:
+  label: Tumblr Square
+  styles:
+    - brands
+tv:
+  label: Television
+  styles:
+    - solid
+twitch:
+  label: Twitch
+  styles:
+    - brands
+twitter:
+  label: Twitter
+  styles:
+    - brands
+twitter-square:
+  label: Twitter Square
+  styles:
+    - brands
+typo3:
+  label: Typo3
+  styles:
+    - brands
+uber:
+  label: Uber
+  styles:
+    - brands
+uikit:
+  label: UIkit
+  styles:
+    - brands
+umbrella:
+  label: Umbrella
+  styles:
+    - solid
+underline:
+  label: Underline
+  styles:
+    - solid
+undo:
+  label: Undo
+  styles:
+    - solid
+undo-alt:
+  label: Alternate Undo
+  styles:
+    - solid
+uniregistry:
+  label: Uniregistry
+  styles:
+    - brands
+universal-access:
+  label: Universal Access
+  styles:
+    - solid
+university:
+  label: University
+  styles:
+    - solid
+unlink:
+  label: unlink
+  styles:
+    - solid
+unlock:
+  label: unlock
+  styles:
+    - solid
+unlock-alt:
+  label: Alternate Unlock
+  styles:
+    - solid
+untappd:
+  label: Untappd
+  styles:
+    - brands
+upload:
+  label: Upload
+  styles:
+    - solid
+usb:
+  label: USB
+  styles:
+    - brands
+user:
+  label: User
+  styles:
+    - solid
+    - regular
+user-circle:
+  label: User Circle
+  styles:
+    - solid
+    - regular
+user-md:
+  label: user-md
+  styles:
+    - solid
+user-plus:
+  label: Add User
+  styles:
+    - solid
+user-secret:
+  label: User Secret
+  styles:
+    - solid
+user-times:
+  label: Remove User
+  styles:
+    - solid
+users:
+  label: Users
+  styles:
+    - solid
+ussunnah:
+  label: us-Sunnah Foundation
+  styles:
+    - brands
+utensil-spoon:
+  label: Utensil Spoon
+  styles:
+    - solid
+utensils:
+  label: Utensils
+  styles:
+    - solid
+vaadin:
+  label: Vaadin
+  styles:
+    - brands
+venus:
+  label: Venus
+  styles:
+    - solid
+venus-double:
+  label: Venus Double
+  styles:
+    - solid
+venus-mars:
+  label: Venus Mars
+  styles:
+    - solid
+viacoin:
+  label: Viacoin
+  styles:
+    - brands
+viadeo:
+  label: Viadeo
+  styles:
+    - brands
+viadeo-square:
+  label: Viadeo Square
+  styles:
+    - brands
+viber:
+  label: Viber
+  styles:
+    - brands
+video:
+  label: Video
+  styles:
+    - solid
+vimeo:
+  label: Vimeo
+  styles:
+    - brands
+vimeo-square:
+  label: Vimeo Square
+  styles:
+    - brands
+vimeo-v:
+  label: Vimeo
+  styles:
+    - brands
+vine:
+  label: Vine
+  styles:
+    - brands
+vk:
+  label: VK
+  styles:
+    - brands
+vnv:
+  label: VNV
+  styles:
+    - brands
+volleyball-ball:
+  label: Volleyball Ball
+  styles:
+    - solid
+volume-down:
+  label: volume-down
+  styles:
+    - solid
+volume-off:
+  label: volume-off
+  styles:
+    - solid
+volume-up:
+  label: volume-up
+  styles:
+    - solid
+vuejs:
+  label: Vue.js
+  styles:
+    - brands
+weibo:
+  label: Weibo
+  styles:
+    - brands
+weixin:
+  label: Weixin (WeChat)
+  styles:
+    - brands
+whatsapp:
+  label: What's App
+  styles:
+    - brands
+whatsapp-square:
+  label: What's App Square
+  styles:
+    - brands
+wheelchair:
+  label: Wheelchair
+  styles:
+    - solid
+whmcs:
+  label: WHMCS
+  styles:
+    - brands
+wifi:
+  label: WiFi
+  styles:
+    - solid
+wikipedia-w:
+  label: Wikipedia W
+  styles:
+    - brands
+window-close:
+  label: Window Close
+  styles:
+    - solid
+    - regular
+window-maximize:
+  label: Window Maximize
+  styles:
+    - solid
+window-minimize:
+  label: Window Minimize
+  styles:
+    - solid
+window-restore:
+  label: Window Restore
+  styles:
+    - solid
+    - regular
+windows:
+  label: Windows
+  styles:
+    - brands
+won-sign:
+  label: Won Sign
+  styles:
+    - solid
+wordpress:
+  label: WordPress Logo
+  styles:
+    - brands
+wordpress-simple:
+  label: Wordpress Simple
+  styles:
+    - brands
+wpbeginner:
+  label: WPBeginner
+  styles:
+    - brands
+wpexplorer:
+  label: WPExplorer
+  styles:
+    - brands
+wpforms:
+  label: WPForms
+  styles:
+    - brands
+wrench:
+  label: Wrench
+  styles:
+    - solid
+xbox:
+  label: Xbox
+  styles:
+    - brands
+xing:
+  label: Xing
+  styles:
+    - brands
+xing-square:
+  label: Xing Square
+  styles:
+    - brands
+y-combinator:
+  label: Y Combinator
+  styles:
+    - brands
+yahoo:
+  label: Yahoo Logo
+  styles:
+    - brands
+yandex:
+  label: Yandex
+  styles:
+    - brands
+yandex-international:
+  label: Yandex International
+  styles:
+    - brands
+yelp:
+  label: Yelp
+  styles:
+    - brands
+yen-sign:
+  label: Yen Sign
+  styles:
+    - solid
+yoast:
+  label: Yoast
+  styles:
+    - brands
+youtube:
+  label: YouTube
+  styles:
+    - brands
+youtube-square:
+  label: YouTube Square
+  styles:
+    - brands

@@ -7,6 +7,7 @@
 $unit: rem-calc(4);
 
 .accordion {
+
   .html-output .accordion-content {
     padding: rem-calc(10 10 10 10); /* top right bottom left */
     table {
@@ -15,6 +16,7 @@ $unit: rem-calc(4);
         border: solid 1px #444;
       }
     }
+
   }
   .syntax-pane .accordion-content {
     overflow: hidden;

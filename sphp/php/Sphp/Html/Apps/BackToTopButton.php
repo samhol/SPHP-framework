@@ -47,8 +47,9 @@ class BackToTopButton implements Content {
   }
 
   public static function fromIcon(AbstractIcon $icon): BackToTopButton {
-    $icon->cssClasses()->protect('sphp-back-to-top-button');
-    return new static($icon);
+    $div = new \Sphp\Html\Div($icon);
+    $div->cssClasses()->protect('sphp-back-to-top-button');
+    return new static($div);
   }
 
 }

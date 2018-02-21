@@ -167,7 +167,7 @@ $carousel->appendMd(<<<MD
 <article class="wrapper" markdown="1">
 ##Containers:
         
-<div class="button-group small">
+<div class="button-group small rounded">
   <a class="sphp button" href="Sphp.Html.Foundation.Sites.Containers">Manual</a>
   <a class="sphp-api button" href="API/sami/Sphp/Html/Foundation/Sites/Containers.html">PHP API</a>
 </div>

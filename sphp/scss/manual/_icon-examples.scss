@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 19, 2018, 6:18:25 PM
+    Author     : Sami Holck <sami.holck@gmail.com>
+*/
+
+.sphp-icon-examples {
+  .icon-container {
+    border: solid 1px #777;
+    @include border-radius(3px);
+    text-align: center;
+    background-color: #fefefe;
+    font-size: rem-calc(60);
+    margin: rem-calc(1);
+    i {
+      margin: rem-calc(1);
+    }
+    svg {
+      margin: rem-calc(3);
+      height: rem-calc(60);
+    }
+    .call {
+      border-top: #777 dotted 1px ;
+      font-size: rem-calc(14);
+    }
+  }
+}

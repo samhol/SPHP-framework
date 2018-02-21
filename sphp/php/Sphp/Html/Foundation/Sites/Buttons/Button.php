@@ -24,9 +24,10 @@ use Sphp\Html\Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-Class Button extends AbstractLayoutManager implements ButtonInterface {
+Class Button extends AbstractLayoutManager implements \Sphp\Html\ComponentInterface, ButtonInterface {
 
-  use ButtonTrait;
+  use ButtonTrait,
+      \Sphp\Html\ComponentTrait;
 
   /**
    * Constructs a new instance
@@ -96,16 +97,8 @@ Class Button extends AbstractLayoutManager implements ButtonInterface {
     return new static(new PushButton($content));
   }
 
-  public function addCssClass(...$cssClasses) {
-    
-  }
-
-  public function hasCssClass(...$cssClasses): bool {
-    return $this->getCompoenet()->hasCssClass($cssClasses);
-  }
-
-  public function removeCssClass(...$cssClasses) {
-    
+  public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager {
+    return $this->getCompoenet()->attributes();
   }
 
 }
