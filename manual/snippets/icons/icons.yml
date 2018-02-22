@@ -225,7 +225,7 @@ asterisk:
   styles:
     - solid
 asymmetrik:
-  label: 'Asymmetrik, Ltd.'
+  label: Asymmetrik, Ltd.
   styles:
     - brands
 at:
@@ -253,7 +253,7 @@ aviato:
   styles:
     - brands
 aws:
-  label: Amazon Web Services (AWS)
+  label: Amazon Web Services
   styles:
     - brands
 backward:

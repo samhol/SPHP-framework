@@ -72,6 +72,8 @@ items:
       - link: Introduction
         href: Sphp.Html.Media
       - ruler: 
+      - link: Icons
+        href: Sphp.Html.Media.Icons
       - link: Audio and Video 
         href: Sphp.Html.Media.Multimedia
     - menu: Foundation Sites

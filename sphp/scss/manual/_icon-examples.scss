@@ -10,6 +10,7 @@ and open the template in the editor.
 
 .sphp-icon-examples {
   .icon-container {
+
     border: solid 1px #777;
     @include border-radius(3px);
     text-align: center;
@@ -26,6 +27,14 @@ and open the template in the editor.
     .call {
       border-top: #777 dotted 1px ;
       font-size: rem-calc(14);
+    }
+    .ext {
+      @include border-top-radius(3px);
+      font-family: $font-family-monospace;
+      padding: rem-calc(3);
+      background-color: #eee;
+      font-size: rem-calc(14);
+      border-bottom: #777 dotted 1px ;
     }
   }
 }

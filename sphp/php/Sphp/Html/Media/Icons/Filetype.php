@@ -31,11 +31,37 @@ abstract class Filetype {
   /**
    * @var string[] 
    */
-  private static $fileTypeMap = [
+  private static $fileTypeMap = [ 
+      'csv' => 'text',
+      'db' => 'database',
+      'dbf' => 'database',
+      'mdb' => 'database',
+      'sql' => 'database',
+      /**
+       * 
+       */
+      'apk' => 'java',
+      'bat' => 'executable',
+      'bin' => 'java',
+      'cgi' => 'java',
+      'pl' => 'java',
+      'com' => 'executable',
+      'exe' => 'executable',
+      'gadget' => 'java',
+      'jar' => 'java',
+      'py' => 'python',
+      'wsf' => 'windows',
+      /**
+       * Java files:
+       */
+      'java' => 'java',
+      'class' => 'java',
       /**
        * Text:
        */
+      'vb' => 'text',
       'asp' => 'text',
+      'aspx' => 'text',
       'htx' => 'text',
       'acgi' => 'text',
       'htmls' => 'text',
@@ -83,7 +109,6 @@ abstract class Filetype {
       'h' => 'text',
       'hh' => 'text',
       'jav' => 'text',
-      'java' => 'text',
       'lsx' => 'text',
       'm' => 'text',
       'p' => 'text',
@@ -115,6 +140,7 @@ abstract class Filetype {
       /**
        * Video:
        */
+      'h264' => 'video',
       'afl' => 'video',
       'avs' => 'video',
       'm2v' => 'video',
@@ -123,6 +149,7 @@ abstract class Filetype {
       'mpa' => 'video',
       'mpg' => 'video',
       'mpeg' => 'video',
+      'mp4' => 'video',
       'qt' => 'video',
       'moov' => 'video',
       'mov' => 'video',
@@ -150,6 +177,14 @@ abstract class Filetype {
       'scm' => 'video',
       'mv' => 'video',
       'movie' => 'video',
+      'vob' => 'video',
+      'wmv' => 'video',
+      'swf' => 'video',
+      'mkv' => 'video',
+      'flv' => 'video',
+      '3g2' => 'video',
+      '3gp' => 'video',
+      'm4v' => 'video',
       /**
        * pdf:
        */
@@ -162,9 +197,14 @@ abstract class Filetype {
       'gz' => 'archive',
       'tar' => 'archive',
       'arj' => 'archive',
-      'arj' => 'archive',
+      '7z' => 'archive',
+      'deb' => 'archive',
+      'pkg' => 'archive',
+      'rpm' => 'archive',
+      'tar.gz' => 'archive',
+      'z' => 'archive',
       /**
-       * Video:
+       * audio:
        */
       'mp3' => 'audio',
       'wav' => 'audio',
@@ -211,20 +251,31 @@ abstract class Filetype {
       'voc' => 'audio',
       'wav' => 'audio',
       'xm' => 'audio',
+      /**
+       * Excel:
+       */
       'xls' => 'excel',
       'xlsx' => 'excel',
       'ods' => 'excel',
       'fods' => 'excel',
-      'txt' => 'text',
-      'md' => 'text',
+      'xlr' => 'excel',
+      /**
+       * Word:
+       */
       'doc' => 'word',
       'dotm' => 'word',
       'dotx' => 'word',
       'docx' => 'word',
+      'txt' => 'text',
+      'md' => 'text',
       'css' => 'css',
       'html' => 'html5',
       'htmls' => 'text',
       'htm' => 'html5',
+      /**
+       * JavaScript:
+       */
+      'js' => 'js',
       /**
        * PHP:
        */
@@ -286,6 +337,16 @@ abstract class Filetype {
       'xwd' => 'image',
       'xbm' => 'image',
       'xpm' => 'image',
+      'psd' => 'photoshop',
+      'ai' => 'illustrator',
+      'eps' => 'photoshop',
+      /**
+       * Font files:
+       */
+      'fnt' => 'font',
+      'fon' => 'font',
+      'otf' => 'font',
+      'ttf' => 'font',
   ];
   private static $assosiations = [
       'archive' => 'far fa-file-archive',
@@ -294,12 +355,20 @@ abstract class Filetype {
       'audio' => 'far fa-file-audio',
       'word' => 'far fa-file-word',
       'excel' => 'far fa-file-excel',
-      'css' => 'fab fa-css3',
+      'css' => 'fab fa-css3-alt',
       'image' => 'far fa-file-image',
+      'photoshop' => 'devicon-photoshop-plain',
+      'illustrator' => 'devicon-illustrator-plain',
       'text' => 'far fa-file-alt',
       'html5' => 'fab fa-html5',
       'php' => 'fab fa-php',
       'js' => 'fab fa-js-square',
+      'font' => 'far fa-file',
+      'java' => 'devicon-java-plain-wordmark',
+      'executable' => 'fas fa-cogs',
+      'python' => 'devicon-python-plain',
+      'database' => 'fas fa-database',
+      'windows' => 'fab fa-windows',
   ];
 
   /**

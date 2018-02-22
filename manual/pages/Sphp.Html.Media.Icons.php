@@ -10,12 +10,12 @@ $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $devPopup = new Popup();
 $devPopup->layout()->setSize('large');
 $devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
-$devModal = new Modal('FA icons', $devPopup);
+$devModal = new Modal('DevIcons icons', $devPopup);
+$devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
 \Sphp\Manual\md(<<<MD
 #Icons and icon factories
 $ns      
-##Devicons
-        
+##Devicons     
 $devModal
 MD
 );
@@ -32,6 +32,7 @@ $faPopup = new Popup();
 $faPopup->layout()->setSize('large');
 $faPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php');
 $faModal = new Modal('FA icons', $faPopup);
+$faModal->getTrigger()->addCssClass('button', 'fontawesome', 'radius', 'small');
 
 \Sphp\Manual\md(<<<MD
         
@@ -53,6 +54,7 @@ $filePopup = new Popup();
 $filePopup->layout()->setSize('large');
 $filePopup->ajaxAppend('manual/snippets/icons/Filesystem.php');
 $fileModal = new Modal('Filesystem icons', $filePopup);
+$fileModal->getTrigger()->addCssClass('button');
 \Sphp\Manual\md(<<<MD
         
 ##Filetype icons
