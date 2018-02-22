@@ -1,7 +1,7 @@
 <?php
 
 use Sphp\Stdlib\Networks\URL;
-
+use Sphp\Html\Media\Icons\FontAwesome;
 $currentUrl = URL::getCurrentURL();
 
 ?>
@@ -30,19 +30,19 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     <div class="footer-right">
       <h6>Follow</h6>
       <a href="https://github.com/samhol/SPHP-framework">
-        <i class="fa fa-github-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-github-square fa-3x" aria-hidden="true"></i>
         <span class="show-for-sr">GitHub repository</span>
       </a>
       <a href="https://www.facebook.com/Sami.Petteri.Holck.Playground/">
-        <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-facebook-square fa-3x" aria-hidden="true"></i>
         <span class="show-for-sr">Facebook page</span>
       </a>
       <a href="https://plus.google.com/b/113942361282002156141/113942361282002156141">
-        <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-google-plus-square fa-3x" aria-hidden="true"></i>
         <span class="show-for-sr">Google plus page</span>
       </a>
       <a href="https://twitter.com/SPHPframework">
-        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
         <span class="show-for-sr">Twitter page</span>
       </a>
     </div>
@@ -54,8 +54,8 @@ $form = new SiteSearch360Form('playground.samiholck.com');
       <div class="contact-details">
         <ul>
           <li class="photo"><img class="thumbnail" src="manual/pics/face.jpg" alt="Photo of Sami Holck"></li>
-          <li><i class="fa fa-phone fa-lg" aria-hidden="true"></i> +358 44 298 6738</li>
-          <li><a data-toggle="animatedModal10"><i class="fa fa-envelope-o" aria-hidden="true"></i> sami.holck@gmail.com</a></li>
+          <li><?php FontAwesome::phone('phonenumber')->printHtml() ?> +358 44 298 6738</li>
+          <li><a data-toggle="animatedModal10"><?php FontAwesome::envelope('Email address')->printHtml() ?> sami.holck@gmail.com</a></li>
           <li><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> Rakuunatie 59 A3, Turku, Finland</li>
         </ul>
       </div>

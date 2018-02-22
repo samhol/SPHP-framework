@@ -31,40 +31,43 @@ abstract class Filetype {
   /**
    * @var string[] 
    */
-  private static $fileTypeMap = [ 
+  private static $fileTypeMap = [
       'csv' => 'text',
       'db' => 'database',
       'dbf' => 'database',
       'mdb' => 'database',
       'sql' => 'database',
       /**
-       * 
+       * Program code:
        */
-      'apk' => 'java',
+      'vb' => 'code',
+      'asp' => 'code',
+      'aspx' => 'code',
       'bat' => 'executable',
       'bin' => 'java',
-      'cgi' => 'java',
-      'pl' => 'java',
+      'cgi' => 'code',
+      'pl' => 'code',
       'com' => 'executable',
       'exe' => 'executable',
-      'gadget' => 'java',
       'jar' => 'java',
       'py' => 'python',
       'wsf' => 'windows',
+      'gadget' => 'windows',
+      'xml' => 'code',
+      'htx' => 'code',
+      'rss' => 'code',
+      'xhtml' => 'code',
+      'rexx' => 'code',
       /**
        * Java files:
        */
       'java' => 'java',
       'class' => 'java',
+      'jsp' => 'java',
+      'jav' => 'java',
       /**
        * Text:
        */
-      'vb' => 'text',
-      'asp' => 'text',
-      'aspx' => 'text',
-      'htx' => 'text',
-      'acgi' => 'text',
-      'htmls' => 'text',
       'mcf' => 'text',
       'pas' => 'text',
       'lst' => 'text',
@@ -73,14 +76,10 @@ abstract class Filetype {
       'def' => 'text',
       'cxx' => 'text',
       'txt' => 'text',
-      'c++' => 'text',
       'log' => 'text',
       'list' => 'text',
-      'mar' => 'text',
-      'g' => 'text',
-      'c' => 'text',
+      'c' => 'c',
       'text' => 'text',
-      'sdml' => 'text',
       'idc' => 'text',
       'rtf' => 'text',
       'rtx' => 'text',
@@ -100,15 +99,11 @@ abstract class Filetype {
       's' => 'text',
       'aip' => 'text',
       'cc' => 'text',
-      'cpp' => 'text',
       'htc' => 'text',
       'f90' => 'text',
-      'for' => 'text',
-      'f77' => 'text',
-      'f' => 'text',
-      'h' => 'text',
+      'for' => 'code',
+      'h' => 'c',
       'hh' => 'text',
-      'jav' => 'text',
       'lsx' => 'text',
       'm' => 'text',
       'p' => 'text',
@@ -117,26 +112,22 @@ abstract class Filetype {
       'el' => 'text',
       'ksh' => 'text',
       'lsp' => 'text',
-      'pl' => 'text',
       'pm' => 'text',
-      'py' => 'text',
-      'rexx' => 'text',
       'sh' => 'text',
       'tcl' => 'text',
       'tcsh' => 'text',
       'zsh' => 'text',
-      'shtml' => 'text',
+      'shtml' => 'code',
       'ssi' => 'text',
       'etx' => 'text',
       'sgm' => 'text',
-      'sgml' => 'text',
+      'sgml' => 'code',
       'talk' => 'text',
       'spc' => 'text',
       'uil' => 'text',
       'uue' => 'text',
       'uu' => 'text',
       'vcs' => 'text',
-      'xml' => 'text',
       /**
        * Video:
        */
@@ -189,6 +180,8 @@ abstract class Filetype {
        * pdf:
        */
       'pdf' => 'pdf',
+      'pdfs' => 'pdf',
+      'pdfxml' => 'pdf',
       /**
        * archive:
        */
@@ -203,6 +196,7 @@ abstract class Filetype {
       'rpm' => 'archive',
       'tar.gz' => 'archive',
       'z' => 'archive',
+      'apk' => 'archive',
       /**
        * audio:
        */
@@ -213,15 +207,12 @@ abstract class Filetype {
       'flac' => 'audio',
       'webm' => 'audio',
       'it' => 'audio',
-      'pfunk' => 'audio',
-      'funk' => 'audio',
       'my' => 'audio',
       'rmi' => 'audio',
       'm2a' => 'audio',
       'mpga' => 'audio',
       's3m' => 'audio',
       'tsi' => 'audio',
-      'tsp' => 'audio',
       'qcp' => 'audio',
       'vox' => 'audio',
       'snd' => 'audio',
@@ -229,25 +220,18 @@ abstract class Filetype {
       'aif' => 'audio',
       'aiff' => 'audio',
       'au' => 'audio',
-      'gsd' => 'audio',
-      'gsm' => 'audio',
       'jam' => 'audio',
-      'lam' => 'audio',
-      'mod' => 'audio',
       'm3u' => 'audio',
-      'lma' => 'audio',
       'la' => 'audio',
       'ram' => 'audio',
       'rm' => 'audio',
       'rmm' => 'audio',
       'rmp' => 'audio',
-      'rpm' => 'audio',
       'sid' => 'audio',
       'ra' => 'audio',
       'vqf' => 'audio',
       'vql' => 'audio',
       'vqe' => 'audio',
-      'mjf' => 'audio',
       'voc' => 'audio',
       'wav' => 'audio',
       'xm' => 'audio',
@@ -266,16 +250,38 @@ abstract class Filetype {
       'dotm' => 'word',
       'dotx' => 'word',
       'docx' => 'word',
+      'wps' => 'word',
+      'wks' => 'word',
+      'odt' => 'word',
+      'wpd' => 'word',
+      /**
+       * Powerpoint:
+       */
+      'pptx' => 'powerpoint',
+      'odp' => 'powerpoint',
+      'pps' => 'powerpoint',
+      'ppt' => 'powerpoint',
+      'pptx' => 'powerpoint',
+      'key' => 'powerpoint',
       'txt' => 'text',
       'md' => 'text',
       'css' => 'css',
       'html' => 'html5',
       'htmls' => 'text',
       'htm' => 'html5',
+      'cer' => 'certificate',
       /**
        * JavaScript:
        */
       'js' => 'js',
+      /**
+       * C++:
+       */
+      'cpp' => 'c++',
+      /**
+       * Visual C#:
+       */
+      'cs' => 'c#',
       /**
        * PHP:
        */
@@ -286,19 +292,13 @@ abstract class Filetype {
       /**
        * images:
        */
-      'bm' => 'image',
-      'rast' => 'image',
+      'ps' => 'image',
       'fif' => 'image',
-      'turbot' => 'image',
       'flo' => 'image',
-      'g3' => 'image',
+      'svg' => 'image',
       'gif' => 'image',
-      'iefs' => 'image',
-      'ief' => 'image',
-      'jfif-tbnl' => 'image',
       'jut' => 'image',
       'nap' => 'image',
-      'naplps' => 'image',
       'pic' => 'image',
       'pict' => 'image',
       'jfif' => 'image',
@@ -308,7 +308,6 @@ abstract class Filetype {
       'x-png' => 'image',
       'png' => 'image',
       'fpx' => 'image',
-      'rf' => 'image',
       'rp' => 'image',
       'wbmp' => 'image',
       'xif' => 'image',
@@ -320,7 +319,6 @@ abstract class Filetype {
       'art' => 'image',
       'jps' => 'image',
       'nif' => 'image',
-      'niff' => 'image',
       'pcx' => 'image',
       'pct' => 'image',
       'pnm' => 'image',
@@ -338,8 +336,8 @@ abstract class Filetype {
       'xbm' => 'image',
       'xpm' => 'image',
       'psd' => 'photoshop',
-      'ai' => 'illustrator',
       'eps' => 'photoshop',
+      'ai' => 'illustrator',
       /**
        * Font files:
        */
@@ -353,6 +351,7 @@ abstract class Filetype {
       'pdf' => 'far fa-file-pdf',
       'video' => 'far fa-file-video',
       'audio' => 'far fa-file-audio',
+      'powerpoint' => 'far fa-file-powerpoint',
       'word' => 'far fa-file-word',
       'excel' => 'far fa-file-excel',
       'css' => 'fab fa-css3-alt',
@@ -369,6 +368,11 @@ abstract class Filetype {
       'python' => 'devicon-python-plain',
       'database' => 'fas fa-database',
       'windows' => 'fab fa-windows',
+      'code' => 'far fa-file-code',
+      'c++' => 'devicon-cplusplus-line',
+      'c#' => 'devicon-csharp-line',
+      'c' => 'devicon-c-plain',
+      'certificate' => 'fas fa-certificate',
   ];
 
   /**

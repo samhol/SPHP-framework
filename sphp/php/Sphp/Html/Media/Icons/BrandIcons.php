@@ -54,7 +54,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    * @return $this for a fluent interface
    */
   public function setGithub(string $url = 'https://www.github.com/', string $screenReaderLabel = 'Link to Github repository', string $target = null) {
-    $this->appendIcon($url, FontAwesome::githubSquare($screenReaderLabel), $target)->addCssClass('github');
+    $this->appendIcon($url, FontAwesome::github($screenReaderLabel), $target)->addCssClass('github');
     return $this;
   }
 
@@ -67,7 +67,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    * @return $this for a fluent interface
    */
   public function appendFacebook(string $url = 'https://www.facebook.com/', string $screenReaderText = 'Link to Facebook page', string $target = null) {
-    $this->appendIcon($url, FontAwesome::facebookSquare($screenReaderText), $target)
+    $this->appendIcon($url, FontAwesome::facebook($screenReaderText), $target)
             ->addCssClass('facebook');
     return $this;
   }
@@ -81,7 +81,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    * @return $this for a fluent interface
    */
   public function appendTwitter(string $url = 'https://twitter.com/', string $screenReaderText = 'Link to Twitter page', string $target = null) {
-    $this->appendIcon($url, FontAwesome::twitterSquare($screenReaderText), $target)
+    $this->appendIcon($url, FontAwesome::twitter($screenReaderText), $target)
             ->addCssClass('twitter');
     return $this;
   }
@@ -95,7 +95,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    * @return $this for a fluent interface
    */
   public function appendGooglePlus(string $url = 'https://plus.google.com/', string $screenReaderText = 'Link to Google plus page', string $target = null) {
-    $this->appendIcon($url, FontAwesome::googlePlusSquare($screenReaderText), $target)
+    $this->appendIcon($url, FontAwesome::googlePlus($screenReaderText), $target)
             ->addCssClass('google-plus');
     return $this;
   }
@@ -104,11 +104,11 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
    * Appends a link
    * 
    * @param  string $url the URL of the link
-   * @param  Icon $icon the icon object acting as link
+   * @param  IconInterface $icon the icon object acting as link
    * @param  string|null $target optional target of the hyperlink
    * @return Hyperlink
    */
-  protected function appendIcon(string $url, Icon $icon, string $target = null): Hyperlink {
+  protected function appendIcon(string $url, IconInterface $icon, string $target = null): Hyperlink {
     $hyperlink = new Hyperlink($url, $icon, $target);
     $hyperlink->addCssClass('sphp-brand-link');
     $this->icons[] = $hyperlink;

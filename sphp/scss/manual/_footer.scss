@@ -99,12 +99,12 @@ $sitemap-border-highlight-color: rgba(70, 70, 70, 0.5);
         @include breakpoint(medium) {
           @include grid-column(6);
         }
-      }
-      .fa {
-        padding: 0 0 0 0.6rem;
-        color: #e5e5e5; 
-        &:hover {
-          color: #fff; 
+        svg, .fa {
+          padding: 0 0 0 0.6rem;
+          color: #e5e5e5; 
+          &:hover {
+            color: #fff; 
+          }
         }
       }
       h2 {

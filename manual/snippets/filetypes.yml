@@ -4,10 +4,10 @@ Compressed file extensions:
   deb: Debian software package file
   pkg: Package file
   rar: RAR file
-  rpm: Red Hat Package Manager
   tar.gz: Tarball compressed file
   z: Z compressed file
   zip: Zip compressed file
+  tar: Linux / Unix tarball file archive
 Data and database file extensions:
   csv: Comma separated value file
   dat: Data file
@@ -15,9 +15,7 @@ Data and database file extensions:
   dbf: Database file
   log: Log file
   mdb: Microsoft Access database file
-  sav: Save file (e.g., game save file)
   sql: SQL database file
-  tar: Linux / Unix tarball file archive
   xml: XML file
 Executable file extensions:
   apk: Android package file
@@ -36,7 +34,7 @@ Font file extensions:
   fon: Generic font file
   otf: Open type font file
   ttf: TrueType font file
-Image file formats by file extension:
+Image file formats:
   ai: Adobe Illustrator file
   bmp: Bitmap image
   gif: GIF image
@@ -49,7 +47,7 @@ Image file formats by file extension:
   svg: Scalable Vector Graphics file
   tif: TIFF image
   tiff: TIFF image
-Video file formats by file extension:
+Video file formats:
   3g2: 3GPP2 multimedia file
   3gp: 3GPP multimedia file
   avi: AVI file
@@ -82,13 +80,13 @@ Internet related file extensions:
   py: Python file
   rss: RSS file
   xhtml: XHTML file
-Presentation file formats by file extension:
+Presentation file formats:
   key: Keynote presentation
   odp: OpenOffice Impress presentation file
   pps: PowerPoint slide show
   ppt: PowerPoint presentation
   pptx: PowerPoint Open XML presentation
-Programming files by file extensions:
+Programming files:
   c: C and C++ source code file
   class: Java class file
   cpp: C++ source code file
@@ -96,21 +94,28 @@ Programming files by file extensions:
   h: C, C++, and Objective-C header file
   java: Java Source code file
   sh: Bash shell script
-  swift: Swift source code file
   vb: Visual Basic file
-Spreadsheet file formats by file extension: 
+Spreadsheet file formats: 
   ods: OpenOffice Calc spreadsheet file
   xlr: Microsoft Works spreadsheet file
   xls: Microsoft Excel file
   xlsx: Microsoft Excel Open XML spreadsheet file
-Word processor and text file formats by file extension:
+Word processor and text file formats:
   doc: Microsoft Word file
   docx: Microsoft Word file
   odt: OpenOffice Writer document file
   pdf: PDF file
+  pdfs: Adobe PDF Presets File
+  pdfxml: Adobe PDFXML Document
   rtf: Rich Text Format
   tex: A LaTeX document file
   txt: Plain text file
   wks: Microsoft Works file
   wps: Microsoft Works file
   wpd: WordPerfect document
+Presentation file formats:
+  key: Keynote presentation
+  odp: OpenOffice Impress presentation file
+  pps: PowerPoint slide show
+  ppt: PowerPoint presentation
+  pptx: PowerPoint Open XML presentation

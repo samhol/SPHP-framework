@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * Implements icon based on fonts and HTML tags
  *
@@ -19,16 +21,31 @@ class FaIcon extends AbstractIcon {
   /**
    * Constructs a new instance
    * 
-   * @param string|string[] $classes the icon name
+   * @param string|string[] $iconName the icon name
    * @param string $screenreaderLabel
    */
   public function __construct($iconName, string $screenreaderLabel = null) {
     parent::__construct('i');
-   /* if (!Strings::startsWith($iconName, 'fa-')) {
-      $iconName = "fa-$iconName";
-    }*/
     $this->cssClasses()->protect($iconName);
     $this->setSreenreaderText($screenreaderLabel);
+  }
+
+  /**
+   * 
+   * @param  string $size
+   * @return $this for a fluent interface
+   */
+  public function setSize(string $size = null) {
+    $this->cssClasses()->removePattern('/^(fa-(xs|sm|lg|([2-9]|10)x))+$/');
+    if ($size !== null) {
+      if (!Strings::startsWith($size, 'fa-')) {
+        $size = 'fa-' . $size;
+      }
+      if (Strings::match($size, '/^(fa-(xs|sm|lg|([2-9]|10)x))+$/')) {
+        $this->cssClasses()->add($size);
+      }
+    }
+    return $this;
   }
 
 }

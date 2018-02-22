@@ -12,12 +12,20 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a factory for Font Awesome icon objects
  * 
- * @method \Sphp\Html\\Media\Icons\Icon facebookSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon twitterSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon githubSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon facebook(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon twitter(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon googlePlus(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon github(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon php(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon tumblr(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon stumbleupon(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon pinterest(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon blogger(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon cc(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon python(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon phone(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\\Media\Icons\FaIcon envelope(string $screenReaderLabel = null) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -32,14 +40,21 @@ class FontAwesome {
    * @var mixed[]
    */
   private static $tags = array(
-      'facebookSquare' => ['fab', 'fa-facebook-square'],
       'facebook' => ['fab', 'fa-facebook-square'],
-      'twitterSquare' => ['fab', 'fa-twitter-square'],
-      'googlePlusSquare' => ['fab', 'fa-google-plus-square'],
-      'githubSquare' => ['fab', 'fa-github-square'],
+      'twitter' => ['fab', 'fa-twitter-square'],
+      'googlePlus' => ['fab', 'fa-google-plus-square'],
+      'github' => ['fab', 'fa-github-square'],
       'php' => ['fab', 'fa-php'],
       'js' => ['fab', 'fa-js-square'],
       'chevronCircleUp' => ['fas', 'fa-chevron-circle-up'],
+      'tumblr' => 'fab fa-tumblr-square',
+      'stumbleupon' => 'fab fa-stumbleupon-circle',
+      'pinterest' => 'fab fa-pinterest-square',
+      'blogger' => 'fab fa-blogger',
+      'cc' => 'fab fa-creative-commons',
+      'python' => 'fab fa-python',
+      'phone' => 'fas fa-phone',
+      'envelope' => 'far fa-envelope',
   );
 
   /**
@@ -47,16 +62,16 @@ class FontAwesome {
    *
    * @param  string $name the name of the icon (function name)
    * @param  array $arguments 
-   * @return Icon the corresponding component
+   * @return FaIcon the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): Icon {
+  public static function __callStatic(string $name, array $arguments): FaIcon {
     if (!isset(static::$tags[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
     $classes = static::$tags[$name];
-    $text = array_unshift($arguments, $name);
-    return new Icon($classes, $text);
+    $screenReaderText = array_shift($arguments);
+    return new FaIcon($classes, $screenReaderText);
   }
 
 }

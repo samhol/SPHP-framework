@@ -11,11 +11,7 @@ use Sphp\Stdlib\Readers\Yaml;
 $yaml = new Yaml();
 
 $d = $yaml->fromFile('../filetypes.yml');
-echo "<pre>";
-//print_r($d);
-echo "</pre>";
-include 'filetypes.php';
-asort($mime_types);
+
 
 \Sphp\Manual\md(<<<MD
         
@@ -36,17 +32,3 @@ foreach ($d as $name => $group) {
   }
   echo '</div>';
 }
-?>
-
-<!--
-<div class="sphp-icon-examples grid-x small-up-3 medium-up-5 large-up-8">
-  <?php
-  foreach ($mime_types as $name => $mime) {
-    echo '<div class="cell"><div class="icon-container">';
-    echo Filetype::$name($mime)->setAttribute('title', "$name: $mime");
-    echo '</div></div>';
-  }
-  ?>
-
-</div>
--->
