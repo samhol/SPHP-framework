@@ -42,10 +42,10 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
     parent::__construct('div');
     $this->cssClasses()->protect('button-group');
     if (is_array($buttons)) {
-      $this->appendButtons($buttons);
+      $this->appendButton($buttons);
     }
     if ($buttons instanceof ButtonInterface) {
-      $this->appendButtons($buttons);
+      $this->appendButton($buttons);
     }
   }
 
@@ -66,7 +66,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function appendHyperlink(string $href, $content, string $target = null) {
-    $this->appendButtons(Button::hyperlink($href, $content, $target));
+    $this->appendButton(Button::hyperlink($href, $content, $target));
     return $this;
   }
 
@@ -80,7 +80,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    */
   public function appendSubmitter($content = null, $name = null, $value = null) {
-    $this->appendButtons(Button::submitter($content, $name, $value));
+    $this->appendButton(Button::submitter($content, $name, $value));
     return $this;
   }
 
@@ -91,23 +91,21 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return $this for a fluent interface
    */
   public function appendResetter($content = null) {
-    $this->appendButtons(Button::resetter($content));
+    $this->appendButton(Button::resetter($content));
     return $this;
   }
 
   /**
-   * Appends buttons to the group
+   * Appends a new button to the group
    *
    * @param  CssClassifiableContent $button the appended button
    * @return $this for a fluent interface
    */
-  public function appendButtons(CssClassifiableContent... $button) {
-    foreach ($button as $btn) {
-      if (!$btn->hasCssClass('button')) {
-        $btn->addCssClass('button');
-      }
-      $this->getInnerContainer()->append($button);
+  public function appendButton(CssClassifiableContent $button) {
+    if (!$button->hasCssClass('button')) {
+      $button->addCssClass('button');
     }
+    $this->getInnerContainer()->append($button);
     return $this;
   }
 

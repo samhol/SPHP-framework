@@ -13,13 +13,12 @@ and open the template in the editor.
     background-color: #eee;
   }
   h2 {
-    text-transform: uppercase;
     padding: rem-calc(8 5);
     margin: rem-calc(-14 -14 5 -14);
     border-bottom: solid #aaa 1px;
   }
   h3 {
-    margin: rem-calc(6 -6 15 -6);
+    margin: rem-calc(15 -6 15 -6);
     padding: rem-calc(3 5);
     border: solid #aaa 1px;
     @include border-radius(3px);

@@ -1,7 +1,9 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Bars;
+use Sphp\Stdlib\Parser;
 
+$data = Parser::fromFile('manual/snippets/icons/font-awesome.json');
 use Sphp\Html\Foundation\Sites\Bars\TitleBar;
 
 $titlebar = new TitleBar();
@@ -31,3 +33,11 @@ $titlebar->printHtml();
     <i class="fab fa-github-square"></i>
   </a>
 </div>
+<pre>
+  <?php 
+  use Sphp\Stdlib\Arrays;
+  
+  $fab = Arrays::isLike($data['icons'], 'fab ');
+  print_r($fab);
+  ?>
+</pre>

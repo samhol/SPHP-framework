@@ -20,8 +20,8 @@ $code2 = Manual\codeModal('example2.js', 'manual/snippets/example2.js', 'JavaScr
 $tr1 = $code1->getTrigger()->addCssClass('button', 'alert');
 $tr2 = $code2->getTrigger()->addCssClass('button', 'alert');
 $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
-$buttonGroup->appendButtons($b1);
-$buttonGroup->appendButtons($b2);
+$buttonGroup->appendButton($b1);
+$buttonGroup->appendButton($b2);
 Manual\md(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>
 

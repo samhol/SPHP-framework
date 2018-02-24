@@ -4,46 +4,32 @@ namespace Sphp\Html\Media\Icons;
 
 require_once('../../settings.php');
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Arrays;
 
-use Sphp\Stdlib\Readers\Yaml;
-use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Html\Media\Icons\Icon;
-
-$yaml = new Yaml();
-
-$faData = $yaml->fromFile('icons.yml');
+$faData = Parser::fromFile('font-awesome.json');
 //$d = $json->fromFile('manual/snippets/icons.json');
 //print_r($data);
-
-
-\Sphp\Manual\md(<<<MD
-        
-##Font Awesome icons
- 
-MD
-);
+$types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
+$type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => null]);
+if (array_key_exists($type, $types)) {
+  $headingNote = $types[$type];
+  $data = Arrays::isLike($faData['icons'], "$type ");
+} else {
+  $data = $faData['icons'];
+  $headingNote = 'All';
+}
+\Sphp\Manual\md("##Font Awesome: <small>$headingNote icons</small>");
 ?>
 <div class="sphp-icon-examples grid-x small-up-3 medium-up-5 large-up-8">
-<?php
-foreach ($faData as $name => $item) {
-  if (isset($item['styles'])) {
-    $icon_name = "fa-$name";
-    foreach ($item['styles'] as $styleName) {
-      if ($styleName === 'brands' || $styleName === 'solid') {
-        echo '<div class="cell"><div class="icon-container">';
-        if ($styleName === 'brands') {
-          echo (new Icon(['fab', $icon_name], "$icon_name icon"))->setAttribute('title', $item['label'] . " icon");
-        } else if ($styleName === 'solid') {
-          echo (new Icon(['fas', $icon_name], "$icon_name icon"))->setAttribute('title', $item['label'] . " icon");
-        }
-        echo '</div></div>';
-      }
-    }
-  } else {
-    echo $item['label'];
+  <?php
+  foreach ($data as $item) {
+    $name = str_replace(['fas', 'far', 'fab', ' fa-'], '', $item);
+    echo '<div class="cell"><div class="icon-container">';
+    echo (new Icon($item, "$item icon"))->setAttribute('title', $item . " icon");
+    echo "<div class=\"ext\">$item</div>";
+    echo '</div></div>';
   }
-}
-?>
+  ?>
 
 </div>
