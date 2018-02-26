@@ -9,8 +9,8 @@ namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Config\ErrorHandling\ErrorListener;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
-use Sphp\Html\Media\Icons\Icons;
-use Sphp\Html\Media\Icons\Icon;
+use Sphp\Html\Media\Icons\IconInterface;
+use Sphp\Html\Media\Icons\FontAwesome;
 
 /**
  * Implements a callout builder for PHP error message presentation
@@ -94,29 +94,28 @@ class CalloutBuilder implements ErrorListener {
     }
     return $return;
   }
+
   /**
    * 
    * @param int $errno
-   * @return Icon
+   * @return IconInterface
    */
-  protected function getIcon(int $errno): Icon {
+  protected function getIcon(int $errno): IconInterface {
     if (\E_ERROR & $errno || \E_USER_ERROR & $errno) {
-      $iconName = 'fa-ban';
+      return FontAwesome::instance()->ban()->setSize('2x');
     } else {
-      $iconName = 'fa-exclamation-circle';
+      return FontAwesome::instance()->exclamation()->setSize('2x');
     }
-    return Icons::fontAwesome($iconName);
   }
 
   protected function buildCallout(int $errno): Callout {
     $callout = new Callout();
     $callout->setClosable($this->closable);
     $callout->cssClasses()->protect('alert-box');
-    if (\E_WARNING & $errno || \E_NOTICE || \E_USER_NOTICE & $errno || \E_USER_WARNING & $errno) {
-      $callout->addCssClass('warning');
-    }
     if (\E_ERROR & $errno || \E_USER_ERROR & $errno) {
       $callout->addCssClass('alert');
+    } else if (\E_WARNING & $errno || \E_NOTICE || \E_USER_NOTICE & $errno || \E_USER_WARNING & $errno) {
+      $callout->addCssClass('warning');
     }
     return $callout;
   }
@@ -124,7 +123,7 @@ class CalloutBuilder implements ErrorListener {
   public function onError(int $errno, string $errstr, string $errfile, int $errline) {
     $callout = $this->buildCallout($errno);
     //$this->setClasses($callout, $errno);  fa-exclamation-circle
-    $callout->append("<h2>". $this->getIcon($errno) . $this->getTypeString($errno) . ": <small>" . $errstr . "</small></h2>");
+    $callout->append("<h2><span class='icon'>" . $this->getIcon($errno) . '</span> ' . $this->getTypeString($errno) . ": <small>" . $errstr . "</small></h2>");
     if ($this->showFile) {
       $callout->append("on line <strong>$errline</strong> of file: <wbr>" . $errfile);
     }

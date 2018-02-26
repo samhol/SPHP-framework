@@ -9,24 +9,31 @@ namespace Sphp\Html\Media\Icons;
 
 use SplFileInfo;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Strings;
 
 /**
- * Description of Icons
+ * File type icon factory
  * 
+ * @method \Sphp\Html\Media\Icons\FaIcon facebookSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon twitterSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\\Media\Icons\Icon facebookSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon twitterSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon githubSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\\Media\Icons\Icon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon java(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon jar(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon class(string $screenReaderLabel = null) creates a new icon object
+ * 
+ * @method \Sphp\Html\Media\Icons\FaIcon php(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon php3(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon phtml(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon phar(string $screenReaderLabel = null) creates a new icon object
+ * 
+ * @method \Sphp\Html\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon json(string $screenReaderLabel = null) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Filetype {
+class Filetype {
 
   /**
    * @var string[] 
@@ -38,11 +45,47 @@ abstract class Filetype {
       'mdb' => 'database',
       'sql' => 'database',
       /**
+       * HTML related:
+       */
+      'xhtml' => 'code',
+      'txt' => 'text',
+      'md' => 'code',
+      'css' => 'css',
+      'html' => 'code',
+      'htmls' => 'code',
+      'shtml' => 'code',
+      'htm' => 'code',
+      'cer' => 'certificate',
+      /**
+       * JavaScript:
+       */
+      'js' => 'js',
+      'json' => 'js',
+      /**
+       * C++:
+       */
+      'cpp' => 'c++',
+      'cc' => 'cpp',
+      /**
+       * Visual C#:
+       */
+      'cs' => 'c#',
+      /**
+       * PHP:
+       */
+      'php' => 'php',
+      'php3' => 'php',
+      'phtml' => 'php',
+      'phar' => 'php',
+      /**
+       * ASP:
+       */
+      'asp' => 'code',
+      'aspx' => 'code',
+      /**
        * Program code:
        */
       'vb' => 'code',
-      'asp' => 'code',
-      'aspx' => 'code',
       'bat' => 'executable',
       'bin' => 'java',
       'cgi' => 'code',
@@ -56,7 +99,6 @@ abstract class Filetype {
       'xml' => 'code',
       'htx' => 'code',
       'rss' => 'code',
-      'xhtml' => 'code',
       'rexx' => 'code',
       /**
        * Java files:
@@ -98,7 +140,6 @@ abstract class Filetype {
       'asm' => 'text',
       's' => 'text',
       'aip' => 'text',
-      'cc' => 'text',
       'htc' => 'text',
       'f90' => 'text',
       'for' => 'code',
@@ -115,10 +156,7 @@ abstract class Filetype {
       'pm' => 'text',
       'sh' => 'text',
       'tcl' => 'text',
-      'tcsh' => 'text',
-      'zsh' => 'text',
-      'shtml' => 'code',
-      'ssi' => 'text',
+      'ssi' => 'code',
       'etx' => 'text',
       'sgm' => 'text',
       'sgml' => 'code',
@@ -176,12 +214,6 @@ abstract class Filetype {
       '3g2' => 'video',
       '3gp' => 'video',
       'm4v' => 'video',
-      /**
-       * pdf:
-       */
-      'pdf' => 'pdf',
-      'pdfs' => 'pdf',
-      'pdfxml' => 'pdf',
       /**
        * archive:
        */
@@ -263,32 +295,12 @@ abstract class Filetype {
       'ppt' => 'powerpoint',
       'pptx' => 'powerpoint',
       'key' => 'powerpoint',
-      'txt' => 'text',
-      'md' => 'text',
-      'css' => 'css',
-      'html' => 'html5',
-      'htmls' => 'text',
-      'htm' => 'html5',
-      'cer' => 'certificate',
       /**
-       * JavaScript:
+       * pdf:
        */
-      'js' => 'js',
-      /**
-       * C++:
-       */
-      'cpp' => 'c++',
-      /**
-       * Visual C#:
-       */
-      'cs' => 'c#',
-      /**
-       * PHP:
-       */
-      'php' => 'php',
-      'php3' => 'php',
-      'phtml' => 'php',
-      'phar' => 'php',
+      'pdf' => 'pdf',
+      'pdfs' => 'pdf',
+      'pdfxml' => 'pdf',
       /**
        * images:
        */
@@ -305,7 +317,6 @@ abstract class Filetype {
       'jpe' => 'image',
       'jpg' => 'image',
       'jpeg' => 'image',
-      'x-png' => 'image',
       'png' => 'image',
       'fpx' => 'image',
       'rp' => 'image',
@@ -376,27 +387,62 @@ abstract class Filetype {
   ];
 
   /**
-   * Creates a HTML object
+   * @var Filetype|null singleton instance 
+   */
+  private static $instance;
+
+  private function __construct() {
+    
+  }
+
+  /**
+   * Returns the singleton instance
+   * 
+   * @return Filetype singleton instance
+   */
+  public static function instance(): Filetype {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    }
+    return self::$instance;
+  }
+
+  /**
+   * Creates an icon object representing given file type
    *
    * @param  string $fileType the file type
-   * @param  array $arguments 
-   * @return AbstractIcon the corresponding component
+   * @param  array $arguments
+   * @return FaIcon new icon object
    */
-  public static function __callStatic(string $fileType, array $arguments): AbstractIcon {
+  public static function __call(string $fileType, array $arguments): FaIcon {
     $screenReaderText = array_shift($arguments);
     return static::get($fileType, $screenReaderText);
   }
 
   /**
-   * Creates a HTML object
+   * Creates an icon object representing given file type
    *
    * @param  string $fileType the file type
    * @param  array $arguments 
-   * @return AbstractIcon the corresponding component
+   * @return FaIcon new icon object
    */
-  public static function get(string $fileType, string $screenReaderText = null): IconInterface {
+  public static function __callStatic(string $fileType, array $arguments): FaIcon {
+    $screenReaderText = array_shift($arguments);
+    return static::get($fileType, $screenReaderText);
+  }
+
+  /**
+   * Creates an icon object representing given file type
+   *
+   * @param  string $fileType the file type
+   * @param  string $screenReaderText 
+   * @return FaIcon new icon object
+   */
+  public static function get(string $fileType, string $screenReaderText = null): FaIcon {
     if (array_key_exists($fileType, static::$fileTypeMap)) {
       $icon = static::$assosiations[static::$fileTypeMap[$fileType]];
+    } else if (array_key_exists($fileType, static::$assosiations)) {
+      $icon = static::$assosiations[$fileType];
     } else {
       $icon = 'far fa-file';
     }
@@ -407,10 +453,10 @@ abstract class Filetype {
    * Generates a file type icon object using Font Awesome 
    * 
    * @param  string|SplFileInfo $file the file
-   * @return Icon the icon object generated
+   * @return FaIcon new icon object
    * @throws InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file, string $screenReaderText = null): AbstractIcon {
+  public static function fileType($file, string $screenReaderText = null): FaIcon {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {

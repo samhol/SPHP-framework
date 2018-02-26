@@ -13,7 +13,7 @@ use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\Media\Icons\Icons;
+use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\AbstractComponent;
 
 /**
@@ -59,7 +59,7 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
     $this->setAction($action)
             ->setMethod($method)
             ->setTarget('_self');
-    $this->setSubmitButton(new Submitter(Icons::fontAwesome('fa-search', 'Search')));
+    $this->setSubmitButton(new Submitter(FontAwesome::search('Search')));
     $this->hiddenData = new HiddenInputs();
     $this->searchField = new SearchInput();
   }

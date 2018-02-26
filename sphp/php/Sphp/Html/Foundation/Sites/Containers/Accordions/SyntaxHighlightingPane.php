@@ -9,7 +9,6 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighterInterface;
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
-use Sphp\Html\Foundation\Sites\Buttons\IconButton;
 
 /**
  * Implements an abstract base Pane for a Foundation Accordion
