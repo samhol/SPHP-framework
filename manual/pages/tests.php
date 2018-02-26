@@ -34,10 +34,9 @@ $titlebar->printHtml();
   </a>
 </div>
 <pre>
-  <?php 
-  use Sphp\Stdlib\Arrays;
-  
-  $fab = Arrays::isLike($data['icons'], 'fab ');
-  print_r($fab);
-  ?>
+<?php
+echo new \Sphp\Html\Media\Icons\SVGLoader('sphp/svg/amazon.svg');
+echo file_get_contents('php://manual/pages/Sphp.Stdlib.php');
+?>
 </pre>
+

@@ -102,3 +102,7 @@ $fileModal->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
 $fileModal
 MD
 );
+
+\Sphp\Manual\example('Sphp/Html/Media/Icons/FiletypeIcons.php')
+        ->buildAccordion()
+        ->printHtml();

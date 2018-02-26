@@ -394,7 +394,7 @@ abstract class Filetype {
    * @param  array $arguments 
    * @return AbstractIcon the corresponding component
    */
-  public static function get(string $fileType, string $screenReaderText): AbstractIcon {
+  public static function get(string $fileType, string $screenReaderText = null): IconInterface {
     if (array_key_exists($fileType, static::$fileTypeMap)) {
       $icon = static::$assosiations[static::$fileTypeMap[$fileType]];
     } else {
