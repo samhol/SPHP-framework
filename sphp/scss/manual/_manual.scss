@@ -57,7 +57,9 @@ $error-bg: rgba(255,127,80, 0.40);
   margin: rem-calc(5 0 20 0); // top right bottom left
   @include box-shadow(#888 0px 3px 8px 4px);
   background: #eaeaea;
-  @include breakpoint(medium down) {  margin: rem-calc(5 0 20 0);}
+  @include breakpoint(medium down) {  
+    margin: rem-calc(5 0 20 0);
+  }
 }
 .mainContent .container  { 
 

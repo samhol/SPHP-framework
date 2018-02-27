@@ -22,7 +22,7 @@ $alert-callout-border-radius: 0.6rem;
   strong {
     color: $body-font-color;
   }
-  @include default-margin();
+  //@include default-margin();
   @include border-radius(4px);
 
   h1, h2, h3, h4, h5, h6 {
