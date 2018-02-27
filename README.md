@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/samhol/SPHP-framework.svg?branch=master)](https://travis-ci.org/samhol/SPHP-framework)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/samhol/SPHP-framework.svg)](https://github.com/samhol/SPHP-framework)
 [![GitHub language count](https://img.shields.io/github/languages/count/samhol/SPHP-framework.svg)](https://github.com/samhol/SPHP-framework)
-[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/samhol/SPHP-framework.svg)](https://github.com/samhol/SPHP-framework)
+[![GitHub last commit (master)](https://img.shields.io/github/last-commit/samhol/SPHP-framework.svg)](https://github.com/samhol/SPHP-framework)
 
 
 ## INTRODUCTION
