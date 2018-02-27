@@ -31,7 +31,7 @@ Document::html()->startBody();
 use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Stdlib\Parser;
 
-$grid = Grid::from([Parser::fromFile('license.md')]);
+$grid = Grid::from([Parser::fromFile('LICENSE.md')]);
 echo $grid->addCssClass('gnu-license');
 
 echo $html->getDocumentClose();
