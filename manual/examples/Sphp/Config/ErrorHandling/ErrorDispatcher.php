@@ -9,7 +9,7 @@ $ed->addErrorListener(\E_USER_ERROR, function (int $errno, string $errstr, strin
   echo "<p><b>User Error:</b> $errstr</p>";
 }, 1);
 
-$ed->addErrorListener(\E_ALL, new CalloutBuilder(true, true), 1);
+$ed->addErrorListener(\E_ALL, new CalloutBuilder(true, true), 3);
 $ed->startErrorHandling();
 
 trigger_error('User defined Errors suck badly', E_USER_ERROR);

@@ -31,8 +31,9 @@ class FaIcon extends AbstractIcon {
   }
 
   /**
+   * Optionally pulls the icon to left or right
    * 
-   * @param  string $direction
+   * @param  string|null $direction the direction of th pull
    * @return $this for a fluent interface
    */
   public function pull(string $direction = null) {
@@ -45,8 +46,9 @@ class FaIcon extends AbstractIcon {
   }
 
   /**
+   * Sets the size of the icon
    * 
-   * @param  string $size
+   * @param  string|null $size the size of the icon
    * @return $this for a fluent interface
    */
   public function setSize(string $size = null) {

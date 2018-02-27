@@ -15,4 +15,3 @@ MD
 loadPage('tech-carousel');
 
 loadPage('Sphp-intro/orbit.php');
-loadPage('Sphp.Html.Foundation.Sites');

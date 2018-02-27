@@ -1,11 +1,13 @@
-$alert-box-opacity: 0.2;
+
+@charset "UTF-8";
+
 $error-bg: rgba(255,127,80, 0.40);
 
-@mixin php-error-callout($type, $color: $error-bg,$alert-box-opacity: 0.2) { 
+@mixin php-callout($type, $color: $error-bg) { 
   &.#{$type} {
     color: smart-scale($color, 60%);
     border: 3px solid $color;
-    background-color: rgba($color, $alert-box-opacity);
+    background-color: rgba($color, 0.2);
     .type {
       border-bottom: solid $color;
       .icon {
@@ -20,10 +22,7 @@ $error-bg: rgba(255,127,80, 0.40);
 }
 .alert-box {
   padding: 0rem;
-  //width: 100%;
   border-radius: 5px;
-
-
   .type {
     font-size: rem-calc(25);
     font-weight: bold;
@@ -43,22 +42,11 @@ $error-bg: rgba(255,127,80, 0.40);
       font-size: rem-calc(14);
     }
   }
-  @include php-error-callout(alert, $alert-color, 0.25);
-  @include php-error-callout(warning, $warning-color, 0.25);
-
-
-  &.success {
-    border: 3px solid $success-color;
-    background-color: rgba($success-color, $alert-box-opacity);
-  }
-
-  &.info {
-    border: 3px solid $primary-color;
-    background-color: rgba($primary-color, $alert-box-opacity);
-  }
+  @include php-callout(alert, $alert-color);
+  @include php-callout(warning, $warning-color);
+  @include php-callout(success, $success-color);
+  @include php-callout(info, $primary-color);
   .close-button {
-    //font-size: 2rem;
-    $a: rem-calc(25);
     @include close-button-size(large);
   }
 }

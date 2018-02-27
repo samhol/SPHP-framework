@@ -2,8 +2,8 @@
 
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Media\Icons\FontAwesome;
-$currentUrl = URL::getCurrentURL();
 
+$currentUrl = URL::getCurrentURL();
 ?>
 
 <div class="engadget-footer sitemap-container">
@@ -30,19 +30,19 @@ $form = new SiteSearch360Form('playground.samiholck.com');
     <div class="footer-right">
       <h6>Follow</h6>
       <a href="https://github.com/samhol/SPHP-framework">
-        <i class="fab fa-github-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-github-square fa-4x" aria-hidden="true"></i>
         <span class="show-for-sr">GitHub repository</span>
       </a>
       <a href="https://www.facebook.com/Sami.Petteri.Holck.Playground/">
-        <i class="fab fa-facebook-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-facebook-square fa-4x" aria-hidden="true"></i>
         <span class="show-for-sr">Facebook page</span>
       </a>
       <a href="https://plus.google.com/b/113942361282002156141/113942361282002156141">
-        <i class="fab fa-google-plus-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-google-plus-square fa-4x" aria-hidden="true"></i>
         <span class="show-for-sr">Google plus page</span>
       </a>
       <a href="https://twitter.com/SPHPframework">
-        <i class="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
+        <i class="fab fa-twitter-square fa-4x" aria-hidden="true"></i>
         <span class="show-for-sr">Twitter page</span>
       </a>
     </div>

@@ -9,15 +9,15 @@ namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Readers\Reader;
+use Sphp\Stdlib\Parsers\Reader;
 
 /**
  * Implements a general parser factory
  * 
- * @method \Sphp\Stdlib\Readers\Markdown md() Returns singleton instance of `markdown` reader
- * @method \Sphp\Stdlib\Readers\Yaml yaml() Returns singleton instance of `yaml` reader
- * @method \Sphp\Stdlib\Readers\Ini ini() Returns singleton instance of `yaml` reader
- * @method \Sphp\Stdlib\Readers\Json json() Returns singleton instance of `json` reader
+ * @method \Sphp\Stdlib\Parsers\Markdown md() Returns singleton instance of `markdown` reader
+ * @method \Sphp\Stdlib\Parsers\Yaml yaml() Returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Parsers\Ini ini() Returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Parsers\Json json() Returns singleton instance of `json` reader
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -29,20 +29,20 @@ abstract class Parser {
    * @var string[]
    */
   private static $readers = array(
-      'ini' => Readers\Ini::class,
-      'json' => Readers\Json::class,
-      'yaml' => Readers\Yaml::class,
-      'yml' => Readers\Yaml::class,
-      'markdown' => Readers\Markdown::class,
-      'mdown' => Readers\Markdown::class,
-      'mkdn' => Readers\Markdown::class,
-      'md' => Readers\Markdown::class,
-      'mkd' => Readers\Markdown::class,
-      'mdwn' => Readers\Markdown::class,
-      'mdtxt' => Readers\Markdown::class,
-      'mdtext' => Readers\Markdown::class,
-      'text' => Readers\Markdown::class,
-      'Rmd' => Readers\Markdown::class,
+      'ini' => Parsers\Ini::class,
+      'json' => Parsers\Json::class,
+      'yaml' => Parsers\Yaml::class,
+      'yml' => Parsers\Yaml::class,
+      'markdown' => Parsers\Markdown::class,
+      'mdown' => Parsers\Markdown::class,
+      'mkdn' => Parsers\Markdown::class,
+      'md' => Parsers\Markdown::class,
+      'mkd' => Parsers\Markdown::class,
+      'mdwn' => Parsers\Markdown::class,
+      'mdtxt' => Parsers\Markdown::class,
+      'mdtext' => Parsers\Markdown::class,
+      'text' => Parsers\Markdown::class,
+      'Rmd' => Parsers\Markdown::class,
   );
 
   /**

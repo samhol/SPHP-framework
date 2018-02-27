@@ -23,11 +23,13 @@ $devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
 $ns
 
 These icons are available as fonts and svg images. They support assistive reading technologies.
+
 ##Devicons <small>$devIcons factory</small> 
 
 Devicon is a set of icons representing programming languages, designing and development tools.
 
 $devModal
+
 MD
 );
 
@@ -100,6 +102,7 @@ $fileModal->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
 ##Filetype icons
 
 $fileModal
+
 MD
 );
 

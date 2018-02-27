@@ -27,8 +27,16 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Media\Icons\FaIcon stumbleupon(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon pinterest(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon blogger(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon apple(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon cc(string $screenReaderLabel = null) creates a new icon object
- * 
+ * @method \Sphp\Html\Media\Icons\FaIcon android(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon apper(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon cpanel(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon angular(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon dribbble(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon dropbox(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon digg(string $screenReaderLabel = null) creates a new icon object
+ *
  * @method \Sphp\Html\Media\Icons\FaIcon phone(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon envelope(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon search(string $screenReaderLabel = null) creates a new icon object
@@ -79,7 +87,15 @@ class FontAwesome {
       'database' => 'fas fa-database',
       'search' => 'fas fa-search',
       'ban' => 'fas fa-ban',
-      'exclamation' => 'fas fa-exclamation-triangle',
+      'apple' => 'fab fa-apple',
+      'android' => 'fab fa-android',
+      'angular' => 'fab fa-angular',
+      'apper' => 'fab fa-apper',
+      'blogger' => 'fab fa-blogger',
+      'cpanel' => 'fab fa-cpanel',
+      'digg' => 'fab fa-digg',
+      'dropbox' => 'fab fa-dropbox',
+      'dribbble' => 'fab fa-dribbble',
   );
 
   /**
@@ -151,10 +167,11 @@ class FontAwesome {
    * @return FaIcon the corresponding component
    */
   public static function get(string $name, string $screenReaderText = null): FaIcon {
-    if (!isset(static::$tags[$name])) {
-      throw new BadMethodCallException("Method $name does not exist");
+    if (isset(static::$tags[$name])) {
+      $classes = static::$tags[$name];
+    } else {
+      $classes = $name;
     }
-    $classes = static::$tags[$name];
     return new FaIcon($classes, $screenReaderText);
   }
 

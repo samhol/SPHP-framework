@@ -10,6 +10,7 @@ namespace Sphp\Html;
 use IteratorAggregate;
 use Sphp\Stdlib\Arrays;
 use Traversable;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a container for HTML components and other textual content
@@ -165,13 +166,13 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParser 
   }
 
   public function getHtml(): string {
-   $output = '';
+    $output = '';
     foreach ($this->components as $value) {
       if (is_scalar($value) || $value === null) {
-        $output .=   $value;
+        $output .= $value;
       } else if (is_object($value)) {
         if (method_exists($value, '__toString')) {
-          $output .=  $value;
+          $output .= $value;
         } else if ($value instanceof \Traversable) {
           $arr = iterator_to_array($value);
           $output .= Arrays::implode($arr);

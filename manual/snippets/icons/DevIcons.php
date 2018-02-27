@@ -1,24 +1,16 @@
 <?php
-
-namespace Sphp\Html\Media\Icons;
-
 require_once('../../settings.php');
 
-\Sphp\Manual\md(<<<MD
-##Devicons
-MD
-);
+\Sphp\Manual\md('##Devicons');
 
-use Sphp\Stdlib\Readers\Json;
+use Sphp\Stdlib\Parser;
 use Sphp\Html\Media\Icons\DevIcons;
 
-$json = new Json();
-
-$data = $json->fromFile('DevIcons.json');
+$data = Parser::fromFile('DevIcons.json');
 ?>
 <div class="sphp-icon-examples grid-x small-up-3 medium-up-5 large-up-8">
   <?php
-  // print_r($data);
+// print_r($data);
 
   foreach ($data as $item) {
     $name = $item['name'];
