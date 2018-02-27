@@ -55,7 +55,7 @@ $sitemap-border-highlight-color: rgba(70, 70, 70, 0.5);
             }
             &.menu-text {
               i, svg {
-                float: right;
+                //float: right;
                 @include opacity(0.7);
               }
               font-size: rem-calc(17);

@@ -107,8 +107,19 @@ class FontAwesome {
    * Creates an icon object
    *
    * @param  string $fileType the file type
+   * @param  string $screenReaderText 
+   * @return FaIcon the corresponding component
+   */
+  public function __invoke(string $fileType, string $screenReaderText = null): FaIcon {
+    return static::get($fileType, $screenReaderText);
+  }
+
+  /**
+   * Creates an icon object
+   *
+   * @param  string $fileType the file type
    * @param  array $arguments 
-   * @return AbstractIcon the corresponding component
+   * @return FaIcon the corresponding component
    */
   public function __call(string $fileType, array $arguments): FaIcon {
     $screenReaderText = array_shift($arguments);
@@ -137,7 +148,7 @@ class FontAwesome {
    *
    * @param  string $name the file type
    * @param  string $screenReaderText 
-   * @return AbstractIcon the corresponding component
+   * @return FaIcon the corresponding component
    */
   public static function get(string $name, string $screenReaderText = null): FaIcon {
     if (!isset(static::$tags[$name])) {

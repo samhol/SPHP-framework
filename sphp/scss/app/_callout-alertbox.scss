@@ -1,30 +1,51 @@
 $alert-box-opacity: 0.2;
+$error-bg: rgba(255,127,80, 0.40);
 
+@mixin php-error-callout($type, $color: $error-bg,$alert-box-opacity: 0.2) { 
+  &.#{$type} {
+    color: smart-scale($color, 60%);
+    border: 3px solid $color;
+    background-color: rgba($color, $alert-box-opacity);
+    .type {
+      border-bottom: solid $color;
+      .icon {
+        color: $color;
+      } 
+      background-color: rgba($color, .35);
+    }
+    .close-button {
+      color: smart-scale($color, 60%); 
+    }
+  }
+}
 .alert-box {
-  padding-right: 3.25rem;
-  width: 100%;
+  padding: 0rem;
+  //width: 100%;
   border-radius: 5px;
 
-  &.callout {
-    color: #333;
+
+  .type {
+    font-size: rem-calc(25);
     font-weight: bold;
+    padding: rem-calc(3 10 5 3);
+    border-bottom: solid 3px;
   }
-
-  &.alert {
-    border: 3px solid $alert-color;
-    background-color: rgba($alert-color, $alert-box-opacity);
-    .icon {
-      color: $alert-color;
+  .message {
+    font-size: rem-calc(20);
+    font-weight: bold;
+    padding: rem-calc(5 15 5 15);
+  }
+  .file-info {
+    font-size: rem-calc(18);
+    padding: rem-calc(5 15 10 15);
+    .file-path {
+      font-family: $font-family-monospace;
+      font-size: rem-calc(14);
     }
   }
+  @include php-error-callout(alert, $alert-color, 0.25);
+  @include php-error-callout(warning, $warning-color, 0.25);
 
-  &.warning {
-    border: 3px solid $warning-color;
-    background-color: rgba($warning-color, $alert-box-opacity);
-    .icon {
-      color: $warning-color !important;
-    }
-  }
 
   &.success {
     border: 3px solid $success-color;
@@ -35,13 +56,9 @@ $alert-box-opacity: 0.2;
     border: 3px solid $primary-color;
     background-color: rgba($primary-color, $alert-box-opacity);
   }
-  small {
-    color: #555;
-  }
-
-
   .close-button {
-    color: rgba(#555, 0.5);
-    font-size: 2rem;
+    //font-size: 2rem;
+    $a: rem-calc(25);
+    @include close-button-size(large);
   }
 }

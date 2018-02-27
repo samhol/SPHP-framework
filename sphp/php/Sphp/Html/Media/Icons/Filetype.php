@@ -411,10 +411,21 @@ class Filetype {
    * Creates an icon object representing given file type
    *
    * @param  string $fileType the file type
+   * @param  string $screenReaderText
+   * @return FaIcon new icon object
+   */
+  public function __invoke(string $fileType, string $screenReaderText = null): FaIcon {
+    return static::get($fileType, $screenReaderText);
+  }
+
+  /**
+   * Creates an icon object representing given file type
+   *
+   * @param  string $fileType the file type
    * @param  array $arguments
    * @return FaIcon new icon object
    */
-  public static function __call(string $fileType, array $arguments): FaIcon {
+  public function __call(string $fileType, array $arguments): FaIcon {
     $screenReaderText = array_shift($arguments);
     return static::get($fileType, $screenReaderText);
   }
@@ -450,13 +461,13 @@ class Filetype {
   }
 
   /**
-   * Generates a file type icon object using Font Awesome 
+   * Generates a file type icon object from given file
    * 
    * @param  string|SplFileInfo $file the file
    * @return FaIcon new icon object
    * @throws InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file, string $screenReaderText = null): FaIcon {
+  public static function fromFile($file, string $screenReaderText = null): FaIcon {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {

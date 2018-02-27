@@ -32,6 +32,20 @@ class FaIcon extends AbstractIcon {
 
   /**
    * 
+   * @param  string $direction
+   * @return $this for a fluent interface
+   */
+  public function pull(string $direction = null) {
+    $this->cssClasses()->remove('fa-pull-left', 'fa-pull-right');
+    $direction = 'fa-pull-' . $direction;
+    if ($direction === 'fa-pull-left' || $direction === 'fa-pull-right') {
+      $this->cssClasses()->add($direction);
+    }
+    return $this;
+  }
+
+  /**
+   * 
    * @param  string $size
    * @return $this for a fluent interface
    */
