@@ -1,7 +1,7 @@
 # SPHP-framework (SPHPlayground)
 
 
-[![license](https://img.shields.io/github/license/samhol/SPHP-framework.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/samhol/SPHP-framework.svg?branch=master)](https://travis-ci.org/samhol/SPHP-framework)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/samhol/SPHP-framework.svg)](https://github.com/samhol/SPHP-framework)
 [![GitHub language count](https://img.shields.io/github/languages/count/samhol/SPHP-framework.svg)](https://github.com/samhol/SPHP-framework)
