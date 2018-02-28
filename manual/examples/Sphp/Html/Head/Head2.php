@@ -4,7 +4,6 @@ namespace Sphp\Html\Head;
 
 $head = (new Head("Document title", "utf-8"));
 $head->setBaseAddr("http://sphp.samiholck.com/", "_self")
-        ->enableSPHP()
         ->addShortcutIcon("sph/favicon.ico")
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHP framework'))

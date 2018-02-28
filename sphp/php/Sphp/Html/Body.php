@@ -8,7 +8,6 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Programming\ScriptsContainer;
-use Sphp\Html\Programming\SphpScriptsLoader;
 
 /**
  * Implements an HTML &lt;body&gt; tag
@@ -66,18 +65,6 @@ class Body extends ContainerTag implements ContentParser {
    */
   public function close() {
     return $this->scripts . $this->getClosingTag();
-  }
-
-  /**
-   * Sets up the SPHP framework related JavaScript files to the end of the body
-   *
-   * @return $this for a fluent interface
-   */
-  public function enableSPHP() {
-    $sphpScripts = new SphpScriptsLoader();
-    $sphpScripts->appendSPHP();
-    $this->scripts($sphpScripts);
-    return $this;
   }
 
   /**

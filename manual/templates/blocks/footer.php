@@ -112,8 +112,8 @@ $form = new SiteSearch360Form('playground.samiholck.com');
 
     use Sphp\Stdlib\StopWatch;
     ?>
-    Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.
-    <a href="license.php" target="license">GNU license</a> ||
+    Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck ||
+    <a href="license.php" target="license">MIT License</a> ||
     <b>Script executed in:</b>
     <i><?php echo StopWatch::getEcecutionTime() ?> seconds</i>
     <b>PHP Peak memory:</b>

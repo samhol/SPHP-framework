@@ -10,6 +10,7 @@ namespace Sphp\Html;
 use IteratorAggregate;
 use Sphp\Html\Head\Head;
 use Sphp\Html\Programming\ScriptsContainer;
+use Sphp\Html\Head\Meta;
 
 /**
  * Implements an HTML &lt;html&gt; tag
@@ -88,22 +89,6 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   }
 
   /**
-   * Sets the language of the document 
-   * 
-   * **NOTE:** Sets the value of the `lang` attribute
-   *
-   * Specifies the MIME type of the script
-   *
-   * @param  string $language the language of the document 
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
-   */
-  public function setLanguage(string $language) {
-    $this->attributes()->set('lang', $language);
-    return $this;
-  }
-
-  /**
    * Sets the title of the html page
    *
    * @param  string|Title $title the title of the html page
@@ -115,13 +100,62 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   }
 
   /**
-   * Sets up the SPHP framework related JavaScript and CSS files
+   * Sets the language of the document 
+   * 
+   * **NOTE:** Sets the value of the `lang` attribute
+   *
+   * Specifies the MIME type of the script
+   *
+   * @param  string $language the language of the document 
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
+   */
+  public function setLanguage(string $language = null) {
+    $this->attributes()->set('lang', $language);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $viewport
+   * @return $this
+   */
+  public function setViewport(string $viewport = 'width=device-width, initial-scale=1.0') {
+    $this->head()->addMeta(Meta::viewport($viewport));
+    return $this;
+  }
+
+  /**
+   * Sets up the Font Awesome icons
+   *
+   * @return $this for a fluent interface
+   * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
+   */
+  public function useFontAwesome(string $path = '') {
+    $this->head()->appendScriptSrc("https://use.fontawesome.com/releases/v5.0.7/js/all.js");
+    return $this;
+  }
+
+  /**
+   * Sets the required CSS and JavaScript files for Video.js
+   *
+   * @return $this for a fluent interface
+   * @link   http://www.videojs.com/ Video.js
+   */
+  public function useVideoJS() {
+    $this->head()->addCssSrc('http://vjs.zencdn.net/6.6.3/video-js.css');
+    $this->body()->scripts()->appendSrc('http://vjs.zencdn.net/6.6.3/video.js');
+    return $this;
+  }
+
+  /**
+   * Sets up the SPHP framework related JavaScript files to the end of the body
    *
    * @return $this for a fluent interface
    */
   public function enableSPHP() {
-    $this->head->enableSPHP();
-    $this->body->enableSPHP();
+    $this->body()->scripts()->appendSrc('sphp/javascript/dist/all.js');
+    $this->body()->scripts()->appendCode('sphp.initialize();');
     return $this;
   }
 

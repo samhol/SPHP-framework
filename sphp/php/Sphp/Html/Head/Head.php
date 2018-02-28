@@ -133,17 +133,6 @@ class Head extends AbstractComponent implements NonVisualContent {
   }
 
   /**
-   * Sets up the Font Awesome icons
-   *
-   * @return $this for a fluent interface
-   * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
-   */
-  public function useFontAwesome() {
-    $this->appendScriptSrc("https://use.fontawesome.com/releases/v5.0.6/js/all.js");
-    return $this;//->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-  }
-
-  /**
    * Sets up the Foundation icons
    *
    * @return $this for a fluent interface
@@ -151,31 +140,6 @@ class Head extends AbstractComponent implements NonVisualContent {
    */
   public function useFoundationIcons() {
     $this->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css');
-    return $this;
-  }
-
-  /**
-   * Sets up the Foundation framework related CSS files and meta data
-   *
-   * @return $this for a fluent interface
-   */
-  public function enableSPHP() {
-    $this->addMeta(Meta::viewport('width=device-width, initial-scale=1.0'))
-            ->addMeta(Meta::charset('UTF-8'));
-    $this->addCssSrc('sphp/css/sphp.all.css')
-            ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
-            ->useVideoJS();
-    return $this;
-  }
-
-  /**
-   * Appends JavaScript files for Video.js
-   *
-   * @return $this for a fluent interface
-   * @link   http://www.videojs.com/ Video.js
-   */
-  public function useVideoJS() {
-    $this->addCssSrc('http://vjs.zencdn.net/6.4.0/video-js.css');
     return $this;
   }
 
@@ -247,9 +211,9 @@ class Head extends AbstractComponent implements NonVisualContent {
   }
 
   /**
-   * Returns the container of all the existing {@link Meta} components
+   * Returns the &lt;meta&gt; component container
    *
-   * @return MetaContainer containing all {@link Meta} components
+   * @return MetaContainer the &lt;meta&gt; component container
    */
   public function metaTags(): MetaContainer {
     return $this->meta;
