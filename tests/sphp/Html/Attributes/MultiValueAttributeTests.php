@@ -1,19 +1,23 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MultiValueAttribute;
 
-include_once 'AttributeObjectTest.php';
-
-class MultiValueAttributeTests extends AttributeObjectTest {
+class MultiValueAttributeTests extends AbstractAttributeObjectTest {
 
   /**
    * @var MultiValueAttribute 
    */
-  protected $attrs;
+  protected $attr;
 
+  /**
+   * 
+   * @param string $name
+   * @return AttributeInterface
+   */
   public function createAttr(string $name = 'class'): AttributeInterface {
     return new MultiValueAttribute($name);
   }
@@ -41,13 +45,14 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    */
   public function testEmptySetting($value) {
     $this->expectException(AttributeException::class);
-    $this->attrs->set($value);
-    $this->assertFalse($this->attrs->isProtected($value));
-    $this->assertFalse($this->attrs->contains($value));
-    $this->assertFalse($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isDemanded());
-    $this->assertEquals($this->attrs->getValue(), false);
-    $this->assertEquals($this->attrs->count(), 0);
+    $this->attr->set($value);
+    var_dump($this->attr->toArray());
+    $this->assertFalse($this->attr->isProtected($value));
+    $this->assertFalse($this->attr->contains($value));
+    $this->assertFalse($this->attr->isProtected());
+    $this->assertFalse($this->attr->isDemanded());
+    $this->assertEquals($this->attr->getValue(), false);
+    $this->assertEquals($this->attr->count(), 0);
   }
 
   /**
@@ -86,12 +91,12 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    * @dataProvider settingData
    */
   public function testSetting($value) {
-    $this->attrs->set($value);
+    $this->attr->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
-    $this->assertFalse($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isProtected($value));
-    $this->assertFalse($this->attrs->isDemanded());
+    $this->assertFalse($this->attr->isProtected());
+    $this->assertFalse($this->attr->isProtected($value));
+    $this->assertFalse($this->attr->isDemanded());
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 
@@ -113,10 +118,10 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    * @dataProvider lockingData
    */
   public function testLocking($value) {
-    $this->attrs->protect($value);
-    $this->assertTrue($this->attrs->isProtected($value));
-    $this->assertTrue($this->attrs->isProtected());
-    $this->assertTrue($this->attrs->contains($value));
+    $this->attr->protect($value);
+    $this->assertTrue($this->attr->isProtected($value));
+    $this->assertTrue($this->attr->isProtected());
+    $this->assertTrue($this->attr->contains($value));
   }
 
   /**
@@ -127,7 +132,7 @@ class MultiValueAttributeTests extends AttributeObjectTest {
     return [
         ["c1", 'a_1'],
         range('a', 'e'),
-        [range('a', 'e')[range('d', 'f')]]
+        [range('a', 'e'),[range('d', 'f')]]
     ];
   }
 
@@ -139,11 +144,11 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    * @dataProvider addingData
    */
   public function testAdding($value) {
-    $this->attrs->add($value);
-    $this->assertTrue($this->attrs->contains($value));
-    $this->assertCount(count($value), $this->attrs);
-    $this->attrs->clear();
-    $this->assertCount(0, $this->attrs);
+    $this->attr->add($value);
+    $this->assertTrue($this->attr->contains($value));
+    $this->assertCount(count($value), $this->attr);
+    $this->attr->clear();
+    $this->assertCount(0, $this->attr);
   }
 
   protected function attrContains(MultiValueAttribute $attr, $values) {
@@ -174,13 +179,13 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    * @param int $count
    */
   public function testClearing($add, $lock, $count) {
-    $this->attrs->add($add);
-    $this->assertTrue($this->attrs->isProtected() === false);
-    $this->attrs->protect($lock);
-    $this->assertTrue(!$this->attrs->isProtected($add));
-    $this->assertTrue($this->attrs->isProtected($lock));
-    $this->attrs->clear();
-    $this->assertTrue($this->attrs->count() === $count);
+    $this->attr->add($add);
+    $this->assertTrue($this->attr->isProtected() === false);
+    $this->attr->protect($lock);
+    $this->assertTrue(!$this->attr->isProtected($add));
+    $this->assertTrue($this->attr->isProtected($lock));
+    $this->attr->clear();
+    $this->assertTrue($this->attr->count() === $count);
   }
 
   /**
@@ -205,12 +210,14 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    * @param int $count
    */
   public function testRemoving() {
-    $this->attrs->add("foo", "bar");
-    $this->assertTrue($this->attrs->contains("foo", 'bar'));
-    $this->attrs->remove("bar");
-    $this->assertTrue($this->attrs->contains("foo"));
-    $this->assertFalse($this->attrs->contains("bar"));
-    $this->attrs->protect("bar");
+    $this->attr->add("foo", "bar");
+    echo "\n$this->attr\n";
+    $this->assertTrue($this->attr->contains("foo", 'bar'));
+    $this->attr->remove("bar");
+    echo "\n$this->attr\n";
+    $this->assertTrue($this->attr->contains("foo"));
+    $this->assertFalse($this->attr->contains("bar"));
+    $this->attr->protect("bar");
     //$this->expectException(ImmutableAttributeException::class);
     //$this->attrs->remove("bar");
   }
@@ -240,9 +247,9 @@ class MultiValueAttributeTests extends AttributeObjectTest {
    * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
-    $this->attrs->demand();
-    $this->assertTrue($this->attrs->isDemanded());
-    $this->assertEquals("$this->attrs", $this->attrs->getName());
+    $this->attr->demand();
+    $this->assertTrue($this->attr->isDemanded());
+    $this->assertEquals("$this->attr", $this->attr->getName());
   }
 
 }

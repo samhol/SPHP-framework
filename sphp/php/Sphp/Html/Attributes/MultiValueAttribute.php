@@ -106,7 +106,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->getValueFilter()->parse($values, true);
+    $parsed = $this->getValueFilter()->parse($values);
     $this->values = array_unique(array_merge($this->values, $parsed));
     return $this;
   }
@@ -162,8 +162,8 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
-  public function remove($values) {
-    $arr = $this->getValueFilter()->parse(func_get_args());
+  public function remove(...$values) {
+    $arr = $this->getValueFilter()->parse($values);
     $this->values = array_diff(array_diff($arr, $this->locked), $this->values);
     return $this;
   }
@@ -184,11 +184,11 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @param  scalar|scalar[] $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
-  public function contains($values): bool {
+  public function contains(...$values): bool {
     $needles = $this->filter->parse($values);
     $exists = false;
     foreach ($needles as $needle) {
-      $exists = in_array($needle, $this->value);
+      $exists = in_array($needle, $this->values);
       if (!$exists) {
         break;
       }
@@ -201,7 +201,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
     if (!empty($this->values)) {
       $output = '';
       foreach ($this->values as $value) {
-        $output .= htmlspecialchars($value);
+        $output .=' '. htmlspecialchars($value);
       }
     } else {
       $output = $this->isDemanded();
@@ -219,7 +219,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   }
 
   public function toArray(): array {
-    return $this->values;
+    return [$this->getName() => $this->values];
   }
 
   public function filter(callable $filter) {

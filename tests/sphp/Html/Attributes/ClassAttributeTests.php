@@ -1,11 +1,9 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
-
-include_once 'AbstractAttributeObjectTest.php';
+use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\ClassAttribute;
 
 class ClassAttributeTests extends AbstractAttributeObjectTest {
 
@@ -56,12 +54,12 @@ class ClassAttributeTests extends AbstractAttributeObjectTest {
    */
   public function scalarData(): array {
     return [
-        ["", false, false],
-        [" ", false, false],
+        ['', false, false],
+        [' ', false, false],
         ['foo', 'foo', true],
         ['bar', 'bar', true],
-        ["value1", "value1", true],
-        [" value2 ", "value2", true],
+        ['value1', 'value1', true],
+        [' value2 ', 'value2', true],
         [0, 0, true],
         [-1, -1, true],
         [1, 1, true],
@@ -102,9 +100,9 @@ class ClassAttributeTests extends AbstractAttributeObjectTest {
    */
   public function lockingData(): array {
     return [
-        ["c1"],
-        [["c1", "c2"]],
-        [["c1", "c2", "c3"]]
+        ['c1'],
+        [["c1", 'c2']],
+        [['c1', 'c2', 'c3']]
     ];
   }
 

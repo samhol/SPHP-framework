@@ -1,11 +1,11 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\AttributeInterface;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
+abstract class AbstractAttributeObjectTest extends TestCase {
 
   /**
    * @var AttributeInterface 
@@ -33,7 +33,6 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
    */
   abstract public function createAttr(string $name = 'data-attr'): AttributeInterface;
 
-
   /**
    * @covers AbstractAttribute::isDemanded()
    */
@@ -45,6 +44,5 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName() . "");
   }
-
 
 }

@@ -1,6 +1,13 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
+
+use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\Attribute;
+use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\PropertyAttribute;
+use Sphp\Html\Attributes\ClassAttribute;
 
 class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
 
@@ -49,7 +56,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->attrs->set('data-attr', $value);
     $this->attrs->setInstance(new Attribute('data-obj', $value));
     $this->assertSame($this->attrs->get('data-obj'), $this->attrs->get('data-attr'));
-
   }
 
   /**

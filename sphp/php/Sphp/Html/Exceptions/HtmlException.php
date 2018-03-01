@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Exceptions;
 
-use Sphp\Html\Exceptions\SphpException;
+use Sphp\Exceptions\SphpException;
 
 /**
- * SPHP-specific exception interface
+ * SPHP-specific exception interface For HTML exceptions
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
