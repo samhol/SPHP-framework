@@ -49,21 +49,6 @@ class ClassAttributeTest extends TestCase {
     ];
   }
 
-  /**
-   * 
-   * @covers MultiValueAttribute::set()
-   * @dataProvider emptyData
-   */
-  public function testEmptySetting($value) {
-    // $this->expectException(AttributeException::class);
-    $this->attr->set($value);
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->contains($value));
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->getValue(), false);
-    $this->assertEquals($this->attr->count(), 0);
-  }
 
   /**
    * 

@@ -125,4 +125,3 @@ interface AttributeInterface {
    */
   public function clear();
 }
-

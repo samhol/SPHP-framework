@@ -32,9 +32,9 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   /*
    * locked individual values
    *
-   * @var array
+   * @var bool
    */
-  private $locked = [];
+  private $locked = false;
 
   /**
    * @var MultiValueAttributeUtils
@@ -67,6 +67,56 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   }
 
   /**
+   * Returns an array of unique values parsed from the input
+   *
+   * **Important:** Parameter <var>$raw</var> restrictions and rules
+   * 
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
+   *
+   * @param  mixed $raw the value(s) to parse
+   * @param  bool $validate
+   * @return string[] separated atomic values in an array
+   * @throws InvalidAttributeException if validation is set and the input is not valid
+   */
+  public function parse($raw, bool $validate = false): array {
+    $parsed = [];
+    if (is_array($raw)) {
+      $parsed = Arrays::flatten($raw);
+    } else {
+      $parsed = [$raw];
+    }
+    $vals = array_filter($parsed, 'is_scalar');
+    if (false) {
+      foreach ($vals as $value) {
+        if (!$this->isValidAtomicValue($value)) {
+          throw new InvalidAttributeException("Invalid attribute value '$value'");
+        }
+      }
+    }
+    return $vals;
+  }
+
+  /**
+   * Validates given atomic value
+   * 
+   * @param  mixed $value an atomic value to validate
+   * @return bool true if the value is valid atomic value
+   */
+  public function isValidAtomicValue($value): bool {
+    return is_scalar($value);
+  }
+
+  public function parseStringToArray(string $subject): array {
+    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      $result = [];
+    }
+    return $result;
+  }
+
+  /**
    * 
    * @return MultiValueAttributeUtils
    */
@@ -88,6 +138,9 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return $this for a fluent interface
    */
   public function set($values) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException();
+    }
     $this->clear();
     $this->add(func_get_args());
     return $this;
@@ -106,29 +159,21 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->getValueFilter()->parse($values);
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException();
+    }
+    $parsed = $this->parse($values);
     $this->values = array_unique(array_merge($this->values, $parsed));
     return $this;
   }
 
   /**
-   * Checks whether the given atomic values are locked
+   * Checks whether the attribute value is locked
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   *
-   * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
-  public function isProtected($values = null): bool {
-    if ($values === null) {
-      return !empty($this->locked);
-    } else {
-      $parsed = $this->getValueFilter()->parse($values, true);
-      return empty(array_diff($parsed, $this->locked));
-    }
+  public function isProtected(): bool {
+    return $this->locked;
   }
 
   /**
@@ -144,9 +189,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return $this for a fluent interface
    */
   public function protect($values) {
-    $parsed = $this->filter->parse(func_get_args());
-    $this->values = array_unique(array_merge($this->values, $parsed));
-    $this->locked = array_unique(array_merge($this->locked, $parsed));
+    $this->locked = true;
     return $this;
   }
 
@@ -163,13 +206,18 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove(...$values) {
-    $arr = $this->getValueFilter()->parse($values);
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException();
+    }
+    $arr = $this->parse($values);
     $this->values = array_diff(array_diff($arr, $this->locked), $this->values);
     return $this;
   }
 
   public function clear() {
-    $this->values = $this->locked;
+    if (!$this->isProtected()) {
+      $this->values = $this->locked;
+    }
     return $this;
   }
 
@@ -185,7 +233,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return boolean true if the given atomic values exists
    */
   public function contains(...$values): bool {
-    $needles = $this->filter->parse($values);
+    $needles = $this->parse($values);
     $exists = false;
     foreach ($needles as $needle) {
       $exists = in_array($needle, $this->values);
@@ -201,7 +249,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
     if (!empty($this->values)) {
       $output = '';
       foreach ($this->values as $value) {
-        $output .=' '. htmlspecialchars($value);
+        $output .= ' ' . htmlspecialchars($value);
       }
     } else {
       $output = $this->isDemanded();
