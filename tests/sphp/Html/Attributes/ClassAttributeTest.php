@@ -2,15 +2,32 @@
 
 namespace Sphp\Tests\Html\Attributes;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\AttributeInterface;
 use Sphp\Html\Attributes\ClassAttribute;
 
-class ClassAttributeTests extends AbstractAttributeObjectTest {
+class ClassAttributeTest extends TestCase {
 
   /**
    * @var ClassAttribute 
    */
   protected $attr;
+
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    $this->attr = $this->createAttr();
+  }
+
+  /**
+   * Tears down the fixture, for example, closes a network connection.
+   * This method is called after a test is executed.
+   */
+  protected function tearDown() {
+    $this->attr = null;
+  }
 
   public function createAttr(string $name = 'class'): AttributeInterface {
     return new ClassAttribute($name);
@@ -247,7 +264,7 @@ class ClassAttributeTests extends AbstractAttributeObjectTest {
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());
     $this->attr->set('a');
-    $this->assertEquals("$this->attr", 'class="a"');    
+    $this->assertEquals("$this->attr", 'class="a"');
     $this->attr->clear();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());

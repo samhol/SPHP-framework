@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MultiValueAttribute.php (UTF-8)
+ * ClassAttribute.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,15 +10,13 @@ namespace Sphp\Html\Attributes;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Utils\ClassAttributeUtils;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * An implementation of CSS class attribute
  * 
- * The class attribute  specifies one or more class names for an element
+ * The class attribute specifies one or more class names for an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -29,27 +27,17 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   /**
    * stored individual classes
    *
-   * @var scalar[]
+   * @var string[]
    */
   private $values = [];
-
-  /**
-   * @var ClassAttributeUtils
-   */
-  private $filter;
 
   /**
    * Constructs a new instance
    * 
    * @param string $name the name of the attribute
-   * @param ClassAttributeUtils|null $filter
    */
-  public function __construct(string $name = 'class', ClassAttributeUtils $filter = null) {
-    if ($filter === null) {
-      $filter = Factory::instance()->getUtil(ClassAttributeUtils::class);
-    }
+  public function __construct(string $name = 'class') {
     parent::__construct($name);
-    $this->filter = $filter;
   }
 
   /**
@@ -59,8 +47,58 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->values, $this->filter);
+    unset($this->values);
     parent::__destruct();
+  }
+
+  /**
+   * Returns an array of unique CSS class values parsed from the input
+   *
+   * **Important:** Parameter <var>$raw</var> restrictions and rules
+   * 
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
+   *
+   * @param  mixed $raw the value(s) to parse
+   * @param  bool $validate
+   * @return string[] separated unique atomic values in an array
+   * @throws InvalidAttributeException if validation is set and the input is not valid
+   */
+  protected function parse($raw, bool $validate = false): array {
+    $parsed = [];
+    if (is_array($raw)) {
+      $flat = Arrays::flatten($raw);
+      foreach ($flat as $item) {
+        $parsed = array_merge($parsed, $this->parseStringToArray($item));
+      }
+      //$vals = array_filter($parsed, 'is_string');
+    } else if (is_string($raw)) {
+      $parsed = $this->parseStringToArray($raw);
+    }
+    if ($validate) {
+      foreach ($parsed as $value) {
+        if (!$this->isValidAtomicValue($value)) {
+          throw new InvalidAttributeException("Invalid attribute value '$value'");
+        }
+      }
+    }
+    return array_unique($parsed);
+  }
+
+  protected function parseStringToArray(string $subject): array {
+    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      $result = [];
+    }
+    return $result;
+  }
+
+  protected function isValidAtomicValue($value): bool {
+    if (!is_string($value)) {
+      return false;
+    }
+    return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
   }
 
   public function getHtml(): string {
@@ -96,12 +134,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    */
   public function set($values) {
     $this->clear();
-    if (func_num_args() === 1 && is_string($values)) {
-      $values = $this->filter->parseStringToArray($values);
-    } else {
-      $values = func_get_args();
-    }
-    $this->add($values);
+    $this->add(func_get_args());
     return $this;
   }
 
@@ -118,7 +151,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->filter->parse($values, true);
+    $parsed = $this->parse($values, true);
     foreach ($parsed as $class) {
       if (!isset($this->values[$class])) {
         $this->values[$class] = false;
@@ -144,11 +177,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
       return in_array(true, $this->values);
     } else {
       $locked = false;
-      if (func_num_args() === 1 && is_string($values)) {
-        $values = $this->filter->parseStringToArray($values);
-      } else {
-        $values = $this->filter->parse(func_get_args());
-      }
+      $values = $this->parse(func_get_args());
       foreach ($values as $class) {
         $locked = isset($this->values[$class]) && $this->values[$class] === true;
         if (!$locked) {
@@ -172,13 +201,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @return $this for a fluent interface
    */
   public function protect($content) {
-    if (func_num_args() === 1 && is_string($content)) {
-      $content = $this->filter->parseStringToArray($content);
-    } else {
-      $content = $this->filter->parse(func_get_args());
-    }
-    //$arr = $this->filter->filter(func_get_args());
-    foreach ($content as $class) {
+    foreach ($this->parse(func_get_args()) as $class) {
       $this->values[$class] = true;
     }
     return $this;
@@ -197,8 +220,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove($values) {
-    $arr = Arrays::flatten(func_get_args());
-    foreach ($arr as $class) {
+    foreach ($this->parse(func_get_args()) as $class) {
       if (isset($this->values[$class])) {
         if ($this->values[$class] === false) {
           unset($this->values[$class]);
@@ -231,7 +253,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @return boolean true if the given atomic values exists
    */
   public function contains(...$values): bool {
-    $needles = $this->filter->parse($values);
+    $needles = $this->parse($values);
     $exists = false;
     foreach ($needles as $class) {
       $exists = isset($this->values[$class]);
@@ -254,7 +276,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @return boolean true if the given atomic values exists
    */
   public function containsOneOf(...$values): bool {
-    $needles = $this->filter->parse($values);
+    $needles = $this->parse($values);
     $exists = false;
     foreach ($needles as $class) {
       $exists = isset($this->values[$class]);
@@ -334,7 +356,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   }
 
   public function getIterator(): \Traversable {
-    return new Collection($this->toArray());
+    return new Collection(array_keys($this->values));
   }
 
 }

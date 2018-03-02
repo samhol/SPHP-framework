@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\AttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class BooleanAttributeTests extends \PHPUnit\Framework\TestCase {
+class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var AttributeInterface 

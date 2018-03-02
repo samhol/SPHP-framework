@@ -8,6 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * Implements an integer attribute with optional valid range
@@ -92,4 +93,3 @@ class IntegerAttribute extends AbstractAttribute {
   }
 
 }
-

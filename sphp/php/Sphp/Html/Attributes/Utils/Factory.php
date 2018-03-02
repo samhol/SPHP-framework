@@ -56,7 +56,6 @@ class Factory {
     if (!isset(self::$instance)) {
       static::$instance = (new static())
               ->setUtility(new PropertyAttributeUtils())
-              ->setUtility(new ClassAttributeUtils())
               ->setUtility(new MultiValueAttributeUtils())
               ->setUtility(new UniqueCollectionAttributeUtils());
     }

@@ -49,7 +49,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
         [0.0],
         [-1],
         [1],
-        ['0001'],
+        ['1'],
         [1],
         [null],
     ];
@@ -67,7 +67,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->isVisible(), $value !== false);
+    $this->assertEquals($this->attr->isVisible(), ($value === null || $value !== false));
     $this->assertEquals($this->attr->getValue(), $value);
   }
 
@@ -88,9 +88,9 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
    */
   public function lockMethodData(): array {
     return [
-        [1],
-        ['a'],
-        [' ä ']
+        [-1],
+        ['0'],
+        [4]
     ];
   }
 
@@ -99,14 +99,14 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
    * @dataProvider lockMethodData
    * @param  scalar $value
    */
-  public function testLockMethod($value) {
-    $attr = $this->createAttr();
-    $this->assertFalse($attr->isProtected());
-    $attr->protect($value);
-    $this->assertTrue($attr->isProtected());
-    $this->assertEquals($attr->getValue(), $value);
+  public function testProtectMethod($value) {
+    $this->assertFalse($this->attr->isProtected());
+    $this->attr->protect($value);
+    $this->assertTrue($this->attr->isProtected());
+    $this->assertEquals($this->attr->getValue(), $value);
     $this->expectException(ImmutableAttributeException::class);
-    $attr->clear();
+    $this->attr->set($value +1);
+    $this->attr->clear();
   }
 
 }
