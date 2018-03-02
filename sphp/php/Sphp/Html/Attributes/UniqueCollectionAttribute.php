@@ -70,7 +70,7 @@ class UniqueCollectionAttribute extends AbstractAttribute implements Iterator, C
    * 
    * @return MultiValueAttributeUtils
    */
-  public function getValueFilter(): MultiValueAttributeUtils {
+  public function getValueFilter(): UniqueCollectionAttributeUtils {
     return $this->filter;
   }
 

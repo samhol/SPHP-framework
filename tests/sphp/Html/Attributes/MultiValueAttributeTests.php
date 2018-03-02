@@ -5,6 +5,7 @@ namespace Sphp\Tests\Html\Attributes;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\AttributeInterface;
 use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 class MultiValueAttributeTests extends AbstractAttributeObjectTest {
 
@@ -44,15 +45,8 @@ class MultiValueAttributeTests extends AbstractAttributeObjectTest {
    * @dataProvider emptyData
    */
   public function testEmptySetting($value) {
-    $this->expectException(AttributeException::class);
+    $this->expectException(InvalidAttributeException::class);
     $this->attr->set($value);
-    var_dump($this->attr->toArray());
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->contains($value));
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->getValue(), false);
-    $this->assertEquals($this->attr->count(), 0);
   }
 
   /**

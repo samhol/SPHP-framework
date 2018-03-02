@@ -9,9 +9,8 @@ namespace Sphp\Html\Attributes;
 
 use Iterator;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Utils\MultiValueAttributeUtils;
+use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -37,21 +36,11 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   private $locked = false;
 
   /**
-   * @var MultiValueAttributeUtils
-   */
-  private $filter;
-
-  /**
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param MultiValueAttributeUtils $u
    */
-  public function __construct(string $name, MultiValueAttributeUtils $u = null) {
-    if ($u === null) {
-      $u = Factory::instance()->getUtil(MultiValueAttributeUtils::class);
-    }
-    $this->filter = $u;
+  public function __construct(string $name) {
     parent::__construct($name);
   }
 
@@ -83,19 +72,22 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   public function parse($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
-      $parsed = Arrays::flatten($raw);
-    } else {
-      $parsed = [$raw];
+      $flat = Arrays::flatten($raw);
+      foreach ($flat as $item) {
+        $parsed = array_merge($parsed, $this->parseStringToArray($item));
+      }
+      //$vals = array_filter($parsed, 'is_string');
+    } else if (is_string($raw)) {
+      $parsed = $this->parseStringToArray($raw);
     }
-    $vals = array_filter($parsed, 'is_scalar');
-    if (false) {
-      foreach ($vals as $value) {
+    if ($validate) {
+      foreach ($parsed as $value) {
         if (!$this->isValidAtomicValue($value)) {
           throw new InvalidAttributeException("Invalid attribute value '$value'");
         }
       }
     }
-    return $vals;
+    return $parsed;
   }
 
   /**
@@ -114,14 +106,6 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       $result = [];
     }
     return $result;
-  }
-
-  /**
-   * 
-   * @return MultiValueAttributeUtils
-   */
-  public function getValueFilter(): MultiValueAttributeUtils {
-    return $this->filter;
   }
 
   /**
@@ -210,13 +194,13 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       throw new ImmutableAttributeException();
     }
     $arr = $this->parse($values);
-    $this->values = array_diff(array_diff($arr, $this->locked), $this->values);
+    $this->values = array_diff($this->values, $arr);
     return $this;
   }
 
   public function clear() {
     if (!$this->isProtected()) {
-      $this->values = $this->locked;
+      $this->values = [];
     }
     return $this;
   }

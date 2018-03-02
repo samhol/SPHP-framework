@@ -1,20 +1,33 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use PHPUnit\Framework\TestCase;
+use Sphp\Html\Attributes\PropertyAttribute;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
-include_once 'AbstractAttributeObjectTest.php';
-
-class PropertyAttributeTests extends AbstractAttributeObjectTest {
+class PropertyAttributeTest extends TestCase {
 
   /**
    * @var PropertyAttribute 
    */
   protected $attr;
 
-  public function createAttr(string $name = 'style'): AttributeInterface {
-    return new PropertyAttribute($name);
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    $this->attr = new PropertyAttribute('prop');
+  }
+
+  /**
+   * Tears down the fixture, for example, closes a network connection.
+   * This method is called after a test is executed.
+   */
+  protected function tearDown() {
+    $this->attr = null;
   }
 
   /**
@@ -209,7 +222,7 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    * @param scalar $propValue
    */
   public function testSetPropertyFail($propName, $propValue) {
-    $this->expectException(Exceptions\InvalidAttributeException::class);
+    $this->expectException(InvalidAttributeException::class);
     $this->attr->setProperty($propName, $propValue);
   }
 
@@ -234,23 +247,6 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    */
   public function testUnsetPropertyMethod() {
     $this->attr->setProperty('foo', 'bar');
-    $this->assertTrue($this->attr->hasProperty('foo'));
-    $this->attr->unsetProperty('foo');
-    $this->assertFalse($this->attr->hasProperty('foo'));
-    $this->attr->lockProperty('foo', 'bar');
-    $this->assertTrue($this->attr->hasProperty('foo'));
-    $this->expectException(ImmutableAttributeException::class);
-    $this->attr->unsetProperty('foo');
-  }
-  
-
-  /**
-   * @covers PropertyAttribute::unsetProperty()
-   */
-  public function testOutputs() {
-    $this->attr->setProperty('a', '1 2 3');
-    $this->attr->setProperty('b', 'foo');
-    $this->assertSame($this->attr->hasProperty('foo'));
     $this->assertTrue($this->attr->hasProperty('foo'));
     $this->attr->unsetProperty('foo');
     $this->assertFalse($this->attr->hasProperty('foo'));
