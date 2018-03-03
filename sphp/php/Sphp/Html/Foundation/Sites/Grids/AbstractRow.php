@@ -83,7 +83,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * @param  mixed $column column or column content
    * @return ColumnInterface prepended column
    */
-  public function prepend($column): ColumnInterfac {
+  public function prepend($column): ColumnInterface {
     if (!($column instanceof ColumnInterface)) {
       $column = new Column($column);
     }

@@ -2,7 +2,7 @@
 
 namespace Sphp\Config;
 
-class ConfigTests extends \PHPUnit\Framework\TestCase {
+class ConfigTest extends \PHPUnit\Framework\TestCase {
 
   public function configData1(): array {
     return [

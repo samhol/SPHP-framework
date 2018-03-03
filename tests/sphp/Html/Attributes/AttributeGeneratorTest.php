@@ -4,7 +4,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 
-class AttributeGeneratorTests extends \PHPUnit\Framework\TestCase {
+class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var AttributeGenerator 

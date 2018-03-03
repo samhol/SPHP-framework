@@ -1,22 +1,22 @@
 <?php
 
-namespace Sphp\Tests\Html\Lists;
+namespace Sphp\Tests\Html\Tables;
 
-use Sphp\Html\Lists\Ul;
+use Sphp\Html\Tables\Td;
 
-class UlTests extends StandardListTests {
+class TdTest extends ContainerCellTests {
 
   /**
-   * @var Ul
+   * @var Td
    */
-  protected $list;
+  protected $cell;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->list = new Ul();
+    $this->cell = new Td();
   }
 
 }

@@ -14,7 +14,7 @@ use JsonSerializable;
 use ArrayAccess;
 
 /**
- * Implements a query part of AN URL
+ * Implements a query part of an URL
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -236,6 +236,8 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     next($this->query);
@@ -252,6 +254,8 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     reset($this->query);
@@ -262,15 +266,15 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @return boolean current iterator position is valid
    */
-  public function valid() {
+  public function valid(): bool {
     return false !== current($this->query);
   }
 
   /**
-   * Returns the current query string as an object
+   * Returns the current query string object
    * 
    * @param  int $filter
-   * @return QueryString the current query string as an object
+   * @return QueryString new instance
    */
   public static function getCurrent(int $filter = \FILTER_SANITIZE_STRING): QueryString {
     $query = filter_input(\INPUT_SERVER, 'QUERY_STRING', $filter);
@@ -278,14 +282,21 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
   }
 
   /**
+   * Returns the current query string object
    * 
    * @param  int $filter
-   * @return QueryString
+   * @return QueryString new instance
    */
   public static function fromGET(int $filter = \FILTER_SANITIZE_STRING): QueryString {
     return new static(filter_input_array(\INPUT_GET, $filter));
   }
 
+  /**
+   * Parses and returns the query object from given url
+   * 
+   * @param  string $url the URL 
+   * @return QueryString new instance
+   */
   public static function fromURL(string $url): QueryString {
     return new static(parse_url($url, \PHP_URL_QUERY));
   }

@@ -6,7 +6,7 @@ use Sphp\Html\Tables\Tr;
 use Sphp\Html\Tables\Td;
 use Sphp\Html\Tables\Th;
 
-class TrTests extends \PHPUnit\Framework\TestCase {
+class TrTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Tr

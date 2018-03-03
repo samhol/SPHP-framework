@@ -6,7 +6,7 @@ use Sphp\Html\Lists\StandardList;
 use Sphp\Html\Lists\LiInterface;
 use Sphp\Html\Lists\Li;
 
-abstract class StandardListTests extends \PHPUnit\Framework\TestCase {
+abstract class StandardListTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var StandardList

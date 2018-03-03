@@ -67,7 +67,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->isVisible(), ($value === null || $value !== false));
+    $this->assertEquals($this->attr->isVisible(), ($value !== null || $value !== false));
     $this->assertEquals($this->attr->getValue(), $value);
   }
 

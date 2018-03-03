@@ -4,7 +4,7 @@ namespace Sphp\Tests\Html\Tables;
 
 use Sphp\Html\Tables\Th;
 
-class ThTests extends ContainerCellTests {
+class ThTest extends ContainerCellTests {
 
   /**
    * @var Th

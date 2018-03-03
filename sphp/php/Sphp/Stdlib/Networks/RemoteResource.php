@@ -55,12 +55,12 @@ abstract class RemoteResource {
     }
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, 1);
     curl_setopt($ch, CURLOPT_NOBODY, 1);
     curl_exec($ch);
     //curl_close($ch);
-    $mime =  curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+    $mime = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
     curl_close($ch);
     return $mime;
   }

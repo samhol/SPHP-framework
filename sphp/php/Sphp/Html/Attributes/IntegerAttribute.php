@@ -78,7 +78,7 @@ class IntegerAttribute extends AbstractAttribute {
   }
 
   public function isVisible(): bool {
-    return $this->isDemanded() || $this->getValue() !== false;
+    return $this->isDemanded() || $this->getValue() !== false || $this->getValue() !== null;
   }
 
   public function isEmpty(): bool {

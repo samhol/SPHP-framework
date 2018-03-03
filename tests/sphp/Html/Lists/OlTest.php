@@ -4,7 +4,7 @@ namespace Sphp\Tests\Html\Lists;
 
 use Sphp\Html\Lists\Ol;
 
-class OlTests extends StandardListTests {
+class OlTest extends StandardListTest {
 
   /**
    * @var Ol
@@ -22,7 +22,7 @@ class OlTests extends StandardListTests {
   /**
    * @return array
    */
-  public function items(): array {
+  public function types(): array {
     return [
         ['1'],
         ['a'],
@@ -33,14 +33,13 @@ class OlTests extends StandardListTests {
   }
 
   /**
-   * @dataProvider typess
+   * @dataProvider types
    * 
    * @param mixed $data
    */
   public function testSetListType($data) {
-    $obj = $this->list->setListType($data);
-    $this->assertInstanceOf(LiInterface::class, $obj);
-    $this->assertSame($data, $obj->offsetGet(0));
+    $this->list->setListType($data);
+    $this->assertSame($this->list->getAttribute('type'), $data);
   }
 
 }
