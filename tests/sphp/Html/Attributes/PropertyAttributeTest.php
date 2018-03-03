@@ -86,13 +86,12 @@ class PropertyAttributeTest extends TestCase {
   public function testDemanding(): PropertyAttribute {
     //echo "\ntestCloning()\n";
     $propAttr = new PropertyAttribute('prop');
-
     $this->assertFalse($propAttr->isDemanded());
-
     $propAttr->demand();
     $this->assertTrue($propAttr->isDemanded());
     $propAttr->set(false);
-
+    $this->assertTrue($propAttr->isDemanded());
+    $propAttr->clear();
     $this->assertTrue($propAttr->isDemanded());
     return $propAttr;
   }
