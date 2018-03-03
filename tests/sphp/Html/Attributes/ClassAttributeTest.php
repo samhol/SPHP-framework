@@ -36,6 +36,37 @@ class ClassAttributeTest extends TestCase {
   /**
    * @return string[]
    */
+  public function identicalSets(): array {
+    return [
+        [['a', 'b', 'c'], 'b c a'],
+        [['a', 'b', 'c'], ['a b', 'c']],
+        [['a', 'b', 'c'], [['a b'], 'c']],
+    ];
+  }
+
+  /**
+   * @dataProvider identicalSets
+   * @param array $setA
+   * @param string|array $setB
+   */
+  public function testIdenticalSets(array $setA, $setB) {
+    $a = new ClassAttribute('a');
+    $a->set($setA);
+    $b = new ClassAttribute('b');
+    $b->set($setB);
+    $this->assertTrue($a->contains($setA));
+    $this->assertTrue($b->contains($setA));
+    $this->assertTrue($a->contains($setB));
+    $this->assertTrue($b->contains($setB));
+    foreach ($setA as $item) {
+      $this->assertTrue($a->contains($item));
+      $this->assertTrue($b->contains($item));
+    }
+  }
+
+  /**
+   * @return string[]
+   */
   public function invalidValues(): array {
     return [
         [""],
@@ -47,22 +78,6 @@ class ClassAttributeTest extends TestCase {
         [" \r \n \t "],
         [[""]],
     ];
-  }
-
-  /**
-   * 
-   * @covers MultiValueAttribute::set()
-   * @dataProvider emptyData
-   */
-  public function testEmptySetting($value) {
-    // $this->expectException(AttributeException::class);
-    $this->attr->set($value);
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->contains($value));
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->getValue(), false);
-    $this->assertEquals($this->attr->count(), 0);
   }
 
   /**
@@ -97,10 +112,10 @@ class ClassAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers MultiValueAttribute::set()
+   * @covers ClassAttribute::set()
    * @dataProvider settingData
    */
-  public function testSetting($value) {
+  public function testSetMethod($value) {
     $this->attr->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
@@ -125,10 +140,10 @@ class ClassAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
+   * @covers Sphp\Html\Attributes\ClassAttribute::protect()
    * @dataProvider lockingData
    */
-  public function testLocking($value) {
+  public function testProtectMethod($value) {
     $this->attr->protect($value);
     $this->assertTrue($this->attr->isProtected($value));
     $this->assertTrue($this->attr->isProtected());
@@ -148,13 +163,13 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers Sphp\Html\Attributes\ClassAttribute::add()
    * 
    * @param string $value numeric value
    * @param int $num
    * @dataProvider addingData
    */
-  public function testAdding($value) {
+  public function testAddMethod($value) {
     $this->attr->add($value);
     $this->assertTrue($this->attr->contains($value));
     $this->assertCount(count($value), $this->attr);
@@ -182,13 +197,15 @@ class ClassAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers Sphp\Html\Attributes\ClassAttribute::add()
    */
-  public function testClearing() {
+  public function testClearMethod() {
     $this->attr->add('a', 'b');
-    $this->assertTrue($this->attr->contains('a'));
+    $this->assertTrue($this->attr->contains('a', 'b'));
     $this->attr->clear();
     $this->assertFalse($this->attr->contains('a', 'b'));
+    $this->assertFalse($this->attr->contains('a'));
+    $this->assertFalse($this->attr->contains('b'));
     $this->attr->protect('a');
     $this->attr->clear();
     $this->assertTrue($this->attr->contains('a'));
@@ -209,7 +226,7 @@ class ClassAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers Sphp\Html\Attributes\ClassAttribute::add()
    *
    * @param string $add
    * @param string $lock
