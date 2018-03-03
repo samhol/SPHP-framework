@@ -28,10 +28,8 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    */
   private $values = [];
 
-  /*
-   * locked individual values
-   *
-   * @var bool
+  /**
+   * @var boolean
    */
   private $locked = false;
 
@@ -147,7 +145,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values);
-    $this->values = array_unique(array_merge($this->values, $parsed));
+    $this->values = array_merge($this->values, $parsed);
     return $this;
   }
 

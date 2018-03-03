@@ -33,6 +33,28 @@ class PropertyAttributeTest extends TestCase {
   /**
    * @return array[]
    */
+  public function mixedProperties(): array {
+    return [
+        [['p1' => 'v1', 'p2' => 'v2']],
+        ["p1:v1;p2:v2;"],
+        ["p2:v2;p1:v1;"],
+    ];
+  }
+
+  /**
+   * @dataProvider mixedProperties
+   * @param string|array $props
+   */
+  public function testMixedSetting($props) {
+    $this->attr->set($props);
+    $this->assertFalse($this->attr->isProtected());
+    $this->containsProperty($this->attr, "p1", "v1");
+    $this->containsProperty($this->attr, "p2", "v2");
+  }
+
+  /**
+   * @return array[]
+   */
   public function lockMethodData(): array {
     return [
         ["p:v;"],
@@ -59,31 +81,64 @@ class PropertyAttributeTest extends TestCase {
   }
 
   /**
-   * 
+   * @return PropertyAttribute
    */
-  public function testCloning() {
+  public function testDemanding(): PropertyAttribute {
     //echo "\ntestCloning()\n";
-    $this->attr->setProperty("p", "v");
-    $this->propEqualsTest($this->attr, "p", "v");
-    $cloned = clone $this->attr;
-    $this->propEqualsTest($cloned, "p", "v");
-    $cloned->setProperty("p", "v1");
-    $cloned->setProperty("p1", "v2");
-    $this->propEqualsTest($cloned, "p1", "v2");
-    $this->propEqualsTest($this->attr, "p", "v");
-    $this->notHavingPropTest($this->attr, "p1");
-    $this->attr->unsetProperty("p");
-    $this->notHavingPropTest($this->attr, "p");
-    $this->propEqualsTest($cloned, "p", "v1");
+    $propAttr = new PropertyAttribute('prop');
+
+    $this->assertFalse($propAttr->isDemanded());
+
+    $propAttr->demand();
+    $this->assertTrue($propAttr->isDemanded());
+    $propAttr->set(false);
+
+    $this->assertTrue($propAttr->isDemanded());
+    return $propAttr;
   }
 
   /**
-   * 
+   * @depends testDemanding
+   * @return PropertyAttribute
+   */
+  public function testSetting(PropertyAttribute $propAttr): PropertyAttribute {
+    //echo "\ntestCloning()\n";
+    //$propAttr = new PropertyAttribute('prop');
+    $propAttr->setProperty('a', 'b');
+    $this->containsProperty($propAttr, 'a', 'b');
+    $this->notHavingPropTest($propAttr, 'b');
+    $propAttr->setProperty('b', 'c');
+    $propAttr->unsetProperty('b');
+    $this->notHavingPropTest($propAttr, 'b');
+    return $propAttr;
+  }
+
+  /**
+   * @depends testSetting
+   * @param PropertyAttribute $attr
+   */
+  public function testCloning(PropertyAttribute $attr) {
+    //echo "\ntestCloning()\n";
+    $attr->lockProperty('foo', 'bar');
+    $cloned = clone $attr;
+    $this->containsProperty($cloned, 'a', 'b');
+    $this->containsProperty($cloned, 'foo', 'bar');
+    $cloned->setProperty('foobar', 'bar of foo');
+    $cloned->lockProperty('protected1', 'foo');
+    $this->containsProperty($cloned, 'foobar', 'bar of foo');
+    $this->notHavingPropTest($attr, 'foobar');
+
+    $attr->setProperty('bar', 'bar of foo');
+    $this->containsProperty($attr, 'bar', 'bar of foo');
+    $this->notHavingPropTest($cloned, 'bar');
+  }
+
+  /**
    * @param PropertyAttribute $attr
    * @param string $prop
    * @param scalar $val
    */
-  public function propEqualsTest(PropertyAttribute $attr, $prop, $val) {
+  public function containsProperty(PropertyAttribute $attr, $prop, $val) {
     //echo "\npropEqualsTest\n";
     $this->assertTrue($attr->hasProperty($prop));
     $this->assertEquals($attr->getProperty($prop), $val);
@@ -172,7 +227,7 @@ class PropertyAttributeTest extends TestCase {
     $this->attr->clear();
     foreach ($props as $p => $v) {
       $this->assertTrue($this->attr->isProtected($p));
-      $this->propEqualsTest($this->attr, $p, $v);
+      $this->containsProperty($this->attr, $p, $v);
     }
   }
 
