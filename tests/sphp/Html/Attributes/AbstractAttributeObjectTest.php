@@ -34,15 +34,27 @@ abstract class AbstractAttributeObjectTest extends TestCase {
   abstract public function createAttr(string $name = 'data-attr'): AttributeInterface;
 
   /**
-   * @covers AbstractAttribute::isDemanded()
+   * @return AttributeInterface
    */
-  public function testDemanding() {
-    $this->attr->demand();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->attr->set(false);
-    $this->attr->clear();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->assertEquals("$this->attr", $this->attr->getName() . "");
+  abstract public function getValues(string $name = 'data-attr');
+
+  /**
+   * @return AttributeInterface
+   */
+  public function testDemanding(): AttributeInterface {
+    //echo "\ntestCloning()\n";
+    $attr = $this->createAttr('attr');
+    $this->assertFalse($attr->isDemanded());
+    $attr->demand();
+    $this->assertTrue($attr->isDemanded());
+    $this->assertSame("$attr", 'attr');
+    $attr->set(false);
+    $this->assertTrue($attr->isDemanded());
+    $attr->set(null);
+    $this->assertTrue($attr->isDemanded());
+    $attr->clear();
+    $this->assertTrue($attr->isDemanded());
+    return $attr;
   }
 
 }

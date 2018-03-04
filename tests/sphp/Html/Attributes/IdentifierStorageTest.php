@@ -49,10 +49,9 @@ class IdentifierStorageTest extends \PHPUnit\Framework\TestCase {
    * @param string $name
    * @param mixed $value
    * @param bool $expected
-   
-  public function testExistence(string $name, string $value, bool $expected) {
+
+    public function testExistence(string $name, string $value, bool $expected) {
     $storage = IdStorage::get($name);
     $this->assertSame($expected, $storage->contains($value));
-  }*/
-
+    } */
 }
