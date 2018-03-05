@@ -9,6 +9,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * An abstract implementation of an HTML attribute object
@@ -42,11 +43,11 @@ abstract class AbstractAttribute implements AttributeInterface {
    * Constructs a new instance
    *
    * @param  string $name the name of the attribute
-   * @throws AttributeException
+   * @throws InvalidAttributeException
    */
   public function __construct(string $name) {
     if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
-      throw new AttributeException("Malformed Attribute name '$name'");
+      throw new InvalidAttributeException("Malformed Attribute name '$name'");
     }
     $this->name = $name;
   }

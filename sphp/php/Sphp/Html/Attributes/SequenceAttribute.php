@@ -32,6 +32,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @var boolean
    */
   private $locked = false;
+  private $separator = ' ';
 
   /**
    * Constructs a new instance
@@ -99,7 +100,8 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   }
 
   public function parseStringToArray(string $subject): array {
-    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    $trimmed = trim($subject);
+    $result = preg_split('/[' . $this->separator . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
     }
@@ -110,6 +112,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
     $this->separator = $separator;
     return $this;
   }
+
   /**
    * Sets new atomic values to the attribute removing old non locked ones
    *
@@ -231,7 +234,6 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   }
 
   public function getValue() {
-    $output = null;
     if (!empty($this->sequence)) {
       $output = '';
       foreach ($this->sequence as $value) {
