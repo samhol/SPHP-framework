@@ -9,11 +9,9 @@ namespace Sphp\Html\Attributes;
 
 use ArrayAccess;
 use Iterator;
-use Sphp\Html\Attributes\Utils\PropertyAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * Implements an property attribute object
@@ -38,35 +36,115 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    */
   private $lockedProps = [];
 
-  /**
-   * @var string
-   */
-  private $form;
 
-  /**
-   * @var PropertyAttributeUtils
-   */
-  private $parser;
+  private $propSeparator = ';';
+  private $nameValueSeparator = ':';
 
   /**
    * Constructs a new instance
    * 
    * @param string $name the name of the attribute
-   * @param string $parser
-   * @param string $form
    */
-  public function __construct(string $name, PropertyAttributeUtils $parser = null, string $form = '%s:%s;') {
-    if ($parser === null) {
-      $parser = Factory::instance()->getUtil(PropertyAttributeUtils::class);
-    }
+  public function __construct(string $name) {
     parent::__construct($name);
-    $this->form = $form;
-    $this->parser = $parser;
   }
 
   public function __destruct() {
-    unset($this->props, $this->lockedProps, $this->parser);
+    unset($this->props, $this->lockedProps);
     parent::__destruct();
+  }
+
+  /**
+   * Parses a string of properties to an array
+   *
+   * Result array has properties names as keys and corresponding values as
+   *  array values
+   *
+   * @param  string|array $properties properties to parse
+   * @return scalar[] parsed property array containing name value pairs
+   */
+  public function parse($properties, bool $removeInvalid = false): array {
+    $parsed = [];
+    if (is_array($properties)) {
+      $parsed = $properties;
+      //$parsed = array_walk($properties, 'trim');
+    } else if (is_string($properties)) {
+      $parsed = $this->parseStringToArray($properties);
+    }
+    if ($removeInvalid) {
+      $parsed = $this->removeInvalidProperties($parsed);
+    }
+    return $parsed;
+  }
+
+  public function setPropertySeparator(string $separator) {
+    $this->settings[0] = $separator;
+    return $this;
+  }
+
+  public function setNameValueSeparator(string $separator) {
+    $this->settings[1] = $separator;
+    return $this;
+  }
+
+  /**
+   * Validates a given property name 
+   * 
+   * @param  mixed $name the name of the property
+   * @return boolean true if the property name is valid
+   */
+  public function isValidPropertyName($name): bool {
+    return is_string($name) && $name !== '' && \Sphp\Stdlib\Strings::match($name, '/[^\s]+/');
+  }
+
+  /**
+   * Validates a given value
+   * 
+   * @param  mixed $value the value of the property
+   * @return boolean true if the property value is valid
+   */
+  public function isValidValue($value): bool {
+    return is_scalar($value) && $value !== '' && \Sphp\Stdlib\Strings::match($value, '/[^\s]+/');
+  }
+
+  /**
+   * Validates a given property name => value pair 
+   * 
+   * @param  mixed $name the name of the property
+   * @param  mixed $value the value of the property
+   * @return boolean true if the property name => value pair is valid
+   */
+  public function isValidProperty($name, $value): bool {
+    return $this->isValidValue($value) && $this->isValidPropertyName($name);
+  }
+
+  /**
+   * 
+   * @param  array $properties
+   * @return scalar[]
+   */
+  public function removeInvalidProperties(array $properties): array {
+    return array_filter($properties, function ($value, $prop) {
+      return $this->isValidValue($value) && $this->isValidPropertyName($prop);
+    }, \ARRAY_FILTER_USE_BOTH);
+  }
+
+  public function parseStringToArray(string $properties, bool $removeInvalid = false): array {
+    $parsed = [];
+    $rows = explode($this->propSeparator, $properties);
+    if (empty($rows)) {
+      $rows = [$properties];
+    }
+    foreach ($rows as $row) {
+      $data = explode($this->nameValueSeparator, $row, 2);
+      if (count($data) === 2) {
+        $parsed[trim($data[0])] = trim($data[1]);
+      }
+    }
+    if ($removeInvalid) {
+      $parsed = $this->removeInvalidProperties($parsed);
+    }
+    return $parsed;
   }
 
   public function getHtml(): string {
@@ -101,7 +179,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    */
   public function set($value) {
     $this->clear();
-    $this->setProperties($this->parser->parse($value));
+    $this->setProperties($this->parse($value));
     return $this;
   }
 
@@ -117,13 +195,14 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function setProperty(string $property, $value) {
+    echo "\n$property: $value;\n";
     if ($this->isProtected($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
-    if (!$this->parser->isValidPropertyName($property)) {
+    if (!$this->isValidPropertyName($property)) {
       throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
-    if (!$this->parser->isValidValue($value)) {
+    if (!$this->isValidValue($value)) {
       throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;
@@ -281,7 +360,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {
-      $this->lockProperties($this->parser->parse($props));
+      $this->lockProperties($this->parse($props));
     }
     return $this;
   }
@@ -298,10 +377,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    */
   public function getValue() {
     if (!empty($this->props)) {
-      $output = '';
+      $props = [];
       foreach ($this->props as $k => $v) {
-        $output .= sprintf($this->form, $k, $v);
+        $props [] = "$k{$this->nameValueSeparator}$v";
       }
+      $output = implode($this->propSeparator, $props);
     } else {
       $output = $this->isDemanded();
     }

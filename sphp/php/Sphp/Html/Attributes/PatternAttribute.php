@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Attribute.php (UTF-8)
+ * PatternAttribute.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 

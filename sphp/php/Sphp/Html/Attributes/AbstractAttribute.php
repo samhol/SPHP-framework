@@ -34,7 +34,7 @@ abstract class AbstractAttribute implements AttributeInterface {
   private $required = false;
 
   /**
-   * @var bool 
+   * @var boolean 
    */
   private $protected = false;
 

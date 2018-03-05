@@ -33,6 +33,27 @@ class PropertyAttributeTest extends TestCase {
   /**
    * @return array[]
    */
+  public function invalidProperties(): array {
+    return [
+        [['p1' => '', 'p2' => 'v2']],
+        [['p1' => 'v1', '' => 'v2']],
+        ["p1:;p2;"],
+        ["p2:v2;;"],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidProperties
+   * @param string|array $props
+   */
+  public function testInvalidSetting($props) {
+    $this->expectException(InvalidAttributeException::class);
+    $this->attr->set($props);
+  }
+
+  /**
+   * @return array[]
+   */
   public function mixedProperties(): array {
     return [
         [['p1' => 'v1', 'p2' => 'v2']],
@@ -162,8 +183,8 @@ class PropertyAttributeTest extends TestCase {
         ["", false],
         [false, false],
         ["p", false],
-        ["p:  v;", "p:v;"],
-        ["p: v;p1: v1;  ", "p:v;p1:v1;"]
+        ["p:  v;", "p:v"],
+        ["p: v;p1: v1;  ", "p:v;p1:v1"]
     ];
   }
 

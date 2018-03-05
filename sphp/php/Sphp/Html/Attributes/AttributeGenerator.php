@@ -34,7 +34,7 @@ class AttributeGenerator {
    */
   private $defaultType;
 
-  //private static $c = 0;
+  // private static $c = 0;
 
   /**
    * Constructs a new instance
@@ -43,8 +43,8 @@ class AttributeGenerator {
    */
   public function __construct(string $defaultType = AttributeInterface::class) {
     $this->defaultType = $defaultType;
-    //self::$c++;
-    //var_dump(self::$c);
+    // self::$c++;
+    // var_dump(self::$c);
   }
 
   /**

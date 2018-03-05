@@ -1,13 +1,12 @@
 <?php
 
 /**
- * IdentityAttribute.php (UTF-8)
+ * IdAttribute.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Utils\IdStorage;
 
 /**
  * Implements a unique id for an HTML element

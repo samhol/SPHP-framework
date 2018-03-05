@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AtomicMultiValueAttribute.php (UTF-8)
+ * SequenceAttribute.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -9,6 +9,7 @@ namespace Sphp\Html\Attributes;
 
 use Iterator;
 use Sphp\Stdlib\Strings;
+use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -18,11 +19,97 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class UniqueCollectionAttribute extends MultiValueAttribute {
+class SequenceAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface {
 
+  /**
+   * stored individual values
+   *
+   * @var array
+   */
+  private $sequence = [];
 
+  /**
+   * @var boolean
+   */
+  private $locked = false;
 
+  /**
+   * Constructs a new instance
+   *
+   * @param string $name the name of the attribute
+   */
+  public function __construct(string $name) {
+    parent::__construct($name);
+  }
 
+  /**
+   * Destroys the instance
+   * 
+   * The destructor method will be called as soon as there are no other references 
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->sequence, $this->locked);
+    parent::__destruct();
+  }
+
+  /**
+   * Returns an array of unique values parsed from the input
+   *
+   * **Important:** Parameter <var>$raw</var> restrictions and rules
+   * 
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
+   *
+   * @param  mixed $raw the value(s) to parse
+   * @param  bool $validate
+   * @return string[] separated atomic values in an array
+   * @throws InvalidAttributeException if validation is set and the input is not valid
+   */
+  public function parse($raw, bool $validate = false): array {
+    $parsed = [];
+    if (is_array($raw)) {
+      $flat = Arrays::flatten($raw);
+      foreach ($flat as $item) {
+        $parsed = array_merge($parsed, $this->parseStringToArray($item));
+      }
+      //$vals = array_filter($parsed, 'is_string');
+    } else if (is_string($raw)) {
+      $parsed = $this->parseStringToArray($raw);
+    }
+    if ($validate) {
+      foreach ($parsed as $value) {
+        if (!$this->isValidAtomicValue($value)) {
+          throw new InvalidAttributeException("Invalid attribute value '$value'");
+        }
+      }
+    }
+    return $parsed;
+  }
+
+  /**
+   * Validates given atomic value
+   * 
+   * @param  mixed $value an atomic value to validate
+   * @return bool true if the value is valid atomic value
+   */
+  public function isValidAtomicValue($value): bool {
+    return is_scalar($value);
+  }
+
+  public function parseStringToArray(string $subject): array {
+    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      $result = [];
+    }
+    return $result;
+  }
+
+  public function setSequenceSeparator(string $separator) {
+    $this->separator = $separator;
+    return $this;
+  }
   /**
    * Sets new atomic values to the attribute removing old non locked ones
    *
@@ -37,8 +124,11 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return $this for a fluent interface
    */
   public function set($values) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException();
+    }
     $this->clear();
-    $this->add(func_get_args());
+    $this->append(func_get_args());
     return $this;
   }
 
@@ -54,30 +144,22 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @param  scalar|scalar[],... $values the values to add
    * @return $this for a fluent interface
    */
-  public function add(...$values) {
-    $parsed = $this->getValueFilter()->parse($values, true);
-    parent::add(array_unique(array_merge($this->toArray(), $parsed)));
+  public function append(...$values) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException();
+    }
+    $parsed = $this->parse($values);
+    $this->sequence = array_merge($this->sequence, $parsed);
     return $this;
   }
 
   /**
-   * Checks whether the given atomic values are locked
+   * Checks whether the attribute value is locked
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   *
-   * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
-  public function isProtected($values = null): bool {
-    if ($values === null) {
-      return !empty($this->locked);
-    } else {
-      $parsed = $this->parse($values, true);
-      return empty(array_diff($parsed, $this->locked));
-    }
+  public function isProtected(): bool {
+    return $this->locked;
   }
 
   /**
@@ -93,9 +175,7 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return $this for a fluent interface
    */
   public function protect($values) {
-    $parsed = $this->filter->parse(func_get_args());
-    $this->values = array_unique(array_merge($this->values, $parsed));
-    $this->locked = array_unique(array_merge($this->locked, $parsed));
+    $this->locked = true;
     return $this;
   }
 
@@ -111,14 +191,19 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
-  public function remove($values) {
-    $arr = $this->getValueFilter()->parse(func_get_args());
-    $this->values = array_diff(array_diff($arr, $this->locked), $this->values);
+  public function remove(...$values) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException();
+    }
+    $arr = $this->parse($values);
+    $this->sequence = array_diff($this->sequence, $arr);
     return $this;
   }
 
   public function clear() {
-    $this->values = $this->locked;
+    if (!$this->isProtected()) {
+      $this->sequence = [];
+    }
     return $this;
   }
 
@@ -133,11 +218,11 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @param  scalar|scalar[] $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
-  public function contains($values): bool {
-    $needles = $this->filter->parse($values);
+  public function contains(...$values): bool {
+    $needles = $this->parse($values);
     $exists = false;
     foreach ($needles as $needle) {
-      $exists = in_array($needle, $this->value);
+      $exists = in_array($needle, $this->sequence);
       if (!$exists) {
         break;
       }
@@ -147,10 +232,10 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
 
   public function getValue() {
     $output = null;
-    if (!empty($this->values)) {
+    if (!empty($this->sequence)) {
       $output = '';
-      foreach ($this->values as $value) {
-        $output .= htmlspecialchars($value);
+      foreach ($this->sequence as $value) {
+        $output .= ' ' . htmlspecialchars($value);
       }
     } else {
       $output = $this->isDemanded();
@@ -164,15 +249,15 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return int the number of the atomic values stored in the attribute
    */
   public function count(): int {
-    return count($this->values);
+    return count($this->sequence);
   }
 
   public function toArray(): array {
-    return $this->values;
+    return [$this->getName() => $this->sequence];
   }
 
   public function filter(callable $filter) {
-    $this->values = array_unique(array_merge($this->locked, array_filter($this->values, $filter)));
+    $this->sequence = array_unique(array_merge($this->locked, array_filter($this->sequence, $filter)));
     return $this;
   }
 
@@ -203,7 +288,7 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return mixed the current element
    */
   public function current() {
-    return current($this->values);
+    return current($this->sequence);
   }
 
   /**
@@ -212,7 +297,7 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return void
    */
   public function next() {
-    next($this->values);
+    next($this->sequence);
   }
 
   /**
@@ -221,7 +306,7 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return mixed the key of the current element
    */
   public function key() {
-    return key($this->values);
+    return key($this->sequence);
   }
 
   /**
@@ -230,7 +315,7 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return void
    */
   public function rewind() {
-    reset($this->values);
+    reset($this->sequence);
   }
 
   /**
@@ -239,13 +324,7 @@ class UniqueCollectionAttribute extends MultiValueAttribute {
    * @return boolean current iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->values);
+    return false !== current($this->sequence);
   }
 
 }
-
-
-
-
-
-

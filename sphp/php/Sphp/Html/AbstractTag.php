@@ -36,6 +36,7 @@ abstract class AbstractTag implements TagInterface {
    * @var HtmlAttributeManager
    */
   private $attrs;
+  //private static $c = 0;
 
   /**
    * Constructs a new instance
@@ -52,6 +53,8 @@ abstract class AbstractTag implements TagInterface {
     if ($attrManager !== null) {
       $this->attrs = $attrManager;
     }
+   // self::$c++;
+   // echo "tag:" .self::$c."\n";
   }
 
   /**
@@ -86,6 +89,14 @@ abstract class AbstractTag implements TagInterface {
       $this->attrs = new HtmlAttributeManager();
     }
     return $this->attrs;
+  }
+  
+  public function attributesToString(): string  {
+    $output = '';
+     if ($this->attrs !== null && $this->attrs->containsAttributes()) {
+      $output = " $this->attrs";
+    }
+    return $output;
   }
 
 }

@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Attributes\Utils;
+namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
 
@@ -36,6 +36,7 @@ class IdStorage {
   }
 
   /**
+   * Returns storage instance containing ids for definite attribute name
    * 
    * @param  string $name the name of the storage
    * @return IdStorage singleton instance of storage for identifiers of given name  

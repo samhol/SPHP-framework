@@ -5,13 +5,13 @@ namespace Sphp\Tests\Html\Attributes;
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\AttributeInterface;
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\SequenceAttribute;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
-class MultiValueAttributeTests extends TestCase {
+class SequenceAttributeTest extends TestCase {
 
   /**
-   * @var MultiValueAttribute 
+   * @var SequenceAttribute 
    */
   protected $attr;
 
@@ -37,7 +37,7 @@ class MultiValueAttributeTests extends TestCase {
    * @return AttributeInterface
    */
   public function createAttr(string $name = 'class'): AttributeInterface {
-    return new MultiValueAttribute($name);
+    return new SequenceAttribute($name);
   }
 
   /**
@@ -88,21 +88,20 @@ class MultiValueAttributeTests extends TestCase {
   /**
    * @return string[]
    */
-  public function settingData(): array {
+  public function rawSequences(): array {
     return [
-        range('a', 'd'),
-        ['_-'],
-        range('a', 'd')
+        [range('a', 'd')]
     ];
   }
 
   /**
    * 
    * @covers MultiValueAttribute::set()
-   * @dataProvider settingData
+   * @dataProvider rawSequences
    */
   public function testSetting($value) {
     $this->attr->set($value);
+    
     //var_dump($attr->isDemanded() || boolval($value));
 
     $this->assertFalse($this->attr->isProtected());

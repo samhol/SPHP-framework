@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Attributes\Utils;
+namespace Sphp\Html\Attributes;
 
 class IdentifierStorageTest extends \PHPUnit\Framework\TestCase {
 
