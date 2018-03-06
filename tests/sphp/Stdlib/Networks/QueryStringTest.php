@@ -103,12 +103,11 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @depends testEquals
    * @covers Sphp\Net\URL::__clone
-   * @dataProvider urlStrings
+   * @dataProvider params
    * @param string $urlString
    */
-  public function testClone($urlString) {
+  public function testClone(array $urlString) {
     $url = new QueryString($urlString);
     $clone = clone $url;
     $this->assertTrue($url->equals($clone));

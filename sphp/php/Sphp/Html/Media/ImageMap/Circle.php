@@ -37,10 +37,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setRadius(int $radius) {
-    $coords = split(',', $this->getCoordinates());
-    $coords[2] = $radius;
-    $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->getCoordinates()->offsetSet(2, $radius);
     return $this;
   }
 
@@ -51,10 +48,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setX(int $x) {
-    $coords = split(',', $this->getCoordinates());
-    $coords[0] = $x;
-    $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->getCoordinates()->offsetSet(0, $x);
     return $this;
   }
 
@@ -65,10 +59,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setY(int $y) {
-    $coords = split(',', $this->getCoordinates());
-    $coords[1] = $y;
-    $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->getCoordinates()->offsetSet(1, $y);
     return $this;
   }
 
@@ -81,9 +72,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setCoordinates(int $x, int $y, int $radius) {
-    $coords = [$x, $y, $radius];
-    $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->getCoordinates()->set($x, $y, $radius);
     return $this;
   }
 

@@ -1,25 +1,26 @@
 <?php
 
 /**
- * SequenceAttribute.php (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * Sequence.php (UTF-8)
+ * Copyright (c) 2018 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Stdlib\Datastructures;
 
 use Iterator;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Exceptions\OutOfRangeException;
 
 /**
- * An implementation of a multi value HTML attribute
+ * An implementation of a sequence of values
  *
  * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2018-03-06
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequenceAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface, \ArrayAccess {
+class Sequence implements Iterator, \ArrayAccess {
 
   /**
    * stored individual values
@@ -27,16 +28,6 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @var array
    */
   private $sequence = [];
-
-  /**
-   * @var boolean
-   */
-  private $locked = false;
-
-  /**
-   * @var string 
-   */
-  private $separator = ' ';
 
   /**
    * @var int|null 
@@ -51,11 +42,9 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   /**
    * Constructs a new instance
    *
-   * @param string $name the name of the attribute
    * @param array $options  the separator between individual values in sequence
    */
-  public function __construct(string $name, array $options = []) {
-    parent::__construct($name);
+  public function __construct(array $options = []) {
     foreach ($options as $key => $value) {
       switch (strtolower($key)) {
         case 'separator':
@@ -84,8 +73,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->sequence, $this->locked);
-    parent::__destruct();
+    unset($this->sequence);
   }
 
   /**
@@ -209,12 +197,8 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @param  scalar|scalar[] $values the values to set
    * @return $this for a fluent interface
    */
-  public function set($values) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException();
-    }
-    $this->clear();
-    $this->append(func_get_args());
+  public function insert(int $index, $values) {
+    $this->sequence[$index] = $values;
     return $this;
   }
 
@@ -227,41 +211,11 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * 2. An array parameter can contain only one atomic value per array value
    * 3. Stores only a single instance of every value (no duplicates)
    *
-   * @param  scalar|scalar[],... $values the values to add
+   * @param  mixed,... $values the values to push
    * @return $this for a fluent interface
    */
-  public function append(...$values) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException();
-    }
-    $parsed = $this->parse($values, true);
-    $this->sequence = array_merge($this->sequence, $parsed);
-    return $this;
-  }
-
-  /**
-   * Checks whether the attribute value is locked
-   *
-   * @return boolean true if the given values are locked and false otherwise
-   */
-  public function isProtected(): bool {
-    return $this->locked;
-  }
-
-  /**
-   * Locks the specified atomic values
-   *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
-   *
-   * @param  scalar|scalar[] $values the atomic values to lock
-   * @return $this for a fluent interface
-   */
-  public function protect($values) {
-    $this->locked = true;
+  public function push(...$values) {
+    $this->sequence = array_merge($this->sequence, $values);
     return $this;
   }
 
@@ -336,20 +290,11 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   }
 
   public function toArray(): array {
-    return [$this->getName() => $this->sequence];
+    return $this->sequence;
   }
 
-  public function getHtml(): string {
-    $output = '';
-    $value = $this->getValue();
-    if ($value !== false) {
-      $output .= $this->getName();
-      if ($value !== true && !Strings::isEmpty($value)) {
-        $strVal = Strings::toString($value);
-        $output .= '="' . htmlspecialchars($strVal, ENT_COMPAT | ENT_HTML5) . '"';
-      }
-    }
-    return $output;
+  public function join(string $glue = ','): string {
+    return implode($glue, $this->sequence);
   }
 
   /**
@@ -430,9 +375,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    */
   public function offsetSet($position, $value) {
     if (!$this->isValidPosition($position)) {
-      throw new InvalidAttributeException();
-    } else if ($this->isProtected()) {
-      throw new ImmutableAttributeException();
+      throw new OutOfRangeException();
     }
     $this->sequence[$position] = $value;
   }

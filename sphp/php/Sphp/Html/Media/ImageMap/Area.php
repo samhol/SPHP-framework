@@ -27,14 +27,6 @@ interface Area extends HyperlinkInterface {
   public function getShape(): string;
 
   /**
-   * Returns the coordinates of the area
-   * 
-   * @return int[] the coordinates of the area
-   * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
-   */
-  public function getCoordinates(): array;
-
-  /**
    * Sets the relationship between the current document and the linked document
    * 
    * @param  string $rel the value of the rel attribute

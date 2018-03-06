@@ -39,8 +39,6 @@ class SequenceAttributeTest extends TestCase {
   public function createAttr(string $name = 'class'): AttributeInterface {
     return new SequenceAttribute($name);
   }
-  
-  
 
   /**
    * 
@@ -48,7 +46,7 @@ class SequenceAttributeTest extends TestCase {
    */
   public function testConstructor() {
     $this->expectException(InvalidAttributeException::class);
-    $attr = new SequenceAttribute('');
+    $attr = new SequenceAttribute('', []);
   }
 
   /**
@@ -80,15 +78,14 @@ class SequenceAttributeTest extends TestCase {
     $this->assertSame(false, $this->attr->getValue());
   }
 
-  
-
   /**
    * @return string[]
    */
   public function rawSequences(): array {
     return [
-        [range('a', 'd')]
-        [range(-5, 5)]
+        [range('a', 'd')],
+        [range(-5, 5)],
+        [range(-5, 5)],
     ];
   }
 
@@ -98,17 +95,40 @@ class SequenceAttributeTest extends TestCase {
    * @dataProvider rawSequences
    */
   public function testSetting($value) {
-    $this->attr->set($value);
-    
-    //var_dump($attr->isDemanded() || boolval($value));
+    $attr = new SequenceAttribute('foo');
+    $attr->set($value);
 
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->isDemanded());
+    var_dump("$attr");
+    $expected = 'foo="' . implode(' ', $value) . '"';
+    $this->assertSame($expected, "$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 
+  /**
+   * 
+   * @covers MultiValueAttribute::set()
+   */
+  public function testInvalidSetting() {
+    $attr = new SequenceAttribute('foo',['maxlength'=>4, 'separator' => ',']);
+    $this->expectException(InvalidAttributeException::class);
+    $attr->set(range(1,10));
 
+    var_dump("$attr");
+    //$this->assertEquals($this->attrs->getValue(), $expected);
+  }
+
+  /**
+   * 
+   * @covers MultiValueAttribute::set()
+   */
+  public function testInvalidSetting() {
+    $attr = new SequenceAttribute('foo',['maxlength'=>4, 'separator' => ',']);
+    $this->expectException(InvalidAttributeException::class);
+    $attr->set(range(1,10));
+
+    var_dump("$attr");
+    //$this->assertEquals($this->attrs->getValue(), $expected);
+  }
   /**
    * @covers AbstractAttribute::isDemanded()
    */

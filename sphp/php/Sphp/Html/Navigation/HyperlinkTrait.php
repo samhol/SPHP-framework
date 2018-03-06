@@ -99,8 +99,9 @@ trait HyperlinkTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
-  public function setTitle(string $title) {
-    return $this->attributes()->set('title', $title);
+  public function setTitle(string $title = null) {
+    $this->attributes()->set('title', $title);
+    return $this;
   }
 
   /**
@@ -130,8 +131,8 @@ trait HyperlinkTrait {
    * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
   public function setRel(string $rel = null) {
-     $this->attributes()->set('rel', $rel);
-     return $this;
+    $this->attributes()->set('rel', $rel);
+    return $this;
   }
 
 }
