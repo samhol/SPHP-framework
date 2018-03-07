@@ -11,6 +11,7 @@ use Iterator;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Stdlib\Datastructures\Sequence;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -24,9 +25,9 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   /**
    * stored individual values
    *
-   * @var array
+   * @var Sequence
    */
-  private $sequence = [];
+  private $sequence;
 
   /**
    * @var boolean
@@ -56,6 +57,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    */
   public function __construct(string $name, array $options = []) {
     parent::__construct($name);
+    $this->sequence = new Sequence();
     foreach ($options as $key => $value) {
       switch (strtolower($key)) {
         case 'separator':
@@ -135,7 +137,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
 
   public function parseStringToArray(string $subject): array {
     $trimmed = trim($subject);
-    $result = preg_split('/[' . $this->separator . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
+    $result = preg_split('/[\s' . $this->separator . '\s]+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
     }
@@ -235,7 +237,9 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values, true);
-    $this->sequence = array_merge($this->sequence, $parsed);
+    if (!empty($parsed)) {
+      call_user_func_array(array($this->sequence, 'push'), $parsed);
+    }
     return $this;
   }
 
@@ -288,7 +292,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
 
   public function clear() {
     if (!$this->isProtected()) {
-      $this->sequence = [];
+      $this->sequence->clear();
     }
     return $this;
   }
@@ -313,12 +317,12 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
         break;
       }
     }
-    return $exists;
+    return $this->sequence->contains($values);
   }
 
   public function getValue() {
-    if (!empty($this->sequence)) {
-      $raw = implode($this->separator, $this->sequence);
+    if (!$this->sequence->isEmpty()) {
+      $raw = $this->sequence->join($this->separator);
       $output = htmlspecialchars($raw);
     } else {
       $output = $this->isDemanded();
@@ -336,7 +340,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   }
 
   public function toArray(): array {
-    return [$this->getName() => $this->sequence];
+    return [$this->getName() => $this->sequence->toArray()];
   }
 
   public function getHtml(): string {

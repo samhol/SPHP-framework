@@ -118,18 +118,6 @@ class SequenceAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers MultiValueAttribute::set()
-   */
-  public function testInvalidSetting() {
-    $attr = new SequenceAttribute('foo',['maxlength'=>4, 'separator' => ',']);
-    $this->expectException(InvalidAttributeException::class);
-    $attr->set(range(1,10));
-
-    var_dump("$attr");
-    //$this->assertEquals($this->attrs->getValue(), $expected);
-  }
-  /**
    * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
