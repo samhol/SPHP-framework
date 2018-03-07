@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class PropertyAttribute extends AbstractMutableAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
 
   /**
    * properties as a (name -> value) map

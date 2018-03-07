@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface {
+class MultiValueAttribute extends AbstractMutableAttribute implements Iterator, CollectionAttributeInterface {
 
   /**
    * stored individual values

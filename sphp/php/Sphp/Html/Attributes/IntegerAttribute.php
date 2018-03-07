@@ -17,7 +17,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IntegerAttribute extends AbstractAttribute {
+class IntegerAttribute extends AbstractMutableAttribute {
 
   /**
    * @var array 

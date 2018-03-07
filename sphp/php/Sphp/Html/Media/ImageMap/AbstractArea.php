@@ -52,9 +52,9 @@ abstract class AbstractArea extends EmptyTag implements Area {
   }
 
   /**
-   * Returnsthe coordinates of the area
+   * Returns the coordinates of the area
    * 
-   * @return int[] the coordinates of the area
+   * @return SequenceAttribute the coordinates of the area
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
   public function getCoordinates(): SequenceAttribute {

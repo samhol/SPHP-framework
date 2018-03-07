@@ -12,6 +12,7 @@ use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Stdlib\Datastructures\Sequence;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -20,7 +21,7 @@ use Sphp\Stdlib\Datastructures\Sequence;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequenceAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface, \ArrayAccess {
+class SequenceAttribute extends AbstractMutableAttribute implements Iterator, CollectionAttributeInterface {
 
   /**
    * stored individual values
@@ -47,7 +48,8 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   /**
    * @var int|null 
    */
-  private $maxLength = null;
+  private $maxLength = \PHP_INT_MAX;
+  private $pattern = '//';
 
   /**
    * Constructs a new instance
@@ -107,8 +109,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
   public function parse($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
-      $flat = Arrays::flatten($raw);
-      foreach ($flat as $item) {
+      foreach (Arrays::flatten($raw) as $item) {
         $parsed = array_merge($parsed, $this->parseStringToArray($item));
       }
       //$vals = array_filter($parsed, 'is_string');
@@ -125,6 +126,22 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
     return $parsed;
   }
 
+  protected function isValidLength():bool {
+    return $this->sequence->count() >= $this->minLength && $this->sequence->count() <= $this->maxLength;
+  }
+
+  protected function validateValues(array $values) {
+    $valid = $this->isValidLength();
+    foreach ($values as $value) {
+
+      $valid = $this->isValidAtomicValue($value);
+      if (!$valid) {
+        break;
+      }
+    }
+    return $valid;
+  }
+
   /**
    * Validates given atomic value
    * 
@@ -132,7 +149,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @return bool true if the value is valid atomic value
    */
   public function isValidAtomicValue($value): bool {
-    return is_scalar($value);
+    return Strings::match($value, $this->pattern);
   }
 
   public function parseStringToArray(string $subject): array {
@@ -142,6 +159,17 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       $result = [];
     }
     return $result;
+  }
+
+  /**
+   * Sets the separator between individual values in sequence
+   * 
+   * @param  string $separator the separator between individual values in sequence
+   * @return $this for a fluent interface
+   */
+  protected function setPattern(string $separator) {
+    $this->pattern = $separator;
+    return $this;
   }
 
   /**
@@ -237,6 +265,10 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values, true);
+    
+    if (!$this->validateValues($parsed)) {
+      
+    }
     if (!empty($parsed)) {
       call_user_func_array(array($this->sequence, 'push'), $parsed);
     }
@@ -336,7 +368,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @return int the number of the atomic values stored in the attribute
    */
   public function count(): int {
-    return count($this->sequence);
+    return $this->sequence->count();
   }
 
   public function toArray(): array {
@@ -432,13 +464,13 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @throws InvalidAttributeException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function offsetSet($position, $value) {
+  public function insert($position, $value) {
     if (!$this->isValidPosition($position)) {
       throw new InvalidAttributeException();
     } else if ($this->isProtected()) {
       throw new ImmutableAttributeException();
     }
-    $this->sequence[$position] = $value;
+    $this->sequence->insert($position, $value);
   }
 
   /**

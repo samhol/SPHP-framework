@@ -8,8 +8,6 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use Iterator;
-use Sphp\Stdlib\Strings;
-use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\OutOfBoundsException;
 
 /**
@@ -50,17 +48,12 @@ class Sequence implements Iterator {
   }
 
   /**
-   * Sets new atomic values to the attribute removing old non locked ones
+   * Inserts values at a given index
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A `string` parameter can contain multiple comma separated atomic values
-   * 2. An `array` parameter can contain only one atomic value per array value
-   * 3. Any numeric value is treated as a string value
-   * 4. Stores only a single instance of every value (no duplicates)
-   *
-   * @param  scalar|scalar[] $values the values to set
+   * @param int $index the index at which to insert
+   * @param  mixed $values
    * @return $this for a fluent interface
+   * @throws OutOfBoundsException
    */
   public function insert(int $index, $values) {
     if ($index < 0) {
@@ -73,12 +66,6 @@ class Sequence implements Iterator {
 
   /**
    * Adds new atomic values to the attribute
-   *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
    *
    * @param  mixed,... $value the value(s) to push
    * @return $this for a fluent interface
@@ -93,13 +80,7 @@ class Sequence implements Iterator {
   /**
    * Adds new atomic values to the attribute
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
-   *
-   * @param  array. $values an array of values to push
+   * @param  array $values an array of values to push
    * @return $this for a fluent interface
    */
   public function pushFromArray(array $values) {
@@ -130,9 +111,15 @@ class Sequence implements Iterator {
     return $this;
   }
 
+  /**
+   * Removes and returns the last value
+   * 
+   * @return mixed the removed last value
+   * @throws UnderflowException if empty
+   */
   public function pop() {
-    if ($this->exists($index)) {
-      throw new OutOfRangeException("Index ($index) is not valid");
+    if ($this->isEmpty()) {
+      throw new UnderflowException("Sequence is empty");
     }
     return array_pop($this->sequence);
   }
@@ -159,12 +146,7 @@ class Sequence implements Iterator {
   /**
    * Determines whether the given atomic values exists
    *
-   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   *
-   * @param  scalar|scalar[] $values the atomic values to search for
+   * @param  mixed,... $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
   public function contains(...$values): bool {
@@ -191,8 +173,18 @@ class Sequence implements Iterator {
     return $this->sequence;
   }
 
-  public function join(string $glue = ','): string {
-    return implode($glue, $this->sequence);
+  /**
+   * Joins all values together as a string
+   * 
+   * @param  string|null $glue an optional string to separate each value
+   * @return string All values of the sequence joined together as a string
+   */
+  public function join(string $glue = null): string {
+    if ($glue === null) {
+      return implode($this->sequence);
+    } else {
+      return implode($glue, $this->sequence);
+    }
   }
 
   /**

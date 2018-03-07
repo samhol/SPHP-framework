@@ -37,7 +37,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setRadius(int $radius) {
-    $this->getCoordinates()->offsetSet(2, $radius);
+    $this->getCoordinates()->insert(2, $radius);
     return $this;
   }
 
@@ -48,7 +48,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setX(int $x) {
-    $this->getCoordinates()->offsetSet(0, $x);
+    $this->getCoordinates()->insert(0, $x);
     return $this;
   }
 
@@ -59,7 +59,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setY(int $y) {
-    $this->getCoordinates()->offsetSet(1, $y);
+    $this->getCoordinates()->insert(1, $y);
     return $this;
   }
 

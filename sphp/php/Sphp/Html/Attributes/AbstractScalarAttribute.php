@@ -16,7 +16,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractScalarAttribute extends AbstractAttribute {
+abstract class AbstractScalarAttribute extends AbstractMutableAttribute {
 
   /**
    * @var mixed 

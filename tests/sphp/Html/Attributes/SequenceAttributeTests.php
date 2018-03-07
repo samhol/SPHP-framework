@@ -109,9 +109,10 @@ class SequenceAttributeTest extends TestCase {
    * @covers MultiValueAttribute::set()
    */
   public function testInvalidSetting() {
-    $attr = new SequenceAttribute('foo',['maxlength'=>4, 'separator' => ',']);
+    $attr = new SequenceAttribute('foo', ['maxlength' => 4, 'separator' => ',', 'pattern' => "/^([0-9])$/"]);
     $this->expectException(InvalidAttributeException::class);
-    $attr->set(range(1,10));
+    $attr->set(range(1, 10));
+    $attr->set(range('a', 'f'));
 
     var_dump("$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);

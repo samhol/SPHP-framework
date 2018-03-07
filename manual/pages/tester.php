@@ -1,26 +1,21 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Grids;
+namespace Sphp\Html\Attributes;
 echo "<pre>";
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'auto') === 1);
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'medium-auto') === 1);
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'medium-1') === 1);
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'medium-12') === 1);
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'xxlarge-12') === 1);
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'xxlarge-auto') === 1);
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'large-offset-2') === 1);
-echo "</pre>";
-$grid = new Grid();
-$column = new Column('foo', ['small-auto', 'medium-6', 'large-auto']);
-$grid->append(Row::from([$column, 'bar', 'baz']));
-echo $grid;
-?>
-<div class="grid-example">
-  <div class="grid-x grid-margin-x">
-    <div class="small-12 cell">4 cells</div>
-    <div class="auto cell">Whatever's left!</div>
-    <div class="auto cell">Whatever's left!</div>
-  </div>
-</div>
-scheme://[user:pass@]domain:port/path?query#fragment
 
+$attr = new SequenceAttribute('data-foo');
+$attr->set("\n  \t\r   ");
+$attr->append([' ', ' ']);
+echo "\n$attr";
+var_dump($attr->toArray());
+$attr->set('a b c d e');
+$attr->append(['h', 'k']);
+echo "\n$attr";
+var_dump($attr->toArray());
+$attr->clear();
+$attr->set(['fuck,     off']);
+$attr->set(['fuck,   d44""" off']);
+echo "\n$attr";
+var_dump($attr->toArray());
+
+echo "</pre>";

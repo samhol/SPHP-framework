@@ -22,7 +22,7 @@ use Sphp\Stdlib\Readers\Json;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class JsonAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
 
   /**
    * properties as a (name -> value) map
