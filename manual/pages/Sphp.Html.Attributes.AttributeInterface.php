@@ -4,7 +4,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Manual;
 
-$attributeInterface = Manual\api()->classLinker(AttributeInterface::class);
+$attributeInterface = Manual\api()->classLinker(MutableAttributeInterface::class);
 $abstractAttr = Manual\api()->classLinker(AbstractMutableAttribute::class);
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 

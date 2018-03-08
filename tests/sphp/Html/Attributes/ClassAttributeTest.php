@@ -3,7 +3,7 @@
 namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\ClassAttribute;
 
 class ClassAttributeTest extends TestCase {
@@ -29,7 +29,7 @@ class ClassAttributeTest extends TestCase {
     $this->attr = null;
   }
 
-  public function createAttr(string $name = 'class'): AttributeInterface {
+  public function createAttr(string $name = 'class'): MutableAttributeInterface {
     return new ClassAttribute($name);
   }
 

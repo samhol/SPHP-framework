@@ -4,7 +4,7 @@ namespace Sphp\Tests\Html\Attributes;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\Attributes\Attribute;
-use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
 use Sphp\Html\Attributes\ClassAttribute;
@@ -246,10 +246,10 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   /**
    * @covers HtmlAttributeManager::setAttributeObject()
    * 
-   * @param AttributeInterface $obj
+   * @param MutableAttributeInterface $obj
    * @dataProvider objectData
    */
-  public function testObjectSetting(AttributeInterface $obj) {
+  public function testObjectSetting(MutableAttributeInterface $obj) {
     $this->attrs->setInstance($obj);
     $this->assertTrue($this->attrs->exists($obj->getName()));
   }

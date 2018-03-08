@@ -4,7 +4,7 @@ namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
-use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\SequenceAttribute;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
@@ -34,9 +34,9 @@ class SequenceAttributeTest extends TestCase {
   /**
    * 
    * @param string $name
-   * @return AttributeInterface
+   * @return MutableAttributeInterface
    */
-  public function createAttr(string $name = 'class'): AttributeInterface {
+  public function createAttr(string $name = 'class'): MutableAttributeInterface {
     return new SequenceAttribute($name);
   }
 

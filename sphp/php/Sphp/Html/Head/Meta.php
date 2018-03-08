@@ -128,7 +128,7 @@ class Meta extends EmptyTag implements MetaData {
   }
 
   /**
-   * Creates a name attribute and the corresponding content attribute
+   * Creates a named content meta data object
    *
    * **Notes:**
    * 

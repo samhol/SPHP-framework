@@ -2,13 +2,13 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 class AttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var AttributeInterface 
+   * @var MutableAttributeInterface 
    */
   protected $attr;
 
@@ -29,9 +29,9 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @return AttributeInterface
+   * @return MutableAttributeInterface
    */
-  public function createAttr(string $name = 'data-attr'): AttributeInterface {
+  public function createAttr(string $name = 'data-attr'): MutableAttributeInterface {
     return new Attribute($name);
   }
 

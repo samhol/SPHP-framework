@@ -18,7 +18,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractMutableAttribute implements AttributeInterface {
+abstract class AbstractMutableAttribute implements MutableAttributeInterface {
 
   /**
    * the name of the attribute

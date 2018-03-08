@@ -26,7 +26,7 @@ use Sphp\Html\NonVisualContent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MetaContainer implements Content, Iterator, TraversableContent, NonVisualContent {
+class MetaGroup implements Content, Iterator, TraversableContent, NonVisualContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;
@@ -65,7 +65,7 @@ class MetaContainer implements Content, Iterator, TraversableContent, NonVisualC
    * @param  MetaData $content meta information to add
    * @return $this for a fluent interface
    */
-  public function addMeta(MetaData $content) {
+  public function set(MetaData $content) {
     if ($content->attributeExists('charset')) {
       $this->metaData['charset'] = $content;
     } else if ($content->hasNamedContent()) {

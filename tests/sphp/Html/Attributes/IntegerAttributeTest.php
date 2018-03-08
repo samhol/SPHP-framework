@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
@@ -29,9 +29,9 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @return AttributeInterface
+   * @return MutableAttributeInterface
    */
-  public function createAttr(int $min = null, int $max = null): AttributeInterface {
+  public function createAttr(int $min = null, int $max = null): MutableAttributeInterface {
     return new IntegerAttribute('int', $min, $max);
   }
 
