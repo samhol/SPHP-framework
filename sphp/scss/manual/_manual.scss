@@ -96,6 +96,9 @@ $error-bg: rgba(255,127,80, 0.40);
     margin-left: rem-calc(5);
     margin-right: rem-calc(5); 
   }
+  > .button {
+    @include default-margin();
+  }
 
   @import "callouts"; 
   > p:not([class]), > blockquote:not([class]) {

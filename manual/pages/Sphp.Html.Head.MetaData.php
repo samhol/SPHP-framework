@@ -26,5 +26,10 @@ All $metaInterface types can be stored into a $metaContainer container.
 MD
 );
 Manual\visualize('Sphp/Html/Head/MetaInterface.php', 'html5', false);
+
+$code1 = Manual\codeModal('YAML file', 'manual/snippets/meta-data.yaml', 'YAML Meta data example');
+$tr1 = $code1->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
+
+echo $code1;
 Manual\visualize('Sphp/Html/Head/MetaGroup.php', 'html5', false);
 

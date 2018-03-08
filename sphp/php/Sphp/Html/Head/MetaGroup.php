@@ -73,10 +73,8 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
     if ($content->attributeExists('charset')) {
       $this->metaData['charset'] = $content;
     } else if ($content->hasNamedContent()) {
-      //echo $content->getName();
       $this->metaData['name'][$content->getName()] = $content;
     } else if ($content->hasHttpEquivContent()) {
-      echo $content->getHttpEquiv();
       $this->metaData['http-equiv'][$content->getHttpEquiv()] = $content;
     } else if ($content->hasPropertyContent()) {
       $this->metaData['property'][$content->getProperty()] = $content;
