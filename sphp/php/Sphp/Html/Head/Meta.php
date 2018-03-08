@@ -51,11 +51,11 @@ class Meta extends EmptyTag implements MetaData {
   }
 
   public function hasHttpEquiv(string $http_equiv): bool {
-    return $this->hasHttpEquivContent() && $this->get('http_equiv') == $http_equiv;
+    return $this->hasHttpEquivContent() && $this->get('http-equiv') == $http_equiv;
   }
 
   public function getHttpEquiv() {
-    return $this->getAttribute('http_equiv');
+    return $this->getAttribute('http-equiv');
   }
 
   public function hasPropertyContent(): bool {

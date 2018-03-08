@@ -1,0 +1,20 @@
+## YAML Template.
+---
+charset: utf-8
+http-equiv: 
+  X-UA-Compatible: IE=edge
+name:
+  viewport: width=device-width, initial-scale=1
+  description: SPHPlayground web framework
+  author: Sami Holck
+  keywords: php, scss, css, html, html5, JavaScript
+  robots: index, follow
+  mobile-web-app-capable: yes
+  apple-mobile-web-app-capable: yes
+http-equiv:
+  Expires: 0
+  Pragma: no-cache
+  Cache-Control: no-cache
+  imagetoolbar: no
+  x-dns-prefetch-control: off
+  apple-mobile-web-app-capable: yes

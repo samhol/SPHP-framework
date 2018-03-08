@@ -33,4 +33,12 @@ $namedContent = [
 foreach ($namedContent as $name => $value) {
   echo Meta::namedContent($name, $value);
 }
+
+
+use Sphp\Stdlib\Parser;
+
+$d = Parser::fromFile("manual/snippets/meta-data.yml");
+echo "<pre>";
+print_r($d);
+echo "</pre>";
 echo "</pre>";
