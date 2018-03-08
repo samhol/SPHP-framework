@@ -137,13 +137,17 @@ class Meta extends EmptyTag implements MetaData {
    * * **Note:** If the http-equiv attribute is set, the name attribute should not be set.
    * 
    * @param  string $name specifies a name for the metadata
-   * @param  string $content the value of the content attribute
+   * @param  string|array $content the value of the content attribute
    * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function namedContent(string $name, string $content): Meta {
-    return new static(['name' => $name, 'content' => $content]);
+  public static function namedContent(string $name, $content): Meta {
+    if ($name === 'keywords') {
+      return static::keywords($content);
+    } else {
+      return new static(['name' => $name, 'content' => $content]);
+    }
   }
 
   /**
@@ -224,7 +228,7 @@ class Meta extends EmptyTag implements MetaData {
    * Specifies a comma-separated list of keywords - relevant to the page 
    * (Informs search engines what the page is about).
    * 
-   * @param  string|string[],... $keywords a list of keywords
+   * @param  string[]|string,... $keywords a list of keywords
    * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
@@ -233,7 +237,7 @@ class Meta extends EmptyTag implements MetaData {
     if (is_array($keywords)) {
       $keywords = implode(', ', \Sphp\Stdlib\Arrays::flatten($keywords));
     }
-    return static::namedContent('keywords', $keywords);
+    return new static(['name' => 'keywords', 'content' => $keywords]);
   }
 
   /**

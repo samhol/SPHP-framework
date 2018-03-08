@@ -119,4 +119,3 @@ abstract class AbstractAttribute implements MutableAttributeInterface {
   }
 
 }
-

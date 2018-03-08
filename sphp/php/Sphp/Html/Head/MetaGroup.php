@@ -38,6 +38,10 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
    */
   private $metaData = [];
 
+  public function __construct() {
+    ;
+  }
+
   /**
    * Destroys the instance
    *
@@ -69,8 +73,10 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
     if ($content->attributeExists('charset')) {
       $this->metaData['charset'] = $content;
     } else if ($content->hasNamedContent()) {
+      //echo $content->getName();
       $this->metaData['name'][$content->getName()] = $content;
     } else if ($content->hasHttpEquivContent()) {
+      echo $content->getHttpEquiv();
       $this->metaData['http-equiv'][$content->getHttpEquiv()] = $content;
     } else if ($content->hasPropertyContent()) {
       $this->metaData['property'][$content->getProperty()] = $content;
@@ -129,6 +135,22 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
    */
   public function valid(): bool {
     return false !== current($this->metaData);
+  }
+
+  public static function fromArray(array $meta): MetaGroup {
+    $group = new MetaGroup;
+    foreach ($meta as $type => $data) {
+      if ($type === 'name') {
+        foreach ($data as $name => $value) {
+          $group->set(Meta::namedContent($name, $value));
+        }
+      } else if ($type === 'http-equiv') {
+        foreach ($data as $type => $content) {
+          $group->set(Meta::httpEquiv($type, $content));
+        }
+      }
+    }
+    return $group;
   }
 
 }

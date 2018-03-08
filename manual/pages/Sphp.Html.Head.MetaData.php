@@ -26,4 +26,5 @@ All $metaInterface types can be stored into a $metaContainer container.
 MD
 );
 Manual\visualize('Sphp/Html/Head/MetaInterface.php', 'html5', false);
+Manual\visualize('Sphp/Html/Head/MetaGroup.php', 'html5', false);
 

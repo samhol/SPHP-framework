@@ -8,9 +8,8 @@
 namespace Sphp\Html\Programming;
 
 use IteratorAggregate;
-use Sphp\Html\Content;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\Container;
+use Sphp\Html\Iterator;
 use Traversable;
 
 /**
@@ -20,7 +19,7 @@ use Traversable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScriptsContainer implements IteratorAggregate, Content, TraversableContent {
+class ScriptsContainer implements Script, IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;
@@ -28,9 +27,9 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
   /**
    * scripts container
    *
-   * @var Container 
+   * @var Script[] 
    */
-  private $container;
+  private $container = [];
 
   /**
    * Constructs a new instance
@@ -38,7 +37,7 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
    * @param Script|Script[] $scripts script components
    */
   public function __construct($scripts = null) {
-    $this->container = new Container();
+    $this->container = [];
     if ($scripts !== null) {
       foreach (is_array($scripts) ? $scripts : [$scripts] as $script) {
         $this->append($script);
@@ -47,13 +46,13 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
   }
 
   /**
-   * appends a script component to the container
+   * Appends a script component to the container
    * 
    * @param  Script $script
    * @return $this for a fluent interface
    */
   public function append(Script $script) {
-    $this->container->append($script);
+    $this->container[] = $script;
     return $this;
   }
 
@@ -85,7 +84,7 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
   }
 
   public function getHtml(): string {
-    return $this->container->getHtml();
+    return implode($this->container);
   }
 
   /**
@@ -94,7 +93,7 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->container->getIterator();
+    return new Iterator($this->container);
   }
 
   /**
@@ -104,7 +103,7 @@ class ScriptsContainer implements IteratorAggregate, Content, TraversableContent
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
-    $this->container->count();
+    return count($this->container);
   }
 
 }

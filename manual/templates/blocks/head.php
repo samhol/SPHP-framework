@@ -15,16 +15,13 @@ $title = $titleGenerator->createTitleFor(trim($redirect, '/'));
 Document::html()->setLanguage('en')->setDocumentTitle($title);
 
 use Sphp\Html\Head\Meta;
+$metaGroup = new Head\MetaGroup();
 $html->body();
 $html->enableSPHP()->useVideoJS()->setViewport('width=device-width, initial-scale=1.0')->useFontAwesome();
 Document::head()
         ->addMeta(Meta::charset('UTF-8'))
         ->addCssSrc('sphp/css/sphp.all.css')
         ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
-       
-
-        //->useFontAwesome()
-        //->useFoundationIcons()
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')
         ->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png')

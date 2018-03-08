@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Content;
 use Sphp\Html\Head\HeadContent;
 
 /**
@@ -17,16 +17,6 @@ use Sphp\Html\Head\HeadContent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface Script extends ComponentInterface, HeadContent {
+interface Script extends Content, HeadContent {
 
-  /**
-   * Sets the value of the type attribute
-   *
-   * Specifies the MIME type of the script
-   *
-   * @param  string $type the value of the type attribute (mime-type)
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
-   */
-  public function setType(string $type);
 }

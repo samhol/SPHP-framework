@@ -22,7 +22,7 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScriptSrc extends EmptyTag implements Script {
+class ScriptSrc extends EmptyTag implements ScriptTag {
 
   /**
    * Constructs a new instance

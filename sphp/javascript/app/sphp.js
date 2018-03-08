@@ -206,4 +206,8 @@ if (!window.console.log) {
 
 }(window.sphp = window.sphp || {}, jQuery));
 
-
+$(window).bind("load", function () {
+  "use strict";
+  sphp.initialize();
+  
+});

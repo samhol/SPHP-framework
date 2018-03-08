@@ -22,7 +22,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScriptCode extends ContainerTag implements Script {
+class ScriptCode extends ContainerTag implements ScriptTag {
 
   /**
    * Constructs a new instance

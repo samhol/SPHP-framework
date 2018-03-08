@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Content;
 
 /**
  * Defines content for HTML head
@@ -16,6 +16,6 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface HeadContent extends ComponentInterface {
+interface HeadContent extends Content {
   
 }
