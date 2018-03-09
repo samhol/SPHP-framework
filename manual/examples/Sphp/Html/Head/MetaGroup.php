@@ -20,4 +20,8 @@ $metaData = [
         'x-dns-prefetch-control' => 'off',
         'apple-mobile-web-app-capable' => 'yes',],
 ];
-echo MetaGroup::fromArray($metaData);
+
+use Sphp\Stdlib\Parser;
+
+$d = Parser::fromFile("manual/snippets/meta-data.yaml");
+echo MetaGroup::fromArray($d);
