@@ -27,11 +27,11 @@ class Meta extends EmptyTag implements MetaData {
   /**
    * Constructs a new instance
    * 
-   * @param  string[] $attrs an array of attribute name value pairs
+   * @param  string[] $meta an array of attribute name value pairs
    */
-  public function __construct(array $attrs = []) {
+  public function __construct(array $meta = []) {
     parent::__construct('meta');
-    $this->attributes()->merge($attrs);
+    $this->attributes()->merge($meta);
   }
 
   public function hasNamedContent(): bool {
@@ -51,15 +51,20 @@ class Meta extends EmptyTag implements MetaData {
   }
 
   public function hasHttpEquiv(string $http_equiv): bool {
-    return $this->hasHttpEquivContent() && $this->get('http-equiv') == $http_equiv;
+    return $this->hasHttpEquivContent() && $this->attributes()->get('http-equiv') === $http_equiv;
   }
 
   public function getHttpEquiv() {
-    return $this->getAttribute('http-equiv');
+    return $this->attributes()->getValue('http-equiv');
   }
 
   public function hasPropertyContent(): bool {
     return $this->attributeExists('property');
+  }
+
+  public function overlaps(MetaData $meta): bool {
+    $same = array_intersect_assoc($this->metaToArray(), $meta->metaToArray());
+    return array_key_exists('name', $same) || array_key_exists('charset', $same) || array_key_exists('http-equiv', $same);
   }
 
   /**
@@ -86,6 +91,19 @@ class Meta extends EmptyTag implements MetaData {
    */
   public function getProperty() {
     return $this->getAttribute('property');
+  }
+
+  /**
+   * Returns the value of the property attribute
+   *
+   * @return string|null the value of the property attribute or null if the 
+   *         attribute is not set
+   * @link   http://ogp.me/ The Open Graph protocol
+   * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
+   * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
+   */
+  public function metaToArray(): array {
+    return $this->attributes()->toArray();
   }
 
   /**

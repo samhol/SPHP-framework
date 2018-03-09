@@ -2,26 +2,6 @@
 
 namespace Sphp\Html\Head;
 
-$metaData = [
-    'name' => [
-        'viewport' => 'width=device-width, initial-scale=1',
-        'description' => 'SPHPlayground web framework',
-        'author' => '',
-        'keywords' => ['php', 'scss', 'css', 'html', 'html5', 'JavaScript'],
-        'robots' => 'index, follow',
-        'mobile-web-app-capable' => 'yes',
-        'apple-mobile-web-app-capable' => 'yes',
-    ],
-    'http-equiv' => [
-        'Expires' => '0',
-        'Pragma' => 'no-cache',
-        'Cache-Control' => 'no-cache',
-        'imagetoolbar' => 'no',
-        'x-dns-prefetch-control' => 'off',
-        'apple-mobile-web-app-capable' => 'yes',],
-];
-
 use Sphp\Stdlib\Parser;
 
-$d = Parser::fromFile("manual/snippets/meta-data.yaml");
-echo MetaGroup::fromArray($d);
+echo MetaGroup::fromArray(Parser::fromFile("manual/snippets/meta-data.yaml"));

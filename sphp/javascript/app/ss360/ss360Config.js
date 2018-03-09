@@ -93,8 +93,6 @@
 
 
 
-$(window).bind("load", function () {
-  "use strict";
   var ss360Config;
 
   var gen = new sphp.ss360ConfigGenerator('playground.samiholck.com', '.sphp-ss360-searchBox');
@@ -103,4 +101,3 @@ $(window).bind("load", function () {
 
   ss360Config = gen.create();
 
-});

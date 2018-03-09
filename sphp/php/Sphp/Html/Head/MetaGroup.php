@@ -70,16 +70,67 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
    * @return $this for a fluent interface
    */
   public function set(MetaData $content) {
+  
+    $key = null;
+    $contains = false;
+    foreach ($this->metaData as $k => $meta) {
+      $contains = $content->overlaps($meta);
+     if ($contains) {
+       $key = $k;
+       break;
+     }
+    }  
+    if ($key === null) {
+    $this->metaData[] = $content;
+    } else {
+    $this->metaData[$key] = $content;
+    }
+   /*  if (!$this->contains($content)) {
+      $this->metaData[] = $content;
+    } else {
+      echo "Vittuuuuuuiuuuu";
+    }
     if ($content->attributeExists('charset')) {
       $this->metaData['charset'] = $content;
-    } else if ($content->hasNamedContent()) {
+      } else if ($content->hasNamedContent()) {
       $this->metaData['name'][$content->getName()] = $content;
-    } else if ($content->hasHttpEquivContent()) {
+      } else if ($content->hasHttpEquivContent()) {
+      echo "\n" . $content->getHttpEquiv();
       $this->metaData['http-equiv'][$content->getHttpEquiv()] = $content;
-    } else if ($content->hasPropertyContent()) {
+      } else if ($content->hasPropertyContent()) {
       $this->metaData['property'][$content->getProperty()] = $content;
-    }
+      } */
     return $this;
+  }
+
+  public function contains(MetaData $cont): bool {
+
+    //return null === array_search ($content, $this->metaData);
+    $key = -1;
+    $contains = false;
+    foreach ($this->metaData as $k => $content) {
+      $contains = $content->overlaps($cont);
+     if ($contains) {
+       $key = $k;
+       break;
+     }
+
+
+
+      // print_r(array_intersect_assoc($a, $cont->metaToArray()));
+      /* if ($cont->attributeExists('charset') && $content->attributeExists('charset')) {
+        $key = $k;
+        break;
+        } else if ($content->hasName($cont->getName()) && $content->hasName($cont->getName())) {
+        $this->metaData['name'][$content->getName()] = $content;
+        } else if ($content->hasHttpEquivContent()) {
+        echo "\n" . $content->getHttpEquiv();
+        $this->metaData['http-equiv'][$content->getHttpEquiv()] = $content;
+        } else if ($content->hasPropertyContent()) {
+        $this->metaData['property'][$content->getProperty()] = $content;
+        } */
+    }
+    return $contains;
   }
 
   public function getHtml(): string {
@@ -137,16 +188,8 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
 
   public static function fromArray(array $meta): MetaGroup {
     $group = new MetaGroup;
-    foreach ($meta as $type => $data) {
-      if ($type === 'name') {
-        foreach ($data as $name => $value) {
-          $group->set(Meta::namedContent($name, $value));
-        }
-      } else if ($type === 'http-equiv') {
-        foreach ($data as $type => $content) {
-          $group->set(Meta::httpEquiv($type, $content));
-        }
-      }
+    foreach ($meta as $tag) {
+      $group->set(new Meta($tag));
     }
     return $group;
   }

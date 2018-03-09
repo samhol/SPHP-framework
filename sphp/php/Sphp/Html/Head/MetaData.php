@@ -85,4 +85,6 @@ interface MetaData extends HeadContent, NonVisualContent {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function hasPropertyContent(): bool;
+  
+  public function metaToArray():array ;
 }

@@ -10,12 +10,6 @@ $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $icon = \Sphp\Manual\api()->classLinker(Icon::class);
 $devIcons = \Sphp\Manual\api()->classLinker(DevIcons::class);
 
-$devPopup = new Popup();
-$devPopup->layout()->setSize('large');
-$devPopup->addCssClass('icon-example-popup');
-$devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
-$devModal = new Modal('DevIcons icons', $devPopup);
-$devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
 
 \Sphp\Manual\md(<<<MD
 #Icons and icon factories
@@ -28,11 +22,17 @@ These icons are available as fonts and svg images. They support assistive readin
 
 Devicon is a set of icons representing programming languages, designing and development tools.
 
-$devModal
 
 MD
 );
 
+$devPopup = new Popup();
+$devPopup->layout()->setSize('large');
+$devPopup->addCssClass('icon-example-popup');
+$devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
+$devModal = new Modal('DevIcons icons', $devPopup);
+$devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
+echo $devModal;
 \Sphp\Manual\example('Sphp/Html/Media/Icons/Icon.php')
         ->buildAccordion()->addCssClass('icons')
         ->printHtml();
@@ -68,13 +68,14 @@ $setSize = $faIcon->methodLink('setSize');
 ##Font Awesome icons
 
 Font Awesome icons are a builid feature of the framework. they can be used by creating a $icon or a $faIcon object.
+MD
+);
+$buttonGroup->printHtml();
 
-$buttonGroup
-        
-$fasPopup
-$farPopup
-$fabPopup
-        
+$fasPopup->printHtml();
+$farPopup->printHtml();
+$fabPopup->printHtml();
+\Sphp\Manual\md(<<<MD
 $faIcon Icon size can be changed simply by calling $setSize method with a Font Awesome CSS class (or a short hand version of it by simply removing the `fa-` from the begining of the size class)
 
 **Sizes are:**
@@ -90,21 +91,21 @@ MD
         ->buildAccordion()
         ->printHtml();
 
+
+\Sphp\Manual\md(<<<MD
+        
+##Filetype icons
+
+MD
+);
+
 $filePopup = new Popup();
 $filePopup->layout()->setSize('large');
 $filePopup->addCssClass('icon-example-popup');
 $filePopup->ajaxAppend('manual/snippets/icons/Filesystem.php');
 $fileModal = new Modal('Filesystem icons', $filePopup);
 $fileModal->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-
-\Sphp\Manual\md(<<<MD
-        
-##Filetype icons
-
-$fileModal
-
-MD
-);
+$fileModal->printHtml();
 
 \Sphp\Manual\example('Sphp/Html/Media/Icons/FiletypeIcons.php')
         ->buildAccordion()
