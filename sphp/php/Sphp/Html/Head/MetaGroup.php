@@ -64,42 +64,27 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
   }
 
   /**
-   * Adds a meta data object to the container
+   * Sets a meta data object
    *
    * @param  MetaData $content meta information to add
    * @return $this for a fluent interface
    */
   public function set(MetaData $content) {
-  
+
     $key = null;
     $contains = false;
     foreach ($this->metaData as $k => $meta) {
       $contains = $content->overlaps($meta);
-     if ($contains) {
-       $key = $k;
-       break;
-     }
-    }  
-    if ($key === null) {
-    $this->metaData[] = $content;
-    } else {
-    $this->metaData[$key] = $content;
+      if ($contains) {
+        $key = $k;
+        break;
+      }
     }
-   /*  if (!$this->contains($content)) {
+    if ($key === null) {
       $this->metaData[] = $content;
     } else {
-      echo "Vittuuuuuuiuuuu";
+      $this->metaData[$key] = $content;
     }
-    if ($content->attributeExists('charset')) {
-      $this->metaData['charset'] = $content;
-      } else if ($content->hasNamedContent()) {
-      $this->metaData['name'][$content->getName()] = $content;
-      } else if ($content->hasHttpEquivContent()) {
-      echo "\n" . $content->getHttpEquiv();
-      $this->metaData['http-equiv'][$content->getHttpEquiv()] = $content;
-      } else if ($content->hasPropertyContent()) {
-      $this->metaData['property'][$content->getProperty()] = $content;
-      } */
     return $this;
   }
 
@@ -110,10 +95,10 @@ class MetaGroup implements Content, Iterator, TraversableContent, NonVisualConte
     $contains = false;
     foreach ($this->metaData as $k => $content) {
       $contains = $content->overlaps($cont);
-     if ($contains) {
-       $key = $k;
-       break;
-     }
+      if ($contains) {
+        $key = $k;
+        break;
+      }
 
 
 

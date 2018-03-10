@@ -10,10 +10,10 @@ $orbit = Manual\api()->classLinker(Orbit::class);
 $slide = Manual\api()->classLinker(HtmlSlide::class);
 
 Manual\md(<<<MD
-##The $orbit container and the $slide components
+##$orbit <small>An image and content carousel</small>
 $ns
-$orbit is a responsive container for image on other content sliders that allows swiping on touch-enabled devices.
-An $orbit containing $slide components can not handle variable-height content.
+ Orbit is a Foundation based image and content carousel with animation support 
+and many customizable options. Orbit allows swiping on touch-enabled devices.
 MD
 );
 echo '<div class="wrapper">';

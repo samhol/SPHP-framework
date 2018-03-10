@@ -32,6 +32,10 @@ $tr1 = $code1->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
 
 echo $code1;
 
+$code2 = Manual\codeModal('PHP file', 'manual/snippets/meta-array.php', 'PHP Meta data example');
+$tr2 = $code2->getTrigger()->addCssClass('button', 'secondary', 'radius', 'small');
+
+echo $code2;
 
 Manual\visualize('Sphp/Html/Head/MetaGroup.php', 'html5', false);
 

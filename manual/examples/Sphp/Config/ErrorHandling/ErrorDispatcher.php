@@ -11,7 +11,7 @@ $ed->addErrorListener(\E_USER_ERROR, function (int $errno, string $errstr, strin
 
 $ed->addErrorListener(\E_ALL, new CalloutBuilder(true, true), 3);
 $ed->startErrorHandling();
-
+include_once('foobar');
 trigger_error('User defined Errors suck badly', E_USER_ERROR);
 trigger_error('User warnings suck', E_USER_WARNING);
 trigger_error('Deprecated user features suck', E_USER_DEPRECATED);
