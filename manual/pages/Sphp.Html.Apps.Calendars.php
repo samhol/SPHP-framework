@@ -3,7 +3,7 @@
 namespace Sphp\Html\Apps\Calendars;
 
 $ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
-$monthView = $api->classLinker(MonthView::class);
+$monthView = \Sphp\Manual\api()->classLinker(MonthView::class);
 \Sphp\Manual\md(<<<MD
 ##The $monthView component
 MD

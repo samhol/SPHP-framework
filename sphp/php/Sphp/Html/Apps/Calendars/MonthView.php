@@ -12,7 +12,7 @@ use Sphp\Html\Tables\Tr;
 use Sphp\Html\Tables\Td;
 use Sphp\Html\Tables\Thead;
 use Sphp\Html\Tables\Table;
-use Sphp\I18n\Calendar;
+use Sphp\I18n\Datetime\CalendarUtils;
 use DateTimeInterface;
 
 /**
@@ -54,11 +54,11 @@ class MonthView extends \Sphp\Html\AbstractComponent {
     $body = new Tbody();
     $monday = $this->getMonday($dt);
     $week = $monday->format('W');
-    $body[$week] = $this->createWeekRow($monday);
+    $body->append($this->createWeekRow($monday));
     $next = $monday->modify('+ 7 days');
     while ($next->format('m') == $this->month) {
       $week = $next->format('W');
-      $body[$week] = $this->createWeekRow($next);
+      $body->append($this->createWeekRow($next));
       $next = $next->modify('+ 7 day');
     }
     return $body;
@@ -66,7 +66,7 @@ class MonthView extends \Sphp\Html\AbstractComponent {
 
   protected function createThead() {
     $thead = new Thead();
-    $c = new Calendar();
+    $c = new CalendarUtils();
     $tr = new Tr();
     $tr->appendTh('Week');
     $tr->appendThs($c->getWeekdays());
