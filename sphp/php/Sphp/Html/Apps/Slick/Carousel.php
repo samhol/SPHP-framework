@@ -8,6 +8,7 @@
 namespace Sphp\Html\Apps\Slick;
 
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Attributes\JsonAttribute;
 use Sphp\Html\Media\VideoPlayerInterface;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 
@@ -32,7 +33,7 @@ class Carousel extends AbstractComponent {
     parent::__construct('div');
     $this->slides = [];
     $this->attributes()
-            ->setInstance(new \Sphp\Html\Attributes\JsonAttribute('data-slick'))->demand('data-slick');
+            ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
   }
   
   public function setProperty(array $props) {
@@ -61,6 +62,7 @@ class Carousel extends AbstractComponent {
     }
     return $this;
   }
+
   /**
    * Appends a new HTML slide component
    *
