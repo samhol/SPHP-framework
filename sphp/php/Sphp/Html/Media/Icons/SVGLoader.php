@@ -13,11 +13,12 @@ namespace Sphp\Html\Media\Icons;
  *
  * @author samih
  */
-class SVGLoader implements \Sphp\Html\Content, IconInterface{
+class SVGLoader implements \Sphp\Html\Content, IconInterface {
+
   use \Sphp\Html\ContentTrait;
-  
-  public function __construct(string $path, $sreenreaderLabel = null) {
-   $this->svg =  file_get_contents($path);
+
+  public function __construct(string $path, string $sreenreaderLabel = null) {
+    $this->svg = file_get_contents($path);
   }
 
   public function setSreenreaderText(string $sreenreaderLabel = null) {
@@ -26,6 +27,10 @@ class SVGLoader implements \Sphp\Html\Content, IconInterface{
 
   public function getHtml(): string {
     return $this->svg;
+  }
+
+  public static function fromFile(string $path, string $sreenreaderLabel = null): SvgLoader {
+    return new static($path, $sreenreaderLabel);
   }
 
 }

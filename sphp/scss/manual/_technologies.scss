@@ -23,35 +23,22 @@ github: #222,
 );
 .sphp-tech-slick {
   div.sphp-info-button {
+    @include opacity(.5);
+    @include transition-property(all);
+    @include transition-duration(1s);
+    @include transition-timing-function(ease-in-out);
     outline : none;
     cursor: pointer;
     padding: rem-calc(10 30);
     &:hover, &.sphp-is-active {
-      padding: rem-calc(8 28);
       @include opacity(1);
-      @each $name, $icon in $icons {
-        &.#{$name} svg path {
-          fill: $icon;
-        }
-      }
     }
     svg {
+      height: rem-calc(200);
       //position: absolute; 
-      @include opacity(.8);
-      @include transition-property(all);
-      @include transition-duration(0.5s);
-      @include transition-timing-function(ease-in-out);
       &.sphp .left, &.sphp .right {
         fill: #ce752d;
       }
-      path {
-        fill: #888;
-        @include opacity(.8);
-        @include transition-property(all);
-        @include transition-duration(0.5s);
-        @include transition-timing-function(ease-in-out);
-      }
-
     }
   }
 }
