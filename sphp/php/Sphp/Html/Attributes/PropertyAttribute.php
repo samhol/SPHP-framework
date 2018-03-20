@@ -195,7 +195,7 @@ class PropertyAttribute extends AbstractMutableAttribute implements ArrayAccess,
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function setProperty(string $property, $value) {
-    echo "\n$property: $value;\n";
+    //echo "\n$property: $value;\n";
     if ($this->isProtected($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
