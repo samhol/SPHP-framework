@@ -53,7 +53,7 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen singleton API linker
    */
-  public static function sami(string $path = 'API/sami/', string $target = 'sami'): Sami {
+  public static function sami(string $path = 'API/sami/', string $target = null): Sami {
     if (!array_key_exists($path, self::$samis)) {
       $instance = new Sami(new SamiUrlGenerator($path), $target);
       self::$apigens[$path] = $instance;
@@ -71,7 +71,7 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen singleton API linker
    */
-  public static function apigen(string $path = '', string $target = 'apigen'): ApiGen {
+  public static function apigen(string $path = '', string $target = null): ApiGen {
     if ($path === null) {
       $path = DEFAULT_APIGEN;
     }
@@ -90,7 +90,7 @@ class Apis {
    * 
    * @return PHPManual singleton API linker
    */
-  public static function phpManual(string $target = 'phpman'): PHPManual {
+  public static function phpManual(string $target = null): PHPManual {
     if (self::$phpManual === null) {
       self::$phpManual = (new PHPManual($target));
     } else {
@@ -105,7 +105,7 @@ class Apis {
    * 
    * @return FoundationDocsLinker singleton API linker
    */
-  public static function foundation($target = '_blank') {
+  public static function foundation($target = null) {
     if (self::$foundation === null) {
       self::$foundation = new FoundationDocsLinker($target);
     }
@@ -117,7 +117,7 @@ class Apis {
    * 
    * @return W3schools singleton API linker
    */
-  public static function w3schools($target = 'w3schools'): W3schools {
+  public static function w3schools($target = null): W3schools {
     if (self::$w3schools === null) {
       self::$w3schools = new W3schools($target);
     } else {
