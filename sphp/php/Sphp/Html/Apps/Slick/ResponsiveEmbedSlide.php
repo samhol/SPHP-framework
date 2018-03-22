@@ -10,6 +10,7 @@ namespace Sphp\Html\Apps\Slick;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbedInterface;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
+use Sphp\Html\Media\LazyMedia;
 
 /**
  * Implements a Responsive Embed slide for a Orbit component
@@ -20,10 +21,9 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ResponsiveEmbedSlide extends AbstractComponent implements Slide, ResponsiveEmbedInterface {
+class ResponsiveEmbedSlide extends AbstractComponent implements Slide, ResponsiveEmbedInterface, LazyMedia {
 
-  use ActivationTrait;
-
+  use \Sphp\Html\Media\LazyMediaSourceTrait;
   /**
    * the flex component instance
    *
