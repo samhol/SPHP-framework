@@ -8,7 +8,7 @@ use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 
 $form = (new GridForm())
-        ->validation(true)
+        ->useValidation(true)
         ->setTarget("outputFrame");
 $usernameField = (new TextInput("username"))->setPlaceholder("Username");
 $row1 = new FormRow();

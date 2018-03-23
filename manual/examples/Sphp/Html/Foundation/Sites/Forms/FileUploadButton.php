@@ -5,7 +5,7 @@ use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Buttons\FileUploadButton;
 
 $form = (new GridForm())
-        ->validation(true)
+        ->useValidation(true)
         ->setTarget("outputFrame")
         ->append(new FileUploadButton("img-file", "Select image"))
         ->append(Button::submitter("Load Image", "submit"));

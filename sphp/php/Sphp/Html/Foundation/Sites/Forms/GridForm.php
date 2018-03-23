@@ -76,7 +76,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     if ($content !== null) {
       $this->append($content);
     }
-    $this->errorLabel = new Callout('<i class="fi-alert"></i> There are some errors in your form.');
+    $this->errorLabel = new Callout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
     $this->errorLabel->cssClasses()->protect('alert');
     $this->errorLabel->inlineStyles()->setProperty('display', 'none');
     $this->errorLabel->attributes()->demand('data-abide-error');
@@ -104,7 +104,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     return $this;
   }
 
-  public function validation(bool $validate = true) {
+  public function useValidation(bool $validate = true) {
     $this->attributes()->set('novalidate', $validate)->set('data-abide', $validate);
     return $this;
   }
