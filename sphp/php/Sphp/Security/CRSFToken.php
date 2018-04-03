@@ -67,24 +67,41 @@ class CRSFToken {
    * @return string the CRSF token generated
    */
   public function generateToken(string $tokenName): string {
-    $token = md5(uniqid(microtime(), true));
-    $_SESSION[$tokenName . '_token'] = $token;
-    return $token;
+    if (array_key_exists($tokenName, $_SESSION)) {
+      return $_SESSION[$tokenName];
+    } else {
+      $token = md5(uniqid(microtime(), true));
+      $_SESSION[$tokenName] = $token;
+      return $token;
+    }
+  }
+
+  /**
+   * Unsets the given CRSF token
+   * 
+   * @param  string $tokenName the CRSF token name
+   * @return $this for a fluent interface
+   */
+  public function unsetToken(string $tokenName) {
+    if (array_key_exists($tokenName, $_SESSION)) {
+      unset($_SESSION[$tokenName]);
+    }
+    return $this;
   }
 
   /**
    * Verifies a named CRSF token from the input data
    * 
    * @param  string $tokenName the CRSF token name
-   * @param  int $type
+   * @param  int $type input type
    * @return boolean true if the token value matches
    */
   public function verifyInputToken(string $tokenName, int $type): bool {
     $token = filter_input($type, $tokenName, FILTER_SANITIZE_STRING);
-    if (!isset($_SESSION[$tokenName . '_token'])) {
+    if (!isset($_SESSION[$tokenName])) {
       return false;
     }
-    if ($_SESSION[$tokenName . '_token'] !== $token) {
+    if ($_SESSION[$tokenName] !== $token) {
       return false;
     }
 

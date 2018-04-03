@@ -27,16 +27,16 @@
 namespace Sphp\Http\Headers;
 
 /**
- * Location header
+ * Description of AllowOrigin 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Location extends GenericHeader {
-
-  public function __construct($value) {
-    parent::__construct($name, $value);
+class AllowOrigin extends GenericHeader {
+  
+  public function __construct(string $value) {
+    parent::__construct('Access-Control-Allow-Origin', $value);
   }
-
 }

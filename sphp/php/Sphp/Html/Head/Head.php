@@ -12,6 +12,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Container;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\Script;
+use Sphp\Html\Programming\ScriptSrc;
 
 /**
  * Implements an HTML &lt;head&gt; tag
@@ -148,13 +149,12 @@ class Head extends AbstractComponent implements NonVisualContent {
    *
    * @param  string $src the file path of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
-   * @return $this for a fluent interface
+   * @return ScriptSrc appended code component
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function appendScriptSrc(string $src, bool $async = false) {
-    $this->scripts()->appendSrc($src, $async);
-    return $this;
+  public function appendScriptSrc(string $src, bool $async = false): ScriptSrc {
+    return $this->scripts()->appendSrc($src, $async);
   }
 
   /**

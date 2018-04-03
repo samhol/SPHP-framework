@@ -8,18 +8,21 @@
 namespace Sphp\Stdlib\Networks;
 
 /**
- * Description of RemoteResource
+ * Tools to work with remote files and directories
  *
- * @author samih
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 abstract class RemoteResource {
 
   /**
    * Checks whether the URL exists or not
    *
+   * @param  string $url the pointing to the resource
    * @return boolean true if the URL exists and false otherwise
    */
-  public static function exists($url): bool {
+  public static function exists(string $url): bool {
     $curl = curl_init($url);
 
     //don't fetch the actual page, you only want to check the connection is ok
@@ -46,13 +49,10 @@ abstract class RemoteResource {
   /**
    * Returns the Mime type of the resource pointed by the given URL
    *
-   * @param  string|URL $url the pointing to the resource
+   * @param  string $url the pointing to the resource
    * @return string the Mime type of the content pointed by the given URL
    */
-  public static function getMimeType($url): string {
-    if ($url instanceof URL) {
-      $url = $url->__toString();
-    }
+  public static function getMimeType(string $url): string {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -63,6 +63,22 @@ abstract class RemoteResource {
     $mime = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
     curl_close($ch);
     return $mime;
+  }
+
+  /**
+   * 
+   * @param  string $url the pointing to the resource
+   * @return string
+   */
+  public static function read(string $url): string {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $output = curl_exec($ch);
+    curl_close($ch);
+    return $output;
   }
 
 }

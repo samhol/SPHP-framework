@@ -86,6 +86,27 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     return $this->gridContainer;
   }
 
+  public function useValidation(bool $validate = true) {
+    $this->attributes()->set('novalidate', $validate)->set('data-abide', $validate);
+    return $this;
+  }
+
+  public function validateOnBlur(bool $validate = true) {
+    if ($validate) {
+      $this->useValidation();
+    }
+    $this->attributes()->set('data-validate-on-blur', $validate ? 'true' : 'false');
+    return $this;
+  }
+
+  public function liveValidate(bool $validate = true) {
+    if ($validate) {
+      $this->useValidation();
+    }
+    $this->attributes()->set('data-live-validate', $validate ? 'true' : 'false');
+    return $this;
+  }
+
   public function layout(): GridLayoutManagerInterface {
     return $this->getGrid()->layout();
   }
@@ -104,11 +125,6 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     return $this;
   }
 
-  public function useValidation(bool $validate = true) {
-    $this->attributes()->set('novalidate', $validate)->set('data-abide', $validate);
-    return $this;
-  }
-
   public function contentToString(): string {
     return $this->errorLabel . $this->gridContainer . $this->getHiddenInputs();
   }
@@ -121,16 +137,16 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    * * `$row` not extending {@link RowInterface} is wrapped inside a {@link FormRow} component.
    *
    * @param  mixed|RowInterface $row the new row or the content of the new row
-   * @return $this for a fluent interface
+   * @return RowInterface for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function append($row) {
+  public function append($row): RowInterface {
     if (!($row instanceof RowInterface)) {
       // echo 'fooooooo'.$row;
       $row = new FormRow($row);
     }
     $this->getGrid()->append($row);
-    return $this;
+    return $row;
   }
 
   /**
@@ -171,7 +187,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    * @return $this for a fluent interface
    * @see    HiddenInput
    */
-  public function appendHiddenVariable($name, $value):HiddenInput {
+  public function appendHiddenVariable($name, $value): HiddenInput {
     $input = new HiddenInput($name, $value);
     $this->getGrid()->append($input);
     return $input;

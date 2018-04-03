@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FlexInterface.php (UTF-8)
+ * ResponsiveEmbedInterface.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 

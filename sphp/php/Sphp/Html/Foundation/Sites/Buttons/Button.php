@@ -98,7 +98,7 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\ComponentInterf
   }
 
   public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager {
-    return $this->getCompoenet()->attributes();
+    return $this->getComponent()->attributes();
   }
 
 }

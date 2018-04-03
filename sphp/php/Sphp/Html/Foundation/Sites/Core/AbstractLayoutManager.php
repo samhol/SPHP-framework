@@ -48,7 +48,7 @@ abstract class AbstractLayoutManager implements LayoutManager {
     unset($this->component);
   }
 
-  public function getCompoenet(): CssClassifiableContent {
+  public function getComponent(): CssClassifiableContent {
     return $this->component;
   }
 

@@ -65,7 +65,7 @@ class FontAwesome {
       'js' => 'fab fa-js-square',
       'python' => 'fab fa-python',
       /**
-       * Social, Brands
+       * Social
        */
       'facebook' => 'fab fa-facebook-square',
       'twitter' => 'fab fa-twitter-square',
@@ -77,17 +77,6 @@ class FontAwesome {
       'pinterest' => 'fab fa-pinterest-square',
       'blogger' => 'fab fa-blogger',
       'cc' => 'fab fa-creative-commons',
-      
-      
-      'apple' => 'fab fa-apple',
-      'android' => 'fab fa-android',
-      'angular' => 'fab fa-angular',
-      'apper' => 'fab fa-apper',
-      'blogger' => 'fab fa-blogger',
-      'cpanel' => 'fab fa-cpanel',
-      'digg' => 'fab fa-digg',
-      'dropbox' => 'fab fa-dropbox',
-      'dribbble' => 'fab fa-dribbble',
       /**
        * General
        */
@@ -98,7 +87,15 @@ class FontAwesome {
       'database' => 'fas fa-database',
       'search' => 'fas fa-search',
       'ban' => 'fas fa-ban',
-      'exclamation' => 'fas fa-exclamation-circle',
+      'apple' => 'fab fa-apple',
+      'android' => 'fab fa-android',
+      'angular' => 'fab fa-angular',
+      'apper' => 'fab fa-apper',
+      'blogger' => 'fab fa-blogger',
+      'cpanel' => 'fab fa-cpanel',
+      'digg' => 'fab fa-digg',
+      'dropbox' => 'fab fa-dropbox',
+      'dribbble' => 'fab fa-dribbble',
   );
 
   /**

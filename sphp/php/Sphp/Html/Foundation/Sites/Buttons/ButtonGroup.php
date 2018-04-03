@@ -61,13 +61,30 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @param  string|null $href the URL of the link
    * @param  string|null $content the content of the button
    * @param  string|null $target the value of the target attribute
-   * @return $this for a fluent interface
+   * @return Button created instance
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendHyperlink(string $href, $content, string $target = null) {
-    $this->appendButton(Button::hyperlink($href, $content, $target));
-    return $this;
+  public function appendHyperlink(string $href, $content, string $target = null): Button {
+    $button = Button::hyperlink($href, $content, $target);
+    $this->appendButton($button);
+    return $button;
+  }
+
+  /**
+   * Creates and appends a new push button
+   * 
+   * @param  string|null $content the content of the button
+   * @param  string|null $name the value of name attribute
+   * @param  string|null $value the value of value attribute
+   * @return Button created instance
+   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
+   * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
+   */
+  public function appendPushButton($content = null): Button {
+    $button = Button::pushButton($content);
+    $this->appendButton($button);
+    return $button;
   }
 
   /**
@@ -76,23 +93,26 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @param  string|null $content the content of the button
    * @param  string|null $name the value of name attribute
    * @param  string|null $value the value of value attribute
+   * @return Button created instance
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    */
-  public function appendSubmitter($content = null, $name = null, $value = null) {
-    $this->appendButton(Button::submitter($content, $name, $value));
-    return $this;
+  public function appendSubmitter($content = null, $name = null, $value = null): Button {
+    $button = Button::submitter($content, $name, $value);
+    $this->appendButton($button);
+    return $button;
   }
 
   /**
    * Creates and appends a new submitter
    * 
    * @param  string|null $content the content of the button
-   * @return $this for a fluent interface
+   * @return Button created instance
    */
-  public function appendResetter($content = null) {
-    $this->appendButton(Button::resetter($content));
-    return $this;
+  public function appendResetter($content = null): Button {
+    $button = Button::resetter($content);
+    $this->appendButton($button);
+    return $button;
   }
 
   /**

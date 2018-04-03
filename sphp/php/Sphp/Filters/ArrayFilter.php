@@ -72,14 +72,14 @@ class ArrayFilter extends AbstractFilter {
 
   /**
    * 
-   * @param type $key
-   * @param type $min
-   * @param type $max
-   * @param type $default
-   * @param type $flags
+   * @param  type $key
+   * @param  int $min
+   * @param  int $max
+   * @param  int $default
+   * @param  type $flags
    * @return $this
    */
-  public function validateInt($key, $min = null, $max = null, $default = null, $flags = 0) {
+  public function validateInt($key, int $min = null, int $max = null, int $default = null, $flags = 0) {
     $opts = [];
     if (is_int($min)) {
       $opts['min_range'] = $min;
@@ -106,6 +106,14 @@ class ArrayFilter extends AbstractFilter {
       $variable = [];
     }
     return filter_var_array($variable, $this->definition, $this->addEmpty);
+  }
+
+  public function filterGet(): array {
+    return filter_input_array(INPUT_GET, $this->definition, $this->addEmpty);
+  }
+
+  public function filterPost(): array {
+    return filter_input_array(INPUT_POST, $this->definition, $this->addEmpty);
   }
 
 }

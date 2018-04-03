@@ -63,9 +63,9 @@ class ExceptionLogger implements ExceptionListener {
   }
 
   /**
-   * parses the throwable to a gog message
+   * parses the throwable to a log message
    * 
-   * @param  Throwable $t the throwable to mail
+   * @param  Throwable $t the throwable to log
    * @return string log message as a string
    */
   protected function parseThrowable(Throwable $t): string {

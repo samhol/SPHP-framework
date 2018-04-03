@@ -115,7 +115,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function setDefaultTarget(string $target = null) {
+  public function setDefaultTarget(string $target) {
     $this->target = $target;
     return $this;
   }

@@ -27,16 +27,32 @@
 namespace Sphp\Http\Headers;
 
 /**
- * Location header
+ * Defines a single header
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Location extends GenericHeader {
+interface Header {
 
-  public function __construct($value) {
-    parent::__construct($name, $value);
-  }
+  /**
+   * Returns header name
+   * 
+   * @return string header name
+   */
+  public function getName(): string;
 
+  /**
+   * Returns header value
+   * 
+   * @return string header value
+   */
+  public function getValue();
+
+  /**
+   * Returns header as a string
+   * 
+   * @return string header 
+   */
+  public function __toString(): string;
 }

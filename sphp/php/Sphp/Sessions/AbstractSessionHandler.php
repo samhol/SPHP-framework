@@ -84,7 +84,6 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
     return $this->maxlifetime;
   }
 
-
   /**
    * Is called when the reading in a session is completed. The method calls
    *  the garbage collector.

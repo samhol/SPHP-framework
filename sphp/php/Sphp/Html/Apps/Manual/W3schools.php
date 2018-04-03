@@ -24,7 +24,7 @@ class W3schools extends AbstractLinker {
    * @param string|null $target the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct(string $target = null) {
+  public function __construct(string $target = '_blank') {
     parent::__construct(new UrlGenerator('http://www.w3schools.com/'), $target);
   }
 

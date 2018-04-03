@@ -24,19 +24,58 @@
  * THE SOFTWARE.
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Sessions;
 
 /**
- * Location header
+ * Implements a session handler for file system storage
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Location extends GenericHeader {
+class FileSessionHandler extends AbstractSessionHandler {
 
-  public function __construct($value) {
-    parent::__construct($name, $value);
+  private $savePath;
+
+  public function open($savePath, $sessionName) {
+    $this->savePath = $savePath;
+    if (!is_dir($this->savePath)) {
+      mkdir($this->savePath, 0777);
+    }
+
+    return true;
+  }
+
+  public function close() {
+    return true;
+  }
+
+  public function read($id) {
+    return (string) @file_get_contents("$this->savePath/sess_$id");
+  }
+
+  public function write($id, $data) {
+    return file_put_contents("$this->savePath/sess_$id", $data) === false ? false : true;
+  }
+
+  public function destroy($id) {
+    $file = "$this->savePath/sess_$id";
+    if (file_exists($file)) {
+      unlink($file);
+    }
+
+    return true;
+  }
+
+  public function gc($maxlifetime) {
+    foreach (glob("$this->savePath/sess_*") as $file) {
+      if (filemtime($file) + $maxlifetime < time() && file_exists($file)) {
+        unlink($file);
+      }
+    }
+
+    return true;
   }
 
 }

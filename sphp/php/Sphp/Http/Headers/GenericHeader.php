@@ -23,20 +23,60 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 namespace Sphp\Http\Headers;
 
 /**
- * Location header
- *
+ * Abstract base class for a single header
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Location extends GenericHeader {
+class GenericHeader implements Header {
 
-  public function __construct($value) {
-    parent::__construct($name, $value);
+  /**
+   * @var string 
+   */
+  private $name;
+
+  /**
+   * @var string 
+   */
+  private $value;
+
+  public function __construct(string $name, $value) {
+    $this->name = $name;
+    $this->setValue($value);
+  }
+
+  public function getName(): string {
+    return $this->name;
+  }
+
+  public function getValue() {
+    return $this->value;
+  }
+
+  /**
+   * 
+   * @param  string $value
+   * @return $this for a fluent interface
+   */
+  protected function setValue($value) {
+    $this->value = $value;
+    return $this;
+  }
+
+  public function toString() {
+    return $this->getName() . ": " . $this->getValue();
+  }
+
+  public function __toString(): string {
+    return $this->toString();
+  }
+
+  public function execute() {
+    header($this->__toString());
   }
 
 }

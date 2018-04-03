@@ -161,7 +161,10 @@ class ThrowableCallout extends Callout {
         $err1->append("" . $this->parseFunction($traceRow));
         $output->append($err1);
       }
-      return '<h3 class"trace">Trace information:</h3>' . $output;
+    $k = "<pre>".  $this->throwable->getTraceAsString() . "</pre>";
+      $t = \Sphp\Stdlib\Parser::fromString($this->throwable->getTraceAsString(), 'md');
+      return '<h3 class"trace">Trace information:</h3>'.$k;
+      
     } else {
       return '';
     }
@@ -174,7 +177,7 @@ class ThrowableCallout extends Callout {
    * @return string the information about the method described in a trace row or null
    */
   private function parseFunction(array $trRow): string {
-    echo "<pre>";
+    echo "<pre>foo:::";
     echo $this->throwable->getTraceAsString();
     echo "</pre>";
     $methodStr = "while executing ";

@@ -73,6 +73,11 @@ abstract class Filesystem {
   /**
    * Executes a PHP script and returns the result as a string
    *
+   * **Important:**
+   * 
+   * if the executed php file has any side-effects it could mutate the state of 
+   * the application even though it is not sending output to the browser.
+   * 
    * @param  string|string[],... $paths the path to the executable PHP script
    * @return string the result of the script execution
    * @throws RuntimeException if the $paths points to no actual file

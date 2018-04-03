@@ -20,7 +20,6 @@ use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Forms\Inputs\EmailInput;
-use Sphp\Html\Forms\Inputs\Factory;
 
 /**
  * Implements framework based component to create  multi-device layouts
