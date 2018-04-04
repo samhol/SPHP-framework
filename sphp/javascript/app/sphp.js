@@ -194,7 +194,7 @@ if (!window.console.log) {
     // $('.sphp-back-to-top-button').backToTopBtn();
     $("input[data-anytime]").SphpAnyTimeInput();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
-    $("[data-reveal]").sphpPopup();
+    //$("[data-reveal]").sphpPopup();
     $('[data-slick]').slick();
     $('[data-accordion]').on('down.zf.accordion', function () {
       console.log('Foundation Accordion opened!');
