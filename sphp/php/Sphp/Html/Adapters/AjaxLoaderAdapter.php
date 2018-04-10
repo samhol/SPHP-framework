@@ -1,8 +1,11 @@
 <?php
 
 /**
- * AjaxLoaderAdapter.php (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Adapters;
@@ -12,11 +15,11 @@ use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\ComponentInterface;
 
 /** 
- * Executes {@link AjaxLoaderInterface} functionality on the adaptee
+ * Executes Ajax functionality on the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://api.jquery.com/load/ jQuery load()
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 

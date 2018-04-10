@@ -18,7 +18,7 @@ use Sphp\Html\AbstractComponent;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/close-button.html Foundation 6 Close Button
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class CloseButton extends AbstractComponent {

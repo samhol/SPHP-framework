@@ -18,7 +18,7 @@ use Sphp\Html\TraversableContent;
  * Implements an abstract HTML multimedia tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class AbstractMultimediaTag extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\TraversableContent, MediaTagInterface {

@@ -1,13 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Apps\Calendars;
 
+use Sphp\Html\Content;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Li;
 use DateTimeImmutable;
@@ -15,9 +18,11 @@ use DateTimeImmutable;
 /**
  * Description of WeekView
  *
- * @author Sami
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license https://opensource.org/licenses/MIT The MIT License
+ * @filesource
  */
-class WeekView implements \Sphp\Html\Content {
+class WeekView implements Content {
 
   use \Sphp\Html\ContentTrait;
 
@@ -31,9 +36,9 @@ class WeekView implements \Sphp\Html\Content {
 
     if ($date === null) {
       $date = new \DateTimeImmutable();
-    } 
+    }
     $monday = $this->getMonday($date);
-    
+
     $this->week = (int) $monday->format('W');
     $this->dayCells = (new Ul())->addCssClass('week');
     $this->dayCells['week'] = (new Li($monday->format('W')))->addCssClass('number');
@@ -46,7 +51,7 @@ class WeekView implements \Sphp\Html\Content {
       $next = $next->modify('+ 1 day');
     }
   }
-  
+
   public function getMonday(DateTimeImmutable $date) {
     if ($date->format('N') != 1) {
       return $date->modify('last monday');
@@ -54,7 +59,6 @@ class WeekView implements \Sphp\Html\Content {
       return clone $date;
     }
   }
-
 
   public function getHtml(): string {
     return $this->dayCells->getHtml();

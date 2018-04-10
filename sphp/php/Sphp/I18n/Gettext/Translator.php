@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Translator.php (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\I18n\Gettext;
@@ -13,7 +16,6 @@ if (!defined('LC_MESSAGES')) {
 
 use Sphp\I18n\AbstractTranslator;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Arrays;
 use Sphp\Config\Locale;
 
 /**
@@ -29,7 +31,7 @@ use Sphp\Config\Locale;
  * * {@link http://php.net/manual/en/function.setlocale.php}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Translator extends AbstractTranslator {

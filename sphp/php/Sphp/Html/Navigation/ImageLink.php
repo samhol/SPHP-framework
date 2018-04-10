@@ -15,7 +15,7 @@ use Sphp\Html\Media\Img;
  * Implements an image that acts as a hyperlink
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInterface {

@@ -1,22 +1,24 @@
 <?php
 
 /**
- * Calendar.php (UTF-8)
- * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\I18n\Datetime;
 
 use Sphp\I18n\Gettext\Translator;
 use Sphp\I18n\TranslatorInterface;
-use Sphp\Stdlib\Arrays;
 
 /**
  * Class localizes weekday and month names
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-02-23
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class CalendarUtils {

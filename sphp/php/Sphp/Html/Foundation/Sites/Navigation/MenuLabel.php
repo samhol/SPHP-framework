@@ -16,7 +16,7 @@ use Sphp\Html\AbstractContainerComponent;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @link    http://foundation.zurb.com/docs/components/sidenav.html Foundation Side Nav
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class MenuLabel extends AbstractContainerComponent implements MenuItemInterface {

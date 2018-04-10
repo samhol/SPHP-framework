@@ -13,7 +13,7 @@ namespace Sphp\Html\Forms\Buttons;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-button-element W3C API
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Button extends AbstractButton {

@@ -17,7 +17,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/ Foundation for Sites
  * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation menus
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterface {

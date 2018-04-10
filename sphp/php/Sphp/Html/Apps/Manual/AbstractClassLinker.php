@@ -15,7 +15,7 @@ use Sphp\Html\Navigation\Hyperlink;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.apigen.org/ ApiGen
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class AbstractClassLinker extends AbstractLinker implements ClassLinkerInterface {

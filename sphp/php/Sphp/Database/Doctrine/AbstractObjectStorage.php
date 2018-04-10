@@ -1,16 +1,17 @@
 <?php
 
 /**
- * AbstractObjectStorage.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Database\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use ArrayIterator;
-use Sphp\Database\Doctrine\EntityManagerFactory;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Database\Doctrine\Objects\DbObjectInterface;
 use Sphp\Database\Exceptions\DatabaseException;
@@ -20,7 +21,7 @@ use Doctrine\Common\Persistence\ObjectRepository;
  * Abstract Implementation of a{@link DbObjectInterface} storage
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class AbstractObjectStorage implements \IteratorAggregate, \Sphp\Stdlib\Datastructures\Arrayable, \ArrayAccess {

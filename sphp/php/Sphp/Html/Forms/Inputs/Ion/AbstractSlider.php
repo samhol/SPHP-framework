@@ -4,7 +4,7 @@
  * SPHPlayground Framework (http://playground.samiholck.com/)
  * 
  * @copyright Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Forms\Inputs\Ion;
@@ -17,7 +17,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
  * Implements a jQuery range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class AbstractSlider extends AbstractInputTag implements RangeInput {

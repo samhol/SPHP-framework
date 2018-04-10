@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Content;
 use Sphp\Html\Lists\Ul;
 use Iterator;
@@ -16,10 +17,10 @@ use Sphp\Html\Navigation\Hyperlink;
  * Implements brand icon links
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterator {
+class BrandIcons extends AbstractComponent implements Content, Iterator {
 
   /**
    * @var Ul
@@ -176,7 +177,7 @@ class BrandIcons extends \Sphp\Html\AbstractComponent implements Content, Iterat
   }
 
   public function contentToString(): string {
-    return implode('', $this->icons);
+    return implode($this->icons);
   }
 
 }

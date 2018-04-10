@@ -20,7 +20,7 @@ namespace Sphp\Html\Navigation;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 interface HyperlinkInterface {

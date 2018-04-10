@@ -15,7 +15,7 @@ use Sphp\Html\Attributes\SequenceAttribute;
  * Implements an HTML &lt;area&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class AbstractArea extends EmptyTag implements Area {

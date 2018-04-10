@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Iterator.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html;
@@ -15,7 +18,7 @@ use Sphp\Stdlib\Arrays;
  * Implements a basic iterator for HTML content
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Iterator implements NativeIterator, Content, TraversableContent {
@@ -81,10 +84,10 @@ class Iterator implements NativeIterator, Content, TraversableContent {
     $output = '';
     foreach ($this->components as $value) {
       if (is_scalar($value) || $value === null) {
-        $output .=   $value;
+        $output .= $value;
       } else if (is_object($value)) {
         if (method_exists($value, '__toString')) {
-          $output .=  $value;
+          $output .= $value;
         } else if ($value instanceof \Traversable) {
           $arr = iterator_to_array($value);
           $output .= Arrays::implode($arr);

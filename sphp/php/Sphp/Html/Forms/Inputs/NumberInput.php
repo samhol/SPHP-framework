@@ -13,7 +13,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @link    https://www.w3.org/TR/html-markup/input.number.html W3C reference
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class NumberInput extends InputTag implements RangeInput, InputField {

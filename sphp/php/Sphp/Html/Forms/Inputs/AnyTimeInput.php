@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.ama3.com/anytime/ Any+Time Calendar Widget
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class AnyTimeInput extends InputTag {

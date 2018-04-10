@@ -30,7 +30,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @method \Sphp\Html\Media\Icons\FaIcon json(string $screenReaderLabel = null) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Filetype {

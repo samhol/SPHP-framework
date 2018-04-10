@@ -32,7 +32,7 @@ use Sphp\Html\Container;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    https://foundation.zurb.com/sites/docs/xy-grid.html#block-grids Block Grid
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentParser, TraversableContent {

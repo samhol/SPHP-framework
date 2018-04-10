@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Bars;
  *
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/kitchen-sink.html#title-bar Foundation Title Bar
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class TitleBarFactory {

@@ -14,7 +14,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/close-button.html Foundation Close Button
  * @link    http://foundation.zurb.com/sites/docs/close-button.html#making-closable Foundation - Making Closable
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 interface ClosableInterface {

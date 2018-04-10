@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Ol.php (UTF-8)
- * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Lists;
@@ -13,7 +16,7 @@ namespace Sphp\Html\Lists;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-ol-element W3C API
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Ol extends StandardList {

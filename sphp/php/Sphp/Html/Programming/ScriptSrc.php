@@ -19,7 +19,7 @@ use Sphp\Html\EmptyTag;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link http://www.w3schools.com/tags/tag_script.asp w3schools API
  * @link http://dev.w3.org/html5/spec/Overview.html#script W3C API
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class ScriptSrc extends EmptyTag implements ScriptTag {

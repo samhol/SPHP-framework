@@ -15,7 +15,7 @@ use Sphp\Html\Media\SizeableTrait;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://videojs.com/ VIDEOJS
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class VideoJs extends AbstractMultimediaTag implements SizeableMedia {

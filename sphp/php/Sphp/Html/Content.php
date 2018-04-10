@@ -1,10 +1,12 @@
 <?php
 
 /**
- * Content.php (UTF-8)
- * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
-
 namespace Sphp\Html;
 
 /**
@@ -19,7 +21,7 @@ namespace Sphp\Html;
  * * <a href="http://validator.w3.org/">W3C Markup Validation Service</a>
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 interface Content {

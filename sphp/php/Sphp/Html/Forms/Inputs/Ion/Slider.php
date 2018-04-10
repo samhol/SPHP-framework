@@ -3,7 +3,7 @@
 /**
  * Slider.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Forms\Inputs\Ion;
@@ -15,7 +15,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://ionden.com/a/plugins/ion.rangeSlider/en.html ion slider
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Slider extends AbstractSlider {

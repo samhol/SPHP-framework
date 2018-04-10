@@ -15,7 +15,7 @@ use Sphp\Html\ComponentInterface;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/buttons.html Foundation Buttons
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class ColourableLayoutManager extends AbstractLayoutManager implements Colourable {

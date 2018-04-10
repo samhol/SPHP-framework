@@ -16,7 +16,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class ScreenSizes implements \Iterator, \Countable, Arrayable {

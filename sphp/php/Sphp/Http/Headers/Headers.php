@@ -1,27 +1,11 @@
 <?php
 
-/*
- * The MIT License
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
- * Copyright 2018 Sami Holck <sami.holck@gmail.com>.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Http\Headers;
@@ -38,9 +22,10 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @method \Sphp\Http\Headers\Location location(string $content = null) creates nd inserts a header object
  * @method \Sphp\Http\Headers\AllowOrigin allowOrigin(string $content = null) creates nd inserts a header object
  * @method \Sphp\Http\Headers\AllowMethods allowMethods(string $content = null) creates nd inserts a header object
+ * @method \Sphp\Http\Headers\MaxAge maxAge(int $maxAge) creates nd inserts a header object
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Headers implements Iterator {
@@ -58,6 +43,7 @@ class Headers implements Iterator {
       'allowOrigin' => AllowOrigin::class,
       'contentType' => ContentType::class,
       'allowMethods' => AllowMethods::class,
+      'maxAge' => MaxAge::class,
   );
 
   /**

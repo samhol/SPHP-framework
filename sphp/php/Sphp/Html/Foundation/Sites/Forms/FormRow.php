@@ -17,17 +17,17 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
  * Extends a Foundation Row for form components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class FormRow extends Row {
 
-  
   public function __construct($columns = null, $sizes = null) {
     parent::__construct($columns, $sizes);
     $this->layout()->usePadding(true);
   }
-  public function appendColumn($content, array $layout = ['small-12']) {
+
+  public function appendColumn($content, array $layout = ['auto']) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {
       $this->appendInput($content, $layout);
@@ -44,7 +44,7 @@ class FormRow extends Row {
    * @param  array $layout
    * @return $this for a fluent interface
    */
-  public function appendInput(Input $input, array $layout = ['small-12']) {
+  public function appendInput(Input $input, array $layout = ['auto']) {
     if ($input instanceof NonVisualContent) {
       $this->append($input);
     } else if ($input instanceof ColumnInterface) {

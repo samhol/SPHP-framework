@@ -1,8 +1,11 @@
 <?php
 
 /**
- * TagStripperFilter.php (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Filters;
@@ -12,7 +15,7 @@ namespace Sphp\Filters;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://php.net/manual/en/function.strip-tags.php
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class TagStripper extends AbstractFilter {

@@ -23,7 +23,7 @@ namespace Sphp\Html\Tables;
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API
  * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-th-element W3C API
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 interface Cell extends TableContent {

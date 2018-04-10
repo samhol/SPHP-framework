@@ -17,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Core\Factory;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://zurb.com/playground/foundation-icon-fonts-3 Foundation Icon Fonts 3
  * @link    http://foundation.zurb.com/sites/docs/button-group.html#split-buttons Foundation 6 Buttons
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, ScreenReaderLabelable {

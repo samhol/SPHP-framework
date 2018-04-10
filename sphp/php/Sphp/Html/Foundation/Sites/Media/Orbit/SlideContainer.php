@@ -17,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/orbit.html Foundation Orbit slider
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class SlideContainer extends AbstractComponent implements \IteratorAggregate, \Countable {

@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Json.php (UTF-8)
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Stdlib\Parsers;
@@ -15,7 +18,7 @@ use Sphp\Exceptions\RuntimeException;
  * Implements JSON reader
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Json extends AbstractReader {
@@ -53,5 +56,39 @@ class Json extends AbstractReader {
 
     return $serialized;
   }
+  
+  /**
+   * processConfig(): defined by AbstractWriter.
+   *
+   * @param  string $config
+   * @return array
+   * @throws RuntimeException if decoding errors occur.
+   */
+  public function decode(string $config): array {
+    $serialized = json_decode($config);
 
+    if (false === $serialized) {
+      throw new RuntimeException(json_last_error_msg());
+    }
+
+    return $serialized;
+  }
+
+  /**
+   * processConfig(): defined by AbstractWriter.
+   *
+   * @param  string $path
+   * @return array
+   * @throws RuntimeException if decoding errors occur.
+   */
+  public function decodeFromFile(string $path): array {
+    $raw = file_get_contents($path);
+    $serialized = json_decode($raw, true);
+    //var_dump($raw);
+    if (false === $serialized) {
+      throw new RuntimeException(json_last_error_msg());
+    }
+
+    return $serialized;
+  }
 }

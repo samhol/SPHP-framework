@@ -16,7 +16,7 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation grid
  * @link    http://foundation.zurb.com/grid.html Foundation grid
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 trait LayoutAdapterTrait {

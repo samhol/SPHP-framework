@@ -1,56 +1,60 @@
 <?php
 
 /**
- * Person.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Data\Human;
+namespace Sphp\Data;
 
+use DateTimeInterface;
+use DateTime;
 use Sphp\Data\Address;
-use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Implements a system user
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Person implements Arrayable {
+class Person extends AbstractDataObject {
 
   /**
    * The first name of the user
    *
-   * @var string 
+   * @var string|null
    */
   private $fname;
 
   /**
    * The last name of the user
    * 
-   * @var string 
+   * @var string|null
    */
   private $lname;
 
   /**
    * The last name of the user
    * 
-   * @var string 
+   * @var DateTimeInterface|null
    */
   private $dob;
 
   /**
    * The geographical address of the user
    * 
-   * @var Address 
+   * @var Address|null
    */
   private $address;
 
   /**
    * the email address of the user
    * 
-   * @var string
+   * @var string|null
    */
   private $email;
 
@@ -58,10 +62,6 @@ class Person implements Arrayable {
    * @var string
    */
   private $phonenumber;
-
-  public function __construct(array $data = []) {
-    $this->fromArray($data);
-  }
 
   /**
    * Returns the first name
@@ -104,6 +104,28 @@ class Person implements Arrayable {
   }
 
   /**
+   * Returns the full name
+   *
+   * @return string the full name
+   */
+  public function getFullname(): string {
+    if (!empty($this->fname) && !empty($this->lname)) {
+      return "$this->fname $this->lname";
+    } else {
+      return "$this->fname$this->lname";
+    }
+  }
+
+  public function getDateOfBirth() {
+    return $this->dob;
+  }
+
+  public function setDateOfBirth(DateTimeInterface $dob = null) {
+    $this->dob = $dob;
+    return $this;
+  }
+
+  /**
    * Returns the email address
    *
    * @return string the email address
@@ -138,7 +160,7 @@ class Person implements Arrayable {
    * @param  string $phonenumber the phone number
    * @return $this for a fluent interface
    */
-  public function setPhonenumbers(string $phonenumber = null) {
+  public function setPhonenumber(string $phonenumber = null) {
     $this->phonenumber = $phonenumber;
     return $this;
   }
@@ -146,7 +168,7 @@ class Person implements Arrayable {
   /**
    * Returns the geographical address
    * 
-   * @return Address the geographical address
+   * @return Address|null the geographical address
    */
   public function getAddress() {
     return $this->address;
@@ -163,30 +185,64 @@ class Person implements Arrayable {
     return $this;
   }
 
-  public function fromArray(array $raw = []) {
+  public function fromArray(array $raw) {
     $args = [
         'fname' => \FILTER_SANITIZE_STRING,
         'lname' => \FILTER_SANITIZE_STRING,
+        'dob' => \FILTER_SANITIZE_STRING,
         'email' => \FILTER_SANITIZE_STRING,
-        'phonenumber' => \FILTER_SANITIZE_STRING,
+        'phone' => \FILTER_SANITIZE_STRING,
     ];
     $person = filter_var_array($raw, $args, true);
-    //print_r($person);
     $this->setFname($person['fname'])
             ->setLname($person['lname'])
             ->setEmail($person['email'])
-            ->setPhonenumbers($person['phonenumber'])
-            ->setAddress(new Address($raw));
+            ->setPhonenumber($person['phone']);
+    if (isset($person['dob'])) {
+      if (is_int($person['dob'])) {
+        $dob = new DateTime();
+        $dob->setTimestamp($person['dob']);
+        $this->setDateOfBirth($dob);
+      } else {
+        $dob = DateTime::createFromFormat(DATE_ATOM, $person['dob']);
+        if ($dob instanceof DateTimeInterface) {
+          $this->setDateOfBirth($dob);
+        }
+      }
+    } 
+    if (isset($raw['address'])) {
+      $this->setAddress(new Address($raw['address']));
+    } else {
+      $this->setAddress(new Address($raw));
+    }
+    
     return $this;
   }
 
   public function toArray(): array {
-    $arr = get_object_vars($this);
-    unset($arr['address']);
-    if ($this->address !== null) {
-      $arr = array_merge($arr, $this->address->toArray());
+    $raw = get_object_vars($this);
+    if ($raw['dob'] instanceof DateTimeInterface) {
+      $raw['dob'] = $this->getDateOfBirth()->format(DATE_ATOM);
     }
-    return $arr;
+    if ($raw['address'] instanceof Address) {
+      $raw['address'] = $raw['address']->toArray();
+    }
+    return $raw;
+  }
+
+  /**
+   * Serializes to string
+   *
+   * @return string the string representation of the object
+   */
+  public function __toString(): string {
+    $output = "name: $this->fname $this->lname";
+    $dob = ($this->dob instanceof \DateTimeInterface) ? $this->dob->format(DATE_ATOM) : '';
+    $output .= "\ndate of birth: $dob";
+    $output .= "\naddress: $this->address";
+    $output .= "\nphonenumber: $this->phonenumber";
+    $output .= "\nemail: $this->email";
+    return $output;
   }
 
 }

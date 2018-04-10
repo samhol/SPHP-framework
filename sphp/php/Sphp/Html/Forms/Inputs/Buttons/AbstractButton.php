@@ -3,7 +3,7 @@
 /**
  * SubmitButton.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
@@ -22,7 +22,7 @@ use Sphp\Stdlib\Strings;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class AbstractButton extends EmptyTag implements ButtonInterface {

@@ -21,7 +21,7 @@ use Traversable;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/button-group.html Foundation Button Groups
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class ButtonGroup extends AbstractContainerComponent implements \IteratorAggregate {

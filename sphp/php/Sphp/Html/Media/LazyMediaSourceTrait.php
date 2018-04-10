@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @link    http://www.w3schools.com/tags/tag_img.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
  * @link    https://github.com/ressio/lazy-load-xt Lazy Load XT jQuery plugin
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 trait LazyMediaSourceTrait {

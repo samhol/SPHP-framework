@@ -17,7 +17,7 @@ use Sphp\Html\Div;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class AbstractPane extends AbstractContainerComponent implements PaneInterface {

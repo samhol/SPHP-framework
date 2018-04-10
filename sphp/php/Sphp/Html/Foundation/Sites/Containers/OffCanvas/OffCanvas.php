@@ -16,7 +16,7 @@ use Sphp\Html\Div;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/offcanvas.html Foundation Off-canvas
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class OffCanvas extends AbstractComponent {

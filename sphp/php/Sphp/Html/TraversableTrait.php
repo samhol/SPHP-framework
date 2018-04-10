@@ -1,8 +1,11 @@
 <?php
 
 /**
- * TraversableTrait.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html;
@@ -10,9 +13,8 @@ namespace Sphp\Html;
 /**
  * Trait implements some {@link TraversableContent} functionality
  * 
- * @link    \Sphp\Html\TraversableContent implemented interface
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 trait TraversableTrait {

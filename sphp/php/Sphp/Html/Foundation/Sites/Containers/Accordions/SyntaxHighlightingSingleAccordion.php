@@ -16,7 +16,7 @@ use Sphp\Html\ComponentInterface;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax highlight
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax highlight
  * @filesource
  */

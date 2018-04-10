@@ -1,8 +1,11 @@
 <?php
 
 /**
- * BooleanAttribute.php (UTF-8)
- * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Attributes;
@@ -15,7 +18,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-10-24
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class BooleanAttribute extends AbstractMutableAttribute {

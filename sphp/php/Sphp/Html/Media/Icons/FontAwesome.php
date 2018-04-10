@@ -46,7 +46,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://fontawesome.com/ Font Awesome
  * @filesource
  */
@@ -82,11 +82,16 @@ class FontAwesome {
        */
       'phone' => 'fas fa-phone',
       'envelope' => 'far fa-envelope',
+      'user' => 'far fa-user',
       'users' => 'fas fa-users',
       'book' => 'fas fa-book',
       'database' => 'fas fa-database',
       'search' => 'fas fa-search',
       'ban' => 'fas fa-ban',
+      'eraser' => 'fas fa-eraser',
+      /**
+       * Brands
+       */
       'apple' => 'fab fa-apple',
       'android' => 'fab fa-android',
       'angular' => 'fab fa-angular',

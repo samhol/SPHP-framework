@@ -27,7 +27,7 @@ use Sphp\Html\Forms\Inputs\EmailInput;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/grid.html Foundation grid
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class InputColumn extends AbstractComponent implements InputColumnInterface {
@@ -72,7 +72,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @param  Input $input the actual input component
    * @param  string[] $layout the layout parameters
    */
-  public function __construct(Input $input, array $layout = ['small-12']) {
+  public function __construct(Input $input, array $layout = ['auto']) {
     parent::__construct('div');
     $this->layoutManager = new ColumnLayoutManager($this);
     $this->layout()->setLayouts($layout);

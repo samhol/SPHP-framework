@@ -15,7 +15,7 @@ use Sphp\Html\Lists\HyperlinkListItem;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/subnav.html Foundation Sub Nav
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class MenuLink extends HyperlinkListItem implements MenuItemInterface {

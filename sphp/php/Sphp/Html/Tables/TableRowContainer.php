@@ -17,7 +17,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableContent, TableContent {

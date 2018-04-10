@@ -15,7 +15,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/visibility.html#show-for-screen-readers-only Foundation screen readers
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 interface ScreenReaderLabelable {
