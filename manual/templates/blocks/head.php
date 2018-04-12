@@ -21,12 +21,12 @@ $html->enableSPHP()
         ->useVideoJS()
         ->setViewport('width=device-width, initial-scale=1.0')->useFontAwesome();
 
-$head->addMeta(Meta::charset('UTF-8'));
-$head->addCssSrc('http://playground.samiholck.com/sphp/css/sphp.all.css');
-$head->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
-$head->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css');
+$head->set(Meta::charset('UTF-8'));
+$head->setCssSrc('http://playground.samiholck.com/sphp/css/sphp.all.css');
+$head->setCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
+$head->setCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css');
 $head->setBaseAddr('http://playground.samiholck.com/', '_self');
-$head->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png');
+$head->setShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png');
 $head->set(Link::create('/apple-touch-icon.png', 'apple-touch-icon'));
 $head->set(Meta::namedContent('msapplication-TileColor', '#f1f1f1'));
 $head->set(Meta::namedContent('theme-color', '#f1f1f1'));

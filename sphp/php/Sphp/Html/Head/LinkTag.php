@@ -37,7 +37,7 @@ class LinkTag extends EmptyTag implements LinkInterface {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function __construct(string $rel = nul, string $href = nulll, string $media = null) {
+  public function __construct(string $rel = null, string $href = null, string $media = null) {
     parent::__construct('link');
     $this->attributes()->demand('rel');
     if ($href !== null) {

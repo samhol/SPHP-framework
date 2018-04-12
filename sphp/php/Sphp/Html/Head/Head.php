@@ -37,26 +37,15 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @param string $title the title of the HTML document
    * @param string $charset the character set of the HTML document
    */
-  public function __construct(string $title = null, string $charset = 'UTF-8') {
+  public function __construct(string $title = null, string $charset = null) {
     parent::__construct('head');
     $this->content = new HeadContentContainer();
-    $this->setup($title, $charset);
-  }
-
-  /**
-   * Builds the initial setup
-   *
-   * @param  string $title the title of the HTML document
-   * @param  string $charset the character set of the HTML document
-   * @return $this for a fluent interface
-   */
-  private function setup($title, $charset) {
-    $this->setDocumentTitle($title);
-    //$this->meta = new MetaContainer();
-    //$this->scripts = new ScriptsContainer();
-    //$this->links = new Container();
-    $this->addMeta(Meta::charset($charset));
-    return $this;
+    if ($title !== null) {
+      $this->setDocumentTitle($title);
+    }
+    if ($charset !== null) {
+      $this->set(Meta::charset($charset));
+    }
   }
 
   /**
@@ -108,7 +97,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://zurb.com/playground/foundation-icon-fonts-3 Foundation icons
    */
   public function useFoundationIcons() {
-    $this->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css');
+    $this->setCssSrc('https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css');
     return $this;
   }
 
@@ -137,7 +126,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function addCssSrc($href, $media = 'screen') {
+  public function setCssSrc(string $href, string $media = 'screen') {
     $this->content->set(Link::stylesheet($href, $media));
     return $this;
   }
@@ -152,7 +141,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public function addShortcutIcon(string $href, string $type = 'image/x-icon') {
+  public function setShortcutIcon(string $href, string $type = 'image/x-icon') {
     $this->content->set(Link::shortcutIcon($href, $type));
     return $this;
   }
@@ -165,17 +154,6 @@ class Head extends AbstractComponent implements NonVisualContent {
    */
   public function set(HeadContent $component) {
     $this->content->set($component);
-    return $this;
-  }
-
-  /**
-   * Adds meta data object
-   *
-   * @param  MetaData $meta
-   * @return $this for a fluent interface
-   */
-  public function addMeta(MetaData $meta) {
-    $this->content->set($meta);
     return $this;
   }
 

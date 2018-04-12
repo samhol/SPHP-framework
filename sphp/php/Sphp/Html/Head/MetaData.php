@@ -27,6 +27,8 @@ use Sphp\Html\NonVisualContent;
  */
 interface MetaData extends HeadContent, NonVisualContent {
 
+  public function setsCharset(): bool;
+
   /**
    * Checks whether the name attribute exists or not
    *
@@ -92,9 +94,14 @@ interface MetaData extends HeadContent, NonVisualContent {
   /**
    * 
    * @param  MetaData $meta
-   * @return boolean true if the property attribute exists, otherwise false
+   * @return boolean true if the meta data object given is overlapping; false otherwise
    */
   public function overlapsWith(MetaData $meta): bool;
 
+  /**
+   * Returns the meta data as an array
+   * 
+   * @return string[] meta data as an array
+   */
   public function metaToArray(): array;
 }

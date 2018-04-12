@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Stdlib\Arrays;
+
 /**
  * Implements an HTML &lt;head&gt; tag
  *
@@ -18,12 +20,29 @@ namespace Sphp\Html\Head;
  * @filesource
  */
 abstract class HeadFactory {
-  
+
   public static function fromArray(array $meta): Head {
     $group = new Head();
     foreach ($meta as $tag) {
-      $group->set(new MetaTag($tag));
+      if (is_array($tag)) {
+        if (array_key_exists('meta', $tag)) {
+          $group->set(new MetaTag($tag['meta']));
+        }
+        if (array_key_exists('link', $tag)) {
+          if (Arrays::isIndexed($tag)) {
+            foreach ($tag['link'] as $link) {
+              $group->set(Link::fromArray($link));
+            }
+          } else {
+            $group->set(Link::fromArray($tag['link']));
+          }
+        }
+        if (array_key_exists('title', $tag)) {
+          $group->set(new Title($tag['title']));
+        }
+      }
     }
     return $group;
   }
+
 }

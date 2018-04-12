@@ -16,17 +16,17 @@ Document::head()
         //->enableSPHP()
         ->setBaseAddr('http://playground.samiholck.com/')
         ->setDocumentTitle('License | SPHPlayground framework')
-        ->addShortcutIcon('manual/pics/S-logo.png')
+        ->setShortcutIcon('manual/pics/S-logo.png')
         ->set(Link::stylesheet('manual/css/license/license.css'))
         ->set(Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
-        ->addMeta(Meta::author('Sami Holck'))
-        ->addMeta(Meta::applicationName('SPHPlayground framework'))
-        ->addMeta(Meta::keywords([
-                    'GNU',
+        ->set(Meta::author('Sami Holck'))
+        ->set(Meta::applicationName('SPHPlayground framework'))
+        ->set(Meta::keywords([
+                    'MIT',
                     'license',
                     'SPHPlayground']))
-        ->addMeta(Meta::description('License for SPHPlayground framework'));
-Document::body()->addCssClass('gnu-license');
+        ->set(Meta::description('License for SPHPlayground framework'));
+Document::body()->addCssClass('mit-license');
 Document::html()->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\Grid;

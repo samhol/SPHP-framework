@@ -1,48 +1,36 @@
 <?php
 
 $meta_data = [
-    [
-        "charset" => "utf-8"],
-    [
-        "http-equiv" => "X-UA-Compatible",
+    ["meta:charset" => "utf-8"],
+    ["meta:http-equiv" => "X-UA-Compatible",
         "value" => "IE=edge"],
-    [
-        "name" => "viewport",
+    ["meta:name" => "viewport",
         "value" => "width=device-width, initial-scale=1"],
-    [
-        "name" => "description",
+    ["meta:name" => "description",
         "value" => "SPHPlayground web framework"],
-    [
-        "name" => "author",
+    ["meta:name" => "author",
         "value" => "Sami Holck"],
-    [
-        "name" => "keywords",
+    ["meta:name" => "keywords",
         "value" => "php, scss, css, html, html5, JavaScript"],
-    [
-        "name" => "robots",
+    ["meta:name" => "robots",
         "value" => "index, follow"],
-    [
-        "name" => "mobile-web-app-capable",
+    ["meta:name" => "mobile-web-app-capable",
         "value" => "yes"],
-    [
-        "name" => "apple-mobile-web-app-capable",
+    ["meta:name" => "apple-mobile-web-app-capable",
         "value" => "yes"],
-    [
-        "http-equiv" => "Expires",
+    ["meta:http-equiv" => "Expires",
         "value" => "0"],
-    [
-        "http-equiv" => "Pragma",
+    ["meta:http-equiv" => "Pragma",
         "value" => "no-cache"],
-    [
-        "http-equiv" => "Cache-Control",
+    ["meta:http-equiv" => "Cache-Control",
         "value" => "no-cache"],
-    [
-        "http-equiv" => "imagetoolbar",
+    ["meta:http-equiv" => "imagetoolbar",
         "value" => "no"],
-    [
-        "http-equiv]" => "x-dns-prefetch-control",
+    ["meta:http-equiv]" => "x-dns-prefetch-control",
         "value" => "off"],
-    [
-        "http-equiv" => "apple-mobile-web-app-capable",
+    ['meta' =>
+        ["http-equiv" => "x-dns-prefetch-control", "value" => "off"]
+    ],
+    ["meta:http-equiv" => "apple-mobile-web-app-capable",
         "value" => "yes"]
 ];

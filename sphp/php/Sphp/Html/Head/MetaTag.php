@@ -36,6 +36,10 @@ class MetaTag extends EmptyTag implements MetaData {
     parent::__construct('meta');
     $this->attributes()->merge($meta);
   }
+  
+  public function setsCharset(): bool {
+    return $this->attributeExists('charset');
+  }
 
   public function hasNamedContent(): bool {
     return $this->attributeExists('name');
@@ -65,11 +69,6 @@ class MetaTag extends EmptyTag implements MetaData {
     return $this->attributeExists('property');
   }
 
-  public function overlapsWith(MetaData $meta): bool {
-    $same = array_intersect_assoc($this->metaToArray(), $meta->metaToArray());
-    return array_key_exists('name', $same) || array_key_exists('charset', $same) || array_key_exists('http-equiv', $same);
-  }
-
   /**
    * Checks whether the property attribute has the given value or not
    *
@@ -97,16 +96,20 @@ class MetaTag extends EmptyTag implements MetaData {
   }
 
   /**
-   * Returns the value of the property attribute
-   *
-   * @return string|null the value of the property attribute or null if the 
-   *         attribute is not set
-   * @link   http://ogp.me/ The Open Graph protocol
-   * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
-   * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
+   * Returns the meta data as an array
+   * 
+   * @return string[] meta data as an array
    */
   public function metaToArray(): array {
     return $this->attributes()->toArray();
+  }
+
+  public function overlapsWith(MetaData $meta): bool {
+    if ($this->setsCharset() && $meta->setsCharset()) {
+      return true;
+    }  
+    $same = array_intersect_assoc($this->metaToArray(), $meta->metaToArray());
+    return array_key_exists('name', $same) || array_key_exists('http-equiv', $same);
   }
 
 }

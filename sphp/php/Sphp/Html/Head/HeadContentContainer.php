@@ -15,15 +15,10 @@ use Traversable;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\Container;
-use Sphp\Html\Programming\ScriptTag;
+use Sphp\Html\Programming\Script;
 
 /**
- * Container for metadata components
- *
- *  The &lt;meta&gt; tag provides meta data about the HTML document. Metadata will not be displayed on the page,
- *  but will be machine parable. Meta elements are typically used to specify page description, keywords, author
- *  of the document, last modified, and other metadata. The metadata can be used by browsers (how to display
- *  content or reload page), search engines (keywords), or other web services.
+ * Container for HTML &lt;head&gt; components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_meta.asp w3schools HTML API
@@ -38,10 +33,13 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
   /**
    * @var Container
    */
-  private $metaData;
+  private $container;
 
+  /**
+   * Constructor
+   */
   public function __construct() {
-    $this->metaData = new Container;
+    $this->container = new Container;
   }
 
   /**
@@ -51,7 +49,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->metaData);
+    unset($this->container);
   }
 
   /**
@@ -62,9 +60,15 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->metaData = clone $this->metaData;
+    $this->container = clone $this->container;
   }
 
+  /**
+   * Sets a head content component
+   * 
+   * @param  HeadContent $component head content component
+   * @return $this for a fluent interface
+   */
   public function set(HeadContent $component) {
     if ($component instanceof Title) {
       $this->setDocumentTitle($component);
@@ -74,11 +78,12 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
       $this->setLink($component);
     } else if ($component instanceof MetaData) {
       $this->setMeta($component);
-    } else if ($component instanceof ScriptTag) {
+    } else if ($component instanceof Script) {
       $this->setScript($component);
     } else {
       $this->content()->append($component);
     }
+    return $this;
   }
 
   /**
@@ -89,36 +94,52 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    */
   public function setDocumentTitle(Title $title) {
     $inserted = false;
-    foreach ($this->metaData as $k => $meta) {
+    foreach ($this->container as $k => $meta) {
       if ($meta instanceof Title) {
-        $this->metaData[$k] = $title;
+        $this->container[$k] = $title;
         $inserted = true;
         break;
       }
     }
     if (!$inserted) {
-      $this->metaData[] = $title;
+      $this->container[] = $title;
     }
     return $this;
   }
 
   /**
-   * Sets the title of the HTML page
+   * Sets the base address of the HTML page
    *
-   * @param  Base $title the title of the HTML page
+   * @param  Base $base the title of the HTML page
    * @return $this for a fluent interface
    */
-  public function setBaseAddress(Base $title) {
+  public function setBaseAddress(Base $base) {
     $inserted = false;
-    foreach ($this->metaData as $k => $meta) {
+    foreach ($this->container as $k => $meta) {
       if ($meta instanceof Base) {
-        $this->metaData[$k] = $title;
+        $this->container[$k] = $base;
         $inserted = true;
         break;
       }
     }
     if (!$inserted) {
-      $this->metaData[] = $title;
+      $this->container[] = $base;
+    }
+    return $this;
+  }
+
+  /**
+   * Removes the default URL and a default target for all links on a page
+   *
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
+   */
+  public function unsetBaseAddress() {
+    foreach ($this->container as $k => $meta) {
+      if ($meta instanceof Base) {
+        unset($this->container[$k]);
+        break;
+      }
     }
     return $this;
   }
@@ -130,21 +151,18 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * @return $this for a fluent interface
    */
   public function setMeta(MetaData $content) {
-    $key = null;
     $contains = false;
-    foreach ($this as $k => $meta) {
-      if ($meta instanceof MetaData) {
-        $contains = $content->overlapsWith($meta);
+    foreach ($this as $key => $component) {
+      if ($component instanceof MetaData) {
+        $contains = $content->overlapsWith($component);
         if ($contains) {
-          $key = $k;
+          $this->container[$key] = $content;
           break;
         }
       }
     }
-    if ($key === null) {
-      $this->metaData[] = $content;
-    } else {
-      $this->metaData[$key] = $content;
+    if (!$contains) {
+      $this->container[] = $content;
     }
     return $this;
   }
@@ -152,25 +170,22 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
   /**
    * Sets a link tag object
    *
-   * @param  LinkTag $content meta information to add
+   * @param  LinkTag $link meta information to add
    * @return $this for a fluent interface
    */
-  public function setLink(LinkTag $content) {
-    $key = null;
+  public function setLink(LinkTag $link) {
     $contains = false;
-    foreach ($this->metaData as $k => $meta) {
-      if ($meta instanceof LinkTag) {
-        $contains = $content->equals($meta);
+    foreach ($this->container as $k => $component) {
+      if ($component instanceof LinkTag) {
+        $contains = $link->equals($component);
         if ($contains) {
-          $key = $k;
+          $this->container[$k] = $link;
           break;
         }
       }
     }
-    if ($key === null) {
-      $this->metaData[] = $content;
-    } else {
-      $this->metaData[$key] = $content;
+    if (!$contains) {
+      $this->container[] = $link;
     }
     return $this;
   }
@@ -178,28 +193,32 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
   /**
    * Sets a meta data object
    *
-   * @param  MetaData $content meta information to add
+   * @param  Script $content meta information to add
    * @return $this for a fluent interface
    */
-  public function setScript(ScriptTag $content) {
-    $this->metaData[] = $content;
+  public function setScript(Script $content) {
+    $this->container[] = $content;
     return $this;
   }
 
   public function getMetaTags(): Container {
-    return $this->metaData->getComponentsByObjectType(MetaData::class);
+    return $this->container->getComponentsByObjectType(MetaData::class);
   }
 
   public function getLinkTags(): Container {
-    return $this->metaData->getComponentsByObjectType(LinkTag::class);
+    return $this->container->getComponentsByObjectType(LinkTag::class);
+  }
+
+  public function getScripts(): Container {
+    return $this->container->getComponentsByObjectType(Script::class);
   }
 
   public function getHtml(): string {
-    return $this->metaData->getHtml();
+    return $this->container->getHtml();
   }
 
   public function count(): int {
-    $this->metaData->count();
+    $this->container->count();
   }
 
   /**
@@ -208,7 +227,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->metaData->getIterator();
+    return $this->container->getIterator();
   }
 
 }

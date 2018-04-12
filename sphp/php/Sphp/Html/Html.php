@@ -124,7 +124,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @return $this
    */
   public function setViewport(string $viewport = 'width=device-width, initial-scale=1.0') {
-    $this->head()->addMeta(Meta::viewport($viewport));
+    $this->head()->set(Meta::viewport($viewport));
     return $this;
   }
 
@@ -146,7 +146,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->head()->addCssSrc('http://vjs.zencdn.net/6.6.3/video-js.css');
+    $this->head()->setCssSrc('http://vjs.zencdn.net/6.6.3/video-js.css');
     $this->body()->scripts()->appendSrc('http://vjs.zencdn.net/6.6.3/video.js');
     return $this;
   }
