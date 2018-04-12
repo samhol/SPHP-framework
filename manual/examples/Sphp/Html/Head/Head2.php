@@ -8,6 +8,6 @@ $head->setBaseAddr("http://sphp.samiholck.com/", "_self")
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHP framework'))
         ->addMeta(Meta::keywords(
-                ['php', 'scss', 'css', 'html', 'html5', 'javascript', 'jquery']))
+                        ['php', 'scss', 'css', 'html', 'html5', 'javascript', 'jquery']))
         ->addMeta(Meta::description('SPHP framework for web developement'));
 $head->printHtml();

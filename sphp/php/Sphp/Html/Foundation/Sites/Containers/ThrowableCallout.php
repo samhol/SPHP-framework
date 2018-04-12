@@ -1,8 +1,11 @@
 <?php
 
 /**
- * ExceptionCallout.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Foundation\Sites\Containers;
@@ -177,7 +180,7 @@ class ThrowableCallout extends Callout {
    * @return string the information about the method described in a trace row or null
    */
   private function parseFunction(array $trRow): string {
-    echo "<pre>foo:::";
+    echo "<pre>";
     echo $this->throwable->getTraceAsString();
     echo "</pre>";
     $methodStr = "while executing ";

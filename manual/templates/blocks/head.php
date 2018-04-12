@@ -2,8 +2,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Stdlib\Path;
-
 $html = Document::html();
 
 $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
@@ -15,38 +13,29 @@ $title = $titleGenerator->createTitleFor(trim($redirect, '/'));
 Document::html()->setLanguage('en')->setDocumentTitle($title);
 
 use Sphp\Html\Head\Meta;
-$metaGroup = new Head\MetaGroup();
+use Sphp\Html\Head\Link;
+
+$head = Document::head();
 $html->body();
-$html->enableSPHP()->useVideoJS()->setViewport('width=device-width, initial-scale=1.0')->useFontAwesome();
-Document::head()
-        ->addMeta(Meta::charset('UTF-8'))
-        ->addCssSrc('sphp/css/sphp.all.css')
-        ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
-        ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
-        ->setBaseAddr(Path::get()->http(), '_self')
-        ->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png')
-        ->add(Head\Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
-        ->addMeta(Meta::author('Sami Holck'))
-        ->addMeta(Meta::applicationName('SPHP framework'))
-        ->addMeta(Meta::keywords([
-                    'php',
-                    'scss',
-                    'css',
-                    'html',
-                    'html5',
-                    'framework',
-                    'foundation',
-                    'JavaScript',
-                    'DOM',
-                    'Web development',
-                    'tutorials',
-                    'programming',
-                    'references',
-                    'examples',
-                    'source code',
-                    'demos',
-                    'tips']))
-        ->addMeta(Meta::description('SPHP framework for web developement'));
+$html->enableSPHP()
+        ->useVideoJS()
+        ->setViewport('width=device-width, initial-scale=1.0')->useFontAwesome();
+
+$head->addMeta(Meta::charset('UTF-8'));
+$head->addCssSrc('http://playground.samiholck.com/sphp/css/sphp.all.css');
+$head->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
+$head->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css');
+$head->setBaseAddr('http://playground.samiholck.com/', '_self');
+$head->addShortcutIcon('http://playground.samiholck.com/manual/pics/S-logo.png');
+$head->set(Link::create('/apple-touch-icon.png', 'apple-touch-icon'));
+$head->set(Meta::namedContent('msapplication-TileColor', '#f1f1f1'));
+$head->set(Meta::namedContent('theme-color', '#f1f1f1'));
+$head->set(Meta::author('Sami Holck'));
+$head->set(Meta::applicationName('SPHPlayground Framework'));
+$head->set(Meta::keywords(['php', 'scss', 'css', 'html', 'html5', 'framework',
+            'JavaScript', 'DOM', 'Web development', 'tutorials', 'programming',
+            'references', 'examples', 'source code', 'demos', 'tips']));
+$head->set(Meta::description('SPHP framework for web developement'));
 Document::body()->addCssClass('manual');
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 Document::html()->scripts()->appendSrc('manual/js/techs.js');

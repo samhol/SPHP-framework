@@ -9,6 +9,7 @@ $html = Document::html();
 
 Document::html()->setLanguage('en');
 
+use Sphp\Html\Head\Link;
 use Sphp\Html\Head\Meta;
 
 Document::head()
@@ -16,8 +17,8 @@ Document::head()
         ->setBaseAddr('http://playground.samiholck.com/')
         ->setDocumentTitle('License | SPHPlayground framework')
         ->addShortcutIcon('manual/pics/S-logo.png')
-        ->add(Head\Link::stylesheet('manual/css/license/license.css'))
-        ->add(Head\Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
+        ->set(Link::stylesheet('manual/css/license/license.css'))
+        ->set(Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHPlayground framework'))
         ->addMeta(Meta::keywords([

@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Checkboxes.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\Checkbox;
 use Sphp\Stdlib\Strings;
 
 /**

@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Source.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Media\Multimedia;
@@ -10,7 +13,6 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Media\LazyMedia;
 use Sphp\Html\Media\LazyMediaSourceTrait;
-use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an HTML &lt;source&gt; tag

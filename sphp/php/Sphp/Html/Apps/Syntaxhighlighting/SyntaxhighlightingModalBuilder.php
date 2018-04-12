@@ -15,7 +15,7 @@ use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 
 /**
- * Implements Modal builder for PHP Example presentation
+ * Implements Modal builder for program code Example presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

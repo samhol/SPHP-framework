@@ -35,7 +35,7 @@ $titlebar->printHtml();
 </div>
 <pre>
 <?php
-echo new \Sphp\Html\Media\Icons\SVGLoader('sphp/svg/amazon.svg');
+echo new \Sphp\Html\Media\Icons\Svg('sphp/svg/amazon.svg');
 echo file_get_contents('php://manual/pages/Sphp.Stdlib.php');
 ?>
 </pre>

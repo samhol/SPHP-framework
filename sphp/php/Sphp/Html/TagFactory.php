@@ -16,6 +16,8 @@ use ReflectionClass;
 /**
  * Factory for basic HTML tag component creation
  *
+ * @method \Sphp\Html\Head\MetaTag meta(array $meta = []) creates a new span tag component
+ *
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
  * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new HTML &lt;a&gt; object
@@ -119,11 +121,11 @@ abstract class TagFactory {
       'ins' => ContainerTag::class,
       'kbd' => ContainerTag::class,
       'keygen' => EmptyTag::class,
-      'link' => Head\Link::class,
+      'link' => Head\LinkTag::class,
       'mark' => ContainerTag::class,
       'menu' => ContainerTag::class,
       'head' => Head\Head::class,
-      'meta' => Head\Meta::class,
+      'meta' => Head\MetaTag::class,
       'title' => Head\Title::class,
       'meter' => ContainerTag::class,
       'nav' => Navigation\Nav::class,

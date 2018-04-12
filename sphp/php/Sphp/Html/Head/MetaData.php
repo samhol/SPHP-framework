@@ -88,6 +88,13 @@ interface MetaData extends HeadContent, NonVisualContent {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function hasPropertyContent(): bool;
-  
-  public function metaToArray():array ;
+
+  /**
+   * 
+   * @param  MetaData $meta
+   * @return boolean true if the property attribute exists, otherwise false
+   */
+  public function overlapsWith(MetaData $meta): bool;
+
+  public function metaToArray(): array;
 }

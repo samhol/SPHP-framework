@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Resetter.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
@@ -27,7 +30,7 @@ class Resetter extends AbstractButton implements ResetterInterface {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function __construct(string $content = null) {
-    parent::__construct('reset',$content);
+    parent::__construct('reset', $content);
   }
 
 }

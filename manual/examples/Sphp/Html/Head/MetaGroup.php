@@ -4,4 +4,4 @@ namespace Sphp\Html\Head;
 
 use Sphp\Stdlib\Parser;
 
-echo MetaGroup::fromArray(Parser::fromFile("manual/snippets/meta-data.yaml"));
+echo HeadFactory::fromArray(Parser::fromFile("Sphp/Html/Head/meta-data.yaml"));

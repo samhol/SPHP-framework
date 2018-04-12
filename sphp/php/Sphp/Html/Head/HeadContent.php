@@ -13,7 +13,7 @@ namespace Sphp\Html\Head;
 use Sphp\Html\Content;
 
 /**
- * Defines content for HTML head
+ * Defines the content for HTML head
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

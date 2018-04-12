@@ -1,13 +1,16 @@
 <?php
 
 /**
- * ScriptTag.php (UTF-8)
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\TagInterface;
 
 /**
  * Defines an HTML script tag
@@ -16,7 +19,7 @@ use Sphp\Html\ComponentInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ScriptTag extends Script, ComponentInterface {
+interface ScriptTag extends Script, TagInterface {
 
   /**
    * Sets the value of the type attribute

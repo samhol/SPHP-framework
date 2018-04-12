@@ -29,30 +29,7 @@ use Sphp\Html\Programming\ScriptSrc;
  */
 class Head extends AbstractComponent implements NonVisualContent {
 
-  /**
-   * @var Title 
-   */
-  private $title;
-
-  /**
-   * @var Base|null 
-   */
-  private $base;
-
-  /**
-   * @var ScriptsContainer 
-   */
-  private $scripts;
-
-  /**
-   * @var Container 
-   */
-  private $links;
-
-  /**
-   * @var MetaContainer 
-   */
-  private $meta;
+  private $content;
 
   /**
    * Constructs a new instance
@@ -62,6 +39,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    */
   public function __construct(string $title = null, string $charset = 'UTF-8') {
     parent::__construct('head');
+    $this->content = new HeadContentContainer();
     $this->setup($title, $charset);
   }
 
@@ -74,24 +52,11 @@ class Head extends AbstractComponent implements NonVisualContent {
    */
   private function setup($title, $charset) {
     $this->setDocumentTitle($title);
-    $this->meta = new MetaContainer();
-    $this->scripts = new ScriptsContainer();
-    $this->links = new Container();
+    //$this->meta = new MetaContainer();
+    //$this->scripts = new ScriptsContainer();
+    //$this->links = new Container();
     $this->addMeta(Meta::charset($charset));
     return $this;
-  }
-
-  /**
-   * Returns and optionally sets the inner script container
-   * 
-   * @param  ScriptsContainer|null $c optional new script container to set
-   * @return ScriptsContainer the script container
-   */
-  public function scripts(ScriptsContainer $c = null): ScriptsContainer {
-    if ($c !== null) {
-      $this->scripts = new ScriptsContainer();
-    }
-    return $this->scripts;
   }
 
   /**
@@ -104,7 +69,7 @@ class Head extends AbstractComponent implements NonVisualContent {
     if (!($title instanceof Title)) {
       $title = new Title($title);
     }
-    $this->title = $title;
+    $this->content->set($title);
     return $this;
   }
 
@@ -118,7 +83,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    */
   public function setBaseAddr(string $baseAddr, string $target = '_self') {
     if ($baseAddr !== null && $target !== null) {
-      $this->base = new Base($baseAddr, $target);
+      $this->content->set(new Base($baseAddr, $target));
     } else {
       $this->unsetBaseAddress();
     }
@@ -157,7 +122,9 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function appendScriptSrc(string $src, bool $async = false): ScriptSrc {
-    return $this->scripts()->appendSrc($src, $async);
+    $script = new ScriptSrc($src, $async);
+    $this->content->set($script);
+    return $script;
   }
 
   /**
@@ -171,7 +138,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function addCssSrc($href, $media = 'screen') {
-    $this->links->append((new Link($href, 'stylesheet', $media))->setType('text/css'));
+    $this->content->set(Link::stylesheet($href, $media));
     return $this;
   }
 
@@ -186,7 +153,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function addShortcutIcon(string $href, string $type = 'image/x-icon') {
-    $this->add(Link::shortcutIcon($href, $type));
+    $this->content->set(Link::shortcutIcon($href, $type));
     return $this;
   }
 
@@ -196,30 +163,9 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @param  HeadContent $component content the component to add
    * @return $this for a fluent interface
    */
-  public function add(HeadContent $component) {
-    if ($component instanceof Title) {
-      $this->setDocumentTitle($component);
-    } else if ($component instanceof Base) {
-      $this->base = $component;
-    } else if ($component instanceof Link) {
-      $this->links->append($component);
-    } else if ($component instanceof Meta) {
-      $this->addMeta($component);
-    } else if ($component instanceof Script) {
-      $this->scripts()->append($component);
-    } else {
-      $this->content()->append($component);
-    }
+  public function set(HeadContent $component) {
+    $this->content->set($component);
     return $this;
-  }
-
-  /**
-   * Returns the &lt;meta&gt; component container
-   *
-   * @return MetaContainer the &lt;meta&gt; component container
-   */
-  public function metaTags(): MetaContainer {
-    return $this->meta;
   }
 
   /**
@@ -229,12 +175,12 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @return $this for a fluent interface
    */
   public function addMeta(MetaData $meta) {
-    $this->meta->addMeta($meta);
+    $this->content->set($meta);
     return $this;
   }
 
   public function contentToString(): string {
-    return $this->meta . $this->title . $this->base . $this->links . $this->scripts;
+    return $this->content->getHtml();
   }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Head\Meta;
+use Sphp\Html\Head\MetaTag;
 
 Document::html("foo")
         ->setLanguage("en");
@@ -11,9 +11,9 @@ Document::head("foo")
         ->setDocumentTitle("Foo document")
         ->addCssSrc("print.css", "print")
         ->addCssSrc("screen.css", "screen")
-        ->addMeta(Meta::author('Sami Holck'))
-        ->addMeta(Meta::applicationName("Foobar"))
-        ->addMeta(Meta::keywords("foo", "bar", "foobar"));
+        ->addMeta(MetaTag::author('Sami Holck'))
+        ->addMeta(MetaTag::applicationName("Foobar"))
+        ->addMeta(MetaTag::keywords("foo", "bar", "foobar"));
 
 Document::body("foo")->append("Welcome to Foo!");
 Document::body("foo")->scripts()->appendSrc("foo.js");

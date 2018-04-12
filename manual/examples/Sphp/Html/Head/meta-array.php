@@ -46,5 +46,3 @@ $meta_data = [
         "http-equiv" => "apple-mobile-web-app-capable",
         "value" => "yes"]
 ];
-
-
