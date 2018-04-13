@@ -19,11 +19,11 @@ $namedContent = [
 $headCont = new HeadContentContainer();
 $headCont->set(new Title('foo'));
 
-$headCont->setLink(Link::shortcutIcon('foobar'));
+$headCont->setLink(Link::icon('foobar'));
 foreach ($namedContent as $name => $value) {
   $headCont->setMeta(Meta::namedContent($name, $value));
 }
-$headCont->setLink(Link::shortcutIcon('foo'));
+$headCont->setLink(Link::icon('foo'));
 $headCont->set(new Title('foobar'));
 $in = new Indenter();
 //echo (new SyntaxHighlighter())->setSource($in->indent("$headCont"), 'html5');
@@ -35,7 +35,7 @@ print_r(Parser::fromFile('Sphp/Html/Head/meta.yaml'));
 use Sphp\Html\Head\HeadFactory;
 
 $head = HeadFactory::fromArray(Parser::fromFile('Sphp/Html/Head/meta.yaml'));
-echo (new SyntaxHighlighter())->setSource($in->indent("$head"), 'html5');
 echo "</pre>";
+echo (new SyntaxHighlighter())->setSource($in->indent("$head"), 'html5');
 
 

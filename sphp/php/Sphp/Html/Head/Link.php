@@ -29,8 +29,10 @@ abstract class Link {
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public static function stylesheet(string $href, string $media = 'screen'): LinkTag {
-    return (new LinkTag('stylesheet', $href, $media))->setType('text/css');
+  public static function stylesheet(string $href, string $media = null): LinkTag {
+    $link = new LinkTag('stylesheet', $href, $media);
+    $link->setMedia($media)->setType('text/css');
+    return $link;
   }
 
   /**
@@ -43,9 +45,56 @@ abstract class Link {
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public static function shortcutIcon(string $href, string $sizes = null): LinkTag {
+  public static function icon(string $href, string $sizes = null): LinkTag {
     $link = new LinkTag('icon', $href);
     $link->setSizes($sizes);
+    return $link;
+  }
+
+  /**
+   * Adds a shortcut icon to the object
+   *
+   * @param  string $href an absolute URL that acts as the base URL
+   * @param  string $sizes specifies the sizes of icons for visual media
+   * @return LinkTag new object
+   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
+   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
+   */
+  public static function appleTouchIcon(string $href, string $sizes = null): LinkTag {
+    $link = new LinkTag('apple-touch-icon', $href);
+    $link->setSizes($sizes);
+    return $link;
+  }
+
+  /**
+   * Adds a shortcut icon to the object
+   *
+   * @param  string $href an absolute URL that acts as the base URL
+   * @param  string $sizes specifies the sizes of icons for visual media
+   * @return LinkTag new object
+   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
+   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
+   */
+  public static function manifest(string $href): LinkTag {
+    $link = new LinkTag('manifest', $href);
+    return $link;
+  }
+
+  /**
+   * Adds a shortcut icon to the object
+   *
+   * @param  string $href an absolute URL that acts as the base URL
+   * @param  string $color specifies the sizes of icons for visual media
+   * @return LinkTag new object
+   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
+   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
+   */
+  public static function maskIcon(string $href, string $color = null): LinkTag {
+    $link = new LinkTag('mask-icon', $href);
+    $link->attributes()->set('color', $color);
     return $link;
   }
 

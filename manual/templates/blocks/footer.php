@@ -18,7 +18,7 @@ $currentUrl = URL::getCurrentURL();
         <div class="media-object">
           <div class="media-object-section">
             <div class="thumbnail">
-              <img style="height:100px" src="http://data.samiholck.com/images/face.jpg" alt="Photo of Sami Holck">
+              <img src="http://data.samiholck.com/images/face.jpg" width="74" height="100" alt="Photo of Sami Holck">
             </div>
           </div>
           <div class="media-object-section main-section">

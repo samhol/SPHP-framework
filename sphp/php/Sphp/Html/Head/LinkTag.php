@@ -32,12 +32,10 @@ class LinkTag extends EmptyTag implements LinkInterface {
    *
    * @param  string $rel the relationship between the current document and the linked one
    * @param  string $href the location of the linked document
-   * @param  string $media what media/device the target resource is optimized for
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function __construct(string $rel = null, string $href = null, string $media = null) {
+  public function __construct(string $rel = null, string $href = null) {
     parent::__construct('link');
     $this->attributes()->demand('rel');
     if ($href !== null) {
@@ -45,9 +43,6 @@ class LinkTag extends EmptyTag implements LinkInterface {
     }
     if ($rel !== null) {
       $this->setRel($rel);
-    }
-    if ($media !== null) {
-      $this->setMedia($media);
     }
   }
 
@@ -231,7 +226,7 @@ class LinkTag extends EmptyTag implements LinkInterface {
     return $meta->getRel() === $this->getRel() && $meta->getHref() === $this->getHref() && $this->getMedia() === $meta->getMedia();
   }
 
-  public function setSizes(string $sizes) {
+  public function setSizes(string $sizes = null) {
     $this->attributes()->set('sizes', $sizes);
     return $this;
   }

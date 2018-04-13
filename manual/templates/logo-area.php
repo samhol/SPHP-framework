@@ -10,7 +10,7 @@ use Sphp\Config\Config;
     <ul class="logo">
       <li>
         <a href="<?php echo Config::instance('manual')->get('ROOT_URL') ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
-          <img src="manual/pics/sphplayground.png" alt="SPHPlayground framework">
+          <img src="manual/pics/sphplayground.png" width="528" height="49" alt="SPHPlayground framework">
         </a>
       </li>
     </ul>

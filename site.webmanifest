@@ -1,6 +1,6 @@
 {
-    "name": "samiholck.com",
-    "short_name": "samiholck.com",
+    "name": "SPHPlayground Framework",
+    "short_name": "SPHP",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

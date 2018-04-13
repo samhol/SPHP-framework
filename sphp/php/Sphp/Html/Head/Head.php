@@ -142,7 +142,7 @@ class Head extends AbstractComponent implements NonVisualContent {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function setShortcutIcon(string $href, string $type = 'image/x-icon') {
-    $this->content->set(Link::shortcutIcon($href, $type));
+    $this->content->set(Link::icon($href, $type));
     return $this;
   }
 
