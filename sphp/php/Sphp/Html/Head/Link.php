@@ -37,7 +37,7 @@ abstract class Link {
    * Adds a shortcut icon to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @param  string $sizes the MIME type of the linked document
+   * @param  string $sizes specifies the sizes of icons for visual media
    * @return LinkTag new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
@@ -45,6 +45,7 @@ abstract class Link {
    */
   public static function shortcutIcon(string $href, string $sizes = null): LinkTag {
     $link = new LinkTag('icon', $href);
+    $link->setSizes($sizes);
     return $link;
   }
 

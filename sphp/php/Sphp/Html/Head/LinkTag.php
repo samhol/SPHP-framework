@@ -231,4 +231,13 @@ class LinkTag extends EmptyTag implements LinkInterface {
     return $meta->getRel() === $this->getRel() && $meta->getHref() === $this->getHref() && $this->getMedia() === $meta->getMedia();
   }
 
+  public function setSizes(string $sizes) {
+    $this->attributes()->set('sizes', $sizes);
+    return $this;
+  }
+
+  public function getSizes() {
+    return $this->attributes()->getValue('sizes');
+  }
+
 }

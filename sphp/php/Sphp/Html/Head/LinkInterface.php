@@ -89,4 +89,19 @@ interface LinkInterface extends HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function getMedia();
+  /**
+   * Returns the value of the media attribute
+   *
+   * **Notes:**
+   *
+   * * The media attribute specifies what media/device the target resource
+   *   is optimized for.
+   * * This attribute is mostly used with CSS style sheets to specify
+   *   different styles for different media types.
+   * * The media attribute can accept several values.
+   *
+   * @return string|null what media/device the target resource is optimized for
+   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
+   */
+  public function getSizes();
 }
