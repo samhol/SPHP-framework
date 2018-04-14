@@ -17,7 +17,6 @@ use Sphp\Html\Head\Link;
 
 $head->set(Meta::charset('UTF-8'));
 $head->set(Meta::viewport('width=device-width, initial-scale=1.0'));
-$head->set(Meta::httpEquiv('X-UA-Compatible', 'IE=edge'));
 $head->setDocumentTitle($title);
 $head->setBaseAddr('http://playground.samiholck.com/', '_self');
 

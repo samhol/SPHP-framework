@@ -201,14 +201,26 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
     return $this;
   }
 
+  /**
+   * 
+   * @return Container
+   */
   public function getMetaTags(): Container {
     return $this->container->getComponentsByObjectType(MetaData::class);
   }
 
+  /**
+   * 
+   * @return Container
+   */
   public function getLinkTags(): Container {
     return $this->container->getComponentsByObjectType(LinkTag::class);
   }
 
+  /**
+   * 
+   * @return Container
+   */
   public function getScripts(): Container {
     return $this->container->getComponentsByObjectType(Script::class);
   }

@@ -2,30 +2,42 @@
 
 namespace Sphp\Html;
 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 require_once('manual/settings.php');
-
-$html = Document::html();
-
-
-Document::html()->setLanguage('en');
 
 use Sphp\Html\Head\Link;
 use Sphp\Html\Head\Meta;
 
-Document::head()
-        //->enableSPHP()
-        ->setBaseAddr('http://playground.samiholck.com/')
-        ->setDocumentTitle('License | SPHPlayground framework')
-        ->setShortcutIcon('manual/pics/S-logo.png')
-        ->set(Link::stylesheet('manual/css/license/license.css'))
-        ->set(Link::create('http://playground.samiholck.com/manual/pics/apple-touch-icon.png', 'apple-touch-icon'))
-        ->set(Meta::author('Sami Holck'))
-        ->set(Meta::applicationName('SPHPlayground framework'))
-        ->set(Meta::keywords([
-                    'MIT',
-                    'license',
-                    'SPHPlayground']))
-        ->set(Meta::description('License for SPHPlayground framework'));
+$html = Document::html();
+$head = Document::head();
+$body = Document::body();
+
+$html->setLanguage('en');
+
+$head->set(Meta::charset('UTF-8'));
+$head->set(Meta::viewport('width=device-width, initial-scale=1.0'));
+$head->setDocumentTitle('License | SPHPlayground framework');
+$head->setBaseAddr('http://playground.samiholck.com/', '_self');
+
+$head->setCssSrc('http://playground.samiholck.com/manual/css/license/license.css');
+//$head->setCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
+
+$head->set(Link::appleTouchIcon('/apple-touch-icon.png'));
+$head->set(Link::icon('/favicon-32x32.png', '32x32'));
+$head->set(Link::icon('/favicon-16x16.png', '16x16'));
+$head->set(Link::manifest('/site.webmanifest'));
+$head->set(Link::maskIcon('/safari-pinned-tab.svg', '#5bbad5'));
+$head->set(Meta::namedContent('msapplication-TileColor', '#f1f1f1'));
+$head->set(Meta::namedContent('theme-color', '#f1f1f1'));
+
+$head->set(Meta::author('Sami Holck'));
+$head->set(Meta::applicationName('SPHPlayground Framework'));
+$head->set(Meta::keywords(['MIT', 'license', 'SPHPlayground']));
+$head->set(Meta::description('License for SPHPlayground framework'));
+
+$html->useFontAwesome();
 Document::body()->addCssClass('mit-license');
 Document::html()->startBody();
 
