@@ -18,7 +18,7 @@ namespace Sphp\Stdlib\Parsers;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Encoder {
+interface CollectionEncoder {
 
   public function encode(array $config): string;
 }

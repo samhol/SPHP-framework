@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Yaml as SymfonyYaml;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Yaml extends AbstractReader {
+class Yaml extends AbstractReader implements CollectionEncoder {
 
   public function fromString(string $string) {
     try {
@@ -30,6 +30,10 @@ class Yaml extends AbstractReader {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $data;
+  }
+
+  public function encode(array $array): string {
+    return SymfonyYaml::dump($array);
   }
 
 }

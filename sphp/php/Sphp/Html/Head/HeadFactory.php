@@ -27,15 +27,17 @@ abstract class HeadFactory {
       if (is_array($tag)) {
         if (array_key_exists('meta', $tag)) {
           $group->set(new MetaTag($tag['meta']));
-        }
-        if (array_key_exists('link', $tag)) {
-          if (Arrays::isIndexed($tag)) {
-            foreach ($tag['link'] as $link) {
-              $group->set(Link::fromArray($link));
-            }
-          } else {
-            $group->set(Link::fromArray($tag['link']));
-          }
+        } else if (array_key_exists('meta:charset', $tag) && is_string($tag['meta:charset'])) {
+          $group->set(Meta::charset($tag['meta:charset']));
+        } else if (array_key_exists('meta:http-equiv', $tag)) {
+          $group->set(Meta::httpEquiv($tag['meta:http-equiv'], $tag['content']));
+        } else if (array_key_exists('meta:name', $tag)) {
+          $group->set(Meta::httpEquiv($tag['meta:name'], $tag['content']));
+        }else if (array_key_exists('link', $tag)) {
+          $link = new LinkTag();
+          //unset($tag['link:icon']);
+         // $link->attributes()->merge($tag);
+          $group->set($link);
         }
         if (array_key_exists('title', $tag)) {
           $group->set(new Title($tag['title']));

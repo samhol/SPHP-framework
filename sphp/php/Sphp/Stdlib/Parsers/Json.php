@@ -21,7 +21,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Json extends AbstractReader {
+class Json extends AbstractReader implements CollectionEncoder {
 
   /**
    * @var JsonFormat 

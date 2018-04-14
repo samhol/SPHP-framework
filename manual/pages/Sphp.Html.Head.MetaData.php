@@ -26,7 +26,7 @@ MD
 );
 Manual\visualize('Sphp/Html/Head/MetaInterface.php', 'html5', false);
 
-$code1 = Manual\codeModal('YAML file', 'Sphp/Html/Head/meta-data.yaml', 'YAML Meta data example');
+$code1 = Manual\codeModal('YAML file', 'Sphp/Html/Head/meta.yaml', 'YAML Meta data example');
 $tr1 = $code1->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
 
 echo $code1;

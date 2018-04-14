@@ -43,11 +43,11 @@ $html->enableSPHP();
 if ($redirect === '/Sphp.Html.Media.Multimedia') {
   $html->useVideoJS();
 }
-Document::body()->addCssClass('manual');
-Document::html()->scripts()->appendSrc('manual/js/formTools.js');
-Document::html()->scripts()->appendSrc('manual/js/techs.js');
-Document::html()->scripts()->appendSrc('sphp/javascript/dist/ss360.min.js');
-Document::html()->scripts()->appendSrc('https://sitesearch360.com/cdn/sitesearch360-v9.min.js');
-Document::html()->startBody();
+$body->addCssClass('manual');
+$html->scripts()->appendSrc('manual/js/formTools.js');
+$html->scripts()->appendSrc('manual/js/techs.js');
+$html->scripts()->appendSrc('sphp/javascript/dist/ss360.min.js');
+$html->scripts()->appendSrc('https://sitesearch360.com/cdn/sitesearch360-v9.min.js');
+$html->startBody();
 
 
