@@ -17,6 +17,6 @@ namespace Sphp\Stdlib\Parsers;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Reader extends StringReader, FileReader {
+interface Reader extends StringReader, FileToArrayParser {
   
 }

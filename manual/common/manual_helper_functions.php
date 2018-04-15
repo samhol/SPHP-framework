@@ -145,3 +145,19 @@ function codeModal($trigger, string $path, $title = 'Source code'): Modal {
   $m->getPopup()->layout()->setSize('large');
   return $m;
 }
+
+/**
+ * 
+ * @param  mixed $trigger
+ * @param  string $src
+ * @param  mixed $title
+ * @return Modal
+ */
+function codeModalFromString($trigger, string $src, string $lang, $title = 'Source code'): Modal {
+  $modal = new SyntaxHighlightingModalBuilder($trigger, inlineMd($title, false));
+  $modal->setSource($src, $lang, true);
+  $m = $modal->buildModal();
+  $m->getTrigger()->addCssClass('manual-code-modal');
+  $m->getPopup()->layout()->setSize('large');
+  return $m;
+}

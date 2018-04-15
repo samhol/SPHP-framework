@@ -21,7 +21,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Json extends AbstractReader implements CollectionEncoder {
+class Json extends AbstractReader implements ArrayEncoder {
 
   /**
    * @var JsonFormat 
@@ -47,7 +47,7 @@ class Json extends AbstractReader implements CollectionEncoder {
    * @return string
    * @throws RuntimeException if encoding errors occur.
    */
-  public function encode(array $config): string {
+  public function encodeArray(array $config): string {
     $serialized = json_encode($config, JSON_UNESCAPED_SLASHES|JSON_FORCE_OBJECT);
 
     if (false === $serialized) {

@@ -10,15 +10,23 @@
 
 namespace Sphp\Stdlib\Parsers;
 
+use Sphp\Exceptions\RuntimeException;
+
 /**
- * Description of Encoder
- *
+ * Defines a file reader
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-02-13
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface CollectionEncoder {
+interface FileToArrayParser {
 
-  public function encode(array $config): string;
+  /**
+   * Read from a file and create an array
+   *
+   * @param  string $filename
+   * @return mixed
+   * @throws RuntimeException if the file doesn't exist or is not readable
+   */
+  public function fromFile($filename);
 }

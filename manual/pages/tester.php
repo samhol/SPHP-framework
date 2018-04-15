@@ -33,7 +33,7 @@ echo "<pre>";
 print_r(Parser::fromFile('Sphp/Html/Head/meta.yaml'));
 //print_r($meta_data);
 $y =new \Sphp\Stdlib\Parsers\Yaml;
-echo $y->encode($meta_data);
+echo $y->encodeArray($meta_data);
 use Sphp\Html\Head\HeadFactory;
 
 $head = HeadFactory::fromArray(Parser::fromFile('Sphp/Html/Head/meta.yaml'));
