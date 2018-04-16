@@ -2,6 +2,8 @@
 
 namespace Sphp\Database;
 
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
+
 try {
   $rules = new Clause();
   $r1 = new Rule('a', '=', 'foo');
@@ -18,6 +20,6 @@ try {
   echo $rules . "\n";
   print_r($rules->getParams()->toArray());
 } catch (\Throwable $ex) {
-  echo new \Sphp\Html\Foundation\Sites\Containers\ThrowableCallout($ex);
+  echo ThrowableCalloutBuilder::build($ex);
 }
 

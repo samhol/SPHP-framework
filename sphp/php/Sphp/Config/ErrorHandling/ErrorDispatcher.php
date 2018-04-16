@@ -41,6 +41,9 @@ class ErrorDispatcher {
    */
   private $exceptionListeners;
 
+  /**
+   * Constructor
+   */
   public function __construct() {
     $this->errorListeners = new StablePriorityQueue();
     $this->exceptionListeners = new StablePriorityQueue();

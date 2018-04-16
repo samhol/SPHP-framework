@@ -13,7 +13,7 @@ namespace Sphp\Config\ErrorHandling;
 use Throwable;
 
 /**
- * Defines an Exception listener for Error dipatcher
+ * Defines an Exception listener for Error dispatcher
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * $link    http://php.net/manual/en/function.set-exception-handler.php
@@ -23,8 +23,9 @@ use Throwable;
 interface ExceptionListener {
 
   /**
+   * Handles the throwable
    * 
-   * @param Throwable $e
+   * @param Throwable $e the throwable to handle
    */
   public function onException(Throwable $e);
 }

@@ -11,7 +11,7 @@
 namespace Sphp\Config\ErrorHandling;
 
 /**
- * Defines an Error listener for Error dipatcher
+ * Defines an Error listener for Error dispatcher
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://php.net/manual/en/function.set-error-handler.php

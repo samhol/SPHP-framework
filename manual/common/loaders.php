@@ -2,7 +2,7 @@
 
 namespace Sphp\MVC;
 
-use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
 require_once('manual_helper_functions.php');
 
@@ -21,9 +21,7 @@ $loadPage = function ($par, string $file = 'index') use($loadNotFound) {
     }
     $content = ob_get_contents();
   } catch (\Throwable $e) {
-    $content .= (new ThrowableCallout($e))->showInitialFile()->showTrace();
-  } catch (\Exception $e) {
-    $content .= (new ThrowableCallout($e))->showInitialFile()->showTrace();
+    $content = ThrowableCalloutBuilder::build($e);
   }
   ob_end_clean();
   echo $content;

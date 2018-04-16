@@ -2,14 +2,14 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Foundation\Sites\Core\CalloutBuilder;
+use Sphp\Html\Foundation\Sites\Core\ErrorCalloutBuilder;
 
 $ed = new ErrorDispatcher();
 $ed->addErrorListener(\E_USER_ERROR, function (int $errno, string $errstr, string $errfile, int $errline) {
   echo "<p><b>User Error:</b> $errstr</p>";
 }, 1);
 
-$ed->addErrorListener(\E_ALL, new CalloutBuilder(true, true), 3);
+$ed->addErrorListener(\E_ALL, new ErrorCalloutBuilder(true, true), 3);
 $ed->startErrorHandling();
 include_once('foobar');
 trigger_error('User defined Errors suck badly', E_USER_ERROR);

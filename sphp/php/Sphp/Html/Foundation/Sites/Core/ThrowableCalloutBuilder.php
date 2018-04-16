@@ -8,11 +8,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Containers;
+namespace Sphp\Html\Foundation\Sites\Core;
 
 use Throwable;
 use Sphp\Html\Div;
 use Sphp\Html\Lists\Ol;
+use Sphp\Html\Foundation\Sites\Containers\Callout;
+use Sphp\Config\ErrorHandling\ExceptionListener;
 
 /**
  * Implements Foundation Callout for {@link \Exception} presentation
@@ -22,7 +24,7 @@ use Sphp\Html\Lists\Ol;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ThrowableCallout extends Callout {
+class ThrowableCalloutBuilder implements ExceptionListener {
 
   /**
    * @var boolean
@@ -45,23 +47,12 @@ class ThrowableCallout extends Callout {
   private $showPreviousThrowable = false;
 
   /**
-   * the viewed exception
+   * Constructor
    *
-   * @var Throwable 
-   */
-  private $throwable;
-
-  /**
-   * Constructs a new instance
-   *
-   * @param  Throwable $e the viewed throwable
    * @param  boolean $showTrace true for visible trace  
    * @param  boolean $showPreviousException true for visible previous exception
    */
-  public function __construct(Throwable $e, bool $showTrace = false, bool $showPreviousException = false) {
-    $this->throwable = $e;
-    parent::__construct();
-    $this->cssClasses()->protect('sphp-exception-callout');
+  public function __construct(bool $showTrace = false, bool $showPreviousException = false) {
     $this->showTrace($showTrace)
             ->showPreviousException($showPreviousException);
   }
@@ -104,28 +95,29 @@ class ThrowableCallout extends Callout {
   /**
    * Builds the file information of the exception
    *
+   * @param  Throwable $e
    * @return string the file information of the exception
    */
-  private function buildFile(): string {
-    $output = '<p class="message">on line <span class="number">#' . $this->throwable->getLine() . '</span>';
-    $output .= ' of file <span class="file">' . $this->parsePath($this->throwable->getFile()) . '</span></p>';
+  private function buildFile(Throwable $e): string {
+    $output = '<p class="message">on line <span class="number">#' . $e->getLine() . '</span>';
+    $output .= ' of file <span class="file">' . $this->parsePath($e->getFile()) . '</span></p>';
     return $output;
   }
 
   /**
-   * Builds the previous {@link \Throwable} view
+   * Builds the previous exception view
    *
-   * @return $this for a fluent interface
+   * @param  Throwable $e
+   * @return string the file information of the previous exception
    */
-  private function buildPreviousException() {
-    $prev = $this->throwable->getPrevious();
-    //$output = "$prev";
+  private function buildPreviousException(Throwable $e) {
+    $prev = $e->getPrevious();
+    $output = "";
     if ($prev instanceof \Throwable) {
-      $output .= 'Previous exception: <span class="exception">' . get_class($prev) . '</span>';
-      $output .= " on line <span class=\"number\">#{$prev->getLine()}</span>";
-      $output .= " of file <div class=\"file\">'{$this->parsePath($prev->getFile())}'</div>";
+      $output .= '<h2>Previous Throwable</h2>';
+      $output .= $this->buildCalloutContent($prev);
     }
-    return $output;
+    return "<div class=\"provious-exeption\">$output</div>";
   }
 
   /**
@@ -141,10 +133,11 @@ class ThrowableCallout extends Callout {
   /**
    * Builds the trace information of the {@link \Exception}
    *
+   * @param  Throwable $e
    * @return string the trace information or an empty string
    */
-  protected function buildTrace(): string {
-    $trace = $this->throwable->getTrace();
+  protected function buildTrace(Throwable $e): string {
+    $trace = $e->getTrace();
     if (count($trace) > 0) {
       $output = new Ol();
       $output->addCssClass('trace');
@@ -188,7 +181,7 @@ class ThrowableCallout extends Callout {
       $methodStr .= '()';
     }
     if (!empty($methodStr)) {
-      $methodStr = "<br><span class=\"note\">Call:</span> <span class=\"method\">$methodStr";
+      $methodStr = "<br><span class=\"note\">Call:</span> <span class=\"method\">$methodStr</span>";
     }
     return $methodStr;
   }
@@ -221,21 +214,55 @@ class ThrowableCallout extends Callout {
     return '(' . implode(', ', $p) . ')';
   }
 
-  public function contentToString(): string {
-    $output = '<h2>' . get_class($this->throwable) . '</h2>';
+  /**
+   * 
+   * @param  Throwable $e
+   * @return string
+   */
+  protected function buildCalloutContent(Throwable $e): string {
+    $output = '<h3>' . get_class($e) . '</h3>';
     if ($this->showMessage) {
-      $output .= '<p class="message">' . $this->throwable->getMessage() . '</p>';
+      $output .= '<p class="message">' . $e->getMessage() . '</p>';
     }
     if ($this->showFile) {
-      $output .= $this->buildFile();
+      $output .= $this->buildFile($e);
     }
     if ($this->showTrace) {
-      $output .= $this->buildTrace();
+      $output .= $this->buildTrace($e);
     }
     if ($this->showPreviousThrowable) {
-      $output .= $this->buildPreviousException();
+      $output .= $this->buildPreviousException($e);
     }
     return $output;
+  }
+
+  /**
+   * 
+   * @param  Throwable $e
+   * @return Callout
+   */
+  public function buildCallout(Throwable $e): Callout {
+    $callout = new Callout();
+    $callout->cssClasses()->protect('sphp-exception-callout');
+    $callout->setContent($this->buildCalloutContent($e));
+    return $callout;
+  }
+
+  public function onException(Throwable $e) {
+    $this->buildCallout($e)->printHtml();
+  }
+
+  /**
+   * Generates a callout for given throwable
+   * 
+   * @param  Throwable $e
+   * @param  bool $showTrace
+   * @param  bool $showPreviousException
+   * @return Callout
+   */
+  public static function build(Throwable $e, bool $showTrace = false, bool $showPreviousException = false): Callout {
+    $instance = new static($showTrace, $showPreviousException);
+    return $instance->buildCallout($e);
   }
 
 }

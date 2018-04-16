@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 use Sphp\Html\Apps\Forms\SiteSearch360Form;
 use Sphp\Html\Adapters\QtipAdapter;
-use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
 try {
   $navi = new TopBar();
@@ -31,6 +31,6 @@ try {
 
   $navi->printHtml();
 } catch (\Exception $e) {
-  echo new ThrowableCallout($e, true, true);
+  echo ThrowableCalloutBuilder::build($e, true, true);
 }
 

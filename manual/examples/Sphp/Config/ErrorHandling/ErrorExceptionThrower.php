@@ -3,16 +3,13 @@
 namespace Sphp\Config\ErrorHandling;
 
 use Throwable;
-use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
 $thrower = new ErrorExceptionThrower();
 $thrower->start();
 try {
   include("missing/file.php");
 } catch (Throwable $ex) {
-  (new ThrowableCallout($ex))
-          ->showInitialFile(false)
-          ->showTrace(false)
-          ->printHtml();
+  echo ThrowableCalloutBuilder::build($ex);
 }
 $thrower->stop();

@@ -6,36 +6,46 @@
 @charset "UTF-8";
 
 .sphp-exception-callout {
+  @include callout-base;
   border: solid 2px rgba(70, 70, 70, 0.9); 
   @include border-radius(4px);
-  background: url("../pics/diagonals.png") 50% 50% repeat;
+  background-color: #f00;
+  background-position: center center, top left;
+  background-image: url('http://data.samiholck.com/svg/crossbones.php?color=add&opacity=.2'),url("../pics/diagonals.png");
+  background-repeat: no-repeat, repeat;
+  //background: url("../pics/diagonals.png") 50% 50% repeat;
   margin: rem-calc(3);
   padding: 0;
-  color: #eee;
-  h2, h3.trace, h3.previous {
+  color: #fff;
+  h2, h3 {
     color: #eee;
-    text-shadow:
-      1px -2px 0px rgba(190, 90, 90, 0.4),
-      0px 1px 0px rgba(190,190,190,1);
     padding: rem-calc(4 10 4 10);
     font-size: rem-calc(30);
     border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
-    background-color: rgba(120, 70, 70, 0.7);
+    background-color: rgba(204,75,55,0.35);
   }
-  .exception {
-    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-    font-size: rem-calc(30);
-    font-weight: bold;
-  }
-  .number {
-    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-    font-size: rem-calc(18);
-    font-weight: bold;
-    text-decoration: underline;
-  }
-  .file {
-    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-    font-size: rem-calc(14);
+  ol {
+    font-size: rem-calc(17);
+    color: #eee;
+    li {
+      span {
+        font-size: rem-calc(14);
+        &.line, &.note, &.path, &.method {
+          font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+        }
+        &.note {
+          font-size: rem-calc(15);
+          font-weight: bold;
+        }
+        &.path {
+          font-weight: normal;
+          text-decoration: underline;
+        }
+        &.method {
+          font-weight: normal;
+        }  
+      }
+    }
   }
   .message {
     padding: rem-calc(2);
@@ -59,15 +69,6 @@
     .message {
       border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
       padding: rem-calc(10);
-    }
-  }
-  div.trace {
-    padding: rem-calc(10);
-    color: #eee;
-    .number {
-      font-size: rem-calc(18);
-      font-weight: bold;
-      text-decoration: underline;
     }
   }
 }

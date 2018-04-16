@@ -23,7 +23,7 @@ use Sphp\Html\Media\Icons\FontAwesome;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CalloutBuilder implements ErrorListener {
+class ErrorCalloutBuilder implements ErrorListener {
 
   /**
    * @var bool
@@ -36,7 +36,7 @@ class CalloutBuilder implements ErrorListener {
   private $showFile;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param bool $showFileInformation if the file information is visible
    * @param bool $closable true if the callout is closable
@@ -111,6 +111,11 @@ class CalloutBuilder implements ErrorListener {
     }
   }
 
+  /**
+   * 
+   * @param  int $errno
+   * @return Callout
+   */
   protected function buildCallout(int $errno): Callout {
     $callout = new Callout();
     $callout->setClosable($this->closable);
@@ -123,11 +128,20 @@ class CalloutBuilder implements ErrorListener {
     return $callout;
   }
 
+  /**
+   * 
+   * @param  string $message
+   * @return string
+   */
+  protected function parseMessage(string $message): string {
+    return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $message);
+  }
+
   public function onError(int $errno, string $errstr, string $errfile, int $errline) {
     $callout = $this->buildCallout($errno);
     //$this->setClasses($callout, $errno);  fa-exclamation-circle
     $callout->append("<div class=\"type\"><span class='icon'>" . $this->getIcon($errno) . '</span> ' . $this->getTypeString($errno) . "</div>");
-    $callout->append("<div class=\"message\">$errstr</div>");
+    $callout->append("<div class=\"message\">{$this->parseMessage($errstr)}</div>");
     if ($this->showFile) {
       $callout->append("<div class=\"file-info\">on line <strong>$errline</strong> of file:");
       $callout->append('<div class="file-path">' . str_replace('/', '<wbr>/', $errfile) . "</div></div>");

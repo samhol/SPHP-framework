@@ -2,7 +2,7 @@
 
 namespace Sphp\Manual;
 
-use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\InvalidArgumentException;
@@ -50,7 +50,7 @@ function loadPage(string $page) {
     }
     $content = ob_get_contents();
   } catch (\Exception $e) {
-    $content .= (new ThrowableCallout($e))->showInitialFile()->showTrace();
+    $content .= (new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->buildCallout($e);
   }
   ob_end_clean();
   echo $content;

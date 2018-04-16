@@ -2,6 +2,8 @@
 
 namespace Sphp\Database;
 
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
+
 try {
 
 
@@ -14,9 +16,9 @@ try {
       'maplink' => 'https://goo.gl/maps/ZWHMuHB4sd22'
   ];
   $par = new NamedParameters();
-  
-  $par->setParam('a','b', \PDO::PARAM_STR);
-  $par->setParam('b','4', \PDO::PARAM_INT);
+
+  $par->setParam('a', 'b', \PDO::PARAM_STR);
+  $par->setParam('b', '4', \PDO::PARAM_INT);
   foreach ($par as $key => $val) {
     echo "$key: $val\n";
   }
@@ -31,5 +33,5 @@ try {
   $runner->setParams($hydeparkData);
   $runner->executeIn($statement2);
 } catch (\Exception $ex) {
-  echo new \Sphp\Html\Foundation\Sites\Containers\ThrowableCallout($ex, true, true);
+  echo ThrowableCalloutBuilder::build($ex, true, true);
 }
