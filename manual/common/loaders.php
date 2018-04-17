@@ -21,7 +21,7 @@ $loadPage = function ($par, string $file = 'index') use($loadNotFound) {
     }
     $content = ob_get_contents();
   } catch (\Throwable $e) {
-    $content = ThrowableCalloutBuilder::build($e);
+    $content = ThrowableCalloutBuilder::build($e, true, true);
   }
   ob_end_clean();
   echo $content;
