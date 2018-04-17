@@ -1,0 +1,38 @@
+
+@mixin sphp-calendar-month() { 
+  div.calendar {
+    table {
+      border: none 0;
+      table-layout: fixed;
+      th, td {
+        border: solid 1px #777;
+        @include border-radius(2px);
+      }
+      th {
+        padding: rem-calc(6 10);
+        background-color: #ddd;
+      }
+      td.holiday, td.Sunday {
+        background-color: #ffcccc;
+      }
+      thead {
+
+      }
+    }
+
+    ul.week {
+      list-style-type: none;
+      display: table-row;
+      li {
+        border: solid 1px #444;
+        @include border-radius(2px);
+        display: table-cell;
+        padding: rem-calc(5 10 5 10);
+        &.number {
+          margin-right: rem-calc(5);
+        }
+      }
+    }
+  }
+}
+

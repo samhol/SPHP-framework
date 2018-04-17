@@ -1,0 +1,15 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+@import "sphp-time-icon";
+@import "sphp-calendar-month";
+
+@mixin sphp-calendar-modules() { 
+  @include sphp-datetime-icon;
+  @include sphp-calendar-month;
+}
