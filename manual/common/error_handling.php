@@ -10,5 +10,5 @@ $ed->addErrorListener(\E_ALL, new ErrorCalloutBuilder(true, true), 1);
 $ed->startErrorHandling();
 
 $ed->addExceptionListener(new ExceptionLogger('logs/exceptions.log'));
-$ed->addExceptionListener((new ThrowableCalloutBuilder())->showTrace()->showPreviousException());
+$ed->addExceptionListener((new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->showPreviousException());
 $ed->startExceptionHandling();

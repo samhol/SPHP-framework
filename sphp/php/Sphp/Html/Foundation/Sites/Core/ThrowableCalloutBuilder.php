@@ -114,10 +114,10 @@ class ThrowableCalloutBuilder implements ExceptionListener {
     $prev = $e->getPrevious();
     $output = "";
     if ($prev instanceof \Throwable) {
-      $output .= '<h2>Previous Throwable</h2>';
-      $output .= $this->buildCalloutContent($prev);
+      $output .= '<div class="previous-exeption"><h2 class="previous">Previous:</h2>';
+      $output .= $this->buildCalloutContent($prev).'</div>';
     }
-    return "<div class=\"provious-exeption\">$output</div>";
+    return $output;
   }
 
   /**
@@ -220,7 +220,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    * @return string
    */
   protected function buildCalloutContent(Throwable $e): string {
-    $output = '<h3>' . get_class($e) . '</h3>';
+    $output = '<h2>' . get_class($e) . '</h2>';
     if ($this->showMessage) {
       $output .= '<p class="message">' . $e->getMessage() . '</p>';
     }

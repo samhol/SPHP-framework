@@ -31,7 +31,7 @@ class ErrorCalloutBuilder implements ErrorListener {
   private $closable;
 
   /**
-   * @var bool
+   * @var bool 
    */
   private $showFile;
 

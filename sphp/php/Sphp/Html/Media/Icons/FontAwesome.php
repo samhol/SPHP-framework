@@ -92,6 +92,7 @@ class FontAwesome {
       'search' => 'fas fa-search',
       'ban' => 'fas fa-ban',
       'eraser' => 'fas fa-eraser',
+      'exclamation' => 'fas fa-exclamation-triangle',
       /**
        * Brands
        */
