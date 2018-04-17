@@ -71,6 +71,7 @@ class ErrorCalloutBuilder implements ErrorListener {
   /**
    * Get error type string
    *
+   * @param int $errno PHP error number constant
    * @return string error type string
    */
   private function getTypeString(int $errno): string {
@@ -100,7 +101,7 @@ class ErrorCalloutBuilder implements ErrorListener {
 
   /**
    * 
-   * @param int $errno
+   * @param int $errno PHP error number constant
    * @return IconInterface
    */
   protected function getIcon(int $errno): IconInterface {

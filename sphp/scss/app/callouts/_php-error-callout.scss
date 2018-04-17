@@ -1,0 +1,55 @@
+
+@charset "UTF-8";
+
+$error-bg: rgba(255,127,80, 0.40);
+
+@mixin sphp-php-callout($type, $color: $error-bg) { 
+  &.#{$type} {
+    color: smart-scale($color, 60%);
+    border: 3px solid $color;
+    background-color: rgba($color, 0.2);
+    .type {
+      border-bottom: solid $color;
+      .icon {
+        color: $color;
+      } 
+      background-color: rgba($color, .35);
+    }
+    .close-button {
+      color: smart-scale($color, 60%); 
+    }
+  }
+}
+
+@mixin sphp-php-error-callout() { 
+  .alert-box {
+    padding: 0rem;
+    border-radius: 5px;
+    .type {
+      font-size: rem-calc(25);
+      font-weight: bold;
+      padding: rem-calc(3 10 5 3);
+      border-bottom: solid 3px;
+    }
+    .message {
+      font-size: rem-calc(20);
+      font-weight: bold;
+      padding: rem-calc(5 15 5 15);
+    }
+    .file-info {
+      font-size: rem-calc(18);
+      padding: rem-calc(5 15 10 15);
+      .file-path {
+        font-family: $font-family-monospace;
+        font-size: rem-calc(14);
+      }
+    }
+    @include sphp-php-callout(alert, $alert-color);
+    @include sphp-php-callout(warning, $warning-color);
+    @include sphp-php-callout(success, $success-color);
+    @include sphp-php-callout(info, $primary-color);
+    .close-button {
+      @include close-button-size(large);
+    }
+  }
+}

@@ -64,6 +64,5 @@
 @import "app/apps";
 @import "manual/manual";
 
-
-
-
+@include sphp-error-handling-callouts;
+@include sphp-syntax-highlighting-modules;

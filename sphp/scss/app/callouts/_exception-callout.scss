@@ -1,0 +1,95 @@
+/**
+ * _sphp-exception-callout.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+@mixin sphp-exception-callout() { 
+
+  .sphp-exception-callout {
+    @include callout-base;
+    border: solid 2px rgba(70, 70, 70, 0.9); 
+    @include border-radius(4px);
+    background-color: #f00;
+    background-position: center center, top left;
+    background-image: url('http://data.samiholck.com/svg/crossbones.php?color=add&opacity=.1'), url("../pics/diagonals.png");
+    background-repeat: no-repeat, repeat;
+    //background: url("../pics/diagonals.png") 50% 50% repeat;
+    //margin: rem-calc(3);
+    padding: 0;
+    color: #fff;
+    h2, h3 {
+      color: #fafafa;
+      border-bottom: solid 2px rgba(70, 70, 70, 0.9); 
+      background-color: rgba(204,75,55,0.35);
+    }
+    h2 {
+      padding: rem-calc(10 10 8 10);
+      font-size: rem-calc(30);
+    }
+    h3 {
+      padding: rem-calc(4 10 4 10);
+      font-size: rem-calc(25);
+      border-top: solid 2px rgba(70, 70, 70, 0.9); 
+      border-bottom: solid 2px rgba(70, 70, 70, 0.9); 
+    }
+    span {
+      font-size: rem-calc(14);
+      &.line, &.note, &.path, &.method {
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+      }
+      &.note {
+        font-size: rem-calc(15);
+        font-weight: bold;
+      }
+      &.path {
+        font-weight: normal;
+        text-decoration: underline;
+      }
+      &.method {
+        font-weight: normal;
+      }
+
+      &.message {
+        font-size: rem-calc(18);
+        padding: rem-calc(2);
+        margin: rem-calc(5 10 2 10);
+        color: #eee;
+      }
+    }
+    ul {
+      padding: rem-calc(3 5 5 7);
+      font-size: rem-calc(17);
+      color: #fafafa;
+      list-style-type: none;
+      li {
+
+      }
+    }
+    ol {
+      padding: rem-calc(3 5 5 7);
+      font-size: rem-calc(17);
+      color: #fafafa;
+      li {
+
+      }
+    }
+    div.previous-exeption {
+      margin: rem-calc(10);
+      padding: 0;
+      background-color: rgba(120, 70, 70, 0.4);
+      border: solid 2px rgba(70, 70, 70, 0.9); 
+      @include border-radius(4px);
+      h2 {
+        padding: rem-calc(10 10 8 10);
+        font-size: rem-calc(30);
+      }
+      h3 {
+        padding: rem-calc(4 10 4 10);
+        font-size: rem-calc(25);
+        border-top: solid 2px rgba(70, 70, 70, 0.9); 
+        border-bottom: solid 2px rgba(70, 70, 70, 0.9); 
+      }
+    }
+  }
+}

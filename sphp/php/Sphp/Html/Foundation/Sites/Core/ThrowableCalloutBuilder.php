@@ -29,11 +29,6 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   /**
    * @var boolean
    */
-  private $showMessage = true;
-
-  /**
-   * @var boolean
-   */
   private $showFile = false;
 
   /**
@@ -95,27 +90,32 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   /**
    * Builds the file information of the exception
    *
-   * @param  Throwable $e
+   * @param  Throwable $e throwable object 
    * @return string the file information of the exception
    */
-  private function buildFile(Throwable $e): string {
-    $output = '<p class="message">on line <span class="number">#' . $e->getLine() . '</span>';
-    $output .= ' of file <span class="file">' . $this->parsePath($e->getFile()) . '</span></p>';
-    return $output;
+  private function buildExceptionMessage(Throwable $e): string {
+    $heading = '<h2>' . get_class($e) . '</h2>';
+    $ul = new \Sphp\Html\Lists\Ul();
+    $ul->append('<span class="note">Message: </span><span class="message">' . $e->getMessage() . '</span>')->addCssClass('message');
+    if ($this->showFile) {
+      $ul->append('<span class="note">File:</span> <span class="file">' . $this->parsePath($e->getFile()) . '</span>');
+      $ul->append('<span class="note">Line:</span> <span class="number">#' . $e->getLine() . '</span>');
+    }
+    return $heading. $ul;
   }
 
   /**
    * Builds the previous exception view
    *
-   * @param  Throwable $e
+   * @param  Throwable $e throwable object 
    * @return string the file information of the previous exception
    */
-  private function buildPreviousException(Throwable $e) {
+  private function buildPreviousException(Throwable $e):string {
     $prev = $e->getPrevious();
     $output = "";
     if ($prev instanceof \Throwable) {
       $output .= '<div class="previous-exeption"><h2 class="previous">Previous:</h2>';
-      $output .= $this->buildCalloutContent($prev).'</div>';
+      $output .= $this->buildCalloutContent($prev) . '</div>';
     }
     return $output;
   }
@@ -131,9 +131,9 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   }
 
   /**
-   * Builds the trace information of the {@link \Exception}
+   * Builds the trace information of the throwable object 
    *
-   * @param  Throwable $e
+   * @param  Throwable $e throwable object 
    * @return string the trace information or an empty string
    */
   protected function buildTrace(Throwable $e): string {
@@ -145,7 +145,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
         $err1 = '';
         if (array_key_exists('line', $traceRow) && array_key_exists('file', $traceRow)) {
           $err1 .= "<span class=\"note\">File:</span> <span class=\"path\">'{$this->parsePath($traceRow['file'])}'</span>";
-          $err1 .= " <span class=\"note\">({$traceRow['line']})</span>";
+          $err1 .= "<br><span class=\"note\">Line:</span> <span class=\"line-number\">#{$traceRow['line']}</span>";
         } else {
           $err1 .= "[internal]:";
         }
@@ -215,18 +215,13 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   }
 
   /**
+   * Creates the content of the callout
    * 
-   * @param  Throwable $e
+   * @param  Throwable $e throwable object 
    * @return string
    */
   protected function buildCalloutContent(Throwable $e): string {
-    $output = '<h2>' . get_class($e) . '</h2>';
-    if ($this->showMessage) {
-      $output .= '<p class="message">' . $e->getMessage() . '</p>';
-    }
-    if ($this->showFile) {
-      $output .= $this->buildFile($e);
-    }
+    $output = $this->buildExceptionMessage($e);
     if ($this->showTrace) {
       $output .= $this->buildTrace($e);
     }
@@ -237,9 +232,10 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   }
 
   /**
+   * Creates the callout object
    * 
-   * @param  Throwable $e
-   * @return Callout
+   * @param  Throwable $e object thrown
+   * @return Callout the object created
    */
   public function buildCallout(Throwable $e): Callout {
     $callout = new Callout();
@@ -255,7 +251,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   /**
    * Generates a callout for given throwable
    * 
-   * @param  Throwable $e
+   * @param  Throwable $e object thrown
    * @param  bool $showTrace
    * @param  bool $showPreviousException
    * @return Callout

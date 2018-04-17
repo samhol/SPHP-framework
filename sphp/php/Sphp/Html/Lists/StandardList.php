@@ -18,6 +18,8 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Container;
 use Traversable;
+use Sphp\Stdlib\Parser;
+use Sphp\Html\Exceptions\RuntimeHtmlException;
 
 /**
  * Abstract implementation of both ordered and unordered HTML-list
@@ -84,6 +86,23 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
     }
     $this->items->append($item);
     return $item;
+  }
+
+  /**
+   * Appends a parsed inline Mark Down string to the list
+   * 
+   * @param  string $md inline Mark Down string
+   * @return LiInterface appended instance
+   * @throws RuntimeHtmlException if the parsing fails for any reason
+   */
+  public function appendMd(string $md): LiInterface {
+    try {
+      $p = Parser::md();
+      $item = $this->append($p->parseInline($md));
+      return $item;
+    } catch (\Exception $ex) {
+      throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
   /**

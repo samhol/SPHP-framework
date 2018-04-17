@@ -11,13 +11,12 @@
 @import "sphp-side-nav";
 //@import "sphp-tech-links";
 //@import "sphp-split-button";
-@import "sphp-syntaxhighlighter";
+@import "syntax-highlighting/all";
 @import "sphp-popper";
 @import "sphp-back-to-top-button";
-@import "sphp-exception-callout";
-@import "sphp-buttons";
+@import "callouts/error-handling-callouts";
+//@import "sphp-buttons";
 @import "sphp-figure-slide";
-@import "callout-alertbox";
-@import "SyntaxHighlightingModal";
+//@import "SyntaxHighlightingModal";
 @import "foundation-fouc-remover";
 @import "spinner";
