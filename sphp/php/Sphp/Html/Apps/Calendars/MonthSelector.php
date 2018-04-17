@@ -21,7 +21,7 @@ use Sphp\Html\TimeTag;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WeekDayView implements Content, \Sphp\Html\CssClassifiableContent {
+class MonthSelector implements Content, \Sphp\Html\CssClassifiableContent {
 
   use \Sphp\Html\ContentTrait, \Sphp\Html\CssClassifiableTrait;
 
@@ -38,17 +38,14 @@ class WeekDayView implements Content, \Sphp\Html\CssClassifiableContent {
   public function __construct(DateTimeInterface $date) {
     $this->date = $date;
     $this->container = new Div();
-    $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
+    $this->container->attributes()->classes()->protect('sphp', 'month-selector');
   }
 public function cssClasses(): \Sphp\Html\Attributes\ClassAttribute {
   return $this->container->cssClasses();
 }
 
 protected function buildDate() {
-    $timeTag = new TimeTag($this->date, $this->date->format('j'));
-    $timeTag->setAttribute('title', $this->date->format('l, Y-m-d'));
-    $this->container->append($timeTag);
-    $this->container->cssClasses()->protect(strtolower($this->date->format('l')));
+    $this->container->append($this->date->format('F Y'));
     return $this;
   }
 

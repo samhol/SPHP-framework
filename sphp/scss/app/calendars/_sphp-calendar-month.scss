@@ -1,10 +1,15 @@
 
 @mixin sphp-calendar-month() { 
-  div.sphp-calendar {
+  div.sphp.calendar-month {
     .cell {
       > div {
         margin: rem-calc(1);
       }
+      .month-selector {
+          font-size: rem-calc(20);
+          color: #666;
+          padding-left: rem-calc(10);
+        }
       div.head {
         border: solid 1px #555;
         @include border-radius(2px);
@@ -22,6 +27,10 @@
           color: #999;
           @include opacity(.7);
         }
+        &.sunday {
+          background-color: rgba(#d22, .2);
+        }
+        
       }
     }
   }

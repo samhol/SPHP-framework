@@ -8,12 +8,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps;
+namespace Sphp\Html\Apps\Calendars;
 
 use Sphp\Html\TimeTagInterface;
 use Sphp\Html\AbstractComponent;
 use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeZone;
 
 /**
  * Implements a HTML based stamp-element that describes a {@link DateTimeInterface} object
@@ -46,7 +47,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   }
 
   public function setDateTime(DateTimeInterface $dateTime) {
-    $this->attributes()->set('datetime', $dateTime->format('Y-m-d H:i:s'));
+    $this->attributes()->set('datetime', $dateTime->format('r'));
     $this->dateTime = $dateTime;
     return $this;
   }
@@ -60,6 +61,18 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
     $output .= '<strong>' . $this->dateTime->format('F') . '</strong>';
     $output .= '<span>' . $this->dateTime->format('j') . '</span>';
     return $output;
+  }
+
+  /**
+   * Creates a new object from given format
+   * 
+   * @param  string $time a date/time string
+   * @param  DateTimeZone $timezone
+   * @return DateStamp optional timezone object
+   */
+  public static function fromString(string $time = "now", DateTimeZone $timezone = null): DateStamp {
+    $date = new DateTimeImmutable($time, $timezone);
+    return new static($date);
   }
 
 }

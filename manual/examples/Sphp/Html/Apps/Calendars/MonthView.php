@@ -2,6 +2,10 @@
 
 namespace Sphp\Html\Apps\Calendars;
 
-$c = new MonthView();
+$past = new MonthView(2017, 4);
 
-echo $c;
+echo $past;
+
+$now = new MonthView();
+
+echo $now;

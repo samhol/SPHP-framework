@@ -10,7 +10,6 @@ MD
 );
 \Sphp\Manual\visualize("Sphp/Html/Apps/Calendars/MonthView.php");
 
-use Sphp\Html\Apps\DateStamp;
 $dateStamp = \Sphp\Manual\api()->classLinker(DateStamp::class);
 \Sphp\Manual\md(<<<MD
 ##The $dateStamp component

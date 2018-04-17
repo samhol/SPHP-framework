@@ -11,31 +11,37 @@
 namespace Sphp\Html\Apps\Calendars;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Tables\Tbody;
-use Sphp\Html\Tables\Tr;
-use Sphp\Html\Tables\Td;
-use Sphp\Html\Tables\Thead;
-use Sphp\Html\Tables\Table;
 use Sphp\I18n\Datetime\CalendarUtils;
 use DateTimeInterface;
+use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Div;
+use DateTimeImmutable;
+use Sphp\Html\Container;
 
 /**
- * 
+ * Description of Month
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class MonthView extends AbstractComponent {
 
   /**
-   *
-   * @var Table 
+   * @var DateTimeImmutable 
    */
-  private $table;
+  private $dateTime;
+
+  /**
+   * @var int
+   */
+  private $month;
 
   public function __construct($year = null, $month = null) {
     parent::__construct('div');
-    $this->cssClasses()->protect('calendar');
+
+    $this->cssClasses()->protect('sphp', 'calendar-month');
     if ($year === null) {
       $year = (int) date("Y", time());
     }
@@ -43,63 +49,77 @@ class MonthView extends AbstractComponent {
       $month = (int) date("m", time());
     }
     $this->month = $month;
-    echo "$year-$month-1";
-    $dt = new \DateTimeImmutable("$year-$month-1");
-    $this->weeks = new \Sphp\Html\Container();
-    $this->table = $this->createTable($dt);
+    $dt = new DateTimeImmutable("$year-$month-1");
+    $this->dateTime = $dt;
   }
 
-  protected function createTable($dt) {
-    $table = new Table();
-    $table->thead($this->createThead());
-    $table->tbody($this->parseWeeks($dt));
-    return $table;
+  protected function build() {
+    $container = new Container();
+
+    $container->append($this->generateTop());
+    $container->append($this->createHead());
+    $container->append($this->parseWeeks($this->dateTime));
+    return $container;
+  }
+
+  protected function generateTop() {
+    $output = new Row();
+    $output->append(new MonthSelector($this->dateTime));
+    return $output;
   }
 
   protected function parseWeeks(DateTimeInterface $dt) {
-    $body = new Tbody();
+    $div = new Container();
     $monday = $this->getMonday($dt);
-    $week = $monday->format('W');
-    $body->append($this->createWeekRow($monday));
+    $div->append($this->createWeekRow($monday));
     $next = $monday->modify('+ 7 days');
     while ($next->format('m') == $this->month) {
-      $week = $next->format('W');
-      $body->append($this->createWeekRow($next));
+      $div->append($this->createWeekRow($next));
       $next = $next->modify('+ 7 day');
     }
-    return $body;
+    return $div;
   }
 
-  protected function createThead() {
-    $thead = new Thead();
-    $c = new CalendarUtils();
-    $tr = new Tr();
-    $tr->appendTh('Week');
-    $tr->appendThs($c->getWeekdays());
-    $thead->append($tr);
-    return $thead;
+  protected function createHead() {
+    $h = new Row();
+    $h->append(new Div());
+    $cu = new CalendarUtils();
+    $o = '<div class="grid-x"><div class="cell small-1"><div class="head week">week</div></div>';
+    foreach ($cu->getWeekdays() as $num => $day) {
+      $o .= '<div class="cell auto">
+    <div class="head day">
+      <span class="show-for-small-only">' . $cu->getWeekdayName($num, 2) . '</span>
+      <span class="hide-for-small-only">' . $day . '</span>
+    </div>
+  </div>';
+    }
+
+    return $o . '</div>';
   }
 
-  private function createWeekRow(DateTimeInterface $date) {
+  private function createWeekRow(DateTimeInterface $date): Row {
     $monday = $this->getMonday($date);
-    $tr = new Tr();
-    //$this->week = (int) $monday->format('W');
-    //$this->dayCells = (new Ul())->addCssClass('week');
-    $tr->appendTh($monday->format('W'));
+    $row = new Row();
+    $weekViewer = new WeekNumberView($date);
+    $row->append($weekViewer)->layout()->setWidths('small-1');
     $day = $monday->format('j');
-    $tr->appendTd($day);
+    $row->append($this->createDayCell($monday));
     $next = $monday->modify('+ 1 day');
     while ($next->format('N') != 1) {
       $day = $next->format('j');
-      $tr->append($this->createDayCell($next));
+      $row->append($this->createDayCell($next));
       $next = $next->modify('+ 1 day');
     }
-    return $tr;
+    return $row;
   }
 
-  protected function createDayCell(DateTimeInterface $day) {
-    $td = new Td($day->format('j'));
-    $td->cssClasses()->protect($day->format('l'));
+  protected function createDayCell(DateTimeInterface $day): WeekDayView {
+    $td = new WeekDayView($day);
+    if ((int) $day->format('n') === $this->month) {
+      $td->addCssClass('selected-month');
+    } else {
+      $td->addCssClass('not-selected-month');
+    }
     return $td;
   }
 
@@ -112,7 +132,7 @@ class MonthView extends AbstractComponent {
   }
 
   public function contentToString(): string {
-    return $this->table->getHtml();
+    return $this->build($this->dateTime)->getHtml();
   }
 
 }
