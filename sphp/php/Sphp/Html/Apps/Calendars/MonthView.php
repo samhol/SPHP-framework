@@ -17,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Div;
 use DateTimeImmutable;
 use Sphp\Html\Container;
-
+use Sphp\DateTime\Holidays;
 /**
  * Description of Month
  *
@@ -37,6 +37,11 @@ class MonthView extends AbstractComponent {
    * @var int
    */
   private $month;
+  
+  /**
+   * @var Holidays 
+   */
+  private $holidays;
 
   public function __construct($year = null, $month = null) {
     parent::__construct('div');
@@ -51,6 +56,16 @@ class MonthView extends AbstractComponent {
     $this->month = $month;
     $dt = new DateTimeImmutable("$year-$month-1");
     $this->dateTime = $dt;
+  }
+  
+  /**
+   * 
+   * @param  Holidays $holidays
+   * @return $this
+   */
+  public function setHolidays(\Sphp\DateTime\Holidays $holidays) {
+    $this->holidays = $holidays;
+    return $this;
   }
 
   protected function build() {
