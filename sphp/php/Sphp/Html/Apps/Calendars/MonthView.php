@@ -56,6 +56,7 @@ class MonthView extends AbstractComponent {
     $this->month = $month;
     $dt = new DateTimeImmutable("$year-$month-1");
     $this->dateTime = $dt;
+    $this->firstOf = new \Sphp\DateTime\Date($dt);
   }
   
   /**

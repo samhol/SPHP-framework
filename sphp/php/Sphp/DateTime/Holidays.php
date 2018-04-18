@@ -42,7 +42,7 @@ class Holidays {
    * @param DateTimeInterface $date
    */
   public function get(DateTimeInterface $date) {
-    $dtw = new DateTimeWrapper($date);
+    $dtw = new Date($date);
     $month = $dtw->getMonth();
     $day = $dtw->getMonthDay();
     if (array_key_exists($month, $this->data['y'])) {

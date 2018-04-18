@@ -10,8 +10,6 @@
 
 namespace Sphp\DateTime;
 
-use DateTimeImmutable;
-
 /**
  * Description of Holiday
  *
@@ -22,7 +20,7 @@ use DateTimeImmutable;
 class Holiday {
 
   /**
-   * @var DateTimeImmutable 
+   * @var Date 
    */
   private $date;
 
@@ -31,12 +29,18 @@ class Holiday {
    */
   private $name;
 
-  public function __construct(DateTimeImmutable $date, string $name) {
+  /**
+   * 
+   * 
+   * @param Date $date
+   * @param string $name
+   */
+  public function __construct(Date $date, string $name) {
     $this->date = $date;
     $this->name = $name;
   }
 
-  public function getDate(): DateTimeImmutable {
+  public function getDate(): Date {
     return $this->date;
   }
 
@@ -48,7 +52,11 @@ class Holiday {
     $this->name = $name;
     return $this;
   }
-  
+
+  public function equals($date): bool {
+    return $this->date->equals($date);
+  }
+
   public function __toString(): string {
     return $this->name;
   }

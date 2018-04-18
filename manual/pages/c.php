@@ -44,7 +44,7 @@ print_r($holidays->get(new DateTime('2018-12-24')));
 print_r($holidays->get(new DateTime('2016-12-24')));
 
 
-$dtw = new \Sphp\DateTime\DateTimeWrapper();
+$dtw = new \Sphp\DateTime\Date();
 
 echo "\n" . $dtw->getWeekDay();
 echo "\n" . $dtw->getMonth();
@@ -62,3 +62,9 @@ $jp = new DateTime('november 1st');
 $jp->modify("next Saturday +7 days");
 
 echo "\n" . $jp->format('Y-m-d l');
+$fatherDay = function() {
+  $ip = new DateTime('november 1st');
+
+  $ip->modify("next Sunday +7 days");
+  return $ip;
+};
