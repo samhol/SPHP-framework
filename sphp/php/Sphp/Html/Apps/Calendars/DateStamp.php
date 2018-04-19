@@ -70,7 +70,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
    * @param  DateTimeZone $timezone
    * @return DateStamp optional timezone object
    */
-  public static function fromString(string $time = "now", DateTimeZone $timezone = null): DateStamp {
+  public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateStamp {
     $date = new DateTimeImmutable($time, $timezone);
     return new static($date);
   }

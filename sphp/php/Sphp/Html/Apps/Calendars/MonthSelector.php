@@ -11,9 +11,10 @@
 namespace Sphp\Html\Apps\Calendars;
 
 use Sphp\Html\Content;
-use DateTimeInterface;
 use Sphp\Html\Div;
-use Sphp\Html\TimeTag;
+use Sphp\DateTime\Date;
+use Sphp\Html\CssClassifiableContent;
+use Sphp\Html\Attributes\ClassAttribute;
 
 /**
  * Description of WeekDay
@@ -23,12 +24,13 @@ use Sphp\Html\TimeTag;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class MonthSelector implements Content, \Sphp\Html\CssClassifiableContent {
+class MonthSelector implements Content, CssClassifiableContent {
 
-  use \Sphp\Html\ContentTrait, \Sphp\Html\CssClassifiableTrait;
+  use \Sphp\Html\ContentTrait,
+      \Sphp\Html\CssClassifiableTrait;
 
   /**
-   * @var DateTimeInterface
+   * @var Date
    */
   private $date;
 
@@ -37,16 +39,25 @@ class MonthSelector implements Content, \Sphp\Html\CssClassifiableContent {
    */
   private $container;
 
-  public function __construct(DateTimeInterface $date) {
-    $this->date = $date;
+  public function __construct(int $year = null, int $month = null) {
+    if ($year === null) {
+      $year = (int) date('Y', time());
+    }
+    if ($month === null) {
+      $month = (int) date('m', time());
+    }
+    $this->month = $month;
+    $this->year = $year;
+    $this->date = Date::createFromString("$year-$month-1");
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'month-selector');
   }
-public function cssClasses(): \Sphp\Html\Attributes\ClassAttribute {
-  return $this->container->cssClasses();
-}
 
-protected function buildDate() {
+  public function cssClasses(): ClassAttribute {
+    return $this->container->cssClasses();
+  }
+
+  protected function buildDate() {
     $this->container->append($this->date->format('F Y'));
     return $this;
   }

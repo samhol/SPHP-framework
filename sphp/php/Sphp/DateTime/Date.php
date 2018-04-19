@@ -23,10 +23,14 @@ use DateTimeImmutable;
 class Date {
 
   /**
-   * @var DateTimeInterface 
+   * @var DateTimeImmutable 
    */
   private $dateTime;
 
+  /**
+   * 
+   * @param DateTimeInterface $dateTime
+   */
   public function __construct(DateTimeInterface $dateTime = null) {
     if ($dateTime === null) {
       $dateTime = new DateTimeImmutable();
@@ -36,14 +40,33 @@ class Date {
     $this->dateTime = $dateTime;
   }
 
+  public function getDateTime(): DateTimeImmutable {
+    return clone $this->dateTime;
+  }
+
+  /**
+   * 
+   * @return int
+   */
   public function getWeekDay(): int {
     return (int) $this->dateTime->format('N');
   }
 
+  /**
+   * 
+   * @return string
+   */
   public function getWeekDayName(): string {
     return $this->dateTime->format('l');
   }
 
+  /**
+   * 
+   * @return int
+   */
+  public function getWeek(): int {
+    return (int) $this->dateTime->format('W');
+  }
   /**
    * 
    * @return int
@@ -122,6 +145,24 @@ class Date {
     return new Date($prev);
   }
 
+  /**
+   * Returns the previous Date
+   *  
+   * @param  string $modify
+   * @return Date
+   */
+  public function modify(string $modify): Date {
+    $prev = $this->dateTime->modify($modify);
+    return new Date($prev);
+  }
+
+  /**
+   * 
+   * @param  int $day
+   * @param  int $month
+   * @param  int $year
+   * @return Date
+   */
   public static function create(int $day = null, int $month = null, int $year = null): Date {
     if ($year === null) {
       $year = date('Y');

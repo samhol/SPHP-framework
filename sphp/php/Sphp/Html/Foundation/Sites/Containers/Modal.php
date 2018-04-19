@@ -127,4 +127,13 @@ class Modal implements Content, ClosableInterface {
     return $this;
   }
 
+  public function useOverLay(bool $use = true) {
+    if ($use) {
+      $this->getPopup()->removeAttribute('data-overlay');
+    } else {
+      $this->getPopup()->setAttribute('data-overlay', 'false');
+    }
+    return $this;
+  }
+
 }

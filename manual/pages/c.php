@@ -1,16 +1,6 @@
 
 <?php
 
-use Sphp\Html\Apps\Calendars\WeekDayView;
-
-$day = new WeekDayView(new DateTime('now'));
-echo $day;
-$m = new \Sphp\Html\Apps\Calendars\MonthView(2018, 4);
-echo $m;
-$wv = new \Sphp\Html\Apps\Calendars\WeekNumberView(new DateTime);
-
-use Sphp\DateTime\Holidays;
-
 $holidayData = [
     'y' => [
         1 => [
@@ -36,15 +26,34 @@ $holidayData = [
         ]
     ],
 ];
+
+use Sphp\Html\Apps\Calendars\WeekDayView;
+use Sphp\DateTime\Date;
+use Sphp\DateTime\Holidays;
+
+$day = new WeekDayView(new Date());
+echo $day;
 $holidays = new Holidays($holidayData);
-$holidays->get(new \DateTime('2018-12-24'));
+$m = new \Sphp\Html\Apps\Calendars\MonthView(2018, 12);
+$m->setHolidays($holidays);
+echo $m;
+
+
+//$holidays = new Holidays($holidayData);
+$holidays->get(Date::createFromString('2018-12-24'));
 echo Holidays::getEasterSunday()->format('Y-m-d');
 
-print_r($holidays->get(new DateTime('2018-12-24')));
-print_r($holidays->get(new DateTime('2016-12-24')));
+print_r($holidays->get(Date::createFromString('2018-12-24')));
+print_r($holidays->get(Date::createFromString('2016-12-24')));
+$date = Date::createFromString('2018-01-01');
+echo "<pre>";
+for ($i = 1; $i <= 365; ++$i) {
+ // print_r($holidays->get($date));
+  $date = $date->nextDate();
+}
 
-
-$dtw = new \Sphp\DateTime\Date();
+echo "</pre>";
+$dtw = new Date();
 
 echo "\n" . $dtw->getWeekDay();
 echo "\n" . $dtw->getMonth();

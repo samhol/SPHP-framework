@@ -6,16 +6,30 @@
         margin: rem-calc(1);
       }
       .month-selector {
-          font-size: rem-calc(20);
-          color: #666;
-          padding-left: rem-calc(10);
-        }
+        font-size: rem-calc(20);
+        color: #666;
+        padding-left: rem-calc(10);
+      }
       div.head {
         border: solid 1px #555;
         @include border-radius(2px);
         text-align: center;
       }
       div.week-number, div.sphp.calendar-day {
+        .week-nr {
+          border-bottom: solid 1px #888;
+          border-right: solid 1px #888;
+          @include border-radius(2px);
+          float:left;
+          padding: rem-calc(2 4 2 4);
+          background-color: rgba(#ddd, .2);
+        }
+        time {
+          float:right;
+          margin-right: 2px;
+          padding: rem-calc(4);
+        }
+        height: rem-calc(100);
         border: solid 1px #aaa;
         @include border-radius(2px);
         text-align: center;
@@ -30,7 +44,9 @@
         &.sunday {
           background-color: rgba(#d22, .2);
         }
-        
+        &.holiday:not(.sunday)  {
+          background-color: rgba(#d22, .1);
+        }
       }
     }
   }

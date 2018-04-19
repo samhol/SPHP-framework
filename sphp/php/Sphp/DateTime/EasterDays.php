@@ -10,45 +10,22 @@
 
 namespace Sphp\DateTime;
 
-use DateTimeInterface;
-use DateTimeImmutable;
 /**
- * Description of Holidays
+ * Description of EasterDays
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Holidays {
+class EasterDays {
 
-  private $data;
+  private $year;
 
-  public function __construct(array $data) {
-    $this->data = $data;
-  }
-
-  /**
-   * 
-   * @param Date $date
-   * @return bool 
-   */
-  public function hasHoliday(Date $date): bool {
-    
-  }
-
-  /**
-   * 
-   * @param Date $date
-   */
-  public function get(Date $date): array {
-    $month = $date->getMonth();
-    $day = $date->getMonthDay();
-    if (array_key_exists($month, $this->data['y'])) {
-      if (array_key_exists($day, $this->data['y'][$month])) {
-        return $this->data['y'][$month][$day];
-      }
+  public function __construct(int $year = null) {
+    if ($year === null) {
+      $year = (int) date('Y');
     }
-    return [];
+    $this->year = $year;
   }
 
   public static function getEasterSunday(int $year = null): DateTimeImmutable {
