@@ -12,6 +12,7 @@ namespace Sphp\DateTime;
 
 use DateTimeInterface;
 use DateTimeImmutable;
+use DateTime;
 
 /**
  * Description of DateTimeWrapper

@@ -10,24 +10,27 @@
 
 namespace Sphp\DateTime;
 
-
 /**
- * Description of Holiday
+ * Description of FathersDay
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Holiday extends SpecialDay {
+class MothrsDay extends Holiday {
 
-  /**
-   * 
-   * 
-   * @param Date $date
-   * @param string $name
-   */
-  public function __construct(Date $date, string $name) {
-    parent::__construct($date, $name);
+  public function __construct(int $year = null) {
+    if ($year === null) {
+      $year = (int) date('Y');
+    }
+    $f = Date::createFromString("$year-5-1");
+    if ($f->getWeekDay() === 6) {
+      $f = $f->jump(7);
+    }
+    else {
+      $f = $f->modify('next Sunday')->jump(7);
+    }
+    parent::__construct($f, "Mothers's Day");
   }
 
 }

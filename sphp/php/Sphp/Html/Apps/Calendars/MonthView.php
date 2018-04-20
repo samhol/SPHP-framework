@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\Html\Apps\Calendars;
-
+use DateTime;
 use Sphp\Html\AbstractComponent;
 use Sphp\I18n\Datetime\CalendarUtils;
 use DateTimeInterface;
@@ -50,6 +50,11 @@ class MonthView extends AbstractComponent {
    */
   private $firstOf;
 
+  /**
+   * 
+   * @param int $year
+   * @param int $month
+   */
   public function __construct(int $year = null, int $month = null) {
     parent::__construct('div');
     $this->cssClasses()->protect('sphp', 'calendar-month');
@@ -74,7 +79,7 @@ class MonthView extends AbstractComponent {
     return $this;
   }
 
-  protected function build() {
+  protected function build(): Container {
     $container = new Container();
     $container->append($this->generateTop());
     $container->append($this->createHead());

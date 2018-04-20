@@ -8,6 +8,7 @@
 
 namespace Sphp\DateTime;
 
+use DateTime;
 use IteratorAggregate;
 
 /**
@@ -21,25 +22,51 @@ use IteratorAggregate;
 class SpecialDays implements IteratorAggregate, SpecialDaysCollection {
 
   /**
-   *
-   * @var SpecialDay
+   * @var SpecialDay[]
    */
   private $days;
 
-  public function __construct(array $data) {
-    $this->days = $data;
+  /**
+   * @var int 
+   */
+  private $year;
+
+  public function __construct(int $year = null) {
+    if ($year === null) {
+      $year = (int) date('Y');
+    }
+    $this->year = $year;
+    $this->days = [];
   }
 
   public function merge(SpecialDays $days) {
     foreach ($days as $key => $group) {
-      
+      $this->mergeDateData($group);
     }
+  }
+
+  public function mergeDateData(DateData $day) {
+    $key = $day->getDate()->format('Y-m-d');
+    if (!$this->hasSpecialDays($day->getDate())) {
+      $this->days[$key] = $day;
+    } else {
+      $this->days[$key]->merge($day);
+    }
+    return $this;
+  }
+
+  public function addHoliday($date, string $name): Holiday {
+    $holiday = Holiday::from($date, $name);
+    $this->add($holiday);
+    return $holiday;
   }
 
   public function add(SpecialDay $day) {
     $key = $day->getDate()->format('Y-m-d');
     if (!$this->contains($day)) {
-      $this->days[$key][] = $day;
+      $data = new DateData($day->getDate());
+      $data->addEvent($day);
+      $this->days[$key] = $data;
     }
     return $this;
   }
@@ -88,6 +115,7 @@ class SpecialDays implements IteratorAggregate, SpecialDaysCollection {
   }
 
   public function getIterator(): \Traversable {
+    ksort($this->days);
     return new \ArrayIterator($this->days);
   }
 

@@ -48,32 +48,18 @@ print_r($holidays->get(Date::createFromString('2016-12-24')));
 $date = Date::createFromString('2018-01-01');
 echo "<pre>";
 for ($i = 1; $i <= 365; ++$i) {
- // print_r($holidays->get($date));
+  // print_r($holidays->get($date));
   $date = $date->nextDate();
 }
 
+
+use Sphp\DateTime\EasterDays;
+
+$e = new EasterDays();
+$sp = new \Sphp\DateTime\FinnishHolidays(2018);
+
+foreach ($sp as $d) {
+  echo "\n$d";
+}
+
 echo "</pre>";
-$dtw = new Date();
-
-echo "\n" . $dtw->getWeekDay();
-echo "\n" . $dtw->getMonth();
-echo "\n" . $dtw->getMonthDay();
-echo "\n" . $dtw->getWeekDayName();
-echo "\n" . $dtw->getMonthName();
-echo "\n" . $dtw->getYear();
-$ip = new DateTime('november 1st');
-
-$ip->modify("next Sunday +7 days");
-
-echo "\n" . $ip->format('Y-m-d l');
-$jp = new DateTime('november 1st');
-
-$jp->modify("next Saturday +7 days");
-
-echo "\n" . $jp->format('Y-m-d l');
-$fatherDay = function() {
-  $ip = new DateTime('november 1st');
-
-  $ip->modify("next Sunday +7 days");
-  return $ip;
-};

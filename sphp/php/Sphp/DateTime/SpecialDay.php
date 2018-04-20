@@ -8,6 +8,8 @@
 
 namespace Sphp\DateTime;
 
+use DateTime;
+
 /**
  * Description of SpecialDay
  *
@@ -17,7 +19,7 @@ namespace Sphp\DateTime;
  * @filesource
  */
 class SpecialDay {
-  
+
   /**
    * @var Date 
    */
@@ -57,6 +59,25 @@ class SpecialDay {
   }
 
   public function __toString(): string {
-    return $this->name;
+    return $this->date->format('l, Y-m-d') . ": " . $this->name;
   }
+
+  public static function from($date, string $name): SpecialDay {
+    if (is_string($date)) {
+      return static::fromDateString($date, $name);
+    }else if (is_int($date)) {
+      return static::fromTimestamp($date, $name);
+    } else if ($date instanceof Date) {
+      return new static($date, $name);
+    }
+  }
+
+  public static function fromTimestamp(int $unixtimestamp, string $name): SpecialDay {
+    return new static(Date::createFromTimestamp($unixtimestamp), $name);
+  }
+
+  public static function fromDateString(string $dateString, string $name): SpecialDay {
+    return new static(Date::createFromString($dateString), $name);
+  }
+
 }

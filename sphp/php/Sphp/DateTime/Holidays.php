@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\DateTime;
-
+use DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
 /**
@@ -23,7 +23,7 @@ class Holidays {
 
   private $data;
 
-  public function __construct(array $data) {
+  public function __construct(array $data = []) {
     $this->data = $data;
   }
 

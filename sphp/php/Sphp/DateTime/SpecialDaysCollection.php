@@ -8,6 +8,7 @@
 
 namespace Sphp\DateTime;
 
+
 /**
  * Defines SpecialDaysCollection
  *

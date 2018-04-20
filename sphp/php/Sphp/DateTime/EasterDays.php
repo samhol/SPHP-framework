@@ -10,6 +10,8 @@
 
 namespace Sphp\DateTime;
 
+use DateTime;
+
 /**
  * Description of EasterDays
  *
@@ -19,13 +21,23 @@ namespace Sphp\DateTime;
  */
 class EasterDays extends SpecialDays {
 
+  private $year;
+
+  public function __construct(int $year = null) {
+    if ($year === null) {
+      $year = (int) date('Y');
+    }
+    parent::__construct();
+    $this->year = $year;
+    $this->parseDays();
+  }
 
   protected function parseDays() {
-    $this->days[] = static::getMaundyThursday($this->year);
-    $this->days[] = static::getGoodFriday($this->year);
-    $this->days[] = static::getEasterSunday($this->year);
-    $this->days[] = static::getEasterMonday($this->year);
-    $this->days[] = static::getAscensionDay($this->year);
+    $this->add(new Holiday(static::getMaundyThursday($this->year), 'Maundy Thursday'));
+    $this->add(new Holiday(static::getGoodFriday($this->year), 'Good Friday'));
+    $this->add(new Holiday(static::getEasterSunday($this->year), 'Easter Sunday'));
+    $this->add(new Holiday(static::getEasterMonday($this->year), 'Easter Monday'));
+    $this->add(new Holiday(static::getAscensionDay($this->year), 'Ascension Day'));
   }
 
   /**
@@ -33,8 +45,8 @@ class EasterDays extends SpecialDays {
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
    */
-  public static function getMaundyThursday(int $year = null): SpecialDay {
-    $date = static::getEasterSunday($year)->jump(-4);
+  public static function getMaundyThursday(int $year = null): Date {
+    return static::getEasterSunday($year)->jump(-4);
   }
 
   /**
@@ -73,7 +85,7 @@ class EasterDays extends SpecialDays {
    * @return Date new date object
    */
   public static function getAscensionDay(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(40);
+    return static::getEasterSunday($year)->jump(41);
   }
 
   public function current() {
