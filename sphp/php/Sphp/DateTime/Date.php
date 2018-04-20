@@ -67,6 +67,7 @@ class Date {
   public function getWeek(): int {
     return (int) $this->dateTime->format('W');
   }
+
   /**
    * 
    * @return int
@@ -99,6 +100,12 @@ class Date {
     return (int) $this->dateTime->format('Y');
   }
 
+  public function isCurrent(): bool {
+    $date = new DateTime();
+    $interval = $this->dateTime->diff($date);
+    return $interval->days === 0;
+  }
+
   /**
    * 
    * @param  mixed $date
@@ -123,6 +130,17 @@ class Date {
    */
   public function format(string $format): string {
     return $this->dateTime->format($format);
+  }
+
+  /**
+   * Advances given number of days and returns a new instance
+   * 
+   * @param  int $days
+   * @return Date
+   */
+  public function jump(int $days): Date {
+    $next = $this->dateTime->modify("$days day");
+    return new Date($next);
   }
 
   /**

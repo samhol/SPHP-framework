@@ -1,24 +1,23 @@
 <?php
 
-/**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
- *
- * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
- * @license   https://opensource.org/licenses/MIT The MIT License
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
 namespace Sphp\DateTime;
 
 /**
- * Description of Holiday
+ * Description of SpecialDay
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Holiday extends SpecialDay {
-
+class SpecialDay {
+  
   /**
    * @var Date 
    */
@@ -30,9 +29,9 @@ class Holiday extends SpecialDay {
   private $name;
 
   /**
+   *  
    * 
-   * 
-   * @param Date $date
+   * @param Date $date 
    * @param string $name
    */
   public function __construct(Date $date, string $name) {
@@ -60,5 +59,4 @@ class Holiday extends SpecialDay {
   public function __toString(): string {
     return $this->name;
   }
-
 }
