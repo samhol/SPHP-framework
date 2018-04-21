@@ -88,24 +88,4 @@ class EasterDays extends SpecialDays {
     return static::getEasterSunday($year)->jump(41);
   }
 
-  public function current() {
-    
-  }
-
-  public function key(): \scalar {
-    
-  }
-
-  public function next(): void {
-    
-  }
-
-  public function rewind(): void {
-    
-  }
-
-  public function valid(): bool {
-    
-  }
-
 }
