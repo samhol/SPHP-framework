@@ -14,18 +14,19 @@
         border: solid 1px #555;
         @include border-radius(2px);
         text-align: center;
+        font-weight: bold;
       }
       div.week-number, div.sphp.calendar-day {
         .week-nr {
-          border-bottom: solid 1px #888;
+          font-size: rem-calc(12);
           border-right: solid 1px #888;
-          @include border-radius(2px);
-          float:left;
+          float: left;
           padding: rem-calc(2 4 2 4);
           background-color: rgba(#ddd, .2);
+          height: 100%;
         }
         time {
-          float:right;
+          float: right;
           margin-right: 2px;
           padding: rem-calc(4);
         }
@@ -37,9 +38,10 @@
           background-color: rgba(#ff9900, .2);
           border-width: 2px;
           border-color: #555;
+          font-weight: bolder;
         }
         &.selected-month {
-          font-weight: bolder;
+          font-weight: bold;
           @include opacity(1);
         }
         &.not-selected-month {

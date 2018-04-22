@@ -56,9 +56,9 @@ class BitMask implements Arrayable, Iterator {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags to set
-   * @return $this for a fluent interface
+   * @return BitMask new instance
    */
-  public function binAND($bitmask) {
+  public function binAND($bitmask): BitMask {
     return new static($this->mask & self::parseInt($bitmask));
   }
 
@@ -68,9 +68,9 @@ class BitMask implements Arrayable, Iterator {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the other bitmask
-   * @return $this for a fluent interface
+   * @return BitMask new instance
    */
-  public function binOR($bitmask) {
+  public function binOR($bitmask): BitMask {
     return new static($this->mask | self::parseInt($bitmask));
   }
 
@@ -80,9 +80,9 @@ class BitMask implements Arrayable, Iterator {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags to set
-   * @return $this for a fluent interface
+   * @return BitMask new instance
    */
-  public function binXOR($bitmask) {
+  public function binXOR($bitmask): BitMask {
     return new static($this->mask ^ self::parseInt($bitmask));
   }
 

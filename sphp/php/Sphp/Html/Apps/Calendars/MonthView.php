@@ -9,6 +9,7 @@
  */
 
 namespace Sphp\Html\Apps\Calendars;
+
 use DateTime;
 use Sphp\Html\AbstractComponent;
 use Sphp\I18n\Datetime\CalendarUtils;
@@ -17,7 +18,7 @@ use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Div;
 use DateTimeImmutable;
 use Sphp\Html\Container;
-use Sphp\DateTime\Holidays;
+use Sphp\DateTime\Holidays\Holidays;
 use Sphp\DateTime\Date;
 
 /**
@@ -101,10 +102,10 @@ class MonthView extends AbstractComponent {
       $monday = clone $this->firstOf;
     }
     $container->append($this->createWeekRow($monday));
-    $next = $monday->modify('+ 7 days');
+    $next = $monday->jump(7);
     while ($next->format('m') == $this->month) {
       $container->append($this->createWeekRow($next));
-      $next = $next->modify('+ 7 day');
+      $next = $next->jump(7);
     }
     return $container;
   }

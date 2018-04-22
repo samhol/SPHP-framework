@@ -15,8 +15,10 @@ use DateTimeInterface;
 use Sphp\Html\Div;
 use Sphp\Html\TimeTag;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Holidays;
+use Sphp\DateTime\Holidays\Holidays;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
+use Sphp\Html\Attributes\ClassAttribute;
+use Sphp\Html\CssClassifiableContent;
 
 /**
  * Description of WeekDay
@@ -26,7 +28,7 @@ use Sphp\Html\Foundation\Sites\Containers\Modal;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WeekDayView implements Content, \Sphp\Html\CssClassifiableContent {
+class WeekDayView implements CssClassifiableContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\CssClassifiableTrait;
@@ -56,7 +58,7 @@ class WeekDayView implements Content, \Sphp\Html\CssClassifiableContent {
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
     $this->modal = new Modal($this->container, '<h5>Date info</h5>');
-    $this->modal->useOverLay(false);
+    //$this->modal->useOverLay(false);
   }
 
   public function useHolidays(Holidays $holidays = null) {
@@ -64,15 +66,17 @@ class WeekDayView implements Content, \Sphp\Html\CssClassifiableContent {
     return $this;
   }
 
-  public function cssClasses(): \Sphp\Html\Attributes\ClassAttribute {
+  public function cssClasses(): ClassAttribute {
     return $this->container->cssClasses();
   }
 
   protected function buildHoliday() {
     if ($this->holidays instanceof Holidays) {
-      $holidays = $this->holidays->get($this->date);
-      $h = implode(', ', $holidays);
-      $this->modal->getPopup()->append($h);
+      if ($this->holidays->hasSpecialDays($this->date)) {
+        $holidays = $this->holidays->get($this->date);
+        $this->modal->getPopup()->append($holidays);
+      }
+      //$h = implode(', ', $holidays);
       if (!empty($holidays)) {
         $this->container->cssClasses()->protect('holiday');
       }

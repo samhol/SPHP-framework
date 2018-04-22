@@ -20,7 +20,7 @@ use Sphp\DateTime\SpecialDays;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EasterDays extends SpecialDays {
+class EasterDays extends Holidays {
 
   private $year;
 

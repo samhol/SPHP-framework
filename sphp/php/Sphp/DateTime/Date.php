@@ -54,6 +54,9 @@ class Date {
   public function __clone() {
     $this->dateTime = clone $this->dateTime;
   }
+  public function __toString(): string {
+    return $this->format('Y-m-d');
+  }
 
   /**
    * 

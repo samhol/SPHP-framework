@@ -14,6 +14,7 @@ use Sphp\DateTime\SpecialDays;
 use Sphp\DateTime\Holidays\EasterDays;
 use Sphp\DateTime\Holidays\Holiday;
 use Sphp\DateTime\Date;
+use Sphp\DateTime\Holidays\Holidays;
 /**
  * Description of FinnishHolidays
  *
@@ -21,7 +22,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FinnishHolidays extends SpecialDays {
+class FinnishHolidays extends Holidays {
 
   public function __construct(int $year) {
     parent::__construct();
