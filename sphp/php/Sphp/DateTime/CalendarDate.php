@@ -30,15 +30,25 @@ class CalendarDate {
   /**
    * @var array 
    */
-  private $collection = [];
+  private $notes = [];
 
-  public function __construct(Date $date = null) {
-    if ($date === null) {
+  public function __construct($date = null) {
+    if ($date instanceof \DateTimeInterface) {
+      $date = new Date($date);
+    } else if ($date instanceof Date) {
+      $date = $date;
+    } else if ($date instanceof CalendarDate) {
+      $date = $date->getDate();
+    } else if (is_float($date)) {
+      $date = Date::fromTimestamp($date)->format('Y-m-d');
+    } else if (is_string($date)) {
+      $date = Date::fromString($date);
+    } else {
       $date = new Date();
     }
     $this->date = $date;
-    $this->collection[BirthDay::class] = [];
-    $this->collection[Holiday::class] = [];
+    $this->notes[BirthDay::class] = [];
+    $this->notes[Holiday::class] = [];
   }
 
   public function getDate(): Date {
@@ -46,24 +56,28 @@ class CalendarDate {
   }
 
   public function addBirthday($person) {
-    if (!in_array($person, $this->collection[BirthDay::class], true)) {
-      $this->collection[BirthDay::class][] = new BirthDay($this->date, $person);
+    if (!in_array($person, $this->notes[BirthDay::class], true)) {
+      $this->notes[BirthDay::class][] = new BirthDay($this->date, $person);
     }
   }
 
   public function hasBirthDays(): bool {
-    return !empty($this->collection[BirthDay::class]);
+    return !empty($this->notes[BirthDay::class]);
   }
 
   public function getBirthdays(): array {
-    return $this->collection[BirthDay::class];
+    return $this->notes[BirthDay::class];
   }
 
   public function addHoliday(string $desc) {
-    return $this->collection[Holiday::class][] = new Holiday($this->date, $desc);
+    return $this->notes[Holiday::class][] = new Holiday($this->date, $desc);
   }
 
-  public function merge(DateWithData $dateWithData) {
+  public function hasHolidays(): bool {
+    return !empty($this->notes[Holiday::class]);
+  }
+
+  public function merge(CalendarDate $dateWithData) {
     if ($dateWithData->getDate()->equals($this->getDate()) && !$this->contains($dateWithData)) {
       foreach ($dateWithData as $evt) {
         $this->addEvent($evt);
@@ -73,7 +87,7 @@ class CalendarDate {
 
   public function addEvent(Holiday $event) {
     if ($event->getDate()->equals($this->getDate()) && !$this->contains($event)) {
-      $this->collection[] = $event;
+      $this->notes[] = $event;
     }
   }
 
@@ -85,7 +99,7 @@ class CalendarDate {
   public function contains(Holiday $date): bool {
     $contains = false;
     if ($date->getDate()->equals($this->getDate())) {
-      foreach ($this->collection as $day) {
+      foreach ($this->notes as $day) {
         if ($day == $date) {
           $contains = true;
           break;
@@ -99,18 +113,21 @@ class CalendarDate {
     $output = "$this->date:\n";
     if ($this->hasBirthDays()) {
       $output .= "Birthdays:\n";
-      foreach ($this->collection[BirthDay::class] as $item) {
+      foreach ($this->notes[BirthDay::class] as $item) {
         $output .= "\t{$item->getName()}\n";
       }
     }
-    foreach ($this->collection[Holiday::class] as $item) {
-      $output .= "Holiday: {$item->getName()}\n";
+    if ($this->hasHolidays()) {
+      $output .= "Holidays:\n";
+      foreach ($this->notes[Holiday::class] as $item) {
+        $output .= "\t{$item->getName()}\n";
+      }
     }
     return $output;
   }
 
   public function getIterator(): \Traversable {
-    return new \ArrayIterator($this->collection);
+    return new \ArrayIterator($this->notes);
   }
 
 }
