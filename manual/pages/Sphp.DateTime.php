@@ -20,3 +20,7 @@ Manual\example("Sphp/DateTime/Date.php", "text", false)
         ->setExamplePaneTitle("Date examples")
         ->setOutputSyntaxPaneTitle("Date example results")
         ->printHtml();
+Manual\example("Sphp/DateTime/SpecialDays.php", "text", false)
+        ->setExamplePaneTitle("Date examples")
+        ->setOutputSyntaxPaneTitle("Date example results")
+        ->printHtml();

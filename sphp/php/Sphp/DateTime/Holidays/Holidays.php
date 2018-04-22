@@ -8,10 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
-use DateTime;
-use DateTimeInterface;
+namespace Sphp\DateTime\Holidays;
+
 use DateTimeImmutable;
+use Sphp\DateTime\Date;
+
 /**
  * Description of Holidays
  *

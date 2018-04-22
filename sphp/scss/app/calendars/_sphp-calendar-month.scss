@@ -33,6 +33,11 @@
         border: solid 1px #aaa;
         @include border-radius(2px);
         text-align: center;
+        &.today {
+          background-color: rgba(#ff9900, .2);
+          border-width: 2px;
+          border-color: #555;
+        }
         &.selected-month {
           font-weight: bolder;
           @include opacity(1);
@@ -41,7 +46,7 @@
           color: #999;
           @include opacity(.7);
         }
-        &.sunday {
+        &.sunday:not(.today) {
           background-color: rgba(#d22, .2);
         }
         &.holiday:not(.sunday)  {

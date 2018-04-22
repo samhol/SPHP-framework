@@ -87,7 +87,7 @@ class WeekDayView implements Content, \Sphp\Html\CssClassifiableContent {
       $this->container->append("<div class=\"week-nr\">{$this->date->getWeek()}</div>");
     }
     if ($this->date->isCurrent()) {
-      $this->container->append("<div class=\"week-nr\">{$this->date->getWeek()}</div>");
+      $this->container->cssClasses()->protect('today');
     }
     $this->container->append($timeTag);
     $this->buildHoliday();

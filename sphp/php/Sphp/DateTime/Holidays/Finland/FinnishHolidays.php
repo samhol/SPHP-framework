@@ -8,8 +8,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Holidays\Finland;
 
+use Sphp\DateTime\SpecialDays;
+use Sphp\DateTime\Holidays\EasterDays;
+use Sphp\DateTime\Holidays\Holiday;
+use Sphp\DateTime\Date;
 /**
  * Description of FinnishHolidays
  *
@@ -35,9 +39,9 @@ class FinnishHolidays extends SpecialDays {
     $this->addHoliday("$this->year-12-25", 'Christmas Day');
     $this->addHoliday("$this->year-12-26", 'Boxing Day');
     $this->addHoliday("$this->year-12-31", "New Year's Eve");
-    $j = Date::createFromString("$this->year-6-20")->modify('next Saturday');
+    $j = Date::fromString("$this->year-6-20")->modify('next Saturday');
     $this->addHoliday($j, "Midsummer's Eve");
-    $this->add(new MothrsDay($this->year));
+    $this->add(new MothersDay($this->year));
     $this->add(new FathersDay($this->year));
   }
 

@@ -66,7 +66,7 @@ class MonthView extends AbstractComponent {
     }
     $this->month = $month;
     $this->year = $year;
-    $this->firstOf = Date::createFromString("$year-$month-1");
+    $this->firstOf = Date::fromString("$year-$month-1");
   }
 
   /**

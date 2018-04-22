@@ -1,9 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\DateTime;
@@ -65,7 +67,7 @@ class SpecialDay {
   public static function from($date, string $name): SpecialDay {
     if (is_string($date)) {
       return static::fromDateString($date, $name);
-    }else if (is_int($date)) {
+    } else if (is_int($date)) {
       return static::fromTimestamp($date, $name);
     } else if ($date instanceof Date) {
       return new static($date, $name);
@@ -73,11 +75,11 @@ class SpecialDay {
   }
 
   public static function fromTimestamp(int $unixtimestamp, string $name): SpecialDay {
-    return new static(Date::createFromTimestamp($unixtimestamp), $name);
+    return new static(Date::fromTimestamp($unixtimestamp), $name);
   }
 
   public static function fromDateString(string $dateString, string $name): SpecialDay {
-    return new static(Date::createFromString($dateString), $name);
+    return new static(Date::fromString($dateString), $name);
   }
 
 }

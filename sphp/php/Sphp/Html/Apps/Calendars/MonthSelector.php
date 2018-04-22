@@ -48,7 +48,7 @@ class MonthSelector implements Content, CssClassifiableContent {
     }
     $this->month = $month;
     $this->year = $year;
-    $this->date = Date::createFromString("$year-$month-1");
+    $this->date = Date::fromString("$year-$month-1");
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'month-selector');
   }

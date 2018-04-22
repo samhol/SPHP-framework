@@ -8,7 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Holidays\Finland;
+
+use Sphp\DateTime\Holidays\Holiday;
+use Sphp\DateTime\Date;
 
 /**
  * Description of FathersDay
@@ -17,17 +20,16 @@ namespace Sphp\DateTime;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class MothrsDay extends Holiday {
+class MothersDay extends Holiday {
 
   public function __construct(int $year = null) {
     if ($year === null) {
       $year = (int) date('Y');
     }
-    $f = Date::createFromString("$year-5-1");
+    $f = Date::fromString("$year-5-1");
     if ($f->getWeekDay() === 6) {
       $f = $f->jump(7);
-    }
-    else {
+    } else {
       $f = $f->modify('next Sunday')->jump(7);
     }
     parent::__construct($f, "Mothers's Day");

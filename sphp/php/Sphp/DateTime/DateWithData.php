@@ -17,7 +17,7 @@ namespace Sphp\DateTime;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DateData implements \IteratorAggregate {
+class DateWithData implements \IteratorAggregate {
 
   /**
    * @var Date 
@@ -37,13 +37,14 @@ class DateData implements \IteratorAggregate {
     return $this->date;
   }
 
-  public function merge(DateData $event) {
-    if ($event->getDate()->equals($this->getDate()) && !$this->contains($event)) {
-      foreach ($event as $evt) {
-        $this->addEvent($event);
+  public function merge(DateWithData $dateWithData) {
+    if ($dateWithData->getDate()->equals($this->getDate()) && !$this->contains($dateWithData)) {
+      foreach ($dateWithData as $evt) {
+        $this->addEvent($evt);
       }
     }
   }
+
   public function addEvent(SpecialDay $event) {
     if ($event->getDate()->equals($this->getDate()) && !$this->contains($event)) {
       $this->collection[] = $event;
@@ -69,7 +70,7 @@ class DateData implements \IteratorAggregate {
   }
 
   public function __toString(): string {
-    return implode("\n",$this->collection);
+    return implode("\n", $this->collection);
   }
 
   public function getIterator(): \Traversable {

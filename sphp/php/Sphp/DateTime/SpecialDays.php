@@ -1,15 +1,18 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\DateTime;
 
 use DateTime;
 use IteratorAggregate;
+use Sphp\DateTime\Holidays\Holiday;
 
 /**
  * Description of SpecialDays
@@ -45,7 +48,7 @@ class SpecialDays implements IteratorAggregate, SpecialDaysCollection {
     }
   }
 
-  public function mergeDateData(DateData $day) {
+  public function mergeDateData(DateWithData $day) {
     $key = $day->getDate()->format('Y-m-d');
     if (!$this->hasSpecialDays($day->getDate())) {
       $this->days[$key] = $day;
@@ -64,7 +67,7 @@ class SpecialDays implements IteratorAggregate, SpecialDaysCollection {
   public function add(SpecialDay $day) {
     $key = $day->getDate()->format('Y-m-d');
     if (!$this->contains($day)) {
-      $data = new DateData($day->getDate());
+      $data = new DateWithData($day->getDate());
       $data->addEvent($day);
       $this->days[$key] = $data;
     }

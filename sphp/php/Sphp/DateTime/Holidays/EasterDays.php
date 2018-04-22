@@ -8,10 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Holidays;
 
 use DateTime;
-
+use Sphp\DateTime\Date;
+use Sphp\DateTime\SpecialDays;
 /**
  * Description of EasterDays
  *
@@ -67,7 +68,7 @@ class EasterDays extends SpecialDays {
     if ($year === null) {
       $year = (int) date('Y');
     }
-    return Date::createFromTimestamp(easter_date());
+    return Date::fromTimestamp(easter_date());
   }
 
   /**

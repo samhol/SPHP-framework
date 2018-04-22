@@ -8,7 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Holidays\Finland;
+
+use Sphp\DateTime\Holidays\Holiday;
+use Sphp\DateTime\Date;
 
 /**
  * Description of FathersDay
@@ -23,7 +26,7 @@ class FathersDay extends Holiday {
     if ($year === null) {
       $year = (int) date('Y');
     }
-    $f = Date::createFromString("$year-11-1");
+    $f = Date::fromString("$year-11-1");
     if ($f->getWeekDay() === 6) {
       $f = $f->jump(7);
     } else {

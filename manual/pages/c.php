@@ -40,12 +40,12 @@ echo $m;
 
 
 //$holidays = new Holidays($holidayData);
-$holidays->get(Date::createFromString('2018-12-24'));
+$holidays->get(Date::fromString('2018-12-24'));
 echo Holidays::getEasterSunday()->format('Y-m-d');
 
-print_r($holidays->get(Date::createFromString('2018-12-24')));
-print_r($holidays->get(Date::createFromString('2016-12-24')));
-$date = Date::createFromString('2018-01-01');
+print_r($holidays->get(Date::fromString('2018-12-24')));
+print_r($holidays->get(Date::fromString('2016-12-24')));
+$date = Date::fromString('2018-01-01');
 echo "<pre>";
 for ($i = 1; $i <= 365; ++$i) {
   // print_r($holidays->get($date));

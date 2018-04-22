@@ -8,8 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Holidays;
 
+use Sphp\DateTime\SpecialDay;
 
 /**
  * Description of Holiday
@@ -19,15 +20,5 @@ namespace Sphp\DateTime;
  * @filesource
  */
 class Holiday extends SpecialDay {
-
-  /**
-   * 
-   * 
-   * @param Date $date
-   * @param string $name
-   */
-  public function __construct(Date $date, string $name) {
-    parent::__construct($date, $name);
-  }
-
+  
 }
