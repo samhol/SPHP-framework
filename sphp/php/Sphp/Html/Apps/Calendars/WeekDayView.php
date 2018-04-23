@@ -58,7 +58,7 @@ class WeekDayView implements CssClassifiableContent {
     $this->date = $date;
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
-    $this->modal = new Modal($this->container, '<h5>Date info</h5>');
+    //$this->modal = new Modal($this->container, '<h5>Date info</h5>');
     //$this->modal->useOverLay(false);
   }
 
@@ -71,16 +71,13 @@ class WeekDayView implements CssClassifiableContent {
     return $this->container->cssClasses();
   }
 
-  protected function buildHoliday() {
+  protected function buildInfo() {
     if ($this->calendarDate instanceof CalendarDate) {
       if ($this->calendarDate->hasInfo()) {
-      $this->container->append("<span><i class=\"fas fa-tags fa-lg fa-border\"></i></span>");
+        $dateInfo = new DateInfo($this->calendarDate);
+        $this->container->append($dateInfo);
       }
-      if ($this->calendarDate->hasHolidays()) {
-        //$holidays = $this->calendarDate->get($this->date);
-        $this->modal->getPopup()->append($this->calendarDate);
-      }
-      //$h = implode(', ', $holidays);
+
       if ($this->calendarDate->isNationalHoliday()) {
         $this->container->cssClasses()->protect('holiday');
       }
@@ -98,7 +95,7 @@ class WeekDayView implements CssClassifiableContent {
       $this->container->cssClasses()->protect('today');
     }
     $this->container->append($timeTag);
-    $this->buildHoliday();
+    $this->buildInfo();
     //$this->container->append(new DateInfo($this->date));
     $this->container->cssClasses()->protect(strtolower($this->date->format('l')));
     return $this;
@@ -106,7 +103,7 @@ class WeekDayView implements CssClassifiableContent {
 
   public function getHtml(): string {
     $this->buildDate();
-    return $this->container->getHtml() . $this->modal->getPopup();
+    return $this->container->getHtml();
   }
 
 }

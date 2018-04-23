@@ -11,6 +11,11 @@
 namespace Sphp\Html\Apps\Calendars;
 
 use Sphp\Html\Content;
+use Sphp\DateTime\Calendars\CalendarDate;
+use Sphp\Html\Foundation\Sites\Containers\Modal;
+use Sphp\Html\Foundation\Sites\Containers\Popup;
+use Sphp\Html\Span;
+use Sphp\Html\Media\Icons\FontAwesome;
 
 /**
  * Description of DateInfo
@@ -23,8 +28,31 @@ class DateInfo implements Content {
 
   use \Sphp\Html\ContentTrait;
 
+  /**
+   * @var CalendarDate 
+   */
+  private $calendarDate;
+
+  /**
+   * @var Modal 
+   */
+  private $modal;
+
+  public function __construct(CalendarDate $calendarDate) {
+    $this->calendarDate = $calendarDate;
+    $this->modal = new Modal(new Span(FontAwesome::tags()), $this->createPopup());
+  }
+
+  public function createPopup(): Popup {
+    $popup = new Popup();
+    $date = $this->calendarDate->getDate()->format('l  F jS Y');
+    $popup->append("<h2>$date</h2>");
+    $popup->append($this->calendarDate);
+    return $popup;
+  }
+
   public function getHtml(): string {
-    return '<i class="far fa-plus-square"></i>';
+    return $this->modal->getHtml();
   }
 
 }

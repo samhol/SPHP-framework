@@ -33,7 +33,7 @@
         }
         span {
           padding: rem-calc(4);
-          
+
         }
         height: rem-calc(100);
         border: solid 1px #aaa;
@@ -54,10 +54,10 @@
           @include opacity(.7);
         }
         &.sunday:not(.today) {
-          background-color: rgba(#d22, .2);
+          background-color: rgba(#d11, .25);
         }
         &.holiday:not(.sunday)  {
-          background-color: rgba(#d22, .1);
+          background-color: rgba(#e55, .1);
         }
       }
     }
