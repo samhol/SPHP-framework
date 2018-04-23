@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Holidays;
+namespace Sphp\DateTime\Calendars;
 
 /**
  * Description of BirthDay

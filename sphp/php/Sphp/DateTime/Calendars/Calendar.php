@@ -8,7 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Calendars;
+
+use Sphp\DateTime\Date;
 
 /**
  * Description of Calendar
@@ -30,40 +32,39 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
 
   public function merge(Calendar $days) {
     foreach ($days as $key => $group) {
-      $this->mergeDateData($group);
+      $this->mergeDate($group);
     }
   }
 
-  public function mergeDateData(CalendarDate $day) {
-    $key = $day->getDate()->format('Y-m-d');
-    if (!$this->hasSpecialDays($day->getDate())) {
-      $this->days[$key] = $day;
+  public function mergeDate(CalendarDate $date) {
+    $key = $this->parseKey($date);
+    if (!$this->contains($key)) {
+      $this->days[$key] = $date;
     } else {
-      $this->days[$key]->merge($day);
+      $this->days[$key]->merge($date);
     }
     return $this;
   }
 
   public function addHoliday($date, string $name): Holiday {
-    $this->setCalendarDate($date)->addHoliday($name);
+    $holiday = $this->setCalendarDate($date)->addHoliday($name);
     return $holiday;
   }
 
   protected function setCalendarDate($date): CalendarDate {
-    $key = $date->parseKey($date);
-    if ($this->contains($key)) {
-      return $this->days[$key];
-    } else {
+    $key = $this->parseKey($date);
+    if (!$this->contains($key)) {
       $this->days[$key] = new CalendarDate($date);
     }
+    return $this->days[$key];
   }
 
-  public function add(CalendarDate $day) {
-    $key = $day->getDate()->format('Y-m-d');
-    if (!$this->contains($day)) {
-      $this->days[$key] = $day;
+  public function add(CalendarDate $date): CalendarDate {
+    $key = $this->parseKey($date);
+    if (!$this->contains($date)) {
+      $this->days[$key] = $date;
     }
-    return $this;
+    return $this->days[$key];
   }
 
   protected function parseKey($date): string {
@@ -77,7 +78,7 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
     } else if (is_float($date)) {
       $key = Date::fromTimestamp($date)->format('Y-m-d');
     } else if (is_string($date)) {
-      $key = $date;
+      $key = Date::fromString($date)->format('Y-m-d');
     }
     return $key;
   }
@@ -97,7 +98,7 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
    * @param  Date $date
    * @return bool 
    */
-  public function hasSpecialDays(Date $date): bool {
+  public function hasSpecialDays($date): bool {
     $key = $this->parseKey($date);
     return array_key_exists($key, $this->days);
   }
@@ -116,7 +117,7 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
 
   public function getIterator(): \Traversable {
     ksort($this->days);
-    return new \ArrayObject($this->days);
+    return new \ArrayIterator($this->days);
   }
 
   public function offsetExists($offset): bool {

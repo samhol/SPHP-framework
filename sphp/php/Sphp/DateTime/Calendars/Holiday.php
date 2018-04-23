@@ -8,8 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Holidays;
+namespace Sphp\DateTime\Calendars;
+
 use Sphp\DateTime\Date;
+
 /**
  * Description of Holiday
  *
@@ -81,7 +83,7 @@ class Holiday {
     return new static(Date::fromString($dateString), $name);
   }
 
-  public function setFlags() {
+  public function setFlagDay($flags) {
     
   }
 

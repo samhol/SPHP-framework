@@ -1,16 +1,16 @@
-
 <?php
 
-$cd = new Sphp\DateTime\CalendarDate;
+namespace Sphp\DateTime\Calendars;
+
+$cd = new CalendarDate('september 16');
 echo "<pre>";
-$cd->addBirthday('Cock Sucker');
-$cd->addBirthday('Ass Fucker');
+$cd->addBirthday('Sami Holck');
 $cd->addHoliday('Ball licking day');
 //echo $cd;
-$calendar = \Sphp\DateTime\FinnishCalendar::create(2018);
+$calendar = Fi\FinnishCalendar::create(2018);
 $calendar->add($cd);
 
-$cd1 = new Sphp\DateTime\CalendarDate(\Sphp\DateTime\Date::fromString('2018-2-11'));
+$cd1 = new CalendarDate(\Sphp\DateTime\Date::fromString('2018-2-11'));
 
 $cd1->addBirthday('Pussy pounder');
 $cd1->addBirthday('Homo Fucker');
@@ -20,6 +20,6 @@ $calendar->add($cd1);
 //echo $calendar['2018-04-22'];
 //echo $calendar[new \Sphp\DateTime\Date()];
 foreach ($calendar as $day => $date) {
-  echo "$date\n";
+  echo "$day => $date\n";
 }
 echo "</pre>";

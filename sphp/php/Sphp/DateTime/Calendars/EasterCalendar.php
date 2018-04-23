@@ -8,11 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Holidays;
+namespace Sphp\DateTime\Calendars;
 
 use DateTime;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\SpecialDays;
+
 /**
  * Description of EasterDays
  *
@@ -20,25 +20,19 @@ use Sphp\DateTime\SpecialDays;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EasterDays extends Holidays {
+class EasterCalendar {
 
-  private $year;
-
-  public function __construct(int $year = null) {
+  public static function build(int $year = null): Calendar {
     if ($year === null) {
       $year = (int) date('Y');
     }
-    parent::__construct();
-    $this->year = $year;
-    $this->parseDays();
-  }
-
-  protected function parseDays() {
-    $this->add(new Holiday(static::getMaundyThursday($this->year), 'Maundy Thursday'));
-    $this->add(new Holiday(static::getGoodFriday($this->year), 'Good Friday'));
-    $this->add(new Holiday(static::getEasterSunday($this->year), 'Easter Sunday'));
-    $this->add(new Holiday(static::getEasterMonday($this->year), 'Easter Monday'));
-    $this->add(new Holiday(static::getAscensionDay($this->year), 'Ascension Day'));
+    $calendar = new Calendar();
+    $calendar->addHoliday(static::getMaundyThursday($year), 'Maundy Thursday');
+    $calendar->addHoliday(static::getGoodFriday($year), 'Good Friday');
+    $calendar->addHoliday(static::getEasterSunday($year), 'Easter Sunday');
+    $calendar->addHoliday(static::getEasterMonday($year), 'Easter Monday');
+    $calendar->addHoliday(static::getAscensionDay($year), 'Ascension Day');
+    return $calendar;
   }
 
   /**

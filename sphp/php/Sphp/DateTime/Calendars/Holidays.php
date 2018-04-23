@@ -8,11 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Holidays;
+namespace Sphp\DateTime\Calendars;
 
 use DateTime;
 use IteratorAggregate;
-use Sphp\DateTime\Holidays\Holiday;
 use Sphp\DateTime\Date;
 
 /**

@@ -8,10 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime;
+namespace Sphp\DateTime\Calendars;
 
-use Sphp\DateTime\Holidays\BirthDay;
-use Sphp\DateTime\Holidays\Holiday;
+use Sphp\DateTime\Date;
 
 /**
  * Description of CalendarDate
@@ -69,8 +68,10 @@ class CalendarDate {
     return $this->notes[BirthDay::class];
   }
 
-  public function addHoliday(string $desc) {
-    return $this->notes[Holiday::class][] = new Holiday($this->date, $desc);
+  public function addHoliday(string $desc): Holiday {
+    $holiday = new Holiday($this->date, $desc);
+    $this->notes[Holiday::class][] = $holiday;
+    return $holiday;
   }
 
   public function hasHolidays(): bool {
@@ -112,15 +113,15 @@ class CalendarDate {
   public function __toString(): string {
     $output = "$this->date:\n";
     if ($this->hasBirthDays()) {
-      $output .= "Birthdays:\n";
+      $output .= "  Birthdays:\n";
       foreach ($this->notes[BirthDay::class] as $item) {
-        $output .= "\t{$item->getName()}\n";
+        $output .= "    {$item->getName()}\n";
       }
     }
     if ($this->hasHolidays()) {
-      $output .= "Holidays:\n";
+      $output .= "  Holidays:\n";
       foreach ($this->notes[Holiday::class] as $item) {
-        $output .= "\t{$item->getName()}\n";
+        $output .= "   {$item->getName()}\n";
       }
     }
     return $output;

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Holidays\Finland;
+namespace Sphp\DateTime\Calendars\Fi;
 
 use Sphp\DateTime\SpecialDays;
 use Sphp\DateTime\Holidays\EasterDays;
