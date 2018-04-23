@@ -21,8 +21,11 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FinnishCalendar {
+class FinnishCalendar extends Calendar {
 
+  public function __construct() {
+    parent::__construct();
+  }
   /**
    * 
    * @param int $year
@@ -30,47 +33,30 @@ class FinnishCalendar {
    */
   public static function create(int $year): Calendar {
     $calendar = new Calendar();
-    $calendar->addHoliday("$year-1-1", "New Year's Day");
-    $calendar->addHoliday("$year-1-6", 'Epiphany');
-    $calendar->merge(EasterCalendar::build($year));
-    $calendar->addHoliday("$year-5-1", 'May Day');
-    $calendar->addHoliday(static::getMothersDay($year), "Mothers's Day");
-    $calendar->addHoliday($j, "Midsummer's Eve");
-    $calendar->addHoliday(static::getAllSaintsDay($year), 'All Saints Day');
-    $calendar->addHoliday(static::getFathersDay($year), "Father's Day");
-    $calendar->addHoliday("$year-12-6", 'Independence Day');
-    $calendar->addHoliday("$year-12-24", 'Christmas Eve');
-    $calendar->addHoliday("$year-12-25", 'Christmas Day');
-    $calendar->addHoliday("$year-12-26", 'Boxing Day');
-    $calendar->addHoliday("$year-12-31", "New Year's Eve");
+    $calendar->addHoliday("$year-1-1", "New Year's Day")->setNationalHoliday();
+    $calendar->addHoliday("$year-1-6", 'Epiphany')->setNationalHoliday();
+    $calendar->addBirthDay("$year-2-5", 'Johan Ludvig Runeberg')->setFlagDay(true);
+    $calendar->addHoliday("$year-2-28", "Day of Kalevala")->setFlagDay(true);
+    $calendar->merge(static::getEasterCalendar($year));
+    $calendar->addHoliday("$year-4-27", "National War Veterans' Day")->setFlagDay(true);
+    $calendar->addHoliday("$year-5-1", 'May Day')->setFlagDay(true)->setNationalHoliday();;
+    $calendar->addHoliday("$year-5-9", 'Europe Day')->setFlagDay(true);
+    $calendar->addHoliday("May $year second sunday", "Mothers's Day")->setFlagDay(true);
+    $calendar->addHoliday("May $year third sunday", 'memorial day')->setFlagDay(true);
     $j = Date::fromString("$year-6-20")->modify('next Saturday');
+    $calendar->addBirthDay("$year-6-4", 'Carl Gustaf Emil Mannerheim')->setFlagDay(true);
+    $calendar->addHoliday($j, "Midsummer's Eve")->setNationalHoliday();
+    $calendar->addBirthDay("$year-7-6", 'Eino Leino')->setFlagDay(true);
+    $calendar->addBirthDay("$year-10-10", 'Aleksis Kivi')->setFlagDay(true);
+    $calendar->addHoliday("$year-10-10", 'Day of Finnish literature');
+    $calendar->addHoliday(static::getAllSaintsDay($year), 'All Saints Day')->setNationalHoliday();
+    $calendar->addHoliday("November $year second sunday", "Father's Day")->setFlagDay(true);
+    $calendar->addHoliday("$year-12-6", 'Independence Day')->setFlagDay(true)->setNationalHoliday();
+    $calendar->addBirthDay("$year-12-8", 'Jean Sibelius')->setFlagDay(true);
+    $calendar->addHoliday("$year-12-24", 'Christmas Eve');
+    $calendar->addHoliday("$year-12-25", 'Christmas Day')->setNationalHoliday();
+    $calendar->addHoliday("$year-12-26", 'Boxing Day')->setNationalHoliday();
     return $calendar;
-  }
-
-  public static function getMothersDay(int $year = null): Date {
-    if ($year === null) {
-      $year = (int) date('Y');
-    }
-    $f = Date::fromString("$year-5-1");
-    if ($f->getWeekDay() === 7) {
-      $f = $f->jump(7);
-    } else {
-      $f = $f->modify('next Sunday')->jump(7);
-    }
-    return $f;
-  }
-
-  public static function getFathersDay(int $year = null): Date {
-    if ($year === null) {
-      $year = (int) date('Y');
-    }
-    $f = Date::fromString("$year-11-1");
-    if ($f->getWeekDay() === 7) {
-      $f = $f->jump(7);
-    } else {
-      $f = $f->modify('next Sunday')->jump(7);
-    }
-    return $f;
   }
 
   public static function getAllSaintsDay(int $year = null): Date {
@@ -84,28 +70,26 @@ class FinnishCalendar {
     return $f;
   }
 
-  /**
-   * 
-   * @param int $year
-   * @return Calendar
-   */
-  public static function flagDays(int $year): Calendar {
-    $calendar = new Calendar();
-    $calendar->addHoliday("$year-2-5", 'birthday of the national poet Johan Ludvig Runeberg');
-    $calendar->addHoliday("$year-2-28", "Day of Kalevala");
-    $calendar->addHoliday("$year-5-1", 'May Day');
-    $calendar->addHoliday(static::getMothersDay($year), "Mothers's Day");
-    $calendar->addHoliday($j, "Midsummer's Eve");
-    $calendar->addHoliday(static::getAllSaintsDay($year), 'All Saints Day');
-    $calendar->addHoliday(static::getFathersDay($year), "Father's Day");
-    $calendar->addHoliday("$year-12-6", 'Independence Day');
-    $calendar->addHoliday("$year-12-8", ' birthday of the composer Jean Sibelius');
-    $calendar->addHoliday("$year-12-24", 'Christmas Eve');
-    $calendar->addHoliday("$year-12-25", 'Christmas Day');
-    $calendar->addHoliday("$year-12-26", 'Boxing Day');
-    $calendar->addHoliday("$year-12-31", "New Year's Eve");
-    $j = Date::fromString("$year-6-20")->modify('next Saturday');
-    return $calendar;
+  public static function getEasterCalendar(int $year = null): Calendar {
+    $easterCalendar = EasterCalendar::build($year);
+    foreach ($easterCalendar as $day) {
+      if ($day instanceof \Sphp\DateTime\Calendars\Holiday) {
+        $day->setNationalHoliday(true);
+      }
+    }
+    return EasterCalendar::build($year);
+  }
+
+  public static function getSundays($y, $m = 1) {
+    $date = "$y-$m-01";
+    $first_day = date('N', strtotime($date));
+    $first_day = 7 - $first_day + 1;
+    $last_day = date('t', strtotime($date));
+    $days = array();
+    for ($i = $first_day; $i <= $last_day; $i = $i + 7) {
+      $days[] = $i;
+    }
+    return $days;
   }
 
 }

@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars;
 
-use DateTime;
+use DateTimeImmutable;
 use Sphp\DateTime\Date;
 
 /**
@@ -32,6 +32,7 @@ class EasterCalendar {
     $calendar->addHoliday(static::getEasterSunday($year), 'Easter Sunday');
     $calendar->addHoliday(static::getEasterMonday($year), 'Easter Monday');
     $calendar->addHoliday(static::getAscensionDay($year), 'Ascension Day');
+    $calendar->addHoliday(static::getPentecost($year), 'Pentecost');
     return $calendar;
   }
 
@@ -62,7 +63,10 @@ class EasterCalendar {
     if ($year === null) {
       $year = (int) date('Y');
     }
-    return Date::fromTimestamp(easter_date());
+    $base = new DateTimeImmutable("$year-03-21");
+    $days = easter_days($year);
+    $b = $base->add(new \DateInterval("P{$days}D"));
+    return new Date($b);
   }
 
   /**
@@ -80,7 +84,16 @@ class EasterCalendar {
    * @return Date new date object
    */
   public static function getAscensionDay(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(41);
+    return static::getEasterSunday($year)->jump(39);
+  }
+
+  /**
+   * 
+   * @param  int $year optional year (uses current if omitted) 
+   * @return Date new date object
+   */
+  public static function getPentecost(int $year = null): Date {
+    return static::getEasterSunday($year)->jump(49);
   }
 
 }

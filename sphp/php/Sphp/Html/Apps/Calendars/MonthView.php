@@ -20,6 +20,7 @@ use DateTimeImmutable;
 use Sphp\Html\Container;
 use Sphp\DateTime\Holidays\Holidays;
 use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\Calendar;
 
 /**
  * Description of Month
@@ -42,9 +43,9 @@ class MonthView extends AbstractComponent {
   private $month;
 
   /**
-   * @var Holidays 
+   * @var Calendar 
    */
-  private $holidays;
+  private $calendar;
 
   /**
    * @var Date 
@@ -68,15 +69,19 @@ class MonthView extends AbstractComponent {
     $this->month = $month;
     $this->year = $year;
     $this->firstOf = Date::fromString("$year-$month-1");
+    $this->useCalendar();
   }
 
   /**
    * 
-   * @param  Holidays $holidays
+   * @param  Calendar $cal
    * @return $this
    */
-  public function setHolidays(Holidays $holidays = null) {
-    $this->holidays = $holidays;
+  public function useCalendar(Calendar $cal = null) {
+    if ($cal === null) {
+      $cal = new Calendar();
+    }
+    $this->calendar = $cal;
     return $this;
   }
 
@@ -141,14 +146,14 @@ class MonthView extends AbstractComponent {
   }
 
   protected function createDayCell(Date $day): WeekDayView {
-    $td = new WeekDayView($day);
-    $td->useHolidays($this->holidays);
+    $weekDayView = new WeekDayView($day);
+    $weekDayView->useCalendaDate($this->calendar->get($day));
     if ($day->getMonth() === $this->month) {
-      $td->addCssClass('selected-month');
+      $weekDayView->addCssClass('selected-month');
     } else {
-      $td->addCssClass('not-selected-month');
+      $weekDayView->addCssClass('not-selected-month');
     }
-    return $td;
+    return $weekDayView;
   }
 
   public function contentToString(): string {

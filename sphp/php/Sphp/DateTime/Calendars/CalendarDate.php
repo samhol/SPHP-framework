@@ -46,36 +46,94 @@ class CalendarDate {
       $date = new Date();
     }
     $this->date = $date;
-    $this->notes[BirthDay::class] = [];
-    $this->notes[Holiday::class] = [];
+    $this->notes = [];
   }
 
   public function getDate(): Date {
     return $this->date;
   }
 
-  public function addBirthday($person) {
-    if (!in_array($person, $this->notes[BirthDay::class], true)) {
-      $this->notes[BirthDay::class][] = new BirthDay($this->date, $person);
+  /**
+   * 
+   * @param \Sphp\DateTime\Calendars\Holiday $holiday
+   * @return \Sphp\DateTime\Calendars\Holiday
+   * @throws \Exception
+   */
+  protected function add(Holiday $holiday) {
+    if (!$holiday->getDate()->equals($this->getDate())) {
+      throw new \Exception("holiday $holiday has wrong date");
+    }
+    if (!in_array($holiday, $this->notes, true)) {
+      $this->notes[] = $holiday;
+      return $holiday;
+    } else {
+      throw new \Exception("holiday $holiday allready exists");
     }
   }
 
+  /**
+   * 
+   * @param  string $person
+   * @return \Sphp\DateTime\Calendars\BirthDay
+   */
+  public function addBirthday($person): BirthDay {
+    $holiday = new BirthDay($this->date, $person);
+    return $this->add($holiday);
+  }
+
   public function hasBirthDays(): bool {
-    return !empty($this->notes[BirthDay::class]);
+    return !empty($this->getBirthdays());
   }
 
   public function getBirthdays(): array {
-    return $this->notes[BirthDay::class];
+    return array_filter($this->notes, function ($item) {
+      return $item instanceof BirthDay;
+    });
   }
 
   public function addHoliday(string $desc): Holiday {
     $holiday = new Holiday($this->date, $desc);
-    $this->notes[Holiday::class][] = $holiday;
-    return $holiday;
+    return $this->add($holiday);
+  }
+
+  public function getNationalHolidays(): array {
+    return array_filter($this->notes, function ($item) {
+      return $item instanceof Holiday && $item->isNationalHoliday();
+    });
+  }
+
+  public function getHolidays(): array {
+    return $this->notes;
   }
 
   public function hasHolidays(): bool {
-    return !empty($this->notes[Holiday::class]);
+    return !empty($this->notes);
+  }
+
+  public function hasInfo(): bool {
+    return !empty($this->notes);
+  }
+
+  public function isNationalHoliday(): bool {
+    $isNational = false;
+    foreach ($this->getHolidays() as $holiday) {
+      if ($holiday->isNationalHoliday()) {
+        $isNational = true;
+        break;
+      }
+    }
+    return $isNational;
+  }
+
+  public function isFlagDay(): bool {
+    $isNational = false;
+    foreach ($this->notes as $holiday) {
+      if ($holiday->isFlagDay()) {
+        $isNational = true;
+        break;
+      }
+    }
+    return $isNational;
   }
 
   public function merge(CalendarDate $dateWithData) {
@@ -88,7 +146,7 @@ class CalendarDate {
 
   public function addEvent(Holiday $event) {
     if ($event->getDate()->equals($this->getDate()) && !$this->contains($event)) {
-      $this->notes[] = $event;
+      $this->add($event);
     }
   }
 
@@ -112,17 +170,10 @@ class CalendarDate {
 
   public function __toString(): string {
     $output = "$this->date:\n";
-    if ($this->hasBirthDays()) {
-      $output .= "  Birthdays:\n";
-      foreach ($this->notes[BirthDay::class] as $item) {
-        $output .= "    {$item->getName()}\n";
-      }
-    }
-    if ($this->hasHolidays()) {
-      $output .= "  Holidays:\n";
-      foreach ($this->notes[Holiday::class] as $item) {
-        $output .= "   {$item->getName()}\n";
-      }
+    //print_r($this->notes);
+    foreach ($this->notes as $note) {
+      // print_r($note);
+      $output .= "  $note\n";
     }
     return $output;
   }

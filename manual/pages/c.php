@@ -22,4 +22,7 @@ $calendar->add($cd1);
 foreach ($calendar as $day => $date) {
   echo "$day => $date\n";
 }
+foreach (Fi\FinnishCalendar::getSundays(2018) as $day => $date) {
+  echo "$day => $date\n";
+}
 echo "</pre>";

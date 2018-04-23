@@ -51,9 +51,14 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
     return $holiday;
   }
 
+  public function addBirthDay($date, string $name): Holiday {
+    $holiday = $this->setCalendarDate($date)->addBirthday($name);
+    return $holiday;
+  }
+
   protected function setCalendarDate($date): CalendarDate {
     $key = $this->parseKey($date);
-    if (!$this->contains($key)) {
+    if (!array_key_exists($key, $this->days)) {
       $this->days[$key] = new CalendarDate($date);
     }
     return $this->days[$key];
@@ -106,13 +111,14 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
   /**
    * 
    * @param Date $date
+   * @etun CalendarDate
    */
-  public function get(Date $date): CalendarDate {
+  public function get($date): CalendarDate {
     $key = $this->parseKey($date);
-    if ($this->contains($key)) {
-      return $this->days[$key];
+    if (!array_key_exists($key, $this->days)) {
+      $this->days[$key] = new CalendarDate($date);
     }
-    return new CalendarDate();
+    return $this->days[$key];
   }
 
   public function getIterator(): \Traversable {

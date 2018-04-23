@@ -15,10 +15,11 @@ use DateTimeInterface;
 use Sphp\Html\Div;
 use Sphp\Html\TimeTag;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Holidays\Holidays;
+use Sphp\DateTime\Calendars\Calendar;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
+use Sphp\DateTime\Calendars\CalendarDate;
 
 /**
  * Description of WeekDay
@@ -44,9 +45,9 @@ class WeekDayView implements CssClassifiableContent {
   private $container;
 
   /**
-   * @var Holidays
+   * @var CalendarDate
    */
-  private $holidays;
+  private $calendarDate;
 
   /**
    * @var Modal
@@ -61,8 +62,8 @@ class WeekDayView implements CssClassifiableContent {
     //$this->modal->useOverLay(false);
   }
 
-  public function useHolidays(Holidays $holidays = null) {
-    $this->holidays = $holidays;
+  public function useCalendaDate(CalendarDate $holidays = null) {
+    $this->calendarDate = $holidays;
     return $this;
   }
 
@@ -71,13 +72,16 @@ class WeekDayView implements CssClassifiableContent {
   }
 
   protected function buildHoliday() {
-    if ($this->holidays instanceof Holidays) {
-      if ($this->holidays->hasSpecialDays($this->date)) {
-        $holidays = $this->holidays->get($this->date);
-        $this->modal->getPopup()->append($holidays);
+    if ($this->calendarDate instanceof CalendarDate) {
+      if ($this->calendarDate->hasInfo()) {
+      $this->container->append("<i class=\"fas fa-tags\"></i>");
+      }
+      if ($this->calendarDate->hasHolidays()) {
+        //$holidays = $this->calendarDate->get($this->date);
+        $this->modal->getPopup()->append($this->calendarDate);
       }
       //$h = implode(', ', $holidays);
-      if (!empty($holidays)) {
+      if ($this->calendarDate->isNationalHoliday()) {
         $this->container->cssClasses()->protect('holiday');
       }
     }

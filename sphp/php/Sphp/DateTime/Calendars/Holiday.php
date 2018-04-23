@@ -21,7 +21,12 @@ use Sphp\DateTime\Date;
  */
 class Holiday {
 
-  private $flags;
+  private $national = false;
+
+  /**
+   * @var bool 
+   */
+  private $flags = false;
 
   /**
    * @var Date 
@@ -57,12 +62,38 @@ class Holiday {
     return $this;
   }
 
+  public function setFlagDay(bool $flagDay = true) {
+    $this->flags = $flagDay;
+    return $this;
+  }
+
+  public function isFlagDay(): bool {
+    return $this->flags;
+  }
+
+  public function isNationalHoliday(): bool {
+    return $this->national;
+  }
+
+  public function setNationalHoliday(bool $national = true) {
+    $this->national = $national;
+    return $this;
+  }
+
   public function equals($date): bool {
     return $this->date->equals($date);
   }
 
   public function __toString(): string {
-    return $this->date->format('l, Y-m-d') . ": " . $this->name;
+    $output = "$this->name: ";
+    $output .= $this->date->format('l, Y-m-d');
+    if ($this->isNationalHoliday()) {
+      $output .= " (national holiday)";
+    }
+    if ($this->isFlagDay()) {
+      $output .= " (flagday)";
+    }
+    return $output;
   }
 
   public static function from($date, string $name): Holiday {
@@ -81,10 +112,6 @@ class Holiday {
 
   public static function fromDateString(string $dateString, string $name): Holiday {
     return new static(Date::fromString($dateString), $name);
-  }
-
-  public function setFlagDay($flags) {
-    
   }
 
 }
