@@ -74,7 +74,7 @@ class WeekDayView implements CssClassifiableContent {
   protected function buildHoliday() {
     if ($this->calendarDate instanceof CalendarDate) {
       if ($this->calendarDate->hasInfo()) {
-      $this->container->append("<i class=\"fas fa-tags\"></i>");
+      $this->container->append("<span><i class=\"fas fa-tags fa-lg fa-border\"></i></span>");
       }
       if ($this->calendarDate->hasHolidays()) {
         //$holidays = $this->calendarDate->get($this->date);

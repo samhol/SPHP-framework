@@ -17,6 +17,7 @@
         font-weight: bold;
       }
       div.week-number, div.sphp.calendar-day {
+        text-align: center;
         .week-nr {
           font-size: rem-calc(12);
           border-right: solid 1px #888;
@@ -29,6 +30,10 @@
           float: right;
           margin-right: 2px;
           padding: rem-calc(4);
+        }
+        span {
+          padding: rem-calc(4);
+          
         }
         height: rem-calc(100);
         border: solid 1px #aaa;
