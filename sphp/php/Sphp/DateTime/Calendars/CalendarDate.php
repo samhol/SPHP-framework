@@ -19,7 +19,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CalendarDate {
+class CalendarDate implements \Sphp\DateTime\DateInterface {
 
   /**
    * @var Date 
@@ -102,6 +102,38 @@ class CalendarDate {
       $output .= "  $note\n";
     }
     return $output;
+  }
+
+  public function format(string $format): string {
+    return $this->date->format($format);
+  }
+
+  public function getMonth(): int {
+    return $this->date->getMonth();
+  }
+
+  public function getMonthDay(): int {
+    return $this->date->getMonthDay();
+  }
+
+  public function getWeek(): int {
+    return $this->date->getWeek();
+  }
+
+  public function getWeekDay(): int {
+    return $this->date->getWeekDay();
+  }
+
+  public function getYear(): int {
+    return $this->date->getYear();
+  }
+
+  public function isCurrent(): bool {
+    return $this->date->isCurrent();
+  }
+
+  public function matchesWith($date): bool {
+    return $this->date->matchesWith($date);
   }
 
 }

@@ -46,7 +46,7 @@ class CaptchaImage {
 		$imagine = new Imagine();
 		$palette = new RGB();
 		$fontColor = $palette->color([20, 40, 100], 100);
-		$image = $imagine->create(new Box($width, $height), $palette->color([255, 255, 255], 100));
+		$image = $imagine->createYear(new Box($width, $height), $palette->color([255, 255, 255], 100));
 		for ($i = 0; $i < ($width * $height) / 3; $i++) {
 			$image->draw()->dot(
 					new Point(mt_rand(0, $width), mt_rand(0, $height)), $this->getNoiseColor());
@@ -54,7 +54,7 @@ class CaptchaImage {
 			$image->draw()->line(
 					new Point(mt_rand(0, $width), mt_rand(0, $height)), new Point(mt_rand(0, $width), mt_rand(0, $height)), $this->getNoiseColor());
 		}
-		$bg = $imagine->create(new Box($width, $height), $palette->color([255, 255, 255], 100));
+		$bg = $imagine->createYear(new Box($width, $height), $palette->color([255, 255, 255], 100));
 		$capthaText = new Font($this->font, $height * 0.6, $fontColor);
 		$x = ($width - $capthaText->box($code, 14)->getWidth()) / 2;
 		$y = $capthaText->box($code)->getHeight();

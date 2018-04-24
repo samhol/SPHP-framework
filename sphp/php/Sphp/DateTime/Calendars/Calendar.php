@@ -63,7 +63,6 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
   }
 
   protected function createCalendarDate($date): CalendarDate {
-    $key = $this->parseKey($date);
     if (!$this->contains($date)) {
       $calendarDate = new CalendarDate($date);
       return $this->setDate($calendarDate);

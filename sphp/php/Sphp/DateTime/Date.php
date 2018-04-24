@@ -20,7 +20,7 @@ use DateTimeImmutable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Date {
+class Date implements DateInterface {
 
   /**
    * @var DateTimeImmutable 

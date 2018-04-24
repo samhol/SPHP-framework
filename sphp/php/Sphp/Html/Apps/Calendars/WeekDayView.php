@@ -35,11 +35,6 @@ class WeekDayView implements CssClassifiableContent {
       \Sphp\Html\CssClassifiableTrait;
 
   /**
-   * @var Date
-   */
-  private $date;
-
-  /**
    * @var Div
    */
   private $container;
@@ -51,14 +46,8 @@ class WeekDayView implements CssClassifiableContent {
 
   public function __construct(CalendarDate $date) {
     $this->calendarDate = $date;
-    $this->date = $date->getDate();
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
-  }
-
-  public function useCalendaDate(CalendarDate $holidays = null) {
-    $this->calendarDate = $holidays;
-    return $this;
   }
 
   public function cssClasses(): ClassAttribute {
@@ -66,31 +55,31 @@ class WeekDayView implements CssClassifiableContent {
   }
 
   protected function buildInfo() {
-    if ($this->calendarDate instanceof CalendarDate) {
-      if ($this->calendarDate->hasInfo()) {
-        $dateInfo = new DateInfo($this->calendarDate);
-        $this->container->append($dateInfo);
-      }
+    if ($this->calendarDate->hasInfo()) {
+      $dateInfo = new DateInfo($this->calendarDate);
+      $modal = $dateInfo->create();
+      //$modal->getTrigger()->addCssClass('float-center');
+      $this->container->append($modal);
+    }
 
-      if ($this->calendarDate->getInfo()->isNationalHoliday()) {
-        $this->container->cssClasses()->protect('holiday');
-      }
+    if ($this->calendarDate->getInfo()->isNationalHoliday()) {
+      $this->container->cssClasses()->protect('holiday');
     }
     return $this;
   }
 
   protected function buildDate() {
-    $timeTag = new TimeTag($this->date->getDateTime(), $this->date->format('j'));
-    $timeTag->setAttribute('title', $this->date->format('l, Y-m-d'));
-    if ($this->date->getWeekDay() === 1) {
-      $this->container->append("<div class=\"week-nr\">{$this->date->getWeek()}</div>");
+    $timeTag = new TimeTag($this->calendarDate->getDate()->getDateTime(), $this->calendarDate->format('j'));
+    $timeTag->setAttribute('title', $this->calendarDate->format('l, Y-m-d'));
+    if ($this->calendarDate->getWeekDay() === 1) {
+      $this->container->append("<div class=\"week-nr\">{$this->calendarDate->getWeek()}</div>");
     }
-    if ($this->date->isCurrent()) {
+    if ($this->calendarDate->isCurrent()) {
       $this->container->cssClasses()->protect('today');
     }
     $this->container->append($timeTag);
     $this->buildInfo();
-    $this->container->cssClasses()->protect(strtolower($this->date->format('l')));
+    $this->container->cssClasses()->protect(strtolower($this->calendarDate->format('l')));
     return $this;
   }
 

@@ -40,7 +40,7 @@ class DateInfo implements Content {
 
   public function __construct(CalendarDate $calendarDate) {
     $this->calendarDate = $calendarDate;
-    $this->modal = new Modal(new Span(FontAwesome::tags()), $this->createPopup());
+    $this->modal = new Modal((new Span(FontAwesome::tags()->setSize('lg')))->addCssClass('foo'), $this->createPopup());
   }
 
   public function createPopup(): Popup {
@@ -49,6 +49,10 @@ class DateInfo implements Content {
     $popup->append("<h2>$date</h2>");
     $popup->append($this->calendarDate);
     return $popup;
+  }
+  
+  public function create() {
+    return  $this->modal;
   }
 
   public function getHtml(): string {
