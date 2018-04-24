@@ -49,17 +49,11 @@ class WeekDayView implements CssClassifiableContent {
    */
   private $calendarDate;
 
-  /**
-   * @var Modal
-   */
-  private $modal;
-
-  public function __construct(Date $date) {
-    $this->date = $date;
+  public function __construct(CalendarDate $date) {
+    $this->calendarDate = $date;
+    $this->date = $date->getDate();
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
-    //$this->modal = new Modal($this->container, '<h5>Date info</h5>');
-    //$this->modal->useOverLay(false);
   }
 
   public function useCalendaDate(CalendarDate $holidays = null) {
@@ -78,7 +72,7 @@ class WeekDayView implements CssClassifiableContent {
         $this->container->append($dateInfo);
       }
 
-      if ($this->calendarDate->isNationalHoliday()) {
+      if ($this->calendarDate->getInfo()->isNationalHoliday()) {
         $this->container->cssClasses()->protect('holiday');
       }
     }
@@ -96,7 +90,6 @@ class WeekDayView implements CssClassifiableContent {
     }
     $this->container->append($timeTag);
     $this->buildInfo();
-    //$this->container->append(new DateInfo($this->date));
     $this->container->cssClasses()->protect(strtolower($this->date->format('l')));
     return $this;
   }

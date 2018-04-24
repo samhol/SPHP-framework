@@ -27,9 +27,14 @@ class CalendarDate {
   private $date;
 
   /**
-   * @var array 
+   * @var CalendarDateNotes 
    */
-  private $notes = [];
+  private $noteCollection;
+
+  /**
+   * @var mixed
+   */
+  private $data;
 
   public function __construct($date = null) {
     if ($date instanceof \DateTimeInterface) {
@@ -46,140 +51,57 @@ class CalendarDate {
       $date = new Date();
     }
     $this->date = $date;
-    $this->notes = [];
+    $this->noteCollection = new CalendarDateNotes($this->date);
+  }
+
+  public function getData() {
+    return $this->data;
+  }
+
+  public function setData($data) {
+    $this->data = $data;
+    return $this;
   }
 
   public function getDate(): Date {
     return $this->date;
   }
 
-  /**
-   * 
-   * @param \Sphp\DateTime\Calendars\Holiday $holiday
-   * @return \Sphp\DateTime\Calendars\Holiday
-   * @throws \Exception
-   */
-  protected function add(Holiday $holiday) {
-    if (!$holiday->getDate()->equals($this->getDate())) {
-      throw new \Exception("holiday $holiday has wrong date");
-    }
-    if (!in_array($holiday, $this->notes, true)) {
-      $this->notes[] = $holiday;
-      return $holiday;
-    } else {
-      throw new \Exception("holiday $holiday allready exists");
-    }
-  }
-
-  /**
-   * 
-   * @param  string $person
-   * @return \Sphp\DateTime\Calendars\BirthDay
-   */
-  public function addBirthday($person): BirthDay {
-    $holiday = new BirthDay($this->date, $person);
-    return $this->add($holiday);
-  }
-
-  public function hasBirthDays(): bool {
-    return !empty($this->getBirthdays());
-  }
-
-  public function getBirthdays(): array {
-    return array_filter($this->notes, function ($item) {
-      return $item instanceof BirthDay;
-    });
-  }
-
-  public function addHoliday(string $desc): Holiday {
-    $holiday = new Holiday($this->date, $desc);
-    return $this->add($holiday);
-  }
-
-  public function getNationalHolidays(): array {
-    return array_filter($this->notes, function ($item) {
-      return $item instanceof Holiday && $item->isNationalHoliday();
-    });
-  }
-
-  public function getHolidays(): array {
-    return $this->notes;
-  }
-
-  public function hasHolidays(): bool {
-    return !empty($this->notes);
+  public function getInfo(): CalendarDateNotes {
+    return $this->noteCollection;
   }
 
   public function hasInfo(): bool {
-    return !empty($this->notes);
+    return $this->getInfo()->notEmpty();
   }
 
-  public function isNationalHoliday(): bool {
-    $isNational = false;
-    foreach ($this->getHolidays() as $holiday) {
-      if ($holiday->isNationalHoliday()) {
-        $isNational = true;
-        break;
-      }
-    }
-    return $isNational;
+  public function mergeNotes(CalendarDate $date) {
+    $this->noteCollection->merge($date->getInfo());
+    return $this;
   }
 
-  public function isFlagDay(): bool {
-    $isNational = false;
-    foreach ($this->notes as $holiday) {
-      if ($holiday->isFlagDay()) {
-        $isNational = true;
-        break;
-      }
-    }
-    return $isNational;
-  }
-
-  public function merge(CalendarDate $dateWithData) {
-    if ($dateWithData->getDate()->equals($this->getDate()) && !$this->contains($dateWithData)) {
-      foreach ($dateWithData as $evt) {
-        $this->addEvent($evt);
-      }
-    }
-  }
-
-  public function addEvent(Holiday $event) {
-    if ($event->getDate()->equals($this->getDate()) && !$this->contains($event)) {
-      $this->add($event);
-    }
+  public function addNote(CalendarDateNote $note) {
+    $this->noteCollection->addNote($note);
+    return $this;
   }
 
   /**
    * 
-   * @param  Holiday $date
+   * @param  CalendarDateNote $note
    * @return bool 
    */
-  public function contains(Holiday $date): bool {
-    $contains = false;
-    if ($date->getDate()->equals($this->getDate())) {
-      foreach ($this->notes as $day) {
-        if ($day == $date) {
-          $contains = true;
-          break;
-        }
-      }
-      return $contains;
-    }
+  public function containsNote(CalendarDateNote $note): bool {
+    return $this->noteCollection->contains($note);
   }
 
   public function __toString(): string {
     $output = "$this->date:\n";
     //print_r($this->notes);
-    foreach ($this->notes as $note) {
+    foreach ($this->getInfo() as $note) {
       // print_r($note);
       $output .= "  $note\n";
     }
     return $output;
-  }
-
-  public function getIterator(): \Traversable {
-    return new \ArrayIterator($this->notes);
   }
 
 }

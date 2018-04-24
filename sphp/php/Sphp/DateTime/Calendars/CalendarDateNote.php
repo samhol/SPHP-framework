@@ -10,25 +10,19 @@
 
 namespace Sphp\DateTime\Calendars;
 
+use Sphp\DateTime\Date;
+
 /**
- * Description of BirthDay
+ * Defines CalendarDateNote
  *
  * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2018-04-24
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BirthDay extends Holiday {
+interface CalendarDateNote {
 
-  public function __toString(): string {
-    $output = "Birthday of {$this->getName()}: ";
-    $output .= $this->getDate()->format('l, Y-m-d');
-    if ($this->isNationalHoliday()) {
-      $output .= " (national holiday)";
-    }
-    if ($this->isFlagDay()) {
-      $output .= " (flagday)";
-    }
-    return $output;
-  }
+  public function getDate(): Date;
 
+  public function __toString(): string;
 }

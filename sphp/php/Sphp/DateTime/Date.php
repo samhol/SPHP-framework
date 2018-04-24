@@ -54,6 +54,7 @@ class Date {
   public function __clone() {
     $this->dateTime = clone $this->dateTime;
   }
+
   public function __toString(): string {
     return $this->format('Y-m-d');
   }
@@ -145,7 +146,7 @@ class Date {
    * @param  mixed $date
    * @return bool
    */
-  public function equals($date): bool {
+  public function matchesWith($date): bool {
     if (is_string($date)) {
       $date = static::fromString($date);
     } else if (is_int($date)) {

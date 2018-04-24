@@ -20,6 +20,7 @@ use DateTimeImmutable;
 use Sphp\Html\Container;
 use Sphp\DateTime\Holidays\Holidays;
 use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\TraversableCalendar;
 use Sphp\DateTime\Calendars\Calendar;
 
 /**
@@ -43,7 +44,7 @@ class MonthView extends AbstractComponent {
   private $month;
 
   /**
-   * @var Calendar 
+   * @var CalendarDateTraversableInterface 
    */
   private $calendar;
 
@@ -77,7 +78,7 @@ class MonthView extends AbstractComponent {
    * @param  Calendar $cal
    * @return $this
    */
-  public function useCalendar(Calendar $cal = null) {
+  public function useCalendar(TraversableCalendar $cal = null) {
     if ($cal === null) {
       $cal = new Calendar();
     }
@@ -146,8 +147,9 @@ class MonthView extends AbstractComponent {
   }
 
   protected function createDayCell(Date $day): WeekDayView {
-    $weekDayView = new WeekDayView($day);
-    $weekDayView->useCalendaDate($this->calendar->get($day));
+    
+    $weekDayView = new WeekDayView($this->calendar->get($day));
+    //$weekDayView->useCalendaDate($this->calendar->get($day));
     if ($day->getMonth() === $this->month) {
       $weekDayView->addCssClass('selected-month');
     } else {

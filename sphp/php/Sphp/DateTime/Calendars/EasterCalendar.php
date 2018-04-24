@@ -27,12 +27,12 @@ class EasterCalendar {
       $year = (int) date('Y');
     }
     $calendar = new Calendar();
-    $calendar->addHoliday(static::getMaundyThursday($year), 'Maundy Thursday');
-    $calendar->addHoliday(static::getGoodFriday($year), 'Good Friday');
-    $calendar->addHoliday(static::getEasterSunday($year), 'Easter Sunday');
-    $calendar->addHoliday(static::getEasterMonday($year), 'Easter Monday');
-    $calendar->addHoliday(static::getAscensionDay($year), 'Ascension Day');
-    $calendar->addHoliday(static::getPentecost($year), 'Pentecost');
+    $calendar->setHoliday(static::getMaundyThursday($year), 'Maundy Thursday');
+    $calendar->setHoliday(static::getGoodFriday($year), 'Good Friday');
+    $calendar->setHoliday(static::getEasterSunday($year), 'Easter Sunday');
+    $calendar->setHoliday(static::getEasterMonday($year), 'Easter Monday');
+    $calendar->setHoliday(static::getAscensionDay($year), 'Ascension Day');
+    $calendar->setHoliday(static::getPentecost($year), 'Pentecost');
     return $calendar;
   }
 

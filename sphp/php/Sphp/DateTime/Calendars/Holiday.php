@@ -19,8 +19,11 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Holiday {
+class Holiday implements CalendarDateNote {
 
+  /**
+   * @var bool 
+   */
   private $national = false;
 
   /**
@@ -78,10 +81,6 @@ class Holiday {
   public function setNationalHoliday(bool $national = true) {
     $this->national = $national;
     return $this;
-  }
-
-  public function equals($date): bool {
-    return $this->date->equals($date);
   }
 
   public function __toString(): string {

@@ -10,7 +10,9 @@
 
 namespace Sphp\DateTime\Calendars;
 
+use IteratorAggregate;
 use Sphp\DateTime\Date;
+use Traversable;
 
 /**
  * Description of Calendar
@@ -19,7 +21,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Calendar implements \IteratorAggregate, \ArrayAccess {
+class Calendar implements IteratorAggregate, TraversableCalendar {
 
   /**
    * @var CalendarDate[]
@@ -30,45 +32,65 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
     $this->days = [];
   }
 
-  public function merge(Calendar $days) {
-    foreach ($days as $key => $group) {
-      $this->mergeDate($group);
-    }
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->days);
   }
 
-  public function mergeDate(CalendarDate $date) {
-    $key = $this->parseKey($date);
-    if (!$this->contains($key)) {
-      $this->days[$key] = $date;
-    } else {
-      $this->days[$key]->merge($date);
+  /**
+   * Clone method
+   */
+  public function __clone() {
+    $this->days = clone $this->days;
+  }
+
+  public function mergeCalendar(TraversableCalendar $days) {
+    foreach ($days as $group) {
+      $this->mergeDate($group);
     }
     return $this;
   }
 
-  public function addHoliday($date, string $name): Holiday {
-    $holiday = $this->setCalendarDate($date)->addHoliday($name);
-    return $holiday;
-  }
-
-  public function addBirthDay($date, string $name): Holiday {
-    $holiday = $this->setCalendarDate($date)->addBirthday($name);
-    return $holiday;
-  }
-
-  protected function setCalendarDate($date): CalendarDate {
-    $key = $this->parseKey($date);
-    if (!array_key_exists($key, $this->days)) {
-      $this->days[$key] = new CalendarDate($date);
+  public function mergeDate(CalendarDate $date): CalendarDate {
+    //$key = $this->parseKey($date);
+    if (!$this->contains($date)) {
+      return $this->setDate($date);
+    } else {
+      return $this->get($date)->mergeNotes($date);
     }
-    return $this->days[$key];
   }
 
-  public function add(CalendarDate $date): CalendarDate {
+  protected function createCalendarDate($date): CalendarDate {
     $key = $this->parseKey($date);
     if (!$this->contains($date)) {
-      $this->days[$key] = $date;
+      $calendarDate = new CalendarDate($date);
+      return $this->setDate($calendarDate);
+    } else if ($date instanceof CalendarDate) {
+      return $this->get($date)->mergeNotes($date);
+    } else if ($date instanceof Holiday) {
+      $calDate = $this->get($date);
+      $calDate->getInfo()->setHoliday($date);
+      return $calDate;
+    } else {
+      return $this->get($date);
     }
+  }
+
+  public function setHoliday($date, string $name): Holiday {
+    $holiday = $this->createCalendarDate($date)->getInfo()->setHoliday($name);
+    return $holiday;
+  }
+
+  public function setBirthDay($date, string $name): Holiday {
+    $holiday = $this->createCalendarDate($date)->getInfo()->setBirthday($name);
+    return $holiday;
+  }
+
+  public function setDate(CalendarDate $date): CalendarDate {
+    $key = $this->parseKey($date);
+    $this->days[$key] = $date;
     return $this->days[$key];
   }
 
@@ -100,16 +122,6 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
 
   /**
    * 
-   * @param  Date $date
-   * @return bool 
-   */
-  public function hasSpecialDays($date): bool {
-    $key = $this->parseKey($date);
-    return array_key_exists($key, $this->days);
-  }
-
-  /**
-   * 
    * @param Date $date
    * @etun CalendarDate
    */
@@ -121,28 +133,13 @@ class Calendar implements \IteratorAggregate, \ArrayAccess {
     return $this->days[$key];
   }
 
+  /**
+   * 
+   * @return \Traversable
+   */
   public function getIterator(): \Traversable {
     ksort($this->days);
     return new \ArrayIterator($this->days);
-  }
-
-  public function offsetExists($offset): bool {
-    $date = Date::fromString($offset);
-    return array_key_exists("$date", $this->days);
-  }
-
-  public function offsetGet($offset) {
-    if ($this->offsetExists($offset)) {
-      return $this->days[$offset];
-    }
-  }
-
-  public function offsetSet($offset, $value): void {
-    
-  }
-
-  public function offsetUnset($offset): void {
-    
   }
 
 }
