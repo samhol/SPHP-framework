@@ -8,27 +8,18 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Exceptions;
+
+use Exception;
+use Sphp\Exceptions\SphpException;
 
 /**
- * Implements a BirthDay note for a calendar
+ * Exception thrown when a date time specific error occurs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BirthDay extends Holiday {
-
-  public function __toString(): string {
-    $output = "Birthday of {$this->getName()}: ";
-    $output .= $this->getDate()->format('l, Y-m-d');
-    if ($this->isNationalHoliday()) {
-      $output .= " (national holiday)";
-    }
-    if ($this->isFlagDay()) {
-      $output .= " (flagday)";
-    }
-    return $output;
-  }
-
+class DateTimeException extends Exception implements SphpException {
+  
 }

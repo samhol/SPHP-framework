@@ -8,8 +8,10 @@
 
 namespace Sphp\DateTime;
 
+use Sphp\DateTime\Exceptions\DateTimeException;
+
 /**
- * Defines DateInterface
+ * Defines properties for a date
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -18,6 +20,18 @@ namespace Sphp\DateTime;
  */
 interface DateInterface {
 
+ /**
+   * Returns the string representation of the date
+   * 
+   * @return the string representation of the date
+   */
+  public function toDateString(): string;
+ 
+ /**
+   * Returns the string representation of the object
+   * 
+   * @return the string representation of the object
+   */
   public function __toString(): string;
 
   /**
@@ -74,7 +88,7 @@ interface DateInterface {
    * 
    * @param  string $format the format of the outputted date string
    * @return string date formatted according to given format
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @throws DateTimeException if formatting fails
    */
   public function format(string $format): string;
 }

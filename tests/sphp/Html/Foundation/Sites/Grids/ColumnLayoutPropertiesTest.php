@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Div;
 
 class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
@@ -39,7 +38,7 @@ class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
     $this->c->setWidths('small-12', 'small-1');
     $this->assertTrue($this->col->hasCssClass('small-1'));
     $this->c->setWidths(['large-12', 'large-1', 'large-3']);
-    $this->assertTrue($this->col->hasCssClass('small-1', 'large-3'));
+    $this->assertFalse($this->col->hasCssClass('small-1', 'large-3'));
   }
 
   /**

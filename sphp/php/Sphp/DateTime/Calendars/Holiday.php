@@ -10,10 +10,12 @@
 
 namespace Sphp\DateTime\Calendars;
 
+use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
+use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
- * Description of Holiday
+ * Implements a holiday note for a calendar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -29,7 +31,7 @@ class Holiday implements CalendarDateNote {
   /**
    * @var bool 
    */
-  private $flags = false;
+  private $flagDay = false;
 
   /**
    * @var Date 
@@ -42,12 +44,12 @@ class Holiday implements CalendarDateNote {
   private $name;
 
   /**
-   *  
+   * Constructor
    * 
-   * @param Date $date 
+   * @param DateInterface $date 
    * @param string $name
    */
-  public function __construct(Date $date, string $name) {
+  public function __construct(DateInterface $date, string $name) {
     $this->date = $date;
     $this->name = $name;
   }
@@ -66,12 +68,12 @@ class Holiday implements CalendarDateNote {
   }
 
   public function setFlagDay(bool $flagDay = true) {
-    $this->flags = $flagDay;
+    $this->flagDay = $flagDay;
     return $this;
   }
 
   public function isFlagDay(): bool {
-    return $this->flags;
+    return $this->flagDay;
   }
 
   public function isNationalHoliday(): bool {
@@ -95,20 +97,40 @@ class Holiday implements CalendarDateNote {
     return $output;
   }
 
+  /**
+   * Creates a new instance from a date string
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @param  string $name name of the holiday 
+   * @return Holiday new instance
+   * @throws DateTimeException if creation fails
+   */
   public static function from($date, string $name): Holiday {
-    if (is_string($date)) {
-      return static::fromDateString($date, $name);
-    } else if (is_int($date)) {
-      return static::fromTimestamp($date, $name);
-    } else if ($date instanceof Date) {
-      return new static($date, $name);
+    try {
+      return new static(Date::from($date), $name);
+    } catch (\Exception $ex) {
+      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
 
-  public static function fromTimestamp(int $unixtimestamp, string $name): Holiday {
-    return new static(Date::fromTimestamp($unixtimestamp), $name);
+  /**
+   * Creates a new instance from a unix timestamp
+   * 
+   * @param  int $timestamp unix timestamp
+   * @param  string $name name of the holiday 
+   * @return Holiday new instance
+   */
+  public static function fromTimestamp(int $timestamp, string $name): Holiday {
+    return new static(Date::fromTimestamp($timestamp), $name);
   }
 
+  /**
+   * Creates a new instance from a date string
+   * 
+   * @param  string $dateString date string
+   * @param  string $name name of the holiday 
+   * @return Holiday new instance
+   */
   public static function fromDateString(string $dateString, string $name): Holiday {
     return new static(Date::fromString($dateString), $name);
   }

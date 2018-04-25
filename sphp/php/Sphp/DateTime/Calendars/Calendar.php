@@ -13,9 +13,10 @@ namespace Sphp\DateTime\Calendars;
 use IteratorAggregate;
 use Sphp\DateTime\Date;
 use Traversable;
+use Exception;
 
 /**
- * Description of Calendar
+ * Basic implementation of a traversable calendar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -28,6 +29,9 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
    */
   private $days;
 
+  /**
+   * Constructor
+   */
   public function __construct() {
     $this->days = [];
   }
@@ -70,7 +74,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
       return $this->get($date)->mergeNotes($date);
     } else if ($date instanceof Holiday) {
       $calDate = $this->get($date);
-      $calDate->getInfo()->setHoliday($date);
+      $calDate->getNotes()->setHoliday($date);
       return $calDate;
     } else {
       return $this->get($date);
@@ -78,40 +82,33 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
   }
 
   public function setHoliday($date, string $name): Holiday {
-    $holiday = $this->createCalendarDate($date)->getInfo()->setHoliday($name);
+    $holiday = $this->createCalendarDate($date)->getNotes()->setHoliday($name);
     return $holiday;
   }
 
   public function setBirthDay($date, string $name): Holiday {
-    $holiday = $this->createCalendarDate($date)->getInfo()->setBirthday($name);
+    $holiday = $this->createCalendarDate($date)->getNotes()->setBirthday($name);
     return $holiday;
   }
 
   public function setDate(CalendarDate $date): CalendarDate {
-    $key = $this->parseKey($date);
+    $key = $date->toDateString();
     $this->days[$key] = $date;
     return $this->days[$key];
   }
 
   protected function parseKey($date): string {
-    $key = '';
-    if ($date instanceof \DateTimeInterface) {
-      $key = $date->format('Y-m-d');
-    } else if ($date instanceof Date) {
-      $key = $date->format('Y-m-d');
-    } else if ($date instanceof CalendarDate) {
-      $key = $date->getDate()->format('Y-m-d');
-    } else if (is_float($date)) {
-      $key = Date::fromTimestamp($date)->format('Y-m-d');
-    } else if (is_string($date)) {
-      $key = Date::fromString($date)->format('Y-m-d');
+    try {
+      $key = Date::from($date)->toDateString();
+    } catch (Exception $ex) {
+      $key = '';
     }
     return $key;
   }
 
   /**
    * 
-   * @param  CalendarDate|string|int $date
+   * @param  DateInterface|DateTimeInterface|string|int $date
    * @return bool 
    */
   public function contains($date): bool {
@@ -122,7 +119,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
   /**
    * 
    * @param Date $date
-   * @etun CalendarDate
+   * @etun  CalendarDate
    */
   public function get($date): CalendarDate {
     $key = $this->parseKey($date);
@@ -133,10 +130,11 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
   }
 
   /**
-   * 
-   * @return \Traversable
+   * Create a new iterator to iterate through dates in calendar
+   *
+   * @return Traversable iterator
    */
-  public function getIterator(): \Traversable {
+  public function getIterator(): Traversable {
     ksort($this->days);
     return new \ArrayIterator($this->days);
   }

@@ -10,7 +10,10 @@
 
 namespace Sphp\DateTime\Calendars;
 
+use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
+use Exception;
+use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
  * Description of CalendarDate
@@ -19,7 +22,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CalendarDate implements \Sphp\DateTime\DateInterface {
+class CalendarDate implements DateInterface {
 
   /**
    * @var Date 
@@ -29,29 +32,33 @@ class CalendarDate implements \Sphp\DateTime\DateInterface {
   /**
    * @var CalendarDateNotes 
    */
-  private $noteCollection;
+  private $notes;
 
   /**
    * @var mixed
    */
   private $data;
 
+  /**
+   * Constructor
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @throws DateTimeException if date cannot be parsed from input
+   */
   public function __construct($date = null) {
-    if ($date instanceof \DateTimeInterface) {
-      $date = new Date($date);
-    } else if ($date instanceof Date) {
-      $date = $date;
-    } else if ($date instanceof CalendarDate) {
-      $date = $date->getDate();
-    } else if (is_float($date)) {
-      $date = Date::fromTimestamp($date)->format('Y-m-d');
-    } else if (is_string($date)) {
-      $date = Date::fromString($date);
-    } else {
-      $date = new Date();
+    try {
+      $this->date = Date::from($date);
+    } catch (Exception $ex) {
+      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    $this->date = $date;
-    $this->noteCollection = new CalendarDateNotes($this->date);
+    $this->notes = new CalendarDateNotes($this->date);
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->date, $this->notes, $this->data);
   }
 
   public function getData() {
@@ -67,21 +74,21 @@ class CalendarDate implements \Sphp\DateTime\DateInterface {
     return $this->date;
   }
 
-  public function getInfo(): CalendarDateNotes {
-    return $this->noteCollection;
+  public function getNotes(): CalendarDateNotes {
+    return $this->notes;
   }
 
-  public function hasInfo(): bool {
-    return $this->getInfo()->notEmpty();
+  public function hasNotes(): bool {
+    return $this->getNotes()->notEmpty();
   }
 
   public function mergeNotes(CalendarDate $date) {
-    $this->noteCollection->merge($date->getInfo());
+    $this->notes->merge($date->getNotes());
     return $this;
   }
 
   public function addNote(CalendarDateNote $note) {
-    $this->noteCollection->addNote($note);
+    $this->notes->addNote($note);
     return $this;
   }
 
@@ -91,17 +98,21 @@ class CalendarDate implements \Sphp\DateTime\DateInterface {
    * @return bool 
    */
   public function containsNote(CalendarDateNote $note): bool {
-    return $this->noteCollection->contains($note);
+    return $this->notes->contains($note);
   }
 
   public function __toString(): string {
     $output = "$this->date:\n";
     //print_r($this->notes);
-    foreach ($this->getInfo() as $note) {
+    foreach ($this->getNotes() as $note) {
       // print_r($note);
       $output .= "  $note\n";
     }
     return $output;
+  }
+
+  public function toDateString(): string {
+    return $this->date->toDateString();
   }
 
   public function format(string $format): string {

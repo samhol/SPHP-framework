@@ -25,16 +25,19 @@ use Sphp\DateTime\Date;
  */
 class Calendar extends BaseCalendar {
 
+  /**
+   * Constructor
+   */
   public function __construct() {
     parent::__construct();
   }
 
   /**
    * 
-   * @param int $year
+   * @param  int $year
    * @return Calendar
    */
-  public  function createYear(int $year) {
+  public function createYear(int $year) {
     $this->setHoliday("$year-1-1", "New Year's Day")->setNationalHoliday();
     $this->setHoliday("$year-1-6", 'Epiphany')->setNationalHoliday();
     $this->setBirthDay("$year-2-5", 'Johan Ludvig Runeberg')->setFlagDay(true);

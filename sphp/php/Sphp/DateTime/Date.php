@@ -12,6 +12,7 @@ namespace Sphp\DateTime;
 
 use DateTimeInterface;
 use DateTimeImmutable;
+use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
  * Implements a date object
@@ -55,8 +56,13 @@ class Date implements DateInterface {
     $this->dateTime = clone $this->dateTime;
   }
 
-  public function __toString(): string {
+  public function toDateString(): string {
     return $this->format('Y-m-d');
+  }
+
+
+  public function __toString(): string {
+    return $this->toDateString();
   }
 
   /**
@@ -163,12 +169,12 @@ class Date implements DateInterface {
    * 
    * @param  string $format the format of the outputted date string
    * @return string date formatted according to given format
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @throws DateTimeException if formatting fails
    */
   public function format(string $format): string {
     $output = $this->dateTime->format($format);
     if ($output === false) {
-      throw new \Sphp\Exceptions\RuntimeException();
+      throw new DateTimeException();
     }
     return $this->dateTime->format($format);
   }
@@ -176,7 +182,7 @@ class Date implements DateInterface {
   /**
    * Advances given number of days and returns a new instance
    * 
-   * @param  int $days 
+   * @param  int $days number of days to shift
    * @return Date new instance
    */
   public function jump(int $days): Date {
@@ -226,12 +232,36 @@ class Date implements DateInterface {
   /**
    * Creates a new instance
    * 
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return Date new instance
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public static function from($date): Date {
+    if (is_string($date)) {
+      return static::fromString($date);
+    } else if (is_int($date)) {
+      return static::fromTimestamp($date);
+    } else if ($date instanceof DateInterface) {
+      return static::fromString($date->toDateString());
+    } else if ($date instanceof DateTimeInterface) {
+      return new Date($date);
+    } else if (is_null($date)) {
+      new static();
+    } else {
+      throw new DateTimeException(static::class . ' object cannot be parsed from input');
+    }
+  }
+
+  /**
+   * Creates a new instance
+   * 
    * @param  int $day the day
    * @param  int $month the month
    * @param  int $year the year
    * @return Date new instance
    */
-  public static function from(int $day = null, int $month = null, int $year = null): Date {
+  public static function fromInts(int $day = null, int $month = null, int $year = null): Date {
     if ($year === null) {
       $year = date('Y');
     }

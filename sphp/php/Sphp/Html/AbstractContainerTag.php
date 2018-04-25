@@ -11,6 +11,7 @@
 namespace Sphp\Html;
 
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers
@@ -66,7 +67,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
    *
    * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->getInnerContainer();
   }
 

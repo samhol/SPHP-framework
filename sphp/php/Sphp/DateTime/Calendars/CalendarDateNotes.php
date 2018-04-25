@@ -59,7 +59,7 @@ class CalendarDateNotes implements \IteratorAggregate {
   /**
    * 
    * @param  CalendarDateNote $note
-   * @return CalendarDateNote
+   * @return CalendarDateNote inserted instance
    * @throws \Exception
    */
   public function set(CalendarDateNote $note): CalendarDateNote {
@@ -81,7 +81,7 @@ class CalendarDateNotes implements \IteratorAggregate {
   /**
    * 
    * @param  string $person
-   * @return BirthDay
+   * @return BirthDay inserted instance
    */
   public function setBirthday($person): BirthDay {
     $holiday = new BirthDay($this->date, $person);
@@ -152,7 +152,7 @@ class CalendarDateNotes implements \IteratorAggregate {
   /**
    * 
    * @param  CalendarDateInfo $dateWithData
-   * @return $this
+   * @return $this 
    */
   public function merge(CalendarDateInfo $dateWithData) {
     if ($dateWithData->getDate()->matchesWith($this->getDate()) && !$this->contains($dateWithData)) {

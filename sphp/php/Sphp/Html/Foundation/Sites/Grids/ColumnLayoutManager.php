@@ -73,18 +73,20 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
    * @return $this for a fluent interface
    */
   public function setWidths(... $widths) {
-    $this->unsetWidths();
     $widths = Arrays::flatten($widths);
+    $this->unsetWidths();
     $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $widths);
-    foreach ($filtered as $width) {
+    $this->cssClasses()->add($filtered);
+    /*foreach ($filtered as $width) {
       if ($width === 'auto') {
         $this->unsetWidths();
       } else {
+        $this->cssClasses()->remove('auto');
         $parts = explode('-', $width);
         $this->unsetWidths($parts[0]);
       }
       $this->cssClasses()->add($width);
-    }
+    }*/
     return $this;
   }
 
