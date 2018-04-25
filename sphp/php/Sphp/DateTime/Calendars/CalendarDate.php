@@ -61,15 +61,31 @@ class CalendarDate implements DateInterface {
     unset($this->date, $this->notes, $this->data);
   }
 
+  /**
+   * Returns the data attached to the date
+   * 
+   * @return mixed data
+   */
   public function getData() {
     return $this->data;
   }
 
+  /**
+   * Sets the data attached to the date
+   * 
+   * @param  mixed $data
+   * @return $this
+   */
   public function setData($data) {
     $this->data = $data;
     return $this;
   }
 
+  /**
+   * Returns the plain date object
+   * 
+   * @return Date the plain date object
+   */
   public function getDate(): Date {
     return $this->date;
   }

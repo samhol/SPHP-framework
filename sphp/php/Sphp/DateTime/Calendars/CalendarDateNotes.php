@@ -10,16 +10,19 @@
 
 namespace Sphp\DateTime\Calendars;
 
+use IteratorAggregate;
 use Sphp\DateTime\Date;
+use Traversable;
+use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
- * Description of CalendarDateNotes
+ * Collection for calendar date notes
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CalendarDateNotes implements \IteratorAggregate {
+class CalendarDateNotes implements IteratorAggregate {
 
   /**
    * @var Date 
@@ -49,8 +52,9 @@ class CalendarDateNotes implements \IteratorAggregate {
   }
 
   /**
+   * Returns the plain date object
    * 
-   * @return Date
+   * @return Date the plain date object
    */
   public function getDate(): Date {
     return $this->date;
@@ -60,17 +64,17 @@ class CalendarDateNotes implements \IteratorAggregate {
    * 
    * @param  CalendarDateNote $note
    * @return CalendarDateNote inserted instance
-   * @throws \Exception
+   * @throws DateTimeException id the note is for a different day
    */
   public function set(CalendarDateNote $note): CalendarDateNote {
     if (!$this->dateMatch($note)) {
-      throw new \Exception("Note $note has wrong date");
+      throw new DateTimeException("Note $note has wrong date");
     }
     if (!in_array($note, $this->notes, true)) {
       $this->notes[] = $note;
       return $note;
     } else {
-      throw new \Exception("Note $note allready exists");
+      throw new DateTimeException("Note $note allready exists");
     }
   }
 
@@ -88,41 +92,78 @@ class CalendarDateNotes implements \IteratorAggregate {
     return $this->set($holiday);
   }
 
+  /**
+   * 
+   * @return bool
+   */
   public function hasBirthDays(): bool {
     return !empty($this->getBirthdays());
   }
 
+  /**
+   * Returns all birthday notes stored
+   * 
+   * @return BirthDay[] all birthday notes stored
+   */
   public function getBirthdays(): array {
     return array_filter($this->notes, function ($item) {
       return $item instanceof BirthDay;
     });
   }
 
+  /**
+   * 
+   * @param  string $desc
+   * @return Holiday
+   */
   public function setHoliday(string $desc): Holiday {
     $holiday = new Holiday($this->date, $desc);
     return $this->set($holiday);
   }
 
+  /**
+   * Returns all national holiday notes stored
+   * 
+   * @return Holiday[] all national holiday notes stored
+   */
   public function getNationalHolidays(): array {
     return array_filter($this->notes, function ($item) {
       return $item instanceof Holiday && $item->isNationalHoliday();
     });
   }
 
+  /**
+   * Returns all notes stored
+   * 
+   * @return Holiday[] all holiday notes stored
+   */
   public function getHolidays(): array {
     return array_filter($this->notes, function ($item) {
       return $item instanceof Holiday;
     });
   }
 
+  /**
+   * 
+   * @return bool
+   */
   public function hasHolidays(): bool {
     return !empty($this->notes);
   }
 
+  /**
+   * Checks if the note collection is empty
+   * 
+   * @return bool true if the collection is not empty and false otherwise
+   */
   public function notEmpty(): bool {
     return !empty($this->notes);
   }
 
+  /**
+   * 
+   * @return bool
+   */
   public function isNationalHoliday(): bool {
     $isNational = false;
     foreach ($this->getHolidays() as $holiday) {
@@ -163,6 +204,10 @@ class CalendarDateNotes implements \IteratorAggregate {
     return $this;
   }
 
+  /**
+   * 
+   * @param CalendarDateNote $event
+   */
   public function addNote(CalendarDateNote $event) {
     if ($event->getDate()->matchesWith($this->getDate()) && !$this->contains($event)) {
       $this->add($event);
@@ -197,7 +242,12 @@ class CalendarDateNotes implements \IteratorAggregate {
     return $output;
   }
 
-  public function getIterator(): \Traversable {
+  /**
+   * Create a new iterator to iterate through the notes
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): Traversable {
     return new \ArrayIterator($this->notes);
   }
 

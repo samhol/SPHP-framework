@@ -50,6 +50,11 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     $this->days = clone $this->days;
   }
 
+  /**
+   * 
+   * @param  TraversableCalendar $days
+   * @return $this for a fluent interface
+   */
   public function mergeCalendar(TraversableCalendar $days) {
     foreach ($days as $group) {
       $this->mergeDate($group);
@@ -57,6 +62,11 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     return $this;
   }
 
+  /**
+   * 
+   * @param  CalendarDate $date
+   * @return CalendarDate
+   */
   public function mergeDate(CalendarDate $date): CalendarDate {
     //$key = $this->parseKey($date);
     if (!$this->contains($date)) {
@@ -81,22 +91,46 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     }
   }
 
+  /**
+   * Sets a holiday note to the calendar
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @param  string $name
+   * @return Holiday
+   */
   public function setHoliday($date, string $name): Holiday {
     $holiday = $this->createCalendarDate($date)->getNotes()->setHoliday($name);
     return $holiday;
   }
 
-  public function setBirthDay($date, string $name): Holiday {
+  /**
+   * Sets a birthday note to the calendar
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @param  string $name
+   * @return BirthDay
+   */
+  public function setBirthDay($date, string $name): BirthDay {
     $holiday = $this->createCalendarDate($date)->getNotes()->setBirthday($name);
     return $holiday;
   }
 
+  /**
+   * 
+   * @param  CalendarDate $date
+   * @return CalendarDate
+   */
   public function setDate(CalendarDate $date): CalendarDate {
     $key = $date->toDateString();
     $this->days[$key] = $date;
     return $this->days[$key];
   }
 
+  /**
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return string
+   */
   protected function parseKey($date): string {
     try {
       $key = Date::from($date)->toDateString();
@@ -108,7 +142,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
 
   /**
    * 
-   * @param  DateInterface|DateTimeInterface|string|int $date
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @return bool 
    */
   public function contains($date): bool {
@@ -118,8 +152,8 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
 
   /**
    * 
-   * @param Date $date
-   * @etun  CalendarDate
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return CalendarDate
    */
   public function get($date): CalendarDate {
     $key = $this->parseKey($date);

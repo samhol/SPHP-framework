@@ -42,7 +42,7 @@ class EasterCalendar {
    * @return Date new date object
    */
   public static function getMaundyThursday(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(-4);
+    return static::getEasterSunday($year)->jump(-3);
   }
 
   /**

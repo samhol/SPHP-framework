@@ -25,7 +25,7 @@ interface TraversableCalendar extends \Traversable {
 
   public function setHoliday($date, string $name): Holiday;
 
-  public function setBirthDay($date, string $name): Holiday;
+  public function setBirthDay($date, string $name): BirthDay;
 
   public function mergeDate(CalendarDate $date): CalendarDate;
 

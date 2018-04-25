@@ -15,7 +15,7 @@ use DateTime;
 use Sphp\Data\Address;
 
 /**
- * Implements a system user
+ * Implements a person data object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

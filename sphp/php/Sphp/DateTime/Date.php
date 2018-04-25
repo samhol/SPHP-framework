@@ -13,6 +13,7 @@ namespace Sphp\DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
 use Sphp\DateTime\Exceptions\DateTimeException;
+use Exception;
 
 /**
  * Implements a date object
@@ -59,7 +60,6 @@ class Date implements DateInterface {
   public function toDateString(): string {
     return $this->format('Y-m-d');
   }
-
 
   public function __toString(): string {
     return $this->toDateString();
@@ -148,20 +148,20 @@ class Date implements DateInterface {
   }
 
   /**
+   * Checks if the input date matches the date 
    * 
    * @param  mixed $date
-   * @return bool
+   * @return bool true if matches and false otherwise
    */
   public function matchesWith($date): bool {
-    if (is_string($date)) {
-      $date = static::fromString($date);
-    } else if (is_int($date)) {
-      $date = static::fromTimestamp($date);
+    if (!$date instanceof DateInterface) {
+      try {
+        $date = Date::from($date);
+      } catch (Exception $ex) {
+        return false;
+      }
     }
-    if ($date instanceof DateTimeInterface || $date instanceof Date) {
-      return $date->format('Y-m-d') === $this->format('Y-m-d');
-    }
-    return false;
+    return $date->format('Y-m-d') === $this->format('Y-m-d');
   }
 
   /**
