@@ -32,3 +32,5 @@ Manual\example("Sphp/DateTime/Calendars/EasterCalendar.php", "text", false)
         ->setExamplePaneTitle("Date examples")
         ->setOutputSyntaxPaneTitle("Date example results")
         ->printHtml();
+
+Manual\loadPage('Sphp.DateTime.Calendars');
