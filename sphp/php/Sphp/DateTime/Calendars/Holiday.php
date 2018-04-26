@@ -71,6 +71,25 @@ class Holiday implements CalendarDateNote {
 
   /**
    * 
+   * @return bool
+   */
+  public function dateMatchesWith(DateInterface $date): bool {
+    return $this->date->matchesWith($date);
+  }
+
+  public function noteAsString(): string {
+    $output = "$this->name: ";
+    if ($this->isNationalHoliday()) {
+      $output .= " (national holiday)";
+    }
+    if ($this->isFlagDay()) {
+      $output .= " (flagday)";
+    }
+    return $output;
+  }
+
+  /**
+   * 
    * @return string
    */
   public function getName(): string {

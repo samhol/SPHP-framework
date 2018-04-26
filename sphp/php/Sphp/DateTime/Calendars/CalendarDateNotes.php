@@ -79,7 +79,7 @@ class CalendarDateNotes implements IteratorAggregate {
   }
 
   public function dateMatch(CalendarDateNote $note): bool {
-    return $note->getDate()->matchesWith($this->getDate());
+    return $note->dateMatchesWith($this->getDate());
   }
 
   /**
@@ -96,7 +96,7 @@ class CalendarDateNotes implements IteratorAggregate {
    * 
    * @return bool
    */
-  public function hasBirthDays(): bool {
+  public function isBirthday(): bool {
     return !empty($this->getBirthdays());
   }
 
@@ -209,21 +209,21 @@ class CalendarDateNotes implements IteratorAggregate {
    * @param CalendarDateNote $event
    */
   public function addNote(CalendarDateNote $event) {
-    if ($event->getDate()->matchesWith($this->getDate()) && !$this->contains($event)) {
+    if ($event->dateMatchesWith($this->getDate()) && !$this->contains($event)) {
       $this->add($event);
     }
   }
 
   /**
    * 
-   * @param  CalendarDateNote $date
+   * @param  CalendarDateNote $note
    * @return bool 
    */
-  public function contains(CalendarDateNote $date): bool {
+  public function contains(CalendarDateNote $note): bool {
     $contains = false;
-    if ($date->getDate()->matchesWith($this->getDate())) {
+    if ($note->dateMatchesWith($this->getDate())) {
       foreach ($this->notes as $day) {
-        if ($day == $date) {
+        if ($day == $note) {
           $contains = true;
           break;
         }
@@ -237,7 +237,7 @@ class CalendarDateNotes implements IteratorAggregate {
     //print_r($this->notes);
     foreach ($this->notes as $note) {
       // print_r($note);
-      $output .= "  $note\n";
+      $output .= "  {$note->noteAsString()}\n";
     }
     return $output;
   }

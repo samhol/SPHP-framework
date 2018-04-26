@@ -2,6 +2,7 @@
 
 namespace Sphp\Html\Apps\Calendars;
 $data = new \Sphp\DateTime\Calendars\Fi\Calendar();
+//$data->setBirthDay('', $name);
 $data->createYear(2017);
 $data->createYear(2018);
 echo Factory::getMonth(6, 2017)->useCalendar($data);

@@ -19,9 +19,18 @@ namespace Sphp\DateTime\Calendars;
  */
 class BirthDay extends Holiday {
 
-  public function __toString(): string {
+  private $year;
+
+  public function setBirthYear(int $year) {
+    $this->year = $year;
+  }
+
+  public function noteAsString(): string {
     $output = "Birthday of {$this->getName()}: ";
-    $output .= $this->getDate()->format('l, Y-m-d');
+    if (is_int($this->year)) {
+      
+    }
+    //$output .= $this->getDate()->format('l, Y-m-d');
     if ($this->isNationalHoliday()) {
       $output .= " (national holiday)";
     }

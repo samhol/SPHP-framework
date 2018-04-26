@@ -45,9 +45,13 @@ class DateInfo implements Content {
 
   public function createPopup(): Popup {
     $popup = new Popup();
-    $date = $this->calendarDate->getDate()->format('l  F jS Y');
+    $date = $this->calendarDate->getDate()->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
-    $popup->append($this->calendarDate);
+    foreach ($this->calendarDate->getNotes() as $note) {
+    $popup->append("<br>".$note->noteAsString());
+    }
+    //$popup->append($this->calendarDate->getNotes());
+    
     return $popup;
   }
   

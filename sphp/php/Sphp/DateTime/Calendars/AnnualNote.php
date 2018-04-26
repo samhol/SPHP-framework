@@ -10,26 +10,26 @@
 
 namespace Sphp\DateTime\Calendars;
 
-use Sphp\DateTime\Date;
-use Sphp\DateTime\DateInterface;
-
 /**
  * Defines CalendarDateNote
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-04-24
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface CalendarDateNote {
+interface AnnualNote extends CalendarDateNote {
 
   /**
+   * Returns the number of the month
    * 
-   * @return bool
+   * @return int the number of the month
    */
-  public function dateMatchesWith(DateInterface $date): bool;
+  public function getMonth(): int;
 
-  public function noteAsString(): string;
-
-  public function __toString(): string;
+  /**
+   * Returns the day of the month
+   * 
+   * @return int the day of the month
+   */
+  public function getMonthDay(): int;
 }
