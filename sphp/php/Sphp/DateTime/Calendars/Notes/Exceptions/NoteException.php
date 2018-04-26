@@ -8,28 +8,17 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Notes\Exceptions;
+
+use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
- * Defines CalendarDateNote
+ * Description of NoteException
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface AnnualNote extends Note {
-
-  /**
-   * Returns the number of the month
-   * 
-   * @return int the number of the month
-   */
-  public function getMonth(): int;
-
-  /**
-   * Returns the day of the month
-   * 
-   * @return int the day of the month
-   */
-  public function getMonthDay(): int;
+class NoteException extends DateTimeException {
+  
 }

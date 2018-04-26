@@ -24,7 +24,6 @@ use Exception;
  */
 class Calendar implements IteratorAggregate, TraversableCalendar {
 
-
   /**
    * @var CalendarDate[]
    */
@@ -91,7 +90,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
       return $this->get($date);
     }
   }
-  
+
   /**
    * Sets a holiday note to the calendar
    * 

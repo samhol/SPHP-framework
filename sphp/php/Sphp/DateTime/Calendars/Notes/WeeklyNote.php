@@ -8,28 +8,21 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Notes;
 
 /**
- * Defines CalendarDateNote
+ * Defines a weekly event
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface AnnualNote extends Note {
+interface WeeklyNote extends Note {
 
   /**
-   * Returns the number of the month
+   * Returns the number of the weekday
    * 
-   * @return int the number of the month
+   * @return int the number of the weekday
    */
-  public function getMonth(): int;
-
-  /**
-   * Returns the day of the month
-   * 
-   * @return int the day of the month
-   */
-  public function getMonthDay(): int;
+  public function getWeekDay(): int;
 }

@@ -103,7 +103,7 @@ class CalendarDate implements DateInterface {
     return $this;
   }
 
-  public function addNote(CalendarDateNote $note) {
+  public function addNote(Note $note) {
     $this->notes->addNote($note);
     return $this;
   }
@@ -113,7 +113,7 @@ class CalendarDate implements DateInterface {
    * @param  CalendarDateNote $note
    * @return bool 
    */
-  public function containsNote(CalendarDateNote $note): bool {
+  public function containsNote(Note $note): bool {
     return $this->notes->contains($note);
   }
 
