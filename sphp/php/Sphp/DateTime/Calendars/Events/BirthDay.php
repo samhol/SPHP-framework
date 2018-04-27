@@ -45,7 +45,7 @@ class BirthDay extends AnnualHoliday {
     $this->year = $year;
   }
 
-  public function noteAsString(int $currentYear = null): string {
+  public function eventAsString(int $currentYear = null): string {
     $output = "Birthday of {$this->getName()}";
     if (is_int($currentYear) && is_int($this->year)) {
       $age = $currentYear - $this->year;

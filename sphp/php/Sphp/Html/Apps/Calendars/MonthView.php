@@ -10,15 +10,11 @@
 
 namespace Sphp\Html\Apps\Calendars;
 
-use DateTime;
 use Sphp\Html\AbstractComponent;
 use Sphp\I18n\Datetime\CalendarUtils;
-use DateTimeInterface;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Div;
-use DateTimeImmutable;
 use Sphp\Html\Container;
-use Sphp\DateTime\Holidays\Holidays;
 use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\TraversableCalendar;
 use Sphp\DateTime\Calendars\Calendar;

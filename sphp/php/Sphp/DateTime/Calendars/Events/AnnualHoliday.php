@@ -11,7 +11,6 @@
 namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
  * Implements a holiday note for a calendar

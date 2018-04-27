@@ -10,8 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
+use Iterator;
 
 /**
  * Description of NoteCollection
@@ -20,7 +19,7 @@ use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractEventCollection implements \Iterator, \Sphp\Stdlib\Datastructures\Arrayable {
+abstract class AbstractEventCollection implements Iterator, EventCollectionInterface {
 
   /**
    * @var Note[] 
@@ -41,10 +40,10 @@ abstract class AbstractEventCollection implements \Iterator, \Sphp\Stdlib\Datast
     unset($this->collection);
   }
 
-  public function insertNote(Event $note): bool {
+  public function insertEvent(Event $event): bool {
     $inserted = false;
-    if (!$this->containsNote($note)) {
-      $this->collection[] = $note;
+    if (!$this->containsEvent($event)) {
+      $this->collection[] = $event;
       $inserted = true;
     }
     return $inserted;
@@ -52,17 +51,17 @@ abstract class AbstractEventCollection implements \Iterator, \Sphp\Stdlib\Datast
 
   /**
    * 
-   * @param  CalendarDateInfo $notes
-   * @return $this 
+   * @param  EventCollectionInterface $events
+   * @return $this
    */
-  public function mergeNotes(EventCollection $notes) {
-    foreach ($notes as $note) {
-      $this->insertNote($note);
+  public function mergeEvents(EventCollectionInterface $events) {
+    foreach ($events as $note) {
+      $this->insertEvent($note);
     }
     return $this;
   }
 
-  public function containsNote(Event $note): bool {
+  public function containsEvent(Event $note): bool {
     $contains = false;
     foreach ($this->collection as $n) {
       $contains = $note == $n;
@@ -83,19 +82,23 @@ abstract class AbstractEventCollection implements \Iterator, \Sphp\Stdlib\Datast
       return $item instanceof BirthDay;
     });
   }
+
+
   /**
-   * Checks if the note collection is empty
-   * 
-   * @return bool true if the collection is not empty and false otherwise
-   */
-  public function notEmpty(): bool {
-    return !empty($this->collection);
-  }
-  /**
-   * Returns all notes stored
+   * Returns all holidays stored
    * 
    * @return Holiday[] all holiday notes stored
    */
+  public function getHolidays(): array {
+    return array_filter($this->collection, function ($item) {
+      return $item instanceof HolidayInterface;
+    });
+  }
+  
+  public function notEmpty(): bool {
+    return !empty($this->collection);
+  }
+
   public function toArray(): array {
     return $this->collection;
   }

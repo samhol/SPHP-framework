@@ -10,13 +10,8 @@
 
 namespace Sphp\Html\Apps\Calendars;
 
-use Sphp\Html\Content;
-use DateTimeInterface;
 use Sphp\Html\Div;
 use Sphp\Html\TimeTag;
-use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Calendar;
-use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\DateTime\Calendars\CalendarDate;
@@ -62,7 +57,7 @@ class WeekDayView implements CssClassifiableContent {
       $this->container->append($modal);
     }
 
-    if ($this->calendarDate->getEvents()->isNationalHoliday()) {
+    if ($this->calendarDate->getEvents()->nationalHoliday()) {
       $this->container->cssClasses()->protect('holiday');
     }
     return $this;

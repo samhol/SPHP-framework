@@ -30,11 +30,6 @@ class DateEvents extends AbstractEventCollection {
   private $date;
 
   /**
-   * @var array 
-   */
-  private $notes = [];
-
-  /**
    * Constructor
    * 
    * @param Date $date
@@ -51,23 +46,14 @@ class DateEvents extends AbstractEventCollection {
     unset($this->date);
     parent::__destruct();
   }
+  
 
   /**
-   * Returns all notes stored
+   * Checks for a national holiday
    * 
-   * @return Holiday[] all holiday notes stored
+   * @return bool true if national holiday, false otherwise
    */
-  public function getHolidays(): array {
-    return array_filter($this->toArray(), function ($item) {
-      return $item instanceof Holiday;
-    });
-  }
-
-  /**
-   * 
-   * @return bool
-   */
-  public function isNationalHoliday(): bool {
+  public function nationalHoliday(): bool {
     $isNational = false;
     foreach ($this->getHolidays() as $holiday) {
       if ($holiday->isNationalHoliday()) {
@@ -79,13 +65,14 @@ class DateEvents extends AbstractEventCollection {
   }
 
   /**
+   * Checks for a flag day
    * 
-   * @return bool
+   * @return bool true if flag day, false otherwise
    */
-  public function isFlagDay(): bool {
+  public function flagDay(): bool {
     $isNational = false;
-    foreach ($this as $holiday) {
-      if ($holiday->isFlagDay()) {
+    foreach ($this as $note) {
+      if ($note->flagDay()) {
         $isNational = true;
         break;
       }
@@ -102,21 +89,12 @@ class DateEvents extends AbstractEventCollection {
     return $this->date;
   }
 
-  /**
-   * 
-   * @param  CalendarDateNote $note
-   * @return CalendarDateNote inserted instance
-   */
-  public function insertNote(Event $note): bool {
+  public function insertEvent(Event $note): bool {
     if (!$note->dateMatchesWith($this->date)) {
       return false;
     } else {
-      return parent::insertNote($note);
+      return parent::insertEvent($note);
     }
-  }
-
-  public function dateMatch(Event $note): bool {
-    return $note->dateMatchesWith($this->getDate());
   }
 
   /**
@@ -128,7 +106,7 @@ class DateEvents extends AbstractEventCollection {
     $month = $this->date->getMonth();
     $day = $this->date->getMonthDay();
     $birthDay = new BirthDay($month, $day, $person, $yearOfBirth);
-    $inserted = $this->insertNote($birthDay);
+    $inserted = $this->insertEvent($birthDay);
     if (!$inserted) {
       throw new NoteException('Birthday could not be inserted to the collection');
     }
@@ -144,7 +122,7 @@ class DateEvents extends AbstractEventCollection {
     $month = $this->date->getMonth();
     $day = $this->date->getMonthDay();
     $birthDay = new BirthDay($month, $day, $person, $yearOfBirth);
-    $inserted = $this->insertNote($birthDay);
+    $inserted = $this->insertEvent($birthDay);
     if (!$inserted) {
       throw new NoteException('Birthday could not be inserted to the collection');
     }
@@ -160,7 +138,7 @@ class DateEvents extends AbstractEventCollection {
     $month = $this->date->getMonth();
     $day = $this->date->getMonthDay();
     $birthDay = new AnnualHoliday($month, $day, $desc);
-    $inserted = $this->insertNote($birthDay);
+    $inserted = $this->insertEvent($birthDay);
     if (!$inserted) {
       throw new NoteException('Annual holiday could not be inserted to the collection');
     }

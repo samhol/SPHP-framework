@@ -30,7 +30,7 @@ class EventCollection extends AbstractEventCollection {
    */
   public function insertHoliday($date, $content): Holiday {
     $holiday = new Holiday(Date::from($date), $content);
-    $inserted = $this->insertNote($holiday);
+    $inserted = $this->insertEvent($holiday);
     if (!$inserted) {
       throw new NoteException('Holiday could not be inserted to the collection');
     }
@@ -43,9 +43,9 @@ class EventCollection extends AbstractEventCollection {
    * @param  CalendarDateInfo $notes
    * @return $this 
    */
-  public function mergeNotes(EventCollection $notes) {
+  public function mergeEvents(EventCollection $notes) {
     foreach ($notes as $note) {
-      $this->insertNote($note);
+      $this->insertEvent($note);
     }
     return $this;
   }
@@ -70,7 +70,7 @@ class EventCollection extends AbstractEventCollection {
    */
   public function insertBirthday(int $day, int $month, $person): BirthDay {
     $birthDay = new BirthDay($month, $day, $person);
-    $inserted = $this->insertNote($birthDay);
+    $inserted = $this->insertEvent($birthDay);
     if (!$inserted) {
       throw new NoteException('Birthday could not be inserted to the collection');
     }

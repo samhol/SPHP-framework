@@ -10,8 +10,8 @@ namespace Sphp\DateTime\Calendars\Events;
 $dailyNotes = new DateEvents( \Sphp\DateTime\Date::from('2018-09-16'));
 
 
-var_dump($dailyNotes->insertNote(new BirthDay(9, 16, 'Sami Holck', 1975)));
-var_dump($dailyNotes->insertNote(new AnnualHoliday(9, 16, 'Sami Holck is GOD day')));
+var_dump($dailyNotes->insertEvent(new BirthDay(9, 16, 'Sami Holck', 1975)));
+var_dump($dailyNotes->insertEvent(new AnnualHoliday(9, 16, 'Sami Holck is GOD day')));
 
 
 echo $dailyNotes;

@@ -27,6 +27,12 @@ class VaryingAnnualHoliday extends AbstractHoliday {
    */
   private $format;
 
+  /**
+   * Constructor
+   * 
+   * @param string $format datetime format 
+   * @param string $name
+   */
   public function __construct(string $format, string $name) {
     parent::__construct($name);
     $this->format = $format;

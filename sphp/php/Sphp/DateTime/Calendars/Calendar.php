@@ -29,6 +29,8 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
    * @var CalendarDate[]
    */
   private $days;
+  
+  private $events;
 
   /**
    * Constructor
@@ -74,7 +76,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
       return $this->setDate($date);
     } else {
       $events = $date->getEvents();
-      return $this->get($date)->getEvents()->mergeNotes($events);
+      return $this->get($date)->getEvents()->mergeEvents($events);
     }
   }
 
