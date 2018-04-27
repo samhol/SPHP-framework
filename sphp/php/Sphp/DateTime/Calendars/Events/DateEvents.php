@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use IteratorAggregate;
 use Sphp\DateTime\Date;
@@ -22,7 +22,7 @@ use Sphp\DateTime\Exceptions\DateTimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DailyNotes extends AbstractNoteCollection {
+class DateEvents extends AbstractEventCollection {
 
   /**
    * @var Date 
@@ -53,6 +53,47 @@ class DailyNotes extends AbstractNoteCollection {
   }
 
   /**
+   * Returns all notes stored
+   * 
+   * @return Holiday[] all holiday notes stored
+   */
+  public function getHolidays(): array {
+    return array_filter($this->toArray(), function ($item) {
+      return $item instanceof Holiday;
+    });
+  }
+
+  /**
+   * 
+   * @return bool
+   */
+  public function isNationalHoliday(): bool {
+    $isNational = false;
+    foreach ($this->getHolidays() as $holiday) {
+      if ($holiday->isNationalHoliday()) {
+        $isNational = true;
+        break;
+      }
+    }
+    return $isNational;
+  }
+
+  /**
+   * 
+   * @return bool
+   */
+  public function isFlagDay(): bool {
+    $isNational = false;
+    foreach ($this as $holiday) {
+      if ($holiday->isFlagDay()) {
+        $isNational = true;
+        break;
+      }
+    }
+    return $isNational;
+  }
+
+  /**
    * Returns the plain date object
    * 
    * @return Date the plain date object
@@ -66,7 +107,7 @@ class DailyNotes extends AbstractNoteCollection {
    * @param  CalendarDateNote $note
    * @return CalendarDateNote inserted instance
    */
-  public function insertNote(Note $note): bool {
+  public function insertNote(Event $note): bool {
     if (!$note->dateMatchesWith($this->date)) {
       return false;
     } else {
@@ -74,7 +115,7 @@ class DailyNotes extends AbstractNoteCollection {
     }
   }
 
-  public function dateMatch(Note $note): bool {
+  public function dateMatch(Event $note): bool {
     return $note->dateMatchesWith($this->getDate());
   }
 
@@ -115,7 +156,7 @@ class DailyNotes extends AbstractNoteCollection {
    * @param  string $desc
    * @return Holiday
    */
-  public function insertAnnualHoliday(string $desc): Holiday {
+  public function insertAnnualHoliday(string $desc): AnnualHoliday {
     $month = $this->date->getMonth();
     $day = $this->date->getMonthDay();
     $birthDay = new AnnualHoliday($month, $day, $desc);

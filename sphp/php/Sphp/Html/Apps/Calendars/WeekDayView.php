@@ -55,14 +55,14 @@ class WeekDayView implements CssClassifiableContent {
   }
 
   protected function buildInfo() {
-    if ($this->calendarDate->hasNotes()) {
+    if ($this->calendarDate->getEvents()->notEmpty()) {
       $dateInfo = new DateInfo($this->calendarDate);
       $modal = $dateInfo->create();
       //$modal->getTrigger()->addCssClass('float-center');
       $this->container->append($modal);
     }
 
-    if ($this->calendarDate->getNotes()->isNationalHoliday()) {
+    if ($this->calendarDate->getEvents()->isNationalHoliday()) {
       $this->container->cssClasses()->protect('holiday');
     }
     return $this;

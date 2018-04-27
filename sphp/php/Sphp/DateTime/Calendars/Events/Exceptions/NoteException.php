@@ -8,26 +8,17 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Events\Exceptions;
 
-use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
- * Defines CalendarDateNote
+ * Description of NoteException
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Note {
-
-  /**
-   * 
-   * @return bool
-   */
-  public function dateMatchesWith(DateInterface $date): bool;
-
-  public function noteAsString(): string;
-
-  public function __toString(): string;
+class NoteException extends DateTimeException {
+  
 }

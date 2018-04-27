@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Exceptions\DateTimeException;
@@ -30,11 +30,17 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
   /**
    * Constructor
    * 
-   * @param DateInterface $date 
-   * @param string $name
+   * @param  DateInterface $date 
+   * @param  string $name
+   * @throws Exceptions\NoteException if constructor fails
    */
   public function __construct(int $month, int $day, string $name) {
     parent::__construct($name);
+    if (0 > $month || $month > 12) {
+      throw new Exceptions\NoteException("Parameter month must be between 1-12 ($month given)");
+    } if (0 > $day || $day > 31) {
+      throw new Exceptions\NoteException("Parameter day must be between 1-31 ($day given)");
+    }
     $this->day = $day;
     $this->month = $month;
   }
@@ -59,10 +65,6 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
     return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
   }
 
-  public function __toString(): string {
-    $output = $this->noteAsString();
-    return $output;
-  }
 
   /**
    * Creates a new instance from a date string
@@ -70,14 +72,10 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @param  string $name name of the holiday 
    * @return Holiday new instance
-   * @throws DateTimeException if creation fails
+   * @throws Exceptions\NoteException if creation fails
    */
   public static function from(int $month, int $day, string $name): AnnualHoliday {
-    try {
-      return new static($month, $day, $name);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
+    return new static($month, $day, $name);
   }
 
 }

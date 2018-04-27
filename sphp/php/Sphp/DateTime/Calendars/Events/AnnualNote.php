@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Events;
 
 /**
  * Defines CalendarDateNote
@@ -17,7 +17,7 @@ namespace Sphp\DateTime\Calendars;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface AnnualNote extends Note {
+interface AnnualNote extends Event {
 
   /**
    * Returns the number of the month

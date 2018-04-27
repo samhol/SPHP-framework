@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
-$collection = new NoteCollection();
+$collection = new EventCollection();
 $cd = new AnnualHoliday(12, 25, 'Christmas Day');
 var_dump($collection->insertNote(new AnnualHoliday(12, 25, 'Christmas Day')));
 var_dump($collection->insertNote(new AnnualHoliday(12, 25, 'Christmas Day')));

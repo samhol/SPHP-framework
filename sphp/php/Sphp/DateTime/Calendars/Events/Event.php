@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
 
@@ -16,19 +16,29 @@ use Sphp\DateTime\DateInterface;
  * Defines CalendarDateNote
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-04-24
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Note {
+interface Event {
 
   /**
+   * Checks if the given date matches with the event date
    * 
-   * @return bool
+   * @return bool true if the given date matches and false otherwise
    */
   public function dateMatchesWith(DateInterface $date): bool;
 
-  public function noteAsString(): string;
+  /**
+   * Returns the event description
+   * 
+   * @return string the the event description
+   */
+  public function eventAsString(): string;
 
+  /**
+   * Returns the string representation of the object
+   * 
+   * @return string the string representation of the object
+   */
   public function __toString(): string;
 }

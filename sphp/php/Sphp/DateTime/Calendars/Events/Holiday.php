@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;

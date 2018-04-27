@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use DateTimeImmutable;
 use Sphp\DateTime\Date;
@@ -27,12 +27,12 @@ class EasterCalendar {
       $year = (int) date('Y');
     }
     $calendar = new Calendar();
-    $calendar->setHoliday(static::getMaundyThursday($year), 'Maundy Thursday');
-    $calendar->setHoliday(static::getGoodFriday($year), 'Good Friday');
-    $calendar->setHoliday(static::getEasterSunday($year), 'Easter Sunday');
-    $calendar->setHoliday(static::getEasterMonday($year), 'Easter Monday');
-    $calendar->setHoliday(static::getAscensionDay($year), 'Ascension Day');
-    $calendar->setHoliday(static::getPentecost($year), 'Pentecost');
+    $calendar->insertAnnualHoliday(static::getMaundyThursday($year), 'Maundy Thursday');
+    $calendar->insertAnnualHoliday(static::getGoodFriday($year), 'Good Friday');
+    $calendar->insertAnnualHoliday(static::getEasterSunday($year), 'Easter Sunday');
+    $calendar->insertAnnualHoliday(static::getEasterMonday($year), 'Easter Monday');
+    $calendar->insertAnnualHoliday(static::getAscensionDay($year), 'Ascension Day');
+    $calendar->insertAnnualHoliday(static::getPentecost($year), 'Pentecost');
     return $calendar;
   }
 

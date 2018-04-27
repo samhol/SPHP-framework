@@ -14,6 +14,8 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 use Exception;
 use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\DateTime\Calendars\Events\DateEvents;
+use Sphp\DateTime\Calendars\Events\Event;
 
 /**
  * Description of CalendarDate
@@ -30,7 +32,7 @@ class CalendarDate implements DateInterface {
   private $date;
 
   /**
-   * @var CalendarDateNotes 
+   * @var DateEvents 
    */
   private $notes;
 
@@ -51,7 +53,7 @@ class CalendarDate implements DateInterface {
     } catch (Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    $this->notes = new CalendarDateNotes($this->date);
+    $this->notes = new DateEvents($this->date);
   }
 
   /**
@@ -59,6 +61,16 @@ class CalendarDate implements DateInterface {
    */
   public function __destruct() {
     unset($this->date, $this->notes, $this->data);
+  }
+
+  public function __toString(): string {
+    $output = "$this->date:\n";
+    //print_r($this->notes);
+    foreach ($this->getEvents() as $note) {
+      // print_r($note);
+      $output .= "  $note\n";
+    }
+    return $output;
   }
 
   /**
@@ -90,20 +102,17 @@ class CalendarDate implements DateInterface {
     return $this->date;
   }
 
-  public function getNotes(): CalendarDateNotes {
+  public function getEvents(): DateEvents {
     return $this->notes;
   }
 
-  public function hasNotes(): bool {
-    return $this->getNotes()->notEmpty();
-  }
 
-  public function mergeNotes(CalendarDate $date) {
-    $this->notes->merge($date->getNotes());
+  public function mergeNotes(DateEvents $events) {
+    $this->notes->merge($events->getNotes());
     return $this;
   }
 
-  public function addNote(Note $note) {
+  public function addNote(Event $note) {
     $this->notes->addNote($note);
     return $this;
   }
@@ -113,18 +122,8 @@ class CalendarDate implements DateInterface {
    * @param  CalendarDateNote $note
    * @return bool 
    */
-  public function containsNote(Note $note): bool {
+  public function containsEvent(Event $note): bool {
     return $this->notes->contains($note);
-  }
-
-  public function __toString(): string {
-    $output = "$this->date:\n";
-    //print_r($this->notes);
-    foreach ($this->getNotes() as $note) {
-      // print_r($note);
-      $output .= "  $note\n";
-    }
-    return $output;
   }
 
   public function toDateString(): string {

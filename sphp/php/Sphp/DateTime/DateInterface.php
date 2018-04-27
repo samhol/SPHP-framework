@@ -30,7 +30,7 @@ interface DateInterface {
  /**
    * Returns the string representation of the object
    * 
-   * @return the string representation of the object
+   * @return string the string representation of the object
    */
   public function __toString(): string;
 

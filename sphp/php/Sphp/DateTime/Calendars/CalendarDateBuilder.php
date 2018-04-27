@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars;
 
-use Sphp\DateTime\Calendars\Notes\NoteCollection;
+use Sphp\DateTime\Calendars\Events\EventCollection;
 use Sphp\DateTime\Date;
 /**
  * Description of CalendarDateBuilder
@@ -27,16 +27,16 @@ class CalendarDateBuilder {
   private $days;
 
   /**
-   * @var NoteCollection 
+   * @var EventCollection 
    */
   private $notes;
 
   /**
    * Constructor
    */
-  public function __construct(NoteCollection $notes = null) {
+  public function __construct(EventCollection $notes = null) {
     if ($notes === null) {
-      $notes = new NoteCollection();
+      $notes = new EventCollection();
     }
     $this->notes = $notes;
   }
@@ -55,27 +55,13 @@ class CalendarDateBuilder {
     $this->notes = clone $this->notes;
   }
 
-  public function getNotes(): NoteCollection {
+  public function getNotes(): EventCollection {
     return $this->notes;
   }
 
-  public function setNotes(NoteCollection $notes) {
+  public function setNotes(EventCollection $notes) {
     $this->notes = $notes;
     return $this;
-  }
-
-  /**
-   * 
-   * @param  CalendarDate $date
-   * @return CalendarDate
-   */
-  public function mergeDate(CalendarDate $date): CalendarDate {
-    //$key = $this->parseKey($date);
-    if (!$this->contains($date)) {
-      return $this->setDate($date);
-    } else {
-      return $this->get($date)->mergeNotes($date);
-    }
   }
 
   public function createCalendarDate($date, $data = null): CalendarDate {

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 /**
  * Defines a weekly event
@@ -17,7 +17,7 @@ namespace Sphp\DateTime\Calendars\Notes;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface WeeklyNote extends Note {
+interface WeeklyNote extends Event {
 
   /**
    * Returns the number of the weekday

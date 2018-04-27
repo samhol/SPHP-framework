@@ -1,35 +1,19 @@
 <?php
 
-namespace Sphp\DateTime\Calendars;
-
-$cd = new CalendarDate('september 16');
+namespace Sphp\DateTime;
 echo "<pre>";
-$cd->getNotes()->setBirthday('Sami Holck');
-$cd->getNotes()->setHoliday('Ball licking day');
-//echo $cd;
-$calendar = Fi\FinnishCalendar::create(2018);
-$calendar->setDate($cd);
 
-$cd1 = new CalendarDate(\Sphp\DateTime\Date::fromString('2018-2-11'));
-
-$cd1->getNotes()->setBirthday('Pussy pounder');
-$cd1->getNotes()->setBirthday('Homo Fucker');
-$cd1->getNotes()->setHoliday('Ass licking day');
-$calendar->setDate($cd1);
-//echo $cd1;
-//echo $calendar['2018-04-22'];
-//echo $calendar[new \Sphp\DateTime\Date()];
-foreach ($calendar as $day => $date) {
-  echo "$day => $date\n";
-}
-foreach (Fi\FinnishCalendar::getSundays(2018) as $day => $date) {
-  echo "$day => $date\n";
+$watch = new \Sphp\Stdlib\StopWatch();
+$foo = new \Sphp\DateTime\Calendars\Events\VaryingAnnualHoliday("November %d second sunday", "Father's Day");
+//var_dump($foo->dateMatchesWith(Date::from('2017-11-12')));
+$watch->start();
+$date = new Date();
+for ($i = 0; $i < 100000; $i++) {
+  $date = $date->nextDate();
+  $foo->dateMatchesWith($date);
 }
 
-$it = new Calendar();
-$it->mergeCalendar($calendar);
-$it->mergeDate(new CalendarDate('1900-1-1'));
-foreach ($it as $day => $date) {
-  echo "$day => $date\n";
-}
+//print_r($foo);
+echo "\nI: ".$watch->getTime()."\n";
+
 echo "</pre>";

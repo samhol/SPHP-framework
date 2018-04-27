@@ -8,41 +8,34 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Date;
 
 /**
- * Description of WeeklyHoliday
+ * Description of SequentialEvent
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeeklyHoliday extends AbstractHoliday implements WeeklyNote {
+class VaryingAnnualHoliday extends AbstractHoliday {
 
   /**
-   * @var int
+   * @var string 
    */
-  private $weekday;
+  private $format;
 
-  /**
-   * Constructor
-   * 
-   * @param DateInterface $date 
-   * @param string $name
-   */
-  public function __construct(int $weekday, string $name, DateInterface $starts = null) {
+  public function __construct(string $format, string $name) {
     parent::__construct($name);
-    $this->weekday = $weekday;
+    $this->format = $format;
   }
 
   public function dateMatchesWith(DateInterface $date): bool {
-    return $date->getWeekDay() === $this->weekday;
-  }
-
-  public function getWeekDay(): int {
-    return $this->weekday;
+    $year = $date->getYear();
+    $check = Date::from(sprintf($this->format, $year));
+    return $check->matchesWith($date);
   }
 
 }

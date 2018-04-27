@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\Date;
 
@@ -19,7 +19,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EasterHolidays extends NoteCollection {
+class EasterHolidays extends EventCollection {
 
   private $years = [];
 

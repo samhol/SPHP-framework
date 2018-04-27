@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
 
@@ -19,7 +19,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractHoliday implements Note {
+abstract class AbstractHoliday implements HolidayInterface {
 
   /**
    * @var bool 
@@ -53,13 +53,21 @@ abstract class AbstractHoliday implements Note {
     unset($this->name);
   }
 
-  public function noteAsString(): string {
-    $output = "$this->name: ";
+  public function __toString(): string {
+    return $this->noteAsString();
+  }
+
+  public function eventAsString(): string {
+    $output = "$this->name";
+    $attrs = [];
     if ($this->isNationalHoliday()) {
-      $output .= " (national holiday)";
+      $attrs[] = "national holiday";
     }
     if ($this->isFlagDay()) {
-      $output .= " (flagday)";
+      $attrs[] = "flagday";
+    }
+    if (!empty($attrs)) {
+      $output .= ': ' . implode(', ', $attrs);
     }
     return $output;
   }

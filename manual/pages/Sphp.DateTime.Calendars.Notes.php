@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\Manual;
 

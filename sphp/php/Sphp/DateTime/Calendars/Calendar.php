@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\DateTime\Date;
 use Traversable;
 use Exception;
+use Sphp\DateTime\Calendars\Events\AnnualHoliday;
 
 /**
  * Basic implementation of a traversable calendar
@@ -72,22 +73,8 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     if (!$this->contains($date)) {
       return $this->setDate($date);
     } else {
-      return $this->get($date)->mergeNotes($date);
-    }
-  }
-
-  protected function createCalendarDate($date): CalendarDate {
-    if (!$this->contains($date)) {
-      $calendarDate = new CalendarDate($date);
-      return $this->setDate($calendarDate);
-    } else if ($date instanceof CalendarDate) {
-      return $this->get($date)->mergeNotes($date);
-    } else if ($date instanceof Holiday) {
-      $calDate = $this->get($date);
-      $calDate->getNotes()->setHoliday($date);
-      return $calDate;
-    } else {
-      return $this->get($date);
+      $events = $date->getEvents();
+      return $this->get($date)->getEvents()->mergeNotes($events);
     }
   }
 
@@ -96,10 +83,10 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @param  string $name
-   * @return Holiday
+   * @return AnnualHoliday
    */
-  public function setHoliday($date, string $name): Holiday {
-    $holiday = $this->createCalendarDate($date)->getNotes()->setHoliday($name);
+  public function insertAnnualHoliday($date, string $name): AnnualHoliday {
+    $holiday = $this->get($date)->getEvents()->insertAnnualHoliday($name);
     return $holiday;
   }
 
@@ -110,8 +97,8 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
    * @param  string $name
    * @return BirthDay
    */
-  public function setBirthDay($date, string $name): BirthDay {
-    $holiday = $this->createCalendarDate($date)->getNotes()->setBirthday($name);
+  public function setBirthDay($date, string $name): Events\BirthDay {
+    $holiday = $this->get($date)->getEvents()->insertBirthday($name);
     return $holiday;
   }
 

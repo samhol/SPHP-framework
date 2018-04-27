@@ -1,10 +1,10 @@
 <?php
 
-namespace Sphp\DateTime\Calendars;
+namespace Sphp\DateTime\Calendars\Events;
 
 $easterCalendar = new EasterCalendar();
 
 foreach (EasterCalendar::build() as $date) {
   echo "{$date->format('l, Y-m-d')}:\n";
-  echo "{$date->getNotes()}:\n";
+  echo "{$date->getEvents()}:\n";
 }

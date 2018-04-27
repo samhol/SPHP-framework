@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Notes\Exceptions\NoteException;
+use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
 
 /**
  * Description of NoteCollection
@@ -20,8 +20,19 @@ use Sphp\DateTime\Calendars\Notes\Exceptions\NoteException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class NoteCollection extends AbstractNoteCollection {
+abstract class AbstractEventCollection implements \Iterator, \Sphp\Stdlib\Datastructures\Arrayable {
 
+  /**
+   * @var Note[] 
+   */
+  private $collection = [];
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    $this->collection = [];
+  }
 
   /**
    * Destructor
@@ -30,22 +41,7 @@ class NoteCollection extends AbstractNoteCollection {
     unset($this->collection);
   }
 
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   * @throws NoteException
-   */
-  public function insertHoliday($date, $content): Holiday {
-    $holiday = new Holiday(Date::from($date), $content);
-    $inserted = $this->insertNote($holiday);
-    if (!$inserted) {
-      throw new NoteException('Holiday could not be inserted to the collection');
-    }
-    return $holiday;
-  }
-
-  public function insertNote(Note $note): bool {
+  public function insertNote(Event $note): bool {
     $inserted = false;
     if (!$this->containsNote($note)) {
       $this->collection[] = $note;
@@ -59,14 +55,14 @@ class NoteCollection extends AbstractNoteCollection {
    * @param  CalendarDateInfo $notes
    * @return $this 
    */
-  public function mergeNotes(NoteCollection $notes) {
+  public function mergeNotes(EventCollection $notes) {
     foreach ($notes as $note) {
       $this->insertNote($note);
     }
     return $this;
   }
 
-  public function containsNote(Note $note): bool {
+  public function containsNote(Event $note): bool {
     $contains = false;
     foreach ($this->collection as $n) {
       $contains = $note == $n;
@@ -75,32 +71,6 @@ class NoteCollection extends AbstractNoteCollection {
       }
     }
     return $contains;
-  }
-
-  public function getNotesForDate($date): array {
-    $notes = [];
-    $parsed = Date::from($date);
-    foreach ($this->collection as $note) {
-      if ($note->dateMatchesWith($parsed)) {
-        $notes[] = $note;
-      }
-    }
-    return $notes;
-  }
-
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   * @throws NoteException
-   */
-  public function insertBirthday(int $day, int $month, $person): BirthDay {
-    $birthDay = new BirthDay($month, $day, $person);
-    $inserted = $this->insertNote($birthDay);
-    if (!$inserted) {
-      throw new NoteException('Birthday could not be inserted to the collection');
-    }
-    return $birthDay;
   }
 
   /**
@@ -112,6 +82,22 @@ class NoteCollection extends AbstractNoteCollection {
     return array_filter($this->collection, function ($item) {
       return $item instanceof BirthDay;
     });
+  }
+  /**
+   * Checks if the note collection is empty
+   * 
+   * @return bool true if the collection is not empty and false otherwise
+   */
+  public function notEmpty(): bool {
+    return !empty($this->collection);
+  }
+  /**
+   * Returns all notes stored
+   * 
+   * @return Holiday[] all holiday notes stored
+   */
+  public function toArray(): array {
+    return $this->collection;
   }
 
   /**

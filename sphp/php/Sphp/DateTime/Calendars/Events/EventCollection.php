@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Notes;
+namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Notes\Exceptions\NoteException;
+use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
 
 /**
  * Description of NoteCollection
@@ -20,57 +20,61 @@ use Sphp\DateTime\Calendars\Notes\Exceptions\NoteException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractNoteCollection implements \Iterator {
+class EventCollection extends AbstractEventCollection {
 
   /**
-   * @var Note[] 
+   * 
+   * @param  string $person
+   * @return BirthDay inserted instance
+   * @throws NoteException
    */
-  private $collection = [];
-
-  /**
-   * Constructor
-   */
-  public function __construct() {
-    $this->collection = [];
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->collection);
-  }
-
-  public function insertNote(Note $note): bool {
-    $inserted = false;
-    if (!$this->containsNote($note)) {
-      $this->collection[] = $note;
-      $inserted = true;
+  public function insertHoliday($date, $content): Holiday {
+    $holiday = new Holiday(Date::from($date), $content);
+    $inserted = $this->insertNote($holiday);
+    if (!$inserted) {
+      throw new NoteException('Holiday could not be inserted to the collection');
     }
-    return $inserted;
+    return $holiday;
   }
+
 
   /**
    * 
    * @param  CalendarDateInfo $notes
    * @return $this 
    */
-  public function mergeNotes(NoteCollection $notes) {
+  public function mergeNotes(EventCollection $notes) {
     foreach ($notes as $note) {
       $this->insertNote($note);
     }
     return $this;
   }
 
-  public function containsNote(Note $note): bool {
-    $contains = false;
-    foreach ($this->collection as $n) {
-      $contains = $note == $n;
-      if ($contains) {
-        break;
+
+  public function getNotesForDate($date): array {
+    $notes = [];
+    $parsed = Date::from($date);
+    foreach ($this as $note) {
+      if ($note->dateMatchesWith($parsed)) {
+        $notes[] = $note;
       }
     }
-    return $contains;
+    return $notes;
+  }
+
+  /**
+   * 
+   * @param  string $person
+   * @return BirthDay inserted instance
+   * @throws NoteException
+   */
+  public function insertBirthday(int $day, int $month, $person): BirthDay {
+    $birthDay = new BirthDay($month, $day, $person);
+    $inserted = $this->insertNote($birthDay);
+    if (!$inserted) {
+      throw new NoteException('Birthday could not be inserted to the collection');
+    }
+    return $birthDay;
   }
 
   /**
