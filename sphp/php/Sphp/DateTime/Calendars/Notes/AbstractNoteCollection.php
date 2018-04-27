@@ -20,29 +20,25 @@ use Sphp\DateTime\Calendars\Notes\Exceptions\NoteException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class NoteCollection extends AbstractNoteCollection {
+abstract class AbstractNoteCollection implements \Iterator {
 
+  /**
+   * @var Note[] 
+   */
+  private $collection = [];
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    $this->collection = [];
+  }
 
   /**
    * Destructor
    */
   public function __destruct() {
     unset($this->collection);
-  }
-
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   * @throws NoteException
-   */
-  public function insertHoliday($date, $content): Holiday {
-    $holiday = new Holiday(Date::from($date), $content);
-    $inserted = $this->insertNote($holiday);
-    if (!$inserted) {
-      throw new NoteException('Holiday could not be inserted to the collection');
-    }
-    return $holiday;
   }
 
   public function insertNote(Note $note): bool {
@@ -75,32 +71,6 @@ class NoteCollection extends AbstractNoteCollection {
       }
     }
     return $contains;
-  }
-
-  public function getNotesForDate($date): array {
-    $notes = [];
-    $parsed = Date::from($date);
-    foreach ($this->collection as $note) {
-      if ($note->dateMatchesWith($parsed)) {
-        $notes[] = $note;
-      }
-    }
-    return $notes;
-  }
-
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   * @throws NoteException
-   */
-  public function insertBirthday(int $day, int $month, $person): BirthDay {
-    $birthDay = new BirthDay($month, $day, $person);
-    $inserted = $this->insertNote($birthDay);
-    if (!$inserted) {
-      throw new NoteException('Birthday could not be inserted to the collection');
-    }
-    return $birthDay;
   }
 
   /**

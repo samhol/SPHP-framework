@@ -26,8 +26,10 @@ class BirthDay extends AnnualHoliday {
   /**
    * Constructor
    * 
-   * @param DateInterface $date 
+   * @param int $month
+   * @param int $day
    * @param string $name
+   * @param int $yearOfBirth
    */
   public function __construct(int $month, int $day, string $name, int $yearOfBirth = null) {
     parent::__construct($month, $day, $name);
