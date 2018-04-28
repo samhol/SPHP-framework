@@ -22,6 +22,30 @@ use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
  */
 class EventCollection extends AbstractEventCollection {
 
+  private $listeners = [];
+
+  public function addListener( $l) {
+    $this->listeners[] = $l;
+  }
+
+  public function triggerInsert(Event $event) {
+    foreach ($this->listeners as $listener) {
+      if ($listener instanceof CalendarEventListener) {
+        $listener->onEventInsert($event);
+      } else {
+        $listener($event);
+      }
+    }
+  }
+
+  public function insertEvent(Event $event): bool {
+    $inserted = parent::insertEvent($event);
+    if ($inserted) {
+      $this->triggerInsert($event);
+    }
+    return $inserted;
+  }
+
   /**
    * 
    * @param  string $person
@@ -37,19 +61,38 @@ class EventCollection extends AbstractEventCollection {
     return $holiday;
   }
 
+  /**
+   * 
+   * @param  int $month
+   * @param  int $day
+   * @param  string $name
+   * @return AnnualHoliday
+   * @throws NoteException
+   */
+  public function insertAnnualHoliday(int $month, int $day, string $name): AnnualHoliday {
+    $holiday = Events::annualHoliday($month, $day, $name);
+    $inserted = $this->insertEvent($holiday);
+    if (!$inserted) {
+      throw new NoteException('Annual Holiday could not be inserted to the collection');
+    }
+    return $holiday;
+  }
 
   /**
    * 
-   * @param  CalendarDateInfo $notes
-   * @return $this 
+   * @param  string $format
+   * @param  string $name
+   * @return VaryingAnnualHoliday
+   * @throws NoteException
    */
-  public function mergeEvents(EventCollection $notes) {
-    foreach ($notes as $note) {
-      $this->insertEvent($note);
+  public function insertVaryingAnnualHoliday(string $format, string $name): VaryingAnnualHoliday {
+    $holiday = Events::varyingAnnualHoliday($format, $name);
+    $inserted = $this->insertEvent($holiday);
+    if (!$inserted) {
+      throw new NoteException('Varying Annual Holiday could not be inserted to the collection');
     }
-    return $this;
+    return $holiday;
   }
-
 
   public function getNotesForDate($date): array {
     $notes = [];
@@ -68,65 +111,13 @@ class EventCollection extends AbstractEventCollection {
    * @return BirthDay inserted instance
    * @throws NoteException
    */
-  public function insertBirthday(int $day, int $month, $person): BirthDay {
-    $birthDay = new BirthDay($month, $day, $person);
+  public function insertBirthday(int $month, int $day, $person, int $yearOfBirth = null): BirthDay {
+    $birthDay = new BirthDay($month, $day, $person, $yearOfBirth);
     $inserted = $this->insertEvent($birthDay);
     if (!$inserted) {
       throw new NoteException('Birthday could not be inserted to the collection');
     }
     return $birthDay;
-  }
-
-  /**
-   * Returns all birthday notes stored
-   * 
-   * @return BirthDay[] all birthday notes stored
-   */
-  public function getBirthdays(): array {
-    return array_filter($this->collection, function ($item) {
-      return $item instanceof BirthDay;
-    });
-  }
-
-  /**
-   * Returns the current note
-   * 
-   * @return mixed the current note
-   */
-  public function current() {
-    return current($this->collection);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->collection);
-  }
-
-  /**
-   * Return the key of the current note
-   * 
-   * @return mixed the key of the current note
-   */
-  public function key() {
-    return key($this->collection);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->collection);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->collection);
   }
 
 }

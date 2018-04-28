@@ -1,10 +1,18 @@
 <?php
 
 namespace Sphp\Html\Apps\Calendars;
-$data = new \Sphp\DateTime\Calendars\Fi\Calendar();
+
+use Sphp\DateTime\Calendars\Events\EasterHolidays;
+use Sphp\DateTime\Calendars\Events\Fi\Holidays;
+use Sphp\DateTime\Calendars\Calendar;
+
+$easter = new EasterHolidays();
+$fi = new Holidays();
+$data = new Calendar();
+$data->useEvents($fi);
 //$data->setBirthDay('', $name);
-$data->createYear(2017);
-$data->createYear(2018);
+//$fi->createYear();
+$fi->createYear(2018);
 echo Factory::getMonth(6, 2017)->useCalendar($data);
 echo Factory::getMonth(7, 2017)->useCalendar($data);
 echo Factory::getMonth(8, 2017)->useCalendar($data);

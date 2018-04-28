@@ -47,8 +47,12 @@ class DateInfo implements Content {
     $popup = new Popup();
     $date = $this->calendarDate->getDate()->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
-    foreach ($this->calendarDate->getEvents() as $note) {
-      $popup->append("<br>" . $note->eventAsString());
+    foreach ($this->calendarDate->getEvents() as $event) {
+      if ($event instanceof \Sphp\DateTime\Calendars\Events\BirthDay) {
+        $popup->append("<br>" . $event->eventAsString($this->calendarDate->getDate()->getYear()));
+      } else {
+      $popup->append("<br>" . $event->eventAsString());
+      }
     }
     //$popup->append($this->calendarDate->getNotes());
 

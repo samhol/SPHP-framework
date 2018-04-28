@@ -29,11 +29,15 @@ class WeeklyHoliday extends AbstractHoliday implements WeeklyNote {
   /**
    * Constructor
    * 
-   * @param DateInterface $date 
+   * @param int $weekday
    * @param string $name
+   * @param DateInterface $starts
    */
   public function __construct(int $weekday, string $name, DateInterface $starts = null) {
     parent::__construct($name);
+    if (0 > $weekday || $weekday > 7) {
+      throw new Exceptions\NoteException("Parameter weekday must be between 1-7 ($weekday given)");
+    }
     $this->weekday = $weekday;
   }
 

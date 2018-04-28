@@ -34,7 +34,7 @@ class CalendarDate implements DateInterface {
   /**
    * @var DateEvents 
    */
-  private $notes;
+  private $events;
 
   /**
    * @var mixed
@@ -53,14 +53,14 @@ class CalendarDate implements DateInterface {
     } catch (Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    $this->notes = new DateEvents($this->date);
+    $this->events = new DateEvents($this->date);
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->date, $this->notes, $this->data);
+    unset($this->date, $this->events, $this->data);
   }
 
   public function __toString(): string {
@@ -103,17 +103,17 @@ class CalendarDate implements DateInterface {
   }
 
   public function getEvents(): DateEvents {
-    return $this->notes;
+    return $this->events;
   }
 
 
-  public function mergeNotes(DateEvents $events) {
-    $this->notes->merge($events->getNotes());
+  public function mergeDateEvents(DateEvents $events) {
+    $this->events->merge($events->getNotes());
     return $this;
   }
 
   public function addNote(Event $note) {
-    $this->notes->addNote($note);
+    $this->events->addNote($note);
     return $this;
   }
 
@@ -123,7 +123,7 @@ class CalendarDate implements DateInterface {
    * @return bool 
    */
   public function containsEvent(Event $note): bool {
-    return $this->notes->contains($note);
+    return $this->events->contains($note);
   }
 
   public function toDateString(): string {

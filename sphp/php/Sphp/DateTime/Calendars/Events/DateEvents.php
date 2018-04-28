@@ -10,10 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use IteratorAggregate;
 use Sphp\DateTime\Date;
-use Traversable;
-use Sphp\DateTime\Exceptions\DateTimeException;
 
 /**
  * Collection for calendar date notes
@@ -22,7 +19,7 @@ use Sphp\DateTime\Exceptions\DateTimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DateEvents extends AbstractEventCollection {
+class DateEvents extends AbstractEventCollection implements CalendarEventListener {
 
   /**
    * @var Date 
@@ -46,7 +43,6 @@ class DateEvents extends AbstractEventCollection {
     unset($this->date);
     parent::__destruct();
   }
-  
 
   /**
    * Checks for a national holiday
@@ -149,10 +145,15 @@ class DateEvents extends AbstractEventCollection {
     $output = "$this->date:\n";
     //print_r($this->notes);
     foreach ($this as $note) {
-      // print_r($note);
-      $output .= "  {$note->noteAsString()}\n";
+      if ($note instanceof Event) {
+        $output .= "  {$note->eventAsString()}\n";
+      }
     }
     return $output;
+  }
+
+  public function onEventInsert(Event $event) {
+    $this->insertEvent($event);
   }
 
 }

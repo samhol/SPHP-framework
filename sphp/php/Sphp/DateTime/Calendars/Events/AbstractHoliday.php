@@ -54,7 +54,7 @@ abstract class AbstractHoliday implements HolidayInterface {
   }
 
   public function __toString(): string {
-    return $this->noteAsString();
+    return $this->eventAsString();
   }
 
   public function eventAsString(): string {
@@ -83,7 +83,7 @@ abstract class AbstractHoliday implements HolidayInterface {
   /**
    * 
    * @param type $name
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function setName($name) {
     $this->name = $name;
@@ -119,7 +119,7 @@ abstract class AbstractHoliday implements HolidayInterface {
   /**
    * 
    * @param  bool $national
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function setNationalHoliday(bool $national = true) {
     $this->national = $national;

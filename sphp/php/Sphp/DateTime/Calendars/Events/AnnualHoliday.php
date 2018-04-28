@@ -64,7 +64,6 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
     return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
   }
 
-
   /**
    * Creates a new instance from a date string
    * 

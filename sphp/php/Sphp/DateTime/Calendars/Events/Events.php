@@ -19,7 +19,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Holidays {
+class Events {
 
   /**
    * Creates a new Holiday instance from a date string
@@ -35,6 +35,9 @@ class Holidays {
 
   public static function annualHoliday(int $month, int $day, string $name): AnnualHoliday {
     return new AnnualHoliday($month, $day, $name);
+  }
+  public static function varyingAnnualHoliday(string $format, string $name): VaryingAnnualHoliday {
+    return new VaryingAnnualHoliday($format, $name);
   }
 
   public static function birthday(int $month, int $day, string $name, int $yearOfBirth = null): BirthDay {

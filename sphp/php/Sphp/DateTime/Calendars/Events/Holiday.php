@@ -24,24 +24,9 @@ use Sphp\DateTime\Exceptions\DateTimeException;
 class Holiday extends AbstractHoliday {
 
   /**
-   * @var bool 
-   */
-  private $national = false;
-
-  /**
-   * @var bool 
-   */
-  private $flagDay = false;
-
-  /**
    * @var Date 
    */
   private $date;
-
-  /**
-   * @var string 
-   */
-  private $name;
 
   /**
    * Constructor
@@ -70,50 +55,8 @@ class Holiday extends AbstractHoliday {
     return $this->date;
   }
 
-  /**
-   * 
-   * @return bool
-   */
   public function dateMatchesWith(DateInterface $date): bool {
     return $this->date->matchesWith($date);
-  }
-
-  /**
-   * Creates a new instance from a date string
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @param  string $name name of the holiday 
-   * @return Holiday new instance
-   * @throws DateTimeException if creation fails
-   */
-  public static function from($date, string $name): Holiday {
-    try {
-      return new static(Date::from($date), $name);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-  }
-
-  /**
-   * Creates a new instance from a unix timestamp
-   * 
-   * @param  int $timestamp unix timestamp
-   * @param  string $name name of the holiday 
-   * @return Holiday new instance
-   */
-  public static function fromTimestamp(int $timestamp, string $name): Holiday {
-    return new static(Date::fromTimestamp($timestamp), $name);
-  }
-
-  /**
-   * Creates a new instance from a date string
-   * 
-   * @param  string $dateString date string
-   * @param  string $name name of the holiday 
-   * @return Holiday new instance
-   */
-  public static function fromDateString(string $dateString, string $name): Holiday {
-    return new static(Date::fromString($dateString), $name);
   }
 
 }
