@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
+use Sphp\DateTime\Calendars\Events\Exceptions\CalendarEventException;
 
 /**
  * Description of NoteCollection
@@ -22,41 +22,17 @@ use Sphp\DateTime\Calendars\Events\Exceptions\NoteException;
  */
 class EventCollection extends AbstractEventCollection {
 
-  private $listeners = [];
-
-  public function addListener( $l) {
-    $this->listeners[] = $l;
-  }
-
-  public function triggerInsert(Event $event) {
-    foreach ($this->listeners as $listener) {
-      if ($listener instanceof CalendarEventListener) {
-        $listener->onEventInsert($event);
-      } else {
-        $listener($event);
-      }
-    }
-  }
-
-  public function insertEvent(Event $event): bool {
-    $inserted = parent::insertEvent($event);
-    if ($inserted) {
-      $this->triggerInsert($event);
-    }
-    return $inserted;
-  }
-
   /**
    * 
    * @param  string $person
    * @return BirthDay inserted instance
-   * @throws NoteException
+   * @throws CalendarEventException
    */
   public function insertHoliday($date, $content): Holiday {
     $holiday = new Holiday(Date::from($date), $content);
     $inserted = $this->insertEvent($holiday);
     if (!$inserted) {
-      throw new NoteException('Holiday could not be inserted to the collection');
+      throw new CalendarEventException('Holiday could not be inserted to the collection');
     }
     return $holiday;
   }
@@ -67,31 +43,62 @@ class EventCollection extends AbstractEventCollection {
    * @param  int $day
    * @param  string $name
    * @return AnnualHoliday
-   * @throws NoteException
+   * @throws CalendarEventException
    */
   public function insertAnnualHoliday(int $month, int $day, string $name): AnnualHoliday {
     $holiday = Events::annualHoliday($month, $day, $name);
     $inserted = $this->insertEvent($holiday);
     if (!$inserted) {
-      throw new NoteException('Annual Holiday could not be inserted to the collection');
+      throw new CalendarEventException('Annual Holiday could not be inserted to the collection');
     }
     return $holiday;
   }
 
   /**
    * 
+   * @param  int $month
+   * @param  int $day
+   * @param  string $name
+   * @return AnnualHoliday
+   * @throws CalendarEventException
+   */
+  public function insertWeeklyEvent(int $week, string $name): WeeklyHoliday {
+    $holiday = Events::annualHoliday($month, $day, $name);
+    $inserted = $this->insertEvent($holiday);
+    if (!$inserted) {
+      throw new CalendarEventException('Annual Holiday could not be inserted to the collection');
+    }
+    return $holiday;
+  }
+  /**
+   * 
    * @param  string $format
    * @param  string $name
    * @return VaryingAnnualHoliday
-   * @throws NoteException
+   * @throws CalendarEventException
    */
   public function insertVaryingAnnualHoliday(string $format, string $name): VaryingAnnualHoliday {
     $holiday = Events::varyingAnnualHoliday($format, $name);
     $inserted = $this->insertEvent($holiday);
     if (!$inserted) {
-      throw new NoteException('Varying Annual Holiday could not be inserted to the collection');
+      throw new CalendarEventException('Varying Annual Holiday could not be inserted to the collection');
     }
     return $holiday;
+  }
+  /**
+   * 
+   * @param  string $format
+   * @param  string $name
+   * @return VaryingAnnualHoliday
+   * @throws CalendarEventException
+   */
+  public function insertNote( $date, string $name, string $description = null): Note {
+    $note = Events::note($date, $name,$description);
+    $inserted = $this->insertEvent($note);
+    if (!$inserted) {
+      throw new CalendarEventException('Note could not be inserted to the collection');
+    }
+    return $note;
   }
 
   public function getNotesForDate($date): array {
@@ -109,13 +116,13 @@ class EventCollection extends AbstractEventCollection {
    * 
    * @param  string $person
    * @return BirthDay inserted instance
-   * @throws NoteException
+   * @throws CalendarEventException
    */
   public function insertBirthday(int $month, int $day, $person, int $yearOfBirth = null): BirthDay {
     $birthDay = new BirthDay($month, $day, $person, $yearOfBirth);
     $inserted = $this->insertEvent($birthDay);
     if (!$inserted) {
-      throw new NoteException('Birthday could not be inserted to the collection');
+      throw new CalendarEventException('Birthday could not be inserted to the collection');
     }
     return $birthDay;
   }

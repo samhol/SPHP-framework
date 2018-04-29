@@ -49,7 +49,7 @@ class BirthDay extends AnnualHoliday {
     $output = "Birthday of {$this->getName()}";
     if (is_int($currentYear) && is_int($this->year)) {
       $age = $currentYear - $this->year;
-      $output .= "(Age $age)";
+      $output .= " (was born $age years ago)";
     }
     //$output .= $this->getDate()->format('l, Y-m-d');
     if ($this->isNationalHoliday()) {

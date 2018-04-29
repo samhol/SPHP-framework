@@ -14,6 +14,8 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Sphp\DateTime\Exceptions\DateTimeException;
 use Exception;
+use DateInterval;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Implements a date object
@@ -32,15 +34,31 @@ class Date implements DateInterface {
   /**
    * Constructor
    * 
-   * @param DateTimeInterface $dateTime
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @throws DateTimeException if date cannot be parsed from input
    */
-  public function __construct(DateTimeInterface $dateTime = null) {
-    if ($dateTime === null) {
-      $dateTime = new DateTimeImmutable();
-    } else if (!$dateTime instanceof DateTimeImmutable) {
-      $dateTime = DateTimeImmutable::createFromMutable($dateTime);
+  public function __construct($date = null) {
+    try {
+      $dateTime = null;
+      if (is_string($date)) {
+        $dateTime = new DateTimeImmutable($date);
+      } else if (is_int($date)) {
+        $dateTime = new DateTimeImmutable();
+        $dateTime->setTimestamp($date);
+      } else if ($date instanceof DateInterface) {
+        $dateTime = new DateTimeImmutable($date->toDateString());
+      } else if ($date instanceof DateTimeInterface) {
+        $dateTime = $date;
+      } else if (is_null($date)) {
+        $dateTime = new DateTimeImmutable();
+      }
+    } catch (\Exception $ex) {
+      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    $this->dateTime = $dateTime;
+    if ($dateTime === null) {
+      throw new DateTimeException(static::class . ' object cannot be parsed from input type');
+    }
+    $this->dateTime = new DateTimeImmutable($dateTime->format('Y-m-d'));
   }
 
   /**
@@ -148,10 +166,28 @@ class Date implements DateInterface {
   }
 
   /**
+   * Returns the difference in days between this and another date
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return int the difference in days
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function diff($date): int {
+    $dt = Date::from($date)->getDateTime();
+    $diff = $this->dateTime->diff($dt);
+    $result = $diff->d;
+    if ($diff->invert === 1) {
+      $result = -$result;
+    }
+    return $result;
+  }
+
+  /**
    * Checks if the input date matches the date 
    * 
-   * @param  mixed $date
+   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
    * @return bool true if matches and false otherwise
+   * @throws DateTimeException if date cannot be parsed from input
    */
   public function matchesWith($date): bool {
     if (!$date instanceof DateInterface) {
@@ -162,6 +198,28 @@ class Date implements DateInterface {
       }
     }
     return $date->format('Y-m-d') === $this->format('Y-m-d');
+  }
+
+  /**
+   * Checks if this date is later than the given one
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @return bool true if this date is later than the given one and false otherwise
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function isLaterThan($date): bool {
+    return $this->diff($date) < 0;
+  }
+
+  /**
+   * Checks if this date is earlier than the given one
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @return bool true if this date is earlier than the given one and false otherwise
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function isEarlierThan($date): bool {
+    return $this->diff($date) > 0;
   }
 
   /**
@@ -225,32 +283,22 @@ class Date implements DateInterface {
    * @return Date new instance
    */
   public function modify(string $modify): Date {
+    $thrower = ErrorToExceptionThrower::getDefault();
+    $thrower->start();
     $prev = $this->dateTime->modify($modify);
+    $thrower->stop();
     return new Date($prev);
   }
 
   /**
    * Creates a new instance
    * 
-   * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @return Date new instance
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function from($date): Date {
-    if (is_string($date)) {
-      return static::fromString($date);
-    } else if (is_int($date)) {
-      return static::fromTimestamp($date);
-    } else if ($date instanceof DateInterface) {
-      return static::fromString($date->toDateString());
-    } else if ($date instanceof DateTimeInterface) {
-      return new Date($date);
-    } else if (is_null($date)) {
-      new static();
-    } else {
-      throw new DateTimeException(static::class . ' object cannot be parsed from input');
-    }
+    return new Date($date);
   }
 
   /**
@@ -272,28 +320,6 @@ class Date implements DateInterface {
       $day = date('j');
     }
     $date = new DateTimeImmutable("$year-$month-$day");
-    return new static($date);
-  }
-
-  /**
-   * Creates a new instance from a datetime string
-   * 
-   * @param  string $date datetime string
-   * @return Date new instance
-   */
-  public static function fromString(string $date): Date {
-    return new static(new DateTimeImmutable($date));
-  }
-
-  /**
-   * Creates a new instance from unix timestamp
-   * 
-   * @param  int $unixtimestamp unix timestamp
-   * @return Date new instance
-   */
-  public static function fromTimestamp(int $unixtimestamp): Date {
-    $date = new DateTimeImmutable();
-    $date->setTimestamp($unixtimestamp);
     return new static($date);
   }
 

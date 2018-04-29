@@ -8,17 +8,21 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Events\Exceptions;
-
-use Sphp\DateTime\Exceptions\DateTimeException;
+namespace Sphp\DateTime\Calendars\Events;
 
 /**
- * Description of NoteException
+ * Defines a weekly event
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class NoteException extends DateTimeException {
-  
+interface WeeklyEvent extends Event {
+
+  /**
+   * Returns the number of the weekday
+   * 
+   * @return int the number of the weekday
+   */
+  public function getWeekDay(): int;
 }

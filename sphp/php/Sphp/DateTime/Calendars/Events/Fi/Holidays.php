@@ -13,8 +13,9 @@ namespace Sphp\DateTime\Calendars\Events\Fi;
 use Sphp\DateTime\Calendars\Calendar as BaseCalendar;
 use Sphp\DateTime\Calendars\EasterCalendar;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Events\EventCollection;
+use Sphp\DateTime\Calendars\Events\EventDispatcher;
 use Sphp\DateTime\Calendars\Events\Events;
+use Sphp\DateTime\Calendars\Events\EasterHolidays;
 
 //use Sphp\DateTime\Calendars\Calendar;
 
@@ -25,21 +26,28 @@ use Sphp\DateTime\Calendars\Events\Events;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Holidays extends EventCollection {
+class Holidays extends EventDispatcher {
+
+  /**
+   * @var EasterHolidays
+   */
+  private $easter;
 
   /**
    * Constructor
+   * 
+   * @param EasterHolidays $easter
    */
-  public function __construct() {
+  public function __construct(EasterHolidays $easter = null) {
+    if ($easter === null) {
+      $easter = new EasterHolidays();
+    }
+    $this->easter = $easter;
     parent::__construct();
+    $this->init();
   }
 
-  /**
-   * 
-   * @param  int $year
-   * @return Calendar
-   */
-  public function createYear(int $year) {
+  protected function init() {
     $this->insertEvent(Events::annualHoliday(1, 1, "New Year's Day")->setNationalHoliday());
     $this->insertEvent(Events::annualHoliday(1, 6, 'Epiphany')->setNationalHoliday());
     $this->insertBirthday(2, 5, 'Johan Ludvig Runeberg', 1804)->setFlagDay(true);
@@ -56,7 +64,7 @@ class Holidays extends EventCollection {
     $this->insertBirthday(7, 6, 'Eino Leino')->setFlagDay(true);
     $this->insertBirthday(10, 10, 'Aleksis Kivi')->setFlagDay(true);
     $this->insertAnnualHoliday(10, 10, 'Day of Finnish literature');
-    $this->insertHoliday(static::getAllSaintsDay($year), 'All Saints Day')->setNationalHoliday();
+    $this->insertVaryingAnnualHoliday('%d-11-30 next Saturday', 'All Saints Day')->setNationalHoliday();
     $this->insertVaryingAnnualHoliday("November %d second sunday", "Father's Day")->setFlagDay(true);
     $this->insertAnnualHoliday(12, 6, 'Independence Day')->setFlagDay(true)->setNationalHoliday();
     $this->insertBirthday(12, 8, 'Jean Sibelius')->setFlagDay(true);
@@ -66,49 +74,9 @@ class Holidays extends EventCollection {
     return $this;
   }
 
-  public function january(int $year = null): Calendar {
-    $calendar = new Calendar();
-    $calendar->insertAnnualHoliday("$year-1-1", "New Year's Day")->setNationalHoliday();
-    $calendar->insertAnnualHoliday("$year-1-6", 'Epiphany')->setNationalHoliday();
-    return $calendar;
-  }
-
-  public function february(int $year = null): Calendar {
-    $calendar = new Calendar();
-    $calendar->setBirthDay("$year-2-5", 'Johan Ludvig Runeberg')->setFlagDay(true);
-    $calendar->insertAnnualHoliday("$year-2-28", 'Day of Kalevala')->setFlagDay(true);
-    return $calendar;
-  }
-
-  public function december(int $year = null): Calendar {
-    $calendar = new Calendar();
-    $calendar->insertAnnualHoliday("$year-12-6", 'Independence Day')->setFlagDay(true)->setNationalHoliday();
-    $calendar->setBirthDay("$year-12-8", 'Jean Sibelius')->setFlagDay(true);
-    $calendar->insertAnnualHoliday("$year-12-24", 'Christmas Eve');
-    $calendar->insertAnnualHoliday("$year-12-25", 'Christmas Day')->setNationalHoliday();
-    $calendar->insertAnnualHoliday("$year-12-26", 'Boxing Day')->setNationalHoliday();
-    return $calendar;
-  }
-
-  public static function getAllSaintsDay(int $year = null): Date {
-    if ($year === null) {
-      $year = (int) date('Y');
-    }
-    $f = Date::fromString("$year-10-31");
-    if (!$f->getWeekDay() === 6) {
-      $f = $f->modify('next Saturday')->jump(7);
-    }
-    return $f;
-  }
-
-  public static function getEasterCalendar(int $year = null): BaseCalendar {
-    $easterCalendar = EasterCalendar::build($year);
-    foreach ($easterCalendar as $day) {
-      if ($day instanceof \Sphp\DateTime\Calendars\Holiday) {
-        $day->setNationalHoliday(true);
-      }
-    }
-    return EasterCalendar::build($year);
+  public function setEasterFor(int $year = null) {
+    $this->mergeEvents($this->easter->create($year));
+    return $this;
   }
 
   public static function getSundays($y, $m = 1) {

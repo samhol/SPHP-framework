@@ -10,19 +10,39 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
+use Sphp\DateTime\DateInterface;
+
 /**
- * Defines a weekly event
+ * Description of WeeklyHoliday
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface WeeklyNote extends Event {
+class WeeklyNote extends AbstractNote {
 
   /**
-   * Returns the number of the weekday
-   * 
-   * @return int the number of the weekday
+   * @var int
    */
-  public function getWeekDay(): int;
+  private $weekdays;
+
+  /**
+   * Constructor
+   * 
+   * @param int[] $weekdays
+   * @param string $name
+   * @param string $description
+   */
+  public function __construct(array $weekdays, string $name, string $description = null) {
+    parent::__construct($name, $description);
+    /* if (0 > $weekday || $weekday > 7) {
+      throw new Exceptions\CalendarEventException("Parameter weekday must be between 1-7 ($weekday given)");
+      } */
+    $this->weekdays = $weekdays;
+  }
+
+  public function dateMatchesWith(DateInterface $date): bool {
+    return in_array($date->getWeekDay(), $this->weekdays, true);
+  }
+
 }

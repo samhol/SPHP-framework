@@ -19,7 +19,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeeklyHoliday extends AbstractHoliday implements WeeklyNote {
+class WeeklyHoliday extends AbstractHoliday implements WeeklyEvent {
 
   /**
    * @var int
@@ -36,7 +36,7 @@ class WeeklyHoliday extends AbstractHoliday implements WeeklyNote {
   public function __construct(int $weekday, string $name, DateInterface $starts = null) {
     parent::__construct($name);
     if (0 > $weekday || $weekday > 7) {
-      throw new Exceptions\NoteException("Parameter weekday must be between 1-7 ($weekday given)");
+      throw new Exceptions\CalendarEventException("Parameter weekday must be between 1-7 ($weekday given)");
     }
     $this->weekday = $weekday;
   }

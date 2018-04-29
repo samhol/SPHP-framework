@@ -22,7 +22,7 @@ use Iterator;
 abstract class AbstractEventCollection implements Iterator, EventCollectionInterface {
 
   /**
-   * @var Note[] 
+   * @var Event[] 
    */
   private $collection = [];
 

@@ -31,14 +31,14 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
    * 
    * @param  DateInterface $date 
    * @param  string $name
-   * @throws Exceptions\NoteException if constructor fails
+   * @throws Exceptions\CalendarEventException if constructor fails
    */
   public function __construct(int $month, int $day, string $name) {
     parent::__construct($name);
     if (0 > $month || $month > 12) {
-      throw new Exceptions\NoteException("Parameter month must be between 1-12 ($month given)");
+      throw new Exceptions\CalendarEventException("Parameter month must be between 1-12 ($month given)");
     } if (0 > $day || $day > 31) {
-      throw new Exceptions\NoteException("Parameter day must be between 1-31 ($day given)");
+      throw new Exceptions\CalendarEventException("Parameter day must be between 1-31 ($day given)");
     }
     $this->day = $day;
     $this->month = $month;
@@ -70,7 +70,7 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @param  string $name name of the holiday 
    * @return Holiday new instance
-   * @throws Exceptions\NoteException if creation fails
+   * @throws Exceptions\CalendarEventException if creation fails
    */
   public static function from(int $month, int $day, string $name): AnnualHoliday {
     return new static($month, $day, $name);

@@ -21,28 +21,24 @@ use Sphp\DateTime\Date;
  */
 class EasterHolidays extends EventCollection {
 
-  private $years = [];
-
-  public function getNotesForDate($date): array {
-    $parsed = Date::from($date);
-    $this->buildYear($parsed->getYear());
-    return parent::getNotesForDate($date);
-  }
-
-  public function buildYear(int $year = null) {
+  /**
+   * 
+   * @param  int $year
+   * @return EventCollection
+   */
+  public function create(int $year = null): EventCollection {
     if ($year === null) {
       $year = (int) date('Y');
     }
-    if (!in_array($year, $this->years, true)) {
-      $this->years[] = $year;
-      $this->insertHoliday(static::getMaundyThursday($year), 'Maundy Thursday');
-      $this->insertHoliday(static::getGoodFriday($year), 'Good Friday')->setNationalHoliday();
-      $this->insertHoliday(static::getEasterSunday($year), 'Easter Sunday')->setNationalHoliday();
-      $this->insertHoliday(static::getEasterMonday($year), 'Easter Monday')->setNationalHoliday();
-      $this->insertHoliday(static::getAscensionDay($year), 'Ascension Day')->setNationalHoliday();
-      $this->insertHoliday(static::getPentecost($year), 'Pentecost');
-    }
-    return $this;
+    $collection = new EventCollection();
+    $sunday = static::getEasterSunday($year);
+    $collection->insertHoliday($sunday->jump(-3), 'Maundy Thursday');
+    $collection->insertHoliday($sunday->jump(-2), 'Good Friday')->setNationalHoliday();
+    $collection->insertHoliday($sunday, 'Easter Sunday')->setNationalHoliday();
+    $collection->insertHoliday($sunday->jump(1), 'Easter Monday')->setNationalHoliday();
+    $collection->insertHoliday($sunday->jump(39), 'Ascension Day')->setNationalHoliday();
+    $collection->insertHoliday($sunday->jump(49), 'Pentecost');
+    return $collection;
   }
 
   /**

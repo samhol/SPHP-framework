@@ -96,7 +96,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   private function buildExceptionMessage(Throwable $e): string {
     $heading = '<h2>' . get_class($e) . '</h2>';
     $ul = new \Sphp\Html\Lists\Ul();
-    $ul->append('<span class="note">Message: </span><span class="message">' . $e->getMessage() . '</span>')->addCssClass('message');
+    $ul->append('<span class="note">Message: </span><span class="message">' . $this->parsePath($e->getMessage()) . '</span>')->addCssClass('message');
     if ($this->showFile) {
       $ul->append('<span class="note">File:</span> <span class="file">' . $this->parsePath($e->getFile()) . '</span>');
       $ul->append('<span class="note">Line:</span> <span class="number">#' . $e->getLine() . '</span>');
