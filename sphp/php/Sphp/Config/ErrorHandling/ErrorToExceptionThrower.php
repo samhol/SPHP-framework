@@ -11,7 +11,6 @@
 namespace Sphp\Config\ErrorHandling;
 
 use ErrorException;
-use Sphp\Exceptions\ErrorException as SphpErrorException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Exception;
 
@@ -28,7 +27,7 @@ use Exception;
 class ErrorToExceptionThrower {
 
   /**
-   * @var ErrorToExceptionThrower 
+   * @var ErrorToExceptionThrower[]
    */
   private static $defaultInstance = [];
 
@@ -148,7 +147,7 @@ class ErrorToExceptionThrower {
    * @param  string $exceptionType
    * @return ErrorToExceptionThrower singleton instance
    */
-  public static function getDefault(string $exceptionType = SphpErrorException::class): ErrorToExceptionThrower {
+  public static function getDefault(string $exceptionType = ErrorException::class): ErrorToExceptionThrower {
     if (!array_key_exists($exceptionType, self::$defaultInstance)) {
       self::$defaultInstance[$exceptionType] = new self($exceptionType);
     }
