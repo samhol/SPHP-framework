@@ -5,7 +5,7 @@ namespace Sphp\Config\ErrorHandling;
 $apigen = \Sphp\Manual\api();
 $phpManual = \Sphp\Manual\php();
 $nsLink = $apigen->namespaceLink(__NAMESPACE__);
-$errorExceptionThrower = $apigen->classLinker(ErrorExceptionThrower::class);
+$errorExceptionThrower = $apigen->classLinker(ErrorToExceptionThrower::class);
 $try_catch = $phpManual->hyperLink("language.exceptions.php", "try/catch");
 $set_error_handler = $phpManual->functionLink("set_error_handler");
 $e_fatal = $phpManual->constantLink("E_FATAL");

@@ -12,6 +12,8 @@ namespace Sphp\Config\ErrorHandling;
 
 use ErrorException;
 use Sphp\Exceptions\ErrorException as SphpErrorException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Exception;
 
 /**
  * Implements an Error Exception thrower
@@ -23,7 +25,12 @@ use Sphp\Exceptions\ErrorException as SphpErrorException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ErrorExceptionThrower {
+class ErrorToExceptionThrower {
+
+  /**
+   * @var ErrorToExceptionThrower 
+   */
+  private static $defaultInstance = [];
 
   /**
    * @var string
@@ -35,7 +42,7 @@ class ErrorExceptionThrower {
    * 
    * @param string $exceptionType
    */
-  public function __construct(string $exceptionType = SphpErrorException::class) {
+  public function __construct(string $exceptionType = ErrorException::class) {
     $this->setExceptionType($exceptionType);
   }
 
@@ -53,12 +60,11 @@ class ErrorExceptionThrower {
    * 
    * @param  string $exceptionType
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the given exception type is invalid
+   * @throws InvalidArgumentException if the given exception type is invalid
    */
   public function setExceptionType(string $exceptionType) {
-    if (!is_subclass_of($exceptionType, ErrorException::class)) {
-      var_dump($exceptionType);
-      throw new \Sphp\Exceptions\InvalidArgumentException('Invalid exception type');
+    if (!is_a($exceptionType, \Throwable::class, true)) {
+      throw new InvalidArgumentException("'$exceptionType' is invalid exception type");
     }
     $this->exceptionType = $exceptionType;
     return $this;
@@ -113,18 +119,40 @@ class ErrorExceptionThrower {
    * If the PHP command is called with @ preceeding it, then it will be ignored 
    * here as well.
    * 
-   * @param  int $errno the level of the error raised, as an integer
-   * @param  string $errstr the error message
-   * @param  string $errfile the filename where the exception is thrown
-   * @param  int $errline the line number where the exception is thrown
-   * @throws ErrorException
+   * @param int $severity the level of the error raised, as an integer
+   * @param string $message the error message
+   * @param string $file the filename where the exception is thrown
+   * @param int $line the line number where the exception is thrown
+   * @return bool false if error reportion is turnad of for the error severity class
+   * @throws Exception
    */
-  public function __invoke(int $errno, string $errstr, string $errfile, int $errline): bool {
-    if (!(error_reporting() & $errno)) {
+  public function __invoke(int $severity, string $message, string $file, int $line): bool {
+    if (!(error_reporting() & $severity)) {
       return false;
     }
-    $type = $this->getExceptionType();
-    throw new ErrorException($errfile, $errline, $errno, $errstr, $errline);
+    if ($this->exceptionType !== null && !is_subclass_of($this->exceptionType, ErrorException::class)) {
+      try {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+      } catch (\Exception $ex) {
+        $type = $this->getExceptionType();
+        throw new $type($ex->getMessage(), $ex->getCode(), $ex);
+      }
+    } else {
+      throw new ErrorException($message, 0, $severity, $file, $line);
+    }
+  }
+
+  /**
+   * Returns the singleton instance
+   * 
+   * @param  string $exceptionType
+   * @return ErrorToExceptionThrower singleton instance
+   */
+  public static function getDefault(string $exceptionType = SphpErrorException::class): ErrorToExceptionThrower {
+    if (!array_key_exists($exceptionType, self::$defaultInstance)) {
+      self::$defaultInstance[$exceptionType] = new self($exceptionType);
+    }
+    return self::$defaultInstance[$exceptionType];
   }
 
 }

@@ -4,7 +4,7 @@ namespace Sphp\Config\ErrorHandling;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $errorDispatcher = \Sphp\Manual\api()->classLinker(ErrorDispatcher::class);
-$errorExceptionThrower = \Sphp\Manual\api()->classLinker(ErrorExceptionThrower::class);
+$errorExceptionThrower = \Sphp\Manual\api()->classLinker(ErrorToExceptionThrower::class);
 $try_catch = \Sphp\Manual\php()->hyperLink('language.exceptions.php', 'try/catch');
 $set_exception_handler = \Sphp\Manual\php()->functionLink('set_exception_handler');
 $error = \Sphp\Manual\php()->classLinker(\Error::class);
