@@ -14,7 +14,6 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Sphp\DateTime\Exceptions\DateTimeException;
 use Exception;
-use DateInterval;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
@@ -207,25 +206,35 @@ class Date implements DateInterface {
    * @return bool true if this date is later than the given one and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public function isLaterThan($date): bool {
-    return $this->diff($date) < 0;
+  public function isLaterThan($date, bool $strict = true): bool {
+    if ($strict) {
+      return $this->diff($date) < 0;
+    } else {
+      return $this->diff($date) <= 0;
+    }
   }
 
   /**
    * Checks if this date is earlier than the given one
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @param bool $strict true if equality is not allowed, false otherwise
    * @return bool true if this date is earlier than the given one and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public function isEarlierThan($date): bool {
-    return $this->diff($date) > 0;
+  public function isEarlierThan($date, bool $strict = true): bool {
+    if ($strict) {
+      return $this->diff($date) > 0;
+    } else {
+      return $this->diff($date) >= 0;
+    }
   }
 
   /**
    * Returns date formatted according to given format
    * 
    * @param  string $format the format of the outputted date string
+   * @param bool $strict true if equality is not allowed, false otherwise
    * @return string date formatted according to given format
    * @throws DateTimeException if formatting fails
    */
