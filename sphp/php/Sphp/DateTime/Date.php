@@ -49,7 +49,7 @@ class Date implements DateInterface {
       } else if ($date instanceof DateTimeInterface) {
         $dateTime = $date;
       } else if (is_null($date)) {
-        $dateTime = new DateTimeImmutable();
+        $dateTime = new DateTimeImmutable('today');
       }
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
@@ -290,13 +290,14 @@ class Date implements DateInterface {
    *  
    * @param  string $modify
    * @return Date new instance
+   * @throws DateTimeException if formatting fails
    */
   public function modify(string $modify): Date {
-    $thrower = ErrorToExceptionThrower::getDefault();
+    $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
     $thrower->start();
-    $prev = $this->dateTime->modify($modify);
+    $new = $this->dateTime->modify($modify);
     $thrower->stop();
-    return new Date($prev);
+    return new Date($new);
   }
 
   /**
@@ -308,28 +309,6 @@ class Date implements DateInterface {
    */
   public static function from($date): Date {
     return new Date($date);
-  }
-
-  /**
-   * Creates a new instance
-   * 
-   * @param  int $day the day
-   * @param  int $month the month
-   * @param  int $year the year
-   * @return Date new instance
-   */
-  public static function fromInts(int $day = null, int $month = null, int $year = null): Date {
-    if ($year === null) {
-      $year = date('Y');
-    }
-    if ($month === null) {
-      $month = date('D');
-    }
-    if ($day === null) {
-      $day = date('j');
-    }
-    $date = new DateTimeImmutable("$year-$month-$day");
-    return new static($date);
   }
 
 }

@@ -13,6 +13,6 @@ var_dump(
 		$lastTuesday->past(),
 		$now->now(), 
 		$now->compareTo($millenium),
-		$millenium->matchesWith(new Datetime("2000-01-01 00:00:00 EET")),
-		$millenium->matchesWith(new Datetime("2000-01-01 00:00:00 CET"))
+		$millenium->isValid(new Datetime("2000-01-01 00:00:00 EET")),
+		$millenium->isValid(new Datetime("2000-01-01 00:00:00 CET"))
 );

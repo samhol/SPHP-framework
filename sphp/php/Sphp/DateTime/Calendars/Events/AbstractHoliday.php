@@ -19,7 +19,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractHoliday implements HolidayInterface {
+abstract class AbstractHoliday implements Holiday {
 
   /**
    * @var bool 
@@ -54,7 +54,18 @@ abstract class AbstractHoliday implements HolidayInterface {
   }
 
   public function __toString(): string {
-    return $this->eventAsString();
+    $output = "$this->name";
+    $attrs = [];
+    if ($this->isNationalHoliday()) {
+      $attrs[] = "national holiday";
+    }
+    if ($this->isFlagDay()) {
+      $attrs[] = "flagday";
+    }
+    if (!empty($attrs)) {
+      $output .= ': ' . implode(', ', $attrs);
+    }
+    return $output;
   }
 
   public function eventAsString(): string {

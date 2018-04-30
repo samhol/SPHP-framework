@@ -28,8 +28,8 @@ class EventCollection extends AbstractEventCollection {
    * @return BirthDay inserted instance
    * @throws CalendarEventException
    */
-  public function insertHoliday($date, $content): Holiday {
-    $holiday = new Holiday(Date::from($date), $content);
+  public function insertHoliday($date, $content): UniqueHoliday {
+    $holiday = new UniqueHoliday(Date::from($date), $content);
     $inserted = $this->insertEvent($holiday);
     if (!$inserted) {
       throw new CalendarEventException('Holiday could not be inserted to the collection');

@@ -128,7 +128,7 @@ class DateEvents extends AbstractEventCollection implements CalendarEventListene
   /**
    * 
    * @param  string $desc
-   * @return Holiday
+   * @return UniqueHoliday
    */
   public function insertAnnualHoliday(string $desc): AnnualHoliday {
     $month = $this->date->getMonth();

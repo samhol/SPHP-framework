@@ -8,15 +8,11 @@ $d2 = Date::from('2000-1-2 00:01 EET');
 var_dump($d1->diff($d2));
 var_dump($d2->diff($d1));
 try {
-  //$k = Date::from('foo');
-} catch (\Exception $ex) {
- // echo $ex->getMessage();
-}try {
   $k = $d2->modify('foo');
 } catch (\Exception $ex) {
-  echo $ex->getMessage();
+  echo $ex;
 }
-$watch = new \Sphp\Stdlib\StopWatch();
+/*$watch = new \Sphp\Stdlib\StopWatch();
 $foo = new \Sphp\DateTime\Calendars\Events\VaryingAnnualHoliday("November %d second sunday", "Father's Day");
 //var_dump($foo->dateMatchesWith(Date::from('2017-11-12')));
 $watch->start();
@@ -36,5 +32,5 @@ $fiHolidays;
 
 //print_r($foo);
 echo "\nI: " . $watch->getTime() . "\n";
-
+*/
 echo "</pre>";

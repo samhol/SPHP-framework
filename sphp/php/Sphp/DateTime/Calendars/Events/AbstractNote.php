@@ -60,7 +60,7 @@ abstract class AbstractNote implements Event {
 
   public function eventAsString(): string {
     $output = "$this->name : $this->description";
-   
+
     return $output;
   }
 

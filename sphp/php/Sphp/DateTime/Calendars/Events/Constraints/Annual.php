@@ -8,18 +8,19 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Events;
+namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\DateInterface;
 
 /**
- * Implements a holiday note for a calendar
+ * Description of AnnualRule
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class AnnualHoliday extends AbstractHoliday implements AnnualNote {
+class Annual implements Constraint {
 
   /**
    * @var int 
@@ -30,11 +31,9 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
    * Constructor
    * 
    * @param  DateInterface $date 
-   * @param  string $name
    * @throws Exceptions\CalendarEventException if constructor fails
    */
-  public function __construct(int $month, int $day, string $name) {
-    parent::__construct($name);
+  public function __construct(int $month, int $day) {
     if (0 > $month || $month > 12) {
       throw new Exceptions\CalendarEventException("Parameter month must be between 1-12 ($month given)");
     } if (0 > $day || $day > 31) {
@@ -60,20 +59,8 @@ class AnnualHoliday extends AbstractHoliday implements AnnualNote {
     return $this->month;
   }
 
-  public function dateMatchesWith(DateInterface $date): bool {
+  public function isValid(DateInterface $date): bool {
     return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
-  }
-
-  /**
-   * Creates a new instance from a date string
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @param  string $name name of the holiday 
-   * @return UniqueHoliday new instance
-   * @throws Exceptions\CalendarEventException if creation fails
-   */
-  public static function from(int $month, int $day, string $name): AnnualHoliday {
-    return new static($month, $day, $name);
   }
 
 }

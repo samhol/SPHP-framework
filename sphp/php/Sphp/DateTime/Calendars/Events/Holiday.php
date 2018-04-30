@@ -10,53 +10,36 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Date;
-use Sphp\DateTime\Exceptions\DateTimeException;
-
 /**
- * Implements a holiday note for a calendar
+ * Implements a holiday event for a calendar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Holiday extends AbstractHoliday {
+interface Holiday extends Event {
+
+  const NATIONAL_HOLIDAY = 0b1;
+  const FLAG_DAY = 0b10;
 
   /**
-   * @var Date 
-   */
-  private $date;
-
-  /**
-   * Constructor
+   * Returns the name of the holiday
    * 
-   * @param DateInterface $date 
-   * @param string $name
+   * @return string the name of the holiday
    */
-  public function __construct(DateInterface $date, string $name) {
-    parent::__construct($name);
-    $this->date = $date;
-  }
+  public function getName(): string;
 
   /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->date);
-    parent::__destruct();
-  }
-
-  /**
+   * Checks if holiday is a Flag day
    * 
-   * @return Date
+   * @return bool true if holiday is a flag day, false otherwise
    */
-  public function getDate(): Date {
-    return $this->date;
-  }
+  public function isFlagDay(): bool;
 
-  public function dateMatchesWith(DateInterface $date): bool {
-    return $this->date->matchesWith($date);
-  }
-
+  /**
+   * Checks if holiday is a national holiday
+   * 
+   * @return bool true if holiday is a national holiday, false otherwise
+   */
+  public function isNationalHoliday(): bool;
 }

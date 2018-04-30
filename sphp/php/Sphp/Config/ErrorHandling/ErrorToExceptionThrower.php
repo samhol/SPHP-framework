@@ -62,7 +62,7 @@ class ErrorToExceptionThrower {
    * @throws InvalidArgumentException if the given exception type is invalid
    */
   public function setExceptionType(string $exceptionType) {
-    if (!is_a($exceptionType, \Throwable::class, true)) {
+    if (!is_a($exceptionType, Exception::class, true)) {
       throw new InvalidArgumentException("'$exceptionType' is invalid exception type");
     }
     $this->exceptionType = $exceptionType;
@@ -129,16 +129,15 @@ class ErrorToExceptionThrower {
     if (!(error_reporting() & $severity)) {
       return false;
     }
-    if ($this->exceptionType !== null && !is_subclass_of($this->exceptionType, ErrorException::class)) {
-      try {
-        throw new ErrorException($message, 0, $severity, $file, $line);
-      } catch (\Exception $ex) {
-        $type = $this->getExceptionType();
-        throw new $type($ex->getMessage(), $ex->getCode(), $ex);
-      }
+    $type = $this->getExceptionType();
+    if (is_a($type, ErrorException::class, true)) {
+      //var_dump($type);
+      $ex = new $type($message, 0, $severity, $file, $line);
     } else {
-      throw new ErrorException($message, 0, $severity, $file, $line);
+      $type = $this->getExceptionType();
+      $ex = new $type($message, $severity);
     }
+    throw $ex;
   }
 
   /**
@@ -147,10 +146,11 @@ class ErrorToExceptionThrower {
    * @param  string $exceptionType
    * @return ErrorToExceptionThrower singleton instance
    */
-  public static function getDefault(string $exceptionType = ErrorException::class): ErrorToExceptionThrower {
+  public static function getInstance(string $exceptionType = ErrorException::class): ErrorToExceptionThrower {
     if (!array_key_exists($exceptionType, self::$defaultInstance)) {
       self::$defaultInstance[$exceptionType] = new self($exceptionType);
     }
+    //print_r(self::$defaultInstance);
     return self::$defaultInstance[$exceptionType];
   }
 

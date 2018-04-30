@@ -26,11 +26,11 @@ class Events {
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @param  string $name name of the holiday 
-   * @return Holiday new instance
+   * @return UniqueHoliday new instance
    * @throws DateTimeException if creation fails
    */
-  public static function holiday($date, string $name): Holiday {
-    return new Holiday(Date::from($date), $name);
+  public static function holiday($date, string $name): UniqueHoliday {
+    return new UniqueHoliday(Date::from($date), $name);
   }
 
   public static function annualHoliday(int $month, int $day, string $name): AnnualHoliday {
