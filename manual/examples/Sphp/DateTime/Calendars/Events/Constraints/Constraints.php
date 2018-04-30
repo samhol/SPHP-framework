@@ -2,16 +2,21 @@
 
 namespace Sphp\DateTime\Calendars\Events\Constraints;
 
-use Sphp\DateTime\Date;
-
 $constraints = new Constraints();
 
-$constraints->append(new Unique('today'));
-$constraints->append(new Weekly(1, 7));
+$constraints->dateIs(new Unique('today'));
+$constraints->dateIs(new Weekly(1, 3, 7));
+$constraints->dateIsNot(new Unique('last sunday'));
 
-$today = new Date();
-var_dump($constraints->isValidDate($today));
-$monday = $today->modify('last Monday');
-var_dump($constraints->isValidDate($monday));
-$friday = $today->modify('last Friday');
-var_dump($constraints->isValidDate($friday));
+
+
+$begin = new \DateTime('today - 1 week');
+$end = new \DateTime('today + 1 week');
+
+$interval = new \DateInterval('P1D');
+$daterange = new \DatePeriod($begin, $interval, $end);
+
+foreach ($daterange as $date) {
+  echo $date->format('l Y-m-d') . ":\t";
+  var_dump($constraints->isValidDate($date->format('Y-m-d')));
+}

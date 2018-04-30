@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events;
 
 /**
- * Defines CalendarEventListener
+ * Defines a listener for calendar event insertions
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -20,5 +20,11 @@ namespace Sphp\DateTime\Calendars\Events;
  */
 interface CalendarEventListener {
 
+  /**
+   * The method called when a listened calendar event is inserted
+   *
+   * @param  Event $event
+   * @return void
+   */
   public function onEventInsert(Event $event);
 }

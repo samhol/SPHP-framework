@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Events;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Implements a holiday factory
+ * Implements a holiday event factory
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

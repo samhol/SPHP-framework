@@ -21,23 +21,22 @@ namespace Sphp\DateTime;
 class DateRange {
 
   /**
-   * @var Date
+   * @var Date|null
    */
   private $start;
 
   /**
-   * @var Date
+   * @var Date|null
    */
   private $stop;
 
   /**
    * Constructor
    * 
-   * @param Date $start
-   * @param Date $stop
+   * @param  DateInterface|DateTimeInteface|string|int|null $start start of date range (null for no starting point)
+   * @param  DateInterface|DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
    */
   public function __construct(Date $start = null, Date $stop = null) {
-
     $this->setStart($start);
     $this->setStop($stop);
   }
@@ -63,12 +62,6 @@ class DateRange {
 
   public function getStrop() {
     return $this->stop;
-  }
-
-  public function setRange($start = null, $stop = null) {
-
-    $this->start = $start;
-    return $this;
   }
 
   /**

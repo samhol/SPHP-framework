@@ -40,7 +40,7 @@ class VaryingAnnual implements Constraint {
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new Date();
+      $date = new Date($date);
     }
     $year = $date->getYear();
     $check = Date::from(sprintf($this->format, $year));

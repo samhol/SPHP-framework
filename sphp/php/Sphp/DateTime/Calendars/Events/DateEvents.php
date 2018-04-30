@@ -93,54 +93,6 @@ class DateEvents extends AbstractEventCollection implements CalendarEventListene
     }
   }
 
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   */
-  public function insertBirthday($person, int $yearOfBirth = null): BirthDay {
-    $month = $this->date->getMonth();
-    $day = $this->date->getMonthDay();
-    $birthDay = new BirthDay($month, $day, $person, $yearOfBirth);
-    $inserted = $this->insertEvent($birthDay);
-    if (!$inserted) {
-      throw new NoteException('Birthday could not be inserted to the collection');
-    }
-    return $birthDay;
-  }
-
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   */
-  public function insertAnnual($person, int $yearOfBirth = null): BirthDay {
-    $month = $this->date->getMonth();
-    $day = $this->date->getMonthDay();
-    $birthDay = new BirthDay($month, $day, $person, $yearOfBirth);
-    $inserted = $this->insertEvent($birthDay);
-    if (!$inserted) {
-      throw new NoteException('Birthday could not be inserted to the collection');
-    }
-    return $birthDay;
-  }
-
-  /**
-   * 
-   * @param  string $desc
-   * @return UniqueHoliday
-   */
-  public function insertAnnualHoliday(string $desc): AnnualHoliday {
-    $month = $this->date->getMonth();
-    $day = $this->date->getMonthDay();
-    $birthDay = new AnnualHoliday($month, $day, $desc);
-    $inserted = $this->insertEvent($birthDay);
-    if (!$inserted) {
-      throw new NoteException('Annual holiday could not be inserted to the collection');
-    }
-    return $birthDay;
-  }
-
   public function __toString(): string {
     $output = "$this->date:\n";
     //print_r($this->notes);
@@ -152,12 +104,6 @@ class DateEvents extends AbstractEventCollection implements CalendarEventListene
     return $output;
   }
 
-  /**
-   * The method called when a listened calendar event is inserted
-   *
-   * @param  Event $event
-   * @return void
-   */
   public function onEventInsert(Event $event) {
     $this->insertEvent($event);
   }

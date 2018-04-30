@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\DateInterface;
-
+use Sphp\DateTime\Date;
 /**
  * Description of WeeklyRepetition
  *
@@ -41,7 +41,7 @@ class Weekly implements Constraint {
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new Date();
+      $date = new Date($date);
     }
     return in_array($date->getWeekDay(), $this->weekdays, true);
   }

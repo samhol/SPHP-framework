@@ -21,82 +21,68 @@ use Sphp\DateTime\DateInterface;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Constraints implements Iterator, Constraint {
+class Constraints implements Constraint {
 
   /**
    * @var Constraint[] 
    */
-  private $constraints = [];
+  private $dateIs = [];
+
+  /**
+   * @var Constraint[] 
+   */
+  private $dateIsNot = [];
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->constraints = [];
+    $this->dateIs = [];
+    $this->dateIsNot = [];
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->constraints);
+    unset($this->dateIs, $this->dateIsNot);
   }
 
   public function isValidDate($date): bool {
-    $result = true;
-    foreach ($this->constraints as $constraint) {
+    $result = false;
+    foreach ($this->dateIs as $constraint) {
       $result = $constraint->isValidDate($date);
-      if ($result === false) {
+      if ($result === true) {
+        break;
+      }
+    }
+    foreach ($this->dateIsNot as $constraint) {
+      $result = !$constraint->isValidDate($date);
+      if ($result === true) {
         break;
       }
     }
     return $result;
   }
 
-  public function append(Constraint $c) {
-    $this->constraints[] = $c;
+  /**
+   * 
+   * @param  Constraint $c
+   * @return $this for a fluent interface
+   */
+  public function dateIs(Constraint $c) {
+    $this->dateIs[] = $c;
     return $this;
   }
 
   /**
-   * Returns the current note
    * 
-   * @return mixed the current note
+   * @param  Constraint $c
+   * @return $this for a fluent interface
    */
-  public function current() {
-    return current($this->constraints);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->constraints);
-  }
-
-  /**
-   * Return the key of the current constraint
-   * 
-   * @return mixed the key of the current constraint
-   */
-  public function key() {
-    return key($this->constraints);
-  }
-
-  /**
-   * Rewinds the Iterator to the first constraint
-   */
-  public function rewind() {
-    reset($this->constraints);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->constraints);
+  public function dateIsNot(Constraint $c) {
+    $this->dateIsNot[] = $c;
+    return $this;
   }
 
 }

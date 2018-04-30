@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Events;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Defines CalendarDateNote
+ * Defines a Calendar event
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

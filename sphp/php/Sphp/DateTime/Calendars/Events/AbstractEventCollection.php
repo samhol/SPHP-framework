@@ -49,11 +49,6 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
     return $inserted;
   }
 
-  /**
-   * 
-   * @param  EventCollectionInterface $events
-   * @return $this
-   */
   public function mergeEvents(EventCollectionInterface $events) {
     foreach ($events as $note) {
       $this->insertEvent($note);
@@ -83,7 +78,6 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
     });
   }
 
-
   /**
    * Returns all holidays stored
    * 
@@ -94,7 +88,23 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
       return $item instanceof HolidayInterface;
     });
   }
-  
+
+  /**
+   * Returns all note type notes stored
+   * 
+   * @return Note[] all note type notes stored
+   */
+  public function getNotes(): array {
+    return array_filter($this->collection, function ($item) {
+      return $item instanceof Note;
+    });
+  }
+
+  /**
+   * Checks if the event collection is empty
+   * 
+   * @return bool true if the event collection is empty, false otherwise
+   */
   public function notEmpty(): bool {
     return !empty($this->collection);
   }

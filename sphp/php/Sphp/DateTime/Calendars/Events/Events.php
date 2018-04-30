@@ -10,10 +10,10 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateInterface;
 
 /**
- * Implements a holiday factory
+ * Implements an event factory
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -24,31 +24,51 @@ class Events {
   /**
    * Creates a new Holiday instance from a date string
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @param  string $name name of the holiday 
-   * @return UniqueHoliday new instance
-   * @throws DateTimeException if creation fails
+   * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
+   * @param  string $heading heading of the note 
+   * @param  string $description
+   * @return Note new instance
+   * @throws DateTimeException if date parameter represents no calendar date
    */
-  public static function holiday($date, string $name): UniqueHoliday {
-    return new UniqueHoliday(Date::from($date), $name);
+  public static function unique($date, string $heading, string $description = null): Note {
+    $constraint = new Constraints\Unique($date);
+    return new Note($constraint, $heading, $description);
   }
 
-  public static function annualHoliday(int $month, int $day, string $name): AnnualHoliday {
-    return new AnnualHoliday($month, $day, $name);
+  /**
+   * 
+   * @param int $month
+   * @param int $day
+   * @param string $name
+   * @param  string $description
+   * @return Note new instance
+   */
+  public static function annual(int $month, int $day, string $name, string $description = null): Note {
+    $constraint = new Constraints\Annual($month, $day);
+    return new Note($constraint, $name, $description);
   }
 
-  public static function varyingAnnualHoliday(string $format, string $name): VaryingAnnualHoliday {
-    return new VaryingAnnualHoliday($format, $name);
+  /**
+   * Creates a new annual varying Holiday instance
+   * 
+   * @param  string $format 
+   * @param  string $name
+   * @param  string $description
+   * @return Note new instance
+   */
+  public static function varyingAnnual(string $format, string $name, string $description = null): Note {
+    $constraint = new Constraints\VaryingAnnual($format);
+    return new Note($constraint, $name, $description);
   }
 
-  public static function birthday(int $month, int $day, string $name, int $yearOfBirth = null): BirthDay {
-    return new BirthDay($month, $day, $name, $yearOfBirth);
-  }
-
-  public static function note($date, string $name, string $description = null): Note {
-    return new Note(Date::from($date), $name, $description);
-  }
-
+  /**
+   * Creates a new weekly occuring Holiday instance
+   * 
+   * @param  int[] $weekdays week days the holiday occurs
+   * @param  string $name
+   * @param  string $description
+   * @return Note new instance
+   */
   public static function weekly(array $weekdays, string $name, string $description = null): Note {
     $reflect = new \ReflectionClass(Constraints\Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);

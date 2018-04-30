@@ -14,10 +14,9 @@ use Traversable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
- * Defines EventNoteCollectionInterface
+ * Defines basic featured for a Calendar Event collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-04-27
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -32,9 +31,9 @@ interface EventCollectionInterface extends Traversable, Arrayable {
   public function insertEvent(Event $event): bool;
 
   /**
-   * Merges event from given collection
+   * Merges events from given collection
    * 
-   * @param  CalendarDateInfo $events events to merge
+   * @param  EventCollectionInterface $events events to merge
    * @return $this for a fluent interface
    */
   public function mergeEvents(EventCollectionInterface $events);
@@ -48,6 +47,13 @@ interface EventCollectionInterface extends Traversable, Arrayable {
   public function containsEvent(Event $event): bool;
 
   /**
+   * Checks if the note collection is empty
+   * 
+   * @return bool true if the collection is not empty and false otherwise
+   */
+  public function notEmpty(): bool;
+
+  /**
    * Returns all birthday notes stored
    * 
    * @return BirthDay[] all birthday notes stored
@@ -55,9 +61,16 @@ interface EventCollectionInterface extends Traversable, Arrayable {
   public function getBirthdays(): array;
 
   /**
-   * Checks if the note collection is empty
+   * Returns all holidays stored
    * 
-   * @return bool true if the collection is not empty and false otherwise
+   * @return Holiday[] all holiday notes stored
    */
-  public function notEmpty(): bool;
+  public function getHolidays(): array;
+
+  /**
+   * Returns all note type notes stored
+   * 
+   * @return Note[] all note type notes stored
+   */
+  public function getNotes(): array;
 }

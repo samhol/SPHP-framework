@@ -10,8 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\DateInterface;
-
 /**
  * Implements a BirthDay note for a calendar
  *
@@ -36,7 +34,7 @@ class BirthDay extends Holiday {
    */
   public function __construct(int $month, int $day, string $name, int $yearOfBirth = null) {
     $constraints = new Constraints\Constraints();
-    $constraints->append(new Constraints\Annual($month, $day));
+    $constraints->dateIs(new Constraints\Annual($month, $day));
     parent::__construct($constraints, $name);
     $this->year = $yearOfBirth;
     $this->month = $month;

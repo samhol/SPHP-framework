@@ -31,7 +31,8 @@ class Annual implements Constraint {
   /**
    * Constructor
    * 
-   * @param  DateInterface $date 
+   * @param int $month
+   * @param int $day
    * @throws Exceptions\CalendarEventException if constructor fails
    */
   public function __construct(int $month, int $day) {

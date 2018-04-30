@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\DateRange;
+use Sphp\DateTime\DateInterface;
 
 /**
  * Description of InRange
@@ -29,8 +30,8 @@ class InRange implements Constraint {
   /**
    * Constructor
    * 
-   * @param  DateInterface $date 
-   * @throws Exceptions\CalendarEventException if constructor fails
+   * @param  DateInterface|\DateTimeInteface|string|int|null $start start of date range (null for no starting point)
+   * @param  DateInterface|\DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
    */
   public function __construct($start = null, $stop = null) {
     $this->dateRange = new DateRange($start, $stop);
@@ -43,7 +44,7 @@ class InRange implements Constraint {
     unset($this->dateRange);
   }
 
-  public function getDay(): DateRange {
+  public function getRange(): DateRange {
     return $this->dateRange;
   }
 

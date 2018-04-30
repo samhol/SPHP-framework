@@ -10,11 +10,11 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
+use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Events\Exceptions\CalendarEventException;
 
 /**
- * Description of NoteCollection
+ * Implements a basic calendar event collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -22,12 +22,18 @@ use Sphp\DateTime\Calendars\Events\Exceptions\CalendarEventException;
  */
 class EventCollection extends AbstractEventCollection {
 
+  /**
+   * Returns calendar events concerning specific calendar date
+   * 
+   * @param  DateInterface|\DateTimeInteface|string|int|null $date the calendar date
+   * @return Event[] calendar events found
+   */
   public function getEventsForDate($date): array {
     $notes = [];
     $parsed = Date::from($date);
-    foreach ($this as $note) {
-      if ($note->dateMatchesWith($parsed)) {
-        $notes[] = $note;
+    foreach ($this as $event) {
+      if ($event->dateMatchesWith($parsed)) {
+        $notes[] = $event;
       }
     }
     return $notes;
