@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Date;
 
 /**
  * Description of Unique
@@ -32,7 +33,10 @@ class Unique implements Constraint {
    * 
    * @param DateInterface $date the date of the holiday
    */
-  public function __construct(DateInterface $date) {
+  public function __construct($date) {
+    if (!$date instanceof DateInterface) {
+      $date = new Date($date);
+    }
     $this->date = $date;
   }
 
