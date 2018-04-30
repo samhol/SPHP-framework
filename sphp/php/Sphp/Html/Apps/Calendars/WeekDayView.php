@@ -51,7 +51,7 @@ class WeekDayView implements CssClassifiableContent {
 
   protected function buildInfo() {
     if ($this->calendarDate->getEvents()->notEmpty()) {
-      $dateInfo = new DateInfo($this->calendarDate);
+      $dateInfo = new DateInfo($this->calendarDate, $this->container);
       $modal = $dateInfo->create();
       //$modal->getTrigger()->addCssClass('float-center');
       $this->container->append($modal);
@@ -63,7 +63,9 @@ class WeekDayView implements CssClassifiableContent {
     return $this;
   }
 
-  protected function buildDate() {
+  protected function buildDate(): \Sphp\Html\Content {
+    $container = new \Sphp\Html\Container;
+    $container->append($this->container);
     $timeTag = new TimeTag($this->calendarDate->getDate()->getDateTime(), $this->calendarDate->format('j'));
     $timeTag->setAttribute('title', $this->calendarDate->format('l, Y-m-d'));
     if ($this->calendarDate->getWeekDay() === 1) {
@@ -73,14 +75,24 @@ class WeekDayView implements CssClassifiableContent {
       $this->container->cssClasses()->protect('today');
     }
     $this->container->append($timeTag);
-    $this->buildInfo();
+    if ($this->calendarDate->getEvents()->notEmpty()) {
+      $dateInfo = new DateInfo($this->calendarDate, $this->container);
+      $modal = $dateInfo->create();
+      //$modal->getTrigger()->addCssClass('float-center');
+      //$this->container->append($modal);
+      $container->append($modal->getPopup());
+      $this->container->addCssClass('has-info');
+
+      if ($this->calendarDate->getEvents()->nationalHoliday()) {
+        $this->container->cssClasses()->protect('holiday');
+      }
+    }
     $this->container->cssClasses()->protect(strtolower($this->calendarDate->format('l')));
-    return $this;
+    return $container;
   }
 
   public function getHtml(): string {
-    $this->buildDate();
-    return $this->container->getHtml();
+    return $this->buildDate()->getHtml();
   }
 
 }

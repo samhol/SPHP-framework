@@ -38,9 +38,9 @@ class DateInfo implements Content {
    */
   private $modal;
 
-  public function __construct(CalendarDate $calendarDate) {
+  public function __construct(CalendarDate $calendarDate, $trigger) {
     $this->calendarDate = $calendarDate;
-    $this->modal = new Modal((new Span(FontAwesome::tags()->setSize('lg')))->addCssClass('foo'), $this->createPopup());
+    $this->modal = new Modal($trigger, $this->createPopup());
   }
 
   public function createPopup(): Popup {

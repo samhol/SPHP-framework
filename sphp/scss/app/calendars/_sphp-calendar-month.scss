@@ -16,7 +16,14 @@
         text-align: center;
         font-weight: bold;
       }
-      div.week-number, div.sphp.calendar-day {
+      div.sphp.calendar-day {
+        &.has-info {
+          border: solid 2px #811;
+          &:hover {
+            cursor: pointer;
+            border: solid 2px #c22;
+          }
+        }
         .week-nr {
           font-size: rem-calc(12);
           border-right: solid 1px #888;
