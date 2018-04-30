@@ -42,10 +42,10 @@ class Constraints implements Iterator, Constraint {
     unset($this->constraints);
   }
 
-  public function isValidDate(DateInterface $date): bool {
+  public function isValidDate($date): bool {
     $result = true;
     foreach ($this->constraints as $constraint) {
-      $result = $constraint->isValid($date);
+      $result = $constraint->isValidDate($date);
       if ($result === false) {
         break;
       }

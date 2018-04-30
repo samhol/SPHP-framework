@@ -39,7 +39,10 @@ class Weekly implements Constraint {
     $this->weekdays = $weekday;
   }
 
-  public function isValid(DateInterface $date): bool {
+  public function isValidDate($date): bool {
+    if (!$date instanceof DateInterface) {
+      $date = new Date();
+    }
     return in_array($date->getWeekDay(), $this->weekdays, true);
   }
 

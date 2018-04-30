@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Date;
 
 /**
  * Description of Varying
@@ -20,8 +21,8 @@ use Sphp\DateTime\DateInterface;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Varying implements Constraint {
-  
+class VaryingAnnual implements Constraint {
+
   /**
    * @var string 
    */
@@ -37,7 +38,10 @@ class Varying implements Constraint {
     $this->format = $format;
   }
 
-  public function isValid(DateInterface $date): bool {
+  public function isValidDate($date): bool {
+    if (!$date instanceof DateInterface) {
+      $date = new Date();
+    }
     $year = $date->getYear();
     $check = Date::from(sprintf($this->format, $year));
     return $check->matchesWith($date);

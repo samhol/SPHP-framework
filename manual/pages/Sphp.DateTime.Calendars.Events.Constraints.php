@@ -4,15 +4,14 @@ namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\Calendars\Events\Event;
 use Sphp\Manual;
- 
+
 $constraint = Manual\api()->classLinker(Constraint::class);
 $event = Manual\api()->classLinker(Event::class);
-$namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-##Calendar notes
-$namespaces
-$constraint defines date constraints for $event calendar events.
+###Date Constraints <small>for Calendar events</small>
+
+$constraint interface defines date constraints for calendar events implementing $event.
         
 	
 MD

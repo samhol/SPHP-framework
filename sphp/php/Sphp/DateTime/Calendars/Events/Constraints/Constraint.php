@@ -25,7 +25,9 @@ interface Constraint {
   /**
    * Checks if the given date matches with the rule
    * 
+   * 
+   * @param  DateInterface|\DateTimeInteface|string|int|null $date the date to match
    * @return bool true if the given date matches and false otherwise
    */
-  public function isValid(DateInterface $date): bool;
+  public function isValidDate( $date): bool;
 }

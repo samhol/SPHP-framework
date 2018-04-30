@@ -56,7 +56,7 @@ class Unique implements Constraint {
     return $this->date;
   }
 
-  public function isValid(DateInterface $date): bool {
+  public function isValidDate($date): bool {
     return $this->date->matchesWith($date);
   }
 

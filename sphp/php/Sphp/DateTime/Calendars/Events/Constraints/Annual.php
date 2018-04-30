@@ -59,7 +59,10 @@ class Annual implements Constraint {
     return $this->month;
   }
 
-  public function isValid(DateInterface $date): bool {
+  public function isValidDate($date): bool {
+    if (!$date instanceof DateInterface) {
+      $date = new Date();
+    }
     return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
   }
 
