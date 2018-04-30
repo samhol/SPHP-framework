@@ -67,8 +67,8 @@ class DateEvents extends AbstractEventCollection implements CalendarEventListene
    */
   public function flagDay(): bool {
     $isNational = false;
-    foreach ($this as $note) {
-      if ($note->flagDay()) {
+    foreach ($this->getHolidays() as $note) {
+      if ($note->isFlagDay()) {
         $isNational = true;
         break;
       }

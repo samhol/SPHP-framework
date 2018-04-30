@@ -23,6 +23,8 @@ class Svg implements \Sphp\Html\Content, IconInterface {
 
   use \Sphp\Html\ContentTrait;
 
+  private static $src = [];
+
   public function __construct(string $svg, string $sreenreaderLabel = null) {
     $this->svg = $svg;
   }
@@ -44,21 +46,25 @@ class Svg implements \Sphp\Html\Content, IconInterface {
   }
 
   public static function fromUrl(string $url, string $sreenreaderLabel = null): Svg {
-    if (RemoteResource::exists($url)) {
-      $opts = array('http' =>
-          array(
-              'method' => 'GET',
-              'timeout' => 5
-          )
-      );
+    if (!array_key_exists($url, self::$src)) {
+      if (RemoteResource::exists($url)) {
+        $opts = array('http' =>
+            array(
+                'method' => 'GET',
+                'timeout' => 5
+            )
+        );
 
-      $context = stream_context_create($opts);
-      $svg = file_get_contents($url, false, $context);
-      return new static($svg, $sreenreaderLabel);
+        $context = stream_context_create($opts);
+        self::$src[$url] = file_get_contents($url, false, $context);
+      } else {
+        self::$src[$url] = '<svg></svg>';
+      }
+
       //throw new \Sphp\Exceptions\InvalidArgumentException("fucked up remote file ($url)");
-    } else {
-      return new static('<svg></svg>');
     }
+
+    return new static(self::$src[$url], $sreenreaderLabel);
   }
 
 }

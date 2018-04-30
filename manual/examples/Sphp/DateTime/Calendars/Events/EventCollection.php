@@ -15,7 +15,7 @@ var_dump($collection->insertEvent($rent));
 var_dump($collection->insertEvent($rent));
 var_dump($collection->insertEvent($annualHoliday));
 var_dump($collection->insertEvent($birthDay));
-foreach ($collection->getNotesForDate('2018-12-06') as $note) {
+foreach ($collection->getEventsForDate('2018-12-06') as $note) {
   echo "$note\n";
 }
 /*

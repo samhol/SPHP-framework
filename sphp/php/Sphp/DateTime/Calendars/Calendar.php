@@ -65,9 +65,9 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     $this->events = $events;
     return $this;
   }
-  
+
   public function getEvents(): EventCollection {
-    return  $this->events;
+    return $this->events;
   }
 
   /**
@@ -95,30 +95,6 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
       $events = $date->getEvents();
       return $this->get($date)->getEvents()->mergeEvents($events);
     }
-  }
-
-  /**
-   * Sets a holiday note to the calendar
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @param  string $name
-   * @return AnnualHoliday
-   */
-  public function insertAnnualHoliday($date, string $name): AnnualHoliday {
-    $holiday = $this->get($date)->getEvents()->insertAnnualHoliday($name);
-    return $holiday;
-  }
-
-  /**
-   * Sets a birthday note to the calendar
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @param  string $name
-   * @return BirthDay
-   */
-  public function setBirthDay($date, string $name): Events\BirthDay {
-    $holiday = $this->get($date)->getEvents()->insertBirthday($name);
-    return $holiday;
   }
 
   /**
@@ -165,7 +141,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     $key = $this->parseKey($date);
     if (!array_key_exists($key, $this->days)) {
       $calendarDate = new CalendarDate($date);
-      $events = $this->getEvents()->getNotesForDate($date);
+      $events = $this->getEvents()->getEventsForDate($date);
       $calendarDate->getEvents()->mergeEvents($this->getEvents());
       $this->events->addListener($calendarDate->getEvents());
       $this->days[$key] = $calendarDate;

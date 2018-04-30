@@ -18,7 +18,10 @@ namespace Sphp\Html\Apps\Calendars;
  */
 class Factory {
 
-  public static function getMonth(int $month, int $year = null): MonthView {
+  public static function getMonth(int $month = null, int $year = null): MonthView {
+    if ($month === null) {
+      $month = date('m');
+    }
     if ($year === null) {
       $year = date('Y');
     }

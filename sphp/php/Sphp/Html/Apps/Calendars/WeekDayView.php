@@ -63,6 +63,17 @@ class WeekDayView implements CssClassifiableContent {
     return $this;
   }
 
+  protected function generateTimeTag(): TimeTag {
+    $timeTag = new TimeTag($this->calendarDate->getDate()->getDateTime());
+    if ($this->calendarDate->getEvents()->flagDay()) {
+      $timeTag->append('<div class="flag" style="width:20px; display:inline-block;">'.\Sphp\Html\Media\Icons\Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg')."</div>");
+    }$timeTag->append($this->calendarDate->format('j'));
+    $timeTag->setAttribute('title', $this->calendarDate->format('l, Y-m-d'));
+
+
+    return $timeTag;
+  }
+
   protected function buildDate(): \Sphp\Html\Content {
     $container = new \Sphp\Html\Container;
     $container->append($this->container);
@@ -74,7 +85,7 @@ class WeekDayView implements CssClassifiableContent {
     if ($this->calendarDate->isCurrent()) {
       $this->container->cssClasses()->protect('today');
     }
-    $this->container->append($timeTag);
+    $this->container->append($this->generateTimeTag());
     if ($this->calendarDate->getEvents()->notEmpty()) {
       $dateInfo = new DateInfo($this->calendarDate, $this->container);
       $modal = $dateInfo->create();
@@ -85,6 +96,10 @@ class WeekDayView implements CssClassifiableContent {
 
       if ($this->calendarDate->getEvents()->nationalHoliday()) {
         $this->container->cssClasses()->protect('holiday');
+      }
+      
+      if ($this->calendarDate->getEvents()->flagDay()) {
+        $this->container->cssClasses()->protect('flag-day');
       }
     }
     $this->container->cssClasses()->protect(strtolower($this->calendarDate->format('l')));

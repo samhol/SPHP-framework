@@ -39,7 +39,13 @@ interface EventCollectionInterface extends Traversable, Arrayable {
    */
   public function mergeEvents(EventCollectionInterface $events);
 
-  public function containsEvent(Event $note): bool;
+  /**
+   * Searches identical events 
+   * 
+   * @param  Event $event the event to search
+   * @return bool true if identical event exists, false otherwise
+   */
+  public function containsEvent(Event $event): bool;
 
   /**
    * Returns all birthday notes stored

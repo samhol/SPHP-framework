@@ -4,6 +4,7 @@
     .cell {
       > div {
         margin: rem-calc(1);
+        border-right-width: 10px;
       }
       .month-selector {
         font-size: rem-calc(20);
@@ -37,14 +38,14 @@
           float: right;
           margin-right: 2px;
           padding: rem-calc(4);
-        }
-        span.foo {
-          color: tomato;
-          margin: auto;
-          cursor: pointer;
-          &:hover {
-            color: #f00;
-            fill: #f00;
+          .flag {
+            height: rem-calc(20);
+            margin-right: rem-calc(4);
+            svg {
+              padding: rem-calc(1);
+              border: solid 1px #aaa;
+              @include border-radius(2px);
+            }
           }
         }
         height: rem-calc(50);

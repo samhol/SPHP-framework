@@ -67,7 +67,7 @@ class CalendarDateBuilder {
   public function createCalendarDate($date, $data = null): CalendarDate {
     $d = Date::from($date);
     $calendarDate = new CalendarDate($date, $data);
-    foreach ($this->getNotes()->getNotesForDate($d) as $note) {
+    foreach ($this->getNotes()->getEventsForDate($d) as $note) {
       $calendarDate->addNote($note);
     }
     return $calendarDate;

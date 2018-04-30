@@ -87,7 +87,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
   /**
    * Returns all holidays stored
    * 
-   * @return UniqueHoliday[] all holiday notes stored
+   * @return Holiday[] all holiday notes stored
    */
   public function getHolidays(): array {
     return array_filter($this->collection, function ($item) {
