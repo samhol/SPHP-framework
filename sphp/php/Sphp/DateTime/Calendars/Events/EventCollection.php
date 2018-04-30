@@ -22,21 +22,6 @@ use Sphp\DateTime\Calendars\Events\Exceptions\CalendarEventException;
  */
 class EventCollection extends AbstractEventCollection {
 
-  /**
-   * 
-   * @param  string $person
-   * @return BirthDay inserted instance
-   * @throws CalendarEventException
-   */
-  public function insertHoliday($date, $content): UniqueHoliday {
-    $holiday = new UniqueHoliday(Date::from($date), $content);
-    $inserted = $this->insertEvent($holiday);
-    if (!$inserted) {
-      throw new CalendarEventException('Holiday could not be inserted to the collection');
-    }
-    return $holiday;
-  }
-
   public function getEventsForDate($date): array {
     $notes = [];
     $parsed = Date::from($date);
