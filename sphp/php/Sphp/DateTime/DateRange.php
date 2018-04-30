@@ -37,6 +37,7 @@ class DateRange {
    * @param Date $stop
    */
   public function __construct(Date $start = null, Date $stop = null) {
+
     $this->setStart($start);
     $this->setStop($stop);
   }
@@ -64,17 +65,36 @@ class DateRange {
     return $this->stop;
   }
 
-  public function setStart(Date $start = null) {
+  public function setRange($start = null, $stop = null) {
+
     $this->start = $start;
     return $this;
   }
 
   /**
+   * Sets the start point of range
    * 
-   * @param  Date|null $stop
-   * @return $this
+   * @param  DateInterface|DateTimeInteface|string|int|null $start start of date range (null for no starting point)
+   * @return $this for a fluent interface
+   */
+  public function setStart($start = null) {
+    if ($start !== null) {
+      $start = new Date($start);
+    }
+    $this->start = $start;
+    return $this;
+  }
+
+  /**
+   * Sets the end point of range
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
+   * @return $this for a fluent interface
    */
   public function setStop(Date $stop = null) {
+    if ($stop !== null) {
+      $stop = new Date($stop);
+    }
     $this->stop = $stop;
     return $this;
   }

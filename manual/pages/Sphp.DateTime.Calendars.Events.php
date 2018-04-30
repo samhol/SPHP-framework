@@ -22,4 +22,9 @@ Manual\example("Sphp/DateTime/Calendars/Events/EventCollection.php", "text", fal
         ->setOutputSyntaxPaneTitle("Note example results")
         ->printHtml();
 
+Manual\example("Sphp/DateTime/Calendars/Events/Fi/HolidayCollection.php", "text", false)
+        ->setExamplePaneTitle("Finnish holidays example")
+        ->setOutputSyntaxPaneTitle("Finnish holidays example results")
+        ->printHtml();
+
 Manual\loadPage('Sphp.DateTime.Calendars.Events.Constraints');

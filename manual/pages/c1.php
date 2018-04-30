@@ -3,17 +3,19 @@
 namespace Sphp\Html\Apps\Calendars;
 
 use Sphp\DateTime\Calendars\Events\EasterHolidays;
-use Sphp\DateTime\Calendars\Events\Fi\Holidays;
+use Sphp\DateTime\Calendars\Events\Fi\HolidayCollection;
 use Sphp\DateTime\Calendars\Calendar;
+use Sphp\DateTime\Calendars\Events\Events;
 
 $easter = new EasterHolidays();
-$fi = new Holidays();
+$fi = new HolidayCollection();
 $data = new Calendar();
 $data->useEvents($fi);
 $fi->insertBirthday(9, 16, 'Sami Holck', 1975);
 $fi->insertBirthday(12, 23, 'Ella Lisko', 1977);
 $fi->setEasterFor(2017)->setEasterFor(2018);
-$fi->insertEvent(\Sphp\DateTime\Calendars\Events\Events::weeklyNote([1, 2, 3, 7], 'Basketball'));
+$fi->insertEvent(Events::weekly([1, 2, 3, 7], 'Basketball'));
+$fi->insertEvent(Events::weekly([1, 2, 3, 7], 'Basketball1'));
 
 //$data->setBirthDay('', $name);
 //$fi->createYear();

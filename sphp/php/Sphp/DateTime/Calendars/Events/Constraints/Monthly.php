@@ -14,56 +14,48 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
- * Description of AnnualRule
+ * Description of Monthly
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Annual implements Constraint {
+class Monthly implements Constraint {
 
   /**
    * @var int 
    */
-  private $day, $month;
+  private $day;
 
   /**
    * Constructor
    * 
-   * @param  DateInterface $date 
+   * @param  int $day
    * @throws Exceptions\CalendarEventException if constructor fails
    */
-  public function __construct(int $month, int $day) {
-    if (0 > $month || $month > 12) {
-      throw new Exceptions\CalendarEventException("Parameter month must be between 1-12 ($month given)");
-    } if (0 > $day || $day > 31) {
+  public function __construct(int $day) {
+    if (0 > $day || $day > 31) {
       throw new Exceptions\CalendarEventException("Parameter day must be between 1-31 ($day given)");
     }
     $this->day = $day;
-    $this->month = $month;
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->day, $this->month);
+    unset($this->day);
   }
 
-  public function getMonthDay(): int {
+  public function getDay(): int {
     return $this->day;
-  }
-
-  public function getMonth(): int {
-    return $this->month;
   }
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
       $date = new Date($date);
     }
-    return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
+    return $this->day === $date->getMonthDay();
   }
 
 }

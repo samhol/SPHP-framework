@@ -49,8 +49,10 @@ class Events {
     return new Note(Date::from($date), $name, $description);
   }
 
-  public static function weeklyNote(array $weekdays, string $name, string $description = null): WeeklyNote {
-    return new WeeklyNote($weekdays, $name, $description);
+  public static function weekly(array $weekdays, string $name, string $description = null): Note {
+    $reflect = new \ReflectionClass(Constraints\Weekly::class);
+    $constraint = $reflect->newInstanceArgs($weekdays);
+    return new Note($constraint, $name, $description);
   }
 
 }

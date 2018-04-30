@@ -8,8 +8,6 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\DateInterface;
-
 /**
  * Description of Note
  *
@@ -19,34 +17,5 @@ use Sphp\DateTime\DateInterface;
  * @filesource
  */
 class Note extends AbstractNote {
-
-  /**
-   * @var Date 
-   */
-  private $date;
-
-  /**
-   * Constructor
-   * 
-   * @param DateInterface $date 
-   * @param string $name
-   * @param string $description
-   */
-  public function __construct(DateInterface $date, string $name, string $description = null) {
-    parent::__construct($name, $description);
-    $this->date = $date;
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->date);
-    parent::__destruct();
-  }
-
-  public function dateMatchesWith(DateInterface $date): bool {
-    return $this->date->matchesWith($date);
-  }
-
+  
 }

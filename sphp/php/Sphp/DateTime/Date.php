@@ -108,20 +108,10 @@ class Date implements DateInterface {
     return $this->dateTime->format('l');
   }
 
-  /**
-   * Returns the week number 
-   * 
-   * @return int the week number 
-   */
   public function getWeek(): int {
     return (int) $this->dateTime->format('W');
   }
 
-  /**
-   * Returns the number of the month
-   * 
-   * @return int the number of the month
-   */
   public function getMonth(): int {
     return (int) $this->dateTime->format('m');
   }
@@ -144,20 +134,10 @@ class Date implements DateInterface {
     return (int) $this->dateTime->format('j');
   }
 
-  /**
-   * Returns the year
-   * 
-   * @return int the year
-   */
   public function getYear(): int {
     return (int) $this->dateTime->format('Y');
   }
 
-  /**
-   * Checks whether the date is the current date
-   * 
-   * @return bool true if the date is the current date, false otherwise
-   */
   public function isCurrent(): bool {
     $today = date('Y-m-d');
     $thisDay = $this->dateTime->format('Y-m-d');
@@ -181,13 +161,6 @@ class Date implements DateInterface {
     return $result;
   }
 
-  /**
-   * Checks if the input date matches the date 
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @return bool true if matches and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
-   */
   public function matchesWith($date): bool {
     if (!$date instanceof DateInterface) {
       try {

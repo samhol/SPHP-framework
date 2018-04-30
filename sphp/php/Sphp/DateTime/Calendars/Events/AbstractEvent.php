@@ -11,37 +11,37 @@
 namespace Sphp\DateTime\Calendars\Events;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
 
 /**
- * Description of SequentialEvent
+ * Description of AbstractEvent
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class VaryingAnnualHoliday extends AbstractHoliday {
+abstract class AbstractEvent implements Event {
 
   /**
-   * @var string 
+   * @var Constraint 
    */
-  private $format;
+  private $constraint;
 
   /**
    * Constructor
-   * 
-   * @param string $format datetime format 
-   * @param string $name
+   *  
+   * @param Constraint $constraint
    */
-  public function __construct(string $format, string $name) {
-    parent::__construct($name);
-    $this->format = $format;
+  public function __construct(Constraint $constraint) {
+    $this->constraint = $constraint;
   }
 
-  public function dateMatchesWith(DateInterface $date): bool {
-    $year = $date->getYear();
-    $check = Date::from(sprintf($this->format, $year));
-    return $check->matchesWith($date);
+  public function __destruct() {
+    unset($this->constraint);
+  }
+
+  public function dateMatchesWith($date): bool {
+    return $this->constraint->isValidDate($date);
   }
 
 }

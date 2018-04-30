@@ -78,10 +78,13 @@ interface DateInterface {
    */
   public function isCurrent(): bool;
 
+
   /**
+   * Checks if the input date matches the date 
    * 
-   * @param  mixed $date
-   * @return bool
+   * @param  DateInterface|DateTimeInteface|string|int $date the date to match
+   * @return bool true if matches and false otherwise
+   * @throws DateTimeException if date cannot be parsed from input
    */
   public function matchesWith($date): bool;
 

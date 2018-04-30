@@ -26,19 +26,18 @@ class EasterHolidays extends EventCollection {
    * @param  int $year
    * @return EventCollection
    */
-  public function create(int $year = null): EventCollection {
+  public function __construct(int $year = null) {
+    parent::__construct();
     if ($year === null) {
       $year = (int) date('Y');
     }
-    $collection = new EventCollection();
     $sunday = static::getEasterSunday($year);
-    $collection->insertHoliday($sunday->jump(-3), 'Maundy Thursday');
-    $collection->insertHoliday($sunday->jump(-2), 'Good Friday')->setNationalHoliday();
-    $collection->insertHoliday($sunday, 'Easter Sunday')->setNationalHoliday();
-    $collection->insertHoliday($sunday->jump(1), 'Easter Monday')->setNationalHoliday();
-    $collection->insertHoliday($sunday->jump(39), 'Ascension Day')->setNationalHoliday();
-    $collection->insertHoliday($sunday->jump(49), 'Pentecost');
-    return $collection;
+    $this->insertEvent(Holidays::unique($sunday->jump(-3), 'Maundy Thursday'));
+    $this->insertEvent(Holidays::unique($sunday->jump(-2), 'Good Friday')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday, 'Easter Sunday')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday->jump(1), 'Easter Monday')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday->jump(39), 'Ascension Day')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday->jump(49), 'Pentecost'));
   }
 
   /**

@@ -10,15 +10,17 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
+use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
+
 /**
- * Description of Note
+ * Implements an abstract base class for notes
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-abstract class AbstractNote implements Event {
+abstract class AbstractNote extends AbstractEvent {
 
   /**
    * @var bool 
@@ -41,7 +43,8 @@ abstract class AbstractNote implements Event {
    * @param string $name
    * @param string $description
    */
-  public function __construct(string $name, string $description = null) {
+  public function __construct(Constraint $constraint, string $name, string $description = null) {
+    parent::__construct($constraint);
     $this->setName($name)->setDescription("$description");
   }
 
@@ -50,6 +53,7 @@ abstract class AbstractNote implements Event {
    */
   public function __destruct() {
     unset($this->name, $this->description);
+    parent::__destruct();
   }
 
   public function __toString(): string {

@@ -19,9 +19,12 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BirthDay extends AnnualHoliday {
+class BirthDay extends Holiday {
 
-  private $year;
+  /**
+   * @var int
+   */
+  private $year, $month, $day;
 
   /**
    * Constructor
@@ -32,13 +35,12 @@ class BirthDay extends AnnualHoliday {
    * @param int $yearOfBirth
    */
   public function __construct(int $month, int $day, string $name, int $yearOfBirth = null) {
-    parent::__construct($month, $day, $name);
+    $constraints = new Constraints\Constraints();
+    $constraints->append(new Constraints\Annual($month, $day));
+    parent::__construct($constraints, $name);
     $this->year = $yearOfBirth;
-  }
-
-  public function dateMatchesWith(DateInterface $date): bool {
-    $match = parent::dateMatchesWith($date);
-    return $match && ($this->year === null || $this->year <= $date->getYear());
+    $this->month = $month;
+    $this->day = $day;
   }
 
   public function setBirthYear(int $year = null) {
