@@ -152,6 +152,12 @@ class DateEvents extends AbstractEventCollection implements CalendarEventListene
     return $output;
   }
 
+  /**
+   * The method called when a listened calendar event is inserted
+   *
+   * @param  Event $event
+   * @return void
+   */
   public function onEventInsert(Event $event) {
     $this->insertEvent($event);
   }

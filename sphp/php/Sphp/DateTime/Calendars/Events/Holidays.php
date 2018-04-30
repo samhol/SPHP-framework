@@ -47,8 +47,9 @@ class Holidays {
   }
 
   /**
+   * Creates a new annual varying Holiday instance
    * 
-   * @param  string $format
+   * @param  string $format 
    * @param  string $name
    * @return Holiday
    */
@@ -58,9 +59,10 @@ class Holidays {
   }
 
   /**
+   * Creates a new birthday instance
    * 
-   * @param  int $month
-   * @param  int $day
+   * @param  int $month the month
+   * @param  int $day the day of the month
    * @param  string $name
    * @param  int $yearOfBirth
    * @return BirthDay new instance
@@ -70,8 +72,9 @@ class Holidays {
   }
 
   /**
+   * Creates a new weekly occuring Holiday instance
    * 
-   * @param  int[] $weekdays
+   * @param  int[] $weekdays week days the holiday occurs
    * @param  string $name
    * @param  string $description
    * @return Holiday new instance
