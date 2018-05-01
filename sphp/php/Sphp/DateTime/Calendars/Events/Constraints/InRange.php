@@ -14,7 +14,7 @@ use Sphp\DateTime\DateRange;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Description of InRange
+ * Implements an in range date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

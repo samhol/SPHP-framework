@@ -14,7 +14,7 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
- * Description of AnnualRule
+ * Implements an annual date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License

@@ -4,9 +4,9 @@ namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 $constraints = new Constraints();
 
-$constraints->dateIs(new Unique('today'));
-$constraints->dateIs(new Weekly(1, 3, 7));
-$constraints->dateIsNot(new Unique('last sunday'));
+$constraints->dateIs(new OneOf('yesterday', 'today', 'tomorrow'));
+$constraints->dateIs(new Weekly(5));
+$constraints->dateIsNot(new Unique('next friday'));
 
 
 

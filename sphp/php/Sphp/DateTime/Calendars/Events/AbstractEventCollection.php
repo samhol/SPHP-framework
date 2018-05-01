@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Events;
 use Iterator;
 
 /**
- * Description of NoteCollection
+ * Implements an abstract calendar event collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -124,6 +124,8 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     next($this->collection);
@@ -140,6 +142,8 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     reset($this->collection);

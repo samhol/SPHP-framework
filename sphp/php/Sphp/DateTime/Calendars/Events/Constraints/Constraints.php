@@ -49,20 +49,26 @@ class Constraints implements Constraint {
   }
 
   public function isValidDate($date): bool {
-    $result = false;
+    //$result = false;
+    $is = false;
+    $isNot = false;
     foreach ($this->dateIs as $constraint) {
-      $result = $constraint->isValidDate($date);
-      if ($result === true) {
+      $is = $constraint->isValidDate($date);
+      //echo "\nis: " . var_export($is, true) . "\n";
+      if ($is === true) {
         break;
+      }  
+    }
+    if ($is) {
+      foreach ($this->dateIsNot as $constraint) {
+        $isNot = $constraint->isValidDate($date);
+        //echo "\nisnot: " . var_export($isNot, true) . "\n";
+        if ($isNot === true) {
+          break;
+        } 
       }
     }
-    foreach ($this->dateIsNot as $constraint) {
-      $result = !$constraint->isValidDate($date);
-      if ($result === true) {
-        break;
-      }
-    }
-    return $result;
+    return $is && !$isNot;
   }
 
   /**
