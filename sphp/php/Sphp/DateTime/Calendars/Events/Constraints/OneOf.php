@@ -14,14 +14,14 @@ use Sphp\DateTime\Date;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Description of OneOf
+ * Implements a group constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class OneOf implements Constraint {
+class OneOf implements DateConstraint {
 
   /**
    * @var Date[]
@@ -34,9 +34,7 @@ class OneOf implements Constraint {
    * @param  DateInterface|DateTimeInteface|string|int ...$date
    */
   public function __construct(... $date) {
-    /* if (0 > $weekday || $weekday > 7) {
-      throw new Exceptions\CalendarEventException("Parameter weekday must be between 1-7 ($weekday given)");
-      } */
+
     $this->dates = [];
     foreach ($date as $d) {
       $this->addDate($d);
@@ -44,6 +42,7 @@ class OneOf implements Constraint {
   }
 
   /**
+   * Adds new allowed dates
    * 
    * @param  DateInterface|DateTimeInteface|string|int ...$date
    * @return $this

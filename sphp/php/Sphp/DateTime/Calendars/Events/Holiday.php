@@ -10,8 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
 /**
  * Implements a holiday note for a calendar
  *
@@ -19,7 +17,7 @@ use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
- class Holiday extends AbstractNote implements HolidayInterface {
+class Holiday extends AbstractNote implements HolidayInterface {
 
   /**
    * @var bool 
@@ -30,9 +28,6 @@ use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
    * @var bool 
    */
   private $flagDay = false;
-
-
-
 
   public function __toString(): string {
     $output = $this->getName();
@@ -64,7 +59,6 @@ use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
     return $output;
   }
 
-
   /**
    * 
    * @param  bool $flagDay
@@ -75,18 +69,10 @@ use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
     return $this;
   }
 
-  /**
-   * 
-   * @return bool
-   */
   public function isFlagDay(): bool {
     return $this->flagDay;
   }
 
-  /**
-   * 
-   * @return bool
-   */
   public function isNationalHoliday(): bool {
     return $this->national;
   }

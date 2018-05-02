@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
+use Sphp\DateTime\Calendars\Events\Constraints\DateConstraint;
 
 /**
  * Implements an abstract base class for notes
@@ -43,7 +43,7 @@ abstract class AbstractNote extends AbstractEvent {
    * @param string $name
    * @param string $description
    */
-  public function __construct(Constraint $constraint, string $name, string $description = null) {
+  public function __construct(DateConstraint $constraint, string $name, string $description = null) {
     parent::__construct($constraint);
     $this->setName($name)->setDescription("$description");
   }

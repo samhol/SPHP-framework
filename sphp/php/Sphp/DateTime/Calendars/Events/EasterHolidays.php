@@ -22,6 +22,7 @@ use Sphp\DateTime\Date;
 class EasterHolidays extends EventCollection {
 
   /**
+   * Constructor
    * 
    * @param  int $year
    * @return EventCollection

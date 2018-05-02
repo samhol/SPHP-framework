@@ -15,7 +15,7 @@ use Sphp\Html\TimeTag;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\DateTime\Calendars\CalendarDate;
-
+use Sphp\Html\Media\Icons\Svg;
 /**
  * Description of WeekDay
  *
@@ -66,7 +66,7 @@ class WeekDayView implements CssClassifiableContent {
   protected function generateTimeTag(): TimeTag {
     $timeTag = new TimeTag($this->calendarDate->getDate()->getDateTime());
     if ($this->calendarDate->getEvents()->flagDay()) {
-      $timeTag->append('<div class="flag" style="width:20px; display:inline-block;">'.\Sphp\Html\Media\Icons\Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg')."</div>");
+      $timeTag->append('<div class="flag" style="width:20px; display:inline-block;">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</div>");
     }$timeTag->append($this->calendarDate->format('j'));
     $timeTag->setAttribute('title', $this->calendarDate->format('l, Y-m-d'));
 
@@ -97,7 +97,7 @@ class WeekDayView implements CssClassifiableContent {
       if ($this->calendarDate->getEvents()->nationalHoliday()) {
         $this->container->cssClasses()->protect('holiday');
       }
-      
+
       if ($this->calendarDate->getEvents()->flagDay()) {
         $this->container->cssClasses()->protect('flag-day');
       }

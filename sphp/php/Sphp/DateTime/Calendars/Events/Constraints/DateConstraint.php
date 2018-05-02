@@ -13,14 +13,14 @@ namespace Sphp\DateTime\Calendars\Events\Constraints;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Description of DateFrequency
+ * Defines a constraint for Calendar Dates
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface Constraint {
+interface DateConstraint {
 
   /**
    * Checks if the given date matches with the rule

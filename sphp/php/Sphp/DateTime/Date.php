@@ -42,8 +42,7 @@ class Date implements DateInterface {
       if (is_string($date)) {
         $dateTime = new DateTimeImmutable($date);
       } else if (is_int($date)) {
-        $dateTime = new DateTimeImmutable();
-        $dateTime->setTimestamp($date);
+        $dateTime = (new DateTimeImmutable())->setTimestamp($date);
       } else if ($date instanceof DateInterface) {
         $dateTime = new DateTimeImmutable($date->toDateString());
       } else if ($date instanceof DateTimeInterface) {

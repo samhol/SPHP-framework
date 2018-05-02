@@ -22,4 +22,3 @@ $fi->insertEvent(Events::weekly([1, 2, 3, 7], 'Basketball1'));
 echo Factory::getMonth(12, 2017)->useCalendar($data);
 echo Factory::getMonth(1)->useCalendar($data);
 echo Factory::getMonth()->useCalendar($data);
-

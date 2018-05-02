@@ -21,7 +21,7 @@ use Sphp\DateTime\Date;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Annual implements Constraint {
+class Annual implements DateConstraint {
 
   /**
    * @var int 

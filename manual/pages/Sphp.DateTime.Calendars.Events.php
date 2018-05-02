@@ -5,7 +5,7 @@ namespace Sphp\DateTime\Calendars\Events\Constraints;
 use Sphp\DateTime\Calendars\Events\Event;
 use Sphp\Manual;
 
-$constraint = Manual\api()->classLinker(Constraint::class);
+$constraint = Manual\api()->classLinker(DateConstraint::class);
 $event = Manual\api()->classLinker(Event::class);
 $namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 

@@ -10,11 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Events\Exceptions\CalendarEventException;
-
 /**
- * Description of NoteCollection
+ * Implements a Calendar Date Event dispatcher
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

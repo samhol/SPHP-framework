@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Events;
 
 /**
- * Implements a holiday event for a calendar
+ * Defines a holiday event for a calendar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

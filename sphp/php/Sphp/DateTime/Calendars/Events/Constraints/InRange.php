@@ -20,7 +20,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InRange implements Constraint {
+class InRange implements DateConstraint {
 
   /**
    * @var DateRange 

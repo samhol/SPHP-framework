@@ -10,18 +10,15 @@
 
 namespace Sphp\DateTime\Calendars\Events\Constraints;
 
-use Iterator;
-use Sphp\DateTime\DateInterface;
-
 /**
- * Description of Constraints
+ * Implements a collection of date Constraints
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Constraints implements Constraint {
+class Constraints implements DateConstraint {
 
   /**
    * @var Constraint[] 
@@ -57,7 +54,7 @@ class Constraints implements Constraint {
       //echo "\nis: " . var_export($is, true) . "\n";
       if ($is === true) {
         break;
-      }  
+      }
     }
     if ($is) {
       foreach ($this->dateIsNot as $constraint) {
@@ -65,7 +62,7 @@ class Constraints implements Constraint {
         //echo "\nisnot: " . var_export($isNot, true) . "\n";
         if ($isNot === true) {
           break;
-        } 
+        }
       }
     }
     return $is && !$isNot;
@@ -76,7 +73,7 @@ class Constraints implements Constraint {
    * @param  Constraint $c
    * @return $this for a fluent interface
    */
-  public function dateIs(Constraint $c) {
+  public function dateIs(DateConstraint $c) {
     $this->dateIs[] = $c;
     return $this;
   }
@@ -86,7 +83,7 @@ class Constraints implements Constraint {
    * @param  Constraint $c
    * @return $this for a fluent interface
    */
-  public function dateIsNot(Constraint $c) {
+  public function dateIsNot(DateConstraint $c) {
     $this->dateIsNot[] = $c;
     return $this;
   }

@@ -20,7 +20,7 @@ use Sphp\DateTime\Date;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Weekly implements Constraint {
+class Weekly implements DateConstraint {
 
   /**
    * @var int

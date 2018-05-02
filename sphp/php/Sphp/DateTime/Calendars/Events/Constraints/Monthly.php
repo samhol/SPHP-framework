@@ -14,13 +14,13 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
- * Implements a monthly date constraint
+ * Implements a monthly constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Monthly implements Constraint {
+class Monthly implements DateConstraint {
 
   /**
    * @var int 

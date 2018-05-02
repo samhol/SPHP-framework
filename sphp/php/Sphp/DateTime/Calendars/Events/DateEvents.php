@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Events;
 use Sphp\DateTime\Date;
 
 /**
- * Collection for calendar date notes
+ * Collection for Calendar Date Events
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

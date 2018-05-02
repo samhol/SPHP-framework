@@ -10,8 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Events;
 
-use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Calendars\Events\Constraints\Constraint;
+use Sphp\DateTime\Calendars\Events\Constraints\DateConstraint;
 
 /**
  * Description of AbstractEvent
@@ -32,7 +31,7 @@ abstract class AbstractEvent implements Event {
    *  
    * @param Constraint $constraint
    */
-  public function __construct(Constraint $constraint) {
+  public function __construct(DateConstraint $constraint) {
     $this->constraint = $constraint;
   }
 
