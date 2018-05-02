@@ -70,7 +70,7 @@ class SequenceTest extends TestCase {
    */
   public function testJoining(Sequence $sequence) {
     $expected = implode(',', $sequence->toArray());
-    echo $sequence->join(',');
+    //echo $sequence->join(',');
     $this->assertSame($expected, $sequence->join(','));
   }
 

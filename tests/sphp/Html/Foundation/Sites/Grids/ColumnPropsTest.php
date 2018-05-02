@@ -106,7 +106,7 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
    */
   public function testAutoWidth() {
     $this->col->setWidths('small-12', 'medium-3', 'large-11', 'xxlarge-3', 'auto');
-    echo $this->col->cssClasses();
+    //echo $this->col->cssClasses();
     $this->assertTrue($this->col->cssClasses()->contains('auto'));
     $this->assertTrue($this->col->cssClasses()->contains('xxlarge-3'));
     $this->assertTrue($this->col->cssClasses()->contains('medium-3'));

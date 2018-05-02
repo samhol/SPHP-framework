@@ -7,66 +7,67 @@ namespace Sphp\Stdlib\Events;
  */
 class EventDispatcherTest extends \PHPUnit\Framework\TestCase implements EventListenerInterface {
 
-	/**
-	 * @var EventDispatcher
-	 */
-	protected $events;
-
-	/**
-	 * @var \Closure
-	 */
-	protected $mirror;
-
-	/**
-	 *
-	 * @var Event
-	 */
-	protected $event_a;
-
-	/**
-	 * Sets up the fixture, for example, opens a network connection.
-	 * This method is called before a test is executed.
-	 */
-	protected function setUp() {
-		$this->events = new EventDispatcher();
-		$this->mirror = function ($event) {
-			return $event;
-		};
-		$this->event_a = new Event("a", $this, ["data1", "data2"]);
-	}
-
-	/**
-	 * Tears down the fixture, for example, closes a network connection.
-	 * This method is called after a test is executed.
-	 */
-	protected function tearDown() {
-		
-	}
-
-  public function testA () {
-    $this->events->addListener("evt", function($evt) {
-      echo "$evt\n";
-    });
-		$this->assertTrue($this->events->hasListeners("evt"));
-		$this->assertTrue($this->events->hasListeners("evt"));
-  }
-
+  /**
+   * @var EventDispatcher
+   */
+  protected $events;
 
   /**
-	 */
-	public function test1() {
-		$this->assertFalse($this->events->hasListeners("e1"));
-		$this->events->addListener("a", $this->mirror);
-		$this->assertTrue($this->events->hasListeners("a"));
-		$this->assertFalse($this->events->hasListeners("b"));
-		$this->events->addListener(["a", "b"], $this);
-		$this->assertTrue($this->events->hasListeners("a"));
-		$this->assertTrue($this->events->hasListeners("b"));
-		$this->events->trigger($this->event_a);
-	}
+   * @var \Closure
+   */
+  protected $mirror;
 
-	public function on(EventInterface $event) {
-		$this->assertFalse($event->isStopped());
-	}
+  /**
+   *
+   * @var Event
+   */
+  protected $event_a;
+
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    $this->events = new EventDispatcher();
+    $this->mirror = function ($event) {
+      return $event;
+    };
+    $this->event_a = new Event("a", $this, ["data1", "data2"]);
+  }
+
+  /**
+   * Tears down the fixture, for example, closes a network connection.
+   * This method is called after a test is executed.
+   */
+  protected function tearDown() {
+    
+  }
+
+  public function testA() {
+    $this->events->addListener('evt', function($evt) {
+      //echo "$evt\n";
+      $this->assertTrue('evt', $evt->getName());
+    });
+    $this->assertTrue($this->events->hasListeners('evt'));
+    $this->assertTrue($this->events->hasListeners('evt'));
+    $this->events->triggerEvent('evt');
+  }
+
+  /**
+   */
+  public function test1() {
+    $this->assertFalse($this->events->hasListeners("e1"));
+    $this->events->addListener("a", $this->mirror);
+    $this->assertTrue($this->events->hasListeners("a"));
+    $this->assertFalse($this->events->hasListeners("b"));
+    $this->events->addListener(["a", "b"], $this);
+    $this->assertTrue($this->events->hasListeners("a"));
+    $this->assertTrue($this->events->hasListeners("b"));
+    $this->events->trigger($this->event_a);
+  }
+
+  public function on(EventInterface $event) {
+    $this->assertFalse($event->isStopped());
+  }
 
 }

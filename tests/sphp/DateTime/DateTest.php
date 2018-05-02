@@ -16,7 +16,7 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    * @covers ::__construct
    */
   public function testConstructor() {
-    $timestamp = mktime();
+    $timestamp = time();
     $now = new Date();
     $now1 = new Date('now');
     $this->assertEquals($now, $now1);
@@ -67,13 +67,14 @@ class DateTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *
-   * @covers IntegerToRomanFilter::filter
+   * @covers ::jump
    */
   public function testJumping() {
-
-    $now1 = new Date();
-    $now2 = new Date('today');
-    $this->assertEquals($now1, $now2);
+    $now = new Date();
+    $tomorrow = $now->jump(1);
+    $this->assertEquals(new Date('tomorrow'), $tomorrow);
+    $yesterday = $now->jump(-1);
+    $this->assertEquals(new Date('yesterday'), $yesterday);
   }
 
 }

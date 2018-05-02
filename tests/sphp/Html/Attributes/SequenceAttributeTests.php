@@ -98,7 +98,7 @@ class SequenceAttributeTest extends TestCase {
     $attr = new SequenceAttribute('foo');
     $attr->set($value);
 
-    var_dump("$attr");
+    //var_dump("$attr");
     $expected = 'foo="' . implode(' ', $value) . '"';
     $this->assertSame($expected, "$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
@@ -114,7 +114,7 @@ class SequenceAttributeTest extends TestCase {
     $attr->set(range(1, 10));
     $attr->set(range('a', 'f'));
 
-    var_dump("$attr");
+    //var_dump("$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 

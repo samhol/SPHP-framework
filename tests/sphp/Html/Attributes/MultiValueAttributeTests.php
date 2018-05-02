@@ -222,10 +222,10 @@ class MultiValueAttributeTests extends TestCase {
    */
   public function testRemoving() {
     $this->attr->add("foo", "bar");
-    echo "\n$this->attr\n";
+    //echo "\n$this->attr\n";
     $this->assertTrue($this->attr->contains("foo", 'bar'));
     $this->attr->remove("bar");
-    echo "\n$this->attr\n";
+    //echo "\n$this->attr\n";
     $this->assertTrue($this->attr->contains("foo"));
     $this->assertFalse($this->attr->contains("bar"));
     $this->attr->protect("bar");
