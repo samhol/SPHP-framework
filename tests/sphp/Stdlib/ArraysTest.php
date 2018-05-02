@@ -46,7 +46,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
    * @param array $diff
    */
   public function atestDiff(array $arr1, array $arr2, array $diff) {
-    print_r(Arrays::diff($arr1, $arr2));
+    //print_r(Arrays::diff($arr1, $arr2));
     $this->assertEquals(Arrays::diff($arr1, $arr2), $diff);
   }
 
