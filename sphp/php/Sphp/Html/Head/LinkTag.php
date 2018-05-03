@@ -186,7 +186,7 @@ class LinkTag extends EmptyTag implements LinkInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function setMedia(string $media) {
+  public function setMedia(string $media = null) {
     $this->attributes()->set('media', $media);
     return $this;
   }

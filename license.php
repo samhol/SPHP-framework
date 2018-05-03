@@ -2,9 +2,6 @@
 
 namespace Sphp\Html;
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 require_once('manual/settings.php');
 
 use Sphp\Html\Head\Link;
@@ -21,7 +18,7 @@ $head->set(Meta::viewport('width=device-width, initial-scale=1.0'));
 $head->setDocumentTitle('License | SPHPlayground framework');
 $head->setBaseAddr('http://playground.samiholck.com/', '_self');
 
-$head->setCssSrc('http://playground.samiholck.com/manual/css/license/license.css');
+$head->set(Link::stylesheet('http://playground.samiholck.com/manual/css/license/license.css'));
 //$head->setCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
 
 $head->set(Link::appleTouchIcon('/apple-touch-icon.png'));
@@ -45,7 +42,7 @@ use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Stdlib\Parser;
 
 $grid = Grid::from([
-            Parser::fromString(<<<MD
+            Parser::md()->fromString(<<<MD
 #MIT License
 
 Copyright (c) 2018 Sami Holck
@@ -69,7 +66,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 MD
-                    , 'md')]);
-echo $grid->addCssClass('gnu-license');
+)]);
+echo $grid;
 
 echo $html->getDocumentClose();
