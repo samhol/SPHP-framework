@@ -24,6 +24,7 @@ $currentUrl = URL::getCurrentURL();
           <div class="media-object-section main-section">
             <h6>Contact information:</h6>
             <ul class="fa-ul">
+              <li><span class="fa-li"><?php FontAwesome::get('fas fa-user-tie', 'name')->printHtml() ?></span> Sami Holck</li>
               <li><span class="fa-li"><?php FontAwesome::phone('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
               <li><span class="fa-li"><?php FontAwesome::envelope('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
               <li><span class="fa-li"><?php FontAwesome::get('fa fa-map-marker-alt', 'Email address')->printHtml() ?></span> Rakuunatie 59 A3, Turku, Finland</li>
@@ -34,6 +35,10 @@ $currentUrl = URL::getCurrentURL();
     </div>
     <div class="footer-right">
       <h6>Follow</h6>
+      <a href="https://github.com/samhol">
+        <i class="fab fa-github-square fa-4x" aria-hidden="true"></i>
+        <span class="show-for-sr">GitHub page</span>
+      </a>
       <a href="https://www.facebook.com/sami.holck">
         <i class="fab fa-facebook-square fa-4x" aria-hidden="true"></i>
         <span class="show-for-sr">Facebook page</span>
