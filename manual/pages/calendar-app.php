@@ -8,7 +8,25 @@ use Sphp\DateTime\Calendars\Calendar;
 use Sphp\DateTime\Calendars\Events\Events;
 use Sphp\DateTime\Calendars\Events\Holidays;
 
-$easter = new EasterHolidays();
+$trimmed = trim($par, '/');
+$parts = explode('/', $trimmed);
+$year = (int) date('Y');
+$month = (int) date('m');
+if (count($parts) > 1) {
+  if (is_numeric($parts[1])) {
+    $year = (int) $parts[1];
+  } else {
+    
+  }
+}if (count($parts) > 2) {
+  if (is_numeric($parts[2])) {
+    $month = (int) $parts[2];
+  } else {
+    
+  }
+}
+print_r($parts);
+$easter = new EasterHolidays($year);
 $fi = new HolidayCollection();
 $data = new Calendar();
 $data->useEvents($fi);
@@ -21,15 +39,4 @@ $fi->insertEvent(Events::weekly([1, 2, 3, 7], 'Basketball1'));
 //$data->setBirthDay('', $name);
 //$fi->createYear();
 $fi;
-echo Factory::getMonth(6, 2017)->useCalendar($data);
-echo Factory::getMonth(7, 2017)->useCalendar($data);
-echo Factory::getMonth(8, 2017)->useCalendar($data);
-echo Factory::getMonth(9, 2017)->useCalendar($data);
-echo Factory::getMonth(10, 2017)->useCalendar($data);
-echo Factory::getMonth(11, 2017)->useCalendar($data);
-echo Factory::getMonth(12, 2017)->useCalendar($data);
-echo Factory::getMonth(1)->useCalendar($data);
-echo Factory::getMonth(2)->useCalendar($data);
-echo Factory::getMonth(3)->useCalendar($data);
-echo Factory::getMonth(4)->useCalendar($data);
-echo Factory::getMonth(5)->useCalendar($data);
+echo Factory::getMonth($month, $year)->useCalendar($data);

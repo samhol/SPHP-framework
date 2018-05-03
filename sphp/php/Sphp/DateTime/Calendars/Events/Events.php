@@ -74,5 +74,18 @@ class Events {
     $constraint = $reflect->newInstanceArgs($weekdays);
     return new Note($constraint, $name, $description);
   }
+  /**
+   * Creates a new weekly occuring Holiday instance
+   * 
+   * @param  int[] $weekdays week days the holiday occurs
+   * @param  string $name
+   * @param  string $description
+   * @return Note new instance
+   */
+  public static function monthly(array $weekdays, string $name, string $description = null): Note {
+    $reflect = new \ReflectionClass(Constraints\Weekly::class);
+    $constraint = $reflect->newInstanceArgs($weekdays);
+    return new Note($constraint, $name, $description);
+  }
 
 }

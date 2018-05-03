@@ -11,11 +11,12 @@
 namespace Sphp\Html\Apps\Calendars;
 
 use Sphp\Html\Div;
-use Sphp\Html\TimeTag;
+use Sphp\Html\DateTime\TimeTag;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\DateTime\Calendars\CalendarDate;
 use Sphp\Html\Media\Icons\Svg;
+
 /**
  * Description of WeekDay
  *

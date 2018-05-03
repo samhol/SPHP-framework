@@ -9,6 +9,11 @@ require_once('manual_helper_functions.php');
 $loadNotFound = function () {
   include 'manual/templates/error.php';
 };
+
+$calendar = function ($par) {
+  var_dump($par) ;
+  include 'manual/pages/calendar-app.php';
+};
 $loadPage = function ($par, string $file = 'index') use($loadNotFound) {
   //var_dump(func_get_args());
   try {
@@ -33,5 +38,6 @@ $loadIndex = function () use ($loadPage) {
 $router = (new Router())
         ->setDefaultRoute($loadNotFound)
         ->route('/', $loadIndex)
+        ->route('/calendar/<*categories>', $calendar)
         ->route('/index.php', $loadIndex, 10)
         ->route('/<!category>', $loadPage, 9);

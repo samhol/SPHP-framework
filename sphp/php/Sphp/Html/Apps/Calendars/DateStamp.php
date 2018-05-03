@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\Calendars;
 
-use Sphp\Html\TimeTagInterface;
+use Sphp\Html\DateTime\TimeTagInterface;
 use Sphp\Html\AbstractComponent;
 use DateTimeInterface;
 use DateTimeImmutable;
@@ -21,6 +21,7 @@ use DateTimeZone;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class DateStamp extends AbstractComponent implements TimeTagInterface {
@@ -73,6 +74,10 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateStamp {
     $date = new DateTimeImmutable($time, $timezone);
     return new static($date);
+  }
+
+  public function setFormat(string $format) {
+    
   }
 
 }

@@ -8,22 +8,22 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html;
+namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
 use DateTimeImmutable;
+use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;time&gt; tag
+ * Abstract implementation of an HTML &lt;time&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_time.asp w3schools HTML API
+ * @link    https://github.com/samhol/SPHP-framework for the source repository
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoader {
-
-  use AjaxLoaderTrait;
+class AbstractDateTimeTag extends ContainerTag implements TimeTagInterface {
 
   /**
    * the datetime object
@@ -33,12 +33,17 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoader {
   private $dateTime;
 
   /**
+   * @var string
+   */
+  private $format = self::DATE_TIME;
+
+  /**
    * Constructs a new instance
    *
-   * @param  DateTimeInterface|null $dateTime the datetime object
+   * @param  mixed $dateTime the datetime object
    * @param  mixed $content optional content of the component
    */
-  public function __construct(DateTimeInterface $dateTime = null, $content = null) {
+  public function __construct($dateTime = null, $content = null) {
     parent::__construct('time', $content);
     if ($dateTime !== null) {
       $this->setDateTime($dateTime);
@@ -58,14 +63,17 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoader {
     parent::__clone();
   }
 
-  public function setDateTime(DateTimeInterface $dateTime) {
-    $this->attributes()->set('datetime', (string) $dateTime->format('Y-m-d H:i:sO'));
-    $this->dateTime = $dateTime;
+  public function setFormat(string $format = self::DATE_TIME) {
+    $this->format = $format;
     return $this;
   }
 
-  public function getDateTime(): DateTimeInterface {
-    return $this->dateTime;
+  public function setDateTime($dateTime) {
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
+      $dateTime = new DateTime($dateTime);
+    }
+    $this->attributes()->set('datetime', $dateTime->format($this->format));
+    return $this;
   }
 
 }

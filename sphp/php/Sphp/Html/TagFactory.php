@@ -56,6 +56,7 @@ use ReflectionClass;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 abstract class TagFactory {
@@ -166,7 +167,7 @@ abstract class TagFactory {
       'thead' => Tables\Thead::class,
       'colgroup' => Tables\Colgroup::class,
       'col' => Tables\Col::class,
-      'time' => TimeTag::class,
+      'time' => DateTime\TimeTag::class,
       'var' => ContainerTag::class,
       'xmp' => ContainerTag::class,
       'pre' => ContainerTag::class,
