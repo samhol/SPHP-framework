@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Apps\Calendars;
+namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\DateTime\Calendars\Events\EasterHolidays;
 use Sphp\DateTime\Calendars\Events\Fi\HolidayCollection;

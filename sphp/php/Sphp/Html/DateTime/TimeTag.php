@@ -12,6 +12,8 @@ namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
 use Sphp\DateTime\DateTime;
+use DateTimeImmutable;
+use Sphp\Html\ContainerTag;
 
 /**
  * Implements an HTML &lt;time&gt; tag
@@ -21,6 +23,57 @@ use Sphp\DateTime\DateTime;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TimeTag extends AbstractDateTimeTag {
-  
+class TimeTag extends ContainerTag implements TimeTagInterface {
+
+  /**
+   * the datetime object
+   *
+   * @var DateTime 
+   */
+  private $dateTime;
+
+  /**
+   * @var string
+   */
+  private $format = self::DATE_TIME;
+
+  /**
+   * Constructs a new instance
+   *
+   * @param  mixed $dateTime the datetime object
+   * @param  mixed $content optional content of the component
+   * @param  string $format the format of the outputted date string
+   */
+  public function __construct($dateTime = null, $content = null,string $format = self::DATE_TIME) {
+    parent::__construct('time', $content);
+    $this->setDateTime($dateTime, $format);
+  }
+
+  public function __destruct() {
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    parent::__clone();
+  }
+
+  public function setFormat(string $format = self::DATE_TIME) {
+    $this->format = $format;
+    return $this;
+  }
+
+  public function getFormat(): string {
+    return $this->format;
+  }
+
+  public function setDateTime($dateTime, string $format = self::DATE_TIME) {
+    $this->setFormat($format);
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
+      $dateTime = new DateTime($dateTime);
+    }
+    $this->dateTime = $dateTime;
+    $this->attributes()->set('datetime', $this->dateTime->format($this->getFormat()));
+    return $this;
+  }
+
 }

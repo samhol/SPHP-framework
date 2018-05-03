@@ -107,10 +107,7 @@ class DateTime {
   public function getIntlFormatter(): IntlDateFormatter {
     if ($this->fmt === null) {
       $this->fmt = new IntlDateFormatter(
-              null,
-              IntlDateFormatter::FULL, IntlDateFormatter::FULL,
-              $this->getTimezone(),
-              IntlDateFormatter::GREGORIAN
+              null, IntlDateFormatter::FULL, IntlDateFormatter::FULL, $this->getTimezone(), IntlDateFormatter::GREGORIAN
       );
     }
     return $this->fmt;
@@ -129,11 +126,7 @@ class DateTime {
       $lang = Locale::getDatetimeLocale();
     }
     $fmt = new IntlDateFormatter(
-            $lang,
-            IntlDateFormatter::FULL, IntlDateFormatter::FULL,
-            $this->getTimezone(),
-            IntlDateFormatter::GREGORIAN,
-            $format
+            $lang, IntlDateFormatter::FULL, IntlDateFormatter::FULL, $this->getTimezone(), IntlDateFormatter::GREGORIAN, $format
     );
     return $fmt->format($this->date);
   }

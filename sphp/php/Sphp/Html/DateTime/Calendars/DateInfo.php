@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Calendars;
+namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\Content;
 use Sphp\DateTime\Calendars\CalendarDate;

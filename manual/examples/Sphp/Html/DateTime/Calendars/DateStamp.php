@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Apps\Calendars;
+namespace Sphp\Html\DateTime\Calendars;
 
 echo DateStamp::fromString('yesterday');
 echo new DateStamp();

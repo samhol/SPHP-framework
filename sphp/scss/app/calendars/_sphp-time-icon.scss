@@ -1,13 +1,13 @@
 /**
- * _sphp-dateStamp.scss (UTF-8)
+ * _sphp-datetime-icon.scss (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 @charset "UTF-8";
 
-@mixin sphp-datetime-icon() { 
+@mixin sphp-datetime-icon($size: 1em) { 
   time.date-icon {
-    font-size: 1em; /* change icon size */
-    display: block;
+    font-size: $size; /* change icon size */
+    display: inline-block;
     position: relative;
     width: 7em;
     height: 7em;

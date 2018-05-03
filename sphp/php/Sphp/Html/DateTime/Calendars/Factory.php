@@ -8,19 +8,26 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\DateTime;
+namespace Sphp\Html\DateTime\Calendars;
 
 /**
- * Description of DateTimes
+ * Description of Factory
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DateTimes {
-  public static function weekNumber($date = null): TimeTag {
-    
-    return (new TimeTag());
+class Factory {
+
+  public static function getMonth(int $month = null, int $year = null): MonthView {
+    if ($month === null) {
+      $month = date('m');
+    }
+    if ($year === null) {
+      $year = date('Y');
+    }
+    return new MonthView($year, $month);
   }
+
 }

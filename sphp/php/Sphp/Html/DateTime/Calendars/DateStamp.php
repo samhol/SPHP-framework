@@ -8,10 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Calendars;
+namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\DateTime\TimeTagInterface;
 use Sphp\Html\AbstractComponent;
+use Sphp\DateTime\DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
 use DateTimeZone;
@@ -34,23 +35,40 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   private $dateTime;
 
   /**
+   * @var string
+   */
+  private $format = self::DATE_TIME;
+
+  /**
    * Constructs a new instance
    *
-   * @param  DateTimeInterface $datetime optional datetime object (defaults to current date and time)
+   * @param  mixed $datetime optional datetime object (defaults to current date and time)
+   * @param  string $format the format of the outputted date string
+   * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
-  public function __construct(DateTimeInterface $datetime = null) {
+  public function __construct($datetime = null, string $format = self::DATE_TIME) {
     parent::__construct('time');
     $this->cssClasses()->protect('date-icon');
-    if ($datetime === null) {
-      $datetime = new DateTimeImmutable();
-    }
-    $this->setDatetime($datetime);
+    $this->setFormat($format)->setDatetime($datetime, $format);
   }
 
-  public function setDateTime(DateTimeInterface $dateTime) {
-    $this->attributes()->set('datetime', $dateTime->format('Y-m-d H:i:sO'));
+  public function setDateTime($dateTime, string $format = self::DATE_TIME) {
+    $this->setFormat($format);
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
+      $dateTime = new DateTime($dateTime);
+    }
     $this->dateTime = $dateTime;
+    $this->attributes()->set('datetime', $this->dateTime->format($this->format));
     return $this;
+  }
+
+  public function setFormat(string $format = self::DATE_TIME) {
+    $this->format = $format;
+    return $this;
+  }
+
+  public function getFormat(): string {
+    return $this->format;
   }
 
   public function getDateTime(): DateTimeInterface {
@@ -74,10 +92,6 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateStamp {
     $date = new DateTimeImmutable($time, $timezone);
     return new static($date);
-  }
-
-  public function setFormat(string $format) {
-    
   }
 
 }

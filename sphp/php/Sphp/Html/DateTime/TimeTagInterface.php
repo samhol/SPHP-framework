@@ -30,7 +30,7 @@ interface TimeTagInterface extends TagInterface {
   /**
    * the year only
    */
-  const Y = 'Y';
+  const YEAR = 'Y';
 
   /**
    * year and month 
@@ -51,6 +51,10 @@ interface TimeTagInterface extends TagInterface {
    * month and day of any year
    */
   const M_D = 'm-d';
+
+  /**
+   * full date and time with offset
+   */
   const DATE_TIME = 'Y-m-d H:i:sO';
 
   /**
@@ -58,6 +62,7 @@ interface TimeTagInterface extends TagInterface {
    * 
    * @param  DateTimeInterface $dateTime the datetime object
    * @return $this for a fluent interface
+   * @throws DateTimeException if formatting fails
    * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
   public function setDateTime($dateTime);
@@ -67,7 +72,13 @@ interface TimeTagInterface extends TagInterface {
    * 
    * @param  string $format the format of the outputted date string
    * @return $this for a fluent interface
-   * @throws DateTimeException if formatting fails
    */
   public function setFormat(string $format = self::DATE_TIME);
+  
+  /**
+   * Returns the date format used
+   * 
+   * @return  string the date format used
+   */
+  public function getFormat(): string;
 }
