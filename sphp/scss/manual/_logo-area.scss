@@ -17,13 +17,13 @@
     div.sphp-brand-links {
       float:right;
     }
-    a.sphp-brand-icon {
-      border: solid 1px #000;
+    a.sphp-brand-link {
+      border: solid 1px #555;
       @include border-radius(8px);
       @include opacity(.8);
       @include box-shadow(rgba(gray, 0.4) 0 0 25px, rgba(black, 0.2) 0 0 3px 1px);
       &:hover {
-        border-color: #FF8000;
+        border-color: #000;
         @include opacity(1);
         @include box-shadow(rgba(gray, 0.6) 0 0 25px, rgba(black, 0.5) 0 0 3px 1px);
       }

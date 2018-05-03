@@ -21,8 +21,8 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
   $outputCache->end();
 }
 ?>
-<div class="grid-container fluid">
-  <div class="grid-x grid-margin-x medium-margin-uncollapse">
+<div class="grid-container full">
+  <div class="grid-x">
     <div class="cell small-12 large-3 xlarge-3 show-for-large">
       <?php
       if ($outputCache->start('sidenav') === false) {

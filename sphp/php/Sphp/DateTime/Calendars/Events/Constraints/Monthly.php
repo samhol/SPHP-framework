@@ -30,7 +30,7 @@ class Monthly implements DateConstraint {
   /**
    * Constructor
    * 
-   * @param  int $day
+   * @param  int $day the day of the month
    * @throws Exceptions\CalendarEventException if constructor fails
    */
   public function __construct(int $day) {

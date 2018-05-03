@@ -2,7 +2,7 @@
 
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Media\Icons\FontAwesome;
-
+use Sphp\Html\Media\Icons\FaIcon;
 $currentUrl = URL::getCurrentURL();
 ?>
 
@@ -24,7 +24,7 @@ $currentUrl = URL::getCurrentURL();
           <div class="media-object-section main-section">
             <h6>Contact information:</h6>
             <ul class="fa-ul">
-              <li><span class="fa-li"><?php FontAwesome::get('fas fa-user-tie', 'name')->printHtml() ?></span> Sami Holck</li>
+              <li><span class="fa-li"><?php (new FaIcon('fas fa-user-tie', 'name'))->printHtml() ?></span> Sami Holck</li>
               <li><span class="fa-li"><?php FontAwesome::phone('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
               <li><span class="fa-li"><?php FontAwesome::envelope('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
               <li><span class="fa-li"><?php FontAwesome::get('fa fa-map-marker-alt', 'Email address')->printHtml() ?></span> Rakuunatie 59 A3, Turku, Finland</li>

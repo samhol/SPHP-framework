@@ -12,6 +12,8 @@ namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
 use Sphp\DateTime\DateTime;
+use Sphp\DateTime\DateInterface;
+
 /**
  * Description of DateTimes
  *
@@ -22,17 +24,23 @@ use Sphp\DateTime\DateTime;
  */
 class Factory {
 
+  protected static function parseInstance($dateTime = null) {
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime && !$dateTime instanceof DateInterface) {
+      $dateTime = new DateTime($dateTime);
+    }
+    return $dateTime;
+  }
+
   /**
    * 
    * @param  mixed $dateTime
    * @return TimeTag
    */
   public static function weekNumber($dateTime = null): TimeTag {
-    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
-      $dateTime = new DateTime($dateTime);
-    }
-    return (new TimeTag($dateTime, $dateTime->format('W')))->setFormat(TimeTag::Y_W);
+    $parsed = static::parseInstance($dateTime);
+    return (new TimeTag($parsed, $parsed->format('W')))->setFormat(TimeTag::Y_W);
   }
+
   /**
    * 
    * @param  mixed $dateTime

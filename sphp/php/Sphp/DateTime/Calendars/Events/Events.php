@@ -22,7 +22,7 @@ use Sphp\DateTime\DateInterface;
 class Events {
 
   /**
-   * Creates a new Holiday instance from a date string
+   * Creates a new unique date note instance
    * 
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    * @param  string $heading heading of the note 
@@ -36,6 +36,7 @@ class Events {
   }
 
   /**
+   * Creates a new annual note instance
    * 
    * @param int $month
    * @param int $day
@@ -60,6 +61,18 @@ class Events {
     $constraint = new Constraints\VaryingAnnual($format);
     return new Note($constraint, $name, $description);
   }
+  /**
+   * Creates a new weekly occuring Holiday instance
+   * 
+   * @param  int $day the day of the month
+   * @param  string $name
+   * @param  string $description
+   * @return Note new instance
+   */
+  public static function monthly(int $day, string $name, string $description = null): Note {
+    $constraint = new Constraints\Monthly($day);
+    return new Note($constraint, $name, $description);
+  }
 
   /**
    * Creates a new weekly occuring Holiday instance
@@ -70,19 +83,6 @@ class Events {
    * @return Note new instance
    */
   public static function weekly(array $weekdays, string $name, string $description = null): Note {
-    $reflect = new \ReflectionClass(Constraints\Weekly::class);
-    $constraint = $reflect->newInstanceArgs($weekdays);
-    return new Note($constraint, $name, $description);
-  }
-  /**
-   * Creates a new weekly occuring Holiday instance
-   * 
-   * @param  int[] $weekdays week days the holiday occurs
-   * @param  string $name
-   * @param  string $description
-   * @return Note new instance
-   */
-  public static function monthly(array $weekdays, string $name, string $description = null): Note {
     $reflect = new \ReflectionClass(Constraints\Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);
     return new Note($constraint, $name, $description);

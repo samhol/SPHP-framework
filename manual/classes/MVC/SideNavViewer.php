@@ -38,6 +38,7 @@ class SideNavViewer implements Content {
   private $nav;
 
   /**
+   * Constructor
    * 
    * @param array $data
    * @param string $currentPage

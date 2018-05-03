@@ -16,80 +16,82 @@ $side-nav-link-bg-hover: hsla(0, 0, 0, 0.085);
 $side-nav-link-bg: hsla(0, 0, 0, 0.015);
 $side-nav-bg: #fefefe;
 
-.sphp-sidenav {
-  padding: rem-calc(0 0 20 0); /* top right bottom left */
-  //border: solid 1px #333;
-  border: solid 1px #FF8000;
-  @include border-bottom-left-radius(10px);
-  overflow: hidden; 
-  @include background-clip(border-box);
-  background-color: #fefefe;	
-  // border: solid 1px #888; 
-  // @include border-radius(4px);
-  @include box-shadow(#888 3px 0px 8px 4px);
-  @include box-shadow(#888 0px 3px 8px 4px);
-  margin: rem-calc(5 0 20 0); /*top right bottom left*/
-  a {
-    color: #555;
-  }
-  ul.menu.nested {
-    margin-left: 0;
-  }
-  li {
-    &.menu-text {
-      &:first-of-type {
-        font-size: rem-calc(18);
-      }
-      @include background-image(linear-gradient(to right, #fff, #dfdfdf));
-      font: {
-        size: $side-nav-heading-font-size;
-        weight: bold;
-      }
-      border-top: solid 1px #999; 
-      border-bottom: solid 1px #999; 
+@mixin sphp-sidenav() { 
+  .sphp.sidenav {
+    padding: rem-calc(0 0 20 0); /* top right bottom left */
+    //border: solid 1px #333;
+    border: solid 1px #FF8000;
+    @include border-bottom-left-radius(10px);
+    overflow: hidden; 
+    @include background-clip(border-box);
+    background-color: #fefefe;	
+    // border: solid 1px #888; 
+    // @include border-radius(4px);
+    @include box-shadow(#888 3px 0px 8px 4px);
+    @include box-shadow(#888 0px 3px 8px 4px);
+    //margin: rem-calc(5 0 20 0); /*top right bottom left*/
+    a {
+      color: #555;
     }
-    &.menu-ruler {
-      @include background-image(linear-gradient(to right, #eee, #ccc));
-      background-color: #ccc;
-      margin-left: 3px;
-      margin-right: 3px;
+    ul.menu.nested {
+      margin-left: 0;
     }
-    &.is-accordion-submenu-parent {
-      margin: rem-calc(0 0 2 0); /* top right bottom left */ 
-      & > a {
-        border-top: solid 1px #999;
-        border-bottom: solid 1px #999;
-        //background-color: #eee;
-        font-weight: bold;
-        font-size: rem-calc(14);
+    li {
+      &.menu-text {
+        &:first-of-type {
+          font-size: rem-calc(18);
+        }
         @include background-image(linear-gradient(to right, #fff, #dfdfdf));
-        color: #333;
-        padding-left: rem-calc(6);
-      }
-    }
-    &:not(.is-accordion-submenu-parent) {   
-      a {
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-        background-color: #fff;
-        font-size: rem-calc(13);
-        @include transition-property(background-color, color);
-        @include transition-duration(0.2s);
-        @include transition-timing-function(ease-in-out);
-        &:hover {	
-          color: #111;
+        font: {
+          size: $side-nav-heading-font-size;
+          weight: bold;
         }
-        &:hover { 
-          @include background-image(linear-gradient(to right, #fff, #eee));
+        border-top: solid 1px #999; 
+        border-bottom: solid 1px #999; 
+      }
+      &.menu-ruler {
+        @include background-image(linear-gradient(to right, #eee, #ccc));
+        background-color: #ccc;
+        margin-left: 3px;
+        margin-right: 3px;
+      }
+      &.is-accordion-submenu-parent {
+        margin: rem-calc(0 0 2 0); /* top right bottom left */ 
+        & > a {
+          border-top: solid 1px #999;
+          border-bottom: solid 1px #999;
+          //background-color: #eee;
+          font-weight: bold;
+          font-size: rem-calc(14);
+          @include background-image(linear-gradient(to right, #fff, #dfdfdf));
+          color: #333;
+          padding-left: rem-calc(6);
         }
       }
-      &.active {
+      &:not(.is-accordion-submenu-parent) {   
         a {
-          color: #222;
-          @include background-image(linear-gradient(to right, #fff, #eee));
-          &:hover {
+          border: 1px solid rgba(255, 255, 255, 0.6);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+          background-color: #fff;
+          font-size: rem-calc(13);
+          @include transition-property(background-color, color);
+          @include transition-duration(0.2s);
+          @include transition-timing-function(ease-in-out);
+          &:hover {	
             color: #111;
-            @include background-image(linear-gradient(to right, #fdfdfd, #dcdcdc));
+          }
+          &:hover { 
+            @include background-image(linear-gradient(to right, #fff, #eee));
+          }
+        }
+        &.active {
+          a {
+            color: #222;
+            @include background-image(linear-gradient(to right, #fff, #eee));
+            &:hover {
+              color: #111;
+              @include background-image(linear-gradient(to right, #fdfdfd, #dcdcdc));
+            }
           }
         }
       }
