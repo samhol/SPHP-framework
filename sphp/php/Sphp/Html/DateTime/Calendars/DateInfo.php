@@ -16,6 +16,7 @@ use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\Html\Span;
 use Sphp\Html\Media\Icons\FontAwesome;
+use Sphp\DateTime\Calendars\Events\BirthDay;
 
 /**
  * Description of DateInfo
@@ -47,16 +48,40 @@ class DateInfo implements Content {
     $popup = new Popup();
     $date = $this->calendarDate->getDate()->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
-    foreach ($this->calendarDate->getEvents() as $event) {
-      if ($event instanceof \Sphp\DateTime\Calendars\Events\BirthDay) {
-        $popup->append("<br>" . $event->eventAsString($this->calendarDate->getDate()->getYear()));
-      } else {
-      $popup->append("<br>" . $event->eventAsString());
-      }
-    }
+    $popup->append($this->createHolidayNotes());
+
+    $popup->append($this->createNotes());
+
     //$popup->append($this->calendarDate->getNotes());
 
     return $popup;
+  }
+
+  public function createHolidayNotes(): \Sphp\Html\Lists\Ul {
+    $ul = new \Sphp\Html\Lists\Ul();
+    if (count($this->calendarDate->getEvents()->getHolidays()) > 0) {
+      $ul->appendMd("**HOLIDAYS:**");
+      foreach ($this->calendarDate->getEvents()->getHolidays() as $event) {
+        if ($event instanceof BirthDay) {
+          $ul->appendMd($event->eventAsString($this->calendarDate->getDate()->getYear()));
+        } else {
+          $ul->appendMd($event->eventAsString());
+        }
+      }
+    }
+    return $ul;
+  }
+
+  public function createNotes(): \Sphp\Html\Lists\Ul {
+    $ul = new \Sphp\Html\Lists\Ul();
+    foreach ($this->calendarDate->getEvents()->getNotes() as $event) {
+      if ($event instanceof BirthDay) {
+        $ul->appendMd($event->eventAsString($this->calendarDate->getDate()->getYear()));
+      } else {
+        $ul->appendMd($event->eventAsString());
+      }
+    }
+    return $ul;
   }
 
   public function create() {

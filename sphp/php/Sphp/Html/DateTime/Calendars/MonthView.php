@@ -58,10 +58,10 @@ class MonthView extends AbstractComponent {
     parent::__construct('div');
     $this->cssClasses()->protect('sphp', 'calendar-month');
     if ($year === null) {
-      $year = (int) date("Y", time());
+      $year = (int) date('Y', time());
     }
     if ($month === null) {
-      $month = (int) date("m", time());
+      $month = (int) date('m', time());
     }
     $this->month = $month;
     $this->year = $year;
@@ -91,8 +91,11 @@ class MonthView extends AbstractComponent {
   }
 
   protected function generateTop() {
+    $top = new Div();
+    $top->attributes()->classes()->protect('sphp', 'month-selector');
+    $top->append($this->firstOf->format('F Y'));
     $output = new Row();
-    $output->append(new MonthSelector($this->year, $this->month));
+    $output->append($top);
     return $output;
   }
 

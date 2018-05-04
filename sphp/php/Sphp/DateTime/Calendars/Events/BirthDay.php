@@ -35,6 +35,9 @@ class BirthDay extends Holiday {
   public function __construct(int $month, int $day, string $name, int $yearOfBirth = null) {
     $constraints = new Constraints\Constraints();
     $constraints->dateIs(new Constraints\Annual($month, $day));
+    if ($yearOfBirth !== null) {
+      $constraints->dateIsNot(new Constraints\Before("$yearOfBirth-$month-$day"));
+    }
     parent::__construct($constraints, $name);
     $this->year = $yearOfBirth;
     $this->month = $month;

@@ -28,7 +28,7 @@ use Sphp\Exceptions\OutOfRangeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Pagination extends AbstractComponent implements IteratorAggregate, Countable {
+class Paginator extends AbstractComponent implements IteratorAggregate, Countable {
 
   /**
    * @var PageInterface
@@ -55,7 +55,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    *
    * @var int 
    */
-  private $current;
+  private $current = 0;
 
   /**
    *
@@ -131,48 +131,31 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\OutOfRangeException
    */
-  public function setCurrentPage($index) {
+  public function setCurrentPage(int $index) {
     if (!array_key_exists($index, $this->pages)) {
       throw new OutOfRangeException("Index '$index' does not exist in the pagination");
+    } 
+    if (array_key_exists($this->current, $this->pages)) {
+      $this->getPage($this->current)->setCurrent(false);
     }
+    $this->getPage($index)->setCurrent(true);
     $this->current = $index;
-    foreach ($this->pages as $id => $page) {
-      //var_dump( $id, $index);
-      if ($id != $index) {
-        $page->setCurrent(false);
-      } else {
-        $page->setCurrent(true);
-      }
-    }
-    return $this;
-  }
-  
-  public function append(PageInterface $page) {
-    $this->pages[] = $page;
     return $this;
   }
 
-  /**
-   * Sets a page
-   * 
-   * @param  int|string $index the index of the page
-   * @param  Page|string $page the page object or an URL string
-   * @return $this for a fluent interface
-   */
-  public function setPage($index, $page) {
-    if (!$page instanceof PageInterface) {
-      $page = new Page($page, $index, $this->target);
+  public function append(PageInterface $page): int {
+    if (empty($this->pages)) {
+      $this->pages[1] = $page;
+    } else {
+      $this->pages[] = $page;
     }
-    $this->pages[$index] = $page;
-    if ($this->current === null) {
-      $page->setCurrent(true);
-    }
+    $index = count($this->pages);
     if ($page->isCurrent()) {
-      $this->current = $index;
       $this->setCurrentPage($index);
     }
-    return $this;
+    return $index;
   }
+
 
   /**
    * 
@@ -180,8 +163,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return $this
    */
   public function setPages(array $pages) {
-    foreach ($pages as $index => $page) {
-      $this->setPage($index, $page);
+    foreach ($pages as $page) {
+      $this->append($page);
     }
     return $this;
   }
