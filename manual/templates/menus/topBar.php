@@ -11,7 +11,7 @@ use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 try {
   $navi = new TopBar();
   $navi->stackFor('medium');
-  $navi->addCssClass('sphp-manual');
+  $navi->addCssClass('sphp');
 
   //$manual = (new SubMenu('Documentation'));
   $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);

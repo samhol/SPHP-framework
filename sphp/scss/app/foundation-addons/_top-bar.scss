@@ -1,0 +1,102 @@
+@mixin sphp-top-bar() { 
+  $bar-bg: #111; 
+  $bar-menu-bg: #222;
+  $bar-link-bg: #222;
+  $bar-link-bg-active: #2a2a2a;
+  $bar-font-color: #f4f4f4;
+  $bar-font-color-active: #fff;
+  $bar-link-color: #f4f4f4;
+  $bar-link-color-active: #fff;
+  $root-border-color: #333;
+  .sphp {
+    &.title-bar, &.top-bar {
+      @include single-box-shadow(0px, 3px, 8px, 4px, #888);
+      @include single-box-shadow(3px, 3px, 8px, 4px, #888);
+      border-top: solid 1px $highlight-color;
+      border-bottom: solid 1px $highlight-color;
+      background-color: $bar-bg;
+    }
+    &.top-bar { 
+      color: #fff;
+
+      .top-bar-left {
+        @include breakpoint(medium) { 
+          margin: rem-calc(0 0 0 5);
+        }
+        > ul {   
+          //margin: 0;
+        }
+        > ul > li {
+          //margin: 0;
+          > a {
+            //height: 45px;
+            border-top: 1px solid $root-border-color;
+            border-bottom: 1px solid $root-border-color;
+            border-left: 1px solid $root-border-color;
+            //line-height: inherit;
+            &:last-of-type {
+              border-right: 1px solid $root-border-color;
+            }
+            min-width: rem-calc(130);
+          }
+        }
+        li { 
+          font-size: rem-calc(13);
+          &.menu-text {
+            //@include background-image(linear-gradient(to right, #444, #1b1b1b));
+            background-color: smart-scale($bar-bg, 10%);
+            border-top: solid 1px #444;
+            border-bottom:  solid 1px #444;
+            padding-top: rem-calc(10);
+            padding-bottom: rem-calc(10);
+            color: $bar-font-color;
+          }
+          &.menu-ruler {
+            @include background-image(linear-gradient(120deg, #222, #555, #222));
+            // @include background-image(linear-gradient(to right, #535353, #202020));
+            background-color: smart-scale($bar-bg, 25%);
+          }
+        }
+        a {
+          background: $bar-link-bg;
+          color: $bar-link-color;
+          &:hover {
+            background: $bar-link-bg-active;
+            color: $bar-link-color-active;
+          }
+        }
+        li.is-active > a {  
+          background: $bar-link-bg-active;
+          color: $bar-link-color-active;
+        }
+        .is-drilldown {
+          background-color: $bar-menu-bg;
+        }
+        .menu {
+          background-color: $bar-menu-bg;
+          ul {
+            border-color:   $highlight-color;
+          }
+        }
+      }
+      .top-bar-right {
+        margin: rem-calc(2);
+        .input-group {
+          input {
+            @include breakpoint(small) {
+              max-width: rem-calc(400);
+            }
+            @include breakpoint(medium) {
+              max-width: rem-calc(600);
+            }
+            @include breakpoint(large) {
+              max-width: rem-calc(800);
+            }
+          }
+          margin: 0;
+        }
+      }
+    }
+
+  }
+}
