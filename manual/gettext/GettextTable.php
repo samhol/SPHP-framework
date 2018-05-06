@@ -3,16 +3,15 @@
 namespace Sphp;
 
 use Sphp\Html\AbstractComponentGenerator;
-use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\I18n\Gettext\PluralGettextData;
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Tables\Tr;
-use Iterator;
+use Traversable;
 
 class GettextTable extends AbstractComponentGenerator {
 
   /**
-   * @var Collection 
+   * @var Traversable 
    */
   private $data;
 
@@ -21,7 +20,7 @@ class GettextTable extends AbstractComponentGenerator {
    */
   private $i = 1;
 
-  public function __construct(Iterator $gettextData = null) {
+  public function __construct(Traversable $gettextData = null) {
     $this->data = $gettextData;
   }
 
@@ -30,11 +29,11 @@ class GettextTable extends AbstractComponentGenerator {
     return $this;
   }
 
-  public function getData(): Iterator {
+  public function getData(): Traversable {
     return $this->data;
   }
 
-  public function setData(Iterator $data) {
+  public function setData(Traversable $data) {
     $this->data = $data;
     return $this;
   }

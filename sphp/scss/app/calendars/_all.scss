@@ -6,10 +6,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-@import "sphp-time-icon";
-@import "sphp-calendar-month";
+@import "time-icon";
+@import "calendar-month";
+@import "month-selector";
 
 @mixin sphp-calendar-modules() { 
   @include sphp-datetime-icon;
   @include sphp-calendar-month;
+  @include sphp-month-selector;
 }

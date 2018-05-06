@@ -83,10 +83,10 @@
         margin: rem-calc(2);
         .input-group {
           input {
-            @include breakpoint(small) {
-              max-width: rem-calc(400);
+            @include breakpoint(small only) {
+              //max-width: rem-calc(400);
             }
-            @include breakpoint(medium) {
+            @include breakpoint(medium only) {
               max-width: rem-calc(600);
             }
             @include breakpoint(large) {

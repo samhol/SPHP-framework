@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Events;
 use Sphp\DateTime\Date;
 
 /**
- * Description of EasterHoliday
+ * Implements easter holiday collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -33,33 +33,36 @@ class EasterHolidays extends EventCollection {
       $year = (int) date('Y');
     }
     $sunday = static::getEasterSunday($year);
-    $this->insertEvent(Holidays::unique($sunday->jump(-3), 'Maundy Thursday'));
-    $this->insertEvent(Holidays::unique($sunday->jump(-2), 'Good Friday')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday->jumpDays(-3), 'Maundy Thursday'));
+    $this->insertEvent(Holidays::unique($sunday->jumpDays(-2), 'Good Friday')->setNationalHoliday());
     $this->insertEvent(Holidays::unique($sunday, 'Easter Sunday')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday->jump(1), 'Easter Monday')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday->jump(39), 'Ascension Day')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday->jump(49), 'Pentecost'));
+    $this->insertEvent(Holidays::unique($sunday->jumpDays(1), 'Easter Monday')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday->jumpDays(39), 'Ascension Day')->setNationalHoliday());
+    $this->insertEvent(Holidays::unique($sunday->jumpDays(49), 'Pentecost'));
   }
 
   /**
+   * Returns the Maundy Thursday
    * 
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
    */
   public static function getMaundyThursday(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(-3);
+    return static::getEasterSunday($year)->jumpDays(-3);
   }
 
   /**
+   * Returns the Good Friday
    * 
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
    */
   public static function getGoodFriday(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(-2);
+    return static::getEasterSunday($year)->jumpDays(-2);
   }
 
   /**
+   * Returns the Easter Sunday
    * 
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
@@ -75,30 +78,33 @@ class EasterHolidays extends EventCollection {
   }
 
   /**
+   * Returns the Easter Monday
    * 
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
    */
   public static function getEasterMonday(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(1);
+    return static::getEasterSunday($year)->jumpDays(1);
   }
 
   /**
+   * Returns the Ascension Day
    * 
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
    */
   public static function getAscensionDay(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(39);
+    return static::getEasterSunday($year)->jumpDays(39);
   }
 
   /**
+   * Returns the Pentecost Day
    * 
    * @param  int $year optional year (uses current if omitted) 
    * @return Date new date object
    */
   public static function getPentecost(int $year = null): Date {
-    return static::getEasterSunday($year)->jump(49);
+    return static::getEasterSunday($year)->jumpDays(49);
   }
 
 }

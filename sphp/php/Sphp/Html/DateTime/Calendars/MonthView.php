@@ -91,9 +91,9 @@ class MonthView extends AbstractComponent {
   }
 
   protected function generateTop() {
-    $top = new Div();
-    $top->attributes()->classes()->protect('sphp', 'month-selector');
-    $top->append($this->firstOf->format('F Y'));
+    $top = MonthSelector::fromDate($this->firstOf);
+    //$top->attributes()->classes()->protect('sphp', 'month-selector');
+    //$top->append($this->firstOf->format('F Y'));
     $output = new Row();
     $output->append($top);
     return $output;
@@ -107,10 +107,10 @@ class MonthView extends AbstractComponent {
       $monday = clone $this->firstOf;
     }
     $container->append($this->createWeekRow($monday));
-    $next = $monday->jump(7);
+    $next = $monday->jumpDays(7);
     while ($next->format('m') == $this->month) {
       $container->append($this->createWeekRow($next));
-      $next = $next->jump(7);
+      $next = $next->jumpDays(7);
     }
     return $container;
   }
@@ -137,10 +137,10 @@ class MonthView extends AbstractComponent {
     //$weekViewer = new WeekNumberView($date);
     //$row->append($weekViewer)->layout()->setWidths('small-1');
     $row->append($this->createDayCell($date));
-    $next = $date->nextDate();
+    $next = $date->nextDay();
     while ($next->getWeekDay() !== 1) {
       $row->append($this->createDayCell($next));
-      $next = $next->nextDate();
+      $next = $next->nextDay();
     }
     return $row;
   }

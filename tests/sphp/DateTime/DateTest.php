@@ -71,9 +71,9 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    */
   public function testJumping() {
     $now = new Date();
-    $tomorrow = $now->jump(1);
+    $tomorrow = $now->jumpDays(1);
     $this->assertEquals(new Date('tomorrow'), $tomorrow);
-    $yesterday = $now->jump(-1);
+    $yesterday = $now->jumpDays(-1);
     $this->assertEquals(new Date('yesterday'), $yesterday);
   }
 

@@ -30,6 +30,7 @@ use Sphp\Html\TraversableTrait;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class BreadCrumbs extends AbstractComponent implements IteratorAggregate, TraversableContent {

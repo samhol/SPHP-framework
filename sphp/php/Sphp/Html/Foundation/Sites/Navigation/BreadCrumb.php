@@ -18,6 +18,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class BreadCrumb extends MenuLink {

@@ -12,17 +12,16 @@ namespace Sphp\DateTime\Calendars\Events\Constraints;
 
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
-use Sphp\Stdlib\Parsers\Json;
 
 /**
- * Implements a constraint including all Calendar Dates before the limit
+ * Implements a constraint including all Calendar Dates after the limit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Before implements DateConstraint {
+class After implements DateConstraint {
 
   /**
    * @var Date 
@@ -58,17 +57,7 @@ class Before implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    return $this->limit->isLaterThan($date);
-  }
-
-  public function toJson(): string {
-    $data = [
-        'type' => static::class,
-        'params' => [
-            'limit' => $this->limit->format('Y-m-d H:i:sO')
-        ]
-    ];
-    return (new Json())->encodeArray($data);
+    return $this->limit->isEarlierThan($date);
   }
 
 }

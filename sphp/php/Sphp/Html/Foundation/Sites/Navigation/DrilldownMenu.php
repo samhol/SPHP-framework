@@ -16,6 +16,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class DrilldownMenu extends Menu {

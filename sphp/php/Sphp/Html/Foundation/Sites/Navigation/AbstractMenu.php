@@ -21,6 +21,7 @@ use Sphp\Html\Container;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemInterface {

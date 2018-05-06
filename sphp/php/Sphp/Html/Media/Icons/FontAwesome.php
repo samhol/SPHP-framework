@@ -21,6 +21,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Media\Icons\FaIcon php(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon python(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon nodejs(string $screenReaderLabel = null) creates a new icon object
  * 
  * @method \Sphp\Html\Media\Icons\FaIcon facebook(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon twitter(string $screenReaderLabel = null) creates a new icon object
@@ -47,6 +48,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * 
  * @method \Sphp\Html\Media\Icons\FaIcon exclamation(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon ban(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon stethoscope(string $screenReaderLabel = null) creates a new icon object
  * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -68,6 +70,7 @@ class FontAwesome {
       'php' => 'fab fa-php',
       'js' => 'fab fa-js-square',
       'python' => 'fab fa-python',
+      'nodejs' => 'fab fa-node-js',
       /**
        * Social
        */
@@ -95,6 +98,7 @@ class FontAwesome {
       'eraser' => 'fas fa-eraser',
       'exclamation' => 'fas fa-exclamation-triangle',
       'tags' => 'fas fa-tags',
+      'stethoscope' => 'fas fa-stethoscope',
       /**
        * Brands
        */

@@ -47,13 +47,11 @@ class Json extends AbstractReader implements ArrayEncoder {
    * @return string
    * @throws RuntimeException if encoding errors occur.
    */
-  public function encodeArray(array $config): string {
-    $serialized = json_encode($config, JSON_UNESCAPED_SLASHES|JSON_FORCE_OBJECT);
-
+  public function encodeArray(array $config, int $flags = JSON_UNESCAPED_SLASHES|JSON_FORCE_OBJECT|JSON_PRETTY_PRINT): string {
+    $serialized = json_encode($config, $flags);
     if (false === $serialized) {
       throw new RuntimeException(json_last_error_msg());
     }
-
     return $serialized;
   }
   

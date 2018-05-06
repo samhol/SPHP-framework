@@ -224,8 +224,19 @@ class Date implements DateInterface {
    * @param  int $days number of days to shift
    * @return Date new instance
    */
-  public function jump(int $days): Date {
+  public function jumpDays(int $days): Date {
     $next = $this->dateTime->modify("$days day");
+    return new Date($next);
+  }
+
+  /**
+   * Advances given number of months and returns a new instance
+   * 
+   * @param  int $months number of months to shift
+   * @return Date new instance
+   */
+  public function jumpMonths(int $months): Date {
+    $next = $this->dateTime->modify("$months months");
     return new Date($next);
   }
 
@@ -234,7 +245,7 @@ class Date implements DateInterface {
    * 
    * @return Date new instance
    */
-  public function nextDate(): Date {
+  public function nextDay(): Date {
     $next = $this->dateTime->modify('+ 1 day');
     return new Date($next);
   }
@@ -244,7 +255,7 @@ class Date implements DateInterface {
    * 
    * @return Date new instance
    */
-  public function previousDate(): Date {
+  public function previousDay(): Date {
     $prev = $this->dateTime->modify('- 1 day');
     return new Date($prev);
   }

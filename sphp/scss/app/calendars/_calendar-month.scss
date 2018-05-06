@@ -6,11 +6,6 @@
         margin: rem-calc(1);
         border-right-width: 10px;
       }
-      .month-selector {
-        font-size: rem-calc(20);
-        color: #666;
-        padding-left: rem-calc(10);
-      }
       div.head {
         border: solid 1px #555;
         @include border-radius(2px);

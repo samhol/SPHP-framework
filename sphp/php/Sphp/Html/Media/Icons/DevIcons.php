@@ -24,6 +24,7 @@ namespace Sphp\Html\Media\Icons;
  * @method \Sphp\Html\Media\Icons\Icon zend(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\Icon symfony(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\Icon doctrine(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\Icon travis(string $screenReaderLabel = null) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -47,6 +48,8 @@ class DevIcons {
       'jquery' => 'devicon-jquery-plain',
       'jqueryLogo' => 'devicon-jquery-plain',
       'powerpoint' => 'far fa-file-powerpoint',
+      'travis' => 'devicon-travis-plain',
+      'mocha' => 'devicon-mocha-plain',
   ];
 
   /**

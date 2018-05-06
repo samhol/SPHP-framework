@@ -1,0 +1,13 @@
+## YAML Template.
+---
+- Birthday:
+  dob: '1975-9-16'
+  name: Sami Holck
+  description: that's me
+- Birthday:
+  dob: '1977-12-23'
+  name: Ella Lisko
+  description: that's my woman
+- Birthday:
+  dob: '1947-7-22'
+  name: Leena Holck

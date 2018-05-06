@@ -1,0 +1,27 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+
+@mixin sphp-month-selector() { 
+  .sphp {
+    &.month-selector {
+      font-size: rem-calc(20);
+      color: #666;
+      padding-left: rem-calc(10);
+      a {
+        padding: rem-calc(2);
+        &.prev-month {
+          
+        }
+      }
+      span {
+        margin: rem-calc(0 10);
+      }
+    }
+  }
+}

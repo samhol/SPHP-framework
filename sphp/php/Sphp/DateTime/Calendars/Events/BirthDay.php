@@ -15,6 +15,7 @@ namespace Sphp\DateTime\Calendars\Events;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class BirthDay extends Holiday {
@@ -27,10 +28,10 @@ class BirthDay extends Holiday {
   /**
    * Constructor
    * 
-   * @param int $month
-   * @param int $day
-   * @param string $name
-   * @param int $yearOfBirth
+   * @param int $month the month of birth
+   * @param int $day the day of birth
+   * @param string|null $name name of the person
+   * @param int|null $yearOfBirth the year of birth (null for unknown)
    */
   public function __construct(int $month, int $day, string $name, int $yearOfBirth = null) {
     $constraints = new Constraints\Constraints();
@@ -44,14 +45,24 @@ class BirthDay extends Holiday {
     $this->day = $day;
   }
 
+  /**
+   * Sets the year of birth
+   * 
+   * @param  int $year the year of birth
+   * @return $this for a fluent interface
+   */
   public function setBirthYear(int $year = null) {
     $this->year = $year;
+    return $this;
   }
 
   public function eventAsString(int $currentYear = null): string {
     $output = "Birthday of {$this->getName()}";
     if (is_int($currentYear) && is_int($this->year)) {
       $age = $currentYear - $this->year;
+      if ($age === 0) {
+        $output .= " (was born this day)";
+      }
       $output .= " (was born $age years ago)";
     }
     //$output .= $this->getDate()->format('l, Y-m-d');
