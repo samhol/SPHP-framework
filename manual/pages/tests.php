@@ -14,7 +14,7 @@ try {
 
   a(false, 7, new Sphp\Html\Lists\Ol(), null, ['a', false, 7, new Sphp\Html\Lists\Ol(), null]);
 } catch (\Exception $ex) {
-  $e = new \Sphp\Exceptions\Exception('suck his dick', $ex->getCode(), $ex);
+  $e = new \Sphp\Exceptions\SphpException('suck his dick', $ex->getCode(), $ex);
   $exceptionth = new Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder();
   
   echo $exceptionth->showPreviousException()->showTrace()->showInitialFile()->buildCallout($e);

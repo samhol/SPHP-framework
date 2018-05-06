@@ -17,7 +17,6 @@ use Sphp\Exceptions\OutOfBoundsException;
  * An implementation of a sequence of values
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-03-06
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

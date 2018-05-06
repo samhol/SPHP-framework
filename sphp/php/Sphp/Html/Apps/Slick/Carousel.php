@@ -16,10 +16,9 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 use Sphp\Html\Attributes\JsonAttribute;
 
 /**
- * Description of Carousel
+ * Implements a Slick Carousel in PHP
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-02-15
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

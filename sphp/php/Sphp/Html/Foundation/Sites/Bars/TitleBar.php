@@ -32,6 +32,7 @@ class TitleBar extends \Sphp\Html\AbstractComponent {
    * @var BarContentArea 
    */
   private $rightArea;
+
   /**
    * Constructs a new instance
    */
@@ -58,7 +59,7 @@ class TitleBar extends \Sphp\Html\AbstractComponent {
    *
    * @return TitleBarContentArea the left side menu area component
    */
-  public function left():TitleBarContentArea {
+  public function left(): TitleBarContentArea {
     return $this->leftArea;
   }
 
@@ -67,13 +68,12 @@ class TitleBar extends \Sphp\Html\AbstractComponent {
    *
    * @return TitleBarContentArea the right side menu area component
    */
-  public function right():TitleBarContentArea {
+  public function right(): TitleBarContentArea {
     return $this->rightArea;
   }
 
-
   public function contentToString(): string {
-    return $this->leftArea->getHtml() .'foo'. $this->rightArea->getHtml();
+    return $this->leftArea->getHtml() . 'foo' . $this->rightArea->getHtml();
   }
 
 }

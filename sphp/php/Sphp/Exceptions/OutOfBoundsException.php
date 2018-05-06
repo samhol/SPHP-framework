@@ -19,6 +19,6 @@ use OutOfBoundsException as SplOutOfBoundsException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class OutOfBoundsException extends SplOutOfBoundsException implements SphpException {
+class OutOfBoundsException extends SplOutOfBoundsException implements SphpExceptionInterface {
   
 }

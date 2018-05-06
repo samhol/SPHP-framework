@@ -13,9 +13,11 @@ namespace Sphp\Html\Adapters;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Description of VisibilityAdapter
- *
- * @author Sami Holck
+ * Implements a Visibility Adapter
+ 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license https://opensource.org/licenses/MIT The MIT License
+ * @filesource
  */
 class VisibilityAdapter extends AbstractComponentAdapter {
 

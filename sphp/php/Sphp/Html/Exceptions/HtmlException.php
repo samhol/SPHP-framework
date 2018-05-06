@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Exceptions;
 
-use Sphp\Exceptions\SphpException;
+use Sphp\Exceptions\SphpExceptionInterface;
 
 /**
  * SPHP-specific exception interface For HTML exceptions
@@ -19,6 +19,6 @@ use Sphp\Exceptions\SphpException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface HtmlException extends SphpException {
+interface HtmlException extends SphpExceptionInterface {
   
 }

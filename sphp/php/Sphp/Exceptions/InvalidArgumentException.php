@@ -19,6 +19,6 @@ use InvalidArgumentException as SplInvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InvalidArgumentException extends SplInvalidArgumentException implements SphpException {
+class InvalidArgumentException extends SplInvalidArgumentException implements SphpExceptionInterface {
 
 }

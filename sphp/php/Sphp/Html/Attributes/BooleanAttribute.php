@@ -17,7 +17,6 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * Implements a boolean attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-10-24
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

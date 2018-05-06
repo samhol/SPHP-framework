@@ -21,6 +21,6 @@ use OutOfRangeException as SplOutOfRangeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class OutOfRangeException extends SplOutOfRangeException implements SphpException {
+class OutOfRangeException extends SplOutOfRangeException implements SphpExceptionInterface {
   
 }

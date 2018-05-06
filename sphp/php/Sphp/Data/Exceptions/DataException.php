@@ -26,7 +26,7 @@
 
 namespace Sphp\Data\Exceptions;
 
-use Sphp\Exceptions\Exception;
+use Sphp\Exceptions\SphpException;
 
 /**
  * Description of DataAttributeException
@@ -35,6 +35,6 @@ use Sphp\Exceptions\Exception;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DataException extends Exception {
+class DataException extends SphpException {
   
 }

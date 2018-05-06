@@ -14,7 +14,6 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * Description of Datalist
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-12-27
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

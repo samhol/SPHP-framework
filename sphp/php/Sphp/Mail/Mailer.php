@@ -12,7 +12,7 @@ namespace Sphp\Mail;
 
 use Zend\Mail\Message;
 use Zend\Mail\Transport\Sendmail;
-use Sphp\Exceptions\Exception;
+use Sphp\Exceptions\SphpException;
 
 /**
  * 
@@ -91,11 +91,11 @@ class Mailer {
   /**
    * 
    * @return self for a fluent interface
-   * @throws Exception if the message is not valid
+   * @throws SphpException if the message is not valid
    */
   public function send() {
     if (!$this->containsValidMessage()) {
-      throw new Exception('Sending interupted: Message is invalid');
+      throw new SphpException('Sending interupted: Message is invalid');
     }
     $this->sendmail->send($this->message);
     return $this;

@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Exceptions;
 
 use Exception;
-use Sphp\Exceptions\SphpException;
+use Sphp\Exceptions\SphpExceptionInterface;
 
 /**
  * Exception thrown when a date time specific error occurs
@@ -20,6 +20,6 @@ use Sphp\Exceptions\SphpException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DateTimeException extends Exception implements SphpException {
+class DateTimeException extends Exception implements SphpExceptionInterface {
   
 }

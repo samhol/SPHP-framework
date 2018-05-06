@@ -20,6 +20,6 @@ use RuntimeException as SplRuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RuntimeException extends SplRuntimeException implements SphpException {
+class RuntimeException extends SplRuntimeException implements SphpExceptionInterface {
 
 }

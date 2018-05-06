@@ -25,7 +25,7 @@ trait ContentTrait {
    * Returns the component as HTML markup string
    *
    * @return string HTML markup of the component
-   * @throws \Sphp\Exceptions\Exception if HTML parsing fails
+   * @throws \Sphp\Exceptions\SphpException if HTML parsing fails
    */
   public abstract function getHtml(): string;
 

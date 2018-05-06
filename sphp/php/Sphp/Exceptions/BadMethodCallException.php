@@ -18,6 +18,6 @@ use BadMethodCallException as SplBadMethodCallException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BadMethodCallException extends SplBadMethodCallException implements SphpException {
+class BadMethodCallException extends SplBadMethodCallException implements SphpExceptionInterface {
   
 }

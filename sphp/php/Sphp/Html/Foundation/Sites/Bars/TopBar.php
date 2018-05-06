@@ -26,7 +26,8 @@ class TopBar extends AbstractBar {
   /**
    * Constructs a new instance
    *
-   * @param mixed $title the title of the Top Bar component
+   * @param BarContentArea $left
+   * @param BarContentArea $right
    */
   public function __construct(BarContentArea $left = null, BarContentArea $right = null) {
     if ($left === null) {

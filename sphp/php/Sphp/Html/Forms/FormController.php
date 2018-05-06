@@ -16,7 +16,6 @@ use Sphp\Html\Content;
  * Defines a form controller
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-12-27
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

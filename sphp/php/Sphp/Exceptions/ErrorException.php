@@ -18,6 +18,6 @@ use ErrorException as PhpErrorException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ErrorException extends PhpErrorException implements SphpException {
+class ErrorException extends PhpErrorException implements SphpExceptionInterface {
   
 }

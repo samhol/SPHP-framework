@@ -16,7 +16,6 @@ use Sphp\Html\NonVisualContent;
  * Defines LinkInterface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2018-04-11
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

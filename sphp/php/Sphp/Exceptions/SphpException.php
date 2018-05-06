@@ -10,13 +10,15 @@
 
 namespace Sphp\Exceptions;
 
+use Exception as PhpException;
+
 /**
- * SPHP-specific exception interface
+ * SPHP-specific exception 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface SphpException {
+class SphpException extends PhpException implements SphpExceptionInterface {
   
 }

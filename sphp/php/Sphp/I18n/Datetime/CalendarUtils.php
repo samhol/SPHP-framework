@@ -17,7 +17,6 @@ use Sphp\I18n\TranslatorInterface;
  * Class localizes weekday and month names
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-02-23
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

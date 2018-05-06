@@ -13,7 +13,7 @@ namespace Sphp\Html\Forms\Buttons;
 /**
  * Implements an HTML &lt;button type="reset"&gt; tag
  *
- * @author Sami Holck <sami.holck@gmail.com>
+ * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License

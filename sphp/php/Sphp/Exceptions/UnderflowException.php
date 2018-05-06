@@ -21,6 +21,6 @@ use UnderflowException as SplUnderflowException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class UnderflowException extends SplUnderflowException implements SphpException {
+class UnderflowException extends SplUnderflowException implements SphpExceptionInterface {
   
 }
