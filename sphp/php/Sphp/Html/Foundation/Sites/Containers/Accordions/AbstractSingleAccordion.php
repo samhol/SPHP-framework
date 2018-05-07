@@ -29,7 +29,7 @@ class AbstractSingleAccordion extends AbstractComponent {
   private $pane;
   
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param PaneInterface|null $pane the inner pane component or null
    */

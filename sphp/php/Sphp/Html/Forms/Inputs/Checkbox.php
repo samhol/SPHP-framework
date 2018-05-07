@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class Checkbox extends Choicebox {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @postcondition   `attrLocked("type", "checkbox") === true`
    * @param  string|null $name the value of the name attribute

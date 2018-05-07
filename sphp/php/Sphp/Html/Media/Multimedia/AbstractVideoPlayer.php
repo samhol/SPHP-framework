@@ -42,7 +42,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   private $videoId;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|URL $url the id of the Vimeo video
    * @param  string $videoId the id of the embedded video

@@ -32,7 +32,7 @@ class Body extends ContainerTag implements ContentParser {
   private $scripts;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

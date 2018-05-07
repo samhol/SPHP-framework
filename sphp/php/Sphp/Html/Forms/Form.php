@@ -30,7 +30,7 @@ class Form extends ContainerTag implements TraversableForm {
   use TraversableFormTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

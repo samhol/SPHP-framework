@@ -23,7 +23,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class SessionUserStorage extends AbstractObjectStorage {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param EntityManagerInterface $em
    */

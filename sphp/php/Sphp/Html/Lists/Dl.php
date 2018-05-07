@@ -33,7 +33,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
    * @param  ContainerInterface|null $contentContainer the inner content container of the component

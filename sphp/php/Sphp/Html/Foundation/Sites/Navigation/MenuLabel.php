@@ -26,7 +26,7 @@ use Sphp\Html\AbstractContainerComponent;
 class MenuLabel extends AbstractContainerComponent implements MenuItemInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * **Important!**
    *

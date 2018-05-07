@@ -35,7 +35,7 @@ class ClassAttribute extends AbstractMutableAttribute implements IteratorAggrega
   private $values = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $name the name of the attribute
    */

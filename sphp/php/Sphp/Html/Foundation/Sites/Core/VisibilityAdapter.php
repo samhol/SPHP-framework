@@ -25,7 +25,7 @@ class VisibilityAdapter extends AbstractLayoutManager implements VisibilityChang
   use VisibilityTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param ComponentInterface $component
    */

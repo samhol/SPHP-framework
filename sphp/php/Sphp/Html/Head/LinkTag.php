@@ -28,7 +28,7 @@ use Sphp\Stdlib\Strings;
 class LinkTag extends EmptyTag implements LinkInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $rel the relationship between the current document and the linked one
    * @param  string $href the location of the linked document

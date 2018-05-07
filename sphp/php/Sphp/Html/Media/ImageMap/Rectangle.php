@@ -20,7 +20,7 @@ namespace Sphp\Html\Media\ImageMap;
 class Rectangle extends AbstractArea {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int $x1 the top left x-coordinate
    * @param int $y1 the top left y-coordinate

@@ -24,7 +24,7 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 class SamiClassLinker extends AbstractClassLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $class the name of the class
    * @param SamiUrlGenerator|null $urlGenerator

@@ -33,7 +33,7 @@ class Fieldset extends ContainerTag implements FormController {
   private $legend;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|Legend $legend the legend of the fieldset component
    * @param  mixed $content the content of the component

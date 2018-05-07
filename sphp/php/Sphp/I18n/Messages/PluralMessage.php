@@ -43,7 +43,7 @@ class PluralMessage extends Message {
   private $n;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $singular the singular message text
    * @param  string $plural the plural message text

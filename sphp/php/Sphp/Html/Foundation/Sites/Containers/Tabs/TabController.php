@@ -25,7 +25,7 @@ use Sphp\Html\ContainerTag;
 class TabController extends AbstractContainerTag implements TabControllerInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param Tab $tabPanel
    * @param mixed $title

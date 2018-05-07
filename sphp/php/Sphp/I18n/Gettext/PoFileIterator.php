@@ -32,7 +32,7 @@ class PoFileIterator implements \Iterator {
   private $objects;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param Collection $entries
    */

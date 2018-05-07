@@ -27,7 +27,7 @@ use Sphp\Html\NonVisualContent;
 class Base extends EmptyTag implements HeadContent, NonVisualContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $target specifies the default target for all hyperlinks and forms in the page

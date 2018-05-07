@@ -29,7 +29,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('ul');

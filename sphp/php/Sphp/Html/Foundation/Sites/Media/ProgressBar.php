@@ -34,7 +34,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
   private $progressMeter;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int $progress
    * @param string|null $name the name of the bar

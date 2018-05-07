@@ -28,7 +28,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $tagname
    * @param HtmlAttributeManager|null $m

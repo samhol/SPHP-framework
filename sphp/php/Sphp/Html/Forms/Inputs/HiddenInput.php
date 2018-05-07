@@ -22,7 +22,7 @@ use Sphp\Html\NonVisualContent;
 class HiddenInput extends AbstractInputTag implements InputField, NonVisualContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $name name attribute
    * @param  scalar|null $value value attribute

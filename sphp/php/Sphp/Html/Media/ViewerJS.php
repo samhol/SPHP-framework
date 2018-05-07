@@ -24,7 +24,7 @@ namespace Sphp\Html\Media;
 class ViewerJS extends Iframe {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $src the address of the document to embed in the object
    * @param  string $name the value of the name attribute

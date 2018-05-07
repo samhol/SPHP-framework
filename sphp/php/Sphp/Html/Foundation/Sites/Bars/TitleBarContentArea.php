@@ -33,7 +33,7 @@ class TitleBarContentArea extends \Sphp\Html\AbstractComponent {
   private $title;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @precondition $side == 'left' | 'right'
    * @param string $side the side of the container

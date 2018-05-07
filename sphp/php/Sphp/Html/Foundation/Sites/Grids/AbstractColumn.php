@@ -29,7 +29,7 @@ abstract class AbstractColumn extends Div implements ColumnInterface {
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

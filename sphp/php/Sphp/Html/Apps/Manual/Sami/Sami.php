@@ -29,7 +29,7 @@ use Sphp\Html\Adapters\QtipAdapter;
 class Sami extends AbstractPhpApiLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param SamiUrlGenerator $urlGenerator the URL pointing to the Sami documentation
    * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none

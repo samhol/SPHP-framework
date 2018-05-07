@@ -29,7 +29,7 @@ class AbstractIcon extends EmptyTag implements IconInterface {
   private $sreenreaderLabel;
 
   /**
-   * Constructs a new instances
+   * Constructors
    * 
    * @param  string $tagName the tag name of the component
    * @param  HtmlAttributeManager $attrManager

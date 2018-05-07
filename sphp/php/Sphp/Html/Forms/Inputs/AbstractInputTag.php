@@ -30,7 +30,7 @@ abstract class AbstractInputTag extends EmptyTag implements IdentifiableInput {
   use InputTagTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $type the value of the type attribute
    * @param  string|null $name the value of the name attribute

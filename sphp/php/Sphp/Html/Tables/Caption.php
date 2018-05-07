@@ -25,7 +25,7 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
 class Caption extends SimpleContainerTag implements TableContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $content caption content
    */

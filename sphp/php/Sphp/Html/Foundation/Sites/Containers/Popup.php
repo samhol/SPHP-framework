@@ -38,7 +38,7 @@ class Popup extends Div {
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

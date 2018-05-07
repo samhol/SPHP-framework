@@ -22,7 +22,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 class DrilldownMenu extends Menu {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $content
    */

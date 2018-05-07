@@ -69,7 +69,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
   private $layout;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the value of the name attribute
    * @param scalar[] $values

@@ -33,7 +33,7 @@ class IntegerAttribute extends AbstractMutableAttribute {
   private $value = false;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the attribute
    * @param int|null $min optional minimum value

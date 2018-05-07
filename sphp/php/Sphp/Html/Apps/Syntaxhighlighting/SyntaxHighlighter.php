@@ -75,7 +75,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   private $geshiId;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('div');

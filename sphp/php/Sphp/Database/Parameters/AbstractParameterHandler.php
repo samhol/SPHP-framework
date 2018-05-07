@@ -37,7 +37,7 @@ abstract class AbstractParameterHandler implements Iterator, ParameterHandler {
   private $types = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param int $indexing
    */

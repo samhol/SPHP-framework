@@ -28,7 +28,7 @@ class TagStripper extends AbstractFilter {
   private $allowableTags;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param null|string $allowableTags optional parameter to specify tags which should not be stripped
    */

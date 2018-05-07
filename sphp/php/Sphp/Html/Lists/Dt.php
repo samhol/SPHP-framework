@@ -30,7 +30,7 @@ use Sphp\Html\ContainerTag;
 class Dt extends ContainerTag implements DlContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  null|mixed $content optional content of the component
    */

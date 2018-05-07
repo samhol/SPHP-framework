@@ -47,7 +47,7 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
   private $parser;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $name the name of the attribute
    * @param scalar|null $value optional value of the attribute

@@ -38,7 +38,7 @@ class Slider extends AbstractSlider {
   private $input;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param int $start the start value of the slider
    * @param int $end the end value of the slider

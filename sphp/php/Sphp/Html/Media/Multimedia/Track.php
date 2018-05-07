@@ -28,7 +28,7 @@ use Sphp\Html\EmptyTag;
 class Track extends EmptyTag implements MultimediaSource {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $src the URL of the media file
    * @param  string $srclang the language of the track text data

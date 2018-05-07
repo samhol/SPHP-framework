@@ -23,7 +23,7 @@ use Sphp\Html\ContainerTag;
 class FigCaption extends ContainerTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $caption the caption content
    */

@@ -20,7 +20,7 @@ namespace Sphp\Html\Media\Icons;
 class Icon extends AbstractIcon {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string|string[] $classes the icon name
    * @param string $screenreaderLabel

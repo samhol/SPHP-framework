@@ -49,7 +49,7 @@ class SplitButton extends AbstractComponent {
   private $secondary;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param null|mixed|ButtonInterface $primary
    * @param ArrowOnlyButton $secondary

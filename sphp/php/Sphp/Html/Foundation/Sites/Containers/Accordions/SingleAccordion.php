@@ -24,7 +24,7 @@ use Sphp\Html\AbstractContainerTag;
 class SingleAccordion extends AbstractContainerTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param null|mixed $paneTitle the content of the accordion bar
    * @param null|mixed $paneContent the content of the accordion container

@@ -24,7 +24,7 @@ use Sphp\Html\Forms\Buttons\ResetterInterface;
 class Resetter extends AbstractButton implements ResetterInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $content the value of value attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute

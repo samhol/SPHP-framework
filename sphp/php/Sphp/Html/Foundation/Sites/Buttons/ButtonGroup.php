@@ -37,7 +37,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   private static $stackScreens = ['all', 'small', 'medium'];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  null|ButtonInterface|ButtonInterface[] $buttons the appended buttons
    */

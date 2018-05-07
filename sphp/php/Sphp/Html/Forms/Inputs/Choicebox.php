@@ -20,7 +20,7 @@ namespace Sphp\Html\Forms\Inputs;
 class Choicebox extends InputTag implements BooleanInput {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $type the value of the type attribute ('radio'|'checkbox')
    * @param  string $name the value of the name attribute

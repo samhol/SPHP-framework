@@ -38,7 +38,7 @@ use Sphp\Html\TraversableContent;
 class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **`$opt` types:**
    * 

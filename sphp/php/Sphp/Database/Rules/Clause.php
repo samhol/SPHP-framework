@@ -29,7 +29,7 @@ class Clause implements RuleInterface, Iterator {
   private $rules;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param array $rules
    */

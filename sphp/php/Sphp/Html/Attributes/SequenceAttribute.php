@@ -55,7 +55,7 @@ class SequenceAttribute extends AbstractMutableAttribute implements Iterator, Co
   private $pattern = '//';
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the attribute
    * @param array $options  the separator between individual values in sequence
@@ -85,10 +85,7 @@ class SequenceAttribute extends AbstractMutableAttribute implements Iterator, Co
   }
 
   /**
-   * Destroys the instance
-   * 
-   * The destructor method will be called as soon as there are no other references 
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->sequence, $this->locked);

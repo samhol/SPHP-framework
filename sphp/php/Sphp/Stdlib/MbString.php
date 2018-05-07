@@ -47,7 +47,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   private $encoding;
 
   /**
-   * Constructs a new instance 
+   * Constructor 
    * 
    * $str is cast to a string prior to assignment, and if
    * $encoding is not specified, it defaults to mb_internal_encoding(). Throws

@@ -35,7 +35,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
   private $flex;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param ResponsiveEmbedInterface $embed the inner component
    */

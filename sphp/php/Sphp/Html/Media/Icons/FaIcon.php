@@ -22,7 +22,7 @@ use Sphp\Stdlib\Strings;
 class FaIcon extends AbstractIcon {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string|string[] $iconName the icon name
    * @param string $screenreaderLabel

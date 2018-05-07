@@ -35,7 +35,7 @@ class ContactMailer {
   private $mailer;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $receiver
    */

@@ -30,7 +30,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
   private $paddings = ['small', 'large'];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param ComponentInterface $component
    */

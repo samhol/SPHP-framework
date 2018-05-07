@@ -29,7 +29,7 @@ class Paragraph extends ContainerTag implements AjaxLoader {
   use \Sphp\Html\AjaxLoaderTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $content optional content of the component
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method

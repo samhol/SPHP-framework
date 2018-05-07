@@ -44,7 +44,7 @@ class Img extends EmptyTag implements ImgInterface {
       LazyMediaSourceTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $src specifies the URL of an image
    * @param  string $alt specifies an alternate text for an image

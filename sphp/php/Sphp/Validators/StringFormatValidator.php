@@ -37,7 +37,7 @@ class StringFormatValidator extends AbstractValidator {
   private $format;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string|null $format the format string to validate against
    * @param string|Message $errorMessage error message corresponding to the pattern

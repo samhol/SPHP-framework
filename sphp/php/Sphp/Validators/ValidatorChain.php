@@ -41,7 +41,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
   private $errors;
 
   /**
-   * Constructs a new validator
+   * Constructor
    */
   public function __construct() {
     $this->validators = [];
@@ -49,10 +49,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->validators, $this->errors);

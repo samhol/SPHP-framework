@@ -32,7 +32,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 class Optgroup extends AbstractOptionsContainer implements MenuComponent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **`$opt` types:**
    * 

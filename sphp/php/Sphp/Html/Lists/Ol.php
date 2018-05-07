@@ -22,7 +22,7 @@ namespace Sphp\Html\Lists;
 class Ol extends StandardList {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    *

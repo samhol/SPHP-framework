@@ -23,7 +23,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 class AccordionMenu extends Menu {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param null|string|Heading $content the top most heading of the Foundation Side Nav
    */

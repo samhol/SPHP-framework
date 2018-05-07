@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class EmailInput extends TextualInput {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $name the value of the  name attribute
    * @param  string|null $value the value of the  value attribute

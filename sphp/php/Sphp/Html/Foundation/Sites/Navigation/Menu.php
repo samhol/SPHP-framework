@@ -22,7 +22,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 class Menu extends AbstractMenu {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $content
    */

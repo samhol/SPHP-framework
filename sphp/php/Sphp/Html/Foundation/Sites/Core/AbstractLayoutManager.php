@@ -33,7 +33,7 @@ abstract class AbstractLayoutManager implements LayoutManager {
   private $component;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param CssClassifiableContent $component
    */

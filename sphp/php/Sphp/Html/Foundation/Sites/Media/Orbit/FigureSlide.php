@@ -42,7 +42,7 @@ class FigureSlide extends AbstractComponent implements Slide {
   private $caption;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|URL|Img $img the image path or the image component
    * @param  mixed|FigCaption $caption the caption content or the caption component

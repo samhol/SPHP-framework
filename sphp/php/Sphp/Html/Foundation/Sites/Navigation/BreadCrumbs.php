@@ -40,7 +40,7 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
   private $items;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $content the value of the target attribute
    */

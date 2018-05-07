@@ -21,7 +21,7 @@ namespace Sphp\Html\Attributes;
 class IdAttribute extends PatternAttribute {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the attribute
    * @param scalar $value

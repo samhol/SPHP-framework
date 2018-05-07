@@ -39,7 +39,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   private $items;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  string $tagName the tag name of the component
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component

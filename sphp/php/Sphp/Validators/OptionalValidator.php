@@ -27,7 +27,7 @@ class OptionalValidator extends ValidatorChain {
   private $allowEmptyValues = true;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param boolean $allowEmptyValues
    */

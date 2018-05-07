@@ -43,7 +43,7 @@ class StringTrimmer extends AbstractFilter {
   private $right = true;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * Without the $charmask parameter these characters will be stripped:
    * 

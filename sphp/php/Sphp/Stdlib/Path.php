@@ -42,7 +42,7 @@ class Path {
   private static $instance;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * **IMPORTANT:** 
    * 

@@ -41,7 +41,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   private $iframe;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  Embeddable $media the embeddable component
    */

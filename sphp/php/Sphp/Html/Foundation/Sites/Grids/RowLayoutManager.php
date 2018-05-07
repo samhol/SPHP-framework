@@ -26,7 +26,7 @@ use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 class RowLayoutManager extends AlingmentAdapter {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param ComponentInterface $component
    */

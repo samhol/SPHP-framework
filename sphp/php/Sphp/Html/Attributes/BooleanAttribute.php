@@ -33,7 +33,7 @@ class BooleanAttribute extends AbstractMutableAttribute {
   private $protected = false;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $name the name of the attribute
    * @param boolean $value

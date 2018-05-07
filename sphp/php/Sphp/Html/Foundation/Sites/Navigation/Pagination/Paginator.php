@@ -70,7 +70,7 @@ class Paginator extends AbstractComponent implements IteratorAggregate, Countabl
   private $linkLabelPattern = 'Page %d';
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $target
    */

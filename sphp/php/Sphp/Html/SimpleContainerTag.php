@@ -37,7 +37,7 @@ class SimpleContainerTag extends AbstractTag {
   private $content;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * **Important!**
    *

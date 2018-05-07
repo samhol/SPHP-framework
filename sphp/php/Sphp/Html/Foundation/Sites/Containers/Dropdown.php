@@ -44,7 +44,7 @@ class Dropdown implements Content {
   private $dropdown;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  Content|mixed $trigger the target component for the dropdown functionality
    * @param  mixed $dropdown the dropdown or the content of the dropdown

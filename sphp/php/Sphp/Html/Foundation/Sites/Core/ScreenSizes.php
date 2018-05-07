@@ -31,6 +31,11 @@ class ScreenSizes implements \Iterator, \Countable, Arrayable {
    */
   private $sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
 
+  /**
+   * Constructor
+   * 
+   * @param array $sizes
+   */
   public function __construct(array $sizes = null) {
     if ($sizes !== null) {
       $this->sizes = $sizes;

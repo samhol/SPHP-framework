@@ -21,7 +21,7 @@ namespace Sphp\Html\Lists;
 class Ul extends StandardList {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    *

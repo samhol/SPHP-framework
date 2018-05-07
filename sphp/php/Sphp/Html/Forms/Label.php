@@ -30,7 +30,7 @@ use Sphp\Html\ContainerTag;
 class Label extends ContainerTag implements LabelInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $content the content of the component
    * @param string|IdentifiableInput|null $for the id of the element the label is bound to

@@ -70,7 +70,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  Input $input the actual input component
    * @param  string[] $layout the layout parameters

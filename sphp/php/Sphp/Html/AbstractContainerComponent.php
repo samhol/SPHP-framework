@@ -32,7 +32,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
   private $content;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $tagname the name of the tag
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component

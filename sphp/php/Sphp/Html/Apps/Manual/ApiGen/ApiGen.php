@@ -27,7 +27,7 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 class ApiGen extends AbstractPhpApiLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param UrlGenerator $urlGenerator the URL pointing to the ApiGen documentation
    * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none

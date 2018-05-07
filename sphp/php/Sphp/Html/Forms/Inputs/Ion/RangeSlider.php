@@ -23,7 +23,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
 class RangeSlider extends AbstractSlider {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $name name attribute
    * @param  int $start the start value of the slider

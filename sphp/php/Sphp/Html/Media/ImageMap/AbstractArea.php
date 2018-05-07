@@ -26,7 +26,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
   use HyperlinkTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $shape
    * @param string|null $href the URL of the link

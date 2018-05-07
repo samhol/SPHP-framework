@@ -30,7 +30,7 @@ class FilterAggregate extends AbstractFilter implements IteratorAggregate {
   private $filters = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param callable|callable[] $filters optional filters to add
    */

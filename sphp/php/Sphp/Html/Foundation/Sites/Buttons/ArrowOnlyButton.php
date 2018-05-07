@@ -35,7 +35,7 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
   private $screenReaderLabel;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $screenReaderLabel the screen reader label text
    */

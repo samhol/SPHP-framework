@@ -44,7 +44,7 @@ class PropertyAttribute extends AbstractMutableAttribute implements ArrayAccess,
   private $nameValueSeparator = ':';
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $name the name of the attribute
    */

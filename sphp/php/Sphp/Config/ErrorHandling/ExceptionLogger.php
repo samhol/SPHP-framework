@@ -30,7 +30,7 @@ class ExceptionLogger implements ExceptionListener {
   private $destination;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $destination the filename of the destination file
    */

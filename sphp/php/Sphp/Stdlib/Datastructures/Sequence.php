@@ -30,10 +30,7 @@ class Sequence implements Iterator {
   private $sequence = [];
 
   /**
-   * Destroys the instance
-   * 
-   * The destructor method will be called as soon as there are no other references 
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->sequence);

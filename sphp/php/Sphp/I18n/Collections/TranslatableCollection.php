@@ -45,7 +45,7 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   private $translator;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  TranslatorInterface|null $translator the translator component
    */

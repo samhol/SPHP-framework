@@ -22,7 +22,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 class Row extends AbstractRow {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    * 

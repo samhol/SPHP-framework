@@ -38,7 +38,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
   private $format = self::DATE_TIME;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $dateTime the datetime object
    * @param  mixed $content optional content of the component

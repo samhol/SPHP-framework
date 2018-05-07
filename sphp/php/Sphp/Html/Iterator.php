@@ -34,7 +34,7 @@ class Iterator implements NativeIterator, Content, TraversableContent {
   private $components = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $content the content of the iterator
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method

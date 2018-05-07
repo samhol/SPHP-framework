@@ -20,7 +20,7 @@ namespace Sphp\Html\Media\ImageMap;
 class Circle extends AbstractArea {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int $x the x-coordinate of the circle center
    * @param int $y the y-coordinate of the circle center

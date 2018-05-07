@@ -40,7 +40,7 @@ class AttributeGenerator {
   // private static $c = 0;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $defaultType
    */

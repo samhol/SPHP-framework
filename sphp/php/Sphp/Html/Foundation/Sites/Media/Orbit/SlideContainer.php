@@ -35,7 +35,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
   private $slides = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    */
   public function __construct() {

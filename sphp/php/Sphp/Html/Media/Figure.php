@@ -33,7 +33,7 @@ class Figure extends AbstractComponent implements ImgInterface {
   private $caption;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|Img $img the image path or the image component
    * @param  mixed|FigCaption $caption the caption content or the caption component

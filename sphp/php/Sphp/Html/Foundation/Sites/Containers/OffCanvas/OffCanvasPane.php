@@ -33,7 +33,7 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
   private $closeButton;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $tagname
    */

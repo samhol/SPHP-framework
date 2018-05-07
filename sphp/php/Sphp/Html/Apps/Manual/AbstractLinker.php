@@ -46,7 +46,7 @@ abstract class AbstractLinker implements LinkerInterface {
   private $defaultCssClasses;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param UrlGeneratorInterface $urlGenerator the url pointing to the API documentation
    * @param string $defaultTarget the default target of the generated links

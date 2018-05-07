@@ -34,7 +34,7 @@ class ExceptionMailer implements ExceptionListener {
   private $receiver;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $from optional senders email address 
    * @param string $to receivers email address

@@ -33,7 +33,7 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
   private $maxSize;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param CssClassifiableContent $component
    * @param int $maxSize

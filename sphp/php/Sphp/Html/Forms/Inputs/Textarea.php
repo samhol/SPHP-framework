@@ -23,7 +23,7 @@ use Sphp\Html\SimpleContainerTag;
 class Textarea extends SimpleContainerTag implements TextareaInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @precondition  `$rows > 0 & $cols > 0`
    * @param  string $name name attribute value

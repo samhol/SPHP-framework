@@ -52,7 +52,7 @@ class ThrowableCallout extends Callout {
   private $throwable;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  Throwable $e the viewed throwable
    * @param  boolean $showTrace true for visible trace  

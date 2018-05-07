@@ -38,7 +38,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   private $menu;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param null|string|Hyperlink $root root content
    * @param null|Menu $menu

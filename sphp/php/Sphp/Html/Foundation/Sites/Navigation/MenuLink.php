@@ -24,7 +24,7 @@ use Sphp\Html\Lists\HyperlinkListItem;
 class MenuLink extends HyperlinkListItem implements MenuItemInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    *

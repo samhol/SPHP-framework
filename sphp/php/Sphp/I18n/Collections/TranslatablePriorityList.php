@@ -42,7 +42,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   private $translator;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  TranslatorInterface|null $translator the translator component
    */

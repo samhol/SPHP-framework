@@ -51,7 +51,7 @@ class CRSFToken {
   private static $instance;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @throws \Sphp\Exceptions\RuntimeException if there is no session
    */

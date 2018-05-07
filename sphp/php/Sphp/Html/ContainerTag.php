@@ -22,7 +22,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 class ContainerTag extends AbstractContainerTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

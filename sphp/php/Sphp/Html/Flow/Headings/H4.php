@@ -22,7 +22,7 @@ namespace Sphp\Html\Flow\Headings;
 class H4 extends AbstractHeading {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  mixed $content optional content of the component
    */

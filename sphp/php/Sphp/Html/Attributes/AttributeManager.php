@@ -42,7 +42,7 @@ class AttributeManager implements Countable, Iterator {
   private $gen;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param AttributeGenerator $gen
    */

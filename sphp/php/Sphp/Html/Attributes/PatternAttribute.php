@@ -27,7 +27,7 @@ class PatternAttribute extends AbstractScalarAttribute {
   private $pattern;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the attribute
    * @param string $pattern 

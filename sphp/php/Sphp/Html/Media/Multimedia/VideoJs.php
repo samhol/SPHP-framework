@@ -26,7 +26,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableMedia {
   use SizeableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  Source|Source[] $sources defines a table caption
    */

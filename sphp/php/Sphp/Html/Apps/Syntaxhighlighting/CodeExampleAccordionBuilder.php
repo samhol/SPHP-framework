@@ -57,7 +57,7 @@ class CodeExampleAccordionBuilder implements Content {
   private $outputHl = null;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $path the file path of the presented example PHP code
    * @param  string|null $highlightOutput the language name of the output code 

@@ -27,7 +27,7 @@ use Sphp\Html\Forms\SubmitterInterface;
 class SubmitterImage extends AbstractButton implements SubmitterInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $src the value of value attribute
    * @param  string|null $name the value of name attribute

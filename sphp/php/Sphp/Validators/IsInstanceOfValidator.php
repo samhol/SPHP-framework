@@ -27,7 +27,7 @@ class IsInstanceOfValidator extends AbstractValidator {
   private $className;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $className
    */

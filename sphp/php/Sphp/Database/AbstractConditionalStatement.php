@@ -31,7 +31,7 @@ abstract class AbstractConditionalStatement extends AbstractStatement implements
   private $where;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param PDO $db
    * @param Clause $where

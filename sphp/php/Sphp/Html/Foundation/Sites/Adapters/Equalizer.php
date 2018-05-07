@@ -27,7 +27,7 @@ use Sphp\Html\ContainerComponentInterface;
 class Equalizer extends AbstractComponentAdapter {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param ComponentInterface $equalizer
    * @param string|null $name

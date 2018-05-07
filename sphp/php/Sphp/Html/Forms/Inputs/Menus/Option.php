@@ -23,7 +23,7 @@ use Sphp\Html\SimpleContainerTag;
 class Option extends SimpleContainerTag implements MenuComponent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param scalar|null $value value attribute
    * @param scalar|null $content the content text of the option

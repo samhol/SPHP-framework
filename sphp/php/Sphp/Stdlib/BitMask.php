@@ -40,7 +40,7 @@ class BitMask implements Arrayable, Iterator {
   protected $mask;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:** a string <var>$bits</var> is always treated as binary number
    * 

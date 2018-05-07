@@ -24,7 +24,7 @@ use Sphp\Html\Navigation\HyperlinkInterface;
 class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    * 

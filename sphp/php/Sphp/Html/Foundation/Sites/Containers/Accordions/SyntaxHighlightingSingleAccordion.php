@@ -27,7 +27,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
   use \Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
    */

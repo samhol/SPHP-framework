@@ -56,7 +56,7 @@ class CsvFile implements Arrayable, \Iterator {
   private $escape;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  string $filename the path to the CSV file
    * @param  string $delimiter optional field delimiter (one character only)

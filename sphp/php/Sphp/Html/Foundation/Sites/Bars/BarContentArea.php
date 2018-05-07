@@ -24,7 +24,7 @@ use Sphp\Html\SimpleContainerTag;
  class BarContentArea extends SimpleContainerTag implements BarContentAreaInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $tagname the title of the Top Bar component
    */

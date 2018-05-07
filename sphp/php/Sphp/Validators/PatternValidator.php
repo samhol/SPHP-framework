@@ -37,7 +37,7 @@ class PatternValidator extends AbstractValidator {
   private $pattern = "//";
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    *  **Note:** If the validable value matches the pattern => the validated
    *  data is valid.

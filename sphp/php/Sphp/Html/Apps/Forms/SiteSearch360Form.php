@@ -25,7 +25,7 @@ class SiteSearch360Form extends AbstractSearchForm {
   private static $instance;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string|null $initialValue
    */

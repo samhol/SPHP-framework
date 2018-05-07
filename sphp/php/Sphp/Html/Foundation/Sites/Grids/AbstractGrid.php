@@ -39,7 +39,7 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $tagname the tag name of the component
    */

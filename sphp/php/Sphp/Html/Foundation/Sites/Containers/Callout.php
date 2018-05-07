@@ -27,7 +27,7 @@ class Callout extends ClosableContainer implements CalloutInterface {
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed|null $content added content
    */

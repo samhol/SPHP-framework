@@ -42,7 +42,7 @@ abstract class AbstractTag implements TagInterface {
   //private static $c = 0;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $tagName the tag name of the component
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
@@ -61,10 +61,7 @@ abstract class AbstractTag implements TagInterface {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->attrs);

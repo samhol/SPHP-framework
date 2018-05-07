@@ -27,7 +27,7 @@ namespace Sphp\Html;
 class Span extends ContainerTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param null|mixed $content optional content of the component
    */

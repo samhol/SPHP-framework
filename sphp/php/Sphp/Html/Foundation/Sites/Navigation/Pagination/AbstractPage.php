@@ -31,7 +31,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
   private $hyperlink;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    * 

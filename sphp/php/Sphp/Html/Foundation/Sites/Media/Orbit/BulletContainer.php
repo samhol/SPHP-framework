@@ -30,7 +30,7 @@ class BulletContainer extends AbstractComponent {
   private $bullets = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  int $count slide(s)
    */

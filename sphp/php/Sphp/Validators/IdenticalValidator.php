@@ -32,7 +32,7 @@ class IdenticalValidator extends AbstractValidator {
   private $strict = true;
 
   /**
-   * Constructs a new validator
+   * Constructor
    *
    * @param mixed $token the haystack
    * @param string $error error message

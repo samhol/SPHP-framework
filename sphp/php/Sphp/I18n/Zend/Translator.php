@@ -49,7 +49,7 @@ class Translator extends AbstractTranslator {
   private $reflector;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string|null $lang optional translation language
    * @param ZendTranslator $t

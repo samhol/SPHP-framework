@@ -23,7 +23,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 class NamedParameterHandler extends AbstractParameterHandler {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param mixed $params
    */

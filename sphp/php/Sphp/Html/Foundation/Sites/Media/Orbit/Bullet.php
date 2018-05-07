@@ -42,7 +42,7 @@ class Bullet extends AbstractComponent {
   private $currentDescriptor;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int $slideNo
    * @param string $slideText

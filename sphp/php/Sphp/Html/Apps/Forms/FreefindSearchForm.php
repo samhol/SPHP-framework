@@ -21,7 +21,7 @@ namespace Sphp\Html\Apps\Forms;
 class FreefindSearchForm extends AbstractSearchForm {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param array $data
    */

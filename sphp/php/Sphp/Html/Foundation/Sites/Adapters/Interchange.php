@@ -29,7 +29,7 @@ class Interchange extends AbstractComponentAdapter {
   private $queries = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param ComponentInterface $component
    */

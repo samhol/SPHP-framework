@@ -29,7 +29,7 @@ class Div extends ContainerTag implements AjaxLoader {
   use AjaxLoaderTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $content optional content of the component
    */

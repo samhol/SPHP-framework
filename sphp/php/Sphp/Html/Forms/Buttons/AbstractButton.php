@@ -26,7 +26,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 abstract class AbstractButton extends ContainerTag implements ButtonInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $tagname the tag name of the component
    * @param string $type button type (the value of type attribute)

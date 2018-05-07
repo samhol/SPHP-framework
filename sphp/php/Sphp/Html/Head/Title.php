@@ -24,7 +24,7 @@ use Sphp\Html\NonVisualContent;
 class Title extends SimpleContainerTag implements HeadContent, NonVisualContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $content tag's content
    */

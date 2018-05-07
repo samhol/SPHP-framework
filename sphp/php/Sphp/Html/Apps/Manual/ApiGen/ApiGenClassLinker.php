@@ -25,7 +25,7 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 class ApiGenClassLinker extends AbstractClassLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $class the name of the class
    * @param ApiGenUrlGenerator|null $urlGenerator

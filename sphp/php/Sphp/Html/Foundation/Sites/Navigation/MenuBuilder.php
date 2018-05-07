@@ -32,7 +32,7 @@ class MenuBuilder {
   private $linkBuilder;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param MenuLinkBuilder $linkBuilder
    */

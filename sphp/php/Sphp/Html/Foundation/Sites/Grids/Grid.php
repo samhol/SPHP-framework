@@ -22,7 +22,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 class Grid extends AbstractGrid {
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('div');

@@ -44,7 +44,7 @@ class AbstractObjectStorage implements \IteratorAggregate, \Sphp\Stdlib\Datastru
   private $repository;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $objectType
    * @param EntityManagerInterface $em

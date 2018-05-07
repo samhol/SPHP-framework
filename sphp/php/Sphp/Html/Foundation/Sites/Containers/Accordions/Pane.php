@@ -34,7 +34,7 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
   private $bar;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

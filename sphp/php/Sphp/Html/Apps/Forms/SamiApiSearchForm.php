@@ -23,7 +23,7 @@ use Sphp\Stdlib\Strings;
 class SamiApiSearchForm extends AbstractSearchForm {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $apiRoot
    */

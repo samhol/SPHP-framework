@@ -21,7 +21,7 @@ namespace Sphp\Html\Media\Multimedia;
 class VimeoPlayer extends AbstractVideoPlayer {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $videoId the id of the Vimeo video
    */

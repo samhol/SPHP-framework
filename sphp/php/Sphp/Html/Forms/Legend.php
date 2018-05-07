@@ -27,7 +27,7 @@ use Sphp\Html\ContainerTag;
 class Legend extends ContainerTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $content legend content
    */

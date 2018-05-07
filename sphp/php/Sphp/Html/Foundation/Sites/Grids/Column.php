@@ -29,7 +29,7 @@ class Column extends Div implements ColumnInterface {
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

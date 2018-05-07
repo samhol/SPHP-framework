@@ -28,7 +28,7 @@ use Sphp\Html\EmptyTag;
 class MetaTag extends EmptyTag implements MetaData {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  string[] $meta an array of attribute name value pairs
    */

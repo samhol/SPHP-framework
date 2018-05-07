@@ -27,7 +27,7 @@ class Carousel extends AbstractComponent {
   private $slides = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  array|null $properties optional carousel properties
    */

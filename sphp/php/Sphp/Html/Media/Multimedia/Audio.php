@@ -21,7 +21,7 @@ namespace Sphp\Html\Media\Multimedia;
 class Audio extends AbstractMultimediaTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $sources optional sources
    */

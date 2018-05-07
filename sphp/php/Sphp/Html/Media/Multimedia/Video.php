@@ -27,7 +27,7 @@ class Video extends AbstractMultimediaTag implements SizeableMedia, LazyMedia {
   use SizeableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $sources optional sources
    */

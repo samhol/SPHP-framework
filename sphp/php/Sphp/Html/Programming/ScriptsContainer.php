@@ -35,7 +35,7 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
   private $container = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param Script|Script[] $scripts script components
    */

@@ -85,7 +85,7 @@ class Router {
   private $path = '';
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * Initializes the router by getting the URL and cleaning it.
    *

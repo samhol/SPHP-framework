@@ -22,7 +22,7 @@ use Sphp\Html\AbstractComponent;
 class Ruler extends AbstractComponent implements MenuItemInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('li');

@@ -28,7 +28,7 @@ class Attribute extends AbstractMutableAttribute {
   private $value = false;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the attribute
    * @param scalar|null $value optional value of the attribute

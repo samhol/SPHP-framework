@@ -39,7 +39,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   private $tracks;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $tagname the name of the tag
    * @param HtmlAttributeManager|null $attrManager optional attribute manager to use in the component

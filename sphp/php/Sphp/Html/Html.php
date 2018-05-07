@@ -39,7 +39,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   private $body;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Common `$charset` values:**
    *

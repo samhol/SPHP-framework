@@ -24,7 +24,7 @@ use Sphp\Html\Head\HeadContent;
 class Noscript extends ContainerTag implements HeadContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

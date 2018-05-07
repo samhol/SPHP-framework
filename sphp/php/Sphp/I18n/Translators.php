@@ -38,7 +38,7 @@ class Translators {
   private $default;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param TranslatorInterface $default
    */

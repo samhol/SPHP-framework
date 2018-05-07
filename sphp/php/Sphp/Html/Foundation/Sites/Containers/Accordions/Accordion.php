@@ -29,7 +29,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param null|Pane|Pane[] $content the value of the target attribute
    */

@@ -25,7 +25,7 @@ use Sphp\Database\Exceptions\InvalidArgumentException;
 class SequentialParameterHandler extends AbstractParameterHandler implements ArrayAccess {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param mixed $params
    */

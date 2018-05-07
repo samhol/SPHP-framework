@@ -43,7 +43,7 @@ abstract class Message implements MessageInterface {
   private $translator;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  array $args optional arguments or null for no arguments
    * @param  TranslatorInterface|null $translator the translator component
@@ -57,10 +57,7 @@ abstract class Message implements MessageInterface {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->args, $this->translator);

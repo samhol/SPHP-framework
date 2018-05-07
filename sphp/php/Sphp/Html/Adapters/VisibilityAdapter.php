@@ -22,7 +22,7 @@ use Sphp\Html\ComponentInterface;
 class VisibilityAdapter extends AbstractComponentAdapter {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param ComponentInterface $component
    */

@@ -37,7 +37,7 @@ class MultiValueAttribute extends AbstractMutableAttribute implements Iterator, 
   private $locked = false;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the attribute
    */

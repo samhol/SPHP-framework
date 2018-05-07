@@ -30,7 +30,7 @@ class Submitter extends AbstractButton implements SubmitterInterface, Input {
   use \Sphp\Html\Forms\Inputs\InputTagTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $value the value of value attribute
    * @param  string|null $name the value of name attribute

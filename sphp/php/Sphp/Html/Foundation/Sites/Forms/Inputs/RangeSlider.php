@@ -53,7 +53,7 @@ class RangeSlider extends AbstractSlider {
   private $upperInput;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $name the name of the form input
    * @param float $min the minimum value of the slider

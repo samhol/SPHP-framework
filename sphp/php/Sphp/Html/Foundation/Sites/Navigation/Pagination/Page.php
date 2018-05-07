@@ -22,7 +22,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 class Page extends AbstractPage {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    * 

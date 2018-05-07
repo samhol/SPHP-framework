@@ -28,7 +28,7 @@ use Sphp\Html\ContainerTag;
 class ScriptCode extends ContainerTag implements ScriptTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * **IMPORTANT:** 
    * 

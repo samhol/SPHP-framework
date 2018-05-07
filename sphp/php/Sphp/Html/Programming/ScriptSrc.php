@@ -28,7 +28,7 @@ use Sphp\Html\EmptyTag;
 class ScriptSrc extends EmptyTag implements ScriptTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * **IMPORTANT:** 
    * 

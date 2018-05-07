@@ -22,7 +22,7 @@ namespace Sphp\Html\Forms\Inputs;
 class NumberInput extends InputTag implements RangeInput, InputField {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $name the value of the  name attribute
    * @param  scalar $value the value of the  value attribute

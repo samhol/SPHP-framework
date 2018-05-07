@@ -29,7 +29,7 @@ class Password implements PasswordInterface {
   private $hash;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string|PasswordInterface $hash the crypted password string
    */

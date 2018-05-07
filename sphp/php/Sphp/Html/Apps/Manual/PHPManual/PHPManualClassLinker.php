@@ -22,7 +22,7 @@ use Sphp\Html\Navigation\Hyperlink;
 class PHPManualClassLinker extends AbstractClassLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $class
    * @param PHPManualUrlGenerator|null $p

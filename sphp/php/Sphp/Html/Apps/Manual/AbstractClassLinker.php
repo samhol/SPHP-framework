@@ -28,7 +28,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
   protected $ref;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $class class name or object
    * @param string $root the base URL pointing to the documentation

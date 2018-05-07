@@ -20,7 +20,7 @@ namespace Sphp\Html\Media\ImageMap;
 class Polygon extends AbstractArea {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int[] $coords coordinates as an array
    * @param string|null $href

@@ -26,7 +26,7 @@ use Sphp\Html\Exceptions\InvalidStateException;
 abstract class AbstractSlider extends AbstractComponent implements RangeInput {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param float $start the start value of the slider
    * @param float $end the end value of the slider

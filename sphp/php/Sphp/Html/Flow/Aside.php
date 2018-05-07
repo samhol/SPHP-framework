@@ -25,7 +25,7 @@ use Sphp\Html\ContainerTag;
 class Aside extends ContainerTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  mixed $content optional content of the component
    */

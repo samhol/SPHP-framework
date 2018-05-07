@@ -33,7 +33,7 @@ class Embed extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
       \Sphp\Html\Media\LazyMediaSourceTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $src specifies the address of the external file to embed
    * @param string $type specifies the MIME type of the embedded content

@@ -28,7 +28,7 @@ use Sphp\Html\EmptyTag;
 class Col extends EmptyTag implements TableContent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @precondition `$span > 0`
    * @param int $span specifies the number of columns a col element should span

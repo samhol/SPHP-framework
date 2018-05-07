@@ -26,7 +26,7 @@ class Li extends ContainerTag implements LiInterface, AjaxLoader {
   use \Sphp\Html\AjaxLoaderTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

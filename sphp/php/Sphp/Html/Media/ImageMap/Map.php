@@ -28,7 +28,7 @@ use Sphp\Html\AbstractContainerComponent;
 class Map extends AbstractContainerComponent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $name the value of the name attribute
    * @param  null|Area|Area[] $areas the value of the name attribute

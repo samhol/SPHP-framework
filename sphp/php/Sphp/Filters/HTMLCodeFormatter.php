@@ -30,7 +30,7 @@ class HTMLCodeFormatter extends AbstractFilter {
   private static $formatter;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     if (static::$formatter === null) {

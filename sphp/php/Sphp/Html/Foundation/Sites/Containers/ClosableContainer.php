@@ -29,7 +29,7 @@ class ClosableContainer extends Div implements ClosableInterface {
   private $closeButton;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed|null $content added content
    */

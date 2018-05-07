@@ -23,7 +23,7 @@ use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
 class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $lang the language of the PHP manual
    */

@@ -34,7 +34,7 @@ class TitleBar extends \Sphp\Html\AbstractComponent {
   private $rightArea;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('div');

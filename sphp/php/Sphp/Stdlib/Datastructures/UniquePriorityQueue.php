@@ -37,7 +37,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
   private $queue;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     $this->queue = [];

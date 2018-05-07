@@ -22,7 +22,7 @@ namespace Sphp\Html\Forms\Buttons;
 class Button extends AbstractButton {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $content the content of the button tag
    */

@@ -31,7 +31,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
   private $query;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string|array|Traversable|null $query the URL string
    */

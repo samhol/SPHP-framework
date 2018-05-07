@@ -34,7 +34,7 @@ class ColourableAdapter extends AbstractLayoutManager implements Colourable {
   ];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param CssClassifiableContent $component
    */

@@ -20,7 +20,7 @@ namespace Sphp\Html\Forms\Inputs;
 class FileInput extends AbstractInputTag implements ValidableInput {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $name name attribute
    * @param  string|null $accept the accepted mime types for the file

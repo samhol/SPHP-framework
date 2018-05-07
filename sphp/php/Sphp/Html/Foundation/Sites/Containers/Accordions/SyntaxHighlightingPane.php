@@ -33,7 +33,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
   private $hl;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
    */

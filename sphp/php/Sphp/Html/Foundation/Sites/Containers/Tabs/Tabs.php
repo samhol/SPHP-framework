@@ -36,7 +36,7 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
   private $tabsContent;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     $this->tabsContent = new TabContentContainer();

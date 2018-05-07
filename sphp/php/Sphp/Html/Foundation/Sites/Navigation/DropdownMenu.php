@@ -21,7 +21,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 class DropdownMenu extends Menu {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param mixed $content
    */

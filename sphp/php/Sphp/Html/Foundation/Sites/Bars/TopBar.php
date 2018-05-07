@@ -24,7 +24,7 @@ use InvalidArgumentException;
 class TopBar extends AbstractBar {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param BarContentArea $left
    * @param BarContentArea $right

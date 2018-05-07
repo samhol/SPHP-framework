@@ -23,7 +23,7 @@ namespace Sphp\Html\Tables;
 class Tfoot extends TableRowContainer {
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('tfoot');

@@ -34,7 +34,7 @@ class ArrayFilter extends AbstractFilter {
   private $addEmpty;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param mixed[] $definition an array defining the arguments
    * @param boolean $add_empty

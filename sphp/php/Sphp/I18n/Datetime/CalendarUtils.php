@@ -161,7 +161,7 @@ class CalendarUtils {
   private $fwd = self::MON;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  Translator|null $translator the translator component
    */

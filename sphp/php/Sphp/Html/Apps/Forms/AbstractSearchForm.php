@@ -53,7 +53,7 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
   private $queryVisible = false;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $action
    * @param string $method

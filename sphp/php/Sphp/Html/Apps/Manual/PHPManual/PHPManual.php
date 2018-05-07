@@ -25,7 +25,7 @@ use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
 class PHPManual extends AbstractPhpApiLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none

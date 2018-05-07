@@ -71,7 +71,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
   private $port;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string|null $url the URL string
    */

@@ -22,7 +22,7 @@ use Sphp\Html\Navigation\Hyperlink;
 class FoundationDocsLinker extends AbstractLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    */

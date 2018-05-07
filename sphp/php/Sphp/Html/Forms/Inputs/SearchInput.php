@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class SearchInput extends TextualInput {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @Preconditions   `0 < $size <= $maxlength`
    * @Postconditions  `attrLocked("type", "search")`

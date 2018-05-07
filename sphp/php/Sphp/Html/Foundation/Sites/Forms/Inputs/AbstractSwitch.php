@@ -49,7 +49,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
   private $screenReaderLabel, $inactive, $active;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param Choicebox $box the inner form component
    * @param string|null $srText text for screen readers

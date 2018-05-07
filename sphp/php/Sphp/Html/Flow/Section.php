@@ -25,7 +25,7 @@ class Section extends ContainerTag {
   use ContentCreatorTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param  mixed $content optional content of the component
    */

@@ -47,7 +47,7 @@ class Db {
   private $pdo;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  PDO $pdo connection object between PHP and a database server
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects

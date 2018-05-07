@@ -32,7 +32,7 @@ class InArrayValidator extends AbstractValidator {
   private $strict = false;
 
   /**
-   * Constructs a new validator
+   * Constructor
    *
    * @param array $haystack the haystack to validate against
    */
@@ -43,10 +43,7 @@ class InArrayValidator extends AbstractValidator {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->haystack);

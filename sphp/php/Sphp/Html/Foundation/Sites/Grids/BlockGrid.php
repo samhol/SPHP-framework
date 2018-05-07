@@ -54,7 +54,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   private $layoutManager;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $layout,... block grid layout parameters
    */

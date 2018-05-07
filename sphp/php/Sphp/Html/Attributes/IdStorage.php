@@ -32,7 +32,7 @@ class IdStorage {
   private $ids = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   private function __construct() {
     

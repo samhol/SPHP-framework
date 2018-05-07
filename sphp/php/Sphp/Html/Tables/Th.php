@@ -21,7 +21,7 @@ namespace Sphp\Html\Tables;
 class Th extends AbstractCell {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

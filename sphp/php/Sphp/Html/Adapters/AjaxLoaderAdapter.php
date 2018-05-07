@@ -26,7 +26,7 @@ use Sphp\Html\ComponentInterface;
 class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoader {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param ComponentInterface $component
    */

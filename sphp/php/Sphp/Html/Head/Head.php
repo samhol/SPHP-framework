@@ -32,7 +32,7 @@ class Head extends AbstractComponent implements NonVisualContent {
   private $content;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $title the title of the HTML document
    * @param string $charset the character set of the HTML document

@@ -29,7 +29,7 @@ class SingularMessage extends Message {
   private $message;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $message
    * @param TranslatorInterface $translator optional translator

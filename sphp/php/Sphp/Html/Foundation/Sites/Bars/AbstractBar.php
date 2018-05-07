@@ -36,7 +36,7 @@ class AbstractBar extends AbstractComponent {
   private $rightArea;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $tagname
    * @param BarContentAreaInterface $left

@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class TextualInput extends InputTag implements TextualInputInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @precondition  `0 < $size <= $maxlength`
    * @param  string $type the value of the type attribute

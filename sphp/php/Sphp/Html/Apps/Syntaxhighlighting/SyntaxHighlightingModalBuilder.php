@@ -44,7 +44,7 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
   private $trigger;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param type $trigger
    * @param type $title

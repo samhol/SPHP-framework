@@ -40,7 +40,7 @@ class InlineInput extends AbstractComponent implements IdentifiableInput {
   private $input;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param IdentifiableInput $input
    * @param string|null $prefix the content of the prefix

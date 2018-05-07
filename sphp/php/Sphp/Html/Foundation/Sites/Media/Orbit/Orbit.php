@@ -55,7 +55,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   private $bulletsVisible = true;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $ariaLabel optional Aria label text
    */

@@ -22,7 +22,7 @@ use Sphp\Stdlib\Arrays;
 abstract class AbstractArrayableObject implements DbObjectInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param array $data the initial raw data from which to parse the object
    */

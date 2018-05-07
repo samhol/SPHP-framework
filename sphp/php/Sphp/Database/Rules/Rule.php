@@ -44,7 +44,7 @@ class Rule implements RuleInterface {
   private $paramType;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $columnName
    * @param string $op

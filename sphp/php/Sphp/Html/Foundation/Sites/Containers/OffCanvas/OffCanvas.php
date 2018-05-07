@@ -55,7 +55,7 @@ class OffCanvas extends AbstractComponent {
   private $offCanvasContent;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $position the main title of the component
    */

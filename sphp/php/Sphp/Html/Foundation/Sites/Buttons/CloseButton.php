@@ -27,7 +27,7 @@ use Sphp\Html\AbstractComponent;
 class CloseButton extends AbstractComponent {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $ariaLabel the screen reader-only text
    * @link  https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html aria-label

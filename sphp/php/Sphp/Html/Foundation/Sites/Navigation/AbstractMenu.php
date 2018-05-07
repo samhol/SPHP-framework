@@ -34,7 +34,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   private $items;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string $tagname
    * @param AttributeManager $attrManager

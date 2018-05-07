@@ -23,7 +23,7 @@ use Sphp\Html\Navigation\Hyperlink;
 class HyperlinkListItem extends HyperlinkContainer implements LiInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    *

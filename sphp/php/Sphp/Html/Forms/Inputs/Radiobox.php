@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class Radiobox extends Choicebox {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @Postconditions   <var>attrLocked("type", "radio") === true</var>
    * 

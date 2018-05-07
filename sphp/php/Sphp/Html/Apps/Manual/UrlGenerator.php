@@ -27,7 +27,7 @@ class UrlGenerator implements UrlGeneratorInterface {
   private $root;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $root the URL pointing to the API documentation
    */

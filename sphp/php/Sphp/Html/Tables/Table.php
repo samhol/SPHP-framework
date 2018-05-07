@@ -63,7 +63,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   private $tfoot;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $caption defines a table caption
    */

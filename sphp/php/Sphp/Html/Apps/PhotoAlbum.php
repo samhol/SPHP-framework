@@ -47,7 +47,7 @@ class PhotoAlbum extends AbstractContainerComponent {
   private $buttonContent = "Photo album";
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $albumPaths the paths to the files/folders presented in this album
    * @param string $albumName the title of the albumo

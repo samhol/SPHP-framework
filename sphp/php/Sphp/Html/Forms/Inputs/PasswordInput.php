@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class PasswordInput extends TextualInput {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $name name attribute
    * @param  string $value value attribute

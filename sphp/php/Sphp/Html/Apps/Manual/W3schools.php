@@ -22,7 +22,7 @@ use Sphp\Html\Navigation\Hyperlink;
 class W3schools extends AbstractLinker {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param string|null $target the default value of the attributes used in the 
    *        generated links

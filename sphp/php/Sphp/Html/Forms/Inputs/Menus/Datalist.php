@@ -20,7 +20,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 class Datalist extends AbstractOptionsContainer {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param type $opt
    */

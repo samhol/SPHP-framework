@@ -33,7 +33,7 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\ComponentInterf
       \Sphp\Html\ComponentTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param CssClassifiableContent|scalar $component
    */

@@ -24,7 +24,7 @@ namespace Sphp\Html\Media\Multimedia;
 class YoutubePlayer extends AbstractVideoPlayer {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $videoId the id of the YouTube video or playlist
    * @param boolean $isPlaylist whether the videoid is a playlist or a single video

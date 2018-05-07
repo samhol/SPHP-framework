@@ -20,7 +20,7 @@ namespace Sphp\Filters;
 class IntegerFilter extends VariableFilter {
 private $round  = \PHP_ROUND_HALF_UP;
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int|null $default optional default value
    * @param int|null $min optional minimum value

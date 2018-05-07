@@ -40,7 +40,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   private $format = self::DATE_TIME;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  mixed $datetime optional datetime object (defaults to current date and time)
    * @param  string $format the format of the outputted date string

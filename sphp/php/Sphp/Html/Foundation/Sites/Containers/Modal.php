@@ -42,7 +42,7 @@ class Modal implements Content, ClosableInterface {
   private $popup;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param ComponentInterface|string $trigger
    * @param mixed $popup the content of the component

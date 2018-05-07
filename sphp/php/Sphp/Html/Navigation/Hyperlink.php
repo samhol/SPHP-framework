@@ -33,7 +33,7 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
   use HyperlinkTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Notes:**
    *

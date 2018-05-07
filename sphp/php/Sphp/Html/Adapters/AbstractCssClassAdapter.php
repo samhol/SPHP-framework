@@ -10,22 +10,22 @@
 
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\CssClassifiableContent;
 
 /**
- * Abstract base class for HTML component adapters
+ * Implements an Abstract CSS Class Adapter
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractComponentAdapter implements Adapter {
+class AbstractCssClassAdapter implements CssClassifiableContent {
 
-  use \Sphp\Html\ContentTrait;
+  use \Sphp\Html\CssClassifiableTrait,
+      \Sphp\Html\ContentTrait;
 
   /**
-   *
-   * @var ComponentInterface
+   * @var CssClassifiableContent
    */
   private $component;
 
@@ -34,7 +34,7 @@ class AbstractComponentAdapter implements Adapter {
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(CssClassifiableContent $component) {
     $this->component = $component;
   }
 
@@ -45,30 +45,12 @@ class AbstractComponentAdapter implements Adapter {
     unset($this->component);
   }
 
-  /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
-   */
-  public function __clone() {
-    $this->component = clone $this->component;
-  }
-
-  /**
-   * 
-   * @return ComponentInterface
-   */
-  public function getComponent(): ComponentInterface {
-    return $this->component;
+  public function cssClasses(): ClassAttribute {
+    
   }
 
   public function getHtml(): string {
     return $this->component->getHtml();
-  }
-
-  public function attributes() {
-    return $this->component->attributes();
   }
 
 }

@@ -24,7 +24,7 @@ use Sphp\Database\Doctrine\Objects\Location;
 class LocationStorage extends AbstractObjectStorage implements \IteratorAggregate {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param EntityManagerInterface $em
    */

@@ -31,7 +31,7 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
   private $icons;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('div');
@@ -40,10 +40,7 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->icons);

@@ -21,7 +21,7 @@ namespace Sphp\Html\Media\Multimedia;
 class DailyMotionPlayer extends AbstractVideoPlayer {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $videoId the id of the Dailymotion video
    */

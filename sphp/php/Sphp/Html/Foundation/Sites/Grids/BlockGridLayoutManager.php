@@ -32,7 +32,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   private $maxSize = 8;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param ComponentInterface $component
    * @param int $max

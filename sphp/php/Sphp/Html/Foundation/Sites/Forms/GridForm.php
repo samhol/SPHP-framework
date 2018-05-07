@@ -54,7 +54,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
   private $hiddenInputs;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    *  **Note:** The method attribute specifies how to send form-data
    *  (the form-data is sent to the page specified in the action attribute)

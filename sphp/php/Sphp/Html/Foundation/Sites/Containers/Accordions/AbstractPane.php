@@ -33,7 +33,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
   private $bar;
   
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

@@ -24,7 +24,7 @@ namespace Sphp\Html\Forms\Inputs;
 class AnyTimeInput extends InputTag {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $name name attribute
    * @param  string $value the value of the attribute

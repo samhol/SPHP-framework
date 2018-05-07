@@ -34,7 +34,7 @@ class Source extends EmptyTag implements MultimediaSource, LazyMedia {
   use LazyMediaSourceTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $src the URL of the media file or null for none
    * @param  string|null $type the media type of the media resource or null for none

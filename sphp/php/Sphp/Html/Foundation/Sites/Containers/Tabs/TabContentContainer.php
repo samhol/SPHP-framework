@@ -35,7 +35,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
   private $tabs;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param TabControllerContainer $tabs
    */

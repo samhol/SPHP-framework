@@ -20,7 +20,7 @@ namespace Sphp\Html\Attributes;
 class HtmlAttributeManager extends AttributeManager {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string[] $objectMap
    */

@@ -58,7 +58,7 @@ class Translator extends AbstractTranslator {
   private $charset;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **IMPORTANT:**
    * The name of the `.mo` file must match the `$domain`. e.g the file path

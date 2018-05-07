@@ -47,7 +47,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   private $value;
 
   /**
-   * Constructs a new validator
+   * Constructor
    *
    * @param string $error error message
    */
@@ -58,10 +58,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->messageTemplates, $this->errors, $this->value);

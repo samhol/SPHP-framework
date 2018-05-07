@@ -31,7 +31,7 @@ class BackToTopButton implements Content {
   private $component;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param string $title the title text of the button
    * @param string $iconClass CSS class names of the icon font style

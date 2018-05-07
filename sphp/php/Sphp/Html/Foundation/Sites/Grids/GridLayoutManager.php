@@ -25,7 +25,7 @@ use Sphp\Html\CssClassifiableContent;
 class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManagerInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param CssClassifiableContent $component
    */

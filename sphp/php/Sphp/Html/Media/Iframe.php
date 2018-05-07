@@ -29,7 +29,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
       SizeableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $src the address of the document to embed in the object
    * @param  string $name the value of the name attribute

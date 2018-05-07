@@ -29,7 +29,7 @@ class Mailer {
   private $message;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param Message $message
    */

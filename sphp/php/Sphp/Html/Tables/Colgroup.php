@@ -29,7 +29,7 @@ class Colgroup extends AbstractComponent implements TableContent {
   private $cols;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('colgroup');

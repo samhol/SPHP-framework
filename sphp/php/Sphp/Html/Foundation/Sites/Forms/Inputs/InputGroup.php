@@ -43,7 +43,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
   private $group;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('div');

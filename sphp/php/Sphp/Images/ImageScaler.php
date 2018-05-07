@@ -59,7 +59,7 @@ class ImageScaler {
   private $box;
 
   /**
-   * Constructs a new instance of the {@link self} object
+   * Constructor of the {@link self} object
    * 
    * @param  string $src
    * @throws \InvalidArgumentException

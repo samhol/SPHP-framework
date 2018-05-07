@@ -22,7 +22,7 @@ namespace Sphp\Html\Forms\Buttons;
 class Resetter extends AbstractButton implements ResetterInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $content the content of the button
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute

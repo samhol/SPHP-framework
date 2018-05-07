@@ -31,7 +31,7 @@ class VariableFilter extends AbstractFilter {
   private $options;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param int $filter
    * @param mixed[] $options

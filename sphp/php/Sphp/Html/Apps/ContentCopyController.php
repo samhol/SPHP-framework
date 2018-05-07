@@ -37,7 +37,7 @@ class ContentCopyController implements Content {
   private $button;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **Important!**
    *

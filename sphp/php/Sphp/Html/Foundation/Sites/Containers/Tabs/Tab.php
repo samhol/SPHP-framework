@@ -30,7 +30,7 @@ class Tab extends AbstractContainerTag implements TabInterface {
   private $tabButton;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param mixed $tab the tab button content
    * @param type $content the tab content

@@ -45,7 +45,7 @@ class FileUploadButton implements IdentifiableInput, ButtonInterface {
   private $label;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string|null $name the value of name attribute
    * @param  string $buttonText the value of value attribute

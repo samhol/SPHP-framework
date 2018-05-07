@@ -30,7 +30,7 @@ use Sphp\Stdlib\Strings;
 class AbstractButton extends EmptyTag implements ButtonInterface {
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * @param  string $type the type of the button
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute

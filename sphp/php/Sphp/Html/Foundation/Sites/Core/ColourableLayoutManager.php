@@ -33,7 +33,7 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
   ];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param ComponentInterface $component
    */

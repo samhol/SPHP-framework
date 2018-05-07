@@ -27,7 +27,7 @@ class StopWatch {
   private $startTime;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     

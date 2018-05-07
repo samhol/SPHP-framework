@@ -53,7 +53,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   private $readonly = false;
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param array[] $config configuration data
    * @param boolean $readOnly configuration data is read-only unless this is set to false

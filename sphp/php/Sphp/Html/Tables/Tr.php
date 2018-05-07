@@ -32,7 +32,7 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Constructs a new instance
+   * Constructor
    */
   public function __construct() {
     parent::__construct('tr');

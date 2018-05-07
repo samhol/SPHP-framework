@@ -45,7 +45,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
   private $options;
 
   /**
-   * Constructs a new instance
+   * Constructor
    *
    * **`$opt` types:**
    * 

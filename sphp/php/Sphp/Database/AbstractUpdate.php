@@ -45,7 +45,7 @@ abstract class AbstractUpdate extends AbstractConditionalStatement implements Up
   private $cols = [];
 
   /**
-   * Constructs a new instance
+   * Constructor
    * 
    * @param PDO $db
    * @param Clause $where
