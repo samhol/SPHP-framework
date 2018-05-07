@@ -58,7 +58,7 @@ class ScreenSizes implements \Iterator, \Countable, Arrayable {
    * @return boolean true if the given size exists
    */
   public function sizeExists(string $size): bool {
-    return in_array($size, static::sizes());
+    return in_array($size, $this->sizes);
   }
 
   /**

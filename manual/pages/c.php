@@ -1,36 +1,35 @@
 <?php
 
-namespace Sphp\DateTime;
+namespace Sphp\Html\Foundation\Sites\Adapters;
 
+use Sphp\Html\Div;
+use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
+
+$div = new Div('foo div');
+$prototype = new VisibilityAdapter($div);
 echo "<pre>";
-$d1 = Date::from('2000-1-1 23:59 GMT');
-$d2 = Date::from('2000-1-2 00:01 EET');
-var_dump($d1->diff($d2));
-var_dump($d2->diff($d1));
-try {
-  $k = $d2->modify('foo');
-} catch (\Exception $ex) {
-  echo $ex;
+$sizes = new ScreenSizes ();
+foreach ($sizes as $size) {
+  $div->setContent("only for $size size");
+  echo $prototype->showOnlyFor($size);
 }
-/*$watch = new \Sphp\Stdlib\StopWatch();
-$foo = new \Sphp\DateTime\Calendars\Events\VaryingAnnualHoliday("November %d second sunday", "Father's Day");
-//var_dump($foo->dateMatchesWith(Date::from('2017-11-12')));
-$watch->start();
-$date = new Date();
+foreach ($sizes as $size) {
+  $div->setContent("from $size size up");
+  echo $prototype->showFromUp($size);
+}
+foreach ($sizes as $size) {
+  $div->setContent("hide only for $size size");
+  echo $prototype->hideOnlyForSize($size);
+}
+foreach ($sizes as $size) {
+  $div->setContent("hide down to $size size");
+  echo $prototype->hideDownTo($size);
+}
 
-use Sphp\DateTime\Calendars\Events\Fi\Holidays;
-
-$f = function($evt) {
-  echo "$evt\n";
-};
-$fiHolidays = new Holidays();
-$dailyNotes = new Calendars\Events\DateEvents(new Date());
-$fiHolidays->addListener($dailyNotes);
-$fiHolidays->addListener($f);
-$fiHolidays;
-
-
-//print_r($foo);
-echo "\nI: " . $watch->getTime() . "\n";
-*/
+$prototype->setLayouts(['hide', 'show-for-medium', 'hide-for-large-only', 'show-for-large', 'hide-for-large']);
+$div->setContent($prototype->cssClasses()->getValue());
+echo $prototype;
 echo "</pre>";
+?>
+<p class="hide-for-large-only hide-for-small-only hide-for-xxlarge-only">HIDE BOOOOOOOOOO</p>
+<p class="show-for-small-only">SHOW BOOOOOOOOOO</p>

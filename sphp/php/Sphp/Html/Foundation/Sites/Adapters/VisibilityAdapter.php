@@ -8,27 +8,65 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Core;
+namespace Sphp\Html\Foundation\Sites\Adapters;
 
+use Sphp\Html\Adapters\AbstractCssClassAdapter;
+use Sphp\Html\Foundation\Sites\Core\VisibilityChanger;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\ClassAttribute;
+use Sphp\Html\CssClassifiableContent;
+use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 
 /**
  * Implements Visibility changer functionality
- * 
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-trait VisibilityTrait {
+class VisibilityAdapter extends AbstractCssClassAdapter implements VisibilityChanger {
 
   /**
-   * Returns the class attribute object
-   * 
-   * @return ClassAttribute the class attribute object
+   * @var ScreenSizes 
    */
-  abstract public function cssClasses(): ClassAttribute;
+  private $sizes;
+
+  /**
+   * Constructor
+   * 
+   * @param CssClassifiableContent $component
+   */
+  public function __construct(CssClassifiableContent $component) {
+    parent::__construct($component);
+    $this->sizes = new ScreenSizes();
+  }
+
+  public function __destruct() {
+    unset($this->sizes);
+    parent::__destruct();
+  }
+
+  /**
+   * Sets the layouts
+   *
+   * @param  string|string[] $layouts layout parameters (CSS classes)
+   * @return $this for a fluent interface
+   */
+  public function setLayouts(... $layouts) {
+    $sizePatt = "(small|medium|large|xlarge|xxlarge)";
+    $arr = Arrays::flatten($layouts);
+    //$show = $this->parsePattern($layouts, "/^(show-for-$sizePatt)+$/");
+    $show = preg_grep("/^(show-for-$sizePatt)+$/", $arr);
+    foreach (str_replace('show-for-', '', $show) as $showFor) {
+      $this->showFromUp($showFor);
+    }
+    $show = preg_grep("/^(show-for-$sizePatt-only)+$/", $arr);
+    foreach (str_replace(['show-for-', '-only'], '', $show) as $showFor) {
+      $this->showFromUp($unit);
+    }
+    return $this;
+  }
 
   /**
    * 
@@ -37,12 +75,12 @@ trait VisibilityTrait {
    * @throws InvalidArgumentException
    */
   public function showFromUp(string $screenType) {
-    if (!in_array($screenType, Screen::sizes())) {
+    if (!$this->sizes->sizeExists($screenType)) {
       throw new InvalidArgumentException("Screen type '$screenType' was not recognized");
     }
+    $this->showForAll();
     $this->cssClasses()
-            ->add("show-for-$screenType")
-            ->remove("hide-for-$screenType");
+            ->add("show-for-$screenType");
     return $this;
   }
 
@@ -53,10 +91,10 @@ trait VisibilityTrait {
    * @throws InvalidArgumentException
    */
   public function hideDownTo($screenSize) {
-    $this->showForAll();
-    if (!Screen::sizeExists($screenSize)) {
-      throw new InvalidArgumentException("Screen type '$screenSize' was not recognized");
+    if (!$this->sizes->sizeExists($screenSize)) {
+      throw new InvalidArgumentException("Screen type '$screenType' was not recognized");
     }
+    $this->showForAll();
     if ($screenSize == 'small') {
       $this->cssClasses()
               ->add('hide');
@@ -107,13 +145,13 @@ trait VisibilityTrait {
    *         valid screen size
    */
   public function hideOnlyForSize(... $sizes) {
-    $sizes = Arrays::flatten($sizes);
+    $this->showForAll();
     foreach (Arrays::flatten($sizes) as $size) {
-      if (!Screen::sizeExists($size)) {
+      if (!$this->sizes->sizeExists($size)) {
         throw new InvalidArgumentException("Screen size '$size' was not recognized");
       } else {
         $this->cssClasses()
-                ->add("hide-for-$size-only")->remove("show-for-$size-only");
+                ->add("hide-for-$size-only");
       }
     }
     return $this;
@@ -122,7 +160,7 @@ trait VisibilityTrait {
   /**
    * Shows component visible for the given screen sizes only
    * 
-   * Valid flags for `$size` parameter:
+   * Valid values for `$size` parameter:
    * 
    * * `"small"`: screen widths 0px - 640px
    * * `"medium"`: screen widths 641px - 1024px
@@ -131,21 +169,17 @@ trait VisibilityTrait {
    * * `"xx-large"`: all screen widths from 1921px...
    * 
    * @precondition `$size` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|string $sizes the targeted screen sizes
+   * @param  string $size the targeted screen size
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor(... $sizes) {
-    $sizes = Arrays::flatten($sizes); //hide-for-large-only
-    foreach (Arrays::flatten($sizes) as $size) {
-      if (!Screen::sizeExists($size)) {
-        throw new InvalidArgumentException("Screen size '$size' was not recognized");
-      } else {
-        $this->cssClasses()
-                ->add("show-for-$size-only")->remove("hide-for-$size-only");
-      }
+  public function showOnlyFor(string $size) {
+    if (!$this->sizes->sizeExists($size)) {
+      throw new InvalidArgumentException("Screen type '$size' was not recognized");
     }
+    $this->showForAll();
+    $this->cssClasses()->add("show-for-$size-only");
     return $this;
   }
 
@@ -155,15 +189,14 @@ trait VisibilityTrait {
    * @return $this for a fluent interface
    */
   public function showForAll() {
-    $classes = [];
-    foreach (Screen::sizes() as $sreenName) {
-      $classes[] = "hide-for-$sreenName";
-      $classes[] = "hide-for-$sreenName-only";
-      $classes[] = "show-for-$sreenName";
-      $classes[] = "show-for-$sreenName-only";
+    $classes = ['hide'];
+    foreach ($this->sizes as $size) {
+      $classes[] = "hide-for-$size";
+      $classes[] = "hide-for-$size-only";
+      $classes[] = "show-for-$size";
+      $classes[] = "show-for-$size-only";
     }
-    $this->cssClasses()
-            ->remove($classes);
+    $this->cssClasses()->remove($classes);
     return $this;
   }
 

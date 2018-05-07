@@ -5,8 +5,6 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Manual;
 
 $alingmentManager = Manual\api()->classLinker(AlingmentAdapter::class);
-$visibilityHandler = Manual\api()->classLinker(VisibilityAdapter::class);
-$ComponentInterface = Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
 
 Manual\md(<<<MD
 ##Changing component alignment: <small>using $alingmentManager instance</small> 

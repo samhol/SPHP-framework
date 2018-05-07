@@ -58,12 +58,12 @@ interface VisibilityChanger {
    * * `"xxlarge"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string|string[] $sizes the targeted screen sizes
+   * @param  string $size the targeted screen sizes
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor(... $sizes);
+  public function showOnlyFor(string $size);
 
   /**
    * Sets/unsets the component visible only for landscape orientation

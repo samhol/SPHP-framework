@@ -2,45 +2,82 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
+use Sphp\Html\Foundation\Sites\Adapters\VisibilityAdapter;
 use Sphp\Manual;
 
 $visibilityHandlingInterface = Manual\api()->classLinker(VisibilityChanger::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
+namespace Sphp\Html\Foundation\Sites\Adapters;
+use Sphp\Manual;
 $visibilityHandler = Manual\api()->classLinker(VisibilityAdapter::class);
-$ComponentInterface = Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
+$cssClassifiableContent = Manual\api()->classLinker(\Sphp\Html\CssClassifiableContent::class);
+
+$adaptersNs = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+
+
 
 Manual\md(<<<MD
-#Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
-
+#Component Visibility <small>by using Foundation Visibility CSS Classes</small> 
+$ns
 Foundation framework introduces special Visibility CSS classes. With these classes 
-it is possible to show or hide elements based on screen size or device orientation 
-etc..
+it is possible to show or hide elements based on screen size.
         
 Valid screen size parameter values and corresponding screen widths:
  
- * `small` for small screen (width: 0px - 640px)
- * `medium` for medium screen (width: 641px - 1024px)
- * `large` for large screen (width: 1025px - 1440px)
- * `xlarge` for X-large screen (width: 1441px - 1920px)
- * `xxlarge` for XX-large screen (width: 1921px...)
+ * `small` for screen widths: 0px - 640px
+ * `medium` for screen widths: 641px - 1024px
+ * `large` for screen widths: 1025px - 1440px
+ * `xlarge` for screen widths: 1441px - 1920px
+ * `xxlarge` for screen widths: 1921px...
 
 ##Implementing $visibilityHandlingInterface:  <small>The $visibilityHandler adapter</small>
 
-$visibilityHandler provides a straightforward adapter for any $ComponentInterface component
+$adaptersNs
+$visibilityHandler provides a straightforward adapter for any $cssClassifiableContent object
 to be used as a $visibilityHandlingInterface component.
 MD
 );
+
 Manual\md(<<<MD
-##Visibility handling extending $visibilityHandlingInterface 
+##Visibility handling extending $visibilityHandlingInterface  
+{$visibilityHandler->methodLink('showFromUp')}
+
 MD
 );
 
-Manual\example('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php', 'html5')->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityAdapter-showFromUp.php', 'html5')
+        ->setExamplePaneTitle('Showing content for specific screen sizes or larger')
+        ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
+        ->printHtml();
+
+Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityAdapter-showOnlyFor.php', 'html5')
+        ->setExamplePaneTitle('Showing content only for specific sceen size')
+        ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
+        ->printHtml();
 Manual\md(<<<MD
-Hiding by Screen Size
-        
+###Hiding Content <small>by Screen Size</small>
+Hiding by Screen Size methods state which components should disappear based on the device's screen size.
 MD
 );
-Manual\example('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter-hideOnlyFor.php')->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityAdapter-hideOnlyFor.php', 'html5')
+        ->setExamplePaneTitle('Hiding content only for specific sceen size')
+        ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
+        ->printHtml();
+
+Manual\md(<<<MD
+###Orientation Detection
+  
+It is also possible to Define content visibility by device orientation. This will change the visibility 
+on mobile devices when the device is rotated. On desktop, the orientation is almost always reported as landscape.
+
+MD
+);
+Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityHandler-deviceOrientation.php', 'html5')
+        ->setExamplePaneTitle('Showing content based on Orientation Detection')
+        ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
+        ->printHtml();
+
 
 Manual\loadPage('Sphp.Html.Foundation.Sites.Core.ColourableInterface');
 

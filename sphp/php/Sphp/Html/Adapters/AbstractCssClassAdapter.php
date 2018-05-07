@@ -11,6 +11,7 @@
 namespace Sphp\Html\Adapters;
 
 use Sphp\Html\CssClassifiableContent;
+use Sphp\Html\Attributes\ClassAttribute;
 
 /**
  * Implements an Abstract CSS Class Adapter
@@ -37,6 +38,10 @@ class AbstractCssClassAdapter implements CssClassifiableContent {
   public function __construct(CssClassifiableContent $component) {
     $this->component = $component;
   }
+  
+  public function getComponent():CssClassifiableContent{
+    return $this->component;
+  }
 
   /**
    * Destructor
@@ -46,7 +51,7 @@ class AbstractCssClassAdapter implements CssClassifiableContent {
   }
 
   public function cssClasses(): ClassAttribute {
-    
+    return $this->component->cssClasses();
   }
 
   public function getHtml(): string {
