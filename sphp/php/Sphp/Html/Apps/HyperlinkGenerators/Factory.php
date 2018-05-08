@@ -59,7 +59,7 @@ class Factory {
   public static function sami(string $path = 'API/sami/'): Sami {
     if (!array_key_exists($path, self::$samis)) {
       $instance = new Sami(new SamiUrlGenerator($path));
-      $instance->setDefaultAttributes(['class' => 'api sami']);
+      $instance->setDefaultAttributes(['class' => 'api sphp']);
       self::$samis[$path] = $instance;
     } else {
       $instance = self::$samis[$path];
