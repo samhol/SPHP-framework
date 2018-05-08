@@ -13,6 +13,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Hyperlink object generator pointing to an existing Sami documentation about a class
@@ -36,6 +37,22 @@ class SamiClassLinker extends AbstractClassLinker {
       $urlGenerator = new SamiUrlGenerator();
     }
     parent::__construct($class, $urlGenerator);
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @return Hyperlink
+   * @throws \Sphp\Exceptions\SphpException
+   */
+  public function __get(string $name): Hyperlink {
+    if ($this->ref->hasMethod($name)) {
+      return $this->methodLink($name);
+    } else if ($this->ref->hasProperty($name)) {
+      return $this->methodLink($name);
+    } else {
+      throw new \Sphp\Exceptions\SphpException("$name in not valid method, constat or variable name for " . $this->ref->getName());
+    }
   }
 
   /**
