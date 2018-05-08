@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 /**
  * URL string generator pointing to an online site
@@ -36,10 +36,7 @@ class UrlGenerator implements UrlGeneratorInterface {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->root);

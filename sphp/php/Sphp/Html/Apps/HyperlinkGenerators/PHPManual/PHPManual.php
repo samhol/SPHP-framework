@@ -8,11 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\PHPManual;
+namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Apps\Manual\ClassLinkerInterface;
+use Sphp\Html\Apps\HyperlinkGenerators\ClassLinker;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
 
 /**
  * Hyperlink object generator pointing to PHP manual
@@ -27,14 +27,13 @@ class PHPManual extends AbstractPhpApiLinker {
   /**
    * Constructor
    *
-   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
-   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
-   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
-   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
+   * @param PHPManualUrlGenerator $urlGenerator
    */
-  public function __construct(string $defaultTarget = null, $defaultCssClasses = ['api', 'phpman']) {
-    parent::__construct(new PHPManualUrlGenerator(), $defaultTarget);
-    $this->setDefaultCssClasses($defaultCssClasses);
+  public function __construct(PHPManualUrlGenerator $urlGenerator = null) {
+    if ($urlGenerator === null) {
+      $urlGenerator = new PHPManualUrlGenerator();
+    }
+    parent::__construct(new PHPManualUrlGenerator());
   }
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
@@ -46,8 +45,10 @@ class PHPManual extends AbstractPhpApiLinker {
     return parent::hyperlink($url, $content, $title);
   }
 
-  public function classLinker(string $class): ClassLinkerInterface {
-    return new PHPManualClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+  public function classLinker(string $class): ClassLinker {
+    $classLinker = new PHPManualClassLinker($class, $this->urls());
+    $classLinker->setDefaultAttributes($this->getDefaultAttributes());
+    return $classLinker;
   }
 
   public function constantLink(string $constant, string $linkText = null): Hyperlink {
@@ -79,7 +80,7 @@ class PHPManual extends AbstractPhpApiLinker {
     if ($linkText === null) {
       $linkText = $extName;
     }
-    return $this->hyperlink($this->urls()->getRoot() . "book." . $path, $linkText, $extName);
+    return $this->hyperlink($this->urls()->getRoot() . "book." . $path, $linkText, $extName)->addCssClass('book');
   }
 
   /**

@@ -7,8 +7,7 @@
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
-
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
 
@@ -27,8 +26,8 @@ class W3schools extends AbstractLinker {
    * @param string|null $target the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct(string $target = '_blank') {
-    parent::__construct(new UrlGenerator('http://www.w3schools.com/'), $target);
+  public function __construct() {
+    parent::__construct(new UrlGenerator('http://www.w3schools.com/'));
   }
 
   /**
@@ -37,7 +36,7 @@ class W3schools extends AbstractLinker {
    * @param  string $tagname the HTML5 tag name
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function __get($tagname): Hyperlink {
+  public function __get(string $tagname): Hyperlink {
     return $this->tag($tagname);
   }
 

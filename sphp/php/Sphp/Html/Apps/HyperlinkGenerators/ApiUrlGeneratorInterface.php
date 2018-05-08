@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 /**
  * Defines a URL string generator pointing to an online PHP API

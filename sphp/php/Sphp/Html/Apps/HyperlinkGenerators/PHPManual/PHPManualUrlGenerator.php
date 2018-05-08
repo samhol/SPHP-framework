@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\PHPManual;
+namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Apps\Manual\UrlGenerator;
-use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
+use Sphp\Html\Apps\HyperlinkGenerators\UrlGenerator;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGeneratorInterface;
 
 /**
  * URL string generator pointing to online PHP Manual

@@ -1,18 +1,18 @@
 <?php
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Lists\Ul;
 use Doctrine\ORM\Decorator\EntityManagerDecorator;
 
 $links = new Ul();
 
-$wordPress = Apis::sami('http://apigen.juzna.cz/doc/WordPress/WordPress/');
+$wordPress = Factory::sami('http://apigen.juzna.cz/doc/WordPress/WordPress/');
 
 $links[] = $wordPress->functionLink('__return_empty_array');
 $links[] = $wordPress->functionLink('_wp_footer_scripts');
 
-$doctrine2 = Apis::sami('http://www.doctrine-project.org/api/orm/2.4/');
+$doctrine2 = Factory::sami('http://www.doctrine-project.org/api/orm/2.4/');
 $entityManagerDecorator = $doctrine2->classLinker(EntityManagerDecorator::class);
 
 $links->appendMd('###Doctrine 2:');
@@ -20,7 +20,7 @@ $links[] = $entityManagerDecorator;
 $links[] = $entityManagerDecorator->methodLink('getCache', true);
 $links[] = $entityManagerDecorator->methodLink('getCache', false);
 
-$sphpApi = Apis::sami('http://playground.samiholck.com/API/sami');
+$sphpApi = Factory::sami('http://playground.samiholck.com/API/sami');
 
 use Sphp\Html\Document;
 
@@ -35,14 +35,14 @@ $links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE', 'constant Sphp\Regex\FI\
 $links[] = $sphpApi->namespaceLink(__NAMESPACE__, true);
 $links[] = $sphpApi->namespaceBreadGrumbs(__NAMESPACE__);
 
-$w3schoolsApi = Apis::w3schools();
+$w3schoolsApi = Factory::w3schools();
 
 $links->appendMd("###W3schools:");
 $links[] = $w3schoolsApi->tag("html");
 $links[] = $w3schoolsApi->attr("id");
 $links[] = $w3schoolsApi->attr('style', 'Global style attribute');
 
-$phpApi = Apis::phpManual();
+$phpApi = Factory::phpManual();
 
 $dateTime1 = $phpApi->classLinker(\Datetime::class);
 

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
 
@@ -34,14 +34,6 @@ interface LinkerInterface {
    * @return UrlGeneratorInterface the URL generator pointing to the API documentation
    */
   public function urls(): UrlGeneratorInterface;
-
-  /**
-   * Returns the default target of the created hyperlink objects
-   *
-   * @return string|null the target attribute value of the created hyperlink objects
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function getDefaultTarget();
 
   /**
    * Returns a hyperlink object pointing to a linked page

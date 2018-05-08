@@ -37,7 +37,7 @@ class ErrorToExceptionThrower {
   private $exceptionType;
 
   /**
-   * Construct a new instance
+   * Constructor
    * 
    * @param string $exceptionType
    */
@@ -79,13 +79,6 @@ class ErrorToExceptionThrower {
     set_error_handler($this, $level);
     register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
     return $this;
-  }
-
-  public function run($c, int $level = \E_ALL) {
-    $this->start($level);
-    $result = $c();
-    $this->stop();
-    return $result;
   }
 
   /**

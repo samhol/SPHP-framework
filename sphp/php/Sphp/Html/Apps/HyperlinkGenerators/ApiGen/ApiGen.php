@@ -8,9 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\ApiGen;
+namespace Sphp\Html\Apps\HyperlinkGenerators\ApiGen;
 
-use Sphp\Html\Apps\Manual\ClassLinkerInterface;
+use Sphp\Html\Apps\HyperlinkGenerators\ClassLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
@@ -29,20 +29,19 @@ class ApiGen extends AbstractPhpApiLinker {
   /**
    * Constructor
    * 
-   * @param UrlGenerator $urlGenerator the URL pointing to the ApiGen documentation
-   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
-   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
-   * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
+   * @param ApiGenUrlGenerator $urlGenerator the URL pointing to the ApiGen documentation
    */
-  public function __construct(ApiGenUrlGenerator $urlGenerator = null, string $defaultTarget = null, $defaultCssClasses = ['api', 'apigen']) {
+  public function __construct(ApiGenUrlGenerator $urlGenerator = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new ApiGenUrlGenerator();
     }
-    parent::__construct($urlGenerator, $defaultTarget, $defaultCssClasses);
+    parent::__construct($urlGenerator);
   }
 
-  public function classLinker(string $class): ClassLinkerInterface {
-    return new ApiGenClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+  public function classLinker(string $class): ClassLinker {
+    $classLinker = new ApiGenClassLinker($class, $this->urls());
+    $classLinker->setDefaultAttributes($this->getDefaultAttributes());
+    return $classLinker;
   }
 
   public function functionLink(string $function, string $linkText = null): Hyperlink {

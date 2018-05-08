@@ -63,13 +63,14 @@ p a.api, ul a.api, ol a.api {
   &:hover {
     color: #8c1111;
   }
-  &.phpman, &.apigen, &.sami {
+  &.phpman, &.php, &.apigen, &.sami {
     border: solid 1px #ddd;
     @include border-radius(2px);
     text-decoration: none;
     font-weight: normal;
   }
-  &.sami {
+  &.sami, &.sphp {
+    @include api-links(#444, #fafafa); 
     color: rgba(0, 90, 255, 1);
     border-color: rgba(51, 153, 255, .3);
     background-color: rgba(210, 210, 210, .3); 
@@ -89,7 +90,7 @@ p a.api, ul a.api, ol a.api {
       background-color: rgba(210, 210, 210, 1); 
     }
   }
-  &.phpman {
+  &.phpman,&.php {
     color: #369;
     border-color: #bbb;
     background-color: rgba(210, 210, 210, .3); 

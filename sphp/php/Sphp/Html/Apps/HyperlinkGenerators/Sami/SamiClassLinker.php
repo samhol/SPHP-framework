@@ -8,9 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\Sami;
+namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 
-use Sphp\Html\Apps\Manual\AbstractClassLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 
@@ -31,33 +31,32 @@ class SamiClassLinker extends AbstractClassLinker {
    * @param string|null $defaultTarget
    * @param string|string[]|null $defaultCssClasses
    */
-  public function __construct(string $class, SamiUrlGenerator $urlGenerator = null, string $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct(string $class, SamiUrlGenerator $urlGenerator = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new SamiUrlGenerator();
     }
-    parent::__construct($class, $urlGenerator, $defaultTarget, $defaultCssClasses);
+    parent::__construct($class, $urlGenerator);
   }
 
   /**
-   * Returns a BreadCrumbs component showing the class and the trail of nested namespaces leading to it
+   * Creates a new BreadCrumbs component showing the class and the trail of nested namespaces leading to it
    * 
-   * @return BreadCrumbs
+   * @return BreadCrumbs new instance
    */
   public function classBreadGrumbs(): BreadCrumbs {
-    $target = $this->getDefaultTarget();
     $namespace = $this->ref->getNamespaceName();
     $namespaceArray = explode('\\', $namespace);
     $breadCrumbs = new BreadCrumbs();
-    $breadCrumbs->addCssClass(['sami', 'class']);
+    $breadCrumbs->addCssClass('sami', 'class');
     $currentNamespace = [];
     foreach ($namespaceArray as $name) {
       $currentNamespace[] = $name;
       $path = implode("/", $currentNamespace);
-      $bc = new BreadCrumb($this->createUrl("$path.html"), $name, $target);
+      $bc = new BreadCrumb($this->createUrl("$path.html"), $name);
       $bc->setTitle("Namespace $name");
       $breadCrumbs->append($bc);
     }
-    $breadCrumbs->appendNew($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName(), $target);
+    $breadCrumbs->appendNew($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName());
     return $breadCrumbs;
   }
 

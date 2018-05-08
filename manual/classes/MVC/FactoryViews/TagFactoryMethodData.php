@@ -8,7 +8,7 @@
 namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Content;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
 
@@ -70,9 +70,9 @@ class TagFactoryMethodData implements Arrayable {
 
   public function toArray(): array {
     $arr = [];
-    $arr[] = Apis::w3schools()->tag($this->component->getTagName(), $this->tagString(), $this->description);
-    $arr[] = Apis::sami()->classLinker($this->getObjectType())->getLink("$this->factoryCall: ");
-    $arr[] = Apis::sami()->classLinker($this->getObjectType())->getLink($this->getObjectType());
+    $arr[] = Factory::w3schools()->tag($this->component->getTagName(), $this->tagString(), $this->description);
+    $arr[] = Factory::sami()->classLinker($this->getObjectType())->getLink("$this->factoryCall: ");
+    $arr[] = Factory::sami()->classLinker($this->getObjectType())->getLink($this->getObjectType());
     return $arr;
   }
 

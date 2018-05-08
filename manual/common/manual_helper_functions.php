@@ -56,11 +56,11 @@ function loadPage(string $page) {
   echo $content;
 }
 
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Manual\Sami\Sami;
-use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
-use Sphp\Html\Apps\Manual\W3schools;
-use Sphp\Html\Apps\Manual\FoundationDocsLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\Factory;
+use Sphp\Html\Apps\HyperlinkGenerators\Sami\Sami;
+use Sphp\Html\Apps\HyperlinkGenerators\PHPManual\PHPManual;
+use Sphp\Html\Apps\HyperlinkGenerators\W3schools;
+use Sphp\Html\Apps\HyperlinkGenerators\FoundationDocsLinker;
 
 /**
  * Return the default SPHP framework API linker
@@ -68,7 +68,7 @@ use Sphp\Html\Apps\Manual\FoundationDocsLinker;
  * @return Sami 
  */
 function api(): Sami {
-  return Apis::sami();
+  return Factory::sami('http://playground.samiholck.com/API/sami/');
 }
 
 /**
@@ -77,7 +77,7 @@ function api(): Sami {
  * @return PHPManual 
  */
 function php(): PHPManual {
-  return Apis::phpManual();
+  return Factory::phpManual();
 }
 
 /**
@@ -86,7 +86,7 @@ function php(): PHPManual {
  * @return W3schools 
  */
 function w3schools(): W3schools {
-  return Apis::w3schools();
+  return Factory::w3schools();
 }
 
 /**
@@ -95,7 +95,7 @@ function w3schools(): W3schools {
  * @return FoundationDocsLinker 
  */
 function foundation(): FoundationDocsLinker {
-  return Apis::foundation('foundation');
+  return Factory::foundation();
 }
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;

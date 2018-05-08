@@ -8,13 +8,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Apps\Manual\Sami\Sami;
-use Sphp\Html\Apps\Manual\Sami\SamiUrlGenerator;
-use Sphp\Html\Apps\Manual\ApiGen\ApiGen;
-use Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator;
-use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
+use Sphp\Html\Apps\HyperlinkGenerators\Sami\Sami;
+use Sphp\Html\Apps\HyperlinkGenerators\Sami\SamiUrlGenerator;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiGen\ApiGen;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiGen\ApiGenUrlGenerator;
+use Sphp\Html\Apps\HyperlinkGenerators\PHPManual\PHPManual;
 
 /**
  * A factory for API manual linkers
@@ -23,7 +23,7 @@ use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Apis {
+class Factory {
 
   /**
    * @var Sami[] 
@@ -56,13 +56,13 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen singleton API linker
    */
-  public static function sami(string $path = 'API/sami/', string $target = 'sami'): Sami {
+  public static function sami(string $path = 'API/sami/'): Sami {
     if (!array_key_exists($path, self::$samis)) {
-      $instance = new Sami(new SamiUrlGenerator($path), $target);
-      self::$apigens[$path] = $instance;
+      $instance = new Sami(new SamiUrlGenerator($path));
+      $instance->setDefaultAttributes(['class' => 'api sami']);
+      self::$samis[$path] = $instance;
     } else {
-      $instance = self::$apigens[$path];
-      $instance->setDefaultTarget($target);
+      $instance = self::$samis[$path];
     }
     return $instance;
   }
@@ -74,16 +74,15 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen singleton API linker
    */
-  public static function apigen(string $path = '', string $target = 'apigen'): ApiGen {
+  public static function apigen(string $path = null): ApiGen {
     if ($path === null) {
-      $path = DEFAULT_APIGEN;
+      $path = '';
     }
     if (!array_key_exists($path, self::$apigens)) {
-      $instance = new ApiGen(new ApiGenUrlGenerator($path), $target);
+      $instance = new ApiGen(new ApiGenUrlGenerator($path));
       self::$apigens[$path] = $instance;
     } else {
       $instance = self::$apigens[$path];
-      $instance->setDefaultTarget($target);
     }
     return $instance;
   }
@@ -93,13 +92,11 @@ class Apis {
    * 
    * @return PHPManual singleton API linker
    */
-  public static function phpManual(string $target = 'phpman'): PHPManual {
+  public static function phpManual(): PHPManual {
     if (self::$phpManual === null) {
-      self::$phpManual = (new PHPManual($target));
-    } else {
-      self::$phpManual->setDefaultTarget($target);
+      self::$phpManual = new PHPManual();
+      self::$phpManual->setDefaultAttributes(['class' => 'api php']);
     }
-
     return self::$phpManual;
   }
 
@@ -108,9 +105,9 @@ class Apis {
    * 
    * @return FoundationDocsLinker singleton API linker
    */
-  public static function foundation($target = '_blank') {
+  public static function foundation() {
     if (self::$foundation === null) {
-      self::$foundation = new FoundationDocsLinker($target);
+      self::$foundation = new FoundationDocsLinker();
     }
     return self::$foundation;
   }
@@ -120,11 +117,9 @@ class Apis {
    * 
    * @return W3schools singleton API linker
    */
-  public static function w3schools($target = 'w3schools'): W3schools {
+  public static function w3schools(): W3schools {
     if (self::$w3schools === null) {
-      self::$w3schools = new W3schools($target);
-    } else {
-      self::$w3schools->setDefaultTarget($target);
+      self::$w3schools = new W3schools();
     }
     return self::$w3schools;
   }

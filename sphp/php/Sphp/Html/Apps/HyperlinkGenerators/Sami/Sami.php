@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\Sami;
+namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 
-use Sphp\Html\Apps\Manual\ClassLinkerInterface;
-use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\ClassLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
@@ -32,19 +32,18 @@ class Sami extends AbstractPhpApiLinker {
    * Constructor
    * 
    * @param SamiUrlGenerator $urlGenerator the URL pointing to the Sami documentation
-   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
-   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
-   * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(SamiUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = ['api', 'sami']) {
+  public function __construct(SamiUrlGenerator $urlGenerator = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new SamiUrlGenerator();
     }
-    parent::__construct($urlGenerator, $defaultTarget, $defaultCssClasses);
+    parent::__construct($urlGenerator);
   }
 
-  public function classLinker(string $class): ClassLinkerInterface {
-    return new SamiClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+  public function classLinker(string $class): ClassLinker {
+    $classLinker = new SamiClassLinker($class, $this->urls());
+    $classLinker->setDefaultAttributes($this->getDefaultAttributes());
+    return $classLinker;
   }
 
   public function functionLink(string $function, string $linkText = null): Hyperlink {
@@ -52,7 +51,7 @@ class Sami extends AbstractPhpApiLinker {
       $linkText = $function;
     }
     $path = $this->urls()->getFunctionUrl($function);
-    return $this->hyperlink($path, $function, "function $function()")->addCssClass('function');
+    return $this->hyperlink($path, $function, "function $function()")->addCssClass('api', 'sphp', 'function');
   }
 
   public function constantLink(string $constant, string $linkText = null): Hyperlink {
@@ -60,7 +59,7 @@ class Sami extends AbstractPhpApiLinker {
       $linkText = $constant;
     }
     $path = str_replace('\\', '/', $constant);
-    return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constant")->addCssClass('constant');
+    return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constant")->addCssClass('api', 'sphp', 'constant');
   }
 
   /**
@@ -90,13 +89,14 @@ class Sami extends AbstractPhpApiLinker {
    */
   public function namespaceBreadGrumbs(string $namespace): BreadCrumbs {
     $namespaceArray = explode('\\', $namespace);
-    $breadGrumbs = (new BreadCrumbs())->addCssClass(['api', 'namespace']);
+    $breadGrumbs = (new BreadCrumbs())->addCssClass('api', 'sphp', 'namespace');
     $currentNamespaceArray = [];
     foreach ($namespaceArray as $name) {
       $currentNamespaceArray[] = $name;
       $path = implode("/", $currentNamespaceArray);
       $root = implode("\\", $currentNamespaceArray);
-      $breadCrumb = new BreadCrumb($this->createUrl("$path.html"), $name, $this->getDefaultTarget());
+      $breadCrumb = new BreadCrumb($this->createUrl("$path.html"), $name);
+      $this->insertDefaultsTo($breadCrumb);
       (new QtipAdapter($breadCrumb))->setQtip("$root Namespace")->setQtipPosition('bottom center', 'top center');
       //$breadCrumb->setTitle("$root Namespace");
       $breadGrumbs->append($breadCrumb);

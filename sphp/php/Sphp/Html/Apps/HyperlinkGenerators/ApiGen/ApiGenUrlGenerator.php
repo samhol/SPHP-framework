@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\ApiGen;
+namespace Sphp\Html\Apps\HyperlinkGenerators\ApiGen;
 
-use Sphp\Html\Apps\Manual\UrlGenerator;
-use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
+use Sphp\Html\Apps\HyperlinkGenerators\UrlGenerator;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGeneratorInterface;
 
 /**
  * ApiGen URL string generator pointing to an existing ApiGen documentation

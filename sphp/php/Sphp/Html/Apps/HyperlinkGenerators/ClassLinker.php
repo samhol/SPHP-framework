@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
 
@@ -19,7 +19,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ClassLinkerInterface extends LinkerInterface {
+interface ClassLinker extends LinkerInterface {
 
   /**
    * Returns a hyperlink object pointing to an API class page

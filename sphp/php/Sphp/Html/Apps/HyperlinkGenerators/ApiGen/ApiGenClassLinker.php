@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\ApiGen;
+namespace Sphp\Html\Apps\HyperlinkGenerators\ApiGen;
 
-use Sphp\Html\Apps\Manual\AbstractClassLinker;
-use Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator;
+use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiGen\ApiGenUrlGenerator;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 
@@ -42,7 +42,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
   /**
    * Returns a BreadCrumbs component showing the class and the trail of nested namespaces leading to it
    * 
-   * @return BreadCrumbs
+   * @return BreadCrumbs new instance
    */
   public function classBreadGrumbs(): BreadCrumbs {
     $target = $this->getDefaultTarget();

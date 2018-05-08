@@ -8,10 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Apps\Manual\ClassLinkerInterface;
 
 /**
  * Hyperlink generator pointing to an online PHP API documentation
@@ -35,7 +34,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * @param  string $class class name or object
    * @return ClassLinkerInterface the class property linker
    */
-  abstract public function classLinker(string $class): ClassLinkerInterface;
+  abstract public function classLinker(string $class): ClassLinker;
 
   /**
    * Returns a hyperlink object pointing to an API page describing PHP function 

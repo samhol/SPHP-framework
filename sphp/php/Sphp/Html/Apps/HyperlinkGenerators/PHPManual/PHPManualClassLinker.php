@@ -8,9 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual\PHPManual;
+namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Apps\Manual\AbstractClassLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
 use Sphp\Html\Navigation\Hyperlink;
 /**
  * PHP class link generator pointing to an existing PHP Manual documentation

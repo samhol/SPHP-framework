@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
 
@@ -26,8 +26,8 @@ class FoundationDocsLinker extends AbstractLinker {
    * 
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    */
-  public function __construct(string $defaultTarget = null) {
-    parent::__construct(new UrlGenerator('http://foundation.zurb.com/sites/docs/'), $defaultTarget);
+  public function __construct() {
+    parent::__construct(new UrlGenerator('http://foundation.zurb.com/sites/docs/'));
   }
 
   /**
