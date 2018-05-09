@@ -12,6 +12,6 @@ Web pages should not leave out information to fit smaller devices, but rather ad
 
 MD
 );
-loadPage('tech-carousel');
+printPage('tech-carousel');
 
-loadPage('Sphp-intro/orbit.php');
+printPage('Sphp-intro/orbit.php');

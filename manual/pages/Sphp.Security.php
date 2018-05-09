@@ -23,9 +23,9 @@ more robust code.
 MD
 );
 
-Manual\loadPage('Sphp.Security.Database');
-Manual\loadPage('Sphp.Security.CRSFToken');
-Manual\loadPage('Sphp.Security.PasswordInterface');
+Manual\printPage('Sphp.Security.Database');
+Manual\printPage('Sphp.Security.CRSFToken');
+Manual\printPage('Sphp.Security.PasswordInterface');
 
 Manual\md(<<<MD
 ##Input validation

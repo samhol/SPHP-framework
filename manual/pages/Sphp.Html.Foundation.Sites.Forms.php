@@ -14,5 +14,5 @@ $ns
 MD
 );
 
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.GridForm');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.Inputs');
+\Sphp\Manual\printPage('Sphp.Html.Foundation.Sites.Forms.GridForm');
+\Sphp\Manual\printPage('Sphp.Html.Foundation.Sites.Forms.Inputs');

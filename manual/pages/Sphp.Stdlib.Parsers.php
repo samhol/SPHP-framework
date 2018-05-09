@@ -15,6 +15,6 @@ $parser instance can handle file related (reading and writing) operations.
 MD
 );
 
-Manual\loadPage('Sphp.Stdlib.Parsers.Yaml');
-Manual\loadPage('Sphp.Stdlib.Parsers.Json');
-Manual\loadPage('Sphp.Stdlib.Parsers.Markdown');
+Manual\printPage('Sphp.Stdlib.Parsers.Yaml');
+Manual\printPage('Sphp.Stdlib.Parsers.Json');
+Manual\printPage('Sphp.Stdlib.Parsers.Markdown');

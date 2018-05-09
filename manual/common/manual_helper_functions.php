@@ -34,9 +34,9 @@ function inlineMd(string $content, bool $echo = true): string {
  * 
  * @param  string $page
  * @throws InvalidArgumentException
- * @return void
+ * @return string
  */
-function loadPage(string $page) {
+function createPage(string $page): string {
   try {
     ob_start();
     if (!Strings::endsWith($page, '.php')) {
@@ -53,7 +53,17 @@ function loadPage(string $page) {
     $content .= (new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->buildCallout($e);
   }
   ob_end_clean();
-  echo $content;
+  return $content;
+}
+
+/**
+ * 
+ * @param  string $page
+ * @throws InvalidArgumentException
+ * @return void
+ */
+function printPage(string $page) {
+  echo createPage($page);
 }
 
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;

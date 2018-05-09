@@ -12,7 +12,7 @@ $ns
 
 MD
 );
-Manual\loadPage('Sphp.Html.Media.SizeableInterface-LazyLoaderInterface');
-Manual\loadPage('Sphp.Html.Media.Img');
-Manual\loadPage('Sphp.Html.Media.ImgMap');
-Manual\loadPage('Sphp.Html.Media.Iframe');
+Manual\printPage('Sphp.Html.Media.SizeableInterface-LazyLoaderInterface');
+Manual\printPage('Sphp.Html.Media.Img');
+Manual\printPage('Sphp.Html.Media.ImgMap');
+Manual\printPage('Sphp.Html.Media.Iframe');

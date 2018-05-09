@@ -44,8 +44,8 @@ Manual\example('Sphp/Stdlib/Types/multibyteStringProblems.php', 'text', false)
         ->setOutputSyntaxPaneTitle('Multibyte string example results')
         ->printHtml();
 
-Manual\loadPage('Sphp.Stdlib.Types.StringObject');
-Manual\loadPage('Sphp.Stdlib.Types.Strings');
-Manual\loadPage('Sphp.Stdlib.Types.Arrays');
-Manual\loadPage('Sphp.Stdlib.Types.BitMask');
-Manual\loadPage('Sphp.Stdlib.Types.URL');
+Manual\printPage('Sphp.Stdlib.Types.StringObject');
+Manual\printPage('Sphp.Stdlib.Types.Strings');
+Manual\printPage('Sphp.Stdlib.Types.Arrays');
+Manual\printPage('Sphp.Stdlib.Types.BitMask');
+Manual\printPage('Sphp.Stdlib.Types.URL');

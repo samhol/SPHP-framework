@@ -79,7 +79,7 @@ Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityHandler-deviceOrie
         ->printHtml();
 
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Core.ColourableInterface');
+Manual\printPage('Sphp.Html.Foundation.Sites.Core.ColourableInterface');
 
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Core.AlignmentManager');
+Manual\printPage('Sphp.Html.Foundation.Sites.Core.AlignmentManager');

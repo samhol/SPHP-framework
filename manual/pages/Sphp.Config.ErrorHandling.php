@@ -22,6 +22,6 @@ converted to a fatal error and will be handled like a traditional error.
 MD
 );
 
-\Sphp\Manual\loadPage('Sphp.Config.ErrorHandling.ErrorDispatcher');
+\Sphp\Manual\printPage('Sphp.Config.ErrorHandling.ErrorDispatcher');
 
-\Sphp\Manual\loadPage('Sphp.Config.ErrorHandling.ErrorExceptionThrower');
+\Sphp\Manual\printPage('Sphp.Config.ErrorHandling.ErrorExceptionThrower');

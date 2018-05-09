@@ -17,4 +17,4 @@ MD
 );
 
 Manual\visualize('Sphp/Html/DateTime/Factory.php', 'html5');
-Manual\loadPage('Sphp.Html.DateTime.Calendars');
+Manual\printPage('Sphp.Html.DateTime.Calendars');

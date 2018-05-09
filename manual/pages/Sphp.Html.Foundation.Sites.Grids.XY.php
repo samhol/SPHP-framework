@@ -18,9 +18,9 @@ included when necessary.
 MD
 );
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.XY.GridInterface');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.XY.RowInterface');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.XY.ColumnInterface');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.XY.BlockGrid');
+Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.GridInterface');
+Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.RowInterface');
+Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.ColumnInterface');
+Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.BlockGrid');
 
 

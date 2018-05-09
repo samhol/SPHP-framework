@@ -52,10 +52,10 @@ MD
 );
 Manual\visualize('Sphp/Validators/RequiredValueValidator.php', 'php', false);
 
-Manual\loadPage('Sphp.Validators.PatternValidator');
-Manual\loadPage('Sphp.Validators.StringLengthValidator');
-Manual\loadPage('Sphp.Validators.ValidatorChain');
-Manual\loadPage('Sphp.Validators.FormValidator');
+Manual\printPage('Sphp.Validators.PatternValidator');
+Manual\printPage('Sphp.Validators.StringLengthValidator');
+Manual\printPage('Sphp.Validators.ValidatorChain');
+Manual\printPage('Sphp.Validators.FormValidator');
 
 /*\Sphp\Manual\parseDown(<<<MD
 ##Creating custom validators		

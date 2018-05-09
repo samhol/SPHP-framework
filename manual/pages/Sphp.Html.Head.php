@@ -42,9 +42,9 @@ MD
 
 Manual\visualize('Sphp/Html/Head/Head1.php', 'html5', false);
 
-Manual\loadPage('Sphp.Html.Head.Link');
-Manual\loadPage('Sphp.Html.Head.MetaData');
-Manual\loadPage('Sphp.Html.Head.Scripts');
+Manual\printPage('Sphp.Html.Head.Link');
+Manual\printPage('Sphp.Html.Head.MetaData');
+Manual\printPage('Sphp.Html.Head.Scripts');
 
 Manual\md(<<<MD
 ###References:

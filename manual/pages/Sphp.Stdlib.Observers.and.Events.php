@@ -50,4 +50,4 @@ MD
 
 Manual\visualize('Sphp/Stdlib/Events/EventManager.php', 'text', false);
 
-Manual\loadPage('Sphp.Stdlib.Observers');
+Manual\printPage('Sphp.Stdlib.Observers');

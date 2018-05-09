@@ -15,11 +15,11 @@ $db manages $pdo database connections and acts as a factory for all SQL statemen
 MD
 );
 
-Manual\loadPage('Sphp.Database.example-tables');
-Manual\loadPage('Sphp.Database.Insert');
-Manual\loadPage('Sphp.Database.Query');
-Manual\loadPage('Sphp.Database.Update');
-Manual\loadPage('Sphp.Database.Delete');
+Manual\printPage('Sphp.Database.example-tables');
+Manual\printPage('Sphp.Database.Insert');
+Manual\printPage('Sphp.Database.Query');
+Manual\printPage('Sphp.Database.Update');
+Manual\printPage('Sphp.Database.Delete');
 
 Manual\md(<<<MD
 ###References:

@@ -24,4 +24,4 @@ Manual\example('Sphp/Config/Config.php', 'text', false)
         ->setExamplePaneTitle('Canfiguration manager example')
         ->printHtml();
 
-Manual\loadPage('Sphp.Config.PHP');
+Manual\printPage('Sphp.Config.PHP');

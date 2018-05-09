@@ -26,7 +26,7 @@ MD
 );
 require_once 'manual/examples/Sphp/I18n/Gettext/localeSetting.php';
 
-Manual\loadPage('Sphp.I18n.TranslatorInterface');
-Manual\loadPage('Sphp.I18n.Messages');
-Manual\loadPage('Sphp.I18n.Collections');
-Manual\loadPage('Sphp.I18n.Datetime');
+Manual\printPage('Sphp.I18n.TranslatorInterface');
+Manual\printPage('Sphp.I18n.Messages');
+Manual\printPage('Sphp.I18n.Collections');
+Manual\printPage('Sphp.I18n.Datetime');

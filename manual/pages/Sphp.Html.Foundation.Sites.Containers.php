@@ -19,9 +19,9 @@ This namespace contains Foundation framework based components like $accordions, 
 MD
 );
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Accordions');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Tabs');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Dropdown');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Callout');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.Modals');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Containers.OffCanvas');
+Manual\printPage('Sphp.Html.Foundation.Sites.Containers.Accordions');
+Manual\printPage('Sphp.Html.Foundation.Sites.Containers.Tabs');
+Manual\printPage('Sphp.Html.Foundation.Sites.Containers.Dropdown');
+Manual\printPage('Sphp.Html.Foundation.Sites.Containers.Callout');
+Manual\printPage('Sphp.Html.Foundation.Sites.Containers.Modals');
+Manual\printPage('Sphp.Html.Foundation.Sites.Containers.OffCanvas');

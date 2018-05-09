@@ -11,8 +11,8 @@ $ns
 MD
 );
 
-Manual\loadPage('Sphp.Html.Media.Multimedia.Video');
-Manual\loadPage('Sphp.Html.Media.Multimedia.Audio');
-Manual\loadPage('Sphp.Html.Media.Multimedia.VideoJs');
-Manual\loadPage('Sphp.Html.Media.Multimedia.VideoPlayerInterface');
-Manual\loadPage('Sphp.Html.Media.Multimedia.Embed');
+Manual\printPage('Sphp.Html.Media.Multimedia.Video');
+Manual\printPage('Sphp.Html.Media.Multimedia.Audio');
+Manual\printPage('Sphp.Html.Media.Multimedia.VideoJs');
+Manual\printPage('Sphp.Html.Media.Multimedia.VideoPlayerInterface');
+Manual\printPage('Sphp.Html.Media.Multimedia.Embed');

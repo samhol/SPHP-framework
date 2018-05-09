@@ -20,5 +20,5 @@ Standard attributes are supported by a large number of element types.
 MD
 );
 
-Manual\loadPage('Sphp.Html.Attributes.AttributeInterface');
-Manual\loadPage('Sphp.Html.Attributes.AttributeManager');
+Manual\printPage('Sphp.Html.Attributes.AttributeInterface');
+Manual\printPage('Sphp.Html.Attributes.AttributeManager');

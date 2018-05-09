@@ -29,5 +29,5 @@ is also container for HTML components like $inputInterface.
 MD
 );
 
-Manual\loadPage('Sphp.Html.Forms.InputInterface');
-Manual\loadPage('Sphp.Html.Forms.Buttons');
+Manual\printPage('Sphp.Html.Forms.InputInterface');
+Manual\printPage('Sphp.Html.Forms.Buttons');

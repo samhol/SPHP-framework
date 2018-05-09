@@ -15,10 +15,10 @@ Foundation based input components extend interfaces defined in $formsNS namespac
 MD
 );
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.Buttons');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.Choiceboxes');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.Switch');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.Slider');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Forms.RangeSlider');
+Manual\printPage('Sphp.Html.Foundation.Sites.Forms.Buttons');
+Manual\printPage('Sphp.Html.Foundation.Sites.Forms.Choiceboxes');
+Manual\printPage('Sphp.Html.Foundation.Sites.Forms.Switch');
+Manual\printPage('Sphp.Html.Foundation.Sites.Forms.Slider');
+Manual\printPage('Sphp.Html.Foundation.Sites.Forms.RangeSlider');
 
 

@@ -10,7 +10,7 @@ $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $ns
 MD
 );
-\Sphp\Manual\loadPage('Sphp.Stdlib.Filesystem');
-\Sphp\Manual\loadPage('Sphp.Stdlib.Parser');
-\Sphp\Manual\loadPage('Sphp.Stdlib.CsvFile');
+\Sphp\Manual\printPage('Sphp.Stdlib.Filesystem');
+\Sphp\Manual\printPage('Sphp.Stdlib.Parser');
+\Sphp\Manual\printPage('Sphp.Stdlib.CsvFile');
 

@@ -25,6 +25,6 @@ Foundation is tested across many browsers and devices, and works back as far as 
 ##Here is a small collection of features available.
 MD
 );
-Manual\loadPage('foundation-carousel');
+Manual\printPage('foundation-carousel');
 //Manual\loadPage('Sphp.Html.Foundation.Sites');
-Manual\loadPage('Sphp.Html.Foundation-orbit-intro');
+Manual\printPage('Sphp.Html.Foundation-orbit-intro');

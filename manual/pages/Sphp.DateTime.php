@@ -41,4 +41,4 @@ $namespaces
 MD
 );
 
-Manual\loadPage('Sphp.DateTime.Calendars');
+Manual\printPage('Sphp.DateTime.Calendars');

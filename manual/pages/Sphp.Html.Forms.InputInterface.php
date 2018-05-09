@@ -43,6 +43,6 @@ Manual\example('Sphp/Html/Forms/Inputs/InputFields.php', 'html5', true)
         ->printHtml();
 
 //\Sphp\Manual\loadPage('Sphp.Html.Forms.Inputs.Choiceboxes');
-Manual\loadPage('Sphp.Html.Forms.Menus.Select');
-Manual\loadPage('Sphp.Html.Forms.AnyTimeInput');
-Manual\loadPage('Sphp.Html.Forms.IonRangeSlider');
+Manual\printPage('Sphp.Html.Forms.Menus.Select');
+Manual\printPage('Sphp.Html.Forms.AnyTimeInput');
+Manual\printPage('Sphp.Html.Forms.IonRangeSlider');

@@ -61,7 +61,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
     //echo "\npath: $test";
     if (is_callable($test)) {
       return $this->functionLink($test);
-    } else if (class_exists($test) || interface_exists($test)) {
+    } else if (class_exists($test) || interface_exists($test) || trait_exists($test)) {
       return $this->classLinker($test);
     } else if (defined($test)) {
       return $this->constantLink($test);
@@ -81,11 +81,11 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    */
   public function classLinker(string $class): ClassLinker {
     $classLinkerType = $this->classLinkerType;
-    if (class_exists($class) || interface_exists($class)) {
+    if (class_exists($class) || interface_exists($class) || trait_exists($class)) {
       $classLinker = new $classLinkerType($class, $this->urls());
     } else {
       $test = $this->ns . "\\$class";
-      if (class_exists($test) || interface_exists($test)) {
+      if (class_exists($test) || interface_exists($test) || trait_exists($test)) {
         $classLinker = new $classLinkerType($test, $this->urls());
       } else {
         throw new SphpException("Class '$class' does not exist");
@@ -115,7 +115,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
     }
     $path = $this->urls()->getFunctionUrl($function);
     return $this->hyperlink($path, $function, "function $function()")
-            ->addCssClass('function');
+                    ->addCssClass('function');
   }
 
   /**
@@ -124,7 +124,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * @param  string $constant the name of the constant
    * @param  string $linkText optional link text
    * @return Hyperlink hyperlink object pointing to the documentation
-   */ 
+   */
   public function constantLink(string $constant, string $linkText = null): Hyperlink {
     if ($linkText === null) {
       $linkText = $constant;
@@ -133,4 +133,5 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
     return $this->hyperlink($path, $linkText, "$constant constant")
                     ->addCssClass('constant');
   }
+
 }

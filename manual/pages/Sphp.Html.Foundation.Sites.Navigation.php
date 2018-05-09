@@ -17,7 +17,7 @@ This namespace contains object oriented PHP implementations of Foundation naviga
 MD
 );
 //\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Bars');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
+Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
 
 $sideNavClass = Manual\api()->classLinker(AccordionMenu::class);
 Manual\md(<<<MD
@@ -56,4 +56,4 @@ MD
 Manual\example('Sphp/Html/Foundation/Sites/Navigation/BreadCrumbs.php')->printHtml();
 
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.Pagination');
+Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.Pagination');

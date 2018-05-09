@@ -27,4 +27,4 @@ Manual\example("Sphp/DateTime/Calendars/Events/Fi/HolidayCollection.php", "text"
         ->setOutputSyntaxPaneTitle("Finnish holidays example results")
         ->printHtml();
 
-Manual\loadPage('Sphp.DateTime.Calendars.Events.Constraints');
+Manual\printPage('Sphp.DateTime.Calendars.Events.Constraints');

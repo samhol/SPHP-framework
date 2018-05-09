@@ -102,7 +102,7 @@ MD
 );
 //PHPExampleViewer::visualize("Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize("Sphp/Html/AjaxLoaderInterface.php");
-Manual\loadPage('Sphp.Html.AjaxLoaderInterface.php');
+Manual\printPage('Sphp.Html.AjaxLoaderInterface.php');
 //\Sphp\Manual\loadPage("Sphp.Html.Document.php");
 
 Manual\md(<<<MD

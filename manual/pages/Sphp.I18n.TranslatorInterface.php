@@ -26,5 +26,5 @@ is not supported).
 MD
 );
 
-Manual\loadPage('Sphp.I18n.Gettext');
-Manual\loadPage('Sphp.I18n.Zend');
+Manual\printPage('Sphp.I18n.Gettext');
+Manual\printPage('Sphp.I18n.Zend');

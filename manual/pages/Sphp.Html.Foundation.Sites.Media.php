@@ -15,6 +15,6 @@ using the tools provided by Foundation framework.
 MD
 );
 
-Manual\loadPage('Sphp.Html.Foundation.Sites.Media.ResponsiveEmbed');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Media.Orbit');
-Manual\loadPage('Sphp.Html.Foundation.Sites.Media.ProgressBar');
+Manual\printPage('Sphp.Html.Foundation.Sites.Media.ResponsiveEmbed');
+Manual\printPage('Sphp.Html.Foundation.Sites.Media.Orbit');
+Manual\printPage('Sphp.Html.Foundation.Sites.Media.ProgressBar');

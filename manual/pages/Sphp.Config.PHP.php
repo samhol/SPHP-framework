@@ -17,5 +17,5 @@ singleton $phpConfig and named $ini instances.
 MD
 );
 
-Manual\loadPage('Sphp.Config.PHPConfig');
-Manual\loadPage('Sphp.Config.Ini');
+Manual\printPage('Sphp.Config.PHPConfig');
+Manual\printPage('Sphp.Config.Ini');

@@ -34,11 +34,11 @@ MD
 );
 
 
-Manual\loadPage('Sphp.Html.Attributes.IdAttribute');
-Manual\loadPage('Sphp.Html.Attributes.BooleanAttribute');
+Manual\printPage('Sphp.Html.Attributes.IdAttribute');
+Manual\printPage('Sphp.Html.Attributes.BooleanAttribute');
 //\Sphp\Manual\loadPage('Sphp.Html.Attributes.AbstractScalarAttribute');
-Manual\loadPage('Sphp.Html.Attributes.MultiValueAttribute');
-Manual\loadPage('Sphp.Html.Attributes.PropertyAttribute');
+Manual\printPage('Sphp.Html.Attributes.MultiValueAttribute');
+Manual\printPage('Sphp.Html.Attributes.PropertyAttribute');
 
 
 Manual\example('Sphp/Html/Attributes/AttributeInterface.php', "html5", true)

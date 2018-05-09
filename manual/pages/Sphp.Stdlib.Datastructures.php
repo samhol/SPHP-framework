@@ -32,7 +32,7 @@ $collectionInterface provides also methods for prepending, appending, searching 
 MD
 );
 
-Manual\loadPage('Sphp.Stdlib.Datastructures.Collection');
-Manual\loadPage('Sphp.Stdlib.Datastructures.StablePriorityQueue');
-Manual\loadPage('Sphp.Stdlib.Datastructures.StackInterface');
-Manual\loadPage('Sphp.Stdlib.Datastructures.UniquePriorityQueue');
+Manual\printPage('Sphp.Stdlib.Datastructures.Collection');
+Manual\printPage('Sphp.Stdlib.Datastructures.StablePriorityQueue');
+Manual\printPage('Sphp.Stdlib.Datastructures.StackInterface');
+Manual\printPage('Sphp.Stdlib.Datastructures.UniquePriorityQueue');

@@ -13,9 +13,9 @@ $ns
 MD
 );
 
-Manual\loadPage('Sphp.Html.Apps.SyntaxHighlighter');
-Manual\loadPage('Sphp.Html.Apps.SearchForms');
-Manual\loadPage('Sphp.Html.Apps.PhotoAlbum');
+Manual\printPage('Sphp.Html.Apps.SyntaxHighlighter');
+Manual\printPage('Sphp.Html.Apps.SearchForms');
+Manual\printPage('Sphp.Html.Apps.PhotoAlbum');
 /*
 
 \Sphp\Manual\visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
