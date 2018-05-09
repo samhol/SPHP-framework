@@ -38,20 +38,6 @@ class ApiGen extends AbstractPhpApiLinker {
     parent::__construct($urlGenerator);
   }
 
-  public function classLinker(string $class): ClassLinker {
-    $classLinker = new ApiGenClassLinker($class, $this->urls());
-    $classLinker->setDefaultHyperlinkAttributes($this->getDefaultAttributes());
-    return $classLinker;
-  }
-
-  public function functionLink(string $function, string $linkText = null): Hyperlink {
-    if ($linkText === null) {
-      $linkText = $function;
-    }
-    $path = $this->urls()->getFunctionUrl($function);
-    return $this->hyperlink($path, $function, "function $function()")->addCssClass('function');
-  }
-
   public function constantLink(string $constant, string $linkText = null): Hyperlink {
     if ($linkText === null) {
       $linkText = $constant;

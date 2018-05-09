@@ -11,6 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Exceptions\SphpException;
 
 /**
  * Hyperlink generator pointing to an online PHP API documentation
@@ -34,12 +35,15 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
   /**
    * Constructor
    *
-   * @param ApiUrlGeneratorInterface $urlGenerator
+   * @param  ApiUrlGeneratorInterface $urlGenerator
+   * @param  string $classLinkerType
+   * @param  string $namespace
+   * @throws SphpException
    */
   public function __construct(ApiUrlGeneratorInterface $urlGenerator, string $classLinkerType, string $namespace = null) {
     $this->ns = $namespace;
     if (!is_a($classLinkerType, ClassLinker::class, true)) {
-      throw new \Sphp\Exceptions\SphpException("$classLinkerType in not a subtype of " . ClassLinker::class);
+      throw new SphpException("$classLinkerType in not a subtype of " . ClassLinker::class);
     }
     $this->classLinkerType = $classLinkerType;
     parent::__construct($urlGenerator);
@@ -99,28 +103,34 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
   }
 
   /**
-   * Return the class property linker for the given class
-   *
-   * @param  string $class class name or object
-   * @return ClassLinkerInterface the class property linker
-   */
-  // abstract public function classLinker(string $class): ClassLinker;
-
-  /**
    * Returns a hyperlink object pointing to an API page describing PHP function 
    *
-   * @param  string $funName the name of the function
+   * @param  string $function the name of the function
    * @param  string $linkText optional link text
    * @return Hyperlink hyperlink object pointing to the documentation
    */
-  abstract public function functionLink(string $funName, string $linkText = null): Hyperlink;
+  public function functionLink(string $function, string $linkText = null): Hyperlink {
+    if ($linkText === null) {
+      $linkText = $function;
+    }
+    $path = $this->urls()->getFunctionUrl($function);
+    return $this->hyperlink($path, $function, "function $function()")
+            ->addCssClass('function');
+  }
 
   /**
    * Returns a hyperlink object pointing to an API page describing PHP constant 
    * 
-   * @param  string $constantName the name of the constant
+   * @param  string $constant the name of the constant
    * @param  string $linkText optional link text
    * @return Hyperlink hyperlink object pointing to the documentation
-   */
-  abstract public function constantLink(string $constantName, string $linkText = null): Hyperlink;
+   */ 
+  public function constantLink(string $constant, string $linkText = null): Hyperlink {
+    if ($linkText === null) {
+      $linkText = $constant;
+    }
+    $path = $this->urls()->getConstantUrl($constant);
+    return $this->hyperlink($path, $linkText, "$constant constant")
+                    ->addCssClass('constant');
+  }
 }

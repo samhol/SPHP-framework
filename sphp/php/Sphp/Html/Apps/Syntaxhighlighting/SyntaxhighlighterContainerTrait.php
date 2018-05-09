@@ -30,7 +30,7 @@ trait SyntaxhighlighterContainerTrait {
    * 
    * @return SyntaxHighlighterInterface the syntax highlighting object
    */
-  abstract public function getSyntaxHighlighter(): SyntaxHighlighterInterface;
+  abstract public function getSyntaxHighlighter(): SyntaxHighlighter;
 
   /**
    * Attaches a new copy controller

@@ -10,8 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighterInterface;
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
+use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 
 /**
  * Implements an Foundation Accordion containing a single syntax highlighting pane
@@ -22,7 +22,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax highlight
  * @filesource
  */
-class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implements SyntaxHighlighterInterface {
+class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implements SyntaxHighlighter {
 
   use \Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
 
@@ -31,16 +31,16 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
    * 
    * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
    */
-  public function __construct($paneTitle = 'Highlighted code', SyntaxHighlighterInterface $hl = null) {
+  public function __construct($paneTitle = 'Highlighted code', SyntaxHighlighter $hl = null) {
     parent::__construct(new SyntaxHighlightingPane($paneTitle, $hl));
   }
 
   /**
    * Returns the inner Syntax highlighting component
    * 
-   * @return SyntaxHighlighter the inner Syntax highlighting component
+   * @return GeSHiSyntaxHighlighter the inner Syntax highlighting component
    */
-  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
+  public function getSyntaxHighlighter(): SyntaxHighlighter {
     return $this->getPane()->getSyntaxHighlighter();
   }
 

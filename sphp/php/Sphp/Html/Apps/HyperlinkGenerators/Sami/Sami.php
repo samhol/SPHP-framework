@@ -18,7 +18,7 @@ use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Exceptions\SphpException;
 
 /**
- * Hyperlink object generator pointing to an existing ApiGen documentation
+ * Hyperlink object generator pointing to an existing Sami documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    https://github.com/FriendsOfPHP/Sami Sami: an API documentation generator
@@ -32,29 +32,13 @@ class Sami extends AbstractPhpApiLinker {
    * Constructor
    * 
    * @param SamiUrlGenerator $urlGenerator
-   * @param string $namespace
+   * @param string|null $namespace
    */
   public function __construct(SamiUrlGenerator $urlGenerator = null, string $namespace = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new SamiUrlGenerator();
     }
     parent::__construct($urlGenerator, SamiClassLinker::class, $namespace);
-  }
-
-  public function functionLink(string $function, string $linkText = null): Hyperlink {
-    if ($linkText === null) {
-      $linkText = $function;
-    }
-    $path = $this->urls()->getFunctionUrl($function);
-    return $this->hyperlink($path, $function, "function $function()")->addCssClass('api', 'sphp', 'function');
-  }
-
-  public function constantLink(string $constant, string $linkText = null): Hyperlink {
-    if ($linkText === null) {
-      $linkText = $constant;
-    }
-    $path = str_replace('\\', '/', $constant);
-    return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constant")->addCssClass('api', 'sphp', 'constant');
   }
 
   /**

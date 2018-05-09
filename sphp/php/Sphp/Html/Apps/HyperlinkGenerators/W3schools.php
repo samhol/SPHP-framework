@@ -63,7 +63,7 @@ class W3schools extends AbstractLinker {
     if ($title === null) {
       $title = "Link to w3schools.com $tagname documentation";
     }
-    return $this->hyperlink($this->urls()->create($link), $linkText, $title);
+    return $this->hyperlink($this->urls()->createUrl($link), $linkText, $title);
   }
 
   /**
@@ -78,7 +78,7 @@ class W3schools extends AbstractLinker {
     if ($linkText === null) {
       $linkText = "$attrName Attribute";
     }
-    return $this->hyperlink($this->urls()->create($link), $linkText, 'Link to w3schools.com documentation');
+    return $this->hyperlink($this->urls()->createUrl($link), $linkText, 'Link to w3schools.com documentation');
   }
 
 }

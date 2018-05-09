@@ -23,7 +23,7 @@ use Sphp\Html\Foundation\Sites\Containers\Popup;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
+class SyntaxHighlightingModalBuilder implements SyntaxHighlighter {
 
   use \Sphp\Html\ContentTrait,
       SyntaxhighlighterContainerTrait;
@@ -51,7 +51,7 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
    */
   public function __construct($trigger, $title = null) {
     $this->trigger = $trigger;
-    $this->hl = new SyntaxHighlighter();
+    $this->hl = new GeSHiSyntaxHighlighter();
     $this->title = $title;
     $this->title = new Div($title);
     $this->title->addCssClass('title');
@@ -61,7 +61,7 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighterInterface {
     unset($this->hl);
   }
 
-  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
+  public function getSyntaxHighlighter(): SyntaxHighlighter {
     return $this->hl;
   }
 

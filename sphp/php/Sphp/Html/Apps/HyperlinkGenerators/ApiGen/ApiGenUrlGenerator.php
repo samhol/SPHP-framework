@@ -25,7 +25,7 @@ class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterfac
 
   public function getClassUrl(string $class): string {
     $path = str_replace('\\', '.', $class);
-    return $this->create("class-$path.html");
+    return $this->createUrl("class-$path.html");
   }
 
   public function getClassMethodUrl(string $class, string $method): string {
@@ -38,16 +38,16 @@ class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterfac
 
   public function getNamespaceUrl(string $namespace): string {
     $path = str_replace('\\', '.', $namespace);
-    return $this->create("namespace-$path.html");
+    return $this->createUrl("namespace-$path.html");
   }
 
   public function getFunctionUrl(string $function): string {
-    return $this->create("function-$function.html");
+    return $this->createUrl("function-$function.html");
   }
 
   public function getConstantUrl(string $constant): string {
     $path = str_replace('\\', '.', $constant);
-    return $this->create("constant-$path.html");
+    return $this->createUrl("constant-$path.html");
   }
 
 }

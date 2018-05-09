@@ -40,7 +40,7 @@ class FoundationDocsLinker extends AbstractLinker {
     $page = str_replace('_', '-', $object) . '.html';
     $text = str_replace('_', ' ', $object);
     $title = 'Foundation sites: ' . str_replace('_', ' ', $object);
-    return $this->hyperlink($this->urls()->create(strtolower($page)), $text, $title);
+    return $this->hyperlink($this->urls()->createUrl(strtolower($page)), $text, $title);
   }
 
 }

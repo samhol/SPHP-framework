@@ -40,7 +40,8 @@
     "zendframework/zend-paginator": "*",
     "zendframework/zend-mail": "*",
     "zurb/foundation": ">=6.4",
-    "symfony/yaml": ">=3.0"
+    "symfony/yaml": ">=3.0",
+    "tecnickcom/TCPDF": "*"
   },
   "autoload": {
     "psr-4": {

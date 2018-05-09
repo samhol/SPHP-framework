@@ -27,7 +27,7 @@ class PHPManual extends AbstractPhpApiLinker {
    * Constructor
    *
    * @param PHPManualUrlGenerator $urlGenerator
-   * @param string $namespace
+   * @param string|null $namespace
    */
   public function __construct(PHPManualUrlGenerator $urlGenerator = null, string $namespace = null) {
     if ($urlGenerator === null) {
@@ -43,23 +43,6 @@ class PHPManual extends AbstractPhpApiLinker {
       $title = 'PHP manual: ' . $title;
     }
     return parent::hyperlink($url, $content, $title);
-  }
-
-  public function constantLink(string $constant, string $linkText = null): Hyperlink {
-    if ($linkText === null) {
-      $linkText = $constant;
-    }
-    $path = $this->urls()->getConstantUrl($constant);
-    return $this->hyperlink($path, $linkText, "$constant constant")
-                    ->addCssClass('constant');
-  }
-
-  public function functionLink(string $funName, string $linkText = null): Hyperlink {
-    if ($linkText === null) {
-      $linkText = $funName;
-    }
-    $path = $this->urls()->getFunctionUrl($funName);
-    return $this->hyperlink($path, $linkText, "$funName() function")->addCssClass('function');
   }
 
   /**
@@ -100,7 +83,7 @@ class PHPManual extends AbstractPhpApiLinker {
     } else {
       $title = "$typename type";
     }
-    return $this->hyperlink($this->urls()->getRoot() . "language.types.$typename", $linkText, $title)
+    return $this->hyperlink($this->urls()->createUrl("language.types.$typename"), $linkText, $title)
                     ->addCssClass('type');
   }
 
@@ -114,7 +97,7 @@ class PHPManual extends AbstractPhpApiLinker {
    */
   public function controlStructLink(string $controlName): Hyperlink {
     $path = strtolower($controlName);
-    return $this->hyperlink($this->urls()->getRoot() . "control-structures.$path", $controlName, $controlName);
+    return $this->hyperlink($this->urls()->createUrl("control-structures.$path"), $controlName, $controlName);
   }
 
 }

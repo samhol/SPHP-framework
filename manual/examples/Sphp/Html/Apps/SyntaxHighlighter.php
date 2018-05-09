@@ -4,13 +4,13 @@ namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$syntax1 = (new SyntaxHighlighter())->loadFromFile(__FILE__);
+$syntax1 = (new GeSHiSyntaxHighlighter())->loadFromFile(__FILE__);
 
 
-$syntax2 = (new SyntaxHighlighter())
+$syntax2 = (new GeSHiSyntaxHighlighter())
         ->loadFromFile(__FILE__);
 
-$syntax3 = (new SyntaxHighlighter())
+$syntax3 = (new GeSHiSyntaxHighlighter())
         ->loadFromFile(__FILE__)
         ->showLineNumbers(false);
 

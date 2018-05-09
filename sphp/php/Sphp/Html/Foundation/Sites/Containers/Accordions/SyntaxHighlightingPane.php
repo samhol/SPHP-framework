@@ -10,8 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighterInterface;
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
+use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 
 /**
  * Implements an abstract base Pane for a Foundation Accordion
@@ -23,12 +23,12 @@ use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax highlighter
  * @filesource
  */
-class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterInterface {
+class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
 
   use \Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
 
   /**
-   * @var SyntaxHighlighter
+   * @var GeSHiSyntaxHighlighter
    */
   private $hl;
 
@@ -37,9 +37,9 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
    * 
    * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
    */
-  public function __construct($title = 'Highlighted code', SyntaxHighlighterInterface $hl = null) {
+  public function __construct($title = 'Highlighted code', SyntaxHighlighter $hl = null) {
     if ($hl === null) {
-      $hl = new SyntaxHighlighter();
+      $hl = new GeSHiSyntaxHighlighter();
     }
     $this->hl = $hl;
     $this->hl->setDefaultContentCopyController(\Sphp\Html\Foundation\Sites\Buttons\Button::pushButton('Copy')
@@ -59,7 +59,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
    * 
    * @return SyntaxHighlighterInterface the inner Syntax highlighting component
    */
-  public function getSyntaxHighlighter(): SyntaxHighlighterInterface {
+  public function getSyntaxHighlighter(): SyntaxHighlighter {
     return $this->hl;
   }
 

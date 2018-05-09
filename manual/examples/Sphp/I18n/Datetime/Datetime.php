@@ -17,5 +17,3 @@ echo $now->formatICU('d. MMMM y HH:mm.ss ZZZZ', 'fi_FI.utf-8') . "\n";
 echo $now->formatICU('d. MMMM y HH:mm.ss, z Q', 'en_US.utf-8') . "\n";
 echo $lastTuesday->formatICU('EEEE d.MMMM y HH:mm.s VVVV', 'fi_FI.utf-8') . "\n";
 echo $lastTuesday->formatICU('eeee d.MMMM y HH:mm.ss VVVV', 'de-DE.utf-8');
-
-var_dump(CalendarUtils::getWeekdayNames());

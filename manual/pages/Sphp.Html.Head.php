@@ -6,7 +6,8 @@ use Sphp\Html\Programming\Script;
 use Sphp\Html\Programming\Noscript;
 use Sphp\Manual;
 
-$headNS = Manual\api()->namespaceLink(__NAMESPACE__);
+$sami = Manual\api();
+$headNS = $sami->namespaceLink(__NAMESPACE__);
 $headContent = Manual\api()->classLinker(HeadContent::class);
 $head = Manual\api()->classLinker(Head::class);
 $title = Manual\api()->classLinker(Title::class);
@@ -26,17 +27,15 @@ $ns
 This namespace contains an implementations for HTML head elements. 
 This meta data is data about the HTML document and it is not directly displayed in any browsers.
 
-The $head component implements the HTML head tag and acts as a 
-container for all meta data components (data about data) $headContent.
-		
-The following PHP classes and interfaces implement $headContent and thus describe HTML meta data components:
+The $head component implements the HTML head tag and is a container for all meta 
+data components (data about data) $headContent. The following list of PHP classes describe HTML meta data components:
 
-* $title - {$w3schools->tag("title")}
-* $base - {$w3schools->tag("base")}
-* $meta - {$w3schools->tag("meta")}
-* $link - {$w3schools->tag("link")}
-* $script - {$w3schools->tag("script")}
-* $noscript - {$w3schools->tag("noscript")}
+* $title - {$w3schools->title}
+* $base - {$w3schools->base}
+* $meta - {$w3schools->meta}
+* $link - {$w3schools->link}
+* $script - {$w3schools->script}
+* $noscript - {$w3schools->noscript}
 
 MD
 );

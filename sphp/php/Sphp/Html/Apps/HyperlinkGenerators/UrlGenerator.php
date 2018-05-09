@@ -57,7 +57,7 @@ class UrlGenerator implements UrlGeneratorInterface {
     return $this;
   }
 
-  public function create(string $relative = ''): string {
+  public function createUrl(string $relative = ''): string {
     return $this->root . $relative;
   }
 

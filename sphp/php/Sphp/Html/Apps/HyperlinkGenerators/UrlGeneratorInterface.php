@@ -32,5 +32,5 @@ interface UrlGeneratorInterface {
    * @param  string $relative path from the root to the resource
    * @return string an URL string pointing to the resource
    */
-  public function create(string $relative = ''): string;
+  public function createUrl(string $relative = ''): string;
 }

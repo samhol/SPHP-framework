@@ -25,7 +25,7 @@ class SamiUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface 
 
   public function getClassUrl(string $class): string {
     $path = str_replace('\\', '/', $class);
-    return $this->create("$path.html");
+    return $this->createUrl("$path.html");
   }
 
   public function getClassMethodUrl(string $class, string $method): string {
@@ -38,11 +38,11 @@ class SamiUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface 
 
   public function getNamespaceUrl(string $namespace): string {
     $path = str_replace('\\', '/', $namespace);
-    return $this->create("$path.html");
+    return $this->createUrl("$path.html");
   }
 
   public function getFunctionUrl(string $function): string {
-    return $this->create("function-$function.html");
+    return $this->createUrl("function-$function.html");
   }
 
   public function getConstantUrl(string $constant): string {

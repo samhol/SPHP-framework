@@ -45,11 +45,11 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
   }
 
   public function getClassUrl(string $class): string {
-    return $this->create("class." . $this->phpPathFixer($class) . '.php');
+    return $this->createUrl("class." . $this->phpPathFixer($class) . '.php');
   }
 
   public function getClassMethodUrl(string $class, string $method): string {
-    return $this->create($this->phpPathFixer($class) . ".$method.php");
+    return $this->createUrl($this->phpPathFixer($class) . ".$method.php");
   }
 
   public function getClassConstantUrl(string $class, string $constant): string {
@@ -60,15 +60,15 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
 
   public function getNamespaceUrl(string $namespace): string {
     $path = str_replace('\\', '.', $namespace);
-    return $this->create("namespace-$path.html");
+    return $this->createUrl("namespace-$path.html");
   }
 
   public function getFunctionUrl(string $function): string {
-    return $this->create("function." . $this->phpPathFixer($function));
+    return $this->createUrl("function." . $this->phpPathFixer($function));
   }
 
   public function getConstantUrl(string $constant): string {
-    return $this->create('reserved.constants.php#constant.' . $this->phpPathFixer($constant));
+    return $this->createUrl('reserved.constants.php#constant.' . $this->phpPathFixer($constant));
   }
 
   /**

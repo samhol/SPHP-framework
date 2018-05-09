@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 use Sphp\Manual;
-$syntaxHighligher = Manual\api()->classLinker(SyntaxHighlighter::class);
-$syntax1 = (new SyntaxHighlighter())
+$syntaxHighligher = Manual\api()->classLinker(GeSHiSyntaxHighlighter::class);
+$syntax1 = (new GeSHiSyntaxHighlighter())
         ->loadFromFile('manual/snippets/example1.js');
 \Sphp\Manual\md(<<<MD
 

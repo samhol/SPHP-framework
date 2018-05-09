@@ -39,8 +39,8 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(string $class, ApiUrlGeneratorInterface $pathParser, string $defaultTarget = null, $defaultCssClasses = null) {
-    parent::__construct($pathParser, $defaultTarget, $defaultCssClasses);
+  public function __construct(string $class, ApiUrlGeneratorInterface $pathParser) {
+    parent::__construct($pathParser);
     $this->ref = new ReflectionClass($class);
   }
 

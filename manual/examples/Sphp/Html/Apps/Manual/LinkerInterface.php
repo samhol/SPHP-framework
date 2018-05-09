@@ -7,12 +7,12 @@ use Doctrine\ORM\Decorator\EntityManagerDecorator;
 
 $links = new Ul();
 
-$wordPress = Factory::sami('http://apigen.juzna.cz/doc/WordPress/WordPress/');
+$wordPress = Factory::apigen('http://apigen.juzna.cz/doc/WordPress/WordPress/');
 
 $links[] = $wordPress->functionLink('__return_empty_array');
 $links[] = $wordPress->functionLink('_wp_footer_scripts');
 
-$doctrine2 = Factory::sami('http://www.doctrine-project.org/api/orm/2.4/');
+$doctrine2 = Factory::apigen('http://www.doctrine-project.org/api/orm/2.4/');
 $entityManagerDecorator = $doctrine2->classLinker(EntityManagerDecorator::class);
 
 $links->appendMd('###Doctrine 2:');

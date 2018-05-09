@@ -85,7 +85,7 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   public function createUrl($relative) {
-    return $this->urlGenerator->create($relative);
+    return $this->urlGenerator->createUrl($relative);
   }
 
   public function setDefaultHyperlinkAttributes(array $attributes) {
@@ -112,7 +112,7 @@ abstract class AbstractLinker implements LinkerInterface {
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
     if (!\Sphp\Stdlib\Strings::startsWith("$url", $this->urls()->getRoot())) {
-      $url = $this->urls()->create("$url");
+      $url = $this->urls()->createUrl("$url");
     }
     if ($content === null) {
       $content = $url;

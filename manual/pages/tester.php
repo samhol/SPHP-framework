@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
+use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 use Gajus\Dindent\Indenter;
 use Sphp\Stdlib\Parser;
 
@@ -38,6 +38,6 @@ use Sphp\Html\Head\HeadFactory;
 
 $head = HeadFactory::fromArray(Parser::fromFile('Sphp/Html/Head/meta.yaml'));
 echo "</pre>";
-echo (new SyntaxHighlighter())->setSource($in->indent("$head"), 'html5');
+echo (new GeSHiSyntaxHighlighter())->setSource($in->indent("$head"), 'html5');
 
 
