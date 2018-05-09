@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Apps\HyperlinkGenerators\ClassLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
 
@@ -28,12 +27,13 @@ class PHPManual extends AbstractPhpApiLinker {
    * Constructor
    *
    * @param PHPManualUrlGenerator $urlGenerator
+   * @param string $namespace
    */
-  public function __construct(PHPManualUrlGenerator $urlGenerator = null) {
+  public function __construct(PHPManualUrlGenerator $urlGenerator = null, string $namespace = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new PHPManualUrlGenerator();
     }
-    parent::__construct(new PHPManualUrlGenerator());
+    parent::__construct($urlGenerator, PHPManualClassLinker::class, $namespace);
   }
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
@@ -43,12 +43,6 @@ class PHPManual extends AbstractPhpApiLinker {
       $title = 'PHP manual: ' . $title;
     }
     return parent::hyperlink($url, $content, $title);
-  }
-
-  public function classLinker(string $class): ClassLinker {
-    $classLinker = new PHPManualClassLinker($class, $this->urls());
-    $classLinker->setDefaultAttributes($this->getDefaultAttributes());
-    return $classLinker;
   }
 
   public function constantLink(string $constant, string $linkText = null): Hyperlink {

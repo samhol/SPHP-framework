@@ -10,12 +10,12 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 
-use Sphp\Html\Apps\HyperlinkGenerators\ClassLinker;
 use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Adapters\QtipAdapter;
+use Sphp\Exceptions\SphpException;
 
 /**
  * Hyperlink object generator pointing to an existing ApiGen documentation
@@ -29,49 +29,16 @@ use Sphp\Html\Adapters\QtipAdapter;
 class Sami extends AbstractPhpApiLinker {
 
   /**
-   * @var string
-   */
-  private $ns;
-
-  /**
    * Constructor
    * 
-   * @param SamiUrlGenerator $urlGenerator the URL pointing to the Sami documentation
+   * @param SamiUrlGenerator $urlGenerator
+   * @param string $namespace
    */
   public function __construct(SamiUrlGenerator $urlGenerator = null, string $namespace = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new SamiUrlGenerator();
     }
-    $this->ns = $namespace;
-    parent::__construct($urlGenerator);
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @return Hyperlink|Sami
-   * @throws \Sphp\Exceptions\SphpException
-   */
-  public function __get(string $name) {
-    $test = $this->ns . "\\$name";
-    //echo "\npath: $test";
-    if (is_callable($test)) {
-      return $this->functionLink($test);
-    } else if (class_exists($test) || interface_exists($test)) {
-      return $this->classLinker($test);
-    } else if (defined($test)) {
-      return $this->constantLink($test);
-    } else {
-      $chain = new static($this->urls(), $this->ns . "\\$name");
-      $chain->setDefaultAttributes($this->getDefaultAttributes());
-      return $chain;
-    }
-  }
-
-  public function classLinker(string $class): ClassLinker {
-    $classLinker = new SamiClassLinker($class, $this->urls());
-    $classLinker->setDefaultAttributes($this->getDefaultAttributes());
-    return $classLinker;
+    parent::__construct($urlGenerator, SamiClassLinker::class, $namespace);
   }
 
   public function functionLink(string $function, string $linkText = null): Hyperlink {

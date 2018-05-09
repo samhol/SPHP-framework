@@ -40,7 +40,7 @@ class ApiGen extends AbstractPhpApiLinker {
 
   public function classLinker(string $class): ClassLinker {
     $classLinker = new ApiGenClassLinker($class, $this->urls());
-    $classLinker->setDefaultAttributes($this->getDefaultAttributes());
+    $classLinker->setDefaultHyperlinkAttributes($this->getDefaultAttributes());
     return $classLinker;
   }
 

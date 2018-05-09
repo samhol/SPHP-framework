@@ -12,7 +12,6 @@ $idAttr = Manual\api()->classLinker(IdAttribute::class);
 $attribute = Manual\api()->classLinker(Attribute::class);
 $boolAttr = Manual\api()->classLinker(BooleanAttribute::class);
 
-
 Manual\md(<<<MD
 ##$attributeInterface<small>basic defintition of all Attribute objects</small>
 

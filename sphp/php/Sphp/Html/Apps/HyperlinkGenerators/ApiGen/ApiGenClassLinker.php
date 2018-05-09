@@ -29,14 +29,12 @@ class ApiGenClassLinker extends AbstractClassLinker {
    * 
    * @param string $class the name of the class
    * @param ApiGenUrlGenerator|null $urlGenerator
-   * @param string|null $defaultTarget
-   * @param string|string[]|null $defaultCssClasses
    */
-  public function __construct(string $class, ApiGenUrlGenerator $urlGenerator = null, string $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct(string $class, ApiGenUrlGenerator $urlGenerator = null, string $namespace = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new ApiGenUrlGenerator();
     }
-    parent::__construct($class, $urlGenerator, $defaultTarget, $defaultCssClasses);
+    parent::__construct($class, $urlGenerator, $namespace);
   }
 
   /**

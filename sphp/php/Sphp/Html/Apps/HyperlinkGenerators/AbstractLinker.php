@@ -88,23 +88,13 @@ abstract class AbstractLinker implements LinkerInterface {
     return $this->urlGenerator->create($relative);
   }
 
-  /**
-   * 
-   * @param array $attributes
-   * @return $this
-   */
-  public function setDefaultAttributes(array $attributes) {
+  public function setDefaultHyperlinkAttributes(array $attributes) {
     $this->attributes = $attributes;
     return $this;
   }
 
-  /**
-   * 
-   * @param  array $attributes
-   * @return array default attributes
-   */
-  public function getDefaultAttributes() :array{
-   return $this->attributes;
+  public function getDefaultHyperlinkAttributes(): array {
+    return $this->attributes;
   }
 
   /**

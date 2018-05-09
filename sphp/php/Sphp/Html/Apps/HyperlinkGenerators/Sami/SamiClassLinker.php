@@ -14,6 +14,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Exceptions\SphpException;
 
 /**
  * Hyperlink object generator pointing to an existing Sami documentation about a class
@@ -29,8 +30,6 @@ class SamiClassLinker extends AbstractClassLinker {
    * 
    * @param string $class the name of the class
    * @param SamiUrlGenerator|null $urlGenerator
-   * @param string|null $defaultTarget
-   * @param string|string[]|null $defaultCssClasses
    */
   public function __construct(string $class, SamiUrlGenerator $urlGenerator = null) {
     if ($urlGenerator === null) {
@@ -43,7 +42,7 @@ class SamiClassLinker extends AbstractClassLinker {
    * 
    * @param  string $name
    * @return Hyperlink
-   * @throws \Sphp\Exceptions\SphpException
+   * @throws SphpException
    */
   public function __get(string $name): Hyperlink {
     if ($this->ref->hasMethod($name)) {
@@ -51,7 +50,7 @@ class SamiClassLinker extends AbstractClassLinker {
     } else if ($this->ref->hasProperty($name)) {
       return $this->methodLink($name);
     } else {
-      throw new \Sphp\Exceptions\SphpException("$name in not valid method, constat or variable name for " . $this->ref->getName());
+      throw new SphpException("$name in not valid method, constat or variable name for " . $this->ref->getName());
     }
   }
 

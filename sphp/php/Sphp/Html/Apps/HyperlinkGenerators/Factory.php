@@ -59,7 +59,7 @@ class Factory {
   public static function sami(string $path = 'API/sami/'): Sami {
     if (!array_key_exists($path, self::$samis)) {
       $instance = new Sami(new SamiUrlGenerator($path));
-      $instance->setDefaultAttributes(['class' => 'api sphp']);
+      $instance->setDefaultHyperlinkAttributes(['class' => 'api sphp']);
       self::$samis[$path] = $instance;
     } else {
       $instance = self::$samis[$path];
@@ -95,7 +95,7 @@ class Factory {
   public static function phpManual(): PHPManual {
     if (self::$phpManual === null) {
       self::$phpManual = new PHPManual();
-      self::$phpManual->setDefaultAttributes(['class' => 'api php']);
+      self::$phpManual->setDefaultHyperlinkAttributes(['class' => 'api php']);
     }
     return self::$phpManual;
   }
