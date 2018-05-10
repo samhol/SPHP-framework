@@ -31,14 +31,14 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // add a page
 $pdf->AddPage();
-$css = '<style>' . file_get_contents('manual/css/pdf/pdf.css') . '</style>';
 $html = '<h4>PDF Example</h4><br><p>Welcome to the Jungle</p>';
 
 $pdf->writeHTML($html, true, false, true, false, '');
 // add a page
 $pdf->AddPage();
 
-$html = $css . Sphp\Manual\createPage('Sphp.Html');
+$css = '<style>' . file_get_contents('manual/css/pdf/pdf.css') . "</style>\n";
+$html = $css . '<div class="pdf">' . Sphp\Manual\createPage('Sphp.Html') . '</div>';
 // output the HTML content
 $pdf->writeHTML($html, true, false, true, false, '');
 

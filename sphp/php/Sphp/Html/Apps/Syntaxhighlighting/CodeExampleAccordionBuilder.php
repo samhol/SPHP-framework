@@ -198,8 +198,8 @@ class CodeExampleAccordionBuilder implements Content {
    * @return $this for a fluent interface
    */
   public function useDefaultTitles() {
-    $this->titles[self::EXAMPLECODE] = 'PHP code';
-    $this->titles[self::OUTPUT_TEXT] = 'Execution result as highlighted code';
+    $this->titles[self::EXAMPLECODE] = '<i class="fab fa-php"></i> PHP code';
+    $this->titles[self::OUTPUT_TEXT] = '<i class="fab fa-html5"></i> Execution result as highlighted code';
     $this->titles[self::HTMLFLOW] = 'Execution result as HTML5 flow';
     return $this;
   }
