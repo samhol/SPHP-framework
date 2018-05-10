@@ -41,7 +41,10 @@
     "zendframework/zend-mail": "*",
     "zurb/foundation": ">=6.4",
     "symfony/yaml": ">=3.0",
-    "tecnickcom/TCPDF": "*"
+    "tecnickcom/TCPDF": "*",
+	"mpdf/mpdf": "*",
+	"setasign/fpdi-fpdf": "*",
+    "setasign/fpdi-tcpdf": "*"
   },
   "autoload": {
     "psr-4": {
