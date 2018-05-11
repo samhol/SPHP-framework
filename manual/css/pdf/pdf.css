@@ -1,2 +1,209 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);h1{color:navy;font-family:times;font-size:24pt;text-decoration:underline}a{text-decoration:none}p{margin:10px;color:#003300;font-family:helvetica;font-size:12pt}p.first span{color:#006600;font-style:italic}p#second{color:#003f7f;font-family:times;font-size:12pt;text-align:justify}p#second>span{background-color:#FFFFAA}table.first{color:#003300;font-family:helvetica;font-size:8pt;border-left:3px solid red;border-right:3px solid #FF00FF;border-top:3px solid green;border-bottom:3px solid blue;background-color:#ccffcc}td{border:2px solid blue;background-color:#ffffee}td.second{border:2px dashed green}div.test{color:#CC0000;background-color:#FFFF66;font-family:helvetica;font-size:10pt;border-style:solid solid solid solid;border-width:2px 2px 2px 2px;border-color:green #FF00FF blue red;text-align:center}.lowercase{text-transform:lowercase}.uppercase{text-transform:uppercase}.capitalize{text-transform:capitalize}.accordion{display:none}.accordion .accordion-item{list-style:none;margin:10px}.accordion .accordion-title{font-size:15pt}.accordion .button-area,.accordion .foot{display:none}.accordion .GeSHi.sphp-syntax-highlighter{font-size:12pt !important;display:none}.accordion .GeSHi.sphp-syntax-highlighter ol{list-style:none;margin:0pt;padding:0pt}.accordion .GeSHi.sphp-syntax-highlighter li{margin:0pt;padding:0pt}
+/**
+ * sphp6.styles.all.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.4.3
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+.GeSHi {
+  font-size: 0.8125rem;
+  background-color: #fbfaf9;
+  overflow: auto !important;
+  padding: 0; }
+  .GeSHi span, .GeSHi a {
+    display: inline-block;
+    padding: 0; }
+  .GeSHi a {
+    text-decoration: underline; }
+    .GeSHi a:hover {
+      background-color: #ddd;
+      text-decoration: none; }
+  .GeSHi .de1, .GeSHi .de2 {
+    font-weight: normal;
+    background: transparent;
+    color: #0044aa;
+    padding-left: 5px; }
+  .GeSHi .kw1 {
+    color: #a1a100; }
+  .GeSHi .kw2 {
+    color: #000;
+    font-weight: bold; }
+  .GeSHi .kw3 {
+    color: #0066CC; }
+  .GeSHi .kw4 {
+    color: #f63333; }
+  .GeSHi .co1, .GeSHi .co2, .GeSHi .coMULTI {
+    color: #FF8000; }
+  .GeSHi .es0 {
+    color: #000033;
+    font-weight: bold; }
+  .GeSHi .br0 {
+    color: #66cc66; }
+  .GeSHi .st0 {
+    color: #ff0000; }
+  .GeSHi .nu0 {
+    color: #ff33ff; }
+  .GeSHi .me0 {
+    color: #006600; }
+  .GeSHi .me1 {
+    color: #006600; }
+  .GeSHi .co4 {
+    color: #009900; }
+  .GeSHi ol {
+    padding: 0;
+    margin: 0 0 0 2.8125rem;
+    /* top right bottom left */
+    list-style-position: outside; }
+    .GeSHi ol li {
+      border-left: 2px solid #cccccc;
+      font-weight: normal;
+      vertical-align: top; }
+      .GeSHi ol li.li1 {
+        background-color: #ffffff; }
+      .GeSHi ol li.li2 {
+        background-color: #f5f5f5; }
+  .GeSHi .html {
+    /*li,  .li1 {
+      font-weight: normal; 
+      vertical-align:top;
+    }*/ }
+    .GeSHi .html .de1, .GeSHi .html .de2 {
+      margin: 0;
+      padding-top: 0;
+      background: none;
+      vertical-align: top;
+      line-height: 150%; }
+    .GeSHi .html .imp {
+      font-weight: bold;
+      color: red; }
+    .GeSHi .html .ln {
+      width: 1px;
+      text-align: right;
+      margin: 0;
+      padding: 0 2px;
+      vertical-align: top;
+      border-right: 2px solid #e0e8ef;
+      font-weight: bold;
+      color: #333; }
+    .GeSHi .html .kw2 {
+      color: #000000;
+      font-weight: bold; }
+    .GeSHi .html .kw3 {
+      color: #000066; }
+    .GeSHi .html .es0 {
+      color: #000099;
+      font-weight: bold; }
+    .GeSHi .html .br0 {
+      color: #66cc66; }
+    .GeSHi .html .sy0 {
+      color: #66cc66; }
+    .GeSHi .html .st0 {
+      color: #ff0000; }
+    .GeSHi .html .nu0 {
+      color: #cc66cc; }
+    .GeSHi .html .sc-1 {
+      color: #808080;
+      font-style: italic; }
+    .GeSHi .html .sc0 {
+      color: #00bbdd; }
+    .GeSHi .html .sc1 {
+      color: #ddbb00; }
+    .GeSHi .html .sc2 {
+      color: #009900; }
+    .GeSHi .html .ln-xtra, .GeSHi .html li.ln-xtra, .GeSHi .html div.ln-xtra {
+      background-color: #ffc; }
+    .GeSHi .html span.xtra {
+      display: block; }
+
+h1 {
+  color: #000;
+  font-family: times;
+  font-size: 24pt; }
+
+a {
+  text-decoration: none; }
+
+p {
+  margin: 10px;
+  color: #003300;
+  font-family: helvetica;
+  font-size: 12pt; }
+
+p.first span {
+  color: #006600;
+  font-style: italic; }
+
+p#second {
+  color: #003f7f;
+  font-family: times;
+  font-size: 12pt;
+  text-align: justify; }
+
+p#second > span {
+  background-color: #FFFFAA; }
+
+table.first {
+  color: #003300;
+  font-family: helvetica;
+  font-size: 8pt;
+  border-left: 3px solid red;
+  border-right: 3px solid #FF00FF;
+  border-top: 3px solid green;
+  border-bottom: 3px solid blue;
+  background-color: #ccffcc; }
+
+td {
+  border: 2px solid blue;
+  background-color: #ffffee; }
+
+td.second {
+  border: 2px dashed green; }
+
+div.test {
+  color: #CC0000;
+  background-color: #FFFF66;
+  font-family: helvetica;
+  font-size: 10pt;
+  border-style: solid solid solid solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: green #FF00FF blue red;
+  text-align: center; }
+
+.lowercase {
+  text-transform: lowercase; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+.capitalize {
+  text-transform: capitalize; }
+
+.accordion .accordion-item {
+  list-style: none;
+  margin: 0; }
+.accordion .accordion-title {
+  font-size: 15pt; }
+.accordion .button-area, .accordion .foot {
+  display: none; }
+.accordion .GeSHi.sphp-syntax-highlighter {
+  font-size: 10pt !important; }
+  .accordion .GeSHi.sphp-syntax-highlighter ol {
+    list-style: none;
+    margin: 0pt;
+    padding: 0pt; }
+  .accordion .GeSHi.sphp-syntax-highlighter li {
+    margin: 0pt;
+    padding: 0pt; }
+
 /*# sourceMappingURL=pdf.css.map */
