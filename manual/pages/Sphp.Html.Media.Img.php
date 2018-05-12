@@ -14,16 +14,16 @@ $img provides static factory methods for showing resized image components.
 		
 **List of factory methods creating new resized instances of the $img:**
 
-* {$img->methodLink("scaleToFit")}: scales the original image file to fit the given box while constraining proportions
-* {$img->methodLink("widen")}: resizes the original image to given width, constraining proportions
-* {$img->methodLink("heighten")}: resizes the original image to given height, constraining proportions
-* {$img->methodLink("scale")}: resizes the original image by aplying the given ratio to both sides
-* {$img->methodLink("resize")}: resizes the original image file to match the given dimensions
+* {$img->scaleToFit}: scales the original image file to fit the given box while constraining proportions
+* {$img->widen}: resizes the original image to given width, constraining proportions
+* {$img->heighten}: resizes the original image to given height, constraining proportions
+* {$img->scale}: resizes the original image by aplying the given ratio to both sides
+* {$img->resize}: resizes the original image file to match the given dimensions
 MD
 );
 
 \Sphp\Manual\visualize('Sphp/Html/Media/Img.php', null, true);
-$figureTag = \Sphp\Manual\w3schools()->tag('figure');
+$figureTag = \Sphp\Manual\w3schools()->figure;
 \Sphp\Manual\md(<<<MD
 The $fig component implements the $figureTag tag. 
 A $fig component consists of an $img component and an optional $figCaption component.

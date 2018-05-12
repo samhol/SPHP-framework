@@ -116,14 +116,20 @@ div.test {
 .uppercase {
   text-transform: uppercase;
 }
-.capitalize {
-  text-transform: capitalize;
+.hide-from-pdf {
+  display: none;
 }
 .accordion {
-      //display: none;
+  //display: none;
   .accordion-item {
     list-style: none;
     margin: 0;
+    &.html-output {
+      display: none;
+    }
+  }
+  .html-output {
+    display: none;
   }
   .accordion-title {
     font-size: 15pt;

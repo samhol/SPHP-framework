@@ -18,7 +18,7 @@ $w3schools = Manual\w3schools();
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-#Introduction to HTML components
+#Introduction to HTML components{#html-intro}
 $nsbc
 HTML is the standard markup language used to create Web pages.
 

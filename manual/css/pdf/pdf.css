@@ -186,12 +186,16 @@ div.test {
 .uppercase {
   text-transform: uppercase; }
 
-.capitalize {
-  text-transform: capitalize; }
+.hide-from-pdf {
+  display: none; }
 
 .accordion .accordion-item {
   list-style: none;
   margin: 0; }
+  .accordion .accordion-item.html-output {
+    display: none; }
+.accordion .html-output {
+  display: none; }
 .accordion .accordion-title {
   font-size: 15pt; }
 .accordion .button-area, .accordion .foot {

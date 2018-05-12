@@ -156,7 +156,8 @@ function codeModal($trigger, string $path, $title = 'Source code'): Modal {
   $modal = new SyntaxHighlightingModalBuilder($trigger, inlineMd($title, false));
   $modal->loadFromFile($path);
   $m = $modal->buildModal();
-  $m->getTrigger()->addCssClass('manual-code-modal');
+  $m->getTrigger()->addCssClass('manual-code-modal', 'hide-from-pdf');
+  $m->getPopup()->addCssClass('hide-from-pdf');
   $m->getPopup()->layout()->setSize('large');
   return $m;
 }

@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-#HTML media: <small>images, sound, music, videos, movies, and animations</small>
+#HTML media: <small>images, audio, video, and animations</small>
 $ns
 
 MD
