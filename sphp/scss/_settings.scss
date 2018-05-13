@@ -1,3 +1,6 @@
+
+@import "../../vendor/zurb/foundation/scss/util/util";
+
 //  Foundation for Sites Settings
 //  -----------------------------
 //
@@ -57,12 +60,8 @@
 //  52. Thumbnail
 //  53. Title Bar
 //  54. Tooltip
-//  55. Top Bar 
-//  56. Xy Grid
-
-
-@import "../../vendor/zurb/foundation/scss/util/util";
-
+//  55. Top Bar
+//  56. Xy Gridf
 
 // 1. Global
 // ---------
@@ -99,6 +98,7 @@ $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
 $global-prototype-breakpoints: false;
+$global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
@@ -160,7 +160,7 @@ $header-styles: (
 );
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
-$header-small-font-color: #444;
+$header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
@@ -484,6 +484,7 @@ $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
+$menu-icons-back-compat: true;
 
 // 24. Meter
 // ---------
@@ -684,7 +685,7 @@ $prototype-sizing: (
 );
 $prototype-sizes: (
   25: 25%,
-  50: 50%, 
+  50: 50%,
   75: 75%,
   100: 100%
 );
@@ -857,7 +858,7 @@ $topbar-padding: 0;
 $topbar-background: #121212;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
-$topbar-input-width: rem-calc(300);
+$topbar-input-width: 230px;
 $topbar-unstack-breakpoint: medium;
 
 // 56. Xy Grid
@@ -873,5 +874,5 @@ $grid-margin-gutters: (
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
-$block-grid-max: 8;
+$xy-block-grid-max: 8;
 

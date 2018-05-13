@@ -6,10 +6,11 @@ $imgInterface = \Sphp\Manual\api()->classLinker(ImgInterface::class);
 $img = \Sphp\Manual\api()->classLinker(Img::class);
 $fig = \Sphp\Manual\api()->classLinker(Figure::class);
 $figCaption = \Sphp\Manual\api()->classLinker(FigCaption::class);
+$w3c = \Sphp\Manual\w3schools();
 \Sphp\Manual\md(<<<MD
 ##The $img and the $fig components
-
-An $img component implements the $imgInterface. 
+ 
+$img component implements HTML {$w3c->img} tag 	via $imgInterface interface. 
 $img provides static factory methods for showing resized image components. 
 		
 **List of factory methods creating new resized instances of the $img:**

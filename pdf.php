@@ -10,7 +10,7 @@ $mpdf->TOCpagebreakByArray([
 ]);
 $mpdf->SetTitle('SPHPlayground manual');
 $mpdf->SetHTMLHeader('<div style="float: right; font-weight: bold;">{PAGENO}/{nbpg}</div>');
-/* 
+/*
   $mpdf->SetHTMLFooter('
   <br><hr><br>
   <table width="100%" border="0">

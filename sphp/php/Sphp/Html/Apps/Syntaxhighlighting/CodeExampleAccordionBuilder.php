@@ -137,7 +137,7 @@ class CodeExampleAccordionBuilder implements Content {
     $accordion = new Accordion();
     $accordion->allowAllClosed()
             ->allowMultiExpand();
-    $accordion->cssClasses()->protect('manual');
+    $accordion->cssClasses()->protect('sphp', 'code-example');
     $accordion->append($this->getCodePane());
     if ($this->outputHl !== null) {
       $accordion->append($this->buildHighlightedOutput());
@@ -198,9 +198,9 @@ class CodeExampleAccordionBuilder implements Content {
    * @return $this for a fluent interface
    */
   public function useDefaultTitles() {
-    $this->titles[self::EXAMPLECODE] = '<i class="fab fa-php"></i> PHP code';
-    $this->titles[self::OUTPUT_TEXT] = '<i class="fab fa-html5"></i> Execution result as highlighted code';
-    $this->titles[self::HTMLFLOW] = 'Execution result as HTML5 flow';
+    $this->titles[self::EXAMPLECODE] = '<i class="fab fa-php fa-fw"></i> PHP code';
+    $this->titles[self::OUTPUT_TEXT] = '<i class="fab fa-html5 fa-fw"></i> Execution result as highlighted code';
+    $this->titles[self::HTMLFLOW] = '<i class="fab fa-html5 fa-fw"></i> Execution result as HTML5 flow';
     return $this;
   }
 

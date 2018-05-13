@@ -7,9 +7,10 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-#HTML media: <small>images, audio, video, and animations</small>
+#HTML <small>Multimedia</small>
 $ns
-
+Multimedia on the web consists of sound, music, videos, movies, and animations. 
+SPHPLayground contains numerous multimedia components for different media types.
 MD
 );
 Manual\printPage('Sphp.Html.Media.SizeableInterface-LazyLoaderInterface');

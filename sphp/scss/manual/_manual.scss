@@ -60,12 +60,12 @@ $error-bg: rgba(255,127,80, 0.40);
     margin: rem-calc(5 0 20 0);
   }
 }
-.mainContent .container  { 
+.mainContent .container  {   
 
   >.button-group, >.grid-x {
     @include default-margin();
   }
-  @import "example-accordion";
+  // @import "example-accordion";
   border-left: solid 1px #ccc;
   border-right: solid 1px #ccc;
   //@include border-radius(4px);
@@ -76,7 +76,7 @@ $error-bg: rgba(255,127,80, 0.40);
   background: #fafafa;
   >.intro {
     @include default-margin(left);
-    .callout{
+    .callout{ 
       @include box-shadow(#ddd 0px 2px 3px 2px);
       border: solid 1px #ccc;
       @include border-radius(4px);
