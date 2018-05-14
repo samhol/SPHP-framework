@@ -29,7 +29,7 @@ class AbstractIcon extends EmptyTag implements IconInterface {
   private $sreenreaderLabel;
 
   /**
-   * Constructors
+   * Constructor
    * 
    * @param  string $tagName the tag name of the component
    * @param  HtmlAttributeManager $attrManager
@@ -40,6 +40,12 @@ class AbstractIcon extends EmptyTag implements IconInterface {
     $this->attributes()->set('aria-hidden', 'true');
   }
 
+  /**
+   * Sets the screen reader text for the icon
+   * 
+   * @param string $sreenreaderLabel the screen reader text for the icon
+   * @return $this for a fluent interface
+   */
   public function setSreenreaderText(string $sreenreaderLabel = null) {
     $this->sreenreaderLabel = $sreenreaderLabel;
     return $this;

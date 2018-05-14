@@ -99,6 +99,7 @@ class FontAwesome {
       'exclamation' => 'fas fa-exclamation-triangle',
       'tags' => 'fas fa-tags',
       'stethoscope' => 'fas fa-stethoscope',
+      'terminal' => 'fas fa-terminal',
       /**
        * Brands
        */

@@ -91,7 +91,12 @@ abstract class AbstractTag implements TagInterface {
     return $this->attrs;
   }
   
-  public function attributesToString(): string  {
+  /**
+   * Returns the attributes attached as a string
+   * 
+   * @return string the attributes attached as a string
+   */
+  protected function attributesToString(): string  {
     $output = '';
      if ($this->attrs !== null && $this->attrs->containsAttributes()) {
       $output = " $this->attrs";

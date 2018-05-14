@@ -20,19 +20,18 @@ $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\md(<<<MD
 #Introduction to HTML components{#html-intro}
 $nsbc
-HTML is the standard markup language used to create Web pages.
-
->HTML is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
-HTML tags most commonly come in pairs like &lt;h1&gt; and &lt;/h1&gt;, although some tags represent
-empty elements and so are unpaired, for example &lt;img&gt;. The first tag in a pair is the start tag, and the second
-tag is the end tag (they are also called opening tags and closing tags).<cite>[[Wikipedia]]</cite>
-
+        
+The content of this namespace enables the creation of the HTML documents in object oriented PHP.
+        
+HTML is the standard markup language used to create Web pages. 
+It is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
+HTML tags most commonly come in pairs like &lt;div&gt; and &lt;/div&gt;, although some tags represent
+empty elements and so are unpaired, for example &lt;img&gt;. <cite>[[Wikipedia]]</cite> 
+ 
 [Wikipedia]: http://en.wikipedia.org/wiki/HTML
 
-The content of the $ns namespace enables the creation of the HTML documents in object oriented PHP.
-
-This PHP framework started first as an implementation of the basic html structure in PHP language.
-Therefore the basic interfaces and their build in implementations describe these HTML properties quite extensively.
+SPHPlayground framework started first as an implementation of HTML tags in PHP language.
+Therefore build in PHP interfaces and implementations describe HTML properties quite extensively and this framework uses actual HTML tag names as dedicated class with the tag name as class name.
 
 **Links to HTML-resources:**
 
@@ -46,9 +45,9 @@ All HTML components in $ns implement at least $contentInterface. This
 interface ensures that the component can be outputted to an HTML document via the following three methods.
 
 
-1. {$contentInterface->methodLink("getHtml")} returns the component as an HTML string. This method might throw an $exeption) if the execution fails.
-2. {$contentInterface->methodLink("__toString")} returns the component as an HTML string (PHP magic method)
-3. {$contentInterface->methodLink("printHtml")} output the component as an HTML string or the exception description if the execution fails.
+1. {$contentInterface->getHtml} returns the component as an HTML string. This method might throw an $exeption if the execution fails.
+2. {$contentInterface->__toString} returns the component as an HTML string (PHP magic method)
+3. {$contentInterface->printHtml} output the component as an HTML string or the exception description if the execution fails.
 
 
 Trait $contentTrait gives an implementation to the subsequent
@@ -66,11 +65,7 @@ It also defines the tagname property in {$abstractTag->methodLink("__construct")
 ##The $emptyTag class and empty `HTML` elements
 
 The $emptyTag class is usable when generating empty HTML elements like:
-{$w3schools->tag("img")},
-{$w3schools->tag("br")},
-{$w3schools->tag("hr")},
-{$w3schools->tag("input")},
-{$w3schools->tag("wbr")}, ...
+{$w3schools->img}, {$w3schools->br}, {$w3schools->hr}, {$w3schools->input}, {$w3schools->wbr}, ...
 
 ##The $containerInterface and $containerComponentInterface interfaces
 

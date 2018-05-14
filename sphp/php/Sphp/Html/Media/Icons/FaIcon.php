@@ -49,6 +49,21 @@ class FaIcon extends AbstractIcon {
   }
 
   /**
+   * Sets/unsets the width of the icon fixed
+   * 
+   * @param bool $fixedWidth
+   * @return $this for a fluent interface
+   */
+  public function fixedWidth(bool $fixedWidth = true) {
+    if ($fixedWidth) {
+      $this->cssClasses()->add('fa-fw');
+    } else {
+      $this->cssClasses()->remove('fa-fw');
+    }
+    return $this;
+  }
+
+  /**
    * Sets the size of the icon
    * 
    * @param  string|null $size the size of the icon

@@ -12,12 +12,20 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Content;
-use Sphp\Html\Lists\Ul;
 use Iterator;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Implements brand icon links
+ * Implements brand icon links bar
+ * 
+ * @method \Sphp\Html\Navigation\Hyperlink facebook(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\Hyperlink twitter(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\Hyperlink googlePlus(string $url, string $screenReaderLabel = null) creates a hyperlink new icon object
+ * @method \Sphp\Html\Navigation\Hyperlink github(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\Hyperlink tumblr(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\Hyperlink stumbleupon(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\Hyperlink pinterest(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\Hyperlink blogger(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -26,7 +34,7 @@ use Sphp\Html\Navigation\Hyperlink;
 class BrandIcons extends AbstractComponent implements Content, Iterator {
 
   /**
-   * @var Ul
+   * @var Hyperlink[]
    */
   private $icons;
 
@@ -37,6 +45,7 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
     parent::__construct('div');
     $this->icons = [];
     $this->addCssClass('sphp-brand-links', 'logo');
+    $this->fa = FontAwesome::instance();
   }
 
   /**
@@ -46,59 +55,12 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
     unset($this->icons);
   }
 
-  /**
-   * Appends a link pointing to a Github page
-   * 
-   * @param  string $url the URL of the link
-   * @param  string $screenReaderLabel text visible for screen readers
-   * @param  string|null $target optional target of the hyperlink
-   * @return $this for a fluent interface
-   */
-  public function setGithub(string $url = 'https://www.github.com/', string $screenReaderLabel = 'Link to Github repository', string $target = null) {
-    $this->appendIcon($url, FontAwesome::github($screenReaderLabel), $target)->addCssClass('github');
-    return $this;
-  }
-
-  /**
-   * Appends a link pointing to a Facebook page
-   * 
-   * @param  string $url the URL of the link
-   * @param  string $screenReaderText text visible for screen readers
-   * @param  string|null $target optional target of the hyperlink
-   * @return $this for a fluent interface
-   */
-  public function appendFacebook(string $url = 'https://www.facebook.com/', string $screenReaderText = 'Link to Facebook page', string $target = null) {
-    $this->appendIcon($url, FontAwesome::facebook($screenReaderText), $target)
-            ->addCssClass('facebook');
-    return $this;
-  }
-
-  /**
-   * Appends a link pointing to a Twitter page
-   * 
-   * @param  string $url the URL of the link
-   * @param  string $screenReaderText text visible for screen readers
-   * @param  string|null $target optional target of the hyperlink
-   * @return $this for a fluent interface
-   */
-  public function appendTwitter(string $url = 'https://twitter.com/', string $screenReaderText = 'Link to Twitter page', string $target = null) {
-    $this->appendIcon($url, FontAwesome::twitter($screenReaderText), $target)
-            ->addCssClass('twitter');
-    return $this;
-  }
-
-  /**
-   * Appends a link pointing to a Google+ page
-   * 
-   * @param  string $url the URL of the link
-   * @param  string $screenReaderText text visible for screen readers
-   * @param  string|null $target optional target of the hyperlink
-   * @return $this for a fluent interface
-   */
-  public function appendGooglePlus(string $url = 'https://plus.google.com/', string $screenReaderText = 'Link to Google plus page', string $target = null) {
-    $this->appendIcon($url, FontAwesome::googlePlus($screenReaderText), $target)
-            ->addCssClass('google-plus');
-    return $this;
+  public function __call($name, $arguments): Hyperlink {
+    $url = array_shift($arguments);
+    $screenReaderText = array_shift($arguments);
+    $target = array_shift($arguments);
+    $icon = $this->fa->$name($screenReaderText);
+    return $this->appendIcon($url, $icon, $target)->addCssClass($name);
   }
 
   /**
@@ -114,21 +76,6 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
     $hyperlink->addCssClass('sphp-brand-link');
     $this->icons[] = $hyperlink;
     return $hyperlink;
-  }
-
-  /**
-   * 
-   * @param  array $group
-   * @param  string $value
-   * @return $this for a fluent interface
-   */
-  protected function setOneOf(array $group, string $value = null) {
-    if ($value === null) {
-      $this->cssClasses()->remove($group);
-    } else if (in_array($value, $group)) {
-      $this->cssClasses()->remove($group)->add($value);
-    }
-    return $this;
   }
 
   /**

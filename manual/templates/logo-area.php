@@ -21,10 +21,10 @@ use Sphp\Config\Config;
     use Sphp\Html\Media\Icons\BrandIcons;
 
 $bi = new BrandIcons();
-    $bi->setGithub('https://github.com/samhol/SPHP-framework', 'Gihub repository', 'github');
-    $bi->appendFacebook('https://www.facebook.com/Sami.Petteri.Holck.Playground/', 'Facebook page', 'fb');
-    $bi->appendGooglePlus('https://plus.google.com/b/113942361282002156141/113942361282002156141', 'Google plus page', 'google');
-    $bi->appendTwitter('https://twitter.com/SPHPframework', 'Twitter page', 'twitter');
+    $bi->github('https://github.com/samhol/SPHP-framework', 'Gihub repository', 'github');
+    $bi->facebook('https://www.facebook.com/Sami.Petteri.Holck.Playground/', 'Facebook page', 'fb');
+    $bi->googlePlus('https://plus.google.com/b/113942361282002156141/113942361282002156141', 'Google plus page', 'google');
+    $bi->twitter('https://twitter.com/SPHPframework', 'Twitter page', 'twitter');
     $bi->printHtml();
     ?>
   </div>
