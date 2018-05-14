@@ -33,53 +33,47 @@ soundcloud: (color: white, background: #ff3a00),
 pdf:        (color: white, background: #ff3a00)
 );
 @mixin sphp-brand-icon-menu() { 
-  a.sphp.brand-link { 
-    @include transition-property(all);
-    @include transition-duration(0.3s);
-    @include transition-timing-function(ease-in-out);
-    //@include border-radius(5px);
-    border: solid 1px #555;
-    text-align: center;
-    font-size: rem-calc(30);
-    width: rem-calc(50);
-    height: rem-calc(50);
-    line-height: rem-calc(50);
-    &.small {
-      font-size: rem-calc(20);
-      width: rem-calc(30);
-      height: rem-calc(30);
-      line-height: rem-calc(30);
-    }
+  div.sphp.brand-links {
+    overflow: auto;
     &.circle { 
-      @include border-radius(50%);
-    }
-    &.rounded {
-      @include border-radius(5px);
-    }
-    &.flat {
-      @include border-radius(0);
-    }
-
-    &:hover,  &:active {
-      color: rgba(255, 255, 255, 1);
-      //@include box-shadow(#333 1px 1px 3px);
-    }
-    @each $brand, $icon in $brand-icons {
-      &.#{$brand} {
-        background-color: map-get($icon, background);
-        color: map-get($icon, color);
-        &:hover {
-          color: rgba(255, 255, 255, 1);
-        }
+      a.sphp.brand-link  {
+        @include border-radius(50%);
       }
     }
-  }
-  .sphp-brand-links {
-    overflow: auto;
-    .sphp-brand-link {
+    &.smooth {
+      a.sphp.brand-link  {
+        @include border-radius(5px);
+      }
+    }
+    a.sphp.brand-link { 
+      @include transition-property(all);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(ease-in-out);
       display: block;
       float: left;
       margin: rem-calc(1);
+      //@include border-radius(5px);
+      border: solid 1px #555;
+      text-align: center;
+      font-size: rem-calc(30);
+      width: rem-calc(50);
+      height: rem-calc(50);
+      line-height: rem-calc(50);
+
+
+      &:hover,  &:active {
+        color: rgba(255, 255, 255, 1);
+        //@include box-shadow(#333 1px 1px 3px);
+      }
+      @each $brand, $icon in $brand-icons {
+        &.#{$brand} {
+          background-color: map-get($icon, background);
+          color: map-get($icon, color);
+          &:hover {
+            color: rgba(255, 255, 255, 1);
+          }
+        }
+      }
     }
   }
 }

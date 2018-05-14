@@ -1,25 +1,23 @@
 /**
- * _apps.scss (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 @charset "UTF-8";
 
 @import "foundation-addons/all";
 @import "sphp-foundation-menu-ruler";
-//@import "brands";
 @import "menus/all";
 @import "calendars/all";
 @import "sphp-side-nav";
-//@import "sphp-tech-links";
-//@import "sphp-split-button";
 @import "syntax-highlighting/all";
 @import "sphp-popper";
 @import "sphp-back-to-top-button";
 @import "callouts/error-handling-callouts";
-//@import "sphp-buttons";
 @import "sphp-figure-slide";
-//@import "SyntaxHighlightingModal";
 @import "foundation-fouc-remover";
 @import "spinner";
 

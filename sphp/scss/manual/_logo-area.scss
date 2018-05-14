@@ -13,11 +13,9 @@
     margin: rem-calc(10);
     list-style: none;
   }
-  .icon-col {
-    div.sphp-brand-links {
-      float:right;
-    }
-    a.sphp-brand-link {
+  div.sphp.brand-links {
+    float:right;
+    a.brand-link {
       border: solid 1px #555;
       @include border-radius(8px);
       @include opacity(.8);

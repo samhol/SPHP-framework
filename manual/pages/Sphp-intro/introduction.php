@@ -1,4 +1,3 @@
-
 ## INTRODUCTION
 
 SPHP framework is an open source framework for developing interactive web applications

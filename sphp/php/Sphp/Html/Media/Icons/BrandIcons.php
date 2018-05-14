@@ -44,7 +44,7 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
   public function __construct() {
     parent::__construct('div');
     $this->icons = [];
-    $this->addCssClass('sphp-brand-links', 'logo');
+    $this->addCssClass('sphp', 'brand-links', 'logo');
     $this->fa = FontAwesome::instance();
   }
 
@@ -73,7 +73,7 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
    */
   protected function appendIcon(string $url, IconInterface $icon, string $target = null): Hyperlink {
     $hyperlink = new Hyperlink($url, $icon, $target);
-    $hyperlink->addCssClass('sphp-brand-link');
+    $hyperlink->addCssClass('sphp', 'brand-link');
     $this->icons[] = $hyperlink;
     return $hyperlink;
   }
