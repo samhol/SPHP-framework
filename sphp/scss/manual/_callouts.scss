@@ -1,7 +1,7 @@
 $alert-callout-border-left-width: rem-calc(5);
 $alert-callout-border-padding: 1.3rem;
 $alert-callout-border-radius: 0.6rem;
-//@import '../../../vendor/zurb/foundation/sass/util/mixins';
+
 @mixin callout-colors($color: #333) { 
   border-color: $color;
   $scaled: smart-scale($color, 50%, 50%);

@@ -80,16 +80,6 @@ p a.api, ul a.api, ol a.api {
       background-color: rgba(210, 210, 210, .8); 
     }
   }
-  &.apigen {
-    color: #006aeb;
-    border-color: rgba(51, 153, 255, .3);
-    background-color: rgba(230, 230, 230, .5); 
-    &:hover {
-      color: #8c1111;
-      border-color: rgba(51, 153, 255, .6);
-      background-color: rgba(210, 210, 210, 1); 
-    }
-  }
   &.php {
     color: #369;
     border-color: #bbb;

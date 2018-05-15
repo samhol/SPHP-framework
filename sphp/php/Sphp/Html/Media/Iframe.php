@@ -13,7 +13,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\EmptyTag;
 
 /**
- * Implements an HTML &lt;iframe&gt; tag (an inline frame).
+ * Implements an HTML &lt;iframe&gt; tag (an inline frame)
  *
  * This component represents a nested browsing context.
  *
