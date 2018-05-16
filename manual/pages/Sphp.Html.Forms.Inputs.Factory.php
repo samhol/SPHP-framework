@@ -13,7 +13,7 @@ Here are grouped lists of the HTML5 components and the corresponding PHP types.
 MD
 );
 
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
 $data = Parser::fromFile('manual/yaml/Sphp.Html.Forms.Inputs.Factory.yml');
 //echo "<pre>";

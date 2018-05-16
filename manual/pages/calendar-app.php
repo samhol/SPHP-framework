@@ -80,8 +80,10 @@ $pagination
 
 <?php
 
+use Sphp\Stdlib\Parsers\Parser;
 echo Factory::getMonth($month, $year)->useCalendar($data);
 echo '<pre>';
 print_r((new \Sphp\DateTime\Calendars\Events\Constraints\Before('2018-11-1'))->toJson());
-print_r(\Sphp\Stdlib\Parser::fromFile('manual/templates/calendar.yml'));
+print_r(Parser::fromFile('manual/templates/calendar.yml'));
+print_r(Parser::fromFile('manual/snippets/FitNotes.csv'));
 echo '</pre>';

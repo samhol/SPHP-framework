@@ -12,6 +12,7 @@ namespace Sphp\Log;
 
 use Sphp\Html\Programming\ScriptCode;
 use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Stdlib\Parsers\Parser;
 
 /**
  * Implements PHP message outputting To Browser Console
@@ -72,7 +73,7 @@ class Console {
 
   protected function createLog(string $type, $data) {
     if (is_array($data)) {
-      $data = \Sphp\Stdlib\Parser::json()->encodeArray($data);
+      $data = Parser::json()->encodeArray($data);
       //echo "console.$type($data);";
     } else if (is_string($data)) {
       $data = "'$data'";

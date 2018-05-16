@@ -8,19 +8,20 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Parsers\Reader;
+use Sphp\Stdlib\Filesystem;
 
 /**
  * Implements a general parser factory
  * 
  * @method \Sphp\Stdlib\Parsers\Markdown md() Returns singleton instance of `markdown` reader
  * @method \Sphp\Stdlib\Parsers\Yaml yaml() Returns singleton instance of `yaml` reader
- * @method \Sphp\Stdlib\Parsers\Ini ini() Returns singleton instance of `yaml` reader
+ * @method \Sphp\Stdlib\Parsers\Ini ini() Returns singleton instance of `ini` reader
  * @method \Sphp\Stdlib\Parsers\Json json() Returns singleton instance of `json` reader
+ * @method \Sphp\Stdlib\Parsers\Csv csv() Returns singleton instance of `csv` reader
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -32,20 +33,21 @@ abstract class Parser {
    * @var string[]
    */
   private static $readers = array(
-      'ini' => Parsers\Ini::class,
-      'json' => Parsers\Json::class,
-      'yaml' => Parsers\Yaml::class,
-      'yml' => Parsers\Yaml::class,
-      'markdown' => Parsers\Markdown::class,
-      'mdown' => Parsers\Markdown::class,
-      'mkdn' => Parsers\Markdown::class,
-      'md' => Parsers\Markdown::class,
-      'mkd' => Parsers\Markdown::class,
-      'mdwn' => Parsers\Markdown::class,
-      'mdtxt' => Parsers\Markdown::class,
-      'mdtext' => Parsers\Markdown::class,
-      'text' => Parsers\Markdown::class,
-      'Rmd' => Parsers\Markdown::class,
+      'ini' => Ini::class,
+      'json' => Json::class,
+      'yaml' => Yaml::class,
+      'yml' => Yaml::class,
+      'markdown' => Markdown::class,
+      'mdown' => Markdown::class,
+      'mkdn' => Markdown::class,
+      'md' => Markdown::class,
+      'mkd' => Markdown::class,
+      'mdwn' => Markdown::class,
+      'mdtxt' => Markdown::class,
+      'mdtext' => Markdown::class,
+      'text' => Markdown::class,
+      'Rmd' => Markdown::class,
+      'csv' => Csv::class,
   );
 
   /**
@@ -70,8 +72,8 @@ abstract class Parser {
    * @return Reader a singleton reader instance of given data type
    * @throws InvalidAttributeException
    */
-  public static function getReaderFor(string $type): Reader {
-    if (!static::readerExists($type)) {
+  public static function getReaderFor(string $type) {
+    if (!isset(static::$readers[$type])) {
       throw new InvalidArgumentException("Unsupported data type: '$type'");
     }
     $readerType = static::$readers[$type];
@@ -89,7 +91,7 @@ abstract class Parser {
    * @return Reader the corresponding singleton instance of reader object
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): Reader {
+  public static function __callStatic(string $name, array $arguments) {
     try {
       return static::getReaderFor($name);
     } catch (InvalidArgumentException $ex) {
@@ -110,20 +112,25 @@ abstract class Parser {
     $fullPath = Filesystem::getFullPath($filepath);
     if (!file_exists($fullPath)) {
       throw new RuntimeException(sprintf(
-              'Filename "%s" cannot be found relative to the working directory', $filepath
+                      'Filename "%s" cannot be found relative to the working directory', $filepath
       ));
     }
     if ($extension === null) {
       $pathinfo = pathinfo($fullPath);
       if (!isset($pathinfo['extension'])) {
         throw new RuntimeException(sprintf(
-                'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
+                        'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
         ));
       }
       $extension = strtolower($pathinfo['extension']);
     }
     $reader = static::getReaderFor($extension);
-    $config = $reader->fromFile($fullPath);
+    if ($reader instanceof ArrayDecoder) {
+      return $reader->arrayFromFile($fullPath);
+    } else if ($reader instanceof StringConverter) {
+      return $reader->convertFile($fullPath);
+    }
+    $config = $reader->arr($fullPath);
     return $config;
   }
 
@@ -138,11 +145,14 @@ abstract class Parser {
   public static function fromString(string $string, string $extension) {
     if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReaderFor($extension);
-      $parsed = $reader->fromString($string);
+      if ($reader instanceof ArrayDecoder) {
+        return $reader->arrayFromString($string);
+      } else if ($reader instanceof StringConverter) {
+        return $reader->convertString($string);
+      }
     } else {
       throw new RuntimeException("Unsupported data type: .$extension");
     }
-    return $parsed;
   }
 
 }

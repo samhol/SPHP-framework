@@ -39,10 +39,10 @@ Document::body()->addCssClass('mit-license');
 Document::html()->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\Grid;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
 $grid = Grid::from([
-            Parser::md()->fromString(<<<MD
+            Parser::md()->convertString(<<<MD
 #MIT License
 
 Copyright (c) 2018 Sami Holck

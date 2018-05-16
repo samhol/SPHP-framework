@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once('../../settings.php');
 
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
 $d = Parser::fromFile('../filetypes.yml');
 

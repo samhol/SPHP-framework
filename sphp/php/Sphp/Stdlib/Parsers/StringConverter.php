@@ -10,22 +10,28 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Sphp\Exceptions\RuntimeException;
-
 /**
- * Abstract reader implementation
+ * Defines a string converter
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractReader implements Reader {
+interface StringConverter {
 
-  public function fromFile($filename) {
-    if (!is_file($filename) || !is_readable($filename)) {
-      throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
-    }
-    return $this->fromString(file_get_contents($filename));
-  }
+  /**
+   * Converts a string to another type of string
+   *
+   * @param  string $string
+   * @return string output 
+   */
+  public function convertString(string $string): string;
 
+  /**
+   * Converts a file to of string
+   * 
+   * @param  string $filename
+   * @return string output 
+   */
+  public function convertFile(string $filename): string;
 }

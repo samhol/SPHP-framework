@@ -27,12 +27,12 @@ MD
 Manual\visualize('Sphp/Html/Head/MetaInterface.php', 'html5', false);
 
 $code1 = Manual\codeModal('YAML file', 'Sphp/Html/Head/meta.yaml', 'YAML Meta data example');
-$tr1 = $code1->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-
+$tr1 = $code1->getTrigger()->addCssClass('button', 'alert', 'radius', 'small', 'hide-from-pdf');
+$code1->getPopup()->addCssClass('hide-from-pdf');
 echo $code1;
 
 $code2 = Manual\codeModal('PHP file', 'Sphp/Html/Head/meta-array.php', 'PHP Meta data example');
-$tr2 = $code2->getTrigger()->addCssClass('button', 'secondary', 'radius', 'small');
+$tr2 = $code2->getTrigger()->addCssClass('button', 'secondary', 'radius', 'small', 'hide-from-pdf');
 
 echo $code2;
 

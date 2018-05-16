@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
 

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
 use SplFileObject;

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Stdlib\CsvFile;
+use Sphp\Stdlib\Parsers\CsvFile;
 
 /**
  * Description of TableBuilder

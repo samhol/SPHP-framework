@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $phpArray = Manual\php()->typeLink('array');

@@ -3,7 +3,7 @@ require_once('../../settings.php');
 
 \Sphp\Manual\md('##Devicons');
 
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Media\Icons\DevIcons;
 
 $data = Parser::fromFile('DevIcons.json');

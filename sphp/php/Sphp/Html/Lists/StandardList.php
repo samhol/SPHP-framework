@@ -18,7 +18,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Container;
 use Traversable;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Exceptions\RuntimeHtmlException;
 
 /**

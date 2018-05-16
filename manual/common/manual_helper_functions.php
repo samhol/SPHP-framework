@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
 /**
  * 

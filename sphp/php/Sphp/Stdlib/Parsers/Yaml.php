@@ -15,15 +15,17 @@ use Sphp\Exceptions\RuntimeException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 /**
- * Implements a YAML to array reader
+ * Implements a YAML encoder and decoder
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Yaml extends AbstractReader implements ArrayEncoder {
+class Yaml implements ArrayEncoder, ArrayDecoder {
 
-  public function fromString(string $string) {
+  use ArrayFromFileTrait;
+
+  public function arrayFromString(string $string): array {
     try {
       $data = SymfonyYaml::parse($string);
     } catch (Exception $ex) {

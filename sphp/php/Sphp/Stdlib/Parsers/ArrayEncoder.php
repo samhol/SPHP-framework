@@ -20,6 +20,7 @@ namespace Sphp\Stdlib\Parsers;
 interface ArrayEncoder {
 
   /**
+   * Encodes an array to specific data format
    * 
    * @param  array $config
    * @return string Description

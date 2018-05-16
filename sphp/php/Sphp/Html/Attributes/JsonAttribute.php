@@ -15,7 +15,7 @@ use Iterator;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Stdlib\Readers\Json;
 
 /**

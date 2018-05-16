@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonGroup;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

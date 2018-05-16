@@ -11,6 +11,6 @@ $ns
 MD
 );
 \Sphp\Manual\printPage('Sphp.Stdlib.Filesystem');
-\Sphp\Manual\printPage('Sphp.Stdlib.Parser');
+\Sphp\Manual\printPage('Sphp.Stdlib.Parsers');
 \Sphp\Manual\printPage('Sphp.Stdlib.CsvFile');
 

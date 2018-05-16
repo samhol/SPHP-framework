@@ -4,12 +4,13 @@ namespace Doctrine\ORM;
 
 use Doctrine\ORM\Configuration;
 use Sphp\Database\Doctrine\EntityManagerFactory;
+use Sphp\Stdlib\Parsers\Parser;
 
 $isDevMode = true;
 
 // the connection configuration
 
-$dbParams = \Sphp\Stdlib\Parser::fromFile('manual/config/db.yaml');
+$dbParams = Parser::fromFile('manual/config/db.yaml');
 //echo '<pre>';
 //var_dump($dbParams);
 //echo '</pre>';
@@ -23,10 +24,10 @@ if ($applicationMode == 'development') {
 $config = new Configuration;
 //$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $config->setMetadataCacheImpl($cache);
-$driverImpl = $config->newDefaultAnnotationDriver(__DIR__.'/Entities');
+$driverImpl = $config->newDefaultAnnotationDriver(__DIR__ . '/Entities');
 $config->setMetadataDriverImpl($driverImpl);
 $config->setQueryCacheImpl($cache);
-$config->setProxyDir(__DIR__.'/Proxies');
+$config->setProxyDir(__DIR__ . '/Proxies');
 $config->setProxyNamespace('Sphp\Doctrine\Proxies');
 
 EntityManagerFactory::setDefaults($dbParams, $config);

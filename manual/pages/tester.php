@@ -4,7 +4,7 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 use Gajus\Dindent\Indenter;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
 $namedContent = [
     'viewport' => 'width=device-width, initial-scale=1',

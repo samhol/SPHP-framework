@@ -8,22 +8,15 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib\Parsers;
+namespace Sphp\Exceptions;
 
 /**
- * Defines a string reader
- * 
+ * SPHP-specific exception for file system errors
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface StringReader {
-
-  /**
-   * Read from a string and create an parses the input
-   *
-   * @param  string $string
-   * @return mixed output 
-   */
-  public function fromString(string $string);
+class FileSystemException extends SphpException {
+  
 }

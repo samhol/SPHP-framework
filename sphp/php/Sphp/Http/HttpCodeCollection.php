@@ -11,7 +11,7 @@
 namespace Sphp\Http;
 
 use Sphp\Stdlib\Path;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Exceptions\InvalidArgumentException;
 use Iterator;
 

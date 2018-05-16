@@ -11,7 +11,7 @@
 namespace Sphp\Html;
 
 use Sphp\Stdlib\Filesystem;
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Exceptions\RuntimeHtmlException;
 
 /**
@@ -73,7 +73,7 @@ trait ContentParsingTrait {
   public function appendMd(string $md) {
     try {
       $p = Parser::md();
-      $this->append($p->fromString($md));
+      $this->append($p->convertString($md));
     } catch (\Exception $ex) {
       throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
     }

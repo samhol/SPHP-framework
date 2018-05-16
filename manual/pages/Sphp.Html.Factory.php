@@ -17,9 +17,9 @@ Manual\md(<<<MD
 ###Grouped lists of the HTML5 tags and the corresponding PHP types.
 MD
 );
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 
-$data = Parser::getReaderFor('yml')->fromFile('manual/yaml/document_data.yml');
+$data = Parser::getReaderFor('yml')->convertFile('manual/yaml/document_data.yml');
 
 //print_r($data);
 

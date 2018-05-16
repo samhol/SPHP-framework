@@ -4,7 +4,7 @@ namespace Sphp\Html\Media\Icons;
 
 require_once('../../settings.php');
 
-use Sphp\Stdlib\Parser;
+use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Stdlib\Arrays;
 
 $faData = Parser::fromFile('font-awesome.json');

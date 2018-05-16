@@ -15,16 +15,23 @@ use Sphp\Exceptions\RuntimeException;
 use ParsedownExtraPlugin;
 
 /**
- * Implements a Markdown reader
+ * Implements a Markdown converter
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Markdown extends AbstractReader {
+class Markdown implements StringConverter {
 
-  public function fromString(string $string) {
+  public function convertString(string $string): string {
     return $this->parseBlock($string);
+  }
+
+  public function convertFile(string $filename): string {
+    if (!is_file($filename) || !is_readable($filename)) {
+      throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
+    }
+    return $this->convertString(file_get_contents($filename));
   }
 
   /**

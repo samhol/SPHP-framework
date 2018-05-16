@@ -22,7 +22,9 @@ use RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Ini extends AbstractReader implements ArrayEncoder {
+class Ini implements ArrayEncoder, ArrayDecoder {
+
+  use ArrayFromFileTrait;
 
   /**
    * @var IniReader 
@@ -42,7 +44,7 @@ class Ini extends AbstractReader implements ArrayEncoder {
     $this->writer = new IniWriter();
   }
 
-  public function fromString(string $string) {
+  public function arrayFromString(string $string): array {
     try {
       return $this->reader->fromString($string);
     } catch (Exception $ex) {

@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Stdlib;
-
+use Sphp\Stdlib\Parsers\CsvFile;
 use Sphp\Manual;
 
 $csvFile = Manual\api()->classLinker(CsvFile::class);

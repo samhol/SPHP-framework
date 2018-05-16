@@ -10,23 +10,28 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Sphp\Exceptions\RuntimeException;
-
 /**
- * Defines a file reader
- * 
+ * Defines a datatype encoder to PHP array decoder
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface FileToArrayParser {
+interface ArrayDecoder {
 
   /**
-   * Read from a file and create an array
+   * Decodes a file to PHP array
    *
-   * @param  string $filename
-   * @return mixed
-   * @throws RuntimeException if the file doesn't exist or is not readable
+   * @param  string $filename file name
+   * @return array output decoded array
    */
-  public function fromFile($filename);
+  public function arrayFromFile(string $filename): array;
+
+  /**
+   * Decodes a string to PHP array
+   *
+   * @param  string $string date to decode to array
+   * @return array output decoded array
+   */
+  public function arrayFromString(string $string): array;
 }
