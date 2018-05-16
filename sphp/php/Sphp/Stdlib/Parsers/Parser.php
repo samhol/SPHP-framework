@@ -105,13 +105,13 @@ abstract class Parser {
    * @param  string $filepath path to the input file
    * @param  string|null $extension optional file type extension
    * @return mixed parsed output
-   * @throws RuntimeException
+   * @throws FileSystemException
    * @throws InvalidArgumentException
    */
   public static function fromFile(string $filepath, string $extension = null) {
     $fullPath = Filesystem::getFullPath($filepath);
-    if (!file_exists($fullPath)) {
-      throw new RuntimeException(sprintf(
+    if (!Filesystem::isFile($fullPath)) {
+      throw new \Sphp\Exceptions\FileSystemException(sprintf(
                       'Filename "%s" cannot be found relative to the working directory', $filepath
       ));
     }

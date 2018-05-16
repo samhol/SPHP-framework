@@ -24,6 +24,7 @@ interface ArrayDecoder {
    *
    * @param  string $filename file name
    * @return array output decoded array
+   * @throws \Sphp\Exceptions\FileSystemException if file is not readable
    */
   public function arrayFromFile(string $filename): array;
 

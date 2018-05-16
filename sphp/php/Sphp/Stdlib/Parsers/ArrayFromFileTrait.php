@@ -10,6 +10,9 @@
 
 namespace Sphp\Stdlib\Parsers;
 
+use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\FileSystemException;
+
 /**
  * A trait to parse array data from a specific file type
  *
@@ -32,10 +35,11 @@ trait ArrayFromFileTrait {
    *
    * @param  string $filename file name
    * @return array output decoded array
+   * @throws FileSystemException if file is not readable
    */
   public function arrayFromFile(string $filename): array {
-    if (!is_file($filename) || !is_readable($filename)) {
-      throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
+    if (!Filesystem::isFile($filename)) {
+      throw new FileSystemException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
     return $this->arrayFromString(file_get_contents($filename, true));
   }

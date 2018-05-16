@@ -11,7 +11,9 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Exception;
+use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\FileSystemException;
 
 /**
  * Implements a CSV data reader
@@ -46,10 +48,11 @@ class Csv implements ArrayDecoder {
    * @param  string $enclosure
    * @param  string $escape
    * @return array
-   * @throws RuntimeException
+   * @throws RuntimeException if CSV parsing fails
+   * @throws FileSystemException if file is not readable
    */
   public function arrayFromFile(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
-    if (!is_file($filename) || !is_readable($filename)) {
+    if (!Filesystem::isFile($filename)) {
       throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
     $csv = new CsvFile($filename, $delimiter, $enclosure, $escape);

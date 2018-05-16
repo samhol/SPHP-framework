@@ -14,6 +14,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use SplFileObject;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\FileSystemException;
 
 /**
  * CSV file object
@@ -46,7 +47,7 @@ class CsvFile implements Arrayable, \Iterator {
    *
    * @var string 
    */
-  private $enclosure;
+  private $enclosure = '"';
 
   /**
    * the field escape character (one character only)
@@ -62,11 +63,11 @@ class CsvFile implements Arrayable, \Iterator {
    * @param  string $delimiter optional field delimiter (one character only)
    * @param  string $enclosure optional field enclosure character (one character only)
    * @param  string $escape optional field escape character (one character only)
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @throws FileSystemException if file is not readable
    */
   public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = "\\") {
     if (!Filesystem::isFile($filename)) {
-      throw new RuntimeException("The path '$filename' is not a file");
+      throw new FileSystemException("The path '$filename' is not a file");
     }
     $this->filename = $filename;
     $this->delimiter = $delimiter;
@@ -128,7 +129,7 @@ class CsvFile implements Arrayable, \Iterator {
    * 
    * @return SplFileObject
    */
-  public function createSplFileObject() {
+  private function createSplFileObject() {
     $temp = new SplFileObject($this->filename, 'r');
     $temp->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
     $temp->setCsvControl($this->delimiter, $this->enclosure, $this->escape);

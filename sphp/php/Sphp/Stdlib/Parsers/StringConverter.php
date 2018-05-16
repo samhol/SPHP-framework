@@ -32,6 +32,7 @@ interface StringConverter {
    * 
    * @param  string $filename
    * @return string output 
+   * @throws \Sphp\Exceptions\FileSystemException if file is not readable
    */
   public function convertFile(string $filename): string;
 }
