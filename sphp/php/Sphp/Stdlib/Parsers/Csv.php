@@ -52,8 +52,8 @@ class Csv implements ArrayDecoder {
     if (!is_file($filename) || !is_readable($filename)) {
       throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
-    $string = file_get_contents($filename);
-    return $this->arrayFromString($string, $delimiter, $enclosure, $escape);
+    $csv = new CsvFile($filename, $delimiter, $enclosure, $escape);
+    return $csv->toArray();
   }
 
 }

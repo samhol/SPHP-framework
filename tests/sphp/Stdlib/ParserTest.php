@@ -76,11 +76,10 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @dataProvider filepathMap
    * @param string $file
    * @param boolean $expected
    */
-  public function testExceptions($file, $expected) {
+  public function testExceptions() {
     $this->expectException(RuntimeException::class);
     Parser::fromFile('foo.md');
   }
