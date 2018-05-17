@@ -9,8 +9,9 @@ echo '<pre>';
 $rawData = Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv');
 array_shift($rawData);
 $exercises  = new ExerciseCollection();
-foreach ($rawData as $fitnoteData) {
-  $exercises->insert(Factory::fromFitnote($fitnoteData));
+foreach ($rawData as $d) {
+  $date = $d[1];
+  //$exercises->insert(Factory::fromFitnote($fitnoteData));
 }
 echo $exercises;
 echo '</pre>';
