@@ -39,8 +39,7 @@ class Exercise {
   /**
    * Constructor
    */
-  public function __construct(DateInterface $date, string $name, string $category) {
-    $this->date = $date;
+  public function __construct(string $name, string $category) {
     $this->name = $name;
     $this->description = $category;
   }
@@ -71,7 +70,7 @@ class Exercise {
   }
   
   public function __toString() {
-    return $this->date->format('Y-m-d') . ": $this->name";
+    return "$this->name: ($this->description)";
   }
 
 }

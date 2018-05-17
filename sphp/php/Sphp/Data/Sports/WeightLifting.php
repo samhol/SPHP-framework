@@ -35,16 +35,16 @@ class WeightLifting extends Exercise {
    * @param float $weight
    * @param int $reps
    */
-  public function __construct(DateInterface $date, string $name, string $category) {
-    parent::__construct($date, $name, $category);
+  public function __construct(string $name, string $category) {
+    parent::__construct($name, $category);
   }
 
   public function getSets(): int {
     return $this->set;
   }
 
-  public function addSet(float $weight, int $reps) {
-    $this->set[] = new WeightliftingSet($weight, $reps);
+  public function addSet( $weight,  $reps) {
+    $this->set[] = [$weight, $reps];
     return $this;
   }
 
