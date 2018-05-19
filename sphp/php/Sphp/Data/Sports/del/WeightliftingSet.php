@@ -10,21 +10,25 @@
 
 namespace Sphp\Data\Sports;
 
-use Sphp\DateTime\DateInterface;
-
 /**
- * Description of WeightLifting
+ * Description of WeightliftingSet
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeightLifting extends Exercise {
+class WeightliftingSet {
+  
+  /**
+   * @var float
+   */
+  private $set;
 
   /**
-   * @var WeightliftingSet[]
+   * @var int
    */
-  private $set = [];
+  private $reps;
+  
 
   /**
    * Constructor
@@ -35,16 +39,26 @@ class WeightLifting extends Exercise {
    * @param float $weight
    * @param int $reps
    */
-  public function __construct(string $name, string $category) {
-    parent::__construct($name, $category);
+  public function __construct(float $weight, int $reps) {
+    $this->setWeight($weight)->setReps($reps);
   }
 
-  public function getSets(): int {
-    return $this->set;
+  public function getWeight(): float {
+    return $this->weight;
   }
 
-  public function addSet($weight, $reps) {
-    $this->set[] = [$weight, $reps];
+  public function getReps(): int {
+    return $this->reps;
+  }
+
+  public function setWeight(float $weight) {
+    $this->set[]['weight'] = $weight;
+    $this->set[]['reps'] = $reps;
+    return $this;
+  }
+
+  public function setReps(int $reps) {
+    $this->reps = $reps;
     return $this;
   }
 

@@ -8,7 +8,7 @@ echo '<pre>';
 //print_r(Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv'));
 $rawData = Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv');
 array_shift($rawData);
-$exercises = [];
+/*$exercises = [];
 foreach ($rawData as $d) {
   $ds = $d[0];
   $date = new \Sphp\DateTime\Date($d[0]);
@@ -49,12 +49,18 @@ foreach ($exercises as $date => $all) {
     if ($data['type'] === 'wr') {
       $wle = new WeightLifting($name, $data['cat']);
       foreach ($data['sets'] as $set) {
-        var_dump($set);
+       // var_dump($set);
         $wle->addSet($set['weight'], $set['reps']);
       }
       $foo[] = $wle;
     }
   }
 }
-print_r($exercises);
+//print_r($exercises);*/
+$ed = new ExerciseDay(new \Sphp\DateTime\Date());
+$ed->insert(new WeightLifting('Box Squat', 'legs'));
+$exer = new ExerciseDayCollection();
+$exer->setDay($ed);
+$exer->getDay('2018-5-6')->insert(new WeightLifting('Box Squat', 'legs'));
+echo $exer;
 echo '</pre>';

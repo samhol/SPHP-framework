@@ -22,6 +22,11 @@ use Sphp\DateTime\DateInterface;
 class Exercise {
 
   /**
+   * @var DateInterface 
+   */
+  private $date;
+
+  /**
    * @var string 
    */
   private $name;
@@ -29,19 +34,16 @@ class Exercise {
   /**
    * @var string 
    */
-  private $category;
+  private $description;
 
   /**
    * Constructor
    */
   public function __construct(string $name, string $category) {
     $this->name = $name;
-    $this->category = $category;
+    $this->description = $category;
   }
 
-  public function __toString() {
-    return "$this->name: ($this->category)";
-  }
 
   /**
    * 
@@ -56,7 +58,11 @@ class Exercise {
    * @return string
    */
   public function getDescription(): string {
-    return $this->category;
+    return $this->description;
+  }
+  
+  public function __toString() {
+    return "$this->name: ($this->description)";
   }
 
 }

@@ -9,7 +9,9 @@
  */
 
 namespace Sphp\Data\Sports;
+
 use Sphp\DateTime\DateInterface;
+
 /**
  * Description of WeightAndReps
  *
@@ -38,8 +40,8 @@ class WeightAndReps extends Exercise {
    * @param float $weight
    * @param int $reps
    */
-  public function __construct(DateInterface $date, string $name, string $category, float $weight, int $reps) {
-    parent::__construct($date, $name, $category);
+  public function __construct(string $name, string $category, float $weight, int $reps) {
+    parent::__construct($name, $category);
     $this->setWeight($weight)->setReps($reps);
   }
 
