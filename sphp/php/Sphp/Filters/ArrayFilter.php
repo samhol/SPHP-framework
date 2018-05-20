@@ -29,6 +29,21 @@ class ArrayFilter extends AbstractFilter {
   private $definition;
 
   /**
+   * @var array
+   */
+  private $rejectedValues = [];
+
+  /**
+   * @var array
+   */
+  private $allowedValues = [];
+
+  /**
+   * @var array
+   */
+  private $passUnchanged = [];
+
+  /**
    * @var boolean
    */
   private $addEmpty;
@@ -41,9 +56,24 @@ class ArrayFilter extends AbstractFilter {
    * @link  http://php.net/manual/en/function.filter-var-array.php filter_var_array
    * @link  http://php.net/manual/en/filter.filters.php Types of filters
    */
-  public function __construct(array $definition = [], $add_empty = true) {
+  public function __construct(array $definition = [], bool $add_empty = true) {
     $this->definition = $definition;
     $this->addEmpty = $add_empty;
+  }
+
+  public function rejectThese(...$value) {
+    $this->rejectedValues = $value;
+    return $this;
+  }
+
+  public function passUnchanged(...$key) {
+    $this->passUnchanged = $key;
+    return $this;
+  }
+
+  public function allowThese(...$value) {
+    $this->allowedValues = $value;
+    return $this;
   }
 
   public function getDefinition() {
@@ -64,12 +94,15 @@ class ArrayFilter extends AbstractFilter {
     return $this;
   }
 
-  public function setFilter($key, $filter, $flags = 0, $options = []) {
-    $def = array('filter' => $filter,
-        'flags' => $flags,
-        'options' => $options
-    );
-    $this->definition[$key] = $def;
+  public function setFilter($callable, ...$key) {
+    foreach ($key as $k) {
+      $this->definition[$k] = $callable;
+    }
+    return $this;
+  }
+
+  public function stringOnly(...$key) {
+    $this->definition[$key] = $key;
     return $this;
   }
 
@@ -95,20 +128,17 @@ class ArrayFilter extends AbstractFilter {
     return $this;
   }
 
-  public function setCallable($key, $filter) {
-    if (is_callable($filter)) {
-      $definition = array('filter' => FILTER_CALLBACK,
-          'options' => $filter);
-      $this->setFilter($key, $definition);
-    }
-    return $this;
-  }
-
   public function filter($variable) {
-    if (!is_array($variable)) {
-      $variable = [];
+    $result = [];
+    foreach ($variable as $key => $val) {
+      if (in_array($key, $this->passUnchanged) || in_array($val, $this->allowedValues)) {
+        $result[$key] = $val;
+      } else if (array_key_exists($key, $this->definition) && !in_array($variable[$key], $this->rejectedValues)) {
+        $filter = $this->definition[$key];
+        $result[$key] = $filter($variable[$key]);
+      }
     }
-    return filter_var_array($variable, $this->definition, $this->addEmpty);
+    return $result;
   }
 
   public function filterGet(): array {

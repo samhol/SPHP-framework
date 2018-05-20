@@ -18,7 +18,9 @@ namespace Sphp\Filters;
  * @filesource
  */
 class IntegerFilter extends VariableFilter {
-private $round  = \PHP_ROUND_HALF_UP;
+
+  private $round = \PHP_ROUND_HALF_UP;
+
   /**
    * Constructor
    * 
@@ -38,8 +40,8 @@ private $round  = \PHP_ROUND_HALF_UP;
       $this->setDefault($default);
     }
   }
-  
-  public function setRounding($round  = PHP_ROUND_HALF_UP) {
+
+  public function setRounding($round = PHP_ROUND_HALF_UP) {
     $this->round = $round;
     return $this;
   }
@@ -73,14 +75,14 @@ private $round  = \PHP_ROUND_HALF_UP;
     $this->setOption('default', $default);
     return $this;
   }
-  
+
   public function filter($variable) {
-    if(is_object($variable) && method_exists($variable, '__toString')) {
+    if (is_object($variable) && method_exists($variable, '__toString')) {
       $variable = strval($variable);
     }
     if (!is_numeric($variable)) {
       $variable = null;
-      echo "\nperkele:".$variable."\n";
+      echo "\nperkele:" . $variable . "\n";
     } else {
       $variable = round($variable, 0, $this->round);
     }

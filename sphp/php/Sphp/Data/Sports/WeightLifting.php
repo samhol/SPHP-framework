@@ -19,7 +19,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeightLifting extends Exercise {
+class WeightLifting extends Exercise implements \Countable {
 
   /**
    * @var WeightliftingSet[]
@@ -39,13 +39,25 @@ class WeightLifting extends Exercise {
     parent::__construct($name, $category);
   }
 
+  public function __toString() {
+    $output = parent::__toString();
+    foreach ($this->set as $set) {
+      $output .= "\n\t\t$set";
+    }
+    return $output;
+  }
+
   public function getSets(): int {
     return $this->set;
   }
 
   public function addSet($weight, $reps) {
-    $this->set[] = [$weight, $reps];
+    $this->set[] = new WeightliftingSet($weight, $reps);
     return $this;
+  }
+
+  public function count(): int {
+    return count($this->set);
   }
 
 }

@@ -21,12 +21,18 @@ use Sphp\DateTime\DateInterface;
  */
 class DistanceAndTimeExercise extends Exercise {
 
-  private $distance;
-  private $unit;
-  private $time;
+  private $sets = [];
 
-  public function __construct(DateInterface $date, string $name, string $category, float $distance, $unit, $time) {
-    parent::__construct($date, $name, $category);
+  public function __construct(string $name, string $category) {
+    parent::__construct($name, $category);
+  }
+
+  public function __toString() {
+    $output = parent::__toString();
+    foreach ($this->sets as $set) {
+      $output .= "\n\t\t$set";
+    }
+    return $output;
   }
 
   public function getDistance(): float {
@@ -54,6 +60,10 @@ class DistanceAndTimeExercise extends Exercise {
   public function setTime($time) {
     $this->time = $time;
     return $this;
+  }
+
+  public function addSet($distance, $unit, $time) {
+    $this->sets[] =new DistanceAndTimeSet($distance, $time, $unit);
   }
 
 }

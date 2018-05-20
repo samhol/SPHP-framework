@@ -20,7 +20,7 @@ use Sphp\DateTime\DateInterface;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ExerciseDay {
+class ExerciseDay implements \Countable {
 
   private $exercises;
 
@@ -38,8 +38,9 @@ class ExerciseDay {
   }
 
   public function __toString() {
-    $output = "$this->date:\n";
-    foreach ($this as $ex) {
+    $output = "$this->date:";
+    foreach ($this->exercises as $ex) {
+      //print_r($ex);
       $output .= "\n\t$ex";
     }
     return $output;
@@ -59,13 +60,39 @@ class ExerciseDay {
     return $this;
   }
 
+  public function insertWeightAndRepsExersice(string $name, string $category = null): WeightLifting {
+    if (!isset($this->exercises[$name])) {
+      $this->exercises[$name] = new WeightLifting($name, $category);
+    }
+    return $this->exercises[$name];
+  }
+
   public function getExercise(string $name): Exercise {
     return $this->exercises[$name];
   }
 
+  /**
+   * 
+   * @param string $name
+   * @param string $category
+   * @return WeightLifting
+   */
   public function weightLifting(string $name, string $category = null): WeightLifting {
     if (!isset($this->exercises[$name])) {
       $this->exercises[$name] = new WeightLifting($name, $category);
+    }
+    return $this->exercises[$name];
+  }
+
+  /**
+   * 
+   * @param string $name
+   * @param string $category
+   * @return DistanceAndTimeExercise
+   */
+  public function distanceAndTime(string $name, string $category = null): DistanceAndTimeExercise {
+    if (!isset($this->exercises[$name])) {
+      $this->exercises[$name] = new DistanceAndTimeExercise($name, $category);
     }
     return $this->exercises[$name];
   }
@@ -80,7 +107,6 @@ class ExerciseDay {
     return $this->dateExists($e->getDate()) && $this->dateContainsType($e);
   }
 
-  
   public function dateExists(DateInterface $date): bool {
     return array_key_exists($date->format('Y-m-d'), $this->exercises);
   }
@@ -95,49 +121,12 @@ class ExerciseDay {
     return $this->dateExists($e->getDate()) && array_key_exists($e->getName(), $this->exercises[$e->getDate()->format('Y-m-d')]);
   }
 
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->exercises);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->exercises);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->exercises);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->exercises);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->exercises);
-  }
-
   public function getIterator(): \Traversable {
-    return new \ArrayIterator(\Sphp\Stdlib\Arrays::flatten($this->exercises));
+    return new \ArrayIterator($this->exercises);
+  }
+
+  public function count(): int {
+    return count($this->exercises);
   }
 
 }

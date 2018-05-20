@@ -40,23 +40,12 @@ class ExerciseCollection implements \IteratorAggregate {
     return $output;
   }
 
-  public function insert(Exercise $e) {
+  public function insert(ExerciseDay $e) {
     $date = $e->getDate()->format('Y-m-d');
-    $name = $e->getName();
-    if (!isset($this->exercises[$date][$name])) {
-      $this->exercises[$date][$name] = $e;
-    }
-    $this->exercises[$date][$name][] = $e;
+    $this->exercises[$date] = $e;
     return $this;
   }
 
-  public function weightLifting(DateInterface $date, string $name, string $category): WeightLifting {
-    $d = $e->getDate()->format('Y-m-d');
-    if (!isset($this->exercises[$d][$name])) {
-      $this->exercises[$d][$name] = new WeightLifting($date, $name, $category);
-    }
-    return $this->exercises[$d][$name];
-  }
 
   /**
    * Returns
@@ -64,7 +53,7 @@ class ExerciseCollection implements \IteratorAggregate {
    * @param  Exercise $e 
    * @return boolean
    */
-  public function contains(Exercise $e): bool {
+  public function contains(ExerciseDay $e): bool {
     return $this->dateExists($e->getDate()) && $this->dateContainsType($e);
   }
 

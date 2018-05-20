@@ -18,7 +18,7 @@ namespace Sphp\Data\Sports;
  * @filesource
  */
 class WeightliftingSet {
-  
+
   /**
    * @var float
    */
@@ -28,7 +28,6 @@ class WeightliftingSet {
    * @var int
    */
   private $reps;
-  
 
   /**
    * Constructor
@@ -43,6 +42,10 @@ class WeightliftingSet {
     $this->setWeight($weight)->setReps($reps);
   }
 
+  public function __toString() {
+    return sprintf("%skg x %d reps", $this->weight, $this->reps);
+  }
+
   public function getWeight(): float {
     return $this->weight;
   }
@@ -52,14 +55,17 @@ class WeightliftingSet {
   }
 
   public function setWeight(float $weight) {
-    $this->set[]['weight'] = $weight;
-    $this->set[]['reps'] = $reps;
+    $this->weight = $weight;
     return $this;
   }
 
   public function setReps(int $reps) {
     $this->reps = $reps;
     return $this;
+  }
+
+  public function count(): int {
+    
   }
 
 }
