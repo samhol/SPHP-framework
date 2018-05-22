@@ -10,10 +10,8 @@
 
 namespace Sphp\Data\Sports;
 
-use Sphp\DateTime\DateInterface;
-
 /**
- * Implements a http code
+ * Implements an exercise
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -33,13 +31,23 @@ class Exercise {
 
   /**
    * Constructor
+   * 
+   * @param string $name
+   * @param string $category
    */
   public function __construct(string $name, string $category) {
     $this->name = $name;
     $this->category = $category;
   }
 
-  public function __toString() {
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->name, $this->category);
+  }
+
+  public function __toString(): string {
     return "$this->name: ($this->category)";
   }
 

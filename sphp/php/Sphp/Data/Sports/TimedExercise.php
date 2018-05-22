@@ -10,6 +10,8 @@
 
 namespace Sphp\Data\Sports;
 
+use Sphp\DateTime\Factory;
+
 /**
  * Description of TimedExercise
  *
@@ -18,7 +20,7 @@ namespace Sphp\Data\Sports;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class TimedExercise {
+class TimedExercise extends Exercise {
 
   private $sets = [];
 
@@ -26,7 +28,15 @@ class TimedExercise {
     parent::__construct($name, $category);
   }
 
-  public function __toString() {
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->sets);
+    parent::__destruct();
+  }
+
+  public function __toString(): string {
     $output = parent::__toString();
     foreach ($this->sets as $set) {
       $output .= "\n\t\t$set";
@@ -39,21 +49,13 @@ class TimedExercise {
   }
 
   public function setTime($time) {
-
-    $ed['time'] = $exersice[7];
-    $rawTime = $exersice[7];
-    $parts = explode(':', $rawTime);
-    $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
-    echo "$dateint\n";
-
-    $interval = new \DateInterval($dateint);
-    echo $interval->format('%h hours');
-    $this->time = $time;
+    $interval = Factory::timeDiff($time);
+    $this->time = $interval;
     return $this;
   }
 
   public function addSet($time) {
-    $this->sets[] = new DistanceAndTimeSet($distance, $time, $unit);
+    $this->sets[] = new TimedSet($time);
   }
 
 }

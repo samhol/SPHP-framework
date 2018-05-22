@@ -11,6 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateInterval;
+use Sphp\Stdlib\Strings;
 
 /**
  * Description of Factory
@@ -22,15 +23,14 @@ use DateInterval;
  */
 class Factory {
 
-  public static function timeDiff(string $time):DateInterval {
-    var_dump(\Sphp\Stdlib\Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/"));
-    if (\Sphp\Stdlib\Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
+  public static function timeDiff(string $time): DateInterval {
+    if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
       $parts = explode(':', $time);
       $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
-      echo "$dateint\n";
-      $interval = new \DateInterval($dateint);
+      //echo "$dateint\n";
+      $interval = new DateInterval($dateint);
     } else {
-      $interval = new \DateInterval($time);
+      $interval = new DateInterval($time);
     }
     return $interval;
   }

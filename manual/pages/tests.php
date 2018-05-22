@@ -49,24 +49,26 @@ $rawData = Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv');
         $unit = 'km';
       }
       // $type .= 'd';
-      $ex->addSet((float) $exersice[5], $unit, $exersice[7]);
+      $ex->addSet((float) $exersice[5], $exersice[7], $unit);
     } else if ($exersice[7] !== '') {
+      $ex = $obj->timedExercise($name, $category);
       $ed['time'] = $exersice[7];
       $rawTime = $exersice[7];
       echo \Sphp\DateTime\Factory::timeDiff($rawTime)->format('%h :%m; %s');
       $parts = explode(':', $rawTime);
       $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
-      echo "$dateint\n";
+      //echo "$dateint\n";
 
       $interval = new \DateInterval($dateint);
       echo $interval->format('%h hours');
-      print_r($parts);
+     // print_r($parts);
       // $type .= 't';
+      $ex->addSet($exersice[7]);
     }
     //$exercises[$ds][$exercise]['sets'][] = $ed;
     //$exercises->insert(Factory::fromFitnote($fitnoteData));
   }
-  //echo $coll;
+  echo $coll;
   //echo implode("\n",$objs);
   $i = \DateInterval::createFromDateString('P1:03:22');
   print_r($i);

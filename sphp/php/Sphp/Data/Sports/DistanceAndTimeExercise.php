@@ -27,7 +27,7 @@ class DistanceAndTimeExercise extends Exercise {
     parent::__construct($name, $category);
   }
 
-  public function __toString() {
+  public function __toString(): string {
     $output = parent::__toString();
     foreach ($this->sets as $set) {
       $output .= "\n\t\t$set";
@@ -43,27 +43,8 @@ class DistanceAndTimeExercise extends Exercise {
     return $this->unit;
   }
 
-  public function getTime() {
-    return $this->time;
-  }
-
-  public function setDistance($distance) {
-    $this->distance = $distance;
-    return $this;
-  }
-
-  public function setUnit($unit) {
-    $this->unit = $unit;
-    return $this;
-  }
-
-  public function setTime($time) {
-    $this->time = $time;
-    return $this;
-  }
-
-  public function addSet($distance, $unit, $time) {
-    $this->sets[] =new DistanceAndTimeSet($distance, $time, $unit);
+  public function addSet(float $distance, $duration, string $unit = 'km') {
+    $this->sets[] = new DistanceAndTimeSet($distance, $duration, $unit);
   }
 
 }

@@ -39,8 +39,8 @@ class WeightLifting extends Exercise implements \Countable {
     parent::__construct($name, $category);
   }
 
-  public function __toString() {
-    $output = parent::__toString();
+  public function __toString(): string {
+    $output = parent::__toString() . ' total weight: ' . $this->getTotalWeight()  .'kg';
     foreach ($this->set as $set) {
       $output .= "\n\t\t$set";
     }
@@ -51,13 +51,21 @@ class WeightLifting extends Exercise implements \Countable {
     return $this->set;
   }
 
-  public function addSet($weight, $reps) {
+  public function addSet(float $weight, int $reps) {
     $this->set[] = new WeightliftingSet($weight, $reps);
     return $this;
   }
 
   public function count(): int {
     return count($this->set);
+  }
+
+  public function getTotalWeight(): float {
+    $total = 0;
+    foreach ($this->set as $set) {
+      $total += $set->getTotalWeight();
+    }
+    return $total;
   }
 
 }

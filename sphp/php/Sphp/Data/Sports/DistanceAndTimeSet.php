@@ -17,7 +17,7 @@ namespace Sphp\Data\Sports;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DistanceAndTimeSet {
+class DistanceAndTimeSet extends TimedSet {
 
   /**
    * @var float
@@ -30,23 +30,20 @@ class DistanceAndTimeSet {
   private $unit = 'm';
 
   /**
-   * @var string
-   */
-  private $time;
-
-  /**
    * Constructor
    * 
    * @param float $distance
-   * @param type $time
+   * @param type $duration
    * @param string $unit
    */
-  public function __construct(float $distance, $time, string $unit = 'm') {
-    $this->setDistance($distance, $unit)->setTime($time);
+  public function __construct(float $distance, $duration, string $unit = 'm') {
+    parent::__construct($duration);
+    $this->setDistance($distance, $unit);
   }
 
-  public function __toString() {
-    return sprintf("%s%s in %s time", $this->distance, $this->unit, $this->time);
+  public function __toString(): string {
+    $duration = parent::__toString();
+    return sprintf("%s%s in %s", $this->distance, $this->unit, $duration);
   }
 
   public function getDistance(string $unit = 'm'): float {
@@ -57,10 +54,6 @@ class DistanceAndTimeSet {
     return $this->distance;
   }
 
-  public function getReps(): int {
-    return $this->reps;
-  }
-
   public function setDistance(float $distance, string $unit = 'm') {
     $this->distance = $distance;
     $this->unit = $unit;
@@ -69,11 +62,6 @@ class DistanceAndTimeSet {
 
   public function setUnit(string $unit) {
     $this->unit = $unit;
-    return $this;
-  }
-
-  public function setTime($reps) {
-    $this->time = $reps;
     return $this;
   }
 

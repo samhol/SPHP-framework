@@ -11,6 +11,7 @@
 namespace Sphp\Data\Sports;
 
 use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Date;
 
 /**
  * Description of ExerciseDy
@@ -30,14 +31,16 @@ class ExerciseDay implements \Countable {
   private $date;
 
   /**
-   * 
+   * constructor
+   *
+   * @param \Sphp\DateTime\Date $d
    */
-  public function __construct(\Sphp\DateTime\Date $d) {
+  public function __construct(Date $d) {
     $this->exercises = [];
     $this->date = $d;
   }
 
-  public function __toString() {
+  public function __toString(): string {
     $output = "$this->date:";
     foreach ($this->exercises as $ex) {
       //print_r($ex);
@@ -84,6 +87,18 @@ class ExerciseDay implements \Countable {
     return $this->exercises[$name];
   }
 
+  /**
+   * 
+   * @param string $name
+   * @param string $category
+   * @return TimedExercise
+   */
+  public function timedExercise(string $name, string $category = null): TimedExercise {
+    if (!isset($this->exercises[$name])) {
+      $this->exercises[$name] = new TimedExercise($name, $category);
+    }
+    return $this->exercises[$name];
+  }
   /**
    * 
    * @param string $name

@@ -22,19 +22,16 @@ class WeightliftingSet {
   /**
    * @var float
    */
-  private $set;
+  private $weight;
 
   /**
-   * @var int
+   * @var int 
    */
   private $reps;
 
   /**
    * Constructor
    * 
-   * @param DateInterface $date
-   * @param string $name
-   * @param string $category
    * @param float $weight
    * @param int $reps
    */
@@ -42,7 +39,7 @@ class WeightliftingSet {
     $this->setWeight($weight)->setReps($reps);
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return sprintf("%skg x %d reps", $this->weight, $this->reps);
   }
 
@@ -64,8 +61,8 @@ class WeightliftingSet {
     return $this;
   }
 
-  public function count(): int {
-    
+  public function getTotalWeight(): float {
+    return $this->reps * $this->weight;
   }
 
 }

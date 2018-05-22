@@ -34,14 +34,5 @@ class Factory {
     }
   }
 
-  public static function fromFitnoteData(array $data): Exercise {
-
-    $date = new \Sphp\DateTime\Date($data[0]);
-    if ($data[3] !== '' && $data[4] !== '') {
-      return new WeightAndReps($date, $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7]);
-    } else if ($data[5] !== '' && $data[6] !== '' && $data[7] !== '') {
-      return new DistanceAndTimeExercise($date, $data[1], $data[2], (float) $data[5], $data[6], $data[7]);
-    }
-  }
 
 }
