@@ -44,17 +44,17 @@ class TimedSet {
   }
 
   public function __toString(): string {
-    $output = '';
+    $item = [];
     if ($this->duration->h > 0) {
-      $output .= "{$this->duration->h} hours";
+      $item[] = "{$this->duration->h} hours";
     }
     if ($this->duration->i > 0) {
-      $output .= "{$this->duration->i} minutes";
+      $item[] = "{$this->duration->i} minutes";
     }
     if ($this->duration->s > 0) {
-      $output .= "{$this->duration->s} seconds";
+      $item[] = "{$this->duration->s} seconds";
     }
-    return $output;
+    return implode(' ', $item);
   }
 
   /**
@@ -74,7 +74,6 @@ class TimedSet {
    */
   public function setDuration($duration) {
     if (!$duration instanceof DateInterval) {
-      echo "$duration";
       $duration = Factory::timeDiff($duration);
     }
     $this->duration = $duration;

@@ -10,6 +10,7 @@
 
 namespace Sphp\Data\Sports;
 
+use Sphp\DateTime\Calendars\Events\Event;
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
@@ -21,7 +22,7 @@ use Sphp\DateTime\Date;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ExerciseDay implements \Countable {
+class ExerciseDay implements Event, \Countable {
 
   private $exercises;
 
@@ -142,6 +143,14 @@ class ExerciseDay implements \Countable {
 
   public function count(): int {
     return count($this->exercises);
+  }
+
+  public function dateMatchesWith($date): bool {
+    return $this->date->matchesWith($date);
+  }
+
+  public function eventAsString(): string {
+    return $this->__toString();
   }
 
 }

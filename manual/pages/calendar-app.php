@@ -61,7 +61,8 @@ $interval = new \DateInterval('P1M');
 $daterange = new \DatePeriod($begin, $interval, $end);
 
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Page;
-
+use Sphp\Data\Sports\FitNotes;
+$exercises = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
 foreach ($daterange as $id => $date) {
   $href = "calendar/" . $date->format("Y/m");
   $content = $date->format("M Y");

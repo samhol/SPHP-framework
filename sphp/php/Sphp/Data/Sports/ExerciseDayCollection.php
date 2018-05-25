@@ -11,7 +11,7 @@
 namespace Sphp\Data\Sports;
 
 use Sphp\DateTime\DateInterface;
-
+use Sphp\DateTime\Date;
 /**
  * Implements a HTTP code object collection
  *
@@ -70,7 +70,10 @@ class ExerciseDayCollection implements \IteratorAggregate {
     return $this->dateExists($e->getDate()) && $this->dateContainsType($e);
   }
 
-  public function dateExists(DateInterface $date): bool {
+  public function dateExists($date): bool {
+    if (!$date instanceof DateInterface) {
+      $date = new \Sphp\DateTime\Date($date);
+    }
     return array_key_exists($date->format('Y-m-d'), $this->days);
   }
 
@@ -82,47 +85,6 @@ class ExerciseDayCollection implements \IteratorAggregate {
    */
   public function dateContainsType(Exercise $e): bool {
     return $this->dateExists($e->getDate()) && array_key_exists($e->getName(), $this->days[$e->getDate()->format('Y-m-d')]);
-  }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->days);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->days);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->days);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->days);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->days);
   }
 
   public function getIterator(): \Traversable {
