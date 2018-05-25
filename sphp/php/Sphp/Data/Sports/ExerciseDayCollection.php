@@ -19,7 +19,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ExerciseDayCollection implements \IteratorAggregate {
+class ExerciseDayCollection implements \IteratorAggregate, \Sphp\DateTime\Calendars\Events\EventCollectionInterface {
 
   private $days;
 
@@ -89,6 +89,38 @@ class ExerciseDayCollection implements \IteratorAggregate {
 
   public function getIterator(): \Traversable {
     return new \ArrayIterator($this->days);
+  }
+
+  public function containsEvent(\Sphp\DateTime\Calendars\Events\Event $event): bool {
+    
+  }
+
+  public function getBirthdays(): array {
+    
+  }
+
+  public function getHolidays(): array {
+    
+  }
+
+  public function getNotes(): array {
+    
+  }
+
+  public function insertEvent(\Sphp\DateTime\Calendars\Events\Event $event): bool {
+    
+  }
+
+  public function mergeEvents(\Sphp\DateTime\Calendars\Events\EventCollectionInterface $events): \this {
+    
+  }
+
+  public function notEmpty(): bool {
+    
+  }
+
+  public function toArray(): array {
+    
   }
 
 }
