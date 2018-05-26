@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Sphp\Data\Sports;
+namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\DateTime\Date;

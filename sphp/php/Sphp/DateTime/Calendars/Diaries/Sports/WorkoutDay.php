@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Data\Sports;
+namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\DateTime\Calendars\Events\Event;
 use Sphp\DateTime\DateInterface;
@@ -22,7 +22,7 @@ use Sphp\DateTime\Date;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ExerciseDay implements Event, \Countable {
+class WorkoutDay implements Event, \Countable {
 
   private $exercises;
 
@@ -50,11 +50,11 @@ class ExerciseDay implements Event, \Countable {
     return $output;
   }
 
-  function getDate(): DateInterface {
+  public function getDate(): DateInterface {
     return $this->date;
   }
 
-  function setDate(DateInterface $date) {
+  public function setDate(DateInterface $date) {
     $this->date = $date;
   }
 
@@ -100,6 +100,7 @@ class ExerciseDay implements Event, \Countable {
     }
     return $this->exercises[$name];
   }
+
   /**
    * 
    * @param string $name

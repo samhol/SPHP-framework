@@ -12,6 +12,7 @@ namespace Sphp\Data\Sports;
 
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\Events\EventCollectionInterface;
 /**
  * Implements a HTTP code object collection
  *
@@ -19,7 +20,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ExerciseDayCollection implements \IteratorAggregate, \Sphp\DateTime\Calendars\Events\EventCollectionInterface {
+class WorkoutDiary implements \IteratorAggregate, EventCollectionInterface {
 
   private $days;
 
@@ -45,17 +46,17 @@ class ExerciseDayCollection implements \IteratorAggregate, \Sphp\DateTime\Calend
     return $output;
   }
 
-  public function setDay(ExerciseDay $e) {
+  public function setDay(WorkoutDay $e) {
     $date = $e->getDate()->format('Y-m-d');
     $this->days[$date] = $e;
     return $this;
   }
 
-  public function getDay($date): ExerciseDay {
-    $d = new \Sphp\DateTime\Date($date);
+  public function getDay($date): WorkoutDay {
+    $d = new Date($date);
     $key = $d->format('Y-m-d');
     if (!isset($this->days[$key])) {
-      $this->days[$key] = new ExerciseDay($d);
+      $this->days[$key] = new WorkoutDay($d);
     }
     return $this->days[$key];
   }
@@ -72,7 +73,7 @@ class ExerciseDayCollection implements \IteratorAggregate, \Sphp\DateTime\Calend
 
   public function dateExists($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new \Sphp\DateTime\Date($date);
+      $date = new Date($date);
     }
     return array_key_exists($date->format('Y-m-d'), $this->days);
   }

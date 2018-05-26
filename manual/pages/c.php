@@ -70,9 +70,9 @@ foreach ($exercises as $date => $all) {
   }
 }
 //print_r($exercises); 
-$ed = new ExerciseDay(new \Sphp\DateTime\Date());
+$ed = new WorkoutDay(new \Sphp\DateTime\Date());
 $ed->insert(new WeightLifting('Box Squat', 'legs'));
-$exer = new ExerciseDayCollection();
+$exer = new WorkoutDiary();
 $exer->setDay($ed);
 $exer->getDay('2018-5-6')->insert(new WeightLifting('Box Squat', 'legs'));
 $exer->getDay('2018-5-6')

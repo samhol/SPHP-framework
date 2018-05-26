@@ -21,7 +21,7 @@ class Factory {
 
   public static function fromFitnote(array $data): Exercise {
     $date = new \Sphp\DateTime\Date($data[0]);
-    $daily = new ExerciseDay($date);
+    $daily = new WorkoutDay($date);
     if ($data[3] !== '' && $data[4] !== '') {
       $daily->insert($e) new WeightLifting($date, $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7]);
     } else if ($data[5] !== '' && $data[6] !== '' && $data[7] !== '') {
