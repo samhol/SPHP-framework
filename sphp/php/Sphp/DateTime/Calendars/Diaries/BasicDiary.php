@@ -20,7 +20,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EventCollection extends AbstractDiary {
+class BasicDiary extends AbstractDiary {
 
   /**
    * Returns calendar events concerning specific calendar date

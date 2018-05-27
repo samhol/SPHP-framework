@@ -10,6 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
+use Sphp\DateTime\Calendars\Diaries\AbstractDiary;
 use Sphp\DateTime\Date;
 
 /**
@@ -19,7 +20,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EasterHolidays extends EventCollection {
+class EasterHolidays extends AbstractDiary {
 
   /**
    * Constructor
@@ -33,12 +34,12 @@ class EasterHolidays extends EventCollection {
       $year = (int) date('Y');
     }
     $sunday = static::getEasterSunday($year);
-    $this->insertEvent(Holidays::unique($sunday->jumpDays(-3), 'Maundy Thursday'));
-    $this->insertEvent(Holidays::unique($sunday->jumpDays(-2), 'Good Friday')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday, 'Easter Sunday')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday->jumpDays(1), 'Easter Monday')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday->jumpDays(39), 'Ascension Day')->setNationalHoliday());
-    $this->insertEvent(Holidays::unique($sunday->jumpDays(49), 'Pentecost'));
+    $this->insertLog(Holidays::unique($sunday->jumpDays(-3), 'Maundy Thursday'));
+    $this->insertLog(Holidays::unique($sunday->jumpDays(-2), 'Good Friday')->setNationalHoliday());
+    $this->insertLog(Holidays::unique($sunday, 'Easter Sunday')->setNationalHoliday());
+    $this->insertLog(Holidays::unique($sunday->jumpDays(1), 'Easter Monday')->setNationalHoliday());
+    $this->insertLog(Holidays::unique($sunday->jumpDays(39), 'Ascension Day')->setNationalHoliday());
+    $this->insertLog(Holidays::unique($sunday->jumpDays(49), 'Pentecost'));
   }
 
   /**

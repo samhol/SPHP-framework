@@ -17,7 +17,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EventDispatcher extends EventCollection {
+class EventDispatcher extends BasicDiary {
 
   private $listeners = [];
 
@@ -25,20 +25,20 @@ class EventDispatcher extends EventCollection {
     $this->listeners[] = $l;
   }
 
-  public function triggerInsert(Event $event) {
+  public function triggerInsert(LogInterface $log) {
     foreach ($this->listeners as $listener) {
       if ($listener instanceof CalendarEventListener) {
-        $listener->onEventInsert($event);
+        $listener->onEventInsert($log);
       } else {
         $listener($event);
       }
     }
   }
 
-  public function insertLog(Event $event): bool {
-    $inserted = parent::insertEvent($event);
+  public function insertLog(LogInterface $log): bool {
+    $inserted = parent::insertLog($log);
     if ($inserted) {
-      $this->triggerInsert($event);
+      $this->triggerInsert($log);
     }
     return $inserted;
   }

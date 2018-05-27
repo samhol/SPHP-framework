@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
-use Sphp\DateTime\Calendars\Diaries\AbstractLog;
+use Sphp\DateTime\Calendars\Diaries\BasicLog;
 
 /**
  * Implements a holiday note for a calendar
@@ -20,7 +20,7 @@ use Sphp\DateTime\Calendars\Diaries\AbstractLog;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Holiday extends AbstractLog implements HolidayInterface {
+class Holiday extends BasicLog implements HolidayInterface {
 
   /**
    * @var bool 

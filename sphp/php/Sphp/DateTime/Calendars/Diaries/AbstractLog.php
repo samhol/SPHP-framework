@@ -11,108 +11,42 @@
 namespace Sphp\DateTime\Calendars\Diaries;
 
 use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
+use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 
 /**
- * Implements an abstract base class for notes
+ * Abstract implementation of a diary log
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractLog extends AbstractEvent {
+abstract class AbstractLog implements LogInterface {
 
   /**
-   * @var bool 
+   * @var Constraint 
    */
-  private $flags = [];
-
-  /**
-   * @var string 
-   */
-  private $name;
-
-  /**
-   * @var string 
-   */
-  private $description;
+  private $constraint;
 
   /**
    * Constructor
-   * 
-   * @param string $name
-   * @param string $description
+   *  
+   * @param Constraint $constraint
    */
-  public function __construct(DateConstraint $constraint, string $name, string $description = null) {
-    parent::__construct($constraint);
-    $this->setName($name)->setDescription("$description");
+  public function __construct(DateConstraint $constraint) {
+    $this->constraint = new Constraints();
+    $this->constraint->dateIs($constraint);
   }
 
-  /**
-   * Destructor
-   */
   public function __destruct() {
-    unset($this->name, $this->description);
-    parent::__destruct();
+    unset($this->constraint);
   }
 
-  public function __toString(): string {
-    $output = "$this->name";
-    $output .= $this->description;
-    return $output;
+  public function dateMatchesWith($date): bool {
+    return $this->constraint->isValidDate($date);
   }
 
-  public function eventAsString(): string {
-    $output = "$this->name : $this->description";
-
-    return $output;
-  }
-
-  /**
-   * 
-   * @return string
-   */
-  public function getName(): string {
-    return $this->name;
-  }
-
-  /**
-   * 
-   * @param type $name
-   * @return $this for a fluent interface
-   */
-  public function setName($name) {
-    $this->name = $name;
-    return $this;
-  }
-
-  public function getDescription() {
-    return $this->description;
-  }
-
-  public function setDescription($description) {
-    $this->description = $description;
-    return $this;
-  }
-
-  /**
-   * 
-   * @return bool
-   */
-  public function hasFlag($flag): bool {
-    return in_array($flag, $this->flags, true);
-  }
-
-  /**
-   * 
-   * @param  mixed $flag
-   * @return $this for a fluent interface
-   */
-  public function setFlag($flag) {
-    if (!$this->hasFlag($flag)) {
-      $this->flags[] = $flag;
-    }
-    return $this;
+  public function dateConstraints(): Constraints {
+    return $this->constraint;
   }
 
 }

@@ -2,11 +2,11 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\DateTime\Calendars\Events\EasterHolidays;
-use Sphp\DateTime\Calendars\Events\Fi\HolidayCollection;
+use Sphp\DateTime\Calendars\Diaries\Holidays\EasterHolidays;
+use Sphp\DateTime\Calendars\Diaries\Holidays\Fi\HolidayDiary;
 use Sphp\DateTime\Calendars\Calendar;
-use Sphp\DateTime\Calendars\Events\Events;
-use Sphp\DateTime\Calendars\Events\Holidays;
+use Sphp\DateTime\Calendars\Diaries\Logs;
+use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
 
 $trimmed = trim($par, '/');
 $parts = explode('/', $trimmed);
@@ -27,23 +27,23 @@ if (count($parts) > 1) {
 }
 print_r($parts);
 $easter = new EasterHolidays($year);
-$fi = new HolidayCollection();
+$fi = new HolidayDiary();
 $data = new Calendar();
 
-use Sphp\DateTime\Calendars\Events\Constraints\OneOf;
+use Sphp\DateTime\Calendars\Diaries\Constraints\OneOf;
 
 $data->useEvents($fi);
-$fi->insertEvent(Holidays::birthday(9, 16, 'Sami Holck', 1975));
-$fi->insertEvent(Holidays::birthday(12, 23, 'Ella Lisko', 1977));
+$fi->insertLog(Holidays::birthday(9, 16, 'Sami Holck', 1975));
+$fi->insertLog(Holidays::birthday(12, 23, 'Ella Lisko', 1977));
 $fi->setEasterFor($year);
-$basketball = Events::weekly([7], 'Basketball');
+$basketball = Logs::weekly([7], 'Basketball');
 $basketball->setDescription('In Ruiskatu **19:00-21:00**');
 $basketball->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"));
-$fi->insertEvent($basketball);
-$basketball1 = Events::weekly([1], 'Basketball');
+$fi->insertLog($basketball);
+$basketball1 = Logs::weekly([1], 'Basketball');
 $basketball1->setDescription('In Vaarniemi **20:30-22:00**');
 $basketball1->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"));
-$fi->insertEvent($basketball1);
+$fi->insertLog($basketball1);
 
 //$fi->insertEvent(Events::weekly([1, 2, 3, 7], 'Basketball1'));
 

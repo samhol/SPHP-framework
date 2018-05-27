@@ -16,6 +16,7 @@ use Traversable;
 use Exception;
 use Sphp\DateTime\Calendars\Events\AnnualHoliday;
 use Sphp\DateTime\Calendars\Events\EventCollection;
+use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
 /**
  * Basic implementation of a traversable calendar
@@ -32,17 +33,17 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
   private $days;
 
   /**
-   * @var EventCollection
+   * @var DiaryInterface
    */
-  private $events;
+  private $diaries;
 
   /**
    * Constructor
    */
-  public function __construct(EventCollection $events = null) {
+  public function __construct(DiaryInterface $events = null) {
     $this->days = [];
     if ($events === null) {
-      $events = new EventCollection();
+      $events = new Diaries\BasicDiary();
     }
     $this->useEvents($events);
   }
@@ -61,13 +62,13 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     $this->days = clone $this->days;
   }
 
-  public function useEvents(Events\EventCollection $events) {
-    $this->events = $events;
+  public function useEvents(DiaryInterface $events) {
+    $this->diaries = $events;
     return $this;
   }
 
-  public function getEvents(): EventCollection {
-    return $this->events;
+  public function getEvents(): DiaryInterface {
+    return $this->diaries;
   }
 
   /**
@@ -142,8 +143,8 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
     if (!array_key_exists($key, $this->days)) {
       $calendarDate = new CalendarDate($date);
       $events = $this->getEvents()->getEventsForDate($date);
-      $calendarDate->getEvents()->mergeEvents($this->getEvents());
-      $this->events->addListener($calendarDate->getEvents());
+      $calendarDate->getEvents()->mergeDiaries($this->getEvents());
+      $this->diaries->addListener($calendarDate->getEvents());
       $this->days[$key] = $calendarDate;
     }
     return $this->days[$key];

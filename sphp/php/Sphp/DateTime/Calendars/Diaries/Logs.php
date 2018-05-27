@@ -20,7 +20,7 @@ use Sphp\DateTime\DateInterface;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Events {
+class Logs {
 
   /**
    * Creates a new unique date note instance
@@ -28,26 +28,26 @@ class Events {
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    * @param  string $heading heading of the note 
    * @param  string $description
-   * @return Note new instance
+   * @return BasicLog new instance
    * @throws DateTimeException if date parameter represents no calendar date
    */
-  public static function unique($date, string $heading, string $description = null): Note {
+  public static function unique($date, string $heading, string $description = null): BasicLog {
     $constraint = new Constraints\Unique($date);
-    return new Note($constraint, $heading, $description);
+    return new BasicLog($constraint, $heading, $description);
   }
 
   /**
    * Creates a new annual note instance
    * 
-   * @param int $month
-   * @param int $day
-   * @param string $name
+   * @param  int $month
+   * @param  int $day
+   * @param  string $name
    * @param  string $description
-   * @return Note new instance
+   * @return BasicLog new instance
    */
-  public static function annual(int $month, int $day, string $name, string $description = null): Note {
+  public static function annual(int $month, int $day, string $name, string $description = null): BasicLog {
     $constraint = new Constraints\Annual($month, $day);
-    return new Note($constraint, $name, $description);
+    return new BasicLog($constraint, $name, $description);
   }
 
   /**
@@ -56,11 +56,11 @@ class Events {
    * @param  string $format 
    * @param  string $name
    * @param  string $description
-   * @return Note new instance
+   * @return BasicLog new instance
    */
-  public static function varyingAnnual(string $format, string $name, string $description = null): Note {
+  public static function varyingAnnual(string $format, string $name, string $description = null): BasicLog {
     $constraint = new Constraints\VaryingAnnual($format);
-    return new Note($constraint, $name, $description);
+    return new BasicLog($constraint, $name, $description);
   }
   /**
    * Creates a new weekly occuring Holiday instance
@@ -68,11 +68,11 @@ class Events {
    * @param  int $day the day of the month
    * @param  string $name
    * @param  string $description
-   * @return Note new instance
+   * @return BasicLog new instance
    */
-  public static function monthly(int $day, string $name, string $description = null): Note {
+  public static function monthly(int $day, string $name, string $description = null): BasicLog {
     $constraint = new Constraints\Monthly($day);
-    return new Note($constraint, $name, $description);
+    return new BasicLog($constraint, $name, $description);
   }
 
   /**
@@ -81,12 +81,12 @@ class Events {
    * @param  int[] $weekdays week days the holiday occurs
    * @param  string $name
    * @param  string $description
-   * @return Note new instance
+   * @return BasicLog new instance
    */
-  public static function weekly(array $weekdays, string $name, string $description = null): Note {
+  public static function weekly(array $weekdays, string $name, string $description = null): BasicLog {
     $reflect = new \ReflectionClass(Constraints\Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);
-    return new Note($constraint, $name, $description);
+    return new BasicLog($constraint, $name, $description);
   }
 
 }

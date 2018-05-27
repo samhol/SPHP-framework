@@ -121,11 +121,11 @@ abstract class AbstractDiary implements Iterator, DiaryInterface {
   /**
    * Returns all note type notes stored
    * 
-   * @return Note[] all note type notes stored
+   * @return BasicLog[] all note type notes stored
    */
   public function getNotes(): array {
     return array_filter($this->logs, function ($item) {
-      return $item instanceof Note;
+      return $item instanceof BasicLog;
     });
   }
 
