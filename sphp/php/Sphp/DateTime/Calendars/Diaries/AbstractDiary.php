@@ -19,7 +19,7 @@ use Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractDiary implements Iterator, DiaryInterface {
+abstract class AbstractDiary implements Iterator, MutableDiaryInterface {
 
   /**
    * @var LogInterface[] 
@@ -42,7 +42,7 @@ abstract class AbstractDiary implements Iterator, DiaryInterface {
 
   public function insertLog(LogInterface $event): bool {
     $inserted = false;
-    if (!$this->containsEvent($event)) {
+    if (!$this->containsLog($event)) {
       $this->logs[] = $event;
       $inserted = true;
     }
@@ -56,7 +56,7 @@ abstract class AbstractDiary implements Iterator, DiaryInterface {
     return $this;
   }
 
-  public function containsEvent(LogInterface $note): bool {
+  public function containsLog(LogInterface $note): bool {
     $contains = false;
     foreach ($this->logs as $n) {
       $contains = $note == $n;

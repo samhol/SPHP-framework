@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\Calendars\Events\Event;
+use Sphp\DateTime\Calendars\Diaries\LogInterface;
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
@@ -22,7 +22,7 @@ use Sphp\DateTime\Date;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WorkoutDay implements Event, \Countable {
+class WorkoutDay implements LogInterface, \Countable {
 
   private $exercises;
 

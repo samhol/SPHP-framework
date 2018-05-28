@@ -10,9 +10,12 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
+use IteratorAggregate;
+use Sphp\DateTime\Calendars\Diaries\LogInterface;
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Events\EventCollectionInterface;
+use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
+
 /**
  * Implements a HTTP code object collection
  *
@@ -20,7 +23,7 @@ use Sphp\DateTime\Calendars\Events\EventCollectionInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WorkoutDiary implements \IteratorAggregate, EventCollectionInterface {
+class WorkoutDiary implements IteratorAggregate, DiaryInterface {
 
   private $days;
 
@@ -92,36 +95,23 @@ class WorkoutDiary implements \IteratorAggregate, EventCollectionInterface {
     return new \ArrayIterator($this->days);
   }
 
-  public function containsEvent(\Sphp\DateTime\Calendars\Events\Event $event): bool {
-    
-  }
-
-  public function getBirthdays(): array {
-    
-  }
-
-  public function getHolidays(): array {
-    
-  }
-
-  public function getNotes(): array {
-    
-  }
-
-  public function insertEvent(\Sphp\DateTime\Calendars\Events\Event $event): bool {
-    
-  }
-
-  public function mergeEvents(\Sphp\DateTime\Calendars\Events\EventCollectionInterface $events): \this {
-    
+  public function containsLog(LogInterface $log): bool {
+    $contains = false;
+    foreach ($this->days as $n) {
+      $contains = $log == $n;
+      if ($contains) {
+        break;
+      }
+    }
+    return $contains;
   }
 
   public function notEmpty(): bool {
-    
+    return !empty($this->days);
   }
 
   public function toArray(): array {
-    
+    return $this->days;
   }
 
 }

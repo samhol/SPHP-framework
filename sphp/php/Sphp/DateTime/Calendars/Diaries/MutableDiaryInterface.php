@@ -10,9 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries;
 
-use Traversable;
-use Sphp\Stdlib\Datastructures\Arrayable;
-
 /**
  * Defines basic featured for a Diary containing calendar log
  *
@@ -20,20 +17,22 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface DiaryInterface extends Traversable, Arrayable {
+interface MutableDiaryInterface extends DiaryInterface {
 
   /**
-   * Searches identical events 
+   * Inserts a new event instance to the collection
    * 
-   * @param  LogInterface $log the event to search
-   * @return bool true if identical event exists, false otherwise
+   * @param  LogInterface $event new event instance
+   * @return bool true if the event was inserted, false otherwise
    */
-  public function containsLog(LogInterface $log): bool;
+  public function insertLog(LogInterface $event): bool;
 
   /**
-   * Checks if the note collection is empty
+   * Merges events from given collection
    * 
-   * @return bool true if the collection is not empty and false otherwise
+   * @param  DiaryInterface $diary events to merge
+   * @return $this for a fluent interface
    */
-  public function notEmpty(): bool;
+  public function mergeDiaries(DiaryInterface $diary);
+
 }

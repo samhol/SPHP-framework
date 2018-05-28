@@ -10,6 +10,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\Diaries\BasicDiary;
 
 /**
  * Description of FitNotes
@@ -27,7 +28,7 @@ class FitNotes {
    * @param  string $path path to FitNotes csv file
    * @return WorkoutDiary
    */
-  public static function fromCsv(string $path): WorkoutDiary {
+  public static function  fromCsv(string $path): WorkoutDiary {
     $rawData = Parser::csv()->arrayFromFile($path); //print_r($rawData);
     array_shift($rawData);
 
