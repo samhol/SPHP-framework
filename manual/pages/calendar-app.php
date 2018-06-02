@@ -84,7 +84,7 @@ $pagination
 use Sphp\Stdlib\Parsers\Parser;
 echo Factory::getMonth($month, $year)->useCalendar($data);
 echo '<pre>';
-print_r((new \Sphp\DateTime\Calendars\Events\Constraints\Before('2018-11-1'))->toJson());
-print_r(Parser::fromFile('manual/templates/calendar.yml'));
-print_r(Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv'));
+//print_r((new \Sphp\DateTime\Calendars\Events\Constraints\Before('2018-11-1'))->toJson());
+//print_r(Parser::fromFile('manual/templates/calendar.yml'));
+//print_r(Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv'));
 echo '</pre>';

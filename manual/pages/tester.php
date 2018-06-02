@@ -20,13 +20,17 @@ $sportsDiary = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
 $basketball1 = Logs::weekly([1], 'Basketball');
 $basketball1->setDescription('In Vaarniemi **20:30-22:00**');
 $basketball1->dateConstraints()->dateIsNot(new OneOf("2018-4-30", "2018-5-1"));
-//$sportsDiary->insertLog($basketball1);
+$basketballDiary = new Diaries\BasicDiary();
+$basketballDiary->insertLog(Logs::weekly([5,6,4], 'Bball'));
+$basketballDiary->insertLog($basketball1);
 foreach ($birthDayDiary as $log) {
   echo $log;
 }
 echo $birthDayDiary->getLogs('2018-09-16');
 
 $diaryContainer = new Diaries\DiaryContainer();
+
+$diaryContainer->insertDiary($basketballDiary);
 
 $diaryContainer->insertDiary($sportsDiary);
 $diaryContainer->insertDiary(new HolidayDiary());

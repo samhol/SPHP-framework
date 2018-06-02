@@ -94,7 +94,7 @@ class DiaryDay extends AbstractDiary implements CalendarEventListener {
   }
 
   public function __toString(): string {
-    $output = "$this->date:\n";
+    $output = $this->date->format('l, '). "$this->date:\n";
     //print_r($this->notes);
     foreach ($this as $log) {
       $output .= "  $log\n";
