@@ -2,12 +2,7 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\DateTime\Calendars\Diaries\Holidays\EasterHolidays;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Fi\HolidayDiary;
-use Sphp\DateTime\Calendars\Calendar;
-use Sphp\DateTime\Calendars\Diaries\Logs;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
-
+use Sphp\Stdlib\StopWatch;
 $trimmed = trim($par, '/');
 $parts = explode('/', $trimmed);
 $year = (int) date('Y');
@@ -25,28 +20,9 @@ if (count($parts) > 1) {
     
   }
 }
-print_r($parts);
-$easter = new EasterHolidays($year);
-$fi = new HolidayDiary();
-$data = new Calendar();
+//var_dump(StopWatch::getEcecutionTime());
 
-use Sphp\DateTime\Calendars\Diaries\Constraints\OneOf;
-
-$data->useEvents($fi);
-$fi->insertLog(Holidays::birthday(9, 16, 'Sami Holck', 1975));
-$fi->insertLog(Holidays::birthday(12, 23, 'Ella Lisko', 1977));
-$fi->setEasterFor($year);
-$basketball = Logs::weekly([7], 'Basketball');
-$basketball->setDescription('In Ruiskatu **19:00-21:00**');
-$basketball->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"));
-$fi->insertLog($basketball);
-$basketball1 = Logs::weekly([1], 'Basketball');
-$basketball1->setDescription('In Vaarniemi **20:30-22:00**');
-$basketball1->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"));
-$fi->insertLog($basketball1);
-
-//$fi->insertEvent(Events::weekly([1, 2, 3, 7], 'Basketball1'));
-
+include 'diaries.php';
 
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Paginator;
 
@@ -61,8 +37,8 @@ $interval = new \DateInterval('P1M');
 $daterange = new \DatePeriod($begin, $interval, $end);
 
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Page;
-use Sphp\Data\Sports\FitNotes;
-$exercises = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
+
+//$exercises = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
 foreach ($daterange as $id => $date) {
   $href = "calendar/" . $date->format("Y/m");
   $content = $date->format("M Y");
@@ -77,14 +53,5 @@ $pagination
         ->visibleAfterCurrent(3)
         ->visibleBeforeCurrent(3)
         ->printHtml();
-?>
 
-<?php
-
-use Sphp\Stdlib\Parsers\Parser;
-echo Factory::getMonth($month, $year)->useCalendar($data);
-echo '<pre>';
-//print_r((new \Sphp\DateTime\Calendars\Events\Constraints\Before('2018-11-1'))->toJson());
-//print_r(Parser::fromFile('manual/templates/calendar.yml'));
-//print_r(Parser::csv()->arrayFromFile('manual/snippets/FitNotes.csv'));
-echo '</pre>';
+echo Factory::getMonth($month, $year)->insertDiary($exercises);

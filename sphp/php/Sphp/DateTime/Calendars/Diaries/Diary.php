@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Events;
+namespace Sphp\DateTime\Calendars\Diaries;
 
 use Iterator;
 
@@ -19,47 +19,63 @@ use Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractEventCollection implements Iterator, EventCollectionInterface {
+class Diary implements Iterator, MutableDiaryInterface {
 
   /**
-   * @var Event[] 
+   * @var LogInterface[] 
    */
-  private $collection = [];
+  private $logs = [];
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->collection = [];
+    $this->logs = [];
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->collection);
+    unset($this->logs);
   }
 
-  public function insertEvent(Event $event): bool {
+  public function insertLog(LogInterface $log): bool {
     $inserted = false;
-    if (!$this->containsEvent($event)) {
-      $this->collection[] = $event;
+    if (!$this->logExists($log)) {
+      $this->logs[] = $log;
       $inserted = true;
     }
     return $inserted;
   }
 
-  public function mergeEvents(EventCollectionInterface $events) {
-    foreach ($events as $note) {
-      $this->insertEvent($note);
+  public function mergeLogs(LogContainer $logs) {
+    foreach ($logs as $log) {
+      $this->insertLog($log);
     }
     return $this;
   }
 
-  public function containsEvent(Event $note): bool {
+  public function logExists(LogInterface $log): bool {
     $contains = false;
-    foreach ($this->collection as $n) {
-      $contains = $note == $n;
+    /* foreach ($this->logs as $n) {
+      $contains = $log == $n;
+      if ($contains) {
+      break;
+      }
+      } */
+    return $contains;
+  }
+
+  /**
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return bool 
+   */
+  public function containsLogs($date): bool {
+    $contains = false;
+    foreach ($this->logs as $log) {
+      $contains = $log->dateMatchesWith($date);
       if ($contains) {
         break;
       }
@@ -68,12 +84,26 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
   }
 
   /**
+   * Returns an object containing logs for a single date
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return DiaryDateInterface object containing logs for given single date
+   */
+  public function getDate($date): DiaryDateInterface {
+    $dailyLogs = new DiaryDay($date);
+    foreach ($this->logs as $log) {
+      $dailyLogs->insertLog($log);
+    }
+    return $dailyLogs;
+  }
+
+  /**
    * Returns all birthday notes stored
    * 
    * @return BirthDay[] all birthday notes stored
    */
   public function getBirthdays(): array {
-    return array_filter($this->collection, function ($item) {
+    return array_filter($this->logs, function ($item) {
       return $item instanceof BirthDay;
     });
   }
@@ -84,7 +114,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return Holiday[] all holiday notes stored
    */
   public function getHolidays(): array {
-    return array_filter($this->collection, function ($item) {
+    return array_filter($this->logs, function ($item) {
       return $item instanceof HolidayInterface;
     });
   }
@@ -92,11 +122,11 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
   /**
    * Returns all note type notes stored
    * 
-   * @return Note[] all note type notes stored
+   * @return BasicLog[] all note type notes stored
    */
   public function getNotes(): array {
-    return array_filter($this->collection, function ($item) {
-      return $item instanceof Note;
+    return array_filter($this->logs, function ($item) {
+      return $item instanceof BasicLog;
     });
   }
 
@@ -106,11 +136,11 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return bool true if the event collection is empty, false otherwise
    */
   public function notEmpty(): bool {
-    return !empty($this->collection);
+    return !empty($this->logs);
   }
 
   public function toArray(): array {
-    return $this->collection;
+    return $this->logs;
   }
 
   /**
@@ -119,7 +149,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return mixed the current note
    */
   public function current() {
-    return current($this->collection);
+    return current($this->logs);
   }
 
   /**
@@ -128,7 +158,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return void
    */
   public function next() {
-    next($this->collection);
+    next($this->logs);
   }
 
   /**
@@ -137,7 +167,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return mixed the key of the current note
    */
   public function key() {
-    return key($this->collection);
+    return key($this->logs);
   }
 
   /**
@@ -146,7 +176,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return void
    */
   public function rewind() {
-    reset($this->collection);
+    reset($this->logs);
   }
 
   /**
@@ -155,7 +185,7 @@ abstract class AbstractEventCollection implements Iterator, EventCollectionInter
    * @return boolean current iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->collection);
+    return false !== current($this->logs);
   }
 
 }

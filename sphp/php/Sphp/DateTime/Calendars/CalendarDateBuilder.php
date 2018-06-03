@@ -55,7 +55,7 @@ class CalendarDateBuilder {
     $this->notes = clone $this->notes;
   }
 
-  public function getNotes(): BasicDiary {
+  public function getNotes(): Diary {
     return $this->notes;
   }
 

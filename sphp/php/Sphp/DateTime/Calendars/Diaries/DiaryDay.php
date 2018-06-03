@@ -11,6 +11,9 @@
 namespace Sphp\DateTime\Calendars\Diaries;
 
 use Sphp\DateTime\Date;
+use Iterator;
+use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
+use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
 
 /**
  * Collection for Calendar Date Events
@@ -19,12 +22,12 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DiaryDay extends AbstractDiary implements CalendarEventListener {
+class DiaryDay extends Date implements Iterator, DiaryDateInterface {
 
   /**
-   * @var Date 
+   * @var LogInterface[] 
    */
-  private $date;
+  private $logs = [];
 
   /**
    * Constructor
@@ -32,16 +35,14 @@ class DiaryDay extends AbstractDiary implements CalendarEventListener {
    * @param mixed $date
    */
   public function __construct($date) {
-    $this->date = New Date($date);
-    parent::__construct();
+    parent::__construct($date);
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->date);
-    parent::__destruct();
+    unset($this->logs);
   }
 
   /**
@@ -49,7 +50,7 @@ class DiaryDay extends AbstractDiary implements CalendarEventListener {
    * 
    * @return bool true if national holiday, false otherwise
    */
-  public function nationalHoliday(): bool {
+  public function isNationalHoliday(): bool {
     $isNational = false;
     foreach ($this->getHolidays() as $holiday) {
       if ($holiday->isNationalHoliday()) {
@@ -65,7 +66,7 @@ class DiaryDay extends AbstractDiary implements CalendarEventListener {
    * 
    * @return bool true if flag day, false otherwise
    */
-  public function flagDay(): bool {
+  public function isFlagDay(): bool {
     $isNational = false;
     foreach ($this->getHolidays() as $note) {
       if ($note->isFlagDay()) {
@@ -76,25 +77,41 @@ class DiaryDay extends AbstractDiary implements CalendarEventListener {
     return $isNational;
   }
 
-  /**
-   * Returns the plain date object
-   * 
-   * @return Date the plain date object
-   */
-  public function getDate(): Date {
-    return $this->date;
+  public function logExists(LogInterface $note): bool {
+    $contains = false;
+    foreach ($this->logs as $n) {
+      $contains = $note == $n;
+      if ($contains) {
+        break;
+      }
+    }
+    return $contains;
   }
 
   public function insertLog(LogInterface $log): bool {
-    if (!$log->dateMatchesWith($this->date)) {
+    if (!$log->dateMatchesWith($this)) {
       return false;
     } else {
-      return parent::insertLog($log);
+      $this->logs[] = $log;
+      return true;
     }
   }
 
+  /**
+   * Merges logs from another log container
+   * 
+   * @param  LogContainer $logs logs to merge
+   * @return $this for a fluent interface
+   */
+  public function mergeLogs(LogContainer $logs) {
+    foreach ($logs as $log) {
+      $this->insertLog($log);
+    }
+    return $this;
+  }
+
   public function __toString(): string {
-    $output = $this->date->format('l, '). "$this->date:\n";
+    $output = $this->format('l, ') . ":\n";
     //print_r($this->notes);
     foreach ($this as $log) {
       $output .= "  $log\n";
@@ -104,6 +121,95 @@ class DiaryDay extends AbstractDiary implements CalendarEventListener {
 
   public function onLogInsert(LogInterface $log) {
     $this->insertLog($log);
+  }
+
+  /**
+   * Returns all birthday notes stored
+   * 
+   * @return BirthDay[] all birthday notes stored
+   */
+  public function getBirthdays(): array {
+    return array_filter($this->logs, function ($item) {
+      return $item instanceof BirthDay;
+    });
+  }
+
+  /**
+   * Returns all holidays stored
+   * 
+   * @return LogInterface[] all holiday notes stored
+   */
+  public function filterLogs($filter): array {
+    return array_filter($this->logs, $filter);
+  }
+
+  /**
+   * Returns all holidays stored
+   * 
+   * @return Holiday[] all holiday notes stored
+   */
+  public function getHolidays(): array {
+    return array_filter($this->logs, function ($item) {
+      return $item instanceof HolidayInterface;
+    });
+  }
+
+  public function toArray(): array {
+    return $this->logs;
+  }
+
+  /**
+   * Checks if the event collection is empty
+   * 
+   * @return bool true if the event collection is empty, false otherwise
+   */
+  public function notEmpty(): bool {
+    return !empty($this->logs);
+  }
+
+  /**
+   * Returns the current note
+   * 
+   * @return mixed the current note
+   */
+  public function current() {
+    return current($this->logs);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   * 
+   * @return void
+   */
+  public function next() {
+    next($this->logs);
+  }
+
+  /**
+   * Return the key of the current note
+   * 
+   * @return mixed the key of the current note
+   */
+  public function key() {
+    return key($this->logs);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   * 
+   * @return void
+   */
+  public function rewind() {
+    reset($this->logs);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->logs);
   }
 
 }

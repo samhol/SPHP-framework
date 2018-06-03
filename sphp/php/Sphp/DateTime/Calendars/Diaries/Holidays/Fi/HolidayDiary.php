@@ -10,23 +10,18 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays\Fi;
 
-use Sphp\DateTime\Calendars\EasterCalendar;
-use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Diaries\EventDispatcher;
-use Sphp\DateTime\Calendars\Events\Events;
+use Sphp\DateTime\Calendars\Diaries\LogDispatcher;
 use Sphp\DateTime\Calendars\Diaries\Holidays\EasterHolidays;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
 
-//use Sphp\DateTime\Calendars\Calendar;
-
 /**
- * Description of FinnishCalendar
+ * Implements a diary containing some common Finnish holidays
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HolidayDiary extends EventDispatcher {
+class HolidayDiary extends LogDispatcher {
 
   /**
    * @var EasterHolidays
@@ -74,11 +69,11 @@ class HolidayDiary extends EventDispatcher {
 
   public function setEasterFor(int $year = null) {
     $easter = new EasterHolidays($year);
-    $this->mergeDiaries($easter);
+    $this->mergeLogs($easter);
     return $this;
   }
 
-  public static function getSundays($y, $m = 1) {
+  public static function getSundays($y, $m = 1): array {
     $date = "$y-$m-01";
     $first_day = date('N', strtotime($date));
     $first_day = 7 - $first_day + 1;

@@ -20,7 +20,7 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
- class BasicLog extends AbstractLog {
+class BasicLog extends AbstractLog {
 
   /**
    * @var bool 
@@ -78,19 +78,20 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
 
   /**
    * 
-   * @param type $name
+   * 
+   * @param  string $name
    * @return $this for a fluent interface
    */
-  public function setName($name) {
+  public function setName(string $name) {
     $this->name = $name;
     return $this;
   }
 
-  public function getDescription() {
+  public function getDescription(): string {
     return $this->description;
   }
 
-  public function setDescription($description) {
+  public function setDescription(string $description) {
     $this->description = $description;
     return $this;
   }

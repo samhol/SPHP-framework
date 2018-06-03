@@ -18,6 +18,8 @@ use Sphp\Html\Container;
 use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\TraversableCalendar;
 use Sphp\DateTime\Calendars\Calendar;
+use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
+use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
 /**
  * Description of Month
@@ -40,14 +42,15 @@ class MonthView extends AbstractComponent {
   private $month;
 
   /**
-   * @var CalendarDateTraversableInterface 
-   */
-  private $calendar;
-
-  /**
    * @var Date 
    */
   private $firstOf;
+
+  /**
+   *
+   * @var DiaryContainer 
+   */
+  private $diaries;
 
   /**
    * 
@@ -66,19 +69,24 @@ class MonthView extends AbstractComponent {
     $this->month = $month;
     $this->year = $year;
     $this->firstOf = Date::from("$year-$month-1");
-    $this->useCalendar();
+    $this->diaries = new DiaryContainer();
   }
 
   /**
    * 
-   * @param  Calendar $cal
+   * @return DiaryContainer
+   */
+  public function getDiaries(): DiaryContainer {
+    return $this->diaries;
+  }
+
+  /**
+   * 
+   * @param  DiaryInterface $diary
    * @return $this
    */
-  public function useCalendar(TraversableCalendar $cal = null) {
-    if ($cal === null) {
-      $cal = new Calendar();
-    }
-    $this->calendar = $cal;
+  public function insertDiary(DiaryInterface $diary) {
+    $this->getDiaries()->insertDiary($diary);
     return $this;
   }
 
@@ -146,8 +154,8 @@ class MonthView extends AbstractComponent {
   }
 
   protected function createDayCell(Date $day): WeekDayView {
-    
-    $weekDayView = new WeekDayView($this->calendar->get($day));
+
+    $weekDayView = new WeekDayView($this->diaries->getDay($day));
     //$weekDayView->useCalendaDate($this->calendar->get($day));
     if ($day->getMonth() === $this->month) {
       $weekDayView->addCssClass('selected-month');

@@ -43,7 +43,7 @@ class Calendar implements IteratorAggregate, TraversableCalendar {
   public function __construct(DiaryInterface $events = null) {
     $this->days = [];
     if ($events === null) {
-      $events = new Diaries\BasicDiary();
+      $events = new Diaries\Diary();
     }
     $this->useEvents($events);
   }

@@ -19,7 +19,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeightLifting extends Exercise implements \Countable {
+class WeightLiftingExercise extends Exercise implements \Countable {
 
   /**
    * @var WeightliftingSet[]

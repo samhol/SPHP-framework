@@ -10,17 +10,33 @@
 
 namespace Sphp\DateTime\Calendars\Diaries;
 
-use Traversable;
 use Sphp\Stdlib\Datastructures\Arrayable;
+use Traversable;
 
 /**
- * Defines basic featured for a Diary containing calendar logs
+ * Defines LogContainer
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface DiaryInterface extends LogContainer {
+interface LogContainer extends Traversable, Arrayable {
+
+  /**
+   * Inserts a new log object to the container
+   * 
+   * @param  LogInterface $log log object to insert
+   * @return bool true if the log is inserted and false otherwise
+   */
+  public function insertLog(LogInterface $log): bool;
+
+  /**
+   * Merges logs from another log container
+   * 
+   * @param  LogContainer $logs logs to merge
+   * @return $this for a fluent interface
+   */
+  public function mergeLogs(LogContainer $logs);
 
   /**
    * Searches identical events 
@@ -36,12 +52,4 @@ interface DiaryInterface extends LogContainer {
    * @return bool true if the collection is not empty and false otherwise
    */
   public function notEmpty(): bool;
-
-  /**
-   * Returns an object containing logs for a single date
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return DiaryDay object containing logs for given single date
-   */
-  public function getDate($date): DiaryDateInterface;
 }

@@ -11,12 +11,12 @@
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\Content;
-use Sphp\DateTime\Calendars\CalendarDate;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\Html\Span;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\DateTime\Calendars\Events\BirthDay;
+use Sphp\DateTime\Calendars\Diaries\DiaryDay;
 
 /**
  * Description of DateInfo
@@ -30,7 +30,7 @@ class DateInfo implements Content {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var CalendarDate 
+   * @var DiaryDay 
    */
   private $calendarDate;
 
@@ -39,14 +39,14 @@ class DateInfo implements Content {
    */
   private $modal;
 
-  public function __construct(CalendarDate $calendarDate, $trigger) {
+  public function __construct(DiaryDay $calendarDate, $trigger) {
     $this->calendarDate = $calendarDate;
     $this->modal = new Modal($trigger, $this->createPopup());
   }
 
   public function createPopup(): Popup {
     $popup = new Popup();
-    $date = $this->calendarDate->getDate()->format('l F jS Y');
+    $date = $this->calendarDate->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
     $popup->append($this->createHolidayNotes());
 
@@ -59,11 +59,11 @@ class DateInfo implements Content {
 
   public function createHolidayNotes(): \Sphp\Html\Lists\Ul {
     $ul = new \Sphp\Html\Lists\Ul();
-    if (count($this->calendarDate->getEvents()->getHolidays()) > 0) {
+    if (count($this->calendarDate->getHolidays()) > 0) {
       $ul->appendMd("**HOLIDAYS:**");
-      foreach ($this->calendarDate->getEvents()->getHolidays() as $event) {
+      foreach ($this->calendarDate as $event) {
         if ($event instanceof BirthDay) {
-          $ul->appendMd($event->eventAsString($this->calendarDate->getDate()->getYear()));
+          $ul->appendMd($event->eventAsString($this->calendarDate->getYear()));
         } else {
           $ul->appendMd($event->eventAsString());
         }
@@ -74,9 +74,9 @@ class DateInfo implements Content {
 
   public function createNotes(): \Sphp\Html\Lists\Ul {
     $ul = new \Sphp\Html\Lists\Ul();
-    foreach ($this->calendarDate->getEvents()->getNotes() as $event) {
+    foreach ($this->calendarDate as $event) {
       if ($event instanceof BirthDay) {
-        $ul->appendMd($event->eventAsString($this->calendarDate->getDate()->getYear()));
+        $ul->appendMd($event->eventAsString($this->calendarDate->getYear()));
       } else {
         $ul->appendMd($event->eventAsString());
       }

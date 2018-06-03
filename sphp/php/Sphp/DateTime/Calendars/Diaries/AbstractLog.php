@@ -37,6 +37,9 @@ abstract class AbstractLog implements LogInterface {
     $this->constraint->dateIs($constraint);
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->constraint);
   }

@@ -19,20 +19,5 @@ namespace Sphp\DateTime\Calendars\Diaries;
  */
 interface MutableDiaryInterface extends DiaryInterface {
 
-  /**
-   * Inserts a new event instance to the collection
-   * 
-   * @param  LogInterface $event new event instance
-   * @return bool true if the event was inserted, false otherwise
-   */
-  public function insertLog(LogInterface $event): bool;
-
-  /**
-   * Merges events from given collection
-   * 
-   * @param  DiaryInterface $diary events to merge
-   * @return $this for a fluent interface
-   */
-  public function mergeDiaries(DiaryInterface $diary);
 
 }

@@ -10,21 +10,15 @@
 
 namespace Sphp\DateTime\Calendars\Diaries;
 
+use Sphp\DateTime\DateInterface;
+
 /**
- * Defines a listener for calendar event insertions
+ * Collection for Calendar Date Events
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface CalendarEventListener {
-
-  /**
-   * The method called when a log is inserted into a listened diary
-   *
-   * @param  LogInterface $log
-   * @return void
-   */
-  public function onLogInsert(LogInterface $log);
+interface DiaryDateInterface extends DateInterface, DiaryListener, LogContainer {
+  
 }
