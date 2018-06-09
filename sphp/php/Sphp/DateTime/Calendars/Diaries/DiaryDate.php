@@ -14,15 +14,16 @@ use Sphp\DateTime\Date;
 use Iterator;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
+use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 
 /**
- * Collection for Calendar Date Events
+ * Implements a date object for diary logs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DiaryDay extends Date implements Iterator, DiaryDateInterface {
+class DiaryDate extends Date implements Iterator, DiaryDateInterface {
 
   /**
    * @var LogInterface[] 
@@ -146,7 +147,7 @@ class DiaryDay extends Date implements Iterator, DiaryDateInterface {
   /**
    * Returns all holidays stored
    * 
-   * @return Holiday[] all holiday notes stored
+   * @return HolidayInterface[] all holiday notes stored
    */
   public function getHolidays(): array {
     return array_filter($this->logs, function ($item) {

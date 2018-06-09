@@ -14,7 +14,7 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 use Exception;
 use Sphp\DateTime\Exceptions\DateTimeException;
-use Sphp\DateTime\Calendars\Diaries\DiaryDay;
+use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Events\Event;
 
 /**
@@ -53,7 +53,7 @@ class CalendarDate implements DateInterface {
     } catch (Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    $this->events = new DiaryDay($this->date);
+    $this->events = new DiaryDate($this->date);
   }
 
   /**
@@ -102,12 +102,12 @@ class CalendarDate implements DateInterface {
     return $this->date;
   }
 
-  public function getEvents(): DiaryDay {
+  public function getEvents(): DiaryDate {
     return $this->events;
   }
 
 
-  public function mergeDateEvents(DiaryDay $events) {
+  public function mergeDateEvents(DiaryDate $events) {
     $this->events->merge($events->getNotes());
     return $this;
   }

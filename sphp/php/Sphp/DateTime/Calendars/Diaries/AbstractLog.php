@@ -14,7 +14,7 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 
 /**
- * Abstract implementation of a diary log
+ * Abstract implementation of a Diary log
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

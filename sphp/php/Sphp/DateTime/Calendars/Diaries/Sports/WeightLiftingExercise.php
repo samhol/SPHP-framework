@@ -10,7 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\DateInterface;
+use Iterator;
+use Countable;
 
 /**
  * Description of WeightLifting
@@ -19,53 +20,90 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeightLiftingExercise extends Exercise implements \Countable {
+class WeightLiftingExercise extends Exercise implements Iterator, Countable {
 
   /**
    * @var WeightliftingSet[]
    */
-  private $set = [];
+  private $sets = [];
 
-  /**
-   * Constructor
-   * 
-   * @param DateInterface $date
-   * @param string $name
-   * @param string $category
-   * @param float $weight
-   * @param int $reps
-   */
-  public function __construct(string $name, string $category) {
-    parent::__construct($name, $category);
+  public function __destruct() {
+    parent::__destruct();
+    unset($this->sets);
   }
 
   public function __toString(): string {
-    $output = parent::__toString() . ' total weight: ' . $this->getTotalWeight()  .'kg';
-    foreach ($this->set as $set) {
+    $output = parent::__toString() . ' total weight: ' . $this->getTotalWeight() . 'kg';
+    foreach ($this->sets as $set) {
       $output .= "\n\t\t$set";
     }
     return $output;
   }
 
   public function getSets(): int {
-    return $this->set;
+    return $this->sets;
   }
 
   public function addSet(float $weight, int $reps) {
-    $this->set[] = new WeightliftingSet($weight, $reps);
+    $this->sets[] = new WeightliftingSet($weight, $reps);
     return $this;
   }
 
   public function count(): int {
-    return count($this->set);
+    return count($this->sets);
   }
 
   public function getTotalWeight(): float {
     $total = 0;
-    foreach ($this->set as $set) {
+    foreach ($this->sets as $set) {
       $total += $set->getTotalWeight();
     }
     return $total;
+  }
+
+  /**
+   * Returns the current note
+   * 
+   * @return mixed the current note
+   */
+  public function current() {
+    return current($this->sets);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   * 
+   * @return void
+   */
+  public function next() {
+    next($this->sets);
+  }
+
+  /**
+   * Return the key of the current note
+   * 
+   * @return mixed the key of the current note
+   */
+  public function key() {
+    return key($this->sets);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   * 
+   * @return void
+   */
+  public function rewind() {
+    reset($this->sets);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->sets);
   }
 
 }

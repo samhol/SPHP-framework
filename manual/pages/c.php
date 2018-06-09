@@ -74,8 +74,8 @@ $ed = new WorkoutDay(new \Sphp\DateTime\Date());
 $ed->insert(new WeightLifting('Box Squat', 'legs'));
 $exer = new WorkoutDiary();
 $exer->setDay($ed);
-$exer->getDay('2018-5-6')->insert(new WeightLifting('Box Squat', 'legs'));
-$exer->getDay('2018-5-6')
+$exer->getDate('2018-5-6')->insert(new WeightLifting('Box Squat', 'legs'));
+$exer->getDate('2018-5-6')
         ->getExercise('Box Squat')
         ->addSet(20, 10)
         ->addSet(42.5, 10);

@@ -47,7 +47,6 @@ class MonthView extends AbstractComponent {
   private $firstOf;
 
   /**
-   *
    * @var DiaryContainer 
    */
   private $diaries;
@@ -78,6 +77,15 @@ class MonthView extends AbstractComponent {
    */
   public function getDiaries(): DiaryContainer {
     return $this->diaries;
+  }
+
+  /**
+   * 
+   * @return 
+   */
+  public function setDiaryContainer(DiaryContainer $diaryContainer) {
+    $this->diaries = $diaryContainer;
+    return $this;
   }
 
   /**
@@ -155,7 +163,7 @@ class MonthView extends AbstractComponent {
 
   protected function createDayCell(Date $day): WeekDayView {
 
-    $weekDayView = new WeekDayView($this->diaries->getDay($day));
+    $weekDayView = new WeekDayView($this->diaries->getDate($day));
     //$weekDayView->useCalendaDate($this->calendar->get($day));
     if ($day->getMonth() === $this->month) {
       $weekDayView->addCssClass('selected-month');

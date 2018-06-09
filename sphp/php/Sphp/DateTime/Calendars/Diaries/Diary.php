@@ -90,7 +90,7 @@ class Diary implements Iterator, MutableDiaryInterface {
    * @return DiaryDateInterface object containing logs for given single date
    */
   public function getDate($date): DiaryDateInterface {
-    $dailyLogs = new DiaryDay($date);
+    $dailyLogs = new DiaryDate($date);
     foreach ($this->logs as $log) {
       $dailyLogs->insertLog($log);
     }

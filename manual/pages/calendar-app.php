@@ -3,6 +3,7 @@
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Stdlib\StopWatch;
+
 $trimmed = trim($par, '/');
 $parts = explode('/', $trimmed);
 $year = (int) date('Y');
@@ -13,14 +14,29 @@ if (count($parts) > 1) {
   } else {
     
   }
-}if (count($parts) > 2) {
+}
+if (count($parts) > 2) {
   if (is_numeric($parts[2])) {
     $month = (int) $parts[2];
   } else {
     
   }
 }
+
 //var_dump(StopWatch::getEcecutionTime());
+class CalendarController {
+
+  private $model;
+
+  public function __construct($model) {
+    $this->model = $model;
+  }
+
+  public function clicked() {
+    $this->model->string = 'Updated Data, thanks to MVC and PHP!';
+  }
+
+}
 
 include 'diaries.php';
 
@@ -54,4 +70,4 @@ $pagination
         ->visibleBeforeCurrent(3)
         ->printHtml();
 
-echo Factory::getMonth($month, $year)->insertDiary($exercises);
+echo Factory::getMonth($month, $year)->setDiaryContainer($diaryContainer);

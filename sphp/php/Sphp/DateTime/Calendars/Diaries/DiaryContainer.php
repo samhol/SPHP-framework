@@ -20,7 +20,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
 class DiaryContainer {
 
   /**
-   * @var LogInterface[] 
+   * @var DiaryInterface[] 
    */
   private $diaries = [];
 
@@ -61,10 +61,10 @@ class DiaryContainer {
   /**
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return DiaryDay
+   * @return DiaryDate
    */
-  public function getDay($date): DiaryDay {
-    $dailyLogs = new DiaryDay($date);
+  public function getDate($date): DiaryDate {
+    $dailyLogs = new DiaryDate($date);
     foreach ($this->diaries as $diary) {
       $dailyLogs->mergeLogs($diary);
     }

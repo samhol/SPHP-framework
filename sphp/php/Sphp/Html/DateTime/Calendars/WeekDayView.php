@@ -16,7 +16,9 @@ use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 //use Sphp\DateTime\Calendars\CalendarDate;
 use Sphp\Html\Media\Icons\Svg;
-use Sphp\DateTime\Calendars\Diaries\DiaryDay;
+use Sphp\DateTime\Calendars\Diaries\DiaryDate;
+use Sphp\Html\Content;
+
 /**
  * Description of WeekDay
  *
@@ -36,11 +38,15 @@ class WeekDayView implements CssClassifiableContent {
   private $container;
 
   /**
-   * @var DiaryDay
+   * @var DiaryDate
    */
   private $diaryDay;
 
-  public function __construct(DiaryDay $date) {
+  /**
+   * 
+   * @param DiaryDate $date
+   */
+  public function __construct(DiaryDate $date) {
     $this->diaryDay = $date;
     $this->container = new Div();
     $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
@@ -75,7 +81,7 @@ class WeekDayView implements CssClassifiableContent {
     return $timeTag;
   }
 
-  protected function buildDate(): \Sphp\Html\Content {
+  protected function buildDate(): Content {
     $container = new \Sphp\Html\Container;
     $container->append($this->container);
     $timeTag = new TimeTag($this->diaryDay->getDateTime(), $this->diaryDay->format('j'));

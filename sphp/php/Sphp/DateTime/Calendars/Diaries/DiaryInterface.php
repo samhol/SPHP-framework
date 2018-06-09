@@ -41,7 +41,7 @@ interface DiaryInterface extends LogContainer {
    * Returns an object containing logs for a single date
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return DiaryDay object containing logs for given single date
+   * @return DiaryDate object containing logs for given single date
    */
   public function getDate($date): DiaryDateInterface;
 }

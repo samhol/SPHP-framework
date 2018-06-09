@@ -32,8 +32,8 @@ class Exercise {
   /**
    * Constructor
    * 
-   * @param string $name
-   * @param string $category
+   * @param string $name the name of the exercise
+   * @param string $category the category of the exercise
    */
   public function __construct(string $name, string $category) {
     $this->name = $name;

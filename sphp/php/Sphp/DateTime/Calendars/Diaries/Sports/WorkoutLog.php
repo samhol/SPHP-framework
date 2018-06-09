@@ -13,7 +13,6 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 use Sphp\DateTime\Calendars\Diaries\LogInterface;
 use IteratorAggregate;
 use Countable;
-use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
@@ -133,6 +132,10 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
     return $this->__toString();
   }
 
+  /**
+   * 
+   * @return Exercise[]
+   */
   public function toArray(): array {
     return $this->exercises;
   }

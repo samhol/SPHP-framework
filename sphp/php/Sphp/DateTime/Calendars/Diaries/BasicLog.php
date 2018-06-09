@@ -77,9 +77,9 @@ class BasicLog extends AbstractLog {
   }
 
   /**
+   * Sets the name of the log
    * 
-   * 
-   * @param  string $name
+   * @param  string $name the name of the log
    * @return $this for a fluent interface
    */
   public function setName(string $name) {

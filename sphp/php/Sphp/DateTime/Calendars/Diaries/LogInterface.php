@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Defines a Calendar Date Event
+ * Defines a Calendar Diary log
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -23,7 +23,7 @@ use Sphp\DateTime\DateInterface;
 interface LogInterface {
 
   /**
-   * Checks if the given date matches with the event date
+   * Checks if the given date matches with the log's date
    * 
    * @param  DateInterface|\DateTimeInteface|string|int|null $date the date to match
    * @return bool true if the given date matches and false otherwise

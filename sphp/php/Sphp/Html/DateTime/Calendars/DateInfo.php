@@ -15,9 +15,10 @@ use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\Html\Span;
 use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\DateTime\Calendars\Events\BirthDay;
-use Sphp\DateTime\Calendars\Diaries\DiaryDay;
-
+use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
+use Sphp\DateTime\Calendars\Diaries\DiaryDate;
+use Sphp\Html\Container;
+use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
 /**
  * Description of DateInfo
  *
@@ -30,23 +31,23 @@ class DateInfo implements Content {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var DiaryDay 
+   * @var DiaryDate 
    */
-  private $calendarDate;
+  private $date;
 
   /**
    * @var Modal 
    */
   private $modal;
 
-  public function __construct(DiaryDay $calendarDate, $trigger) {
-    $this->calendarDate = $calendarDate;
+  public function __construct(DiaryDate $calendarDate, $trigger) {
+    $this->date = $calendarDate;
     $this->modal = new Modal($trigger, $this->createPopup());
   }
 
   public function createPopup(): Popup {
     $popup = new Popup();
-    $date = $this->calendarDate->format('l F jS Y');
+    $date = $this->date->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
     $popup->append($this->createHolidayNotes());
 
@@ -57,28 +58,30 @@ class DateInfo implements Content {
     return $popup;
   }
 
-  public function createHolidayNotes(): \Sphp\Html\Lists\Ul {
-    $ul = new \Sphp\Html\Lists\Ul();
-    if (count($this->calendarDate->getHolidays()) > 0) {
+  public function createHolidayNotes(): Container {
+    $ul = new Container();
+    if (count($this->date->getHolidays()) > 0) {
       $ul->appendMd("**HOLIDAYS:**");
-      foreach ($this->calendarDate as $event) {
-        if ($event instanceof BirthDay) {
-          $ul->appendMd($event->eventAsString($this->calendarDate->getYear()));
+      foreach ($this->date as $log) {
+        if ($log instanceof BirthDay) {
+          $ul->appendMd($log->eventAsString($this->date->getYear()));
         } else {
-          $ul->appendMd($event->eventAsString());
+          $ul->appendMd($log->eventAsString());
         }
       }
     }
     return $ul;
   }
 
-  public function createNotes(): \Sphp\Html\Lists\Ul {
-    $ul = new \Sphp\Html\Lists\Ul();
-    foreach ($this->calendarDate as $event) {
-      if ($event instanceof BirthDay) {
-        $ul->appendMd($event->eventAsString($this->calendarDate->getYear()));
+  public function createNotes(): Container {
+    $ul = new Container();
+    foreach ($this->date as $log) {
+      if ($log instanceof BirthDay) {
+        $ul->appendMd($log->eventAsString($this->date->getYear()));
+      } else if ($log instanceof WorkoutLog) {
+        $ul->append(new Exercises($log));
       } else {
-        $ul->appendMd($event->eventAsString());
+        $ul->appendMd($log->eventAsString());
       }
     }
     return $ul;
