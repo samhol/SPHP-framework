@@ -8,10 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\DateTime\Calendars;
+namespace Sphp\Html\DateTime\Calendars\LogBuilders;
 
 use Sphp\Html\Content;
 use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
+use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 
@@ -22,7 +23,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Exercises implements Content {
+class WorkoutLogBuilder implements Content {
 
   use \Sphp\Html\ContentTrait;
 
@@ -54,16 +55,29 @@ class Exercises implements Content {
    */
   public function buildAccordion(): Accordion {
     $accordion = new Accordion();
-    foreach ($this->workouts->toArray() as $workout) {
-      $pane = new Pane($workout->getName());
-      $pane->append($workout);
-      $accordion->append($pane);
+    foreach ($this->workouts as $exercise) {
+      $accordion->append($this->buildPane($exercise));
     }
     return $accordion;
   }
 
+  protected function buildPane(Exercise $exercise): Pane {
+    $pane = new Pane($exercise->getName());
+    if ($exercise->count() === 1) {
+      $ol = new \Sphp\Html\Lists\Ul();
+    } else {
+      $ol = new \Sphp\Html\Lists\Ol();
+    }
+    foreach ($exercise as $set) {
+      $ol->append($set);
+    }
+    $pane->append($ol);
+    return $pane;
+  }
+
   public function getHtml(): string {
-    return $this->buildAccordion()->getHtml();
+    $h = '<h2>Workouts for the day</h2>';
+    return $h . $this->buildAccordion()->getHtml();
   }
 
 }

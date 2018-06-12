@@ -62,7 +62,7 @@ class BasicLog extends AbstractLog {
     return $output;
   }
 
-  public function eventAsString(): string {
+  public function toString(): string {
     $output = "$this->name : $this->description";
 
     return $output;

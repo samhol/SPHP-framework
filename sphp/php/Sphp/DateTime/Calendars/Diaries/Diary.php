@@ -19,7 +19,9 @@ use Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Diary implements Iterator, MutableDiaryInterface {
+class Diary implements Iterator, DiaryInterface {
+
+  use DiaryTrait;
 
   /**
    * @var LogInterface[] 
@@ -29,8 +31,10 @@ class Diary implements Iterator, MutableDiaryInterface {
   /**
    * Constructor
    */
-  public function __construct() {
-    $this->logs = [];
+  public function __construct(array $logs = []) {
+    foreach ($logs as $log) {
+      $this->insertLog($log);
+    }
   }
 
   /**
@@ -56,17 +60,6 @@ class Diary implements Iterator, MutableDiaryInterface {
     return $this;
   }
 
-  public function logExists(LogInterface $log): bool {
-    $contains = false;
-    /* foreach ($this->logs as $n) {
-      $contains = $log == $n;
-      if ($contains) {
-      break;
-      }
-      } */
-    return $contains;
-  }
-
   /**
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
@@ -74,7 +67,7 @@ class Diary implements Iterator, MutableDiaryInterface {
    */
   public function containsLogs($date): bool {
     $contains = false;
-    foreach ($this->logs as $log) {
+    foreach ($this as $log) {
       $contains = $log->dateMatchesWith($date);
       if ($contains) {
         break;
@@ -91,43 +84,21 @@ class Diary implements Iterator, MutableDiaryInterface {
    */
   public function getDate($date): DiaryDateInterface {
     $dailyLogs = new DiaryDate($date);
-    foreach ($this->logs as $log) {
+    foreach ($this as $log) {
       $dailyLogs->insertLog($log);
     }
     return $dailyLogs;
   }
 
   /**
-   * Returns all birthday notes stored
+   * Filters log of this collection using a callback function
    * 
-   * @return BirthDay[] all birthday notes stored
+   * @param  callable|string $filter the callback function to use
+   * @return LogContainer filtered logs
    */
-  public function getBirthdays(): array {
-    return array_filter($this->logs, function ($item) {
-      return $item instanceof BirthDay;
-    });
-  }
-
-  /**
-   * Returns all holidays stored
-   * 
-   * @return Holiday[] all holiday notes stored
-   */
-  public function getHolidays(): array {
-    return array_filter($this->logs, function ($item) {
-      return $item instanceof HolidayInterface;
-    });
-  }
-
-  /**
-   * Returns all note type notes stored
-   * 
-   * @return BasicLog[] all note type notes stored
-   */
-  public function getNotes(): array {
-    return array_filter($this->logs, function ($item) {
-      return $item instanceof BasicLog;
-    });
+  public function filterLogs($filter): LogContainer {
+    $logs = array_filter($this->logs, $filter);
+    return new static($logs);
   }
 
   /**

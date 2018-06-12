@@ -25,6 +25,8 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
  */
 class DiaryDate extends Date implements Iterator, DiaryDateInterface {
 
+  use DiaryTrait;
+
   /**
    * @var LogInterface[] 
    */
@@ -35,8 +37,11 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    * 
    * @param mixed $date
    */
-  public function __construct($date) {
+  public function __construct($date, array $logs = []) {
     parent::__construct($date);
+    foreach ($logs as $log) {
+      $this->insertLog($log);
+    }
   }
 
   /**
@@ -44,6 +49,7 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    */
   public function __destruct() {
     unset($this->logs);
+    parent::__destruct();
   }
 
   /**
@@ -53,8 +59,8 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    */
   public function isNationalHoliday(): bool {
     $isNational = false;
-    foreach ($this->getHolidays() as $holiday) {
-      if ($holiday->isNationalHoliday()) {
+    foreach ($this as $holiday) {
+      if ($holiday instanceof HolidayInterface && $holiday->isNationalHoliday()) {
         $isNational = true;
         break;
       }
@@ -69,8 +75,8 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    */
   public function isFlagDay(): bool {
     $isNational = false;
-    foreach ($this->getHolidays() as $note) {
-      if ($note->isFlagDay()) {
+    foreach ($this as $log) {
+      if ($log instanceof HolidayInterface && $log->isFlagDay()) {
         $isNational = true;
         break;
       }
@@ -78,10 +84,10 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
     return $isNational;
   }
 
-  public function logExists(LogInterface $note): bool {
+  public function logExists(LogInterface $log): bool {
     $contains = false;
     foreach ($this->logs as $n) {
-      $contains = $note == $n;
+      $contains = $log == $n;
       if ($contains) {
         break;
       }
@@ -111,6 +117,17 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
     return $this;
   }
 
+  /**
+   * Filters log of this collection using a callback function
+   * 
+   * @param  callable|string $filter the callback function to use
+   * @return LogContainer filtered logs
+   */
+  public function filterLogs($filter): LogContainer {
+    $logs = array_filter($this->logs, $filter);
+    return new static($this, $logs);
+  }
+
   public function __toString(): string {
     $output = $this->format('l, ') . ":\n";
     //print_r($this->notes);
@@ -122,37 +139,6 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
 
   public function onLogInsert(LogInterface $log) {
     $this->insertLog($log);
-  }
-
-  /**
-   * Returns all birthday notes stored
-   * 
-   * @return BirthDay[] all birthday notes stored
-   */
-  public function getBirthdays(): array {
-    return array_filter($this->logs, function ($item) {
-      return $item instanceof BirthDay;
-    });
-  }
-
-  /**
-   * Returns all holidays stored
-   * 
-   * @return LogInterface[] all holiday notes stored
-   */
-  public function filterLogs($filter): array {
-    return array_filter($this->logs, $filter);
-  }
-
-  /**
-   * Returns all holidays stored
-   * 
-   * @return HolidayInterface[] all holiday notes stored
-   */
-  public function getHolidays(): array {
-    return array_filter($this->logs, function ($item) {
-      return $item instanceof HolidayInterface;
-    });
   }
 
   public function toArray(): array {

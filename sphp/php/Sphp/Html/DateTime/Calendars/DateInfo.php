@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,12 +12,11 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\Content;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
-use Sphp\Html\Span;
-use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\Container;
-use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
+use Sphp\Html\DateTime\Calendars\LogBuilders\LogLayoutBuilder;
+
 /**
  * Description of DateInfo
  *
@@ -40,18 +38,37 @@ class DateInfo implements Content {
    */
   private $modal;
 
-  public function __construct(DiaryDate $calendarDate, $trigger) {
-    $this->date = $calendarDate;
+  /**
+   * @var LogLayoutBuilder
+   */
+  private $logLayoutBuilder;
+
+  /**
+   * Constructor
+   * 
+   * @param DiaryDate $date
+   * @param type $trigger
+   */
+  public function __construct(DiaryDate $date, $trigger) {
+    $this->date = $date;
+    $this->logLayoutBuilder = LogLayoutBuilder::instance();
     $this->modal = new Modal($trigger, $this->createPopup());
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->date, $this->modal, $this->logLayoutBuilder);
   }
 
   public function createPopup(): Popup {
     $popup = new Popup();
     $date = $this->date->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
-    $popup->append($this->createHolidayNotes());
+    //$popup->append($this->createHolidayNotes());
 
-    $popup->append($this->createNotes());
+    $popup->append($this->logLayoutBuilder->build($this->date));
 
     //$popup->append($this->calendarDate->getNotes());
 
@@ -64,30 +81,16 @@ class DateInfo implements Content {
       $ul->appendMd("**HOLIDAYS:**");
       foreach ($this->date as $log) {
         if ($log instanceof BirthDay) {
-          $ul->appendMd($log->eventAsString($this->date->getYear()));
+          $ul->appendMd($log->toString($this->date->getYear()));
         } else {
-          $ul->appendMd($log->eventAsString());
+          $ul->appendMd($log->toString());
         }
       }
     }
     return $ul;
   }
 
-  public function createNotes(): Container {
-    $ul = new Container();
-    foreach ($this->date as $log) {
-      if ($log instanceof BirthDay) {
-        $ul->appendMd($log->eventAsString($this->date->getYear()));
-      } else if ($log instanceof WorkoutLog) {
-        $ul->append(new Exercises($log));
-      } else {
-        $ul->appendMd($log->eventAsString());
-      }
-    }
-    return $ul;
-  }
-
-  public function create() {
+  public function create(): Modal {
     return $this->modal;
   }
 

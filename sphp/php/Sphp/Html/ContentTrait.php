@@ -38,7 +38,7 @@ trait ContentTrait {
     try {
       $output = $this->getHtml();
     } catch (Throwable $e) {
-      $output = $e->getMessage();
+      $output = "$e";
     }
     return $output;
   }

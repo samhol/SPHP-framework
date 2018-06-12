@@ -10,7 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
-use Sphp\DateTime\Calendars\Diaries\BasicLog;
+use Sphp\DateTime\Calendars\Diaries\AbstractLog;
+use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
 
 /**
  * Implements a holiday note for a calendar
@@ -20,7 +21,17 @@ use Sphp\DateTime\Calendars\Diaries\BasicLog;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Holiday extends BasicLog implements HolidayInterface {
+class Holiday extends AbstractLog implements HolidayInterface {
+
+  /**
+   * @var string 
+   */
+  private $name;
+
+  /**
+   * @var string 
+   */
+  private $description;
 
   /**
    * @var bool 
@@ -32,11 +43,22 @@ class Holiday extends BasicLog implements HolidayInterface {
    */
   private $flagDay = false;
 
-  public function __toString(): string {
-    return $this->eventAsString();
+  /**
+   * Constructor
+   * 
+   * @param string $name
+   * @param string $description
+   */
+  public function __construct(DateConstraint $constraint, string $name, string $description = null) {
+    parent::__construct($constraint);
+    $this->setName($name)->setDescription("$description");
   }
 
-  public function eventAsString(): string {
+  public function __toString(): string {
+    return $this->toString();
+  }
+
+  public function toString(): string {
     $output = $this->getName();
     $attrs = [];
     if ($this->isNationalHoliday()) {
@@ -49,6 +71,34 @@ class Holiday extends BasicLog implements HolidayInterface {
       $output .= ': ' . implode(', ', $attrs);
     }
     return $output;
+  }
+
+  /**
+   * 
+   * @return string
+   */
+  public function getName(): string {
+    return $this->name;
+  }
+
+  /**
+   * Sets the name of the log
+   * 
+   * @param  string $name the name of the log
+   * @return $this for a fluent interface
+   */
+  public function setName(string $name) {
+    $this->name = $name;
+    return $this;
+  }
+
+  public function getDescription(): string {
+    return $this->description;
+  }
+
+  public function setDescription(string $description = null) {
+    $this->description = $description;
+    return $this;
   }
 
   /**

@@ -128,7 +128,7 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
     return count($this->exercises);
   }
 
-  public function eventAsString(): string {
+  public function toString(): string {
     return $this->__toString();
   }
 

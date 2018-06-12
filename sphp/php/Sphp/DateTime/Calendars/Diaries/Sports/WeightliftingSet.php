@@ -17,7 +17,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WeightliftingSet {
+class WeightliftingSet implements ExerciseSet {
 
   /**
    * @var float

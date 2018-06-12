@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 /**
- * Description of DistanceAndTimeSet
+ * Implements a distance and time set 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

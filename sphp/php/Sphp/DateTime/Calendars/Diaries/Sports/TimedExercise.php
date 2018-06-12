@@ -10,10 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\Factory;
-
 /**
- * Description of TimedExercise
+ * Implements a timed exercise like basketball
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -22,40 +20,8 @@ use Sphp\DateTime\Factory;
  */
 class TimedExercise extends Exercise {
 
-  private $sets = [];
-
-  public function __construct(string $name, string $category) {
-    parent::__construct($name, $category);
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->sets);
-    parent::__destruct();
-  }
-
-  public function __toString(): string {
-    $output = parent::__toString();
-    foreach ($this->sets as $set) {
-      $output .= "\n\t\t$set";
-    }
-    return $output;
-  }
-
-  public function getTime() {
-    return $this->time;
-  }
-
-  public function setTime($time) {
-    $interval = Factory::timeDiff($time);
-    $this->time = $interval;
-    return $this;
-  }
-
   public function addSet($time) {
-    $this->sets[] = new TimedSet($time);
+    $this->insertSet(new TimedSet($time));
   }
 
 }

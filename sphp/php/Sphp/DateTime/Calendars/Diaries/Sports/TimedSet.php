@@ -20,7 +20,7 @@ use Sphp\DateTime\Factory;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TimedSet {
+class TimedSet implements ExerciseSet {
 
   /**
    * @var DateInterval

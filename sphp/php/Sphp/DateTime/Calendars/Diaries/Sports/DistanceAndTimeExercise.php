@@ -10,8 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\DateInterface;
-
 /**
  * Description of DistanceAndTimeExercise
  *
@@ -19,7 +17,7 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DistanceAndTimeExercise extends Exercise {
+class DistanceAndTimeExercise extends Exercise implements \Iterator {
 
   private $sets = [];
 
@@ -44,7 +42,11 @@ class DistanceAndTimeExercise extends Exercise {
   }
 
   public function addSet(float $distance, $duration, string $unit = 'km') {
-    $this->sets[] = new DistanceAndTimeSet($distance, $duration, $unit);
+    $this->insertSet(new DistanceAndTimeSet($distance, $duration, $unit));
+  }
+
+  public function getSets(): array {
+    return $this->sets;
   }
 
 }

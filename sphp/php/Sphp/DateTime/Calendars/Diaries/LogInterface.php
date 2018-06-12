@@ -31,11 +31,11 @@ interface LogInterface {
   public function dateMatchesWith($date): bool;
 
   /**
-   * Returns the event description
+   * Returns the string representation of the log object
    * 
    * @return string the the event description
    */
-  public function eventAsString(): string;
+  public function toString(): string;
 
   /**
    * Returns the string representation of the object
