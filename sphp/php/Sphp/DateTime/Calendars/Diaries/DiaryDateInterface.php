@@ -9,11 +9,10 @@
  */
 
 namespace Sphp\DateTime\Calendars\Diaries;
-
+ 
 use Sphp\DateTime\DateInterface;
 
-/**
- * Collection for Calendar Date Events
+/**Defines a date containing corresponding Diary logs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

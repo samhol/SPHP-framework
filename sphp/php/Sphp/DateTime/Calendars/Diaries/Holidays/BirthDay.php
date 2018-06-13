@@ -9,11 +9,13 @@
  */
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
+
 use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Annual;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
+
 /**
- * Implements a BirthDay note for a calendar
+ * Implements a BirthDay log object for a Diary
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

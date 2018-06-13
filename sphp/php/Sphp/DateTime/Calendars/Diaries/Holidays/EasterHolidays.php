@@ -26,7 +26,6 @@ class EasterHolidays extends Diary {
    * Constructor
    * 
    * @param  int $year
-   * @return EventCollection
    */
   public function __construct(int $year = null) {
     parent::__construct();

@@ -14,7 +14,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use Traversable;
 
 /**
- * Defines LogContainer
+ * Defines basic features of a Diary log container 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -41,13 +41,13 @@ interface LogContainer extends Traversable, Arrayable {
   /**
    * Searches identical events 
    * 
-   * @param  LogInterface $log the event to search
+   * @param  LogInterface $log the log object to search
    * @return bool true if identical event exists, false otherwise
    */
   public function logExists(LogInterface $log): bool;
 
   /**
-   * Checks if the note collection is empty
+   * Checks if the collection is empty or not
    * 
    * @return bool true if the collection is not empty and false otherwise
    */

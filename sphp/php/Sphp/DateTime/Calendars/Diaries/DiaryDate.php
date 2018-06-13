@@ -12,12 +12,10 @@ namespace Sphp\DateTime\Calendars\Diaries;
 
 use Sphp\DateTime\Date;
 use Iterator;
-use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
 use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 
 /**
- * Implements a date object for diary logs
+ * Implements a date object containing corresponding diary logs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -53,7 +51,23 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
   }
 
   /**
-   * Checks for a national holiday
+   * Checks whether the date is a holiday
+   * 
+   * @return bool true if holiday, false otherwise
+   */
+  public function isHoliday(): bool {
+    $isHoliday = false;
+    foreach ($this as $holiday) {
+      if ($holiday instanceof HolidayInterface) {
+        $isHoliday = true;
+        break;
+      }
+    }
+    return $isHoliday;
+  }
+
+  /**
+   * Checks whether the date is a national holiday
    * 
    * @return bool true if national holiday, false otherwise
    */

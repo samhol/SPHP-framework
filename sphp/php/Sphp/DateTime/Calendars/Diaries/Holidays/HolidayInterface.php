@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 use Sphp\DateTime\Calendars\Diaries\LogInterface;
 
 /**
- * Defines a holiday event for a calendar
+ * Defines a holiday log object for a Diary
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

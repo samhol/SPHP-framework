@@ -14,7 +14,7 @@ use Sphp\DateTime\Calendars\Diaries\AbstractLog;
 use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
 
 /**
- * Implements a holiday note for a calendar
+ * Implements a holiday log object for a Diary
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -73,10 +73,6 @@ class Holiday extends AbstractLog implements HolidayInterface {
     return $output;
   }
 
-  /**
-   * 
-   * @return string
-   */
   public function getName(): string {
     return $this->name;
   }

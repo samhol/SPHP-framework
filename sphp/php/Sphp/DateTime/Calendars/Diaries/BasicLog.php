@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
 use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
 
 /**
- * Implements an abstract base class for notes
+ * Implements a basic diary log
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -21,11 +21,6 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
  * @filesource
  */
 class BasicLog extends AbstractLog {
-
-  /**
-   * @var bool 
-   */
-  private $flags = [];
 
   /**
    * @var string 
@@ -87,32 +82,23 @@ class BasicLog extends AbstractLog {
     return $this;
   }
 
-  public function getDescription(): string {
-    return $this->description;
-  }
-
-  public function setDescription(string $description) {
-    $this->description = $description;
-    return $this;
-  }
-
   /**
+   * Returns the description text
    * 
-   * @return bool
+   * @return string the description text
    */
-  public function hasFlag($flag): bool {
-    return in_array($flag, $this->flags, true);
+  public function getDescription(): string {
+    return "$this->description";
   }
 
   /**
+   * Sets the description text
    * 
-   * @param  mixed $flag
+   * @param  string|null $description the description text
    * @return $this for a fluent interface
    */
-  public function setFlag($flag) {
-    if (!$this->hasFlag($flag)) {
-      $this->flags[] = $flag;
-    }
+  public function setDescription(string $description = null) {
+    $this->description = $description;
     return $this;
   }
 
