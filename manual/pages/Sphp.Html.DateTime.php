@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$factory = Manual\api()->classLinker(Factory::class);
+$factory = Manual\api()->classLinker(DateTime::class);
 
 Manual\md(<<<MD
 #HTML DateTime management

@@ -12,7 +12,6 @@ namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\DateTime\Calendars\Diaries\Holidays\EasterHolidays;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Fi\HolidayDiary;
-use Sphp\DateTime\Calendars\Calendar;
 use Sphp\DateTime\Calendars\Diaries\Logs;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
 

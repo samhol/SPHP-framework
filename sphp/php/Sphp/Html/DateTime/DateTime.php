@@ -11,30 +11,30 @@
 namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
-use Sphp\DateTime\DateTime;
 use Sphp\DateTime\DateInterface;
 
 /**
- * Description of DateTimes
+ * A factory for &lt;time&gt; object creation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Factory {
+class DateTime {
 
   protected static function parseInstance($dateTime = null) {
-    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime && !$dateTime instanceof DateInterface) {
-      $dateTime = new DateTime($dateTime);
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateInterface) {
+      $dateTime = new \DateTimeImmutable($dateTime);
     }
     return $dateTime;
   }
 
   /**
+   * Creates a &lt;time&gt; tag object showing week number
    * 
    * @param  mixed $dateTime
-   * @return TimeTag
+   * @return TimeTag new instance
    */
   public static function weekNumber($dateTime = null): TimeTag {
     $parsed = static::parseInstance($dateTime);
@@ -44,13 +44,11 @@ class Factory {
   /**
    * 
    * @param  mixed $dateTime
-   * @return TimeTag
+   * @return TimeTag new instance
    */
   public static function datetime($dateTime = null): TimeTag {
-    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
-      $dateTime = new DateTime($dateTime);
-    }
-    return (new TimeTag($dateTime, $dateTime->format(TimeTag::DATE_TIME)))->setFormat(TimeTag::DATE_TIME);
+    $parsed = static::parseInstance($dateTime);
+    return (new TimeTag($parsed, $parsed->format(TimeTag::DATE_TIME)))->setFormat(TimeTag::DATE_TIME);
   }
 
 }

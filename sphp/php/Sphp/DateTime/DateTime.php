@@ -14,7 +14,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 
 /**
- * Description of DateTime
+ * Implements a datetime object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
