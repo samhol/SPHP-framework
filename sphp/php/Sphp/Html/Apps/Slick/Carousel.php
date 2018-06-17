@@ -20,6 +20,7 @@ use Sphp\Html\Attributes\JsonAttribute;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class Carousel extends AbstractComponent {
@@ -41,6 +42,12 @@ class Carousel extends AbstractComponent {
     }
   }
 
+  /**
+   * Sets the carousel properties
+   * 
+   * @param  array $props
+   * @return $this for a fluent interface
+   */
   public function setProperty(array $props) {
     $this->attributes()->getObject('data-slick')->set($props);
     return $this;

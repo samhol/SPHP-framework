@@ -14,13 +14,12 @@ use Sphp\Html\Div;
 use Sphp\Html\DateTime\TimeTag;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
-//use Sphp\DateTime\Calendars\CalendarDate;
 use Sphp\Html\Media\Icons\Svg;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\Content;
+use Sphp\Html\Container;
 
 /**
- * Description of WeekDay
+ * Implements a weekday vire for a calendar month
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -74,15 +73,16 @@ class WeekDayView implements CssClassifiableContent {
     $timeTag = new TimeTag($this->diaryDay->getDateTime());
     if ($this->diaryDay->isFlagDay()) {
       $timeTag->append('<div class="flag" style="width:20px; display:inline-block;">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</div>");
-    }$timeTag->append($this->diaryDay->format('j'));
+    }
+    $timeTag->append($this->diaryDay->format('j'));
     $timeTag->setAttribute('title', $this->diaryDay->format('l, Y-m-d'));
 
 
     return $timeTag;
   }
 
-  protected function buildDate(): Content {
-    $container = new \Sphp\Html\Container;
+  protected function buildDate(): Container {
+    $container = new Container;
     $container->append($this->container);
     $timeTag = new TimeTag($this->diaryDay->getDateTime(), $this->diaryDay->format('j'));
     $timeTag->setAttribute('title', $this->diaryDay->format('l, Y-m-d'));

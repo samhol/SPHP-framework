@@ -70,6 +70,13 @@ class MonthView extends AbstractComponent {
   }
 
   /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->diaries, $this->firstOf);
+  }
+
+  /**
    * 
    * @return DiaryContainer
    */

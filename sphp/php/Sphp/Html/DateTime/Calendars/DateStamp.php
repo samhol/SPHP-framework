@@ -52,6 +52,13 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
     $this->setFormat($format)->setDatetime($datetime, $format);
   }
 
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->dateTime);
+  }
+
   public function setDateTime($dateTime, string $format = self::DATE_TIME) {
     $this->setFormat($format);
     if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {

@@ -18,9 +18,8 @@ use Sphp\Html\Media\FigCaption;
  * Implements a figure slide for Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class FigureSlide extends AbstractComponent implements Slide {
@@ -65,6 +64,9 @@ class FigureSlide extends AbstractComponent implements Slide {
             ->protect('orbit-caption');
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->img, $this->caption);
     parent::__destruct();

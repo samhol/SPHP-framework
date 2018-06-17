@@ -10,15 +10,16 @@
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\Content;
+use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\Container;
-use Sphp\Html\DateTime\Calendars\LogBuilders\LogLayoutBuilder;
+use Sphp\Html\DateTime\Calendars\LogViews\LogViewBuilder;
 
 /**
- * Description of DateInfo
+ * Implements an info modal for all events and logs of a calendar day
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -39,7 +40,7 @@ class DateInfo implements Content {
   private $modal;
 
   /**
-   * @var LogLayoutBuilder
+   * @var LogViewBuilder
    */
   private $logLayoutBuilder;
 
@@ -47,11 +48,11 @@ class DateInfo implements Content {
    * Constructor
    * 
    * @param DiaryDate $date
-   * @param type $trigger
+   * @param ComponentInterface|string $trigger
    */
   public function __construct(DiaryDate $date, $trigger) {
     $this->date = $date;
-    $this->logLayoutBuilder = LogLayoutBuilder::instance();
+    $this->logLayoutBuilder = LogViewBuilder::instance();
     $this->modal = new Modal($trigger, $this->createPopup());
   }
 
@@ -66,12 +67,7 @@ class DateInfo implements Content {
     $popup = new Popup();
     $date = $this->date->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
-    //$popup->append($this->createHolidayNotes());
-
     $popup->append($this->logLayoutBuilder->build($this->date));
-
-    //$popup->append($this->calendarDate->getNotes());
-
     return $popup;
   }
 
@@ -90,6 +86,10 @@ class DateInfo implements Content {
     return $ul;
   }
 
+  /**
+   * 
+   * @return Modal
+   */
   public function create(): Modal {
     return $this->modal;
   }

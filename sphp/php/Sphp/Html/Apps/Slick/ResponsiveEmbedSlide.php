@@ -19,14 +19,14 @@ use Sphp\Html\Media\LazyMedia;
  * Implements a Responsive Embed slide for a Orbit component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class ResponsiveEmbedSlide extends AbstractComponent implements Slide, ResponsiveEmbedInterface, LazyMedia {
 
   use \Sphp\Html\Media\LazyMediaSourceTrait;
+
   /**
    * the flex component instance
    *
@@ -48,6 +48,9 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
     $this->flex = $embed;
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->flex);
     parent::__destruct();

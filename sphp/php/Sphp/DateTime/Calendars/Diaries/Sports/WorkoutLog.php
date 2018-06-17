@@ -14,6 +14,8 @@ use Sphp\DateTime\Calendars\Diaries\LogInterface;
 use IteratorAggregate;
 use Countable;
 use Sphp\DateTime\Date;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Description of ExerciseDy
@@ -27,9 +29,21 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
 
   private $exercises;
 
+  /**
+   * Constructor
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   */
   public function __construct($date) {
     parent::__construct($date);
     $this->exercises = [];
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->exercises);
   }
 
   public function __toString(): string {
@@ -61,18 +75,18 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
    * @param  string $name unique name of the exercise
    * @param  string|null $category optional exercise category
    * @return WeightLiftingExercise the instance contained
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @throws InvalidArgumentException
+   * @throws RuntimeException
    */
   public function setWeightLiftingExercise(string $name, string $category = null): WeightLiftingExercise {
     if ($name === '') {
-      throw new \Sphp\Exceptions\InvalidArgumentException("Exercise name must contain letters ('$name' given)");
+      throw new InvalidArgumentException("Exercise name must contain letters ('$name' given)");
     }
     if (!isset($this->exercises[$name])) {
       $this->exercises[$name] = new WeightLiftingExercise($name, $category);
     }
     if (!$this->exercises[$name] instanceof WeightLiftingExercise) {
-      throw new \Sphp\Exceptions\RuntimeException("Exercise '$name' of a different type allready exists in the workout log");
+      throw new RuntimeException("Exercise '$name' of a different type allready exists in the workout log");
     }
     return $this->exercises[$name];
   }
@@ -116,6 +130,11 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
     return array_key_exists($name, $this->exercises) && $exercise == $this->exercises[$name];
   }
 
+  /**
+   * 
+   * @param  type $date
+   * @return bool
+   */
   public function dateMatchesWith($date): bool {
     return parent::matchesWith($date);
   }

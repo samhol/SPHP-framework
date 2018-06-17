@@ -8,52 +8,46 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\DateTime\Calendars\LogBuilders;
+namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Content;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
 use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\DateTime\Calendars\Diaries\DiaryDate;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\Lists\Ol;
 
 /**
- * Description of HolidayLogBuilder
+ * Implements a workout log viewer
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HolidayLogBuilder implements Content {
+class WorkoutLogView implements Content {
 
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var DiaryDate 
+   * @var WorkoutLog 
    */
-  private $holiday = [];
+  private $workouts;
 
   /**
    * Constructor
    *
    * @param WorkoutLog $workouts
    */
-  public function __construct($workouts = null) {
-    $this->holiday = $workouts;
-  }
-
-  public function insert($holiday) {
-    $this->holiday[] = $holiday;
-    return $this;
+  public function __construct(WorkoutLog $workouts) {
+    $this->workouts = $workouts;
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->holiday);
+    unset($this->workouts);
   }
 
   /**
@@ -63,25 +57,29 @@ class HolidayLogBuilder implements Content {
    */
   public function buildAccordion(): Accordion {
     $accordion = new Accordion();
-    $pane = new Pane('BirthDays');
-    foreach ($this->holiday as $exercise) {
-      $pane->append($exercise);
+    foreach ($this->workouts as $exercise) {
+      $accordion->append($this->buildPane($exercise));
     }
-    $accordion->append($pane);
     return $accordion;
   }
 
-  public function getHtml(): string {
-    $h = '<h2>Birthdays:</h2>';
-    if (!empty($this->holiday)) {
-      $accordion = new \Sphp\Html\Lists\Ul();
-      //$pane = new Pane('Birthdays:');
-      foreach ($this->holiday as $exercise) {
-        $accordion->append($exercise);
-      }
-      $h .= $accordion;
+  protected function buildPane(Exercise $exercise): Pane {
+    $pane = new Pane($exercise->getName());
+    if ($exercise->count() === 1) {
+      $list = new Ul();
+    } else {
+      $list = new Ol();
     }
-    return $h;
+    foreach ($exercise as $set) {
+      $list->append($set);
+    }
+    $pane->append($list);
+    return $pane;
+  }
+
+  public function getHtml(): string {
+    $h = '<h2>Workouts for the day</h2>';
+    return $h . $this->buildAccordion()->getHtml();
   }
 
 }

@@ -56,6 +56,13 @@ class ContentCopyController implements Content {
   }
 
   /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->button);
+  }
+
+  /**
    * 
    * @return ComponentInterface
    */

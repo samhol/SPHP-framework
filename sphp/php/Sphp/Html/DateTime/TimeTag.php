@@ -12,7 +12,6 @@ namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
 use Sphp\DateTime\DateTime;
-use DateTimeImmutable;
 use Sphp\Html\ContainerTag;
 
 /**
@@ -44,7 +43,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
    * @param  mixed $content optional content of the component
    * @param  string $format the format of the outputted date string
    */
-  public function __construct($dateTime = null, $content = null,string $format = self::DATE_TIME) {
+  public function __construct($dateTime = null, $content = null, string $format = self::DATE_TIME) {
     parent::__construct('time', $content);
     $this->setDateTime($dateTime, $format);
   }

@@ -49,7 +49,7 @@ class DistanceAndTimeSet extends TimedSet {
   public function getDistance(string $unit = 'm'): float {
     if ($unit !== $this->unit) {
 
-      $distance *= 1000;
+     return $distance *= $this->distance;
     }
     return $this->distance;
   }

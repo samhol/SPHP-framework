@@ -10,18 +10,16 @@
 
 namespace Sphp\Html\Apps\Slick;
 
-
+use Sphp\Html\Div;
 /**
  * Implements a slide for Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class HtmlSlide extends \Sphp\Html\Div implements Slide {
-
+class HtmlSlide extends Div implements Slide {
 
   /**
    * Constructor
