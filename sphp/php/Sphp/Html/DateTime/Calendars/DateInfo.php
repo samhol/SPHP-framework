@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *

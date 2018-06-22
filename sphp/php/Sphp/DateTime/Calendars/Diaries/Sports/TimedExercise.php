@@ -10,6 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
+use DateInterval;
+
 /**
  * Implements a timed exercise like basketball
  *
@@ -20,6 +22,11 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
  */
 class TimedExercise extends Exercise {
 
+  /**
+   * Adds a new timed set to the exercise
+   * 
+   * @param DateInterval|string $time the duration of the exercise set
+   */
   public function addSet($time) {
     $this->insertSet(new TimedSet($time));
   }

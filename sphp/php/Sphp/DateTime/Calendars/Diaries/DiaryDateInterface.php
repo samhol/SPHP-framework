@@ -12,7 +12,8 @@ namespace Sphp\DateTime\Calendars\Diaries;
  
 use Sphp\DateTime\DateInterface;
 
-/**Defines a date containing corresponding Diary logs
+/**
+ * Defines a date containing corresponding Diary logs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

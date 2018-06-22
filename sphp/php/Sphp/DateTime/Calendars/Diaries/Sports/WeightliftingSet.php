@@ -20,7 +20,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 class WeightliftingSet implements ExerciseSet {
 
   /**
-   * @var float
+   * @var float (in kg)
    */
   private $weight;
 
@@ -32,7 +32,7 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Constructor
    * 
-   * @param float $weight weight used in the set
+   * @param float $weight weight used in the set (in kg)
    * @param int $reps repetitions done
    */
   public function __construct(float $weight, int $reps) {
@@ -46,7 +46,7 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Returns the weight used in the set
    * 
-   * @return float weight used in the set
+   * @return float weight used in the set (in kg)
    */
   public function getWeight(): float {
     return $this->weight;
@@ -55,7 +55,7 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Sets the weight used in the set
    * 
-   * @param  float $weight the weight used in the set
+   * @param  float $weight the weight used in the set (in kg)
    * @return $this for fluent interface
    */
   public function setWeight(float $weight) {

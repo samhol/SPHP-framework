@@ -10,6 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
+use DateInterval;
+
 /**
  * Implements a distance and time set for workout exercise
  *
@@ -33,7 +35,7 @@ class DistanceAndTimeSet extends TimedSet {
    * Constructor
    * 
    * @param float $distance
-   * @param type $duration
+   * @param DateInterval|string $duration the duration of the exercise set
    * @param string $unit
    */
   public function __construct(float $distance, $duration, string $unit = 'm') {
@@ -49,7 +51,7 @@ class DistanceAndTimeSet extends TimedSet {
   public function getDistance(string $unit = 'm'): float {
     if ($unit !== $this->unit) {
 
-     return $distance *= $this->distance;
+      return $distance *= $this->distance;
     }
     return $this->distance;
   }
@@ -69,7 +71,7 @@ class DistanceAndTimeSet extends TimedSet {
 
   /**
    * 
-   * @param  string $unit
+   * @param  string $unit the unit of the distance
    * @return $this for a fluent interface
    */
   public function setUnit(string $unit) {

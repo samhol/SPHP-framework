@@ -14,7 +14,7 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 
 /**
- * Defines DiaryTrait
+ * Defines a trait for some basic diary functionality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License

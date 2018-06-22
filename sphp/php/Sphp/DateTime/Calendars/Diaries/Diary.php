@@ -61,9 +61,10 @@ class Diary implements Iterator, DiaryInterface {
   }
 
   /**
+   * Checks whether the date contains logs
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return bool 
+   * @return bool true if the date contains logs and false otherwise
    */
   public function containsLogs($date): bool {
     $contains = false;

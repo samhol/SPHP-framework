@@ -30,7 +30,7 @@ class LogDispatcher extends Diary {
       if ($listener instanceof CalendarEventListener) {
         $listener->onEventInsert($log);
       } else {
-        $listener($event);
+        $listener($log);
       }
     }
   }

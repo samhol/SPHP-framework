@@ -63,7 +63,7 @@ class Logs {
     return new BasicLog($constraint, $name, $description);
   }
   /**
-   * Creates a new weekly occuring Holiday instance
+   * Creates a new weekly occurring Holiday instance
    * 
    * @param  int $day the day of the month
    * @param  string $name
@@ -76,7 +76,7 @@ class Logs {
   }
 
   /**
-   * Creates a new weekly occuring Holiday instance
+   * Creates a new weekly occurring Holiday instance
    * 
    * @param  int[] $weekdays week days the holiday occurs
    * @param  string $name
