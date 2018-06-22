@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 /**
- * Defines ExerciseSet
+ * Defines an exercise set for workout exercises
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -20,5 +20,11 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
  */
 interface ExerciseSet {
 
+  /**
+   * Returns the string representation of the object
+   * 
+   * @return string the string representation of the object
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   */
   public function __toString(): string;
 }

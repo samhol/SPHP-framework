@@ -47,8 +47,8 @@ class HolidayLogView implements Content {
   /**
    * Constructor
    */
-  public function __construct() {
-    
+  public function __construct($day = null) {
+   
   }
 
   /**

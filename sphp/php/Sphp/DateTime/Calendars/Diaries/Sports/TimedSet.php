@@ -14,7 +14,7 @@ use DateInterval;
 use Sphp\DateTime\Factory;
 
 /**
- * Implements anExercise with duration
+ * Implements timed exercise set
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

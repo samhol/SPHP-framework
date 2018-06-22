@@ -19,11 +19,23 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
  */
 class WeightLiftingExercise extends Exercise {
 
+  /**
+   * Adds a new set to the exercise
+   * 
+   * @param  float $weight
+   * @param  int $reps
+   * @return $this for fluent interface
+   */
   public function addSet(float $weight, int $reps) {
     $this->insertSet(new WeightliftingSet($weight, $reps));
     return $this;
   }
 
+  /**
+   * Returns the total weight used in the exercise
+   * 
+   * @return float the total weight used
+   */
   public function getTotalWeight(): float {
     $total = 0;
     foreach ($this as $set) {

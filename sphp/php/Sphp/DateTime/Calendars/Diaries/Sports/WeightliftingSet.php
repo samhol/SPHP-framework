@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 /**
- * Description of WeightliftingSet
+ * Implements a weightlifting set
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -32,8 +32,8 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Constructor
    * 
-   * @param float $weight
-   * @param int $reps
+   * @param float $weight weight used in the set
+   * @param int $reps repetitions done
    */
   public function __construct(float $weight, int $reps) {
     $this->setWeight($weight)->setReps($reps);
@@ -43,24 +43,51 @@ class WeightliftingSet implements ExerciseSet {
     return sprintf("%skg x %d reps", $this->weight, $this->reps);
   }
 
+  /**
+   * Returns the weight used in the set
+   * 
+   * @return float weight used in the set
+   */
   public function getWeight(): float {
     return $this->weight;
   }
 
-  public function getReps(): int {
-    return $this->reps;
-  }
-
+  /**
+   * Sets the weight used in the set
+   * 
+   * @param  float $weight the weight used in the set
+   * @return $this for fluent interface
+   */
   public function setWeight(float $weight) {
     $this->weight = $weight;
     return $this;
   }
 
+  /**
+   * Returns the repetitions done in the set
+   * 
+   * @return int the repetitions done in the set
+   */
+  public function getReps(): int {
+    return $this->reps;
+  }
+
+  /**
+   * Sets the repetitions done in the set
+   * 
+   * @param  int $reps the repetitions done in the set
+   * @return $this for fluent interface
+   */
   public function setReps(int $reps) {
     $this->reps = $reps;
     return $this;
   }
 
+  /**
+   * Returns the total weight used in the set
+   * 
+   * @return float the total weight used in the set
+   */
   public function getTotalWeight(): float {
     return $this->reps * $this->weight;
   }

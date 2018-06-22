@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 /**
- * Implements a distance and time set 
+ * Implements a distance and time set for workout exercise
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -54,12 +54,24 @@ class DistanceAndTimeSet extends TimedSet {
     return $this->distance;
   }
 
+  /**
+   * Sets the distance done in the set
+   * 
+   * @param  float $distance the distance done in the set
+   * @param  string $unit the unit of the distance
+   * @return $this for a fluent interface
+   */
   public function setDistance(float $distance, string $unit = 'm') {
     $this->distance = $distance;
     $this->unit = $unit;
     return $this;
   }
 
+  /**
+   * 
+   * @param  string $unit
+   * @return $this for a fluent interface
+   */
   public function setUnit(string $unit) {
     $this->unit = $unit;
     return $this;

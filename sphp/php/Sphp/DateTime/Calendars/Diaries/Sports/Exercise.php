@@ -55,6 +55,12 @@ abstract class Exercise implements Iterator, Countable {
     unset($this->name, $this->category, $this->sets);
   }
 
+  /**
+   * Returns the string representation of the object
+   * 
+   * @return string the string representation of the object
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   */
   public function __toString(): string {
     $output = "$this->name: ($this->category)";
     foreach ($this->sets as $set) {
@@ -64,40 +70,49 @@ abstract class Exercise implements Iterator, Countable {
   }
 
   /**
+   * Returns the name of the exercise
    * 
-   * @return string
+   * @return string exercise name
    */
   public function getName(): string {
     return $this->name;
   }
 
   /**
+   * Returns the description of the exercise
    * 
-   * @return string
+   * @return string the description of the exercise
    */
   public function getDescription(): string {
     return $this->category;
   }
 
+  /**
+   * Returns exercise sets
+   * 
+   * @return ExerciseSet[] exercise sets
+   */
   public function getSets(): array {
     return $this->sets;
   }
 
+  /**
+   * Inserts a new set to the exercise
+   * 
+   * @param ExerciseSet new exercise set
+   */
   protected function insertSet(ExerciseSet $set) {
     $this->sets[] = $set;
     return $this;
   }
 
+  /**
+   * Returns the number of the sets in the exercise
+   * 
+   * @return int the number of the sets in the exercise
+   */
   public function count(): int {
     return count($this->sets);
-  }
-
-  public function getTotalWeight(): float {
-    $total = 0;
-    foreach ($this->sets as $set) {
-      $total += $set->getTotalWeight();
-    }
-    return $total;
   }
 
   /**

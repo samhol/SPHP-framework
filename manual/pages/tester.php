@@ -2,39 +2,37 @@
 
 echo "<pre>";
 
-use Sphp\DateTime\Calendars\Diaries;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Fi\HolidayDiary;
-use Sphp\DateTime\Calendars\Diaries\Logs;
-use Sphp\DateTime\Calendars\Diaries\Constraints\OneOf;
-use Sphp\DateTime\Calendars\Diaries\Sports\FitNotes;
+class UnitTransformer {
 
-$birthDayDiary = new Diaries\Diary();
+  private $unitMap = ['m' => 1, 'cm' => .1, 'km' => 1000];
 
-$birthDayDiary->insertLog(Holidays::birthday(7, 22, 'Leena Holck', 1947));
-$birthDayDiary->insertLog(Holidays::birthday(9, 16, 'Sami Holck', 1975));
+  /**
+   * 
+   * @param string $from
+   * @return float
+   * @throws Sphp\Exceptions\InvalidArgumentException
+   */
+  public function getFactor(string $from): float {
+    if (!array_key_exists($from, $this->unitMap)) {
+      throw new Sphp\Exceptions\InvalidArgumentException("$from is not recognised");
+    } else {
+      return $this->unitMap[$from];
+    }
+  }
 
-$birthDayDiary->insertLog(Holidays::birthday(12, 23, 'Ella Lisko', 1977));
-$sportsDiary = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
-$basketball1 = Logs::weekly([1], 'Basketball');
-$basketball1->setDescription('In Vaarniemi **20:30-22:00**');
-$basketball1->dateConstraints()->dateIsNot(new OneOf("2018-4-30", "2018-5-1"));
-$basketballDiary = new Diaries\Diary();
-$basketballDiary->insertLog(Logs::weekly([5, 6, 4], 'Bball'));
-$basketballDiary->insertLog($basketball1);
-foreach ($birthDayDiary as $log) {
-  echo $log;
+  /**
+   * 
+   * @param float $value
+   * @param string $unit
+   * @param string $newUnit
+   * @return float
+   */
+  public function transform(float $value, string $unit, string $newUnit): float {
+    return $value * $this->getFactor($unit) / $this->getFactor($newUnit);
+  }
+
 }
-echo $birthDayDiary->getDate('2018-09-16');
 
-$diaryContainer = new Diaries\DiaryContainer();
-
-$diaryContainer->insertDiary($basketballDiary);
-
-$diaryContainer->insertDiary($sportsDiary);
-$diaryContainer->insertDiary(new HolidayDiary());
-$diaryContainer->insertDiary($birthDayDiary);
-echo "\n" . $diaryContainer->getDate('1990-12-06');
-echo "\n" . $diaryContainer->getDate('2017-12-24');
-echo "\n" . $diaryContainer->getDate('2018-05-03');
+$foo = new UnitTransformer();
+var_dump($foo->transform(1, 'km', 'cm'));
 echo "</pre>";
