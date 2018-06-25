@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use DateInterval;
+
 /**
  * Description of DistanceAndTimeExercise
  *
@@ -44,12 +45,21 @@ class DistanceAndTimeExercise extends Exercise implements \Iterator {
    * @param DateInterval|string $duration the duration of the exercise set
    * @param string $unit
    */
-  public function addSet(float $distance,  $duration, string $unit = 'km') {
+  public function addSet(float $distance, $duration, string $unit = 'km') {
     $this->insertSet(new DistanceAndTimeSet($distance, $duration, $unit));
   }
 
   public function getSets(): array {
     return $this->sets;
+  }
+
+  public function getAverageSpeed(): string {
+    $d = 0;
+    foreach ($this as $set) {
+      echo $set->getDistance() . ", ";
+      $d += $set->getDistance();
+    }
+    return $d;
   }
 
 }

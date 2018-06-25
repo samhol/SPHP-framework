@@ -38,17 +38,13 @@ class LogViewBuilder {
    */
   public function build(DiaryDate $date): Container {
     $conntainer = new Container();
-    $holidays = new HolidayLogView();
-    foreach ($date as $log) {
-      if ($log instanceof HolidayInterface) {
-        $holidays->insert($log);
-      } else if ($log instanceof WorkoutLog) {
-        $conntainer->append(new WorkoutLogView($log));
-      } else {
-        $conntainer->appendMd($log->toString());
-      }
-    }
-    $conntainer->append($holidays);
+    $holidays = HolidayLogView::instance();
+    $workouts = WorkoutLogView::instance();
+   /* foreach ($date as $log) {
+      $conntainer->appendMd($log->toString());
+    }*/
+    $conntainer->append($holidays->build($date));
+    $conntainer->append($workouts->build($date));
     return $conntainer;
   }
 

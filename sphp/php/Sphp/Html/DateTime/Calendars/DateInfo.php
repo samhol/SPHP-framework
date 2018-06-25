@@ -66,6 +66,7 @@ class DateInfo implements Content {
 
   public function createPopup(): Popup {
     $popup = new Popup();
+    $popup->addCssClass('sphp-date-info');
     $date = $this->date->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
     $popup->append($this->logLayoutBuilder->build($this->date));

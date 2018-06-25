@@ -29,7 +29,7 @@ class DistanceAndTimeSet extends TimedSet {
   /**
    * @var string
    */
-  private $unit = 'm';
+  private $unit = 'km';
 
   /**
    * Constructor
@@ -38,7 +38,7 @@ class DistanceAndTimeSet extends TimedSet {
    * @param DateInterval|string $duration the duration of the exercise set
    * @param string $unit
    */
-  public function __construct(float $distance, $duration, string $unit = 'm') {
+  public function __construct(float $distance, $duration, string $unit = 'km') {
     parent::__construct($duration);
     $this->setDistance($distance, $unit);
   }
@@ -48,10 +48,10 @@ class DistanceAndTimeSet extends TimedSet {
     return sprintf("%s%s in %s", $this->distance, $this->unit, $duration);
   }
 
-  public function getDistance(string $unit = 'm'): float {
+  public function getDistance(string $unit = 'km'): float {
     if ($unit !== $this->unit) {
 
-      return $distance *= $this->distance;
+      return $this->distance;
     }
     return $this->distance;
   }
@@ -77,6 +77,11 @@ class DistanceAndTimeSet extends TimedSet {
   public function setUnit(string $unit) {
     $this->unit = $unit;
     return $this;
+  }
+
+  public function getAverageSpeed(): string {
+    echo $this->getDuration()->i;
+    return $this->distance;
   }
 
 }

@@ -59,7 +59,11 @@ class FitNotes {
           } else {
             $unit = 'km';
           }
-          $ex->addSet((float) $exersice[5], $exersice[7], $unit);
+          if ($unit === 'm') {
+            $ex->addSet((float) $exersice[5] / 1000, $exersice[7], 'km');
+          } else {
+            $ex->addSet((float) $exersice[5], $exersice[7], $unit);
+          }
         } else {
           $ex = $log->setTimedExercise($name, $category);
           $ex->addSet($exersice[7]);

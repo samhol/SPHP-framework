@@ -23,6 +23,12 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
  */
 trait DiaryTrait {
 
+  /**
+   * Checks whether given log instance exists
+   * 
+   * @param  LogInterface $log the log instance to search
+   * @return bool true if given log instance exists, false otherwise
+   */
   public function logExists(LogInterface $log): bool {
     $contains = false;
     foreach ($this as $n) {
@@ -35,9 +41,9 @@ trait DiaryTrait {
   }
 
   /**
-   * Returns all holidays stored
+   * Returns all logs matching the filter stored
    * 
-   * @return LogInterface all holiday notes stored
+   * @return LogContainer all logs matching the filter stored
    */
   abstract public function filterLogs($filter): LogContainer;
 
@@ -45,7 +51,7 @@ trait DiaryTrait {
    * Returns all logs of given PHP type stored
    * 
    * @param  string $type
-   * @return LogInterface[] all logs of given PHP object type stored
+   * @return LogContainer all logs of given PHP object type stored
    */
   public function getByType(string $type): LogContainer {
     return $this->filterLogs(function ($item) use ($type) {

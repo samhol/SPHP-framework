@@ -46,6 +46,7 @@ class Holiday extends AbstractLog implements HolidayInterface {
   /**
    * Constructor
    * 
+   * @param DateConstraint $constraint
    * @param string $name
    * @param string $description
    */

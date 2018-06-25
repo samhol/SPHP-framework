@@ -33,8 +33,14 @@ class BasicLog extends AbstractLog {
   private $description;
 
   /**
+   * @var mixed
+   */
+  private $data;
+
+  /**
    * Constructor
    * 
+   * @param DateConstraint $constraint date constraints
    * @param string $name
    * @param string $description
    */
@@ -47,7 +53,7 @@ class BasicLog extends AbstractLog {
    * Destructor
    */
   public function __destruct() {
-    unset($this->name, $this->description);
+    unset($this->name, $this->description, $this->data);
     parent::__destruct();
   }
 
@@ -99,6 +105,24 @@ class BasicLog extends AbstractLog {
    */
   public function setDescription(string $description = null) {
     $this->description = $description;
+    return $this;
+  }
+
+  /**
+   * 
+   * @return mixed
+   */
+  public function getData() {
+    return $this->data;
+  }
+
+  /**
+   * 
+   * @param  mixed $data
+   * @return $this
+   */
+  public function setData($data) {
+    $this->data = $data;
     return $this;
   }
 

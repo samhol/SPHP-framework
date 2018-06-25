@@ -39,10 +39,10 @@ interface LogContainer extends Traversable, Arrayable {
   public function mergeLogs(LogContainer $logs);
 
   /**
-   * Searches identical events 
+   * Checks whether given log instance exists
    * 
-   * @param  LogInterface $log the log object to search
-   * @return bool true if identical event exists, false otherwise
+   * @param  LogInterface $log the log instance to search
+   * @return bool true if given log instance exists, false otherwise
    */
   public function logExists(LogInterface $log): bool;
 
