@@ -80,4 +80,22 @@ class TimedSet implements ExerciseSet {
     return $this;
   }
 
+  /**
+   * Returns the duration of the exercise set in hours
+   * 
+   * @return float the duration of the exercise set in hours
+   */
+  public function getHours(): float {
+    return $this->duration->i / 60 + $this->duration->h;
+  }
+
+  /**
+   * Returns the duration of the exercise set
+   * 
+   * @return DateInterval the duration of the exercise set
+   */
+  public function getMinutes(): float {
+    return $this->duration->i + $this->duration->h * 60;
+  }
+
 }

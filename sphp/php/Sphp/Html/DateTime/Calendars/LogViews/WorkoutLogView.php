@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Content;
 use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Flow\Section;
@@ -19,7 +18,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\TagFactory;
+use Sphp\Html\Tags;
 
 /**
  * Implements a workout log viewer
@@ -82,8 +81,8 @@ class WorkoutLogView {
   }
 
   protected function createPaneTitle(Exercise $exercise): \Sphp\Html\Span {
-    $title = TagFactory::span($exercise->getName());
-    $title->append(TagFactory::strong(" ({$exercise->getDescription()})"));
+    $title = Tags::span($exercise->getName());
+    $title->append(Tags::strong(" ({$exercise->getDescription()})"));
     if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
       $title->append($exercise->getTotalWeight());
     }

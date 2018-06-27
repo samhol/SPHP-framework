@@ -20,7 +20,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
 /**
- * Description of Month
+ * Implements a Month view for a Calendar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -50,6 +50,7 @@ class MonthView extends AbstractComponent {
   private $diaries;
 
   /**
+   * Constructor
    * 
    * @param int $year
    * @param int $month
@@ -77,16 +78,19 @@ class MonthView extends AbstractComponent {
   }
 
   /**
+   * Returns the diary container used
    * 
-   * @return DiaryContainer
+   * @return DiaryContainer the diary container used
    */
   public function getDiaries(): DiaryContainer {
     return $this->diaries;
   }
 
   /**
+   * Sets the diary container used
    * 
-   * @return 
+   * @param  DiaryContainer $diaryContainer
+   * @return $this for a fluent interface
    */
   public function setDiaryContainer(DiaryContainer $diaryContainer) {
     $this->diaries = $diaryContainer;
@@ -96,7 +100,7 @@ class MonthView extends AbstractComponent {
   /**
    * 
    * @param  DiaryInterface $diary
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function insertDiary(DiaryInterface $diary) {
     $this->getDiaries()->insertDiary($diary);
@@ -111,7 +115,7 @@ class MonthView extends AbstractComponent {
     return $container;
   }
 
-  protected function generateTop() {
+  protected function generateTop(): Row {
     $top = MonthSelector::fromDate($this->firstOf);
     //$top->attributes()->classes()->protect('sphp', 'month-selector');
     //$top->append($this->firstOf->format('F Y'));
@@ -120,6 +124,10 @@ class MonthView extends AbstractComponent {
     return $output;
   }
 
+  /**
+   * 
+   * @return Container
+   */
   protected function parseWeeks(): Container {
     $container = new Container();
     if ($this->firstOf->getWeekDay() !== 1) {
@@ -153,10 +161,13 @@ class MonthView extends AbstractComponent {
     return $o . '</div>';
   }
 
+  /**
+   * 
+   * @param  Date $date
+   * @return Row
+   */
   private function createWeekRow(Date $date): Row {
     $row = new Row();
-    //$weekViewer = new WeekNumberView($date);
-    //$row->append($weekViewer)->layout()->setWidths('small-1');
     $row->append($this->createDayCell($date));
     $next = $date->nextDay();
     while ($next->getWeekDay() !== 1) {
@@ -166,10 +177,13 @@ class MonthView extends AbstractComponent {
     return $row;
   }
 
+  /**
+   * 
+   * @param  Date $day
+   * @return WeekDayView
+   */
   protected function createDayCell(Date $day): WeekDayView {
-
     $weekDayView = new WeekDayView($this->diaries->getDate($day));
-    //$weekDayView->useCalendaDate($this->calendar->get($day));
     if ($day->getMonth() === $this->month) {
       $weekDayView->addCssClass('selected-month');
     } else {

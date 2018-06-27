@@ -31,4 +31,17 @@ class TimedExercise extends Exercise {
     $this->insertSet(new TimedSet($time));
   }
 
+  /**
+   * Returns the distance
+   * 
+   * @return float the distance
+   */
+  public function getTotalTime(): float {
+    $distance = 0;
+    foreach ($this as $set) {
+      $distance += $set->getDuration();
+    }
+    return $distance;
+  }
+
 }

@@ -104,4 +104,5 @@ class MonthSelector implements Content {
   public static function fromDate(Date $date): MonthSelector {
     return new static($date->getYear(), $date->getMonth());
   }
+
 }

@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Adapters;
 
-use Sphp\Html\TagFactory;
+use Sphp\Html\Tags;
 
-$p = TagFactory::p();
+$p = Tags::p();
 $adapter = new VisibilityAdapter($p);
 $adapter->hideForLandscape();
 echo $p($p->cssClasses()->getValue());

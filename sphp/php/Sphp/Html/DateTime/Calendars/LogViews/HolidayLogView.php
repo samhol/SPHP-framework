@@ -10,13 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Content;
-use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
 use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
-use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
-use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\Flow\Section;

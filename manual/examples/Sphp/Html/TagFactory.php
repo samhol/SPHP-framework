@@ -2,5 +2,5 @@
 
 namespace Sphp\Html;
 
-$span = TagFactory::create("span", ['span tag']);
-echo TagFactory::p("This is a paragraph contaning a $span");
+$span = Tags::create("span", ['span tag']);
+echo Tags::p("This is a paragraph contaning a $span");

@@ -59,7 +59,7 @@ use ReflectionClass;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-abstract class TagFactory {
+abstract class Tags {
 
   /**
    * list of tags and their corresponding PHP classes

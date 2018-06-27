@@ -30,7 +30,7 @@ class EmptyTag extends AbstractTag {
   }
 
   public function getHtml(): string {
-    $output = '<' . $this->getTagName() . $this->attributesToString(). '>';
+    $output = '<' . $this->getTagName() . $this->attributesToString() . '>';
     if ($this->close) {
       $output .= "</{$this->getTagName()}>";
     }

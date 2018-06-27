@@ -5,7 +5,7 @@ namespace Sphp\Html;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$factory = Manual\api()->classLinker(TagFactory::class);
+$factory = Manual\api()->classLinker(Tags::class);
 Manual\md(<<<MD
 ##The $factory class: <small>a factory for basic HTML components</small>
 $ns

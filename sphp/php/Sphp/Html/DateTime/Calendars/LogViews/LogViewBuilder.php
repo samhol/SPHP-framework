@@ -12,8 +12,6 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Container;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
-use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 
 /**
  * Implements a Log view builder
@@ -40,9 +38,9 @@ class LogViewBuilder {
     $conntainer = new Container();
     $holidays = HolidayLogView::instance();
     $workouts = WorkoutLogView::instance();
-   /* foreach ($date as $log) {
+    /* foreach ($date as $log) {
       $conntainer->appendMd($log->toString());
-    }*/
+      } */
     $conntainer->append($holidays->build($date));
     $conntainer->append($workouts->build($date));
     return $conntainer;

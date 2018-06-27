@@ -16,7 +16,7 @@ use Sphp\Html\Flow\Headings\H3;
 use Sphp\Html\Flow\Headings\H4;
 use Sphp\Html\Flow\Headings\H5;
 use Sphp\Html\Flow\Headings\H6;
-use Sphp\Html\TagFactory;
+use Sphp\Html\Tags;
 
 /**
  * Description of ContentCreatorTrait
@@ -48,7 +48,7 @@ trait ContentCreatorTrait {
    * @return H1 appended object
    */
   public function appendH1($content = null): H1 {
-    $component = TagFactory::h1();
+    $component = Tags::h1();
     $component->append($content);
     $this->append($component);
     return $component;
@@ -61,7 +61,7 @@ trait ContentCreatorTrait {
    * @return H2 appended object
    */
   public function appendH2($content = null): H2 {
-    $component = TagFactory::h2();
+    $component = Tags::h2();
     $component->append($content);
     $this->append($component);
     return $component;
@@ -74,7 +74,7 @@ trait ContentCreatorTrait {
    * @return H3 appended object
    */
   public function appendH3($content = null): H3 {
-    $component = TagFactory::h3();
+    $component = Tags::h3();
     $component->append($content);
     $this->append($component);
     return $component;
@@ -87,7 +87,7 @@ trait ContentCreatorTrait {
    * @return H4 appended object
    */
   public function appendH4($content = null): H4 {
-    $component = TagFactory::h4();
+    $component = Tags::h4();
     $component->append($content);
     $this->append($component);
     return $component;
@@ -100,7 +100,7 @@ trait ContentCreatorTrait {
    * @return H5 appended object
    */
   public function appendH5($content = null): H5 {
-    $component = TagFactory::h5();
+    $component = Tags::h5();
     $component->append($content);
     $this->append($component);
     return $component;
@@ -113,7 +113,7 @@ trait ContentCreatorTrait {
    * @return H6 appended object
    */
   public function appendH6($content = null): H6 {
-    $component = TagFactory::h6();
+    $component = Tags::h6();
     $component->append($content);
     $this->append($component);
     return $component;

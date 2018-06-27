@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Adapters;
 
-use Sphp\Html\TagFactory;
+use Sphp\Html\Tags;
 use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 
-$p = TagFactory::p();
+$p = Tags::p();
 $adapter = new VisibilityAdapter($p);
 foreach (new ScreenSizes as $size) {
   $adapter->hideOnlyForSize($size);

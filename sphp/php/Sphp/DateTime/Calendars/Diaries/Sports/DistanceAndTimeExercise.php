@@ -52,14 +52,23 @@ class DistanceAndTimeExercise extends Exercise implements \Iterator {
   public function getSets(): array {
     return $this->sets;
   }
+  /**
+   * Returns the distance
+   * 
+   * @return float the distance
+   */
+  public function getTotalTime(): float {
+    $distance = 0;
+    foreach ($this as $set) {
+      $distance += $set->getHours();
+    }
+    return $distance;
+  }
 
   public function getAverageSpeed(): string {
-    $d = 0;
-    foreach ($this as $set) {
-      echo $set->getDistance() . ", ";
-      $d += $set->getDistance();
-    }
-    return $d;
+    $d = $this->getTotalDistance();
+    $t = $this->getTotalTime();
+    return $d/$t;
   }
 
 }
