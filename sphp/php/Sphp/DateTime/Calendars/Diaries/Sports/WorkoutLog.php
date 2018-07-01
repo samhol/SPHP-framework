@@ -12,30 +12,42 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\DateTime\Calendars\Diaries\LogInterface;
 use IteratorAggregate;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
 use Sphp\DateTime\Date;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
 
 /**
- * Description of ExerciseDy
+ * Implements a workout log for a diary
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Countable {
+class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayable {
 
+  /**
+   * @var Date 
+   */
+  private $date;
+
+  /**
+   * @var Exercise[] 
+   */
   private $exercises;
 
   /**
    * Constructor
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    */
   public function __construct($date) {
-    parent::__construct($date);
+    if (!$date instanceof Date) {
+      $date = Date::from($date);
+    }
+    $this->date = $date;
     $this->exercises = [];
   }
 
@@ -43,11 +55,11 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
    * Destructor
    */
   public function __destruct() {
-    unset($this->exercises);
+    unset($this->date, $this->exercises);
   }
 
   public function __toString(): string {
-    $output = parent::__toString() . ':';
+    //$output = parent::__toString() . ':';
     foreach ($this->exercises as $ex) {
       $output .= "\n\t$ex";
     }
@@ -55,9 +67,10 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
   }
 
   /**
+   * Sets a new exercise to the log
    * 
-   * @param  Exercise $e
-   * @return $this
+   * @param  Exercise $e 
+   * @return $this for a fluent interface
    */
   public function setExercise(Exercise $e) {
     $name = $e->getName();
@@ -130,13 +143,8 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
     return array_key_exists($name, $this->exercises) && $exercise == $this->exercises[$name];
   }
 
-  /**
-   * 
-   * @param  type $date
-   * @return bool
-   */
   public function dateMatchesWith($date): bool {
-    return parent::matchesWith($date);
+    return $this->date->matchesWith($date);
   }
 
   public function getIterator(): \Traversable {
@@ -151,10 +159,6 @@ class WorkoutLog extends Date implements IteratorAggregate, LogInterface, Counta
     return $this->__toString();
   }
 
-  /**
-   * 
-   * @return Exercise[]
-   */
   public function toArray(): array {
     return $this->exercises;
   }

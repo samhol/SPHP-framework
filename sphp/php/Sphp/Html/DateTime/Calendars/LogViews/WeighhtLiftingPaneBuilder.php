@@ -16,6 +16,7 @@ use Sphp\Html\Tags;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Content;
 use Sphp\Html\Container;
+use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 
 /**
  * Implements pane builder for weightlifting exercises
@@ -29,15 +30,18 @@ class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
   public function buildContent(Exercise $exercise): Content {
     $container = new Container;
-    if ($exercise->count() === 1) {
-      $list = new Ul();
-    } else {
-      $list = new Ol();
+    if ($exercise instanceof WeightLiftingExercise) {
+      if ($exercise->count() === 1) {
+        $list = new Ul();
+      } else {
+        $list = new Ol();
+      }
+      foreach ($exercise as $set) {
+        $list->append($set);
+      }
+      $container->append($list);
+      $container->appendMd("**total weight:** `{$exercise->getTotalWeight()} kg`");
     }
-    foreach ($exercise as $set) {
-      $list->append($set);
-    }
-    $container->append($list);
     return $container;
   }
 
