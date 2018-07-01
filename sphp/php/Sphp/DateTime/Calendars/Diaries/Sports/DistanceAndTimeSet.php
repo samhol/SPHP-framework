@@ -80,8 +80,8 @@ class DistanceAndTimeSet extends TimedSet {
   }
 
   public function getAverageSpeed(): string {
-    echo $hours = $this->getDuration()->i/60+$this->getDuration()->h;
-    return $this->distance/$hours;
+    $hours = $this->getHours();
+    return $this->distance / $hours;
   }
 
 }

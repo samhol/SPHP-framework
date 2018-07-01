@@ -25,16 +25,19 @@ class TimedExercise extends Exercise {
   /**
    * Adds a new timed set to the exercise
    * 
-   * @param DateInterval|string $time the duration of the exercise set
+   * @param  DateInterval|string $time the duration of the exercise set
+   * @return TimedSet new instance
    */
   public function addSet($time) {
-    $this->insertSet(new TimedSet($time));
+    $set = new TimedSet($time);
+    $this->insertSet($set);
+    return $set;
   }
 
   /**
-   * Returns the distance
+   * Returns the total time used in the exercise 
    * 
-   * @return float the distance
+   * @return float the total time used in the exercise 
    */
   public function getTotalTime(): float {
     $distance = 0;

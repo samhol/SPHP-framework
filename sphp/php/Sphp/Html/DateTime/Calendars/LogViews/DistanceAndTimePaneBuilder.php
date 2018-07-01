@@ -10,24 +10,26 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Tags;
+use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise;
+use Sphp\Html\Content;
+use Sphp\Html\Container;
 
 /**
- * Description of WeighhtLiftingPaneBuilder
+ * Implements pane builder for distance and time exercises
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DistanceAndTimePaneBuilder {
+class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildPane(DistanceAndTimeExercise $exercise): Pane {
-    $pane = new Pane($this->createPaneTitle($exercise));
+  public function buildContent(Exercise $exercise): Content {
+    $container = new Container();
     if ($exercise->count() === 1) {
       $list = new Ul();
     } else {
@@ -37,15 +39,15 @@ class DistanceAndTimePaneBuilder {
       $set->getAverageSpeed();
       $list->append($set);
     }
-    $pane->append($list);
-    return $pane;
+    $container->append($list);
+    return $container;
   }
 
-  public function createPaneTitle(DistanceAndTimeExercise $exercise): \Sphp\Html\Span {
+  public function buildTitleContent(Exercise $exercise): Content {
     $title = Tags::span($exercise->getName());
     $title->append(Tags::strong(" ({$exercise->getDescription()})"));
     if ($exercise instanceof DistanceAndTimeExercise) {
-      $title->append($exercise->getTotalDistance() . "km, " . $exercise->getAverageSpeed() . "km/h");
+      $title->append($exercise->getTotalDistance() . "km, at " . $exercise->getAverageSpeed() . "km/h");
     }
     return $title;
   }

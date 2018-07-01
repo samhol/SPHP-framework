@@ -10,24 +10,25 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Tags;
-use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
+use Sphp\Html\Content;
+use Sphp\Html\Container;
 
 /**
- * Description of WeighhtLiftingPaneBuilder
+ * Implements pane builder for weightlifting exercises
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WeighhtLiftingPaneBuilder {
+class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildPane(WeightLiftingExercise $exercise): Pane {
-    $pane = new Pane($this->createPaneTitle($exercise));
+  public function buildContent(Exercise $exercise): Content {
+    $container = new Container;
     if ($exercise->count() === 1) {
       $list = new Ul();
     } else {
@@ -36,11 +37,11 @@ class WeighhtLiftingPaneBuilder {
     foreach ($exercise as $set) {
       $list->append($set);
     }
-    $pane->append($list);
-    return $pane;
+    $container->append($list);
+    return $container;
   }
 
-  public function createPaneTitle(WeightLiftingExercise $exercise): \Sphp\Html\Span {
+  public function buildTitleContent(Exercise $exercise): Content {
     $title = Tags::span($exercise->getName());
     $title->append(Tags::strong(" ({$exercise->getDescription()})"));
     if ($exercise instanceof WeightLiftingExercise) {

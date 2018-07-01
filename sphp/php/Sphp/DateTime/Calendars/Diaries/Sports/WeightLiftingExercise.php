@@ -24,11 +24,12 @@ class WeightLiftingExercise extends Exercise {
    * 
    * @param  float $weight
    * @param  int $reps
-   * @return $this for fluent interface
+   * @return WeightliftingSet new instance
    */
-  public function addSet(float $weight, int $reps) {
-    $this->insertSet(new WeightliftingSet($weight, $reps));
-    return $this;
+  public function addSet(float $weight, int $reps): WeightliftingSet {
+    $set = new WeightliftingSet($weight, $reps);
+    $this->insertSet($set);
+    return $set;
   }
 
   /**
