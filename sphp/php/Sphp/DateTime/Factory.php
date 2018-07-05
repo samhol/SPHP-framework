@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime;
 
-use DateInterval;
+use Sphp\DateTime\DateInterval;
 use Sphp\Stdlib\Strings;
 
 /**

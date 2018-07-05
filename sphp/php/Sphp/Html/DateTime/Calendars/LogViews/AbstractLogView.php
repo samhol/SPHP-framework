@@ -11,14 +11,7 @@
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Content;
-use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
-use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Flow\Section;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\Ol;
-use Sphp\Html\Container;
 
 /**
  * Implements a workout log viewer

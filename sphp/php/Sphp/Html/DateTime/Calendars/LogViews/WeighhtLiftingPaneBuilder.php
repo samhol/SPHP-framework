@@ -12,10 +12,8 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
-use Sphp\Html\Tags;
+use Sphp\Html\Lists\StandardList;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
-use Sphp\Html\Content;
-use Sphp\Html\Container;
 use Sphp\Html\ContainerInterface;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 
@@ -41,7 +39,7 @@ MD
     return $container;
   }
 
-  public function buildSetList(Exercise $exercise): \Sphp\Html\Lists\StandardList {
+  public function buildSetList(Exercise $exercise): StandardList {
     if ($exercise->count() === 1) {
       $list = new Ul();
     } else {

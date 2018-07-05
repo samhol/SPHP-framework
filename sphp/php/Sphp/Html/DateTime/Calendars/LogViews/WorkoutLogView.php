@@ -54,11 +54,14 @@ class WorkoutLogView {
     $accordion->allowAllClosed(true)->allowMultiExpand(true);
     $doer = new WeighhtLiftingPaneBuilder();
     $doer1 = new DistanceAndTimePaneBuilder();
+    $doer2 = new TimedExercisePaneBuilder();
     foreach ($workouts as $exercise) {
       if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
         $accordion->append($doer->buildPane($exercise));
       } else if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise) {
         $accordion->append($doer1->buildPane($exercise));
+      } else if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise) {
+        $accordion->append($doer2->buildPane($exercise));
       } else {
         $accordion->append($this->buildPane($exercise));
       }

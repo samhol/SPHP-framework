@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use DateInterval;
+use Sphp\DateTime\DateInterval;
 use Sphp\DateTime\Factory;
 
 /**
