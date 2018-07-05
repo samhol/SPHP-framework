@@ -16,6 +16,7 @@ use Sphp\Html\Tags;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Content;
 use Sphp\Html\Container;
+use Sphp\Html\ContainerInterface;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 
 /**
@@ -28,30 +29,31 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
  */
 class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): Content {
-    $container = new Container;
+  public function buildContent(Exercise $exercise): ContainerInterface {
+    $container = parent::buildContent($exercise);
     if ($exercise instanceof WeightLiftingExercise) {
-      if ($exercise->count() === 1) {
-        $list = new Ul();
-      } else {
-        $list = new Ol();
-      }
-      foreach ($exercise as $set) {
-        $list->append($set);
-      }
-      $container->append($list);
-      $container->appendMd("**total weight:** `{$exercise->getTotalWeight()} kg`");
+      $container->appendMd(<<<MD
+ * **total weight:** `{$exercise->getTotalWeight()} kg`
+ * **total reps:** `{$exercise->getTotalReps()}`
+MD
+      );
     }
     return $container;
   }
 
-  public function buildTitleContent(Exercise $exercise): Content {
-    $title = Tags::span($exercise->getName());
-    $title->append(Tags::strong(" ({$exercise->getDescription()})"));
-    if ($exercise instanceof WeightLiftingExercise) {
-      $title->append($exercise->getTotalWeight());
+  public function buildSetList(Exercise $exercise): \Sphp\Html\Lists\StandardList {
+    if ($exercise->count() === 1) {
+      $list = new Ul();
+    } else {
+      $list = new Ol();
     }
-    return $title;
+    foreach ($exercise as $set) {
+      if ($set instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet) {
+        $setString = $set->getReps() . ' x ' . $set->getRepWeight() . " kg (total: {$set->getTotalWeight()}kg)";
+        $list->append($setString);
+      }
+    }
+    return $list;
   }
 
 }

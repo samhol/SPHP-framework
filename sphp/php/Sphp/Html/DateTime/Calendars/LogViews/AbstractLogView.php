@@ -18,6 +18,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
+use Sphp\Html\Container;
 
 /**
  * Implements a workout log viewer

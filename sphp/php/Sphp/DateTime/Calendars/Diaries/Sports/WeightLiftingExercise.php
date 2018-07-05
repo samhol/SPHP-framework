@@ -45,4 +45,17 @@ class WeightLiftingExercise extends Exercise {
     return $total;
   }
 
+  /**
+   * Returns the total reps made in the exercise
+   * 
+   * @return float the total reps made
+   */
+  public function getTotalReps(): float {
+    $total = 0;
+    foreach ($this as $set) {
+      $total += $set->getReps();
+    }
+    return $total;
+  }
+
 }

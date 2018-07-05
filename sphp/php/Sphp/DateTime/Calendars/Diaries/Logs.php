@@ -23,6 +23,19 @@ use Sphp\DateTime\DateInterface;
 class Logs {
 
   /**
+   *
+   * @var string
+   */
+  private $logType;
+
+  public function __construct(string $logType) {
+    if (true) {
+      
+    }
+    $this->logType = $logType;
+  }
+
+  /**
    * Creates a new unique date note instance
    * 
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
@@ -33,7 +46,7 @@ class Logs {
    */
   public static function unique($date, string $heading, string $description = null): BasicLog {
     $constraint = new Constraints\Unique($date);
-    return new BasicLog($constraint, $heading, $description);
+    return new EventLog($constraint, $heading, $description);
   }
 
   /**
@@ -62,6 +75,7 @@ class Logs {
     $constraint = new Constraints\VaryingAnnual($format);
     return new BasicLog($constraint, $name, $description);
   }
+
   /**
    * Creates a new weekly occurring Holiday instance
    * 
@@ -87,6 +101,10 @@ class Logs {
     $reflect = new \ReflectionClass(Constraints\Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);
     return new BasicLog($constraint, $name, $description);
+  }
+
+  public static function holiday() {
+    return new static();
   }
 
 }

@@ -17,6 +17,7 @@ use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise;
 use Sphp\Html\Content;
 use Sphp\Html\Container;
+use Sphp\Html\ContainerInterface;
 
 /**
  * Implements pane builder for distance and time exercises
@@ -28,7 +29,7 @@ use Sphp\Html\Container;
  */
 class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): Content {
+  public function buildContent(Exercise $exercise): ContainerInterface {
     $container = new Container();
     if ($exercise->count() === 1) {
       $list = new Ul();
@@ -40,16 +41,8 @@ class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
       $list->append($set);
     }
     $container->append($list);
+    $container->append($exercise->getTotalDistance() . "km, at " . $exercise->getAverageSpeed() . "km/h");
     return $container;
-  }
-
-  public function buildTitleContent(Exercise $exercise): Content {
-    $title = Tags::span($exercise->getName());
-    $title->append(Tags::strong(" ({$exercise->getDescription()})"));
-    if ($exercise instanceof DistanceAndTimeExercise) {
-      $title->append($exercise->getTotalDistance() . "km, at " . $exercise->getAverageSpeed() . "km/h");
-    }
-    return $title;
   }
 
 }
