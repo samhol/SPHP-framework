@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateRange;
+use Sphp\DateTime\Period;
 use Sphp\DateTime\DateInterface;
 
 /**
@@ -23,7 +23,7 @@ use Sphp\DateTime\DateInterface;
 class InRange implements DateConstraint {
 
   /**
-   * @var DateRange 
+   * @var Period 
    */
   private $dateRange;
 
@@ -34,7 +34,7 @@ class InRange implements DateConstraint {
    * @param  DateInterface|\DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
    */
   public function __construct($start = null, $stop = null) {
-    $this->dateRange = new DateRange($start, $stop);
+    $this->dateRange = new Period($start, $stop);
   }
 
   /**
@@ -44,7 +44,7 @@ class InRange implements DateConstraint {
     unset($this->dateRange);
   }
 
-  public function getRange(): DateRange {
+  public function getRange(): Period {
     return $this->dateRange;
   }
 

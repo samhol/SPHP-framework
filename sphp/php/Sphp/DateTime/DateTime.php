@@ -12,6 +12,9 @@ namespace Sphp\DateTime;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use Sphp\DateTime\Exceptions\DateTimeException;
+use Exception;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Implements a datetime object
@@ -21,7 +24,180 @@ use DateTimeInterface;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DateTime extends DateTimeImmutable {
+class DateTime {
+
+  /**
+   * @var DateTimeImmutable 
+   */
+  private $dateTime;
+
+  /**
+   * Constructor
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function __construct($date = null) {
+    try {
+      $dateTime = null;
+      if (is_string($date)) {
+        $dateTime = new DateTimeImmutable($date);
+      } else if (is_int($date)) {
+        $dateTime = (new DateTimeImmutable())->setTimestamp($date);
+      } else if ($date instanceof DateInterface) {
+        $dateTime = new DateTimeImmutable($date->toDateString());
+      } else if ($date instanceof DateTimeInterface) {
+        $dateTime = $date;
+      } else if (is_null($date)) {
+        $dateTime = new DateTimeImmutable('today');
+      }
+    } catch (\Exception $ex) {
+      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    if ($dateTime === null) {
+      throw new DateTimeException(static::class . ' object cannot be parsed from input type');
+    }
+    $this->dateTime = new DateTimeImmutable($dateTime->format('Y-m-d'));
+  }
+
+  public function getTimestamp(): int {
+    return $this->dateTime->getTimestamp();
+  }
+
+  /**
+   * Returns date formatted according to given format
+   * 
+   * @param  string $format the format of the outputted date string
+   * @param bool $strict true if equality is not allowed, false otherwise
+   * @return string date formatted according to given format
+   * @throws DateTimeException if formatting fails
+   */
+  public function format(string $format): string {
+    $output = $this->dateTime->format($format);
+    if ($output === false) {
+      throw new DateTimeException();
+    }
+    return $this->dateTime->format($format);
+  }
+
+  /**
+   * Returns the difference in days between this and another date
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @return int the difference in days
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function compareTo($date): int {
+    $dt = DateTime::from($date)->getTimestamp();
+    $timeStamp = $this->getTimestamp();
+    $result = $timeStamp - $dt;
+    return $result;
+  }
+
+  public function matchesWith($date): bool {
+    return $this->compareTo($date) === 0;
+  }
+
+  /**
+   * Checks if this date is later than the given one
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @return bool true if this date is later than the given one and false otherwise
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function isLaterThan($date, bool $strict = true): bool {
+    if ($strict) {
+      return $this->compareTo($date) < 0;
+    } else {
+      return $this->compareTo($date) <= 0;
+    }
+  }
+
+  /**
+   * Checks if this date is earlier than the given one
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @param bool $strict true if equality is not allowed, false otherwise
+   * @return bool true if this date is earlier than the given one and false otherwise
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public function isEarlierThan($date, bool $strict = true): bool {
+    if ($strict) {
+      return $this->compareTo($date) > 0;
+    } else {
+      return $this->compareTo($date) >= 0;
+    }
+  }
+  /**
+   * Advances given number of days and returns a new instance
+   * 
+   * @param  int $hours number of days to shift
+   * @return Date new instance
+   */
+  public function jumpHours(int $hours): DateTime {
+    return $this->modify("$hours hours");
+  }
+
+  /**
+   * Advances given number of days and returns a new instance
+   * 
+   * @param  int $days number of days to shift
+   * @return Date new instance
+   */
+  public function jumpDays(int $days): DateTime {
+    return $this->modify("$days day");
+  }
+
+  /**
+   * Advances given number of months and returns a new instance
+   * 
+   * @param  int $months number of months to shift
+   * @return DateTime new instance
+   */
+  public function jumpMonths(int $months): DateTime {
+    return $this->modify("$months months");
+  }
+
+  /**
+   * Returns the next Date
+   * 
+   * @return DateTime new instance
+   */
+  public function nextDay(): DateTime {
+    return $this->modify('+ 1 day');
+  }
+
+  /**
+   * Returns the previous Date
+   * 
+   * @return DateTime new instance
+   */
+  public function previousDay(): DateTime {
+    return $this->modify('- 1 day');
+  }
+
+  /**
+   * 
+   * @return DateTime new instance
+   */
+  public function firstOfMonth(): DateTime {
+    return $this->modify('first day of this month');
+  }
+
+  /**
+   * Returns the previous Date
+   *  
+   * @param  string $modify
+   * @return DateTime new instance
+   * @throws DateTimeException if formatting fails
+   */
+  public function modify(string $modify): DateTime {
+    $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
+    $thrower->start();
+    $new = $this->dateTime->modify($modify);
+    $thrower->stop();
+    return static::from($new);
+  }
 
   /**
    * Creates a new instance from input

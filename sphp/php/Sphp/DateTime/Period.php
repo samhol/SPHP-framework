@@ -18,28 +18,17 @@ namespace Sphp\DateTime;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DateRange {
+class Period extends \DatePeriod {
 
   /**
-   * @var Date|null
+   * @var Date
    */
   private $start;
 
   /**
-   * @var Date|null
+   * @var Date
    */
   private $stop;
-
-  /**
-   * Constructor
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $start start of date range (null for no starting point)
-   * @param  DateInterface|DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
-   */
-  public function __construct(Date $start = null, Date $stop = null) {
-    $this->setStart($start);
-    $this->setStop($stop);
-  }
 
   /**
    * Destructor
@@ -96,18 +85,37 @@ class DateRange {
    * Checks if the given date is in range
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @return bool true if given date is in range
+   * @return bool true if given datetime is in range
    * @throws DateTimeException if date cannot be parsed from input
    */
   public function isInRange($date): bool {
-    $start = $stop = false;
-    if ($this->start !== null) {
-      $start = $this->start->isEarlierThan($date, false);
-    }
-    if ($this->stop !== null) {
-      $stop = $this->stop->isLaterThan($date, false);
-    }
+    $dateTime = DateTime::from($date);
+    $start = $dateTime->isLaterThan($this->getStartDate(), false);
+    $stop = $dateTime->isEarlierThan($this->getEndDate(), false);
+    var_dump($this->getStartDate()->format('Y-m-d h:i:s'), $start, $stop, $start && $stop);
     return $start && $stop;
+  }
+
+  /**
+   * Creates a new instance from input
+   * 
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw datetime data
+   * @return Period new instance
+   * @throws DateTimeException if date cannot be parsed from input
+   */
+  public static function from($start, $end): Period {
+    try {
+      if (is_string($start)) {
+        $start = new \DateTimeImmutable($start);
+      }
+      if (is_string($end)) {
+        $end = new \DateTimeImmutable($end);
+      }
+      $dateTime = new Period($start, new DateInterval('P1D'), $end);
+    } catch (\Exception $ex) {
+      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    return $dateTime;
   }
 
 }

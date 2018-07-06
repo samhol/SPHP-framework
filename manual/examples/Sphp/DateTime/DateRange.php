@@ -2,7 +2,7 @@
 
 namespace Sphp\DateTime;
 
-$dateRange = new DateRange(Date::from('2018-01-01'), Date::from('2018-01-05'));
+$dateRange = Period::from('2018-01-01 12:30:22 EET', '2018-02-05 12:30:22 EET');
 var_dump($dateRange->isInRange('2018-01-01'));
 var_dump($dateRange->isInRange('2018-01-05'));
 var_dump($dateRange->isInRange('2018-01-03'));
