@@ -10,79 +10,24 @@
 
 namespace Sphp\DateTime;
 
+use DatePeriod;
+use Sphp\DateTime\Exceptions\DateTimeException;
+
 /**
- * Implements a date range
+ * Implements a date period
  *
+ * A date period allows iteration over a set of dates and times, recurring at 
+ * regular intervals, over a given period.
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Period extends \DatePeriod {
+class Period extends DatePeriod {
 
   /**
-   * @var Date
-   */
-  private $start;
-
-  /**
-   * @var Date
-   */
-  private $stop;
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->start, $this->stop);
-  }
-
-  /**
-   * Clone method
-   */
-  public function __clone() {
-    $this->start = clone $this->start;
-    $this->stop = clone $this->stop;
-  }
-
-  public function getStart() {
-    return $this->start;
-  }
-
-  public function getStrop() {
-    return $this->stop;
-  }
-
-  /**
-   * Sets the start point of range
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $start start of date range (null for no starting point)
-   * @return $this for a fluent interface
-   */
-  public function setStart($start = null) {
-    if ($start !== null) {
-      $start = new Date($start);
-    }
-    $this->start = $start;
-    return $this;
-  }
-
-  /**
-   * Sets the end point of range
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
-   * @return $this for a fluent interface
-   */
-  public function setStop(Date $stop = null) {
-    if ($stop !== null) {
-      $stop = new Date($stop);
-    }
-    $this->stop = $stop;
-    return $this;
-  }
-
-  /**
-   * Checks if the given date is in range
+   * Checks if the given date is in the range
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
    * @return bool true if given datetime is in range

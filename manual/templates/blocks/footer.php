@@ -3,12 +3,13 @@
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\Media\Icons\FaIcon;
+
 $currentUrl = URL::getCurrentURL();
 ?>
 
 <div class="engadget-footer sitemap-container">
   <footer class="sitemap">
-    <?php include 'manual/templates/blocks/footerLinks.php'; ?>
+<?php include 'manual/templates/blocks/footerLinks.php'; ?>
   </footer>
 </div>
 <div class="engadget-footer social-container">

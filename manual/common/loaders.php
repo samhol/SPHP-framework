@@ -3,15 +3,17 @@
 namespace Sphp\MVC;
 
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
+use Sphp\Html\Document;
 
 require_once('manual_helper_functions.php');
 
 $loadNotFound = function () {
   include 'manual/templates/error.php';
+  Document::body()->addCssClass('error');
 };
 
 $calendar = function ($par) {
-  var_dump($par) ;
+  var_dump($par);
   include 'manual/pages/calendar-app.php';
 };
 $loadPage = function ($par, string $file = 'index') use($loadNotFound) {

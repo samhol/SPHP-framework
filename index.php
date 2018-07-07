@@ -54,4 +54,3 @@ if ($outputCache->start('footer') === false) {
 }
 
 $html->documentClose();
-
