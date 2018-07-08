@@ -12,11 +12,9 @@ namespace Sphp\DateTime;
 
 use DateTimeImmutable;
 use Sphp\DateTime\Exceptions\DateTimeException;
-use Exception;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
- * Implements a date object
+ * Trait implements some functionality for date objects
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -68,10 +66,20 @@ trait DateTrait {
     return $this->format('l');
   }
 
+  /**
+   * Returns the week number 
+   * 
+   * @return int the week number 
+   */
   public function getWeek(): int {
     return (int) $this->format('W');
   }
 
+  /**
+   * Returns the number of the month
+   * 
+   * @return int the number of the month
+   */
   public function getMonth(): int {
     return (int) $this->format('m');
   }
@@ -94,62 +102,24 @@ trait DateTrait {
     return (int) $this->format('j');
   }
 
+  /**
+   * Returns the year
+   * 
+   * @return int the year
+   */
   public function getYear(): int {
     return (int) $this->format('Y');
   }
 
+  /**
+   * Checks whether the date is the current date
+   * 
+   * @return bool true if the date is the current date, false otherwise
+   */
   public function isCurrentDate(): bool {
     $today = date('Y-m-d');
     $thisDay = $this->getDateTime()->format('Y-m-d');
     return $today === $thisDay;
-  }
-
-  /**
-   * Returns the difference in days between this and another date
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return int the difference in days
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public function diff($date): int {
-    $dt = Date::from($date)->getDateTime();
-    $diff = $this->getDateTime()->diff($dt);
-    $result = $diff->d;
-    if ($diff->invert === 1) {
-      $result = -$result;
-    }
-    return $result;
-  }
-
-  /**
-   * Checks if this date is later than the given one
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @return bool true if this date is later than the given one and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public function isLaterThan($date, bool $strict = true): bool {
-    if ($strict) {
-      return $this->diff($date) < 0;
-    } else {
-      return $this->diff($date) <= 0;
-    }
-  }
-
-  /**
-   * Checks if this date is earlier than the given one
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @param bool $strict true if equality is not allowed, false otherwise
-   * @return bool true if this date is earlier than the given one and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public function isEarlierThan($date, bool $strict = true): bool {
-    if ($strict) {
-      return $this->diff($date) > 0;
-    } else {
-      return $this->diff($date) >= 0;
-    }
   }
 
 }
