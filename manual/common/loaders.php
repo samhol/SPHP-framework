@@ -1,45 +1,12 @@
 <?php
 
-namespace Sphp\MVC;
+use Sphp\Manual\MVC\PageLoader;
+use Sphp\MVC\Router;
 
-use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
-use Sphp\Html\Document;
-
-require_once('manual_helper_functions.php');
-
-$loadNotFound = function () {
-  include 'manual/templates/error.php';
-  Document::body()->addCssClass('error');
-};
-
-$calendar = function ($par) {
-  var_dump($par);
-  include 'manual/pages/calendar-app.php';
-};
-$loadPage = function ($par, string $file = 'index') use($loadNotFound) {
-  //var_dump(func_get_args());
-  try {
-    ob_start();
-    $page = "manual/pages/$file.php";
-    if (is_file($page)) {
-      include $page;
-    } else {
-      $loadNotFound($par);
-    }
-    $content = ob_get_contents();
-  } catch (\Throwable $e) {
-    $content = ThrowableCalloutBuilder::build($e, true, true);
-  }
-  ob_end_clean();
-  echo $content;
-};
-$loadIndex = function () use ($loadPage) {
-  $loadPage('index');
-};
-
+$pageLoader = new PageLoader();
 $router = (new Router())
-        ->setDefaultRoute($loadNotFound)
-        ->route('/', $loadIndex)
-        ->route('/calendar/<*categories>', $calendar)
-        ->route('/index.php', $loadIndex, 10)
-        ->route('/<!category>', $loadPage, 9);
+        ->setDefaultRoute([$pageLoader, 'loadNotFound'])
+        ->route('/', [$pageLoader, 'loadIndex'])
+        ->route('/calendar/<*categories>', [$pageLoader, 'loadCalendar'])
+        ->route('/index.php', [$pageLoader, 'loadIndex'], 10)
+        ->route('/<!category>', [$pageLoader, 'loadPage'], 9);

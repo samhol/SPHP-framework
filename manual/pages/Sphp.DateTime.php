@@ -5,7 +5,7 @@ namespace Sphp\DateTime;
 use Sphp\Manual;
 
 $date = Manual\api()->classLinker(Date::class);
-$dateTimeLink = Manual\api()->DateTime;
+$dateTimeLink = Manual\api()->classLinker(DateTime::class);
 $namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
@@ -13,7 +13,7 @@ Manual\md(<<<MD
 $namespaces
 PHP has a variety of functions and classes that can handle dates. 
         
-##$date and 
+##$date and  $dateTimeLink
 MD
 );
 

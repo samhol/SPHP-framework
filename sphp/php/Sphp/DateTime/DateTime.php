@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use DateTimeInterface;
+use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
 use Exception;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
@@ -24,7 +24,9 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DateTime {
+class DateTime implements DateTimeInterface {
+
+  use DateTrait;
 
   /**
    * @var DateTimeImmutable 
@@ -46,7 +48,7 @@ class DateTime {
         $dateTime = (new DateTimeImmutable())->setTimestamp($date);
       } else if ($date instanceof DateInterface) {
         $dateTime = new DateTimeImmutable($date->toDateString());
-      } else if ($date instanceof DateTimeInterface) {
+      } else if ($date instanceof DTI) {
         $dateTime = $date;
       } else if (is_null($date)) {
         $dateTime = new DateTimeImmutable('today');
@@ -60,24 +62,8 @@ class DateTime {
     $this->dateTime = new DateTimeImmutable($dateTime->format('Y-m-d'));
   }
 
-  public function getTimestamp(): int {
-    return $this->dateTime->getTimestamp();
-  }
-
-  /**
-   * Returns date formatted according to given format
-   * 
-   * @param  string $format the format of the outputted date string
-   * @param bool $strict true if equality is not allowed, false otherwise
-   * @return string date formatted according to given format
-   * @throws DateTimeException if formatting fails
-   */
-  public function format(string $format): string {
-    $output = $this->dateTime->format($format);
-    if ($output === false) {
-      throw new DateTimeException();
-    }
-    return $this->dateTime->format($format);
+  public function getDateTime(): DateTimeImmutable {
+    return $this->dateTime;
   }
 
   /**
@@ -94,7 +80,7 @@ class DateTime {
     return $result;
   }
 
-  public function matchesWith($date): bool {
+  public function equals($date): bool {
     return $this->compareTo($date) === 0;
   }
 
@@ -105,29 +91,21 @@ class DateTime {
    * @return bool true if this date is later than the given one and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public function isLaterThan($date, bool $strict = true): bool {
-    if ($strict) {
-      return $this->compareTo($date) < 0;
-    } else {
-      return $this->compareTo($date) <= 0;
-    }
+  public function isLaterThan($date): bool {
+    return $this->compareTo($date) < 0;
   }
 
   /**
    * Checks if this date is earlier than the given one
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @param bool $strict true if equality is not allowed, false otherwise
+   * @param DateInterface|DateTimeInteface|string|int|null $date the date to match
    * @return bool true if this date is earlier than the given one and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public function isEarlierThan($date, bool $strict = true): bool {
-    if ($strict) {
-      return $this->compareTo($date) > 0;
-    } else {
-      return $this->compareTo($date) >= 0;
-    }
+  public function isEarlierThan($date): bool {
+    return $this->compareTo($date) > 0;
   }
+
   /**
    * Advances given number of days and returns a new instance
    * 
@@ -213,7 +191,7 @@ class DateTime {
         $dateTime = new DateTime($date);
       } else if (is_int($date)) {
         $dateTime = (new DateTime())->setTimestamp($date);
-      } else if ($date instanceof DateInterface || $date instanceof DateTimeInterface) {
+      } else if ($date instanceof DateInterface || $date instanceof DTI) {
         $dateTime = new DateTime($date->format(DATE_ATOM));
       } else if (is_null($date)) {
         $dateTime = new DateTime();
@@ -221,7 +199,19 @@ class DateTime {
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
+
+    if ($dateTime === null) {
+      throw new DateTimeException(static::class . ' object cannot be parsed from input type');
+    }
     return $dateTime;
+  }
+
+  public function __toString(): string {
+    
+  }
+
+  public function getHours(): int {
+    return (int) $this->format('h');
   }
 
 }

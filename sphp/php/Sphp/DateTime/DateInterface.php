@@ -21,13 +21,6 @@ use Sphp\DateTime\Exceptions\DateTimeException;
  * @filesource
  */
 interface DateInterface {
-
- /**
-   * Returns the string representation of the date
-   * 
-   * @return the string representation of the date
-   */
-  public function toDateString(): string;
  
  /**
    * Returns the string representation of the object
@@ -76,7 +69,7 @@ interface DateInterface {
    * 
    * @return bool true if the date is the current date, false otherwise
    */
-  public function isCurrent(): bool;
+  public function isCurrentDate(): bool;
 
 
   /**
@@ -86,7 +79,7 @@ interface DateInterface {
    * @return bool true if matches and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public function matchesWith($date): bool;
+  public function equals($date): bool;
 
   /**
    * Returns date formatted according to given format
@@ -96,4 +89,6 @@ interface DateInterface {
    * @throws DateTimeException if formatting fails
    */
   public function format(string $format): string;
+  
+  public function getTimestamp(): int;
 }

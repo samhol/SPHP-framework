@@ -25,6 +25,8 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  */
 class Date implements DateInterface {
 
+  use DateTrait;
+
   /**
    * @var DateTimeImmutable 
    */
@@ -90,60 +92,6 @@ class Date implements DateInterface {
   }
 
   /**
-   * Returns the number of the weekday
-   * 
-   * @return int the number of the weekday
-   */
-  public function getWeekDay(): int {
-    return (int) $this->dateTime->format('N');
-  }
-
-  /**
-   * Returns the name of the weekday
-   * 
-   * @return string the name of the weekday
-   */
-  public function getWeekDayName(): string {
-    return $this->dateTime->format('l');
-  }
-
-  public function getWeek(): int {
-    return (int) $this->dateTime->format('W');
-  }
-
-  public function getMonth(): int {
-    return (int) $this->dateTime->format('m');
-  }
-
-  /**
-   * Returns the name of the month
-   * 
-   * @return string the name of the month
-   */
-  public function getMonthName(): string {
-    return $this->dateTime->format('F');
-  }
-
-  /**
-   * Returns the day of the month
-   * 
-   * @return int the day of the month
-   */
-  public function getMonthDay(): int {
-    return (int) $this->dateTime->format('j');
-  }
-
-  public function getYear(): int {
-    return (int) $this->dateTime->format('Y');
-  }
-
-  public function isCurrent(): bool {
-    $today = date('Y-m-d');
-    $thisDay = $this->dateTime->format('Y-m-d');
-    return $today === $thisDay;
-  }
-
-  /**
    * Returns the difference in days between this and another date
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
@@ -160,7 +108,7 @@ class Date implements DateInterface {
     return $result;
   }
 
-  public function matchesWith($date): bool {
+  public function equals($date): bool {
     if (!$date instanceof DateInterface) {
       try {
         $date = Date::from($date);
@@ -203,41 +151,23 @@ class Date implements DateInterface {
   }
 
   /**
-   * Returns date formatted according to given format
-   * 
-   * @param  string $format the format of the outputted date string
-   * @param bool $strict true if equality is not allowed, false otherwise
-   * @return string date formatted according to given format
-   * @throws DateTimeException if formatting fails
-   */
-  public function format(string $format): string {
-    $output = $this->dateTime->format($format);
-    if ($output === false) {
-      throw new DateTimeException();
-    }
-    return $this->dateTime->format($format);
-  }
-
-  /**
    * Advances given number of days and returns a new instance
    * 
    * @param  int $days number of days to shift
    * @return Date new instance
    */
   public function jumpDays(int $days): Date {
-    $next = $this->dateTime->modify("$days day");
-    return new Date($next);
+    return $this->modify("$days day");
   }
 
   /**
    * Advances given number of months and returns a new instance
    * 
    * @param  int $months number of months to shift
-   * @return Date new instance
+   * @return DateTime new instance
    */
   public function jumpMonths(int $months): Date {
-    $next = $this->dateTime->modify("$months months");
-    return new Date($next);
+    return $this->modify("$months months");
   }
 
   /**
@@ -246,8 +176,7 @@ class Date implements DateInterface {
    * @return Date new instance
    */
   public function nextDay(): Date {
-    $next = $this->dateTime->modify('+ 1 day');
-    return new Date($next);
+    return $this->modify('+ 1 day');
   }
 
   /**
@@ -256,11 +185,11 @@ class Date implements DateInterface {
    * @return Date new instance
    */
   public function previousDay(): Date {
-    $prev = $this->dateTime->modify('- 1 day');
-    return new Date($prev);
+    return $this->modify('- 1 day');
   }
 
   /**
+   * Returns the date representing the first of the same month
    * 
    * @return Date new instance
    */

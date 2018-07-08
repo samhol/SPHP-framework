@@ -113,7 +113,7 @@ class Router {
    * @param  callable $callback the callback function for the default route
    * @return $this for a fluent interface
    */
-  public function setDefaultRoute(callable $callback) {
+  public function setDefaultRoute($callback) {
     $this->defaultRoute = $callback;
     return $this;
   }
@@ -173,7 +173,7 @@ class Router {
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function route(string $route, callable $callback, int $priority = 10) {
+  public function route(string $route, $callback, int $priority = 10) {
     // Make sure the route ends in a / since all of the URLs will
     $route = rtrim($route, '/') . '/';
     // Custom capture, format: <:var_name|regex>

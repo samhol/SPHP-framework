@@ -89,7 +89,7 @@ class WeekDayView implements CssClassifiableContent {
     if ($this->diaryDay->getWeekDay() === 1) {
       $this->container->append("<div class=\"week-nr\">{$this->diaryDay->getWeek()}</div>");
     }
-    if ($this->diaryDay->isCurrent()) {
+    if ($this->diaryDay->isCurrentDate()) {
       $this->container->cssClasses()->protect('today');
     }
     $this->container->append($this->generateTimeTag());

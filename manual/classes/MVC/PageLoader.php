@@ -1,12 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Manual\MVC;
+
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
 /**
  * Description of PageLoader
@@ -18,17 +22,17 @@ namespace Sphp\Manual\MVC;
  */
 class PageLoader {
 
-  function loadNotFound() {
+  public function loadNotFound() {
     include 'manual/templates/error.php';
-    Document::body()->addCssClass('error');
+    //Document::body()->addCssClass('error');
   }
 
-  function loadCalendar($par) {
-    var_dump($par);
+  public function loadCalendar($par) {
+    //var_dump($par);
     include 'manual/pages/calendar-app.php';
   }
 
-  function loadPage($par, string $file = 'index') {
+  public function loadPage($par, string $file = 'index') {
     //var_dump(func_get_args());
     try {
       ob_start();
@@ -46,7 +50,7 @@ class PageLoader {
     echo $content;
   }
 
-  function loadIndex() {
+  public function loadIndex() {
     $this->loadPage('index');
   }
 
