@@ -39,7 +39,7 @@ class Date implements DateInterface {
    */
   public function __construct($date = null) {
     try {
-      $this->dateTime = new DateTimeImmutable($this->parse($date));
+      $this->dateTime = new DateTimeImmutable(static::parseDateString($date));
     } catch (\Exception $ex) {
       throw new DateTimeException(static::class . ' object cannot be parsed from input type', $ex->getCode(), $ex);
     }
@@ -57,32 +57,6 @@ class Date implements DateInterface {
    */
   public function __clone() {
     $this->dateTime = clone $this->dateTime;
-  }
-
-  /**
-   * Parses a date string from input
-   * 
-   * @param  mixed $input input to parse
-   * @return string date string as `Y-m-d` 
-   * @throws DateTimeException if parsing fails
-   */
-  protected function parse($input): string {
-    $result = null;
-    if (is_null($input)) {
-      $result = new DateTimeImmutable('today');
-    } else if (is_string($input)) {
-      $result = new DateTimeImmutable($input);
-    } else if (is_int($input)) {
-      $result = (new DateTimeImmutaebl())->setTimestamp($input);
-    } else if ($input instanceof DateTimeImmutable) {
-      $result = $input;
-    } else if ($input instanceof DateInterface || $input instanceof \DateTimeInterface) {
-      $result = new DateTimeImmutable($input->format('Y-m-d'));
-    }
-    if ($result === null) {
-      throw new DateTimeException(' Date string cannot be parsed from the input');
-    }
-    return $result->format('Y-m-d');
   }
 
   public function __toString(): string {
@@ -115,14 +89,12 @@ class Date implements DateInterface {
   }
 
   public function equals($date): bool {
-    if (!$date instanceof DateInterface) {
-      try {
-        $date = Date::from($date);
-      } catch (Exception $ex) {
-        return false;
-      }
+    try {
+      $parsed = static::parseDateString($date);
+    } catch (Exception $ex) {
+      return false;
     }
-    return $date->format('Y-m-d') === $this->format('Y-m-d');
+    return $parsed === $this->format('Y-m-d');
   }
 
   /**
@@ -216,6 +188,30 @@ class Date implements DateInterface {
    */
   public static function from($date): Date {
     return new static($date);
+  }
+
+  /**
+   * Parses a date string from input
+   * 
+   * @param  mixed $input input to parse
+   * @return string date string as `Y-m-d` 
+   * @throws DateTimeException if parsing fails
+   */
+  public static function parseDateString($input): string {
+    $result = null;
+    if (is_null($input)) {
+      $result = date('Y-m-d');
+    } else if (is_string($input)) {
+      $result = (new DateTimeImmutable($input))->format('Y-m-d');
+    } else if (is_int($input)) {
+      $result = date('Y-m-d', $input);
+    } else if ($input instanceof DateInterface || $input instanceof \DateTimeInterface) {
+      $result = $input->format('Y-m-d');
+    }
+    if ($result === null) {
+      throw new DateTimeException('Date string cannot be parsed from the input');
+    }
+    return $result;
   }
 
 }

@@ -20,7 +20,6 @@ namespace Sphp\DateTime;
  */
 interface DateTimeInterface extends DateInterface {
 
-
   /**
    * Returns the number of hours
    * 
@@ -28,4 +27,17 @@ interface DateTimeInterface extends DateInterface {
    */
   public function getHours(): int;
 
+  /**
+   * Returns the number of minutes
+   * 
+   * @return int the number of minutes
+   */
+  public function getMinutes(): int;
+
+  /**
+   * Returns the number of seconds
+   * 
+   * @return int the number of seconds
+   */
+  public function getSeconds(): int;
 }

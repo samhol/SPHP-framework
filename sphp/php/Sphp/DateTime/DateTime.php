@@ -13,7 +13,6 @@ namespace Sphp\DateTime;
 use DateTimeImmutable;
 use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
-use Exception;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
@@ -36,30 +35,49 @@ class DateTime implements DateTimeInterface {
   /**
    * Constructor
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @param  mixed $time raw date data
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public function __construct($date = null) {
+  public function __construct($time = null) {
     try {
-      $dateTime = null;
-      if (is_string($date)) {
-        $dateTime = new DateTimeImmutable($date);
-      } else if (is_int($date)) {
-        $dateTime = (new DateTimeImmutable())->setTimestamp($date);
-      } else if ($date instanceof DateInterface) {
-        $dateTime = new DateTimeImmutable($date->toDateString());
-      } else if ($date instanceof DTI) {
-        $dateTime = $date;
-      } else if (is_null($date)) {
-        $dateTime = new DateTimeImmutable('today');
+      if ($time === null) {
+        $this->dateTime = new DateTimeImmutable('now');
+      } else if ($time instanceof DateTimeImmutable) {
+        $this->dateTime = $time;
+      } else if (is_string($time)) {
+        $this->dateTime = new DateTimeImmutable($time);
+      } else if (is_int($time)) {
+        $this->dateTime = new DateTimeImmutable("@$time");
+      } else if ($time instanceof DTI) {
+        $this->dateTime = DateTimeImmutable::createFromMutable($time);
+      } else if ($time instanceof DateInterface) {
+        $timestamp = $time->getTimestamp();
+        $this->dateTime = new DateTimeImmutable("@$timestamp");
       }
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    if ($dateTime === null) {
+    if ($this->dateTime === null) {
       throw new DateTimeException(static::class . ' object cannot be parsed from input type');
     }
-    $this->dateTime = new DateTimeImmutable($dateTime->format('Y-m-d'));
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->dateTime);
+  }
+
+  /**
+   * Clone method
+   */
+  public function __clone() {
+    $this->dateTime = clone $this->dateTime;
+  }
+
+  public function __toString(): string {
+    return $this->format('Y-m-d h:i:s O');
   }
 
   public function getDateTime(): DateTimeImmutable {
@@ -69,7 +87,7 @@ class DateTime implements DateTimeInterface {
   /**
    * Returns the difference in days between this and another date
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
+   * @param  mixed $date raw date data
    * @return int the difference in days
    * @throws DateTimeException if date cannot be parsed from input
    */
@@ -87,7 +105,7 @@ class DateTime implements DateTimeInterface {
   /**
    * Checks if this date is later than the given one
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @param  mixed $date the date to match
    * @return bool true if this date is later than the given one and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
@@ -98,7 +116,7 @@ class DateTime implements DateTimeInterface {
   /**
    * Checks if this date is earlier than the given one
    * 
-   * @param DateInterface|DateTimeInteface|string|int|null $date the date to match
+   * @param  mixed $date the date to match
    * @return bool true if this date is earlier than the given one and false otherwise
    * @throws DateTimeException if date cannot be parsed from input
    */
@@ -110,7 +128,7 @@ class DateTime implements DateTimeInterface {
    * Advances given number of days and returns a new instance
    * 
    * @param  int $hours number of days to shift
-   * @return Date new instance
+   * @return DateTime new instance
    */
   public function jumpHours(int $hours): DateTime {
     return $this->modify("$hours hours");
@@ -120,7 +138,7 @@ class DateTime implements DateTimeInterface {
    * Advances given number of days and returns a new instance
    * 
    * @param  int $days number of days to shift
-   * @return Date new instance
+   * @return DateTime new instance
    */
   public function jumpDays(int $days): DateTime {
     return $this->modify("$days day");
@@ -177,6 +195,18 @@ class DateTime implements DateTimeInterface {
     return static::from($new);
   }
 
+  public function getHours(): int {
+    return (int) $this->format('H');
+  }
+
+  public function getMinutes(): int {
+    return (int) $this->format('i');
+  }
+
+  public function getSeconds(): int {
+    return (int) $this->format('s');
+  }
+
   /**
    * Creates a new instance from input
    * 
@@ -185,33 +215,7 @@ class DateTime implements DateTimeInterface {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function from($date = null): DateTime {
-    try {
-      $dateTime = null;
-      if (is_string($date)) {
-        $dateTime = new DateTime($date);
-      } else if (is_int($date)) {
-        $dateTime = (new DateTime())->setTimestamp($date);
-      } else if ($date instanceof DateInterface || $date instanceof DTI) {
-        $dateTime = new DateTime($date->format(DATE_ATOM));
-      } else if (is_null($date)) {
-        $dateTime = new DateTime();
-      }
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-
-    if ($dateTime === null) {
-      throw new DateTimeException(static::class . ' object cannot be parsed from input type');
-    }
-    return $dateTime;
-  }
-
-  public function __toString(): string {
-    
-  }
-
-  public function getHours(): int {
-    return (int) $this->format('h');
+    return new static($date);
   }
 
 }
