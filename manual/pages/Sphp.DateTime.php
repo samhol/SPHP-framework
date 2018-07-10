@@ -5,19 +5,23 @@ namespace Sphp\DateTime;
 use Sphp\Manual;
 
 $date = Manual\api()->classLinker(Date::class);
+$dateInterface = Manual\api()->classLinker(DateInterface::class);
 $dateTimeLink = Manual\api()->classLinker(DateTime::class);
 $namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $dateTimeImmutable = Manual\php()->classLinker(\DateTimeImmutable::class);
 Manual\md(<<<MD
 #Date and Time
 $namespaces
-PHP has a variety of functions and classes that can handle dates. 
+PHP has a variety of functions and classes that can handle date andd time related 
+operations. This namespace introduces some addons to these native properties.
         
 ##The $date and The $dateTimeLink classes
         
-These classes implement kind of wrappers for native $dateTimeImmutable objects. 
+These classes are wrappers for native $dateTimeImmutable objects. 
+        
 
-The $date class  ignores units smaller than days.
+The $date class implements $dateInterface. It ignores time units smaller than 
+days (like hours, minutes and seconds).
 MD
 );
 
@@ -37,10 +41,16 @@ Manual\example("Sphp/DateTime/DateTime.php", "text", false)
         ->setOutputSyntaxPaneTitle("DateTime example results")
         ->printHtml();
 
-$dateRange = Manual\api()->classLinker(Period::class);
-Manual\md(<<<MD
-##The $dateRange class
+$datePeriod = Manual\api()->classLinker(Period::class);
 
+$phpDatePeriod = Manual\php()->classLinker(\DatePeriod::class);
+Manual\md(<<<MD
+##The $datePeriod class
+        
+This class extends PHP's native $phpDatePeriod and thus represents a date period.
+
+A date period allows iteration over a set of dates and times, recurring at regular 
+intervals, over a given period.
 MD
 );
 
