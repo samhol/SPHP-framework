@@ -64,8 +64,9 @@ class Date implements DateInterface {
   }
 
   /**
+   * Returns the inner immutable datetime object
    * 
-   * @return DateTimeImmutable
+   * @return DateTimeImmutable the inner immutable datetime object
    */
   public function getDateTime(): DateTimeImmutable {
     return clone $this->dateTime;
@@ -91,10 +92,10 @@ class Date implements DateInterface {
   public function equals($date): bool {
     try {
       $parsed = static::parseDateString($date);
+      return $parsed === $this->format('Y-m-d');
     } catch (Exception $ex) {
       return false;
     }
-    return $parsed === $this->format('Y-m-d');
   }
 
   /**

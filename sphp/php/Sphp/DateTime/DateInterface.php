@@ -21,13 +21,20 @@ use Sphp\DateTime\Exceptions\DateTimeException;
  * @filesource
  */
 interface DateInterface {
- 
- /**
+
+  /**
    * Returns the string representation of the object
    * 
    * @return string the string representation of the object
    */
   public function __toString(): string;
+
+  /**
+   * Returns the Unix timestamp
+   * 
+   * @return int the Unix timestamp
+   */
+  public function getTimestamp(): int;
 
   /**
    * Returns the number of the weekday
@@ -71,13 +78,11 @@ interface DateInterface {
    */
   public function isCurrentDate(): bool;
 
-
   /**
-   * Checks if the input date matches the date 
+   * Checks if the input matches the object 
    * 
-   * @param  DateInterface|DateTimeInteface|string|int $date the date to match
+   * @param  mixed $date the date to match
    * @return bool true if matches and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
    */
   public function equals($date): bool;
 
@@ -89,6 +94,4 @@ interface DateInterface {
    * @throws DateTimeException if formatting fails
    */
   public function format(string $format): string;
-  
-  public function getTimestamp(): int;
 }

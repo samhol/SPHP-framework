@@ -29,6 +29,11 @@ trait DateTrait {
    */
   abstract public function getDateTime(): DateTimeImmutable;
 
+  /**
+   * Returns the Unix timestamp
+   * 
+   * @return int the Unix timestamp
+   */
   public function getTimestamp(): int {
     return $this->getDateTime()->getTimestamp();
   }

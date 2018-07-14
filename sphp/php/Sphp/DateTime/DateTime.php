@@ -13,6 +13,7 @@ namespace Sphp\DateTime;
 use DateTimeImmutable;
 use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
+use Exception;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
@@ -54,7 +55,7 @@ class DateTime implements DateTimeInterface {
         $timestamp = $time->getTimestamp();
         $this->dateTime = new DateTimeImmutable("@$timestamp");
       }
-    } catch (\Exception $ex) {
+    } catch (Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     if ($this->dateTime === null) {
@@ -80,6 +81,11 @@ class DateTime implements DateTimeInterface {
     return $this->format('Y-m-d h:i:s O');
   }
 
+  /**
+   * Returns the inner immutable datetime object
+   * 
+   * @return DateTimeImmutable the inner immutable datetime object
+   */
   public function getDateTime(): DateTimeImmutable {
     return $this->dateTime;
   }
@@ -99,7 +105,11 @@ class DateTime implements DateTimeInterface {
   }
 
   public function equals($date): bool {
-    return $this->compareTo($date) === 0;
+    try {
+      return $this->compareTo($date) === 0;
+    } catch (Exception $ex) {
+      return false;
+    }
   }
 
   /**
@@ -173,10 +183,11 @@ class DateTime implements DateTimeInterface {
   }
 
   /**
+   * Returns the date representing the first of the same month
    * 
-   * @return DateTime new instance
+   * @return Date new instance
    */
-  public function firstOfMonth(): DateTime {
+  public function firstOfMonth(): Date {
     return $this->modify('first day of this month');
   }
 
@@ -210,7 +221,7 @@ class DateTime implements DateTimeInterface {
   /**
    * Creates a new instance from input
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw datetime data
+   * @param  DateInterface|mixed $date raw datetime data
    * @return DateTime new instance
    * @throws DateTimeException if date cannot be parsed from input
    */

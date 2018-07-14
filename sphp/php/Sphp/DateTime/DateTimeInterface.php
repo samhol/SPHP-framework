@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 /**
- * Defines properties for a date
+ * Defines properties for a datetime
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
