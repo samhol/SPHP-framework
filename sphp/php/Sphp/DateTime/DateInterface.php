@@ -44,6 +44,13 @@ interface DateInterface {
   public function getWeekDay(): int;
 
   /**
+   * Returns the name of the weekday
+   * 
+   * @return string the name of the weekday
+   */
+  public function getWeekDayName(): string;
+
+  /**
    * Returns the week number 
    * 
    * @return int the week number 

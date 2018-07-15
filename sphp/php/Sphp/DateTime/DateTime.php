@@ -185,18 +185,19 @@ class DateTime implements DateTimeInterface {
   /**
    * Returns the date representing the first of the same month
    * 
-   * @return Date new instance
+   * @return DateTime new instance
    */
-  public function firstOfMonth(): Date {
+  public function firstOfMonth(): DateTime {
     return $this->modify('first day of this month');
   }
 
   /**
-   * Returns the previous Date
+   * Creates a new object with modified timestamp
    *  
-   * @param  string $modify
+   * @param  string $modify a date/time string
    * @return DateTime new instance
    * @throws DateTimeException if formatting fails
+   * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
   public function modify(string $modify): DateTime {
     $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
