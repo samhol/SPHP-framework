@@ -35,9 +35,9 @@ class Period extends DatePeriod {
    */
   public function isInRange($date): bool {
     $dateTime = DateTime::from($date);
-    $start = $dateTime->isLaterThan($this->getStartDate(), false);
-    $stop = $dateTime->isEarlierThan($this->getEndDate(), false);
-    var_dump($this->getStartDate()->format('Y-m-d h:i:s'), $start, $stop, $start && $stop);
+    $start = $dateTime->isLaterThan($this->getStartDate());
+    $stop = $dateTime->isEarlierThan($this->getEndDate());
+    //var_dump($start, $stop, $start && $stop);
     return $start && $stop;
   }
 

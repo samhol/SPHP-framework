@@ -98,7 +98,7 @@ class DateTime implements DateTimeInterface {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public function compareTo($date): int {
-    $dt = DateTime::from($date)->getTimestamp();
+    $dt = static::from($date)->getTimestamp();
     $timeStamp = $this->getTimestamp();
     $result = $timeStamp - $dt;
     return $result;
@@ -151,7 +151,7 @@ class DateTime implements DateTimeInterface {
    * @return DateTime new instance
    */
   public function jumpDays(int $days): DateTime {
-    return $this->modify("$days day");
+    return $this->modify("+ $days day");
   }
 
   /**

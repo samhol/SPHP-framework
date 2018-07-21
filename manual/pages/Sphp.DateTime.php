@@ -40,7 +40,16 @@ Manual\example("Sphp/DateTime/DateTime.php", "text", false)
         ->setExamplePaneTitle("DateTime example")
         ->setOutputSyntaxPaneTitle("DateTime example results")
         ->printHtml();
+Manual\md(<<<MD
 
+The $dateTimeLink class introduces some new ways to compare datetimes.
+
+MD
+);
+Manual\example("Sphp/DateTime/DateTime.compareTo.php", "text", false)
+        ->setExamplePaneTitle("DateTime comparison example")
+        ->setOutputSyntaxPaneTitle("DateTime comparison results")
+        ->printHtml();
 $datePeriod = Manual\api()->classLinker(Period::class);
 
 $phpDatePeriod = Manual\php()->classLinker(\DatePeriod::class);
