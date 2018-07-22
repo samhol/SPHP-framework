@@ -74,7 +74,7 @@ class TimedSet implements ExerciseSet {
    */
   public function setDuration($duration) {
     if (!$duration instanceof DateInterval) {
-      $duration = Factory::timeDiff($duration);
+      $duration = Factory::dateInterval($duration);
     }
     $this->duration = $duration;
     return $this;

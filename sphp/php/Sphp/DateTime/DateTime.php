@@ -41,25 +41,9 @@ class DateTime implements DateTimeInterface {
    */
   public function __construct($time = null) {
     try {
-      if ($time === null) {
-        $this->dateTime = new DateTimeImmutable('now');
-      } else if ($time instanceof DateTimeImmutable) {
-        $this->dateTime = $time;
-      } else if (is_string($time)) {
-        $this->dateTime = new DateTimeImmutable($time);
-      } else if (is_int($time)) {
-        $this->dateTime = new DateTimeImmutable("@$time");
-      } else if ($time instanceof DTI) {
-        $this->dateTime = DateTimeImmutable::createFromMutable($time);
-      } else if ($time instanceof DateInterface) {
-        $timestamp = $time->getTimestamp();
-        $this->dateTime = new DateTimeImmutable("@$timestamp");
-      }
+      $this->dateTime = Factory::dateTimeImmutable($time);
     } catch (Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    if ($this->dateTime === null) {
-      throw new DateTimeException(static::class . ' object cannot be parsed from input type');
     }
   }
 
