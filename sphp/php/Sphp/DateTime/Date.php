@@ -132,7 +132,7 @@ class Date implements DateInterface {
    * Advances given number of months and returns a new instance
    * 
    * @param  int $months number of months to shift
-   * @return DateTime new instance
+   * @return Date new instance
    */
   public function jumpMonths(int $months): Date {
     return $this->modify("$months months");

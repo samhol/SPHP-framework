@@ -69,12 +69,15 @@ class Period extends DatePeriod {
   /**
    * Creates a new instance from input
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw datetime data
+   * @param  mixed $date raw datetime data
    * @return Period new instance
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function from($start, $end, $interval = null): Period {
     try {
+      if (is_string($interval)) {
+        $interval = Factory::dateInterval($interval);
+      }
       $dateTime = new Period(Factory::dateTimeImmutable($start), Factory::dateInterval($interval), Factory::dateTimeImmutable($end));
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
@@ -90,18 +93,7 @@ class Period extends DatePeriod {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function monthly($start, $end): Period {
-    try {
-      if (is_string($start)) {
-        $start = new \DateTimeImmutable($start);
-      }
-      if (is_string($end)) {
-        $end = new \DateTimeImmutable($end);
-      }
-      $dateTime = new Period($start, new DateInterval('P1M'), $end);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    return $dateTime;
+    return static::from($start, $end, new DateInterval('P1M'));
   }
 
   /**
@@ -112,18 +104,7 @@ class Period extends DatePeriod {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function weekly($start, $end): Period {
-    try {
-      if (is_string($start)) {
-        $start = new \DateTimeImmutable($start);
-      }
-      if (is_string($end)) {
-        $end = new \DateTimeImmutable($end);
-      }
-      $dateTime = new Period($start, new DateInterval('P1W'), $end);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    return $dateTime;
+    return static::from($start, $end, new DateInterval('P1W'));
   }
 
   /**
@@ -134,18 +115,7 @@ class Period extends DatePeriod {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function daily($start, $end): Period {
-    try {
-      if (is_string($start)) {
-        $start = new \DateTimeImmutable($start);
-      }
-      if (is_string($end)) {
-        $end = new \DateTimeImmutable($end);
-      }
-      $dateTime = new Period($start, new DateInterval('P1D'), $end);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    return $dateTime;
+    return static::from($start, $end, new DateInterval('P1D'));
   }
 
   /**
@@ -156,18 +126,7 @@ class Period extends DatePeriod {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public static function hourly($start, $end): Period {
-    try {
-      if (is_string($start)) {
-        $start = new \DateTimeImmutable($start);
-      }
-      if (is_string($end)) {
-        $end = new \DateTimeImmutable($end);
-      }
-      $dateTime = new Period($start, new DateInterval('P1H'), $end);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    return $dateTime;
+    return static::from($start, $end, new DateInterval('P1H'));
   }
 
 }

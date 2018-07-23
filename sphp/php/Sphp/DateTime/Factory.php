@@ -39,20 +39,27 @@ class Factory {
     return $interval;
   }
 
-  public static function dateTimeImmutable($raw): DateTimeImmutable {
+  /**
+   * parses a datetime object from input
+   * 
+   * @param  mixed $input
+   * @return DateTimeImmutable
+   * @throws DateTimeException
+   */
+  public static function dateTimeImmutable($input): DateTimeImmutable {
     try {
-      if ($raw === null) {
+      if ($input === null) {
         $dateTime = new DateTimeImmutable('now');
-      } else if ($raw instanceof DateTimeImmutable) {
-        $dateTime = $raw;
-      } else if (is_string($raw)) {
-        $dateTime = new DateTimeImmutable($raw);
-      } else if (is_int($raw)) {
-        $dateTime = new DateTimeImmutable("@$raw");
-      } else if ($raw instanceof DTI) {
-        $dateTime = DateTimeImmutable::createFromMutable($raw);
-      } else if ($raw instanceof DateInterface) {
-        $timestamp = $raw->getTimestamp();
+      } else if ($input instanceof DateTimeImmutable) {
+        $dateTime = $input;
+      } else if (is_string($input)) {
+        $dateTime = new DateTimeImmutable($input);
+      } else if (is_int($input)) {
+        $dateTime = new DateTimeImmutable("@$input");
+      } else if ($input instanceof DTI) {
+        $dateTime = DateTimeImmutable::createFromMutable($input);
+      } else if ($input instanceof DateInterface) {
+        $timestamp = $input->getTimestamp();
         $dateTime = new DateTimeImmutable("@$timestamp");
       }
     } catch (Exception $ex) {

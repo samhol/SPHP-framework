@@ -24,9 +24,9 @@ class DateInterval extends Dt {
   /**
    * Constructor
    * 
-   * @param type $interval_spec an interval specification.
+   * @param string $interval_spec an interval specification.
    */
-  public function __construct($interval_spec) {
+  public function __construct(string $interval_spec) {
     parent::__construct($interval_spec);
     $this->recalculate();
   }
