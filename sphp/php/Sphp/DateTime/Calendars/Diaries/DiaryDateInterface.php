@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\DateTime\Calendars\Diaries;
- 
+
 use Sphp\DateTime\DateInterface;
 
 /**

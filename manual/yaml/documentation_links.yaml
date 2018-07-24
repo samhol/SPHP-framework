@@ -12,12 +12,12 @@ items:
       href: Sphp.Security
     - menu: Standard library
       items:
-      - link: Datetime
-        href: Sphp.Datetime
       - link: Introduction
         href: Sphp.Stdlib
         title: Standard library | Introduction
       - ruler: 
+      - link: Datetime
+        href: Sphp.DateTime
       - link: Events and Observers
         href: Sphp.Stdlib.Observers.and.Events
       - ruler: 
