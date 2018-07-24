@@ -12,6 +12,8 @@ items:
       href: Sphp.Security
     - menu: Standard library
       items:
+      - link: Datetime
+        href: Sphp.Datetime
       - link: Introduction
         href: Sphp.Stdlib
         title: Standard library | Introduction

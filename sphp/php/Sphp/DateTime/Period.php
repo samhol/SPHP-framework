@@ -78,7 +78,7 @@ class Period extends DatePeriod {
       if (is_string($interval)) {
         $interval = Factory::dateInterval($interval);
       }
-      $dateTime = new Period(Factory::dateTimeImmutable($start), Factory::dateInterval($interval), Factory::dateTimeImmutable($end));
+      $dateTime = new static(Factory::dateTimeImmutable($start), Factory::dateInterval($interval), Factory::dateTimeImmutable($end));
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
