@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\DateInterval;
+use Sphp\DateTime\Interval;
 
 /**
  * Implements a timed exercise like basketball
@@ -25,7 +25,7 @@ class TimedExercise extends Exercise {
   /**
    * Adds a new timed set to the exercise
    * 
-   * @param  DateInterval|string $time the duration of the exercise set
+   * @param  Interval|string $time the duration of the exercise set
    * @return TimedSet new instance
    */
   public function addSet($time) {
@@ -37,15 +37,15 @@ class TimedExercise extends Exercise {
   /**
    * Returns the total time used in the exercise 
    * 
-   * @return DateInterval the total time used in the exercise 
+   * @return Interval the total time used in the exercise 
    */
-  public function getTotalTime(): DateInterval {
+  public function getTotalTime(): Interval {
     $time = 0;
     foreach ($this as $set) {
       $time += $set->getDuration()->i * 60 + $set->getDuration()->h * 60 * 60 + $set->getDuration()->d * 60 * 60 * 24;
     }
     echo "PT{$time}S" . ", ";
-    return new DateInterval("PT{$time}S");
+    return new Interval("PT{$time}S");
   }
 
 }

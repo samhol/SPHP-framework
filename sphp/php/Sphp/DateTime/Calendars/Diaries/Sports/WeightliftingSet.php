@@ -46,7 +46,7 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Returns the rep weight used in the set
    * 
-   * @return float rep weight used in the set (in kg)
+   * @return float rep weight used in the set (in kilograms)
    */
   public function getRepWeight(): float {
     return $this->weight;
@@ -55,7 +55,7 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Sets the rep weight used in the set
    * 
-   * @param  float $weight the rep weight used in the set (in kg)
+   * @param  float $weight the rep weight used in the set (in kilograms)
    * @return $this for fluent interface
    */
   public function setRepWeight(float $weight) {
@@ -66,7 +66,7 @@ class WeightliftingSet implements ExerciseSet {
   /**
    * Returns the total weight used in the set
    * 
-   * @return float the total weight used in the set
+   * @return float the total weight used in the set (in kilograms)
    */
   public function getTotalWeight(): float {
     return $this->reps * $this->weight;

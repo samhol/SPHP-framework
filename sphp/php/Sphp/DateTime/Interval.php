@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime;
 
-use DateInterval as Dt;
+use DateInterval;
 
 /**
  * Implements a date interval
@@ -19,7 +19,7 @@ use DateInterval as Dt;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DateInterval extends Dt {
+class Interval extends DateInterval {
 
   /**
    * Constructor
@@ -67,6 +67,24 @@ class DateInterval extends Dt {
             $this->h * 60 * 60 +
             $this->i * 60 +
             $this->s) * ($this->invert ? -1 : 1);
+  }
+
+  /**
+   * Returns the interval in minutes
+   * 
+   * @return float the interval in minutes
+   */
+  public function toMinutes(): float {
+    return ($this->toSeconds() / 60);
+  }
+
+  /**
+   * Returns the interval in minutes
+   * 
+   * @return float the interval in minutes
+   */
+  public function toHours(): float {
+    return ($this->toMinutes() / 60);
   }
 
 }

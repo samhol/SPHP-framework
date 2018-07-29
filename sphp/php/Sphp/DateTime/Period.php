@@ -98,7 +98,7 @@ class Period extends DatePeriod {
    * 
    * @param  mixed $start the start date of the period
    * @param  mixed $end the end date of the period
-   * @param  string|DateInterval $interval
+   * @param  string|Interval $interval
    * @return Period new instance
    * @throws DateTimeException if instance cannot be parsed from input
    */

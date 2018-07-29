@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\DateInterval;
+use Sphp\DateTime\Interval;
 use Sphp\DateTime\Factory;
 
 /**
@@ -23,14 +23,14 @@ use Sphp\DateTime\Factory;
 class TimedSet implements ExerciseSet {
 
   /**
-   * @var DateInterval
+   * @var Interval
    */
   private $duration;
 
   /**
    * Constructor
    * 
-   * @param DateInterval|string $duration the duration of the exercise set
+   * @param Interval|string $duration the duration of the exercise set
    */
   public function __construct($duration) {
     $this->setDuration($duration);
@@ -60,20 +60,20 @@ class TimedSet implements ExerciseSet {
   /**
    * Returns the duration of the exercise set
    * 
-   * @return DateInterval the duration of the exercise set
+   * @return Interval the duration of the exercise set
    */
-  public function getDuration(): DateInterval {
+  public function getDuration(): Interval {
     return $this->duration;
   }
 
   /**
    * Sets the duration of the exercise set
    * 
-   * @param  DateInterval|string $duration the duration of the exercise set
+   * @param  Interval|string $duration the duration of the exercise set
    * @return $this for a fluent interface
    */
   public function setDuration($duration) {
-    if (!$duration instanceof DateInterval) {
+    if (!$duration instanceof Interval) {
       $duration = Factory::dateInterval($duration);
     }
     $this->duration = $duration;

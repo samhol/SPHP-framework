@@ -15,6 +15,8 @@ use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
 use Exception;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
+use ReflectionClass;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a datetime object
@@ -32,6 +34,11 @@ class DateTime implements DateTimeInterface {
    * @var DateTimeImmutable 
    */
   private $dateTime;
+
+  /**
+   * @var ReflectionClass 
+   */
+  private $reflector;
 
   /**
    * Constructor
@@ -59,6 +66,23 @@ class DateTime implements DateTimeInterface {
    */
   public function __clone() {
     $this->dateTime = clone $this->dateTime;
+  }
+
+  /**
+   * Clone method
+   */
+  public function __call($name, $args) {
+    if ($this->reflector === null) {
+      $this->reflector = new ReflectionClass($this->dateTime);
+    }
+    if (!$this->reflector->hasMethod($name)) {
+      throw new BadMethodCallException("Method $name does not exist");
+    } else {
+      $reflectionMethod = $this->reflector->getMethod($name);
+      return $reflectionMethod->invokeArgs($this->dateTime, $args);
+    }
+    // $this->reflector->getMethod($name)->
+    return true;
   }
 
   public function __toString(): string {
@@ -189,6 +213,24 @@ class DateTime implements DateTimeInterface {
     $new = $this->dateTime->modify($modify);
     $thrower->stop();
     return static::from($new);
+  }
+
+  /**
+   * Adds an amount of days, months, years, hours, minutes and seconds
+   * 
+   * @param  string|Interval|DateInterval $interval the interval to add
+   * @return DateTime new instance
+   * @throws DateTimeException if the interval cannot be parsed from the input
+   */
+  public function add($interval): DateTime {
+    if (is_string($interval)) {
+      $interval = new Interval($interval);
+    } if (!$interval instanceof \DateInterval) {
+      throw new DateTimeException('The interval cannot be parsed from the input');
+    }
+    $dt = $this->dateTime->add($interval);
+    $result = new static($dt);
+    return $result;
   }
 
   public function getHours(): int {

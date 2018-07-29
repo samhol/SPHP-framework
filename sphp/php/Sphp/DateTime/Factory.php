@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Sphp\DateTime\DateInterval;
+use Sphp\DateTime\Interval;
 use Sphp\Stdlib\Strings;
 use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
@@ -27,14 +27,14 @@ use Exception;
  */
 class Factory {
 
-  public static function dateInterval(string $time): DateInterval {
+  public static function dateInterval(string $time): Interval {
     if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
       $parts = explode(':', $time);
       $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
       //echo "$dateint\n";
-      $interval = new DateInterval($dateint);
+      $interval = new Interval($dateint);
     } else {
-      $interval = new DateInterval($time);
+      $interval = new Interval($time);
     }
     return $interval;
   }

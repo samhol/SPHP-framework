@@ -17,7 +17,7 @@ operations. This namespace introduces some addons to these native properties.
         
 ##The $date and The $dateTimeLink classes
         
-These classes are wrappers for native $dateTimeImmutable objects. 
+These classes are wrappers for PHP's native $dateTimeImmutable. 
         
 
 The $date class implements $dateInterface. It ignores time units smaller than 
@@ -68,12 +68,12 @@ Manual\example("Sphp/DateTime/DateRange.php", "text", false)
         ->setOutputSyntaxPaneTitle("Period example results")
         ->printHtml();
 
-$dateInterval = Manual\api()->classLinker(DateInterval::class);
+$dateInterval = Manual\api()->classLinker(Interval::class);
 $phpDateInterval = Manual\php()->classLinker(\DateInterval::class);
 
 Manual\md(<<<MD
 ##The $dateInterval class
-This class extends native $phpDateInterval class giving some new functionality to it.
+This class extends PHP's native $phpDateInterval class giving some new functionality to it.
 
 A date interval stores either a fixed amount of time (in years, months, days, 
 hours etc) or a relative time string in the format that DateTime's constructor supports.
@@ -82,4 +82,9 @@ hours etc) or a relative time string in the format that DateTime's constructor s
 MD
 );
 
-Manual\printPage('Sphp.DateTime.Calendars');
+Manual\example("Sphp/DateTime/DateInterval.php", "text", false)
+        ->setExamplePaneTitle("Interval example")
+        ->setOutputSyntaxPaneTitle("Interval example results")
+        ->printHtml();
+
+//Manual\printPage('Sphp.DateTime.Calendars');
