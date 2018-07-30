@@ -34,7 +34,15 @@ class Console {
   const ERROR = 'error';
   const TABLE = 'table';
 
+  /**
+   * @var string[] 
+   */
   private static $types = [self::LOG, self::INFO, self::WARN, self::ERROR, self::TABLE];
+
+  /**
+   *
+   * @var type 
+   */
   private $rows = [];
 
   /**
@@ -57,20 +65,6 @@ class Console {
     $obj->run()->clear();
   }
 
-  /**
-   * Logs messages/variables/data to browser console from within php
-   *
-   * @param $name message to be shown for optional data/vars
-   * @param $data variable (scalar/mixed) arrays/objects, etc to be logged
-   * @param $jsEval whether to apply JS eval() to arrays/objects
-   *
-   * @return none
-   * @author Sarfraz
-   */
-  public static function log1($name, $data = NULL, $jsEval = FALSE) {
-    
-  }
-
   protected function createLog(string $type, $data) {
     if (is_array($data)) {
       $data = Parser::json()->encodeArray($data);
@@ -81,6 +75,12 @@ class Console {
     return "console.$type($data);";
   }
 
+  /**
+   * 
+   * @param  string $type
+   * @param  mixed $logText
+   * @return $this for a fluent interface
+   */
   public function add(string $type, $logText) {
     $this->rows[] = ['type' => $type, 'message' => $logText];
     return $this;
@@ -110,6 +110,10 @@ class Console {
     return $this;
   }
 
+  /**
+   * 
+   * @return $this for a fluent interface
+   */
   public function clear() {
     $this->rows = [];
     return $this;
