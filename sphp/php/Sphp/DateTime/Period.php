@@ -11,6 +11,7 @@
 namespace Sphp\DateTime;
 
 use DatePeriod;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\DateTime\Exceptions\DateTimeException;
 use Sphp\Exceptions\BadMethodCallException;
 use Exception;
@@ -22,22 +23,35 @@ use Exception;
  * regular intervals, over a given period.
  * 
  * 
- * @method \Sphp\DateTime\Period monthly(mixed $content = null, int $colspan = 1, int $rowspan = 1) creates a new HTML &lt;td&gt; object
+ * @method static Period months(mixed $start, string|DateInterval $length, int $recurrences = 1) Creates a new monthly recurrence instance from input
+ * @method \Sphp\DateTime\Period m(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new monthly recurrence instance from input
+ * @method \Sphp\DateTime\Period weeks(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
+ * @method \Sphp\DateTime\Period w(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
+ * @method \Sphp\DateTime\Period days(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new daily recurrences instance from input
+ * @method \Sphp\DateTime\Period d(mixed $start, string|\DateInterval $interval, int $recurrences = 1) Creates a new daily recurrences instance from input
+ * @method \Sphp\DateTime\Period hours(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new hourly recurrences instance from input
+ * @method \Sphp\DateTime\Period h(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new hourly recurrences instance from input
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Period extends DatePeriod {
+class Period extends DatePeriod implements Arrayable {
 
   /**
    * @var string[]
    */
-  private static $periodMap = array(
-      'monthly' => 'P1M',
-      'm' => 'P1M'
-  );
+  private static $periodMap = [
+      'months' => '%d months',
+      'm' => '%d months',
+      'weeks' => '%d weeks',
+      'w' => '%d weeks',
+      'days' => '%d days',
+      'd' => '%d days',
+      'hours' => '%d hours',
+      'h' => '%d hours',
+  ];
 
   /**
    * Checks if the given date is in the range
@@ -46,6 +60,7 @@ class Period extends DatePeriod {
    * @return bool true if given datetime is in the period
    */
   public function isInPeriod($date): bool {
+
     try {
       $dateTime = DateTime::from($date)->getTimestamp();
       $start = $this->getStartDate()->getTimestamp();
@@ -79,6 +94,18 @@ class Period extends DatePeriod {
   }
 
   /**
+   * 
+   * @return DateTime[]
+   */
+  public function toArray(): array {
+    $result = [];
+    foreach ($this as $dateTime) {
+      $result[] = DateTime::from($dateTime);
+    }
+    return $result;
+  }
+
+  /**
    * Creates a period object
    *
    * @param  string $name the name of the component
@@ -87,79 +114,48 @@ class Period extends DatePeriod {
    * @throws BadMethodCallException
    */
   public static function __callStatic(string $name, array $arguments): Period {
+    $num = 1;
     if (!isset(static::$periodMap[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
-    return static::from($arguments[0], $arguments[1], static::$periodMap[$name]);
+    if (count($arguments) >= 3) {
+      $num = (int) $arguments[2];
+    }
+    $intervalStr = sprintf(static::$periodMap[$name], $num);
+    if ($num > 0) {
+      $intervalStr = "+$intervalStr";
+    }
+    $interval = Interval::createFromDateString($intervalStr);
+    //if ($num < 0) {
+    //  $interval->invert = 1;
+    //}
+    // $interval = Factory::dateInterval($intervalStr);
+    echo $intervalStr;
+    return static::create($arguments[0], $interval, $arguments[1]);
   }
 
   /**
    * Creates a new instance from input
    * 
    * @param  mixed $start the start date of the period
-   * @param  mixed $end the end date of the period
    * @param  string|Interval $interval
+   * @param  mixed $length the end date or the length of the period
    * @return Period new instance
    * @throws DateTimeException if instance cannot be parsed from input
    */
-  public static function from($start, $end, $interval = null): Period {
+  public static function create($start, $interval, $length): Period {
     try {
       if (is_string($interval)) {
         $interval = Factory::dateInterval($interval);
       }
-      $dateTime = new static(Factory::dateTimeImmutable($start), $interval, Factory::dateTimeImmutable($end));
+      if (!is_int($length)) {
+        $length = Factory::dateTimeImmutable($length);
+      }
+      $dateTime = new static(Factory::dateTimeImmutable($start), $interval, $length);
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $dateTime;
-  }
-
-  /**
-   * Creates a new recurrences monthly instance from input
-   * 
-   * @param  mixed $start the start date of the period
-   * @param  mixed $end the end date of the period
-   * @return Period new instance
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public static function monthly($start, $end): Period {
-    return static::from($start, $end, 'P1M');
-  }
-
-  /**
-   * Creates a new instance from input
-   * 
-   * @param  mixed $start the start date of the period
-   * @param  mixed $end the end date of the period
-   * @return Period new instance
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public static function weekly($start, $end): Period {
-    return static::from($start, $end, 'P1W');
-  }
-
-  /**
-   * Creates a new instance from input
-   * 
-   * @param  mixed $start the start date of the period
-   * @param  mixed $end the end date of the period
-   * @return Period new instance
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public static function daily($start, $end): Period {
-    return static::from($start, $end, 'P1D');
-  }
-
-  /**
-   * Creates a new instance from input
-   * 
-   * @param  mixed $start the start date of the period
-   * @param  mixed $end the end date of the period
-   * @return Period new instance
-   * @throws DateTimeException if date cannot be parsed from input
-   */
-  public static function hourly($start, $end): Period {
-    return static::from($start, $end, 'P1H');
   }
 
 }

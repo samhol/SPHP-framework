@@ -8,3 +8,5 @@ var_dump(
         $interval->toHours(),
         $interval->toMinutes(), 
         $interval->toSeconds()); 
+
+var_dump(Factory::dateInterval('+2 days')->toSeconds());

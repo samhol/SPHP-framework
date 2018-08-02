@@ -44,7 +44,7 @@ class DateTime implements DateTimeInterface {
    * Constructor
    * 
    * @param  mixed $time raw date data
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws DateTimeException if datetime cannot be parsed from input
    */
   public function __construct($time = null) {
     try {
@@ -69,9 +69,14 @@ class DateTime implements DateTimeInterface {
   }
 
   /**
-   * Clone method
+   * Magic call method
+   *
+   * @param  string $name
+   * @param  array $args
+   * @return mixed
+   * @throws BadMethodCallException
    */
-  public function __call($name, $args) {
+  public function __call(string $name, array $args) {
     if ($this->reflector === null) {
       $this->reflector = new ReflectionClass($this->dateTime);
     }
@@ -79,10 +84,11 @@ class DateTime implements DateTimeInterface {
       throw new BadMethodCallException("Method $name does not exist");
     } else {
       $reflectionMethod = $this->reflector->getMethod($name);
-      return $reflectionMethod->invokeArgs($this->dateTime, $args);
+      var_dump($reflectionMethod->invokeArgs($this->dateTime, $args));
+      return $this->dateTime;
     }
     // $this->reflector->getMethod($name)->
-    return true;
+    return $this->dateTime;
   }
 
   public function __toString(): string {
@@ -229,6 +235,24 @@ class DateTime implements DateTimeInterface {
       throw new DateTimeException('The interval cannot be parsed from the input');
     }
     $dt = $this->dateTime->add($interval);
+    $result = new static($dt);
+    return $result;
+  }
+
+  /**
+   * Adds an amount of days, months, years, hours, minutes and seconds
+   * 
+   * @param  string|Interval|DateInterval $interval the interval to add
+   * @return DateTime new instance
+   * @throws DateTimeException if the interval cannot be parsed from the input
+   */
+  public function sub($interval): DateTime {
+    if (is_string($interval)) {
+      $interval = new Interval($interval);
+    } if (!$interval instanceof \DateInterval) {
+      throw new DateTimeException('The interval cannot be parsed from the input');
+    }
+    $dt = $this->dateTime->sub($interval);
     $result = new static($dt);
     return $result;
   }

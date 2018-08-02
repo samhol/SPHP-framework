@@ -63,7 +63,11 @@ intervals, over a given period.
 MD
 );
 
-Manual\example("Sphp/DateTime/DateRange.php", "text", false)
+Manual\example('Sphp/DateTime/Period.__construct.php', 'text', false)
+        ->setExamplePaneTitle("Period construction example")
+        ->setOutputSyntaxPaneTitle("Period construction results")
+        ->printHtml();
+Manual\example('Sphp/DateTime/DateRange.php', 'text', false)
         ->setExamplePaneTitle("Period example")
         ->setOutputSyntaxPaneTitle("Period example results")
         ->printHtml();

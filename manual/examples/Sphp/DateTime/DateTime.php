@@ -10,3 +10,5 @@ echo "Yesterday was " . $now->previousDay()->format('l \t\h\e jS \of F Y') . "\n
 echo "First day of this month was " . $now->firstOfMonth()->format('l');
 
 echo " and the next is " . $now->add('P1D')->format('l') . "\n";
+
+echo " and the last is " . $now->sub('P1D')->format('l') . "\n";

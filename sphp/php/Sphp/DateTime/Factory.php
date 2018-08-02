@@ -28,13 +28,17 @@ use Exception;
 class Factory {
 
   public static function dateInterval(string $time): Interval {
-    if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
-      $parts = explode(':', $time);
-      $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
-      //echo "$dateint\n";
-      $interval = new Interval($dateint);
-    } else {
-      $interval = new Interval($time);
+    try {
+      if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
+        $parts = explode(':', $time);
+        $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
+        //echo "$dateint\n";
+        $interval = new Interval($dateint);
+      } else {
+        $interval = new Interval($time);
+      }
+    } catch (\Exception $ex) {
+        $interval =  Interval::createFromDateString($time);
     }
     return $interval;
   }
