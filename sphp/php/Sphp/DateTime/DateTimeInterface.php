@@ -21,6 +21,15 @@ namespace Sphp\DateTime;
 interface DateTimeInterface extends DateInterface {
 
   /**
+   * Returns date formatted according to given format
+   * 
+   * @param  string $format the format of the outputted date string
+   * @return string date formatted according to given format
+   * @throws DateTimeException if formatting fails
+   */
+  public function format(string $format): string;
+
+  /**
    * Returns the number of hours
    * 
    * @return int the number of hours

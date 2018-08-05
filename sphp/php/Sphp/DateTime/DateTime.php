@@ -206,6 +206,15 @@ class DateTime implements DateTimeInterface {
   }
 
   /**
+   * Returns the date representing the first of the same month
+   * 
+   * @return DateTime new instance
+   */
+  public function lastOfMonth(): DateTime {
+    return $this->modify('last day of this month');
+  }
+
+  /**
    * Creates a new object with modified timestamp
    *  
    * @param  string $modify a date/time string
@@ -229,12 +238,8 @@ class DateTime implements DateTimeInterface {
    * @throws DateTimeException if the interval cannot be parsed from the input
    */
   public function add($interval): DateTime {
-    if (is_string($interval)) {
-      $interval = new Interval($interval);
-    } if (!$interval instanceof \DateInterval) {
-      throw new DateTimeException('The interval cannot be parsed from the input');
-    }
-    $dt = $this->dateTime->add($interval);
+    //$interval = Factory::dateInterval($interval);
+    $dt = $this->dateTime->add(Factory::dateInterval($interval));
     $result = new static($dt);
     return $result;
   }
@@ -247,12 +252,7 @@ class DateTime implements DateTimeInterface {
    * @throws DateTimeException if the interval cannot be parsed from the input
    */
   public function sub($interval): DateTime {
-    if (is_string($interval)) {
-      $interval = new Interval($interval);
-    } if (!$interval instanceof \DateInterval) {
-      throw new DateTimeException('The interval cannot be parsed from the input');
-    }
-    $dt = $this->dateTime->sub($interval);
+    $dt = $this->dateTime->sub(Factory::dateInterval($interval));
     $result = new static($dt);
     return $result;
   }

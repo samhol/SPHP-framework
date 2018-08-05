@@ -125,12 +125,12 @@ class Period extends DatePeriod implements Arrayable {
     if ($num > 0) {
       $intervalStr = "+$intervalStr";
     }
-    $interval = Interval::createFromDateString($intervalStr);
+    $interval = Factory::dateInterval($intervalStr);
     //if ($num < 0) {
     //  $interval->invert = 1;
     //}
     // $interval = Factory::dateInterval($intervalStr);
-    echo $intervalStr;
+    //echo $intervalStr;
     return static::create($arguments[0], $interval, $arguments[1]);
   }
 

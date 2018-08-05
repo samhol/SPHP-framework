@@ -25,6 +25,10 @@ days (like hours, minutes and seconds).
 MD
 );
 
+Manual\example("Sphp/DateTime/Factory.php", "text", false)
+        ->setExamplePaneTitle("Date examples")
+        ->setOutputSyntaxPaneTitle("Date example results")
+        ->printHtml();
 Manual\example("Sphp/DateTime/Date.php", "text", false)
         ->setExamplePaneTitle("Date examples")
         ->setOutputSyntaxPaneTitle("Date example results")

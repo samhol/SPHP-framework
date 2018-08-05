@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Sphp\DateTime\Interval;
+use DateInterval;
 use Sphp\Stdlib\Strings;
 use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
@@ -27,18 +27,38 @@ use Exception;
  */
 class Factory {
 
-  public static function dateInterval(string $time): Interval {
+  /**
+   * 
+   * @param  mixed $time
+   * @return DateInterval
+   * @throws DateTimeException
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public static function dateInterval($time): DateInterval {
     try {
-      if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
-        $parts = explode(':', $time);
-        $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
-        //echo "$dateint\n";
-        $interval = new Interval($dateint);
+      if ($time instanceof \DateInterval) {
+        $interval = $time;
+      } else if (is_string($time)) {
+        $interval = static::dateIntervalFromString($time);
       } else {
-        $interval = new Interval($time);
+        throw new \Sphp\Exceptions\InvalidArgumentException();
       }
     } catch (\Exception $ex) {
-        $interval =  Interval::createFromDateString($time);
+      throw new DateTimeException($ex->getMessage());
+    }
+    return $interval;
+  }
+
+  public static function dateIntervalFromString(string $time): DateInterval {
+    if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
+      $parts = explode(':', $time);
+      $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
+      //echo "$dateint\n";
+      $interval = new DateInterval($dateint);
+    } else if (Strings::match($time, "/^P([0-9]+(?:[,\.][0-9]+)?Y)?([0-9]+(?:[,\.][0-9]+)?M)?([0-9]+(?:[,\.][0-9]+)?D)?(?:T([0-9]+(?:[,\.][0-9]+)?H)?([0-9]+(?:[,\.][0-9]+)?M)?([0-9]+(?:[,\.][0-9]+)?S)?)?$/")) {
+      $interval = new DateInterval($time);
+    } else {
+      $interval = DateInterval::createFromDateString($time);
     }
     return $interval;
   }

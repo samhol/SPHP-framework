@@ -19,16 +19,26 @@ use DateInterval;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Interval extends DateInterval {
+class Interval extends DateInterval implements IntervalInterface {
 
   /**
    * Constructor
    * 
-   * @param string $interval_spec an interval specification.
+   * @param string|DateInterval $interval an interval specification.
    */
-  public function __construct(string $interval_spec) {
-    parent::__construct($interval_spec);
+  public function __construct(string $interval) {
+    parent::__construct($interval);
     $this->recalculate();
+  }
+
+
+
+  /**
+   * 
+   * @return DateInterval
+   */
+  public function getInterval(): DateInterval {
+    return $this;
   }
 
   /**
@@ -51,11 +61,6 @@ class Interval extends DateInterval {
     $this->s = $seconds;
   }
 
-  /**
-   * Returns the interval as seconds
-   * 
-   * @return float the interval as seconds
-   */
   public function toSeconds(): float {
     $days = $this->days;
     if ($days === false) {
@@ -69,22 +74,16 @@ class Interval extends DateInterval {
             $this->s) * ($this->invert ? -1 : 1);
   }
 
-  /**
-   * Returns the interval in minutes
-   * 
-   * @return float the interval in minutes
-   */
   public function toMinutes(): float {
     return ($this->toSeconds() / 60);
   }
 
-  /**
-   * Returns the interval in minutes
-   * 
-   * @return float the interval in minutes
-   */
   public function toHours(): float {
     return ($this->toMinutes() / 60);
+  }
+
+  public function isNegative(): bool {
+    return $this->invert === 1;
   }
 
 }
