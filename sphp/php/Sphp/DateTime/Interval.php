@@ -24,14 +24,12 @@ class Interval extends DateInterval implements IntervalInterface {
   /**
    * Constructor
    * 
-   * @param string|DateInterval $interval an interval specification.
+   * @param string $interval an interval specification.
    */
   public function __construct(string $interval) {
     parent::__construct($interval);
     $this->recalculate();
   }
-
-
 
   /**
    * 
