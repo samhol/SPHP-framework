@@ -26,7 +26,7 @@ class Interval extends DateInterval implements IntervalInterface {
    * 
    * @param string $interval an interval specification.
    */
-  public function __construct(string $interval) {
+  public function __construct(string $interval = 'P0D') {
     parent::__construct($interval);
     $this->recalculate();
   }
@@ -78,6 +78,10 @@ class Interval extends DateInterval implements IntervalInterface {
 
   public function toHours(): float {
     return ($this->toMinutes() / 60);
+  }
+
+  public function toDays(): float {
+    return ($this->toSeconds() / 86400);
   }
 
   public function isNegative(): bool {

@@ -64,6 +64,21 @@ class Factory {
   }
 
   /**
+   * 
+   * @param  DateInterval $input
+   * @return Interval
+   */
+  public static function intervalFromDateInterval(DateInterval $input): Interval {
+    $vars = get_object_vars($input);
+    //var_dump($vars);
+    $output = new Interval;
+    foreach ($vars as $key => $value) {
+      $output->$key = $value;
+    }
+    return $output;
+  }
+
+  /**
    * parses a datetime object from input
    * 
    * @param  mixed $input
