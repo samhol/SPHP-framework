@@ -25,7 +25,7 @@ use Exception;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Factory {
+abstract class Intervals {
 
   /**
    * 
@@ -34,7 +34,7 @@ class Factory {
    * @throws DateTimeException
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public static function dateInterval($time): Interval {
+  public static function create($time): Interval {
     try {
       if ($time instanceof Interval) {
         $interval = $time;

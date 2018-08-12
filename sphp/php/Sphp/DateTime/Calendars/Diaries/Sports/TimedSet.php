@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\DateTime\Interval;
-use Sphp\DateTime\Factory;
+use Sphp\DateTime\Intervals;
 
 /**
  * Implements timed exercise set
@@ -74,7 +74,7 @@ class TimedSet implements ExerciseSet {
    */
   public function setDuration($duration) {
     if (!$duration instanceof Interval) {
-      $duration = Factory::dateInterval($duration);
+      $duration = Intervals::create($duration);
     }
     $this->duration = $duration;
     return $this;

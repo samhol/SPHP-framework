@@ -88,4 +88,15 @@ class Interval extends DateInterval implements IntervalInterface {
     return $this->invert === 1;
   }
 
+  /**
+   * 
+   * 
+   * @param  string $time
+   * @return Interval new instance
+   */
+  public static function createFromDateString($time) {
+    $di = parent::createFromDateString($time);
+    return Factory::intervalFromDateInterval($di);
+  }
+
 }
