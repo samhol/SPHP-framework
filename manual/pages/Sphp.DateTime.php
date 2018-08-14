@@ -25,11 +25,11 @@ days (like hours, minutes and seconds).
 MD
 );
 
-Manual\example("Sphp/DateTime/Factory.php", "text", false)
+Manual\example('Sphp/DateTime/Factory.php', 'text', false)
         ->setExamplePaneTitle("Date examples")
         ->setOutputSyntaxPaneTitle("Date example results")
         ->printHtml();
-Manual\example("Sphp/DateTime/Date.php", "text", false)
+Manual\example('Sphp/DateTime/Date.php', 'text', false)
         ->setExamplePaneTitle("Date examples")
         ->setOutputSyntaxPaneTitle("Date example results")
         ->printHtml();
@@ -40,7 +40,7 @@ The $dateTimeLink class is very similar with PHP's native $dateTimeImmutable cla
 
 MD
 );
-Manual\example("Sphp/DateTime/DateTime.php", "text", false)
+Manual\example('Sphp/DateTime/DateTime.php', 'text', false)
         ->setExamplePaneTitle("DateTime example")
         ->setOutputSyntaxPaneTitle("DateTime example results")
         ->printHtml();
@@ -50,9 +50,9 @@ The $dateTimeLink class introduces some new ways to compare datetimes.
 
 MD
 );
-Manual\example("Sphp/DateTime/DateTime.compareTo.php", "text", false)
-        ->setExamplePaneTitle("DateTime comparison example")
-        ->setOutputSyntaxPaneTitle("DateTime comparison results")
+Manual\example('Sphp/DateTime/DateTime.compareTo.php', 'text', false)
+        ->setExamplePaneTitle('DateTime comparison example')
+        ->setOutputSyntaxPaneTitle('DateTime comparison results')
         ->printHtml();
 $datePeriod = Manual\api()->classLinker(Period::class);
 
@@ -72,27 +72,37 @@ Manual\example('Sphp/DateTime/Period.__construct.php', 'text', false)
         ->setOutputSyntaxPaneTitle("Period construction results")
         ->printHtml();
 Manual\example('Sphp/DateTime/DateRange.php', 'text', false)
-        ->setExamplePaneTitle("Period example")
-        ->setOutputSyntaxPaneTitle("Period example results")
+        ->setExamplePaneTitle('Period example')
+        ->setOutputSyntaxPaneTitle('Period example results')
         ->printHtml();
 
-$dateInterval = Manual\api()->classLinker(Interval::class);
+$interval = Manual\api()->classLinker(Interval::class);
 $phpDateInterval = Manual\php()->classLinker(\DateInterval::class);
 
 Manual\md(<<<MD
-##The $dateInterval class
+##The $interval class
 This class extends PHP's native $phpDateInterval class giving some new functionality to it.
 
-A date interval stores either a fixed amount of time (in years, months, days, 
+An interval stores either a fixed amount of time (in years, months, days, 
 hours etc) or a relative time string in the format that DateTime's constructor supports.
-       
-	
+
 MD
 );
 
-Manual\example("Sphp/DateTime/DateInterval.php", "text", false)
+Manual\example('Sphp/DateTime/DateInterval.php', 'text', false)
         ->setExamplePaneTitle("Interval example")
         ->setOutputSyntaxPaneTitle("Interval example results")
         ->printHtml();
 
-//Manual\printPage('Sphp.DateTime.Calendars');
+$intervals = Manual\api()->classLinker(Intervals::class);
+Manual\md(<<<MD
+##A factory for $interval objects
+$intervals is factory for $interval objects. Interval objects can be created from other interval objects, strings and integers.
+
+MD
+);
+Manual\example('Sphp/DateTime/Intervals.php', 'text', false)
+        ->setExamplePaneTitle("Intervals factory example")
+        ->setOutputSyntaxPaneTitle("Intervals factory results")
+        ->printHtml();
+

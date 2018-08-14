@@ -10,15 +10,12 @@
 
 namespace Sphp\DateTime;
 
-use DateTimeImmutable;
 use DateInterval;
 use Sphp\Stdlib\Strings;
-use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
-use Exception;
 
 /**
- * Implements a factory for basic datetime object creation
+ * Implements a factory for basic interval object creation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -28,20 +25,20 @@ use Exception;
 abstract class Intervals {
 
   /**
+   * Parses a new instance of interval from mixed input
    * 
-   * @param  mixed $time
-   * @return DateInterval
+   * @param  mixed $input input for a new interval
+   * @return Interval new instance
    * @throws DateTimeException
-   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public static function create($time): Interval {
+  public static function create($input): Interval {
     try {
-      if ($time instanceof Interval) {
-        $interval = $time;
-      } else if ($time instanceof DateInterval) {
-        $interval = static::intervalFromDateInterval($time);
-      } else if (is_string($time)) {
-        $interval = static::intervalFromString($time);
+      if ($input instanceof Interval) {
+        $interval = clone $input;
+      } else if ($input instanceof DateInterval) {
+        $interval = static::fromDateInterval($input);
+      } else if (is_string($input)) {
+        $interval = static::fromString($input);
       } else {
         throw new \Sphp\Exceptions\InvalidArgumentException();
       }
@@ -51,7 +48,13 @@ abstract class Intervals {
     return $interval;
   }
 
-  public static function intervalFromString(string $time): Interval {
+  /**
+   * Creates a new instance of interval from a string
+   * 
+   * @param  string $time
+   * @return Interval new instance
+   */
+  public static function fromString(string $time): Interval {
     if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
       $parts = explode(':', $time);
       $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
@@ -68,9 +71,9 @@ abstract class Intervals {
   /**
    * 
    * @param  DateInterval $input
-   * @return Interval
+   * @return Interval new instance
    */
-  public static function intervalFromDateInterval(DateInterval $input): Interval {
+  public static function fromDateInterval(DateInterval $input): Interval {
     $vars = get_object_vars($input);
     //var_dump($vars);
     $output = new Interval;
@@ -78,38 +81,6 @@ abstract class Intervals {
       $output->$key = $value;
     }
     return $output;
-  }
-
-  /**
-   * parses a datetime object from input
-   * 
-   * @param  mixed $input
-   * @return DateTimeImmutable
-   * @throws DateTimeException
-   */
-  public static function dateTimeImmutable($input): DateTimeImmutable {
-    try {
-      if ($input === null) {
-        $dateTime = new DateTimeImmutable('now');
-      } else if ($input instanceof DateTimeImmutable) {
-        $dateTime = $input;
-      } else if (is_string($input)) {
-        $dateTime = new DateTimeImmutable($input);
-      } else if (is_int($input)) {
-        $dateTime = new DateTimeImmutable("@$input");
-      } else if ($input instanceof DTI) {
-        $dateTime = DateTimeImmutable::createFromMutable($input);
-      } else if ($input instanceof DateInterface) {
-        $timestamp = $input->getTimestamp();
-        $dateTime = new DateTimeImmutable("@$timestamp");
-      }
-    } catch (Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    if (!$dateTime instanceof DateTimeImmutable) {
-      throw new DateTimeException('Datetime object cannot be parsed from input type');
-    }
-    return $dateTime;
   }
 
 }
