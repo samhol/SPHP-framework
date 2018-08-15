@@ -54,11 +54,11 @@ Manual\example('Sphp/DateTime/DateTime.compareTo.php', 'text', false)
         ->setExamplePaneTitle('DateTime comparison example')
         ->setOutputSyntaxPaneTitle('DateTime comparison results')
         ->printHtml();
-$datePeriod = Manual\api()->classLinker(Period::class);
+$period = Manual\api()->classLinker(Period::class);
 
 $phpDatePeriod = Manual\php()->classLinker(\DatePeriod::class);
 Manual\md(<<<MD
-##The $datePeriod class
+##The $period class
         
 This class extends PHP's native $phpDatePeriod and thus represents a date period.
 
@@ -67,13 +67,21 @@ intervals, over a given period.
 MD
 );
 
-Manual\example('Sphp/DateTime/Period.__construct.php', 'text', false)
-        ->setExamplePaneTitle("Period construction example")
-        ->setOutputSyntaxPaneTitle("Period construction results")
+Manual\example('Sphp/DateTime/Period.php', 'text', false)
+        ->setExamplePaneTitle('Weeks of month example')
+        ->setOutputSyntaxPaneTitle('Weeks of month example results')
         ->printHtml();
-Manual\example('Sphp/DateTime/DateRange.php', 'text', false)
-        ->setExamplePaneTitle('Period example')
-        ->setOutputSyntaxPaneTitle('Period example results')
+$periods = Manual\api()->classLinker(Periods::class);
+Manual\md(<<<MD
+###A factory for $period objects
+$periods is factory for $period objects.
+
+MD
+);
+
+Manual\example('Sphp/DateTime/Periods.php', 'text', false)
+        ->setExamplePaneTitle("Periods factory example")
+        ->setOutputSyntaxPaneTitle("Periods factory results")
         ->printHtml();
 
 $interval = Manual\api()->classLinker(Interval::class);

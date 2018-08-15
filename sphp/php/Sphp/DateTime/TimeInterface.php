@@ -11,22 +11,33 @@
 namespace Sphp\DateTime;
 
 /**
- * Defines properties for a datetime
+ * Defines properties for a time object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface DateTimeInterface extends DateInterface, TimeInterface {
+interface TimeInterface extends DateInterface {
 
   /**
-   * Returns date formatted according to given format
+   * Returns the number of hours
    * 
-   * @param  string $format the format of the outputted date string
-   * @return string date formatted according to given format
-   * @throws DateTimeException if formatting fails
+   * @return int the number of hours
    */
-  public function format(string $format): string;
+  public function getHours(): int;
 
+  /**
+   * Returns the number of minutes
+   * 
+   * @return int the number of minutes
+   */
+  public function getMinutes(): int;
+
+  /**
+   * Returns the number of seconds
+   * 
+   * @return int the number of seconds
+   */
+  public function getSeconds(): int;
 }

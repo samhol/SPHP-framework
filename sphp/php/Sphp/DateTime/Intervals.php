@@ -37,6 +37,8 @@ abstract class Intervals {
         $interval = clone $input;
       } else if ($input instanceof DateInterval) {
         $interval = static::fromDateInterval($input);
+      } else if (is_numeric($input)) {
+        $interval = static::fromNumeric($input);
       } else if (is_string($input)) {
         $interval = static::fromString($input);
       } else {
@@ -69,6 +71,26 @@ abstract class Intervals {
   }
 
   /**
+   * Creates a new instance of interval from a numeric value
+   * 
+   * @param  string|float $seconds 
+   * @return Interval new instance
+   * @throws DateTimeException if the input value is not numeric
+   */
+  public static function fromNumeric($seconds): Interval {
+    if (!is_numeric($seconds)) {
+      throw new DateTimeException('Not numeric input');
+    }
+    $float = (int) $seconds;
+
+    $interval = Interval::createFromDateString($float . " seconds");
+    if ($float < 0) {
+      $interval->invert = 1;
+    }
+    return $interval;
+  }
+
+  /**
    * 
    * @param  DateInterval $input
    * @return Interval new instance
@@ -81,6 +103,38 @@ abstract class Intervals {
       $output->$key = $value;
     }
     return $output;
+  }
+
+  /**
+   * 
+   * @param  DateInterval $input
+   * @return Interval new instance
+   */
+  public static function toString(DateInterval $input): string {
+    $format = 'P';
+    if ($input->y > 0) {
+      $format .= $input->y . 'Y';
+    }
+    if ($input->m > 0) {
+      $format .= $input->m . 'M';
+    }
+    if ($input->m > 0) {
+      $format .= $input->d . 'D';
+    }
+    $time = '';
+    if ($input->h > 0) {
+      $time .= $input->h . 'H';
+    }
+    if ($input->i > 0) {
+      $time .= $input->i . 'M';
+    }
+    if ($input->s > 0) {
+      $time .= $input->s . 'S';
+    }
+    if ($time !== '') {
+      $format .= "T$time";
+    }
+    return $format;
   }
 
 }
