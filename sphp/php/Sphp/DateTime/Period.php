@@ -62,7 +62,7 @@ class Period extends DatePeriod implements Arrayable {
   public function isInPeriod($date): bool {
 
     try {
-      $dateTime = DateTime::from($date)->getTimestamp();
+      $dateTime = DateTimeWrapper::from($date)->getTimestamp();
       $start = $this->getStartDate()->getTimestamp();
       $stop = $this->getEndDate()->getTimestamp();
       return $start <= $dateTime && $dateTime <= $stop;
@@ -80,7 +80,7 @@ class Period extends DatePeriod implements Arrayable {
   public function contains($date): bool {
     $result = false;
     try {
-      $dateTime = DateTime::from($date)->getTimestamp();
+      $dateTime = DateTimeWrapper::from($date)->getTimestamp();
       foreach ($this as $d) {
         if ($dateTime === $d->getTimestamp()) {
           $result = true;
@@ -95,67 +95,14 @@ class Period extends DatePeriod implements Arrayable {
 
   /**
    * 
-   * @return DateTime[]
+   * @return DateTimeWrapper[]
    */
   public function toArray(): array {
     $result = [];
     foreach ($this as $dateTime) {
-      $result[] = DateTime::from($dateTime);
+      $result[] = DateTimeWrapper::from($dateTime);
     }
     return $result;
-  }
-
-  /**
-   * Creates a period object
-   *
-   * @param  string $name the name of the component
-   * @param  array $arguments 
-   * @return Period new instance
-   * @throws BadMethodCallException
-   */
-  public static function __callStatic(string $name, array $arguments): Period {
-    $num = 1;
-    if (!isset(static::$periodMap[$name])) {
-      throw new BadMethodCallException("Method $name does not exist");
-    }
-    if (count($arguments) >= 3) {
-      $num = (int) $arguments[2];
-    }
-    $intervalStr = sprintf(static::$periodMap[$name], $num);
-    if ($num > 0) {
-      $intervalStr = "+$intervalStr";
-    }
-    $interval = Intervals::create($intervalStr); 
-    //if ($num < 0) {
-    //  $interval->invert = 1;
-    //}
-    // $interval = Factory::dateInterval($intervalStr);
-    //echo $intervalStr;
-    return static::create($arguments[0], $interval, $arguments[1]);
-  }
-
-  /**
-   * Creates a new instance from input
-   * 
-   * @param  mixed $start the start date of the period
-   * @param  string|Interval $interval
-   * @param  mixed $length the end date or the length of the period
-   * @return Period new instance
-   * @throws DateTimeException if instance cannot be parsed from input
-   */
-  public static function create($start, $interval, $length): Period {
-    try {
-      if (is_string($interval)) {
-        $interval = Factory::dateInterval($interval);
-      }
-      if (!is_int($length)) {
-        $length = Factory::dateTimeImmutable($length);
-      }
-      $dateTime = new static(Factory::dateTimeImmutable($start), $interval, $length);
-    } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    return $dateTime;
   }
 
 }

@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 
 /**
  * Description of Varying
@@ -32,7 +32,6 @@ class VaryingAnnual implements DateConstraint {
    * Constructor
    * 
    * @param string $format datetime format 
-   * @param string $name
    */
   public function __construct(string $format) {
     $this->format = $format;
@@ -40,10 +39,10 @@ class VaryingAnnual implements DateConstraint {
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new Date($date);
+      $date = new DateWrapper($date);
     }
     $year = $date->getYear();
-    $check = Date::from(sprintf($this->format, $year));
+    $check = DateWrapper::from(sprintf($this->format, $year));
     return $check->equals($date);
   }
 

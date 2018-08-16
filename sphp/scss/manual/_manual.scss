@@ -125,6 +125,18 @@ $error-bg: rgba(255,127,80, 0.40);
       list-style-position: inside;
     }
   }
+  > dl:not([class]) { 
+    //margin: rem-calc(6 25 10 55);
+    @include default-margin();
+    list-style-position: inside;
+    dt {
+      margin-left: rem-calc(10);
+      list-style-position: inside;
+    }
+    dd {
+      margin-left: rem-calc(20);
+    }
+  }
   @import "headings"; 
   @import "hyperlinks"; 
 

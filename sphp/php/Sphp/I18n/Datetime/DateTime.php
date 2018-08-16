@@ -224,7 +224,7 @@ class DateTime {
    * @param  DateTimeZone $timezone
    * @return DateTime new instance 
    */
-  public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateTime {
+  public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateTimeWrapper {
     return new static(new PHPDateTime($time, $timezone));
   }
 
@@ -237,7 +237,7 @@ class DateTime {
    * @return DateTime new instance 
    * @link   http://php.net/manual/en/datetime.createfromformat.php#refsect1-datetime.createfromformat-parameters
    */
-  public static function fromFormat(string $format, string $time, DateTimeZone $timezone = null): DateTime {
+  public static function fromFormat(string $format, string $time, DateTimeZone $timezone = null): DateTimeWrapper {
     return new static(PHPDateTime::createFromFormat($format, $time, $timezone));
   }
 

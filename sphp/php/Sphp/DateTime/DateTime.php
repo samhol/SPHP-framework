@@ -11,12 +11,8 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use DateTimeInterface as DTI;
 use Sphp\DateTime\Exceptions\DateTimeException;
 use Exception;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
-use ReflectionClass;
-use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a datetime object
@@ -26,82 +22,10 @@ use Sphp\Exceptions\BadMethodCallException;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DateTime implements DateTimeInterface {
-
-  use DateTrait;
-
-  /**
-   * @var DateTimeImmutable 
-   */
-  private $dateTime;
-
-  /**
-   * @var ReflectionClass 
-   */
-  private $reflector;
-
-  /**
-   * Constructor
-   * 
-   * @param  mixed $time raw date data
-   * @throws DateTimeException if datetime cannot be parsed from input
-   */
-  public function __construct($time = null) {
-    try {
-      $this->dateTime = Factory::dateTimeImmutable($time);
-    } catch (Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->dateTime);
-  }
-
-  /**
-   * Clone method
-   */
-  public function __clone() {
-    $this->dateTime = clone $this->dateTime;
-  }
-
-  /**
-   * Magic call method
-   *
-   * @param  string $name
-   * @param  array $args
-   * @return mixed
-   * @throws BadMethodCallException
-   */
-  public function __call(string $name, array $args) {
-    if ($this->reflector === null) {
-      $this->reflector = new ReflectionClass($this->dateTime);
-    }
-    if (!$this->reflector->hasMethod($name)) {
-      throw new BadMethodCallException("Method $name does not exist");
-    } else {
-      $reflectionMethod = $this->reflector->getMethod($name);
-      var_dump($reflectionMethod->invokeArgs($this->dateTime, $args));
-      return $this->dateTime;
-    }
-    // $this->reflector->getMethod($name)->
-    return $this->dateTime;
-  }
+class DateTime extends DateTimeImmutable implements DateTimeInterface {
 
   public function __toString(): string {
     return $this->format('Y-m-d h:i:s O');
-  }
-
-  /**
-   * Returns the inner immutable datetime object
-   * 
-   * @return DateTimeImmutable the inner immutable datetime object
-   */
-  public function getDateTime(): DateTimeImmutable {
-    return $this->dateTime;
   }
 
   /**
@@ -152,9 +76,9 @@ class DateTime implements DateTimeInterface {
    * Advances given number of days and returns a new instance
    * 
    * @param  int $hours number of days to shift
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function jumpHours(int $hours): DateTime {
+  public function jumpHours(int $hours): DateTimeInterface {
     return $this->modify("$hours hours");
   }
 
@@ -162,9 +86,9 @@ class DateTime implements DateTimeInterface {
    * Advances given number of days and returns a new instance
    * 
    * @param  int $days number of days to shift
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function jumpDays(int $days): DateTime {
+  public function jumpDays(int $days): DateTimeInterface {
     return $this->modify("+ $days day");
   }
 
@@ -172,89 +96,46 @@ class DateTime implements DateTimeInterface {
    * Advances given number of months and returns a new instance
    * 
    * @param  int $months number of months to shift
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function jumpMonths(int $months): DateTime {
+  public function jumpMonths(int $months): DateTimeInterface {
     return $this->modify("$months months");
   }
 
   /**
    * Returns the next Date
    * 
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function nextDay(): DateTime {
+  public function nextDay(): DateTimeInterface {
     return $this->modify('+ 1 day');
   }
 
   /**
    * Returns the previous Date
    * 
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function previousDay(): DateTime {
+  public function previousDay(): DateTimeInterface {
     return $this->modify('- 1 day');
   }
 
   /**
    * Returns the date representing the first of the same month
    * 
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function firstOfMonth(): DateTime {
+  public function firstOfMonth(): DateTimeInterface {
     return $this->modify('first day of this month');
   }
 
   /**
    * Returns the date representing the first of the same month
    * 
-   * @return DateTime new instance
+   * @return DateTimeInterface new instance
    */
-  public function lastOfMonth(): DateTime {
+  public function lastOfMonth(): DateTimeInterface {
     return $this->modify('last day of this month');
-  }
-
-  /**
-   * Creates a new object with modified timestamp
-   *  
-   * @param  string $modify a date/time string
-   * @return DateTime new instance
-   * @throws DateTimeException if formatting fails
-   * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
-   */
-  public function modify(string $modify): DateTime {
-    $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
-    $thrower->start();
-    $new = $this->dateTime->modify($modify);
-    $thrower->stop();
-    return static::from($new);
-  }
-
-  /**
-   * Adds an amount of days, months, years, hours, minutes and seconds
-   * 
-   * @param  string|Interval|DateInterval $interval the interval to add
-   * @return DateTime new instance
-   * @throws DateTimeException if the interval cannot be parsed from the input
-   */
-  public function add($interval): DateTime {
-    //$interval = Factory::dateInterval($interval);
-    $dt = $this->dateTime->add(Factory::dateInterval($interval));
-    $result = new static($dt);
-    return $result;
-  }
-
-  /**
-   * Adds an amount of days, months, years, hours, minutes and seconds
-   * 
-   * @param  string|Interval|DateInterval $interval the interval to add
-   * @return DateTime new instance
-   * @throws DateTimeException if the interval cannot be parsed from the input
-   */
-  public function sub($interval): DateTime {
-    $dt = $this->dateTime->sub(Factory::dateInterval($interval));
-    $result = new static($dt);
-    return $result;
   }
 
   public function getHours(): int {
@@ -269,15 +150,119 @@ class DateTime implements DateTimeInterface {
     return (int) $this->format('s');
   }
 
+  public function getTimeZoneOffset(): int {
+    return parent::getTimezone()->getOffset();
+  }
+
+  public function getTimeZoneName(): string {
+    return parent::getTimezone()->getName();
+  }
+
   /**
    * Creates a new instance from input
    * 
    * @param  DateInterface|mixed $date raw datetime data
-   * @return DateTime new instance
+   * @return DateTimeWrapper new instance
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public static function from($date = null): DateTime {
+  public static function from($date = null): DateTimeWrapper {
     return new static($date);
+  }
+
+  /**
+   * Returns the number of the weekday
+   * 
+   * @return int the number of the weekday
+   */
+  public function getWeekDay(): int {
+    return (int) $this->format('N');
+  }
+
+  /**
+   * Returns the name of the weekday
+   * 
+   * @return string the name of the weekday
+   */
+  public function getWeekDayName(): string {
+    return $this->format('l');
+  }
+
+  /**
+   * Returns the week number 
+   * 
+   * @return int the week number 
+   */
+  public function getWeek(): int {
+    return (int) $this->format('W');
+  }
+
+  /**
+   * Returns the number of the month
+   * 
+   * @return int the number of the month
+   */
+  public function getMonth(): int {
+    return (int) $this->format('m');
+  }
+
+  /**
+   * Returns the name of the month
+   * 
+   * @return string the name of the month
+   */
+  public function getMonthName(): string {
+    return $this->format('F');
+  }
+
+  /**
+   * Returns the day of the month
+   * 
+   * @return int the day of the month
+   */
+  public function getMonthDay(): int {
+    return (int) $this->format('j');
+  }
+
+  /**
+   * Returns the year
+   * 
+   * @return int the year
+   */
+  public function getYear(): int {
+    return (int) $this->format('Y');
+  }
+
+  /**
+   * Checks whether the date is the current date
+   * 
+   * @return bool true if the date is the current date, false otherwise
+   */
+  public function isCurrentDate(): bool {
+    $today = DateWrapper('Y-m-d');
+    $thisDay = $this->format('Y-m-d');
+    return $today === $thisDay;
+  }
+
+  /**
+   * Adds an amount of days, months, years, hours, minutes and seconds
+   * 
+   * @param  int|string|Interval|DateInterval $interval the interval to add
+   * @return DateTimeInterface new instance
+   * @throws DateTimeException if the interval cannot be parsed from the input
+   */
+  public function add($interval) {
+    return parent::add(Intervals::create($interval));
+  }
+
+  /**
+   * Adds an amount of days, months, years, hours, minutes and seconds
+   * 
+   * @param  int|string|Interval|DateInterval $interval the interval to add
+   * @return DateTimeInterface new instance
+   * @throws DateTimeException if the interval cannot be parsed from the input
+   */
+  public function sub($interval) {
+    return parent::sub(Intervals::create($interval));
   }
 
 }

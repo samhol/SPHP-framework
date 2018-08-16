@@ -2,7 +2,7 @@
 
 namespace Sphp\DateTime;
 
-$now = new DateTime();
+$now = new DateTimeWrapper();
 $yesterday = $now->previousDay();
 $tomorrow = $now->nextDay();
 var_dump($now->compareTo($yesterday), $now->compareTo($tomorrow));

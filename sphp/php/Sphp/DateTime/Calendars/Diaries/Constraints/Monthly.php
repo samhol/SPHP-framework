@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 
 /**
  * Implements a monthly constraint
@@ -53,7 +53,7 @@ class Monthly implements DateConstraint {
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new Date($date);
+      $date = new DateWrapper($date);
     }
     return $this->day === $date->getMonthDay();
   }

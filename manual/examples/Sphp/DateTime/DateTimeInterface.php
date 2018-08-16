@@ -12,3 +12,6 @@ echo "First day of this month was " . $now->firstOfMonth()->format('l');
 echo " and the next is " . $now->add('P1D')->format('l') . "\n";
 
 echo " and the last is " . $now->sub('P1D')->format('l') . "\n";
+
+
+var_dump($now->add('P1D'));

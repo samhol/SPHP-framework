@@ -30,13 +30,6 @@ interface DateInterface {
   public function __toString(): string;
 
   /**
-   * Returns the Unix timestamp
-   * 
-   * @return int the Unix timestamp
-   */
-  public function getTimestamp(): int;
-
-  /**
    * Returns the number of the weekday
    * 
    * @return int the number of the weekday

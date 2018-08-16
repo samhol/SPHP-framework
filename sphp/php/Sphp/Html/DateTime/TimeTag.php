@@ -11,7 +11,7 @@
 namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
-use Sphp\DateTime\DateTime;
+use Sphp\DateTime\DateTimeWrapper;
 use Sphp\Html\ContainerTag;
 
 /**
@@ -27,7 +27,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
   /**
    * the datetime object
    *
-   * @var DateTime 
+   * @var DateTimeWrapper 
    */
   private $dateTime;
 
@@ -67,8 +67,8 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
 
   public function setDateTime($dateTime, string $format = self::DATE_TIME) {
     $this->setFormat($format);
-    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
-      $dateTime = new DateTime($dateTime);
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTimeWrapper) {
+      $dateTime = new DateTimeWrapper($dateTime);
     }
     $this->dateTime = $dateTime;
     $this->attributes()->set('datetime', $this->dateTime->format($this->getFormat()));

@@ -22,7 +22,7 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Date implements DateInterface {
+class DateWrapper implements DateInterface {
 
   use DateTrait;
 
@@ -39,7 +39,7 @@ class Date implements DateInterface {
    */
   public function __construct($date = null) {
     try {
-      $this->dateTime = new DateTimeImmutable(static::parseDateString($date));
+      $this->dateTime = new DateTimeImmutable(DateTimes::parseDateString($date));
     } catch (\Exception $ex) {
       throw new DateTimeException(static::class . ' object cannot be parsed from input type', $ex->getCode(), $ex);
     }
@@ -80,7 +80,7 @@ class Date implements DateInterface {
    * @throws DateTimeException if date cannot be parsed from input
    */
   public function diff($date): int {
-    $dt = Date::from($date)->getDateTime();
+    $dt = DateWrapper::from($date)->getDateTime();
     $diff = $this->dateTime->diff($dt);
     $result = $diff->d;
     if ($diff->invert === 1) {
@@ -91,7 +91,7 @@ class Date implements DateInterface {
 
   public function equals($date): bool {
     try {
-      $parsed = static::parseDateString($date);
+      $parsed = DateTimes::parseDateString($date);
       return $parsed === $this->format('Y-m-d');
     } catch (Exception $ex) {
       return false;
@@ -122,9 +122,9 @@ class Date implements DateInterface {
    * Advances given number of days and returns a new instance
    * 
    * @param  int $days number of days to shift
-   * @return Date new instance
+   * @return DateWrapper new instance
    */
-  public function jumpDays(int $days): Date {
+  public function jumpDays(int $days): DateWrapper {
     return $this->modify("$days day");
   }
 
@@ -132,36 +132,36 @@ class Date implements DateInterface {
    * Advances given number of months and returns a new instance
    * 
    * @param  int $months number of months to shift
-   * @return Date new instance
+   * @return DateWrapper new instance
    */
-  public function jumpMonths(int $months): Date {
+  public function jumpMonths(int $months): DateWrapper {
     return $this->modify("$months months");
   }
 
   /**
    * Returns the next Date
    * 
-   * @return Date new instance
+   * @return DateWrapper new instance
    */
-  public function nextDay(): Date {
+  public function nextDay(): DateWrapper {
     return $this->modify('+ 1 day');
   }
 
   /**
    * Returns the previous Date
    * 
-   * @return Date new instance
+   * @return DateWrapper new instance
    */
-  public function previousDay(): Date {
+  public function previousDay(): DateWrapper {
     return $this->modify('- 1 day');
   }
 
   /**
    * Returns the date representing the first of the same month
    * 
-   * @return Date new instance
+   * @return DateWrapper new instance
    */
-  public function firstOfMonth(): Date {
+  public function firstOfMonth(): DateWrapper {
     return $this->modify('first day of this month');
   }
 
@@ -169,51 +169,28 @@ class Date implements DateInterface {
    * Creates a new object with modified timestamp
    *  
    * @param  string $modify a date/time string
-   * @return Date new instance
+   * @return DateWrapper new instance
    * @throws DateTimeException if formatting fails
    * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
-  public function modify(string $modify): Date {
+  public function modify(string $modify): DateWrapper {
     $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
     $thrower->start();
     $new = $this->dateTime->modify($modify);
     $thrower->stop();
-    return new Date($new);
+    return new DateWrapper($new);
   }
 
   /**
    * Creates a new instance
    * 
    * @param  mixed $date raw date data
-   * @return Date new instance
+   * @return DateWrapper new instance
    * @throws DateTimeException if date cannot be parsed from input
    */
-  public static function from($date): Date {
+  public static function from($date): DateWrapper {
     return new static($date);
   }
 
-  /**
-   * Parses a date string from input
-   * 
-   * @param  mixed $input input to parse
-   * @return string date string as `Y-m-d` 
-   * @throws DateTimeException if parsing fails
-   */
-  public static function parseDateString($input): string {
-    $result = null;
-    if (is_null($input)) {
-      $result = date('Y-m-d');
-    } else if (is_string($input)) {
-      $result = (new DateTimeImmutable($input))->format('Y-m-d');
-    } else if (is_int($input)) {
-      $result = date('Y-m-d', $input);
-    } else if ($input instanceof DateInterface || $input instanceof \DateTimeInterface) {
-      $result = $input->format('Y-m-d');
-    }
-    if ($result === null) {
-      throw new DateTimeException('Date string cannot be parsed from the input');
-    }
-    return $result;
-  }
 
 }

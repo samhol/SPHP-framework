@@ -96,7 +96,7 @@ class Interval extends DateInterval implements IntervalInterface {
    */
   public static function createFromDateString($time) {
     $di = parent::createFromDateString($time);
-    return Factory::intervalFromDateInterval($di);
+    return Intervals::FromDateInterval($di);
   }
 
 }

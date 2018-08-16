@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries;
 
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 use Iterator;
 use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 
@@ -21,7 +21,7 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DiaryDate extends Date implements Iterator, DiaryDateInterface {
+class DiaryDate extends DateWrapper implements Iterator, DiaryDateInterface {
 
   use DiaryTrait;
 

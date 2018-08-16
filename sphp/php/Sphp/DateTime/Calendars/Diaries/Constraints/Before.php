@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 use Sphp\Stdlib\Parsers\Json;
 
 /**
@@ -25,7 +25,7 @@ use Sphp\Stdlib\Parsers\Json;
 class Before implements DateConstraint {
 
   /**
-   * @var Date 
+   * @var DateWrapper 
    */
   private $limit;
 
@@ -36,7 +36,7 @@ class Before implements DateConstraint {
    */
   public function __construct($limit) {
     if (!$limit instanceof DateInterface) {
-      $limit = new Date($limit);
+      $limit = new DateWrapper($limit);
     }
     $this->limit = $limit;
   }

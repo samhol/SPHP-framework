@@ -14,7 +14,7 @@ use Sphp\DateTime\Calendars\Diaries\LogInterface;
 use IteratorAggregate;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
 
@@ -29,7 +29,7 @@ use Sphp\Exceptions\RuntimeException;
 class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayable {
 
   /**
-   * @var Date 
+   * @var DateWrapper 
    */
   private $date;
 
@@ -44,8 +44,8 @@ class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayabl
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    */
   public function __construct($date) {
-    if (!$date instanceof Date) {
-      $date = Date::from($date);
+    if (!$date instanceof DateWrapper) {
+      $date = DateWrapper::from($date);
     }
     $this->date = $date;
     $this->exercises = [];

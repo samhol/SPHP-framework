@@ -17,16 +17,16 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    */
   public function testConstructor() {
     $timestamp = time();
-    $now = new Date();
-    $now1 = new Date('now');
+    $now = new DateWrapper();
+    $now1 = new DateWrapper('now');
     $this->assertEquals($now, $now1);
-    $now2 = new Date('today');
+    $now2 = new DateWrapper('today');
     $this->assertEquals($now, $now2);
-    $now3 = new Date($timestamp);
+    $now3 = new DateWrapper($timestamp);
     $this->assertEquals($now, $now3);
-    $now4 = new Date($timestamp);
+    $now4 = new DateWrapper($timestamp);
     $this->assertEquals($now, $now4);
-    $now5 = new Date(new \DateTime());
+    $now5 = new DateWrapper(new \DateTime());
     $this->assertEquals($now, $now5);
   }
 
@@ -47,7 +47,7 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider formats
    */
   public function testFormat($needle) {
-    $now = new Date();
+    $now = new DateWrapper();
     $match = new \DateTime('today');
     $this->assertEquals($now->format($needle), $match->format($needle));
   }
@@ -56,13 +56,13 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    * @covers ::__construct
    */
   public function testGetters() {
-    $date = new Date();
-    $this->assertSame((int) date('Y'), $date->getYear());
-    $this->assertSame((int) date('n'), $date->getMonth());
-    $this->assertSame((int) date('j'), $date->getMonthDay());
-    $this->assertSame(date('l'), $date->getWeekDayName());
-    $this->assertSame(date('F'), $date->getMonthName());
-    $this->assertSame((int) date('W'), $date->getWeek());
+    $date = new DateWrapper();
+    $this->assertSame((int) DateWrapper('Y'), $date->getYear());
+    $this->assertSame((int) DateWrapper('n'), $date->getMonth());
+    $this->assertSame((int) DateWrapper('j'), $date->getMonthDay());
+    $this->assertSame(DateWrapper('l'), $date->getWeekDayName());
+    $this->assertSame(DateWrapper('F'), $date->getMonthName());
+    $this->assertSame((int) DateWrapper('W'), $date->getWeek());
   }
 
   /**
@@ -70,11 +70,11 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    * @covers ::jump
    */
   public function testJumping() {
-    $now = new Date();
+    $now = new DateWrapper();
     $tomorrow = $now->jumpDays(1);
-    $this->assertEquals(new Date('tomorrow'), $tomorrow);
+    $this->assertEquals(new DateWrapper('tomorrow'), $tomorrow);
     $yesterday = $now->jumpDays(-1);
-    $this->assertEquals(new Date('yesterday'), $yesterday);
+    $this->assertEquals(new DateWrapper('yesterday'), $yesterday);
   }
 
 }

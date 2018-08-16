@@ -15,7 +15,7 @@ use Sphp\I18n\Datetime\CalendarUtils;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Div;
 use Sphp\Html\Container;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
@@ -40,7 +40,7 @@ class MonthView extends AbstractComponent {
   private $month;
 
   /**
-   * @var Date 
+   * @var DateWrapper 
    */
   private $firstOf;
 
@@ -66,7 +66,7 @@ class MonthView extends AbstractComponent {
     }
     $this->month = $month;
     $this->year = $year;
-    $this->firstOf = Date::from("$year-$month-1");
+    $this->firstOf = DateWrapper::from("$year-$month-1");
     $this->diaries = new DiaryContainer();
   }
 
@@ -163,10 +163,10 @@ class MonthView extends AbstractComponent {
 
   /**
    * 
-   * @param  Date $date
+   * @param  DateWrapper $date
    * @return Row
    */
-  private function createWeekRow(Date $date): Row {
+  private function createWeekRow(DateWrapper $date): Row {
     $row = new Row();
     $row->append($this->createDayCell($date));
     $next = $date->nextDay();
@@ -179,10 +179,10 @@ class MonthView extends AbstractComponent {
 
   /**
    * 
-   * @param  Date $day
+   * @param  DateWrapper $day
    * @return WeekDayView
    */
-  protected function createDayCell(Date $day): WeekDayView {
+  protected function createDayCell(DateWrapper $day): WeekDayView {
     $weekDayView = new WeekDayView($this->diaries->getDate($day));
     if ($day->getMonth() === $this->month) {
       $weekDayView->addCssClass('selected-month');

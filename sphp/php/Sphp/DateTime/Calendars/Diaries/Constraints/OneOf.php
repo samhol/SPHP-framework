@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 use Sphp\DateTime\DateInterface;
 
 /**
@@ -24,7 +24,7 @@ use Sphp\DateTime\DateInterface;
 class OneOf implements DateConstraint {
 
   /**
-   * @var Date[]
+   * @var DateWrapper[]
    */
   private $dates;
 
@@ -61,7 +61,7 @@ class OneOf implements DateConstraint {
    */
   public function addDate($date) {
     if (!$date instanceof DateInterface && !$date instanceof \DateTimeInterface) {
-      $date = new Date($date);
+      $date = new DateWrapper($date);
     }
     $key = $date->format('Y-m-d');
     if (!array_key_exists($key, $this->dates)) {
@@ -72,7 +72,7 @@ class OneOf implements DateConstraint {
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new Date($date);
+      $date = new DateWrapper($date);
     }
     $key = $date->format('Y-m-d');
     return array_key_exists($key, $this->dates);

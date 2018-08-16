@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateWrapper;
 
 /**
  * Implements a constraint including all Calendar Dates after the limit
@@ -24,7 +24,7 @@ use Sphp\DateTime\Date;
 class After implements DateConstraint {
 
   /**
-   * @var Date 
+   * @var DateWrapper 
    */
   private $limit;
 
@@ -35,7 +35,7 @@ class After implements DateConstraint {
    */
   public function __construct($limit) {
     if (!$limit instanceof DateInterface) {
-      $limit = new Date($limit);
+      $limit = new DateWrapper($limit);
     }
     $this->limit = $limit;
   }

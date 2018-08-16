@@ -48,6 +48,7 @@ abstract class Periods {
       'd' => '%d days',
       'hours' => '%d hours',
       'h' => '%d hours',
+      'weeksOfMonth' => '%d hours',
   ];
 
   /**
@@ -86,16 +87,40 @@ abstract class Periods {
   public static function create($start, $interval, $length): Period {
     try {
       if (is_string($interval)) {
-        $interval = Factory::dateInterval($interval);
+        $interval = Intervals::create($interval);
       }
       if (!is_int($length)) {
-        $length = Factory::dateTimeImmutable($length);
+        $length = DateTimes::dateTimeImmutable($length);
       }
-      $dateTime = new Period(Factory::dateTimeImmutable($start), $interval, $length);
+      $dateTime = new Period(DateTimes::dateTimeImmutable($start), $interval, $length);
     } catch (\Exception $ex) {
       throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $dateTime;
+  }
+
+  /**
+   * Creates a new instance from input
+   * 
+   * @param  mixed $start the start date of the period
+   * @param  string|Interval $interval
+   * @param  mixed $length the end date or the length of the period
+   * @return Period new instance
+   * @throws DateTimeException if instance cannot be parsed from input
+   */
+  public static function weeksOfMonth(int $month = null, int $year = null): Period {
+    if ($year === null) {
+      $year = DateWrapper('Y');
+    }
+    if ($month === null) {
+      $month = DateWrapper('m');
+    }
+    $d = DateTimeWrapper::from("$year-$month-1 00:00:00");
+    $start = $d->modify('last monday');
+
+    $stop = $d->modify('last day of')->modify('next sunday');
+    $p = new Period($start->getDateTime(), new Interval('P1W'), $stop->getDateTime());
+    return $p;
   }
 
 }

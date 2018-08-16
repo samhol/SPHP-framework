@@ -9,4 +9,4 @@ var_dump(
         $interval->toMinutes(), 
         $interval->toSeconds()); 
 
-var_dump(Factory::dateInterval('+2 days')->toSeconds());
+var_dump(Intervals::create('+2 days')->toSeconds());
