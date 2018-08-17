@@ -51,6 +51,7 @@ $(function () {
     var $this = $(this),
             $obj = $this.attr("data-tech");
     $output.load("manual/snippets/techs.php #" + $obj);
+    console.log($output.html());
     $this.addClass('sphp-is-active');
     console.log('sphp-is-active : ' + $obj);
     $this.siblings().removeClass('sphp-is-active');

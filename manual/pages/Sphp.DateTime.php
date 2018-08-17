@@ -25,6 +25,7 @@ days (like hours, minutes and seconds).
 MD
 );
 
+Manual\printPage('Sphp.DateTime.DateTimeInterface');
 Manual\example('Sphp/DateTime/DateInterface.php', 'text', false)
         ->setExamplePaneTitle("Date examples")
         ->setOutputSyntaxPaneTitle("Date example results")

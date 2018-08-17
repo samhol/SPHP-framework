@@ -45,49 +45,39 @@ $error-bg: rgba(255,127,80, 0.40);
 @import 'icon-examples';
 
 @import "logo-area"; 
-.manual .sphp.sidenav {
-  margin: rem-calc(20 20 20 20); /* top right bottom left */
-}
-.manual .mainContent {
-  border: solid 1px #888;
-  @include border-radius(4px);
-  //@include box-shadow(#888 3px 0px 8px 4px);
-  padding: rem-calc(0 10 0 10);// top right bottom left
-  margin: rem-calc(20 10 20 0); // top right bottom left
-  @include box-shadow(#888 0px 3px 8px 4px);
-  background: #eaeaea;
-  @include breakpoint(medium down) {  
-    margin: rem-calc(5 0 20 0);
+.manual {
+  .sphp.sidenav {
+    margin: rem-calc(20 20 20 20); /* top right bottom left */
+  } 
+  .mainContent {
+    border: solid 1px #888;
+    @include border-radius(4px);
+    //@include box-shadow(#888 3px 0px 8px 4px);
+    padding: rem-calc(0 10 0 10);// top right bottom left
+    margin: rem-calc(20 10 20 0); // top right bottom left
+    @include box-shadow(#888 0px 3px 8px 4px);
+    background: #eaeaea;
+    @include breakpoint(medium down) {  
+      margin: rem-calc(5 0 20 0);
+    }
+    .container {
+      // @import "example-accordion";
+      border-left: solid 1px #ccc;
+      border-right: solid 1px #ccc;
+      //@include border-radius(4px);
+      //@include box-shadow(#888 3px 0px 8px 4px);
+      //@include box-shadow(#888 0px 3px 8px 4px);
+      padding: rem-calc(0 3 40 3);// top right bottom left
+      //margin: rem-calc(5 0 20 0); // top right bottom left
+      background: #fafafa;
+    }
   }
 }
-.mainContent .container  {   
+
+.mainContent .container , .mainContent .container section {   
 
   >.button-group, >.grid-x {
     @include default-margin();
-  }
-  // @import "example-accordion";
-  border-left: solid 1px #ccc;
-  border-right: solid 1px #ccc;
-  //@include border-radius(4px);
-  //@include box-shadow(#888 3px 0px 8px 4px);
-  //@include box-shadow(#888 0px 3px 8px 4px);
-  padding: rem-calc(0 3 40 3);// top right bottom left
-  //margin: rem-calc(5 0 20 0); // top right bottom left
-  background: #fafafa;
-  >.intro {
-    @include default-margin(left);
-    .callout{ 
-      @include box-shadow(#ddd 0px 2px 3px 2px);
-      border: solid 1px #ccc;
-      @include border-radius(4px);
-      h5, dt {
-        font-weight: bold;
-        border-bottom: dotted 1px #ccc;
-      }
-      p {
-        text-align: justify;
-      }
-    } 
   }
   @import "sphp-factory-tables"; 
   //@import "breadcrumbs";
@@ -106,55 +96,17 @@ $error-bg: rgba(255,127,80, 0.40);
     text-align: justify;
     padding: 0;
   }
-  > ul:not([class]), > ul:not([class]) ul, > ol:not([class]) ul {
-    list-style-type: none;
-    li:before {
-      position: relative;
-      content: "\00BB \0020";
-      font-weight: bold;
-      margin-right: rem-calc(10); 
-      list-style-type: none;
-    }
-  }
-  > ul:not([class]), > ol:not([class]) { 
-    //margin: rem-calc(6 25 10 55);
-    @include default-margin();
-    list-style-position: inside;
-    ul, ol {
-      margin-left: rem-calc(15);
-      list-style-position: inside;
-    }
-  }
-  > dl:not([class]) { 
-    //margin: rem-calc(6 25 10 55);
-    @include default-margin();
-    list-style-position: inside;
-    dt {
-      margin-left: rem-calc(10);
-      list-style-position: inside;
-    }
-    dd {
-      margin-left: rem-calc(20);
-    }
-  }
   @import "headings"; 
   @import "hyperlinks"; 
+  @import "lists"; 
 
   @import "technologies"; 
   @import "grid-examples"; 
+  @import "carousels";
 
-  .plain.sphp-syntax-highlighter {
-    border: solid 1px #666;
-    @include border-radius(4px);
-    @include default-margin();
-    .syntax {
-      padding: rem-calc(10);  
-    }
-  }
   > div.wrapper {
     @include default-margin();
   }
-  @import "carousels";
 }
 
 @import "body";

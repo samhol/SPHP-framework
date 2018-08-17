@@ -1,5 +1,5 @@
 ---
-Sphp\Html\TagFactory:
+Sphp\Html\Tags:
   Basic:
     html: 'An html document'
     body: 'The body element'

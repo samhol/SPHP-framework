@@ -4,7 +4,6 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-
 > h2, > h3 {
   padding: rem-calc(0 5 0 10); // top right bottom left
   border: solid 1px #aaa;
@@ -23,7 +22,8 @@
   margin: rem-calc(0 5 15 5);  // top right bottom left
   padding: rem-calc(3 5 3 10); // top right bottom left
 }
-> h1, > h2, > h3, > h4, > h5, > h6 {
+> h1 {
+
   &:first-child {
     background-color: #eee;
     &.error {
@@ -39,6 +39,8 @@
       text-transform: none;
     }
   }
+}
+> h1, > h2, > h3, > h4, > h5, > h6 {
   a.api {
     border: solid 1px #ccc;
     line-height: 1.6;
