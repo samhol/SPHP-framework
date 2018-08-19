@@ -39,6 +39,7 @@ class SamiClassLinker extends AbstractClassLinker {
   }
 
   /**
+   * Returns a hyperlink object pointing to the API documentation of the given property or method
    * 
    * @param  string $name
    * @return Hyperlink

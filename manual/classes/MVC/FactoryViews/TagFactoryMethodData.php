@@ -1,8 +1,11 @@
 <?php
 
 /**
- * TagGroupAccordionGenerator.php (UTF-8)
- * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Manual\MVC\FactoryViews;
@@ -11,6 +14,7 @@ use Sphp\Html\Content;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Implements tag factory data
@@ -21,10 +25,13 @@ use ReflectionClass;
  */
 class TagFactoryMethodData implements Arrayable {
 
+  private $factory;
+  
+  private $method;
   /**
    * @var string 
    */
-  private $method;
+  private $factoryCall;
 
   /**
    * @var Content 
@@ -41,11 +48,29 @@ class TagFactoryMethodData implements Arrayable {
    */
   private $description;
 
-  public function __construct(string $factory, string $method, string $description) {
+  /**
+   * Constructor
+   * 
+   * @param string $factory
+   * @param string $method
+   * @param string $description
+   */
+  public function __construct(string $factory, string $method, $description) {
+    $this->factory = $factory;
+    $this->method = $method;
     $this->factoryCall = (new ReflectionClass($factory))->getShortName() . "::$method()";
-    $this->description = $description;
     $this->component = $factory::$method();
     $this->componentReflector = new ReflectionClass($this->component);
+    //$this->objectType = $this->componentReflector->getName();
+
+    if (is_array($description)) {
+      $this->description = $description['desc'];
+      $this->tag = $description['tag'];
+    } else {
+      $this->description = $description;
+      $this->tag = $this->component->getTagName();
+      ;
+    }
   }
 
   public function getFactoryCall(): string {
@@ -60,19 +85,39 @@ class TagFactoryMethodData implements Arrayable {
     return $this->description;
   }
 
-  public function getCreatedObjectReflector(): string {
-    return $this->componentReflector->getName();
-  }
-
   public function getObjectType(): string {
     return $this->componentReflector->getName();
   }
 
+  public function getW3cLink(): Hyperlink {
+    return Factory::w3schools()->tag($this->tag, $this->tag, $this->description);
+  }
+
+  /**
+   * 
+   * @return Hyperlink
+   */
+  public function getFactoryCallLink(): Hyperlink {
+     
+
+    return Factory::sami()->classLinker($this->factory)->methodLink($this->method, true);
+  }
+
+  /**
+   * 
+   * @return Hyperlink
+   */
+  public function getObjectTypeLink(): Hyperlink {
+    //$componentReflector = new ReflectionClass($this->component);
+    //$objectType = $componentReflector->getName();
+    return Factory::sami()->classLinker($this->getObjectType())->getLink($this->getObjectType());
+  }
+
   public function toArray(): array {
     $arr = [];
-    $arr[] = Factory::w3schools()->tag($this->component->getTagName(), $this->tagString(), $this->description);
-    $arr[] = Factory::sami()->classLinker($this->getObjectType())->getLink("$this->factoryCall: ");
-    $arr[] = Factory::sami()->classLinker($this->getObjectType())->getLink($this->getObjectType());
+    $arr['w3scools'] = $this->getW3cLink();
+    $arr['factoryCall'] = $this->getFactoryCallLink();
+    $arr['type'] = $this->getObjectTypeLink();
     return $arr;
   }
 

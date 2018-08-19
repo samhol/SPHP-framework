@@ -9,6 +9,7 @@ namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Content;
 use Sphp\Html\Tables\Table;
+use Sphp\Html\Tables\Tr;
 
 /**
  * 
@@ -36,14 +37,26 @@ class TagGroupTable implements Content {
 
   function generateTagTable(): Table {
     $table = (new Table())
-            ->addCssClass('html-to-php');
+            ->addCssClass('factory-tables', 'stack');
     $table->thead()
             ->appendHeaderRow(['HTML Tag', 'Factory call', 'Object type']);
     $body = $table->tbody();
     foreach ($this->data as $info) {
-      $body->appendBodyRow($info->toArray());
+      $body->append($this->createRow($info));
     }
     return $table;
+  }
+
+  protected function createRow(TagFactoryMethodData $cells): Tr {
+    $tr = new Tr();
+    $span = new \Sphp\Html\Span('w3cschools link:');
+    $span->addCssClass('hide-for-large');
+    $tr->appendTd($span. $cells->getW3cLink());  
+    $span->setContent('Factory call: ');
+    $tr->appendTd($span. $cells->getFactoryCallLink());  
+    $span->setContent('Object type: ');
+    $tr->appendTd($span. $cells->getObjectTypeLink());  
+    return $tr;
   }
 
   public function getHtml(): string {

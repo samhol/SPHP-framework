@@ -75,7 +75,8 @@ $error-bg: rgba(255,127,80, 0.40);
 }
 
 .mainContent .container , .mainContent .container section {   
-
+  @import "accordions"; 
+  
   >.button-group, >.grid-x {
     @include default-margin();
   }

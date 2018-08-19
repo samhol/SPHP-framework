@@ -27,18 +27,18 @@ $unit: rem-calc(4);
     }
     .accordion-item {
       &:not(:first-child) {
-        margin-top: rem-calc(2);
+       // margin-top: rem-calc(2);
       }
 
       .accordion-title, .accordion-content {
         //@include accordion-title;
-        border: solid 1px #444;
-        @include border-radius($unit);
+       // border: solid 1px #444;
+       // @include border-radius($unit);
         //overflow: hidden;
       }
       .accordion-title {
-        font-size: rem-calc(16);
-        font-weight: bold;  
+       // font-size: rem-calc(16);
+        //font-weight: bold;  
       }
       .accordion-content {
         margin-top: rem-calc(2);

@@ -7,81 +7,80 @@
 $th-font-size: rem-calc(16);
 $td-font-size: rem-calc(14);
 
-.sphp-factory-tables {
 
-  .accordion-title, .accordion-content {
-    //@include accordion-title;
-    border: solid 1px #444;
-    @include border-radius($unit);
-    //overflow: hidden;
-  }
-  .accordion-title {
-    font-size: rem-calc(16);
-    font-weight: bold;  
-  }
-  .accordion-content {
-    padding: rem-calc(1);
+// padding: rem-calc(1);
 
-    table {
-      $table-bg: #aaa;
-      $table-even-row-bg: #cfcfcf;
-      $table-margin: 0;
-      margin: 0;
-      border-collapse: collapse;
-      border: none; 
-      width: 100%;
-      thead, tfoot {
-        th {
-          background-color: #555;
-          color: #fefefe;
+table.factory-tables {
+  $table-bg: #aaa;
+  $table-even-row-bg: #cfcfcf;
+  $table-margin: 0;
+  margin: 0;
+  border-collapse: collapse;
+  border: none; 
+  width: 100%;
+  thead, tfoot {
+    th {
+      background-color: #555;
+      color: #fefefe;
+    }
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #ededed;
+        &:hover {
+          background-color: #e3e3e3;
         }
       }
-      tbody {
-        tr {
-          &:nth-child(even) {
-            background-color: #ededed;
-            &:hover {
-              background-color: #e3e3e3;
-            }
-          }
-          &:nth-child(odd) {
-            background-color: #fcfcfc;
-            &:hover {
-              background-color: #f4f4f4;
-            }
-          }
-          td {
-            &:nth-child(2) {
-              text-align: right;
-            }
-          }
+      &:nth-child(odd) {
+        background-color: #fcfcfc;
+        &:hover {
+          background-color: #f4f4f4;
         }
       }
-      th {
-        font-size: $th-font-size;
-        &:nth-child(2) {
-          text-align: right;
-        }
-      }
-      th, td {
-        border: 0px;
-        border-bottom: solid 1px #888;
-      } 
       td {
-        font-size: $td-font-size; 
-        a.sami {
-          border-style: none;
-          font-size: $td-font-size;
-          color: #555; 
-          background-color: transparent;   
-          &:hover {
-            color: #000;
-            //background-color: #fff;  
-            border-bottom: 1px #000 solid;
-            //text-decoration: underline;
+        &:nth-child(2) {
+          @include breakpoint(large) {
+            text-align: right;
           }
         }
       }
     }
   }
+  th {
+    font-size: $th-font-size;
+    &:nth-child(2) {
+      @include breakpoint(large) {
+        text-align: right;
+      }
+    }
+  }
+  th, td {
+    border: 0px;
+    border-bottom: solid 1px #888;
+  } 
+  td {
+    font-size: $td-font-size; 
+    span {
+      font-weight: bold;
+      margin-right: rem-calc(5);
+    }
+    a.api {
+      border-style: none;
+      font-size: $td-font-size;
+      color: #555; 
+      background-color: transparent;   
+      &:hover {
+        color: #000;
+        //background-color: #fff;  
+        border-bottom: 1px #000 solid;
+        //text-decoration: underline;
+      }
+      @include breakpoint(medium down) {
+        float: right;
+      }
+    }
+  }
 }
+
+

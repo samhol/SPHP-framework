@@ -70,7 +70,9 @@ Sphp\Html\Tags:
     option: 'An option in a drop-down list'
   Media:
     img: 'An image'
-    polygon: 'A polygonal area inside an image map'
+    polygon: 
+       desc: 'A polygonal area inside an image map'
+       tag: '<area shape="poly">'
     circle: 'A circular area inside an image map'
     rectangle: 'A Rectangular area inside an image map'
     map: 'An image map'

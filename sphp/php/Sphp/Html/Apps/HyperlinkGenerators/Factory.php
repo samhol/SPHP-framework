@@ -119,7 +119,7 @@ class Factory {
    */
   public static function w3schools(): W3schools {
     if (self::$w3schools === null) {
-      self::$w3schools = new W3schools();
+      self::$w3schools = (new W3schools())->setDefaultHyperlinkAttributes(['class' => 'api']);
     }
     return self::$w3schools;
   }

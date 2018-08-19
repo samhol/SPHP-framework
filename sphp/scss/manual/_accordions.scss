@@ -8,8 +8,8 @@
 
 
 $unit: rem-calc(4);
-@mixin manual-accordion() { 
-  .manual .accordion {
+@mixin sphp-manual-accordion() { 
+  .sphp.accordion {
     .accordion-item {
       &:not(:first-child) {
         margin-top: rem-calc(2);
@@ -34,4 +34,4 @@ $unit: rem-calc(4);
 
   }
 }
-  @include sphp-syntax-highlighter();
+@include sphp-manual-accordion();

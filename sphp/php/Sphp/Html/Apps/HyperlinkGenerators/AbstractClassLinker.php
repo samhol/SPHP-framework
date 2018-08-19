@@ -88,23 +88,23 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
   }
 
   public function methodLink(string $method, bool $full = true): Hyperlink {
-    $this->ref->getMethod($method);
-    $reflectedMethod = $this->ref->getMethod($method);
     if ($full) {
-      $text = $this->ref->getShortName() . "::$reflectedMethod->name()";
+      $text = $this->ref->getShortName() . "::$method()";
     } else {
-      $text = "$reflectedMethod->name()";
+      $text = "$method()";
     }
     $fullClassName = $this->ref->getName();
-    if ($reflectedMethod->isConstructor()) {
-      //$name = $prefix . "$reflectedMethod->name()";
-      $title = "The $fullClassName constructor";
-    } else if ($reflectedMethod->isStatic()) {
-      //$name = $this->ref->getShortName() . "::$reflectedMethod->name()";
-      $title = "Static method: $fullClassName::$reflectedMethod->name()";
-    } else {
-      //$name = $this->ref->getShortName() . "::$reflectedMethod->name()";
-      $title = "Instance method: $fullClassName::$reflectedMethod->name()";
+    try {
+      $reflectedMethod = $this->ref->getMethod($method);
+      if ($reflectedMethod->isConstructor()) {
+        $title = "The $fullClassName constructor";
+      } else if ($reflectedMethod->isStatic()) {
+        $title = "Static method: $fullClassName::$reflectedMethod->name()";
+      } else {
+        $title = "Instance method: $fullClassName::$reflectedMethod->name()";
+      }
+    } catch (\Exception $ex) {
+      $title = "Method: $fullClassName::$method()";
     }
     return $this->hyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title);
   }

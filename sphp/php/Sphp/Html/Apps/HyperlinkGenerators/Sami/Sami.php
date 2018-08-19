@@ -45,7 +45,6 @@ class Sami extends AbstractPhpApiLinker {
    * Returns a hyperlink object pointing to an API namespace page
    *
    * @param  string $namespace namespace name
-   * @param  string $linkText optional link text
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
    * @return Hyperlink hyperlink object pointing to an API namespace page1
    */
