@@ -35,9 +35,9 @@ class TagGroupTable implements Content {
     unset($this->data);
   }
 
-  function generateTagTable(): Table {
+  public function generateTagTable(): Table {
     $table = (new Table())
-            ->addCssClass('factory-tables', 'stack');
+            ->addCssClass('factory-tables1', 'responsive-card-table', 'unstriped');
     $table->thead()
             ->appendHeaderRow(['HTML Tag', 'Factory call', 'Object type']);
     $body = $table->tbody();
@@ -49,13 +49,9 @@ class TagGroupTable implements Content {
 
   protected function createRow(TagFactoryMethodData $cells): Tr {
     $tr = new Tr();
-    $span = new \Sphp\Html\Span('w3cschools link:');
-    $span->addCssClass('hide-for-large');
-    $tr->appendTd($span. $cells->getW3cLink());  
-    $span->setContent('Factory call: ');
-    $tr->appendTd($span. $cells->getFactoryCallLink());  
-    $span->setContent('Object type: ');
-    $tr->appendTd($span. $cells->getObjectTypeLink());  
+    $tr->appendTd($cells->getW3cLink())->setAttribute('data-label', 'HTML Tag');
+    $tr->appendTd($cells->getFactoryCallLink())->setAttribute('data-label', 'Factory call');
+    $tr->appendTd($cells->getObjectTypeLink())->setAttribute('data-label', 'Object type');
     return $tr;
   }
 

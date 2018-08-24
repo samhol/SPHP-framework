@@ -66,3 +66,6 @@ MD
 Manual\example('Sphp/Html/Tables/Factory.php')
         ->setExamplePaneTitle('HTML table factory example')
         ->printHtml();
+Manual\example('Sphp/Html/Tables/LineNumberBuilder.php')
+        ->setExamplePaneTitle('HTML table factory example')
+        ->printHtml();

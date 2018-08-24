@@ -173,6 +173,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     return $this;
   }
 
+  public function containsThead(): bool {
+    return $this->thead !== null;
+  }
+
   /**
    * Returns the table header component
    *
@@ -180,10 +184,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return Thead table header component
    */
   public function thead(Thead $head = null): Thead {
-    if ($head === null) {
-      $head = new Thead();
+    if ($head !== null) {
+      $this->thead = $head;
+    } else if ($this->thead === null) {
+      $this->thead = new Thead();
     }
-    $this->thead = $head;
     return $this->thead;
   }
 
@@ -195,6 +200,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   public function removeThead() {
     $this->thead = null;
     return $this;
+  }
+
+  public function containsTbody(): bool {
+    return $this->tbody !== null;
   }
 
   /**
@@ -220,6 +229,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   public function removeTbody() {
     $this->tbody = null;
     return $this;
+  }
+
+  public function containsTfoot(): bool {
+    return $this->tfoot !== null;
   }
 
   /**

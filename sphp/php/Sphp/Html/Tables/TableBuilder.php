@@ -23,31 +23,43 @@ class TableBuilder implements \Sphp\Html\Content {
 
   use \Sphp\Html\ContentTrait;
 
-  const NO_LINENUMBERS = 0;
-  const LINENUMBERS_LEFT = 1;
-  const LINENUMBERS_RIGHT = 2;
-
-  private $lineNumbers = [
-      'start' => 1,
-      'use' => self::NO_LINENUMBERS
-  ];
+  /**
+   * @var array 
+   */
   private $theadData = [];
+
+  /**
+   * @var array 
+   */
   private $tbodyData = [];
+
+  /**
+   * @var array 
+   */
   private $tfootData = [];
 
   /**
-   * 
+   * @var LineNumberer
    */
-  public function __construct() {
-    $this->setLineNumbers();
-  }
+  private $lineNumberer;
 
   /**
-   * 
-   * @return array 
+   * Constructor
    */
-  public function getLineNumbers() {
-    return $this->lineNumbers;
+  public function __construct(LineNumberer $lineNumberer = null) {
+    if ($lineNumberer === null) {
+      $lineNumberer = new LineNumberer();
+    }
+    $this->setLineNumberer($lineNumberer);
+  }
+
+  public function getLineNumberer(): LineNumberer {
+    return $this->lineNumberer;
+  }
+
+  public function setLineNumberer($lineNumberer) {
+    $this->lineNumberer = $lineNumberer;
+    return $this;
   }
 
   /**
@@ -75,51 +87,6 @@ class TableBuilder implements \Sphp\Html\Content {
    */
   public function getTfootData() {
     return $this->tfootData;
-  }
-
-  /**
-   * 
-   * @param  boolean $position
-   * @return $this for a fluent interface
-   */
-  public function setLineNumbersPosition($position) {
-    $this->lineNumbers['use'] = (int) $position;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  int $start
-   * @return $this for a fluent interface
-   */
-  public function setFirstLineNumber(int $start) {
-    $this->lineNumbers['start'] = $start;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  int $start
-   * @param  int $position
-   * @return $this for a fluent interface
-   */
-  public function setLineNumbers($start = 1, $position = self::NO_LINENUMBERS) {
-    $this->setFirstLineNumber($start)
-            ->setLineNumbersPosition($position);
-    return $this;
-  }
-
-  /**
-   * Returns the first line number in the table body
-   * 
-   * @return int the first line number in the table body
-   */
-  public function getFirstLineNumber() {
-    return $this->lineNumbers['start'];
-  }
-
-  public function lineNumbersVisible() {
-    return (bool) $this->lineNumbers['use'];
   }
 
   /**
@@ -166,12 +133,7 @@ class TableBuilder implements \Sphp\Html\Content {
    */
   public function buildTbody(): Tbody {
     $tbody = new Tbody();
-    $lineNumber = $this->getFirstLineNumber();
     foreach ($this->tbodyData as $row) {
-      if ($this->lineNumbersVisible()) {
-        $th = (new Th(($lineNumber++) . '.'))->setScope('row');
-        array_unshift($row, $th);
-      }
       $tbody->appendBodyRow($row);
     }
     return $tbody;
@@ -189,11 +151,8 @@ class TableBuilder implements \Sphp\Html\Content {
    * 
    * @return TableRowContainer
    */
-  protected function buildHeadingComponent(TableRowContainer $cont, array $data) {
+  private function buildHeadingComponent(TableRowContainer $cont, array $data) {
     foreach ($data as $row) {
-      if ($this->lineNumbersVisible()) {
-        array_unshift($row, new Th('#', 'col'));
-      }
       $cont->appendHeaderRow($row);
     }
     return $cont;
@@ -205,6 +164,7 @@ class TableBuilder implements \Sphp\Html\Content {
    */
   public function buildTable(): Table {
     $table = new Table();
+    $table->addCssClass('responsive-card-table', 'unstriped');
     if (!empty($this->theadData)) {
       $table->thead($this->buildThead());
     }
@@ -214,6 +174,7 @@ class TableBuilder implements \Sphp\Html\Content {
     if (!empty($this->tfootData)) {
       $table->tfoot($this->buildTfoot());
     }
+    $this->lineNumberer->setLineNumbers($table);
     return $table;
   }
 
@@ -229,7 +190,7 @@ class TableBuilder implements \Sphp\Html\Content {
    * @return TableBuilder
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function fromCsvFile(CsvFile $file, $offset = 0, $count = -1) {
+  public static function fromCsvFile(CsvFile $file, $offset = 0, $count = -1): TableBuilder {
     $builder = new TableBuilder();
     if ($offset > 0 || $count !== -1) {
       $data = $file->getChunk($offset, $count);
@@ -243,7 +204,7 @@ class TableBuilder implements \Sphp\Html\Content {
     }
     $builder->setTheadData([$headData]);
     $builder->setTbodyData($data);
-    $builder->setLineNumbers($offset + 1, 'left');
+    $builder->getLineNumberer()->setFirstLineNumber($offset + 1)->prependLineNumbers(true);
     return $builder;
   }
 

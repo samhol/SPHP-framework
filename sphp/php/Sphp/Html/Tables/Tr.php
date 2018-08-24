@@ -10,10 +10,9 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\AbstractContainerComponent;
-Use IteratorAggregate;
+use Sphp\Html\AbstractComponent;
+Use Iterator;
 use Sphp\Html\TraversableContent;
-use Traversable;
 
 /**
  * Implements an HTML &lt;tr&gt; tag
@@ -27,9 +26,14 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Tr extends AbstractContainerComponent implements IteratorAggregate, TraversableContent, Row {
+class Tr extends AbstractComponent implements Iterator, TraversableContent, Row {
 
   use \Sphp\Html\TraversableTrait;
+
+  /**
+   * @var Cell 
+   */
+  private $tds = [];
 
   /**
    * Constructor
@@ -39,7 +43,7 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
   }
 
   public function append(Cell $cell) {
-    $this->getInnerContainer()->append($cell);
+    $this->tds[] = $cell;
     return $this;
   }
 
@@ -88,17 +92,8 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
    * @return $this for a fluent interface
    */
   public function prepend(Cell $cell): Cell {
-    $this->getInnerContainer()->prepend($cell);
+    array_unshift($this->tds, $cell);
     return $cell;
-  }
-
-  /**
-   * Create a new iterator to iterate through cells in the row
-   *
-   * @return Traversable iterator
-   */
-  public function getIterator(): Traversable {
-    return $this->getInnerContainer();
   }
 
   /**
@@ -108,7 +103,52 @@ class Tr extends AbstractContainerComponent implements IteratorAggregate, Traver
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return count($this->tds);
+  }
+
+  public function contentToString(): string {
+    return implode($this->tds);
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->tds);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->tds);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->tds);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->tds);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->tds);
   }
 
   /**

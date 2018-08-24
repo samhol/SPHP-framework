@@ -7,11 +7,13 @@ $bodyData = [
     ['John', 'Doe', 'john.doe@unknown.no', '-'],
 ];
 $builder = new TableBuilder();
-$builder->setTheadData([['First name', 'Last name', 'Email', 'Homepage']]);
+$builder->setTheadData([['First name', 'Last name', 'Email', 'Homepage'], ['First name', 'Last name', 'Email', 'Homepage']]);
 $builder->setTbodyData($bodyData);
 $lineNumberer = new LineNumberer(1, 'index');
 $builder->setLineNumberer($lineNumberer);
-$builder->printHtml();
-$builder->setTfootData([['First name', 'Last name', 'Email', 'Homepage']]);
+
+//$builder->printHtml();
+//$builder->setTfootData([['First name', 'Last name', 'Email', 'Homepage']]);
 //$builder->setLineNumbers(1, 'left');
-$builder->printHtml();
+$table = $builder->buildTable();
+echo $table;

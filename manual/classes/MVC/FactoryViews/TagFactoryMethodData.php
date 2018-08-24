@@ -10,11 +10,11 @@
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
-use Sphp\Html\Content;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
 use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\TagInterface;
 
 /**
  * Implements tag factory data
@@ -26,15 +26,10 @@ use Sphp\Html\Navigation\Hyperlink;
 class TagFactoryMethodData implements Arrayable {
 
   private $factory;
-  
   private $method;
-  /**
-   * @var string 
-   */
-  private $factoryCall;
 
   /**
-   * @var Content 
+   * @var TagInterface 
    */
   private $component;
 
@@ -58,26 +53,18 @@ class TagFactoryMethodData implements Arrayable {
   public function __construct(string $factory, string $method, $description) {
     $this->factory = $factory;
     $this->method = $method;
-    $this->factoryCall = (new ReflectionClass($factory))->getShortName() . "::$method()";
     $this->component = $factory::$method();
     $this->componentReflector = new ReflectionClass($this->component);
-    //$this->objectType = $this->componentReflector->getName();
-
     if (is_array($description)) {
       $this->description = $description['desc'];
       $this->tag = $description['tag'];
     } else {
       $this->description = $description;
       $this->tag = $this->component->getTagName();
-      ;
     }
   }
 
-  public function getFactoryCall(): string {
-    return $this->factoryCall;
-  }
-
-  public function getCreatedComponent(): Content {
+  public function getCreatedComponent(): TagInterface {
     return $this->component;
   }
 
@@ -98,8 +85,6 @@ class TagFactoryMethodData implements Arrayable {
    * @return Hyperlink
    */
   public function getFactoryCallLink(): Hyperlink {
-     
-
     return Factory::sami()->classLinker($this->factory)->methodLink($this->method, true);
   }
 

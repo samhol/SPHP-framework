@@ -10,10 +10,9 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\AbstractContainerComponent;
-use IteratorAggregate;
+use Sphp\Html\AbstractComponent;
+use Iterator;
 use Sphp\Html\TraversableContent;
-use Traversable;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
@@ -23,9 +22,11 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableContent, TableContent {
+class TableRowContainer extends AbstractComponent implements Iterator, TraversableContent, TableContent {
 
   use \Sphp\Html\TraversableTrait;
+
+  private $rows;
 
   /**
    * Constructor
@@ -35,21 +36,17 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    */
   public function __construct(string $tagname, HtmlAttributeManager $m = null) {
     parent::__construct($tagname, $m);
+    $this->rows = [];
   }
 
   /**
-   * Appends a {@link RowInterface} object to the container object
-   *
-   * **Notes:**
-   * 
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
+   * Appends a Row object to the container object
    *
    * @param  Row $row the row being appended
    * @return $this for a fluent interface
    */
   public function append(Row $row) {
-    $this->getInnerContainer()->append($row);
+    $this->rows[] = $row;
     return $this;
   }
 
@@ -92,27 +89,74 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @return $this for a fluent interface
    */
   public function prepend(Row $row) {
-    $this->getInnerContainer()->prepend($row);
+    array_unshift($this->rows, $row);
     return $this;
   }
 
   /**
-   * Count the number of inserted rows in the table
+   * Count the number of inserted rows
    *
-   * @return int number of elements in the HTML table
+   * @return int number of rows
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return count($this->rows);
   }
 
   /**
    * Create a new iterator to iterate through content
    *
-   * @return Traversable iterator
+   * @return Row|null first row
    */
-  public function getIterator(): Traversable {
-    return $this->getInnerContainer();
+  public function getFirstRow(): Row {
+    $arr = iterator_to_array($this, false);
+    $firstRow = $arr[0];
+    return $firstRow;
+  }
+
+  public function contentToString(): string {
+    return implode($this->rows);
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->rows);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->rows);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->rows);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->rows);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->rows);
   }
 
 }

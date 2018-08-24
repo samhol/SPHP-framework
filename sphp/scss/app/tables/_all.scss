@@ -1,5 +1,3 @@
-<?php
-
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -8,15 +6,8 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Tables;
+@import "responsive-card-table";
 
-/**
- * Interface is the base for all HTML &lt;table&gt; content
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
-interface TableContent {
-  
+@mixin sphp-table-modules() { 
+  @include responsive-card-table();
 }
