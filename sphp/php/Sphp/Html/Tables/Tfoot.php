@@ -29,13 +29,4 @@ class Tfoot extends TableRowContainer {
     parent::__construct('tfoot');
   }
 
-  public function fromArray(array $arr) {
-    foreach ($arr as $tr) {
-      if (!($tr instanceof RowInterface)) {
-        $this->append(Tr::fromThs($tr));
-      }
-    }
-    return $this;
-  }
-
 }

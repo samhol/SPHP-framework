@@ -39,12 +39,19 @@ class TableBuilder implements \Sphp\Html\Content {
   private $tfootData = [];
 
   /**
+   * @var array 
+   */
+  private $labels = [];
+
+  /**
    * @var LineNumberer
    */
   private $lineNumberer;
 
   /**
    * Constructor
+   *
+   * @param LineNumberer|null $lineNumberer
    */
   public function __construct(LineNumberer $lineNumberer = null) {
     if ($lineNumberer === null) {
@@ -53,11 +60,29 @@ class TableBuilder implements \Sphp\Html\Content {
     $this->setLineNumberer($lineNumberer);
   }
 
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->lineNumberer);
+  }
+
+  /**
+   * Returns the line numberer object
+   * 
+   * @return LineNumberer
+   */
   public function getLineNumberer(): LineNumberer {
     return $this->lineNumberer;
   }
 
-  public function setLineNumberer($lineNumberer) {
+  /**
+   * Sets the line numberer object
+   * 
+   * @param  LineNumberer $lineNumberer line numberer to set
+   * @return $this
+   */
+  public function setLineNumberer(LineNumberer $lineNumberer) {
     $this->lineNumberer = $lineNumberer;
     return $this;
   }
@@ -94,8 +119,13 @@ class TableBuilder implements \Sphp\Html\Content {
    * @param  array $data
    * @return $this for a fluent interface
    */
-  public function setTheadData($data) {
-    $this->theadData = $data;
+  public function addHeadingRow(array $data) {
+    $this->theadData[] = $data;
+    return $this;
+  }
+
+  public function useCellLabels(array $labels) {
+    $this->labels = $labels;
     return $this;
   }
 
@@ -104,7 +134,19 @@ class TableBuilder implements \Sphp\Html\Content {
    * @param  array $data
    * @return $this for a fluent interface
    */
-  public function setTbodyData($data) {
+  public function setTheadData(array $data) {
+    foreach ($data as $rows) {
+      $this->addHeadingRow($rows);
+    }
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  array $data
+   * @return $this for a fluent interface
+   */
+  public function setTbodyData(array $data) {
     $this->tbodyData = $data;
     return $this;
   }
@@ -134,9 +176,23 @@ class TableBuilder implements \Sphp\Html\Content {
   public function buildTbody(): Tbody {
     $tbody = new Tbody();
     foreach ($this->tbodyData as $row) {
-      $tbody->appendBodyRow($row);
+      $tbody->append($this->buildRow($row));
     }
     return $tbody;
+  }
+
+  protected function buildRow(array $rowData) {
+    $tr = Tr::fromTds($rowData);
+
+    foreach ($this->labels as $id => $label) {
+      try {
+
+        $tr->getCell($id)->setAttribute('data-label', $label);
+      } catch (\Exception $ex) {
+        
+      }
+    }
+    return $tr;
   }
 
   /**

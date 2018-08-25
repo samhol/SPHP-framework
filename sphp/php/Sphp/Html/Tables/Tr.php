@@ -13,6 +13,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\AbstractComponent;
 Use Iterator;
 use Sphp\Html\TraversableContent;
+use Sphp\Exceptions\OutOfBoundsException;
 
 /**
  * Implements an HTML &lt;tr&gt; tag
@@ -104,6 +105,23 @@ class Tr extends AbstractComponent implements Iterator, TraversableContent, Row 
    */
   public function count(): int {
     return count($this->tds);
+  }
+
+  /**
+   * Returns the cell at given position
+   * 
+   * **Important:** Cells are numbered sequentially starting from 0
+   * 
+   * @param  int $number
+   * @return Row the row at given position
+   * @throws OutOfBoundsException
+   */
+  public function getCell(int $number): Cell {
+    if (array_key_exists($number, $this->tds)) {
+      return $this->tds[$number];
+    } else {
+      throw new OutOfBoundsException("Cell at position $number does not exists");
+    }
   }
 
   public function contentToString(): string {

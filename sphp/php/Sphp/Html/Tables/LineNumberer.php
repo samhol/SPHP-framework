@@ -50,21 +50,43 @@ class LineNumberer {
     $this->setLabel($label);
   }
 
+  /**
+   * Checks whether the line numbers are prepended 
+   * 
+   * @return bool true if line numbers are prepended to rows, false otherwise
+   */
   public function prependsLineNumbers(): bool {
     return $this->left;
   }
 
+  /**
+   * Checks whether the line numbers are appended 
+   * 
+   * @return bool true if line numbers are appended to rows, false otherwise
+   */
   public function appendsLineNumbers(): bool {
     return $this->right;
   }
 
-  public function prependLineNumbers(bool $left) {
-    $this->left = $left;
+  /**
+   * Sets the numberer to prepend the line numbers to a HTML table
+   * 
+   * @param  bool $prepends true for prepending and false otherwise
+   * @return $this
+   */
+  public function prependLineNumbers(bool $prepends) {
+    $this->left = $prepends;
     return $this;
   }
 
-  public function appendLineNumbers(bool $right) {
-    $this->right = $right;
+  /**
+   * Sets the numberer to append the line numbers to a HTML table
+   * 
+   * @param  bool $appends true for appending and false otherwise
+   * @return $this for a fluent interface
+   */
+  public function appendLineNumbers(bool $appends) {
+    $this->right = $appends;
     return $this;
   }
 
@@ -72,10 +94,21 @@ class LineNumberer {
     return $this->start;
   }
 
+  /**
+   * Returns the label for the line numbers
+   * 
+   * @return string the label for the line numbers
+   */
   public function getLabel(): string {
     return $this->label;
   }
 
+  /**
+   * Sets the label for the line numbers
+   * 
+   * @param  string $label the label for the line numbers
+   * @return $this for a fluent interface
+   */
   public function setLabel(string $label) {
     $this->label = $label;
     return $this;
@@ -100,52 +133,53 @@ class LineNumberer {
     return $this->start;
   }
 
-  /**
-   * 
-   * @param  Table $table
-   * @return Table
-   */
-  public function appendToThead(Table $table): Table {
-    if ($table->containsThead()) {
-      $thead = $table->thead();
-      $rowSpan = $thead->count();
-      $arr = iterator_to_array($thead, false);
-      $firstRow = $arr[0];
-      //foreach ($thead as $row) {
-      $th = (new Th($this->getLabel()))->setRowspan($rowSpan)->setScope('col');
-      //echo 'egaraegrgergag';
-      if ($firstRow instanceof Row) {
-        $firstRow->append($th);
-      }
-    }
-    return $table;
+  protected function generateTh(int $rowSpan): Th {
+    return (new Th($this->getLabel()))->setRowspan($rowSpan)->setScope('col');
   }
 
   /**
    * 
    * @param  Table $table
-   * @return Table
+   * @return bool
    */
-  public function prependToThead(Table $table): Table {
-    if ($table->containsThead()) {
-      $thead = $table->thead();
-      $rowSpan = $thead->count();
-      $arr = iterator_to_array($thead, false);
-      $firstRow = $arr[0];
-      //foreach ($thead as $row) {
-      $th = (new Th($this->getLabel()))->setRowspan($rowSpan)->setScope('col');
-      //echo 'egaraegrgergag';
-      if ($firstRow instanceof Row) {
-        $firstRow->prepend($th);
-        //echo 'egaraegrgergag';
+  public function manipulateHead(Table $table): bool {
+    try {
+      $first = $table->thead()->getRow(0);
+      $rowSpan = $table->thead()->count();
+      if ($this->prependsLineNumbers()) {
+        $first->prepend($this->generateTh($rowSpan));
       }
-      // }
-      //echo 'egaragag';
+      if ($this->appendsLineNumbers()) {
+        $first->append($this->generateTh($rowSpan));
+      }
+      return true;
+    } catch (\Exception $ex) {
+      return false;
     }
-    return $table;
   }
 
-  public function generateLineNumberCell(int $number): Th {
+  /**
+   * 
+   * @param  Table $table
+   * @return bool
+   */
+  public function manipulateFooter(Table $table): bool  {
+   try {
+      $first = $table->tfoot()->getRow(0);
+      $rowSpan = $table->tfoot()->count();
+      if ($this->prependsLineNumbers()) {
+        $first->prepend($this->generateTh($rowSpan));
+      }
+      if ($this->appendsLineNumbers()) {
+        $first->append($this->generateTh($rowSpan));
+      }
+      return true;
+    } catch (\Exception $ex) {
+      return false;
+    }
+  }
+
+  protected function generateLineNumberCell(int $number): Th {
     $th = new Th($number . '.');
     $th->setScope('row');
     $th->setAttribute('data-label', $this->getLabel());
@@ -181,7 +215,6 @@ class LineNumberer {
         $row->prepend($this->generateLineNumberCell($lineNumber++));
       }
     }
-    $this->prependToThead($table);
     return $table;
   }
 
@@ -197,6 +230,8 @@ class LineNumberer {
     if ($this->appendsLineNumbers()) {
       $this->appendLineNumbersTo($table);
     }
+    $this->manipulateHead($table);
+    $this->manipulateFooter($table);
     return $table;
   }
 

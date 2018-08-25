@@ -174,7 +174,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   public function containsThead(): bool {
-    return $this->thead !== null;
+    return $this->thead !== null && $this->thead->count() > 0;
   }
 
   /**
