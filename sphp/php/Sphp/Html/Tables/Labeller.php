@@ -17,7 +17,9 @@ namespace Sphp\Html\Tables;
  * @filesource
  */
 class Labeller {
+
   private $labels = [];
+
   /**
    * Constructor
    * 
@@ -27,37 +29,34 @@ class Labeller {
   public function __construct(array $labels = []) {
     $this->setLabels($labels);
   }
+  public function setLabels(array $labels) {
+    $this->labels = $labels;
+    return $this;
+  }
+
   public function setLabelForColumn(string $label, int $column) {
     $this->labels[$column] = $label;
     return $this;
   }
 
-  /**
-   * Checks whether the line numbers are prepended 
-   * 
-   * @return bool true if line numbers are prepended to rows, false otherwise
-   */
-  public function prependsLineNumbers(): bool {
-    return $this->left;
+  protected function insertLabelsToRow(Row $row) {
+    foreach ($this->labels as $column => $label) {
+      $cell = $row->getCell($column);
+      if ($cell instanceof \Sphp\Html\ComponentInterface) {
+        $row->getCell($column)->setAttribute('data-label', $label);
+      }
+    }
   }
-  //protected function insertLabel
+
   /**
    * 
    * @param  Table $table
    * @return Table
    */
   public function insertLabelsTo(Table $table): Table {
-    foreach($this->labels as $column => $label) {
-      
+    foreach ($table->tbody() as $row) {
+      $this->insertLabelsToRow($row);
     }
-    if ($this->prependsLineNumbers()) {
-      $this->prependLineNumbersTo($table);
-    }
-    if ($this->appendsLineNumbers()) {
-      $this->appendLineNumbersTo($table);
-    }
-    $this->manipulateHead($table);
-    $this->manipulateFooter($table);
     return $table;
   }
 

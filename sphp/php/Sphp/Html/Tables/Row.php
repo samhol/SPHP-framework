@@ -85,4 +85,15 @@ interface Row extends TableContent, TraversableContent {
    * @return Cell prepended table cell component
    */
   public function prepend(Cell $cell);
+
+  /**
+   * Returns the cell at given position
+   * 
+   * **Important:** Cells are numbered sequentially starting from 0
+   * 
+   * @param  int $number
+   * @return Row the row at given position
+   * @throws OutOfBoundsException
+   */
+  public function getCell(int $number): Cell;
 }

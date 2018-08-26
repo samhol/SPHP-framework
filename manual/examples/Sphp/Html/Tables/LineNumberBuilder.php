@@ -9,11 +9,12 @@ $bodyData = [
 $builder = new TableBuilder();
 $builder->setTheadData([['First name', 'Last name', 'Email', 'Homepage'], ['First name', 'Last name', 'Email', 'Homepage']]);
 $builder->setTbodyData($bodyData);
-$lineNumberer = new LineNumberer(1, 'index');
+$lineNumberer = new LineNumberer(1, 'Row');
 $builder->setLineNumberer($lineNumberer);
 
 //$builder->printHtml();
 //$builder->setTfootData([['First name', 'Last name', 'Email', 'Homepage']]);
 //$builder->setLineNumbers(1, 'left');
 $table = $builder->buildTable();
-echo $table;
+$labeller = new Labeller(['First name', 'Last name', 'Email', 'Homepage']);
+echo $labeller->insertLabelsTo($table);
