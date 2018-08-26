@@ -48,10 +48,12 @@ Manual\example('Sphp/Html/Tables/Table.php', null, true)
         ->printHtml();
 
 $tableBuilder = Manual\api()->classLinker(TableBuilder::class);
+$lineNumberer =  Manual\api()->classLinker(LineNumberer::class);
 Manual\md(<<<MD
-##TABLE BUILDER: <small>The $tableBuilder Class</small>
+##TABLE FACTORIES: <small>Table building and manipulation</small>
 
-This builder is able to generate tables from data sources
+$tableBuilder is able to generate HTML tables from data sources. 
+A $lineNumberer instance makes it possible to add linenumbers to a table object. 
 MD
 );
 Manual\example('Sphp/Html/Tables/TableBuilder.php')

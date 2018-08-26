@@ -6,4 +6,4 @@ use  Sphp\Stdlib\Parsers\CsvFile;
 
 echo TableBuilder::fromCsvFile(new CsvFile('manual/snippets/1000.csv'), 10, 5);
 
-echo TableBuilder::fromCsvFile(new CsvFile('manual/snippets/1000.csv'), 0, 10)->useCellLabels(['foo']);
+echo TableBuilder::fromCsvFile(new CsvFile('manual/snippets/1000.csv'), 0, 10);

@@ -242,10 +242,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return Tfoot table footer component
    */
   public function tfoot(Tfoot $tfoot = null): Tfoot {
-    if ($tfoot === null) {
-      $tfoot = new Tfoot();
+    if ($tfoot !== null) {
+      $this->tfoot = $tfoot;
+    } else if ($this->tfoot === null) {
+      $this->tfoot = new Tfoot();
     }
-    $this->tfoot = $tfoot;
     return $this->tfoot;
   }
 

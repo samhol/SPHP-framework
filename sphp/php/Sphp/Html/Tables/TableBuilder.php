@@ -114,16 +114,6 @@ class TableBuilder implements \Sphp\Html\Content {
     return $this->tfootData;
   }
 
-  /**
-   * 
-   * @param  array $data
-   * @return $this for a fluent interface
-   */
-  public function addHeadingRow(array $data) {
-    $this->theadData[] = $data;
-    return $this;
-  }
-
   public function useCellLabels(array $labels) {
     $this->labels = $labels;
     return $this;
@@ -135,9 +125,7 @@ class TableBuilder implements \Sphp\Html\Content {
    * @return $this for a fluent interface
    */
   public function setTheadData(array $data) {
-    foreach ($data as $rows) {
-      $this->addHeadingRow($rows);
-    }
+    $this->theadData = \Sphp\Stdlib\Arrays::setSequential($data, 0, 1);
     return $this;
   }
 
@@ -163,14 +151,6 @@ class TableBuilder implements \Sphp\Html\Content {
 
   /**
    * 
-   * @return Thead
-   */
-  public function buildThead() {
-    return $this->buildHeadingComponent(new Thead(), $this->theadData);
-  }
-
-  /**
-   * 
    * @return Tbody
    */
   public function buildTbody(): Tbody {
@@ -183,10 +163,8 @@ class TableBuilder implements \Sphp\Html\Content {
 
   protected function buildRow(array $rowData) {
     $tr = Tr::fromTds($rowData);
-
-    foreach ($this->labels as $id => $label) {
+    foreach ($this->theadData as $id => $label) {
       try {
-
         $tr->getCell($id)->setAttribute('data-label', $label);
       } catch (\Exception $ex) {
         
@@ -195,23 +173,26 @@ class TableBuilder implements \Sphp\Html\Content {
     return $tr;
   }
 
-  /**
-   * 
-   * @return Tfoot
-   */
-  public function buildTfoot() {
-    return $this->buildHeadingComponent(new Tfoot(), $this->tfootData);
+  private function buildHead(Table $table): Table {
+    if (!empty($this->theadData)) {
+      $foot = new Thead();
+      $foot->appendHeaderRow($this->theadData);
+      $table->thead($foot);
+    }
+    return $table;
   }
 
   /**
    * 
-   * @return TableRowContainer
+   * @return Table
    */
-  private function buildHeadingComponent(TableRowContainer $cont, array $data) {
-    foreach ($data as $row) {
-      $cont->appendHeaderRow($row);
+  private function buildFoot(Table $table): Table {
+    if (!empty($this->tfootData)) {
+      $foot = new Tfoot();
+      $foot->appendHeaderRow($this->tfootData);
+      $table->tfoot($foot);
     }
-    return $cont;
+    return $table;
   }
 
   /**
@@ -221,15 +202,11 @@ class TableBuilder implements \Sphp\Html\Content {
   public function buildTable(): Table {
     $table = new Table();
     $table->addCssClass('responsive-card-table', 'unstriped');
-    if (!empty($this->theadData)) {
-      $table->thead($this->buildThead());
-    }
     if (!empty($this->tbodyData)) {
       $table->tbody($this->buildTbody());
     }
-    if (!empty($this->tfootData)) {
-      $table->tfoot($this->buildTfoot());
-    }
+    $this->buildHead($table);
+    $this->buildFoot($table);
     $this->lineNumberer->setLineNumbers($table);
     return $table;
   }
@@ -258,7 +235,7 @@ class TableBuilder implements \Sphp\Html\Content {
     } else {
       $headData = array_shift($data);
     }
-    $builder->setTheadData([$headData]);
+    $builder->setTheadData($headData);
     $builder->setTbodyData($data);
     $builder->getLineNumberer()->setFirstLineNumber($offset + 1)->prependLineNumbers(true);
     return $builder;

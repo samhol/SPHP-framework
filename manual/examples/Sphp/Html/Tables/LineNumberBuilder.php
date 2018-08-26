@@ -7,7 +7,7 @@ $bodyData = [
     ['John', 'Doe', 'john.doe@unknown.no', '-'],
 ];
 $builder = new TableBuilder();
-$builder->setTheadData([['First name', 'Last name', 'Email', 'Homepage'], ['First name', 'Last name', 'Email', 'Homepage']]);
+$builder->setTheadData(['First name', 'Last name', 'Email', 'Homepage']);
 $builder->setTbodyData($bodyData);
 $lineNumberer = new LineNumberer(1, 'Row');
 $builder->setLineNumberer($lineNumberer);
