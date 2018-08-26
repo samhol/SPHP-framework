@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Abstract base class for HTML component adapters
@@ -34,7 +34,7 @@ class AbstractComponentAdapter implements Adapter {
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     $this->component = $component;
   }
 
@@ -59,7 +59,7 @@ class AbstractComponentAdapter implements Adapter {
    * 
    * @return ComponentInterface
    */
-  public function getComponent(): ComponentInterface {
+  public function getComponent(): Component {
     return $this->component;
   }
 

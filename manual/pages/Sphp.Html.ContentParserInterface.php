@@ -8,10 +8,10 @@ $ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
 $documentLink = \Sphp\Manual\api()->classLinker(Document::class);
 $contentInterface = \Sphp\Manual\api()->classLinker(Content::class);
 $exeption = \Sphp\Manual\php()->classLinker(\Exception::class);
-$componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
+$componentInterface = \Sphp\Manual\api()->classLinker(Component::class);
 $emptyTag = \Sphp\Manual\api()->classLinker(EmptyTag::class);
 $containerInterface = \Sphp\Manual\api()->classLinker(ContainerInterface::class);
-$containerComponentInterface = \Sphp\Manual\api()->classLinker(ContainerComponentInterface::class);
+$containerComponentInterface = \Sphp\Manual\api()->classLinker(ContainerComponent::class);
 $contentTrait = \Sphp\Manual\api()->classLinker(ContentTrait::class);
 $nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\md(<<<MD
@@ -67,7 +67,7 @@ MD
 ##The {$api->classLinker(AbstractTag::class)} class
 
 Abstract {$api->classLinker(AbstractTag::class)} class is the base implementation
-of the {$api->classLinker(ComponentInterface::class)} for all predefined HTML tag components.
+of the {$api->classLinker(Component::class)} for all predefined HTML tag components.
 At least it is extended in every existing HTML component in the current framework.
 
 **Note!** Use only HTML attributes that are specified for the underlying HTML tag name returned from the method getTagName().

@@ -23,7 +23,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ComponentInterface extends IdentifiableContent, CssClassifiableContent {
+interface Component extends IdentifiableContent, CssClassifiableContent {
 
   /**
    * Returns the attribute manager attached to the component

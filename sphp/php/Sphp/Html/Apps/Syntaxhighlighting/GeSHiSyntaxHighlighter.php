@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;
@@ -170,7 +170,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    * @param  null|ComponentInterface $button button or button content
    * @return ContentCopyController the attached button
    */
-  public function attachContentCopyController(ComponentInterface $button = null) {
+  public function attachContentCopyController(Component $button = null) {
     if ($button === null) {
       $button = new Button($button);
     }

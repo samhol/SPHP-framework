@@ -37,7 +37,7 @@ class TagGroupTable implements Content {
 
   public function generateTagTable(): Table {
     $table = (new Table())
-            ->addCssClass('factory-tables1', 'responsive-card-table', 'unstriped');
+            ->addCssClass('factory-table', 'responsive-card-table', 'unstriped');
     $table->thead()
             ->appendHeaderRow(['HTML Tag', 'Factory call', 'Object type']);
     $body = $table->tbody();

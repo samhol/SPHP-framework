@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Adapters;
 
 use Sphp\Html\Adapters\AbstractComponentAdapter;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Implements Foundation framework based Interchange adapter
@@ -33,7 +33,7 @@ class Interchange extends AbstractComponentAdapter {
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     parent::__construct($component);
     $this->queries = [
         'portrait' => null,

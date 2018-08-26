@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Defines a Foundation framework based XY Block Grid Column
@@ -27,6 +27,6 @@ use Sphp\Html\ComponentInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface BlockGridColumnInterface extends ComponentInterface {
+interface BlockGridColumnInterface extends Component {
   
 }

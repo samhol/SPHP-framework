@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Div;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
@@ -105,7 +105,7 @@ class Popup extends Div {
    * @param  ComponentInterface $content the controller component
    * @return ComponentInterface a controller component pointing to this Modal
    */
-  public function createController(ComponentInterface $content): ComponentInterface {
+  public function createController(Component $content): Component {
     $content->setAttribute('data-open', $this->identify());
     return $content;
   }

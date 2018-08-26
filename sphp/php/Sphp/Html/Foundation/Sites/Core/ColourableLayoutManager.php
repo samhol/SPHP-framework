@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Trait implements {@link ColourableInterface} functionality
@@ -37,7 +37,7 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     parent::__construct($component);
   }
 

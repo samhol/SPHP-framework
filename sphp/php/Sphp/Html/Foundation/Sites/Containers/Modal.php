@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Content;
 use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Implements Reveal Modal 
@@ -60,7 +60,7 @@ class Modal implements Content, ClosableInterface {
    * 
    * @return ComponentInterface the opener component
    */
-  public function getTrigger(): ComponentInterface {
+  public function getTrigger(): Component {
     return $this->trigger;
   }
 
@@ -79,7 +79,7 @@ class Modal implements Content, ClosableInterface {
    * @param  ComponentInterface $trigger the opener component
    * @param mixed $popup the content of the component
    */
-  public function setTrigger(ComponentInterface $trigger) {
+  public function setTrigger(Component $trigger) {
     $this->trigger = $trigger;
     return $this;
   }

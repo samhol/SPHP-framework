@@ -28,7 +28,7 @@
       border: $responsive-card-table-border;
     }
 
-    @media screen and (max-width: $responsive-card-table-stack-point) {
+    @include breakpoint(medium down) {
       thead tr {
         position: absolute;
         top: -9999em;

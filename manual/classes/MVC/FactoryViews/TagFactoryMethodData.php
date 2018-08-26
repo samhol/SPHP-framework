@@ -58,9 +58,15 @@ class TagFactoryMethodData implements Arrayable {
     if (is_array($description)) {
       $this->description = $description['desc'];
       $this->tag = $description['tag'];
+      if (array_key_exists('attrs', $description)) {
+        $this->name = $description['tag'] .' '. $description['attrs'];
+      } else {
+        $this->name = $description['tag'];
+      }
     } else {
       $this->description = $description;
       $this->tag = $this->component->getTagName();
+      $this->name = $this->component->getTagName();
     }
   }
 
@@ -77,7 +83,7 @@ class TagFactoryMethodData implements Arrayable {
   }
 
   public function getW3cLink(): Hyperlink {
-    return Factory::w3schools()->tag($this->tag, $this->tag, $this->description);
+    return Factory::w3schools()->tag($this->tag, "&lt;$this->name&gt;", $this->description);
   }
 
   /**
@@ -95,6 +101,7 @@ class TagFactoryMethodData implements Arrayable {
   public function getObjectTypeLink(): Hyperlink {
     //$componentReflector = new ReflectionClass($this->component);
     //$objectType = $componentReflector->getName();
+    $this->getObjectType();
     return Factory::sami()->classLinker($this->getObjectType())->getLink($this->getObjectType());
   }
 

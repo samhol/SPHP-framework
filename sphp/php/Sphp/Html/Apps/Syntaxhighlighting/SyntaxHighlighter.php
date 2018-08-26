@@ -13,7 +13,7 @@ namespace Sphp\Html\Apps;
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\Content;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Exceptions\RuntimeException;
 
 /**
@@ -31,7 +31,7 @@ interface SyntaxHighlighter extends Content {
    * @param  ComponentInterface|null $button button or button content
    * @return ContentCopyController the attached controller
    */
-  public function attachContentCopyController(ComponentInterface $button = null);
+  public function attachContentCopyController(Component $button = null);
 
   /**
    * Sets whether the copy button is in use or not

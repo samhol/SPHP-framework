@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Stdlib\Arrays;
@@ -37,7 +37,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @param ComponentInterface $component
    * @param int $max
    */
-  public function __construct(ComponentInterface $component, int $max = 8) {
+  public function __construct(Component $component, int $max = 8) {
     parent::__construct($component);
     $this->maxSize = $max;
     $this->cssClasses()->protect('grid-x', 'flex-container', 'grid-margin-x', 'align-center');

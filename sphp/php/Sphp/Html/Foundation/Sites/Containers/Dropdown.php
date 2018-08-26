@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Content;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Implements Dropdown HTML component
@@ -71,7 +71,7 @@ class Dropdown implements Content {
     return $this->dropdown;
   }
 
-  public function setDropdown(ComponentInterface $dropdown) {
+  public function setDropdown(Component $dropdown) {
     $this->dropdown = $dropdown;
     return $this;
   }

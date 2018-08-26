@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Foundation\Sites\Core\Screen;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
 /**
@@ -30,7 +30,7 @@ class RowLayoutManager extends AlingmentAdapter {
    *
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     parent::__construct($component);
     $this->cssClasses()->protect('grid-x');
   }

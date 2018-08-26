@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Implements a Visibility Adapter
@@ -26,7 +26,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     parent::__construct($component);
     $this->component = $component;
   }

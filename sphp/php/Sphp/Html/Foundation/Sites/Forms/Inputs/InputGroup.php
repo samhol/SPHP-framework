@@ -21,7 +21,7 @@ use Traversable;
 use Sphp\Html\Forms\Buttons\ButtonInterface;
 use Sphp\Html\Forms\Inputs\Factory;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Forms\Inputs\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\Buttons\Resetter;
 
@@ -57,7 +57,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @param  mixed $content the content of the prefix
    * @return ComponentInterface appended instance
    */
-  public function prepend($content): ComponentInterface {
+  public function prepend($content): Component {
     if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
       $content->addCssClass('input-group-field');
       $this->group->prepend($content);
@@ -81,7 +81,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @param  mixed $content the content of the prefix
    * @return ComponentInterface appended instance
    */
-  public function append($content): ComponentInterface {
+  public function append($content): Component {
     if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
       $content->addCssClass('input-group-field');
       $this->group->append($content);

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Describes the content of ordered and unordered lists
@@ -20,6 +20,6 @@ use Sphp\Html\ComponentInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface LiInterface extends ComponentInterface {
+interface LiInterface extends Component {
 
 }

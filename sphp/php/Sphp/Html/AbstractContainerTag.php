@@ -32,7 +32,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractContainerTag extends AbstractContainerComponent implements IteratorAggregate, ContainerComponentInterface, ContentParser {
+class AbstractContainerTag extends AbstractContainerComponent implements IteratorAggregate, ContainerComponent, ContentParser {
 
   use ContentParsingTrait,
       TraversableTrait;

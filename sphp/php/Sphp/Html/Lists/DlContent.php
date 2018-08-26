@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * The common Interface for both of the content tag types of an definition list
@@ -19,6 +19,6 @@ use Sphp\Html\ComponentInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface DlContent extends ComponentInterface {
+interface DlContent extends Component {
   
 }

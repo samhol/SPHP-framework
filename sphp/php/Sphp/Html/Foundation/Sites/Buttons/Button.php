@@ -27,7 +27,7 @@ use Sphp\Html\Span;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-Class Button extends AbstractLayoutManager implements \Sphp\Html\ComponentInterface, ButtonInterface {
+Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, ButtonInterface {
 
   use ButtonTrait,
       \Sphp\Html\ComponentTrait;

@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\Content;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Implements an action controller that copies content from the target component to the user's clipboard
@@ -50,7 +50,7 @@ class ContentCopyController implements Content {
    *         attribute of the target container
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function __construct(ComponentInterface $button, $target = '') {
+  public function __construct(Component $button, $target = '') {
     $this->button = $button;
     $this->setCopyTarget($target);
   }

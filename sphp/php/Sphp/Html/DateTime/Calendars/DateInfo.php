@@ -11,7 +11,7 @@
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\Content;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;

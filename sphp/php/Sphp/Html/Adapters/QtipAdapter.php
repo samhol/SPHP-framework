@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\IdentifiableContent;
 
 /**
@@ -28,7 +28,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component, $qtip = null) {
+  public function __construct(Component $component, $qtip = null) {
     parent::__construct($component);
     if ($qtip !== null) {
       $this->setQtip($qtip);

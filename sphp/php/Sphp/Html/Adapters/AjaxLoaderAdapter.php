@@ -12,7 +12,7 @@ namespace Sphp\Html\Adapters;
 
 use Sphp\Html\AjaxLoader;
 use Sphp\Stdlib\Networks\URL;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /** 
  * Executes Ajax functionality on the adaptee
@@ -30,7 +30,7 @@ class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoader {
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     parent::__construct($component);
   }
 

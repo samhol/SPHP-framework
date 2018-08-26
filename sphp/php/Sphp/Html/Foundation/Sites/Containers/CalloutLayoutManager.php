@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Foundation\Sites\Core\ColourableLayoutManager;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Implements a layout manager for Block Grid columns
@@ -34,7 +34,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
    *
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     parent::__construct($component);
     $this->cssClasses()->protect('callout');
   }

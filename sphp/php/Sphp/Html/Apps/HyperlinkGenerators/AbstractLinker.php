@@ -12,7 +12,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Navigation\HyperlinkInterface;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Adapters\QtipAdapter;
 
 /**
@@ -103,7 +103,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * @param  ComponentInterface $a the component to modify
    * @return ComponentInterface returns the modified component
    */
-  public function insertDefaultsTo(ComponentInterface $a): ComponentInterface {
+  public function insertDefaultsTo(Component $a): Component {
     if (!empty($this->attributes)) {
       $a->attributes()->merge($this->attributes);
     }

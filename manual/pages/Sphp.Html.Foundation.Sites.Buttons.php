@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Manual;
 
-$componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
+$componentInterface = \Sphp\Manual\api()->classLinker(Component::class);
 $buttonInterface = \Sphp\Manual\api()->classLinker(ButtonInterface::class);
 $buttonAdapter = \Sphp\Manual\api()->classLinker(Button::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

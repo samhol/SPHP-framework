@@ -48,8 +48,14 @@ Sphp\Html\Tags:
     wbr: 'A possible line-break'
   Forms: 
     form: 'A form'
-    hiddenInput: 'A hidden input field'
-    textInput: 'A text input field'
+    hiddenInput: 
+       desc:  'A hidden input field'
+       tag:   input
+       attrs: 'type=hidden'
+    textInput:
+       desc:  'A text input field'
+       tag:   input
+       attrs: 'type=text'
     emailInput: 'An email input field'
     numberInput: 'A number input field'
     passwordInput: 'A password input field'
@@ -72,9 +78,16 @@ Sphp\Html\Tags:
     img: 'An image'
     polygon: 
        desc: 'A polygonal area inside an image map'
-       tag: '<area shape="poly">'
-    circle: 'A circular area inside an image map'
-    rectangle: 'A Rectangular area inside an image map'
+       tag:  area
+       attrs: 'shape=poly'
+    circle: 
+       desc: 'A circular area inside an image map'
+       tag:  area
+       attrs: 'shape=circle'
+    rectangle:
+       desc: 'A Rectangular area inside an image map'
+       tag:  area
+       attrs: 'shape=rect'
     map: 'An image map'
     canvas: 'Graphics canvas'
     figure: 'A group of media content, and their caption'

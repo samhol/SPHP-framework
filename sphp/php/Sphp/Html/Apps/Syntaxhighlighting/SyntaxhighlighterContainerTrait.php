@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\Apps\SyntaxHighlighterInterface;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Apps\ContentCopyController;
 
 /**
@@ -38,7 +38,7 @@ trait SyntaxhighlighterContainerTrait {
    * @param  ComponentInterface|null $button button or button content
    * @return ContentCopyController the attached controller
    */
-  public function attachContentCopyController(ComponentInterface $button = null) {
+  public function attachContentCopyController(Component $button = null) {
     return $this->getSyntaxHighlighter()->attachContentCopyController($button);
   }
 

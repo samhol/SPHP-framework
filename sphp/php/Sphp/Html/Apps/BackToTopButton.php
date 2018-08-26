@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\Content;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 use Sphp\Html\Media\Icons\AbstractIcon;
 use Sphp\Html\Div;
 
@@ -37,7 +37,7 @@ class BackToTopButton implements Content {
    * @param string $title the title text of the button
    * @param string $iconClass CSS class names of the icon font style
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(Component $component) {
     $component->attributes()->demand('data-sphp-back-to-top-button');
     $this->component = $component;
   }
@@ -49,7 +49,7 @@ class BackToTopButton implements Content {
     unset($this->component);
   }
 
-  public function getComponent(): ComponentInterface {
+  public function getComponent(): Component {
     return $this->component;
   }
 

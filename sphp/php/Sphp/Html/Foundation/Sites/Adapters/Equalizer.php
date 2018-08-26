@@ -11,8 +11,8 @@
 namespace Sphp\Html\Foundation\Sites\Adapters;
 
 use Sphp\Html\Adapters\AbstractComponentAdapter;
-use Sphp\Html\ComponentInterface;
-use Sphp\Html\ContainerComponentInterface;
+use Sphp\Html\Component;
+use Sphp\Html\ContainerComponent;
 
 /**
  * Implements a Foundation Equalizer.
@@ -32,7 +32,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @param ComponentInterface $equalizer
    * @param string|null $name
    */
-  public function __construct(ComponentInterface $equalizer, string $name = null) {
+  public function __construct(Component $equalizer, string $name = null) {
     parent::__construct($equalizer);
     $attr = $this->attributes()->setIdentifier('data-equalizer');
     if ($name === null) {
@@ -87,7 +87,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function addObserver(ComponentInterface $observer) {
+  public function addObserver(Component $observer) {
     if ($observer->attributeExists('data-equalizer-watch') && $observer->attributes()->getValue('data-equalizer-watch') !== $this->getEqualizerName()) {
       throw new \Sphp\Exceptions\InvalidArgumentException('');
     }
@@ -101,7 +101,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @param  ComponentInterface $observer
    * @return $this for a fluent interface
    */
-  public function removeObserver(ComponentInterface $observer) {
+  public function removeObserver(Component $observer) {
     $observer->attributes()->remove('data-equalizer-watch');
     return $this;
   }
@@ -111,7 +111,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @param  ContainerComponentInterface $cont
    * @return Equalizer
    */
-  public static function equalizeContainer(ContainerComponentInterface $cont): Equalizer {
+  public static function equalizeContainer(ContainerComponent $cont): Equalizer {
     $equalizer = new static($cont);
     foreach ($cont as $component) {
       if ($component instanceof ComponentInterface) {

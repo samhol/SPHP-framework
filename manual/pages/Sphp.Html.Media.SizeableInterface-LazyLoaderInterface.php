@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $sizeableInterface = Manual\api()->classLinker(SizeableMedia::class);
 $sizeableTrait = Manual\api()->classLinker(SizeableTrait::class);
-$componentInterface = Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
+$componentInterface = Manual\api()->classLinker(\Sphp\Html\Component::class);
 
 $lazyLoader = Manual\api()->classLinker(LazyMedia::class);
 $lazyLoaderTrait = Manual\api()->classLinker(LazyMediaSourceTrait::class);

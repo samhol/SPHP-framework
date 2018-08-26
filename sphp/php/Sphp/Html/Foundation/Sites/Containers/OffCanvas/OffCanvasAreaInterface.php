@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\Component;
 
 /**
  * Defines the basic requirements of a Foundation offcanvas area
@@ -23,7 +23,7 @@ use Sphp\Html\ComponentInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface OffCanvasAreaInterface extends ComponentInterface {
+interface OffCanvasAreaInterface extends Component {
 
   /**
    * Creates an opener for the off canvas component
