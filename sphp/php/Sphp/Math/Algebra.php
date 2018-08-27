@@ -29,18 +29,15 @@ class Algebra {
   public static function gcd(int $u, int $v): int {
     //echo "u:  $u, v: $v \n";
     // simple cases (termination)
-    if ($u == $v) {
+    if ($u === $v) {
       return $u;
     }
-
-    if ($u == 0) {
+    if ($u === 0) {
       return $v;
     }
-
-    if ($v == 0) {
+    if ($v === 0) {
       return $u;
     }
-
     // look for factors of 2
     if (~$u & 1) { // u is even
       if ($v & 1) { // v is odd
@@ -49,16 +46,13 @@ class Algebra {
         return static::gcd($u >> 1, $v >> 1) << 1;
       }
     }
-
     if (~$v & 1) { // u is odd, v is even
       return static::gcd($u, $v >> 1);
     }
-
     // reduce larger argument
     if ($u > $v) {
       return static::gcd(($u - $v) >> 1, $v);
     }
-
     return static::gcd(($v - $u) >> 1, $u);
   }
 
@@ -74,29 +68,31 @@ class Algebra {
   }
 
   /**
-   * Laskee tekijän anneutlle luvulle.
+   * Factorizes an integer
    *
    * @param  int $n kokonaisluku
    * @return int tekijä
    */
-  public static function factorize($n) {
+  public static function factorize(int $n): int {
     $a = $b = 2;
     while (true) {
       $a = (pow($a, 2) + 1) % $n;
       $b = (pow(pow($b, 2) + 1, 2) + 1) % $n;
       $d = gcd($a - $b, $n);
-      if ($d > 1 && $d < $n)
+      if ($d > 1 && $d < $n) {
         return $d;
-      if ($d == 1)
+      }
+      if ($d == 1) {
         throw new RuntimeException("Factors for " . $n . " can not be found");
+      }
     }
   }
 
   /**
-   * Laskee $a^-1 (mod n).
+   * Calculates $a^-1 (mod n).
    *
-   * @param  int $a kokonaisluku
-   * @param  int $n kokonaisluku
+   * @param  int $a
+   * @param  int $n
    * @return int $a^-1 (mod n)
    * @throws Exception jos $a^-1 (mod n) ei ole olemassa
    */
@@ -120,36 +116,39 @@ class Algebra {
       $a ^= $n ^= $a ^= $n; //swap($a,$n)
       //print_r(array("q" => $q,"r" => $r, "a" => $a, "n" => $n, "alpha" => $alpha, "beta" => $beta, "gamma" => $gamma, "delta" => $delta));
     }
-    if ($n != 1)
+    if ($n != 1) {
       throw new Exception($invertible . " has no inverse in mod(" . $modulo . ")");
-    if ($gamma < 0)
+    }
+    if ($gamma < 0) {
       return $gamma + $modulo;
-    else
+    } else {
       return $gamma;
+    }
   }
 
   /**
    * Laskee a^c mod(n).
    *
-   *  - <b>Alkuehto:</b>   $a >= 0 & $c >= 0 & $n >= 0
-   *  - <b>Loppuehto:</b>  true
+   * @precondition   $a >= 0 & $c >= 0 & $n >= 0
    * @param  int $a kantaluku
    * @param  int $c exponentti
    * @param  int $n modulo
    * @return int a^c mod(n)
    */
-  public static function modPow($a, $c, $n) {
+  public static function modPow(int $a, int $c, int $n): int {
     $x = 1;
     $s = $a % $n;
     $cBin = base_convert($c, 10, 2);
     //echo "\nc=".$cBin."\n";
     $k = strlen($cBin) - 1;
-    if ($cBin[$k] == 1)
+    if ($cBin[$k] == 1) {
       $x = $a;
+    }
     for ($i = $k - 1; $i >= 0; $i--) {
       $s = pow($s, 2) % $n;
-      if ($cBin[$i] == 1)
+      if ($cBin[$i] == 1) {
         $x = ($x * $s) % $n;
+      }
       //print_r(array("i" => $i, "x" => $x, "s" => $s));
     }
     return $x;
@@ -166,11 +165,12 @@ class Algebra {
    * @param  int $x
    * @return int $x*$R^-1 (mod $n)
    */
-  public static function montgomeryReduction($n, $n_, $R, $x) {
+  public static function montgomeryReduction(int $n, int $n_, int $R, int $x) {
     $u = ($x * $n_) % $R;
     $v = ($x + $u * $n) / $R;
-    if ($v > $n)
+    if ($v > $n) {
       $v = $v - $n;
+    }
     //echo "montgomeryReduction(n=$n, n'=$n_, R=$R, x=$x)=".$v;
     echo $v;
     return $v;
@@ -241,8 +241,9 @@ class Algebra {
       echo "\n" . $i . ":\t" . $x . "\t" . $a . "\t" . $b . "\t" . $x2 . "\t" . $a2 . "\t" . $b2 . "\t";
       if ($x == $x2) {
         $r = $b - $b2;
-        if ($r == 0)
+        if ($r == 0) {
           throw new IllegalArgumentException();
+        }
         return (self::invMod($r, $n) * ($a2 - $a)) % $n;
       }
     }
