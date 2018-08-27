@@ -33,13 +33,13 @@ class AbstractCssClassAdapter implements CssClassifiableContent {
   /**
    * Constructor
    * 
-   * @param ComponentInterface $component
+   * @param Component $component
    */
   public function __construct(CssClassifiableContent $component) {
     $this->component = $component;
   }
-  
-  public function getComponent():CssClassifiableContent{
+
+  public function getComponent(): CssClassifiableContent {
     return $this->component;
   }
 

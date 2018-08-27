@@ -13,7 +13,7 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\Content;
 use ArrayAccess;
 use Iterator;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 
 /**
  * Description of HiddenInputs
@@ -36,7 +36,7 @@ class HiddenInputs implements Content, ArrayAccess, Iterator {
   }
 
   public function getHtml(): string {
-    $output = new Container();
+    $output = new PlainContainer();
     foreach ($this->inputs as $name => $value) {
       $output->offsetSet($name, new HiddenInput($name, $value));
     }

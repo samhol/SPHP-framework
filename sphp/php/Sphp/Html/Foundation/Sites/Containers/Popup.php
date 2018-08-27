@@ -102,8 +102,8 @@ class Popup extends Div {
   /**
    * Returns a controller component pointing to the Modal component
    *
-   * @param  ComponentInterface $content the controller component
-   * @return ComponentInterface a controller component pointing to this Modal
+   * @param  Component $content the controller component
+   * @return Component a controller component pointing to this Modal
    */
   public function createController(Component $content): Component {
     $content->setAttribute('data-open', $this->identify());

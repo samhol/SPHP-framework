@@ -5,7 +5,7 @@ namespace Sphp\Html;
 use Sphp\Core\Util\LocalFile;
 
 $fileLoader = new LocalFile(\Sphp\Manual\LOREM_IPSUM_PATH);
-$container = new Container();
+$container = new PlainContainer();
 $container["heading"] = (new headings\H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");
 $container["heading"]->setTitle("Lorem ipsum!");
 $container["paragraph"] = (new Paragraph())

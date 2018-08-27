@@ -14,7 +14,7 @@ use IteratorAggregate;
 use Traversable;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\NonVisualContent;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Programming\Script;
 
 /**
@@ -31,7 +31,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
       \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Container
+   * @var PlainContainer
    */
   private $container;
 
@@ -39,7 +39,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * Constructor
    */
   public function __construct() {
-    $this->container = new Container;
+    $this->container = new PlainContainer;
   }
 
   /**
@@ -203,25 +203,25 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
 
   /**
    * 
-   * @return Container
+   * @return PlainContainer
    */
-  public function getMetaTags(): Container {
+  public function getMetaTags(): PlainContainer {
     return $this->container->getComponentsByObjectType(MetaData::class);
   }
 
   /**
    * 
-   * @return Container
+   * @return PlainContainer
    */
-  public function getLinkTags(): Container {
+  public function getLinkTags(): PlainContainer {
     return $this->container->getComponentsByObjectType(LinkTag::class);
   }
 
   /**
    * 
-   * @return Container
+   * @return PlainContainer
    */
-  public function getScripts(): Container {
+  public function getScripts(): PlainContainer {
     return $this->container->getComponentsByObjectType(Script::class);
   }
 

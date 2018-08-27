@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableContent;
 use ArrayIterator;
+use Traversable;
 
 /**
  * Implements an Foundation 6 Accordion
@@ -93,9 +94,9 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
   /**
    * Returns a new iterator to iterate through inserted components 
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->getInnerContainer()->getIterator();
   }
 

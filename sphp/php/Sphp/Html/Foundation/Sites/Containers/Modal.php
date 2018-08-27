@@ -32,7 +32,7 @@ class Modal implements Content, ClosableInterface {
   /**
    * the Modal reveal controller
    *
-   * @var ComponentInterface
+   * @var Component
    */
   private $trigger;
 
@@ -44,7 +44,7 @@ class Modal implements Content, ClosableInterface {
   /**
    * Constructor
    *
-   * @param ComponentInterface|string $trigger
+   * @param Component|string $trigger
    * @param mixed $popup the content of the component
    */
   public function __construct($trigger, $popup = null) {
@@ -58,7 +58,7 @@ class Modal implements Content, ClosableInterface {
   /**
    * Returns the opener component
    * 
-   * @return ComponentInterface the opener component
+   * @return Component the opener component
    */
   public function getTrigger(): Component {
     return $this->trigger;
@@ -76,7 +76,7 @@ class Modal implements Content, ClosableInterface {
   /**
    * Sets the opener component
    * 
-   * @param  ComponentInterface $trigger the opener component
+   * @param  Component $trigger the opener component
    * @param mixed $popup the content of the component
    */
   public function setTrigger(Component $trigger) {
@@ -109,10 +109,10 @@ class Modal implements Content, ClosableInterface {
    * that implements magic method `__toString()` is allowed.
    *
    * @param  mixed $content the controller component
-   * @return ComponentInterface a controller component pointing to this Modal
+   * @return Component a controller component pointing to this Modal
    */
   public function createController($content) {
-    if (!$content instanceof ComponentInterface) {
+    if (!$content instanceof Component) {
       $content = new \Sphp\Html\Span($content);
     }
     return $this->popup->createController($content);

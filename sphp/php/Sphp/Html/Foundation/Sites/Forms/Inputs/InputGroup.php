@@ -14,7 +14,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\TextualInputInterface;
 use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Html\Span;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Traversable;
@@ -38,7 +38,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Container 
+   * @var PlainContainer 
    */
   private $group;
 
@@ -48,14 +48,14 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
   public function __construct() {
     parent::__construct('div');
     $this->cssClasses()->protect("input-group");
-    $this->group = new Container;
+    $this->group = new PlainContainer;
   }
 
   /**
    * Appends a span label to the group
    *
    * @param  mixed $content the content of the prefix
-   * @return ComponentInterface appended instance
+   * @return Component appended instance
    */
   public function prepend($content): Component {
     if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
@@ -79,7 +79,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * Appends a span label to the group
    *
    * @param  mixed $content the content of the prefix
-   * @return ComponentInterface appended instance
+   * @return Component appended instance
    */
   public function append($content): Component {
     if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {

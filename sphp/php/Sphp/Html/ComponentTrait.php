@@ -14,7 +14,7 @@ use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
 
 /**
- * Trait implements functionality of {@link ComponentInterface}
+ * Trait implements functionality of a Component Interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

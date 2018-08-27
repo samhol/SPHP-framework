@@ -16,7 +16,7 @@ use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\DateTime\Calendars\LogViews\LogViewBuilder;
 
 /**
@@ -49,7 +49,7 @@ class DateInfo implements Content {
    * Constructor
    * 
    * @param DiaryDate $date
-   * @param ComponentInterface|string $trigger
+   * @param Component|string $trigger
    */
   public function __construct(DiaryDate $date, $trigger) {
     $this->date = $date;
@@ -73,8 +73,8 @@ class DateInfo implements Content {
     return $popup;
   }
 
-  public function createHolidayNotes(): Container {
-    $ul = new Container();
+  public function createHolidayNotes(): PlainContainer {
+    $ul = new PlainContainer();
     if (count($this->date->getHolidays()) > 0) {
       $ul->appendMd("**HOLIDAYS:**");
       foreach ($this->date as $log) {

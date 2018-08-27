@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\TraversableContent;
 use Traversable;
 
@@ -29,7 +29,7 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Container 
+   * @var PlainContainer 
    */
   private $content;
 
@@ -45,7 +45,7 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
    */
   public function __construct(string $tagname) {
     parent::__construct($tagname);
-    $this->content = new Container();
+    $this->content = new PlainContainer();
     $this->layoutManager = new GridLayoutManager($this);
   }
 

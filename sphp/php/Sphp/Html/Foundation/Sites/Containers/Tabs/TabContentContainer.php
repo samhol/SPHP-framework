@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
+use Traversable;
 
 /**
  * Implements a container for Foundation Tabs 
@@ -121,9 +122,9 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
   /**
    * Returns a new iterator to iterate through inserted components 
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->getInnerContainer()->getIterator();
   }
 

@@ -12,6 +12,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Html\Forms\Inputs\HiddenInputs;
 
 /**
  * Defines required properties for a traversable HTML &lt;form&gt; component
@@ -58,7 +59,7 @@ interface TraversableForm extends FormInterface, TraversableContent {
   /**
    * Returns all named {@link HiddenInput} components from the form
    *
-   * @return ContainerInterface containing matching sub components
+   * @return HiddenInputs containing matching sub components
    */
-  public function getHiddenInputs(): Inputs\HiddenInputs;
+  public function getHiddenInputs(): HiddenInputs;
 }

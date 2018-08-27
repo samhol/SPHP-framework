@@ -15,7 +15,7 @@ use Traversable;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\ContentParser;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 
 /**
  * Implements a Foundation framework based XY Block Grid
@@ -44,7 +44,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
       \Sphp\Html\ContentParsingTrait;
 
   /**
-   * @var Container
+   * @var PlainContainer
    */
   private $columns;
 
@@ -59,7 +59,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * @param  string $layout,... block grid layout parameters
    */
   public function __construct(...$layout) {
-    $this->columns = new Container();
+    $this->columns = new PlainContainer();
     parent::__construct('div');
     $this->layoutManager = new BlockGridLayoutManager($this);
     $this->layout()->setLayouts($layout);

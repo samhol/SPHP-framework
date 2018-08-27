@@ -14,7 +14,7 @@ use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Lists\StandardList;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
-use Sphp\Html\ContainerInterface;
+use Sphp\Html\Container;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 
 /**
@@ -27,7 +27,7 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
  */
 class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): ContainerInterface {
+  public function buildContent(Exercise $exercise): Container {
     $container = parent::buildContent($exercise);
     if ($exercise instanceof WeightLiftingExercise) {
       $container->appendMd(<<<MD

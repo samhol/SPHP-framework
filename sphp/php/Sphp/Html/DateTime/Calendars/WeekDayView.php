@@ -16,7 +16,7 @@ use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Media\Icons\Svg;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 
 /**
  * Implements a weekday vire for a calendar month
@@ -81,8 +81,8 @@ class WeekDayView implements CssClassifiableContent {
     return $timeTag;
   }
 
-  protected function buildDate(): Container {
-    $container = new Container;
+  protected function buildDate(): PlainContainer {
+    $container = new PlainContainer;
     $container->append($this->container);
     $timeTag = new TimeTag($this->diaryDay->getDateTime(), $this->diaryDay->format('j'));
     $timeTag->setAttribute('title', $this->diaryDay->format('l, Y-m-d'));

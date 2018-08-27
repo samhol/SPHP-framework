@@ -12,6 +12,7 @@ namespace Sphp\Filters;
 
 use IteratorAggregate;
 use ArrayIterator;
+use Traversable;
 
 /**
  * An aggregate of filters
@@ -79,9 +80,9 @@ class FilterAggregate extends AbstractFilter implements IteratorAggregate {
   /**
    * Returns the iterator
    * 
-   * @return ArrayIterator iterator over filters
+   * @return Traversable iterator over filters
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return new ArrayIterator($this->filters);
   }
 

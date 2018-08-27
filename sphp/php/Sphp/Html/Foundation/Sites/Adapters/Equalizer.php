@@ -29,7 +29,7 @@ class Equalizer extends AbstractComponentAdapter {
   /**
    * Constructor
    * 
-   * @param ComponentInterface $equalizer
+   * @param Component $equalizer
    * @param string|null $name
    */
   public function __construct(Component $equalizer, string $name = null) {
@@ -83,7 +83,7 @@ class Equalizer extends AbstractComponentAdapter {
   /**
    * Adds an equalizer observer
    * 
-   * @param  ComponentInterface $observer
+   * @param  Component $observer
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
@@ -98,7 +98,7 @@ class Equalizer extends AbstractComponentAdapter {
   /**
    * Removes an equalizer observer
    * 
-   * @param  ComponentInterface $observer
+   * @param  Component $observer
    * @return $this for a fluent interface
    */
   public function removeObserver(Component $observer) {
@@ -108,13 +108,13 @@ class Equalizer extends AbstractComponentAdapter {
 
   /**
    * 
-   * @param  ContainerComponentInterface $cont
+   * @param  ContainerComponent $cont
    * @return Equalizer
    */
   public static function equalizeContainer(ContainerComponent $cont): Equalizer {
     $equalizer = new static($cont);
     foreach ($cont as $component) {
-      if ($component instanceof ComponentInterface) {
+      if ($component instanceof Component) {
         $equalizer->addObserver($component);
       }
     }

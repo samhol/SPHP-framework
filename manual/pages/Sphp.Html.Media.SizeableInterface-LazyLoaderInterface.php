@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $sizeableInterface = Manual\api()->classLinker(SizeableMedia::class);
 $sizeableTrait = Manual\api()->classLinker(SizeableTrait::class);
-$componentInterface = Manual\api()->classLinker(\Sphp\Html\Component::class);
+$component = Manual\api()->classLinker(\Sphp\Html\Component::class);
 
 $lazyLoader = Manual\api()->classLinker(LazyMedia::class);
 $lazyLoaderTrait = Manual\api()->classLinker(LazyMediaSourceTrait::class);
@@ -33,6 +33,6 @@ and extensible jQuery plugin with build-in support of jQueryMobile framework.
  * $sizeableTrait implementing $sizeableInterface.    
  * $lazyLoaderTrait implementing $lazyLoader.
  
-Both of these traits can be used e.g with $componentInterface when implementing new visual media content. 
+Both of these traits can be used e.g with $component when implementing new visual media content. 
 MD
 );

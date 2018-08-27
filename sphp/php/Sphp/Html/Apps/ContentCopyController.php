@@ -32,7 +32,7 @@ class ContentCopyController implements Content {
   private $target;
 
   /**
-   * @var ComponentInterface 
+   * @var Component
    */
   private $button;
 
@@ -46,7 +46,7 @@ class ContentCopyController implements Content {
    * `__toString()` is allowed.
    *
    * @param  mixed|mixed[] $button the copier component
-   * @param  ComponentInterface|string $target the component or the id
+   * @param  Component|string $target the component or the id
    *         attribute of the target container
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
@@ -64,7 +64,7 @@ class ContentCopyController implements Content {
 
   /**
    * 
-   * @return ComponentInterface
+   * @return Component
    */
   public function getController() {
     return $this->button;
@@ -72,12 +72,12 @@ class ContentCopyController implements Content {
 
   /**
    * 
-   * @param  ComponentInterface $target
+   * @param  Component $target
    * @return $this for a fluent interface
    */
   public function setCopyTarget($target) {
     if ($target !== $this->target) {
-      if ($target instanceof ComponentInterface) {
+      if ($target instanceof Component) {
         $id = $target->identify(32);
       } else {
         $id = $target;

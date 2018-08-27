@@ -36,7 +36,7 @@ class PopupLayoutManager extends ColourableLayoutManager {
   /**
    * Constructor
    *
-   * @param ComponentInterface $component
+   * @param Component $component
    */
   public function __construct(Component $component) {
     parent::__construct($component);

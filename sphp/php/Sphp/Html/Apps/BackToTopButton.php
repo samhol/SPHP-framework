@@ -27,7 +27,7 @@ class BackToTopButton implements Content {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var ComponentInterface 
+   * @var Component
    */
   private $component;
 
@@ -41,7 +41,7 @@ class BackToTopButton implements Content {
     $component->attributes()->demand('data-sphp-back-to-top-button');
     $this->component = $component;
   }
-  
+
   /**
    * Destructor
    */

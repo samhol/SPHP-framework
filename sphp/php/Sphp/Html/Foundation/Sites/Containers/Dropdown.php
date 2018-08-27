@@ -34,12 +34,12 @@ class Dropdown implements Content {
   ];
 
   /**
-   * @var ComponentInterface
+   * @var Component
    */
   private $trigger;
 
   /**
-   * @var ComponentInterface
+   * @var Component
    */
   private $dropdown;
 
@@ -50,7 +50,7 @@ class Dropdown implements Content {
    * @param  mixed $dropdown the dropdown or the content of the dropdown
    */
   public function __construct($trigger, $dropdown) {
-    if (!$dropdown instanceof ComponentInterface) {
+    if (!$dropdown instanceof Component) {
       $dropdown = new \Sphp\Html\Div($dropdown);
     }
     $this->dropdown = $dropdown;
@@ -157,7 +157,7 @@ class Dropdown implements Content {
    * @return $this for a fluent interface
    */
   public function setTrigger($trigger) {
-    if (!($trigger instanceof ComponentInterface)) {
+    if (!($trigger instanceof Component)) {
       $trigger = new \Sphp\Html\Span($trigger);
     }
     $this->trigger = $trigger
@@ -168,7 +168,7 @@ class Dropdown implements Content {
   /**
    * Returns the trigger component controlling this dropdown
    *
-   * @return ComponentInterface the trigger component controlling this dropdown
+   * @return Component the trigger component controlling this dropdown
    */
   public function getTrigger() {
     return $this->trigger;

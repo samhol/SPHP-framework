@@ -9,10 +9,10 @@ $ns = Manual\api()->namespaceLink(__NAMESPACE__);
 $documentLink = Manual\api()->classLinker(Document::class);
 $contentInterface = Manual\api()->classLinker(Content::class);
 $exeption = Manual\php()->classLinker(\Exception::class);
-$componentInterface = Manual\api()->classLinker(Component::class);
+$component = Manual\api()->classLinker(Component::class);
 $emptyTag = Manual\api()->classLinker(EmptyTag::class);
-$containerInterface = Manual\api()->classLinker(ContainerInterface::class);
-$containerComponentInterface = Manual\api()->classLinker(ContainerComponent::class);
+$container = Manual\api()->classLinker(Container::class);
+$containerComponent = Manual\api()->classLinker(ContainerComponent::class);
 $contentTrait = Manual\api()->classLinker(ContentTrait::class);
 $w3schools = Manual\w3schools();
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -55,9 +55,9 @@ two of these methods leaving the implementation of the {$contentInterface->metho
 to the inheritor. Using this trait ensures that {$contentInterface->methodLink("__toString")}
 will never throw any type of {$exeption} during execution.
 
-##The $componentInterface interface and its $abstractTag implementation
+##The $component interface and its $abstractTag implementation
 
-The $componentInterface interface declares a group of methods for HTML attribute handling.
+The $component interface declares a group of methods for HTML attribute handling.
 It is implemented in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework.
 It also defines the tagname property in {$abstractTag->methodLink("__construct")}.
@@ -67,9 +67,9 @@ It also defines the tagname property in {$abstractTag->methodLink("__construct")
 The $emptyTag class is usable when generating empty HTML elements like:
 {$w3schools->img}, {$w3schools->br}, {$w3schools->hr}, {$w3schools->input}, {$w3schools->wbr}, ...
 
-##The $containerInterface and $containerComponentInterface interfaces
+##The $container and $containerComponent interfaces
 
-The $containerInterface declares the properties
+The $container interface declares the properties
 for an HTML container. Such container can store anything that can be output as a
 PHP string.
 MD
@@ -78,10 +78,10 @@ MD
 \Sphp\Manual\visualize('Sphp/Html/HtmlContainer.php');
 $containerTag = Manual\api()->classLinker(ContainerTag::class);
 Manual\md(<<<MD
-The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
+The $containerComponent declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.
 
-Furthermore all actual framework components implement $componentInterface
+Furthermore all actual framework components implement $component
 }}
 
 MD

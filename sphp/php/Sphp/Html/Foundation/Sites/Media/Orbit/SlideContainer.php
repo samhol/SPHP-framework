@@ -13,6 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\VideoPlayerInterface;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
+use Traversable;
 
 /**
  * Implements a slide container for Foundation Orbit
@@ -131,7 +132,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
     return count($this->slides);
   }
 
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return new \Sphp\Html\Iterator($this->slides);
   }
 

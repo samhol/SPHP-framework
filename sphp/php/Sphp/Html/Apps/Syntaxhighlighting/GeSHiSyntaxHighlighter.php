@@ -167,7 +167,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
   /**
    * Sets the copier button
    *
-   * @param  null|ComponentInterface $button button or button content
+   * @param  null|Component $button button or button content
    * @return ContentCopyController the attached button
    */
   public function attachContentCopyController(Component $button = null) {
@@ -197,7 +197,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    * @return $this for a fluent interface
    */
   public function setDefaultContentCopyController($button = 'Copy') {
-    if (!$button instanceof ComponentInterface) {
+    if (!$button instanceof Component) {
       $button = new Button($button);
     }
     $this->copyBtn = $this->attachContentCopyController($button);

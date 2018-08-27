@@ -12,7 +12,7 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\Script;
 use Sphp\Html\Programming\ScriptSrc;

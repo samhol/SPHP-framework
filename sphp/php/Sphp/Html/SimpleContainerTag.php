@@ -48,7 +48,7 @@ class SimpleContainerTag extends AbstractTag {
    * @param  string $tagName the name of the tag
    * @param  mixed $content the content of the component
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
-   * @param  ContainerInterface $contentContainer the inner content container of the component
+   * @param  Container $contentContainer the inner content container of the component
    * @throws \InvalidArgumentException if the tagname is not valid
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */

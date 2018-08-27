@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\Head\Head;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Head\Meta;
+use Traversable;
 
 /**
  * Implements an HTML &lt;html&gt; tag
@@ -220,7 +221,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    *
    * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->body->getIterator();
   }
 

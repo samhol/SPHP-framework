@@ -26,9 +26,10 @@ class QtipAdapter extends AbstractComponentAdapter {
   /**
    * Constructor
    * 
-   * @param ComponentInterface $component
+   * @param Component $component
+   * @param string|null $qtip the value of the title attribute
    */
-  public function __construct(Component $component, $qtip = null) {
+  public function __construct(Component $component, string $qtip = null) {
     parent::__construct($component);
     if ($qtip !== null) {
       $this->setQtip($qtip);
@@ -42,7 +43,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
-  public function setQtip($qtip) {
+  public function setQtip(string $qtip = null) {
     $this->getComponent()->attributes()
             ->set('title', $qtip)
             ->set('data-sphp-qtip', true);

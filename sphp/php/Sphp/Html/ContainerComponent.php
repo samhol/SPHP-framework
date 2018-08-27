@@ -31,6 +31,6 @@ namespace Sphp\Html;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface ContainerComponent extends Component, ContainerInterface {
+interface ContainerComponent extends Component, Container {
   
 }

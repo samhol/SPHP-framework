@@ -25,14 +25,14 @@ class AbstractComponentAdapter implements Adapter {
 
   /**
    *
-   * @var ComponentInterface
+   * @var Component
    */
   private $component;
 
   /**
    * Constructor
    * 
-   * @param ComponentInterface $component
+   * @param Component $component
    */
   public function __construct(Component $component) {
     $this->component = $component;
@@ -57,7 +57,7 @@ class AbstractComponentAdapter implements Adapter {
 
   /**
    * 
-   * @return ComponentInterface
+   * @return Component
    */
   public function getComponent(): Component {
     return $this->component;

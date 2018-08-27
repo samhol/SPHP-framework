@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
+use Traversable;
 
 /**
  * Class TabTitleContainer
@@ -38,7 +39,6 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
     $this->attributes()->demand('data-tabs');
   }
 
-
   /**
    * Appends the given tab controller instance to the container
    *
@@ -60,7 +60,6 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
     return $this->getInnerContainer()->offsetExists($index);
   }
 
-
   /**
    * Returns the tab controller at specified index
    * 
@@ -78,9 +77,9 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
   /**
    * Returns a new iterator to iterate through inserted components 
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->getInnerContainer()->getIterator();
   }
 

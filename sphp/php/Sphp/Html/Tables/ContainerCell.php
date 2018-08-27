@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\ContainerInterface;
+use Sphp\Html\Container;
 
 /**
  * Interface is the base definition for all {@link Tr} content (table cells)
@@ -31,6 +31,6 @@ use Sphp\Html\ContainerInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ContainerCell extends Cell, ContainerInterface {
+interface ContainerCell extends Cell, Container {
   
 }

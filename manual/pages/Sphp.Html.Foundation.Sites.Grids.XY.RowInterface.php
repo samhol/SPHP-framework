@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Manual;
 
 $gridIf = Manual\api()->classLinker(GridInterface::class);
-$htmlCont = Manual\api()->classLinker(\Sphp\Html\Container::class);
+$htmlCont = Manual\api()->classLinker(\Sphp\Html\PlainContainer::class);
 //$grid = \Sphp\Manual\api()->classLinker(Grid::class);
 $row = Manual\api()->classLinker(Row::class);
 $rowIf = Manual\api()->classLinker(RowInterface::class);

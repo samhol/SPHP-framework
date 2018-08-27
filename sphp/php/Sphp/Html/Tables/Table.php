@@ -13,7 +13,8 @@ namespace Sphp\Html\Tables;
 use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
+use Traversable;
 
 /**
  * Implements an HTML &lt;table&gt; tag.
@@ -289,10 +290,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Create a new iterator to iterate through inserted elements in the table
    *
-   * @return Container iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
-    $it = new Container();
+  public function getIterator(): Traversable {
+    $it = new PlainContainer();
     if ($this->caption !== null) {
       $it['caption'] = $this->caption;
     }

@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Traversable;
 
 /**
@@ -26,7 +26,7 @@ use Traversable;
 abstract class AbstractRow extends AbstractComponent implements \IteratorAggregate, RowInterface {
 
   /**
-   * @var Container
+   * @var PlainContainer
    */
   private $columns;
 
@@ -38,7 +38,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
   public function __construct($tagname) {
     parent::__construct($tagname, null);
     $this->layoutManager = new RowLayoutManager($this);
-    $this->columns = new Container();
+    $this->columns = new PlainContainer();
   }
 
   public function layout(): RowLayoutManager {

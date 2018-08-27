@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\Content;
 use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
+use Traversable;
 
 /**
  * Implements Foundation Tabs
@@ -112,9 +113,9 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
   /**
    * Returns a new iterator to iterate through inserted components 
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->tabsContent->getIterator();
   }
 

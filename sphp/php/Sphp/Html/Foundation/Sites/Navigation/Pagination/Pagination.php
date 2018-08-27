@@ -14,10 +14,11 @@ use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
 use Countable;
 use ArrayIterator;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Li;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\OutOfRangeException;
+use Traversable;
 
 /**
  * Implements a Pagination component
@@ -307,9 +308,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * Returns a new iterator to iterate through inserted {@link Page} components 
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return new ArrayIterator($this->pages);
   }
 
@@ -324,7 +325,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   public function contentToString(): string {
-    $cont = new Container();
+    $cont = new PlainContainer();
     Arrays::pointToKey($this->pages, $this->current);
     $beforeKey = key($this->pages);
     $afterKey = key($this->pages);

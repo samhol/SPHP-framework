@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\Component;
 use Sphp\Manual;
 
-$componentInterface = \Sphp\Manual\api()->classLinker(Component::class);
+$component = \Sphp\Manual\api()->classLinker(Component::class);
 $buttonInterface = \Sphp\Manual\api()->classLinker(ButtonInterface::class);
 $buttonAdapter = \Sphp\Manual\api()->classLinker(Button::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -57,7 +57,7 @@ $blockGrid->printHtml();
 Manual\md(<<<MD
 ##$buttonAdapter <small>Converts anything to button style</small>
 
-This adapter can transform most $componentInterface objects to Foundation styled buttons.
+This adapter can transform most $component objects to Foundation styled buttons.
 MD
 );
 $splitButton = \Sphp\Manual\api()->classLinker(SplitButton::class);

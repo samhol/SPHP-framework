@@ -11,8 +11,8 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\ContainerInterface;
 use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 
 /**
  * Implements an abstract menu
@@ -29,7 +29,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   private $defaultTarget = '_self';
 
   /**
-   * @var ContainerInterface 
+   * @var Container
    */
   private $items;
 
@@ -38,11 +38,11 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * 
    * @param string $tagname
    * @param AttributeManager $attrManager
-   * @param ContainerInterface $contentContainer
+   * @param Container $contentContainer
    */
-  public function __construct(string $tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(string $tagname, AttributeManager $attrManager = null, Container $contentContainer = null) {
     if ($contentContainer === null) {
-      $contentContainer = new Container();
+      $contentContainer = new PlainContainer();
     }
     $this->items = $contentContainer;
     parent::__construct($tagname, $attrManager);

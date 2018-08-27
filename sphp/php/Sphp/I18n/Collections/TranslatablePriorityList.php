@@ -17,6 +17,7 @@ use IteratorAggregate;
 use Sphp\I18n\Translatable;
 use Zend\Stdlib\PriorityQueue;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
+use Traversable;
 
 /**
  * Implements a list that holds {@link Translatable} objects in a reusable priority queue
@@ -103,9 +104,9 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   /**
    * Create a new iterator from the instance
    *
-   * @return \ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return clone $this->messages->getIterator();
   }
 

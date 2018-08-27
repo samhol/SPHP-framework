@@ -34,7 +34,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   /**
    * Constructor
    *
-   * @param ComponentInterface $component
+   * @param Component $component
    * @param int $max
    */
   public function __construct(Component $component, int $max = 8) {

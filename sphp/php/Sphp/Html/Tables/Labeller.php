@@ -44,7 +44,7 @@ class Labeller {
   protected function insertLabelsToRow(Row $row) {
     foreach ($this->labels as $column => $label) {
       $cell = $row->getCell($column);
-      if ($cell instanceof \Sphp\Html\ComponentInterface) {
+      if ($cell instanceof \Sphp\Html\Component) {
         $row->getCell($column)->setAttribute('data-label', $label);
       }
     }

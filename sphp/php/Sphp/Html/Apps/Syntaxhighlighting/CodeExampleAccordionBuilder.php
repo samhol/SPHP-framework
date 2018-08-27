@@ -77,10 +77,6 @@ class CodeExampleAccordionBuilder implements Content {
     $this->setHtmlFlowVisibility($outputAsHtmlFlow);
   }
 
-  public function __destruct() {
-    // unset($this->codePane, $this->outputSyntaxPane, $this->outputPane);
-  }
-
   /**
    * 
    * @param  string $path the file path of the presented example PHP code

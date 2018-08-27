@@ -100,8 +100,8 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Sets the default attributes to a given component
    * 
-   * @param  ComponentInterface $a the component to modify
-   * @return ComponentInterface returns the modified component
+   * @param  Component $a the component to modify
+   * @return Component returns the modified component
    */
   public function insertDefaultsTo(Component $a): Component {
     if (!empty($this->attributes)) {

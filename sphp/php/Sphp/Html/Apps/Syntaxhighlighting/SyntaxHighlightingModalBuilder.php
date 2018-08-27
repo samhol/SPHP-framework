@@ -46,7 +46,7 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighter {
   /**
    * Constructor
    * 
-   * @param type $trigger
+   * @param string|component $trigger
    * @param type $title
    */
   public function __construct($trigger, $title = null) {

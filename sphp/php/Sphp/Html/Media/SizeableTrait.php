@@ -13,7 +13,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
- * Trait implements the {@link SizeableInterface} interface for a {@link \Sphp\Html\ComponentInterface}
+ * Trait implements the SizeableMedia interface
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

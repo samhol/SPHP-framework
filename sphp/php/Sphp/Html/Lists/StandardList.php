@@ -16,7 +16,7 @@ use IteratorAggregate;
 use ArrayAccess;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Traversable;
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Exceptions\RuntimeHtmlException;
@@ -34,7 +34,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Container 
+   * @var PlainContainer 
    */
   private $items;
 
@@ -47,7 +47,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    */
   public function __construct(string $tagName, HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
-    $this->items = new Container();
+    $this->items = new PlainContainer();
   }
 
   public function __destruct() {

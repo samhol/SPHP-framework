@@ -14,7 +14,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\I18n\Datetime\CalendarUtils;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Div;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\DateTime\DateWrapper;
 use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
@@ -107,8 +107,8 @@ class MonthView extends AbstractComponent {
     return $this;
   }
 
-  protected function build(): Container {
-    $container = new Container();
+  protected function build(): PlainContainer {
+    $container = new PlainContainer();
     $container->append($this->generateTop());
     $container->append($this->createHead());
     $container->append($this->parseWeeks());
@@ -126,10 +126,10 @@ class MonthView extends AbstractComponent {
 
   /**
    * 
-   * @return Container
+   * @return PlainContainer
    */
-  protected function parseWeeks(): Container {
-    $container = new Container();
+  protected function parseWeeks(): PlainContainer {
+    $container = new PlainContainer();
     if ($this->firstOf->getWeekDay() !== 1) {
       $monday = $this->firstOf->modify('last monday');
     } else {

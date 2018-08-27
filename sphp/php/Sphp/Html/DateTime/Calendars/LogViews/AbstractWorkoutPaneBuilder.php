@@ -10,13 +10,12 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\ContainerInterface;
 use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
-use Sphp\Html\Content;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Tags;
+use Sphp\Html\Lists\StandardList;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -45,15 +44,15 @@ abstract class AbstractWorkoutPaneBuilder {
    * Builds exercise pane title content
    * 
    * @param  Exercise $exercise
-   * @return ContainerInterface exercise pane title content
+   * @return Container exercise pane title content
    */
-  public function buildTitleContent(Exercise $exercise): ContainerInterface {
+  public function buildTitleContent(Exercise $exercise): Container {
     $title = Tags::span($exercise->getName());
     $title->append(Tags::strong(" ({$exercise->getDescription()})"));
     return $title;
   }
 
-  public function buildSetList(Exercise $exercise): \Sphp\Html\Lists\StandardList {
+  public function buildSetList(Exercise $exercise): StandardList {
     if ($exercise->count() === 1) {
       $list = new Ul();
     } else {
@@ -69,10 +68,10 @@ abstract class AbstractWorkoutPaneBuilder {
    * Builds exercise pane content
    * 
    * @param  Exercise $exercise
-   * @return ContainerInterface exercise pane content
+   * @return Container exercise pane content
    */
-  public function buildContent(Exercise $exercise): ContainerInterface {
-    $container = new Container;
+  public function buildContent(Exercise $exercise): Container {
+    $container = new PlainContainer;
     $container->append($this->buildSetList($exercise));
     return $container;
   }

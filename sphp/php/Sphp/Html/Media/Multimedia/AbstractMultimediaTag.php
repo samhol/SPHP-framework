@@ -12,7 +12,7 @@ namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Traversable;
 use Sphp\Html\Iterator;
 use Sphp\Html\TraversableContent;
@@ -29,12 +29,12 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Container
+   * @var PlainContainer
    */
   private $sources;
 
   /**
-   * @var Container
+   * @var PlainContainer
    */
   private $tracks;
 
@@ -47,8 +47,8 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    */
   public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, $sources = null) {
     parent::__construct($tagname, $attrManager);
-    $this->sources = new Container();
-    $this->tracks = new Container();
+    $this->sources = new PlainContainer();
+    $this->tracks = new PlainContainer();
     if ($sources !== null) {
       foreach (is_array($sources) ? $sources : [$sources] as $src) {
         if ($src instanceof Source) {

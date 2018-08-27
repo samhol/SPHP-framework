@@ -14,7 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 
 /**
  * Abstract implementation of ann HTML &lt;option&gt; component container
@@ -40,7 +40,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Container 
+   * @var PlainContainer 
    */
   private $options;
 
@@ -60,7 +60,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    */
   public function __construct(string $tagname, $opt = null) {
     parent::__construct($tagname);
-    $this->options = new Container();
+    $this->options = new PlainContainer();
     if (is_array($opt)) {
       $this->appendArray($opt);
     } else if ($opt instanceof SelectMenuContentInterface) {

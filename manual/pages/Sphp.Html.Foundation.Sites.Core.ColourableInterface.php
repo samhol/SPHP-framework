@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 
 $colourableInterface = \Sphp\Manual\api()->classLinker(Colourable::class);
 $colourableAdapter = \Sphp\Manual\api()->classLinker(ColourableAdapter::class);
-$ComponentInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\Component::class);
+$Component = \Sphp\Manual\api()->classLinker(\Sphp\Html\Component::class);
 
 \Sphp\Manual\md(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
@@ -23,7 +23,7 @@ Valid screen size parameter values and corresponding screen widths:
 
 ##Implementing $colourableInterface:  <small>The $colourableAdapter adapter</small>
 
-$colourableAdapter provides a straightforward adapter for any $ComponentInterface component
+$colourableAdapter provides a straightforward adapter for any $Component component
 to be used as a $colourableInterface component.
 MD
 );

@@ -15,6 +15,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\TraversableTrait;
+use Traversable;
 
 /**
  * Implements a Breadcrumbs component
@@ -124,7 +125,7 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
     return $this;
   }
 
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return $this->items->getIterator();
   }
 

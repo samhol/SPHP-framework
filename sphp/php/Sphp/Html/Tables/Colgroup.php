@@ -11,7 +11,7 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 
 /**
  * Implements an HTML &lt;colgroup&gt; tag
@@ -24,7 +24,7 @@ use Sphp\Html\Container;
 class Colgroup extends AbstractComponent implements TableContent {
 
   /**
-   * @var Container
+   * @var PlainContainer
    */
   private $cols;
 
@@ -33,7 +33,7 @@ class Colgroup extends AbstractComponent implements TableContent {
    */
   public function __construct() {
     parent::__construct('colgroup');
-    $this->cols = new Container;
+    $this->cols = new PlainContainer;
   }
 
   /**

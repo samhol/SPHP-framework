@@ -5,7 +5,7 @@ namespace Sphp\Html;
 use Sphp\Html\Flow\Paragraph;
 use Sphp\Html\Flow\Headings\H5;
 
-$container = new Container();
+$container = new PlainContainer();
 $container["heading"] = (new H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");
 $container["paragraph"] = (new Paragraph())
         ->appendRawFile("manual/snippets/loremipsum.html");

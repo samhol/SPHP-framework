@@ -16,8 +16,8 @@ use Sphp\Html\Tags;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
 use Sphp\Html\Content;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Container;
-use Sphp\Html\ContainerInterface;
 
 /**
  * Implements pane builder for timed exercises
@@ -29,8 +29,8 @@ use Sphp\Html\ContainerInterface;
  */
 class TimedExercisePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): ContainerInterface {
-    $container = new Container();
+  public function buildContent(Exercise $exercise): Container {
+    $container = new PlainContainer();
     if ($exercise instanceof TimedExercise) {
       if ($exercise->count() === 1) {
         $list = new Ul();

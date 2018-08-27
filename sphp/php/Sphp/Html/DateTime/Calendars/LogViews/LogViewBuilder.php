@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 
 /**
@@ -32,10 +32,10 @@ class LogViewBuilder {
    * Returns a HTML object containing log view for a given day
    * 
    * @param  DiaryDate $date
-   * @return Container containing log view for a given day
+   * @return PlainContainer containing log view for a given day
    */
-  public function build(DiaryDate $date): Container {
-    $conntainer = new Container();
+  public function build(DiaryDate $date): PlainContainer {
+    $conntainer = new PlainContainer();
     $holidays = HolidayLogView::instance();
     $workouts = WorkoutLogView::instance();
     /* foreach ($date as $log) {

@@ -29,7 +29,7 @@ trait TraversableTrait {
   public function getComponentsBy(callable $rules): TraversableContent {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
-    $result = new Container();
+    $result = new PlainContainer();
     foreach ($this as $value) {
       //echo \Sphp\Tools\ClassUtils::getRealClass($value);
       if ($rules($value)) {

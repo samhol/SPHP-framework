@@ -186,7 +186,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * 
    * @return Traversable external iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return new ArrayIterator($this->toArray());
   }
 

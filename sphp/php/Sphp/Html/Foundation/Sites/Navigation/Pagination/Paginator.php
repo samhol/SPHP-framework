@@ -14,10 +14,11 @@ use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
 use Countable;
 use ArrayIterator;
-use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Li;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\OutOfRangeException;
+use Traversable;
 
 /**
  * Implements a Pagination component
@@ -134,7 +135,7 @@ class Paginator extends AbstractComponent implements IteratorAggregate, Countabl
   public function setCurrentPage(int $index) {
     if (!array_key_exists($index, $this->pages)) {
       throw new OutOfRangeException("Index '$index' does not exist in the pagination");
-    } 
+    }
     if (array_key_exists($this->current, $this->pages)) {
       $this->getPage($this->current)->setCurrent(false);
     }
@@ -155,7 +156,6 @@ class Paginator extends AbstractComponent implements IteratorAggregate, Countabl
     }
     return $index;
   }
-
 
   /**
    * 
@@ -290,9 +290,9 @@ class Paginator extends AbstractComponent implements IteratorAggregate, Countabl
   /**
    * Returns a new iterator to iterate through inserted {@link Page} components 
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversableb {
     return new ArrayIterator($this->pages);
   }
 
@@ -307,7 +307,7 @@ class Paginator extends AbstractComponent implements IteratorAggregate, Countabl
   }
 
   public function contentToString(): string {
-    $cont = new Container();
+    $cont = new PlainContainer();
     Arrays::pointToKey($this->pages, $this->current);
     $beforeKey = key($this->pages);
     $afterKey = key($this->pages);

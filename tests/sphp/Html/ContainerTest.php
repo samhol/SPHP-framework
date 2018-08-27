@@ -5,15 +5,15 @@ namespace Sphp\Html;
 class ContainerTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var ContainerInterface
+   * @var Container
    */
   protected $container;
 
   /**
-   * @return Container
+   * @return PlainContainer
    */
   public function createContainer() {
-    return new Container();
+    return new PlainContainer();
   }
 
   /**
@@ -40,7 +40,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
     return [
         [null],
         ['a'],
-        [new Container('bar')],
+        [new PlainContainer('bar')],
         [0]
     ];
   }
@@ -97,7 +97,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
   public function arrayData() {
     return [
         [range("a", "e")],
-        [array_fill(0, 10, new Container())],
+        [array_fill(0, 10, new PlainContainer())],
         [range(1, 100)]
     ];
   }
@@ -140,7 +140,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
     $this->container->append($val);
     $this->assertTrue($this->container->exists($val));
     $this->assertFalse($this->container->exists("foo"));
-    $this->container->clear()->append((new Container())->append($val));
+    $this->container->clear()->append((new PlainContainer())->append($val));
     $this->assertTrue($this->container->exists($val));
     $this->assertFalse($this->container->exists("foo"));
   }
@@ -149,7 +149,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
    * 
    */
   public function testClone() {
-    $this->container->append(new Container("a"));
+    $this->container->append(new PlainContainer("a"));
     $clone = clone $this->container;
     $this->container[0][0] = "b";
     //$this->container->clear();

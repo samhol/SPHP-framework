@@ -27,7 +27,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
   /**
    * the inner content container
    *
-   * @var ContainerInterface
+   * @var Container
    */
   private $content;
 
@@ -36,9 +36,9 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    *
    * @param  string $tagname the name of the tag
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
-   * @param  ContainerInterface|null $contentContainer the inner content container of the component
+   * @param  Container|null $contentContainer the inner content container of the component
    */
-  public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, Container $contentContainer = null) {
     parent::__construct($tagname, $attrManager);
     $this->setInnerContainer($contentContainer);
   }
@@ -56,12 +56,12 @@ abstract class AbstractContainerComponent extends AbstractComponent {
   /**
    * Sets the inner content container of the component
    *
-   * @param  ContainerInterface $contentContainer the inner content container of the component
+   * @param  Container $contentContainer the inner content container of the component
    * @return $this for a fluent interface
    */
-  protected function setInnerContainer(ContainerInterface $contentContainer = null) {
-    if (!($contentContainer instanceof ContainerInterface)) {
-      $this->content = new Container();
+  protected function setInnerContainer(Container $contentContainer = null) {
+    if (!($contentContainer instanceof Container)) {
+      $this->content = new PlainContainer();
     } else {
       $this->content = $contentContainer;
     }
@@ -71,9 +71,9 @@ abstract class AbstractContainerComponent extends AbstractComponent {
   /**
    * Returns the content container or an element pointed by an optional index
    *
-   * @return ContainerInterface the content container
+   * @return Container the content container
    */
-  protected function getInnerContainer(): ContainerInterface {
+  protected function getInnerContainer(): Container {
     return $this->content;
   }
 

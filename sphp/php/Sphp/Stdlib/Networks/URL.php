@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Networks;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Implements an URL for manipulation and comparison
@@ -375,9 +376,9 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
   /**
    * Create a new iterator to iterate through the URL components
    *
-   * @return \ArrayIterator iterator
+   * @return Traversable iterator
    */
-  public function getIterator() {
+  public function getIterator(): Traversable {
     return new \ArrayIterator($this->toArray());
   }
 

@@ -28,7 +28,7 @@ interface SyntaxHighlighter extends Content {
   /**
    * Attaches a new copy controller
    *
-   * @param  ComponentInterface|null $button button or button content
+   * @param  Component|null $button button or button content
    * @return ContentCopyController the attached controller
    */
   public function attachContentCopyController(Component $button = null);

@@ -24,7 +24,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
   /**
    * Constructor
    * 
-   * @param ComponentInterface $component
+   * @param Component $component
    */
   public function __construct(Component $component) {
     parent::__construct($component);

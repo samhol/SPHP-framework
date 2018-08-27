@@ -14,7 +14,7 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableContent;
 use IteratorAggregate;
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\ContainerInterface;
+use Sphp\Html\Container;
 use Traversable;
 
 /**
@@ -36,9 +36,9 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
    * Constructor
    *
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
-   * @param  ContainerInterface|null $contentContainer the inner content container of the component
+   * @param  Container|null $contentContainer the inner content container of the component
    */
-  public function __construct(HtmlAttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(HtmlAttributeManager $attrManager = null, Container $contentContainer = null) {
     parent::__construct('dl', $attrManager, $contentContainer);
   }
 
