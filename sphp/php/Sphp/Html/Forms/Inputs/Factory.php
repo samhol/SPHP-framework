@@ -22,9 +22,14 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Forms\Inputs\NumberInput number(string $name = null, $value = null) creates a new number input
  * @method \Sphp\Html\Forms\Inputs\SearchInput search(string $name = null, $value = null) creates a new search input
  * @method \Sphp\Html\Forms\Inputs\TextInput text(string $name = null, $value = null) creates a new text input
- * @method \Sphp\Html\Forms\Inputs\Radiobox radio(string $name = null, $value = null) creates a new text input
- * @method \Sphp\Html\Forms\Inputs\Checkbox checkbox(string $name = null, $value = null) creates a new text input
- * @method \Sphp\Html\Forms\Inputs\PasswordInput password(string $name = null, $value = null) creates a new text input
+ * @method \Sphp\Html\Forms\Inputs\Radiobox radio(string $name = null, $value = null) creates a new radio input
+ * @method \Sphp\Html\Forms\Inputs\Checkbox checkbox(string $name = null, $value = null) creates a new checkbox input
+ * @method \Sphp\Html\Forms\Inputs\PasswordInput password(string $name = null, $value = null) creates a new password input
+ * 
+ * 
+ * @method \Sphp\Html\Forms\Inputs\pus pushButton(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Inputs\PasswordInput reset(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Inputs\PasswordInput submit(string $name = null, $value = null) creates a new password input
  *
  * @method \Sphp\Html\Forms\Inputs\Buttons\Button push($content = null) creates a new push button
  * 
@@ -39,7 +44,7 @@ class Factory {
    *
    * @var string[]
    */
-  private static $components = array(
+  private static $components = [
       'pushButton' => \Sphp\Html\Forms\Buttons\Button::class,
       'resetButton' => \Sphp\Html\Forms\Buttons\Resetter::class,
       'submitButton' => \Sphp\Html\Forms\Buttons\Submitter::class,
@@ -63,7 +68,7 @@ class Factory {
       'meter' => ContainerTag::class,
       'output' => ContainerTag::class,
       'select' => Menus\Select::class,
-  );
+  ];
 
   /**
    * Creates a HTML object

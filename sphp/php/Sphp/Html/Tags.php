@@ -17,7 +17,7 @@ use ReflectionClass;
  * Factory for basic HTML tag component creation
  *
  * @method \Sphp\Html\Head\MetaTag meta(array $meta = []) creates a new span tag component
- *
+ * 
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
  * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new HTML &lt;a&gt; object
@@ -26,8 +26,11 @@ use ReflectionClass;
  * @method \Sphp\Html\Media\ImageMap\Polygon polygon(array $coords = null, string $href = null, string $alt = null) creates a new &lt;area&gt; object
  * @method \Sphp\Html\Media\ImageMap\Circle circle(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) creates a new &lt;area&gt; object
  * 
- * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a `form&gt; object
- * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a `label&gt; object
+ * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a &lt;form&gt; object
+ * @method \Sphp\Html\Forms\Fieldset fieldset(mixed $content = null, $for = null) creates a &lt;fieldset&gt; object
+ * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a &lt;label&gt; object
+ * @method Sphp\Html\Forms\Inputs\HiddenInput hiddenInput(mixed $content = null, $for = null) creates a &lt;input type=hidden&gt; object
+ * @method Sphp\Html\Forms\Inputs\TextInput textInput(mixed $content = null, $for = null) creates a &lt;input type=text&gt; object
  * 
  * @method \Sphp\Html\Flow\Headings\H1 h1(mixed $content = null) creates a new HTML &lt;h1&gt; object
  * @method \Sphp\Html\Flow\Headings\H2 h2(mixed $content = null) creates a new HTML &lt;h2&gt; object

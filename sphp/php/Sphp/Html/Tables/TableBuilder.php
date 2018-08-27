@@ -11,6 +11,7 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Stdlib\Parsers\CsvFile;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Description of TableBuilder
@@ -120,18 +121,20 @@ class TableBuilder implements \Sphp\Html\Content {
   }
 
   /**
+   * Sets the cell data for table head
    * 
-   * @param  array $data
+   * @param  array $data the cell data for table head
    * @return $this for a fluent interface
    */
   public function setTheadData(array $data) {
-    $this->theadData = \Sphp\Stdlib\Arrays::setSequential($data, 0, 1);
+    $this->theadData = Arrays::setSequential($data, 0, 1);
     return $this;
   }
 
   /**
+   * Sets the cell data for table body
    * 
-   * @param  array $data
+   * @param  array $data the cell data for table body
    * @return $this for a fluent interface
    */
   public function setTbodyData(array $data) {
@@ -140,8 +143,9 @@ class TableBuilder implements \Sphp\Html\Content {
   }
 
   /**
+   * Sets the cell data for table footer
    * 
-   * @param  array $data
+   * @param  array $data the cell data for table footer
    * @return $this for a fluent interface
    */
   public function setTfootData(array $data) {
@@ -150,15 +154,20 @@ class TableBuilder implements \Sphp\Html\Content {
   }
 
   /**
+   * Sets the body of the given table object
    * 
-   * @return Tbody
+   * @param  Table $table modifiable table
+   * @return Table modified table object
    */
-  public function buildTbody(): Tbody {
-    $tbody = new Tbody();
-    foreach ($this->tbodyData as $row) {
-      $tbody->append($this->buildRow($row));
+  public function buildTbody(Table $table): Table {
+    if (!empty($this->tbodyData)) {
+      $tbody = new Tbody();
+      foreach ($this->tbodyData as $row) {
+        $tbody->append($this->buildRow($row));
+      }
+      $table->tbody($tbody);
     }
-    return $tbody;
+    return $table;
   }
 
   protected function buildRow(array $rowData) {
@@ -173,7 +182,13 @@ class TableBuilder implements \Sphp\Html\Content {
     return $tr;
   }
 
-  private function buildHead(Table $table): Table {
+  /**
+   * Sets the head of the given table object
+   * 
+   * @param  Table $table modifiable table
+   * @return Table modified table object
+   */
+  public function buildHead(Table $table): Table {
     if (!empty($this->theadData)) {
       $foot = new Thead();
       $foot->appendHeaderRow($this->theadData);
@@ -183,10 +198,12 @@ class TableBuilder implements \Sphp\Html\Content {
   }
 
   /**
+   * Sets the footer of the given table object
    * 
-   * @return Table
+   * @param  Table $table modifiable table
+   * @return Table modified table object
    */
-  private function buildFoot(Table $table): Table {
+  public function buildFoot(Table $table): Table {
     if (!empty($this->tfootData)) {
       $foot = new Tfoot();
       $foot->appendHeaderRow($this->tfootData);
@@ -202,9 +219,7 @@ class TableBuilder implements \Sphp\Html\Content {
   public function buildTable(): Table {
     $table = new Table();
     $table->addCssClass('responsive-card-table', 'unstriped');
-    if (!empty($this->tbodyData)) {
-      $table->tbody($this->buildTbody());
-    }
+    $this->buildTbody($table);
     $this->buildHead($table);
     $this->buildFoot($table);
     $this->lineNumberer->setLineNumbers($table);

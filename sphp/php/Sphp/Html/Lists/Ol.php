@@ -30,7 +30,7 @@ class Ol extends StandardList {
    *    within {@link Li} component
    * 2. All items of an array are treated according to note (1)
    *
-   * @param  mixedmixed[]|null $items optional content of the component
+   * @param  mixed|mixed[]|null $items optional content of the component
    */
   public function __construct($items = null) {
     parent::__construct('ol');

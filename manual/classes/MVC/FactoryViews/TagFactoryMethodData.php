@@ -55,17 +55,15 @@ class TagFactoryMethodData implements Arrayable {
     $this->method = $method;
     $this->component = $factory::$method();
     $this->componentReflector = new ReflectionClass($this->component);
+    $this->tag = $this->component->getTagName();
     if (is_array($description)) {
       $this->description = $description['desc'];
-      $this->tag = $description['tag'];
+      $this->name = $this->tag;
       if (array_key_exists('attrs', $description)) {
-        $this->name = $description['tag'] .' '. $description['attrs'];
-      } else {
-        $this->name = $description['tag'];
+        $this->name .= ' ' . $description['attrs'];
       }
     } else {
       $this->description = $description;
-      $this->tag = $this->component->getTagName();
       $this->name = $this->component->getTagName();
     }
   }

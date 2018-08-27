@@ -50,21 +50,35 @@ Sphp\Html\Tags:
     form: 'A form'
     hiddenInput: 
        desc:  'A hidden input field'
-       tag:   input
        attrs: 'type=hidden'
     textInput:
        desc:  'A text input field'
-       tag:   input
        attrs: 'type=text'
-    emailInput: 'An email input field'
-    numberInput: 'A number input field'
-    passwordInput: 'A password input field'
-    radiobox: 'A radio input'
-    checkbox: 'A checkbox input'
+    emailInput:
+       desc:  'An email input field'
+       attrs: 'type=email'
+    numberInput:
+       desc:  'A number input field'
+       attrs: 'type=number'
+    passwordInput:
+       desc:  'A password input field'
+       attrs: 'type=password'
+    radiobox:
+       desc:  'A radio input'
+       attrs: 'type=radio'
+    checkbox:
+       desc:  'A checkbox input'
+       attrs: 'type=checkbox'
     textarea: 'A text area'
-    pushButton: 'A push button'
-    resetButton: 'A reset button for forms'
-    submitButton: 'A sybmit button for forms'
+    pushButton: 
+       desc: 'A push button'
+       attrs: 'type=button'
+    resetButton:
+       desc: 'A reset button'
+       attrs: 'type=reset'
+    submitButton:
+       desc: 'A submit button'
+       attrs: 'type=submit'
     keygen: 'A generated key in a form'
     output: 'Defines some types of output'
     label: 'A label for a form control'
@@ -78,15 +92,12 @@ Sphp\Html\Tags:
     img: 'An image'
     polygon: 
        desc: 'A polygonal area inside an image map'
-       tag:  area
        attrs: 'shape=poly'
     circle: 
        desc: 'A circular area inside an image map'
-       tag:  area
        attrs: 'shape=circle'
     rectangle:
        desc: 'A Rectangular area inside an image map'
-       tag:  area
        attrs: 'shape=rect'
     map: 'An image map'
     canvas: 'Graphics canvas'
@@ -139,7 +150,9 @@ Sphp\Html\Tags:
     base: 'A base URL for all the links in a page'
   Programming:
     scriptCode: 'Contains scripting statements'
-    scriptSrc: 'Points to an external script file'
+    scriptSrc:
+       desc: 'Points to an external script file'
+       attrs: 'src=path/to/script'
     noscript: 'A noscript section'
     object: 'An embedded object'
     param: 'A parameter for an object'

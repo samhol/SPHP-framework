@@ -1,13 +1,30 @@
 ---
 Sphp\Html\Forms\inputs\Factory:
   Inputs: 
-    hidden: 'A hidden input field'
-    text: 'A text input field'
-    email: 'An email input field'
-    number: 'A number input field'
-    password: 'A password input field'
-    radio: 'A radio input'
-    checkbox: 'A checkbox input'
+    hidden:
+       desc: 'A hidden input'
+       attrs: 'type=hidden'
+    text:
+       desc: 'A text input'
+       attrs: 'type=text'
+    email:
+       desc: 'An email input'
+       attrs: 'type=email'
+    number:
+       desc: 'A number input'
+       attrs: 'type=number'
+    password: 
+       desc: 'A password input'
+       attrs: 'type=password'
+    search: 
+       desc: 'A search input'
+       attrs: 'type=search'
+    radio:
+       desc: 'A radio input '
+       attrs: 'type=radio'
+    checkbox: 
+       desc: 'A checkbox input'
+       attrs: 'type=checkbox'
     textarea: 'A text area'
     #keygen: 'A generated key in a form'
     #output: 'Defines some types of output'
@@ -19,6 +36,12 @@ Sphp\Html\Forms\inputs\Factory:
     optgroup: 'An option group'
     option: 'An option in a drop-down list'
   Buttons: 
-    pushButton: 'A push button'
-    reset: 'A reset button for forms'
-    submit: 'A sybmit button for forms'
+    pushButton:
+       desc: 'A push button'
+       attrs: 'type=button'
+    reset:
+       desc: 'A reset button'
+       attrs: 'type=reset'
+    submit: 
+       desc: 'A submit button'
+       attrs: 'type=submit'
