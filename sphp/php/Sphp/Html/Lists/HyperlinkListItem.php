@@ -20,7 +20,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HyperlinkListItem extends HyperlinkContainer implements LiInterface {
+class HyperlinkListItem extends HyperlinkContainer implements StandardListItem {
 
   /**
    * Constructor

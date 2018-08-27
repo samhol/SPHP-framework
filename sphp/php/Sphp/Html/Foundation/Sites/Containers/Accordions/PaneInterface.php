@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\Lists\LiInterface;
+use Sphp\Html\Lists\StandardListItem;
 
 /**
  * Defines a Pane for Foundation Accordion
@@ -21,7 +21,7 @@ use Sphp\Html\Lists\LiInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface PaneInterface extends LiInterface {
+interface PaneInterface extends StandardListItem {
 
   /**
    * Sets the title of the accordion pane

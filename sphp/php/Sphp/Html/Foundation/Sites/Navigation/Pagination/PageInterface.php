@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Html\Component;
 use Sphp\Html\Navigation\HyperlinkInterface;
-use Sphp\Html\Lists\LiInterface;
+use Sphp\Html\Lists\StandardListItem;
 
 /**
  * Defines a page button for a Pagination component
@@ -23,7 +23,7 @@ use Sphp\Html\Lists\LiInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface PageInterface extends Component, HyperlinkInterface, LiInterface {
+interface PageInterface extends Component, HyperlinkInterface, StandardListItem {
   
   /**
    * Sets the content of the component

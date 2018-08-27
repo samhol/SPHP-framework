@@ -64,10 +64,10 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * Prepends a new list item to the list
    * 
    * @param  mixed $item the item or the content of it
-   * @return LiInterface prepended instance
+   * @return StandardListItem prepended instance
    */
-  public function prepend($item): LiInterface {
-    if (!$item instanceof LiInterface) {
+  public function prepend($item): StandardListItem {
+    if (!$item instanceof StandardListItem) {
       $item = new Li($item);
     }
     $this->items->prepend($item);
@@ -78,10 +78,10 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * Appends a new list item to the list
    * 
    * @param  mixed $item the item or the content of it
-   * @return LiInterface appended instance
+   * @return StandardListItem appended instance
    */
-  public function append($item): LiInterface {
-    if (!$item instanceof LiInterface) {
+  public function append($item): StandardListItem {
+    if (!$item instanceof StandardListItem) {
       $item = new Li($item);
     }
     $this->items->append($item);
@@ -92,10 +92,10 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * Appends a parsed inline Mark Down string to the list
    * 
    * @param  string $md inline Mark Down string
-   * @return LiInterface appended instance
+   * @return StandardListItem appended instance
    * @throws RuntimeHtmlException if the parsing fails for any reason
    */
-  public function appendMd(string $md): LiInterface {
+  public function appendMd(string $md): StandardListItem {
     try {
       $p = Parser::md();
       $item = $this->append($p->parseInline($md));
@@ -139,9 +139,9 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * Returns the list element at the specified offset
    *
    * @param  mixed $offset the index with the content element
-   * @return LiInterface content element or null
+   * @return StandardListItem content element or null
    */
-  public function offsetGet($offset): LiInterface {
+  public function offsetGet($offset): StandardListItem {
     return $this->items->offsetGet($offset);
   }
 
@@ -153,7 +153,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @return void
    */
   public function offsetSet($offset, $value) {
-    if (!$value instanceof LiInterface) {
+    if (!$value instanceof StandardListItem) {
       $value = new Li($value);
     }
     $this->items->offsetSet($offset, $value);

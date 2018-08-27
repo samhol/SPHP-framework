@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\Lists\LiInterface;
+use Sphp\Html\Lists\StandardListItem;
 
 /**
  * Defines a Tab controller for Tabs
@@ -21,7 +21,7 @@ use Sphp\Html\Lists\LiInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface TabControllerInterface extends LiInterface {
+interface TabControllerInterface extends StandardListItem {
 
   /**
    * Sets the Tab controller active/inactive

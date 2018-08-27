@@ -21,7 +21,7 @@ use Sphp\Html\AjaxLoader;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Li extends ContainerTag implements LiInterface, AjaxLoader {
+class Li extends ContainerTag implements StandardListItem, AjaxLoader {
 
   use \Sphp\Html\AjaxLoaderTrait;
 

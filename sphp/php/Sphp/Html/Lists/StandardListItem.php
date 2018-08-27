@@ -20,6 +20,6 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface LiInterface extends Component {
+interface StandardListItem extends Component {
 
 }

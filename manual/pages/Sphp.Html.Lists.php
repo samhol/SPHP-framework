@@ -7,7 +7,7 @@ use Sphp\Manual;
 $htmlList = Manual\api()->classLinker(StandardList::class);
 $ol = Manual\api()->classLinker(Ol::class);
 $ul = Manual\api()->classLinker(Ul::class);
-$liInterface = Manual\api()->classLinker(LiInterface::class);
+$liInterface = Manual\api()->classLinker(StandardListItem::class);
 $li = Manual\api()->classLinker(Li::class);
 $dlLink = Manual\api()->classLinker(Dl::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
