@@ -10,4 +10,3 @@ $subNav = (new SubNav("ApiGen:"))
 $subNav[] = new Link("$root/namespace-Sphp.Html.Foundation.Navigation.html", "Navigation", "apigen");
 $subNav[] = new Link("$root/class-Sphp.Html.Foundation.Navigation.SubNav.html", "SubNav", "apigen");
 $subNav->printHtml();
-?>

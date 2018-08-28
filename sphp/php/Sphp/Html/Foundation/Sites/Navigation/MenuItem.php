@@ -21,6 +21,6 @@ use Sphp\Html\IdentifiableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface MenuItemInterface extends IdentifiableContent {
+interface MenuItem extends IdentifiableContent {
   
 }

@@ -73,7 +73,7 @@ class SamiClassLinker extends AbstractClassLinker {
       $bc->setTitle("Namespace $name");
       $breadCrumbs->append($bc);
     }
-    $breadCrumbs->appendNew($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName());
+    $breadCrumbs->appendLink($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName());
     return $breadCrumbs;
   }
 

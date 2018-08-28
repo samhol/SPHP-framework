@@ -82,7 +82,7 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
   }
 
   /**
-   * Creates and appends new BreadCrumb object
+   * Creates and appends new BreadCrumb link
    *
    * **Notes:**
    * 
@@ -97,14 +97,14 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendNew(string $href, $content = null, string $target = null): BreadCrumb {
+  public function appendLink(string $href, $content = null, string $target = null): BreadCrumb {
     $item = new BreadCrumb($href, $content, $target);
     $this->append($item);
     return $item;
   }
 
   /**
-   * Prepends a {@link BreadCrumb} component to the container
+   * Prepends a BreadCrumb component to the container
    *
    * @param  BreadCrumb $breadcrumb component to append
    * @return $this for a fluent interface

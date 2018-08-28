@@ -39,7 +39,7 @@ class Menu extends AbstractMenu {
    */
   protected function appendContent($content) {
     foreach (is_array($content) ? $content : [$content] as $item) {
-      if ($item instanceof MenuItemInterface) {
+      if ($item instanceof MenuItem) {
         $this->append($item);
       } else {
         $this->appendText($item);

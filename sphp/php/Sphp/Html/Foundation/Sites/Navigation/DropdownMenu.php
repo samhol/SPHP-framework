@@ -31,7 +31,7 @@ class DropdownMenu extends Menu {
     $this->attributes()->demand('data-dropdown-menu');
   }
 
-  public function append(MenuItemInterface $content) {
+  public function append(MenuItem $content) {
     if ($content instanceof SubMenu) {
       $content->addCssClass('sphp-hide-fouc-on-load');
     }

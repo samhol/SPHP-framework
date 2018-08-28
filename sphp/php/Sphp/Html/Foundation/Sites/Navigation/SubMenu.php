@@ -23,7 +23,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterface {
+class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {
 
   /**
    * The root component
@@ -78,10 +78,10 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   /**
    * Appends a menu item object to the menu
    *
-   * @param  MenuItemInterface $item
+   * @param  MenuItem $item
    * @return $this for a fluent interface
    */
-  public function append(MenuItemInterface $item) {
+  public function append(MenuItem $item) {
     if ($item instanceof SubMenu) {
       $item->vertical($this->isVertical());
     }
@@ -92,48 +92,26 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
     return $this;
   }
 
-  /**
-   * Appends a {@link MenuLink} link object to the menu
-   *
-   * @param  string $href the URL of the link
-   * @param  mixed $content link content
-   * @param  string $target the value of the target attribute
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function appendLink(string $href, string $content = '', string $target = '_self') {
+  public function appendLink(string $href, string $content = '', string $target = '_self'): MenuLink {
     $menuLink = new MenuLink($href, $content, $target);
     $this->append($menuLink);
-    return $this;
+    return $menuLink;
   }
 
-  /**
-   * Appends a {@link MenuLabel} text component to the menu
-   *
-   * @param  mixed|MenuLabel $text
-   * @return $this for a fluent interface
-   */
-  public function appendText($text) {
+  public function appendText($text): MenuLabel {
     if (!($text instanceof MenuLabel)) {
       $text = new MenuLabel($text);
     }
     $this->append($text);
-    return $this;
+    return $text;
   }
 
-  /**
-   * Appends a {@link MenuLabel} text component to the menu
-   *
-   * @param  mixed|MenuLabel $r
-   * @return $this for a fluent interface
-   */
-  public function appendRuler(Ruler $r = null) {
+  public function appendRuler(Ruler $r = null): Ruler {
     if ($r === null) {
       $r = new Ruler();
     }
     $this->append($r);
-    return $this;
+    return $r;
   }
 
   public function contentToString(): string {

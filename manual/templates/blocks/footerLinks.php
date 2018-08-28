@@ -10,51 +10,61 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 $fa = FontAwesome::instance();
 
 $grid = (new BlockGrid('small-up-1', 'medium-up-2', 'large-up-4'));
-$grid->append((new Menu())->vertical()
-                ->appendText('Who uses it?' . $fa->users()->pull('right'))
-                ->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi')
-                ->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;')
-                ->appendLink('http://playground.samiholck.com/', 'SPHPlayground manual')
-                ->appendText('Framework APIs' . $fa->book()->pull('right'))
-                ->appendLink('http://playground.samiholck.com/API/sami/', $fa->php() . 'PHP API')
-                ->appendLink('http://playground.samiholck.com/API/jsdoc/', $fa->js() . 'JavaScript API')
-                ->appendText('Unit Testing' . $fa->stethoscope()->pull('right'))
-                ->appendLink('https://travis-ci.org/samhol/SPHP-framework', DevIcons::travis() . 'Travis CL')
-                ->appendLink('https://mochajs.org/', DevIcons::mocha() . 'Mocha')
-);
 
-$grid->append((new Menu())->vertical()
-                ->appendText('JavaScript ' . $fa->js()->pull('right'))
-                ->appendLink('https://www.w3.org/standards/webdesign/script.html', 'WEB APIS - <b>W3C</b>')
-                ->appendLink('https://nodejs.org/', 'Node.js' . $fa->nodejs()->pull('right'))
-                ->appendRuler()
-                ->appendLink('https://jquery.com/', DevIcons::jquery() . 'jQuery')
-                ->appendLink('http://foundation.zurb.com/', DevIcons::foundationLogo() . 'Foundation')
-                ->appendLink('http://qtip2.com/', 'qTip<sup>2</sup>')
-                ->appendLink('http://ressio.github.io/lazy-load-xt/', 'Lazy Load XT')
-                ->appendLink('http://zeroclipboard.org/', 'ZeroClipboard')
-                ->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade;'));
-$grid->append((new Menu())->vertical()
-                ->appendText('PHP' . $fa->php()->pull('right'))
-                ->appendLink('http://php.net/manual/en/', 'PHP Manual')
-                ->appendRuler()
-                ->appendLink('https://phpunit.de/', 'PHPUnit')
-                ->appendLink('https://framework.zend.com/', DevIcons::zend() . 'Zend')
-                ->appendLink('https://github.com/erusev/parsedown-extra', DevIcons::symfony() . 'Symfony')
-                ->appendLink('http://www.doctrine-project.org/', DevIcons::doctrine() . 'Doctrine')
-                ->appendText('Databases' . $fa->database()->pull('right'))
-                ->appendLink('https://www.mysql.com/', DevIcons::mysql() . 'MySQL')
-                ->appendLink('http://www.postgresql.org/', DevIcons::postgresql() . 'PostgreSQL')
-                ->appendLink('https://sqlite.org/', 'SQLite'));
-$grid->append((new Menu())->vertical()
-                ->appendText('HTML ' . $fa->html5()->pull('right'))
-                ->appendLink('https://www.w3.org/html/', 'HTML5 - <b>W3C</b>')
-                ->appendLink('https://www.w3schools.com/js/', 'w3schools.com')
-                ->appendText('SASS' . $fa->sass()->pull('right'))
-                ->appendLink('http://sass-lang.com/', '<b>SASS</b> language')
-                ->appendLink('http://sass-lang.com/guide', '<b>SASS</b> quide')
-                ->appendText('CSS' . $fa->css3()->pull('right'))
-                ->appendLink('https://developer.mozilla.org/en-US/docs/Web/CSS', 'CSS - <b>MDN</b>')
-                ->appendLink('https://www.w3.org/Style/CSS/Overview.en.html', 'CSS - <b>W3C</b>'));
+$firstMenu = (new Menu())->vertical();
+$firstMenu->appendText('Who uses it?' . $fa->users()->pull('right'));
+$firstMenu->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi');
+$firstMenu->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;');
+$firstMenu->appendLink('http://playground.samiholck.com/', 'SPHPlayground manual');
+$firstMenu->appendText('Framework APIs' . $fa->book()->pull('right'));
+$firstMenu->appendLink('http://playground.samiholck.com/API/sami/', $fa->php() . 'PHP API');
+$firstMenu->appendLink('http://playground.samiholck.com/API/jsdoc/', $fa->js() . 'JavaScript API');
+$firstMenu->appendText('Unit Testing' . $fa->stethoscope()->pull('right'));
+$firstMenu->appendLink('https://travis-ci.org/samhol/SPHP-framework', DevIcons::travis() . 'Travis CL');
+$firstMenu->appendLink('https://mochajs.org/', DevIcons::mocha() . 'Mocha');
+
+$grid->append($firstMenu);
+
+$secondMenu = (new Menu())->vertical();
+$secondMenu->appendText('JavaScript ' . $fa->js()->pull('right'));
+$secondMenu->appendLink('https://www.w3.org/standards/webdesign/script.html', 'WEB APIS - <b>W3C</b>');
+$secondMenu->appendLink('https://nodejs.org/', 'Node.js' . $fa->nodejs()->pull('right'));
+$secondMenu->appendRuler();
+$secondMenu->appendLink('https://jquery.com/', DevIcons::jquery() . 'jQuery');
+$secondMenu->appendLink('http://foundation.zurb.com/', DevIcons::foundationLogo() . 'Foundation');
+$secondMenu->appendLink('http://qtip2.com/', 'qTip<sup>2</sup>');
+$secondMenu->appendLink('http://ressio.github.io/lazy-load-xt/', 'Lazy Load XT');
+$secondMenu->appendLink('http://zeroclipboard.org/', 'ZeroClipboard');
+$secondMenu->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade;');
+
+$grid->append($secondMenu);
+
+$thirdMenu = (new Menu())->vertical();
+$thirdMenu->appendText('PHP' . $fa->php()->pull('right'));
+$thirdMenu->appendLink('http://php.net/manual/en/', 'PHP Manual');
+$thirdMenu->appendRuler();
+$thirdMenu->appendLink('https://phpunit.de/', 'PHPUnit');
+$thirdMenu->appendLink('https://framework.zend.com/', DevIcons::zend() . 'Zend');
+$thirdMenu->appendLink('https://github.com/erusev/parsedown-extra', DevIcons::symfony() . 'Symfony');
+$thirdMenu->appendLink('http://www.doctrine-project.org/', DevIcons::doctrine() . 'Doctrine');
+$thirdMenu->appendText('Databases' . $fa->database()->pull('right'));
+$thirdMenu->appendLink('https://www.mysql.com/', DevIcons::mysql() . 'MySQL');
+$thirdMenu->appendLink('http://www.postgresql.org/', DevIcons::postgresql() . 'PostgreSQL');
+$thirdMenu->appendLink('https://sqlite.org/', 'SQLite');
+
+$grid->append($thirdMenu);
+
+$fourthMenu = (new Menu())->vertical();
+$fourthMenu->appendText('HTML ' . $fa->html5()->pull('right'));
+$fourthMenu->appendLink('https://www.w3.org/html/', 'HTML5 - <b>W3C</b>');
+$fourthMenu->appendLink('https://www.w3schools.com/js/', 'w3schools.com');
+$fourthMenu->appendText('SASS' . $fa->sass()->pull('right'));
+$fourthMenu->appendLink('http://sass-lang.com/', '<b>SASS</b> language');
+$fourthMenu->appendLink('http://sass-lang.com/guide', '<b>SASS</b> quide');
+$fourthMenu->appendText('CSS' . $fa->css3()->pull('right'));
+$fourthMenu->appendLink('https://developer.mozilla.org/en-US/docs/Web/CSS', 'CSS - <b>MDN</b>');
+$fourthMenu->appendLink('https://www.w3.org/Style/CSS/Overview.en.html', 'CSS - <b>W3C</b>');
+
+$grid->append($fourthMenu);
 
 $grid->printHtml();

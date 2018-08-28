@@ -30,11 +30,11 @@ class ApiGenClassLinker extends AbstractClassLinker {
    * @param string $class the name of the class
    * @param ApiGenUrlGenerator|null $urlGenerator
    */
-  public function __construct(string $class, ApiGenUrlGenerator $urlGenerator = null, string $namespace = null) {
+  public function __construct(string $class, ApiGenUrlGenerator $urlGenerator = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new ApiGenUrlGenerator();
     }
-    parent::__construct($class, $urlGenerator, $namespace);
+    parent::__construct($class, $urlGenerator);
   }
 
   /**
@@ -56,7 +56,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
       $bc->setTitle("Namespace $name");
       $breadCrumbs->append($bc);
     }
-    $breadCrumbs->appendNew($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName(), $target);
+    $breadCrumbs->appendLink($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName(), $target);
     return $breadCrumbs;
   }
 

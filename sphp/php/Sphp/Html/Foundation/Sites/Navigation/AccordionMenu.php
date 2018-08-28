@@ -33,7 +33,7 @@ class AccordionMenu extends Menu {
     $this->attributes()->demand('data-accordion-menu');
   }
 
-  public function append(MenuItemInterface $content) {
+  public function append(MenuItem $content) {
     if ($content instanceof SubMenu) {
       $content->vertical(true);
     }

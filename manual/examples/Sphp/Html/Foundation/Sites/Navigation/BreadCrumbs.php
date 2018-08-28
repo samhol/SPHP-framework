@@ -9,7 +9,5 @@ $bc = (new BreadCrumbs())
         ->append(new BreadCrumb("$root/namespace-Sphp.Html.Foundation.html", "Foundation", "test"));
 $bc->append(new BreadCrumb("$root/namespace-Sphp.Html.Foundation.Navigation.html", "Navigation", "test"));
 $bc->prepend(new BreadCrumb($root, "ApiGen", "test"));
-$bc->appendNew("$root/class-Sphp.Html.Foundation.Navigation.BreadCrumbs.html", "BreadCrumbs", "test");
+$bc->appendLink("$root/class-Sphp.Html.Foundation.Navigation.BreadCrumbs.html", "BreadCrumbs", "test");
 $bc->printHtml();
-
-?>

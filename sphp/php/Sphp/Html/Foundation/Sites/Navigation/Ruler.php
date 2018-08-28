@@ -19,7 +19,7 @@ use Sphp\Html\AbstractComponent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Ruler extends AbstractComponent implements MenuItemInterface {
+class Ruler extends AbstractComponent implements MenuItem {
 
   /**
    * Constructor

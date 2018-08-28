@@ -24,7 +24,7 @@ use Sphp\Html\PlainContainer;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemInterface {
+class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem {
 
   private $defaultTarget = '_self';
 
@@ -60,45 +60,20 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   }
 
   /**
-   * 
-   * @param  string $target
-   * @return $this for a fluent interface
-   */
-  public function setDefaultTarget($target) {
-    $this->defaultTarget = $target;
-    return $this;
-  }
-
-  public function getDefaultTarget() {
-    return $this->defaultTarget;
-  }
-
-  /**
    * Appends a menu item object to the menu
    *
-   * @param  MenuItemInterface $item
+   * @param  MenuItem $item
    * @return $this for a fluent interface
    */
-  public function append(MenuItemInterface $item) {
+  public function append(MenuItem $item) {
     $this->items->append($item);
     return $this;
   }
 
-  /**
-   * Creates and appends {@link MenuLink} link object to the list
-   *
-   * @param  string|URL $href the URL of the link
-   * @param  mixed $content link content
-   * @param  string $target the value of the target attribute
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function appendLink(string $href, string $content = '', string $target = '_self') {
-    if ($target === null) {
-      $target = $this->getDefaultTarget();
-    }
-    return $this->append(new MenuLink($href, $content, $target));
+  public function appendLink(string $href, string $content = '', string $target = null): MenuLink {
+    $menu = new MenuLink($href, $content, $target);
+    $this->append($menu);
+    return $menu;
   }
 
   /**
@@ -107,7 +82,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * @param  SubMenu $subMenu
    * @return SubMenu appended sub menu
    */
-  public function appendSubMenu(SubMenu $subMenu = null) {
+  public function appendSubMenu(SubMenu $subMenu = null): SubMenu {
     if ($subMenu === null) {
       $subMenu = new SubMenu();
     }
@@ -115,31 +90,20 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $subMenu;
   }
 
-  /**
-   * Appends a menu label text component to the menu
-   *
-   * @param  mixed|MenuLabel $text 
-   * @return $this for a fluent interface
-   */
-  public function appendText($text) {
-    if (!($text instanceof MenuLabel)) {
+  public function appendText($text): MenuLabel {
+    if (!$text instanceof MenuLabel) {
       $text = new MenuLabel($text);
     }
     $this->append($text);
-    return $this;
+    return $text;
   }
 
-  /**
-   * Appends a menu label text component to the menu
-   *
-   * @return $this for a fluent interface
-   */
-  public function appendRuler(Ruler $r = null) {
+  public function appendRuler(Ruler $r = null): Ruler {
     if ($r === null) {
       $r = new Ruler;
     }
     $this->append(new Ruler);
-    return $this;
+    return $r;
   }
 
   public function nested(bool $nested = true) {

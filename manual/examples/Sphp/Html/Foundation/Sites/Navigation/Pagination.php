@@ -11,5 +11,3 @@ $pagination->setPages($pages)
         ->visibleBeforeCurrent(5)
         ->setCurrentPage(10)
         ->printHtml();
-
-?>

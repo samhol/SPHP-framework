@@ -21,7 +21,7 @@ use Sphp\Html\Lists\HyperlinkListItem;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class MenuLink extends HyperlinkListItem implements MenuItemInterface {
+class MenuLink extends HyperlinkListItem implements MenuItem {
 
   /**
    * Constructor

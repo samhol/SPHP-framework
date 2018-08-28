@@ -23,7 +23,7 @@ use Sphp\Html\AbstractContainerComponent;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class MenuLabel extends AbstractContainerComponent implements MenuItemInterface {
+class MenuLabel extends AbstractContainerComponent implements MenuItem {
 
   /**
    * Constructor
