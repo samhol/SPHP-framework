@@ -17,7 +17,7 @@ namespace Sphp\Html;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface TagInterface extends Component {
+interface Tag extends Component {
 
   /**
    * Returns the tag name of the component

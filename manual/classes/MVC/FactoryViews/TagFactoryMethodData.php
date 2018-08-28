@@ -14,7 +14,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\TagInterface;
+use Sphp\Html\Tag;
 
 /**
  * Implements tag factory data
@@ -29,7 +29,7 @@ class TagFactoryMethodData implements Arrayable {
   private $method;
 
   /**
-   * @var TagInterface 
+   * @var Tag
    */
   private $component;
 
@@ -68,7 +68,7 @@ class TagFactoryMethodData implements Arrayable {
     }
   }
 
-  public function getCreatedComponent(): TagInterface {
+  public function getCreatedComponent(): Tag {
     return $this->component;
   }
 

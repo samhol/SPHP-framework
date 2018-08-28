@@ -21,7 +21,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractTag implements TagInterface {
+abstract class AbstractTag implements Tag {
 
   use ContentTrait,
       ComponentTrait;

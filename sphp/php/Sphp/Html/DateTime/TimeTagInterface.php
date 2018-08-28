@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\DateTime;
 
-use Sphp\Html\TagInterface;
+use Sphp\Html\Tag;
 use DateTimeInterface;
 use Sphp\DateTime\Exceptions\DateTimeException;
 
@@ -25,7 +25,7 @@ use Sphp\DateTime\Exceptions\DateTimeException;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface TimeTagInterface extends TagInterface {
+interface TimeTagInterface extends Tag {
 
   /**
    * the year only

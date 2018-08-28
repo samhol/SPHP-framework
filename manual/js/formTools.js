@@ -1,3 +1,4 @@
+//var a = 0;
 (function ($) {
   'use strict';
   $.fn.submitViewer = function () {
@@ -13,7 +14,6 @@
               $id;
       $id = "id_" + generateQuickGuid();
       console.log("submitViewer():");
-      //$form.insertSubmisionFunctionality();  
       $submit = $form.find("button.submitter");
       $submit.attr("data-toggle", $id);
       $submit.attr("data-options", "align:bottom");
@@ -21,7 +21,7 @@
       console.log("dropdown id: " + $id);
       $form.after($dropdown);
       var options = {closeOnClick: true};
-      var elem = new Foundation.Dropdown($dropdown, options);
+      new Foundation.Dropdown($dropdown, options);
       $submit.submit(function () {
         console.log("Handler for .submit() called.");
         return false;
@@ -30,12 +30,12 @@
         console.log("POSTING TO: " + "manual/snippets/formSubmit.php");
         var posting = $.post("manual/snippets/formSubmit.php", $form.serialize());
 
+        console.log("submit data insertion:");
         // Put the results in a div
         posting.done(function (data) {
-          console.log("done");
-          var content = data;
-          //console.log(content);
-          $dropdown.empty().append(content);
+          console.log("done inserting: ");
+          console.log(data);
+          $dropdown.empty().append(data);
         });
         posting.fail(function () {
           console.log("error");
@@ -44,24 +44,22 @@
       });
     });
   };
-  $.fn.insertSubmisionFunctionality = function () {
+  $.fn.insertDemoSubmitter = function () {
     return this.each(function () {
-      console.log("insertSubmisionFunctionality:");
-      //console.log("URL: "+window.location );
-      var $form = $(this),
-              $submit, $get;
+      console.log("insertDemoSubmitter:");
+      var $form = $(this), $get;
       $get = $.get("manual/ajax/submitRow.php");
+      $form.submit(function () {
+        console.log("Form submiting trapped");
+        return false;
+      });
       $get.done(function (data) {
-        console.log("done");
-        var content = data;
-        //console.log(content);
-        $form.append(content);
+        console.log("insertDemoSubmitter done");
+        $form.append(data);
+        console.log("done inserting: ");
+        console.log(data);
         $form.submitViewer();
-        /*$submit = $form.find("[type='submit']");
-         $submit.submit(function () {
-         console.log("Handler for .submit() called.");
-         return false;
-         });*/
+
       });
       $get.fail(function () {
         console.log("error");
@@ -82,7 +80,7 @@
 
 $(document).ready(function () {
   'use strict';
-  $(".manual.accordion.form-example form, .manual .mainContent>form").insertSubmisionFunctionality();
-  $(" .grid-example .columns").insertClassToTitle();
+  $(".form-example form").insertDemoSubmitter();
+  $(".grid-example .columns").insertClassToTitle();
 
 });

@@ -24,7 +24,7 @@ use Sphp\Html\Lists\StandardListItem;
  * @filesource
  */
 interface PageInterface extends Component, HyperlinkInterface, StandardListItem {
-  
+
   /**
    * Sets the content of the component
    * 
@@ -46,8 +46,8 @@ interface PageInterface extends Component, HyperlinkInterface, StandardListItem 
    * 
    * @return boolean true if the hyperlink component is set as active, otherwise false
    */
-  public function isCurrent(): bool ;
-  
+  public function isCurrent(): bool;
+
   /**
    * Disables the pagination component
    * 
@@ -61,7 +61,7 @@ interface PageInterface extends Component, HyperlinkInterface, StandardListItem 
   /**
    * Checks whether the pagination component is enabled or not
    * 
-   * @param  boolean true if the component is enabled, otherwise false
+   * @return boolean true if the component is enabled, otherwise false
    */
   public function isEnabled(): bool;
 }

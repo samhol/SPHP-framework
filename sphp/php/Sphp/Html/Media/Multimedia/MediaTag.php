@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\TagInterface;
+use Sphp\Html\Tag;
 use Sphp\Html\TraversableContent;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface MediaTagInterface extends TagInterface {
+interface MediaTag extends Tag {
 
   /**
    * Adds multimedia source or track

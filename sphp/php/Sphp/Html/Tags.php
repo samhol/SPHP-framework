@@ -204,10 +204,10 @@ abstract class Tags {
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return TagInterface the corresponding component
+   * @return Tag the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): TagInterface {
+  public static function __callStatic(string $name, array $arguments): Tag {
     if (!isset(static::$tags[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
@@ -227,10 +227,10 @@ abstract class Tags {
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return TagInterface the corresponding component
+   * @return Tag the corresponding component
    * @throws BadMethodCallException
    */
-  public static function create(string $name, array $arguments = []): TagInterface {
+  public static function create(string $name, array $arguments = []): Tag {
     if (!isset(static::$tags[$name])) {
       throw new InvalidArgumentException("Method $name does not exist");
     }

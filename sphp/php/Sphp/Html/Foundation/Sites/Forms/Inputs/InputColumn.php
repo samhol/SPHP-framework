@@ -246,6 +246,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @param  string $name name attribute value
    * @param  string $content the content of the component
    * @param  string $rows the value of the rows attribute (visible height of a text area)
+   * @param  array $layout
    * @link   http://www.w3schools.com/tags/att_textarea_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    * @return self new instance containing a textarea component
@@ -261,10 +262,10 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    *
    * @param  string $inputType input type
    * @param  array $arguments 
-   * @return TagInterface the corresponding component
+   * @return Tag the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $inputType, array $arguments): TagInterface {
+  public static function __callStatic(string $inputType, array $arguments): Tag {
     try {
       $input = \Sphp\Html\Forms\Inputs\Factory::__callStatic($arguments);
     } catch (\Exception $ex) {

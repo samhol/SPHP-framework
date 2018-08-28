@@ -33,6 +33,7 @@
   function generateId() {
     //console.log('generateId');
     return 'id-' + idCounter++;
-  };
+  }
+  ;
 }(window.sphp = window.sphp || {}, jQuery));
 

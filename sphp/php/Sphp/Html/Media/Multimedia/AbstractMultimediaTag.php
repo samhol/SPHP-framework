@@ -24,7 +24,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractMultimediaTag extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\TraversableContent, MediaTagInterface {
+abstract class AbstractMultimediaTag extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\TraversableContent, MediaTag {
 
   use \Sphp\Html\TraversableTrait;
 

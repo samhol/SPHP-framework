@@ -188,7 +188,7 @@ if (!window.console.log) {
      $(this).foundation();
      //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
      });*/
-    $(".sphp-viewport-size-viewer").viewportSizeViewer();
+    //$(".sphp-viewport-size-viewer").viewportSizeViewer();
 
     $("[data-sphp-qtip]").qtips();
     // $('.sphp-back-to-top-button').backToTopBtn();

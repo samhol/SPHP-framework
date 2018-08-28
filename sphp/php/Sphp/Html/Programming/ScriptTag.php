@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\TagInterface;
+use Sphp\Html\Tag;
 
 /**
  * Defines an HTML script tag
@@ -19,7 +19,7 @@ use Sphp\Html\TagInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ScriptTag extends Script, TagInterface {
+interface ScriptTag extends Script, Tag {
 
   /**
    * Sets the value of the type attribute

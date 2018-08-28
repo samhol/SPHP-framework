@@ -4,7 +4,8 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-.form-submitter {
+.form-submitter-callout {
+  margin-top: rem-calc(10);
   background-color: #ededed;
   .button {
     margin: 0;
@@ -30,6 +31,12 @@
       list-style-type: none;
       list-style-position: inside;
       list-style: none;
+      strong {
+        font-size: rem-calc(16);
+      }
+      kbd {
+        font-size: rem-calc(15);
+      }
     }
     border: solid 1px #888;
     @include border-radius(2px);
