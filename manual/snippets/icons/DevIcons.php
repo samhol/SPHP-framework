@@ -19,9 +19,9 @@ $data = Parser::fromFile('DevIcons.json');
       //   echo "\ndevicon-$name-$version";
       $method = $name . ucfirst($version);
 
-      echo '<div class="cell"><div class="icon-container">';
+      echo '<div class="cell"><div class="icon-container"><div class="icon">';
       echo DevIcons::$method("devicon-$name-$version icon")->setAttribute('title', "devicon-$name-$version icon");
-      echo '</div></div>';
+      echo '</div></div></div>';
     }
   }
   ?>

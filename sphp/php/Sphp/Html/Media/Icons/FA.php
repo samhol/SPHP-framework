@@ -56,7 +56,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @link    https://fontawesome.com/ Font Awesome
  * @filesource
  */
-class FontAwesome {
+class FA {
 
   /**
    * list of Font Awesome icons and their corresponding PHP classes
@@ -74,22 +74,15 @@ class FontAwesome {
       'excel' => 'far fa-file-excel',
       'css' => 'fab fa-css3-alt',
       'image' => 'far fa-file-image',
-      'photoshop' => 'devicon-photoshop-plain',
-      'illustrator' => 'devicon-illustrator-plain',
       'text' => 'far fa-file-alt',
       'html5' => 'fab fa-html5',
       'php' => 'fab fa-php',
       'js' => 'fab fa-js-square',
       'font' => 'far fa-file',
-      'java' => 'devicon-java-plain-wordmark',
       'executable' => 'fas fa-cogs',
-      'python' => 'devicon-python-plain',
       'database' => 'fas fa-database',
       'windows' => 'fab fa-windows',
       'code' => 'far fa-file-code',
-      'c++' => 'devicon-cplusplus-line',
-      'c#' => 'devicon-csharp-line',
-      'c' => 'devicon-c-plain',
       'certificate' => 'fas fa-certificate',
       
       'html5' => 'fab fa-html5',

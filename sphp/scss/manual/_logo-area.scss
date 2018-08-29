@@ -1,14 +1,23 @@
 /**
- * _logo-area.scss (UTF-8)
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 .error-page .sphp-logo-area {
   background: $error-bg;
 }
 .sphp-logo-area {
-  margin-bottom: 0;
+ 
   background: rgba(255, 255, 255, 0.75);
+  background: url('http://data.samiholck.com/images/parquet/top.jpg');
+  background-repeat: repeat-x;
+  background-position: 0px 0px;
+
+
+  margin-bottom: 0;
   .logo {  
     margin: rem-calc(10);
     list-style: none;

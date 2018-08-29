@@ -6,11 +6,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-p:not([class]), ol:not([class]), ul:not([class]), dl:not([class]) {
-  a:not([class]) {
-    text-decoration: underline;
-    &:hover {
-      text-decoration: none;
+@mixin sphp-badge() { 
+  .badge {
+    &.small {
+      font-size: rem-calc(10);
     }
-  }
-} 
+  } 
+}

@@ -24,27 +24,30 @@ and open the template in the editor.
     @include border-radius(3px);
   }
   .icon-container {
-
+    display: flex;
+    flex-direction: column;
+    //flex: 1;
     border: solid 1px #777;
     @include border-radius(3px);
-    text-align: center;
-    background-color: #fefefe;
-    font-size: rem-calc(60);
     margin: rem-calc(1);
-    i {
-      margin: rem-calc(3);
+    padding: rem-calc(1);
+    .icon, .ext {     
+      flex: 1;
+      text-align: center;
     }
-    svg {
-      margin: rem-calc(3);
-      height: rem-calc(60);
-    }
-    .call {
-      border-top: #777 dotted 1px ;
-      font-size: rem-calc(14);
+    .icon {
+      background-color: #fefefe;
+      font-size: rem-calc(60);
+      i {
+        margin: rem-calc(3);
+      }
+      svg {
+        margin: rem-calc(3);
+        height: rem-calc(60);
+      }
     }
     .ext {
-      border-bottom: #777 dotted 1px ;
-      @include border-top-radius(3px);
+      border-top: #777 solid 1px ;
       font-family: $font-family-monospace;
       padding: rem-calc(3);
       background-color: #eee;

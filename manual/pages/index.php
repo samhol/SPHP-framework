@@ -31,6 +31,7 @@ Download the framework package from [github](https://github.com/samhol/SPHP-fram
 ## Disclaimer
 
 It should go without saying, but any example code shown on this site is yours to use without obligation or warranty of any kind.
+**However** this Site contains references to third party trademarks and names. Such trademarks and names are the sole property of their respective owners.
 MD
 );
 

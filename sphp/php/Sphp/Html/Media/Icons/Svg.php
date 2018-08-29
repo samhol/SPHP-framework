@@ -37,6 +37,13 @@ class Svg implements \Sphp\Html\Content, IconInterface {
     return $this->svg;
   }
 
+  /**
+   * 
+   * @param string $path
+   * @param string $sreenreaderLabel
+   * @return \Sphp\Html\Media\Icons\Svg
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
   public static function fromFile(string $path, string $sreenreaderLabel = null): Svg {
     if (!is_file($path)) {
       throw new \Sphp\Exceptions\InvalidArgumentException;
@@ -45,6 +52,12 @@ class Svg implements \Sphp\Html\Content, IconInterface {
     return new static($svg, $sreenreaderLabel);
   }
 
+  /**
+   * 
+   * @param string $url
+   * @param string $sreenreaderLabel
+   * @return \Sphp\Html\Media\Icons\Svg
+   */
   public static function fromUrl(string $url, string $sreenreaderLabel = null): Svg {
     if (!array_key_exists($url, self::$src)) {
       if (RemoteResource::exists($url)) {

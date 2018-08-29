@@ -23,7 +23,7 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
 ?>
 <div class="grid-container full">
   <div class="grid-x">
-    <div class="cell small-12 large-3 xlarge-3 show-for-large">
+    <div class="cell shrink show-for-large">
       <?php
       if ($outputCache->start('sidenav') === false) {
         include('manual/templates/menus/sidenav.php');
@@ -31,7 +31,7 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
       }
       ?>
     </div>
-    <div class="small-auto large-9 xlarge-9 cell"> 
+    <div class="cell small-auto medium-auto large-auto xlarge-10 xxlarge-9"> 
       <div class="mainContent">
         <div class="container">
           <?php

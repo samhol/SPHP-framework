@@ -23,9 +23,9 @@ foreach ($d as $name => $group) {
   echo "<h3>$name</h3>";
   echo '<div class="sphp-icon-examples grid-x small-up-3 medium-up-5 large-up-8">';
   foreach ($group as $ext => $description) {
-    echo '<div class="cell"><div class="icon-container">';
-    echo "<div class=\"ext\">.$ext</div>";
+    echo '<div class="cell"><div class="icon-container"><div class="icon">';
     echo Filetype::$ext($description)->setAttribute('title', "$ext: $description");
+    echo "</div><div class=\"ext\">.$ext</div>";
     echo '</div></div>';
   }
   echo '</div>';

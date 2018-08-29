@@ -47,9 +47,15 @@ class DevIcons {
       'foundationLogo' => 'devicon-foundation-plain',
       'jquery' => 'devicon-jquery-plain',
       'jqueryLogo' => 'devicon-jquery-plain',
-      'powerpoint' => 'far fa-file-powerpoint',
       'travis' => 'devicon-travis-plain',
       'mocha' => 'devicon-mocha-plain',
+      'photoshop' => 'devicon-photoshop-plain',
+      'illustrator' => 'devicon-illustrator-plain',
+      'java' => 'devicon-java-plain-wordmark',
+      'python' => 'devicon-python-plain',
+      'c++' => 'devicon-cplusplus-line',
+      'c#' => 'devicon-csharp-line',
+      'c' => 'devicon-c-plain',
   ];
 
   /**
@@ -65,7 +71,7 @@ class DevIcons {
     if (array_key_exists($name, static::$assosiations)) {
       return new Icon(static::$assosiations[$name], $screenReaderText);
     } else {
-      $h = preg_replace("/([A-Z])/", "-$1", $name);
+      $h = preg_replace("/([A-Z])/", '-$1', $name);
       $h = strtolower($h);
       //echo "\nfoo$h\n";
       return new Icon("devicon-$h", $screenReaderText);

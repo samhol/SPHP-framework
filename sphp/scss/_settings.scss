@@ -77,7 +77,9 @@ $foundation-palette: (
   alert: #cc4b37,
   devicon: #60be86,
   fontawesome: #228ae6,
+  pdf: #ff9999,
 );
+
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
@@ -261,7 +263,7 @@ $badge-color-alt: $black;
 $badge-palette: $foundation-palette;
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
-$badge-font-size: 0.6rem;
+$badge-font-size: 0.8rem;
 
 // 10. Breadcrumbs
 // ---------------

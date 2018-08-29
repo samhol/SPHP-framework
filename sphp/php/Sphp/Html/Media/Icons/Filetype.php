@@ -362,7 +362,7 @@ class Filetype {
   ];
   private static $assosiations = [
       'archive' => 'far fa-file-archive',
-      'pdf' => 'far fa-file-pdf',
+      'pdf' => 'fas fa-file-pdf',
       'video' => 'far fa-file-video',
       'audio' => 'far fa-file-audio',
       'powerpoint' => 'far fa-file-powerpoint',
@@ -376,7 +376,7 @@ class Filetype {
       'html5' => 'fab fa-html5',
       'php' => 'fab fa-php',
       'js' => 'fab fa-js-square',
-      'font' => 'far fa-file',
+      'font' => 'fas fa-font',
       'java' => 'devicon-java-plain-wordmark',
       'executable' => 'fas fa-cogs',
       'python' => 'devicon-python-plain',
@@ -446,43 +446,32 @@ class Filetype {
   }
 
   /**
-   * Creates an icon object representing given file type
+   * Creates an icon object representing given file or file type
    *
-   * @param  string $fileType the file type
+   * @param  string|SplFileInfo $fileOrExt a file or a file type
    * @param  string $screenReaderText 
    * @return FaIcon new icon object
    */
-  public static function get(string $fileType, string $screenReaderText = null): FaIcon {
-    if (array_key_exists($fileType, static::$fileTypeMap)) {
-      $icon = static::$assosiations[static::$fileTypeMap[$fileType]];
-    } else if (array_key_exists($fileType, static::$assosiations)) {
-      $icon = static::$assosiations[$fileType];
+  public static function get($fileOrExt, string $screenReaderText = null): FaIcon {
+    if (array_key_exists($fileOrExt, static::$fileTypeMap)) {
+      $icon = static::$assosiations[static::$fileTypeMap[$fileOrExt]];
+    } else if (array_key_exists($fileOrExt, static::$assosiations)) {
+      $icon = static::$assosiations[$fileOrExt];
     } else {
-      $icon = 'far fa-file';
+      if (is_string($fileOrExt)) {
+        $file = new SplFileInfo($fileOrExt);
+      }
+      if (!$file instanceof SplFileInfo) {
+        throw new InvalidArgumentException('File cannot be found');
+      }
+      $ext = $file->getExtension();
+      if (array_key_exists($ext, static::$fileTypeMap)) {
+        $icon = static::$fileTypeMap[$ext];
+      } else {
+        $icon = 'far fa-file';
+      }
     }
     return new FaIcon($icon, $screenReaderText);
-  }
-
-  /**
-   * Generates a file type icon object from given file
-   * 
-   * @param  string|SplFileInfo $file the file
-   * @return FaIcon new icon object
-   * @throws InvalidArgumentException if given tag name is invalid
-   */
-  public static function fromFile($file, string $screenReaderText = null): FaIcon {
-    if (is_string($file)) {
-      $file = new SplFileInfo($file);
-    } else if (!$file instanceof SplFileInfo) {
-      throw new InvalidArgumentException('File cannot be found');
-    }
-    $ext = $file->getExtension();
-    if (array_key_exists($ext, static::$fileTypeMap)) {
-      $icon = static::$fileTypeMap[$ext];
-    } else {
-      $icon = 'far fa-file';
-    }
-    return static::get($icon, $screenReaderText);
   }
 
 }

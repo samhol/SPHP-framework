@@ -18,6 +18,7 @@ $side-nav-bg: #fefefe;
 
 @mixin sphp-sidenav() { 
   .sphp.sidenav {
+    min-width: rem-calc(240);
     padding: rem-calc(0 0 20 0); /* top right bottom left */
     //border: solid 1px #333;
     border: solid 1px #FF8000;

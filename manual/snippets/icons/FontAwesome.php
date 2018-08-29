@@ -25,9 +25,9 @@ if (array_key_exists($type, $types)) {
   <?php
   foreach ($data as $item) {
     $name = str_replace(['fas', 'far', 'fab', ' fa-'], '', $item);
-    echo '<div class="cell"><div class="icon-container">';
+    echo '<div class="cell"><div class="icon-container"><div class="icon">';
     echo (new Icon($item, "$item icon"))->setAttribute('title', $item . " icon");
-    echo "<div class=\"ext\">$item</div>";
+    echo "</div><div class=\"ext\">$item</div>";
     echo '</div></div>';
   }
   ?>
