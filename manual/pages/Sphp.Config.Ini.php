@@ -19,7 +19,7 @@ a list of all available options in the $iniList.
 MD
 );
 
-Manual\example('Sphp/Config/Ini.php', 'text', false)
+Manual\example('Sphp/Config/Ini.php')
         ->setExamplePaneTitle('Runtime PHP INI manipulation example')
         ->printHtml();
 

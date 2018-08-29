@@ -1,7 +1,11 @@
 /**
- * sphp-side-nav.scss (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 @charset "UTF-8";
 
 @import "compass/css3";
@@ -18,7 +22,7 @@ $side-nav-bg: #fefefe;
 
 @mixin sphp-sidenav() { 
   .sphp.sidenav {
-    min-width: rem-calc(240);
+    min-width: rem-calc(250);
     padding: rem-calc(0 0 20 0); /* top right bottom left */
     //border: solid 1px #333;
     border: solid 1px #FF8000;

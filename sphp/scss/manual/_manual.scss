@@ -65,7 +65,7 @@ $error-bg: rgba(255,127,80, 0.40);
       margin: rem-calc(5 0 20 0);
     }
     @include breakpoint(xlarge) {  
-      margin-right: rem-calc(70);
+     // margin-right: rem-calc(70);
     }
     .container {
       // @import "example-accordion";

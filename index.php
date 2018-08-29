@@ -21,7 +21,7 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
   $outputCache->end();
 }
 ?>
-<div class="grid-container full">
+<div class="grid-container">
   <div class="grid-x">
     <div class="cell shrink show-for-large">
       <?php
@@ -31,7 +31,7 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
       }
       ?>
     </div>
-    <div class="cell small-auto medium-auto large-auto xlarge-10 xxlarge-9"> 
+    <div class="cell auto"> 
       <div class="mainContent">
         <div class="container">
           <?php

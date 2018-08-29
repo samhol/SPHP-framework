@@ -23,7 +23,7 @@ use Sphp\Exceptions\OutOfRangeException;
 class Ini implements Arrayable {
 
   /**
-   * current  ini 
+   * current ini 
    *
    * @var string[]
    */
@@ -98,7 +98,12 @@ class Ini implements Arrayable {
    */
   public function init() {
     foreach ($this->ini as $name => $value) {
-      $this->pre[$name] = ini_set($name, $value);
+      $old  = ini_set($name, $value);
+      echo "old $name:" . var_export($old, true);
+      if ($old === false ) {
+        throw new \Sphp\Exceptions\RuntimeException("INI value '$name' cannot be set");
+      }
+      $this->pre[$name] = $old;
     }
     return $this;
   }
@@ -113,9 +118,9 @@ class Ini implements Arrayable {
    */
   public function execute(callable $callable) {
     $this->init();
-    $result = $callable();
+    $callable();
     $this->reset();
-    return $result;
+    //return $result;
   }
 
   /**

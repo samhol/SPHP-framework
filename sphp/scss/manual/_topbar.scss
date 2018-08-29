@@ -20,10 +20,6 @@
     margin: rem-calc(0 0 0 5);
     > ul {
       margin: 0;
-      // height: 100%;
-      >li {
-        //height: 100%;
-      }
     }
     > ul > li {
       margin: 0;
@@ -39,24 +35,13 @@
         }
         min-width: rem-calc(130);
       }
-      //height: rem-calc(40);
       ul {
         z-index: 11; 
       }
-      // border-top: 1px solid $sphp6-root-border-color;
-      // border-bottom: 1px solid $sphp6-root-border-color;
-      // border-left: 1px solid $sphp6-root-border-color;
-
-    }
-    //margin-left: rem-calc(10);
-    >ul{
-      //height: 100%;
     }
     li { 
-      //height: 100%;
       font-size: rem-calc(12);
       &.menu-text {
-        //font-size: rem-calc(13); 
         @include background-image(linear-gradient(to right, #444, #1b1b1b));
         background-color: smart-scale($sphp6-topbar-bg, 15%);
         border-top: solid 1px #444;
