@@ -57,9 +57,9 @@ trait SyntaxhighlighterContainerTrait {
    * Sets the copier button
    *
    * @param  mixed $content the actual controller or the content of the controller
-   * @return $this for a fluent interface
+   * @return ContentCopyController the controller set
    */
-  public function setContentCopyController($content = 'Copy') {
+  public function setContentCopyController($content = 'Copy'): ContentCopyController {
     $this->getSyntaxHighlighter()->setContentCopyController($content);
     return $this;
   }

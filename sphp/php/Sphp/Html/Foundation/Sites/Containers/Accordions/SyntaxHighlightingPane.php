@@ -36,6 +36,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
   /**
    * Constructor
    * 
+   * @param string $title
    * @param null|SyntaxHighlighter $hl the inner syntax highlighting component
    */
   public function __construct($title = 'Highlighted code', SyntaxHighlighter $hl = null) {

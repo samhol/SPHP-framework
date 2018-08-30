@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\AjaxLoader as AjaxLoaderInterface;
+use Sphp\Html\AjaxLoader;
 use Sphp\Html\ContainerTag;
 use Sphp\Html\Div;
 
@@ -24,7 +24,7 @@ use Sphp\Html\Div;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInterface {
+class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoader {
 
   /**
    * The title component of the pane
