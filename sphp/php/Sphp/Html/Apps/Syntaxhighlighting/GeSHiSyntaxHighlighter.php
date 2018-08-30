@@ -16,7 +16,7 @@ use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;
 use Sphp\Html\Forms\Buttons\Button;
-use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
+use Sphp\Html\Apps\ContentCopyController;
 use Sphp\Html\Div;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Filesystem;
@@ -170,11 +170,11 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    * @param  null|Component $button button or button content
    * @return ContentCopyController the attached button
    */
-  public function attachContentCopyController(Component $button = null) {
+  public function attachContentCopyController(Component $button = null): ContentCopyController {
     if ($button === null) {
       $button = new Button($button);
     }
-    $copyBtn = (new CopyToClipboardButton($button, $this->geshiId));
+    $copyBtn = (new ContentCopyController($button, $this->geshiId));
     return $copyBtn;
   }
 

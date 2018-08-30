@@ -15,7 +15,7 @@ A $progressBar represents the progress of a task. It is a browser friendly imple
 A $progressBar component can be used in conjunction with JavaScript to display the progress of a task.
 MD
 );
-$fooBarCodePane = new SyntaxHighlightingPane('<code>progressingFooBar.js</code> JavaScript code');
+$fooBarCodePane = new SyntaxHighlightingPane('JavaScript code');
 $fooBarCodePane->loadFromFile('manual/snippets/progressingFooBar.js');
 \Sphp\Manual\example('Sphp/Html/Foundation/Sites/Media/ProgressBar.php', null, true)
         ->buildAccordion()

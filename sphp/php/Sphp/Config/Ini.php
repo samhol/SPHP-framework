@@ -99,7 +99,7 @@ class Ini implements Arrayable {
   public function init() {
     foreach ($this->ini as $name => $value) {
       $old  = ini_set($name, $value);
-      echo "old $name:" . var_export($old, true);
+      //echo "old $name:" . var_export($old, true);
       if ($old === false ) {
         throw new \Sphp\Exceptions\RuntimeException("INI value '$name' cannot be set");
       }

@@ -29,7 +29,7 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighter {
       SyntaxhighlighterContainerTrait;
 
   /**
-   * @var SyntaxHighlighterInterface
+   * @var SyntaxHighlighter
    */
   private $hl;
 
@@ -57,6 +57,9 @@ class SyntaxHighlightingModalBuilder implements SyntaxHighlighter {
     $this->title->addCssClass('title');
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->hl);
   }

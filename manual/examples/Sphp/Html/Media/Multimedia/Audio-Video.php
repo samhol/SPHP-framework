@@ -2,6 +2,10 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
+(new Audio("https://upload.wikimedia.org/wikipedia/commons/0/0a/Pl-Bytom.ogg"))
+        ->showControls(true)
+        ->printHtml();
+
 $video = new Video();
 $video->addSource("http://techslides.com/demos/sample-videos/small.webm");
 $video->addSource("http://techslides.com/demos/sample-videos/small.ogv");

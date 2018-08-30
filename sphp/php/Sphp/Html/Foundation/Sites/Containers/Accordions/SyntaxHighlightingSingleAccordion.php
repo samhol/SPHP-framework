@@ -29,7 +29,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
   /**
    * Constructor
    * 
-   * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
+   * @param null|SyntaxHighlighter $hl the inner syntax highlighting component
    */
   public function __construct($paneTitle = 'Highlighted code', SyntaxHighlighter $hl = null) {
     parent::__construct(new SyntaxHighlightingPane($paneTitle, $hl));

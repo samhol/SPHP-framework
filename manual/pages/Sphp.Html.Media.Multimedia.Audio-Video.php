@@ -28,7 +28,7 @@ which the browser may choose from, based on its media type or codec support.
 MD
 );
 
-Manual\example('Sphp/Html/Media/Multimedia/Video.php', 'html5', true)
-        ->setExamplePaneTitle('HTML5 &lt;video&gt; example code')
-        ->setOutputPaneTitle('HTML5 &lt;video&gt; example results')
+Manual\example('Sphp/Html/Media/Multimedia/Audio-Video.php', 'html5', true)
+        ->setExamplePaneTitle('HTML5 &lt;audio&gt; and &lt;video&gt; example code')
+        ->setOutputPaneTitle('HTML5 &lt;audio&gt; and &lt;video&gt; example results')
         ->printHtml();

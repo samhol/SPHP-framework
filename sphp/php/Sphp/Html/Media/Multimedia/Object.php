@@ -11,8 +11,9 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\Embeddable;
+use IteratorAggregate;
 use Sphp\Html\Media\SizeableMedia;
+use Sphp\Html\TraversableContent;
 
 /**
  * Description of Object
@@ -21,7 +22,7 @@ use Sphp\Html\Media\SizeableMedia;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Object extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\TraversableContent, SizeableMedia {
+class Object extends AbstractComponent implements IteratorAggregate, TraversableContent, SizeableMedia {
 
   use \Sphp\Html\TraversableTrait,
       \Sphp\Html\Media\SizeableTrait;
@@ -29,7 +30,7 @@ class Object extends AbstractComponent implements \IteratorAggregate, \Sphp\Html
   /**
    * @var Param[]
    */
-  private $params;
+  private $params = [];
 
   /**
    * Constructor
@@ -42,7 +43,7 @@ class Object extends AbstractComponent implements \IteratorAggregate, \Sphp\Html
   public function __construct(string $src = null, string $type = null) {
     parent::__construct('object');
     if ($src !== null) {
-      $this->setSrc($src);
+      $this->setData($src);
     }
     if ($type !== null) {
       $this->setType($type);
@@ -77,7 +78,7 @@ class Object extends AbstractComponent implements \IteratorAggregate, \Sphp\Html
    *
    * @param  string $type the MIME type of the embedded component
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
+   * @link   http://www.w3schools.com/tags/att_object_type.asp type attribute
    */
   public function setType(string $type) {
     $this->attributes()->set('type', $type);
@@ -93,8 +94,8 @@ class Object extends AbstractComponent implements \IteratorAggregate, \Sphp\Html
    * @return string The MIME type of the embedded component or null if the MIME type is not set
    * @link  http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  public function getType() {
-    return $this->attributes()->getValue('type');
+  public function getType(): string {
+    return (string) $this->attributes()->getValue('type');
   }
 
   public function contentToString(): string {
