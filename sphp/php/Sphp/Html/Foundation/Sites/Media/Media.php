@@ -14,7 +14,7 @@ use Sphp\Html\Span;
 use Sphp\Html\Component;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Media\Icons\Filetype;
-use Sphp\Html\Media\Icons\FontAwesome;
+use Sphp\Html\Media\Icons\Icons;
 
 /**
  * Factory for some Foundation Media objects
@@ -59,12 +59,12 @@ abstract class Media {
   public static function __callStatic($what, $arguments) {
     if (Strings::endsWith($what, 'Badge')) {
       $type = Strings::trimRight($what, 'Badge');
-      $icon = FontAwesome::get($type);
+      $icon = Icons::get($type);
       $badge = Media::badge($icon)->addCssClass($type);
       return $badge;
     }else if (Strings::endsWith($what, 'Label')) {
       $type = Strings::trimRight($what, 'Label');
-      $icon = FontAwesome::get($type);
+      $icon = Icons::get($type);
       $badge = Media::label($icon)->addCssClass($type);
       return $badge;
     }

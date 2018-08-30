@@ -2,12 +2,12 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Media\Icons\FontAwesome;
+use Sphp\Html\Media\Icons\Icons;
 use Sphp\Html\Media\Icons\DevIcons;
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$fa = FontAwesome::instance();
+$fa = Icons::instance();
 
 $grid = (new BlockGrid('small-up-1', 'medium-up-2', 'large-up-4'));
 

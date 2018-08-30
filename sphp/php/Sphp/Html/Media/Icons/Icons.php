@@ -56,7 +56,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @link    https://fontawesome.com/ Font Awesome
  * @filesource
  */
-class FontAwesome {
+class Icons {
 
   /**
    * list of Font Awesome icons and their corresponding PHP classes
@@ -154,9 +154,9 @@ class FontAwesome {
   /**
    * Returns the singleton instance
    * 
-   * @return FontAwesome singleton instance
+   * @return Icons singleton instance
    */
-  public static function instance(): FontAwesome {
+  public static function instance(): Icons {
     if (self::$instance === null) {
       self::$instance = new static();
     }

@@ -95,7 +95,7 @@ class ImageScaler {
    * @return $this for a fluent interface
    * @throws \InvalidArgumentException
    */
-  public function scaleToFit(int  $width, int $height) {
+  public function scaleToFit(int $width, int $height) {
     if ($this->box->getWidth() > $width) {
       $this->box = $this->box->widen($width);
     }
@@ -110,7 +110,7 @@ class ImageScaler {
    * 
    * @return boolean true if the original image size is changed and false otherwise
    */
-  private function sizeChanged(Box $box = null) {
+  private function sizeChanged(Box $box = null): bool {
     if ($box === null) {
       $box = $this->box;
     }

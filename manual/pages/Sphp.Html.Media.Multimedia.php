@@ -13,5 +13,5 @@ MD
 
 Manual\printPage('Sphp.Html.Media.Multimedia.Audio-Video');
 Manual\printPage('Sphp.Html.Media.Multimedia.VideoJs');
-Manual\printPage('Sphp.Html.Media.Multimedia.VideoPlayerInterface');
+Manual\printPage('Sphp.Html.Media.Multimedia.VideoPlayer');
 Manual\printPage('Sphp.Html.Media.Multimedia.Embed-Object');

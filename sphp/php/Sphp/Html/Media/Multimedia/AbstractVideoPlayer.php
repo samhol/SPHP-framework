@@ -22,7 +22,7 @@ use Sphp\Stdlib\Networks\URL;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPlayerInterface {
+abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPlayer {
 
   use SizeableTrait,
       LazyMediaSourceTrait;

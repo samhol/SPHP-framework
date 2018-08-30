@@ -48,7 +48,7 @@ interface SyntaxHighlighter extends Content {
    * @param  mixed $content the actual controller or the content of the controller
    * @return $this for a fluent interface
    */
-  public function setDefaultContentCopyController($content = 'Copy');
+  public function setContentCopyController($content = 'Copy');
 
   /**
    * Loads the source code from the string

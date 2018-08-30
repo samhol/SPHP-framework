@@ -17,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Media\Icons\Filetype;
-use Sphp\Html\Media\Icons\FontAwesome;
+use Sphp\Html\Media\Icons\Icons;
 
 /**
  * Implements an accordion builder for PHP Example presentation
@@ -161,7 +161,7 @@ class CodeExampleAccordionBuilder implements Content {
     $outputSyntaxPane = new SyntaxHighlightingPane();
     if ($this->outputHl === 'text') {
       $outputSyntaxPane->useDefaultContentCopyController(false);
-      $icon = FontAwesome::instance()->terminal()->fixedWidth(true);
+      $icon = Icons::instance()->terminal()->fixedWidth(true);
     } else {
       $outputSyntaxPane->useDefaultContentCopyController(true);
       $icon = Filetype::instance()->get($this->outputHl)->fixedWidth(true);

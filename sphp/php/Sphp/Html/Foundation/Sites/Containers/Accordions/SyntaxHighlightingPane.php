@@ -43,7 +43,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
       $hl = new GeSHiSyntaxHighlighter();
     }
     $this->hl = $hl;
-    $this->hl->setDefaultContentCopyController(Button::pushButton('Copy')->setSize('tiny'));
+    $this->hl->setContentCopyController(Button::pushButton('Copy')->setSize('tiny'));
     // ->setTitle('Copy code to clipboard'));
     parent::__construct($title, $this->hl);
     $this->addCssClass('syntax-pane');

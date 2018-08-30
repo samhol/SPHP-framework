@@ -87,7 +87,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     $this->buttonArea = (new Div())->addCssClass('button-area');
     $this->showLineNumbers(true)
             ->useFooter()
-            ->setDefaultContentCopyController();
+            ->setContentCopyController();
   }
 
   public function __destruct() {
@@ -196,7 +196,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    * @param  mixed $button the copier button
    * @return $this for a fluent interface
    */
-  public function setDefaultContentCopyController($button = 'Copy') {
+  public function setContentCopyController($button = 'Copy') {
     if (!$button instanceof Component) {
       $button = new Button($button);
     }

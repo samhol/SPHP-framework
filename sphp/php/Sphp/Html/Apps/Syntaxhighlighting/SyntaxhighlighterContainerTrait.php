@@ -59,8 +59,8 @@ trait SyntaxhighlighterContainerTrait {
    * @param  mixed $content the actual controller or the content of the controller
    * @return $this for a fluent interface
    */
-  public function setDefaultContentCopyController($content = 'Copy') {
-    $this->getSyntaxHighlighter()->setDefaultContentCopyController($content);
+  public function setContentCopyController($content = 'Copy') {
+    $this->getSyntaxHighlighter()->setContentCopyController($content);
     return $this;
   }
 

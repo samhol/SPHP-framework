@@ -21,7 +21,7 @@ use Sphp\Html\Media\SizeableMedia;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface VideoPlayerInterface extends Embeddable, LazyMedia, SizeableMedia {
+interface VideoPlayer extends Embeddable, LazyMedia, SizeableMedia {
 
   /**
    * Allows or disallows the fullscreen mode of the video 

@@ -147,9 +147,9 @@ class FA {
   /**
    * Returns the singleton instance
    * 
-   * @return FontAwesome singleton instance
+   * @return Icons singleton instance
    */
-  public static function instance(): FontAwesome {
+  public static function instance(): Icons {
     if (self::$instance === null) {
       self::$instance = new static();
     }

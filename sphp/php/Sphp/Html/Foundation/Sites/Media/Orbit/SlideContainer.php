@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\VideoPlayerInterface;
+use Sphp\Html\Media\Multimedia\VideoPlayer;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 use Traversable;
 
@@ -83,7 +83,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
   /**
    * Appends a new embed slide
    *
-   * @param  VideoPlayerInterface|FlexVideo $player the image path or the image component
+   * @param  VideoPlayer|FlexVideo $player the image path or the image component
    * @return ResponsiveEmbedSlide appended embeddable slide instance
    */
   public function appendEmbeddable($player): ResponsiveEmbedSlide {

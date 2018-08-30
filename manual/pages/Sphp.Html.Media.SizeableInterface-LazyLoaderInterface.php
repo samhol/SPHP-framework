@@ -4,7 +4,7 @@ namespace Sphp\Html\Media;
 
 use Sphp\Manual;
 
-$sizeableInterface = Manual\api()->classLinker(SizeableMedia::class);
+$sizeableMedia = Manual\api()->classLinker(SizeableMedia::class);
 $sizeableTrait = Manual\api()->classLinker(SizeableTrait::class);
 $component = Manual\api()->classLinker(\Sphp\Html\Component::class);
 
@@ -14,7 +14,7 @@ $lazyLoaderTrait = Manual\api()->classLinker(LazyMediaSourceTrait::class);
 Manual\md(<<<MD
 ##Sizeable media content and Lazy loading 
   
-$sizeableInterface is implemented by components that display resizeable visual 
+$sizeableMedia is implemented by components that display resizeable visual 
 media content.
 
 Lazy Loading delays loading of $lazyLoader components in long web pages. $lazyLoader 
@@ -30,7 +30,7 @@ and extensible jQuery plugin with build-in support of jQueryMobile framework.
 
 **Trait implementations of these interfaces:** 
 
- * $sizeableTrait implementing $sizeableInterface.    
+ * $sizeableTrait implementing $sizeableMedia.    
  * $lazyLoaderTrait implementing $lazyLoader.
  
 Both of these traits can be used e.g with $component when implementing new visual media content. 

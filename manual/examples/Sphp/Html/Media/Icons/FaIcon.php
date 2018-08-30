@@ -2,13 +2,13 @@
 
 namespace Sphp\Html\Media\Icons;
 
-echo FontAwesome::cc()->setSize('2x') . " ";
-echo FontAwesome::blogger()->setSize('3x') . " ";
-echo FontAwesome::python()->setSize('4x') . " ";
-echo FontAwesome::pinterest()->setSize('5x') . " ";
-echo FontAwesome::facebook()->setSize('6x') . " ";
-echo FontAwesome::googlePlus()->setSize('7x') . " ";
-echo FontAwesome::js()->setSize('8x') . " ";
-echo FontAwesome::tumblr()->setSize('9x') . " ";
-echo FontAwesome::twitter()->setSize('10x') . " ";
+echo Icons::cc()->setSize('2x') . " ";
+echo Icons::blogger()->setSize('3x') . " ";
+echo Icons::python()->setSize('4x') . " ";
+echo Icons::pinterest()->setSize('5x') . " ";
+echo Icons::facebook()->setSize('6x') . " ";
+echo Icons::googlePlus()->setSize('7x') . " ";
+echo Icons::js()->setSize('8x') . " ";
+echo Icons::tumblr()->setSize('9x') . " ";
+echo Icons::twitter()->setSize('10x') . " ";
 
