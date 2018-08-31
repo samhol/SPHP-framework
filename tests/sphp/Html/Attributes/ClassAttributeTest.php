@@ -156,8 +156,8 @@ class ClassAttributeTest extends TestCase {
    */
   public function addingData(): array {
     return [
-        ["c1", 'a_1'],
-        range('a', 'e'),
+        [["c1", 'a_1']],
+        [range('a', 'e')],
         [range('a', 'e')]
     ];
   }

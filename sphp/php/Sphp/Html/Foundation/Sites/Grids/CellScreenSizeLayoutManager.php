@@ -10,7 +10,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Html\CssClassifiableContent;
+use ArrayAccess;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -21,7 +23,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CellScreenSizeLayoutManager extends \Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager {
+class CellScreenSizeLayoutManager extends AbstractLayoutManager implements ArrayAccess {
 
   /**
    * @var string
@@ -171,15 +173,26 @@ class CellScreenSizeLayoutManager extends \Sphp\Html\Foundation\Sites\Core\Abstr
     return $this;
   }
 
-  /**
-   * Returns the amount of the space the column uses from the row
-   * 
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int the amount of the space the column uses from the row
-   */
-  public function countUsedSpace(string $screenSize) {
-    return $this->getWidth($screenSize) + $this->getOffset($screenSize);
+  public function offsetExists($offset): bool {
+    return in_array($offset, ['size', 'offset', 'order']);
+  }
+
+  public function offsetGet($offset) {
+    if ($this->offsetExists($offset)) {
+      return $this->screenLayouts[$offset];
+    }
+    throw new \Sphp\Exceptions\InvalidArgumentException();
+  }
+
+  public function offsetSet($offset, $value) {
+    if ($this->offsetExists($offset)) {
+      return $this->$offset($value);
+    }
+    throw new \Sphp\Exceptions\InvalidArgumentException();
+  }
+
+  public function offsetUnset($offset) {
+    throw new \Sphp\Exceptions\InvalidArgumentException();
   }
 
 }

@@ -10,8 +10,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
+use ArrayAccess;
+use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 
 /**
@@ -21,7 +22,7 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CellLayoutManager extends AbstractLayoutManager {
+class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
 
   /**
    * @var CellScreenSizeLayoutManager
@@ -80,13 +81,13 @@ class CellLayoutManager extends AbstractLayoutManager {
     }
     return $this;
   }
-  
+
   public function shrink() {
     $this->unsetSize();
     $this->cssClasses()->add('shrink');
     return $this;
   }
-  
+
   public function auto() {
     $this->unsetSize();
     $this->cssClasses()->add('auto');
@@ -118,6 +119,25 @@ class CellLayoutManager extends AbstractLayoutManager {
 
   public function all(): CellLayoutManager {
     return $this;
+  }
+
+  public function offsetExists($offset): bool {
+    return array_key_exists($offset, $this->screenLayouts);
+  }
+
+  public function offsetGet($offset) {
+    if ($this->offsetExists($offset)) {
+      return $this->screenLayouts[$offset];
+    }
+    throw new \Sphp\Exceptions\InvalidArgumentException();
+  }
+
+  public function offsetSet($offset, $value) {
+    throw new \Sphp\Exceptions\InvalidArgumentException();
+  }
+
+  public function offsetUnset($offset) {
+    throw new \Sphp\Exceptions\InvalidArgumentException();
   }
 
 }

@@ -57,12 +57,12 @@ class DateTest extends \PHPUnit\Framework\TestCase {
    */
   public function testGetters() {
     $date = new DateWrapper();
-    $this->assertSame((int) DateWrapper('Y'), $date->getYear());
-    $this->assertSame((int) DateWrapper('n'), $date->getMonth());
-    $this->assertSame((int) DateWrapper('j'), $date->getMonthDay());
-    $this->assertSame(DateWrapper('l'), $date->getWeekDayName());
-    $this->assertSame(DateWrapper('F'), $date->getMonthName());
-    $this->assertSame((int) DateWrapper('W'), $date->getWeek());
+    $this->assertSame((int) date('Y'), $date->getYear());
+    $this->assertSame((int) date('n'), $date->getMonth());
+    $this->assertSame((int) date('j'), $date->getMonthDay());
+    $this->assertSame(date('l'), $date->getWeekDayName());
+    $this->assertSame(date('F'), $date->getMonthName());
+    $this->assertSame((int) date('W'), $date->getWeek());
   }
 
   /**
