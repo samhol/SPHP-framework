@@ -15,7 +15,7 @@ use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
- * Implements a Foundation Closable.
+ * Implements a Foundation Closable
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

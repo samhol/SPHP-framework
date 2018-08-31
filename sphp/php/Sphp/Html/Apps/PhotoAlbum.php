@@ -237,7 +237,7 @@ class PhotoAlbum extends AbstractContainerComponent {
   }
 
   /**
-   * Returns info table about the givrn image
+   * Returns info table about the given image
    *
    * @param string $imgSrc
    * @return Table|null
@@ -269,7 +269,7 @@ class PhotoAlbum extends AbstractContainerComponent {
   }
 
   /**
-   * Returns the subfolders recursively
+   * Returns the sub folders recursively
    *
    * @param  array $dirTree directory tree
    * @param  string $dir already parsed path in the directory tree
@@ -312,7 +312,7 @@ class PhotoAlbum extends AbstractContainerComponent {
   }
 
   /**
-   * Changes the following charasters from input string to the output string
+   * Changes the following characters from input string to the output string
    *
    *   * "_" -> " "
    *   * "(a)" -> "ä"

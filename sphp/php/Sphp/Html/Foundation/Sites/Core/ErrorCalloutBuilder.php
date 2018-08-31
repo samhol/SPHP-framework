@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Config\ErrorHandling\ErrorListener;
-use Sphp\Html\Foundation\Sites\Containers\Callout;
+use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
 use Sphp\Html\Media\Icons\IconInterface;
 use Sphp\Html\Media\Icons\Icons;
 
@@ -115,10 +115,10 @@ class ErrorCalloutBuilder implements ErrorListener {
   /**
    * 
    * @param  int $errno
-   * @return Callout
+   * @return ContentCallout
    */
-  protected function buildCallout(int $errno): Callout {
-    $callout = new Callout();
+  protected function buildCallout(int $errno): ContentCallout {
+    $callout = new ContentCallout();
     $callout->setClosable($this->closable);
     $callout->cssClasses()->protect('alert-box');
     if (\E_ERROR & $errno || \E_USER_ERROR & $errno) {

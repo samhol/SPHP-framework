@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Throwable;
 use Sphp\Html\Div;
 use Sphp\Html\Lists\Ol;
-use Sphp\Html\Foundation\Sites\Containers\Callout;
+use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
 use Sphp\Config\ErrorHandling\ExceptionListener;
 
 /**
@@ -235,10 +235,10 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    * Creates the callout object
    * 
    * @param  Throwable $e object thrown
-   * @return Callout the object created
+   * @return ContentCallout the object created
    */
-  public function buildCallout(Throwable $e): Callout {
-    $callout = new Callout();
+  public function buildCallout(Throwable $e): ContentCallout {
+    $callout = new ContentCallout();
     $callout->cssClasses()->protect('sphp-exception-callout');
     $callout->setContent($this->buildCalloutContent($e));
     return $callout;
@@ -254,9 +254,9 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    * @param  Throwable $e object thrown
    * @param  bool $showTrace
    * @param  bool $showPreviousException
-   * @return Callout
+   * @return ContentCallout
    */
-  public static function build(Throwable $e, bool $showTrace = false, bool $showPreviousException = false): Callout {
+  public static function build(Throwable $e, bool $showTrace = false, bool $showPreviousException = false): ContentCallout {
     $instance = new static($showTrace, $showPreviousException);
     return $instance->buildCallout($e);
   }

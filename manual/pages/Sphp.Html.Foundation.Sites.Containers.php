@@ -9,7 +9,7 @@ $accordions = Manual\api()->classLinker(Accordions\Accordion::class);
 $tabs = Manual\api()->classLinker(Tabs\Tabs::class);
 $dropdown = Manual\api()->classLinker(Dropdown::class);
 $modal = Manual\api()->classLinker(Modal::class);
-$callout = Manual\api()->classLinker(Callout::class);
+$callout = Manual\api()->classLinker(ContentCallout::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD

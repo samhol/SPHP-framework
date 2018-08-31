@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Manual;
 
-$callout = \Sphp\Manual\api()->classLinker(Callout::class);
+$callout = \Sphp\Manual\api()->classLinker(ContentCallout::class);
 \Sphp\Manual\md(<<<MD
 ###The $callout component
 		

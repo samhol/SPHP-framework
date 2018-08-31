@@ -16,9 +16,6 @@ The $media factory creates following Foundation components:
 MD
 );
 
-Manual\example('Sphp/Html/Foundation/Sites/Media/Media-badge.php', null, true)
-        ->setExamplePaneTitle('An Example of Foundation Badges')
-        ->printHtml();
-Manual\example('Sphp/Html/Foundation/Sites/Media/Media-label.php', null, true)
-        ->setExamplePaneTitle('An Example of Foundation Labels')
+Manual\example('Sphp/Html/Foundation/Sites/Media/Media-badge-label.php', null, true)
+        ->setExamplePaneTitle('An Example of Foundation Badges and labels')
         ->printHtml();

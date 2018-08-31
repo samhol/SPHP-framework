@@ -79,7 +79,7 @@ class ClassAttribute extends AbstractMutableAttribute implements IteratorAggrega
     if ($validate) {
       foreach ($parsed as $value) {
         if (!$this->isValidAtomicValue($value)) {
-          throw new InvalidAttributeException("Invalid attribute value '$value'");
+          throw new \Sphp\Exceptions\InvalidArgumentException("Invalid attribute value '$value'");
         }
       }
     }

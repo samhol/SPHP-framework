@@ -17,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 use Sphp\Html\Foundation\Sites\Grids\GridLayoutManagerInterface;
 use Sphp\Html\Foundation\Sites\Grids\RowInterface;
 use Sphp\Html\Forms\TraversableFormTrait;
-use Sphp\Html\Foundation\Sites\Containers\Callout;
+use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Forms\Inputs\HiddenInput;
@@ -39,7 +39,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
   use TraversableFormTrait;
 
   /**
-   * @var Callout
+   * @var ContentCallout
    */
   private $errorLabel;
 
@@ -79,7 +79,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     if ($content !== null) {
       $this->append($content);
     }
-    $this->errorLabel = new Callout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
+    $this->errorLabel = new ContentCallout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
     $this->errorLabel->cssClasses()->protect('alert');
     $this->errorLabel->inlineStyles()->setProperty('display', 'none');
     $this->errorLabel->attributes()->demand('data-abide-error');
