@@ -72,11 +72,6 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
     }
   }
 
-  /**
-   * 
-   * @param  ...string $layouts
-   * @return $this
-   */
   public function setLayouts(...$layouts) {
     foreach (Arrays::flatten($layouts) as $cssClass) {
       $size = array_search($cssClass, $this->sizes);
@@ -88,8 +83,8 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
   }
 
   public function unsetLayouts() {
-    $this->unsetSize()
-            ->unsetOffsets()->unsetOrder();
+    $this->clearSize()
+            ->clearOffset()->clearOrder();
     return $this;
   }
 
@@ -103,7 +98,7 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
     if ($value !== null && !array_key_exists($value, $this->sizes)) {
       throw new InvalidArgumentException("Invalid size '$value' for Grid cell");
     }
-    $this->unsetSize();
+    $this->clearSize();
     if ($value !== null) {
       $this->cssClasses()->add($this->sizes[$value]);
     }
@@ -115,7 +110,7 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
 
    * @return $this for a fluent interface
    */
-  public function unsetSize() {
+  public function clearSize() {
     $this->cssClasses()->remove($this->sizes);
     return $this;
   }
@@ -129,12 +124,12 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the offset is invalid
    */
-  public function offset(int $offset = null) {
-    if ($offset !== null && !array_key_exists($offset, $this->offsets)) {
+  public function offset(int $offset) {
+    if ($offset !== 0 && !array_key_exists($offset, $this->offsets)) {
       throw new InvalidArgumentException("Invalid offset '$offset' for Grid cell");
     }
-    $this->unsetOffsets();
-    if ($offset !== null) {
+    $this->clearOffset();
+    if ($offset !== 0) {
       $this->cssClasses()->add($this->offsets[$offset]);
     }
     return $this;
@@ -145,16 +140,16 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
    *
    * @return $this for a fluent interface
    */
-  public function unsetOffsets() {
+  public function clearOffset() {
     $this->cssClasses()->remove($this->offsets);
     return $this;
   }
 
-  public function setOrders(int $order = null) {
+  public function order(int $order = null) {
     if ($order !== null && !array_key_exists($order, $this->orders)) {
       throw new InvalidArgumentException("Invalid order '$order' for Grid cell");
     }
-    $this->unsetOrder();
+    $this->clearOrder();
     if ($order !== null) {
       $this->cssClasses()->add($this->orders[$order]);
     }
@@ -164,11 +159,9 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
   /**
    * Unsets the grid offset for the given screen size
    *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
-  public function unsetOrder() {
+  public function clearOrder() {
     $this->cssClasses()->remove($this->orders);
     return $this;
   }
@@ -186,13 +179,19 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
 
   public function offsetSet($offset, $value) {
     if ($this->offsetExists($offset)) {
-      return $this->$offset($value);
+      $this->$offset($value);
+    } else {
+      throw new \Sphp\Exceptions\InvalidArgumentException();
     }
-    throw new \Sphp\Exceptions\InvalidArgumentException();
   }
 
   public function offsetUnset($offset) {
-    throw new \Sphp\Exceptions\InvalidArgumentException();
+    if ($this->offsetExists($offset)) {
+      $methodName = 'clear' . ucfirst($offset);
+      $this->$methodName();
+    } else {
+      throw new \Sphp\Exceptions\InvalidArgumentException();
+    }
   }
 
 }

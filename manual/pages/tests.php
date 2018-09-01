@@ -1,19 +1,21 @@
-<div class="grid-example grid-x">
+<div class="grid-example grid-x grid-padding-x">
   <?php
   $div = new \Sphp\Html\Div('foo');
   $layout = new Sphp\Html\Foundation\Sites\Grids\CellLayoutManager($div);
   $div->setContent($div->cssClasses());
-  $layout['small']['size'] = 2;
-  echo $div;
   $layout['small']['size'] = 1;
   echo $div;
-  $layout->screen('large')->unsetOffsets();
+  $layout['small']['size'] = 3;
+  echo $div;
+  $layout->screen('large')->clearOffset();
   $layout->screen('xxlarge');
   echo $div;
   $layout->setLayouts('xxlarge-3', 'foo');
-  $layout['small']['offset'] = 1;
+
   echo $div;
-  $layout->setLayouts('xxlarge-3', 'foo')->screen('small')->setOrders(1);
+  $layout['small']['offset'] = 0;
+  $layout->setLayouts('xxlarge-3', 'small-1')->screen('small')->order(1);
+  $layout->screen('xxlarge')->order(2)->size(2);
   echo $div;
   ?>
 </div>
@@ -29,7 +31,10 @@
   echo $div1;
   $layout1->shrink();
   echo $div1;
-  $layout1->auto()->screen('xlarge')->setOrders(3);
+  $layout1->auto()->screen('xlarge')->order(3);
   echo $div1->setAttribute('style', 'background: red;');
   ?>
+</div>
+<div class="grid-example grid-x">
+  <div class="cell shrink xxlarge-11">erbge ree rt eregre e ger erg  egre e e rer </div>
 </div>

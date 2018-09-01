@@ -102,7 +102,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
   public function unsetSize() {
     $this->cssClasses()->remove('shrink', 'auto');
     foreach ($this->screenLayouts as $layout) {
-      $layout->unsetSize();
+      $layout->clearSize();
     }
     return $this;
   }
