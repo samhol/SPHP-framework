@@ -29,6 +29,8 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
    */
   private $screenLayouts = [];
   private $maxSize = 12;
+  
+  private static $offsets = ['shrink', 'auto'];
 
   /**
    * Constructor
@@ -83,7 +85,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
   }
 
   public function shrink() {
-    $this->unsetSize();
+    $this->unsetSizes();
     $this->cssClasses()->add('shrink');
     return $this;
   }
@@ -99,7 +101,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
 
    * @return $this for a fluent interface
    */
-  public function unsetSize() {
+  public function unsetSizes() {
     $this->cssClasses()->remove('shrink', 'auto');
     foreach ($this->screenLayouts as $layout) {
       $layout->clearSize();
@@ -121,8 +123,18 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
     return $this;
   }
 
+  public function isScreenSize(string $needle): bool {
+    return array_key_exists($needle, $this->screenLayouts);
+  }
+
   public function offsetExists($offset): bool {
-    return array_key_exists($offset, $this->screenLayouts);
+    $exists = false;
+    if (array_key_exists($offset, $this->screenLayouts) ) {
+      $exists = true;
+    } else if (in_array($offset, static::$offsets)) {
+      $exists = true;
+    }
+    return $exists;
   }
 
   public function offsetGet($offset) {
@@ -137,6 +149,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
   }
 
   public function offsetUnset($offset) {
+    
     throw new \Sphp\Exceptions\InvalidArgumentException();
   }
 
