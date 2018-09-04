@@ -48,8 +48,6 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   /**
    * Removes the column offset values
    * 
-   * Optinally
-   * 
    * @return $this for a fluent interface
    */
   public function unsetOffsets();
@@ -101,17 +99,7 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
    * Unsets the grid offset for the given screen size
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
   public function unsetOrders();
-
-  /**
-   * Returns the amount of the space the column uses from the row
-   * 
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int the amount of the space the column uses from the row
-   */
-  public function countUsedSpace(string $screenSize);
 }

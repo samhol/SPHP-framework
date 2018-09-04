@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Foundation\Sites\Core\Screen;
+use Sphp\Html\Foundation\Foundation;
 use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
@@ -49,7 +49,7 @@ class RowLayoutManager extends AlingmentAdapter {
    * @return $this for a fluent interface
    */
   public function unsetLayouts() {
-    foreach (Screen::sizes() as $screenSize) {
+    foreach (Foundation::sizes() as $screenSize) {
       $this->reset($screenSize);
     }
     return $this;

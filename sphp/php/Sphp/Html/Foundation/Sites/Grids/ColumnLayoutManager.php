@@ -10,11 +10,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Foundation\Sites\Core\SelfAlingmentAdapter;
+use Sphp\Html\Foundation\Foundation;
 
 /**
  * Implements a layout manager for a Foundation framework based XY Grid Column
@@ -69,7 +69,7 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  string|string[] $widths column widths for different screens sizes
+   * @param  ...string|string[] $widths column widths for different screens sizes
    * @return $this for a fluent interface
    */
   public function setWidths(... $widths) {
@@ -77,53 +77,17 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
     $this->unsetWidths();
     $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $widths);
     $this->cssClasses()->add($filtered);
-    /*foreach ($filtered as $width) {
+    /* foreach ($filtered as $width) {
       if ($width === 'auto') {
-        $this->unsetWidths();
+      $this->unsetWidths();
       } else {
-        $this->cssClasses()->remove('auto');
-        $parts = explode('-', $width);
-        $this->unsetWidths($parts[0]);
+      $this->cssClasses()->remove('auto');
+      $parts = explode('-', $width);
+      $this->unsetWidths($parts[0]);
       }
       $this->cssClasses()->add($width);
-    }*/
+      } */
     return $this;
-  }
-
-  /**
-   * Returns the column width associated with the given screen size
-   * 
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int|boolean the width of the column (1-12) or false for inheritance 
-   *         from smaller screens
-   */
-  public function getWidth(string $screenSize): string {
-    $widths = $this->cssClasses()->parsePattern('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/');
-    print_r($widths);
-    if ($this->cssClasses()->contains("auto", "$screenSize-auto")) {
-      return 'auto';
-    }
-    $parseWidth = function($screenName) {
-      $result = false;
-      for ($i = 1; $i <= $this->getMaxSize(); $i++) {
-        if ($this->cssClasses()->contains("$screenName-$i")) {
-          $result = $i;
-          break;
-        }
-      }
-      return $result;
-    };
-    $width = $parseWidth($screenSize);
-    $prev = Screen::getPreviousSize($screenSize);
-    while ($width === false && $prev !== false) {
-      $w = $parseWidth($prev);
-      $prev = Screen::getPreviousSize($prev);
-      if ($w !== false) {
-        $width = $w;
-      }
-    }
-    return $width;
   }
 
   /**
@@ -147,7 +111,6 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
    * Moves Column block up to 11 columns to the right.
    *
    * @param  string|string[] $offsets the column offsets classes
-   * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
   public function setOffsets(... $offsets) {
@@ -166,7 +129,7 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
    * @return $this for a fluent interface
    */
   public function unsetOffsets() {
-    foreach (Screen::sizes() as $screenSize) {
+    foreach (\Sphp\Html\Foundation\Foundation::sizes() as $screenSize) {
       $this->unsetOffset($screenSize);
     }
     return $this;
@@ -190,7 +153,7 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
       return $result;
     };
     $offset = 0;
-    foreach (Screen::sizes() as $screenName) {
+    foreach (Foundation::sizes() as $screenName) {
       $offset = $parseOffset($screenName);
       if ($screenName == $screenSize) {
         break;
@@ -246,26 +209,13 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
   /**
    * Unsets the grid offset for the given screen size
    *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
   public function unsetOrders() {
-    foreach (Screen::sizes() as $screenSize) {
+    foreach (Foundation::sizes() as $screenSize) {
       $this->unsetOrder($screenSize);
     }
     return $this;
-  }
-
-  /**
-   * Returns the amount of the space the column uses from the row
-   * 
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int the amount of the space the column uses from the row
-   */
-  public function countUsedSpace(string $screenSize) {
-    return $this->getWidth($screenSize) + $this->getOffset($screenSize);
   }
 
 }

@@ -1,5 +1,7 @@
 <div class="grid-example grid-x grid-padding-x">
   <?php
+  //var_dump(Sphp\Html\Foundation\Sites\Core\Factory::screen());
+ 
   $div = new \Sphp\Html\Div('foo');
   $layout = new Sphp\Html\Foundation\Sites\Grids\CellLayoutManager($div);
   $div->setContent($div->cssClasses());
@@ -11,7 +13,7 @@
   $layout->screen('xxlarge');
   echo $div;
   $layout->setLayouts('xxlarge-3', 'foo');
-
+  $layout->small();//->order(3);
   echo $div;
   $layout['small']['offset'] = 0;
   $layout->setLayouts('xxlarge-3', 'small-1')->screen('small')->order(1);

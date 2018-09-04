@@ -12,7 +12,7 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Foundation\Sites\Core\Factory;
+use Sphp\Html\Foundation\Foundation;
 
 /**
  * Abstract Implementation of an icon based on fonts and HTML tags
@@ -54,7 +54,7 @@ class AbstractIcon extends EmptyTag implements IconInterface {
   public function getHtml(): string {
     $output = parent::getHtml();
     if ($this->sreenreaderLabel !== null) {
-      $output .= Factory::screenReaderLabel($this->sreenreaderLabel);
+      $output .= Foundation::screenReaderLabel($this->sreenreaderLabel);
     }
     return $output;
   }

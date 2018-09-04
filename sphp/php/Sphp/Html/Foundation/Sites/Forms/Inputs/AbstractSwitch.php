@@ -16,7 +16,7 @@ use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
 use Sphp\Html\Forms\Inputs\BooleanInput;
-use Sphp\Html\Foundation\Sites\Core\Factory;
+use Sphp\Html\Foundation\Foundation;
 
 /**
  * Implements an abstract foundation based switch
@@ -75,7 +75,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     $paddle->cssClasses()
             ->protect('switch-paddle');
     if ($this->screenReaderLabel !== null) {
-      $paddle->append(Factory::screenReaderLabel($this->screenReaderLabel));
+      $paddle->append(Foundation::screenReaderLabel($this->screenReaderLabel));
     }
     if ($this->active !== null || $this->inactive !== null) {
       $activeLabel = new Span($this->active);

@@ -48,6 +48,7 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
   /**
    * Constructor
    * 
+   * @param string $screenSize
    * @param CssClassifiableContent $component
    * @param int $maxSize
    */
@@ -145,6 +146,12 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
     return $this;
   }
 
+  /**
+   * 
+   * @param int $order
+   * @return $this
+   * @throws InvalidArgumentException
+   */
   public function order(int $order = null) {
     if ($order !== null && !array_key_exists($order, $this->orders)) {
       throw new InvalidArgumentException("Invalid order '$order' for Grid cell");

@@ -13,7 +13,11 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use ArrayAccess;
 use Sphp\Html\CssClassifiableContent;
-use Sphp\Html\Foundation\Sites\Core\Screen;
+use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
+use Sphp\Html\Foundation\Foundation;
+use Sphp\Stdlib\Arrays;
+use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Description of CellLayoutManager
@@ -25,22 +29,35 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
 class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
 
   /**
+   * @var ScreenSizes 
+   */
+  private $screenSizes;
+
+  /**
    * @var CellScreenSizeLayoutManager
    */
   private $screenLayouts = [];
+
+  /**
+   * @var int 
+   */
   private $maxSize = 12;
-  
   private static $offsets = ['shrink', 'auto'];
 
   /**
    * Constructor
    * 
    * @param CssClassifiableContent $component
+   * @param ScreenSizes $screenSizes
    * @param int $maxSize
    */
-  public function __construct(CssClassifiableContent $component, int $maxSize = 12) {
+  public function __construct(CssClassifiableContent $component, ScreenSizes $screenSizes = null, int $maxSize = 12) {
     parent::__construct($component);
-    foreach (Screen::sizes() as $size) {
+    if ($screenSizes === null) {
+      $screenSizes = Foundation::screen();
+    }
+    $this->screenSizes = $screenSizes;
+    foreach ($this->screenSizes as $size) {
       $this->screenLayouts[$size] = new CellScreenSizeLayoutManager($size, $component, $maxSize);
     }
     //$this->screenLayouts['all'] = $this;
@@ -48,7 +65,35 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
     $this->maxSize = $maxSize;
   }
 
+  public function __destruct() {
+    unset($this->screenSizes, $this->screenLayouts);
+    parent::__destruct();
+  }
+
+  /**
+   * Sets a layout value for a screen size specific layout
+   * 
+   * @param  string $name
+   * @param  array $arguments
+   * @return CellScreenSizeLayoutManager
+   * @throws BadMethodCallException
+   */
+  public function __call(string $name, array $arguments): CellScreenSizeLayoutManager {
+    if (!$this->isScreenSize($name)) {
+    throw new \Sphp\Exceptions\BadMethodCallException("Invalid size '$name' for Grid cell");
+    } if (count($arguments) === 1) {
+      return $this->screen($name)[$arguments[0]];
+    } else {
+    throw new \Sphp\Exceptions\BadMethodCallException("Wrong number of arguments foe '$name' for Grid cell");
+    }
+  }
+
   public function setLayouts(...$layouts) {
+    foreach (Arrays::flatten($layouts) as $cssClass) {
+      if (in_array($cssClass, static::$offsets)) {
+        $this->setOneOf(static::$offsets, $cssClass);
+      }
+    }
     foreach ($this->screenLayouts as $l) {
       $l->setLayouts($layouts);
     }
@@ -68,6 +113,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
    * 
    * @param  string|int|null $value column size for this screens sizes
    * @return $this for a fluent interface
+   * @throws InvalidArgumentException
    */
   public function size($value) {
     $all = ['shrink', 'auto'];
@@ -91,7 +137,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
   }
 
   public function auto() {
-    $this->unsetSize();
+    $this->unsetSizes();
     $this->cssClasses()->add('auto');
     return $this;
   }
@@ -116,6 +162,9 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
    * @return CellScreenSizeLayoutManager
    */
   public function screen(string $size): CellScreenSizeLayoutManager {
+    if (!isset($this->screenLayouts[$size])) {
+      throw new InvalidArgumentException('ScreenSize does not exist');
+    }
     return $this->screenLayouts[$size];
   }
 
@@ -128,29 +177,31 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
   }
 
   public function offsetExists($offset): bool {
-    $exists = false;
-    if (array_key_exists($offset, $this->screenLayouts) ) {
-      $exists = true;
-    } else if (in_array($offset, static::$offsets)) {
-      $exists = true;
-    }
-    return $exists;
+    return array_key_exists($offset, $this->screenLayouts) || in_array($offset, static::$offsets);
   }
 
   public function offsetGet($offset) {
     if ($this->offsetExists($offset)) {
       return $this->screenLayouts[$offset];
     }
-    throw new \Sphp\Exceptions\InvalidArgumentException();
+    throw new InvalidArgumentException("Invalid size '$offset' for Grid cell");
   }
 
   public function offsetSet($offset, $value) {
     throw new \Sphp\Exceptions\InvalidArgumentException();
   }
 
+  /**
+   * 
+   * @param  mixed $offset
+   * @throws InvalidArgumentException
+   */
   public function offsetUnset($offset) {
-    
-    throw new \Sphp\Exceptions\InvalidArgumentException();
+    if ($this->isScreenSize($offset)) {
+      $this->screenLayouts->unsetLayouts();
+    } else {
+      throw new InvalidArgumentException("Invalid size '$offset' for Grid cell");
+    }
   }
 
 }

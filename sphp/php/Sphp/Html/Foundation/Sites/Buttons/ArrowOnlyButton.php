@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
-use Sphp\Html\Foundation\Sites\Core\Factory;
+use Sphp\Html\Foundation\Foundation;
 
 /**
  * Implements a Close Button
@@ -53,7 +53,7 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
   }
 
   public function contentToString(): string {
-    return Factory::screenReaderLabel($this->screenReaderLabel)->getHtml();
+    return Foundation::screenReaderLabel($this->screenReaderLabel)->getHtml();
   }
 
 }

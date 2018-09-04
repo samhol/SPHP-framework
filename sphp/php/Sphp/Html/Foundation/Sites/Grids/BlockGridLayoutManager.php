@@ -11,9 +11,9 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Component;
-use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Stdlib\Arrays;
+use Sphp\Html\Foundation\Foundation;
 
 /**
  * Implements a layout manager for Foundation framework based XY Block Grid
@@ -86,7 +86,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @return $this for a fluent interface
    */
   public function unsetLayouts() {
-    foreach (Screen::sizes() as $screenSize) {
+    foreach (Foundation::sizes() as $screenSize) {
       $this->unsetGrid($screenSize);
     }
     return $this;

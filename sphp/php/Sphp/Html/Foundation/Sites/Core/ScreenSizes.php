@@ -13,6 +13,8 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Exceptions\OutOfRangeException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Datastructures\Arrayable;
+use Traversable;
+use Sphp\Stdlib\Datastructures\PlainIterator;
 
 /**
  * Defines Screen Sizes and types and implements screen size parsing functions
@@ -22,7 +24,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ScreenSizes implements \Iterator, \Countable, Arrayable {
+class ScreenSizes implements \IteratorAggregate, \Countable, Arrayable {
 
   /**
    * Foundation screen size names
@@ -102,58 +104,16 @@ class ScreenSizes implements \Iterator, \Countable, Arrayable {
   }
 
   /**
-   * Count the number of inserted elements in the container
+   * Count the number of inserted screen size names
    *
-   * @return int number of elements in the html component
+   * @return int the number of inserted screen size names
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
     return count($this->sizes);
   }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->sizes);
+  
+  public function getIterator(): Traversable {
+    return new PlainIterator($this->sizes);
   }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->sizes);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->sizes);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->sizes);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->sizes);
-  }
-
 }
