@@ -435,8 +435,8 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    * @param array $args
    * @param string $expected
    */
-  public function testVsprintf($string, array $args, $expected) {
+ /* public function testVsprintf($string, array $args, $expected) {
     $this->assertEquals(Strings::vsprintf($string, $args), $expected);
-  }
+  }*/
 
 }
