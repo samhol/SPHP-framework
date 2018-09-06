@@ -14,6 +14,7 @@ use Sphp\Exceptions\RuntimeException;
 use SplFileObject;
 use Sphp\Stdlib\Arrays;
 use Exception;
+use SplFileInfo;
 
 /**
  * Tools to work with files and directories
@@ -120,9 +121,10 @@ abstract class Filesystem {
    * Returns the file/directory structure under the given path
    *
    * @param  string $dir
+   * @param int $sortingOrder
    * @return SplFileObject[] the file objects of the content files and directories
    */
-  public static function dirToArray($dir, $sortingOrder = \SCANDIR_SORT_ASCENDING) {
+  public static function dirToArray(string $dir, int $sortingOrder = \SCANDIR_SORT_ASCENDING): array {
     $contents = [];
     foreach (scandir($dir, $sortingOrder) as $node) {
       $path = "$dir/$node";
@@ -146,38 +148,46 @@ abstract class Filesystem {
   /**
    * Attempts to create the directory specified by pathname
    *
-   * * For more information on modes, read the details on the {@link \chmod()} page.
-   *
    * @param  string $path the directory path
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
-   * @return boolean true on success or false on failure
+   * @return SplFileInfo file info object pointing to the folder
+   * @throws RuntimeException
    */
-  public static function mkdir(string $path, int $mode = 0777): bool {
-    $result = is_dir($path);
-    if (!$result) {
-      $result = mkdir($path, $mode, true);
+  public static function mkdir(string $path, int $mode = 0777): SplFileInfo {
+    $fileinfo = new SplFileInfo($path);
+    if (!$fileinfo->isDir()) {
+      if (!mkdir($path, $mode, true)) {
+        throw new RuntimeException("Directory path '$path' cannot be created");
+      }
     }
-    return $result;
+    return $fileinfo;
   }
 
   /**
    * Attempts to create the file specified by pathname
    *
-   * * For more information on modes, read the details on the {@link \chmod()} page.
-   *
    * @param  string $path the file path
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
-   * @return boolean true on success or false on failure
+   * @return SplFileInfo file info object pointing to the file
+   * @throws RuntimeException if the file creation fails
    */
-  public static function mkFile(string $path, int $mode = 0777): bool {
-    if (is_file($path)) {
-      return false;
+  public static function mkFile(string $path, int $mode = 0777): SplFileInfo {
+    $fileinfo = new SplFileInfo($path);
+    $dirname = $fileinfo->getPath();
+    if (!$fileinfo->isWritable()) {
+      //$dirname = dirname($path);
+      if ($dirname !== '.' && !is_dir($dirname)) {
+        static::mkdir($dirname, $mode);
+      }
+      $success = fopen($path, 'w') !== false;
+      if (!$success) {
+        throw new RuntimeException("File '$path' cannot be created");
+      }
     }
-    $dirname = dirname($path);
-    if ($dirname !== '.' && !is_dir($dirname)) {
-      static::mkdir($dirname, $mode);
+    if (fileperms($dirname) !== $mode) {
+      chmod($dirname, $mode);
     }
-    return fopen($path, 'w') !== false;
+    return $fileinfo;
   }
 
   /**

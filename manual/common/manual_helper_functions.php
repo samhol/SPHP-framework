@@ -120,7 +120,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleAccordionBuilder;
  * @return CodeExampleAccordionBuilder
  * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
  */
-function example(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
+function example(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): CodeExampleAccordionBuilder {
   return CodeExampleAccordionBuilder::build($path, $highlightOutput, $outputAsHtmlFlow);
 }
 
@@ -138,7 +138,20 @@ function visualize(string $path, string $highlightOutput = null, bool $outputAsH
     CodeExampleAccordionBuilder::visualize($path, $highlightOutput, $outputAsHtmlFlow);
   } catch (\Exception $e) {
     echo ThrowableCalloutBuilder::build($e, true, true);
-    ;
+  }
+}
+
+/**
+ * Creates the PHP Example code and the preferred result
+ *
+ * @param  string $path the file path of the presented example PHP code
+ * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
+ */
+function syntaxView(string $path) {
+  try {
+    return CodeExampleAccordionBuilder::build($path, null, false);
+  } catch (\Exception $e) {
+    echo ThrowableCalloutBuilder::build($e, true, true);
   }
 }
 

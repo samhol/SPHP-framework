@@ -22,7 +22,8 @@ $img provides static factory methods for showing resized image components.
 * {$img->resize}: resizes the original image file to match the given dimensions
 MD
 );
-
+echo \Sphp\Manual\syntaxView('manual/pics/example.jpg.php');
+\Sphp\Manual\visualize('Sphp/Images/ImageScaler.php', 'html5');
 \Sphp\Manual\visualize('Sphp/Html/Media/Img.php', null, true);
 $figureTag = \Sphp\Manual\w3schools()->figure;
 \Sphp\Manual\md(<<<MD
@@ -36,4 +37,4 @@ MD
 );
 
 \Sphp\Manual\visualize('Sphp/Html/Media/Figure.php', null, true);
-
+$tidy = new \tidy;
