@@ -4,7 +4,10 @@ php:
   - 7.0
   - 7.1
   - 7.2
-
+# Cache composer packages
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 before_script:
   - travis_retry composer install --no-interaction
   - mkdir -p build/logs
