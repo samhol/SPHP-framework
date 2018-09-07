@@ -9,7 +9,9 @@
  */
 
 namespace Sphp\Database;
+
 use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Description of Utils
  *

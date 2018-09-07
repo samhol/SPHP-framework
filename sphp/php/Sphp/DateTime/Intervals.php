@@ -12,7 +12,7 @@ namespace Sphp\DateTime;
 
 use DateInterval;
 use Sphp\Stdlib\Strings;
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a factory for basic interval object creation
@@ -29,7 +29,7 @@ abstract class Intervals {
    * 
    * @param  mixed $input input for a new interval
    * @return Interval new instance
-   * @throws DateTimeException
+   * @throws InvalidArgumentException
    */
   public static function create($input): Interval {
     try {
@@ -42,10 +42,10 @@ abstract class Intervals {
       } else if (is_string($input)) {
         $interval = static::fromString($input);
       } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException();
+        throw new InvalidArgumentException();
       }
     } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage());
+      throw new InvalidArgumentException($ex->getMessage());
     }
     return $interval;
   }
@@ -75,11 +75,11 @@ abstract class Intervals {
    * 
    * @param  string|float $seconds 
    * @return Interval new instance
-   * @throws DateTimeException if the input value is not numeric
+   * @throws InvalidArgumentException if the input value is not numeric
    */
   public static function fromNumeric($seconds): Interval {
     if (!is_numeric($seconds)) {
-      throw new DateTimeException('Not numeric input');
+      throw new InvalidArgumentException('Not numeric input');
     }
     $float = (int) $seconds;
 

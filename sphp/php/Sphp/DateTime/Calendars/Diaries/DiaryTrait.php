@@ -40,10 +40,12 @@ trait DiaryTrait {
     return $contains;
   }
 
+
   /**
-   * Returns all logs matching the filter stored
+   * Filters log of this collection using a callback function
    * 
-   * @return LogContainer all logs matching the filter stored
+   * @param  callable|string $filter the callback function to use
+   * @return LogContainer filtered logs
    */
   abstract public function filterLogs($filter): LogContainer;
 

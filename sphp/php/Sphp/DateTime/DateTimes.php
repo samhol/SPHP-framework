@@ -11,10 +11,8 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use DateInterval;
-use Sphp\Stdlib\Strings;
 use DateTimeInterface as DTI;
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Exception;
 
 /**
@@ -32,7 +30,7 @@ abstract class DateTimes {
    * 
    * @param  mixed $input
    * @return DateTimeImmutable
-   * @throws DateTimeException
+   * @throws InvalidArgumentException
    */
   public static function dateTimeImmutable($input): DateTimeImmutable {
     try {
@@ -51,10 +49,10 @@ abstract class DateTimes {
         $dateTime = new DateTimeImmutable("@$timestamp");
       }
     } catch (Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
     if (!$dateTime instanceof DateTimeImmutable) {
-      throw new DateTimeException('Datetime object cannot be parsed from input type');
+      throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
     }
     return $dateTime;
   }
@@ -64,7 +62,7 @@ abstract class DateTimes {
    * 
    * @param  mixed $input input to parse
    * @return string date string as `Y-m-d` 
-   * @throws DateTimeException if parsing fails
+   * @throws InvalidArgumentException if parsing fails
    */
   public static function parseDateString($input): string {
     $result = null;
@@ -78,7 +76,7 @@ abstract class DateTimes {
       $result = $input->format('Y-m-d');
     }
     if ($result === null) {
-      throw new DateTimeException('Date string cannot be parsed from the input');
+      throw new InvalidArgumentException('Date string cannot be parsed from the input');
     }
     return $result;
   }

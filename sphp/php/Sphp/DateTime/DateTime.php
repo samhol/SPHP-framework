@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Exception;
 
 /**
@@ -33,7 +33,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * 
    * @param  mixed $date raw date data
    * @return int the difference in days
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function compareTo($date): int {
     $dt = static::from($date)->getTimestamp();
@@ -55,7 +55,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * 
    * @param  mixed $date the date to match
    * @return bool true if this date is later than the given one and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function isLaterThan($date): bool {
     return $this->compareTo($date) < 0;
@@ -66,7 +66,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * 
    * @param  mixed $date the date to match
    * @return bool true if this date is earlier than the given one and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function isEarlierThan($date): bool {
     return $this->compareTo($date) > 0;
@@ -163,7 +163,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * 
    * @param  DateInterface|mixed $date raw datetime data
    * @return DateTimeWrapper new instance
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public static function from($date = null): DateTimeWrapper {
     return new static($date);
@@ -248,7 +248,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * 
    * @param  int|string|Interval|DateInterval $interval the interval to add
    * @return DateTimeInterface new instance
-   * @throws DateTimeException if the interval cannot be parsed from the input
+   * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function add($interval) {
     return parent::add(Intervals::create($interval));
@@ -259,7 +259,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * 
    * @param  int|string|Interval|DateInterval $interval the interval to add
    * @return DateTimeInterface new instance
-   * @throws DateTimeException if the interval cannot be parsed from the input
+   * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function sub($interval) {
     return parent::sub(Intervals::create($interval));

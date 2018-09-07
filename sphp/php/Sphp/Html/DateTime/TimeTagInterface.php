@@ -12,7 +12,7 @@ namespace Sphp\Html\DateTime;
 
 use Sphp\Html\Tag;
 use DateTimeInterface;
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Defines an HTML &lt;time&gt; tag
@@ -62,7 +62,7 @@ interface TimeTagInterface extends Tag {
    * 
    * @param  DateTimeInterface $dateTime the datetime object
    * @return $this for a fluent interface
-   * @throws DateTimeException if formatting fails
+   * @throws InvalidArgumentException if formatting fails
    * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
   public function setDateTime($dateTime);

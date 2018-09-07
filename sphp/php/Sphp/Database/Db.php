@@ -115,9 +115,7 @@ class Db {
 
   /**
    * 
-   *
-   * 
-   * @param  string $name the type name of the instance created
+   * @param  string $className the type name of the instance created
    * @param  array $arguments
    * @return Statement
    * @throws BadMethodCallException

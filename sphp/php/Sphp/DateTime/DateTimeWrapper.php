@@ -11,12 +11,11 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use DateTimeInterface as DTI;
-use Sphp\DateTime\Exceptions\DateTimeException;
 use Exception;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 use ReflectionClass;
 use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a datetime object
@@ -44,13 +43,13 @@ class DateTimeWrapper implements DateTimeInterface {
    * Constructor
    * 
    * @param  mixed $time raw date data
-   * @throws DateTimeException if datetime cannot be parsed from input
+   * @throws InvalidArgumentException if datetime cannot be parsed from input
    */
   public function __construct($time = null) {
     try {
       $this->dateTime = DateTimes::dateTimeImmutable($time);
     } catch (Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
 
@@ -109,7 +108,7 @@ class DateTimeWrapper implements DateTimeInterface {
    * 
    * @param  mixed $date raw date data
    * @return int the difference in days
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function compareTo($date): int {
     $dt = static::from($date)->getTimestamp();
@@ -131,7 +130,7 @@ class DateTimeWrapper implements DateTimeInterface {
    * 
    * @param  mixed $date the date to match
    * @return bool true if this date is later than the given one and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function isLaterThan($date): bool {
     return $this->compareTo($date) < 0;
@@ -142,7 +141,7 @@ class DateTimeWrapper implements DateTimeInterface {
    * 
    * @param  mixed $date the date to match
    * @return bool true if this date is earlier than the given one and false otherwise
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function isEarlierThan($date): bool {
     return $this->compareTo($date) > 0;
@@ -219,11 +218,11 @@ class DateTimeWrapper implements DateTimeInterface {
    *  
    * @param  string $modify a date/time string
    * @return DateTimeWrapper new instance
-   * @throws DateTimeException if formatting fails
+   * @throws InvalidArgumentException if formatting fails
    * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
   public function modify(string $modify): DateTimeWrapper {
-    $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
     $new = $this->dateTime->modify($modify);
     $thrower->stop();
@@ -235,7 +234,7 @@ class DateTimeWrapper implements DateTimeInterface {
    * 
    * @param  string|Interval|DateInterval $interval the interval to add
    * @return DateTimeWrapper new instance
-   * @throws DateTimeException if the interval cannot be parsed from the input
+   * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function add($interval): DateTimeWrapper {
     //$interval = Factory::dateInterval($interval);
@@ -249,7 +248,7 @@ class DateTimeWrapper implements DateTimeInterface {
    * 
    * @param  string|Interval|DateInterval $interval the interval to add
    * @return DateTimeWrapper new instance
-   * @throws DateTimeException if the interval cannot be parsed from the input
+   * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function sub($interval): DateTimeWrapper {
     $dt = $this->dateTime->sub(Intervals::create($interval));
@@ -274,7 +273,7 @@ class DateTimeWrapper implements DateTimeInterface {
    * 
    * @param  DateInterface|mixed $date raw datetime data
    * @return DateTimeWrapper new instance
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public static function from($date = null): DateTimeWrapper {
     return new static($date);

@@ -12,7 +12,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Calendars\Diaries\Constraints;
-
+use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Implements a holiday event factory
  *
@@ -29,7 +29,7 @@ class Holidays {
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    * @param  string $name name of the holiday 
    * @return Holiday new instance
-   * @throws DateTimeException if creation fails
+   * @throws InvalidArgumentException if creation fails
    */
   public static function unique($date, string $name): Holiday {
     $constraint = new Constraints\Unique($date);

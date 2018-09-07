@@ -41,7 +41,7 @@ class NestablePDO extends PDO {
    * @return boolean true if the database engine supports nestable transactions 
    *         or false otherwise
    */
-  protected function nestable() {
+  protected function nestable(): bool {
     return in_array($this->getAttribute(PDO::ATTR_DRIVER_NAME), self::$savepointTransactions);
   }
 
@@ -114,8 +114,7 @@ class NestablePDO extends PDO {
    */
   public function rollBack() {
     $this->transLevel--;
-
-    if (!$this->nestable() || $this->transLevel == 0) {
+    if (!$this->nestable() || $this->transLevel === 0) {
       parent::rollBack();
     } else {
       $this->exec("ROLLBACK TO SAVEPOINT LEVEL{$this->transLevel}");

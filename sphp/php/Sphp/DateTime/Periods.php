@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime;
 
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**
@@ -82,7 +82,7 @@ abstract class Periods {
    * @param  string|Interval $interval
    * @param  mixed $length the end date or the length of the period
    * @return Period new instance
-   * @throws DateTimeException if instance cannot be parsed from input
+   * @throws InvalidArgumentException if instance cannot be parsed from input
    */
   public static function create($start, $interval, $length): Period {
     try {
@@ -94,19 +94,18 @@ abstract class Periods {
       }
       $dateTime = new Period(DateTimes::dateTimeImmutable($start), $interval, $length);
     } catch (\Exception $ex) {
-      throw new DateTimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $dateTime;
   }
-
+  
   /**
    * Creates a new instance from input
    * 
-   * @param  mixed $start the start date of the period
-   * @param  string|Interval $interval
-   * @param  mixed $length the end date or the length of the period
+   * @param int $month
+   * @param int $year
    * @return Period new instance
-   * @throws DateTimeException if instance cannot be parsed from input
+   * @throws InvalidArgumentException if instance cannot be parsed from input
    */
   public static function weeksOfMonth(int $month = null, int $year = null): Period {
     if ($year === null) {

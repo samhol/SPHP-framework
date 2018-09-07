@@ -10,8 +10,6 @@
 
 namespace Sphp\DateTime;
 
-use Sphp\DateTime\Exceptions\DateTimeException;
-
 /**
  * Defines properties for a date
  *

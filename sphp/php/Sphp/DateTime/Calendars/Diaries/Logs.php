@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries;
 
 use Sphp\DateTime\DateInterface;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements an event factory
@@ -42,7 +43,7 @@ class Logs {
    * @param  string $heading heading of the note 
    * @param  string $description
    * @return BasicLog new instance
-   * @throws DateTimeException if date parameter represents no calendar date
+   * @throws InvalidArgumentException if date parameter represents no calendar date
    */
   public static function unique($date, string $heading, string $description = null): BasicLog {
     $constraint = new Constraints\Unique($date);

@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Exception;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
@@ -35,13 +35,13 @@ class DateWrapper implements DateInterface {
    * Constructor
    * 
    * @param  mixed $date raw date data
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function __construct($date = null) {
     try {
       $this->dateTime = new DateTimeImmutable(DateTimes::parseDateString($date));
     } catch (\Exception $ex) {
-      throw new DateTimeException(static::class . ' object cannot be parsed from input type', $ex->getCode(), $ex);
+      throw new InvalidArgumentException(static::class . ' object cannot be parsed from input type', $ex->getCode(), $ex);
     }
   }
 
@@ -77,7 +77,7 @@ class DateWrapper implements DateInterface {
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @return int the difference in days
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function diff($date): int {
     $dt = DateWrapper::from($date)->getDateTime();
@@ -102,7 +102,7 @@ class DateWrapper implements DateInterface {
    * Checks if this date is later than the given one
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function isLaterThan($date): bool {
     return $this->diff($date) < 0;
@@ -112,7 +112,7 @@ class DateWrapper implements DateInterface {
    * Checks if this date is earlier than the given one
    * 
    * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function isEarlierThan($date): bool {
     return $this->diff($date) > 0;
@@ -170,11 +170,11 @@ class DateWrapper implements DateInterface {
    *  
    * @param  string $modify a date/time string
    * @return DateWrapper new instance
-   * @throws DateTimeException if formatting fails
+   * @throws InvalidArgumentException if formatting fails
    * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
   public function modify(string $modify): DateWrapper {
-    $thrower = ErrorToExceptionThrower::getInstance(DateTimeException::class);
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
     $new = $this->dateTime->modify($modify);
     $thrower->stop();
@@ -186,7 +186,7 @@ class DateWrapper implements DateInterface {
    * 
    * @param  mixed $date raw date data
    * @return DateWrapper new instance
-   * @throws DateTimeException if date cannot be parsed from input
+   * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public static function from($date): DateWrapper {
     return new static($date);

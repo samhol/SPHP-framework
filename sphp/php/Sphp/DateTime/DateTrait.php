@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Sphp\DateTime\Exceptions\DateTimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Trait implements some functionality for date objects
@@ -43,12 +43,12 @@ trait DateTrait {
    * 
    * @param  string $format the format of the outputted date string
    * @return string date formatted according to given format
-   * @throws DateTimeException if formatting fails
+   * @throws InvalidArgumentException if formatting fails
    */
   public function format(string $format): string {
     $output = $this->getDateTime()->format($format);
     if ($output === false) {
-      throw new DateTimeException();
+      throw new InvalidArgumentException();
     }
     return $output;
   }

@@ -10,12 +10,8 @@
 
 namespace Sphp\DateTime;
 
-use DatePeriod;
 use Traversable;
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\DateTime\Exceptions\DateTimeException;
-use Sphp\Exceptions\BadMethodCallException;
-use Exception;
 
 /**
  * Defines a date period
