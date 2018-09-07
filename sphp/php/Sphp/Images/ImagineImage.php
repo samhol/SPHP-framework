@@ -40,10 +40,13 @@ class ImagineImage extends AbstractImage {
    * @param  string $src
    * @throws InvalidArgumentException
    */
-  public function __construct(string $src = null) {
+  public function __construct(string $src = null, BoxInterface $box = null) {
     try {
       $imagine = new Imagine();
       $this->image = $imagine->open($src);
+      if ($box !== null) {
+        $this->image->resize($size);
+      }
       parent::__construct($src);
     } catch (\Exception $ex) {
       throw new InvalidArgumentException("Image src: '$src' is not recognized", $ex->getCode(), $ex);

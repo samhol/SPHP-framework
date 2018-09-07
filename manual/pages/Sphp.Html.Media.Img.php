@@ -11,19 +11,11 @@ $w3c = \Sphp\Manual\w3schools();
 ##The $img and the $fig components
  
 $img component implements HTML {$w3c->img} tag 	via $imgInterface interface. 
-$img provides static factory methods for showing resized image components. 
-		
-**List of factory methods creating new resized instances of the $img:**
 
-* {$img->scaleToFit}: scales the original image file to fit the given box while constraining proportions
-* {$img->widen}: resizes the original image to given width, constraining proportions
-* {$img->heighten}: resizes the original image to given height, constraining proportions
-* {$img->scale}: resizes the original image by aplying the given ratio to both sides
-* {$img->resize}: resizes the original image file to match the given dimensions
 MD
 );
 echo \Sphp\Manual\syntaxView('manual/pics/example.jpg.php');
-\Sphp\Manual\visualize('Sphp/Images/ImageScaler.php', 'html5');
+\Sphp\Manual\visualize('Sphp/Images/Image-Cache.php', 'html5');
 \Sphp\Manual\visualize('Sphp/Html/Media/Img.php', null, true);
 $figureTag = \Sphp\Manual\w3schools()->figure;
 \Sphp\Manual\md(<<<MD
@@ -37,4 +29,3 @@ MD
 );
 
 \Sphp\Manual\visualize('Sphp/Html/Media/Figure.php', null, true);
-$tidy = new \tidy;

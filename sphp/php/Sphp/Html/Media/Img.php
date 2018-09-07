@@ -11,7 +11,6 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Images\ImageScaler;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -124,100 +123,6 @@ class Img extends EmptyTag implements ImgInterface {
       $output .= "<noscript>$nonLazy</noscript>";
     }
     return $output;
-  }
-
-  /**
-   * Returns a new instance of the component containing a scaled image
-   *
-   * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
-   * 
-   * @param  string $src the path to the image file
-   * @param  int $width width to fit in
-   * @param  int $height height to fit in
-   * @return self new instance containing a resized image
-   */
-  public static function scaleToFit(string $src, int $width, int $height) {
-    $path = (new ImageScaler($src))
-            ->scaleToFit($width, $height)
-            ->saveToCache()
-            ->httpCachePath();
-    return new static($path);
-  }
-
-  /**
-   * Returns a new instance of the component containing a scaled image
-   * 
-   * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
-   *
-   * @param  string $src the path to the image file
-   * @param  float $ratio positive scaling ratio
-   * @return self new instance containing a resized image
-   */
-  public static function scale($src, float $ratio) {
-    $path = (new ImageScaler($src))
-            ->scale($ratio)
-            ->saveToCache()
-            ->httpCachePath();
-    return new static($path);
-  }
-
-  /**
-   * Returns a new instance of the component containing a resizes image
-   * 
-   * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
-   *
-   * @param  string $src the path to the image file
-   * @param  int $width new width of the image
-   * @param  int $height new height of the image
-   * @return self new instance containing a resized image
-   */
-  public static function resize(string $src, int $width, int $height) {
-    $path = (new ImageScaler($src))
-            ->resize($width, $height)
-            ->saveToCache()
-            ->httpCachePath();
-    return new static($path);
-  }
-
-  /**
-   * 
-   * Returns a new instance of the {@link Img} component containing a widen image
-   * 
-   * Resizes the original image to given width, constraining proportions
-   * 
-   * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
-   *
-   * @param  string $src the path to the image file
-   * @param  int $width the new width
-   * @return self new instance containing a resized image
-   * @uses   ImageScaler
-   */
-  public static function widen(string $src, int $width) {
-    $path = (new ImageScaler($src))
-            ->widen($width)
-            ->saveToCache()
-            ->httpCachePath();
-    return new static($path);
-  }
-
-  /**
-   * Returns a new instance of the {@link Img} component containing a scaled image
-   * 
-   * Resizes the original image to given height, constraining proportions
-   * 
-   * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
-   *
-   * @param  string $src the path to the image file
-   * @param  int $height the new height
-   * @return Img new instance of the component containing a resized image
-   * @uses   ImageScaler
-   */
-  public static function heighten(string $src, int $height) {
-    $path = (new ImageScaler($src))
-            ->heighten($height)
-            ->saveToCache()
-            ->httpCachePath();
-    return new static($path);
   }
 
 }

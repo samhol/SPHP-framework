@@ -1,23 +1,27 @@
 <?php
 
 namespace Sphp\Html\Media;
+use Sphp\Images\ImagineImage;
+use Sphp\Images\SimpleCache;
 
 (new Img("http://data.samiholck.com/images/crossbones.png", "Original Skull"))
         ->setLazy(true)
         ->printHtml();
-Img::scale("http://data.samiholck.com/images/crossbones.png", 1.2)
-        ->setAlt("1.5 x Skull")
-        ->setAttribute("title", "1.5 x original Skull")
+
+$image = new ImagineImage("http://data.samiholck.com/images/crossbones.png");
+$cache = new SimpleCache('manual/pics/cache');
+
+$fitted = $cache->save($image->scaleToFit(100, 60));
+(new Img($fitted, "Fitted Skull"))
         ->setLazy(true)
         ->printHtml();
-Img::scale("http://data.samiholck.com/images/crossbones.png", 0.5)
-        ->setAlt("0.5 x Skull")
+
+$scaled = $cache->save($image->scale(50));
+(new Img($scaled, "Widen Skull"))
         ->setLazy(true)
         ->printHtml();
-Img::resize("http://data.samiholck.com/images/crossbones.png", 40, 60)
-        ->setAlt("50 x 25 Skull")
-        ->setLazy(true)
-        ->printHtml();
-Img::scaleToFit("http://data.samiholck.com/images/crossbones.png", 20, 30)
+
+$widen = $cache->save($image->widen(50));
+(new Img($widen, "Widen Skull"))
         ->setLazy(true)
         ->printHtml();
