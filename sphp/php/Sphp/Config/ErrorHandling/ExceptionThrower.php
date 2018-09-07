@@ -19,7 +19,7 @@ use Sphp\Exceptions\ErrorException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ExceptionThrower implements ErrorHandlerInterface {
+class ExceptionThrower implements ErrorHandler {
 
   /**
    * Throws the PHP error as a Exception

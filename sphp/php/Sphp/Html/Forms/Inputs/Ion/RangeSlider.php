@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use Sphp\Html\Exceptions\InvalidStateException;
+use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Implements jQuery range slider with skin support

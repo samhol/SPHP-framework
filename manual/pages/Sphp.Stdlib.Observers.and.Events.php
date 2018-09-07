@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $eventInterface = Manual\api()->classLinker(EventInterface::class);
 $eventClass = Manual\api()->classLinker(Event::class);
-$eventListenerInterface = Manual\api()->classLinker(EventListenerInterface::class);
+$eventListenerInterface = Manual\api()->classLinker(EventListener::class);
 $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class);
 
 Manual\md(<<<MD

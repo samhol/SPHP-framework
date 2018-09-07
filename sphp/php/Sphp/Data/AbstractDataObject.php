@@ -14,8 +14,9 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 use IteratorAggregate;
 use ReflectionClass;
-use Sphp\Data\Exceptions\DataException;
 use Traversable;
+use Sphp\Exceptions\OutOfRangeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Abstract implementation of a Data object
@@ -80,7 +81,7 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
       $methodName = 'get' . ucfirst($offset);
       return $this->$methodName();
     } else {
-      throw new DataException("Offset '$offset' does not exist");
+      throw new OutOfRangeException("Offset '$offset' does not exist");
     }
   }
 
@@ -88,7 +89,8 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
    * 
    * @param  string $offset
    * @param  mixed $value
-   * @throws DataException
+   * @throws InvalidArgumentException
+   * @throws OutOfRangeException
    */
   public function offsetSet($offset, $value) {
     if ($this->offsetExists($offset)) {
@@ -99,17 +101,18 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
         var_dump($pars[0]->hasType());
         $f->invoke($this, $value);
       } else {
-        throw new DataException("Offset '$offset' does not exist");
+        throw new InvalidArgumentException("Offset '$offset' does not exist");
       }
     } else {
-      throw new DataException("Setting member variable failed: '$offset' does not exist");
+      throw new OutOfRangeException("Setting member variable failed: '$offset' does not exist");
     }
   }
 
   /**
    * 
    * @param  mixed $offset
-   * @throws DataException
+   * @throws InvalidArgumentException
+   * @throws OutOfRangeException
    */
   public function offsetUnset($offset) {
     if ($this->offsetExists($offset)) {
@@ -120,10 +123,10 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
         //echo 'unsetting';
         $reflectionFunc->invoke($this, null);
       } else {
-        throw new DataException("Unsetting member variable failed: '$offset' cannot be NULL");
+        throw new InvalidArgumentException("Unsetting member variable failed: '$offset' cannot be NULL");
       }
     } else {
-      throw new DataException("Unsetting member variable failed: '$offset' does not exist");
+      throw new OutOfRangeException("Unsetting member variable failed: '$offset' does not exist");
     }
   }
 

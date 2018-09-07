@@ -8,17 +8,17 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Database\Exceptions;
+namespace Sphp\Exceptions;
 
-use Sphp\Exceptions\InvalidArgumentException as BaseException;
+use Exception;
 
 /**
- * SPHP-specific invalid argument exception for database related operations
+ * Indicates the current state of an HTML object involved is invalid
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InvalidArgumentException extends BaseException {
-
+class InvalidStateException extends Exception implements SphpExceptionInterface {
+  
 }

@@ -20,7 +20,7 @@ namespace Sphp\Config\ErrorHandling;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ErrorHandlerInterface {
+interface ErrorHandler {
 
   /**
    * Error handling method

@@ -45,7 +45,6 @@ use Sphp\Exceptions\RuntimeException;
 class CRSFToken {
 
   /**
-   *
    * @var self
    */
   private static $instance;
@@ -53,7 +52,7 @@ class CRSFToken {
   /**
    * Constructor
    * 
-   * @throws \Sphp\Exceptions\RuntimeException if there is no session
+   * @throws RuntimeException if there is no session
    */
   public function __construct() {
     if (session_status() == PHP_SESSION_NONE) {

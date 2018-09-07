@@ -11,7 +11,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Forms\FormController;
-use Sphp\Html\Exceptions\InvalidStateException;
+use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Defines required operations for all HTML form input components

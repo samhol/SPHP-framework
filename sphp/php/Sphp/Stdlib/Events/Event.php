@@ -54,7 +54,7 @@ class Event implements EventInterface {
    * Creates a new instance
    *
    * @param string $name the name of the event
-   * @param mixed $subject subject the subject which dispached this event
+   * @param mixed $subject subject the subject which dispatched this event
    * @param mixed $data the data dispatched with this event
    */
   public function __construct(string $name, $subject = null, $data = null) {

@@ -27,17 +27,24 @@ class ReCaptcha implements Content {
   use \Sphp\Html\ContentTrait;
 
   /**
-   *
    * @var Div
    */
   private $obj;
 
+  /**
+   * Constructor
+   * 
+   * @param string $sitekey
+   */
   public function __construct(string $sitekey) {
     $this->obj = new Div();
     $this->obj->cssClasses()->protect('g-recaptcha');
     $this->obj->setAttribute('data-sitekey', $sitekey);
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->obj);
   }
@@ -47,7 +54,7 @@ class ReCaptcha implements Content {
   }
 
   /**
-   * Sets the JavaScript callback function
+   * Sets or unsets the JavaScript callback function
    * 
    * **Optional:** The name of the callback function, executed when the user 
    * submits a successful response. The g-recaptcha-response token is passed 
@@ -61,17 +68,30 @@ class ReCaptcha implements Content {
     return $this;
   }
 
+  /**
+   * Sets or unsets the name of the expired JavaScript callback function
+   * 
+   * @param  string $callbackName
+   * @return $this for a fluent interface
+   */
   public function setExpiredCallback(string $callbackName = null) {
     $this->obj->setAttribute('data-expired-callback', $callbackName);
     return $this;
   }
 
+  /**
+   * Sets or unsets the name of the error JavaScript callback function
+   * 
+   * @param  string $callbackName
+   * @return $this for a fluent interface
+   */
   public function setErrorCallback(string $callbackName = null) {
     $this->obj->setAttribute('data-error-callback', $callbackName);
     return $this;
   }
 
   /**
+   * Creates an instance of ReCaptcha object
    * 
    * @param  string $sitekey
    * @param  string $callbackName
@@ -84,8 +104,9 @@ class ReCaptcha implements Content {
   }
 
   /**
+   * Creates required script components
    * 
-   * @return ScriptSrc
+   * @return ScriptSrc required script components
    */
   public static function createScripts(): ScriptSrc {
     return (new ScriptSrc('https://www.google.com/recaptcha/api.js'))->setAsync()->setDefer();
@@ -93,11 +114,12 @@ class ReCaptcha implements Content {
 
   /**
    * 
-   * @param string $sitekey
-   * @param bool $loadScript
-   * @return type
+   * @param  string $sitekey
+   * @param  string $callbackName
+   * @param  bool $loadScript
+   * @return string
    */
-  public static function createImage(string $sitekey, string $callbackName = null, bool $loadScript = true) {
+  public static function createImage(string $sitekey, string $callbackName = null, bool $loadScript = true): string {
     $div = new Div();
     $div->addCssClass('g-recaptcha');
     $div->setAttribute('data-sitekey', $sitekey);
@@ -110,15 +132,16 @@ class ReCaptcha implements Content {
   }
 
   /**
+   * Checks whether the secret is correct
    * 
    * @param  string $secret
-   * @return bool
+   * @return bool true if the secret is correct and false otherwise
    */
   public static function isValid(string $secret): bool {
     $response = filter_input(INPUT_POST, 'g-recaptcha-response', FILTER_SANITIZE_STRING);
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $data = [
-        'secret' => $secret, //'6Lfh6U4UAAAAAADk_T1MpBhlLy72QTMES2z_I9QB',
+        'secret' => $secret,
         'response' => $response
     ];
     $query = http_build_query($data);

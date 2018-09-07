@@ -49,9 +49,11 @@ class Path {
    * * the `$localRoot` should be an Absolute path so that all the sub folders are reachable.
    * * If either `$localRoot` or `$httpRoot` is not given the instance uses `$_SERVER` values if present
    * 
+   * @param string $host
+   * @param string $doc_root
    * @throws \Sphp\Exceptions\InvalidArgumentException if either local or http path cannot be resolved
    */
-  public function __construct($host = '', $doc_root = '') {
+  public function __construct(string $host = '', string $doc_root = '') {
     if (empty($host)) {
       $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
       $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
@@ -84,7 +86,7 @@ class Path {
    * @param  string $relativePath
    * @return boolean true if relative path exists and false otherwise
    */
-  public function isPathFromRoot($relativePath) {
+  public function isPathFromRoot(string $relativePath): bool {
     return file_exists($this->localRoot . $relativePath);
   }
 
@@ -95,7 +97,7 @@ class Path {
    * @return string the http path from the root
    * @throws \Sphp\Exceptions\InvalidArgumentException if the  path cannot be resolved
    */
-  public function http($relativePath = '') {
+  public function http(string $relativePath = ''): string {
     if (!$this->isPathFromRoot($relativePath)) {
       throw new InvalidArgumentException("Relative path '$relativePath' does not exist");
     }
@@ -107,9 +109,9 @@ class Path {
    *
    * @param  string $relativePath
    * @return string the local path from the root
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the path cannot be resolved
+   * @throws InvalidArgumentException if the path cannot be resolved
    */
-  public function local($relativePath = '') {
+  public function local(string $relativePath = ''): string {
     if (!$this->isPathFromRoot($relativePath)) {
       throw new InvalidArgumentException("Relative path '$relativePath' does not exist");
     }

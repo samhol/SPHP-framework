@@ -41,7 +41,7 @@ class Console {
 
   /**
    *
-   * @var type 
+   * @var string[] 
    */
   private $rows = [];
 

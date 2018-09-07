@@ -10,6 +10,8 @@
 
 namespace Sphp\Stdlib\Parsers;
 
+use Sphp\Exceptions\RuntimeException;
+
 /**
  * Defines a string converter
  * 
@@ -32,7 +34,7 @@ interface StringConverter {
    * 
    * @param  string $filename
    * @return string output 
-   * @throws \Sphp\Exceptions\FileSystemException if file is not readable
+   * @throws RuntimeException if file is not readable
    */
   public function convertFile(string $filename): string;
 }

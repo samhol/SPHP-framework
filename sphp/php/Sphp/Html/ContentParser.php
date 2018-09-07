@@ -10,6 +10,8 @@
 
 namespace Sphp\Html;
 
+use Sphp\Exceptions\RuntimeException;
+
 /**
  * Defines a resource container 
  *
@@ -24,7 +26,7 @@ interface ContentParser extends Content {
    * 
    * @param  string $path path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendRawFile(string $path);
 
@@ -33,7 +35,7 @@ interface ContentParser extends Content {
    * 
    * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendPhpFile(string $path);
 
@@ -42,7 +44,7 @@ interface ContentParser extends Content {
    * 
    * @param  string $md the path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendMd(string $md);
 
@@ -51,7 +53,7 @@ interface ContentParser extends Content {
    * 
    * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws \Sphp\Html\Exceptions\RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendMdFile(string $path);
 }

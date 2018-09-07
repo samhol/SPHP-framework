@@ -19,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\PlainContainer;
 use Traversable;
 use Sphp\Stdlib\Parsers\Parser;
-use Sphp\Html\Exceptions\RuntimeHtmlException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Abstract implementation of both ordered and unordered HTML-list
@@ -93,7 +93,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * 
    * @param  string $md inline Mark Down string
    * @return StandardListItem appended instance
-   * @throws RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendMd(string $md): StandardListItem {
     try {
@@ -101,7 +101,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
       $item = $this->append($p->parseInline($md));
       return $item;
     } catch (\Exception $ex) {
-      throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
 

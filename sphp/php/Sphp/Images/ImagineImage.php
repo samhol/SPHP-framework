@@ -66,11 +66,6 @@ class ImagineImage extends AbstractImage {
     return $this->image->show($this->getExtension());
   }
 
-  public function setCachePath(string $path) {
-    $this->cachePath = $path;
-    return $this;
-  }
-
   /**
    * Scales the image to fit the given box (width, height), constraining proportions
    * 
@@ -187,11 +182,6 @@ class ImagineImage extends AbstractImage {
     return $this;
   }
 
-  public function getCacheFilename(): string {
-    $plain = $this->getOriginalSrc() . $this->getWidth() . 'x' . $this->getHeight();
-    return 'p_' . md5($plain) . '.' . $this->getExtension();
-  }
-
   public function getHeight(): int {
     return $this->getBox()->getHeight();
   }
@@ -203,7 +193,7 @@ class ImagineImage extends AbstractImage {
   /**
    * 
    * @param  string $src
-   * @return ImagineImage
+   * @return ImagineImage new instance
    */
   public static function create(string $src): ImagineImage {
     return new static($src);

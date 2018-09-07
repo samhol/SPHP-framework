@@ -13,7 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use Zend\Config\Reader\Ini as IniReader;
 use Zend\Config\Writer\Ini as IniWriter;
 use Exception;
-use RuntimeException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Implements an INI config data parser

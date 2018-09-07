@@ -12,7 +12,7 @@ namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Forms\Inputs\AbstractInputTag;
 use Sphp\Html\Forms\Inputs\RangeInput;
-use Sphp\Html\Exceptions\InvalidStateException;
+use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Implements a jQuery range slider with skin support
@@ -30,7 +30,6 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @param  float $start the start value of the slider
    * @param  float $end the end value of the slider
    * @param  float $step the length of a single step
-   * @param  float $value the initial submit value 
    * @throws InvalidStateException if the slider state is invalid
    */
   public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1) {

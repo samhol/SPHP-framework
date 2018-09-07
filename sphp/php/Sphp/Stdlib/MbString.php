@@ -18,7 +18,7 @@ use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
- * Implements a string class
+ * Implements a multi byte string class
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -161,7 +161,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    *
    * @return bool whether the string contains any of the needles
    */
-  public static function containsAny(array $needles): bool {
+  public function containsAny(array $needles): bool {
     if (empty($needles)) {
       return false;
     } else {
@@ -180,11 +180,11 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @param  array $needles
    * @return bool whether the string contains all needles
    */
-  public static function containsAll(array $needles): bool {
+  public function containsAll(... $needles): bool {
     if (empty($needles)) {
       return false;
     } else {
-      foreach ($needles as $needle) {
+      foreach (Arrays::flatten($needles) as $needle) {
         if (!$this->contains((string) $needle)) {
           return false;
         }
@@ -225,7 +225,8 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
 
   /**
    * Replaces all occurrences of $search in $str by $replacement
-   *
+   ** 
+   * @param string $search
    * @param  string $replacement The string to replace with
    * @return MbString the resulting string after the replacements
    */
@@ -403,15 +404,17 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     $this->index = 0;
   }
 
   /**
-   * Returns the current caracter
+   * Returns the current character
    * 
-   * @return mixed the current caracter
+   * @return mixed the current character
    */
   public function current(): string {
     return $this->charAt($this->index);

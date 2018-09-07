@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Exceptions\InvalidStateException;
+use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Defines a range input for HTML forms

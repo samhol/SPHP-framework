@@ -94,7 +94,7 @@ abstract class Parser {
   public static function __callStatic(string $name, array $arguments) {
     try {
       return static::getReaderFor($name);
-    } catch (InvalidArgumentException $ex) {
+    } catch (\Exception $ex) {
       throw new BadMethodCallException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
@@ -105,13 +105,13 @@ abstract class Parser {
    * @param  string $filepath path to the input file
    * @param  string|null $extension optional file type extension
    * @return mixed parsed output
-   * @throws FileSystemException
+   * @throws RuntimeException
    * @throws InvalidArgumentException
    */
   public static function fromFile(string $filepath, string $extension = null) {
     $fullPath = Filesystem::getFullPath($filepath);
     if (!Filesystem::isFile($fullPath)) {
-      throw new \Sphp\Exceptions\FileSystemException(sprintf(
+      throw new RuntimeException(sprintf(
                       'Filename "%s" cannot be found relative to the working directory', $filepath
       ));
     }

@@ -91,9 +91,7 @@ class EventDispatcher implements EventDispatcherInterface {
         $this->addListener($event, $listener, $priority);
       }
     } else {
-      //
-      if (!($listener instanceof EventListenerInterface) && !is_callable($listener)) {
-        //var_dump($listener);
+      if (!($listener instanceof EventListener) && !is_callable($listener)) {
         throw new InvalidArgumentException("Listener type is not recognize as legal");
       }
       $key = $this->getEventName($event);

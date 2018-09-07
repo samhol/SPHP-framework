@@ -35,8 +35,6 @@ interface Image {
    */
   public function getWidth(): int;
 
-  public function setCachePath(string $path);
-
   /**
    * Scales the image to fit the given box (width, height), constraining proportions
    * 
@@ -99,36 +97,6 @@ interface Image {
    * @return $this for a fluent interface
    */
   public function save(string $path);
-
-  /**
-   * Saves the image at a specified path
-   * 
-   * * The target file extension is used to determine file format
-   * * jpg, jpeg, gif, png, wbmp and xbm are supported
-   *
-   * @return $this for a fluent interface
-   */
-  public function saveToCache();
-
-  /**
-   * 
-   * @return string the filename part of the cached image path
-   */
-  public function getCacheFilename(): string;
-
-  /**
-   * Returns the directory part of the cached image path
-   * 
-   * @return string the directory part of the cached image path
-   */
-  public function getCacheRoot(): string;
-
-  /**
-   * Returns the http path to the cached image
-   * 
-   * @return string the http path to the cached image
-   */
-  public function getFullCachePath();
 
   /**
    * Returns image file extension of the source

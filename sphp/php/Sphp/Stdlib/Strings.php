@@ -66,6 +66,7 @@ abstract class Strings {
   /**
    * Replaces all occurrences of $search in $str by $replacement
    *
+   * @param  string $string the input string
    * @param  string $search      The needle to search for
    * @param  string $replacement The string to replace with
    * @return string the resulting string after the replacements
@@ -97,8 +98,10 @@ abstract class Strings {
    * Returns an array of strings. An optional integer $limit will truncate the
    * results.
    *
+   * @param  string $string
    * @param  string $pattern the regex with which to split the string
    * @param  int $limit optional maximum number of results to return
+   * @param string $encoding
    * @return string[] an array of strings
    */
   public static function split(string $string, string $pattern, int $limit = -1, string $encoding = null): array {
@@ -653,28 +656,6 @@ abstract class Strings {
       throw new InvalidArgumentException("Value cannot be parsed to integer");
     }
     return (int) $result;
-  }
-
-  /**
-   * 
-   * @param  string $format
-   * @param  scalar[] $data
-   * @return string   
-   */
-  public static function vsprintf($format, array $data) {
-    preg_match_all(
-            '/ (?<!%) % ( (?: [[:alpha:]_-][[:alnum:]_-]* | ([-+])? [0-9]+ (?(2) (?:\.[0-9]+)? | \.[0-9]+ ) ) ) \$ [-+]? \'? .? -? [0-9]* (\.[0-9]+)? \w/x'
-            , $format, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-    $offset = 0;
-    $keys = array_keys($data);
-    foreach ($match as &$value) {
-      if (( $key = array_search($value[1][0], $keys, TRUE) ) !== FALSE || ( is_numeric($value[1][0]) && ( $key = array_search((int) $value[1][0], $keys, TRUE) ) !== FALSE)) {
-        $len = strlen($value[1][0]);
-        $format = substr_replace($format, 1 + $key, $offset + $value[1][1], $len);
-        $offset -= $len - strlen(1 + $key);
-      }
-    }
-    return vsprintf($format, $data);
   }
 
 }

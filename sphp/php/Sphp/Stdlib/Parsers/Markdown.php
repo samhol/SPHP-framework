@@ -14,7 +14,6 @@ use Exception;
 use Sphp\Exceptions\RuntimeException;
 use ParsedownExtraPlugin;
 use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\FileSystemException;
 
 /**
  * Implements a Markdown converter
@@ -31,7 +30,7 @@ class Markdown implements StringConverter {
 
   public function convertFile(string $filename): string {
     if (!Filesystem::isFile($filename)) {
-      throw new FileSystemException(sprintf("File '%s' doesn't exist or is not readable", $filename));
+      throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
     return $this->convertString(file_get_contents($filename));
   }

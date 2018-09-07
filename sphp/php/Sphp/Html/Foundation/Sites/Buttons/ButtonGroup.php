@@ -78,8 +78,6 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * Creates and appends a new push button
    * 
    * @param  string|null $content the content of the button
-   * @param  string|null $name the value of name attribute
-   * @param  string|null $value the value of value attribute
    * @return Button created instance
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
@@ -107,7 +105,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   }
 
   /**
-   * Creates and appends a new submitter
+   * Creates and appends a new resetter 
    * 
    * @param  string|null $content the content of the button
    * @return Button created instance
@@ -147,7 +145,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @precondition `$screenSize` == `small|medium|all`
    * @param  string $screenSize the targeted screen size
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the `$screenSize` does not match precondition
+   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function stackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {
@@ -157,7 +155,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
         $this->addCssClass("stacked-for-$screenSize");
       }
     } else {
-      throw new \InvalidArgumentException("Screen size '$screenSize' was not recognized");
+      throw new InvalidArgumentException("Screen size '$screenSize' was not recognized");
     }
     return $this;
   }
@@ -168,7 +166,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @precondition `$screenSize` == `small|medium|all`
    * @param  string $screenSize the targeted screen size
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the `$screenSize` does not match precondition
+   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function unStackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {

@@ -37,4 +37,4 @@ $w3c = \Sphp\Manual\w3schools();
 $img component implements HTML {$w3c->img} tag 	via $imgInterface interface. 
 MD
 );
-\Sphp\Manual\visualize('Sphp/Images/ImageScaler.php', 'html5');
+\Sphp\Manual\visualize('Sphp/Images/Image-Cache.php', 'html5');

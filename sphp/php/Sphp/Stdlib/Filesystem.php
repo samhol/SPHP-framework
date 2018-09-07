@@ -190,6 +190,14 @@ abstract class Filesystem {
     return $fileinfo;
   }
 
+  public static function rmFile(string $path): SplFileInfo {
+    $fileinfo = new SplFileInfo($path);
+    if (!$fileinfo->isFile()) {
+      unlink($path);
+    }
+    return $fileinfo;
+  }
+
   /**
    * Converts the file size (in bits) to bytes
    *

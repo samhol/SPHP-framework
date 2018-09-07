@@ -11,8 +11,8 @@
 namespace Sphp\Database;
 
 use PDO;
-use Sphp\Database\Exceptions\InvalidArgumentException;
-use Sphp\Database\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a Database statement factory

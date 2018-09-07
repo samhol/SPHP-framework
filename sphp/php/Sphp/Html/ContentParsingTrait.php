@@ -12,7 +12,7 @@ namespace Sphp\Html;
 
 use Sphp\Stdlib\Filesystem;
 use Sphp\Stdlib\Parsers\Parser;
-use Sphp\Html\Exceptions\RuntimeHtmlException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Trait implements functionality of the {@link ContentParser}
@@ -26,7 +26,7 @@ trait ContentParsingTrait {
   /**
    * Appends a new value as the last element
    *
-   * @param  mixed,... $value element
+   * @param  mixed,... $content element
    * @return $this for a fluent interface
    */
   abstract public function append(...$content);
@@ -36,13 +36,13 @@ trait ContentParsingTrait {
    * 
    * @param  string $path path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendRawFile(string $path) {
     try {
       $this->append(Filesystem::toString($path));
     } catch (\Exception $ex) {
-      throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }
@@ -52,13 +52,13 @@ trait ContentParsingTrait {
    * 
    * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendPhpFile(string $path) {
     try {
       $this->append(Filesystem::executePhpToString($path));
     } catch (\Exception $ex) {
-      throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }
@@ -68,14 +68,14 @@ trait ContentParsingTrait {
    * 
    * @param  string $md the path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendMd(string $md) {
     try {
       $p = Parser::md();
       $this->append($p->convertString($md));
     } catch (\Exception $ex) {
-      throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }
@@ -85,13 +85,13 @@ trait ContentParsingTrait {
    * 
    * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeHtmlException if the parsing fails for any reason
+   * @throws RuntimeException if the parsing fails for any reason
    */
   public function appendMdFile(string $path) {
     try {
       $this->appendMd(Filesystem::executePhpToString($path));
     } catch (\Exception $ex) {
-      throw new RuntimeHtmlException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }

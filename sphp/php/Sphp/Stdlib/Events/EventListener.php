@@ -8,17 +8,21 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Database\Exceptions;
-
-use Sphp\Exceptions\BadMethodCallException as BaseException;
+namespace Sphp\Stdlib\Events;
 
 /**
- * SPHP-specific bad method call exception for database related operations
+ * Defines an event listener
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BadMethodCallException extends BaseException {
-  
+interface EventListener {
+
+  /**
+   * The method called when a listened event occurs
+   *
+   * @param EventInterface $event
+   */
+  public function on(EventInterface $event);
 }

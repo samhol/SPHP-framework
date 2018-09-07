@@ -10,6 +10,8 @@
 
 namespace Sphp\Stdlib\Parsers;
 
+use Sphp\Exceptions\RuntimeException;
+
 /**
  * Defines a datatype encoder to PHP array decoder
  *
@@ -24,7 +26,7 @@ interface ArrayDecoder {
    *
    * @param  string $filename file name
    * @return array output decoded array
-   * @throws \Sphp\Exceptions\FileSystemException if file is not readable
+   * @throws RuntimeException if file is not readable
    */
   public function arrayFromFile(string $filename): array;
 

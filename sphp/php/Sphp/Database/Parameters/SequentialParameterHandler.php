@@ -13,7 +13,7 @@ namespace Sphp\Database\Parameters;
 use ArrayAccess;
 use PDO;
 use Traversable;
-use Sphp\Database\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Sequential parameter handler

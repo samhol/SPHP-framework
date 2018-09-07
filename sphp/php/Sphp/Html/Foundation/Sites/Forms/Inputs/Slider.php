@@ -14,7 +14,7 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Forms\Inputs\InputField;
 use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Html\Span;
-use Sphp\Html\Exceptions\InvalidStateException;
+use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
