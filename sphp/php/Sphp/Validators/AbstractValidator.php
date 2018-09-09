@@ -12,7 +12,8 @@ namespace Sphp\Validators;
 
 use Sphp\I18n\MessageInterface;
 use Sphp\I18n\Collections\TranslatableCollection;
-use Sphp\I18n\Messages\Message;
+use Sphp\I18n\Messages\AbstractMessage;
+use Sphp\I18n\Messages\Msg;
 use Sphp\I18n\Translatable;
 
 /**
@@ -89,7 +90,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * 
    * @param  string $id
-   * @return Message
+   * @return AbstractMessage
    * @throws \Sphp\Exceptions\InvalidArgumentException if the template does not exist
    */
   public function getMessageTemplate(string $id) {
@@ -107,7 +108,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function setMessageTemplate(string $id, $messageTemplate) {
     if (!$messageTemplate instanceof Translatable) {
-      $messageTemplate = Message::singular($messageTemplate);
+      $messageTemplate = Msg::singular($messageTemplate);
     }
     $this->messageTemplates[$id] = $messageTemplate;
     return $this;

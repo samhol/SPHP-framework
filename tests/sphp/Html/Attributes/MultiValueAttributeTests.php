@@ -125,7 +125,7 @@ class MultiValueAttributeTests extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::lock()
    * @dataProvider lockingData
    */
   public function testLocking($value) {
@@ -148,7 +148,7 @@ class MultiValueAttributeTests extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::add()
    * 
    * @param string $value numeric value
    * @param int $num
@@ -182,7 +182,7 @@ class MultiValueAttributeTests extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::add()
    * @dataProvider clearingData
    *
    * @param string $add
@@ -214,7 +214,7 @@ class MultiValueAttributeTests extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::add()
    *
    * @param string $add
    * @param string $lock
@@ -242,7 +242,7 @@ class MultiValueAttributeTests extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AbstractAttribute::lock()
+   * @covers \Sphp\Html\Attributes\AbstractAttribute::lock()
    * @dataProvider lockMethodData
    * @param  scalar $value
    */

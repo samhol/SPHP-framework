@@ -33,8 +33,7 @@ abstract class DomainBinder {
    */
   public static function bindtextdomain(string $domain, string $directory, string $charset = null) {
     if (empty($domain)) {
-      var_dump($domain);
-      //throw new InvalidArgumentException('The domain parameter must not be empty');
+      throw new InvalidArgumentException('The domain parameter must not be empty');
     }
     if ($charset === null) {
       $charset = mb_internal_encoding();

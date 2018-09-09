@@ -35,7 +35,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\MbString::isEmpty
+   * @covers \Sphp\Stdlib\MbString::isEmpty
    * @dataProvider mixedData
    * 
    */
@@ -58,6 +58,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         ['foo', 'fo', true],
         ['foo', 'foo', true],
         ['foo', 'fooo', false],
+        ['foo', 'oo', false],
         ['foo', 'F', false],
         ['Foo', 'F', true],
         ["\n", "\n", true],
@@ -72,7 +73,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::startsWith
+   * @covers \Sphp\Stdlib\MbString::startsWith
    * @dataProvider startsWithData
    * @param string $haystack
    * @param string $needle
@@ -113,7 +114,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::endsWith
+   * @covers \Sphp\Stdlib\MbString::endsWith
    * @dataProvider endsWith
    * @param string $haystack
    * @param string $needle
@@ -143,7 +144,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::trim
+   * @covers \Sphp\Stdlib\MbString::trim
    * @dataProvider trimData
    * @param string $string
    * @param string $charsToTrim
@@ -169,7 +170,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::trimLeft
+   * @covers \Sphp\Stdlib\MbString::trimLeft
    * @dataProvider trimLeftData
    * @param string $string
    * @param string $charsToTrim
@@ -195,7 +196,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::trimRight
+   * @covers \Sphp\Stdlib\MbString::trimRight
    * @dataProvider trimRightData
    * @param string $string
    * @param string|null $charsToTrim
@@ -228,7 +229,6 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @dataProvider matchData
    * @param string $string
    * @param string $pattern
@@ -244,26 +244,10 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function uppecaseTestData(): array {
     return [
-        ["\n", 'UTF-8'],
-        ["\t", 'UTF-8'],
-        ["\n\t", 'UTF-8'],
-        ["", 'UTF-8'],
-        [" ", 'UTF-8'],
-        ["0", 'UTF-8'],
         ["Τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός", 'UTF-8'],
         ["Ä", 'UTF-8'],
         ["Ö", 'UTF-8'],
-        ["Å", 'UTF-8'],
-        ["Ä R E", 'UTF-8'],
-        ["A", 'UTF-8'],
-        ["Ę", 'UTF-8'],
-        ["Ą", 'UTF-8'],
-        ["Ś", 'UTF-8'],
-        ["Ć", 'UTF-8'],
-        ["a", 'UTF-8'],
-        ["ö", 'UTF-8'],
-        ["å", 'UTF-8'],
-        ["ä", 'UTF-8'],
+        ["Å R E", 'UTF-8'],
     ];
   }
 
@@ -278,7 +262,11 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
     $title = \mb_convert_case($string, \MB_CASE_TITLE, $enc);
     $obj = new MbString($string, $enc);
     $objLower = new MbString($lower, $enc);
+    $this->assertTrue($objLower->isLowerCase());
+    $this->assertFalse($objLower->isUpperCase());
     $objUpper = new MbString($upper, $enc);
+    $this->assertFalse($objUpper->isLowerCase());
+    $this->assertTrue($objUpper->isUpperCase());
     $objTitle = new MbString($title, $enc);
     $this->compareToString($lower, $obj->toLowerCase());
     $this->compareToString($upper, $obj->toUpperCase());
@@ -305,7 +293,6 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers \Sphp\Stdlib\Strings::vsprintf
    * @dataProvider iterationTestData
    * @param string $string
    * @param array $args
@@ -313,13 +300,21 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function testIterating($string, $charset) {
     $obj = MbString::create($string, $charset);
-    $this->assertSame(\mb_strlen($string, $charset), $obj->count());
+    $strLen = \mb_strlen($string, $charset);
+    $this->assertSame($strLen, $obj->count());
     foreach ($obj as $key => $char) {
       //echo "char$key:'$char'\n";
       //echo "charAt($key):'" . $obj->charAt($key) . "'\n";
       //echo "string[$key]:'" . $string[$key] . "'\n";
+
+      $this->assertTrue(isset($obj[$key]));
       $this->assertEquals($obj->charAt($key), $char);
     }
+    $this->assertfalse(isset($obj[$strLen]));
+    $this->expectException(\Sphp\Exceptions\OutOfBoundsException::class);
+    $err = $obj[$strLen];
+    $this->expectException(\Sphp\Exceptions\OutOfBoundsException::class);
+    $err1 = $obj->charAt($strLen);
   }
 
   /**
@@ -329,16 +324,15 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
     return [
         ['foobar', false],
         ["\t", true],
-        ["\n\t", true],
+        ["\n\t ", true],
         ['', false],
         [' ', true],
-        ["    \t   ", true],
-        [' foobar ä ', false],
+        [' f ä ', false],
     ];
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::isBlank
+   * @covers \Sphp\Stdlib\MbString::isBlank
    * @dataProvider blankTestData
    * @param string $string
    * @param string|null $charsToTrim
@@ -366,7 +360,6 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         ['#0123456789abcdef', true],
         ['fg', false],
         ['f,', false],
-        ["\t", false],
         ["\n\t", false],
         ['', false],
         [' ', false],
@@ -376,7 +369,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::trimRight
+   * @covers \Sphp\Stdlib\MbString::trimRight
    * @dataProvider hexTestData
    * @param string $string
    * @param string|null $charsToTrim
@@ -395,19 +388,17 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
     return [
         ['0', true],
         ['1', true],
-        ['101010101', true],
-        ['10a1010101', false],
-        ["\t", false],
+        ['101010', true],
+        ['10a101', false],
         ["\n\t", false],
         ['', false],
         [' ', false],
-        ['       ', false],
-        [' ä ', false],
+        ['ä', false],
     ];
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::isBinary
+   * @covers \Sphp\Stdlib\MbString::isBinary
    * @dataProvider binaryTestData
    * @param string $string
    * @param string|null $charsToTrim

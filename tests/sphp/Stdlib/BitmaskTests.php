@@ -55,7 +55,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::fromHex
+   * @covers \Sphp\Stdlib\BitMask::fromHex
    * @dataProvider hexData
    * @param int $bits
    * @param string $hex
@@ -70,7 +70,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\Strings::startsWith
+   * @covers \Sphp\Stdlib\Strings::startsWith
    * @param string $haystack
    * @param string $needle
    */
@@ -85,7 +85,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::toArray
+   * @covers \Sphp\Stdlib\BitMask::toArray
    * @dataProvider bits
    * @param int $bits
    */
@@ -99,7 +99,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::invert
+   * @covers \Sphp\Stdlib\BitMask::invert
    * @dataProvider bits
    * @param string $haystack
    * @param string $needle
@@ -141,7 +141,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::binAND
+   * @covers \Sphp\Stdlib\BitMask::binAND
    * @dataProvider pairs
    * @param int $first
    * @param int $second
@@ -161,7 +161,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::binOR
+   * @covers \Sphp\Stdlib\BitMask::binOR
    * @dataProvider pairs
    * @param int $first
    * @param int $second
@@ -181,7 +181,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @covers \Sphp\Stdlib\BitMask::binXOR
    * @dataProvider pairs
    * @param int $first
    * @param int $second
@@ -201,7 +201,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @covers \Sphp\Stdlib\BitMask::binXOR
    * @dataProvider pairs
    * @param int $first
    * @param int $second
@@ -238,7 +238,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::parseInt
+   * @covers \Sphp\Stdlib\BitMask::parseInt
    * @dataProvider equalPairs
    * @param int $a
    * @param mixed $b
@@ -248,7 +248,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @covers \Sphp\Stdlib\BitMask::binXOR
    * @dataProvider equalPairs
    * @param int $a
    * @param mixed $b

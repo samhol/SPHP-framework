@@ -47,8 +47,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers HtmlAttributeManager::set()
-   * 
    * @param string $value numeric value
    * @dataProvider mixedData
    */
@@ -71,7 +69,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @param string $name
+   * @param int $length
    * @dataProvider identifyingData
    */
   public function testIdentifying(int $length) {
@@ -82,7 +80,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return string[]
    */
   public function textualData(): array {
@@ -99,7 +96,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   *
    * @param string $name
    * @param string $value
    * @dataProvider textualData
@@ -129,8 +125,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers HtmlAttributeManager::set()
-   * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider numericData
@@ -144,7 +138,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return string[]
    */
   public function booleanData(): array {
@@ -157,10 +150,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers HtmlAttributeManager::set()
-   * @covers HtmlAttributeManager::get()
-   * @covers HtmlAttributeManager::isEmpty()
-   * 
    * @param string $name
    * @param boolean $value numeric value
    * @dataProvider booleanData
@@ -179,7 +168,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return string[]
    */
   public function unsettingData(): array {
@@ -190,8 +178,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers HtmlAttributeManager::set()
-   * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider unsettingData
@@ -205,7 +191,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return string[]
    */
   public function emptyData(): array {
@@ -216,8 +201,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers HtmlAttributeManager::isEmpty()
-   * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider emptyData
@@ -244,8 +227,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers HtmlAttributeManager::setAttributeObject()
-   * 
    * @param MutableAttributeInterface $obj
    * @dataProvider objectData
    */
@@ -255,8 +236,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
-   * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider lockDemandData
@@ -281,14 +260,11 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
         ['bool', true],
         ['int', 0],
         ['float', 0.1],
-        ['class', 'a b'],
-        ['style', 'a:b;']
+        ['class', 'a b']
     ];
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
-   * 
    * @param string $name
    * @param scalar $value numeric value
    * @dataProvider lockDemandData
@@ -305,7 +281,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return scalar[]
    */
   public function notExistsData(): array {
@@ -319,8 +294,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
-   * 
    * @dataProvider notExistsData
    */
   public function testNnotExists($attrName) {

@@ -66,7 +66,7 @@ class Body extends ContainerTag implements ContentParser {
    * 
    * @return string the script tags and the closing tag
    */
-  public function close() {
+  public function close(): string {
     return $this->scripts . $this->getClosingTag();
   }
 

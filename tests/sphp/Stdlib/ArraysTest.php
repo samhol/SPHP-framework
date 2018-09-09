@@ -39,7 +39,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *
-   * @covers Sphp\Tools\Arrays::diff
+   * @covers \Sphp\Tools\Arrays::diff
    * @dataProvider diffData
    * @param array $arr1
    * @param array $arr2

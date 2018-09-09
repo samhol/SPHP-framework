@@ -155,9 +155,17 @@ abstract class Filesystem {
    */
   public static function mkdir(string $path, int $mode = 0777): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
+    $realPath = $fileinfo->getRealPath();
     if (!$fileinfo->isDir()) {
       if (!mkdir($path, $mode, true)) {
         throw new RuntimeException("Directory path '$path' cannot be created");
+      }
+    }
+    if ($fileinfo->getPerms() !== $mode) {
+
+      $result = chmod($realPath, $mode);
+      if (!$result) {
+        throw new RuntimeException("Permission cannot be set");
       }
     }
     return $fileinfo;
@@ -174,18 +182,27 @@ abstract class Filesystem {
   public static function mkFile(string $path, int $mode = 0777): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
     $dirname = $fileinfo->getPath();
+    if ($dirname !== '.' && !is_dir($dirname)) {
+      static::mkdir($dirname, $mode);
+    }
     if (!$fileinfo->isWritable()) {
-      //$dirname = dirname($path);
-      if ($dirname !== '.' && !is_dir($dirname)) {
-        static::mkdir($dirname, $mode);
-      }
       $success = fopen($path, 'w') !== false;
       if (!$success) {
         throw new RuntimeException("File '$path' cannot be created");
       }
     }
-    if (fileperms($dirname) !== $mode) {
-      chmod($dirname, $mode);
+    return $fileinfo;
+  }
+
+  /**
+   * 
+   * @param string $path
+   * @return SplFileInfo
+   */
+  public static function rmDir(string $path): SplFileInfo {
+    $fileinfo = new SplFileInfo($path);
+    if (!$fileinfo->isDir()) {
+      rmdir($path);
     }
     return $fileinfo;
   }
@@ -196,27 +213,6 @@ abstract class Filesystem {
       unlink($path);
     }
     return $fileinfo;
-  }
-
-  /**
-   * Converts the file size (in bits) to bytes
-   *
-   * @param  int|string $filesize file size in bits
-   * @return string file size in bytes
-   */
-  public static function generateFilesizeString($filesize): string {
-    if (is_numeric($filesize)) {
-      $decr = 1024;
-      $step = 0;
-      $prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-      while (($filesize / $decr) > 0.9) {
-        $filesize = $filesize / $decr;
-        $step++;
-      }
-      return round($filesize, 2) . ' ' . $prefix[$step];
-    } else {
-      return 'NaN';
-    }
   }
 
 }

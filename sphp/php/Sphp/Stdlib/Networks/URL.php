@@ -272,7 +272,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
   /**
    * Sets the query part of the URL
    * 
-   * @param  string $query the new query string
+   * @param  string|QueryString $query the new query string
    * @return $this for a fluent interface
    */
   public function setQuery($query = null) {
@@ -503,12 +503,13 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * Checks whether the URL is current browser URL or not 
    * 
    * @return boolen true if the URL is current browser URL, false otherwise
+   * @codeCoverageIgnore
    */
   public function isCurrent(): bool {
     return $this->equals(URL::getCurrent());
   }
 
-  public function jsonSerialize() {
+  public function jsonSerialize(): array {
     return get_object_vars($this);
   }
 
@@ -516,6 +517,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * Returns the current URL as an object
    *
    * @return string the current URL
+   * @codeCoverageIgnore
    */
   public static function getCurrentURL(int $flags = 0): string {
     $port = filter_input(INPUT_SERVER, 'SERVER_PORT', FILTER_SANITIZE_NUMBER_INT);
@@ -538,6 +540,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * Returns the current URL as an object
    *
    * @return URL the current URL as an object
+   * @codeCoverageIgnore
    */
   public static function getCurrent(): URL {
     if (self::$currUrl === null) {

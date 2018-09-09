@@ -56,7 +56,6 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AttributeInterface::set()
    * @dataProvider settingData
    * @param scalar $value
    * @param scalar $expected
@@ -71,9 +70,6 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($this->attr->getValue(), $value);
   }
 
-  /**
-   * @covers AbstractAttribute::isDemanded()
-   */
   public function testDemanding() {
     $this->attr->demand();
     $this->assertTrue($this->attr->isDemanded());
@@ -95,7 +91,6 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AbstractAttribute::lock()
    * @dataProvider lockMethodData
    * @param  scalar $value
    */

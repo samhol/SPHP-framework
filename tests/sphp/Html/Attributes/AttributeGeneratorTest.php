@@ -43,10 +43,6 @@ class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
     ];
   }
 
-  /**
-   * 
-   * @covers AttributeMap::set()
-   */
   public function testTypeMapping() {
     $this->assertFalse($this->gen->isMapped('class'));
     $this->gen->mapType('class', ClassAttribute::class);
@@ -57,10 +53,6 @@ class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
     $this->gen->mapType('class', Attribute::class);
   }
 
-  /**
-   * 
-   * @covers AttributeMap::set()
-   */
   public function testSubTyping() {
     $this->assertFalse($this->gen->isMapped('foo'));
     $this->gen->mapType('foo', PatternAttribute::class, '/^foobar*$/');

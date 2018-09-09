@@ -111,8 +111,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers ClassAttribute::set()
    * @dataProvider settingData
    */
   public function testSetMethod($value) {
@@ -139,8 +137,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers Sphp\Html\Attributes\ClassAttribute::protect()
    * @dataProvider lockingData
    */
   public function testProtectMethod($value) {
@@ -163,7 +159,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\ClassAttribute::add()
    * 
    * @param string $value numeric value
    * @param int $num
@@ -196,8 +191,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers Sphp\Html\Attributes\ClassAttribute::add()
    */
   public function testClearMethod() {
     $this->attr->add('a', 'b');
@@ -225,9 +218,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers Sphp\Html\Attributes\ClassAttribute::add()
-   *
    * @param string $add
    * @param string $lock
    * @param int $count
@@ -252,7 +242,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AbstractAttribute::lock()
    * @param  scalar $value
    */
   public function testValueProtecting() {
@@ -274,7 +263,6 @@ class ClassAttributeTest extends TestCase {
   }
 
   /**
-   * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
     $this->attr->demand();

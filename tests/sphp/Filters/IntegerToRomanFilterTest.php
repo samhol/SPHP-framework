@@ -22,13 +22,9 @@ class IntegerToRomanFilterTest extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    
+    unset($this->filter);
   }
 
-  /**
-   *
-   * @covers IntegerToRomanFilter::filter
-   */
   public function testIntegers() {
     $this->assertEquals($this->filter->filter(-1), -1);
     $this->assertEquals($this->filter->filter(0), 0);
@@ -38,10 +34,6 @@ class IntegerToRomanFilterTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($this->filter->filter(123), "CXXIII");
   }
 
-  /**
-   *
-   * @covers IntegerToRomanFilter::filter
-   */
   public function testValidStrings() {
     $this->assertEquals($this->filter->filter("1"), "I");
     $this->assertEquals($this->filter->filter("4"), "IV");
@@ -49,20 +41,12 @@ class IntegerToRomanFilterTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($this->filter->filter("123"), "CXXIII");
   }
 
-  /**
-   *
-   * @covers IntegerToRomanFilter::filter
-   */
   public function testInvalidStrings() {
     $this->assertEquals($this->filter->filter("-1"), "-1");
     $this->assertEquals($this->filter->filter("0"), "0");
     $this->assertEquals($this->filter->filter("001"), "001");
   }
 
-  /**
-   *
-   * @covers IntegerToRomanFilter::filter
-   */
   public function testMixedValues() {
     $obj = new \stdClass();
     $this->assertEquals($this->filter->filter($obj), $obj);

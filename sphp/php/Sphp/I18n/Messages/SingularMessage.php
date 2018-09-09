@@ -19,7 +19,7 @@ use Sphp\I18n\TranslatorInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SingularMessage extends Message {
+class SingularMessage extends AbstractMessage {
 
   /**
    * original raw message

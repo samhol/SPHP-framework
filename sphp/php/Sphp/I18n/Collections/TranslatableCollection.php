@@ -17,7 +17,8 @@ use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\I18n\Translatable;
 use ArrayAccess;
-use Sphp\I18n\Messages\Message;
+use Sphp\I18n\Messages\Msg;
+
 use Sphp\Exceptions\InvalidArgumentException;
 use Traversable;
 
@@ -239,7 +240,7 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
    */
   public function offsetSet($offset, $translatable) {
     if (is_string($translatable)) {
-      $translatable = Message::singular($translatable);
+      $translatable = Msg::singular($translatable);
     }
     if (!$translatable instanceof Translatable) {
       throw new InvalidArgumentException();

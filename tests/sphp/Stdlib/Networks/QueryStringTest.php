@@ -33,7 +33,6 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Net\URL::equals
    * @dataProvider nameValuePairs
    */
   public function testSetting($key, $value) {
@@ -47,7 +46,6 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return mixed[]
    */
   public function arrayData() {
@@ -76,7 +74,6 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return mixed[]
    */
   public function params() {
@@ -103,7 +100,6 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Net\URL::__clone
    * @dataProvider params
    * @param string $urlString
    */

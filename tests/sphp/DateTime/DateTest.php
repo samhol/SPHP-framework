@@ -2,19 +2,12 @@
 
 namespace Sphp\DateTime;
 
-/**
- * @coversDefaultClass \Sphp\DateTime\Date
- */
 class DateTest extends \PHPUnit\Framework\TestCase {
 
   protected function match(DateInterface $d1, DateInterface $d2) {
     $this->assertEquals($d1->format('Y-m-d'), $d2->format('Y-m-d'));
   }
 
-  /**
-   *
-   * @covers ::__construct
-   */
   public function testConstructor() {
     $timestamp = time();
     $now = new DateWrapper();
@@ -52,9 +45,6 @@ class DateTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($now->format($needle), $match->format($needle));
   }
 
-  /**
-   * @covers ::__construct
-   */
   public function testGetters() {
     $date = new DateWrapper();
     $this->assertSame((int) date('Y'), $date->getYear());
@@ -65,10 +55,6 @@ class DateTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame((int) date('W'), $date->getWeek());
   }
 
-  /**
-   *
-   * @covers ::jump
-   */
   public function testJumping() {
     $now = new DateWrapper();
     $tomorrow = $now->jumpDays(1);

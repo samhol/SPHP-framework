@@ -41,8 +41,6 @@ class SequenceAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers MultiValueAttribute::set()
    */
   public function testConstructor() {
     $this->expectException(InvalidAttributeException::class);
@@ -67,8 +65,6 @@ class SequenceAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers MultiValueAttribute::set()
    * @dataProvider emptyData
    */
   public function testEmptySetting($value) {
@@ -90,8 +86,6 @@ class SequenceAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers MultiValueAttribute::set()
    * @dataProvider rawSequences
    */
   public function testSetting($value) {
@@ -105,8 +99,6 @@ class SequenceAttributeTest extends TestCase {
   }
 
   /**
-   * 
-   * @covers MultiValueAttribute::set()
    */
   public function testInvalidSetting() {
     $attr = new SequenceAttribute('foo', ['maxlength' => 4, 'separator' => ',', 'pattern' => "/^([0-9])$/"]);
@@ -119,7 +111,6 @@ class SequenceAttributeTest extends TestCase {
   }
 
   /**
-   * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
     $this->attr->demand();

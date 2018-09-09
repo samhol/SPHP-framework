@@ -66,8 +66,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   *
-   * @covers Sphp\Net\URL::__construct
+   * @covers \Sphp\Stdlib\Networks\URL::__construct
    * @dataProvider urlStrings
    */
   public function testConstructWithParam($urlString) {
@@ -97,8 +96,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   *
-   * @covers Sphp\Net\URL::getPort
+   * @covers \Sphp\Stdlib\Networks\URL::getPort
    * @dataProvider urlStringsWithCorrectPorts
    * 
    * @param string $urlString
@@ -112,7 +110,6 @@ class URLTest extends \PHPUnit\Framework\TestCase {
   }
 
   public function equalUrlPairs(): array {
-    $url[] = ['http://example.com', 'http://example.com'];
     $url[] = ['http://example.com', 'http://example.com:80'];
     $url[] = ['http://www.example.com/path?p1=v1&p2=v2', 'http://www.example.com/path?p2=v2&p1=v1'];
     return $url;
@@ -120,7 +117,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
-   * @covers Sphp\Net\URL::equals
+   * @covers \Sphp\Stdlib\Networks\URL::equals
    * @dataProvider equalUrlPairs
    */
   public function testEquals($urlString1, $urlString2) {
@@ -165,6 +162,51 @@ class URLTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
+   * @return mixed[]
+   */
+  public function setterData(): array {
+    return [
+        [[
+        'scheme' => 'http',
+        'host' => 'www.whatever.com',
+        'user' => 'johndoe',
+        'password' => 'password',
+        //'path' => 'path/to/file.type',
+        'query' => 'q1 = p1&q2 = p2',
+        'fragment' => 'daa',
+        //'port' => 21
+            ]],
+        [[
+        'scheme' => 'https',
+        'host' => 'whatever.com',
+        'user' => 'u',
+        'password' => 'p',
+        //'path' => 'path/to/file.type',
+        'query' => 'q1 = p1&q2 = p2',
+        'fragment' => 'daa',
+        //'port' => 21
+            ]],
+    ];
+  }
+
+  /**
+   * 
+   * @dataProvider setterData
+   * @param array $data
+   */
+  public function testSettersGettersAndCheckers(array $data) {
+    $url = new URL();
+    echo $url->getPath();
+    foreach ($data as $key => $value) {
+      $par = ucfirst($key);
+      $this->assertFalse($url->{"has$par"}(),"has$par failed");
+      $url->{"set$par"}($value);
+      //$this->assertSame(''.$url->{"get$par"}(), "$value");
+      $this->assertTrue($url->{"has$par"}());
+    }
+  }
+
+  /**
    * @return mixed[]
    */
   public function schemes(): array {
@@ -219,7 +261,6 @@ class URLTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @depends testEquals
-   * @covers Sphp\Net\URL::__clone
    * @dataProvider urlStrings
    * @param string $urlString
    */

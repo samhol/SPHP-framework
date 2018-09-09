@@ -52,8 +52,10 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testAppend($val) {
     $this->container->append('foo');
-    $this->container->append($val);
+    $this->assertSame($this->container[0], 'foo');
     $this->assertTrue($this->container->offsetExists(0));
+    $this->assertFalse($this->container->offsetExists(1));
+    $this->container->append($val);
     $this->assertTrue($this->container->offsetExists(1));
     $this->assertEquals($this->container->count(), 2);
     $this->assertEquals($this->container[1], $val);

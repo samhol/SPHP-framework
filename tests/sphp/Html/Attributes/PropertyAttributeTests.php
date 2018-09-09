@@ -214,7 +214,7 @@ class PropertyAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::lock()
    */
   public function testDemandMethod() {
     $this->attr->set(false);
@@ -236,7 +236,7 @@ class PropertyAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::lock()
    * @dataProvider lockPropertiesMethodData
    * 
    * @param scalar $props
@@ -266,7 +266,7 @@ class PropertyAttributeTest extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::add()
    * @dataProvider validPropertyData
    * @param int|string $propName numeric value
    * @param scalar $propValue
@@ -291,7 +291,7 @@ class PropertyAttributeTest extends TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers \Sphp\Html\Attributes\MultiValueAttribute::add()
    * @dataProvider invalidPropertyData
    * @param int|string $propName numeric value
    * @param scalar $propValue
@@ -303,7 +303,7 @@ class PropertyAttributeTest extends TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\PropertyAttribute::add()
+   * @covers \Sphp\Html\Attributes\PropertyAttribute::add()
    * @param int $count
    */
   public function testClearing() {

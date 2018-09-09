@@ -24,12 +24,12 @@ use ArrayIterator;
 class FilterIterator extends IteratorIterator {
 
   /**
-   *
    * @var callable
    */
   private $filter;
 
   /**
+   * Constructor
    * 
    * @param array|Traversable $iterator
    * @param callable $filter

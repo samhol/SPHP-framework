@@ -66,7 +66,7 @@ class Mailer {
    * 
    * @return Message
    */
-  public function getMessage(): Message {
+  public function getMessage(): AbstractMessage {
     return $this->message;
   }
 

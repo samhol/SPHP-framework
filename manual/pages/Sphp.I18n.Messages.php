@@ -7,9 +7,9 @@ use Sphp\I18n\Translatable;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$messageInterface = \Sphp\Manual\api()->classLinker(MessageInterface::class);
+$messageInterface = \Sphp\Manual\api()->classLinker(Message::class);
 $translatable = \Sphp\Manual\api()->classLinker(Translatable::class);
-$message = \Sphp\Manual\api()->classLinker(Message::class);
+$message = \Sphp\Manual\api()->classLinker(AbstractMessage::class);
 $string = Manual\php()->typeLink('string');
 $echo = Manual\php()->functionLink('echo');
 $print = Manual\php()->functionLink('print');

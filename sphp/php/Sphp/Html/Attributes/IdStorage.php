@@ -91,7 +91,7 @@ class IdStorage {
       $this->ids[$value] = $for;
       return true;
     }
-    print_r($this->ids);
+    //print_r($this->ids);
     return false;
   }
 

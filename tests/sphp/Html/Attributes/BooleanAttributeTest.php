@@ -50,7 +50,6 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AttributeInterface::set()
    * @dataProvider trueValues
    * @param scalar $value
    */
@@ -78,7 +77,6 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AttributeInterface::set()
    * @dataProvider falseValues
    * @param scalar $value
    */
@@ -93,7 +91,6 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
     $this->attrs->demand();
@@ -116,7 +113,6 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AbstractAttribute::lock()
    * @dataProvider trueValues
    * @param  scalar $value
    */
@@ -132,7 +128,6 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers AbstractAttribute::lock()
    * @dataProvider falseValues
    * @param  scalar $value
    */
