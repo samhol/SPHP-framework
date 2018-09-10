@@ -4,6 +4,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 class AttributeTest extends \PHPUnit\Framework\TestCase {
 
@@ -36,40 +37,40 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @return scalar[]
+   * @return array[]
    */
   public function settingData(): array {
-    return [
-        [''],
-        [' '],
-        [true],
-        [false],
-        ['value1'],
-        [' value2 '],
-        [0],
-        [-0],
-        [0.0],
-        [-1],
-        [1],
-        [0.01],
-        [1.01],
-        [null]
-    ];
+    return [[['', ' ', true, 'value1', ' value2 ', 0, -0, -1, 1, 0.01]]];
   }
 
   /**
    * @dataProvider settingData
-   * @param scalar $value
+   * @param scalar $values
    * @param scalar $expected
    * @param boolean $visibility
    */
-  public function testSetting($value) {
-    $this->attr->set($value);
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->isDemanded());
+  public function testSetting(array $values) {
+    $attr = new Attribute('attr');
+    foreach ($values as $value) {
+      $attr->set($value);
+      $this->assertEquals($attr->getValue(), $value);
+      $this->assertTrue($attr->isVisible());
+      $this->assertSame($attr->isBoolean(), is_bool($value));
+    }
+    $attr->set(false);
+    $this->assertEquals($attr->getValue(), false);
+    $this->assertFalse($attr->isVisible());
+    $this->assertTrue($attr->isBoolean());
+    $attr->set(null);
+    $this->assertSame($attr->getValue(), null);
+    $this->assertFalse($attr->isVisible());
+    $this->assertFalse($attr->isBoolean());
+    $this->expectException(InvalidAttributeException::class);
+    $attr->set(new \stdClass());
+    //$this->assertFalse($this->attr->isProtected());
+    //$this->assertFalse($this->attr->isProtected($value));
+    //$this->assertFalse($this->attr->isDemanded());
     //$this->assertEquals($this->attr->isVisible(), $value !== false);
-    $this->assertEquals($this->attr->getValue(), $value);
   }
 
   public function testDemanding() {
@@ -104,6 +105,8 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($attr->getValue(), $value);
     $this->expectException(ImmutableAttributeException::class);
     $attr->clear();
+    $this->expectException(ImmutableAttributeException::class);
+    $attr->set('foo');
   }
 
 }

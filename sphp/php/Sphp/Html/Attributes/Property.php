@@ -15,55 +15,93 @@ use Iterator;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Stdlib\Parsers\Parser;
-use Sphp\Stdlib\Readers\Json;
 
 /**
- * Implements an JSON attribute object
+ * Implements an property attribute object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class Property {
 
   /**
-   * properties as a (name -> value) map
-   *
-   * @var scalar[]
+   * @var string
    */
-  private $data = [];
+  private $name;
 
   /**
-   * names of all locked properties
-   *
-   * @var boolean[]
+   * @var string
    */
-  private $lockedProps = [];
+  private $value;
 
   /**
-   * @var Json
+   * @var boolean
    */
-  private $parser;
+  private $locked = false;
+  private $propSeparator = ';';
+  private $nameValueSeparator = ':';
 
   /**
    * Constructor
    * 
    * @param string $name the name of the attribute
-   * @param scalar|null $value optional value of the attribute
    */
-  public function __construct(string $name, $value = null) {
-    $this->parser = Parser::json();
-    parent::__construct($name);
-    if (is_string($value) || is_array($value)) {
-      $this->set($value);
+  public function __construct(string $name, $value) {
+    if (!$this->isValidPropertyName($name)) {
+      throw new \Sphp\Exceptions\InvalidArgumentException("Property name '$name' is invalid");
     }
+    $this->name = $name;
   }
 
-  public function __destruct() {
-    unset($this->data, $this->lockedProps, $this->parser);
-    parent::__destruct();
+  public function setValue($value) {
+    if (!$this->isValidValue($value)) {
+      throw new \Sphp\Exceptions\InvalidArgumentException("Property value given '$value' is invalid");
+    }
+    $this->value = $value;
   }
+
+  public function setPropertySeparator(string $separator) {
+    $this->settings[0] = $separator;
+    return $this;
+  }
+
+  public function setNameValueSeparator(string $separator) {
+    $this->settings[1] = $separator;
+    return $this;
+  }
+
+  /**
+   * Validates a given property name 
+   * 
+   * @param  mixed $name the name of the property
+   * @return boolean true if the property name is valid
+   */
+  public function isValidPropertyName($name): bool {
+    return is_string($name) && $name !== '' && \Sphp\Stdlib\Strings::match($name, '/[^\s]+/');
+  }
+
+  /**
+   * Validates a given value
+   * 
+   * @param  mixed $value the value of the property
+   * @return boolean true if the property value is valid
+   */
+  public function isValidValue($value): bool {
+    return is_scalar($value) && $value !== '' && \Sphp\Stdlib\Strings::match($value, '/[^\s]+/');
+  }
+
+  /**
+   * Validates a given property name => value pair 
+   * 
+   * @param  mixed $name the name of the property
+   * @param  mixed $value the value of the property
+   * @return boolean true if the property name => value pair is valid
+   */
+  public function isValidProperty($name, $value): bool {
+    return $this->isValidValue($value) && $this->isValidPropertyName($name);
+  }
+  
 
   public function getHtml(): string {
     $output = '';
@@ -71,18 +109,18 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
       $output .= $this->getName();
       $value = $this->getValue();
       if (is_string($value)) {
-        $output .= "='$value' data-foo";
+        $output .= '="' . $value . '"';
       }
     }
     return $output;
   }
 
   public function isVisible(): bool {
-    return $this->isDemanded() || !empty($this->data);
+    return $this->isDemanded() || !empty($this->props);
   }
 
   public function isEmpty(): bool {
-    return empty($this->data);
+    return empty($this->props);
   }
 
   /**
@@ -96,37 +134,28 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function set($value) {
-    try {
-      $this->clear();
-      if (is_scalar($value)) {
-        $this->data = $this->parser->fromString($value);
-      } else if (is_array($value)) {
-        $this->data = $value;
-      }
-      //$this->setProperty($this->parser->parse($value));
-    } catch (\Exception $ex) {
-      throw new InvalidAttributeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
+    $this->clear();
+    $this->setProperties($this->parse($value));
     return $this;
   }
 
   /**
-   * Sets an property name value pair
+   * Stores multiple property name value pairs
    *
-   * **Note:** Replaces old mutable property value with the new one
+   * **Notes:**
    *
-   * @param  string $property the name of the property
-   * @param  scalar|array $value the value of the property
-   * @return $this for a fluent interface
-   * @throws InvalidAttributeException if the property name or value is invalid
-   * @throws ImmutableAttributeException if the property is immutable
+   * * `$props` are defined as "property" => "value" pairs.
+   * * Replaces old not locked property values with the new ones
+   *
+   * @param  string[] $props new property name value pairs
+   * @return $this for PHP Method Chaining
+   * @throws AttributeException if any of the properties has empty name or value
+   * @throws ImmutableAttributeException if any of the properties is already locked
    */
-  public function setProperty(string $property, $value) {
-    if ($this->isProtected($property)) {
-      throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+  public function setProperties(array $props) {
+    foreach ($props as $property => $value) {
+      $this->setProperty($property, $value);
     }
-    $this->data[$property] = $value;
-    $this->lockedProps[$property] = false;
     return $this;
   }
 
@@ -141,7 +170,21 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
     if ($this->isProtected($name)) {
       throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
     } else {
-      unset($this->data[$name], $this->lockedProps[$name]);
+      unset($this->props[$name], $this->lockedProps[$name]);
+    }
+    return $this;
+  }
+
+  /**
+   * Removes given properties
+   *
+   * @param  string[] $names the names of the properties to remove
+   * @return $this for a fluent interface
+   * @throws ImmutableAttributeException if any of the properties are immutable
+   */
+  public function unsetProperties(array $names) {
+    foreach ($names as $name) {
+      $this->unsetProperty($name);
     }
     return $this;
   }
@@ -162,7 +205,7 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
    * @return boolean true if the property exists and false otherwise
    */
   public function hasProperty(string $property): bool {
-    return isset($this->data[$property]);
+    return isset($this->props[$property]);
   }
 
   /**
@@ -173,7 +216,7 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
    */
   public function getProperty(string $property) {
     if ($this->hasProperty($property)) {
-      $value = $this->data[$property];
+      $value = $this->props[$property];
     } else {
       $value = null;
     }
@@ -244,129 +287,30 @@ class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Ite
    */
   public function protect($props = null) {
     if ($props === null) {
-      $this->lockedProps = array_keys($this->data);
+      $this->lockedProps = array_keys($this->props);
     } else {
-      $this->lockProperties($this->parser->parse($props));
+      $this->lockProperties($this->parse($props));
     }
     return $this;
   }
 
   /**
-   * Returns the value of the property attribute as a string
+   * Returns the value of the property
    *
    * **IMPORTANT:**
    *
    * * Returns always `null` if attribute is not set.
    * * **However** might also return `null` for empty attributes.
    *
-   * @return scalar the value of the property attribute
+   * @return scalar the value of the property 
    */
   public function getValue() {
-    return json_encode($this->data, JSON_UNESCAPED_SLASHES);
+    return $this->value;
   }
 
-  /**
-   * Counts the number of the style properties stored
-   *
-   * @return int the number of the style properties stored
-   */
-  public function count(): int {
-    return count($this->data);
-  }
-
-  /**
-   * Determines whether the given property exists
-   *
-   * @param  string $property the name of the property
-   * @return boolean true if the property exists and false otherwise
-   */
-  public function offsetExists($property): bool {
-    return $this->hasProperty($property);
-  }
-
-  /**
-   * Returns the value of the property name or null if the property does not exist
-   *
-   * @param  string $property the name of the property
-   * @return scalar|null the value of the property or null if the property does not exists
-   */
-  public function offsetGet($property) {
-    return $this->getProperty($property);
-  }
-
-  /**
-   * Sets an property name value pair
-   *
-   * **Note:** Replaces old mutable property value with the new one
-   *
-   * @param  string $property the name of the property
-   * @param  scalar $value the value of the property
-   * @return void
-   * @throws InvalidAttributeException if the property name or value is invalid
-   * @throws ImmutableAttributeException if the property is immutable
-   */
-  public function offsetSet($property, $value) {
-    $this->setProperty($property, $value);
-  }
-
-  /**
-   * Removes given property
-   *
-   * @param  string $property the name of the property to remove
-   * @return void
-   * @throws ImmutableAttributeException if the property is immutable
-   */
-  public function offsetUnset($property) {
-    $this->remove($property);
-  }
 
   public function toArray(): array {
-    return $this->data;
-  }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->data);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->data);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->data);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->data);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->data);
+    return $this->props;
   }
 
 }

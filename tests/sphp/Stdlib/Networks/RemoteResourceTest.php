@@ -2,21 +2,19 @@
 
 namespace Sphp\Stdlib\Networks;
 
-class RemoteResourceTests extends \PHPUnit\Framework\TestCase {
+class RemoteResourceTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @return array
    */
   public function remoteMimes(): array {
     $url[] = ['irc://irc.example.com/channel', ''];
-    $url[] = ['http://www.example.com', 'text/html'];
-    $url[] = ['http://playground.samiholck.com/manual/pics/sphp-code-logo.png', 'image/png'];
+    $url[] = ['http://www.example.com', 'text/html; charset=UTF-8'];
+    $url[] = ['http://data.samiholck.com/images/S-logo.png', 'image/png'];
     return $url;
   }
 
   /**
-   *
-   * @covers RemoteResource::getMimeType
    * @dataProvider remoteMimes
    *
    * @param string $url
@@ -38,8 +36,10 @@ class RemoteResourceTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers RemoteResource::exists
    * @dataProvider remoteFilePaths
+   *
+   * @param string $url
+   * @param bool $exists
    */
   public function testExists(string $url, bool $exists) {
     $this->assertSame($exists, RemoteResource::exists($url));

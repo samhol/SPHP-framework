@@ -4,7 +4,7 @@ namespace Sphp\Tests;
 
 use Sphp\Html\Tables\Table;
 
-class TableTests extends \PHPUnit\Framework\TestCase {
+class TableTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Table

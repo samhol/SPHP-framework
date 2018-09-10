@@ -71,7 +71,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
     if (!$this->isEmpty()) {
       $val = http_build_query($this->query, '', $separator, $encode);
     }
-    return $val;
+    return trim($val, '=');
   }
 
   /**
@@ -217,7 +217,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return string representation of the object
    */
   public function getRaw(): string {
-    return '?' . $this->getQuery('&', \PHP_QUERY_RFC3986);
+    return $this->getQuery('&', \PHP_QUERY_RFC3986);
   }
 
   public function jsonSerialize(): array {

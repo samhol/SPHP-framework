@@ -110,6 +110,9 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * @return $this for a fluent interface
    */
   public function setScheme(string $scheme = null) {
+    if ($scheme !== null) {
+      $scheme = strtolower("$scheme");
+    }
     $this->scheme = $scheme;
     return $this;
   }
@@ -441,11 +444,9 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
         $url .= ':' . $port;
       }
     }
-    if ($this->hasPath()) {
-      $url .= $this->getPath($encode);
-    }
+    $url .= $this->getPath($encode);
     if ($this->hasQuery()) {
-      $url .= '?' . $this->query->getQuery('&amp;', \PHP_QUERY_RFC3986);
+      $url .= '?' . $this->query->getHtml();
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment($encode);
@@ -486,12 +487,10 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
         $url .= ':' . $port;
       }
     }
-    if ($this->hasPath()) {
-      $url .= $this->getPath();
-    }
+    $url .= $this->getPath();
     if ($this->hasQuery()) {
-      $url .= '?' . $this->query->getQuery('&', \PHP_QUERY_RFC3986);
-      $url = trim($url, '=');
+      $url .= '?' . $this->query->getRaw();
+      //$url = trim($url, '=');
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment();
