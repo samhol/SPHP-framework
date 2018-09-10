@@ -1,0 +1,148 @@
+<?php
+
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+namespace Sphp\Html\Attributes;
+
+use Sphp\Exceptions\InvalidArgumentException;
+
+/**
+ * Description of PropertyParser
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license https://opensource.org/licenses/MIT The MIT License
+ * @filesource
+ */
+class PropertyParser {
+
+  private $propSeparator = ';';
+  private $nameValueSeparator = ':';
+
+  /**
+   * Constructor
+   * 
+   * @param string $delim
+   * @param string $sep
+   */
+  public function __construct(string $delim = ':', string $sep = ';') {
+    $this->nameValueSeparator = $delim;
+    $this->propSeparator = $sep;
+  }
+
+  /**
+   * Parses a string of properties to an array
+   *
+   * Result array has properties names as keys and corresponding values as
+   *  array values
+   *
+   * @param  string|array $properties properties to parse
+   * @return scalar[] parsed property array containing name value pairs
+   */
+  public function parse($properties): array {
+    $parsed = [];
+    if (is_array($properties)) {
+      $parsed = $properties;
+      //$parsed = array_walk($properties, 'trim');
+    } else if (is_string($properties)) {
+      $parsed = $this->parseStringToProperties($properties);
+    }
+    return $parsed;
+  }
+
+  /**
+   * Validates a given property name 
+   * 
+   * @param  mixed $name the name of the property
+   * @return boolean true if the property name is valid
+   */
+  public function isValidPropertyName($name): bool {
+    return is_string($name) && $name !== '' && \Sphp\Stdlib\Strings::match($name, '/[^\s]+/');
+  }
+
+  /**
+   * Validates a given value
+   * 
+   * @param  mixed $value the value of the property
+   * @return boolean true if the property value is valid
+   */
+  public function isValidValue($value): bool {
+    return is_scalar($value) && $value !== '' && \Sphp\Stdlib\Strings::match($value, '/[^\s]+/');
+  }
+
+  /**
+   * Validates a given property name => value pair 
+   * 
+   * @param  mixed $name the name of the property
+   * @param  mixed $value the value of the property
+   * @return boolean true if the property name => value pair is valid
+   */
+  public function isValidProperty($name, $value): bool {
+    return $this->isValidValue($value) && $this->isValidPropertyName($name);
+  }
+
+  /**
+   * 
+   * @param  array $properties
+   * @return string[]
+   */
+  public function removeInvalidProperties(array $properties): array {
+    return array_filter($properties, function ($value, $prop) {
+      return $this->isValidValue($value) && $this->isValidPropertyName($prop);
+    }, \ARRAY_FILTER_USE_BOTH);
+  }
+
+  /**
+   * 
+   * @param string $properties
+   * @return array
+   * @throws InvalidArgumentException
+   */
+  public function parseStringToProperties(string $properties): array {
+    $parsed = [];
+    $rows = explode($this->propSeparator, $properties);
+    if (empty($rows)) {
+      $rows = [$properties];
+    }
+    foreach ($rows as $row) {
+      $data = explode($this->nameValueSeparator, $row);
+      if (count($data) !== 2) {
+        throw new InvalidArgumentException("String given is not valid property string");
+      }
+      $parsed[trim($data[0])] = trim($data[1]);
+    }
+    return $parsed;
+  }
+
+  /**
+   * Returns the given property as string
+   * 
+   * @param  string $name the name of the property
+   * @param  scalar $value the value of the property
+   * @return string
+   */
+  public function propertyToString(string $name, $value): string {
+    return "$name{$this->nameValueSeparator}$value";
+  }
+
+  /**
+   * Returns given properties as string
+   *
+   * @param  array $props properties to parse
+   * @return string given properties as string
+   */
+  public function propertiesToString(array $props): string {
+    $strings = [];
+    foreach ($props as $name => $value) {
+      $strings[] = $this->propertyToString($name, $value);
+    }
+    $output = implode($this->propSeparator, $strings);
+    return $output;
+  }
+
+}

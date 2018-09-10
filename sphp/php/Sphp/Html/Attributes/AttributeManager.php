@@ -198,11 +198,11 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
-   * @param  MutableAttributeInterface $attr
-   * @return $this for a fluent interface
-   * @throws InvalidAttributeException
+   * @param string $name
+   * @param int $value
+   * @return IntegerAttribute
    */
-  public function setInteger(string $name, int $value = null) {
+  public function setInteger(string $name, int $value = null): IntegerAttribute {
     if ($this->isIntegerAttribute($name)) {
       $this->attrs[$name]->set($value);
     } else {
@@ -210,14 +210,14 @@ class AttributeManager implements Countable, Iterator {
       $attr->set($value);
       $this->setInstance($attr);
     }
-    return $this;
+    return $this->attrs[$name];
   }
 
   /**
    * 
-   * @param  MutableAttributeInterface $attr
-   * @return $this for a fluent interface
-   * @throws InvalidAttributeException
+   * @param string $name
+   * @param string $value
+   * @return \Sphp\Html\Attributes\IdAttribute
    */
   public function setIdentifier(string $name, string $value = null): IdAttribute {
     if ($this->isIdentifier($name)) {
