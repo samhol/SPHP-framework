@@ -43,16 +43,25 @@ abstract class AbstractMutableAttribute implements MutableAttributeInterface {
   private $protected = false;
 
   /**
+   * @var boolean 
+   */
+  private $mutable = true;
+
+  /**
    * Constructor
    *
    * @param  string $name the name of the attribute
    * @throws InvalidAttributeException
    */
   public function __construct(string $name) {
+    if (false === $this->mutable) {
+      throw new BadMethodCallException('Constructor called twice.');
+    }
     if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
       throw new InvalidAttributeException("Malformed Attribute name '$name'");
     }
     $this->name = $name;
+    $this->mutable = false;
   }
 
   /**
@@ -119,4 +128,3 @@ abstract class AbstractMutableAttribute implements MutableAttributeInterface {
   }
 
 }
-

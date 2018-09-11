@@ -10,8 +10,9 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
-
+use Sphp\Stdlib\Strings;
 /**
  * Description of PropertyParser
  *
@@ -21,18 +22,24 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class PropertyParser {
 
-  private $propSeparator = ';';
-  private $nameValueSeparator = ':';
+  private $defSep = ';';
+  private $propSep = ':';
+  private $mutable = true;
 
   /**
    * Constructor
    * 
    * @param string $delim
    * @param string $sep
+   * @throws BadMethodCallException
    */
   public function __construct(string $delim = ':', string $sep = ';') {
-    $this->nameValueSeparator = $delim;
-    $this->propSeparator = $sep;
+    if (false === $this->mutable) {
+      throw new BadMethodCallException('Constructor called twice.');
+    }
+    $this->propSep = $delim;
+    $this->defSep = $sep;
+    $this->mutable = false;
   }
 
   /**
@@ -62,7 +69,7 @@ class PropertyParser {
    * @return boolean true if the property name is valid
    */
   public function isValidPropertyName($name): bool {
-    return is_string($name) && $name !== '' && \Sphp\Stdlib\Strings::match($name, '/[^\s]+/');
+    return is_string($name) && $name !== '' && Strings::match($name, '/[^\s]+/');
   }
 
   /**
@@ -72,7 +79,7 @@ class PropertyParser {
    * @return boolean true if the property value is valid
    */
   public function isValidValue($value): bool {
-    return is_scalar($value) && $value !== '' && \Sphp\Stdlib\Strings::match($value, '/[^\s]+/');
+    return is_scalar($value) && $value !== '' && Strings::match($value, '/[^\s]+/');
   }
 
   /**
@@ -88,30 +95,25 @@ class PropertyParser {
 
   /**
    * 
-   * @param  array $properties
-   * @return string[]
-   */
-  public function removeInvalidProperties(array $properties): array {
-    return array_filter($properties, function ($value, $prop) {
-      return $this->isValidValue($value) && $this->isValidPropertyName($prop);
-    }, \ARRAY_FILTER_USE_BOTH);
-  }
-
-  /**
-   * 
    * @param string $properties
    * @return array
    * @throws InvalidArgumentException
    */
   public function parseStringToProperties(string $properties): array {
     $parsed = [];
-    $rows = explode($this->propSeparator, $properties);
+    //$properties = Strings::trim($properties, $this->defSep);
+    //var_dump($properties);
+    $rows = explode($this->defSep, Strings::trim($properties, $this->defSep));
     if (empty($rows)) {
       $rows = [$properties];
     }
+    //echo "rows:\n";
+    //print_r($rows);
     foreach ($rows as $row) {
-      $data = explode($this->nameValueSeparator, $row);
+      $data = explode($this->propSep, $row);
       if (count($data) !== 2) {
+       // echo "invalid data: \n";
+       // print_r($data);
         throw new InvalidArgumentException("String given is not valid property string");
       }
       $parsed[trim($data[0])] = trim($data[1]);
@@ -124,10 +126,10 @@ class PropertyParser {
    * 
    * @param  string $name the name of the property
    * @param  scalar $value the value of the property
-   * @return string
+   * @return string the given property as string
    */
   public function propertyToString(string $name, $value): string {
-    return "$name{$this->nameValueSeparator}$value";
+    return "$name{$this->propSep}$value";
   }
 
   /**
@@ -141,7 +143,7 @@ class PropertyParser {
     foreach ($props as $name => $value) {
       $strings[] = $this->propertyToString($name, $value);
     }
-    $output = implode($this->propSeparator, $strings);
+    $output = implode($this->defSep, $strings);
     return $output;
   }
 

@@ -88,11 +88,10 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function endsWith(): array {
     return [
-        0 => ["", "", true],
-        1 => ["\n", "\n", true],
-        1 => ["\t", "\t", true],
+        ["", "", true],
+        ["\n", "\n", true],
+        ["\t", "\t", true],
         ["\n\t", "\n\t", true],
-        ["0", "0", true],
         ["abc", "c", true],
         ["abc", "bc", true],
         ["abc", "abc", true],
@@ -108,8 +107,8 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         ["abc", "b", false],
         ["abc", "a", false],
         ["åäö", "ä", false],
-        19 => ["åäö", "å", false],
-        20 => ["åäö", "Ö", false]
+        ["åäö", "å", false],
+        ["åäö", "Ö", false]
     ];
   }
 

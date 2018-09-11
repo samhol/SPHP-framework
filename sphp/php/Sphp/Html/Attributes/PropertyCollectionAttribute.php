@@ -99,6 +99,77 @@ class PropertyCollectionAttribute extends AbstractMutableAttribute implements Ar
   }
 
   /**
+   * Checks whether the value or the given property is locked
+   *
+   * @param  string $property optional name of the property; if none given
+   *         checks if any of the stored properties are locked
+   * @return boolean true if locked and false otherwise
+   */
+  public function isProtected(string $property = null): bool {
+    if ($property === null) {
+      return in_array(true, $this->lockedProps);
+    }
+    return $this->hasProperty($property) && $this->lockedProps[$property] === true;
+  }
+
+  /**
+   * Locks an property name value pair to the attribute
+   *
+   * **Note:** Replaces old not locked property values with the new ones
+   *
+   * @param  string $property the name of the property
+   * @param  string $value the value of the property
+   * @return $this for a fluent interface
+   * @throws AttributeException if any of the properties has empty name or value
+   * @throws ImmutableAttributeException if any of the properties is already locked
+   */
+  public function lockProperty(string $property, $value) {
+    if ($this->isProtected($property)) {
+      throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is immutable");
+    }
+    $this->setProperty($property, $value);
+    $this->lockedProps[$property] = true;
+    return $this;
+  }
+
+  /**
+   * Stores multiple property value pairs
+   *
+   * **Notes:**
+   *
+   * * `$props` are defined as "property" => "value" pairs.
+   * * Replaces old not locked property values with the new ones
+   *
+   * @param  array $props properties as `name => value` pairs
+   * @return $this for PHP Method Chaining
+   * @throws AttributeException if any of the properties has empty name or value
+   * @throws ImmutableAttributeException if any of the properties is already locked
+   */
+  public function lockProperties(array $props) {
+    foreach ($props as $property => $value) {
+      $this->lockProperty($property, $value);
+    }
+    return $this;
+  }
+
+  /**
+   * Locks either all or the given properties
+   *
+   * @param  null|string|string[] $props optional property/properties to lock
+   * @return $this for PHP Method Chaining
+   * @throws AttributeException if any of the properties has empty name or value
+   * @throws ImmutableAttributeException if any of the properties is already immutable
+   */
+  public function protect($props = null) {
+    if ($props === null) {
+      $this->lockedProps = array_keys($this->props);
+    } else {
+      $this->lockProperties($this->parser->parse($props));
+    }
+    return $this;
+  }
+
+  /**
    * Sets an property name value pair
    *
    * **Note:** Replaces old mutable property value with the new one

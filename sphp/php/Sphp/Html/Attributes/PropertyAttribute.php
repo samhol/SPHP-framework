@@ -240,7 +240,7 @@ class PropertyAttribute extends AbstractMutableAttribute implements ArrayAccess,
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function unsetProperty($name) {
+  public function unsetProperty(string $name) {
     if ($this->isProtected($name)) {
       throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
     } else {
