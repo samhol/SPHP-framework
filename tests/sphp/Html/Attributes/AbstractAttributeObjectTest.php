@@ -3,12 +3,12 @@
 namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\MutableAttributeInterface;
+use Sphp\Html\Attributes\Attribute;
 
 abstract class AbstractAttributeObjectTest extends TestCase {
 
   /**
-   * @var MutableAttributeInterface 
+   * @var Attribute 
    */
   protected $attr;
 
@@ -29,19 +29,19 @@ abstract class AbstractAttributeObjectTest extends TestCase {
   }
 
   /**
-   * @return MutableAttributeInterface
+   * @return Attribute
    */
-  abstract public function createAttr(string $name = 'data-attr'): MutableAttributeInterface;
+  abstract public function createAttr(string $name = 'data-attr'): Attribute;
 
   /**
-   * @return MutableAttributeInterface
+   * @return Attribute
    */
   abstract public function getValues(string $name = 'data-attr');
 
   /**
-   * @return MutableAttributeInterface
+   * @return Attribute
    */
-  public function testDemanding(): MutableAttributeInterface {
+  public function testDemanding(): Attribute {
     //echo "\ntestCloning()\n";
     $attr = $this->createAttr('attr');
     $this->assertFalse($attr->isDemanded());

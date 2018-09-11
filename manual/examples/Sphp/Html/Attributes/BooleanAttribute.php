@@ -4,10 +4,10 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
-$placeholder = new Attribute("placeholder", "Give your name");
-$type = (new Attribute("type"))->protect("text");
-$name = new Attribute("name", "foo");
-$value = new Attribute("value", "");
+$placeholder = new GeneralAttribute("placeholder", "Give your name");
+$type = (new GeneralAttribute("type"))->protect("text");
+$name = new GeneralAttribute("name", "foo");
+$value = new GeneralAttribute("value", "");
 $id = new IdAttribute("id", "name");
 $required = (new BooleanAttribute("required", true));
 echo "<input $placeholder $type $name $id $value $required>\n";

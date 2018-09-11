@@ -8,16 +8,19 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Attributes\Values;
+namespace Sphp\Html\Attributes;
+
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
- * Description of Value
+ * Default implementation of an attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Value {
+class GeneralAttribute extends AbstractAttribute {
 
   /**
    * @var scalar|null 
@@ -25,42 +28,16 @@ class Value {
   private $value = false;
 
   /**
-   * whether the attribute is required or not
-   *
-   * @var boolean
-   */
-  private $required = false;
-
-  /**
-   * @var boolean 
-   */
-  private $protected = false;
-
-  /**
    * Constructor
    *
    * @param string $name the name of the attribute
    * @param scalar|null $value optional value of the attribute
    */
-  public function __construct($value = false) {
-    $this->set($value);
-  }
-
-  public function __toString(): string {
-    $output = '';
-    if ($this->isVisible()) {
-      $output .= $this->getName();
-      if (!$this->isEmpty()) {
-        $value = $this->getValue();
-        if (is_string($value)) {
-          $value = preg_replace('/[\t\n\r]+/', ' ', $value);
-          $output .= '="' . htmlspecialchars($value, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
-        } else {
-          $output .= '="' . $value . '"';
-        }
-      }
+  public function __construct(string $name, $value = false) {
+    parent::__construct($name);
+    if ($value !== false) {
+      $this->set($value);
     }
-    return $output;
   }
 
   public function set($value) {
@@ -86,24 +63,8 @@ class Value {
     return $this;
   }
 
-  public function isVisible(): bool {
-    return $this->isDemanded() || ($this->getValue() !== false && $this->getValue() !== null);
-  }
-
-  public function isProtected(): bool {
-    return $this->protected;
-  }
-
-  public function isDemanded(): bool {
-    return $this->required || $this->isProtected();
-  }
-
   public function isBoolean(): bool {
     return is_bool($this->value);
-  }
-
-  public function isString(): bool {
-    return is_string($this->value);
   }
 
 }

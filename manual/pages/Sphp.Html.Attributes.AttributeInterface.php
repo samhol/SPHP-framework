@@ -4,12 +4,12 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Manual;
 
-$attributeInterface = Manual\api()->classLinker(MutableAttributeInterface::class);
-$abstractAttr = Manual\api()->classLinker(AbstractMutableAttribute::class);
+$attributeInterface = Manual\api()->classLinker(Attribute::class);
+$abstractAttr = Manual\api()->classLinker(AbstractAttribute::class);
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 
 $idAttr = Manual\api()->classLinker(IdAttribute::class);
-$attr= Manual\api()->classLinker(Attribute::class);
+$attr= Manual\api()->classLinker(GeneralAttribute::class);
 $boolAttr = Manual\api()->classLinker(BooleanAttribute::class);
 $setMethod = $abstractAttr->methodLink('set');
 $clearMethod = $abstractAttr->methodLink('clear');

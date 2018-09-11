@@ -21,6 +21,6 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface CollectionAttributeInterface extends MutableAttributeInterface, Countable, Traversable, Arrayable {
+interface CollectionAttributeInterface extends Attribute, Countable, Traversable, Arrayable {
   
 }

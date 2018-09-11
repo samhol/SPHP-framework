@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-$abstractAttr = \Sphp\Manual\api()->classLinker(AbstractMutableAttribute::class);
+$abstractAttr = \Sphp\Manual\api()->classLinker(AbstractAttribute::class);
 $propertyAttr = \Sphp\Manual\api()->classLinker(PropertyAttribute::class);
 \Sphp\Manual\md(<<<MD
 ##The $propertyAttr class

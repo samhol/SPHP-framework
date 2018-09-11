@@ -3,8 +3,8 @@
 namespace Sphp\Tests\Html\Attributes;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\GeneralAttribute;
 use Sphp\Html\Attributes\Attribute;
-use Sphp\Html\Attributes\MutableAttributeInterface;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
 use Sphp\Html\Attributes\ClassAttribute;
@@ -52,7 +52,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testSetting($value) {
     $this->attrs->set('data-attr', $value);
-    $this->attrs->setInstance(new Attribute('data-obj', $value));
+    $this->attrs->setInstance(new GeneralAttribute('data-obj', $value));
     $this->assertSame($this->attrs->get('data-obj'), $this->attrs->get('data-attr'));
   }
 
@@ -227,10 +227,10 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @param MutableAttributeInterface $obj
+   * @param Attribute $obj
    * @dataProvider objectData
    */
-  public function testObjectSetting(MutableAttributeInterface $obj) {
+  public function testObjectSetting(Attribute $obj) {
     $this->attrs->setInstance($obj);
     $this->assertTrue($this->attrs->exists($obj->getName()));
   }

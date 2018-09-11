@@ -25,7 +25,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ClassAttribute extends AbstractMutableAttribute implements IteratorAggregate, CollectionAttributeInterface {
+class ClassAttribute extends AbstractAttribute implements IteratorAggregate, CollectionAttributeInterface {
 
   /**
    * stored individual classes

@@ -25,7 +25,7 @@ use Sphp\Stdlib\Readers\Json;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class JsonAttribute extends AbstractMutableAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class JsonAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
 
   /**
    * properties as a (name -> value) map

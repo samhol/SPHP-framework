@@ -50,7 +50,7 @@ class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
     $object = $this->gen->createObject('class');
     $this->assertInstanceOf(ClassAttribute::class, $object);
     $this->expectException(AttributeException::class);
-    $this->gen->mapType('class', Attribute::class);
+    $this->gen->mapType('class', GeneralAttribute::class);
   }
 
   public function testSubTyping() {
@@ -64,7 +64,7 @@ class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
     $this->assertInstanceOf(PatternAttribute::class, $object1);
     $this->assertInstanceOf(IdAttribute::class, $object1);
     $this->expectException(AttributeException::class);
-    $this->gen->mapType('foo', Attribute::class);
+    $this->gen->mapType('foo', GeneralAttribute::class);
   }
 
 }

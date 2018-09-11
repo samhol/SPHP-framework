@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Manual;
 $attributeManager = Manual\api()->classLinker(AttributeManager::class);
 $htmlAttrMngr = Manual\api()->classLinker(HtmlAttributeManager::class);
-$attributeInterface = Manual\api()->classLinker(MutableAttributeInterface::class);
+$attributeInterface = Manual\api()->classLinker(Attribute::class);
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 $propertyAttr = Manual\api()->classLinker(PropertyAttribute::class);
 $setMethodLink = $attributeManager->methodLink("set", false);

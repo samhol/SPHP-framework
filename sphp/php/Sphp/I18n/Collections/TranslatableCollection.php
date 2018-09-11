@@ -120,7 +120,7 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   /**
    * Merges given collection to this collection
    *
-   * @param  Translatable $m
+   * @param  Translatable $translatable
    * @return $this for a fluent interface
    */
   public function contains(Translatable $translatable): bool {
@@ -137,7 +137,7 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   /**
    * Counts the number of stored translatable objects
    *
-   * @return int the number of {@link Translatable} objects in the list
+   * @return int the number of Translatable objects in the list
    */
   public function count(): int {
     return count($this->translatables);

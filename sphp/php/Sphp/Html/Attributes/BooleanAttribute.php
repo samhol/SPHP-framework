@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BooleanAttribute extends AbstractMutableAttribute {
+class BooleanAttribute extends AbstractAttribute {
 
   /**
    * @var mixed 

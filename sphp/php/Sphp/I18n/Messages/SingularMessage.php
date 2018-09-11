@@ -32,6 +32,7 @@ class SingularMessage extends AbstractMessage {
    * Constructor
    *
    * @param string $message
+   * @param array $args
    * @param TranslatorInterface $translator optional translator
    */
   public function __construct(string $message, array $args = [], TranslatorInterface $translator = null) {

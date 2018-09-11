@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractScalarAttribute extends AbstractMutableAttribute {
+abstract class AbstractScalarAttribute extends AbstractAttribute {
 
   /**
    * @var mixed 

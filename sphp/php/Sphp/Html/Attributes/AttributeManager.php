@@ -32,7 +32,7 @@ class AttributeManager implements Countable, Iterator {
   /**
    * attributes as a (name -> value) map
    *
-   * @var MutableAttributeInterface[]
+   * @var Attribute[]
    */
   private $attrs = [];
 
@@ -100,9 +100,9 @@ class AttributeManager implements Countable, Iterator {
    * attaches a new object
    *
    * @param  string $name the name of the attribute
-   * @return MutableAttributeInterface the mapped attribute object or null
+   * @return Attribute the mapped attribute object or null
    */
-  public function getObject(string $name): MutableAttributeInterface {
+  public function getObject(string $name): Attribute {
     if (!$this->exists($name)) {
       $this->attrs[$name] = $this->gen->createObject($name);
     }
@@ -111,12 +111,12 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
-   * @param  MutableAttributeInterface $attr
+   * @param  Attribute $attr
    * @return $this for a fluent interface
    * @throws InvalidAttributeException
    * @throws ImmutableAttributeException
    */
-  public function setInstance(MutableAttributeInterface $attr) {
+  public function setInstance(Attribute $attr) {
     $name = $attr->getName();
     if (!$this->gen->isValidType($name, $attr)) {
       throw new InvalidAttributeException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
@@ -135,6 +135,7 @@ class AttributeManager implements Countable, Iterator {
   /**
    * 
    * @param  string $name
+   * @param  string $type
    * @return bool
    */
   public function supportsTypeChange(string $name, string $type): bool {
@@ -182,9 +183,9 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
-   * @param  MutableAttributeInterface $attr
-   * @return $this for a fluent interface
-   * @throws InvalidAttributeException
+   * @param string $name
+   * @param bool $value
+   * @return $this
    */
   public function setBoolean(string $name, bool $value = true) {
     if ($this->isBooleanAttribute($name)) {

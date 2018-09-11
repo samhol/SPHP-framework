@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class IntegerAttribute extends AbstractMutableAttribute {
+class IntegerAttribute extends AbstractAttribute {
 
   /**
    * @var array 

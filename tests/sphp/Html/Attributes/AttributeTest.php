@@ -2,14 +2,14 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\MutableAttributeInterface;
+use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 class AttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var Attribute 
+   * @var GeneralAttribute 
    */
   protected $attr;
 
@@ -30,10 +30,10 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @return MutableAttributeInterface
+   * @return Attribute
    */
-  public function createAttr(string $name = 'data-attr'): MutableAttributeInterface {
-    return new Attribute($name);
+  public function createAttr(string $name = 'data-attr'): Attribute {
+    return new GeneralAttribute($name);
   }
 
   /**
@@ -50,7 +50,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
    * @param boolean $visibility
    */
   public function testSetting(array $values) {
-    $attr = new Attribute('attr');
+    $attr = new GeneralAttribute('attr');
     foreach ($values as $value) {
       $attr->set($value);
       $this->assertEquals($attr->getValue(), $value);

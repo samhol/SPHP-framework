@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Attributes;
 
-
 /**
  * Implements a unique id for an HTML element
  *

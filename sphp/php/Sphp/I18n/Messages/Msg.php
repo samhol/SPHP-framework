@@ -12,7 +12,7 @@ use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Translators;
 
 /**
- * Implements a factory for translatable messges
+ * Implements a factory for translatable messages
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License

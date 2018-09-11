@@ -47,6 +47,7 @@ class PluralMessage extends AbstractMessage {
    *
    * @param  string $singular the singular message text
    * @param  string $plural the plural message text
+   * @param array $args
    * @param  TranslatorInterface|null $translator the translator component
    * @param  null|mixed|mixed[] $isPlural the arguments or null for no arguments
    */
@@ -67,8 +68,8 @@ class PluralMessage extends AbstractMessage {
   }
 
   /**
-   * @param  boolean $plural the number (e.g. item count) to determine the translation for the respective grammatical number
-   * @return $this for a fluent interface
+   * 
+   * @return boolean
    */
   public function isPlural(): bool {
     return $this->n > 1;

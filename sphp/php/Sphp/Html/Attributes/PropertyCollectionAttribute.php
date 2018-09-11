@@ -23,7 +23,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PropertyCollectionAttribute extends AbstractMutableAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
 
   /**
    * properties as a (name -> value) map
@@ -48,6 +48,7 @@ class PropertyCollectionAttribute extends AbstractMutableAttribute implements Ar
    * Constructor
    * 
    * @param string $name the name of the attribute
+   * @param PropertyParser $parser
    */
   public function __construct(string $name, PropertyParser $parser = null) {
     parent::__construct($name);

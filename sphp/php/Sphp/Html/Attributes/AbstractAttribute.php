@@ -21,7 +21,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractMutableAttribute implements MutableAttributeInterface {
+abstract class AbstractAttribute implements Attribute {
 
   /**
    * the name of the attribute

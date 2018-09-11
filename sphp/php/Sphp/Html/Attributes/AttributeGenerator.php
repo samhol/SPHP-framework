@@ -44,7 +44,7 @@ class AttributeGenerator {
    *
    * @param string $defaultType
    */
-  public function __construct(string $defaultType = MutableAttributeInterface::class) {
+  public function __construct(string $defaultType = Attribute::class) {
     $this->defaultType = $defaultType;
     // self::$c++;
     // var_dump(self::$c);
@@ -114,8 +114,8 @@ class AttributeGenerator {
    */
   public function getActualType(string $name): string {
     $type = $this->getValidType($name);
-    if ($type === MutableAttributeInterface::class) {
-      $type = Attribute::class;
+    if ($type === Attribute::class) {
+      $type = GeneralAttribute::class;
     }
     return $type;
   }
@@ -181,9 +181,9 @@ class AttributeGenerator {
    * Returns a new instance of the attribute object
    *
    * @param  string $name the name of the attribute
-   * @return MutableAttributeInterface the mapped attribute object or null
+   * @return Attribute the mapped attribute object or null
    */
-  public function createObject(string $name): MutableAttributeInterface {
+  public function createObject(string $name): Attribute {
     $type = $this->getActualType($name);
     $params = $this->getParametersFor($name);
 

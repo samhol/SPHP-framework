@@ -68,6 +68,7 @@ class IdStorage {
    * Checks whether the storage contains identifier value
    *
    * @param  string $value the value of the identifier
+   * @param string $for
    * @return boolean true on success or false on failure
    */
   public function contains(string $value, $for = null): bool {
@@ -81,6 +82,7 @@ class IdStorage {
    * Tries to store a new identifier value
    * 
    * @param  string $value the value of the identifier
+   * @param  string $for
    * @return boolean true if stored and `false` otherwise
    */
   public function store(string $value, $for = null): bool {

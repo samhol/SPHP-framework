@@ -4,7 +4,7 @@ namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
-use Sphp\Html\Attributes\MutableAttributeInterface;
+use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
@@ -34,9 +34,9 @@ class MultiValueAttributeTests extends TestCase {
   /**
    * 
    * @param string $name
-   * @return MutableAttributeInterface
+   * @return Attribute
    */
-  public function createAttr(string $name = 'class'): MutableAttributeInterface {
+  public function createAttr(string $name = 'class'): Attribute {
     return new MultiValueAttribute($name);
   }
 

@@ -10,61 +10,121 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
- * Default implementation of an attribute
+ * Defines an HTML attribute object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Attribute extends AbstractMutableAttribute {
+interface Attribute {
 
   /**
-   * @var scalar|null 
-   */
-  private $value = false;
-
-  /**
-   * Constructor
+   * Returns the instance of the object as a string
    *
-   * @param string $name the name of the attribute
-   * @param scalar|null $value optional value of the attribute
+   * @return string the object as a string
    */
-  public function __construct(string $name, $value = false) {
-    parent::__construct($name);
-    if ($value !== false) {
-      $this->set($value);
-    }
-  }
+  public function __toString(): string;
 
-  public function set($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    if (!is_scalar($value) && $value !== null) {
-      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
-    }
-    $this->value = $value;
-    return $this;
-  }
+  /**
+   * Returns the instance of the object as a string
+   *
+   * @return string the object as a string
+   */
+  public function getHtml(): string;
 
-  public function getValue() {
-    return $this->value;
-  }
+  /**
+   * Returns the name of the attribute 
+   * 
+   * @return string the name of the attribute
+   */
+  public function getName(): string;
 
-  public function clear() {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $this->value = false;
-    return $this;
-  }
+  /**
+   * Sets the value of the attribute
+   *
+   * @param  mixed $value value to set
+   * @return $this for a fluent interface
+   * @throws AttributeException if the attribute value is invalid for the type of the attribute
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
+   */
+  public function set($value);
 
-  public function isBoolean(): bool {
-    return is_bool($this->value);
-  }
+  /**
+   * Checks whether the attribute has a locked value or not
+   * 
+   * @return boolean true if the attribute has a locked value and false otherwise
+   */
+  public function isProtected(): bool;
 
+  /**
+   * Protects the given value to the attribute
+   *
+   * @param  scalar $value the value to lock to the attribute
+   * @return $this for a fluent interface
+   * @throws AttributeException if the attribute value is invalid for the type of the attribute
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
+   */
+  public function protect($value);
+
+  /**
+   * Returns the value of the attribute
+   * 
+   * **IMPORTANT:**
+   * 
+   * * Returns always `boolean false` if attribute is not present.
+   * * return `null` or an empty string for empty attributes.
+   * 
+   * @return bool|int|float|string the value of the attribute
+   */
+  public function getValue();
+
+  /**
+   * Checks whether the attribute is visible or not
+   * 
+   * **Note:** an attribute is visible if it has locked value or the attribute 
+   * name is required or the attribute value is not boolean (false).
+   * 
+   * @return boolean true if the attribute is visible and false otherwise
+   */
+  public function isVisible(): bool;
+
+  /**
+   * Checks whether the attribute is empty or not
+   * 
+   * **Note:** an attribute is visible if it has locked value or the attribute 
+   * name is required or the attribute value is not boolean (false).
+   * 
+   * @return boolean true if the attribute is empty and false otherwise
+   */
+  public function isEmpty(): bool;
+
+  /**
+   * Sets the attribute as required
+   *  
+   * **A required attribute cannot be removed** but its value is still mutable.
+   * 
+   * @return $this for a fluent interface
+   */
+  public function demand();
+
+  /**
+   * Checks whether the attribute is required or not
+   * 
+   * **Note:** a required attribute either has locked value or the attribute 
+   * name is required.
+   *
+   * @return boolean true if the attribute is required and false otherwise
+   */
+  public function isDemanded(): bool;
+
+  /**
+   * Clears all unprotected values
+   *
+   * @return $this for a fluent interface
+   */
+  public function clear();
 }

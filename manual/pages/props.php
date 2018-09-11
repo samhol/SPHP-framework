@@ -17,7 +17,7 @@ try {
 } catch (\Exception $ex) {
   echo "$ex\n";
 }
-$value = new Attribute('foo', false);
+$value = new GeneralAttribute('foo', false);
 echo "$value";
 ?>
 </pre>
