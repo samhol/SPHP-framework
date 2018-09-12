@@ -16,6 +16,9 @@
     <testsuite name="all">
       <directory>./tests/</directory>
     </testsuite>
+    <testsuite name="attrs">
+      <directory>./tests/sphp/Html/Attributes</directory>
+    </testsuite>
   </testsuites>
   
   <logging>

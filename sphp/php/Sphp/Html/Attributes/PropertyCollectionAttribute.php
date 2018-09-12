@@ -15,6 +15,8 @@ use Iterator;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\NullPointerException;
 
 /**
  * Implements an property attribute object
@@ -23,7 +25,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttribute {
 
   /**
    * properties as a (name -> value) map
@@ -94,7 +96,6 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function set($value) {
-    $this->clear();
     $this->setProperties($this->parser->parse($value));
     return $this;
   }
@@ -187,12 +188,13 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     if (!$this->parser->isValidPropertyName($property)) {
-      throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
+      throw new InvalidArgumentException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
     if (!$this->parser->isValidValue($value)) {
-      throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
+      throw new InvalidArgumentException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;
+    $this->lockedProps[$property] = false;
     return $this;
   }
 
@@ -265,16 +267,17 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
   }
 
   /**
-   * Returns the value of the property name or null if the property does not exist
+   * Returns the value of the property name
    *
    * @param  string $property the name of the property
-   * @return scalar|null the value of the property or null if the property does not exists
+   * @return scalar the value of the property
+   * @throws NullPointerException if the property does not exist
    */
   public function getProperty(string $property) {
     if ($this->hasProperty($property)) {
       $value = $this->props[$property];
     } else {
-      $value = null;
+      throw new NullPointerException("Property $property does not exist");
     }
     return $value;
   }
@@ -345,7 +348,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function offsetUnset($property) {
-    $this->remove($property);
+    $this->unsetProperty($property);
   }
 
   public function toArray(): array {

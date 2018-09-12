@@ -23,7 +23,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
+class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttribute {
 
   /**
    * properties as a (name -> value) map

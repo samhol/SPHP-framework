@@ -13,6 +13,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Strings;
+
 /**
  * Description of PropertyParser
  *
@@ -58,6 +59,11 @@ class PropertyParser {
       //$parsed = array_walk($properties, 'trim');
     } else if (is_string($properties)) {
       $parsed = $this->parseStringToProperties($properties);
+    }
+    foreach ($parsed as $property => $value) {
+      if (!$this->isValidProperty($property, $value)) {
+        throw new InvalidArgumentException("Property $property => $value is not valid ");
+      }
     }
     return $parsed;
   }
@@ -112,9 +118,9 @@ class PropertyParser {
     foreach ($rows as $row) {
       $data = explode($this->propSep, $row);
       if (count($data) !== 2) {
-       // echo "invalid data: \n";
-       // print_r($data);
-        throw new InvalidArgumentException("String given is not valid property string");
+        // echo "invalid data: \n";
+        // print_r($data);
+        throw new InvalidArgumentException("String '$properties' is not valid property string");
       }
       $parsed[trim($data[0])] = trim($data[1]);
     }

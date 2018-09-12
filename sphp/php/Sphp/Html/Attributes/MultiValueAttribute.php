@@ -22,7 +22,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface {
+class MultiValueAttribute extends AbstractAttribute implements Iterator, CollectionAttribute {
 
   /**
    * stored individual values

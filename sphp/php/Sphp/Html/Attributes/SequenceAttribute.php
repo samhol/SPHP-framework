@@ -24,7 +24,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SequenceAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface {
+class SequenceAttribute extends AbstractAttribute implements Iterator, CollectionAttribute {
 
   /**
    * stored individual values

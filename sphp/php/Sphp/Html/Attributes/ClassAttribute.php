@@ -25,7 +25,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ClassAttribute extends AbstractAttribute implements IteratorAggregate, CollectionAttributeInterface {
+class ClassAttribute extends AbstractAttribute implements IteratorAggregate, CollectionAttribute {
 
   /**
    * stored individual classes
@@ -141,7 +141,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   /**
    * Adds new atomic values to the attribute
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
+   * **Important:** Parameter ´$values´ restrictions and rules
    * 
    * 1. A string parameter can contain a single atomic value (a class)
    * 2. An array can be be multidimensional array of atomic string values

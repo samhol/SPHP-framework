@@ -56,4 +56,5 @@ class InputTests extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($input->isNamed());
     $this->assertSame('foo', $input->getName());
   }
+
 }

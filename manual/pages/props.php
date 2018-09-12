@@ -19,5 +19,14 @@ try {
 }
 $value = new GeneralAttribute('foo', false);
 echo "$value";
+
+$css = new ClassAttribute('class');
+$css->set('a b', 'c', ' d ', ['e', 'f g']);
+echo "\n$css";
+$cssParser = new CssClassParser();
+for($i = 0; $i <100000; $i++) {
+  $foo = $cssParser->parse(['a b', 'c', ' d ', ['e', 'f g'], 1, false, 100], false);
+}
+print_r($foo);
 ?>
 </pre>

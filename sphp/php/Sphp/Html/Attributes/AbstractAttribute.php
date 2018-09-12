@@ -13,6 +13,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * An abstract implementation of an HTML attribute object

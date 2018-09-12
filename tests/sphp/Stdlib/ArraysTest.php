@@ -98,12 +98,12 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     ];
     $obj = new \stdClass;
     return [
-        [$input1, $callable, $exp1], 
-        [[], $callable, []], 
-        [[0], $callable, [0]], 
-        [[false], $callable, [false]], 
+        [$input1, $callable, $exp1],
+        [[], $callable, []],
+        [[0], $callable, [0]],
+        [[false], $callable, [false]],
         [[$obj], $callable, [$obj]]
-        ];
+    ];
   }
 
   /**
