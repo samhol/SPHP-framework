@@ -16,7 +16,10 @@
     <testsuite name="all">
       <directory>./tests/</directory>
     </testsuite>
-    <testsuite name="attrs">
+    <testsuite name="html">
+      <directory>./tests/sphp/Html</directory>
+    </testsuite>
+    <testsuite name="html-attrs">
       <directory>./tests/sphp/Html/Attributes</directory>
     </testsuite>
     <testsuite name="stdlib">
