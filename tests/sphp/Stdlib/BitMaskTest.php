@@ -232,7 +232,6 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
         [0x1f, '#1f'],
         [1, '0001'],
         [-1, '-1'],
-        [2147483647, '420000000000000000000'],
         [-1, new BitMask(-1)],
     ];
   }
