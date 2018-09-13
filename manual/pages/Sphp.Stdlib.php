@@ -26,10 +26,10 @@ namespace Sphp\Stdlib\Datastructures;
 
 $sami = \Sphp\Manual\api();
 $collectionInterface = $sami->classLinker(CollectionInterface::class);
-$stackInterface = $sami->classLinker(StackInterface::class);
-$queueInterface = $sami->classLinker(QueueInterface::class);
-$stack = $sami->classLinker(Stack::class);
+$stackInterface = $sami->classLinker(Stack::class);
 $queue = $sami->classLinker(Queue::class);
+$stack = $sami->classLinker(ArrayStack::class);
+$arrayQueue = $sami->classLinker(ArrayQueue::class);
 $blockGrid = new \Sphp\Html\Foundation\Sites\Grids\BlockGrid(['small-up-1', 'medium-up-2', 'large-up-3']);
 $blockGrid->addCssClass('expanded');
 
@@ -39,9 +39,9 @@ $blockGrid->appendMd(
 The  namespace includes different collection classes.
                 
 * $collectionInterface
-* $stackInterface and  $queueInterface
+* $stackInterface and  $queue
   * $stack
-  * $queue
+  * $arrayQueue
 MD
 );
 

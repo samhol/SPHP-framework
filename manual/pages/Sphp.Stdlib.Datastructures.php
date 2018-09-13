@@ -33,6 +33,6 @@ MD
 );
 
 Manual\printPage('Sphp.Stdlib.Datastructures.Collection');
+Manual\printPage('Sphp.Stdlib.Datastructures.Queue-Stack');
 Manual\printPage('Sphp.Stdlib.Datastructures.StablePriorityQueue');
-Manual\printPage('Sphp.Stdlib.Datastructures.StackInterface');
 Manual\printPage('Sphp.Stdlib.Datastructures.UniquePriorityQueue');

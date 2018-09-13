@@ -27,7 +27,7 @@ use UnderflowException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterface, Arrayable {
+class UniquePriorityQueue implements IteratorAggregate, Countable, Queue, Arrayable {
 
   /**
    * the inner container

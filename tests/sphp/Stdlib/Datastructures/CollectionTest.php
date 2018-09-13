@@ -2,28 +2,67 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-class CollectionTest extends \PHPUnit\Framework\TestCase {
+class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
 
   /**
    * @var Collection
    */
-  protected $datastructure;
+  protected $collection;
 
   protected function setUp() {
-    $this->datastructure = new Collection();
+    $this->collection = new Collection();
   }
 
   protected function tearDown() {
-    unset($this->datastructure);
+    unset($this->collection);
+  }
+
+  public function testMockArrayIterator() {
+    $mock = \Mockery::mock(Collection::class);
+    $items = array(
+        null => 3,
+        'zero' => 3,
+        'one' => FALSE,
+        'two' => 'good job',
+        'three' => new \stdClass(),
+        'four' => array(),
+    );
+    $this->mockArrayIterator($mock, $items);
+    $this->assertTrue(isset($mock['zero']));
+    $this->assertTrue(isset($mock['one']));
+    $this->assertTrue(isset($mock['two']));
+    $this->assertTrue(isset($mock['three']));
+    $this->assertTrue(isset($mock['four']));
+    $this->assertFalse(isset($mock['five']));
+    $this->assertEquals(3, $mock['zero']);
+    $this->assertEquals(FALSE, $mock['one']);
+    $this->assertEquals('good job', $mock['two']);
+    $this->assertInstanceOf('stdClass', $mock['three']);
+    $this->assertEquals(array(), $mock['four']);
+    $this->assertCount(6, $mock);
+    // both cycles must pass
+    for ($n = 0; $n < 2; ++$n) {
+      $i = 0;
+      reset($items);
+      foreach ($mock as $key => $val) {
+        if ($i >= 6) {
+          $this->fail("Iterator overflow!");
+        }
+        $this->assertEquals(key($items), $key);
+        $this->assertEquals(current($items), $val);
+        next($items);
+        ++$i;
+      }
+      $this->assertEquals(6, $i);
+    }
   }
 
   /**
-   * 
    * @return array
    */
   public function collectionData() {
     return [
-        [range(-1000, 1000)],
+        [range(-10, 10)],
         [[0]],
         [[null]],
         //[[false]],
@@ -50,12 +89,12 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
     $count = count($values);
     $offset = 0;
     foreach ($values as $value) {
-      $this->datastructure->append($value);
-      $this->assertTrue($this->datastructure->contains($value));
-      $this->assertSame($this->datastructure->offsetGet($offset), $value);
+      $this->collection->append($value);
+      $this->assertTrue($this->collection->contains($value));
+      $this->assertSame($this->collection->offsetGet($offset), $value);
       $offset++;
     }
-    $this->assertCount($count, $this->datastructure);
+    $this->assertCount($count, $this->collection);
   }
 
   /**
@@ -66,12 +105,12 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
     $count = count($values);
     $counter = 0;
     foreach ($values as $value) {
-      $this->datastructure->prepend($value);
-      $this->assertTrue($this->datastructure->contains($value));
-      $this->assertSame($this->datastructure->offsetGet(0), $value);
-      $this->assertCount(++$counter, $this->datastructure);
+      $this->collection->prepend($value);
+      $this->assertTrue($this->collection->contains($value));
+      $this->assertSame($this->collection->offsetGet(0), $value);
+      $this->assertCount(++$counter, $this->collection);
     }
-    $this->assertCount($count, $this->datastructure);
+    $this->assertCount($count, $this->collection);
   }
 
   /**
@@ -80,16 +119,16 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
   public function testOffsetMethods(array $values) {
     $count = count($values);
     foreach ($values as $key => $value) {
-      $this->datastructure->offsetSet($key, $value);
-      $this->assertTrue($this->datastructure->offsetExists($key));
-      $this->assertSame($this->datastructure->offsetGet($key), $value);
+      $this->collection->offsetSet($key, $value);
+      $this->assertTrue($this->collection->offsetExists($key));
+      $this->assertSame($this->collection->offsetGet($key), $value);
     }
-    $this->assertCount($count, $this->datastructure);
+    $this->assertCount($count, $this->collection);
     foreach ($values as $key => $value) {
-      $this->datastructure->offsetUnset($key);
-      $this->assertFalse($this->datastructure->offsetExists($key));
+      $this->collection->offsetUnset($key);
+      $this->assertFalse($this->collection->offsetExists($key));
     }
-    $this->assertCount(0, $this->datastructure);
+    $this->assertCount(0, $this->collection);
   }
 
   /**
@@ -97,14 +136,14 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
    * @param array $values
    */
   public function testRemove(array $values) {
-    $this->datastructure->merge($values);
+    $this->collection->merge($values);
     $counter = count($values);
     foreach ($values as $value) {
-      $this->datastructure->remove($value);
-      $this->assertFalse($this->datastructure->contains($value));
-      $this->assertCount(--$counter, $this->datastructure);
+      $this->collection->remove($value);
+      $this->assertFalse($this->collection->contains($value));
+      $this->assertCount(--$counter, $this->collection);
     }
-    $this->assertCount(0, $this->datastructure);
+    $this->assertCount(0, $this->collection);
   }
 
   /**
@@ -112,8 +151,8 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
    * @param array $values
    */
   public function testIterator(array $values) {
-    $this->datastructure->merge($values);
-    foreach ($this->datastructure as $key => $value) {
+    $this->collection->merge($values);
+    foreach ($this->collection as $key => $value) {
       $this->assertSame($value, $values[$key]);
     }
   }
@@ -145,12 +184,12 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
    * @param array $values
    */
   public function testMerge(array $values) {
-    $this->datastructure = new Collection();
-    $this->datastructure->merge($values);
-    foreach ($this->datastructure as $key => $value) {
+    $this->collection = new Collection();
+    $this->collection->merge($values);
+    foreach ($this->collection as $key => $value) {
       $this->assertSame($value, $values[$key]);
     }
-    return $this->datastructure;
+    return $this->collection;
   }
 
 }

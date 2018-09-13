@@ -16,6 +16,7 @@ namespace Sphp\Stdlib\Networks;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
+ * @codeCoverageIgnore
  */
 abstract class RemoteResource {
 

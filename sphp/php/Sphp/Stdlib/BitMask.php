@@ -282,7 +282,7 @@ class BitMask implements Arrayable, Iterator {
    * @param  mixed $hex
    * @return BitMask
    */
-  public function from($hex): BitMask {
+  public static function from($hex): BitMask {
     return new static(static::parseInt($hex));
   }
 

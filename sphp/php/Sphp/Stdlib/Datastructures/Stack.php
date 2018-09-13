@@ -10,33 +10,45 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use SplStack;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\UnderflowException;
 
 /**
- * An implementation of a last-in-first-out (LIFO) stack
+ * Defines properties of a last-in-first-out (LIFO) stack
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Stack extends SplStack implements StackInterface {
+interface Stack {
 
-  public function peek() {
-    return $this->top();
-  }
+  /**
+   * Pushes an item onto the top of the stack
+   *
+   * @param  mixed $value the item to be pushed
+   * @return $this for a fluent interface
+   */
+  public function push($value);
 
-  public function push($value) {
-    parent::push($value);
-    return $this;
-  }
+  /**
+   * Removes the item at the top of the stack and returns that item as the value
+   *
+   * @return mixed the top-most element
+   * @throws UnderflowException when the data-structure is empty
+   */
+  public function pop();
 
-  public function pop() {
-    try {
-      return parent::pop();
-    } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-  }
+  /**
+   * Observes the top-most element without removing it from the stack
+   *
+   * @return mixed the top-most element
+   * @throws UnderflowException when the data-structure is empty
+   */
+  public function peek();
 
+  /**
+   * Determine if the stack is empty or not
+   *
+   * @return boolean true if the stack is empty, false otherwise
+   */
+  public function isEmpty();
 }

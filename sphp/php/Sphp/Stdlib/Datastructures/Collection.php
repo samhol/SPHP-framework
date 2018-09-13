@@ -260,8 +260,8 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @return Queue
    */
-  public function toQueue() {
-    $queue = new Queue();
+  public function toQueue(): Queue {
+    $queue = new ArrayQueue();
     foreach ($this->items as $item) {
       $queue->enqueue($item);
     }
@@ -270,10 +270,10 @@ class Collection implements Iterator, CollectionInterface {
 
   /**
    *
-   * @return Stack
+   * @return StackInterface
    */
-  public function toStack() {
-    $stack = new Stack();
+  public function toStack(): Stack {
+    $stack = new ArrayStack();
     foreach ($this->items as $item) {
       $stack->push($item);
     }

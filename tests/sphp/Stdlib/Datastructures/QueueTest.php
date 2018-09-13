@@ -2,17 +2,12 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-class QueueTests extends \PHPUnit\Framework\TestCase {
+use Sphp\Exceptions\UnderflowException;
 
-  /**
-   * @return  Queue
-   */
-  public function createQueue() {
-    return new Queue();
-  }
+class QueueTest extends \PHPUnit\Framework\TestCase {
 
   protected function setUp() {
-    $this->q = $this->createQueue();
+    $this->q = new ArrayQueue();
   }
 
   protected function tearDown() {
@@ -23,10 +18,36 @@ class QueueTests extends \PHPUnit\Framework\TestCase {
    * 
    * @return array
    */
+  public function constructData() {
+    return [
+        [[]],
+        [range('a', 'e')],
+    ];
+  }
+
+  /**
+   * @dataProvider constructData
+   * @param array $values
+   */
+  public function testConstructor(array $values) {
+    $queue = new ArrayQueue($values);
+    $this->assertSame(count($values) === 0, $queue->isEmpty());
+    if (count($values) === 0) {
+      $this->expectException(UnderflowException::class);
+      $queue->peek();
+    } else {
+      $this->assertSame(reset($values), $queue->peek());
+    }
+  }
+
+  /**
+   * 
+   * @return array
+   */
   public function queueData() {
     return [
-        [range(-100000, 100000)],
-        [[null, false, true, 1, 0, "string", "", "0", 3.14]]
+        [range(-10, 10)],
+        [range('a', 'e')],
     ];
   }
 

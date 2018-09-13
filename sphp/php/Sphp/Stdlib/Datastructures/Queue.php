@@ -10,37 +10,45 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use SplQueue;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\UnderflowException;
 
 /**
- * An implementation of a first-in-first-out (FIFO) queue
+ * Defines properties of a First-In-First-Out (FIFO) queue
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Queue extends SplQueue implements QueueInterface {
+interface Queue {
 
-  public function peek() {
-    return $this->bottom();
-  }
+  /**
+   * Adds a new item to the end of the queue
+   *
+   * @param  mixed $value the new item to add
+   * @return $this for a fluent interface
+   */
+  public function enqueue($value);
 
-  public function enqueue($value) {
-    parent::enqueue($value);
-    return $this;
-  }
+  /**
+   * Dequeues a node from the queue
+   *
+   * @return mixed the item at the beginning of the queue
+   * @throws UnderflowException when the data-structure is empty
+   */
+  public function dequeue();
 
-  public function dequeue() {
-    try {
-      return parent::dequeue();
-    } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-  }
+  /**
+   * Observes the first item of the queue without removing it
+   *
+   * @return mixed the item at the beginning of the queue
+   * @throws UnderflowException when the data-structure is empty
+   */
+  public function peek();
 
-  public function isEmpty(): bool {
-    return parent::isEmpty();
-  }
-
+  /**
+   * Determine if the queue is empty or not
+   *
+   * @return boolean true if the queue is empty, false otherwise
+   */
+  public function isEmpty(): bool;
 }

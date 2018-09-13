@@ -13,10 +13,10 @@ class StackTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
-   * @return Stack
+   * @return ArrayStack
    */
   public function createStack() {
-    return new Stack();
+    return new ArrayStack();
   }
 
   protected function setUp() {
@@ -33,7 +33,7 @@ class StackTest extends \PHPUnit\Framework\TestCase {
    */
   public function stackData() {
     return [
-        [range(-100000, 100000)],
+        [range(-10, 10)],
         [[null, false, true, 1, 0, "string", "", "0", 3.14]]
     ];
   }

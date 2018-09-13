@@ -19,6 +19,12 @@
     <testsuite name="attrs">
       <directory>./tests/sphp/Html/Attributes</directory>
     </testsuite>
+    <testsuite name="stdlib">
+      <directory>./tests/sphp/Stdlib</directory>
+    </testsuite>
+    <testsuite name="stdlib-ds">
+      <directory>./tests/sphp/Stdlib/Datastructures</directory>
+    </testsuite>
   </testsuites>
   
   <logging>
