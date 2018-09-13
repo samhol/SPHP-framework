@@ -31,7 +31,7 @@
   </testsuites>
   
   <logging>
-    <log type="coverage-html" target="reports/coverage" lowUpperBound="35" highLowerBound="70"/>
+    <log type="coverage-html" target="reports/coverage"/>
     <log type="coverage-clover" target="reports/logs/clover.xml"/>
   </logging>
 

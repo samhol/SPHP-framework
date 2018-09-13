@@ -10,8 +10,6 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use SplStack;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\UnderflowException;
 
 /**
@@ -35,6 +33,13 @@ class ArrayStack implements Stack {
    */
   public function __construct(array $initial = []) {
     $this->items = $initial;
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->items);
   }
 
   public function peek() {

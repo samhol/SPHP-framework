@@ -14,7 +14,7 @@ use Sphp\Exceptions\OutOfRangeException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Traversable;
-use Sphp\Stdlib\Datastructures\PlainIterator;
+use Sphp\Stdlib\Datastructures\Collection;
 
 /**
  * Defines Screen Sizes and types and implements screen size parsing functions
@@ -114,6 +114,6 @@ class ScreenSizes implements \IteratorAggregate, \Countable, Arrayable {
   }
   
   public function getIterator(): Traversable {
-    return new PlainIterator($this->sizes);
+    return new Collection($this->sizes);
   }
 }

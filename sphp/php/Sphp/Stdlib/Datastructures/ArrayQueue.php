@@ -35,6 +35,13 @@ class ArrayQueue implements Queue {
     $this->items = $initial;
   }
 
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->items);
+  }
+
   public function dequeue() {
     if ($this->isEmpty()) {
       throw new UnderflowException('Cannot dequeue from empty queue');

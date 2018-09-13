@@ -109,6 +109,12 @@ class Collection implements Iterator, CollectionInterface {
     return $this;
   }
 
+  /**
+   * Appends a value to the collection
+   * 
+   * @param  mixed $value
+   * @return $this for a fluent interface
+   */
   public function append($value) {
     $this->items[] = $value;
     return $this;
@@ -142,19 +148,6 @@ class Collection implements Iterator, CollectionInterface {
   public function merge($items) {
     $this->items = array_merge($this->items, $this->getArrayableItems($items));
     return $this;
-  }
-
-  /**
-   * Set the internal pointer of the collection to its last item, and returns its value
-   *
-   * @return mixed the value of the last item or null for empty collection
-   */
-  public function end() {
-    $value = end($this->items);
-    if ($value === false && $this->isEmpty()) {
-      $value = null;
-    }
-    return $value;
   }
 
   /**
@@ -208,10 +201,22 @@ class Collection implements Iterator, CollectionInterface {
     return new static(array_combine($keys, $items));
   }
 
+  /**
+   * Checks if the given value exists in the collection
+   * 
+   * @param  mixed $value the value to search
+   * @return boolean `true` if the given value exists, `false` otherwise
+   */
   public function contains($value): bool {
     return in_array($value, $this->items, true);
   }
 
+  /**
+   * Removes all instances of the given value from the collection
+   * 
+   * @param  mixed $value the value to remove
+   * @return boolena `true` if the given value exists, `false` otherwise
+   */
   public function remove($value) {
     $f = function($var) use ($value) {
       return $var !== $value;
@@ -278,36 +283,6 @@ class Collection implements Iterator, CollectionInterface {
       $stack->push($item);
     }
     return $stack;
-  }
-
-  /**
-   * Removes the item at the top of the stack and returns that item as the value
-   *
-   * @complexity O(1)
-   * @return mixed the top-most element or null If the stack is empty
-   */
-  public function pop() {
-    if ($this->isEmpty()) {
-      throw new UnderflowException();
-    }
-    return array_pop($this->items);
-  }
-
-  /**
-   * Shift an item off the beginning of the collection
-   * 
-   * Shifts the first item off and returns it, shortening the collection by one
-   * and moving everything down. All numerical keys will be modified to start
-   * counting from zero while literal keys won't be touched.
-   *
-   * @return mixed the first item of the collection or null If the collection is empty
-   * @complexity O(n)
-   */
-  public function shift() {
-    if ($this->isEmpty()) {
-      throw new UnderflowException();
-    }
-    return array_shift($this->items);
   }
 
   /**

@@ -2,8 +2,6 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Config\PHP;
-
 class FilesystemTest extends \PHPUnit\Framework\TestCase {
 
   /**

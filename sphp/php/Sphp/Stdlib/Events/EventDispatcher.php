@@ -125,6 +125,7 @@ class EventDispatcher implements EventDispatcherInterface {
   }
 
   /**
+   * Creates and triggers a new event to all corresponding listeners
    * 
    * @param  string $name the name of the event
    * @param  mixed $subject subject the subject which dispached this event

@@ -46,7 +46,7 @@ class QueueTest extends \PHPUnit\Framework\TestCase {
    */
   public function queueData() {
     return [
-        [range(-10, 10)],
+        [range(-2, 2)],
         [range('a', 'e')],
     ];
   }

@@ -33,7 +33,7 @@ class StackTest extends \PHPUnit\Framework\TestCase {
    */
   public function stackData() {
     return [
-        [range(-10, 10)],
+        [range(-2, 2)],
         [[null, false, true, 1, 0, "string", "", "0", 3.14]]
     ];
   }

@@ -62,11 +62,6 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
    */
   public function collectionData() {
     return [
-        [range(-10, 10)],
-        [[0]],
-        [[null]],
-        //[[false]],
-        [['']],
         [[
         'stdClass' => new \stdClass(),
         'null' => null,
@@ -88,13 +83,17 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
   public function testAppend(array $values) {
     $count = count($values);
     $offset = 0;
+    $this->assertTrue($this->collection->isEmpty());
     foreach ($values as $value) {
       $this->collection->append($value);
       $this->assertTrue($this->collection->contains($value));
       $this->assertSame($this->collection->offsetGet($offset), $value);
       $offset++;
     }
+    $this->assertFalse($this->collection->isEmpty());
     $this->assertCount($count, $this->collection);
+    $this->collection->clear();
+    $this->assertSame($this->collection->isEmpty(), $this->collection->count() === 0);
   }
 
   /**
@@ -129,6 +128,31 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
       $this->assertFalse($this->collection->offsetExists($key));
     }
     $this->assertCount(0, $this->collection);
+  }
+
+  public function testFilter() {
+    $mod2 = function($n) {
+      return($n % 2) === 0;
+    };
+    $collection = new Collection(['a' => 2, 'one' => 1, 6, 9]);
+    $filtered = $collection->filter($mod2);
+    foreach ($filtered as $key => $value) {
+      $this->assertSame($collection[$key], $value);
+      $this->assertTrue(($value % 2) === 0);
+    }
+  }
+
+  public function testMap() {
+    $cubed = function($n) {
+      return($n * $n * $n);
+    };
+    $collection = new Collection(['a' => 2, 'one' => 1]);
+    $cubedCollection = $collection->map($cubed);
+    $this->assertSame($collection->count(), 2);
+    $this->assertSame($cubedCollection->count(), 2);
+    foreach ($collection as $key => $value) {
+      $this->assertSame($cubed($value), $cubedCollection[$key]);
+    }
   }
 
   /**

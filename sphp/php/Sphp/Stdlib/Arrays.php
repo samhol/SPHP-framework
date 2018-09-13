@@ -34,7 +34,7 @@ abstract class Arrays {
    */
   public static function pointToKey(array &$array, $key) {
     reset($array);
-    while (!in_array(key($array), [$key, null])) {
+    while (!in_array(key($array), [$key, null], true)) {
       next($array);
     }
     if (current($array) === false) {
@@ -53,11 +53,11 @@ abstract class Arrays {
    */
   public static function pointToValue(array &$array, $value) {
     reset($array);
-    while (!in_array(current($array), [$value, null])) {
+    while (!in_array(current($array), [$value, null], true)) {
       next($array);
     }
     if (current($array) !== false) {
-      throw new OutOfBoundsException("Value '$value' does not exist in the array");
+      throw new OutOfBoundsException("Value does not exist in the array");
     }
     return $array;
   }
@@ -350,11 +350,14 @@ abstract class Arrays {
    * order starting at $base
    *
    * @param array $arr checked array
-   * @param int $base the starting index of the sequence
+   * @param int|null $base the starting index of the sequence
    * @return boolean true if conditions hold and false otherwise
    */
-  public static function isSequential(array $arr, int $base = 0): bool {
-    for (reset($arr), $base = $base; key($arr) === $base++; next($arr))
+  public static function isSequential(array $arr, int $base = null): bool {
+    if ($base === null) {
+      $base = key($arr);
+    }
+    for (reset($arr); key($arr) === $base++; next($arr))
       ;
     return is_null(key($arr));
   }
@@ -364,14 +367,13 @@ abstract class Arrays {
    *
    * @param  array $arr checked array
    * @param  int $base the starting index of the sequence
-   * @param  int $step optional increment between elements in the sequence.
    * @return array sequential array
    */
-  public static function setSequential(array $arr, int $base = 0, int $step = 1): array {
-    if ($base === 0 && $step === 1) {
+  public static function setSequential(array $arr, int $base = 0): array {
+    if ($base === 0) {
       $result = array_values($arr);
     } else {
-      $sequence = range($base, count($arr), $step);
+      $sequence = range($base, count($arr) + $base -1);
       $result = array_combine($sequence, $arr);
     }
     return $result;
