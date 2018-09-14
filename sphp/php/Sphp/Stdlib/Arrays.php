@@ -392,7 +392,6 @@ abstract class Arrays {
    * 
    * @param  array $arr multidimensional array of strings to implode
    * @param  string $glue string between each array element
-   * @param  string|null $lastGlue optional string between the last two array elements
    * @return string the imploded array
    */
   public static function implode(array $arr, string $glue = ''): string {

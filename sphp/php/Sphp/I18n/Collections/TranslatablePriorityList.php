@@ -15,8 +15,7 @@ use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use IteratorAggregate;
 use Sphp\I18n\Translatable;
-use Zend\Stdlib\PriorityQueue;
-use Sphp\Stdlib\Datastructures\StablePriorityQueue;
+use Sphp\Stdlib\Datastructures\PriorityQueue;
 use Traversable;
 
 /**
@@ -49,7 +48,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    */
   public function __construct(TranslatorInterface $translator = null) {
     $this->messages = new PriorityQueue();
-    $this->messages->setInternalQueueClass(StablePriorityQueue::class);
+    //$this->messages->setInternalQueueClass(StablePriorityQueue::class);
     if ($translator === null) {
       $translator = new Translator();
     }
@@ -97,7 +96,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @return $this for a fluent interface
    */
   public function insert(Translatable $messages, int $priority = 0) {
-    $this->messages->insert($messages, $priority);
+    $this->messages->enqueue($messages, $priority);
     return $this;
   }
 
@@ -136,7 +135,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @return $this for a fluent interface
    */
   public function clearContent() {
-    $this->messages = new StablePriorityQueue();
+    $this->messages = new PriorityQueue();
     return $this;
   }
 

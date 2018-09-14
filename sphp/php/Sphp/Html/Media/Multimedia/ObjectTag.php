@@ -22,7 +22,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Object extends AbstractComponent implements IteratorAggregate, TraversableContent, SizeableMedia {
+class ObjectTag extends AbstractComponent implements IteratorAggregate, TraversableContent, SizeableMedia {
 
   use \Sphp\Html\TraversableTrait,
       \Sphp\Html\Media\SizeableTrait;

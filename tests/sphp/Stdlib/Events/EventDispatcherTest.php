@@ -19,7 +19,7 @@ class EventDispatcherTest extends \PHPUnit\Framework\TestCase implements EventLi
 
   /**
    *
-   * @var Event
+   * @var DataEvent
    */
   protected $event_a;
 
@@ -32,7 +32,7 @@ class EventDispatcherTest extends \PHPUnit\Framework\TestCase implements EventLi
     $this->mirror = function ($event) {
       return $event;
     };
-    $this->event_a = new Event("a", $this, ["data1", "data2"]);
+    $this->event_a = new DataEvent("a", $this, ["data1", "data2"]);
   }
 
   /**
@@ -66,7 +66,7 @@ class EventDispatcherTest extends \PHPUnit\Framework\TestCase implements EventLi
     $this->events->trigger($this->event_a);
   }
 
-  public function on(EventInterface $event) {
+  public function on(Event $event) {
     $this->assertFalse($event->isStopped());
   }
 

@@ -12,8 +12,7 @@ namespace Sphp\MVC;
 
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Networks\URL;
-use Zend\Stdlib\PriorityQueue;
-use Sphp\Stdlib\Datastructures\StablePriorityQueue;
+use Sphp\Stdlib\Datastructures\PriorityQueue;
 
 /**
  * Implements an URL router
@@ -100,7 +99,7 @@ class Router {
     }
     $this->path = rtrim($url->getPath(), '/') . '/';
     $this->routes = new PriorityQueue();
-    $this->routes->setInternalQueueClass(StablePriorityQueue::class);
+    //$this->routes->setInternalQueueClass(StablePriorityQueue::class);
   }
 
   /**
@@ -188,7 +187,7 @@ class Router {
     $route = preg_replace('/\<\!(.*?)\>/', '(?P<\1>[^\/]+)', $route);
     // Add the regular expression syntax to make sure we do a full match or no match
     $route = '#^' . $route . '$#';
-    $this->routes->insert(['route' => $route, 'callback' => $callback], $priority);
+    $this->routes->enqueue(['route' => $route, 'callback' => $callback], $priority);
     return $this;
   }
 

@@ -46,16 +46,16 @@ interface EventDispatcherInterface {
   /**
    * Triggers a new event to all corresponding listeners
    *
-   * @param    EventInterface $event event object
+   * @param    Event $event event object
    * @return   self for PHP Method Chaining
-   * @triggers {@link EventInterface} the `$event` passed as parameter 
+   * @triggers {@link Event} the `$event` passed as parameter 
    */
-  public function trigger(EventInterface $event);
+  public function trigger(Event $event);
 
   /**
    * Checks whether the given event has listeners
    *
-   * @param  EventInterface|string $event event object or the name of the event
+   * @param  Event|string $event event object or the name of the event
    * @return boolean true if event has listeners, false otherwise
    */
   public function hasListeners($event): bool;
@@ -63,7 +63,7 @@ interface EventDispatcherInterface {
   /**
    * Get all listeners for an event
    *
-   * @param  EventInterface|string $event event object or the name of the event
+   * @param  Event|string $event event object or the name of the event
    * @return mixed[] containing the listener objects
    */
   public function getListeners($event): array;

@@ -11,124 +11,47 @@
 namespace Sphp\Stdlib\Events;
 
 /**
- * Event object that can also act as a container for any type of data.
- *
- * Implements an event. Objects can 'subscribe'
- * to these events and get notified when they trigger.
+ * Defines an event
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Event implements EventInterface {
+interface Event {
 
   /**
-   * Event name
+   * Return the name of the event
    *
-   * @var string
+   * @return string the name of the event
    */
-  private $name;
+  public function getName(): string;
 
   /**
-   * Subject (usually the one who created the event)
+   * Return the subject
    *
-   * @var mixed
+   * @return mixed subject
    */
-  private $subject;
+  public function getSubject();
 
   /**
-   * Flags an event as stopped or not, default is false
-   *
-   * @var boolean
-   */
-  private $stopped = false;
-
-  /**
-   * Data to pass to listeners
-   *
-   * @var mixed
-   */
-  private $data;
-
-  /**
-   * Creates a new instance
-   *
-   * @param string $name the name of the event
-   * @param mixed $subject subject the subject which dispatched this event
-   * @param mixed $data the data dispatched with this event
-   */
-  public function __construct(string $name, $subject = null, $data = null) {
-    $this->setName($name)
-            ->setSubject($subject)
-            ->setData($data);
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->name, $this->subject, $this->stopped, $this->data);
-  }
-
-  /**
-   * Return the string representation of the event object
-   *
-   * @return string the string representation of the event object
-   */
-  public function __toString(): string {
-    return __CLASS__ . " : (name: $this->name)";
-  }
-
-  /**
-   * Sets the name of the event
+   * Sets the subject
    * 
-   * @param  string $name the name of the event
+   * @param  mixed $subject the subject
    * @return $this for a fluent interface
    */
-  protected function setName(string $name) {
-    $this->name = $name;
-    return $this;
-  }
-
-  public function getName(): string {
-    return $this->name;
-  }
-
-  public function setSubject($subject) {
-    $this->subject = $subject;
-    return $this;
-  }
-
-  public function getSubject() {
-    return $this->subject;
-  }
-
-  public function stopPropagation() {
-    $this->stopped = true;
-  }
-
-  public function isStopped(): bool {
-    return $this->stopped;
-  }
+  public function setSubject($subject);
 
   /**
-   * Sets the data attached to the event
-   * 
-   * @param  mixed $data the data attached to the event
+   * Stops the event from being used anymore
+   *
    * @return $this for a fluent interface
    */
-  public function setData($data) {
-    $this->data = $data;
-    return $this;
-  }
+  public function stopPropagation();
 
   /**
-   * Returns the data attached to the event
-   *
-   * @return mixed the data attached to the event
+   * Checks if the event is stopped
+   * 
+   * @return boolean true if the event is stopped
    */
-  public function getData() {
-    return $this->data;
-  }
-
+  public function isStopped(): bool;
 }

@@ -11,6 +11,7 @@
 namespace Sphp\Html;
 
 use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
 use ReflectionClass;
 
 /**
@@ -133,7 +134,6 @@ abstract class Tags {
       'title' => Head\Title::class,
       'meter' => ContainerTag::class,
       'nav' => Navigation\Nav::class,
-      'object' => Media\Multimedia\Object::class,
       'ol' => Lists\Ol::class,
       'ul' => Lists\Ul::class,
       'li' => Lists\Li::class,
@@ -160,6 +160,7 @@ abstract class Tags {
       'source' => Media\Multimedia\Source::class,
       'track' => Media\Multimedia\Track::class,
       'video' => Media\Multimedia\Video::class,
+      'object' => Media\Multimedia\ObjectTag::class,
       'span' => Span::class,
       'table' => Tables\Table::class,
       'tbody' => Tables\Tbody::class,
@@ -205,21 +206,14 @@ abstract class Tags {
    * @param  string $name the name of the component
    * @param  array $arguments 
    * @return Tag the corresponding component
-   * @throws BadMethodCallException
+   * @throws BadMethodCallException if the tag object does not exist
    */
   public static function __callStatic(string $name, array $arguments): Tag {
-    if (!isset(static::$tags[$name])) {
-      throw new BadMethodCallException("Method $name does not exist");
+    try {
+      return static::create($name, $arguments);
+    } catch (\Exception $ex) {
+      throw new BadMethodCallException("Method '$name' Does not exist", 0, $ex);
     }
-    if (is_string(static::$tags[$name])) {
-      static::$tags[$name] = new ReflectionClass(static::$tags[$name]);
-    }
-    $reflectionClass = static::$tags[$name];
-    if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
-      array_unshift($arguments, $name);
-    }
-    $instance = static::$tags[$name]->newInstanceArgs($arguments);
-    return $instance;
   }
 
   /**
@@ -228,7 +222,7 @@ abstract class Tags {
    * @param  string $name the name of the component
    * @param  array $arguments 
    * @return Tag the corresponding component
-   * @throws BadMethodCallException
+   * @throws InvalidArgumentException if the tag object does not exist
    */
   public static function create(string $name, array $arguments = []): Tag {
     if (!isset(static::$tags[$name])) {

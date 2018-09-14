@@ -5,8 +5,8 @@ namespace Sphp\Stdlib\Events;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$eventInterface = Manual\api()->classLinker(EventInterface::class);
-$eventClass = Manual\api()->classLinker(Event::class);
+$eventInterface = Manual\api()->classLinker(Event::class);
+$eventClass = Manual\api()->classLinker(DataEvent::class);
 $eventListenerInterface = Manual\api()->classLinker(EventListener::class);
 $eventDispatcherInterface = Manual\api()->classLinker(EventDispatcherInterface::class);
 

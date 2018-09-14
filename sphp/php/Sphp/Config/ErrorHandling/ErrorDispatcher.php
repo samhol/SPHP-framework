@@ -11,7 +11,7 @@
 namespace Sphp\Config\ErrorHandling;
 
 use Throwable;
-use Sphp\Stdlib\Datastructures\StablePriorityQueue;
+use Sphp\Stdlib\Datastructures\PriorityQueue;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -32,12 +32,12 @@ class ErrorDispatcher {
   private $handlesExceptions = false;
 
   /**
-   * @var StablePriorityQueue
+   * @var PriorityQueue
    */
   private $errorListeners;
 
   /**
-   * @var StablePriorityQueue
+   * @var PriorityQueue
    */
   private $exceptionListeners;
 
@@ -45,8 +45,8 @@ class ErrorDispatcher {
    * Constructor
    */
   public function __construct() {
-    $this->errorListeners = new StablePriorityQueue();
-    $this->exceptionListeners = new StablePriorityQueue();
+    $this->errorListeners = new PriorityQueue();
+    $this->exceptionListeners = new PriorityQueue();
   }
 
   /**
@@ -120,7 +120,7 @@ class ErrorDispatcher {
     if (!is_callable($listener) && !$listener instanceof ErrorListener) {
       throw new InvalidArgumentException('Error Listener must be a PHP callable or of type ' . ErrorListener::class);
     }
-    $this->errorListeners->insert(['listener' => $listener, 'level' => $errorLevel], $priority);
+    $this->errorListeners->enqueue(['listener' => $listener, 'level' => $errorLevel], $priority);
     return $this;
   }
 
@@ -135,7 +135,7 @@ class ErrorDispatcher {
     if (!is_callable($listener) && !$listener instanceof ExceptionListener) {
       throw new InvalidArgumentException('Exception Listener must be a PHP callable or of type ' . ExceptionListener::class);
     }
-    $this->exceptionListeners->insert($listener, $priority);
+    $this->exceptionListeners->enqueue($listener, $priority);
     return $this;
   }
 

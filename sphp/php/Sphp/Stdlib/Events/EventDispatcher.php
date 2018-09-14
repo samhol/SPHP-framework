@@ -74,11 +74,11 @@ class EventDispatcher implements EventDispatcherInterface {
   /**
    * Return the type of the given event
    *
-   * @param  EventInterface|string $event event object or the type of the event
+   * @param  Event|string $event event object or the type of the event
    * @return string the name of the event
    */
   protected function getEventName($event) {
-    if ($event instanceof EventInterface) {
+    if ($event instanceof Event) {
       return $event->getName();
     } else {
       return $event;
@@ -133,12 +133,12 @@ class EventDispatcher implements EventDispatcherInterface {
    * @return $this for a fluent interface
    */
   public function triggerEvent(string $name, $subject = null, $data = null) {
-    $event = new Event($name, $subject, $data);
+    $event = new DataEvent($name, $subject, $data);
     $this->trigger($event);
     return $this;
   }
 
-  public function trigger(EventInterface $event) {
+  public function trigger(Event $event) {
     $key = $event->getName();
     if (array_key_exists($key, $this->listeners)) {
       foreach ($this->listeners[$key] as $listener) {

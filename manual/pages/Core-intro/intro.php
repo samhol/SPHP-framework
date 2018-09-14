@@ -10,9 +10,9 @@ use Sphp\Config\Config;
 $rootNs = $apigen->namespaceLink(__NAMESPACE__);
 $configNs = $apigen->classLinker(Config::class)->namespaceLink();
 
-use Sphp\Stdlib\Events\EventInterface as EventInterface;
+use Sphp\Stdlib\Events\Event;
 
-$eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();
+$eventNs = $apigen->classLinker(Event::class)->namespaceLink();
 
 use Sphp\I18n\Gettext\Translator;
 

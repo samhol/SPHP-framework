@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-$collection = new Collection(range("b", "d"));
+$collection = new Collection(range('b', 'd'));
 
 print_r($collection->toArray());
 
@@ -18,8 +18,7 @@ print_r($collection->toArray());
 var_dump(
         $collection->contains("c"),
         $collection->count() === 3,
-        $collection->isEmpty() === false,
-        $collection->end() === "d");
+        $collection->isEmpty() === false);
 
 $collection
         ->prepend("a")
@@ -27,5 +26,4 @@ $collection
 print_r($collection->toArray());
 var_dump(
         $collection->contains("a"),
-        $collection->count() === 5,
-        $collection->end() === "e");
+        $collection->count() === 5);

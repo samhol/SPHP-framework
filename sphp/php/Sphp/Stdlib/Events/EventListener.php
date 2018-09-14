@@ -22,7 +22,7 @@ interface EventListener {
   /**
    * The method called when a listened event occurs
    *
-   * @param EventInterface $event
+   * @param Event $event
    */
-  public function on(EventInterface $event);
+  public function on(Event $event);
 }

@@ -12,6 +12,5 @@ This class provides an implementation of $collectionInterface.
 
 MD
 );
-\Sphp\Manual\visualize('Sphp/Stdlib/Datastructures/SphpArrayObject.php', 'text', false);
 \Sphp\Manual\visualize('Sphp/Stdlib/Datastructures/Collection.php', 'text', false);
 
