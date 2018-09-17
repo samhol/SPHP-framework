@@ -26,7 +26,7 @@ use Sphp\Html\EmptyTag;
 class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
 
   use LazyMediaSourceTrait,
-      SizeableTrait;
+      SizeableMediaTrait;
 
   /**
    * Constructor

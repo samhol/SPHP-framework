@@ -11,7 +11,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Media\SizeableMedia;
-use Sphp\Html\Media\SizeableTrait;
+use Sphp\Html\Media\SizeableMediaTrait;
 use Sphp\Html\Media\LazyMedia;
 
 /**
@@ -24,7 +24,7 @@ use Sphp\Html\Media\LazyMedia;
  */
 class Video extends AbstractMultimediaTag implements SizeableMedia, LazyMedia {
 
-  use SizeableTrait;
+  use SizeableMediaTrait;
 
   /**
    * Constructor

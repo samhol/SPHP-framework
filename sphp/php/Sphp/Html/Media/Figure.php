@@ -20,7 +20,7 @@ use Sphp\Html\AbstractComponent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Figure extends AbstractComponent implements ImgInterface {
+class Figure extends AbstractComponent {
 
   /**
    * @var Img 
@@ -43,11 +43,11 @@ class Figure extends AbstractComponent implements ImgInterface {
     if (!($img instanceof Img)) {
       $img = new Img((string) $img);
     }
-    $this->img = $img;
+    $this->setImg($img);
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }
-    $this->caption = $caption;
+    $this->setCaption($caption);
   }
 
   public function __destruct() {
@@ -96,80 +96,14 @@ class Figure extends AbstractComponent implements ImgInterface {
    *
    * @return FigCaption the caption component
    */
-  public function getCaption() {
+  public function getCaption(): FigCaption {
     return $this->caption;
   }
 
-  public function getAlt(): string {
-    return $this->img->getAlt();
-  }
-
-  public function getSrc(): string {
-    return $this->img->getSrc();
-  }
-
-  public function setAlt(string $alt) {
-    $this->img->setAlt($alt);
-    return $this;
-  }
-
-  public function setSrc(string $src) {
-    $this->img->setSrc($src);
-    return $this;
-  }
-
-  public function useMap($map) {
-    $this->img->useMap($map);
-    return $this;
-  }
-
-  public function setLazy(bool $lazy = true) {
-    $this->img->setLazy($lazy);
-    return $this;
-  }
-
-  public function isLazy(): bool {
-    return $this->img->isLazy();
-  }
 
   public function contentToString(): string {
     return $this->img . $this->caption;
   }
 
-  public function setWidth(int $width) {
-    $this->img->setWidth($width);
-    return $this;
-  }
-
-  public function setHeight(int $height) {
-    $this->img->setHeight($height);
-    return $this;
-  }
-
-  public function getHeight(): int {
-    return $this->img->getHeight();
-  }
-
-  public function getWidth(): int {
-    return $this->img->getWidth();
-  }
-
-  public function hasHeight(): bool {
-    return $this->img->hasHeight();
-  }
-
-  public function hasWidth(): bool {
-    return $this->img->hasWidth();
-  }
-
-  public function unsetHeight() {
-    $this->img->unsetHeight();
-    return $this;
-  }
-
-  public function unsetWidth() {
-    $this->img->unsetWidth();
-    return $this;
-  }
 
 }

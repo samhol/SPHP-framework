@@ -12,6 +12,7 @@ namespace Sphp\Stdlib\Datastructures;
 
 use Iterator;
 use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\UnderflowException;
 
 /**
  * An implementation of a sequence of values
@@ -37,16 +38,6 @@ class Sequence implements Iterator {
   }
 
   /**
-   * 
-   * @param  int $position
-   * @return boolean
-   */
-  protected function isValidPosition(int $position): bool {
-    $test = $position + 1;
-    return $this->minLength <= $test && ($this->maxLength === null || $this->maxLength >= $test);
-  }
-
-  /**
    * Inserts values at a given index
    *
    * @param int $index the index at which to insert
@@ -56,7 +47,7 @@ class Sequence implements Iterator {
    */
   public function insert(int $index, $values) {
     if ($index < 0) {
-      throw new OutOfBoundsException("Indec ($index) mest be zero or positive integer");
+      throw new OutOfBoundsException("Index ($index) must be zero or positive integer");
     }
     $this->sequence[$index] = $values;
     ksort($this->sequence);
@@ -64,20 +55,18 @@ class Sequence implements Iterator {
   }
 
   /**
-   * Adds new atomic values to the attribute
+   * Pushes given values to the end of the sequence
    *
    * @param  mixed,... $value the value(s) to push
    * @return $this for a fluent interface
    */
   public function push(...$value) {
-    foreach ($value as $val) {
-      $this->sequence[] = $val;
-    }
+    $this->pushFromArray($value);
     return $this;
   }
 
   /**
-   * Adds new atomic values to the attribute
+   * Pushes values from given array to the end of the sequence
    *
    * @param  array $values an array of values to push
    * @return $this for a fluent interface
@@ -97,8 +86,8 @@ class Sequence implements Iterator {
    * @throws OutOfRangeException if the index is not valid.
    */
   public function remove(int $index) {
-    if ($this->exists($index)) {
-      throw new OutOfRangeException("Index ($index) is not valid");
+    if (!$this->exists($index)) {
+      throw new OutOfBoundsException("Index ($index) is not valid");
     }
     $value = $this->sequence[$index];
     unset($this->sequence[$index]);
@@ -151,7 +140,7 @@ class Sequence implements Iterator {
   public function contains(...$values): bool {
     $exists = false;
     foreach ($values as $needle) {
-      $exists = in_array($needle, $this->sequence);
+      $exists = in_array($needle, $this->sequence, true);
       if (!$exists) {
         break;
       }

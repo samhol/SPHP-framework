@@ -10,13 +10,6 @@
 
 namespace Sphp\Tests;
 
-/**
- * Description of dd
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
 abstract class ArrayAccessIteratorCountableTestCase extends \PHPUnit\Framework\TestCase {
 
   protected function tearDown() {

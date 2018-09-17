@@ -2,23 +2,10 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Exceptions\OutOfBoundsException;
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\OutOfBoundsException;
 
 class SequenceTest extends TestCase {
-
-  /**
-   * @var Sequence
-   */
-  protected $sequence;
-
-  protected function setUp() {
-    $this->sequence = new Sequence();
-  }
-
-  protected function tearDown() {
-    unset($this->sequence);
-  }
 
   /**
    */
@@ -29,7 +16,6 @@ class SequenceTest extends TestCase {
   }
 
   /**
-   * 
    * @return Sequence
    */
   public function testInsertOrdering(): Sequence {
@@ -43,9 +29,10 @@ class SequenceTest extends TestCase {
 
   /**
    * @depends testInsertOrdering
-   * @param Sequence $sequence
+   * @param  Sequence $sequence
+   * @return Sequence
    */
-  public function testPushing(Sequence $sequence) {
+  public function testPushing(Sequence $sequence): Sequence {
     $sequence->push('c', 'd');
     $this->assertCount(4, $sequence);
     $this->assertSame($sequence->toArray(), [0 => 'a', 5 => 'b', 'c', 'd']);
@@ -66,12 +53,43 @@ class SequenceTest extends TestCase {
 
   /**
    * @depends testPushing
-   * @param Sequence $sequence
+   * @param  Sequence $sequence
+   * @return Sequence
    */
-  public function testJoining(Sequence $sequence) {
-    $expected = implode(',', $sequence->toArray());
-    //echo $sequence->join(',');
-    $this->assertSame($expected, $sequence->join(','));
+  public function testJoining(Sequence $sequence): Sequence {
+    $this->assertSame(implode(',', $sequence->toArray()), $sequence->join(','));
+    $this->assertSame(implode($sequence->toArray()), $sequence->join());
+    return $sequence;
   }
 
+  /**
+   * @depends testJoining
+   * @param  Sequence $sequence
+   * @return Sequence
+   */
+  public function testUnsetting(Sequence $sequence): Sequence {
+    $class = new \stdClass();
+    $sequence->insert(100, $class);
+    $this->assertTrue($sequence->contains($class));
+    $this->assertFalse($sequence->contains(new \stdClass()));
+    $sequence->remove(100);
+    $this->assertFalse($sequence->contains($class));
+    
+    return $sequence;
+  }
+
+  
+  /**
+   * @depends testJoining
+   * @param  Sequence $sequence
+   * @return Sequence
+   */
+  public function testInvalidUnsetting() {
+    $sequence = new Sequence();
+    $class = new \stdClass();
+    $sequence->insert(100, $class);
+    $this->assertTrue($sequence->contains($class));
+    $this->expectException(OutOfBoundsException::class);
+    $sequence->remove(101);
+  }
 }

@@ -25,7 +25,7 @@ use Sphp\Html\TraversableContent;
 class ObjectTag extends AbstractComponent implements IteratorAggregate, TraversableContent, SizeableMedia {
 
   use \Sphp\Html\TraversableTrait,
-      \Sphp\Html\Media\SizeableTrait;
+      \Sphp\Html\Media\SizeableMediaTrait;
 
   /**
    * @var Param[]

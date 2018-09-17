@@ -10,18 +10,23 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Content;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
- * Defines sizing of HTML media components
- *
+ * Trait implements the SizeableMedia interface
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface SizeableMedia extends Content {
+trait SizeableMediaTrait {
 
-
+  /**
+   * Returns the attribute manager attached to the component
+   * 
+   * @return HtmlAttributeManager the attribute manager
+   */
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Sets the width of the component (in pixels)
@@ -29,10 +34,10 @@ interface SizeableMedia extends Content {
    * @param  int $width the width of the component (in pixels))
    * @return $this for a fluent interface
    */
-  public function setWidth(int $width = null);
-
-
-
+  public function setWidth(int $width = null) {
+    $this->attributes()->set('width', $width);
+    return $this;
+  }
 
   /**
    * Sets the height of the component (in pixels)
@@ -40,6 +45,9 @@ interface SizeableMedia extends Content {
    * @param  int $height the height of the component (in pixels)
    * @return $this for a fluent interface
    */
-  public function setHeight(int $height = null);
+  public function setHeight(int $height = null) {
+    $this->attributes()->set('height', $height);
+    return $this;
+  }
 
 }

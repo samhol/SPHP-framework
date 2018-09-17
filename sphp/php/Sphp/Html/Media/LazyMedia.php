@@ -28,9 +28,6 @@ interface LazyMedia extends Content {
   /**
    * Sets or unsets the media source loading as lazy
    * 
-   * **Important:** if the `$lazy = true` the actual media source path is stored into the  
-   * `data-src` attribute instead of the `src` attribute
-   * 
    * @param  boolean $lazy true for lazy loading, false otherwise
    * @return $this for a fluent interface
    */

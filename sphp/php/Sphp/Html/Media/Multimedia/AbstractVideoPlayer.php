@@ -11,7 +11,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\SizeableTrait;
+use Sphp\Html\Media\SizeableMediaTrait;
 use Sphp\Html\Media\LazyMediaSourceTrait;
 use Sphp\Stdlib\Networks\URL;
 
@@ -24,7 +24,7 @@ use Sphp\Stdlib\Networks\URL;
  */
 abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPlayer {
 
-  use SizeableTrait,
+  use SizeableMediaTrait,
       LazyMediaSourceTrait;
 
   /**

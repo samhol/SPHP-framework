@@ -20,8 +20,12 @@ class AjaxLoaderTraitTest extends TestCase {
     $mock->expects($this->any())
             ->method('attributes')
             ->will($this->returnValue($mngr));
-    $mock->ajaxPrepend('foo/bar.html');
+    $this->assertSame($mock, $mock->ajaxPrepend('ajax/prepend.html'));
+    $this->assertSame($mock, $mock->ajaxAppend('ajax/append.html'));
     $this->assertTrue($mock->attributes()->exists('data-sphp-ajax-prepend'));
+    $this->assertTrue($mock->attributes()->exists('data-sphp-ajax-append'));
+    $this->assertSame('ajax/append.html', $mock->attributes()->get('data-sphp-ajax-append'));
+    $this->assertSame('ajax/prepend.html', $mock->attributes()->get('data-sphp-ajax-prepend'));
   }
 
 }

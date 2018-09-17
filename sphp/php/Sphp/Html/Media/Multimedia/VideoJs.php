@@ -11,7 +11,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Media\SizeableMedia;
-use Sphp\Html\Media\SizeableTrait;
+use Sphp\Html\Media\SizeableMediaTrait;
 
 /**
  * Implements an VideoJs component
@@ -23,7 +23,7 @@ use Sphp\Html\Media\SizeableTrait;
  */
 class VideoJs extends AbstractMultimediaTag implements SizeableMedia {
 
-  use SizeableTrait;
+  use SizeableMediaTrait;
 
   /**
    * Constructor

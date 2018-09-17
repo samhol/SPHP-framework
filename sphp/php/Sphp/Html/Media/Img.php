@@ -39,7 +39,7 @@ use Sphp\Stdlib\Strings;
  */
 class Img extends EmptyTag implements ImgInterface {
 
-  use SizeableTrait,
+  use SizeableMediaTrait,
       LazyMediaSourceTrait;
 
   /**

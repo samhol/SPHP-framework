@@ -2,7 +2,9 @@
 
 namespace Sphp\Html;
 
-class ContainerTest extends \PHPUnit\Framework\TestCase {
+use Sphp\Tests\ArrayAccessIteratorCountableTestCase;
+
+class ContainerTest extends ArrayAccessIteratorCountableTestCase {
 
   /**
    * @var Container
@@ -30,6 +32,37 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
    */
   protected function tearDown() {
     unset($this->container);
+    parent::tearDown();
+  }
+
+  protected function arrayAccessTest(\ArrayAccess $component, array $data) {
+    foreach ($data as $key => $value) {
+      $component[$key] = $value;
+      $this->assertTrue(isset($component[$key]));
+      $this->assertSame($value, $component[$key]);
+      unset($component[$key]);
+      $this->assertFalse(isset($component[$key]));
+    }
+  }
+  protected function traversableTest(\Traversable $component, array $data) {
+    foreach ($data as $key => $value) {
+      $component[$key] = $value;
+      $this->assertTrue(isset($component[$key]));
+      $this->assertSame($value, $component[$key]);
+      unset($component[$key]);
+      $this->assertFalse(isset($component[$key]));
+    }
+  }
+
+  public function testFoo() {
+    $this->testArrayAccess(new PlainContainer(), array(
+        null => 3,
+        'zero' => 3,
+        'one' => FALSE,
+        'two' => 'good job',
+        'three' => new \stdClass(),
+        'four' => array(),
+    ));
   }
 
   /**

@@ -11,7 +11,7 @@
 namespace Sphp\Stdlib\Events;
 
 use Sphp\Stdlib\Datastructures\UniquePriorityQueue;
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements an event dispatcher
@@ -142,7 +142,7 @@ class EventDispatcher implements EventDispatcherInterface {
     $key = $event->getName();
     if (array_key_exists($key, $this->listeners)) {
       foreach ($this->listeners[$key] as $listener) {
-        if ($listener instanceof EventListenerInterface) {
+        if ($listener instanceof EventListener) {
           $listener->on($event);
         } else {
           $listener($event);

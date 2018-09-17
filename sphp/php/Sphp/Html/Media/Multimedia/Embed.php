@@ -29,7 +29,7 @@ use Sphp\Html\Media\SizeableMedia;
  */
 class Embed extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
 
-  use \Sphp\Html\Media\SizeableTrait,
+  use \Sphp\Html\Media\SizeableMediaTrait,
       \Sphp\Html\Media\LazyMediaSourceTrait;
 
   /**

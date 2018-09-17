@@ -7,7 +7,7 @@ use Sphp\Manual;
 $embed = Manual\api()->classLinker(Embed::class);
 $embedTag = Manual\w3schools()->embed;
 
-$object = Manual\api()->classLinker(Object::class);
+$object = Manual\api()->classLinker(ObjectTag::class);
 $objectTag = Manual\w3schools()->object;
 
 Manual\md(<<<MD

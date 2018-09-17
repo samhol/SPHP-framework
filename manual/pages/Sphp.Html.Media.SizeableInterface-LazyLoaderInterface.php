@@ -5,7 +5,7 @@ namespace Sphp\Html\Media;
 use Sphp\Manual;
 
 $sizeableMedia = Manual\api()->classLinker(SizeableMedia::class);
-$sizeableTrait = Manual\api()->classLinker(SizeableTrait::class);
+$sizeableTrait = Manual\api()->classLinker(SizeableMediaTrait::class);
 $component = Manual\api()->classLinker(\Sphp\Html\Component::class);
 
 $lazyLoader = Manual\api()->classLinker(LazyMedia::class);
