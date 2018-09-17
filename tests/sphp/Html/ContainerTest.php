@@ -14,7 +14,7 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
   /**
    * @return PlainContainer
    */
-  public function createContainer() {
+  public function createContainer(): Container  {
     return new PlainContainer();
   }
 
@@ -55,7 +55,7 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
   }
 
   public function testFoo() {
-    $this->testArrayAccess(new PlainContainer(), array(
+    $this->arrayAccessTest(new PlainContainer(), array(
         null => 3,
         'zero' => 3,
         'one' => FALSE,
