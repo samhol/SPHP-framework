@@ -11,7 +11,6 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 use Throwable;
-use Sphp\Html\Div;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
 use Sphp\Config\ErrorHandling\ExceptionListener;
@@ -240,7 +239,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
   public function buildCallout(Throwable $e): ContentCallout {
     $callout = new ContentCallout();
     $callout->cssClasses()->protect('sphp-exception-callout');
-    $callout->setContent($this->buildCalloutContent($e));
+    $callout->append($this->buildCalloutContent($e));
     return $callout;
   }
 

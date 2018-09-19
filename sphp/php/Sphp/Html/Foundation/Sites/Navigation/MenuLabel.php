@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\ContainerTag;
 
 /**
  * Implements a simple section separator line for Foundation menu structures
@@ -23,7 +23,7 @@ use Sphp\Html\AbstractContainerComponent;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class MenuLabel extends AbstractContainerComponent implements MenuItem {
+class MenuLabel extends ContainerTag implements MenuItem {
 
   /**
    * Constructor
@@ -39,24 +39,7 @@ class MenuLabel extends AbstractContainerComponent implements MenuItem {
   public function __construct($content = null) {
     parent::__construct('li');
     $this->cssClasses()->protect('menu-text');
-    $this->setContent($content);
-  }
-
-  /**
-   * Sets the content of the component of the component
-   * 
-   * **Important!**
-   *
-   * Parameter `$content` can be of any type that converts to a
-   * PHP string or to an array of PHP strings. So also an object of any class 
-   * that implements magic method `__toString()` is allowed.
-   *
-   * @param  mixed $content the content of the component
-   * @return $this for a fluent interface
-   */
-  public function setContent($content) {
-    $this->getInnerContainer()->replaceContent($content);
-    return $this;
+    $this->append($content);
   }
 
 }

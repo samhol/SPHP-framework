@@ -65,14 +65,9 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
 
   /**
    * Constructor
-   *
-   * @param  string|null $caption defines a table caption
    */
-  public function __construct($caption = null) {
+  public function __construct() {
     parent::__construct('table');
-    if ($caption !== null) {
-      $this->setCaption($caption);
-    }
   }
 
   public function __destruct() {
@@ -174,10 +169,6 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     return $this;
   }
 
-  public function containsThead(): bool {
-    return $this->thead !== null && $this->thead->count() > 0;
-  }
-
   /**
    * Returns the table header component
    *
@@ -203,10 +194,6 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     return $this;
   }
 
-  public function containsTbody(): bool {
-    return $this->tbody !== null;
-  }
-
   /**
    * Returns the table body component
    *
@@ -230,10 +217,6 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   public function removeTbody() {
     $this->tbody = null;
     return $this;
-  }
-
-  public function containsTfoot(): bool {
-    return $this->tfoot !== null;
   }
 
   /**

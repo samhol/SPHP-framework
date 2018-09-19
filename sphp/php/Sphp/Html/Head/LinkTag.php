@@ -235,4 +235,20 @@ class LinkTag extends EmptyTag implements LinkInterface {
     return $this->attributes()->getValue('sizes');
   }
 
+  /**
+   * Returns the meta data as an array
+   * 
+   * @return string[] meta data as an array
+   */
+  public function toArray(): array {
+    return $this->attributes()->toArray();
+  }
+
+  public function overlapsWith(LinkInterface $other): bool {
+    $same = array_intersect_assoc($this->toArray(), $other->toArray());
+    return array_key_exists('rel', $same) ||
+            array_key_exists('href', $same) ||
+            array_key_exists('media', $same);
+  }
+
 }

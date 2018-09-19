@@ -13,10 +13,9 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\Content;
 use ArrayAccess;
 use Iterator;
-use Sphp\Html\PlainContainer;
 
 /**
- * Description of HiddenInputs
+ * Implements hidden data component for HTML forms
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -27,7 +26,7 @@ class HiddenInputs implements Content, ArrayAccess, Iterator {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var HiddenInput[]
+   * @var array
    */
   private $inputs;
 
@@ -36,22 +35,19 @@ class HiddenInputs implements Content, ArrayAccess, Iterator {
   }
 
   public function getHtml(): string {
-    $output = new PlainContainer();
+    $output = '';
     foreach ($this->inputs as $name => $value) {
-      $output->offsetSet($name, new HiddenInput($name, $value));
+      $output .= new HiddenInput($name, $value);
     }
-    return $output->getHtml();
+    return $output;
   }
 
   /**
    * Sets a hidden variable to the form
    *
-   * The <var>$name => $value</var> pair is stored into a {@link HiddenInput} component.
-   *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
    * @return $this for a fluent interface
-   * @see    HiddenInput
    */
   public function setVariable($name, $value) {
     $this->inputs[$name] = $value;
@@ -61,12 +57,8 @@ class HiddenInputs implements Content, ArrayAccess, Iterator {
   /**
    * Sets the hidden data to the form
    *
-   * Appended <var>$key => $value</var> pairs are stored into 
-   *  {@link HiddenInput} components.
-   *
    * @param  string[] $vars name => value pairs
    * @return $this for a fluent interface
-   * @see    HiddenInput
    */
   public function setVariables(array $vars) {
     foreach ($vars as $name => $value) {

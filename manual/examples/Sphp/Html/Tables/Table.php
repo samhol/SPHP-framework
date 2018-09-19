@@ -2,7 +2,8 @@
 
 namespace Sphp\Html\Tables;
 
-$table = (new Table('Cars:'));
+$table = (new Table());
+$table->setCaption('Cars:');
 $table->thead()->appendHeaderRow(['Name', 'Stock', 'Sold']);
 $table->tbody()->appendBodyRow(['Volvo', 22, 18]);
 $table->tbody()->appendBodyRow(['BMW', 15, 13]);

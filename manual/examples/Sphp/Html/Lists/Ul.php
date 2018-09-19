@@ -8,14 +8,11 @@ $a_i = range('a', 'i');
 $ul = new Ul($a_i);
 $ul1 = new Ul(range('b', 'i'));
 $ul1->prepend("a");
-$ul1[1] = "b reviseted";
 $ul2 = new Ul();
 $ul2->append("Second");
 $ul2->prepend("First");
 $ul2->appendLink("http://www.w3schools.com/html/html_lists.asp", "w3schools", "_blank");
-$ul2[] = new Li("Fourth");
 $ul3 = clone $ul2;
-$ul3[] = clone $ul1;
 $ol = (new Ol($a_i))
         ->setListType("I");
 $ol1 = (new Ol($a_i))

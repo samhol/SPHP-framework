@@ -50,7 +50,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
   }
 
   public function setContent($content) {
-    $this->hyperlink->setContent($content);
+    $this->hyperlink->resetContent($content);
     return $this;
   }
 

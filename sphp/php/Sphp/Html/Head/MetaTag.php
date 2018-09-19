@@ -37,79 +37,21 @@ class MetaTag extends EmptyTag implements MetaData {
     $this->attributes()->merge($meta);
   }
   
-  public function setsCharset(): bool {
-    return $this->attributeExists('charset');
-  }
-
-  public function hasNamedContent(): bool {
-    return $this->attributeExists('name');
-  }
-
-  public function hasName(string $name): bool {
-    return $this->hasNamedContent() && $this->getName() == $name;
-  }
-
-  public function getName() {
-    return $this->getAttribute('name');
-  }
-
-  public function hasHttpEquivContent(): bool {
-    return $this->attributeExists('http-equiv');
-  }
-
-  public function hasHttpEquiv(string $http_equiv): bool {
-    return $this->hasHttpEquivContent() && $this->attributes()->get('http-equiv') === $http_equiv;
-  }
-
-  public function getHttpEquiv() {
-    return $this->attributes()->getValue('http-equiv');
-  }
-
-  public function hasPropertyContent(): bool {
-    return $this->attributeExists('property');
-  }
-
-  /**
-   * Checks whether the property attribute has the given value or not
-   *
-   * @param  string $property the property value of the metadata
-   * @return boolean true if the property attribute has the given value, otherwise false
-   * @link   http://ogp.me/ The Open Graph protocol
-   * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
-   * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
-   */
-  public function hasProperty(string $property): bool {
-    return $this->hasPropertyContent() && $this->get('property') == $property;
-  }
-
-  /**
-   * Returns the value of the property attribute
-   *
-   * @return string|null the value of the property attribute or null if the 
-   *         attribute is not set
-   * @link   http://ogp.me/ The Open Graph protocol
-   * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
-   * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
-   */
-  public function getProperty() {
-    return $this->getAttribute('property');
-  }
-
   /**
    * Returns the meta data as an array
    * 
    * @return string[] meta data as an array
    */
-  public function metaToArray(): array {
+  public function toArray(): array {
     return $this->attributes()->toArray();
   }
 
-  public function overlapsWith(MetaData $meta): bool {
-    if ($this->setsCharset() && $meta->setsCharset()) {
-      return true;
-    }  
-    $same = array_intersect_assoc($this->metaToArray(), $meta->metaToArray());
-    return array_key_exists('name', $same) || array_key_exists('http-equiv', $same);
+  public function overlapsWith(MetaData $other): bool { 
+    $same = array_intersect_assoc($this->toArray(), $other->toArray());
+    return array_key_exists('name', $same) || 
+            array_key_exists('http-equiv', $same) || 
+            array_key_exists('charset', $same) || 
+            array_key_exists('property', $same);
   }
 
 }

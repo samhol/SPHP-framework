@@ -66,7 +66,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
   }
 
   public function setPaneTitle($title) {
-    $this->bar->replaceContent($title);
+    $this->bar->resetContent($title);
     return $this;
   }
 

@@ -98,7 +98,7 @@ class OffCanvas extends AbstractComponent {
    * @return $this for a fluent interface
    */
   public function setTitle($heading) {
-    $this->getTabBar()['middle'][0]->replaceContent($heading);
+    $this->getTabBar()['middle'][0]->resetContent($heading);
     return $this;
   }
 

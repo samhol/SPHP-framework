@@ -94,7 +94,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @return $this for a fluent interface
    */
   public function setErrorField($errorMessage) {
-    $this->errorField->replaceContent($errorMessage);
+    $this->errorField->resetContent($errorMessage);
     return $this;
   }
 

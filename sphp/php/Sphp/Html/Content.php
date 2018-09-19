@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 namespace Sphp\Html;
-
+use Sphp\Exceptions\SphpExceptionInterface;
 /**
  * Defines basic features for all HTML structures
  *
@@ -30,7 +30,7 @@ interface Content {
    * Returns the component as HTML markup string
    *
    * @return string HTML markup of the component
-   * @throws \Sphp\Exceptions\RuntimeException if HTML parsing fails
+   * @throws SphpExceptionInterface if HTML parsing fails
    */
   public function getHtml(): string;
 

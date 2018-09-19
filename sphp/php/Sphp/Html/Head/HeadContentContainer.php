@@ -16,6 +16,7 @@ use Sphp\Html\TraversableContent;
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Programming\Script;
+use Sphp\Exceptions\UnderflowException;
 
 /**
  * Container for HTML &lt;head&gt; components
@@ -92,11 +93,15 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * @param  Title $title the title of the HTML page
    * @return $this for a fluent interface
    */
-  public function setDocumentTitle(Title $title) {
+  public function setDocumentTitle(Title $title = null) {
     $inserted = false;
     foreach ($this->container as $k => $meta) {
       if ($meta instanceof Title) {
-        $this->container[$k] = $title;
+        if ($title === null) {
+          unset($this->container[$k]);
+        } else {
+          $this->container[$k] = $title;
+        }
         $inserted = true;
         break;
       }
@@ -107,17 +112,30 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
     return $this;
   }
 
+  public function getTitle(): Title {
+    foreach ($this->container as $meta) {
+      if ($meta instanceof Title) {
+        return $meta;
+      }
+    }
+    throw new UnderflowException('Title component is not present');
+  }
+
   /**
-   * Sets the base address of the HTML page
-   *
+   * Sets/removes the base address of the HTML page
+   * 
    * @param  Base $base the title of the HTML page
    * @return $this for a fluent interface
    */
-  public function setBaseAddress(Base $base) {
+  public function setBaseAddress(Base $base = null) {
     $inserted = false;
     foreach ($this->container as $k => $meta) {
       if ($meta instanceof Base) {
-        $this->container[$k] = $base;
+        if ($base === null) {
+          unset($this->container[$k]);
+        } else {
+          $this->container[$k] = $base;
+        }
         $inserted = true;
         break;
       }
@@ -128,20 +146,13 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
     return $this;
   }
 
-  /**
-   * Removes the default URL and a default target for all links on a page
-   *
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
-   */
-  public function unsetBaseAddress() {
-    foreach ($this->container as $k => $meta) {
+  public function getBase(): Base {
+    foreach ($this->container as $meta) {
       if ($meta instanceof Base) {
-        unset($this->container[$k]);
-        break;
+        return $meta;
       }
     }
-    return $this;
+    throw new UnderflowException('Base component is not present');
   }
 
   /**
@@ -205,7 +216,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * 
    * @return PlainContainer
    */
-  public function getMetaTags(): PlainContainer {
+  public function getMeta(): PlainContainer {
     return $this->container->getComponentsByObjectType(MetaData::class);
   }
 
@@ -213,7 +224,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * 
    * @return PlainContainer
    */
-  public function getLinkTags(): PlainContainer {
+  public function getLinks(): PlainContainer {
     return $this->container->getComponentsByObjectType(LinkTag::class);
   }
 
@@ -230,7 +241,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
   }
 
   public function count(): int {
-    $this->container->count();
+    return $this->container->count();
   }
 
   /**

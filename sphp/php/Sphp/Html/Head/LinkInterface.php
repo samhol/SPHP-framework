@@ -13,7 +13,11 @@ namespace Sphp\Html\Head;
 use Sphp\Html\NonVisualContent;
 
 /**
- * Defines LinkInterface
+ * Defines an HTML &lt;link&gt; tag
+ * 
+ *  The &lt;link&gt; tag defines the relationship between a document and an
+ *  external resource. The &lt;link&gt; tag is most used to link to style
+ *  sheets.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -88,6 +92,7 @@ interface LinkInterface extends HeadContent, NonVisualContent {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function getMedia();
+
   /**
    * Returns the value of the media attribute
    *

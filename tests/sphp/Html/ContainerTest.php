@@ -14,7 +14,7 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
   /**
    * @return PlainContainer
    */
-  public function createContainer(): Container  {
+  public function createContainer(): Container {
     return new PlainContainer();
   }
 
@@ -44,6 +44,7 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
       $this->assertFalse(isset($component[$key]));
     }
   }
+
   protected function traversableTest(\Traversable $component, array $data) {
     foreach ($data as $key => $value) {
       $component[$key] = $value;
@@ -54,15 +55,72 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
     }
   }
 
+  public function testInserting(): Container {
+    $c = $this->createContainer();
+    $c->append('b', 'c');
+    $c->prepend('a');
+    $this->assertTrue($c->exists('a'));
+    $this->assertTrue($c->exists('b'));
+    $this->assertTrue($c->exists('c'));
+    $this->assertFalse($c->exists('d'));
+    $c->resetContent('foobar');
+    $this->assertFalse($c->exists('a'));
+    $this->assertTrue($c->exists('foobar'));
+    return $c;
+  }
+
+  /**
+   * @depends testInserting
+   * @param \Sphp\Html\Container $c
+   */
+  public function testCountable(Container $c) {
+    $c->clear();
+    $this->assertCount(0, $c);
+    $c->append('b', 'c', 'd');
+    $array = $c->toArray();
+    $this->assertCount(count($array), $c);
+  }
+
+  /**
+   * @deprends testCountable
+   * @param \Sphp\Html\Container $c
+   */
+  public function testGetHtml() {
+    $c = $this->createContainer();
+    $this->assertSame('', $c->getHtml());
+    $c->append('a', 'b', 'c');
+    $this->assertSame('abc', $c->getHtml());
+    $c2 = $this->createContainer();
+    $c->append($c2);
+    $this->assertSame('abc', $c->getHtml());
+    $c2->append(' is foo');
+    $c->append([' and ', 'bar', ['!']]);
+    $this->assertSame('abc is foo and bar!', $c->getHtml());
+    $c->append(new \ArrayObject([' Shell', ' is', ' not!']));
+    $this->assertSame('abc is foo and bar! Shell is not!', $c->getHtml());
+    $c->append(new \stdClass());
+    //var_dump($c);
+    $this->expectException(\Exception::class);
+    $c->getHtml();
+  }
+
+  public function testToArray() {
+    $this->container->append('b', 'c', 'd');
+    $this->container->prepend('a');
+    $this->assertCount(4, $this->container);
+  }
+
   public function testFoo() {
-    $this->arrayAccessTest(new PlainContainer(), array(
-        null => 3,
-        'zero' => 3,
-        'one' => FALSE,
-        'two' => 'good job',
-        'three' => new \stdClass(),
-        'four' => array(),
-    ));
+    $component = $this->createContainer();
+    if ($component instanceof \ArrayAccess) {
+      $this->arrayAccessTest($component, array(
+          'zero' => 3,
+          'one' => FALSE,
+          'two' => 'good job',
+          'three' => new \stdClass(),
+          'four' => array(),
+      ));
+    }
   }
 
   /**

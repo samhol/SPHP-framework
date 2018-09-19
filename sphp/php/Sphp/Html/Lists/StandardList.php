@@ -13,7 +13,6 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use IteratorAggregate;
-use ArrayAccess;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\PlainContainer;
@@ -29,7 +28,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class StandardList extends AbstractComponent implements IteratorAggregate, TraversableContent, ArrayAccess {
+abstract class StandardList extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -123,50 +122,6 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
 
   public function contentToString(): string {
     return $this->items->getHtml();
-  }
-
-  /**
-   * Checks whether an offset exists
-   *
-   * @param  mixed $offset an offset to check for
-   * @return boolean true on success or false on failure
-   */
-  public function offsetExists($offset): bool {
-    return $this->items->offsetExists($offset);
-  }
-
-  /**
-   * Returns the list element at the specified offset
-   *
-   * @param  mixed $offset the index with the content element
-   * @return StandardListItem content element or null
-   */
-  public function offsetGet($offset): StandardListItem {
-    return $this->items->offsetGet($offset);
-  }
-
-  /**
-   * Assigns content to the specified offset
-   *
-   * @param  mixed $offset the offset to assign the value to
-   * @param  mixed $value the value to set
-   * @return void
-   */
-  public function offsetSet($offset, $value) {
-    if (!$value instanceof StandardListItem) {
-      $value = new Li($value);
-    }
-    $this->items->offsetSet($offset, $value);
-  }
-
-  /**
-   * Unsets an offset
-   *
-   * @param  mixed $offset offset to unset
-   * @return void
-   */
-  public function offsetUnset($offset) {
-    $this->items->offsetUnset($offset);
   }
 
   /**

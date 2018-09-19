@@ -12,9 +12,6 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Programming\ScriptsContainer;
-use Sphp\Html\Programming\Script;
 use Sphp\Html\Programming\ScriptSrc;
 
 /**
@@ -27,8 +24,13 @@ use Sphp\Html\Programming\ScriptSrc;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Head extends AbstractComponent implements NonVisualContent {
+class Head extends AbstractComponent implements \IteratorAggregate, NonVisualContent, \Sphp\Html\TraversableContent {
 
+  use \Sphp\Html\TraversableTrait;
+
+  /**
+   * @var HeadContentContainer
+   */
   private $content;
 
   /**
@@ -52,14 +54,14 @@ class Head extends AbstractComponent implements NonVisualContent {
    * Sets the title of the HTML page
    *
    * @param  string|Title $title the title of the HTML page
-   * @return $this for a fluent interface
+   * @return Title instance set
    */
-  public function setDocumentTitle($title) {
+  public function setDocumentTitle($title): Title {
     if (!($title instanceof Title)) {
       $title = new Title($title);
     }
     $this->content->set($title);
-    return $this;
+    return $title;
   }
 
   /**
@@ -67,16 +69,13 @@ class Head extends AbstractComponent implements NonVisualContent {
    *
    * @param  string $baseAddr the base URL for all relative URLs in the page
    * @param  string $target the default target for all hyperlinks and forms in the page
-   * @return $this for a fluent interface
+   * @return Base instance set
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
-  public function setBaseAddr(string $baseAddr, string $target = '_self') {
-    if ($baseAddr !== null && $target !== null) {
-      $this->content->set(new Base($baseAddr, $target));
-    } else {
-      $this->unsetBaseAddress();
-    }
-    return $this;
+  public function setBaseAddr(string $baseAddr, string $target = '_self'): Base {
+    $base = new Base($baseAddr, $target);
+    $this->content->set($base);
+    return $base;
   }
 
   /**
@@ -159,6 +158,14 @@ class Head extends AbstractComponent implements NonVisualContent {
 
   public function contentToString(): string {
     return $this->content->getHtml();
+  }
+
+  public function count(): int {
+    return $this->content->count();
+  }
+
+  public function getIterator(): \Traversable {
+    return $this->content;
   }
 
 }

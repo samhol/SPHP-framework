@@ -67,7 +67,7 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoader {
   }
 
   public function setPaneTitle($title) {
-    $this->bar->replaceContent($title);
+    $this->bar->resetContent($title);
     return $this;
   }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Sphp\Tests;
+namespace Sphp\Html\Tables;
 
-use Sphp\Html\Tables\Table;
+use PHPUnit\Framework\TestCase;
 
-class TableTest extends \PHPUnit\Framework\TestCase {
+class TableTest extends TestCase {
 
   /**
    * @var Table
@@ -46,7 +46,9 @@ class TableTest extends \PHPUnit\Framework\TestCase {
    */
   public function testParts() {
     $this->assertSame("$this->table", '<table></table>');
-    $this->table->setCaption('caption');
+    $caption = $this->table->setCaption('caption');
+
+    $this->assertInstanceOf(Caption::class, $caption);
     $this->assertSame("$this->table", '<table><caption>caption</caption></table>');
     $this->table->thead()->appendHeaderRow(range('a', 'b'));
     $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th><th>b</th></tr></thead></table>');

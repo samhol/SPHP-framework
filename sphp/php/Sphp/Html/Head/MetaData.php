@@ -27,81 +27,18 @@ use Sphp\Html\NonVisualContent;
  */
 interface MetaData extends HeadContent, NonVisualContent {
 
-  public function setsCharset(): bool;
-
   /**
-   * Checks whether the name attribute exists or not
-   *
-   * @return boolean true if the name attribute exists, otherwise false
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   */
-  public function hasNamedContent(): bool;
-
-  /**
-   * Checks whether the name attribute has the given value or not
-   *
-   * @param  string $name the name value of the metadata
-   * @return boolean true if the name attribute has the given value, otherwise false
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   */
-  public function hasName(string $name): bool;
-
-  /**
-   * Returns the value of the name attribute
-   *
-   * @return string|null the value of the name attribute or null if the 
-   *         attribute is not set
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   */
-  public function getName();
-
-  /**
-   * Checks whether the http-equiv attribute exists or not
-   *
-   * @return boolean true if the http-equiv attribute exists, otherwise false
-   * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
-   */
-  public function hasHttpEquivContent(): bool;
-
-  /**
-   * Checks whether the http_equiv attribute has the given value or not
-   *
-   * @param  string $http_equiv the http_equiv value of the metadata
-   * @return boolean true if the http_equiv attribute has the given value, otherwise false
-   * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
-   */
-  public function hasHttpEquiv(string $http_equiv): bool;
-
-  /**
-   * Returns the value of the http_equiv attribute
-   *
-   * @return string|null the value of the http_equiv attribute or null if the 
-   *         attribute is not set
-   * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
-   */
-  public function getHttpEquiv();
-
-  /**
-   * Checks whether the property attribute exists or not
-   *
-   * @return boolean true if the property attribute exists, otherwise false
-   * @link   http://ogp.me/ The Open Graph protocol
-   * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
-   * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
-   */
-  public function hasPropertyContent(): bool;
-
-  /**
+   * Checks if this meta data object has overlapping meta data with the given one 
    * 
-   * @param  MetaData $meta
+   * @param  MetaData $other
    * @return boolean true if the meta data object given is overlapping; false otherwise
    */
-  public function overlapsWith(MetaData $meta): bool;
+  public function overlapsWith(MetaData $other): bool;
 
   /**
    * Returns the meta data as an array
    * 
    * @return string[] meta data as an array
    */
-  public function metaToArray(): array;
+  public function toArray(): array;
 }

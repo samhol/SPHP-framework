@@ -407,7 +407,7 @@ abstract class Arrays {
           $arr = iterator_to_array($value);
           $output .= $glue . static::implode($arr, $glue);
         } else {
-          throw new InvalidArgumentException('Object has no string representation');
+          throw new InvalidArgumentException('Parts of input array has no string representation');
         }
       } else if (is_array($value)) {
         $output .= $glue . static::implode($value, $glue);
@@ -434,7 +434,7 @@ abstract class Arrays {
     $newArray = [];
     foreach ($arr as $key => $value) {
       if (is_array($value)) {
-        $newArray[$key] = self::copy($value);
+        $newArray[$key] = static::copy($value);
       } else if (is_object($value)) {
         $newArray[$key] = clone $value;
       } else {

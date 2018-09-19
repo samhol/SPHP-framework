@@ -52,15 +52,12 @@ interface Container extends TraversableContent, Arrayable, ArrayAccess {
   public function prepend($value);
 
   /**
-   * Sets the content of the component
+   * Replaces the content
    *
-   * * The numeric keys of the content will be renumbered starting from zero
-   *   and the index of the prepended value is 'int(0)'
-   *
-   * @param  mixed $content the new content
+   * @param  mixed $content new content
    * @return $this for a fluent interface
    */
-  public function setContent($content);
+  public function resetContent($content);
 
   /**
    * Clears the contents

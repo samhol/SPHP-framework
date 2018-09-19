@@ -47,7 +47,6 @@ class TagsTest extends TestCase {
         ], ['option', Forms\Inputs\Menus\Option::class,
         ], ['textarea', Forms\Inputs\Textarea::class,
         ], ['canvas', ContainerTag::class,
-        ], ['caption', Tables\Caption::class,
         ], ['cite', ContainerTag::class,
         ], ['code', ContainerTag::class,
         ], ['command', ContainerTag::class,
@@ -67,17 +66,15 @@ class TagsTest extends TestCase {
         ], ['hgroup', ContainerTag::class,
         ], ['h1', Flow\Headings\H1::class,
         ], ['h2', Flow\Headings\H2::class,
-        ], ['h3', Flow\Headings\H3::class,
-        ], ['h4', Flow\Headings\H4::class,
-        ], ['h5', Flow\Headings\H5::class,
-        ], ['h6', Flow\Headings\H6::class,
-        ],
+        ], ['h3', Flow\Headings\H3::class],
+        ['h4', Flow\Headings\H4::class],
+        ['h5', Flow\Headings\H5::class],
+        ['h6', Flow\Headings\H6::class],
         ['hr', EmptyTag::class],
         ['html', Html::class],
-        ['ins', ContainerTag::class,
-        ], ['kbd', ContainerTag::class,
-        ], ['keygen', EmptyTag::class,
-        ],
+        ['ins', ContainerTag::class],
+        ['kbd', ContainerTag::class],
+        ['keygen', EmptyTag::class],
         ['link', Head\LinkTag::class],
         ['mark', ContainerTag::class,
         ], ['menu', ContainerTag::class,
@@ -99,9 +96,9 @@ class TagsTest extends TestCase {
         ], ['scriptSrc', Programming\ScriptSrc::class,
         ], ['noscript', Programming\Noscript::class,
         ], ['section', Flow\Section::class,
-        ], ['select', Forms\Inputs\Menus\Select::class,
-        ], ['iframe', Media\Iframe::class,
-        ], ['img', Media\Img::class,
+        ], ['select', Forms\Inputs\Menus\Select::class],
+        ['iframe', Media\Iframe::class],
+        ['img', Media\Img::class,
         ], ['map', Media\ImageMap\Map::class,
         ], ['rectangle', Media\ImageMap\Rectangle::class,
         ], ['polygon', Media\ImageMap\Polygon::class,
@@ -113,16 +110,17 @@ class TagsTest extends TestCase {
         ], ['track', Media\Multimedia\Track::class,
         ], ['video', Media\Multimedia\Video::class,
         ], ['object', Media\Multimedia\ObjectTag::class,
-        ], ['span', Span::class,
-        ], ['table', Tables\Table::class,
-        ], ['tbody', Tables\Tbody::class,
-        ], ['td', Tables\Td::class,
-        ], ['tfoot', Tables\Tfoot::class,
-        ], ['tr', Tables\Tr::class,
-        ], ['th', Tables\Th::class,],
-        ['thead', Tables\Thead::class,],
-        ['colgroup', Tables\Colgroup::class,
-        ], ['col', Tables\Col::class,],
+        ], ['span', Span::class],
+        ['table', Tables\Table::class],
+        ['caption', Tables\Caption::class],
+        ['tbody', Tables\Tbody::class],
+        ['td', Tables\Td::class],
+        ['tfoot', Tables\Tfoot::class],
+        ['tr', Tables\Tr::class],
+        ['th', Tables\Th::class],
+        ['thead', Tables\Thead::class],
+        ['colgroup', Tables\Colgroup::class],
+        ['col', Tables\Col::class,],
         ['time', DateTime\TimeTag::class,],
         ['var', ContainerTag::class,
         ], ['xmp', ContainerTag::class,
@@ -132,22 +130,21 @@ class TagsTest extends TestCase {
         ], ['rp', ContainerTag::class,
         ], ['rt', ContainerTag::class,
         ], ['ruby', ContainerTag::class,
-        ], ['s', ContainerTag::class,
-        ], ['samp', ContainerTag::class,
-        ], ['u', ContainerTag::class,
-        ], ['i', ContainerTag::class,
-        ], ['bdi', ContainerTag::class,
-        ], ['bdo', ContainerTag::class,
-        ], ['big', ContainerTag::class,
-        ], ['blockquote', ContainerTag::class,
-        ], ['b', ContainerTag::class,
-        ], ['small', ContainerTag::class,
-        ], ['abbr', ContainerTag::class,
-        ], ['address', ContainerTag::class,
-        ], ['strong', ContainerTag::class,
-        ], ['style', ContainerTag::class,
-        ], ['sub', ContainerTag::class,
-        ],
+        ], ['s', ContainerTag::class],
+        ['samp', ContainerTag::class],
+        ['u', ContainerTag::class],
+        ['i', ContainerTag::class],
+        ['bdi', ContainerTag::class],
+        ['bdo', ContainerTag::class],
+        ['big', ContainerTag::class],
+        ['blockquote', ContainerTag::class],
+        ['b', ContainerTag::class],
+        ['small', ContainerTag::class],
+        ['abbr', ContainerTag::class],
+        ['address', ContainerTag::class],
+        ['strong', ContainerTag::class],
+        ['style', ContainerTag::class],
+        ['sub', ContainerTag::class],
         ['summary', ContainerTag::class],
         ['sup', ContainerTag::class],
         ['wbr', EmptyTag::class]
@@ -163,16 +160,18 @@ class TagsTest extends TestCase {
   public function testFactoring(string $val, string $className) {
     $this->assertInstanceOf($className, Tags::create($val));
     $this->assertInstanceOf($className, Tags::$val());
+    $str = Tags::create($val);
+    $this->assertTrue(\Sphp\Stdlib\Strings::contains("$str", "<" . $str->getTagName()));
   }
 
-  public function testInvalidCreate() {
+  public function testInvalidCreateMethodCall() {
     $this->expectException(InvalidArgumentException::class);
     Tags::create('foo');
   }
 
-  public function testInvalidCall() {
+  public function testInvalidMagicCall() {
     $this->expectException(BadMethodCallException::class);
-    Tags::foo();
+    Tags::foo('foo');
   }
 
 }

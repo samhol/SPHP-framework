@@ -4,7 +4,7 @@
  
   $div = new \Sphp\Html\Div('foo');
   $layout = new Sphp\Html\Foundation\Sites\Grids\CellLayoutManager($div);
-  $div->setContent($div->cssClasses());
+  $div->append($div->cssClasses());
   $layout['small']['size'] = 1;
   echo $div;
   $layout['small']['size'] = 3;
@@ -25,7 +25,7 @@
   <?php
   $div1 = new \Sphp\Html\Div('foo');
   $layout1 = new Sphp\Html\Foundation\Sites\Grids\CellLayoutManager($div1);
-  $div1->setContent($div1->cssClasses());
+  $div1->append($div1->cssClasses());
   $layout1->screen('small')->size(4);
   echo $div1;
   $layout1->screen('small')->size(2);

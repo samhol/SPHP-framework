@@ -101,7 +101,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
             ->set('aria-valuetext', $progressText);
     $this->attributes()->set('title', $progressText);
     $this->progressMeter->inlineStyles()->setProperty('width', "$progress%");
-    $this->progressMeter['progress-meter-text']->replaceContent("$progress%");
+    $this->progressMeter['progress-meter-text']->resetContent("$progress%");
     return $this;
   }
 
@@ -115,7 +115,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
     $this->attributes()
             ->set('aria-valuetext', $progressText);
     $this->attributes()->set('title', $progressText);
-    $this->progressMeter['progress-meter-text']->replaceContent($progressText);
+    $this->progressMeter['progress-meter-text']->resetContent($progressText);
     return $this;
   }
 

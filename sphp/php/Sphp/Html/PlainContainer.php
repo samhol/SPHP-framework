@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Stdlib\Arrays;
 use Traversable;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Implements a container for HTML components and other textual content
@@ -67,7 +68,7 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
   }
 
   public function append(...$content) {
-    foreach (Arrays::flatten($content) as $cont) {
+    foreach ($content as $cont) {
       $this->components[] = $cont;
     }
 
@@ -79,7 +80,7 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
     return $this;
   }
 
-  public function setContent($content) {
+  public function resetContent($content) {
     $this->clear()->append($content);
     return $this;
   }
@@ -150,16 +151,6 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
     return $this->components;
   }
 
-  /**
-   * Replaces the content of the component
-   *
-   * @param  mixed $content new tag content
-   * @return $this for a fluent interface
-   */
-  public function replaceContent($content) {
-    return $this->clear()->append($content);
-  }
-
   public function clear() {
     $this->components = [];
     return $this;
@@ -177,12 +168,12 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
           $arr = iterator_to_array($value);
           $output .= Arrays::implode($arr);
         } else {
-          throw new InvalidArgumentException('Object has no string representation');
+          throw new InvalidStateException('Content has no string representation');
         }
       } else if (is_array($value)) {
         $output .= Arrays::implode($value);
       } else {
-        throw new InvalidArgumentException('value has no string representation');
+        throw new InvalidStateException('Content has no string representation');
       }
     }
     return $output;
@@ -197,6 +188,20 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
       }
     }
     return $result;
+  }
+
+  /**
+   * Filters elements of a collection using a callback function
+   *
+   * @precondition $flag === {@link ARRAY_FILTER_USE_KEY} || $flag === {@link ARRAY_FILTER_USE_BOTH}
+   * @param  callable $callback the callback function to use; If no callback is 
+   *         supplied, all entries of array equal to `false` will be removed.
+   * @param  int $flag flag determining what arguments are sent to callback
+   * @return $this for a fluent interface
+   */
+  public function filter(callable $callback = null, $flag = 0) {
+    $this->components = array_filter($this->components, $callback, $flag);
+    return $this;
   }
 
   /**

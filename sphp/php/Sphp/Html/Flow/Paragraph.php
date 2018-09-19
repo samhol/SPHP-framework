@@ -39,7 +39,7 @@ class Paragraph extends ContainerTag implements AjaxLoader {
   }
 
   public function __invoke($content = null) {
-    $this->replaceContent($content);
+    $this->resetContent($content);
     return $this;
   }
   

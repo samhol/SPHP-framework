@@ -38,7 +38,9 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
       TraversableTrait;
 
   public function append(...$content) {
-    $this->getInnerContainer()->append($content);
+    foreach ($content as $item) {
+      $this->getInnerContainer()->append($item);
+    }
     return $this;
   }
 
@@ -47,8 +49,8 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
     return $this;
   }
 
-  public function setContent($content) {
-    $this->getInnerContainer()->setContent($content);
+  public function resetContent($content) {
+    $this->getInnerContainer()->resetContent($content);
     return $this;
   }
 
@@ -110,23 +112,6 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
    */
   public function offsetUnset($offset) {
     $this->getInnerContainer()->offsetUnset($offset);
-  }
-
-  /**
-   * Replaces the content of the component
-   *
-   * **Important!**
-   *
-   * Parameter `$content` can be of any type that converts to a string or an array of strings.
-   * So also an object of any class that implements magic method `__toString()` is allowed.
-   *
-   * @param  mixed $content new content
-   * @return $this for a fluent interface
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
-   */
-  public function replaceContent($content) {
-    $this->getInnerContainer()->replaceContent($content);
-    return $this;
   }
 
   public function toArray(): array {

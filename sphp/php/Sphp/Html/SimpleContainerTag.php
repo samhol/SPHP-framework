@@ -65,7 +65,9 @@ class SimpleContainerTag extends AbstractTag {
   }
 
   public function __clone() {
-    $this->content = clone $this->content;
+    if (is_object($this->content)) {
+      $this->content = clone $this->content;
+    }
     parent::__clone();
   }
 
