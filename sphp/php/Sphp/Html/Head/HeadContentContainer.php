@@ -188,7 +188,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
     $contains = false;
     foreach ($this->container as $k => $component) {
       if ($component instanceof LinkTag) {
-        $contains = $link->equals($component);
+        $contains = $link->overlapsWith($component);
         if ($contains) {
           $this->container[$k] = $link;
           break;

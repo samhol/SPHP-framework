@@ -244,10 +244,24 @@ class LinkTag extends EmptyTag implements LinkInterface {
     return $this->attributes()->toArray();
   }
 
-  public function overlapsWith(LinkInterface $other): bool {
+  public function overlapsWith(HeadContent $other): bool {
+    if (!$other instanceof LinkInterface) {
+      return false;
+    }
     $same = array_intersect_assoc($this->toArray(), $other->toArray());
-    return array_key_exists('rel', $same) ||
-            array_key_exists('href', $same) ||
+    if (!array_key_exists('rel', $same)) {
+      return false;
+    }
+    $result = false;
+    switch ($same['rel']) {
+      case 'icon':
+        $result = array_key_exists('href', $same) &&
+                array_key_exists('size', $same);
+        break;
+    }
+    return $result;
+    return array_key_exists('rel', $same) &&
+            array_key_exists('href', $same) &&
             array_key_exists('media', $same);
   }
 

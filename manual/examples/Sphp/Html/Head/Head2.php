@@ -3,8 +3,8 @@
 namespace Sphp\Html\Head;
 
 $head = (new Head("Document title", "utf-8"));
-$head->setBaseAddr("http://sphp.samiholck.com/", "_self")
-        ->setShortcutIcon("sph/favicon.ico")
+$head->setBaseAddr("http://sphp.samiholck.com/", "_self");
+$head->setShortcutIcon("sph/favicon.ico")
         ->set(Meta::author('Sami Holck'))
         ->set(Meta::applicationName('SPHP framework'))
         ->set(Meta::keywords(

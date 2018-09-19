@@ -30,9 +30,7 @@ abstract class Link {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public static function stylesheet(string $href, string $media = null): LinkTag {
-    $link = new LinkTag('stylesheet', $href, $media);
-    $link->setMedia($media)->setType('text/css');
-    return $link;
+    return static::fromArray(['rel' => 'stylesheet', 'href' => $href, 'media' => $media, 'type' => 'text/css']);
   }
 
   /**
@@ -46,9 +44,7 @@ abstract class Link {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public static function icon(string $href, string $sizes = null): LinkTag {
-    $link = new LinkTag('icon', $href);
-    $link->setSizes($sizes);
-    return $link;
+    return static::fromArray(['rel' => 'icon', 'href' => $href, 'sizes' => $sizes]);
   }
 
   /**
@@ -62,9 +58,7 @@ abstract class Link {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public static function appleTouchIcon(string $href, string $sizes = null): LinkTag {
-    $link = new LinkTag('apple-touch-icon', $href);
-    $link->setSizes($sizes);
-    return $link;
+    return static::fromArray(['rel' => 'apple-touch-icon', 'href' => $href, 'sizes' => $sizes]);
   }
 
   /**
@@ -78,8 +72,7 @@ abstract class Link {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public static function manifest(string $href): LinkTag {
-    $link = new LinkTag('manifest', $href);
-    return $link;
+    return static::fromArray(['rel' => 'manifest', 'href' => $href]);
   }
 
   /**
@@ -93,9 +86,7 @@ abstract class Link {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public static function maskIcon(string $href, string $color = null): LinkTag {
-    $link = new LinkTag('mask-icon', $href);
-    $link->attributes()->set('color', $color);
-    return $link;
+    return static::fromArray(['rel' => 'mask-icon', 'href' => $href, 'color' => $color]);
   }
 
   /**
