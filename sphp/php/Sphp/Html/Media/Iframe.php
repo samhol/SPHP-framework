@@ -32,8 +32,9 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * Constructor
    *
    * @param  string $src the address of the document to embed in the object
-   * @param  string $name the value of the name attribute
-   * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
+   * @param  string $name the name for the component
+   * @link   http://www.w3schools.com/tags/att_iframe_src.asp src attribute
+   * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function __construct(string $src = null, string $name = null) {
     parent::__construct('iframe', true);
@@ -63,7 +64,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @return string name attribute
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
-  public function getName() {
+  public function getName(): string {
     return $this->attributes()->getValue('name');
   }
 
@@ -132,20 +133,8 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @return string the value of the sandbox attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
-  public function getSandbox() {
+  public function getSandbox(): string {
     return $this->getAttribute('sandbox');
-  }
-
-  /**
-   * Sets the title of the iframe
-   *
-   * @param  string $title the title of the iframe
-   * @return $this for a fluent interface
-   * @link   https://www.w3schools.com/tags/att_global_title.asp title attribute
-   */
-  public function setTitle(string $title = null) {
-    $this->attributes()->set('title', $title);
-    return $this;
   }
 
 }

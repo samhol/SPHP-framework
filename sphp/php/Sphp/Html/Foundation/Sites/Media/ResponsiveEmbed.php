@@ -38,7 +38,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   /**
    * @var Embeddable
    */
-  private $iframe;
+  private $embed;
 
   /**
    * Constructor
@@ -48,16 +48,16 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   public function __construct(Embeddable $media) {
     parent::__construct('div');
     $this->cssClasses()->protect('responsive-embed');
-    $this->iframe = $media;
+    $this->setEmbeddable($media);
   }
 
   public function __destruct() {
-    unset($this->iframe);
+    unset($this->embed);
     parent::__destruct();
   }
 
   public function __clone() {
-    $this->iframe = clone $this->iframe;
+    $this->embed = clone $this->embed;
     parent::__clone();
   }
 
@@ -68,7 +68,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    * @return $this for a fluent interface
    */
   protected function setEmbeddable(Embeddable $media) {
-    $this->iframe = $media;
+    $this->embed = $media;
     return $this;
   }
 
@@ -78,7 +78,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    * @return Embeddable the actual embeddable component
    */
   public function getEmbeddable(): Embeddable {
-    return $this->iframe;
+    return $this->embed;
   }
 
   public function setAspectRatio(string $ratio) {
@@ -100,11 +100,11 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   }
 
   public function contentToString(): string {
-    return $this->iframe->getHtml();
+    return $this->getEmbeddable()->getHtml();
   }
 
   /**
-   * Returns a new instance containing an {@link Iframe} instance
+   * Returns a new instance containing an Iframe instance
    * 
    * @param  string $src the path to the presented file
    * @return ResponsiveEmbed new instance containing a {@link Iframe} instance
@@ -114,7 +114,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
   }
 
   /**
-   * Returns a new instance containing a {@link ViewerJS} instance
+   * Returns a new instance containing a ViewerJS instance
    * 
    * @param  string $src the path to the presented file
    * @return ResponsiveEmbed new instance containing a {@link ViewerJS} instance

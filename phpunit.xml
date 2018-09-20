@@ -25,6 +25,9 @@
     <testsuite name="html-attrs">
       <directory>./tests/sphp/Html/Attributes</directory>
     </testsuite>
+    <testsuite name="html-foundation">
+      <directory>./tests/sphp/Html/Foundation</directory>
+    </testsuite>
     <testsuite name="stdlib">
       <directory>./tests/sphp/Stdlib</directory>
     </testsuite>

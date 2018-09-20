@@ -14,6 +14,9 @@ use PHPUnit\Framework\TestCase;
 
 class FigureTest extends TestCase {
 
+  /**
+   * @return Figure
+   */
   public function testConstructor(): Figure {
     $figure = new Figure('foo/bar', 'foo bar');
     $this->assertSame('foo/bar', $figure->getImg()->getSrc());
@@ -29,9 +32,10 @@ class FigureTest extends TestCase {
   /**
    * @depends testConstructor
    * @param   Figure $fig
+   * @return  Figure
    */
-  public function testContentTostring(Figure $fig) {
-    $this->assertSame($fig->getImg(). $fig->getCaption(), $fig->contentToString());
+  public function testContentTostring(Figure $fig): Figure {
+    $this->assertSame($fig->getImg() . $fig->getCaption(), $fig->contentToString());
     return $fig;
   }
 
@@ -45,4 +49,5 @@ class FigureTest extends TestCase {
     $this->assertFalse($cloned->getImg() === $fig->getImg());
     $this->assertFalse($cloned->getCaption() === $fig->getCaption());
   }
+
 }
