@@ -96,18 +96,6 @@ trait HyperlinkTrait {
   }
 
   /**
-   * Sets the value of the title attribute
-   *
-   * @param  string|null $title the value of the title attribute
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   */
-  public function setTitle(string $title = null) {
-    $this->attributes()->set('title', $title);
-    return $this;
-  }
-
-  /**
    * Returns the value of the target attribute
    *
    * **Notes:**

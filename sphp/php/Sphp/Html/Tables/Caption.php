@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
+use Sphp\Html\SimpleTag;
 
 /**
  * Implements an HTML &lt;caption&gt; tag
@@ -22,7 +22,7 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Caption extends SimpleContainerTag implements TableContent {
+class Caption extends SimpleTag implements TableContent {
 
   /**
    * Constructor

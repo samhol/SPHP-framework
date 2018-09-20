@@ -30,8 +30,8 @@ $code1 = Manual\codeModal('YAML file', 'Sphp/Html/Head/meta.yaml', 'YAML Meta da
 $tr1 = $code1->getTrigger()->addCssClass('button', 'alert', 'radius', 'small', 'hide-from-pdf');
 $code1->getPopup()->addCssClass('hide-from-pdf');
 echo $code1;
-
-$code2 = Manual\codeModal('PHP file', 'Sphp/Html/Head/meta-array.php', 'PHP Meta data example');
+$phpArr = \Sphp\Stdlib\Filesystem::executePhpToString('Sphp/Html/Head/meta-array.php');
+$code2 = Manual\codeModalFromString('PHP array', $phpArr, 'php', 'PHP Meta data example');
 $tr2 = $code2->getTrigger()->addCssClass('button', 'secondary', 'radius', 'small', 'hide-from-pdf');
 
 echo $code2;

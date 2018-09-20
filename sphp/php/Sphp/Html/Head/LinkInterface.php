@@ -11,6 +11,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContent;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Defines an HTML &lt;link&gt; tag
@@ -23,7 +24,7 @@ use Sphp\Html\NonVisualContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface LinkInterface extends OverlappingHeadContent, NonVisualContent {
+interface LinkInterface extends OverlappingHeadContent, NonVisualContent, Arrayable {
 
   /**
    * Returns the location of the linked document

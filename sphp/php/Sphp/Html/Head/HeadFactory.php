@@ -10,10 +10,8 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Stdlib\Arrays;
-
 /**
- * Implements an HTML &lt;head&gt; tag
+ * Factory for HTML &lt;head&gt; components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -21,6 +19,12 @@ use Sphp\Stdlib\Arrays;
  */
 abstract class HeadFactory {
 
+  /**
+   * Creates an HTML &lt;head&gt; component from given array of data
+   * 
+   * @param  array $meta the data to insert into the head
+   * @return Head new instance
+   */
   public static function fromArray(array $meta): Head {
     $group = new Head();
     foreach ($meta as $tag) {
@@ -33,10 +37,8 @@ abstract class HeadFactory {
           $group->set(Meta::httpEquiv($tag['meta:http-equiv'], $tag['content']));
         } else if (array_key_exists('meta:name', $tag)) {
           $group->set(Meta::httpEquiv($tag['meta:name'], $tag['content']));
-        }else if (array_key_exists('link', $tag)) {
-          $link = new LinkTag();
-          //unset($tag['link:icon']);
-         // $link->attributes()->merge($tag);
+        } else if (array_key_exists('link', $tag)) {
+          $link = new LinkTag($tag['link']);
           $group->set($link);
         }
         if (array_key_exists('title', $tag)) {

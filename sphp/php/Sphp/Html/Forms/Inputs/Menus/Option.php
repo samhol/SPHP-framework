@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\SimpleContainerTag;
+use Sphp\Html\SimpleTag;
 
 /**
  * Implements an HTML &lt;option&gt; tag
@@ -20,7 +20,7 @@ use Sphp\Html\SimpleContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Option extends SimpleContainerTag implements MenuComponent {
+class Option extends SimpleTag implements MenuComponent {
 
   /**
    * Constructor

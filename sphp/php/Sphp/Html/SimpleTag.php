@@ -27,7 +27,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class SimpleContainerTag extends AbstractTag {
+class SimpleTag extends AbstractComponent {
 
   /**
    * the content of the component
@@ -51,32 +51,20 @@ class SimpleContainerTag extends AbstractTag {
    * @throws \InvalidArgumentException if the tagname is not valid
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct(string $tagName, $content = null, HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName, string $content = null, HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
       $this->setContent($content);
     }
   }
 
-  public function __destruct() {
-    unset($this->content);
-    parent::__destruct();
-  }
-
-  public function __clone() {
-    if (is_object($this->content)) {
-      $this->content = clone $this->content;
-    }
-    parent::__clone();
-  }
-
   /**
    * Sets the content of the component
    * 
-   * @param  mixed $content the inner content container of the component
+   * @param  string $content the inner content container of the component
    * @return $this for a fluent interface
    */
-  public function setContent($content = null) {
+  public function setContent(string $content = null) {
     $this->content = $content;
     return $this;
   }
@@ -84,19 +72,10 @@ class SimpleContainerTag extends AbstractTag {
   /**
    * Returns the content of the component
    * 
-   * @return mixed the content of the component
+   * @return string the content of the component
    */
-  public function getContent() {
-    return $this->content;
-  }
-
-  public function getHtml(): string {
-    $attrs = '' . $this->attributes();
-    if ($attrs !== '') {
-      $attrs = ' ' . $attrs;
-    }
-    $output = '<' . $this->getTagName() . $attrs . '>';
-    return $output . $this->content . '</' . $this->getTagName() . '>';
+  public function contentToString(): string {
+    return (string) $this->content;
   }
 
 }

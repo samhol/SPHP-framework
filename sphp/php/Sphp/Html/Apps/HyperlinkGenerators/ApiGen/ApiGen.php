@@ -77,9 +77,7 @@ class ApiGen extends AbstractPhpApiLinker {
     foreach ($namespaceArray as $name) {
       $currentNamespaceArray[] = $name;
       $path = implode(".", $currentNamespaceArray);
-      $root = implode("\\", $currentNamespaceArray);
       $breadCrumb = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, $this->getDefaultTarget());
-      $breadCrumb->setTitle("NameSpace $root");
       $breadGrumbs->append($breadCrumb);
     }
     return $breadGrumbs;

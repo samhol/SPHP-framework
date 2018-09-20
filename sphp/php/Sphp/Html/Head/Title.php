@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\SimpleContainerTag;
+use Sphp\Html\SimpleTag;
 use Sphp\Html\NonVisualContent;
 
 /**
@@ -21,7 +21,7 @@ use Sphp\Html\NonVisualContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Title extends SimpleContainerTag implements OverlappingHeadContent, NonVisualContent {
+class Title extends SimpleTag implements OverlappingHeadContent, NonVisualContent {
 
   /**
    * Constructor

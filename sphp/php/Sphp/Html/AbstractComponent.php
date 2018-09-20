@@ -45,12 +45,6 @@ abstract class AbstractComponent extends AbstractTag {
     return '</' . $this->getTagName() . '>';
   }
 
-  /**
-   * Returns the component as HTML markup string
-   *
-   * @return string HTML markup of the component
-   * @throws \Sphp\Exceptions\RuntimeException if HTML parsing fails
-   */
   public function getHtml(): string {
     return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
   }

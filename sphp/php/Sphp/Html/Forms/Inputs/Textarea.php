@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\SimpleContainerTag;
+use Sphp\Html\SimpleTag;
 
 /**
  * Implements an HTML &lt;textarea&gt; tag
@@ -20,7 +20,7 @@ use Sphp\Html\SimpleContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Textarea extends SimpleContainerTag implements TextareaInterface {
+class Textarea extends SimpleTag implements TextareaInterface {
 
   /**
    * Constructor

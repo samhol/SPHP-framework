@@ -14,6 +14,7 @@ use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Component;
 use Sphp\Html\Adapters\QtipAdapter;
+use Sphp\Stdlib\Strings;
 
 /**
  * Hyperlink generator pointing to an existing API documentation
@@ -111,7 +112,7 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
-    if (!\Sphp\Stdlib\Strings::startsWith("$url", $this->urls()->getRoot())) {
+    if (!Strings::startsWith("$url", $this->urls()->getRoot())) {
       $url = $this->urls()->createUrl("$url");
     }
     if ($content === null) {

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Bars;
 
-use Sphp\Html\SimpleContainerTag;
+use Sphp\Html\SimpleTag;
 
 /**
  * Implements an abstract Bar content area
@@ -21,7 +21,7 @@ use Sphp\Html\SimpleContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
- class BarContentArea extends SimpleContainerTag implements BarContentAreaInterface {
+ class BarContentArea extends SimpleTag implements BarContentAreaInterface {
 
   /**
    * Constructor

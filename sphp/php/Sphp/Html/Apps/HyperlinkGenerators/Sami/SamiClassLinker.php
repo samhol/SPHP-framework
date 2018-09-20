@@ -70,7 +70,6 @@ class SamiClassLinker extends AbstractClassLinker {
       $currentNamespace[] = $name;
       $path = implode("/", $currentNamespace);
       $bc = new BreadCrumb($this->createUrl("$path.html"), $name);
-      $bc->setTitle("Namespace $name");
       $breadCrumbs->append($bc);
     }
     $breadCrumbs->appendLink($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName());
