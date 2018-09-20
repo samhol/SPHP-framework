@@ -10,6 +10,9 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Stdlib\Arrays;
+
 /**
  * Implements an HTML &lt;meta&gt; factory
  *
@@ -66,7 +69,7 @@ abstract class Meta {
    * 
    * * The name attribute specifies the name for the metadata.
    * * The name attribute specifies a name for the information/value of the content attribute.
-   * * **Note:** If the http-equiv attribute is set, the name attribute should not be set.
+   * * **Note:** If the `http-equiv` attribute is set, the name attribute should not be set.
    * 
    * @param  string $name specifies a name for the metadata
    * @param  string|array $content the value of the content attribute
@@ -87,9 +90,9 @@ abstract class Meta {
    *
    * **Notes:**
    * 
-   * * The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
-   * * The http-equiv attribute can be used to simulate an HTTP response header
-   * * **Note:** If the name attribute is set, the http-equiv attribute should not be set.
+   * * The `http-equiv` attribute provides an HTTP header for the information/value of the content attribute.
+   * * The `http-equiv` attribute can be used to simulate an HTTP response header
+   * * **Note:** If the name attribute is set, the `http-equiv` attribute should not be set.
    * 
    *
    * @param  string $http_equiv provides an HTTP header for the information/value of the content attribute
@@ -167,7 +170,7 @@ abstract class Meta {
    */
   public static function keywords(...$keywords): MetaTag {
     if (is_array($keywords)) {
-      $keywords = implode(', ', \Sphp\Stdlib\Arrays::flatten($keywords));
+      $keywords = implode(', ', Arrays::flatten($keywords));
     }
     return new MetaTag(['name' => 'keywords', 'content' => $keywords]);
   }

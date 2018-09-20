@@ -23,7 +23,7 @@ use Sphp\Html\NonVisualContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface LinkInterface extends HeadContent, NonVisualContent {
+interface LinkInterface extends OverlappingHeadContent, NonVisualContent {
 
   /**
    * Returns the location of the linked document
@@ -36,7 +36,7 @@ interface LinkInterface extends HeadContent, NonVisualContent {
    * @return string the location of the linked document
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
-  public function getHref();
+  public function getHref(): string;
 
   /**
    * Returns the relationship between the current document and the linked one
@@ -63,49 +63,5 @@ interface LinkInterface extends HeadContent, NonVisualContent {
    * @return string the relationship between the current document and the linked one
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
-  public function getRel();
-
-  /**
-   * Returns the MIME type of the linked document
-   *
-   * **Note:** The type attribute specifies the MIME type of the linked
-   *  document.
-   *
-   * @return string|null the MIME type of the linked document
-   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
-   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
-   */
-  public function getType();
-
-  /**
-   * Returns the value of the media attribute
-   *
-   * **Notes:**
-   *
-   * * The media attribute specifies what media/device the target resource
-   *   is optimized for.
-   * * This attribute is mostly used with CSS style sheets to specify
-   *   different styles for different media types.
-   * * The media attribute can accept several values.
-   *
-   * @return string|null what media/device the target resource is optimized for
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
-   */
-  public function getMedia();
-
-  /**
-   * Returns the value of the media attribute
-   *
-   * **Notes:**
-   *
-   * * The media attribute specifies what media/device the target resource
-   *   is optimized for.
-   * * This attribute is mostly used with CSS style sheets to specify
-   *   different styles for different media types.
-   * * The media attribute can accept several values.
-   *
-   * @return string|null what media/device the target resource is optimized for
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
-   */
-  public function getSizes();
+  public function getRel(): string;
 }

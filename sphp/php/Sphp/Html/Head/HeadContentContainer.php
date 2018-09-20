@@ -71,18 +71,21 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
    * @return $this for a fluent interface
    */
   public function set(HeadContent $component) {
-    if ($component instanceof Title) {
-      $this->setDocumentTitle($component);
-    } else if ($component instanceof Base) {
-      $this->setBaseAddress($component);
-    } else if ($component instanceof LinkInterface) {
-      $this->setLink($component);
-    } else if ($component instanceof MetaData) {
-      $this->setMeta($component);
-    } else if ($component instanceof Script) {
-      $this->setScript($component);
+    $inserted = false;
+    if (!$component instanceof OverlappingHeadContent) {
+      $this->container[] = $component;
     } else {
-      $this->content()->append($component);
+      $inserted = false;
+      foreach ($this->container as $k => $content) {
+        if ($content instanceof OverlappingHeadContent && $content->overlapsWith($component)) {
+          $this->container[$k] = $component;
+          $inserted = true;
+          break;
+        }
+      }
+      if (!$inserted) {
+        $this->container[] = $component;
+      }
     }
     return $this;
   }

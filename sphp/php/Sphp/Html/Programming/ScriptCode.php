@@ -53,4 +53,8 @@ class ScriptCode extends ContainerTag implements ScriptTag {
     return $this->setAttribute('type', $type);
   }
 
+  public function overlapsWith(HeadContent $other): bool {
+    return false;
+  }
+
 }

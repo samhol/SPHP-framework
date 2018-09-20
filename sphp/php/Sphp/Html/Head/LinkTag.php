@@ -30,20 +30,11 @@ class LinkTag extends EmptyTag implements LinkInterface {
   /**
    * Constructor
    *
-   * @param  string $rel the relationship between the current document and the linked one
-   * @param  string $href the location of the linked document
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
+   * @param  string[] $attrs an array of attribute name value pairs
    */
-  public function __construct(string $rel = null, string $href = null) {
+  public function __construct(array $attrs = []) {
     parent::__construct('link');
-    $this->attributes()->demand('rel');
-    if ($href !== null) {
-      $this->setHref($href);
-    }
-    if ($rel !== null) {
-      $this->setRel($rel);
-    }
+    $this->attributes()->merge($attrs);
   }
 
   /**
@@ -66,174 +57,17 @@ class LinkTag extends EmptyTag implements LinkInterface {
     return $this;
   }
 
-  /**
-   * Returns the location of the linked document
-   *
-   * **Notes:**
-   * 
-   * 1. The href attribute specifies the location (URL) of the external resource 
-   *    (most often a style sheet file).
-   * 
-   * @return string the location of the linked document
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
-   */
-  public function getHref() {
+  public function getHref(): string {
     return $this->attributes()->getValue('href');
   }
 
-  /**
-   * Sets the relationship between the current document and the linked one
-   *
-   * **Notes:** The rel attribute specifies the relationship
-   *  between the current document and the linked document/resource.
-   *
-   * **Values:**
-   *
-   * * `alternate` Links to an alternate version of the document
-   *   (i.e. print page, translated or mirror)
-   * * `author` Links to the author of the document
-   * * `help` Links to a help document
-   * * `icon` Imports an icon to represent the document
-   * * `license` Links to copyright information for the document
-   * * `next` Indicates that the document is a part of a series,
-   *   and that the next document in the series is the referenced document
-   * * `prefetch` Specifies that the target resource should be cached
-   * * `prev` Indicates that the document is a part of a series,
-   *   and that the previous document in the series is the referenced document
-   * * `search` Links to a search tool for the document
-   * * `stylesheet` URL to a style sheet to import
-   *
-   * @param  string $rel the relationship between the current document and the linked one
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
-   */
-  public function setRel(string $rel) {
-    $this->attributes()->set('rel', $rel);
-    return $this;
-  }
-
-  /**
-   * Returns the relationship between the current document and the linked one
-   *
-   * **Notes:** The rel attribute specifies the relationship
-   *  between the current document and the linked document/resource.
-   *
-   * **Values:**
-   *
-   * * `alternate` Links to an alternate version of the document
-   *   (i.e. print page, translated or mirror)
-   * * `author` Links to the author of the document
-   * * `help` Links to a help document
-   * * `icon` Imports an icon to represent the document
-   * * `license` Links to copyright information for the document
-   * * `next` Indicates that the document is a part of a series,
-   *   and that the next document in the series is the referenced document
-   * * `prefetch` Specifies that the target resource should be cached
-   * * `prev` Indicates that the document is a part of a series,
-   *   and that the previous document in the series is the referenced document
-   * * `search` Links to a search tool for the document
-   * * `stylesheet` URL to a style sheet to import
-   *
-   * @return string the relationship between the current document and the linked one
-   * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
-   */
   public function getRel(): string {
     return $this->attributes()->getValue('rel');
   }
 
-  /**
-   * Sets the MIME type of the linked document
-   *
-   * **Notes:** The type attribute specifies the MIME type of the linked
-   *  document.
-   *
-   * @param  string $type the MIME type of the linked document
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
-   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
-   */
-  public function setType(string $type) {
-    $this->attributes()->set('type', $type);
-    return $this;
-  }
-
-  /**
-   * Returns the MIME type of the linked document
-   *
-   * **Note:** The type attribute specifies the MIME type of the linked
-   *  document.
-   *
-   * @return string|null the MIME type of the linked document
-   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
-   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
-   */
-  public function getType() {
-    return $this->attributes()->getValue('type');
-  }
-
-  /**
-   * Sets what media/device the target resource is optimized for
-   *
-   * **Notes:**
-   *
-   * * The media attribute specifies what media/device the target resource
-   *   is optimized for.
-   * * This attribute is mostly used with CSS stylesheets to specify
-   *   different styles for different media types.
-   * * The media attribute can accept several values.
-   *
-   * @param  string $media what media/device the target resource is optimized for
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
-   */
-  public function setMedia(string $media = null) {
-    $this->attributes()->set('media', $media);
-    return $this;
-  }
-
-  /**
-   * Returns the value of the media attribute
-   *
-   * **Notes:**
-   *
-   * * The media attribute specifies what media/device the target resource
-   *   is optimized for.
-   * * This attribute is mostly used with CSS style sheets to specify
-   *   different styles for different media types.
-   * * The media attribute can accept several values.
-   *
-   * @return string|null what media/device the target resource is optimized for
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
-   */
-  public function getMedia() {
-    return $this->attributes()->getValue('media');
-  }
-
-  /**
-   * Returns the value of the property attribute
-   *
-   * @return string|null the value of the property attribute or null if the 
-   *         attribute is not set
-   * @link   http://ogp.me/ The Open Graph protocol
-   * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
-   * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
-   */
-  public function linkDataToArray(): array {
-    return $this->attributes()->toArray();
-  }
-
-  public function equals(LinkTag $meta): bool {
+  /* public function equals(LinkTag $meta): bool {
     return $meta->getRel() === $this->getRel() && $meta->getHref() === $this->getHref() && $this->getMedia() === $meta->getMedia();
-  }
-
-  public function setSizes(string $sizes = null) {
-    $this->attributes()->set('sizes', $sizes);
-    return $this;
-  }
-
-  public function getSizes() {
-    return $this->attributes()->getValue('sizes');
-  }
+    } */
 
   /**
    * Returns the meta data as an array
@@ -249,20 +83,20 @@ class LinkTag extends EmptyTag implements LinkInterface {
       return false;
     }
     $same = array_intersect_assoc($this->toArray(), $other->toArray());
-    if (!array_key_exists('rel', $same)) {
+    if (!array_key_exists('rel', $same) || !array_key_exists('href', $same)) {
       return false;
     }
     $result = false;
-    switch ($same['rel']) {
+    $rel = $same['rel'];
+    switch ($rel) {
       case 'icon':
-        $result = array_key_exists('href', $same) &&
-                array_key_exists('size', $same);
+        $result = array_key_exists('size', $same) || ($this->getAttribute('size') === $other->getAttribute('size'));
+        break;
+      case 'stylesheet':
+        $result = array_key_exists('media', $same) || ($this->getAttribute('media') === $other->getAttribute('media'));
         break;
     }
     return $result;
-    return array_key_exists('rel', $same) &&
-            array_key_exists('href', $same) &&
-            array_key_exists('media', $same);
   }
 
 }

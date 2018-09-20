@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\Html;
-
+use Sphp\Html\Attributes\HtmlAttributeManager;
 /**
  * Implements an empty tag
  *
@@ -22,9 +22,19 @@ namespace Sphp\Html;
  */
 class EmptyTag extends AbstractTag {
 
+  /**
+   * @var bool
+   */
   private $close = false;
 
-  public function __construct(string $tagName, bool $useCloseTag = false, Attributes\HtmlAttributeManager $attrManager = null) {
+  /**
+   * Constructor
+   * 
+   * @param string $tagName
+   * @param bool $useCloseTag
+   * @param HtmlAttributeManager $attrManager
+   */
+  public function __construct(string $tagName, bool $useCloseTag = false, HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->close = $useCloseTag;
   }

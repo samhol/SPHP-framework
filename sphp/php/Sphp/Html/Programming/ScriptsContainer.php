@@ -14,6 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Iterator;
 use Traversable;
+use Sphp\Html\Head\HeadContent;
 
 /**
  * Implements a JavaScript component container
@@ -107,6 +108,10 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
    */
   public function count(): int {
     return count($this->container);
+  }
+
+  public function overlapsWith(HeadContent $other): bool {
+    return false;
   }
 
 }

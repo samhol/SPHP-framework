@@ -24,7 +24,7 @@ use Sphp\Html\NonVisualContent;
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @filesource
  */
-class Base extends EmptyTag implements HeadContent, NonVisualContent {
+class Base extends EmptyTag implements OverlappingHeadContent, NonVisualContent {
 
   /**
    * Constructor
@@ -69,6 +69,10 @@ class Base extends EmptyTag implements HeadContent, NonVisualContent {
    */
   public function setTarget(string $target) {
     return $this->setAttribute('target', $target);
+  }
+
+  public function overlapsWith(HeadContent $other): bool {
+    return $other instanceof Base;
   }
 
 }

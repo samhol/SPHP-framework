@@ -119,7 +119,6 @@ class Head extends AbstractComponent implements \IteratorAggregate, NonVisualCon
    * Adds an link tag which points to a CSS stylesheet file to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @param  string $media the relationship between the current document and the linked one
    * @param  string $media what media/device the target resource is optimized for
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute

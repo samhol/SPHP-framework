@@ -21,7 +21,7 @@ use Sphp\Html\NonVisualContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Title extends SimpleContainerTag implements HeadContent, NonVisualContent {
+class Title extends SimpleContainerTag implements OverlappingHeadContent, NonVisualContent {
 
   /**
    * Constructor
@@ -31,6 +31,10 @@ class Title extends SimpleContainerTag implements HeadContent, NonVisualContent 
   public function __construct(string $content = null) {
     parent::__construct('title');
     $this->setContent($content);
+  }
+
+  public function overlapsWith(HeadContent $other): bool {
+    return $other instanceof Title;
   }
 
 }

@@ -11,6 +11,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\EmptyTag;
+use Sphp\Html\Head\HeadContent;
 
 /**
  * Implements an HTML &lt;script&gt; tag having script code as its content
@@ -108,6 +109,10 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    */
   public function getSrc(): string {
     return $this->attributes()->getValue('src');
+  }
+
+  public function overlapsWith(HeadContent $other): bool {
+    return false;
   }
 
 }

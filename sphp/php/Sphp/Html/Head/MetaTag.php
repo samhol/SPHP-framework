@@ -36,7 +36,7 @@ class MetaTag extends EmptyTag implements MetaData {
     parent::__construct('meta');
     $this->attributes()->merge($meta);
   }
-  
+
   /**
    * Returns the meta data as an array
    * 
@@ -46,11 +46,14 @@ class MetaTag extends EmptyTag implements MetaData {
     return $this->attributes()->toArray();
   }
 
-  public function overlapsWith(MetaData $other): bool { 
+  public function overlapsWith(HeadContent $other): bool {
+    if (!$other instanceof MetaData) {
+      return false;
+    }
     $same = array_intersect_assoc($this->toArray(), $other->toArray());
-    return array_key_exists('name', $same) || 
-            array_key_exists('http-equiv', $same) || 
-            array_key_exists('charset', $same) || 
+    return array_key_exists('name', $same) ||
+            array_key_exists('http-equiv', $same) ||
+            array_key_exists('charset', $same) ||
             array_key_exists('property', $same);
   }
 

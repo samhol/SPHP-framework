@@ -25,15 +25,7 @@ use Sphp\Html\NonVisualContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface MetaData extends HeadContent, NonVisualContent {
-
-  /**
-   * Checks if this meta data object has overlapping meta data with the given one 
-   * 
-   * @param  MetaData $other
-   * @return boolean true if the meta data object given is overlapping; false otherwise
-   */
-  public function overlapsWith(MetaData $other): bool;
+interface MetaData extends OverlappingHeadContent, NonVisualContent {
 
   /**
    * Returns the meta data as an array
