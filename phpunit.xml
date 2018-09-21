@@ -22,6 +22,9 @@
     <testsuite name="html-head">
       <directory>./tests/sphp/Html/Head</directory>
     </testsuite>
+    <testsuite name="html-media">
+      <directory>./tests/sphp/Html/Media</directory>
+    </testsuite>
     <testsuite name="html-attrs">
       <directory>./tests/sphp/Html/Attributes</directory>
     </testsuite>

@@ -10,7 +10,8 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
+use Traversable;
 
 /**
  * Implements an HTML &lt;map&gt; tag
@@ -25,7 +26,11 @@ use Sphp\Html\AbstractContainerComponent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Map extends AbstractContainerComponent {
+class Map extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\TraversableContent {
+
+  use \Sphp\Html\TraversableTrait;
+
+  private $areas = [];
 
   /**
    * Constructor
@@ -41,7 +46,7 @@ class Map extends AbstractContainerComponent {
       $this->setName($name);
     }
     if ($areas !== null) {
-      foreach(is_array($areas)? $areas : [$areas] as $area) {
+      foreach (is_array($areas) ? $areas : [$areas] as $area) {
         $this->append($area);
       }
     }
@@ -71,15 +76,48 @@ class Map extends AbstractContainerComponent {
     return $this->attributes()->getValue('name');
   }
 
+  public function containsArea(Area $area): bool {
+    return in_array($area, $this->areas, true);
+  }
+  /**
+   * Adds a new area component to the map
+   *
+   * @param  Area $area the to add
+   * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function append(Area $area) {
+    if (in_array($area, $this->areas, true)) {
+      throw new \Sphp\Exceptions\InvalidArgumentException('Identical ' . $area->getShape() . ' object already exists in the map');
+    }
+    $this->areas[] = $area;
+    return $this;
+  }
+
   /**
    * Sets (replaces) one of the video sources
    *
-   * @param  Area $area the given part of a table
-   * @return $this for a fluent interface
+   * @param int[] $coords coordinates as an array
+   * @param string|null $href
+   * @param string|null $alt
+   * @return Polygon new instance
    */
-  public function append(Area $area) {
-    $this->getInnerContainer()->append($area);
-    return $this;
+  public function appendPolygon(array $coords = null, string $href = null, string $alt = null): Polygon {
+    $area = new Polygon($coords, $href, $alt);
+    $this->append($area);
+    return $area;
+  }
+
+  public function contentToString(): string {
+    return implode($this->areas);
+  }
+
+  public function count(): int {
+    return count($this->areas);
+  }
+
+  public function getIterator(): Traversable {
+    return new \Sphp\Html\Iterator($this->areas);
   }
 
 }
