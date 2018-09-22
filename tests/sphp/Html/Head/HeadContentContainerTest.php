@@ -89,10 +89,10 @@ class HeadContentContainerTest extends TestCase {
   }
 
   public function testScripts() {
-    $this->container->setScript(new \Sphp\Html\Programming\ScriptCode('var $a = 0;'));
-    $this->container->setScript(new \Sphp\Html\Programming\ScriptCode('var $a = 0;'));
+    $this->container->setScript(new \Sphp\Html\Scripts\ScriptCode('var $a = 0;'));
+    $this->container->setScript(new \Sphp\Html\Scripts\ScriptCode('var $a = 0;'));
     $this->assertCount(2, $this->container->getScripts());
-    $this->container->setScript(new \Sphp\Html\Programming\ScriptSrc('foo.js'));
+    $this->container->setScript(new \Sphp\Html\Scripts\ScriptSrc('foo.js'));
     $this->assertCount(3, $this->container->getScripts());
   }
 
@@ -103,8 +103,8 @@ class HeadContentContainerTest extends TestCase {
     $this->container->set(Meta::httpEquiv('foobar', 'bar'));
     $this->container->set(Meta::applicationName('foobar'));
     $this->container->set(Link::stylesheet('foo1.css'));
-    $this->container->set(new \Sphp\Html\Programming\ScriptCode('var $a = 0;'));
-    $this->container->set(new \Sphp\Html\Programming\ScriptSrc('foo.js'));
+    $this->container->set(new \Sphp\Html\Scripts\ScriptCode('var $a = 0;'));
+    $this->container->set(new \Sphp\Html\Scripts\ScriptSrc('foo.js'));
     $cloned = clone $this->container;
     $this->assertFalse($this->container === $cloned);
     $this->assertTrue($this->container->count() === $cloned->count());

@@ -77,57 +77,89 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
   }
 
   /**
-   * @dataProvider collectionData
-   * @param array $values
+   * @return Collection
    */
-  public function testAppend(array $values) {
-    $count = count($values);
-    $offset = 0;
-    $this->assertTrue($this->collection->isEmpty());
-    foreach ($values as $value) {
-      $this->collection->append($value);
-      $this->assertTrue($this->collection->contains($value));
-      $this->assertSame($this->collection->offsetGet($offset), $value);
-      $offset++;
-    }
-    $this->assertFalse($this->collection->isEmpty());
-    $this->assertCount($count, $this->collection);
-    $this->collection->clear();
-    $this->assertSame($this->collection->isEmpty(), $this->collection->count() === 0);
+  public function testAppendAndPrepend(): Collection {
+    $c = new Collection();
+    $this->assertFalse($c->contains('a'));
+    $c->append('a');
+    $this->assertSame('a', $c[0]);
+    $this->assertTrue($c->contains('a'));
+    $c->prepend('p');
+    $this->assertSame('p', $c[0]);
+    $this->assertSame('a', $c[1]);
+    $this->assertTrue($c->contains('p'));
+    $this->assertCount(2, $c);
+    $this->assertFalse($c->isEmpty());
+    $c->prepend(null);
+    $this->assertTrue($c->contains(null));
+    $this->assertSame(null, $c[0]);
+    return $c;
   }
 
   /**
-   * @dataProvider collectionData
-   * @param array $values
+   * @depends testAppendAndPrepend
+   * @param  Collection $c
+   * @return Collection
    */
-  public function testPrepend(array $values) {
-    $count = count($values);
-    $counter = 0;
-    foreach ($values as $value) {
-      $this->collection->prepend($value);
-      $this->assertTrue($this->collection->contains($value));
-      $this->assertSame($this->collection->offsetGet(0), $value);
-      $this->assertCount(++$counter, $this->collection);
+  public function testTraversing(Collection $c): Collection {
+    $arr = $c->toArray();
+    $stack = $c->toStack();
+    $queue = $c->toQueue();
+    foreach ($arr as $q) {
+      $this->assertSame($q, $queue->dequeue());
     }
-    $this->assertCount($count, $this->collection);
+    $this->assertTrue($queue->isEmpty());
+    $reversed = array_reverse($arr);
+    foreach ($reversed as $value) {
+      $this->assertSame($value, $stack->pop());
+    }
+    $this->assertTrue($stack->isEmpty());
+    return $c;
   }
 
   /**
-   * @dataProvider collectionData
+   * @depends testTraversing
+   * @param  Collection $c
+   * @return Collection
    */
-  public function testOffsetMethods(array $values) {
-    $count = count($values);
-    foreach ($values as $key => $value) {
-      $this->collection->offsetSet($key, $value);
-      $this->assertTrue($this->collection->offsetExists($key));
-      $this->assertSame($this->collection->offsetGet($key), $value);
+  public function testClearing(Collection $c): Collection {
+    $this->assertFalse($c->isEmpty());
+    $this->assertSame($c, $c->clear());
+    $this->assertTrue($c->isEmpty());
+    $this->assertCount(0, $c);
+    return $c;
+  }
+
+  /**
+   * @depends testTraversing
+   * @param Collection $c
+   */
+  public function testOffsetMethods(Collection $c) {
+    $c[] = 'zero';
+    $this->assertTrue(isset($c[0]));
+    $this->assertSame('zero', $c[0]);
+    unset($c[0]);
+    $arr = [
+        'stdClass' => new \stdClass(),
+        'null' => null,
+        'false' => false,
+        1 => 1,
+        0 => 3.14,
+        'string' => 'string'
+    ];
+    foreach ($arr as $key => $value) {
+      $this->assertFalse(isset($c[$key]));
+      $c[$key] = $value;
+      $this->assertTrue(isset($c[$key]));
+      $this->assertSame($value, $c[$key]);
     }
-    $this->assertCount($count, $this->collection);
-    foreach ($values as $key => $value) {
-      $this->collection->offsetUnset($key);
-      $this->assertFalse($this->collection->offsetExists($key));
+    $this->assertCount(count($arr), $c);
+    foreach ($arr as $key => $value) {
+      unset($c[$key]);
+      $this->assertFalse(isset($c[$key]));
     }
-    $this->assertCount(0, $this->collection);
+    $this->assertCount(0, $c);
   }
 
   public function testFilter() {
@@ -165,7 +197,7 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
     foreach ($values as $value) {
       $this->collection->remove($value);
       $this->assertFalse($this->collection->contains($value));
-      $this->assertCount(--$counter, $this->collection);
+      $this->assertCount( --$counter, $this->collection);
     }
     $this->assertCount(0, $this->collection);
   }
@@ -214,6 +246,14 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
       $this->assertSame($value, $values[$key]);
     }
     return $this->collection;
+  }
+
+  public function testKeys() {
+    $array = range('a', 'd');
+    $arrayKeys = array_keys($array);
+    $indexed = new Collection($array);
+    $this->assertEquals($arrayKeys, $indexed->keys());
+    $this->assertEquals($array, $indexed->toArray());
   }
 
 }

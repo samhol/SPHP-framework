@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 $script1 = new ScriptSrc("manual/snippets/example1.js");
 $script2 = new ScriptSrc("manual/snippets/example2.js");

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 use Sphp\Manual;
 
@@ -54,7 +54,7 @@ MD
 );
 echo $code1->getPopup();
 echo $code2->getPopup();
-Manual\visualize('Sphp/Html/Programming/ScriptInterface.php', 'html5', true);
+Manual\visualize('Sphp/Html/Scripts/ScriptInterface.php', 'html5', true);
 Manual\md(<<<MD
 ##$scriptCode component: <small>for script statements</small>
 
@@ -64,11 +64,11 @@ This component contains scripting statements that are to be executed.
 MD
 );
 
-Manual\visualize('Sphp/Html/Programming/ScriptCode.php', 'html5', true);
+Manual\visualize('Sphp/Html/Scripts/ScriptCode.php', 'html5', true);
 
 Manual\md(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>
 MD
 );
 
-Manual\visualize('Sphp/Html/Programming/ScriptsContainer.php', 'html5', true);
+Manual\visualize('Sphp/Html/Scripts/ScriptsContainer.php', 'html5', true);

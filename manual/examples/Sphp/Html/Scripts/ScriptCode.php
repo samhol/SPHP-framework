@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 $scriptCode = new ScriptCode();
 $scriptCode[] = 'var $me = {};';

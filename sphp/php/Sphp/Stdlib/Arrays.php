@@ -11,6 +11,9 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Datastructures\Arrayable;
+use Traversable;
 
 /**
  * Utility class for PHP array operations
@@ -373,7 +376,7 @@ abstract class Arrays {
     if ($base === 0) {
       $result = array_values($arr);
     } else {
-      $sequence = range($base, count($arr) + $base -1);
+      $sequence = range($base, count($arr) + $base - 1);
       $result = array_combine($sequence, $arr);
     }
     return $result;
@@ -458,6 +461,29 @@ abstract class Arrays {
       $return[] = $a;
     });
     return $return;
+  }
+
+  /**
+   * 
+   * @param  mixed $object
+   * @return array
+   * @throws InvalidArgumentException if the type cannot be transformed to an array
+   */
+  public static function toArray($object): array {
+    if (is_array($object)) {
+      return $object;
+    }
+    if (!is_object($object)) {
+      throw new InvalidArgumentException('Object or array required: ' . gettype($object) . ' given');
+    }
+    if ($object instanceof Arrayable) {
+      $items = $object->toArray();
+    } else if ($object instanceof Traversable) {
+      $items = iterator_to_array($object);
+    } else {
+      throw new InvalidArgumentException('object cannot be transformed to an array');
+    }
+    return $items;
   }
 
 }

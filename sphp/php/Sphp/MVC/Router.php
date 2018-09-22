@@ -13,7 +13,7 @@ namespace Sphp\MVC;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Stdlib\Datastructures\PriorityQueue;
-
+use Sphp\Exceptions\InvalidStateException;
 /**
  * Implements an URL router
  *
@@ -88,18 +88,11 @@ class Router {
    * 
    * Initializes the router by getting the URL and cleaning it.
    *
-   * @param  URL|string|null $url optional URL to route
+   * @param  string|null $url optional URL to route
    */
-  public function __construct($url = null) {
-    if ($url === null) {
-      $url = URL::getCurrent();
-    }
-    if (is_string($url)) {
-      $url = new URL($url);
-    }
-    $this->path = rtrim($url->getPath(), '/') . '/';
+  public function __construct(string $url = null) {
+    $this->path = $this->getPath($url);
     $this->routes = new PriorityQueue();
-    //$this->routes->setInternalQueueClass(StablePriorityQueue::class);
   }
 
   /**
@@ -123,9 +116,20 @@ class Router {
    * Tries to match one of the URL routes to the current URL, otherwise
    * execute the default function.
    *
+   * @param  string|null $url optional URL to route
    * @return $this for a fluent interface
+   * @throws InvalidStateException
+   * @throws RuntimeException
    */
-  public function execute() {
+  public function execute(string $url = null) {
+    if ($this->isEmpty()) {
+      throw new InvalidStateException('The router is empty and cannot be executed');
+    }
+    if ($url === null) {
+      $path = $this->path;
+    } else {
+      $path = $this->getPath($url);
+    }
     // Whether or not we have matched the URL to a route
     $routeFound = false;
     // Loop through routes
@@ -133,11 +137,11 @@ class Router {
       $route = $routingData['route'];
       $callback = $routingData['callback'];
       // Does the routing rule match the current URL?
-      if (preg_match($route, $this->path, $matches)) {
+      if (preg_match($route, $path, $matches)) {
         // A routing rule was matched
         $routeFound = true;
         // Parameters to pass to the callback function
-        $params = [$this->path];
+        $params = [$path];
         // echo "<pre>";
         // var_dump($matches);
         // echo "</pre>";
@@ -154,7 +158,7 @@ class Router {
     }
     // Was a match found or should we execute the default callback?
     if (!$routeFound && $this->defaultRoute !== null) {
-      call_user_func_array($this->defaultRoute, [$this->path]);
+      call_user_func_array($this->defaultRoute, [$path]);
       $routeFound = true;
     }
     if (!$routeFound) {
@@ -189,6 +193,29 @@ class Router {
     $route = '#^' . $route . '$#';
     $this->routes->enqueue(['route' => $route, 'callback' => $callback], $priority);
     return $this;
+  }
+  
+  /**
+   * Checks whether the router has no routes defined
+   * 
+   * @return bool true if the router has no routes defined, false otherwise
+   */
+  public function isEmpty():bool {
+    return $this->defaultRoute === null && $this->routes->isEmpty();
+  }
+
+  /**
+   * 
+   * @param string $url
+   * @return string
+   */
+  public static function getPath(string $url = null): string {
+    if ($url === null) {
+      $url = URL::getCurrent();
+    } else {
+      $url = new URL($url);
+    }
+    return rtrim($url->getPath(), '/') . '/';
   }
 
 }

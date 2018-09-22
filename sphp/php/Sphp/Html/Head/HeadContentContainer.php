@@ -15,7 +15,7 @@ use Traversable;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\PlainContainer;
-use Sphp\Html\Programming\Script;
+use Sphp\Html\Scripts\Script;
 use Sphp\Exceptions\UnderflowException;
 
 /**

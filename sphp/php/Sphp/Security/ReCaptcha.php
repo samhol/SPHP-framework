@@ -10,7 +10,7 @@
 
 namespace Sphp\Security;
 
-use Sphp\Html\Programming\ScriptSrc;
+use Sphp\Html\Scripts\ScriptSrc;
 use Sphp\Html\Div;
 use Sphp\Html\Content;
 

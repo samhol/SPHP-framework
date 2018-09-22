@@ -12,7 +12,7 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Programming\ScriptSrc;
+use Sphp\Html\Scripts\ScriptSrc;
 
 /**
  * Implements an HTML &lt;head&gt; tag

@@ -12,7 +12,7 @@ namespace Sphp\Html;
 
 use IteratorAggregate;
 use Sphp\Html\Head\Head;
-use Sphp\Html\Programming\ScriptsContainer;
+use Sphp\Html\Scripts\ScriptsContainer;
 use Sphp\Html\Head\Meta;
 use Traversable;
 

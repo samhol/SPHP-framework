@@ -13,7 +13,7 @@ namespace Sphp\Exceptions;
 use Exception;
 
 /**
- * Indicates the current state of an HTML object involved is invalid
+ * Indicates the current state of the object involved is invalid
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

@@ -8,13 +8,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Iterator;
 use Traversable;
-use Sphp\Html\Head\HeadContent;
 
 /**
  * Implements a JavaScript component container
@@ -37,16 +36,9 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
 
   /**
    * Constructor
-   * 
-   * @param Script|Script[] $scripts script components
    */
-  public function __construct($scripts = null) {
+  public function __construct() {
     $this->container = [];
-    if ($scripts !== null) {
-      foreach (is_array($scripts) ? $scripts : [$scripts] as $script) {
-        $this->append($script);
-      }
-    }
   }
 
   /**
@@ -87,6 +79,10 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
     return $script;
   }
 
+  public function contains(Script $script): bool {
+    return in_array($script, $this->container, true);
+  }
+
   public function getHtml(): string {
     return implode($this->container);
   }
@@ -108,10 +104,6 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
    */
   public function count(): int {
     return count($this->container);
-  }
-
-  public function overlapsWith(HeadContent $other): bool {
-    return false;
   }
 
 }

@@ -12,7 +12,6 @@ namespace Sphp\Stdlib\Datastructures;
 
 use Iterator;
 use Sphp\Stdlib\Arrays;
-use UnderflowException;
 
 /**
  * Implements a general purpose collection data structure
@@ -133,9 +132,9 @@ class Collection implements Iterator, CollectionInterface {
    * Gets the items in the collection that are not present in the given items
    *
    * @param  mixed $items items to compare against
-   * @return self new instance containing the items that are not present in the given items
+   * @return Collection new instance containing the items that are not present in the given items
    */
-  public function diff($items) {
+  public function diff($items): Collection {
     return new static(array_diff($this->items, $this->getArrayableItems($items)));
   }
 
@@ -151,22 +150,21 @@ class Collection implements Iterator, CollectionInterface {
   }
 
   /**
-   * Results array of items from Collection or Arrayable
+   * Results array of items from Collection 
    *
    * @param  mixed $items
    * @return array
    */
   protected function getArrayableItems($items): array {
-    if ($items instanceof Arrayable) {
-      $items = $items->toArray();
-    } else if ($items instanceof Jsonable) {
-      $items = json_decode($items->toJson(), true);
+    if (is_array($items)) {
+      return $items;
+    } else {
+      return Arrays::toArray($items);
     }
-    return (array) $items;
   }
 
   /**
-   * Clears all stored properties
+   * Clears the collection
    *
    * @return $this for a fluent interface
    */
@@ -215,13 +213,12 @@ class Collection implements Iterator, CollectionInterface {
    * Removes all instances of the given value from the collection
    * 
    * @param  mixed $value the value to remove
-   * @return boolena `true` if the given value exists, `false` otherwise
+   * @return $this for a fluent interface
    */
   public function remove($value) {
-    $f = function($var) use ($value) {
+    $this->items = array_filter($this->items, function($var) use ($value) {
       return $var !== $value;
-    };
-    $this->items = array_filter($this->items, $f);
+    });
     return $this;
   }
 

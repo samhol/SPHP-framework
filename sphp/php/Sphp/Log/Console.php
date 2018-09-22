@@ -10,7 +10,7 @@
 
 namespace Sphp\Log;
 
-use Sphp\Html\Programming\ScriptCode;
+use Sphp\Html\Scripts\ScriptCode;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Parsers\Parser;
 

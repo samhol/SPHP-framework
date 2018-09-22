@@ -57,7 +57,7 @@ items:
       - link: Meta data manipulation
         href: Sphp.Html.Head
       - link: Client side scripting 
-        href: Sphp.Html.Programming
+        href: Sphp.Html.Scripts
       - ruler: 
       - link: Lists
         href: Sphp.Html.Lists

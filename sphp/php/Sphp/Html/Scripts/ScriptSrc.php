@@ -8,10 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Head\HeadContent;
 
 /**
  * Implements an HTML &lt;script&gt; tag having script code as its content
@@ -52,7 +51,7 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
-  public function setType(string $type) {
+  public function setType(string $type = null) {
     $this->attributes()->set('type', $type);
     return $this;
   }
@@ -109,10 +108,6 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    */
   public function getSrc(): string {
     return $this->attributes()->getValue('src');
-  }
-
-  public function overlapsWith(HeadContent $other): bool {
-    return false;
   }
 
 }

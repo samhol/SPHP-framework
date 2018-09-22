@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\Programming\Script;
+use Sphp\Html\Scripts\Script;
 use Sphp\Manual;
 
 $headNS = Manual\api()->namespaceLink(__NAMESPACE__);

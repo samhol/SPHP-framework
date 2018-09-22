@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 use Sphp\Html\ContainerTag;
 
@@ -34,7 +34,7 @@ class ScriptCode extends ContainerTag implements ScriptTag {
    * 
    * This component contains scripting statements
    *
-   * @param  string $code the script code inside the script component or `null` for empty
+   * @param string $code the script code inside the script component or `null` for empty
    */
   public function __construct($code = null) {
     parent::__construct('script', $code);
@@ -49,12 +49,8 @@ class ScriptCode extends ContainerTag implements ScriptTag {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
-  public function setType(string $type) {
+  public function setType(string $type = null) {
     return $this->setAttribute('type', $type);
-  }
-
-  public function overlapsWith(HeadContent $other): bool {
-    return false;
   }
 
 }

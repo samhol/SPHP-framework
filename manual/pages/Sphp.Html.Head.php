@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\Programming\Script;
-use Sphp\Html\Programming\Noscript;
+use Sphp\Html\Scripts\Script;
+use Sphp\Html\Scripts\Noscript;
 use Sphp\Manual;
 
 $sami = Manual\api();

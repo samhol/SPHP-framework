@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 use Sphp\Html\Head\HeadContent;
 

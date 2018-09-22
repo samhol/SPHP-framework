@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 $scriptSrc = (new ScriptSrc("manual/snippets/example1.js"))
         ->printHtml();

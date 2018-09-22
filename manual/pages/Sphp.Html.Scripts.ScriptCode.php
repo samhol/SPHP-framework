@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Programming;
+namespace Sphp\Html\Scripts;
 
 use Sphp\Manual;
 
@@ -45,11 +45,11 @@ $scriptCode component containing statements can be manipulated several ways.
 MD
 );
 
-Manual\visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
+Manual\visualize("Sphp/Html/Scripts/ScriptInterface.php", "html5", true);
 
 Manual\md(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>{#scriptsContainer}
 MD
 );
 
-Manual\visualize("Sphp/Html/Programming/ScriptsContainer.php", "html5", true);
+Manual\visualize("Sphp/Html/Scripts/ScriptsContainer.php", "html5", true);

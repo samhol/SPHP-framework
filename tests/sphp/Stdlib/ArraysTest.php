@@ -174,8 +174,9 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $this->expectException(OutOfBoundsException::class);
     Arrays::pointToKey($arr, 'foo');
   }
+
   /**
-  public function testPointToValue() {
+    public function testPointToValue() {
     $obj = new \stdClass();
     $arr = ['a' => 'b', 44, 3 => 2, 'obj' => $obj, 1];
     $arr1 = Arrays::pointToValue($arr, $obj);
@@ -184,7 +185,30 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame(current($arr), current($arr1));
     $this->expectException(OutOfBoundsException::class);
     Arrays::pointToKey($arr, 'obj');
-  }
+    }
    */
+  public function toArrayData(): array {
+    $data[] = range('a', 'b');
+    $data[] = new \ArrayObject(range('a', 'b'));
+    return [$data];
+  }
+
+  /**
+   * @dataProvider toArrayData
+   * @param mixed $mixed
+   */
+  public function testToArray($mixed) {
+    $arrayed = Arrays::toArray($mixed);
+    if ($mixed instanceof Datastructures\Arrayable) {
+      $expected = $mixed->toArray();
+    } else if ($mixed instanceof \Traversable) {
+      $expected = iterator_to_array($mixed);
+    } else {
+      $expected = $mixed;
+    }
+    $this->assertSame($expected, $arrayed);
+    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
+    Arrays::toArray(new \stdClass());
+  }
 
 }

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Programming\ScriptsContainer;
+use Sphp\Html\Scripts\ScriptsContainer;
 
 /**
  * Implements an HTML &lt;body&gt; tag

@@ -39,4 +39,5 @@ class ImgTest extends TestCase {
     $this->assertSame("#{$map->getName()}", $img->attributes()->get('usemap'));
     return $img;
   }
+
 }
