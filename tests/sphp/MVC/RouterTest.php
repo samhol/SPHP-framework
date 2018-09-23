@@ -1,14 +1,26 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\MVC;
-use Sphp\Exceptions\InvalidStateException;
-class RouterTest extends \PHPUnit\Framework\TestCase {
+
+use Sphp\Exceptions\IllegalStateException;
+use PHPUnit\Framework\TestCase;
+
+class RouterTest extends TestCase {
 
   public function testEmptyRouting() {
     $router = new Router();
-    $this->expectException(InvalidStateException::class);
+    $this->expectException(IllegalStateException::class);
     $router->execute();
   }
+
   /**
    * @return array
    */
@@ -39,6 +51,7 @@ class RouterTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame('/user/view/samhol/', $string);
     $this->assertSame('samhol', $folder);
   }
+
   public function index(string $string) {
     $this->assertSame('/index.php/', $string);
   }

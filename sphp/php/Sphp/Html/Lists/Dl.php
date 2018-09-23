@@ -10,11 +10,11 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use IteratorAggregate;
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Container;
+use Sphp\Html\Iterator;
 use Traversable;
 
 /**
@@ -28,18 +28,22 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Dl extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
+class Dl extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
+
+  /**
+   * @var DlContent[] 
+   */
+  private $items = [];
 
   /**
    * Constructor
    *
    * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
-   * @param  Container|null $contentContainer the inner content container of the component
    */
-  public function __construct(HtmlAttributeManager $attrManager = null, Container $contentContainer = null) {
-    parent::__construct('dl', $attrManager, $contentContainer);
+  public function __construct(HtmlAttributeManager $attrManager = null) {
+    parent::__construct('dl', $attrManager);
   }
 
   /**
@@ -49,7 +53,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
    * @return $this for a fluent interface
    */
   public function append(DlContent $it) {
-    $this->getInnerContainer()->append($it);
+    $this->items[] = $it;
     return $this;
   }
 
@@ -66,22 +70,6 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
   }
 
   /**
-   * Appends {@link Dt} term component to the list
-   *
-   * @param  mixed $terms the term component or its content
-   * @return $this for a fluent interface
-   */
-  public function appendTerms($terms) {
-    foreach ((is_array($terms)) ? $terms : [$terms] as $term) {
-      if (!($term instanceof DlContentInterface)) {
-        $term = new Dt($term);
-      }
-      $this->append($term);
-    }
-    return $this;
-  }
-
-  /**
    * Creates and appends a description to the list
    *
    * @param  mixed $content the description content
@@ -94,38 +82,35 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
   }
 
   /**
-   * Appends {@link Dd} description component to the list
-   *
-   * @param  mixed $descriptions the description components or their content
-   * @return $this for a fluent interface
-   */
-  public function appendDescriptions($descriptions) {
-    foreach ((is_array($descriptions)) ? $descriptions : [$descriptions] as $description) {
-      if (!($description instanceof DlContentInterface)) {
-        $description = new Dd($description);
-      }
-      $this->append($description);
-    }
-    return $this;
-  }
-
-  /**
    * Prepends an item to the object
    * 
    * @param  DlContent $it list element
    * @return $this for a fluent interface
    */
   public function prepend(DlContent $it) {
-    $this->getInnerContainer()->prepend($it);
+    array_unshift($this->items, $it);
     return $this;
   }
 
+  /**
+   * 
+   * @param  DlContent $item
+   * @return bool
+   */
+  public function contains(DlContent $item): bool {
+    return in_array($item, $this->items, true);
+  }
+
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return count($this->items);
   }
 
   public function getIterator(): Traversable {
-    return $this->getInnerContainer();
+    return new Iterator($this->items);
+  }
+
+  public function contentToString(): string {
+    return implode($this->items);
   }
 
 }

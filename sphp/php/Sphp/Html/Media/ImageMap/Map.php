@@ -11,6 +11,8 @@
 namespace Sphp\Html\Media\ImageMap;
 
 use Sphp\Html\AbstractComponent;
+use IteratorAggregate;
+use Sphp\Html\TraversableContent;
 use Traversable;
 
 /**
@@ -26,10 +28,13 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Map extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\TraversableContent {
+class Map extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
+  /**
+   * @var Area[] 
+   */
   private $areas = [];
 
   /**
@@ -79,6 +84,7 @@ class Map extends AbstractComponent implements \IteratorAggregate, \Sphp\Html\Tr
   public function containsArea(Area $area): bool {
     return in_array($area, $this->areas, true);
   }
+
   /**
    * Adds a new area component to the map
    *

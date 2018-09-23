@@ -10,15 +10,17 @@
 
 namespace Sphp\Exceptions;
 
-use Throwable;
-
 /**
- * SPHP-specific exception interface
+ * Signals that a method has been invoked at an illegal or inappropriate time
+ * 
+ * In other words, the environment or application is not in an appropriate state 
+ * for the requested operation.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface SphpExceptionInterface extends Throwable {
+class IllegalStateException extends RuntimeException {
   
 }

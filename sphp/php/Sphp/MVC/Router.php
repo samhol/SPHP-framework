@@ -13,7 +13,8 @@ namespace Sphp\MVC;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Stdlib\Datastructures\PriorityQueue;
-use Sphp\Exceptions\InvalidStateException;
+use Sphp\Exceptions\IllegalStateException;
+
 /**
  * Implements an URL router
  *
@@ -123,7 +124,7 @@ class Router {
    */
   public function execute(string $url = null) {
     if ($this->isEmpty()) {
-      throw new InvalidStateException('The router is empty and cannot be executed');
+      throw new IllegalStateException('The router is empty and cannot be executed');
     }
     if ($url === null) {
       $path = $this->path;
@@ -162,7 +163,7 @@ class Router {
       $routeFound = true;
     }
     if (!$routeFound) {
-      throw new RuntimeException('No callback found for the route');
+      throw new IllegalStateException('No callback found for the route');
     }
     return $this;
   }
@@ -194,13 +195,13 @@ class Router {
     $this->routes->enqueue(['route' => $route, 'callback' => $callback], $priority);
     return $this;
   }
-  
+
   /**
    * Checks whether the router has no routes defined
    * 
    * @return bool true if the router has no routes defined, false otherwise
    */
-  public function isEmpty():bool {
+  public function isEmpty(): bool {
     return $this->defaultRoute === null && $this->routes->isEmpty();
   }
 

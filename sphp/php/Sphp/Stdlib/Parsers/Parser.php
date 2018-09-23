@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a general parser factory
@@ -89,7 +90,7 @@ abstract class Parser {
    * @param  string $name the name of the component
    * @param  array $arguments 
    * @return Reader the corresponding singleton instance of reader object
-   * @throws BadMethodCallException
+   * @throws BadMethodCallException if the parser does not exist
    */
   public static function __callStatic(string $name, array $arguments) {
     try {

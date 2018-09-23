@@ -46,7 +46,7 @@ class FilesystemTest extends \PHPUnit\Framework\TestCase {
   public function validFiles(): array {
     return [
         [__FILE__],
-        ['./tests/sphp/Stdlib/files/test.ini']
+        ['./tests/sphp/Stdlib/Parsers/files/test.ini']
     ];
   }
 

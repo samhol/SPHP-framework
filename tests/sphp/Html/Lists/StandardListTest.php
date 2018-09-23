@@ -1,12 +1,21 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Tests\Html\Lists;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Lists\StandardList;
 use Sphp\Html\Lists\StandardListItem;
 use Sphp\Html\Lists\Li;
 
-abstract class StandardListTest extends \PHPUnit\Framework\TestCase {
+abstract class StandardListTest extends TestCase {
 
   /**
    * @var StandardList

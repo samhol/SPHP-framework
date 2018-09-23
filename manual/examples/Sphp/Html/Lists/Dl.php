@@ -2,7 +2,9 @@
 
 namespace Sphp\Html\Lists;
 
-$dl = (new Dl())
-        ->appendTerms("Numbers:")
-        ->appendDescriptions(["zero", "one", "two", "three", "four"])
-        ->printHtml();
+$dl = new Dl();
+$dl->appendTerm("Numbers:");
+foreach (["zero", "one", "two", "three", "four"] as $number) {
+  $dl->appendDescription($number);
+}
+$dl->printHtml();
