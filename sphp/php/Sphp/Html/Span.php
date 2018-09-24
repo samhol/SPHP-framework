@@ -24,7 +24,7 @@ namespace Sphp\Html;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Span extends ContainerTag {
+class Span extends ContainerTag implements InlineContainer {
 
   /**
    * Constructor

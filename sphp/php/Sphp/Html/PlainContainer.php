@@ -26,7 +26,7 @@ use Sphp\Exceptions\InvalidStateException;
 class PlainContainer implements IteratorAggregate, Container, ContentParser {
 
   use ContentTrait,
-      ContentParsingTrait,
+      ContentParserTrait,
       TraversableTrait;
 
   /**

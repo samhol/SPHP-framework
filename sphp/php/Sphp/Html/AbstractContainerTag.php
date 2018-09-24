@@ -34,7 +34,7 @@ use Traversable;
  */
 class AbstractContainerTag extends AbstractContainerComponent implements IteratorAggregate, ContainerComponent, ContentParser {
 
-  use ContentParsingTrait,
+  use ContentParserTrait,
       TraversableTrait;
 
   public function append(...$content) {

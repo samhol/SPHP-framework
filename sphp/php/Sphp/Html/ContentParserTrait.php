@@ -21,7 +21,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-trait ContentParsingTrait {
+trait ContentParserTrait {
 
   /**
    * Appends a new value as the last element
@@ -72,8 +72,12 @@ trait ContentParsingTrait {
    */
   public function appendMd(string $md) {
     try {
-      $p = Parser::md();
-      $this->append($p->convertString($md));
+      if ($this instanceof InlineContainer) {
+        $content = Parser::md()->parseInline($md);
+      } else {
+        $content = Parser::md()->parseBlock($md);
+      }
+      $this->append($content);
     } catch (\Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }

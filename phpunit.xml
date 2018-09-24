@@ -16,6 +16,9 @@
     <testsuite name="all">
       <directory>./tests/</directory>
     </testsuite>
+    <testsuite name="one">
+      <file>./tests/sphp/Html/ContentParserTraitTest.php</file>
+    </testsuite>
     <testsuite name="html">
       <directory>./tests/sphp/Html</directory>
     </testsuite>

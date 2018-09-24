@@ -41,7 +41,7 @@ use Sphp\Html\PlainContainer;
 class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentParser, TraversableContent {
 
   use \Sphp\Html\TraversableTrait,
-      \Sphp\Html\ContentParsingTrait;
+      \Sphp\Html\ContentParserTrait;
 
   /**
    * @var PlainContainer

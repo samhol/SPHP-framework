@@ -26,7 +26,7 @@ use Traversable;
  */
 class SlideContainer extends AbstractComponent implements \IteratorAggregate, \Countable {
 
-  use \Sphp\Html\ContentParsingTrait;
+  use \Sphp\Html\ContentParserTrait;
 
   private $active = 0;
 
