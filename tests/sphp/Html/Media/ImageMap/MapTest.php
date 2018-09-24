@@ -40,6 +40,8 @@ class MapTest extends TestCase {
     $this->assertCount(1, $map);
     $map->append($circle);
     $this->assertTrue($map->containsArea($circle));
+    $p = $map->appendPolygon([10, 10, 30, 40]);
+    $this->assertTrue($map->containsArea($p));
     //$this->assertSame($map, $map->appendPolygon([2,4,100,100]));
     return $map;
   }

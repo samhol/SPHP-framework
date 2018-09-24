@@ -90,7 +90,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    *
    * @param  Area $area the to add
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the area object already exists in the map
    */
   public function append(Area $area) {
     if (in_array($area, $this->areas, true)) {
@@ -101,15 +101,43 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
   }
 
   /**
-   * Sets (replaces) one of the video sources
+   * Appends a polygon area to the map
    *
-   * @param int[] $coords coordinates as an array
-   * @param string|null $href
-   * @param string|null $alt
+   * @param  int[] $coords coordinates as an array
+   * @param  string|null $href
+   * @param  string|null $alt
    * @return Polygon new instance
    */
   public function appendPolygon(array $coords = null, string $href = null, string $alt = null): Polygon {
     $area = new Polygon($coords, $href, $alt);
+    $this->append($area);
+    return $area;
+  }
+
+  /**
+   * Appends a Circle area to the map
+   *
+   * @param  int[] $coords coordinates as an array
+   * @param  string|null $href
+   * @param  string|null $alt
+   * @return Circle new instance
+   */
+  public function appendCircle(array $coords = null, string $href = null, string $alt = null): Circle {
+    $area = new Circle($coords, $href, $alt);
+    $this->append($area);
+    return $area;
+  }
+
+  /**
+   * Appends a Rectangle area to the map
+   *
+   * @param  int[] $coords coordinates as an array
+   * @param  string|null $href
+   * @param  string|null $alt
+   * @return Circle new instance
+   */
+  public function appendRectagle(array $coords = null, string $href = null, string $alt = null): Rectangle {
+    $area = new Rectangle($coords, $href, $alt);
     $this->append($area);
     return $area;
   }

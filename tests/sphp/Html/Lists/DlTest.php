@@ -43,16 +43,15 @@ class DlTest extends TestCase {
     $this->assertTrue($dl->contains($desc2));
     return $dl;
   }
+
   /**
-   * @dataProvider items
+   * @depends testConstructor
    * 
-   * @param mixed $data
+   * @param Dl $dl
    */
-  public function testPrepending($data) {
-    $this->list->prepend(new Li('foo'));
-    $item = $this->list->prepend(new Li($data));
-    $this->assertInstanceOf(StandardListItem::class, $item);
-    $this->assertSame($data, $item->offsetGet(0));
+  public function testPrepending(Dl $dl) {
+    $dl->prepend($dd = new Dd('foo'));
+    $this->assertTrue($dl->contains($dd));
   }
 
 }

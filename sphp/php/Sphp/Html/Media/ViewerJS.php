@@ -24,30 +24,13 @@ namespace Sphp\Html\Media;
 class ViewerJS extends Iframe {
 
   /**
-   * Constructor
-   *
-   * @param  string $src the address of the document to embed in the object
-   * @param  string $name the value of the name attribute
-   * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
-   */
-  public function __construct(string $src = null) {
-    parent::__construct();
-    if ($src !== null) {
-      $this->setSrc($src);
-    }
-  }
-
-  /**
    * Sets the path to the image source (The URL of the image file)
    * 
-   * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 
-   * `data-src` attribute instead of the `src` attribute
-   *
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return LazyLoaderInterface for PHP Method Chaining
    */
   public function setSrc(string $src = null) {
-    parent::setSrc("sphp/viewerjs/#../../$src");
+    parent::setSrc("./sphp/viewerjs/index.html#../../$src");
     return $this;
   }
 

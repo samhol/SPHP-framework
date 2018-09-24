@@ -67,7 +67,7 @@ class Polygon extends AbstractArea {
   /**
    * Sets the coordinates of the polygon
    * 
-   * @param  int... $coords coordinates as an array
+   * @param  int... $coord coordinates as an array
    * @return $this for a fluent interface
    */
   public function setCoordinates(int... $coord) {
