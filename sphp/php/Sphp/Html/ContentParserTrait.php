@@ -73,9 +73,9 @@ trait ContentParserTrait {
   public function appendMd(string $md) {
     try {
       if ($this instanceof InlineContainer) {
-        $content = Parser::md()->parseInline($md);
+        $content = Parser::md()->convertString($md, true);
       } else {
-        $content = Parser::md()->parseBlock($md);
+        $content = Parser::md()->convertString($md);
       }
       $this->append($content);
     } catch (\Exception $ex) {

@@ -24,15 +24,24 @@ use Sphp\Stdlib\Filesystem;
  */
 class Markdown implements StringConverter {
 
-  public function convertString(string $string): string {
-    return $this->parseBlock($string);
+  public function convertString(string $string, bool $inlineOnly = false): string {
+    try {
+      if ($inlineOnly) {
+        $data = ParsedownExtraPlugin::instance()->line($string);
+      } else {
+        $data = ParsedownExtraPlugin::instance()->text($string);
+      }
+      return $data;
+    } catch (Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
-  public function convertFile(string $filename): string {
+  public function convertFile(string $filename, bool $inlineOnly = false): string {
     if (!Filesystem::isFile($filename)) {
       throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
-    return $this->convertString(file_get_contents($filename));
+    return $this->convertString(file_get_contents($filename), $inlineOnly);
   }
 
   /**

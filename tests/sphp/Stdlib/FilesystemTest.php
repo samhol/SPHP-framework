@@ -2,7 +2,16 @@
 
 namespace Sphp\Stdlib;
 
+use org\bovigo\vfs\vfsStreamWrapper;
+use org\bovigo\vfs\vfsStreamDirectory;
+use Sphp\Exceptions\FileSystemException;
+
 class FilesystemTest extends \PHPUnit\Framework\TestCase {
+
+  public function setUp() {
+    vfsStreamWrapper::register();
+    vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
+  }
 
   /**
    * @param BitMask $m1
@@ -46,7 +55,7 @@ class FilesystemTest extends \PHPUnit\Framework\TestCase {
   public function validFiles(): array {
     return [
         [__FILE__],
-        ['./tests/sphp/Stdlib/Parsers/files/test.ini']
+        ['./tests/files/test.php']
     ];
   }
 
@@ -57,6 +66,25 @@ class FilesystemTest extends \PHPUnit\Framework\TestCase {
    */
   public function testIsFile(string $path) {
     $this->assertTrue(Filesystem::isFile($path));
+  }
+
+  public function testMkdirAndRmdir() {
+    $spl = Filesystem::mkdir('foo');
+    $this->assertTrue($spl->isDir());
+    $this->assertFalse(Filesystem::rmDir('foo')->isDir());
+  }
+
+  public function testMkfileAndRmfile() {
+    $spl = Filesystem::mkFile('foo/bar.txt');
+    $this->assertTrue($spl->isFile());
+    $this->assertFalse(Filesystem::rmFile('foo/bar.txt')->isFile());
+  }
+
+  public function testGetTextFileRows() {
+    $rows = Filesystem::getTextFileRows('./tests/files/test.php');
+    $this->assertCount(2, $rows);
+    $this->expectException(FileSystemException::class);
+    Filesystem::getTextFileRows('foo.bar');
   }
 
 }

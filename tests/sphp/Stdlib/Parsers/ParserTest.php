@@ -79,6 +79,14 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
   public function testFromFile($file, $expected) {
     $this->assertSame(Parser::fromFile($file), $expected);
   }
+  /**
+   * @param string $file
+   * @param boolean $expected
+   */
+  public function testParsingFromInvalidFile() {
+    $this->expectException(RuntimeException::class);
+    Parser::fromFile('foo.bar');
+  }
 
   /**
    * @dataProvider filepathMap
@@ -91,13 +99,10 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame(Parser::fromString($raw, $type), $expected);
   }
 
-  /**
-   * @param string $file
-   * @param boolean $expected
-   */
-  public function testExceptions() {
+  public function testParsingUnknownStringType() {
     $this->expectException(RuntimeException::class);
-    Parser::fromFile('foo.md');
+    Parser::fromString('foo', 'bar');
   }
+
 
 }

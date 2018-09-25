@@ -11,26 +11,59 @@
 namespace Sphp\Html;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Exceptions\RuntimeException;
 
 class ContentParserTraitTest extends TestCase {
 
-  public function testConcreteMethod() {
+  /**
+   * @var ContentParserTrait
+   */
+  protected $container;
+  protected $appendedStrings;
 
-    $appendedStrings = array();
-    $f = function($subject) use (&$appendedStrings) {
-      $appendedStrings[] = $subject;
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    $this->appendedStrings = [];
+    $f = function($subject) {
+      $this->appendedStrings[] = $subject;
       $this->assertTrue(is_string($subject));
     };
-    $contentParser = $this->getMockForTrait(ContentParserTrait::class);
-    $contentParser->expects($this->any())
+    $this->container = $this->getMockForTrait(ContentParserTrait::class);
+    $this->container->expects($this->any())
             ->method('append')
             ->will($this->returnCallback($f));
+  }
+
+  /**
+   * Tears down the fixture, for example, closes a network connection.
+   * This method is called after a test is executed.
+   */
+  protected function tearDown() {
+    unset($this->container, $this->appendedStrings);
+  }
+
+  public function testAppendMd() {
     $mdString = file_get_contents(__DIR__ . '/../../files/test.md');
-    $mdToHtml = \Sphp\Stdlib\Parsers\Parser::md()->parseBlock($mdString);
-    $contentParser->appendMd($mdString);
-    $contentParser->appendMdFile(__DIR__ . '/../../files/test.md');
-    print_r($appendedStrings);
-    $this->assertTrue($appendedStrings[0] === $mdToHtml);
+    $mdToHtml = Parser::md()->convertString($mdString);
+    $this->container->appendMd($mdString);
+    $this->container->appendMdFile(__DIR__ . '/../../files/test.md');
+    print_r($this->appendedStrings);
+    $this->assertSame($mdToHtml, $this->appendedStrings[0]);
+    $this->expectException(RuntimeException::class);
+    $this->container->appendMdFile('foo.md');
+  }
+
+  public function testAppendRawFile() {
+    $mdString = file_get_contents(__DIR__ . '/../../files/test.md');
+    $this->container->appendRawFile(__DIR__ . '/../../files/test.md');
+    print_r($this->appendedStrings);
+    $this->assertSame($mdString, $this->appendedStrings[0]);
+    $this->expectException(RuntimeException::class);
+    $this->container->appendRawFile('foo.bar');
   }
 
 }

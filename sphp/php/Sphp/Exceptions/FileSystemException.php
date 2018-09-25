@@ -17,6 +17,6 @@ namespace Sphp\Exceptions;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FileSystemException extends SphpException {
+class FileSystemException extends RuntimeException {
   
 }

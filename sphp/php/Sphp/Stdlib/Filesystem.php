@@ -10,7 +10,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\FileSystemException;
 use SplFileObject;
 use Sphp\Stdlib\Arrays;
 use Exception;
@@ -45,12 +45,12 @@ abstract class Filesystem {
    * 
    * @param  string $path  relative path to file
    * @return string full path to file
-   * @throws RuntimeException if the file path cannot be resolved
+   * @throws FileSystemException if the file path cannot be resolved
    */
   public static function getFullPath(string $path): string {
     $fullPath = stream_resolve_include_path($path);
     if ($fullPath === false) {
-      throw new RuntimeException("The path '$path' does not exist");
+      throw new FileSystemException("The path '$path' does not exist");
     }
     return $fullPath;
   }
@@ -60,15 +60,15 @@ abstract class Filesystem {
    *
    * @param  string $path the path to the file
    * @return string the result of the script execution
-   * @throws RuntimeException if the parsing fails for any reason
+   * @throws FileSystemException if the parsing fails for any reason
    */
   public static function toString(string $path): string {
     if (!static::isFile($path)) {
-      throw new RuntimeException("The path '$path' contains no file");
+      throw new FileSystemException("The path '$path' contains no file");
     } else {
       $data = file_get_contents(static::getFullPath($path), false);
       if ($data === false) {
-        throw new RuntimeException("Parsing the file '$path' failed");
+        throw new FileSystemException("Parsing the file '$path' failed");
       }
     }
     return $data;
@@ -84,7 +84,7 @@ abstract class Filesystem {
    * 
    * @param  string|string[],... $paths the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws RuntimeException if the $paths points to no actual file
+   * @throws FileSystemException if the $paths points to no actual file
    * @throws Exception 
    */
   public static function executePhpToString(...$paths): string {
@@ -92,7 +92,8 @@ abstract class Filesystem {
     ob_start();
     foreach (Arrays::flatten($paths) as $path) {
       if (!static::isFile($path)) {
-        throw new RuntimeException("The path '$path' contains no executable PHP script");
+        ob_end_clean();
+        throw new FileSystemException("The path '$path' contains no executable PHP script");
       }
       include($path);
     }
@@ -107,12 +108,15 @@ abstract class Filesystem {
    *
    * @param  string $path the path to the ASCII file
    * @return string[] rows of the ASCII file in an array
-   * @throws RuntimeException if the $path points to no actual file
+   * @throws FileSystemException if the $path points to no actual file
    */
   public static function getTextFileRows(string $path): array {
+    if (!static::isFile($path)) {
+      throw new FileSystemException("The path '$path' contains no file");
+    }
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
-      throw new RuntimeException("The path '$path' contains no file");
+      throw new FileSystemException("The path '$path' contains no file");
     }
     return $result;
   }
@@ -151,21 +155,21 @@ abstract class Filesystem {
    * @param  string $path the directory path
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
    * @return SplFileInfo file info object pointing to the folder
-   * @throws RuntimeException
+   * @throws FileSystemException if the operation fails
    */
   public static function mkdir(string $path, int $mode = 0777): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
-    $realPath = $fileinfo->getRealPath();
+    //$realPath = $fileinfo->getRealPath();
     if (!$fileinfo->isDir()) {
       if (!mkdir($path, $mode, true)) {
-        throw new RuntimeException("Directory path '$path' cannot be created");
+        throw new FileSystemException("Directory path '$path' cannot be created");
       }
     }
     if ($fileinfo->getPerms() !== $mode) {
 
-      $result = chmod($realPath, $mode);
+      $result = chmod($fileinfo->getRealPath(), $mode);
       if (!$result) {
-        throw new RuntimeException("Permission cannot be set");
+        throw new FileSystemException("Permission cannot be set");
       }
     }
     return $fileinfo;
@@ -177,7 +181,7 @@ abstract class Filesystem {
    * @param  string $path the file path
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
    * @return SplFileInfo file info object pointing to the file
-   * @throws RuntimeException if the file creation fails
+   * @throws FileSystemException if the file creation fails
    */
   public static function mkFile(string $path, int $mode = 0777): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
@@ -188,7 +192,7 @@ abstract class Filesystem {
     if (!$fileinfo->isWritable()) {
       $success = fopen($path, 'w') !== false;
       if (!$success) {
-        throw new RuntimeException("File '$path' cannot be created");
+        throw new FileSystemException("File '$path' cannot be created");
       }
     }
     return $fileinfo;
@@ -201,7 +205,7 @@ abstract class Filesystem {
    */
   public static function rmDir(string $path): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
-    if (!$fileinfo->isDir()) {
+    if ($fileinfo->isDir()) {
       rmdir($path);
     }
     return $fileinfo;
@@ -209,7 +213,7 @@ abstract class Filesystem {
 
   public static function rmFile(string $path): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
-    if (!$fileinfo->isFile()) {
+    if ($fileinfo->isFile()) {
       unlink($path);
     }
     return $fileinfo;
