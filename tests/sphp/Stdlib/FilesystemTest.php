@@ -78,6 +78,8 @@ class FilesystemTest extends \PHPUnit\Framework\TestCase {
     $spl = Filesystem::mkFile('foo/bar.txt');
     $this->assertTrue($spl->isFile());
     $this->assertFalse(Filesystem::rmFile('foo/bar.txt')->isFile());
+    $this->expectException(FileSystemException::class);
+    Filesystem::mkFile('$gaR £');
   }
 
   public function testGetTextFileRows() {

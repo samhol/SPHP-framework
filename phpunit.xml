@@ -46,6 +46,10 @@
     <testsuite name="stdlib-parsers">
       <directory>./tests/sphp/Stdlib/Parsers</directory>
     </testsuite>
+    <testsuite name="stdlib-str">
+      <file>./tests/sphp/Stdlib/MbStringTest.php</file>
+      <file>./tests/sphp/Stdlib/StringsTest.php</file>
+    </testsuite>
   </testsuites>
   
   <logging>

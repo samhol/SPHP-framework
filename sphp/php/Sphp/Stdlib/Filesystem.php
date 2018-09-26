@@ -15,6 +15,7 @@ use SplFileObject;
 use Sphp\Stdlib\Arrays;
 use Exception;
 use SplFileInfo;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Tools to work with files and directories
@@ -158,6 +159,10 @@ abstract class Filesystem {
    * @throws FileSystemException if the operation fails
    */
   public static function mkdir(string $path, int $mode = 0777): SplFileInfo {
+
+    $thrower = new ErrorToExceptionThrower(FileSystemException::class);
+
+    $thrower->start();
     $fileinfo = new SplFileInfo($path);
     //$realPath = $fileinfo->getRealPath();
     if (!$fileinfo->isDir()) {
@@ -172,6 +177,7 @@ abstract class Filesystem {
         throw new FileSystemException("Permission cannot be set");
       }
     }
+    $thrower->stop();
     return $fileinfo;
   }
 

@@ -232,6 +232,28 @@ abstract class Strings {
   }
 
   /**
+   * Checks whether the string contains any of the needles
+   *
+   * @param  string $haystack the string being checked
+   * @param  string[] $needles Substrings to look for
+   * @param  string $encoding the encoding parameter is the character encoding.
+   *         Defaults to `mb_internal_encoding()`
+   * @return bool whether the string contains any of the needles
+   */
+  public static function containsAny(string $haystack, array $needles, string $encoding = null): bool {
+    if (empty($needles)) {
+      return false;
+    } else {
+      foreach ($needles as $needle) {
+        if (static::contains($haystack, (string) $needle, $encoding)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
+  /**
    * Returns the number of occurrences of $substring in the given string.
    * By default, the comparison is case-sensitive, but can be made insensitive
    * by setting $caseSensitive to false.
@@ -262,7 +284,7 @@ abstract class Strings {
    * @return boolean true if the haystack starts with any of the given needles
    */
   public static function startsWith(string $haystack, string $needle, $encoding = null): bool {
-    return $needle === "" || mb_strrpos($haystack, $needle, 0, self::getEncoding($encoding)) === 0;
+    return $needle === '' || mb_strrpos($haystack, $needle, 0, self::getEncoding($encoding)) === 0;
   }
 
   /**
@@ -427,7 +449,7 @@ abstract class Strings {
    * @return bool returns true if the string contains only whitespace chars, false otherwise
    */
   public static function isBlank(string $string, string $encoding = null): bool {
-    return self::match($string, '^[[:space:]]*$', $encoding);
+    return self::match($string, '/^[[:space:]]{1,}$/', $encoding);
   }
 
   /**
@@ -437,7 +459,7 @@ abstract class Strings {
    * @return bool returns true if the string contains only hexadecimal chars, false otherwise
    */
   public static function isHexadecimal(string $string): bool {
-    return self::match($string, '/^[[:xdigit:]]*$/');
+    return self::match($string, '/^(#|0x){0,1}[[:xdigit:]]{1,}$/');
   }
 
   public static function isBinary(string $string): bool {
@@ -464,51 +486,29 @@ abstract class Strings {
   }
 
   /**
-   * Checks whether or not the input string contains only upper case characters
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool returns true if the string contains only upper chars, false otherwise
-   */
-  public static function isUpperCase(string $string, string $encoding = null): bool {
-    return static::toUpperCase($string, $encoding) == $string;
-  }
-
-  /**
-   * Converts all characters in the string to uppercase
+   * Perform a case folding on a string
    *
    * @param  string $string the input string
+   * @param  int $mode the mode of the conversion. It can be one of `MB_CASE_UPPER`, `MB_CASE_LOWER`, or `MB_CASE_TITLE`.
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return string input string with all characters being uppercase
+   * @return string A case folded version of string converted in the way specified by mode
    */
-  public static function toUpperCase(string $string, string $encoding = null): string {
-    return \mb_strtoupper($string, static::getEncoding($encoding));
+  public static function convertCase(string $string, int $mode, $encoding = null): string {
+    return \mb_convert_case($string, $mode, static::getEncoding($encoding));
   }
 
   /**
-   * Checks whether or not the input string contains only lower case characters
+   * Checks the case folding of a string
    *
    * @param  string $string checked string
+   * @param  int $mode the mode of the conversion. It can be one of `MB_CASE_UPPER`, `MB_CASE_LOWER`, or `MB_CASE_TITLE`.
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool returns true if the string contains only lower chars, false otherwise
+   * @return bool returns true if the string is converted according to the way specified by mode
    */
-  public static function isLowerCase(string $string, string $encoding = null): bool {
-    return static::toLowerCase($string, $encoding) == $string;
-  }
-
-  /**
-   * Converts all characters in the string to uppercase
-   *
-   * @param  string $string the input string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return string input string with all characters being uppercase
-   */
-  public static function toLowerCase(string $string, $encoding = null): string {
-    return \mb_strtolower($string, static::getEncoding($encoding));
+  public static function caseIs(string $string, int $mode, string $encoding = null): bool {
+    return static::convertCase($string, $mode, $encoding) === $string;
   }
 
   /**
@@ -542,21 +542,6 @@ abstract class Strings {
     }
     //echo "current encoding:(".$encoding.")\n";
     return $encoding;
-  }
-
-  /**
-   * Wraps the string by placing the given wrappers at the both ends of the string
-   *
-   * @param  string $string input string
-   * @param  string $before string's start wrapper
-   * @param  string $after string's end wrapper
-   * @return string wrapped string
-   */
-  public static function surround(string $string, string $before = "'", $after = null): string {
-    if ($after === null) {
-      $after = $before;
-    }
-    return $before . $string . $after;
   }
 
   /**
@@ -618,44 +603,6 @@ abstract class Strings {
       $output = strval($var);
     }
     return $output;
-  }
-
-  /**
-   * Forces a string representation from any type of input parameter
-   *
-   * @param  mixed $var the variable to check
-   * @return booltrue if the variable has a string representation
-   */
-  public static function hasStringRepresentation($var): bool {
-    if ($var === null || is_scalar($var)) {
-      return true;
-    } else if (is_object($var) && method_exists($var, '__toString')) {
-      return true;
-    }
-    return false;
-  }
-
-  /**
-   * Parses the given flags type to an integer
-   * 
-   * @param  int|string|BitMask $flags the flags
-   * @return int parsed flags value
-   * @throws InvalidArgumentException if the value given can not be parsed
-   */
-  public static function parseInt(string $flags): int {
-    if (static::isHexadecimal($flags)) {
-      $flags = str_replace(['#', '0x'], '', $flags);
-      $result = hexdec($flags);
-    } else if (static::isBinary($flags)) {
-      $flags = str_replace(['0b'], '', $flags);
-      $result = bindec($flags);
-    } else {
-      $result = intval($flags, 10);
-    }
-    if ($result > PHP_INT_MAX) {
-      throw new InvalidArgumentException("Value cannot be parsed to integer");
-    }
-    return (int) $result;
   }
 
 }
