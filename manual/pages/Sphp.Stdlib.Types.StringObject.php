@@ -14,5 +14,5 @@ encoding. Therefore it can deal with the issues concerning multibyte encodings i
 MD
 );
 
-\Sphp\Manual\visualize('Sphp/Stdlib/Types/StringObject.php', 'text', false);
+\Sphp\Manual\visualize('Sphp/Stdlib/MbString.php', 'text', false);
 

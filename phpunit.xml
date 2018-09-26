@@ -47,8 +47,7 @@
       <directory>./tests/sphp/Stdlib/Parsers</directory>
     </testsuite>
     <testsuite name="stdlib-str">
-      <file>./tests/sphp/Stdlib/MbStringTest.php</file>
-      <file>./tests/sphp/Stdlib/StringsTest.php</file>
+      <file>./tests/sphp/Stdlib/StringManipulationTest.php</file>
     </testsuite>
   </testsuites>
   

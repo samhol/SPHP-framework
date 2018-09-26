@@ -10,6 +10,8 @@
 
 namespace Sphp\Stdlib;
 
+use Sphp\Exceptions\OutOfBoundsException;
+
 /**
  * Utility class for multibyte string operations
  *
@@ -297,18 +299,10 @@ abstract class Strings {
    * @return boolean true if the haystack ends with any of the given needles
    */
   public static function endsWith(string $haystack, $needle, $encoding = null): bool {
-    if (is_array($needle)) {
-      foreach ($needle as $value) {
-        if (static::endsWith($haystack, $value)) {
-          return true;
-        }
-      }
-      return false;
-    }
     if ($needle === '') {
       return true;
     } else {
-      $enc = self::getEncoding($encoding);
+      $enc = static::getEncoding($encoding);
       return \mb_substr($haystack, -\mb_strlen($needle, $enc), null, $enc) === $needle;
     }
   }
@@ -320,15 +314,15 @@ abstract class Strings {
    * @param  int $index position of the character
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return string|null the character at $index or null if the index does not exist
+   * @return string the character at $index or null if the index does not exist
+   * @throws OutOfBoundsException if the index does not exist
    */
-  public static function charAt(string $string, int $index, string $encoding = null) {
+  public static function charAt(string $string, int $index, string $encoding = null): string {
     $length = static::length($string, $encoding);
-    $result = null;
-    if ($index >= 0 && $length > $index) {
-      $result = mb_substr($string, $index, 1, self::getEncoding($encoding));
+    if (($index >= 0 && $length <= $index) || $length < $index) {
+      throw new OutOfBoundsException("No character exists at the index: ($index)");
     }
-    return $result;
+    return \mb_substr($string, $index, 1, static::getEncoding($encoding));
   }
 
   /**
@@ -339,14 +333,14 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return array an array of string chars
    */
-  public static function chars(string $string, string $encoding = null): array {
+  public static function toArray(string $string, string $encoding = null): array {
     $enc = self::getEncoding($encoding);
     $length = static::length($string, $enc);
-    $chars = array();
-    for ($i = 0; $i < $length; $i++) {
-      $chars[] = mb_substr($string, $i, 1, $enc);
+    $arr = [];
+    for ($i = 0; $i < $length; $i += 1) {
+      $arr[] = mb_substr($string, $i, 1, $enc);
     }
-    return $chars;
+    return $arr;
   }
 
   /**
@@ -462,6 +456,12 @@ abstract class Strings {
     return self::match($string, '/^(#|0x){0,1}[[:xdigit:]]{1,}$/');
   }
 
+  /**
+   * Checks whether or not the input string contains only binary chars
+   * 
+   * @param  string $string checked string
+   * @return bool returns true if the string contains only binary chars, false otherwise
+   */
   public static function isBinary(string $string): bool {
     return self::match($string, '/^[0-1]+$/');
   }
@@ -494,7 +494,7 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return string A case folded version of string converted in the way specified by mode
    */
-  public static function convertCase(string $string, int $mode, $encoding = null): string {
+  public static function convertCase(string $string, int $mode, string $encoding = null): string {
     return \mb_convert_case($string, $mode, static::getEncoding($encoding));
   }
 
@@ -554,12 +554,12 @@ abstract class Strings {
    *
    * @param  string $string the input string
    * @param  int $flags a bitmask of one or more of the flags
-   * @param  string $encoding defines encoding used in conversion
    * @return string the decoded string
    * $link   http://fi1.php.net/manual/en/function.html-entity-decode.php html_entity_decode (PHP)
    */
-  public static function htmlDecode(string $string, $flags = ENT_QUOTES, $encoding = null): string {
-    return html_entity_decode($string, $flags, static::getEncoding($encoding));
+  public static function htmlDecode(string $string, int $flags = ENT_COMPAT): string {
+    $encoding = mb_detect_encoding($string, 'utf-8');
+    return html_entity_decode($string, $flags, $encoding);
   }
 
   /**
@@ -573,12 +573,12 @@ abstract class Strings {
    *
    * @param  string $string the input string
    * @param  int $flags a bitmask of one or more of the flags
-   * @param  string $encoding defines encoding used in conversion
    * @return string the encoded string
    * $link   http://php.net/manual/en/function.htmlentities.php htmlentities (PHP)
    */
-  public static function htmlEncode(string $string, $flags = ENT_COMPAT, $encoding = null): string {
-    return htmlentities($string, $flags, static::getEncoding($encoding));
+  public static function htmlEncode(string $string, int $flags = ENT_COMPAT): string {
+    $encoding = mb_detect_encoding($string, 'utf-8');
+    return htmlentities($string, $flags, $encoding);
   }
 
   /**

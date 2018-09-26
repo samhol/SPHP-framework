@@ -33,7 +33,7 @@ abstract class Arrays {
    * @param  array $array the array to manipulate
    * @param  mixed $key the key of the new current element
    * @return array manipulated array 
-   * @throws \Sphp\Exceptions\OutOfBoundsException if the key does not exist in the array
+   * @throws OutOfBoundsException if the key does not exist in the array
    */
   public static function pointToKey(array &$array, $key) {
     reset($array);
@@ -52,7 +52,7 @@ abstract class Arrays {
    * @param  array $array the array to manipulate
    * @param  mixed $value the value of the new current element
    * @return array manipulated array 
-   * @throws \Sphp\Exceptions\OutOfBoundsException if the value does not exist in the array
+   * @throws OutOfBoundsException if the value does not exist in the array
    */
   public static function pointToValue(array &$array, $value) {
     reset($array);
@@ -172,7 +172,7 @@ abstract class Arrays {
    * @param  array $array2 the second array to compare
    * @return array the full difference between the input arrays
    */
-  public static function diff($array1, $array2): array {
+  public static function diff(array $array1, array $array2): array {
     $aReturn = array();
 
     foreach ($array1 as $mKey => $mValue) {

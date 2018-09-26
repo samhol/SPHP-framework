@@ -10,20 +10,10 @@ $strings = Manual\api()->classLinker(Strings::class);
 Manual\md(<<<MD
 ##The $strings class
 
-$strings class is a static utility class for multibyte PHP $strLink comparison and matching.
+$strings class is a static utility class for multibyte PHP $strLink manipulation, comparison and matching functions.
 MD
 );
-Manual\example('Sphp/Stdlib/Types/Strings1.php', 'text', false)
-        ->setExamplePaneTitle('Multibyte String testing example')
-        ->setOutputSyntaxPaneTitle('String testing results')
-        ->printHtml();
-
-Manual\md(<<<MD
-$strings class has also a couple of handy PHP $strLink manipulation functions.
-MD
-);
-
-Manual\example('Sphp/Stdlib/Types/Strings2.php', 'text', false)
-        ->setExamplePaneTitle('Multibyte String manipulation example')
-        ->setOutputSyntaxPaneTitle('String manipulation results')
+Manual\example('Sphp/Stdlib/Strings.php', 'text', false)
+        ->setExamplePaneTitle('Multibyte String utility example')
+        ->setOutputSyntaxPaneTitle('String utility results')
         ->printHtml();

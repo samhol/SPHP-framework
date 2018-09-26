@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Stdlib;
 
-use Sphp\Exceptions\BadMethodCallException;
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\OutOfBoundsException;
 
-class MbStringTest extends TestCase {
+class StringManipulationTest extends TestCase {
 
   public function testGetEncoding() {
     $this->assertEquals('UTF-8', MbString::create('')->getEncoding());
@@ -17,14 +26,6 @@ class MbStringTest extends TestCase {
    */
   public function compareToString(string $string, MbString $strObj) {
     $this->assertSame($string, "$strObj");
-  }
-
-  /**
-   * @param MbString $obj1
-   * @param MbString $obj2
-   */
-  public function identical(MbString $obj1, MbString $obj2) {
-    $this->assertTrue($obj1 == $obj2);
   }
 
   /**
@@ -49,10 +50,12 @@ class MbStringTest extends TestCase {
   public function testIsEmpty($empty, string $encoding) {
     $plain = "$empty";
     $count = mb_strlen($plain, $encoding);
-    $this->assertSame(Strings::isEmpty($empty), ($count === 0));
+    $this->assertSame(Strings::isEmpty($plain, $encoding), ($count === 0));
     $string = MbString::create($empty);
-    $this->assertSame($string->isEmpty($empty), ($count === 0));
-    $this->assertEquals($string->length($empty), $count);
+    $this->assertSame($string->isEmpty(), ($count === 0));
+    $this->assertEquals($count, $string->length());
+    $this->assertEquals($count, $string->count());
+    $this->assertSame($count, Strings::length($plain, $encoding));
   }
 
   /**
@@ -283,7 +286,6 @@ class MbStringTest extends TestCase {
     return [
         ['fo obär ', 'UTF-8'],
         ["\n\t", 'UTF-8'],
-        ['', 'UTF-8'],
         ['       ', 'UTF-8'],
         [' ä ', 'UTF-8'],
     ];
@@ -292,13 +294,13 @@ class MbStringTest extends TestCase {
   /**
    * @dataProvider iterationTestData
    * @param string $string
-   * @param array $args
-   * @param string $expected
+   * @param string $charset
    */
-  public function testIterating($string, $charset) {
+  public function testIterating(string $string, string $charset) {
     $obj = MbString::create($string, $charset);
     $strLen = \mb_strlen($string, $charset);
     $this->assertSame($strLen, $obj->count());
+    $this->assertSame($strLen, Strings::length($string, $charset));
     foreach ($obj as $key => $char) {
       //echo "char$key:'$char'\n";
       //echo "charAt($key):'" . $obj->charAt($key) . "'\n";
@@ -306,24 +308,57 @@ class MbStringTest extends TestCase {
 
       $this->assertTrue(isset($obj[$key]));
       $this->assertEquals($obj->charAt($key), $char);
+      $this->assertEquals(Strings::charAt($string, $key, $charset), $char);
     }
     $this->assertfalse(isset($obj[$strLen]));
-    $this->expectException(\Sphp\Exceptions\OutOfBoundsException::class);
+    $this->expectException(OutOfBoundsException::class);
     $err = $obj[$strLen];
-    $this->expectException(\Sphp\Exceptions\OutOfBoundsException::class);
+    $this->expectException(OutOfBoundsException::class);
     $err1 = $obj->charAt($strLen);
+  }
+
+  /**
+   * @dataProvider iterationTestData
+   * @param string $string
+   * @param string $charset
+   */
+  public function testCharAt(string $string, string $charset) {
+    $obj = MbString::create($string, $charset);
+    $strLen = \mb_strlen($string, $charset);
+    for ($i = 0; $i < $strLen; $i++) {
+      //echo "char$key:'$char'\n";
+      //echo "charAt($key):'" . $obj->charAt($key) . "'\n";
+      //echo "string[$key]:'" . $string[$key] . "'\n";
+      $char = mb_substr($string, $i, 1, $charset);
+      $this->assertTrue(isset($obj[$i]));
+      $this->assertEquals($obj->charAt($i), $char);
+      $this->assertEquals(Strings::charAt($string, $i, $charset), $char);
+    }
+  }
+
+  /**
+   * @dataProvider iterationTestData
+   * @param string $string
+   * @param string $charset
+   */
+  public function testInvalidCharAt() {
+    $this->expectException(OutOfBoundsException::class);
+    Strings::charAt('', 0);
   }
 
   public function testOffsetUnset() {
     $obj = MbString::create('foo');
-    $this->expectException(BadMethodCallException::class);
-    unset($obj[0]);
+    unset($obj[2]);
+    $this->assertSame('fo', "$obj");
+    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
+    unset($obj[2]);
   }
 
   public function testOffseSet() {
     $obj = MbString::create('foo');
-    $this->expectException(BadMethodCallException::class);
-    $obj[0] = 'a';
+    //$this->expectException(BadMethodCallException::class);
+    $obj[] = '!';
+    $this->assertSame('foo!', "$obj");
   }
 
   /**
@@ -440,16 +475,34 @@ class MbStringTest extends TestCase {
     $this->assertFalse(Strings::containsAll($seed, []));
   }
 
-  public function testToArray() {
-    $letters = range('a', 'f');
-    $string = implode($letters);
+  /**
+   * @return array
+   */
+  public function charArrays(): array {
+    return [
+        [['0'], 'UTF-8'],
+        [range('a', 'f'), 'UTF-8'],
+        [['ä', 'å', 'ö', 'ψ', 'η', 'μ', 'έ', 'ν', 'η', 'γ', 'η'], 'UTF-8'],
+    ];
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::toArray
+   * @dataProvider charArrays
+   * @param array $chars
+   * @param string $encoding
+   */
+  public function testToArray(array $chars, string $encoding) {
+    $string = implode($chars);
     $obj = MbString::create($string);
-    $this->assertSame($letters, $obj->toArray());
+    $this->assertSame($chars, $obj->toArray());
+    $this->assertSame($chars, Strings::toArray($string, $encoding));
     $this->assertSame([], MbString::create('')->toArray());
   }
 
   public function testReplacing() {
     $strObj = MbString::create('a-b');
+
     $this->compareToString('-', $strObj->regexReplace('[A-Za-z0-9]', ''));
     $this->compareToString('-b', $strObj->replace('a', ''));
   }
@@ -483,7 +536,6 @@ class MbStringTest extends TestCase {
   }
 
   /**
-   * 
    * @return array
    */
   public function collapseWhitespaceData() {
@@ -492,6 +544,7 @@ class MbStringTest extends TestCase {
         [" äa \n\t ", "äa"],
     ];
   }
+
   /**
    * @covers \Sphp\Stdlib\Strings::collapseWhitespace
    * @dataProvider collapseWhitespaceData
@@ -505,4 +558,37 @@ class MbStringTest extends TestCase {
     $this->assertTrue($strObj !== $collapsed);
     $this->compareToString($expected, $collapsed);
   }
+
+  /**
+   * @return array
+   */
+  public function htmlData() {
+    return [
+        ["A 'quote' is <b>bold</b>", "A 'quote' is &lt;b&gt;bold&lt;/b&gt;"],
+    ];
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::htmlEncode
+   * @covers \Sphp\Stdlib\Strings::htmlDecode
+   * @dataProvider htmlData
+   *
+   * @param string $html
+   * @param string $plain
+   */
+  public function testHtmlCoding(string $html, string $plain) {
+    $this->assertEquals($plain, Strings::htmlEncode($html));
+    $htmlObj = MbString::create($html);
+    $plainObj = $htmlObj->htmlEncode();
+    $this->assertTrue($htmlObj !== $plainObj);
+    $this->compareToString($plain, $plainObj);
+
+
+    $this->assertEquals($html, Strings::htmlDecode($plain));
+    $plainObj1 = MbString::create($plain);
+    $htmlObj1 = $htmlObj->htmlDecode();
+    $this->assertTrue($htmlObj1 !== $plainObj1);
+    $this->compareToString($html, $htmlObj1);
+  }
+
 }

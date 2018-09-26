@@ -13,6 +13,7 @@ namespace Sphp\Stdlib;
 use Countable;
 use ArrayAccess;
 use Iterator;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Datastructures\Arrayable;
@@ -20,18 +21,21 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 /**
  * Implements a multi byte string class
  * 
- * @method bool isAlpha()  Checks whether or not the input string contains only alphabetic chars
+ * @method bool isBinary() Checks whether or not the input string contains only binary chars
+ * @method bool isHexadecimal() Checks whether or not the input string contains only hexadecimal chars
+ * @method bool isAlpha() Checks whether or not the input string contains only alphabetic chars
  * @method bool isAlphanumeric() Checks whether or not the input string contains only alphanumeric chars
  * @method bool caseIs(int $case) Checks the case folding
- * @method static convertCase(int $case) Perform a case folding returning a new instance
+ * @method \Sphp\Stdlib\MbString convertCase(int $case) Perform a case folding returning a new instance
+ * @method \Sphp\Stdlib\MbString trim(string $charMask = null) Returns a new instance with whitespace removed from the start end the end
+ * @method \Sphp\Stdlib\MbString trimLeft(string $charMask = null) Returns a new instance with whitespace removed from the start
+ * @method \Sphp\Stdlib\MbString trimRight(string $charMask = null) Returns a new instance with whitespace removed from the end
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
-
-  private static $stringReflector;
 
   /**
    * @var int
@@ -70,15 +74,23 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   public function __call(string $name, array $arguments) {
-    if (self::$stringReflector === null) {
-      self::$stringReflector = new \ReflectionClass(Strings::class);
-    }
-    if (!self::$stringReflector->hasMethod($name)) {
-      throw new BadMethodCallException();
+    $stringReflector = new \ReflectionClass(Strings::class);
+
+    if (!$stringReflector->hasMethod($name)) {
+      throw new BadMethodCallException("Method '$name' does not exist");
     }
     array_unshift($arguments, $this->str);
-    $arguments[] = $this->encoding;
-    $result = self::$stringReflector->getMethod($name)->invokeArgs(null, $arguments);
+    $method = $stringReflector->getMethod($name);
+    if ($method->getNumberOfParameters() > count($arguments)) {
+      foreach ($method->getParameters() as $num => $param) {
+        if (!isset($arguments[$num]) && $param->isDefaultValueAvailable()) {
+          $arguments[$num] = $param->getDefaultValue();
+          // echo '$arguments[' . $num . '] = ' . var_export($param->getDefaultValue(), true);
+        }
+      }
+    }
+    //$arguments[] = $this->encoding;
+    $result = $stringReflector->getMethod($name)->invokeArgs(null, $arguments);
     if (is_string($result)) {
       return new static($result);
     } else {
@@ -122,15 +134,6 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   /**
-   * Returns the length of the given string
-   * 
-   * @return int the length of the given string
-   */
-  public function length(): int {
-    return \mb_strlen($this->str, $this->encoding);
-  }
-
-  /**
    * Returns the length of the string
    *
    * @return int the length of the string
@@ -171,34 +174,12 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   /**
-   * Returns the character at the given index
-   * 
-   * Offsets may be negative to count from the last character in the string.
-   *
-   * @param  int $index The index from which to retrieve the char
-   * @return string the character at the specified index
-   * @throws OutOfBoundsException if the index does not exist
-   */
-  public function charAt(int $index): string {
-    $length = $this->length();
-    if (($index >= 0 && $length <= $index) || $length < $index) {
-      throw new OutOfBoundsException("No character exists at the index: ($index)");
-    }
-    return \mb_substr($this->str, $index, 1, $this->encoding);
-  }
-
-  /**
    * Returns an array consisting of the characters in the string
    *
    * @return string[] An array of individual chars
    */
   public function toArray(): array {
-    $arr = [];
-    $length = mb_strlen($this->str, $this->encoding);
-    for ($i = 0; $i < $length; $i += 1) {
-      $arr[] = mb_substr($this->str, $i, 1, $this->encoding);
-    }
-    return $arr;
+    return Strings::toArray($this->str, $this->encoding);
   }
 
   /**
@@ -279,7 +260,19 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws BadMethodCallException object is immutable
    */
   public function offsetSet($offset, $value) {
-    throw new BadMethodCallException("Object is immutable, cannot modify chars directly");
+    if ($offset === null) {
+      $offset = $this->count();
+    }
+    if (!is_int($offset)) {
+      throw new InvalidArgumentException('Offset must be an integer');
+    }
+    if ($offset < 0 || $offset > $this->count()) {
+      throw new InvalidArgumentException('Offset must be an integer');
+    }
+    if (mb_strlen($value) > 1) {
+      throw new InvalidArgumentException('Value must be exactly one char');
+    }
+    $this->str = substr_replace($this->str, $value, $offset, 1);
   }
 
   /**
@@ -289,7 +282,13 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws BadMethodCallException always because object is immutable
    */
   public function offsetUnset($offset) {
-    throw new BadMethodCallException("Object is immutable, cannot unset chars directly");
+    if (!is_int($offset)) {
+      throw new InvalidArgumentException("Object is immutable, cannot unset chars directly");
+    }
+    if ($offset < 0 || $offset > $this->count() - 1) {
+      throw new InvalidArgumentException("Object is immutable, cannot unset chars directly");
+    } 
+    $this->str = substr_replace($this->str, '', $offset, 1);
   }
 
   /**
