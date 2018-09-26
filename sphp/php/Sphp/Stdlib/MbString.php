@@ -174,6 +174,19 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   /**
+   * Returns the character at $index, with indexes starting at 0
+   *
+   * @param  int $index position of the character
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
+   * @return string the character at $index or null if the index does not exist
+   * @throws OutOfBoundsException if the index does not exist
+   */
+  public function charAt(int $index, string $encoding = null): string {
+    return Strings::charAt($this->str, $index, $encoding);
+  }
+
+  /**
    * Returns an array consisting of the characters in the string
    *
    * @return string[] An array of individual chars
@@ -245,19 +258,28 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * Returns the character at the given index
    * 
    * @param  mixed $offset
-   * @return string
+   * @return string character at the given index 
    * @throws OutOfBoundsException if the offset does not exist
+   * @throws InvalidArgumentException
    */
   public function offsetGet($offset) {
+    if (!is_int($offset)) {
+      throw new InvalidArgumentException('Offset must be an integer');
+    }
+    if ($offset < 0 || $offset > $this->count() - 1) {
+      throw new OutOfBoundsException('Offset must be between 0 and ' . $this->count() . ' or null');
+    }
     return $this->charAt($offset);
   }
 
   /**
+   * Sets the character at given $offset 
    * 
    * @param  mixed $offset
    * @param  mixed $value
    * @return void
-   * @throws BadMethodCallException object is immutable
+   * @throws InvalidArgumentException
+   * @throws OutOfBoundsException
    */
   public function offsetSet($offset, $value) {
     if ($offset === null) {
@@ -267,7 +289,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
       throw new InvalidArgumentException('Offset must be an integer');
     }
     if ($offset < 0 || $offset > $this->count()) {
-      throw new InvalidArgumentException('Offset must be an integer');
+      throw new OutOfBoundsException('Offset must be between 0 and ' . $this->count() . ' or null');
     }
     if (mb_strlen($value) > 1) {
       throw new InvalidArgumentException('Value must be exactly one char');
@@ -276,18 +298,20 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   /**
+   * Unsets the character at the given index
    * 
    * @param  mixed $offset
    * @return void
-   * @throws BadMethodCallException always because object is immutable
+   * @throws InvalidArgumentException
+   * @throws OutOfBoundsException
    */
   public function offsetUnset($offset) {
     if (!is_int($offset)) {
       throw new InvalidArgumentException("Object is immutable, cannot unset chars directly");
     }
     if ($offset < 0 || $offset > $this->count() - 1) {
-      throw new InvalidArgumentException("Object is immutable, cannot unset chars directly");
-    } 
+      throw new OutOfBoundsException("Object is immutable, cannot unset chars directly");
+    }
     $this->str = substr_replace($this->str, '', $offset, 1);
   }
 

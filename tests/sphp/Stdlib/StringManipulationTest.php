@@ -49,7 +49,8 @@ class StringManipulationTest extends TestCase {
    */
   public function testIsEmpty($empty, string $encoding) {
     $plain = "$empty";
-    $count = mb_strlen($plain, $encoding);
+    //var_dump($plain);
+    $count = \mb_strlen($plain, $encoding);
     $this->assertSame(Strings::isEmpty($plain, $encoding), ($count === 0));
     $string = MbString::create($empty);
     $this->assertSame($string->isEmpty(), ($count === 0));
@@ -296,39 +297,10 @@ class StringManipulationTest extends TestCase {
    * @param string $string
    * @param string $charset
    */
-  public function testIterating(string $string, string $charset) {
-    $obj = MbString::create($string, $charset);
-    $strLen = \mb_strlen($string, $charset);
-    $this->assertSame($strLen, $obj->count());
-    $this->assertSame($strLen, Strings::length($string, $charset));
-    foreach ($obj as $key => $char) {
-      //echo "char$key:'$char'\n";
-      //echo "charAt($key):'" . $obj->charAt($key) . "'\n";
-      //echo "string[$key]:'" . $string[$key] . "'\n";
-
-      $this->assertTrue(isset($obj[$key]));
-      $this->assertEquals($obj->charAt($key), $char);
-      $this->assertEquals(Strings::charAt($string, $key, $charset), $char);
-    }
-    $this->assertfalse(isset($obj[$strLen]));
-    $this->expectException(OutOfBoundsException::class);
-    $err = $obj[$strLen];
-    $this->expectException(OutOfBoundsException::class);
-    $err1 = $obj->charAt($strLen);
-  }
-
-  /**
-   * @dataProvider iterationTestData
-   * @param string $string
-   * @param string $charset
-   */
   public function testCharAt(string $string, string $charset) {
     $obj = MbString::create($string, $charset);
     $strLen = \mb_strlen($string, $charset);
     for ($i = 0; $i < $strLen; $i++) {
-      //echo "char$key:'$char'\n";
-      //echo "charAt($key):'" . $obj->charAt($key) . "'\n";
-      //echo "string[$key]:'" . $string[$key] . "'\n";
       $char = mb_substr($string, $i, 1, $charset);
       $this->assertTrue(isset($obj[$i]));
       $this->assertEquals($obj->charAt($i), $char);
@@ -337,28 +309,12 @@ class StringManipulationTest extends TestCase {
   }
 
   /**
-   * @dataProvider iterationTestData
    * @param string $string
    * @param string $charset
    */
   public function testInvalidCharAt() {
     $this->expectException(OutOfBoundsException::class);
     Strings::charAt('', 0);
-  }
-
-  public function testOffsetUnset() {
-    $obj = MbString::create('foo');
-    unset($obj[2]);
-    $this->assertSame('fo', "$obj");
-    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
-    unset($obj[2]);
-  }
-
-  public function testOffseSet() {
-    $obj = MbString::create('foo');
-    //$this->expectException(BadMethodCallException::class);
-    $obj[] = '!';
-    $this->assertSame('foo!', "$obj");
   }
 
   /**
@@ -392,14 +348,11 @@ class StringManipulationTest extends TestCase {
   public function hexTestData(): array {
     return [
         ['#', false],
-        ['#12a', true],
         ['0x', false],
         ['0123456789ABCDEF', true],
-        ['ABCDEF', true],
-        ['abcdef', true],
-        ['0123456789abcdef', true],
-        ['0x123456789abcdef', true],
-        ['#0123456789abcdef', true],
+        ['0123456789abcdefABCDEF', true],
+        ['0x123456789abcdefABCDEF', true],
+        ['#0123456789abcdefABCDEF', true],
         ['f,', false],
         ["\n\t", false],
         ['', false],
@@ -501,10 +454,14 @@ class StringManipulationTest extends TestCase {
   }
 
   public function testReplacing() {
-    $strObj = MbString::create('a-b');
+    $string = 'a-b';
+    $strObj = MbString::create($string);
 
     $this->compareToString('-', $strObj->regexReplace('[A-Za-z0-9]', ''));
     $this->compareToString('-b', $strObj->replace('a', ''));
+
+    $this->assertEquals('-', Strings::regexReplace($string, '[A-Za-z0-9]', ''));
+    $this->assertEquals('-b', Strings::replace($string, 'a', ''));
   }
 
   /**

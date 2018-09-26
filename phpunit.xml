@@ -48,6 +48,7 @@
     </testsuite>
     <testsuite name="stdlib-str">
       <file>./tests/sphp/Stdlib/StringManipulationTest.php</file>
+      <file>./tests/sphp/Stdlib/MbStringSpecificTest.php</file>
     </testsuite>
   </testsuites>
   

@@ -394,8 +394,8 @@ abstract class Strings {
    * @param  string $string checked string
    * @return boolean true if the string is empty, false otherwise
    */
-  public static function isEmpty(string $string = null): bool {
-    return empty($string) && $string !== "0" && $string !== 0 && $string !== 0.0;
+  public static function isEmpty(string $string): bool {
+    return $string === '';
   }
 
   /**
