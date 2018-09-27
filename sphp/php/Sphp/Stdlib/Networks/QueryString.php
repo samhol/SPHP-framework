@@ -270,7 +270,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return boolean current iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->query);
+    return null !== key($this->query);
   }
 
   /**

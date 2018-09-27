@@ -217,7 +217,7 @@ class Sequence implements Iterator {
    * @return boolean current iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->sequence);
+    return null !== key($this->sequence);
   }
 
 }

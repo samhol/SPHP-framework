@@ -145,7 +145,9 @@ class Collection implements Iterator, CollectionInterface {
    * @return $this for a fluent interface
    */
   public function merge($items) {
-    $this->items = array_merge($this->items, $this->getArrayableItems($items));
+    foreach ($this->getArrayableItems($items) as $key => $value) {
+      $this->items[$key] = $value;
+    }
     return $this;
   }
 
@@ -317,10 +319,10 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return boolean current if iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->items);
+    return null !== key($this->items);
   }
 
 }
