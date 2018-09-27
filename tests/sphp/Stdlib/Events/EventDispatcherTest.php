@@ -13,69 +13,21 @@ namespace Sphp\Stdlib\Events;
 use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\InvalidArgumentException;
 
-class EventDispatcherTest extends TestCase implements EventListener {
-
-  /**
-   * @var EventDispatcher
-   */
-  protected $eventDispacher;
-
-  /**
-   * @var \Closure
-   */
-  protected $function;
-
-  /**
-   * @var DataEvent
-   */
-  protected $dataEvent;
-  protected $callCounter = [];
+class EventDispatcherTest extends TestCase {
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->eventDispacher = new EventDispatcher();
-
-    $this->dataEvent = new DataEvent('DataEvent', $this, ['foo', new \stdClass()]);
-  }
-
-  public function listenerFunction() {
-    if (!is_callable($this->function)) {
-      $this->function = function ($event) {
-        $this->addCall($event);
-        $this->assertInstanceOf(Event::class, $event);
-      };
-    } return $this->function;
-  }
-
-  protected function addCall(Event $event) {
-    if (!array_key_exists($event->getName(), $this->callCounter)) {
-      $this->callCounter[$event->getName()] = 1;
-    } else {
-      $this->callCounter[$event->getName()] += 1;
-    }
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    unset($this->eventDispacher, $this->function, $this->dataEvent);
-  }
-
-  public function on(Event $event) {
-    $this->assertFalse($event->isStopped());
-    $this->addCall($event);
+    
   }
 
   public function testCreation(): EventDispatcher {
-    $dispatcher = new EventDispatcher();
-    $singelton = EventDispatcher::instance($dispatcher);
-    $this->assertSame($dispatcher, $singelton);
-    return $singelton;
+    $singelton1 = EventDispatcher::instance();
+    $singelton2 = EventDispatcher::instance();
+    $this->assertSame($singelton1, $singelton2);
+    return $singelton2;
   }
 
   /**
@@ -84,25 +36,62 @@ class EventDispatcherTest extends TestCase implements EventListener {
    * @return EventDispatcher
    */
   public function testAddListener(EventDispatcher $dispatcher): EventDispatcher {
-    $l = $this->getMockBuilder(EventListener::class)
-            ->getMock();
-    $f = function($subject) {
-      $this->appendedStrings[] = $subject;
-      //$this->assertTrue(is_string($subject));
+    $order = [];
+    $fooListener = $this->getMockBuilder(EventListener::class)->getMock();
+    $fooF = function(Event $event) {
+      echo 'Event: ' . $event->getName() . " triggered!\n";
+      $this->assertSame('foo', $event->getName());
     };
-    $l->expects($this->any())
+    $fooListener->expects($this->any())
+            ->method('on')
+            ->will($this->returnCallback($fooF));
+    $listener = $this->getMockBuilder(EventListener::class)->getMock();
+    $f = function(Event $event) use (&$order) {
+      $order[] = $event;
+      echo 'Event: ' . $event->getName() . " triggered!\n";
+      $name = $event->getName();
+      $this->assertTrue($name === 'bar' || $name === 'foo' || $name === 'baz');
+    };
+    $listener->expects($this->any())
             ->method('on')
             ->will($this->returnCallback($f));
     $this->assertFalse($dispatcher->hasListeners('foo'));
     $this->assertEmpty($dispatcher->getListeners('foo'));
-    $this->assertSame($dispatcher, $dispatcher->addListener('foo', $this));
+
+    $this->assertSame($dispatcher, $dispatcher->addListener('foo', $fooListener));
     $this->assertTrue($dispatcher->hasListeners('foo'));
-    $this->assertSame($this, $dispatcher->getListeners('foo')[0]);
+    $this->assertSame($fooListener, $dispatcher->getListeners('foo')[0]);
+
+    $this->assertSame($dispatcher, $dispatcher->addListener('foo', $listener));
     $this->assertEmpty($dispatcher->getListeners('bar'));
-    $this->assertSame($dispatcher, $dispatcher->addListener('bar', $this->listenerFunction()));
+    $this->assertSame($dispatcher, $dispatcher->addListener('bar', $listener));
+    $this->assertSame($dispatcher, $dispatcher->addListener('baz', $listener));
     $this->assertTrue($dispatcher->hasListeners('bar'));
-    $this->assertSame($this->listenerFunction(), $dispatcher->getListeners('bar')[0]);
     return $dispatcher;
+  }
+
+  public function testPriority() {
+    $order = [];
+    $f1 = function() use (&$order) {
+      $order[] = 'f1';
+    };
+    $f10 = function() use (&$order) {
+      $order[] = 'f10';
+    };
+    $f100_1 = function() use (&$order) {
+      $order[] = 'f100_1';
+    };
+    $f100_2 = function() use (&$order) {
+      $order[] = 'f100_2';
+    };
+
+    $dispatcher = new EventDispatcher();
+    $dispatcher->addListener('foo', $f1, 1);
+    $dispatcher->addListener('foo', $f100_1, 100);
+    $dispatcher->addListener('foo', $f10, 10);
+    $dispatcher->addListener('foo', $f100_2, 100);
+    $dispatcher->triggerDataEvent('foo', 'foo', ['1']);
+    $this->assertEquals(['f100_1', 'f100_2', 'f10', 'f1'], $order);
   }
 
   public function testAddInvalidListener() {
@@ -119,6 +108,8 @@ class EventDispatcherTest extends TestCase implements EventListener {
   public function testEventTriggering(EventDispatcher $dispatcher): EventDispatcher {
     $data = ['foo-data'];
     $event = $dispatcher->triggerDataEvent('foo', $this, $data);
+    $event1 = $dispatcher->triggerDataEvent('bar', $this, $data);
+    $dispatcher->trigger(new DataEvent('baz'));
     $this->assertSame('foo', $event->getName());
     $this->assertSame($this, $event->getSubject());
     $this->assertSame($data, $event->getData());
@@ -133,16 +124,29 @@ class EventDispatcherTest extends TestCase implements EventListener {
    * @return EventDispatcher
    */
   public function testListenerRemoving(EventDispatcher $dispatcher) {
-    $this->assertSame($dispatcher, $dispatcher->addListener('bar', $this));
-    $this->assertSame($dispatcher, $dispatcher->addListener('baz', $this));
-    $this->assertSame($dispatcher, $dispatcher->remove($this, 'baz'));
+    $this->assertTrue($dispatcher->hasListeners('foo'));
+    $this->assertSame($dispatcher, $dispatcher->removeListenersOf('foo'));
+    $this->assertFalse($dispatcher->hasListeners('foo'));
+    $this->assertSame($dispatcher, $dispatcher->removeListenersOf('bar'));
+    $this->assertFalse($dispatcher->hasListeners('bar'));
+    $this->assertSame($dispatcher, $dispatcher->removeListenersOf('baz'));
     $this->assertFalse($dispatcher->hasListeners('baz'));
-    $this->assertTrue($dispatcher->hasListeners('bar'));
-    $this->assertSame($dispatcher, $dispatcher->remove($this));
-    $this->assertSame($dispatcher, $dispatcher->remove($this->listenerFunction()));
-    //$this->assertFalse($dispatcher->hasListeners('foo'));
-    //$this->assertFalse($dispatcher->hasListeners('bar'));
-    //$this->assertFalse($dispatcher->hasListeners('baz'));
+    $dispatcher->addListener('foobar', $f = function () {
+      
+    });
+    $this->assertTrue($dispatcher->hasListeners('foobar'));
+    $dispatcher->addListener('bar', $f);
+    $dispatcher->addListener('baz', $f);
+    $this->assertSame($dispatcher, $dispatcher->removeListener($f, 'baz'));
+    $this->assertFalse($dispatcher->hasListeners('baz'));
+    $this->assertSame($dispatcher, $dispatcher->removeListener($f));
+    /* $this->assertTrue($dispatcher->hasListeners('bar'));
+      $this->assertSame($dispatcher, $dispatcher->remove($this));
+      $this->assertSame($dispatcher, $dispatcher->remove($this->listenerFunction()));
+      $dispatcher->removeListenersOf('foo');
+      $this->assertFalse($dispatcher->hasListeners('foo'));
+      $this->assertFalse($dispatcher->hasListeners('bar'));
+      //$this->assertFalse($dispatcher->hasListeners('baz')); */
   }
 
 }

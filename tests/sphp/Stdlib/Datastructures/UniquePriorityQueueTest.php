@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Stdlib\Datastructures;
 
 use Sphp\Exceptions\UnderflowException;
@@ -23,6 +31,10 @@ class UniquePriorityQueueTest extends \PHPUnit\Framework\TestCase {
     $queue->enqueue('-', 6);
     $queue->remove('O');
     $this->assertSame('F-BAR', implode($queue->toArray()));
+    $queue->remove('BAR');
+    $queue->remove('-');
+    $queue->remove('F');
+    $this->assertEmpty($queue->toArray());
   }
   public function testEmptyPeek() {
     $queue = new UniquePriorityQueue();

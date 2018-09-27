@@ -30,7 +30,6 @@ class RemoteResourceTest extends \PHPUnit\Framework\TestCase {
   public function remoteFilePaths(): array {
     return [
         ['http://placehold.it/350x150/0f0/fff', true],
-        ['http://www.samiholck.com/', true],
         ['http://www.google.fi/', true],
     ];
   }

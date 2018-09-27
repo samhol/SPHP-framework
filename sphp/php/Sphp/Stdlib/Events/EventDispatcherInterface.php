@@ -10,6 +10,8 @@
 
 namespace Sphp\Stdlib\Events;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Defines minimum requirements of an Event Dispatcher
  * 
@@ -24,30 +26,39 @@ interface EventDispatcherInterface {
   /**
    * Adds a new listener to an event
    *
-   * @param  string $event event name(s) of the event(s) the listener listens to
+   * @param  string $eventName event name of the event the listener listens to
    * @param  EventListener|\Closure $listener the listener to add 
    * @param  int $priority optional priority of the listener: priorities are 
    *         handled like queues, and multiple attachments added to the same 
    *         priority queue will be treated in the order of insertion.
    * @return $this for a fluent interface
-   * @throws \InvalidArgumentException if the `$listener` type is illegal
+   * @throws InvalidArgumentException if the `$listener` type is illegal
    * @return $this for a fluent interface
    */
-  public function addListener(string $event, $listener, int $priority = 0);
+  public function addListener(string $eventName, $listener, int $priority = 0);
 
   /**
    * Removes an listener from the registry
    *
    * @param  EventListener|callable $listener the listener to remove
+   * @param  string|null $eventName optional name of the event
    * @return $this for a fluent interface
    */
-  public function remove($listener, string $evantName = null);
+  public function removeListener($listener, string $eventName = null);
+
+  /**
+   * Removes listeners of a specific event name from the registry
+   * *
+   * @param  string $eventName the name of the event
+   * @return $this for a fluent interface
+   */
+  public function removeListenersOf(string $eventName);
 
   /**
    * Triggers a new event to all corresponding listeners
    *
    * @param    Event $event event object
-   * @return   self for PHP Method Chaining
+   * @return   $this for a fluent interface
    * @triggers {@link Event} the `$event` passed as parameter 
    */
   public function trigger(Event $event);
@@ -55,16 +66,16 @@ interface EventDispatcherInterface {
   /**
    * Checks whether the given event has listeners
    *
-   * @param  Event|string $event event object or the name of the event
+   * @param  string $eventName the name of the event
    * @return boolean true if event has listeners, false otherwise
    */
-  public function hasListeners($event): bool;
+  public function hasListeners(string $eventName): bool;
 
   /**
    * Get all listeners for an event
    *
-   * @param  Event|string $event event object or the name of the event
+   * @param  string $eventName the name of the event
    * @return mixed[] containing the listener objects
    */
-  public function getListeners($event): array;
+  public function getListeners(string $eventName): array;
 }

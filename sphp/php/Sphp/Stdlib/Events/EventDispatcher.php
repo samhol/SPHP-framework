@@ -39,17 +39,12 @@ class EventDispatcher implements EventDispatcherInterface {
   /**
    * Returns the globally available instance of event manager
    *
-   * @param  EventDispatcher $manager optional event manager instance
    * @return EventDispatcher the global event manager
    */
-  public static function instance(EventDispatcher $manager = null): EventDispatcher {
-    if ($manager instanceof EventDispatcher) {
-      self::$globalDispatcher = $manager;
-    }
-    if (empty(self::$globalDispatcher)) {
+  public static function instance(): EventDispatcher {
+    if (self::$globalDispatcher === null) {
       self::$globalDispatcher = new EventDispatcher();
     }
-    self::$globalDispatcher->isGlobal = true;
     return self::$globalDispatcher;
   }
 
@@ -71,45 +66,37 @@ class EventDispatcher implements EventDispatcherInterface {
     $this->listeners = [];
   }
 
-  /**
-   * Return the type of the given event
-   *
-   * @param  Event|string $event event object or the type of the event
-   * @return string the name of the event
-   */
-  protected function getEventName($event) {
-    if ($event instanceof Event) {
-      return $event->getName();
-    } else {
-      return $event;
-    }
-  }
-
-  public function addListener(string $event, $listener, int $priority = 0) {
+  public function addListener(string $eventName, $listener, int $priority = 0) {
     if (!($listener instanceof EventListener) && !is_callable($listener)) {
       throw new InvalidArgumentException("Listener type is not recognize as legal");
     }
-    $key = $this->getEventName($event);
-    if (!array_key_exists($key, $this->listeners)) {
-      $this->listeners[$key] = new UniquePriorityQueue();
+    if (!array_key_exists($eventName, $this->listeners)) {
+      $this->listeners[$eventName] = new UniquePriorityQueue();
     }
-    $this->listeners[$key]->enqueue($listener, $priority);
-
+    $this->listeners[$eventName]->enqueue($listener, $priority);
     return $this;
   }
 
-  public function remove($listener, string $evantName = null) {
-    if ($evantName === null) {
+  public function removeListenersOf(string $eventName) {
+    if (array_key_exists($eventName, $this->listeners)) {
+      unset($this->listeners[$eventName]);
+    }
+    //print_r($this->listeners);
+    return $this;
+  }
+
+  public function removeListener($listener, string $eventName = null) {
+    if ($eventName === null) {
       foreach ($this->listeners as $event => $l) {
         $l->remove($listener);
         if ($l->count() == 0) {
           unset($this->listeners[$event]);
         }
       }
-    } else if (array_key_exists($evantName, $this->listeners)) {
-      $this->listeners[$evantName]->remove($listener);
-      if ($this->listeners[$evantName]->count() == 0) {
-        unset($this->listeners[$evantName]);
+    } else if (array_key_exists($eventName, $this->listeners)) {
+      $this->listeners[$eventName]->remove($listener);
+      if ($this->listeners[$eventName]->count() == 0) {
+        unset($this->listeners[$eventName]);
       }
     }
     //print_r($this->listeners);
@@ -119,13 +106,13 @@ class EventDispatcher implements EventDispatcherInterface {
   /**
    * Creates and triggers a new event to all corresponding listeners
    * 
-   * @param  string $name the name of the event
-   * @param  mixed $subject subject the subject which dispached this event
+   * @param  string $eventName the name of the event
+   * @param  mixed $subject subject the subject which dispatched this event
    * @param  mixed $data the data dispatched with this event
    * @return $this for a fluent interface
    */
-  public function triggerDataEvent(string $name, $subject = null, $data = null): DataEvent {
-    $event = new DataEvent($name, $subject, $data);
+  public function triggerDataEvent(string $eventName, $subject = null, $data = null): DataEvent {
+    $event = new DataEvent($eventName, $subject, $data);
     $this->trigger($event);
     return $event;
   }
@@ -144,15 +131,13 @@ class EventDispatcher implements EventDispatcherInterface {
     return $this;
   }
 
-  public function hasListeners($e): bool {
-    $key = $this->getEventName($e);
-    return array_key_exists($key, $this->listeners);
+  public function hasListeners(string $eventName): bool {
+    return array_key_exists($eventName, $this->listeners);
   }
 
-  public function getListeners($event): array {
-    $key = $this->getEventName($event);
-    if (array_key_exists($key, $this->listeners)) {
-      return $this->listeners[$key]->toArray();
+  public function getListeners(string $eventName): array {
+    if (array_key_exists($eventName, $this->listeners)) {
+      return $this->listeners[$eventName]->toArray();
     } else {
       return [];
     }
