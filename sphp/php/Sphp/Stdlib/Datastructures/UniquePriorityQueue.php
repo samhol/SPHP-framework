@@ -83,7 +83,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, Queue, Arraya
     };
     foreach ($this->queue as $priority => $bucket) {
       $this->queue[$priority] = array_filter($bucket, $f);
-      if (empty($bucket)) {
+      if (empty($this->queue[$priority])) {
         unset($this->queue[$priority]);
       }
     }

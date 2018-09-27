@@ -40,6 +40,9 @@
     <testsuite name="stdlib">
       <directory>./tests/sphp/Stdlib</directory>
     </testsuite>
+    <testsuite name="stdlib-events">
+      <directory>./tests/sphp/Stdlib/Events</directory>
+    </testsuite>
     <testsuite name="stdlib-ds">
       <directory>./tests/sphp/Stdlib/Datastructures</directory>
     </testsuite>

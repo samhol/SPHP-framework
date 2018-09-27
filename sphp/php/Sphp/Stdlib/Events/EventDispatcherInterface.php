@@ -24,16 +24,16 @@ interface EventDispatcherInterface {
   /**
    * Adds a new listener to an event
    *
-   * @param  string|string[] $event event name(s) of the event(s) the listener listens to
+   * @param  string $event event name(s) of the event(s) the listener listens to
    * @param  EventListener|\Closure $listener the listener to add 
-   * @param  mixed $priority optional priority of the listener: priorities are 
+   * @param  int $priority optional priority of the listener: priorities are 
    *         handled like queues, and multiple attachments added to the same 
    *         priority queue will be treated in the order of insertion.
    * @return $this for a fluent interface
    * @throws \InvalidArgumentException if the `$listener` type is illegal
    * @return $this for a fluent interface
    */
-  public function addListener($event, $listener, $priority = 0);
+  public function addListener(string $event, $listener, int $priority = 0);
 
   /**
    * Removes an listener from the registry
@@ -41,7 +41,7 @@ interface EventDispatcherInterface {
    * @param  EventListener|callable $listener the listener to remove
    * @return $this for a fluent interface
    */
-  public function remove($listener);
+  public function remove($listener, string $evantName = null);
 
   /**
    * Triggers a new event to all corresponding listeners

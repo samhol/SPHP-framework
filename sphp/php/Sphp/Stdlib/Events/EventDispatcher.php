@@ -42,7 +42,7 @@ class EventDispatcher implements EventDispatcherInterface {
    * @param  EventDispatcher $manager optional event manager instance
    * @return EventDispatcher the global event manager
    */
-  public static function instance(EventDispatcher $manager = null) {
+  public static function instance(EventDispatcher $manager = null): EventDispatcher {
     if ($manager instanceof EventDispatcher) {
       self::$globalDispatcher = $manager;
     }
@@ -85,42 +85,34 @@ class EventDispatcher implements EventDispatcherInterface {
     }
   }
 
-  public function addListener($event, $listener, $priority = 0) {
-    if (is_array($event)) {
-      foreach ($event as $event) {
-        $this->addListener($event, $listener, $priority);
-      }
-    } else {
-      if (!($listener instanceof EventListener) && !is_callable($listener)) {
-        throw new InvalidArgumentException("Listener type is not recognize as legal");
-      }
-      $key = $this->getEventName($event);
-      if (!array_key_exists($key, $this->listeners)) {
-        $this->listeners[$key] = new UniquePriorityQueue();
-      }
-      $this->listeners[$key]->enqueue($listener, $priority);
+  public function addListener(string $event, $listener, int $priority = 0) {
+    if (!($listener instanceof EventListener) && !is_callable($listener)) {
+      throw new InvalidArgumentException("Listener type is not recognize as legal");
     }
+    $key = $this->getEventName($event);
+    if (!array_key_exists($key, $this->listeners)) {
+      $this->listeners[$key] = new UniquePriorityQueue();
+    }
+    $this->listeners[$key]->enqueue($listener, $priority);
+
     return $this;
   }
 
-  public function remove($listener, $events = null) {
-    if ($events === null) {
+  public function remove($listener, string $evantName = null) {
+    if ($evantName === null) {
       foreach ($this->listeners as $event => $l) {
         $l->remove($listener);
         if ($l->count() == 0) {
           unset($this->listeners[$event]);
         }
       }
-    } else if (is_array($events)) {
-      foreach ($events as $event) {
-        $l->remove($listener, $event);
-      }
-    } else if (array_key_exists($events, $this->listeners)) {
-      $this->listeners[$events]->detach($listener);
-      if ($l->count() == 0) {
-        unset($this->listeners[$events]);
+    } else if (array_key_exists($evantName, $this->listeners)) {
+      $this->listeners[$evantName]->remove($listener);
+      if ($this->listeners[$evantName]->count() == 0) {
+        unset($this->listeners[$evantName]);
       }
     }
+    //print_r($this->listeners);
     return $this;
   }
 
@@ -132,10 +124,10 @@ class EventDispatcher implements EventDispatcherInterface {
    * @param  mixed $data the data dispatched with this event
    * @return $this for a fluent interface
    */
-  public function triggerEvent(string $name, $subject = null, $data = null) {
+  public function triggerDataEvent(string $name, $subject = null, $data = null): DataEvent {
     $event = new DataEvent($name, $subject, $data);
     $this->trigger($event);
-    return $this;
+    return $event;
   }
 
   public function trigger(Event $event) {

@@ -11,7 +11,6 @@
 namespace Sphp\Stdlib;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\OutOfBoundsException;
 
 class StringManipulationTest extends TestCase {
