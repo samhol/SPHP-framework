@@ -14,7 +14,9 @@ $types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
 $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => null]);
 if (array_key_exists($type, $types)) {
   $headingNote = $types[$type];
-  $data = Arrays::isLike($faData['icons'], "$type ");
+  $searched = preg_quote($type, '/');
+  $input = preg_quote($searched, '~');
+  $data = preg_grep('~' . $input . '~', $faData['icons']);
 } else {
   $data = $faData['icons'];
   $headingNote = 'All';

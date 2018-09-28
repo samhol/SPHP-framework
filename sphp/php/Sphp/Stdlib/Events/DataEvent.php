@@ -71,15 +71,6 @@ class DataEvent implements Event {
   }
 
   /**
-   * Return the string representation of the event object
-   *
-   * @return string the string representation of the event object
-   */
-  public function __toString(): string {
-    return __CLASS__ . " : (name: $this->name)";
-  }
-
-  /**
    * Sets the name of the event
    * 
    * @param  string $name the name of the event

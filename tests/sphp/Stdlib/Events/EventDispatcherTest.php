@@ -39,7 +39,7 @@ class EventDispatcherTest extends TestCase {
     $order = [];
     $fooListener = $this->getMockBuilder(EventListener::class)->getMock();
     $fooF = function(Event $event) {
-      echo 'Event: ' . $event->getName() . " triggered!\n";
+     // echo 'Event: ' . $event->getName() . " triggered!\n";
       $this->assertSame('foo', $event->getName());
     };
     $fooListener->expects($this->any())
@@ -48,7 +48,7 @@ class EventDispatcherTest extends TestCase {
     $listener = $this->getMockBuilder(EventListener::class)->getMock();
     $f = function(Event $event) use (&$order) {
       $order[] = $event;
-      echo 'Event: ' . $event->getName() . " triggered!\n";
+     // echo 'Event: ' . $event->getName() . " triggered!\n";
       $name = $event->getName();
       $this->assertTrue($name === 'bar' || $name === 'foo' || $name === 'baz');
     };

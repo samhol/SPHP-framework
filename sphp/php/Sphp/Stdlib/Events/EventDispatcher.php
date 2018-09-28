@@ -55,17 +55,6 @@ class EventDispatcher implements EventDispatcherInterface {
     unset($this->listeners);
   }
 
-  /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    $this->listeners = [];
-  }
-
   public function addListener(string $eventName, $listener, int $priority = 0) {
     if (!($listener instanceof EventListener) && !is_callable($listener)) {
       throw new InvalidArgumentException("Listener type is not recognize as legal");
@@ -121,6 +110,9 @@ class EventDispatcher implements EventDispatcherInterface {
     $key = $event->getName();
     if (array_key_exists($key, $this->listeners)) {
       foreach ($this->listeners[$key] as $listener) {
+        if ($event->isStopped()) {
+          break;
+        }
         if ($listener instanceof EventListener) {
           $listener->on($event);
         } else {

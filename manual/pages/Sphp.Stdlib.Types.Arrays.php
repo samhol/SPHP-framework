@@ -24,10 +24,6 @@ PHP core and it introduces methods for:
 MD
 );
 
-Manual\visualize('Sphp/Stdlib/Types/Arrays1.php', 'text', false);
-
-Manual\visualize('Sphp/Stdlib/Types/Arrays2.php', 'text', false);
-
-Manual\example('Sphp/Stdlib/Types/Arrays3.php', 'text', false)
-        ->setExamplePaneTitle('Cloning the content of an array')
+Manual\example('Sphp/Stdlib/Arrays.php', 'text', false)
+        ->setExamplePaneTitle('Example of Arrays utility')
         ->printHtml();

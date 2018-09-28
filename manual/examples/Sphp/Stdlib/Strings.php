@@ -4,9 +4,8 @@ namespace Sphp\Stdlib;
 
 echo "empty:\n";
 var_dump(
-		Strings::isEmpty(NULL),
-		Strings::isEmpty(""),
-		Strings::isEmpty(FALSE));
+    Strings::isEmpty(''),
+    Strings::length(''));
 echo "matching:\n";
 var_dump(
 		Strings::match("0 1 2", '/^[0-9]+$/'),

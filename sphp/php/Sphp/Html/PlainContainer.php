@@ -166,12 +166,12 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
           $output .= $value;
         } else if ($value instanceof \Traversable) {
           $arr = iterator_to_array($value);
-          $output .= Arrays::implode($arr);
+          $output .= Arrays::recursiveImplode($arr);
         } else {
           throw new InvalidStateException('Content has no string representation');
         }
       } else if (is_array($value)) {
-        $output .= Arrays::implode($value);
+        $output .= Arrays::recursiveImplode($value);
       } else {
         throw new InvalidStateException('Content has no string representation');
       }

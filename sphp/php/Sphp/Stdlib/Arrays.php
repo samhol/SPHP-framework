@@ -40,7 +40,7 @@ abstract class Arrays {
     while (!in_array(key($array), [$key, null], true)) {
       next($array);
     }
-    if (current($array) === false) {
+    if (key($array) === null) {
       throw new OutOfBoundsException("Key '$key' does not exist in the array");
     }
     return $array;
@@ -55,59 +55,19 @@ abstract class Arrays {
    * @throws OutOfBoundsException if the value does not exist in the array
    */
   public static function pointToValue(array &$array, $value) {
-    reset($array);
-    while (!in_array(current($array), [$value, null], true)) {
-      next($array);
-    }
-    if (current($array) !== false) {
+    $key = array_search($value, $array, true);
+    if ($key === false) {
       throw new OutOfBoundsException("Value does not exist in the array");
     }
-    return $array;
+    return static::pointToKey($array, $key);
   }
 
   /**
+   * Checks whether a value exists in the array
    * 
-   * @param  array $array
-   * @param  mixed $current
-   * @return mixed
-   */
-  public static function next(array &$array, $current) {
-    reset($array);
-    $next = current($array);
-    do {
-      $tmp_val = current($array);
-      $res = next($array);
-    } while (($tmp_val != $current) && $res);
-    if ($res) {
-      $next = current($array);
-    }
-    return $next;
-  }
-
-  /**
-   * 
-   * @param  array $array
-   * @param  mixed $current
-   * @return mixed
-   */
-  public static function prev(&$array, $current) {
-    end($array);
-    $prev = current($array);
-    do {
-      $tmp_val = current($array);
-      $res = prev($array);
-    } while (($tmp_val != $current) && $res);
-    if ($res) {
-      $prev = current($array);
-    }
-    return $prev;
-  }
-
-  /**
-   * 
-   * @param  mixed $needle
-   * @param  array $haystack
-   * @return boolean
+   * @param  mixed $needle the searched value
+   * @param  array $haystack the array
+   * @return boolean true if the value exist and false otherwise
    */
   public static function inArray($needle, array $haystack): bool {
     $found = false;
@@ -126,73 +86,30 @@ abstract class Arrays {
   }
 
   /**
-   * @param mixed $input
-   * @param null|callable $callback
-   * @return array
-   */
-  public static function filterRecursive($input, $callback = null) {
-    if (!is_array($input)) {
-      return $input;
-    }
-    if (null === $callback) {
-      $callback = function ($v) {
-        return !empty($v);
-      };
-    }
-    $input = array_map(function($v) use ($callback) {
-      return static::filterRecursive($v, $callback);
-    }, $input);
-    return array_filter($input, $callback);
-  }
-
-  /**
    * 
-   * @param array $array
-   * @param callable $callback
-   * @param type $userdata
+   * 
+   * @param  array $array
+   * @param  null|callable $callback optional callback function 
+   * @param  bool optional flag removal of empty arrays after filtering
    * @return array
    */
-  public static function recursiveDelete(array &$array, callable $callback, $userdata = null): array {
-    foreach ($array as $key => &$value) {
+  public static function filterRecursive(array $array, $callback = null, bool $removeEmptyArrays = true): array {
+    foreach ($array as $key => & $value) { // mind the reference
       if (is_array($value)) {
-        $value = static::recursiveDelete($value, $callback, $userdata);
-      }
-      if ($callback($value, $key, $userdata)) {
-        unset($array[$key]);
-      }
-    }
-
-    return $array;
-  }
-
-  /**
-   * Computes the full difference of arrays
-   *
-   * @param  array $array1 the first array to compare
-   * @param  array $array2 the second array to compare
-   * @return array the full difference between the input arrays
-   */
-  public static function diff(array $array1, array $array2): array {
-    $aReturn = array();
-
-    foreach ($array1 as $mKey => $mValue) {
-      if (array_key_exists($mKey, $array2)) {
-        if (is_array($mValue)) {
-          $aRecursiveDiff = static::diff($mValue, $array2[$mKey]);
-          if (count($aRecursiveDiff)) {
-            $aReturn[$mKey] = $aRecursiveDiff;
-          }
-        } else {
-          if ($mValue !== $array2[$mKey]) {
-            $aReturn[$mKey] = $mValue;
-          }
+        $value = static::filterRecursive($value, $callback);
+        if ($removeEmptyArrays && !(bool) $value) {
+          unset($array[$key]);
         }
       } else {
-        $aReturn[$mKey] = $mValue;
+        if (!is_null($callback) && !$callback($value)) {
+          unset($array[$key]);
+        } else if ($value === null) {
+          unset($array[$key]);
+        }
       }
     }
-
-    return $aReturn;
+    unset($value); // kill the reference
+    return $array;
   }
 
   /**
@@ -226,14 +143,18 @@ abstract class Arrays {
    * 
    * @param  \callable $callback Callback function to run for each element in 
    *         input array
-   * @param  mixed[] $arr the input array
-   * @return mixed[] an array containing all the elements of `$arr` after 
+   * @param  array $arr the input array
+   * @return array an array containing all the elements of `$arr` after 
    *         applying the callback function to each one
    */
   public static function multiMap($callback, array $arr): array {
     $ret = [];
     foreach ($arr as $key => $val) {
-      $ret[$key] = (is_array($val) ? self::multiMap($callback, $val) : $callback($val));
+      if (is_array($val)) {
+        $ret[$key] = self::multiMap($callback, $val);
+      } else {
+        $ret[$key] = $callback($val);
+      }
     }
     return $ret;
   }
@@ -307,16 +228,19 @@ abstract class Arrays {
   }
 
   /**
-   * Search a single dimensional array for values that contain the given phrase
+   * Search an array for string values that contain the given phrase
    * 
-   * @param  string[] $arr the array to search from
+   * @param  array $arr the array to search from
    * @param  string $needle the phrase to search for
    * @return string[] an array of values that contain the given phrase
    */
-  public static function isLike(array $arr, $needle): array {
+  public static function getValuesLike(array $arr, $needle): array {
+    $strings = array_filter($arr, function($var) {
+      return is_string($var) || is_numeric($var);
+    });
     $searched = preg_quote($needle, '/');
     $input = preg_quote($searched, '~'); // don't forget to quote input string!
-    return preg_grep('~' . $input . '~', $arr);
+    return preg_grep('~' . $input . '~', $strings);
   }
 
   /**
@@ -326,9 +250,9 @@ abstract class Arrays {
    * @param  string $needle the phrase to search for
    * @return string[] an array of values that have the matching keys
    */
-  public static function keyContains(array $arr, $needle): array {
+  public static function findKeysLike(array $arr, $needle): array {
     $keys = array_keys($arr);
-    $passed = self::isLike($keys, $needle);
+    $passed = self::getValuesLike($keys, $needle);
     $result = [];
     foreach ($passed as $key) {
       $result[$key] = $arr[$key];
@@ -390,14 +314,13 @@ abstract class Arrays {
    * * Supports multidimensional arrays.
    * * Returns a string containing a string representation of all the array 
    *   elements in the same order, with the $glue string between each element.
-   * * Inserts the optional $lastGlue string between the last two elements if 
-   *   given. (Otherwise uses the $glue string)
    * 
    * @param  array $arr multidimensional array of strings to implode
    * @param  string $glue string between each array element
    * @return string the imploded array
+   * @throws InvalidArgumentException if the array cannot be converted to string
    */
-  public static function implode(array $arr, string $glue = ''): string {
+  public static function recursiveImplode(array $arr, string $glue = ''): string {
     $output = '';
     static::flatten($arr);
     foreach ($arr as $value) {
@@ -407,15 +330,14 @@ abstract class Arrays {
         if (method_exists($value, '__toString')) {
           $output .= $glue . $value;
         } else if ($value instanceof \Traversable) {
-          $arr = iterator_to_array($value);
-          $output .= $glue . static::implode($arr, $glue);
+          $output .= $glue . static::recursiveImplode(iterator_to_array($value), $glue);
         } else {
-          throw new InvalidArgumentException('Parts of input array has no string representation');
+          throw new InvalidArgumentException('Object ' . get_class($value) . ' has no string representation');
         }
       } else if (is_array($value)) {
-        $output .= $glue . static::implode($value, $glue);
+        $output .= $glue . static::recursiveImplode($value, $glue);
       } else {
-        throw new InvalidArgumentException('value has no string representation');
+        throw new InvalidArgumentException('value ' . gettype($value) . ' has no string representation');
       }
     }
     return $output;
@@ -448,7 +370,7 @@ abstract class Arrays {
   }
 
   /**
-   * Flattens the given multidimensional array to a single dimension
+   * Returns the values of an input array in a single dimension array 
    *
    * **Notes:** The keys of the array are not preserved.
    *

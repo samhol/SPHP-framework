@@ -207,8 +207,8 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
    * @param array $values
    */
   public function testIterator(array $values) {
-    $this->collection->merge($values);
-    foreach ($this->collection as $key => $value) {
+    $collection = new Collection($values);
+    foreach ($collection as $key => $value) {
       $this->assertSame($value, $values[$key]);
     }
   }
@@ -240,12 +240,11 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
    * @param array $values
    */
   public function testMerge(array $values) {
-    $this->collection = new Collection();
-    $this->collection->merge($values);
-    foreach ($this->collection as $key => $value) {
-      $this->assertSame($value, $values[$key]);
+    $collection = new Collection();
+    $collection->merge($values);
+    foreach ($collection as $key => $value) {
+      $this->assertSame($values[$key], $value);
     }
-    return $this->collection;
   }
 
   public function testKeys() {

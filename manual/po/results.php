@@ -22,7 +22,7 @@ $poParser->parseFile();
 $entries = $poParser->entries();
 if (isset($submit, $search) && $search !== "") {
 	//$msgids = array_keys($entries);
-	$result = Arrays::keyContains($entries, $search);
+	$result = Arrays::findKeysLike($entries, $search);
 	//$input = preg_quote($search, '~'); // don't forget to quote input string!
 	//$result = preg_grep('~' . $input . '~', $msgids);
 	//print_r($entries);

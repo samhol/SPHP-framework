@@ -11,6 +11,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class ArraysTest extends \PHPUnit\Framework\TestCase {
 
@@ -44,39 +45,53 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     ];
   }
 
-  /**
-   *
-   * @covers \Sphp\Tools\Arrays::diff
-   * @dataProvider diffData
-   * @param array $arr1
-   * @param array $arr2
-   * @param array $diff
-   */
-  public function atestDiff(array $arr1, array $arr2, array $diff) {
-    //print_r(Arrays::diff($arr1, $arr2));
-    $this->assertEquals(Arrays::diff($arr1, $arr2), $diff);
+  public function testPointToKey() {
+    $arr = ['a' => 'b', 44, 3 => 2, 'key' => 'value', 'fwe' => 's', 1];
+    $arr1 = Arrays::pointToKey($arr, 'key');
+    //echo "\n" . $arr1['key'] . " :  [" . key($arr1) .']'. current($arr1) . "\n";
+    $this->assertSame($arr['key'], current($arr));
+    $this->assertSame(current($arr), current($arr1));
+    $this->expectException(OutOfBoundsException::class);
+    Arrays::pointToKey($arr, 'foo');
   }
 
-  public function testArrayFilterRecursive() {
-    $array = [
-        'a' => 'a',
+  public function testPointToValue() {
+    $arr = ['false' => false, 0, 1 => 1, 'key' => 'value', 'null' => null];
+    $arr1 = Arrays::pointToValue($arr, false);
+    $this->assertSame(false, current($arr));
+    $this->assertSame('false', key($arr1));
+    Arrays::pointToValue($arr, null);
+    $this->assertSame(null, current($arr));
+    $this->assertSame('null', key($arr));
+    $this->expectException(OutOfBoundsException::class);
+    Arrays::pointToValue($arr, 'foobar');
+  }
+
+  public function testInArray() {
+    $arr = ['false' => false, 0, 1 => 1, 'key' => 'value', 'null' => null, 'array' => ['foo' => [1]]];
+    $this->assertTrue(Arrays::inArray('value', $arr));
+    $this->assertTrue(Arrays::inArray([1], $arr));
+  }
+
+  public function filterTestData(): array {
+    return [[
+    ['a' => 'a',
         'b' => null,
-        'c' => [
-            'a' => null,
-            'b' => 'b',
-        ],
-        'd' => [
-            'a' => null
-        ]
+        'c' => ['a' => null, 'b' => 'b'],
+        [null]],
+    ['a' => 'a', 'c' => ['b' => 'b']
+    ]]
     ];
-    $result = Arrays::filterRecursive($array);
-    $expected = [
-        'a' => 'a',
-        'c' => [
-            'b' => 'b',
-        ],
-    ];
-    $this->assertSame($expected, $result);
+  }
+
+  /**
+   * @dataProvider filterTestData
+   * 
+   * @param array $arr
+   * @param array $arr1
+   */
+  public function testArrayFilterRecursive(array $arr, array $arr1) {
+    $this->assertEquals($arr1, Arrays::filterRecursive($arr));
   }
 
   public function callBackFilteringData() {
@@ -128,7 +143,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
   public function isSeq(): array {
     return [
         [
-            [], 0
+            []
         ],
         [
             range(1, 5)
@@ -152,12 +167,8 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
 
   public function nonSequentialData(): array {
     return [
-        [
-            ['a' => 'a', 1, 3 => 2, 4 => 'f'], 0
-        ],
-        [
-            ['a' => 'a', 1, 30 => 2, 4 => 'f'], 2
-        ],
+        [['a' => 'a', 1, 3 => 2, 4 => 'f'], 0],
+        [['a' => 'a', 1, 30 => 2, 4 => 'f'], 2],
     ];
   }
 
@@ -169,32 +180,9 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
   public function testSetSequential(array $input, int $base) {
     $result = Arrays::setSequential($input, $base);
     $this->assertTrue(Arrays::isSequential($result));
+    $this->assertSame($result[$base], reset($result));
   }
 
-  /**
-   */
-  public function testPointToKey() {
-    $arr = ['a' => 'b', 44, 3 => 2, 'key' => 'value', 'fwe' => 's', 1];
-    $arr1 = Arrays::pointToKey($arr, 'key');
-    //echo "\n" . $arr1['key'] . " :  [" . key($arr1) .']'. current($arr1) . "\n";
-    $this->assertSame($arr['key'], current($arr));
-    $this->assertSame(current($arr), current($arr1));
-    $this->expectException(OutOfBoundsException::class);
-    Arrays::pointToKey($arr, 'foo');
-  }
-
-  /**
-    public function testPointToValue() {
-    $obj = new \stdClass();
-    $arr = ['a' => 'b', 44, 3 => 2, 'obj' => $obj, 1];
-    $arr1 = Arrays::pointToValue($arr, $obj);
-    //echo "\n" . $arr1['key'] . " :  [" . key($arr1) .']'. current($arr1) . "\n";
-    $this->assertSame($arr['obj'], current($arr));
-    $this->assertSame(current($arr), current($arr1));
-    $this->expectException(OutOfBoundsException::class);
-    Arrays::pointToKey($arr, 'obj');
-    }
-   */
   public function toArrayData(): array {
     $data[] = range('a', 'b');
     $data[] = new \ArrayObject(range('a', 'b'));
@@ -215,8 +203,42 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
       $expected = $mixed;
     }
     $this->assertSame($expected, $arrayed);
-    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
+    $this->expectException(InvalidArgumentException::class);
     Arrays::toArray(new \stdClass());
+  }
+
+  public function getValuesLikeData(): array {
+    return [
+        [[1, false, null, 'foo', 'bar', 'foobar', 'FOO', ['foo'], new \stdClass()], 'foo', 2],
+        [[1, false, null, 'foo', '0', 'foo0', [0], 0], 0, 3]
+    ];
+  }
+
+  /**
+   * @dataProvider getValuesLikeData
+   * 
+   * @param array $haystack
+   * @param scalar $needle
+   * @param int $count
+   */
+  public function testGetValuesLike(array $haystack, $needle, int $count) {
+    //$haystack = [1, false, null, 'foo', 'bar', 'foobar', 'FOO', ['foo'], new \stdClass()];
+    $result = Arrays::getValuesLike($haystack, $needle);
+    $this->assertContainsOnly('scalar', $result);
+    $this->assertCount($count, $result);
+    foreach ($result as $value) {
+      $this->assertTrue(strpos((string) $value, (string) $needle) !== false);
+    }
+  }
+
+  public function testGetKeysLike() {
+    $haystack = [0 => 'zero', '0' => 'zero', 'f00' => 'zero', 1, 2, 'f11' => 10];
+    $result = Arrays::findKeysLike($haystack, 0);
+    $this->assertContainsOnly('scalar', $result);
+    $this->assertCount(2, $result);
+    foreach ($result as $key => $value) {
+      $this->assertTrue(strpos((string) $key, '0') !== false);
+    }
   }
 
 }

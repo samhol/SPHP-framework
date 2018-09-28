@@ -3,12 +3,13 @@
 namespace Sphp\Html\Attributes;
 
 echo '<pre>';
-$span = new \Sphp\Html\Span();
-$span->appendMd('foo');
-$div = new \Sphp\Html\Div();
-$div->appendMd('foo');
-echo $span;
+$array = [1, 2, 3];
+echo implode(',', $array), "\n";
 
-echo $div;
+foreach ($array as &$value) {}    // by reference
+echo implode(',', $array), "\n";
+
+foreach ($array as $value) {}     // by value (i.e., copy)
+echo implode(',', $array), "\n";
 ?>
 </pre>
