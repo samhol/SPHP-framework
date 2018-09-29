@@ -81,26 +81,7 @@ class Iterator implements NativeIterator, Content, TraversableContent {
   }
 
   public function getHtml(): string {
-    $output = '';
-    foreach ($this->components as $value) {
-      if (is_scalar($value) || $value === null) {
-        $output .= $value;
-      } else if (is_object($value)) {
-        if (method_exists($value, '__toString')) {
-          $output .= $value;
-        } else if ($value instanceof \Traversable) {
-          $arr = iterator_to_array($value);
-          $output .= Arrays::recursiveImplode($arr);
-        } else {
-          throw new InvalidArgumentException('Object has no string representation');
-        }
-      } else if (is_array($value)) {
-        $output .= Arrays::recursiveImplode($value);
-      } else {
-        throw new InvalidArgumentException('value has no string representation');
-      }
-    }
-    return $output;
+    return Arrays::recursiveImplode($this->components);
   }
 
   /**

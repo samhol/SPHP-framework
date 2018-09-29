@@ -30,6 +30,9 @@ class MenuFactory {
    * @return Select component containing months
    */
   public static function getContentAsValueMenu(array $content, string $name = null): Select {
+    if (count($content) > 0) {
+      $content = array_combine($content, $content);
+    }
     return new Select($name, Arrays::valuesToKeys($content));
   }
 

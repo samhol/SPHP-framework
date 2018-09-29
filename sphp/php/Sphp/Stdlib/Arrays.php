@@ -14,6 +14,7 @@ use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Traversable;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Utility class for PHP array operations
@@ -160,58 +161,6 @@ abstract class Arrays {
   }
 
   /**
-   * Implode an array with the key and value pair giving a glue, a separator
-   * between pairs and the array to implode.
-   *
-   * @param  string[] $array the array of strings to implode
-   * @param  string $separator Separator between pairs
-   * @param  string $glue the glue between key and value
-   * @return string the imploded array
-   */
-  public static function implodeWithKeys(array $array, $separator = ', ', $glue = ' => '): string {
-    $string = [];
-    foreach ($array as $key => $val) {
-      $string[] = "{$key}{$glue}{$val}";
-    }
-    return implode($separator, $string);
-  }
-
-  /**
-   * Copies array's values to its keys
-   *
-   * **Notes:**
-   *
-   * * Illegal values for keys will be converted to strings
-   *
-   * @param  array $array the input array
-   * @return array the result array
-   * @link   http://php.net/array-combine PHP array_combine
-   */
-  public static function valuesToKeys(array $array): array {
-    if (count($array) == 0) {
-      return $array;
-    }
-    return array_combine($array, $array);
-  }
-
-  /**
-   * Checks each key value pairs of the array against a rule defined in a 
-   *  {@link \callable} 
-   * 
-   * @param  array $array the array to test
-   * @param  \callable $rule the rule to test the array key value pair against
-   * @return boolean true if the array passes the rule, otherwise false
-   */
-  public static function test(array $array, $rule): bool {
-    foreach ($array as $key => $val) {
-      if (!$rule($key, $val)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  /**
    * Returns the value from an array using the key chain given as the second parameter
    * 
    * @param  array $array the array to search
@@ -307,6 +256,23 @@ abstract class Arrays {
   }
 
   /**
+   * Implode an array with the key and value pair giving a glue, a separator
+   * between pairs and the array to implode.
+   *
+   * @param  string[] $array the array of strings to implode
+   * @param  string $separator Separator between pairs
+   * @param  string $glue the glue between key and value
+   * @return string the imploded array
+   */
+  public static function implodeWithKeys(array $array, $separator = ', ', $glue = ' => '): string {
+    $string = [];
+    foreach ($array as $key => $val) {
+      $string[] = "{$key}{$glue}{$val}";
+    }
+    return implode($separator, $string);
+  }
+
+  /**
    * Implodes all elements of an (optionally multidimensional) array with a string
    *
    * **Notes:**
@@ -321,25 +287,10 @@ abstract class Arrays {
    * @throws InvalidArgumentException if the array cannot be converted to string
    */
   public static function recursiveImplode(array $arr, string $glue = ''): string {
-    $output = '';
-    static::flatten($arr);
-    foreach ($arr as $value) {
-      if (is_scalar($value) || $value === null) {
-        $output .= $glue . $value;
-      } else if (is_object($value)) {
-        if (method_exists($value, '__toString')) {
-          $output .= $glue . $value;
-        } else if ($value instanceof \Traversable) {
-          $output .= $glue . static::recursiveImplode(iterator_to_array($value), $glue);
-        } else {
-          throw new InvalidArgumentException('Object ' . get_class($value) . ' has no string representation');
-        }
-      } else if (is_array($value)) {
-        $output .= $glue . static::recursiveImplode($value, $glue);
-      } else {
-        throw new InvalidArgumentException('value ' . gettype($value) . ' has no string representation');
-      }
-    }
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $thrower->start();
+    $output = implode(static::flatten($arr), $glue);
+    $thrower->stop();
     return $output;
   }
 
@@ -403,7 +354,7 @@ abstract class Arrays {
     } else if ($object instanceof Traversable) {
       $items = iterator_to_array($object);
     } else {
-      throw new InvalidArgumentException('object cannot be transformed to an array');
+      throw new InvalidArgumentException('Object ' . get_class($object) . ' cannot be transformed to an array');
     }
     return $items;
   }

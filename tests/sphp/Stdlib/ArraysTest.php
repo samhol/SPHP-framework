@@ -12,6 +12,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Datastructures\ArrayStack;
 
 class ArraysTest extends \PHPUnit\Framework\TestCase {
 
@@ -184,9 +185,10 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
   }
 
   public function toArrayData(): array {
-    $data[] = range('a', 'b');
-    $data[] = new \ArrayObject(range('a', 'b'));
-    return [$data];
+    return [
+        [range('a', 'b')],
+        [new \ArrayObject(range('a', 'b'))],
+        [new ArrayStack(range('a', 'b'))]];
   }
 
   /**
@@ -203,8 +205,28 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
       $expected = $mixed;
     }
     $this->assertSame($expected, $arrayed);
+  }
+
+  /**
+   * @return array
+   */
+  public function invalidToArray(): array {
+    return [
+        ['string'],
+        [0],
+        [false],
+        [null],
+        [new \stdClass()]
+    ];
+  }
+
+  /**
+   * @dataProvider invalidToArray
+   * @param mixed $mixed
+   */
+  public function testInvalidToArray($mixed) {
     $this->expectException(InvalidArgumentException::class);
-    Arrays::toArray(new \stdClass());
+    Arrays::toArray($mixed);
   }
 
   public function getValuesLikeData(): array {
@@ -222,7 +244,6 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
    * @param int $count
    */
   public function testGetValuesLike(array $haystack, $needle, int $count) {
-    //$haystack = [1, false, null, 'foo', 'bar', 'foobar', 'FOO', ['foo'], new \stdClass()];
     $result = Arrays::getValuesLike($haystack, $needle);
     $this->assertContainsOnly('scalar', $result);
     $this->assertCount($count, $result);
@@ -241,4 +262,100 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
+  /**
+   * @return array
+   */
+  public function implodeWithKeysData(): array {
+    return [
+        [['F' => 'o', 'o' => 'b', 'a' => 'r'], '', '', 'Foobar'],
+        [['Fo' => 'o', 'b' => 'ar'], '-', '', 'Foo-bar'],
+        [range('a', 'c'), ',', '=>', '0=>a,1=>b,2=>c'],
+    ];
+  }
+
+  /**
+   * @dataProvider implodeWithKeysData
+   * 
+   * @param array $array
+   * @param string $separator
+   * @param string $glue
+   * @param string $result
+   */
+  public function testImplodeWithKeys(array $array, string $separator, string $glue, string $result) {
+    $this->assertEquals($result, Arrays::implodeWithKeys($array, $separator, $glue));
+  }
+
+  /**
+   * @return array
+   */
+  public function recursiveImplodeData(): array {
+    return [
+        [['F' => 'Foobar', 'o' => 'is', 'a' => 'bar of foo'], ' ', 'Foobar is bar of foo'],
+        [['F' => new \Sphp\Html\PlainContainer('Foobar'), 'o' => ['is'], 'a' => 'bar of foo'], ' ', 'Foobar is bar of foo'],
+    ];
+  }
+
+  /**
+   * @dataProvider recursiveImplodeData
+   * 
+   * @param array $array
+   * @param string $separator
+   * @param string $result
+   */
+  public function testImplode(array $array, string $separator, string $result) {
+    $this->assertEquals($result, Arrays::recursiveImplode($array, $separator));
+  }
+
+  /**
+   * @expectedException InvalidArgumentException
+   * @param array $array
+   * @param string $separator
+   * @param string $result
+   */
+  public function testImplodeFail() {
+    Arrays::recursiveImplode(['F' => new \stdClass()]);
+  }
+
+
+  /**
+   * @return array
+   */
+  public function flattenData(): array {
+    $obj1 = new \stdClass();
+    $obj2 = new \stdClass();
+    return [
+        [[$obj1,[[false,null],[$obj2,[[1]]]]], [$obj1,false, null,$obj2, 1]],
+    ];
+  }
+
+  /**
+   * @dataProvider flattenData
+   * 
+   * @param array $array
+   * @param string $result
+   */
+  public function testFlatten(array $array, array $result) {
+    $this->assertEquals($result, Arrays::flatten($array));
+  }
+  /**
+   * @return array
+   */
+  public function copyData(): array {
+    $obj1 = new \stdClass();
+    $obj2 = new \stdClass();
+    return [
+        [[$obj1,[false,null],[$obj2,[[1]]]]],
+    ];
+  }
+
+  /**
+   * @dataProvider flattenData
+   * 
+   * @param array $array
+   */
+  public function testCopy(array $array) {
+    $copy = Arrays::copy($array);
+    $this->assertEquals($array, $copy);
+    $this->assertFalse($array === $copy);
+  }
 }

@@ -19,7 +19,7 @@ use Sphp\Exceptions\UnderflowException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ArrayStack implements Stack {
+class ArrayStack implements Stack, Arrayable {
 
   /**
    * @var array 
@@ -63,6 +63,10 @@ class ArrayStack implements Stack {
 
   public function isEmpty(): bool {
     return empty($this->items);
+  }
+
+  public function toArray(): array {
+    return $this->items;
   }
 
 }
