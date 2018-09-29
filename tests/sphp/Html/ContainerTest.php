@@ -96,11 +96,11 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
     $c2->append(' is foo');
     $c->append([' and ', 'bar', ['!']]);
     $this->assertSame('abc is foo and bar!', $c->getHtml());
+    $this->expectException(\Exception::class);
     $c->append(new \ArrayObject([' Shell', ' is', ' not!']));
     $this->assertSame('abc is foo and bar! Shell is not!', $c->getHtml());
     $c->append(new \stdClass());
     //var_dump($c);
-    $this->expectException(\Exception::class);
     $c->getHtml();
   }
 
