@@ -105,7 +105,7 @@ class VariableFilter extends AbstractFilter {
 
   public function filter($variable) {
     //print_r($this->options);
-    
+
     return filter_var($variable, $this->filter, $this->options);
   }
 

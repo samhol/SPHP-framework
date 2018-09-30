@@ -10,6 +10,8 @@
 
 namespace Sphp\Filters;
 
+use Sphp\Exceptions\RuntimeException;
+
 /**
  * Filter converts a numeric input value to a corresponding roman numeral
  * 
@@ -27,37 +29,35 @@ class IntegerToRomanFilter extends AbstractFilter {
    * 
    * @param  mixed $value the value to filter
    * @return mixed the filtered value
+   * @throws RuntimeException if input value cannot be parsed to Roman numeral
    */
   public function filter($value) {
-    //var_dump($value, filter_var($value, FILTER_VALIDATE_INT, ["options" => ["minRange" => 1, "default" => 0]]));
-    $intVal = filter_var($value, FILTER_VALIDATE_INT, ["options" => ["minRange" => 1, "default" => 0]]);
-    if (is_numeric($value) && $intVal > 0) {
-      $n = $intVal;
-      $res = '';
-      $roman_numerals = [
-          'M' => 1000,
-          'CM' => 900,
-          'D' => 500,
-          'CD' => 400,
-          'C' => 100,
-          'XC' => 90,
-          'L' => 50,
-          'XL' => 40,
-          'X' => 10,
-          'IX' => 9,
-          'V' => 5,
-          'IV' => 4,
-          'I' => 1
-      ];
-      foreach ($roman_numerals as $roman => $number) {
-        $matches = intval($n / $number);
-        $res .= str_repeat($roman, $matches);
-        $n = $n % $number;
-      }
-      return $res;
-    } else {
-      return $value;
+    if (!is_numeric($value) || (int) $value <= 0) {
+      throw new RuntimeException('Input value cannot be parsed to Roman numeral');
     }
+    $n = (int) $value;
+    $res = '';
+    $romans = [
+        'M' => 1000,
+        'CM' => 900,
+        'D' => 500,
+        'CD' => 400,
+        'C' => 100,
+        'XC' => 90,
+        'L' => 50,
+        'XL' => 40,
+        'X' => 10,
+        'IX' => 9,
+        'V' => 5,
+        'IV' => 4,
+        'I' => 1
+    ];
+    foreach ($romans as $roman => $number) {
+      $matches = intval($n / $number);
+      $res .= str_repeat($roman, $matches);
+      $n = $n % $number;
+    }
+    return $res;
   }
 
 }

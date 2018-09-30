@@ -2,7 +2,7 @@
 
 namespace Sphp\Filters;
 
-$data = [-2, 0, "a", "5", 11, 1412];
+$data = [2, 1, "5", 11, 1412];
 $ordinalizer = new Ordinalizer();
 $toRoman = new IntegerToRomanFilter();
 foreach ($data as $val) {

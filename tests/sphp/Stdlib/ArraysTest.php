@@ -316,7 +316,6 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     Arrays::recursiveImplode(['F' => new \stdClass()]);
   }
 
-
   /**
    * @return array
    */
@@ -324,7 +323,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $obj1 = new \stdClass();
     $obj2 = new \stdClass();
     return [
-        [[$obj1,[[false,null],[$obj2,[[1]]]]], [$obj1,false, null,$obj2, 1]],
+        [[$obj1, [[false, null], [$obj2, [[1]]]]], [$obj1, false, null, $obj2, 1]],
     ];
   }
 
@@ -337,6 +336,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
   public function testFlatten(array $array, array $result) {
     $this->assertEquals($result, Arrays::flatten($array));
   }
+
   /**
    * @return array
    */
@@ -344,7 +344,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $obj1 = new \stdClass();
     $obj2 = new \stdClass();
     return [
-        [[$obj1,[false,null],[$obj2,[[1]]]]],
+        [[$obj1, [false, null], [$obj2, [[1]]]]],
     ];
   }
 
@@ -358,4 +358,25 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($array, $copy);
     $this->assertFalse($array === $copy);
   }
+
+  public function indexedArrays(): array {
+    return [
+        [shuffle(range(1, 5))],
+        [range(1, 5)],
+        [0 => [0, 1]],
+        [],
+    ];
+  }
+
+  /**
+   * @dataProvider flattenData
+   * 
+   * @param array $array
+   */
+  public function testIsIndexed(array $array) {
+    $this->assertTrue(Arrays::isIndexed($array));
+    $array['foo'] = 'bar';
+    $this->assertFalse(Arrays::isIndexed($array));
+  }
+
 }

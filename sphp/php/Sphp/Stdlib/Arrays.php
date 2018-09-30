@@ -139,26 +139,6 @@ abstract class Arrays {
     return true;
   }
 
-  /**
-   * Multidimensional array map
-   * 
-   * @param  \callable $callback Callback function to run for each element in 
-   *         input array
-   * @param  array $arr the input array
-   * @return array an array containing all the elements of `$arr` after 
-   *         applying the callback function to each one
-   */
-  public static function multiMap($callback, array $arr): array {
-    $ret = [];
-    foreach ($arr as $key => $val) {
-      if (is_array($val)) {
-        $ret[$key] = self::multiMap($callback, $val);
-      } else {
-        $ret[$key] = $callback($val);
-      }
-    }
-    return $ret;
-  }
 
   /**
    * Returns the value from an array using the key chain given as the second parameter

@@ -28,4 +28,5 @@ abstract class AbstractFilter implements FilterInterface {
   public function __invoke($value) {
     return $this->filter($value);
   }
+
 }

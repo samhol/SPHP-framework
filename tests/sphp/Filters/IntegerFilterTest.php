@@ -11,32 +11,30 @@
 namespace Sphp\Filters;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
-class IntegerToRomanFilterTest extends TestCase {
+class IntegerFilterTest extends TestCase {
 
-  public function integerToRomanMap(): array {
+  public function integerMap(): array {
     return [
-        [1, 'I'],
-        [4, 'IV'],
-        [5, 'V'],
-        [6, 'VI'],
-        [123, 'CXXIII'],
+        [1],
+        [4],
+        [5],
+        [6.3],
+        [123],
+        [-123],
     ];
   }
 
   /**
-   * @dataProvider integerToRomanMap
+   * @dataProvider integerMap
    * 
-   * @param int $int
-   * @param string $roman
+   * @param scalar $int
    */
-  public function testValid(int $int, string $roman) {
-    $filter = new IntegerToRomanFilter();
-    $this->assertEquals($roman, $filter->filter($int));
-    $this->assertEquals($roman, $filter($int));
-    $this->assertEquals($filter->filter((string) $int), $roman);
-    $this->assertEquals($filter((string) $int), $roman);
+  public function testValid($int) {
+    $filter = new IntegerFilter(0, -10, 10);
+    $this->assertGreaterThanOrEqual(-10, $filter->filter($int));
+    $this->assertGreaterThanOrEqual(-10, $filter->filter((string) $int));
   }
 
   public function invalidData(): array {
@@ -47,18 +45,17 @@ class IntegerToRomanFilterTest extends TestCase {
         [null],
         [false],
         [true],
-        [0],
     ];
   }
 
   /**
    * @dataProvider invalidData
-   * @expectedException RuntimeException
+   * @expectedException InvalidArgumentException
    * 
    * @param int $int
    * @param string $roman
    */
-  public function testInvalidStrings($invalid) {
+  public function t2estInval2idStrings($invalid) {
     $filter = new IntegerToRomanFilter();
     $filter->filter($invalid);
   }
