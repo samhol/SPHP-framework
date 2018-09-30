@@ -28,7 +28,7 @@ class IntegerFilter extends VariableFilter {
    * @param int|null $min optional minimum value
    * @param int|null $max optional maximum value
    */
-  public function __construct($default = null, $min = null, $max = null) {
+  public function __construct($default = null, int $min = null, int $max = null) {
     parent::__construct(\FILTER_VALIDATE_INT);
     if ($min !== null) {
       $this->setMin($min);
@@ -51,8 +51,8 @@ class IntegerFilter extends VariableFilter {
    * @param  int $min the  minimum value of the integer
    * @return $this for a fluent interface
    */
-  public function setMin(int $min) {
-    $this->setOption('min_range', $min);
+  public function setMin(int $min = null) {
+    $this['options']['min_range'] = $min;
     return $this;
   }
 
@@ -61,8 +61,8 @@ class IntegerFilter extends VariableFilter {
    * @param  int $max the  maximum value of the integer
    * @return $this for a fluent interface
    */
-  public function setMax(int $max) {
-    $this->setOption('max_range', $max);
+  public function setMax(int $max = null) {
+    $this['options']['max_range'] = $max;
     return $this;
   }
 

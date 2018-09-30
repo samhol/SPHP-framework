@@ -33,6 +33,14 @@ class IntegerFilterTest extends TestCase {
    */
   public function testValid($int) {
     $filter = new IntegerFilter(0, -10, 10);
+    $filter->options = array(
+        'options' => array(
+            'default' => 3, // value to return if the filter fails
+            // other options here
+            'min_range' => 0
+        ),
+        'flags' => FILTER_FLAG_ALLOW_OCTAL,
+    );
     $this->assertGreaterThanOrEqual(-10, $filter->filter($int));
     $this->assertGreaterThanOrEqual(-10, $filter->filter((string) $int));
   }
