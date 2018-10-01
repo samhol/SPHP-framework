@@ -11,6 +11,7 @@
 namespace Sphp\Filters;
 
 use Sphp\Stdlib\Datastructures\DataObject;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Filters a variable with a specified filter
@@ -30,7 +31,7 @@ class VariableFilter extends AbstractFilter {
   /**
    * @var DataObject
    */
-  private $options;
+  private $opts;
 
   /**
    * Constructor
@@ -42,35 +43,32 @@ class VariableFilter extends AbstractFilter {
    */
   public function __construct(int $filter, $options = []) {
     $this->filter = $filter;
-    $this->options = new DataObject();
+    $this->opts = new DataObject();
+  }
+
+  public function __get(string $name): DataObject {
+    if ($name === 'options') {
+      return $this->opts->options;
+    }
+    if ($name === 'flags') {
+      return $this->opts->flags;
+    }
+    throw new InvalidArgumentException("Invalid parameter name '$name'");
   }
 
   public function __set($name, $value) {
-    if ($name === 'options') {
-      $this->options = $value;
-    }
     if ($name === 'flags') {
-      $this->flags = $value;
+      return $this->opts->flags = $value;
     }
-    throw new \Sphp\Exceptions\InvalidArgumentException;
+    throw new InvalidArgumentException("Cannot se parameter '$name'");
   }
 
-  public function __get($name) {
-    if ($name === 'options') {
-      return $this->options->options;
-    }
-    if ($name === 'flags') {
-      return $this->options->flags;
-    }
-    throw new \Sphp\Exceptions\InvalidArgumentException;
-  }
-
-  public function getFilter() {
+  public function getFilter(): int {
     return $this->filter;
   }
 
-  public function getOptions(): DataObject {
-    return $this->options;
+  public function options(): DataObject {
+    return $this->opts;
   }
 
   /**
@@ -89,34 +87,17 @@ class VariableFilter extends AbstractFilter {
    * @return $this for a fluent interface
    */
   protected function setOption($optName, $value) {
-    $this->options['options'][$optName] = $value;
-    return $this;
-  }
-
-  /**
-   * Sets the option name value pair
-   * 
-   * @param  string $optName option name
-   * @param  mixed $value
-   * @return $this for a fluent interface
-   */
-  protected function setFlags($flags) {
-    $this->options->flags = $flags;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  array $options
-   * @return $this for a fluent interface
-   */
-  protected function setOptions($options) {
-    $this->options['options'] = $options;
+    $this->opts['options'][$optName] = $value;
     return $this;
   }
 
   public function filter($variable) {
-    return filter_var($variable, $this->filter, $this->options->toArray());
+    //var_dump($this->opts->toArray());
+    if ($this->filter === FILTER_VALIDATE_INT && is_numeric($variable)) {
+      echo "original : $variable\n";
+      $variable = intval(round($variable));
+    }
+    return filter_var($variable, $this->filter, $this->opts->toArray());
   }
 
 }

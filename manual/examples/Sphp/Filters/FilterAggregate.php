@@ -5,7 +5,7 @@ namespace Sphp\Filters;
 $arr = [0, "a", -2, 4, 8.64, 1002];
 
 $filters = new FilterAggregate();
-$filters->addFilter(new IntegerFilter(2))
+$filters
         ->addFilter(function($variable) {
           return $variable * 2;
         })

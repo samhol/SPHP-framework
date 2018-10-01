@@ -39,12 +39,11 @@ class Filters {
         self::$filters[$filter] = $id;
       }
     }
-     print_r(self::$filters);
+    // print_r(self::$filters);
     if (array_key_exists($name, self::$filters)) {
-
       return new VariableFilter(self::$filters[$name]);
     }
-    throw new \Sphp\Exceptions\BadMethodCallException($name);
+    throw new \Sphp\Exceptions\BadMethodCallException("Filter '$name' does not exist");
   }
 
 }
