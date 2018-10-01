@@ -10,9 +10,13 @@
 
 namespace Sphp\Filters;
 
+use Sphp\Exceptions\BadMethodCallException;
+
 /**
- * Description of Filters
- *
+ * A factory for variable filters
+ * 
+ * @method \Sphp\Filters\VariableFilter int(array $options = []) creates an integer validation filter instance
+ * @method \Sphp\Filters\VariableFilter stríng(array $options = []) creates a string validation filter instance
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -25,7 +29,14 @@ class Filters {
    */
   private static $filters;
 
-  public static function __callStatic($name, $arguments) {
+  /**
+   * 
+   * @param  string $name
+   * @param  array $arguments
+   * @return VariableFilter
+   * @throws BadMethodCallException
+   */
+  public static function __callStatic(string $name, array $arguments): VariableFilter {
     if (self::$filters === null) {
       foreach (filter_list() as $filter) {
         $str = str_replace('_', ' ', $filter);
@@ -43,7 +54,7 @@ class Filters {
     if (array_key_exists($name, self::$filters)) {
       return new VariableFilter(self::$filters[$name]);
     }
-    throw new \Sphp\Exceptions\BadMethodCallException("Filter '$name' does not exist");
+    throw new BadMethodCallException("Filter '$name' does not exist");
   }
 
 }

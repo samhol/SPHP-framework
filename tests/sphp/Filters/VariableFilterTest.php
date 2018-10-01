@@ -39,17 +39,20 @@ class VariableFilterTest extends TestCase {
   public function testIntFilter($var, int $expected) {
     $intFilter = Filters::int();
     $intFilter->options->min_range = -20;
-    $intFilter->options->max_range = 20;
+    $intFilter->options['max_range'] = 20;
     $intFilter->options->default = 0;
     $intFilter->flags = FILTER_FLAG_ALLOW_HEX;
+    $this->assertSame(FILTER_FLAG_ALLOW_HEX, $intFilter->getFlags());
+    $this->assertSame(FILTER_FLAG_ALLOW_HEX, $intFilter->flags);
     $this->assertSame($expected, $intFilter($var));
   }
+  
 
   /**
    * @expectedException BadMethodCallException
    */
   public function testFactoryFail() {
-    $intFilter = Filters::foo();
+    Filters::foo();
   }
 
   /**
@@ -71,7 +74,7 @@ class VariableFilterTest extends TestCase {
   public function validFilters() {
     $ids = [];
     foreach (filter_list() as $filter) {
-      $ids[] = [filter_id($filter)];
+      $ids[] = [$filter, filter_id($filter)];
     }
     return $ids;
   }
@@ -80,9 +83,12 @@ class VariableFilterTest extends TestCase {
    * @dataProvider validFilters
    * @param int $id
    */
-  public function testFilterFactory(int $id) {
+  public function testFilterFactory(string $name, int $id) {
+    $factortVersion = Filters::$name();
     $filter = new VariableFilter($id);
+    $this->assertSame($id, $factortVersion->getFilter());
     $this->assertSame($id, $filter->getFilter());
+    
   }
 
 }

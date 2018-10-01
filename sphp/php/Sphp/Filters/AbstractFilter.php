@@ -17,7 +17,7 @@ namespace Sphp\Filters;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractFilter implements FilterInterface {
+abstract class AbstractFilter implements Filter {
 
   /**
    * Executes the filter for the given value

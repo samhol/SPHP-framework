@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $strLink = Manual\php()->typeLink("string");
 $arrLink = Manual\php()->typeLink([]);
-$filterInterface = Manual\api()->classLinker(FilterInterface::class);
+$filterInterface = Manual\api()->classLinker(Filter::class);
 $filterAggregate = Manual\api()->classLinker(FilterAggregate::class);
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $nsLink = Manual\api()->namespaceLink(__NAMESPACE__, false);

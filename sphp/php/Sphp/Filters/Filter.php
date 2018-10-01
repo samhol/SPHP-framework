@@ -16,8 +16,8 @@ namespace Sphp\Filters;
  * **Important:** 
  * 
  * 1. All filter implementations should accept any type of input variable
- * 2. An implementation should never throw an exception or 
- *    produce PHP errors or PHP warnings for any type of input data
+ * 2. An implementation should never throw an exception or produce PHP errors or 
+ *    PHP warnings for any type of input data
  * 3. otherwise the implementation of the functionality is totally unrestricted
  * 4. because of the above rules these filters are **NOT** necessarily **SAFE**
  *
@@ -25,7 +25,7 @@ namespace Sphp\Filters;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface FilterInterface {
+interface Filter {
 
   /**
    * Executes the filter for the given data

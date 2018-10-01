@@ -46,7 +46,7 @@ class VariableFilter extends AbstractFilter {
     $this->opts = new DataObject();
   }
 
-  public function __get(string $name): DataObject {
+  public function __get(string $name) {
     if ($name === 'options') {
       return $this->opts->options;
     }
@@ -76,25 +76,13 @@ class VariableFilter extends AbstractFilter {
    * @return int
    */
   public function getFlags() {
-    return $this->flags;
-  }
-
-  /**
-   * Sets the option name value pair
-   * 
-   * @param  string $optName option name
-   * @param  mixed $value
-   * @return $this for a fluent interface
-   */
-  protected function setOption($optName, $value) {
-    $this->opts['options'][$optName] = $value;
-    return $this;
+    return $this->opts->flags;
   }
 
   public function filter($variable) {
     //var_dump($this->opts->toArray());
     if ($this->filter === FILTER_VALIDATE_INT && is_numeric($variable)) {
-      echo "original : $variable\n";
+      //echo "original : $variable\n";
       $variable = intval(round($variable));
     }
     return filter_var($variable, $this->filter, $this->opts->toArray());

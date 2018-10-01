@@ -14,7 +14,7 @@ namespace Sphp\Filters;
  * Filter converts a numeric input value to corresponding ordinal (in English)
  * 
  * * All non negative integer values remain unchanged. 
- * * value is considered as an integer if it contains only numbers 
+ * * A variable is considered as an integer if it contains only numbers 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -32,10 +32,10 @@ class Ordinalizer extends AbstractFilter {
       $int = abs((int) $variable);
       if (!in_array(($int % 100), [11, 12, 13])) {
         switch ($int % 10) {
-          case 1: 
+          case 1:
             $suff = 'st';
             break;
-          case 2: 
+          case 2:
             $suff = 'nd';
             break;
           case 3:
