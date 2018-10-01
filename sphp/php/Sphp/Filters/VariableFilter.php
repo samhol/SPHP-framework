@@ -10,6 +10,8 @@
 
 namespace Sphp\Filters;
 
+use Sphp\Stdlib\Datastructures\DataObject;
+
 /**
  * Filters a variable with a specified filter
  *
@@ -18,7 +20,7 @@ namespace Sphp\Filters;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class VariableFilter extends AbstractFilter implements \ArrayAccess {
+class VariableFilter extends AbstractFilter {
 
   /**
    * @var int 
@@ -26,14 +28,9 @@ class VariableFilter extends AbstractFilter implements \ArrayAccess {
   private $filter;
 
   /**
-   * @var mixed[] 
+   * @var DataObject
    */
   private $options;
-
-  /**
-   * @var mixed[] 
-   */
-  private $flags;
 
   /**
    * Constructor
@@ -45,20 +42,7 @@ class VariableFilter extends AbstractFilter implements \ArrayAccess {
    */
   public function __construct(int $filter, $options = []) {
     $this->filter = $filter;
-    $this->options = $options;
-  }
-
-  public function __get($name) {
-    if ($name === 'options') {
-      return $this->options;
-    }
-    if ($name === 'flags') {
-      return $this->flags;
-    }
-    if ($name === 'filter') {
-      return $this->filter;
-    }
-    throw new \Sphp\Exceptions\InvalidArgumentException;
+    $this->options = new DataObject();
   }
 
   public function __set($name, $value) {
@@ -71,11 +55,21 @@ class VariableFilter extends AbstractFilter implements \ArrayAccess {
     throw new \Sphp\Exceptions\InvalidArgumentException;
   }
 
+  public function __get($name) {
+    if ($name === 'options') {
+      return $this->options->options;
+    }
+    if ($name === 'flags') {
+      return $this->options->flags;
+    }
+    throw new \Sphp\Exceptions\InvalidArgumentException;
+  }
+
   public function getFilter() {
     return $this->filter;
   }
 
-  public function getOptions() {
+  public function getOptions(): DataObject {
     return $this->options;
   }
 
@@ -107,7 +101,7 @@ class VariableFilter extends AbstractFilter implements \ArrayAccess {
    * @return $this for a fluent interface
    */
   protected function setFlags($flags) {
-    $this->options['flags'] = $flags;
+    $this->options->flags = $flags;
     return $this;
   }
 
@@ -122,36 +116,7 @@ class VariableFilter extends AbstractFilter implements \ArrayAccess {
   }
 
   public function filter($variable) {
-    //print_r($this->options);
-    $options = [];
-    if (isset($this->options)) {
-      $options['options'] = $this->options;
-    }
-    if (isset($this->flags)) {
-      $options['flags'] = $this->flags;
-    }
-    return filter_var($variable, $this->filter, $options);
-  }
-
-  public function offsetExists($offset): bool {
-    return array_key_exists($offset, $this->options['options']);
-  }
-
-  public function offsetGet($offset) {
-    if ($this->offsetExists($offset)) {
-      return $this->options[$offset];
-    }
-    throw new \Sphp\Exceptions\OutOfBoundsException("Option $offset is not set");
-  }
-
-  public function offsetSet($offset, $value): void {
-    $this->options['options'][$offset] = $value;
-  }
-
-  public function offsetUnset($offset): void {
-    if ($this->offsetExists($offset)) {
-      unset($this->options['options'][$offset]);
-    }
+    return filter_var($variable, $this->filter, $this->options->toArray());
   }
 
 }

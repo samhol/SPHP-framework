@@ -52,7 +52,7 @@ class IntegerFilter extends VariableFilter {
    * @return $this for a fluent interface
    */
   public function setMin(int $min = null) {
-    $this['options']['min_range'] = $min;
+    $this->getOptions()->options->min_range = $min;
     return $this;
   }
 
@@ -62,7 +62,7 @@ class IntegerFilter extends VariableFilter {
    * @return $this for a fluent interface
    */
   public function setMax(int $max = null) {
-    $this['options']['max_range'] = $max;
+    $this->getOptions()->options->max_range = $max;
     return $this;
   }
 

@@ -9,6 +9,7 @@ $nsLink = Manual\api()->namespaceLink(__NAMESPACE__);
 $collectionInterface = Manual\api()->classLinker(CollectionInterface::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
+\Sphp\Manual\visualize('Sphp/Stdlib/Datastructures/Data.php', 'text', true);
 Manual\md(<<<MD
 #DATA STRUCTURES
 $ns
