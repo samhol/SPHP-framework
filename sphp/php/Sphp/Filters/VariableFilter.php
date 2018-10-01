@@ -46,6 +46,12 @@ class VariableFilter extends AbstractFilter {
     $this->opts = new DataObject();
   }
 
+  /**
+   * 
+   * @param string $name
+   * @return  DataObject|scalar
+   * @throws InvalidArgumentException
+   */
   public function __get(string $name) {
     if ($name === 'options') {
       return $this->opts->options;
@@ -56,17 +62,33 @@ class VariableFilter extends AbstractFilter {
     throw new InvalidArgumentException("Invalid parameter name '$name'");
   }
 
-  public function __set($name, $value) {
+  /**
+   * Sets an option value pair
+   * 
+   * @param  string $name
+   * @param  mixes $value
+   * @return void
+   * @throws InvalidArgumentException
+   */
+  public function __set(string $name, $value) {
     if ($name === 'flags') {
-      return $this->opts->flags = $value;
+      $this->opts->flags = $value;
     }
     throw new InvalidArgumentException("Cannot se parameter '$name'");
   }
 
+  /**
+   * 
+   * @return int returns the PHP filter used 
+   */
   public function getFilter(): int {
     return $this->filter;
   }
 
+  /**
+   * 
+   * @return DataObject
+   */
   public function options(): DataObject {
     return $this->opts;
   }
