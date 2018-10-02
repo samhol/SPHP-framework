@@ -108,4 +108,16 @@ class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAgg
     return new \ArrayIterator($this->toArray());
   }
 
+  public static function fromArray(array $data): DataObject {
+    $result = new static();
+    foreach ($data as $key => $value) {
+      if (!is_array($value)) {
+        $result[$key] = $value;
+      } else {
+        $result[$key] = static::fromArray($value);
+      }
+    }
+    return $result;
+  }
+
 }

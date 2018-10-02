@@ -41,16 +41,22 @@ class VariableFilter extends AbstractFilter {
    * @link  http://php.net/manual/en/filter.filters.php filter_var
    * @link  http://php.net/manual/en/filter.filters.php Types of filters
    */
-  public function __construct(int $filter, $options = []) {
+  public function __construct(int $filter, $options = null) {
     $this->filter = $filter;
-    $this->opts = new DataObject();
+    if (is_array($options)) {
+      $options = DataObject::fromArray($options);
+    }
+    if ($options === null) {
+      $options = new DataObject();
+    }
+    $this->opts = $options;
   }
 
   /**
    * 
    * @param string $name
    * @return  DataObject|scalar
-   * @throws InvalidArgumentException
+   * @throws InvalidArgumentException if the option name is invelid
    */
   public function __get(string $name) {
     if ($name === 'options') {
@@ -67,17 +73,18 @@ class VariableFilter extends AbstractFilter {
    * 
    * @param  string $name
    * @param  mixes $value
-   * @return void
+   * @return DataObject|scalar
    * @throws InvalidArgumentException
    */
   public function __set(string $name, $value) {
     if ($name === 'flags') {
-      $this->opts->flags = $value;
+      return $this->opts->flags = $value;
     }
     throw new InvalidArgumentException("Cannot se parameter '$name'");
   }
 
   /**
+   * Returns the ID of the PHP filter to apply
    * 
    * @return int returns the PHP filter used 
    */
