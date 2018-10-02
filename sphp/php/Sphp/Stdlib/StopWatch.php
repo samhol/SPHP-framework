@@ -27,13 +27,6 @@ class StopWatch {
   private $startTime;
 
   /**
-   * Constructor
-   */
-  public function __construct() {
-    
-  }
-
-  /**
    * Starts the clock from the page request
    *
    * @return $this for a fluent interface
@@ -60,8 +53,11 @@ class StopWatch {
    * @param  float $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public function getTime(int $precision = 2): float {
+  public function getTime(int $precision = null): float {
     $seconds = microtime(true) - $this->startTime;
+    if ($precision === null) {
+      return $seconds;
+    }
     return number_format($seconds, $precision);
   }
 
@@ -69,10 +65,10 @@ class StopWatch {
    * Returns the amount of the time from the start of the execution to the
    * current time
    *
-   * @param  float $precision number of decimal digits to round to (defaults to 2)
+   * @param  int $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public static function getEcecutionTime(int $precision = 2): float {
+  public static function getExecutionTime(int $precision = 2): float {
     $instance = new Static();
     $instance->startFromRequest();
     return $instance->getTime($precision);

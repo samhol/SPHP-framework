@@ -3,19 +3,10 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Config\PHP;
+use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class BitMaskTest extends \PHPUnit\Framework\TestCase {
-
-  /**
-   * @param BitMask $m1
-   * @param BitMask $m2
-   */
-  public function equals(BitMask $m1, BitMask $m2) {
-    $this->assertEquals($m1, $m2);
-    $this->assertEquals($m1->toInt(), $m2->toInt());
-    $this->assertTrue($m1->equals($m2));
-    $this->assertTrue($m2->equals($m1));
-  }
 
   /**
    * @return array
@@ -65,37 +56,48 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     $fromHex = BitMask::fromHex($hex);
     $this->assertEquals($mask, $fromHex);
     $this->assertEquals($mask->toInt(), $fromHex->toInt());
-    $this->assertTrue($mask->equals($fromHex));
-    $this->assertTrue($fromHex->equals($mask));
+    $this->assertTrue($mask == $fromHex);
   }
 
   /**
-   * @covers \Sphp\Stdlib\Strings::startsWith
+   * @covers \Sphp\Stdlib\BitMask::setBit
+   * @covers \Sphp\Stdlib\BitMask::getBit
+   * @covers \Sphp\Stdlib\BitMask::unsetBit
    * @param string $haystack
    * @param string $needle
    */
-  public function testBitSetting() {
+  public function testSingleBitManipulation() {
     $b = new BitMask();
     for ($i = 0; $i < PHP::getBitVersion(); $i++) {
-      $b->set($i);
-      $this->assertSame(1, $b->get($i), "Failed asserting that 1 is identical to {$b->get($i)} at position '$i'");
+      $b->setBit($i);
+      $this->assertSame(1, $b->getBit($i), "Failed asserting that 1 is identical to {$b->getBit($i)} at position '$i'");
       $b->unsetBit($i);
-      $this->assertSame(0, $b->get($i), "Failed asserting that 0 is identical to {$b->get($i)} at position '$i'");
+      $this->assertSame(0, $b->getBit($i), "Failed asserting that 0 is identical to {$b->getBit($i)} at position '$i'");
     }
   }
 
   /**
-   * @covers \Sphp\Stdlib\BitMask::toArray
-   * @dataProvider bits
-   * @param int $bits
+   * @expectedException OutOfBoundsException
    */
-  public function testToArray(int $bits) {
-    $mask = new BitMask($bits);
-    $arr = $mask->toArray();
-    $this->assertCount(PHP::getBitVersion(), $arr);
-    foreach ($arr as $index => $bit) {
-      $this->assertSame($mask->get($index), $bit);
-    }
+  public function testInvalidGetBit() {
+    $b = new BitMask();
+    $b->getBit($b->length());
+  }
+
+  /**
+   * @expectedException OutOfBoundsException
+   */
+  public function testInvalidSetBit() {
+    $b = new BitMask();
+    $b->setBit($b->length());
+  }
+
+  /**
+   * @expectedException OutOfBoundsException
+   */
+  public function testInvalidUnsetBit() {
+    $b = new BitMask();
+    $b->unsetBit($b->length());
   }
 
   /**
@@ -118,14 +120,14 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   public function testIterating(int $bits) {
     $mask = new BitMask($bits);
     foreach ($mask as $key => $bit) {
-      $this->assertSame($bit, $mask->get($key));
+      $this->assertSame($bit, $mask->getBit($key));
     }
   }
 
   /**
    * @return array
    */
-  public function pairs(): array {
+  public function containingPairs(): array {
     return [
         [0, 0],
         [0, 1],
@@ -142,7 +144,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @covers \Sphp\Stdlib\BitMask::binAND
-   * @dataProvider pairs
+   * @dataProvider containingPairs
    * @param int $first
    * @param int $second
    */
@@ -162,7 +164,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @covers \Sphp\Stdlib\BitMask::binOR
-   * @dataProvider pairs
+   * @dataProvider containingPairs
    * @param int $first
    * @param int $second
    */
@@ -182,7 +184,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @covers \Sphp\Stdlib\BitMask::binXOR
-   * @dataProvider pairs
+   * @dataProvider containingPairs
    * @param int $first
    * @param int $second
    */
@@ -201,8 +203,8 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers \Sphp\Stdlib\BitMask::binXOR
-   * @dataProvider pairs
+   * @covers \Sphp\Stdlib\BitMask::contains
+   * @dataProvider containingPairs
    * @param int $first
    * @param int $second
    */
@@ -231,29 +233,122 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
         [0xf, '0xf'],
         [0x1f, '#1f'],
         [1, '0001'],
-        [-1, '-1'],
-        [-1, new BitMask(-1)],
+        [1, '1'],
+        [1, new BitMask(1)],
     ];
   }
 
   /**
+   * @covers \Sphp\Stdlib\BitMask::from
    * @covers \Sphp\Stdlib\BitMask::parseInt
    * @dataProvider equalPairs
    * @param int $a
    * @param mixed $b
    */
-  public function testparseInt(int $a, $b) {
-    $this->assertSame($a, BitMask::parseInt($b), "b: '$b' cannot be converted to $a");
+  public function testFrom(int $a, $b) {
+    $this->assertEquals(new Bitmask($a), BitMask::from($b), "b: '$b' cannot be converted to $a");
   }
 
   /**
-   * @covers \Sphp\Stdlib\BitMask::binXOR
+   * @expectedException InvalidArgumentException
+   */
+  public function testFromInvalid() {
+    BitMask::from(new \stdClass());
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\BitMask::equals
    * @dataProvider equalPairs
    * @param int $a
    * @param mixed $b
    */
   public function testEquals(int $a, $b) {
-    $this->equals(new BitMask($a), BitMask::from($b));
+    $maskA = new BitMask($a);
+    $this->assertEquals($maskA, BitMask::from($b));
+    $this->assertTrue($maskA->equals($b));
+  }
+
+  /**
+   * @return array
+   */
+  public function nonEqualPairs(): array {
+    return [
+        [1, false],
+        [0, true],
+        [PHP_INT_MAX, PHP_INT_MAX - 1],
+        [1, new \stdClass()]
+    ];
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\BitMask::equals
+   * @dataProvider nonEqualPairs
+   * @param int $a
+   * @param mixed $b
+   */
+  public function testNotEquals(int $a, $b) {
+    $maskA = new BitMask($a);
+    $this->assertFalse($maskA->equals($b));
+    //$this->assertNotEquals($maskA, BitMask::from($b));
+  }
+
+  /**
+   * @return array
+   */
+  public function intData(): array {
+    return [
+        [0],
+        [PHP_INT_MAX],
+        [1],
+        [127],
+    ];
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\BitMask::toInt
+   * @dataProvider intData
+   * @param $a
+   */
+  public function testToInt(int $a) {
+    $mask = new BitMask($a);
+    $this->assertSame($a, $mask->toInt());
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\BitMask::toInt
+   * @covers \Sphp\Stdlib\BitMask::toHex
+   * @covers \Sphp\Stdlib\BitMask::tobin
+   * @covers \Sphp\Stdlib\BitMask::toOct
+   * @covers \Sphp\Stdlib\BitMask::__toString
+   * @covers \Sphp\Stdlib\BitMask::binaryRepresentation
+   * @dataProvider intData
+   * @param int $a
+   */
+  public function testToScalarOutput(int $a) {
+    $mask = new BitMask($a);
+    $this->assertSame($a, $mask->toInt());
+    $this->assertSame(decoct($a), $mask->toOct());
+    $this->assertSame(dechex($a), $mask->toHex());
+    $this->assertSame(decbin($a), $mask->toBin());
+    $this->assertSame(decbin($a), "$mask");
+    $this->assertSame(str_pad("$mask", $mask->length(), '0', STR_PAD_LEFT), $mask->binaryRepresentation());
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\BitMask::toArray
+   * @dataProvider intData
+   * @param int $a
+   */
+  public function testToArrayOutput(int $a) {
+    $mask = new BitMask($a);
+    $array = $mask->toArray();
+    $string = decbin($a);
+    $this->assertCount(PHP::getBitVersion(), $array);
+    foreach ($array as $index => $bin) {
+      $this->assertTrue($bin === 0 || $bin === 1);
+      $this->assertSame($mask->getBit($index), $bin);
+    }
+    $this->assertTrue(Strings::endsWith(Strings::reverse(implode($array)), $string));
   }
 
 }

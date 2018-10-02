@@ -99,7 +99,7 @@ class BitMask implements Arrayable, Iterator {
    * @return BitMask new instance
    * @throws OutOfBoundsException if the given index is not valid
    */
-  public function set(int $index): BitMask {
+  public function setBit(int $index): BitMask {
     if (!$this->isValidIndex($index)) {
       throw new OutOfBoundsException("Index ($index) is not between (0-" . ($this->length() - 1) . ")");
     }
@@ -113,7 +113,7 @@ class BitMask implements Arrayable, Iterator {
    * @return int the value of the bit with the specified index
    * @throws OutOfBoundsException if the given index is not valid
    */
-  public function get(int $index): int {
+  public function getBit(int $index): int {
     if (!$this->isValidIndex($index)) {
       throw new OutOfBoundsException("Index ($index) is not between (0-" . ($this->length() - 1) . ")");
     }
@@ -188,6 +188,15 @@ class BitMask implements Arrayable, Iterator {
   }
 
   /**
+   * Returns the Binary string representation
+   * 
+   * @return string Binary representation
+   */
+  public function toBin(): string {
+    return decbin($this->mask);
+  }
+
+  /**
    * Returns the binary string representation
    *
    * @return string binary representation
@@ -208,37 +217,9 @@ class BitMask implements Arrayable, Iterator {
   public function toArray(): array {
     $result = [];
     for ($i = 0; $i < $this->length(); $i++) {
-      $result[$i] = $this->get($i);
+      $result[$i] = $this->getBit($i);
     }
     return $result;
-  }
-
-  /**
-   * Parses the given flags type to an integer
-   * 
-   * @param  int|string|BitMask $flags the flags
-   * @return int parsed flags value
-   * @throws InvalidArgumentException if the value given can not be parsed
-   */
-  public static function parseInt($flags): int {
-    if (!is_int($flags)) {
-      if (is_string($flags)) {
-        $obj = new MbString($flags);
-        if ($obj->startsWith('#') || $obj->startsWith('0x')) {
-          $flags = str_replace(['#', '0x'], '', $flags);
-          return hexdec($flags);
-        } else {
-          $flags = intval($flags);
-        }
-      } else if (is_scalar($flags)) {
-        $flags = intval($flags);
-      } else if ($flags instanceof BitMask) {
-        $flags = $flags->toInt();
-      } else {
-        throw new InvalidArgumentException("Value cannot be parsed to integer");
-      }
-    }
-    return $flags;
   }
 
   public function equals($object): bool {
@@ -247,43 +228,6 @@ class BitMask implements Arrayable, Iterator {
     } catch (\Exception $ex) {
       return false;
     }
-  }
-
-  /**
-   * 
-   * @param  string $binary
-   * @return BitMask
-   */
-  public static function fromBinary(string $binary): BitMask {
-    return new static(bindec($binary));
-  }
-
-  /**
-   * 
-   * @param  string $octal
-   * @return BitMask
-   */
-  public static function fromOctal(string $octal): BitMask {
-    return new static(octdec($octal));
-  }
-
-  /**
-   * 
-   * @param  string $hex
-   * @return BitMask
-   */
-  public static function fromHex(string $hex): BitMask {
-    $v = str_replace(['#', '0x'], '', $hex);
-    return new static(hexdec($v));
-  }
-
-  /**
-   * 
-   * @param  mixed $hex
-   * @return BitMask
-   */
-  public static function from($hex): BitMask {
-    return new static(static::parseInt($hex));
   }
 
   /**
@@ -301,7 +245,7 @@ class BitMask implements Arrayable, Iterator {
    * @return mixed the current element
    */
   public function current(): int {
-    return $this->get($this->index);
+    return $this->getBit($this->index);
   }
 
   /**
@@ -338,6 +282,75 @@ class BitMask implements Arrayable, Iterator {
    */
   public function length(): int {
     return PHP::getBitVersion();
+  }
+
+  /**
+   * Creates a new instance from binary input
+   * 
+   * @param  string $binary binary input
+   * @return BitMask new instance
+   */
+  public static function fromBinary(string $binary): BitMask {
+    return new static(bindec($binary));
+  }
+
+  /**
+   * Creates a new instance from octal input
+   * 
+   * @param  string $octal octal input
+   * @return BitMask new instance
+   */
+  public static function fromOctal(string $octal): BitMask {
+    return new static(octdec($octal));
+  }
+
+  /**
+   * Creates a new instance from hexadecimal input
+   * 
+   * @param  string $hex hexadecimal input
+   * @return BitMask new instance
+   */
+  public static function fromHex(string $hex): BitMask {
+    $v = str_replace(['#', '0x'], '', $hex);
+    return new static(hexdec($v));
+  }
+
+  /**
+   * Creates a new instance from input
+   * 
+   * @param  mixed $input
+   * @return BitMask new instance
+   */
+  public static function from($input): BitMask {
+    return new static(static::parseInt($input));
+  }
+
+  /**
+   * Parses the given flags type to an integer
+   * 
+   * @param  int|string|BitMask $flags the flags
+   * @return int parsed flags value
+   * @throws InvalidArgumentException if the value given can not be parsed
+   */
+  public static function parseInt($flags): int {
+    if (!is_int($flags)) {
+      if (is_string($flags)) {
+        $obj = new MbString($flags);
+        if ($obj->startsWith('#') || $obj->startsWith('0x')) {
+          $flags = str_replace(['#', '0x'], '', $flags);
+          return hexdec($flags);
+        } else {
+          $flags = intval($flags);
+        }
+      } else if (is_scalar($flags)) {
+        $flags = intval($flags);
+      } else if ($flags instanceof BitMask) {
+        $flags = $flags->toInt();
+      } else {
+        throw new InvalidArgumentException("Value cannot be parsed to integer");
+      }
+    }
+    return $flags;
   }
 
 }

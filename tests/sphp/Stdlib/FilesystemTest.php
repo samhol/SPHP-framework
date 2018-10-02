@@ -10,26 +10,16 @@
 
 namespace Sphp\Stdlib;
 
+use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStreamDirectory;
 use Sphp\Exceptions\FileSystemException;
 
-class FilesystemTest extends \PHPUnit\Framework\TestCase {
+class FilesystemTest extends TestCase {
 
   public function setUp() {
     vfsStreamWrapper::register();
     vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
-  }
-
-  /**
-   * @param BitMask $m1
-   * @param BitMask $m2
-   */
-  public function equals(BitMask $m1, BitMask $m2) {
-    $this->assertEquals($m1, $m2);
-    $this->assertEquals($m1->toInt(), $m2->toInt());
-    $this->assertTrue($m1->equals($m2));
-    $this->assertTrue($m2->equals($m1));
   }
 
   /**

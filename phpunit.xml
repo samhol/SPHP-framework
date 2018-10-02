@@ -56,6 +56,12 @@
       <file>./tests/sphp/Stdlib/StringManipulationTest.php</file>
       <file>./tests/sphp/Stdlib/MbStringSpecificTest.php</file>
     </testsuite>
+    <testsuite name="stdlib-bitmask">
+      <directory>./tests/sphp/Stdlib/BitMaskTest.php</directory>
+    </testsuite>
+    <testsuite name="stdlib-stopwatch">
+      <directory>./tests/sphp/Stdlib/StopWatchTest.php</directory>
+    </testsuite>
   </testsuites>
   
   <logging>

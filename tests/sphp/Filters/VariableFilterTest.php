@@ -41,12 +41,12 @@ class VariableFilterTest extends TestCase {
     $intFilter->options->min_range = -20;
     $intFilter->options['max_range'] = 20;
     $intFilter->options->default = 0;
+    $this->assertSame(0, $intFilter->flags);
     $intFilter->flags = FILTER_FLAG_ALLOW_HEX;
     $this->assertSame(FILTER_FLAG_ALLOW_HEX, $intFilter->getFlags());
     $this->assertSame(FILTER_FLAG_ALLOW_HEX, $intFilter->flags);
     $this->assertSame($expected, $intFilter($var));
   }
-  
 
   /**
    * @expectedException BadMethodCallException
@@ -88,7 +88,6 @@ class VariableFilterTest extends TestCase {
     $filter = new VariableFilter($id);
     $this->assertSame($id, $factortVersion->getFilter());
     $this->assertSame($id, $filter->getFilter());
-    
   }
 
 }

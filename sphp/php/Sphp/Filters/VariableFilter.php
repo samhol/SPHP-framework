@@ -63,7 +63,7 @@ class VariableFilter extends AbstractFilter {
       return $this->opts->options;
     }
     if ($name === 'flags') {
-      return $this->opts->flags;
+      return $this->getFlags();
     }
     throw new InvalidArgumentException("Invalid parameter name '$name'");
   }
@@ -93,10 +93,11 @@ class VariableFilter extends AbstractFilter {
   }
 
   /**
+   * Returns the settings
    * 
-   * @return DataObject
+   * @return DataObject containing the settings
    */
-  public function options(): DataObject {
+  public function getSettings(): DataObject {
     return $this->opts;
   }
 
@@ -104,8 +105,12 @@ class VariableFilter extends AbstractFilter {
    * 
    * @return int
    */
-  public function getFlags() {
-    return $this->opts->flags;
+  public function getFlags(): int {
+    if (isset($this->opts->flags)) {
+      return $this->opts->flags;
+    } else {
+      return 0;
+    }
   }
 
   public function filter($variable) {
