@@ -26,7 +26,7 @@ trait ObservableSubjectTrait {
    *
    * @var SplObjectStorage
    */
-  protected $observers;
+  private $observers;
 
   /**
    * Attach an observer to the observable
@@ -38,6 +38,7 @@ trait ObservableSubjectTrait {
       $this->observers = new SplObjectStorage();
     }
     $this->observers->attach($obs);
+    //var_dump($this->observers, $obs);
   }
 
   public function contains($observer): bool {

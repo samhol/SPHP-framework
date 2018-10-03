@@ -11,8 +11,9 @@
 namespace Sphp\Stdlib\Observers;
 
 use PHPUnit\Framework\TestCase;
+use Eloquent\Phony\Phony;
 
-class ObserverSubjectTraitTest extends TestCase {
+class ObserverSubjectTraitTest  {
 
   /**
    * @var ObservableSubjectTrait
@@ -26,16 +27,12 @@ class ObserverSubjectTraitTest extends TestCase {
    */
   protected function setUp() {
     $this->appendedStrings = [];
-    $f = function($subject) {
-      $this->appendedStrings[] = $subject;
-      $this->assertSame($this->subject, $subject);
-    };
-    $this->subject = $this->getMockForTrait(ObservableSubjectTrait::class);
-    $this->observer = $this->createMock(Observer::class);
+    $this->subject = Phony::mock([Subject::class, ObservableSubjectTrait::class]);
 
+    $this->observer = Phony::mock(Observer::class);
+    //$this->observer->update->returns($this->subject);
+    // $this->observer->update->calledWith($this->subject);
     // Configure the stub.
-    $this->observer->method('update')
-            ->will($this->returnCallback($f));
   }
 
   /**
@@ -47,12 +44,15 @@ class ObserverSubjectTraitTest extends TestCase {
   }
 
   public function testObserving() {
-    $this->assertFalse($this->subject->contains($this->observer));
-    $this->subject->attach($this->observer);
-    $this->assertTrue($this->subject->contains($this->observer));
-    $this->subject->notify();
-    $this->assertSame($this->subject->detach($this->observer));
-    $this->assertFalse($this->subject->contains($this->observer));
+    $subject = $this->subject->get();
+    $o = $this->observer->get();
+    $this->assertFalse($subject->contains($o));
+    $subject->attach($o);
+    $this->assertTrue($subject->contains($o));
+    $subject->notify();
+    $this->observer->update->calledWith($subject);
+    $this->assertSame($subject->detach($o));
+    $this->assertFalse($subject->contains($o));
   }
 
 }
