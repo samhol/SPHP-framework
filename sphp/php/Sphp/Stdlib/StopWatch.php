@@ -58,7 +58,7 @@ class StopWatch {
     if ($precision === null) {
       return $seconds;
     }
-    return number_format($seconds, $precision);
+    return (float) number_format($seconds, $precision);
   }
 
   /**
@@ -68,7 +68,7 @@ class StopWatch {
    * @param  int $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public static function getExecutionTime(int $precision = 2): float {
+  public static function getExecutionTime(int $precision = null): float {
     $instance = new Static();
     $instance->startFromRequest();
     return $instance->getTime($precision);

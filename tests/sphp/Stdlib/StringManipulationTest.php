@@ -42,7 +42,7 @@ class StringManipulationTest extends TestCase {
   }
 
   /**
-   * @covers \Sphp\Stdlib\MbString::isEmpty
+   * @covers \Sphp\Stdlib\Strings::isEmpty
    * @dataProvider mixedData
    * 
    */
@@ -352,8 +352,8 @@ class StringManipulationTest extends TestCase {
         ['0123456789abcdefABCDEF', true],
         ['0x123456789abcdefABCDEF', true],
         ['#0123456789abcdefABCDEF', true],
-        ['f,', false],
-        ["\n\t", false],
+        ['f,a', false],
+        ["\n\ta", false],
         ['', false],
         [' ', false],
         ['foo', false],
@@ -366,7 +366,7 @@ class StringManipulationTest extends TestCase {
    * @param string $string
    * @param string $expected
    */
-  public function testHex(string $string, bool $expected) {
+  public function testIsHexadecimal(string $string, bool $expected) {
     $this->assertSame($expected, Strings::isHexadecimal($string));
     $obj = MbString::create($string);
     $this->assertSame($expected, $obj->isHexadecimal());
@@ -395,13 +395,14 @@ class StringManipulationTest extends TestCase {
    * @param string|null $charsToTrim
    * @param string $expected
    */
-  public function testBinary(string $string, bool $expected) {
+  public function testIsBinary(string $string, bool $expected) {
     $this->assertSame($expected, Strings::isBinary($string));
     $obj = MbString::create($string);
     $this->assertSame($expected, $obj->isBinary());
   }
 
   /**
+   * @covers \Sphp\Stdlib\Strings::contains
    * @covers \Sphp\Stdlib\Strings::containsAll
    * @covers \Sphp\Stdlib\Strings::containsAny
    */
@@ -410,9 +411,13 @@ class StringManipulationTest extends TestCase {
     $obj = MbString::create($seed);
     $this->assertTrue($obj->containsAny(range('c', 'o')));
     $this->assertTrue(Strings::containsAny($seed, range('c', 'o')));
-
-    $this->asserttrue($obj->containsAll(range('a', 'f')));
-    $this->asserttrue(Strings::containsAll($seed, range('a', 'f')));
+    $contained = range('a', 'f');
+    foreach ($contained as $str) {
+      $this->assertTrue($obj->contains($str));
+      $this->assertTrue(Strings::contains($seed, $str));
+    }
+    $this->assertTrue($obj->containsAll($contained));
+    $this->assertTrue(Strings::containsAll($seed, $contained));
 
     $this->assertFalse($obj->containsAll(range('a', 'o')));
     $this->assertFalse(Strings::containsAll($seed, range('a', 'o')));
@@ -450,6 +455,31 @@ class StringManipulationTest extends TestCase {
     $this->assertSame($chars, $obj->toArray());
     $this->assertSame($chars, Strings::toArray($string, $encoding));
     $this->assertSame([], MbString::create('')->toArray());
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::countSubstr
+   */
+  public function testCountSubstr() {
+    $strObj = MbString::create('This IS a test');
+    $this->assertEquals(1, $strObj->countSubstr('is'));
+    $this->assertEquals(1, Strings::countSubstr('This IS a test', 'is'));
+    $this->assertEquals(2, $strObj->countSubstr('is', false));
+    $this->assertEquals(2, Strings::countSubstr('This IS a test', 'is', false));
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::indexOf
+   */
+  public function testIndexOf() {
+    $str = 'foobar is foo and bar';
+    $strObj = MbString::create($str);
+    $this->assertEquals(7, $strObj->indexOf('is'));
+    $this->assertEquals(7, Strings::indexOf($str, 'is'));
+    $this->assertEquals(0, $strObj->indexOf('foo'));
+    $this->assertEquals(0, Strings::indexOf($str, 'foo'));
+    $this->assertEquals(10, $strObj->indexOf('foo', 1));
+    $this->assertEquals(10, Strings::indexOf($str, 'foo', 1));
   }
 
   public function testReplacing() {
@@ -515,6 +545,54 @@ class StringManipulationTest extends TestCase {
     $this->compareToString($expected, $collapsed);
   }
 
+  /**
+   * @return array
+   */
+  public function alphaNumData(): array {
+    return [
+        ["ABCDEEFGHIJKLMNOPQRSTUVWXY1234567890", false, true],
+        ["ABCDEEFGHIJKLMNOPQRSTUVWXY", true, true],
+        ["ABCDEEFGHIJKLMNOPQRSTUVWXY 1234567890", false, false]
+    ];
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::isAlpha
+   * @covers \Sphp\Stdlib\Strings::isAlphanumeric
+   * @dataProvider alphaNumData
+   * @param string $string
+   * @param bool $isAlpha
+   * @param bool $isAlphanum
+   */
+  public function testIsAlphaOrAlphanum(string $string, bool $isAlpha, bool $isAlphanum) {
+    $obj = MbString::create($string);
+    $this->assertSame($isAlpha, Strings::isAlpha($string));
+    $this->assertSame($isAlpha, $obj->isAlpha());
+    $this->assertSame($isAlphanum, Strings::isAlphanumeric($string));
+    $this->assertSame($isAlphanum, $obj->isAlphanumeric());
+  }
+
+
+  /**
+   * @return array
+   */
+  public function jsonData(): array {
+    return [
+        ['[{"user_id":13,"username":"stack"},{"user_id":14,"username":"over"}]', true],
+        ["foo", false],
+    ];
+  }
+  /**
+   * @covers \Sphp\Stdlib\Strings::isJson
+   * @dataProvider jsonData
+   * @param string $string
+   * @param bool $is
+   */
+  public function testIsJson(string $string, bool $is) {
+    $obj = MbString::create($string);
+    $this->assertSame($is, Strings::isJson($string));
+    $this->assertSame($is, $obj->isJson());
+  }
   /**
    * @return array
    */

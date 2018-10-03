@@ -87,4 +87,18 @@ class FilesystemTest extends TestCase {
     Filesystem::getTextFileRows('foo.bar');
   }
 
+  public function testPhpFileExecution() {
+    $string = Filesystem::executePhpToString('./tests/files/test.php');
+    $this->assertEquals('#test{foo=bar}', $string);
+    $this->expectException(FileSystemException::class);
+    Filesystem::executePhpToString('foo.php');
+  }
+
+  public function testToStringExecution() {
+    $string = Filesystem::toString('./tests/files/test.ini');
+    $this->assertEquals("foo = bar", trim($string));
+    $this->expectException(FileSystemException::class);
+    Filesystem::toString('foo.php');
+  }
+
 }

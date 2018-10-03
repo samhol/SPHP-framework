@@ -57,10 +57,16 @@
       <file>./tests/sphp/Stdlib/MbStringSpecificTest.php</file>
     </testsuite>
     <testsuite name="stdlib-bitmask">
-      <directory>./tests/sphp/Stdlib/BitMaskTest.php</directory>
+      <file>./tests/sphp/Stdlib/BitMaskTest.php</file>
     </testsuite>
     <testsuite name="stdlib-stopwatch">
-      <directory>./tests/sphp/Stdlib/StopWatchTest.php</directory>
+      <file>./tests/sphp/Stdlib/StopWatchTest.php</file>
+    </testsuite>
+    <testsuite name="stdlib-random">
+      <directory>./tests/sphp/Stdlib/Random</directory>
+    </testsuite>
+    <testsuite name="stdlib-filesystem">
+      <file>./tests/sphp/Stdlib/FilesystemTest.php</file>
     </testsuite>
   </testsuites>
   

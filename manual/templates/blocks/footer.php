@@ -112,7 +112,7 @@ $currentUrl = URL::getCurrentURL();
       <a href="license.php"><b>MIT license</b></a>
       <span class="separator">||</span>
       <b>Script executed in:</b>
-      <i><?php echo StopWatch::getExecutionTime() ?> seconds</i>
+      <i><?php echo StopWatch::getExecutionTime(2) ?> seconds</i>
       <span class="separator">||</span> <b>PHP Peak memory:</b>
       <i><?php echo number_format(memory_get_usage(true) / 1048576, 2) . " MB\n" ?></i>
     </p>

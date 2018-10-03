@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**
@@ -111,28 +112,19 @@ abstract class Parser {
    */
   public static function fromFile(string $filepath, string $extension = null) {
     $fullPath = Filesystem::getFullPath($filepath);
-    if (!Filesystem::isFile($fullPath)) {
-      throw new RuntimeException(sprintf(
-                      'Filename "%s" cannot be found relative to the working directory', $filepath
-      ));
-    }
     if ($extension === null) {
       $pathinfo = pathinfo($fullPath);
       if (!isset($pathinfo['extension'])) {
-        throw new RuntimeException(sprintf(
-                        'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
-        ));
+        throw new InvalidArgumentException(sprintf('Filename "%s" is missing an extension and cannot be auto-detected', $filepath));
       }
       $extension = strtolower($pathinfo['extension']);
     }
     $reader = static::getReaderFor($extension);
     if ($reader instanceof ArrayDecoder) {
       return $reader->arrayFromFile($fullPath);
-    } else if ($reader instanceof StringConverter) {
+    } else {
       return $reader->convertFile($fullPath);
     }
-    $config = $reader->arr($fullPath);
-    return $config;
   }
 
   /**
@@ -148,7 +140,7 @@ abstract class Parser {
       $reader = static::getReaderFor($extension);
       if ($reader instanceof ArrayDecoder) {
         return $reader->arrayFromString($string);
-      } else if ($reader instanceof StringConverter) {
+      } else {
         return $reader->convertString($string);
       }
     } else {

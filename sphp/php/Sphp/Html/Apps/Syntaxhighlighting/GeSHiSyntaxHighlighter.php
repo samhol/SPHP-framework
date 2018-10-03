@@ -21,7 +21,7 @@ use Sphp\Html\Div;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Html\Adapters\VisibilityAdapter;
-use Sphp\Stdlib\Strings;
+use Sphp\Html\Attributes\IdStorage;
 
 /**
  * Class wraps the GeSHi (a Generic Syntax Highlighter)
@@ -91,7 +91,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
   }
 
   public function __destruct() {
-    unset($this->codeContainer, $this->codeContainer, $this->geshi, $this->footer, $this->buttonArea);
+    unset($this->codeContainer, $this->geshi, $this->footer, $this->buttonArea);
     parent::__destruct();
   }
 
@@ -128,11 +128,10 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
 
   /**
    * 
-   * @param  string $seed
    * @return $this for a fluent interface
    */
-  public function setSyntaxBlockId($seed = "geshi_") {
-    $this->geshiId = $seed . Strings::random();
+  public function setSyntaxBlockId() {
+    $this->geshiId = IdStorage::get('id')->generateRandom();
     $this->geshi->set_overall_id($this->geshiId);
     return $this;
   }

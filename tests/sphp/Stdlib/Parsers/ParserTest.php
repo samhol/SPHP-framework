@@ -10,10 +10,12 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use RuntimeException;
+use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\BadMethodCallException;
 
-class ParserTest extends \PHPUnit\Framework\TestCase {
+class ParserTest extends TestCase {
 
   /**
    * @return array
@@ -63,10 +65,10 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
   public function filepathMap(): array {
     $dir = __DIR__ . '/files/';
     $map = [
-        [$dir . 'test.md', '<h1 foo="bar">test</h1>'],
-        [$dir . 'test.yaml', ['foo' => 'bar']],
-        [$dir . 'test.json', ['foo' => 'bar']],
-        [$dir . 'test.ini', ['foo' => 'bar']],
+        ['./tests/files/test.md', '<h1 foo="bar">test</h1>'],
+        ['./tests/files/test.yaml', ['foo' => 'bar']],
+        ['./tests/files/test.json', ['foo' => 'bar']],
+        ['./tests/files/test.ini', ['foo' => 'bar']],
     ];
     return $map;
   }
@@ -79,13 +81,26 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
   public function testFromFile($file, $expected) {
     $this->assertSame(Parser::fromFile($file), $expected);
   }
+
   /**
-   * @param string $file
-   * @param boolean $expected
+   * @expectedException RuntimeException
    */
   public function testParsingFromInvalidFile() {
-    $this->expectException(RuntimeException::class);
     Parser::fromFile('foo.bar');
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function testParsingFileWithoutExtension() {
+    Parser::fromFile('./tests/files/test');
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function testParsingFileWithUnknownExtension() {
+    Parser::fromFile('./tests/files/test.foo');
   }
 
   /**
@@ -103,6 +118,5 @@ class ParserTest extends \PHPUnit\Framework\TestCase {
     $this->expectException(RuntimeException::class);
     Parser::fromString('foo', 'bar');
   }
-
 
 }

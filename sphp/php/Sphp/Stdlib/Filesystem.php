@@ -64,13 +64,9 @@ abstract class Filesystem {
    * @throws FileSystemException if the parsing fails for any reason
    */
   public static function toString(string $path): string {
-    if (!static::isFile($path)) {
-      throw new FileSystemException("The path '$path' contains no file");
-    } else {
-      $data = file_get_contents(static::getFullPath($path), false);
-      if ($data === false) {
-        throw new FileSystemException("Parsing the file '$path' failed");
-      }
+    $data = file_get_contents(static::getFullPath($path), false);
+    if ($data === false) {
+      throw new FileSystemException("Parsing the file '$path' failed");
     }
     return $data;
   }
@@ -112,12 +108,9 @@ abstract class Filesystem {
    * @throws FileSystemException if the $path points to no actual file
    */
   public static function getTextFileRows(string $path): array {
-    if (!static::isFile($path)) {
-      throw new FileSystemException("The path '$path' contains no file");
-    }
-    $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $result = file(static::getFullPath($path), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
-      throw new FileSystemException("The path '$path' contains no file");
+      throw new FileSystemException("The path '$path' contains no readable file");
     }
     return $result;
   }

@@ -381,7 +381,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
     if ($value !== false) {
       $output .= $this->getName();
       if ($value !== true && !Strings::isEmpty($value)) {
-        $strVal = Strings::toString($value);
+        $strVal = $value;
         $output .= '="' . htmlspecialchars($strVal, ENT_COMPAT | ENT_HTML5) . '"';
       }
     }

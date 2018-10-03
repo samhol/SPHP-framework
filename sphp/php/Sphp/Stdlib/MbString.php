@@ -26,10 +26,13 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @method bool isAlpha() Checks whether or not the input string contains only alphabetic chars
  * @method bool isAlphanumeric() Checks whether or not the input string contains only alphanumeric chars
  * @method bool caseIs(int $case) Checks the case folding
+ * 
  * @method \Sphp\Stdlib\MbString convertCase(int $case) Perform a case folding returning a new instance
  * @method \Sphp\Stdlib\MbString trim(string $charMask = null) Returns a new instance with whitespace removed from the start end the end
  * @method \Sphp\Stdlib\MbString trimLeft(string $charMask = null) Returns a new instance with whitespace removed from the start
  * @method \Sphp\Stdlib\MbString trimRight(string $charMask = null) Returns a new instance with whitespace removed from the end
+ * 
+ * @method int countSubstr(string $substring) Returns the number of occurrences of $substring in the given string
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

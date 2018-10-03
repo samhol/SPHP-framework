@@ -118,19 +118,6 @@ abstract class Strings {
   }
 
   /**
-   * Splits the input in newlines and carriage returns to an array of strings
-   *
-   * @param  string $string the input string
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return string[] lines from input string as an array of strings
-   */
-  public static function lines(string $string, string $encoding = null): array {
-    $array = static::split($string, '[\r\n]{1,2}', -1, $encoding);
-    return $array;
-  }
-
-  /**
    * Returns a string with whitespace removed from the start and end of the string 
    * Supports the removal of unicode whitespace. Accepts an optional
    * string of characters to strip instead of the defaults.
@@ -256,7 +243,8 @@ abstract class Strings {
   }
 
   /**
-   * Returns the number of occurrences of $substring in the given string.
+   * Returns the number of occurrences of $substring in the given string
+   * 
    * By default, the comparison is case-sensitive, but can be made insensitive
    * by setting $caseSensitive to false.
    *
@@ -267,7 +255,7 @@ abstract class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return int The number of $substring occurrences
    */
-  public static function countSubstr(string $string, string $substring, bool $caseSensitive = true, $encoding = null): int {
+  public static function countSubstr(string $string, string $substring, bool $caseSensitive = true, string $encoding = null): int {
     $enc = self::getEncoding($encoding);
     if (!$caseSensitive) {
       $string = \mb_strtoupper($string, $enc);
@@ -356,9 +344,9 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return int|bool The occurrence's index if found, otherwise false
    */
-  public static function indexOf(string $string, $needle, int $offset = 0, string $encoding = null) {
+  public static function indexOf(string $string, string $needle, int $offset = 0, string $encoding = null) {
     $enc = self::getEncoding($encoding);
-    return \mb_strpos($string, (string) $needle, (int) $offset, $enc);
+    return \mb_strpos($string, $needle, $offset, $enc);
   }
 
   /**
@@ -374,7 +362,7 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return string Object whose $str has been converted to an URL slug
    */
-  public static function between(string $string, $start, $end, $offset = 0, string $encoding = null) {
+  public static function between(string $string, string $start, string $end, int $offset = 0, string $encoding = null) {
     $enc = self::getEncoding($encoding);
     $startIndex = static::indexOf($string, $start, $offset, $encoding);
     if ($startIndex === false) {
@@ -469,18 +457,13 @@ abstract class Strings {
   /**
    * Checks if the string is JSON
    * 
-   * Unlike json_decode in PHP 5.x, this method is consistent with PHP 7 and 
+   * Unlike `json_decode` in PHP 5.x, this method is consistent with PHP 7 and 
    * other JSON parsers, in that an empty string is not considered valid JSON.
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool true if the string is JSON, false otherwise
+   * @return bool true if the string is in JSON format, false otherwise
    */
-  public static function isJson(string $string, string $encoding = null): bool {
-    if (!static::length($string, $encoding)) {
-      return false;
-    }
+  public static function isJson(string $string): bool {
     json_decode($string);
     return (json_last_error() === JSON_ERROR_NONE);
   }
@@ -514,13 +497,10 @@ abstract class Strings {
   /**
    * Returns a random string for non cryptographic purposes
    *
-   * @param  int $length the length of the string
+   * @param string $characters
+   * @param int $length
    * @return string generated random string
    */
-  public static function random(int $length = 16): string {
-    return str_shuffle(substr(str_repeat(md5(mt_rand()), 2 + $length / 32), 0, $length));
-  }
-
   public static function randomize(string $characters, int $length = 16): string {
     //$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -579,30 +559,6 @@ abstract class Strings {
   public static function htmlEncode(string $string, int $flags = ENT_COMPAT): string {
     $encoding = mb_detect_encoding($string, 'utf-8');
     return htmlentities($string, $flags, $encoding);
-  }
-
-  /**
-   * Forces a string representation from any type of input parameter
-   *
-   * @param  mixed $var input parameter
-   * @return string a string representation of the input parameter
-   */
-  public static function toString($var): string {
-    $output = '';
-    if (is_array($var)) {
-      $output = print_r($var, true);
-    } else if (is_object($var)) {
-      if (method_exists($var, '__toString')) {
-        $output = "$var";
-      } else {
-        $output = get_class($var);
-      }
-    } else if (is_float($var)) {
-      $output = sprintf('%0.0f', $var);
-    } else {
-      $output = strval($var);
-    }
-    return $output;
   }
 
 }
