@@ -49,6 +49,9 @@
     <testsuite name="stdlib-ds">
       <directory>./tests/sphp/Stdlib/Datastructures</directory>
     </testsuite>
+    <testsuite name="stdlib-observers">
+      <directory>./tests/sphp/Stdlib/Observers</directory>
+    </testsuite>
     <testsuite name="stdlib-parsers">
       <directory>./tests/sphp/Stdlib/Parsers</directory>
     </testsuite>

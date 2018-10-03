@@ -40,6 +40,13 @@ trait ObservableSubjectTrait {
     $this->observers->attach($obs);
   }
 
+  public function contains($observer): bool {
+    if ($this->observers === null) {
+      $this->observers = new SplObjectStorage();
+    }
+    return $this->observers->contains($observer);
+  }
+
   /**
    * Detaches an observer from the observable
    *
@@ -57,7 +64,7 @@ trait ObservableSubjectTrait {
       foreach ($this->observers as $obs) {
         if ($obs instanceof Observer) {
           $obs->update($this);
-        } else if (is_callable($obs)) {
+        } else {
           $obs($this);
         }
       }
