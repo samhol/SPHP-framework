@@ -16,20 +16,60 @@ use IteratorAggregate;
 use Traversable;
 
 /**
- * Description of URL1
+ * Implements an URL for manipulation and comparison
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAccess {
+class URL_foo implements Arrayable, IteratorAggregate, \JsonSerializable {
 
   /**
-   * URL parts
+   * the current URL object
    *
-   * @var array
+   * @var URL 
    */
-  private $parts = [];
+  private static $currUrl;
+
+  /**
+   * @var string|null 
+   */
+  private $scheme;
+
+  /**
+   * @var string|null 
+   */
+  private $host;
+
+  /**
+   * @var string|null 
+   */
+  private $user;
+
+  /**
+   * @var string|null 
+   */
+  private $pass;
+
+  /**
+   * @var string|null 
+   */
+  private $path;
+
+  /**
+   * @var QueryString
+   */
+  private $query;
+
+  /**
+   * @var string|null 
+   */
+  private $fragment;
+
+  /**
+   * @var int
+   */
+  private $port;
 
   /**
    * Constructor
@@ -37,55 +77,25 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
    * @param string|null $url the URL string
    */
   public function __construct(string $url = null) {
-    $this->parts = [
-        'scheme' => null,
-        'host' => null,
-        'port' => null,
-        'user' => null,
-        'pass' => null,
-        'path' => null,
-        'query' => null,
-        'fragment' => null,
-    ];
     $this->parseURL("$url");
   }
 
   protected function parseURL(string $url) {
-    $this->parts = array_merge($this->parts, parse_url($url));
-    if ($this->parts['port'] === null) {
+    $this->setScheme(parse_url($url, PHP_URL_SCHEME));
+    $this->setUser(parse_url($url, PHP_URL_USER));
+    $this->setPassword(parse_url($url, PHP_URL_PASS));
+    $this->setHost(parse_url($url, PHP_URL_HOST));
+    $port = parse_url($url, PHP_URL_PORT);
+    if ($port === null) {
       $port = getservbyname($this->getScheme(), 'tcp');
       if ($port === false) {
-        $port = null;
+        $port = -1;
       }
-      $this->parts['port'] = $port;
     }
-    $this->setQuery($this->parts['query']);
-  }
-
-  public function __call(string $name, $arguments) {
-    $part = lcfirst(str_replace(['get', 'set', 'has'], '', $name));
-    echo "Parsed part: '$part'";
-    if ($this->offsetExists($part)) {
-      echo "part '$part' exists: " . PHP_EOL;
-      if (Strings::startsWith($name, 'get')) {
-        echo "getting: $part" . PHP_EOL;
-        return $this[$part];
-      }
-      if (Strings::startsWith($name, 'set')) {
-        echo "setting: $part" . PHP_EOL;
-        if (empty($arguments)) {
-          $arguments[0] = null;
-        }
-        $this[$part] = $arguments[0];
-        return $this;
-      }
-      if (Strings::startsWith($name, 'has')) {
-        echo "Checking for: $part" . PHP_EOL;
-        return $this->offsetExists($part);
-      }
-    } else {
-      throw new \Sphp\Exceptions\BadMethodCallException("Method '$name' does not exists");
-    }
+    $this->setPort($port);
+    $this->setPath(parse_url($url, PHP_URL_PATH));
+    $this->setQuery(parse_url($url, PHP_URL_QUERY));
+    $this->setFragment(parse_url($url, PHP_URL_FRAGMENT));
   }
 
   /**
@@ -103,8 +113,163 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
     if ($scheme !== null) {
       $scheme = strtolower("$scheme");
     }
-    $this->parts['scheme'] = $scheme;
+    $this->scheme = $scheme;
     return $this;
+  }
+
+  /**
+   * Returns the scheme name of the URL
+   * 
+   * The scheme is usually the name of a protocol, defines how the resource 
+   * will be obtained. Examples include `http`, `https`, `ftp`, `file` and many 
+   * others. **All schemes are transformed to lowercase.**
+   * 
+   * @return string the scheme name of the URL
+   */
+  public function getScheme(): string {
+    return (string) $this->scheme;
+  }
+
+  /**
+   * Checks whether the `scheme` part of the URL is set or not
+   * 
+   * @return boolean true if the scheme is set and false otherwise
+   */
+  public function hasScheme(): bool {
+    return $this->scheme !== null;
+  }
+
+  /**
+   * Sets the `host` part of the URL
+   * 
+   * @param  string $host the `host` part of the URL
+   * @return $this for a fluent interface
+   */
+  public function setHost(string $host = null) {
+    $this->host = $host;
+    return $this;
+  }
+
+  /**
+   * Returns the `host` part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the host `part` of the URL
+   */
+  public function getHost(bool $encode = false): string {
+    $val = $this->host;
+    if ($encode && $val !== null && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
+      $val = Strings::htmlEncode($val);
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether the `host` part of the URL is set or not
+   * 
+   * @return boolean true if the host is set and false otherwise
+   */
+  public function hasHost(): bool {
+    return $this->host !== null;
+  }
+
+  /**
+   * Sets the username part of the URL
+   * 
+   * @param  string|null $user
+   * @return $this for a fluent interface
+   */
+  public function setUser(string $user = null) {
+    $this->user = $user;
+    return $this;
+  }
+
+  /**
+   * Returns the user part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the user part of the URL
+   */
+  public function getUser(bool $encode = false): string {
+    if ($encode && $this->user !== null) {
+      return rawurlencode($this->user);
+    }
+    return (string) $this->user;
+  }
+
+  /**
+   * Checks whether the `user` part of the URL is set or not
+   * 
+   * @return boolean true if the user is set and false otherwise
+   */
+  public function hasUser(): bool {
+    return $this->user !== null;
+  }
+
+  /**
+   * Sets the password part of the URL
+   * 
+   * @param  string|null $pass
+   * @return $this for a fluent interface
+   */
+  public function setPassword(string $pass = null) {
+    $this->pass = $pass;
+    return $this;
+  }
+
+  /**
+   * Returns the password part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the password part of the URL
+   */
+  public function getPassword(bool $encode = false): string {
+    if ($encode && $this->pass !== null) {
+      return rawurlencode($this->pass);
+    }
+    return (string) $this->pass;
+  }
+
+  /**
+   * Checks whether the `password` part of the URL is set or not
+   * 
+   * @return boolean true if the password is set and false otherwise
+   */
+  public function hasPassword(): bool {
+    return $this->pass !== null;
+  }
+
+  /**
+   * Sets the path part of the URL
+   * 
+   * @param  string|null $path the path part of the URL or null for none
+   * @return $this for a fluent interface
+   */
+  public function setPath(string $path = null) {
+    $this->path = $path;
+    return $this;
+  }
+
+  /**
+   * Returns the path part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the path part of the URL
+   */
+  public function getPath(bool $encode = false): string {
+    if ($encode && $this->path !== null) {
+      return preg_replace('!%2F!ui', '/', rawurlencode($this->path));
+    }
+    return (string) $this->path;
+  }
+
+  /**
+   * Checks whether the `path` part of the URL is set or not
+   * 
+   * @return boolean true if the path is set and false otherwise
+   */
+  public function hasPath(): bool {
+    return $this->path !== null;
   }
 
   /**
@@ -115,11 +280,11 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
    */
   public function setQuery($query = null) {
     if (is_string($query)) {
-      $this->parts['query'] = new QueryString($query);
+      $this->query = new QueryString($query);
     } else if ($query instanceof QueryString) {
-      $this->parts['query'] = $query;
+      $this->query = $query;
     } else {
-      $this->parts['query'] = new QueryString();
+      $this->query = new QueryString();
     }
     return $this;
   }
@@ -130,7 +295,7 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
    * @return boolean true if the path is set and false otherwise
    */
   public function hasQuery(): bool {
-    return !$this->getQuery()->isEmpty();
+    return !$this->query->isEmpty();
   }
 
   /**
@@ -139,7 +304,43 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
    * @return QueryString the query object
    */
   public function getQuery(): QueryString {
-    return $this->parts['query'];
+    return $this->query;
+  }
+
+  /**
+   * Sets the fragment identifier of the URL
+   * 
+   * The fragment specifies a part or a position within the overall resource or document.
+   * 
+   * @param  string|null $fragment the fragment identifier of the URL
+   * @return $this for a fluent interface
+   */
+  public function setFragment(string $fragment = null) {
+    $this->fragment = $fragment;
+    return $this;
+  }
+
+  /**
+   * Returns the fragment identifier of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the fragment identifier of the URL
+   */
+  public function getFragment(bool $encode = false) {
+    $val = strval($this->fragment);
+    if ($encode) {
+      $val = rawurlencode($val);
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether the `fragment` part of the URL is set or not
+   * 
+   * @return boolean true if the fragment part is set and false otherwise
+   */
+  public function hasFragment(): bool {
+    return $this->fragment !== null;
   }
 
   /**
@@ -162,7 +363,7 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function getPort(): int {
-    return (int) $this->parts['port'];
+    return (int) $this->port;
   }
 
   /**
@@ -191,8 +392,8 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
    * @return boolean true if the specified URL is equal to the current URL, otherwise false
    */
   public function equals($url): bool {
-    if (!($url instanceof URL1)) {
-      $url = new URL1($url);
+    if (!($url instanceof URL)) {
+      $url = new URL($url);
     }
     return $this == $url;
   }
@@ -245,7 +446,7 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
     }
     $url .= $this->getPath($encode);
     if ($this->hasQuery()) {
-      $url .= '?' . $this->getQuery()->getHtml();
+      $url .= '?' . $this->query->getHtml();
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment($encode);
@@ -289,7 +490,7 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
     $url .= $this->getPath();
     if ($this->hasQuery()) {
       $url .= '?' . $this->query->getRaw();
-//$url = trim($url, '=');
+      //$url = trim($url, '=');
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment();
@@ -308,7 +509,7 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
   }
 
   public function jsonSerialize(): array {
-    return get_object_vars($this->parts);
+    return get_object_vars($this);
   }
 
   /**
@@ -350,45 +551,15 @@ class URL1 implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcc
   }
 
   public function toArray(): array {
-    return $this->parts;
-  }
-
-  private function parsePartName($offset) {
-    if ($offset === 'username') {
-      $offset = 'user';
-    }
-    if ($offset === 'password') {
-      $offset = 'pass';
-    }
-    return $offset;
-  }
-
-  public function offsetExists($offset): bool {
-    $offset = $this->parsePartName($offset);
-    return array_key_exists($offset, $this->parts) && $this->parts[$offset] !== null;
-  }
-
-  public function offsetGet($offset) {
-    $offset = $this->parsePartName($offset);
-    if (!array_key_exists($offset, $this->parts)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException;
-    }
-    return (string) $this->parts[$offset];
-  }
-
-  public function offsetSet($offset, $value) {
-    $offset = $this->parsePartName($offset);
-    if (!array_key_exists($offset, $this->parts)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException;
-    }
-    return $this->parts[$offset] = $value;
-  }
-
-  public function offsetUnset($offset) {
-    $offset = $this->parsePartName($offset);
-    if ($this->offsetExists($offset)) {
-      $this->parts[$offset] = null;
-    }
+    return ["scheme" => $this->scheme,
+        'host' => $this->host,
+        'port' => $this->port,
+        'user' => $this->user,
+        'pass' => $this->pass,
+        'path' => $this->path,
+        'query' => $this->query->toArray(),
+        'fragment' => $this->fragment,
+    ];
   }
 
 }

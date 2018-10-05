@@ -46,6 +46,9 @@
     <testsuite name="stdlib-events">
       <directory>./tests/sphp/Stdlib/Events</directory>
     </testsuite>
+    <testsuite name="stdlib-networks">
+      <directory>./tests/sphp/Stdlib/Networks</directory>
+    </testsuite>
     <testsuite name="stdlib-ds">
       <directory>./tests/sphp/Stdlib/Datastructures</directory>
     </testsuite>
@@ -70,6 +73,9 @@
     </testsuite>
     <testsuite name="stdlib-filesystem">
       <file>./tests/sphp/Stdlib/FilesystemTest.php</file>
+    </testsuite>
+    <testsuite name="stdlib-arrays">
+      <file>./tests/sphp/Stdlib/ArraysTest.php</file>
     </testsuite>
   </testsuites>
   

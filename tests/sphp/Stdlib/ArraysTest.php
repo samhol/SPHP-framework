@@ -344,7 +344,8 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $obj1 = new \stdClass();
     $obj2 = new \stdClass();
     return [
-        [[$obj1, [false, null], [$obj2, [[1]]]]],
+        [[$obj1, [false, null], [$obj2, [[1]]]]], 
+        [['obj'=> $obj2], ['ref'] => &$obj2],
     ];
   }
 

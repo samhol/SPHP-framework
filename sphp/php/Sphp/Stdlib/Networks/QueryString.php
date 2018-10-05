@@ -190,7 +190,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
     if (!($url instanceof QueryString)) {
       $url = new QueryString($url);
     }
-    return $this == $url;
+    return $this->toArray() == $url->toArray();
   }
 
   /**
