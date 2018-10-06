@@ -147,7 +147,7 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider urlStrings
    * @param string $urlString
    */
-  public function t4estClone(string $urlString) {
+  public function testClone(string $urlString) {
     $url = new URL($urlString);
     $clone = clone $url;
     $this->assertTrue($url->equals($clone));

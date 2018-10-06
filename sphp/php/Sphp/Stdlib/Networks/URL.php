@@ -21,12 +21,12 @@ use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Implements an URL object for manipulation and comparison
  *
- * @methtod string getScheme() Returns the scheme name 
- * @metthod string getHost(bool $rawurlencode = false) Returns the scheme name 
- * @metthod string getUser(bool $rawurlencode = false) Returns the username part of the URL
- * @metthod string getPassword(bool $rawurlencode = false) Returns the password part of the URL
- * @metthod string getPath(bool $rawurlencode = false) Returns the path part of the URL
- * @metthod string getFragment(bool $rawurlencode = false) Returns the fragment part of the URL
+ * @mettod string getScheme() Returns the scheme name 
+ * @method string getHost(bool $rawurlencode = false) Returns the scheme name 
+ * @method string getUser(bool $rawurlencode = false) Returns the username part of the URL
+ * @method string getPassword(bool $rawurlencode = false) Returns the password part of the URL
+ * @method string getPath(bool $rawurlencode = false) Returns the path part of the URL
+ * @method string getFragment(bool $rawurlencode = false) Returns the fragment part of the URL
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -52,21 +52,21 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
       PHP_URL_SCHEME => 'scheme',
       'host' => 'host',
       PHP_URL_HOST => 'host',
-      'port' =>  'port',
+      'port' => 'port',
       PHP_URL_PORT => 'port',
-      'user' =>  'user', 
-      'username' =>  'user',
-      PHP_URL_USER =>  'user',
-      'pass' =>  'pass',
-      'password' =>  'pass',
-      PHP_URL_PASS =>  'pass',
+      'user' => 'user',
+      'username' => 'user',
+      PHP_URL_USER => 'user',
+      'pass' => 'pass',
+      'password' => 'pass',
+      PHP_URL_PASS => 'pass',
       'path' => 'path',
       PHP_URL_PATH => 'path',
-      'query' =>  'query',
+      'query' => 'query',
       PHP_URL_QUERY => 'query',
-      'fragment' =>  'fragment',
+      'fragment' => 'fragment',
       PHP_URL_FRAGMENT => 'fragment'
-      ];
+  ];
 
   /**
    * Constructor
@@ -90,11 +90,24 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   }
 
   protected function parseURL(string $url) {
-    $this->parts = array_merge($this->parts, parse_url($url));
+    $data = parse_url($url);
+    if (is_array($data)) {
+      $this->parts = array_merge($this->parts, $data);
+    }
     $this->setQuery($this->parts['query']);
     if ($this->parts['path'] === '') {
       $this->parts['path'] = null;
     }
+    $this->setReferences();
+  }
+
+  public function __clone() {
+    $this->parts = \Sphp\Stdlib\Arrays::copy($this->parts);
+    $this->setReferences();
+    
+    //$this = new static($this->getRaw());
+  }
+  private function setReferences() {
     $this->parts[PHP_URL_SCHEME] = &$this->parts['scheme'];
     $this->parts[PHP_URL_HOST] = &$this->parts['host'];
     $this->parts[PHP_URL_PORT] = &$this->parts['port'];
@@ -105,10 +118,6 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
     $this->parts[PHP_URL_FRAGMENT] = &$this->parts['fragment'];
     $this->parts['password'] = &$this->parts['pass'];
     $this->parts['username'] = &$this->parts['user'];
-  }
-
-  public function __clone() {
-    //$this = new static($this->getRaw());
   }
 
   public function __call(string $name, array $arguments) {
@@ -511,15 +520,15 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   }
 
   public function offsetExists($offset): bool {
-    if (!array_key_exists($offset, static::$map)) {
+    if (!array_key_exists($offset, $this->parts)) {
       return false;
     }
-    $part = static::$map[$offset];
-    if ($part === 'query') {
+    //$part = static::$map[$offset];
+    if ($offset === 'query') {
       return !$this->getQuery()->isEmpty();
     }
     //$offset = $this->parsePartName($offset);
-    return $this->parts[$part] !== null;
+    return $this->parts[$offset] !== null;
   }
 
   public function offsetGet($offset) {
