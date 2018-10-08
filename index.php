@@ -37,7 +37,7 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
           <?php
           $man_cache = "$cacheSuffix-content";
           if ($outputCache->start($man_cache) === false) {
-            $router->execute();
+            $router->executeWithCurrentUrl();
             $outputCache->end();
           }
           ?>

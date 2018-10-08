@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 echo '<pre>';
 $url = 'http://username:password@hostname:9090/path?arg=value#anchor';
 
-//var_dump(parse_url($url));
+var_dump(parse_url(null));
 $parts = [];
 $parts[PHP_URL_SCHEME] = parse_url($url, PHP_URL_SCHEME);
 $parts[PHP_URL_USER] = parse_url($url, PHP_URL_USER);

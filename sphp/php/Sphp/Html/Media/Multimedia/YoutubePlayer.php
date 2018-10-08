@@ -47,7 +47,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   protected function loadPlaylist(string $playlistId) {
     $this->getUrl()
-            ->setPath('embed');
+            ->setPart(PHP_URL_PATH, 'embed');
     $this->getUrl()->getQuery()
             ->offsetSet('listType', 'playlist')
             ->offsetSet('list', $playlistId);

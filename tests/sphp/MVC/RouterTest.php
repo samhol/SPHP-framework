@@ -18,7 +18,7 @@ class RouterTest extends TestCase {
   public function testEmptyRouting() {
     $router = new Router();
     $this->expectException(IllegalStateException::class);
-    $router->execute();
+    $router->executeWithCurrentUrl();
   }
 
   /**

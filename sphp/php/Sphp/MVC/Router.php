@@ -92,7 +92,6 @@ class Router {
    * @param  string|null $url optional URL to route
    */
   public function __construct(string $url = null) {
-    $this->path = $this->getPath($url);
     $this->routes = new PriorityQueue();
   }
 
@@ -112,6 +111,19 @@ class Router {
   }
 
   /**
+   * 
+   */
+  public function executeWithCurrentUrl() {
+    try {
+      
+    $url = URL::getCurrent();
+    $this->execute($url);
+    } catch (\Exception $ex) {
+      throw new IllegalStateException('The router cannot be executed', $ex->getCode(), $ex);
+    }
+  }
+
+  /**
    * Runs the router matching engine and then calls the dispatcher
    * 
    * Tries to match one of the URL routes to the current URL, otherwise
@@ -122,15 +134,11 @@ class Router {
    * @throws InvalidStateException
    * @throws RuntimeException
    */
-  public function execute(string $url = null) {
+  public function execute(string $url) {
     if ($this->isEmpty()) {
       throw new IllegalStateException('The router is empty and cannot be executed');
     }
-    if ($url === null) {
-      $path = $this->path;
-    } else {
-      $path = $this->getPath($url);
-    }
+    $path = $this::getPath($url);
     // Whether or not we have matched the URL to a route
     $routeFound = false;
     // Loop through routes

@@ -95,7 +95,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    */
   public function setVideoId($videoId) {
     $this->videoId = $videoId;
-    $this->url->setPath($this->url->getPath() . $videoId);
+    $this->url->setPart(PHP_URL_PATH, $this->url->getPath() . $videoId);
     $this->setAttribute('src', $this->url->getHtml());
     return $this;
   }

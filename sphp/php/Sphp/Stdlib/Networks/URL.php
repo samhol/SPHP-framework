@@ -15,7 +15,6 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use IteratorAggregate;
 use Traversable;
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -39,6 +38,28 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAccess {
 
+  const SCHEME = PHP_URL_SCHEME;
+  const HOST = PHP_URL_HOST;
+  const PORT = PHP_URL_PORT;
+  const USER = PHP_URL_USER;
+  const PASS = PHP_URL_PASS;
+  const PATH = PHP_URL_PATH;
+  const QUERY = PHP_URL_QUERY;
+  const FRAGMENT = PHP_URL_FRAGMENT;
+
+  private static $map = [
+      'scheme' => PHP_URL_SCHEME,
+      'host' => PHP_URL_HOST,
+      'port' => PHP_URL_PORT,
+      'user' => PHP_URL_USER,
+      'username' => PHP_URL_USER,
+      'password' => PHP_URL_PASS,
+      'pass' => PHP_URL_PASS,
+      'path' => PHP_URL_PATH,
+      'query' => PHP_URL_QUERY,
+      'fragment' => PHP_URL_FRAGMENT,
+  ];
+
   /**
    * the current URL object
    *
@@ -60,105 +81,50 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function __construct(string $url = null) {
     $this->parts = [
-        'scheme' => null,
-        'host' => null,
-        'port' => null,
-        'user' => null,
-        'pass' => null,
-        'path' => null,
-        'query' => null,
-        'fragment' => null,
+        self::SCHEME => null,
+        self::HOST => null,
+        self::PORT => null,
+        self::USER => null,
+        self::PASS => null,
+        self::PATH => null,
+        self::QUERY => new QueryString(),
+        self::FRAGMENT => null,
     ];
-    //PHP_URL_SCHEME, PHP_URL_HOST, PHP_URL_PORT, PHP_URL_USER, PHP_URL_PASS, PHP_URL_PATH, PHP_URL_QUERY or PHP_URL_FRAGMENT
 
-    $this->parseURL("$url");
-    //print_r($this->parts);
+    // var_dump(PHP_URL_PORT ,parse_url($url));
+    if ($url !== null) {
+      $this->parseURL($url);
+    }
   }
 
   protected function parseURL(string $url) {
-    $data = parse_url($url);
-    if (is_array($data)) {
-      $this->parts = array_merge($this->parts, $data);
-    }
-    $this->setQuery($this->parts['query']);
-    if ($this->parts['path'] === '') {
-      $this->parts['path'] = null;
-    } if ($this->parts['scheme'] === '') {
-      $this->parts['scheme'] = null;
-    }
-    $this->setReferences();
+    $this->setPart(self::SCHEME, parse_url($url, PHP_URL_SCHEME));
+    $this->setPart(self::HOST, parse_url($url, PHP_URL_HOST));
+    $this->setPart(self::PORT, parse_url($url, PHP_URL_PORT));
+    $this->setPart(self::USER, parse_url($url, PHP_URL_USER));
+    $this->setPart(self::PASS, parse_url($url, PHP_URL_PASS));
+    $this->setPart(self::PATH, parse_url($url, PHP_URL_PATH));
+    $this->setPart(self::QUERY, parse_url($url, PHP_URL_QUERY));
+    $this->setPart(self::FRAGMENT, parse_url($url, PHP_URL_FRAGMENT));
   }
 
   public function __clone() {
     $this->parts = \Sphp\Stdlib\Arrays::copy($this->parts);
-    $this->setReferences();
-
-    //$this = new static($this->getRaw());
   }
 
-  private function setReferences() {
-    $this->parts[PHP_URL_SCHEME] = &$this->parts['scheme'];
-    $this->parts[PHP_URL_HOST] = &$this->parts['host'];
-    $this->parts[PHP_URL_PORT] = &$this->parts['port'];
-    $this->parts[PHP_URL_USER] = &$this->parts['user'];
-    $this->parts[PHP_URL_PASS] = &$this->parts['pass'];
-    $this->parts[PHP_URL_PATH] = &$this->parts['path'];
-    $this->parts[PHP_URL_QUERY] = &$this->parts['query'];
-    $this->parts[PHP_URL_FRAGMENT] = &$this->parts['fragment'];
-    $this->parts['password'] = &$this->parts['pass'];
-    $this->parts['username'] = &$this->parts['user'];
-  }
-
-  public function __call(string $name, array $arguments) {
-    if (is_numeric($name)) {
-      throw new BadMethodCallException("Method '$name' does not exists");
-    }
-    $part = lcfirst(str_replace(['get', 'set', 'has'], '', $name));
-    echo "Parsed part: '$part'";
-    if (array_key_exists($part, $this->parts)) {
-      // echo "part '$part' exists: " . PHP_EOL;
-
-      if (Strings::startsWith($name, 'set')) {
-        // echo "setting: $part" . PHP_EOL;
-        if (empty($arguments)) {
-          $arguments[0] = null;
-        }
-        $this[$part] = $arguments[0];
-        return $this;
-      }
-      if (Strings::startsWith($name, 'has')) {
-        //echo "Checking for: $part" . PHP_EOL;
-        return $this->offsetExists($part);
-      }
-    } else {
-      throw new BadMethodCallException("Method '$name' does not exists");
-    }
-  }
-
-  public function getPart($part, bool $rawurlencode = false) {
+  public function partToString(int $part, bool $rawurlencode = false): string {
     if (!array_key_exists($part, $this->parts)) {
       throw new InvalidArgumentException("Unknown URL part '$part'");
     }
     $value = $this->parts[$part];
-    if ($value instanceof QueryString) {
-      return $value->getHtml();
-    }
-    if ($value !== null && $rawurlencode) {
+    if ($part === PHP_URL_QUERY) {
+      if ($rawurlencode) {
+        return $value->build('&amp;', PHP_QUERY_RFC3986);
+      } else {
+        return $value->build('&amp;', PHP_QUERY_RFC1738);
+      }
+    } else if ($part === PHP_URL_QUERY) {
       
-    }
-    switch ($part) {
-      case 'query':
-        if ($rawurlencode) {
-          $value = $this->getQuery()->getHtml();
-        }
-        break;
-
-      default:
-        break;
-    }
-    $this->getQuery()->getHtml();
-    if ($rawurlencode) {
-      return rawurlencode($this->parts[$part]);
     }
     return $this->parts[$part];
   }
@@ -172,12 +138,47 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function contains(int $part): bool {
     if (!array_key_exists($part, $this->parts)) {
-      throw new InvalidArgumentException();
+      throw new InvalidArgumentException("Unknown URL part '$part'");
     }
-    if ($part === PHP_URL_QUERY) {
+    if ($part === self::QUERY) {
       return !$this->getQuery()->isEmpty();
     }
     return $this->parts[$part] !== null;
+  }
+
+  /**
+   * Checks whether the part of the URL is set or not
+   * 
+   * @param  int $part
+   * @return boolean true if the part is set and false otherwise
+   * @throws InvalidArgumentException
+   */
+  public function setPart(int $part, $value) {
+    if (!array_key_exists($part, $this->parts)) {
+      throw new InvalidArgumentException("Unknown URL part '$part'");
+    }
+    if ($part === self::QUERY) {
+      $this->setQuery($value);
+    } else if ($part === self::PORT) {
+      if (!is_int($value) && $value !== null) {
+        throw new InvalidArgumentException("Invalid URL port $value");
+      }
+      $this->parts[$part] = $value;
+    } else if ($part === self::SCHEME) {
+      if ($value !== null) {
+        $value = strtolower($value);
+      }
+      $this->parts[self::SCHEME] = $value;
+    } else if (is_string($value) || $value === null) {
+      if ($value === '') {
+        $value = null;
+      }
+      $this->parts[$part] = $value;
+    } else {
+      $v = var_export($value, true);
+      throw new InvalidArgumentException("Something went wrong $part, $v");
+    }
+    return $this;
   }
 
   /**
@@ -190,7 +191,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return string the scheme name of the URL
    */
   public function getScheme(): string {
-    return (string) $this->parts[PHP_URL_SCHEME];
+    return (string) $this->parts[self::SCHEME];
   }
 
   /**
@@ -208,7 +209,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
     if ($scheme !== null) {
       $scheme = strtolower($scheme);
     }
-    $this->parts[PHP_URL_SCHEME] = $scheme;
+    $this->parts[self::SCHEME] = $scheme;
     return $this;
   }
 
@@ -219,10 +220,10 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return string the host `part` of the URL
    */
   public function getHost(bool $encode = false): string {
-    if (!$this->contains(PHP_URL_HOST)) {
+    if (!$this->contains(self::HOST)) {
       return '';
     }
-    $host = $this->parts[PHP_URL_HOST];
+    $host = $this->parts[self::HOST];
     if (preg_match('!^[\da-f]*:[\da-f.:]+$!ui', $host)) {
       $host = '[' . $host . ']'; // IPv6
     } else if ($encode) {
@@ -242,9 +243,9 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
       return '';
     }
     if ($encode) {
-      return rawurlencode($this->parts[PHP_URL_USER]);
+      return rawurlencode($this->parts[self::USER]);
     }
-    return $this->parts[PHP_URL_USER];
+    return $this->parts[self::USER];
   }
 
   /**
@@ -258,9 +259,9 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
       return '';
     }
     if ($encode) {
-      return rawurlencode($this->parts[PHP_URL_PASS]);
+      return rawurlencode($this->parts[self::PASS]);
     }
-    return $this->parts[PHP_URL_PASS];
+    return $this->parts[self::PASS];
   }
 
   /**
@@ -270,13 +271,13 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return string the path part of the URL
    */
   public function getPath(bool $encode = false): string {
-    if (!$this->contains(PHP_URL_PATH)) {
+    if (!$this->contains(self::PATH)) {
       return '';
     }
     if ($encode) {
-      return preg_replace('!%2F!ui', '/', rawurlencode($this->parts[PHP_URL_PATH]));
+      return preg_replace('!%2F!ui', '/', rawurlencode($this->parts[self::PATH]));
     }
-    return $this->parts[PHP_URL_PATH];
+    return $this->parts[self::PATH];
   }
 
   /**
@@ -287,9 +288,9 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function setQuery($query = null) {
     if ($query instanceof QueryString) {
-      $this->parts['query'] = $query;
+      $this->parts[self::QUERY] = $query;
     } else {
-      $this->parts['query'] = new QueryString($query);
+      $this->parts[self::QUERY] = new QueryString($query);
     }
     return $this;
   }
@@ -300,20 +301,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return QueryString the query object
    */
   public function getQuery(): QueryString {
-    return $this->parts[PHP_URL_QUERY];
-  }
-
-  /**
-   * Sets the port number of the URL
-   * 
-   * @precondition $port >= 0
-   * @param  int $port
-   * @return $this for a fluent interface
-   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
-   */
-  public function setPort(int $port) {
-    $this->parts[PHP_URL_PORT] = $port;
-    return $this;
+    return $this->parts[self::QUERY];
   }
 
   /**
@@ -324,7 +312,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function getPort(): int {
-    $port = $this->parts[PHP_URL_PORT];
+    $port = $this->parts[self::PORT];
     if ($port === null) {
       $port = getservbyname($this->getScheme(), 'tcp');
       if ($port === false) {
@@ -341,7 +329,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function hasDefaultPort(): bool {
-    if ($this->parts['port'] === null) {
+    if ($this->parts[self::PORT] === null) {
       return true;
     }
     return getservbyname($this->getScheme(), 'tcp') === $this->getPort();
@@ -354,13 +342,13 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return string the fragment identifier of the URL
    */
   public function getFragment(bool $encode = false) {
-    if (!$this->contains(PHP_URL_FRAGMENT)) {
+    if (!$this->contains(self::FRAGMENT)) {
       return '';
     }
     if ($encode) {
-      return rawurlencode($this->parts[PHP_URL_FRAGMENT]);
+      return rawurlencode($this->parts[self::FRAGMENT]);
     }
-    return $this->parts[PHP_URL_FRAGMENT];
+    return $this->parts[self::FRAGMENT];
   }
 
   /**
@@ -370,7 +358,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function getIterator(): Traversable {
     $it = new \ArrayIterator($this->toArray());
-    $it['query'] = $this->parts[PHP_URL_QUERY];
+    $it['query'] = $this->parts[self::QUERY];
     return $it;
   }
 
@@ -412,35 +400,35 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   public function toString(bool $rawurlencode = false): string {
     $url = '';
     $encode = true;
-    if ($this->contains(PHP_URL_SCHEME)) {
+    if ($this->contains(self::SCHEME)) {
       $url .= $this->getScheme() . ':';
     }
     $url .= $this->getAuthority($rawurlencode);
     $url .= $this->getPath($rawurlencode);
-    if ($this->contains(PHP_URL_QUERY)) {
+    if ($this->contains(self::QUERY)) {
       $url .= '?' . $this->getQuery();
     }
-    if ($this->contains(PHP_URL_FRAGMENT)) {
+    if ($this->contains(self::FRAGMENT)) {
       $url .= '#' . $this->getFragment($rawurlencode);
     }
     return $url;
   }
 
   public function getAuthority(bool $rawurlencode = false): string {
-    if (!$this->contains(PHP_URL_HOST)) {
+    if (!$this->contains(self::HOST)) {
       return '';
     }
     $output = '//';
-    if ($this->contains(PHP_URL_USER)) {
+    if ($this->contains(self::USER)) {
       $output .= $this->getUser($rawurlencode);
-      if ($this->contains(PHP_URL_PASS)) {
+      if ($this->contains(self::PASS)) {
         $output .= ':' . $this->getPassword($rawurlencode);
       }
       $output .= '@';
     }
     $output .= $this->getHost($rawurlencode);
     if (!$this->hasDefaultPort()) {
-      $output .= ':' . $this->parts[PHP_URL_PORT];
+      $output .= ':' . $this->parts[self::PORT];
     }
     return $output;
   }
@@ -456,15 +444,15 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   public function getHtml(): string {
     $url = '';
     $encode = true;
-    if ($this->contains(PHP_URL_SCHEME)) {
+    if ($this->contains(self::SCHEME)) {
       $url .= $this->getScheme() . ':';
     }
     $url .= $this->getAuthority($encode);
     $url .= $this->getPath($encode);
-    if ($this->contains(PHP_URL_QUERY)) {
+    if ($this->contains(self::QUERY)) {
       $url .= '?' . $this->getQuery()->getHtml();
     }
-    if ($this->contains(PHP_URL_FRAGMENT)) {
+    if ($this->contains(self::FRAGMENT)) {
       $url .= '#' . $this->getFragment($encode);
     }
     return $url;
@@ -480,16 +468,16 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function getRaw(): string {
     $url = '';
-    if ($this->contains(PHP_URL_SCHEME)) {
+    if ($this->contains(self::SCHEME)) {
       $url .= $this->getScheme() . ':';
     }
     $url .= $this->getAuthority(false);
     $url .= $this->getPath();
-    if ($this->contains(PHP_URL_QUERY)) {
+    if ($this->contains(self::QUERY)) {
       $url .= '?' . $this->getQuery()->getRaw();
 //$url = trim($url, '=');
     }
-    if ($this->contains(PHP_URL_FRAGMENT)) {
+    if ($this->contains(self::FRAGMENT)) {
       $url .= '#' . $this->getFragment();
     }
     return $url;
@@ -558,61 +546,49 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
     } else {
       $query = $this->getQuery()->toArray();
     }
-    return ["scheme" => $this->parts['scheme'],
-        'host' => $this->parts['host'],
+    return ["scheme" => $this->parts[self::SCHEME],
+        'host' => $this->parts[self::HOST],
         'port' => $port,
-        'user' => $this->parts['user'],
-        'pass' => $this->parts['pass'],
-        'path' => $this->parts['path'],
+        'user' => $this->parts[self::USER],
+        'pass' => $this->parts[self::PASS],
+        'path' => $this->parts[self::PATH],
         'query' => $query,
-        'fragment' => $this->parts['fragment'],
+        'fragment' => $this->parts[self::FRAGMENT],
     ];
   }
 
-  public function offsetExists($offset): bool {
-    if (!array_key_exists($offset, $this->parts)) {
-      return false;
+  private function getIndex($offset): int {
+    if (array_key_exists($offset, $this->parts)) {
+      return $offset;
+    } else if (is_string($offset) && array_key_exists($offset, self::$map)) {
+      return self::$map[$offset];
     }
-    //$part = static::$map[$offset];
-    if ($offset === 'query' || $offset === PHP_URL_QUERY) {
-      return !$this->getQuery()->isEmpty();
-    }
-    //$offset = $this->parsePartName($offset);
-    return $this->parts[$offset] !== null;
+    throw new InvalidArgumentException("Invalid index value $offset");
   }
 
-  public function offsetGet($offset, bool $rawUrlEncode = false) {
-    //$offset = $this->parsePartName($offset);
-    if (!array_key_exists($offset, $this->parts)) {
-      throw new InvalidArgumentException;
-    }
-    if ($rawUrlEncode) {
-      
-    }
-    return $this->parts[$offset];
+  public function offsetExists($offset): bool {
+    $index = $this->getIndex($offset);
+    return $this->contains($index);
+  }
+
+  public function offsetGet($offset) {
+    $index = $this->getIndex($offset);
+    return $this->parts[$index];
   }
 
   public function offsetSet($offset, $value) {
-    //$part = $this->parsePartName($offset);
-    if (!array_key_exists($offset, $this->parts)) {
-      throw new InvalidArgumentException("'$offset' is not valid query part");
-    }
-    if ($offset === 'query') {
-      $this->setQuery($value);
-    } else {
-      $this->parts[$offset] = $value;
-    }
+    $index = $this->getIndex($offset);
+    $this->setPart($index, $value);
+    //echo "$offset: $index = $value sets" . PHP_EOL;
+    //var_dump($this->parts[$index]);
   }
 
   public function offsetUnset($offset) {
-    //$part = $this->parsePartName($offset);
-    if (!array_key_exists($offset, $this->parts)) {
-      throw new InvalidArgumentException("'$offset' is not valid query part");
-    }
-    if ($offset === 'query') {
+    $index = $this->getIndex($offset);
+    if ($index === self::QUERY) {
       $this->setQuery(null);
     } else {
-      $this->parts[$offset] = null;
+      $this->parts[$index] = null;
     }
   }
 
