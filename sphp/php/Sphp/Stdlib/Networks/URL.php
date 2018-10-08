@@ -150,7 +150,8 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * Checks whether the part of the URL is set or not
    * 
    * @param  int $part
-   * @return boolean true if the part is set and false otherwise
+   * @param  mixed $value
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function setPart(int $part, $value) {
