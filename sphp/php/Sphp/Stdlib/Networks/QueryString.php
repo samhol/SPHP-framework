@@ -57,24 +57,6 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
   }
 
   /**
-   * Returns the query string part of the URL
-   * 
-   * The query string contains data to be passed to software running on the 
-   * server. It may contain name/value pairs separated by ampersands.
-   * 
-   * @param  string $separator
-   * @param  int $encode
-   * @return string the query string of the URL
-   */
-  public function getQuery(string $separator = '&', int $encode = \PHP_QUERY_RFC1738): string {
-    $val = '';
-    if (!$this->isEmpty()) {
-      $val = http_build_query($this->query, '', $separator, $encode);
-    }
-    return trim($val, '=');
-  }
-
-  /**
    * Checks whether a parameter exists in the query
    * 
    * @param  mixed $name the name of the parameter
@@ -203,12 +185,30 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
   }
 
   /**
+   * Returns the query string part of the URL
+   * 
+   * The query string contains data to be passed to software running on the 
+   * server. It may contain name/value pairs separated by ampersands.
+   * 
+   * @param  string $separator
+   * @param  int $encode
+   * @return string the query string of the URL
+   */
+  public function build(string $separator = '&amp;', int $encode = \PHP_QUERY_RFC1738): string {
+    $val = '';
+    if (!$this->isEmpty()) {
+      $val = http_build_query($this->query, '', $separator, $encode);
+    }
+    return trim($val, '=');
+  }
+
+  /**
    * Returns the object as a HTML5 encoded string
    *
    * @return string representation of the object
    */
   public function getHtml(): string {
-    return $this->getQuery('&amp;', \PHP_QUERY_RFC3986);
+    return $this->build('&amp;', \PHP_QUERY_RFC3986);
   }
 
   /**
@@ -217,7 +217,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return string representation of the object
    */
   public function getRaw(): string {
-    return $this->getQuery('&', \PHP_QUERY_RFC3986);
+    return $this->build('&', \PHP_QUERY_RFC3986);
   }
 
   public function jsonSerialize(): array {

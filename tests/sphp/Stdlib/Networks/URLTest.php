@@ -109,29 +109,6 @@ class URLTest {
     $this->assertSame(10, $url->getPort());
   }
 
-  public function equalUrlPairs(): array {
-    $url[] = ['http://example.com', 'http://example.com:80'];
-    $url[] = ['http://www.example.com/path?p1=v1&p2=v2', 'http://www.example.com/path?p2=v2&p1=v1'];
-    return $url;
-  }
-
-  /**
-   * 
-   * @covers \Sphp\Stdlib\Networks\URL::equals
-   * @dataProvider equalUrlPairs
-   */
-  public function testEquals($urlString1, $urlString2) {
-    $u1 = new URL($urlString1);
-    $u2 = new URL($urlString2);
-    var_dump($u1->getRaw(), $u2->getRaw());
-    $this->assertTrue($u1->equals($urlString1));
-    $this->assertTrue($u2->equals($urlString2));
-    $this->assertTrue($u1->equals($urlString2));
-    $this->assertTrue($u2->equals($urlString1));
-    $this->assertTrue($u1->equals($u2));
-    $this->assertTrue($u2->equals($u1));
-  }
-
   /**
    * 
    * @return mixed[]
@@ -224,13 +201,13 @@ class URLTest {
   public function testScheme($data) {
     $url = new URL($data);
     $scheme = $url->getScheme();
-    if (!$url->hasScheme()) {
+    if (!$url->contains(PHP_URL_SCHEME)) {
       $this->assertSame($scheme, null);
     } else {
       $this->assertTrue(strlen($scheme) > 0);
     }
     $url->setScheme('http');
-    $this->assertTrue($url->hasScheme());
+    $this->assertTrue($url->contains(PHP_URL_SCHEME));
     $this->assertSame($url->getScheme(), 'http');
   }
 

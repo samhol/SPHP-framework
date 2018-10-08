@@ -8,12 +8,16 @@
 
 > ul:not([class]), > ul:not([class]) ul, > ol:not([class]) ul {
   list-style-type: none;
-  li:before {
-    position: relative;
-    content: "\00BB \0020";
-    font-weight: bold;
-    margin-right: rem-calc(10); 
-    list-style-type: none;
+  li:not([class]) {
+    padding-top: rem-calc(1);
+    padding-bottom: rem-calc(1);
+    &:before {
+      position: relative;
+      content: "\00BB \0020";
+      font-weight: bold;
+      margin-right: rem-calc(10); 
+      list-style-type: none;
+    }
   }
 }
 > ul:not([class]), > ol:not([class]) { 
@@ -23,6 +27,7 @@
   ul, ol {
     margin-left: rem-calc(15);
     list-style-position: inside;
+
   }
 }
 > dl:not([class]) { 

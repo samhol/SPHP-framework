@@ -111,6 +111,7 @@ $error-bg: rgba(255,127,80, 0.40);
   @import "technologies"; 
   @import "grid-examples"; 
   @import "carousels";
+  @import "styling-tags";
 
   > div.wrapper {
     @include default-margin();

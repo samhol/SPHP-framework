@@ -3,19 +3,22 @@
 namespace Sphp\Html\Attributes;
 
 echo '<pre>';
-//var_dump(parse_url(null));
-//var_dump($url = new \Sphp\Stdlib\Networks\URL('https://john.doe:pass@www.example.com:123/forum/questions/?tag=networking&order=newest#top'));
-//var_dump($url1 = new \Sphp\Stdlib\Networks\URL('http://www.example.com'));
-//$url1[PHP_URL_PORT] = 5;
-//var_dump($url1[PHP_URL_PORT]);
-//var_dump($url2 = new \Sphp\Stdlib\Networks\URL('mailto:sami.holck@samiholck.com'));
-var_dump($url3 = new \Sphp\Stdlib\Networks\URL('forum/questions/?tag=networking&order=newest#top'));
-//var_dump(PHP_URL_SCHEME);
-/*print_r($url->toArray());
-var_dump($url->getHtml());
-var_dump($url->setUsername('sami.holck') === $url);
-$url->getQuery()->set('p3', "<script>alert('hello')</script>");
-$url->setFragment("<script>alert('hello')</script>");
-var_dump($url->getHtml());*/
+$url = 'http://username:password@hostname:9090/path?arg=value#anchor';
+
+//var_dump(parse_url($url));
+$parts = [];
+$parts[PHP_URL_SCHEME] = parse_url($url, PHP_URL_SCHEME);
+$parts[PHP_URL_USER] = parse_url($url, PHP_URL_USER);
+$parts[PHP_URL_PASS] = parse_url($url, PHP_URL_PASS);
+$parts[PHP_URL_HOST] = parse_url($url, PHP_URL_HOST);
+$parts[PHP_URL_PORT] = parse_url($url, PHP_URL_PORT);
+$parts[PHP_URL_PATH] = parse_url($url, PHP_URL_PATH);
+$parts[PHP_URL_QUERY] = parse_url($url, PHP_URL_QUERY);
+$parts[PHP_URL_FRAGMENT] = parse_url($url, PHP_URL_FRAGMENT);
+var_dump($parts);
+$a = null;
+$b = &$a;
+$s = 'foo';
+var_dump($a, $b);
 ?>
 </pre>

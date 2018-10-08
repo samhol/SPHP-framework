@@ -17,31 +17,49 @@ use Sphp\Exceptions\InvalidArgumentException;
 class FullURLTest extends \PHPUnit\Framework\TestCase {
 
   public function urlpartNames(): array {
-    return ['scheme', 'host', 'port', 'user', 'pass', 'path', 'query', 'fragment',];
+    return [
+        'scheme',
+        'host',
+        'port',
+        'user',
+        'pass',
+        'path',
+        'query',
+        'fragment',
+        PHP_URL_SCHEME,
+        PHP_URL_HOST,
+        PHP_URL_PORT,
+        PHP_URL_USER,
+        PHP_URL_PASS,
+        PHP_URL_PATH,
+        PHP_URL_QUERY,
+        PHP_URL_FRAGMENT];
   }
 
   /**
-   * @covers \Sphp\Stdlib\Networks\URL::__construct
+   * @param \Sphp\Stdlib\Networks\URL $url
    */
+  public function testEmpty(URL $url = null) {
+    if ($url === null) {
+      $url = new URL();
+    }
+    foreach ($this->urlpartNames() as $part) {
+      $this->assertFalse(isset($url[$part]), "URL part '$part' should not be present in an empty URL");
+      if (is_int($part)) {
+        $this->assertFalse($url->contains($part));
+      }
+    }
+  }
+
   public function testDefaultConstructor() {
     $url = new URL();
-    var_dump($url->toArray());
-    $this->assertFalse(isset($url['scheme']));
-    $this->assertFalse(isset($url['host']));
-    $this->assertFalse(isset($url['user']));
-    $this->assertFalse(isset($url['username']));
-    $this->assertFalse(isset($url['pass']));
-    $this->assertFalse(isset($url['password']));
-    $this->assertFalse(isset($url['port']));
-    $this->assertFalse(isset($url['path']));
-    $this->assertFalse(isset($url['query']));
-    $this->assertFalse(isset($url['fragment']));
+    $this->testEmpty($url);
   }
 
   public function testConstructorWithParam(): URL {
     $url = new URL('https://user:pass@www.example.com:123/path/to/file.ext?name1=value1&name2=value2#fragment');
     foreach ($this->urlpartNames() as $part) {
-      $this->assertTrue(isset($url[$part]));
+      $this->assertTrue(isset($url[$part]), "URL $part is not set");
       unset($url[$part]);
       $this->assertFalse(isset($url[$part]));
     }
@@ -57,7 +75,7 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
         'user' => 'johndoe',
         'pass' => 'password',
         'path' => 'path/to/file.type',
-        'query' => 'q1 = p1&q2 = p2',
+        'query' => 'q1=p1&q2=p2',
         'fragment' => 'frag',
         'port' => 21
             ]],
@@ -76,15 +94,18 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
   /**
    * @dataProvider urlParts
    */
-  public function testArrayAccess(array $parts) {
+  public function testArrayAccessAndIterator(array $array) {
     $url = new URL();
-    foreach ($parts as $part => $value) {
-      $this->assertFalse(isset($url[$part]));
-      $url[$part] = $value;
-      $this->assertTrue(isset($url[$part]));
-      if ($part !== 'query') {
-        $this->assertSame($value, $url[$part]);
+    foreach ($array as $key => $data) {
+      $this->assertFalse(isset($url[$key]));
+      $url[$key] = $data;
+      $this->assertTrue(isset($url[$key]));
+      if ($key !== 'query') {
+        $this->assertSame($data, $url[$key]);
       }
+    }
+    foreach ($url as $part => $value) {
+      $this->assertSame($value, $url[$part]);
     }
   }
 
@@ -152,11 +173,53 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
     $clone = clone $url;
     $this->assertTrue($url->equals($clone));
     $this->assertTrue($url == $clone);
-    $clone[PHP_URL_FRAGMENT] ='frag';
+    $clone[PHP_URL_FRAGMENT] = 'frag';
     $this->assertSame('frag', $clone[PHP_URL_FRAGMENT]);
     $this->assertNotSame('frag', $url[PHP_URL_FRAGMENT]);
     $this->assertFalse($url->equals($clone));
     $this->assertFalse($url == $clone);
+  }
+
+  public function equalUrlPairs(): array {
+    $url[] = ['http://example.com', 'http://example.com:80'];
+    $url[] = ['http://www.example.com/path?p1=v1&p2=v2', 'http://www.example.com/path?p2=v2&p1=v1'];
+    return $url;
+  }
+
+  /**
+   * 
+   * @covers \Sphp\Stdlib\Networks\URL::equals
+   * @dataProvider equalUrlPairs
+   */
+  public function testEquals($urlString1, $urlString2) {
+    $u1 = new URL($urlString1);
+    $u2 = new URL($urlString2);
+    //var_dump($u1->toString(), $u2->toString());
+    $this->assertTrue($u1->equals($urlString1));
+    $this->assertTrue($u2->equals($urlString2));
+    $this->assertTrue($u1->equals($urlString2));
+    $this->assertTrue($u2->equals($urlString1));
+    $this->assertTrue($u1->equals($u2));
+    $this->assertTrue($u2->equals($u1));
+  }
+
+  public function testSettersGettersAndCheckers() {
+    $url = new URL();
+    $this->assertSame($url, $url->setScheme('http'));
+    $this->assertSame('http', $url->getScheme());
+    $this->assertSame($url, $url->setUser('user 1'));
+    $this->assertSame('user 1', $url->getUser());
+    $this->assertSame('user%201', $url->getUser(true));
+    $this->assertSame($url, $url->setPassword('pass'));
+    $this->assertSame('pass', $url->getPassword());
+    $this->assertTrue($url->hasDefaultPort());
+    $this->assertSame(80, $url->getPort());
+    $this->assertSame($url, $url->setPort(1010));
+    $this->assertFalse($url->hasDefaultPort());
+    $this->assertSame(1010, $url->getPort());
+    $this->assertSame($url, $url->setFragment('frag 1'));
+    $this->assertSame('frag 1', $url->getFragment());
+    $this->assertSame('frag%201', $url->getFragment(true));
   }
 
 }
