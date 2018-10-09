@@ -11,33 +11,34 @@
 namespace Sphp\Stdlib\Networks;
 
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 class FullURLTest extends \PHPUnit\Framework\TestCase {
 
-  public function aliases(): array {
-    return [
-        'scheme',
-        'host',
-        'port',
-        'user',
-        'pass',
-        'path',
-        'query',
-        'fragment',];
+  public function getAlias(int $part): string {
+    
+    $arr = [
+        URL::SCHEME => 'scheme',
+        URL::HOST => 'host',
+        URL::PORT => 'port',
+        URL::USER => 'user',
+        URL::PASS => 'pass',
+        URL::PATH => 'path',
+        URL::QUERY => 'query',
+        URL::FRAGMENT => 'fragment',];
+    return $arr[$part];
   }
 
   public function urlpartNames(): array {
     return [
-        PHP_URL_SCHEME,
-        PHP_URL_HOST,
-        PHP_URL_PORT,
-        PHP_URL_USER,
-        PHP_URL_PASS,
-        PHP_URL_PATH,
-        PHP_URL_QUERY,
-        PHP_URL_FRAGMENT];
+        URL::SCHEME,
+        URL::HOST,
+        URL::PORT,
+        URL::USER,
+        URL::PASS,
+        URL::PATH,
+        URL::QUERY,
+        URL::FRAGMENT];
   }
 
   /**
@@ -203,9 +204,9 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
     $clone = clone $url;
     $this->assertTrue($url->equals($clone));
     $this->assertTrue($url == $clone);
-    $clone[PHP_URL_FRAGMENT] = 'frag';
-    $this->assertSame('frag', $clone[PHP_URL_FRAGMENT]);
-    $this->assertNotSame('frag', $url[PHP_URL_FRAGMENT]);
+    $clone[URL::FRAGMENT] = 'frag';
+    $this->assertSame('frag', $clone[URL::FRAGMENT]);
+    $this->assertNotSame('frag', $url[URL::FRAGMENT]);
     $this->assertFalse($url->equals($clone));
     $this->assertFalse($url == $clone);
   }
@@ -261,11 +262,11 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
         [[
         URL::SCHEME => 'https',
         URL::HOST => 'www.whatever.com',
-        URL::USER => '',
+        URL::USER => 'foo',
         URL::PASS => 'password',
         URL::PATH => 'path/to/file.type',
         URL::QUERY => 'q1 = p1&q2 = p2',
-        URL::FRAGMENT => '',
+        URL::FRAGMENT => 'frag',
         URL::PORT => 200
             ]],
     ];
@@ -278,7 +279,9 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
   public function testSettersGettersAndCheckers(array $data) {
     $url = new URL();
     foreach ($data as $part => $value) {
+      $this->assertFalse($url->contains($part));
       $this->assertSame($url, $url->setPart($part, $value));
+      $this->assertTrue($url->contains($part), $this->getAlias($part) . " does not exist");
       if ($part === URL::QUERY) {
         $this->assertEquals(new QueryString($value), $url->{self::functionMap($part)}());
       } else if ($value === null) {

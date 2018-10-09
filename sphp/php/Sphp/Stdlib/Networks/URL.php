@@ -119,7 +119,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
     if (!$this->contains($part)) {
       return '';
     }
-    if ($part === PHP_URL_QUERY) {
+    if ($part === self::QUERY) {
       if ($rawurlencode) {
         return $this->getQuery()->build('&amp;', PHP_QUERY_RFC3986);
       } else {
@@ -137,7 +137,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
       throw new InvalidArgumentException("Unknown URL part constant value provided");
     }
     $value = $this->parts[$part];
-    if ($part === PHP_URL_QUERY) {
+    if ($part === self::QUERY) {
       if ($rawurlencode) {
         return $value->build('&amp;', PHP_QUERY_RFC3986);
       } else {
