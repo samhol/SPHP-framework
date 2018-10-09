@@ -11,7 +11,6 @@
 namespace Sphp\Validators;
 
 use Sphp\I18n\Collections\TranslatableCollection;
-use Sphp\Stdlib\Arrays;
 use Sphp\Stdlib\Datastructures\Collection;
 use Traversable;
 
@@ -78,7 +77,8 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       return false;
     }
     foreach ($this->validators as $inputName => $validator) {
-      if (!$validator->isValid(Arrays::getValue($value, $inputName))) {
+      $inputValue = $value[$inputName] ?? null;
+      if (!$validator->isValid($inputValue)) {
         $valid = false;
         //var_dump($validator->getErrors());
         $this->inputErrors->offsetSet($inputName, $validator->getErrors());

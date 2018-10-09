@@ -221,11 +221,15 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
   }
 
   public function jsonSerialize(): array {
-    return get_object_vars($this);
+    return $this->toArray();
   }
 
   public function toArray(): array {
     return $this->query;
+  }
+
+  public function toJson(): string {
+    return json_encode($this->toArray());
   }
 
   /**
@@ -278,6 +282,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @param  int $filter
    * @return QueryString new instance
+   * @codeCoverageIgnore
    */
   public static function getCurrent(int $filter = \FILTER_SANITIZE_STRING): QueryString {
     $query = filter_input(\INPUT_SERVER, 'QUERY_STRING', $filter);
@@ -289,6 +294,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @param  int $filter
    * @return QueryString new instance
+   * @codeCoverageIgnore
    */
   public static function fromGET(int $filter = \FILTER_SANITIZE_STRING): QueryString {
     return new static(filter_input_array(\INPUT_GET, $filter));
@@ -299,6 +305,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @param  string $url the URL 
    * @return QueryString new instance
+   * @codeCoverageIgnore
    */
   public static function fromURL(string $url): QueryString {
     return new static(parse_url($url, \PHP_URL_QUERY));

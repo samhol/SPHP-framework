@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Html\Attributes;
 
-use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
 
 class PropertyParserTest extends \PHPUnit\Framework\TestCase {
@@ -45,7 +52,7 @@ class PropertyParserTest extends \PHPUnit\Framework\TestCase {
    */
   public function testValidParsing($value) {
     $parser = new PropertyParser();
-    $this->assertTrue(Arrays::similar($parser->parse($value), ['a' => 'b', 'c' => 'd']));
+    $this->assertEquals($parser->parse($value), ['a' => 'b', 'c' => 'd']);
   }
 
   /**

@@ -344,8 +344,8 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $obj1 = new \stdClass();
     $obj2 = new \stdClass();
     return [
-        [[$obj1, [false, null], [$obj2, [[1]]]]], 
-        [['obj'=> $obj2], ['ref'] => &$obj2],
+        [[$obj1, [false, null], [$obj2, [[1]]]]],
+        [['obj' => $obj2], ['ref'] => &$obj2],
     ];
   }
 
@@ -378,6 +378,20 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue(Arrays::isIndexed($array));
     $array['foo'] = 'bar';
     $this->assertFalse(Arrays::isIndexed($array));
+  }
+
+  /**
+   */
+  public function testSecureShuffle() {
+    $array = range('a', 'o');
+    // $array['p'] = 'p';
+    Arrays::secureShuffle($array);
+    //print_r($array);
+    foreach (range('a', 'o') as $key => $value) {
+      $this->assertTrue(in_array($value, $array));
+      //$this->assertNotEquals($value, $array[$key]);
+    }
+    $this->assertFalse($array == range('a', 'o'));
   }
 
 }

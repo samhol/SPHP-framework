@@ -96,7 +96,31 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
+   */
+  public function testToArray() {
+    $url = new URL('https://user:pass@www.example.com:123/path/to/file.ext?a=b&c[1]=1&c[2]=2#fragment');
+    $urlArray = $url->toArray();
+    $this->assertEquals('https', $urlArray['scheme']);
+    $this->assertEquals(123, $urlArray['port']);
+    $this->assertEquals((new QueryString('a=b&c[1]=1&c[2]=2'))->toArray(), $urlArray['query']);
+    return $url;
+  }
+
+  /**
+   * @dataProvider urlStrings
+   *
+   * @param string $urlString
+   */
+  public function testJson(string $urlString) {
+    $url = new URL($urlString);
+    $this->assertEquals(json_encode($url->toArray()), $url->toJson());
+    $this->assertEquals(json_encode($url->jsonSerialize()), $url->toJson());
+  }
+
+  /**
    * @dataProvider urlParts
+   *
+   * @param array $array
    */
   public function testArrayAccessAndIterator(array $array) {
     $url = new URL();
@@ -158,7 +182,7 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
     $url[] = ['http://www.example.com'];
     $url[] = ['https://www.example.com'];
     $url[] = ['ftp://www.example.com'];
-    $url[] = ['ftp://ftp.example.com'];
+    $url[] = ['ftps://ftp.example.com'];
     $url[] = ['http://www.example.com/'];
     $url[] = ['http://www.example.com/path'];
     $url[] = ['www.example.com/foo'];
@@ -209,23 +233,98 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($u2->equals($u1));
   }
 
-  public function testSettersGettersAndCheckers() {
+  public static function functionMap(int $index): string {
+    $map = [
+        URL::SCHEME => 'getScheme',
+        URL::HOST => 'getHost',
+        URL::PORT => 'getPort',
+        URL::USER => 'getUser',
+        URL::PASS => 'getPassword',
+        URL::PATH => 'getPath',
+        URL::QUERY => 'getQuery',
+        URL::FRAGMENT => 'getFragment',];
+    return $map[$index];
+  }
+
+  public function indexedUrlParts() {
+    return [
+        [[
+        URL::SCHEME => 'http',
+        URL::HOST => 'www.whatever.com',
+        URL::USER => 'johndoe',
+        URL::PASS => 'password',
+        URL::PATH => 'path/to/file.type',
+        URL::QUERY => 'q1=p1&q2=p2',
+        URL::FRAGMENT => 'frag',
+        URL::PORT => 21
+            ]],
+        [[
+        URL::SCHEME => 'https',
+        URL::HOST => 'www.whatever.com',
+        URL::USER => '',
+        URL::PASS => 'password',
+        URL::PATH => 'path/to/file.type',
+        URL::QUERY => 'q1 = p1&q2 = p2',
+        URL::FRAGMENT => '',
+        URL::PORT => 200
+            ]],
+    ];
+  }
+
+  /**
+   * @dataProvider indexedUrlParts
+   * @param array $data
+   */
+  public function testSettersGettersAndCheckers(array $data) {
     $url = new URL();
-    $this->assertSame($url, $url->setPart(PHP_URL_SCHEME, 'http'));
-    $this->assertSame('http', $url->getScheme());
-    $this->assertSame($url, $url->setPart(PHP_URL_USER, 'user 1'));
-    $this->assertSame('user 1', $url->getUser());
-    $this->assertSame('user%201', $url->getUser(true));
-    $this->assertSame($url, $url->setPart(PHP_URL_PASS, 'pass'));
-    $this->assertSame('pass', $url->getPassword());
+    foreach ($data as $part => $value) {
+      $this->assertSame($url, $url->setPart($part, $value));
+      if ($part === URL::QUERY) {
+        $this->assertEquals(new QueryString($value), $url->{self::functionMap($part)}());
+      } else if ($value === null) {
+        $this->assertSame('', $url->{self::functionMap($part)}());
+      } else {
+        $this->assertSame($value, $url->getPart($part));
+        $this->assertSame($value, $url->{self::functionMap($part)}());
+      }
+    }
+  }
+
+  public function urlStringsForPorts() {
+    $url[] = ['irc://irc.example.com/channel', 194];
+    $url[] = ['http://www.example.com', 80];
+    $url[] = ['https://www.example.com', 443];
+    $url[] = ['ftp://www.example.com', 21];
+    $url[] = ['ftp://ftp.example.com', 21];
+    return $url;
+  }
+
+  /**
+   * @dataProvider urlStringsForPorts
+   * @param string $urlString
+   * @param int $port
+   */
+  public function testPort(string $urlString, int $port) {
+    $url = new URL($urlString);
+    $this->assertSame($port, $url->getPort());
     $this->assertTrue($url->hasDefaultPort());
-    $this->assertSame(80, $url->getPort());
-    $this->assertSame($url, $url->setPart(PHP_URL_PORT, 1010));
+    $url->setPart(URL::PORT, $port + 1);
     $this->assertFalse($url->hasDefaultPort());
-    $this->assertSame(1010, $url->getPort());
-    $this->assertSame($url, $url->setPart(PHP_URL_FRAGMENT, 'frag 1'));
-    $this->assertSame('frag 1', $url->getFragment());
-    $this->assertSame('frag%201', $url->getFragment(true));
+    $this->assertSame($port + 1, $url->getPort());
+  }
+
+  /**
+   */
+  public function testQuerySettings() {
+    $url = new URL('http://www.example.com');
+    $queryArray = ['foo' => 'bar'];
+    $queryString = 'foo=bar';
+    $queryObject = new QueryString($queryArray);
+    $this->assertSame($url, $url->setQuery($queryString));
+    $this->assertEquals($queryObject, $url->getQuery());
+    $this->assertSame($url, $url->setQuery(['foo' => 'bar']));
+    $this->assertEquals($queryObject, $url->getQuery());
+    $this->assertSame($queryObject, $url->setQuery($queryObject)->getQuery());
   }
 
 }

@@ -10,7 +10,7 @@
 
 namespace Sphp\Stdlib\Networks;
 
-class QueryStringTests extends \PHPUnit\Framework\TestCase {
+class QueryStringTests extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
 
   /**
    * @return array
@@ -31,6 +31,8 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
     $query2 = new QueryString($q2);
     $this->assertTrue($query1->equals($query2));
     $this->assertTrue($query2->equals($query1));
+    $this->assertTrue($query2->equals($q1));
+    $this->assertTrue($query2->equals($q2));
   }
 
   public function nameValuePairs(): array {
@@ -56,35 +58,7 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
   /**
    * @return mixed[]
    */
-  public function arrayData() {
-    return [
-        [[
-        'scheme' => 'http',
-        'host' => 'www.whatever.com',
-        'user' => 'johndoe',
-        'pass' => 'password',
-        'path' => 'path/to/file.type',
-        'query' => 'q1 = p1&q2 = p2',
-        'fragment' => 'daa',
-        'port' => 21
-            ]],
-        [[
-        'scheme' => 'https',
-        'host' => 'www.whatever.com',
-        'user' => '',
-        'pass' => 'password',
-        'path' => 'path/to/file.type',
-        'query' => 'q1 = p1&q2 = p2',
-        'fragment' => 'daa',
-        'port' => 21
-            ]],
-    ];
-  }
-
-  /**
-   * @return mixed[]
-   */
-  public function params() {
+  public function params(): array {
     return [
         [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
         [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
@@ -119,6 +93,71 @@ class QueryStringTests extends \PHPUnit\Framework\TestCase {
     $clone->set('foo', 'bar');
     $this->assertFalse($url->equals($clone));
     $this->assertFalse($url == $clone);
+  }
+
+  /**
+   */
+  public function testToArray() {
+    $query = new QueryString('a=b&c[1]=1&c[2]=2');
+    $urlArray = $query->toArray();
+    $this->assertEquals($urlArray['a'], $query['a']);
+  }
+
+  public function queries(): array {
+    return [
+        [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
+        ['a=b&ampc=d'],
+        [new \ArrayIterator(['a' => 'b'])],
+    ];
+  }
+
+  /**
+   * @dataProvider queries
+   *
+   * @param string $queryData
+   */
+  public function testJsonFunctionality($queryData) {
+    $query = new QueryString($queryData);
+    $this->assertEquals(json_encode($query->toArray()), $query->toJson());
+    $this->assertEquals(json_encode($query->jsonSerialize()), $query->toJson());
+  }
+
+  /**
+   * @dataProvider params
+   *
+   * @param string $queryData
+   */
+  public function testArrayAccessAndIterator(array $queryData) {
+    $object = new QueryString($queryData);
+    foreach ($queryData as $key => $value) {
+      $this->assertTrue(isset($object[$key]));
+      $this->assertEquals($value, $object[$key]);
+    }
+    $this->assertFalse(isset($object['five']));
+    $this->assertCount(count($queryData), $object);
+    // both cycles must pass
+    for ($n = 0; $n < 2; ++$n) {
+      $i = 0;
+      reset($queryData);
+      foreach ($object as $key => $val) {
+        if ($i >= 6) {
+          $this->fail("Iterator overflow!");
+        }
+        $this->assertEquals(key($queryData), $key);
+        $this->assertEquals(current($queryData), $val);
+        next($queryData);
+        ++$i;
+      }
+      $this->assertEquals(count($queryData), $i);
+    }
+  }
+  public function testInvalidParams() {
+    $object = new QueryString();
+    $object['err'] = " onmouseover=\"alert('foo')";
+    $this->assertEquals('err=%20onmouseover%3D%22alert%28%27foo%27%29', "$object");
+    $object['true'] = true;
+    $object['false'] = false;
+    $object['null'] = null;
   }
 
 }

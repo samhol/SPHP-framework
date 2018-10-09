@@ -114,49 +114,6 @@ abstract class Arrays {
   }
 
   /**
-   * Determine if two associative arrays are similar
-   *
-   * Both arrays must have the same indexes with identical values
-   * without respect to key ordering 
-   * 
-   * @param array $a
-   * @param array $b
-   * @return boolean true if similar and false otherwise
-   */
-  public static function similar(array $a, array $b): bool {
-    // if the indexes don't match, return immediately
-    if (count(array_diff_assoc($a, $b))) {
-      return false;
-    }
-    // we know that the indexes, but maybe not values, match.
-    // compare the values between the two arrays
-    foreach ($a as $k => $v) {
-      if ($v !== $b[$k]) {
-        return false;
-      }
-    }
-    // we have identical indexes, and no unequal values
-    return true;
-  }
-
-
-  /**
-   * Returns the value from an array using the key chain given as the second parameter
-   * 
-   * @param  array $array the array to search
-   * @param  mixed|mixed[] $path the key chain (accepts multiple values)
-   * @return mixed the value found or `null` if none was found
-   */
-  public static function getValue(array $array, ...$path) {
-    $path = static::flatten($path);
-    $temp = &$array;
-    foreach ($path as $key) {
-      $temp = & $temp[$key];
-    }
-    return $temp;
-  }
-
-  /**
    * Search an array for string values that contain the given phrase
    * 
    * @param  array $arr the array to search from
@@ -337,6 +294,28 @@ abstract class Arrays {
       throw new InvalidArgumentException('Object ' . get_class($object) . ' cannot be transformed to an array');
     }
     return $items;
+  }
+
+  /**
+   * Shuffle an array using a CSPRNG
+   * 
+   * @link https://paragonie.com/b/JvICXzh_jhLyt4y3
+   * 
+   * @param &array $array reference to an array
+   */
+  public static function secureShuffle(&$array) {
+    $size = count($array);
+    $keys = array_keys($array);
+    for ($i = $size - 1; $i > 0; --$i) {
+      $r = random_int(0, $i);
+      if ($r !== $i) {
+        $temp = $array[$keys[$r]];
+        $array[$keys[$r]] = $array[$keys[$i]];
+        $array[$keys[$i]] = $temp;
+      }
+    }
+    // Reset indices:
+    $array = array_values($array);
   }
 
 }
