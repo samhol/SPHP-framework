@@ -8,10 +8,10 @@
 
 /**
  * See <a href="http://jquery.com">http://jquery.com</a>.
- * @name ZeroClipboard
+ * @name clipboard
  * @class
- * See the ZeroClipboard Library at (<a href="http://zeroclipboard.org/index-v1.x.html">ZeroClipboard v1.x</a>)
- * The ZeroClipboard library provides an easy way to copy text to the clipboard.
+ * See the clipboard-polyfill Library at (<a href="https://github.com/lgarron/clipboard-polyfill">GitHub</a>)
+ * This library library provides an easy way to copy text to the clipboard.
  */
 
 /**
@@ -133,21 +133,18 @@ if (!window.console.log) {
    * @returns {sphp} for fluent interface
    */
   sphp.initClipboard = function () {
-    if (Clipboard.isSupported()) {
-      var clipboard = new Clipboard('[data-clipboard-target]');
-      clipboard.on('success', function (e) {
-        var $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-        $container.sphpPopper({content: "Code is copied to the clipboard"});
-        e.clearSelection();
-      });
-      clipboard.on('error', function (e) {
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
-      });
-    }
+    var button = $('[data-clipboard-target]');
+    button.click(
+            function () {
+              var $btn = $(this), $container;
+              console.log('content-id: ' + $btn.attr("data-clipboard-target"));
+              $container = $($btn.attr("data-clipboard-target"));
+              var dt = new clipboard.DT();
+              dt.setData("text/plain", $container.text());
+              dt.setData("text/html", $container.html());
+              clipboard.write(dt);
+              $container.sphpPopper({content: "Code is copied to the clipboard"});
+            });
     return this;
   };
   /**
@@ -209,5 +206,5 @@ if (!window.console.log) {
 $(window).bind("load", function () {
   "use strict";
   sphp.initialize();
-  
+
 });

@@ -8,9 +8,9 @@ var build, gulp = require('gulp'),
 function build_js() {
   return gulp.src([
     './node_modules/jquery/dist/jquery.js',
+    './node_modules/clipboard-polyfill/build/clipboard-polyfill.promise.js',
     './node_modules/slick-carousel/slick/slick.min.js',
     './node_modules/foundation-sites/dist/js/foundation.js',
-    './node_modules/clipboard/dist/clipboard.js',
     './node_modules/lazyloadxt/dist/jquery.lazyloadxt.extra.js',
     './node_modules/ion-rangeslider/js/ion.rangeSlider.js',
     './sphp/javascript/vendor/*.js',
@@ -63,3 +63,4 @@ copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts);
 gulp.task('build', build);
 gulp.task('default', build);
 gulp.task('copy:scss+fonts', copy_scss_and_fonts);
+gulp.task('doc', doc);
