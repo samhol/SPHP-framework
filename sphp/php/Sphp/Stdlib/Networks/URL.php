@@ -180,7 +180,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function setPart(int $part, $value) {
     if (!array_key_exists($part, $this->parts)) {
-      throw new InvalidArgumentException("Unknown URL part '$part'");
+      throw new InvalidArgumentException("Unknown URL part constant provided'$part'");
     }
     if ($part === self::QUERY) {
       $this->setQuery($value);
@@ -201,7 +201,8 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
       $this->parts[$part] = $value;
     } else {
       $v = var_export($value, true);
-      throw new InvalidArgumentException("Something went wrong $part, $v");
+      $partName = array_search($part, self::$map);
+      throw new InvalidArgumentException("Malformed URL $partName  $v");
     }
     return $this;
   }
@@ -551,6 +552,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public static function getCurrent(): URL {
     if (self::$currUrl === null) {
+      var_dump(static::getCurrentURL());
       $url = new static(static::getCurrentURL());
 
       self::$currUrl = $url;

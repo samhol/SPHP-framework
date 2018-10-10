@@ -25,15 +25,13 @@ function build_js() {
 }
 
 function copy_scss() {
-  return gulp.src([
-    './node_modules/slick-carousel/slick/*.scss'
-  ])
+  return gulp
+          .src(['./node_modules/slick-carousel/slick/*.scss'])
           .pipe(gulp.dest('sphp/scss/vendor/slick-carousel'));
 }
 function copy_fonts() {
-  return gulp.src([ 
-    './node_modules/slick-carousel/slick/fonts/*'
-  ])
+  return gulp
+          .src(['./node_modules/slick-carousel/slick/fonts/*'])
           .pipe(gulp.dest('sphp/css/fonts'));
 }
 function build_ss360() {
@@ -49,7 +47,11 @@ function build_ss360() {
 
 function doc(cb) {
   var config = require('./jsdoc.json');
-  return  gulp.src(['README.md', './sphp/javascript/app/sphp.js', './sphp/javascript/app/ss360/*.js', './sphp/javascript/app/modules/*.js'], {read: false})
+  return  gulp.src([
+    'README.md', 
+    './sphp/javascript/app/sphp.js', 
+    './sphp/javascript/app/ss360/*.js', 
+    './sphp/javascript/app/modules/*.js'], {read: false})
           .pipe(jsdoc(config, cb));
 }
 

@@ -10,16 +10,10 @@
 
 namespace Sphp\MVC;
 
-use Sphp\Exceptions\IllegalStateException;
 use PHPUnit\Framework\TestCase;
+use \Sphp\Stdlib\Strings;
 
 class RouterTest extends TestCase {
-
-  public function testEmptyRouting() {
-    $router = new Router();
-    $this->expectException(IllegalStateException::class);
-    $router->executeWithCurrentUrl();
-  }
 
   /**
    * @return array
@@ -29,20 +23,55 @@ class RouterTest extends TestCase {
     $data[] = ['http://samiholck.com/index.php', '/index.php/'];
     $data[] = ['http://samiholck.com/user/view/samhol', '/user/view/samhol/'];
     $data[] = ['http://samiholck.com/101', '/101/'];
-    $data[] = ['foo', 'foo/'];
+    $data[] = ['/foo', '/foo/'];
+    $data[] = ['/', '/'];
     return $data;
   }
 
   /**
-   * 
-   * @dataProvider urls
+   * @expectedException \Sphp\Exceptions\IllegalStateException
    */
-  public function testRouting(string $url, string $expectedPath) {
-    $this->expected = $expectedPath;
+  public function testEmptyRouting() {
+    $router = new Router();
+    $this->assertTrue($router->isEmpty());
+    $router->execute('http://samiholck.com/');
+  }
+
+  /**
+   * @dataProvider urls
+   * @param string|null $url
+   * @expectedException \Sphp\Exceptions\IllegalStateException
+   */
+  public function testRoutingWithMissingRoute($url) {
+    $router = new Router();
+    $router->route('/foo/bar', [$this, 'defaultRoute']);
+    $router->execute($url);
+  }
+
+  /**
+   * @dataProvider urls
+   * @param string|null $url
+   */
+  public function testRoutingWithoutDefault($url) {
+    $router = new Router();
+    $router->route('/', [$this, 'defaultRoute']);
+    $this->assertFalse($router->isEmpty());
+    $router->route('/index.php', [$this, 'defaultRoute']);
+    $router->route('/<#user_id>', [$this, 'defaultRoute']);
+    $router->route('/<:username>', [$this, 'alphanum']);
+    $router->route('/user/view/<:username>', [$this, 'dir']);
+    $router->execute($url);
+  }
+
+  /**
+   * @dataProvider urls
+   * @param string|null $url
+   */
+  public function testRouting($url) {
     $router = new Router();
     $router->setDefaultRoute([$this, 'defaultRoute']);
     $router->route('/index.php', [$this, 'index'])
-            ->route('<#user_id>', [$this, 'categories']);
+            ->route('/<#user_id>', [$this, 'categories']);
     $router->route('/user/view/<:username>', [$this, 'dir']);
     $router->execute($url);
   }
@@ -56,21 +85,25 @@ class RouterTest extends TestCase {
     $this->assertSame('/index.php/', $string);
   }
 
-  public function categories(string $string) {
-    $this->assertTrue(is_numeric($string));
+  public function categories(string $path, string $capture) {
+    $this->assertTrue(is_numeric($capture), "$capture is not numeric when using path '$path'");
   }
 
-  public function defaultRoute(string $string) {
-    $this->assertTrue(is_string($string));
+  public function alphanum(string $path, string $capture) {
+    $this->assertTrue(Strings::isAlphanumeric($capture), "$capture is not alphanumeric when using path '$path'");
+  }
+
+  public function defaultRoute(string $path) {
+    $this->assertTrue(is_string($path));
   }
 
   /**
    * @dataProvider urls
    * 
-   * @param string $url
+   * @param string|null $url
    * @param string $expectedPath
    */
-  public function testGetPath(string $url, string $expectedPath) {
+  public function testGetPath($url, string $expectedPath) {
     $this->assertSame($expectedPath, Router::getPath($url));
   }
 

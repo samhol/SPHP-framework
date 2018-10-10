@@ -10,10 +10,10 @@
 
 namespace Sphp\MVC;
 
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Stdlib\Datastructures\PriorityQueue;
 use Sphp\Exceptions\IllegalStateException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements an URL router
@@ -78,20 +78,9 @@ class Router {
   private $routes;
 
   /**
-   * A sanitized version of the URL, excluding the domain and base component
-   *
-   * @var string
-   */
-  private $path = '';
-
-  /**
    * Constructor
-   * 
-   * Initializes the router by getting the URL and cleaning it.
-   *
-   * @param  string|null $url optional URL to route
    */
-  public function __construct(string $url = null) {
+  public function __construct() {
     $this->routes = new PriorityQueue();
   }
 
@@ -111,30 +100,16 @@ class Router {
   }
 
   /**
-   * 
-   */
-  public function executeWithCurrentUrl() {
-    try {
-      
-    $url = URL::getCurrent();
-    $this->execute($url);
-    } catch (\Exception $ex) {
-      throw new IllegalStateException('The router cannot be executed', $ex->getCode(), $ex);
-    }
-  }
-
-  /**
    * Runs the router matching engine and then calls the dispatcher
    * 
-   * Tries to match one of the URL routes to the current URL, otherwise
+   * Tries to match one of the URL routes to the given URL, otherwise
    * execute the default function.
    *
-   * @param  string|null $url optional URL to route
-   * @return $this for a fluent interface
-   * @throws InvalidStateException
-   * @throws RuntimeException
+   * @param  string|URL $url the URL to route
+   * @return void
+   * @throws IllegalStateException
    */
-  public function execute(string $url) {
+  public function execute($url) {
     if ($this->isEmpty()) {
       throw new IllegalStateException('The router is empty and cannot be executed');
     }
@@ -151,9 +126,6 @@ class Router {
         $routeFound = true;
         // Parameters to pass to the callback function
         $params = [$path];
-        // echo "<pre>";
-        // var_dump($matches);
-        // echo "</pre>";
         // Get any named parameters from the route
         foreach ($matches as $key => $match) {
           if (is_string($key)) {
@@ -171,9 +143,8 @@ class Router {
       $routeFound = true;
     }
     if (!$routeFound) {
-      throw new IllegalStateException('No callback found for the route');
+      throw new IllegalStateException("No callback found for the route '$path'");
     }
-    return $this;
   }
 
   /**
@@ -214,15 +185,20 @@ class Router {
   }
 
   /**
+   * PArses the path from given URL
    * 
-   * @param string $url
-   * @return string
+   * @param  URL|string|null $url
+   * @return string path to use in the router
+   * @throws InvalidArgumentException
    */
-  public static function getPath(string $url = null): string {
+  public static function getPath($url = null): string {
     if ($url === null) {
       $url = URL::getCurrent();
-    } else {
+    } else if (is_string($url)) {
       $url = new URL($url);
+    }
+    if (!$url instanceof URL) {
+      throw new InvalidArgumentException("Path can only be resolved from string or URL object");
     }
     return rtrim($url->getPath(), '/') . '/';
   }
