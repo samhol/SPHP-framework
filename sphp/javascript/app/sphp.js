@@ -7,7 +7,7 @@
  */
 
 /**
- * See <a href="http://jquery.com">http://jquery.com</a>.
+ * See <a href="https://github.com/lgarron/clipboard-polyfill">GitHub</a>).
  * @name clipboard
  * @class
  * See the clipboard-polyfill Library at (<a href="https://github.com/lgarron/clipboard-polyfill">GitHub</a>)
@@ -35,12 +35,6 @@
  * The built in string object.
  * @external String
  * @see {@link https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String String}
- */
-
-/**
- * Single accordion open event
- *
- * @event external:$.fn#sph-sa-opened
  */
 
 if (!window.console) {
