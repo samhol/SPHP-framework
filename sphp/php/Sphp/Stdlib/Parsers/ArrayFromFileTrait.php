@@ -28,7 +28,7 @@ trait ArrayFromFileTrait {
    * @param  string $string date to decode to array
    * @return array output decoded array
    */
-  abstract public function arrayFromString(string $string): array;
+  abstract public function readFromString(string $string): array;
 
   /**
    * Decodes a file to PHP array
@@ -37,8 +37,8 @@ trait ArrayFromFileTrait {
    * @return array output decoded array
    * @throws RuntimeException if file is not readable
    */
-  public function arrayFromFile(string $filename): array {
-    return $this->arrayFromString(Filesystem::toString($filename));
+  public function readFromFile(string $filename): array {
+    return $this->readFromString(Filesystem::toString($filename));
   }
 
 }

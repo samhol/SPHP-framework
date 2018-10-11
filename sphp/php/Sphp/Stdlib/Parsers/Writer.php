@@ -17,13 +17,13 @@ namespace Sphp\Stdlib\Parsers;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ArrayEncoder {
+interface Writer {
 
   /**
    * Encodes an array to specific data format
    * 
-   * @param  array $config
+   * @param  mixed $data
    * @return string Description
    */
-  public function encodeData(array $config): string;
+  public function write($data): string;
 }

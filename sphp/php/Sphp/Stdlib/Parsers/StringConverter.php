@@ -27,7 +27,7 @@ interface StringConverter {
    * @param  string $string
    * @return string output 
    */
-  public function convertString(string $string): string;
+  public function parseString(string $string): string;
 
   /**
    * Converts a file to string
@@ -36,5 +36,5 @@ interface StringConverter {
    * @return string output 
    * @throws RuntimeException if file is not readable
    */
-  public function convertFile(string $filename): string;
+  public function parseFile(string $filename): string;
 }

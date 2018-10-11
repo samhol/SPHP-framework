@@ -120,10 +120,10 @@ abstract class Parser {
       $extension = strtolower($pathinfo['extension']);
     }
     $reader = static::getReaderFor($extension);
-    if ($reader instanceof ArrayDecoder) {
-      return $reader->arrayFromFile($fullPath);
-    } else {
-      return $reader->convertFile($fullPath);
+    if ($reader instanceof Reader) {
+      return $reader->readFromFile($fullPath);
+    } else if ($reader instanceof StringConverter){
+      return $reader->parseFile($fullPath);
     }
   }
 
@@ -138,10 +138,10 @@ abstract class Parser {
   public static function fromString(string $string, string $extension) {
     if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReaderFor($extension);
-      if ($reader instanceof ArrayDecoder) {
-        return $reader->arrayFromString($string);
-      } else {
-        return $reader->convertString($string);
+      if ($reader instanceof Reader) {
+        return $reader->readFromString($string);
+      } else if ($reader instanceof StringConverter) {
+        return $reader->parseString($string);
       }
     } else {
       throw new RuntimeException("Unsupported data type: .$extension");

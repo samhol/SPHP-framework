@@ -24,7 +24,7 @@ Manual\example('Sphp/Stdlib/Parsers/Yaml.php', null, false)->setExamplePaneTitle
 
 $yamlCode = Manual\codeModal('<i class="fas fa-cogs"></i> YAML file', 'manual/snippets/example.yml', 'YAML file example');
 $yamlCodeButton = $yamlCode->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(Parser::yaml()->arrayFromFile('manual/snippets/example.yml'), true), 'text', 'YAML-file as parsed PHP array');
+$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(Parser::yaml()->readFromFile('manual/snippets/example.yml'), true), 'text', 'YAML-file as parsed PHP array');
 $tr1 = $parsedYaml->getTrigger()->addCssClass('button', 'php', 'radius', 'small');
 
 

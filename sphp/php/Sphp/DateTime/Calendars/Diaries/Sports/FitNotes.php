@@ -32,7 +32,7 @@ class FitNotes {
    * @return DiaryInterface
    */
   public static function fromCsv(string $path): DiaryInterface {
-    $rawData = Parser::csv()->arrayFromFile($path); //print_r($rawData);
+    $rawData = Parser::csv()->readFromFile($path); //print_r($rawData);
     array_shift($rawData);
     $coll = new Diary();
     $log = $date = null;

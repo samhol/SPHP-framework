@@ -67,7 +67,7 @@ class Console {
 
   protected function createLog(string $type, $data) {
     if (is_array($data)) {
-      $data = Parser::json()->encodeData($data);
+      $data = Parser::json()->write($data);
       //echo "console.$type($data);";
     } else if (is_string($data)) {
       $data = "'$data'";

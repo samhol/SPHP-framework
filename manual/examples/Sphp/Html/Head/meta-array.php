@@ -15,6 +15,6 @@ function rest(array $arr) {
   return $output;
 }
 
-foreach (Parser::yaml()->arrayFromFile('manual/examples/Sphp/Html/Head/meta.yaml') as $v) {
+foreach (Parser::yaml()->readFromFile('manual/examples/Sphp/Html/Head/meta.yaml') as $v) {
   echo '$head[] = ' . rest($v) . "\n";
 }

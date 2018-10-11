@@ -22,7 +22,7 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Json implements ArrayEncoder, ArrayDecoder {
+class Json implements Writer, Reader {
 
   use ArrayFromFileTrait;
 
@@ -38,7 +38,7 @@ class Json implements ArrayEncoder, ArrayDecoder {
     $this->parser = new JsonFormat();
   }
 
-  public function arrayFromString(string $string): array {
+  public function readFromString(string $string): array {
     $thrower = ErrorToExceptionThrower::getInstance(RuntimeException::class);
     $thrower->start();
     $data = json_decode($string, JSON_BIGINT_AS_STRING);
@@ -46,8 +46,8 @@ class Json implements ArrayEncoder, ArrayDecoder {
     return $data;
   }
 
-  public function encodeData(array $config, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT | JSON_PRETTY_PRINT): string {
-    $serialized = json_encode($config, $flags);
+  public function write($data, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT | JSON_PRETTY_PRINT): string {
+    $serialized = json_encode($data, $flags);
     if (false === $serialized) {
       throw new RuntimeException(json_last_error_msg());
     }

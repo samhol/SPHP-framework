@@ -3,7 +3,7 @@
 use Sphp\Stdlib\Parsers\Parser;
 
 echo "<pre>";
-$f = Parser::yaml()->arrayFromFile("manual/examples/Sphp/Html/Head/meta.yaml");
+$f = Parser::yaml()->readFromFile("manual/examples/Sphp/Html/Head/meta.yaml");
 
 foreach ($f as $v) {
   echo "\$head[] = " . rest($v) . "\n";

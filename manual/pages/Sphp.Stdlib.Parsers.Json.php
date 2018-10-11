@@ -27,7 +27,7 @@ Manual\example('Sphp/Stdlib/Parsers/Markdown.php', 'html5', true)->setExamplePan
 $jsonData = file_get_contents('http://data.samiholck.com/');
 $yamlCode = Manual\codeModal('<i class="fab fa-js-square"></i> JSON data', 'manual/snippets/example.json', 'JSON data');
 $yamlCodeButton = $yamlCode->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(Parser::json()->arrayFromFile('manual/snippets/example.json'), true), 'text', 'JSON data as parsed PHP array');
+$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(Parser::json()->readFromFile('manual/snippets/example.json'), true), 'text', 'JSON data as parsed PHP array');
 $tr1 = $parsedYaml->getTrigger()->addCssClass('button', 'php', 'radius', 'small');
 
 

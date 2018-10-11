@@ -19,7 +19,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ArrayDecoder {
+interface Reader {
 
   /**
    * Decodes a file to PHP array
@@ -28,7 +28,7 @@ interface ArrayDecoder {
    * @return array output decoded array
    * @throws RuntimeException if file is not readable
    */
-  public function arrayFromFile(string $filename): array;
+  public function readFromFile(string $filename): array;
 
   /**
    * Decodes a string to PHP array
@@ -36,5 +36,5 @@ interface ArrayDecoder {
    * @param  string $string date to decode to array
    * @return array output decoded array
    */
-  public function arrayFromString(string $string): array;
+  public function readFromString(string $string): array;
 }

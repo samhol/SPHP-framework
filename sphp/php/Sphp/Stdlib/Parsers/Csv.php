@@ -21,7 +21,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Csv implements ArrayDecoder {
+class Csv implements Reader {
 
   /**
    * 
@@ -32,7 +32,7 @@ class Csv implements ArrayDecoder {
    * @return array
    * @throws RuntimeException
    */
-  public function arrayFromString(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
+  public function readFromString(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
     try {
       return str_getcsv($string, $delimiter, $enclosure, $escape);
     } catch (Exception $ex) {
@@ -50,7 +50,7 @@ class Csv implements ArrayDecoder {
    * @throws RuntimeException if CSV parsing fails
    * @throws RuntimeException if file is not readable
    */
-  public function arrayFromFile(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
+  public function readFromFile(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
     if (!Filesystem::isFile($filename)) {
       throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }

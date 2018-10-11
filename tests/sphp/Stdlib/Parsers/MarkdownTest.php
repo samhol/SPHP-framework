@@ -52,15 +52,15 @@ class MarkdownTest extends TestCase {
 
   public function testInline() {
     $raw = Filesystem::toString('./tests/files/test.md');
-    $fromFile = $this->md->convertFile('./tests/files/test.md', true);
-    $fromString = $this->md->convertString($raw, true);
+    $fromFile = $this->md->parseFile('./tests/files/test.md', true);
+    $fromString = $this->md->parseString($raw, true);
     $this->assertSame($fromFile, $fromString);
   }
 
   public function testBlock() {
     $raw = Filesystem::toString('./tests/files/test.md');
-    $fromFile = $this->md->convertFile('./tests/files/test.md', false);
-    $fromString = $this->md->convertString($raw, false);
+    $fromFile = $this->md->parseFile('./tests/files/test.md', false);
+    $fromString = $this->md->parseString($raw, false);
     $this->assertSame($fromFile, $fromString);
   }
 
@@ -68,7 +68,7 @@ class MarkdownTest extends TestCase {
    * @expectedException \Sphp\Exceptions\FileSystemException
    */
   public function testConverInvalidFile() {
-    $this->md->convertFile('foo.bar', false);
+    $this->md->parseFile('foo.bar', false);
   }
 
 }

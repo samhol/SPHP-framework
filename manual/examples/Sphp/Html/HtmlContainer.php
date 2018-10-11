@@ -10,7 +10,7 @@ $container["heading"] = (new H5("Lorem ipsum dolor sit amet"))->addCssClass("sub
 $container["paragraph"] = (new Paragraph())
         ->appendRawFile("manual/snippets/loremipsum.html");
 $container["paragraph"]->inlineStyles()->setProperty("text-align", "justify");
-$container->append(new \stdClass());
+$container->append('foo');
 
 /**
  * A lambda function for object searching

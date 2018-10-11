@@ -48,7 +48,7 @@ class ContentParserTraitTest extends TestCase {
 
   public function testAppendMd() {
     $mdString = file_get_contents(__DIR__ . '/../../files/test.md');
-    $mdToHtml = Parser::md()->convertString($mdString);
+    $mdToHtml = Parser::md()->parseString($mdString);
     $this->container->appendMd($mdString);
     $this->container->appendMdFile(__DIR__ . '/../../files/test.md');
    // print_r($this->appendedStrings);

@@ -23,7 +23,7 @@ use Sphp\Stdlib\Filesystem;
  */
 class Markdown implements StringConverter {
 
-  public function convertString(string $string, bool $inlineOnly = false): string {
+  public function parseString(string $string, bool $inlineOnly = false): string {
     if ($inlineOnly) {
       $data = ParsedownExtraPlugin::instance()->line($string);
     } else {
@@ -32,11 +32,11 @@ class Markdown implements StringConverter {
     return $data;
   }
 
-  public function convertFile(string $filename, bool $inlineOnly = false): string {
+  public function parseFile(string $filename, bool $inlineOnly = false): string {
     if (!Filesystem::isFile($filename)) {
       throw new FileSystemException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
-    return $this->convertString(Filesystem::toString($filename), $inlineOnly);
+    return $this->parseString(Filesystem::toString($filename), $inlineOnly);
   }
 
 }

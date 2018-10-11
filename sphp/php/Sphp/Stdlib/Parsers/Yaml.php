@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use Exception;
 use Sphp\Exceptions\RuntimeException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a YAML encoder and decoder
@@ -21,11 +22,11 @@ use Symfony\Component\Yaml\Yaml as SymfonyYaml;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Yaml implements ArrayEncoder, ArrayDecoder {
+class Yaml implements Writer, Reader {
 
   use ArrayFromFileTrait;
 
-  public function arrayFromString(string $string): array {
+  public function readFromString(string $string): array {
     try {
       $data = SymfonyYaml::parse($string);
     } catch (Exception $ex) {
@@ -34,8 +35,11 @@ class Yaml implements ArrayEncoder, ArrayDecoder {
     return $data;
   }
 
-  public function encodeData(array $array): string {
-    return SymfonyYaml::dump($array);
+  public function write($data): string {
+    if (!is_array($data)) {
+      throw new InvalidArgumentException('Cannot write data to YAML format');
+    }
+    return SymfonyYaml::dump($data);
   }
 
 }

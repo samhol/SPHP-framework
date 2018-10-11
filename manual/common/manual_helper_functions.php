@@ -14,7 +14,7 @@ use Sphp\Stdlib\Parsers\Parser;
  * @return void
  */
 function md(string $content) {
-  echo Parser::md()->convertString($content);
+  echo Parser::md()->parseString($content);
 }
 
 /**
@@ -23,7 +23,7 @@ function md(string $content) {
  * @return string
  */
 function inlineMd(string $content, bool $echo = true): string {
-  $parsed = Parser::md()->convertString($content, true);
+  $parsed = Parser::md()->parseString($content, true);
   if ($echo) {
     echo $parsed;
   }

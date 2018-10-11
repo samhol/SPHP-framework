@@ -22,7 +22,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Ini implements ArrayEncoder, ArrayDecoder {
+class Ini implements Writer, Reader {
 
   use ArrayFromFileTrait;
 
@@ -44,7 +44,7 @@ class Ini implements ArrayEncoder, ArrayDecoder {
     $this->writer = new IniWriter();
   }
 
-  public function arrayFromString(string $string): array {
+  public function readFromString(string $string): array {
     try {
       return $this->reader->fromString($string);
     } catch (Exception $ex) {
@@ -52,7 +52,7 @@ class Ini implements ArrayEncoder, ArrayDecoder {
     }
   }
 
-  public function encodeData(array $array): string {
+  public function write( $array): string {
     try {
       return $this->writer->toString($array);
     } catch (Exception $ex) {

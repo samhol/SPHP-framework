@@ -42,7 +42,7 @@ use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Stdlib\Parsers\Parser;
 
 $grid = Grid::from([
-            Parser::md()->convertString(<<<MD
+            Parser::md()->parseString(<<<MD
 #MIT License
 
 Copyright (c) 2018 Sami Holck
