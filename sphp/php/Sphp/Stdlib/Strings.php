@@ -11,6 +11,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\LogicException;
 
 /**
  * Utility class for multibyte string operations
@@ -92,29 +93,6 @@ abstract class Strings {
       $reversed .= \mb_substr($string, $i, 1, static::getEncoding($encoding));
     }
     return $reversed;
-  }
-
-  /**
-   * Splits the string with the provided regular expression
-   * 
-   * Returns an array of strings. An optional integer $limit will truncate the
-   * results.
-   *
-   * @param  string $string
-   * @param  string $pattern the regex with which to split the string
-   * @param  int $limit optional maximum number of results to return
-   * @param string $encoding
-   * @return string[] an array of strings
-   */
-  public static function split(string $string, string $pattern, int $limit = -1, string $encoding = null): array {
-    if ($limit === 0) {
-      return array();
-    }
-    $regexEncoding = mb_regex_encoding();
-    mb_regex_encoding(self::getEncoding($encoding));
-    $array = \mb_split($pattern, $string, $limit);
-    mb_regex_encoding($regexEncoding);
-    return $array;
   }
 
   /**
@@ -350,33 +328,6 @@ abstract class Strings {
   }
 
   /**
-   * Returns the substring between $start and $end, if found, or an empty
-   * string. An optional offset may be supplied from which to begin the
-   * search for the start string.
-   *
-   * @param  string $string input string
-   * @param  string $start  Delimiter marking the start of the substring
-   * @param  string $end Delimiter marketing the end of the substring
-   * @param  int $offset Index from which to begin the search
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return string Object whose $str has been converted to an URL slug
-   */
-  public static function between(string $string, string $start, string $end, int $offset = 0, string $encoding = null) {
-    $enc = self::getEncoding($encoding);
-    $startIndex = static::indexOf($string, $start, $offset, $encoding);
-    if ($startIndex === false) {
-      return $string;
-    }
-    $substrIndex = $startIndex + \mb_strlen($start, $enc);
-    $endIndex = static::indexOf($string, $end, $substrIndex, $encoding);
-    if ($endIndex === false) {
-      return "";
-    }
-    return static::substr($string, $substrIndex, $endIndex - $substrIndex, $enc);
-  }
-
-  /**
    * Checks whether the given string is empty
    * 
    * @param  string $string checked string
@@ -497,18 +448,35 @@ abstract class Strings {
   /**
    * Returns a random string for non cryptographic purposes
    *
-   * @param string $characters
+   * @param string $charset
    * @param int $length
    * @return string generated random string
    */
-  public static function randomize(string $characters, int $length = 16): string {
-    //$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-      $randomString .= $characters[rand(0, $charactersLength - 1)];
+  public static function randomize(string $charset = 'abcdefghijklmnopqrstuvwxyz', int $length = 32): string {
+    if ($length < 1) {
+      // Just return an empty string. Any value < 1 is meaningless.
+      return '';
     }
-    return $randomString;
+
+    // Remove duplicate characters from $charset
+    // $charset = implode(array_unique(static::toArray($charset)));
+    $charArray = array_values(array_unique(static::toArray($charset)));
+    $char_max = count($charArray) - 1;
+    // This is the maximum index for all of the characters in the string $charset
+    // $charset_max = mb_strlen($charset) - 1;
+    if ($char_max < 1) {
+      // Avoid letting users do: random_str($int, 'a'); -> 'aaaaa...'
+      throw new LogicException(
+      'random_str - Argument 2 - expected a string that contains at least 2 distinct characters'
+      );
+    }
+    // Now that we have good data, this is the meat of our function:
+    $output = '';
+    for ($i = 0; $i < $length; ++$i) {
+      $r = random_int(0, $char_max);
+      $output .= $charArray[$r];
+    }
+    return $output;
   }
 
   /**

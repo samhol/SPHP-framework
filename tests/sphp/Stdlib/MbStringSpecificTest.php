@@ -61,6 +61,30 @@ class MbStringSpecificTest extends TestCase {
     $obj[$obj->count() + 1] = 'a';
   }
 
+  /**
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function testOffsetsetWithMultipleChars() {
+    $obj = MbString::create('foo');
+    $obj[0] = 'ab';
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\OutOfBoundsException
+   */
+  public function testOffsetsetWithInvalidOffsetType() {
+    $obj = MbString::create('foo');
+    $obj[(string) '1'] = 'a';
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\OutOfBoundsException
+   */
+  public function testOffsetsetWithTooBigOffset() {
+    $obj = MbString::create('foo');
+    $obj[4] = 'a';
+  }
+
   public function testOffsetGet() {
     $obj = MbString::create('foo');
     $char = $obj[2];
@@ -96,6 +120,14 @@ class MbStringSpecificTest extends TestCase {
     $obj = MbString::create($string, $charset);
     $strLen = \mb_strlen($string, $charset);
     $this->assertSame($strLen, $obj->count());
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\BadMethodCallException
+   */
+  public function testNonExistentMethodCall() {
+    $obj = MbString::create('foo');
+    $obj->bar();
   }
 
 }

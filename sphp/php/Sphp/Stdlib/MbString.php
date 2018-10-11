@@ -128,15 +128,6 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   /**
-   * Checks whether the string is empty
-   * 
-   * @return boolean true if the string is empty, false otherwise
-   */
-  public function isEmpty(): bool {
-    return $this->str === '';
-  }
-
-  /**
    * Returns the length of the string
    *
    * @return int the length of the string
@@ -266,11 +257,8 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws InvalidArgumentException
    */
   public function offsetGet($offset) {
-    if (!is_int($offset)) {
-      throw new InvalidArgumentException('Offset must be an integer');
-    }
-    if ($offset < 0 || $offset > $this->count() - 1) {
-      throw new OutOfBoundsException('Offset must be between 0 and ' . $this->count() . ' or null');
+    if (!$this->offsetExists($offset)) {
+      throw new OutOfBoundsException('Offset must be between 0 and ' . ($this->count() - 1));
     }
     return $this->charAt($offset);
   }
@@ -288,10 +276,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     if ($offset === null) {
       $offset = $this->count();
     }
-    if (!is_int($offset)) {
-      throw new InvalidArgumentException('Offset must be an integer');
-    }
-    if ($offset < 0 || $offset > $this->count()) {
+    if (!$this->offsetExists($offset) && $offset !== $this->count()) {
       throw new OutOfBoundsException('Offset must be between 0 and ' . $this->count() . ' or null');
     }
     if (mb_strlen($value) > 1) {
@@ -309,11 +294,8 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws OutOfBoundsException
    */
   public function offsetUnset($offset) {
-    if (!is_int($offset)) {
-      throw new InvalidArgumentException("Object is immutable, cannot unset chars directly");
-    }
-    if ($offset < 0 || $offset > $this->count() - 1) {
-      throw new OutOfBoundsException("Object is immutable, cannot unset chars directly");
+    if (!$this->offsetExists($offset)) {
+      throw new OutOfBoundsException('Offset must be between 0 and ' . ($this->count() - 1) . '');
     }
     $this->str = substr_replace($this->str, '', $offset, 1);
   }

@@ -319,7 +319,7 @@ class StringManipulationTest extends TestCase {
   /**
    * @return array
    */
-  public function blankTestData() {
+  public function blankTestData(): array {
     return [
         ['foobar', false],
         ["\n\t ", true],
@@ -445,6 +445,7 @@ class StringManipulationTest extends TestCase {
 
   /**
    * @covers \Sphp\Stdlib\Strings::toArray
+   * @covers \Sphp\Stdlib\MbString::toArray
    * @dataProvider charArrays
    * @param array $chars
    * @param string $encoding
@@ -497,7 +498,7 @@ class StringManipulationTest extends TestCase {
    * 
    * @return array
    */
-  public function reverseData() {
+  public function reverseData(): array {
     return [
         ["SaippuakAuppias", "saippuAkauppiaS"],
         ["a aa a ", " a aa a"],
@@ -524,7 +525,7 @@ class StringManipulationTest extends TestCase {
   /**
    * @return array
    */
-  public function collapseWhitespaceData() {
+  public function collapseWhitespaceData(): array {
     return [
         ["\n  \t", ''],
         [" äa \n\t ", "äa"],
@@ -543,6 +544,28 @@ class StringManipulationTest extends TestCase {
     $collapsed = $strObj->collapseWhitespace();
     $this->assertTrue($strObj !== $collapsed);
     $this->compareToString($expected, $collapsed);
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::randomize
+   */
+  public function testRandomize() {
+    $string = 'ABCDEEFGHIJKLMNOPQRSTUVWXY1234567890';
+    $strLen = mb_strlen($string);
+    $rand1 = Strings::randomize($string, $strLen);
+    $this->assertEquals($strLen, mb_strlen($rand1));
+    $strObj = MbString::create($string);
+    $randObj = $strObj->randomize($strLen);
+    $this->assertEquals($strLen, $randObj->count());
+    $this->assertEquals('', Strings::randomize($string, 0));
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::randomize
+   * @expectedException \Sphp\Exceptions\LogicException
+   */
+  public function testRandomizeFail() {
+    Strings::randomize('a', 1);
   }
 
   /**
@@ -572,7 +595,6 @@ class StringManipulationTest extends TestCase {
     $this->assertSame($isAlphanum, $obj->isAlphanumeric());
   }
 
-
   /**
    * @return array
    */
@@ -582,6 +604,7 @@ class StringManipulationTest extends TestCase {
         ["foo", false],
     ];
   }
+
   /**
    * @covers \Sphp\Stdlib\Strings::isJson
    * @dataProvider jsonData
@@ -593,10 +616,11 @@ class StringManipulationTest extends TestCase {
     $this->assertSame($is, Strings::isJson($string));
     $this->assertSame($is, $obj->isJson());
   }
+
   /**
    * @return array
    */
-  public function htmlData() {
+  public function htmlData(): array {
     return [
         ["A 'quote' is <b>bold</b>", "A 'quote' is &lt;b&gt;bold&lt;/b&gt;"],
     ];

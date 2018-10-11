@@ -52,7 +52,7 @@ class Ini implements ArrayEncoder, ArrayDecoder {
     }
   }
 
-  public function encodeArray(array $array): string {
+  public function encodeData(array $array): string {
     try {
       return $this->writer->toString($array);
     } catch (Exception $ex) {

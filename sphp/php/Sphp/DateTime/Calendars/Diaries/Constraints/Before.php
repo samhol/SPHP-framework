@@ -68,7 +68,7 @@ class Before implements DateConstraint {
             'limit' => $this->limit->format('Y-m-d H:i:sO')
         ]
     ];
-    return (new Json())->encodeArray($data);
+    return (new Json())->encodeData($data);
   }
 
 }

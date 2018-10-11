@@ -10,7 +10,7 @@
 
 namespace Sphp\Config\Exceptions;
 
-use Sphp\Exceptions\SphpException;
+use Sphp\Exceptions\SphpExceptionInterface;
 use Exception as PHPException;
 
 /**
@@ -20,6 +20,6 @@ use Exception as PHPException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ConfigurationException extends PHPException implements SphpException {
+class ConfigurationException extends PHPException implements SphpExceptionInterface {
   
 }

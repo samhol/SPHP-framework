@@ -13,9 +13,10 @@ namespace Sphp\Stdlib\Parsers;
 use Exception;
 use Zend\Config\Reader\Json as JsonFormat;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
- * Implements JSON reader
+ * Implements an JSON reader
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -38,14 +39,14 @@ class Json implements ArrayEncoder, ArrayDecoder {
   }
 
   public function arrayFromString(string $string): array {
-    try {
-      return $this->parser->fromString($string);
-    } catch (Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
+    $thrower = ErrorToExceptionThrower::getInstance(RuntimeException::class);
+    $thrower->start();
+    $data = json_decode($string, JSON_BIGINT_AS_STRING);
+    $thrower->stop();
+    return $data;
   }
 
-  public function encodeArray(array $config, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT | JSON_PRETTY_PRINT): string {
+  public function encodeData(array $config, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT | JSON_PRETTY_PRINT): string {
     $serialized = json_encode($config, $flags);
     if (false === $serialized) {
       throw new RuntimeException(json_last_error_msg());

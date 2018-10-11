@@ -34,7 +34,7 @@ class Yaml implements ArrayEncoder, ArrayDecoder {
     return $data;
   }
 
-  public function encodeArray(array $array): string {
+  public function encodeData(array $array): string {
     return SymfonyYaml::dump($array);
   }
 

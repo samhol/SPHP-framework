@@ -30,7 +30,7 @@ interface StringConverter {
   public function convertString(string $string): string;
 
   /**
-   * Converts a file to of string
+   * Converts a file to string
    * 
    * @param  string $filename
    * @return string output 

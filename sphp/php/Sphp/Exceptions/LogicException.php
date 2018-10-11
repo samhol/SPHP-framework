@@ -8,22 +8,17 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib\Parsers;
+namespace Sphp\Exceptions;
+
+use LogicException as ParentException;
 
 /**
- * Defines an array to datatype encoder
+ * Description of LogicException
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ArrayEncoder {
-
-  /**
-   * Encodes an array to specific data format
-   * 
-   * @param  array $config
-   * @return string Description
-   */
-  public function encodeData(array $config): string;
+class LogicException extends ParentException implements SphpExceptionInterface {
+  
 }

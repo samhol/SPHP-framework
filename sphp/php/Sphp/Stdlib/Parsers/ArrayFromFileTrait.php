@@ -38,10 +38,7 @@ trait ArrayFromFileTrait {
    * @throws RuntimeException if file is not readable
    */
   public function arrayFromFile(string $filename): array {
-    if (!Filesystem::isFile($filename)) {
-      throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
-    }
-    return $this->arrayFromString(file_get_contents($filename, true));
+    return $this->arrayFromString(Filesystem::toString($filename));
   }
 
 }
