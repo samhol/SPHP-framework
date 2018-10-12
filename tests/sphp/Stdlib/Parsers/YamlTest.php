@@ -55,8 +55,8 @@ class YamlTest extends TestCase {
   }
 
   public function testDecode() {
-    $raw = Filesystem::toString('./tests/files/test.Yaml');
-    $fromFile = $this->parser->readFromFile('./tests/files/test.Yaml');
+    $raw = Filesystem::toString('./tests/files/test.yaml');
+    $fromFile = $this->parser->readFromFile('./tests/files/test.yaml');
     $fromString = $this->parser->readFromString($raw);
     $this->assertSame($fromFile, $fromString);
   }
