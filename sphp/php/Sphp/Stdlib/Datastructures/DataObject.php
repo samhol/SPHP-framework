@@ -90,11 +90,9 @@ class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAgg
 
   public function toArray(): array {
     $f = function ($data) use (&$f) {
-
-      if (is_object($data)) {
+      if ($data instanceof DataObject) {
         $data = get_object_vars($data);
       }
-
       if (is_array($data)) {
         return array_map($f, $data);
       } else {

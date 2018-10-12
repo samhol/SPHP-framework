@@ -24,7 +24,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class Yaml implements Writer, Reader {
 
-  use ArrayFromFileTrait;
+  use ReaderFromFileTrait;
 
   public function readFromString(string $string): array {
     try {

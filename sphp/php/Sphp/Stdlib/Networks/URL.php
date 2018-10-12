@@ -544,6 +544,12 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
     return $currentURL;
   }
 
+  public static function getRootAsString(): string {
+    $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
+    $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
+    return $root;
+  }
+
   /**
    * Returns the current URL as an object
    *

@@ -20,7 +20,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-trait ArrayFromFileTrait {
+trait ReaderFromFileTrait {
 
   /**
    * Decodes a string to PHP array

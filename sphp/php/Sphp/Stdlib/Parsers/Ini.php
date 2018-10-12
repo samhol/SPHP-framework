@@ -10,10 +10,10 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Zend\Config\Reader\Ini as IniReader;
 use Zend\Config\Writer\Ini as IniWriter;
 use Exception;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Implements an INI config data parser
@@ -24,12 +24,7 @@ use Sphp\Exceptions\RuntimeException;
  */
 class Ini implements Writer, Reader {
 
-  use ArrayFromFileTrait;
-
-  /**
-   * @var IniReader 
-   */
-  private $reader;
+  use ReaderFromFileTrait;
 
   /**
    * @var IniWriter 
@@ -40,23 +35,29 @@ class Ini implements Writer, Reader {
    * Constructor
    */
   public function __construct() {
-    $this->reader = new IniReader();
     $this->writer = new IniWriter();
   }
 
   public function readFromString(string $string): array {
-    try {
-      return $this->reader->fromString($string);
-    } catch (Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $thrower->start();
+    $data = parse_ini_string($string, true);
+    if ($data === false) {
+      throw new InvalidArgumentException('Fuck the ini');
     }
+    $thrower->stop();
+    return $data;
   }
 
-  public function write( $array): string {
+  public function readFromFile(string $filename): array {
+    return parse_ini_file (\Sphp\Stdlib\Filesystem::getFullPath($filename), true);
+  }
+
+  public function write($array): string {
     try {
       return $this->writer->toString($array);
     } catch (Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
 

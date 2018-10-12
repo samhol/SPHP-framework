@@ -10,8 +10,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Stdlib\Path;
-
 /**
  * Description of MenuLinkBuilder
  *
@@ -118,7 +116,7 @@ class MenuLinkBuilder {
     if (array_key_exists('href', $linkData)) {
       $href = $linkData['href'];
     } else {
-      $href = Path::get()->http();
+      $href = \Sphp\Stdlib\Networks\URL::getRootAsString();
     }
     return $href;
   }
