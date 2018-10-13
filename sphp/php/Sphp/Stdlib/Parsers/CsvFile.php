@@ -11,9 +11,12 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
+use Iterator;
 use SplFileObject;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\LogicException;
+use Sphp\Exceptions\OutOfRangeException;
 
 /**
  * CSV file object
@@ -22,7 +25,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CsvFile implements Arrayable, \Iterator {
+class CsvFile implements Arrayable, Iterator {
 
   /**
    * @var SplFileObject 
@@ -72,43 +75,9 @@ class CsvFile implements Arrayable, \Iterator {
     $this->delimiter = $delimiter;
     $this->enclosure = $enclosure;
     $this->escape = $escape;
-    $this->file = $this->createSplFileObject();
-  }
-
-  /**
-   * Returns the field delimiter (one character only)
-   * 
-   * @return string the field delimiter (one character only)
-   */
-  public function getFilename(): string {
-    return $this->filename;
-  }
-
-  /**
-   * Returns  the field escape character (one character only)
-   * 
-   * @return string the field escape character (one character only)
-   */
-  public function getDelimiter(): string {
-    return $this->delimiter;
-  }
-
-  /**
-   * Returns the field enclosure character (one character only)
-   * 
-   * @return string the field enclosure character (one character only)
-   */
-  public function getEnclosure(): string {
-    return $this->enclosure;
-  }
-
-  /**
-   * Returns the field escape character (one character only)
-   * 
-   * @return string the field escape character (one character only)
-   */
-  public function getEscape(): string {
-    return $this->escape;
+    $this->file = new SplFileObject($this->filename, 'r');
+    $this->file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY | SplFileObject::DROP_NEW_LINE);
+    $this->file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
   }
 
   /**
@@ -125,24 +94,21 @@ class CsvFile implements Arrayable, \Iterator {
   }
 
   /**
-   * 
-   * @return SplFileObject
-   */
-  private function createSplFileObject(): SplFileObject {
-    $temp = new SplFileObject($this->filename, 'r');
-    $temp->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
-    $temp->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
-    return $temp;
-  }
-
-  /**
    * Sets the internal pointer to the given line number of the CSV file
    * 
    * @param  int $line the line number of the CSV file
    * @return $this for a fluent interface
+   * @throws LogicException if the $line is negative
    */
   public function seek(int $line) {
-    $this->file->seek($line);
+    try {
+      $this->file->seek($line);
+    } catch (\LogicException $ex) {
+      throw new LogicException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    if (!$this->file->valid()) {
+      throw new OutOfRangeException("Can't seek file {$this->file->getFilename()} to line $line");
+    }
     return $this;
   }
 
@@ -153,7 +119,8 @@ class CsvFile implements Arrayable, \Iterator {
    * @see    http://php.net/manual/en/splfileobject.fgetcsv.php
    */
   public function getHeaderRow(): array {
-    return $this->createSplFileObject()->fgetcsv();
+    $this->file->rewind();
+    return $this->file->fgetcsv();
   }
 
   /**
@@ -165,7 +132,7 @@ class CsvFile implements Arrayable, \Iterator {
   public function getChunk(int $offset = 0, int $count = -1): array {
     $this->file->rewind();
     //var_dump($this->file->getCsvControl());
-    foreach (new \LimitIterator($this->createSplFileObject(), $offset, $count) as $row => $line) {
+    foreach (new \LimitIterator($this->file, $offset, $count) as $row => $line) {
       #save $line
       $result[$row] = $line;
     }
@@ -175,15 +142,17 @@ class CsvFile implements Arrayable, \Iterator {
 
   public function toArray(): array {
     $arr = [];
-    $file = $this->createSplFileObject();
-    while (!$file->eof() && ($row = $file->fgetcsv()) && $row[0] !== null) {
-      $arr[] = $row;
+    foreach ($this->file as $key => $row) {
+      if ($row !== false) {
+        $arr[$key] = $row;
+      }
     }
+    $this->rewind();
     return $arr;
   }
 
   public function current() {
-    return $this->file->current();
+    return $this->file->fgetcsv($this->delimiter, $this->enclosure, $this->escape);
   }
 
   public function key() {
@@ -204,7 +173,7 @@ class CsvFile implements Arrayable, \Iterator {
    * @return boolean true if not reached EOF, false otherwise.
    */
   public function valid(): bool {
-    return $this->file->valid() && !$this->file->eof();
+    return $this->file->valid() && $this->current() !== false;
   }
 
 }
