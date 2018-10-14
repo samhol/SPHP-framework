@@ -14,9 +14,11 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use Iterator;
 use SplFileObject;
 use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\LogicException;
 use Sphp\Exceptions\OutOfRangeException;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * CSV file object
@@ -31,11 +33,6 @@ class CsvFile implements Arrayable, Iterator {
    * @var SplFileObject 
    */
   private $file;
-
-  /**
-   * @var string 
-   */
-  private $filename;
 
   /**
    * the field delimiter (one character only)
@@ -61,35 +58,35 @@ class CsvFile implements Arrayable, Iterator {
   /**
    * Constructor
    * 
-   * @param  string $filename the path to the CSV file
+   * @param  string $filename the CSV file to read
    * @param  string $delimiter optional field delimiter (one character only)
    * @param  string $enclosure optional field enclosure character (one character only)
    * @param  string $escape optional field escape character (one character only)
-   * @throws RuntimeException if file is not readable
+   * @throws FileSystemException if the filename cannot be opened
    */
   public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = "\\") {
-    if (!Filesystem::isFile($filename)) {
-      throw new RuntimeException("The path '$filename' is not a file");
+    try {
+      $this->file = new SplFileObject($filename, 'r');
+    } catch (\RuntimeException $ex) {
+      throw new FileSystemException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    $this->filename = $filename;
     $this->delimiter = $delimiter;
     $this->enclosure = $enclosure;
     $this->escape = $escape;
-    $this->file = new SplFileObject($this->filename, 'r');
     $this->file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY | SplFileObject::DROP_NEW_LINE);
     $this->file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
   }
 
   /**
    * 
-   * @param  array $data
+   * @param  array $fields an array of values
    * @return $this for a fluent interface
    */
-  public function appendRow(array $data) {
-    if ($data instanceof \Traversable) {
-      $data = iterator_to_array($data);
+  public function appendRow(array $fields) {
+    if ($fields instanceof \Traversable) {
+      $fields = iterator_to_array($fields);
     }
-    $this->file->fputcsv($data);
+    $this->file->fputcsv($fields, $this->delimiter, $this->enclosure, $this->escape);
     return $this;
   }
 
@@ -98,7 +95,7 @@ class CsvFile implements Arrayable, Iterator {
    * 
    * @param  int $line the line number of the CSV file
    * @return $this for a fluent interface
-   * @throws LogicException if the $line is negative
+   * @throws LogicException if the $line number is invalid
    */
   public function seek(int $line) {
     try {
@@ -152,7 +149,7 @@ class CsvFile implements Arrayable, Iterator {
   }
 
   public function current() {
-    return $this->file->fgetcsv($this->delimiter, $this->enclosure, $this->escape);
+    return $this->file->current();
   }
 
   public function key() {

@@ -11,8 +11,24 @@
 namespace Sphp\Stdlib\Parsers;
 
 use PHPUnit\Framework\TestCase;
+use org\bovigo\vfs\vfsStreamWrapper;
+use org\bovigo\vfs\vfsStreamDirectory;
 
 class CsvFileTest extends TestCase {
+
+  public function setUp() {
+    vfsStreamWrapper::register();
+    vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
+  }
+  
+   
+
+  /**
+   * @expectedException \Sphp\Exceptions\FileSystemException
+   */
+  public function testInvalidFileName() {
+    new CsvFile('foo.csv');
+  }
 
   public function testGetHeaderRow() {
     $fileObj = new \SplFileObject('./tests/files/test.csv');
@@ -37,10 +53,10 @@ class CsvFileTest extends TestCase {
       }
       fclose($handle);
     }
-   print_r($actual);
+    //print_r($actual);
     foreach ($csvObj as $k => $row) {
       if (array_key_exists($k, $actual)) {
-      $this->assertEquals($actual[$k], $row);
+        $this->assertEquals($actual[$k], $row);
       }
     }
   }
@@ -50,7 +66,7 @@ class CsvFileTest extends TestCase {
     $csvArray = $csvObj->toArray();
     $chunk = $csvObj->getChunk(2, 5);
     $this->assertEquals(array_slice($csvArray, 2, 5, true), $chunk);
-   // print_r(array_slice($csvArray, 5, true));
+    // print_r(array_slice($csvArray, 5, true));
     return $csvObj;
   }
 
@@ -58,10 +74,10 @@ class CsvFileTest extends TestCase {
    * @depends testGetChunk
    * @param   CsvFile $csvObj
    */
-  public function t2estSeek(CsvFile $csvObj) {
+  public function testSeek(CsvFile $csvObj) {
     $csvObj->rewind();
     foreach ($csvObj->toArray() as $key => $row) {
-      //var_dump($key, $row);
+      var_dump($key, $row);
       if ($csvObj->valid()) {
         $actualRow = $csvObj->seek($key)->current();
         $this->assertEquals($row, $actualRow);
