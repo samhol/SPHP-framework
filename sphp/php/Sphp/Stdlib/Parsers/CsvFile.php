@@ -13,12 +13,9 @@ namespace Sphp\Stdlib\Parsers;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Iterator;
 use SplFileObject;
-use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\LogicException;
 use Sphp\Exceptions\OutOfRangeException;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * CSV file object
@@ -66,7 +63,7 @@ class CsvFile implements Arrayable, Iterator {
    */
   public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = "\\") {
     try {
-      $this->file = new SplFileObject($filename, 'r');
+      $this->file = new SplFileObject($filename, 'r+');
     } catch (\RuntimeException $ex) {
       throw new FileSystemException($ex->getMessage(), $ex->getCode(), $ex);
     }
@@ -78,14 +75,12 @@ class CsvFile implements Arrayable, Iterator {
   }
 
   /**
+   * Writes a field array as a CSV line
    * 
    * @param  array $fields an array of values
    * @return $this for a fluent interface
    */
   public function appendRow(array $fields) {
-    if ($fields instanceof \Traversable) {
-      $fields = iterator_to_array($fields);
-    }
     $this->file->fputcsv($fields, $this->delimiter, $this->enclosure, $this->escape);
     return $this;
   }

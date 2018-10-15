@@ -13,15 +13,22 @@ namespace Sphp\Stdlib\Parsers;
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStreamDirectory;
+use Sphp\Stdlib\Filesystem;
 
 class CsvFileTest extends TestCase {
 
   public function setUp() {
     vfsStreamWrapper::register();
-    vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
+    vfsStreamWrapper::setRoot(new vfsStreamDirectory('csvFiles'));
   }
   
-   
+  public function testAppending() {
+    $spl = Filesystem::mkFile('foo/bar.csv');
+    $csvObj = new CsvFile('foo/bar.csv');
+    $csvObj->appendRow(['foo', 'bar', 'baz']);
+    $fileAsArray = $csvObj->toArray();
+    $this->assertEquals(['foo', 'bar', 'baz'], $fileAsArray[0]);
+  }
 
   /**
    * @expectedException \Sphp\Exceptions\FileSystemException
