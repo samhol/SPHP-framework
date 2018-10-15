@@ -12,7 +12,6 @@ namespace Sphp\Exceptions;
 
 use RuntimeException as SplRuntimeException;
 
-
 /**
  * Exception thrown if an error which can only be found on runtime occurs
  *
@@ -21,5 +20,5 @@ use RuntimeException as SplRuntimeException;
  * @filesource
  */
 class RuntimeException extends SplRuntimeException implements SphpExceptionInterface {
-
+  
 }

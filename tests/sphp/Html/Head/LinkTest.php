@@ -12,14 +12,28 @@ namespace Sphp\Html\Head;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * Description of LinkTest
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
 class LinkTest extends TestCase {
+
+  public function callNames(): array {
+    return [
+        'alternate',
+        'author',
+        'dns-prefetch',
+        'help',
+        'license',
+        'next',
+        'pingback',
+        'preconnect',
+        'prefetch',
+        'preload',
+        'prerender',
+        'prev',
+        'search', 
+        'stylesheet', 
+        'icon',
+        'manifest',
+        'mask-icon'];
+  }
 
   /**
    * @var HeadContentContainer
@@ -53,12 +67,18 @@ class LinkTest extends TestCase {
     $c = new LinkTag();
     $this->assertSame([], $c->toArray());
   }
-  
-  
+
   public function testOverLapping() {
-    $link1 = new LinkTag(['rel' => 'icon' , 'href' => 'icon.ico']);
-    $link2 = new LinkTag(['rel' => 'icon' , 'href' => 'icon.ico']);
+    $link1 = new LinkTag(['rel' => 'icon', 'href' => 'icon.ico']);
+    $link2 = new LinkTag(['rel' => 'icon', 'href' => 'icon.ico']);
     $this->assertTrue($link1->overlapsWith($link2));
+  }
+
+  public function testFactoring() {
+    foreach ($this->callNames() as $call) {
+      $link = Link::{$call}('path/to/file');
+      $this->assertSame($call, $link->getAttribute('rel'));
+    }
   }
 
 }

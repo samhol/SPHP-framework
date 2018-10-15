@@ -116,34 +116,6 @@ abstract class Filesystem {
   }
 
   /**
-   * Returns the file/directory structure under the given path
-   *
-   * @param  string $dir
-   * @param int $sortingOrder
-   * @return SplFileObject[] the file objects of the content files and directories
-   */
-  public static function dirToArray(string $dir, int $sortingOrder = \SCANDIR_SORT_ASCENDING): array {
-    $contents = [];
-    foreach (scandir($dir, $sortingOrder) as $node) {
-      $path = "$dir/$node";
-      if ($node == '.' || $node == '..') {
-        continue;
-      }
-      if (is_dir($path)) {
-        $contents[$path] = static::dirToArray($path, $sortingOrder);
-      } else {
-        $file = new SplFileObject($path);
-        $key = pathinfo($node, PATHINFO_FILENAME);
-        if (array_key_exists($key, $contents)) {
-          $key = $node;
-        }
-        $contents[$key] = $file;
-      }
-    }
-    return $contents;
-  }
-
-  /**
    * Attempts to create the directory specified by pathname
    *
    * @param  string $path the directory path
@@ -152,9 +124,7 @@ abstract class Filesystem {
    * @throws FileSystemException if the operation fails
    */
   public static function mkdir(string $path, int $mode = 0777): SplFileInfo {
-
     $thrower = new ErrorToExceptionThrower(FileSystemException::class);
-
     $thrower->start();
     $fileinfo = new SplFileInfo($path);
     //$realPath = $fileinfo->getRealPath();
@@ -213,7 +183,7 @@ abstract class Filesystem {
   public static function rmFile(string $path): SplFileInfo {
     $fileinfo = new SplFileInfo($path);
     if ($fileinfo->isFile()) {
-      unlink($path);
+      unlink($fileinfo->getRealPath());
     }
     return $fileinfo;
   }

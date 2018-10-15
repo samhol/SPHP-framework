@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Iterator;
 use SplFileObject;
+use LimitIterator;
 use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\LogicException;
 use Sphp\Exceptions\OutOfRangeException;
@@ -124,7 +125,7 @@ class CsvFile implements Arrayable, Iterator {
   public function getChunk(int $offset = 0, int $count = -1): array {
     $this->file->rewind();
     //var_dump($this->file->getCsvControl());
-    foreach (new \LimitIterator($this->file, $offset, $count) as $row => $line) {
+    foreach (new LimitIterator($this->file, $offset, $count) as $row => $line) {
       #save $line
       $result[$row] = $line;
     }
@@ -143,18 +144,34 @@ class CsvFile implements Arrayable, Iterator {
     return $arr;
   }
 
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
   public function current() {
     return $this->file->current();
   }
 
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
   public function key() {
     return $this->file->key();
   }
 
+  /**
+   * Advance the internal pointer of the collection
+   */
   public function next() {
     $this->file->next();
   }
 
+  /**
+   * Rewinds the Iterator to the first element
+   */
   public function rewind() {
     $this->file->rewind();
   }
@@ -166,6 +183,25 @@ class CsvFile implements Arrayable, Iterator {
    */
   public function valid(): bool {
     return $this->file->valid() && $this->current() !== false;
+  }
+
+  /**
+   * 
+   * 
+   * @param  string $filename
+   * @param  array $lines
+   * @param  string $delimiter
+   * @param  string $enclosure
+   * @param  string $escape
+   * @return CsvFile
+   */
+  public static function fromArray(string $filename, array $lines, string $delimiter = ',', string $enclosure = '"', string $escape = "\\"): CsvFile {
+    Filesystem::mkFile($filename);
+    $csvObj = new CsvFile($filename, $delimiter, $enclosure, $escape);
+    foreach ($lines as $line) {
+      $csvObj->appendRow($line);
+    }
+    return $csvObj;
   }
 
 }

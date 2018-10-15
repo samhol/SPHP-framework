@@ -17,17 +17,23 @@ use Sphp\Stdlib\Filesystem;
 
 class CsvFileTest extends TestCase {
 
-  public function setUp() {
+  protected function setUp() {
     vfsStreamWrapper::register();
     vfsStreamWrapper::setRoot(new vfsStreamDirectory('csvFiles'));
   }
-  
+
+  protected function tearDown() {
+    vfsStreamWrapper::unregister();
+  }
+
   public function testAppending() {
-    $spl = Filesystem::mkFile('foo/bar.csv');
-    $csvObj = new CsvFile('foo/bar.csv');
+    $spl = Filesystem::mkFile('./tests/temp/bar.csv');
+    $csvObj = new CsvFile('./tests/temp/bar.csv');
     $csvObj->appendRow(['foo', 'bar', 'baz']);
     $fileAsArray = $csvObj->toArray();
     $this->assertEquals(['foo', 'bar', 'baz'], $fileAsArray[0]);
+    unset($spl, $csvObj);
+    Filesystem::rmFile('./tests/temp/bar.csv');
   }
 
   /**
@@ -84,7 +90,7 @@ class CsvFileTest extends TestCase {
   public function testSeek(CsvFile $csvObj) {
     $csvObj->rewind();
     foreach ($csvObj->toArray() as $key => $row) {
-      var_dump($key, $row);
+      //var_dump($key, $row);
       if ($csvObj->valid()) {
         $actualRow = $csvObj->seek($key)->current();
         $this->assertEquals($row, $actualRow);

@@ -3,14 +3,15 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Head\Meta;
+use Sphp\Html\Head\Link;
 
 Document::html("foo")
         ->setLanguage("en");
 
 Document::head("foo")
         ->setDocumentTitle("Foo document")
-        ->setCssSrc("print.css", "print")
-        ->setCssSrc("screen.css", "screen")
+        ->set(Link::stylesheet("print.css", "print"))
+        ->set(Link::stylesheet("screen.css", "screen"))
         ->set(Meta::author('Sami Holck'))
         ->set(Meta::applicationName("Foobar"))
         ->set(Meta::keywords("foo", "bar", "foobar"));

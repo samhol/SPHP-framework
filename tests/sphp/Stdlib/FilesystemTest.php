@@ -17,9 +17,13 @@ use Sphp\Exceptions\FileSystemException;
 
 class FilesystemTest extends TestCase {
 
-  public function setUp() {
+  protected function setUp() {
     vfsStreamWrapper::register();
     vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
+  }
+
+  protected function tearDown() {
+    vfsStreamWrapper::unregister();
   }
 
   /**

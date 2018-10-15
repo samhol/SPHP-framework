@@ -44,7 +44,8 @@ abstract class Link {
       'preload',
       'prerender',
       'prev',
-      'search'];
+      'search',
+      'mask-icon'];
 
   /**
    * Creates a HTML meta object
@@ -62,7 +63,7 @@ abstract class Link {
     if (count($arguments) > 0) {
       if (is_string($arguments[0])) {
         $attrs['href'] = $arguments[0];
-      } else if (is_array($arguments[0])){
+      } else if (is_array($arguments[0])) {
         if (array_key_exists('rel', $arguments[0])) {
           throw new InvalidArgumentException('rel is not allowed');
         }
@@ -147,21 +148,6 @@ abstract class Link {
       throw new \Sphp\Exceptions\InvalidArgumentException('href attribute is required but not found from input');
     }
     $link = new LinkTag($attributes);
-    return $link;
-  }
-
-  /**
-   * Creates a new &lt;link&gt; object
-   *
-   * @param  string $href the location of the linked document
-   * @param  string $rel the relationship between the current document and the linked one
-   * @param  string $media what media/device the target resource is optimized for
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
-   */
-  public static function create(string $href = null, string $rel = null, string $media = null): LinkTag {
-    $link = new LinkTag($rel, $href, $media);
     return $link;
   }
 

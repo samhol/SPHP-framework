@@ -13,7 +13,9 @@ namespace Sphp\Html;
 use IteratorAggregate;
 use Sphp\Html\Head\Head;
 use Sphp\Html\Scripts\ScriptsContainer;
+use Sphp\Html\Scripts\ScriptSrc;
 use Sphp\Html\Head\Meta;
+use Sphp\Html\Head\Link;
 use Traversable;
 
 /**
@@ -137,7 +139,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
   public function useFontAwesome(string $path = '') {
-    $this->head()->appendScriptSrc("https://use.fontawesome.com/releases/v5.1.0/js/all.js")->setDefer(true);
+    $this->head()->set((new ScriptSrc("https://use.fontawesome.com/releases/v5.4.1/js/all.js"))->setDefer(true));
     return $this;
   }
 
@@ -148,8 +150,8 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->head()->setCssSrc('http://vjs.zencdn.net/6.6.3/video-js.css');
-    $this->body()->scripts()->appendSrc('http://vjs.zencdn.net/6.6.3/video.js');
+    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.2.3/video-js.css'));
+    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.2.3/video.js');
     return $this;
   }
 
