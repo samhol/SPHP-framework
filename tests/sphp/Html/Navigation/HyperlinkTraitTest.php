@@ -39,14 +39,14 @@ class HyperlinkTraitTest extends TestCase {
     $this->assertSame($this->mock, $this->mock->setTarget('foo'));
     $this->assertSame('foo', $this->mock->attributes()->get('target'));
     $this->assertSame('foo', $this->mock->getTarget());
-    $this->assertSame($this->mock, $this->mock->setRel('help'));
+    $this->assertSame($this->mock, $this->mock->setRelationship('help'));
     $this->assertSame('help', $this->mock->attributes()->get('rel'));
-    $this->assertSame('help', $this->mock->getRel());
+    $this->assertSame('help', $this->mock->getRelationship());
   }
-  
-  public function testBlankTarget() {   
+
+  public function testBlankTarget() {
     $this->assertSame($this->mock, $this->mock->setTarget('_blank'));
-    $this->assertSame('noopener noreferrer', $this->mock->getRel());
+    $this->assertSame('noopener noreferrer', $this->mock->getRelationship());
   }
 
 }

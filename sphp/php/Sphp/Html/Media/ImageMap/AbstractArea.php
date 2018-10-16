@@ -12,7 +12,6 @@ namespace Sphp\Html\Media\ImageMap;
 
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Navigation\HyperlinkTrait;
-use Sphp\Html\Attributes\SequenceAttribute;
 
 /**
  * Implements an HTML &lt;area&gt; tag
@@ -34,13 +33,13 @@ abstract class AbstractArea extends EmptyTag implements Area {
    */
   public function __construct(string $shape, string $href = null, string $alt = null) {
     parent::__construct('area');
-    $this->attributes()->setInstance(new SequenceAttribute('coords'));
+    $this->attributes()->setInstance(new CoordinateAttribute('coords'));
     $this->attributes()->protect('shape', $shape);
     if ($href !== null) {
       $this->setHref($href);
     }
     if ($alt !== null) {
-      $this->setHref($href);
+      $this->setAlt($alt);
     }
   }
 
@@ -51,38 +50,17 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
   public function getShape(): string {
-    return $this->getAttribute('shape');
+    return $this->attributes()->getValue('shape');
   }
 
   /**
    * Returns the coordinates of the area
    * 
-   * @return SequenceAttribute the coordinates of the area
+   * @return CoordinateAttribute the coordinates of the area
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
-  public function getCoordinates(): SequenceAttribute {
+  public function getCoordinates(): CoordinateAttribute {
     return $this->attributes()->getObject('coords');
-  }
-
-  /**
-   * Sets the relationship between the current document and the linked document
-   * 
-   * @param  string $rel the value of the rel attribute
-   * @return Area for PHP Method Chaining
-   * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
-   */
-  public function setRelationship($rel) {
-    $this->attributes()->set('rel', $rel);
-    return $this;
-  }
-
-  /**
-   * Returns the shape of the area
-   * 
-   * @return string the shape of the area
-   */
-  public function getRelationship() {
-    return $this->getAttribute('rel');
   }
 
   /**

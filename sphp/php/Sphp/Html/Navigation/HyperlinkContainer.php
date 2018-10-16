@@ -68,13 +68,13 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getHyperlink()->getTarget();
   }
 
-  public function setRel(string $rel = null) {
-    $this->getHyperlink()->setRel($rel);
+  public function setRelationship(string $rel = null) {
+    $this->getHyperlink()->setRelationship($rel);
     return $this;
   }
 
-  public function getRel() {
-    return $this->getHyperlink()->getRel();
+  public function getRelationship() {
+    return $this->getHyperlink()->getRelationship();
   }
 
 }

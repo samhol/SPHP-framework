@@ -8,9 +8,18 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Html\Media\ImageMap;
 
-use Iterator;
+/**
+ * Description of CoordinateAttribute
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license https://opensource.org/licenses/MIT The MIT License
+ * @filesource
+ */
+use Sphp\Html\Attributes\AbstractAttribute;
+use Sphp\Html\Attributes\CollectionAttribute;
+use Countable;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
@@ -24,24 +33,19 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SequenceAttribute extends AbstractAttribute implements Iterator, CollectionAttribute {
+class CoordinateAttribute extends AbstractAttribute implements Countable {
 
   /**
    * stored individual values
    *
    * @var Sequence
    */
-  private $sequence;
+  private $sequence = [];
 
   /**
    * @var boolean
    */
   private $locked = false;
-
-  /**
-   * @var string 
-   */
-  private $separator = ' ';
 
   /**
    * @var int|null 
@@ -52,7 +56,6 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @var int|null 
    */
   private $maxLength = \PHP_INT_MAX;
-  private $pattern = '//';
 
   /**
    * Constructor
@@ -62,12 +65,9 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    */
   public function __construct(string $name, array $options = []) {
     parent::__construct($name);
-    $this->sequence = new Sequence();
+    $this->sequence = [];
     foreach ($options as $key => $value) {
       switch (strtolower($key)) {
-        case 'separator':
-          $this->setSequenceSeparator((string) $value);
-          break;
         case 'minlength':
           $this->setMinLength((int) $value);
           break;
@@ -76,9 +76,6 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
           break;
         case 'default':
           $this->setDefault($value);
-          break;
-        case 'pattern':
-          $this->setPattern($value);
           break;
       }
     }
@@ -108,17 +105,14 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    */
   public function parse($raw, bool $validate = false): array {
     $parsed = [];
-    if (is_array($raw)) {
-      foreach (Arrays::flatten($raw) as $item) {
-        $parsed = array_merge($parsed, $this->parseStringToArray($item));
-      }
-      //$vals = array_filter($parsed, 'is_string');
-    } else if (is_string($raw)) {
-      $parsed = $this->parseStringToArray($raw);
+    if (is_string($raw)) {
+      $parsed = explode(',', $raw);
+    } else if (is_array($raw)) {
+      $parsed = Arrays::flatten($raw);
     }
     if ($validate) {
       foreach ($parsed as $value) {
-        if (!$this->isValidAtomicValue($value)) {
+        if (!is_numeric($value)) {
           throw new InvalidAttributeException("Invalid attribute value '$value'");
         }
       }
@@ -126,74 +120,9 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
     return $parsed;
   }
 
-  protected function isValidLength():bool {
-    return $this->sequence->count() >= $this->minLength && $this->sequence->count() <= $this->maxLength;
-  }
-
-  protected function validateValues(array $values) {
-    $valid = $this->isValidLength();
-    foreach ($values as $value) {
-
-      $valid = $this->isValidAtomicValue($value);
-      if (!$valid) {
-        break;
-      }
-    }
-    return $valid;
-  }
-
-  /**
-   * Validates given atomic value
-   * 
-   * @param  mixed $value an atomic value to validate
-   * @return bool true if the value is valid atomic value
-   */
-  public function isValidAtomicValue($value): bool {
-    return Strings::match($value, $this->pattern);
-  }
-
-  public function parseStringToArray(string $subject): array {
-    $trimmed = trim($subject);
-    $result = preg_split('/[\s' . $this->separator . '\s]+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
-    if (!$result) {
-      $result = [];
-    }
-    return $result;
-  }
-
-  /**
-   * Sets the separator between individual values in sequence
-   * 
-   * @param  string $separator the separator between individual values in sequence
-   * @return $this for a fluent interface
-   */
-  protected function setPattern(string $separator) {
-    $this->pattern = $separator;
-    return $this;
-  }
-
-  /**
-   * Sets the separator between individual values in sequence
-   * 
-   * @param  string $separator the separator between individual values in sequence
-   * @return $this for a fluent interface
-   */
-  protected function setSequenceSeparator(string $separator) {
-    if ($separator === '') {
-      throw new InvalidAttributeException();
-    }
-    $this->separator = $separator;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  int $minLength
-   * @return $this for a fluent interface
-   */
-  protected function setMinLength(int $minLength = 0) {
-    $this->minLength = $minLength;
-    return $this;
+  private function isValidLength(): bool {
+    $length = count($this->sequence);
+    return $length >= $this->minLength && $length <= $this->maxLength;
   }
 
   /**
@@ -201,7 +130,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @param int $maxLength
    * @return $this for a fluent interface
    */
-  protected function setMaxLength(int $maxLength = null) {
+  private function setMaxLength(int $maxLength = null) {
     $this->maxLength = $maxLength;
     return $this;
   }
@@ -211,7 +140,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @param  string|float $default
    * @return $this for a fluent interface
    */
-  protected function setDefault($default) {
+  private function setDefault($default) {
     $this->default = $default;
     return $this;
   }
@@ -221,7 +150,7 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @param  int $position
    * @return boolean
    */
-  protected function isValidPosition(int $position): bool {
+  private function isValidPosition(int $position): bool {
     $test = $position + 1;
     return $this->minLength <= $test && ($this->maxLength === null || $this->maxLength >= $test);
   }
@@ -244,7 +173,10 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       throw new ImmutableAttributeException();
     }
     $this->clear();
-    $this->append(func_get_args());
+    $parsed = $this->parse($values, true);
+    if (!empty($parsed)) {
+      $this->sequence = array_merge($this->sequence, $parsed);
+    }
     return $this;
   }
 
@@ -265,12 +197,8 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values, true);
-    
-    if (!$this->validateValues($parsed)) {
-      
-    }
     if (!empty($parsed)) {
-      call_user_func_array(array($this->sequence, 'push'), $parsed);
+      $this->sequence = array_merge($this->sequence, $parsed);
     }
     return $this;
   }
@@ -301,61 +229,16 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
     return $this;
   }
 
-  /**
-   * Removes given atomic values
-   *
-   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 
-   * @param  scalar|scalar[] $values the atomic values to remove
-   * @return $this for a fluent interface
-   * @throws ImmutableAttributeException if any of the given values is immutable
-   */
-  public function remove(...$values) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException();
-    }
-    $arr = $this->parse($values);
-    $this->sequence = array_diff($this->sequence, $arr);
-    return $this;
-  }
-
   public function clear() {
     if (!$this->isProtected()) {
-      $this->sequence->clear();
+      $this->sequence = [];
     }
     return $this;
-  }
-
-  /**
-   * Determines whether the given atomic values exists
-   *
-   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   *
-   * @param  scalar|scalar[] $values the atomic values to search for
-   * @return boolean true if the given atomic values exists
-   */
-  public function contains(...$values): bool {
-    $needles = $this->parse($values);
-    $exists = false;
-    foreach ($needles as $needle) {
-      $exists = in_array($needle, $this->sequence);
-      if (!$exists) {
-        break;
-      }
-    }
-    return $this->sequence->contains($values);
   }
 
   public function getValue() {
-    if (!$this->sequence->isEmpty()) {
-      $raw = $this->sequence->join($this->separator);
-      $output = htmlspecialchars($raw);
+    if (!empty($this->sequence)) {
+      $output = implode(',', $this->sequence);
     } else {
       $output = $this->isDemanded();
     }
@@ -368,11 +251,11 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
    * @return int the number of the atomic values stored in the attribute
    */
   public function count(): int {
-    return $this->sequence->count();
+    return count($this->sequence);
   }
 
   public function toArray(): array {
-    return [$this->getName() => $this->sequence->toArray()];
+    return [$this->getName() => $this->sequence];
   }
 
   public function getHtml(): string {
@@ -386,71 +269,6 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       }
     }
     return $output;
-  }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->sequence);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->sequence);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->sequence);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->sequence);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->sequence);
-  }
-
-  /**
-   * Determines whether the given property exists
-   *
-   * @param  string $property the name of the property
-   * @return boolean true if the property exists and false otherwise
-   */
-  public function offsetExists($property): bool {
-    return $this->s($property);
-  }
-
-  /**
-   * Returns the value of the property name or null if the property does not exist
-   *
-   * @param  string $property the name of the property
-   * @return scalar|null the value of the property or null if the property does not exists
-   */
-  public function offsetGet($property) {
-    return $this->getProperty($property);
   }
 
   /**
@@ -471,17 +289,6 @@ class SequenceAttribute extends AbstractAttribute implements Iterator, Collectio
       throw new ImmutableAttributeException();
     }
     $this->sequence->insert($position, $value);
-  }
-
-  /**
-   * Removes given property
-   *
-   * @param  string $property the name of the property to remove
-   * @return void
-   * @throws ImmutableAttributeException if the property is immutable
-   */
-  public function offsetUnset($property) {
-    $this->remove($property);
   }
 
 }

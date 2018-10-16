@@ -28,8 +28,18 @@ class Sequence implements Iterator {
    *
    * @var array
    */
-  private $sequence = [];
+  private $sequence;
 
+  /**
+   * @var int
+   */
+  private $maxLength;
+
+  
+  public function __construct(int $maxLength = \PHP_INT_MAX) {
+    $this->sequence = [];
+    $this->maxLength = $maxLength;
+  }
   /**
    * Destructor
    */
@@ -48,6 +58,8 @@ class Sequence implements Iterator {
   public function insert(int $index, $values) {
     if ($index < 0) {
       throw new OutOfBoundsException("Index ($index) must be zero or positive integer");
+    }if ($index > $this->maxLength) {
+      throw new OutOfBoundsException("Index ($index) must be smaller than $this->maxLength");
     }
     $this->sequence[$index] = $values;
     ksort($this->sequence);

@@ -75,7 +75,7 @@ trait HyperlinkTrait {
   public function setTarget(string $target = null) {
     $this->attributes()->set('target', $target);
     if ($this->getTarget() === '_blank') {
-      $this->setRel('noopener noreferrer');
+      $this->setRelationship('noopener noreferrer');
     }
     return $this;
   }
@@ -106,7 +106,7 @@ trait HyperlinkTrait {
    * @return string the value of the target attribute
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function getRel() {
+  public function getRelationship() {
     return $this->attributes()->getValue('rel');
   }
 
@@ -121,7 +121,7 @@ trait HyperlinkTrait {
    * @return $this for a fluent interface
    * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
-  public function setRel(string $rel = null) {
+  public function setRelationship(string $rel = null) {
     $this->attributes()->set('rel', $rel);
     return $this;
   }

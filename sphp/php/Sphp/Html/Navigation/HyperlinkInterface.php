@@ -93,7 +93,7 @@ interface HyperlinkInterface {
    * @return $this for a fluent interface
    * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
-  public function setRel(string $rel = null);
+  public function setRelationship(string $rel = null);
 
   /**
    * Returns the relationship between the current document and the linked document
@@ -105,6 +105,6 @@ interface HyperlinkInterface {
    * @return string the relationship between the current document and the linked document
    * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
-  public function getRel();
+  public function getRelationship();
   
 }

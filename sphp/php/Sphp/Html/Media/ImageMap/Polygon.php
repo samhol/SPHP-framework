@@ -59,8 +59,7 @@ class Polygon extends AbstractArea {
     if ($count % 2 !== 0) {
       throw new \Sphp\Exceptions\InvalidArgumentException("The sum of coordinates must divisible by 2");
     }
-    $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->attributes()->set('coords', $coords);
     return $this;
   }
 

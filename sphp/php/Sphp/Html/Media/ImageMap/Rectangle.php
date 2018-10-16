@@ -29,7 +29,7 @@ class Rectangle extends AbstractArea {
    * @param string|null $href the URL of the link
    * @param string $alt
    */
-  public function __construct(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) {
+  public function __construct(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, string $href = null, string $alt = null) {
     parent::__construct('area', $href, $alt);
     $this->setCoordinates($x1, $y1, $x2, $y2);
   }
@@ -77,8 +77,7 @@ class Rectangle extends AbstractArea {
    */
   public function setCoordinates(int $x1, int $y1, int $x2, int $y2) {
     $coords = [$x1, $y1, $x2, $y2];
-    $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->attributes()->getObject('coords')->set($coords);
     return $this;
   }
 

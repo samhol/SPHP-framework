@@ -1,17 +1,16 @@
 <?php
 
-namespace Sphp\Tests\Html\Attributes;
+namespace Sphp\Html\Media\ImageMap;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Attribute;
-use Sphp\Html\Attributes\SequenceAttribute;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
-class SequenceAttributeTest extends TestCase {
+class CoordinateAttributeTest extends TestCase {
 
   /**
-   * @var SequenceAttribute 
+   * @var CoordinateAttribute 
    */
   protected $attr;
 
@@ -37,39 +36,20 @@ class SequenceAttributeTest extends TestCase {
    * @return Attribute
    */
   public function createAttr(string $name = 'class'): Attribute {
-    return new SequenceAttribute($name);
+    return new CoordinateAttribute($name);
   }
 
   /**
    */
-  public function testConstructor() {
+  public function testInvalidConstructorCall() {
     $this->expectException(InvalidAttributeException::class);
-    $attr = new SequenceAttribute('', []);
+    new CoordinateAttribute('', []);
   }
 
   /**
-   * @return string[]
    */
-  public function emptyData(): array {
-    return [
-        [""],
-        [" "],
-        ["  "],
-        ["\n"],
-        ["\n\t\r"],
-        ["\t"],
-        [" \r \n \t "],
-        [[]],
-        [["", '']],
-    ];
-  }
-
-  /**
-   * @dataProvider emptyData
-   */
-  public function testEmptySetting($value) {
-    //$this->expectException(InvalidAttributeException::class);
-    $this->attr->set($value);
+  public function testEmptySetting() {
+    $this->attr->set(null);
     $this->assertCount(0, $this->attr);
     $this->assertSame(false, $this->attr->getValue());
   }
@@ -79,9 +59,8 @@ class SequenceAttributeTest extends TestCase {
    */
   public function rawSequences(): array {
     return [
-        [range('a', 'd')],
         [range(-5, 5)],
-        [range(-5, 5)],
+        [range(1, 3)],
     ];
   }
 
@@ -89,11 +68,11 @@ class SequenceAttributeTest extends TestCase {
    * @dataProvider rawSequences
    */
   public function testSetting($value) {
-    $attr = new SequenceAttribute('foo');
+    $attr = new CoordinateAttribute('foo');
     $attr->set($value);
 
     //var_dump("$attr");
-    $expected = 'foo="' . implode(' ', $value) . '"';
+    $expected = 'foo="' . implode(',', $value) . '"';
     $this->assertSame($expected, "$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
@@ -101,7 +80,7 @@ class SequenceAttributeTest extends TestCase {
   /**
    */
   public function testInvalidSetting() {
-    $attr = new SequenceAttribute('foo', ['maxlength' => 4, 'separator' => ',', 'pattern' => "/^([0-9])$/"]);
+    $attr = new CoordinateAttribute('foo', ['maxlength' => 4]);
     $this->expectException(InvalidAttributeException::class);
     $attr->set(range(1, 10));
     $attr->set(range('a', 'f'));

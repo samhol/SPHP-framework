@@ -30,23 +30,6 @@ interface Area extends HyperlinkInterface {
   public function getShape(): string;
 
   /**
-   * Sets the relationship between the current document and the linked document
-   * 
-   * @param  string $rel the value of the rel attribute
-   * @return Area for PHP Method Chaining
-   * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
-   */
-  public function setRelationship($rel);
-
-  /**
-   * Returns the shape of the area
-   * 
-   * @return string the shape of the area
-   * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
-   */
-  public function getRelationship();
-
-  /**
    * Specifies the alternate text for the area, if the image cannot be displayed
    *
    * **Definition and Usage:**
