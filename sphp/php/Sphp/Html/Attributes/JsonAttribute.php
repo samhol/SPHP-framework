@@ -10,8 +10,6 @@
 
 namespace Sphp\Html\Attributes;
 
-use ArrayAccess;
-use Iterator;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
