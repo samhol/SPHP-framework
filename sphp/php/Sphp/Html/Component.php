@@ -11,7 +11,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Attributes\PropertyAttribute;
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -35,9 +35,9 @@ interface Component extends IdentifiableContent, CssClassifiableContent {
   /**
    * Returns the attribute object containing inline styles
    * 
-   * @return PropertyAttribute the attribute object containing inline styles
+   * @return PropertyCollectionAttribute the attribute object containing inline styles
    */
-  public function inlineStyles(): PropertyAttribute;
+  public function inlineStyles(): PropertyCollectionAttribute;
 
   /**
    * Sets an attribute name value pair

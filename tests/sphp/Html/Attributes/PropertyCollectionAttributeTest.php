@@ -141,8 +141,8 @@ class PropertyCollectionAttributeTest extends TestCase {
     $this->assertTrue(isset($this->attr['baz']));
     $this->assertSame('foobar', $this->attr['baz']);
     $this->assertFalse(isset($this->attr['foobar']));
-    $this->expectException(NullPointerException::class);
-    $this->attr['foobar'];
+    $this->assertFalse(isset($this->attr['foobar']));
+    $this->assertNull($this->attr['foobar']);
   }
 
   /**

@@ -11,7 +11,7 @@ namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\Attributes\PropertyAttribute;
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
 /**
  * Trait implements functionality of a Component Interface
@@ -44,9 +44,9 @@ trait ComponentTrait {
   /**
    * Returns the attribute object containing inline styles
    *
-   * @return PropertyAttribute the attribute object containing inline styles
+   * @return PropertyCollectionAttribute the attribute object containing inline styles
    */
-  public function inlineStyles(): PropertyAttribute {
+  public function inlineStyles(): PropertyCollectionAttribute {
     return $this->attributes()->styles();
   }
 

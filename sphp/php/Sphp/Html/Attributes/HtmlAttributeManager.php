@@ -21,14 +21,12 @@ class HtmlAttributeManager extends AttributeManager {
 
   /**
    * Constructor
-   *
-   * @param string[] $objectMap
    */
   public function __construct() {
     parent::__construct();
     $this->getGenerator()
             ->mapType('class', ClassAttribute::class)
-            ->mapType('style', PropertyAttribute::class)
+            ->mapType('style', PropertyCollectionAttribute::class)
             ->mapType('id', IdAttribute::class);
   }
 
@@ -44,9 +42,9 @@ class HtmlAttributeManager extends AttributeManager {
   /**
    * Returns the style attribute object
    *
-   * @return PropertyAttribute the `style` attribute object
+   * @return PropertyCollectionAttribute the `style` attribute object
    */
-  public function styles(): PropertyAttribute {
+  public function styles(): PropertyCollectionAttribute {
     return $this->getObject('style');
   }
 

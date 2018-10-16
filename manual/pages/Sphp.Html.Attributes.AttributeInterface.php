@@ -6,7 +6,6 @@ use Sphp\Manual;
 
 $attributeInterface = Manual\api()->classLinker(Attribute::class);
 $abstractAttr = Manual\api()->classLinker(AbstractAttribute::class);
-$multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 
 $idAttr = Manual\api()->classLinker(IdAttribute::class);
 $attr= Manual\api()->classLinker(GeneralAttribute::class);

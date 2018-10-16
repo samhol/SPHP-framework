@@ -1,12 +1,11 @@
 <?php
 
-namespace Sphp\Tests\Html\Attributes;
+namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\Attributes\GeneralAttribute;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
-use Sphp\Html\Attributes\PropertyAttribute;
 use Sphp\Html\Attributes\ClassAttribute;
 
 class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
@@ -220,8 +219,8 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function objectData(): array {
     return [
         [new MultiValueAttribute("data-foo")],
-        [new PropertyAttribute("data-bar")],
-        [new PropertyAttribute("style")],
+        [new PropertyCollectionAttribute("data-bar")],
+        [new PropertyCollectionAttribute("style")],
         [(new ClassAttribute("class"))->add("a b c")],
     ];
   }

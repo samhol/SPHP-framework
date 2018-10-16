@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-$styles = (new PropertyAttribute("style"))
+$styles = (new PropertyCollectionAttribute("style"))
         ->set("color: #c00; padding: .5em;")
         ->setProperty("font-size", "1.6em")
         ->setProperties([

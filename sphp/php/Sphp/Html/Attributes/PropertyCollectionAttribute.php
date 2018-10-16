@@ -277,7 +277,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
     if ($this->hasProperty($property)) {
       $value = $this->props[$property];
     } else {
-      throw new NullPointerException("Property $property does not exist");
+      $value = null;
     }
     return $value;
   }
