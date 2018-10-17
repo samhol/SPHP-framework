@@ -24,7 +24,7 @@ use Traversable;
 class FormValidator extends AbstractValidator implements \Countable, \IteratorAggregate {
 
   /**
-   * @var TranslatableCollection 
+   * @var string[] 
    */
   private $inputErrors;
 
@@ -42,15 +42,15 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     parent::__construct('The form has errors');
     $this->setMessageTemplate(self::INVALID, 'The form has errors');
     $this->validators = [];
-    $this->inputErrors = new TranslatableCollection();
+    $this->inputErrors = [];
   }
 
   /**
    * Returns error concerning each input messages
    * 
-   * @return TranslatableCollection
+   * @return string[] 
    */
-  public function getInputErrors(): TranslatableCollection {
+  public function getInputErrors(): array {
     return $this->inputErrors;
   }
 
@@ -63,7 +63,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     foreach ($this->validators as $validator) {
       $validator->reset();
     }
-    $this->inputErrors->clearContent();
+    $this->inputErrors = [];
     parent::reset();
     return $this;
   }
@@ -81,7 +81,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       if (!$validator->isValid($inputValue)) {
         $valid = false;
         //var_dump($validator->getErrors());
-        $this->inputErrors->offsetSet($inputName, $validator->getErrors());
+        $this->inputErrors[$inputName] =$validator->getErrors();
       }
     }
     if (!$valid) {

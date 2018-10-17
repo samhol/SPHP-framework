@@ -25,5 +25,4 @@ class InCollectionValidatorTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
-
 }

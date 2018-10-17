@@ -10,8 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Collections\TranslatableCollection;
-
 /**
  * The base interface for all validators
  *
@@ -20,6 +18,11 @@ use Sphp\I18n\Collections\TranslatableCollection;
  * @filesource
  */
 interface ValidatorInterface {
+
+  /**
+   * `ID` for default error message
+   */
+  const INVALID = '_invalid_';
 
   /**
    * Validates given value
@@ -32,7 +35,7 @@ interface ValidatorInterface {
   /**
    * Returns error messages
    *
-   * @return TranslatableCollection error messages
+   * @return string[] error messages
    */
-  public function getErrors(): TranslatableCollection;
+  public function getErrors(): array;
 }

@@ -184,7 +184,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  int $flag flag determining what arguments are sent to callback
    * @return self new filtered collection
    */
-  public function filter(callable $callback = null, $flag = 0) {
+  public function filter(callable $callback = null, $flag = 0): Collection {
     return new static(array_filter($this->items, $callback, $flag));
   }
 
@@ -192,10 +192,10 @@ class Collection implements Iterator, CollectionInterface {
    * Execute a callback over each item
    *
    * @param  callable $callback
-   * @return self new collection containing all the original elements after
+   * @return Collection new collection containing all the original elements after
    *         applying the callback to each one
    */
-  public function map(callable $callback) {
+  public function map(callable $callback): Collection {
     $keys = array_keys($this->items);
     $items = array_map($callback, $this->items, $keys);
     return new static(array_combine($keys, $items));

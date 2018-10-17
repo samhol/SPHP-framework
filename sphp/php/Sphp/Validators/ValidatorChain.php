@@ -36,7 +36,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
   private $validators;
 
   /**
-   * @var TranslatableCollection
+   * @var string[]
    */
   private $errors;
 
@@ -45,7 +45,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    */
   public function __construct() {
     $this->validators = [];
-    $this->errors = new TranslatableCollection();
+    $this->errors = [];
   }
 
   /**
@@ -117,13 +117,35 @@ class ValidatorChain implements ValidatorInterface, Countable {
     $this->skippedValues = [];
     return $this;
   }
-  
-  public function getErrors(): TranslatableCollection {
+
+  public function getErrors(): array {
     return $this->errors;
   }
 
+  /**
+   * Sets the validated value
+   * 
+   * @param  mixed $value the validated value
+   * @return $this for a fluent interface
+   */
+  public function setValue($value) {
+    $this->reset();
+    $this->value = $value;
+    return $this;
+  }
+
+  /**
+   * Resets the validator to for revalidation
+   *
+   * @return $this for a fluent interface
+   */
+  public function reset() {
+    $this->errors = [];
+    return $this;
+  }
+
   public function isValid($value): bool {
-    $this->errors->clearContent();
+    $this->setValue($value);
     $valid = true;
     if (in_array($value, $this->skippedValues, true)) {
       return true;
@@ -133,7 +155,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
       $break = $validator['break'];
       if (!$v->isValid($value)) {
         $valid = false;
-        $this->getErrors()->merge($v->getErrors());
+        $this->errors[] = $v->getErrors();
         if ($break) {
           break;
         }

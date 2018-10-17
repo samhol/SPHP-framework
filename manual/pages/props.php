@@ -1,9 +1,16 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Html\Media\ImageMap;
 
-$fooclass = new \Sphp\Config\Config([], false);
-$fooclass->foo = 'foo';
-var_dump(json_encode($fooclass));
+var_dump(explode(',', null));
+var_dump(explode(',', 2));
+var_dump(explode(',', 2));
+try {
+
+  $attr = new CoordinateAttribute('coords');
+  $attr->set(new \stdClass());
+} catch (\Exception $ex) {
+  echo $ex->getMessage();
+}
 ?>
 </pre>

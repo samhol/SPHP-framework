@@ -19,12 +19,15 @@ namespace Sphp\Html\Media\ImageMap;
  */
 use Sphp\Html\Attributes\AbstractAttribute;
 use Sphp\Html\Attributes\CollectionAttribute;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Stdlib\Datastructures\Sequence;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -33,14 +36,14 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CoordinateAttribute extends AbstractAttribute implements Countable {
+class CoordinateAttribute extends AbstractAttribute implements Countable, Arrayable {
 
   /**
-   * stored individual values
+   * stored individual coordinates
    *
-   * @var Sequence
+   * @var int[]
    */
-  private $sequence = [];
+  private $coordinates = [];
 
   /**
    * @var boolean
@@ -63,29 +66,16 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
    * @param string $name the name of the attribute
    * @param array $options  the separator between individual values in sequence
    */
-  public function __construct(string $name, array $options = []) {
+  public function __construct(string $name, $lengthRule = null) {
     parent::__construct($name);
-    $this->sequence = [];
-    foreach ($options as $key => $value) {
-      switch (strtolower($key)) {
-        case 'minlength':
-          $this->setMinLength((int) $value);
-          break;
-        case 'maxlength':
-          $this->setMaxLength((int) $value);
-          break;
-        case 'default':
-          $this->setDefault($value);
-          break;
-      }
-    }
+    $this->coordinates = [];
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->sequence, $this->locked);
+    unset($this->coordinates, $this->locked);
     parent::__destruct();
   }
 
@@ -99,29 +89,43 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
    * 3. Duplicate values are ignored
    *
    * @param  mixed $raw the value(s) to parse
-   * @param  bool $validate
    * @return string[] separated atomic values in an array
-   * @throws InvalidAttributeException if validation is set and the input is not valid
+   * @throws InvalidArgumentException if the raw input is not valid
    */
-  public function parse($raw, bool $validate = false): array {
+  public function parse($raw): array {
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $thrower->start();
     $parsed = [];
-    if (is_string($raw)) {
-      $parsed = explode(',', $raw);
+    $f = function($scalar) {
+      $trimmed = trim($scalar);
+      if (!is_numeric($trimmed)) {
+        throw new InvalidArgumentException("Invalid individual coordinate value: $trimmed");
+      }
+      return (int) $trimmed;
+      ;
+    };
+    if ($raw === null || is_bool($raw) || (is_scalar($raw) && Strings::isBlank("$raw"))) {
+      $parsed = [];
+    } else if (is_numeric($raw)) {
+      $parsed = [(int) $raw];
+    } else if (is_string($raw)) {
+      $parsed = array_map($f, explode(',', $raw));
     } else if (is_array($raw)) {
-      $parsed = Arrays::flatten($raw);
-    }
-    if ($validate) {
-      foreach ($parsed as $value) {
-        if (!is_numeric($value)) {
-          throw new InvalidAttributeException("Invalid attribute value '$value'");
+      foreach ($raw as $value) {
+        if (!is_int($value)) {
+          throw new InvalidArgumentException("Invalid individual coordinate type:" . gettype($scalar) . " (integer required)");
         }
       }
+      $parsed = array_map($f, Arrays::flatten($raw));
+    } else {
+      throw new InvalidArgumentException("Invalid attribute type:" . gettype($raw));
     }
+    $thrower->stop();
     return $parsed;
   }
 
   private function isValidLength(): bool {
-    $length = count($this->sequence);
+    $length = count($this->coordinates);
     return $length >= $this->minLength && $length <= $this->maxLength;
   }
 
@@ -158,14 +162,14 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
   /**
    * Sets new atomic values to the attribute removing old non locked ones
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
+   * **Correct:** Parameter <var>$values</var> values
    * 
-   * 1. A `string` parameter can contain multiple comma separated atomic values
-   * 2. An `array` parameter can contain only one atomic value per array value
+   * 1. A `string` containing comma separated coordinates
+   * 2. An `array` of coordinates as integers
    * 3. Any numeric value is treated as a string value
    * 4. Stores only a single instance of every value (no duplicates)
    *
-   * @param  scalar|scalar[] $values the values to set
+   * @param  int[]|...scalar $values the values to set
    * @return $this for a fluent interface
    */
   public function set($values) {
@@ -173,33 +177,12 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
       throw new ImmutableAttributeException();
     }
     $this->clear();
-    $parsed = $this->parse($values, true);
-    if (!empty($parsed)) {
-      $this->sequence = array_merge($this->sequence, $parsed);
+    if (func_num_args() > 1) {
+      $parsed = $this->parse(func_get_args());
+    } else {
+      $parsed = $this->parse($values);
     }
-    return $this;
-  }
-
-  /**
-   * Adds new atomic values to the attribute
-   *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
-   *
-   * @param  scalar|scalar[],... $values the values to add
-   * @return $this for a fluent interface
-   */
-  public function append(...$values) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException();
-    }
-    $parsed = $this->parse($values, true);
-    if (!empty($parsed)) {
-      $this->sequence = array_merge($this->sequence, $parsed);
-    }
+    $this->coordinates = $parsed;
     return $this;
   }
 
@@ -231,14 +214,14 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
 
   public function clear() {
     if (!$this->isProtected()) {
-      $this->sequence = [];
+      $this->coordinates = [];
     }
     return $this;
   }
 
   public function getValue() {
-    if (!empty($this->sequence)) {
-      $output = implode(',', $this->sequence);
+    if (!empty($this->coordinates)) {
+      $output = implode(',', $this->coordinates);
     } else {
       $output = $this->isDemanded();
     }
@@ -251,24 +234,20 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
    * @return int the number of the atomic values stored in the attribute
    */
   public function count(): int {
-    return count($this->sequence);
+    return count($this->coordinates);
   }
 
   public function toArray(): array {
-    return [$this->getName() => $this->sequence];
+    return [$this->getName() => $this->coordinates];
   }
 
-  public function getHtml(): string {
-    $output = '';
-    $value = $this->getValue();
-    if ($value !== false) {
-      $output .= $this->getName();
-      if ($value !== true && !Strings::isEmpty($value)) {
-        $strVal = $value;
-        $output .= '="' . htmlspecialchars($strVal, ENT_COMPAT | ENT_HTML5) . '"';
-      }
-    }
-    return $output;
+  /**
+   * Returns the coordinates as an array
+   * 
+   * @return int[] the coordinates as an array
+   */
+  public function getCoordinates(): array {
+    return $this->coordinates;
   }
 
   /**
@@ -288,7 +267,7 @@ class CoordinateAttribute extends AbstractAttribute implements Countable {
     } else if ($this->isProtected()) {
       throw new ImmutableAttributeException();
     }
-    $this->sequence->insert($position, $value);
+    $this->coordinates->insert($position, $value);
   }
 
 }

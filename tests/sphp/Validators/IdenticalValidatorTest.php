@@ -31,6 +31,7 @@ class IdenticalValidatorTest extends \PHPUnit\Framework\TestCase {
   }
 
   public function strictData() {
+    $obj = new \stdClass();
     $data[] = [1, 1, true];
     $data[] = [1, '1', false];
     $data[] = ['1', '1', true];
@@ -42,6 +43,8 @@ class IdenticalValidatorTest extends \PHPUnit\Framework\TestCase {
     $data[] = [true, true, true];
     $data[] = [false, false, true];
     $data[] = [true, '1', false];
+    $data[] = [$obj, new \stdClass(), false];
+    $data[] = [$obj, $obj, true];
     return $data;
   }
 

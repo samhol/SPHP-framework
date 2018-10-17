@@ -18,7 +18,7 @@ $correctData = [
 
 echo "Correct data:";
 var_dump($validator->isValid($correctData));
-print_r($validator->getInputErrors()->toArray());
+print_r($validator->getInputErrors());
 
 $incorrectData = [
     'num' => 'abc',
@@ -28,4 +28,4 @@ $incorrectData = [
 
 echo "\nincorrect data:";
 var_dump($validator->isValid($incorrectData));
-print_r($validator->getInputErrors()->toArray());
+print_r($validator->getInputErrors());

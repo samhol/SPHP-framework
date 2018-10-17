@@ -39,6 +39,13 @@ class CoordinateAttributeTest extends TestCase {
     return new CoordinateAttribute($name);
   }
 
+  public function confirmEmpty(CoordinateAttribute $attr) {
+    $this->assertCount(0, $attr);
+    $this->assertEquals([$attr->getName() => []], $attr->toArray());
+    $this->assertEquals([], $attr->getCoordinates());
+    $this->assertSame(false, $attr->getValue());
+  }
+
   /**
    */
   public function testInvalidConstructorCall() {
@@ -48,42 +55,70 @@ class CoordinateAttributeTest extends TestCase {
 
   /**
    */
-  public function testEmptySetting() {
-    $this->attr->set(null);
-    $this->assertCount(0, $this->attr);
-    $this->assertSame(false, $this->attr->getValue());
+  public function testConstructorCall(): CoordinateAttribute {
+    $attr = new CoordinateAttribute('coords');
+    $this->assertEquals('coords', $attr->getName());
+    $this->confirmEmpty($attr);
+    return $attr;
   }
 
   /**
-   * @return string[]
+   * @depends testConstructorCall
+   * @param   CoordinateAttribute $attr
+   */
+  public function testEmptySetting(CoordinateAttribute $attr) {
+    $attr->set(null);
+    $this->confirmEmpty($attr);
+    $attr->set([]);
+    $this->confirmEmpty($attr);
+    $attr->set(false);
+    $this->confirmEmpty($attr);
+    $attr->set(true);
+    $this->confirmEmpty($attr);
+  }
+
+  /**
+   * @return array
    */
   public function rawSequences(): array {
     return [
-        [range(-5, 5)],
-        [range(1, 3)],
+        [range(0, 3), [0, 1, 2, 3]],
+        [array_fill(0, 2, 5), [5, 5]],
+        [' 10, 11, 4  ', [10, 11, 4]],
+        [5, [5]],
+        ['0', [0]]
     ];
   }
 
   /**
    * @dataProvider rawSequences
    */
-  public function testSetting($value) {
+  public function testSetting($value, array $expected) {
     $attr = new CoordinateAttribute('foo');
     $attr->set($value);
 
     //var_dump("$attr");
-    $expected = 'foo="' . implode(',', $value) . '"';
-    $this->assertSame($expected, "$attr");
+    //$expected = 'foo="' . implode(',', $value) . '"';
+    $this->assertSame($expected, $attr->getCoordinates());
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 
   /**
+   * @expectedException  \Sphp\Exceptions\InvalidArgumentException
    */
-  public function testInvalidSetting() {
-    $attr = new CoordinateAttribute('foo', ['maxlength' => 4]);
-    $this->expectException(InvalidAttributeException::class);
-    $attr->set(range(1, 10));
-    $attr->set(range('a', 'f'));
+  public function testObjectSetting() {
+    $attr = new CoordinateAttribute('foo');
+    $attr->set(new \stdClass);
+
+    //var_dump("$attr");
+    //$this->assertEquals($this->attrs->getValue(), $expected);
+  }
+  /**
+   * @expectedException  \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function testInvalidStringSetting() {
+    $attr = new CoordinateAttribute('foo');
+    $attr->set('a,b,c');
 
     //var_dump("$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
