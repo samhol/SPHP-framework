@@ -9,6 +9,7 @@
  */
 
 namespace Sphp\Validators;
+
 /**
  * Validates data against certain maximum value
  *
@@ -24,25 +25,16 @@ class SmallerThanValidator extends AbstractLimitValidator {
   private $max;
 
   /**
-   * Constructs a new validator
+   * Constructor
    * 
    * @param float $max the maximum value
    * @param boolean $inclusive true for inclusive limit and false for exclusive
    */
   public function __construct(float $max, bool $inclusive = true) {
     parent::__construct($inclusive);
-    $this->setMin($max);
-    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
-  }
-
-  /**
-   * Returns the maximum value
-   * 
-   * @return float the maximum value
-   */
-  public function getMax() {
-    return $this->max;
+    $this->setMax($max);
+    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not smaller than %d');
+    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not smaller than or equal to %d');
   }
 
   /**
@@ -51,7 +43,7 @@ class SmallerThanValidator extends AbstractLimitValidator {
    * @param  float $max the maximum value
    * @return $this for a fluent interface
    */
-  public function setMax($max) {
+  public function setMax(float $max) {
     $this->max = $max;
     return $this;
   }
@@ -59,13 +51,13 @@ class SmallerThanValidator extends AbstractLimitValidator {
   public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
-      if ($this->max > $value) {
-        $this->error(static::EXCLUSIVE_ERROR);
+      if ($this->max < $value) {
+        $this->error(static::INCLUSIVE_ERROR, [$this->max]);
         return false;
       }
     } else {
-      if ($this->max >= $value) {
-        $this->error(self::NOT_GREATER);
+      if ($this->max <= $value) {
+        $this->error(self::EXCLUSIVE_ERROR, [$this->max]);
         return false;
       }
     }

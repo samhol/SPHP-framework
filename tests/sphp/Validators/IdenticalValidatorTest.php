@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 class IdenticalValidatorTest extends TestCase {
 
-  public function nonStrictData() {
+  public function nonStrictData(): array {
     $data[] = [1, 1, true];
     $data[] = [1, '1', true];
     $data[] = ['1', '1', true];

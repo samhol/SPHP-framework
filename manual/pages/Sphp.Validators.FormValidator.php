@@ -3,7 +3,6 @@
 namespace Sphp\Validators;
 
 $validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
-$inputValidator = \Sphp\Manual\api()->classLinker(OptionalValidator::class);
 $formValidator = \Sphp\Manual\api()->classLinker(FormValidator::class);
 $formInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\Forms\FormInterface::class);
 $traversable = \Sphp\Manual\php()->classLinker(\Traversable::class);
