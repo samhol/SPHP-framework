@@ -10,7 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Collections\TranslatableCollection;
 use Sphp\Stdlib\Datastructures\Collection;
 use Traversable;
 
@@ -40,7 +39,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    */
   public function __construct() {
     parent::__construct('The form has errors');
-    $this->setMessageTemplate(self::INVALID, 'The form has errors');
+    //$this->setMessageTemplate(self::INVALID, 'The form has errors');
     $this->validators = [];
     $this->inputErrors = [];
   }
@@ -81,7 +80,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       if (!$validator->isValid($inputValue)) {
         $valid = false;
         //var_dump($validator->getErrors());
-        $this->inputErrors[$inputName] =$validator->getErrors();
+        $this->inputErrors[$inputName] = $validator->getErrors();
       }
     }
     if (!$valid) {

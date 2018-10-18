@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Validators;
 
-class InCollectionValidatorTest extends \PHPUnit\Framework\TestCase {
+use PHPUnit\Framework\TestCase;
+
+class InCollectionValidatorTest extends TestCase {
 
   public function arrayData() {
     return [[[0, 1, null, false, true, '', ' ', "\n", [], new \stdClass()]]];

@@ -69,7 +69,7 @@ abstract class AbstractTranslator implements TranslatorInterface {
    * @param  array $args
    * @param  bool $translateArgs
    * @return string
-   * @throws \InvalidArgumentException if invalid number of arguments is presented
+   * @throws InvalidArgumentException if invalid number of arguments is presented
    */
   protected function format(string $message, array $args = null, bool $translateArgs = false): string {
     if (!empty($args)) {

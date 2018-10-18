@@ -11,6 +11,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Stdlib\MbString;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Validates string length
@@ -25,6 +26,7 @@ class StringLengthValidator extends AbstractValidator {
 
   const TOO_SHORT = '_short_';
   const TOO_LONG = '_long_';
+  const NOT_IN_RANGE = 'NOT_IN_RANGE';
 
   /**
    * minimum length of the valid string
@@ -46,25 +48,37 @@ class StringLengthValidator extends AbstractValidator {
    * @param int $min minimum length of the valid string
    * @param int $max maximum length of the valid string
    */
-  public function __construct(int $min = -1, int $max = -1) {
+  public function __construct(int $min = null, int $max = null) {
     parent::__construct();
-    $this->min = intval($min);
-    $this->max = intval($max);
+    if ($min !== null && $max !== null) {
+      $this->setRangeValidation($min, $max);
+    } else if ($min !== null) {
+      $this->setLowerBoundValidation($min);
+    } else if ($max !== null) {
+      $this->setUpperBoundValidation($max);
+    } else {
+      throw new InvalidArgumentException("Paramaters are invalid: min: $min, max: $max given");
+    }
     $this->setMessageTemplate(static::INVALID, 'Invalid type given. String expected');
     $this->setMessageTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
     $this->setMessageTemplate(static::TOO_LONG, 'The input is more than %d characters long');
+    $this->setMessageTemplate(static::NOT_IN_RANGE, 'The input length is not in range %d-%d');
   }
 
   /**
    * Sets the range of the valid string length
    *
-   * @param int $min minimum length of the valid string
-   * @param int $max maximum length of the valid string
+   * @param  int $min minimum length of the valid string
+   * @param  int $max maximum length of the valid string
    * @return $this for a fluent interface
+   * @throws InvalidArgumentException
    */
   public function setRangeValidation(int $min, int $max) {
-    $this->min = intval($min);
-    $this->max = intval($max);
+    if ($min < 0 || $min > $max) {
+      throw new InvalidArgumentException("Given Range ($min - $max) is invalid");
+    }
+    $this->min = $min;
+    $this->max = $max;
     return $this;
   }
 
@@ -74,7 +88,7 @@ class StringLengthValidator extends AbstractValidator {
    * @return boolean true if the validator acts as a range validator, false otherwise
    */
   public function isRangeValidator(): bool {
-    return $this->min >= 0 && $this->min < $this->max;
+    return $this->min !== null && $this->max !== null && $this->min >= 0 && $this->min <= $this->max;
   }
 
   /**
@@ -87,8 +101,8 @@ class StringLengthValidator extends AbstractValidator {
    * @return $this for a fluent interface
    */
   public function setLowerBoundValidation(int $min) {
-    $this->min = intval($min);
-    $this->max = -1;
+    $this->min = $min;
+    $this->max = null;
     return $this;
   }
 
@@ -98,7 +112,7 @@ class StringLengthValidator extends AbstractValidator {
    * @return boolean true if the validator acts as a lower bound validator, false otherwise
    */
   public function isLowerBoundValidator(): bool {
-    return $this->min >= 0 && $this->max === -1;
+    return $this->min >= 0 && $this->max === null;
   }
 
   /**
@@ -109,10 +123,14 @@ class StringLengthValidator extends AbstractValidator {
    * 
    * @param  int $max maximum length of the valid string
    * @return $this for a fluent interface
+   * @throws InvalidArgumentException
    */
   public function setUpperBoundValidation(int $max) {
-    $this->min = -1;
-    $this->max = intval($max);
+    if ($max < 0) {
+      throw new InvalidArgumentException("Upper bound must be zero or a positive integer: $max given");
+    }
+    $this->min = null;
+    $this->max = $max;
     return $this;
   }
 
@@ -122,7 +140,7 @@ class StringLengthValidator extends AbstractValidator {
    * @return boolean true if the validator acts as a upper bound validator, false otherwise
    */
   public function isUpperBoundValidator(): bool {
-    return $this->min < 0 && $this->max > 0;
+    return $this->min === null && $this->max > 0;
   }
 
   public function isValid($value): bool {
@@ -130,12 +148,12 @@ class StringLengthValidator extends AbstractValidator {
     $valid = true;
     $string = new MbString($value);
     $length = $string->length();
-    if ($this->isRangeValidator() && ($length < $this->min | $this->max < $length)) {
+    if ($this->isRangeValidator() && ($length < $this->min || $this->max < $length)) {
       $valid = false;
-      $this->error(self::TOO_LONG, [$this->min]);
+      $this->error(self::NOT_IN_RANGE, [$this->min, $this->max]);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
-      $this->error(self::TOO_LONG, [$this->min]);
+      $this->error(self::TOO_SHORT, [$this->min]);
     } else if ($this->isUpperBoundValidator() && $length > $this->max) {
       $valid = false;
       $this->error(self::TOO_LONG, [$this->min]);

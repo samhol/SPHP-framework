@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Validators;
 
-class IdenticalValidatorTest extends \PHPUnit\Framework\TestCase {
+use PHPUnit\Framework\TestCase;
+
+class IdenticalValidatorTest extends TestCase {
 
   public function nonStrictData() {
     $data[] = [1, 1, true];
