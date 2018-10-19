@@ -101,7 +101,6 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->messageTemplates[$id] = $messageTemplate;
     return $this;
   }
-
   /**
    * Sets the error message 
    * 
@@ -109,8 +108,19 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param  array $params optional message parameters
    * @return $this for a fluent interface
    */
-  public function error(string $id, array $params = []) {
-    $this->errors[$id] = vsprintf($this->getMessageTemplate($id), $params);
+  public function errorFromTemplate(string $id, array $params = []) {
+    $this->errors[] = vsprintf($this->getMessageTemplate($id), $params);
+    return $this;
+  }
+
+  /**
+   * Sets the error message 
+   * 
+   * @param  string $message the id of the message
+   * @return $this for a fluent interface
+   */
+  public function error(string $message) {
+    $this->errors[] = $message;
     return $this;
   }
 

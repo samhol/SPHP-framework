@@ -122,7 +122,7 @@ class InArrayValidator extends AbstractValidator {
       }
     }
     if (!$valid) {
-      $this->error(static::INVALID);
+      $this->errorFromTemplate(static::INVALID);
     }
     return $valid;
   }

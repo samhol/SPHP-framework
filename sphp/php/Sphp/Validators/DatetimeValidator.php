@@ -58,7 +58,7 @@ class DatetimeValidator extends AbstractValidator {
     $obj = DateTime::createFromFormat($this->format, $value);
     //echo $obj->format('Y-m-d H:i:s');
     if ($obj == false || DateTime::getLastErrors()["warning_count"] != 0 || DateTime::getLastErrors()["error_count"] != 0) {
-      $this->error(static::INVALID);
+      $this->errorFromTemplate(static::INVALID);
     }
   }
 

@@ -67,7 +67,7 @@ class StringFormatValidator extends AbstractValidator {
         return true;
       }
     }
-    $this->error(self::INVALID_FORMAT);
+    $this->errorFromTemplate(self::INVALID_FORMAT);
     return false;
   }
 

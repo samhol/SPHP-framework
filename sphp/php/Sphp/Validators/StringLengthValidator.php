@@ -150,13 +150,13 @@ class StringLengthValidator extends AbstractValidator {
     $length = $string->length();
     if ($this->isRangeValidator() && ($length < $this->min || $this->max < $length)) {
       $valid = false;
-      $this->error(self::NOT_IN_RANGE, [$this->min, $this->max]);
+      $this->errorFromTemplate(self::NOT_IN_RANGE, [$this->min, $this->max]);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
-      $this->error(self::TOO_SHORT, [$this->min]);
+      $this->errorFromTemplate(self::TOO_SHORT, [$this->min]);
     } else if ($this->isUpperBoundValidator() && $length > $this->max) {
       $valid = false;
-      $this->error(self::TOO_LONG, [$this->min]);
+      $this->errorFromTemplate(self::TOO_LONG, [$this->min]);
     }
     return $valid;
   }

@@ -48,12 +48,12 @@ class WhitelistValidator extends AbstractValidator {
 
   public function isValid($param): bool {
     if (!is_array($param)) {
-      $this->error(self::INVALID);
+      $this->errorFromTemplate(self::INVALID);
       return false;
     }
     foreach ($param as $key => $item) {
       if (!in_array($key, $this->whitelist)) {
-        $this->error(self::ILLEGAL_KEY);
+        $this->errorFromTemplate(self::ILLEGAL_KEY);
         return false;
       }
     }

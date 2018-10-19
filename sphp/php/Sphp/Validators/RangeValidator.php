@@ -78,12 +78,12 @@ class RangeValidator extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->error(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->errorFromTemplate(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->error(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->errorFromTemplate(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     }

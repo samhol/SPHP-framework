@@ -52,12 +52,12 @@ class SmallerThanValidator extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->max < $value) {
-        $this->error(static::INCLUSIVE_ERROR, [$this->max]);
+        $this->errorFromTemplate(static::INCLUSIVE_ERROR, [$this->max]);
         return false;
       }
     } else {
       if ($this->max <= $value) {
-        $this->error(self::EXCLUSIVE_ERROR, [$this->max]);
+        $this->errorFromTemplate(self::EXCLUSIVE_ERROR, [$this->max]);
         return false;
       }
     }

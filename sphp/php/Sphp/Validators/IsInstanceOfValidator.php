@@ -64,7 +64,7 @@ class IsInstanceOfValidator extends AbstractValidator {
     if ($value instanceof $this->className) {
       return true;
     }
-    $this->error(self::INVALID, [$this->className]);
+    $this->errorFromTemplate(self::INVALID, [$this->className]);
     return false;
   }
 
