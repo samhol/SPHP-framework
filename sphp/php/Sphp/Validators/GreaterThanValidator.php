@@ -34,17 +34,8 @@ class GreaterThanValidator extends AbstractLimitValidator {
   public function __construct(float $min, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->setMin($min);
-    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
-  }
-
-  /**
-   * Returns the minimum value
-   * 
-   * @return float the minimum value
-   */
-  public function getMin(): float {
-    return $this->min;
+    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not larger than %d');
+    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not larger than or equal to %d');
   }
 
   /**
@@ -62,12 +53,12 @@ class GreaterThanValidator extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value) {
-        $this->error(static::INCLUSIVE_ERROR);
+        $this->error(static::INCLUSIVE_ERROR, [$this->min]);
         return false;
       }
     } else {
       if ($this->min >= $value) {
-        $this->error(static::EXCLUSIVE_ERROR);
+        $this->error(static::EXCLUSIVE_ERROR, [$this->min]);
         return false;
       }
     }

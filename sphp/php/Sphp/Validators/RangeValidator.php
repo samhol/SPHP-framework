@@ -10,6 +10,8 @@
 
 namespace Sphp\Validators;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Validates data against certain numeric range
  *
@@ -38,48 +40,37 @@ class RangeValidator extends AbstractLimitValidator {
    */
   public function __construct(float $min, float $max, bool $inclusive = true) {
     parent::__construct($inclusive);
-    $this->setMin($min)->setMax($max);
-    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
+    $this->setRange($min, $max);
+    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
+    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
   }
 
-  /**
-   * Returns the minimum value
-   * 
-   * @return float the minimum value
-   */
-  public function getMin(): float {
-    return $this->min;
+  private function integrityCheck() {
+    if ($this->min >= $this->max && !$this->isInclusive()) {
+      throw new InvalidArgumentException("Non-inclusive range ($this->min, $this->max) is not valid");
+    } else if ($this->min > $this->max && $this->isInclusive()) {
+      throw new InvalidArgumentException("Inclusive range ($this->min, $this->max) is not valid");
+    }
   }
 
-  /**
-   * Returns the maximum value
-   * 
-   * @return float the maximum value
-   */
-  public function getMax(): float {
-    return $this->max;
-  }
-
-  /**
-   * Sets the minimum value
-   * 
-   * @param  float $min the minimum value
-   * @return $this for a fluent interface
-   */
-  public function setMin(float $min) {
-    $this->min = $min;
+  public function setInclusive(bool $inclusive) {
+    parent::setInclusive($inclusive);
+    $this->integrityCheck();
     return $this;
   }
 
   /**
-   * Sets the maximum value
+   * Sets the valid range
    * 
+   * @param  float $min the minimum value
    * @param  float $max the maximum value
    * @return $this for a fluent interface
+   * @throws InvalidArgumentException if the range contains no possible values
    */
-  public function setMax(float $max) {
+  public function setRange(float $min, float $max) {
+    $this->min = $min;
     $this->max = $max;
+    $this->integrityCheck();
     return $this;
   }
 
@@ -87,12 +78,12 @@ class RangeValidator extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->error(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->error(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->error(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->error(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     }

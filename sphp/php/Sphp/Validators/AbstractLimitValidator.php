@@ -10,8 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Messages\Msg;
-
 /**
  * Validates data against certain limit
  *
@@ -24,12 +22,12 @@ abstract class AbstractLimitValidator extends AbstractValidator {
   /**
    * `ID` for error message describing values not matching an inclusive limit
    */
-  const INCLUSIVE_ERROR = '_inclusive_';
+  const INCLUSIVE_ERROR = 'INCLUSIVE_ERROR';
 
   /**
    * `ID` for error message describing values not matching an exclusive limit
    */
-  const EXCLUSIVE_ERROR = '_exclusive_';
+  const EXCLUSIVE_ERROR = 'EXCLUSIVE_ERROR';
 
   /**
    * Whether to do inclusive comparisons, allowing equivalence to max
