@@ -20,14 +20,6 @@ class ValidatorChainTest extends TestCase {
   public function testRangeValidation() {
     $validator = new ValidatorChain();
     $this->assertCount(0, $validator);
-    $this->assertSame($validator->a());
-    $this->assertFalse($validator->isLowerBoundValidator());
-    $this->assertFalse($validator->isValid('foobar'));
-    $this->assertTrue($validator->isValid(''));
-    $this->assertTrue($validator->isValid('     '));
-    $validator->setRangeValidation(1, 1);
-    $this->assertTrue($validator->isValid('a'));
-    $this->assertFalse($validator->isValid('ab'));
     return $validator;
   }
 
