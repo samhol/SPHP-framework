@@ -1,9 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Validators;
@@ -32,10 +34,29 @@ class ErrormessageTest extends TestCase {
   }
 
   /**
+   * @depends testAppending
+   * @param ErrorMessages $em
+   */
+  public function testCloning(ErrorMessages $cont) {
+    $clone = clone $cont;
+    $this->assertNotSame($cont, $clone);
+    return $cont;
+  }
+
+  /**
+   * @depends testCloning
+   * @param ErrorMessages $em
+   */
+  public function testClearing(ErrorMessages $em) {
+    $this->assertSame($em, $em->setEmpty());
+    $this->assertCount(0, $em);
+  }
+
+  /**
    */
   public function testMerging() {
     $cont = new ErrorMessages();
-    $this->assertSame($cont, $cont->mergeArray($this->simpleDataSet()));
+    $this->assertSame($cont, $cont->mergeCollection($this->simpleDataSet()));
     foreach ($cont as $val) {
       $this->assertTrue(in_array($val, $this->simpleDataSet()));
     }
@@ -111,6 +132,26 @@ class ErrormessageTest extends TestCase {
     $cont->appendErrorFromTemplate('bar');
   }
 
+  public function testNesting() {
+    $errors = new ErrorMessages();
+    $errors['nest'] = new ErrorMessages();
+    $errors['nest']['foo'] = 'Foo is wrong';
+    $this->assertEquals('Foo is wrong', $errors['nest']['foo']);
+    return $errors;
+  }
+  /**
+   * @depends testNesting
+   * @param \Sphp\Validators\ErrorMessages $errors
+   */
+  public function testToArray(ErrorMessages $errors) {
+    $array = $errors->toArray();
+    print_r($array);
+    foreach ($array as $key => $val) {
+      $this->assertTrue(is_string($val) || is_array($val));
+    }
+    $this->assertEquals('Foo is wrong', $errors['nest']['foo']);
+  }
+
   /**
    */
   public function testUsageCase() {
@@ -122,6 +163,9 @@ class ErrormessageTest extends TestCase {
     $errors->appendErrorFromTemplate('bar', ['foo', 'foobar']);
     $this->assertCount(2, $errors);
     $this->assertEquals('A bar with foo and foobar is wrong', $errors[0]);
+    $this->assertSame($errors, $errors->append('Foo is still wrong'));
+    $this->assertCount(3, $errors);
+    $this->assertEquals('Foo is still wrong', $errors[1]);
   }
 
 }

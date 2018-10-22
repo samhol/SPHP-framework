@@ -10,8 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Stdlib\Arrays;
-
 /**
  * Abstract superclass for miscellaneous data validation
  *
@@ -22,16 +20,10 @@ use Sphp\Stdlib\Arrays;
 abstract class AbstractValidator implements ValidatorInterface {
 
   /**
-   * stores error messages if not valid
    *
-   * @var string[]
+   * @var ErrorMessages 
    */
-  private $errors;
-
-  /**
-   * @var string[] 
-   */
-  private $messageTemplates = [];
+  private $messages;
 
   /**
    * @var mixed 
@@ -44,16 +36,15 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param string $error error message
    */
   public function __construct(string $error = 'Invalid value') {
-    $this->messageTemplates = [];
-    $this->errors = [];
-    $this->setMessageTemplate(static::INVALID, $error);
+    $this->messages = new ErrorMessages();
+    $this->errors()->setTemplate(static::INVALID, $error);
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->messageTemplates, $this->errors, $this->value);
+    unset($this->messages, $this->value);
   }
 
   /**
@@ -64,8 +55,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->errors = Arrays::copy($this->errors);
-    $this->messageTemplates = Arrays::copy($this->messageTemplates);
+    $this->messages = clone $this->messages;
   }
 
   /**
@@ -76,52 +66,6 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function __invoke($value) {
     return $this->isValid($value);
-  }
-
-  /**
-   * 
-   * @param  string $id
-   * @return string
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the template does not exist
-   */
-  public function getMessageTemplate(string $id): string {
-    if (!array_key_exists($id, $this->messageTemplates)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException("Template with id: '$id' does not exist");
-    }
-    return $this->messageTemplates[$id];
-  }
-
-  /**
-   * 
-   * @param  string $id
-   * @param  string $messageTemplate
-   * @return $this for a fluent interface
-   */
-  public function setMessageTemplate(string $id, string $messageTemplate) {
-    $this->messageTemplates[$id] = $messageTemplate;
-    return $this;
-  }
-  /**
-   * Sets the error message 
-   * 
-   * @param  string $id the id of the message
-   * @param  array $params optional message parameters
-   * @return $this for a fluent interface
-   */
-  public function errorFromTemplate(string $id, array $params = []) {
-    $this->errors[] = vsprintf($this->getMessageTemplate($id), $params);
-    return $this;
-  }
-
-  /**
-   * Sets the error message 
-   * 
-   * @param  string $message the id of the message
-   * @return $this for a fluent interface
-   */
-  public function error(string $message) {
-    $this->errors[] = $message;
-    return $this;
   }
 
   /**
@@ -151,12 +95,16 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return $this for a fluent interface
    */
   public function reset() {
-    $this->errors = [];
+    $this->messages->setEmpty();
     return $this;
   }
 
+  public function errors(): ErrorMessages {
+    return $this->messages;
+  }
+
   public function getErrors(): array {
-    return $this->errors;
+    return $this->messages->toArray();
   }
 
 }

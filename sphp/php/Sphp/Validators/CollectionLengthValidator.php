@@ -39,8 +39,8 @@ class CollectionLengthValidator extends AbstractValidator {
   public function __construct(float $min, float $max, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->setMin($min)->setMax($max);
-    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
+    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
+    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
   }
 
   /**

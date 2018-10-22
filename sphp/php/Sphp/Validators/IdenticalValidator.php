@@ -99,7 +99,7 @@ class IdenticalValidator extends AbstractValidator {
       $valid = $value == $token;
     }
     if (!$valid) {
-      $this->errorFromTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
     }
     return $valid;
   }

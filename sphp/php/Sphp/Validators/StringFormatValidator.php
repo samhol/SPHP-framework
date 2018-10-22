@@ -45,7 +45,7 @@ class StringFormatValidator extends AbstractValidator {
   public function __construct(string $format, $errorMessage = 'Invalid number of parameters given') {
     parent::__construct('Invalid type given. String expected');
     $this->setFormat($format);
-    $this->setMessageTemplate(self::INVALID_FORMAT, $errorMessage);
+    $this->errors()->setTemplate(self::INVALID_FORMAT, $errorMessage);
   }
 
   /**
@@ -67,7 +67,7 @@ class StringFormatValidator extends AbstractValidator {
         return true;
       }
     }
-    $this->errorFromTemplate(self::INVALID_FORMAT);
+    $this->errors()->appendErrorFromTemplate(self::INVALID_FORMAT);
     return false;
   }
 

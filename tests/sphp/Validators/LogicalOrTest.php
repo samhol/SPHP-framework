@@ -12,27 +12,24 @@ namespace Sphp\Validators;
 
 use PHPUnit\Framework\TestCase;
 
-class ValidatorChainTest extends TestCase {
+/**
+ * Description of LogicalOrTest
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license https://opensource.org/licenses/MIT The MIT License
+ * @filesource
+ */
+class LogicalOrTest extends TestCase {
 
   /**
    * @return StringLengthValidator
    */
   public function testConstructor() {
-    $validator = new ValidatorChain();
-    $this->assertCount(0, $validator);
-    $this->assertTrue($validator->isValid('foo'));
-    return $validator;
-  }
-  /**
-   * @depends testConstructor
-   * @return StringLengthValidator
-   */
-  public function testRangeValidation(ValidatorChain $validator) {
-    $strLen = new StringLengthValidator(2, 6);
     $patt = new PatternValidator("/^[a-zA-Z]+$/", "Please insert alphabets only");
-    $validator->appendValidator($strLen, true);
-    $validator->appendValidator($patt);
-    $this->assertCount(2, $validator);
+    $group = new InArrayValidator([null]);
+    $validator = new LogicalOr($group, $patt);
+    $this->assertFalse($validator->isValid(1));
+    $this->assertTrue($validator->isValid(null));
     $this->assertTrue($validator->isValid('foo'));
     return $validator;
   }

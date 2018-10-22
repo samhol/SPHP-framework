@@ -41,8 +41,8 @@ class RangeValidator extends AbstractLimitValidator {
   public function __construct(float $min, float $max, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->setRange($min, $max);
-    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
-    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
+    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
+    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
   }
 
   private function integrityCheck() {
@@ -78,12 +78,12 @@ class RangeValidator extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->errorFromTemplate(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->errors()->appendErrorFromTemplate(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->errorFromTemplate(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->errors()->appendErrorFromTemplate(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     }

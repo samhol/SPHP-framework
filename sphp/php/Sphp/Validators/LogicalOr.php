@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class LogicalOr extends AbstractLogicalValidator {
+class LogicalOr extends AbstractValidator {
 
   /**
    * @var ValidatorInterface
@@ -30,24 +30,20 @@ class LogicalOr extends AbstractLogicalValidator {
   private $b;
 
   /**
-   * @var string[]
-   */
-  private $errors;
-
-  /**
    * Constructor
    */
   public function __construct(ValidatorInterface $a, ValidatorInterface $b) {
     $this->a = $a;
     $this->b = $b;
-    $this->errors = [];
+    parent::__construct();
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->a, $this->b, $this->errors);
+    unset($this->a, $this->b);
+    parent::__destruct();
   }
 
   /**
@@ -62,6 +58,14 @@ class LogicalOr extends AbstractLogicalValidator {
     $this->b = clone $this->b;
   }
 
+  public function getLeftValidator(): ValidatorInterface {
+    return $this->a;
+  }
+
+  public function getRightValidator(): ValidatorInterface {
+    return $this->b;
+  }
+
   /**
    * Invoke validator as command
    *
@@ -72,39 +76,14 @@ class LogicalOr extends AbstractLogicalValidator {
     return $this->isValid($value);
   }
 
-  public function getErrors(): array {
-    return $this->errors;
-  }
-
-  /**
-   * Sets the validated value
-   * 
-   * @param  mixed $value the validated value
-   * @return $this for a fluent interface
-   */
-  public function setValue($value) {
-    $this->reset();
-    $this->value = $value;
-    return $this;
-  }
-
-  /**
-   * Resets the validator to for revalidation
-   *
-   * @return $this for a fluent interface
-   */
-  public function reset() {
-    $this->errors = [];
-    return $this;
-  }
-
   public function isValid($value): bool {
     $this->setValue($value);
     $validA = $this->a->isValid($value);
     $validB = $this->b->isValid($value);
     $valid = $validA || $validB;
-    if (!valid) {
-      $this->errors = array_merge($this->a->getErrors(), $this->b->getErrors());
+    if (!$valid) {
+      $this->errors()->mergeCollection($this->a->errors());
+      $this->errors()->mergeCollection($this->b->errors());
     }
     return $valid;
   }

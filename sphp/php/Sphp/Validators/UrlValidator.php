@@ -25,7 +25,7 @@ class UrlValidator extends AbstractValidator {
       $value = (string) $value;
     }
     if (filter_var($value, \FILTER_VALIDATE_URL) === false) {
-      $this->errorFromTemplate(self::INVALID);
+      $this->errors()->setTemplate(self::INVALID);
       return false;
     }
     return true;

@@ -15,6 +15,8 @@ use ArrayAccess;
 use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Exceptions\InvalidArgumentException;
+use Traversable;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Description of ErrorMessages
@@ -80,9 +82,10 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
   }
 
   /**
+   * Sets an id template pair
    * 
-   * @param  string $id
-   * @param  string $template
+   * @param  string $id the id pointing to the template
+   * @param  string $template the template text
    * @return $this for a fluent interface
    */
   public function setTemplate(string $id, string $template) {
@@ -93,8 +96,8 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
   /**
    * Checks whether a template is set or not
    * 
-   * @param  string $id
-   * @return bool
+   * @param  string $id the id pointing to the template
+   * @return bool true if template exists, otherwise false
    */
   public function containsTemplate(string $id): bool {
     return array_key_exists($id, $this->templates);
@@ -103,7 +106,7 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
   /**
    * Sets the error message 
    * 
-   * @param  string $id the id of the message
+   * @param  string $id the id pointing to the template
    * @param  array $params optional message parameters
    * @return $this for a fluent interface
    */
@@ -119,78 +122,23 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
    * @return $this for a fluent interface
    */
   public function append($content) {
-    if (is_array($content)) {
-      $this->appendArray($content);
-    } else if ($content instanceof ErrorMessages) {
-      $this->appendCollection($content);
-    } else if (is_string($content)) {
-      $this->errors[] = $content;
-    } else {
-      throw new InvalidArgumentException('Tried to append content of type: ' . gettype($content));
+    $this[] = $content;
+    return $this;
+  }
+
+  /**
+   * Merges a collection of error messages 
+   * 
+   * @param  array|Traversable $errors collection to merge
+   * @return $this for a fluent interface
+   * @throws InvalidArgumentException if the merging fails
+   */
+  public function mergeCollection($errors) {
+    if (!is_array($errors) && !$errors instanceof \Traversable) {
+      throw new InvalidArgumentException('Cannot merge ' . gettype($errors) . ' type');
     }
-    return $this;
-  }
-
-  /**
-   * Appends an error message
-   * 
-   * @param  string $message the message to append
-   * @return $this for a fluent interface
-   */
-  public function appendError(string $message) {
-    $this->errors[] = $message;
-    return $this;
-  }
-
-  /**
-   * Appends a collection of error messages 
-   * 
-   * @param  ErrorMessages $errors collection to append
-   * @return $this for a fluent interface
-   */
-  public function appendCollection(ErrorMessages $errors) {
-    $this->errors[] = $errors;
-    return $this;
-  }
-
-  /**
-   * Appends an array of error messages 
-   * 
-   * @param  array $errors array to append
-   * @return ErrorMessages appended object
-   */
-  public function appendArray(array $errors): ErrorMessages {
-    $obj = new ErrorMessages();
-    $obj->mergeArray($errors);
-    $this->errors[] = $obj;
-    return $obj;
-  }
-
-  /**
-   * Appends a collection of error messages 
-   * 
-   * @param  ErrorMessages $errors collection to append
-   * @return $this for a fluent interface
-   */
-  public function mergeCollection(ErrorMessages $errors) {
     foreach ($errors as $error) {
-      $this->errors[] = $error;
-    }
-    return $this;
-  }
-
-  /**
-   * Appends an array of error messages 
-   * 
-   * @param  array $errors array to append
-   * @return $this for a fluent interface
-   */
-  public function mergeArray(array $errors) {
-    foreach ($errors as $error) {
-      if (!is_string($error)) {
-        throw new InvalidArgumentException('Merged array can ontain only strings: ' . gettype($error) . ' found');
-      }
-      $this->errors[] = $error;
+      $this[] = $error;
     }
     return $this;
   }
@@ -206,7 +154,15 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
   }
 
   public function toArray(): array {
-    return $this->errors;
+    $arr = [];
+    foreach ($this as $key => $value) {
+      if ($value instanceof ErrorMessages) {
+        $arr[$key] = $value->toArray();
+      } else {
+        $arr[$key] = $value;
+      }
+    }
+    return $arr;
   }
 
   public function count(): int {
@@ -266,13 +222,22 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
   }
 
   public function offsetSet($offset, $value) {
-    if (!is_string($value) && !$value instanceof ErrorMessages) {
-      throw new InvalidArgumentException('Value must be a string or an object of type ' . ErrorMessages::class);
+    if ($value instanceof ErrorMessages || is_string($value)) {
+      $data = $value;
+    } else if ($value instanceof \Traversable) {
+      $value = iterator_to_array($value, true);
     }
-    if ($offset === null) {
-      $this->errors[] = $value;
+    if (is_array($value)) {
+      $data = new ErrorMessages();
+      $data->mergeCollection($value);
+    } if (is_string($value) || $value instanceof ErrorMessages) {
+      if ($offset === null) {
+        $this->errors[] = $data;
+      } else {
+        $this->errors[$offset] = $data;
+      }
     } else {
-      $this->errors[$offset] = $value;
+      throw new InvalidArgumentException('Tried to append content of type: ' . gettype($value));
     }
   }
 

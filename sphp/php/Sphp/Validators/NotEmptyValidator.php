@@ -57,7 +57,7 @@ class NotEmptyValidator extends AbstractValidator {
       $valid = false;
     }
     if (!$valid) {
-      $this->errorFromTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
     }
     return $valid;
   }

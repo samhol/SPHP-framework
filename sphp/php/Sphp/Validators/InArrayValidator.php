@@ -38,7 +38,7 @@ class InArrayValidator extends AbstractValidator {
    */
   public function __construct(array $haystack = []) {
     parent::__construct();
-    $this->setMessageTemplate(static::INVALID, 'Value %s is not in collection');
+    $this->errors()->setTemplate(static::INVALID, 'Value %s is not in collection');
     $this->setHaystack($haystack);
   }
 
@@ -122,7 +122,7 @@ class InArrayValidator extends AbstractValidator {
       }
     }
     if (!$valid) {
-      $this->errorFromTemplate(static::INVALID);
+      $this->errors()->appendErrorFromTemplate(static::INVALID, [$this->getValue()]);
     }
     return $valid;
   }

@@ -18,7 +18,6 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\I18n\Translatable;
 use ArrayAccess;
 use Sphp\I18n\Messages\Msg;
-
 use Sphp\Exceptions\InvalidArgumentException;
 use Traversable;
 
@@ -29,7 +28,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TranslatableCollection implements Iterator, TranslatableCollectionInterface, ArrayAccess, Countable ,Arrayable{
+class TranslatableCollection implements Iterator, TranslatableCollectionInterface, ArrayAccess, Countable, Arrayable {
 
   /**
    * Array that holds the messages

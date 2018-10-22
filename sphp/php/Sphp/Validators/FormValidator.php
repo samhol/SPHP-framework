@@ -72,7 +72,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     $valid = true;
     if (!is_array($value)) {
       //echo 'Invalid type given. String, integer or float expected';
-      $this->errorFromTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
       return false;
     }
     foreach ($this->validators as $inputName => $validator) {
@@ -84,7 +84,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       }
     }
     if (!$valid) {
-      $this->errorFromTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
     }
     return $valid;
   }

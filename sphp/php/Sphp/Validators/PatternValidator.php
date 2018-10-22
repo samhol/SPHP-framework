@@ -50,7 +50,7 @@ class PatternValidator extends AbstractValidator {
     if ($pattern !== null) {
       $this->setPattern($pattern);
     }
-    $this->setMessageTemplate(self::NOT_MATCH, $errorMessage);
+    $this->errors()->setTemplate(self::NOT_MATCH, $errorMessage);
   }
 
   /**
@@ -72,12 +72,12 @@ class PatternValidator extends AbstractValidator {
     $this->setValue($value);
     if (!is_string($value) && !is_int($value) && !is_float($value)) {
       //echo 'Invalid type given. String, integer or float expected';
-      $this->errorFromTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
       return false;
     }
     if (!Strings::match($value, $this->pattern)) {
       //echo $value . $this->pattern;
-      $this->errorFromTemplate(self::NOT_MATCH);
+      $this->errors()->appendErrorFromTemplate(self::NOT_MATCH);
       return false;
     }
     return true;
