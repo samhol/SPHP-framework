@@ -7,15 +7,15 @@ namespace Sphp\Validators;
 
 $validator = new ValidatorChain();
 $validator->appendValidator(new StringLengthValidator(2, 6), true);
-$validator->appendValidator(new PatternValidator("/^[a-zA-Z]+$/", "Please insert alphabets only"));
+$validator->appendValidator(new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only"));
 
 echo "validating string '_illegal_':\n";
 var_dump($validator->isValid('_illegal_')) . "\n";
-print_r($validator->getErrors()) . "\n";
+print_r($validator->errorsToArray()) . "\n";
 
 echo "validating string 'lega3':\n";
 var_dump($validator->isValid('lega3'));
-print_r($validator->getErrors()) . "\n";
+print_r($validator->errorsToArray()) . "\n";
 
 echo "validating string 'legal':\n";
 var_dump($validator('legal'));

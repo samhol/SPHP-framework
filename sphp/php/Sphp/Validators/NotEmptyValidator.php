@@ -35,14 +35,13 @@ namespace Sphp\Validators;
  */
 class NotEmptyValidator extends AbstractValidator {
 
-  const IS_EMPTY = '_empty_';
 
   /**
    * Constructs a new validator
    *
    * @param string $message
    */
-  public function __construct(string $message = "Value is empty") {
+  public function __construct(string $message = 'Value is empty') {
     parent::__construct($message);
   }
 

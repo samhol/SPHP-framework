@@ -2,7 +2,7 @@
 
 namespace Sphp\Validators;
 
-$validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
+$validatorInterface = \Sphp\Manual\api()->classLinker(Validator::class);
 $validatorAggregate = \Sphp\Manual\api()->classLinker(ValidatorChain::class);
 
 \Sphp\Manual\md(<<<MD

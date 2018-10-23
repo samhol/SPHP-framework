@@ -22,16 +22,52 @@ use PHPUnit\Framework\TestCase;
 class LogicalOrTest extends TestCase {
 
   /**
+   * @var LogicalOr
+   */
+  protected $validator;
+
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
+    $group = new InArrayValidator([null]);
+    $this->validator = new LogicalOr($group, $patt);
+  }
+
+  /**
+   * Tears down the fixture, for example, closes a network connection.
+   * This method is called after a test is executed.
+   */
+  protected function tearDown() {
+    unset($this->validator);
+  }
+
+  /**
    * @return StringLengthValidator
    */
   public function testConstructor() {
-    $patt = new PatternValidator("/^[a-zA-Z]+$/", "Please insert alphabets only");
-    $group = new InArrayValidator([null]);
-    $validator = new LogicalOr($group, $patt);
-    $this->assertFalse($validator->isValid(1));
-    $this->assertTrue($validator->isValid(null));
-    $this->assertTrue($validator->isValid('foo'));
-    return $validator;
+    $this->assertCount(0, $this->validator->errors());
+  }
+
+  /**
+   */
+  public function testValidValue() {
+    $this->assertTrue($this->validator->isValid(null));
+    $this->assertCount(0, $this->validator->errors());
+    $this->assertTrue($this->validator->isValid('foo'));
+    $this->assertCount(0, $this->validator->errors());
+  }
+
+  /**
+   */
+  public function testInvalidValue() {
+    $v = $this->validator;
+    $this->assertFalse($v(1));
+    $this->assertFalse($this->validator->isValid(1));
+    $errors = $this->validator->errors()->toArray();
+    $this->assertContains('Please insert alphabets only', $errors);
   }
 
 }

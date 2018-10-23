@@ -29,7 +29,7 @@ class ValidatorChainTest extends TestCase {
    */
   public function testRangeValidation(ValidatorChain $validator) {
     $strLen = new StringLengthValidator(2, 6);
-    $patt = new PatternValidator("/^[a-zA-Z]+$/", "Please insert alphabets only");
+    $patt = new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only");
     $validator->appendValidator($strLen, true);
     $validator->appendValidator($patt);
     $this->assertCount(2, $validator);

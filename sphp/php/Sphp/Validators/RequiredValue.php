@@ -35,7 +35,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RequiredValueValidator extends AbstractValidator {
+class RequiredValue extends AbstractValidator {
 
   public function __construct(string $error = 'Please insert a value') {
     parent::__construct($error);

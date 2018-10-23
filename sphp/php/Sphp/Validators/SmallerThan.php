@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SmallerThanValidator extends AbstractLimitValidator {
+class SmallerThan extends AbstractLimitValidator {
 
   /**
    * @var float 

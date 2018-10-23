@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ValidatorInterface {
+interface Validator {
 
   /**
    * `ID` for default error message
@@ -37,5 +37,5 @@ interface ValidatorInterface {
    *
    * @return string[] error messages
    */
-  public function getErrors(): array;
+  public function errors(): ErrorMessages;
 }

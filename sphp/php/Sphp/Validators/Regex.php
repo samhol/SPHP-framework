@@ -22,7 +22,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PatternValidator extends AbstractValidator {
+class Regex extends AbstractValidator {
 
   /**
    * `ID` for error message describing values not matching a given regular expression

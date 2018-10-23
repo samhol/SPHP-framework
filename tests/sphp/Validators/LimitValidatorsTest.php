@@ -28,8 +28,8 @@ class LimitValidatorsTest extends TestCase {
    * @param  float $limit
    */
   public function testValidSmallerThan(float $limit) {
-    $smallerThan = new SmallerThanValidator($limit, true);
-    $greaterThan = new GreaterThanValidator($limit, true);
+    $smallerThan = new SmallerThan($limit, true);
+    $greaterThan = new GreaterThan($limit, true);
     $this->assertTrue($smallerThan->isValid($limit));
     $this->assertTrue($greaterThan->isValid($limit));
     $this->assertTrue($smallerThan->isValid(($limit - .1)));

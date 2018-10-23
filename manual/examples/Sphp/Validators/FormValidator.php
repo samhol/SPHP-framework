@@ -5,9 +5,9 @@ namespace Sphp\Validators;
 $validator = (new FormValidator())
         ->set("not_empty", new NotEmptyValidator())
         ->set("url", new UrlValidator())
-        ->set("num", new PatternValidator("/^\d+$/", "Please insert numbers only"))
-        ->set("p1", new PatternValidator("/^[a-zA-Z]+$/", "Please insert alphabets only"))
-        ->set("p2", new PatternValidator("/^([a-zA-Z]){3}+$/", "Please insert exactly 3 alphabets"));
+        ->set("num", new Regex("/^\d+$/", "Please insert numbers only"))
+        ->set("p1", new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only"))
+        ->set("p2", new Regex("/^([a-zA-Z]){3}+$/", "Please insert exactly 3 alphabets"));
 
 $correctData = [
     "not_empty" => "foo",

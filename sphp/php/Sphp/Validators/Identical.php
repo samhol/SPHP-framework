@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class IdenticalValidator extends AbstractValidator {
+class Identical extends AbstractValidator {
 
   /**
    * maximum length of the valid string

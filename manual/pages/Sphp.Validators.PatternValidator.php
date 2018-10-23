@@ -4,7 +4,7 @@ namespace Sphp\Validators;
 
 use Sphp\Manual;
 
-$patrnvLink = Manual\api()->classLinker(PatternValidator::class);
+$patrnvLink = Manual\api()->classLinker(Regex::class);
 
 Manual\md(<<<MD
 ##The $patrnvLink class		

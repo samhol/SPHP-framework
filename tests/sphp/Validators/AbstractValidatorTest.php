@@ -25,7 +25,7 @@ class AbstractValidatorTest extends TestCase {
 
   public function testDefault(): AbstractValidator {
     $validator = $this->createValidator('Foo is broken');
-    $this->assertEquals('Foo is broken', $validator->errors()->getTemplate(ValidatorInterface::INVALID));
+    $this->assertEquals('Foo is broken', $validator->errors()->getTemplate(Validator::INVALID));
     return $validator;
   }
 

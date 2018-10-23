@@ -19,7 +19,7 @@ use Countable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ValidatorChain implements ValidatorInterface, Countable {
+class ValidatorChain extends AbstractValidator implements Countable {
 
   /**
    *
@@ -43,15 +43,15 @@ class ValidatorChain implements ValidatorInterface, Countable {
    * Constructor
    */
   public function __construct() {
+    parent::__construct();
     $this->validators = [];
-    $this->errors = [];
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->validators, $this->errors);
+    unset($this->validators);
   }
 
   /**
@@ -62,17 +62,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->errors = clone $this->errors;
-  }
-
-  /**
-   * Invoke validator as command
-   *
-   * @param  mixed $value
-   * @return bool
-   */
-  public function __invoke($value) {
-    return $this->isValid($value);
+    $this->errors = \Sphp\Stdlib\Arrays::copy($this->errors);
   }
 
   /**
@@ -117,10 +107,6 @@ class ValidatorChain implements ValidatorInterface, Countable {
     return $this;
   }
 
-  public function getErrors(): array {
-    return $this->errors;
-  }
-
   /**
    * Sets the validated value
    * 
@@ -130,16 +116,6 @@ class ValidatorChain implements ValidatorInterface, Countable {
   public function setValue($value) {
     $this->reset();
     $this->value = $value;
-    return $this;
-  }
-
-  /**
-   * Resets the validator to for revalidation
-   *
-   * @return $this for a fluent interface
-   */
-  public function reset() {
-    $this->errors = [];
     return $this;
   }
 
@@ -154,7 +130,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
       $break = $validator['break'];
       if (!$v->isValid($value)) {
         $valid = false;
-        $this->errors[] = $v->getErrors();
+        $this->errors()->mergeCollection($v->errors());
         if ($break) {
           break;
         }
@@ -170,7 +146,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    * @param  boolean $break
    * @return $this for a fluent interface
    */
-  public function appendValidator(ValidatorInterface $v, bool $break = false) {
+  public function appendValidator(Validator $v, bool $break = false) {
     $data = [
         'validator' => $v,
         'break' => (bool) $break,

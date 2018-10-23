@@ -12,7 +12,7 @@ namespace Sphp\Validators;
 
 use PHPUnit\Framework\TestCase;
 
-class IdenticalValidatorTest extends TestCase {
+class IdenticalTest extends TestCase {
 
   public function nonStrictData(): array {
     $data[] = [1, 1, true];
@@ -35,7 +35,7 @@ class IdenticalValidatorTest extends TestCase {
    * @param boolean $valid
    */
   public function testNonStrict($token, $value, $valid) {
-    $validator = new IdenticalValidator($token);
+    $validator = new Identical($token);
     $validator->setStrict(false);
     $this->assertSame($valid, $validator->isValid($value));
   }
@@ -66,7 +66,7 @@ class IdenticalValidatorTest extends TestCase {
    * @param boolean $valid
    */
   public function testStrict($token, $value, $valid) {
-    $validator = new IdenticalValidator($token);
+    $validator = new Identical($token);
     $validator->setStrict(true);
     $this->assertSame($valid, $validator->isValid($value));
   }

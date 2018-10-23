@@ -25,9 +25,9 @@ class FormValidatorTest extends TestCase {
    */
   protected function setUp() {
     $this->validator = (new FormValidator())
-            ->set('num', new PatternValidator("/^\d+$/", 'Please insert numbers only'))
-            ->set('p1', new PatternValidator("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
-            ->set('p2', new PatternValidator("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
+            ->set('num', new Regex("/^\d+$/", 'Please insert numbers only'))
+            ->set('p1', new Regex("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
+            ->set('p2', new Regex("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
   }
 
   /**
@@ -59,7 +59,7 @@ class FormValidatorTest extends TestCase {
   public function testInvalidInputType($value) {
     $this->assertFalse($this->validator->isValid($value));
     $this->AssertCount(0, $this->validator->getInputErrors());
-    $this->AssertCount(1, $this->validator->getErrors());
+    $this->AssertCount(1, $this->validator->errorsToArray());
   }
 
   public function invalidData() {

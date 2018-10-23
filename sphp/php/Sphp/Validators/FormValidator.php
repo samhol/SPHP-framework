@@ -80,7 +80,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       if (!$validator->isValid($inputValue)) {
         $valid = false;
         //var_dump($validator->getErrors());
-        $this->inputErrors[$inputName] = $validator->getErrors();
+        $this->inputErrors[$inputName] = $validator->errorsToArray();
       }
     }
     if (!$valid) {
@@ -137,7 +137,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * @param  ValidatorInterface $validator the validator object
    * @return $this for a fluent interface
    */
-  public function set(string $inputName, ValidatorInterface $validator) {
+  public function set(string $inputName, Validator $validator) {
     $this->validators[$inputName] = $validator;
     return $this;
   }

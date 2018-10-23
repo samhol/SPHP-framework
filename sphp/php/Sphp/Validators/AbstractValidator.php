@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractValidator implements ValidatorInterface {
+abstract class AbstractValidator implements Validator {
 
   /**
    *
@@ -103,7 +103,7 @@ abstract class AbstractValidator implements ValidatorInterface {
     return $this->messages;
   }
 
-  public function getErrors(): array {
+  public function errorsToArray(): array {
     return $this->messages->toArray();
   }
 

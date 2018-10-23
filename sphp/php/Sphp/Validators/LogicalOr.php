@@ -32,7 +32,7 @@ class LogicalOr extends AbstractValidator {
   /**
    * Constructor
    */
-  public function __construct(ValidatorInterface $a, ValidatorInterface $b) {
+  public function __construct(Validator $a, Validator $b) {
     $this->a = $a;
     $this->b = $b;
     parent::__construct();
@@ -58,22 +58,12 @@ class LogicalOr extends AbstractValidator {
     $this->b = clone $this->b;
   }
 
-  public function getLeftValidator(): ValidatorInterface {
+  public function getLeftValidator(): Validator {
     return $this->a;
   }
 
-  public function getRightValidator(): ValidatorInterface {
+  public function getRightValidator(): Validator {
     return $this->b;
-  }
-
-  /**
-   * Invoke validator as command
-   *
-   * @param  mixed $value
-   * @return bool
-   */
-  public function __invoke($value) {
-    return $this->isValid($value);
   }
 
   public function isValid($value): bool {
