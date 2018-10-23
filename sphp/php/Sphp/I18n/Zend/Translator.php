@@ -77,7 +77,7 @@ class Translator extends AbstractTranslator {
    * 
    * @param string $name
    * @param mixed[] $arguments
-   * @return \Sphp\I18n\Zend\Translator
+   * @return mixed
    * @throws BadMethodCallException
    */
   public function __call($name, array $arguments = []) {
@@ -119,12 +119,7 @@ class Translator extends AbstractTranslator {
     return $this->getZend()->getLocale();
   }
 
-  /**
-   * 
-   * @param string $lang
-   * @return $this for a fluent interface
-   */
-  public function setLang(string $lang) {
+  public function setLang(string $lang = null) {
     $this->getZend()->setLocale($lang);
     return $this;
   }

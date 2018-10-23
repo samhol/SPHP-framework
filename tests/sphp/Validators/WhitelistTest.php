@@ -19,10 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class LogicalOrTest extends TestCase {
+class WhitelistTest extends TestCase {
 
   /**
-   * @var LogicalOr
+   * @var WhitelistValidator
    */
   protected $validator;
 
@@ -31,9 +31,7 @@ class LogicalOrTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
-    $group = new InArrayValidator([null]);
-    $this->validator = new LogicalOr($group, $patt);
+    $this->validator = new WhitelistValidator(['a', '0', 0], 'An illegal key found');
   }
 
   /**
@@ -45,29 +43,35 @@ class LogicalOrTest extends TestCase {
   }
 
   /**
-   * @return StringLength
    */
   public function testConstructor() {
     $this->assertCount(0, $this->validator->errors());
+    $this->assertEquals(['a', '0', 0], $this->validator->getWhitelist());
+  }
+
+  /**
+   */
+  public function testChangeWhitelist() {
+    $this->validator->setWhitelist([1, 2]);
+    $this->assertEquals([1, 2], $this->validator->getWhitelist());
   }
 
   /**
    */
   public function testValidValue() {
-    $this->assertTrue($this->validator->isValid(null));
+    $this->assertTrue($this->validator->isValid([0 => 'foo']));
     $this->assertCount(0, $this->validator->errors());
-    $this->assertTrue($this->validator->isValid('foo'));
+    $this->assertTrue($this->validator->isValid(['0' => 'foo']));
+    $this->assertTrue($this->validator->isValid(['a' => 'foo']));
     $this->assertCount(0, $this->validator->errors());
   }
 
   /**
    */
   public function testInvalidValue() {
-    $v = $this->validator;
-    $this->assertFalse($v(1));
-    $this->assertFalse($this->validator->isValid(1));
+    $this->assertFalse($this->validator->isValid([1 => 'foo']));
     $errors = $this->validator->errors()->toArray();
-    $this->assertContains('Please insert alphabets only', $errors);
+    $this->assertContains('An illegal key found', $errors);
   }
 
 }

@@ -4,7 +4,7 @@ namespace Sphp\Validators;
 
 use Sphp\Manual;
 
-$strLenValLink = Manual\api()->classLinker(StringLengthValidator::class);
+$strLenValLink = Manual\api()->classLinker(StringLength::class);
 
 Manual\md(<<<MD
 ###The $strLenValLink class	

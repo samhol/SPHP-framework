@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 class ValidatorChainTest extends TestCase {
 
   /**
-   * @return StringLengthValidator
+   * @return StringLength
    */
   public function testConstructor() {
     $validator = new ValidatorChain();
@@ -25,10 +25,10 @@ class ValidatorChainTest extends TestCase {
   }
   /**
    * @depends testConstructor
-   * @return StringLengthValidator
+   * @return StringLength
    */
   public function testRangeValidation(ValidatorChain $validator) {
-    $strLen = new StringLengthValidator(2, 6);
+    $strLen = new StringLength(2, 6);
     $patt = new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only");
     $validator->appendValidator($strLen, true);
     $validator->appendValidator($patt);

@@ -11,7 +11,7 @@
 namespace Sphp\I18n;
 
 use Sphp\Config\Locale;
-use Sphp\Validators\StringFormatValidator;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -73,13 +73,13 @@ abstract class AbstractTranslator implements TranslatorInterface {
    */
   protected function format(string $message, array $args = null, bool $translateArgs = false): string {
     if (!empty($args)) {
-      if (!StringFormatValidator::validate($message, $args)) {
-        throw new InvalidArgumentException('Invalid number of arguments presented');
-      }
+      $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+      $thrower->start();
       if ($translateArgs) {
         $args = $this->get($args);
       }
       $message = vsprintf($message, $args);
+      $thrower->stop();
     }
     return $message;
   }

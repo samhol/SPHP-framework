@@ -15,10 +15,10 @@ use PHPUnit\Framework\TestCase;
 class StringLengthValidatorTest extends TestCase {
 
   /**
-   * @return StringLengthValidator
+   * @return StringLength
    */
-  public function testRangeValidation(): StringLengthValidator {
-    $validator = new StringLengthValidator(0, 5);
+  public function testRangeValidation(): StringLength {
+    $validator = new StringLength(0, 5);
     $this->assertTrue($validator->isRangeValidator());
     $this->assertFalse($validator->isLowerBoundValidator());
     $this->assertFalse($validator->isValid('foobar'));
@@ -32,10 +32,10 @@ class StringLengthValidatorTest extends TestCase {
 
   /**
    * @depends testRangeValidation
-   * @param  StringLengthValidator $validator
-   * @return StringLengthValidator
+   * @param  StringLength $validator
+   * @return StringLength
    */
-  public function testLowerBoundValidation(StringLengthValidator $validator): StringLengthValidator {
+  public function testLowerBoundValidation(StringLength $validator): StringLength {
     $this->assertSame($validator, $validator->setLowerBoundValidation(2));
     $this->assertTrue($validator->isLowerBoundValidator());
     $this->assertFalse($validator->isRangeValidator());
@@ -47,10 +47,10 @@ class StringLengthValidatorTest extends TestCase {
 
   /**
    * @depends testLowerBoundValidation
-   * @param  StringLengthValidator $validator
-   * @return StringLengthValidator
+   * @param  StringLength $validator
+   * @return StringLength
    */
-  public function testUpperBoundValidation(StringLengthValidator $validator): StringLengthValidator {
+  public function testUpperBoundValidation(StringLength $validator): StringLength {
     $this->assertSame($validator, $validator->setUpperBoundValidation(5));
     $this->assertTrue($validator->isUpperBoundValidator());
     $this->assertFalse($validator->isLowerBoundValidator());
@@ -65,7 +65,7 @@ class StringLengthValidatorTest extends TestCase {
    * @expectedException \Sphp\Exceptions\InvalidArgumentException
    */
   public function testInvalidFileName() {
-    $validator = new StringLengthValidator(-1, 5);
+    $validator = new StringLength(-1, 5);
   }
 
 }

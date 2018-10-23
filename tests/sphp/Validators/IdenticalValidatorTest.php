@@ -14,30 +14,34 @@ use PHPUnit\Framework\TestCase;
 
 class IdenticalTest extends TestCase {
 
-  public function nonStrictData(): array {
-    $data[] = [1, 1, true];
-    $data[] = [1, '1', true];
-    $data[] = ['1', '1', true];
-    $data[] = ['', 0, true];
-    $data[] = [0, '', true];
-    $data[] = [0, null, true];
-    $data[] = ['1', 1, true];
-    $data[] = [true, 1, true];
-    $data[] = [true, '1', true];
+  public function nonStrictValid(): array {
+    $data[] = [1, 1];
+    $data[] = [0, 0.000];
+    $data[] = [PHP_INT_MAX, '' . PHP_INT_MAX];
+    $data[] = ['1', '1'];
+    $data[] = ['', 0];
+   // $data[] = [0, ''];
+    $data[] = [0, '0'];
+    $data[] = [0, null];
+    $data[] = ['1', 1];
+    $data[] = [true, 1];
+    $data[] = [new \stdClass, new \stdClass];
+    $data[] = [[0 => '0', [1]], [1 => [1], 0 => 0]];
     return $data;
   }
 
   /**
    *
-   * @dataProvider nonStrictData
+   * @dataProvider nonStrictValid
    * @param mixed $token
    * @param mixed $value
    * @param boolean $valid
    */
-  public function testNonStrict($token, $value, $valid) {
+  public function testNonStrictValid($token, $value) {
     $validator = new Identical($token);
     $validator->setStrict(false);
-    $this->assertSame($valid, $validator->isValid($value));
+
+    $this->assertTrue($validator->isValid($value));
   }
 
   public function strictData() {

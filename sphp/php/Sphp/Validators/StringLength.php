@@ -22,7 +22,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class StringLengthValidator extends AbstractValidator {
+class StringLength extends AbstractValidator {
 
   const TOO_SHORT = '_short_';
   const TOO_LONG = '_long_';

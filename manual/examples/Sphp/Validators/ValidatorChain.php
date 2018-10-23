@@ -6,7 +6,7 @@ namespace Sphp\Validators;
 //Translator::useTextDomain("Sphp.Validation");
 
 $validator = new ValidatorChain();
-$validator->appendValidator(new StringLengthValidator(2, 6), true);
+$validator->appendValidator(new StringLength(2, 6), true);
 $validator->appendValidator(new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only"));
 
 echo "validating string '_illegal_':\n";

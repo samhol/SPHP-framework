@@ -2,7 +2,7 @@
 
 namespace Sphp\Validators;
 
-$validator = (new StringLengthValidator());
+$validator = (new StringLength());
 echo "Lower bound validation:\n";
 $validator->setLowerBoundValidation(4);
 var_dump($validator->isValid('лдэ')) . "\n";

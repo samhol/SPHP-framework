@@ -145,7 +145,6 @@ class ErrormessageTest extends TestCase {
    */
   public function testToArray(ErrorMessages $errors) {
     $array = $errors->toArray();
-    print_r($array);
     foreach ($array as $key => $val) {
       $this->assertTrue(is_string($val) || is_array($val));
     }

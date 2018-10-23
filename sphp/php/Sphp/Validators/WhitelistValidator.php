@@ -30,11 +30,17 @@ class WhitelistValidator extends AbstractValidator {
    * Constructs a new validator
    * 
    * @param array $whitelist
+   * @param string $errorText
    */
-  public function __construct(array $whitelist = []) {
+  public function __construct(array $whitelist, string $errorText = 'An illegal key found') {
     parent::__construct('Array expected');
-    $this->errors()->setTemplate(self::ILLEGAL_KEY, 'An illegal key found');
+    $this->errors()->setTemplate(self::ILLEGAL_KEY, $errorText);
     $this->setWhitelist($whitelist);
+  }
+  
+  public function __destruct() {
+    unset($this->whitelist);
+    parent::__destruct();
   }
 
   public function getWhitelist(): array {
@@ -48,12 +54,12 @@ class WhitelistValidator extends AbstractValidator {
 
   public function isValid($param): bool {
     if (!is_array($param)) {
-      $this->errors()->setTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
       return false;
     }
-    foreach ($param as $key => $item) {
-      if (!in_array($key, $this->whitelist)) {
-        $this->errors()->setTemplate(self::ILLEGAL_KEY);
+    foreach (array_keys($param) as $key) {
+      if (!in_array($key, $this->whitelist, true)) {
+        $this->errors()->appendErrorFromTemplate(self::ILLEGAL_KEY);
         return false;
       }
     }
