@@ -107,17 +107,6 @@ class ValidatorChain extends AbstractValidator implements Countable {
     return $this;
   }
 
-  /**
-   * Sets the validated value
-   * 
-   * @param  mixed $value the validated value
-   * @return $this for a fluent interface
-   */
-  public function setValue($value) {
-    $this->reset();
-    $this->value = $value;
-    return $this;
-  }
 
   public function isValid($value): bool {
     $this->setValue($value);

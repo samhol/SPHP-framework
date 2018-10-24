@@ -87,10 +87,10 @@ class CollectionLengthValidator extends AbstractValidator {
         $length = iterator_count($value);
       }
       if ($this->min !== null && $length < $this->min) {
-        $this->errors()->appendErrorFromTemplate(static::SMALLER_ERROR . [$this->min]);
-      }
-      if ($this->max !== null && $length < $this->max) {
-        $this->errors()->appendErrorFromTemplate(static::LARGER_ERROR . [$this->max]);
+        $this->errors()->appendErrorFromTemplate(static::SMALLER_ERROR, [$this->min]);
+        return false;
+      } else if ($this->max !== null && $length > $this->max) {
+        $this->errors()->appendErrorFromTemplate(static::LARGER_ERROR, [$this->max]);
         return false;
       }
     }

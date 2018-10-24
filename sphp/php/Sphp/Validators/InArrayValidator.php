@@ -50,17 +50,6 @@ class InArrayValidator extends AbstractValidator {
   }
 
   /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    $this->haystack = Arrays::copy($this->haystack);
-  }
-
-  /**
    * Returns the haystack to validate against
    * 
    * @return array the haystack to validate against

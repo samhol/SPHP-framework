@@ -53,22 +53,8 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     return $this->inputErrors;
   }
 
-  /**
-   * Resets the validator to for revalidation
-   * 
-   * @return $this for a fluent interface
-   */
-  public function reset() {
-    foreach ($this->validators as $validator) {
-      $validator->reset();
-    }
-    $this->inputErrors = [];
-    parent::reset();
-    return $this;
-  }
 
   public function isValid($value): bool {
-    $this->reset();
     $valid = true;
     if (!is_array($value)) {
       //echo 'Invalid type given. String, integer or float expected';

@@ -84,18 +84,8 @@ abstract class AbstractValidator implements Validator {
    * @return $this for a fluent interface
    */
   public function setValue($value) {
-    $this->reset();
-    $this->value = $value;
-    return $this;
-  }
-
-  /**
-   * Resets the validator to for revalidation
-   *
-   * @return $this for a fluent interface
-   */
-  public function reset() {
     $this->messages->setEmpty();
+    $this->value = $value;
     return $this;
   }
 
