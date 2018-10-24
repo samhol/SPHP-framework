@@ -74,4 +74,12 @@ class WhitelistTest extends TestCase {
     $this->assertContains('An illegal key found', $errors);
   }
 
+  /**
+   */
+  public function testNotArray() {
+    $this->assertFalse($this->validator->isValid(1));
+    $errors = $this->validator->errors()->toArray();
+    $this->assertContains('Array expected', $errors);
+  }
+
 }

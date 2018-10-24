@@ -29,4 +29,15 @@ class AbstractValidatorTest extends TestCase {
     return $validator;
   }
 
+  /**
+   * @depends testDefault
+   * @param \Sphp\Validators\AbstractValidator $validator
+   */
+  public function testClone(AbstractValidator $validator) {
+    $clone = clone $validator;
+    $clone->errors()->setTemplate(Validator::INVALID, 'Foo is fixed');
+    $this->assertEquals('Foo is fixed', $clone->errors()->getTemplate(Validator::INVALID));
+    $this->assertEquals('Foo is broken', $validator->errors()->getTemplate(Validator::INVALID));
+  }
+
 }

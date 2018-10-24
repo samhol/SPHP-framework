@@ -31,41 +31,52 @@ class StringLengthValidatorTest extends TestCase {
   }
 
   /**
-   * @depends testRangeValidation
-   * @param  StringLength $validator
    * @return StringLength
    */
-  public function testLowerBoundValidation(StringLength $validator): StringLength {
-    $this->assertSame($validator, $validator->setLowerBoundValidation(2));
+  public function testLowerBoundValidation() {
+    //$this->assertSame($validator, $validator->setLowerBoundValidation(2));
+
+    $validator = new StringLength(2, null);
     $this->assertTrue($validator->isLowerBoundValidator());
     $this->assertFalse($validator->isRangeValidator());
     $this->assertFalse($validator->isValid(''));
     $this->assertTrue($validator->isValid('  '));
     $this->assertTrue($validator->isValid('     '));
-    return $validator;
   }
 
   /**
-   * @depends testLowerBoundValidation
-   * @param  StringLength $validator
-   * @return StringLength
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
    */
-  public function testUpperBoundValidation(StringLength $validator): StringLength {
+  public function testUpperBoundValidation() {
+    $validator = new StringLength(null, 5);
     $this->assertSame($validator, $validator->setUpperBoundValidation(5));
     $this->assertTrue($validator->isUpperBoundValidator());
     $this->assertFalse($validator->isLowerBoundValidator());
     $this->assertFalse($validator->isRangeValidator());
     $this->assertTrue($validator->isValid(''));
     $this->assertFalse($validator->isValid('foobar'));
-    return $validator;
+    $validator->setUpperBoundValidation(-1);
   }
-  
-  
+
   /**
    * @expectedException \Sphp\Exceptions\InvalidArgumentException
    */
-  public function testInvalidFileName() {
-    $validator = new StringLength(-1, 5);
+  public function testInvalidConstructor() {
+    new StringLength(-1, 5);
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function testEmptyConstructor() {
+    new StringLength();
+  }
+
+  /**
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function testInvalidRangeSet() {
+    (new StringLength(1, 2))->setRangeValidation(1, 0);
   }
 
 }

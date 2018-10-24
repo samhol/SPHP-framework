@@ -96,11 +96,12 @@ class Identical extends AbstractValidator {
     } else {
       if (is_object($token)) {
         $valid = $value == $token;
-      } else if (is_string($value) && (is_int($token) || is_float($token)) || is_string($token) && (is_int($value) || is_float($value))) {
-        //echo 'strval($value), strval($token)'.strval($value).", ". strval($token).PHP_EOL;
-        $token = (string) $token;
-        $valid = $value == $token;
       } else {
+        if (is_string($value) && (is_int($token) || is_float($token))) {
+          $token = (string) $token;
+        } else if (is_string($token) && (is_int($value) || is_float($value))) {
+          $value = (string) $value;
+        }
         $valid = $value == $token;
       }
     }

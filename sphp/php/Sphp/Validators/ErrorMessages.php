@@ -222,22 +222,16 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
   }
 
   public function offsetSet($offset, $value) {
-    if ($value instanceof ErrorMessages || is_string($value)) {
-      $data = $value;
-    } else if ($value instanceof \Traversable) {
-      $value = iterator_to_array($value, true);
-    }
     if (is_array($value)) {
-      $data = new ErrorMessages();
-      $data->mergeCollection($value);
-    } if (is_string($value) || $value instanceof ErrorMessages) {
-      if ($offset === null) {
-        $this->errors[] = $data;
-      } else {
-        $this->errors[$offset] = $data;
-      }
+      $value = static::fromTraversable($value);
+    }
+    if (!$value instanceof ErrorMessages && !is_string($value)) {
+      throw new InvalidArgumentException('Tried to set content of type: ' . gettype($value));
+    }
+    if ($offset === null) {
+      $this->errors[] = $value;
     } else {
-      throw new InvalidArgumentException('Tried to append content of type: ' . gettype($value));
+      $this->errors[$offset] = $value;
     }
   }
 
@@ -245,6 +239,17 @@ class ErrorMessages implements Iterator, ArrayAccess, Countable, Arrayable {
     if ($this->offsetExists($offset)) {
       unset($this->errors[$offset]);
     }
+  }
+
+  public static function fromTraversable($data): ErrorMessages {
+    if ($data instanceof Traversable) {
+      $data = iterator_to_array($data, true);
+    }
+    $obj = new static();
+    foreach ($data as $key => $value) {
+      $obj[$key] = $value;
+    }
+    return $obj;
   }
 
 }

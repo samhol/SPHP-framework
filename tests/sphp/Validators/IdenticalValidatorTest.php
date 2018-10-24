@@ -19,8 +19,7 @@ class IdenticalTest extends TestCase {
     $data[] = [0, 0.000];
     $data[] = [PHP_INT_MAX, '' . PHP_INT_MAX];
     $data[] = ['1', '1'];
-    $data[] = ['', 0];
-   // $data[] = [0, ''];
+    $data[] = ['0', 0];
     $data[] = [0, '0'];
     $data[] = [0, null];
     $data[] = ['1', 1];
@@ -40,6 +39,33 @@ class IdenticalTest extends TestCase {
   public function testNonStrictValid($token, $value) {
     $validator = new Identical($token);
     $validator->setStrict(false);
+
+    $this->assertTrue($validator->isValid($value));
+  }
+
+  public function strictValid(): array {
+    $obj = new \stdClass();
+    $data[] = [1, 1];
+    $data[] = [0, 0];
+    $data[] = [PHP_INT_MAX, PHP_INT_MAX];
+    $data[] = [false, false];
+    $data[] = [true, true];
+    $data[] = ['1', '1'];
+    $data[] = [null, null];
+    $data[] = [$obj, $obj];
+    $data[] = [[0 => '0', [1]], [0 => '0', [1]]];
+    return $data;
+  }
+
+  /**
+   *
+   * @dataProvider strictValid
+   * @param mixed $token
+   * @param mixed $value
+   */
+  public function testStrictValid($token, $value) {
+    $validator = new Identical($token);
+    $validator->setStrict(true);
 
     $this->assertTrue($validator->isValid($value));
   }

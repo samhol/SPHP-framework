@@ -24,8 +24,8 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class StringLength extends AbstractValidator {
 
-  const TOO_SHORT = '_short_';
-  const TOO_LONG = '_long_';
+  const TOO_SHORT = 'TOO_SHORT';
+  const TOO_LONG = 'TOO_LONG';
   const NOT_IN_RANGE = 'NOT_IN_RANGE';
 
   /**
@@ -88,7 +88,7 @@ class StringLength extends AbstractValidator {
    * @return boolean true if the validator acts as a range validator, false otherwise
    */
   public function isRangeValidator(): bool {
-    return $this->min !== null && $this->max !== null && $this->min >= 0 && $this->min <= $this->max;
+    return $this->min !== null && $this->max !== null;
   }
 
   /**
