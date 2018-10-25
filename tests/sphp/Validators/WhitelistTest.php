@@ -19,10 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WhitelistTest extends TestCase {
+class WhitelistTest extends ValidatorTest {
 
   /**
-   * @var WhitelistValidator
+   * @var Whitelist
    */
   protected $validator;
 
@@ -31,7 +31,7 @@ class WhitelistTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->validator = new WhitelistValidator(['a', '0', 0], 'An illegal key found');
+    $this->validator = new Whitelist(['a', '0', 0], 'An illegal key found');
   }
 
   /**
@@ -80,6 +80,18 @@ class WhitelistTest extends TestCase {
     $this->assertFalse($this->validator->isValid(1));
     $errors = $this->validator->errors()->toArray();
     $this->assertContains('Array expected', $errors);
+  }
+
+  public function createValidator(): Validator {
+    return new Whitelist(['a', 'b'], 'An illegal key found');
+  }
+
+  public function getInvalidValue() {
+    return [range(1, 3)];
+  }
+
+  public function getValidValue() {
+    return ['a' => 'a', 'b' => 'b'];
   }
 
 }

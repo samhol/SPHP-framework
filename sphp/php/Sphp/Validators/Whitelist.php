@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class WhitelistValidator extends AbstractValidator {
+class Whitelist extends AbstractValidator {
 
   const ILLEGAL_KEY = '_illegal_key_';
 
