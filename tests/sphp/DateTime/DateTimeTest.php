@@ -45,6 +45,7 @@ class DateTimeTest extends TestCase {
     $this->assertSame((int) $im->format('s'), $date->getSeconds());
     $this->assertSame($im->getTimezone()->getName(), $date->getTimeZoneName());
     $this->assertSame((int) $im->getOffset(), $date->getTimeZoneOffset());
+    $this->assertEquals($im->format(\DateTime::ATOM), "$date");
   }
 
   public function testJumping() {
@@ -76,5 +77,7 @@ class DateTimeTest extends TestCase {
     $this->assertTrue($date->dateEqualsTo("2018-01-02 15:00"));
     $this->assertFalse($date->dateEqualsTo('foo'));
     $this->assertFalse($date->dateEqualsTo(new \stdClass()));
+    $this->assertFalse($date->isCurrentDate());
+    $this->assertTrue(DateTime::from()->isCurrentDate());
   }
 }

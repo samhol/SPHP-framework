@@ -117,9 +117,10 @@ class DateTimeWrapper implements DateTimeInterface {
     return $result;
   }
 
-  public function equals($date): bool {
+  public function dateEqualsTo($date): bool {
     try {
-      return $this->compareTo($date) === 0;
+      $parsed = DateTimes::parseDateString($date);
+      return $parsed === $this->format('Y-m-d');
     } catch (Exception $ex) {
       return false;
     }

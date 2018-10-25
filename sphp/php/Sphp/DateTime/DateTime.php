@@ -25,7 +25,7 @@ use Exception;
 class DateTime extends DateTimeImmutable implements DateTimeInterface {
 
   public function __toString(): string {
-    return $this->format('Y-m-d h:i:s O');
+    return $this->format(\DateTime::ATOM);
   }
 
   /**
@@ -238,9 +238,8 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * @return bool true if the date is the current date, false otherwise
    */
   public function isCurrentDate(): bool {
-    $today = DateWrapper('Y-m-d');
-    $thisDay = $this->format('Y-m-d');
-    return $today === $thisDay;
+    $today = new DateTime('now');
+    return $today->format('Y-m-d') === $this->format('Y-m-d');
   }
 
   /**
