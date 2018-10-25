@@ -19,6 +19,9 @@
     <testsuite name="one">
       <file>./tests/sphp/Html/ContentParserTraitTest.php</file>
     </testsuite>
+    <testsuite name="dt">
+      <directory>./tests/sphp/DateTime</directory>
+    </testsuite>
     <testsuite name="filters">
       <directory>./tests/sphp/Filters</directory>
     </testsuite>

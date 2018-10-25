@@ -35,11 +35,8 @@ class DatetimeValidator extends AbstractValidator {
    * @param string $format the required format of the validable value
    */
   public function __construct(string $format = 'Y-m-d H:i:s') {
-    parent::__construct();
-    if ($format !== null) {
-      $this->setDateTimeFormat($format);
-    }
-    $this->errors()->setTemplate(static::INVALID, Msg::singular('Please insert correct date and time'));
+    parent::__construct('Please insert correct date and time');
+    $this->setDateTimeFormat($format);
   }
 
   /**
@@ -55,11 +52,20 @@ class DatetimeValidator extends AbstractValidator {
 
   public function isValid($value): bool {
     $this->setValue($value);
+    if ($value instanceof \DateTimeInterface) {
+      return true;
+    }
+    if (!is_string($value)) {
+      $this->errors()->appendErrorFromTemplate(static::INVALID);
+      return false;
+    }
     $obj = DateTime::createFromFormat($this->format, $value);
     //echo $obj->format('Y-m-d H:i:s');
-    if ($obj == false || DateTime::getLastErrors()["warning_count"] != 0 || DateTime::getLastErrors()["error_count"] != 0) {
+    if ($obj == false || DateTime::getLastErrors()['warning_count'] != 0 || DateTime::getLastErrors()['error_count'] != 0) {
       $this->errors()->appendErrorFromTemplate(static::INVALID);
+      return false;
     }
+    return true;
   }
 
 }

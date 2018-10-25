@@ -10,13 +10,13 @@
 
 namespace Sphp\Tests\Validators;
 
-use Sphp\Validators\Whitelist;
+use Sphp\Validators\NotEmpty;
 use Sphp\Validators\Validator;
 
-class WhitelistTest extends ValidatorTest {
+class NotEmptyTest extends ValidatorTest {
 
   /**
-   * @var Whitelist
+   * @var NotEmpty
    */
   protected $validator;
 
@@ -25,7 +25,7 @@ class WhitelistTest extends ValidatorTest {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->validator = new Whitelist(['a', '0', 0], 'An illegal key found');
+    $this->validator = new NotEmpty();
   }
 
   /**
@@ -40,14 +40,6 @@ class WhitelistTest extends ValidatorTest {
    */
   public function testConstructor() {
     $this->assertCount(0, $this->validator->errors());
-    $this->assertEquals(['a', '0', 0], $this->validator->getWhitelist());
-  }
-
-  /**
-   */
-  public function testChangeWhitelist() {
-    $this->validator->setWhitelist([1, 2]);
-    $this->assertEquals([1, 2], $this->validator->getWhitelist());
   }
 
   /**
@@ -63,29 +55,22 @@ class WhitelistTest extends ValidatorTest {
   /**
    */
   public function testInvalidValue() {
-    $this->assertFalse($this->validator->isValid([1 => 'foo']));
+    $this->assertFalse($this->validator->isValid([]));
     $errors = $this->validator->errors()->toArray();
-    $this->assertContains('An illegal key found', $errors);
+    $this->assertContains('Value is empty', $errors);
   }
 
-  /**
-   */
-  public function testNotArray() {
-    $this->assertFalse($this->validator->isValid(1));
-    $errors = $this->validator->errors()->toArray();
-    $this->assertContains('Array expected', $errors);
-  }
 
   public function createValidator(): Validator {
-    return new Whitelist(['a', 'b'], 'An illegal key found');
+    return new NotEmpty();
   }
 
   public function getInvalidValue() {
-    return [range(1, 3)];
+    return [];
   }
 
   public function getValidValue() {
-    return ['a' => 'a', 'b' => 'b'];
+    return [1];
   }
 
 }

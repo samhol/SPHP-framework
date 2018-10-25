@@ -8,9 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Validators;
+namespace Sphp\Tests\Validators;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Validators\Validator;
 
 abstract class ValidatorTest extends TestCase {
 

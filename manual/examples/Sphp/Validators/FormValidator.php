@@ -3,7 +3,7 @@
 namespace Sphp\Validators;
 
 $validator = (new FormValidator())
-        ->set("not_empty", new NotEmptyValidator())
+        ->set("not_empty", new NotEmpty())
         ->set("url", new UrlValidator())
         ->set("num", new Regex("/^\d+$/", "Please insert numbers only"))
         ->set("p1", new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only"))

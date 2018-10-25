@@ -33,8 +33,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class NotEmptyValidator extends AbstractValidator {
-
+class NotEmpty extends AbstractValidator {
 
   /**
    * Constructs a new validator

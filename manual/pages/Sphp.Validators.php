@@ -7,10 +7,9 @@ use Sphp\Manual;
 $php = Manual\php();
 $nsLink = Manual\api()->namespaceLink(__NAMESPACE__);
 $validatorInterface = Manual\api()->classLinker(Validator::class);
-$requiredValueValidator = Manual\api()->classLinker(NotEmptyValidator::class);
+$requiredValueValidator = Manual\api()->classLinker(NotEmpty::class);
 $patrnvLink = Manual\api()->classLinker(Regex::class);
 $strLenValLink = Manual\api()->classLinker(StringLength::class);
-$inputValidator = Manual\api()->classLinker(OptionalValidator::class);
 $alphabetsOnly = Manual\api()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\md(<<<MD
@@ -41,12 +40,6 @@ The $requiredValueValidator validates only that the given input has a non empty 
       * "\\0" (ASCII 0 (0x00)), the NUL-byte 
       * "\\x0B" (ASCII 11 (0x0B)), a vertical tab		
 
-$inputValidator makes it possible to choose whether the empty value 
-is valid or not when validating user inputs with this type of validators. This 
-property is usefull for example when the validated input is optional.	The abstract 
-class $inputValidator is th default implementation of the 
-$inputValidator and is is also the base class for many of the build-in 
-validators. 
         
 MD
 );

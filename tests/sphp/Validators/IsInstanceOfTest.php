@@ -10,13 +10,13 @@
 
 namespace Sphp\Tests\Validators;
 
-use Sphp\Validators\Whitelist;
+use Sphp\Validators\IsInstanceOf;
 use Sphp\Validators\Validator;
 
-class WhitelistTest extends ValidatorTest {
+class IsInstanceOfTest extends ValidatorTest {
 
   /**
-   * @var Whitelist
+   * @var IsInstanceOf
    */
   protected $validator;
 
@@ -25,7 +25,7 @@ class WhitelistTest extends ValidatorTest {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->validator = new Whitelist(['a', '0', 0], 'An illegal key found');
+    $this->validator = new IsInstanceOf(\stdClass::class);
   }
 
   /**
@@ -40,52 +40,44 @@ class WhitelistTest extends ValidatorTest {
    */
   public function testConstructor() {
     $this->assertCount(0, $this->validator->errors());
-    $this->assertEquals(['a', '0', 0], $this->validator->getWhitelist());
+    $this->assertEquals(\stdClass::class, $this->validator->getClassName());
   }
 
   /**
+   * @expectedException \Sphp\Exceptions\InvalidArgumentException
    */
   public function testChangeWhitelist() {
-    $this->validator->setWhitelist([1, 2]);
-    $this->assertEquals([1, 2], $this->validator->getWhitelist());
+    $this->validator->setClassName(\ArrayAccess::class);
+    $this->assertEquals(\ArrayAccess::class, $this->validator->getClassName());
+    $this->assertTrue($this->validator->isValid(new \ArrayIterator()));
+    $this->validator->setClassName('foo');
   }
 
   /**
    */
   public function testValidValue() {
-    $this->assertTrue($this->validator->isValid([0 => 'foo']));
-    $this->assertCount(0, $this->validator->errors());
-    $this->assertTrue($this->validator->isValid(['0' => 'foo']));
-    $this->assertTrue($this->validator->isValid(['a' => 'foo']));
+    $this->assertTrue($this->validator->isValid(new \stdClass()));
     $this->assertCount(0, $this->validator->errors());
   }
 
   /**
    */
   public function testInvalidValue() {
-    $this->assertFalse($this->validator->isValid([1 => 'foo']));
+    $this->assertFalse($this->validator->isValid(new \ArrayIterator()));
     $errors = $this->validator->errors()->toArray();
-    $this->assertContains('An illegal key found', $errors);
-  }
-
-  /**
-   */
-  public function testNotArray() {
-    $this->assertFalse($this->validator->isValid(1));
-    $errors = $this->validator->errors()->toArray();
-    $this->assertContains('Array expected', $errors);
+    $this->assertContains('Value is not instance of stdClass', $errors);
   }
 
   public function createValidator(): Validator {
-    return new Whitelist(['a', 'b'], 'An illegal key found');
+    return new IsInstanceOf(\stdClass::class);
   }
 
   public function getInvalidValue() {
-    return [range(1, 3)];
+    return new \ArrayIterator();
   }
 
   public function getValidValue() {
-    return ['a' => 'a', 'b' => 'b'];
+    return new \stdClass();
   }
 
 }

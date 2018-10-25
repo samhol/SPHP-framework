@@ -38,7 +38,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
   public function compareTo($date): int {
     $dt = static::from($date)->getTimestamp();
     $timeStamp = $this->getTimestamp();
-    $result = $timeStamp - $dt;
+    $result = $timeStamp <=> $dt;
     return $result;
   }
 

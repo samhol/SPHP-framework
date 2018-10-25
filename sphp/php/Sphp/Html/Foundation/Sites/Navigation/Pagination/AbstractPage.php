@@ -118,13 +118,13 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     return $this;
   }
 
-  public function getRel(): string {
-    $this->hyperlink->getRel();
+  public function getRelationship(): string {
+    $this->hyperlink->getRelationship();
     return $this;
   }
 
-  public function setRel(string $rel = null) {
-    $this->hyperlink->setRel($rel);
+  public function setRelationship(string $rel = null) {
+    $this->hyperlink->setRelationship($rel);
     return $this;
   }
 

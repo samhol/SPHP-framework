@@ -17,11 +17,15 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EmailValidator extends AbstractValidator {
+class Email extends AbstractValidator {
 
-  public function __construct() {
-    parent::__construct();
-    $this->errors()->setTemplate(static::INVALID, 'Please insert a correct email address');
+  /**
+   * Constructor
+   * 
+   * @param string $errorMessage
+   */
+  public function __construct(string $errorMessage = 'Email address is invalid') {
+    parent::__construct($errorMessage);
   }
 
   public function isValid($value): bool {

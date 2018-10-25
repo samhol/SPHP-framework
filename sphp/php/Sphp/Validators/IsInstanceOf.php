@@ -46,14 +46,15 @@ class IsInstanceOf extends AbstractValidator {
   }
 
   /**
+   * Sets the name of the correct class or interface 
    * 
    * @param  string $className the name of the class 
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the class is not defined
+   * @throws InvalidArgumentException if the class is not defined
    */
   public function setClassName(string $className) {
-    if (!class_exists($className)) {
-      throw new InvalidArgumentException('Invalid class name parameter');
+    if (!class_exists($className) && !interface_exists($className)) {
+      throw new InvalidArgumentException('Invalid class or interface name: ' . $className);
     }
     $this->className = $className;
     return $this;

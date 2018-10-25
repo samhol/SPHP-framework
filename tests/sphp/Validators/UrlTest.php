@@ -10,13 +10,13 @@
 
 namespace Sphp\Tests\Validators;
 
-use Sphp\Validators\Whitelist;
+use Sphp\Validators\UrlValidator;
 use Sphp\Validators\Validator;
 
-class WhitelistTest extends ValidatorTest {
+class UrlTest extends ValidatorTest {
 
   /**
-   * @var Whitelist
+   * @var UrlValidator
    */
   protected $validator;
 
@@ -25,7 +25,7 @@ class WhitelistTest extends ValidatorTest {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->validator = new Whitelist(['a', '0', 0], 'An illegal key found');
+    $this->validator = $this->createValidator();
   }
 
   /**
@@ -40,52 +40,34 @@ class WhitelistTest extends ValidatorTest {
    */
   public function testConstructor() {
     $this->assertCount(0, $this->validator->errors());
-    $this->assertEquals(['a', '0', 0], $this->validator->getWhitelist());
-  }
-
-  /**
-   */
-  public function testChangeWhitelist() {
-    $this->validator->setWhitelist([1, 2]);
-    $this->assertEquals([1, 2], $this->validator->getWhitelist());
   }
 
   /**
    */
   public function testValidValue() {
-    $this->assertTrue($this->validator->isValid([0 => 'foo']));
-    $this->assertCount(0, $this->validator->errors());
-    $this->assertTrue($this->validator->isValid(['0' => 'foo']));
-    $this->assertTrue($this->validator->isValid(['a' => 'foo']));
+    $this->assertTrue($this->validator->isValid('http://www.google.com'));
     $this->assertCount(0, $this->validator->errors());
   }
 
   /**
    */
   public function testInvalidValue() {
-    $this->assertFalse($this->validator->isValid([1 => 'foo']));
+    $this->assertFalse($this->validator->isValid([]));
     $errors = $this->validator->errors()->toArray();
-    $this->assertContains('An illegal key found', $errors);
+    $this->assertContains('URL is invalid', $errors);
   }
 
-  /**
-   */
-  public function testNotArray() {
-    $this->assertFalse($this->validator->isValid(1));
-    $errors = $this->validator->errors()->toArray();
-    $this->assertContains('Array expected', $errors);
-  }
 
   public function createValidator(): Validator {
-    return new Whitelist(['a', 'b'], 'An illegal key found');
+    return new UrlValidator('URL is invalid');
   }
 
   public function getInvalidValue() {
-    return [range(1, 3)];
+    return 'a@';
   }
 
   public function getValidValue() {
-    return ['a' => 'a', 'b' => 'b'];
+    return 'http://www.google.com';
   }
 
 }
