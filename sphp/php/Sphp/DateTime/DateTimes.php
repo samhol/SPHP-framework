@@ -58,6 +58,37 @@ abstract class DateTimes {
   }
 
   /**
+   * parses a datetime object from input
+   * 
+   * @param  mixed $input
+   * @return DateTime
+   * @throws InvalidArgumentException
+   */
+  public static function dateTime($input): DateTime {
+    try {
+      if ($input === null) {
+        $dateTime = new DateTime('now');
+      } else if ($input instanceof DateTime) {
+        $dateTime = $input;
+      } else if (is_string($input)) {
+        $dateTime = new DateTime($input);
+      } else if (is_int($input)) {
+        $dateTime = new DateTime("@$input");
+      } else if ($input instanceof DTI) {
+        $dateTime = DateTime::createFromMutable($input);
+      } else if ($input instanceof DateInterface) {
+        $timestamp = $input->getTimestamp();
+        $dateTime = new DateTime("@$timestamp");
+      }
+    } catch (Exception $ex) {
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    if (!$dateTime instanceof DateTime) {
+      throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
+    }
+    return $dateTime;
+  }
+  /**
    * Parses a date string from input
    * 
    * @param  mixed $input input to parse

@@ -144,7 +144,7 @@ class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayabl
   }
 
   public function dateMatchesWith($date): bool {
-    return $this->date->equals($date);
+    return $this->date->dateEqualsTo($date);
   }
 
   public function getIterator(): \Traversable {

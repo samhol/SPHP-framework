@@ -42,34 +42,13 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
     return $result;
   }
 
-  public function equals($date): bool {
+  public function dateEqualsTo($date): bool {
     try {
-      return $this->compareTo($date) === 0;
+      $parsed = DateTimes::parseDateString($date);
+      return $parsed === $this->format('Y-m-d');
     } catch (Exception $ex) {
       return false;
     }
-  }
-
-  /**
-   * Checks if this date is later than the given one
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if this date is later than the given one and false otherwise
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public function isLaterThan($date): bool {
-    return $this->compareTo($date) < 0;
-  }
-
-  /**
-   * Checks if this date is earlier than the given one
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if this date is earlier than the given one and false otherwise
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public function isEarlierThan($date): bool {
-    return $this->compareTo($date) > 0;
   }
 
   /**
@@ -89,7 +68,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    * @return DateTimeInterface new instance
    */
   public function jumpDays(int $days): DateTimeInterface {
-    return $this->modify("+ $days day");
+    return $this->modify("$days day");
   }
 
   /**
@@ -151,7 +130,7 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
   }
 
   public function getTimeZoneOffset(): int {
-    return parent::getTimezone()->getOffset();
+    return parent::getOffset();
   }
 
   public function getTimeZoneName(): string {
@@ -161,12 +140,33 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
   /**
    * Creates a new instance from input
    * 
-   * @param  DateInterface|mixed $date raw datetime data
-   * @return DateTimeWrapper new instance
+   * @param  DateInterface|mixed $input raw datetime data
+   * @return DateTime new instance
    * @throws InvalidArgumentException if date cannot be parsed from input
    */
-  public static function from($date = null): DateTimeWrapper {
-    return new static($date);
+  public static function from($input = null): DateTime {
+    try {
+      if ($input === null) {
+        $dateTime = new static('now');
+      } else if ($input instanceof DateTime) {
+        $dateTime = clone $input;
+      } else if (is_string($input)) {
+        $dateTime = new static($input);
+      } else if (is_int($input)) {
+        $dateTime = new static("@$input");
+      } else if ($input instanceof DTI) {
+        $dateTime = DateTime::createFromMutable($input);
+      } else if ($input instanceof DateInterface) {
+        $timestamp = $input->getTimestamp();
+        $dateTime = new static("@$timestamp");
+      }
+    } catch (Exception $ex) {
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    if (!$dateTime instanceof DateTime) {
+      throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
+    }
+    return $dateTime;
   }
 
   /**

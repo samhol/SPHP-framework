@@ -43,7 +43,7 @@ class VaryingAnnual implements DateConstraint {
     }
     $year = $date->getYear();
     $check = DateWrapper::from(sprintf($this->format, $year));
-    return $check->equals($date);
+    return $check->dateEqualsTo($date);
   }
 
 }

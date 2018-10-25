@@ -57,7 +57,7 @@ class Unique implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    return $this->date->equals($date);
+    return $this->date->dateEqualsTo($date);
   }
 
 }

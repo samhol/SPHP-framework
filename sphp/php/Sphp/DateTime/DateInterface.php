@@ -82,5 +82,5 @@ interface DateInterface {
    * @param  mixed $date the date to match
    * @return bool true if matches and false otherwise
    */
-  public function equals($date): bool;
+  public function dateEqualsTo($date): bool;
 }

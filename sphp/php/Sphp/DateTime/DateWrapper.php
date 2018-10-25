@@ -89,7 +89,7 @@ class DateWrapper implements DateInterface {
     return $result;
   }
 
-  public function equals($date): bool {
+  public function dateEqualsTo($date): bool {
     try {
       $parsed = DateTimes::parseDateString($date);
       return $parsed === $this->format('Y-m-d');
@@ -191,6 +191,5 @@ class DateWrapper implements DateInterface {
   public static function from($date): DateWrapper {
     return new static($date);
   }
-
 
 }
