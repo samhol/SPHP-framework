@@ -22,7 +22,7 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DateWrapper implements DateInterface {
+class Date implements DateInterface {
 
   use DateTrait;
 
@@ -79,13 +79,10 @@ class DateWrapper implements DateInterface {
    * @return int the difference in days
    * @throws InvalidArgumentException if date cannot be parsed from input
    */
-  public function diff($date): int {
-    $dt = DateWrapper::from($date)->getDateTime();
-    $diff = $this->dateTime->diff($dt);
-    $result = $diff->d;
-    if ($diff->invert === 1) {
-      $result = -$result;
-    }
+  public function compareTo($date): int {
+    $dt = Date::from($date)->getTimestamp();
+    $timeStamp = $this->getTimestamp();
+    $result = $timeStamp <=> $dt;
     return $result;
   }
 
@@ -122,9 +119,9 @@ class DateWrapper implements DateInterface {
    * Advances given number of days and returns a new instance
    * 
    * @param  int $days number of days to shift
-   * @return DateWrapper new instance
+   * @return Date new instance
    */
-  public function jumpDays(int $days): DateWrapper {
+  public function jumpDays(int $days): Date {
     return $this->modify("$days day");
   }
 
@@ -132,63 +129,72 @@ class DateWrapper implements DateInterface {
    * Advances given number of months and returns a new instance
    * 
    * @param  int $months number of months to shift
-   * @return DateWrapper new instance
+   * @return Date new instance
    */
-  public function jumpMonths(int $months): DateWrapper {
+  public function jumpMonths(int $months): Date {
     return $this->modify("$months months");
   }
 
   /**
    * Returns the next Date
    * 
-   * @return DateWrapper new instance
+   * @return Date new instance
    */
-  public function nextDay(): DateWrapper {
+  public function nextDay(): Date {
     return $this->modify('+ 1 day');
   }
 
   /**
    * Returns the previous Date
    * 
-   * @return DateWrapper new instance
+   * @return Date new instance
    */
-  public function previousDay(): DateWrapper {
+  public function previousDay(): Date {
     return $this->modify('- 1 day');
   }
 
   /**
    * Returns the date representing the first of the same month
    * 
-   * @return DateWrapper new instance
+   * @return Date new instance
    */
-  public function firstOfMonth(): DateWrapper {
+  public function firstOfMonth(): Date {
     return $this->modify('first day of this month');
+  }
+
+  /**
+   * Returns the date representing the first of the same month
+   * 
+   * @return DateTimeInterface new instance
+   */
+  public function lastOfMonth(): Date {
+    return $this->modify('last day of this month');
   }
 
   /**
    * Creates a new object with modified timestamp
    *  
    * @param  string $modify a date/time string
-   * @return DateWrapper new instance
+   * @return Date new instance
    * @throws InvalidArgumentException if formatting fails
    * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
-  public function modify(string $modify): DateWrapper {
+  public function modify(string $modify): Date {
     $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
     $new = $this->dateTime->modify($modify);
     $thrower->stop();
-    return new DateWrapper($new);
+    return new Date($new);
   }
 
   /**
    * Creates a new instance
    * 
    * @param  mixed $date raw date data
-   * @return DateWrapper new instance
+   * @return Date new instance
    * @throws InvalidArgumentException if date cannot be parsed from input
    */
-  public static function from($date): DateWrapper {
+  public static function from($date): Date {
     return new static($date);
   }
 

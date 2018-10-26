@@ -138,38 +138,6 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
   }
 
   /**
-   * Creates a new instance from input
-   * 
-   * @param  DateInterface|mixed $input raw datetime data
-   * @return DateTime new instance
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public static function from($input = null): DateTime {
-    try {
-      if ($input === null) {
-        $dateTime = new static('now');
-      } else if ($input instanceof DateTime) {
-        $dateTime = clone $input;
-      } else if (is_string($input)) {
-        $dateTime = new static($input);
-      } else if (is_int($input)) {
-        $dateTime = new static("@$input");
-      } else if ($input instanceof DTI) {
-        $dateTime = DateTime::createFromMutable($input);
-      } else if ($input instanceof DateInterface) {
-        $timestamp = $input->getTimestamp();
-        $dateTime = new static("@$timestamp");
-      }
-    } catch (Exception $ex) {
-      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    if (!$dateTime instanceof DateTime) {
-      throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
-    }
-    return $dateTime;
-  }
-
-  /**
    * Returns the number of the weekday
    * 
    * @return int the number of the weekday
@@ -262,6 +230,33 @@ class DateTime extends DateTimeImmutable implements DateTimeInterface {
    */
   public function sub($interval) {
     return parent::sub(Intervals::create($interval));
+  }
+
+  /**
+   * Creates a new instance from input
+   * 
+   * @param  mixed $input raw datetime data
+   * @return DateTime new instance
+   * @throws InvalidArgumentException if date cannot be parsed from input
+   */
+  public static function from($input = null): DateTime {
+    if ($input === null) {
+      $input = 'now';
+    }
+    if (is_string($input)) {
+      try {
+        return new static($input);
+      } catch (Exception $ex) {
+        throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
+      }
+    } else if (is_int($input)) {
+      return new static("@$input");
+    } else if ($input instanceof \DateTimeInterface || $input instanceof DateTimeInterface) {
+      $timestamp = $input->getTimestamp();
+      return new static("@$timestamp");
+    } else {
+      throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
+    }
   }
 
 }

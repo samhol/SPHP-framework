@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\Stdlib\Parsers\Parser;
-use Sphp\DateTime\DateWrapper;
+use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\Diaries\Diary;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
@@ -42,7 +42,7 @@ class FitNotes {
     foreach ($rawData as $exersice) {
       if (!isset($date) || $rawDate !== $exersice[0]) {
         $rawDate = $exersice[0];
-        $date = new DateWrapper($rawDate);
+        $date = new Date($rawDate);
         $log = new WorkoutLog($date);
         $coll->insertLog($log);
       }

@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\DateWrapper;
+use Sphp\DateTime\Date;
 
 /**
  * Description of Unique
@@ -24,7 +24,7 @@ use Sphp\DateTime\DateWrapper;
 class Unique implements DateConstraint {
 
   /**
-   * @var DateWrapper 
+   * @var Date 
    */
   private $date;
 
@@ -35,7 +35,7 @@ class Unique implements DateConstraint {
    */
   public function __construct($date) {
     if (!$date instanceof DateInterface) {
-      $date = new DateWrapper($date);
+      $date = new Date($date);
     }
     $this->date = $date;
   }

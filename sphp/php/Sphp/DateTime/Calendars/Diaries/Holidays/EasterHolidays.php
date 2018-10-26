@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
 use Sphp\DateTime\Calendars\Diaries\Diary;
-use Sphp\DateTime\DateWrapper;
+use Sphp\DateTime\Date;
 
 /**
  * Implements easter holiday collection
@@ -45,9 +45,9 @@ class EasterHolidays extends Diary {
    * Returns the Maundy Thursday
    * 
    * @param  int $year optional year (uses current if omitted) 
-   * @return DateWrapper new date object
+   * @return Date new date object
    */
-  public static function getMaundyThursday(int $year = null): DateWrapper {
+  public static function getMaundyThursday(int $year = null): Date {
     return static::getEasterSunday($year)->jumpDays(-3);
   }
 
@@ -55,9 +55,9 @@ class EasterHolidays extends Diary {
    * Returns the Good Friday
    * 
    * @param  int $year optional year (uses current if omitted) 
-   * @return DateWrapper new date object
+   * @return Date new date object
    */
-  public static function getGoodFriday(int $year = null): DateWrapper {
+  public static function getGoodFriday(int $year = null): Date {
     return static::getEasterSunday($year)->jumpDays(-2);
   }
 
@@ -65,25 +65,25 @@ class EasterHolidays extends Diary {
    * Returns the Easter Sunday
    * 
    * @param  int $year optional year (uses current if omitted) 
-   * @return DateWrapper new date object
+   * @return Date new date object
    */
-  public static function getEasterSunday(int $year = null): DateWrapper {
+  public static function getEasterSunday(int $year = null): Date {
     if ($year === null) {
       $year = (int) date('Y');
     }
     $base = new \DateTimeImmutable("$year-03-21");
     $days = easter_days($year);
     $b = $base->add(new \DateInterval("P{$days}D"));
-    return new DateWrapper($b);
+    return new Date($b);
   }
 
   /**
    * Returns the Easter Monday
    * 
    * @param  int $year optional year (uses current if omitted) 
-   * @return DateWrapper new date object
+   * @return Date new date object
    */
-  public static function getEasterMonday(int $year = null): DateWrapper {
+  public static function getEasterMonday(int $year = null): Date {
     return static::getEasterSunday($year)->jumpDays(1);
   }
 
@@ -91,9 +91,9 @@ class EasterHolidays extends Diary {
    * Returns the Ascension Day
    * 
    * @param  int $year optional year (uses current if omitted) 
-   * @return DateWrapper new date object
+   * @return Date new date object
    */
-  public static function getAscensionDay(int $year = null): DateWrapper {
+  public static function getAscensionDay(int $year = null): Date {
     return static::getEasterSunday($year)->jumpDays(39);
   }
 
@@ -101,9 +101,9 @@ class EasterHolidays extends Diary {
    * Returns the Pentecost Day
    * 
    * @param  int $year optional year (uses current if omitted) 
-   * @return DateWrapper new date object
+   * @return Date new date object
    */
-  public static function getPentecost(int $year = null): DateWrapper {
+  public static function getPentecost(int $year = null): Date {
     return static::getEasterSunday($year)->jumpDays(49);
   }
 

@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\DateWrapper;
+use Sphp\DateTime\Date;
 
 /**
  * Implements an annual date constraint
@@ -62,7 +62,7 @@ class Annual implements DateConstraint {
 
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
-      $date = new DateWrapper($date);
+      $date = new Date($date);
     }
     return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
   }

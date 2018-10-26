@@ -12,7 +12,7 @@ namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\Content;
 use Sphp\Html\Div;
-use Sphp\DateTime\DateWrapper;
+use Sphp\DateTime\Date;
 use Sphp\Html\Span;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Media\Icons\FaIcon;
@@ -31,7 +31,7 @@ class MonthSelector implements Content {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var DateWrapper
+   * @var Date
    */
   private $date;
 
@@ -48,7 +48,7 @@ class MonthSelector implements Content {
     if ($month === null) {
       $month = (int) date('m', time());
     }
-    $this->date = DateWrapper::from("$year-$month-1");
+    $this->date = Date::from("$year-$month-1");
   }
 
   public function createPreviousMonth(): Hyperlink {
@@ -71,7 +71,7 @@ class MonthSelector implements Content {
     return $link;
   }
 
-  public function createMonthLink(DateWrapper $month, $content = null): Hyperlink {
+  public function createMonthLink(Date $month, $content = null): Hyperlink {
     $monthText = "Go to {$month->format('F Y')}";
     $href = "calendar/" . $month->getYear() . "/" . $month->getMonth();
     if ($content === null) {
@@ -98,10 +98,10 @@ class MonthSelector implements Content {
 
   /**
    * 
-   * @param  DateWrapper $date
+   * @param  Date $date
    * @return MonthSelector new instance
    */
-  public static function fromDate(DateWrapper $date): MonthSelector {
+  public static function fromDate(Date $date): MonthSelector {
     return new static($date->getYear(), $date->getMonth());
   }
 

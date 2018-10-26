@@ -4,14 +4,14 @@ namespace Sphp\DateTime;
 
 use Sphp\Manual;
 
-$date = Manual\api()->classLinker(DateWrapper::class);
+$date = Manual\api()->classLinker(Date::class);
 $dateInterface = Manual\api()->classLinker(DateInterface::class);
 $timeInterface = Manual\api()->classLinker(TimeInterface::class);
 $dateTimeInterface = Manual\api()->classLinker(DateTimeInterface::class);
 $dateTimeLink = Manual\api()->classLinker(DateTimeWrapper::class);
 $namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $dateTimeImmutable = Manual\php()->classLinker(\DateTimeImmutable::class);
-$date = Manual\api()->classLinker(DateWrapper::class);
+$date = Manual\api()->classLinker(Date::class);
 $dateInterface = Manual\api()->classLinker(DateInterface::class);
 $dateTimeLink = Manual\api()->classLinker(DateTimeWrapper::class);
 $namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

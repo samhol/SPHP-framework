@@ -109,10 +109,10 @@ abstract class Periods {
    */
   public static function weeksOfMonth(int $month = null, int $year = null): Period {
     if ($year === null) {
-      $year = DateWrapper('Y');
+      $year = Date('Y');
     }
     if ($month === null) {
-      $month = DateWrapper('m');
+      $month = Date('m');
     }
     $d = DateTimeWrapper::from("$year-$month-1 00:00:00");
     $start = $d->modify('last monday');
