@@ -60,7 +60,7 @@ class Period extends DatePeriod implements Arrayable {
   public function isInPeriod($date): bool {
 
     try {
-      $dateTime = DateTimeWrapper::from($date)->getTimestamp();
+      $dateTime = DateTime::from($date)->getTimestamp();
       $start = $this->getStartDate()->getTimestamp();
       $stop = $this->getEndDate()->getTimestamp();
       return $start <= $dateTime && $dateTime <= $stop;
@@ -78,7 +78,7 @@ class Period extends DatePeriod implements Arrayable {
   public function contains($date): bool {
     $result = false;
     try {
-      $dateTime = DateTimeWrapper::from($date)->getTimestamp();
+      $dateTime = DateTime::from($date)->getTimestamp();
       foreach ($this as $d) {
         if ($dateTime === $d->getTimestamp()) {
           $result = true;
@@ -93,12 +93,12 @@ class Period extends DatePeriod implements Arrayable {
 
   /**
    * 
-   * @return DateTimeWrapper[]
+   * @return DateTime[]
    */
   public function toArray(): array {
     $result = [];
     foreach ($this as $dateTime) {
-      $result[] = DateTimeWrapper::from($dateTime);
+      $result[] = DateTime::from($dateTime);
     }
     return $result;
   }

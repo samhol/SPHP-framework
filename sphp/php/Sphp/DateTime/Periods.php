@@ -114,7 +114,7 @@ abstract class Periods {
     if ($month === null) {
       $month = Date('m');
     }
-    $d = DateTimeWrapper::from("$year-$month-1 00:00:00");
+    $d = DateTime::from("$year-$month-1 00:00:00");
     $start = $d->modify('last monday');
 
     $stop = $d->modify('last day of')->modify('next sunday');

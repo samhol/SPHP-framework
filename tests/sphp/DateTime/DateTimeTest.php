@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Tests\DateTime;
 
 use PHPUnit\Framework\TestCase;
@@ -46,11 +54,15 @@ class DateTimeTest extends TestCase {
 
   public function testComparison() {
     $smaller = new DateTime('2018-01-01');
-    $date = new DateTime('2018-01-02 12:30');
+    $date = new DateTime('2018-01-02 12:30 EET');
     $bigger = new DateTime('2018-01-03');
-    $this->assertEquals(1, $date->compareTo($smaller));
+    $this->assertEquals(1, $date->compareTo($smaller));  
+    $this->assertTrue($date->isLaterThan($smaller)); 
+    $this->assertFalse($date->isLaterThan('2018-01-02 12:30 EET'));   
+    $this->assertFalse($date->isLaterThan($bigger));  
     $this->assertEquals(0, $date->compareTo(clone $date));
     $this->assertEquals(-1, $date->compareTo($bigger));
+    $this->assertTrue($date->isEarlierThan($bigger));
     $this->assertFalse($date->dateEqualsTo($smaller));
     $this->assertFalse($date->dateEqualsTo($bigger));
     $this->assertTrue($date->dateEqualsTo('2018-01-02 15:00'));

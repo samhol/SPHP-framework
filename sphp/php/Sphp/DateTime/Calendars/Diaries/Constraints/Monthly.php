@@ -40,17 +40,6 @@ class Monthly implements DateConstraint {
     $this->day = $day;
   }
 
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->day);
-  }
-
-  public function getDay(): int {
-    return $this->day;
-  }
-
   public function isValidDate($date): bool {
     if (!$date instanceof DateInterface) {
       $date = new Date($date);

@@ -28,18 +28,16 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
   /**
    * @var LogInterface[] 
    */
-  private $logs = [];
+  private $logs;
 
   /**
    * Constructor
    * 
    * @param mixed $date
    */
-  public function __construct($date, array $logs = []) {
+  public function __construct($date) {
     parent::__construct($date);
-    foreach ($logs as $log) {
-      $this->insertLog($log);
-    }
+    $this->logs = [];
   }
 
   /**

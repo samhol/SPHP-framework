@@ -42,6 +42,7 @@ class WeekDayView implements CssClassifiableContent {
   private $diaryDay;
 
   /**
+   * Constructor
    * 
    * @param DiaryDate $date
    */

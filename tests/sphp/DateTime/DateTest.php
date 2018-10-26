@@ -1,11 +1,21 @@
 <?php
 
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\DateTime;
 
-class DateTest extends \PHPUnit\Framework\TestCase {
+use PHPUnit\Framework\TestCase;
+
+class DateTest extends TestCase {
 
   public function testGetters() {
-    $date = new Date('2000-01-01');   
+    $date = new Date('2000-01-01');
     $im = new \DateTimeImmutable('2000-01-01');
     $this->assertSame($im->getTimestamp(), $date->getTimestamp());
     $this->assertSame((int) $im->format('Y'), $date->getYear());

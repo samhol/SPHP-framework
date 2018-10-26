@@ -28,7 +28,6 @@ class GreaterThan extends AbstractLimitValidator {
    * Constructs a new validator
    * 
    * @param float $min the minimum value
-   * @param float $max the maximum value
    * @param boolean $inclusive true for inclusive limit and false for exclusive
    */
   public function __construct(float $min, bool $inclusive = true) {

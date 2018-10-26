@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $date = Manual\api()->classLinker(Date::class);
 $dateInterface = Manual\api()->classLinker(DateInterface::class);
-$dateTimeLink = Manual\api()->classLinker(DateTimeWrapper::class);
+$dateTimeLink = Manual\api()->classLinker(DateTime::class);
 $namespaces = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $dateTimeImmutable = Manual\php()->classLinker(\DateTimeImmutable::class);
 Manual\md(<<<MD

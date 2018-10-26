@@ -12,7 +12,7 @@ namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\DateTime\TimeTagInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\DateTime\DateTimeWrapper;
+use Sphp\DateTime\DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
 use DateTimeZone;
@@ -61,8 +61,8 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
 
   public function setDateTime($dateTime, string $format = self::DATE_TIME) {
     $this->setFormat($format);
-    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTimeWrapper) {
-      $dateTime = new DateTimeWrapper($dateTime);
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
+      $dateTime = new DateTime($dateTime);
     }
     $this->dateTime = $dateTime;
     $this->attributes()->set('datetime', $this->dateTime->format($this->format));

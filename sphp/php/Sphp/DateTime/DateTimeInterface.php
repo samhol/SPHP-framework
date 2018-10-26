@@ -19,6 +19,5 @@ namespace Sphp\DateTime;
  * @filesource
  */
 interface DateTimeInterface extends DateInterface, TimeInterface {
-
-
+  
 }

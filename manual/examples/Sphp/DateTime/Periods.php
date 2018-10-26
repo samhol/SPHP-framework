@@ -26,7 +26,7 @@ foreach (Periods::hours('2010-1-1 10:00 EET', 10, -1) as $date) {
 }
 $year = date('Y');
 $month = date('m');
-$d = DateTimeWrapper::from("$year-$month-1 12:01");
+$d = DateTime::from("$year-$month-1 12:01");
 $start = $d->modify('last monday');
 
 $stop = $d->modify('last day of')->modify('next sunday');
