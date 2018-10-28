@@ -15,7 +15,7 @@ use Sphp\DateTime\Intervals;
 
 class IntervalsTest extends TestCase {
 
-  public function TestdateString() {
+  public function testdateString() {
     $interval = Intervals::create('+2 days');
     $this->assertSame(2.0, $interval->toDays());
   }
