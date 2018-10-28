@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
@@ -36,20 +35,8 @@ class Annual implements DateConstraint {
    * @throws Exceptions\CalendarEventException if constructor fails
    */
   public function __construct(int $month, int $day) {
-    if (0 > $month || $month > 12) {
-      throw new Exceptions\CalendarEventException("Parameter month must be between 1-12 ($month given)");
-    } if (0 > $day || $day > 31) {
-      throw new Exceptions\CalendarEventException("Parameter day must be between 1-31 ($day given)");
-    }
     $this->day = $day;
     $this->month = $month;
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->day, $this->month);
   }
 
   public function isValidDate($date): bool {

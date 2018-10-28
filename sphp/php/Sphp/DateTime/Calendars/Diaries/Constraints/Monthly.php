@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
@@ -31,12 +30,8 @@ class Monthly implements DateConstraint {
    * Constructor
    * 
    * @param  int $day the day of the month
-   * @throws Exceptions\CalendarEventException if constructor fails
    */
   public function __construct(int $day) {
-    if (0 > $day || $day > 31) {
-      throw new Exceptions\CalendarEventException("Parameter day must be between 1-31 ($day given)");
-    }
     $this->day = $day;
   }
 

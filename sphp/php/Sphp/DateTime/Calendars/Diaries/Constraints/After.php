@@ -47,15 +47,6 @@ class After implements DateConstraint {
     unset($this->limit);
   }
 
-  /**
-   * Returns the limit date
-   * 
-   * @return DateInterface the limit
-   */
-  public function getDate(): DateInterface {
-    return $this->limit;
-  }
-
   public function isValidDate($date): bool {
     return $this->limit->isEarlierThan($date);
   }

@@ -20,29 +20,22 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\Annual;
 use Sphp\DateTime\Calendars\Diaries\Constraints\VaryingAnnual;
 use Sphp\DateTime\Calendars\Diaries\Constraints\OneOf;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Unique;
+use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 use Sphp\DateTime\Periods;
 
 class ConstraintsTest extends TestCase {
 
   public function testWeekly() {
-    $weekly = new Weekly(1, 2, 5);
-    $period = Periods::days('2018-1-1', 7);
-    foreach ($period->toArray() as $date) {
-      if (in_array($date->getWeekDay(), [1, 2, 5])) {
-        $this->assertTrue($weekly->isValidDate($date));
-      } else {
-        $this->assertFalse($weekly->isValidDate($date));
-      }
-    }
+    $weekly = new Weekly(1, 5);
+    $this->assertTrue($weekly->isValidDate('2018-10-1'));
+    $this->assertFalse($weekly->isValidDate('2018-10-3'));
   }
 
   public function testMonthly() {
-    $monthly = new Monthly(1);
-    $monthly31 = new Monthly(31);
-    $this->assertTrue($monthly->isValidDate('2018-11-01'));
+    $monthly = new Monthly(31);
+    $this->assertFalse($monthly->isValidDate('2018-11-01'));
+    $this->assertFalse($monthly->isValidDate('2018-02-31'));
     $this->assertFalse($monthly->isValidDate('2018-11-02'));
-    $this->assertFalse($monthly31->isValidDate('2018-02-31'));
-    $this->assertFalse($monthly31->isValidDate('2018-11-02'));
   }
 
   public function testInRange() {
@@ -64,8 +57,9 @@ class ConstraintsTest extends TestCase {
     $this->assertTrue($after->isValidDate('2018-1-1'));
     $this->assertFalse($after->isValidDate('2016-11-02'));
   }
+
   public function testAnnual() {
-    $annual = new Annual(5,3);
+    $annual = new Annual(5, 3);
     $this->assertTrue($annual->isValidDate('2018-5-3'));
     $this->assertFalse($annual->isValidDate('2018-12-02'));
   }
@@ -87,6 +81,16 @@ class ConstraintsTest extends TestCase {
     $oneof = new Unique('2018-1-1');
     $this->assertTrue($oneof->isValidDate('2018-1-1'));
     $this->assertFalse($oneof->isValidDate('2018-5-1'));
+  }
+
+  public function testConstraints() {
+    $constraints = new Constraints();
+    $this->assertSame($constraints, $constraints->dateIs(new Monthly(1)));
+    $this->assertSame($constraints, $constraints->dateIs(new After('2018-9-5')));
+    $this->assertSame($constraints, $constraints->dateIsNot(new Unique('2018-11-1')));
+    $this->assertTrue($constraints->isValidDate('2018-10-1'));
+    $this->assertFalse($constraints->isValidDate('2018-11-1'));
+    $this->assertFalse($constraints->isValidDate('2018-9-1'));
   }
 
 }
