@@ -14,7 +14,7 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
- * Implements a monthly constraint
+ * Implements a monthly date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -41,10 +41,7 @@ class Monthly implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    if (!$date instanceof DateInterface) {
-      $date = new Date($date);
-    }
-    return $this->day === $date->getMonthDay();
+    return $this->day === Date::from($date)->getMonthDay();
   }
 
 }

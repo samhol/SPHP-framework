@@ -26,6 +26,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 interface PeriodInterface extends Traversable, Arrayable {
 
   public function getStartDate(): DateTimeInterface;
+
   public function getEndDate(): DateTimeInterface;
 
   /**

@@ -14,7 +14,7 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
- * Description of Unique
+ * Implements an unique date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -31,13 +31,10 @@ class Unique implements DateConstraint {
   /**
    * Constructor
    * 
-   * @param DateInterface $date the date of the holiday
+   * @param mixed $date the date of the holiday
    */
   public function __construct($date) {
-    if (!$date instanceof DateInterface) {
-      $date = new Date($date);
-    }
-    $this->date = $date;
+    $this->date = Date::from($date);
   }
 
   /**
@@ -45,15 +42,6 @@ class Unique implements DateConstraint {
    */
   public function __destruct() {
     unset($this->date);
-  }
-
-  /**
-   * Returns the valid date
-   * 
-   * @return DateInterface the date of the holiday
-   */
-  public function getDate(): DateInterface {
-    return $this->date;
   }
 
   public function isValidDate($date): bool {

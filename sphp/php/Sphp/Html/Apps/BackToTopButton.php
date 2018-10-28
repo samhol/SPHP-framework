@@ -34,8 +34,7 @@ class BackToTopButton implements Content {
   /**
    * Constructor
    *
-   * @param string $title the title text of the button
-   * @param string $iconClass CSS class names of the icon font style
+   * @param Component $component
    */
   public function __construct(Component $component) {
     $component->attributes()->demand('data-sphp-back-to-top-button');

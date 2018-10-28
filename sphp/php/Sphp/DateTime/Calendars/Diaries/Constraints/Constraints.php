@@ -69,8 +69,9 @@ class Constraints implements DateConstraint {
   }
 
   /**
+   * Sets a rule to include dates
    * 
-   * @param  Constraint $c
+   * @param  DateConstraint $c
    * @return $this for a fluent interface
    */
   public function dateIs(DateConstraint $c) {
@@ -79,8 +80,9 @@ class Constraints implements DateConstraint {
   }
 
   /**
+   * Sets a rule to exclude dates
    * 
-   * @param  Constraint $c
+   * @param  DateConstraint $c 
    * @return $this for a fluent interface
    */
   public function dateIsNot(DateConstraint $c) {

@@ -10,8 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateInterface;
-
 /**
  * Defines a constraint for Calendar Dates
  *
@@ -25,7 +23,7 @@ interface DateConstraint {
   /**
    * Checks if the given date matches with the rule
    * 
-   * @param  DateInterface|\DateTimeInteface|string|int|null $date the date to match
+   * @param  mixed $date the date to match
    * @return bool true if the given date matches and false otherwise
    */
   public function isValidDate($date): bool;

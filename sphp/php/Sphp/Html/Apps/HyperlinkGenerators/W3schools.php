@@ -7,6 +7,7 @@
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\Hyperlink;
@@ -16,15 +17,13 @@ use Sphp\Html\Navigation\Hyperlink;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class W3schools extends AbstractLinker {
 
   /**
    * Constructor
-   * 
-   * @param string|null $target the default value of the attributes used in the 
-   *        generated links
    */
   public function __construct() {
     parent::__construct(new UrlGenerator('http://www.w3schools.com/'));
@@ -45,6 +44,7 @@ class W3schools extends AbstractLinker {
    * 
    * @param  string $tagname the HTML5 tag name
    * @param  string $linkText optional content of the link
+   * @param string $title
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function tag(string $tagname, string $linkText = null, string $title = null): Hyperlink {

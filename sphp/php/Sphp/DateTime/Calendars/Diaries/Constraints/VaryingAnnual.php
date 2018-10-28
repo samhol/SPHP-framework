@@ -14,7 +14,7 @@ use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
- * Description of Varying
+ * Implements a varying annual date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -38,10 +38,7 @@ class VaryingAnnual implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    if (!$date instanceof DateInterface) {
-      $date = new Date($date);
-    }
-    $year = $date->getYear();
+    $year = Date::from($date)->getYear();
     $check = Date::from(sprintf($this->format, $year));
     return $check->dateEqualsTo($date);
   }

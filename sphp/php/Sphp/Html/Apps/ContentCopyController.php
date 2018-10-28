@@ -45,7 +45,7 @@ class ContentCopyController implements Content {
    * string. So also an object of any class that implements magic method
    * `__toString()` is allowed.
    *
-   * @param  mixed|mixed[] $button the copier component
+   * @param  Component $button the copier component
    * @param  Component|string $target the component or the id
    *         attribute of the target container
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute

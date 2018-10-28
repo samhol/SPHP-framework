@@ -25,8 +25,7 @@ class Labeller {
   /**
    * Constructor
    * 
-   * @param int $start
-   * @param string $label
+   * @param array $labels
    */
   public function __construct(array $labels = []) {
     $this->setLabels($labels);

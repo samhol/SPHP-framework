@@ -52,19 +52,9 @@ class Annual implements DateConstraint {
     unset($this->day, $this->month);
   }
 
-  public function getMonthDay(): int {
-    return $this->day;
-  }
-
-  public function getMonth(): int {
-    return $this->month;
-  }
-
   public function isValidDate($date): bool {
-    if (!$date instanceof DateInterface) {
-      $date = new Date($date);
-    }
-    return $this->month === $date->getMonth() && $this->day === $date->getMonthDay();
+    $dateObj = Date::from($date);
+    return $this->month === $dateObj->getMonth() && $this->day === $dateObj->getMonthDay();
   }
 
 }

@@ -19,6 +19,7 @@ use Sphp\Database\Doctrine\Objects\Location;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class LocationStorage extends AbstractObjectStorage implements \IteratorAggregate {
@@ -60,6 +61,8 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
    * Finds all managed location objects that have the same country name
    * 
    * @param  string $country the name of the country
+   * @param type $limit
+   * @param type $offset
    * @return Location[] all managed objects that have the same country name
    */
   public function findByCountry(string $country, $limit = null, $offset = null): array {

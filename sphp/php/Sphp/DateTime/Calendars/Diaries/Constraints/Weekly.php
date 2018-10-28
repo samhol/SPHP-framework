@@ -13,7 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 /**
- * Description of WeeklyRepetition
+ * Implements a weekly date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -30,7 +30,7 @@ class Weekly implements DateConstraint {
   /**
    * Constructor
    * 
-   * @param int ...$weekdays
+   * @param int ...$weekday
    */
   public function __construct(int... $weekday) {
     /* if (0 > $weekday || $weekday > 7) {
@@ -40,10 +40,7 @@ class Weekly implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    if (!$date instanceof DateInterface) {
-      $date = new Date($date);
-    }
-    return in_array($date->getWeekDay(), $this->weekdays, true);
+    return in_array(Date::from($date)->getWeekDay(), $this->weekdays, true);
   }
 
 }

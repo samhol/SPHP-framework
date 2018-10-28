@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Apps\Forms;
 
+use Sphp\Html\Div;
+
 /**
  * Implements a SiteSearch360 search form
  *
@@ -27,7 +29,8 @@ class SiteSearch360Form extends AbstractSearchForm {
   /**
    * Constructor
    * 
-   * @param string|null $initialValue
+   * @param string $siteId
+   * @param string $initialValue
    */
   public function __construct(string $siteId, string $initialValue = null) {
     parent::__construct(null, 'get');
@@ -36,8 +39,8 @@ class SiteSearch360Form extends AbstractSearchForm {
     $this->attributes()->protect('data-sphp-ss360-siteid', $siteId);
   }
 
-  public function createResultComponent(): \Sphp\Html\Div {
-    $output = new \Sphp\Html\Div();
+  public function createResultComponent(): Div {
+    $output = new Div();
     $output->cssClasses()->protect('sphp-ss360-searchResults');
     return $output;
   }

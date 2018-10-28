@@ -13,6 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Calendars\Diaries\Constraints;
 use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Implements a holiday event factory
  *
@@ -74,7 +75,7 @@ class Holidays {
   }
 
   /**
-   * Creates a new weekly occuring Holiday instance
+   * Creates a new weekly occurring Holiday instance
    * 
    * @param  int[] $weekdays week days the holiday occurs
    * @param  string $name

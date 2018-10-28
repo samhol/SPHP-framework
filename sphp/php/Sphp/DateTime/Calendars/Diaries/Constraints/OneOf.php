@@ -31,7 +31,7 @@ class OneOf implements DateConstraint {
   /**
    * Constructor
    * 
-   * @param  DateInterface|DateTimeInteface|string|int ...$date
+   * @param  mixed ...$date
    */
   public function __construct(... $date) {
 
@@ -44,7 +44,7 @@ class OneOf implements DateConstraint {
   /**
    * Adds new allowed dates
    * 
-   * @param  DateInterface|DateTimeInteface|string|int ...$date
+   * @param  mixed ...$date
    * @return $this
    */
   public function addDates(... $date) {

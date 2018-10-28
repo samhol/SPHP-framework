@@ -19,6 +19,7 @@ use Sphp\Database\Utils;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 class Rule implements RuleInterface {
@@ -118,6 +119,7 @@ class Rule implements RuleInterface {
    * 
    * @param  string $column
    * @param  Traversable|array $group
+   * @param  int $paramType
    * @return Rule new instance
    */
   public static function isIn(string $column, $group, int $paramType = PDO::PARAM_STR): Rule {
@@ -131,6 +133,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column
    * @param  mixed[]|Query|Traversable $group value(s) of the group
+   * @param  int $paramType
    * @return Rule new instance
    */
   public static function isNotIn($column, $group, int $paramType = PDO::PARAM_STR): Rule {
@@ -196,6 +199,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column
    * @param  mixed $value the value of the expression
+   * @param  int $paramType
    * @return Rule new instance
    */
   public static function is(string $column, $value, int $paramType = PDO::PARAM_STR): Rule {
@@ -207,6 +211,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column name
    * @param  mixed $value the value of the expression
+   * @param  int $paramType
    * @return Rule new instance
    */
   public static function isNot(string $column, $value, int $paramType = PDO::PARAM_STR): Rule {
