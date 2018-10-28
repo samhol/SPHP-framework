@@ -14,15 +14,9 @@ use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Weekly;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Monthly;
 use Sphp\DateTime\Calendars\Diaries\Constraints\InRange;
+use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
 use Sphp\DateTime\Periods;
 
-/**
- * Description of ConstraintsTest
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
 class ConstraintsTest extends TestCase {
 
   public function testWeekly() {
@@ -50,9 +44,14 @@ class ConstraintsTest extends TestCase {
     $range = new InRange('2018-1-1', '2018-1-5');
     $this->assertTrue($range->isValidDate('2018-1-1'));
     $this->assertTrue($range->isValidDate('2018-1-5'));
-    $this->assertFalse($range->isValidDate('2018-11-02'));
     $this->assertFalse($range->isValidDate('2018-02-31'));
     $this->assertFalse($range->isValidDate('2017-01-6'));
+  }
+
+  public function testBefore() {
+    $before = new Before('2018-5-2');
+    $this->assertTrue($before->isValidDate('2018-1-1'));
+    $this->assertFalse($before->isValidDate('2018-11-02'));
   }
 
 }

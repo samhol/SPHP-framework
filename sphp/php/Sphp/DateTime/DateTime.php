@@ -28,12 +28,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DateTime implements DateTimeInterface {
-
-  /**
-   * @var DateTimeImmutable 
-   */
-  private $dateTime;
+class DateTime extends AbstractDate implements DateTimeInterface {
 
   /**
    * @var ReflectionClass 
@@ -48,10 +43,11 @@ class DateTime implements DateTimeInterface {
    */
   public function __construct($time = null) {
     if ($time instanceof DateTimeImmutable) {
-      $this->dateTime = $time;
+      parent::__construct($time);
     } else {
       try {
-        $this->dateTime = DateTimes::dateTimeImmutable($time);
+        $dateTime = DateTimes::dateTimeImmutable($time);
+        parent::__construct($dateTime);
       } catch (Exception $ex) {
         throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
       }
@@ -62,15 +58,16 @@ class DateTime implements DateTimeInterface {
    * Destructor
    */
   public function __destruct() {
-    unset($this->dateTime);
+    unset($this->reflector);
+    parent::__destruct();
   }
 
   /**
    * Clone method
    */
   public function __clone() {
-    $this->dateTime = clone $this->dateTime;
     $this->reflector = null;
+    parent::__clone();
   }
 
   /**
@@ -83,34 +80,23 @@ class DateTime implements DateTimeInterface {
    */
   public function __call(string $name, array $args) {
     if ($this->reflector === null) {
-      $this->reflector = new ReflectionClass($this->dateTime);
+      $this->reflector = new ReflectionClass($this->getDateTime());
     }
     if (!$this->reflector->hasMethod($name)) {
       throw new BadMethodCallException("Method $name does not exist");
     } else {
       $reflectionMethod = $this->reflector->getMethod($name);
-      $result = $reflectionMethod->invokeArgs($this->dateTime, $args);
+      $result = $reflectionMethod->invokeArgs($this->getDateTime(), $args);
       if ($result instanceof DateTimeImmutable) {
         return new static($result);
       } else {
         return $result;
       }
     }
-    // $this->reflector->getMethod($name)->
-    return $this->dateTime;
   }
 
   public function __toString(): string {
     return $this->format(\DateTime::ATOM);
-  }
-
-  /**
-   * Returns the inner immutable datetime object
-   * 
-   * @return DateTimeImmutable the inner immutable datetime object
-   */
-  public function getDateTime(): DateTimeImmutable {
-    return $this->dateTime;
   }
 
   /**
@@ -123,98 +109,9 @@ class DateTime implements DateTimeInterface {
   }
 
   /**
-   * Returns date formatted according to given format
-   * 
-   * @param  string $format the format of the outputted date string
-   * @return string date formatted according to given format
-   * @throws InvalidArgumentException if formatting fails
-   */
-  public function format(string $format): string {
-    $output = $this->getDateTime()->format($format);
-    if ($output === false) {
-      throw new InvalidArgumentException('Invalid format string');
-    }
-    return $output;
-  }
-
-  /**
-   * Returns the number of the weekday
-   * 
-   * @return int the number of the weekday
-   */
-  public function getWeekDay(): int {
-    return (int) $this->format('N');
-  }
-
-  /**
-   * Returns the name of the weekday
-   * 
-   * @return string the name of the weekday
-   */
-  public function getWeekDayName(): string {
-    return $this->format('l');
-  }
-
-  /**
-   * Returns the week number 
-   * 
-   * @return int the week number 
-   */
-  public function getWeek(): int {
-    return (int) $this->format('W');
-  }
-
-  /**
-   * Returns the number of the month
-   * 
-   * @return int the number of the month
-   */
-  public function getMonth(): int {
-    return (int) $this->format('m');
-  }
-
-  /**
-   * Returns the name of the month
-   * 
-   * @return string the name of the month
-   */
-  public function getMonthName(): string {
-    return $this->format('F');
-  }
-
-  /**
-   * Returns the day of the month
-   * 
-   * @return int the day of the month
-   */
-  public function getMonthDay(): int {
-    return (int) $this->format('j');
-  }
-
-  /**
-   * Returns the year
-   * 
-   * @return int the year
-   */
-  public function getYear(): int {
-    return (int) $this->format('Y');
-  }
-
-  /**
-   * Checks whether the date is the current date
-   * 
-   * @return bool true if the date is the current date, false otherwise
-   */
-  public function isCurrentDate(): bool {
-    $today = date('Y-m-d');
-    $thisDay = $this->getDateTime()->format('Y-m-d');
-    return $today === $thisDay;
-  }
-
-  /**
    * Returns the difference in days between this and another date
    * 
-   * @param  mixed $date raw date data
+   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
    * @return int the difference in days
    * @throws InvalidArgumentException if date cannot be parsed from input
    */
@@ -223,37 +120,6 @@ class DateTime implements DateTimeInterface {
     $timeStamp = $this->getTimestamp();
     $result = $timeStamp <=> $dt;
     return $result;
-  }
-
-  public function dateEqualsTo($date): bool {
-    try {
-      $parsed = DateTimes::parseDateString($date);
-      return $parsed === $this->format('Y-m-d');
-    } catch (Exception $ex) {
-      return false;
-    }
-  }
-
-  /**
-   * Checks if this date is later than the given one
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if this date is later than the given one and false otherwise
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public function isLaterThan($date): bool {
-    return $this->compareTo($date) > 0;
-  }
-
-  /**
-   * Checks if this date is earlier than the given one
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if this date is earlier than the given one and false otherwise
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public function isEarlierThan($date): bool {
-    return $this->compareTo($date) < 0;
   }
 
   /**
@@ -333,7 +199,7 @@ class DateTime implements DateTimeInterface {
   public function modify(string $modify): DateTime {
     $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
-    $new = $this->dateTime->modify($modify);
+    $new = $this->getDateTime()->modify($modify);
     $thrower->stop();
     return new static($new);
   }
@@ -347,7 +213,7 @@ class DateTime implements DateTimeInterface {
    */
   public function add($interval): DateTime {
     //$interval = Factory::dateInterval($interval);
-    $dt = $this->dateTime->add(Intervals::create($interval));
+    $dt = $this->getDateTime()->add(Intervals::create($interval));
     return new static($dt);
   }
 
@@ -359,7 +225,7 @@ class DateTime implements DateTimeInterface {
    * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function sub($interval): DateTime {
-    $dt = $this->dateTime->sub(Intervals::create($interval));
+    $dt = $this->getDateTime()->sub(Intervals::create($interval));
     return new static($dt);
   }
 
@@ -376,11 +242,11 @@ class DateTime implements DateTimeInterface {
   }
 
   public function getTimeZoneOffset(): int {
-    return $this->dateTime->getOffset();
+    return $this->getDateTime()->getOffset();
   }
 
   public function getTimeZoneName(): string {
-    return $this->dateTime->getTimezone()->getName();
+    return $this->getDateTime()->getTimezone()->getName();
   }
 
   /**

@@ -18,6 +18,26 @@ namespace Sphp\DateTime;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface DateTimeInterface extends DateInterface, TimeInterface {
+interface DateTimeInterface extends DateInterface {
   
+  /**
+   * Returns the number of hours
+   * 
+   * @return int the number of hours
+   */
+  public function getHours(): int;
+
+  /**
+   * Returns the number of minutes
+   * 
+   * @return int the number of minutes
+   */
+  public function getMinutes(): int;
+
+  /**
+   * Returns the number of seconds
+   * 
+   * @return int the number of seconds
+   */
+  public function getSeconds(): int;
 }

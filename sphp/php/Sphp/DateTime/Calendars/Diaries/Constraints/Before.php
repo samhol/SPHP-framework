@@ -12,7 +12,6 @@ namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
-use Sphp\Stdlib\Parsers\Json;
 
 /**
  * Implements a constraint including all Calendar Dates before the limit
@@ -48,27 +47,8 @@ class Before implements DateConstraint {
     unset($this->limit);
   }
 
-  /**
-   * Returns the limit date
-   * 
-   * @return DateInterface the limit
-   */
-  public function getDate(): DateInterface {
-    return $this->limit;
-  }
-
   public function isValidDate($date): bool {
     return $this->limit->isLaterThan($date);
-  }
-
-  public function toJson(): string {
-    $data = [
-        'type' => static::class,
-        'params' => [
-            'limit' => $this->limit->format('Y-m-d H:i:sO')
-        ]
-    ];
-    return (new Json())->write($data);
   }
 
 }

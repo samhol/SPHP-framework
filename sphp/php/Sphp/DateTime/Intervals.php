@@ -108,7 +108,7 @@ abstract class Intervals {
   /**
    * 
    * @param  DateInterval $input
-   * @return Interval new instance
+   * @return string
    */
   public static function toString(DateInterval $input): string {
     $format = 'P';
