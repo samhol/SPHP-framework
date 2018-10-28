@@ -44,10 +44,7 @@ class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayabl
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    */
   public function __construct($date) {
-    if (!$date instanceof Date) {
-      $date = Date::from($date);
-    }
-    $this->date = $date;
+    $this->date = Date::from($date);
     $this->exercises = [];
   }
 
@@ -59,7 +56,7 @@ class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayabl
   }
 
   public function __toString(): string {
-    //$output = parent::__toString() . ':';
+    $output = '';
     foreach ($this->exercises as $ex) {
       $output .= "\n\t$ex";
     }

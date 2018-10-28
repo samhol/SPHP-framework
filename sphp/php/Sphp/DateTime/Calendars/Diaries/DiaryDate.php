@@ -137,7 +137,11 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    */
   public function filterLogs($filter): LogContainer {
     $logs = array_filter($this->logs, $filter);
-    return new static($this, $logs);
+    $result = new static($this);
+    foreach ($logs as $log) {
+      $result->insertLog($log);
+    }
+    return $result;
   }
 
   public function __toString(): string {

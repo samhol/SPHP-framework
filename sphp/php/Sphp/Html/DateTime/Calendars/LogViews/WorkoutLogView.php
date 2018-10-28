@@ -31,6 +31,7 @@ class WorkoutLogView {
 
   public function build(DiaryDate $date): string {
     $workouts = $date->getByType(WorkoutLog::class);
+     //echo $date;
     if ($workouts->notEmpty()) {
       $section = new Section();
       $section->addCssClass('workouts');

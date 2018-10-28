@@ -40,7 +40,6 @@ trait DiaryTrait {
     return $contains;
   }
 
-
   /**
    * Filters log of this collection using a callback function
    * 
