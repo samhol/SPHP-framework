@@ -12,6 +12,8 @@ namespace Sphp\Config;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Exceptions\OutOfRangeException;
+use Sphp\Exceptions\RuntimeException;
+use ArrayAccess;
 
 /**
  * Implements class for managing PHP settings
@@ -20,21 +22,29 @@ use Sphp\Exceptions\OutOfRangeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Ini implements Arrayable {
+class Ini implements Arrayable, ArrayAccess {
 
   /**
-   * current ini 
+   * previous INI values after init() call
    *
    * @var string[]
    */
-  private $pre = [];
+  private $pre;
 
   /**
-   * the ini 
+   * stored INI values
    *
    * @var string[]
    */
-  private $ini = [];
+  private $ini;
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    $this->ini = [];
+    $this->pre = [];
+  }
 
   /**
    * Destructor
@@ -86,7 +96,8 @@ class Ini implements Arrayable {
   public function get(string $varname) {
     if ($this->exists($varname)) {
       return $this->ini[$varname];
-    }throw new OutOfRangeException();
+    }
+    throw new OutOfRangeException($varname . " is not set");
   }
 
   /**
@@ -95,13 +106,13 @@ class Ini implements Arrayable {
    * Previous settings are replaced
    * 
    * @return $this for a fluent interface
+   * @throws RuntimeException if unable to set INI
    */
   public function init() {
     foreach ($this->ini as $name => $value) {
-      $old  = ini_set($name, $value);
-      //echo "old $name:" . var_export($old, true);
-      if ($old === false ) {
-        throw new \Sphp\Exceptions\RuntimeException("INI value '$name' cannot be set");
+      $old = ini_set($name, $value);
+      if ($old === false) {
+        throw new RuntimeException("Unable to set INI value '$name'.");
       }
       $this->pre[$name] = $old;
     }
@@ -144,6 +155,32 @@ class Ini implements Arrayable {
 
   public function toArray(): array {
     return $this->ini;
+  }
+
+  public function offsetExists($offset): bool {
+    return $this->exists($offset);
+  }
+
+  /**
+   * Returns the stored value of a configuration option
+   * 
+   * @param  string $offset the name of the option
+   * @return string the value of the option
+   * @link   http://php.net/manual/en/function.ini-get.php ini_get
+   * @throws OutOfRangeException
+   */
+  public function offsetGet($offset) {
+    return $this->get($offset);
+  }
+
+  public function offsetSet($offset, $value) {
+    $this->set($offset, $value);
+  }
+
+  public function offsetUnset($offset) {
+    if ($this->offsetExists($offset)) {
+      unset($this->ini[$offset]);
+    }
   }
 
 }
