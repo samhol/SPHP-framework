@@ -24,7 +24,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 class Logs {
 
   /**
-   * Creates a new unique date note instance
+   * Creates a new unique date log instance
    * 
    * @param  DateInterface|\DateTimeInteface|string|int|null $date raw date data
    * @param  string $heading heading of the note 
@@ -34,11 +34,11 @@ class Logs {
    */
   public static function unique($date, string $heading, string $description = null): BasicLog {
     $constraint = new Constraints\Unique($date);
-    return new EventLog($constraint, $heading, $description);
+    return new BasicLog($constraint, $heading, $description);
   }
 
   /**
-   * Creates a new annual note instance
+   * Creates a new annual log instance
    * 
    * @param  int $month
    * @param  int $day
@@ -52,7 +52,7 @@ class Logs {
   }
 
   /**
-   * Creates a new annual varying Holiday instance
+   * Creates a new annual varying log instance
    * 
    * @param  string $format 
    * @param  string $name
@@ -65,7 +65,7 @@ class Logs {
   }
 
   /**
-   * Creates a new weekly occurring Holiday instance
+   * Creates a new weekly occurring log instance
    * 
    * @param  int $day the day of the month
    * @param  string $name
@@ -78,7 +78,7 @@ class Logs {
   }
 
   /**
-   * Creates a new weekly occurring Holiday instance
+   * Creates a new weekly occurring log instance
    * 
    * @param  int[] $weekdays week days the holiday occurs
    * @param  string $name
@@ -88,6 +88,60 @@ class Logs {
   public static function weekly(array $weekdays, string $name, string $description = null): BasicLog {
     $reflect = new \ReflectionClass(Constraints\Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);
+    return new BasicLog($constraint, $name, $description);
+  }
+
+  /**
+   * Creates a new inRange occurring log instance
+   * 
+   * @param  mixed $start
+   * @param  mixed $stop
+   * @param  string $name
+   * @param  string $description
+   * @return BasicLog new instance
+   */
+  public static function inRange($start, $stop, string $name, string $description = null): BasicLog {
+    $constraint = new Constraints\InRange($start, $stop);
+    return new BasicLog($constraint, $name, $description);
+  }
+
+  /**
+   * Creates a new inRange occurring log instance
+   * 
+   * @param  mixed $limit week days the holiday occurs
+   * @param  string $name
+   * @param  string $description
+   * @return BasicLog new instance
+   */
+  public static function before($limit, string $name, string $description = null): BasicLog {
+    $constraint = new Constraints\Before($limit);
+    return new BasicLog($constraint, $name, $description);
+  }
+
+  /**
+   * Creates a new inRange occurring log instance
+   * 
+   * @param  mixed $limit week days the holiday occurs
+   * @param  string $name
+   * @param  string $description
+   * @return BasicLog new instance
+   */
+  public static function after($limit, string $name, string $description = null): BasicLog {
+    $constraint = new Constraints\After($limit);
+    return new BasicLog($constraint, $name, $description);
+  }
+
+  /**
+   * Creates a new inRange occurring log instance
+   * 
+   * @param  mixed $dates dates the holiday occurs
+   * @param  string $name
+   * @param  string $description
+   * @return BasicLog new instance
+   */
+  public static function oneOf(array $dates, string $name, string $description = null): BasicLog {
+    $reflect = new \ReflectionClass(Constraints\OneOf::class);
+    $constraint = $reflect->newInstanceArgs($dates);
     return new BasicLog($constraint, $name, $description);
   }
 

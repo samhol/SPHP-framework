@@ -26,11 +26,6 @@ use Sphp\Html\Lists\Ul;
  */
 class EventLogView {
 
-  /**
-   * @var DiaryDate 
-   */
-  private $date;
-
   public function build(DiaryDate $date): string {
     $output = '';
     if ($date->isHoliday()) {

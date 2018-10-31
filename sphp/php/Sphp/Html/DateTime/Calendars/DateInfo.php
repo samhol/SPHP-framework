@@ -67,7 +67,7 @@ class DateInfo implements Content {
   public function createPopup(): Popup {
     $popup = new Popup();
     $popup->addCssClass('sphp-date-info');
-    $date = $this->date->format('l F jS Y');
+    $date = $this->date->getDate()->format('l F jS Y');
     $popup->append("<h2>$date</h2>");
     $popup->append($this->logLayoutBuilder->build($this->date));
     return $popup;
@@ -79,7 +79,7 @@ class DateInfo implements Content {
       $ul->appendMd("**HOLIDAYS:**");
       foreach ($this->date as $log) {
         if ($log instanceof BirthDay) {
-          $ul->appendMd($log->toString($this->date->getYear()));
+          $ul->appendMd($log->toString($this->date->getDate()->getYear()));
         } else {
           $ul->appendMd($log->toString());
         }

@@ -79,7 +79,7 @@ abstract class AbstractDate implements DateInterface {
   public function format(string $format): string {
     $output = $this->getDateTime()->format($format);
     if ($output === false) {
-      throw new InvalidArgumentException('Invalid format string');
+      throw new InvalidArgumentException('Invalid format string: ' . $format);
     }
     return $output;
   }

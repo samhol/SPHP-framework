@@ -56,27 +56,13 @@ class WeekDayView implements CssClassifiableContent {
     return $this->container->cssClasses();
   }
 
-  protected function buildInfo() {
-    if ($this->diaryDay->getLogs()->notEmpty()) {
-      $dateInfo = new DateInfo($this->diaryDay, $this->container);
-      $modal = $dateInfo->create();
-      //$modal->getTrigger()->addCssClass('float-center');
-      $this->container->append($modal);
-    }
-
-    if ($this->diaryDay->isNationalHoliday()) {
-      $this->container->cssClasses()->protect('holiday');
-    }
-    return $this;
-  }
-
   protected function generateTimeTag(): TimeTag {
-    $timeTag = new TimeTag($this->diaryDay->getDateTime());
+    $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->isFlagDay()) {
       $timeTag->append('<div class="flag" style="width:20px; display:inline-block;">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</div>");
     }
-    $timeTag->append($this->diaryDay->format('j'));
-    $timeTag->setAttribute('title', $this->diaryDay->format('l, Y-m-d'));
+    $timeTag->append($this->diaryDay->getDate()->format('j'));
+    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l, Y-m-d'));
 
 
     return $timeTag;
@@ -85,12 +71,12 @@ class WeekDayView implements CssClassifiableContent {
   protected function buildDate(): PlainContainer {
     $container = new PlainContainer;
     $container->append($this->container);
-    $timeTag = new TimeTag($this->diaryDay->getDateTime(), $this->diaryDay->format('j'));
-    $timeTag->setAttribute('title', $this->diaryDay->format('l, Y-m-d'));
-    if ($this->diaryDay->getWeekDay() === 1) {
-      $this->container->append("<div class=\"week-nr\">{$this->diaryDay->getWeek()}</div>");
+    $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime(), $this->diaryDay->getDate()->format('j'));
+    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l, Y-m-d'));
+    if ($this->diaryDay->getDate()->getWeekDay() === 1) {
+      $this->container->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
     }
-    if ($this->diaryDay->isCurrentDate()) {
+    if ($this->diaryDay->getDate()->isCurrentDate()) {
       $this->container->cssClasses()->protect('today');
     }
     $this->container->append($this->generateTimeTag());
@@ -110,7 +96,7 @@ class WeekDayView implements CssClassifiableContent {
         $this->container->cssClasses()->protect('flag-day');
       }
     }
-    $this->container->cssClasses()->protect(strtolower($this->diaryDay->format('l')));
+    $this->container->cssClasses()->protect(strtolower($this->diaryDay->getDate()->format('l')));
     return $container;
   }
 

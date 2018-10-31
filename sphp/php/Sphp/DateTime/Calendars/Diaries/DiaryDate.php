@@ -21,9 +21,11 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DiaryDate extends Date implements Iterator, DiaryDateInterface {
+class DiaryDate implements Iterator, DiaryDateInterface {
 
   use DiaryTrait;
+
+  private $date;
 
   /**
    * @var LogInterface[] 
@@ -36,7 +38,8 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    * @param mixed $date
    */
   public function __construct($date) {
-    parent::__construct($date);
+    $this->date = Date::from($date);
+    //parent::__construct($date);
     $this->logs = [];
   }
 
@@ -44,8 +47,12 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    * Destructor
    */
   public function __destruct() {
-    unset($this->logs);
-    parent::__destruct();
+    unset($this->date, $this->logs);
+    //parent::__destruct();
+  }
+
+  public function getDate(): Date {
+    return $this->date;
   }
 
   /**
@@ -108,7 +115,7 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
   }
 
   public function insertLog(LogInterface $log): bool {
-    if (!$log->dateMatchesWith($this)) {
+    if (!$log->dateMatchesWith($this->getDate())) {
       return false;
     } else {
       $this->logs[] = $log;
@@ -137,7 +144,7 @@ class DiaryDate extends Date implements Iterator, DiaryDateInterface {
    */
   public function filterLogs($filter): LogContainer {
     $logs = array_filter($this->logs, $filter);
-    $result = new static($this);
+    $result = new static($this->getDate());
     foreach ($logs as $log) {
       $result->insertLog($log);
     }
