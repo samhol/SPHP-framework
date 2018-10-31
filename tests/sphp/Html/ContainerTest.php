@@ -2,9 +2,9 @@
 
 namespace Sphp\Html;
 
-use Sphp\Tests\ArrayAccessIteratorCountableTestCase;
+use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
 
-class ContainerTest extends ArrayAccessIteratorCountableTestCase {
+class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
 
   /**
    * @var Container
@@ -187,7 +187,7 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
    * 
    * @return mixed[]
    */
-  public function arrayData() {
+  public function arrayData(): array {
     return [
         [range("a", "e")],
         [array_fill(0, 10, new PlainContainer())],
@@ -250,6 +250,10 @@ class ContainerTest extends ArrayAccessIteratorCountableTestCase {
     $this->assertEquals($clone[0][0], "a");
 
     $this->assertEquals($this->container[0][0], "b");
+  }
+
+  public function createCollection(): \ArrayAccess {
+    return new PlainContainer();
   }
 
 }

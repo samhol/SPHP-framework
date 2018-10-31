@@ -80,7 +80,7 @@ class HiddenInputs implements Content, ArrayAccess, Iterator {
   public function offsetGet($name) {
     $result = null;
     if ($this->offsetExists($name)) {
-      $result = $this->components[$name];
+      $result = $this->inputs[$name];
     }
     return $result;
   }
