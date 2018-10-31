@@ -16,6 +16,7 @@ use Sphp\Html\Lists\StandardList;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\Html\Container;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet;
 
 /**
  * Implements pane builder for weightlifting exercises
@@ -43,10 +44,10 @@ MD
     if ($exercise->count() === 1) {
       $list = new Ul();
     } else {
-      $list = new Ol();
+      $list = new Ul();
     }
     foreach ($exercise as $set) {
-      if ($set instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet) {
+      if ($set instanceof WeightliftingSet) {
         $setString = $set->getReps() . ' x ' . $set->getRepWeight() . " kg (total: {$set->getTotalWeight()}kg)";
         $list->append($setString);
       }

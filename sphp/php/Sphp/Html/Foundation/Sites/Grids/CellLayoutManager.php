@@ -80,11 +80,11 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
    */
   public function __call(string $name, array $arguments): CellScreenSizeLayoutManager {
     if (!$this->isScreenSize($name)) {
-    throw new \Sphp\Exceptions\BadMethodCallException("Invalid size '$name' for Grid cell");
+      throw new \Sphp\Exceptions\BadMethodCallException("Invalid size '$name' for Grid cell");
     } if (count($arguments) === 1) {
       return $this->screen($name)[$arguments[0]];
     } else {
-    throw new \Sphp\Exceptions\BadMethodCallException("Wrong number of arguments foe '$name' for Grid cell");
+      throw new \Sphp\Exceptions\BadMethodCallException("Wrong number of arguments foe '$name' for Grid cell");
     }
   }
 

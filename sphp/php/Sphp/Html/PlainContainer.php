@@ -172,20 +172,6 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
   }
 
   /**
-   * Filters elements of a collection using a callback function
-   *
-   * @precondition $flag === {@link ARRAY_FILTER_USE_KEY} || $flag === {@link ARRAY_FILTER_USE_BOTH}
-   * @param  callable $callback the callback function to use; If no callback is 
-   *         supplied, all entries of array equal to `false` will be removed.
-   * @param  int $flag flag determining what arguments are sent to callback
-   * @return $this for a fluent interface
-   */
-  public function filter(callable $callback = null, $flag = 0) {
-    $this->components = array_filter($this->components, $callback, $flag);
-    return $this;
-  }
-
-  /**
    * Creates a new iterator to iterate through content
    *
    * @return Traversable iterator
