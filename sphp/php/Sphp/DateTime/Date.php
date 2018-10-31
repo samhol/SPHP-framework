@@ -67,16 +67,6 @@ class Date extends AbstractDate {
   }
 
   /**
-   * Advances given number of months and returns a new instance
-   * 
-   * @param  int $months number of months to shift
-   * @return Date new instance
-   */
-  public function jumpMonths(int $months): Date {
-    return $this->modify("$months months");
-  }
-
-  /**
    * Returns the next Date
    * 
    * @return Date new instance

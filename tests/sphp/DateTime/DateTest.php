@@ -32,7 +32,6 @@ class DateTest extends TestCase {
     $timestamp = time();
     $date = new Date("@$timestamp");
     $this->assertEquals($date, $date->jumpDays(1)->jumpDays(-1));
-    $this->assertEquals($date, $date->jumpMonths(1)->jumpMonths(-1));
   }
 
   public function testModificators() {

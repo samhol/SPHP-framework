@@ -143,16 +143,6 @@ class DateTime extends AbstractDate implements DateTimeInterface {
   }
 
   /**
-   * Advances given number of months and returns a new instance
-   * 
-   * @param  int $months number of months to shift
-   * @return DateTime new instance
-   */
-  public function jumpMonths(int $months): DateTime {
-    return $this->modify("$months months");
-  }
-
-  /**
    * Returns the next Date
    * 
    * @return DateTime new instance

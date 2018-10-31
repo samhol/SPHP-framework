@@ -52,7 +52,7 @@ class MonthSelector implements Content {
   }
 
   public function createPreviousMonth(): Hyperlink {
-    $prev = $this->date->jumpMonths(-1);
+    $prev = $this->date->modify('-1 month');
     $monthText = "Go to {$prev->format('F Y')}";
     $content = new FaIcon('fas fa-chevron-left', $monthText);
     $content->setSize('sm');
@@ -62,7 +62,7 @@ class MonthSelector implements Content {
   }
 
   public function createNextMonth(): Hyperlink {
-    $prev = $this->date->jumpMonths(1);
+    $prev = $this->date->modify('+1 month');
     $monthText = "Go to {$prev->format('F Y')}";
     $content = new FaIcon('fas fa-chevron-right', $monthText);
     $content->setSize('sm');

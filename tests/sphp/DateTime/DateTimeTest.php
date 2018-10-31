@@ -40,7 +40,6 @@ class DateTimeTest extends TestCase {
     $date = new DateTime("@$timestamp");
     $this->assertEquals($date, $date->jumpDays(1)->jumpDays(-1));
     $this->assertEquals($date, $date->jumpHours(1)->jumpHours(-1));
-    $this->assertEquals($date, $date->jumpMonths(1)->jumpMonths(-1));
   }
 
   public function testModificators() {
