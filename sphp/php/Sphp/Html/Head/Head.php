@@ -57,10 +57,10 @@ class Head extends AbstractComponent implements \IteratorAggregate, NonVisualCon
    * @return Title instance set
    */
   public function setDocumentTitle($title): Title {
-    if (!($title instanceof Title)) {
+    if (!$title instanceof Title) {
       $title = new Title($title);
     }
-    $this->content->set($title);
+    $this->set($title);
     return $title;
   }
 
