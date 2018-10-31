@@ -1,0 +1,50 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+@mixin sphp-date-info() { 
+  .sphp-date-info {
+    border: 2px solid #666;
+    @include border-radius(3px);
+    section {
+      margin: 1px;
+      padding:  rem-calc(3 1);
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      .heading {
+        font-size: rem-calc(19);
+        padding:   rem-calc(3 5);
+      }
+      .accordion-title {
+        span {
+           font-size: rem-calc(19);
+           font-weight: bold;
+        }
+        small {
+          margin-left: rem-calc(4);
+          font-size: rem-calc(13);
+        }
+      }
+      &.workouts {
+        border: 1px solid #ccc;
+        .accordion-content {
+
+          ul {
+            list-style: none;
+          }
+        }
+      }
+      &.holidays {
+        border: 1px solid #ccc;
+        ul {
+          list-style: none;
+        }
+      }
+
+    }
+  }
+}

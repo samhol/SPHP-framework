@@ -8,10 +8,12 @@
 
 @import "time-icon";
 @import "calendar-month";
+@import "sphp-date-info";
 @import "month-selector";
 
 @mixin sphp-calendar-modules() { 
   @include sphp-datetime-icon;
   @include sphp-calendar-month;
+  @include sphp-date-info;
   @include sphp-month-selector;
 }

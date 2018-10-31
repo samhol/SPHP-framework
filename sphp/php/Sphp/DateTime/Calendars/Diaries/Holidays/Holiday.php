@@ -63,10 +63,10 @@ class Holiday extends AbstractLog implements HolidayInterface {
     $output = $this->getName();
     $attrs = [];
     if ($this->isNationalHoliday()) {
-      $attrs[] = "national holiday";
+      $attrs[] = 'national holiday';
     }
     if ($this->isFlagDay()) {
-      $attrs[] = "flagday";
+      $attrs[] = 'flagday';
     }
     if (!empty($attrs)) {
       $output .= ': ' . implode(', ', $attrs);

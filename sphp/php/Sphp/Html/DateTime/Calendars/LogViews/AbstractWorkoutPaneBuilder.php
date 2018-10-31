@@ -48,7 +48,7 @@ abstract class AbstractWorkoutPaneBuilder {
    */
   public function buildTitleContent(Exercise $exercise): Container {
     $title = Tags::span($exercise->getName());
-    $title->append(Tags::strong(" ({$exercise->getDescription()})"));
+    $title->append(Tags::small(" ({$exercise->getDescription()})"));
     return $title;
   }
 

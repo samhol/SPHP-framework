@@ -35,7 +35,7 @@ class WorkoutLogView {
     if ($workouts->notEmpty()) {
       $section = new Section();
       $section->addCssClass('workouts');
-      $section->appendH3('Workouts for the day');
+      $section->appendH3('Workouts for the day')->addCssClass('heading');
       foreach ($workouts as $wo) {
         // echo get_class($wo);
         $section->append($this->buildAccordion($wo));
@@ -64,13 +64,14 @@ class WorkoutLogView {
       } else if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise) {
         $accordion->append($doer2->buildPane($exercise));
       } else {
+        throw new \Exception;
         $accordion->append($this->buildPane($exercise));
       }
     }
     return $accordion;
   }
 
-  protected function buildPane(Exercise $exercise): Pane {
+  private function buildPane(Exercise $exercise): Pane {
     $pane = new Pane($this->createPaneTitle($exercise));
     if ($exercise->count() === 1) {
       $list = new Ul();
@@ -86,7 +87,7 @@ class WorkoutLogView {
 
   protected function createPaneTitle(Exercise $exercise): \Sphp\Html\Span {
     $title = Tags::span($exercise->getName());
-    $title->append(Tags::strong(" ({$exercise->getDescription()})"));
+    $title->append(Tags::small(" ({$exercise->getDescription()})"));
     if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
       $title->append($exercise->getTotalWeight());
     }

@@ -71,30 +71,3 @@
     }
   }
 }
-
-.sphp-date-info {
-  border: 2px solid #666;
-  @include border-radius(3px);
-  section {
-    margin: 1px;
-    padding:  rem-calc(3 1);
-    border: 1px solid #ccc;
-    @include border-radius(3px);
-    &.workouts {
-      border: 1px solid #ccc;
-      .accordion-content {
-
-        ul {
-          list-style: none;
-        }
-      }
-    }
-    &.holidays {
-      border: 1px solid #ccc;
-      ul {
-        list-style: none;
-      }
-    }
-
-  }
-}

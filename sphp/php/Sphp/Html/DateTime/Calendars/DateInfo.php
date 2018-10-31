@@ -73,21 +73,6 @@ class DateInfo implements Content {
     return $popup;
   }
 
-  public function createHolidayNotes(): PlainContainer {
-    $ul = new PlainContainer();
-    if (count($this->date->getHolidays()) > 0) {
-      $ul->appendMd("**HOLIDAYS:**");
-      foreach ($this->date as $log) {
-        if ($log instanceof BirthDay) {
-          $ul->appendMd($log->toString($this->date->getDate()->getYear()));
-        } else {
-          $ul->appendMd($log->toString());
-        }
-      }
-    }
-    return $ul;
-  }
-
   /**
    * 
    * @return Modal
