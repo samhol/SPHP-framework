@@ -15,6 +15,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\Media\Icons\Svg;
 
 /**
  * Implements a holiday log viewer
@@ -41,23 +42,30 @@ class HolidayLogView {
    */
   public function buildSection(DiaryDate $date): Section {
     $section = new Section();
+    if ($date->isFlagDay()) {
+      $section->addCssClass('flag-day');
+    }
+    $section->addCssClass('holidays');
     //$section->addCssClass('holidays');
     $birthDays = new Ul();
     $otherHolidays = new Ul();
     $birthday = $other = false;
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
+      $holidayText = $holiday;
+      if ($holiday->isFlagDay()) {
+        $holidayText .= '<div class="flag" style="width:20px; display:inline-block; margin-left:6px;">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</div>";
+      }
       if ($holiday instanceof BirthDay) {
-        $birthDays->append($holiday);
+        $birthDays->append($holidayText);
         $birthday = true;
       } else {
-        $otherHolidays->append($holiday);
+        $otherHolidays->append($holidayText);
         $other = true;
       }
     }
     if ($other) {
       $section->appendH3('Holidays');
       $section->append($otherHolidays);
-      $section->addCssClass('holidays');
     }
     if ($birthday) {
       $section->appendH3('Birthdays');
