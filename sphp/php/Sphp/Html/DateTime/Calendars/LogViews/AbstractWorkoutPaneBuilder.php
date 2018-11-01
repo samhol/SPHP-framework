@@ -14,8 +14,11 @@ use Sphp\Html\Container;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 use Sphp\Html\Tags;
 use Sphp\Html\Lists\StandardList;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\Lists\Ol;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -59,9 +62,17 @@ abstract class AbstractWorkoutPaneBuilder {
       $list = new Ol();
     }
     foreach ($exercise as $set) {
-      $list->append($set);
+      $list->append($this->setToHtml($set));
     }
     return $list;
+  }
+
+  public function setToHtml(ExerciseSet $set): string {
+    return "$set";
+  }
+
+  public function totalsToHtml(Exercise $exercise): string {
+    return $exercise->totalsToString();
   }
 
   /**
@@ -72,7 +83,12 @@ abstract class AbstractWorkoutPaneBuilder {
    */
   public function buildContent(Exercise $exercise): Container {
     $container = new PlainContainer;
-    $container->append($this->buildSetList($exercise));
+    if ($exercise->count() > 0) {
+      if ($exercise->count() > 1) {
+        $container->append($this->buildSetList($exercise));
+      }
+      $container->append($this->totalsToHtml($exercise));
+    }
     return $container;
   }
 

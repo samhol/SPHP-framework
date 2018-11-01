@@ -10,13 +10,8 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\Ol;
-use Sphp\Html\Lists\StandardList;
+use Sphp\Html\Lists\Dl;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
-use Sphp\Html\Container;
-use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
-use Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet;
 
 /**
  * Implements pane builder for weightlifting exercises
@@ -28,31 +23,11 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet;
  */
 class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): Container {
-    $container = parent::buildContent($exercise);
-    if ($exercise instanceof WeightLiftingExercise) {
-      $container->appendMd(<<<MD
- * **total weight:** `{$exercise->getTotalWeight()} kg`
- * **total reps:** `{$exercise->getTotalReps()}`
-MD
-      );
-    }
-    return $container;
-  }
-
-  public function buildSetList(Exercise $exercise): StandardList {
-    if ($exercise->count() === 1) {
-      $list = new Ul();
-    } else {
-      $list = new Ul();
-    }
-    foreach ($exercise as $set) {
-      if ($set instanceof WeightliftingSet) {
-        $setString = $set->getReps() . ' x ' . $set->getRepWeight() . " kg (total: {$set->getTotalWeight()}kg)";
-        $list->append($setString);
-      }
-    }
-    return $list;
+  public function totalsToHtml(Exercise $exercise): string {
+    $del = new Dl;
+    $del->appendTerm('Totals:')->addCssClass('strong');
+    $del->appendDescription('<strong>reps:</strong> ' . $exercise->getTotalReps() . ',<strong>weight:</strong> ' . $exercise->getTotalWeight() . ' kg');
+    return "$del";
   }
 
 }

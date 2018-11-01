@@ -86,6 +86,8 @@ abstract class Exercise implements Iterator, Countable {
   public function getDescription(): string {
     return $this->category;
   }
+  
+  abstract public function totalsToString(): string;
 
   /**
    * Returns exercise sets

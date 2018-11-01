@@ -79,4 +79,8 @@ class DistanceAndTimeExercise extends Exercise implements \Iterator {
     return $result;
   }
 
+  public function totalsToString(): string {
+    return $this->getTotalDistance() . "km, at " . $this->getAverageSpeed() . "km/h";
+  }
+
 }

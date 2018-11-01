@@ -29,7 +29,7 @@ use Sphp\Html\Container;
  */
 class TimedExercisePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): Container {
+  public function buildContent1(Exercise $exercise): Container {
     $container = new PlainContainer();
     if ($exercise instanceof TimedExercise) {
       if ($exercise->count() === 1) {

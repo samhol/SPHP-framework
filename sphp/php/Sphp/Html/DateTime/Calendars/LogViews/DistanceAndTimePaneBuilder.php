@@ -26,7 +26,7 @@ use Sphp\Html\Container;
  */
 class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent(Exercise $exercise): Container {
+  public function buildContent1(Exercise $exercise): Container {
     $container = new PlainContainer();
     if ($exercise->count() === 1) {
       $list = new Ul();
