@@ -29,21 +29,5 @@ use Sphp\Html\Container;
  */
 class TimedExercisePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent1(Exercise $exercise): Container {
-    $container = new PlainContainer();
-    if ($exercise instanceof TimedExercise) {
-      if ($exercise->count() === 1) {
-        $list = new Ul();
-      } else {
-        $list = new Ol();
-      }
-      foreach ($exercise as $set) {
-        $list->append($set);
-      }
-      $container->append($list);
-      $container->append($exercise->getTotalTime()->h . " hours");
-    }
-    return $container;
-  }
 
 }

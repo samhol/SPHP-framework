@@ -10,12 +10,8 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
-use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\Flow\Section;
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Media\Icons\Svg;
 
 /**
  * Implements a holiday log viewer
@@ -27,18 +23,17 @@ use Sphp\Html\Media\Icons\Svg;
  */
 class BirthDayView {
 
-
   /**
    * Creates a section containing holidays (not birthdays)
    * 
    * @return Section new instance
    */
   public static function build(BirthDay $date, int $year): string {
-     $output = "Birthday of {$date->getName()}";
-      $age = $year - $date->getBirthYear();
-      if ($age === 0) {
-        $output .= " (was born this day)";
-      
+    $output = "Birthday of {$date->getName()}";
+    $age = $year - $date->getBirthYear();
+    if ($age === 0) {
+      $output .= " (was born this day)";
+
       $output .= " (was born $age years ago)";
     }
     //$output .= $this->getDate()->format('l, Y-m-d');

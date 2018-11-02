@@ -12,6 +12,9 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
@@ -57,14 +60,13 @@ class WorkoutLogView {
     $doer1 = new DistanceAndTimePaneBuilder();
     $doer2 = new TimedExercisePaneBuilder();
     foreach ($workouts as $exercise) {
-      if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
+      if ($exercise instanceof WeightLiftingExercise) {
         $accordion->append($doer->buildPane($exercise));
-      } else if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise) {
+      } else if ($exercise instanceof DistanceAndTimeExercise) {
         $accordion->append($doer1->buildPane($exercise));
-      } else if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise) {
+      } else if ($exercise instanceof TimedExercise) {
         $accordion->append($doer2->buildPane($exercise));
       } else {
-        throw new \Exception;
         $accordion->append($this->buildPane($exercise));
       }
     }
@@ -85,10 +87,10 @@ class WorkoutLogView {
     return $pane;
   }
 
-  protected function createPaneTitle(Exercise $exercise): \Sphp\Html\Span {
+  private function createPaneTitle(Exercise $exercise): \Sphp\Html\Span {
     $title = Tags::span($exercise->getName());
     $title->append(Tags::small(" ({$exercise->getDescription()})"));
-    if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
+    if ($exercise instanceof WeightLiftingExercise) {
       $title->append($exercise->getTotalWeight());
     }
     return $title;

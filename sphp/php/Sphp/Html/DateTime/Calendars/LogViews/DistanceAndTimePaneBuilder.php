@@ -10,11 +10,8 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\Ol;
+use Sphp\Html\Lists\Dl;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Container;
 
 /**
  * Implements pane builder for distance and time exercises
@@ -26,20 +23,11 @@ use Sphp\Html\Container;
  */
 class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
 
-  public function buildContent1(Exercise $exercise): Container {
-    $container = new PlainContainer();
-    if ($exercise->count() === 1) {
-      $list = new Ul();
-    } else {
-      $list = new Ol();
-    }
-    foreach ($exercise as $set) {
-      $set->getAverageSpeed();
-      $list->append($set);
-    }
-    $container->append($list);
-    $container->append($exercise->getTotalDistance() . "km, at average speed " . $exercise->getAverageSpeed() . "km/h");
-    return $container;
+  public function totalsToHtml(Exercise $exercise): string {
+    $container = new Dl;
+    $container->appendTerm('Totals:')->addCssClass('strong');
+    $container->appendDescription("<strong>Distance:</strong>" . $exercise->getTotalDistance() . "km, <strong>average speed:</strong> " . $exercise->getAverageSpeed() . "km/h");
+    return "$container";
   }
 
 }
