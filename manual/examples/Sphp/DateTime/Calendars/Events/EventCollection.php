@@ -6,9 +6,9 @@ $rent = new Note(new Constraints\Monthly(6), 'Pay the rent');
 
 var_dump($rent->dateMatchesWith('2018-01-06'));
 echo $rent;
-$annualHoliday = Holidays::annual(12, 6, 'Finland`s independence day')->setNationalHoliday()->setFlagDay();
+$annualHoliday = Holidays::annual(12, 6, 'Finland`s independence day')->setNationalHoliday()->setFlagDay('finland');
 var_dump($annualHoliday->dateMatchesWith('2018-09-16'));
-$birthDay  = Holidays::birthday(9, 16, 'Sami Holck', 1975);
+$birthDay  = Holidays::birthday(1975, 9, 16, 'Sami Holck');
 echo "\n$annualHoliday";
 $collection = new EventCollection();
 var_dump($collection->insertEvent($rent));

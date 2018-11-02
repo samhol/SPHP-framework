@@ -64,14 +64,14 @@ class Holidays {
   /**
    * Creates a new birthday instance
    * 
+   * @param  int $yearOfBirth
    * @param  int $month the month
    * @param  int $day the day of the month
    * @param  string $name
-   * @param  int $yearOfBirth
    * @return BirthDay new instance
    */
-  public static function birthday(int $month, int $day, string $name, int $yearOfBirth = null): BirthDay {
-    return new BirthDay($month, $day, $name, $yearOfBirth);
+  public static function birthday(int $yearOfBirth, int $month, int $day, string $name): BirthDay {
+    return new BirthDay($yearOfBirth, $month, $day, $name);
   }
 
   /**

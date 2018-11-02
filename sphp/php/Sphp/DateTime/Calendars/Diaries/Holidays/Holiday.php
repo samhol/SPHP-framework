@@ -39,7 +39,7 @@ class Holiday extends AbstractLog implements HolidayInterface {
   private $national = false;
 
   /**
-   * @var bool 
+   * @var string 
    */
   private $flagDay = false;
 
@@ -56,10 +56,6 @@ class Holiday extends AbstractLog implements HolidayInterface {
   }
 
   public function __toString(): string {
-    return $this->toString();
-  }
-
-  public function toString(): string {
     $output = $this->getName();
     $attrs = [];
     if ($this->isNationalHoliday()) {
@@ -100,16 +96,16 @@ class Holiday extends AbstractLog implements HolidayInterface {
 
   /**
    * 
-   * @param  bool $flagDay
+   * @param  string $country
    * @return $this for a fluent interface
    */
-  public function setFlagDay(bool $flagDay = true) {
-    $this->flagDay = $flagDay;
+  public function setFlagDay(string $country = null) {
+    $this->flagDay = $country;
     return $this;
   }
 
   public function isFlagDay(): bool {
-    return $this->flagDay;
+    return $this->flagDay !== null;
   }
 
   public function isNationalHoliday(): bool {

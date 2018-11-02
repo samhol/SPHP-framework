@@ -15,6 +15,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\Media\Icons\Svg;
 
 /**
  * Implements a holiday log viewer
@@ -24,40 +25,30 @@ use Sphp\Html\Lists\Ul;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class HolidayLogView {
+class BirthDayView {
 
-  public function build(DiaryDate $date): string {
-    $output = '';
-    if ($date->isHoliday()) {
-      $output .= $this->buildSection($date);
-    }
-    return $output;
-  }
 
   /**
    * Creates a section containing holidays (not birthdays)
    * 
    * @return Section new instance
    */
-  public function buildSection(DiaryDate $date): Section {
-    $section = new Section();
-    $section->addCssClass('holidays');
-    $section->appendH3('Holidays');
-    $days = new Ul();
-    foreach ($date->getByType(HolidayInterface::class) as $holiday) {
-      $holidayText = $holiday;
-      if ($holiday->isFlagDay()) {
-
-        $holidayText .= ViewFactory::flag('finland');
-      }
-      if ($holiday instanceof BirthDay) {
-        $days->append(ViewFactory::birthDay($holiday, $date->getDate()));
-      } else {
-        $days->append($holidayText);
-      }
+  public static function build(BirthDay $date, int $year): string {
+     $output = "Birthday of {$date->getName()}";
+      $age = $year - $date->getBirthYear();
+      if ($age === 0) {
+        $output .= " (was born this day)";
+      
+      $output .= " (was born $age years ago)";
     }
-    $section->append($days);
-    return $section;
+    //$output .= $this->getDate()->format('l, Y-m-d');
+    if ($this->isNationalHoliday()) {
+      $output .= " (national holiday)";
+    }
+    if ($this->isFlagDay()) {
+      $output .= " (flagday)";
+    }
+    return $output;
   }
 
   /**

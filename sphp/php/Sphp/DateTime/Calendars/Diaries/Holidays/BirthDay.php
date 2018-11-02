@@ -32,51 +32,31 @@ class BirthDay extends Holiday {
   /**
    * Constructor
    * 
+   * @param int $year the year of birth
    * @param int $month the month of birth
    * @param int $day the day of birth
    * @param string|null $name name of the person
-   * @param int|null $yearOfBirth the year of birth (null for unknown)
    */
-  public function __construct(int $month, int $day, string $name, int $yearOfBirth = null) {
+  public function __construct(int $year, int $month, int $day, string $name) {
     $constraints = new Constraints();
     $constraints->dateIs(new Annual($month, $day));
-    if ($yearOfBirth !== null) {
-      $constraints->dateIsNot(new Before("$yearOfBirth-$month-$day"));
-    }
+    $constraints->dateIsNot(new Before("$year-$month-$day"));
     parent::__construct($constraints, $name);
-    $this->year = $yearOfBirth;
+    $this->year = $year;
     $this->month = $month;
     $this->day = $day;
   }
 
-  /**
-   * Sets the year of birth
-   * 
-   * @param  int $year the year of birth
-   * @return $this for a fluent interface
-   */
-  public function setBirthYear(int $year = null) {
-    $this->year = $year;
-    return $this;
+  public function getYear(): int {
+    return $this->year;
   }
 
-  public function toString(int $currentYear = null): string {
-    $output = "Birthday of {$this->getName()}";
-    if (is_int($currentYear) && is_int($this->year)) {
-      $age = $currentYear - $this->year;
-      if ($age === 0) {
-        $output .= " (was born this day)";
-      }
-      $output .= " (was born $age years ago)";
-    }
-    //$output .= $this->getDate()->format('l, Y-m-d');
-    if ($this->isNationalHoliday()) {
-      $output .= " (national holiday)";
-    }
-    if ($this->isFlagDay()) {
-      $output .= " (flagday)";
-    }
-    return $output;
+  public function getMonth(): int {
+    return $this->month;
+  }
+
+  public function getDay(): int {
+    return $this->day;
   }
 
 }

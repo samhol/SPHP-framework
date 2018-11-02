@@ -152,10 +152,6 @@ class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayabl
     return count($this->exercises);
   }
 
-  public function toString(): string {
-    return $this->__toString();
-  }
-
   public function toArray(): array {
     return $this->exercises;
   }

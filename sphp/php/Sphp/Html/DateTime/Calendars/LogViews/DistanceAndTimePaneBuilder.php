@@ -38,7 +38,7 @@ class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
       $list->append($set);
     }
     $container->append($list);
-    $container->append($exercise->getTotalDistance() . "km, at " . $exercise->getAverageSpeed() . "km/h");
+    $container->append($exercise->getTotalDistance() . "km, at average speed " . $exercise->getAverageSpeed() . "km/h");
     return $container;
   }
 

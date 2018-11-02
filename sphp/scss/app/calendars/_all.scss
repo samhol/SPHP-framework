@@ -17,3 +17,16 @@
   @include sphp-date-info;
   @include sphp-month-selector;
 }
+
+span.flag {
+  position: relative;
+  display: inline-block;
+  width: rem-calc(20);
+  margin-left: rem-calc(3);
+  @include opacity(0.7);
+  svg {
+    padding: rem-calc(1);
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+  }
+}
