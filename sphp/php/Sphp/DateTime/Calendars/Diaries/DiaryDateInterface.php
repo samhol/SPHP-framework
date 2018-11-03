@@ -19,6 +19,6 @@ use Sphp\DateTime\DateInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface DiaryDateInterface extends DiaryListener, LogContainer {
+interface DiaryDateInterface extends DiaryListener, EntryContainer {
   public function getDate() :\Sphp\DateTime\Date;
 }

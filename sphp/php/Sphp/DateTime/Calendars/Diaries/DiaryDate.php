@@ -103,7 +103,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
     return $isNational;
   }
 
-  public function logExists(LogInterface $log): bool {
+  public function logExists(CalendarEntry $log): bool {
     $contains = false;
     foreach ($this->logs as $n) {
       $contains = $log == $n;
@@ -114,7 +114,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
     return $contains;
   }
 
-  public function insertLog(LogInterface $log): bool {
+  public function insertLog(CalendarEntry $log): bool {
     if (!$log->dateMatchesWith($this->getDate())) {
       return false;
     } else {
@@ -123,13 +123,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
     }
   }
 
-  /**
-   * Merges logs from another log container
-   * 
-   * @param  LogContainer $logs logs to merge
-   * @return $this for a fluent interface
-   */
-  public function mergeLogs(LogContainer $logs) {
+  public function merge(EntryContainer $logs) {
     foreach ($logs as $log) {
       $this->insertLog($log);
     }
@@ -142,7 +136,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
    * @param  callable|string $filter the callback function to use
    * @return LogContainer filtered logs
    */
-  public function filterLogs($filter): LogContainer {
+  public function filterLogs($filter): EntryContainer {
     $logs = array_filter($this->logs, $filter);
     $result = new static($this->getDate());
     foreach ($logs as $log) {
@@ -160,7 +154,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
     return $output;
   }
 
-  public function onLogInsert(LogInterface $log) {
+  public function onLogInsert(CalendarEntry $log) {
     $this->insertLog($log);
   }
 

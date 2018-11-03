@@ -70,20 +70,8 @@ class HolidayDiary extends LogDispatcher {
 
   public function setEasterFor(int $year = null) {
     $easter = new EasterHolidays($year);
-    $this->mergeLogs($easter);
+    $this->merge($easter);
     return $this;
-  }
-
-  public static function getSundays($y, $m = 1): array {
-    $date = "$y-$m-01";
-    $first_day = date('N', strtotime($date));
-    $first_day = 7 - $first_day + 1;
-    $last_day = date('t', strtotime($date));
-    $days = array();
-    for ($i = $first_day; $i <= $last_day; $i = $i + 7) {
-      $days[] = $i;
-    }
-    return $days;
   }
 
 }

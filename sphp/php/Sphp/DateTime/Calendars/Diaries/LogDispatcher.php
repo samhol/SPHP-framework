@@ -17,7 +17,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class LogDispatcher extends Diary {
+class LogDispatcher extends MutableDiary {
 
   private $listeners = [];
 
@@ -25,7 +25,7 @@ class LogDispatcher extends Diary {
     $this->listeners[] = $l;
   }
 
-  public function triggerInsert(LogInterface $log) {
+  public function triggerInsert(CalendarEntry $log) {
     foreach ($this->listeners as $listener) {
       if ($listener instanceof CalendarEventListener) {
         $listener->onEventInsert($log);
@@ -35,7 +35,7 @@ class LogDispatcher extends Diary {
     }
   }
 
-  public function insertLog(LogInterface $log): bool {
+  public function insertLog(CalendarEntry $log): bool {
     $inserted = parent::insertLog($log);
     if ($inserted) {
       $this->triggerInsert($log);

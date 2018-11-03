@@ -20,7 +20,7 @@ use Sphp\DateTime\DateInterface;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface LogInterface {
+interface CalendarEntry {
 
   /**
    * Checks if the given date matches with the log's date

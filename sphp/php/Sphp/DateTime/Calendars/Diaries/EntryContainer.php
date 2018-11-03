@@ -20,7 +20,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface LogContainer extends Traversable, Arrayable {
+interface EntryContainer extends Traversable, Arrayable {
 
   /**
    * Inserts a new log object to the container
@@ -28,7 +28,7 @@ interface LogContainer extends Traversable, Arrayable {
    * @param  LogInterface $log log object to insert
    * @return bool true if the log is inserted and false otherwise
    */
-  public function insertLog(LogInterface $log): bool;
+  public function insertLog(CalendarEntry $log): bool;
 
   /**
    * Merges logs from another log container
@@ -36,7 +36,7 @@ interface LogContainer extends Traversable, Arrayable {
    * @param  LogContainer $logs logs to merge
    * @return $this for a fluent interface
    */
-  public function mergeLogs(LogContainer $logs);
+  public function merge(EntryContainer $logs);
 
   /**
    * Checks whether given log instance exists
@@ -44,7 +44,7 @@ interface LogContainer extends Traversable, Arrayable {
    * @param  LogInterface $log the log instance to search
    * @return bool true if given log instance exists, false otherwise
    */
-  public function logExists(LogInterface $log): bool;
+  public function logExists(CalendarEntry $log): bool;
 
   /**
    * Checks if the collection is empty or not

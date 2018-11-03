@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
-use Sphp\DateTime\Calendars\Diaries\LogInterface;
+use Sphp\DateTime\Calendars\Diaries\CalendarEntry;
 
 /**
  * Defines a holiday log object for a Diary
@@ -19,7 +19,7 @@ use Sphp\DateTime\Calendars\Diaries\LogInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface HolidayInterface extends LogInterface {
+interface HolidayInterface extends CalendarEntry {
 
   const NATIONAL_HOLIDAY = 0b1;
   const FLAG_DAY = 0b10;

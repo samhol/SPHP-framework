@@ -19,7 +19,7 @@ use Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Diary implements Iterator, DiaryInterface {
+class MutableDiary implements DiaryInterface, Iterator, EntryContainer {
 
   use DiaryTrait;
 
@@ -44,7 +44,7 @@ class Diary implements Iterator, DiaryInterface {
     unset($this->logs);
   }
 
-  public function insertLog(LogInterface $log): bool {
+  public function insertLog(CalendarEntry $log): bool {
     $inserted = false;
     if (!$this->logExists($log)) {
       $this->logs[] = $log;
@@ -53,7 +53,7 @@ class Diary implements Iterator, DiaryInterface {
     return $inserted;
   }
 
-  public function mergeLogs(LogContainer $logs) {
+  public function merge(EntryContainer $logs) {
     foreach ($logs as $log) {
       $this->insertLog($log);
     }
@@ -97,7 +97,7 @@ class Diary implements Iterator, DiaryInterface {
    * @param  callable|string $filter the callback function to use
    * @return LogContainer filtered logs
    */
-  public function filterLogs($filter): LogContainer {
+  public function filterLogs($filter): EntryContainer {
     $logs = array_filter($this->logs, $filter);
     return new static($logs);
   }

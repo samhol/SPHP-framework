@@ -20,7 +20,7 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractLog implements LogInterface {
+abstract class AbstractLog implements CalendarEntry {
 
   /**
    * @var Constraint 

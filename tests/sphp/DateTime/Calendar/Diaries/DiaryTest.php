@@ -11,7 +11,7 @@
 namespace Sphp\Tests\DateTime\Calendar\Diaries;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\DateTime\Calendars\Diaries\Diary;
+use Sphp\DateTime\Calendars\Diaries\MutableDiary;
 
 /**
  * Description of DiaryTest
@@ -23,12 +23,12 @@ use Sphp\DateTime\Calendars\Diaries\Diary;
 class DiaryTest extends TestCase {
 
   /**
-   * @var Diary
+   * @var MutableDiary
    */
   private $diary;
 
   protected function setUp() {
-    $this->diary = new Diary();
+    $this->diary = new MutableDiary();
   }
 
   protected function tearDown() {
@@ -36,7 +36,7 @@ class DiaryTest extends TestCase {
   }
 
   public function testConstructor() {
-    $diary = new Diary();
+    $diary = new MutableDiary();
     $this->assertFalse($diary->notEmpty());
   }
 

@@ -67,7 +67,7 @@ class DiaryContainer {
     $dailyLogs = new DiaryDate($date);
     foreach ($this->diaries as $diary) {
       $logs = $diary->getDate($date);
-      $dailyLogs->mergeLogs($logs);
+      $dailyLogs->merge($logs);
     }
     return $dailyLogs;
   }

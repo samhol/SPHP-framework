@@ -26,5 +26,5 @@ interface DiaryListener {
    * @param  LogInterface $log
    * @return void
    */
-  public function onLogInsert(LogInterface $log);
+  public function onLogInsert(CalendarEntry $log);
 }

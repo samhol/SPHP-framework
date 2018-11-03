@@ -12,7 +12,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\DateTime\Date;
-use Sphp\DateTime\Calendars\Diaries\Diary;
+use Sphp\DateTime\Calendars\Diaries\MutableDiary;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
 /**
@@ -34,7 +34,7 @@ class FitNotes {
   public static function fromCsv(string $path): DiaryInterface {
     $rawData = Parser::csv()->readFromFile($path); //print_r($rawData);
     array_shift($rawData);
-    $coll = new Diary();
+    $coll = new MutableDiary();
     $log = $date = null;
     $rawDate = '';
 

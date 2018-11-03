@@ -17,7 +17,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
  * @license https://opensource.org/licenses/MIT The MIT License 
  * @filesource
  */
-interface DiaryInterface extends LogContainer {
+interface DiaryInterface {
 
   /**
    * Returns an object containing logs for a single date

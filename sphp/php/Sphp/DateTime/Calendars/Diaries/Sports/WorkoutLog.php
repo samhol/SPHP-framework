@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\Calendars\Diaries\LogInterface;
+use Sphp\DateTime\Calendars\Diaries\CalendarEntry;
 use IteratorAggregate;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
@@ -26,7 +26,7 @@ use Sphp\Exceptions\RuntimeException;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WorkoutLog implements IteratorAggregate, LogInterface, Countable, Arrayable {
+class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayable {
 
   /**
    * @var Date 

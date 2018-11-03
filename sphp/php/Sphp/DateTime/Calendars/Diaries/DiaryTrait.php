@@ -29,7 +29,7 @@ trait DiaryTrait {
    * @param  LogInterface $log the log instance to search
    * @return bool true if given log instance exists, false otherwise
    */
-  public function logExists(LogInterface $log): bool {
+  public function logExists(CalendarEntry $log): bool {
     $contains = false;
     foreach ($this as $n) {
       $contains = $log == $n;
@@ -46,7 +46,7 @@ trait DiaryTrait {
    * @param  callable|string $filter the callback function to use
    * @return LogContainer filtered logs
    */
-  abstract public function filterLogs($filter): LogContainer;
+  abstract public function filterLogs($filter): EntryContainer;
 
   /**
    * Returns all logs of given PHP type stored
@@ -54,7 +54,7 @@ trait DiaryTrait {
    * @param  string $type
    * @return LogContainer all logs of given PHP object type stored
    */
-  public function getByType(string $type): LogContainer {
+  public function getByType(string $type): EntryContainer {
     return $this->filterLogs(function ($item) use ($type) {
               return $item instanceof $type;
             });
@@ -65,7 +65,7 @@ trait DiaryTrait {
    * 
    * @return LogContainer all holiday logs stored
    */
-  public function getHolidays(): LogContainer {
+  public function getHolidays(): EntryContainer {
     return $this->getByType(HolidayInterface::class);
   }
 
@@ -74,7 +74,7 @@ trait DiaryTrait {
    * 
    * @return LogContainer all birthday logs stored
    */
-  public function getBirthdays(): LogContainer {
+  public function getBirthdays(): EntryContainer {
     return $this->getByType(BirthDay::class);
   }
 

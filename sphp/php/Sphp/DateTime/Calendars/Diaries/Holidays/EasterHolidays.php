@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
-use Sphp\DateTime\Calendars\Diaries\Diary;
+use Sphp\DateTime\Calendars\Diaries\MutableDiary;
 use Sphp\DateTime\Date;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\DateTime\Date;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EasterHolidays extends Diary {
+class EasterHolidays extends MutableDiary {
 
   /**
    * Constructor
