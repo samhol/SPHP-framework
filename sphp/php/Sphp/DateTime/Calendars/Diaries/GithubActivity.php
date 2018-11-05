@@ -17,29 +17,15 @@ namespace Sphp\DateTime\Calendars\Diaries;
  * @filesource
  */
 class GithubActivity implements DiaryInterface {
-  
+
   public function getDate($date): DiaryDateInterface {
-    
-  }
-
-  public function insertLog(CalendarEntry $log): bool {
-    
-  }
-
-  public function logExists(CalendarEntry $log): bool {
-    
-  }
-
-  public function merge(EntryContainer $logs): \this {
-    
-  }
-
-  public function notEmpty(): bool {
-    
-  }
-
-  public function toArray(): array {
-    
+    $j = new \Sphp\Stdlib\Parsers\Json();
+    $dd = new DiaryDate($date);
+    $log = Logs::unique($date, 'GitHub');
+    $data = \Sphp\Stdlib\Networks\RemoteResource::read('https://api.github.com/repos/samhol/SPHP-framework/commits?since=2018-10-26T00:00:00Z&until=2018-10-26T23:59:59Z');
+    $log->setData($data);
+    $dd->insertLog($log);
+    return $dd;
   }
 
 }

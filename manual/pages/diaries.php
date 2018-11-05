@@ -31,11 +31,18 @@ $fi->insertLog($basketball);
 $basketball1 = Logs::weekly([1], 'Basketball');
 $basketball1->setDescription('In Vaarniemi **20:30-22:00**');
 $basketball1->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"));
+
 //$fi->insertLog($basketball1);
 use Sphp\Database\Db;
 
 $exercises = \Sphp\DateTime\Calendars\Diaries\Sports\FitNotes::fromCsv('manual/snippets/FitNotes.csv');
-
+foreach ($exercises as $excercise) {
+  foreach ($excercise as $workout) {
+    if ($workout instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
+      var_dump($workout->totalsToString());
+    }
+  }
+}
 //var_dump($exercises instanceof \Sphp\DateTime\Calendars\Diaries\DiaryInterface);
 $diaryContainer = new \Sphp\DateTime\Calendars\Diaries\DiaryContainer();
 
