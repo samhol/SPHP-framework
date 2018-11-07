@@ -418,22 +418,7 @@ abstract class Strings {
     json_decode($string);
     return (json_last_error() === JSON_ERROR_NONE);
   }
-
-  /**
-   * Checks if the string is in YAML format
-   *
-   * @param  string $string checked string
-   * @return bool true if the string is in YAML format, false otherwise
-   */
-  public static function isYaml(string $string): bool {
-    $yamlParser = Parsers\Parser::yaml();
-    try {
-      return is_array($yamlParser->readFromString($string));
-    } catch (\Exception $ex) {
-      return false;
-    }
-  }
-
+  
   /**
    * Perform a case folding on a string
    *

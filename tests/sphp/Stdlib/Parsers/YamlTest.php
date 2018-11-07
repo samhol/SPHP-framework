@@ -63,7 +63,7 @@ class YamlTest extends TestCase {
 
   public function testEncode() {
     $string = $this->parser->write(['foo' => 'bar']);
-    $this->assertTrue(\Sphp\Stdlib\Strings::isYaml($string));
+    $this->assertTrue(is_string($string));
   }
 
 

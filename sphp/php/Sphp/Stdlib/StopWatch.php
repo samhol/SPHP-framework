@@ -50,15 +50,11 @@ class StopWatch {
    * Returns the amount of the time from the constructor call or start call to
    *  the current time
    *
-   * @param  float $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public function getTime(int $precision = null): float {
+  public function getTime(): float {
     $seconds = microtime(true) - $this->startTime;
-    if ($precision === null) {
-      return $seconds;
-    }
-    return (float) number_format($seconds, $precision);
+    return $seconds;
   }
 
   /**
@@ -68,10 +64,10 @@ class StopWatch {
    * @param  int $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public static function getExecutionTime(int $precision = null): float {
+  public static function getExecutionTime(): float {
     $instance = new Static();
     $instance->startFromRequest();
-    return $instance->getTime($precision);
+    return $instance->getTime();
   }
 
 }
