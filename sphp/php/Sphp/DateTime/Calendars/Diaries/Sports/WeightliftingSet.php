@@ -36,7 +36,8 @@ class WeightliftingSet implements ExerciseSet {
    * @param int $reps repetitions done
    */
   public function __construct(float $weight, int $reps) {
-    $this->setRepWeight($weight)->setReps($reps);
+    $this->weight = $weight;
+    $this->reps = $reps;
   }
 
   public function __toString(): string {
@@ -50,17 +51,6 @@ class WeightliftingSet implements ExerciseSet {
    */
   public function getRepWeight(): float {
     return $this->weight;
-  }
-
-  /**
-   * Sets the rep weight used in the set
-   * 
-   * @param  float $weight the rep weight used in the set (in kilograms)
-   * @return $this for fluent interface
-   */
-  public function setRepWeight(float $weight) {
-    $this->weight = $weight;
-    return $this;
   }
 
   /**
@@ -81,15 +71,8 @@ class WeightliftingSet implements ExerciseSet {
     return $this->reps;
   }
 
-  /**
-   * Sets the repetitions done in the set
-   * 
-   * @param  int $reps the repetitions done in the set
-   * @return $this for fluent interface
-   */
-  public function setReps(int $reps) {
-    $this->reps = $reps;
-    return $this;
+  public function toArray(): array {
+    return get_object_vars($this);
   }
 
 }

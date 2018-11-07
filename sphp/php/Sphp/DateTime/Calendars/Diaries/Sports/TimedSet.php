@@ -33,7 +33,10 @@ class TimedSet implements ExerciseSet {
    * @param Interval|string $duration the duration of the exercise set
    */
   public function __construct($duration) {
-    $this->setDuration($duration);
+    if (!$duration instanceof Interval) {
+      $duration = Intervals::create($duration);
+    }
+    $this->duration = $duration;
   }
 
   /**
@@ -67,20 +70,6 @@ class TimedSet implements ExerciseSet {
   }
 
   /**
-   * Sets the duration of the exercise set
-   * 
-   * @param  Interval|string $duration the duration of the exercise set
-   * @return $this for a fluent interface
-   */
-  public function setDuration($duration) {
-    if (!$duration instanceof Interval) {
-      $duration = Intervals::create($duration);
-    }
-    $this->duration = $duration;
-    return $this;
-  }
-
-  /**
    * Returns the duration of the exercise set in hours
    * 
    * @return float the duration of the exercise set in hours
@@ -96,6 +85,10 @@ class TimedSet implements ExerciseSet {
    */
   public function getMinutes(): float {
     return $this->duration->i + $this->duration->h * 60;
+  }
+
+  public function toArray(): array {
+    return get_object_vars($this);
   }
 
 }

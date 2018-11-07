@@ -40,7 +40,8 @@ class DistanceAndTimeSet extends TimedSet {
    */
   public function __construct(float $distance, $duration, string $unit = 'km') {
     parent::__construct($duration);
-    $this->setDistance($distance, $unit);
+    $this->distance = $distance;
+    $this->unit = $unit;
   }
 
   public function __toString(): string {
@@ -56,32 +57,14 @@ class DistanceAndTimeSet extends TimedSet {
     return $this->distance;
   }
 
-  /**
-   * Sets the distance done in the set
-   * 
-   * @param  float $distance the distance done in the set
-   * @param  string $unit the unit of the distance
-   * @return $this for a fluent interface
-   */
-  public function setDistance(float $distance, string $unit = 'm') {
-    $this->distance = $distance;
-    $this->unit = $unit;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $unit the unit of the distance
-   * @return $this for a fluent interface
-   */
-  public function setUnit(string $unit) {
-    $this->unit = $unit;
-    return $this;
-  }
-
   public function getAverageSpeed(): string {
     $hours = $this->getHours();
     return $this->distance / $hours;
+  }
+
+  public function toArray(): array {
+    $arr = parent::toArray();
+    return get_object_vars($this);
   }
 
 }

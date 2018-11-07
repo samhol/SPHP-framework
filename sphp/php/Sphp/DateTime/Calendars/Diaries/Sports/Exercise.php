@@ -161,5 +161,15 @@ abstract class Exercise implements Iterator, Countable {
   public function valid(): bool {
     return false !== current($this->sets);
   }
+  
+  public function toArray() :array {
+    $sets = [];
+    foreach ($this as $set) {
+      $sets[] = $set->toArray();
+    }
+    $arr = get_object_vars($this);
+    $arr['sets'] = $sets;
+    return $arr;
+  }
 
 }

@@ -40,6 +40,7 @@ foreach ($exercises as $excercise) {
   foreach ($excercise as $workout) {
     if ($workout instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
       var_dump($workout->totalsToString());
+      print_r($workout->toArray());
     }
   }
 }

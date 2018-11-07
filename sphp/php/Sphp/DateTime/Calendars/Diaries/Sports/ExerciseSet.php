@@ -9,6 +9,7 @@
  */
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Defines an exercise set for workout exercises
@@ -18,7 +19,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface ExerciseSet {
+interface ExerciseSet extends Arrayable {
 
   /**
    * Returns the string representation of the object
