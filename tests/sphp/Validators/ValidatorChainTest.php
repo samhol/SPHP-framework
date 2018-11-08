@@ -55,7 +55,7 @@ class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
   }
 
   public function getValidValue() {
-    return 'aAbBä';
+    return 'aAbB';
   }
 
 }
