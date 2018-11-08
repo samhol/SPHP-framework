@@ -10,8 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Stdlib\Arrays;
-
 /**
  * Validates data against certain haystack
  *
@@ -19,7 +17,7 @@ use Sphp\Stdlib\Arrays;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InArrayValidator extends AbstractValidator {
+class InHaystack extends AbstractValidator {
 
   /**
    * @var array
@@ -47,15 +45,7 @@ class InArrayValidator extends AbstractValidator {
    */
   public function __destruct() {
     unset($this->haystack);
-  }
-
-  /**
-   * Returns the haystack to validate against
-   * 
-   * @return array the haystack to validate against
-   */
-  public function getHaystack(): array {
-    return $this->haystack;
+    parent::__destruct();
   }
 
   /**

@@ -32,7 +32,7 @@ class LogicalOrTest extends TestCase {
    */
   protected function setUp() {
     $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
-    $group = new InArrayValidator([null]);
+    $group = new InHaystack([null]);
     $this->validator = new LogicalOr($group, $patt);
   }
 

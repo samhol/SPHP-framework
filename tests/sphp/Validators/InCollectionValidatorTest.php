@@ -24,7 +24,7 @@ class InCollectionValidatorTest extends TestCase {
    * @param mixed $data
    */
   public function testIdentical($data) {
-    $validator = new InArrayValidator($data);
+    $validator = new InHaystack($data);
     $validator->setStrict(true);
     foreach ($data as $k => $value) {
       $this->assertTrue($validator->isValid($value), "FOO $k");
