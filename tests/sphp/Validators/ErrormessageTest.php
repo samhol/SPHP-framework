@@ -199,4 +199,15 @@ class ErrormessageTest extends TestCase {
     $this->assertEquals('Foo is still wrong', $errors[1]);
   }
 
+  /**
+   */
+  public function testFromTraversable() {
+    $empty = ErrorMessages::fromTraversable([]);
+    $this->assertCount(0, $empty);
+    $one = ErrorMessages::fromTraversable(['Foo is wrong']);
+    $this->assertCount(1, $one);
+    $it = ErrorMessages::fromTraversable(new \ArrayIterator(['Foo is wrong']));
+    $this->assertCount(1, $it);
+  }
+
 }

@@ -19,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RangeValidator extends AbstractLimitValidator {
+class Range extends AbstractLimitValidator {
 
   /**
    * @var float 

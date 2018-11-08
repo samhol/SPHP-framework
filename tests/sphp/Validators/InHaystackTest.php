@@ -12,7 +12,7 @@ namespace Sphp\Validators;
 
 use PHPUnit\Framework\TestCase;
 
-class InCollectionValidatorTest extends TestCase {
+class InHaystackTest extends TestCase {
 
   public function arrayData() {
     return [[[0, 1, null, false, true, '', ' ', "\n", [], new \stdClass()]]];

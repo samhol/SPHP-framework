@@ -33,7 +33,7 @@ class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
    */
   public function testRangeValidation(ValidatorChain $validator) {
     $strLen = new StringLength(2, 6);
-    $patt = new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only");
+    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
     $validator->appendValidator($strLen, true);
     $validator->appendValidator($patt);
     $this->assertCount(2, $validator);
@@ -57,7 +57,7 @@ class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
   public function getValidValue() {
     return 'aAbB';
   }
-  
+
   /**
    * 
    * @depends testConstructor
@@ -70,4 +70,5 @@ class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
     $this->assertEquals('Foo is fixed', $clone->errors()->getTemplate(Validator::INVALID));
     $this->assertEquals('Foo is broken', $validator->errors()->getTemplate(Validator::INVALID));
   }
+
 }

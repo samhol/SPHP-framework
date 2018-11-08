@@ -59,7 +59,7 @@ class LimitValidatorsTest extends TestCase {
    * @param float $max
    */
   public function testInRange(float $min, float $max) {
-    $rangeValidator = new RangeValidator($min, $max, true);
+    $rangeValidator = new Range($min, $max, true);
     $this->assertTrue($rangeValidator->isValid(($max - ($max - $min) / 2)));
     $this->assertTrue($rangeValidator->isValid($min));
     $this->assertTrue($rangeValidator->isValid($max));

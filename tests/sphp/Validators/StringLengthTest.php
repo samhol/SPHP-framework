@@ -12,7 +12,7 @@ namespace Sphp\Validators;
 
 use PHPUnit\Framework\TestCase;
 
-class StringLengthValidatorTest extends TestCase {
+class StringLengthTest extends TestCase {
 
   /**
    * @return StringLength

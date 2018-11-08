@@ -61,7 +61,6 @@ class StopWatch {
    * Returns the amount of the time from the start of the execution to the
    * current time
    *
-   * @param  int $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
   public static function getExecutionTime(): float {
