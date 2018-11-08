@@ -57,5 +57,17 @@ class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
   public function getValidValue() {
     return 'aAbB';
   }
-
+  
+  /**
+   * 
+   * @depends testConstructor
+   * @param \Sphp\Tests\Validators\AbstractValidator $validator
+   */
+  public function testClone(Validator $validator) {
+    $validator->errors()->setTemplate(Validator::INVALID, 'Foo is broken');
+    $clone = clone $validator;
+    $clone->errors()->setTemplate(Validator::INVALID, 'Foo is fixed');
+    $this->assertEquals('Foo is fixed', $clone->errors()->getTemplate(Validator::INVALID));
+    $this->assertEquals('Foo is broken', $validator->errors()->getTemplate(Validator::INVALID));
+  }
 }

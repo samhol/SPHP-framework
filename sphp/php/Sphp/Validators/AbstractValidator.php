@@ -33,7 +33,7 @@ abstract class AbstractValidator implements Validator {
   /**
    * Constructor
    *
-   * @param string $error error message
+   * @param string $error error message template
    */
   public function __construct(string $error = 'Invalid value') {
     $this->messages = new ErrorMessages();

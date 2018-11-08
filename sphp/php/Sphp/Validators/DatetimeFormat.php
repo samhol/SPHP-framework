@@ -11,7 +11,6 @@
 namespace Sphp\Validators;
 
 use DateTime;
-use Sphp\I18n\Messages\Msg;
 
 /**
  * Validates a datetime
@@ -20,7 +19,7 @@ use Sphp\I18n\Messages\Msg;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DatetimeValidator extends AbstractValidator {
+class DatetimeFormat extends AbstractValidator {
 
   /**
    * the required format of the validable value
@@ -52,9 +51,6 @@ class DatetimeValidator extends AbstractValidator {
 
   public function isValid($value): bool {
     $this->setValue($value);
-    if ($value instanceof \DateTimeInterface) {
-      return true;
-    }
     if (!is_string($value)) {
       $this->errors()->appendErrorFromTemplate(static::INVALID);
       return false;

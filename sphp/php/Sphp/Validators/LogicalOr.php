@@ -56,14 +56,7 @@ class LogicalOr extends AbstractValidator {
   public function __clone() {
     $this->a = clone $this->a;
     $this->b = clone $this->b;
-  }
-
-  public function getLeftValidator(): Validator {
-    return $this->a;
-  }
-
-  public function getRightValidator(): Validator {
-    return $this->b;
+    parent::__clone();
   }
 
   public function isValid($value): bool {

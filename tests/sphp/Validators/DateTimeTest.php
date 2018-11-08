@@ -10,13 +10,13 @@
 
 namespace Sphp\Tests\Validators;
 
-use Sphp\Validators\DatetimeValidator;
+use Sphp\Validators\DatetimeFormat;
 use Sphp\Validators\Validator;
 
 class DateTimeTest extends ValidatorTest {
 
   /**
-   * @var DatetimeValidator
+   * @var DatetimeFormat
    */
   protected $validator;
 
@@ -59,7 +59,7 @@ class DateTimeTest extends ValidatorTest {
 
 
   public function createValidator(): Validator {
-    return new DatetimeValidator();
+    return new DatetimeFormat();
   }
 
   public function getInvalidValue() {

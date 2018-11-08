@@ -29,15 +29,12 @@ class ValidatorChain extends AbstractValidator implements Countable {
   private $validators;
 
   /**
-   * @var string[]
-   */
-  private $errors;
-
-  /**
    * Constructor
+   * 
+   * @param string $error error message template
    */
-  public function __construct() {
-    parent::__construct();
+  public function __construct(string $error = 'Invalid value') {
+    parent::__construct($error);
     $this->validators = [];
   }
 
@@ -57,9 +54,10 @@ class ValidatorChain extends AbstractValidator implements Countable {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->errors = \Sphp\Stdlib\Arrays::copy($this->errors);
+    $this->validators = \Sphp\Stdlib\Arrays::copy($this->validators);
+    parent::__clone();
   }
-  
+
   public function setValue($value) {
     parent::setValue($value);
     foreach ($this->validators as $validator) {
