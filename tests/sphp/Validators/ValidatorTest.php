@@ -24,7 +24,7 @@ abstract class ValidatorTest extends TestCase {
   public function testReValidation() {
     $validator = $this->createValidator();
     $this->assertCount(0, $validator->errors());
-    $this->assertFalse($validator->isValid($this->getInvalidValue()));
+    $this->assertFalse($validator->isValid($this->getInvalidValue()), 'Invalid value is validated as valid');
     $this->assertTrue($validator->errors()->count() > 0);
     $this->assertTrue($validator->isValid($this->getValidValue()));
     $this->assertCount(0, $validator->errors());

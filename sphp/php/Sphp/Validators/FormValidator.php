@@ -30,7 +30,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
   /**
    * inner validators
    * 
-   * @var ValidatorInterface[]
+   * @var Validator[]
    */
   private $validators;
 
@@ -107,7 +107,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * Returns the validator object of the named input value
    * 
    * @param  string $inputName the name of the validable input
-   * @return ValidatorInterface|null the validator object or null
+   * @return Validator|null the validator object or null
    */
   public function get(string $inputName) {
     if ($this->exists($inputName)) {
@@ -120,7 +120,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * Sets a validator object for the named input value
    * 
    * @param  string $inputName the name of the validable input
-   * @param  ValidatorInterface $validator the validator object
+   * @param  Validator $validator the validator object
    * @return $this for a fluent interface
    */
   public function set(string $inputName, Validator $validator) {

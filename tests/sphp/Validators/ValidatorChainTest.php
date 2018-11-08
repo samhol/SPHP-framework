@@ -8,11 +8,14 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Validators;
+namespace Sphp\Tests\Validators;
 
-use PHPUnit\Framework\TestCase;
+use Sphp\Validators\Validator;
+use Sphp\Validators\ValidatorChain;
+use Sphp\Validators\StringLength;
+use Sphp\Validators\Regex;
 
-class ValidatorChainTest extends TestCase {
+class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
 
   /**
    * @return StringLength
@@ -23,6 +26,7 @@ class ValidatorChainTest extends TestCase {
     $this->assertTrue($validator->isValid('foo'));
     return $validator;
   }
+
   /**
    * @depends testConstructor
    * @return StringLength
@@ -35,6 +39,23 @@ class ValidatorChainTest extends TestCase {
     $this->assertCount(2, $validator);
     $this->assertTrue($validator->isValid('foo'));
     return $validator;
+  }
+
+  public function createValidator(): Validator {
+    $validator = new ValidatorChain();
+    $strLen = new StringLength(2, 6);
+    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
+    $validator->appendValidator($strLen, true);
+    $validator->appendValidator($patt);
+    return $validator;
+  }
+
+  public function getInvalidValue() {
+    return '1aQ';
+  }
+
+  public function getValidValue() {
+    return 'aAbBä';
   }
 
 }

@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $php = Manual\php();
 $nsLink = Manual\api()->namespaceLink(__NAMESPACE__);
-$validatorInterface = Manual\api()->classLinker(Validator::class);
+$validator = Manual\api()->classLinker(Validator::class);
 $requiredValueValidator = Manual\api()->classLinker(NotEmpty::class);
 $patrnvLink = Manual\api()->classLinker(Regex::class);
 $strLenValLink = Manual\api()->classLinker(StringLength::class);
@@ -18,7 +18,7 @@ Manual\md(<<<MD
 User input validation is a critical part of any responsive HTML application. 
 This Framework contains its own user input validation mechanism which includes 
 both server- and clientside components. 	This section is about the serverside 
-validation mechanism. The cornerstone of it is the $validatorInterface. This 
+validation mechanism. The cornerstone of it is the $validator interface. This 
 interface defines the minimum properties required for any SPHP framework based 
 validator.
   

@@ -20,12 +20,12 @@ namespace Sphp\Validators;
 class LogicalOr extends AbstractValidator {
 
   /**
-   * @var ValidatorInterface
+   * @var Validator
    */
   private $a;
 
   /**
-   * @var ValidatorInterface
+   * @var Validator
    */
   private $b;
 
