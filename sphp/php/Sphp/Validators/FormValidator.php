@@ -23,7 +23,7 @@ use Traversable;
 class FormValidator extends AbstractValidator implements \Countable, \IteratorAggregate {
 
   /**
-   * @var string[] 
+   * @var ErrorMessages
    */
   private $inputErrors;
 
@@ -41,15 +41,15 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     parent::__construct('The form has errors');
     //$this->setMessageTemplate(self::INVALID, 'The form has errors');
     $this->validators = [];
-    $this->inputErrors = [];
+    $this->inputErrors = new ErrorMessages();
   }
 
   /**
    * Returns error concerning each input messages
    * 
-   * @return string[] 
+   * @return ErrorMessages
    */
-  public function getInputErrors(): array {
+  public function getInputErrors(): ErrorMessages {
     return $this->inputErrors;
   }
 
@@ -57,7 +57,6 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
   public function isValid($value): bool {
     $valid = true;
     if (!is_array($value)) {
-      //echo 'Invalid type given. String, integer or float expected';
       $this->errors()->appendErrorFromTemplate(self::INVALID);
       return false;
     }
@@ -65,7 +64,6 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       $inputValue = $value[$inputName] ?? null;
       if (!$validator->isValid($inputValue)) {
         $valid = false;
-        //var_dump($validator->getErrors());
         $this->inputErrors[$inputName] = $validator->errorsToArray();
       }
     }
