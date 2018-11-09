@@ -1,3 +1,4 @@
+<pre>
 <?php
 $query = <<<'JSON'
 {
@@ -43,18 +44,17 @@ curl_setopt($chObj, CURLOPT_URL, 'https://api.github.com/graphql');
 curl_setopt($chObj, CURLOPT_RETURNTRANSFER, true);    
 curl_setopt($chObj, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($chObj, CURLOPT_HEADER, true);
-curl_setopt($chObj, CURLOPT_VERBOSE, true);
 curl_setopt($chObj, CURLOPT_POSTFIELDS, $json);
 curl_setopt($chObj, CURLOPT_HTTPHEADER,
      array(
             'User-Agent: PHP Script',
             'Content-Type: application/json;charset=utf-8',
-            'Authorization: bearer 025f7b743d206a76c67c479a2ab0673982ae0227'
+            'Authorization: bearer 4f846dc314f34a5b153f0bd03c2bb0bcae55da00'
         )
     ); 
 
 $response = curl_exec($chObj);
-echo json_encode($response);
-
+var_dump($response);
+var_dump(json_decode($response, true));
 ?>
 </pre>
