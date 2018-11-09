@@ -11,6 +11,9 @@
 namespace Sphp\Tests\Validators;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Validators\SmallerThan;
+use Sphp\Validators\GreaterThan;
+use Sphp\Validators\Range;
 
 class LimitValidatorsTest extends TestCase {
 
