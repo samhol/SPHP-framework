@@ -52,7 +52,6 @@ class FormValidatorTest extends TestCase {
   }
 
   /**
-   * 
    * @dataProvider invalidInputTypeData
    * @param mixed $value
    */

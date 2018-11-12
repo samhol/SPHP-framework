@@ -20,7 +20,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FormValidator extends AbstractValidator implements \Countable, \IteratorAggregate {
+class FormValidator extends AbstractValidator {
 
   /**
    * @var ErrorMessages
@@ -36,12 +36,18 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
 
   /**
    * Constructs a new validator
+   *
+   * @param string $defaultErrorMessage
    */
-  public function __construct() {
-    parent::__construct('The form has errors');
-    //$this->setMessageTemplate(self::INVALID, 'The form has errors');
+  public function __construct(string $defaultErrorMessage = 'The form has errors') {
+    parent::__construct($defaultErrorMessage);
     $this->validators = [];
     $this->inputErrors = new ErrorMessages();
+  }
+
+  public function __destruct() {
+    unset($this->validators, $this->inputErrors);
+    parent::__destruct();
   }
 
   /**
@@ -52,7 +58,6 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
   public function getInputErrors(): ErrorMessages {
     return $this->inputErrors;
   }
-
 
   public function isValid($value): bool {
     $valid = true;
@@ -74,30 +79,12 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
   }
 
   /**
-   * Returns the number of the validable input names
-   *
-   * @return int the number of the validable input names
-   */
-  public function count(): int {
-    return $this->validators->count();
-  }
-
-  /**
-   * Create a new iterator to iterate through the validators
-   *
-   * @return Traversable iterator
-   */
-  public function getIterator(): Traversable {
-    return new Collection($this->validators);
-  }
-
-  /**
    * Checks whether any validators exists for the input name
    * 
    * @param  string $inputName the name of the validable input
    * @return boolean true if the input name has validators attached to it, false if not
    */
-  public function exists(string $inputName) {
+  public function hasValidator(string $inputName) {
     return isset($this->validators[$inputName]);
   }
 
@@ -108,7 +95,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * @return Validator|null the validator object or null
    */
   public function get(string $inputName) {
-    if ($this->exists($inputName)) {
+    if ($this->hasValidator($inputName)) {
       return $this->validators[$inputName];
     }
     return null;

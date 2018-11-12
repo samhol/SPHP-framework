@@ -66,6 +66,8 @@ class LimitValidatorsTest extends TestCase {
     $this->assertTrue($rangeValidator->isValid(($max - ($max - $min) / 2)));
     $this->assertTrue($rangeValidator->isValid($min));
     $this->assertTrue($rangeValidator->isValid($max));
+    $this->assertFalse($rangeValidator->isValid($min - .1));
+    $this->assertFalse($rangeValidator->isValid($max + .1));
     $this->assertSame($rangeValidator, $rangeValidator->setInclusive(false));
     $this->assertTrue($rangeValidator->isValid(($max - ($max - $min) / 2)));
     $this->assertFalse($rangeValidator->isValid($min));

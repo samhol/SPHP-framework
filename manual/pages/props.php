@@ -1,6 +1,7 @@
+
 <pre>
   <?php
-  $date = new Sphp\DateTime\DateTime('last monday');
+  $date = new DateTimeImmutable('last monday');
   $start = $date->format('2018-09-10');
   echo $start;
   $query = <<<JSON
@@ -44,7 +45,8 @@ JSON;
   curl_setopt($chObj, CURLOPT_HTTPHEADER, [
       'User-Agent: PHP Script',
       'Content-Type: application/json;charset=utf-8',
-      'Authorization: bearer a0461769551af53d17e8167dcaf9b9d6ed43ce93'
+      'Authorization: bearer 1569726f0d1efed0390c'
+      //'Authorization: bearer a0461769551af53d17e8167dcaf9b9d6ed43ce93'
           ]
   );
 
@@ -57,5 +59,6 @@ JSON;
     echo new Sphp\Html\Navigation\Hyperlink($node["node"]["url"], $node["node"]["messageHeadline"] . " at " . $node["node"]["pushedDate"]);
   }
   var_dump($arr);
+  var_dump(isset($arr["data"]["repository"]["ref"]["target"]["his1tory"]["edges"]));
   ?>
 </pre>
