@@ -3,11 +3,11 @@
 namespace Sphp\Validators;
 
 $validator = (new FormValidator())
-        ->set("not_empty", new NotEmpty())
-        ->set("url", new UrlValidator())
-        ->set("num", new Regex("/^\d+$/", "Please insert numbers only"))
-        ->set("p1", new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only"))
-        ->set("p2", new Regex("/^([a-zA-Z]){3}+$/", "Please insert exactly 3 alphabets"));
+        ->setValidator("not_empty", new NotEmpty())
+        ->setValidator("url", new UrlValidator())
+        ->setValidator("num", new Regex("/^\d+$/", "Please insert numbers only"))
+        ->setValidator("p1", new Regex("/^[a-zA-Z]+$/", "Please insert alphabets only"))
+        ->setValidator("p2", new Regex("/^([a-zA-Z]){3}+$/", "Please insert exactly 3 alphabets"));
 
 $correctData = [
     "not_empty" => "foo",
@@ -18,7 +18,7 @@ $correctData = [
 
 echo "Correct data:";
 var_dump($validator->isValid($correctData));
-print_r($validator->getInputErrors());
+print_r($validator->errors()->toArray());
 
 $incorrectData = [
     'num' => 'abc',
@@ -28,4 +28,4 @@ $incorrectData = [
 
 echo "\nincorrect data:";
 var_dump($validator->isValid($incorrectData));
-print_r($validator->getInputErrors());
+print_r($validator->errors());

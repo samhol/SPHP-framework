@@ -72,7 +72,7 @@ class FormValidator extends AbstractValidator {
    * @param  string $inputName the name of the validable input
    * @return Validator|null the validator object or null
    */
-  public function get(string $inputName) {
+  public function getValidator(string $inputName) {
     if ($this->hasValidator($inputName)) {
       return $this->validators[$inputName];
     }
@@ -86,7 +86,7 @@ class FormValidator extends AbstractValidator {
    * @param  Validator $validator the validator object
    * @return $this for a fluent interface
    */
-  public function set(string $inputName, Validator $validator) {
+  public function setValidator(string $inputName, Validator $validator) {
     $this->validators[$inputName] = $validator;
     return $this;
   }

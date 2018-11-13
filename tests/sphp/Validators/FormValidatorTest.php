@@ -39,9 +39,9 @@ class FormValidatorTest extends ValidatorTest {
 
   public function createValidator(): Validator {
     return (new FormValidator())
-                    ->set('num', new Regex("/^\d+$/", 'Please insert numbers only'))
-                    ->set('p1', new Regex("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
-                    ->set('p2', new Regex("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
+                    ->setValidator('num', new Regex("/^\d+$/", 'Please insert numbers only'))
+                    ->setValidator('p1', new Regex("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
+                    ->setValidator('p2', new Regex("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
   }
 
   public function getInvalidValue() {
@@ -121,15 +121,16 @@ class FormValidatorTest extends ValidatorTest {
     $this->assertTrue($this->validator->isValid($value));
     $this->AssertCount(0, $this->validator->errors());
   }
-/**
- * @expectedException \Sphp\Exceptions\OutOfBoundsException
- */
+
+  /**
+   * @expectedException \Sphp\Exceptions\OutOfBoundsException
+   */
   public function testValidatorManagement() {
     $regex = new Regex("/^[foo]$/", 'foo is foo');
-    $this->assertSame($this->validator, $this->validator->set('foo', $regex));
+    $this->assertSame($this->validator, $this->validator->setValidator('foo', $regex));
     $this->assertTrue($this->validator->hasValidator('foo'));
-    $this->assertSame($regex, $this->validator->get('foo'));
-    $this->assertSame($regex, $this->validator->get('bar'));
+    $this->assertSame($regex, $this->validator->getValidator('foo'));
+    $this->assertSame($regex, $this->validator->getValidator('bar'));
   }
 
 }
