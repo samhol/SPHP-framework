@@ -45,10 +45,19 @@ class LogicalOrTest extends TestCase {
   }
 
   /**
-   * @return StringLength
    */
   public function testConstructor() {
     $this->assertCount(0, $this->validator->errors());
+  }
+
+  /**
+   */
+  public function testClone() {
+    $a = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
+    $b = new InHaystack([null]);
+    $validator = new LogicalOr($a, $b);
+    $clone = clone $validator;
+    $this->assertNotSame($validator, $clone);
   }
 
   /**

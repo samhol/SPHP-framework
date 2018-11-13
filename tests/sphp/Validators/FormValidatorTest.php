@@ -8,11 +8,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Validators;
+namespace Sphp\Tests\Validators;
 
-use PHPUnit\Framework\TestCase;
+use Sphp\Validators\FormValidator;
+use Sphp\Validators\Regex;
+use Sphp\Validators\Validator;
 
-class FormValidatorTest extends TestCase {
+class FormValidatorTest extends ValidatorTest {
 
   /**
    * @var FormValidator 
@@ -24,10 +26,7 @@ class FormValidatorTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->validator = (new FormValidator())
-            ->set('num', new Regex("/^\d+$/", 'Please insert numbers only'))
-            ->set('p1', new Regex("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
-            ->set('p2', new Regex("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
+    $this->validator = $this->createValidator();
   }
 
   /**
@@ -36,6 +35,29 @@ class FormValidatorTest extends TestCase {
    */
   protected function tearDown() {
     unset($this->validator);
+  }
+
+  public function createValidator(): Validator {
+    return (new FormValidator())
+                    ->set('num', new Regex("/^\d+$/", 'Please insert numbers only'))
+                    ->set('p1', new Regex("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
+                    ->set('p2', new Regex("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
+  }
+
+  public function getInvalidValue() {
+    return [
+        'num' => 'a',
+        'p1' => '1',
+        'p2' => 'aaaa'
+    ];
+  }
+
+  public function getValidValue() {
+    return [
+        'num' => '123',
+        'p1' => 'abcde',
+        'p2' => 'xyz'
+    ];
   }
 
   /**
@@ -57,8 +79,6 @@ class FormValidatorTest extends TestCase {
    */
   public function testInvalidInputType($value) {
     $this->assertFalse($this->validator->isValid($value));
-    $this->AssertCount(0, $this->validator->getInputErrors());
-    $this->AssertCount(1, $this->validator->errorsToArray());
   }
 
   public function invalidData() {
@@ -99,7 +119,17 @@ class FormValidatorTest extends TestCase {
    */
   public function testValidValues(array $value) {
     $this->assertTrue($this->validator->isValid($value));
-    $this->AssertCount(0, $this->validator->getInputErrors());
+    $this->AssertCount(0, $this->validator->errors());
+  }
+/**
+ * @expectedException \Sphp\Exceptions\OutOfBoundsException
+ */
+  public function testValidatorManagement() {
+    $regex = new Regex("/^[foo]$/", 'foo is foo');
+    $this->assertSame($this->validator, $this->validator->set('foo', $regex));
+    $this->assertTrue($this->validator->hasValidator('foo'));
+    $this->assertSame($regex, $this->validator->get('foo'));
+    $this->assertSame($regex, $this->validator->get('bar'));
   }
 
 }

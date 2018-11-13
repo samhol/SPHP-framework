@@ -10,9 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Stdlib\Datastructures\Collection;
-use Traversable;
-
 /**
  * Validates given form data
  *
@@ -23,11 +20,6 @@ use Traversable;
 class FormValidator extends AbstractValidator {
 
   /**
-   * @var ErrorMessages
-   */
-  private $inputErrors;
-
-  /**
    * inner validators
    * 
    * @var Validator[]
@@ -36,40 +28,26 @@ class FormValidator extends AbstractValidator {
 
   /**
    * Constructs a new validator
-   *
-   * @param string $defaultErrorMessage
    */
-  public function __construct(string $defaultErrorMessage = 'The form has errors') {
-    parent::__construct($defaultErrorMessage);
+  public function __construct() {
+    parent::__construct();
     $this->validators = [];
-    $this->inputErrors = new ErrorMessages();
   }
 
   public function __destruct() {
-    unset($this->validators, $this->inputErrors);
+    unset($this->validators);
     parent::__destruct();
   }
 
-  /**
-   * Returns error concerning each input messages
-   * 
-   * @return ErrorMessages
-   */
-  public function getInputErrors(): ErrorMessages {
-    return $this->inputErrors;
-  }
 
   public function isValid($value): bool {
+    $this->setValue($value);
     $valid = true;
-    if (!is_array($value)) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
-      return false;
-    }
     foreach ($this->validators as $inputName => $validator) {
       $inputValue = $value[$inputName] ?? null;
       if (!$validator->isValid($inputValue)) {
         $valid = false;
-        $this->inputErrors[$inputName] = $validator->errorsToArray();
+        $this->errors()[$inputName] = $validator->errorsToArray();
       }
     }
     if (!$valid) {
@@ -98,7 +76,7 @@ class FormValidator extends AbstractValidator {
     if ($this->hasValidator($inputName)) {
       return $this->validators[$inputName];
     }
-    return null;
+    throw new \Sphp\Exceptions\OutOfBoundsException;
   }
 
   /**
