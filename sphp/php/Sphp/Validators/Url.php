@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class UrlValidator extends AbstractValidator {
+class Url extends AbstractValidator {
 
   public function isValid($value): bool {
     $this->setValue($value);

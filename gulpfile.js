@@ -2,7 +2,6 @@
 var build, gulp = require('gulp'),
         uglify = require("gulp-uglify"),
         concat = require("gulp-concat"),
-        jshint = require('gulp-jshint'),
         jsdoc = require('gulp-jsdoc3');
 
 function build_js() {
@@ -17,8 +16,6 @@ function build_js() {
     './sphp/javascript/app/modules/*.js',
     './sphp/javascript/app/sphp.js'
   ])
-          .pipe(jshint())
-          //.pipe(jshint.reporter('.sphp/js/logs/lint.log'))
           .pipe(uglify())
           .pipe(concat('all.js'))
           .pipe(gulp.dest('sphp/javascript/dist'));
@@ -38,8 +35,6 @@ function build_ss360() {
   return gulp.src([
     './sphp/javascript/app/ss360/*.js'
   ])
-          .pipe(jshint())
-          //.pipe(jshint.reporter('.sphp/js/logs/lint.log'))
           .pipe(uglify())
           .pipe(concat('ss360.min.js'))
           .pipe(gulp.dest('sphp/javascript/dist'));
@@ -55,8 +50,6 @@ function doc(cb) {
           .pipe(jsdoc(config, cb));
 }
 
-//exports.build_js = build_js;
-//exports.doc = doc;
 
 build = gulp.series(build_js, build_ss360);
 build_docs = gulp.series(build, doc);

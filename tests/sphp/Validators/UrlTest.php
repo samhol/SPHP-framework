@@ -10,13 +10,13 @@
 
 namespace Sphp\Tests\Validators;
 
-use Sphp\Validators\UrlValidator;
+use Sphp\Validators\Url;
 use Sphp\Validators\Validator;
 
 class UrlTest extends ValidatorTest {
 
   /**
-   * @var UrlValidator
+   * @var Url
    */
   protected $validator;
 
@@ -59,7 +59,7 @@ class UrlTest extends ValidatorTest {
 
 
   public function createValidator(): Validator {
-    return new UrlValidator('URL is invalid');
+    return new Url('URL is invalid');
   }
 
   public function getInvalidValue() {
