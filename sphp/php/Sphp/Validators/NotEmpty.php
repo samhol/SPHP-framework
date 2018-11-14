@@ -41,7 +41,7 @@ class NotEmpty extends AbstractValidator {
   const ARRAY_TYPE = 0b100;
   const TRAVERSABLE_TYPE = 0b10;
 
-  private $type = NULL_TYPE;
+  private $type = self::NULL_TYPE;
   /**
    * Constructor
    *
