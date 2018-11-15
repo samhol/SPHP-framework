@@ -51,7 +51,12 @@ class NotEmpty extends AbstractValidator {
    */
   public function __construct(int $type = self::ANY_TYPE, string $message = 'Value is empty') {
     parent::__construct($message);
+    $this->setType($type);
+  }
+
+  public function setType(int $type) {
     $this->type = $type;
+    return $this;
   }
 
   protected function isValidType($value): bool {
