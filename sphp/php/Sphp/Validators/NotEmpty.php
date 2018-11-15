@@ -36,21 +36,20 @@ namespace Sphp\Validators;
 class NotEmpty extends AbstractValidator {
 
   const ANY_TYPE = 0b0;
-  const NULL_TYPE = 0b0;
   const STRING_TYPE = 0b1;
   const SCALAR_TYPE = 0b10;
   const ARRAY_TYPE = 0b100;
-  const TRAVERSABLE_TYPE = 0b1000;
-  const INVALID_MSG = 'inv';
+  const COUNTABLE_TYPE = 0b1000;
+  const TRAVERSABLE_TYPE = 0b10000;
 
-  private $type = self::NULL_TYPE;
+  private $type = self::ANY_TYPE;
 
   /**
    * Constructor
    *
    * @param string $message
    */
-  public function __construct(int $type = self::NULL_TYPE, string $message = 'Value is empty') {
+  public function __construct(int $type = self::ANY_TYPE, string $message = 'Value is empty') {
     parent::__construct($message);
     $this->type = $type;
   }
@@ -63,9 +62,11 @@ class NotEmpty extends AbstractValidator {
     if ($this->type === self::STRING_TYPE) {
       $valid = is_string($value);
     }if ($this->type === self::ARRAY_TYPE) {
-      $valid = is_array($value) ;
+      $valid = is_array($value);
     }if ($this->type === self::TRAVERSABLE_TYPE) {
       $valid = $value instanceof \Traversable;
+    }if ($this->type === self::COUNTABLE_TYPE) {
+      $valid = is_array($value) || $value instanceof \Countable;
     }
     if (!$valid) {
       $this->errors()->appendErrorFromTemplate(self::INVALID);
@@ -82,13 +83,13 @@ class NotEmpty extends AbstractValidator {
     if ($value === null) {
       $valid = false;
     } else if (is_string($value)) {
-      $valid = $value === '';
+      $valid = $value !== '';
     } else if (is_array($value)) {
       $valid = !empty($value);
-    } else if ($value instanceof \Countable) {
-      $valid = count($value) > 0;
-    } else if ($value instanceof \Traversable) {
+    } else if ($this->type === self::TRAVERSABLE_TYPE || $value instanceof \Traversable) {
       $valid = count(iterator_to_array($value)) > 0;
+    } else if ($this->type === self::COUNTABLE_TYPE || $value instanceof \Countable) {
+      $valid = count($value) > 0;
     }
     if (!$valid) {
       $this->errors()->appendErrorFromTemplate(self::INVALID);

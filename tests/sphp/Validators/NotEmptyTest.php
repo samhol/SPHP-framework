@@ -60,6 +60,68 @@ class NotEmptyTest extends ValidatorTest {
     $this->assertContains('Value is empty', $errors);
   }
 
+  public function mockCountable(int $count): \Countable {
+    $stub = $this->getMockBuilder(\Countable::class)->getMock();
+    $stub->method('count')
+            ->will($this->returnValue($count));
+    return $stub;
+  }
+
+  public function emptyValues(): array {
+    $values = [];
+    $values[] = [[], NotEmpty::ANY_TYPE];
+    $values[] = ['', NotEmpty::ANY_TYPE];
+    $values[] = [new \ArrayIterator(), NotEmpty::ANY_TYPE];
+    $values[] = [$this->mockCountable(0), NotEmpty::ANY_TYPE];
+    $values[] = [null, NotEmpty::ANY_TYPE];
+    $values[] = [[], NotEmpty::ARRAY_TYPE];
+    $values[] = [null, NotEmpty::ARRAY_TYPE];
+    $values[] = [null, NotEmpty::STRING_TYPE];
+    $values[] = ['', NotEmpty::STRING_TYPE];
+    $values[] = [new \ArrayIterator(), NotEmpty::TRAVERSABLE_TYPE];
+    $values[] = [$this->mockCountable(0), NotEmpty::COUNTABLE_TYPE];
+    $values[] = ['', NotEmpty::STRING_TYPE];
+    return $values;
+  }
+
+  /**
+   * @dataProvider emptyValues
+   *
+   * @param mixed $value
+   * @param int $type
+   */
+  public function testEmptyValues($value, int $type) {
+    $validator = new NotEmpty($type);
+    $this->assertFalse($validator->isValid($value), 'Value is not recognized as empty');
+    $errors = $validator->errors()->toArray();
+    $this->assertContains('Value is empty', $errors);
+  }
+
+  public function nonEmptyValues(): array {
+    $values = [];
+    $values[] = [[1], NotEmpty::ANY_TYPE];
+    $values[] = [' ', NotEmpty::ANY_TYPE];
+    $values[] = [new \ArrayIterator([1]), NotEmpty::ANY_TYPE];
+    $values[] = [$this->mockCountable(1), NotEmpty::ANY_TYPE];
+    $values[] = [[1], NotEmpty::ARRAY_TYPE];
+    $values[] = [' ', NotEmpty::STRING_TYPE];
+    $values[] = [new \ArrayIterator([1]), NotEmpty::TRAVERSABLE_TYPE];
+    $values[] = [$this->mockCountable(1), NotEmpty::COUNTABLE_TYPE];
+    return $values;
+  }
+
+  /**
+   * @dataProvider nonEmptyValues
+   *
+   * @param mixed $value
+   * @param int $type
+   */
+  public function testNonEmptyValues($value, int $type) {
+    $validator = new NotEmpty($type);
+    $this->assertTrue($validator->isValid($value), 'Value is recognized as empty');
+    $errors = $validator->errors()->toArray();
+    $this->assertCount(0, $errors);
+  }
 
   public function createValidator(): Validator {
     return new NotEmpty();
