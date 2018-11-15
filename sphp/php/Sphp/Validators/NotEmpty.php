@@ -35,13 +35,16 @@ namespace Sphp\Validators;
  */
 class NotEmpty extends AbstractValidator {
 
+  const ANY_TYPE = 0b0;
   const NULL_TYPE = 0b0;
   const STRING_TYPE = 0b1;
-  const SCALAR_TYPE = 0b1;
+  const SCALAR_TYPE = 0b10;
   const ARRAY_TYPE = 0b100;
-  const TRAVERSABLE_TYPE = 0b10;
+  const TRAVERSABLE_TYPE = 0b1000;
+  const INVALID_MSG = 'inv';
 
   private $type = self::NULL_TYPE;
+
   /**
    * Constructor
    *
@@ -52,15 +55,40 @@ class NotEmpty extends AbstractValidator {
     $this->type = $type;
   }
 
+  protected function isValidType($value): bool {
+    $valid = true;
+    if ($this->type === self::ANY_TYPE) {
+      return true;
+    }
+    if ($this->type === self::STRING_TYPE) {
+      $valid = is_string($value);
+    }if ($this->type === self::ARRAY_TYPE) {
+      $valid = is_array($value) ;
+    }if ($this->type === self::TRAVERSABLE_TYPE) {
+      $valid = $value instanceof \Traversable;
+    }
+    if (!$valid) {
+      $this->errors()->appendErrorFromTemplate(self::INVALID);
+    }
+    return $valid;
+  }
+
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
+    if (!$this->isValidType($value)) {
+      return false;
+    }
     if ($value === null) {
       $valid = false;
-    } else if (is_array($value) && empty($value)) {
-      $valid = false;
-    } else if ($value === '') {
-      $valid = false;
+    } else if (is_string($value)) {
+      $valid = $value === '';
+    } else if (is_array($value)) {
+      $valid = !empty($value);
+    } else if ($value instanceof \Countable) {
+      $valid = count($value) > 0;
+    } else if ($value instanceof \Traversable) {
+      $valid = count(iterator_to_array($value)) > 0;
     }
     if (!$valid) {
       $this->errors()->appendErrorFromTemplate(self::INVALID);
