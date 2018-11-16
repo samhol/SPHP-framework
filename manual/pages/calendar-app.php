@@ -23,6 +23,9 @@ if (count($parts) > 2) {
   }
 }
 
+$d = \Sphp\DateTime\Date::from("$year-$month-01")->format("M Y");
+echo \Sphp\Manual\md("# Calendar <small>$d</small>");
+
 //var_dump(StopWatch::getEcecutionTime());
 class CalendarController {
 
@@ -65,9 +68,10 @@ foreach ($daterange as $id => $date) {
   $pagination->append($page);
 }
 
+
+echo Factory::getMonth($month, $year)->setDiaryContainer($diaryContainer);
+
 $pagination
         ->visibleAfterCurrent(3)
         ->visibleBeforeCurrent(3)
         ->printHtml();
-
-echo Factory::getMonth($month, $year)->setDiaryContainer($diaryContainer);

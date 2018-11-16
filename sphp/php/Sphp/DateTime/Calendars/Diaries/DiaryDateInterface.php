@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries;
 
-use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Date;
 
 /**
  * Defines a date containing corresponding Diary logs
@@ -20,5 +20,6 @@ use Sphp\DateTime\DateInterface;
  * @filesource
  */
 interface DiaryDateInterface extends DiaryListener, EntryContainer {
-  public function getDate() :\Sphp\DateTime\Date;
+
+  public function getDate(): Date;
 }

@@ -39,8 +39,8 @@ $exercises = \Sphp\DateTime\Calendars\Diaries\Sports\FitNotes::fromCsv('manual/s
 foreach ($exercises as $excercise) {
   foreach ($excercise as $workout) {
     if ($workout instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
-      var_dump($workout->totalsToString());
-      print_r($workout->toArray());
+      //var_dump($workout->totalsToString());
+      //print_r($workout->toArray());
     }
   }
 }

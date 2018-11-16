@@ -11,7 +11,6 @@
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use DateTimeInterface as DTI;
 use Sphp\Exceptions\InvalidArgumentException;
 use Exception;
 
