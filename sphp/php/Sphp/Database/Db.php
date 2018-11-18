@@ -86,6 +86,7 @@ class Db {
    * @param  string|null $name
    * @return Db
    * @throws InvalidArgumentException
+   * @deprecated
    */
   public static function instance(string $name = null): Db {
     if ($name === null) {

@@ -144,6 +144,10 @@ class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayab
     return $this->date->dateEqualsTo($date);
   }
 
+  public function getDate(): Date {
+    return $this->date;
+  }
+
   public function getIterator(): \Traversable {
     return new \ArrayIterator($this->exercises);
   }
