@@ -35,7 +35,7 @@ abstract class Exercise implements IteratorAggregate, Countable {
   /**
    * @var ExerciseSet[]
    */
-  private $sets = [];
+  private $sets;
 
   /**
    * Constructor
@@ -46,13 +46,14 @@ abstract class Exercise implements IteratorAggregate, Countable {
   public function __construct(string $name, string $category) {
     $this->name = $name;
     $this->category = $category;
+    $this->sets = [];
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->name, $this->category, $this->sets);
+    unset($this->sets);
   }
 
   /**

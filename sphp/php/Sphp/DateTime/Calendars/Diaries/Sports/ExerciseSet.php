@@ -9,6 +9,7 @@
  */
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
+
 use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**

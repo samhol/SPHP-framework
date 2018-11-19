@@ -12,14 +12,7 @@ namespace Sphp\Tests\DateTime\Calendar\Diaries;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Calendars\Diaries\MutableDiary;
-
-/**
- * Description of DiaryTest
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
+  
 class DiaryTest extends TestCase {
 
   /**

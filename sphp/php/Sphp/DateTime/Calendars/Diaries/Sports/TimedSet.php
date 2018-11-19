@@ -57,7 +57,7 @@ class TimedSet implements ExerciseSet {
     if ($this->duration->s > 0) {
       $item[] = "{$this->duration->s} seconds";
     }
-    return implode(' ', $item);
+    return \implode(' ', $item);
   }
 
   /**
