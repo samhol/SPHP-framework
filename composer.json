@@ -39,7 +39,6 @@
     "zendframework/zend-i18n": "*",
     "zendframework/zend-paginator": "*",
     "zendframework/zend-mail": "*",
-    "zurb/foundation": ">=6.4",
     "symfony/yaml": ">=3.0",
     "mpdf/mpdf": "*"
   },
