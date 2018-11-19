@@ -58,10 +58,4 @@ class WeightLiftingExercise extends Exercise {
     return $total;
   }
 
-  public function totalsToString(): string {
-    $output = "Totals: \n";
-    $output .= "\n\tweight: {$this->getTotalWeight()} kg\n\treps:{$this->getTotalReps()}";
-    return $output;
-  }
-
 }

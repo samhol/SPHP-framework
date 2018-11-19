@@ -19,7 +19,7 @@ use DateInterval;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DistanceAndTimeExercise extends Exercise implements \Iterator {
+class DistanceAndTimeExercise extends Exercise {
 
   /**
    * Returns the total distance
@@ -48,10 +48,6 @@ class DistanceAndTimeExercise extends Exercise implements \Iterator {
     return $set;
   }
 
-  public function getSets(): array {
-    return $this->sets;
-  }
-
   /**
    * Returns the total time used
    * 
@@ -59,7 +55,7 @@ class DistanceAndTimeExercise extends Exercise implements \Iterator {
    */
   public function getTotalTime(): float {
     $distance = 0;
-    foreach ($this as $set) {
+    foreach ($this->getSets() as $set) {
       $distance += $set->getHours();
     }
     return $distance;
@@ -77,10 +73,6 @@ class DistanceAndTimeExercise extends Exercise implements \Iterator {
       return round($result, $precision);
     }
     return $result;
-  }
-
-  public function totalsToString(): string {
-    return $this->getTotalDistance() . "km, at " . $this->getAverageSpeed() . "km/h";
   }
 
 }

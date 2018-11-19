@@ -13,8 +13,6 @@
 @import "settings";
 @import "../../vendor/zurb/foundation/scss/foundation";
 
-  
-
 @include foundation-everything($prototype: true);
 //@include foundation-grid;
 

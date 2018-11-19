@@ -48,19 +48,4 @@ class TimedExercise extends Exercise {
     return new Interval("PT{$time}S");
   }
 
-  public function totalsToString(): string {
-    $duration = $this->getTotalTime();
-    $item = [];
-    if ($duration->h > 0) {
-      $item[] = "{$duration->h} hours";
-    }
-    if ($duration->i > 0) {
-      $item[] = "{$duration->i} minutes";
-    }
-    if ($duration->s > 0) {
-      $item[] = "{$duration->s} seconds";
-    }
-    return implode(' ', $item);
-  }
-
 }

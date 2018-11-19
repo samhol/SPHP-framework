@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Iterator;
+use IteratorAggregate;
 use Countable;
 
 /**
@@ -20,7 +20,7 @@ use Countable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class Exercise implements Iterator, Countable {
+abstract class Exercise implements IteratorAggregate, Countable {
 
   /**
    * @var string 
@@ -86,8 +86,6 @@ abstract class Exercise implements Iterator, Countable {
   public function getDescription(): string {
     return $this->category;
   }
-  
-  abstract public function totalsToString(): string;
 
   /**
    * Returns exercise sets
@@ -117,52 +115,7 @@ abstract class Exercise implements Iterator, Countable {
     return count($this->sets);
   }
 
-  /**
-   * Returns the current note
-   * 
-   * @return mixed the current note
-   */
-  public function current() {
-    return current($this->sets);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->sets);
-  }
-
-  /**
-   * Return the key of the current note
-   * 
-   * @return mixed the key of the current note
-   */
-  public function key() {
-    return key($this->sets);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->sets);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->sets);
-  }
-  
-  public function toArray() :array {
+  public function toArray(): array {
     $sets = [];
     foreach ($this as $set) {
       $sets[] = $set->toArray();
@@ -170,6 +123,10 @@ abstract class Exercise implements Iterator, Countable {
     $arr = get_object_vars($this);
     $arr['sets'] = $sets;
     return $arr;
+  }
+
+  public function getIterator(): \Traversable {
+    return new \ArrayIterator(($this->sets));
   }
 
 }

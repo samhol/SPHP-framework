@@ -72,7 +72,7 @@ abstract class AbstractWorkoutPaneBuilder {
   }
 
   public function totalsToHtml(Exercise $exercise): string {
-    return $exercise->totalsToString();
+    return "$exercise";
   }
 
   /**
