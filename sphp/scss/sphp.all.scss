@@ -14,9 +14,8 @@
 @import "../../node_modules/foundation-sites/scss/foundation";
 
 @include foundation-everything($prototype: true);
-//@include foundation-grid;
 
-/*
+/*@include foundation-grid;
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
 @include foundation-grid;
@@ -71,4 +70,5 @@
 @include sphp-menus();
 @include sphp-table-modules();
 @include sphp-geshi();
+
 @include sphp-code-example-accordion();

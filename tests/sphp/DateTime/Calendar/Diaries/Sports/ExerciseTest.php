@@ -15,6 +15,9 @@ use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 
 class ExerciseTest extends TestCase {
 
+  /**
+   * @return Exercise
+   */
   public function testConstructor(): Exercise {
     $exercise = $this->getMockBuilder(Exercise::class)
             ->setConstructorArgs(['foo', 'bar'])
@@ -24,8 +27,12 @@ class ExerciseTest extends TestCase {
     $this->assertEquals('bar', $exercise->getDescription());
     return $exercise;
   }
-  
-  public function tsestSets() {
-    
+  /**
+   * @depends testConstructor
+   * @param Exercise $exercise
+   */
+  public function testSets(Exercise $exercise) {
+    $this->assertEquals('foo', $exercise->getName());
+    $this->assertEquals('bar', $exercise->getDescription());
   }
 }

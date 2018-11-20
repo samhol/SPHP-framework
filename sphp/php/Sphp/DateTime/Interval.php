@@ -28,23 +28,50 @@ class Interval extends DateInterval implements IntervalInterface {
    */
   public function __construct(string $interval = 'P0D') {
     parent::__construct($interval);
-    $this->recalculate();
   }
 
   /**
+   * Returns the string representation of the object
    * 
-   * @return DateInterval
+   * @return string the string representation of the object
    */
-  public function getInterval(): DateInterval {
-    return $this;
+  public function __toString(): string {
+    if ($this->invert === -1) {
+      $format = '-P';
+    } else {
+      $format = 'P';
+    }
+    if ($this->y > 0) {
+      $format .= $this->y . 'Y';
+    }
+    if ($this->m > 0) {
+      $format .= $this->m . 'M';
+    }
+    if ($this->d > 0) {
+      $format .= $this->d . 'D';
+    }
+    $time = '';
+    if ($this->h > 0) {
+      $time .= $this->h . 'H';
+    }
+    if ($this->i > 0) {
+      $time .= $this->i . 'M';
+    }
+    if ($this->s > 0) {
+      $time .= $this->s . 'S';
+    }
+    if ($time !== '') {
+      $format .= "T$time";
+    }
+    return $format;
   }
 
   /**
    * Recalculates the values
    * 
-   * @return void
+   * @return $this for a fluent interface
    */
-  protected function recalculate() {
+  public function recalculate() {
     $seconds = $this->toSeconds();
     $this->y = floor($seconds / 60 / 60 / 24 / 365.2525);
     $seconds -= $this->y * 31536000;
@@ -57,6 +84,7 @@ class Interval extends DateInterval implements IntervalInterface {
     $this->i = floor($seconds / 60);
     $seconds -= $this->i * 60;
     $this->s = $seconds;
+    return $this;
   }
 
   public function toSeconds(): float {
