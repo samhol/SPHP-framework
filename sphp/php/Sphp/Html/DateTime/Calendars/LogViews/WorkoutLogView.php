@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\DateTime\Calendars\Diaries\Sports\WorkoutLog;
+use Sphp\DateTime\Calendars\Diaries\Sports\Workouts;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise;
@@ -33,7 +33,7 @@ use Sphp\Html\Tags;
 class WorkoutLogView {
 
   public function build(DiaryDate $date): string {
-    $workouts = $date->getByType(WorkoutLog::class);
+    $workouts = $date->getByType(Workouts::class);
      //echo $date;
     if ($workouts->notEmpty()) {
       $section = new Section();
@@ -51,9 +51,10 @@ class WorkoutLogView {
   /**
    * Builds a Foundation based accordion component containing the example
    * 
+   * @param Workouts $workouts
    * @return Accordion a Foundation based accordion component containing the example
    */
-  public function buildAccordion(WorkoutLog $workouts): Accordion {
+  public function buildAccordion(Workouts $workouts): Accordion {
     $accordion = new Accordion();
     $accordion->allowAllClosed(true)->allowMultiExpand(true);
     $doer = new WeighhtLiftingPaneBuilder();

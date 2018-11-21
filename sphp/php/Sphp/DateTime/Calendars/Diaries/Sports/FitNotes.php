@@ -43,7 +43,7 @@ class FitNotes {
       if (!isset($date) || $rawDate !== $exersice[0]) {
         $rawDate = $exersice[0];
         $date = new Date($rawDate);
-        $log = new WorkoutLog($date);
+        $log = new Workouts($date);
         $coll->insertLog($log);
       }
       $name = $exersice[1];

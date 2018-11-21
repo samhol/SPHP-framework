@@ -39,7 +39,7 @@ class WeightLiftingExercise extends Exercise {
    */
   public function getTotalWeight(): float {
     $total = 0;
-    foreach ($this as $set) {
+    foreach ($this->getSets() as $set) {
       $total += $set->getTotalWeight();
     }
     return $total;
@@ -48,11 +48,11 @@ class WeightLiftingExercise extends Exercise {
   /**
    * Returns the total reps made in the exercise
    * 
-   * @return float the total reps made
+   * @return int the total reps made
    */
-  public function getTotalReps(): float {
+  public function getTotalReps(): int {
     $total = 0;
-    foreach ($this as $set) {
+    foreach ($this->getSets() as $set) {
       $total += $set->getReps();
     }
     return $total;

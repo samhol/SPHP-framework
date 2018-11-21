@@ -16,7 +16,6 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
 use Sphp\DateTime\Date;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\RuntimeException;
 
 /**
  * Implements a workout log for a diary
@@ -26,7 +25,7 @@ use Sphp\Exceptions\RuntimeException;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayable {
+class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable {
 
   /**
    * @var Date 
@@ -55,6 +54,14 @@ class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayab
     unset($this->date, $this->exercises);
   }
 
+  /**
+   * Clone method
+   */
+  public function __clone() {
+    $this->date = clone $this->date;
+    $this->exercises = clone $this->exercises;
+  }
+
   public function __toString(): string {
     $output = '';
     foreach ($this->exercises as $ex) {
@@ -68,9 +75,13 @@ class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayab
    * 
    * @param  Exercise $e 
    * @return $this for a fluent interface
+   * @throws InvalidArgumentException
    */
   public function setExercise(Exercise $e) {
     $name = $e->getName();
+    if ($name === '') {
+      throw new InvalidArgumentException("Exercise name must contain letters ('$name' given)");
+    }
     $this->exercises[$name] = $e;
     return $this;
   }
@@ -80,25 +91,28 @@ class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayab
   }
 
   /**
+   * Checks if the log contains given exercise
+   *
+   * @param  Exercise $exercise exercise to search for
+   * @return boolean true if the exercise exists and false otherwise
+   */
+  public function containsExercise(Exercise $exercise): bool {
+    $name = $exercise->getName();
+    return array_key_exists($name, $this->exercises) && $exercise == $this->exercises[$name];
+  }
+
+  /**
    * Sets a weightlifting exercise if not present and returns the exercise instance
    * 
    * @param  string $name unique name of the exercise
    * @param  string|null $category optional exercise category
    * @return WeightLiftingExercise the instance contained
    * @throws InvalidArgumentException
-   * @throws RuntimeException
    */
   public function setWeightLiftingExercise(string $name, string $category = null): WeightLiftingExercise {
-    if ($name === '') {
-      throw new InvalidArgumentException("Exercise name must contain letters ('$name' given)");
-    }
-    if (!isset($this->exercises[$name])) {
-      $this->exercises[$name] = new WeightLiftingExercise($name, $category);
-    }
-    if (!$this->exercises[$name] instanceof WeightLiftingExercise) {
-      throw new RuntimeException("Exercise '$name' of a different type allready exists in the workout log");
-    }
-    return $this->exercises[$name];
+    $e = new WeightLiftingExercise($name, $category);
+    $this->setExercise($e);
+    return $e;
   }
 
   /**
@@ -107,12 +121,12 @@ class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayab
    * @param  string $name unique name of the exercise
    * @param  string|null $category optional exercise category
    * @return TimedExercise the instance contained
+   * @throws InvalidArgumentException
    */
   public function setTimedExercise(string $name, string $category = null): TimedExercise {
-    if (!isset($this->exercises[$name])) {
-      $this->exercises[$name] = new TimedExercise($name, $category);
-    }
-    return $this->exercises[$name];
+    $e = new TimedExercise($name, $category);
+    $this->setExercise($e);
+    return $e;
   }
 
   /**
@@ -123,21 +137,9 @@ class WorkoutLog implements IteratorAggregate, CalendarEntry, Countable, Arrayab
    * @return DistanceAndTimeExercise the instance contained
    */
   public function setDistanceAndTimeExercise(string $name, string $category = null): DistanceAndTimeExercise {
-    if (!isset($this->exercises[$name])) {
-      $this->exercises[$name] = new DistanceAndTimeExercise($name, $category);
-    }
-    return $this->exercises[$name];
-  }
-
-  /**
-   * Checks if the log contains given exercise
-   *
-   * @param  Exercise $exercise exercise to search for
-   * @return boolean true if the exercise exists and false otherwise
-   */
-  public function contains(Exercise $exercise): bool {
-    $name = $exercise->getName();
-    return array_key_exists($name, $this->exercises) && $exercise == $this->exercises[$name];
+    $e = new DistanceAndTimeExercise($name, $category);
+    $this->setExercise($e);
+    return $e;
   }
 
   public function dateMatchesWith($date): bool {
