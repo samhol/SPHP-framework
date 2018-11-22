@@ -36,34 +36,11 @@ class Interval extends DateInterval implements IntervalInterface {
    * @return string the string representation of the object
    */
   public function __toString(): string {
+    $output = $this->format('P%yY%mM%dDT%hH%iM%sS');
     if ($this->invert === -1) {
-      $format = '-P';
-    } else {
-      $format = 'P';
-    }
-    if ($this->y > 0) {
-      $format .= $this->y . 'Y';
-    }
-    if ($this->m > 0) {
-      $format .= $this->m . 'M';
-    }
-    if ($this->d > 0) {
-      $format .= $this->d . 'D';
-    }
-    $time = '';
-    if ($this->h > 0) {
-      $time .= $this->h . 'H';
-    }
-    if ($this->i > 0) {
-      $time .= $this->i . 'M';
-    }
-    if ($this->s > 0) {
-      $time .= $this->s . 'S';
-    }
-    if ($time !== '') {
-      $format .= "T$time";
-    }
-    return $format;
+      $output = '-' . $output;
+    } 
+    return $output;
   }
 
   /**

@@ -22,21 +22,18 @@ class IntervalTest extends TestCase {
   }
 
   public function intervalStrings(): array {
-    $strings[] = ['P1DT3S'];
-    $strings[] = ['P1M'];
-    $strings[] = ['PT3M'];
-    $strings[] = ['P89D'];
-    $strings[] = ['P1DT3S'];
-    $strings[] = ['PT36S'];
+    $strings[] = ['P0Y0M2DT0H0M0S', 'P0Y0M2DT0H0M0S'];
+    $strings[] = ['P1M', 'P0Y1M0DT0H0M0S'];
+    $strings[] = ['PT3M', 'P0Y0M0DT0H3M0S'];
     return $strings;
   }
 
   /**
    * @dataProvider intervalStrings
    */
-  public function testToString(string $interval_spec) {
+  public function testToString(string $interval_spec, string $expected) {
     $interval = new Interval($interval_spec);
-    $this->assertSame($interval_spec, "$interval");
+    $this->assertSame($expected, "$interval");
   }
 
 }
