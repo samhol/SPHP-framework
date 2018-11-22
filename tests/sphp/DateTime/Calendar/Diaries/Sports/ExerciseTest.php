@@ -27,29 +27,39 @@ class WeightLiftingExerciseTest extends TestCase {
     return $exercise;
   }
 
+  public function sets(): array {
+    $sets[] = ['weight' => 10, 'reps' => 5];
+    $sets[] = ['weight' => 12, 'reps' => 15];
+    $sets[] = ['weight' => 10, 'reps' => 0];
+    $sets[] = ['weight' => 10, 'reps' => 5];
+    return $sets;
+  }
+
   /**
    * @depends testConstructor
    * @param WeightLiftingExercise $exercise
    */
-  public function testSets(WeightLiftingExercise $exercise): WeightLiftingExercise {
-    $exercise->addSet(10, 5);
-    $this->assertCount(1, $exercise);
-    $this->assertEquals(5, $exercise->getTotalReps());
-    $this->assertEquals(50, $exercise->getTotalWeight());
-    return $exercise;
-  }
-
-  /**
-   * @depends testSets
-   * @param WeightLiftingExercise $exercise
-   */
-  public function testAddSets(WeightLiftingExercise $exercise): WeightLiftingExercise {
-    $set = $exercise->addSet(2.5, 2);
-    $this->assertEquals(2.5, $set->getRepWeight());
-    $this->assertEquals("2.5kg x 2 reps", "$set");
-    $this->assertCount(2, $exercise);
-    $this->assertEquals(7, $exercise->getTotalReps());
-    $this->assertEquals(55, $exercise->getTotalWeight());
+  public function testAddSet(WeightLiftingExercise $exercise): WeightLiftingExercise {
+    $setData = $this->sets();
+    $totalWeight = 0;
+    $totalReps = 0;
+    foreach ($setData as $setValues) {
+      $weight = $setValues['weight'];
+      $reps = $setValues['reps'];
+      $totalRepWight = $weight * $reps;
+      $totalWeight += $weight * $reps;
+      $totalReps += $reps;
+      $set = $exercise->addSet($weight, $reps);
+      $this->assertEquals($weight, $set->getRepWeight());
+      $this->assertEquals($weight, $set->getRepWeight());
+      $this->assertEquals($reps, $set->getReps());
+      $this->assertEquals($totalRepWight, $set->getTotalWeight());
+      $this->assertEquals("{$weight}kg x $reps reps", "$set");
+      $this->assertEquals($setValues, $set->toArray());
+      $this->assertEquals($totalWeight, $exercise->getTotalWeight());
+      $this->assertEquals($totalReps, $exercise->getTotalReps());
+    }
+    $this->assertCount(count($setData), $exercise);
     return $exercise;
   }
 

@@ -40,12 +40,11 @@ class TimedExercise extends Exercise {
    * @return Interval the total time used in the exercise 
    */
   public function getTotalTime(): Interval {
-    $time = 0;
+    $time = new Interval();
     foreach ($this as $set) {
-      $time += $set->getDuration()->i * 60 + $set->getDuration()->h * 60 * 60 + $set->getDuration()->d * 60 * 60 * 24;
+      $time->add($set->getDuration());
     }
-    echo "PT{$time}S" . ", ";
-    return new Interval("PT{$time}S");
+    return $time;
   }
 
 }

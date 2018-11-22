@@ -116,6 +116,22 @@ class Interval extends DateInterval implements IntervalInterface {
     return $this->invert === 1;
   }
 
+  public function compareTo($interval) {
+    $i = Intervals::create($interval);
+    return $this->toSeconds() <=> $i->toSeconds();
+  }
+
+  public function add(DateInterval $interval) {
+    foreach (str_split('ymdhis') as $prop) {
+      $this->$prop += $interval->$prop;
+    }
+    $this->i += (int) ($this->s / 60);
+    $this->s = $this->s % 60;
+    $this->h += (int) ($this->i / 60);
+    $this->i = $this->i % 60;
+    return $this;
+  }
+
   /**
    * 
    * 

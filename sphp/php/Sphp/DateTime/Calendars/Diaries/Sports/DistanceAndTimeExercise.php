@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use DateInterval;
+use Sphp\DateTime\Interval;
 
 /**
  * Implements a distance and time exercise
@@ -49,16 +50,16 @@ class DistanceAndTimeExercise extends Exercise {
   }
 
   /**
-   * Returns the total time used
+   * Returns the total time used in the exercise 
    * 
-   * @return float the total time used
+   * @return Interval the total time used in the exercise 
    */
-  public function getTotalTime(): float {
-    $distance = 0;
-    foreach ($this->getSets() as $set) {
-      $distance += $set->getHours();
+  public function getTotalTime(): Interval {
+    $time = new Interval();
+    foreach ($this as $set) {
+      $time->add($set->getDuration());
     }
-    return $distance;
+    return $time;
   }
 
   /**
@@ -68,7 +69,7 @@ class DistanceAndTimeExercise extends Exercise {
    * @return average speed
    */
   public function getAverageSpeed(int $precision = 2): float {
-    $result = $this->getTotalDistance() / $this->getTotalTime();
+    $result = $this->getTotalDistance() / $this->getTotalTime()->toHours();
     if ($precision >= 0) {
       return round($result, $precision);
     }
