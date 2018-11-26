@@ -11,6 +11,7 @@
 namespace Sphp\DateTime;
 
 use DateInterval;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements a date interval
@@ -27,7 +28,13 @@ class Interval extends DateInterval implements IntervalInterface {
    * @param string $interval an interval specification.
    */
   public function __construct(string $interval = 'P0D') {
-    parent::__construct($interval);
+    if (Strings::startsWith($interval, '-')) {
+      $str = Strings::trimLeft($interval, '-');
+      parent::__construct($str);
+      $this->invert = true;
+    } else {
+      parent::__construct($interval);
+    }
   }
 
   /**
@@ -36,11 +43,34 @@ class Interval extends DateInterval implements IntervalInterface {
    * @return string the string representation of the object
    */
   public function __toString(): string {
-    $output = $this->format('P%yY%mM%dDT%hH%iM%sS');
     if ($this->invert === -1) {
-      $output = '-' . $output;
-    } 
-    return $output;
+      $format = '-P';
+    } else {
+      $format = 'P';
+    }
+    if ($this->y > 0) {
+      $format .= $this->y . 'Y';
+    }
+    if ($this->m > 0) {
+      $format .= $this->m . 'M';
+    }
+    if ($this->d > 0) {
+      $format .= $this->d . 'D';
+    }
+    $time = '';
+    if ($this->h > 0) {
+      $time .= $this->h . 'H';
+    }
+    if ($this->i > 0) {
+      $time .= $this->i . 'M';
+    }
+    if ($this->s > 0) {
+      $time .= $this->s . 'S';
+    }
+    if ($time !== '') {
+      $format .= "T$time";
+    }
+    return $format;
   }
 
   /**
@@ -98,9 +128,22 @@ class Interval extends DateInterval implements IntervalInterface {
     return $this->toSeconds() <=> $i->toSeconds();
   }
 
+  /**
+   * 
+   * @param DateInterval $interval
+   * @return $this for a fluent interface
+   */
   public function add(DateInterval $interval) {
-    foreach (str_split('ymdhis') as $prop) {
-      $this->$prop += $interval->$prop;
+    if ($interval->invert) {
+
+      foreach (str_split('ymdhis') as $prop) {
+        $this->$prop -= $interval->$prop;
+      }
+    } else {
+
+      foreach (str_split('ymdhis') as $prop) {
+        $this->$prop += $interval->$prop;
+      }
     }
     $this->i += (int) ($this->s / 60);
     $this->s = $this->s % 60;

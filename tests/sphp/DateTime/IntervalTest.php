@@ -22,9 +22,9 @@ class IntervalTest extends TestCase {
   }
 
   public function intervalStrings(): array {
-    $strings[] = ['P0Y0M2DT0H0M0S', 'P0Y0M2DT0H0M0S'];
-    $strings[] = ['P1M', 'P0Y1M0DT0H0M0S'];
-    $strings[] = ['PT3M', 'P0Y0M0DT0H3M0S'];
+    $strings[] = ['P0Y0M2DT1H22M1S', 'P2DT1H22M1S'];
+    $strings[] = ['P0Y1M0DT0H0M0S', 'P1M'];
+    $strings[] = ['P0Y0M0DT0H3M0S', 'PT3M'];
     return $strings;
   }
 
@@ -34,6 +34,15 @@ class IntervalTest extends TestCase {
   public function testToString(string $interval_spec, string $expected) {
     $interval = new Interval($interval_spec);
     $this->assertSame($expected, "$interval");
+  }
+
+  public function testArithmetics() {
+    $interval = new Interval('P1DT1H');
+    $sum = $interval->add(new Interval('P1M1DT2H3M'));
+    $this->assertSame('P1M2DT3H3M', "$sum");
+    $div = $interval->add(new Interval('-P1M1DT2H3M'));
+    $this->assertSame('P1DT1H', "$div");
+    
   }
 
 }
