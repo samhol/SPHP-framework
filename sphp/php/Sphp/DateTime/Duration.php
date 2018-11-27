@@ -10,10 +10,8 @@
 
 namespace Sphp\DateTime;
 
-use Sphp\Stdlib\Strings;
-
 /**
- * Implements a date interval
+ * Implements a duration
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -21,6 +19,9 @@ use Sphp\Stdlib\Strings;
  */
 class Duration {
 
+  /**
+   * @var int
+   */
   private $seconds;
 
   /**
@@ -43,7 +44,7 @@ class Duration {
   }
 
   public function addFromString(string $time) {
-    $this->addSeconds(static::from($time)->toSeconds());
+    $this->add(static::from($time));
     return $this;
   }
 
