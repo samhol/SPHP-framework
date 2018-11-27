@@ -138,24 +138,17 @@ class Duration {
    * 
    * @param string $interval an interval specification.
    */
-  public function fromTime(int $hours, int $minutes, int $seconds) {
-    if (Strings::startsWith($interval, '-')) {
-      $str = Strings::trimLeft($interval, '-');
-      parent::__construct($str);
-      $this->invert = true;
-    } else {
-      parent::__construct($interval);
-    }
+  public static function fromTime(int $hours, int $minutes, int $seconds): Duration {
+    $seconds += $hours * 3600 + $minutes * 60;
+    return new Duration($seconds);
   }
 
   public static function fromString(string $time): Duration {
     $parts = explode(':', $time);
     if (count($parts) < 3) {
-      array_unshift($parts, 0);
+      $parts = array_unshift($parts, 0);
     }
-    $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
-    //echo "$dateint\n";
-    return new Duration($parts[2]);
+    return  Duration::fromTime($parts[0], $parts[1], $parts[2]);
   }
 
 }

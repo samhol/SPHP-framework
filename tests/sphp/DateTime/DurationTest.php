@@ -26,6 +26,8 @@ class DurationTest extends TestCase{
   public function testdateString() {
     $interval = Duration::fromString('1:00:00');
     $this->assertSame(1.0, $interval->toHours());
+    $this->assertSame(60.0, $interval->toMinutes());
+    $this->assertSame(3600.0, $interval->toSeconds());
   }
 
   public function intervalStrings(): array {
