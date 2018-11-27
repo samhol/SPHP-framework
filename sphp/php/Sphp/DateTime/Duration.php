@@ -28,7 +28,7 @@ class Duration {
    * 
    * @param string $seconds an interval specification.
    */
-  public function __construct(int $seconds) {
+  public function __construct(int $seconds = 0) {
     $this->seconds = $seconds;
   }
 
@@ -38,29 +38,7 @@ class Duration {
    * @return string the string representation of the object
    */
   public function __toString(): string {
-    $format = 'P';
-    if ($this->y > 0) {
-      $format .= $this->y . 'Y';
-    }
-    if ($this->m > 0) {
-      $format .= $this->m . 'M';
-    }
-    if ($this->d > 0) {
-      $format .= $this->d . 'D';
-    }
-    $time = '';
-    if ($this->h > 0) {
-      $time .= $this->h . 'H';
-    }
-    if ($this->i > 0) {
-      $time .= $this->i . 'M';
-    }
-    if ($this->s > 0) {
-      $time .= $this->s . 'S';
-    }
-    if ($time !== '') {
-      $format .= "T$time";
-    }
+    $format = 'PT' . $this->seconds . 'S';
     return $format;
   }
 
@@ -74,34 +52,22 @@ class Duration {
     return $this;
   }
 
-  public function addMinutes(int $minutes) {
+  public function addMinutes(float $minutes) {
     $this->seconds += $minutes * 60;
     return $this;
   }
 
-  public function addHours(int $hours) {
+  public function addHours(float $hours) {
     $this->seconds += $hours * 60 * 60;
     return $this;
   }
 
-  /**
-   * Recalculates the values
-   * 
-   * @return $this for a fluent interface
-   */
-  public function recalculate() {
-    $seconds = $this->toSeconds();
-    $this->d = floor($seconds / 60 / 60 / 24);
-    $seconds -= $this->d * 86400;
-    $this->h = floor($seconds / 60 / 60);
-    $seconds -= $this->h * 3600;
-    $this->i = floor($seconds / 60);
-    $seconds -= $this->i * 60;
-    $this->s = $seconds;
+  public function addDays(float $days) {
+    $this->addHours(24 * $days);
     return $this;
   }
 
-  public function toSeconds(): int {
+  public function toSeconds(): float {
     return $this->seconds;
   }
 
@@ -122,33 +88,8 @@ class Duration {
     return $this->toSeconds() <=> $i->toSeconds();
   }
 
-  /**
-   * 
-   * 
-   * @param  string $time
-   * @return Interval new instance
-   */
-  public static function createFromDateString($time) {
-    $di = parent::createFromDateString($time);
-    return Intervals::FromDateInterval($di);
-  }
-
-  /**
-   * Constructor
-   * 
-   * @param string $interval an interval specification.
-   */
-  public static function fromTime(int $hours, int $minutes, int $seconds): Duration {
-    $seconds += $hours * 3600 + $minutes * 60;
-    return new Duration($seconds);
-  }
-
-  public static function fromString(string $time): Duration {
-    $parts = explode(':', $time);
-    if (count($parts) < 3) {
-      $parts = array_unshift($parts, 0);
-    }
-    return  Duration::fromTime($parts[0], $parts[1], $parts[2]);
+  public static function from($time): Duration {
+    return new static(Intervals::create($time)->toSeconds());
   }
 
 }
