@@ -42,6 +42,11 @@ class Duration {
     return $format;
   }
 
+  public function addFromString(string $time) {
+    $this->addSeconds(static::from($time)->toSeconds());
+    return $this;
+  }
+
   public function add(Duration $d) {
     $this->addSeconds($d->toSeconds());
     return $this;
@@ -53,12 +58,12 @@ class Duration {
   }
 
   public function addMinutes(float $minutes) {
-    $this->seconds += $minutes * 60;
+    $this->addSeconds($minutes * 60);
     return $this;
   }
 
   public function addHours(float $hours) {
-    $this->seconds += $hours * 60 * 60;
+    $this->addMinutes($hours * 60);
     return $this;
   }
 
