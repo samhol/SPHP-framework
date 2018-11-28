@@ -31,6 +31,7 @@ class DurationTest extends TestCase {
 
   public function intervalStrings(): array {
     $strings[] = ['PT86400S', 'P1D'];
+    $strings[] = ['24:00:05', 'P1DT5S'];
     return $strings;
   }
 

@@ -57,7 +57,7 @@ abstract class Intervals {
    * @return Interval new instance
    */
   public static function fromString(string $time): Interval {
-    if (Strings::match($time, "/^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$/")) {
+    if (Strings::match($time, "/^([0-9]+):([0-5][0-9])(:[0-5][0-9])?$/")) {
       $parts = explode(':', $time);
       $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
       //echo "$dateint\n";

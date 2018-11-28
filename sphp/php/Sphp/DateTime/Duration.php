@@ -48,7 +48,7 @@ class Duration {
   }
 
   /**
-   * Recalculates the values
+   * Creates an interval object representing the duraion
    * 
    * @return Interval created instance
    */

@@ -46,16 +46,27 @@ class TimedExerciseTest extends TestCase {
       $totalDuration->add($duration);
       $set = $exercise->addSet($setValues['duration']);
       $this->assertEquals($duration, $set->getDuration());
-     // $this->assertEquals("{$weight}kg x $reps reps", "$set");
+      // $this->assertEquals("{$weight}kg x $reps reps", "$set");
       $this->assertEquals(['duration' => "$duration"], $set->toArray());
       $this->assertEquals($totalDuration, $exercise->getTotalTime());
     }
     $this->assertCount(count($setData), $exercise);
     return $exercise;
   }
-  
-  public function testTraversingSets() {
-    
+
+  /**
+   * 
+   * @depends testAddSet
+   * @param TimedExercise $exercise
+   */
+  public function testTraversingSets(TimedExercise $exercise) {
+    $length = 0;
+    foreach ($exercise as $set) {
+      $this->assertInstanceof(\Sphp\DateTime\Calendars\Diaries\Sports\TimedSet::class, $set);
+      $length++;
+    }if ($length < $exercise->count()) {
+      $this->fail("fuck");
+    }
   }
 
 }
