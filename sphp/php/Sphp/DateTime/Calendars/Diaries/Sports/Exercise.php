@@ -11,6 +11,8 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use IteratorAggregate;
+use Traversable;
+use ArrayIterator;
 use Countable;
 
 /**
@@ -126,8 +128,8 @@ abstract class Exercise implements IteratorAggregate, Countable {
     return $arr;
   }
 
-  public function getIterator(): \Traversable {
-    return new \ArrayIterator(($this->sets));
+  public function getIterator(): Traversable {
+    return new ArrayIterator($this->sets);
   }
 
 }

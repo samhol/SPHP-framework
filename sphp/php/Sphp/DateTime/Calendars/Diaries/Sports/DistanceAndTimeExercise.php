@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use DateInterval;
-use Sphp\DateTime\Interval;
+use Sphp\DateTime\Duration;
 
 /**
  * Implements a distance and time exercise
@@ -39,9 +39,9 @@ class DistanceAndTimeExercise extends Exercise {
    * Adds a new exercise set
    * 
    * @param  float $distance the distance traveled
-   * @param  DateInterval|string $duration the duration of the exercise set
+   * @param  Duration|string $duration the duration of the exercise set
    * @param  string $unit
-   * @return DistanceAndTimeSet new instance
+   * @return DistanceAndTimeSet added set instance
    */
   public function addSet(float $distance, $duration, string $unit = 'km'): DistanceAndTimeSet {
     $set = new DistanceAndTimeSet($distance, $duration, $unit);
@@ -52,10 +52,10 @@ class DistanceAndTimeExercise extends Exercise {
   /**
    * Returns the total time used in the exercise 
    * 
-   * @return Interval the total time used in the exercise 
+   * @return Duration the total time used in the exercise 
    */
-  public function getTotalTime(): Interval {
-    $time = new Interval();
+  public function getTotalTime(): Duration {
+    $time = new Duration();
     foreach ($this as $set) {
       $time->add($set->getDuration());
     }

@@ -29,7 +29,7 @@ class FitNotes {
    * Parses exercises from FitNotes csv file 
    * 
    * @param  string $path path to FitNotes csv file
-   * @return DiaryInterface
+   * @return MutableDiary
    */
   public static function fromCsv(string $path): MutableDiary {
     $rawData = Parser::csv()->readFromFile($path); //print_r($rawData);

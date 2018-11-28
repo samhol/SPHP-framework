@@ -12,7 +12,7 @@ namespace Sphp\Tests\DateTime\Calendar\Diaries\Sports;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
-use Sphp\DateTime\Interval;
+use Sphp\DateTime\Duration;
 
 class TimedExerciseTest extends TestCase {
 
@@ -40,9 +40,9 @@ class TimedExerciseTest extends TestCase {
    */
   public function testAddSet(TimedExercise $exercise): TimedExercise {
     $setData = $this->sets();
-    $totalDuration = new Interval();
+    $totalDuration = new Duration();
     foreach ($setData as $setValues) {
-      $duration = new Interval($setValues['duration']);
+      $duration = Duration::from($setValues['duration']);
       $totalDuration->add($duration);
       $set = $exercise->addSet($setValues['duration']);
       $this->assertEquals($duration, $set->getDuration());

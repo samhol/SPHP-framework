@@ -24,7 +24,7 @@ class WeightLiftingExercise extends Exercise {
    * 
    * @param  float $weight
    * @param  int $reps
-   * @return WeightliftingSet new instance
+   * @return WeightliftingSet added set instance
    */
   public function addSet(float $weight, int $reps): WeightliftingSet {
     $set = new WeightliftingSet($weight, $reps);

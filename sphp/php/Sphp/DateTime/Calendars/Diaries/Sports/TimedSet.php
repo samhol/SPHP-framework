@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\DateTime\Interval;
-use Sphp\DateTime\Intervals;
+use Sphp\DateTime\Duration;
 
 /**
  * Implements timed exercise set
@@ -23,7 +23,7 @@ use Sphp\DateTime\Intervals;
 class TimedSet implements ExerciseSet {
 
   /**
-   * @var Interval
+   * @var Duration
    */
   private $duration;
 
@@ -34,7 +34,7 @@ class TimedSet implements ExerciseSet {
    */
   public function __construct($duration) {
     if (!$duration instanceof Interval) {
-      $duration = Intervals::create($duration);
+      $duration = Duration::from($duration);
     }
     $this->duration = $duration;
   }
@@ -48,14 +48,14 @@ class TimedSet implements ExerciseSet {
 
   public function __toString(): string {
     $item = [];
-    if ($this->duration->h > 0) {
-      $item[] = "{$this->duration->h} hours";
+    if ($this->duration->toHours() > 0) {
+      $item[] = "{$this->duration->getFullHours()} hours";
     }
-    if ($this->duration->i > 0) {
-      $item[] = "{$this->duration->i} minutes";
+    if ($this->duration->toMinutes() > 0) {
+      $item[] = "{$this->duration->toMinutes()} minutes";
     }
-    if ($this->duration->s > 0) {
-      $item[] = "{$this->duration->s} seconds";
+    if ($this->duration->toSeconds() > 0) {
+      $item[] = "{$this->duration->toSeconds()} seconds";
     }
     return \implode(' ', $item);
   }
@@ -63,9 +63,9 @@ class TimedSet implements ExerciseSet {
   /**
    * Returns the duration of the exercise set
    * 
-   * @return Interval the duration of the exercise set
+   * @return Duration the duration of the exercise set
    */
-  public function getDuration(): Interval {
+  public function getDuration(): Duration {
     return $this->duration;
   }
 

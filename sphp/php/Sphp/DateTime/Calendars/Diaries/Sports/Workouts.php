@@ -12,6 +12,8 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\DateTime\Calendars\Diaries\CalendarEntry;
 use IteratorAggregate;
+use Traversable;
+use ArrayIterator;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
 use Sphp\DateTime\Date;
@@ -106,7 +108,7 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * 
    * @param  string $name unique name of the exercise
    * @param  string|null $category optional exercise category
-   * @return WeightLiftingExercise the instance contained
+   * @return WeightLiftingExercise the instance set
    * @throws InvalidArgumentException
    */
   public function setWeightLiftingExercise(string $name, string $category = null): WeightLiftingExercise {
@@ -120,7 +122,7 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * 
    * @param  string $name unique name of the exercise
    * @param  string|null $category optional exercise category
-   * @return TimedExercise the instance contained
+   * @return TimedExercise the instance set
    * @throws InvalidArgumentException
    */
   public function setTimedExercise(string $name, string $category = null): TimedExercise {
@@ -134,7 +136,7 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * 
    * @param  string $name
    * @param  string|null $category optional exercise category
-   * @return DistanceAndTimeExercise the instance contained
+   * @return DistanceAndTimeExercise the instance set
    */
   public function setDistanceAndTimeExercise(string $name, string $category = null): DistanceAndTimeExercise {
     $e = new DistanceAndTimeExercise($name, $category);
@@ -150,8 +152,8 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
     return $this->date;
   }
 
-  public function getIterator(): \Traversable {
-    return new \ArrayIterator($this->exercises);
+  public function getIterator(): Traversable {
+    return new ArrayIterator($this->exercises);
   }
 
   public function count(): int {
