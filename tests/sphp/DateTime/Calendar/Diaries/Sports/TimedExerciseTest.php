@@ -53,5 +53,9 @@ class TimedExerciseTest extends TestCase {
     $this->assertCount(count($setData), $exercise);
     return $exercise;
   }
+  
+  public function testTraversingSets() {
+    
+  }
 
 }
