@@ -13,7 +13,7 @@ namespace Sphp\Tests\DateTime\Calendar\Diaries\Sports;
 use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedSet;
-use Sphp\DateTime\Duration;
+use Sphp\DateTime\ImmutableDuration;
 
 class TimedExerciseTest extends TestCase {
 
@@ -41,10 +41,10 @@ class TimedExerciseTest extends TestCase {
    */
   public function testAddSet(TimedExercise $exercise): TimedExercise {
     $setData = $this->sets();
-    $totalDuration = new Duration();
+    $totalDuration = new ImmutableDuration();
     foreach ($setData as $setValues) {
-      $duration = Duration::from($setValues['duration']);
-      $totalDuration->add($duration);
+      $duration = ImmutableDuration::from($setValues['duration']);
+      $totalDuration = $totalDuration->add($duration);
       $set = $exercise->addSet($setValues['duration']);
       $this->assertEquals($duration, $set->getDuration());
       // $this->assertEquals("{$weight}kg x $reps reps", "$set");
@@ -61,7 +61,7 @@ class TimedExerciseTest extends TestCase {
    */
   public function testTraversingSets(TimedExercise $exercise) {
     $length = 0;
-    $totalTime = new Duration();
+    $totalTime = new ImmutableDuration();
     foreach ($exercise as $set) {
       if (!$set instanceof TimedSet) {
         $this->fail('The Set is not  of' . TimedSet::class . '.');

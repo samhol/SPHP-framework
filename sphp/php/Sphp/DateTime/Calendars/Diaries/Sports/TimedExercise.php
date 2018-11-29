@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\Duration;
+use Sphp\DateTime\ImmutableDuration;
 
 /**
  * Implements a timed exercise like basketball
@@ -25,12 +25,12 @@ class TimedExercise extends Exercise {
   /**
    * Adds a new timed set to the exercise
    * 
-   * @param  Duration $duration the duration of the exercise set
+   * @param  ImmutableDuration $duration the duration of the exercise set
    * @return TimedSet new instance
    */
   public function addSet($duration) {
-    if (!$duration instanceof Duration) {
-      $duration = Duration::from($duration);
+    if (!$duration instanceof ImmutableDuration) {
+      $duration = ImmutableDuration::from($duration);
     }
     $set = new TimedSet($duration);
     $this->insertSet($set);
@@ -40,12 +40,12 @@ class TimedExercise extends Exercise {
   /**
    * Returns the total time used in the exercise 
    * 
-   * @return Duration the total time used in the exercise 
+   * @return ImmutableDuration the total time used in the exercise 
    */
-  public function getTotalTime(): Duration {
-    $time = new Duration();
+  public function getTotalTime(): ImmutableDuration {
+    $time = new ImmutableDuration();
     foreach ($this as $set) {
-      $time->add($set->getDuration());
+      $time = $time->add($set->getDuration());
     }
     return $time;
   }

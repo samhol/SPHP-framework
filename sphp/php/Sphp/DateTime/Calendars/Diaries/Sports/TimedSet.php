@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
 use Sphp\DateTime\Interval;
-use Sphp\DateTime\Duration;
+use Sphp\DateTime\ImmutableDuration;
 
 /**
  * Implements timed exercise set
@@ -23,16 +23,16 @@ use Sphp\DateTime\Duration;
 class TimedSet implements ExerciseSet {
 
   /**
-   * @var Duration
+   * @var ImmutableDuration
    */
   private $duration;
 
   /**
    * Constructor
    * 
-   * @param Duration $duration the duration of the exercise set
+   * @param ImmutableDuration $duration the duration of the exercise set
    */
-  public function __construct(Duration $duration) {
+  public function __construct(ImmutableDuration $duration) {
     $this->duration = $duration;
   }
 
@@ -44,15 +44,16 @@ class TimedSet implements ExerciseSet {
   }
 
   public function __toString(): string {
+    $interval = $this->getDuration()->toInterval();
     $item = [];
-    if ($this->duration->toHours() > 0) {
-      $item[] = "{$this->duration->getFullHours()} hours";
+    if ($interval->h > 0) {
+      $item[] = "{$interval->h} hours";
     }
-    if ($this->duration->toMinutes() > 0) {
-      $item[] = "{$this->duration->toMinutes()} minutes";
+    if ($interval->i > 0) {
+      $item[] = "{$interval->i} minutes";
     }
-    if ($this->duration->toSeconds() > 0) {
-      $item[] = "{$this->duration->toSeconds()} seconds";
+    if ($interval->s > 0) {
+      $item[] = "{$interval->s} seconds";
     }
     return \implode(' ', $item);
   }
@@ -60,9 +61,9 @@ class TimedSet implements ExerciseSet {
   /**
    * Returns the duration of the exercise set
    * 
-   * @return Duration the duration of the exercise set
+   * @return ImmutableDuration the duration of the exercise set
    */
-  public function getDuration(): Duration {
+  public function getDuration(): ImmutableDuration {
     return $this->duration;
   }
 
