@@ -12,6 +12,7 @@ namespace Sphp\Tests\DateTime\Calendar\Diaries\Sports;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\TimedSet;
 use Sphp\DateTime\Duration;
 
 class TimedExerciseTest extends TestCase {
@@ -55,18 +56,24 @@ class TimedExerciseTest extends TestCase {
   }
 
   /**
-   * 
    * @depends testAddSet
    * @param TimedExercise $exercise
    */
   public function testTraversingSets(TimedExercise $exercise) {
     $length = 0;
+    $totalTime = new Duration();
     foreach ($exercise as $set) {
-      $this->assertInstanceof(\Sphp\DateTime\Calendars\Diaries\Sports\TimedSet::class, $set);
+      if (!$set instanceof TimedSet) {
+        $this->fail('The Set is not  of' . TimedSet::class . '.');
+      }
+      //$this->assertInstanceof(TimedSet::class, $set);
+      $totalTime = $totalTime->add($set->getDuration());
       $length++;
-    }if ($length < $exercise->count()) {
-      $this->fail("fuck");
     }
+    if ($length < $exercise->count()) {
+      $this->fail('Invalid number of sets in the exercise');
+    }
+    $this->assertEquals($exercise->getTotalTime()->toSeconds(), $totalTime->toSeconds());
   }
 
 }

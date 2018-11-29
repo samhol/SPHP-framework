@@ -10,15 +10,6 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\Ol;
-use Sphp\Html\Tags;
-use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
-use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
-use Sphp\Html\Content;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Container;
-
 /**
  * Implements pane builder for timed exercises
  *
@@ -28,6 +19,5 @@ use Sphp\Html\Container;
  * @filesource
  */
 class TimedExercisePaneBuilder extends AbstractWorkoutPaneBuilder {
-
-
+  
 }

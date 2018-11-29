@@ -10,7 +10,6 @@ class RemoteResourceTest extends \PHPUnit\Framework\TestCase {
   public function remoteMimes(): array {
     $url[] = ['irc://irc.example.com/channel', ''];
     $url[] = ['http://www.example.com', 'text/html; charset=UTF-8'];
-    $url[] = ['http://data.samiholck.com/images/S-logo.png', 'image/png'];
     return $url;
   }
 

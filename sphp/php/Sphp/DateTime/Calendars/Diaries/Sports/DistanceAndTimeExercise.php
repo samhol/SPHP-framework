@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use DateInterval;
 use Sphp\DateTime\Duration;
 
 /**
@@ -44,6 +43,9 @@ class DistanceAndTimeExercise extends Exercise {
    * @return DistanceAndTimeSet added set instance
    */
   public function addSet(float $distance, $duration, string $unit = 'km'): DistanceAndTimeSet {
+    if (!$duration instanceof Duration) {
+      $duration = Duration::from($duration);
+    }
     $set = new DistanceAndTimeSet($distance, $duration, $unit);
     $this->insertSet($set);
     return $set;

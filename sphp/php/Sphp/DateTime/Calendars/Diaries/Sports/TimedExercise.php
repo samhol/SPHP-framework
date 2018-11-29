@@ -25,11 +25,14 @@ class TimedExercise extends Exercise {
   /**
    * Adds a new timed set to the exercise
    * 
-   * @param  Duration|string $time the duration of the exercise set
+   * @param  Duration $duration the duration of the exercise set
    * @return TimedSet new instance
    */
-  public function addSet($time) {
-    $set = new TimedSet($time);
+  public function addSet($duration) {
+    if (!$duration instanceof Duration) {
+      $duration = Duration::from($duration);
+    }
+    $set = new TimedSet($duration);
     $this->insertSet($set);
     return $set;
   }

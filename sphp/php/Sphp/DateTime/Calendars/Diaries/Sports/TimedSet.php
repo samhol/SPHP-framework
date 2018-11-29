@@ -30,12 +30,9 @@ class TimedSet implements ExerciseSet {
   /**
    * Constructor
    * 
-   * @param Interval|string $duration the duration of the exercise set
+   * @param Duration $duration the duration of the exercise set
    */
-  public function __construct($duration) {
-    if (!$duration instanceof Interval) {
-      $duration = Duration::from($duration);
-    }
+  public function __construct(Duration $duration) {
     $this->duration = $duration;
   }
 

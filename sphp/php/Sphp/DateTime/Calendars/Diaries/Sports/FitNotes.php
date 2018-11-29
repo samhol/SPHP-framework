@@ -13,7 +13,6 @@ namespace Sphp\DateTime\Calendars\Diaries\Sports;
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\Diaries\MutableDiary;
-use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
 /**
  * Implements a factory for Diary creation from FitNotes application data
