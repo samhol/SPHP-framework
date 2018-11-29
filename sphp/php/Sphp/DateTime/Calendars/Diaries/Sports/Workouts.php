@@ -20,7 +20,7 @@ use Sphp\DateTime\Date;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements a workout log for a diary
+ * Implements a workout entry for a diary
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
