@@ -88,6 +88,11 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
     return $this;
   }
 
+  /**
+   * 
+   * @param  string $name
+   * @return Exercise
+   */
   public function getExercise(string $name): Exercise {
     return $this->exercises[$name];
   }
