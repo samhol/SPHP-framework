@@ -95,12 +95,11 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
   /**
    * Checks if the log contains given exercise
    *
-   * @param  Exercise $exercise exercise to search for
+   * @param  string $name exercise to search for
    * @return boolean true if the exercise exists and false otherwise
    */
-  public function containsExercise(Exercise $exercise): bool {
-    $name = $exercise->getName();
-    return array_key_exists($name, $this->exercises) && $exercise == $this->exercises[$name];
+  public function containsExercise(string $name): bool {
+    return array_key_exists($name, $this->exercises);
   }
 
   /**
@@ -112,35 +111,56 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * @throws InvalidArgumentException
    */
   public function setWeightLiftingExercise(string $name, string $category = null): WeightLiftingExercise {
-    $e = new WeightLiftingExercise($name, $category);
-    $this->setExercise($e);
+    if ($this->containsExercise($name)) {
+      $e = $this->getExercise($name);
+      if (!$e instanceof WeightLiftingExercise) {
+        throw new InvalidArgumentException;
+      }
+    } else {
+      $e = new WeightLiftingExercise($name, $category);
+      $this->setExercise($e);
+    }
     return $e;
   }
 
   /**
    * Sets a timed exercise if not present and returns the exercise instance
    * 
-   * @param  string $name unique name of the exercise
+   * @param  string $name the unique name of the exercise
    * @param  string|null $category optional exercise category
    * @return TimedExercise the instance set
    * @throws InvalidArgumentException
    */
   public function setTimedExercise(string $name, string $category = null): TimedExercise {
-    $e = new TimedExercise($name, $category);
-    $this->setExercise($e);
+    if ($this->containsExercise($name)) {
+      $e = $this->getExercise($name);
+      if (!$e instanceof TimedExercise) {
+        throw new InvalidArgumentException;
+      }
+    } else {
+      $e = new TimedExercise($name, $category);
+      $this->setExercise($e);
+    }
     return $e;
   }
 
   /**
    * Sets a distance and time exercise if not present and returns the exercise instance
    * 
-   * @param  string $name
+   * @param  string $name the unique name of the exercise
    * @param  string|null $category optional exercise category
    * @return DistanceAndTimeExercise the instance set
    */
   public function setDistanceAndTimeExercise(string $name, string $category = null): DistanceAndTimeExercise {
-    $e = new DistanceAndTimeExercise($name, $category);
-    $this->setExercise($e);
+    if ($this->containsExercise($name)) {
+      $e = $this->getExercise($name);
+      if (!$e instanceof DistanceAndTimeExercise) {
+        throw new InvalidArgumentException;
+      }
+    } else {
+      $e = new DistanceAndTimeExercise($name, $category);
+      $this->setExercise($e);
+    }
     return $e;
   }
 

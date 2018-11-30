@@ -85,6 +85,7 @@ abstract class AbstractWorkoutPaneBuilder {
     $container = new PlainContainer;
     if ($exercise->count() > 0) {
       if ($exercise->count() > 1) {
+        $container->appendMd('###### Sets:');
         $container->append($this->buildSetList($exercise));
       }
       $container->append($this->totalsToHtml($exercise));
