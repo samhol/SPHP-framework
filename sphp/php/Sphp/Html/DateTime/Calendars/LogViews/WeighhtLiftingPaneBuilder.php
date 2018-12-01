@@ -10,7 +10,8 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Lists\Dl;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\Flow\Section;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 
 /**
@@ -24,10 +25,14 @@ use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
   public function totalsToHtml(Exercise $exercise): string {
-    $del = new Dl;
-    $del->appendTerm('Totals:')->addCssClass('strong');
-    $del->appendDescription('<strong>reps:</strong> ' . $exercise->getTotalReps() . ',<strong>weight:</strong> ' . $exercise->getTotalWeight() . ' kg');
-    return "$del";
+    $section = new Section();
+    $section->appendH6('Totals:');
+    $section->addCssClass('exercise-totals');
+    $list = new Ul();
+    $list->append('<strong>reps:</strong> ' . $exercise->getTotalReps());
+    $list->append('<strong>weight:</strong>' . $exercise->getTotalWeight() . 'kg');
+    $section->append($list);
+    return "$section";
   }
 
 }
