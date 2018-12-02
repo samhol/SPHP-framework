@@ -10,7 +10,7 @@
   .sphp-date-info {
     border: 2px solid #666;
     @include border-radius(3px);
-    section {
+    > section {
       margin: 1px;
       padding:  rem-calc(3 1);
       border: 1px solid #ccc;
