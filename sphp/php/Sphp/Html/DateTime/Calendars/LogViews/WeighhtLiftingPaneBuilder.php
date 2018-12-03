@@ -13,6 +13,7 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Flow\Section;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 
 /**
  * Implements pane builder for weightlifting exercises
@@ -24,13 +25,21 @@ use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
  */
 class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
+  public function setToHtml(ExerciseSet $set): string {
+    $output = '';
+    if ($set instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet) {
+      $output .= $set->getReps() . ' &times; ' . $set->getRepWeight() . 'kg <span class="total">Total weight: ' . $set->getTotalWeight() . 'kg</span>';
+    }
+    return $output;
+  }
+
   public function totalsToHtml(Exercise $exercise): string {
     $section = new Section();
     $section->appendH6('Totals:');
     $section->addCssClass('exercise-totals');
     $list = new Ul();
     $list->append('<strong>reps:</strong> ' . $exercise->getTotalReps());
-    $list->append('<strong>weight:</strong>' . $exercise->getTotalWeight() . 'kg');
+    $list->append('<strong>weight:</strong> ' . $exercise->getTotalWeight() . 'kg');
     $section->append($list);
     return "$section";
   }

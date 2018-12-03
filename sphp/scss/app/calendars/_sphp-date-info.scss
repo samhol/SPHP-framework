@@ -32,7 +32,25 @@
       &.workouts {
         border: 1px solid #ccc;
         .accordion-content {
-
+          h6 {
+            font-size: rem-calc(18);
+            font-weight: 600;
+          }
+          ol {
+            list-style: none;
+            counter-reset: exercise-set-counter;
+          }
+          ol li {
+            counter-increment: exercise-set-counter;
+          }
+          ol li::before {
+            content: counter(exercise-set-counter) ". ";
+            color: black;
+            font-weight: 600;
+            font-family: $font-family-monospace;
+            font-size: rem-calc(16);
+            margin-right: rem-calc(5);
+          }
           ul {
             list-style: none;
           }
