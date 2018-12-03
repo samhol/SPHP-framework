@@ -39,7 +39,7 @@ class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
     $section->addCssClass('exercise-totals');
     $list = new Ul();
     $list->append('<strong>reps:</strong> ' . $exercise->getTotalReps());
-    $list->append('<strong>weight:</strong> ' . $exercise->getTotalWeight() . 'kg');
+    $list->append('<strong>weight:</strong> ' . $exercise->getTotalWeight() . '<span class="metric-unit">kg</span>');
     $section->append($list);
     return "$section";
   }

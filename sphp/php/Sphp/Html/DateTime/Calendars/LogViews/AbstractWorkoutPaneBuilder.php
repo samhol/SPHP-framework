@@ -11,13 +11,11 @@
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Container;
-use Sphp\Html\PlainContainer;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 use Sphp\Html\Tags;
-use Sphp\Html\Lists\StandardList;
-use Sphp\Html\Lists\Ul;
+use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
 
 /**
@@ -51,20 +49,10 @@ abstract class AbstractWorkoutPaneBuilder {
    */
   public function buildTitleContent(Exercise $exercise): Container {
     $title = Tags::span($exercise->getName());
-    $title->append(Tags::small(" ({$exercise->getDescription()})"));
+    if ($exercise->getDescription() !== '') {
+      $title->append(Tags::small(" ({$exercise->getDescription()})"));
+    }
     return $title;
-  }
-
-  public function buildSetList(Exercise $exercise): StandardList {
-    if ($exercise->count() === 1) {
-      $list = new Ul();
-    } else {
-      $list = new Ol();
-    }
-    foreach ($exercise as $set) {
-      $list->append($this->setToHtml($set));
-    }
-    return $list;
   }
 
   public function setToHtml(ExerciseSet $set): string {
@@ -82,11 +70,15 @@ abstract class AbstractWorkoutPaneBuilder {
    * @return Container exercise pane content
    */
   public function buildContent(Exercise $exercise): Container {
-    $container = new PlainContainer;
+    $container = new Section();
     if ($exercise->count() > 0) {
-      if ($exercise->count() > 1) {
-        $container->appendMd('###### Sets:');
-        $container->append($this->buildSetList($exercise));
+      if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
+        $container->appendH6('Sets:');
+        $list = new Ol();
+        foreach ($exercise as $set) {
+          $list->append($this->setToHtml($set));
+        }
+        $container->append($list);
       }
       $container->append($this->totalsToHtml($exercise));
     }

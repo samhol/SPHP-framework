@@ -105,7 +105,7 @@ class Holiday extends AbstractLog implements HolidayInterface {
   }
 
   public function isFlagDay(): bool {
-    return $this->flagDay !== null;
+    return $this->flagDay !== false;
   }
 
   public function isNationalHoliday(): bool {

@@ -36,6 +36,9 @@
             font-size: rem-calc(18);
             font-weight: 700;
           }
+          .metric-unit {
+            font-family: $font-family-monospace;
+          }
           ol {
             list-style: none;
             counter-reset: exercise-set-counter;
