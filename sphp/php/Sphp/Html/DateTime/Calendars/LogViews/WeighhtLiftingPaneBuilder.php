@@ -30,7 +30,8 @@ class WeighhtLiftingPaneBuilder extends WorkoutPaneBuilder {
   public function setToHtml(ExerciseSet $set): string {
     $output = '';
     if ($set instanceof WeightliftingSet) {
-      $output .= '<span class="metric-unit">'. $set->getReps() . ' &times; ' . $set->getRepWeight() . 'kg</span>, <span class="total">total weight:</span> <span class="metric-unit">' . $set->getTotalWeight() . 'kg</span>';
+      $output .= '<span class="metric-unit">' . $set->getReps() . ' &times; ' . $set->getRepWeight() . 'kg</span>, ';
+      $output .= '<span class="total">total weight:</span> <span class="metric-unit">' . $set->getTotalWeight() . 'kg</span>';
     }
     return $output;
   }
@@ -38,7 +39,7 @@ class WeighhtLiftingPaneBuilder extends WorkoutPaneBuilder {
   public function totalsToHtml(Exercise $exercise): string {
     $section = new PlainContainer();
     $list = new Ul();
-    $list->append('<strong>reps:</strong> <span class="metric-unit">' . $exercise->getTotalReps(). '</span>');
+    $list->append('<strong>reps:</strong> <span class="metric-unit">' . $exercise->getTotalReps() . '</span>');
     $list->append('<strong>weight:</strong> <span class="metric-unit">' . $exercise->getTotalWeight() . 'kg</span>');
     $section->append($list);
     return "$section";
