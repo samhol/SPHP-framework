@@ -10,8 +10,11 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Lists\Dl;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
+use Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise;
+use Sphp\Html\PlainContainer;
+use Sphp\Html\Lists\Ul;
+use Sphp\DateTime\Duration;
 
 /**
  * Implements pane builder for distance and time exercises
@@ -21,13 +24,34 @@ use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DistanceAndTimePaneBuilder extends AbstractWorkoutPaneBuilder {
+class DistanceAndTimePaneBuilder extends WorkoutPaneBuilder {
 
   public function totalsToHtml(Exercise $exercise): string {
-    $container = new Dl;
-    $container->appendTerm('Totals:')->addCssClass('strong');
-    $container->appendDescription("<strong>Distance:</strong>" . $exercise->getTotalDistance() . "km, <strong>average speed:</strong> " . $exercise->getAverageSpeed() . "km/h");
-    return "$container";
+    if (!$exercise instanceof DistanceAndTimeExercise) {
+      throw new \Sphp\Exceptions\InvalidArgumentException;
+    }
+    $section = new PlainContainer();
+    $list = new Ul();
+    $list->append('<strong>distance:</strong> ' . $exercise->getTotalDistance() . 'km');
+    $list->append('<strong>time:</strong> ' . $this->durationtoString($exercise->getTotalTime()) . '<span class="metric-unit"></span>');
+    $list->append('<strong>average speed:</strong> ' . $exercise->getAverageSpeed() . '<span class="metric-unit">km/h</span>');
+    $section->append($list);
+    return "$section";
+  }
+
+  public function durationtoString(Duration $duration): string {
+    $interval = $duration->toInterval();
+    $item = [];
+    if ($interval->h > 0) {
+      $item[] = "{$interval->h} hours";
+    }
+    if ($interval->i > 0) {
+      $item[] = "{$interval->i} minutes";
+    }
+    if ($interval->s > 0) {
+      $item[] = "{$interval->s} seconds";
+    }
+    return \implode(' ', $item);
   }
 
 }

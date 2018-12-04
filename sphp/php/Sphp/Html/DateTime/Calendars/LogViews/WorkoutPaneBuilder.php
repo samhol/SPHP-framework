@@ -14,6 +14,7 @@ use Sphp\Html\Container;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
+use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\Html\Tags;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
@@ -26,7 +27,7 @@ use Sphp\Html\Lists\Ol;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-abstract class AbstractWorkoutPaneBuilder {
+class WorkoutPaneBuilder {
 
   /**
    * Builds exercise pane
@@ -72,15 +73,16 @@ abstract class AbstractWorkoutPaneBuilder {
   public function buildContent(Exercise $exercise): Container {
     $container = new Section();
     if ($exercise->count() > 0) {
-      if ($exercise instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {
+      if ($exercise instanceof WeightLiftingExercise || $exercise->count() > 1) {
         $container->appendH6('Sets:');
         $list = new Ol();
         foreach ($exercise as $set) {
           $list->append($this->setToHtml($set));
         }
         $container->append($list);
+        $container->append('<hr>');
       }
-      $container->append('<hr>');
+      $container->appendH6('Totals:');
       $container->append($this->totalsToHtml($exercise));
     }
     return $container;

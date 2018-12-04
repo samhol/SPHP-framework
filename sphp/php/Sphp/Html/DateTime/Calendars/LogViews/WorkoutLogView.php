@@ -51,7 +51,7 @@ class WorkoutLogView {
   /**
    * Builds a Foundation based accordion component containing the example
    * 
-   * @param Workouts $workouts
+   * @param  Workouts $workouts
    * @return Accordion a Foundation based accordion component containing the example
    */
   public function buildAccordion(Workouts $workouts): Accordion {
@@ -60,6 +60,7 @@ class WorkoutLogView {
     $doer = new WeighhtLiftingPaneBuilder();
     $doer1 = new DistanceAndTimePaneBuilder();
     $doer2 = new TimedExercisePaneBuilder();
+    $doer3 = new WorkoutPaneBuilder();
     foreach ($workouts as $exercise) {
       if ($exercise instanceof WeightLiftingExercise) {
         $accordion->append($doer->buildPane($exercise));
@@ -68,33 +69,10 @@ class WorkoutLogView {
       } else if ($exercise instanceof TimedExercise) {
         $accordion->append($doer2->buildPane($exercise));
       } else {
-        $accordion->append($this->buildPane($exercise));
+        $accordion->append($doer3->buildPane($exercise));
       }
     }
     return $accordion;
-  }
-
-  private function buildPane(Exercise $exercise): Pane {
-    $pane = new Pane($this->createPaneTitle($exercise));
-    if ($exercise->count() === 1) {
-      $list = new Ul();
-    } else {
-      $list = new Ol();
-    }
-    foreach ($exercise as $set) {
-      $list->append($set);
-    }
-    $pane->append($list);
-    return $pane;
-  }
-
-  private function createPaneTitle(Exercise $exercise): \Sphp\Html\Span {
-    $title = Tags::span($exercise->getName());
-    $title->append(Tags::small(" ({$exercise->getDescription()})"));
-    if ($exercise instanceof WeightLiftingExercise) {
-      $title->append($exercise->getTotalWeight());
-    }
-    return $title;
   }
 
   /**

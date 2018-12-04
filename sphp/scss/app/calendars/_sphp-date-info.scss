@@ -10,14 +10,16 @@
   .sphp-date-info {
     border: 2px solid #666;
     @include border-radius(3px);
+    padding: rem-calc(8 5 10 5);
     > section {
       margin: 1px;
       padding:  rem-calc(3 1);
       border: 1px solid #ccc;
       @include border-radius(3px);
-      .heading {
+      h3.heading {
         font-size: rem-calc(19);
         padding:   rem-calc(3 5);
+        font-weight: 700; 
       }
       .accordion-title {
         span {
@@ -37,6 +39,7 @@
             font-weight: 700; 
           }
           .metric-unit {
+            font-size: rem-calc(13);
             font-family: $font-family-monospace;
             font-weight: 600; 
           }

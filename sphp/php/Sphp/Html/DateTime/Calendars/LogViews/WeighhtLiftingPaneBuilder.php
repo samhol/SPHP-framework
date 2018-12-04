@@ -12,6 +12,7 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Flow\Section;
+use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet;
@@ -24,23 +25,21 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
+class WeighhtLiftingPaneBuilder extends WorkoutPaneBuilder {
 
   public function setToHtml(ExerciseSet $set): string {
     $output = '';
     if ($set instanceof WeightliftingSet) {
-      $output .= $set->getReps() . ' &times; ' . $set->getRepWeight() . '<span class="metric-unit">kg</span> <span class="total">Total weight: ' . $set->getTotalWeight() . 'kg</span>';
+      $output .= '<span class="metric-unit">'. $set->getReps() . ' &times; ' . $set->getRepWeight() . 'kg</span>, <span class="total">total weight:</span> <span class="metric-unit">' . $set->getTotalWeight() . 'kg</span>';
     }
     return $output;
   }
 
   public function totalsToHtml(Exercise $exercise): string {
-    $section = new Section();
-    $section->appendH6('Totals:');
-    $section->addCssClass('exercise-totals');
+    $section = new PlainContainer();
     $list = new Ul();
-    $list->append('<strong>reps:</strong> ' . $exercise->getTotalReps());
-    $list->append('<strong>weight:</strong> ' . $exercise->getTotalWeight() . '<span class="metric-unit">kg</span>');
+    $list->append('<strong>reps:</strong> <span class="metric-unit">' . $exercise->getTotalReps(). '</span>');
+    $list->append('<strong>weight:</strong> <span class="metric-unit">' . $exercise->getTotalWeight() . 'kg</span>');
     $section->append($list);
     return "$section";
   }
