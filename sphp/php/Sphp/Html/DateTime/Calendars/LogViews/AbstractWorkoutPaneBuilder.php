@@ -80,6 +80,7 @@ abstract class AbstractWorkoutPaneBuilder {
         }
         $container->append($list);
       }
+      $container->append('<hr>');
       $container->append($this->totalsToHtml($exercise));
     }
     return $container;

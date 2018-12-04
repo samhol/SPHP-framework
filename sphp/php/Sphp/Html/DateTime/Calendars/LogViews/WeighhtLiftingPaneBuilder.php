@@ -14,6 +14,7 @@ use Sphp\Html\Lists\Ul;
 use Sphp\Html\Flow\Section;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
+use Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet;
 
 /**
  * Implements pane builder for weightlifting exercises
@@ -27,8 +28,8 @@ class WeighhtLiftingPaneBuilder extends AbstractWorkoutPaneBuilder {
 
   public function setToHtml(ExerciseSet $set): string {
     $output = '';
-    if ($set instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightliftingSet) {
-      $output .= $set->getReps() . ' &times; ' . $set->getRepWeight() . 'kg <span class="total">Total weight: ' . $set->getTotalWeight() . 'kg</span>';
+    if ($set instanceof WeightliftingSet) {
+      $output .= $set->getReps() . ' &times; ' . $set->getRepWeight() . '<span class="metric-unit">kg</span> <span class="total">Total weight: ' . $set->getTotalWeight() . 'kg</span>';
     }
     return $output;
   }
