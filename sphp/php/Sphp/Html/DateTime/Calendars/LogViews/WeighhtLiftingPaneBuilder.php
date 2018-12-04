@@ -11,7 +11,6 @@
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Flow\Section;
 use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
