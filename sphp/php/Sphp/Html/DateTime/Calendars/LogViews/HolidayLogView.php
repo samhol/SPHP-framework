@@ -13,7 +13,7 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
-use Sphp\Html\Flow\Section;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Ul;
 
 /**
@@ -37,12 +37,12 @@ class HolidayLogView {
   /**
    * Creates a section containing holidays (not birthdays)
    * 
-   * @return Section new instance
+   * @return PlainContainer new instance
    */
-  public function buildSection(DiaryDate $date): Section {
-    $section = new Section();
-    $section->addCssClass('holidays');
-    $section->appendH3('Holidays');
+  public function buildSection(DiaryDate $date): PlainContainer {
+    $section = new PlainContainer();
+    //$section->addCssClass('holidays');
+    //$section->appendH3('Holidays');
     $days = new Ul();
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
       $holidayText = $holiday;

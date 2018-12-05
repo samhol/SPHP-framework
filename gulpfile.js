@@ -31,6 +31,13 @@ function copy_fonts() {
           .src(['./node_modules/slick-carousel/slick/fonts/*'])
           .pipe(gulp.dest('sphp/css/fonts'));
 }
+
+
+function copy_img() {
+  return gulp
+          .src(['./node_modules/slick-carousel/slick/ajax-loader.gif'])
+          .pipe(gulp.dest('sphp/css/images/ajax-loader.gif'));
+}
 function build_ss360() {
   return gulp.src([
     './sphp/javascript/app/ss360/*.js'
@@ -53,7 +60,7 @@ function doc(cb) {
 
 build = gulp.series(build_js, build_ss360);
 build_docs = gulp.series(build, doc);
-copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts);
+copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts, copy_img);
 
 gulp.task('build', build);
 gulp.task('default', build);

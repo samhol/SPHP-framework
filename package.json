@@ -7,13 +7,16 @@
   "main": "index.js",
   "license": "ISC",
   "dependencies": {
+    "audit": "0.0.6",
     "clipboard-polyfill": "^2.7.0",
+    "fix": "0.0.6",
     "foundation-sites": ">=6.5.0",
     "ion-rangeslider": ">=2.1.7",
     "jquery": ">=3.2.1",
     "lazyloadxt": ">=1.1.0",
     "npm": ">=6.4.1",
-    "slick-carousel": ">=1.8.1"
+    "slick-carousel": ">=1.8.1",
+    "svg-country-flags": "^1.2.6"
   },
   "devDependencies": {
     "gulp": ">=4.0.0",
