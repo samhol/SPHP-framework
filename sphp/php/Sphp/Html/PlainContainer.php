@@ -71,7 +71,6 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
     foreach ($content as $cont) {
       $this->components[] = $cont;
     }
-
     return $this;
   }
 
