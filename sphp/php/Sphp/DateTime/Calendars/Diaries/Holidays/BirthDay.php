@@ -13,6 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Annual;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
+use Sphp\DateTime\Date;
 
 /**
  * Implements a BirthDay log object for a Diary
@@ -57,6 +58,10 @@ class BirthDay extends Holiday {
 
   public function getDay(): int {
     return $this->day;
+  }
+
+  public function getDate(): Date {
+    return new Date("$this->year-$this->month-$this->day");
   }
 
 }
