@@ -62,7 +62,7 @@ class Address extends AbstractDataObject implements GeographicalAddress {
     return $this;
   }
 
-  public function getZipcode() {
+  public function getZipcode(): string {
     return (string) $this->zipcode;
   }
 
@@ -77,7 +77,7 @@ class Address extends AbstractDataObject implements GeographicalAddress {
     return $this;
   }
 
-  public function getCity() {
+  public function getCity(): string {
     return (string) $this->city;
   }
 
@@ -92,7 +92,7 @@ class Address extends AbstractDataObject implements GeographicalAddress {
     return $this;
   }
 
-  public function getCountry() {
+  public function getCountry(): string {
     return (string) $this->country;
   }
 
@@ -155,16 +155,16 @@ class Address extends AbstractDataObject implements GeographicalAddress {
    */
   public function __toString(): string {
     $output = '';
-    if (!Strings::isEmpty($this->street)) {
+    if ($this->street != '' && !Strings::isEmpty($this->street)) {
       $output .= $this->street;
     }
-    if (!Strings::isEmpty($this->zipcode)) {
+    if ($this->zipcode != '' && !Strings::isEmpty($this->zipcode)) {
       $output .= ", $this->zipcode";
     }
-    if (!Strings::isEmpty($this->city)) {
+    if ($this->city != '' && !Strings::isEmpty($this->city)) {
       $output .= " $this->city";
     }
-    if (!Strings::isEmpty($this->country)) {
+    if ($this->country != '' && !Strings::isEmpty($this->country)) {
       $output .= ", $this->country";
     }
     return $output;

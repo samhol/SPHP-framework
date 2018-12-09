@@ -13,7 +13,8 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Annual;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\DateInterface;
+use Sphp\Data\Person;
 
 /**
  * Implements a BirthDay log object for a Diary
@@ -29,39 +30,33 @@ class BirthDay extends Holiday {
    * @var int
    */
   private $year, $month, $day;
+  private $dateOfDeath;
+
+  /**
+   * @var Person
+   */
+  private $person;
 
   /**
    * Constructor
    * 
-   * @param int $year the year of birth
-   * @param int $month the month of birth
-   * @param int $day the day of birth
-   * @param string|null $name name of the person
+   * @param Person $person
    */
-  public function __construct(int $year, int $month, int $day, string $name) {
+  public function __construct(Person $person) {
+    $this->person = $person;
+    if($this->person->getDateOfBirth() === null) {
+      throw new \Sphp\Exceptions\InvalidArgumentException('Person must have date of birth');
+    }
     $constraints = new Constraints();
-    $constraints->dateIs(new Annual($month, $day));
-    $constraints->dateIsNot(new Before("$year-$month-$day"));
-    parent::__construct($constraints, $name);
-    $this->year = $year;
-    $this->month = $month;
-    $this->day = $day;
+    $constraints->dateIs(new Annual($this->person->getDateOfBirth()->getMonth(), $this->person->getDateOfBirth()->getMonthDay()));
+    $constraints->dateIsNot(new Before($this->person->getDateOfBirth()->format('Y-m-d')));
+    parent::__construct($constraints, $person->getFname());
+
+    //$this->dateOfDeath = $dateOfDeath;
   }
 
-  public function getYear(): int {
-    return $this->year;
-  }
-
-  public function getMonth(): int {
-    return $this->month;
-  }
-
-  public function getDay(): int {
-    return $this->day;
-  }
-
-  public function getDate(): Date {
-    return new Date("$this->year-$this->month-$this->day");
+  public function getDate(): DateInterface {
+    return $this->person->getDateOfBirth();
   }
 
 }

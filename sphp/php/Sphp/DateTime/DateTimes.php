@@ -35,6 +35,9 @@ abstract class DateTimes {
     if ($input === null) {
       $input = 'now';
     }
+    if ($input instanceof DateTimeImmutable) {
+      return $input;
+    }
     if (is_string($input)) {
       try {
         return new DateTimeImmutable($input);

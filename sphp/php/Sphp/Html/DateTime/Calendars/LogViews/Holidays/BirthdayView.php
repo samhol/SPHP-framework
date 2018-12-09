@@ -15,7 +15,9 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\Content;
 
+use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 /**
  * Description of BirthdayView
  *
@@ -23,7 +25,9 @@ use Sphp\Html\Lists\Ul;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BirthdayView {
+class BirthdayView implements Content {
+
+  use \Sphp\Html\ContentTrait;
 
   /**
    * @var BirthDay 
@@ -45,23 +49,27 @@ class BirthdayView {
    */
   public function build(): string {
     $curr = new \Sphp\DateTime\Date;
-    $date = $this->birthday->getDay();
+    $date = $this->birthday->getDate();
     $output = "Birthday of {$this->birthday->getName()}";
-    $year = $curr->getYear();
-    $age = $year - $date->getYear();
+    $year = $date->getYear();
+    $age = $curr->getYear() - $year;
     if ($age === 0) {
       $output .= " (was born this day)";
     } else {
       $output .= " (was born $age years ago)";
     }
     //$output .= $this->getDate()->format('l, Y-m-d');
-    if ($date->isNationalHoliday()) {
+    if ($this->birthday->isNationalHoliday()) {
       $output .= " (national holiday)";
     }
-    if ($date->isFlagDay()) {
+    if ($this->birthday->isFlagDay()) {
       $output .= ViewFactory::flag('finland');
     }
     return $output;
+  }
+
+  public function getHtml(): string {
+    return "{$this->build()}";
   }
 
 }

@@ -64,14 +64,19 @@ class Holidays {
   /**
    * Creates a new birthday instance
    * 
-   * @param  int $yearOfBirth
-   * @param  int $month the month
-   * @param  int $day the day of the month
+   * @param   string $dob
    * @param  string $name
    * @return BirthDay new instance
    */
-  public static function birthday(int $yearOfBirth, int $month, int $day, string $name): BirthDay {
-    return new BirthDay($yearOfBirth, $month, $day, $name);
+  public static function birthday(string $dob, string $name): BirthDay {
+    $person = new \Sphp\Data\Person();
+    $person->setDateOfBirth($dob);
+    $parts = explode(',', $name);
+    var_dump($parts);
+    $fname = $parts[0];
+    $person->setFname($fname);
+    $person->setLname($parts[1]);
+    return new BirthDay($person);
   }
 
   /**

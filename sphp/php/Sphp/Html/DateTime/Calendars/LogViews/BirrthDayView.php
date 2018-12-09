@@ -12,6 +12,7 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\Flow\Section;
+use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 
 /**
  * Implements a holiday log viewer

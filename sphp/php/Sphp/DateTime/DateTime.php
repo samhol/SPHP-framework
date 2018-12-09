@@ -100,6 +100,19 @@ class DateTime extends AbstractDate implements DateTimeInterface {
   }
 
   /**
+   * Returns the difference between two objects
+   * 
+   * @param  mixed $date The date to compare to
+   * @param  bool $absolute Should the interval be forced to be positive?
+   * @return Interval An instance representing the difference between the two dates
+   */
+  public function diff($date, bool $absolute = false): Interval {
+    $other = DateTimes::dateTimeImmutable($date);
+    $diff = $this->getDateTime()->diff($other, $absolute);
+    return Intervals::fromDateInterval($diff);
+  }
+
+  /**
    * Returns the Unix timestamp
    * 
    * @return int the Unix timestamp

@@ -11,8 +11,8 @@
 namespace Sphp\Data;
 
 use DateTimeInterface;
-use DateTime;
 use Sphp\Data\Address;
+use Sphp\DateTime\DateTime;
 
 /**
  * Implements a person data object
@@ -21,7 +21,7 @@ use Sphp\Data\Address;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Person extends AbstractDataObject {
+class Person {
 
   /**
    * The first name of the user
@@ -45,6 +45,13 @@ class Person extends AbstractDataObject {
   private $dob;
 
   /**
+   * The last name of the user
+   * 
+   * @var DateTimeInterface|null
+   */
+  private $dod;
+
+  /**
    * The geographical address of the user
    * 
    * @var Address|null
@@ -64,12 +71,28 @@ class Person extends AbstractDataObject {
   private $phonenumber;
 
   /**
+   * Constructor
+   * 
+   * @param array|null $data optional data
+   */
+  public function __construct() {
+    $this->address = new Address;
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->address);
+  }
+
+  /**
    * Returns the first name
    *
    * @return string the first name
    */
-  public function getFname() {
-    return $this->fname;
+  public function getFname(): string {
+    return (string) $this->fname;
   }
 
   /**
@@ -116,13 +139,37 @@ class Person extends AbstractDataObject {
     }
   }
 
+  /**
+   * 
+   * @return DateTime
+   */
   public function getDateOfBirth() {
     return $this->dob;
   }
 
-  public function setDateOfBirth(DateTimeInterface $dob = null) {
-    $this->dob = $dob;
+  public function setDateOfBirth($dob = null) {
+    if ($dob !== null) {
+      $this->dob = DateTime::from($dob);
+    } else {
+      $this->dob = null;
+    }
     return $this;
+  }
+
+  public function setDateOfDeath($dod = null) {
+    if ($dod !== null) {
+      $this->dod = DateTime::from($dod);
+    } else {
+      $this->dod = null;
+    }
+    return $this;
+  }
+
+  public function getAge() {
+    if ($this->dob === null) {
+      throw new \Sphp\Exceptions\InvalidStateException('Date of birth is not defined');
+    }
+    return $this->dob->diff(new \DateTimeImmutable('now'));
   }
 
   /**
@@ -168,21 +215,10 @@ class Person extends AbstractDataObject {
   /**
    * Returns the geographical address
    * 
-   * @return Address|null the geographical address
+   * @return Address the geographical address
    */
-  public function getAddress() {
+  public function getAddress(): Address {
     return $this->address;
-  }
-
-  /**
-   * Sets geographical address
-   * 
-   * @param  Address|null $address optional geographical address
-   * @return $this for a fluent interface
-   */
-  public function setAddress(Address $address = null) {
-    $this->address = $address;
-    return $this;
   }
 
   public function fromArray(array $raw) {
@@ -209,13 +245,13 @@ class Person extends AbstractDataObject {
           $this->setDateOfBirth($dob);
         }
       }
-    } 
+    }
     if (isset($raw['address'])) {
       $this->setAddress(new Address($raw['address']));
     } else {
       $this->setAddress(new Address($raw));
     }
-    
+
     return $this;
   }
 
@@ -237,8 +273,12 @@ class Person extends AbstractDataObject {
    */
   public function __toString(): string {
     $output = "name: $this->fname $this->lname";
-    $dob = ($this->dob instanceof \DateTimeInterface) ? $this->dob->format(DATE_ATOM) : '';
-    $output .= "\ndate of birth: $dob";
+    if ($this->dob !== null) {
+      $output .= "\ndate of birth: " . $this->dob->format('Y-m-d');
+    }
+    if ($this->dod !== null) {
+      $output .= "\ndate of death: " . $this->dod->format('Y-m-d');
+    }
     $output .= "\naddress: $this->address";
     $output .= "\nphonenumber: $this->phonenumber";
     $output .= "\nemail: $this->email";
