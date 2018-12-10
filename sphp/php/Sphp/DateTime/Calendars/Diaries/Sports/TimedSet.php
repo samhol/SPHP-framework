@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Sports;
 
-use Sphp\DateTime\Interval;
 use Sphp\DateTime\ImmutableDuration;
 
 /**

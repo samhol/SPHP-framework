@@ -115,7 +115,7 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * @return WeightLiftingExercise the instance set
    * @throws InvalidArgumentException
    */
-  public function setWeightLiftingExercise(string $name, string $category = null): WeightLiftingExercise {
+  public function weightLiftingExercise(string $name, string $category = null): WeightLiftingExercise {
     if ($this->containsExercise($name)) {
       $e = $this->getExercise($name);
       if (!$e instanceof WeightLiftingExercise) {
@@ -136,7 +136,7 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * @return TimedExercise the instance set
    * @throws InvalidArgumentException
    */
-  public function setTimedExercise(string $name, string $category = null): TimedExercise {
+  public function timedExercise(string $name, string $category = null): TimedExercise {
     if ($this->containsExercise($name)) {
       $e = $this->getExercise($name);
       if (!$e instanceof TimedExercise) {
@@ -156,7 +156,7 @@ class Workouts implements IteratorAggregate, CalendarEntry, Countable, Arrayable
    * @param  string|null $category optional exercise category
    * @return DistanceAndTimeExercise the instance set
    */
-  public function setDistanceAndTimeExercise(string $name, string $category = null): DistanceAndTimeExercise {
+  public function distanceAndTimeExercise(string $name, string $category = null): DistanceAndTimeExercise {
     if ($this->containsExercise($name)) {
       $e = $this->getExercise($name);
       if (!$e instanceof DistanceAndTimeExercise) {

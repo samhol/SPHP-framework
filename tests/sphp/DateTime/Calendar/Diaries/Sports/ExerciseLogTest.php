@@ -43,7 +43,7 @@ class ExerciseLogTest extends TestCase {
    * @param Workouts $workouts
    */
   public function testInsertion(Workouts $workouts) {
-    $exercise = $workouts->setDistanceAndTimeExercise('Cycling', 'cardio');
+    $exercise = $workouts->distanceAndTimeExercise('Cycling', 'cardio');
     $this->assertSame($exercise, $workouts->getExercise('Cycling'));
     $this->assertSame('Cycling', $exercise->getName());
     $this->assertSame('cardio', $exercise->getDescription());

@@ -13,6 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Calendars\Diaries\Constraints;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Data\Person;
 
 /**
  * Implements a holiday event factory
@@ -64,18 +65,30 @@ class Holidays {
   /**
    * Creates a new birthday instance
    * 
-   * @param   string $dob
+   * @param  mixed $dob date of birth
    * @param  string $name
+   * @param  mixed $dod date of death (defaults to `null` which means alive)
    * @return BirthDay new instance
    */
-  public static function birthday(string $dob, string $name): BirthDay {
-    $person = new \Sphp\Data\Person();
-    $person->setDateOfBirth($dob);
+  public static function birthday($dob, string $name, $dod = null): BirthDay {
+    $person = new Person();
+    try {
+      $person->setDateOfBirth($dob);
+    } catch (\Exception $ex) {
+      throw new InvalidArgumentException('Date Of birth is not a correct date', $ex->getCode(), $ex);
+    }
     $parts = explode(',', $name);
     //var_dump($parts);
     $fname = $parts[0];
     $person->setFname($fname);
     $person->setLname($parts[1]);
+    if ($dod !== null) {
+      try {
+      $person->setDateOfDeath($dod);
+    } catch (\Exception $ex) {
+      throw new InvalidArgumentException('Date Of death is not null or a correct date', $ex->getCode(), $ex);
+    }
+    }
     return new BirthDay($person);
   }
 

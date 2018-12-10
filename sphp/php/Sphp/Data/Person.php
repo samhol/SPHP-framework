@@ -13,6 +13,8 @@ namespace Sphp\Data;
 use DateTimeInterface;
 use Sphp\Data\Address;
 use Sphp\DateTime\DateTime;
+use Sphp\Exceptions\InvalidStateException;
+use Sphp\DateTime\Interval;
 
 /**
  * Implements a person data object
@@ -40,14 +42,14 @@ class Person {
   /**
    * The last name of the user
    * 
-   * @var DateTimeInterface|null
+   * @var DateTime|null
    */
   private $dob;
 
   /**
    * The last name of the user
    * 
-   * @var DateTimeInterface|null
+   * @var DateTime|null
    */
   private $dod;
 
@@ -141,9 +143,9 @@ class Person {
 
   /**
    * 
-   * @return DateTime
+   * @return DateTime:null
    */
-  public function getDateOfBirth() {
+  public function getDateOfBirth(): DateTime {
     return $this->dob;
   }
 
@@ -156,6 +158,14 @@ class Person {
     return $this;
   }
 
+  /**
+   * 
+   * @return DateTime|null
+   */
+  public function getDateOfDeath() {
+    return $this->dod;
+  }
+
   public function setDateOfDeath($dod = null) {
     if ($dod !== null) {
       $this->dod = DateTime::from($dod);
@@ -165,11 +175,22 @@ class Person {
     return $this;
   }
 
-  public function getAge() {
+  public function isDead(): bool {
+    return $this->dod !== null;
+  }
+
+  public function getAge($toDate = null): Interval {
     if ($this->dob === null) {
-      throw new \Sphp\Exceptions\InvalidStateException('Date of birth is not defined');
+      throw new InvalidStateException('Date of birth is not defined');
     }
-    return $this->dob->diff(new \DateTimeImmutable('now'));
+    if ($toDate === null) {
+      $toDate = new \DateTimeImmutable('now');
+    }
+    if ($this->isDead() && $this->dod->compareTo($toDate) < 0) {
+      return $this->dob->diff($this->dod);
+    } else {
+      return $this->dob->diff($toDate);
+    }
   }
 
   /**

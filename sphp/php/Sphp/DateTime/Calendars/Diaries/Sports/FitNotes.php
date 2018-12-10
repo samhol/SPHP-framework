@@ -48,11 +48,11 @@ class FitNotes {
       $name = $exersice[1];
       $category = $exersice[2];
       if ($exersice[3] > 0 && $exersice[4] > 0) {
-        $ex = $log->setWeightLiftingExercise($name, $category);
+        $ex = $log->weightLiftingExercise($name, $category);
         $ex->addSet((float) $exersice[3], (int) $exersice[4]);
       } else if (!empty($exersice[7])) {
         if ($exersice[5] > 0) {
-          $ex = $log->setDistanceAndTimeExercise($name, $category);
+          $ex = $log->distanceAndTimeExercise($name, $category);
           if ($exersice[6] !== '') {
             $unit = $exersice[6];
           } else {
@@ -64,7 +64,7 @@ class FitNotes {
             $ex->addSet((float) $exersice[5], $exersice[7], $unit);
           }
         } else {
-          $ex = $log->setTimedExercise($name, $category);
+          $ex = $log->timedExercise($name, $category);
           $ex->addSet($exersice[7]);
         }
       }

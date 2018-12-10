@@ -46,7 +46,7 @@ abstract class DateTimes {
       }
     } else if (is_int($input)) {
       return new DateTimeImmutable("@$input");
-    } else if ($input instanceof \DateTimeInterface || $input instanceof DateTimeInterface) {
+    } else if ($input instanceof \DateTimeInterface || $input instanceof DateInterface) {
       $timestamp = $input->getTimestamp();
       return new DateTimeImmutable("@$timestamp");
     } else {

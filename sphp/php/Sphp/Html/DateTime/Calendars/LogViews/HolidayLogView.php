@@ -51,7 +51,7 @@ class HolidayLogView {
         $holidayText .= ViewFactory::flag('finland');
       }
       if ($holiday instanceof BirthDay) {
-        $days->append(new Holidays\BirthdayView($holiday));
+        $days->append(new Holidays\BirthdayView($holiday, $date->getDate()));
       } else {
         $days->append(new Holidays\HolidayView($holiday));
       }
