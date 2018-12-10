@@ -72,7 +72,7 @@ class Holidays {
     $person = new \Sphp\Data\Person();
     $person->setDateOfBirth($dob);
     $parts = explode(',', $name);
-    var_dump($parts);
+    //var_dump($parts);
     $fname = $parts[0];
     $person->setFname($fname);
     $person->setLname($parts[1]);

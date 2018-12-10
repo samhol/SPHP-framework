@@ -44,7 +44,7 @@ class BirthDay extends Holiday {
    */
   public function __construct(Person $person) {
     $this->person = $person;
-    if($this->person->getDateOfBirth() === null) {
+    if ($this->person->getDateOfBirth() === null) {
       throw new \Sphp\Exceptions\InvalidArgumentException('Person must have date of birth');
     }
     $constraints = new Constraints();
@@ -57,6 +57,10 @@ class BirthDay extends Holiday {
 
   public function getDate(): DateInterface {
     return $this->person->getDateOfBirth();
+  }
+
+  public function getPerson(): Person {
+    return $this->person;
   }
 
 }
