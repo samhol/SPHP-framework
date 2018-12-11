@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
-
+use Sphp\Stdlib\Strings;
 /**
  * Implements a collection of date Constraints
  *
@@ -43,6 +43,10 @@ class Constraints implements DateConstraint {
    */
   public function __destruct() {
     unset($this->dateIs, $this->dateIsNot);
+  }
+  
+  public function __call($name, $arguments) {
+    ;
   }
 
   public function isValidDate($date): bool {
