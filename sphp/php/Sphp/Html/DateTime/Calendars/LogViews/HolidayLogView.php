@@ -84,10 +84,6 @@ class HolidayLogView {
     $this->birthdayView->setViewedDate($date->getDate());
     $days = new Ul();
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
-      $holidayText = $holiday;
-      if ($holiday->isFlagDay()) {
-        $holidayText .= ViewFactory::flag('finland');
-      }
       if ($holiday instanceof BirthDay) {
         $days->append($this->birthdayView->build($holiday));
       } else {
