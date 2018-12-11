@@ -12,7 +12,7 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
 use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 
 /**
- * Description of HolidayView
+ * Implements a holiday view builder
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License

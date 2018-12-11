@@ -17,7 +17,7 @@ use Sphp\Html\Lists\Dl;
 use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 
 /**
- * Description of BirthdayView
+ * Implements a birthday view builder
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

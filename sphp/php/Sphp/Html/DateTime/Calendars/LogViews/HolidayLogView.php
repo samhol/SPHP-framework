@@ -27,6 +27,43 @@ use Sphp\Html\DateTime\Calendars\LogViews\Holidays\BirthdayView;
  */
 class HolidayLogView {
 
+  /**
+   * @var BirthdayView
+   */
+  private $birthdayView;
+
+  /**
+   * @var HolidayView
+   */
+  private $holidayView;
+
+  /**
+   * Constructor
+   * 
+   * @param DateInterface $viewedDate
+   */
+  public function __construct(DateInterface $viewedDate = null) {
+    $this->birthdayView = new BirthdayView($viewedDate);
+    $this->holidayView = new Holidays\HolidayView();
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->birthdayView, $this->holidayView );
+  }
+
+  /**
+   * Implements function call
+   * 
+   * @param DiaryDate $date
+   * @return string
+   */
+  public function __invoke(DiaryDate $date): string {
+    return $this->build($date);
+  }
+
   public function build(DiaryDate $date): string {
     $output = '';
     if ($date->isHoliday()) {
@@ -44,8 +81,7 @@ class HolidayLogView {
     $section = new PlainContainer();
     //$section->addCssClass('holidays');
     //$section->appendH3('Holidays');
-    $birthdayView = new BirthdayView($date->getDate());
-    $holidayView = new Holidays\HolidayView();
+    $this->birthdayView->setViewedDate($date->getDate());
     $days = new Ul();
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
       $holidayText = $holiday;
@@ -53,9 +89,9 @@ class HolidayLogView {
         $holidayText .= ViewFactory::flag('finland');
       }
       if ($holiday instanceof BirthDay) {
-        $days->append($birthdayView($holiday));
+        $days->append($this->birthdayView->build($holiday));
       } else {
-        $days->append($holidayView($holiday));
+        $days->append($this->holidayView->build($holiday));
       }
     }
     $section->append($days);
