@@ -19,7 +19,14 @@ namespace Sphp\DateTime;
  * @filesource
  */
 interface DateTimeInterface extends DateInterface {
-  
+
+  /**
+   * Returns the Unix timestamp
+   * 
+   * @return int the Unix timestamp
+   */
+  public function getTimestamp(): int;
+
   /**
    * Returns the number of hours
    * 

@@ -55,13 +55,13 @@ class DateTimeTest extends TestCase {
     $smaller = new DateTime('2018-01-01');
     $date = new DateTime('2018-01-02 12:30 EET');
     $bigger = new DateTime('2018-01-03');
-    $this->assertEquals(1, $date->compareTo($smaller));  
-    $this->assertTrue($date->isLaterThan($smaller)); 
-    $this->assertFalse($date->isLaterThan('2018-01-02 12:30 EET'));   
-    $this->assertFalse($date->isLaterThan($bigger));  
+    $this->assertEquals(1, $date->compareTo($smaller));
+    $this->assertTrue($date->compareTo($smaller) > 0);
+    $this->assertFalse($date->compareTo('2018-01-02 12:30 EET') > 0);
+    $this->assertFalse($date->compareTo($bigger) > 0);
     $this->assertEquals(0, $date->compareTo(clone $date));
     $this->assertEquals(-1, $date->compareTo($bigger));
-    $this->assertTrue($date->isEarlierThan($bigger));
+    $this->assertTrue($date->compareTo($bigger) < 0);
     $this->assertFalse($date->dateEqualsTo($smaller));
     $this->assertFalse($date->dateEqualsTo($bigger));
     $this->assertTrue($date->dateEqualsTo('2018-01-02 15:00'));

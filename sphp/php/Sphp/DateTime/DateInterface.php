@@ -21,11 +21,30 @@ namespace Sphp\DateTime;
 interface DateInterface {
 
   /**
+   * Returns the difference between two objects
+   * 
+   * @param  mixed $date The date to compare to
+   * @param  bool $absolute Should the interval be forced to be positive?
+   * @return Interval An instance representing the difference between the two dates
+   * @throws InvalidArgumentException if the datetime to compare to is invalid
+   */
+  public function diff($date, bool $absolute = false): Interval;
+
+  /**
    * Returns the string representation of the object
    * 
    * @return string the string representation of the object
    */
   public function __toString(): string;
+
+  /**
+   * Returns date formatted according to given format
+   * 
+   * @param  string $format the format of the outputted date string
+   * @return string date formatted according to given format
+   * @throws InvalidArgumentException if formatting fails
+   */
+  public function format(string $format): string;
 
   /**
    * Returns the number of the weekday
@@ -54,6 +73,13 @@ interface DateInterface {
    * @return int the number of the month
    */
   public function getMonth(): int;
+
+  /**
+   * Returns the name of the month
+   * 
+   * @return string the name of the month
+   */
+  public function getMonthName(): string;
 
   /**
    * Returns the day of the month

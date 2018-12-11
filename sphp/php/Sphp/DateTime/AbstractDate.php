@@ -60,22 +60,6 @@ abstract class AbstractDate implements DateInterface {
     return $this->dateTime;
   }
 
-  /**
-   * Returns the Unix timestamp
-   * 
-   * @return int the Unix timestamp
-   */
-  public function getTimestamp(): int {
-    return $this->getDateTime()->getTimestamp();
-  }
-
-  /**
-   * Returns date formatted according to given format
-   * 
-   * @param  string $format the format of the outputted date string
-   * @return string date formatted according to given format
-   * @throws InvalidArgumentException if formatting fails
-   */
   public function format(string $format): string {
     $output = $this->getDateTime()->format($format);
     if ($output === false) {
@@ -85,66 +69,40 @@ abstract class AbstractDate implements DateInterface {
   }
 
   /**
-   * Returns the number of the weekday
+   * Returns the Unix timestamp
    * 
-   * @return int the number of the weekday
+   * @return int the Unix timestamp
    */
+  public function getTimestamp(): int {
+    return $this->getDateTime()->getTimestamp();
+  }
+
   public function getWeekDay(): int {
-    return (int) $this->format('N');
+    return (int) $this->getDateTime()->format('N');
   }
 
-  /**
-   * Returns the name of the weekday
-   * 
-   * @return string the name of the weekday
-   */
   public function getWeekDayName(): string {
-    return $this->format('l');
+    return $this->getDateTime()->format('l');
   }
 
-  /**
-   * Returns the week number 
-   * 
-   * @return int the week number 
-   */
   public function getWeek(): int {
-    return (int) $this->format('W');
+    return (int) $this->getDateTime()->format('W');
   }
 
-  /**
-   * Returns the number of the month
-   * 
-   * @return int the number of the month
-   */
   public function getMonth(): int {
-    return (int) $this->format('m');
+    return (int) $this->getDateTime()->format('m');
   }
 
-  /**
-   * Returns the name of the month
-   * 
-   * @return string the name of the month
-   */
   public function getMonthName(): string {
-    return $this->format('F');
+    return $this->getDateTime()->format('F');
   }
 
-  /**
-   * Returns the day of the month
-   * 
-   * @return int the day of the month
-   */
   public function getMonthDay(): int {
-    return (int) $this->format('j');
+    return (int) $this->getDateTime()->format('j');
   }
 
-  /**
-   * Returns the year
-   * 
-   * @return int the year
-   */
   public function getYear(): int {
-    return (int) $this->format('Y');
+    return (int) $this->getDateTime()->format('Y');
   }
 
   /**
@@ -161,30 +119,10 @@ abstract class AbstractDate implements DateInterface {
   public function dateEqualsTo($date): bool {
     try {
       $parsed = DateTimes::parseDateString($date);
-      return $parsed === $this->format('Y-m-d');
+      return $parsed === $this->getDateTime()->format('Y-m-d');
     } catch (Exception $ex) {
       return false;
     }
-  }
-
-  /**
-   * Checks if this date is later than the given one
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public function isLaterThan($date): bool {
-    return $this->compareTo($date) > 0;
-  }
-
-  /**
-   * Checks if this date is earlier than the given one
-   * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date the date to match
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public function isEarlierThan($date): bool {
-    return $this->compareTo($date) < 0;
   }
 
 }

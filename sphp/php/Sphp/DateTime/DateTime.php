@@ -99,17 +99,14 @@ class DateTime extends AbstractDate implements DateTimeInterface {
     return $this->format(\DateTime::ATOM);
   }
 
-  /**
-   * Returns the difference between two objects
-   * 
-   * @param  mixed $date The date to compare to
-   * @param  bool $absolute Should the interval be forced to be positive?
-   * @return Interval An instance representing the difference between the two dates
-   */
   public function diff($date, bool $absolute = false): Interval {
-    $other = DateTimes::dateTimeImmutable($date);
-    $diff = $this->getDateTime()->diff($other, $absolute);
-    return Intervals::fromDateInterval($diff);
+    if ($date instanceof DateInterface && !$date instanceof DateTimeInterface) {
+      return (new Date($this->format('Y-m-d')))->diff($date, $absolute);
+    } else {
+      $other = DateTimes::dateTimeImmutable($date);
+      $diff = $this->getDateTime()->diff($other, $absolute);
+      return Intervals::fromDateInterval($diff);
+    }
   }
 
   /**
@@ -215,7 +212,6 @@ class DateTime extends AbstractDate implements DateTimeInterface {
    * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function add($interval): DateTime {
-    //$interval = Factory::dateInterval($interval);
     $dt = $this->getDateTime()->add(Intervals::create($interval));
     return new static($dt);
   }
@@ -233,15 +229,15 @@ class DateTime extends AbstractDate implements DateTimeInterface {
   }
 
   public function getHours(): int {
-    return (int) $this->format('H');
+    return (int) $this->getDateTime()->format('H');
   }
 
   public function getMinutes(): int {
-    return (int) $this->format('i');
+    return (int) $this->getDateTime()->format('i');
   }
 
   public function getSeconds(): int {
-    return (int) $this->format('s');
+    return (int) $this->getDateTime()->format('s');
   }
 
   public function getTimeZoneOffset(): int {

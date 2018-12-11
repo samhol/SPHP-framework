@@ -32,22 +32,21 @@ class BirthdayView implements Content {
   use \Sphp\Html\ContentTrait;
 
   /**
-   * @var BirthDay 
-   */
-  private $birthday;
-
-  /**
    * @var DateInterface
    */
   private $currentDate;
 
-  public function __construct(BirthDay $birthday, DateInterface $currentDate) {
-    $this->birthday = $birthday;
+  /**
+   * Constructor
+   * 
+   * @param DateInterface $currentDate
+   */
+  public function __construct(DateInterface $currentDate) {
     $this->currentDate = $currentDate;
   }
 
   public function __destruct() {
-    unset($this->birthday);
+    unset($this->currentDate);
   }
 
   /**
@@ -55,30 +54,30 @@ class BirthdayView implements Content {
    * 
    * @return string
    */
-  public function build(): string {
-    $dob = $this->birthday->getDate();
+  public function build(BirthDay $birthday): string {
+    $dob = $birthday->getDate();
     $bornAgo = $dob->diff($this->currentDate)->y;
-    $person = $this->birthday->getPerson();
+    $person = $birthday->getPerson();
     $age = $person->getAge($this->currentDate)->y;
     $dl = new Dl();
     $termText = $dl->appendTerm("Birthday of {$person->getFullname()}");
     if (!$person->isDead()) {
-     // print_r($person->getAge());
+      // print_r($person->getAge());
       $termText->append(' (' . $age . ' years of age)');
-    }
-    if ($age === 0) {
-      $dl->appendDescription('Born this day');
+      if ($age === 0) {
+        $dl->appendDescription('Born this day');
+      } else {
+        $dl->appendDescription('Was born on the ' . $dob->format('l jS \o\f F Y'));
+      }
     } else {
       $dl->appendDescription('Was born on the ' . $dob->format('l jS \o\f F Y') . " $bornAgo years ago");
-    }
-    if ($person->isDead()) {
       $dod = $person->getDateOfDeath();
-      $dl->appendDescription('Died on the ' . $dod->format('l jS \o\f F Y') . " at " . $person->getAge()->y . ' years of age');
+      $dl->appendDescription('Died on the ' . $dod->format('l jS \o\f F Y') . ' at ' . $person->getAge()->y . ' years of age');
     }
-    if ($this->birthday->isNationalHoliday()) {
+    if ($birthday->isNationalHoliday()) {
       $dl->appendDescription(" (national holiday)");
     }
-    if ($this->birthday->isFlagDay()) {
+    if ($birthday->isFlagDay()) {
       $dl->appendDescription(ViewFactory::flag('finland'));
     }
     return "$dl";

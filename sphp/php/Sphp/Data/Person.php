@@ -74,8 +74,6 @@ class Person {
 
   /**
    * Constructor
-   * 
-   * @param array|null $data optional data
    */
   public function __construct() {
     $this->address = new Address;

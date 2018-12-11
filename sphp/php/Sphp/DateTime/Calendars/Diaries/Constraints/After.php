@@ -48,7 +48,7 @@ class After implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    return $this->limit->isEarlierThan($date);
+    return $this->limit->compareTo($date) < 0;
   }
 
 }

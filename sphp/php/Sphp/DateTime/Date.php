@@ -42,6 +42,16 @@ class Date extends AbstractDate {
     return $this->format('Y-m-d');
   }
 
+  public function diff($date, bool $absolute = false): Interval {
+    try {
+      $other = Date::from($date)->getDateTime();
+    } catch (\Exception $ex) {
+      throw new InvalidArgumentException('The date to compare to is invalid', $ex->getCode(), $ex);
+    }
+    $diff = $this->getDateTime()->diff($other, $absolute);
+    return Intervals::fromDateInterval($diff);
+  }
+
   /**
    * Returns the difference in days between this and another date
    * 

@@ -48,7 +48,7 @@ class Before implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    return $this->limit->isLaterThan($date);
+    return $this->limit->compareTo($date) > 0;
   }
 
 }

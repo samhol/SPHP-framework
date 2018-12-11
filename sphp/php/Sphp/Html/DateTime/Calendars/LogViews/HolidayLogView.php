@@ -15,6 +15,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\DateTime\Calendars\LogViews\Holidays\BirthdayView;
 
 /**
  * Implements a holiday log viewer
@@ -43,15 +44,15 @@ class HolidayLogView {
     $section = new PlainContainer();
     //$section->addCssClass('holidays');
     //$section->appendH3('Holidays');
+    $birthdayView = new BirthdayView($date->getDate());
     $days = new Ul();
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
       $holidayText = $holiday;
       if ($holiday->isFlagDay()) {
-
         $holidayText .= ViewFactory::flag('finland');
       }
       if ($holiday instanceof BirthDay) {
-        $days->append(new Holidays\BirthdayView($holiday, $date->getDate()));
+        $days->append($birthdayView->build($holiday));
       } else {
         $days->append(new Holidays\HolidayView($holiday));
       }
