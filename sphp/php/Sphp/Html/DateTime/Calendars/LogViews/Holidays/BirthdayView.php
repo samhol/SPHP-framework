@@ -10,14 +10,10 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews\Holidays;
 
-use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
-use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\DateTime\DateInterface;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Lists\Ul;
+use Sphp\DateTime\Date;
 use Sphp\Html\Lists\Dl;
-use Sphp\Html\Content;
 use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 
 /**
@@ -27,26 +23,60 @@ use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BirthdayView implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class BirthdayView {
 
   /**
    * @var DateInterface
    */
-  private $currentDate;
+  private $viewedDate;
 
   /**
    * Constructor
    * 
-   * @param DateInterface $currentDate
+   * @param DateInterface $viewedDate
    */
-  public function __construct(DateInterface $currentDate) {
-    $this->currentDate = $currentDate;
+  public function __construct(DateInterface $viewedDate = null) {
+    if ($viewedDate === null) {
+      $viewedDate = new Date();
+    }
+    $this->viewedDate = $viewedDate;
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
-    unset($this->currentDate);
+    unset($this->viewedDate);
+  }
+
+  /**
+   * Implements function call
+   * 
+   * @param BirthDay $birthday
+   * @return string
+   */
+  public function __invoke(BirthDay $birthday): string {
+    return $this->build($birthday);
+  }
+
+  /**
+   * Returns the viewed Date
+   * 
+   * @return DateInterface
+   */
+  public function getViewedDate(): DateInterface {
+    return $this->viewedDate;
+  }
+
+  /**
+   * Sets the viewed Date
+   * 
+   * @param DateInterface $viewedDate
+   * @return $this
+   */
+  public function setViewedDate(DateInterface $viewedDate) {
+    $this->viewedDate = $viewedDate;
+    return $this;
   }
 
   /**
@@ -56,9 +86,9 @@ class BirthdayView implements Content {
    */
   public function build(BirthDay $birthday): string {
     $dob = $birthday->getDate();
-    $bornAgo = $dob->diff($this->currentDate)->y;
+    $bornAgo = $dob->diff($this->viewedDate)->y;
     $person = $birthday->getPerson();
-    $age = $person->getAge($this->currentDate)->y;
+    $age = $person->getAge($this->viewedDate)->y;
     $dl = new Dl();
     $termText = $dl->appendTerm("Birthday of {$person->getFullname()}");
     if (!$person->isDead()) {
@@ -70,7 +100,7 @@ class BirthdayView implements Content {
         $dl->appendDescription('Was born on the ' . $dob->format('l jS \o\f F Y'));
       }
     } else {
-      $dl->appendDescription('Was born on the ' . $dob->format('l jS \o\f F Y') . " $bornAgo years ago");
+      $dl->appendDescription("Was born $bornAgo years ago on " . $dob->format('l \t\h\e jS \o\f F Y'));
       $dod = $person->getDateOfDeath();
       $dl->appendDescription('Died on the ' . $dod->format('l jS \o\f F Y') . ' at ' . $person->getAge()->y . ' years of age');
     }
@@ -81,10 +111,6 @@ class BirthdayView implements Content {
       $dl->appendDescription(ViewFactory::flag('finland'));
     }
     return "$dl";
-  }
-
-  public function getHtml(): string {
-    return "{$this->build()}";
   }
 
 }

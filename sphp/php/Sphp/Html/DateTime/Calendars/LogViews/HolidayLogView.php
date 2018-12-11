@@ -45,6 +45,7 @@ class HolidayLogView {
     //$section->addCssClass('holidays');
     //$section->appendH3('Holidays');
     $birthdayView = new BirthdayView($date->getDate());
+    $holidayView = new Holidays\HolidayView();
     $days = new Ul();
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
       $holidayText = $holiday;
@@ -52,9 +53,9 @@ class HolidayLogView {
         $holidayText .= ViewFactory::flag('finland');
       }
       if ($holiday instanceof BirthDay) {
-        $days->append($birthdayView->build($holiday));
+        $days->append($birthdayView($holiday));
       } else {
-        $days->append(new Holidays\HolidayView($holiday));
+        $days->append($holidayView($holiday));
       }
     }
     $section->append($days);
