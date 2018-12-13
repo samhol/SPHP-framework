@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\DateTime\Calendars\Diaries\Holidays\EasterHolidays;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Fi\HolidayDiary;
 use Sphp\DateTime\Calendars\Diaries\Logs;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
@@ -11,7 +10,7 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
 echo "<pre>";
 
 //var_dump(StopWatch::getEcecutionTime());
-$easter = new EasterHolidays($year);
+//$easter = new EasterHolidays($year);
 $fi = new HolidayDiary();
 
 //$data = new Calendar();
@@ -34,7 +33,6 @@ $basketball1->setDescription('In Vaarniemi **20:30-22:00**');
 $basketball1->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"));
 
 //$fi->insertLog($basketball1);
-use Sphp\Database\Db;
 
 $exercises = \Sphp\DateTime\Calendars\Diaries\Sports\FitNotes::fromCsv('manual/snippets/FitNotes.csv');
 foreach ($exercises as $excercise) {

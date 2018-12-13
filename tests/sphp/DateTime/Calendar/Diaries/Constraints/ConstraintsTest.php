@@ -21,7 +21,6 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\VaryingAnnual;
 use Sphp\DateTime\Calendars\Diaries\Constraints\OneOf;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Unique;
 use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
-use Sphp\DateTime\Periods;
 
 class ConstraintsTest extends TestCase {
 

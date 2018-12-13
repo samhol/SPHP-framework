@@ -11,7 +11,6 @@
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
 use Sphp\DateTime\Periods;
-use Sphp\DateTime\DateInterface;
 
 /**
  * Implements an in range date constraint
@@ -30,8 +29,8 @@ class InRange implements DateConstraint {
   /**
    * Constructor
    * 
-   * @param  DateInterface|\DateTimeInteface|string|int|null $start start of date range (null for no starting point)
-   * @param  DateInterface|\DateTimeInteface|string|int|null $stop end of date range (null for no ending point)
+   * @param  mixed $start start of date range (null for no starting point)
+   * @param  mixed $stop end of date range (null for no ending point)
    */
   public function __construct($start = null, $stop = null) {
     $this->dateRange = Periods::days($start, $stop);

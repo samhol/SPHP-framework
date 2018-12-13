@@ -10,21 +10,20 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\Date;
-use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\DateTimes;
 
 /**
- * Implements a group constraint
+ * Implements a group of dates constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class OneOf implements DateConstraint {
 
   /**
-   * @var Date[]
+   * @var string[]
    */
   private $dates;
 
@@ -34,7 +33,6 @@ class OneOf implements DateConstraint {
    * @param  mixed ...$date
    */
   public function __construct(... $date) {
-
     $this->dates = [];
     foreach ($date as $d) {
       $this->addDate($d);
@@ -42,10 +40,17 @@ class OneOf implements DateConstraint {
   }
 
   /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->dates);
+  }
+
+  /**
    * Adds new allowed dates
    * 
    * @param  mixed ...$date
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function addDates(... $date) {
     foreach ($date as $d) {
@@ -56,14 +61,11 @@ class OneOf implements DateConstraint {
 
   /**
    * 
-   * @param  DateInterface|DateTimeInteface|string|int $date
-   * @return $this
+   * @param  mixed $date
+   * @return $this for a fluent interface
    */
   public function addDate($date) {
-    if (!$date instanceof DateInterface && !$date instanceof \DateTimeInterface) {
-      $date = new Date($date);
-    }
-    $key = $date->format('Y-m-d');
+    $key = DateTimes::parseDateString($date);
     if (!array_key_exists($key, $this->dates)) {
       $this->dates[$key] = $date;
     }
@@ -71,10 +73,7 @@ class OneOf implements DateConstraint {
   }
 
   public function isValidDate($date): bool {
-    if (!$date instanceof DateInterface) {
-      $date = new Date($date);
-    }
-    $key = $date->format('Y-m-d');
+    $key = DateTimes::parseDateString($date);
     return array_key_exists($key, $this->dates);
   }
 

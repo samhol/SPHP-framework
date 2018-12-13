@@ -10,8 +10,8 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
+
 /**
  * Implements a weekly date constraint
  *
@@ -33,10 +33,14 @@ class Weekly implements DateConstraint {
    * @param int ...$weekday
    */
   public function __construct(int... $weekday) {
-    /* if (0 > $weekday || $weekday > 7) {
-      throw new Exceptions\CalendarEventException("Parameter weekday must be between 1-7 ($weekday given)");
-      } */
     $this->weekdays = $weekday;
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->weekdays);
   }
 
   public function isValidDate($date): bool {

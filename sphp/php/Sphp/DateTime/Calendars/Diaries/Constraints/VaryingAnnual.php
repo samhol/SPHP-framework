@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**

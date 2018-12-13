@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Constraints;
 
-use Sphp\DateTime\DateInterface;
 use Sphp\DateTime\Date;
 
 /**
@@ -31,13 +30,10 @@ class Before implements DateConstraint {
   /**
    * Constructor
    * 
-   * @param DateInterface $limit the date of the holiday
+   * @param mixed $limit the upper limit date
    */
   public function __construct($limit) {
-    if (!$limit instanceof DateInterface) {
-      $limit = new Date($limit);
-    }
-    $this->limit = $limit;
+    $this->limit = new Date($limit);
   }
 
   /**
