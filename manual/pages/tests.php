@@ -8,10 +8,12 @@ echo "<pre>";
 $fi = new HolidayDiary();
 $fi->insertLog(Holidays::birthday('1975-9-16', 'Sami, Holck'));
 $d = $fi->getDate('2018-12-6');
-$dd = new Sphp\DateTime\Calendars\Diaries\DiaryDate('now');
+$dd = $fi->getDate('2018-12-24');
 $dateInfo = new Sphp\Html\DateTime\Calendars\DateInfo($d, 'foo');
-echo $dateInfo;
+echo $dateInfo . "\n";
 
+$dateInfo1 = new Sphp\Html\DateTime\Calendars\DateInfo($dd, 'foo1');
+echo $dateInfo1;
 $cont = new Sphp\Html\DateTime\Calendars\DateInfoContetnGenerator();
 echo $cont->generate($d);
 $c = new Sphp\DateTime\Calendars\Diaries\Constraints\Constraints();
@@ -37,3 +39,19 @@ $person1->setDateOfBirth('1918-01-07');
 $person1->getAddress()->setStreet('Tuohimaantie 14')->setCity('Loimaa')->setCountry('Finland');
 echo $person1;
 echo "</pre>";
+?>
+<div class="reveal" id="exampleModal1" data-reveal>
+  <h1>Awesome. I Have It.</h1>
+  <p class="lead">Your couch. It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<p><button class="button" data-url="manual/snippets/loremipsum.html" data-open="exampleModal1">Click me for a modal</button></p>
+<p><button class="button alert" data-url="manual/snippets/loremipsum.md" data-open="exampleModal1">Click me for a modal1</button></p>
+<p><button class="button warning" data-url="manual/snippets/loremipsum.txt" data-open="exampleModal1">Click me for a modal2</button></p>
+
+<script>
+</script>
