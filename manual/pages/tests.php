@@ -49,9 +49,9 @@ echo "</pre>";
   </button>
 </div>
 
-<p><button class="button" data-url="manual/snippets/loremipsum.html" data-open="exampleModal1">Click me for a modal</button></p>
-<p><button class="button alert" data-url="manual/snippets/loremipsum.md" data-open="exampleModal1">Click me for a modal1</button></p>
-<p><button class="button warning" data-url="manual/snippets/loremipsum.txt" data-open="exampleModal1">Click me for a modal2</button></p>
+<p><button class="button" data-date="2018-12-23" data-url="manual/snippets/loremipsum.html" data-open="exampleModal1">Click me for a modal</button></p>
+<p><button class="button alert" data-date="2018-09-16" data-url="sphp/ajax/DateInfoContent.php" data-open="exampleModal1">Click me for a modal1</button></p>
+<p><button class="button warning" data-date="2018-12-6" data-url="manual/snippets/sleep.php" data-open="exampleModal1">Click me for a modal2</button></p>
 
 <script>
 </script>

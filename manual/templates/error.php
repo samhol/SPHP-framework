@@ -40,5 +40,4 @@ $samiForm->setPlaceholder('namespaces, classes, interfaces, traits, functions, o
 $samiForm->printHtml();
 ?>
 
-<img src="manual/pics/corrupt.png" alt="Resource not found" class="float-center">
 

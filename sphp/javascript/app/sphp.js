@@ -201,16 +201,4 @@ $(window).bind("load", function () {
   "use strict";
   sphp.initialize();
 
-
-  var $modal = $('#exampleModal1');
-
-
-  $('button').on("click", function () {
-    var url = $(this).attr('data-url');
-    console.log(url);
-    $.ajax(url)
-            .done(function (resp) {
-              $modal.html(resp).foundation('open');
-            });
-  });
 });

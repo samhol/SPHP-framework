@@ -1,6 +1,6 @@
 
 /**
- * Contains sphp.TechLinks functionality
+ * Contains misc functionality
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @namespace sphp

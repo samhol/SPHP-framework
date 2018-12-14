@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\Stdlib\StopWatch;
 
 $trimmed = trim($par, '/');
 $parts = explode('/', $trimmed);

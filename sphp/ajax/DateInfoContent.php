@@ -1,10 +1,14 @@
 <?php
 
-/**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
- *
- * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
- * @license   https://opensource.org/licenses/MIT The MIT License
- */
+namespace Sphp\Html\DateTime\Calendars;
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+require_once('../../manual/settings.php');
 
+$year = 2018;
+include '../../manual/pages/diaries.php';
+
+$cont = new DateInfoContetnGenerator();
+$date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_STRING);
+echo $date;
+echo $cont->generate($diaryContainer->getDate($date));
