@@ -59,7 +59,7 @@ class WeekDayView implements CssClassifiableContent {
   protected function generateTimeTag(): TimeTag {
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->isFlagDay()) {
-      $timeTag->append('<div class="flag" style="width:20px; display:inline-block;">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</div>");
+      $timeTag->append('<span class="flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</span>");
     }
     $timeTag->append($this->diaryDay->getDate()->format('j'));
     $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l, Y-m-d'));

@@ -10,18 +10,18 @@
   "use strict";
   sphp.calendar = function () {
     var $modal = $('#exampleModal1');
-    
 
 
-    $('button').on("click", function () {
-      var url = $(this).attr('data-url');
+
+    $('.calendar-day.has-info').on("click", function () {
       var date = $(this).attr('data-date');
       console.log('sphp/ajax/DateInfoContent.php');
-      $modal.html('<strong>Loading...</strong>');
+      $modal.find('.calendar-date-root').html('<strong>Loading...</strong>');
       $.ajax('sphp/ajax/DateInfoContent.php?date=' + date)
               .done(function (resp) {
-                $modal.html(resp).foundation('open');
-        $modal.foundation();
+                $modal.find('.calendar-date-root').html(resp);
+                //$modal.foundation('open');
+                $modal.find('.calendar-date-root').foundation();
               });
     });
   };
