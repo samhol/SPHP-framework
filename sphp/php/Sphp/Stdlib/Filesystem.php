@@ -11,7 +11,6 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\FileSystemException;
-use SplFileObject;
 use Sphp\Stdlib\Arrays;
 use Exception;
 use SplFileInfo;

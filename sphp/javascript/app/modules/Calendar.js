@@ -5,14 +5,10 @@
  * @author Sami Holck <sami.holck@gmail.com>
  * @namespace sphp
  */
-;
 (function (sphp, $, undefined) {
   "use strict";
   sphp.calendar = function () {
     var $modal = $('#exampleModal1');
-
-
-
     $('.calendar-day.has-info').on("click", function () {
       var date = $(this).attr('data-date');
       console.log('sphp/ajax/DateInfoContent.php');
@@ -25,10 +21,7 @@
               });
     });
   };
-
 }(window.sphp = window.sphp || {}, jQuery));
-
-
 
 $(window).bind("load", function () {
   "use strict";

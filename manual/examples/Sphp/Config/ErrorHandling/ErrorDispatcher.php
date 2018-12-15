@@ -18,9 +18,3 @@ trigger_error('Deprecated user features suck', E_USER_DEPRECATED);
 trigger_error('User defined Notes suck a bit', E_USER_NOTICE);
 
 echo $foo;
-
-$options = [
-    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-];
-password_hash('foo', PASSWORD_BCRYPT, $options) . "\n";
-

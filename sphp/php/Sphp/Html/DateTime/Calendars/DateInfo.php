@@ -14,9 +14,7 @@ use Sphp\Html\Content;
 use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
-use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\PlainContainer;
 use Sphp\Html\DateTime\Calendars\LogViews\LogViewBuilder;
 
 /**

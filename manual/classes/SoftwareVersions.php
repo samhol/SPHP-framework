@@ -7,6 +7,8 @@
 
 namespace Sphp\Manual;
 
+use Doctrine\Common\Cache\Version;
+
 /**
  * Description of SoftwareVersions
  *
@@ -16,34 +18,66 @@ namespace Sphp\Manual;
  */
 class SoftwareVersions {
 
+  /**
+   * 
+   * @return string
+   */
   public static function geshi(): string {
     return (new \GeSHi)->get_version();
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function doctrineCommon(): string {
     return \Doctrine\Common\Version::VERSION;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function doctrineDBAL(): string {
     return \Doctrine\DBAL\Version::VERSION;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function doctrineORM(): string {
     return \Doctrine\ORM\Version::VERSION;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function doctrineCommonCache(): string {
-    return \Doctrine\Common\Cache\Version::VERSION;
+    return Version::VERSION;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function parsedown(): string {
     return \ParsedownExtra::version;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function parsedownExtra(): string {
     return \ParsedownExtra::version;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public static function parsedownExtraPlugin(): string {
     return \ParsedownExtraPlugin::version;
   }

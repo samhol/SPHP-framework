@@ -20,14 +20,13 @@ use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 
 /**
- * Implements a Month view for a Calendar
+ * Description of CalendarMonthView
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class MonthView extends AbstractComponent {
+class CalendarMonthView extends AbstractComponent {
 
   /**
    * @var int
@@ -157,6 +156,7 @@ class MonthView extends AbstractComponent {
     </div>
   </div>';
     }
+return '';
     return $o . '</div>';
   }
 
