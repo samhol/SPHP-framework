@@ -144,20 +144,15 @@ class MonthView extends AbstractComponent {
     return $container;
   }
 
-  protected function createHead() {
+  protected function createHead(): Row {
     $h = new Row();
-    $h->append(new Div());
     $cu = new CalendarUtils();
-    $o = '<div class="grid-x">';
     foreach ($cu->getWeekdays() as $num => $day) {
-      $o .= '<div class="cell auto">
-    <div class="head day">
+      $h->append('<div class="head day">
       <span class="show-for-small-only">' . $cu->getWeekdayName($num, 2) . '</span>
-      <span class="hide-for-small-only">' . $day . '</span>
-    </div>
-  </div>';
+      <span class="hide-for-small-only">' . $day . '</span></div>');
     }
-    return $o . '</div>';
+    return $h;
   }
 
   /**
