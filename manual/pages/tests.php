@@ -9,11 +9,7 @@ $fi = new HolidayDiary();
 $fi->insertLog(Holidays::birthday('1975-9-16', 'Sami, Holck'));
 $d = $fi->getDate('2018-12-6');
 $dd = $fi->getDate('2018-12-24');
-$dateInfo = new Sphp\Html\DateTime\Calendars\DateInfo($d, 'foo');
-echo $dateInfo . "\n";
 
-$dateInfo1 = new Sphp\Html\DateTime\Calendars\DateInfo($dd, 'foo1');
-echo $dateInfo1;
 $cont = new Sphp\Html\DateTime\Calendars\DateInfoContetnGenerator();
 echo $cont->generate($d);
 $c = new Sphp\DateTime\Calendars\Diaries\Constraints\Constraints();

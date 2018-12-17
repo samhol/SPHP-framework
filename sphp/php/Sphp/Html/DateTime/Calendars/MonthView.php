@@ -11,6 +11,7 @@
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Flow\Section;
 use Sphp\I18n\Datetime\CalendarUtils;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\PlainContainer;
@@ -74,8 +75,8 @@ class MonthView extends AbstractComponent {
     $this->firstOf = Date::from("$year-$month-1");
     $this->diaries = new DiaryContainer();
 
-    $this->popup = new Popup((new \Sphp\Html\Flow\Section())->addCssClass('calendar-date-root'));
-    $this->popup->addCssClass('sphp-calendar');
+    $this->popup = new Popup((new Section())->addCssClass('calendar-date-root'));
+    $this->popup->addCssClass('sphp-calendar', 'sphp-date-info');
   }
 
   /**
@@ -165,9 +166,10 @@ class MonthView extends AbstractComponent {
   }
 
   /**
+   * Returns a row containing weekday cells
    * 
    * @param  Date $date
-   * @return Row
+   * @return Row a row containing weekday cells
    */
   private function createWeekRow(Date $date): Row {
     $row = new Row();
@@ -194,8 +196,6 @@ class MonthView extends AbstractComponent {
       $weekDayView->addCssClass('not-selected-month');
     }
     if ($diaryDate->notEmpty()) {
-      
-      $weekDayView->addCssClass('has-info');
       $weekDayView->setAttribute('data-date', $day->format('Y-m-d'));
       $this->popup->createController($weekDayView);
     }

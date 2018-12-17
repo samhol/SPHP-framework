@@ -14,10 +14,10 @@
       }
       div.sphp.calendar-day {
         &.has-info {
-          border: solid 2px #811;
+          border: solid 2px #777;
           &:hover {
             cursor: pointer;
-            border: solid 2px #c22;
+            border: solid 2px #966;
           }
         }
         .week-nr {
@@ -43,7 +43,7 @@
             }
           }
         }
-        height: rem-calc(50);
+        height: rem-calc(80);
         border: solid 1px #aaa;
         @include border-radius(2px);
         text-align: center;

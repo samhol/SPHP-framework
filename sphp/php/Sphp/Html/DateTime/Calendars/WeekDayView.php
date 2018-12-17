@@ -30,63 +30,55 @@ class WeekDayView extends AbstractComponent {
    * @var DiaryDate
    */
   private $diaryDay;
-  private $content;
 
   /**
    * Constructor
    * 
-   * @param DiaryDate $date
+   * @param DiaryDate $diaryDate
    */
-  public function __construct(DiaryDate $date) {
+  public function __construct(DiaryDate $diaryDate) {
     parent::__construct('div');
-    $this->diaryDay = $date;
-    $this->attributes()->classes()->protect('sphp', 'calendar-day');
-    $this->buildDate();
+    $this->diaryDay = $diaryDate;
+    $date = $this->diaryDay->getDate();
+    $this->cssClasses()->protect('sphp', 'calendar-day', strtolower($date->format('l')));
+    $this->setAttribute('data-date', $date->format('Y-m-d'));
+    $this->setCssClasses();
   }
 
-  protected function generateTimeTag(): TimeTag {
+  private function generateContent(): PlainContainer {
+    $content = new PlainContainer;
+    $date = $this->diaryDay->getDate();
+    if ($date->getWeekDay() === 1) {
+      $content->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
+    }
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->isFlagDay()) {
       $timeTag->append('<span class="flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</span>');
     }
     $timeTag->append($this->diaryDay->getDate()->format('j'));
-    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l, Y-m-d'));
-    return $timeTag;
+    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l jS \of F Y'));
+    $content->append($timeTag);
+    return $content;
   }
 
-  protected function buildDate() {
-    $this->content = new PlainContainer;
-    //$container->append($this->container);
-    $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime(), $this->diaryDay->getDate()->format('j'));
-    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l, Y-m-d'));
-    if ($this->diaryDay->getDate()->getWeekDay() === 1) {
-      $this->content->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
-    }
-    if ($this->diaryDay->getDate()->isCurrentDate()) {
+  protected function setCssClasses() {
+    $date = $this->diaryDay->getDate();
+    if ($date->isCurrentDate()) {
       $this->cssClasses()->protect('today');
     }
-    $this->content->append($this->generateTimeTag());
     if ($this->diaryDay->notEmpty()) {
-      //$dateInfo = new DateInfo($this->diaryDay, $this->container);
-      //$modal = $dateInfo->create();
-      //$modal->getTrigger()->addCssClass('float-center');
-      //$this->container->append($modal);
-      //$container->append($modal->getPopup());
       $this->addCssClass('has-info');
-
       if ($this->diaryDay->isNationalHoliday()) {
         $this->cssClasses()->protect('holiday');
       }
-
       if ($this->diaryDay->isFlagDay()) {
         $this->cssClasses()->protect('flag-day');
       }
     }
-    $this->cssClasses()->protect(strtolower($this->diaryDay->getDate()->format('l')));
   }
 
   public function contentToString(): string {
-    return "$this->content";
+    return $this->generateContent()->getHtml();
   }
 
 }
