@@ -10,13 +10,11 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\Html\Div;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\DateTime\TimeTag;
-use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Media\Icons\Svg;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\PlainContainer;
 
 /**
  * Implements a weekday vire for a calendar month
@@ -26,20 +24,13 @@ use Sphp\Html\PlainContainer;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class WeekDayView implements CssClassifiableContent {
-
-  use \Sphp\Html\ContentTrait,
-      \Sphp\Html\CssClassifiableTrait;
-
-  /**
-   * @var Div
-   */
-  private $container;
+class WeekDayView extends AbstractComponent {
 
   /**
    * @var DiaryDate
    */
   private $diaryDay;
+  private $content;
 
   /**
    * Constructor
@@ -47,13 +38,10 @@ class WeekDayView implements CssClassifiableContent {
    * @param DiaryDate $date
    */
   public function __construct(DiaryDate $date) {
+    parent::__construct('div');
     $this->diaryDay = $date;
-    $this->container = new Div();
-    $this->container->attributes()->classes()->protect('sphp', 'calendar-day');
-  }
-
-  public function cssClasses(): ClassAttribute {
-    return $this->container->cssClasses();
+    $this->attributes()->classes()->protect('sphp', 'calendar-day');
+    $this->buildDate();
   }
 
   protected function generateTimeTag(): TimeTag {
@@ -66,40 +54,39 @@ class WeekDayView implements CssClassifiableContent {
     return $timeTag;
   }
 
-  protected function buildDate(): PlainContainer {
-    $container = new PlainContainer;
-    $container->append($this->container);
+  protected function buildDate() {
+    $this->content = new PlainContainer;
+    //$container->append($this->container);
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime(), $this->diaryDay->getDate()->format('j'));
     $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l, Y-m-d'));
     if ($this->diaryDay->getDate()->getWeekDay() === 1) {
-      $this->container->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
+      $this->content->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
     }
     if ($this->diaryDay->getDate()->isCurrentDate()) {
-      $this->container->cssClasses()->protect('today');
+      $this->cssClasses()->protect('today');
     }
-    $this->container->append($this->generateTimeTag());
+    $this->content->append($this->generateTimeTag());
     if ($this->diaryDay->notEmpty()) {
-      $dateInfo = new DateInfo($this->diaryDay, $this->container);
-      $modal = $dateInfo->create();
+      //$dateInfo = new DateInfo($this->diaryDay, $this->container);
+      //$modal = $dateInfo->create();
       //$modal->getTrigger()->addCssClass('float-center');
       //$this->container->append($modal);
-      $container->append($modal->getPopup());
-      $this->container->addCssClass('has-info');
+      //$container->append($modal->getPopup());
+      $this->addCssClass('has-info');
 
       if ($this->diaryDay->isNationalHoliday()) {
-        $this->container->cssClasses()->protect('holiday');
+        $this->cssClasses()->protect('holiday');
       }
 
       if ($this->diaryDay->isFlagDay()) {
-        $this->container->cssClasses()->protect('flag-day');
+        $this->cssClasses()->protect('flag-day');
       }
     }
-    $this->container->cssClasses()->protect(strtolower($this->diaryDay->getDate()->format('l')));
-    return $container;
+    $this->cssClasses()->protect(strtolower($this->diaryDay->getDate()->format('l')));
   }
 
-  public function getHtml(): string {
-    return $this->buildDate()->getHtml();
+  public function contentToString(): string {
+    return "$this->content";
   }
 
 }

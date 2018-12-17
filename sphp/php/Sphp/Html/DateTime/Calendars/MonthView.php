@@ -13,11 +13,11 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\AbstractComponent;
 use Sphp\I18n\Datetime\CalendarUtils;
 use Sphp\Html\Foundation\Sites\Grids\Row;
-use Sphp\Html\Div;
 use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
+use Sphp\Html\Foundation\Sites\Containers\Popup;
 
 /**
  * Implements a Month view for a Calendar
@@ -50,6 +50,11 @@ class MonthView extends AbstractComponent {
   private $diaries;
 
   /**
+   * @var Popup 
+   */
+  private $popup;
+
+  /**
    * Constructor
    * 
    * @param int $year
@@ -68,6 +73,9 @@ class MonthView extends AbstractComponent {
     $this->year = $year;
     $this->firstOf = Date::from("$year-$month-1");
     $this->diaries = new DiaryContainer();
+
+    $this->popup = new Popup((new \Sphp\Html\Flow\Section())->addCssClass('calendar-date-root'));
+    $this->popup->addCssClass('sphp-calendar');
   }
 
   /**
@@ -112,6 +120,7 @@ class MonthView extends AbstractComponent {
     $container->append($this->generateTop());
     $container->append($this->createHead());
     $container->append($this->parseWeeks());
+    $container->append($this->popup);
     return $container;
   }
 
@@ -177,11 +186,18 @@ class MonthView extends AbstractComponent {
    * @return WeekDayView
    */
   protected function createDayCell(Date $day): WeekDayView {
-    $weekDayView = new WeekDayView($this->diaries->getDate($day));
+    $diaryDate = $this->diaries->getDate($day);
+    $weekDayView = new WeekDayView($diaryDate);
     if ($day->getMonth() === $this->month) {
       $weekDayView->addCssClass('selected-month');
     } else {
       $weekDayView->addCssClass('not-selected-month');
+    }
+    if ($diaryDate->notEmpty()) {
+      
+      $weekDayView->addCssClass('has-info');
+      $weekDayView->setAttribute('data-date', $day->format('Y-m-d'));
+      $this->popup->createController($weekDayView);
     }
     return $weekDayView;
   }
