@@ -8,7 +8,12 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
 
 //use Sphp\Stdlib\StopWatch;
 echo "<pre>";
-
+if (!isset($year)) {
+  $year = (int) date('Y');
+}
+if (!isset($year)) {
+  $month = (int) date('m');
+}
 //var_dump(StopWatch::getEcecutionTime());
 //$easter = new EasterHolidays($year);
 $fi = new HolidayDiary();
@@ -34,7 +39,7 @@ $basketball1->dateConstraints()->dateIsNot(new OneOf("$year-4-30", "$year-5-1"))
 
 //$fi->insertLog($basketball1);
 
-$exercises = \Sphp\DateTime\Calendars\Diaries\Sports\FitNotes::fromCsv(__DIR__.'/../snippets/FitNotes.csv');
+$exercises = \Sphp\DateTime\Calendars\Diaries\Sports\FitNotes::fromCsv(__DIR__ . '/../snippets/FitNotes.csv');
 foreach ($exercises as $excercise) {
   foreach ($excercise as $workout) {
     if ($workout instanceof \Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise) {

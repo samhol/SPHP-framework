@@ -74,6 +74,26 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
   }
 
   /**
+   * Sets subresource integrity
+   * 
+   * @param  string $hash a base64-encoded cryptographic hash of a resource (file)
+   * @param  string $crossorigin  CORS access to content Request 
+   * @return $this for a fluent interface
+   * @link   https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+   * @link   https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_The crossorigin attribute
+   */
+  public function setIntegrity(string $hash = null, string $crossorigin = null) {
+    $this->attributes()
+            ->set('integrity', $hash);
+    if ($hash !== null && $crossorigin === null) {
+      $crossorigin = 'anonymous';
+    }
+    $this->attributes()
+            ->set('crossorigin', $crossorigin);
+    return $this;
+  }
+
+  /**
    * Sets whether the script will not run until after the page has loaded
    * 
    * @param  boolean $defer true for deferred execution, false otherwise

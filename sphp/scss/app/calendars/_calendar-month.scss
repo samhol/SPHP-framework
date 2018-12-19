@@ -1,73 +1,108 @@
 
 @mixin sphp-calendar-month() { 
-  div.sphp.calendar-month {
+  div.sphp.calendar-month .cell > div.head, .cell > div.sphp.calendar-head {
+    border: solid 2px #555;
+    @include border-radius(3px);
+    text-align: center;
+    font-weight: bold;
+  }
+
+  div.sphp.calendar-month, div.sphp.calendar-week {
     .cell {
       > div {
         margin: rem-calc(1);
-        border-right-width: 10px;
       }
-      div.head {
-        border: solid 1px #555;
-        @include border-radius(2px);
+      div.head, div.sphp.calendar-head {
         text-align: center;
         font-weight: bold;
       }
       div.sphp.calendar-day {
-        &.has-info {
-          border: solid 2px #777;
-          &:hover {
-            cursor: pointer;
-            border: solid 2px #966;
-          }
-        }
-        .week-nr {
-          font-size: rem-calc(12);
-          border-right: solid 1px #888;
-          float: left;
-          padding: rem-calc(2 4 2 4);
-          background-color: rgba(#eee, .4);
-          height: 100%;
-          min-width: rem-calc(26);
-        }
-        time {
-          float: right;
-          margin-right: 2px;
-          padding: rem-calc(4);
-          .flag {
-            height: rem-calc(20);
-            margin-right: rem-calc(4);
-            svg {
-              padding: rem-calc(1);
-              border: solid 1px #aaa;
-              @include border-radius(2px);
-            }
-          }
-        }
         height: rem-calc(80);
-        border: solid 1px #aaa;
-        @include border-radius(2px);
-        text-align: center;
-        &.today {
-          background-color: rgba(#ff9900, .2);
-          border-width: 2px;
-          border-color: #555;
-          font-weight: bolder;
-        }
-        &.selected-month {
-          font-weight: bold;
-          @include opacity(1);
-        }
-        &.not-selected-month {
-          color: #999;
-          @include opacity(.7);
-        }
-        &.sunday:not(.today) {
-          background-color: rgba(#d11, .25);
-        }
-        &.holiday:not(.sunday)  {
-          background-color: rgba(#e55, .1);
-        }
       }
     }
   }
+
+  div.sphp.calendar-day {
+    border: solid 2px #666;
+    @include border-radius(3px);
+    text-align: center;
+    background-color: rgba(#ddd, .3);
+    font-weight: bold;
+    color: #222;
+    .week-nr {
+      font-size: rem-calc(12);
+      border-right: solid 1px #888;
+      float: left;
+      padding: rem-calc(2 4 2 4);
+      background-color: rgba(#eee, .4);
+      height: 100%;
+      min-width: rem-calc(26);
+    }
+    time {
+      float: right;
+      margin-right: 2px;
+      padding: rem-calc(4);
+      .flag {
+        height: rem-calc(20);
+        margin-right: rem-calc(4);
+        svg {
+          padding: rem-calc(1);
+          border: solid 1px #aaa;
+          @include border-radius(2px);
+        }
+      }
+    }
+    &.has-info {
+      cursor: pointer;
+    }
+    @include day-cell-colorer(#f3f3f3, #ccc, #444);
+
+    &.holiday, &.sunday {
+      @include day-cell-colorer(#e88, #d55, #444);
+    }
+    &.not-selected-month {
+      @include opacity(.6);
+    }
+    .flag {
+      height: rem-calc(20);
+      margin-right: rem-calc(4);
+      svg {
+        padding: rem-calc(1);
+        border: solid 1px #aaa;
+        @include border-radius(2px);
+      }
+    }
+    .icons {
+      left: 0;
+      svg, i, span {
+        margin: 1px;
+      }
+    }
+  }
+
+}
+
+@mixin day-cell-colorer($color, $hover, $border) {
+  $dark: smart-scale($color, 30%);
+  background-color: rgba($color, .25);
+  &.today {
+    background-color: rgba($color, .75);
+    .week-nr {
+    border-right-color: rgba($hover, .9);
+    background-color: rgba($color, .6);
+  }
+  }
+  &.has-info {
+    background-color: rgba($color, .5);
+    border-color: rgba($border, .7);
+    &:hover {
+      background-color: rgba($hover, .8);
+      border-color: rgba($border, 1);
+    }
+  }
+  .week-nr {
+    border-right-color: rgba($hover, .8);
+    background-color: rgba($color, .4);
+  }
+
 }

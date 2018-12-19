@@ -125,7 +125,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   /**
    * 
    * @param  string $viewport
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function setViewport(string $viewport = 'width=device-width, initial-scale=1.0') {
     $this->head()->set(Meta::viewport($viewport));
@@ -138,8 +138,10 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @return $this for a fluent interface
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
-  public function useFontAwesome(string $path = '') {
-    $this->head()->set((new ScriptSrc("https://use.fontawesome.com/releases/v5.4.1/js/all.js"))->setDefer(true));
+  public function useFontAwesome() {
+    $this->head()->set((new ScriptSrc('https://use.fontawesome.com/releases/v5.6.1/js/all.js'))
+                    ->setIntegrity('sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ')
+                    ->setDefer(true));
     return $this;
   }
 
@@ -150,8 +152,8 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.2.3/video-js.css'));
-    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.2.3/video.js');
+    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.3.0/video-js.css'));
+    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.3.0/video.js');
     return $this;
   }
 

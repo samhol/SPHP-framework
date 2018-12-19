@@ -17,7 +17,7 @@ use Sphp\Html\Media\Icons\Svg;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 
 /**
- * Implements a weekday vire for a calendar month
+ * Implements a weekday view for a calendar month
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -45,20 +45,45 @@ class WeekDayView extends AbstractComponent {
     $this->setCssClasses();
   }
 
+  /**
+   * 
+   * @return PlainContainer
+   */
   private function generateContent(): PlainContainer {
     $content = new PlainContainer;
     $date = $this->diaryDay->getDate();
     if ($date->getWeekDay() === 1) {
+
       $content->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
+    } else {
+      $content->append("<div class=\"week-nr\"></div>");
     }
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
-    if ($this->diaryDay->isFlagDay()) {
-      $timeTag->append('<span class="flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</span>');
+    if ($this->diaryDay->notEmpty()) {
+     
+      //$content->append(\Sphp\Html\Media\Icons\FA::flag()->setSize('xs')->pull('left')->addCssClass('fa-border'));
+      if ($this->diaryDay->isFlagDay()) {
+        //$timeTag->append('<span class="flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</span>');
+      }
     }
     $timeTag->append($this->diaryDay->getDate()->format('j'));
     $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l jS \of F Y'));
     $content->append($timeTag);
+    $content->append($this->createIcons());
     return $content;
+  }
+
+  public function createIcons() {
+    $div = new \Sphp\Html\Div();
+    $div->addCssClass('icons');
+
+    if ($this->diaryDay->notEmpty()) {
+      $div->append(\Sphp\Html\Media\Icons\FA::flag()->setSize('xs'));
+      if ($this->diaryDay->isFlagDay()) {
+        $div->append('<i class="flag svg-inline--fa fa-w-16">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</i>');
+      }
+    }
+    return $div;
   }
 
   protected function setCssClasses() {

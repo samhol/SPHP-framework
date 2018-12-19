@@ -121,6 +121,7 @@ class FA {
       'tags' => 'fas fa-tags',
       'stethoscope' => 'fas fa-stethoscope',
       'terminal' => 'fas fa-terminal',
+      'flag' => 'fas fa-flag',
       /**
        * Brands
        */
