@@ -24,7 +24,7 @@ try {
 
   $form = new SiteSearch360Form('playground.samiholck.com');
   $form->setLabelText(false);
-  $form->setPlaceholder('keywords in documentation');
+  $form->setPlaceholder('Search Manual');
 
   (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->right());
   $navi->right()->setContent('<ul class="menu"><li>' . $form . '</li></ul>');

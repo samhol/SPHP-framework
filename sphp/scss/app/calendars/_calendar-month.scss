@@ -1,3 +1,7 @@
+$today-background: #fc3;
+$holiday-background: #fcc;
+$day-background: #f3f3f3;
+$border-color: #555;
 
 @mixin sphp-calendar-month() { 
   div.sphp.calendar-month .cell > div.head, .cell > div.sphp.calendar-head {
@@ -38,7 +42,7 @@
       height: 100%;
       min-width: rem-calc(26);
     }
-    
+
     time {
       float: right;
       margin-right: 2px;
@@ -56,7 +60,7 @@
     &.has-info {
       cursor: pointer;
     }
-    @include day-cell-colorer(#ddd, #ccc, #444);
+    @include day-cell-colorer(#eee, #ccc, #444);
 
     &.holiday, &.sunday {
       @include day-cell-colorer(#e88, #d55, #444);
@@ -85,11 +89,14 @@
 
 @mixin day-cell-colorer($color, $hover, $border) {
   $dark: smart-scale($color, 30%);
+  $darker: smart-scale($color, 50%);
   background-color: rgba($color, .25);
   &.today {
     background-color: rgba($color, .75);
+    border-width: 3px;
     .week-nr {
-      border-right-color: rgba($hover, .9);
+      border-right-width: 2px;
+      border-right-color: rgba(smart-scale($border, 50%), .9);
       background-color: rgba($color, .6);
     }
   }

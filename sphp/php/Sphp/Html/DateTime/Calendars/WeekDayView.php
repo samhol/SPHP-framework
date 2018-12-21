@@ -40,8 +40,6 @@ class WeekDayView extends AbstractComponent {
     parent::__construct('div');
     $this->diaryDay = $diaryDate;
     $date = $this->diaryDay->getDate();
-    $this->cssClasses()->protect('sphp', 'calendar-day', strtolower($date->format('l')));
-    $this->setAttribute('data-date', $date->format('Y-m-d'));
     $this->setCssClasses();
   }
 
@@ -88,6 +86,11 @@ class WeekDayView extends AbstractComponent {
 
   protected function setCssClasses() {
     $date = $this->diaryDay->getDate();
+    $dayName = strtolower($date->format('l'));
+    $weekNumber = $date->getWeek();
+    $this->setAttribute('data-date', $date->format('Y-m-d'));
+    $this->setAttribute('data-week', $weekNumber);
+    $this->cssClasses()->protect('sphp', 'calendar-day', $dayName);
     if ($date->isCurrentDate()) {
       $this->cssClasses()->protect('today');
     }
