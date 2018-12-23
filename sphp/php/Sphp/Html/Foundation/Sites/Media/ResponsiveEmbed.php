@@ -31,6 +31,7 @@ use Sphp\Html\Media\Multimedia\YoutubePlayer;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/responsive-embed.html Responsive Embed
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterface, LazyMedia {

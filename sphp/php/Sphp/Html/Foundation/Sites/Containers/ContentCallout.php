@@ -17,6 +17,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/callout.html Foundation Callout
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class ContentCallout extends ClosableContainer implements Callout {

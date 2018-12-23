@@ -13,14 +13,13 @@ namespace Sphp\Html;
 use IteratorAggregate;
 use Sphp\Stdlib\Arrays;
 use Traversable;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\InvalidStateException;
 
 /**
  * Implements a container for HTML components and other textual content
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class PlainContainer implements IteratorAggregate, Container, ContentParser {

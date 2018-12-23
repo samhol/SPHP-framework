@@ -20,7 +20,7 @@ use Sphp\Html\ContainerTag;
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @link    http://foundation.zurb.com/docs/components/sidenav.html Foundation Side Nav
  * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class MenuLabel extends ContainerTag implements MenuItem {

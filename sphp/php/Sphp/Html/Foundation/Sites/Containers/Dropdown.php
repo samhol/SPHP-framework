@@ -23,6 +23,7 @@ use Sphp\Html\Component;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/dropdown.html Foundation Dropdown
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Dropdown implements Content {

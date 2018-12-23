@@ -21,6 +21,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @link    http://foundation.zurb.com/sites/docs/ Foundation for Sites
  * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation menus
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {

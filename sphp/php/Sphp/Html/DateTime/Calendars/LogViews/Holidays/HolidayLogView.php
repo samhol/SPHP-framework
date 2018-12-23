@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\DateTime\Calendars\LogViews;
+namespace Sphp\Html\DateTime\Calendars\LogViews\Holidays;
 
 use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
@@ -22,7 +22,7 @@ use Sphp\Html\DateTime\Calendars\LogViews\Holidays\BirthdayView;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class HolidayLogView {
@@ -44,14 +44,14 @@ class HolidayLogView {
    */
   public function __construct(DateInterface $viewedDate = null) {
     $this->birthdayView = new BirthdayView($viewedDate);
-    $this->holidayView = new Holidays\HolidayView();
+    $this->holidayView = new HolidayView();
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->birthdayView, $this->holidayView );
+    unset($this->birthdayView, $this->holidayView);
   }
 
   /**

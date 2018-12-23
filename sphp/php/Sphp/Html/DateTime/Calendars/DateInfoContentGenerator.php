@@ -11,7 +11,6 @@
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\Flow\Section;
-use Sphp\Html\Component;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\DateTime\Calendars\LogViews\LogViewBuilder;
 
@@ -20,9 +19,10 @@ use Sphp\Html\DateTime\Calendars\LogViews\LogViewBuilder;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class DateInfoContetnGenerator {
+class DateInfoContentGenerator {
 
   /**
    * @var LogViewBuilder

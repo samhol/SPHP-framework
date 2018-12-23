@@ -13,10 +13,11 @@ namespace Sphp\Html;
 use Throwable;
 
 /**
- * Trait implements parts of the {@link Content} interface
+ * Trait implements parts of the Content interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 trait ContentTrait {

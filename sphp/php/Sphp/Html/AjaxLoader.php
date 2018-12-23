@@ -24,6 +24,7 @@ namespace Sphp\Html;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://api.jquery.com/load/ jQuery load()
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 interface AjaxLoader {

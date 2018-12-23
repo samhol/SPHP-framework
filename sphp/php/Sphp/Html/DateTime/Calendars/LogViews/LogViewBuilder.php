@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
+use Sphp\Html\DateTime\Calendars\LogViews\Holidays\HolidayLogView;
 use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 
@@ -18,7 +19,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class LogViewBuilder {

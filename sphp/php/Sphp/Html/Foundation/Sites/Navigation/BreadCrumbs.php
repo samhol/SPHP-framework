@@ -31,7 +31,7 @@ use Traversable;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class BreadCrumbs extends AbstractComponent implements IteratorAggregate, TraversableContent {

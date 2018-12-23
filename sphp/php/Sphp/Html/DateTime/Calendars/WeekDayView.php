@@ -21,7 +21,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class WeekDayView extends AbstractComponent {
@@ -39,8 +39,7 @@ class WeekDayView extends AbstractComponent {
   public function __construct(DiaryDate $diaryDate) {
     parent::__construct('div');
     $this->diaryDay = $diaryDate;
-    $date = $this->diaryDay->getDate();
-    $this->setCssClasses();
+    $this->setAttributes();
   }
 
   /**
@@ -52,9 +51,9 @@ class WeekDayView extends AbstractComponent {
     $date = $this->diaryDay->getDate();
     if ($date->getWeekDay() === 1) {
 
-      $content->append("<div class=\"week-nr\">{$this->diaryDay->getDate()->getWeek()}</div>");
+      $content->append("<div class=\"week-nr left-column\">{$this->diaryDay->getDate()->getWeek()}</div>");
     } else {
-      $content->append("<div class=\"week-nr\"></div>");
+      $content->append("<div class=\"week-nr left-column\"></div>");
     }
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->notEmpty()) {
@@ -84,10 +83,11 @@ class WeekDayView extends AbstractComponent {
     return $div;
   }
 
-  protected function setCssClasses() {
+  protected function setAttributes() {
     $date = $this->diaryDay->getDate();
     $dayName = strtolower($date->format('l'));
     $weekNumber = $date->getWeek();
+    $this->setAttribute('data-week-day', $dayName);
     $this->setAttribute('data-date', $date->format('Y-m-d'));
     $this->setAttribute('data-week', $weekNumber);
     $this->cssClasses()->protect('sphp', 'calendar-day', $dayName);

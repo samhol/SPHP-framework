@@ -13,7 +13,6 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Html\Span;
 use Sphp\Html\Component;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Media\Icons\Filetype;
 use Sphp\Html\Media\Icons\Icons;
 
 /**
@@ -21,6 +20,7 @@ use Sphp\Html\Media\Icons\Icons;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 abstract class Media {

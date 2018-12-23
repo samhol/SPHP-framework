@@ -19,6 +19,7 @@ use Sphp\Html\IdentifiableContent;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 interface MenuItem extends IdentifiableContent {

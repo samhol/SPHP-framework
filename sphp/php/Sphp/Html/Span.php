@@ -22,6 +22,7 @@ namespace Sphp\Html;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_span.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Span extends ContainerTag implements InlineContainer {

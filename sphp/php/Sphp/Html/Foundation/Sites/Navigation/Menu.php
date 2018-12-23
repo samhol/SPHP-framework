@@ -17,6 +17,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Menu extends AbstractMenu {

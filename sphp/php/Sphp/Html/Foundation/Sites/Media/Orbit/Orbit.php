@@ -21,6 +21,7 @@ use Sphp\Html\TraversableContent;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Orbit extends AbstractComponent implements IteratorAggregate, TraversableContent {

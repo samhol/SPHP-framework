@@ -25,7 +25,7 @@ use Sphp\Html\Foundation\Sites\Containers\Popup;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class MonthView extends AbstractComponent {
@@ -65,10 +65,10 @@ class MonthView extends AbstractComponent {
     parent::__construct('div');
     $this->cssClasses()->protect('sphp', 'calendar-month');
     if ($year === null) {
-      $year = (int) date('Y', time());
+      $year = (int) date('Y');
     }
     if ($month === null) {
-      $month = (int) date('m', time());
+      $month = (int) date('m');
     }
     $this->month = $month;
     $this->year = $year;
@@ -155,14 +155,16 @@ class MonthView extends AbstractComponent {
   }
 
   protected function createHead(): Row {
-    $h = new Row();
+    $row = new Row();
     $cu = new CalendarUtils();
     foreach ($cu->getWeekdays() as $num => $day) {
-      $h->append('<div class="head day">
-      <span class="show-for-small-only">' . $cu->getWeekdayName($num, 2) . '</span>
-      <span class="hide-for-small-only">' . $day . '</span></div>');
+      $div = new \Sphp\Html\Div;
+      $div->addCssClass('sphp', 'calendar-head', 'day', strtolower($day));
+      $div->append('<span class="show-for-small-only">' . $cu->getWeekdayName($num, 2) . '</span>');
+      $div->append('<span class="hide-for-small-only">' . $day . '</span>');
+      $row->append($div);
     }
-    return $h;
+    return $row;
   }
 
   /**
@@ -173,6 +175,7 @@ class MonthView extends AbstractComponent {
    */
   private function createWeekRow(Date $date): Row {
     $row = new Row();
+    $row->addCssClass('sphp', 'calendar-week-row');
     $row->append($this->createDayCell($date));
     $next = $date->nextDay();
     while ($next->getWeekDay() !== 1) {

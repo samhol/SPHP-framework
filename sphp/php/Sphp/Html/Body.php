@@ -20,6 +20,7 @@ use Sphp\Html\Scripts\ScriptsContainer;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_body.asp w3schools API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Body extends ContainerTag implements ContentParser {

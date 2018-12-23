@@ -22,6 +22,7 @@ use Traversable;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/orbit.html Foundation Orbit slider
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class SlideContainer extends AbstractComponent implements \IteratorAggregate, \Countable {

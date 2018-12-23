@@ -20,6 +20,7 @@ use Sphp\Html\Component;
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/docs/components/block_grid.html Foundation Block Grid
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class PopupLayoutManager extends ColourableLayoutManager {

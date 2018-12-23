@@ -19,7 +19,7 @@ use Sphp\Database\Doctrine\Objects\Location;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class LocationStorage extends AbstractObjectStorage implements \IteratorAggregate {

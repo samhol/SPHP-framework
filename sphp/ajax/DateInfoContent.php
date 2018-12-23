@@ -9,7 +9,7 @@ require_once('../../manual/settings.php');
 $year = 2018;
 include '../../manual/pages/diaries.php';
 
-$cont = new DateInfoContetnGenerator();
+$cont = new DateInfoContentGenerator();
 $date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_STRING);
 if ($date === null) {
   $date = new \Sphp\DateTime\Date;

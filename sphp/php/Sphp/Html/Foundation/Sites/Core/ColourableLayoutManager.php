@@ -19,6 +19,7 @@ use Sphp\Html\Component;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/buttons.html Foundation Buttons
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class ColourableLayoutManager extends AbstractLayoutManager implements Colourable {

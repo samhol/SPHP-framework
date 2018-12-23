@@ -19,6 +19,7 @@ use Sphp\Html\Content;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/flex_video.html Foundation Flex Video
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 interface ResponsiveEmbedInterface extends Content {

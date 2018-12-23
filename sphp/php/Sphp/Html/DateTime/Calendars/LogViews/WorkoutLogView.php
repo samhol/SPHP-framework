@@ -11,30 +11,26 @@
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\DateTime\Calendars\Diaries\Sports\Workouts;
-use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\DistanceAndTimeExercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\Ol;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\Tags;
 
 /**
  * Implements a workout log viewer
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class WorkoutLogView {
 
   public function build(DiaryDate $date): string {
     $workouts = $date->getByType(Workouts::class);
-     //echo $date;
+    //echo $date;
     if ($workouts->notEmpty()) {
       $section = new Section();
       $section->addCssClass('workouts');

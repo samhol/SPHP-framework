@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Forms;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework Github repository
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class FreefindSearchForm extends AbstractSearchForm {

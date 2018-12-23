@@ -19,6 +19,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/visibility.html#show-for-screen-readers-only Foundation screen readers
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 interface ScreenReaderLabelable {

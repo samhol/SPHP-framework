@@ -30,6 +30,7 @@ use Sphp\Html\Attributes\IdStorage;
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
  * @license https://opensource.org/licenses/MIT The MIT License
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighlighter {

@@ -7,7 +7,22 @@
  */
 (function (sphp, $, undefined) {
   "use strict";
+
+  sphp.columnHighlighter = function () {
+    var $dayCell = $('div.sphp.calendar-day');
+    $dayCell.mouseover(function () {
+      var $weekday = $(this).attr('data-week-day');
+      $('div.sphp.calendar-head.day.' + $weekday).addClass('active');
+      console.log('weekday activated: ' + $weekday);
+    });
+    $dayCell.mouseout(function () {
+      var $weekday = $(this).attr('data-week-day');
+      $('div.sphp.calendar-head.day.' + $weekday).removeClass('active');
+      console.log('weekday deactivated: ' + $weekday);
+    });
+  };
   sphp.calendar = function () {
+
     var $modal = $('.sphp-calendar.reveal');
     $('.calendar-day.has-info').on("click", function () {
       var date = $(this).attr('data-date');
@@ -25,6 +40,7 @@
 
 $(window).bind("load", function () {
   "use strict";
+  sphp.columnHighlighter();
   sphp.calendar();
 
 });
