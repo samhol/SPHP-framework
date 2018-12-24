@@ -17,7 +17,6 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\PlainContainer;
 use Traversable;
-use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Exceptions\RuntimeException;
 
 /**
@@ -26,6 +25,7 @@ use Sphp\Exceptions\RuntimeException;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 abstract class StandardList extends AbstractComponent implements IteratorAggregate, TraversableContent {

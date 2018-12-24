@@ -17,6 +17,7 @@ namespace Sphp\Html\Flow\Headings;
  * @link    http://www.w3schools.com/tags/tag_hn.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-h1-h2-h3-h4-h5-and-h6-elements W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class H2 extends AbstractHeading {

@@ -22,6 +22,7 @@ use Sphp\Html\NonVisualContent;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Base extends EmptyTag implements OverlappingHeadContent, NonVisualContent {

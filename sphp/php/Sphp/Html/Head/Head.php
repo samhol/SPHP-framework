@@ -12,7 +12,6 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Scripts\ScriptSrc;
 
 /**
  * Implements an HTML &lt;head&gt; tag
@@ -22,6 +21,7 @@ use Sphp\Html\Scripts\ScriptSrc;
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_head.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Head extends AbstractComponent implements \IteratorAggregate, NonVisualContent, \Sphp\Html\TraversableContent {

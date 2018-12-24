@@ -16,18 +16,13 @@ namespace Sphp\Html\Lists;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_ul.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Ul extends StandardList {
 
   /**
    * Constructor
-   *
-   * **Notes:**
-   *
-   * 1. Any `mixed $content` not implementing {@link LiInterface} is wrapped 
-   *    within {@link Li} component
-   * 2. All items of an array are treated according to note (1)
    *
    * @param  mixed|null $items the content of the component
    */

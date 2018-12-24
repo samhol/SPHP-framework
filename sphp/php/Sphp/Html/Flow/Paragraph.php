@@ -22,6 +22,7 @@ use Sphp\Html\AjaxLoader;
  * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-p-element W3C HTML API link
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Paragraph extends ContainerTag implements AjaxLoader {

@@ -18,6 +18,7 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\Html\Tags;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
+use Sphp\Html\Media\Icons\FA;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -49,11 +50,24 @@ class WorkoutPaneBuilder {
    * @return Container exercise pane title content
    */
   public function buildTitleContent(Exercise $exercise): Container {
-    $title = Tags::span($exercise->getName());
+    $title = new \Sphp\Html\PlainContainer;
+    $title[] = $this->descriptionToIcon($exercise);
+    $title[] = Tags::span($exercise->getName());
     if ($exercise->getDescription() !== '') {
       $title->append(Tags::small(" ({$exercise->getDescription()})"));
     }
     return $title;
+  }
+
+  public function descriptionToIcon(Exercise $exercise) {
+
+    if ($exercise instanceof WeightLiftingExercise) {
+      return new \Sphp\Html\Media\Icons\FaIcon('fas fa-dumbbell');
+    } else if ($exercise->getName() === 'Cycling') {
+      return new \Sphp\Html\Media\Icons\FaIcon('fas fa-bicycle');
+    } elseif ($exercise->getName() === 'Basketball') {
+      return new \Sphp\Html\Media\Icons\FaIcon('fas fa-basketball-ball');
+    }
   }
 
   public function setToHtml(ExerciseSet $set): string {

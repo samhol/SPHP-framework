@@ -1,4 +1,3 @@
-
 /**
  * Sphp.Foundation.ProgressBar.js (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
@@ -8,7 +7,7 @@
  */
 (function ($) {
   'use strict';
-  
+
   /**
    * Replaces the selected part of the attribute value
    *
