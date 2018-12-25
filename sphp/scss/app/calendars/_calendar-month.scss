@@ -12,9 +12,6 @@ $border-color: #555;
         @include border-radius(3px);
         text-align: center;
         font-weight: bold;
-        @include transition-property(all);
-        @include transition-duration(0.3s);
-        @include transition-timing-function(ease-in-out);
         @include opacity(.6);
         &.active {
           @include opacity(.9);
@@ -25,12 +22,17 @@ $border-color: #555;
       }
     }
   }
+  div.sphp.calendar-day, div.sphp.calendar-head {
+    @include transition-property(all);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-in-out);
+  }
   div.sphp.calendar-week-row {
     &:hover {
       div.sphp.calendar-day {
-        @include opacity(.9);
+        @include opacity(.85);
         &.not-selected-month {
-          @include opacity(.8);
+          @include opacity(.7);
         }
       }
     }
@@ -42,7 +44,7 @@ $border-color: #555;
       background-color: rgba(#eee, .2);
       font-weight: bolder;
       color: #666;
-      @include opacity(.7);
+      @include opacity(.65);
       time {
         float: right;
         margin-right: 2px;
@@ -61,7 +63,7 @@ $border-color: #555;
         cursor: pointer;
       }
       &.not-selected-month {
-        @include opacity(.5);
+        @include opacity(.4);
         background-color: rgba(#eee, .2);
         border: solid 2px #888;
       }
@@ -111,7 +113,7 @@ $border-color: #555;
         @include opacity(1);
         text-decoration: underline;
         &.not-selected-month {
-          @include opacity(.9);
+          @include opacity(.85);
         }
       }
     }

@@ -60,14 +60,21 @@ class WorkoutPaneBuilder {
   }
 
   public function descriptionToIcon(Exercise $exercise) {
-
+    $span = new \Sphp\Html\Span();
+    $span->addCssClass('icon');
     if ($exercise instanceof WeightLiftingExercise) {
-      return new \Sphp\Html\Media\Icons\FaIcon('fas fa-dumbbell');
+      $span->addCssClass('wr');
+      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-dumbbell fa-fw');
     } else if ($exercise->getName() === 'Cycling') {
-      return new \Sphp\Html\Media\Icons\FaIcon('fas fa-bicycle');
-    } elseif ($exercise->getName() === 'Basketball') {
-      return new \Sphp\Html\Media\Icons\FaIcon('fas fa-basketball-ball');
+      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-bicycle fa-fw');
+    } else if ($exercise->getName() === 'Basketball') {
+      $span->addCssClass('basketball');
+      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-basketball-ball fa-fw');
+    } else {
+      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-bolt fa-fw');
     }
+    $span->append($icon);
+    return $span;
   }
 
   public function setToHtml(ExerciseSet $set): string {
