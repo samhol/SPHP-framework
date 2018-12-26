@@ -25,7 +25,7 @@ class EasterHolidays extends MutableDiary {
   /**
    * Constructor
    * 
-   * @param  int $year
+   * @param int $year
    */
   public function __construct(int $year = null) {
     parent::__construct();

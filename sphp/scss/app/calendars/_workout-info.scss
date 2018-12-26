@@ -1,0 +1,94 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+$wr: #12B1FF;
+@mixin workout-info() {
+  section.workouts {
+    margin: 1px;
+    padding:  rem-calc(3 1);
+    h3.heading {
+
+      font-size: rem-calc(20);
+      padding:   rem-calc(3 5);
+      font-weight: 700; 
+    }
+    .accordion-title {
+      span.icon  {
+        display: inline-block;
+        height: 100%;
+        margin-right: 4px;
+        border: solid #555 1px;
+        @include border-radius(2px);
+        @include padding(.1, .2, .1, .2);
+        background-color: #eee;
+        &.wr {
+          background-color: rgba($wr, .45);
+        }
+        &.basketball {
+          background-color: rgba(#CF5300, .45);
+        }
+        &.outdoors {
+          background-color: rgba(#7cfc00, .45);
+        }
+      }
+      span {
+        font-size: rem-calc(19);
+        font-weight: bold;
+      }
+      small {
+        margin-left: rem-calc(4);
+        font-size: rem-calc(13);
+      }
+      &:hover {
+        span.icon {
+          &.basketball {
+            background-color: rgba(#CF5300, .60);
+          } 
+          &.wr {
+            background-color: rgba($wr, .60);
+          }
+          &.outdoors {
+            background-color: rgba(#7cfc00, .60);
+          }
+        }
+      }
+    }
+    &.workouts {
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      .accordion-content {
+        h6 {
+          font-size: rem-calc(18);
+          font-weight: 700; 
+        }
+        .metric-unit {
+          font-size: rem-calc(13);
+          font-family: $font-family-monospace;
+          font-weight: 600; 
+        }
+        ol {
+          list-style: none;
+          counter-reset: exercise-set-counter;
+        }
+        ol li {
+          counter-increment: exercise-set-counter;
+        }
+        ol li::before {
+          content: counter(exercise-set-counter) ". ";
+          color: black;
+          font-weight: 600;
+          font-family: $font-family-monospace;
+          font-size: rem-calc(16);
+          margin-right: rem-calc(5);
+        }
+        ul {
+          list-style: none;
+        }
+      }
+    }
+  }
+}

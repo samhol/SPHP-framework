@@ -76,7 +76,7 @@ class MonthView extends AbstractComponent {
     $this->diaries = new DiaryContainer();
 
     $this->popup = new Popup((new Section())->addCssClass('calendar-date-root'));
-    $this->popup->addCssClass('sphp-calendar', 'sphp-date-info');
+    $this->popup->addCssClass('sphp', 'calendar', 'date-info');
   }
 
   /**

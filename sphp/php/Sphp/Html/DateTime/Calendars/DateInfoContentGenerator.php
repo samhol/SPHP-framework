@@ -46,8 +46,12 @@ class DateInfoContentGenerator {
 
   public function generate(DiaryDate $date): Section {
     $section = new Section();
-    $section->appendH2($date->getDate()->format('l, F jS, Y'))
-            ->prepend('<span class="flag">' . \Sphp\Html\Media\Icons\Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</span>');
+    $section->addCssClass('date-info-content');
+    $heading = $section->appendH2($date->getDate()->format('l, F jS, Y'));
+    if ($date->isFlagDay()) {
+      $heading->prepend('<span class="national-flag">' . \Sphp\Html\Media\Icons\Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</span>');
+    }
+
     $section->append($this->logLayoutBuilder->build($date));
     return $section;
   }
