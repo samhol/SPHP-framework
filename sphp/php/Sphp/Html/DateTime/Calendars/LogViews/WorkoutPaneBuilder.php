@@ -18,7 +18,7 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\Html\Tags;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FaIcon;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -64,15 +64,23 @@ class WorkoutPaneBuilder {
     $span->addCssClass('icon');
     if ($exercise instanceof WeightLiftingExercise) {
       $span->addCssClass('wr');
-      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-dumbbell fa-fw');
+      $icon = new FaIcon('fas fa-dumbbell');
+    } else if ($exercise->getName() === 'Running') {
+      $span->addCssClass('outdoors');
+      $icon = new FaIcon('fas fa-runnung');
     } else if ($exercise->getName() === 'Cycling') {
-      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-bicycle fa-fw');
+      $span->addCssClass('outdoors');
+      $icon = new FaIcon('fas fa-bicycle');
+    } else if ($exercise->getName() === 'Tinbersports') {
+      $span->addCssClass('outdoors');
+      $icon = new FaIcon('fas fa-leaf');
     } else if ($exercise->getName() === 'Basketball') {
       $span->addCssClass('basketball');
-      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-basketball-ball fa-fw');
+      $icon = new FaIcon('fas fa-basketball-ball');
     } else {
-      $icon = new \Sphp\Html\Media\Icons\FaIcon('fas fa-bolt fa-fw');
+      $icon = new FaIcon('fas fa-bolt');
     }
+    $icon->fixedWidth(true);
     $span->append($icon);
     return $span;
   }

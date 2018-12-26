@@ -40,6 +40,9 @@
           &.basketball {
             background-color: rgba(#CF5300, .45);
           }
+          &.outdoors {
+            background-color: rgba(#7cfc00, .45);
+          }
 
         }
         span {
@@ -54,8 +57,12 @@
           span.icon {
             &.basketball {
               background-color: rgba(#CF5300, .60);
-            } &.wr {
+            } 
+            &.wr {
               background-color: rgba(#CBCDCD, .60);
+            }
+            &.outdoors {
+              background-color: rgba(#7cfc00, .60);
             }
           }
         }
