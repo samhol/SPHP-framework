@@ -16,6 +16,7 @@ use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\Html\Tags;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Media\Icons\FaIcon;
@@ -50,7 +51,7 @@ class WorkoutPaneBuilder {
    * @return Container exercise pane title content
    */
   public function buildTitleContent(Exercise $exercise): Container {
-    $title = new \Sphp\Html\PlainContainer;
+    $title = new PlainContainer;
     $title[] = $this->descriptionToIcon($exercise);
     $title[] = Tags::span($exercise->getName());
     if ($exercise->getDescription() !== '') {
@@ -60,7 +61,7 @@ class WorkoutPaneBuilder {
   }
 
   public function descriptionToIcon(Exercise $exercise) {
-    $span = new \Sphp\Html\Span();
+    $span = Tags::span();
     $span->addCssClass('icon');
     if ($exercise instanceof WeightLiftingExercise) {
       $span->addCssClass('wr');
@@ -100,7 +101,7 @@ class WorkoutPaneBuilder {
    * @return Container exercise pane content
    */
   public function buildContent(Exercise $exercise): Container {
-    $container = new Section();
+    $container = Tags::section();
     if ($exercise->count() > 0) {
       if ($exercise instanceof WeightLiftingExercise || $exercise->count() > 1) {
         $container->appendH6('Sets:');

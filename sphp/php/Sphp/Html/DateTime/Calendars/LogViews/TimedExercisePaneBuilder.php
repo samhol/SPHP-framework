@@ -12,9 +12,10 @@ namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\TimedExercise;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Lists\Ul;
+use Sphp\Html\Flow\Section;
 use Sphp\DateTime\Duration;
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Implements pane builder for timed exercises
  *
@@ -24,15 +25,13 @@ use Sphp\DateTime\Duration;
  * @filesource
  */
 class TimedExercisePaneBuilder extends WorkoutPaneBuilder {
-  
+
   public function totalsToHtml(Exercise $exercise): string {
     if (!$exercise instanceof TimedExercise) {
-      throw new \Sphp\Exceptions\InvalidArgumentException;
+      throw new InvalidArgumentException('Excercise type must be ' . TimedExercise::class . ' (' . get_class($exercise) . ' given)');
     }
-    $section = new PlainContainer();
-    $list = new Ul();
-    $list->append('<strong>time:</strong> ' . $this->durationtoString($exercise->getTotalTime()) . '<span class="metric-unit"></span>');
-    $section->append($list);
+    $section = new Section();
+    $section->appendH6('Total time: <small>' . $this->durationtoString($exercise->getTotalTime()) . '</small>');
     return "$section";
   }
 
@@ -50,4 +49,5 @@ class TimedExercisePaneBuilder extends WorkoutPaneBuilder {
     }
     return \implode(' ', $item);
   }
+
 }
