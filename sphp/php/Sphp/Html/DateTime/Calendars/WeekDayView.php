@@ -53,11 +53,11 @@ class WeekDayView extends AbstractComponent {
     $leftCol->addCssClass('left-column', 'show-for-medium');
     if ($date->getWeekDay() === 1) {
       $leftCol->append($this->diaryDay->getDate()->getWeek());
-    } 
+    }
     $content->append($leftCol);
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->notEmpty()) {
-     
+
       //$content->append(\Sphp\Html\Media\Icons\FA::flag()->setSize('xs')->pull('left')->addCssClass('fa-border'));
       if ($this->diaryDay->isFlagDay()) {
         //$timeTag->append('<span class="flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</span>');

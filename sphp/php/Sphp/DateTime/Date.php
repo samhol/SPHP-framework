@@ -61,8 +61,8 @@ class Date extends AbstractDate {
    * @throws InvalidArgumentException if date cannot be parsed from input
    */
   public function compareTo($date): int {
-    $dt = Date::from($date)->getTimestamp();
-    $timeStamp = $this->getTimestamp();
+    $dt = Date::from($date)->format('Ymd');
+    $timeStamp = $this->format('Ymd');
     $result = $timeStamp <=> $dt;
     return $result;
   }
