@@ -20,6 +20,7 @@ use Sphp\Html\PlainContainer;
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Media\Icons\FaIcon;
+use Sphp\Stdlib\Strings;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -66,15 +67,24 @@ class WorkoutPaneBuilder {
     if ($exercise instanceof WeightLiftingExercise) {
       $span->addCssClass('wr');
       $icon = new FaIcon('fas fa-dumbbell');
-    } else if ($exercise->getName() === 'Running') {
+    } else if ($exercise->getName() === 'Skiing') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-runnung');
+      $icon = new FaIcon('fas fa-skiing-nordic');
+    }else if ($exercise->getName() === 'Walking') {
+      $span->addCssClass('outdoors');
+      $icon = new FaIcon('fas fa-walking');
+    } else if ($exercise->getName() === 'Running (Outdoor)') {
+      $span->addCssClass('outdoors');
+      $icon = new FaIcon('fas fa-running');
+    }else if ($exercise->getName() === 'Swimming') {
+      $span->addCssClass('outdoors');
+      $icon = new FaIcon('fas fa-swimmer');
     } else if ($exercise->getName() === 'Cycling') {
       $span->addCssClass('outdoors');
       $icon = new FaIcon('fas fa-bicycle');
     } else if ($exercise->getName() === 'Tinbersports') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-leaf');
+      $icon = new FaIcon('fas fa-tree');
     } else if ($exercise->getName() === 'Basketball') {
       $span->addCssClass('basketball');
       $icon = new FaIcon('fas fa-basketball-ball');

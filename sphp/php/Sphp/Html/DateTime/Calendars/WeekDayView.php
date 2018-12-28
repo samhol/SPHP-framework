@@ -49,12 +49,12 @@ class WeekDayView extends AbstractComponent {
   private function generateContent(): PlainContainer {
     $content = new PlainContainer;
     $date = $this->diaryDay->getDate();
+    $leftCol = new \Sphp\Html\Div();
+    $leftCol->addCssClass('left-column', 'show-for-medium');
     if ($date->getWeekDay() === 1) {
-
-      $content->append("<div class=\"week-nr left-column\">{$this->diaryDay->getDate()->getWeek()}</div>");
-    } else {
-      $content->append("<div class=\"week-nr left-column\"></div>");
-    }
+      $leftCol->append($this->diaryDay->getDate()->getWeek());
+    } 
+    $content->append($leftCol);
     $timeTag = new TimeTag($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->notEmpty()) {
      
