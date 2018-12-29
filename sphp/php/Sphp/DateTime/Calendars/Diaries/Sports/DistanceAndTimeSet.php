@@ -38,22 +38,17 @@ class DistanceAndTimeSet extends TimedSet {
    * @param ImmutableDuration $duration the duration of the exercise set
    * @param string $unit
    */
-  public function __construct(float $distance, ImmutableDuration $duration, string $unit = 'km') {
+  public function __construct(float $distance, ImmutableDuration $duration) {
     parent::__construct($duration);
     $this->distance = $distance;
-    $this->unit = $unit;
   }
 
   public function __toString(): string {
     $duration = parent::__toString();
-    return sprintf("%s%s in %s", $this->distance, $this->unit, $duration);
+    return sprintf("%skm in %s", $this->distance, $this->unit, $duration);
   }
 
-  public function getDistance(string $unit = 'km'): float {
-    if ($unit !== $this->unit) {
-
-      return $this->distance;
-    }
+  public function getDistance(): float {
     return $this->distance;
   }
 

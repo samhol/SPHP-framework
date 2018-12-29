@@ -71,7 +71,7 @@ class EventViewBuilder {
       $output->append($event);
     }
     
-    $tasks = $date->getByType(\Sphp\DateTime\Calendars\Diaries\Schedules\Task::class);
+    $tasks = $date->getByType(\Sphp\DateTime\Calendars\Diaries\Schedules\SingleTask::class);
     foreach($tasks as $task) {
       $output->append($task);
     }

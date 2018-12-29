@@ -24,6 +24,16 @@ use Sphp\DateTime\Calendars\Diaries\MutableDiary;
  */
 class FitNotes {
 
+  const DATE = 0;
+  const EXERCISE = 1;
+  const CATEGORY = 2;
+  const WEIGHT = 3;
+  const REPS = 4;
+  const DISTANCE = 5;
+  const DISTANCE_UNIT = 6;
+  const TIME = 7;
+  const COMMENT = 8;
+
   /**
    * Parses exercises from FitNotes csv file 
    * 
@@ -38,34 +48,34 @@ class FitNotes {
     $rawDate = '';
 
     //var_dump(\Sphp\Stdlib\StopWatch::getEcecutionTime());
-    foreach ($rawData as $exersice) {
-      if (!isset($date) || $rawDate !== $exersice[0]) {
-        $rawDate = $exersice[0];
+    foreach ($rawData as $row) {
+      if (!isset($date) || $rawDate !== $row[self::DATE]) {
+        $rawDate = $row[self::DATE];
         $date = new Date($rawDate);
         $log = new Workouts($date);
         $coll->insertLog($log);
       }
-      $name = $exersice[1];
-      $category = $exersice[2];
-      if ($exersice[3] > 0 && $exersice[4] > 0) {
+      $name = $row[self::EXERCISE];
+      $category = $row[self::CATEGORY];
+      if ($row[self::WEIGHT] > 0 && $row[self::REPS] > 0) {
         $ex = $log->weightLiftingExercise($name, $category);
-        $ex->addSet((float) $exersice[3], (int) $exersice[4]);
-      } else if (!empty($exersice[7])) {
-        if ($exersice[5] > 0) {
+        $ex->addSet((float) $row[self::WEIGHT], (int) $row[self::REPS]);
+      } else if (!empty($row[self::TIME])) {
+        if ($row[self::DISTANCE] > 0) {
           $ex = $log->distanceAndTimeExercise($name, $category);
-          if ($exersice[6] !== '') {
-            $unit = $exersice[6];
+          if ($row[self::DISTANCE_UNIT] !== '') {
+            $unit = $row[self::DISTANCE_UNIT];
           } else {
             $unit = 'km';
           }
           if ($unit === 'm') {
-            $ex->addSet((float) $exersice[5] / 1000, $exersice[7], 'km');
+            $ex->addSet((float) $row[self::DISTANCE] / 1000, $row[self::TIME]);
           } else {
-            $ex->addSet((float) $exersice[5], $exersice[7], $unit);
+            $ex->addSet((float) $row[self::DISTANCE], $row[self::TIME], $unit);
           }
         } else {
           $ex = $log->timedExercise($name, $category);
-          $ex->addSet($exersice[7]);
+          $ex->addSet($row[self::TIME]);
         }
       }
     }

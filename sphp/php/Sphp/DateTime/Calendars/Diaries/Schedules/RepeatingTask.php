@@ -12,16 +12,22 @@ namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
 use Sphp\DateTime\Calendars\Diaries\CalendarEntry;
 use Sphp\DateTime\DateTime;
-
+use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
+use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
 /**
- * Description of Task
+ * Description of RepeatingTask
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Task implements CalendarEntry {
-
+class RepeatingTask implements CalendarEntry {
+  /**
+   * @var Constraint 
+   */
+  private $constraint;
+  
   /**
    * @var DateTime 
    */
@@ -40,8 +46,8 @@ class Task implements CalendarEntry {
   /**
    * Constructor
    * 
-   * @param type $start
-   * @param type $end
+   * @param mixed $start
+   * @param mixed $end
    */
   public function __construct($start, $end) {
     $this->start = DateTime::from($start);
@@ -56,7 +62,7 @@ class Task implements CalendarEntry {
   }
 
   public function __toString(): string {
-    $output = 'Task:;:: ' . $this->start .' - '. $this->end;
+    $output = 'Task: ' . $this->start . ' - ' . $this->end;
     return $output;
   }
 
@@ -118,8 +124,8 @@ class Task implements CalendarEntry {
   }
 
   public function dateMatchesWith($date): bool {
-    if (!$date instanceof \Sphp\DateTime\Date) {
-      $date = \Sphp\DateTime\Date::from($date);
+    if (!$date instanceof Date) {
+      $date = Date::from($date);
     }
     return $date->compareTo($this->start) >= 0 && $date->compareTo($this->end) <= 0;
   }

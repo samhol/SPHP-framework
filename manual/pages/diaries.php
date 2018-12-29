@@ -56,7 +56,7 @@ $workCalendar = new \Sphp\DateTime\Calendars\Diaries\MutableDiary();
 $liucon = Logs::weekly([1, 2, 3, 4, 5], 'Working as an employee for Liucon OY');
 $liucon->dateConstraints()->isAfter('2018-5-9')->isBefore('2018-8-11');
 $workCalendar->insertLog($liucon);
-$workCalendar->insertLog(new \Sphp\DateTime\Calendars\Diaries\Schedules\Task('2018-5-20 11:00 EET', '2018-5-20 12:00 EET'));
+$workCalendar->insertLog(new \Sphp\DateTime\Calendars\Diaries\Schedules\SingleTask('2018-5-20 11:00 EET', '2018-5-20 12:00 EET'));
 //var_dump($exercises instanceof \Sphp\DateTime\Calendars\Diaries\DiaryInterface);
 $diaryContainer = new \Sphp\DateTime\Calendars\Diaries\DiaryContainer();
 
