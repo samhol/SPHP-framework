@@ -49,11 +49,12 @@ class HolidayDiary extends LogDispatcher {
     $this->insertLog(Holidays::annual(1, 6, 'Epiphany')->setNationalHoliday());
     $this->insertLog(Holidays::birthday('1804-2-5', 'Johan Ludvig, Runeberg', 'May 6, 1877')->setFlagDay($country));
     $this->insertLog(Holidays::annual(2, 28, 'Day of Kalevala')->setFlagDay($country));
-    $this->insertLog(Holidays::birthday('19 March 1844', 'Minna, Canth', '12 May 1897')->setFlagDay($country));
-    $eqDay = Holidays::annual(4, 19, 'Day of Equality')->setFlagDay($country);
-    $eqDay->dateConstraints()->dateIsNot(new Before('2007-4-19'));
+    $this->insertLog(Holidays::birthday('1844-4-19', 'Minna, Canth', '12 May 1897')->setFlagDay($country));
+    $eqDay = Holidays::annual(4, 19, 'Day of Equality')
+            ->setFlagDay($country);
+    $eqDay->dateConstraints()->isNotBefore('2007-4-19');
     $this->insertLog($eqDay);
-    $this->insertLog(Holidays::annual(4, 19, 'Day of Equality')->setFlagDay($country));
+    //$this->insertLog(Holidays::annual(4, 19, 'Day of Equality')->setFlagDay($country));
     $this->insertLog(Holidays::annual(4, 27, "National War Veterans' Day")->setFlagDay($country));
     $this->insertLog(Holidays::annual(5, 1, 'May Day')->setFlagDay($country)->setNationalHoliday());
     $this->insertLog(Holidays::annual(5, 9, 'Europe Day')->setFlagDay(true));

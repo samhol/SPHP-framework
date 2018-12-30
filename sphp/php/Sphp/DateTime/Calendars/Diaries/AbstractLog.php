@@ -33,9 +33,11 @@ abstract class AbstractLog implements CalendarEntry {
    *  
    * @param Constraint $constraint
    */
-  public function __construct(DateConstraint $constraint) {
+  public function __construct(DateConstraint $constraint = null) {
     $this->constraint = new Constraints();
-    $this->constraint->dateIs($constraint);
+    if ($constraint !== null) {
+      $this->constraint->dateIs($constraint);
+    }
   }
 
   /**

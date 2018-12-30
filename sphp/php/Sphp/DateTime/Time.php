@@ -34,6 +34,14 @@ class Time {
     $this->setHours($hours)->setMinutes($minutes)->setSeconds($seconds);
   }
 
+  public function __toString(): string {
+    $output = sprintf("%s:%02d", $this->hours, $this->minutes);
+    if ($this->seconds > 0) {
+      $output .= sprintf("%02d", $this->seconds);
+    }
+    return $output;
+  }
+
   /**
    * Sets the hours
    * 
@@ -42,7 +50,7 @@ class Time {
    * @throws InvalidArgumentException if the hours are invalid
    */
   public function setHours(int $hours) {
-    if (0 < $hours || $hours > 23) {
+    if (0 > $hours || $hours > 23) {
       throw new InvalidArgumentException("Hours must be between 0-23 ($hours given)");
     }
     $this->hours = $hours;
@@ -57,7 +65,7 @@ class Time {
    * @throws InvalidArgumentException
    */
   public function setMinutes(int $minutes) {
-    if (0 < $minutes || $minutes > 59) {
+    if (0 > $minutes || $minutes > 59) {
       throw new InvalidArgumentException("Minutes must be between 0-59 ($minutes given)");
     }
     $this->minutes = $minutes;
@@ -72,7 +80,7 @@ class Time {
    * @throws InvalidArgumentException
    */
   public function setSeconds(int $seconds) {
-    if (0 < $seconds || $seconds > 59) {
+    if (0 > $seconds || $seconds > 59) {
       throw new InvalidArgumentException("Seconds must be between 0-59 ($seconds given)");
     }
     $this->seconds = $seconds;
@@ -89,6 +97,17 @@ class Time {
 
   public function getSeconds(): int {
     return $this->seconds;
+  }
+
+  public static function from(string $time = null): Time {
+
+    $pats = explode(':', $time);
+    $lenght = count($pats);
+    if ($lenght === 2) {
+      return new static((int) $pats[0], (int) $pats[1]);
+    } else if ($lenght === 3) {
+      return new static((int) $pats[0], (int) $pats[1], (int) $pats[2]);
+    }
   }
 
 }

@@ -75,6 +75,10 @@ class EventViewBuilder {
     foreach($tasks as $task) {
       $output->append($task);
     }
+    $tasks = $date->getByType(\Sphp\DateTime\Calendars\Diaries\Schedules\RepeatingTask::class);
+    foreach($tasks as $task) {
+      $output->append($task);
+    }
     return "$output";
   }
 

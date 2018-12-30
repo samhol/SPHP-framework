@@ -10,11 +10,10 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
-use Sphp\DateTime\Calendars\Diaries\CalendarEntry;
-use Sphp\DateTime\DateTime;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\Calendars\Diaries\AbstractLog;
 use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
+use Sphp\DateTime\Time;
+
 /**
  * Description of RepeatingTask
  *
@@ -22,21 +21,22 @@ use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RepeatingTask implements CalendarEntry {
+class RepeatingTask extends AbstractLog {
+
   /**
-   * @var Constraint 
-   */
-  private $constraint;
-  
-  /**
-   * @var DateTime 
+   * @var Time 
    */
   private $start;
 
   /**
-   * @var DateTime 
+   * @var Time 
    */
   private $end;
+
+  /**
+   * @var string 
+   */
+  private $description;
 
   /**
    * @var mixed
@@ -46,12 +46,13 @@ class RepeatingTask implements CalendarEntry {
   /**
    * Constructor
    * 
-   * @param mixed $start
-   * @param mixed $end
+   * @param Time $start
+   * @param Time $end
    */
-  public function __construct($start, $end) {
-    $this->start = DateTime::from($start);
-    $this->end = DateTime::from($end);
+  public function __construct(Time $start, Time $end, DateConstraint $constraint = null) {
+    parent::__construct($constraint);
+    $this->start = $start;
+    $this->end = $end;
   }
 
   /**
@@ -62,27 +63,8 @@ class RepeatingTask implements CalendarEntry {
   }
 
   public function __toString(): string {
-    $output = 'Task: ' . $this->start . ' - ' . $this->end;
+    $output = "{$this->getDescription()}: $this->start - $this->end";
     return $output;
-  }
-
-  /**
-   * 
-   * @return string
-   */
-  public function getName(): string {
-    return $this->name;
-  }
-
-  /**
-   * Sets the name of the log
-   * 
-   * @param  string $name the name of the log
-   * @return $this for a fluent interface
-   */
-  public function setName(string $name) {
-    $this->name = $name;
-    return $this;
   }
 
   /**
@@ -106,6 +88,7 @@ class RepeatingTask implements CalendarEntry {
   }
 
   /**
+   * Sets the data
    * 
    * @return mixed
    */
@@ -123,11 +106,21 @@ class RepeatingTask implements CalendarEntry {
     return $this;
   }
 
-  public function dateMatchesWith($date): bool {
-    if (!$date instanceof Date) {
-      $date = Date::from($date);
+  /**
+   * Creates a new task instance
+   * 
+   * @param  mixed $start
+   * @param  mixed $end
+   * @param  DateConstraint $constraint
+   * @return RepeatingTask a new task instance
+   */
+  public static function from($start, $end, DateConstraint $constraint = null): RepeatingTask {
+    if (!$start instanceof Time) {
+      $start = Time::from($start);
+    } if (!$end instanceof Time) {
+      $end = Time::from($end);
     }
-    return $date->compareTo($this->start) >= 0 && $date->compareTo($this->end) <= 0;
+    return new static($start, $end, $constraint);
   }
 
 }

@@ -58,7 +58,7 @@ class SingleTask implements CalendarEntry {
   }
 
   public function __toString(): string {
-    $output = 'Task: ' . $this->start . ' - ' . $this->end;
+    $output = "{$this->getDescription()}: $this->start - $this->end";
     return $output;
   }
 
