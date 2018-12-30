@@ -21,7 +21,7 @@ use Sphp\DateTime\Time;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RepeatingTask extends AbstractLog {
+class RepeatingTask extends AbstractLog implements Task {
 
   /**
    * @var Time 

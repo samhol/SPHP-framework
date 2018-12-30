@@ -10,7 +10,6 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
-use Sphp\DateTime\Calendars\Diaries\CalendarEntry;
 use Sphp\DateTime\DateTime;
 use Sphp\DateTime\Date;
 
@@ -22,7 +21,7 @@ use Sphp\DateTime\Date;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class SingleTask implements CalendarEntry {
+class SingleTask implements Task {
 
   /**
    * @var DateTime 

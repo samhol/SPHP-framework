@@ -16,6 +16,9 @@ use Sphp\DateTime\Date;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\DateTime\Calendars\Diaries\Schedules\Task;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 
 /**
  * Description of EventViewBuilder
@@ -67,19 +70,61 @@ class EventViewBuilder {
     $events = $date->getByType(\Sphp\DateTime\Calendars\Diaries\BasicLog::class);
     //print_R($events);
     $output = new Ul();
-    foreach($events as $event) {
+    foreach ($events as $event) {
       $output->append($event);
     }
-    
-    $tasks = $date->getByType(\Sphp\DateTime\Calendars\Diaries\Schedules\SingleTask::class);
-    foreach($tasks as $task) {
-      $output->append($task);
+
+    $tasks = $date->getByType(Task::class);
+    if ($tasks->notEmpty()) {
+      foreach ($tasks as $task) {
+        $output->append($task);
+      }
+      $acc = new Accordion();
+      $acc->appendPane('Tasks', $output);
+      return "$acc";
+    } else {
+      return '';
     }
-    $tasks = $date->getByType(\Sphp\DateTime\Calendars\Diaries\Schedules\RepeatingTask::class);
-    foreach($tasks as $task) {
-      $output->append($task);
+  }
+
+  /**
+   * Builds exercise pane
+   * 
+   * @param  Exercise $exercise
+   * @return Pane exercise pane
+   */
+  public function buildPane(Exercise $exercise): Pane {
+    $pane = new Pane();
+    $pane->setPaneTitle($this->buildTitleContent($exercise));
+    $pane->append($this->buildContent($exercise));
+    return $pane;
+  }
+
+  /**
+   * Builds a Foundation based accordion component containing the example
+   * 
+   * @param  Workouts $workouts
+   * @return Accordion a Foundation based accordion component containing the example
+   */
+  public function buildAccordion(Workouts $workouts): Accordion {
+    $accordion = new Accordion();
+    $accordion->allowAllClosed(true)->allowMultiExpand(true);
+    $doer = new WeighhtLiftingPaneBuilder();
+    $doer1 = new DistanceAndTimePaneBuilder();
+    $doer2 = new TimedExercisePaneBuilder();
+    $doer3 = new WorkoutPaneBuilder();
+    foreach ($workouts as $exercise) {
+      if ($exercise instanceof WeightLiftingExercise) {
+        $accordion->append($doer->buildPane($exercise));
+      } else if ($exercise instanceof DistanceAndTimeExercise) {
+        $accordion->append($doer1->buildPane($exercise));
+      } else if ($exercise instanceof TimedExercise) {
+        $accordion->append($doer2->buildPane($exercise));
+      } else {
+        $accordion->append($doer3->buildPane($exercise));
+      }
     }
-    return "$output";
+    return $accordion;
   }
 
   /**
