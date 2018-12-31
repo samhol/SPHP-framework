@@ -61,7 +61,10 @@ class HolidayDiary extends LogDispatcher {
     $this->insertLog(Holidays::varyingAnnual('May %d second sunday', "Mothers's Day")->setFlagDay($country));
     $this->insertLog(Holidays::varyingAnnual('May %d third sunday', 'memorial day')->setFlagDay($country));
     $this->insertLog(Holidays::birthday('1867-6-4', 'Carl Gustaf Emil, Mannerheim', 'January 27, 1951')->setFlagDay($country));
-    $this->insertLog(Holidays::varyingAnnual('%d-6-19 next Saturday', "Midsummer's Eve")->setNationalHoliday());
+
+    $this->insertLog(Holidays::annual(6, 4, 'The Flag Day of the Finnish Defence Forces')->setFlagDay($country));
+
+    $this->insertLog(Holidays::varyingAnnual('%d-6-19 next Saturday', "Midsummer's Eve")->setFlagDay($country)->setNationalHoliday());
     $this->insertLog(Holidays::birthday('1878-7-6', 'Eino, Leino', 'January 10, 1926')->setFlagDay($country));
     $this->insertLog(Holidays::birthday('1834-10-10', 'Aleksis, Kivi', '1872-12-31')->setFlagDay($country));
     $this->insertLog(Holidays::annual(10, 10, 'Day of Finnish literature'));
