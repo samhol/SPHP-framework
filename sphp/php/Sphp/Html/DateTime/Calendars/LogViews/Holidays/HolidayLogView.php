@@ -82,6 +82,8 @@ class HolidayLogView {
     $section->addCssClass('holidays');
     //$section->appendH3('Holidays');
     $this->birthdayView->setViewedDate($date->getDate());
+   $other = $date->filterLogs(function($log) {
+     return !$log instanceof BirthDay;});
     $days = new Ul();
     foreach ($date->getByType(HolidayInterface::class) as $holiday) {
       if ($holiday instanceof BirthDay) {
