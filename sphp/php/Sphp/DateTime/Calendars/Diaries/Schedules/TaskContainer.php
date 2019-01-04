@@ -1,41 +1,37 @@
 <?php
 
-/**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
- *
- * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
- * @license   https://opensource.org/licenses/MIT The MIT License
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
-namespace Sphp\DateTime\Calendars\Diaries;
+namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
 use Iterator;
 
 /**
- * Implements an abstract calendar event collection
+ * Description of TaskContainer
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework GitHub repository
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class MutableDiary implements DiaryInterface, Iterator, EntryContainer {
+class TaskContainer implements DiaryInterface, Iterator {
 
   use DiaryTrait;
 
   /**
-   * @var LogInterface[] 
+   * @var Task[] 
    */
   private $logs = [];
 
   /**
    * Constructor
    */
-  public function __construct(array $logs = []) {
-    foreach ($logs as $log) {
-      $this->insertLog($log);
-    }
+  public function __construct() {
+
   }
 
   /**
@@ -45,18 +41,18 @@ class MutableDiary implements DiaryInterface, Iterator, EntryContainer {
     unset($this->logs);
   }
 
-  public function insertLog(CalendarEntry $log): bool {
+  public function insert(Task $task): bool {
     $inserted = false;
-    if (!$this->logExists($log)) {
-      $this->logs[] = $log;
+    if (!$this->logExists($task)) {
+      $this->logs[] = $task;
       $inserted = true;
     }
     return $inserted;
   }
 
-  public function merge(EntryContainer $logs) {
+  public function merge(TaskContainer $logs) {
     foreach ($logs as $log) {
-      $this->insertLog($log);
+      $this->insert($log);
     }
     return $this;
   }
@@ -84,7 +80,7 @@ class MutableDiary implements DiaryInterface, Iterator, EntryContainer {
    * @param  mixed $date raw date data
    * @return DiaryDateInterface object containing logs for given single date
    */
-  public function getDate($date): DiaryDateInterface {
+  public function getDate($date): array {
     $dailyLogs = new DiaryDate($date);
     foreach ($this as $log) {
       $dailyLogs->insertLog($log);

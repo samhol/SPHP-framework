@@ -92,6 +92,10 @@ class BirthdayView {
     $age = $person->getAge($this->viewedDate)->y;
     $dl = new Dl();
     $termText = $dl->appendTerm("Birthday of {$person->getFullname()}");
+    
+    if ($birthday->isFlagDay()) {
+      $termText->prepend(ViewFactory::flag('finland'));
+    }
     if (!$person->isDead()) {
       // print_r($person->getAge());
       $termText->append(' (' . $age . ' years of age)');
@@ -107,9 +111,6 @@ class BirthdayView {
     }
     if ($birthday->isNationalHoliday()) {
       $dl->appendDescription(" (national holiday)");
-    }
-    if ($birthday->isFlagDay()) {
-      $dl->appendDescription(ViewFactory::flag('finland'));
     }
     return "$dl";
   }

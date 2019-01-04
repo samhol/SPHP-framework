@@ -22,32 +22,7 @@ use Sphp\DateTime\Calendars\Diaries\Holidays\BirthDay;
 class ViewFactory {
 
   public static function flag(string $country): string {
-    return '<span class="flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</span>";
-  }
-
-  /**
-   * Creates a section containing holidays (not birthdays)
-   * 
-   * @return string
-   */
-  public static function birthDay(BirthDay $date, \Sphp\DateTime\Date $curr): string {
-    $output = "Birthday of {$date->getName()}";
-    $year = $curr->getYear();
-    var_dump($year);
-    $age = $year - $date->getYear();
-    if ($age === 0) {
-      $output .= " (was born this day)";
-    } else {
-      $output .= " (was born $age years ago)";
-    }
-    //$output .= $this->getDate()->format('l, Y-m-d');
-    if ($date->isNationalHoliday()) {
-      $output .= " (national holiday)";
-    }
-    if ($date->isFlagDay()) {
-      $output .= ViewFactory::flag('finland');
-    }
-    return $output;
+    return '<span class="national-flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . "</span>";
   }
 
 }

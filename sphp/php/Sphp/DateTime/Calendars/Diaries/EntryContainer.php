@@ -21,7 +21,7 @@ use Traversable;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface EntryContainer extends Traversable, Arrayable {
+interface EntryContainer extends Traversable, Arrayable, \Countable {
 
   /**
    * Inserts a new log object to the container

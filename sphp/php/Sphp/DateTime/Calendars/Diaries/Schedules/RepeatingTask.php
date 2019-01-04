@@ -67,6 +67,10 @@ class RepeatingTask extends AbstractLog implements Task {
     return $output;
   }
 
+  public function compareTo(Task $task): int {
+    
+  }
+
   /**
    * Returns the description text
    * 
@@ -74,6 +78,14 @@ class RepeatingTask extends AbstractLog implements Task {
    */
   public function getDescription(): string {
     return "$this->description";
+  }
+
+  public function getStart(): Time {
+    return $this->start;
+  }
+
+  public function getEnd(): Time {
+    return $this->end;
   }
 
   /**

@@ -39,7 +39,7 @@ class LogViewBuilder {
     $conntainer = new PlainContainer();
     $holidays = HolidayLogView::instance();
     $workouts = WorkoutLogView::instance();
-    $eventBuilder = Events\EventViewBuilder::instance();
+    $eventBuilder = Events\ScheduleViewBuilder::instance();
     /* foreach ($date as $log) {
       $conntainer->appendMd($log->toString());
       } */

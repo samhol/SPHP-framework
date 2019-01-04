@@ -10,6 +10,7 @@ namespace Sphp\Html\DateTime\Calendars\LogViews\Holidays;
 
 use Sphp\DateTime\Calendars\Diaries\Holidays\Holiday;
 use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
+use Sphp\Html\Tags;
 
 /**
  * Implements a holiday view builder
@@ -38,16 +39,16 @@ class HolidayView {
    * @return string
    */
   public function build(Holiday $holiday): string {
-    $output = $holiday->getName();
-    $output .= $holiday->getDescription();
+    $strong = Tags::strong($holiday->getName());
+    $description = Tags::span(' '.$holiday->getDescription());
     //$output .= $this->getDate()->format('l, Y-m-d');
     if ($holiday->isNationalHoliday()) {
-      $output .= " (national holiday)";
+      $description->append(" (national holiday)");
     }
     if ($holiday->isFlagDay()) {
-      $output .= ViewFactory::flag('finland');
+      $strong->prepend(ViewFactory::flag('finland'));
     }
-    return $output;
+    return $strong . $description;
   }
 
 }

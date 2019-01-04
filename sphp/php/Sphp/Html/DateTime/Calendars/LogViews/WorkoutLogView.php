@@ -33,7 +33,7 @@ class WorkoutLogView {
     //echo $date;
     if ($workouts->notEmpty()) {
       $section = new Section();
-      $section->addCssClass('workouts');
+      $section->addCssClass('group', 'workouts');
       $section->appendH3('Workouts for the day')->addCssClass('heading');
       foreach ($workouts as $wo) {
         // echo get_class($wo);

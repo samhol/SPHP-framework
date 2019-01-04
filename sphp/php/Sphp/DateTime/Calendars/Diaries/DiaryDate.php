@@ -13,6 +13,7 @@ namespace Sphp\DateTime\Calendars\Diaries;
 use Sphp\DateTime\Date;
 use Iterator;
 use Sphp\DateTime\Calendars\Diaries\Holidays\HolidayInterface;
+use Sphp\DateTime\Calendars\Diaries\Schedules\Task;
 
 /**
  * Implements a date object containing corresponding diary logs
@@ -40,7 +41,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
    */
   public function __construct($date) {
     $this->date = Date::from($date);
-    //parent::__construct($date);
+//parent::__construct($date);
     $this->logs = [];
   }
 
@@ -49,7 +50,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
    */
   public function __destruct() {
     unset($this->date, $this->logs);
-    //parent::__destruct();
+//parent::__destruct();
   }
 
   public function getDate(): Date {
@@ -104,6 +105,22 @@ class DiaryDate implements Iterator, DiaryDateInterface {
     return $isNational;
   }
 
+  /**
+   * Checks whether the date contains tasks
+   * 
+   * @return bool true if the date contains tasks, false otherwise
+   */
+  public function containsTasks(): bool {
+    $contains = false;
+    foreach ($this as $task) {
+      if ($task instanceof Task) {
+        $contains = true;
+        break;
+      }
+    }
+    return $contains;
+  }
+
   public function logExists(CalendarEntry $log): bool {
     $contains = false;
     foreach ($this->logs as $n) {
@@ -148,7 +165,7 @@ class DiaryDate implements Iterator, DiaryDateInterface {
 
   public function __toString(): string {
     $output = $this->format('l, ') . ":\n";
-    //print_r($this->notes);
+//print_r($this->notes);
     foreach ($this as $log) {
       $output .= "  $log\n";
     }
@@ -215,6 +232,10 @@ class DiaryDate implements Iterator, DiaryDateInterface {
    */
   public function valid(): bool {
     return false !== current($this->logs);
+  }
+
+  public function count(): int {
+    
   }
 
 }

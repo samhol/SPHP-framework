@@ -34,6 +34,11 @@ class SingleTask implements Task {
   private $end;
 
   /**
+   * @var string
+   */
+  private $description;
+
+  /**
    * @var mixed
    */
   private $data;

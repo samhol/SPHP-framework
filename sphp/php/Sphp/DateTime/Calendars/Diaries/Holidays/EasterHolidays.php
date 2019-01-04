@@ -38,7 +38,7 @@ class EasterHolidays extends MutableDiary {
     $this->insertLog(Holidays::unique($sunday, 'Easter Sunday')->setNationalHoliday());
     $this->insertLog(Holidays::unique($sunday->jumpDays(1), 'Easter Monday')->setNationalHoliday());
     $this->insertLog(Holidays::unique($sunday->jumpDays(39), 'Ascension Day')->setNationalHoliday());
-    $this->insertLog(Holidays::unique($sunday->jumpDays(49), 'Pentecost'));
+    $this->insertLog(Holidays::unique($sunday->jumpDays(49), 'Pentecost')->setDescription('The seventh Sunday after Easter'));
   }
 
   /**

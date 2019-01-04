@@ -13,7 +13,6 @@ namespace Sphp\DateTime\Calendars\Diaries\Holidays\Fi;
 use Sphp\DateTime\Calendars\Diaries\LogDispatcher;
 use Sphp\DateTime\Calendars\Diaries\Holidays\EasterHolidays;
 use Sphp\DateTime\Calendars\Diaries\Holidays\Holidays;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
 
 /**
  * Implements a diary containing some common Finnish holidays
@@ -59,7 +58,7 @@ class HolidayDiary extends LogDispatcher {
     $this->insertLog(Holidays::annual(5, 1, 'May Day')->setFlagDay($country)->setNationalHoliday());
     $this->insertLog(Holidays::annual(5, 9, 'Europe Day')->setFlagDay(true));
     $this->insertLog(Holidays::varyingAnnual('May %d second sunday', "Mothers's Day")->setFlagDay($country));
-    $this->insertLog(Holidays::varyingAnnual('May %d third sunday', 'memorial day')->setFlagDay($country));
+    $this->insertLog(Holidays::varyingAnnual('May %d third sunday', 'Memorial day')->setFlagDay($country));
     $this->insertLog(Holidays::birthday('1867-6-4', 'Carl Gustaf Emil, Mannerheim', 'January 27, 1951')->setFlagDay($country));
 
     $this->insertLog(Holidays::annual(6, 4, 'The Flag Day of the Finnish Defence Forces')->setFlagDay($country));
