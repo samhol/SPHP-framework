@@ -1,18 +1,17 @@
 <?php
 
-namespace Sphp\DateTime;
 
-$task = Calendars\Diaries\Schedules\RepeatingTask::from('12:00', '13:00');
-$task->setDescription('Foo is happening');
+$begin = new DateTime( '2012-08-01' );
+$end = new DateTime( '2012-08-31' );
+$end = $end->modify( '+1 day' ); 
 
-echo $task;
+$interval = new DateInterval('P7D');
+$daterange = new DatePeriod($begin, $interval ,$end);
 
-?>
-<dl>
-<dt data-toggle="example-dropdown">Birthday of Carl Gustaf Emil Mannerheim</dt>
-<dd class="dropdown-pane large" id="example-dropdown" data-dropdown data-auto-focus="true" data-close-on-click="true">
- 
-  Was born 151 years ago on Tuesday the 4th of June 1867<br>
-Died on the Saturday 27th of January 1951 at 83 years of age
-</dd>
-</dl>
+foreach($daterange as $date){
+    echo $date->format("Y-m-d l") . "<br>";
+}
+
+$foo = new \Sphp\DateTime\Calendars\Diaries\Schedules\RepeatingTask1(new Sphp\DateTime\Period('R2/2008-03-01T13:00:00Z/P1Y2M10DT2H30M'), 'PT7H');
+
+echo $foo;

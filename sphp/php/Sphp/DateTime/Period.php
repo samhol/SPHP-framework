@@ -37,20 +37,9 @@ use Exception;
  */
 class Period extends DatePeriod implements Arrayable {
 
-  /**
-   * @var string[]
-   */
-  private static $periodMap = [
-      'months' => '%d months',
-      'm' => '%d months',
-      'weeks' => '%d weeks',
-      'w' => '%d weeks',
-      'days' => '%d days',
-      'd' => '%d days',
-      'hours' => '%d hours',
-      'h' => '%d hours',
-  ];
-
+  public function constraints() {
+    
+  }
   /**
    * Checks if the given date is in the range
    * 
@@ -58,7 +47,6 @@ class Period extends DatePeriod implements Arrayable {
    * @return bool true if given datetime is in the period
    */
   public function isInPeriod($date): bool {
-
     try {
       $dateTime = DateTime::from($date)->getTimestamp();
       $start = $this->getStartDate()->getTimestamp();
