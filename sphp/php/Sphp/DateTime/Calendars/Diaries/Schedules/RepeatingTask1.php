@@ -25,7 +25,7 @@ use Sphp\DateTime\Period;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RepeatingTask1 implements Task {
+class RepeatingTask1 implements Task , \IteratorAggregate {
 
   /**
    * @var Period 
@@ -125,6 +125,26 @@ class RepeatingTask1 implements Task {
   public function setData($data) {
     $this->data = $data;
     return $this;
+  }
+  
+  /**
+   * 
+   * @return SingleTask[]
+   */
+  public function toArray(): array {
+    $tasks = [];
+    foreach ($this->period as $dateTime) {
+      $imDate = DateTime::from($dateTime);
+      //echo  $imDate->add($this->duration)->format('H:i:s')."\n";
+     $task = new SingleTask($imDate, $imDate->add($this->duration));
+     $task->setDescription($this->getDescription());
+      $tasks[] =$task;
+    }
+    return $tasks;
+  }
+  
+  public function getIterator(): \Traversable {
+    return new \ArrayIterator($this->toArray());
   }
 
   /**
