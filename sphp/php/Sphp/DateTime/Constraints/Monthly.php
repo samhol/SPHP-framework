@@ -35,7 +35,7 @@ class Monthly implements DateConstraint {
     $this->day = $day;
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     return $this->day === Date::from($date)->getMonthDay();
   }
 

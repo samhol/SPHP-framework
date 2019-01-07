@@ -43,7 +43,7 @@ class Before implements DateConstraint {
     unset($this->limit);
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     return $this->limit->compareTo($date) > 0;
   }
 

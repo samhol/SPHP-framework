@@ -36,7 +36,7 @@ class VaryingAnnual implements DateConstraint {
     $this->format = $format;
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     $year = Date::from($date)->getYear();
     $check = Date::from(sprintf($this->format, $year));
     return $check->dateEqualsTo($date);

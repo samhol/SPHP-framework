@@ -72,7 +72,7 @@ class OneOf implements DateConstraint {
     return $this;
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     $key = DateTimes::parseDateString($date);
     return array_key_exists($key, $this->dates);
   }

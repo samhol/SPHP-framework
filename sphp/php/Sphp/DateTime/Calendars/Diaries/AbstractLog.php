@@ -48,7 +48,7 @@ abstract class AbstractLog implements CalendarEntry {
   }
 
   public function dateMatchesWith($date): bool {
-    return $this->constraint->isValidDate($date);
+    return $this->constraint->isValid($date);
   }
 
   public function dateConstraints(): Constraints {

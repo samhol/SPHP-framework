@@ -26,60 +26,60 @@ class ConstraintsTest extends TestCase {
 
   public function testWeekly() {
     $weekly = new Weekly(1, 5);
-    $this->assertTrue($weekly->isValidDate('2018-10-1'));
-    $this->assertFalse($weekly->isValidDate('2018-10-3'));
+    $this->assertTrue($weekly->isValid('2018-10-1'));
+    $this->assertFalse($weekly->isValid('2018-10-3'));
   }
 
   public function testMonthly() {
     $monthly = new Monthly(31);
-    $this->assertFalse($monthly->isValidDate('2018-11-01'));
-    $this->assertFalse($monthly->isValidDate('2018-02-31'));
-    $this->assertFalse($monthly->isValidDate('2018-11-02'));
+    $this->assertFalse($monthly->isValid('2018-11-01'));
+    $this->assertFalse($monthly->isValid('2018-02-31'));
+    $this->assertFalse($monthly->isValid('2018-11-02'));
   }
 
   public function testInRange() {
     $range = new InRange('2018-1-1', '2018-1-5');
-    $this->assertTrue($range->isValidDate('2018-1-1'));
-    $this->assertTrue($range->isValidDate('2018-1-5'));
-    $this->assertFalse($range->isValidDate('2018-02-31'));
-    $this->assertFalse($range->isValidDate('2017-01-6'));
+    $this->assertTrue($range->isValid('2018-1-1'));
+    $this->assertTrue($range->isValid('2018-1-5'));
+    $this->assertFalse($range->isValid('2018-02-31'));
+    $this->assertFalse($range->isValid('2017-01-6'));
   }
 
   public function testBefore() {
     $before = new Before('2018-5-2');
-    $this->assertTrue($before->isValidDate('2018-1-1'));
-    $this->assertFalse($before->isValidDate('2018-11-02'));
+    $this->assertTrue($before->isValid('2018-1-1'));
+    $this->assertFalse($before->isValid('2018-11-02'));
   }
 
   public function testAfter() {
     $after = new After('2017-1-1');
-    $this->assertTrue($after->isValidDate('2018-1-1'));
-    $this->assertFalse($after->isValidDate('2016-11-02'));
+    $this->assertTrue($after->isValid('2018-1-1'));
+    $this->assertFalse($after->isValid('2016-11-02'));
   }
 
   public function testAnnual() {
     $annual = new Annual(5, 3);
-    $this->assertTrue($annual->isValidDate('2018-5-3'));
-    $this->assertFalse($annual->isValidDate('2018-12-02'));
+    $this->assertTrue($annual->isValid('2018-5-3'));
+    $this->assertFalse($annual->isValid('2018-12-02'));
   }
 
   public function testVaryingAnnual() {
     $varyingAnnual = new VaryingAnnual('%d-11-30 next Saturday');
-    $this->assertTrue($varyingAnnual->isValidDate('2018-12-01'));
-    $this->assertFalse($varyingAnnual->isValidDate('2018-12-02'));
+    $this->assertTrue($varyingAnnual->isValid('2018-12-01'));
+    $this->assertFalse($varyingAnnual->isValid('2018-12-02'));
   }
 
   public function testOneOf() {
     $oneof = new OneOf('2018-1-1', '2018-2-1');
     $this->assertSame($oneof, $oneof->addDates('2018-3-1', '2018-4-1'));
-    $this->assertTrue($oneof->isValidDate('2018-3-1'));
-    $this->assertFalse($oneof->isValidDate('2018-5-1'));
+    $this->assertTrue($oneof->isValid('2018-3-1'));
+    $this->assertFalse($oneof->isValid('2018-5-1'));
   }
 
   public function testUnique() {
     $oneof = new Unique('2018-1-1');
-    $this->assertTrue($oneof->isValidDate('2018-1-1'));
-    $this->assertFalse($oneof->isValidDate('2018-5-1'));
+    $this->assertTrue($oneof->isValid('2018-1-1'));
+    $this->assertFalse($oneof->isValid('2018-5-1'));
   }
 
   public function testConstraints() {
@@ -87,9 +87,9 @@ class ConstraintsTest extends TestCase {
     $this->assertSame($constraints, $constraints->dateIs(new Monthly(1)));
     $this->assertSame($constraints, $constraints->dateIs(new After('2018-9-5')));
     $this->assertSame($constraints, $constraints->dateIsNot(new Unique('2018-11-1')));
-    $this->assertTrue($constraints->isValidDate('2018-10-1'));
-    $this->assertFalse($constraints->isValidDate('2018-11-1'));
-    $this->assertFalse($constraints->isValidDate('2018-9-1'));
+    $this->assertTrue($constraints->isValid('2018-10-1'));
+    $this->assertFalse($constraints->isValid('2018-11-1'));
+    $this->assertFalse($constraints->isValid('2018-9-1'));
   }
 
 }

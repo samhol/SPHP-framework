@@ -26,5 +26,5 @@ interface DateConstraint {
    * @param  mixed $date the date to match
    * @return bool true if the given date matches and false otherwise
    */
-  public function isValidDate($date): bool;
+  public function isValid($date): bool;
 }

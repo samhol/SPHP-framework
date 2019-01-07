@@ -43,7 +43,7 @@ class Weekly implements DateConstraint {
     unset($this->weekdays);
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     return in_array(Date::from($date)->getWeekDay(), $this->weekdays, true);
   }
 

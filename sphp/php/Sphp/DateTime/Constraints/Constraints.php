@@ -87,18 +87,18 @@ class Constraints implements DateConstraint {
     return $this;
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     $is = true;
     $isNot = false;
     foreach ($this->dateIs as $constraint) {
-      if (!$constraint->isValidDate($date)) {
+      if (!$constraint->isValid($date)) {
         $is = false;
         break;
       }
     }
     if ($is) {
       foreach ($this->dateIsNot as $constraint) {
-        if ($constraint->isValidDate($date)) {
+        if ($constraint->isValid($date)) {
           $isNot = true;
           break;
         }

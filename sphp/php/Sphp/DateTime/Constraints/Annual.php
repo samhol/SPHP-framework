@@ -38,7 +38,7 @@ class Annual implements DateConstraint {
     $this->month = $month;
   }
 
-  public function isValidDate($date): bool {
+  public function isValid($date): bool {
     $dateObj = Date::from($date);
     return $this->month === $dateObj->getMonth() && $this->day === $dateObj->getMonthDay();
   }

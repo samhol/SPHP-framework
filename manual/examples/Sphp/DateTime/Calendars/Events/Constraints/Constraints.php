@@ -18,5 +18,5 @@ $daterange = new \DatePeriod($begin, $interval, $end);
 
 foreach ($daterange as $date) {
   echo $date->format('l Y-m-d') . ":\t";
-  var_dump($constraints->isValidDate($date->format('Y-m-d')));
+  var_dump($constraints->isValid($date->format('Y-m-d')));
 }

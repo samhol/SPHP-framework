@@ -11,7 +11,7 @@
 namespace Sphp\DateTime;
 
 use DatePeriod;
-use Sphp\Stdlib\Datastructures\Arrayable;
+use Sphp\DateTime\Constraints\Constraints;
 use Exception;
 
 /**
@@ -20,26 +20,28 @@ use Exception;
  * A date period allows iteration over a set of dates and times, recurring at 
  * regular intervals, over a given period.
  * 
- * 
- * @method static Period months(mixed $start, string|DateInterval $length, int $recurrences = 1) Creates a new monthly recurrence instance from input
- * @method \Sphp\DateTime\Period m(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new monthly recurrence instance from input
- * @method \Sphp\DateTime\Period weeks(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
- * @method \Sphp\DateTime\Period w(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
- * @method \Sphp\DateTime\Period days(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new daily recurrences instance from input
- * @method \Sphp\DateTime\Period d(mixed $start, string|\DateInterval $interval, int $recurrences = 1) Creates a new daily recurrences instance from input
- * @method \Sphp\DateTime\Period hours(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new hourly recurrences instance from input
- * @method \Sphp\DateTime\Period h(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new hourly recurrences instance from input
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Period extends DatePeriod implements Arrayable {
+class Period implements \IteratorAggregate, PeriodInterface {
 
-  public function constraints() {
-    
+  /**
+   * @var DatePeriod 
+   */
+  private $datePeriod;
+
+  /**
+   * @var Constraints 
+   */
+  private $constraints;
+
+  public function __construct(DatePeriod $period) {
+    $this->datePeriod = $period;
+    $this->constraints = new Constraints();
   }
+
   /**
    * Checks if the given date is in the range
    * 
@@ -57,10 +59,10 @@ class Period extends DatePeriod implements Arrayable {
     }
   }
 
-
-  public function dateConstraints(): Constraints {
+  public function restrictions(): Constraints\Constraints {
     return $this->constraint;
   }
+
   /**
    * Checks if the given date is in the range
    * 
@@ -85,14 +87,37 @@ class Period extends DatePeriod implements Arrayable {
 
   /**
    * 
-   * @return DateTime[]
+   * @return SingleTask[]
    */
   public function toArray(): array {
-    $result = [];
-    foreach ($this as $dateTime) {
-      $result[] = DateTime::from($dateTime);
+    $output = [];
+    foreach ($this->datePeriod as $dateTime) {
+      if ($this->constraints->isValid($dateTime)) {
+        $output[] = DateTime::from($dateTime);
+      }
     }
-    return $result;
+    return $output;
+  }
+
+  public function getIterator(): \Traversable {
+    return new \ArrayIterator($this->toArray());
+  }
+
+  public function getInterval(): Interval {
+    
+  }
+
+  public function getEndDate(): DateTimeInterface {
+    return DateTime::from($this->datePeriod->getEndDate());
+  }
+
+  public function getStartDate(): DateTimeInterface {
+    return DateTime::from($this->datePeriod->getStartDate());
+  }
+
+  public function fromISO(string $isoString): Period {
+    $datePeriod = new \DatePeriod($isoString);
+    return new static($datePeriod);
   }
 
 }

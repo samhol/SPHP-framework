@@ -88,11 +88,12 @@ abstract class Periods {
       if (!is_int($length)) {
         $length = DateTimes::dateTimeImmutable($length);
       }
-      $dateTime = new Period(DateTimes::dateTimeImmutable($start), $interval, $length);
+      $dateTime = new \DatePeriod(DateTimes::dateTimeImmutable($start), $interval, $length);
+      $p = new Period($dateTime);
     } catch (\Exception $ex) {
       throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    return $dateTime;
+    return $p;
   }
   
   /**
@@ -114,8 +115,8 @@ abstract class Periods {
     $start = $d->modify('last monday');
 
     $stop = $d->modify('last day of')->modify('next sunday');
-    $p = new Period($start->getDateTime(), new Interval('P1W'), $stop->getDateTime());
-    return $p;
+    $p = new \DatePeriod($start->getDateTime(), new Interval('P1W'), $stop->getDateTime());
+    return new Period($p);
   }
 
 }
