@@ -10,9 +10,9 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
-use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Annual;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
+use Sphp\DateTime\Constraints\Constraints;
+use Sphp\DateTime\Constraints\Annual;
+use Sphp\DateTime\Constraints\Before;
 use Sphp\DateTime\DateInterface;
 use Sphp\Data\Person;
 

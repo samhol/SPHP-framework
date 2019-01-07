@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
 
 use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\BadMethodCallException;
@@ -16,18 +16,18 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a collection of date Constraints
  * 
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isAnnual(int $month, int $day) Adds an `Annual` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isNotAnnual(int $month, int $day) Adds a not `Annual` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isInRange(mixed $start = null, mixed $stop = null) Adds an `InRange` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isNotInRange(mixed $start = null, mixed $stop = null) Adds a not `InRange` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isAfter(mixed $date) Adds an `After` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isNotAfter(mixed $date)  Adds a not `After` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isBefore(mixed $date) Adds an `Before` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isNotBefore(mixed $date)  Adds a not `Before` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isOneOf(mixed ...$date) Adds an `OneOf` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isNotOneOf(mixed ...$date)  Adds a not `OneOf` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isWeekly(int... $weekday) Adds an `Weekly` constraint
- * @method \Sphp\DateTime\Calendars\Diaries\Constraints\Constraints isNotWeekly(int... $weekday) Adds a not `Weekly` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isAnnual(int $month, int $day) Adds an `Annual` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotAnnual(int $month, int $day) Adds a not `Annual` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isInRange(mixed $start = null, mixed $stop = null) Adds an `InRange` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotInRange(mixed $start = null, mixed $stop = null) Adds a not `InRange` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isAfter(mixed $date) Adds an `After` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotAfter(mixed $date)  Adds a not `After` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isBefore(mixed $date) Adds an `Before` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotBefore(mixed $date)  Adds a not `Before` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isOneOf(mixed ...$date) Adds an `OneOf` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotOneOf(mixed ...$date)  Adds a not `OneOf` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isWeekly(int... $weekday) Adds an `Weekly` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotWeekly(int... $weekday) Adds a not `Weekly` constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License

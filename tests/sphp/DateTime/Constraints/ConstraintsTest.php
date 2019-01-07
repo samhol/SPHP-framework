@@ -8,19 +8,19 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Tests\DateTime\Calendar\Diaries\Constraints;
+namespace Sphp\Tests\DateTime\Constraints;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Weekly;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Monthly;
-use Sphp\DateTime\Calendars\Diaries\Constraints\InRange;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Before;
-use Sphp\DateTime\Calendars\Diaries\Constraints\After;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Annual;
-use Sphp\DateTime\Calendars\Diaries\Constraints\VaryingAnnual;
-use Sphp\DateTime\Calendars\Diaries\Constraints\OneOf;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Unique;
-use Sphp\DateTime\Calendars\Diaries\Constraints\Constraints;
+use Sphp\DateTime\Constraints\Weekly;
+use Sphp\DateTime\Constraints\Monthly;
+use Sphp\DateTime\Constraints\InRange;
+use Sphp\DateTime\Constraints\Before;
+use Sphp\DateTime\Constraints\After;
+use Sphp\DateTime\Constraints\Annual;
+use Sphp\DateTime\Constraints\VaryingAnnual;
+use Sphp\DateTime\Constraints\OneOf;
+use Sphp\DateTime\Constraints\Unique;
+use Sphp\DateTime\Constraints\Constraints;
 
 class ConstraintsTest extends TestCase {
 

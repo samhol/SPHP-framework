@@ -11,7 +11,11 @@
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Calendars\Diaries\Constraints;
+use Sphp\DateTime\Constraints;
+use Sphp\DateTime\Constraints\Unique;
+use Sphp\DateTime\Constraints\Annual;
+use Sphp\DateTime\Constraints\VaryingAnnual;
+use Sphp\DateTime\Constraints\Weekly;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Data\Person;
 
@@ -34,7 +38,7 @@ class Holidays {
    * @throws InvalidArgumentException if creation fails
    */
   public static function unique($date, string $name): Holiday {
-    $constraint = new Constraints\Unique($date);
+    $constraint = new Unique($date);
     return new Holiday($constraint, $name);
   }
 
@@ -46,7 +50,7 @@ class Holidays {
    * @return Holiday new instance
    */
   public static function annual(int $month, int $day, string $name): Holiday {
-    $constraint = new Constraints\Annual($month, $day);
+    $constraint = new Annual($month, $day);
     return new Holiday($constraint, $name);
   }
 
@@ -58,7 +62,7 @@ class Holidays {
    * @return Holiday
    */
   public static function varyingAnnual(string $format, string $name): Holiday {
-    $constraint = new Constraints\VaryingAnnual($format);
+    $constraint = new VaryingAnnual($format);
     return new Holiday($constraint, $name);
   }
 
@@ -101,7 +105,7 @@ class Holidays {
    * @return Holiday new instance
    */
   public static function weekly(array $weekdays, string $name, string $description = null): Holiday {
-    $reflect = new ReflectionClass(Constraints\Weekly::class);
+    $reflect = new ReflectionClass(Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);
     return new Holiday($constraint, $name, $description);
   }

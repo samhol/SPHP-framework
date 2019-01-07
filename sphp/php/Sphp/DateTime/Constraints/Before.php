@@ -8,38 +8,43 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Date;
 
 /**
- * Implements a varying annual date constraint
+ * Implements a constraint including all dates before the limit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class VaryingAnnual implements DateConstraint {
+class Before implements DateConstraint {
 
   /**
-   * @var string 
+   * @var Date 
    */
-  private $format;
+  private $limit;
 
   /**
    * Constructor
    * 
-   * @param string $format datetime format 
+   * @param mixed $limit the upper limit date
    */
-  public function __construct(string $format) {
-    $this->format = $format;
+  public function __construct($limit) {
+    $this->limit = new Date($limit);
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->limit);
   }
 
   public function isValidDate($date): bool {
-    $year = Date::from($date)->getYear();
-    $check = Date::from(sprintf($this->format, $year));
-    return $check->dateEqualsTo($date);
+    return $this->limit->compareTo($date) > 0;
   }
 
 }

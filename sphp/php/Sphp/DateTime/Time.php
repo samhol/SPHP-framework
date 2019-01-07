@@ -100,7 +100,6 @@ class Time {
   }
 
   public static function from(string $time = null): Time {
-
     $pats = explode(':', $time);
     $lenght = count($pats);
     if ($lenght === 2) {

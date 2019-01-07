@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
 use Sphp\DateTime\Calendars\Diaries\AbstractLog;
-use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
+use Sphp\DateTime\Constraints\DateConstraint;
 
 /**
  * Implements a holiday log object for a Diary

@@ -8,43 +8,39 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Date;
 
 /**
- * Implements a weekly date constraint
+ * Implements an annual date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Weekly implements DateConstraint {
+class Annual implements DateConstraint {
 
   /**
-   * @var int
+   * @var int 
    */
-  private $weekdays;
+  private $day, $month;
 
   /**
    * Constructor
    * 
-   * @param int ...$weekday
+   * @param int $month
+   * @param int $day
    */
-  public function __construct(int... $weekday) {
-    $this->weekdays = $weekday;
-  }
-
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->weekdays);
+  public function __construct(int $month, int $day) {
+    $this->day = $day;
+    $this->month = $month;
   }
 
   public function isValidDate($date): bool {
-    return in_array(Date::from($date)->getWeekDay(), $this->weekdays, true);
+    $dateObj = Date::from($date);
+    return $this->month === $dateObj->getMonth() && $this->day === $dateObj->getMonthDay();
   }
 
 }

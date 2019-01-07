@@ -57,6 +57,10 @@ class Period extends DatePeriod implements Arrayable {
     }
   }
 
+
+  public function dateConstraints(): Constraints {
+    return $this->constraint;
+  }
   /**
    * Checks if the given date is in the range
    * 

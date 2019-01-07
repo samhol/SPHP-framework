@@ -11,13 +11,13 @@
 namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
 use Sphp\DateTime\Calendars\Diaries\AbstractLog;
-use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
+use Sphp\DateTime\Constraints\DateConstraint;
 use Sphp\DateTime\Time;
 use Sphp\DateTime\DateTime;
 use Sphp\DateTime\Duration;
 use Sphp\DateTime\Interval;
 use Sphp\DateTime\Period;
-
+use Sphp\DateTime\Constraints\Constraints;
 /**
  * Description of RepeatingTask
  *
@@ -25,7 +25,12 @@ use Sphp\DateTime\Period;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RepeatingTask1 implements Task , \IteratorAggregate {
+class RepeatingTask1 implements  Task, \IteratorAggregate {
+
+  /**
+   * @var Constraint 
+   */
+  private $constraint;
 
   /**
    * @var Period 
@@ -36,11 +41,6 @@ class RepeatingTask1 implements Task , \IteratorAggregate {
    * @var Duration 
    */
   private $duration;
-
-  /**
-   * @var Period 
-   */
-  private $interval;
 
   /**
    * @var string 
@@ -55,13 +55,14 @@ class RepeatingTask1 implements Task , \IteratorAggregate {
   /**
    * Constructor
    * 
-   * @param Time $start
-   * @param Time $end
+   * @param Period $period
+   * @param Interval $duration
    */
-  public function __construct(Period $period,  $duration) {
+  public function __construct(Period $period, Interval $duration) {
 
-    $this->duration = new Interval($duration);
+    $this->duration = $duration;
     $this->period = $period;
+    $this->constraint = new Constraints();
   }
 
   /**
@@ -76,9 +77,10 @@ class RepeatingTask1 implements Task , \IteratorAggregate {
     return $output;
   }
 
-  public function compareTo(Task $task): int {
-    
+  public function dateConstraints(): Constraints {
+    return $this->constraint;
   }
+
 
   /**
    * Returns the description text
@@ -126,7 +128,7 @@ class RepeatingTask1 implements Task , \IteratorAggregate {
     $this->data = $data;
     return $this;
   }
-  
+
   /**
    * 
    * @return SingleTask[]
@@ -136,13 +138,13 @@ class RepeatingTask1 implements Task , \IteratorAggregate {
     foreach ($this->period as $dateTime) {
       $imDate = DateTime::from($dateTime);
       //echo  $imDate->add($this->duration)->format('H:i:s')."\n";
-     $task = new SingleTask($imDate, $imDate->add($this->duration));
-     $task->setDescription($this->getDescription());
-      $tasks[] =$task;
+      $task = new SingleTask($imDate, $imDate->add($this->duration));
+      $task->setDescription($this->getDescription());
+      $tasks[] = $task;
     }
     return $tasks;
   }
-  
+
   public function getIterator(): \Traversable {
     return new \ArrayIterator($this->toArray());
   }
@@ -150,24 +152,22 @@ class RepeatingTask1 implements Task , \IteratorAggregate {
   /**
    * Creates a new task instance
    * 
-   * @param  mixed $start
-   * @param  mixed $end
-   * @param  DateConstraint $constraint
+   * @param  mixed $period
+   * @param  mixed $duration
    * @return RepeatingTask a new task instance
    */
-  public static function from($start, $end, DateConstraint $constraint = null): RepeatingTask {
-    if (!$start instanceof Time) {
-      $start = Time::from($start);
-    } if (!$end instanceof Time) {
-      $end = Time::from($end);
+  public static function from($period, $duration): RepeatingTask1 {
+    if (!$period instanceof Period) {
+      $period = new Period($period);
+    } if (!$duration instanceof Interval) {
+      $duration = new Interval($duration);
     }
-    return new static($start, $end, $constraint);
+    return new static($period, $duration);
   }
 
   public function dateMatchesWith($date): bool {
     $date = \Sphp\DateTime\Date::from($date);
     return $this->period->isInPeriod($date);
-    
   }
 
 }

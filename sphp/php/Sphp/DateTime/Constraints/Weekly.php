@@ -8,43 +8,43 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Date;
 
 /**
- * Implements a constraint including all dates before the limit
+ * Implements a weekly date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
+ * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Before implements DateConstraint {
+class Weekly implements DateConstraint {
 
   /**
-   * @var Date 
+   * @var int
    */
-  private $limit;
+  private $weekdays;
 
   /**
    * Constructor
    * 
-   * @param mixed $limit the upper limit date
+   * @param int ...$weekday
    */
-  public function __construct($limit) {
-    $this->limit = new Date($limit);
+  public function __construct(int... $weekday) {
+    $this->weekdays = $weekday;
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->limit);
+    unset($this->weekdays);
   }
 
   public function isValidDate($date): bool {
-    return $this->limit->compareTo($date) > 0;
+    return in_array(Date::from($date)->getWeekDay(), $this->weekdays, true);
   }
 
 }

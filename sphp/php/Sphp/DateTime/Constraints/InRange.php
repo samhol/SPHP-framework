@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Periods;
 

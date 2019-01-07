@@ -10,7 +10,7 @@
 
 namespace Sphp\DateTime\Calendars\Diaries;
 
-use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
+use Sphp\DateTime\Constraints\DateConstraint;
 
 /**
  * Implements a basic diary log

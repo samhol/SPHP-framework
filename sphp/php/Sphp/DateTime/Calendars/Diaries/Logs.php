@@ -11,6 +11,16 @@
 namespace Sphp\DateTime\Calendars\Diaries;
 
 use Sphp\DateTime\DateInterface;
+use Sphp\DateTime\Constraints;
+use Sphp\DateTime\Constraints\Unique;
+use Sphp\DateTime\Constraints\Annual;
+use Sphp\DateTime\Constraints\VaryingAnnual;
+use Sphp\DateTime\Constraints\Weekly;
+use Sphp\DateTime\Constraints\Monthly;
+use Sphp\DateTime\Constraints\InRange;
+use Sphp\DateTime\Constraints\Before;
+use Sphp\DateTime\Constraints\After;
+use Sphp\DateTime\Constraints\OneOf;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -33,7 +43,7 @@ class Logs {
    * @throws InvalidArgumentException if date parameter represents no calendar date
    */
   public static function unique($date, string $heading, string $description = null): BasicLog {
-    $constraint = new Constraints\Unique($date);
+    $constraint = new Unique($date);
     return new BasicLog($constraint, $heading, $description);
   }
 
@@ -47,7 +57,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function annual(int $month, int $day, string $name, string $description = null): BasicLog {
-    $constraint = new Constraints\Annual($month, $day);
+    $constraint = new Annual($month, $day);
     return new BasicLog($constraint, $name, $description);
   }
 
@@ -60,7 +70,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function varyingAnnual(string $format, string $name, string $description = null): BasicLog {
-    $constraint = new Constraints\VaryingAnnual($format);
+    $constraint = new VaryingAnnual($format);
     return new BasicLog($constraint, $name, $description);
   }
 
@@ -73,7 +83,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function monthly(int $day, string $name, string $description = null): BasicLog {
-    $constraint = new Constraints\Monthly($day);
+    $constraint = new Monthly($day);
     return new BasicLog($constraint, $name, $description);
   }
 
@@ -86,7 +96,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function weekly(array $weekdays, string $name, string $description = null): BasicLog {
-    $reflect = new \ReflectionClass(Constraints\Weekly::class);
+    $reflect = new \ReflectionClass(Weekly::class);
     $constraint = $reflect->newInstanceArgs($weekdays);
     return new BasicLog($constraint, $name, $description);
   }
@@ -101,7 +111,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function inRange($start, $stop, string $name, string $description = null): BasicLog {
-    $constraint = new Constraints\InRange($start, $stop);
+    $constraint = new InRange($start, $stop);
     return new BasicLog($constraint, $name, $description);
   }
 
@@ -114,7 +124,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function before($limit, string $name, string $description = null): BasicLog {
-    $constraint = new Constraints\Before($limit);
+    $constraint = new Before($limit);
     return new BasicLog($constraint, $name, $description);
   }
 
@@ -127,7 +137,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function after($limit, string $name, string $description = null): BasicLog {
-    $constraint = new Constraints\After($limit);
+    $constraint = new After($limit);
     return new BasicLog($constraint, $name, $description);
   }
 
@@ -140,7 +150,7 @@ class Logs {
    * @return BasicLog new instance
    */
   public static function oneOf(array $dates, string $name, string $description = null): BasicLog {
-    $reflect = new \ReflectionClass(Constraints\OneOf::class);
+    $reflect = new \ReflectionClass(OneOf::class);
     $constraint = $reflect->newInstanceArgs($dates);
     return new BasicLog($constraint, $name, $description);
   }

@@ -8,39 +8,38 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Date;
 
 /**
- * Implements an annual date constraint
+ * Implements a varying annual date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Annual implements DateConstraint {
+class VaryingAnnual implements DateConstraint {
 
   /**
-   * @var int 
+   * @var string 
    */
-  private $day, $month;
+  private $format;
 
   /**
    * Constructor
    * 
-   * @param int $month
-   * @param int $day
+   * @param string $format datetime format 
    */
-  public function __construct(int $month, int $day) {
-    $this->day = $day;
-    $this->month = $month;
+  public function __construct(string $format) {
+    $this->format = $format;
   }
 
   public function isValidDate($date): bool {
-    $dateObj = Date::from($date);
-    return $this->month === $dateObj->getMonth() && $this->day === $dateObj->getMonthDay();
+    $year = Date::from($date)->getYear();
+    $check = Date::from(sprintf($this->format, $year));
+    return $check->dateEqualsTo($date);
   }
 
 }

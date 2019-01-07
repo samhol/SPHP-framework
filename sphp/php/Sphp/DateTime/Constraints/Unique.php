@@ -8,23 +8,43 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\DateTime\Calendars\Diaries\Constraints;
+namespace Sphp\DateTime\Constraints;
+
+use Sphp\DateTime\Date;
 
 /**
- * Defines a constraint for Calendar Dates
+ * Implements an unique date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface DateConstraint {
+class Unique implements DateConstraint {
 
   /**
-   * Checks if the given date matches with the rule
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if the given date matches and false otherwise
+   * @var Date 
    */
-  public function isValidDate($date): bool;
+  private $date;
+
+  /**
+   * Constructor
+   * 
+   * @param mixed $date the date of the holiday
+   */
+  public function __construct($date) {
+    $this->date = Date::from($date);
+  }
+
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->date);
+  }
+
+  public function isValidDate($date): bool {
+    return $this->date->dateEqualsTo($date);
+  }
+
 }

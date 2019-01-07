@@ -11,7 +11,7 @@
 namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
 use Sphp\DateTime\Calendars\Diaries\AbstractLog;
-use Sphp\DateTime\Calendars\Diaries\Constraints\DateConstraint;
+use Sphp\DateTime\Constraints\DateConstraint;
 use Sphp\DateTime\Time;
 
 /**
