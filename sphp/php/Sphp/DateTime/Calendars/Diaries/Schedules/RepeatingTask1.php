@@ -157,9 +157,9 @@ class RepeatingTask1 implements  Task, \IteratorAggregate {
    * @return RepeatingTask a new task instance
    */
   public static function from($period, $duration): RepeatingTask1 {
-    if (!$period instanceof Period) {
-      $period = new Period($period);
-    } if (!$duration instanceof Interval) {
+    if (is_string($period)) {
+      $period =  Period::fromISO($period);
+    } if (is_string($duration)) {
       $duration = new Interval($duration);
     }
     return new static($period, $duration);

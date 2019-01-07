@@ -12,6 +12,7 @@ namespace Sphp\DateTime;
 
 use DatePeriod;
 use Sphp\DateTime\Constraints\Constraints;
+use IteratorAggregate;
 use Exception;
 
 /**
@@ -25,7 +26,7 @@ use Exception;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Period implements \IteratorAggregate, PeriodInterface {
+class Period implements IteratorAggregate, PeriodInterface {
 
   /**
    * @var DatePeriod 
@@ -59,7 +60,7 @@ class Period implements \IteratorAggregate, PeriodInterface {
     }
   }
 
-  public function restrictions(): Constraints\Constraints {
+  public function restrictions(): Constraints {
     return $this->constraint;
   }
 
@@ -104,7 +105,7 @@ class Period implements \IteratorAggregate, PeriodInterface {
   }
 
   public function getInterval(): Interval {
-    
+    $this->datePeriod->getDateInterval();
   }
 
   public function getEndDate(): DateTimeInterface {
@@ -115,7 +116,7 @@ class Period implements \IteratorAggregate, PeriodInterface {
     return DateTime::from($this->datePeriod->getStartDate());
   }
 
-  public function fromISO(string $isoString): Period {
+  public static function fromISO(string $isoString): Period {
     $datePeriod = new \DatePeriod($isoString);
     return new static($datePeriod);
   }
