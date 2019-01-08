@@ -60,7 +60,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
     return (string) $this->attributes()->getValue('name');
   }
 
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     $this->attributes()->set('name', $name);
     return $this;
   }

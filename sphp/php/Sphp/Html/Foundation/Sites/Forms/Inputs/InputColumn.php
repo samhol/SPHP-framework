@@ -176,7 +176,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this->input->getName();
   }
 
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     $this->input->setName($name);
     return $this;
   }

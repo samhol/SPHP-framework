@@ -65,7 +65,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   public function getOptions(): TraversableContent {
     return $this->getComponentsByObjectType(Option::class);
   }
-  
+
   public function getSelectedOptions(): TraversableContent {
     $isSelected = function($component) {
       if ($component instanceof Option) {
@@ -126,7 +126,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     return (string) $this->attributes()->getValue('name');
   }
 
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     $this->attributes()->set('name', $name);
     return $this;
   }
@@ -142,6 +142,11 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
   public function isEnabled(): bool {
     return !$this->attributes()->exists('disabled');
+  }
+
+  public static function from(string $name = null, array $opt = null): Select {
+    
+    return new Select($name, $opt);
   }
 
 }

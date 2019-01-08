@@ -35,7 +35,7 @@ trait InputTagTrait {
    * @param  string $name the value of the name attribute
    * @return $this for a fluent interface
    */
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     $this->attributes()->set('name', $name);
     return $this;
   }

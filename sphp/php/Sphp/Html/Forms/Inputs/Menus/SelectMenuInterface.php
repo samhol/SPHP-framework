@@ -75,7 +75,7 @@ interface SelectMenuInterface extends ValidableInput, TraversableContent {
    * **Note:** In Chrome and Safari, this attribute may not work as 
    *  expected for size="2" and size="3".
    * 
-   * @param  int|null $size optional number of visible &lt;option&gt; components
+   * @param  int $size optional number of visible &lt;option&gt; components
    * @return $this for a fluent interface
    */
   public function setSize(int $size = null);

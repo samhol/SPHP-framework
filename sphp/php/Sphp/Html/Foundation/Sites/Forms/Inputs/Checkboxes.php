@@ -33,7 +33,7 @@ class Checkboxes extends Choiceboxes {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     if (!Strings::endsWith($name, '[]')) {
       $name .= '[]';
     }
