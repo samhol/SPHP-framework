@@ -31,7 +31,7 @@ class LogsTest extends TestCase {
   public function testInRange() {
     $range = Logs::inRange('2018-1-1', '2018-1-5', 'foo');
     $this->assertTrue($range->dateMatchesWith('2018-1-1'));
-    $this->assertTrue($range->dateMatchesWith('2018-1-5'));
+    $this->assertTrue($range->dateMatchesWith('2018-1-4'));
     $this->assertFalse($range->dateMatchesWith('2018-02-31'));
     $this->assertFalse($range->dateMatchesWith('2017-01-6'));
   }

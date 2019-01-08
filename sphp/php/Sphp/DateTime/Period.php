@@ -42,6 +42,27 @@ class Period implements IteratorAggregate, PeriodInterface {
     $this->datePeriod = $period;
     $this->constraints = new Constraints();
   }
+  /**
+   * Checks if the given date is in the range
+   * 
+   * @param  mixed $date the date to match
+   * @return bool true if given datetime is in the period
+   */
+  public function containsDate($date): bool {
+    $result = false;
+    try {
+      $dateObj = Date::from($date);
+      foreach ($this as $dateTime) {
+        if ($dateObj->compareTo($dateTime) === 0) {
+          $result = true;
+          break;
+        }
+      }
+    } catch (Exception $ex) {
+      return false;
+    }
+    return $result;
+  }
 
   /**
    * Checks if the given date is in the range

@@ -119,4 +119,9 @@ abstract class Periods {
     return new Period($p);
   }
 
+  
+  public static function days($first, $last): Period {
+    $p = new \DatePeriod(DateTimes::dateTimeImmutable($first), new Interval('P1D'), DateTimes::dateTimeImmutable($last));
+    return new Period($p);
+  }
 }

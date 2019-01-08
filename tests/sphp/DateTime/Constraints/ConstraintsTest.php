@@ -40,7 +40,7 @@ class ConstraintsTest extends TestCase {
   public function testInRange() {
     $range = new InRange('2018-1-1', '2018-1-5');
     $this->assertTrue($range->isValid('2018-1-1'));
-    $this->assertTrue($range->isValid('2018-1-5'));
+    $this->assertTrue($range->isValid('2018-1-4'));
     $this->assertFalse($range->isValid('2018-02-31'));
     $this->assertFalse($range->isValid('2017-01-6'));
   }

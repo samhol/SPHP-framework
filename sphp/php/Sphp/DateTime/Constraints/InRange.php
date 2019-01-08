@@ -44,7 +44,7 @@ class InRange implements DateConstraint {
   }
 
   public function isValid($date): bool {
-    return $this->dateRange->isInPeriod($date);
+    return $this->dateRange->containsDate($date);
   }
 
 }
