@@ -22,8 +22,7 @@ use Sphp\Stdlib\Arrays;
 class MenuFactory {
 
   /**
-   * Returns a new {@link Select} containing {@link Option} 
-   * components having their content as value
+   * Returns a new menu
    *
    * @param  string[] $content the contents of the menu
    * @param  string $name the value of the name attribute
@@ -33,11 +32,11 @@ class MenuFactory {
     if (count($content) > 0) {
       $content = array_combine($content, $content);
     }
-    return new Select($name, Arrays::valuesToKeys($content));
+    return new Select($name, $content);
   }
 
   /**
-   * Returns a new {@link Select} component containing a range
+   * Returns a new menu containing a range
    *
    * @param  mixed $from the lower limit
    * @param  mixed $to the upper limit
@@ -48,6 +47,22 @@ class MenuFactory {
   public static function rangeMenu($from, $to, $step = 1, $name = null): Select {
     $range = range($from, $to, $step);
     return new Select($name, array_combine($range, $range));
+  }
+
+  /**
+   * Creates a new instance of menu containing monnths
+   * 
+   * @param  string $name
+   * @param  int $selected
+   * @return Select new instance containing months
+   */
+  public static function months(string $name = null, int ...$selected): Select {
+    $cal = new \Sphp\I18n\Datetime\CalendarUtils();
+    $menu = Select::from($name, $cal->getMonths());
+    if (!empty($selected)) {
+      $menu->setSelectedValues($selected);
+    }
+    return $menu;
   }
 
 }
