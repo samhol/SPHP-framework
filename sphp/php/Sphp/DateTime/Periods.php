@@ -115,13 +115,15 @@ abstract class Periods {
     $start = $d->modify('last monday');
 
     $stop = $d->modify('last day of')->modify('next sunday');
+    echo 'foo..'. $start->format('Y-m-d D');
     $p = new \DatePeriod($start->getDateTime(), new Interval('P1W'), $stop->getDateTime());
     return new Period($p);
   }
 
   
-  public static function days($first, $last): Period {
-    $p = new \DatePeriod(DateTimes::dateTimeImmutable($first), new Interval('P1D'), DateTimes::dateTimeImmutable($last));
+  public static function days($first, int $num): Period {
+    echo "\n|||days:". DateTimes::dateTimeImmutable($first)->format('Y-m-d D');
+    $p = new \DatePeriod(DateTimes::dateTimeImmutable($first), new Interval('P1D'), $num);
     return new Period($p);
   }
 }
