@@ -10,10 +10,10 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Stdlib\Arrays;
+use Sphp\I18n\Datetime\CalendarUtils;
 
 /**
- * Factory for generating {@link Select} components for specified tasks
+ * Factory for generating &lt;select&gt; menus
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -50,18 +50,17 @@ class MenuFactory {
   }
 
   /**
-   * Creates a new instance of menu containing monnths
+   * Creates a new instance of a menu containing months
    * 
    * @param  string $name
-   * @param  int $selected
+   * @param  CalendarUtils $calendar 
    * @return Select new instance containing months
    */
-  public static function months(string $name = null, int ...$selected): Select {
-    $cal = new \Sphp\I18n\Datetime\CalendarUtils();
-    $menu = Select::from($name, $cal->getMonths());
-    if (!empty($selected)) {
-      $menu->setSelectedValues($selected);
+  public static function months(string $name = null, CalendarUtils $calendar = null): Select {
+    if ($calendar === null) {
+      $calendar = new CalendarUtils();
     }
+    $menu = Select::from($name, $calendar->getMonths());
     return $menu;
   }
 

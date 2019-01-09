@@ -13,3 +13,10 @@
   @include sphp-top-bar;
   @include sphp-badge;
 }
+select::-ms-expand {	
+  display: none; 
+}
+select{
+  -webkit-appearance: none;
+  appearance: none;
+}
