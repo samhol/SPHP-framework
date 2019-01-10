@@ -51,7 +51,7 @@ class HolidayDiary extends LogDispatcher {
     $this->insertLog(Holidays::birthday('1844-4-19', 'Minna, Canth', '12 May 1897')->setFlagDay($country));
     $eqDay = Holidays::annual(4, 19, 'Day of Equality')
             ->setFlagDay($country);
-    $eqDay->dateConstraints()->isNotBefore('2007-4-19');
+    $eqDay->dateRule()->isNotBefore('2007-4-19');
     $this->insertLog($eqDay);
     //$this->insertLog(Holidays::annual(4, 19, 'Day of Equality')->setFlagDay($country));
     $this->insertLog(Holidays::annual(4, 27, "National War Veterans' Day")->setFlagDay($country));

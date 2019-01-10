@@ -10,14 +10,13 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
-use Sphp\DateTime\Calendars\Diaries\AbstractLog;
-use Sphp\DateTime\Constraints\DateConstraint;
-use Sphp\DateTime\Time;
+use IteratorAggregate;
 use Sphp\DateTime\DateTime;
 use Sphp\DateTime\Duration;
 use Sphp\DateTime\Interval;
 use Sphp\DateTime\Period;
 use Sphp\DateTime\Constraints\Constraints;
+
 /**
  * Description of RepeatingTask
  *
@@ -25,7 +24,7 @@ use Sphp\DateTime\Constraints\Constraints;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RepeatingTask1 implements  Task, \IteratorAggregate {
+class PeriodicTask implements Task, IteratorAggregate {
 
   /**
    * @var Constraint 
@@ -59,7 +58,6 @@ class RepeatingTask1 implements  Task, \IteratorAggregate {
    * @param Interval $duration
    */
   public function __construct(Period $period, Interval $duration) {
-
     $this->duration = $duration;
     $this->period = $period;
     $this->constraint = new Constraints();
@@ -77,10 +75,9 @@ class RepeatingTask1 implements  Task, \IteratorAggregate {
     return $output;
   }
 
-  public function dateConstraints(): Constraints {
+  public function dateConditions(): Constraints {
     return $this->constraint;
   }
-
 
   /**
    * Returns the description text
@@ -89,14 +86,6 @@ class RepeatingTask1 implements  Task, \IteratorAggregate {
    */
   public function getDescription(): string {
     return "$this->description";
-  }
-
-  public function getStart(): Time {
-    return $this->start;
-  }
-
-  public function getEnd(): Time {
-    return $this->end;
   }
 
   /**
@@ -156,9 +145,9 @@ class RepeatingTask1 implements  Task, \IteratorAggregate {
    * @param  mixed $duration
    * @return RepeatingTask a new task instance
    */
-  public static function from($period, $duration): RepeatingTask1 {
+  public static function from($period, $duration): PeriodicTask {
     if (is_string($period)) {
-      $period =  Period::fromISO($period);
+      $period = Period::fromISO($period);
     } if (is_string($duration)) {
       $duration = new Interval($duration);
     }
@@ -166,8 +155,7 @@ class RepeatingTask1 implements  Task, \IteratorAggregate {
   }
 
   public function dateMatchesWith($date): bool {
-    $date = \Sphp\DateTime\Date::from($date);
-    return $this->period->isInPeriod($date);
+    return $this->period->containsDate($date);
   }
 
 }
