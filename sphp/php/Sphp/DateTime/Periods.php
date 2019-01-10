@@ -20,8 +20,6 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\DateTime\Period m(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new monthly recurrence instance from input
  * @method \Sphp\DateTime\Period weeks(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
  * @method \Sphp\DateTime\Period w(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
- * @method \Sphp\DateTime\Period days(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new daily recurrences instance from input
- * @method \Sphp\DateTime\Period d(mixed $start, string|\DateInterval $interval, int $recurrences = 1) Creates a new daily recurrences instance from input
  * @method \Sphp\DateTime\Period hours(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new hourly recurrences instance from input
  * @method \Sphp\DateTime\Period h(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new hourly recurrences instance from input
  * 
@@ -37,11 +35,7 @@ abstract class Periods {
    */
   private static $periodMap = [
       'months' => '%d months',
-      'm' => '%d months',
       'weeks' => '%d weeks',
-      'w' => '%d weeks',
-      'days' => '%d days',
-      'd' => '%d days',
       'hours' => '%d hours',
       'h' => '%d hours',
       'weeksOfMonth' => '%d hours',
@@ -95,7 +89,7 @@ abstract class Periods {
     }
     return $p;
   }
-  
+
   /**
    * Creates a new instance from input
    * 
@@ -115,15 +109,21 @@ abstract class Periods {
     $start = $d->modify('last monday');
 
     $stop = $d->modify('last day of')->modify('next sunday');
-    echo 'foo..'. $start->format('Y-m-d D');
+    //  echo 'foo..'. $start->format('Y-m-d D');
     $p = new \DatePeriod($start->getDateTime(), new Interval('P1W'), $stop->getDateTime());
     return new Period($p);
   }
 
-  
+  /**
+   * 
+   * @param  mixed $first
+   * @param  int $num
+   * @return Period new instance
+   */
   public static function days($first, int $num): Period {
-    echo "\n|||days:". DateTimes::dateTimeImmutable($first)->format('Y-m-d D');
+    // echo "\n|||days:". DateTimes::dateTimeImmutable($first)->format('Y-m-d D');
     $p = new \DatePeriod(DateTimes::dateTimeImmutable($first), new Interval('P1D'), $num);
     return new Period($p);
   }
+
 }

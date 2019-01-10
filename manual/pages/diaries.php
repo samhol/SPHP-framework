@@ -27,7 +27,7 @@ $fi->setEasterFor($year);
 $misc = new MutableDiary();
 $basketball = RepeatingTask::from('19:00', '21:00');
 $basketball->setDescription('Basketball at Ruiskatu');
-$basketball->dateConstraints()
+$basketball->dateRule()
         ->isWeekly(7)
         ->isAfter('2017-8-31')
         ->isBefore('2018-6-1')
@@ -35,7 +35,7 @@ $basketball->dateConstraints()
 $misc->insertLog($basketball);
 $basketball1 = RepeatingTask::from('20:30', '22:00');
 $basketball1->setDescription('Basketball at the School of Vaarniemi');
-$basketball1->dateConstraints()
+$basketball1->dateRule()
         ->isWeekly(1, 3)
         ->isAfter('2018-1-1')
         ->isBefore('2019-6-1')
@@ -61,12 +61,20 @@ $exercises = FitNotes::fromCsv(__DIR__ . '/../snippets/FitNotes.csv');
 $workCalendar = new \Sphp\DateTime\Calendars\Diaries\MutableDiary();
 $liucon = RepeatingTask::from('7:00', '15:30');
 $liucon->setDescription('Working as an employee for Liucon OY');
-$liucon->dateConstraints()
+$liucon->dateRule()
         ->isWeekly(1, 2, 3, 4, 5)
         ->isAfter('2018-5-9')
         ->isBefore('2018-8-11')
         ->isNotOneOf('2018-7-19', '2018-7-20');
 $workCalendar->insertLog($liucon);
+$liucon1 = \Sphp\DateTime\Calendars\Diaries\Schedules\PeriodicTask::from('R50/2018-05-09T07:00:00Z/P1D', 'PT7H30M');
+$liucon1->setDescription('Working as an employee for Liucon OY');
+$liucon1->dateConditions()
+        ->isWeekly(1, 2, 3, 4, 5)
+        ->isAfter('2018-5-9')
+        ->isBefore('2018-8-11')
+        ->isNotOneOf('2018-7-19', '2018-7-20');
+$workCalendar->insertLog($liucon1);
 $workCalendar->insertLog(new \Sphp\DateTime\Calendars\Diaries\Schedules\SingleTask('2018-5-20 11:00 EET', '2018-5-20 12:00 EET'));
 //var_dump($exercises instanceof \Sphp\DateTime\Calendars\Diaries\DiaryInterface);
 $diaryContainer = new \Sphp\DateTime\Calendars\Diaries\DiaryContainer();
