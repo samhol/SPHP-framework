@@ -28,11 +28,11 @@ class LogsTest extends TestCase {
     $this->assertFalse($monthly->dateMatchesWith('2018-11-02'));
   }
 
-  public function testInRange() {
-    $range = Logs::inRange('2018-1-1', '2018-1-5', 'foo');
+  public function testBetween() {
+    $range = Logs::between('2018-1-1', '2018-1-5', 'foo');
     $this->assertTrue($range->dateMatchesWith('2018-1-1'));
     $this->assertTrue($range->dateMatchesWith('2018-1-4'));
-    $this->assertFalse($range->dateMatchesWith('2018-02-31'));
+    $this->assertFalse($range->dateMatchesWith('2017-12-31'));
     $this->assertFalse($range->dateMatchesWith('2017-01-6'));
   }
 

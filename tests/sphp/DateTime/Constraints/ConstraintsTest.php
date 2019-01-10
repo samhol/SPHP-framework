@@ -13,7 +13,7 @@ namespace Sphp\Tests\DateTime\Constraints;
 use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Constraints\Weekly;
 use Sphp\DateTime\Constraints\Monthly;
-use Sphp\DateTime\Constraints\InRange;
+use Sphp\DateTime\Constraints\Between;
 use Sphp\DateTime\Constraints\Before;
 use Sphp\DateTime\Constraints\After;
 use Sphp\DateTime\Constraints\Annual;
@@ -37,10 +37,10 @@ class ConstraintsTest extends TestCase {
     $this->assertFalse($monthly->isValid('2018-11-02'));
   }
 
-  public function testInRange() {
-    $range = new InRange('2018-1-1', '2018-1-5');
+  public function testBetween() {
+    $range = new Between('2018-1-1', '2018-1-5');
     $this->assertTrue($range->isValid('2018-1-1'));
-    $this->assertTrue($range->isValid('2018-1-4'));
+    $this->assertTrue($range->isValid('2018-1-5'));
     $this->assertFalse($range->isValid('2018-02-31'));
     $this->assertFalse($range->isValid('2017-01-6'));
   }

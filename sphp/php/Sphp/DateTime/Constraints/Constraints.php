@@ -18,8 +18,8 @@ use Sphp\Exceptions\BadMethodCallException;
  * 
  * @method \Sphp\DateTime\Constraints\Constraints isAnnual(int $month, int $day) Adds an `Annual` constraint
  * @method \Sphp\DateTime\Constraints\Constraints isNotAnnual(int $month, int $day) Adds a not `Annual` constraint
- * @method \Sphp\DateTime\Constraints\Constraints isInRange(mixed $start = null, mixed $stop = null) Adds an `InRange` constraint
- * @method \Sphp\DateTime\Constraints\Constraints isNotInRange(mixed $start = null, mixed $stop = null) Adds a not `InRange` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isBetween(mixed $start = null, mixed $stop = null) Adds an `Between` constraint
+ * @method \Sphp\DateTime\Constraints\Constraints isNotBetween(mixed $start = null, mixed $stop = null) Adds a not `Between` constraint
  * @method \Sphp\DateTime\Constraints\Constraints isAfter(mixed $date) Adds an `After` constraint
  * @method \Sphp\DateTime\Constraints\Constraints isNotAfter(mixed $date)  Adds a not `After` constraint
  * @method \Sphp\DateTime\Constraints\Constraints isBefore(mixed $date) Adds an `Before` constraint

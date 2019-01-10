@@ -17,7 +17,7 @@ use Sphp\DateTime\Constraints\Annual;
 use Sphp\DateTime\Constraints\VaryingAnnual;
 use Sphp\DateTime\Constraints\Weekly;
 use Sphp\DateTime\Constraints\Monthly;
-use Sphp\DateTime\Constraints\InRange;
+use Sphp\DateTime\Constraints\Between;
 use Sphp\DateTime\Constraints\Before;
 use Sphp\DateTime\Constraints\After;
 use Sphp\DateTime\Constraints\OneOf;
@@ -110,8 +110,8 @@ class Logs {
    * @param  string $description
    * @return BasicLog new instance
    */
-  public static function inRange($start, $stop, string $name, string $description = null): BasicLog {
-    $constraint = new InRange($start, $stop);
+  public static function between($start, $stop, string $name, string $description = null): BasicLog {
+    $constraint = new Between($start, $stop);
     return new BasicLog($constraint, $name, $description);
   }
 

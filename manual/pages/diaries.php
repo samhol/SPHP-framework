@@ -39,7 +39,7 @@ $basketball1->dateConstraints()
         ->isWeekly(1, 3)
         ->isAfter('2018-1-1')
         ->isBefore('2019-6-1')
-        ->isNotInRange('2018-6-1', '2018-8-25')
+        ->isNotBetween('2018-6-1', '2018-8-25')
         ->isNotOneOf("$year-4-30", "$year-5-1");
 $misc->insertLog($basketball1);
 

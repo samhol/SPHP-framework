@@ -10,21 +10,26 @@
 
 namespace Sphp\DateTime\Constraints;
 
-use Sphp\DateTime\Periods;
+use Sphp\DateTime\Date;
 
 /**
- * Implements an in range date constraint
+ * Implements a between two dates date constraint
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InRange implements DateConstraint {
+class Between implements DateConstraint {
 
   /**
-   * @var Period 
+   * @var Date
    */
-  private $dateRange;
+  private $start;
+
+  /**
+   * @var Date
+   */
+  private $end;
 
   /**
    * Constructor
@@ -33,18 +38,19 @@ class InRange implements DateConstraint {
    * @param  mixed $stop end of date range (null for no ending point)
    */
   public function __construct($start = null, $stop = null) {
-    $this->dateRange = Periods::days($start, $stop);
+    $this->start = Date::from($start);
+    $this->end = Date::from($stop);
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->dateRange);
+    unset($this->start, $this->end);
   }
 
   public function isValid($date): bool {
-    return $this->dateRange->containsDate($date);
+    return $this->start->compareTo($date) <= 0 && $this->end->compareTo($date) >= 0;
   }
 
 }
