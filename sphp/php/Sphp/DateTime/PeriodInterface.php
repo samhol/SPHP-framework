@@ -35,7 +35,7 @@ interface PeriodInterface extends Traversable, Arrayable {
    * @param  mixed $date the date to match
    * @return bool true if given datetime is in the period
    */
-  public function isInPeriod($date): bool;
+  public function containsDate($date): bool;
 
   /**
    * Checks if the given date is in the range

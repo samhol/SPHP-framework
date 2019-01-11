@@ -10,6 +10,10 @@
 @mixin sphp-month-selector() { 
   .sphp {
     &.month-selector {
+      select {
+        width: initial;
+        min-width: rem-calc(200);
+      }
       font-size: rem-calc(20);
       color: #666;
       padding-left: rem-calc(10);

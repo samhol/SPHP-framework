@@ -42,6 +42,7 @@ class Period implements IteratorAggregate, PeriodInterface {
     $this->datePeriod = $period;
     $this->constraints = new Constraints();
   }
+
   /**
    * Checks if the given date is in the range
    * 
@@ -62,23 +63,6 @@ class Period implements IteratorAggregate, PeriodInterface {
       return false;
     }
     return $result;
-  }
-
-  /**
-   * Checks if the given date is in the range
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if given datetime is in the period
-   */
-  public function isInPeriod($date): bool {
-    try {
-      $dateTime = DateTime::from($date)->getTimestamp();
-      $start = $this->getStartDate()->getTimestamp();
-      $stop = $this->getEndDate()->getTimestamp();
-      return $start <= $dateTime && $dateTime <= $stop;
-    } catch (Exception $ex) {
-      return false;
-    }
   }
 
   public function restrictions(): Constraints {
@@ -129,12 +113,12 @@ class Period implements IteratorAggregate, PeriodInterface {
     $this->datePeriod->getDateInterval();
   }
 
-  public function getEndDate(): DateTimeInterface {
-    return DateTime::from($this->datePeriod->getEndDate());
-  }
-
   public function getStartDate(): DateTimeInterface {
     return DateTime::from($this->datePeriod->getStartDate());
+  }
+
+  public function getEndDate(): DateTimeInterface {
+    return DateTime::from($this->datePeriod->getEndDate());
   }
 
   public static function fromISO(string $isoString): Period {

@@ -35,11 +35,20 @@
               });
     });
   };
+  sphp.calendar.selector = function () {
+    $(".month-selector select").change(function () {
+      $(this).find("option:selected").each(function () {
+        console.log($(this).text() + " ");
+      });
+      console.log("Handler for .change() called.");
+    });
+  };
 }(window.sphp = window.sphp || {}, jQuery));
 
 $(window).bind("load", function () {
   "use strict";
   sphp.columnHighlighter();
   sphp.calendar();
+  sphp.calendar.selector();
 
 });
