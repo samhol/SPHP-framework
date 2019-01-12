@@ -47,7 +47,7 @@ abstract class DateTimes {
     } else if (is_int($input)) {
       return new DateTimeImmutable("@$input");
     } else if ($input instanceof \DateTimeInterface || $input instanceof DateInterface) {
-      $dateTimeString = $input->format(\DateTimeInterface::ATOM);
+      $dateTimeString = $input->format('Y-m-d\TH:i:sP');
       return new DateTimeImmutable($dateTimeString);
     } else {
       throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
