@@ -72,18 +72,16 @@ class MonthSelector implements Content {
     $link->addCssClass('next-month');
     return $link;
   }
-  
+
   public function createMonthMenu() {
     $dropDown = new \Sphp\Html\Foundation\Sites\Navigation\DropdownMenu();
     $calendar = new \Sphp\I18n\Datetime\CalendarUtils();
-   $sub = $dropDown->appendSubMenu()->setRoot($this->date->getMonthName());
-    foreach($calendar->getMonths() as $number => $name) {
+    $sub = $dropDown->appendSubMenu()->setRoot($this->date->getMonthName());
+    foreach ($calendar->getMonths() as $number => $name) {
       $href = "calendar/" . $this->date->getYear() . "/" . $number;
       $sub->appendLink($href, $name);
     }
     return $dropDown;
-    
-    
   }
 
   public function createMonthLink(Date $month, $content = null): Hyperlink {
@@ -101,13 +99,20 @@ class MonthSelector implements Content {
   protected function buildDate(): Div {
     $container = new Div();
     $container->attributes()->classes()->protect('sphp', 'month-selector');
-    $startYear = $this->date->getYear() - 5;
+    $thisYear = (int) date('Y');
+    $startYear = $this->date->getYear() - 3;
     $stopYear = $this->date->getYear() + 1;
-   // $container->append( $this->createMonthMenu());
-    $container->append(MenuFactory::getContentAsValueMenu(range($startYear, $stopYear))->setSelectedValues($this->date->getYear()));
+    $years = range($startYear, $stopYear);
+    $yearMenu = MenuFactory::getContentAsValueMenu($years, 'year');
+    $yearMenu->setSelectedValues($this->date->getYear());
+    if (!in_array($thisYear, $years)) {
+      $yearMenu->prepend(new \Sphp\Html\Forms\Inputs\Menus\Option($thisYear, $thisYear));
+    }
     $container->append($this->createPreviousMonth());
+    // $container->append( $this->createMonthMenu());
+    $container->append($yearMenu);
     $container->append(MenuFactory::months('month')->setSelectedValues($this->date->getMonth()));
-   // $container->append(new Span($this->date->format('F Y')));
+    // $container->append(new Span($this->date->format('F Y')));
     $container->append($this->createNextMonth());
     return $container;
   }

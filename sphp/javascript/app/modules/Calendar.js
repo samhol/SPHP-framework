@@ -12,12 +12,12 @@
     $dayCell.mouseover(function () {
       var $weekday = $(this).attr('data-week-day');
       $('div.sphp.calendar-head.day.' + $weekday).addClass('active');
-      console.log('weekday activated: ' + $weekday);
+      //console.log('weekday activated: ' + $weekday);
     });
     $dayCell.mouseout(function () {
       var $weekday = $(this).attr('data-week-day');
       $('div.sphp.calendar-head.day.' + $weekday).removeClass('active');
-      console.log('weekday deactivated: ' + $weekday);
+      //console.log('weekday deactivated: ' + $weekday);
     });
   };
   sphp.calendar = function () {
@@ -37,11 +37,14 @@
   };
   sphp.calendar.selector = function () {
     $(".month-selector select").change(function () {
-      $(this).find("option:selected").each(function () {
-        console.log($(this).text() + " ");
-      });
-      console.log("Handler for .change() called.");
+      var $year, $month, $path;
+      $year = $("select[name='year'] option:selected").attr('value');
+      $month = $("select[name='month'] option:selected").attr('value');
+      $path = "/calendar/" + $year + "/" + $month;
+      console.log($path);
+      window.location.pathname = $path;
     });
+
   };
 }(window.sphp = window.sphp || {}, jQuery));
 
