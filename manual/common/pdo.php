@@ -11,7 +11,7 @@ Db::createFrom($db);
 Db::createFrom($db, 'foo');
 
 
-$db1 = new PDO('mysql:host=Localhost;dbname=int48291_workouts;charset=utf8mb4', 'int48291_workouts', '.qCR8[*3zp(K', array(PDO::ATTR_EMULATE_PREPARES => false,
+$db1 = new PDO('mysql:host=Localhost;dbname=int48291_calendar;charset=utf8mb4', 'int48291_calendar', '=IkG?q#kayn=', array(PDO::ATTR_EMULATE_PREPARES => false,
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-Db::createFrom($db1, 'workouts');
+Db::createFrom($db1, 'calendar');
