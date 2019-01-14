@@ -7,6 +7,7 @@ use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Forms\Inputs\AnyTimeInput;
+
 $section = new \Sphp\Html\Flow\Section();
 $section->appendH1('Calendar task form');
 $form = (new GridForm())
@@ -16,18 +17,19 @@ $row = new FormRow();
 
 $datetimeInput = (new AnyTimeInput('start'))->setLocale('fi_FI');
 $endInput = (new AnyTimeInput('end'))->setLocale('fi_FI');
-$row->append((new InputColumn((new TextInput("type"))
-                        ->setPlaceholder("Type")
+$types = ['Basketball', 'Work', 'School'];
+$yearMenu = \Sphp\Html\Forms\Inputs\Menus\Select::from('year', $types);
+$row->append((new InputColumn($yearMenu
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setErrorField("You need to insert a task type")
                 ->setLabel("Task type:"));
 $row->append((new InputColumn($datetimeInput
-                        ->setPlaceholder("Starts")
+                        ->setPlaceholder('yyyy-mm-dd hh:mm')
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setErrorField("You need to give start time")
                 ->setLabel("Start time:"));
 $row->append((new InputColumn($endInput
-                        ->setPlaceholder("Ends")
+                        ->setPlaceholder('yyyy-mm-dd hh:mm')
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setErrorField("You need to give end time")
                 ->setLabel("Stop time:"));

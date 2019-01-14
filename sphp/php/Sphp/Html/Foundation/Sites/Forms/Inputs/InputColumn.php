@@ -198,7 +198,10 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this->label->getHtml() . $this->helper;
   }
 
-  public function layout(): ColumnLayoutManagerInterface {
+  public function layout(string ...$layout): ColumnLayoutManagerInterface {
+    if (!empty($layout)) {
+      $this->layoutManager->setLayouts($layout);
+    }
     return $this->layoutManager;
   }
 

@@ -38,7 +38,10 @@ class ContentCallout extends ClosableContainer implements Callout {
     $this->layoutManager = new CalloutLayoutManager($this);
   }
 
-  public function layout() {
+  public function layout(string ...$layouts) {
+    if (!empty ($layouts)) {
+      $this->layoutManager->setLayouts($layouts);
+    }
     return $this->layoutManager;
   }
 

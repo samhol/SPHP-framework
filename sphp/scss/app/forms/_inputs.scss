@@ -32,8 +32,17 @@
   select::-ms-expand {	
     display: none; 
   }
-  select{
+  select {
     -webkit-appearance: none;
     appearance: none;
+    option[selected] {
+      border-bottom: solid 1px #ccc;
+    }
+  }
+}
+
+@mixin sphp-abide-form-error-callout() {
+  form .callout[data-abide-error] {
+    color: get-color(alert);
   }
 }
