@@ -6,29 +6,33 @@ use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
-
+use Sphp\Html\Forms\Inputs\AnyTimeInput;
+$section = new \Sphp\Html\Flow\Section();
+$section->appendH1('Calendar task form');
 $form = (new GridForm())
         ->useValidation(true);
-$form ->append('<h1>Add new task</h1>');
 $usernameField = (new TextInput("username"))->setPlaceholder("Username");
-$row1 = new FormRow();
-$row1->append((new InputColumn((new TextInput("username"))
-                        ->setPlaceholder("Username")
+$row = new FormRow();
+
+$datetimeInput = (new AnyTimeInput('start'))->setLocale('fi_FI');
+$endInput = (new AnyTimeInput('end'))->setLocale('fi_FI');
+$row->append((new InputColumn((new TextInput("type"))
+                        ->setPlaceholder("Type")
                         ->setRequired(), ['small-12', 'large-4']))
-                ->setHelperText("Insert username *")
-                ->setErrorField("You need to insert a username")
-                ->setLabel("Username:"));
-$row1->append((new InputColumn((new TextInput("fname"))
-                        ->setRequired()
-                        ->setPlaceholder("First name"), ['small-12', 'large-4']))
-                ->setLabel("First name:")
-                ->setErrorField("You need to insert a username"));
-$row1->append((new InputColumn((new TextInput("lname"))
-                        ->setRequired()
-                        ->setPlaceholder("Family name"), ['small-12', 'large-4']))
-                ->setErrorField("You need to insert a username")
-                ->setLabel("Family name:"));
-$form->append($row1);
+                ->setErrorField("You need to insert a task type")
+                ->setLabel("Task type:"));
+$row->append((new InputColumn($datetimeInput
+                        ->setPlaceholder("Starts")
+                        ->setRequired(), ['small-12', 'large-4']))
+                ->setErrorField("You need to give start time")
+                ->setLabel("Start time:"));
+$row->append((new InputColumn($endInput
+                        ->setPlaceholder("Ends")
+                        ->setRequired(), ['small-12', 'large-4']))
+                ->setErrorField("You need to give end time")
+                ->setLabel("Stop time:"));
+
+$form->append($row);
 
 $form->append(InputColumn::textarea("description", null, 5)
                 ->setRequired()
@@ -36,5 +40,11 @@ $form->append(InputColumn::textarea("description", null, 5)
                 ->setErrorField("Please insert task description"));
 
 $form->append(Button::submitter("Submit form", "submit"));
+$section->append($form);
+$section->printHtml();
 
-$form->printHtml();
+if (!empty($_GET)) {
+  echo '<h1>$_POST</h1><pre>';
+  var_dump($_GET);
+  echo '</pre>';
+}

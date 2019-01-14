@@ -66,7 +66,7 @@
     text-align:center;
     border:0;
     font: inherit; 
-    font-size: x-small;
+    font-size: rem-calc(14);
     font-style:normal;
     font-weight:normal;
     list-style-type:none;
@@ -290,8 +290,8 @@
    */
 
   .AnyTime-hr-btn {
-    text-align:right;
-    width:3.5em;
+    text-align: center;
+    width: rem-calc(30);
   }
 
   /*  .AnyTime-mins contains two columns (.AnyTime-mins-tens and .AnyTime-mins-ones)

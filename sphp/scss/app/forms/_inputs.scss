@@ -1,0 +1,39 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+@mixin sphp-anytime-input() { 
+  input.sphp.AnyTimeInput {
+    background-color: #fff;
+    cursor: default;
+
+    &:after {
+      content: "\f087"; 
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      position: absolute;
+      font-size: 400px;
+      color: lightblue;
+      top: 50%;
+      left: 50%;
+      margin: -300px 0 0 -200px;
+      z-index: 1;
+    }
+  }
+}
+
+@mixin sphp-select() { 
+  select::-ms-expand {	
+    display: none; 
+  }
+  select{
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}

@@ -2,14 +2,14 @@
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-@import "top-bar";
-@import "media";
 
-@mixin sphp-foundation-addons() { 
-  @include sphp-top-bar;
-  @include sphp-badge;
+@import "inputs";
+
+@mixin sphp-forms() { 
+  @include sphp-anytime-input;
+  @include sphp-select;
 }
