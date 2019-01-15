@@ -55,8 +55,8 @@ class TopBar extends AbstractBar {
   /**
    * Stacks the buttons in the given screen sizes
    * 
-   * @precondition `$screenSize` == `small|medium|large`
-   * @param  string $screenSize the targeted screensize
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the targeted screen size
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */

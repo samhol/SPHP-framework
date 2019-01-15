@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Html\Attrs;
 
 use Countable;
 use Iterator;
@@ -117,7 +117,7 @@ class AttributeManager implements Countable, Iterator {
    * @throws InvalidAttributeException
    * @throws ImmutableAttributeException
    */
-  public function setInstance(Attribute $attr) {
+  public function protectInstance(Attribute $attr) {
     $name = $attr->getName();
     if (!$this->gen->isValidType($name, $attr)) {
       throw new InvalidAttributeException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
@@ -128,7 +128,7 @@ class AttributeManager implements Countable, Iterator {
       }
       $this->attrs[$name] = $attr;
     } else {
-      throw new ImmutableAttributeException("Attribute '$name' is immutable");
+      throw new ImmutableAttributeException("Attribute '$name' is already portected");
     }
     return $this;
   }
@@ -184,49 +184,45 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
-   * @param string $name
-   * @param bool $value
-   * @return $this
+   * @param  string $name
+   * @param  bool $value
+   * @return BooleanAttribute
    */
-  public function setBoolean(string $name, bool $value = true) {
+  public function forceBoolean(string $name, bool $value = true): BooleanAttribute {
     if ($this->isBooleanAttribute($name)) {
       $this->attrs[$name]->set($value);
     } else {
       $attr = new BooleanAttribute($name, $value);
-      $this->setInstance($attr);
-    }
-    return $this;
-  }
-
-  /**
-   * 
-   * @param string $name
-   * @param int $value
-   * @return IntegerAttribute
-   */
-  public function setInteger(string $name, int $value = null): IntegerAttribute {
-    if ($this->isIntegerAttribute($name)) {
-      $this->attrs[$name]->set($value);
-    } else {
-      $attr = new IntegerAttribute($name);
-      $attr->set($value);
-      $this->setInstance($attr);
+      $this->protectInstance($attr);
     }
     return $this->attrs[$name];
   }
 
   /**
    * 
-   * @param string $name
-   * @param string $value
-   * @return \Sphp\Html\Attributes\IdAttribute
+   * @param  string $name
+   * @param  int|null $min optional minimum value
+   * @param  int|null $max optional maximum value
+   * @return IntegerAttribute
    */
-  public function setIdentifier(string $name, string $value = null): IdAttribute {
+  public function forceInteger(string $name, int $min = null, int $max = null): IntegerAttribute {
+    $attr = new IntegerAttribute($name, $min, $max);
+    $this->protectInstance($attr);
+    return $this->attrs[$name];
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @param  string $value
+   * @return IdAttribute
+   */
+  public function forceIdentifier(string $name, string $value = null): IdAttribute {
     if ($this->isIdentifier($name)) {
       $this->attrs[$name]->set($value);
     } else {
       $attr = new IdAttribute($name, $value);
-      $this->setInstance($attr);
+      $this->protectInstance($attr);
     }
     return $this->attrs[$name];
   }

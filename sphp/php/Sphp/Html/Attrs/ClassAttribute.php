@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Html\Attrs;
 
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;

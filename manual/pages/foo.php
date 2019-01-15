@@ -1,22 +1,29 @@
 <?php
 
-use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
+namespace Sphp\Html\Attrs;
 
-$row = new \Sphp\Html\Foundation\Sites\Grids\Row();
-$year = (int) date('Y');
-$startYear = $year - 5;
-$stopYear = $year + 1;
+use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
-$row->appendColumn(MenuFactory::getContentAsValueMenu(range($startYear, $stopYear))->setSelectedValues($year));
-$row->appendColumn(MenuFactory::months('month')->setSelectedValues(date('m')));
-
-echo $row;
+$gen = new AttributeGenerator();
+$attrs = new HtmlAttributeManager($gen);
+$attrs->forceBoolean('bool', true);
+$attrs->forceInteger('int')->set(546);
+try {
+  $attrs->forceInteger('int-min-2', 2)->set(0);
+} catch (\Exception $ex) {
+  echo ThrowableCalloutBuilder::build($ex);
+}
+try {
+  $attrs->forceBoolean('int-min-2', false);
+} catch (\Exception $ex) {
+  echo ThrowableCalloutBuilder::build($ex);
+}
+$attrs->set('string', 'bar');
+$attrs->set('null', null);
 ?>
-<pre><?php
-  $foo = \Sphp\DateTime\Calendars\Diaries\Schedules\PeriodicTask::from('R2/2012-01-01T19:00:00Z/P7D', 'PT1H30M');
-  $foo->setDescription('Total foo');
-  foreach ($foo as $task) {
-    echo "$task\n";
-  }
+<pre>
+  <?php
+  echo "$attrs\n\n";
+  var_dump($attrs->toArray());
   ?>
 </pre>
