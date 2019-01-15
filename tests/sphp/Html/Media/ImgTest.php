@@ -36,7 +36,7 @@ class ImgTest extends TestCase {
   public function testUseMap(Img $img): Img {
     $map = new ImageMap\Map('foo-map');
     $img->useMap($map);
-    $this->assertSame("#{$map->getName()}", $img->attributes()->get('usemap'));
+    $this->assertSame("#{$map->getName()}", $img->attributes()->getValue('usemap'));
     return $img;
   }
 

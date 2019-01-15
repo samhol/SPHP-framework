@@ -23,9 +23,9 @@ class SizeableMediaTraitTest extends TestCase {
 
   public function testWidthAndHeightSetting() {
     $this->assertSame($this->component, $this->component->setWidth(100));
-    $this->assertSame(100, $this->component->attributes()->get('width'));
+    $this->assertSame(100, $this->component->attributes()->getValue('width'));
     $this->assertSame($this->component, $this->component->setHeight(200));
-    $this->assertSame(200, $this->component->attributes()->get('height'));
+    $this->assertSame(200, $this->component->attributes()->getValue('height'));
   }
 
 }

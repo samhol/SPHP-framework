@@ -52,7 +52,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testSetting($value) {
     $this->attrs->set('data-attr', $value);
     $this->attrs->setInstance(new GeneralAttribute('data-obj', $value));
-    $this->assertSame($this->attrs->get('data-obj'), $this->attrs->get('data-attr'));
+    $this->assertSame($this->attrs->getValue('data-obj'), $this->attrs->getValue('data-attr'));
   }
 
   /**
@@ -73,9 +73,9 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testIdentifying(int $length) {
     $this->attrs->identify($length);
-    $this->assertTrue(is_string($this->attrs->get('id')));
+    $this->assertTrue(is_string($this->attrs->getValue('id')));
     $this->assertTrue($this->attrs->exists('id'));
-    $this->assertTrue(!$this->attrs->isEmpty('id'));
+    $this->assertTrue($this->attrs->isVisible('id'));
   }
 
   /**
@@ -101,10 +101,11 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testTextualVariableSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
+    $this->assertFalse($attrs->isVisible($name));
     $attrs->set($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
+    $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertTrue($attrs->exists($name));
-    $this->assertTrue(!$attrs->isEmpty($name));
+    $this->assertTrue($attrs->isVisible($name));
     unset($attrs);
   }
 
@@ -131,7 +132,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testNumericSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
-    $this->assertSame($attrs->get($name), $value);
+    $this->assertSame($attrs->getValue($name), $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue(!$attrs->isEmpty($name));
   }
@@ -156,13 +157,12 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testBooleanSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $attrs->setBoolean($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
+    $this->assertTrue($attrs->getValue($name) === $value);
+    $this->assertTrue($attrs->isInstantiated($name));
     if ($value === false) {
-      $this->assertTrue($attrs->exists($name));
-      $this->assertTrue($attrs->isEmpty($name));
+      $this->assertTrue(!$attrs->exists($name));
     } else {
       $this->assertTrue($attrs->exists($name));
-      $this->assertTrue($attrs->isEmpty($name));
     }
   }
 
@@ -171,8 +171,8 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function unsettingData(): array {
     return [
-        ["null", null],
-        ["false", false]
+        ['null', null],
+        ['false', false]
     ];
   }
 
@@ -184,9 +184,8 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testUnsetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
-    $this->assertTrue($attrs->exists($name));
-    $this->assertTrue($attrs->isEmpty($name));
+    $this->assertTrue($attrs->getValue($name) === $value);
+    $this->assertFalse($attrs->isVisible($name));
   }
 
   /**
@@ -207,7 +206,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testEmptySetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
+    $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue($attrs->isEmpty($name));
   }
@@ -231,7 +230,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testObjectSetting(Attribute $obj) {
     $this->attrs->setInstance($obj);
-    $this->assertTrue($this->attrs->exists($obj->getName()));
+    $this->assertTrue($this->attrs->isInstantiated($obj->getName()));
   }
 
   /**
@@ -243,7 +242,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->attrs->set($name, $value);
     $this->assertFalse($this->attrs->isProtected($name));
     $this->attrs->protect($name, $value);
-    $this->assertTrue($this->attrs->get($name) === $value);
+    $this->assertTrue($this->attrs->getValue($name) === $value);
     //$this->assertTrue($attrs->exists($name));
     $this->assertTrue($this->attrs->isProtected($name));
   }
@@ -272,10 +271,10 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->attrs->demand($name);
     $this->assertTrue($this->attrs->isDemanded($name));
     $this->attrs->set($name, $value);
-    $this->assertEquals($this->attrs->get($name), $value);
+    $this->assertEquals($this->attrs->getValue($name), $value);
     $this->assertFalse($this->attrs->isProtected($name));
     $this->attrs->protect($name, $value);
-    $this->assertEquals($this->attrs->get($name), $value);
+    $this->assertEquals($this->attrs->getValue($name), $value);
     $this->assertTrue($this->attrs->isProtected($name));
   }
 
@@ -296,7 +295,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider notExistsData
    */
   public function testNnotExists($attrName) {
-    $this->assertTrue($this->attrs->get($attrName) === false);
+    $this->assertTrue($this->attrs->getValue($attrName) === false);
     $this->assertTrue($this->attrs->isProtected($attrName) === false);
     $this->assertTrue($this->attrs->isDemanded($attrName) === false);
     $this->assertTrue($this->attrs->exists($attrName) === false);

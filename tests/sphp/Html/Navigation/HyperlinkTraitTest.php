@@ -34,13 +34,13 @@ class HyperlinkTraitTest extends TestCase {
 
   public function testSettingAndGetting() {
     $this->assertSame($this->mock, $this->mock->setHref('foo.html'));
-    $this->assertSame('foo.html', $this->mock->attributes()->get('href'));
+    $this->assertSame('foo.html', $this->mock->attributes()->getValue('href'));
     $this->assertSame('foo.html', $this->mock->getHref());
     $this->assertSame($this->mock, $this->mock->setTarget('foo'));
-    $this->assertSame('foo', $this->mock->attributes()->get('target'));
+    $this->assertSame('foo', $this->mock->attributes()->getValue('target'));
     $this->assertSame('foo', $this->mock->getTarget());
     $this->assertSame($this->mock, $this->mock->setRelationship('help'));
-    $this->assertSame('help', $this->mock->attributes()->get('rel'));
+    $this->assertSame('help', $this->mock->attributes()->getValue('rel'));
     $this->assertSame('help', $this->mock->getRelationship());
   }
 

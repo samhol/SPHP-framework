@@ -104,7 +104,7 @@ class AttributeManager implements Countable, Iterator {
    * @return Attribute the mapped attribute object or null
    */
   public function getObject(string $name): Attribute {
-    if (!$this->exists($name)) {
+    if (!$this->isInstantiated($name)) {
       $this->attrs[$name] = $this->gen->createObject($name);
     }
     return $this->attrs[$name];
@@ -136,23 +136,10 @@ class AttributeManager implements Countable, Iterator {
   /**
    * 
    * @param  string $name
-   * @param  string $type
-   * @return bool
-   */
-  public function supportsTypeChange(string $name, string $type): bool {
-    if (!$this->isProtected($name)) {
-      return $this->gen->isValidType($name, $type);
-    }
-    return false;
-  }
-
-  /**
-   * 
-   * @param  string $name
    * @return bool
    */
   public function isIntegerAttribute(string $name): bool {
-    if ($this->isInstatiated($name)) {
+    if ($this->isInstantiated($name)) {
       return $this->attrs[$name] instanceof IntegerAttribute;
     }
     return $this->gen->isOfType($name, IntegerAttribute::class);
@@ -164,7 +151,7 @@ class AttributeManager implements Countable, Iterator {
    * @return bool
    */
   public function isBooleanAttribute(string $name): bool {
-    if ($this->isInstatiated($name)) {
+    if ($this->isInstantiated($name)) {
       return $this->attrs[$name] instanceof BooleanAttribute;
     }
     return $this->gen->isOfType($name, BooleanAttribute::class);
@@ -176,7 +163,7 @@ class AttributeManager implements Countable, Iterator {
    * @return bool
    */
   public function isIdentifier(string $name): bool {
-    if ($this->isInstatiated($name)) {
+    if ($this->isInstantiated($name)) {
       return $this->attrs[$name] instanceof IdAttribute;
     }
     return $this->gen->isOfType($name, IdAttribute::class);
@@ -305,7 +292,7 @@ class AttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute is required and false otherwise
    */
   public function isDemanded(string $name): bool {
-    if (!$this->exists($name)) {
+    if (!$this->isInstantiated($name)) {
       return false;
     } else {
       return $this->getObject($name)->isDemanded();
@@ -321,7 +308,7 @@ class AttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute has a locked value on it and false otherwise
    */
   public function isProtected(string $name): bool {
-    if (!$this->exists($name)) {
+    if (!$this->isInstantiated($name)) {
       return false;
     } else {
       return $this->getObject($name)->isProtected();
@@ -368,20 +355,6 @@ class AttributeManager implements Countable, Iterator {
   }
 
   /**
-   * 
-   * @param  string $name
-   * @param  mixed $candidate
-   * @return boolean true if the value of the attribute matches the given candidate
-   */
-  public function valueIs(string $name, $candidate): bool {
-    if (!$this->isInstatiated($name)) {
-      return false;
-    } else {
-      return $this->getObject($name)->getValue() == $candidate;
-    }
-  }
-
-  /**
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute
@@ -389,7 +362,7 @@ class AttributeManager implements Countable, Iterator {
    * @throws ImmutableAttributeException if the attribute value is protected
    */
   public function remove(string $name) {
-    if ($this->exists($name)) {
+    if ($this->isInstantiated($name)) {
       $this->getObject($name)->clear();
     }
     return $this;
@@ -407,7 +380,7 @@ class AttributeManager implements Countable, Iterator {
    * @return scalar the value of the attribute
    * @deprecated 
    */
-  public function get(string $name) {
+  public function get1(string $name) {
     return $this->getValue($name);
   }
 
@@ -424,7 +397,7 @@ class AttributeManager implements Countable, Iterator {
    */
   public function getValue(string $name) {
     $value = false;
-    if ($this->exists($name)) {
+    if ($this->isInstantiated($name)) {
       $value = $this->getObject($name)->getValue();
     }
     return $value;
@@ -436,7 +409,7 @@ class AttributeManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute instance exists and false otherwise
    */
-  public function isInstatiated(string $name): bool {
+  public function isInstantiated(string $name): bool {
     return isset($this->attrs[$name]);
   }
 
@@ -446,8 +419,22 @@ class AttributeManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute instance exists and false otherwise
    */
+  public function isVisible(string $name): bool {
+    if (!$this->isInstantiated($name)) {
+      return false;
+    } else {
+      return $this->getObject($name)->isVisible();
+    }
+  }
+
+  /**
+   * Checks if named attribute instance exists in the manager
+   *
+   * @param  string $name the name of the attribute
+   * @return boolean true if the attribute instance exists and false otherwise
+   */
   public function exists(string $name): bool {
-    return isset($this->attrs[$name]);
+    return $this->isVisible($name);
   }
 
   /**

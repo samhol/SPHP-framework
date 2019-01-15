@@ -60,7 +60,7 @@ trait LazyMediaSourceTrait {
    * @return boolean true if the loading is lazy, false otherwise
    */
   public function isLazy(): bool {
-    return $this->attributes()->exists('data-src') &&
+    return $this->attributes()->isVisible('data-src') &&
             $this->attributes()->classes()->contains(['lazy-hidden', 'lazy-loaded']);
   }
 
