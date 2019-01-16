@@ -29,6 +29,7 @@ $secondMenu = (new Menu())->vertical();
 $secondMenu->appendText('JavaScript ' . $fa->js()->pull('right'));
 $secondMenu->appendLink('https://www.w3.org/standards/webdesign/script.html', 'WEB APIS - <b>W3C</b>');
 $secondMenu->appendLink('https://nodejs.org/', 'Node.js' . $fa->nodejs()->pull('right'));
+$secondMenu->appendLink('https://gulpjs.com/', 'gulp.js' . $fa->gulp()->pull('right'));
 $secondMenu->appendRuler();
 $secondMenu->appendLink('https://jquery.com/', DevIcons::jquery() . 'jQuery');
 $secondMenu->appendLink('http://foundation.zurb.com/', DevIcons::foundationLogo() . 'Foundation');

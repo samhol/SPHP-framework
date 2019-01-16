@@ -96,19 +96,6 @@ class AttributeGenerator {
   }
 
   /**
-   * Maps a pattern object type with an attribute name
-   * 
-   * @param  string $name
-   * @param  string $pattern
-   * @return $this for a fluent interface
-   * @throws InvalidAttributeException
-   */
-  public function mapPatternAttribute(string $name, string $pattern) {
-    $this->mapType($name, PatternAttribute::class, $pattern);
-    return $this;
-  }
-
-  /**
    * 
    * @param  string $name
    * @return string

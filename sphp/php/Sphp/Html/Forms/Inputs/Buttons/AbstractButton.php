@@ -59,7 +59,7 @@ class AbstractButton extends EmptyTag implements ButtonInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->setBoolean('disabled', $disabled);
+    $this->attributes()->forceBoolean('disabled', $disabled);
     return $this;
   }
 

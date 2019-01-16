@@ -99,6 +99,7 @@ class Icons {
       'js' => 'fab fa-js-square',
       'python' => 'fab fa-python',
       'nodejs' => 'fab fa-node-js',
+      'gulp' => 'fab fa-gulp',
       /**
        * Social
        */

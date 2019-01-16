@@ -175,7 +175,7 @@ class AttributeManager implements Countable, Iterator {
    * @param bool $value
    * @return $this
    */
-  public function setBoolean(string $name, bool $value = true) {
+  public function forceBoolean(string $name, bool $value = true) {
     if ($this->isBooleanAttribute($name)) {
       $this->attrs[$name]->set($value);
     } else {
