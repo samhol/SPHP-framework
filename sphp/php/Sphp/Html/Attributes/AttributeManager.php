@@ -171,27 +171,27 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
-   * @param string $name
-   * @param bool $value
-   * @return $this
+   * @param  string $name
+   * @param  bool $value
+   * @return BooleanAttribute
    */
-  public function setBoolean(string $name, bool $value = true) {
+  public function forceBoolean(string $name, bool $value = true): BooleanAttribute {
     if ($this->isBooleanAttribute($name)) {
       $this->attrs[$name]->set($value);
     } else {
       $attr = new BooleanAttribute($name, $value);
       $this->setInstance($attr);
     }
-    return $this;
+    return $this->attrs[$name];
   }
 
   /**
    * 
-   * @param string $name
-   * @param int $value
+   * @param  string $name
+   * @param  int $value
    * @return IntegerAttribute
    */
-  public function setInteger(string $name, int $value = null): IntegerAttribute {
+  public function forceInteger(string $name, int $value = null): IntegerAttribute {
     if ($this->isIntegerAttribute($name)) {
       $this->attrs[$name]->set($value);
     } else {
@@ -204,9 +204,9 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
-   * @param string $name
-   * @param string $value
-   * @return \Sphp\Html\Attributes\IdAttribute
+   * @param  string $name
+   * @param  string $value
+   * @return IdAttribute
    */
   public function setIdentifier(string $name, string $value = null): IdAttribute {
     if ($this->isIdentifier($name)) {

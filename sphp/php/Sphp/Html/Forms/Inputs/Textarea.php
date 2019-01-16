@@ -48,7 +48,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->setBoolean('disabled', $disabled);
+    $this->attributes()->forceBoolean('disabled', $disabled);
     return $this;
   }
 
@@ -84,12 +84,12 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRows(int $rows) {
-    $this->attributes()->setInteger('rows', $rows);
+    $this->attributes()->forceInteger('rows', $rows);
     return $this;
   }
 
   public function setCols(int $cols) {
-    $this->attributes()->setInteger('cols', $cols);
+    $this->attributes()->forceInteger('cols', $cols);
     return $this;
   }
 
@@ -99,7 +99,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->setBoolean('required', $required);
+    $this->attributes()->forceBoolean('required', $required);
     return $this;
   }
 

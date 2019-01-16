@@ -114,7 +114,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->setBoolean('required', $required);
+    $this->attributes()->forceBoolean('required', $required);
     return $this;
   }
 
@@ -136,7 +136,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->setBoolean('disabled', $disabled);
+    $this->attributes()->forceBoolean('disabled', $disabled);
     return $this;
   }
 
