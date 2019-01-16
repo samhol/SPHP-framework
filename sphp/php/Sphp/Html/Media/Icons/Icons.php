@@ -22,6 +22,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon python(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon nodejs(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon gulp(string $screenReaderLabel = null) creates a new icon object
  * 
  * @method \Sphp\Html\Media\Icons\FaIcon facebook(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon twitter(string $screenReaderLabel = null) creates a new icon object

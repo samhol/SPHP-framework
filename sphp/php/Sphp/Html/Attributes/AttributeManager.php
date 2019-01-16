@@ -191,7 +191,7 @@ class AttributeManager implements Countable, Iterator {
    * @param int $value
    * @return IntegerAttribute
    */
-  public function setInteger(string $name, int $value = null): IntegerAttribute {
+  public function forceInteger(string $name, int $value = null): IntegerAttribute {
     if ($this->isIntegerAttribute($name)) {
       $this->attrs[$name]->set($value);
     } else {

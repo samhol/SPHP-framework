@@ -91,8 +91,8 @@
   .AnyTime-hdr {
     background-color:#D0D0D1;
     color:#606062;
-    font-family:Arial,Helvetica,sans-serif;
-    font-size:medium;
+    //font-family:Arial,Helvetica,sans-serif;
+    font-size: rem-calc(17);
     font-weight:normal;
     @include border-radius(2px);
   }
