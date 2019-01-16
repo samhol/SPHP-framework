@@ -351,7 +351,7 @@ class AttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute is empty and false otherwise
    */
   public function isEmpty(string $name): bool {
-    return $this->exists($name) && $this->getObject($name)->isEmpty();
+    return $this->isInstantiated($name) && $this->getObject($name)->isEmpty();
   }
 
   /**

@@ -20,6 +20,7 @@ if (!isset($year)) {
 //$easter = new EasterHolidays($year);
 $fi = new HolidayDiary();
 
+$fi->insertLog(Logs::annual(2,29, 'Sami, Holck'));
 $fi->insertLog(Holidays::birthday('1975-9-16', 'Sami, Holck'));
 $fi->insertLog(Holidays::birthday('1977-12-23', 'Ella, Lisko'));
 $fi->insertLog(Holidays::birthday('1918-1-7', 'Vilho, Koivisto'));
