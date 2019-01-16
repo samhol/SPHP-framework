@@ -84,12 +84,12 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRows(int $rows) {
-    $this->attributes()->setInteger('rows', $rows);
+    $this->attributes()->forceInteger('rows', $rows);
     return $this;
   }
 
   public function setCols(int $cols) {
-    $this->attributes()->setInteger('cols', $cols);
+    $this->attributes()->forceInteger('cols', $cols);
     return $this;
   }
 
