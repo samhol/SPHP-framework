@@ -64,7 +64,7 @@ class ClosableContainer extends Div implements ClosableInterface {
   }
 
   public function isClosable(): bool {
-    return $this->attributes()->exists('data-closable');
+    return $this->attributes()->isVisible('data-closable');
   }
 
   public function contentToString(): string {

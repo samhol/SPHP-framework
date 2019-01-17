@@ -74,7 +74,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testIdentifying(int $length) {
     $this->attrs->identify($length);
     $this->assertTrue(is_string($this->attrs->getValue('id')));
-    $this->assertTrue($this->attrs->exists('id'));
+    $this->assertTrue($this->attrs->isVisible('id'));
     $this->assertTrue($this->attrs->isVisible('id'));
   }
 
@@ -104,7 +104,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->assertFalse($attrs->isVisible($name));
     $attrs->setAttribute($name, $value);
     $this->assertTrue($attrs->getValue($name) === $value);
-    $this->assertTrue($attrs->exists($name));
+    $this->assertTrue($attrs->isVisible($name));
     $this->assertTrue($attrs->isVisible($name));
     unset($attrs);
   }
@@ -133,7 +133,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $attrs = new HtmlAttributeManager();
     $attrs->setAttribute($name, $value);
     $this->assertSame($attrs->getValue($name), $value);
-    $this->assertTrue($attrs->exists($name));
+    $this->assertTrue($attrs->isVisible($name));
     $this->assertTrue(!$attrs->isEmpty($name));
   }
 
@@ -160,9 +160,9 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertTrue($attrs->isInstantiated($name));
     if ($value === false) {
-      $this->assertTrue(!$attrs->exists($name));
+      $this->assertTrue(!$attrs->isVisible($name));
     } else {
-      $this->assertTrue($attrs->exists($name));
+      $this->assertTrue($attrs->isVisible($name));
     }
   }
 
@@ -207,7 +207,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $attrs = new HtmlAttributeManager();
     $attrs->setAttribute($name, $value);
     $this->assertTrue($attrs->getValue($name) === $value);
-    $this->assertTrue($attrs->exists($name));
+    $this->assertTrue($attrs->isVisible($name));
     $this->assertTrue($attrs->isEmpty($name));
   }
 
@@ -298,7 +298,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->attrs->getValue($attrName) === false);
     $this->assertTrue($this->attrs->isProtected($attrName) === false);
     $this->assertTrue($this->attrs->isDemanded($attrName) === false);
-    $this->assertTrue($this->attrs->exists($attrName) === false);
+    $this->assertTrue($this->attrs->isVisible($attrName) === false);
     $this->assertEquals($this->attrs->count(), 0);
   }
 

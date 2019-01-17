@@ -46,7 +46,7 @@ abstract class AbstractButton extends ContainerTag implements ButtonInterface {
   }
 
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('disabled');
+    return !$this->attributes()->isVisible('disabled');
   }
 
 }

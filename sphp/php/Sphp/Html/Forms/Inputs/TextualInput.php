@@ -75,7 +75,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
   }
 
   public function hasPattern(): bool {
-    return $this->attributes()->exists('pattern');
+    return $this->attributes()->isVisible('pattern');
   }
 
 }

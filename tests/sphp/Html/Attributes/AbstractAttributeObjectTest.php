@@ -8,53 +8,49 @@ use Sphp\Html\Attributes\Attribute;
 abstract class AbstractAttributeObjectTest extends TestCase {
 
   /**
-   * @var Attribute 
+   * @return Attribute
    */
-  protected $attr;
+  abstract public function createAttr(): Attribute;
 
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    $this->attr = $this->createAttr();
+  public function testConstructor() {
+    $attribute = $this->createAttr();
+    $this->assertFalse($attribute->isProtected());
+    $this->assertFalse($attribute->isDemanded());
+    $this->assertTrue($attribute->getValue() === false || $attribute->getValue() === null);
+    $this->assertFalse($attribute->isVisible());
   }
 
   /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
+   * @return array
    */
-  protected function tearDown() {
-    $this->attr = null;
+  abstract public function basicValidValues(): array;
+
+  /**
+   * @dataProvider basicValidValues
+   * @param mixed  $inputValue
+   * @param mixed  $outputValue
+   */
+  public function testBasicValidSettingSetting($inputValue, $outputValue) {
+    $attribute = $this->createAttr();
+    $attribute->setValue($inputValue);
+    $this->assertFalse($attribute->isProtected());
+    $this->assertFalse($attribute->isDemanded());
+    $this->assertSame($attribute->getValue(), $outputValue);
   }
 
   /**
-   * @return Attribute
+   * @return array
    */
-  abstract public function createAttr(string $name = 'data-attr'): Attribute;
+  abstract public function basicInvalidValues(): array;
 
   /**
-   * @return Attribute
+   * @dataProvider basicInvalidValues
+   * @param mixed  $inputValue
    */
-  abstract public function getValues(string $name = 'data-attr');
-
-  /**
-   * @return Attribute
-   */
-  public function testDemanding(): Attribute {
-    //echo "\ntestCloning()\n";
-    $attr = $this->createAttr('attr');
-    $this->assertFalse($attr->isDemanded());
-    $attr->demand();
-    $this->assertTrue($attr->isDemanded());
-    $this->assertSame("$attr", 'attr');
-    $attr->setValue(false);
-    $this->assertTrue($attr->isDemanded());
-    $attr->setValue(null);
-    $this->assertTrue($attr->isDemanded());
-    $attr->clear();
-    $this->assertTrue($attr->isDemanded());
-    return $attr;
+  public function testBasicInvalidSettingSetting($inputValue) {
+    $attribute = $this->createAttr();
+    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
+    $attribute->setValue($inputValue);
   }
 
 }

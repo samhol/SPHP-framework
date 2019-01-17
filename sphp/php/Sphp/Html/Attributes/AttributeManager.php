@@ -381,22 +381,6 @@ class AttributeManager implements Countable, Iterator, Arrayable {
    *
    * @param  string $name the name of the attribute
    * @return scalar the value of the attribute
-   * @deprecated 
-   */
-  public function get1(string $name) {
-    return $this->getValue($name);
-  }
-
-  /**
-   * Returns the value of a given attribute name
-   *
-   * **IMPORTANT:**
-   *
-   * * Returns `boolean false` if attribute is not present.
-   * * returns `true` or an empty string for empty attributes.
-   *
-   * @param  string $name the name of the attribute
-   * @return scalar the value of the attribute
    */
   public function getValue(string $name) {
     $value = false;
@@ -428,16 +412,6 @@ class AttributeManager implements Countable, Iterator, Arrayable {
     } else {
       return $this->getObject($name)->isVisible();
     }
-  }
-
-  /**
-   * Checks if named attribute instance exists in the manager
-   *
-   * @param  string $name the name of the attribute
-   * @return boolean true if the attribute instance exists and false otherwise
-   */
-  public function exists(string $name): bool {
-    return $this->isVisible($name);
   }
 
   /**

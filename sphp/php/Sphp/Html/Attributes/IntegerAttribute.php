@@ -10,8 +10,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements an integer attribute with optional valid range
@@ -21,17 +20,12 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IntegerAttribute extends AbstractAttribute {
+class IntegerAttribute extends AbstractScalarAttribute {
 
   /**
    * @var array 
    */
   private $options = [];
-
-  /**
-   * @var int|bool 
-   */
-  private $value = false;
 
   /**
    * Constructor
@@ -50,50 +44,16 @@ class IntegerAttribute extends AbstractAttribute {
     }
   }
 
-  public function __toString(): string {
-    $output = '';
-    if ($this->isVisible()) {
-      $output .= $this->getName();
-      if (!$this->isEmpty()) {
-        $output .= '="' . $this->getValue() . '"';
-      }
-    }
-    return $output;
-  }
-
-  public function getValue() {
-    return $this->value;
-  }
-
-  public function setValue($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
+  public function filterValue($value) {
     if ($value === null || $value === false) {
-      $this->value = false;
+      $filtered = null;
     } else {
       $filtered = filter_var($value, \FILTER_VALIDATE_INT, $this->options);
       if ($filtered === false) {
-        throw new InvalidAttributeException("Invalid value '$value' for '{$this->getName()}' integer attribute");
+        throw new InvalidArgumentException("Invalid value for '{$this->getName()}' integer attribute");
       }
-      $this->value = $filtered;
     }
-    return $this;
-  }
-
-  public function isVisible(): bool {
-    return $this->isDemanded() || $this->getValue() !== false || $this->getValue() !== null;
-  }
-
-  public function isEmpty(): bool {
-    return $this->getValue() === false;
-  }
-
-  public function clear() {
-    if (!$this->isProtected()) {
-      $this->setValue(false);
-    }
-    return $this;
+    return $filtered;
   }
 
 }

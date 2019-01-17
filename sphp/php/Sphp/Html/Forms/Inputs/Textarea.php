@@ -53,7 +53,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('disabled');
+    return !$this->attributes()->isVisible('disabled');
   }
 
   public function getName(): string {
@@ -66,7 +66,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function isNamed(): bool {
-    return $this->attributes()->exists('name');
+    return $this->attributes()->isVisible('name');
   }
 
   public function getSubmitValue() {

@@ -79,7 +79,7 @@ class Option extends SimpleTag implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function isSelected(): bool {
-    return $this->attributes()->exists('selected') && $this->isEnabled();
+    return $this->attributes()->isVisible('selected') && $this->isEnabled();
   }
 
   public function disable(bool $enabled = true) {
@@ -88,7 +88,7 @@ class Option extends SimpleTag implements MenuComponent {
   }
 
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('disabled');
+    return !$this->attributes()->isVisible('disabled');
   }
 
 }

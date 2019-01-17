@@ -80,7 +80,7 @@ class Ol extends StandardList {
    */
   public function getStart(): int {
     $start = 1;
-    if ($this->attributes()->exists('start')) {
+    if ($this->attributes()->isVisible('start')) {
       $start = $this->attributes()->getValue('start');
     }
     return (int) $start;
@@ -106,7 +106,7 @@ class Ol extends StandardList {
    */
   public function getListType(): string {
     $type = '1';
-    if ($this->attributes()->exists('type')) {
+    if ($this->attributes()->isVisible('type')) {
       $type = $this->attributes()->getValue('type');
     }
     return $type;

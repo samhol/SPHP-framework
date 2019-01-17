@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
+class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest {
 
   /**
    * @var IntegerAttribute 
@@ -66,7 +66,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->isVisible(), ($value !== null || $value !== false));
+    $this->assertEquals($this->attr->isVisible(), ($this->attr->getValue() !== null || $this->attr->getValue() === false));
     $this->assertEquals($this->attr->getValue(), $value);
   }
 
@@ -100,8 +100,27 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->attr->isProtected());
     $this->assertEquals($this->attr->getValue(), $value);
     $this->expectException(ImmutableAttributeException::class);
-    $this->attr->setValue($value +1);
+    $this->attr->setValue($value + 1);
     $this->attr->clear();
+  }
+
+  public function basicValidValues(): array {
+    return [
+        ['0', 0],
+        [0, 0],
+        [true, 1],
+        [false, null],
+        ['1', 1],
+        [null, null],
+    ];
+  }
+
+  public function basicInvalidValues(): array {
+    return [
+        ['foo'],
+        [new \stdClass],
+        [[]],
+    ];
   }
 
 }

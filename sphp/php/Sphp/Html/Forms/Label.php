@@ -65,7 +65,7 @@ class Label extends ContainerTag implements LabelInterface {
 
   public function getForms(): array {
     $result = [];
-    if ($this->attributes()->exists('form')) {
+    if ($this->attributes()->isVisible('form')) {
       $result = explode(' ', $this->attributes()->getValue('form'));
     }
     return $result;

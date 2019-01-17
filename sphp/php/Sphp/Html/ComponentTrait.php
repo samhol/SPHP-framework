@@ -111,7 +111,7 @@ trait ComponentTrait {
    * @return boolean (attribute exists)
    */
   public function attributeExists(string $name): bool {
-    return $this->attributes()->exists($name);
+    return $this->attributes()->isVisible($name);
   }
 
 }

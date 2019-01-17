@@ -58,7 +58,7 @@ trait InputTagTrait {
    * @return boolean true if the input has a name, otherwise false
    */
   public function isNamed(): bool {
-    return $this->attributes()->exists('name');
+    return $this->attributes()->isVisible('name');
   }
 
   /**
@@ -81,7 +81,7 @@ trait InputTagTrait {
    * @return boolean true if the input component is enabled, otherwise false
    */
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('disabled');
+    return !$this->attributes()->isVisible('disabled');
   }
 
   /**

@@ -47,7 +47,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
   }
 
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('data-disable') && !$this->attributes()->exists('data-block');
+    return !$this->attributes()->isVisible('data-disable') && !$this->attributes()->isVisible('data-block');
   }
 
   public function setStepLength(float $step = 1) {

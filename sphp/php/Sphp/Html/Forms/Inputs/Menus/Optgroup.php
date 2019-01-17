@@ -70,7 +70,7 @@ class Optgroup extends AbstractOptionsContainer implements MenuComponent {
   }
 
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('disabled');
+    return !$this->attributes()->isVisible('disabled');
   }
 
 }

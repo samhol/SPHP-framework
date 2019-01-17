@@ -120,7 +120,7 @@ class ClassAttributeTest extends TestCase {
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
-    $this->assertFalse($this->attr->isEmpty());
+    $this->assertTrue($this->attr->isVisible());
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 

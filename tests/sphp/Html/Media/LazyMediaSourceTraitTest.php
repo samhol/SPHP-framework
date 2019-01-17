@@ -37,7 +37,7 @@ class LazyMediaSourceTraitTest extends TestCase {
     if ($this->mock->isLazy()) {
       $this->assertSame($src, $this->mock->attributes()->getValue('data-src'));
       $this->assertSame($src, $this->mock->getSrc());
-      $this->assertFalse($this->mock->attributes()->exists('src'));
+      $this->assertFalse($this->mock->attributes()->isVisible('src'));
     } else {
       $this->assertSame($src, $this->mock->attributes()->getValue('src'));
       $this->assertSame($src, $this->mock->getSrc());

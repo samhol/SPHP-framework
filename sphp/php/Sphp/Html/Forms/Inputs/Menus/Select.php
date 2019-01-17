@@ -132,7 +132,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function isNamed(): bool {
-    return $this->attributes()->exists('name');
+    return $this->attributes()->isVisible('name');
   }
 
   public function disable(bool $disabled = true) {
@@ -141,7 +141,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function isEnabled(): bool {
-    return !$this->attributes()->exists('disabled');
+    return !$this->attributes()->isVisible('disabled');
   }
 
   public static function from(string $name = null, array $opt = null): Select {
