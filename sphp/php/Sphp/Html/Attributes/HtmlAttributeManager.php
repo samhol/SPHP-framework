@@ -66,6 +66,11 @@ class HtmlAttributeManager extends AttributeManager {
     return $this;
   }
 
+  /**
+   * Returns the `id` attribute
+   * 
+   * @return IdAttribute
+   */
   public function id(): IdAttribute {
     return $this->getObject('id');
   }
