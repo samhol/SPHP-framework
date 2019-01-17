@@ -1,29 +1,32 @@
-<?php
-
-namespace Sphp\Html\Attrs;
-
-use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
-
-$gen = new AttributeGenerator();
-$attrs = new HtmlAttributeManager($gen);
-$attrs->forceBoolean('bool', true);
-$attrs->forceInteger('int')->set(546);
-try {
-  $attrs->forceInteger('int-min-2', 2)->set(0);
-} catch (\Exception $ex) {
-  echo ThrowableCalloutBuilder::build($ex);
-}
-try {
-  $attrs->forceBoolean('int-min-2', false);
-} catch (\Exception $ex) {
-  echo ThrowableCalloutBuilder::build($ex);
-}
-$attrs->set('string', 'bar');
-$attrs->set('null', null);
-?>
-<pre>
-  <?php
-  echo "$attrs\n\n";
-  var_dump($attrs->toArray());
-  ?>
-</pre>
+<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="vertical menu">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="vertical menu">
+          <li><a href="#">Item 1A</a></li>
+          <li><a href="#">Item 1B</a></li>
+          <li><a href="#">Item 1C</a></li>
+          <li><a href="#">Item 1D</a></li>
+          <li><a href="#">Item 1E</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 3</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 3A</a></li>
+      <li><a href="#">Item 3B</a></li>
+    </ul>
+  </li>
+</ul>
