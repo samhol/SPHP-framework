@@ -50,7 +50,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider mixedData
    */
   public function testSetting($value) {
-    $this->attrs->set('data-attr', $value);
+    $this->attrs->setAttribute('data-attr', $value);
     $this->attrs->setInstance(new GeneralAttribute('data-obj', $value));
     $this->assertSame($this->attrs->getValue('data-obj'), $this->attrs->getValue('data-attr'));
   }
@@ -102,7 +102,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testTextualVariableSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $this->assertFalse($attrs->isVisible($name));
-    $attrs->set($name, $value);
+    $attrs->setAttribute($name, $value);
     $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue($attrs->isVisible($name));
@@ -131,7 +131,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testNumericSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
-    $attrs->set($name, $value);
+    $attrs->setAttribute($name, $value);
     $this->assertSame($attrs->getValue($name), $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue(!$attrs->isEmpty($name));
@@ -183,7 +183,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testUnsetting($name, $value) {
     $attrs = new HtmlAttributeManager();
-    $attrs->set($name, $value);
+    $attrs->setAttribute($name, $value);
     $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertFalse($attrs->isVisible($name));
   }
@@ -205,7 +205,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testEmptySetting($name, $value) {
     $attrs = new HtmlAttributeManager();
-    $attrs->set($name, $value);
+    $attrs->setAttribute($name, $value);
     $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue($attrs->isEmpty($name));
@@ -239,7 +239,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider lockDemandData
    */
   public function testLocking($name, $value) {
-    $this->attrs->set($name, $value);
+    $this->attrs->setAttribute($name, $value);
     $this->assertFalse($this->attrs->isProtected($name));
     $this->attrs->protect($name, $value);
     $this->assertTrue($this->attrs->getValue($name) === $value);
@@ -270,7 +270,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testLockDemand($name, $value) {
     $this->attrs->demand($name);
     $this->assertTrue($this->attrs->isDemanded($name));
-    $this->attrs->set($name, $value);
+    $this->attrs->setAttribute($name, $value);
     $this->assertEquals($this->attrs->getValue($name), $value);
     $this->assertFalse($this->attrs->isProtected($name));
     $this->attrs->protect($name, $value);

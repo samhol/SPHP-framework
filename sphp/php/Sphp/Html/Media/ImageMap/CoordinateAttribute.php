@@ -64,7 +64,7 @@ class CoordinateAttribute extends AbstractAttribute implements Countable, Arraya
    * Constructor
    *
    * @param string $name the name of the attribute
-   * @param array $options  the separator between individual values in sequence
+   * @param array $lengthRule  the separator between individual values in sequence
    */
   public function __construct(string $name, $lengthRule = null) {
     parent::__construct($name);
@@ -76,7 +76,6 @@ class CoordinateAttribute extends AbstractAttribute implements Countable, Arraya
    */
   public function __destruct() {
     unset($this->coordinates, $this->locked);
-    parent::__destruct();
   }
 
   /**
@@ -172,7 +171,7 @@ class CoordinateAttribute extends AbstractAttribute implements Countable, Arraya
    * @param  int[]|...scalar $values the values to set
    * @return $this for a fluent interface
    */
-  public function set($values) {
+  public function setValue($values) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException();
     }

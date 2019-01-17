@@ -46,27 +46,27 @@ class TextualInput extends InputTag implements TextualInputInterface {
   }
 
   public function setSize(int $size) {
-    $this->attributes()->set('size', $size);
+    $this->attributes()->setAttribute('size', $size);
     return $this;
   }
 
   public function setMaxlength(int $maxlength) {
-    $this->attributes()->set('maxlength', $maxlength);
+    $this->attributes()->setAttribute('maxlength', $maxlength);
     return $this;
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attributes()->set('placeholder', $placeholder);
+    $this->attributes()->setAttribute('placeholder', $placeholder);
     return $this;
   }
 
   public function autocomplete(bool $allow = true) {
-    $this->attributes()->set('autocomplete', $allow ? 'on' : 'off');
+    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }
 
   public function setPattern(string $pattern) {
-    $this->attributes()->set('pattern', $pattern);
+    $this->attributes()->setAttribute('pattern', $pattern);
     return $this;
   }
 

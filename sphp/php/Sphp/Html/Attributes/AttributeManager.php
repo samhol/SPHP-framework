@@ -12,6 +12,7 @@ namespace Sphp\Html\Attributes;
 
 use Countable;
 use Iterator;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
@@ -28,7 +29,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AttributeManager implements Countable, Iterator {
+class AttributeManager implements Countable, Iterator, Arrayable {
 
   /**
    * attributes as a (name -> value) map
@@ -177,7 +178,7 @@ class AttributeManager implements Countable, Iterator {
    */
   public function forceBoolean(string $name, bool $value = true) {
     if ($this->isBooleanAttribute($name)) {
-      $this->attrs[$name]->set($value);
+      $this->attrs[$name]->setValue($value);
     } else {
       $attr = new BooleanAttribute($name, $value);
       $this->setInstance($attr);
@@ -193,12 +194,14 @@ class AttributeManager implements Countable, Iterator {
    */
   public function forceInteger(string $name, int $value = null): IntegerAttribute {
     if ($this->isIntegerAttribute($name)) {
-      $this->attrs[$name]->set($value);
+      $this->attrs[$name]->setValue($value);
     } else {
       $attr = new IntegerAttribute($name);
-      $attr->set($value);
+      $attr->setValue($value);
       $this->setInstance($attr);
     }
+    $this->getGenerator()
+            ->mapType($name, IntegerAttribute::class);
     return $this->attrs[$name];
   }
 
@@ -210,7 +213,7 @@ class AttributeManager implements Countable, Iterator {
    */
   public function setIdentifier(string $name, string $value = null): IdAttribute {
     if ($this->isIdentifier($name)) {
-      $this->attrs[$name]->set($value);
+      $this->attrs[$name]->setValue($value);
     } else {
       $attr = new IdAttribute($name, $value);
       $this->setInstance($attr);
@@ -243,8 +246,8 @@ class AttributeManager implements Countable, Iterator {
    * @throws InvalidAttributeException if the attribute name or value is invalid
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function set(string $name, $value = true) {
-    $this->getObject($name)->set($value);
+  public function setAttribute(string $name, $value = true) {
+    $this->getObject($name)->setValue($value);
     return $this;
   }
 
@@ -260,7 +263,7 @@ class AttributeManager implements Countable, Iterator {
    */
   public function merge(array $attrs = []) {
     foreach ($attrs as $name => $value) {
-      $this->set($name, $value);
+      $this->setAttribute($name, $value);
     }
     return $this;
   }

@@ -48,9 +48,9 @@ abstract class AbstractAttributeObjectTest extends TestCase {
     $attr->demand();
     $this->assertTrue($attr->isDemanded());
     $this->assertSame("$attr", 'attr');
-    $attr->set(false);
+    $attr->setValue(false);
     $this->assertTrue($attr->isDemanded());
-    $attr->set(null);
+    $attr->setValue(null);
     $this->assertTrue($attr->isDemanded());
     $attr->clear();
     $this->assertTrue($attr->isDemanded());

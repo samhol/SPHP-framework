@@ -27,13 +27,16 @@ abstract class AbstractScalarAttribute extends AbstractAttribute {
    */
   private $value;
 
+  /**
+   * 
+   */
   abstract public function filterValue($value);
 
   public function clear() {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    $this->value = null;
+    $this->setValue(null);
     return $this;
   }
 
@@ -41,12 +44,9 @@ abstract class AbstractScalarAttribute extends AbstractAttribute {
     return $this->value;
   }
 
-  public function set($value) {
+  public function setValue($value) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    if ($value === null) {
-      $this->value = null;
     }
     $this->value = $this->filterValue($value);
     return $this;

@@ -51,7 +51,7 @@ class OffCanvasOpener extends AbstractComponent {
     if ($offCanvas instanceof OffCanvasAreaInterface) {
       $offCanvas = $offCanvas->identify();
     }
-    $this->attributes()->set('data-open', $offCanvas);
+    $this->attributes()->setAttribute('data-open', $offCanvas);
     return $this;
   }
 

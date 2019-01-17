@@ -63,7 +63,7 @@ class MultiValueAttributeTests extends TestCase {
    */
   public function testEmptySetting($value) {
     $this->expectException(InvalidAttributeException::class);
-    $this->attr->set($value);
+    $this->attr->setValue($value);
   }
 
   /**
@@ -102,7 +102,7 @@ class MultiValueAttributeTests extends TestCase {
    * @dataProvider settingData
    */
   public function testSetting($value) {
-    $this->attr->set($value);
+    $this->attr->setValue($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
     $this->assertFalse($this->attr->isProtected());

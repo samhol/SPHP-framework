@@ -47,7 +47,7 @@ class Label extends ContainerTag implements LabelInterface {
     if ($for instanceof IdentifiableInput) {
       $for = $for->identify();
     }
-    $this->attributes()->set('for', $for);
+    $this->attributes()->setAttribute('for', $for);
     return $this;
   }
 
@@ -59,7 +59,7 @@ class Label extends ContainerTag implements LabelInterface {
     if (is_array($formIds)) {
       $formIds = implode(' ', $formIds);
     }
-    $this->attributes()->set('form', $formIds);
+    $this->attributes()->setAttribute('form', $formIds);
     return $this;
   }
 

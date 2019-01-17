@@ -101,7 +101,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    */
   public function matchHeight(bool $match = true) {
     $value = $match ? 'true' : 'false';
-    $this->attributes()->set('data-match-height', $value);
+    $this->attributes()->setAttribute('data-match-height', $value);
     return $this;
   }
 

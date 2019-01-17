@@ -13,7 +13,7 @@ $required = (new BooleanAttribute("required", true));
 echo "<input $placeholder $type $name $id $value $required>\n";
 
 try {
-  $type->set("email");
+  $type->setValue("email");
   echo "<input $placeholder $type $name $id $value $required>\n";
 } catch (\Exception $ex) {
   echo ThrowableCalloutBuilder::build($ex);

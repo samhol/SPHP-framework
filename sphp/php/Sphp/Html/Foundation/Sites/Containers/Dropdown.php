@@ -186,9 +186,9 @@ class Dropdown implements Content {
    */
   public function closeOnBodyClick(bool $flag = true) {
     if ($flag) {
-      $this->dropdown->attributes()->set('data-close-on-click', 'true');
+      $this->dropdown->attributes()->setAttribute('data-close-on-click', 'true');
     } else {
-      $this->dropdown->attributes()->set('data-close-on-click', 'false');
+      $this->dropdown->attributes()->setAttribute('data-close-on-click', 'false');
     }
     return $this;
   }
@@ -200,9 +200,9 @@ class Dropdown implements Content {
    */
   public function autoFocus(bool $flag = true) {
     if ($flag) {
-      $this->dropdown->attributes()->set('data-auto-focus', 'true');
+      $this->dropdown->attributes()->setAttribute('data-auto-focus', 'true');
     } else {
-      $this->dropdown->attributes()->set('data-auto-focus', 'false');
+      $this->dropdown->attributes()->setAttribute('data-auto-focus', 'false');
     }
     return $this;
   }

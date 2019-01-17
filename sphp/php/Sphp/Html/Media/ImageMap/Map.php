@@ -67,7 +67,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    * @link   http://www.w3schools.com/tags/att_map_name.asp name attribute
    */
   public function setName(string $name) {
-    $this->attributes()->set('name', $name);
+    $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 

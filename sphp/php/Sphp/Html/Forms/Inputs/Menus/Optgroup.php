@@ -60,12 +60,12 @@ class Optgroup extends AbstractOptionsContainer implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function setLabel(string $label) {
-    $this->attributes()->set('label', $label);
+    $this->attributes()->setAttribute('label', $label);
     return $this;
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->set('disabled', $disabled);
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 

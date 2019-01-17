@@ -75,7 +75,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setCoordinates(int $x, int $y, int $radius) {
-    $this->getCoordinates()->set($x, $y, $radius);
+    $this->getCoordinates()->setValue($x, $y, $radius);
     return $this;
   }
 

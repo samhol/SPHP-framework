@@ -63,7 +63,7 @@ class Video extends AbstractMultimediaTag implements SizeableMedia, LazyMedia {
    * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
   public function setPoster(string $poster = null) {
-    $this->attributes()->set('poster', $poster);
+    $this->attributes()->setAttribute('poster', $poster);
     return $this;
   }
 

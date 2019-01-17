@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
+use Sphp\Html\Attributes\HtmlAttributeManager;
+
 /**
  * Trait implements the {@link Input} for input tags
  *
@@ -19,6 +21,13 @@ namespace Sphp\Html\Forms\Inputs;
  * @link Input
  */
 trait InputTagTrait {
+
+  /**
+   * Returns the attribute manager attached to the component
+   *
+   * @return HtmlAttributeManager the attribute manager
+   */
+  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Returns the value of the name attribute.
@@ -36,7 +45,7 @@ trait InputTagTrait {
    * @return $this for a fluent interface
    */
   public function setName(string $name = null) {
-    $this->attributes()->set('name', $name);
+    $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 
@@ -103,7 +112,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function setSubmitValue($value) {
-    $this->attributes()->set('value', $value);
+    $this->attributes()->setAttribute('value', $value);
     return $this;
   }
 

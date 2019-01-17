@@ -72,7 +72,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
       $dateTime = new DateTime($dateTime);
     }
     $this->dateTime = $dateTime;
-    $this->attributes()->set('datetime', $this->dateTime->format($this->getFormat()));
+    $this->attributes()->setAttribute('datetime', $this->dateTime->format($this->getFormat()));
     return $this;
   }
 

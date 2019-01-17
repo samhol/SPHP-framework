@@ -54,7 +54,7 @@ class LinkTag extends EmptyTag implements LinkInterface {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
-    $this->attributes()->set('href', $href);
+    $this->attributes()->setAttribute('href', $href);
     return $this;
   }
 

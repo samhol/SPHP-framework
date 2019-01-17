@@ -38,7 +38,7 @@ class Equalizer extends AbstractComponentAdapter {
     if ($name === null) {
       $attr->identify();
     } else {
-      $attr->set($name);
+      $attr->setValue($name);
     }
   }
 
@@ -58,7 +58,7 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function equalizeOn(string $screenSize) {
     if ($screenSize != 'all') {
-      $this->getComponent()->attributes()->set('data-equalize-on', $screenSize);
+      $this->getComponent()->attributes()->setAttribute('data-equalize-on', $screenSize);
     } else {
       $this->getComponent()->attributes()->remove('data-equalize-on');
     }
@@ -73,7 +73,7 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function equalizeByRow(bool $flag = true) {
     if ($flag) {
-      $this->getComponent()->attributes()->set('data-equalize-by-row', 'true');
+      $this->getComponent()->attributes()->setAttribute('data-equalize-by-row', 'true');
     } else {
       $this->getComponent()->attributes()->remove('data-equalize-by-row');
     }

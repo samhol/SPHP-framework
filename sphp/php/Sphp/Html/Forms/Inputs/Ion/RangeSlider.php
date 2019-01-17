@@ -57,7 +57,7 @@ class RangeSlider extends AbstractSlider {
    * @return $this for a fluent interface
    */
   public function setInputValuesSeparator(string $separator) {
-    $this->attributes()->set('data-input-values-separator', $separator);
+    $this->attributes()->setAttribute('data-input-values-separator', $separator);
     return $this;
   }
 
@@ -79,8 +79,8 @@ class RangeSlider extends AbstractSlider {
     if ($this->getMin() > $stop || $this->getMax() < $stop) {
       throw new InvalidStateException("Stop value: '$stop' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->attributes()->set('data-from', $start);
-    $this->attributes()->set('data-to', $stop);
+    $this->attributes()->setAttribute('data-from', $start);
+    $this->attributes()->setAttribute('data-to', $stop);
     return $this;
   }
 

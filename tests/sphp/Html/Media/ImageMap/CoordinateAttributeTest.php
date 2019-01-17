@@ -67,13 +67,13 @@ class CoordinateAttributeTest extends TestCase {
    * @param   CoordinateAttribute $attr
    */
   public function testEmptySetting(CoordinateAttribute $attr) {
-    $attr->set(null);
+    $attr->setValue(null);
     $this->confirmEmpty($attr);
-    $attr->set([]);
+    $attr->setValue([]);
     $this->confirmEmpty($attr);
-    $attr->set(false);
+    $attr->setValue(false);
     $this->confirmEmpty($attr);
-    $attr->set(true);
+    $attr->setValue(true);
     $this->confirmEmpty($attr);
   }
 
@@ -95,7 +95,7 @@ class CoordinateAttributeTest extends TestCase {
    */
   public function testSetting($value, array $expected) {
     $attr = new CoordinateAttribute('foo');
-    $attr->set($value);
+    $attr->setValue($value);
 
     //var_dump("$attr");
     //$expected = 'foo="' . implode(',', $value) . '"';
@@ -108,7 +108,7 @@ class CoordinateAttributeTest extends TestCase {
    */
   public function testObjectSetting() {
     $attr = new CoordinateAttribute('foo');
-    $attr->set(new \stdClass);
+    $attr->setValue(new \stdClass);
 
     //var_dump("$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
@@ -118,7 +118,7 @@ class CoordinateAttributeTest extends TestCase {
    */
   public function testInvalidStringSetting() {
     $attr = new CoordinateAttribute('foo');
-    $attr->set('a,b,c');
+    $attr->setValue('a,b,c');
 
     //var_dump("$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);

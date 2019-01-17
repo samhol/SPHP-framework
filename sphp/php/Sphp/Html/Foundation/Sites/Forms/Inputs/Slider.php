@@ -74,10 +74,10 @@ class Slider extends AbstractSlider {
   public function setVertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
-      $this->attributes()->set('data-vertical', 'true');
+      $this->attributes()->setAttribute('data-vertical', 'true');
     } else {
       $this->cssClasses()->remove('vertical');
-      $this->attributes()->set('data-vertical', 'false');
+      $this->attributes()->setAttribute('data-vertical', 'false');
     }
     return $this;
   }
@@ -118,7 +118,7 @@ class Slider extends AbstractSlider {
       throw new InvalidStateException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
     $this->getInput()->setSubmitValue($value);
-    $this->attributes()->set('data-initial-start', $value);
+    $this->attributes()->setAttribute('data-initial-start', $value);
     return $this;
   }
 
@@ -138,7 +138,7 @@ class Slider extends AbstractSlider {
     }
     $this->input = $input;
     $this->input->setName($this->getName());
-    $this->handle->attributes()->set('aria-controls', $input->identify());
+    $this->handle->attributes()->setAttribute('aria-controls', $input->identify());
     return $input;
   }
 

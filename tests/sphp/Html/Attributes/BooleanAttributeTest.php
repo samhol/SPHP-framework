@@ -8,16 +8,16 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var Attribute
+   * @var BooleanAttribute
    */
-  protected $attrs;
+  protected $attribute;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->attrs = $this->createAttr();
+    $this->attribute = $this->createAttr();
   }
 
   /**
@@ -25,13 +25,13 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    $this->attrs = null;
+    $this->attribute = null;
   }
 
   /**
    * @return Attribute
    */
-  public function createAttr(string $name = 'data-attr'): Attribute {
+  public function createAttr(string $name = 'data-boolean-attr'): BooleanAttribute {
     return new BooleanAttribute($name);
   }
 
@@ -54,13 +54,13 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
    * @param scalar $value
    */
   public function testTrueSetting($value) {
-    $this->attrs->set($value);
-    $this->assertFalse($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isProtected($value));
-    $this->assertFalse($this->attrs->isDemanded());
-    $this->assertTrue($this->attrs->isVisible());
-    $this->assertEquals($this->attrs->getValue(), true);
-    $this->assertSame("$this->attrs", $this->attrs->getName());
+    $this->attribute->setValue($value);
+    $this->assertFalse($this->attribute->isProtected());
+    $this->assertFalse($this->attribute->isProtected($value));
+    $this->assertFalse($this->attribute->isDemanded());
+    $this->assertTrue($this->attribute->isVisible());
+    $this->assertEquals($this->attribute->getValue(), true);
+    $this->assertSame("$this->attribute", $this->attribute->getName());
   }
 
   /**
@@ -81,24 +81,25 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
    * @param scalar $value
    */
   public function testFalseSetting($value) {
-    $this->attrs->set($value);
-    $this->assertFalse($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isProtected($value));
-    $this->assertFalse($this->attrs->isDemanded());
-    $this->assertFalse($this->attrs->isVisible());
-    $this->assertEquals($this->attrs->getValue(), false);
-    $this->assertSame("$this->attrs", '');
+    $this->attribute->setValue($value);
+    $this->assertFalse($this->attribute->isProtected());
+    $this->assertFalse($this->attribute->isProtected($value));
+    $this->assertFalse($this->attribute->isDemanded());
+    $this->assertFalse($this->attribute->isVisible());
+    $this->assertEquals($this->attribute->getValue(), false);
+    $this->assertSame("$this->attribute", '');
   }
 
   /**
    */
   public function testDemanding() {
-    $this->attrs->demand();
-    $this->assertTrue($this->attrs->isDemanded());
-    $this->attrs->set(false);
-    $this->attrs->clear();
-    $this->assertTrue($this->attrs->isDemanded());
-    $this->assertEquals("$this->attrs", $this->attrs->getName());
+    $this->assertFalse($this->attribute->isDemanded());
+    $this->assertFalse($this->attribute->isProtected());
+    $this->attribute->demand();
+    $this->assertTrue($this->attribute->isDemanded());
+    $this->assertEquals($this->attribute->getName(), "$this->attribute");
+    $this->expectException(ImmutableAttributeException::class);
+    $this->attribute->setValue('false');
   }
 
   /**
@@ -124,7 +125,7 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals($attr->getValue(), true);
     $this->assertSame("$attr", $attr->getName());
     $this->expectException(ImmutableAttributeException::class);
-    $attr->clear();
+    $attr->setValue(false);
   }
 
   /**
@@ -138,7 +139,7 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), false);
     $this->expectException(ImmutableAttributeException::class);
-    $attr->clear();
+    $attr->setValue(true);
   }
 
 }

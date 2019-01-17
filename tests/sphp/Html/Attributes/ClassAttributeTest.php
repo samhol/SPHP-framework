@@ -51,9 +51,9 @@ class ClassAttributeTest extends TestCase {
    */
   public function testIdenticalSets(array $setA, $setB) {
     $a = new ClassAttribute('a');
-    $a->set($setA);
+    $a->setValue($setA);
     $b = new ClassAttribute('b');
-    $b->set($setB);
+    $b->setValue($setB);
     $this->assertTrue($a->contains($setA));
     $this->assertTrue($b->contains($setA));
     $this->assertTrue($a->contains($setB));
@@ -114,7 +114,7 @@ class ClassAttributeTest extends TestCase {
    * @dataProvider settingData
    */
   public function testSetMethod($value) {
-    $this->attr->set($value);
+    $this->attr->setValue($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
     $this->assertFalse($this->attr->isProtected());
@@ -268,7 +268,7 @@ class ClassAttributeTest extends TestCase {
     $this->attr->demand();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());
-    $this->attr->set('a');
+    $this->attr->setValue('a');
     $this->assertEquals("$this->attr", 'class="a"');
     $this->attr->clear();
     $this->assertTrue($this->attr->isDemanded());

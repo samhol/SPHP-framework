@@ -10,7 +10,7 @@ $id->identify();
 echo "<div $id>$id</div>\n";
 
 try {
-  $id->set("email");
+  $id->setValue("email");
   echo "<div $id>$id</div>\n";
 } catch (\Exception $ex) {
   echo ThrowableCalloutBuilder::build($ex);

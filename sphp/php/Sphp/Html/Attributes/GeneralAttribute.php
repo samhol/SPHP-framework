@@ -37,11 +37,11 @@ class GeneralAttribute extends AbstractAttribute {
   public function __construct(string $name, $value = false) {
     parent::__construct($name);
     if ($value !== false) {
-      $this->set($value);
+      $this->setValue($value);
     }
   }
 
-  public function set($value) {
+  public function setValue($value) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }

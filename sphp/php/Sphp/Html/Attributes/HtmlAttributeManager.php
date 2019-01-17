@@ -62,7 +62,7 @@ class HtmlAttributeManager extends AttributeManager {
    * @link   https://www.w3.org/WAI/intro/aria.php
    */
   public function setAria(string $name, $value) {
-    $this->set("aria-$name", $value);
+    $this->setAttribute("aria-$name", $value);
     return $this;
   }
 

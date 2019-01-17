@@ -32,7 +32,7 @@ class AbstractAreaTest extends TestCase {
 
   public function testDefault(): AbstractArea {
     $area = $this->createArea('default', 'foo/bar', 'Foo Bar');
-    $area->getCoordinates()->set(1, 3);
+    $area->getCoordinates()->setValue(1, 3);
     $this->assertEquals('1,3', $area->getCoordinates()->getValue());
     return $area;
   }

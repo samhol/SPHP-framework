@@ -50,11 +50,22 @@ class IntegerAttribute extends AbstractAttribute {
     }
   }
 
+  public function __toString(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      if (!$this->isEmpty()) {
+        $output .= '="' . $this->getValue() . '"';
+      }
+    }
+    return $output;
+  }
+
   public function getValue() {
     return $this->value;
   }
 
-  public function set($value) {
+  public function setValue($value) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
@@ -70,17 +81,6 @@ class IntegerAttribute extends AbstractAttribute {
     return $this;
   }
 
-  public function getHtml(): string {
-    $output = '';
-    if ($this->isVisible()) {
-      $output .= $this->getName();
-      if (!$this->isEmpty()) {
-        $output .= '="' . $this->getValue() . '"';
-      }
-    }
-    return $output;
-  }
-
   public function isVisible(): bool {
     return $this->isDemanded() || $this->getValue() !== false || $this->getValue() !== null;
   }
@@ -91,7 +91,7 @@ class IntegerAttribute extends AbstractAttribute {
 
   public function clear() {
     if (!$this->isProtected()) {
-      $this->set(false);
+      $this->setValue(false);
     }
     return $this;
   }

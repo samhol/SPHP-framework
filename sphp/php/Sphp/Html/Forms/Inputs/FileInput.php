@@ -42,7 +42,7 @@ class FileInput extends AbstractInputTag implements ValidableInput {
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
   public function setFileTypes(string $accept) {
-    $this->attributes()->set('accept', $accept);
+    $this->attributes()->setAttribute('accept', $accept);
     return $this;
   }
 

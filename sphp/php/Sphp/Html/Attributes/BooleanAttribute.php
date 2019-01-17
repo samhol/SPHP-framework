@@ -21,17 +21,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class BooleanAttribute extends AbstractAttribute {
-
-  /**
-   * @var mixed 
-   */
-  private $value = false;
-
-  /**
-   * @var bool 
-   */
-  private $protected = false;
+class BooleanAttribute extends AbstractScalarAttribute {
 
   /**
    * Constructor
@@ -41,47 +31,10 @@ class BooleanAttribute extends AbstractAttribute {
    */
   public function __construct(string $name, bool $value = true) {
     parent::__construct($name);
-    $this->set($value);
+    $this->setValue($value);
   }
 
-  public function clear() {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $this->value = false;
-    return $this;
-  }
-
-  public function getValue() {
-    return $this->value;
-  }
-
-  public function isProtected(): bool {
-    return $this->protected;
-  }
-
-  public function protect($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is allready protected");
-    }
-    $this->set($value);
-    $this->protected = true;
-    return $this;
-  }
-
-  public function set($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $filtered = filter_var($value, \FILTER_VALIDATE_BOOLEAN, \FILTER_NULL_ON_FAILURE);
-    if ($filtered === null) {
-      throw new InvalidAttributeException("Invalid value for boolean attribute '{$this->getName()}'");
-    }
-    $this->value = $filtered;
-    return $this;
-  }
-
-  public function getHtml(): string {
+  public function __toString(): string {
     $output = '';
     if ($this->isVisible()) {
       $output .= $this->getName();
@@ -89,12 +42,28 @@ class BooleanAttribute extends AbstractAttribute {
     return $output;
   }
 
+  public function demand() {
+    if (!$this->isProtected()) {
+      $this->protect(true);
+    }
+    parent::demand();
+    return $this;
+  }
+
   public function isVisible(): bool {
-    return $this->isDemanded() || $this->value === true;
+    return $this->getValue() === true;
   }
 
   public function isEmpty(): bool {
     return true;
+  }
+
+  public function filterValue($value) {
+    $filtered = filter_var($value, \FILTER_VALIDATE_BOOLEAN, \FILTER_NULL_ON_FAILURE);
+    if ($filtered === null) {
+      throw new InvalidAttributeException("Invalid value for boolean attribute '{$this->getName()}'");
+    }
+    return $filtered;
   }
 
 }

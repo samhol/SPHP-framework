@@ -46,7 +46,7 @@ class Param extends EmptyTag {
    * @return $this for a fluent interface
    */
   public function setName(string $name) {
-    $this->attributes()->set('name', $name);
+    $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 
@@ -57,7 +57,7 @@ class Param extends EmptyTag {
    * @return $this for a fluent interface
    */
   public function setValue($value) {
-    $this->attributes()->set('value', $value);
+    $this->attributes()->setAttribute('value', $value);
     return $this;
   }
 

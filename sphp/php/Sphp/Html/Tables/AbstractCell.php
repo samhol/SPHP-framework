@@ -25,7 +25,7 @@ abstract class AbstractCell extends ContainerTag implements ContainerCell {
     if ($value <= 1) {
       $this->attributes()->remove('colspan');
     } else {
-      $this->attributes()->set('colspan', $value);
+      $this->attributes()->setAttribute('colspan', $value);
     }
     return $this;
   }
@@ -42,7 +42,7 @@ abstract class AbstractCell extends ContainerTag implements ContainerCell {
     if ($value <= 1) {
       $this->attributes()->remove('rowspan');
     } else {
-      $this->attributes()->set('rowspan', $value);
+      $this->attributes()->setAttribute('rowspan', $value);
     }
     return $this;
   }

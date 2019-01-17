@@ -74,7 +74,7 @@ trait ComponentTrait {
    * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function setAttribute(string $name, $value = null) {
-    $this->attributes()->set($name, $value);
+    $this->attributes()->setAttribute($name, $value);
     return $this;
   }
 

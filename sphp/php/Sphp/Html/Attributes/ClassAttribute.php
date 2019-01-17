@@ -50,7 +50,17 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    */
   public function __destruct() {
     unset($this->values);
-    parent::__destruct();
+  }
+
+  public function __toString(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      if (!$this->isEmpty()) {
+        $output .= '="' . implode(' ', array_keys($this->values)) . '"';
+      }
+    }
+    return $output;
   }
 
   /**
@@ -103,17 +113,6 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
   }
 
-  public function getHtml(): string {
-    $output = '';
-    if ($this->isVisible()) {
-      $output .= $this->getName();
-      if (!$this->isEmpty()) {
-        $output .= '="' . implode(' ', array_keys($this->values)) . '"';
-      }
-    }
-    return $output;
-  }
-
   public function isVisible(): bool {
     return $this->isDemanded() || !empty($this->values);
   }
@@ -134,7 +133,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @param  string|string[] $values the values to set
    * @return $this for a fluent interface
    */
-  public function set($values) {
+  public function setValue($values) {
     $this->clear();
     $this->add(func_get_args());
     return $this;

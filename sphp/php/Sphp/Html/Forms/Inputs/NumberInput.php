@@ -42,8 +42,8 @@ class NumberInput extends InputTag implements RangeInput, InputField {
   }
 
   public function setRange(float $min, float $max) {
-    $this->attributes()->set('min', $min);
-    $this->attributes()->set('max', $max);
+    $this->attributes()->setAttribute('min', $min);
+    $this->attributes()->setAttribute('max', $max);
     return $this;
   }
 
@@ -56,17 +56,17 @@ class NumberInput extends InputTag implements RangeInput, InputField {
   }
 
   public function setStepLength(float $step) {
-    $this->attributes()->set('step', $step);
+    $this->attributes()->setAttribute('step', $step);
     return $this;
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attributes()->set('placeholder', $placeholder);
+    $this->attributes()->setAttribute('placeholder', $placeholder);
     return $this;
   }
 
   public function autocomplete(bool $allow = true) {
-    $this->attributes()->set('autocomplete', $allow ? 'on' : 'off');
+    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }
 

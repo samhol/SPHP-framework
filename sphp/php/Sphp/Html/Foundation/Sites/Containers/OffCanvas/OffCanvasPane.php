@@ -63,9 +63,9 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
    */
   protected function setPosition($position = 'fixed') {
     if ($position !== 'fixed') {
-      $this->cssClasses()->set("off-canvas-$position");
+      $this->cssClasses()->setValue("off-canvas-$position");
     } else {
-      $this->cssClasses()->set("off-canvas");
+      $this->cssClasses()->setValue("off-canvas");
     }
     return $this;
   }

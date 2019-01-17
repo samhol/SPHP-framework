@@ -52,21 +52,21 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   public function testSetting(array $values) {
     $attr = new GeneralAttribute('attr');
     foreach ($values as $value) {
-      $attr->set($value);
+      $attr->setValue($value);
       $this->assertEquals($attr->getValue(), $value);
       $this->assertTrue($attr->isVisible());
       $this->assertSame($attr->isBoolean(), is_bool($value));
     }
-    $attr->set(false);
+    $attr->setValue(false);
     $this->assertEquals($attr->getValue(), false);
     $this->assertFalse($attr->isVisible());
     $this->assertTrue($attr->isBoolean());
-    $attr->set(null);
+    $attr->setValue(null);
     $this->assertSame($attr->getValue(), null);
     $this->assertFalse($attr->isVisible());
     $this->assertFalse($attr->isBoolean());
     $this->expectException(InvalidAttributeException::class);
-    $attr->set(new \stdClass());
+    $attr->setValue(new \stdClass());
     //$this->assertFalse($this->attr->isProtected());
     //$this->assertFalse($this->attr->isProtected($value));
     //$this->assertFalse($this->attr->isDemanded());
@@ -76,7 +76,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   public function testDemanding() {
     $this->attr->demand();
     $this->assertTrue($this->attr->isDemanded());
-    $this->attr->set(false);
+    $this->attr->setValue(false);
     $this->attr->clear();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName() . "");
@@ -106,7 +106,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
     $this->expectException(ImmutableAttributeException::class);
     $attr->clear();
     $this->expectException(ImmutableAttributeException::class);
-    $attr->set('foo');
+    $attr->setValue('foo');
   }
 
 }

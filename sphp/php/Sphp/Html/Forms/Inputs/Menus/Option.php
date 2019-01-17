@@ -57,7 +57,7 @@ class Option extends SimpleTag implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function setValue($value) {
-    $this->attributes()->set('value', $value);
+    $this->attributes()->setAttribute('value', $value);
     return $this;
   }
 
@@ -69,7 +69,7 @@ class Option extends SimpleTag implements MenuComponent {
    * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function setSelected(bool $selected = true) {
-    $this->attributes()->set('selected', $selected);
+    $this->attributes()->setAttribute('selected', $selected);
   }
 
   /**
@@ -83,7 +83,7 @@ class Option extends SimpleTag implements MenuComponent {
   }
 
   public function disable(bool $enabled = true) {
-    $this->attributes()->set('disabled', !$enabled);
+    $this->attributes()->setAttribute('disabled', !$enabled);
     return $this;
   }
 

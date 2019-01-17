@@ -36,7 +36,7 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
 
   public function setFluid(bool $fluid = false) {
     if ($fluid) {
-      $this->cssClasses()->remove('full')->set('fluid');
+      $this->cssClasses()->remove('full')->setValue('fluid');
     } else {
       $this->cssClasses()->remove('fluid');
     }
@@ -45,7 +45,7 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
 
   public function setFull(bool $full = false) {
     if ($full) {
-      $this->cssClasses()->remove('fluid')->set('full');
+      $this->cssClasses()->remove('fluid')->setValue('full');
     } else {
       $this->cssClasses()->remove('full');
     }
@@ -53,8 +53,8 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
   }
 
   public function setLayouts(...$layouts) {
-    $this->cssClasses()->set($layouts);
-    $this->cssClasses()->set('grid-container');
+    $this->cssClasses()->setValue($layouts);
+    $this->cssClasses()->setValue('grid-container');
     return $this;
   }
 

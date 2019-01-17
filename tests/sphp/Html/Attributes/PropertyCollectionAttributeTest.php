@@ -79,7 +79,7 @@ class PropertyCollectionAttributeTest extends TestCase {
    */
   public function testInvalidSetting($props) {
     $this->expectException(InvalidArgumentException::class);
-    $this->attr->set($props);
+    $this->attr->setValue($props);
   }
 
   /**
@@ -108,7 +108,7 @@ class PropertyCollectionAttributeTest extends TestCase {
    */
   public function testSet(array $props) {
     $string = Arrays::implodeWithKeys($props, ';', ':');
-    $this->attr->set($string);
+    $this->attr->setValue($string);
     $this->assertSame($string, $this->attr->getValue());
     $this->assertTrue($this->attr->hasProperty('a'));
     $this->assertSame('b', $this->attr->getProperty('a'));
@@ -188,9 +188,9 @@ class PropertyCollectionAttributeTest extends TestCase {
    * @param array $props
    */
   public function testOutput() {
-    $this->assertSame('', $this->attr->getHtml());
+    $this->assertSame('', "$this->attr");
     $this->attr->setProperty('a', 'b');
-    $this->assertSame($this->attr->getName() . '="a:b"', $this->attr->getHtml());
+    $this->assertSame($this->attr->getName() . '="a:b"', "$this->attr");
   }
 
   /**
@@ -209,8 +209,7 @@ class PropertyCollectionAttributeTest extends TestCase {
    *      to "key"; only needed if you are doing foreach ($foo as $k => $v)
    *      as opposed to foreach ($foo as $v)
    */
-  private function mockIterator(Iterator $iterator, array $items, $includeCallsToKey = FALSE
-  ) {
+  private function mockIterator(Iterator $iterator, array $items, $includeCallsToKey = FALSE) {
     $iterator->expects($this->at(0))
             ->method('rewind');
     $counter = 1;

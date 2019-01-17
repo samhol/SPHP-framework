@@ -47,7 +47,7 @@ class Slider extends AbstractSlider {
     if ($this->getMin() > $value || $value > $this->getMax()) {
       throw new InvalidStateException("The value ($value) of the slider is not between ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->attributes()->set('data-from', $value);
+    $this->attributes()->setAttribute('data-from', $value);
     parent::setSubmitValue($value);
     return $this;
   }

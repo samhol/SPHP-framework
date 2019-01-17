@@ -1,3 +1,7 @@
+<?php
+var_dump(FILTER_VALIDATE_BOOLEAN);
+?>
+
 <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
   <li>
     <a href="#">Item 1</a>

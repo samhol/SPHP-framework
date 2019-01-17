@@ -33,6 +33,7 @@ class AbstractButton extends EmptyTag implements ButtonInterface {
    * Constructor
    *
    * @param  string $type the type of the button
+   * @param  string|null $content the content of the button
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    * @throws Sphp\Exceptions\InvalidArgumentException if the type parameter is invalid
    */
@@ -54,7 +55,7 @@ class AbstractButton extends EmptyTag implements ButtonInterface {
    * @return $this for a fluent interface
    */
   public function setContent(string $content) {
-    $this->attributes()->set('value', $content);
+    $this->attributes()->setAttribute('value', $content);
     return $this;
   }
 

@@ -62,7 +62,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
    * @param boolean $visibility
    */
   public function testSetting($value) {
-    $this->attr->set($value);
+    $this->attr->setValue($value);
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
@@ -73,7 +73,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
   public function testDemanding() {
     $this->attr->demand();
     $this->assertTrue($this->attr->isDemanded());
-    $this->attr->set(false);
+    $this->attr->setValue(false);
     $this->attr->clear();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName() . "");
@@ -100,7 +100,7 @@ class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->attr->isProtected());
     $this->assertEquals($this->attr->getValue(), $value);
     $this->expectException(ImmutableAttributeException::class);
-    $this->attr->set($value +1);
+    $this->attr->setValue($value +1);
     $this->attr->clear();
   }
 

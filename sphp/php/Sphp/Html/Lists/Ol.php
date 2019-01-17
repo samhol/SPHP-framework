@@ -50,7 +50,7 @@ class Ol extends StandardList {
    * @link   http://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
    */
   public function setReversed(bool $reversed = true) {
-    $this->attributes()->set('reversed', $reversed);
+    $this->attributes()->setAttribute('reversed', $reversed);
     return $this;
   }
 
@@ -65,7 +65,7 @@ class Ol extends StandardList {
    * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
   public function setStart(int $start) {
-    $this->attributes()->set('start', $start);
+    $this->attributes()->setAttribute('start', $start);
     return $this;
   }
 
@@ -94,7 +94,7 @@ class Ol extends StandardList {
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
   public function setListType(string $type = '1') {
-    $this->attributes()->set('type', $type);
+    $this->attributes()->setAttribute('type', $type);
     return $this;
   }
 

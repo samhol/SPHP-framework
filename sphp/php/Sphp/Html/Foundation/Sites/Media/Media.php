@@ -33,13 +33,13 @@ abstract class Media {
 
   public static function label($content, string $color = 'primary'): Component {
     $label = new Span($content);
-    $label->cssClasses()->demand('label')->set($color);
+    $label->cssClasses()->protect('label')->setValue($color);
     return $label;
   }
 
   public static function iconLabel($icon, $content, string $color = 'primary'): Component {
     $badge = new Span($content);
-    $badge->cssClasses()->demand('label')->set($color);
+    $badge->cssClasses()->protect('label')->setValue($color);
     return $badge;
   }
 

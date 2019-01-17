@@ -104,12 +104,12 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function selectMultiple(bool $multiple = true) {
-    $this->attributes()->set('multiple', $multiple);
+    $this->attributes()->setAttribute('multiple', $multiple);
     return $this;
   }
 
   public function setSize(int $size = null) {
-    $this->attributes()->set('size', $size);
+    $this->attributes()->setAttribute('size', $size);
     return $this;
   }
 
@@ -127,7 +127,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public function setName(string $name = null) {
-    $this->attributes()->set('name', $name);
+    $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 

@@ -46,7 +46,7 @@ class Rectangle extends AbstractArea {
     $coords[0] = $x;
     $coords[1] = $y;
     $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->attributes()->setAttribute('coords', $coordsString);
     return $this;
   }
 
@@ -62,7 +62,7 @@ class Rectangle extends AbstractArea {
     $coords[2] = $x;
     $coords[3] = $y;
     $coordsString = implode(',', $coords);
-    $this->attributes()->set('coords', $coordsString);
+    $this->attributes()->setAttribute('coords', $coordsString);
     return $this;
   }
 
@@ -77,7 +77,7 @@ class Rectangle extends AbstractArea {
    */
   public function setCoordinates(int $x1, int $y1, int $x2, int $y2) {
     $coords = [$x1, $y1, $x2, $y2];
-    $this->attributes()->getObject('coords')->set($coords);
+    $this->attributes()->getObject('coords')->setValue($coords);
     return $this;
   }
 

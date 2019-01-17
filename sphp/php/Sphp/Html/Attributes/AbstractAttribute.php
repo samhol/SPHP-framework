@@ -66,31 +66,7 @@ abstract class AbstractAttribute implements Attribute {
     $this->mutable = false;
   }
 
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->name, $this->required);
-  }
-
   public function __toString(): string {
-    return $this->getHtml();
-  }
-
-  public function isProtected(): bool {
-    return $this->protected;
-  }
-
-  public function protect($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $this->set($value);
-    $this->protected = true;
-    return $this;
-  }
-
-  public function getHtml(): string {
     $output = '';
     if ($this->isVisible()) {
       $output .= $this->getName();
@@ -105,6 +81,19 @@ abstract class AbstractAttribute implements Attribute {
       }
     }
     return $output;
+  }
+
+  public function isProtected(): bool {
+    return $this->protected;
+  }
+
+  public function protect($value) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
+    }
+    $this->setValue($value);
+    $this->protected = true;
+    return $this;
   }
 
   public function getName(): string {

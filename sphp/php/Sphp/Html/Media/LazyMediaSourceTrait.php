@@ -44,11 +44,11 @@ trait LazyMediaSourceTrait {
     $classes = ['lazy-hidden', 'lazy-loaded'];
     if ($lazy && !$this->isLazy()) {
       $this->attributes()->classes()->add($classes);
-      $this->attributes()->set('data-src', $this->attributes()->getValue('src'));
+      $this->attributes()->setAttribute('data-src', $this->attributes()->getValue('src'));
       $this->attributes()->remove('src');
     } else if (!$lazy && $this->isLazy()) {
       $this->attributes()->classes()->remove($classes);
-      $this->attributes()->set('src', $this->attributes()->getValue('data-src'));
+      $this->attributes()->setAttribute('src', $this->attributes()->getValue('data-src'));
       $this->attributes()->remove('data-src');
     }
     return $this;
@@ -72,10 +72,10 @@ trait LazyMediaSourceTrait {
    */
   public function setSrc(string $src = null) {
     if ($this->isLazy()) {
-      $this->attributes()->set('data-src', $src);
+      $this->attributes()->setAttribute('data-src', $src);
       $this->attributes()->remove('src');
     } else {
-      $this->attributes()->set('src', $src);
+      $this->attributes()->setAttribute('src', $src);
       $this->attributes()->remove('data-src');
     }
     return $this;

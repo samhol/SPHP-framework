@@ -54,7 +54,6 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    */
   public function __destruct() {
     unset($this->values, $this->locked);
-    parent::__destruct();
   }
 
   /**
@@ -123,7 +122,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @param  scalar|scalar[] $values the values to set
    * @return $this for a fluent interface
    */
-  public function set($values) {
+  public function setValue($values) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException();
     }

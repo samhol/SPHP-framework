@@ -65,7 +65,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
       $dateTime = new DateTime($dateTime);
     }
     $this->dateTime = $dateTime;
-    $this->attributes()->set('datetime', $this->dateTime->format($this->format));
+    $this->attributes()->setAttribute('datetime', $this->dateTime->format($this->format));
     return $this;
   }
 

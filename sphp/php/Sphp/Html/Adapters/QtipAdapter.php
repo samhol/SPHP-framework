@@ -45,8 +45,8 @@ class QtipAdapter extends AbstractComponentAdapter {
    */
   public function setQtip(string $qtip = null) {
     $this->getComponent()->attributes()
-            ->set('title', $qtip)
-            ->set('data-sphp-qtip', true);
+            ->setAttribute('title', $qtip)
+            ->setAttribute('data-sphp-qtip', true);
     return $this;
   }
 
@@ -59,9 +59,9 @@ class QtipAdapter extends AbstractComponentAdapter {
    */
   public function setQtipPosition(string $my, string $at) {
     $this->getComponent()->attributes()
-            ->set('data-sphp-qtip', true)
-            ->set('data-sphp-qtip-at', $at)
-            ->set('data-sphp-qtip-my', $my);
+            ->setAttribute('data-sphp-qtip', true)
+            ->setAttribute('data-sphp-qtip-at', $at)
+            ->setAttribute('data-sphp-qtip-my', $my);
     return $this;
   }
 
@@ -74,7 +74,7 @@ class QtipAdapter extends AbstractComponentAdapter {
     if ($viewport instanceof IdentifiableContent) {
       $id = $viewport->identify();
     }
-    $this->attributes()->set('data-sphp-qtip-viewport', "#$id");
+    $this->attributes()->setAttribute('data-sphp-qtip-viewport', "#$id");
     return $this;
   }
 

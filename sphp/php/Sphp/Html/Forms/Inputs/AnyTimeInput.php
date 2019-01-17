@@ -34,14 +34,14 @@ class AnyTimeInput extends InputTag {
    */
   public function __construct(string $name = null, $value = null, string $format = '%Y-%m-%d %H:%i') {
     parent::__construct('text', $name, $value);
-    $this->attributes()->demand('data-anytime');
+    $this->attributes()->protect('data-anytime', true);
     $this->cssClasses()->protect('sphp','AnyTimeInput');
     $this->identify();
     $this->setDateTimeFormat($format);
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attributes()->set('placeholder', $placeholder);
+    $this->attributes()->setAttribute('placeholder', $placeholder);
     return $this;
   }
 

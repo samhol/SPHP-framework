@@ -29,7 +29,15 @@ class IdAttribute extends PatternAttribute {
   public function __construct(string $name = 'id', $value = null) {
     parent::__construct($name, '/^[^\s]+$/');
     if ($value !== null) {
-      $this->set($value);
+      $this->setValue($value);
+    }
+  }
+
+  public function __toString(): string {
+    if ($this->getValue() == '') {
+      return '';
+    } else {
+      return parent::__toString();
     }
   }
 
@@ -51,14 +59,6 @@ class IdAttribute extends PatternAttribute {
       $this->protect($value);
     }
     return $this->getValue();
-  }
-
-  public function getHtml(): string {
-    if ($this->getValue() == '') {
-      return '';
-    } else {
-      return parent::getHtml();
-    }
   }
 
 }

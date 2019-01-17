@@ -70,7 +70,7 @@ class Img extends EmptyTag implements ImgInterface {
     if (!Strings::startsWith($map, '#')) {
       $map = "#$map";
     }
-    $this->attributes()->set('usemap', $map);
+    $this->attributes()->setAttribute('usemap', $map);
     return $this;
   }
 
@@ -94,7 +94,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function setAlt(string $alt) {
-    $this->attributes()->set('alt', $alt);
+    $this->attributes()->setAttribute('alt', $alt);
     return $this;
   }
 

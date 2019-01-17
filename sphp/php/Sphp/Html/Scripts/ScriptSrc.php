@@ -52,7 +52,7 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType(string $type = null) {
-    $this->attributes()->set('type', $type);
+    $this->attributes()->setAttribute('type', $type);
     return $this;
   }
 
@@ -69,7 +69,7 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
   public function setAsync(bool $async = true) {
     $this->attributes()
             ->remove('defer')
-            ->set('async', $async);
+            ->setAttribute('async', $async);
     return $this;
   }
 
@@ -84,12 +84,12 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    */
   public function setIntegrity(string $hash = null, string $crossorigin = null) {
     $this->attributes()
-            ->set('integrity', $hash);
+            ->setAttribute('integrity', $hash);
     if ($hash !== null && $crossorigin === null) {
       $crossorigin = 'anonymous';
     }
     $this->attributes()
-            ->set('crossorigin', $crossorigin);
+            ->setAttribute('crossorigin', $crossorigin);
     return $this;
   }
 
@@ -104,7 +104,7 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
   public function setDefer(bool $defer = true) {
     $this->attributes()
             ->remove('async')
-            ->set('defer', $defer);
+            ->setAttribute('defer', $defer);
     return $this;
   }
 
@@ -116,7 +116,7 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function setSrc(string $src) {
-    $this->attributes()->set('src', $src);
+    $this->attributes()->setAttribute('src', $src);
     return $this;
   }
 

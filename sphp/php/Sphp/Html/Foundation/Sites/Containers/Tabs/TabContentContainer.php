@@ -47,7 +47,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
     }
     $this->tabs = $tabs;
     $this->cssClasses()->protect('tabs-content');
-    $this->attributes()->set('data-tabs-content', $this->tabs->identify());
+    $this->attributes()->setAttribute('data-tabs-content', $this->tabs->identify());
   }
 
   /**
@@ -114,7 +114,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    */
   public function matchHeight(bool $match = true) {
     $value = $match ? 'true' : 'false';
-    $this->attributes()->set('data-match-height', $value);
+    $this->attributes()->setAttribute('data-match-height', $value);
     $this->tabs->matchHeight($match);
     return $this;
   }

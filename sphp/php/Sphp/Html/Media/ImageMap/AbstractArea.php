@@ -81,7 +81,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt($alt) {
-    $this->attributes()->set('alt', $alt);
+    $this->attributes()->setAttribute('alt', $alt);
     return $this;
   }
 

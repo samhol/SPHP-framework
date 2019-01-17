@@ -61,7 +61,7 @@ class Embed extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
   public function setType(string $type) {
-    $this->attributes()->set('type', $type);
+    $this->attributes()->setAttribute('type', $type);
     return $this;
   }
 

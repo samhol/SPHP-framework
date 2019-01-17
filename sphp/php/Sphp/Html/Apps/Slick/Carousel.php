@@ -49,7 +49,7 @@ class Carousel extends AbstractComponent {
    * @return $this for a fluent interface
    */
   public function setProperty(array $props) {
-    $this->attributes()->getObject('data-slick')->set($props);
+    $this->attributes()->getObject('data-slick')->setValue($props);
     return $this;
   }
 

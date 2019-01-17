@@ -66,7 +66,7 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
    * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
   public function setData(string $type) {
-    $this->attributes()->set('data', $type);
+    $this->attributes()->setAttribute('data', $type);
     return $this;
   }
 
@@ -81,7 +81,7 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
    * @link   http://www.w3schools.com/tags/att_object_type.asp type attribute
    */
   public function setType(string $type) {
-    $this->attributes()->set('type', $type);
+    $this->attributes()->setAttribute('type', $type);
     return $this;
   }
 

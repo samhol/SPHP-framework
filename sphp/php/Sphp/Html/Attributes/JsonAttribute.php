@@ -48,7 +48,7 @@ class JsonAttribute extends AbstractAttribute {
     $this->parser = Parser::json();
     parent::__construct($name);
     if (is_string($value) || is_array($value)) {
-      $this->set($value);
+      $this->setValue($value);
     }
   }
 
@@ -87,7 +87,7 @@ class JsonAttribute extends AbstractAttribute {
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
-  public function set($value) {
+  public function setValue($value) {
     try {
       $this->clear();
       if (is_scalar($value)) {

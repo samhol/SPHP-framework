@@ -41,7 +41,7 @@ trait HyperlinkTrait {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function setHref(string $href) {
-    $this->attributes()->set('href', $href);
+    $this->attributes()->setAttribute('href', $href);
     return $this;
   }
 
@@ -73,7 +73,7 @@ trait HyperlinkTrait {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget(string $target = null) {
-    $this->attributes()->set('target', $target);
+    $this->attributes()->setAttribute('target', $target);
     if ($this->getTarget() === '_blank') {
       $this->setRelationship('noopener noreferrer');
     }
@@ -122,7 +122,7 @@ trait HyperlinkTrait {
    * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
   public function setRelationship(string $rel = null) {
-    $this->attributes()->set('rel', $rel);
+    $this->attributes()->setAttribute('rel', $rel);
     return $this;
   }
 

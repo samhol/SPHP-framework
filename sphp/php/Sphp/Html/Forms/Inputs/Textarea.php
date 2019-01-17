@@ -61,7 +61,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setName(string $name = null) {
-    $this->attributes()->set('name', $name);
+    $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 
@@ -79,7 +79,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function wrap(string $wrapType = null) {
-    $this->attributes()->set('wrap', $wrapType);
+    $this->attributes()->setAttribute('wrap', $wrapType);
     return $this;
   }
 
@@ -94,7 +94,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setPlaceholder(string $placeholder = null) {
-    $this->attributes()->set('placeholder', $placeholder);
+    $this->attributes()->setAttribute('placeholder', $placeholder);
     return $this;
   }
 

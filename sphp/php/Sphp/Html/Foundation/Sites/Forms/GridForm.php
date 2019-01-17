@@ -90,7 +90,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
   }
 
   public function useValidation(bool $validate = true) {
-    $this->attributes()->set('novalidate', $validate)->set('data-abide', $validate);
+    $this->attributes()->setAttribute('novalidate', $validate)->setAttribute('data-abide', $validate);
     return $this;
   }
 
@@ -98,7 +98,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     if ($validate) {
       $this->useValidation();
     }
-    $this->attributes()->set('data-validate-on-blur', $validate ? 'true' : 'false');
+    $this->attributes()->setAttribute('data-validate-on-blur', $validate ? 'true' : 'false');
     return $this;
   }
 
@@ -106,7 +106,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     if ($validate) {
       $this->useValidation();
     }
-    $this->attributes()->set('data-live-validate', $validate ? 'true' : 'false');
+    $this->attributes()->setAttribute('data-live-validate', $validate ? 'true' : 'false');
     return $this;
   }
 

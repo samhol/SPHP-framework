@@ -63,10 +63,9 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
 
   public function __destruct() {
     unset($this->props, $this->lockedProps, $this->parser);
-    parent::__destruct();
   }
 
-  public function getHtml(): string {
+  public function __toString(): string {
     $output = '';
     if ($this->isVisible()) {
       $output .= $this->getName();
@@ -96,7 +95,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
-  public function set($value) {
+  public function setValue($value) {
     $this->setProperties($this->parser->parse($value));
     return $this;
   }

@@ -63,7 +63,7 @@ class RangeSlider extends AbstractSlider {
   public function __construct(string $name = null, float $min = 0, float $max = 100, float $step = 1) {
     parent::__construct($min, $max, $step);
     $this->attributes()->demand('data-initial-end')
-            ->set('data-initial-end', $max);
+            ->setAttribute('data-initial-end', $max);
     $this->lowerHandle = new Span();
     $this->lowerHandle->cssClasses()->protect('slider-handle');
     $this->lowerHandle->attributes()
@@ -143,7 +143,7 @@ class RangeSlider extends AbstractSlider {
     }
     $this->lowerInput = $input;
     $this->lowerInput->setName($this->getName());
-    $this->lowerHandle->attributes()->set('aria-controls', $input->identify());
+    $this->lowerHandle->attributes()->setAttribute('aria-controls', $input->identify());
     return $input;
   }
 
@@ -158,7 +158,7 @@ class RangeSlider extends AbstractSlider {
     }
     $this->upperInput = $input;
     $this->upperInput->setName($this->getName());
-    $this->upperHandle->attributes()->set('aria-controls', $input->identify());
+    $this->upperHandle->attributes()->setAttribute('aria-controls', $input->identify());
     return $input;
   }
 
@@ -183,7 +183,7 @@ class RangeSlider extends AbstractSlider {
       throw new InvalidStateException("Start value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
     $this->getStartInput()->setSubmitValue($value);
-    $this->attributes()->set("data-initial-start", $value);
+    $this->attributes()->setAttribute("data-initial-start", $value);
     return $this;
   }
 
@@ -192,7 +192,7 @@ class RangeSlider extends AbstractSlider {
       throw new InvalidStateException("Stop value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
     $this->getEndInput()->setSubmitValue($value);
-    $this->attributes()->set("data-initial-stop", $value);
+    $this->attributes()->setAttribute("data-initial-stop", $value);
     return $this;
   }
 

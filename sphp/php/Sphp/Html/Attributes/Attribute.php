@@ -31,13 +31,6 @@ interface Attribute {
   public function __toString(): string;
 
   /**
-   * Returns the instance of the object as a string
-   *
-   * @return string the object as a string
-   */
-  public function getHtml(): string;
-
-  /**
    * Returns the name of the attribute 
    * 
    * @return string the name of the attribute
@@ -52,7 +45,7 @@ interface Attribute {
    * @throws AttributeException if the attribute value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function set($value);
+  public function setValue($value);
 
   /**
    * Checks whether the attribute has a locked value or not

@@ -104,7 +104,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     $this->attributes()
             //->set('webkitallowfullscreen', $allow)
             //->set('mozallowfullscreen', $allow)
-            ->set('allowfullscreen', $allow);
+            ->setAttribute('allowfullscreen', $allow);
     return $this;
   }
 
@@ -158,7 +158,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @link   https://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setTitle(string $title = null) {
-    $this->attributes()->set('title', $title);
+    $this->attributes()->setAttribute('title', $title);
     return $this;
   }
 

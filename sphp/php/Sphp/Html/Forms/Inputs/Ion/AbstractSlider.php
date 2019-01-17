@@ -41,8 +41,8 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
 
   public function disable(bool $disabled = true) {
     $value = $disabled ? 'true' : null;
-    $this->attributes()->set('data-block', $value);
-    $this->attributes()->set('data-disable', $value);
+    $this->attributes()->setAttribute('data-block', $value);
+    $this->attributes()->setAttribute('data-disable', $value);
     return $this;
   }
 
@@ -58,13 +58,13 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     if ($step > $range) {
       throw new InvalidStateException("Step value ($step) is bigger than range ($range)");
     }
-    $this->attributes()->set('data-step', $step);
+    $this->attributes()->setAttribute('data-step', $step);
     return $this;
   }
 
   public function setRange(float $min, float $max) {
-    $this->attributes()->set('data-min', $min);
-    $this->attributes()->set('data-max', $max);
+    $this->attributes()->setAttribute('data-min', $min);
+    $this->attributes()->setAttribute('data-max', $max);
     return $this;
   }
 
@@ -83,7 +83,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @return $this for a fluent interface
    */
   public function useGrid(bool $grid = true) {
-    $this->attributes()->set('data-grid', $grid ? 'true' : 'false');
+    $this->attributes()->setAttribute('data-grid', $grid ? 'true' : 'false');
     return $this;
   }
 
@@ -94,7 +94,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @return $this for a fluent interface
    */
   public function setNumberOfGridUnits(int $num = 4) {
-    $this->attributes()->set('data-grid-num', $num);
+    $this->attributes()->setAttribute('data-grid-num', $num);
     return $this;
   }
 
@@ -105,7 +105,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @return $this for a fluent interface
    */
   public function setPrefix(string $prefix) {
-    $this->attributes()->set('data-prefix', $prefix);
+    $this->attributes()->setAttribute('data-prefix', $prefix);
     return $this;
   }
 
@@ -116,7 +116,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    * @return $this for a fluent interface
    */
   public function setPostfix(string $postfix) {
-    $this->attributes()->set('data-postfix', $postfix);
+    $this->attributes()->setAttribute('data-postfix', $postfix);
     return $this;
   }
 

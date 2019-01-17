@@ -118,7 +118,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage(string $language = null) {
-    $this->attributes()->set('lang', $language);
+    $this->attributes()->setAttribute('lang', $language);
     return $this;
   }
 

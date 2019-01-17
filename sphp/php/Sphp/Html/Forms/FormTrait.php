@@ -45,7 +45,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function setMethod(string $method = null) {
-    $this->attributes()->set('method', $method);
+    $this->attributes()->setAttribute('method', $method);
     return $this;
   }
 
@@ -77,7 +77,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function setAction(string $url = null) {
-    $this->attributes()->set('action', $url);
+    $this->attributes()->setAttribute('action', $url);
     return $this;
   }
 
@@ -101,7 +101,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function setEnctype(string $enctype = null) {
-    $this->attributes()->set('enctype', $enctype);
+    $this->attributes()->setAttribute('enctype', $enctype);
     return $this;
   }
 
@@ -129,7 +129,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function setName(string $name = null) {
-    $this->attributes()->set('name', $name);
+    $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 
@@ -160,7 +160,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
   public function autocomplete(bool $allow = true) {
-    $this->attributes()->set('autocomplete', $allow ? 'on' : 'off');
+    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }
 
@@ -170,7 +170,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    */
   public function validation(bool $validate = true) {
-    $this->attributes()->set('novalidate', !$validate);
+    $this->attributes()->setAttribute('novalidate', !$validate);
     return $this;
   }
 
@@ -198,7 +198,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function setTarget(string $target = null) {
-    $this->attributes()->set('target', $target);
+    $this->attributes()->setAttribute('target', $target);
     return $this;
   }
 

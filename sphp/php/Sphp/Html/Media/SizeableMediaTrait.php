@@ -35,7 +35,7 @@ trait SizeableMediaTrait {
    * @return $this for a fluent interface
    */
   public function setWidth(int $width = null) {
-    $this->attributes()->set('width', $width);
+    $this->attributes()->setAttribute('width', $width);
     return $this;
   }
 
@@ -46,7 +46,7 @@ trait SizeableMediaTrait {
    * @return $this for a fluent interface
    */
   public function setHeight(int $height = null) {
-    $this->attributes()->set('height', $height);
+    $this->attributes()->setAttribute('height', $height);
     return $this;
   }
 
