@@ -2,38 +2,34 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
-class AttributeTest extends \PHPUnit\Framework\TestCase {
-
-  /**
-   * @var GeneralAttribute 
-   */
-  protected $attr;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    $this->attr = $this->createAttr();
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    $this->attr = null;
-  }
+class AttributeTest extends AbstractAttributeObjectTest {
 
   /**
    * @return Attribute
    */
   public function createAttr(string $name = 'data-attr'): Attribute {
     return new GeneralAttribute($name);
+  }
+
+  public function basicInvalidValues(): array {
+    return [
+        [new \stdClass],
+    ];
+  }
+
+  public function basicValidValues(): array {
+    return [
+        ['yes', 'yes'],
+        [true, true],
+        [1, 1],
+        [0, 0],
+        [' ', ' '],
+    ];
   }
 
   /**
@@ -65,7 +61,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame($attr->getValue(), null);
     $this->assertFalse($attr->isVisible());
     $this->assertFalse($attr->isBoolean());
-    $this->expectException(InvalidAttributeException::class);
+    $this->expectException(InvalidArgumentException::class);
     $attr->setValue(new \stdClass());
     //$this->assertFalse($this->attr->isProtected());
     //$this->assertFalse($this->attr->isProtected($value));
@@ -74,12 +70,13 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   public function testDemanding() {
-    $this->attr->forceVisibility();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->attr->setValue(false);
-    $this->attr->clear();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->assertEquals("$this->attr", $this->attr->getName() . "");
+    $attribute = new GeneralAttribute('data-attribute');
+    $attribute->forceVisibility();
+    $this->assertTrue($attribute->isDemanded());
+    $attribute->setValue(false);
+    $attribute->clear();
+    $this->assertTrue($attribute->isDemanded());
+    $this->assertEquals("$attribute", $attribute->getName() . "");
   }
 
   /**

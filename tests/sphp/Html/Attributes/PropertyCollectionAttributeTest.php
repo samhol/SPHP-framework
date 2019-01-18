@@ -11,13 +11,36 @@
 namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\NullPointerException;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Arrays;
 
-class PropertyCollectionAttributeTest extends TestCase {
+class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
+
+  public function createAttr(): Attribute {
+    return new PropertyCollectionAttribute('prop');
+  }
+
+  public function basicInvalidValues(): array {
+    return [
+        [['p' => '']],
+        [['' => 'v']],
+        ['p;'],
+        ['p1:;p2;'],
+        [':v'],
+        ['p:'],
+    ];
+  }
+
+  public function basicValidValues(): array {
+    return [
+        [['p1' => 'v1', 'p2' => 'v2'], 'p1:v1;p2:v2'],
+        [';p2:v2;p1:v1;', 'p2:v2;p1:v1'],
+    ];
+  }
 
   /**
    * @var PropertyCollectionAttribute 

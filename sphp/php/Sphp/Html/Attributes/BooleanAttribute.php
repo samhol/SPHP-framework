@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a boolean attribute
@@ -28,7 +28,7 @@ class BooleanAttribute extends AbstractScalarAttribute {
    * @param string $name the name of the attribute
    * @param boolean $value
    */
-  public function __construct(string $name, bool $value = true) {
+  public function __construct(string $name, bool $value = false) {
     parent::__construct($name);
     $this->setValue($value);
   }
@@ -45,7 +45,7 @@ class BooleanAttribute extends AbstractScalarAttribute {
     if (!$this->isProtected()) {
       $this->protectValue(true);
     }
-    parent::demand();
+    parent::forceVisibility();
     return $this;
   }
 
@@ -60,7 +60,7 @@ class BooleanAttribute extends AbstractScalarAttribute {
   public function filterValue($value) {
     $filtered = filter_var($value, \FILTER_VALIDATE_BOOLEAN, \FILTER_NULL_ON_FAILURE);
     if ($filtered === null) {
-      throw new InvalidAttributeException("Invalid value for boolean attribute '{$this->getName()}'");
+      throw new InvalidArgumentException("Invalid value for boolean attribute '{$this->getName()}'");
     }
     return $filtered;
   }

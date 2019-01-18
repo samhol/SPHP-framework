@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
@@ -46,7 +47,7 @@ class GeneralAttribute extends AbstractAttribute {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     if (!is_scalar($value) && $value !== null) {
-      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
+      throw new InvalidArgumentException("Invalid value for '{$this->getName()}' attribute");
     }
     $this->value = $value;
     return $this;

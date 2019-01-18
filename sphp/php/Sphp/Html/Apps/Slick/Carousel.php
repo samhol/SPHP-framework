@@ -135,7 +135,7 @@ class Carousel extends AbstractComponent {
   }
 
   /**
-   * Appends a new slide component containing a {@link DailyMotionPlayer} instance
+   * Appends a new slide component containing a DailyMotionPlayer instance
    * 
    * @param  string $videoId the id of the DailyMotion video
    * @return ResponsiveEmbedSlide appended DailyMotion video slide instance

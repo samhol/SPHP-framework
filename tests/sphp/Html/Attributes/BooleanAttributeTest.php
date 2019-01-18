@@ -2,10 +2,11 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
+class BooleanAttributeTest extends AbstractAttributeObjectTest {
 
   /**
    * @var BooleanAttribute
@@ -31,8 +32,30 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   /**
    * @return Attribute
    */
-  public function createAttr(string $name = 'data-boolean-attr'): BooleanAttribute {
+  public function createAttr(string $name = 'data-boolean-attr'): Attribute {
     return new BooleanAttribute($name);
+  }
+
+  public function basicInvalidValues(): array {
+    return [
+        [new \stdClass()],
+    ];
+  }
+
+  public function basicValidValues(): array {
+    return [
+        ['yes', true],
+        ['on', true],
+        [true, true],
+        ['true', true],
+        [1, true],
+        ['1', true],
+        ['off', false],
+        ['false', false],
+        [false, false],
+        [0, false],
+        ['0', false],
+    ];
   }
 
   /**

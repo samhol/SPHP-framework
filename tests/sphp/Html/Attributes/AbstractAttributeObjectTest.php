@@ -4,6 +4,7 @@ namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Attribute;
+use Sphp\Exceptions\InvalidArgumentException;
 
 abstract class AbstractAttributeObjectTest extends TestCase {
 
@@ -16,6 +17,7 @@ abstract class AbstractAttributeObjectTest extends TestCase {
     $attribute = $this->createAttr();
     $this->assertFalse($attribute->isProtected());
     $this->assertFalse($attribute->isDemanded());
+    //var_dump($attribute->getValue());
     $this->assertTrue($attribute->getValue() === false || $attribute->getValue() === null);
     $this->assertFalse($attribute->isVisible());
   }
@@ -49,7 +51,7 @@ abstract class AbstractAttributeObjectTest extends TestCase {
    */
   public function testBasicInvalidSettingSetting($inputValue) {
     $attribute = $this->createAttr();
-    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
+    $this->expectException(InvalidArgumentException::class);
     $attribute->setValue($inputValue);
   }
 

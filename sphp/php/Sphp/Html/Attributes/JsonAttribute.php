@@ -10,8 +10,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\AttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Stdlib\Readers\Json;
@@ -57,18 +56,6 @@ class JsonAttribute extends AbstractAttribute {
     parent::__destruct();
   }
 
-  public function getHtml(): string {
-    $output = '';
-    if ($this->isVisible()) {
-      $output .= $this->getName();
-      $value = $this->getValue();
-      if (is_string($value)) {
-        $output .= "='$value'";
-      }
-    }
-    return $output;
-  }
-
   public function isVisible(): bool {
     return $this->isDemanded() || !empty($this->data);
   }
@@ -84,7 +71,7 @@ class JsonAttribute extends AbstractAttribute {
    *
    * @param  scalar $value the value of the attribute
    * @return $this for a fluent interface
-   * @throws AttributeException if any of the properties has empty name or value
+   * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function setValue($value) {
@@ -97,7 +84,7 @@ class JsonAttribute extends AbstractAttribute {
       }
       //$this->setProperty($this->parser->parse($value));
     } catch (\Exception $ex) {
-      throw new InvalidAttributeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }
