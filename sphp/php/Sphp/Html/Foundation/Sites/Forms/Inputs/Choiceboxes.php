@@ -56,7 +56,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
    * @var Input[]
    */
   private $options = [];
-  
+
   /**
    *
    * @var Label[]
@@ -87,7 +87,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
     }
     $this->layout = new ColumnLayoutManager($this);
   }
-  
+
   public function __destruct() {
     unset($this->legend, $this->layout, $this->options);
     parent::__destruct();
@@ -203,7 +203,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
   /**
    * Checks whether the option is enabled or not
    * 
-   * @param  boolean true if the option is enabled, otherwise false
+   * @return boolean true if the option is enabled, otherwise false
    */
   public function isEnabled(): bool {
     return !$this->attributeExists("disabled");

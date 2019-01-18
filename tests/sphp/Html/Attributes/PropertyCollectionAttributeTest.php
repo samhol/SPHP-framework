@@ -83,21 +83,7 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
   }
 
   /**
-   * @return array[]
-   */
-  public function invalidProperties(): array {
-    return [
-        [['p' => '']],
-        [['' => 'v']],
-        ['p;'],
-        ['p1:;p2;'],
-        [':v'],
-        ['p:'],
-    ];
-  }
-
-  /**
-   * @dataProvider invalidProperties
+   * @dataProvider basicInvalidValues
    * @param string|array $props
    */
   public function testInvalidSetting($props) {
