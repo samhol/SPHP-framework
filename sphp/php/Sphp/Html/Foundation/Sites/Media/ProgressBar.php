@@ -43,9 +43,9 @@ class ProgressBar extends AbstractComponent implements Colourable {
   public function __construct(int $progress, string $name = null) {
     parent::__construct('div');
     $this->progressMeter = new Span();
-    $this->progressMeter->cssClasses()->protect('progress-meter');
+    $this->progressMeter->cssClasses()->protectValue('progress-meter');
     $this->progressMeter['progress-meter-text'] = new Span();
-    $this->progressMeter["progress-meter-text"]->cssClasses()->protect('progress-meter-text');
+    $this->progressMeter["progress-meter-text"]->cssClasses()->protectValue('progress-meter-text');
     //$this->identify();
     $this->attributes()
             ->setAttribute('data-sphp-progressbar', 'blaa')
@@ -56,7 +56,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
             ->demand('aria-valuenow')
             ->demand('aria-valuenow')
             ->demand('data-sphp-progressbar-name');
-    $this->cssClasses()->protect('progress');
+    $this->cssClasses()->protectValue('progress');
     $this->setProgress($progress)->setBarName($name);
   }
 

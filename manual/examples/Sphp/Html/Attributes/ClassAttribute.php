@@ -10,5 +10,5 @@ echo "<button $classes>button</button>\n";
 $classes->remove("disabled", "alert");
 echo "<button $classes>button</button>\n";
 
-$classes->protect('button', "success")->clear();
+$classes->protectValue('button', "success")->clear();
 echo "<button $classes>button</button>\n";

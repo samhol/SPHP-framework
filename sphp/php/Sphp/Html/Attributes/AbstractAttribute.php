@@ -87,7 +87,7 @@ abstract class AbstractAttribute implements Attribute {
     return $this->protected;
   }
 
-  public function protect($value) {
+  public function protectValue($value) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
@@ -100,7 +100,7 @@ abstract class AbstractAttribute implements Attribute {
     return $this->name;
   }
 
-  public function demand() {
+  public function forceVisibility() {
     $this->required = true;
     return $this;
   }

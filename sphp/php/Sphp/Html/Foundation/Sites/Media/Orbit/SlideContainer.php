@@ -43,7 +43,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
   public function __construct() {
     parent::__construct('ul');
     $this->cssClasses()
-            ->protect('orbit-container');
+            ->protectValue('orbit-container');
   }
 
   /**

@@ -41,9 +41,9 @@ class BooleanAttribute extends AbstractScalarAttribute {
     return $output;
   }
 
-  public function demand() {
+  public function forceVisibility() {
     if (!$this->isProtected()) {
-      $this->protect(true);
+      $this->protectValue(true);
     }
     parent::demand();
     return $this;

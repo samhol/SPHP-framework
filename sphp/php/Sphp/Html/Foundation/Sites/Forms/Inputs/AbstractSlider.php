@@ -34,7 +34,7 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
    */
   public function __construct(float $start = 0, float $end = 100, float $step = 1) {
     parent::__construct('div');
-    $this->cssClasses()->protect('slider');
+    $this->cssClasses()->protectValue('slider');
     $this->attributes()
             ->demand('data-start')
             ->demand('data-end')

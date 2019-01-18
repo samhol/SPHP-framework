@@ -239,7 +239,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    */
   public function buildCallout(Throwable $e): ContentCallout {
     $callout = new ContentCallout();
-    $callout->cssClasses()->protect('sphp-exception-callout');
+    $callout->cssClasses()->protectValue('sphp-exception-callout');
     $callout->append($this->buildCalloutContent($e));
     return $callout;
   }

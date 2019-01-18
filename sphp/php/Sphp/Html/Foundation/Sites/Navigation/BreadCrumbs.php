@@ -47,9 +47,9 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
    */
   public function __construct($content = null) {
     parent::__construct('nav', null);
-    $this->cssClasses()->protect('breadcrumbs');
+    $this->cssClasses()->protectValue('breadcrumbs');
     $this->items = new Ul();
-    $this->items->cssClasses()->protect('breadcrumbs');
+    $this->items->cssClasses()->protectValue('breadcrumbs');
     //$this->attributes()->lock('role', 'navigation');
     $this->attributes()->setAttribute('aria-label', 'breadcrumbs');
     if ($content !== null) {

@@ -78,7 +78,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   public function __construct(string $target = '_self') {
     parent::__construct('ul');
     $this->cssClasses()
-            ->protect('pagination');
+            ->protectValue('pagination');
     $this->attributes()
             ->protect('role', 'menubar')
             ->setAria('label', 'Pagination');
@@ -191,7 +191,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     if ($prev === null) {
       $this->previousPageButton = new Page(null, $prev, $this->target);
     }
-    $this->previousPageButton->cssClasses()->protect('pagination-previous');
+    $this->previousPageButton->cssClasses()->protectValue('pagination-previous');
     return $this;
   }
 
@@ -199,7 +199,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     if ($prev === null) {
       $this->nextPageButton = new Page(null, $prev, $this->target);
     }
-    $this->nextPageButton->cssClasses()->protect('pagination-next');
+    $this->nextPageButton->cssClasses()->protectValue('pagination-next');
     return $this;
   }
 
@@ -245,7 +245,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    */
   public function getEllipsis(): Li {
     $ellipsis = new Li();
-    $ellipsis->cssClasses()->protect('ellipsis');
+    $ellipsis->cssClasses()->protectValue('ellipsis');
     $ellipsis->attributes()->protect('aria-hidden', 'true');
     return $ellipsis;
   }

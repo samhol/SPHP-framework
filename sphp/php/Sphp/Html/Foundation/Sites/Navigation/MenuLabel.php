@@ -38,7 +38,7 @@ class MenuLabel extends ContainerTag implements MenuItem {
    */
   public function __construct($content = null) {
     parent::__construct('li');
-    $this->cssClasses()->protect('menu-text');
+    $this->cssClasses()->protectValue('menu-text');
     $this->append($content);
   }
 

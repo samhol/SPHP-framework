@@ -41,7 +41,7 @@ class SiteSearch360Form extends AbstractSearchForm {
 
   public function createResultComponent(): Div {
     $output = new Div();
-    $output->cssClasses()->protect('sphp-ss360-searchResults');
+    $output->cssClasses()->protectValue('sphp-ss360-searchResults');
     return $output;
   }
 

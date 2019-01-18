@@ -37,7 +37,7 @@ class CloseButton extends AbstractComponent {
     $this->attributes()
             ->protect('type', 'button')
             ->demand('data-close');
-    $this->cssClasses()->protect('close-button');
+    $this->cssClasses()->protectValue('close-button');
     $this->setAriaLabel($ariaLabel);
   }
 

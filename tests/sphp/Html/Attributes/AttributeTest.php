@@ -74,7 +74,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   }
 
   public function testDemanding() {
-    $this->attr->demand();
+    $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
     $this->attr->setValue(false);
     $this->attr->clear();
@@ -100,7 +100,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   public function testLockMethod($value) {
     $attr = $this->createAttr();
     $this->assertFalse($attr->isProtected());
-    $attr->protect($value);
+    $attr->protectValue($value);
     $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), $value);
     $this->expectException(ImmutableAttributeException::class);

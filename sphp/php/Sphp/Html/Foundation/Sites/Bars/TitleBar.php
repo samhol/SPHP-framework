@@ -38,7 +38,7 @@ class TitleBar extends \Sphp\Html\AbstractComponent {
    */
   public function __construct() {
     parent::__construct('div');
-    $this->cssClasses()->protect('title-bar');
+    $this->cssClasses()->protectValue('title-bar');
     $this->leftArea = new TitleBarContentArea('left');
     $this->rightArea = new TitleBarContentArea('right');
   }

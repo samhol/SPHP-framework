@@ -71,8 +71,9 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
   /**
    * Constructor
    *
-   * @param string $name the value of the name attribute
-   * @param scalar[] $values
+   * @param string $type
+   * @param string $name
+   * @param array $values
    * @param mixed $legend
    */
   public function __construct(string $type, string $name = null, array $values = [], $legend = null) {
@@ -85,6 +86,11 @@ abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInt
       $this->setOption($value, $label);
     }
     $this->layout = new ColumnLayoutManager($this);
+  }
+  
+  public function __destruct() {
+    unset($this->legend, $this->layout, $this->options);
+    parent::__destruct();
   }
 
   /**

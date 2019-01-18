@@ -33,13 +33,13 @@ class TopBar extends AbstractBar {
     if ($left === null) {
       $left = new BarContentArea('div');
     }
-    $left->cssClasses()->protect('top-bar-left');
+    $left->cssClasses()->protectValue('top-bar-left');
     if ($right === null) {
       $right = new BarContentArea('div');
     }
-    $right->cssClasses()->protect('top-bar-right');
+    $right->cssClasses()->protectValue('top-bar-right');
     parent::__construct('div', $left, $right);
-    $this->cssClasses()->protect('top-bar');
+    $this->cssClasses()->protectValue('top-bar');
   }
 
   public function __destruct() {

@@ -35,7 +35,7 @@ class AnyTimeInput extends InputTag {
   public function __construct(string $name = null, $value = null, string $format = '%Y-%m-%d %H:%i') {
     parent::__construct('text', $name, $value);
     $this->attributes()->protect('data-anytime', true);
-    $this->cssClasses()->protect('sphp','AnyTimeInput');
+    $this->cssClasses()->protectValue('sphp','AnyTimeInput');
     $this->identify();
     $this->setDateTimeFormat($format);
   }

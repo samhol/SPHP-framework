@@ -32,7 +32,7 @@ class RowLayoutManager extends AlingmentAdapter {
    */
   public function __construct(Component $component) {
     parent::__construct($component);
-    $this->cssClasses()->protect('grid-x');
+    $this->cssClasses()->protectValue('grid-x');
   }
 
   public function setLayouts(...$layout) {

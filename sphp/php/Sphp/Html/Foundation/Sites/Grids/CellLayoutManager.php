@@ -61,7 +61,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
       $this->screenLayouts[$size] = new CellScreenSizeLayoutManager($size, $component, $maxSize);
     }
     //$this->screenLayouts['all'] = $this;
-    $this->cssClasses()->protect('cell');
+    $this->cssClasses()->protectValue('cell');
     $this->maxSize = $maxSize;
   }
 

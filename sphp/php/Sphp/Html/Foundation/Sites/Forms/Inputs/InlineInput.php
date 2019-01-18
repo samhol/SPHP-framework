@@ -48,11 +48,11 @@ class InlineInput extends AbstractComponent implements IdentifiableInput {
    */
   public function __construct(IdentifiableInput $input, $prefix = null, $suffix = null) {
     parent::__construct('div');
-    $this->cssClasses()->protect('input-group');
+    $this->cssClasses()->protectValue('input-group');
     $this->prefix = $prefix;
     $this->input = $input;
     $this->suffix = $suffix;
-    $this->input->cssClasses()->protect('input-group-field');
+    $this->input->cssClasses()->protectValue('input-group-field');
   }
 
   /**

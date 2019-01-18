@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
 $placeholder = new GeneralAttribute("placeholder", "Give your name");
-$type = (new GeneralAttribute("type"))->protect("text");
+$type = (new GeneralAttribute("type"))->protectValue("text");
 $name = new GeneralAttribute("name", "foo");
 $value = new GeneralAttribute("value", "");
 $id = new IdAttribute("id", "name");

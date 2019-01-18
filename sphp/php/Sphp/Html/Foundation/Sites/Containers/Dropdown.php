@@ -56,7 +56,7 @@ class Dropdown implements Content {
     }
     $this->dropdown = $dropdown;
     $this->dropdown->identify();
-    $this->dropdown->cssClasses()->protect('dropdown-pane');
+    $this->dropdown->cssClasses()->protectValue('dropdown-pane');
     $this->dropdown->attributes()->demand('data-dropdown');
     $this->setTrigger($trigger);
   }

@@ -129,7 +129,7 @@ class MultiValueAttributeTests extends TestCase {
    * @dataProvider lockingData
    */
   public function testLocking($value) {
-    $this->attr->protect($value);
+    $this->attr->protectValue($value);
     $this->assertTrue($this->attr->isProtected($value));
     $this->assertTrue($this->attr->isProtected());
     $this->assertTrue($this->attr->contains($value));
@@ -192,7 +192,7 @@ class MultiValueAttributeTests extends TestCase {
   public function testClearing($add, $lock, $count) {
     $this->attr->add($add);
     $this->assertTrue($this->attr->isProtected() === false);
-    $this->attr->protect($lock);
+    $this->attr->protectValue($lock);
     $this->assertTrue(!$this->attr->isProtected($add));
     $this->assertTrue($this->attr->isProtected($lock));
     $this->attr->clear();
@@ -228,7 +228,7 @@ class MultiValueAttributeTests extends TestCase {
     //echo "\n$this->attr\n";
     $this->assertTrue($this->attr->contains("foo"));
     $this->assertFalse($this->attr->contains("bar"));
-    $this->attr->protect("bar");
+    $this->attr->protectValue("bar");
     //$this->expectException(ImmutableAttributeException::class);
     //$this->attrs->remove("bar");
   }
@@ -249,7 +249,7 @@ class MultiValueAttributeTests extends TestCase {
   public function testLockMethod($value) {
     $attr = $this->createAttr();
     $this->assertFalse($attr->isProtected());
-    $attr->protect($value);
+    $attr->protectValue($value);
     $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), $value);
   }
@@ -258,7 +258,7 @@ class MultiValueAttributeTests extends TestCase {
    * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
-    $this->attr->demand();
+    $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());
   }

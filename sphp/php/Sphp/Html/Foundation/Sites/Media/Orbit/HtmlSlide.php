@@ -37,7 +37,7 @@ class HtmlSlide extends AbstractContainerTag implements Slide {
     if ($content !== null) {
       $this->append($content);
     }
-    $this->cssClasses()->protect('orbit-slide');
+    $this->cssClasses()->protectValue('orbit-slide');
   }
 
 }

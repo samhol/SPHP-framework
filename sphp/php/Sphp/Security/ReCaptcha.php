@@ -38,7 +38,7 @@ class ReCaptcha implements Content {
    */
   public function __construct(string $sitekey) {
     $this->obj = new Div();
-    $this->obj->cssClasses()->protect('g-recaptcha');
+    $this->obj->cssClasses()->protectValue('g-recaptcha');
     $this->obj->setAttribute('data-sitekey', $sitekey);
   }
 

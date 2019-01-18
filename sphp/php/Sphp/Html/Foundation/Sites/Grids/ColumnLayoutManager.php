@@ -41,7 +41,7 @@ class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutMa
   public function __construct(CssClassifiableContent $component, int $maxSize = 12) {
     parent::__construct($component);
     $this->maxSize = $maxSize;
-    $this->cssClasses()->protect('cell');
+    $this->cssClasses()->protectValue('cell');
   }
 
   /**

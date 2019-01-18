@@ -80,7 +80,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    */
   public function __construct() {
     parent::__construct('div');
-    $this->cssClasses()->protect('GeSHi', 'sphp-syntax-highlighter');
+    $this->cssClasses()->protectValue('GeSHi', 'sphp-syntax-highlighter');
     $this->initGeshi();
     $this->setSyntaxBlockId();
     $footerText = 'Highlighted with <strong>GeSHi ' . $this->geshi->get_version() . '</strong>';

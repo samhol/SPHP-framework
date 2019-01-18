@@ -134,7 +134,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
    */
   public function testProtectMethod($value) {
     $attribute = new ClassAttribute();
-    $attribute->protect($value);
+    $attribute->protectValue($value);
     $this->assertTrue($attribute->isProtected($value));
     $this->assertTrue($attribute->isProtected());
     $this->assertTrue($attribute->contains($value));
@@ -195,7 +195,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
     $this->assertFalse($attribute->contains('a', 'b'));
     $this->assertFalse($attribute->contains('a'));
     $this->assertFalse($attribute->contains('b'));
-    $attribute->protect('a');
+    $attribute->protectValue('a');
     $attribute->clear();
     $this->assertTrue($attribute->contains('a'));
   }
@@ -225,7 +225,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
     $attribute->remove("bar");
     $this->assertTrue($attribute->contains("foo"));
     $this->assertFalse($attribute->contains("bar"));
-    $attribute->protect("bar");
+    $attribute->protectValue("bar");
     //$this->expectException(ImmutableAttributeException::class);
     //$this->attrs->remove("bar");
   }
@@ -244,9 +244,9 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
   public function testValueProtecting() {
     $attribute = new ClassAttribute();
     $this->assertFalse($attribute->isProtected());
-    $attribute->protect('a b');
-    $attribute->protect('c', ['d']);
-    $attribute->protect([['e', ['f']]]);
+    $attribute->protectValue('a b');
+    $attribute->protectValue('c', ['d']);
+    $attribute->protectValue([['e', ['f']]]);
     $attribute->clear();
     $this->assertCount(6, $attribute);
     $this->assertTrue($attribute->isProtected());
@@ -264,7 +264,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
    */
   public function testDemanding() {
     $attribute = new ClassAttribute();
-    $attribute->demand();
+    $attribute->forceVisibility();
     $this->assertTrue($attribute->isDemanded());
     $this->assertEquals("$attribute", $attribute->getName());
     $attribute->setValue('a');

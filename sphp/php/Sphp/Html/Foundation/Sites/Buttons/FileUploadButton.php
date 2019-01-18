@@ -53,9 +53,9 @@ class FileUploadButton implements IdentifiableInput, ButtonInterface {
    */
   public function __construct(string $name = null, string $buttonText = 'Upload File') {
     $this->fileInput = new FileInput($name);
-    $this->fileInput->cssClasses()->protect('show-for-sr', 'fileInput');
+    $this->fileInput->cssClasses()->protectValue('show-for-sr', 'fileInput');
     $this->label = new Label($buttonText, $this->fileInput);
-    $this->label->cssClasses()->protect('button');
+    $this->label->cssClasses()->protectValue('button');
   }
 
   public function getHtml(): string {

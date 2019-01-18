@@ -173,7 +173,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @param  scalar|scalar[] $values the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function protect($values) {
+  public function protectValue($values) {
     $this->locked = true;
     return $this;
   }

@@ -49,19 +49,19 @@ class FigureSlide extends AbstractComponent implements Slide {
   public function __construct($img, $caption = null) {
     parent::__construct('li');
     $this->cssClasses()
-            ->protect('orbit-slide');
+            ->protectValue('orbit-slide');
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }
     $this->img = $img;
     $this->img->cssClasses()
-            ->protect('orbit-image');
+            ->protectValue('orbit-image');
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }
     $this->caption = $caption;
     $this->caption->cssClasses()
-            ->protect('orbit-caption');
+            ->protectValue('orbit-caption');
   }
 
   /**

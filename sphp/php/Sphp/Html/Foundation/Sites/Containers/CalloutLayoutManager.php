@@ -37,7 +37,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
    */
   public function __construct(Component $component) {
     parent::__construct($component);
-    $this->cssClasses()->protect('callout');
+    $this->cssClasses()->protectValue('callout');
   }
 
   /**

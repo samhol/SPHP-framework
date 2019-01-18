@@ -36,7 +36,7 @@ abstract class Foundation {
    */
   public static function screenReaderLabel(string $text = null): Span {
     $label = new Span($text);
-    $label->cssClasses()->protect('show-for-sr');
+    $label->cssClasses()->protectValue('show-for-sr');
     return $label;
   }
 

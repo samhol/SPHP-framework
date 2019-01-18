@@ -162,7 +162,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already immutable
    */
-  public function protect($props = null) {
+  public function protectValue($props = null) {
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {

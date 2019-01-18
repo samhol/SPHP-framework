@@ -206,7 +206,7 @@ class CoordinateAttribute extends AbstractAttribute implements Countable, Arraya
    * @param  scalar|scalar[] $values the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function protect($values) {
+  public function protectValue($values) {
     $this->locked = true;
     return $this;
   }

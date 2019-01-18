@@ -105,7 +105,7 @@ class WeekView implements Content {
 
   protected function createHead(): Row {
     $row = new Row();
-    $row->cssClasses()->protect('sphp', 'calendar-head');
+    $row->cssClasses()->protectValue('sphp', 'calendar-head');
     $cu = new CalendarUtils();
     foreach ($cu->getWeekdays() as $num => $day) {
       $row->append('<div class="head day">
@@ -127,7 +127,7 @@ class WeekView implements Content {
       $monday = $weekday;
     }
     $row = new Row();
-    $row->cssClasses()->protect('sphp', 'calendar-week');
+    $row->cssClasses()->protectValue('sphp', 'calendar-week');
     $row->append($this->createDayCell($monday));
     $next = $monday->nextDay();
     while ($next->getWeekDay() !== 1) {

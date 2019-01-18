@@ -34,7 +34,7 @@ class ContentCallout extends ClosableContainer implements Callout {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->protect('callout');
+    $this->cssClasses()->protectValue('callout');
     $this->layoutManager = new CalloutLayoutManager($this);
   }
 

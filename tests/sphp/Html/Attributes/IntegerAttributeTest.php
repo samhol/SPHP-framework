@@ -71,7 +71,7 @@ class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttribut
   }
 
   public function testDemanding() {
-    $this->attr->demand();
+    $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
     $this->attr->setValue(false);
     $this->attr->clear();
@@ -96,7 +96,7 @@ class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttribut
    */
   public function testProtectMethod($value) {
     $this->assertFalse($this->attr->isProtected());
-    $this->attr->protect($value);
+    $this->attr->protectValue($value);
     $this->assertTrue($this->attr->isProtected());
     $this->assertEquals($this->attr->getValue(), $value);
     $this->expectException(ImmutableAttributeException::class);

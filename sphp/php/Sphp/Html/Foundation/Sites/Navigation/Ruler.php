@@ -27,7 +27,7 @@ class Ruler extends AbstractComponent implements MenuItem {
    */
   public function __construct() {
     parent::__construct('li');
-    $this->cssClasses()->protect('menu-ruler');
+    $this->cssClasses()->protectValue('menu-ruler');
   }
 
   public function contentToString(): string {

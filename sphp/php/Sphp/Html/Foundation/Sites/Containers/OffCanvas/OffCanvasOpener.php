@@ -35,10 +35,10 @@ class OffCanvasOpener extends AbstractComponent {
    */
   public function __construct(OffCanvasAreaInterface $offCanvas, $screenReaderText = 'Open menu') {
     parent::__construct('button');
-    $this->cssClasses()->protect('menu-icon');
+    $this->cssClasses()->protectValue('menu-icon');
     $this->attributes()->protect('type', 'button')->demand('data-open');
     $this->span = new Span($screenReaderText);
-    $this->span->cssClasses()->protect('show-for-sr');
+    $this->span->cssClasses()->protectValue('show-for-sr');
     $this->setCanvas($offCanvas);
   }
 

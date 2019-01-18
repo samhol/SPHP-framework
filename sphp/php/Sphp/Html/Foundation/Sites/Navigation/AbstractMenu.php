@@ -46,7 +46,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem 
     }
     $this->items = $contentContainer;
     parent::__construct($tagname, $attrManager);
-    $this->cssClasses()->protect('menu');
+    $this->cssClasses()->protectValue('menu');
   }
 
   public function __destruct() {

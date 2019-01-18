@@ -43,7 +43,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    */
   public function __construct($buttons = null) {
     parent::__construct('div');
-    $this->cssClasses()->protect('button-group');
+    $this->cssClasses()->protectValue('button-group');
     if (is_array($buttons)) {
       $this->appendButton($buttons);
     }

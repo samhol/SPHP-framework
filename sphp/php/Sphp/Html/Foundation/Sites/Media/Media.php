@@ -27,19 +27,19 @@ abstract class Media {
 
   public static function badge($content, string $color = null): Component {
     $badge = new Span($content);
-    $badge->cssClasses()->protect('badge');
+    $badge->cssClasses()->protectValue('badge');
     return $badge;
   }
 
   public static function label($content, string $color = 'primary'): Component {
     $label = new Span($content);
-    $label->cssClasses()->protect('label')->setValue($color);
+    $label->cssClasses()->protectValue('label')->setValue($color);
     return $label;
   }
 
   public static function iconLabel($icon, $content, string $color = 'primary'): Component {
     $badge = new Span($content);
-    $badge->cssClasses()->protect('label')->setValue($color);
+    $badge->cssClasses()->protectValue('label')->setValue($color);
     return $badge;
   }
 

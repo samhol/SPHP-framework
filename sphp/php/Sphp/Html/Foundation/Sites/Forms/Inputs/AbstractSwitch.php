@@ -55,11 +55,11 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
    * @param string|null $srText text for screen readers
    */
   public function __construct(Choicebox $box, string $srText = null) {
-    $box->cssClasses()->protect('switch-input');
+    $box->cssClasses()->protectValue('switch-input');
     parent::__construct('div');
     $this->input = $box;
     $this->cssClasses()
-            ->protect('switch');
+            ->protectValue('switch');
     $box->identify();
     $this->setScreenReaderLabel($srText);
   }
@@ -73,7 +73,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     $paddle = new Label();
     $paddle->setFor($this->input);
     $paddle->cssClasses()
-            ->protect('switch-paddle');
+            ->protectValue('switch-paddle');
     if ($this->screenReaderLabel !== null) {
       $paddle->append(Foundation::screenReaderLabel($this->screenReaderLabel));
     }
@@ -81,12 +81,12 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
       $activeLabel = new Span($this->active);
       $activeLabel->attributes()
               ->protect('aria-hidden', 'true')
-              ->classes()->protect('switch-active');
+              ->classes()->protectValue('switch-active');
       $paddle->append($activeLabel);
       $inactiveLabel = new Span($this->inactive);
       $inactiveLabel->attributes()
               ->protect('aria-hidden', 'true')
-              ->classes()->protect('switch-inactive');
+              ->classes()->protectValue('switch-inactive');
       $paddle->append($inactiveLabel);
     }
     return $paddle;

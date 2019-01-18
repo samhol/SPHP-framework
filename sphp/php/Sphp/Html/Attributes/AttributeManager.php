@@ -125,7 +125,7 @@ class AttributeManager implements Countable, Iterator, Arrayable {
     }
     if (!$this->isProtected($name)) {
       if ($this->isDemanded($name)) {
-        $attr->demand();
+        $attr->forceVisibility();
       }
       $this->attrs[$name] = $attr;
     } else {
@@ -279,9 +279,9 @@ class AttributeManager implements Countable, Iterator, Arrayable {
   public function demand(string $name) {
     $obj = $this->getObject($name);
     if (!$obj instanceof Immutable) {
-      $obj->demand();
+      $obj->forceVisibility();
     }
-    $this->getObject($name)->demand();
+    $this->getObject($name)->forceVisibility();
     return $this;
   }
 
@@ -334,7 +334,7 @@ class AttributeManager implements Countable, Iterator, Arrayable {
    * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
   public function protect(string $name, $value) {
-    $this->getObject($name)->protect($value);
+    $this->getObject($name)->protectValue($value);
     return $this;
   }
 

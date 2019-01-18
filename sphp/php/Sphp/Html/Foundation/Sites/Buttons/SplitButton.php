@@ -56,7 +56,7 @@ class SplitButton extends AbstractComponent {
    */
   public function __construct($primary = null, ArrowOnlyButton $secondary = null) {
     parent::__construct('div');
-    $this->cssClasses()->protect('button-group');
+    $this->cssClasses()->protectValue('button-group');
     if (!($primary instanceof ButtonInterface)) {
       $primary = new Button($primary);
     }

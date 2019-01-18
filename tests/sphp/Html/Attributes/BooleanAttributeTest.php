@@ -95,7 +95,7 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   public function testDemanding() {
     $this->assertFalse($this->attribute->isDemanded());
     $this->assertFalse($this->attribute->isProtected());
-    $this->attribute->demand();
+    $this->attribute->forceVisibility();
     $this->assertTrue($this->attribute->isDemanded());
     $this->assertEquals($this->attribute->getName(), "$this->attribute");
     $this->expectException(ImmutableAttributeException::class);
@@ -120,7 +120,7 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   public function testLockTrueValues($value) {
     $attr = $this->createAttr();
     $this->assertFalse($attr->isProtected());
-    $attr->protect($value);
+    $attr->protectValue($value);
     $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), true);
     $this->assertSame("$attr", $attr->getName());
@@ -135,7 +135,7 @@ class BooleanAttributeTest extends \PHPUnit\Framework\TestCase {
   public function testLockFalseValues($value) {
     $attr = $this->createAttr();
     $this->assertFalse($attr->isProtected());
-    $attr->protect($value);
+    $attr->protectValue($value);
     $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), false);
     $this->expectException(ImmutableAttributeException::class);

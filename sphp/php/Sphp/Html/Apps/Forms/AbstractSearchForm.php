@@ -121,7 +121,7 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
    */
   public function setSubmitButton(SubmitterInterface $submitButton) {
     $this->submitButton = $submitButton;
-    $this->submitButton->cssClasses()->protect('button');
+    $this->submitButton->cssClasses()->protectValue('button');
     return $this;
   }
 

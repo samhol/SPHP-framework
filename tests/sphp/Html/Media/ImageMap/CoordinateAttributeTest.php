@@ -127,7 +127,7 @@ class CoordinateAttributeTest extends TestCase {
   /**
    */
   public function testDemanding() {
-    $this->attr->demand();
+    $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());
   }

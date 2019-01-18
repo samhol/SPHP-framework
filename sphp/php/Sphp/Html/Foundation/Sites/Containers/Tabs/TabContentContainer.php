@@ -46,7 +46,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
       $tabs = new TabControllerContainer();
     }
     $this->tabs = $tabs;
-    $this->cssClasses()->protect('tabs-content');
+    $this->cssClasses()->protectValue('tabs-content');
     $this->attributes()->setAttribute('data-tabs-content', $this->tabs->identify());
   }
 

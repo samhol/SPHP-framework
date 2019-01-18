@@ -55,7 +55,7 @@ class CellScreenSizeLayoutManager extends AbstractLayoutManager implements Array
   public function __construct(string $screenSize, CssClassifiableContent $component, int $maxSize = 12) {
     parent::__construct($component);
     $this->screenSize = $screenSize;
-    $this->cssClasses()->protect('cell');
+    $this->cssClasses()->protectValue('cell');
     $this->createSizes($maxSize);
   }
 

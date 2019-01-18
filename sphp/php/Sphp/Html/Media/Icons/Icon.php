@@ -27,7 +27,7 @@ class Icon extends AbstractIcon {
    */
   public function __construct($classes, string $screenreaderLabel = null) {
     parent::__construct('i');
-    $this->cssClasses()->protect($classes);
+    $this->cssClasses()->protectValue($classes);
     $this->setSreenreaderText($screenreaderLabel);
   }
 

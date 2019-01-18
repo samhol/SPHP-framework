@@ -63,7 +63,7 @@ class MonthView extends AbstractComponent {
    */
   public function __construct(int $year = null, int $month = null) {
     parent::__construct('div');
-    $this->cssClasses()->protect('sphp', 'calendar-month');
+    $this->cssClasses()->protectValue('sphp', 'calendar-month');
     if ($year === null) {
       $year = (int) date('Y');
     }

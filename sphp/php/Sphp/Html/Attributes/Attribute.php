@@ -62,7 +62,7 @@ interface Attribute {
    * @throws AttributeException if the attribute value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function protect($value);
+  public function protectValue($value);
 
   /**
    * Returns the value of the attribute
@@ -103,7 +103,7 @@ interface Attribute {
    * 
    * @return $this for a fluent interface
    */
-  public function demand();
+  public function forceVisibility();
 
   /**
    * Checks whether the attribute is required or not

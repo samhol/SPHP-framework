@@ -48,7 +48,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
    */
   public function __construct($datetime = null, string $format = self::DATE_TIME) {
     parent::__construct('time');
-    $this->cssClasses()->protect('date-icon');
+    $this->cssClasses()->protectValue('date-icon');
     $this->setFormat($format)->setDatetime($datetime, $format);
   }
 

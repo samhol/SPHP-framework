@@ -41,7 +41,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
    */
   public function __construct(ResponsiveEmbedInterface $embed = null) {
     parent::__construct('li');
-    $this->cssClasses()->protect('orbit-slide');
+    $this->cssClasses()->protectValue('orbit-slide');
     if (!($embed instanceof ResponsiveEmbed)) {
       $embed = new ResponsiveEmbed($embed);
     }

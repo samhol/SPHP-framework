@@ -204,7 +204,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @param  scalar|scalar[] $content the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function protect($content) {
+  public function protectValue($content) {
     foreach ($this->parse(func_get_args()) as $class) {
       $this->values[$class] = true;
     }

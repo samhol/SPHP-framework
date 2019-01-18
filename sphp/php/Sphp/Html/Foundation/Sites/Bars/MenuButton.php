@@ -22,13 +22,11 @@ use Sphp\Html\AbstractComponent;
 class MenuButton extends AbstractComponent {
 
   /**
-   * 
-   * @param OffCanvasAreaInterface $offCanvas the off-canvas component or its id
-   * @param string $screenReaderText
+   * Constructor
    */
   public function __construct() {
     parent::__construct('button');
-    $this->cssClasses()->protect('menu-icon');
+    $this->cssClasses()->protectValue('menu-icon');
   }
 
   public function contentToString(): string {

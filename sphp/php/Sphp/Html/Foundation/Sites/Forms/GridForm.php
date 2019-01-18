@@ -80,7 +80,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
       $this->append($content);
     }
     $this->errorLabel = new ContentCallout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
-    $this->errorLabel->cssClasses()->protect('alert');
+    $this->errorLabel->cssClasses()->protectValue('alert');
     $this->errorLabel->inlineStyles()->setProperty('display', 'none');
     $this->errorLabel->attributes()->demand('data-abide-error');
   }

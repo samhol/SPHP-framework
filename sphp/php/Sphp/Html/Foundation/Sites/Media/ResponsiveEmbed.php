@@ -48,7 +48,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    */
   public function __construct(Embeddable $media) {
     parent::__construct('div');
-    $this->cssClasses()->protect('responsive-embed');
+    $this->cssClasses()->protectValue('responsive-embed');
     $this->setEmbeddable($media);
   }
 
@@ -143,7 +143,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    */
   public static function vimeo(string $videoId): ResponsiveEmbed {
     $player = new static(new VimeoPlayer($videoId));
-    $player->cssClasses()->protect('vimeo');
+    $player->cssClasses()->protectValue('vimeo');
     return $player;
   }
 

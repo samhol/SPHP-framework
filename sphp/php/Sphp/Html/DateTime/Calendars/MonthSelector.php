@@ -98,7 +98,7 @@ class MonthSelector implements Content {
 
   protected function buildDate(): Div {
     $container = new Div();
-    $container->attributes()->classes()->protect('sphp', 'month-selector');
+    $container->attributes()->classes()->protectValue('sphp', 'month-selector');
     $thisYear = (int) date('Y');
     $startYear = $this->date->getYear() - 3;
     $stopYear = $this->date->getYear() + 1;

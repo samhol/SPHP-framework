@@ -28,7 +28,7 @@ class VerticalMenu extends Menu {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->protect('vertical');
+    $this->cssClasses()->protectValue('vertical');
   }
 
 }

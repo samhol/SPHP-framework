@@ -31,7 +31,7 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
    */
   public function __construct(CssClassifiableContent $component) {
     parent::__construct($component);
-    $this->cssClasses()->protect('grid-container');
+    $this->cssClasses()->protectValue('grid-container');
   }
 
   public function setFluid(bool $fluid = false) {

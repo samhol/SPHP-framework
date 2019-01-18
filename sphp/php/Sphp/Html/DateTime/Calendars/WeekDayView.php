@@ -90,17 +90,17 @@ class WeekDayView extends AbstractComponent {
     $this->setAttribute('data-week-day', $dayName);
     $this->setAttribute('data-date', $date->format('Y-m-d'));
     $this->setAttribute('data-week', $weekNumber);
-    $this->cssClasses()->protect('sphp', 'calendar-day', $dayName);
+    $this->cssClasses()->protectValue('sphp', 'calendar-day', $dayName);
     if ($date->isCurrentDate()) {
-      $this->cssClasses()->protect('today');
+      $this->cssClasses()->protectValue('today');
     }
     if ($this->diaryDay->notEmpty()) {
       $this->addCssClass('has-info');
       if ($this->diaryDay->isNationalHoliday()) {
-        $this->cssClasses()->protect('holiday');
+        $this->cssClasses()->protectValue('holiday');
       }
       if ($this->diaryDay->isFlagDay()) {
-        $this->cssClasses()->protect('flag-day');
+        $this->cssClasses()->protectValue('flag-day');
       }
     }
   }
