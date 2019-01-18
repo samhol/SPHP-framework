@@ -11,7 +11,6 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * Implements a boolean attribute

@@ -2,35 +2,27 @@
 
 namespace Sphp\Tests\Html\Attributes;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\ClassAttribute;
 
-class ClassAttributeTest extends TestCase {
+class ClassAttributeTest extends AbstractAttributeObjectTest {
 
-  /**
-   * @var ClassAttribute 
-   */
-  protected $attr;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    $this->attr = $this->createAttr();
+  public function createAttr(): Attribute {
+    return new ClassAttribute('class');
   }
 
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    $this->attr = null;
+  public function basicInvalidValues(): array {
+    return [
+        [new \stdClass],
+    ];
   }
 
-  public function createAttr(string $name = 'class'): Attribute {
-    return new ClassAttribute($name);
+  public function basicValidValues(): array {
+    return [
+        ['a', 'a'],
+        ['a b c', 'a b c'],
+        [['a', 'b', 'c'], 'a b c']
+    ];
   }
 
   /**
@@ -114,13 +106,14 @@ class ClassAttributeTest extends TestCase {
    * @dataProvider settingData
    */
   public function testSetMethod($value) {
-    $this->attr->setValue($value);
+    $attribute = new ClassAttribute();
+    $attribute->setValue($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->isDemanded());
-    $this->assertTrue($this->attr->isVisible());
+    $this->assertFalse($attribute->isProtected());
+    $this->assertFalse($attribute->isProtected($value));
+    $this->assertFalse($attribute->isDemanded());
+    $this->assertTrue($attribute->isVisible());
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 
@@ -140,10 +133,11 @@ class ClassAttributeTest extends TestCase {
    * @dataProvider lockingData
    */
   public function testProtectMethod($value) {
-    $this->attr->protect($value);
-    $this->assertTrue($this->attr->isProtected($value));
-    $this->assertTrue($this->attr->isProtected());
-    $this->assertTrue($this->attr->contains($value));
+    $attribute = new ClassAttribute();
+    $attribute->protect($value);
+    $this->assertTrue($attribute->isProtected($value));
+    $this->assertTrue($attribute->isProtected());
+    $this->assertTrue($attribute->contains($value));
   }
 
   /**
@@ -165,11 +159,12 @@ class ClassAttributeTest extends TestCase {
    * @dataProvider addingData
    */
   public function testAddMethod($value) {
-    $this->attr->add($value);
-    $this->assertTrue($this->attr->contains($value));
-    $this->assertCount(count($value), $this->attr);
-    $this->attr->clear();
-    $this->assertCount(0, $this->attr);
+    $attribute = new ClassAttribute();
+    $attribute->add($value);
+    $this->assertTrue($attribute->contains($value));
+    $this->assertCount(count($value), $attribute);
+    $attribute->clear();
+    $this->assertCount(0, $attribute);
   }
 
   protected function attrContains(MultiValueAttribute $attr, $values) {
@@ -193,15 +188,16 @@ class ClassAttributeTest extends TestCase {
   /**
    */
   public function testClearMethod() {
-    $this->attr->add('a', 'b');
-    $this->assertTrue($this->attr->contains('a', 'b'));
-    $this->attr->clear();
-    $this->assertFalse($this->attr->contains('a', 'b'));
-    $this->assertFalse($this->attr->contains('a'));
-    $this->assertFalse($this->attr->contains('b'));
-    $this->attr->protect('a');
-    $this->attr->clear();
-    $this->assertTrue($this->attr->contains('a'));
+    $attribute = new ClassAttribute();
+    $attribute->add('a', 'b');
+    $this->assertTrue($attribute->contains('a', 'b'));
+    $attribute->clear();
+    $this->assertFalse($attribute->contains('a', 'b'));
+    $this->assertFalse($attribute->contains('a'));
+    $this->assertFalse($attribute->contains('b'));
+    $attribute->protect('a');
+    $attribute->clear();
+    $this->assertTrue($attribute->contains('a'));
   }
 
   /**
@@ -223,12 +219,13 @@ class ClassAttributeTest extends TestCase {
    * @param int $count
    */
   public function testRemoving() {
-    $this->attr->add("foo", "bar");
-    $this->assertTrue($this->attr->contains("foo", 'bar'));
-    $this->attr->remove("bar");
-    $this->assertTrue($this->attr->contains("foo"));
-    $this->assertFalse($this->attr->contains("bar"));
-    $this->attr->protect("bar");
+    $attribute = new ClassAttribute();
+    $attribute->add("foo", "bar");
+    $this->assertTrue($attribute->contains("foo", 'bar'));
+    $attribute->remove("bar");
+    $this->assertTrue($attribute->contains("foo"));
+    $this->assertFalse($attribute->contains("bar"));
+    $attribute->protect("bar");
     //$this->expectException(ImmutableAttributeException::class);
     //$this->attrs->remove("bar");
   }
@@ -245,34 +242,36 @@ class ClassAttributeTest extends TestCase {
    * @param  scalar $value
    */
   public function testValueProtecting() {
-    $this->assertFalse($this->attr->isProtected());
-    $this->attr->protect('a b');
-    $this->attr->protect('c', ['d']);
-    $this->attr->protect([['e', ['f']]]);
-    $this->attr->clear();
-    $this->assertCount(6, $this->attr);
-    $this->assertTrue($this->attr->isProtected());
-    $this->assertTrue($this->attr->isProtected('a'));
-    $this->assertTrue($this->attr->isProtected('b'));
-    $this->assertTrue($this->attr->isProtected('c', 'a'));
-    $this->assertTrue($this->attr->isProtected(['a', 'c']));
-    $this->assertTrue($this->attr->isProtected('a b c e '));
-    $this->assertFalse($this->attr->isProtected('a b c e foo'));
-    $this->assertFalse($this->attr->isProtected('foo'));
-    $this->assertFalse($this->attr->isProtected(''));
+    $attribute = new ClassAttribute();
+    $this->assertFalse($attribute->isProtected());
+    $attribute->protect('a b');
+    $attribute->protect('c', ['d']);
+    $attribute->protect([['e', ['f']]]);
+    $attribute->clear();
+    $this->assertCount(6, $attribute);
+    $this->assertTrue($attribute->isProtected());
+    $this->assertTrue($attribute->isProtected('a'));
+    $this->assertTrue($attribute->isProtected('b'));
+    $this->assertTrue($attribute->isProtected('c', 'a'));
+    $this->assertTrue($attribute->isProtected(['a', 'c']));
+    $this->assertTrue($attribute->isProtected('a b c e '));
+    $this->assertFalse($attribute->isProtected('a b c e foo'));
+    $this->assertFalse($attribute->isProtected('foo'));
+    $this->assertFalse($attribute->isProtected(''));
   }
 
   /**
    */
   public function testDemanding() {
-    $this->attr->demand();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->assertEquals("$this->attr", $this->attr->getName());
-    $this->attr->setValue('a');
-    $this->assertEquals("$this->attr", 'class="a"');
-    $this->attr->clear();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->assertEquals("$this->attr", $this->attr->getName());
+    $attribute = new ClassAttribute();
+    $attribute->demand();
+    $this->assertTrue($attribute->isDemanded());
+    $this->assertEquals("$attribute", $attribute->getName());
+    $attribute->setValue('a');
+    $this->assertEquals("$attribute", 'class="a"');
+    $attribute->clear();
+    $this->assertTrue($attribute->isDemanded());
+    $this->assertEquals("$attribute", $attribute->getName());
   }
 
 }

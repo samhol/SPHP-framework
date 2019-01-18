@@ -82,6 +82,9 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     if (is_array($raw)) {
       $flat = Arrays::flatten($raw);
       foreach ($flat as $item) {
+        if (!is_string($item)) {
+          throw new InvalidArgumentException('Invalid attribute value given');
+        }
         $parsed = array_merge($parsed, $this->parseStringToArray($item));
       }
       //$vals = array_filter($parsed, 'is_string');
