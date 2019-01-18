@@ -30,12 +30,7 @@ class MultiValueAttributeTests extends TestCase {
   protected function tearDown() {
     $this->attr = null;
   }
-
-  /**
-   * 
-   * @param string $name
-   * @return Attribute
-   */
+  
   public function createAttr(string $name = 'class'): Attribute {
     return new MultiValueAttribute($name);
   }

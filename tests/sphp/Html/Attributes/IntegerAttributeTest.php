@@ -29,10 +29,13 @@ class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttribut
   }
 
   /**
+   * @param string $name
+   * @param int $min
+   * @param int $max
    * @return Attribute
    */
-  public function createAttr(int $min = null, int $max = null): Attribute {
-    return new IntegerAttribute('int', $min, $max);
+  public function createAttr(string $name = 'attr', int $min = null, int $max = null): Attribute {
+    return new IntegerAttribute($name, $min, $max);
   }
 
   /**

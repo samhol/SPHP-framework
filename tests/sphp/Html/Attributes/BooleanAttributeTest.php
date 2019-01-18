@@ -1,9 +1,9 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
-use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
+use Sphp\Html\Attributes\BooleanAttribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 class BooleanAttributeTest extends AbstractAttributeObjectTest {
@@ -104,25 +104,27 @@ class BooleanAttributeTest extends AbstractAttributeObjectTest {
    * @param scalar $value
    */
   public function testFalseSetting($value) {
-    $this->attribute->setValue($value);
-    $this->assertFalse($this->attribute->isProtected());
-    $this->assertFalse($this->attribute->isProtected($value));
-    $this->assertFalse($this->attribute->isDemanded());
-    $this->assertFalse($this->attribute->isVisible());
-    $this->assertEquals($this->attribute->getValue(), false);
-    $this->assertSame("$this->attribute", '');
+    $attr = $this->createAttr();
+    $attr->setValue($value);
+    $this->assertFalse($attr->isProtected());
+    $this->assertFalse($attr->isProtected($value));
+    $this->assertFalse($attr->isDemanded());
+    $this->assertFalse($attr->isVisible());
+    $this->assertEquals($attr->getValue(), false);
+    $this->assertSame("$attr", '');
   }
 
   /**
    */
   public function testDemanding() {
-    $this->assertFalse($this->attribute->isDemanded());
-    $this->assertFalse($this->attribute->isProtected());
-    $this->attribute->forceVisibility();
-    $this->assertTrue($this->attribute->isDemanded());
-    $this->assertEquals($this->attribute->getName(), "$this->attribute");
+    $attr = $this->createAttr();
+    $this->assertFalse($attr->isDemanded());
+    $this->assertFalse($attr->isProtected());
+    $attr->forceVisibility();
+    $this->assertTrue($attr->isDemanded());
+    $this->assertEquals($attr->getName(), "$attr");
     $this->expectException(ImmutableAttributeException::class);
-    $this->attribute->setValue('false');
+    $attr->setValue('false');
   }
 
   /**

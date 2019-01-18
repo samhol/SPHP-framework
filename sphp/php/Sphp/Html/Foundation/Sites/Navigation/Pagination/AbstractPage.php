@@ -79,7 +79,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
 
   public function disable(bool $disabled = true) {
     if ($disabled) {
-      $this->cssClasses()->setValue('disabled');
+      $this->cssClasses()->add('disabled');
     } else {
       $this->cssClasses()->remove('disabled');
     }

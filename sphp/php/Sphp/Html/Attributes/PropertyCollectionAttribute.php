@@ -293,6 +293,9 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @return scalar the value of the property attribute
    */
   public function getValue() {
+    if ($this->isEmpty()) {
+      return null;
+    }
     return $this->parser->propertiesToString($this->props);
   }
 

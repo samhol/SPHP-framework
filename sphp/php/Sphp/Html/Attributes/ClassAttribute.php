@@ -127,7 +127,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   /**
    * Sets new atomic values to the attribute removing old non locked ones
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
+   * **Important:** Parameter `$values` restrictions and rules
    * 
    * 1. A string parameter can contain a single atomic value
    * 2. An array can be be multidimensional

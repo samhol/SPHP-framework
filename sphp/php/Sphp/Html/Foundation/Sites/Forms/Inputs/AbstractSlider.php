@@ -73,7 +73,7 @@ abstract class AbstractSlider extends AbstractComponent implements RangeInput {
 
   public function disable(bool $disabled = true) {
     if ($disabled) {
-      $this->cssClasses()->setValue('disabled');
+      $this->cssClasses()->add('disabled');
     } else {
       $$this->cssClasses()->remove('disabled');
     }

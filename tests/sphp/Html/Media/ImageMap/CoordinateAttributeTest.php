@@ -1,41 +1,26 @@
 <?php
 
-namespace Sphp\Html\Media\ImageMap;
+namespace Sphp\Tests\Html\Media\ImageMap;
 
-use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Html\Media\ImageMap\CoordinateAttribute;
 
-class CoordinateAttributeTest extends TestCase {
+class CoordinateAttributeTest extends AbstractAttributeObjectTest {
 
-  /**
-   * @var CoordinateAttribute 
-   */
-  protected $attr;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    $this->attr = $this->createAttr();
+  public function basicInvalidValues(): array {
+    return [
+        [new \stdClass()],
+    ];
   }
 
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    $this->attr = null;
+  public function basicValidValues(): array {
+    return [
+        [range(0, 3), '0,1,2,3'],
+    ];
   }
 
-  /**
-   * 
-   * @param string $name
-   * @return Attribute
-   */
-  public function createAttr(string $name = 'class'): Attribute {
+  public function createAttr(string $name = 'coords'): Attribute {
     return new CoordinateAttribute($name);
   }
 
@@ -46,27 +31,8 @@ class CoordinateAttributeTest extends TestCase {
     $this->assertSame(false, $attr->getValue());
   }
 
-  /**
-   */
-  public function testInvalidConstructorCall() {
-    $this->expectException(InvalidAttributeException::class);
-    new CoordinateAttribute('', []);
-  }
-
-  /**
-   */
-  public function testConstructorCall(): CoordinateAttribute {
-    $attr = new CoordinateAttribute('coords');
-    $this->assertEquals('coords', $attr->getName());
-    $this->confirmEmpty($attr);
-    return $attr;
-  }
-
-  /**
-   * @depends testConstructorCall
-   * @param   CoordinateAttribute $attr
-   */
-  public function testEmptySetting(CoordinateAttribute $attr) {
+  public function testEmptySetting() {
+    $attr = $this->createAttr();
     $attr->setValue(null);
     $this->confirmEmpty($attr);
     $attr->setValue([]);
@@ -113,6 +79,7 @@ class CoordinateAttributeTest extends TestCase {
     //var_dump("$attr");
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
+
   /**
    * @expectedException  \Sphp\Exceptions\InvalidArgumentException
    */
@@ -127,9 +94,10 @@ class CoordinateAttributeTest extends TestCase {
   /**
    */
   public function testDemanding() {
-    $this->attr->forceVisibility();
-    $this->assertTrue($this->attr->isDemanded());
-    $this->assertEquals("$this->attr", $this->attr->getName());
+    $attr = new CoordinateAttribute('foo');
+    $attr->forceVisibility();
+    $this->assertTrue($attr->isDemanded());
+    $this->assertEquals("$attr", $attr->getName());
   }
 
 }

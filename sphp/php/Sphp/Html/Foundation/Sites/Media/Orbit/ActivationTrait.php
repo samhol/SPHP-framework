@@ -39,7 +39,7 @@ trait ActivationTrait {
    */
   public function setActive(bool $active = true) {
     if ($active) {
-      $this->cssClasses()->setValue('is-active');
+      $this->cssClasses()->add('is-active');
     } else {
       $this->cssClasses()->remove('is-active');
     }

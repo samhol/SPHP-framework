@@ -122,7 +122,7 @@ class CellLayoutManager extends AbstractLayoutManager implements ArrayAccess {
     }
     $this->unsetSize();
     if (in_array($value, $all)) {
-      $this->cssClasses()->setValue($value);
+      $this->cssClasses()->add($value);
     }
     if ($value !== null) {
       $this->screen('small')->size($value);

@@ -7,8 +7,8 @@ use Sphp\Html\Attributes\ClassAttribute;
 
 class ClassAttributeTest extends AbstractAttributeObjectTest {
 
-  public function createAttr(): Attribute {
-    return new ClassAttribute('class');
+  public function createAttr(string $name = 'attr'): Attribute {
+    return new ClassAttribute($name);
   }
 
   public function basicInvalidValues(): array {

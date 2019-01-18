@@ -12,6 +12,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Exceptions\BadMethodCallException;
 
@@ -53,14 +54,15 @@ abstract class AbstractAttribute implements Attribute {
    * Constructor
    *
    * @param  string $name the name of the attribute
-   * @throws InvalidAttributeException
+   * @throws BadMethodCallException if the constructor is recalled
+   * @throws InvalidArgumentException
    */
   public function __construct(string $name) {
     if (false === $this->mutable) {
       throw new BadMethodCallException('Constructor called twice.');
     }
     if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
-      throw new InvalidAttributeException("Malformed Attribute name '$name'");
+      throw new InvalidArgumentException("Malformed Attribute name '$name'");
     }
     $this->name = $name;
     $this->mutable = false;

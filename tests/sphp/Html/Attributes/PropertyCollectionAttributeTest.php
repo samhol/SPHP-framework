@@ -10,18 +10,16 @@
 
 namespace Sphp\Tests\Html\Attributes;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\NullPointerException;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Arrays;
 
 class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
 
-  public function createAttr(): Attribute {
-    return new PropertyCollectionAttribute('prop');
+  public function createAttr(string $name = 'attr'): Attribute {
+    return new PropertyCollectionAttribute($name);
   }
 
   public function basicInvalidValues(): array {
@@ -42,44 +40,17 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
     ];
   }
 
-  /**
-   * @var PropertyCollectionAttribute 
-   */
-  protected $attr;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    $this->attr = new PropertyCollectionAttribute('prop');
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    $this->attr = null;
-  }
-
-  protected function hasNoValues(PropertyCollectionAttribute $attr) {
-    $this->assertTrue($attr->isEmpty());
-    $this->assertFalse($attr->isProtected());
-    $this->assertCount(0, $attr);
-    $this->assertSame(0, $this->attr->count());
-  }
 
   /**
    * @param array $props
    */
   public function testConstructor() {
-    $attr = new PropertyCollectionAttribute('style');
-    $this->hasNoValues($attr);
-    $this->assertFalse($attr->isDemanded());
-    $this->assertFalse($attr->isVisible());
+    $attribute = new PropertyCollectionAttribute('style');
+    $this->hasNoValues($attribute);
+    $this->assertFalse($attribute->isDemanded());
+    $this->assertFalse($attribute->isVisible());
     $this->expectException(BadMethodCallException::class);
-    $attr->__construct('foo');
+    $attribute->__construct('foo');
   }
 
   /**
@@ -87,8 +58,9 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
    * @param string|array $props
    */
   public function testInvalidSetting($props) {
+    $attribute = new PropertyCollectionAttribute('style');
     $this->expectException(InvalidArgumentException::class);
-    $this->attr->setValue($props);
+    $attribute->setValue($props);
   }
 
   /**
@@ -116,42 +88,44 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
    * @param array $props
    */
   public function testSet(array $props) {
+    $attribute = new PropertyCollectionAttribute('style');
     $string = Arrays::implodeWithKeys($props, ';', ':');
-    $this->attr->setValue($string);
-    $this->assertSame($string, $this->attr->getValue());
-    $this->assertTrue($this->attr->hasProperty('a'));
-    $this->assertSame('b', $this->attr->getProperty('a'));
-    $this->assertTrue($props == $this->attr->toArray());
-    $this->assertCount(count($props), $this->attr);
-    $this->assertSame(count($props), $this->attr->count());
-    foreach ($this->attr as $key => $val) {
+    $attribute->setValue($string);
+    $this->assertSame($string, $attribute->getValue());
+    $this->assertTrue($attribute->hasProperty('a'));
+    $this->assertSame('b', $attribute->getProperty('a'));
+    $this->assertTrue($props == $attribute->toArray());
+    $this->assertCount(count($props), $attribute);
+    $this->assertSame(count($props), $attribute->count());
+    foreach ($attribute as $key => $val) {
       $this->assertTrue(in_array($val, $props));
       $this->assertTrue(array_key_exists($key, $props));
     }
-    $this->attr->clear();
-    $this->hasNoValues($this->attr);
+    $attribute->clear();
+    $this->hasNoValues($attribute);
     /* $iteratorMock = $this->getMockBuilder(PropertyCollectionAttribute::class)
       ->disableOriginalConstructor()
       ->setMethods(array('rewind', 'valid', 'current', 'key', 'next'))
       ->getMock();
-      $this->mockIterator($this->attr, $props, true); */
+      $this->mockIterator($attribute, $props, true); */
   }
 
   /**
    * @param string|array $props
    */
   public function testArrayAccess() {
-    $this->attr['foo'] = 'bar';
-    $this->attr['baz'] = 'foobar';
-    $this->assertTrue(isset($this->attr['foo']));
-    $this->assertSame('bar', $this->attr['foo']);
-    unset($this->attr['foo']);
-    $this->assertFalse(isset($this->attr['foo']));
-    $this->assertTrue(isset($this->attr['baz']));
-    $this->assertSame('foobar', $this->attr['baz']);
-    $this->assertFalse(isset($this->attr['foobar']));
-    $this->assertFalse(isset($this->attr['foobar']));
-    $this->assertNull($this->attr['foobar']);
+    $attribute = new PropertyCollectionAttribute('style');
+    $attribute['foo'] = 'bar';
+    $attribute['baz'] = 'foobar';
+    $this->assertTrue(isset($attribute['foo']));
+    $this->assertSame('bar', $attribute['foo']);
+    unset($attribute['foo']);
+    $this->assertFalse(isset($attribute['foo']));
+    $this->assertTrue(isset($attribute['baz']));
+    $this->assertSame('foobar', $attribute['baz']);
+    $this->assertFalse(isset($attribute['foobar']));
+    $this->assertFalse(isset($attribute['foobar']));
+    $this->assertNull($attribute['foobar']);
   }
 
   /**
@@ -159,16 +133,17 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
    * @param array $props
    */
   public function testSingleProperty() {
-    $this->attr->setProperty('a', 'b');
-    $this->assertTrue($this->attr->hasProperty('a'));
-    $this->assertSame('b', $this->attr->getProperty('a'));
-    $this->attr->unsetProperty('a');
-    $this->assertFalse($this->attr->hasProperty('a'));
-    $this->attr->lockProperty('a', 'b');
-    $this->assertTrue($this->attr->hasProperty('a'));
-    $this->assertTrue($this->attr->isProtected('a'));
+    $attribute = new PropertyCollectionAttribute('style');
+    $attribute->setProperty('a', 'b');
+    $this->assertTrue($attribute->hasProperty('a'));
+    $this->assertSame('b', $attribute->getProperty('a'));
+    $attribute->unsetProperty('a');
+    $this->assertFalse($attribute->hasProperty('a'));
+    $attribute->lockProperty('a', 'b');
+    $this->assertTrue($attribute->hasProperty('a'));
+    $this->assertTrue($attribute->isProtected('a'));
     $this->expectException(\Sphp\Html\Attributes\Exceptions\ImmutableAttributeException::class);
-    $this->assertFalse($this->attr->setProperty('a', 'foo'));
+    $this->assertFalse($attribute->setProperty('a', 'foo'));
   }
 
   /**
@@ -176,30 +151,32 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
    * @param array $props
    */
   public function testProtecting(array $props) {
+    $attribute = new PropertyCollectionAttribute('style');
     $string = Arrays::implodeWithKeys($props, ';', ':');
-    $this->attr->lockProperties($props);
-    $this->assertTrue($this->attr->hasProperty('a'));
-    $this->assertSame('b', $this->attr->getProperty('a'));
+    $attribute->lockProperties($props);
+    $this->assertTrue($attribute->hasProperty('a'));
+    $this->assertSame('b', $attribute->getProperty('a'));
     try {
       $this->expectException(\Sphp\Html\Attributes\Exceptions\ImmutableAttributeException::class);
-      $this->attr->unsetProperty('a');
+      $attribute->unsetProperty('a');
     } catch (\Exception $ex) {
 
       $this->expectException(\Sphp\Html\Attributes\Exceptions\ImmutableAttributeException::class);
-      $this->assertFalse($this->attr->lockProperty('a', 'foo'));
+      $this->assertFalse($attribute->lockProperty('a', 'foo'));
     }
 
     $this->expectException(\Sphp\Html\Attributes\Exceptions\ImmutableAttributeException::class);
-    $this->assertFalse($this->attr->setProperty('a', 'foo'));
+    $this->assertFalse($attribute->setProperty('a', 'foo'));
   }
 
   /**
    * @param array $props
    */
   public function testOutput() {
-    $this->assertSame('', "$this->attr");
-    $this->attr->setProperty('a', 'b');
-    $this->assertSame($this->attr->getName() . '="a:b"', "$this->attr");
+    $attribute = new PropertyCollectionAttribute('style');
+    $this->assertSame('', "$attribute");
+    $attribute->setProperty('a', 'b');
+    $this->assertSame($attribute->getName() . '="a:b"', "$attribute");
   }
 
   /**
