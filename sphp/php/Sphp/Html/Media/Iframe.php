@@ -65,7 +65,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function getName(): string {
-    return $this->attributes()->getValue('name');
+    return (string) $this->attributes()->getValue('name');
   }
 
   /**
@@ -134,7 +134,7 @@ class Iframe extends EmptyTag implements Embeddable, LazyMedia, SizeableMedia {
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
   public function getSandbox(): string {
-    return $this->getAttribute('sandbox');
+    return (string) $this->getAttribute('sandbox');
   }
 
 }
