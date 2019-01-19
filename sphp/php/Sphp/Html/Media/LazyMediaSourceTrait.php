@@ -88,9 +88,9 @@ trait LazyMediaSourceTrait {
    */
   public function getSrc(): string {
     if ($this->isLazy()) {
-      return $this->attributes()->getValue('data-src');
+      return (string) $this->attributes()->getValue('data-src');
     } else {
-      return $this->attributes()->getValue('src');
+      return (string) $this->attributes()->getValue('src');
     }
   }
 

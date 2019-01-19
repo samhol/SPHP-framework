@@ -29,6 +29,8 @@ class GeneralAttribute extends AbstractAttribute {
    */
   private $value = false;
 
+  
+  private $defaultValue = null;
   /**
    * Constructor
    *
@@ -41,6 +43,12 @@ class GeneralAttribute extends AbstractAttribute {
       $this->setValue($value);
     }
   }
+
+  public function setDefaultValue($defaultValue) {
+    $this->defaultValue = $defaultValue;
+    return $this;;
+  }
+
 
   public function setValue($value) {
     if ($this->isProtected()) {
