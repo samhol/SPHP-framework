@@ -27,20 +27,6 @@ abstract class AbstractAttributeObjectTest extends TestCase {
   }
 
   /**
-   * @param Attribute $attribute
-   */
-  public function hasNoValues(Attribute $attribute) {
-    $this->assertTrue($attribute->isEmpty());
-    $this->assertFalse($attribute->isProtected());
-    $valueType = gettype($attribute->getValue());
-    $errorMessage = sprintf('Empty attribute object %s has type(%s) as its value', get_class($attribute), $valueType);
-    $this->assertTrue($attribute->getValue() === false || $attribute->getValue() === null, $errorMessage);
-    if ($attribute instanceof \Countable) {
-      $this->assertCount(0, $attribute);
-    }
-  }
-
-  /**
    * @return string[]
    */
   public function invalidAttributeNames(): array {
@@ -58,6 +44,20 @@ abstract class AbstractAttributeObjectTest extends TestCase {
   public function testInvalidConstructorCall(string $name) {
     $this->expectException(InvalidArgumentException::class);
     $this->createAttr($name);
+  }
+
+  /**
+   * @param Attribute $attribute
+   */
+  public function hasNoValues(Attribute $attribute) {
+    $this->assertTrue($attribute->isEmpty());
+    $this->assertFalse($attribute->isProtected());
+    $valueType = gettype($attribute->getValue());
+    $errorMessage = sprintf('Empty attribute object %s has type(%s) as its value', get_class($attribute), $valueType);
+    $this->assertTrue($attribute->getValue() === false || $attribute->getValue() === null, $errorMessage);
+    if ($attribute instanceof \Countable) {
+      $this->assertCount(0, $attribute);
+    }
   }
 
   /**

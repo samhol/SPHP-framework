@@ -18,6 +18,8 @@ use Sphp\Stdlib\Arrays;
 
 class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
 
+  use \Sphp\Tests\ArrayAccessTraversableCountableTestTrait;
+
   public function createAttr(string $name = 'attr'): Attribute {
     return new PropertyCollectionAttribute($name);
   }
@@ -39,7 +41,6 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
         [';p2:v2;p1:v1;', 'p2:v2;p1:v1'],
     ];
   }
-
 
   /**
    * @param array $props
@@ -179,44 +180,15 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
     $this->assertSame($attribute->getName() . '="a:b"', "$attribute");
   }
 
-  /**
-   * Mock iterator
-   *
-   * This attaches all the required expectations in the right order so that
-   * our iterator will act like an iterator!
-   * source from: http://www.davegardner.me.uk/blog/2011/03/04/mocking-iterator-with-phpunit/
-   *
-   * @author: dave@mpdconsulting.co.uk
-   * @param Iterator $iterator The iterator object; this is what we attach
-   *      all the expectations to
-   * @param array An array of items that we will mock up, we will use the
-   *      keys (if needed) and values of this array to return
-   * @param boolean $includeCallsToKey Whether we want to mock up the calls
-   *      to "key"; only needed if you are doing foreach ($foo as $k => $v)
-   *      as opposed to foreach ($foo as $v)
-   */
-  private function mockIterator(Iterator $iterator, array $items, $includeCallsToKey = FALSE) {
-    $iterator->expects($this->at(0))
-            ->method('rewind');
-    $counter = 1;
-    foreach ($items as $k => $v) {
-      $iterator->expects($this->at($counter++))
-              ->method('valid')
-              ->will($this->returnValue(TRUE));
-      $iterator->expects($this->at($counter++))
-              ->method('current')
-              ->will($this->returnValue($v));
-      if ($includeCallsToKey) {
-        $iterator->expects($this->at($counter++))
-                ->method('key')
-                ->will($this->returnValue($k));
-      }
-      $iterator->expects($this->at($counter++))
-              ->method('next');
-    }
-    $iterator->expects($this->at($counter))
-            ->method('valid')
-            ->will($this->returnValue(FALSE));
+  public function arrayData(): array {
+    return [
+        'a' => 'b',
+        'foo' => 1
+    ];
+  }
+
+  public function createCollection(): \ArrayAccess {
+    return $this->createAttr();
   }
 
 }

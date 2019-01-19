@@ -295,7 +295,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider notExistsData
    */
   public function testNnotExists($attrName) {
-    $this->assertTrue($this->attrs->getValue($attrName) === false);
+    $this->assertTrue($this->attrs->getValue($attrName) === null);
     $this->assertTrue($this->attrs->isProtected($attrName) === false);
     $this->assertTrue($this->attrs->isDemanded($attrName) === false);
     $this->assertTrue($this->attrs->isVisible($attrName) === false);

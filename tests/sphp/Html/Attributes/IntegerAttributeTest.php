@@ -1,11 +1,12 @@
 <?php
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
 use Sphp\Html\Attributes\Attribute;
+use Sphp\Html\Attributes\IntegerAttribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest {
+class IntegerAttributeTests extends AbstractAttributeObjectTest {
 
   /**
    * @var IntegerAttribute 
@@ -38,41 +39,65 @@ class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttribut
     return new IntegerAttribute($name, $min, $max);
   }
 
+  public function basicValidValues(): array {
+    return [
+        ['0', 0],
+        [0, 0],
+        [true, 1],
+        [false, null],
+        ['1', 1],
+        [null, null],
+    ];
+  }
+
+  public function basicInvalidValues(): array {
+    return [
+        ['foo'],
+        [''],
+        [new \stdClass],
+        [[]],
+    ];
+  }
+
   /**
    * @return scalar[]
    */
   public function settingData(): array {
     return [
-        ['0'],
-        [0],
-        [true],
-        [false],
-        [0],
-        [-0],
-        [0.0],
-        [-1],
-        [1],
-        ['1'],
-        [1],
-        [null],
+        ['0', -1, 1],
+        [0, -1, 1],
+        [true, -1, 1],
+        [false, -1, 1],
+        [0, -1, 1],
+        [-0, -1, 1],
+        [0.0, -1, 1],
+        [-1, -1, 1],
+        [1, -1, 1],
+        ['1', -1, 1],
+        [null, -1, 1],
     ];
   }
 
   /**
    * @dataProvider settingData
-   * @param scalar $value
-   * @param scalar $expected
-   * @param boolean $visibility
+   * @param type $value
+   * @param int $min
+   * @param int $max
    */
-  public function testSetting($value) {
-    $this->attr->setValue($value);
-    $this->assertFalse($this->attr->isProtected());
-    $this->assertFalse($this->attr->isProtected($value));
-    $this->assertFalse($this->attr->isDemanded());
-    $this->assertEquals($this->attr->isVisible(), ($this->attr->getValue() !== null || $this->attr->getValue() === false));
-    $this->assertEquals($this->attr->getValue(), $value);
+  public function testLimitSetting($value, int $min = null, int $max = null) {
+    $attribute = new IntegerAttribute('data-number-attr', $min, $max);
+    $attribute->setValue($value);
+    $this->assertFalse($attribute->isDemanded());
+    $this->assertEquals($attribute->isVisible(), ($attribute->getValue() !== null || $attribute->getValue() === false));
+    $this->assertEquals($attribute->getValue(), $attribute->filterValue($value));
   }
 
+  public function testInvalidLimitSetting() {
+    $attribute = new IntegerAttribute('data-number-attr', 1, -1);
+    $this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
+    $attribute->setValue(1);
+  }
+  
   public function testDemanding() {
     $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
@@ -105,25 +130,6 @@ class IntegerAttributeTests extends \Sphp\Tests\Html\Attributes\AbstractAttribut
     $this->expectException(ImmutableAttributeException::class);
     $this->attr->setValue($value + 1);
     $this->attr->clear();
-  }
-
-  public function basicValidValues(): array {
-    return [
-        ['0', 0],
-        [0, 0],
-        [true, 1],
-        [false, null],
-        ['1', 1],
-        [null, null],
-    ];
-  }
-
-  public function basicInvalidValues(): array {
-    return [
-        ['foo'],
-        [new \stdClass],
-        [[]],
-    ];
   }
 
 }

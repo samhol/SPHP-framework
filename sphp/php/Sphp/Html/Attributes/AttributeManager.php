@@ -29,7 +29,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AttributeManager implements Countable, Iterator, Arrayable {
+class AttributeManager implements Countable, Arrayable {
 
   /**
    * attributes as a (name -> value) map
@@ -376,14 +376,14 @@ class AttributeManager implements Countable, Iterator, Arrayable {
    *
    * **IMPORTANT:**
    *
-   * * Returns `boolean false` if attribute is not present.
-   * * returns `true` or an empty string for empty attributes.
+   *  Returns `null` if attribute is not present. However some attributes might 
+   *  also return `null` values
    *
    * @param  string $name the name of the attribute
-   * @return scalar the value of the attribute
+   * @return scalar|null the value of the attribute
    */
   public function getValue(string $name) {
-    $value = false;
+    $value = null;
     if ($this->isInstantiated($name)) {
       $value = $this->getObject($name)->getValue();
     }
@@ -423,54 +423,9 @@ class AttributeManager implements Countable, Iterator, Arrayable {
     return count($this->attrs);
   }
 
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->attrs);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->attrs);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->attrs);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->attrs);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->attrs);
-  }
-
   public function toArray(): array {
     $arr = [];
-    foreach ($this as $name => $attr) {
+    foreach ($this->attrs as $name => $attr) {
       if ($attr->isVisible()) {
         $arr[$name] = $attr->getValue();
       }

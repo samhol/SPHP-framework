@@ -12,6 +12,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Description of CssClassParser
  *
@@ -46,8 +47,8 @@ class CssClassParser {
       //$vals = array_filter($parsed, 'is_string');
     } else if (is_scalar($raw)) {
       $parsed = $this->stringToArray("$raw");
-    }  else {
-      throw new InvalidArgumentException("Invalid attribute value");   
+    } else {
+      throw new InvalidArgumentException("Invalid attribute value");
     }
     if ($validate) {
       foreach ($parsed as $value) {
@@ -58,7 +59,7 @@ class CssClassParser {
     }
     return $parsed;
   }
-  
+
   public function stringToArray(string $subject): array {
     $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
