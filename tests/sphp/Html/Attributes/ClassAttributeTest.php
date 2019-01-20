@@ -102,20 +102,6 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
     ];
   }
 
-  /**
-   * @dataProvider settingData
-   */
-  public function testSetMethod($value) {
-    $attribute = new ClassAttribute();
-    $attribute->setValue($value);
-    //var_dump($attr->isDemanded() || boolval($value));
-
-    $this->assertFalse($attribute->isProtected());
-    $this->assertFalse($attribute->isProtected($value));
-    $this->assertFalse($attribute->isDemanded());
-    $this->assertTrue($attribute->isVisible());
-    //$this->assertEquals($this->attrs->getValue(), $expected);
-  }
 
   /**
    * 
@@ -141,7 +127,6 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
   }
 
   /**
-   * 
    * @return string[]
    */
   public function addingData(): array {
@@ -150,6 +135,19 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
         [range('a', 'e')],
         [range('a', 'e')]
     ];
+  }
+  /**
+   * 
+   * @dataProvider addingData
+   */
+  public function testSelfContaining(array $values) {
+    $attribute = new ClassAttribute();
+    $attribute->add($values);
+    $this->assertTrue($attribute->contains($values));
+    $this->assertEquals($values, $attribute->toArray());
+    $this->assertTrue($attribute->contains($attribute->toArray()));
+    $itArray = iterator_to_array($attribute);
+    $this->assertEquals($values, $itArray);
   }
 
   /**

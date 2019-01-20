@@ -3,7 +3,6 @@
 namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;

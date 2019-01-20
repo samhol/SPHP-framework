@@ -10,6 +10,7 @@
 
 namespace Sphp\Tests;
 
+use ArrayAccess;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Traversable;
 
@@ -21,19 +22,14 @@ trait ArrayAccessTraversableCountableTestTrait {
 
   public function testArrayIterator() {
     $collection = $this->createCollection();
+    $this->runArrayAccessAddingTest($collection);
     $data = $this->arrayData();
-    foreach ($data as $key => $value) {
-      $this->assertFalse(isset($collection[$key]));
-      $collection[$key] = $value;
-      $this->assertTrue(isset($collection[$key]));
-      $this->assertSame($value, $collection[$key]);
-    }
-    $length = count($data);
     if ($collection instanceof \Countable) {
+      $length = count($data);
       $this->assertCount($length, $collection);
     }
     if ($collection instanceof Arrayable) {
-      
+      $this->arrayableTests($collection);
     }
 
     if ($collection instanceof Traversable) {
@@ -43,6 +39,16 @@ trait ArrayAccessTraversableCountableTestTrait {
       $this->assertTrue(isset($collection[$key]));
       unset($collection[$key]);
       $this->assertFalse(isset($collection[$key]));
+    }
+  }
+
+  protected function runArrayAccessAddingTest(ArrayAccess $collection) {
+    $data = $this->arrayData();
+    foreach ($data as $key => $value) {
+      $this->assertFalse(isset($collection[$key]));
+      $collection[$key] = $value;
+      $this->assertTrue(isset($collection[$key]));
+      $this->assertSame($value, $collection[$key]);
     }
   }
 
@@ -68,11 +74,7 @@ trait ArrayAccessTraversableCountableTestTrait {
 
   protected function arrayableTests(Arrayable $collection) {
     $array = $collection->toArray();
-    foreach ($data as $key => $value) {
-      $this->assertTrue(isset($collection[$key]));
-      unset($collection[$key]);
-      $this->assertFalse(isset($collection[$key]));
-    }
+    $this->assertEquals($this->arrayData(), $array);
   }
 
 }
