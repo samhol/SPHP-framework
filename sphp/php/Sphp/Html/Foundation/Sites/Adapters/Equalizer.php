@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Adapters;
 use Sphp\Html\Adapters\AbstractComponentAdapter;
 use Sphp\Html\Component;
 use Sphp\Html\ContainerComponent;
-
+use Sphp\Html\Attributes\IdAttribute;
 /**
  * Implements a Foundation Equalizer.
  *
@@ -34,6 +34,7 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function __construct(Component $equalizer, string $name = null) {
     parent::__construct($equalizer);
+    $this->attributes()->getObjectMap()->mapType('data-equalizer', IdAttribute::class);
     $attr = $this->attributes()->setIdentifier('data-equalizer');
     if ($name === null) {
       $attr->identify();

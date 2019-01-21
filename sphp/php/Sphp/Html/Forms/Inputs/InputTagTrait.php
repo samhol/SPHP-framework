@@ -71,7 +71,7 @@ trait InputTagTrait {
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
-    $this->attributes()->forceBoolean('disabled', $disabled);
+    $this->attributes()->disabled = $disabled;
     return $this;
   }
 

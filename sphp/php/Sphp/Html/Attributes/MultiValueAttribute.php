@@ -36,14 +36,16 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @var boolean
    */
   private $locked = false;
+  private $properties;
 
   /**
    * Constructor
    *
    * @param string $name the name of the attribute
    */
-  public function __construct(string $name) {
+  public function __construct(string $name, array $properties = []) {
     parent::__construct($name);
+    $this->properties = $properties;
   }
 
   /**
@@ -54,6 +56,11 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    */
   public function __destruct() {
     unset($this->values, $this->locked);
+  }
+
+  protected function parseProperties(array $properties = []) {
+    $this->properties['delim'] = $properties['delim'] ?? ' ';
+    $this->properties['type'] = $properties['type'] ?? 'scalar';
   }
 
   /**
@@ -98,11 +105,17 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return bool true if the value is valid atomic value
    */
   public function isValidAtomicValue($value): bool {
+    if ($this->properties['int']) {
+      return is_int($value);
+    }    
+    if ($this->properties['int']) {
+      return is_int($value);
+    }
     return is_scalar($value);
   }
 
   public function parseStringToArray(string $subject): array {
-    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    $result = preg_split('/[' . $this->properties['type'] . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
     }
@@ -148,6 +161,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values);
+    
     $this->values = array_merge($this->values, $parsed);
     return $this;
   }

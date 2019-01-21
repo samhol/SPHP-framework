@@ -13,7 +13,6 @@ namespace Sphp\Html\Attributes;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**

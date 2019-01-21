@@ -36,6 +36,8 @@ class Textarea extends SimpleTag implements TextareaInterface {
    */
   public function __construct(string $name = null, $content = null, int $rows = null, int $cols = null) {
     parent::__construct('textarea', $content);
+    $this->attributes()->getObjectMap()->mapType('rows', \Sphp\Html\Attributes\IntegerAttribute::class,0);
+    $this->attributes()->getObjectMap()->mapType('cols', \Sphp\Html\Attributes\IntegerAttribute::class,0);
     if ($name !== null) {
       $this->setName($name);
     }
@@ -48,7 +50,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->forceBoolean('disabled', $disabled);
+    $this->attributes()->disabled = $disabled;
     return $this;
   }
 
@@ -84,12 +86,12 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRows(int $rows) {
-    $this->attributes()->forceInteger('rows', $rows);
+    $this->attributes()->rows($rows);
     return $this;
   }
 
   public function setCols(int $cols) {
-    $this->attributes()->forceInteger('cols', $cols);
+    $this->attributes()->cols($cols);
     return $this;
   }
 
@@ -99,7 +101,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->forceBoolean('required', $required);
+    $this->attributes()->required = $required;
     return $this;
   }
 

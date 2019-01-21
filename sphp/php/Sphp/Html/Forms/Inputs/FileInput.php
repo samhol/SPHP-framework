@@ -54,12 +54,12 @@ class FileInput extends AbstractInputTag implements ValidableInput {
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multipleFiles(bool $multiple = true) {
-    $this->attributes()->forceBoolean('multiple', $multiple);
+    $this->attributes()->multiple = $multiple;
     return $this;
   }
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->forceBoolean('required', $required);
+    $this->attributes()->required = $required;
     return $this;
   }
 

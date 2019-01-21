@@ -12,7 +12,6 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * Default implementation of an attribute

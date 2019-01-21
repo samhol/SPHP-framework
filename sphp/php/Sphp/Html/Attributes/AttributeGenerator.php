@@ -11,8 +11,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-
+use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Abstract implementation of attribute manager for HTML components
  * 
@@ -84,11 +83,11 @@ class AttributeGenerator {
    * @param  string $type the object type of the attribute
    * @param  mixed $param optional parameters injected to the generated object
    * @return $this for a fluent interface
-   * @throws InvalidAttributeException if the requested attribute type is invalid
+   * @throws InvalidArgumentException if the requested attribute type is invalid
    */
   public function mapType(string $name, string $type, ...$param) {
     if (!$this->isValidType($name, $type)) {
-      throw new InvalidAttributeException("Attribute '$name' must extend type : '{$this->getActualType($name)}'");
+      throw new InvalidArgumentException("Attribute '$name' must extend type : '{$this->getValidType($name)}', $type given");
     }
     array_unshift($param, $name);
     $this->map[$name] = ['type' => $type, 'params' => $param];
@@ -174,8 +173,6 @@ class AttributeGenerator {
   public function createObject(string $name): Attribute {
     $type = $this->getActualType($name);
     $params = $this->getParametersFor($name);
-
-    //print_r($params);
     $class = new \ReflectionClass($type);
     $instance = $class->newInstanceArgs($params);
     return $instance;

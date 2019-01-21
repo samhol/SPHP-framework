@@ -6,7 +6,7 @@ use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Media\ImageMap\CoordinateAttribute;
 
-class CoordinateAttributeTest extends AbstractAttributeObjectTest {
+class CoordinateAttributeTest1 extends AbstractAttributeObjectTest {
 
   public function basicInvalidValues(): array {
     return [
@@ -65,7 +65,7 @@ class CoordinateAttributeTest extends AbstractAttributeObjectTest {
 
     //var_dump("$attr");
     //$expected = 'foo="' . implode(',', $value) . '"';
-    $this->assertSame($expected, $attr->getCoordinates());
+    $this->assertSame($expected, $attr->toArray()['foo']);
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
 
@@ -49,7 +49,7 @@ class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->gen->isMapped('class'));
     $object = $this->gen->createObject('class');
     $this->assertInstanceOf(ClassAttribute::class, $object);
-    $this->expectException(AttributeException::class);
+    $this->expectException(InvalidArgumentException::class);
     $this->gen->mapType('class', GeneralAttribute::class);
   }
 
@@ -63,7 +63,7 @@ class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
     $object1 = $this->gen->createObject('foo');
     $this->assertInstanceOf(PatternAttribute::class, $object1);
     $this->assertInstanceOf(IdAttribute::class, $object1);
-    $this->expectException(AttributeException::class);
+    $this->expectException(InvalidArgumentException::class);
     $this->gen->mapType('foo', GeneralAttribute::class);
   }
 

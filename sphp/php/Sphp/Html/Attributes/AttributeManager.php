@@ -11,11 +11,10 @@
 namespace Sphp\Html\Attributes;
 
 use Countable;
-use Iterator;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\IllegalStateException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -56,10 +55,7 @@ class AttributeManager implements Countable, Arrayable {
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
     unset($this->attrs, $this->gen);
@@ -86,12 +82,25 @@ class AttributeManager implements Countable, Arrayable {
     return implode(' ', $this->attrs);
   }
 
+  public function __call($name, $arguments) {
+    $obj = $this->getObject($name)->setValue($arguments[0]);
+    return $obj;
+  }
+
+  public function __get($name) {
+    return $this->getObject($name);
+  }
+
+  public function __set($name, $value) {
+    $this->getObject($name)->setValue($value);
+  }
+
   /**
    * Return the attribute generator instance used
    * 
    * @return AttributeGenerator the attribute generator instance used
    */
-  public function getGenerator(): AttributeGenerator {
+  public function getObjectMap(): AttributeGenerator {
     return $this->gen;
   }
 
@@ -115,13 +124,13 @@ class AttributeManager implements Countable, Arrayable {
    * 
    * @param  Attribute $attr
    * @return $this for a fluent interface
-   * @throws InvalidAttributeException
-   * @throws ImmutableAttributeException
+   * @throws InvalidArgumentException
+   * @throws IllegalStateException if the attribute is immutable
    */
   public function setInstance(Attribute $attr) {
     $name = $attr->getName();
-    if (!$this->gen->isValidType($name, $attr)) {
-      throw new InvalidAttributeException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
+    if (!$this->getObjectMap()->isValidType($name, $attr)) {
+      throw new InvalidArgumentException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
     }
     if (!$this->isProtected($name)) {
       if ($this->isDemanded($name)) {
@@ -129,33 +138,9 @@ class AttributeManager implements Countable, Arrayable {
       }
       $this->attrs[$name] = $attr;
     } else {
-      throw new ImmutableAttributeException("Attribute '$name' is immutable");
+      throw new IllegalStateException("Attribute '$name' is immutable");
     }
     return $this;
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @return bool
-   */
-  public function isIntegerAttribute(string $name): bool {
-    if ($this->isInstantiated($name)) {
-      return $this->attrs[$name] instanceof IntegerAttribute;
-    }
-    return $this->gen->isOfType($name, IntegerAttribute::class);
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @return bool
-   */
-  public function isBooleanAttribute(string $name): bool {
-    if ($this->isInstantiated($name)) {
-      return $this->attrs[$name] instanceof BooleanAttribute;
-    }
-    return $this->gen->isOfType($name, BooleanAttribute::class);
   }
 
   /**
@@ -168,41 +153,6 @@ class AttributeManager implements Countable, Arrayable {
       return $this->attrs[$name] instanceof IdAttribute;
     }
     return $this->gen->isOfType($name, IdAttribute::class);
-  }
-
-  /**
-   * 
-   * @param string $name
-   * @param bool $value
-   * @return $this
-   */
-  public function forceBoolean(string $name, bool $value = true) {
-    if ($this->isBooleanAttribute($name)) {
-      $this->attrs[$name]->setValue($value);
-    } else {
-      $attr = new BooleanAttribute($name, $value);
-      $this->setInstance($attr);
-    }
-    return $this;
-  }
-
-  /**
-   * 
-   * @param string $name
-   * @param int $value
-   * @return IntegerAttribute
-   */
-  public function forceInteger(string $name, int $value = null): IntegerAttribute {
-    if ($this->isIntegerAttribute($name)) {
-      $this->attrs[$name]->setValue($value);
-    } else {
-      $attr = new IntegerAttribute($name);
-      $attr->setValue($value);
-      $this->setInstance($attr);
-    }
-    $this->getGenerator()
-            ->mapType($name, IntegerAttribute::class);
-    return $this->attrs[$name];
   }
 
   /**
@@ -243,10 +193,10 @@ class AttributeManager implements Countable, Arrayable {
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
    * @return $this for a fluent interface
-   * @throws InvalidAttributeException if the attribute name or value is invalid
+   * @throws InvalidArgumentException if the attribute name or value is invalid
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttribute(string $name, $value = true) {
+  public function setAttribute(string $name, $value) {
     $this->getObject($name)->setValue($value);
     return $this;
   }
@@ -258,7 +208,7 @@ class AttributeManager implements Countable, Arrayable {
    *
    * @param  mixed[] $attrs an array of attribute name value pairs
    * @return $this for a fluent interface
-   * @throws InvalidAttributeException if any of the attributes is invalid
+   * @throws InvalidArgumentException if any of the attributes is invalid
    * @throws ImmutableAttributeException if the value of the attribute is already locked
    */
   public function merge(array $attrs = []) {
@@ -330,7 +280,7 @@ class AttributeManager implements Countable, Arrayable {
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
    * @return $this for a fluent interface
-   * @throws AttributeException if either the name or the value is invalid for the type of the attribute
+   * @throws InvalidArgumentException if either the name or the value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
   public function protect(string $name, $value) {

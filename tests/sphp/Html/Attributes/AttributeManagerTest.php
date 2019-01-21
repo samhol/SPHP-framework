@@ -156,7 +156,8 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testBooleanSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
-    $attrs->forceBoolean($name, $value);
+    $attrs->getObjectMap()->mapType($name, BooleanAttribute::class);
+    $attrs->$name = $value;
     $this->assertTrue($attrs->getValue($name) === $value);
     $this->assertTrue($attrs->isInstantiated($name));
     if ($value === false) {

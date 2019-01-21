@@ -36,7 +36,7 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CoordinateAttribute extends AbstractAttribute implements Countable, Arrayable {
+class CoordinateAttribute extends \Sphp\Html\Attributes\MultiValueAttribute {
 
   /**
    * stored individual coordinates
@@ -66,8 +66,9 @@ class CoordinateAttribute extends AbstractAttribute implements Countable, Arraya
    * @param string $name the name of the attribute
    * @param array $lengthRule  the separator between individual values in sequence
    */
-  public function __construct(string $name, $lengthRule = null) {
-    parent::__construct($name);
+  public function __construct(string $name, int $lengthRule = null) {
+    $properties = ['type' => 'int', 'length' => $lengthRule];
+    parent::__construct($name, $properties);
     $this->coordinates = [];
   }
 
@@ -78,50 +79,6 @@ class CoordinateAttribute extends AbstractAttribute implements Countable, Arraya
     unset($this->coordinates, $this->locked);
   }
 
-  /**
-   * Returns an array of unique values parsed from the input
-   *
-   * **Important:** Parameter <var>$raw</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain a single atomic value
-   * 2. An array can be be multidimensional
-   * 3. Duplicate values are ignored
-   *
-   * @param  mixed $raw the value(s) to parse
-   * @return string[] separated atomic values in an array
-   * @throws InvalidArgumentException if the raw input is not valid
-   */
-  public function parse($raw): array {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $thrower->start();
-    $parsed = [];
-    $f = function($scalar) {
-      $trimmed = trim($scalar);
-      if (!is_numeric($trimmed)) {
-        throw new InvalidArgumentException("Invalid individual coordinate value: $trimmed");
-      }
-      return (int) $trimmed;
-      ;
-    };
-    if ($raw === null || is_bool($raw) || (is_scalar($raw) && Strings::isBlank("$raw"))) {
-      $parsed = [];
-    } else if (is_numeric($raw)) {
-      $parsed = [(int) $raw];
-    } else if (is_string($raw)) {
-      $parsed = array_map($f, explode(',', $raw));
-    } else if (is_array($raw)) {
-      foreach ($raw as $value) {
-        if (!is_int($value)) {
-          throw new InvalidArgumentException("Invalid individual coordinate type:" . gettype($scalar) . " (integer required)");
-        }
-      }
-      $parsed = array_map($f, Arrays::flatten($raw));
-    } else {
-      throw new InvalidArgumentException("Invalid attribute type:" . gettype($raw));
-    }
-    $thrower->stop();
-    return $parsed;
-  }
 
   private function isValidLength(): bool {
     $length = count($this->coordinates);

@@ -12,8 +12,6 @@ namespace Sphp\Html\Attributes;
 
 use ArrayAccess;
 use Iterator;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\NullPointerException;
@@ -92,7 +90,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    *
    * @param  scalar $value the value of the attribute
    * @return $this for a fluent interface
-   * @throws AttributeException if any of the properties has empty name or value
+   * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function setValue($value) {
@@ -122,7 +120,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @param  string $property the name of the property
    * @param  string $value the value of the property
    * @return $this for a fluent interface
-   * @throws AttributeException if any of the properties has empty name or value
+   * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function lockProperty(string $property, $value) {
@@ -144,7 +142,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    *
    * @param  array $props properties as `name => value` pairs
    * @return $this for PHP Method Chaining
-   * @throws AttributeException if any of the properties has empty name or value
+   * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function lockProperties(array $props) {
@@ -159,7 +157,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    *
    * @param  null|string|string[] $props optional property/properties to lock
    * @return $this for PHP Method Chaining
-   * @throws AttributeException if any of the properties has empty name or value
+   * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already immutable
    */
   public function protectValue($props = null) {
@@ -179,7 +177,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @param  string $property the name of the property
    * @param  mixed $value the value of the property
    * @return $this for a fluent interface
-   * @throws InvalidAttributeException if the property name or value is invalid
+   * @throws InvalidArgumentException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function setProperty(string $property, $value) {
@@ -208,7 +206,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    *
    * @param  string[] $props new property name value pairs
    * @return $this for PHP Method Chaining
-   * @throws AttributeException if any of the properties has empty name or value
+   * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function setProperties(array $props) {
@@ -336,7 +334,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @param  string $property the name of the property
    * @param  scalar $value the value of the property
    * @return void
-   * @throws InvalidAttributeException if the property name or value is invalid
+   * @throws InvalidArgumentException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function offsetSet($property, $value) {

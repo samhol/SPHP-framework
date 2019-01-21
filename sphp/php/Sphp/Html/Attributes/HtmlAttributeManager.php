@@ -25,7 +25,7 @@ class HtmlAttributeManager extends AttributeManager {
    */
   public function __construct() {
     parent::__construct();
-    $this->getGenerator()
+    $this->getObjectMap()
             ->mapType('class', ClassAttribute::class)
             ->mapType('style', PropertyCollectionAttribute::class)
             ->mapType('id', IdAttribute::class);

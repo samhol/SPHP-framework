@@ -21,7 +21,7 @@ namespace Sphp\Html\Forms\Inputs;
 class InputTag extends AbstractInputTag implements ValidableInput {
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->forceBoolean('required', $required);
+    $this->attributes()->required = $required;
     return $this;
   }
 
