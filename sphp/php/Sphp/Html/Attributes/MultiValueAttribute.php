@@ -13,6 +13,7 @@ namespace Sphp\Html\Attributes;
 use Iterator;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -75,14 +76,20 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @param  mixed $raw the value(s) to parse
    * @param  bool $validate
    * @return string[] separated atomic values in an array
-   * @throws InvalidAttributeException if validation is set and the input is not valid
+   * @throws InvalidArgumentException if validation is set and the input is not valid
    */
   public function parse($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
       $flat = Arrays::flatten($raw);
       foreach ($flat as $item) {
-        $parsed = array_merge($parsed, $this->parseStringToArray($item));
+        if (is_string($item)) {
+          $parsed = array_merge($parsed, $this->parseStringToArray($item));
+        } else if (is_numeric($item)) {
+          $parsed[] = $item;
+        } else {
+          throw new InvalidArgumentException("Invalid atomic value '$item'");
+        }
       }
       //$vals = array_filter($parsed, 'is_string');
     } else if (is_string($raw)) {
@@ -91,7 +98,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
     if ($validate) {
       foreach ($parsed as $value) {
         if (!$this->isValidAtomicValue($value)) {
-          throw new InvalidAttributeException("Invalid attribute value '$value'");
+          throw new InvalidArgumentException("Invalid attribute value '$value'");
         }
       }
     }
@@ -107,7 +114,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   public function isValidAtomicValue($value): bool {
     if ($this->properties['int']) {
       return is_int($value);
-    }    
+    }
     if ($this->properties['int']) {
       return is_int($value);
     }
@@ -161,7 +168,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values);
-    
+
     $this->values = array_merge($this->values, $parsed);
     return $this;
   }

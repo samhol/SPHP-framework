@@ -6,11 +6,11 @@ use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Media\ImageMap\CoordinateAttribute;
 
-class CoordinateAttributeTest1 extends AbstractAttributeObjectTest {
+class CoordinateAttributeTest extends AbstractAttributeObjectTest {
 
   public function basicInvalidValues(): array {
     return [
-        [new \stdClass()],
+        [new \stdClass],
     ];
   }
 
