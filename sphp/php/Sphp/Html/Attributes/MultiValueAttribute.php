@@ -149,7 +149,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * 3. Any numeric value is treated as a string value
    * 4. Stores only a single instance of every value (no duplicates)
    *
-   * @param  scalar|scalar[] $values the values to set
+   * @param  mixed $values the values to set
    * @return $this for a fluent interface
    */
   public function setValue($values) {
