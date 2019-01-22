@@ -28,7 +28,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
   protected function tearDown() {
     $this->attr = null;
   }
-  
+
   public function createAttr(string $name = 'class', array $opts = []): Attribute {
     return new MultiValueAttribute($name, $opts);
   }
@@ -42,8 +42,8 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
   public function basicValidValues(): array {
     return [
         [1, '1'],
-        ["a","a"],
-        ["a b c","a b c"]
+        ['a', 'a'],
+        [' a b  c', 'a b c']
     ];
   }
 
@@ -52,14 +52,11 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    */
   public function emptyData(): array {
     return [
-        [""],
-        [" "],
-        ["  "],
-        ["\n"],
-        ["\n\t\r"],
-        ["\t"],
-        [" \r \n \t "],
-        [[""]],
+        [',,', ['delim' => ',']],
+        [" \r \n \t ", ['delim' => ' ']],
+        [null],
+        [false],
+        [['', 'false' => false, true]],
     ];
   }
 
@@ -67,12 +64,15 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    * 
    * @covers \Sphp\Html\Attributes\MultiValueAttribute::setValue()
    * @dataProvider emptyData
+   * @param mixed $value
+   * @param array $props
    */
-  public function testEmptySetting($value) {
+  public function testEmptySetting($value, array $props = []) {
     //$this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
-    $this->attr->setValue($value);
-    var_dump($this->attr->getValue());
-    $this->assertFalse($this->attr->isProtected());
+    $attribute = $this->createAttr('data-multi-value', $props);
+    $attribute->setValue($value);
+    //var_dump($attribute->getValue());
+    $this->assertFalse($attribute->isProtected());
   }
 
   /**

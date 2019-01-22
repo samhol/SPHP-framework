@@ -125,4 +125,12 @@ class MultiValueParser {
     return $result;
   }
 
+  public function parseArrayToString(array $array): string {
+    $output = '';
+    if (!empty($array)) {
+      $output = implode($this->properties->delim, $array);
+    }
+    return $output;
+  }
+
 }

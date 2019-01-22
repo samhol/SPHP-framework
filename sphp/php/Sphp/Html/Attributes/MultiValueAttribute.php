@@ -95,6 +95,8 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
           $parsed = array_merge($parsed, $this->parseStringToArray($item));
         } else if (is_numeric($item)) {
           $parsed[] = $item;
+        } else if (is_bool($item)) {
+          $parsed[] = (int) $item;
         } else {
           throw new InvalidArgumentException("Invalid atomic value '" . gettype($item) . "'");
         }
@@ -132,7 +134,8 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   }
 
   public function parseStringToArray(string $subject): array {
-    $result = preg_split('/[' . $this->properties->delim . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    $trimmed = trim($subject);
+    $result = preg_split('/[' . $this->properties->delim . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
     }
@@ -265,9 +268,6 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
     $output = null;
     if (!empty($this->values)) {
       $output = implode($this->properties->delim, $this->values);
-      ;
-    } else {
-      $output = $this->isDemanded();
     }
     return $output;
   }
