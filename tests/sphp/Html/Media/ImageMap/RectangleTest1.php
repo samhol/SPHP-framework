@@ -12,7 +12,7 @@ namespace Sphp\Html\Media\ImageMap;
 
 use PHPUnit\Framework\TestCase;
 
-class RectangleTest extends TestCase {
+class RectangleTest1 extends TestCase {
 
   public function testConstructor(): Rectangle {
     $rect = new Rectangle(1, 1, 10, 10, 'default', 'foo/bar', 'Foo Bar');

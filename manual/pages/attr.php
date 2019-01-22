@@ -21,9 +21,16 @@ $attrs->{'data-false'} = false;
 $attrs->coords = '1,2,3,4,5';
 
 echo "\n$attrs";
+$vals = ['1',[9,7000, ['shit']], 2, ' 2', 54, 'foo'];
+$properties = ['type' => 'float', 'length' => 3];
+$properties['delim'] = ',';
+$mvp = new MultiValueParser($properties);
+var_dump($mvp->parseRawArray($vals));
+var_dump($mvp->parseRaw('3,2,5,5,2,342,noob'));
 
+use Sphp\Filters\ArrayFilter;
 
-
-
+$arrFilter = new ArrayFilter;
+$arrFilter->allowThese('foo');
 echo '</pre>';
 

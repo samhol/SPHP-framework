@@ -75,7 +75,7 @@ abstract class AbstractAttributeObjectTest extends TestCase {
     $attribute->setValue($inputValue);
     $this->assertFalse($attribute->isProtected());
     $this->assertFalse($attribute->isDemanded());
-    $this->assertSame($attribute->getValue(), $outputValue);
+    $this->assertSame($outputValue, $attribute->getValue());
   }
 
   /**

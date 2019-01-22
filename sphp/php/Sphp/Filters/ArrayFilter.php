@@ -52,13 +52,13 @@ class ArrayFilter extends AbstractFilter {
    * Constructor
    * 
    * @param mixed[] $definition an array defining the arguments
-   * @param boolean $add_empty
+   * @param boolean $addEmpty
    * @link  http://php.net/manual/en/function.filter-var-array.php filter_var_array
    * @link  http://php.net/manual/en/filter.filters.php Types of filters
    */
-  public function __construct(array $definition = [], bool $add_empty = true) {
+  public function __construct(array $definition = [], bool $addEmpty = true) {
     $this->definition = $definition;
-    $this->addEmpty = $add_empty;
+    $this->addEmpty = $addEmpty;
   }
 
   public function rejectThese(...$value) {

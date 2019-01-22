@@ -37,6 +37,10 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @var boolean
    */
   private $locked = false;
+
+  /**
+   * @var \stdClass
+   */
   private $properties;
 
   /**
@@ -44,9 +48,9 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    *
    * @param string $name the name of the attribute
    */
-  public function __construct(string $name, array $properties = []) {
+  public function __construct(string $name, $properties = null) {
     parent::__construct($name);
-    $this->properties = $properties;
+    $this->parseProperties($properties);
   }
 
   /**
@@ -59,9 +63,13 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
     unset($this->values, $this->locked);
   }
 
-  protected function parseProperties(array $properties = []) {
+  protected function parseProperties($properties) {
+    if ($properties === null) {
+      $properties = [];
+    }
     $this->properties['delim'] = $properties['delim'] ?? ' ';
     $this->properties['type'] = $properties['type'] ?? 'scalar';
+    $this->properties = (object) $this->properties;
   }
 
   /**
@@ -88,12 +96,14 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
         } else if (is_numeric($item)) {
           $parsed[] = $item;
         } else {
-          throw new InvalidArgumentException("Invalid atomic value '$item'");
+          throw new InvalidArgumentException("Invalid atomic value '" . gettype($item) . "'");
         }
       }
       //$vals = array_filter($parsed, 'is_string');
     } else if (is_string($raw)) {
       $parsed = $this->parseStringToArray($raw);
+    } else {
+      throw new InvalidArgumentException('Raw data is invalid');
     }
     if ($validate) {
       foreach ($parsed as $value) {
@@ -112,17 +122,17 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * @return bool true if the value is valid atomic value
    */
   public function isValidAtomicValue($value): bool {
-    if ($this->properties['int']) {
+    if ($this->properties->type === 'int') {
       return is_int($value);
     }
-    if ($this->properties['int']) {
-      return is_int($value);
+    if ($this->properties->type === 'float') {
+      return is_float($value);
     }
     return is_scalar($value);
   }
 
   public function parseStringToArray(string $subject): array {
-    $result = preg_split('/[' . $this->properties['type'] . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    $result = preg_split('/[' . $this->properties->delim . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
     }
@@ -147,7 +157,9 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       throw new ImmutableAttributeException();
     }
     $this->clear();
-    $this->add(func_get_args());
+    if ($values !== null && $values !== false) {
+      $this->add(func_get_args());
+    }
     return $this;
   }
 
@@ -168,7 +180,6 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
       throw new ImmutableAttributeException();
     }
     $parsed = $this->parse($values);
-
     $this->values = array_merge($this->values, $parsed);
     return $this;
   }
@@ -253,10 +264,8 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   public function getValue() {
     $output = null;
     if (!empty($this->values)) {
-      $output = '';
-      foreach ($this->values as $value) {
-        $output .= ' ' . htmlspecialchars($value);
-      }
+      $output = implode($this->properties->delim, $this->values);
+      ;
     } else {
       $output = $this->isDemanded();
     }

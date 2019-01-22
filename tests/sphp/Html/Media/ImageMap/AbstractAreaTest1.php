@@ -12,7 +12,7 @@ namespace Sphp\Html\Media\ImageMap;
 
 use PHPUnit\Framework\TestCase;
 
-class AbstractAreaTest extends TestCase {
+class AbstractAreaTest1 extends TestCase {
 
   public function createArea(string $shape, string $href = null, string $alt = null): AbstractArea {
     $area = $this->getMockBuilder(AbstractArea::class)

@@ -2,12 +2,11 @@
 
 namespace Sphp\Tests\Html\Attributes;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
-class MultiValueAttributeTests extends TestCase {
+class MultiValueAttributeTest extends AbstractAttributeObjectTest {
 
   /**
    * @var MultiValueAttribute 
@@ -37,7 +36,7 @@ class MultiValueAttributeTests extends TestCase {
   /**
    * @return string[]
    */
-  public function emptyData(): array {
+  public function _emptyData(): array {
     return [
         [""],
         [" "],
@@ -55,7 +54,7 @@ class MultiValueAttributeTests extends TestCase {
    * @covers MultiValueAttribute::set()
    * @dataProvider emptyData
    */
-  public function testEmptySetting($value) {
+  public function _testEmptySetting($value) {
     $this->expectException(InvalidAttributeException::class);
     $this->attr->setValue($value);
   }
@@ -64,7 +63,7 @@ class MultiValueAttributeTests extends TestCase {
    * 
    * @return string[]
    */
-  public function scalarData(): array {
+  public function _scalarData(): array {
     return [
         ["", false, false],
         [" ", false, false],
@@ -82,7 +81,7 @@ class MultiValueAttributeTests extends TestCase {
   /**
    * @return string[]
    */
-  public function settingData(): array {
+  public function _settingData(): array {
     return [
         range('a', 'd'),
         ['_-'],
@@ -95,7 +94,7 @@ class MultiValueAttributeTests extends TestCase {
    * @covers MultiValueAttribute::set()
    * @dataProvider settingData
    */
-  public function testSetting($value) {
+  public function _testSetting($value) {
     $this->attr->setValue($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
@@ -109,7 +108,7 @@ class MultiValueAttributeTests extends TestCase {
    * 
    * @return string[]
    */
-  public function lockingData(): array {
+  public function _lockingData(): array {
     return [
         ["c1"],
         [["c1", "c2"]],
@@ -122,7 +121,7 @@ class MultiValueAttributeTests extends TestCase {
    * @covers \Sphp\Html\Attributes\MultiValueAttribute::lock()
    * @dataProvider lockingData
    */
-  public function testLocking($value) {
+  public function _testLocking($value) {
     $this->attr->protectValue($value);
     $this->assertTrue($this->attr->isProtected($value));
     $this->assertTrue($this->attr->isProtected());
@@ -133,7 +132,7 @@ class MultiValueAttributeTests extends TestCase {
    * 
    * @return string[]
    */
-  public function addingData(): array {
+  public function _addingData(): array {
     return [
         ["c1", 'a_1'],
         range('a', 'e'),
@@ -148,7 +147,7 @@ class MultiValueAttributeTests extends TestCase {
    * @param int $num
    * @dataProvider addingData
    */
-  public function testAdding($value) {
+  public function _testAdding($value) {
     $this->attr->add($value);
     $this->assertTrue($this->attr->contains($value));
     $this->assertCount(count($value), $this->attr);
@@ -156,7 +155,7 @@ class MultiValueAttributeTests extends TestCase {
     $this->assertCount(0, $this->attr);
   }
 
-  protected function attrContains(MultiValueAttribute $attr, $values) {
+  protected function _attrContains(MultiValueAttribute $attr, $values) {
     foreach (is_array($values) ? $values : [$values] as $value) {
       $this->assertTrue($attr->contains($value));
     }
@@ -166,7 +165,7 @@ class MultiValueAttributeTests extends TestCase {
    * 
    * @return scalar[]
    */
-  public function clearingData(): array {
+  public function _clearingData(): array {
     return [
         ["c1", "l1", 1],
         ["c1 c2 c2", "li l2", 2],
@@ -183,7 +182,7 @@ class MultiValueAttributeTests extends TestCase {
    * @param string $lock
    * @param int $count
    */
-  public function testClearing($add, $lock, $count) {
+  public function _testClearing($add, $lock, $count) {
     $this->attr->add($add);
     $this->assertTrue($this->attr->isProtected() === false);
     $this->attr->protectValue($lock);
@@ -197,7 +196,7 @@ class MultiValueAttributeTests extends TestCase {
    * 
    * @return scalar[]
    */
-  public function removingData(): array {
+  public function _removingData(): array {
     return [
         ["c1", "", 0],
         ["c1", "l1", 1],
@@ -214,7 +213,7 @@ class MultiValueAttributeTests extends TestCase {
    * @param string $lock
    * @param int $count
    */
-  public function testRemoving() {
+  public function _testRemoving() {
     $this->attr->add("foo", "bar");
     //echo "\n$this->attr\n";
     $this->assertTrue($this->attr->contains("foo", 'bar'));
@@ -227,7 +226,7 @@ class MultiValueAttributeTests extends TestCase {
     //$this->attrs->remove("bar");
   }
 
-  public function lockMethodData(): array {
+  public function _lockMethodData(): array {
     return [
         [1],
         ["a"],
@@ -240,7 +239,7 @@ class MultiValueAttributeTests extends TestCase {
    * @dataProvider lockMethodData
    * @param  scalar $value
    */
-  public function testLockMethod($value) {
+  public function _testLockMethod($value) {
     $attr = $this->createAttr();
     $this->assertFalse($attr->isProtected());
     $attr->protectValue($value);
@@ -251,10 +250,24 @@ class MultiValueAttributeTests extends TestCase {
   /**
    * @covers AbstractAttribute::isDemanded()
    */
-  public function testDemanding() {
+  public function _testDemanding() {
     $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());
+  }
+
+  public function basicInvalidValues(): array {
+    return [
+        [new \stdClass()],
+    ];
+  }
+
+  public function basicValidValues(): array {
+    return [
+        [1, '1'],
+        ["a","a"],
+        ["a b c","a b c"]
+    ];
   }
 
 }
