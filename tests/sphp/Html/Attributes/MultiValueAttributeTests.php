@@ -36,6 +36,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
   public function basicInvalidValues(): array {
     return [
         [new \stdClass()],
+        [['', 1, new \stdClass()]],
     ];
   }
 
@@ -56,7 +57,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
         [" \r \n \t ", ['delim' => ' ']],
         [null],
         [false],
-        [['', 'false' => false, true]],
+        [[' , ', ' ', ' '], ['delim' => ',']],
     ];
   }
 
@@ -72,7 +73,9 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
     $attribute = $this->createAttr('data-multi-value', $props);
     $attribute->setValue($value);
     //var_dump($attribute->getValue());
+    $this->assertNull($attribute->getValue());
     $this->assertFalse($attribute->isProtected());
+    $this->assertSame('', "$attribute");
   }
 
   /**

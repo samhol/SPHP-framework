@@ -152,13 +152,10 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * 3. Any numeric value is treated as a string value
    * 4. Stores only a single instance of every value (no duplicates)
    *
-   * @param  mixed $values the values to set
+   * @param  mixed ...$values the values to set
    * @return $this for a fluent interface
    */
   public function setValue($values) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException();
-    }
     $this->clear();
     if ($values !== null && $values !== false) {
       $this->add(func_get_args());
@@ -235,9 +232,10 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   }
 
   public function clear() {
-    if (!$this->isProtected()) {
-      $this->values = [];
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
+    $this->values = [];
     return $this;
   }
 
@@ -296,19 +294,6 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
     };
     $this->filter($filter);
     return $this;
-  }
-
-  public function getHtml(): string {
-    $output = '';
-    $value = $this->getValue();
-    if ($value !== false) {
-      $output .= $this->getName();
-      if ($value !== true && !Strings::isEmpty($value)) {
-        $strVal = $value;
-        $output .= '="' . htmlspecialchars($strVal, ENT_COMPAT | ENT_HTML5) . '"';
-      }
-    }
-    return $output;
   }
 
   /**
