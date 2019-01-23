@@ -54,6 +54,13 @@ class MultiValueParser {
     // var_dump((object) []);
   }
 
+  /**
+   * Parses a variable to integer value
+   * 
+   * @param  mixed $value
+   * @return int parsed value
+   * @throws InvalidArgumentException if the value cannot be parsed to integer
+   */
   public function parseInt($value): int {
     $validated = filter_var($value, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
     if ($validated === null) {
@@ -63,6 +70,13 @@ class MultiValueParser {
     return $validated;
   }
 
+  /**
+   * Parses a variable to float value
+   * 
+   * @param  mixed $value
+   * @return float parsed value
+   * @throws InvalidArgumentException if the value cannot be parsed to float
+   */
   public function parseFloat($value): float {
     $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
     if ($validated === null) {
@@ -72,6 +86,13 @@ class MultiValueParser {
     return $validated;
   }
 
+  /**
+   * Parses a variable to Boolean value
+   * 
+   * @param  mixed $value
+   * @return bool parsed value
+   * @throws InvalidArgumentException if the value cannot be parsed to Boolean
+   */
   public function parseBoolean($value): bool {
     $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
     if ($validated === null) {
@@ -81,6 +102,13 @@ class MultiValueParser {
     return $validated;
   }
 
+  /**
+   * Parses a variable to string value
+   * 
+   * @param  mixed $value
+   * @return string parsed value
+   * @throws InvalidArgumentException if the value cannot be parsed to string
+   */
   public function parseString($value, string $pattern = null): bool {
     if (!is_string($value)) {
       $value = strval($value);
