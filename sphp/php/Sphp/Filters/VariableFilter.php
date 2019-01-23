@@ -56,7 +56,7 @@ class VariableFilter extends AbstractFilter {
    * 
    * @param string $name
    * @return  DataObject|scalar
-   * @throws InvalidArgumentException if the option name is invelid
+   * @throws InvalidArgumentException if the option name is invalid
    */
   public function __get(string $name) {
     if ($name === 'options') {

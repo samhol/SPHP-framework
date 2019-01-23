@@ -23,6 +23,16 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class MultiValueParser {
 
+  const BOOL = 0b1;
+  const INT = 0b10;
+  const FLOAT = 0b100;
+  const STRING = 0b1000;
+  const NULL = 0b10000;
+  const SCALAR = 0b11110;
+  const ALL = 0b11111;
+  const NUMERIC = 0b110;
+  const STRING_LIKE = 0b1110;
+
   /**
    * @var \stdClass
    */
@@ -31,16 +41,83 @@ class MultiValueParser {
   public function __construct($properties = null) {
     $this->props = new \stdClass;
     if ($properties === null) {
-      $properties = new \stdClass;;
+      $properties = new \stdClass;
+      ;
     } else {
       $properties = (object) $properties;
     }
     $this->props->delim = $properties->delim ?? ' ';
-    $this->props->type = $properties->type ?? 'scalar';
+    $this->props->type = $properties->type ?? self::ALL;
     $this->props->length = (int) $properties->type ?? PHP_INT_MAX;
-   //$this->props->foo = $this->props->foo ?? 'nobody';
-   // var_dump($this->props);
-   // var_dump((object) []);
+    //$this->props->foo = $this->props->foo ?? 'nobody';
+    // var_dump($this->props);
+    // var_dump((object) []);
+  }
+
+  public function parseInt($value): int {
+    $validated = filter_var($value, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+    if ($validated === null) {
+      $message = sprintf('%s cannot be parsed to integer', gettype($value));
+      throw new InvalidArgumentException($message);
+    }
+    return $validated;
+  }
+
+  public function parseFloat($value): float {
+    $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
+    if ($validated === null) {
+      $message = sprintf('%s cannot be parsed to float', gettype($value));
+      throw new InvalidArgumentException($message);
+    }
+    return $validated;
+  }
+
+  public function parseBoolean($value): bool {
+    $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
+    if ($validated === null) {
+      $message = sprintf('%s cannot be parsed to boolean', gettype($value));
+      throw new InvalidArgumentException($message);
+    }
+    return $validated;
+  }
+
+  public function parseString($value, string $pattern = null): bool {
+    if (!is_string($value)) {
+      $value = strval($value);
+    }
+    if ($pattern !== null) {
+      $validated = filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $pattern]]);
+    }
+    if ($validated === null) {
+      $message = sprintf('%s cannot be parsed to boolean', gettype($value));
+      throw new InvalidArgumentException($message);
+    }
+    return $validated;
+  }
+
+  public function manipulateAtomicValue($value) {
+    if ($this->props->type === self::STRING) {
+      return filter_var($value, FILTER_SANITIZE_STRING);
+    } else if ($this->props->type === self::INT) {
+      return $this->parseInt($value);
+    } else if ($this->props->type === self::FLOAT) {
+      return $this->parseFloat($value);
+    } else if ($this->props->type === self::BOOL) {
+      return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    } else if ($this->props->type === self::NUMERIC) {
+      if (!is_numeric($value)) {
+        $message = sprintf('%s(%s) is not numeric value', gettype($value), var_export($value, true));
+        throw new InvalidArgumentException($message);
+      }
+      return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    } else if ($this->props->type === self::SCALAR) {
+      if (!is_scalar($value)) {
+        throw new InvalidArgumentException('öjöjöjööjöjöjöjööjöjöjööj!!');
+      }
+      return $value;
+    } else {
+      return $value;
+    }
   }
 
   /**
@@ -48,17 +125,8 @@ class MultiValueParser {
    * @param  array $raw
    * @return array
    */
-  public function parseRawArray(array $raw): array {
-    $result = [];
-    $flatten = Arrays::flatten($raw);
-    foreach ($flatten as $key => $item) {
-      if (is_array($item)) {
-        $result[$key] = $this->parseRawArray($item);
-      } else {
-        $result[$key] = $this->parseScalar($item);
-      }
-    }
-    return $this->setArrayType(Arrays::flatten($result));
+  public function validateArray(array $raw): array {
+    return $this->setArrayType($raw);
   }
 
   protected function setArrayType(array $parsed) {
@@ -70,7 +138,7 @@ class MultiValueParser {
       }
       return "$raw";
     };
-    return array_map($changer, $parsed);
+    return array_map([$this, 'manipulateAtomicValue'], $parsed);
   }
 
   /**
@@ -88,7 +156,7 @@ class MultiValueParser {
    */
   public function parseRaw($raw): array {
     if (is_array($raw)) {
-      return $this->parseRawArray($raw);
+      return $this->validateArray($raw);
     } else if (is_scalar($raw)) {
       return $this->parseScalar($raw);
     } else {
@@ -112,6 +180,12 @@ class MultiValueParser {
     return is_scalar($value);
   }
 
+  /**
+   * 
+   * @param  type $subject
+   * @return array
+   * @throws InvalidArgumentException
+   */
   public function parseScalar($subject): array {
     $output = [];
     if (is_string($subject)) {
@@ -124,6 +198,12 @@ class MultiValueParser {
     return $this->setArrayType($output);
   }
 
+  /**
+   * 
+   * @param  string $subject
+   * @return array
+   * @throws InvalidArgumentException
+   */
   public function parseStringToArray(string $subject): array {
     $result = preg_split('/[' . $this->props->delim . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
@@ -132,6 +212,11 @@ class MultiValueParser {
     return $result;
   }
 
+  /**
+   * 
+   * @param array $array
+   * @return string
+   */
   public function parseArrayToString(array $array): string {
     $output = '';
     if (!empty($array)) {

@@ -60,7 +60,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->values, $this->locked);
+    unset($this->values, $this->properties);
   }
 
   protected function parseProperties($properties) {
