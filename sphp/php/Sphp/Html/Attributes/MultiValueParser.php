@@ -26,15 +26,21 @@ class MultiValueParser {
   /**
    * @var \stdClass
    */
-  private $properties;
+  private $props;
 
   public function __construct($properties = null) {
+    $this->props = new \stdClass;
     if ($properties === null) {
-      $properties = [];
+      $properties = new \stdClass;;
+    } else {
+      $properties = (object) $properties;
     }
-    $this->properties['delim'] = $properties['delim'] ?? ' ';
-    $this->properties['type'] = $properties['type'] ?? 'scalar';
-    $this->properties = (object) $this->properties;
+    $this->props->delim = $properties->delim ?? ' ';
+    $this->props->type = $properties->type ?? 'scalar';
+    $this->props->length = (int) $properties->type ?? PHP_INT_MAX;
+   //$this->props->foo = $this->props->foo ?? 'nobody';
+   // var_dump($this->props);
+   // var_dump((object) []);
   }
 
   /**
@@ -44,7 +50,8 @@ class MultiValueParser {
    */
   public function parseRawArray(array $raw): array {
     $result = [];
-    foreach ($raw as $key => $item) {
+    $flatten = Arrays::flatten($raw);
+    foreach ($flatten as $key => $item) {
       if (is_array($item)) {
         $result[$key] = $this->parseRawArray($item);
       } else {
@@ -56,9 +63,9 @@ class MultiValueParser {
 
   protected function setArrayType(array $parsed) {
     $changer = function($raw) {
-      if ($this->properties->type === 'int') {
+      if ($this->props->type === 'int') {
         return filter_var($raw, FILTER_VALIDATE_INT);
-      } else if ($this->properties->type === 'float') {
+      } else if ($this->props->type === 'float') {
         return filter_var($raw, FILTER_VALIDATE_FLOAT);
       }
       return "$raw";
@@ -96,10 +103,10 @@ class MultiValueParser {
    * @return bool true if the value is valid atomic value
    */
   public function isValidAtomicValue($value): bool {
-    if ($this->properties->type === 'int') {
+    if ($this->props->type === 'int') {
       return is_int($value);
     }
-    if ($this->properties->type === 'float') {
+    if ($this->props->type === 'float') {
       return is_float($value);
     }
     return is_scalar($value);
@@ -118,7 +125,7 @@ class MultiValueParser {
   }
 
   public function parseStringToArray(string $subject): array {
-    $result = preg_split('/[' . $this->properties->delim . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    $result = preg_split('/[' . $this->props->delim . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       throw new InvalidArgumentException("$subject is shit");
     }
@@ -128,7 +135,7 @@ class MultiValueParser {
   public function parseArrayToString(array $array): string {
     $output = '';
     if (!empty($array)) {
-      $output = implode($this->properties->delim, $array);
+      $output = implode($this->props->delim, $array);
     }
     return $output;
   }
