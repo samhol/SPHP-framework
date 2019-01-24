@@ -19,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class VariableTypeParser {
+abstract class Variables {
 
   /**
    * Parses a variable to integer value
@@ -98,7 +98,7 @@ abstract class VariableTypeParser {
    * @return string parsed value
    * @throws InvalidArgumentException if the value cannot be parsed to string
    */
-  public static function parseString($value, string $pattern = null): bool {
+  public static function parseString($value, string $pattern = null): string {
     if (!is_string($value)) {
       $value = strval($value);
     }

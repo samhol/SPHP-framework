@@ -12,7 +12,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Parsers\VariableTypeParser;
+use Sphp\Stdlib\Parsers\Variables;
 
 /**
  * Description of CssClassParser
@@ -57,19 +57,13 @@ class MultiValueParser {
 
   public function manipulateAtomicValue($value) {
     if ($this->props->type === self::STRING) {
-      return VariableTypeParser::parseString($value);
+      return Variables::parseString($value);
     } else if ($this->props->type === self::INT) {
-      return VariableTypeParser::parseInt($value);
+      return Variables::parseInt($value);
     } else if ($this->props->type === self::FLOAT) {
-      return VariableTypeParser::parseFloat($value);
+      return Variables::parseFloat($value);
     } else if ($this->props->type === self::BOOL) {
-      return VariableTypeParser::parseBoolean($value);
-    } else if ($this->props->type === self::NUMERIC) {
-      if (!is_numeric($value)) {
-        $message = sprintf('%s(%s) is not numeric value', gettype($value), var_export($value, true));
-        throw new InvalidArgumentException($message);
-      }
-      return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+      return Variables::parseBoolean($value);
     } else if ($this->props->type === self::SCALAR) {
       if (!is_scalar($value)) {
         throw new InvalidArgumentException('öjöjöjööjöjöjöjööjöjöjööj!!');
@@ -78,15 +72,6 @@ class MultiValueParser {
     } else {
       return $value;
     }
-  }
-
-  /**
-   * 
-   * @param  array $raw
-   * @return array
-   */
-  public function validateArray(array $raw): array {
-    return $this->setArrayType($raw);
   }
 
   protected function setArrayType(array $parsed) {
@@ -116,28 +101,12 @@ class MultiValueParser {
    */
   public function parseRaw($raw): array {
     if (is_array($raw)) {
-      return $this->validateArray($raw);
+      return $this->setArrayType($raw);
     } else if (is_scalar($raw)) {
       return $this->parseScalar($raw);
     } else {
       throw new InvalidArgumentException('Cannot parse raw value');
     }
-  }
-
-  /**
-   * Validates given atomic value
-   * 
-   * @param  mixed $value an atomic value to validate
-   * @return bool true if the value is valid atomic value
-   */
-  public function isValidAtomicValue($value): bool {
-    if ($this->props->type === 'int') {
-      return is_int($value);
-    }
-    if ($this->props->type === 'float') {
-      return is_float($value);
-    }
-    return is_scalar($value);
   }
 
   /**
@@ -170,6 +139,11 @@ class MultiValueParser {
       throw new InvalidArgumentException("$subject is shit");
     }
     return $result;
+  }
+
+  public function explode(string $string): array {
+    $parts = explode($this->props->delim, $string);
+    $this->setArrayType($parts);
   }
 
   /**

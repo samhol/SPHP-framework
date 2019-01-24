@@ -14,10 +14,10 @@ $properties->type = MultiValueParser::FLOAT;
 $properties->length = 3;
 $properties->delim = ',';
 
-use Sphp\Stdlib\Parsers\VariableTypeParser;
+use Sphp\Stdlib\Parsers\Variables;
 try {
   
-var_dump(VariableTypeParser::parseScalar(new \Sphp\Stdlib\MbString('mbstring')), VariableTypeParser::parseScalar(false), VariableTypeParser::parseScalar(1));
+var_dump(Variables::parseScalar(new \Sphp\Stdlib\MbString('mbstring')), Variables::parseScalar(false), Variables::parseScalar(1));
 } catch (\Exception $ex) {
 echo $ex;
 }
