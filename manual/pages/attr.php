@@ -13,9 +13,17 @@ $properties = new \stdClass();
 $properties->type = MultiValueParser::FLOAT;
 $properties->length = 3;
 $properties->delim = ',';
+
+use Sphp\Stdlib\Parsers\VariableTypeParser;
+try {
+  
+var_dump(VariableTypeParser::parseScalar(new \Sphp\Stdlib\MbString('mbstring')), VariableTypeParser::parseScalar(false), VariableTypeParser::parseScalar(1));
+} catch (\Exception $ex) {
+echo $ex;
+}
 $mvp = new MultiValueParser($properties);
-var_dump($mvp->validateArray($vals));
-var_dump($mvp->parseRaw('3,2,5,5,2,342,noob'));
+//var_dump($mvp->validateArray($vals));
+//var_dump($mvp->parseRaw('3,2,5,5,2,342,noob'));
 
 use Sphp\Filters\ArrayFilter;
 

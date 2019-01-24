@@ -418,7 +418,7 @@ abstract class Strings {
     json_decode($string);
     return (json_last_error() === JSON_ERROR_NONE);
   }
-  
+
   /**
    * Perform a case folding on a string
    *
@@ -467,7 +467,7 @@ abstract class Strings {
     if ($char_max < 1) {
       // Avoid letting users do: random_str($int, 'a'); -> 'aaaaa...'
       throw new LogicException(
-      'random_str - Argument 2 - expected a string that contains at least 2 distinct characters'
+              'random_str - Argument 2 - expected a string that contains at least 2 distinct characters'
       );
     }
     // Now that we have good data, this is the meat of our function:
@@ -527,6 +527,20 @@ abstract class Strings {
   public static function htmlEncode(string $string, int $flags = ENT_COMPAT): string {
     $encoding = mb_detect_encoding($string, 'utf-8');
     return htmlentities($string, $flags, $encoding);
+  }
+
+  /**
+   * 
+   * @param  string $subject
+   * @return array
+   * @throws InvalidArgumentException
+   */
+  public static function explode(string $subject, string $delimeter = ''): array {
+    $result = preg_split('/[' . $delimeter . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      throw new InvalidArgumentException("$subject is shit");
+    }
+    return $result;
   }
 
 }

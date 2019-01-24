@@ -12,6 +12,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Parsers\VariableTypeParser;
 
 /**
  * Description of CssClassParser
@@ -54,84 +55,15 @@ class MultiValueParser {
     // var_dump((object) []);
   }
 
-  /**
-   * Parses a variable to integer value
-   * 
-   * @param  mixed $value
-   * @return int parsed value
-   * @throws InvalidArgumentException if the value cannot be parsed to integer
-   */
-  public function parseInt($value): int {
-    $validated = filter_var($value, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-    if ($validated === null) {
-      $message = sprintf('%s cannot be parsed to integer', gettype($value));
-      throw new InvalidArgumentException($message);
-    }
-    return $validated;
-  }
-
-  /**
-   * Parses a variable to float value
-   * 
-   * @param  mixed $value
-   * @return float parsed value
-   * @throws InvalidArgumentException if the value cannot be parsed to float
-   */
-  public function parseFloat($value): float {
-    $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
-    if ($validated === null) {
-      $message = sprintf('%s cannot be parsed to float', gettype($value));
-      throw new InvalidArgumentException($message);
-    }
-    return $validated;
-  }
-
-  /**
-   * Parses a variable to Boolean value
-   * 
-   * @param  mixed $value
-   * @return bool parsed value
-   * @throws InvalidArgumentException if the value cannot be parsed to Boolean
-   */
-  public function parseBoolean($value): bool {
-    $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
-    if ($validated === null) {
-      $message = sprintf('%s cannot be parsed to boolean', gettype($value));
-      throw new InvalidArgumentException($message);
-    }
-    return $validated;
-  }
-
-  /**
-   * Parses a variable to string value
-   * 
-   * @param  mixed $value
-   * @return string parsed value
-   * @throws InvalidArgumentException if the value cannot be parsed to string
-   */
-  public function parseString($value, string $pattern = null): bool {
-    if (!is_string($value)) {
-      $value = strval($value);
-    }
-    if ($pattern !== null) {
-      $validated = filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $pattern]]);
-    }
-    if ($validated === null) {
-      $message = sprintf('%s cannot be parsed to boolean', gettype($value));
-      throw new InvalidArgumentException($message);
-    }
-    return $validated;
-  }
-
   public function manipulateAtomicValue($value) {
     if ($this->props->type === self::STRING) {
-      return filter_var($value, FILTER_SANITIZE_STRING);
+      return VariableTypeParser::parseString($value);
     } else if ($this->props->type === self::INT) {
-      return $this->parseInt($value);
+      return VariableTypeParser::parseInt($value);
     } else if ($this->props->type === self::FLOAT) {
-      return $this->parseFloat($value);
+      return VariableTypeParser::parseFloat($value);
     } else if ($this->props->type === self::BOOL) {
-      return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+      return VariableTypeParser::parseBoolean($value);
     } else if ($this->props->type === self::NUMERIC) {
       if (!is_numeric($value)) {
         $message = sprintf('%s(%s) is not numeric value', gettype($value), var_export($value, true));

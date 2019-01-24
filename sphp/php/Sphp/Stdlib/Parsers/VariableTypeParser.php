@@ -10,6 +10,8 @@
 
 namespace Sphp\Stdlib\Parsers;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Description of VariableTypeParser
  *
@@ -17,7 +19,7 @@ namespace Sphp\Stdlib\Parsers;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class VariableTypeParser {
+abstract class VariableTypeParser {
 
   /**
    * Parses a variable to integer value
@@ -45,7 +47,11 @@ class VariableTypeParser {
   public static function parseFloat($value): float {
     $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
     if ($validated === null) {
-      $message = sprintf('%s cannot be parsed to float', gettype($value));
+      $type = gettype($value);
+      if (is_scalar($value)) {
+        $type = var_export($value, true);
+      }
+      $message = sprintf('%s cannot be parsed to float', $type);
       throw new InvalidArgumentException($message);
     }
     return $validated;
@@ -65,6 +71,24 @@ class VariableTypeParser {
       throw new InvalidArgumentException($message);
     }
     return $validated;
+  }
+
+  /**
+   * 
+   * @param  mixed $value
+   * @return scalar
+   * @throws InvalidArgumentException if the value cannot be parsed to scalar
+   */
+  public static function parseScalar($value) {
+    if (is_scalar($value)) {
+      $output = $value;
+    } else if (is_object($value) && method_exists($value, '__toString')) {
+      $output = "$value";
+    } else {
+      $message = sprintf('%s type cannot be parsed to scalar', gettype($value));
+      throw new InvalidArgumentException($message);
+    }
+    return $output;
   }
 
   /**
