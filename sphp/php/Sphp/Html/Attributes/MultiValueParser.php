@@ -43,7 +43,6 @@ class MultiValueParser {
     $this->props = new \stdClass;
     if ($properties === null) {
       $properties = new \stdClass;
-      ;
     } else {
       $properties = (object) $properties;
     }
