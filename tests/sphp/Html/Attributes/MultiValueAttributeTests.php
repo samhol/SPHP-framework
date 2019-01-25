@@ -4,7 +4,6 @@ namespace Sphp\Tests\Html\Attributes;
 
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 class MultiValueAttributeTest extends AbstractAttributeObjectTest {
 

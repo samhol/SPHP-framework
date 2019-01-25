@@ -35,6 +35,11 @@ class MultiValueParser {
   const STRING_LIKE = 0b1110;
 
   /**
+   *
+   * @var \Sphp\Validators\CollectionLengthValidator
+   */
+  private $length;
+  /**
    * @var \stdClass
    */
   private $props;
@@ -48,10 +53,12 @@ class MultiValueParser {
     }
     $this->props->delim = $properties->delim ?? ' ';
     $this->props->type = $properties->type ?? self::ALL;
-    $this->props->length = (int) $properties->type ?? PHP_INT_MAX;
-    //$this->props->foo = $this->props->foo ?? 'nobody';
-    // var_dump($this->props);
-    // var_dump((object) []);
+    $this->props->length = $properties->range ?? [];
+    $this->setRange();
+  }
+  
+  public function setRange(int $min = null, int $max = null) {
+    $this->length = new \Sphp\Validators\CollectionLengthValidator($min, $max);
   }
 
   public function manipulateAtomicValue($value) {
@@ -65,7 +72,7 @@ class MultiValueParser {
       return Variables::parseBoolean($value);
     } else if ($this->props->type === self::SCALAR) {
       if (!is_scalar($value)) {
-        throw new InvalidArgumentException('öjöjöjööjöjöjöjööjöjöjööj!!');
+        throw new InvalidArgumentException('!');
       }
       return $value;
     } else {
@@ -73,16 +80,22 @@ class MultiValueParser {
     }
   }
 
-  protected function setArrayType(array $parsed) {
-    $changer = function($raw) {
-      if ($this->props->type === 'int') {
-        return filter_var($raw, FILTER_VALIDATE_INT);
-      } else if ($this->props->type === 'float') {
-        return filter_var($raw, FILTER_VALIDATE_FLOAT);
-      }
-      return "$raw";
-    };
-    return array_map([$this, 'manipulateAtomicValue'], $parsed);
+  protected function validateLength(array $array) {
+    $count = count($array);
+    print_r($this->props->length);
+    if (isset($this->props->length->min) && $count < $this->props->length->min) {
+      throw new InvalidArgumentException("Invalid number of individual values ($count)");
+    }if (isset($this->props->length->max) && $count > $this->props->length->max) {
+      throw new InvalidArgumentException("Invalid number of individual values ($count)");
+    }
+  }
+
+  protected function filterArray(array $parsed): array {
+    $manipulated = array_map([$this, 'manipulateAtomicValue'], $parsed);
+    if (!$this->length->isValid($manipulated)) {
+      throw new InvalidArgumentException('Collection of individual values is not of correct length');
+    }
+    return $manipulated;
   }
 
   /**
@@ -98,9 +111,9 @@ class MultiValueParser {
    * @return array separated unique atomic values in an array
    * @throws InvalidArgumentException if validation is set and the input is not valid
    */
-  public function parseRaw($raw): array {
+  public function filter($raw): array {
     if (is_array($raw)) {
-      return $this->setArrayType($raw);
+      return $this->filterArray($raw);
     } else if (is_scalar($raw)) {
       return $this->parseScalar($raw);
     } else {
@@ -110,7 +123,7 @@ class MultiValueParser {
 
   /**
    * 
-   * @param  type $subject
+   * @param  scalar $subject
    * @return array
    * @throws InvalidArgumentException
    */
@@ -123,7 +136,7 @@ class MultiValueParser {
     } else {
       throw new InvalidArgumentException("$subject is shit");
     }
-    return $this->setArrayType($output);
+    return $this->filterArray($output);
   }
 
   /**
@@ -142,7 +155,7 @@ class MultiValueParser {
 
   public function explode(string $string): array {
     $parts = explode($this->props->delim, $string);
-    $this->setArrayType($parts);
+    $this->filterArray($parts);
   }
 
   /**

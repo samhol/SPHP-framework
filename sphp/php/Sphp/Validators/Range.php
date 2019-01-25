@@ -10,8 +10,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Exceptions\InvalidArgumentException;
-
 /**
  * Validates data against certain numeric range
  *
