@@ -40,7 +40,7 @@ class CollectionLengthValidator extends AbstractValidator {
   private $max;
 
   /**
-   * Constructs a new validator
+   * Constructor
    * 
    * @param int $min the minimum value
    * @param int $max the maximum value
@@ -49,8 +49,8 @@ class CollectionLengthValidator extends AbstractValidator {
   public function __construct(int $min = null, int $max = null) {
     parent::__construct('Array, Countable or Traversable object expected');
     $this->setMin($min)->setMax($max);
-    $this->errors()->setTemplate(static::SMALLER_ERROR, 'Smaller than %d');
-    $this->errors()->setTemplate(static::LARGER_ERROR, 'Larger than %d');
+    $this->errors()->setTemplate(static::SMALLER_ERROR, 'Collection is smaller than %d');
+    $this->errors()->setTemplate(static::LARGER_ERROR, 'Collection is larger than %d');
   }
 
   /**
