@@ -79,19 +79,10 @@ class MultiValueParser {
       return $value;
     }
   }
-
-  protected function validateLength(array $array) {
-    $count = count($array);
-    print_r($this->props->length);
-    if (isset($this->props->length->min) && $count < $this->props->length->min) {
-      throw new InvalidArgumentException("Invalid number of individual values ($count)");
-    }if (isset($this->props->length->max) && $count > $this->props->length->max) {
-      throw new InvalidArgumentException("Invalid number of individual values ($count)");
-    }
-  }
-
+  
   protected function filterArray(array $parsed): array {
-    $manipulated = array_map([$this, 'manipulateAtomicValue'], $parsed);
+    
+    $manipulated = array_map([$this, 'manipulateAtomicValue'], Arrays::flatten($parsed));
     if (!$this->length->isValid($manipulated)) {
       throw new InvalidArgumentException('Collection of individual values is not of correct length');
     }

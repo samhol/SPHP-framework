@@ -21,7 +21,11 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class CssClassParser {
+class CssClassParser implements AttributeValueParser {
+
+  public function __invoke($raw, bool $validate = false): array {
+    return $this->parse($raw, $validate);
+  }
 
   /**
    * Returns an array of unique CSS class values parsed from the input
@@ -32,7 +36,7 @@ class CssClassParser {
    * 2. An array can be be multidimensional
    * 3. Duplicate values are ignored
    *
-   * @param  mixed $raw the value(s) to parse
+   * @param  mixed $raw raw value(s) to parse
    * @param  bool $validate
    * @return string[] separated unique atomic values in an array
    * @throws InvalidArgumentException if validation is set and the input is not valid
@@ -42,11 +46,11 @@ class CssClassParser {
     if (is_array($raw)) {
       $flat = Arrays::flatten($raw);
       foreach ($flat as $item) {
-        $parsed = array_merge($parsed, $this->parse($item));
+        $parsed = array_merge($parsed, $this->parse($item, $validate));
       }
       //$vals = array_filter($parsed, 'is_string');
     } else if (is_scalar($raw)) {
-      $parsed = $this->stringToArray("$raw");
+      $parsed = $this->explode("$raw");
     } else {
       throw new InvalidArgumentException("Invalid attribute value");
     }
@@ -60,7 +64,7 @@ class CssClassParser {
     return $parsed;
   }
 
-  public function stringToArray(string $subject): array {
+  public function explode(string $subject): array {
     $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
@@ -68,11 +72,23 @@ class CssClassParser {
     return $result;
   }
 
+  public function validateCollection(array $value): bool {
+    foreach ($value as $value) {
+      if (!$this->isValidAtomicValue($value)) {
+        throw new InvalidArgumentException("Invalid attribute value '$value'");
+      }
+    }
+  }
+
   public function isValidAtomicValue($value): bool {
     if (!is_string($value)) {
       return false;
     }
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
+  }
+
+  public function implode(array $subject): string {
+    return implode(' ', $subject);
   }
 
 }

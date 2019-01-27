@@ -33,38 +33,6 @@ class Circle extends AbstractArea {
     $this->setCoordinates($x, $y, $radius);
   }
 
-  /**
-   * Sets the radius of the circle region
-   * 
-   * @param  int $radius the radius of the circle
-   * @return $this for a fluent interface
-   */
-  public function setRadius(int $radius) {
-    $this->getCoordinates()->insert(2, $radius);
-    return $this;
-  }
-
-  /**
-   * Sets the x-coordinate of the center of the circle region
-   * 
-   * @param  int $x the x-coordinate of the circle center
-   * @return $this for a fluent interface
-   */
-  public function setX(int $x) {
-    $this->getCoordinates()->insert(0, $x);
-    return $this;
-  }
-
-  /**
-   * Sets the y-coordinate of the center of the circle region
-   * 
-   * @param  int $y the y-coordinate of the circle center
-   * @return $this for a fluent interface
-   */
-  public function setY(int $y) {
-    $this->getCoordinates()->insert(1, $y);
-    return $this;
-  }
 
   /**
    * Sets the coordinates and the size of the circle region
@@ -75,7 +43,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setCoordinates(int $x, int $y, int $radius) {
-    $this->getCoordinates()->setValue($x, $y, $radius);
+    $this->attributes()->coords = [$x, $y, $radius];
     return $this;
   }
 

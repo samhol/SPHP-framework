@@ -18,6 +18,8 @@ use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Media\Icons\Filetype;
 use Sphp\Html\Media\Icons\Icons;
+use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Span;
 
 /**
  * Implements an accordion builder for PHP Example presentation
@@ -150,6 +152,22 @@ class CodeExampleAccordionBuilder implements Content {
     return $accordion;
   }
 
+  public function buildIcons(string $lang, bool $code = false): Span {
+    $span = new Span();
+    $span->addCssClass('icons');
+    if ($lang === 'text') {
+      $langIcon = FA::terminal()->fixedWidth(true);
+    } else {
+      $langIcon = FA::{$lang}()->fixedWidth(true);
+    }
+    $span->append($langIcon);
+    if ($code) {
+      $tag = FA::code()->fixedWidth(true);
+      $span->append($tag);
+    }
+    return $span;
+  }
+
   /**
    * Builds and returns the highlighted output panel
    * 
@@ -167,7 +185,7 @@ class CodeExampleAccordionBuilder implements Content {
       $outputSyntaxPane->useDefaultContentCopyController(true);
       $icon = Filetype::instance()->get($this->outputHl)->fixedWidth(true);
     }
-    $outputSyntaxPane->setPaneTitle($icon . ' ' . $this->titles[self::OUTPUT_TEXT]);
+    $outputSyntaxPane->setPaneTitle($this->buildIcons($this->outputHl, true) . ' ' . $this->titles[self::OUTPUT_TEXT]);
     //$outputSyntaxPane->executeFromFile($this->path, $this->outputHl);
     $outputSyntaxPane->setSource($this->data, $this->outputHl, true);
     return $outputSyntaxPane;
@@ -180,7 +198,8 @@ class CodeExampleAccordionBuilder implements Content {
    */
   public function buildHtmlFlow(): Pane {
     $outputPane = (new Pane())->addCssClass('html-output');
-    $outputPane->setPaneTitle($this->titles[self::HTMLFLOW]);
+    $icon = \Sphp\Html\Media\Icons\FA::html5()->fixedWidth(true);
+    $outputPane->setPaneTitle($icon . ' ' . $this->titles[self::HTMLFLOW]);
     $outputPane->append($this->data);
     return $outputPane;
   }

@@ -27,7 +27,8 @@ class CoordinateAttribute extends MultiValueAttribute {
    */
   public function __construct(string $name, int $length = null) {
     $properties = ['type' => 'int', 'length' => $length, 'delim' => ','];
-    parent::__construct($name, $properties);
+    $p = new \Sphp\Html\Attributes\MultiValueParser($properties);
+    parent::__construct($name, $p);
   }
 
 }
