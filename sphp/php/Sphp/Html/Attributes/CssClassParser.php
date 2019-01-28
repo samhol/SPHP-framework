@@ -23,6 +23,8 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class CssClassParser implements AttributeValueParser {
 
+  private static $instance;
+
   public function __invoke($raw, bool $validate = false): array {
     return $this->parse($raw, $validate);
   }
@@ -89,6 +91,18 @@ class CssClassParser implements AttributeValueParser {
 
   public function implode(array $subject): string {
     return implode(' ', $subject);
+  }
+
+  /**
+   * Returns the singleton instance
+   * 
+   * @return CssClassParser singleton instance
+   */
+  public static function instance(): CssClassParser {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    }
+    return self::$instance;
   }
 
 }

@@ -64,7 +64,6 @@ class FA {
    * @var mixed[]
    */
   private static $tags = array(
-      
       'archive' => 'far fa-file-archive',
       'pdf' => 'far fa-file-pdf',
       'video' => 'far fa-file-video',
@@ -84,7 +83,6 @@ class FA {
       'windows' => 'fab fa-windows',
       'code' => 'far fa-file-code',
       'certificate' => 'fas fa-certificate',
-      
       'html5' => 'fab fa-html5',
       'sass' => 'fab fa-sass',
       'css3' => 'fab fa-css3',
@@ -134,27 +132,20 @@ class FA {
       'digg' => 'fab fa-digg',
       'dropbox' => 'fab fa-dropbox',
       'dribbble' => 'fab fa-dribbble',
+      
+      
+      'eye' => 'far fa-eye',
+      
   );
 
   /**
    * @var Filetype|null singleton instance 
    */
   private static $instance;
+  private $classes = [];
 
-  private function __construct() {
-    
-  }
-
-  /**
-   * Returns the singleton instance
-   * 
-   * @return Icons singleton instance
-   */
-  public static function instance(): Icons {
-    if (self::$instance === null) {
-      self::$instance = new static();
-    }
-    return self::$instance;
+  public function __construct() {
+    $this->classes = [];
   }
 
   /**
@@ -177,7 +168,11 @@ class FA {
    */
   public function __call(string $fileType, array $arguments): FaIcon {
     $screenReaderText = array_shift($arguments);
-    return static::get($fileType, $screenReaderText);
+    $icon = static::get($fileType, $screenReaderText);
+    foreach ($this->classes as $propertyName => $value) {
+      $icon->$propertyName($value);
+    }
+    return $icon;
   }
 
   /**
@@ -211,6 +206,51 @@ class FA {
       $classes = $name;
     }
     return new FaIcon($classes, $screenReaderText);
+  }
+
+  /**
+   * Optionally pulls the icon to left or right
+   * 
+   * @param  string|null $direction the direction of the pull
+   * @return $this for a fluent interface
+   */
+  public function pull(string $direction = null) {
+    $this->classes['pull'] = $direction;
+    return $this;
+  }
+
+  /**
+   * Sets/unsets the width of the icon fixed
+   * 
+   * @param bool $fixedWidth
+   * @return $this for a fluent interface
+   */
+  public function fixedWidth(bool $fixedWidth = true) {
+    $this->classes['fixedWidth'] = $fixedWidth;
+    return $this;
+  }
+
+  /**
+   * Sets the size of the icon
+   * 
+   * @param  string|null $size the size of the icon
+   * @return $this for a fluent interface
+   */
+  public function setSize(string $size = null) {
+    $this->classes['size'] = $size;
+    return $this;
+  }
+
+  /**
+   * Returns the singleton instance
+   * 
+   * @return Icons singleton instance
+   */
+  public static function instance(): Icons {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    }
+    return self::$instance;
   }
 
 }

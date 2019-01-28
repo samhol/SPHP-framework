@@ -152,17 +152,25 @@ class CodeExampleAccordionBuilder implements Content {
     return $accordion;
   }
 
+  /**
+   * 
+   * @param  string $lang
+   * @param  bool $code
+   * @return Span
+   */
   public function buildIcons(string $lang, bool $code = false): Span {
     $span = new Span();
+    $fa = new FA();
+    $fa->fixedWidth(true);
     $span->addCssClass('icons');
     if ($lang === 'text') {
-      $langIcon = FA::terminal()->fixedWidth(true);
+      $langIcon = $fa->terminal();
     } else {
-      $langIcon = FA::{$lang}()->fixedWidth(true);
+      $langIcon = $fa->{$lang}();
     }
     $span->append($langIcon);
     if ($code) {
-      $tag = FA::code()->fixedWidth(true);
+      $tag = $fa->code();
       $span->append($tag);
     }
     return $span;
@@ -214,6 +222,7 @@ class CodeExampleAccordionBuilder implements Content {
     $icon = Filetype::instance()->get('php')->fixedWidth(true);
     $codePane->setPaneTitle($icon . ' ' . $this->titles[self::EXAMPLECODE]);
     $codePane->loadFromFile($this->path);
+    $codePane->addCssClass('code');
     return $codePane;
   }
 

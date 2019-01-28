@@ -19,8 +19,11 @@ $unit: rem-calc(4);
 
     }
     .syntax-pane .accordion-content {
-      overflow: hidden;
-      padding: 0;
+      overflow: auto;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-right: 0px;
+      padding-left: 0px;
       .sphp-syntax-highlighter {
         border: none;
       }
@@ -42,8 +45,8 @@ $unit: rem-calc(4);
       }
       .accordion-content {
         margin-top: rem-calc(2);
-        padding-top: $unit;
-        padding-bottom: $unit;
+       // padding-top: $unit;
+       // padding-bottom: $unit;
         .sphp-syntax-highlighter .button-area button {
           @include border-radius(3px);
           border: solid 1px #333;

@@ -31,7 +31,12 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
    * @var ContainerTag
    */
   private $bar;
-  
+
+  /**
+   * @var Div 
+   */
+  private $div;
+
   /**
    * Constructor
    *
@@ -45,10 +50,10 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
    * @param null|mixed $content the content of the accordion container
    */
   public function __construct($barContent = null, $content = null) {
-    $div = new Div($content);
-    $div->attributes()->demand('data-tab-content');
-    $div->cssClasses()->protectValue('accordion-content');
-    parent::__construct('li', null, $div);
+    $this->div = new Div($content);
+    $this->div->attributes()->demand('data-tab-content');
+    $this->div->cssClasses()->protectValue('accordion-content');
+    parent::__construct('li', null, $this->div);
     $this->bar = (new ContainerTag('a', $barContent));
     $this->bar->cssClasses()->protectValue("accordion-title");
     $this->bar->attributes()->protect('href', '#');
@@ -65,6 +70,10 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     return $this->bar;
   }
 
+  public function getContentContainer(): Div {
+    return $this->div;
+  }
+
   public function setPaneTitle($title) {
     $this->bar->resetContent($title);
     return $this;
@@ -78,7 +87,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     }
     return $this;
   }
-  
+
   public function contentToString(): string {
     return $this->bar->getHtml() . $this->getInnerContainer()->getHtml();
   }

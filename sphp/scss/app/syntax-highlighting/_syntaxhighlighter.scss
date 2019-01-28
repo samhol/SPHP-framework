@@ -24,6 +24,14 @@
         padding: rem-calc(5 10 5 10); /* top right bottom left */
       }
     }
+    .head-area {
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
+      text-align: right;
+      padding: rem-calc(5 10 5 10); /* top right bottom left */
+      background: #eee;
+      border-top: solid 1px #bbb;
+    };
+    
     .foot {
       font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
       text-align: right;
