@@ -10,9 +10,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\ContainerTag;
 use Sphp\Html\Div;
+use Sphp\Html\ContainerComponent;
 
 /**
  * Class AbstractPane
@@ -23,7 +24,7 @@ use Sphp\Html\Div;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractPane extends AbstractContainerComponent implements PaneInterface {
+abstract class AbstractPane extends AbstractComponent implements Pane {
 
   /**
    * The bar component of the pane
@@ -35,48 +36,49 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
   /**
    * @var Div 
    */
-  private $div;
+  private $content;
 
   /**
    * Constructor
-   *
-   * **Important!**
-   *
-   * Parameters `$barContent` and `$content` can be of any type that converts to a PHP
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
-   *
-   * @param null|mixed $barContent the content of the accordion bar
-   * @param null|mixed $content the content of the accordion container
    */
-  public function __construct($barContent = null, $content = null) {
-    $this->div = new Div($content);
-    $this->div->attributes()->demand('data-tab-content');
-    $this->div->cssClasses()->protectValue('accordion-content');
-    parent::__construct('li', null, $this->div);
-    $this->bar = (new ContainerTag('a', $barContent));
-    $this->bar->cssClasses()->protectValue("accordion-title");
-    $this->bar->attributes()->protect('href', '#');
+  public function __construct($bar = null, $content = null) {
+    parent::__construct('li');
     $this->cssClasses()->protectValue('accordion-item');
     $this->attributes()->demand('data-accordion-item');
+    $this->bar = new ContainerTag('a', $bar);
+    $this->bar->cssClasses()->protectValue('accordion-title');
+    $this->bar->attributes()->protect('href', '#');
+    $this->content = new Div($content);
+    $this->content->attributes()->demand('data-tab-content');
+    $this->content->cssClasses()->protectValue('accordion-content');
+  }
+
+  public function __destruct() {
+    unset($this->bar, $this->content);
+    parent::__destruct();
   }
 
   /**
-   * Returns the inner heading component
+   * Returns the inner title area of the accordion pane
    *
-   * @return ContainerTag the inner heading component
+   * @return ContainerComponent the inner title area of the accordion pane
    */
-  public function getBar() {
+  public function getBar(): ContainerComponent {
     return $this->bar;
-  }
-
-  public function getContentContainer(): Div {
-    return $this->div;
   }
 
   public function setPaneTitle($title) {
     $this->bar->resetContent($title);
     return $this;
+  }
+
+  /**
+   * Returns the inner content area of the accordion pane
+   *
+   * @return ContainerComponent the inner title area of the accordion pane
+   */
+  public function getContent(): ContainerComponent {
+    return $this->content;
   }
 
   public function contentVisible(bool $visibility = true) {
@@ -89,7 +91,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
   }
 
   public function contentToString(): string {
-    return $this->bar->getHtml() . $this->getInnerContainer()->getHtml();
+    return $this->bar->getHtml() . $this->content->getHtml();
   }
 
 }

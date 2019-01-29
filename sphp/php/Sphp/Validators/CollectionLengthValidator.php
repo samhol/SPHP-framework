@@ -44,7 +44,6 @@ class CollectionLengthValidator extends AbstractValidator {
    * 
    * @param int $min the minimum value
    * @param int $max the maximum value
-   * @param boolean $inclusive
    */
   public function __construct(int $min = null, int $max = null) {
     parent::__construct('Array, Countable or Traversable object expected');

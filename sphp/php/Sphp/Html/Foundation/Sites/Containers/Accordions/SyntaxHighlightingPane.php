@@ -13,6 +13,8 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
 use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
+use Sphp\Html\Div;
+use Sphp\Html\ContainerTag;
 
 /**
  * Implements an abstract base Pane for a Foundation Accordion
@@ -37,7 +39,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
    * Constructor
    * 
    * @param string $title
-   * @param null|SyntaxHighlighter $hl the inner syntax highlighting component
+   * @param SyntaxHighlighter $hl the inner syntax highlighting component
    */
   public function __construct($title = 'Highlighted code', SyntaxHighlighter $hl = null) {
     if ($hl === null) {
@@ -45,9 +47,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
     }
     $this->hl = $hl;
     $this->hl->setContentCopyController(Button::pushButton('Copy')->setSize('tiny'));
-    // ->setTitle('Copy code to clipboard'));
     parent::__construct($title, $this->hl);
-    $this->addCssClass('syntax-pane');
   }
 
   public function __destruct() {

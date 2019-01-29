@@ -10,10 +10,12 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
+use Sphp\Html\AjaxLoader;
+use Sphp\Html\ContentParser;
 use Sphp\Html\Lists\StandardListItem;
 
 /**
- * Defines a Pane for Foundation Accordion
+ * Implements a Pane for a Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -21,21 +23,23 @@ use Sphp\Html\Lists\StandardListItem;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface PaneInterface extends StandardListItem {
+class ContentPane extends AbstractPane implements AjaxLoader, ContentParser, StandardListItem {
 
-  /**
-   * Sets the title of the accordion pane
-   *
-   * @param  mixed $title the heading content
-   * @return $this for a fluent interface
-   */
-  public function setPaneTitle($title);
+  use \Sphp\Html\ContentParserTrait;
 
-  /**
-   * Sets the visibility of the content after initialization
-   *
-   * @param  boolean $visibility true if the content is visible, false otherwise
-   * @return $this for a fluent interface
-   */
-  public function contentVisible(bool $visibility = true);
+  public function append(...$content) {
+    $this->getContent()->append($content);
+    return $this;
+  }
+
+  public function ajaxAppend(string $url) {
+    $this->getContent()->ajaxAppend($url);
+    return $this;
+  }
+
+  public function ajaxPrepend(string $url) {
+    $this->getContent()->ajaxPrepend($url);
+    return $this;
+  }
+
 }

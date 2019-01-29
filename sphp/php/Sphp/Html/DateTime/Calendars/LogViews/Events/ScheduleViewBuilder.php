@@ -16,7 +16,7 @@ use Sphp\DateTime\Date;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\DateTime\Calendars\LogViews\ViewFactory;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\DateTime\Calendars\Diaries\Schedules\Task;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Flow\Section;

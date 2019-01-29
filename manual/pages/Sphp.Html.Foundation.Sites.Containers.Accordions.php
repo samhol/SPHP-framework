@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Manual;
 
-$paneInterface = Manual\api()->classLinker(PaneInterface::class);
+$paneInterface = Manual\api()->classLinker(Pane::class);
 $accordion = Manual\api()->classLinker(Accordion::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 

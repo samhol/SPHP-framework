@@ -11,7 +11,7 @@
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
 use Sphp\Html\Container;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\DateTime\Calendars\Diaries\Sports\Exercise;
 use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
@@ -36,10 +36,10 @@ class WorkoutPaneBuilder {
    * Builds exercise pane
    * 
    * @param  Exercise $exercise
-   * @return Pane exercise pane
+   * @return ContentPane exercise pane
    */
-  public function buildPane(Exercise $exercise): Pane {
-    $pane = new Pane();
+  public function buildPane(Exercise $exercise): ContentPane {
+    $pane = new ContentPane();
     $pane->setPaneTitle($this->buildTitleContent($exercise));
     $pane->append($this->buildContent($exercise));
     return $pane;

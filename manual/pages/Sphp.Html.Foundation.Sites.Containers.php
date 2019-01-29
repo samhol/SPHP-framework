@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Manual;
 
-$accordion = Manual\api()->classLinker(Accordions\Pane::class);
+$accordion = Manual\api()->classLinker(Accordions\ContentPane::class);
 $accordions = Manual\api()->classLinker(Accordions\Accordion::class);
 $tabs = Manual\api()->classLinker(Tabs\Tabs::class);
 $dropdown = Manual\api()->classLinker(Dropdown::class);

@@ -10,13 +10,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\AjaxLoader;
-use Sphp\Html\ContainerTag;
-use Sphp\Html\Div;
+use Sphp\Html\Component;
+use Sphp\Html\ContainerComponent;
 
 /**
- * Implements a Pane for a Foundation Accordion
+ * Defines a Pane for Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -24,74 +22,35 @@ use Sphp\Html\Div;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoader {
+interface Pane extends Component {
 
   /**
-   * The title component of the pane
+   * Sets the title of the accordion pane
    *
-   * @var ContainerTag
+   * @param  mixed $title the heading content
+   * @return $this for a fluent interface
    */
-  private $bar;
+  public function setPaneTitle($title);
 
   /**
-   * Constructor
+   * Sets the visibility of the content after initialization
    *
-   * **Important!**
-   *
-   * Parameters `$title` and `$content` can be of any type that converts to a PHP
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
-   *
-   * @param null|mixed $title the content of the pane title
-   * @param null|mixed $content the content of the actual pane
+   * @param  boolean $visibility true if the content is visible, false otherwise
+   * @return $this for a fluent interface
    */
-  public function __construct($title = null, $content = null) {
-    $div = new Div($content);
-    $div->attributes()->demand('data-tab-content');
-    $div->cssClasses()->protectValue('accordion-content');
-    parent::__construct('li', null, $div);
-    $this->bar = (new ContainerTag('a', $title));
-    $this->bar->cssClasses()->protectValue('accordion-title');
-    $this->bar->attributes()->protect('href', '#');
-    $this->cssClasses()->protectValue('accordion-item');
-    $this->attributes()->demand('data-accordion-item');
-  }
+  public function contentVisible(bool $visibility = true);
 
   /**
    * Returns the inner title area of the accordion pane
    *
-   * @return ContainerTag the inner title area of the accordion pane
+   * @return ContainerComponent the inner title area of the accordion pane
    */
-  public function getBar() {
-    return $this->bar;
-  }
+  public function getBar(): ContainerComponent;
 
-  public function setPaneTitle($title) {
-    $this->bar->resetContent($title);
-    return $this;
-  }
-
-  public function contentVisible(bool $visibility = true) {
-    if ($visibility) {
-      $this->addCssClass('is-active');
-    } else {
-      $this->removeCssClass('is-active');
-    }
-    return $this;
-  }
-
-  public function contentToString(): string {
-    return $this->bar->getHtml() . parent::contentToString();
-  }
-
-  public function ajaxAppend(string $url) {
-    $this->getInnerContainer()->ajaxAppend($url);
-    return $this;
-  }
-
-  public function ajaxPrepend(string $url) {
-    $this->getInnerContainer()->ajaxPrepend($url);
-    return $this;
-  }
-
+  /**
+   * Returns the inner content area of the accordion pane
+   *
+   * @return ContainerComponent the inner content area of the accordion pane
+   */
+  public function getContent(): ContainerComponent;
 }

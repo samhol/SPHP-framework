@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 $hyperlinkIfLink = \Sphp\Manual\api()->classLinker(HyperlinkInterface::class);
@@ -29,4 +28,4 @@ $navExamples = (new BlockGrid(['small-up-1', 'medium-up-2', 'large-up-3']))
         ->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu.php')
         ->printHtml();
 
-SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu.php');
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu.php');

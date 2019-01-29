@@ -31,7 +31,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
   /**
    * Constructor
    *
-   * @param null|Pane|Pane[] $content the value of the target attribute
+   * @param null|ContentPane|ContentPane[] $content the value of the target attribute
    */
   public function __construct($content = null) {
     parent::__construct('ul');
@@ -47,10 +47,10 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
   /**
    * Prepends a pane component into the accordion
    * 
-   * @param  PaneInterface $pane added component
+   * @param  Pane $pane added component
    * @return $this for a fluent interface
    */
-  public function prepend(PaneInterface $pane) {
+  public function prepend(Pane $pane) {
     $this->getInnerContainer()->prepend($pane);
     return $this;
   }
@@ -63,17 +63,17 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @return $this for a fluent interface
    */
   public function prependPane($title, $content) {
-    $this->getInnerContainer()->prepend(new Pane($title, $content));
+    $this->getInnerContainer()->prepend(new ContentPane($title, $content));
     return $this;
   }
 
   /**
    * Appends a pane component into the accordion
    * 
-   * @param  PaneInterface $pane added pane component
+   * @param  Pane $pane added pane component
    * @return $this for a fluent interface
    */
-  public function append(PaneInterface $pane) {
+  public function append(Pane $pane) {
     $this->getInnerContainer()->append($pane);
     return $this;
   }
@@ -86,7 +86,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @return $this for a fluent interface
    */
   public function appendPane($title, $content) {
-    $this->getInnerContainer()->append(new Pane($title, $content));
+    $this->getInnerContainer()->append(new ContentPane($title, $content));
     return $this;
   }
 

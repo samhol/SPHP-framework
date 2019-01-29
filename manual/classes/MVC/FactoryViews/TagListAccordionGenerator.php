@@ -8,7 +8,7 @@
 namespace Sphp\Manual\MVC\FactoryViews;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\Html\Content;
 
 /**
@@ -37,7 +37,7 @@ class TagListAccordionGenerator implements Content {
             ->allowMultiExpand(true)
             ->addCssClass('sphp');
     foreach ($this->data as $val) {
-      $accordions->append(new Pane($val->getName(), new TagGroupTable($val)));
+      $accordions->append(new ContentPane($val->getName(), new TagGroupTable($val)));
     }
     return $accordions->getHtml();
   }

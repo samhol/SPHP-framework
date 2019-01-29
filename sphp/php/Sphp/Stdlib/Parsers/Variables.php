@@ -95,6 +95,7 @@ abstract class Variables {
    * Parses a variable to string value
    * 
    * @param  mixed $value
+   * @param  string $pattern
    * @return string parsed value
    * @throws InvalidArgumentException if the value cannot be parsed to string
    */

@@ -529,18 +529,4 @@ abstract class Strings {
     return htmlentities($string, $flags, $encoding);
   }
 
-  /**
-   * 
-   * @param  string $subject
-   * @return array
-   * @throws InvalidArgumentException
-   */
-  public static function explode(string $subject, string $delimeter = ''): array {
-    $result = preg_split('/[' . $delimeter . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
-    if (!$result) {
-      throw new InvalidArgumentException("$subject is shit");
-    }
-    return $result;
-  }
-
 }

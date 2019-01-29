@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -19,10 +18,10 @@ MD
 echo '<div class="wrapper">';
 include 'Sphp/Html/Foundation/Sites/Media/OrbitSlide.php';
 echo "</div>";
-SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Media/OrbitSlide.php');
+Manual\example('Sphp/Html/Foundation/Sites/Media/OrbitSlide.php', null, false)->printHtml();
 
 echo '<div class="wrapper" style="width: ">';
 include 'Sphp/Html/Foundation/Sites/Media/Orbit-Video.php';
 echo "</div>";
-SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Media/Orbit-Video.php');
+Manual\example('Sphp/Html/Foundation/Sites/Media/Orbit-Video.php', null, false)->printHtml();
 

@@ -13,7 +13,7 @@ namespace Sphp\Html\Apps\Syntaxhighlighting;
 use Sphp\Html\Content;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Media\Icons\Filetype;
@@ -202,10 +202,10 @@ class CodeExampleAccordionBuilder implements Content {
   /**
    * Builds the HTML flow panel
    * 
-   * @return Pane new instance of the HTML flow panel
+   * @return ContentPane new instance of the HTML flow panel
    */
-  public function buildHtmlFlow(): Pane {
-    $outputPane = (new Pane())->addCssClass('html-output');
+  public function buildHtmlFlow(): ContentPane {
+    $outputPane = (new ContentPane())->addCssClass('html-output');
     $icon = \Sphp\Html\Media\Icons\FA::html5()->fixedWidth(true);
     $outputPane->setPaneTitle($icon . ' ' . $this->titles[self::HTMLFLOW]);
     $outputPane->append($this->data);
@@ -218,7 +218,7 @@ class CodeExampleAccordionBuilder implements Content {
    * @return SyntaxHighlightingPane new instance of the code panel
    */
   public function buildCodePane(): SyntaxHighlightingPane {
-    $codePane = (new SyntaxHighlightingPane());
+    $codePane = new SyntaxHighlightingPane();
     $icon = Filetype::instance()->get('php')->fixedWidth(true);
     $codePane->setPaneTitle($icon . ' ' . $this->titles[self::EXAMPLECODE]);
     $codePane->loadFromFile($this->path);
