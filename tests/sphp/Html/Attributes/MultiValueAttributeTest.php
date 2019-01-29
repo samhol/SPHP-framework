@@ -4,7 +4,7 @@ namespace Sphp\Tests\Html\Attributes;
 
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
-
+use Sphp\Html\Attributes\MultiValueParser;
 class MultiValueAttributeTest extends AbstractAttributeObjectTest {
 
   /**
@@ -28,7 +28,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
     $this->attr = null;
   }
 
-  public function createAttr(string $name = 'class', array $opts = []): Attribute {
+  public function createAttr(string $name = 'class', MultiValueParser $opts = null): Attribute {
     return new MultiValueAttribute($name, $opts);
   }
 
@@ -43,7 +43,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
     return [
         [1, '1'],
         ['a', 'a'],
-        [' a b  c', 'a b c']
+        ['a b c', 'a b c']
     ];
   }
 
@@ -52,11 +52,9 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    */
   public function emptyData(): array {
     return [
-        [',,', ['delim' => ',']],
         [" \r \n \t ", ['delim' => ' ']],
         [null],
         [false],
-        [[' , ', ' ', ' '], ['delim' => ',']],
     ];
   }
 
@@ -69,7 +67,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    */
   public function testEmptySetting($value, array $props = []) {
     //$this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
-    $attribute = $this->createAttr('data-multi-value', $props);
+    $attribute = $this->createAttr('data-multi-value', (new MultiValueParser($props)));
     $attribute->setValue($value);
     //var_dump($attribute->getValue());
     $this->assertNull($attribute->getValue());

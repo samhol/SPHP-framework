@@ -39,6 +39,7 @@ class MultiValueParser {
    * @var \Sphp\Validators\CollectionLengthValidator
    */
   private $length;
+
   /**
    * @var \stdClass
    */
@@ -56,7 +57,7 @@ class MultiValueParser {
     $this->props->length = $properties->range ?? [];
     $this->setRange();
   }
-  
+
   public function setRange(int $min = null, int $max = null) {
     $this->length = new \Sphp\Validators\CollectionLengthValidator($min, $max);
   }
@@ -79,9 +80,9 @@ class MultiValueParser {
       return $value;
     }
   }
-  
+
   protected function filterArray(array $parsed): array {
-    
+
     $manipulated = array_map([$this, 'manipulateAtomicValue'], Arrays::flatten($parsed));
     if (!$this->length->isValid($manipulated)) {
       throw new InvalidArgumentException('Collection of individual values is not of correct length');
@@ -137,11 +138,12 @@ class MultiValueParser {
    * @throws InvalidArgumentException
    */
   public function parseStringToArray(string $subject): array {
-    $result = preg_split('/[' . $this->props->delim . ']+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    $trimmed = trim($subject);
+    $result = preg_split('/[' . $this->props->delim . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       throw new InvalidArgumentException("$subject is shit");
     }
-    return $result;
+    return array_map('trim', $result);
   }
 
   public function explode(string $string): array {
