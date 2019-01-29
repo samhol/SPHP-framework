@@ -40,6 +40,9 @@ abstract class AbstractPane extends AbstractComponent implements Pane {
 
   /**
    * Constructor
+   * 
+   * @param mixed $bar
+   * @param mixed $content
    */
   public function __construct($bar = null, $content = null) {
     parent::__construct('li');

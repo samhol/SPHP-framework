@@ -27,6 +27,12 @@ class ContentPane extends AbstractPane implements AjaxLoader, ContentParser, Sta
 
   use \Sphp\Html\ContentParserTrait;
 
+  /**
+   * Appends a new value as the last element
+   *
+   * @param  mixed,... $value element
+   * @return $this for a fluent interface
+   */
   public function append(...$content) {
     $this->getContent()->append($content);
     return $this;
