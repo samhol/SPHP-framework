@@ -68,6 +68,13 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    *
    * @var Div 
    */
+  private $head;
+
+  /**
+   * footer component
+   *
+   * @var Div 
+   */
   private $footer;
 
   /**
@@ -84,8 +91,9 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     $this->initGeshi();
     $this->setSyntaxBlockId();
     $footerText = 'Highlighted with <strong>GeSHi ' . $this->geshi->get_version() . '</strong>';
-    $this->footer = (new Div($footerText))->addCssClass("foot");
     $this->buttonArea = (new Div())->addCssClass('button-area');
+    $this->head = (new Div($this->buttonArea))->addCssClass('head-area');
+    $this->footer = (new Div($footerText))->addCssClass('foot-area');
     $this->showLineNumbers(true)
             ->useFooter()
             ->setContentCopyController();
@@ -114,8 +122,9 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
   }
 
   public function contentToString(): string {
-    $output = $this->geshi->parse_code();
-    $output .= $this->buttonArea . $this->footer;
+    $output = $this->head;
+    $output .= $this->geshi->parse_code();
+    $output .= $this->footer;
     return $output;
   }
 
@@ -138,7 +147,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
   }
 
   /**
-   * Sets the linenumber visibility
+   * Sets the line number visibility
    * 
    * @param  boolean $show true for visible line numbers and false otherwise
    * @return $this for a fluent interface
@@ -178,12 +187,12 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     return $this;
   }
 
-  public function setContentCopyController($button = 'Copy'): ContentCopyController {
+  public function setContentCopyController($button = '<i class="far fa-copy"></i>'): ContentCopyController {
     if (!$button instanceof Component) {
       $button = new Button($button);
     }
     $this->copyBtn = $this->attachContentCopyController($button);
-    $this->buttonArea['copy'] = $this->copyBtn;
+    $this->head['copy'] = $this->copyBtn;
     return $this->copyBtn;
   }
 

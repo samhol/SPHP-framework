@@ -46,8 +46,9 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
       $hl = new GeSHiSyntaxHighlighter();
     }
     $this->hl = $hl;
-    $this->hl->setContentCopyController(Button::pushButton('Copy')->setSize('tiny'));
+    $this->hl->setContentCopyController(Button::pushButton('<i class="far fa-copy"></i>')->setSize('tiny'));
     parent::__construct($title, $this->hl);
+    $this->cssClasses()->protectValue('syntax-highlighting-pane');
   }
 
   public function __destruct() {

@@ -1,10 +1,11 @@
 /**
- * _f6-manual-accordion (UTF-8)
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-$unit: rem-calc(4);
 @mixin sphp-code-example-accordion() { 
   .sphp.code-example.accordion {
     //border: none;
@@ -18,8 +19,9 @@ $unit: rem-calc(4);
       }
 
     }
-    .syntax-pane .accordion-content {
+    .syntax-highlighting-pane .accordion-content {
       overflow: auto;
+      padding: 0 !important;
       padding-top: 0px;
       padding-bottom: 0px;
       padding-right: 0px;
@@ -29,24 +31,8 @@ $unit: rem-calc(4);
       }
     }
     .accordion-item {
-      &:not(:first-child) {
-       // margin-top: rem-calc(2);
-      }
-
-      .accordion-title, .accordion-content {
-        //@include accordion-title;
-       // border: solid 1px #444;
-       // @include border-radius($unit);
-        //overflow: hidden;
-      }
-      .accordion-title {
-       // font-size: rem-calc(16);
-        //font-weight: bold;  
-      }
       .accordion-content {
         margin-top: rem-calc(2);
-       // padding-top: $unit;
-       // padding-bottom: $unit;
         .sphp-syntax-highlighter .button-area button {
           @include border-radius(3px);
           border: solid 1px #333;
