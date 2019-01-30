@@ -16,7 +16,7 @@ use IteratorAggregate;
 class CollectionLengthTest extends TestCase {
 
   /**
-   * @var CollectionLengthValidator
+   * @var CollectionLength
    */
   protected $validator;
 
@@ -25,7 +25,7 @@ class CollectionLengthTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->validator = new CollectionLengthValidator(1, 5);
+    $this->validator = new CollectionLength(1, 5);
   }
 
   /**
@@ -68,7 +68,7 @@ class CollectionLengthTest extends TestCase {
   public function testTooSmall($data) {
     $this->validator->setMin(3)->setMax(4);
     $this->assertFalse($this->validator->isValid($data));
-    $expected = vsprintf($this->validator->errors()->getTemplate(CollectionLengthValidator::SMALLER_ERROR), 3);
+    $expected = vsprintf($this->validator->errors()->getTemplate(CollectionLength::SMALLER_ERROR), 3);
     $errors = $this->validator->errors()->toArray();
     $this->assertContains($expected, $errors);
   }
@@ -87,7 +87,7 @@ class CollectionLengthTest extends TestCase {
   public function testTooLarge($data) {
     $this->validator->setMin(1)->setMax(4);
     $this->assertFalse($this->validator->isValid($data));
-    $expected = vsprintf($this->validator->errors()->getTemplate(CollectionLengthValidator::LARGER_ERROR), 4);
+    $expected = vsprintf($this->validator->errors()->getTemplate(CollectionLength::LARGER_ERROR), 4);
     $errors = $this->validator->errors()->toArray();
     $this->assertContains($expected, $errors);
   }
@@ -107,7 +107,7 @@ class CollectionLengthTest extends TestCase {
    */
   public function testInvalidType($data) {
     $this->assertFalse($this->validator->isValid($data));
-    $expected = $this->validator->errors()->getTemplate(CollectionLengthValidator::INVALID);
+    $expected = $this->validator->errors()->getTemplate(CollectionLength::INVALID);
     $errors = $this->validator->errors()->toArray();
     $this->assertContains($expected, $errors);
   }

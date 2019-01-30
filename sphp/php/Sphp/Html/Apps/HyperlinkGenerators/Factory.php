@@ -51,9 +51,9 @@ class Factory {
   private static $w3schools;
 
   /**
+   * Returns a instance
    * 
    * @param  string $path
-   * @param  string|null $target
    * @return ApiGen singleton API linker
    */
   public static function sami(string $path = 'API/sami/'): Sami {
@@ -71,7 +71,6 @@ class Factory {
    * Returns a singleton instance of ApiGen API linker
    * 
    * @param  string $path
-   * @param  string|null $target
    * @return ApiGen singleton API linker
    */
   public static function apigen(string $path = null): ApiGen {
@@ -105,7 +104,7 @@ class Factory {
    * 
    * @return FoundationDocsLinker singleton API linker
    */
-  public static function foundation() {
+  public static function foundation(): FoundationDocsLinker {
     if (self::$foundation === null) {
       self::$foundation = new FoundationDocsLinker();
     }

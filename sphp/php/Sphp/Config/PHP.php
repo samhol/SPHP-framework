@@ -58,6 +58,7 @@ abstract class PHP {
    * Sets a named PHP INI configuration instance
    * 
    * @param  string $name the name of the instance
+   * @param  Ini $ini
    * @return Ini the PHP INI configuration instance stored
    */
   public static function storeIni(string $name, Ini $ini): Ini {

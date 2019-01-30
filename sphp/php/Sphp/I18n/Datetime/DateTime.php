@@ -36,9 +36,9 @@ class DateTime {
   private $fmt;
 
   /**
+   * Constructor
    * 
    * @param DateTimeInterface|null $dateTime
-   * @param string $lang optional name of the language used for translations
    */
   public function __construct(DateTimeInterface $dateTime = null) {
     if ($dateTime === null) {
@@ -116,7 +116,7 @@ class DateTime {
   /**
    * ICU stands for: International Components for Unicode
    * 
-   * @param string $format
+   * @param  string $format
    * @param  string $lang optional name of the language used for translations
    * @return string
    * @link   http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax Internationalization patterns
@@ -214,7 +214,7 @@ class DateTime {
    * @param  DateTimeZone $timezone
    * @return DateTime new instance 
    */
-  public static function fromTimestamp(int $timestamp, DateTimeZone $timezone = null) {
+  public static function fromTimestamp(int $timestamp, DateTimeZone $timezone = null): DateTime {
     return new static(new PHPDateTime("@$timestamp"), $timezone);
   }
 
@@ -232,8 +232,9 @@ class DateTime {
    * 
    * **NOTE:** If time zone is omitted and time contains no time zone, the current time zone will be used.
    * 
-   * @param  string $time the format that the passed in string should be in
-   * @param  DateTimeZone $timezone 
+   * @param  string $format
+   * @param  string $time
+   * @param  DateTimeZone $timezone
    * @return DateTime new instance 
    * @link   http://php.net/manual/en/datetime.createfromformat.php#refsect1-datetime.createfromformat-parameters
    */

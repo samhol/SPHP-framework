@@ -34,10 +34,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
    * Constructor
    *
    * @param string $class class name or object
-   * @param string $root the base URL pointing to the documentation
-   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
-   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
-   * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
+   * @param ApiUrlGeneratorInterface $pathParser
    */
   public function __construct(string $class, ApiUrlGeneratorInterface $pathParser) {
     parent::__construct($pathParser);

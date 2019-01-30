@@ -100,11 +100,10 @@ abstract class Variables {
    * @throws InvalidArgumentException if the value cannot be parsed to string
    */
   public static function parseString($value, string $pattern = null): string {
-    if (!is_string($value)) {
-      $value = strval($value);
-    }
     if ($pattern !== null) {
       $validated = filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $pattern]]);
+    } else {
+      $validated = $value;
     }
     if ($validated === null) {
       $message = sprintf('%s cannot be parsed to boolean', gettype($value));

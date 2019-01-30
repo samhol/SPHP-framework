@@ -11,7 +11,7 @@
 namespace Sphp\Exceptions;
 
 /**
- * Description of NullPointerException
+ * Exception thrown when an application attempts to use an object reference that has the null value
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

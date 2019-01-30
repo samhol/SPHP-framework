@@ -40,7 +40,7 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Constructor
    *
-   * @param UrlGeneratorInterface $urlGenerator the url pointing to the API documentation
+   * @param UrlGeneratorInterface $urlGenerator the URL pointing to the API documentation
    */
   public function __construct(UrlGeneratorInterface $urlGenerator) {
     $this->urlGenerator = $urlGenerator;

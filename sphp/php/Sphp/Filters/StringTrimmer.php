@@ -83,20 +83,22 @@ class StringTrimmer extends AbstractFilter {
   }
 
   /**
+   * Creates a new instance that does left trimming
    * 
    * @param  string $charmask
-   * @return self new instance that does left trimming
+   * @return StringTrimmer new instance that does left trimming
    */
-  public static function leftTrimmer($charmask) {
+  public static function leftTrimmer($charmask): StringTrimmer {
     return new static($charmask, true, false);
   }
 
   /**
+   * Creates a new instance that does right trimming
    * 
    * @param  string $charmask
-   * @return self new instance that does right trimming
+   * @return StringTrimmer new instance that does right trimming
    */
-  public static function rightTrimmer($charmask) {
+  public static function rightTrimmer($charmask): StringTrimmer {
     return new static($charmask, false, true);
   }
 

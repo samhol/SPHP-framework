@@ -91,7 +91,6 @@ class PHPManual extends AbstractPhpApiLinker {
    * Returns a hyperlink object pointing to the PHP control structure in the PHP documentation
    *
    * @param  string $controlName the name of the PHP control structure (case insensitive)
-   * @param  string $linkText the text of the link
    * @return Hyperlink hyperlink object pointing to the PHP control structure in the PHP
    *         documentation
    */

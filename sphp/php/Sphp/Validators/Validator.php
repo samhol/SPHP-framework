@@ -11,7 +11,7 @@
 namespace Sphp\Validators;
 
 /**
- * The base interface for all validators
+ * The base interface for a validator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -38,4 +38,11 @@ interface Validator {
    * @return string[] error messages
    */
   public function errors(): ErrorMessages;
+
+  /**
+   * Returns error messages
+   *
+   * @return string[] error messages
+   */
+  public function errorsToArray(): array;
 }

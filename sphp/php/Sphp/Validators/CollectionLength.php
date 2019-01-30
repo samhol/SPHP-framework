@@ -11,13 +11,13 @@
 namespace Sphp\Validators;
 
 /**
- * Description of CollectionLengthValidator
+ * Validates collection length
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CollectionLengthValidator extends AbstractValidator {
+class CollectionLength extends AbstractValidator {
 
   /**
    * `ID` for error message describing values not matching an inclusive limit

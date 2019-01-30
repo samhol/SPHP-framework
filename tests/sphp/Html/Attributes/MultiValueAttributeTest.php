@@ -5,6 +5,7 @@ namespace Sphp\Tests\Html\Attributes;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\MultiValueParser;
+
 class MultiValueAttributeTest extends AbstractAttributeObjectTest {
 
   /**
@@ -28,6 +29,11 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
     $this->attr = null;
   }
 
+  /**
+   * @param  string $name
+   * @param  MultiValueParser $opts
+   * @return Attribute
+   */
   public function createAttr(string $name = 'class', MultiValueParser $opts = null): Attribute {
     return new MultiValueAttribute($name, $opts);
   }
@@ -106,8 +112,6 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
   }
 
   /**
-   * 
-   * @covers MultiValueAttribute::set()
    * @dataProvider settingData
    */
   public function _testSetting($value) {
@@ -267,6 +271,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    * @covers AbstractAttribute::isDemanded()
    */
   public function _testDemanding() {
+
     $this->attr->forceVisibility();
     $this->assertTrue($this->attr->isDemanded());
     $this->assertEquals("$this->attr", $this->attr->getName());

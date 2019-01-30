@@ -65,7 +65,7 @@ class Track extends EmptyTag implements MultimediaSource {
   /**
    * Checks whether the option is enabled or not
    * 
-   * @param  boolean true if the track is default, otherwise false
+   * @return boolean true if the track is default, otherwise false
    */
   public function isDefault(): bool {
     return $this->attributeExists('default');
@@ -89,7 +89,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function getSrc(): string {
-    return $this->getAttribute('src');
+    return (string) $this->getAttribute('src');
   }
 
   /**

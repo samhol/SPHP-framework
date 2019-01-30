@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -42,7 +42,7 @@ interface Attribute {
    *
    * @param  mixed $value value to set
    * @return $this for a fluent interface
-   * @throws AttributeException if the attribute value is invalid for the type of the attribute
+   * @throws InvalidArgumentException if the attribute value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function setValue($value);
@@ -59,7 +59,7 @@ interface Attribute {
    *
    * @param  scalar $value the value to lock to the attribute
    * @return $this for a fluent interface
-   * @throws AttributeException if the attribute value is invalid for the type of the attribute
+   * @throws InvalidArgumentException if the attribute value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function protectValue($value);

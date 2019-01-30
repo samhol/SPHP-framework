@@ -74,6 +74,12 @@ class CssClassParser implements AttributeValueParser {
     return $result;
   }
 
+  /**
+   * 
+   * @param array $value
+   * @return bool
+   * @throws InvalidArgumentException
+   */
   public function validateCollection(array $value): bool {
     foreach ($value as $value) {
       if (!$this->isValidAtomicValue($value)) {

@@ -30,6 +30,10 @@ class Circle extends AbstractArea {
    */
   public function __construct(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) {
     parent::__construct('circle', $href, $alt);
+    $parser = new \Sphp\Html\Attributes\MultiValueParser();
+    $parser->setRange(3,3);
+    $coords = new \Sphp\Html\Attributes\MultiValueAttribute('coords', $parser);
+    $this->attributes()->setInstance($coords);
     $this->setCoordinates($x, $y, $radius);
   }
 

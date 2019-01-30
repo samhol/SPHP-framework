@@ -13,6 +13,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Parsers\Variables;
+use Sphp\Validators\CollectionLength;
 
 /**
  * Description of CssClassParser
@@ -24,70 +25,58 @@ use Sphp\Stdlib\Parsers\Variables;
  */
 class MultiValueParser {
 
-  const BOOL = 0b1;
-  const INT = 0b10;
-  const FLOAT = 0b100;
-  const STRING = 0b1000;
-  const NULL = 0b10000;
-  const SCALAR = 0b11110;
-  const ALL = 0b11111;
-  const NUMERIC = 0b110;
-  const STRING_LIKE = 0b1110;
-
   /**
-   *
-   * @var \Sphp\Validators\CollectionLengthValidator
+   * @var CollectionLength|null
    */
   private $length;
 
   /**
-   * @var \stdClass
+   * @var string
    */
-  private $props;
+  private $delimeter = "\s";
 
-  public function __construct($properties = null) {
-    $this->props = new \stdClass;
-    if ($properties === null) {
-      $properties = new \stdClass;
-    } else {
-      $properties = (object) $properties;
-    }
-    $this->props->delim = $properties->delim ?? ' ';
-    $this->props->type = $properties->type ?? self::ALL;
-    $this->props->length = $properties->range ?? [];
+  /**
+   * @var Validator|null
+   */
+  private $validator;
+
+  public function __construct() {
     $this->setRange();
   }
 
-  public function setRange(int $min = null, int $max = null) {
-    $this->length = new \Sphp\Validators\CollectionLengthValidator($min, $max);
+  public function setDelimeter(string $delimeter) {
+    $this->delimeter = $delimeter;
+    return $this;
   }
 
-  public function manipulateAtomicValue($value) {
-    if ($this->props->type === self::STRING) {
-      return Variables::parseString($value);
-    } else if ($this->props->type === self::INT) {
-      return Variables::parseInt($value);
-    } else if ($this->props->type === self::FLOAT) {
-      return Variables::parseFloat($value);
-    } else if ($this->props->type === self::BOOL) {
-      return Variables::parseBoolean($value);
-    } else if ($this->props->type === self::SCALAR) {
-      if (!is_scalar($value)) {
-        throw new InvalidArgumentException('!');
-      }
-      return $value;
+  public function setAtomicValidator(\Sphp\Validators\Validator $validator) {
+    $this->validator = $validator;
+    return $this;
+  }
+
+  public function setRange(int $min = null, int $max = null) {
+    if ($min !== null || $max !== null) {
+      $this->length = new \Sphp\Validators\CollectionLength($min, $max);
     } else {
-      return $value;
+      $this->length = null;
     }
   }
 
-  protected function filterArray(array $parsed): array {
-
-    $manipulated = array_map([$this, 'manipulateAtomicValue'], Arrays::flatten($parsed));
-    if (!$this->length->isValid($manipulated)) {
+  protected function validate(array $parsed): array {
+    //$manipulated = array_map([$this, 'manipulateAtomicValue'], Arrays::flatten($parsed));
+    if ($this->length !== null && !$this->length->isValid($parsed)) {
       throw new InvalidArgumentException('Collection of individual values is not of correct length');
     }
-    return $manipulated;
+    foreach ($parsed as $val) {
+      //echo $val;
+      if (!is_scalar($val)) {
+        throw new InvalidArgumentException('Non scalar atomic value found');
+      }
+      if ($this->validator !== null && !$this->validator->isValid($val)) {
+        throw new InvalidArgumentException($this->validator->errorsToArray()[0]);
+      }
+    }
+    return $parsed;
   }
 
   /**
@@ -104,31 +93,19 @@ class MultiValueParser {
    * @throws InvalidArgumentException if validation is set and the input is not valid
    */
   public function filter($raw): array {
+    $arr = [];
     if (is_array($raw)) {
-      return $this->filterArray($raw);
+      $arr = Arrays::flatten($raw);
+    } else if (is_string($raw)) {
+      $arr = $this->explode($raw);
+    } else if (is_null($raw) || $raw === false) {
+      $arr = [];
     } else if (is_scalar($raw)) {
-      return $this->parseScalar($raw);
+      $arr = [$raw];
     } else {
       throw new InvalidArgumentException('Cannot parse raw value');
     }
-  }
-
-  /**
-   * 
-   * @param  scalar $subject
-   * @return array
-   * @throws InvalidArgumentException
-   */
-  public function parseScalar($subject): array {
-    $output = [];
-    if (is_string($subject)) {
-      $output = $this->parseStringToArray($subject);
-    } else if (is_numeric($subject)) {
-      $output = [$subject];
-    } else {
-      throw new InvalidArgumentException("$subject is shit");
-    }
-    return $this->filterArray($output);
+    return $this->validate($arr);
   }
 
   /**
@@ -137,18 +114,13 @@ class MultiValueParser {
    * @return array
    * @throws InvalidArgumentException
    */
-  public function parseStringToArray(string $subject): array {
+  public function explode(string $subject): array {
     $trimmed = trim($subject);
-    $result = preg_split('/[' . $this->props->delim . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
+    $result = preg_split('/[' . $this->delimeter . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       throw new InvalidArgumentException("$subject is shit");
     }
     return array_map('trim', $result);
-  }
-
-  public function explode(string $string): array {
-    $parts = explode($this->props->delim, $string);
-    $this->filterArray($parts);
   }
 
   /**
@@ -159,7 +131,7 @@ class MultiValueParser {
   public function parseArrayToString(array $array): string {
     $output = '';
     if (!empty($array)) {
-      $output = implode($this->props->delim, $array);
+      $output = implode($this->delimeter, $array);
     }
     return $output;
   }

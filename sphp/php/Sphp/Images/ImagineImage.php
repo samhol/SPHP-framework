@@ -38,6 +38,7 @@ class ImagineImage extends AbstractImage {
    * Constructor
    * 
    * @param  string $src
+   * @param  BoxInterface $box
    * @throws InvalidArgumentException
    */
   public function __construct(string $src = null, BoxInterface $box = null) {

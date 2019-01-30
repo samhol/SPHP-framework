@@ -47,6 +47,7 @@ class NotEmpty extends AbstractValidator {
   /**
    * Constructor
    *
+   * @param int $type
    * @param string $message
    */
   public function __construct(int $type = self::ANY_TYPE, string $message = 'Value is empty') {
