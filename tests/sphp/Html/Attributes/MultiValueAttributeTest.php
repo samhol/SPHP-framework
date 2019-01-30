@@ -58,7 +58,7 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    */
   public function emptyData(): array {
     return [
-        [" \r \n \t ", ['delim' => ' ']],
+        [" \r \n \t ", ['delim' => '\s']],
         [null],
         [false],
     ];
