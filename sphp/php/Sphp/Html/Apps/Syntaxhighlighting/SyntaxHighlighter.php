@@ -30,26 +30,18 @@ interface SyntaxHighlighter extends Content {
   /**
    * Attaches a new copy controller
    *
-   * @param  Component|null $button button or button content
+   * @param  Component $controller button or button content
    * @return ContentCopyController the attached controller
    */
-  public function attachContentCopyController(Component $button = null): ContentCopyController;
+  public function attachContentCopyController(Component $controller): ContentCopyController;
 
   /**
-   * Sets whether the copy button is in use or not
+   * Sets whether the default copy button is in use or not
    *
    * @param  boolean $use true if the button is in use, false otherwise
    * @return $this for a fluent interface
    */
   public function useDefaultContentCopyController(bool $use = true);
-
-  /**
-   * Sets the copier button
-   *
-   * @param  mixed $content the actual controller or the content of the controller
-   * @return ContentCopyController the controller set
-   */
-  public function setContentCopyController($content = 'Copy'): ContentCopyController;
 
   /**
    * Loads the source code from the string

@@ -12,7 +12,6 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
 use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
-use Sphp\Html\Foundation\Sites\Buttons\Button;
 
 /**
  * Implements an abstract base Pane for a Foundation Accordion
@@ -44,7 +43,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighter {
       $hl = new GeSHiSyntaxHighlighter();
     }
     $this->hl = $hl;
-    $this->hl->setContentCopyController(Button::pushButton('<i class="far fa-copy fa-lg"></i>')->setSize('tiny'));
+   // $this->hl->setContentCopyController(Tags::span(\Sphp\Html\Media\Icons\FA::copy())->addCssClass('sphp', 'copy-button'));
     parent::__construct($title, $this->hl);
     $this->cssClasses()->protectValue('syntax-highlighting-pane');
   }

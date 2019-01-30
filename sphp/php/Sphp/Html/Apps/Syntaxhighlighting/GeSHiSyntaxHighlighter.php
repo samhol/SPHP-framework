@@ -16,6 +16,8 @@ use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;
 use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Tags;
+use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\Apps\ContentCopyController;
 use Sphp\Html\Div;
 use Sphp\Exceptions\RuntimeException;
@@ -96,7 +98,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     $this->footer = (new Div($footerText))->addCssClass('foot-area');
     $this->showLineNumbers(true)
             ->useFooter()
-            ->setContentCopyController();
+            ->setContentCopyController(Tags::span(FA::copy())->addCssClass('sphp', 'copy-button'));
   }
 
   public function __destruct() {
@@ -173,11 +175,8 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     return $this;
   }
 
-  public function attachContentCopyController(Component $button = null): ContentCopyController {
-    if ($button === null) {
-      $button = new Button($button);
-    }
-    $copyBtn = (new ContentCopyController($button, $this->geshiId));
+  public function attachContentCopyController(Component $controller): ContentCopyController {
+    $copyBtn = (new ContentCopyController($controller, $this->geshiId));
     return $copyBtn;
   }
 
@@ -187,10 +186,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     return $this;
   }
 
-  public function setContentCopyController($button = '<i class="far fa-copy"></i>'): ContentCopyController {
-    if (!$button instanceof Component) {
-      $button = new Button($button);
-    }
+  public function setContentCopyController(Component $button): ContentCopyController {
     $this->copyBtn = $this->attachContentCopyController($button);
     $this->head['copy'] = $this->copyBtn;
     return $this->copyBtn;

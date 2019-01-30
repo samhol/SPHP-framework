@@ -35,10 +35,10 @@ trait SyntaxhighlighterContainerTrait {
   /**
    * Attaches a new copy controller
    *
-   * @param  Component|null $button button or button content
+   * @param  Component $button button or button content
    * @return ContentCopyController the attached controller
    */
-  public function attachContentCopyController(Component $button = null): ContentCopyController {
+  public function attachContentCopyController(Component $button): ContentCopyController {
     return $this->getSyntaxHighlighter()->attachContentCopyController($button);
   }
 

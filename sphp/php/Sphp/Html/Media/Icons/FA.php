@@ -113,6 +113,7 @@ class FA {
       'book' => 'fas fa-book',
       'database' => 'fas fa-database',
       'search' => 'fas fa-search',
+      'copy' => 'far fa-copy',
       'ban' => 'fas fa-ban',
       'eraser' => 'fas fa-eraser',
       'exclamation' => 'fas fa-exclamation-triangle',
