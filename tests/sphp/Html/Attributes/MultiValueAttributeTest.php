@@ -58,7 +58,6 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    */
   public function emptyData(): array {
     return [
-        [" \t \n \t ", ['delim' => '\s']],
         [null],
         [false],
     ];
@@ -71,9 +70,9 @@ class MultiValueAttributeTest extends AbstractAttributeObjectTest {
    * @param mixed $value
    * @param array $props
    */
-  public function testEmptySetting($value, array $props = []) {
+  public function testEmptySetting($value,  $props = ' ') {
     //$this->expectException(\Sphp\Exceptions\InvalidArgumentException::class);
-    $attribute = $this->createAttr('data-multi-value', (new MultiValueParser($props)));
+    $attribute = $this->createAttr('data-multi-value', (new MultiValueParser())->setDelimeter($props));
     $attribute->setValue($value);
     //var_dump($attribute->getValue());
     $this->assertNull($attribute->getValue());

@@ -12,7 +12,6 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Parsers\Variables;
 use Sphp\Validators\CollectionLength;
 
 /**
@@ -56,13 +55,14 @@ class MultiValueParser {
 
   public function setRange(int $min = null, int $max = null) {
     if ($min !== null || $max !== null) {
-      $this->length = new \Sphp\Validators\CollectionLength($min, $max);
+      $this->length = new CollectionLength($min, $max);
     } else {
       $this->length = null;
     }
   }
 
   protected function validate(array $parsed): array {
+
     //$manipulated = array_map([$this, 'manipulateAtomicValue'], Arrays::flatten($parsed));
     if ($this->length !== null && !$this->length->isValid($parsed)) {
       throw new InvalidArgumentException('Collection of individual values is not of correct length');
@@ -71,6 +71,9 @@ class MultiValueParser {
       //echo $val;
       if (!is_scalar($val)) {
         throw new InvalidArgumentException('Non scalar atomic value found');
+      }
+      if (\Sphp\Stdlib\Strings::isBlank($val) || \Sphp\Stdlib\Strings::isEmpty($val)) {
+        throw new InvalidArgumentException('Empty atomic value found');
       }
       if ($this->validator !== null && !$this->validator->isValid($val)) {
         throw new InvalidArgumentException($this->validator->errorsToArray()[0]);
@@ -96,10 +99,10 @@ class MultiValueParser {
     $arr = [];
     if (is_array($raw)) {
       $arr = Arrays::flatten($raw);
+    } else if (is_null($raw) || $raw === false || $raw === '') {
+      $arr = [];
     } else if (is_string($raw)) {
       $arr = $this->explode($raw);
-    } else if (is_null($raw) || $raw === false) {
-      $arr = [];
     } else if (is_scalar($raw)) {
       $arr = [$raw];
     } else {
@@ -115,7 +118,10 @@ class MultiValueParser {
    * @throws InvalidArgumentException
    */
   public function explode(string $subject): array {
-    $trimmed = trim($subject);
+    $trimmed = preg_replace('/[\s]+/', ' ', $subject);
+    if (\Sphp\Stdlib\Strings::isBlank($trimmed) || \Sphp\Stdlib\Strings::isEmpty($trimmed)) {
+      return [];
+    }
     $result = preg_split('/[' . $this->delimeter . ']+/', $trimmed, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       throw new InvalidArgumentException("$subject is shit");
