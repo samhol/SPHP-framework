@@ -2,7 +2,7 @@
   "name": "sami_holck/sphp_framework",
   "homepage": "http://www.playground.samiholck.com/",
   "description": "Multipurpose PHP framework for web applications",
-  "keywords": ["HTML5", "WEB 2.0", "UI"],
+  "keywords": ["PHP", "HTML5", "WEB 2.0", "UI"],
   "license": "GNU",
   "authors": [
     {
