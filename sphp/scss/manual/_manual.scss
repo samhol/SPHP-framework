@@ -65,7 +65,7 @@ $error-bg: rgba(255,127,80, 0.40);
       margin: rem-calc(5 0 20 0);
     }
     @include breakpoint(xlarge) {  
-     // margin-right: rem-calc(70);
+      // margin-right: rem-calc(70);
     }
     .container {
       // @import "example-accordion";
@@ -83,7 +83,7 @@ $error-bg: rgba(255,127,80, 0.40);
 
 .mainContent .container , .mainContent .container section {   
   @import "accordions"; 
-  
+
   >.button-group, >.grid-x {
     @include default-margin();
   }
@@ -107,7 +107,7 @@ $error-bg: rgba(255,127,80, 0.40);
   @import "headings"; 
   @import "hyperlinks"; 
   @import "lists"; 
-
+  @import "vendor-readme-section"; 
   @import "technologies"; 
   @import "grid-examples"; 
   @import "carousels";

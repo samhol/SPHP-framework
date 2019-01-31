@@ -53,5 +53,13 @@ class PageLoader {
   public function loadIndex() {
     $this->loadPage('index');
   }
+  
+  
+
+  public function loadVendorReadmes(string $path, string $vendorName) {
+    //var_dump(func_get_args());
+    include "manual/pages/vendors/$vendorName.php";
+    //$this->loadPage('foo');
+  }
 
 }
