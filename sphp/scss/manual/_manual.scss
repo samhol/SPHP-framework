@@ -48,6 +48,12 @@ $error-bg: rgba(255,127,80, 0.40);
 
 @import "logo-area"; 
 .manual {
+  .top-bar {
+    z-index: 99;
+    .is-dropdown-submenu{
+      z-index: 99;
+    }
+  }
   .sphp.sidenav {
     margin: rem-calc(20 20 20 20); /* top right bottom left */
     border: solid 1px #888;
@@ -81,7 +87,7 @@ $error-bg: rgba(255,127,80, 0.40);
   }
 }
 
-.mainContent .container , .mainContent .container section {   
+.mainContent .container , .mainContent .container>section {   
   @import "accordions"; 
 
   >.button-group, >.grid-x {

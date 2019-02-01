@@ -29,16 +29,6 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Button 
-   */
-  private $prev;
-
-  /**
-   * @var Button 
-   */
-  private $next;
-
-  /**
    * @var boolean 
    */
   private $navButtonsVisible = true;
@@ -63,8 +53,6 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   public function __construct(string $ariaLabel = null) {
     parent::__construct('div');
     $this->slides = new SlideContainer();
-    $this->prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
-    $this->next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
     $this->cssClasses()
             ->protectValue('orbit');
     $this->attributes()
@@ -74,15 +62,23 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   public function __destruct() {
-    unset($this->slides, $this->prev, $this->next);
+    unset($this->slides);
     parent::__destruct();
   }
 
   public function __clone() {
     $this->slides = clone $this->slides;
-    $this->prev = clone $this->prev;
-    $this->next = clone $this->next;
     parent::__clone();
+  }
+
+  public function createOrbitConrols() {
+    $controArea = new \Sphp\Html\Div();
+    $controArea->addCssClass('orbit-controls');
+    $prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
+    $next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
+    $controArea->append($prev);
+    $controArea->append($next);
+    return $controArea;
   }
 
   /**
@@ -289,7 +285,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
 
   public function contentToString(): string {
     $output = '<div class="orbit-wrapper">';
-    $output .= $this->prev . $this->next . $this->slides;
+    $output .= $this->createOrbitConrols() . $this->slides;
     $output .= '</div>';
     if ($this->bulletsVisible) {
       $output .= $this->slides()->generateBullets();

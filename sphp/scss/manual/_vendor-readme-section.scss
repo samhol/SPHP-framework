@@ -6,32 +6,57 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-.sphp.manual.vendor-readme-section {
-  article {
+.sphp.manual.vendor-readme-orbit {
+  &.zend {
+    .orbit-container {
+      background: url(http://data.samiholck.com/svg/zend.php?opacity=.3);  
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  } 
+  &.doctrine {
+    .orbit-container {
+      background: url(http://data.samiholck.com/svg/doctrine.php?opacity=.3);  
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+  .orbit-container {
     margin: rem-calc(4);
-    padding: rem-calc(0 0 10 0);
     border: solid 1px #999;
     @include border-radius(3px);
-    h1 {
-      @include border-top-radius(3px);
-      border-bottom: solid 1px #999;
-      padding: rem-calc(3 5 2 10);
-      background-color: #eee;
-    }
-    h2 {
-      border-top: solid 1px #bbb;
-      border-bottom: solid 1px #bbb;
-      background-color: #eee;
-      padding: rem-calc(3 5 2 10);
-    }
-    p ,ul, pre {
-      margin: rem-calc(5 15 10 15);
-      padding: rem-calc(3 5 2 10);
-    }
-    ul, ol {
-      margin-left: rem-calc(25);
-      list-style-position: inside;
+    section {
+      padding: rem-calc(0 0 20 0);
+      h1 {
+        @include border-top-radius(3px);
+        border-bottom: solid 1px #999;
+        padding: rem-calc(3 5 2 10);
+        background-color: #eee;
+      }
+      h2 {
+        border-top: solid 1px #bbb;
+        border-bottom: solid 1px #bbb;
+        background-color: rgba(#eee, .5);
+        padding: rem-calc(3 5 2 10);
+      }
+      p ,ul, pre {
+        margin: rem-calc(5 15 10 15);
+        padding: rem-calc(3 5 2 10);
+      }
+      ul, ol {
+        margin-left: rem-calc(25);
+        list-style-position: inside;
 
+      }
+      hr {
+        border: 0;
+        height: 1px;
+        @include background-image(linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)));
+        //background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+      }
+      table, thead {  
+        background-color: rgba(#eee, .5);
+      }
     }
   }
 }

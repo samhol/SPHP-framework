@@ -11,7 +11,7 @@
 namespace Sphp\Validators;
 
 /**
- * A validator container for validating a value against multiple validators
+ * Validates a value using (inclusive) disjunction of two validators 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -31,6 +31,9 @@ class LogicalOr extends AbstractValidator {
 
   /**
    * Constructor
+   *
+   * @param Validator $a
+   * @param Validator $b
    */
   public function __construct(Validator $a, Validator $b) {
     $this->a = $a;
