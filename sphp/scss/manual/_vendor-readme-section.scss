@@ -12,6 +12,17 @@
       background: url(http://data.samiholck.com/svg/zend.php?opacity=.3);  
       background-repeat: no-repeat;
       background-position: center center;
+      a {
+        &:hover {
+          color: #68B604;
+          text-decoration: underline;
+        }
+      }
+      code {
+        border: solid 1px rgba(#68B604, .6);
+        @include border-radius(2px);
+        background-color: rgba(#68B604, .3);
+      }
     }
   } 
   &.doctrine {
@@ -19,7 +30,22 @@
       background: url(http://data.samiholck.com/svg/doctrine.php?opacity=.3);  
       background-repeat: no-repeat;
       background-position: center center;
+      a {
+        &:hover {
+          color: #F56D39;
+          text-decoration: underline;
+        }
+      }
+      code {
+        border: solid 1px rgba(#F56D39, .6);
+        @include border-radius(2px);
+        background-color: rgba(#F56D39, .3);
+      }
     }
+  }
+  .orbit-previous, .orbit-next {
+    @include border-radius(75px);
+    
   }
   .orbit-container {
     margin: rem-calc(4);
@@ -27,16 +53,27 @@
     @include border-radius(3px);
     section {
       padding: rem-calc(0 0 20 0);
-      h1 {
-        @include border-top-radius(3px);
-        border-bottom: solid 1px #999;
+      h1, h2, h3 {
+        background-color: rgba(#eee, .3);
+        &:first-of-type {
+          @include border-top-radius(3px);
+          border-bottom: solid 1px #999;
+        }
+        &:not(:first-of-type) {
+          border-top: solid 1px #bbb;
+          border-bottom: solid 1px #bbb;
+        }
         padding: rem-calc(3 5 2 10);
-        background-color: #eee;
+      }
+      h1 {
+        //@include border-top-radius(3px);
+        //border-bottom: solid 1px #999;
+        padding: rem-calc(3 5 2 10);
       }
       h2 {
-        border-top: solid 1px #bbb;
-        border-bottom: solid 1px #bbb;
-        background-color: rgba(#eee, .5);
+        //border-top: solid 1px #bbb;
+        //border-bottom: solid 1px #bbb;
+        //background-color: rgba(#eee, .5);
         padding: rem-calc(3 5 2 10);
       }
       p ,ul, pre {
