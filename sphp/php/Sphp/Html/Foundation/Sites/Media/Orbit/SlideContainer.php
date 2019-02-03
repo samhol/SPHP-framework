@@ -27,8 +27,6 @@ use Traversable;
  */
 class SlideContainer extends AbstractComponent implements \IteratorAggregate, \Countable {
 
-  use \Sphp\Html\ContentParserTrait;
-
   private $active = 0;
 
   /**
@@ -47,7 +45,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
   }
 
   /**
-   * Appends slide(s) to the orbit
+   * Appends a slide to the orbit
    *
    * **Notes:**
    *
@@ -55,17 +53,16 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
    *
-   * @param  mixed|Slide,... $slide
-   * @return $this for a fluent interface
+   * @param  mixed|Slide $slide
+   * @return Slide appended instance
    */
-  public function append(...$slide) {
-    foreach ($slide as $item) {
-      if (!($item instanceof Slide)) {
-        $item = new HtmlSlide($item);
-      }
-      $this->slides[] = $item;
+  public function append($slide): Slide {
+
+    if (!($slide instanceof Slide)) {
+      $slide = new HtmlSlide($slide);
     }
-    return $this;
+    $this->slides[] = $slide;
+    return $slide;
   }
 
   /**

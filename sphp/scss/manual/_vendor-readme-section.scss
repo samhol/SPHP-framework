@@ -45,9 +45,18 @@
   }
   .orbit-previous, .orbit-next {
     @include border-radius(75px);
-    
+
   }
   .orbit-container {
+    .orbit-slide {
+      min-height: 100%;
+      &.scss {
+        background: url(http://data.samiholck.com/svg/svg.php?sass&opacity=.3);  
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 80%;
+      }
+    }
     margin: rem-calc(4);
     border: solid 1px #999;
     @include border-radius(3px);
