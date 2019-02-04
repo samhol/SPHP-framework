@@ -5,6 +5,7 @@
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 @mixin vendor-font-coloring($color) {
   a {
     &:hover {
@@ -17,6 +18,9 @@
   }
 };
 
+@mixin vendor-watermark($path) {
+  background: url(#{$path}) no-repeat center center;
+};
 .sphp.manual.vendor-readme-orbit {
   .orbit-previous, .orbit-next {
     @include border-radius(7px);
@@ -34,29 +38,21 @@
         @include border-radius(2px);
       }
       &.scss {
-        background: url(http://data.samiholck.com/svg/svg.php?sass&opacity=.3);  
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: auto 80%;      
         @include vendor-font-coloring(#CB6699);
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?sass&opacity=.3');
+        background-size: auto 80%;
       }
       &.zend {
-        background: url(http://data.samiholck.com/svg/zend.php?opacity=.3);  
-        background-repeat: no-repeat;
-        background-position: center center;
         @include vendor-font-coloring(#68B604);
+        @include vendor-watermark('http://data.samiholck.com/svg/zend.php?opacity=.3');
       }
       &.php {
-        background: url(http://data.samiholck.com/svg/svg.php?php&opacity=.13);  
-        background-repeat: no-repeat;
-        background-position: center center;
         @include vendor-font-coloring(#6181B6);
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?php&opacity=.13');
       }
       &.doctrine {
-        background: url(http://data.samiholck.com/svg/doctrine.php?opacity=.3);  
-        background-repeat: no-repeat;
-        background-position: center center;
         @include vendor-font-coloring(#F56D39);
+        @include vendor-watermark('http://data.samiholck.com/svg/doctrine.php?opacity=.3');
       }
     }
     margin: rem-calc(4);
