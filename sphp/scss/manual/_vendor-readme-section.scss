@@ -5,6 +5,17 @@
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
+@mixin vendor-font-coloring($color) {
+  a {
+    &:hover {
+      color: $color;
+    }
+  }
+  code {
+    border: solid 1px rgba($color, .6);
+    background-color: rgba($color, .3);
+  }
+};
 
 .sphp.manual.vendor-readme-orbit {
   .orbit-previous, .orbit-next {
@@ -26,35 +37,26 @@
         background: url(http://data.samiholck.com/svg/svg.php?sass&opacity=.3);  
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: auto 80%;
+        background-size: auto 80%;      
+        @include vendor-font-coloring(#CB6699);
       }
       &.zend {
         background: url(http://data.samiholck.com/svg/zend.php?opacity=.3);  
         background-repeat: no-repeat;
         background-position: center center;
-        a {
-          &:hover {
-            color: #68B604;
-          }
-        }
-        code {
-          border: solid 1px rgba(#68B604, .6);
-          background-color: rgba(#68B604, .3);
-        }
+        @include vendor-font-coloring(#68B604);
+      }
+      &.php {
+        background: url(http://data.samiholck.com/svg/svg.php?php&opacity=.13);  
+        background-repeat: no-repeat;
+        background-position: center center;
+        @include vendor-font-coloring(#6181B6);
       }
       &.doctrine {
         background: url(http://data.samiholck.com/svg/doctrine.php?opacity=.3);  
         background-repeat: no-repeat;
         background-position: center center;
-        a {
-          &:hover {
-            color: #F56D39;
-          }
-        }
-        code {
-          border: solid 1px rgba(#F56D39, .6);
-          background-color: rgba(#F56D39, .3);
-        }
+        @include vendor-font-coloring(#F56D39);
       }
     }
     margin: rem-calc(4);
