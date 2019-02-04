@@ -38,6 +38,7 @@ class ScriptCode extends ContainerTag implements ScriptTag {
    */
   public function __construct($code = null) {
     parent::__construct('script', $code);
+    $this->setType('application/javascript');
   }
 
   /**

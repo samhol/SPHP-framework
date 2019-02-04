@@ -17,5 +17,5 @@ foreach ($objects as $name => $object) {
     $orbitIntro->slides()->append($cacheSection);
   }
 }
-$orbitIntro->slides()->appendMdFile('manual/pages/Sphp-intro/libraries.php');
+$orbitIntro->slides()->append('manual/pages/Sphp-intro/libraries.php');
 $orbitIntro->printHtml();

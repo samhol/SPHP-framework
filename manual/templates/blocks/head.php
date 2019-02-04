@@ -18,7 +18,7 @@ use Sphp\Html\Head\Link;
 $head->set(Meta::charset('UTF-8'));
 $head->set(Meta::viewport('width=device-width, initial-scale=1.0'));
 $head->setDocumentTitle($title);
-$head->setBaseAddr('http://playground.samiholck.com/', '_self');
+//$head->setBaseAddr('http://playground.samiholck.com/', '_self');
 
 $head->set(Link::stylesheet('http://playground.samiholck.com/sphp/css/sphp.all.css'));
 $head->set(Link::stylesheet('https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css'));
@@ -44,9 +44,9 @@ if ($redirect === '/Sphp.Html.Media.Multimedia') {
   $html->useVideoJS();
 }
 $body->addCssClass('manual');
-$html->scripts()->appendSrc('manual/js/formTools.js');
-$html->scripts()->appendSrc('manual/js/techs.js');
-$html->scripts()->appendSrc('sphp/javascript/dist/ss360.min.js');
+$html->scripts()->appendSrc('/manual/js/formTools.js');
+$html->scripts()->appendSrc('/manual/js/techs.js');
+$html->scripts()->appendSrc('/sphp/javascript/dist/ss360.min.js');
 $html->scripts()->appendSrc('https://sitesearch360.com/cdn/sitesearch360-v9.min.js');
 $html->startBody();
 

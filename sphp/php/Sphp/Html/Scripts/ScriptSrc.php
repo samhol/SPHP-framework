@@ -41,6 +41,7 @@ class ScriptSrc extends EmptyTag implements ScriptTag {
    */
   public function __construct(string $src = '', bool $async = false) {
     parent::__construct('script', true);
+    $this->setType('application/javascript');
     $this->setSrc($src)->setAsync($async);
   }
 

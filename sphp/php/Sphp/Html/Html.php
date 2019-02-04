@@ -163,7 +163,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @return $this for a fluent interface
    */
   public function enableSPHP() {
-    $this->body()->scripts()->appendSrc('sphp/javascript/dist/all.js');
+    $this->body()->scripts()->appendSrc('http://playground.samiholck.com/sphp/javascript/dist/all.js');
     return $this;
   }
 

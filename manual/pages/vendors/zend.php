@@ -14,7 +14,7 @@ foreach ($objects as $name => $object) {
   if ($object->isFile()) {
     $cacheSection = new Section();
     $cacheSection->appendMdFile($object->getRealPath());
-    $orbitIntro->slides()->append($cacheSection);
+    $orbitIntro->slides()->append($cacheSection)->addCssClass($vendorName);
   }
 }
 

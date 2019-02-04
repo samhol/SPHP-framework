@@ -16,11 +16,11 @@ use Sphp\Html\Div;
 use Sphp\Html\ContainerComponent;
 
 /**
- * Class AbstractPane
+ * Abstract implementation of an Accordion Pane
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation Accordion
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -50,15 +50,21 @@ abstract class AbstractPane extends AbstractComponent implements Pane {
     $this->attributes()->demand('data-accordion-item');
     $this->bar = new ContainerTag('a', $bar);
     $this->bar->cssClasses()->protectValue('accordion-title');
-    $this->bar->attributes()->protect('href', '#');
+    //$this->bar->attributes()->protect('href', '#');
     $this->content = new Div($content);
     $this->content->attributes()->demand('data-tab-content');
     $this->content->cssClasses()->protectValue('accordion-content');
+    $this->setDeepLinking();
   }
 
   public function __destruct() {
     unset($this->bar, $this->content);
     parent::__destruct();
+  }
+
+  protected function setDeepLinking() {
+    $id = $this->content->identify();
+    $this->bar->attributes()->protect('href', "#$id");
   }
 
   /**

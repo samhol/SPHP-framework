@@ -140,7 +140,8 @@ class CodeExampleAccordionBuilder implements Content {
   public function buildAccordion(): Accordion {
     $accordion = new Accordion();
     $accordion->allowAllClosed()
-            ->allowMultiExpand();
+            ->allowMultiExpand()
+            ->useDeepLinking();
     $accordion->cssClasses()->protectValue('sphp', 'code-example');
     $accordion->append($this->buildCodePane());
     if ($this->outputHl !== null) {

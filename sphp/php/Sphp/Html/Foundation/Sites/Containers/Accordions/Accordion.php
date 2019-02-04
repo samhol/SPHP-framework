@@ -11,12 +11,12 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
-
+use Sphp\Html\Iterator;
 /**
- * Implements an Foundation 6 Accordion
+ * Implements an Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -24,70 +24,63 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Accordion extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
+class Accordion extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Constructor
-   *
-   * @param null|ContentPane|ContentPane[] $content the value of the target attribute
+   * @var Pane[] 
    */
-  public function __construct($content = null) {
+  private $panels;
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
     parent::__construct('ul');
     $this->cssClasses()->protectValue('accordion');
     $this->attributes()->demand('data-accordion');
-    if ($content !== null) {
-      foreach (is_array($content) ? $content : [$content] as $c) {
-        $this->append($c);
-      }
-    }
+    $this->panels = [];
+  }
+
+  public function __destruct() {
+    parent::__destruct();
+    unset($this->panels);
   }
 
   /**
-   * Prepends a pane component into the accordion
+   * Prepends a pane component
    * 
    * @param  Pane $pane added component
    * @return $this for a fluent interface
    */
   public function prepend(Pane $pane) {
-    $this->getInnerContainer()->prepend($pane);
+    array_unshift($this->panels, $pane);
     return $this;
   }
 
   /**
-   * Creates and prepends a new pane component into the accordion
-   * 
-   * @param  mixed $title the content of the pane title
-   * @param  mixed $content the content of the actual pane
-   * @return $this for a fluent interface
-   */
-  public function prependPane($title, $content) {
-    $this->getInnerContainer()->prepend(new ContentPane($title, $content));
-    return $this;
-  }
-
-  /**
-   * Appends a pane component into the accordion
+   * Appends a pane component
    * 
    * @param  Pane $pane added pane component
    * @return $this for a fluent interface
    */
   public function append(Pane $pane) {
-    $this->getInnerContainer()->append($pane);
+    $this->panels[] = $pane;
     return $this;
   }
 
   /**
-   * Creates and appends a new {@link Pane} component into the accordion
+   * Creates and appends a new HTML pane component
    * 
    * @param  mixed $title the content of the pane title
    * @param  mixed $content the content of the actual pane
-   * @return $this for a fluent interface
+   * @return ContentPane appended instance
    */
-  public function appendPane($title, $content) {
-    $this->getInnerContainer()->append(new ContentPane($title, $content));
-    return $this;
+  public function appendPane($title, $content): ContentPane {
+    $pane = new ContentPane($title, $content);
+    $this->append($pane);
+    return $pane;
   }
 
   /**
@@ -96,7 +89,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->getInnerContainer()->getIterator();
+    return new Iterator($this->panels);
   }
 
   /**
@@ -106,7 +99,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
-    return $this->getInnerContainer()->count();
+    return count($this->panels);
   }
 
   /**
@@ -142,6 +135,25 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
     $value = $allow ? 'true' : 'false';
     $this->attributes()->setAttribute('data-allow-all-closed', $value);
     return $this;
+  }
+  
+  /**
+   * Sets whether to allow the accordion to close all panes
+   * 
+   * @param  boolean $deepLinking true for allowing and false otherwise
+   * @return $this for a fluent interface
+   */
+  public function useDeepLinking(bool $deepLinking = true) {
+    $value = $deepLinking ? 'true' : 'false';
+    $this->attributes()->setAttribute('data-deep-link', $value);
+    $this->attributes()->setAttribute('data-update-history', $value);
+    $this->attributes()->setAttribute('data-deep-link-smudge', $value);
+    $this->attributes()->setAttribute('data-deep-link-smudge-delay', 500);
+    return $this;
+  }
+
+  public function contentToString(): string {
+    return implode($this->panels);
   }
 
 }

@@ -10,4 +10,4 @@ $router = (new Router())
         ->route('/calendar/<*categories>', [$pageLoader, 'loadCalendar'])
         ->route('/vendor/<*vendor>', [$pageLoader, 'loadVendorReadmes'])
         ->route('/index.php', [$pageLoader, 'loadIndex'], 10)
-        ->route('/<!category>', [$pageLoader, 'loadPage'], 9);
+        ->route('/<!category>/', [$pageLoader, 'loadPage'], 9);
