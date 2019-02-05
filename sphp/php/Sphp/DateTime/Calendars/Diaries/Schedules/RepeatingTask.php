@@ -48,6 +48,7 @@ class RepeatingTask extends AbstractLog implements Task {
    * 
    * @param Time $start
    * @param Time $end
+   * @param DateConstraint $constraint
    */
   public function __construct(Time $start, Time $end, DateConstraint $constraint = null) {
     parent::__construct($constraint);

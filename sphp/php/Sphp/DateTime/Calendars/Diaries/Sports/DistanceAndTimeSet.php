@@ -36,7 +36,6 @@ class DistanceAndTimeSet extends TimedSet {
    * 
    * @param float $distance
    * @param ImmutableDuration $duration the duration of the exercise set
-   * @param string $unit
    */
   public function __construct(float $distance, ImmutableDuration $duration) {
     parent::__construct($duration);

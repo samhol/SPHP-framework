@@ -5,9 +5,9 @@ defautTarget: _blank
 items:
   - separator: SPHP framework
   - link: PHP API
-    href: API/sami/
+    href: /API/sami/
   - link: JavaScript API
-    href: API/jsdoc/
+    href: /API/jsdoc/
   - separator: 'PHP:'
   - link: PHP manual
     href: http://php.net/en/documentation

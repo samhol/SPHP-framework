@@ -13,8 +13,6 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\Content;
 use Sphp\Html\Div;
 use Sphp\DateTime\Date;
-use Sphp\Html\Span;
-use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Media\Icons\FaIcon;
 use Sphp\Html\Adapters\QtipAdapter;

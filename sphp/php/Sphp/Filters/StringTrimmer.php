@@ -54,9 +54,11 @@ class StringTrimmer extends AbstractFilter {
    * * "\0" (ASCII 0 (0x00)), the NUL-byte.
    * * "\x0B" (ASCII 11 (0x0B)), a vertical tab.
    * 
-   * @param  null|string $charmask characters to be stripped
+   * @param string $charmask characters to be stripped
+   * @param bool $left
+   * @param bool $right
    */
-  public function __construct($charmask = null, $left = true, $right = true) {
+  public function __construct(string $charmask = null, bool $left = true, bool $right = true) {
     $this->charmask = $charmask;
     $this->left = $left;
     $this->right = $right;

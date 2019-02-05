@@ -27,12 +27,10 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Forms\Inputs\PasswordInput password(string $name = null, $value = null) creates a new password input
  * 
  * 
- * @method \Sphp\Html\Forms\Inputs\pus pushButton(string $name = null, $value = null) creates a new password input
- * @method \Sphp\Html\Forms\Inputs\PasswordInput reset(string $name = null, $value = null) creates a new password input
- * @method \Sphp\Html\Forms\Inputs\PasswordInput submit(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Buttons\Button pushButton(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Buttons\Resetter reset(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Buttons\Submitter submit(string $name = null, $value = null) creates a new password input
  *
- * @method \Sphp\Html\Forms\Inputs\Buttons\Button push($content = null) creates a new push button
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Attributes\Exceptions;
 
-use Sphp\Html\Exceptions\HtmlException;
+use Sphp\Exceptions\SphpExceptionInterface;
 use Exception;
 
 /**
@@ -21,6 +21,6 @@ use Exception;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AttributeException extends Exception implements HtmlException {
+class AttributeException extends Exception implements SphpExceptionInterface {
   
 }

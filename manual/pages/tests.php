@@ -1,5 +1,5 @@
 <?php
-
+/*
 echo '<pre>';
 $date = new Sphp\DateTime\DateTime('2018-05-09 07:00:00 EET');
 
@@ -21,3 +21,4 @@ $sql->into('tasks')->columnNames('description', 'starts', 'stops');
 $sql->valuesFromArray($values);
 $sql->execute();
 echo '</pre>';
+*/
