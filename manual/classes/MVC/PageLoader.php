@@ -11,6 +11,9 @@
 namespace Sphp\Manual\MVC;
 
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
+use Sphp\Html\Tags;
+use Sphp\Html\Div;
+use Sphp\Html\Attributes\ClassAttribute;
 
 /**
  * Description of PageLoader
@@ -20,46 +23,71 @@ use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class PageLoader {
+class PageLoader implements \Sphp\Html\CssClassifiableContent {
 
-  public function loadNotFound() {
-    include 'manual/templates/error.php';
-    //Document::body()->addCssClass('error');
+  use \Sphp\Html\CssClassifiableTrait,
+      \Sphp\Html\ContentTrait;
+
+  /**
+   * @var Div
+   */
+  private $manual;
+
+  /**
+   * @var Div
+   */
+  private $container;
+
+  public function __construct() {
+    $this->manual = Tags::div()->addCssClass('mainContent');
+    $this->container = Tags::div()->addCssClass('container');
+    $this->manual->append($this->container);
   }
 
-  public function loadCalendar($par) {
-    //var_dump($par);
-    include 'manual/pages/calendar-app.php';
+  public function __destruct() {
+    unset($this->manual, $this->container);
+  }
+
+  protected function load(string $path) {
+    try {
+      if (is_file($path)) {
+        $this->container->appendPhpFile($path);
+      } else {
+        $this->loadNotFound($path);
+      }
+    } catch (\Throwable $e) {
+      $this->container->append(ThrowableCalloutBuilder::build($e, true, true));
+    }
+    $this->printHtml();
+  }
+
+  public function loadNotFound() {
+    $this->addCssClass('error');
+    $this->load('manual/templates/error.php');
+  }
+
+  public function loadCalendar($par, $foo) {
+    $this->load('manual/pages/calendar-app.php');
   }
 
   public function loadPage($par, string $file = 'index') {
-    //var_dump(func_get_args());
-    try {
-      ob_start();
-      $page = "manual/pages/$file.php";
-      if (is_file($page)) {
-        include $page;
-      } else {
-        $this->loadNotFound($par);
-      }
-      $content = ob_get_contents();
-    } catch (\Throwable $e) {
-      $content = ThrowableCalloutBuilder::build($e, true, true);
-    }
-    ob_end_clean();
-    echo $content;
+    $this->load("manual/pages/$file.php");
   }
 
   public function loadIndex() {
-    $this->loadPage('index');
+    $this->load('manual/pages/index.php');
   }
-  
-  
 
   public function loadVendorReadmes(string $path, string $vendorName) {
-    //var_dump(func_get_args());
-    include "manual/pages/vendors/$vendorName.php";
-    //$this->loadPage('foo');
+    $this->load("manual/pages/vendors/$vendorName.php");
+  }
+
+  public function cssClasses(): ClassAttribute {
+    return $this->manual->cssClasses();
+  }
+
+  public function getHtml(): string {
+    return $this->manual->getHtml();
   }
 
 }

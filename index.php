@@ -32,17 +32,13 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
       ?>
     </div>
     <div class="cell auto"> 
-      <div class="mainContent">
-        <div class="container">
-          <?php
-          $man_cache = "$cacheSuffix-content";
-          if ($outputCache->start($man_cache) === false) {
-            $router->execute(\Sphp\Stdlib\Networks\URL::getCurrentURL());
-            $outputCache->end();
-          }
-          ?>
-        </div>
-      </div>
+      <?php
+      $man_cache = "$cacheSuffix-content";
+      if ($outputCache->start($man_cache) === false) {
+        $router->execute(\Sphp\Stdlib\Networks\URL::getCurrentURL());
+        $outputCache->end();
+      }
+      ?>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ use Sphp\Html\Flow\Section;
 use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
 
 $orbitIntro = new Orbit();
-$orbitIntro->addCssClass('sphp', 'manual', 'vendor-readme-orbit', $vendorName);
+$orbitIntro->addCssClass('sphp', 'manual', 'vendor-readme-orbit');
 
 $phpunitSection = new Section();
 $phpunitSection->appendMdFile('manual/pages/vendors/md/misc/phpunit.md');

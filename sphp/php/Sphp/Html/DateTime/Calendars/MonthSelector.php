@@ -78,7 +78,7 @@ class MonthSelector implements Content {
     $calendar = new \Sphp\I18n\Datetime\CalendarUtils();
     $sub = $dropDown->appendSubMenu()->setRoot($this->date->getMonthName());
     foreach ($calendar->getMonths() as $number => $name) {
-      $href = "calendar/" . $this->date->getYear() . "/" . $number;
+      $href = "/calendar/" . $this->date->getYear() . "/" . $number;
       $sub->appendLink($href, $name);
     }
     return $dropDown;
@@ -86,7 +86,7 @@ class MonthSelector implements Content {
 
   public function createMonthLink(Date $month, $content = null): Hyperlink {
     $monthText = "Go to {$month->format('F Y')}";
-    $href = "calendar/" . $month->getYear() . "/" . $month->getMonth();
+    $href = "/calendar/" . $month->getYear() . "/" . $month->getMonth();
     if ($content === null) {
       $content = $monthText;
     }

@@ -18,7 +18,7 @@ $sphp6-root-border-color: #333;
 
 $default-left-margin: rem-calc(35);
 $default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
-$error-bg: rgba(255,127,80, 0.40);
+$error-bg: rgba(#FF7F50, 0.4);
 
 @mixin default-margin($margin: all) { 
   @if $margin == all or map-has-key($default-margins, $margin) {
@@ -46,6 +46,7 @@ $error-bg: rgba(255,127,80, 0.40);
 @import "forms"; 
 @import 'icon-examples';
 
+@import 'error-page';
 @import "logo-area"; 
 .manual {
   .top-bar {
@@ -67,6 +68,8 @@ $error-bg: rgba(255,127,80, 0.40);
     margin: rem-calc(20 10 20 0); // top right bottom left
     @include box-shadow(#888 0px 3px 8px 4px);
     background: #eaeaea;
+
+
     @include breakpoint(medium down) {  
       margin: rem-calc(5 0 20 0);
     }
@@ -83,6 +86,40 @@ $error-bg: rgba(255,127,80, 0.40);
       padding: rem-calc(0 3 40 3);// top right bottom left
       //margin: rem-calc(5 0 20 0); // top right bottom left
       background: #fafafa;
+    }
+    &.error {
+      .container {
+        background-image: url('http://data.samiholck.com/svg/crossbones.php?color=f00&opacity=.2');
+        background-position: center center;
+        background-size: auto 90%;
+        background-repeat: no-repeat;
+        h1 {
+          text-align: center;
+          font-size: rem-calc(100);
+          background-color: $error-bg;
+          small {
+            color: #555;
+            @include breakpoint(medium down) {  
+              display: inline-block;
+              clear:both;
+              font-size: rem-calc(40);
+            }
+          }
+        }
+        p {
+          text-align: center;
+          font-size: rem-calc(30);
+          &.large {
+            font-size: rem-calc(60);
+          }
+        }
+        input[type=search] {
+          background-color: rgba(#eee, .5);
+          &:focus {
+            background-color: rgba(#fafafa, .5);
+          }
+        }
+      }
     }
   }
 }

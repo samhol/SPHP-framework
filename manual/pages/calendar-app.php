@@ -2,9 +2,13 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
+use Sphp\Stdlib\Networks\URL;
 
-$trimmed = trim($par, '/');
+$current = URL::getCurrent();
+$path = $current->getPath();
+$trimmed = trim($path, '/');
 $parts = explode('/', $trimmed);
+//print_r($parts);
 $year = (int) date('Y');
 $month = (int) date('m');
 if (count($parts) > 1) {
@@ -21,24 +25,9 @@ if (count($parts) > 2) {
     
   }
 }
-
 $d = \Sphp\DateTime\Date::from("$year-$month-01")->format("F Y");
 echo \Sphp\Manual\md("# Calendar for <small>$d</small>");
 
-//var_dump(StopWatch::getEcecutionTime());
-class CalendarController {
-
-  private $model;
-
-  public function __construct($model) {
-    $this->model = $model;
-  }
-
-  public function clicked() {
-    $this->model->string = 'Updated Data, thanks to MVC and PHP!';
-  }
-
-}
 
 include 'diaries.php';
 
@@ -58,7 +47,7 @@ use Sphp\Html\Foundation\Sites\Navigation\Pagination\Page;
 
 //$exercises = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
 foreach ($daterange as $id => $date) {
-  $href = "calendar/" . $date->format("Y/m");
+  $href = "/calendar/" . $date->format("Y/m");
   $content = $date->format("M Y");
   $page = new Page($href, $content);
   if ($date->format("Y") == $year && $date->format("m") == $month) {

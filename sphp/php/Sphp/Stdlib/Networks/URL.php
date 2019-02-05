@@ -544,6 +544,11 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
     return $currentURL;
   }
 
+  /**
+   * 
+   * @return string
+   * @codeCoverageIgnore
+   */
   public static function getRootAsString(): string {
     $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
     $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
@@ -558,9 +563,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public static function getCurrent(): URL {
     if (self::$currUrl === null) {
-      var_dump(static::getCurrentURL());
       $url = new static(static::getCurrentURL());
-
       self::$currUrl = $url;
     }
     return clone self::$currUrl;

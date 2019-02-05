@@ -1,0 +1,32 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+.mainContent.error {
+
+  h1.error {
+    text-align: center;
+    font-size: rem-calc(100);
+    @include breakpoint(medium down) {  
+      small {
+        display: block;
+        font-size: rem-calc(60);
+      }
+    }
+  }
+  p {
+    text-align: center;
+    font-size: rem-calc(30);
+    &.large {
+      font-size: rem-calc(60);
+    }
+  }
+  .container{
+    background-image: url('http://data.samiholck.com/svg/crossbones.php?color=f00&opacity=.2');
+    background-position: center center;
+
+  }
+}
