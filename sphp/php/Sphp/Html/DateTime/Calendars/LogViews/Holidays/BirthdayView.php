@@ -94,7 +94,7 @@ class BirthdayView {
     $termText = $dl->appendTerm("Birthday of {$person->getFullname()}");
     
     if ($birthday->isFlagDay()) {
-      $termText->prepend(ViewFactory::flag('finland'));
+      $termText->prepend(ViewFactory::flag('fi'));
     }
     if (!$person->isDead()) {
       // print_r($person->getAge());

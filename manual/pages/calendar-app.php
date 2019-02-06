@@ -26,7 +26,7 @@ if (count($parts) > 2) {
   }
 }
 $d = \Sphp\DateTime\Date::from("$year-$month-01")->format("F Y");
-echo \Sphp\Manual\md("# Calendar for <small>$d</small>");
+\Sphp\Manual\md("# Calendar for <small>$d</small>");
 
 
 include 'diaries.php';

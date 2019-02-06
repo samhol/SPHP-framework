@@ -23,7 +23,7 @@
   sphp.calendar = function () {
 
     var $modal = $('.sphp.calendar.reveal');
-    $('.calendar-day.has-info').on("click", function () {
+    $('.calendar-day.has-info').on('click', function () {
       var date = $(this).attr('data-date');
       console.log('/sphp/ajax/DateInfoContent.php');
       $modal.find('.calendar-date-root').html('<strong>Loading...</strong>');

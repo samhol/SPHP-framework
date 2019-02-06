@@ -46,7 +46,7 @@ class HolidayView {
       $description->append(" (national holiday)");
     }
     if ($holiday->isFlagDay()) {
-      $strong->prepend(ViewFactory::flag('finland'));
+      $strong->prepend(ViewFactory::flag('fi'));
     }
     return $strong . $description;
   }

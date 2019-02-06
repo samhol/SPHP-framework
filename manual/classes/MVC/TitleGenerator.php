@@ -41,17 +41,17 @@ class TitleGenerator {
     if ($page === '') {
       $title = 'Introduction | SPHPlayground';
     } else {
-    $title = 'SPHPlayground';
-    foreach ($this->titleData as $pair) {
-      if ($pair['href'] === $page) {
-        if (isset($pair['title'])) {
-          $title = $pair['title'] . ' | ' . $title;
-        } else {
-          $title = $pair['link'] . ' | ' . $title;
+      $title = 'SPHPlayground';
+      foreach ($this->titleData as $pair) {
+        if ($pair['href'] === $page) {
+          if (isset($pair['title'])) {
+            $title = $pair['title'] . ' | ' . $title;
+          } else {
+            $title = $pair['link'] . ' | ' . $title;
+          }
+          break;
         }
-        break;
       }
-    }
     }
     return $title;
   }

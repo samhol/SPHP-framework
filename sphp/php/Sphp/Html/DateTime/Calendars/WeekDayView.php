@@ -77,7 +77,7 @@ class WeekDayView extends AbstractComponent {
     if ($this->diaryDay->notEmpty()) {
       $div->append(\Sphp\Html\Media\Icons\FA::flag()->setSize('xs'));
       if ($this->diaryDay->isFlagDay()) {
-        $div->append('<i class="flag svg-inline--fa fa-w-16">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/finland.svg') . '</i>');
+        $div->append('<i class="flag svg-inline--fa fa-w-16">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/fi.svg') . '</i>');
       }
     }
     return $div;

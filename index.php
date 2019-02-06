@@ -12,9 +12,7 @@ if ($outputCache->start("$cacheSuffix-head") === false) {
   require_once('manual/templates/blocks/head.php');
   $outputCache->end();
 }
-?>
 
-<?php
 if ($outputCache->start("$cacheSuffix-topbar") === false) {
   include('manual/templates/logo-area.php');
   include('manual/templates/menus/topBar.php');

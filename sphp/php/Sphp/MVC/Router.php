@@ -198,7 +198,7 @@ class Router {
       $url = new URL($url);
     }
     if (!$url instanceof URL) {
-      throw new InvalidArgumentException("Path can only be resolved from string or URL object");
+      throw new InvalidArgumentException('Path can only be resolved from string or URL object');
     }
     return rtrim($url->getPath(), '/') . '/';
   }
