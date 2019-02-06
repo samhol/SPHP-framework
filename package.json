@@ -14,9 +14,8 @@
     "ion-rangeslider": ">=2.3.0",
     "jquery": ">=3.2.1",
     "lazyloadxt": ">=1.1.0",
-    "npm": "^6.7.0",
-    "slick-carousel": ">=1.8",
-    "svg-country-flags": ">=1.2.6"
+    "npm": ">=6.7.0",
+    "slick-carousel": ">=1.8"
   },
   "devDependencies": {
     "gulp": ">=4.0.0",
