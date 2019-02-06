@@ -78,7 +78,7 @@ class Modal implements Content, ClosableInterface {
    * Sets the opener component
    * 
    * @param  Component $trigger the opener component
-   * @param mixed $popup the content of the component
+   * @return $this for a fluent interface
    */
   public function setTrigger(Component $trigger) {
     $this->trigger = $trigger;
@@ -89,7 +89,7 @@ class Modal implements Content, ClosableInterface {
    * Sets the popup component
    * 
    * @param  Popup $popup the popup component
-   * @param mixed $popup the content of the component
+   * @return $this for a fluent interface
    */
   public function setPopup(Popup $popup) {
     $this->popup = $popup;

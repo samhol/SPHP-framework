@@ -10,10 +10,13 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\CssClassifiableContent;
+use IteratorAggregate;
 use Traversable;
+use Sphp\Html\Iterator;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a Button Group
@@ -27,9 +30,15 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ButtonGroup extends AbstractContainerComponent implements \IteratorAggregate {
+class ButtonGroup extends AbstractComponent implements IteratorAggregate {
 
-  use ButtonTrait;
+  use \Sphp\Html\ComponentTrait,
+      ButtonTrait;
+
+  /**
+   * @var ButtonInterface[] 
+   */
+  private $buttons;
 
   /**
    * @var string[]
@@ -38,22 +47,25 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
 
   /**
    * Constructor
-   *
-   * @param  null|ButtonInterface|ButtonInterface[] $buttons the appended buttons
    */
-  public function __construct($buttons = null) {
+  public function __construct() {
     parent::__construct('div');
     $this->cssClasses()->protectValue('button-group');
-    if (is_array($buttons)) {
-      $this->appendButton($buttons);
-    }
-    if ($buttons instanceof ButtonInterface) {
-      $this->appendButton($buttons);
-    }
+    $this->buttons = [];
+  }
+
+  public function __destruct() {
+    unset($this->buttons);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    parent::__clone();
+    $this->buttons = Arrays::copy($this->buttons);
   }
 
   /**
-   * Creates and appends a new {@link HyperlinkButton} to the group
+   * Creates and appends a new  hyperlink button to the group
    *
    * **Notes:**
    * 
@@ -120,14 +132,26 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * Appends a new button to the group
    *
    * @param  CssClassifiableContent $button the appended button
-   * @return $this for a fluent interface
+   * @return ButtonInterface created instance
    */
-  public function appendButton(CssClassifiableContent $button) {
-    if (!$button->hasCssClass('button')) {
-      $button->addCssClass('button');
+  public function appendButton(CssClassifiableContent $button): ButtonInterface {
+    if (!$button instanceof ButtonInterface) {
+      $button = new Button($button);
     }
-    $this->getInnerContainer()->append($button);
-    return $this;
+    $this->buttons[] = $button;
+    return $button;
+  }
+
+  /**
+   * Appends a new arrow only button to the group
+   *
+   * @param string $screenReaderLabel the screen reader label text
+   * @return ArrowOnlyButton created instance
+   */
+  public function appendArrowOnlyButton(string $screenReaderLabel): ArrowOnlyButton {
+    $btn = new ArrowOnlyButton($screenReaderLabel);
+    $this->appendButton($btn);
+    return $btn;
   }
 
   /**
@@ -136,7 +160,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->getInnerContainer()->getIterator();
+    return new Iterator($this->buttons);
   }
 
   /**
@@ -149,6 +173,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    */
   public function stackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {
+      $this->setExtended(false);
       if ($screenSize == 'all') {
         $this->addCssClass('stacked');
       } else {
@@ -181,6 +206,10 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
       throw new InvalidArgumentException("Screen size '$screenSize' was not recognized");
     }
     return $this;
+  }
+
+  public function contentToString(): string {
+    return implode($this->buttons);
   }
 
 }

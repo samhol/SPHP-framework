@@ -60,16 +60,11 @@ Manual\md(<<<MD
 This adapter can transform most $component objects to Foundation styled buttons.
 MD
 );
-$splitButton = \Sphp\Manual\api()->classLinker(SplitButton::class);
 
 Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
 
-Manual\md(<<<MD
-##The $splitButton component
-MD
-);
-
-Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
+$stackFor = $btnGroup->methodLink('stackFor', false);
+$unstackFor = $btnGroup->methodLink('unstackFor', false);
 
 Manual\md(<<<MD
 ##The $btnGroup class
@@ -78,19 +73,10 @@ A $btnGroup component is a container for $buttonInterface components. A $btnGrou
 is effective for displaying a group of actions in a bar. $btnGroup component works
 perfectly with the grid component.
 
+The orientation of a button group can be changed with method $stackFor  that uses 
+Foundation stack classes for button groups. Stacking can be removed by using $unstackFor method.
+        
 MD
 );
 
 Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
-
-$stackFor = $btnGroup->methodLink("stackFor", false);
-$unstackFor = $btnGroup->methodLink("unstackFor", false);
-
-Manual\md(<<<MD
-The orientation of a button group can be changed with method $stackFor  that uses 
-Foundation stack classes for button groups. Stacking can be removed by using $unstackFor method.
-
-MD
-);
-
-Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php');

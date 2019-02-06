@@ -32,7 +32,8 @@ use Sphp\Html\Attributes\ClassAttribute;
 class FileUploadButton implements IdentifiableInput, ButtonInterface {
 
   use \Sphp\Html\ContentTrait,
-      \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait, \Sphp\Html\CssClassifiableTrait;
+      \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait,
+      \Sphp\Html\CssClassifiableTrait;
 
   /**
    * @var FileInput 

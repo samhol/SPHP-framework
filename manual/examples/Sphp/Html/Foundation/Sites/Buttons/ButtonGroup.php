@@ -2,19 +2,30 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-$btns1 = new ButtonGroup();
-$btns1->appendButton(new \Sphp\Html\Span("foo button"));
-$btns1->appendButton(Button::hyperlink("http://www.google.com/", "google", "engine"));
-$btns1->appendButton(Button::hyperlink("http://www.bing.com", "Bing", "engine"));
-$btns1->appendHyperlink("https://www.yahoo.com/", "Yahoo!", "engine");
-$btns1->setSize("tiny");
+$buttonGroup = new ButtonGroup();
+$buttonGroup->appendButton(new \Sphp\Html\Span("foo button"));
+$buttonGroup->appendButton(Button::hyperlink("http://www.google.com/", "google", "engine"));
+$buttonGroup->appendButton(Button::hyperlink("http://www.bing.com", "Bing", "engine"));
+$buttonGroup->appendHyperlink("https://www.yahoo.com/", "Yahoo!", "engine");
+$buttonGroup->setSize("tiny");
 
-$btns2 = clone $btns1;
-$btns2->setSize("small");
+$buttonGroup->printHtml();
 
-$btns3 = clone $btns2;
-$btns3->setColor("success")
-        ->setExtended(true);
+$buttonGroup->setExtended(true);
+$buttonGroup->printHtml();
 
+use Sphp\Html\Foundation\Sites\Containers\Dropdown;
 
-echo "$btns1 $btns2 $btns3";
+$split = (new ButtonGroup())->setSize('small');
+$split->appendPushButton('Push button')->setColor('alert');
+$opener = $split->appendArrowOnlyButton('Dropdownopener');
+
+$dd = new Dropdown($opener, "Hello! I'm a dropdown");
+
+echo "$split {$dd->getDropdown()}";
+
+$buttonGroup->setColor("success");
+$buttonGroup->printHtml();
+
+$buttonGroup->stackFor("all")
+        ->printHtml();

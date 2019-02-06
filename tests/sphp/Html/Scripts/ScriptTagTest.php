@@ -21,7 +21,8 @@ class ScriptTagTest extends TestCase {
     $emptySrc = new ScriptSrc();
     $this->assertSame('', $emptySrc->getSrc());
     $emptyCode = new ScriptCode();
-    $this->assertSame('<script></script>', "$emptyCode");
+    
+    $this->assertSame('<script type="application/javascript"></script>', "$emptyCode");
   }
 
 }
