@@ -53,7 +53,7 @@ function createPage(string $page): string {
     $content .= (new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->buildCallout($e);
   }
   ob_end_clean();
-  return "<section>$content</section>";
+  return '<section class="main">'.$content.'</section>';
 }
 
 /**

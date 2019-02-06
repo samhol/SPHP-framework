@@ -124,7 +124,7 @@ $error-bg: rgba(#FF7F50, 0.4);
   }
 }
 
-.mainContent .container , .mainContent .container>section {   
+.mainContent .container , .mainContent .container>section  , .mainContent .container section.main {   
   @import "accordions"; 
 
   >.button-group, >.grid-x {
