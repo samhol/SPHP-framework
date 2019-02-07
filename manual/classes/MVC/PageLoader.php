@@ -53,7 +53,8 @@ class PageLoader implements \Sphp\Html\CssClassifiableContent {
       if (is_file($path)) {
         $this->container->appendPhpFile($path);
       } else {
-        $this->loadNotFound($path);
+        $this->addCssClass('error');
+        $this->container->appendPhpFile('manual/templates/error.php');
       }
     } catch (\Throwable $e) {
       $this->container->append(ThrowableCalloutBuilder::build($e, true, true));
@@ -61,8 +62,9 @@ class PageLoader implements \Sphp\Html\CssClassifiableContent {
     $this->printHtml();
   }
 
-  public function loadNotFound() {
+  public function loadNotFound(string $path = null) {
     $this->addCssClass('error');
+    echo $path;
     $this->load('manual/templates/error.php');
   }
 
@@ -79,6 +81,7 @@ class PageLoader implements \Sphp\Html\CssClassifiableContent {
   }
 
   public function loadVendorReadmes(string $path, string $vendorName) {
+
     $this->load("manual/pages/vendors/$vendorName.php");
   }
 

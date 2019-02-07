@@ -56,7 +56,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @link    https://fontawesome.com/ Font Awesome
  * @filesource
  */
-class FA {
+abstract class AbstractIconGenerator {
 
   /**
    * list of Font Awesome icons and their corresponding PHP classes
@@ -144,6 +144,10 @@ class FA {
    * @var Filetype|null singleton instance 
    */
   private static $instance;
+  
+  /**
+   * @var string[]
+   */
   private $classes = [];
 
   public function __construct() {
