@@ -62,11 +62,11 @@
       padding: rem-calc(0 0 20 0);
       h1, h2, h3 {
         background-color: rgba(#eee, .3);
-        &:first-of-type {
+        &:first-child {
           @include border-top-radius(3px);
           border-bottom: solid 1px #999;
         }
-        &:not(:first-of-type) {
+        &:not(:first-child) {
           border-top: solid 1px #bbb;
           border-bottom: solid 1px #bbb;
         }

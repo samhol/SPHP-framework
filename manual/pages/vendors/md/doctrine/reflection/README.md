@@ -1,8 +1,4 @@
-# Doctrine Reflection
-
-[![Build Status](https://travis-ci.org/doctrine/reflection.svg)](https://travis-ci.org/doctrine/reflection)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/doctrine/reflection/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/doctrine/reflection/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/doctrine/reflection/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/doctrine/reflection/?branch=master)
+# Doctrine Reflection [![Build Status](https://travis-ci.org/doctrine/reflection.svg)](https://travis-ci.org/doctrine/reflection)
 
 The Doctrine Reflection project is a simple library used by the various Doctrine projects which adds some additional functionality on top of the reflection functionality that comes with PHP. It allows you to get the reflection information about classes, methods and properties statically.
 

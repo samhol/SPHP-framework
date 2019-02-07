@@ -1,6 +1,4 @@
-# Doctrine Common
-
-[![Build Status](https://secure.travis-ci.org/doctrine/common.png)](https://travis-ci.org/doctrine/common)
+# Doctrine Common [![Build Status](https://secure.travis-ci.org/doctrine/common.png)](https://travis-ci.org/doctrine/common)
 
 The Doctrine Common project is a library that provides extensions to core PHP functionality.
 

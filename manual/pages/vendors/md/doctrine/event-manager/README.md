@@ -1,8 +1,4 @@
-# Doctrine Event Manager
-
-[![Build Status](https://travis-ci.org/doctrine/event-manager.svg)](https://travis-ci.org/doctrine/event-manager)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/doctrine/event-manager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/doctrine/event-manager/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/doctrine/event-manager/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/doctrine/event-manager/?branch=master)
+# Doctrine Event Manager [![Build Status](https://travis-ci.org/doctrine/event-manager.svg)](https://travis-ci.org/doctrine/event-manager)
 
 The Doctrine Event Manager is a library that provides a simple event system.
 
