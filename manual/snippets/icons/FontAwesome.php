@@ -5,7 +5,6 @@ namespace Sphp\Html\Media\Icons;
 require_once('../../settings.php');
 
 use Sphp\Stdlib\Parsers\Parser;
-use Sphp\Stdlib\Arrays;
 
 $faData = Parser::fromFile('font-awesome.json');
 //$d = $json->fromFile('manual/snippets/icons.json');
@@ -28,7 +27,7 @@ if (array_key_exists($type, $types)) {
   foreach ($data as $item) {
     $name = str_replace(['fas', 'far', 'fab', ' fa-'], '', $item);
     echo '<div class="cell"><div class="icon-container"><div class="icon">';
-    echo (new Icon($item, "$item icon"))->setAttribute('title', $item . " icon");
+    echo (new FontIcon($item, "$item icon"))->setAttribute('title', $item . " icon");
     echo "</div><div class=\"ext\">$item</div>";
     echo '</div></div>';
   }

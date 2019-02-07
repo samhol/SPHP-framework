@@ -65,7 +65,6 @@ class Icons {
    * @var mixed[]
    */
   private static $tags = array(
-      
       'archive' => 'far fa-file-archive',
       'pdf' => 'far fa-file-pdf',
       'video' => 'far fa-file-video',
@@ -92,7 +91,6 @@ class Icons {
       'c#' => 'devicon-csharp-line',
       'c' => 'devicon-c-plain',
       'certificate' => 'fas fa-certificate',
-      
       'html5' => 'fab fa-html5',
       'sass' => 'fab fa-sass',
       'css3' => 'fab fa-css3',

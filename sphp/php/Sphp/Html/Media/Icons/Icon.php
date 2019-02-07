@@ -10,25 +10,22 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Html\Content;
+
 /**
- * Implements icon based on fonts and HTML tags
+ * Defines an accessible icon based on fonts or SVG
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Icon extends AbstractIcon {
+interface Icon extends Content {
 
   /**
-   * Constructor
+   * Sets the ARIA label text for the icon
    * 
-   * @param string|string[] $classes the icon name
-   * @param string $screenreaderLabel
+   * @param string $label the ARIA label text for the icon
+   * @return $this for a fluent interface
    */
-  public function __construct($classes, string $screenreaderLabel = null) {
-    parent::__construct('i');
-    $this->cssClasses()->protectValue($classes);
-    $this->setSreenreaderText($screenreaderLabel);
-  }
-
+  public function setAriaLabel(string $label = null);
 }

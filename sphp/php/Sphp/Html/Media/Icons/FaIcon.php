@@ -30,7 +30,7 @@ class FaIcon extends AbstractIcon {
   public function __construct($iconName, string $screenreaderLabel = null) {
     parent::__construct('i');
     $this->cssClasses()->protectValue($iconName);
-    $this->setSreenreaderText($screenreaderLabel);
+    $this->setAriaLabel($screenreaderLabel);
   }
 
   /**

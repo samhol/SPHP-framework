@@ -12,7 +12,6 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Foundation\Foundation;
 
 /**
  * Abstract Implementation of an icon based on fonts and HTML tags
@@ -21,12 +20,7 @@ use Sphp\Html\Foundation\Foundation;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractIcon extends EmptyTag implements IconInterface {
-
-  /**
-   * @var string 
-   */
-  private $sreenreaderLabel;
+class AbstractIcon extends EmptyTag implements Icon {
 
   /**
    * Constructor
@@ -37,26 +31,15 @@ class AbstractIcon extends EmptyTag implements IconInterface {
    */
   public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, true, $attrManager);
-    $this->attributes()->setAttribute('aria-hidden', 'true');
   }
-
-  /**
-   * Sets the screen reader text for the icon
-   * 
-   * @param string $sreenreaderLabel the screen reader text for the icon
-   * @return $this for a fluent interface
-   */
-  public function setSreenreaderText(string $sreenreaderLabel = null) {
-    $this->sreenreaderLabel = $sreenreaderLabel;
-    return $this;
-  }
-
-  public function getHtml(): string {
-    $output = parent::getHtml();
-    if ($this->sreenreaderLabel !== null) {
-      $output .= Foundation::screenReaderLabel($this->sreenreaderLabel);
+  public function setAriaLabel(string $label = null) {
+    $this->attributes()->setAria('label', $label);
+    if ($label === null) {
+      $this->attributes()->setAttribute('aria-hidden', 'true');
+    } else {
+      $this->attributes()->setAttribute('aria-hidden', 'false');
     }
-    return $output;
+    return $this;
   }
 
 }

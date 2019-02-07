@@ -7,7 +7,7 @@ use Sphp\Html\Foundation\Sites\Containers\Popup;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$icon = \Sphp\Manual\api()->classLinker(Icon::class);
+$icon = \Sphp\Manual\api()->classLinker(FontIcon::class);
 $devIcons = \Sphp\Manual\api()->classLinker(DevIcons::class);
 
 
@@ -33,9 +33,7 @@ $devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
 $devModal = new Modal('DevIcons icons', $devPopup);
 $devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
 echo $devModal;
-\Sphp\Manual\example('Sphp/Html/Media/Icons/Icon.php')
-        ->buildAccordion()->addCssClass('icons')
-        ->printHtml();
+
 
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
@@ -47,7 +45,7 @@ $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');
 $fasPopup->addCssClass('icon-example-popup');
 $fasPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=fas');
-$fasModal = new Modal('Brand icons', $fasPopup);
+$fasModal = new Modal('Solid icons', $fasPopup);
 
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
@@ -67,7 +65,7 @@ $setSize = $faIcon->methodLink('setSize');
         
 ##Font Awesome icons
 
-Font Awesome icons are a builid feature of the framework. they can be used by creating a $icon or a $faIcon object.
+Font Awesome icons are a build feature of the framework. they can be used by creating a $icon or a $faIcon object.
 MD
 );
 $buttonGroup->printHtml();

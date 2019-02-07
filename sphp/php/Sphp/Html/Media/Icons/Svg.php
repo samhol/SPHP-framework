@@ -19,7 +19,7 @@ use Sphp\Stdlib\Networks\RemoteResource;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Svg implements \Sphp\Html\Content, IconInterface {
+class Svg implements \Sphp\Html\Content, Icon {
 
   use \Sphp\Html\ContentTrait;
 
@@ -29,7 +29,7 @@ class Svg implements \Sphp\Html\Content, IconInterface {
     $this->svg = $svg;
   }
 
-  public function setSreenreaderText(string $sreenreaderLabel = null) {
+  public function setAriaLabel(string $sreenreaderLabel = null) {
     
   }
 

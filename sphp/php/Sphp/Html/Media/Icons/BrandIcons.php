@@ -67,11 +67,11 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
    * Appends a link
    * 
    * @param  string $url the URL of the link
-   * @param  IconInterface $icon the icon object acting as link
+   * @param  Icon $icon the icon object acting as link
    * @param  string|null $target optional target of the hyperlink
    * @return Hyperlink
    */
-  protected function appendIcon(string $url, IconInterface $icon, string $target = null): Hyperlink {
+  protected function appendIcon(string $url, Icon $icon, string $target = null): Hyperlink {
     $hyperlink = new Hyperlink($url, $icon, $target);
     $hyperlink->addCssClass('sphp', 'brand');
     $this->icons[] = $hyperlink;

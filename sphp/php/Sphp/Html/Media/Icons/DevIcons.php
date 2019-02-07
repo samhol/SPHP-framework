@@ -13,18 +13,18 @@ namespace Sphp\Html\Media\Icons;
 /**
  * Implements a factory for Font Awesome icon objects
  * 
- * @method \Sphp\Html\Media\Icons\Icon facebookSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon twitterSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon githubSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon facebookSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon twitterSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon githubSquare(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\Media\Icons\Icon js(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon jquery(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon zend(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon symfony(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon doctrine(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\Icon travis(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon jquery(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon php(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon zend(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon symfony(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon doctrine(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon travis(string $screenReaderLabel = null) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -59,23 +59,27 @@ class DevIcons {
   ];
 
   /**
-   * Creates a HTML object
+   * Creates an icon object
    *
    * @param  string $name the name of the icon (function name)
    * @param  array $arguments 
-   * @return Icon the corresponding component
+   * @return FontIcon the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): Icon {
-    $screenReaderText = array_shift($arguments);
+  public static function __callStatic(string $name, array $arguments): FontIcon {
     if (array_key_exists($name, static::$assosiations)) {
-      return new Icon(static::$assosiations[$name], $screenReaderText);
+      $icon = new FontIcon(static::$assosiations[$name]);
     } else {
       $h = preg_replace("/([A-Z])/", '-$1', $name);
       $h = strtolower($h);
       //echo "\nfoo$h\n";
-      return new Icon("devicon-$h", $screenReaderText);
+      $icon = new FontIcon("devicon-$h");
     }
+    $screenReaderText = array_shift($arguments);
+    if ($screenReaderText !== null) {
+      $icon->setAriaLabel($screenReaderText);
+    }
+    return $icon;
   }
 
 }

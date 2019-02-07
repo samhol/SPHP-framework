@@ -239,7 +239,7 @@ class FA {
    * @return $this for a fluent interface
    */
   public function setSize(string $size = null) {
-    $this->classes['size'] = $size;
+    $this->classes['setSize'] = $size;
     return $this;
   }
 

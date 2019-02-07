@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Config\ErrorHandling\ErrorListener;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
-use Sphp\Html\Media\Icons\IconInterface;
+use Sphp\Html\Media\Icons\Icon;
 use Sphp\Html\Media\Icons\Icons;
 
 /**
@@ -103,9 +103,9 @@ class ErrorCalloutBuilder implements ErrorListener {
   /**
    * 
    * @param int $errno PHP error number constant
-   * @return IconInterface
+   * @return Icon
    */
-  protected function getIcon(int $errno): IconInterface {
+  protected function getIcon(int $errno): Icon {
     if (\E_ERROR & $errno || \E_USER_ERROR & $errno) {
       return Icons::instance()->ban()->setSize('2x');
     } else {
