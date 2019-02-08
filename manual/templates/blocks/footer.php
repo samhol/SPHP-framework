@@ -1,7 +1,7 @@
 <?php
 
 use Sphp\Stdlib\Networks\URL;
-use Sphp\Html\Media\Icons\Icons;
+use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\Media\Icons\FaIcon;
 
 $currentUrl = URL::getCurrentURL();
@@ -26,9 +26,9 @@ $currentUrl = URL::getCurrentURL();
             <h6>Contact information:</h6>
             <ul class="fa-ul">
               <li><span class="fa-li"><?php (new FaIcon('fas fa-user-tie', 'name'))->printHtml() ?></span> Sami Holck</li>
-              <li><span class="fa-li"><?php Icons::phone('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
-              <li><span class="fa-li"><?php Icons::envelope('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
-              <li><span class="fa-li"><?php Icons::get('fa fa-map-marker-alt', 'Email address')->printHtml() ?></span> Rakuunatie 59 A3, Turku, Finland</li>
+              <li><span class="fa-li"><?php FA::phone('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
+              <li><span class="fa-li"><?php FA::envelope('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
+              <li><span class="fa-li"><?php FA::get('fa fa-map-marker-alt', 'Email address')->printHtml() ?></span> Rakuunatie 59 A3, Turku, Finland</li>
             </ul>
           </div>
         </div>

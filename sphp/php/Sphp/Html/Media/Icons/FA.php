@@ -59,11 +59,11 @@ use Sphp\Exceptions\BadMethodCallException;
 class FA {
 
   /**
-   * list of Font Awesome icons and their corresponding PHP classes
+   * list of Font Awesome icons and corresponding PHP calls
    *
-   * @var mixed[]
+   * @var string[]
    */
-  private static $tags = array(
+  private static $map = array(
       'archive' => 'far fa-file-archive',
       'pdf' => 'far fa-file-pdf',
       'video' => 'far fa-file-video',
@@ -87,9 +87,11 @@ class FA {
       'sass' => 'fab fa-sass',
       'css3' => 'fab fa-css3',
       'php' => 'fab fa-php',
+      'java' => 'fab fa-java',
       'js' => 'fab fa-js-square',
       'python' => 'fab fa-python',
       'nodejs' => 'fab fa-node-js',
+      'gulp' => 'fab fa-gulp',
       /**
        * Social
        */
@@ -134,16 +136,9 @@ class FA {
       'digg' => 'fab fa-digg',
       'dropbox' => 'fab fa-dropbox',
       'dribbble' => 'fab fa-dribbble',
-      
-      
       'eye' => 'far fa-eye',
-      
   );
 
-  /**
-   * @var Filetype|null singleton instance 
-   */
-  private static $instance;
   private $classes = [];
 
   public function __construct() {
@@ -186,10 +181,10 @@ class FA {
    * @throws BadMethodCallException
    */
   public static function __callStatic(string $name, array $arguments): FaIcon {
-    if (!isset(static::$tags[$name])) {
+    if (!isset(static::$map[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
-    $classes = static::$tags[$name];
+    $classes = static::$map[$name];
     $screenReaderText = array_shift($arguments);
     return new FaIcon($classes, $screenReaderText);
   }
@@ -202,8 +197,8 @@ class FA {
    * @return FaIcon the corresponding component
    */
   public static function get(string $name, string $screenReaderText = null): FaIcon {
-    if (isset(static::$tags[$name])) {
-      $classes = static::$tags[$name];
+    if (isset(static::$map[$name])) {
+      $classes = static::$map[$name];
     } else {
       $classes = $name;
     }
@@ -241,18 +236,6 @@ class FA {
   public function setSize(string $size = null) {
     $this->classes['setSize'] = $size;
     return $this;
-  }
-
-  /**
-   * Returns the singleton instance
-   * 
-   * @return Icons singleton instance
-   */
-  public static function instance(): Icons {
-    if (self::$instance === null) {
-      self::$instance = new static();
-    }
-    return self::$instance;
   }
 
 }

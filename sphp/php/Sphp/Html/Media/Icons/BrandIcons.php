@@ -45,7 +45,7 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
     parent::__construct('div');
     $this->icons = [];
     $this->addCssClass('sphp', 'brand-icons', 'logo');
-    $this->fa = Icons::instance();
+    $this->fa = new FA();
   }
 
   /**

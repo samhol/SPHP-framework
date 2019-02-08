@@ -17,7 +17,6 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Media\Icons\Filetype;
-use Sphp\Html\Media\Icons\Icons;
 use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\Span;
 
@@ -189,7 +188,7 @@ class CodeExampleAccordionBuilder implements Content {
     $outputSyntaxPane = new SyntaxHighlightingPane();
     if ($this->outputHl === 'text') {
       $outputSyntaxPane->useDefaultContentCopyController(false);
-      $icon = Icons::instance()->terminal()->fixedWidth(true);
+      $icon = FA::terminal()->fixedWidth(true);
     } else {
       $outputSyntaxPane->useDefaultContentCopyController(true);
       $icon = Filetype::instance()->get($this->outputHl)->fixedWidth(true);
