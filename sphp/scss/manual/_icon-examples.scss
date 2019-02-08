@@ -1,12 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Feb 19, 2018, 6:18:25 PM
-    Author     : Sami Holck <sami.holck@gmail.com>
-*/
+
 .icon-example-popup {
   padding: rem-calc(14);
   h2, h3 {
@@ -44,6 +36,11 @@ and open the template in the editor.
       svg {
         margin: rem-calc(3);
         height: rem-calc(60);
+      }
+      &.national-flag {
+        svg {
+          border: 1px solid #777;
+        }
       }
     }
     .ext {

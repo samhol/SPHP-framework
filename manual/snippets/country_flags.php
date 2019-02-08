@@ -2,6 +2,9 @@
 
 namespace Sphp\Html\Media\Icons;
 
+require_once '../settings.php';
+
+
 $countries = array
     (
     'AF' => 'Afghanistan',

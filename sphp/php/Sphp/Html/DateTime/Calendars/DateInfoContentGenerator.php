@@ -48,7 +48,7 @@ class DateInfoContentGenerator {
     $section->addCssClass('date-info-content');
     $heading = $section->appendH2($date->getDate()->format('l, F jS, Y'));
     if ($date->isFlagDay()) {
-      $heading->prepend('<span class="national-flag">' . \Sphp\Html\Media\Icons\Svg::fromUrl('http://data.samiholck.com/svg/flags/fi.svg') . '</span>');
+      $heading->prepend('<span class="national-flag">' . \Sphp\Html\Media\Icons\SvgLoader::fromUrl('http://data.samiholck.com/svg/flags/fi.svg') . '</span>');
     }
 
     $section->append($this->logLayoutBuilder->build($date));
