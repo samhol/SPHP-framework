@@ -249,14 +249,17 @@ $countries = array
     'ZM' => 'Zambia',
     'ZW' => 'Zimbabwe',
 );
-$foo = \Sphp\Html\Tags::div();
-$foo->inlineStyles()->setProperty('max-width', '40px')->setProperty('margin', '10px');
 $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('/home/int48291/public_html/data.samiholck.com/svg/flags'));
 foreach ($objects as $name => $object) {
   if ($object->isFile()) {
     echo '<div class="cell"><div class="icon-container"><div class="icon national-flag">';
     echo Sphp\Html\Media\Icons\SvgLoader::fromFile($object->getRealPath());
-    echo "</div><div class=\"ext\">flag</div>";
+    $countryCode = $object->getBasename('.svg');
+    if (array_key_exists(strtoupper($countryCode), $countries)) {
+      echo "</div><div class=\"ext\">" . $countries[strtoupper($countryCode)] . "</div>";
+    } else {
+      echo "</div><div class=\"ext\">UNKNOWN</div>";
+    }
     echo '</div></div>';
   }
 }

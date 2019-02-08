@@ -34,6 +34,13 @@ $devModal = new Modal('DevIcons icons', $devPopup);
 $devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
 echo $devModal;
 
+$flagPopup = new Popup();
+$flagPopup->layout()->setSize('large');
+$flagPopup->addCssClass('icon-example-popup');
+$flagPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
+$flagModal = new Modal('Country flags as SVG images', $flagPopup);
+$flagModal->getTrigger()->addCssClass('button', 'country-flags', 'radius', 'small');
+echo $flagModal;
 
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
