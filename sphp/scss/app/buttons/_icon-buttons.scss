@@ -1,0 +1,41 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+$social-brand-facebook: #3b5998;
+$social-brand-twitter: #55acee;
+$social-brand-linkedin: #007bb5;
+$social-brand-youtube: #bb0000;
+$social-brand-instagram: #125688;
+$social-brand-pinterest: #cb2027;
+$social-brand-google-plus: #dd4b39;
+$social-brand-github: #000000;
+$social-brand-tumblr: #32506d;
+@mixin icon-buttons() {
+  //.social {
+  //margin-right: .25rem;
+
+  .fontawesome {
+    @include button-style(rgba(#155592, 9), rgba(#228be6, .8), auto);
+    border: 1px solid rgba(#444, .8);
+    &:hover {
+      border-color: rgba(#333, 1);
+    }
+  }
+  .folder {
+    @include button-style(rgba(#F8D775, 1), rgba(#FFE9A2, .9), auto);
+    border: 1px solid rgba(#444, .8);
+    &:hover {
+      border-color: rgba(#333, 1);
+    }
+  }
+
+
+}
+
+
+//}

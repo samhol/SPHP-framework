@@ -62,6 +62,7 @@
 @import "app/apps";
 @import "manual/manual";
 
+@include sphp-foundation-buttons();
 @include sphp-error-handling-callouts;
 @include sphp-syntax-highlighting-modules;
 @include sphp-calendar-modules;

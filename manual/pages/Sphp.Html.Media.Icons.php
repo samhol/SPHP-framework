@@ -30,47 +30,46 @@ $devPopup = new Popup();
 $devPopup->layout()->setSize('large');
 $devPopup->addCssClass('icon-example-popup');
 $devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
-$devModal = new Modal('DevIcons icons', $devPopup);
-$devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small');
+$devModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons icons', $devPopup);
+$devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small', 'shadow');
 echo $devModal;
-
+$flagButton = \Sphp\Html\Foundation\Sites\Buttons\Button::pushButton('' . FA::flag() . ' ' . 'Country flags as SVG images')->addCssClass('facebook', 'social', 'small')->addCssClass('radius', 'bordered');
 $flagPopup = new Popup();
 $flagPopup->layout()->setSize('large');
 $flagPopup->addCssClass('icon-example-popup');
-$flagPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
-$flagModal = new Modal('Country flags as SVG images', $flagPopup);
-$flagModal->getTrigger()->addCssClass('button', 'country-flags', 'radius', 'small');
+$flagPopup->ajaxAppend('manual/snippets/icons/countryFlags.php');
+$flagModal = new Modal($flagButton, $flagPopup);
 echo $flagModal;
 
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
 $farPopup->addCssClass('icon-example-popup');
 $farPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=far');
-$farModal = new Modal('Regular icons', $farPopup);
+$farModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Regular icons', $farPopup);
 
 $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');
 $fasPopup->addCssClass('icon-example-popup');
 $fasPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=fas');
-$fasModal = new Modal('Solid icons', $fasPopup);
+$fasModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Solid icons', $fasPopup);
 
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
 $fabPopup->addCssClass('icon-example-popup');
 $fabPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=fab');
-$fabModal = new Modal('Brand icons', $fabPopup);
+$fabModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Brand icons', $fabPopup);
 
 $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
 $buttonGroup->setSize('small');
-$buttonGroup->appendButton($fasModal->getTrigger());
-$buttonGroup->appendButton($farModal->getTrigger());
-$buttonGroup->appendButton($fabModal->getTrigger());
+$buttonGroup->appendButton($fasModal->getTrigger()->addCssClass('fontawesome', 'shadow', 'radius'));
+$buttonGroup->appendButton($farModal->getTrigger()->addCssClass('fontawesome', 'shadow', 'radius'));
+$buttonGroup->appendButton($fabModal->getTrigger()->addCssClass('fontawesome', 'shadow', 'radius'));
 
 $faIcon = \Sphp\Manual\api()->classLinker(FaIcon::class);
 $setSize = $faIcon->methodLink('setSize');
 \Sphp\Manual\md(<<<MD
         
-##Font Awesome icons
+## Font Awesome icons
 
 Font Awesome icons are a build feature of the framework. they can be used by creating a $icon or a $faIcon object.
 MD
@@ -108,8 +107,8 @@ $filePopup = new Popup();
 $filePopup->layout()->setSize('large');
 $filePopup->addCssClass('icon-example-popup');
 $filePopup->ajaxAppend('manual/snippets/icons/Filesystem.php');
-$fileModal = new Modal('Filesystem icons', $filePopup);
-$fileModal->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
+$fileModal = new Modal('<i class="far fa-folder-open fa-lg fa-fw"></i> <b>Filesystem icons</b>', $filePopup);
+$fileModal->getTrigger()->addCssClass('button', 'folder', 'radius', 'small', 'shadow');
 $fileModal->printHtml();
 
 \Sphp\Manual\example('Sphp/Html/Media/Icons/FiletypeIcons.php')
