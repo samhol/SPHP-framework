@@ -33,30 +33,31 @@ $devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
 $devModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons icons', $devPopup);
 $devModal->getTrigger()->addCssClass('button', 'devicon', 'radius', 'small', 'shadow');
 echo $devModal;
-$flagButton = \Sphp\Html\Foundation\Sites\Buttons\Button::pushButton('' . FA::flag() . ' ' . 'Country flags as SVG images')->addCssClass('facebook', 'social', 'small')->addCssClass('radius', 'bordered');
+
 $flagPopup = new Popup();
 $flagPopup->layout()->setSize('large');
 $flagPopup->addCssClass('icon-example-popup');
 $flagPopup->ajaxAppend('manual/snippets/icons/countryFlags.php');
-$flagModal = new Modal($flagButton, $flagPopup);
+$flagModal = new Modal('<i class="far fa-flag fa-lg fa-fw"></i> Country flags', $flagPopup);
+$flagModal->getTrigger()->addCssClass('small', 'fontawesome', 'shadow', 'radius', 'button');
 echo $flagModal;
 
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
 $farPopup->addCssClass('icon-example-popup');
-$farPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=far');
+$farPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=regular');
 $farModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Regular icons', $farPopup);
 
 $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');
 $fasPopup->addCssClass('icon-example-popup');
-$fasPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=fas');
+$fasPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=solid');
 $fasModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Solid icons', $fasPopup);
 
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
 $fabPopup->addCssClass('icon-example-popup');
-$fabPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=fab');
+$fabPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=brand');
 $fabModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Brand icons', $fabPopup);
 
 $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
@@ -71,7 +72,8 @@ $setSize = $faIcon->methodLink('setSize');
         
 ## Font Awesome icons
 
-Font Awesome icons are a build feature of the framework. they can be used by creating a $icon or a $faIcon object.
+Font Awesome icons are a build feature of the framework. they can be used by 
+creating a $icon or a $faIcon object.
 MD
 );
 $buttonGroup->printHtml();
@@ -80,7 +82,9 @@ $fasPopup->printHtml();
 $farPopup->printHtml();
 $fabPopup->printHtml();
 \Sphp\Manual\md(<<<MD
-$faIcon Icon size can be changed simply by calling $setSize method with a Font Awesome CSS class (or a short hand version of it by simply removing the `fa-` from the begining of the size class)
+$faIcon Icon size can be changed simply by calling $setSize method with a Font 
+Awesome CSS class (or a short hand version of it by simply removing the `fa-` 
+from the begining of the size class)
 
 **Sizes are:**
  * `fa-xs` - .75em
