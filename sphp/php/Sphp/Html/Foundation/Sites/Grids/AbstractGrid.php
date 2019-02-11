@@ -13,6 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\TraversableContent;
+use IteratorAggregate;
 use Traversable;
 
 /**
@@ -24,7 +25,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractGrid extends AbstractComponent implements \IteratorAggregate, GridInterface {
+class AbstractGrid extends AbstractComponent implements IteratorAggregate, GridInterface {
 
   use \Sphp\Html\TraversableTrait;
 

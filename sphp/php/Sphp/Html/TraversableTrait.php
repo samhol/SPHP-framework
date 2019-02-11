@@ -65,4 +65,8 @@ trait TraversableTrait {
     return $this->getComponentsBy($search);
   }
 
+  public function toArray(): array {
+    return iterator_to_array($this);
+  }
+
 }

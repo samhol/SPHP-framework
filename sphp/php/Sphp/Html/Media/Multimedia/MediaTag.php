@@ -44,9 +44,9 @@ interface MediaTag extends Tag {
   /**
    * Returns all the source components associated with the component
    * 
-   * @return TraversableContent all the source components
+   * @return Source[] all the source components
    */
-  public function getSources(): TraversableContent;
+  public function getSources(): iterable;
 
   /**
    * Adds a text track for the media element
@@ -62,9 +62,9 @@ interface MediaTag extends Tag {
   /**
    * Returns all the track components associated with the component
    * 
-   * @return TraversableContent all the track components
+   * @return Track[] all the track components
    */
-  public function getTracks(): TraversableContent;
+  public function getTracks(): iterable;
 
   /**
    * Sets whether the video will automatically start playing as soon as it can 

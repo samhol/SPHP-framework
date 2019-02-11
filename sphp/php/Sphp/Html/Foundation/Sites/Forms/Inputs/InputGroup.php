@@ -171,4 +171,8 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     return $this->group->getIterator();
   }
 
+  public function toArray(): array {
+    return iterator_to_array($this);
+  }
+
 }

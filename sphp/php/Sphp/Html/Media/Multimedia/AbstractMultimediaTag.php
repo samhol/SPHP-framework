@@ -29,14 +29,9 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var PlainContainer
+   * @var MultimediaSource[]
    */
   private $sources;
-
-  /**
-   * @var PlainContainer
-   */
-  private $tracks;
 
   /**
    * Constructor
@@ -47,8 +42,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    */
   public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, $sources = null) {
     parent::__construct($tagname, $attrManager);
-    $this->sources = new PlainContainer();
-    $this->tracks = new PlainContainer();
+    $this->sources = [];
     if ($sources !== null) {
       foreach (is_array($sources) ? $sources : [$sources] as $src) {
         if ($src instanceof Source) {
@@ -61,24 +55,18 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
   }
 
   public function __destruct() {
-    unset($this->sources, $this->tracks);
+    unset($this->sources);
     parent::__destruct();
   }
 
   public function contentToString(): string {
-    return $this->sources->getHtml()
-            . $this->tracks->getHtml()
+    return implode($this->sources)
             . "<p>Your browser does not support the &lt;"
             . $this->getTagName() . "&gt; tag!</p>";
   }
 
   public function addMediaSrc(MultimediaSource $src) {
-    if ($src instanceof Source) {
-      $this->sources->append($src);
-    }
-    if ($src instanceof Track) {
-      $this->tracks->append($src);
-    }
+    $this->sources[] = $src;
     return $this;
   }
 
@@ -88,18 +76,10 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
     return $source;
   }
 
-  public function getSources(): TraversableContent {
-    return $this->sources->getIterator();
-  }
-
   public function addTrack(string $src, string $srclang = null): Track {
     $track = new Track($src, $srclang);
     $this->addMediaSrc($track);
     return $track;
-  }
-
-  public function getTracks(): TraversableContent {
-    return $this->tracks->getIterator();
   }
 
   public function autoplay(bool $autoplay = true) {
@@ -146,7 +126,15 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->tracks->toArray() + $this->sources->toArray());
+    return new Iterator($this->sources);
+  }
+
+  public function getSources(): iterable {
+    return (new Iterator($this->sources))->getComponentsByObjectType(Source::class)->toArray();
+  }
+
+  public function getTracks(): iterable {
+    return (new Iterator($this->sources))->getComponentsByObjectType(Track::class)->toArray();
   }
 
 }

@@ -229,6 +229,10 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
     return $this->body->getIterator();
   }
 
+  public function toArray(): array {
+    return iterator_to_array($this);
+  }
+
   public function count(): int {
     return $this->body->count();
   }

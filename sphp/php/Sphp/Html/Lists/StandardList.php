@@ -144,4 +144,8 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
     return $this->items->getIterator();
   }
 
+  public function toArray(): array {
+    return iterator_to_array($this);
+  }
+
 }

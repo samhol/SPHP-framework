@@ -95,7 +95,7 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
   public function getIterator(): Traversable {
     return new Iterator($this->container);
   }
-
+  
   /**
    * Count the number of inserted script components
    *

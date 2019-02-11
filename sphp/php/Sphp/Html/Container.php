@@ -31,7 +31,7 @@ use ArrayAccess;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface Container extends TraversableContent, Arrayable, ArrayAccess {
+interface Container extends TraversableContent, ArrayAccess {
 
   /**
    * Appends a new value as the last element

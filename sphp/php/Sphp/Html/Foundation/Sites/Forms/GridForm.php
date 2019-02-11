@@ -179,6 +179,10 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     return $this->getGrid();
   }
 
+  public function toArray(): array {
+    return iterator_to_array($this);
+  }
+
   /**
    * Appends a hidden variable into the form
    *

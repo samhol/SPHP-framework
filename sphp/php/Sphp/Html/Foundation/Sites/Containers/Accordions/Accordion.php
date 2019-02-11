@@ -15,6 +15,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
 use Sphp\Html\Iterator;
+
 /**
  * Implements an Foundation Accordion
  *
@@ -136,7 +137,7 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
     $this->attributes()->setAttribute('data-allow-all-closed', $value);
     return $this;
   }
-  
+
   /**
    * Sets whether to allow the accordion to close all panes
    * 
