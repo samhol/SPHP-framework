@@ -15,19 +15,6 @@ use Sphp\DateTime\Calendars\Diaries\MutableDiary;
   
 class DiaryTest extends TestCase {
 
-  /**
-   * @var MutableDiary
-   */
-  private $diary;
-
-  protected function setUp() {
-    $this->diary = new MutableDiary();
-  }
-
-  protected function tearDown() {
-    unset($this->diary);
-  }
-
   public function testConstructor() {
     $diary = new MutableDiary();
     $this->assertFalse($diary->notEmpty());
