@@ -7,10 +7,10 @@
 // "\2192" outputs ascii character "→"
 // "\2022" outputs ascii character "•"
 
-$slick-font-path: "./fonts/" !default;
+$slick-font-path: "./sphp/css/fonts" !default;
 $slick-font-family: "slick" !default;
-$slick-loader-path: "./" !default;
-$slick-arrow-color: black !default;
+$slick-loader-path: "./sphp/css/images" !default;
+$slick-arrow-color: white !default;
 $slick-dot-color: black !default;
 $slick-dot-color-active: $slick-dot-color !default;
 $slick-prev-character: "\2190" !default;
@@ -31,8 +31,12 @@ $slick-opacity-not-active: 0.25 !default;
 }
 
 @function slick-font-url($url) {
-
+    @if function-exists(font-url) {
+        @return font-url($url);
+    }
+    @else {
         @return url($slick-font-path + $url);
+    }
 }
 
 /* Slider */

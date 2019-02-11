@@ -57,7 +57,7 @@ $fasModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Solid
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
 $fabPopup->addCssClass('icon-example-popup');
-$fabPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=brand');
+$fabPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=brands');
 $fabModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Brand icons', $fabPopup);
 
 $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
