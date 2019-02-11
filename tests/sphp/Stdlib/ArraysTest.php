@@ -307,12 +307,12 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @expectedException InvalidArgumentException
    * @param array $array
    * @param string $separator
    * @param string $result
    */
   public function testImplodeFail() {
+    $this->expectException(InvalidArgumentException::class);
     Arrays::recursiveImplode(['F' => new \stdClass()]);
   }
 

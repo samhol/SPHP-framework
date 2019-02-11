@@ -12,6 +12,7 @@ namespace Sphp\Tests\Validators;
 
 use Sphp\Validators\IsInstanceOf;
 use Sphp\Validators\Validator;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class IsInstanceOfTest extends ValidatorTest {
 
@@ -24,7 +25,7 @@ class IsInstanceOfTest extends ValidatorTest {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->validator = new IsInstanceOf(\stdClass::class);
   }
 
@@ -32,24 +33,20 @@ class IsInstanceOfTest extends ValidatorTest {
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->validator);
   }
 
-  /**
-   */
   public function testConstructor() {
     $this->assertCount(0, $this->validator->errors());
     $this->assertEquals(\stdClass::class, $this->validator->getClassName());
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testChangeWhitelist() {
     $this->validator->setClassName(\ArrayAccess::class);
     $this->assertEquals(\ArrayAccess::class, $this->validator->getClassName());
     $this->assertTrue($this->validator->isValid(new \ArrayIterator()));
+    $this->expectException(InvalidArgumentException::class);
     $this->validator->setClassName('foo');
   }
 

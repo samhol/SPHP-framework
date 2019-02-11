@@ -562,9 +562,9 @@ class StringManipulationTest extends TestCase {
 
   /**
    * @covers \Sphp\Stdlib\Strings::randomize
-   * @expectedException \Sphp\Exceptions\LogicException
    */
   public function testRandomizeFail() {
+    $this->expectException(\Sphp\Exceptions\LogicException::class);
     Strings::randomize('a', 1);
   }
 

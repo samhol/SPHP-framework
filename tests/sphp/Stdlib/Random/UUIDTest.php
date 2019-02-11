@@ -27,10 +27,8 @@ class UUIDTest extends TestCase {
     }
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testV5GenarationFail() {
+    $this->expectException(InvalidArgumentException::class);
     UUID::v5(UUID::v4() . 'foo', 'foo');
   }
 

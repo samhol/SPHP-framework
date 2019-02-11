@@ -13,7 +13,7 @@ class SizeableMediaTraitTest extends TestCase {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->component = $this->getMockForTrait(SizeableMediaTrait::class);
     $mngr = new HtmlAttributeManager();
     $this->component->expects($this->any())

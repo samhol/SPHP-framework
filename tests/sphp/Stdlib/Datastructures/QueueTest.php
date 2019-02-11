@@ -6,11 +6,16 @@ use Sphp\Exceptions\UnderflowException;
 
 class QueueTest extends \PHPUnit\Framework\TestCase {
 
-  protected function setUp() {
+  /**
+   * @var ArrayQueue 
+   */
+  protected $q;
+
+  protected function setUp(): void {
     $this->q = new ArrayQueue();
   }
 
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->q);
   }
 
@@ -72,12 +77,9 @@ class QueueTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->q->isEmpty());
   }
 
-  /**
-   * @expectedException Exception
-   * @expectedExceptionCode 0
-   */
   public function testEmpty() {
     $this->assertTrue($this->q->isEmpty());
+    $this->expectException(UnderflowException::class);
     $this->q->dequeue();
   }
 

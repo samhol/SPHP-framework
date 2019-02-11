@@ -12,6 +12,8 @@ namespace Sphp\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Config\Ini;
+use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\OutOfRangeException;
 
 class IniTest extends TestCase {
 
@@ -72,20 +74,16 @@ class IniTest extends TestCase {
     return $ini;
   }
 
-  /**
-   * @expectedException Sphp\Exceptions\RuntimeException
-   */
   public function testInvalidInit() {
     $ini = new Ini();
     $this->assertSame($ini, $ini->set('foo', 'bar'));
+    $this->expectException(RuntimeException::class);
     $this->assertSame($ini, $ini->init());
   }
 
-  /**
-   * @expectedException Sphp\Exceptions\OutOfRangeException
-   */
   public function testInvalidOffsetGet() {
     $ini = new Ini();
+    $this->expectException(OutOfRangeException::class);
     $ini['foo'];
   }
 

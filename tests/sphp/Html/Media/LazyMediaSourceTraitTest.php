@@ -13,7 +13,7 @@ class LazyMediaSourceTraitTest extends TestCase {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->mock = $this->getMockForTrait(LazyMediaSourceTrait::class);
     $mngr = new HtmlAttributeManager();
     $this->mock->expects($this->any())

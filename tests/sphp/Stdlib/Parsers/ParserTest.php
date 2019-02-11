@@ -82,24 +82,18 @@ class ParserTest extends TestCase {
     $this->assertSame(Parser::fromFile($file), $expected);
   }
 
-  /**
-   * @expectedException RuntimeException
-   */
   public function testParsingFromInvalidFile() {
+    $this->expectException(RuntimeException::class);
     Parser::fromFile('foo.bar');
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testParsingFileWithoutExtension() {
+    $this->expectException(InvalidArgumentException::class);
     Parser::fromFile('./tests/files/test');
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testParsingFileWithUnknownExtension() {
+    $this->expectException(InvalidArgumentException::class);
     Parser::fromFile('./tests/files/test.foo');
   }
 

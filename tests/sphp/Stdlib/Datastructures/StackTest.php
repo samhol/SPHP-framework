@@ -11,6 +11,7 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use Exception;
+use Sphp\Exceptions\UnderflowException;
 
 class StackTest extends \PHPUnit\Framework\TestCase {
 
@@ -27,11 +28,11 @@ class StackTest extends \PHPUnit\Framework\TestCase {
     return new ArrayStack();
   }
 
-  protected function setUp() {
+  protected function setUp(): void {
     $this->datastructure = $this->createStack();
   }
 
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->datastructure);
   }
 
@@ -46,19 +47,13 @@ class StackTest extends \PHPUnit\Framework\TestCase {
     ];
   }
 
-  /**
-   * @expectedException Exception
-   * @expectedExceptionCode 0
-   */
   public function testPeekEmpty() {
+    $this->expectException(UnderflowException::class);
     $this->datastructure->peek();
   }
 
-  /**
-   * @expectedException Exception
-   * @expectedExceptionCode 0
-   */
   public function testPopEmpty() {
+    $this->expectException(UnderflowException::class);
     $this->datastructure->pop();
   }
 
@@ -77,27 +72,21 @@ class StackTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
-  /**
-   * @expectedException Exception
-   * @expectedExceptionCode 0
-   */
   public function testEmpty1() {
     $this->datastructure->push("value");
     $this->assertFalse($this->datastructure->isEmpty());
     $this->datastructure->pop();
     $this->assertTrue($this->datastructure->isEmpty());
+    $this->expectException(UnderflowException::class);
     $this->datastructure->pop();
   }
 
-  /**
-   * @expectedException Exception
-   * @expectedExceptionCode 0
-   */
   public function testEmpty() {
     $this->datastructure->push("value");
     $this->assertFalse($this->datastructure->isEmpty());
     $this->datastructure->pop();
     $this->assertTrue($this->datastructure->isEmpty());
+    $this->expectException(UnderflowException::class);
     $this->datastructure->pop();
   }
 

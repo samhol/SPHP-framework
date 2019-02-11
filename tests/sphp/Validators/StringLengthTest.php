@@ -11,6 +11,7 @@
 namespace Sphp\Validators;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class StringLengthTest extends TestCase {
 
@@ -44,9 +45,6 @@ class StringLengthTest extends TestCase {
     $this->assertTrue($validator->isValid('     '));
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testUpperBoundValidation() {
     $validator = new StringLength(null, 5);
     $this->assertSame($validator, $validator->setUpperBoundValidation(5));
@@ -55,27 +53,22 @@ class StringLengthTest extends TestCase {
     $this->assertFalse($validator->isRangeValidator());
     $this->assertTrue($validator->isValid(''));
     $this->assertFalse($validator->isValid('foobar'));
+    $this->expectException(InvalidArgumentException::class);
     $validator->setUpperBoundValidation(-1);
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testInvalidConstructor() {
+    $this->expectException(InvalidArgumentException::class);
     new StringLength(-1, 5);
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testEmptyConstructor() {
+    $this->expectException(InvalidArgumentException::class);
     new StringLength();
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testInvalidRangeSet() {
+    $this->expectException(InvalidArgumentException::class);
     (new StringLength(1, 2))->setRangeValidation(1, 0);
   }
 

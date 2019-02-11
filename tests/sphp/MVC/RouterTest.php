@@ -11,7 +11,8 @@
 namespace Sphp\MVC;
 
 use PHPUnit\Framework\TestCase;
-use \Sphp\Stdlib\Strings;
+use Sphp\Stdlib\Strings;
+use Sphp\Exceptions\IllegalStateException;
 
 class RouterTest extends TestCase {
 
@@ -28,23 +29,21 @@ class RouterTest extends TestCase {
     return $data;
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\IllegalStateException
-   */
   public function testEmptyRouting() {
     $router = new Router();
     $this->assertTrue($router->isEmpty());
+    $this->expectException(IllegalStateException::class);
     $router->execute('http://samiholck.com/');
   }
 
   /**
    * @dataProvider urls
    * @param string|null $url
-   * @expectedException \Sphp\Exceptions\IllegalStateException
    */
   public function testRoutingWithMissingRoute($url) {
     $router = new Router();
     $router->route('/foo/bar', [$this, 'defaultRoute']);
+    $this->expectException(IllegalStateException::class);
     $router->execute($url);
   }
 

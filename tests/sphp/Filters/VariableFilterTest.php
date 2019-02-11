@@ -26,8 +26,8 @@ class VariableFilterTest extends TestCase {
         ['-123', 0],
         ['-10', -10],
         ['-10', -10],
-        ['0Xf', '15'],
-        ['-0Xf', '0'],
+        ['0Xf', 15],
+        ['-0Xf', 0],
     ];
   }
 
@@ -48,25 +48,19 @@ class VariableFilterTest extends TestCase {
     $this->assertSame($expected, $intFilter($var));
   }
 
-  /**
-   * @expectedException BadMethodCallException
-   */
   public function testFactoryFail() {
+    $this->expectException(BadMethodCallException::class);
     Filters::foo();
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testSettingsGettingFail() {
+    $this->expectException(InvalidArgumentException::class);
     $filter = Filters::string();
     echo $filter->foo;
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testSettingsSettingFail() {
+    $this->expectException(InvalidArgumentException::class);
     $filter = Filters::string();
     $filter->foo = 'bar';
   }

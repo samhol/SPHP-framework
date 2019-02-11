@@ -13,14 +13,8 @@ namespace Sphp\Stdlib\Parsers;
 use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
+use Sphp\Exceptions\InvalidArgumentException;
 
-/**
- * Description of JsonTest
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
 class YamlTest extends TestCase {
 
   /**
@@ -32,7 +26,7 @@ class YamlTest extends TestCase {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->parser = new Yaml();
   }
 
@@ -40,7 +34,7 @@ class YamlTest extends TestCase {
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->parser);
   }
 
@@ -66,18 +60,13 @@ class YamlTest extends TestCase {
     $this->assertTrue(is_string($string));
   }
 
-
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testEncodeInvalidData() {
+    $this->expectException(InvalidArgumentException::class);
     var_dump($this->parser->write('...'));
   }
-  
-  /**
-   * @expectedException \Sphp\Exceptions\FileSystemException
-   */
+
   public function testConverInvalidFile() {
+    $this->expectException(FileSystemException::class);
     $this->parser->readFromFile('foo.bar', false);
   }
 

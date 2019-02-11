@@ -3,7 +3,7 @@
 namespace Sphp\Config;
 
 use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
-
+use Sphp\Exceptions\RuntimeException;
 class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
 
   public function configData1(): array {
@@ -83,9 +83,6 @@ class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
     $this->assertInstanceOf(Config::class, $conf['array']);
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\RuntimeException
-   */
   public function testLocked() {
     $conf = new Config([], false);
     $conf['array'] = ['foo' => 'bar'];
@@ -94,12 +91,10 @@ class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
     $this->assertTrue($conf->isReadOnly());
     $this->assertInstanceOf(Config::class, $conf['array']);
     $this->assertTrue($conf['array']->isReadOnly());
+    $this->expectException(RuntimeException::class);
     $conf->set('foo', 'bar');
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\RuntimeException
-   */
   public function testMagicMethods() {
     $conf = new Config([], false);
     $this->assertFalse(isset($conf->array));
@@ -112,6 +107,7 @@ class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
     $conf->setReadOnly();
     $this->assertTrue(isset($conf->array->foo));
     $this->assertSame('bar', $conf->array->foo);
+    $this->expectException(RuntimeException::class);
     $conf->foo = 'bar';
   }
 

@@ -11,6 +11,7 @@
 namespace Sphp\DateTime;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class DateTest extends TestCase {
 
@@ -70,17 +71,13 @@ class DateTest extends TestCase {
     $this->assertSame(strtotime("now"), $fromObj->getTimestamp());
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testFromWithInvalidStringInput() {
+    $this->expectException(InvalidArgumentException::class);
     DateTime::from('foo');
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testFromWithInvalidInputType() {
+    $this->expectException(InvalidArgumentException::class);
     DateTime::from(new \stdClass());
   }
 

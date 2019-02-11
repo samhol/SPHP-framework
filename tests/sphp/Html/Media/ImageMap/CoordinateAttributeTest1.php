@@ -5,6 +5,7 @@ namespace Sphp\Tests\Html\Media\ImageMap;
 use Sphp\Tests\Html\Attributes\AbstractAttributeObjectTest;
 use Sphp\Html\Attributes\Attribute;
 use Sphp\Html\Media\ImageMap\CoordinateAttribute;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class CoordinateAttributeTest1 extends AbstractAttributeObjectTest {
 
@@ -69,22 +70,15 @@ class CoordinateAttributeTest1 extends AbstractAttributeObjectTest {
     //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 
-  /**
-   * @expectedException  \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testObjectSetting() {
     $attr = new CoordinateAttribute('foo');
+    $this->expectException(InvalidArgumentException::class);
     $attr->setValue(new \stdClass);
-
-    //var_dump("$attr");
-    //$this->assertEquals($this->attrs->getValue(), $expected);
   }
 
-  /**
-   * @expectedException  \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testInvalidStringSetting() {
     $attr = new CoordinateAttribute('foo');
+    $this->expectException(InvalidArgumentException::class);
     $attr->setValue('a,b,c');
 
     //var_dump("$attr");

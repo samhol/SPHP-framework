@@ -9,11 +9,11 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
    */
   protected $collection;
 
-  protected function setUp() {
+  protected function setUp(): void {
     $this->collection = new Collection();
   }
 
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->collection);
   }
 

@@ -15,7 +15,7 @@ class ThTest extends ContainerCellTests {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->cell = new Th();
   }
   
@@ -31,7 +31,7 @@ class ThTest extends ContainerCellTests {
     ];
   }
   /**
-   * @dataProvider spanData
+   * @dataProvider scopeData
    */
   public function testScope(string $scope = null) {
     $this->cell->setScope($scope);    

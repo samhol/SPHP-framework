@@ -11,14 +11,14 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\UnderflowException;
 
 class SequenceTest extends TestCase {
 
-  /**
-   * @expectedException \Sphp\Exceptions\OutOfBoundsException
-   */
   public function testInvalidInsertions() {
     $sequence = new Sequence();
+    $this->expectException(OutOfBoundsException::class);
     $sequence->insert(-5, 'b');
   }
 
@@ -101,7 +101,6 @@ class SequenceTest extends TestCase {
   }
 
   /**
-   * @expectedException \Sphp\Exceptions\OutOfBoundsException
    * @param  Sequence $sequence
    * @return Sequence
    */
@@ -110,12 +109,10 @@ class SequenceTest extends TestCase {
     $class = new \stdClass();
     $sequence->insert(100, $class);
     $this->assertTrue($sequence->contains($class));
+    $this->expectException(OutOfBoundsException::class);
     $sequence->remove(101);
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\UnderflowException
-   */
   public function testPopping() {
     $sequence = new Sequence();
     $sequence->insert(0, 'zero');
@@ -124,6 +121,7 @@ class SequenceTest extends TestCase {
     $this->assertSame('ten', $sequence->pop());
     $this->assertSame('five', $sequence->pop());
     $this->assertSame('zero', $sequence->pop());
+    $this->expectException(UnderflowException::class);
     $sequence->pop();
   }
 

@@ -11,6 +11,7 @@
 namespace Sphp\Validators;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\InvalidArgumentException;
 
 class ErrormessageTest extends TestCase {
 
@@ -83,10 +84,10 @@ class ErrormessageTest extends TestCase {
 
   /**
    * @dataProvider invalidMergeContent
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
    */
   public function testInvalidMerging($mergedData) {
     $cont = new ErrorMessages();
+    $this->expectException(InvalidArgumentException::class);
     $this->assertSame($cont, $cont->mergeCollection($mergedData));
   }
 
@@ -145,21 +146,19 @@ class ErrormessageTest extends TestCase {
   }
 
   /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
    * @dataProvider invalidContent
    * @param mixed $invalidValue
    */
   public function testInvalidInsertion($invalidValue) {
     $cont = new ErrorMessages();
+    $this->expectException(InvalidArgumentException::class);
     $cont['foo'] = $invalidValue;
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testAppendingNonExsistentTemplate() {
     $cont = new ErrorMessages();
     $cont->setTemplate('foo', 'bar');
+    $this->expectException(InvalidArgumentException::class);
     $cont->appendErrorFromTemplate('bar');
   }
 

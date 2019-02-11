@@ -15,7 +15,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 class FullURLTest extends \PHPUnit\Framework\TestCase {
 
   public function getAlias(int $part): string {
-    
+
     $arr = [
         URL::SCHEME => 'scheme',
         URL::HOST => 'host',
@@ -144,35 +144,27 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testIssetInvalidPartName() {
     $url = new URL();
+    $this->expectException(InvalidArgumentException::class);
     $this->assertFalse(isset($url['foo']));
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testUnsetInvalidPartName() {
     $url = new URL();
+    $this->expectException(InvalidArgumentException::class);
     unset($url['foo']);
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testSetInvalidPartName() {
     $url = new URL();
+    $this->expectException(InvalidArgumentException::class);
     $url['foo'] = 'bar';
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testGetInvalidPartName() {
     $url = new URL();
+    $this->expectException(InvalidArgumentException::class);
     $bar = $url['foo'];
   }
 

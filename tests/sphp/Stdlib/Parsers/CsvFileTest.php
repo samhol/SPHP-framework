@@ -14,15 +14,18 @@ use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStreamDirectory;
 use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\FileSystemException;
+use Sphp\Exceptions\OutOfRangeException;
+use Sphp\Exceptions\LogicException;
 
 class CsvFileTest extends TestCase {
 
-  protected function setUp() {
+  protected function setUp(): void {
     vfsStreamWrapper::register();
     vfsStreamWrapper::setRoot(new vfsStreamDirectory('csvFiles'));
   }
 
-  protected function tearDown() {
+  protected function tearDown(): void {
     vfsStreamWrapper::unregister();
   }
 
@@ -36,10 +39,8 @@ class CsvFileTest extends TestCase {
     Filesystem::rmFile('./tests/temp/bar.csv');
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\FileSystemException
-   */
   public function testInvalidFileName() {
+    $this->expectException(FileSystemException::class);
     new CsvFile('foo.csv');
   }
 
@@ -98,18 +99,14 @@ class CsvFileTest extends TestCase {
     }
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\OutOfRangeException
-   */
   public function testOverflowSeek() {
+    $this->expectException(OutOfRangeException::class);
     $csvObj = new CsvFile('./tests/files/test.csv');
     $csvObj->seek(100);
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\LogicException
-   */
   public function testNegativeSeek() {
+    $this->expectException(LogicException::class);
     $csvObj = new CsvFile('./tests/files/test.csv');
     $csvObj->seek(-1);
   }

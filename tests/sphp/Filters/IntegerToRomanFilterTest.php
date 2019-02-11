@@ -53,13 +53,13 @@ class IntegerToRomanFilterTest extends TestCase {
 
   /**
    * @dataProvider invalidData
-   * @expectedException RuntimeException
    * 
    * @param int $int
    * @param string $roman
    */
   public function testInvalidStrings($invalid) {
     $filter = new IntegerToRomanFilter();
+    $this->expectException(RuntimeException::class);
     $filter->filter($invalid);
   }
 

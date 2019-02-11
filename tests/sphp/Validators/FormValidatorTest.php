@@ -25,7 +25,7 @@ class FormValidatorTest extends ValidatorTest {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->validator = $this->createValidator();
   }
 
@@ -33,7 +33,7 @@ class FormValidatorTest extends ValidatorTest {
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->validator);
   }
 
@@ -122,14 +122,12 @@ class FormValidatorTest extends ValidatorTest {
     $this->AssertCount(0, $this->validator->errors());
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\OutOfBoundsException
-   */
   public function testValidatorManagement() {
     $regex = new Regex("/^[foo]$/", 'foo is foo');
     $this->assertSame($this->validator, $this->validator->setValidator('foo', $regex));
     $this->assertTrue($this->validator->hasValidator('foo'));
     $this->assertSame($regex, $this->validator->getValidator('foo'));
+    $this->expectException(\Sphp\Exceptions\OutOfBoundsException::class);
     $this->assertSame($regex, $this->validator->getValidator('bar'));
   }
 

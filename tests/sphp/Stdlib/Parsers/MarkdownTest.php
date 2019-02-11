@@ -25,7 +25,7 @@ class MarkdownTest extends TestCase {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->md = new Markdown();
   }
 
@@ -33,7 +33,7 @@ class MarkdownTest extends TestCase {
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->md);
   }
 
@@ -42,7 +42,7 @@ class MarkdownTest extends TestCase {
    */
   public function filepathMap(): array {
     $map = [
-        [ './tests/files/test.md', '<h1 foo="bar">test</h1>'],
+        ['./tests/files/test.md', '<h1 foo="bar">test</h1>'],
         ['./tests/files/test.yaml', ['foo' => 'bar']],
         ['./tests/files/test.json', ['foo' => 'bar']],
         ['./tests/files/test.ini', ['foo' => 'bar']],
@@ -64,10 +64,8 @@ class MarkdownTest extends TestCase {
     $this->assertSame($fromFile, $fromString);
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\FileSystemException
-   */
   public function testConverInvalidFile() {
+    $this->expectException(FileSystemException::class);
     $this->md->parseFile('foo.bar', false);
   }
 

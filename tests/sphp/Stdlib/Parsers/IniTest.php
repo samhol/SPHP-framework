@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Description of JsonTest
@@ -32,7 +33,7 @@ class IniTest extends TestCase {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->parser = new Ini();
   }
 
@@ -40,7 +41,7 @@ class IniTest extends TestCase {
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
-  protected function tearDown() {
+  protected function tearDown(): void {
     unset($this->parser);
   }
 
@@ -66,25 +67,19 @@ class IniTest extends TestCase {
     $this->assertEquals("foo = \"bar\"\n", $string);
   }
 
-
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testEncodeInvalidData() {
+    $this->expectException(InvalidArgumentException::class);
     var_dump($this->parser->write('foo'));
   }
-  
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
+
   public function testReadInvalidString() {
+    $this->expectException(InvalidArgumentException::class);
     var_dump($this->parser->readFromString('?{}|&~!()^ = bar', false));
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\FileSystemException
-   */
   public function testConverInvalidFile() {
+    $this->expectException(FileSystemException::class);
     $this->parser->readFromFile('foo.bar', false);
   }
+
 }

@@ -76,27 +76,21 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
-  /**
-   * @expectedException OutOfBoundsException
-   */
   public function testInvalidGetBit() {
     $b = new BitMask();
+    $this->expectException(OutOfBoundsException::class);
     $b->getBit($b->length());
   }
 
-  /**
-   * @expectedException OutOfBoundsException
-   */
   public function testInvalidSetBit() {
     $b = new BitMask();
+    $this->expectException(OutOfBoundsException::class);
     $b->setBit($b->length());
   }
-
-  /**
-   * @expectedException OutOfBoundsException
-   */
+  
   public function testInvalidUnsetBit() {
     $b = new BitMask();
+    $this->expectException(OutOfBoundsException::class);
     $b->unsetBit($b->length());
   }
 
@@ -249,10 +243,8 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals(new Bitmask($a), BitMask::from($b), "b: '$b' cannot be converted to $a");
   }
 
-  /**
-   * @expectedException InvalidArgumentException
-   */
   public function testFromInvalid() {
+    $this->expectException(InvalidArgumentException::class);
     BitMask::from(new \stdClass());
   }
 

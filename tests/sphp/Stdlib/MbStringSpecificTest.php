@@ -48,40 +48,31 @@ class MbStringSpecificTest extends TestCase {
     $this->assertfalse(isset($obj[$strLen]));
     $this->expectException(OutOfBoundsException::class);
     $err = $obj[$strLen];
-    $this->expectException(OutOfBoundsException::class);
-    $err1 = $obj->charAt($strLen);
   }
 
   public function testOffseSet() {
     $obj = MbString::create('foo');
-    //$this->expectException(BadMethodCallException::class);
     $obj[] = '!';
     $this->assertSame('foo!', "$obj");
     $this->expectException(OutOfBoundsException::class);
     $obj[$obj->count() + 1] = 'a';
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\InvalidArgumentException
-   */
   public function testOffsetsetWithMultipleChars() {
     $obj = MbString::create('foo');
+    $this->expectException(InvalidArgumentException::class);
     $obj[0] = 'ab';
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\OutOfBoundsException
-   */
   public function testOffsetsetWithInvalidOffsetType() {
     $obj = MbString::create('foo');
+    $this->expectException(OutOfBoundsException::class);
     $obj[(string) '1'] = 'a';
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\OutOfBoundsException
-   */
   public function testOffsetsetWithTooBigOffset() {
     $obj = MbString::create('foo');
+    $this->expectException(OutOfBoundsException::class);
     $obj[4] = 'a';
   }
 
@@ -122,11 +113,9 @@ class MbStringSpecificTest extends TestCase {
     $this->assertSame($strLen, $obj->count());
   }
 
-  /**
-   * @expectedException \Sphp\Exceptions\BadMethodCallException
-   */
   public function testNonExistentMethodCall() {
     $obj = MbString::create('foo');
+    $this->expectException(BadMethodCallException::class);
     $obj->bar();
   }
 

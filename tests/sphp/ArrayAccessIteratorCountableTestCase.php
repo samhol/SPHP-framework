@@ -12,7 +12,7 @@ namespace Sphp\Tests;
 
 abstract class ArrayAccessIteratorCountableTestCase extends \PHPUnit\Framework\TestCase {
 
-  protected function tearDown() {
+  protected function tearDown(): void {
     parent::tearDown();
     \Mockery::close();
   }
