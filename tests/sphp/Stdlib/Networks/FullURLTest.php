@@ -10,7 +10,6 @@
 
 namespace Sphp\Stdlib\Networks;
 
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 class FullURLTest extends \PHPUnit\Framework\TestCase {
