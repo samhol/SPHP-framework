@@ -9,9 +9,9 @@ $htmlCont = Manual\api()->classLinker(\Sphp\Html\PlainContainer::class);
 //$grid = \Sphp\Manual\api()->classLinker(Grid::class);
 $row = Manual\api()->classLinker(Row::class);
 $rowIf = Manual\api()->classLinker(RowInterface::class);
-$colIf = Manual\api()->classLinker(ColumnInterface::class);
-$col = Manual\api()->classLinker(Column::class);
-$cols = Manual\api()->classLinker(ColumnInterface::class, 'Columns');
+$colIf = Manual\api()->classLinker(Column::class);
+$col = Manual\api()->classLinker(DivColumn::class);
+$cols = Manual\api()->classLinker(Column::class, 'Columns');
 
 Manual\md(<<<MD
 ##The $rowIf <small>and its implementations</small>

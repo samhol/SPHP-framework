@@ -10,7 +10,9 @@
 
 namespace Sphp\Stdlib\Networks;
 
-class QueryStringTests extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
+use Sphp\Tests\ArrayAccessIteratorCountableTestCase;
+
+class QueryStringTests extends ArrayAccessIteratorCountableTestCase {
 
   /**
    * @return array
@@ -151,6 +153,7 @@ class QueryStringTests extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase 
       $this->assertEquals(count($queryData), $i);
     }
   }
+
   public function testInvalidParams() {
     $object = new QueryString();
     $object['err'] = " onmouseover=\"alert('foo')";

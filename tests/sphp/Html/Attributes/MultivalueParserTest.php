@@ -10,10 +10,11 @@
 
 namespace Sphp\Tests\Html\Attributes;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Attributes\MultiValueParser;
 use Sphp\Exceptions\InvalidArgumentException;
 
-class MultivalueParserTest extends \PHPUnit\Framework\TestCase {
+class MultivalueParserTest extends TestCase {
 
   /**
    * @param string|array $value

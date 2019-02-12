@@ -55,7 +55,7 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, GridI
   }
 
   public function getColumns(): TraversableContent {
-    return $this->getComponentsByObjectType(ColumnInterface::class);
+    return $this->getComponentsByObjectType(Column::class);
   }
 
   public function append($row) {

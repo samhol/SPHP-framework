@@ -223,7 +223,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    * @return TraversableContent containing all the {@link ColumnInterface} components
    */
   public function getColumns(): TraversableContent {
-    return $this->getComponentsByObjectType(ColumnInterface::class);
+    return $this->getComponentsByObjectType(Column::class);
   }
 
   /**

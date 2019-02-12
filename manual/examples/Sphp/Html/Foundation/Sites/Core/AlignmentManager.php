@@ -2,11 +2,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Foundation\Sites\Grids\Column;
+use Sphp\Html\Foundation\Sites\Grids\DivColumn;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 
-$cols[] = Column::create('align-center', ['small-3']);
-$cols[] = Column::create('align-center', ['small-3']);
+$cols[] = DivColumn::create('align-center', ['small-3']);
+$cols[] = DivColumn::create('align-center', ['small-3']);
 $row1 = Row::from($cols);
 
 $alignmentManager = new AlingmentAdapter($row1);

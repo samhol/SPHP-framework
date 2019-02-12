@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Div;
 
 /**
- * Implements an abstract Foundation framework based XY Grid Column
+ * Implements a Foundation framework based XY Grid Column
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -21,7 +21,7 @@ use Sphp\Html\Div;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractColumn extends Div implements Column {
+class DivColumn extends Div implements Column {
 
   /**
    * @var ColumnLayoutManager 
@@ -37,17 +37,21 @@ abstract class AbstractColumn extends Div implements Column {
    * So also an object of any class that implements magic method `__toString()` 
    * is allowed.
    *
-   * @param  mixed $content the content of the column
-   * @param  array $layout column layout parameters
+   * @param mixed $content the content of the column
+   * @param string $layout optional layout parameters
    */
   public function __construct($content = null, array $layout = ['auto']) {
     parent::__construct($content);
     $this->layoutManager = new ColumnLayoutManager($this);
-    $this->layout()->setLayout($layout);
+    $this->layout()->setLayouts($layout);
   }
 
   public function layout(): ColumnLayoutManagerInterface {
     return $this->layoutManager;
+  }
+
+  public static function create($content, array $layout = ['auto']): DivColumn {
+    return new static($content, $layout);
   }
 
 }

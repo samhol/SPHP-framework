@@ -24,7 +24,7 @@ use Sphp\Html\Media\SizeableMedia;
 interface VideoPlayer extends Embeddable, LazyMedia, SizeableMedia {
 
   /**
-   * Allows or disallows the fullscreen mode of the video 
+   * Allows or disallows the full screen mode of the video 
    * 
    * @param  boolean $allow
    * @return $this for a fluent interface
@@ -32,7 +32,7 @@ interface VideoPlayer extends Embeddable, LazyMedia, SizeableMedia {
   public function allowFullScreen(bool $allow = true);
 
   /**
-   * Set autoplaying on or off
+   * Set auto playing on or off
    * 
    * @param  boolean $autoplay true for on and false for off
    * @return $this for a fluent interface

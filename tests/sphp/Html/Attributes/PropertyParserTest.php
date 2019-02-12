@@ -10,9 +10,10 @@
 
 namespace Sphp\Html\Attributes;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\InvalidArgumentException;
 
-class PropertyParserTest extends \PHPUnit\Framework\TestCase {
+class PropertyParserTest extends TestCase {
 
   /**
    * @var PropertyParser

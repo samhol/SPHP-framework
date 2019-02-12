@@ -35,8 +35,13 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    */
   private $layoutManager;
 
-  public function __construct($tagname) {
-    parent::__construct($tagname, null);
+  /**
+   * Constructor
+   * 
+   * @param string $tagname
+   */
+  public function __construct(string $tagname = 'div') {
+    parent::__construct($tagname);
     $this->layoutManager = new RowLayoutManager($this);
     $this->columns = new PlainContainer();
   }
@@ -57,7 +62,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     $this->columns->clear();
     //print_r($sType);
     foreach ($columns as $column) {
-      if ($column instanceof ColumnInterface) {
+      if ($column instanceof Column) {
         $this->append($column);
       } else {
         $this->appendColumn($column, $sizes);
@@ -70,11 +75,11 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * Appends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return ColumnInterface appended column
+   * @return Column appended column
    */
-  public function append($column): ColumnInterface {
-    if (!($column instanceof ColumnInterface)) {
-      $column = new Column($column);
+  public function append($column): Column {
+    if (!($column instanceof Column)) {
+      $column = new DivColumn($column);
     }
     $this->columns->append($column);
     return $column;
@@ -84,24 +89,24 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * Prepends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return ColumnInterface prepended column
+   * @return Column prepended column
    */
-  public function prepend($column): ColumnInterface {
-    if (!($column instanceof ColumnInterface)) {
-      $column = new Column($column);
+  public function prepend($column): Column {
+    if (!($column instanceof Column)) {
+      $column = new DivColumn($column);
     }
     $this->columns->prepend($column);
     return $column;
   }
 
   public function appendColumn($content, array $sizes = ['auto']) {
-    $this->append(new Column($content, $sizes));
+    $this->append(new DivColumn($content, $sizes));
     return $this;
   }
 
   public function appendMdColumn($content, array $sizes = ['auto']) {
     $p = new \ParsedownExtraPlugin();
-    $this->append(new Column($p->parse($content), $sizes));
+    $this->append(new DivColumn($p->parse($content), $sizes));
     return $this;
   }
 
@@ -116,15 +121,6 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
 
   public function contentToString(): string {
     return $this->columns->getHtml();
-  }
-
-  /**
-   * 
-   * @param  array $rows
-   * @return self new instance
-   */
-  public static function from(array $rows) {
-    return new Static($rows);
   }
 
 }

@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
+use Sphp\Html\Foundation\Sites\Grids\Column;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
@@ -29,7 +29,7 @@ use Sphp\Html\Forms\Inputs\Factory;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements Input, ColumnInterface {
+abstract class Choiceboxes extends AbstractComponent implements Input, Column {
 
   /**
    * @var string

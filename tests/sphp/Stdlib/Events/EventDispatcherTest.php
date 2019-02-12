@@ -15,14 +15,6 @@ use Sphp\Exceptions\InvalidArgumentException;
 
 class EventDispatcherTest extends TestCase {
 
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    
-  }
-
   public function testCreation(): EventDispatcher {
     $singelton1 = EventDispatcher::instance();
     $singelton2 = EventDispatcher::instance();
@@ -39,7 +31,7 @@ class EventDispatcherTest extends TestCase {
     $order = [];
     $fooListener = $this->getMockBuilder(EventListener::class)->getMock();
     $fooF = function(Event $event) {
-     // echo 'Event: ' . $event->getName() . " triggered!\n";
+      // echo 'Event: ' . $event->getName() . " triggered!\n";
       $this->assertSame('foo', $event->getName());
     };
     $fooListener->expects($this->any())
@@ -48,7 +40,7 @@ class EventDispatcherTest extends TestCase {
     $listener = $this->getMockBuilder(EventListener::class)->getMock();
     $f = function(Event $event) use (&$order) {
       $order[] = $event;
-     // echo 'Event: ' . $event->getName() . " triggered!\n";
+      // echo 'Event: ' . $event->getName() . " triggered!\n";
       $name = $event->getName();
       $this->assertTrue($name === 'bar' || $name === 'foo' || $name === 'baz');
     };

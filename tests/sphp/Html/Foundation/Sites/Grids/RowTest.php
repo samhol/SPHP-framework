@@ -2,7 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-class RowTest extends \PHPUnit\Framework\TestCase {
+use PHPUnit\Framework\TestCase;
+
+class RowTest extends TestCase {
 
   /**
    * @var Row
@@ -50,7 +52,7 @@ class RowTest extends \PHPUnit\Framework\TestCase {
     $row = new Row($data);
     $this->assertCount($numCols, $row);
     foreach ($row as $col) {
-      $this->assertTrue($col instanceof ColumnInterface);
+      $this->assertTrue($col instanceof Column);
       $this->assertTrue($col->hasCssClass('auto'));
     }
     $this->checkTypes($row);
@@ -68,7 +70,7 @@ class RowTest extends \PHPUnit\Framework\TestCase {
     }
     $this->assertCount($numCols, $this->row);
     foreach ($this->row as $col) {
-      $this->assertTrue($col instanceof ColumnInterface);
+      $this->assertTrue($col instanceof Column);
       $this->assertTrue($col->hasCssClass('auto'));
     }
     $this->checkTypes($this->row);
@@ -83,7 +85,6 @@ class RowTest extends \PHPUnit\Framework\TestCase {
     $numCols = count($data);
     foreach ($data as $v) {
       $this->row->prepend($v);
-      
     }
     $this->assertCount($numCols, $this->row);
     $this->checkTypes($this->row);
@@ -95,7 +96,7 @@ class RowTest extends \PHPUnit\Framework\TestCase {
    */
   protected function checkTypes(RowInterface $row) {
     foreach ($row as $col) {
-      $this->assertTrue($col instanceof ColumnInterface);
+      $this->assertTrue($col instanceof Column);
     }
   }
 

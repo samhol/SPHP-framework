@@ -10,11 +10,12 @@
 
 namespace Sphp\Stdlib;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Datastructures\ArrayStack;
 
-class ArraysTest extends \PHPUnit\Framework\TestCase {
+class ArraysTest extends TestCase {
 
   public function diffData() {
     return [

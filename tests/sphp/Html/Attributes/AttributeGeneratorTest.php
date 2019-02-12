@@ -2,9 +2,10 @@
 
 namespace Sphp\Html\Attributes;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\InvalidArgumentException;
 
-class AttributeGeneratorTest extends \PHPUnit\Framework\TestCase {
+class AttributeGeneratorTest extends TestCase {
 
   /**
    * @return string[]

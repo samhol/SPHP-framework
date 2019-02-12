@@ -6,7 +6,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $grid = \Sphp\Manual\api()->classLinker(GridInterface::class);
 $row = \Sphp\Manual\api()->classLinker(Row::class);
-$column = \Sphp\Manual\api()->classLinker(Column::class);
+$column = \Sphp\Manual\api()->classLinker(DivColumn::class);
 $blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);
 echo <<<MD
 ##Foundation Grid components:

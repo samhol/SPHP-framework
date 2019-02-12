@@ -79,7 +79,7 @@ interface RowInterface extends CssClassifiableContent, \Traversable {
    * * `mixed $column` can be of any type that converts to a string or to a string[]
    * * a values of `$column` not extending {@link ColumnInterface} is wrapped with {@link Column} object
    *
-   * @param  mixed|ColumnInterface $column content component
+   * @param  mixed|Column $column content component
    * @return $this for a fluent interface
    */
   public function append($column);

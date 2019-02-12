@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Manual;
 
 $rowIf = Manual\api()->classLinker(RowInterface::class);
-$colIf = Manual\api()->classLinker(ColumnInterface::class);
+$colIf = Manual\api()->classLinker(Column::class);
 
 Manual\md(<<<MD
 ##The $colIf <small>and its implementations</small>

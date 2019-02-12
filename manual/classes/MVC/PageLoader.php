@@ -13,6 +13,7 @@ namespace Sphp\Manual\MVC;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 use Sphp\Html\Tags;
 use Sphp\Html\Div;
+use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Attributes\ClassAttribute;
 
 /**
@@ -23,7 +24,7 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class PageLoader implements \Sphp\Html\CssClassifiableContent {
+class PageLoader implements CssClassifiableContent {
 
   use \Sphp\Html\CssClassifiableTrait,
       \Sphp\Html\ContentTrait;
@@ -64,7 +65,7 @@ class PageLoader implements \Sphp\Html\CssClassifiableContent {
 
   public function loadNotFound(string $path = null) {
     $this->addCssClass('error');
-    echo $path;
+    //echo $path;
     $this->load('manual/templates/error.php');
   }
 
@@ -81,7 +82,6 @@ class PageLoader implements \Sphp\Html\CssClassifiableContent {
   }
 
   public function loadVendorReadmes(string $path, string $vendorName) {
-
     $this->load("manual/pages/vendors/$vendorName.php");
   }
 

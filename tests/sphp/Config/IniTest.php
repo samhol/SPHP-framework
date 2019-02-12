@@ -18,6 +18,7 @@ use Sphp\Exceptions\OutOfRangeException;
 class IniTest extends TestCase {
 
   /**
+   * @return Ini
    */
   public function testVariableSetting(): Ini {
     ini_set('display_errors', '1');

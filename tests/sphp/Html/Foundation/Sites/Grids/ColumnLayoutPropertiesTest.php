@@ -2,9 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Div;
 
-class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
+class ColumnLayoutPropertiesTest extends TestCase {
 
   /**
    * @var ColumnLayoutManager
@@ -32,7 +33,6 @@ class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
   protected function tearDown(): void {
     unset($this->c);
   }
-
 
   public function testSetWidths() {
     $this->c->setWidths('small-12', 'small-1');
@@ -82,7 +82,5 @@ class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
     $this->c->setOffsets(['large-offset-12', 'large-offset-1', 'large-offset-3']);
     $this->assertTrue($this->col->hasCssClass('small-offset-1', 'large-offset-3'));
   }
-
-
 
 }

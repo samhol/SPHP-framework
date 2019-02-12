@@ -10,12 +10,13 @@
 
 namespace Sphp\Tests\Validators;
 
+use Sphp\Tests\Validators\ValidatorTest;
 use Sphp\Validators\Validator;
 use Sphp\Validators\ValidatorChain;
 use Sphp\Validators\StringLength;
 use Sphp\Validators\Regex;
 
-class ValidatorChainTest extends \Sphp\Tests\Validators\ValidatorTest {
+class ValidatorChainTest extends ValidatorTest {
 
   /**
    * @return StringLength

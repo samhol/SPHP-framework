@@ -2,9 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Div;
 
-class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
+class ColumnPropsTest extends TestCase {
 
   /**
    * @var ColumnLayoutManager
@@ -86,6 +87,7 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
     $this->col->unsetWidths('large');
     $this->assertFalse($this->col->cssClasses()->contains('large-3'));
   }
+
   /**
    *
    * @param string $type

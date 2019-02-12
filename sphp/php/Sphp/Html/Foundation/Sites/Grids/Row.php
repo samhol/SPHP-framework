@@ -39,4 +39,17 @@ class Row extends AbstractRow {
     }
   }
 
+  /**
+   * 
+   * @param  iterable $columns
+   * @return Row new instance
+   */
+  public static function from(iterable $columns): Row {
+    $row = new static();
+    foreach ($columns as $column) {
+      $row->append($column);
+    }
+    return $row;
+  }
+
 }
