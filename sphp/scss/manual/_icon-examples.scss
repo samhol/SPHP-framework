@@ -9,8 +9,14 @@
 .icon-example-popup {
   padding: rem-calc(14);
   h2, h3 {
-    background-color: #eee;
+    &.fontawesome {
+      background-color: rgba(#228be6, .2);
+    } 
+    &.filesystem {
+      background-color: rgba(#F8D775, .5);
+    }
   }
+
   h2 {
     padding: rem-calc(8 5);
     margin: rem-calc(-14 -14 5 -14);

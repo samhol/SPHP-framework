@@ -12,7 +12,7 @@ $d = Parser::fromFile('../filetypes.yml');
 
 \Sphp\Manual\md(<<<MD
         
-##Filetype icons
+##Filetype icons{.filesystem}
 MD
 );
 ?>

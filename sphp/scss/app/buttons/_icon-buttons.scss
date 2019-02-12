@@ -19,14 +19,14 @@ $social-brand-tumblr: #32506d;
   //.social {
   //margin-right: .25rem;
 
-  .fontawesome {
+  .button.fontawesome {
     @include button-style(rgba(#155592, 9), rgba(#228be6, .8), auto);
     border: 1px solid rgba(#444, .8);
     &:hover {
       border-color: rgba(#333, 1);
     }
   }
-  .folder {
+  .button.folder {
     @include button-style(rgba(#F8D775, 1), rgba(#FFE9A2, .9), auto);
     border: 1px solid rgba(#444, .8);
     &:hover {

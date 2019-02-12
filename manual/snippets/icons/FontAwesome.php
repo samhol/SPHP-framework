@@ -15,15 +15,15 @@ $faData = Parser::fromFile('font-awesome.yml');
 $types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
 $typeMap = ['solid' => 'fas', 'regular' => 'far', 'brands' => 'fab'];
 $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => null]);
-var_dump($type, $typeMap[$type]);
+//var_dump($type, $typeMap[$type]);
 $show = $typeMap[$type];
 
 $headingNote = ucfirst($type);
 
-\Sphp\Manual\md("##Font Awesome: <small>$headingNote icons</small>");
 
+\Sphp\Manual\md("##Font Awesome <small>$headingNote icons</small>{.fontawesome}");
 $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
-$grid->addCssClass('sphp-icon-examples');
+$grid->addCssClass('sphp-icon-examples fontawesome');
 $fa = new FA();
 $fa->fixedWidth(true);
 foreach ($faData as $name => $data) {
