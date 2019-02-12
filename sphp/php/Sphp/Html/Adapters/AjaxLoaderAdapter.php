@@ -14,7 +14,7 @@ use Sphp\Html\AjaxLoader;
 use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Component;
 
-/** 
+/**
  * Executes Ajax functionality on the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -22,7 +22,6 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-
 class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoader {
 
   /**

@@ -47,7 +47,7 @@ class RowTest extends TestCase {
    * @param mixed $data
    * @dataProvider arrayData
    */
-  public function testConstructor(array $data) {
+  public function testConstructor(iterable $data) {
     $numCols = count($data);
     $row = new Row($data);
     $this->assertCount($numCols, $row);
@@ -63,7 +63,7 @@ class RowTest extends TestCase {
    * @param mixed[] $data
    * @dataProvider arrayData
    */
-  public function testAppend($data) {
+  public function testAppend(iterable $data) {
     $numCols = count($data);
     foreach ($data as $key => $val) {
       $this->row->append($val);
