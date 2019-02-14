@@ -40,7 +40,7 @@ use Sphp\Html\Media\Icons\Svg;
 
       <div class="sphp-info-button php" data-tech="php-info">
         
-        <?php echo Svg::fromFile('manual/svg/php-original.svg') ?>
+        <?php echo Svg::fromFile('manual/svg/devicons/php/php-original.svg') ?>
       </div>
 
       <div class="sphp-info-button symfony" data-tech="symfony-info">

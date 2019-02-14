@@ -122,6 +122,7 @@ Header set Cache-Control "max-age=2628000, public"
 </filesMatch>
 Options -MultiViews
     RewriteEngine On
+    RewriteRule ^(manual/svg) - [L]
     RewriteRule ^(API/sami) - [L]
     RewriteRule ^(API/jsdoc) - [L]
     RewriteCond %{REQUEST_FILENAME} !-f

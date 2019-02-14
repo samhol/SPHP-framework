@@ -53,7 +53,7 @@
       text-align: center;
     }
     .icon {
-      background-color: #aaa;
+      background-color: #fff;
       font-size: rem-calc(60);
       i {
         margin: rem-calc(3);
@@ -76,7 +76,7 @@
       padding: rem-calc(3);
       background-color: #eee;
       font-size: rem-calc(14);
-      .devicon {
+      &.devicon {
         background-color: rgba(#60be86, .2);
       }
     }
