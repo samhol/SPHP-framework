@@ -5,10 +5,10 @@ use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Media\Icons\DevIcons;
 
 $data = Parser::fromFile('DevIcons.json');
-?>
-<div class="sphp-icon-examples grid-x small-up-3 medium-up-5 large-up-8">
-  <?php
   \Sphp\Manual\md('##Devicons');
+?>
+<div class="grid-x small-up-3 medium-up-5 large-up-8 icon-examples">
+  <?php
 // print_r($data);
 
   foreach ($data as $item) {

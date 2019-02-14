@@ -90,10 +90,27 @@ class SvgLoader implements \Sphp\Html\Content {
 
   public function getFlag(string $countryCode, float $opacity = 1) {
     if ($this->flagPath !== null) {
-      return static::fromUrl($this->flagPath . $countryCode . ".svg");
+      return static::fromFile($this->flagPath . $countryCode . ".svg");
     } else {
       throw new InvalidArgumentException('No flag path was given');
     }
+  }
+
+  public static function fileToString(string $file, string $title = null): string {
+    $iconfile = new \DOMDocument();
+    $iconfile->load($file);
+    $svg = $iconfile->getElementsByTagName('svg')->item(0);
+    if ($title !== null) {
+      $titleNode = $iconfile->getElementsByTagName('title')->item(0);
+      if ($titleNode === null) {
+        $titleNode = $iconfile->createElement('title');
+        //$svg->firstChild;
+        $svg->insertBefore($titleNode, $svg->firstChild);
+      }
+      // $svg->setAttribute('title', $title);
+      $titleNode->textContent = $title;
+    }
+    return $iconfile->saveHTML($svg);
   }
 
   /**

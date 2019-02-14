@@ -7,7 +7,16 @@
  */
 
 .icon-example-popup {
-  padding: rem-calc(14);
+  padding: rem-calc(0);
+  .container {
+
+    &.devicons {
+      background-color: rgba(#60be86, .13);
+    } 
+    .grid-x {
+      margin: rem-calc(5);
+    }
+  }
   h2, h3 {
     &.fontawesome {
       background-color: rgba(#228be6, .2);
@@ -15,11 +24,14 @@
     &.filesystem {
       background-color: rgba(#F8D775, .5);
     }
+    &.devicons {
+      background-color: rgba(#60be86, .2);
+    }
   }
 
   h2 {
-    padding: rem-calc(8 5);
-    margin: rem-calc(-14 -14 5 -14);
+    padding: rem-calc(20 20 10 20);
+    margin: rem-calc(0 0 5 0);
     border-bottom: solid #aaa 1px;
   }
   h3 {
@@ -41,14 +53,14 @@
       text-align: center;
     }
     .icon {
-      background-color: #fefefe;
+      background-color: #aaa;
       font-size: rem-calc(60);
       i {
         margin: rem-calc(3);
       }
       svg {
         margin: rem-calc(3);
-        height: rem-calc(60);
+        //height: rem-calc(60);
         max-width: 100%;
       }
       &.national-flag {
@@ -64,6 +76,9 @@
       padding: rem-calc(3);
       background-color: #eee;
       font-size: rem-calc(14);
+      .devicon {
+        background-color: rgba(#60be86, .2);
+      }
     }
   }
 }

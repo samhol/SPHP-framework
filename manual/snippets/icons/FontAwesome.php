@@ -28,17 +28,17 @@ $fa = new FA();
 $fa->fixedWidth(true);
 foreach ($faData as $name => $data) {
   $content = Tags::div()->addCssClass('icon-container');
-  $flagContainer = Tags::div()->addCssClass('icon');
-  $content->append($flagContainer);
+  $iconContainer = Tags::div()->addCssClass('icon');
+  $content->append($iconContainer);
   $ext = Tags::div()->addCssClass('ext');
   $content->append($ext);
 
 
   if (in_array($type, $data['styles'])) {
     $icon = $fa("$typeMap[$type] fa-$name");
-    $flagContainer->append($icon);
+    $iconContainer->append($icon);
     //$grid->append($content);
-    $flagContainer->setAttribute('title', 'Unicode: ' . $data['unicode']);
+    $iconContainer->setAttribute('title', 'Unicode: ' . $data['unicode']);
     $grid->append($content);
   }
 
