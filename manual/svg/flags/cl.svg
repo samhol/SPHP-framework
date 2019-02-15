@@ -4,7 +4,7 @@
   <path d="M4,4H-4V-4H4z" fill="#0039a6"/>
   <g id="cl-f">
     <g id="cl-t">
-      <path d="M0,-2V0H1z" fill="#fff" transform="rotate(18,0,-2)" id="o"/>
+      <path d="M0,-2V0H1z" fill="#fff" transform="rotate(18,0,-2)" id="cl-o"/>
       <use xlink:href="#cl-o" transform="scale(-1,1)"/>
     </g>
     <use xlink:href="#cl-t" transform="rotate(72)"/>

@@ -1,49 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 600">
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
-    <clipPath id="Canton">
-      <path d="M 0,0 L 600,0 L 600,300 L 0,300 z"/>
+    <clipPath id="nz-c">
+      <path d="m0 0h600v300h-600z"/>
     </clipPath>
-    <clipPath id="Diagonals">
-      <path d="M 0,0 L 300,150 L 0,150 z M 300,0 L 600,0 L 300,150 z M 300,150 L 600,150 L 600,300 z M 300,150 L 300,300 L 0,300 z"/>
+    <clipPath id="nz-d">
+      <path d="m0 0l300 150h-300zm300 0h300l-300 150zm0 150h300v150zv150h-300z"/>
     </clipPath>
-    <g id="Pentagram">
-      <g id="Arm" transform="translate(0,-0.324925)">
-        <path d="M 0,0 L 0,0.5 L 1,0 z"/>
-        <path d="M 0,0 L 0,-0.5 L 1,0 z" transform="rotate(-36,1,0)"/>
+    <g id="nz-a">
+      <g id="nz-b" transform="translate(0 -.32492)">
+        <path d="m0 0v0.5l1-0.5z"/>
+        <path transform="rotate(-36,1,0)" d="m0 0v-0.5l1 0.5z"/>
       </g>
-      <use xlink:href="#Arm" transform="scale(-1,1)"/>
-      <use xlink:href="#Arm" transform="rotate(72,0,0)"/>
-      <use xlink:href="#Arm" transform="rotate(-72,0,0)"/>
-      <use xlink:href="#Arm" transform="rotate(-72,0,0) scale(-1,1)"/>
+      <use transform="scale(-1,1)" xlink:href="#nz-b"/>
+      <use transform="rotate(72)" xlink:href="#nz-b"/>
+      <use transform="rotate(-72)" xlink:href="#nz-b"/>
+      <use transform="rotate(-72) scale(-1 1)" xlink:href="#nz-b"/>
     </g>
   </defs>
-  <rect fill="#00247d" x="0" y="0" width="1200" height="600"/>
-  <g id="Flag_of_the_United_Kingdom">
-    <path id="Saint_Andrews_Cross" stroke="#ffffff" d="M 0,0 L 600,300 M 0,300 L 600,0" stroke-width="60" clip-path="url(#Canton)"/>
-    <path id="Saint_Patricks_Cross" stroke="#cc142b" d="M 0,0 L 600,300 M 0,300 L 600,0" stroke-width="40" clip-path="url(#Diagonals)"/>
-    <g id="Saint_Georges_Cross">
-      <path stroke="#ffffff" d="M 300,0 L 300,300 M 0,150 L 600,150" stroke-width="100" clip-path="url(#Canton)"/>
-      <path stroke="#cc142b" d="M 300,0 L 300,300 M 0,150 L 600,150" stroke-width="60" clip-path="url(#Canton)"/>
-    </g>
+  <rect width="1200" height="600" fill="#00247d"/>
+  <path d="m0 0l600 300m-600 0l600-300" clip-path="url(#nz-c)" stroke="#fff" stroke-width="60"/>
+  <path d="m0 0l600 300m-600 0l600-300" clip-path="url(#nz-d)" stroke="#cc142b" stroke-width="40"/>
+  <path d="m300 0v300m-300-150h600" clip-path="url(#nz-c)" stroke="#fff" stroke-width="100"/>
+  <path d="m300 0v300m-300-150h600" clip-path="url(#nz-c)" stroke="#cc142b" stroke-width="60"/>
+  <use transform="translate(900,120) scale(45.4)" fill="#ffffff" xlink:href="#nz-a"/>
+  <use transform="translate(900,120) scale(30)" fill="#cc142b" xlink:href="#nz-a"/>
+  <g transform="rotate(82,900,240)">
+    <use transform="translate(900,120) rotate(-82) scale(40.4)" fill="#ffffff" xlink:href="#nz-a"/>
+    <use transform="translate(900,120) rotate(-82) scale(25)" fill="#cc142b" xlink:href="#nz-a"/>
+    <use transform="translate(900,380) rotate(-82) scale(45.4)" fill="#ffffff" xlink:href="#nz-a"/>
+    <use transform="translate(900,380) rotate(-82) scale(30)" fill="#cc142b" xlink:href="#nz-a"/>
   </g>
-  <g id="Southern_Cross">
-    <g id="Gamma_Crucis">
-      <use xlink:href="#Pentagram" fill="#ffffff" transform="translate(900,120) scale(45.4)"/>
-      <use xlink:href="#Pentagram" fill="#cc142b" transform="translate(900,120) scale(30)"/>
-    </g>
-    <g transform="rotate(82,900,240)">
-      <g id="Delta_Crucis">
-        <use xlink:href="#Pentagram" fill="#ffffff" transform="translate(900,120) rotate(-82) scale(40.4)"/>
-        <use xlink:href="#Pentagram" fill="#cc142b" transform="translate(900,120) rotate(-82) scale(25)"/>
-      </g>
-      <g id="Beta_Crucis">
-        <use xlink:href="#Pentagram" fill="#ffffff" transform="translate(900,380) rotate(-82) scale(45.4)"/>
-        <use xlink:href="#Pentagram" fill="#cc142b" transform="translate(900,380) rotate(-82) scale(30)"/>
-      </g>
-    </g>
-    <g id="Alpha_Crucis">
-      <use xlink:href="#Pentagram" fill="#ffffff" transform="translate(900,480) scale(50.4)"/>
-      <use xlink:href="#Pentagram" fill="#cc142b" transform="translate(900,480) scale(35)"/>
-    </g>
-  </g>
+  <use transform="translate(900,480) scale(50.4)" fill="#ffffff" xlink:href="#nz-a"/>
+  <use transform="translate(900,480) scale(35)" fill="#cc142b" xlink:href="#nz-a"/>
 </svg>

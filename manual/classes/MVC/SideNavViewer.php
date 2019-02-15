@@ -25,7 +25,7 @@ class SideNavViewer implements Content {
    * @var array 
    */
   private $data;
-  
+
   /**
    * @var string 
    */

@@ -43,7 +43,7 @@ class TitleGenerator {
     } else {
       $title = 'SPHPlayground';
       foreach ($this->titleData as $pair) {
-        if ($pair['href'] === $page) {
+        if ($pair['href'] === "/$page") {
           if (isset($pair['title'])) {
             $title = $pair['title'] . ' | ' . $title;
           } else {
