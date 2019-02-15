@@ -1,28 +1,34 @@
 <?php
+
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Media\Icons\DevIcons;
+use Sphp\Html\Tags;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $data = Parser::fromFile('DevIcons.json');
-  \Sphp\Manual\md('##Devicons');
-?>
-<div class="grid-x small-up-3 medium-up-5 large-up-8 icon-examples">
-  <?php
-// print_r($data);
 
-  foreach ($data as $item) {
-    $name = $item['name'];
-    // echo "\n$name";
-    foreach ($item['versions']['font'] as $version) {
-      //   echo "\ndevicon-$name-$version";
-      $method = $name . ucfirst($version);
+$cont = Tags::section();
+$cont->addCssClass('container', 'devicons');
+$cont->appendH2('Devicons <small>FONT versions</small>')->addCssClass('devicons');
+$grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8"');
 
-      echo '<div class="cell"><div class="icon-container"><div class="icon">';
-      echo DevIcons::$method("devicon-$name-$version icon")->setAttribute('title', "devicon-$name-$version icon");
-      echo '</div></div></div>';
-    }
+foreach ($data as $item) {
+  $name = $item['name'];
+  // echo "\n$name";
+  foreach ($item['versions']['font'] as $version) {
+    $method = $name . ucfirst($version);
+    $icon = DevIcons::$method("devicon-$name-$version icon")->setAttribute('title', "devicon-$name-$version icon");
+    $content = Tags::div()->addCssClass('icon-container', 'shadow');
+    $iconContainer = Tags::div()->addCssClass('icon');
+    $content->append($iconContainer);
+    $iconContainer->append($icon);
+    $ext = Tags::div($name)->addCssClass('ext', 'devicon');
+    $content->append($ext);
+    $grid->append($content);
   }
-  ?>
+}
 
-</div>
+$cont->append($grid);
+echo $cont;
