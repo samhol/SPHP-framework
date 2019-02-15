@@ -9,8 +9,10 @@
 .icon-example-popup {
   padding: rem-calc(0);
   .container {
-
     &.devicons {
+      background-color: rgba(#60be86, .08);
+    }
+    &.coutry-flags {
       background-color: rgba(#60be86, .08);
     } 
     .grid-x {
@@ -65,6 +67,7 @@
       }
       &.national-flag {
         svg {
+          //width: 80%;
           border: 1px solid #777;
           @include border-radius(3px);
         }

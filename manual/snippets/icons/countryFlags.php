@@ -7,7 +7,9 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Html\Media\Icons\SvgLoader;
 
-\Sphp\Manual\md('## Country flags');
+$cont = Tags::section();
+$cont->addCssClass('container', 'country-flags');
+$cont->appendH2('Country flags <small>as SVG icons</small>');
 $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8"');
 $grid->addCssClass('country-flags', 'icon-examples');
 $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('/home/int48291/public_html/playground/manual/svg/flags'));
@@ -31,4 +33,5 @@ foreach ($array as $name => $object) {
     $grid->append($content);
   }
 }
-echo $grid;
+$cont->append($grid);
+echo $cont;

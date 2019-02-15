@@ -20,8 +20,10 @@ $show = $typeMap[$type];
 
 $headingNote = ucfirst($type);
 
+$cont = Tags::section();
+$cont->addCssClass('container', 'fontawesome');
+$cont->appendH2("Font Awesome <small>$headingNote icons</small>")->addCssClass('fontawesome');
 
-\Sphp\Manual\md("##Font Awesome <small>$headingNote icons</small>{.fontawesome}");
 $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
 $grid->addCssClass('sphp-icon-examples fontawesome');
 $fa = new FA();
@@ -32,18 +34,15 @@ foreach ($faData as $name => $data) {
   $content->append($iconContainer);
   $ext = Tags::div()->addCssClass('ext');
   $content->append($ext);
-
-
   if (in_array($type, $data['styles'])) {
     $icon = $fa("$typeMap[$type] fa-$name");
     $iconContainer->append($icon);
     //$grid->append($content);
+    $ext->append("$typeMap[$type] fa-$name");
     $iconContainer->setAttribute('title', 'Unicode: ' . $data['unicode']);
     $grid->append($content);
   }
-
-  //var_dump($icon, $data['styles']);
-  //$flagContainer->append($icon);
 }
-echo $grid;
+$cont->append($grid);
+echo $cont;
 

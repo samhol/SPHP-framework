@@ -5,8 +5,9 @@ require_once(realpath('/home/int48291/public_html/playground/manual/settings.php
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Html\Media\Icons\SvgLoader;
+
 $cont = Tags::div();
-$cont->addCssClass('container','devicons');
+$cont->addCssClass('container', 'devicons');
 $cont->appendMd('## DevIcons <small>SVG versions</small>{.devicons}');
 $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8"');
 $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('/home/int48291/public_html/playground/manual/svg/devicons'));
@@ -26,4 +27,3 @@ foreach ($objects as $name => $object) {
 }
 $cont->append($grid);
 echo $cont;
-?>
