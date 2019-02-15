@@ -1,5 +1,5 @@
 <?php
-require_once('../../settings.php');
+require_once('/home/int48291/public_html/playground/manual/settings.php');
 
 use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Media\Icons\DevIcons;
