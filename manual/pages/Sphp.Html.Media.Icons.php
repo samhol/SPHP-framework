@@ -29,14 +29,14 @@ MD
 $devPopup = new Popup();
 $devPopup->layout()->setSize('large');
 $devPopup->addCssClass('icon-example-popup', 'devicons');
-$devPopup->ajaxAppend('manual/snippets/icons/DevIcons.php');
+$devPopup->ajaxAppend('manual/snippets/icons/devicons-font.php');
 $devModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons icons', $devPopup);
 
 
 $devsvgPopup = new Popup();
 $devsvgPopup->layout()->setSize('large');
 $devsvgPopup->addCssClass('icon-example-popup', 'devicons');
-$devsvgPopup->ajaxAppend('manual/snippets/icons/devicons_svg.php');
+$devsvgPopup->ajaxAppend('manual/snippets/icons/devicons-svg.php');
 $devsvgModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons SVG', $devsvgPopup);
 
 $flagPopup = new Popup();
@@ -75,8 +75,8 @@ $fileModal = new Modal('<i class="far fa-folder-open fa-lg fa-fw"></i> <b>Filesy
 
 $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
 $buttonGroup->setSize('small')->setExtended();
-$buttonGroup->appendButton($devsvgModal->getTrigger()->addCssClass('devicon', 'shadow', 'radius'));
-$buttonGroup->appendButton($devModal->getTrigger()->addCssClass('devicon', 'shadow', 'radius'));
+$buttonGroup->appendButton($devsvgModal->getTrigger()->addCssClass('devicons', 'shadow', 'radius'));
+$buttonGroup->appendButton($devModal->getTrigger()->addCssClass('devicons', 'shadow', 'radius'));
 $buttonGroup->appendButton($fasModal->getTrigger()->addCssClass('fontawesome', 'shadow', 'radius'));
 $buttonGroup->appendButton($farModal->getTrigger()->addCssClass('fontawesome', 'shadow', 'radius'));
 $buttonGroup->appendButton($fabModal->getTrigger()->addCssClass('fontawesome', 'shadow', 'radius'));

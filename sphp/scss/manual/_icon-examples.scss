@@ -6,6 +6,29 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
+$fontawesome-color: #4dabf7;
+
+.button.devicons {
+  @include button-style(rgba(#60be86, 1), rgba(#60be86, .6), auto);
+  border: 1px solid rgba(#444, .8);
+  &:hover {
+    border-color: rgba(#333, 1);
+  }
+}
+.button.fontawesome {
+  @include button-style(rgba(#155592, 9), rgba(#228be6, .8), auto);
+  border: 1px solid rgba(#444, .8);
+  &:hover {
+    border-color: rgba(#333, 1);
+  }
+}
+.button.folder {
+  @include button-style(rgba(#F8D775, 1), rgba(#FFE9A2, .9), auto);
+  border: 1px solid rgba(#444, .8);
+  &:hover {
+    border-color: rgba(#333, 1);
+  }
+}
 .icon-example-popup {
   padding: rem-calc(0);
   .container {
@@ -29,6 +52,9 @@
     &.devicons {
       background-color: rgba(#60be86, .2);
     }
+    &.coutry-flags {
+      background-color: rgba(#ffcc66, .52);
+    }
   }
 
   h2 {
@@ -48,37 +74,47 @@
     //flex: 1;
     border: solid 1px #777;
     @include border-radius(3px);
-    margin: rem-calc(1);
-    padding: rem-calc(1);
-    .icon, .ext {     
+    overflow: hidden;
+    @include shadow();
+    margin: rem-calc(3);
+    //padding: rem-calc(1);
+    .icon, .ext {
       flex: 1;
       text-align: center;
     }
     .icon {
+      @include transition-property(all);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(ease-in-out);
+      //@include border-top-radius(3px);
+      padding: rem-calc(3);
       background-color: #fff;
-      font-size: rem-calc(60);
-      i {
-        margin: rem-calc(3);
+      &.font {
+        font-size: rem-calc(60);
+        i {
+          margin: rem-calc(3);
+        }
       }
-      svg {
-        margin: rem-calc(3);
-        //height: rem-calc(60);
-        max-width: 100%;
+      &.svg {
+        &.national-flag {
+          svg {
+            border: 1px solid rgba(#555, .5);
+          }
+        }
       }
-      &.national-flag {
-        svg {
-          //width: 80%;
-          border: 1px solid #777;
-          @include border-radius(3px);
+      &:hover {
+        &.fontawesome {
+          background-color: $fontawesome-color;
+          color: #fff;
         }
       }
     }
     .ext {
-      border-top: #777 solid 1px ;
+      border-top: #777 solid 1px;
       font-family: $font-family-monospace;
       padding: rem-calc(3);
       background-color: #eee;
-      font-size: rem-calc(14);
+      font-size: rem-calc(12);
       &.devicon {
         background-color: rgba(#60be86, .2);
       }

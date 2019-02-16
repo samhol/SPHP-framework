@@ -7,8 +7,8 @@
 <g id="ir-a" fill="none" stroke="#fff" stroke-width="2">
 <path id="ir-c" transform="scale(1.4)" d="M0,1H26M1,10V5H9V9H17V5H12M4,9H6M26,9H21V5H29M29,0V9H37V0M33,0V9"/>
 <path id="ir-b" transform="scale(2.8)" d="m0 7h9m1 0h9"/>
-<use y="120" xlink:href="#b"/>
-<use y="145.2" xlink:href="#c"/>
+<use y="120" xlink:href="#ir-b"/>
+<use y="145.2" xlink:href="#ir-c"/>
 </g>
 <g id="ir-e">
 <use x="56" xlink:href="#ir-a"/>

@@ -20,17 +20,17 @@ $show = $typeMap[$type];
 
 $headingNote = ucfirst($type);
 
-$cont = Tags::section();
-$cont->addCssClass('container', 'fontawesome');
-$cont->appendH2("Font Awesome <small>$headingNote icons</small>")->addCssClass('fontawesome');
+$section = Tags::section();
+$section->addCssClass('container', 'fontawesome');
+$section->appendH2("Font Awesome <small>$headingNote icons</small>")->addCssClass('fontawesome');
 
-$grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
+$grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6', 'xlarge-up-8');
 $grid->addCssClass('sphp-icon-examples fontawesome');
 $fa = new FA();
 $fa->fixedWidth(true);
 foreach ($faData as $name => $data) {
   $content = Tags::div()->addCssClass('icon-container');
-  $iconContainer = Tags::div()->addCssClass('icon');
+  $iconContainer = Tags::div()->addCssClass('icon', 'font', 'fontawesome');
   $content->append($iconContainer);
   $ext = Tags::div()->addCssClass('ext');
   $content->append($ext);
@@ -43,6 +43,6 @@ foreach ($faData as $name => $data) {
     $grid->append($content);
   }
 }
-$cont->append($grid);
-echo $cont;
+$section->append($grid);
+echo $section;
 

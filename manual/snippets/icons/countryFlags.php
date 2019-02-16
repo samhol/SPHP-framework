@@ -7,31 +7,30 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Html\Media\Icons\SvgLoader;
 
-$cont = Tags::section();
-$cont->addCssClass('container', 'country-flags');
-$cont->appendH2('Country flags <small>as SVG icons</small>');
-$grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8"');
+$section = Tags::section();
+$section->addCssClass('container', 'country-flags');
+$section->appendH2('Country flags <small>as SVG icons</small>')->addCssClass('country-flags');
+$grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6', 'xlarge-up-8');
 $grid->addCssClass('country-flags', 'icon-examples');
 $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('/home/int48291/public_html/playground/manual/svg/flags'));
 $array = iterator_to_array($objects);
 ksort($array);
 foreach ($array as $name => $object) {
   if ($object->isFile()) {
-    $content = Tags::div()->addCssClass('icon-container');
-    $iconContainer = Tags::div()->addCssClass('icon national-flag');
-    $content->append($iconContainer);
-    $iconContainer->append(SvgLoader::fromFile($object->getRealPath()));
+    $cellContent = Tags::div()->addCssClass('icon-container');
+    $iconContainer = Tags::div()->addCssClass('icon', 'national-flag', 'svg');
+    $cellContent->append($iconContainer);
+    $iconContainer->append('<div class="flag">'.SvgLoader::fromFile($object->getRealPath()).'</div>');
     $countryCode = strtoupper($object->getBasename('.svg'));
     $ext = Tags::div()->addCssClass('ext');
-    $content->append($ext);
+    $cellContent->append($ext);
+    $ext->append("<strong>$countryCode</strong>");
     if (array_key_exists($countryCode, $countries)) {
       $iconContainer->setAttribute('title', $countries[$countryCode]);
-      $ext->append($countryCode);
-    } else {
-      $ext->append('UNKNOWN');
+      $ext->append(" $countries[$countryCode]");
     }
-    $grid->append($content);
+    $grid->append($cellContent);
   }
 }
-$cont->append($grid);
-echo $cont;
+$section->append($grid);
+echo $section;
