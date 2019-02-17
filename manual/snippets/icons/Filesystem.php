@@ -7,26 +7,33 @@ ini_set('display_errors', 1);
 require_once('../../settings.php');
 
 use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+use Sphp\Html\Tags;
 
 $d = Parser::fromFile('../filetypes.yml');
 
-\Sphp\Manual\md(<<<MD
-        
-##Filetype icons{.filesystem}
-MD
-);
-?>
 
-<?php
+$section = Tags::section();
+$section->addCssClass('container', 'filetypes');
+$section->appendH2('Filetype icons')->addCssClass('filetypes');
+
 
 foreach ($d as $name => $group) {
-  echo "<h3>$name</h3>";
-  echo '<div class="sphp-icon-examples grid-x small-up-3 medium-up-5 large-up-8">';
-  foreach ($group as $ext => $description) {
-    echo '<div class="cell"><div class="icon-container"><div class="icon">';
-    echo Filetype::$ext($description)->setAttribute('title', "$ext: $description");
-    echo "</div><div class=\"ext\">.$ext</div>";
-    echo '</div></div>';
+
+  $section->appendH3($name)->addCssClass('filetypes');
+  $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
+  $grid->addCssClass('sphp-icon-examples filetypes');
+  $section->append($grid);
+  foreach ($group as $extension => $description) {
+    $content = Tags::div()->addCssClass('icon-container');
+    $iconContainer = Tags::div()->addCssClass('icon', 'font', 'devicons');
+    $content->append($iconContainer);
+    $icon = Filetype::$extension($description)->setAttribute('title', "$extension: $description");
+    $iconContainer->append($icon);
+    $ext = Tags::div($extension)->addCssClass('ext', 'devicons');
+    $content->append($ext);
+    $grid->append($content);
   }
-  echo '</div>';
+  //$section->append($grid);
 }
+echo $section;

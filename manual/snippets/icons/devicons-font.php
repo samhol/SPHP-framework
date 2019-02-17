@@ -12,7 +12,7 @@ $data = Parser::fromFile('DevIcons.json');
 $section = Tags::section();
 $section->addCssClass('container', 'devicons');
 $section->appendH2('Devicons <small>FONT versions</small>')->addCssClass('devicons');
-$grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-8');
+$grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
 
 foreach ($data as $item) {
   $name = $item['name'];
@@ -20,11 +20,11 @@ foreach ($data as $item) {
   foreach ($item['versions']['font'] as $version) {
     $method = $name . ucfirst($version);
     $icon = DevIcons::$method("devicon-$name-$version icon")->setAttribute('title', "devicon-$name-$version icon");
-    $content = Tags::div()->addCssClass('icon-container', 'shadow');
-    $iconContainer = Tags::div()->addCssClass('icon', 'font');
+    $content = Tags::div()->addCssClass('icon-container');
+    $iconContainer = Tags::div()->addCssClass('icon', 'font', 'devicons');
     $content->append($iconContainer);
     $iconContainer->append($icon);
-    $ext = Tags::div($name)->addCssClass('ext', 'devicon');
+    $ext = Tags::div($name)->addCssClass('ext', 'devicons');
     $content->append($ext);
     $grid->append($content);
   }

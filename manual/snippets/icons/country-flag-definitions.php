@@ -249,4 +249,5 @@ $countries = [
     'XK' => 'Kosovo',
     'EU' => 'European Union',
     'BQ' => 'Caribbean Netherlands',
+    'CW' => 'Curaçao',
 ];

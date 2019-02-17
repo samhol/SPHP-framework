@@ -8,10 +8,7 @@ use Sphp\Stdlib\Parsers\Parser;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 
-//$faData = Parser::fromFile('font-awesome.json');
 $faData = Parser::fromFile('font-awesome.yml');
-//$d = $json->fromFile('manual/snippets/icons.json');
-//print_r($data);
 $types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
 $typeMap = ['solid' => 'fas', 'regular' => 'far', 'brands' => 'fab'];
 $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => null]);

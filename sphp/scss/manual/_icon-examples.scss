@@ -7,6 +7,7 @@
  */
 
 $fontawesome-color: #4dabf7;
+$devicons-color: #60be86;
 
 .button.devicons {
   @include button-style(rgba(#60be86, 1), rgba(#60be86, .6), auto);
@@ -77,17 +78,17 @@ $fontawesome-color: #4dabf7;
     overflow: hidden;
     @include shadow();
     margin: rem-calc(3);
-    //padding: rem-calc(1);
+    padding: rem-calc(0);
     .icon, .ext {
       flex: 1;
       text-align: center;
     }
     .icon {
       @include transition-property(all);
-      @include transition-duration(0.3s);
+      @include transition-duration(0.5s);
       @include transition-timing-function(ease-in-out);
       //@include border-top-radius(3px);
-      padding: rem-calc(3);
+      padding: rem-calc(2);
       background-color: #fff;
       &.font {
         font-size: rem-calc(60);
@@ -97,8 +98,10 @@ $fontawesome-color: #4dabf7;
       }
       &.svg {
         &.national-flag {
+          background-color: #eee;
           svg {
-            border: 1px solid rgba(#555, .5);
+            border-top: 1px solid rgba(#555, .7);
+            border-bottom: 1px solid rgba(#555, .5);
           }
         }
       }
@@ -106,18 +109,75 @@ $fontawesome-color: #4dabf7;
         &.fontawesome {
           background-color: $fontawesome-color;
           color: #fff;
+        } 
+        &.devicons {
+          background-color: $devicons-color;
+          color: #fff;
         }
       }
     }
     .ext {
-      border-top: #777 solid 1px;
+      @include text-truncate();
+      border-top: rgba(#777, .6) solid 2px;
       font-family: $font-family-monospace;
       padding: rem-calc(3);
       background-color: #eee;
       font-size: rem-calc(12);
-      &.devicon {
-        background-color: rgba(#60be86, .2);
+      &.devicons {
+        background-color: rgba($devicons-color, .2);
       }
     }
   }
 }
+
+.mobile-action-sheet {
+  background: $primary-color;
+  overflow: visible;
+  width: 94%;
+  left: 3%;
+  height: auto;
+  transform: translateY(100%);
+  color: $white;
+  padding-top: $global-padding;
+
+  label {
+    color: $white;
+  }
+  .close-button {
+    top: 0;
+    font-size: 26px;
+    color: darken($primary-color, 20%);
+    display: none;
+  }
+
+  &.is-open .close-button {
+    display: block;
+  }
+
+  .mobile-action-sheet-inner {
+    position: relative;
+    padding: 0 1rem 0.5rem;
+  }
+
+  .action-sheet-toggle {
+    position: absolute;
+    top: - $global-padding;
+    left: 50%;
+    transform: translate3D(-50%, -100%, 0);
+  }
+
+  &.position-bottom.is-transition-push::after {
+    box-shadow: none;
+  }
+
+  .button.white {
+    border: 1px solid $white;
+    color: $white;
+
+    &:hover, &:active {
+      border: 1px solid $white;
+      color: $white;
+    }
+  }
+}
+
