@@ -8,9 +8,9 @@ items:
   - menu: PHP Libraries
     items:
     - link: Zend Framework
-      href: vendor/zend/
+      href: /vendor/zend/
     - link: Doctrine
-      href: vendor/doctrine/
+      href: /vendor/doctrine/
     - link: Parsedown Extra
       href: https://github.com/erusev/parsedown-extra
     - link: GeSHi syntax highlighter
@@ -20,7 +20,7 @@ items:
     - link: SQL Formatter
       href: https://github.com/jdorn/sql-formatter
     - link: Imagine
-      href: vendor/imagine/        
+      href: /vendor/imagine/        
   - separator: Clientside
   - link: jQuery 1.11 or newer
     href: http://jquery.com/

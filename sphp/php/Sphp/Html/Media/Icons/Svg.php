@@ -10,74 +10,88 @@
 
 namespace Sphp\Html\Media\Icons;
 
-use Sphp\Stdlib\Networks\RemoteResource;
+use Sphp\Html\Content;
+use DOMDocument;
+use DOMNode;
 
 /**
- * Description of SVGLoader
+ * Implements an SVG image object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Svg implements \Sphp\Html\Content, Icon {
+class Svg implements Content, Icon {
 
   use \Sphp\Html\ContentTrait;
 
-  private static $src = [];
+  /**
+   * @var DOMDocument
+   */
+  private $doc;
 
-  public function __construct(string $svg, string $sreenreaderLabel = null) {
-    $this->svg = $svg;
+  /**
+   * @var DOMNode
+   */
+  private $svg;
+
+  /**
+   * Constructor
+   * 
+   * @param DOMDocument $doc
+   */
+  public function __construct(DOMDocument $doc) {
+    $this->doc = $doc;
+    $this->svg = $doc->getElementsByTagName('svg')->item(0);
   }
 
-  public function setAriaLabel(string $sreenreaderLabel = null) {
-    
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->doc, $this->svg);
+  }
+
+  /**
+   * Sets the title of the SVG image
+   * 
+   * @param string $title
+   * @return $this for a fluent interface
+   */
+  public function setTitle(string $title = null) {
+    if ($title !== null) {
+      $titleNode = $this->doc->getElementsByTagName('title')->item(0);
+      if ($titleNode === null) {
+        $titleNode = $this->doc->createElement('title');
+        $this->svg->insertBefore($titleNode, $this->svg->firstChild);
+      }
+      $titleNode->textContent = $title;
+    } else {
+      $titles = $this->svg->getElementsByTagName('title');
+      foreach ($titles as $title) {
+        $this->svg->removeChild($title);
+      }
+    }
+    return $this;
+  }
+
+  /**
+   * Sets the opacity of the SVG image
+   * 
+   * @param  float $opacity
+   * @return $this for a fluent interface
+   */
+  public function setOpacity(float $opacity = null) {
+    if ($opacity !== null) {
+      $this->svg->setAttribute('opacity', $opacity);
+    } else {
+      $this->svg->removeAttribute('opacity');
+    }
+    return $this;
   }
 
   public function getHtml(): string {
-    return $this->svg;
-  }
-
-  /**
-   * 
-   * @param string $path
-   * @param string $sreenreaderLabel
-   * @return \Sphp\Html\Media\Icons\Svg
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public static function fromFile(string $path, string $sreenreaderLabel = null): Svg {
-    if (!is_file($path)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException;
-    }
-    $svg = file_get_contents($path);
-    return new static($svg, $sreenreaderLabel);
-  }
-
-  /**
-   * 
-   * @param string $url
-   * @param string $sreenreaderLabel
-   * @return \Sphp\Html\Media\Icons\Svg
-   */
-  public static function fromUrl(string $url, string $sreenreaderLabel = null): Svg {
-    if (!array_key_exists($url, self::$src)) {
-      if (RemoteResource::exists($url)) {
-        $opts = array('http' =>
-            array(
-                'method' => 'GET',
-                'timeout' => 5
-            )
-        );
-
-        $context = stream_context_create($opts);
-        self::$src[$url] = file_get_contents($url, false, $context);
-      } else {
-        self::$src[$url] = '<svg></svg>';
-      }
-
-      //throw new \Sphp\Exceptions\InvalidArgumentException("fucked up remote file ($url)");
-    }
-
-    return new static(self::$src[$url], $sreenreaderLabel);
+    return $this->doc->saveHTML($this->svg);
   }
 
 }

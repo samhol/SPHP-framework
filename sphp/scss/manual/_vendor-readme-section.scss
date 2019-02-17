@@ -39,16 +39,16 @@
       }
       &.scss {
         @include vendor-font-coloring(#CB6699);
-        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?sass&opacity=.3');
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=sass-original&opacity=0.3');
         background-size: auto 80%;
       }
       &.zend {
         @include vendor-font-coloring(#68B604);
-        @include vendor-watermark('http://data.samiholck.com/svg/zend.php?opacity=.3');
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=zend-plain&opacity=0.25');
       }
       &.php {
         @include vendor-font-coloring(#6181B6);
-        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?php&opacity=.13');
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=php-original&opacity=0.13');
       }
       &.doctrine {
         @include vendor-font-coloring(#F56D39);

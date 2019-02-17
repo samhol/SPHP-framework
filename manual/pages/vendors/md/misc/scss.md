@@ -1,4 +1,6 @@
-# Sass [![Build Status](https://travis-ci.org/sass/ruby-sass.svg?branch=next)](https://travis-ci.org/sass/ruby-sass)
+# Sass
+
+[![Build Status](https://travis-ci.org/sass/ruby-sass.svg?branch=next)](https://travis-ci.org/sass/ruby-sass)
 
 Sass makes CSS fun again. Sass is an extension of CSS, adding nested rules, variables, 
 mixins, selector inheritance, and more. It's translated to well-formatted, standard 

@@ -11,17 +11,18 @@
 namespace Sphp\Html\Media\Icons;
 
 use Sphp\Stdlib\Networks\RemoteResource;
+use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\FileSystemException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Description of SVGLoader
+ * Implements an SVG object loader
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SvgLoader implements \Sphp\Html\Content {
-
-  use \Sphp\Html\ContentTrait;
+class SvgLoader {
 
   /**
    * @var Filetype|null singleton instance 
@@ -43,20 +44,16 @@ class SvgLoader implements \Sphp\Html\Content {
     return $this;
   }
 
-  public function getHtml(): string {
-    return $this->svg;
-  }
-
   /**
    * 
    * @param string $path
    * @param string $sreenreaderLabel
    * @return \Sphp\Html\Media\Icons\Svg
-   * @throws \Sphp\Exceptions\InvalidArgumentException
+   * @throws InvalidArgumentException
    */
   public static function fromFile(string $path, string $sreenreaderLabel = null): Svg {
     if (!is_file($path)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException();
+      throw new InvalidArgumentException();
     }
     $svg = file_get_contents($path);
     return new Svg($svg, $sreenreaderLabel);
@@ -64,9 +61,9 @@ class SvgLoader implements \Sphp\Html\Content {
 
   /**
    * 
-   * @param string $url
-   * @param string $sreenreaderLabel
-   * @return \Sphp\Html\Media\Icons\Svg
+   * @param  string $url
+   * @param  string $sreenreaderLabel
+   * @return Svg
    */
   public static function fromUrl(string $url, string $sreenreaderLabel = null): Svg {
     if (!array_key_exists($url, self::$src)) {
@@ -81,22 +78,44 @@ class SvgLoader implements \Sphp\Html\Content {
         $context = stream_context_create($opts);
         self::$src[$url] = file_get_contents($url, false, $context);
       } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException("fucked up remote file ($url)");
+        throw new InvalidArgumentException("fucked up remote file ($url)");
       }
     }
 
     return new Svg(self::$src[$url], $sreenreaderLabel);
   }
 
-  public function getFlag(string $countryCode, float $opacity = 1) {
-    if ($this->flagPath !== null) {
-      return static::fromFile($this->flagPath . $countryCode . ".svg");
-    } else {
-      throw new InvalidArgumentException('No flag path was given');
+  /**
+   * Returns a new SVG image object instance
+   * 
+   * @param  string $file
+   * @return Svg new instance
+   * @throws FileSystemException if the file cannot be found or is not valid SVG file
+   */
+  public static function fileToObject(string $file): Svg {
+    if (!Filesystem::isFile($file)) {
+      throw new FileSystemException("SVG file '$file' cannot be found");
     }
+
+    $doc = new \DOMDocument();
+    $loaded = $doc->load($file);
+    if (!$loaded) {
+      throw new FileSystemException("File '$file' is not valid SVG file");
+    }
+    return new Svg($doc);
   }
 
-  public static function fileToString(string $file, string $title = null): string {
+  /**
+   * 
+   * @param string $file
+   * @param string $title
+   * @return string
+   * @throws FileSystemException
+   */
+  public static function fileToString(string $file, string $title = null, float $opacity = null): string {
+    if (!Filesystem::isFile($file)) {
+      throw new FileSystemException("SVG file '$file' cannot be found");
+    }
     $iconfile = new \DOMDocument();
     $iconfile->load($file);
     $svg = $iconfile->getElementsByTagName('svg')->item(0);
@@ -104,11 +123,12 @@ class SvgLoader implements \Sphp\Html\Content {
       $titleNode = $iconfile->getElementsByTagName('title')->item(0);
       if ($titleNode === null) {
         $titleNode = $iconfile->createElement('title');
-        //$svg->firstChild;
         $svg->insertBefore($titleNode, $svg->firstChild);
       }
-      // $svg->setAttribute('title', $title);
       $titleNode->textContent = $title;
+    }
+    if ($opacity !== null) {
+      $svg->setAttribute('opacity', $opacity);
     }
     return $iconfile->saveHTML($svg);
   }

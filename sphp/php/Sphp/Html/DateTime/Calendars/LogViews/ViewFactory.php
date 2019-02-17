@@ -1,17 +1,19 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Media\Icons\Svg;
+use Sphp\Html\Media\Icons\SvgLoader;
 
 /**
- * Description of FlagView
+ * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -21,6 +23,7 @@ use Sphp\Html\Media\Icons\Svg;
 class ViewFactory {
 
   public static function flag(string $country): string {
-    return '<div class="national-flag">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/fi.svg') . "</div>";
+    return '<div class="national-flag">' . SvgLoader::fileToString('/home/int48291/public_html/playground/manual/svg/flags/fi.svg') . "</div>";
   }
+
 }

@@ -13,7 +13,7 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\DateTime\TimeTag;
-use Sphp\Html\Media\Icons\Svg;
+use Sphp\Html\Media\Icons\SvgLoader;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 
 /**
@@ -77,7 +77,7 @@ class WeekDayView extends AbstractComponent {
     if ($this->diaryDay->notEmpty()) {
       $div->append(\Sphp\Html\Media\Icons\FA::flag()->setSize('xs'));
       if ($this->diaryDay->isFlagDay()) {
-        $div->append('<i class="flag svg-inline--fa fa-w-16">' . Svg::fromUrl('http://data.samiholck.com/svg/flags/fi.svg') . '</i>');
+        $div->append('<i class="flag svg-inline--fa fa-w-16">' . SvgLoader::fileToString('/home/int48291/public_html/playground/manual/svg/flags/fi.svg') . '</i>');
       }
     }
     return $div;

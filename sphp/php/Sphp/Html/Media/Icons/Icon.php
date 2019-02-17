@@ -27,5 +27,5 @@ interface Icon extends Content {
    * @param string $label the ARIA label text for the icon
    * @return $this for a fluent interface
    */
-  public function setAriaLabel(string $label = null);
+  //public function setAriaLabel(string $label = null);
 }
