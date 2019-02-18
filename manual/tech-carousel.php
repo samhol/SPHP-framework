@@ -11,31 +11,31 @@ use Sphp\Html\Media\Icons\SvgLoader;
       </div>
 
       <div class="sphp-info-button html5" data-tech="html5-info">
-        <?php echo SvgLoader::fileToString('manual/svg/html5-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/html5/html5-original.svg') ?>
       </div>
 
       <div class="sphp-info-button css3" data-tech="css-info">
-        <?php echo SvgLoader::fileToString('manual/svg/css3-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/css3/css3-original.svg') ?>
       </div>
 
       <div class="sphp-info-button sass" data-tech="sass-info">
-        <?php echo SvgLoader::fileToString('manual/svg/sass-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/sass/sass-original.svg') ?>
       </div>
 
       <div class="sphp-info-button js" data-tech="js-info">
-        <?php echo SvgLoader::fileToString('manual/svg/js-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/javascript/javascript-original.svg') ?>
       </div>
       
       <div class="sphp-info-button" data-tech="nodejs-info">
-        <?php echo SvgLoader::fileToString('manual/svg/nodejs-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/nodejs/nodejs-original.svg') ?>
       </div>
       
       <div class="sphp-info-button" data-tech="gulp-info">
-        <?php echo SvgLoader::fileToString('manual/svg/gulp-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/gulp/gulp-plain.svg') ?>
       </div>
 
       <div class="sphp-info-button foundation" data-tech="foundation-info">
-        <?php echo SvgLoader::fileToString('manual/svg/foundation-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/foundation/foundation-original.svg') ?>
       </div>
 
       <div class="sphp-info-button php" data-tech="php-info">
@@ -48,19 +48,19 @@ use Sphp\Html\Media\Icons\SvgLoader;
       </div>
 
       <div class="sphp-info-button zend" data-tech="zend-info">
-        <?php echo SvgLoader::fileToString('manual/svg/zend-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/zend/zend-plain.svg') ?>
       </div>
 
       <div class="sphp-info-button doctrine" data-tech="doctrine-info">
-        <?php echo SvgLoader::fileToString('manual/svg/doctrine-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/doctrine/doctrine-original.svg') ?>
       </div>
 
       <div class="sphp-info-button mysql" data-tech="mysql-info">
-        <?php echo SvgLoader::fileToString('manual/svg/mysql-logo.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/mysql/mysql-original-wordmark.svg') ?>
       </div>
 
       <div class="sphp-info-button postgresql" data-tech="postgresql-info">
-        <?php echo SvgLoader::fileToString('manual/svg/postgresql.svg') ?>
+        <?php echo SvgLoader::fileToString('manual/svg/devicons/postgresql/postgresql-original.svg') ?>
       </div>
 
     </div>
