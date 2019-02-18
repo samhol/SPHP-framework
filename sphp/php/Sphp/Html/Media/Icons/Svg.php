@@ -53,6 +53,24 @@ class Svg implements Content, Icon {
   }
 
   /**
+   * Returns the DOM document object
+   * 
+   * @return DOMDocument the DOM document object
+   */
+  protected function getDoc(): DOMDocument {
+    return $this->doc;
+  }
+
+  /**
+   * Returns the SVG node
+   * 
+   * @return DOMNode the SVG node
+   */
+  protected function getSvg(): DOMNode {
+    return $this->svg;
+  }
+
+  /**
    * Sets the title of the SVG image
    * 
    * @param string $title

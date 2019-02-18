@@ -50,19 +50,19 @@ $flagModal = new Modal('<i class="far fa-flag fa-lg fa-fw"></i> Country flags', 
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
 $farPopup->addCssClass('icon-example-popup', 'fontawesome');
-$farPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=regular');
+$farPopup->ajaxAppend('manual/snippets/icons/fontawesome.php?type=regular');
 $farModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Regular icons', $farPopup);
 
 $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');
 $fasPopup->addCssClass('icon-example-popup', 'fontawesome');
-$fasPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=solid');
+$fasPopup->ajaxAppend('manual/snippets/icons/fontawesome.php?type=solid');
 $fasModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Solid icons', $fasPopup);
 
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
 $fabPopup->addCssClass('icon-example-popup', 'fontawesome');
-$fabPopup->ajaxAppend('manual/snippets/icons/FontAwesome.php?type=brands');
+$fabPopup->ajaxAppend('manual/snippets/icons/fontawesome.php?type=brands');
 $fabModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Brand icons', $fabPopup);
 
 $filePopup = new Popup();

@@ -139,10 +139,25 @@ class FA {
       'eye' => 'far fa-eye',
   );
 
-  private $classes = [];
+  /**
+   *  member function map 
+   *
+   * @var array[]
+   */
+  private $functions = [];
 
+  /**
+   * Constructor
+   */
   public function __construct() {
-    $this->classes = [];
+    $this->functions = [];
+  }
+  
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->functions);
   }
 
   /**
@@ -166,7 +181,7 @@ class FA {
   public function __call(string $fileType, array $arguments): FaIcon {
     $screenReaderText = array_shift($arguments);
     $icon = static::get($fileType, $screenReaderText);
-    foreach ($this->classes as $propertyName => $value) {
+    foreach ($this->functions as $propertyName => $value) {
       $icon->$propertyName($value);
     }
     return $icon;
@@ -212,7 +227,7 @@ class FA {
    * @return $this for a fluent interface
    */
   public function pull(string $direction = null) {
-    $this->classes['pull'] = $direction;
+    $this->functions['pull'] = $direction;
     return $this;
   }
 
@@ -223,7 +238,7 @@ class FA {
    * @return $this for a fluent interface
    */
   public function fixedWidth(bool $fixedWidth = true) {
-    $this->classes['fixedWidth'] = $fixedWidth;
+    $this->functions['fixedWidth'] = $fixedWidth;
     return $this;
   }
 
@@ -234,7 +249,7 @@ class FA {
    * @return $this for a fluent interface
    */
   public function setSize(string $size = null) {
-    $this->classes['setSize'] = $size;
+    $this->functions['setSize'] = $size;
     return $this;
   }
 

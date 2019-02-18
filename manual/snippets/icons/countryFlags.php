@@ -20,7 +20,7 @@ foreach ($array as $name => $object) {
     $cellContent = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon', 'national-flag', 'svg');
     $cellContent->append($iconContainer);
-    $iconContainer->append('<div class="flag">'.SvgLoader::fileToString($object->getRealPath()).'</div>');
+    $iconContainer->append('<div class="flag">' . SvgLoader::fileToString($object->getRealPath()) . '</div>');
     $countryCode = strtoupper($object->getBasename('.svg'));
     $ext = Tags::div()->addCssClass('ext');
     $cellContent->append($ext);

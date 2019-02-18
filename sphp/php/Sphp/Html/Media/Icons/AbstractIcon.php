@@ -32,6 +32,23 @@ class AbstractIcon extends EmptyTag implements Icon {
   public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, true, $attrManager);
   }
+
+  /**
+   * 
+   * @param  bool $decorative
+   * @return $this for a fluent interface
+   */
+  public function setDecorative(bool $decorative = null) {
+    if (is_bool($decorative)) {
+    $decorative = ($decorative) ? 'true' : 'false';
+    $this->attributes()->setAttribute('aria-hidden', 'false');
+    }
+    else {
+      $this->removeAttribute('aria-hidden');
+    }
+    return $this;
+  }
+
   public function setAriaLabel(string $label = null) {
     $this->attributes()->setAria('label', $label);
     if ($label === null) {

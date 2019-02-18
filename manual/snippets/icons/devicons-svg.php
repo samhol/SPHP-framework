@@ -1,6 +1,6 @@
 <?php
 
-require_once(realpath('/home/int48291/public_html/playground/manual/settings.php'));
+require_once('/home/int48291/public_html/playground/manual/settings.php');
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;

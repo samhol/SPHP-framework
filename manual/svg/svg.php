@@ -45,7 +45,7 @@ function getPath(): string {
     $flag = filter_input(INPUT_GET, 'flag', FILTER_SANITIZE_STRING);
     $path .= "flags/$flag.svg";
   } else if (isset($_GET['file'])) {
-    $file = filter_input(INPUT_GET, 'file', FILTER_SANITIZE_STRING);
+    $file = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
     $path .= "$file.svg";
   }
   if (!is_file($path)) {
@@ -61,7 +61,9 @@ try {
   $object = SvgLoader::fileToObject($path);
  
 } catch (\Exception $ex) {
-  $object = SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/crossbones.svg');
+  $object = new Sphp\Html\Media\Icons\Crossbones();
+  $object->setColor('#f00')->setOpacity(.4);
+  $object->setText('SVG image resource not found!');
   $title = 'SVG image resource not found!';
 }
 header('Content-type: image/svg+xml');

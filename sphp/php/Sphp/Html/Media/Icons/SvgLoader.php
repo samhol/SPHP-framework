@@ -46,9 +46,9 @@ class SvgLoader {
 
   /**
    * 
-   * @param string $path
-   * @param string $sreenreaderLabel
-   * @return \Sphp\Html\Media\Icons\Svg
+   * @param  string $path
+   * @param  string $sreenreaderLabel
+   * @return Svg
    * @throws InvalidArgumentException
    */
   public static function fromFile(string $path, string $sreenreaderLabel = null): Svg {
@@ -107,8 +107,8 @@ class SvgLoader {
 
   /**
    * 
-   * @param string $file
-   * @param string $title
+   * @param  string $file
+   * @param  string $title
    * @return string
    * @throws FileSystemException
    */
