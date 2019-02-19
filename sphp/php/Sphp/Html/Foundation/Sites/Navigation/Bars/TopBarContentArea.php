@@ -8,10 +8,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Bars;
+namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
+
+use Sphp\Html\PlainContainer;
+use Sphp\Html\Span;
 
 /**
- * Describes a Bar content area
+ * Implements a Title Bar content area
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -19,6 +22,17 @@ namespace Sphp\Html\Foundation\Sites\Bars;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface BarContentAreaInterface {
-  
+class TopBarContentArea extends AbstractBarContentArea {
+
+  /**
+   * Constructor
+   *
+   * @precondition $side == 'left' | 'right'
+   * @param string $side the side of the container
+   */
+  public function __construct(string $side) {
+    parent::__construct('div');
+    $this->cssClasses()->protectValue("top-bar-$side");
+  }
+
 }

@@ -11,7 +11,6 @@
 namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\ContainerComponent;
 
 /**
  * Implements an abstract Foundation Bar
@@ -26,13 +25,13 @@ class AbstractBar extends AbstractComponent {
 
   /**
    *
-   * @var ContainerComponent 
+   * @var BarContentArea 
    */
   private $leftArea;
 
   /**
    *
-   * @var ContainerComponent 
+   * @var BarContentArea 
    */
   private $rightArea;
 
@@ -40,10 +39,10 @@ class AbstractBar extends AbstractComponent {
    * Constructor
    *
    * @param string $tagname
-   * @param ContainerComponent $left
-   * @param ContainerComponent $right
+   * @param BarContentArea $left
+   * @param BarContentArea $right
    */
-  public function __construct(string $tagname, ContainerComponent $left, ContainerComponent $right) {
+  public function __construct(string $tagname, BarContentArea $left, BarContentArea $right) {
     parent::__construct($tagname);
     $this->leftArea = $left;
     $this->rightArea = $right;
@@ -63,18 +62,18 @@ class AbstractBar extends AbstractComponent {
   /**
    * Returns the left side menu area component
    *
-   * @return ContainerComponent the left side menu area component
+   * @return BarContentArea the left side menu area component
    */
-  public function left(): ContainerComponent {
+  public function left(): BarContentArea {
     return $this->leftArea;
   }
 
   /**
    * Returns the right side menu area component
    *
-   * @return ContainerComponent the right side menu area component
+   * @return BarContentArea the right side menu area component
    */
-  public function right(): ContainerComponent {
+  public function right(): BarContentArea {
     return $this->rightArea;
   }
 

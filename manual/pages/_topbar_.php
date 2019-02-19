@@ -45,3 +45,13 @@ try {
 } catch (\Exception $e) {
   echo ThrowableCalloutBuilder::build($e, true, true);
 }
+$responsiveBar = new ResponsiveBar();
+$responsiveBar->topbar()->left()->append($leftDrop);
+//$responsiveBar->titleBar()->left()->append(new MenuButton('Open left menu'));
+$responsiveBar->titleBar()->left()->appendTitle('SPHPlayground menu');
+$titlebar = new TitleBar();
+//$titlebar->left()->append(new MenuButton('Open left menu'));
+$titlebar->left()->appendTitle('SPHPlayground menu');
+$titlebar->right()->append(new MenuButton('Open right menu'));
+$titlebar->right()->prependTitle('Right menu');
+echo $responsiveBar;

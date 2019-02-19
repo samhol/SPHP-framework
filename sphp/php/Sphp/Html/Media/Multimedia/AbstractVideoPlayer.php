@@ -11,8 +11,6 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\SizeableMediaTrait;
-use Sphp\Html\Media\LazyMediaSourceTrait;
 use Sphp\Stdlib\Networks\URL;
 
 /**
@@ -24,8 +22,8 @@ use Sphp\Stdlib\Networks\URL;
  */
 abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPlayer {
 
-  use SizeableMediaTrait,
-      LazyMediaSourceTrait;
+  use \Sphp\Html\Media\SizeableMediaTrait,
+      \Sphp\Html\Media\LazyMediaSourceTrait;
 
   /**
    * the url of the player
@@ -44,7 +42,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   /**
    * Constructor
    *
-   * @param  string|URL $url the id of the Vimeo video
+   * @param  string|URL $url the URL of the video
    * @param  string $videoId the id of the embedded video
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */

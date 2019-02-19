@@ -11,7 +11,6 @@
 namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
 use Sphp\Html\ContainerComponent;
-use Sphp\Html\Div;
 use InvalidArgumentException;
 
 /**
@@ -28,18 +27,16 @@ class TopBar extends AbstractBar {
   /**
    * Constructor
    *
-   * @param ContainerComponent $left
-   * @param ContainerComponent $right
+   * @param TopBarContentArea $left
+   * @param TopBarContentArea $right
    */
-  public function __construct(ContainerComponent $left = null, ContainerComponent $right = null) {
+  public function __construct(TopBarContentArea $left = null, TopBarContentArea $right = null) {
     if ($left === null) {
-      $left = new Div();
+      $left = new TopBarContentArea('left');
     }
-    $left->cssClasses()->protectValue('top-bar-left');
     if ($right === null) {
-      $right = new Div();
+      $right = new TopBarContentArea('right');
     }
-    $right->cssClasses()->protectValue('top-bar-right');
     parent::__construct('div', $left, $right);
     $this->cssClasses()->protectValue('top-bar');
   }

@@ -6,6 +6,29 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
+@mixin sphp-top-bar-z-indexing($z-index: 99) {
+  z-index: $z-index;
+  .is-dropdown-submenu {
+    z-index: $z-index;
+  }
+}
+
+@mixin sphp-responsive-bar() {
+  .sphp.responsive-bar-container {
+    &.no-js {
+      @include breakpoint(small only) {
+        .top-bar {
+          display: none;
+        }
+      }
+      @include breakpoint(medium) {
+        .title-bar {
+          display: none;
+        }
+      }
+    }
+  }
+}
 @mixin sphp-top-bar() { 
   $bar-bg: #111; 
   $bar-menu-bg: #222;
@@ -25,6 +48,7 @@
       background-color: $bar-bg;
     }
     &.top-bar { 
+      @include sphp-top-bar-z-indexing;
       color: #fff;
 
       .top-bar-left {

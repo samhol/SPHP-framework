@@ -6,6 +6,7 @@ $html = Document::html();
 $head = Document::head();
 $body = Document::body();
 
+require_once '/home/int48291/public_html/playground/manual/common/menus.php';
 $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
 
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);

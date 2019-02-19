@@ -32,7 +32,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
   /**
    * Sets the color of the video controls
    * 
-   * **Default:** the default color is `00adef`
+   * **Default:** the default color is `#00adef`
    * 
    * @param  string $color the hexadecimal color code string
    * @return $this for a fluent interface

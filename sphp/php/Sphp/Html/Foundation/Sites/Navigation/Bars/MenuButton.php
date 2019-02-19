@@ -8,9 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Bars;
+namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\EmptyTag;
 
 /**
  * Class MenuOpenerButton
@@ -19,18 +19,22 @@ use Sphp\Html\AbstractComponent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class MenuButton extends AbstractComponent {
+class MenuButton extends EmptyTag {
 
   /**
    * Constructor
    */
-  public function __construct() {
-    parent::__construct('button');
+  public function __construct(string $screenreadertext = null) {
+    parent::__construct('button', true);
     $this->cssClasses()->protectValue('menu-icon');
+    $this->attributes()->setAria('label', $screenreadertext);
   }
 
-  public function contentToString(): string {
-    return '';
+  public function setTarget($target) {
+    if ($target instanceof \Sphp\Html\IdentifiableContent) {
+      $target = $target->identify();
+    }
+    $this->attributes()->setAttribute('data-open', $target);
   }
 
 }

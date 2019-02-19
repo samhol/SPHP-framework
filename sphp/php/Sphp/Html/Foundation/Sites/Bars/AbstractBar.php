@@ -39,10 +39,10 @@ class AbstractBar extends AbstractComponent {
    * Constructor
    *
    * @param string $tagname
-   * @param BarContentAreaInterface $left
-   * @param BarContentAreaInterface $right
+   * @param BarContentArea $left
+   * @param BarContentArea $right
    */
-  public function __construct($tagname, BarContentAreaInterface $left, BarContentAreaInterface $right) {
+  public function __construct($tagname, BarContentArea $left, BarContentArea $right) {
     parent::__construct($tagname);
     $this->leftArea = $left;
     $this->rightArea = $right;
@@ -62,16 +62,16 @@ class AbstractBar extends AbstractComponent {
   /**
    * Sets and Returns the left side menu area component
    *
-   * @return BarContentAreaInterface the left side menu area component
+   * @return BarContentArea the left side menu area component
    */
-  public function left():BarContentAreaInterface {
+  public function left():BarContentArea {
     return $this->leftArea;
   }
 
   /**
    * Sets and Returns the right side menu area component
    *
-   * @return BarContentAreaInterface the right side menu area component
+   * @return BarContentArea the right side menu area component
    */
   public function right() {
     return $this->rightArea;

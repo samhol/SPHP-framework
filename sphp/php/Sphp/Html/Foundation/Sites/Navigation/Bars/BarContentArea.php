@@ -8,12 +8,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Bars;
+namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
-use Sphp\Html\SimpleTag;
+use Sphp\Html\Component;
 
 /**
- * Implements an abstract Bar content area
+ * Describes a Bar content area
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -21,14 +21,9 @@ use Sphp\Html\SimpleTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
- class BarContentArea extends SimpleTag implements BarContentAreaInterface {
+interface BarContentArea extends Component {
 
-  /**
-   * Constructor
-   *
-   * @param string $tagname the title of the Top Bar component
-   */
-  public function __construct(string $tagname = 'div') {
-    parent::__construct($tagname);
-  }
+  public function append($content);
+
+  public function prepend($content);
 }
