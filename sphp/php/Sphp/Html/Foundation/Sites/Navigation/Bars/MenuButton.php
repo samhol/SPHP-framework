@@ -8,27 +8,29 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Navigation;
+namespace Sphp\Html\Foundation\Sites\Bars;
+
+use Sphp\Html\AbstractComponent;
 
 /**
- * Implements a Foundation vertical navigation menu
+ * Class MenuOpenerButton
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation
  * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class VerticalMenu extends Menu {
+class MenuButton extends AbstractComponent {
 
   /**
    * Constructor
-   *
-   * @param mixed $content
    */
-  public function __construct($content = null) {
-    parent::__construct($content);
-    $this->cssClasses()->protectValue('vertical');
+  public function __construct() {
+    parent::__construct('button');
+    $this->cssClasses()->protectValue('menu-icon');
+  }
+
+  public function contentToString(): string {
+    return '';
   }
 
 }

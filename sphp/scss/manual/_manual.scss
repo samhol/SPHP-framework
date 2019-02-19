@@ -48,7 +48,21 @@ $error-bg: rgba(#FF7F50, 0.4);
 
 @import 'error-page';
 @import "logo-area"; 
+.no-js {
+    @include breakpoint(small only) {
+      &.top-bar {
+        display: none;
+      }
+    }
+
+    @include breakpoint(medium) {
+      &.title-bar {
+        display: none;
+      }
+    }
+  }
 .manual {
+  
   .top-bar {
     z-index: 99;
     .is-dropdown-submenu{

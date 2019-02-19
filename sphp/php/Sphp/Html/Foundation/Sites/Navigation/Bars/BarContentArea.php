@@ -8,25 +8,27 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Grids;
+namespace Sphp\Html\Foundation\Sites\Bars;
 
-use Sphp\Html\Component;
+use Sphp\Html\SimpleTag;
 
 /**
- * Defines a Foundation framework based XY Block Grid Column
+ * Implements an abstract Bar content area
  *
- * **Important!**
- *
- * This component is mobile-first. Code for small screens first,
- * and larger devices will inherit those styles. Customize for
- * larger screens as necessary
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/block_grid.html Foundation Block Grid
+ * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface BlockGridColumnInterface extends Component {
-  
+ class BarContentArea extends SimpleTag implements BarContentAreaInterface {
+
+  /**
+   * Constructor
+   *
+   * @param string $tagname the title of the Top Bar component
+   */
+  public function __construct(string $tagname = 'div') {
+    parent::__construct($tagname);
+  }
 }

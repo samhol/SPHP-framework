@@ -10,23 +10,22 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Component;
+use Sphp\Html\Div;
 
 /**
- * Defines a Foundation framework based XY Block Grid Column
- *
- * **Important!**
- *
- * This component is mobile-first. Code for small screens first,
- * and larger devices will inherit those styles. Customize for
- * larger screens as necessary
+ * Implements a Foundation framework based XY Block Grid Column
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/block_grid.html Foundation Block Grid
+ * @link    https://foundation.zurb.com/sites/docs/xy-grid.html#block-grids Block Grid
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface BlockGridColumn extends Component {
-  
+class HtmlBlockGridColumn extends Div implements BlockGridColumn {
+
+  public function __construct($content = null) {
+    parent::__construct($content);
+    $this->cssClasses()->protectValue('cell');
+  }
+
 }

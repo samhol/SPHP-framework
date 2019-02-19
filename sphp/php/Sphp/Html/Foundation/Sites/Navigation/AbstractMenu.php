@@ -26,8 +26,6 @@ use Sphp\Html\PlainContainer;
  */
 class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem {
 
-  private $defaultTarget = '_self';
-
   /**
    * @var Container
    */

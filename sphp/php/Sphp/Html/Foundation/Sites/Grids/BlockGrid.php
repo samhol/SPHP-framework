@@ -59,10 +59,15 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * @param  string $layout,... block grid layout parameters
    */
   public function __construct(...$layout) {
-    $this->columns = new PlainContainer();
+    $this->columns = [];
     parent::__construct('div');
     $this->layoutManager = new BlockGridLayoutManager($this);
     $this->layout()->setLayouts($layout);
+  }
+
+  public function __destruct() {
+    unset($this->columns, $this->layoutManager);
+    parent::__destruct();
   }
 
   public function layout(): BlockGridLayoutManager {
@@ -79,7 +84,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
     $this->columns->clear();
     foreach ($columns as $column) {
       if (!($column instanceof BlockGridColumnInterface)) {
-        $column = new BlockGridColumn($column);
+        $column = new HtmlBlockGridColumn($column);
       }
       $this->append($column);
     }
@@ -89,15 +94,49 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   /**
    * Appends new Columns to the container
    * 
-   * @param  mixed,... $column column or column content
-   * @return $this for a fluent interface
+   * @param  mixed $column column or column content
+   * @return BlockGridColumn new column
    */
-  public function append(...$column) {
-    foreach ($column as $c) {
-      if (!($c instanceof BlockGridColumnInterface)) {
-        $c = new BlockGridColumn($column);
-      }
-      $this->columns->append($c);
+  public function append($column): BlockGridColumn {
+    if (!$column instanceof BlockGridColumn) {
+      $column = new HtmlBlockGridColumn($column);
+    }
+    $this->columns[] = $column;
+    return $column;
+  }
+
+  /**
+   * Appends a parsed Mark Down string to the container
+   * 
+   * @param  string $md the path to the file
+   * @return HtmlBlockGridColumn new column
+   * @throws RuntimeException if the parsing fails for any reason
+   */
+  public function appendMd(string $md): HtmlBlockGridColumn {
+    try {
+      $column = new HtmlBlockGridColumn();
+      $column->appendMd($md);
+      $this->append($column);
+      return $column;
+    } catch (\Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+  }
+
+  /**
+   * Appends a parsed Mark Down file to the container
+   * 
+   * @param  string $path  the path to the file
+   * @return HtmlBlockGridColumn new column
+   * @throws RuntimeException if the parsing fails for any reason
+   */
+  public function appendMdFile(string $path): HtmlBlockGridColumn {
+    try {
+      $column = new HtmlBlockGridColumn();
+      $column->appendMdFile($path);
+      $this->append($column);
+    } catch (\Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }
@@ -113,15 +152,15 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   }
 
   public function getIterator(): Traversable {
-    return $this->columns->getIterator();
+    return new \Sphp\Html\Iterator($this->columns);
   }
 
   public function count(): int {
-    return $this->columns->count();
+    return count($this->columns);
   }
 
   public function contentToString(): string {
-    return $this->columns->getHtml();
+    return implode($this->columns);
   }
 
 }

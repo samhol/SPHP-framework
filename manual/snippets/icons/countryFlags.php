@@ -6,6 +6,20 @@ require_once 'country-flag-definitions.php';
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Stdlib\Parsers\Parser;
+
+$data = Parser::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countrycodes.json');
+echo '<pre>';
+print_r($data);
+echo '</pre>';
+
+function getCountry(string $iso): string {
+  if (!array_key_exists($iso, $countries)) {
+    $iconContainer->setAttribute('title', $countries[$countryCode]);
+    $ext->append(" $countries[$countryCode]");
+  }
+  return $countries[$countryCode];
+}
 
 $section = Tags::section();
 $section->addCssClass('container', 'country-flags');
@@ -20,7 +34,7 @@ foreach ($array as $name => $object) {
     $cellContent = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon', 'national-flag', 'svg');
     $cellContent->append($iconContainer);
-    $iconContainer->append('<div class="flag">' . SvgLoader::fileToString($object->getRealPath()) . '</div>');
+    $iconContainer->append('<div class="flag">' . SvgLoader::fileToObject($object->getRealPath())->setTitle() . '</div>');
     $countryCode = strtoupper($object->getBasename('.svg'));
     $ext = Tags::div()->addCssClass('ext');
     $cellContent->append($ext);

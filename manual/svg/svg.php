@@ -1,13 +1,18 @@
 <?php
 
 error_reporting(E_ALL);
-ini_set("display_errors", 1);
+ini_set('display_errors', 1);
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
 use Sphp\Validators\Range;
 use Sphp\Html\Media\Icons\SvgLoader;
 use Sphp\Exceptions\FileSystemException;
+use Sphp\Html\Media\Icons\Crossbones;
 
+//$redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
+//var_dump($redirect);
+//$seed = explode('/',trim($redirect));
+//var_dump($seed);
 //error_reporting(E_ALL);
 //ini_set("display_errors", 1);
 $colorOptions = [
@@ -44,7 +49,7 @@ function getPath(): string {
   } else if (isset($_GET['flag'])) {
     $flag = filter_input(INPUT_GET, 'flag', FILTER_SANITIZE_STRING);
     $path .= "flags/$flag.svg";
-  } else if (isset($_GET['file'])) {
+  } else if (isset($_GET['name'])) {
     $file = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
     $path .= "$file.svg";
   }
@@ -59,19 +64,19 @@ function getPath(): string {
 try {
   $path = getPath();
   $object = SvgLoader::fileToObject($path);
- 
 } catch (\Exception $ex) {
-  $object = new Sphp\Html\Media\Icons\Crossbones();
+  $object = new Crossbones();
   $object->setColor('#f00')->setOpacity(.4);
-  $object->setText('SVG image resource not found!');
+  $object->setText('SVG image not found!');
   $title = 'SVG image resource not found!';
 }
+if ($opacity !== null) {
+  $object->setOpacity($opacity);
+}
+if ($title !== null) {
+  $object->setTitle($title);
+}
 header('Content-type: image/svg+xml');
- if ($opacity !== null) {
-    $object->setOpacity($opacity);
-  }
-  if ($title !== null) {
-    $object->setTitle($title);
-  }
+
 echo $object;
 

@@ -55,12 +55,40 @@ class Crossbones extends Svg {
 
   public function setText(string $text) {
     $textElement = $this->getDoc()->createElement('text', $text);
-    $textElement->setAttribute('style', 'stroke: #f44; stroke-width:8px;fill:#000;font-family:Arial,Helvetica;font-size:70px;');
+    $textElement->setAttribute('style', 'stroke: #f44; stroke-width:8px;fill:#000;font-family:Arial,Helvetica;font-size:60px;');
     $textElement->setAttribute('x', '50%');
     $textElement->setAttribute('y', '50%');
     $textElement->setAttribute('dominant-baseline', 'middle');
     $textElement->setAttribute('text-anchor', 'middle');
     $this->getSvg()->appendChild($textElement);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param string $color
+   * @param float $width
+   * @return $this for a fluent interface
+   */
+  public function setStroke(string $color, float $width) {
+    $graphs = $this->getSvg()->getElementsByTagName('g');
+    foreach ($graphs as $g) {
+      $g->setAttribute('stroke', $color);
+      $g->setAttribute('stroke-width', $width);
+    }
+    return $this;
+  }
+
+  /**
+   * 
+   * @return $this for a fluent interface
+   */
+  public function removeStroke() {
+    $graphs = $this->getSvg()->getElementsByTagName('g');
+    foreach ($graphs as $g) {
+      $g->removeAttribute('stroke');
+      $g->removeAttribute('stroke-width');
+    }
     return $this;
   }
 

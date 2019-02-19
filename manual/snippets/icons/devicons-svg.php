@@ -19,7 +19,7 @@ foreach ($objects as $name => $object) {
     $content = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon');
     $content->append($iconContainer);
-    $iconContainer->append(SvgLoader::fileToString($object->getRealPath(), $name));
+    $iconContainer->append(SvgLoader::fileToObject($object->getRealPath())->setTitle($name));
     $ext = Tags::div($name)->addCssClass('ext', 'devicon');
     $content->append($ext);
     $grid->append($content);
