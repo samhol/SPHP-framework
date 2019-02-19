@@ -17,10 +17,10 @@ use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
   <?php
   try {
     
-    $navi = new TopBar();
-    $navi->setAttribute('id', 'sphp-top-menu');
-    $navi->stackFor('medium');
-    $navi->addCssClass('sphp');
+    $navi = new Bars\ResponsiveBar();
+   // $navi->setAttribute('id', 'sphp-top-menu');
+    //$navi->stackFor('medium');
+   // $navi->addCssClass('sphp');
 
     //$manual = (new SubMenu('Documentation'));
     $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
@@ -29,14 +29,14 @@ use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
     $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
     $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
     $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
-    $navi->left()->setContent($leftDrop);
+    $navi->topbar()->left()->append($leftDrop);
 
     $form = new SiteSearch360Form('playground.samiholck.com');
     $form->setLabelText(false);
     $form->setPlaceholder('Search Manual');
 
-    (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->right());
-    $navi->right()->setContent('<ul class="menu"><li>' . $form . '</li></ul>');
+    (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->topbar()->right());
+    $navi->topbar()->right()->append('<ul class="menu"><li>' . $form . '</li></ul>');
 
     $navi->printHtml();
   } catch (\Exception $e) {

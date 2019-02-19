@@ -39,15 +39,15 @@
   $bar-link-color: #f4f4f4;
   $bar-link-color-active: #fff;
   $root-border-color: #333;
-  .sphp {
-    &.title-bar, &.top-bar {
+  .sphp.responsive-bar-container {
+    .title-bar, .top-bar {
       @include single-box-shadow(0px, 3px, 8px, 4px, #888);
       @include single-box-shadow(3px, 3px, 8px, 4px, #888);
       border-top: solid 1px $highlight-color;
       border-bottom: solid 1px $highlight-color;
       background-color: $bar-bg;
     }
-    &.top-bar { 
+    .top-bar { 
       @include sphp-top-bar-z-indexing;
       color: #fff;
 
