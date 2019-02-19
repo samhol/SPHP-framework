@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
+use Sphp\Html\Lists\HyperlinkListItem;
+
 /**
  * Implements an accessible menu item for a Breadcrumb component
  *
@@ -21,7 +23,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class BreadCrumb extends MenuLink {
+class BreadCrumb extends HyperlinkListItem {
 
   /**
    * Sets or unsets the hyperlink component as active

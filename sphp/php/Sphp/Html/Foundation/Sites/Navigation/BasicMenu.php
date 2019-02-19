@@ -11,15 +11,16 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Implements a Dropown menu
+ * Implements a basic navigation menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class DropdownMenu extends BasicMenu {
+class BasicMenu extends AbstractMenu {
 
   /**
    * Constructor
@@ -27,17 +28,24 @@ class DropdownMenu extends BasicMenu {
    * @param mixed $content
    */
   public function __construct($content = null) {
-    parent::__construct($content);
-    $this->cssClasses()->protectValue('dropdown');
-    $this->attributes()->demand('data-dropdown-menu');
+    parent::__construct('ul');
+    if ($content !== null) {
+      $this->appendContent($content);
+    }
   }
 
-  public function append(MenuItem $content) {
-    if ($content instanceof SubMenu) {
-      $content->addCssClass('sphp-hide-fouc-on-load');
+  /**
+   * 
+   * @param mixed $content
+   */
+  protected function appendContent($content) {
+    foreach (is_array($content) ? $content : [$content] as $item) {
+      if ($item instanceof MenuItem) {
+        $this->append($item);
+      } else {
+        $this->appendText($item);
+      }
     }
-    parent::append($content);
-    return $this;
   }
 
 }

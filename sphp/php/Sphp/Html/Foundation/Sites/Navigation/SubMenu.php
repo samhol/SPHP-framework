@@ -24,7 +24,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {
+class SubMenu extends AbstractComponent implements MenuItem, Menu {
 
   /**
    * The root component
@@ -42,11 +42,11 @@ class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {
    * Constructor
    *
    * @param null|string|Hyperlink $root root content
-   * @param null|Menu $menu
+   * @param Menu $menu
    */
-  public function __construct($root = null, AbstractMenu $menu = NULL) {
+  public function __construct($root = null, Menu $menu = null) {
     if ($menu === null) {
-      $this->menu = new Menu();
+      $this->menu = new BasicMenu();
     }
     parent::__construct('li');
     $this->setRoot($root);
@@ -72,7 +72,7 @@ class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {
    * 
    * @return Menu
    */
-  public function getMenu() {
+  public function getMenu(): Menu {
     return $this->menu;
   }
 
@@ -84,7 +84,7 @@ class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {
    */
   public function append(MenuItem $item) {
     if ($item instanceof SubMenu) {
-      $item->vertical($this->isVertical());
+      $item->setVertical($this->isVertical());
     }
     $this->menu->append($item);
     if ($item instanceof MenuLink && $item->isActive()) {
@@ -124,8 +124,8 @@ class SubMenu extends AbstractComponent implements MenuItem, MenuInterface {
     return $this;
   }
 
-  public function vertical(bool $vertical = true) {
-    $this->getMenu()->vertical($vertical);
+  public function setVertical(bool $vertical = true) {
+    $this->getMenu()->setVertical($vertical);
     return $this;
   }
 

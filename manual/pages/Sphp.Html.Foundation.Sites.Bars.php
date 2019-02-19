@@ -2,13 +2,13 @@
 
 namespace Sphp\Html\Foundation\Sites\Bars;
 
-use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
+use Sphp\Html\Foundation\Sites\Navigation\Menu;
 use Sphp\Html\Foundation\Sites\Navigation\DropdownMenu;
 
 $titleBar = \Sphp\Manual\api()->classLinker(TitleBar::class);
 $topBar = \Sphp\Manual\api()->classLinker(TopBar::class);
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$menuInterface = \Sphp\Manual\api()->classLinker(MenuInterface::class);
+$menuInterface = \Sphp\Manual\api()->classLinker(Menu::class);
 $dropdownMenu = \Sphp\Manual\api()->classLinker(DropdownMenu::class);
 $navigationNs = $menuInterface->namespaceLink(false);
 \Sphp\Manual\md(<<<MD

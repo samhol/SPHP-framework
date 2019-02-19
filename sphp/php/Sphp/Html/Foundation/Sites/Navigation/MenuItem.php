@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\IdentifiableContent;
+use Sphp\Html\Component;
 
 /**
  * Defines a menu item for navigation menus
@@ -22,6 +22,6 @@ use Sphp\Html\IdentifiableContent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface MenuItem extends IdentifiableContent {
+interface MenuItem extends Component {
   
 }

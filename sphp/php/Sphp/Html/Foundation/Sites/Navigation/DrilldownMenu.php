@@ -19,7 +19,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class DrilldownMenu extends Menu {
+class DrilldownMenu extends BasicMenu {
 
   /**
    * Constructor
@@ -28,13 +28,13 @@ class DrilldownMenu extends Menu {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->vertical(true);
+    $this->setVertical(true);
     $this->attributes()->demand('data-drilldown');
   }
 
   public function append(MenuItem $content) {
     if ($content instanceof SubMenu) {
-      $content->vertical(true);
+      $content->setVertical(true);
     }
     parent::append($content);
     return $this;

@@ -25,7 +25,7 @@ class MenuBuilder {
   /**
    * @var string 
    */
-  private $menuType = Menu::class;
+  private $menuType = BasicMenu::class;
 
   /**
    * @var MenuLinkBuilder 
@@ -67,12 +67,12 @@ class MenuBuilder {
   /**
    * 
    * @param  array $contentData
-   * @param  MenuInterface $instance
-   * @return MenuInterface
+   * @param  Menu $instance
+   * @return Menu
    */
-  private function insertIntoMenu(array $contentData, MenuInterface $instance = null): MenuInterface {
+  private function insertIntoMenu(array $contentData, Menu $instance = null): Menu {
     if ($instance === null) {
-      $instance = new Menu();
+      $instance = new BasicMenu();
     }
     foreach ($contentData as $item) {
       if (array_key_exists('link', $item)) {
@@ -104,10 +104,10 @@ class MenuBuilder {
    * Builds a new menu from given menu data
    * 
    * @param  array $data the menu data
-   * @param  MenuInterface|null $instance
-   * @return MenuInterface new menu
+   * @param  Menu|null $instance
+   * @return Menu new menu
    */
-  public function buildMenu(array $data, MenuInterface $instance = null): MenuInterface {
+  public function buildMenu(array $data, Menu $instance = null): Menu {
     if ($instance === null) {
       $instance = new $this->menuType();
     }

@@ -42,7 +42,7 @@ class MenuLinkBuilder {
    *
    * @var string 
    */
-  private $menuType = Menu::class;
+  private $menuType = BasicMenu::class;
 
   public function __construct() {
     ;

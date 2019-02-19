@@ -20,7 +20,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AccordionMenu extends Menu {
+class AccordionMenu extends BasicMenu {
 
   /**
    * Constructor
@@ -35,7 +35,7 @@ class AccordionMenu extends Menu {
 
   public function append(MenuItem $content) {
     if ($content instanceof SubMenu) {
-      $content->vertical(true);
+      $content->setVertical(true);
     }
     parent::append($content);
     return $this;

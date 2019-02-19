@@ -34,7 +34,7 @@ class MenuLabel extends ContainerTag implements MenuItem {
    * PHP string or to an array of PHP strings. So also an object of any class 
    * that implements magic method `__toString()` is allowed.
    * 
-   * @param  mixed $content the content of the component
+   * @param  mixed $content the content of the label
    */
   public function __construct($content = null) {
     parent::__construct('li');

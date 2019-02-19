@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\EmptyTag;
 
 /**
  * Implements a menu ruler
@@ -20,18 +20,14 @@ use Sphp\Html\AbstractComponent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Ruler extends AbstractComponent implements MenuItem {
+class Ruler extends EmptyTag implements MenuItem {
 
   /**
    * Constructor
    */
   public function __construct() {
-    parent::__construct('li');
+    parent::__construct('li', true);
     $this->cssClasses()->protectValue('menu-ruler');
-  }
-
-  public function contentToString(): string {
-    return '';
   }
 
 }

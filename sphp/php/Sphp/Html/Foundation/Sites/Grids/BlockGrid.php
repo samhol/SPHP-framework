@@ -142,6 +142,41 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   }
 
   /**
+   * Appends a raw file to the container
+   * 
+   * @param  string $path path to the file
+   * @return HtmlBlockGridColumn new column
+   * @throws RuntimeException if the parsing fails for any reason
+   */
+  public function appendRawFile(string $path): HtmlBlockGridColumn {
+    try {
+      $column = new HtmlBlockGridColumn();
+      $column->appendRawFile($path);
+      return $this->append($column);
+    } catch (\Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+  }
+
+  /**
+   * Appends an executed PHP file to the container
+   * 
+   * @param  string $path  the path to the file
+   * @return HtmlBlockGridColumn new column
+   * @throws RuntimeException if the parsing fails for any reason
+   */
+  public function appendPhpFile(string $path): HtmlBlockGridColumn {
+    try {
+      $column = new HtmlBlockGridColumn();
+      $column->appendPhpFile($path);
+      return $this->append($column);
+    } catch (\Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
+    return $this;
+  }
+
+  /**
    * Appends a new Column to the container
    * 
    * @param  int $index column or column content

@@ -24,7 +24,7 @@ use Sphp\Html\PlainContainer;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem {
+abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem {
 
   /**
    * @var Container
@@ -113,7 +113,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem 
     return $this;
   }
 
-  public function vertical(bool $vertical = true) {
+  public function setVertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
     } else {
@@ -126,12 +126,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem 
     return $this->cssClasses()->contains('vertical');
   }
 
-  /**
-   * Sets or unsets the menu as active
-   *
-   * @param  boolean $active true for activation and false for deactivation
-   * @return $this for a fluent interface
-   */
   public function setActive(bool $active = true) {
     if ($active) {
       $this->addCssClass('is-active');
@@ -141,11 +135,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItem 
     return $this;
   }
 
-  /**
-   * Checks whether the menu is set as active or not
-   *
-   * @return boolean true if the hyperlink component is set as active, otherwise false
-   */
   public function isActive(): bool {
     return $this->hasCssClass('is-active');
   }
