@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Bars;
+namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
 use Sphp\Html\Foundation\Sites\Navigation\DropdownMenu;
@@ -21,13 +21,11 @@ These navigation bars can be used with menus implemented in $navigationNs namesp
 
 MD
 );
-
-\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Containers/TitleBar.php');
 \Sphp\Manual\md(<<<MD
 ##Foundation Top Bar: <small>The $topBar component</small>
         
 Top Bar component is a simple wrapper around menu components.
 MD
 );
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Navigation/Bars/ResponsiveBar.php');
 
-\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');

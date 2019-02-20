@@ -23,7 +23,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 class MenuLinkBuilder {
 
   /**
-   * @var type 
+   * @var string 
    */
   private $defaultTarget = null;
 
@@ -38,24 +38,8 @@ class MenuLinkBuilder {
    */
   private $activator;
 
-  /**
-   *
-   * @var string 
-   */
-  private $menuType = BasicMenu::class;
-
   public function __construct() {
     ;
-  }
-
-  /**
-   * 
-   * @param  string $target
-   * @return $this for a fluent interface
-   */
-  public function setMenuType(string $target) {
-    $this->menuType = $target;
-    return $this;
   }
 
   /**
