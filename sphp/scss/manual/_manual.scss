@@ -146,9 +146,9 @@ $error-bg: rgba(#FF7F50, 0.4);
   @import "lists"; 
   @import "vendor-readme-section"; 
   @import "technologies"; 
-  @import "grid-examples"; 
   @import "carousels";
   @import "styling-tags";
+  @import "examples"; 
 
   > div.wrapper {
     @include default-margin();

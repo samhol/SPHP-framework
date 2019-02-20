@@ -17,20 +17,10 @@ This namespace contains object oriented PHP implementations of Foundation naviga
 MD
 );
 //\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Bars');
-Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
-
-$sideNavClass = Manual\api()->classLinker(AccordionMenu::class);
-Manual\md(<<<MD
-##The $sideNavClass component
-
-The $sideNavClass component provides navigation for the entire site, or for sections of an individual page.
-
-**Accessibility:** Using the `Tab` button, a user can navigate until
-they've reached the link below. (`Shift+Tab` to navigate back one step.)
-MD
-);
 Manual\example('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')->printHtml();
 
+Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.Menu');
+Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.Bars');
 $breadcrumbs = Manual\api()->classLinker(BreadCrumbs::class);
 $breadcrumb = Manual\api()->classLinker(BreadCrumb::class);
 Manual\md(<<<MD

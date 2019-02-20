@@ -30,11 +30,15 @@ class DrilldownMenu extends BasicMenu {
     parent::__construct($content);
     $this->setVertical(true);
     $this->attributes()->demand('data-drilldown');
+    $this->setVertical(true);
+    $this->cssClasses()->protectValue('drilldown');
   }
 
   public function append(MenuItem $content) {
     if ($content instanceof SubMenu) {
       $content->setVertical(true);
+      
+    $content->cssClasses()->protectValue('dickface');
     }
     parent::append($content);
     return $this;

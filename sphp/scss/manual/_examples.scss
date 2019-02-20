@@ -1,0 +1,14 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+@import "grid-examples"; 
+
+.cell.example {
+  border: solid 1px #333;
+  @include border-radius(2px);
+}

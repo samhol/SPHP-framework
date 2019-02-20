@@ -91,10 +91,9 @@ items:
       - link: General Containers
         href: /Sphp.Html.Foundation.Sites.Containers
       - ruler: 
-      - link: Navigation bars
-        href: /Sphp.Html.Foundation.Sites.Bars
-      - link: Navigation menus
+      - link: Navigation
         href: /Sphp.Html.Foundation.Sites.Navigation
+        title: Foundation | Navigation
       - ruler: 
       - link: Buttons 
         href: /Sphp.Html.Foundation.Sites.Buttons

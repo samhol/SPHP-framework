@@ -23,9 +23,20 @@ MD
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $navExamples = new BlockGrid('small-up-1', 'medium-up-2', 'large-up-3');
-        $navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DropdownMenu.php')->addCssClass('example');
-        $navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')->addCssClass('example');
-        $navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu.php')->addCssClass('example');
-        $navExamples->printHtml();
+$navExamples->addCssClass('grid-margin-x');
+$navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DropdownMenu.php')->addCssClass('example');
+$navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')->addCssClass('example');
+$navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu.php')->addCssClass('example');
+$navExamples->printHtml();
 
-\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu.php');
+
+$sideNavClass = \Sphp\Manual\api()->classLinker(AccordionMenu::class);
+\Sphp\Manual\md(<<<MD
+##The $sideNavClass component
+
+The $sideNavClass component provides navigation for the entire site, or for sections of an individual page.
+
+**Accessibility:** Using the `Tab` button, a user can navigate until
+they've reached the link below. (`Shift+Tab` to navigate back one step.)
+MD
+);

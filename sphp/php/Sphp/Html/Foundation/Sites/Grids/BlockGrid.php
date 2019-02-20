@@ -16,6 +16,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\ContentParser;
 use Sphp\Html\PlainContainer;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Implements a Foundation framework based XY Block Grid
@@ -81,7 +82,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * @return $this for a fluent interface
    */
   public function setColumns(array $columns) {
-    $this->columns->clear();
+    $this->columns = [];
     foreach ($columns as $column) {
       if (!($column instanceof BlockGridColumnInterface)) {
         $column = new HtmlBlockGridColumn($column);

@@ -50,7 +50,6 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
     }
     parent::__construct('li');
     $this->setRoot($root);
-    $this->cssClasses()->add('is-dropdown-submenu-parent');
   }
 
   /**
