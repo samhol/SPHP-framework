@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\ApiGen;
 
-use Sphp\Html\Apps\HyperlinkGenerators\ClassLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;

@@ -54,7 +54,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   /**
    * Sets the number of columns within the row for different screen sizes
    * 
-   * @param  string|string[] $layouts individual layout settings
+   * @param  string|string[]... $layouts individual layout settings
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
@@ -66,7 +66,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  string|string[] $widths column widths for different screens sizes
+   * @param  string|string[]... $widths column widths for different screens sizes
    * @return $this for a fluent interface
    */
   public function setWidths(... $widths) {

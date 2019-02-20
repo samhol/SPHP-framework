@@ -44,7 +44,7 @@ class W3schools extends AbstractLinker {
    * 
    * @param  string $tagname the HTML5 tag name
    * @param  string $linkText optional content of the link
-   * @param string $title
+   * @param  string $title
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function tag(string $tagname, string $linkText = null, string $title = null): Hyperlink {

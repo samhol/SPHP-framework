@@ -46,21 +46,6 @@ class SvgLoader {
 
   /**
    * 
-   * @param  string $path
-   * @param  string $sreenreaderLabel
-   * @return Svg
-   * @throws InvalidArgumentException
-   */
-  public static function fromFile(string $path, string $sreenreaderLabel = null): Svg {
-    if (!is_file($path)) {
-      throw new InvalidArgumentException();
-    }
-    $svg = file_get_contents($path);
-    return new Svg($svg, $sreenreaderLabel);
-  }
-
-  /**
-   * 
    * @param  string $url
    * @param  string $sreenreaderLabel
    * @return Svg
@@ -86,7 +71,7 @@ class SvgLoader {
   }
 
   /**
-   * Returns a new SVG image object instance
+   * Returns a new SVG image object instance created from a file
    * 
    * @param  string $file
    * @return Svg new instance
@@ -106,31 +91,18 @@ class SvgLoader {
   }
 
   /**
+   * Returns a new SVG image object instance created from a string
    * 
-   * @param  string $file
-   * @param  string $title
-   * @return string
-   * @throws FileSystemException
+   * @param  string $source The string containing the SVG
+   * @return Svg new instance
+   * @throws InvalidArgumentException if the input string is not valid SVG
    */
-  public static function fileToString(string $file, string $title = null, float $opacity = null): string {
-    if (!Filesystem::isFile($file)) {
-      throw new FileSystemException("SVG file '$file' cannot be found");
+  public static function stringToObject(string $source): Svg {
+    $doc = new \DOMDocument();
+    $loaded = $doc->loadXML($source);
+    if (!$loaded) {
+      throw new InvalidArgumentException("Input string is not valid SVG");
     }
-    $iconfile = new \DOMDocument();
-    $iconfile->load($file);
-    $svg = $iconfile->getElementsByTagName('svg')->item(0);
-    if ($title !== null) {
-      $titleNode = $iconfile->getElementsByTagName('title')->item(0);
-      if ($titleNode === null) {
-        $titleNode = $iconfile->createElement('title');
-        $svg->insertBefore($titleNode, $svg->firstChild);
-      }
-      $titleNode->textContent = $title;
-    }
-    if ($opacity !== null) {
-      $svg->setAttribute('opacity', $opacity);
-    }
-    return $iconfile->saveHTML($svg);
   }
 
   /**
