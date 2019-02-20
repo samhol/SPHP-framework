@@ -16,58 +16,42 @@ use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements an SVG object loader
+ * Implements an SVG object loader utility
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SvgLoader {
+abstract class SvgLoader {
 
   /**
    * @var Filetype|null singleton instance 
    */
-  private static $instance;
   private static $src = [];
 
   /**
-   * @var string 
-   */
-  private $flagPath;
-
-  public function __construct(string $svg = null) {
-    $this->svg = $svg;
-  }
-
-  public function setFlagPath(string $flagPath) {
-    $this->flagPath = $flagPath;
-    return $this;
-  }
-
-  /**
+   * Returns a new SVG image object instance created from a remote source
    * 
    * @param  string $url
    * @param  string $sreenreaderLabel
    * @return Svg
    */
-  public static function fromUrl(string $url, string $sreenreaderLabel = null): Svg {
+  public static function fromUrl(string $url): Svg {
     if (!array_key_exists($url, self::$src)) {
-      if (RemoteResource::exists($url)) {
-        $opts = array('http' =>
-            array(
-                'method' => 'GET',
-                'timeout' => 5
-            )
-        );
-
-        $context = stream_context_create($opts);
-        self::$src[$url] = file_get_contents($url, false, $context);
-      } else {
-        throw new InvalidArgumentException("fucked up remote file ($url)");
+      $opts = ['http' =>
+          [
+              'method' => 'GET',
+              'timeout' => 5
+          ]
+      ];
+      $context = stream_context_create($opts);
+      $result = file_get_contents($url, false, $context);
+      if ($result === false) {
+        throw new InvalidArgumentException("Remote file ($url) is invalid");
       }
+      self::$src[$url] = file_get_contents($url, false, $context);
     }
-
-    return new Svg(self::$src[$url], $sreenreaderLabel);
+    return $this->stringToObject(self::$src[$url]);
   }
 
   /**
@@ -101,20 +85,8 @@ class SvgLoader {
     $doc = new \DOMDocument();
     $loaded = $doc->loadXML($source);
     if (!$loaded) {
-      throw new InvalidArgumentException("Input string is not valid SVG");
+      throw new InvalidArgumentException("Input given is not valid SVG");
     }
-  }
-
-  /**
-   * Returns the singleton instance
-   * 
-   * @return SvgLoader singleton instance
-   */
-  public static function instance(): SvgLoader {
-    if (self::$instance === null) {
-      self::$instance = new static();
-    }
-    return self::$instance;
   }
 
 }

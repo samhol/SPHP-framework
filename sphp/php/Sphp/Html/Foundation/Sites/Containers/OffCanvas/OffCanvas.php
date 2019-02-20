@@ -25,7 +25,16 @@ use Sphp\Html\Div;
 class OffCanvas extends AbstractComponent {
 
   /**
-   *
+   * 
+   */
+  const LEFT = 0b1;
+  const RIGHT = 0b10;
+  const TOP = 0b100;
+  const BOTTOM = 0b1000;
+
+  private $panes;
+
+  /**
    * @var OffCanvasPane 
    */
   private $left;
@@ -53,19 +62,42 @@ class OffCanvas extends AbstractComponent {
    * @var Div
    */
   private $offCanvasContent;
+  private $canvases = 0;
 
   /**
    * Constructor
-   *
-   * @param  string $position the main title of the component
    */
-  public function __construct($position = 'fixed') {
+  public function __construct(int $position) {
     parent::__construct('div');
-    $this->position = $position;
+    $this->canvases = $position;
+    $this->createCanvases();
     $this->cssClasses()->protectValue('off-canvas-wrapper');
     $this->offCanvasContent = new Div();
     $this->offCanvasContent->cssClasses()->protectValue("off-canvas-content");
     $this->offCanvasContent->attributes()->demand('data-off-canvas-content');
+  }
+
+  protected function createCanvases() {
+    $this->panes = [];
+    if (($this->canvases & self::LEFT) === self::LEFT) {
+      $this->panes['left'] = new OffCanvasPane('left');
+    }
+    if (($this->canvases & self::RIGHT) === self::RIGHT) {
+      $this->panes['right'] = new OffCanvasPane('right');
+    }
+    if (($this->canvases & self::TOP) === self::TOP) {
+      $this->panes['top'] = new OffCanvasPane('top');
+    }
+    if (($this->canvases & self::BOTTOM) === self::BOTTOM) {
+      $this->panes['bottom'] = new OffCanvasPane('bottom');
+    }
+  }
+
+  public function __call(string $name, array $arguments) {
+    if (!array_key_exists($name, $this->panes)) {
+      throw new LogicException('%s pane is not initialized');
+    }
+    return $this->panes[$name];
   }
 
   /**
@@ -161,13 +193,7 @@ class OffCanvas extends AbstractComponent {
   }
 
   public function contentToString(): string {
-    $output = '';
-    if ($this->left !== null) {
-      $output .= $this->left;
-    }
-    if ($this->right !== null) {
-      $output .= $this->right;
-    }
+    $output = implode($this->panes);
     $output .= $this->offCanvasContent;
     return $output;
   }
