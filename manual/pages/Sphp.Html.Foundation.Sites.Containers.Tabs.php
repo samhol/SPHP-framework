@@ -9,10 +9,18 @@ $tabs = Manual\api()->classLinker(Tabs::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-###The $tabs component
+##The $tabs component
+        
 $ns
-The $tabs component makes it possible to navigate multiple documents in a single container.
-$tabs can be used for switching between items in the container. This component has both horizontal and vertical layout.
+        
+> In interface design, a tabbed document interface (TDI) or Tab is a graphical 
+>  control element that allows multiple documents or panels to be contained 
+>  within a single window, using tabs as a navigational widget for switching 
+> between sets of documents. It is an interface style most commonly associated 
+> with web browsers, web applications, text editors, and preference panes, 
+> with window managers, especially tiling window managers, being lesser 
+> known examples.
+> <cite class="wikipedia">[from Wikipedia](https://en.wikipedia.org/wiki/Tab_(GUI))</cite>
 MD
 );
 CodeExampleAccordionBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Tabs/Tabs.php', null, false);

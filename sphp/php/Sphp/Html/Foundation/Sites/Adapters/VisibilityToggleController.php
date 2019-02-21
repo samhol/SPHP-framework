@@ -20,7 +20,7 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Toggler extends AbstractComponentAdapter {
+class VisibilityToggleController extends AbstractComponentAdapter {
 
   /**
    * @var string[] 
@@ -42,14 +42,16 @@ class Toggler extends AbstractComponentAdapter {
    * 
    * @param  Component $target
    * @param  string $animation
-   * @return $this
+   * @return $this for a fluent interface
    */
-  public function addTarget(Component $target, string $animation = null) {
+  public function addToggler(Component $target, string $animation) {
     if ($animation === null) {
       $animation = true;
     }
-    $target->setAttribute('data-toggler', true);
-    $target->setAttribute('data-animate', $animation);
+    if (!$target instanceof VisibilityToggler) {
+      $target->setAttribute('data-toggler', true);
+      $target->setAttribute('data-animate', $animation);
+    }
     $id = $target->identify();
     if (!in_array($id, $this->ids)) {
       $this->ids[] = $id;

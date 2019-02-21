@@ -5,10 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Manual;
 
 $modal = Manual\api()->classLinker(Modal::class);
-$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\md(<<<MD
-##The $modal component
-$ns
+## The $modal component
+
 Modal dialogs, or pop-up windows, are handy for prototyping and production.
 
 MD

@@ -9,8 +9,8 @@ $offCanvas->left()->append('left')->setPosition('absolute');
 $offCanvas->right()->append('right')->setPosition('absolute');
 
 $titlebar = new TitleBar();
-$titlebar->left()->append($offCanvas->left()->getOpener());
-$titlebar->right()->append($offCanvas->right()->getOpener());
+$titlebar->left()->append($offCanvas->left()->createToggleButton());
+$titlebar->right()->append($offCanvas->right()->createToggleButton());
 
 $offCanvas->mainContent()->append($titlebar);
 $offCanvas->mainContent()->appendMdFile('manual/snippets/loremipsum.md');

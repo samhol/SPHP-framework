@@ -12,6 +12,8 @@ namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
 use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
+use Sphp\Html\Component;
+use Sphp\Html\Foundation\Sites\Controllers\MenuButton;
 
 /**
  * An abstract implementation of on Off-canvas area
@@ -30,8 +32,10 @@ class BasicOffCanvasPane extends AbstractContainerTag implements OffCanvasPane {
    * @var CloseButton
    */
   private $closeButton;
-  
-  
+
+  /**
+   * @var string[] 
+   */
   private static $map = [
       Offcanvas::TOP => 'top',
       Offcanvas::RIGHT => 'right',
@@ -59,11 +63,6 @@ class BasicOffCanvasPane extends AbstractContainerTag implements OffCanvasPane {
     return $this->side;
   }
 
-  /**
-   * 
-   * @param  string $position
-   * @return $this for a fluent interface
-   */
   public function setPosition(string $position = 'fixed') {
     if ($position !== 'fixed') {
       $this->cssClasses()->add("off-canvas-$position");
@@ -77,13 +76,12 @@ class BasicOffCanvasPane extends AbstractContainerTag implements OffCanvasPane {
     return $this->closeButton->getHtml() . parent::contentToString();
   }
 
-  public function getOpener(\Sphp\Html\Component $seed = null) {
+  public function createToggleButton(Component $seed = null): Component {
     if ($seed === null) {
-      $button = new OffCanvasOpener($this);
+      $button = new MenuButton('Open menu');
     }
-    if ($button instanceof OffCanvasOpener) {
-      $button->setCanvas($this);
-    }
+    $id = $this->identify();
+    $button->setAttribute('data-toggle', $id);
     return $button;
   }
 

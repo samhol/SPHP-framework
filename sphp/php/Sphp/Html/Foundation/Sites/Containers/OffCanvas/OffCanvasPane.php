@@ -24,16 +24,21 @@ use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface OffCanvasPane extends Component {
+interface OffCanvasPane extends Component, \Sphp\Html\Foundation\Sites\Adapters\VisibilityToggler {
 
   public function getSide(): int;
 
   /**
+   * Sets the pane position
    * 
-   * @param  string $position
+   * @param  string $position the pane position
    * @return $this for a fluent interface
    */
   public function setPosition(string $position = 'fixed');
 
-  public function getOpener(\Sphp\Html\Component $content = null);
+  /**
+   * 
+   * @param Component $content
+   */
+  public function createToggleButton(Component $content = null);
 }

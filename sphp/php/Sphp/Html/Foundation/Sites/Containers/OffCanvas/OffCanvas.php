@@ -45,6 +45,8 @@ class OffCanvas extends AbstractComponent {
 
   /**
    * Constructor
+   * 
+   * @param int $position
    */
   public function __construct(int $position) {
     parent::__construct('div');
@@ -52,8 +54,13 @@ class OffCanvas extends AbstractComponent {
     $this->createCanvases();
     $this->cssClasses()->protectValue('off-canvas-wrapper');
     $this->offCanvasContent = new Div();
-    $this->offCanvasContent->cssClasses()->protectValue("off-canvas-content");
+    $this->offCanvasContent->cssClasses()->protectValue('off-canvas-content');
     $this->offCanvasContent->attributes()->demand('data-off-canvas-content');
+  }
+
+  public function __destruct() {
+    unset($this->offCanvasContent, $this->panes);
+    parent::__destruct();
   }
 
   protected function createCanvases() {

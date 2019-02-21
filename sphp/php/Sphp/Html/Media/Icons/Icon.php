@@ -20,7 +20,6 @@ use Sphp\Html\Content;
  * @filesource
  */
 interface Icon extends Content {
-
   /**
    * Sets the ARIA label text for the icon
    * 
