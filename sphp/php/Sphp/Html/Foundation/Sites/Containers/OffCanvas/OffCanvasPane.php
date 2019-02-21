@@ -10,8 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
-use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
+use Sphp\Html\Component;
+use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
 
 /**
  * An abstract implementation of on Off-canvas area
@@ -24,65 +24,16 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterface {
+interface OffCanvasPane extends Component {
 
-  /**
-   *
-   * @var CloseButton
-   */
-  private $closeButton;
-
-  /**
-   * Constructor
-   *
-   * @param string $side
-   * @param string $position
-   */
-  public function __construct($side, $position = 'fixed') {
-    parent::__construct('div');
-    $this->attributes()->demand('data-off-canvas');
-    $this->identify();
-    $this->closeButton = new CloseButton();
-    $this->setSide($side)
-            ->setPosition($position);
-  }
+  public function getSide(): int;
 
   /**
    * 
    * @param  string $position
    * @return $this for a fluent interface
    */
-  protected function setSide($position) {
-    $this->cssClasses()->protectValue("position-$position");
-    return $this;
-  }
+  public function setPosition(string $position = 'fixed');
 
-  /**
-   * 
-   * @param  string $position
-   * @return $this for a fluent interface
-   */
-  public function setPosition(string $position = 'fixed') {
-    if ($position !== 'fixed') {
-      $this->cssClasses()->add("off-canvas-$position");
-    } else {
-      $this->cssClasses()->add("off-canvas");
-    }
-    return $this;
-  }
-
-  public function contentToString(): string {
-    return $this->closeButton->getHtml() . parent::contentToString();
-  }
-
-  public function getOpener($content = null) {
-    if ($content === null) {
-      $button = new OffCanvasOpener($this);
-    }
-    if ($button instanceof OffCanvasOpener) {
-      $button->setCanvas($this);
-    }
-    return $button;
-  }
-
+  public function getOpener(\Sphp\Html\Component $content = null);
 }

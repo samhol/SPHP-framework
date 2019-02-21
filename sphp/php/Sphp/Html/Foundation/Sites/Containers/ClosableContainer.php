@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Div;
 use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
-use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
+use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
 
 /**
  * Implements a Foundation Closable

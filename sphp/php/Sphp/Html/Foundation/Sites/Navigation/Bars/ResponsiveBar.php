@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
 use Sphp\Html\AbstractComponent;
-
+use Sphp\Html\Foundation\Sites\Controllers\MenuButton;
 /**
  * Implements a responsive Foundation bar container
  *

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Buttons;
+namespace Sphp\Html\Foundation\Sites\Controllers;
 
 use Sphp\Html\AbstractComponent;
 

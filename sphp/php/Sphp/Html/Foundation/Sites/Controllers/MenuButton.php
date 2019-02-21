@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
+namespace Sphp\Html\Foundation\Sites\Controllers;
 
 use Sphp\Html\EmptyTag;
 
@@ -34,7 +34,7 @@ class MenuButton extends EmptyTag {
     if ($target instanceof \Sphp\Html\IdentifiableContent) {
       $target = $target->identify();
     }
-    $this->attributes()->setAttribute('data-open', $target);
+    $this->attributes()->setAttribute('data-toggle', $target);
   }
 
 }

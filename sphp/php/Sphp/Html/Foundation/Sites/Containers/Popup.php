@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Component;
 use Sphp\Html\Div;
-use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
+use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
 
 /**
  * Implements Reveal Modal 

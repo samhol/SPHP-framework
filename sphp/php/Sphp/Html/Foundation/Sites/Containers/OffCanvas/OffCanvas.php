@@ -32,33 +32,12 @@ class OffCanvas extends AbstractComponent {
   const TOP = 0b100;
   const BOTTOM = 0b1000;
 
+  /**
+   * @var OffCanvasPane[]
+   */
   private $panes;
 
   /**
-   * @var OffCanvasPane 
-   */
-  private $left;
-
-  /**
-   *
-   * @var OffCanvasPane 
-   */
-  private $right;
-
-  /**
-   *
-   * @var OffCanvasPane 
-   */
-  private $top;
-
-  /**
-   *
-   * @var OffCanvasPane 
-   */
-  private $bottom;
-
-  /**
-   *
    * @var Div
    */
   private $offCanvasContent;
@@ -80,20 +59,27 @@ class OffCanvas extends AbstractComponent {
   protected function createCanvases() {
     $this->panes = [];
     if (($this->canvases & self::LEFT) === self::LEFT) {
-      $this->panes['left'] = new OffCanvasPane('left');
+      $this->panes[self::LEFT] = new BasicOffCanvasPane(self::LEFT);
     }
     if (($this->canvases & self::RIGHT) === self::RIGHT) {
-      $this->panes['right'] = new OffCanvasPane('right');
+      $this->panes[self::RIGHT] = new BasicOffCanvasPane(self::RIGHT);
     }
     if (($this->canvases & self::TOP) === self::TOP) {
-      $this->panes['top'] = new OffCanvasPane('top');
+      $this->panes[self::TOP] = new BasicOffCanvasPane(self::TOP);
     }
     if (($this->canvases & self::BOTTOM) === self::BOTTOM) {
-      $this->panes['bottom'] = new OffCanvasPane('bottom');
+      $this->panes[self::BOTTOM] = new BasicOffCanvasPane(self::BOTTOM);
     }
   }
 
-  public function __call(string $name, array $arguments) {
+  public function setPane(int $name): ?OffCanvasPane {
+    if (!array_key_exists($name, $this->panes)) {
+      throw new LogicException('%s pane is not initialized');
+    }
+    return $this->panes[$name];
+  }
+
+  public function getPane(int $name): ?OffCanvasPane {
     if (!array_key_exists($name, $this->panes)) {
       throw new LogicException('%s pane is not initialized');
     }
@@ -101,86 +87,39 @@ class OffCanvas extends AbstractComponent {
   }
 
   /**
+   * Returns the left Off-canvas pane
    * 
-   * @return OffCanvasPane
+   * @return OffCanvasPane|null
    */
-  public function leftMenu() {
-    if ($this->left === null) {
-      $this->left = new OffCanvasPane('left', $this->position);
-    }
-    return $this->left;
+  public function left(): ?OffCanvasPane {
+    return $this->getPane(self::LEFT);
   }
 
   /**
-   * Returns the left Off-canvas menu
+   * Returns the right Off-canvas pane
    * 
-   * @return OffCanvasPane
+   * @return OffCanvasPane|null
    */
-  public function rightMenu() {
-    if ($this->right === null) {
-      $this->right = new OffCanvasPane('right', $this->position);
-    }
-    return $this->right;
+  public function right(): ?OffCanvasPane {
+    return $this->getPane(self::RIGHT);
   }
 
   /**
-   * Sets the title of the Off-canvas
+   * Returns the top Off-canvas pane
    * 
-   * @param  string $heading
-   * @return $this for a fluent interface
+   * @return OffCanvasPane|null
    */
-  public function setTitle($heading) {
-    $this->getTabBar()['middle'][0]->resetContent($heading);
-    return $this;
+  public function top(): ?OffCanvasPane {
+    return $this->getPane(self::RIGHT);
   }
 
   /**
-   * Sets either the left or the right root menu of the Off-canvas
+   * Returns the bottom Off-canvas pane
    * 
-   * @param  AbstractRootMenu $menu the off-canvas menu
-   * @return $this for a fluent interface
+   * @return OffCanvasPane|null
    */
-  public function setMenu(AbstractRootMenu $menu) {
-    if ($menu instanceof LeftMenu) {
-      $this->getInnerWrap()['left-off-canvas-menu'] = $menu;
-      $this->useLeftMenu(true);
-    } else {
-      $this->getInnerWrap()['right-off-canvas-menu'] = $menu;
-      $this->useRightMenu(true);
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the visibility of the left root menu
-   * 
-   * @param  boolean $use true if the menu is visible and false otherwise
-   * @return $this for a fluent interface
-   */
-  public function useLeftMenu($use = true) {
-    $this->useLeftMenu = $use;
-    if ($this->useLeftMenu) {
-      $this->getTabBar()['left'] = $this->leftMenu()->getOpener();
-    } else {
-      $this->getTabBar()['left'] = '';
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the visibility of the right root menu
-   * 
-   * @param  boolean $use true if the menu is visible and false otherwise
-   * @return $this for a fluent interface
-   */
-  public function useRightMenu($use = true) {
-    $this->useRightMenu = $use;
-    if ($this->useRightMenu) {
-      $this->getTabBar()["right"] = $this->rightMenu()->getOpener();
-    } else {
-      $this->getTabBar()["right"] = "";
-    }
-    return $this;
+  public function bottom(): ?OffCanvasPane {
+    return $this->getPane(self::RIGHT);
   }
 
   /**
@@ -188,7 +127,7 @@ class OffCanvas extends AbstractComponent {
    * 
    * @return Div the Off-canvas content container component
    */
-  public function mainContent() {
+  public function mainContent(): Div {
     return $this->offCanvasContent;
   }
 
