@@ -11,6 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Lists\Ul;
 use IteratorAggregate;
 use Countable;
 use ArrayIterator;
@@ -71,17 +72,21 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   private $linkLabelPattern = 'Page %d';
 
   /**
+   * @var Ul 
+   */
+  private $ul;
+
+  /**
    * Constructor
    * 
    * @param string $target
    */
   public function __construct(string $target = '_self') {
-    parent::__construct('ul');
-    $this->cssClasses()
+    parent::__construct('nav');
+    $this->attributes()->setAria('label', "Pagination");
+    $this->ul = new Ul();
+    $this->ul->cssClasses()
             ->protectValue('pagination');
-    $this->attributes()
-            ->protect('role', 'menubar')
-            ->setAria('label', 'Pagination');
     $this->target = $target;
     $this->setPreviousPageButton();
     $this->setNextPageButton();
@@ -130,7 +135,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * 
    * @param  int $index 
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\OutOfRangeException
+   * @throws OutOfRangeException
    */
   public function setCurrentPage($index) {
     if (!array_key_exists($index, $this->pages)) {
@@ -147,9 +152,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     }
     return $this;
   }
-  
+
   public function append(PageInterface $page) {
-    $this->pages[] = $page;
+    $this->ul->append($page);
     return $this;
   }
 
@@ -164,27 +169,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     if (!$page instanceof PageInterface) {
       $page = new Page($page, $index, $this->target);
     }
-    $this->pages[$index] = $page;
-    if ($this->current === null) {
-      $page->setCurrent(true);
-    }
-    if ($page->isCurrent()) {
-      $this->current = $index;
-      $this->setCurrentPage($index);
-    }
-    return $this;
-  }
-
-  /**
-   * 
-   * @param array $pages containing page objects or URL strings
-   * @return $this
-   */
-  public function setPages(array $pages) {
-    foreach ($pages as $index => $page) {
-      $this->setPage($index, $page);
-    }
-    return $this;
+    $this->ul->append($page);
+    return $page;
   }
 
   public function setPreviousPageButton(PageInterface $prev = null) {
@@ -287,9 +273,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * Returns the page component at the specified index
    *
    * @param  int $index the index with the value
-   * @return Page|null the value at the specified index or null
+   * @return PageInterface|null the value at the specified index or null
    */
-  public function getPage($index) {
+  public function getPage($index): ?PageInterface {
     $page = null;
     if (array_key_exists($index, $this->pages)) {
       $page = $this->pages[$index];
@@ -325,6 +311,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   public function contentToString(): string {
+    return $this->ul->getHtml();
     $cont = new PlainContainer();
     Arrays::pointToKey($this->pages, $this->current);
     $beforeKey = key($this->pages);

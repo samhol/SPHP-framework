@@ -135,7 +135,7 @@ $error-bg: rgba(#FF7F50, 0.4);
   }
 
   @import "callouts"; 
-  > p:not([class]), > blockquote:not([class]) {
+  > p:not([class]) {
     @include default-margin();
     //margin: rem-calc(5 25 15 35); // top right bottom left
     text-align: justify;
@@ -149,14 +149,11 @@ $error-bg: rgba(#FF7F50, 0.4);
   @import "carousels";
   @import "styling-tags";
   @import "examples"; 
-
-  > div.wrapper {
-    @include default-margin();
-  }
+  @import "quoting";
+  //@import "pagination";
 }
 
 @import "body";
-@import "pagination";
 .is-drilldown {
   background-color: #fafafa;
   ul, li {

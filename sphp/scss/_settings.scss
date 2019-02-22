@@ -70,7 +70,7 @@ $global-font-size: 100%;
 $global-width: rem-calc(1600);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #434343,
+  primary: #333,
   secondary: #1779ba,
   success: #3adb76,
   warning: #ffae00,
@@ -544,7 +544,7 @@ $pagination-margin-bottom: $global-margin;
 $pagination-item-color: $black;
 $pagination-item-padding: rem-calc(3 10);
 $pagination-item-spacing: rem-calc(1);
-$pagination-radius: $global-radius;
+$pagination-radius: 3px;
 $pagination-item-background-hover: $light-gray;
 $pagination-item-background-current: $primary-color;
 $pagination-item-color-current: $white;
