@@ -70,10 +70,6 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, GridI
     return $this->content->getHtml();
   }
 
-  public function count(): int {
-    return $this->content->count();
-  }
-
   public function prepend($row) {
     if (!($row instanceof RowInterface)) {
       $row = new Row($row);

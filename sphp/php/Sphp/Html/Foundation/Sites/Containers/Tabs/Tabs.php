@@ -101,16 +101,6 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
   }
 
   /**
-   * Count the number of inserted components in the container
-   *
-   * @return int number of components in the html component
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return $this->tabsContent->count();
-  }
-
-  /**
    * Returns a new iterator to iterate through inserted components 
    *
    * @return Traversable iterator

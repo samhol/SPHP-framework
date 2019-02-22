@@ -163,16 +163,8 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     return $output;
   }
 
-  public function count(): int {
-    return $this->group->count();
-  }
-
   public function getIterator(): Traversable {
     return $this->group->getIterator();
-  }
-
-  public function toArray(): array {
-    return iterator_to_array($this);
   }
 
 }

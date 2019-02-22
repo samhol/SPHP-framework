@@ -56,16 +56,6 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
   }
 
   /**
-   * Counts the number of elements in the container
-   *
-   * @return int the number of elements in the container
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return $this->getInnerContainer()->count();
-  }
-
-  /**
    * Create a new iterator to iterate through inserted elements in the container
    *
    * @return Traversable iterator
@@ -113,10 +103,6 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
    */
   public function offsetUnset($offset) {
     $this->getInnerContainer()->offsetUnset($offset);
-  }
-
-  public function toArray(): array {
-    return $this->getInnerContainer()->toArray();
   }
 
   public function clear() {

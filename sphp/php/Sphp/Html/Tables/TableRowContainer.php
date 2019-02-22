@@ -100,16 +100,6 @@ class TableRowContainer extends AbstractComponent implements Iterator, Traversab
   }
 
   /**
-   * Count the number of inserted rows
-   *
-   * @return int number of rows
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return count($this->rows);
-  }
-
-  /**
    * Returns the row at given position
    * 
    * **Important:** Rows are numbered sequentially starting from 0

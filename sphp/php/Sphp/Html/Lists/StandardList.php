@@ -60,6 +60,16 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   }
 
   /**
+   * Clears the contents
+   *
+   * @return $this for a fluent interface
+   */
+  public function clear() {
+    $this->items->clear();
+    return $this;
+  }
+
+  /**
    * Prepends a new list item to the list
    * 
    * @param  mixed $item the item or the content of it
@@ -126,26 +136,12 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   }
 
   /**
-   * Count the number of inserted items in the list
-   *
-   * @return int number of elements in the list
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return $this->items->count();
-  }
-
-  /**
    * Create a new iterator to iterate through the list items
    *
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
     return $this->items->getIterator();
-  }
-
-  public function toArray(): array {
-    return iterator_to_array($this);
   }
 
 }

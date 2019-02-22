@@ -104,10 +104,6 @@ class Head extends AbstractComponent implements \IteratorAggregate, NonVisualCon
     return $this->content->getHtml();
   }
 
-  public function count(): int {
-    return $this->content->count();
-  }
-
   public function getIterator(): \Traversable {
     return $this->content;
   }

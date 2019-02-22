@@ -98,16 +98,6 @@ class Tr extends AbstractComponent implements Iterator, TraversableContent, Row 
   }
 
   /**
-   * Counts of the cells in the row
-   *
-   * @return int number of the cells in the row
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return count($this->tds);
-  }
-
-  /**
    * Returns the cell at given position
    * 
    * **Important:** Cells are numbered sequentially starting from 0

@@ -129,16 +129,6 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
   }
 
   /**
-   * Count the number of inserted components in the container
-   *
-   * @return int number of components in the html component
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return $this->getInnerContainer()->count();
-  }
-
-  /**
    * 
    * @param  int $index the index of the tab
    * @throws OutOfBoundsException if the index is not set

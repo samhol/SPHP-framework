@@ -116,15 +116,6 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
   }
 
   /**
-   * Counts param components
-   * 
-   * @return int number of param components
-   */
-  public function count(): int {
-    return count($this->params);
-  }
-
-  /**
    * Create a new iterator to iterate through content
    *
    * @return Traversable iterator

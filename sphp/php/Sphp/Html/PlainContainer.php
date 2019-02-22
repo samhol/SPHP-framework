@@ -84,16 +84,6 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
   }
 
   /**
-   * Count the number of inserted elements in the container
-   *
-   * @return int number of elements in the html component
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return count($this->components);
-  }
-
-  /**
    * Checks whether an offset exists
    *
    * @param  mixed $offset an offset to check for
@@ -143,10 +133,6 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
       unset($this->components[$offset]);
     }
     return $this;
-  }
-
-  public function toArray(): array {
-    return $this->components;
   }
 
   public function clear() {

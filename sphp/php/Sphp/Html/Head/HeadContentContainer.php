@@ -243,11 +243,7 @@ class HeadContentContainer implements IteratorAggregate, TraversableContent, Non
   public function getHtml(): string {
     return $this->container->getHtml();
   }
-
-  public function count(): int {
-    return $this->container->count();
-  }
-
+  
   /**
    * Creates a new iterator to iterate through content
    *

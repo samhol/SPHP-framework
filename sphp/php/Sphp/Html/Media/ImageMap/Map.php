@@ -146,10 +146,6 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
     return implode($this->areas);
   }
 
-  public function count(): int {
-    return count($this->areas);
-  }
-
   public function getIterator(): Traversable {
     return new \Sphp\Html\Iterator($this->areas);
   }

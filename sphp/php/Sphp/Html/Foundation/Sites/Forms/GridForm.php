@@ -171,16 +171,8 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     return $this;
   }
 
-  public function count(): int {
-    return $this->getGrid()->count();
-  }
-
   public function getIterator(): \Traversable {
     return $this->getGrid();
-  }
-
-  public function toArray(): array {
-    return iterator_to_array($this);
   }
 
   /**

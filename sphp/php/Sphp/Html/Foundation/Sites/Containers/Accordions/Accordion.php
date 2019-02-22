@@ -94,16 +94,6 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
   }
 
   /**
-   * Count the number of inserted components in the container
-   *
-   * @return int number of components in the html component
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return count($this->panels);
-  }
-
-  /**
    * Sets the amount of time to animate the opening of an accordion pane
    * 
    * @param  int $speed the amount of time

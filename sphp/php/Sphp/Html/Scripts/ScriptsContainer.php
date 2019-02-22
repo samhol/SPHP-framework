@@ -96,14 +96,4 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
     return new Iterator($this->container);
   }
   
-  /**
-   * Count the number of inserted script components
-   *
-   * @return int the number of inserted script components
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return count($this->container);
-  }
-
 }

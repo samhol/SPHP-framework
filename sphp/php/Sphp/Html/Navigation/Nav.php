@@ -12,6 +12,7 @@ namespace Sphp\Html\Navigation;
 
 use Sphp\Html\TraversableContent;
 use Sphp\Html\ContainerTag;
+
 /**
  * Implements an HTML &lt;nav&gt; tag
  *

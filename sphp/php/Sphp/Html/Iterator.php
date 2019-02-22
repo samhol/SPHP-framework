@@ -71,16 +71,6 @@ class Iterator implements NativeIterator, Content, TraversableContent {
     $this->components = Arrays::copy($this->components);
   }
 
-  /**
-   * Count the number of inserted elements in the container
-   *
-   * @return int number of elements in the HTML component
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return count($this->components);
-  }
-
   public function getHtml(): string {
     return Arrays::recursiveImplode($this->components);
   }

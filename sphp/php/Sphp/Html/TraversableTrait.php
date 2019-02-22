@@ -65,8 +65,23 @@ trait TraversableTrait {
     return $this->getComponentsBy($search);
   }
 
+  /**
+   * Serializes to an array
+   *
+   * @return array the instance as an array
+   */
   public function toArray(): array {
     return iterator_to_array($this);
+  }
+
+  /**
+   * Count the number of contained items 
+   *
+   * @return int number of items contained
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
+  public function count(): int {
+    return count($this->toArray());
   }
 
 }
