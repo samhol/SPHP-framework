@@ -37,12 +37,12 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * @var PageInterface
    */
-  private $previousPageButton;
+  private $prev;
 
   /**
    * @var PageInterface
    */
-  private $nextPageButton;
+  private $next;
 
   /**
    * @var PageInterface[] 
@@ -53,7 +53,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    *
    * @var string 
    */
-  private $target = '_self';
+  private $target;
 
   /**
    *
@@ -73,14 +73,13 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    */
   public function __construct(string $target = '_self') {
     parent::__construct('nav');
-    $this->attributes()->setAria('label', "Pagination");
+    $this->attributes()->setAria('label', 'Pagination');
     $this->ul = new Ul('ul');
-    $this->ul->cssClasses()
-            ->protectValue('pagination');
+    $this->ul->cssClasses()->protectValue('pagination');
     $this->pages = [];
     $this->target = $target;
-    $this->setPreviousPageButton(null);
-    $this->setNextPageButton(null);
+    $this->setPrevious();
+    $this->setNext();
   }
 
   /**
@@ -114,7 +113,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function setTarget(string $target) {
+  public function setTarget(string $target = null) {
     $this->target = $target;
     foreach ($this->pages as $page) {
       $page->setTarget($target);
@@ -122,8 +121,18 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return $this;
   }
 
-  public function append(PageInterface $page) {
-    $this->pages[] = $page;
+  /**
+   * 
+   * @param  PageInterface $page
+   * @param  int $position
+   * @return $this for a fluent interface
+   */
+  public function insertPage(PageInterface $page, int $position = null) {
+    if ($position === null) {
+      $this->pages[] = $page;
+    } else {
+      $this->pages[$position] = $page;
+    }
     return $this;
   }
 
@@ -131,25 +140,29 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * Sets a page component
    * 
    * @param  int $index the index of the page
-   * @param  string $$url the page object or an URL string
-   * @return $this for a fluent interface
+   * @param  string $url the page object or an URL string
+   * @param  string|null $content
+   * @return PageInterface for a fluent interface
    */
-  public function setPage(int $index, string $url): PageInterface {
-    $page = new Page($url, $index, $this->target);
-    $this->pages[$index] = $page;
+  public function setPage(int $index, string $url = null, string $content = null): PageInterface {
+    if ($content === null) {
+      $content = (string) $index;
+    }
+    $page = new Page($url, $content, $this->target);
+    $this->insertPage($page, $index);
     return $page;
   }
 
-  public function setPreviousPageButton(string $url = null, string $label = null): PageInterface {
-    $this->previousPageButton = new Page($url, $label, $this->target);
-    $this->previousPageButton->cssClasses()->protectValue('pagination-previous');
-    return $this->previousPageButton;
+  public function setPrevious(string $url = null, string $label = null): PageInterface {
+    $this->prev = new Page($url, $label, $this->target);
+    $this->prev->cssClasses()->protectValue('pagination-previous');
+    return $this->prev;
   }
 
-  public function setNextPageButton(string $url = null, string $label = null): PageInterface {
-    $this->nextPageButton = new Page($url, $label, $this->target);
-    $this->nextPageButton->cssClasses()->protectValue('pagination-next');
-    return $this->nextPageButton;
+  public function setNext(string $url = null, string $label = null): PageInterface {
+    $this->next = new Page($url, $label, $this->target);
+    $this->next->cssClasses()->protectValue('pagination-next');
+    return $this->next;
   }
 
   /**
@@ -200,9 +213,13 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     $prevIndex = null;
     ksort($this->pages);
     $this->ul->clear();
-    $first = 0;
+    $first = null;
     foreach ($this->pages as $index => $page) {
+      if ($first === null) {
+        $first = $index;
+      }
       if ($prevIndex === null) {
+
         $prevIndex = $index;
       } else if (($index - $prevIndex) > 1) {
         $this->ul->append($this->createEllipsis());
@@ -210,11 +227,14 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
       $this->ul->append($page);
       $prevIndex = $index;
     }
-    if (true) {
-      $this->ul->prepend($this->previousPageButton);
+    if($first > 0) {
+        $this->ul->prepend($this->createEllipsis());
     }
     if (true) {
-      $this->ul->append($this->nextPageButton);
+      $this->ul->prepend($this->prev);
+    }
+    if (true) {
+      $this->ul->append($this->next);
     }
     return $this->ul->getHtml();
   }

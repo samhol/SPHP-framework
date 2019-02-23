@@ -16,7 +16,6 @@ if (!isset($year)) {
 if (!isset($year)) {
   $month = (int) date('m');
 }
-//var_dump(StopWatch::getEcecutionTime());
 //$easter = new EasterHolidays($year);
 $fi = new HolidayDiary();
 

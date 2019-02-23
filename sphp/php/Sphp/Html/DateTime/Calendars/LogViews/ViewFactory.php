@@ -23,7 +23,7 @@ use Sphp\Html\Media\Icons\SvgLoader;
 class ViewFactory {
 
   public static function flag(string $country): string {
-    return '<div class="national-flag">' . SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg') . "</div>";
+    return '<span class="national-flag">' . SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg') . "</span>";
   }
 
 }

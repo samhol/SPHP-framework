@@ -125,7 +125,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink(string $href, $content = '', string $target = null): HyperlinkListItem {
+  public function appendLink(string $href, $content = null, string $target = null): HyperlinkListItem {
     $item = new HyperlinkListItem($href, $content, $target);
     $this->append($item);
     return $item;

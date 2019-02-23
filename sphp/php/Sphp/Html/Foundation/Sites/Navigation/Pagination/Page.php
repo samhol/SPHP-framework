@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\Navigation\HyperlinkContainer;
 use Sphp\Stdlib\Networks\URL;
 
 /**
@@ -23,12 +23,7 @@ use Sphp\Stdlib\Networks\URL;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Page extends AbstractComponent implements PageInterface {
-
-  /**
-   * @var Hyperlink 
-   */
-  private $hyperlink;
+class Page extends HyperlinkContainer implements PageInterface {
 
   /**
    * Constructor
@@ -45,13 +40,8 @@ class Page extends AbstractComponent implements PageInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct(string $href = null, $content = null, string $target = null) {
-    parent::__construct('li');
-    $this->hyperlink = new Hyperlink($href, $content, $target);
-  }
-
-  public function setContent($content) {
-    $this->hyperlink->resetContent($content);
-    return $this;
+    parent::__construct('li',new Hyperlink($href, $content, $target));
+    //$this->hyperlink = new Hyperlink($href, $content, $target);
   }
 
   /**
@@ -92,40 +82,15 @@ class Page extends AbstractComponent implements PageInterface {
 
   public function contentToString(): string {
     $output = '';
+    if( $this->getHref() === false ||  $this->getHref() === null) {
+      $this->disable(true);
+    }
     if (!$this->isEnabled() || $this->isCurrent() || $this->getHref() === null) {
-      $output .= "<span>{$this->hyperlink->contentToString()}</span>";
+      $output .= "<span>{$this->getHyperlink()->contentToString()}</span>";
     } else {
-      $output .= $this->hyperlink;
+      $output .= parent::contentToString();
     }
     return $output;
-  }
-
-  public function getHref() {
-    return $this->hyperlink->getHref();
-  }
-
-  public function getTarget() {
-    return $this->hyperlink->getTarget();
-  }
-
-  public function setHref(string $href = null) {
-    $this->hyperlink->setHref($href);
-    return $this;
-  }
-
-  public function setTarget(string $target = null) {
-    $this->hyperlink->setTarget($target);
-    return $this;
-  }
-
-  public function getRelationship(): string {
-    $this->hyperlink->getRelationship();
-    return $this;
-  }
-
-  public function setRelationship(string $rel = null) {
-    $this->hyperlink->setRelationship($rel);
-    return $this;
   }
 
 }

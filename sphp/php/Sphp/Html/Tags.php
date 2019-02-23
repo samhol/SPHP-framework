@@ -49,7 +49,7 @@ use ReflectionClass;
  * 
  * @method \Sphp\Html\Tables\Table table(mixed $caption = null) creates a new HTML &lt;table&gt; object
  * @method \Sphp\Html\Tables\Caption caption(mixed $content = null) creates a new HTML &lt;caption&gt; object
- * @method \Sphp\Html\Tables\Caption colgroup() creates a new HTML &lt;colgroup&gt; object
+ * @method \Sphp\Html\Tables\Colgroup colgroup() creates a new HTML &lt;colgroup&gt; object
  * @method \Sphp\Html\Tables\Col col(int $span = 1) creates a new HTML &lt;col&gt; object
  * @method \Sphp\Html\Tables\Thead thead() creates a new HTML &lt;thead&gt; object
  * @method \Sphp\Html\Tables\Tbody tbody() creates a new HTML &lt;tbody&gt; object

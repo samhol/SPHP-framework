@@ -46,11 +46,11 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * 
    * @return Hyperlink the actual hyperlink component in the menu item component
    */
-  public function getHyperlink() {
+  public function getHyperlink(): Hyperlink {
     return $this->getInnerContainer();
   }
 
-  public function getHref() {
+  public function getHref(): ?string {
     return $this->getHyperlink()->getHref();
   }
 
@@ -64,7 +64,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this;
   }
 
-  public function getTarget() {
+  public function getTarget(): ?string {
     return $this->getHyperlink()->getTarget();
   }
 
@@ -73,7 +73,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this;
   }
 
-  public function getRelationship() {
+  public function getRelationship(): ?string {
     return $this->getHyperlink()->getRelationship();
   }
 

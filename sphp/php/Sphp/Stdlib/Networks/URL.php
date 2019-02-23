@@ -10,7 +10,6 @@
 
 namespace Sphp\Stdlib\Networks;
 
-use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use IteratorAggregate;
 use Traversable;

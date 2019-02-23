@@ -26,14 +26,6 @@ use Sphp\Html\Lists\StandardListItem;
 interface PageInterface extends Component, HyperlinkInterface, StandardListItem {
 
   /**
-   * Sets the content of the component
-   * 
-   * @param  mixed $content the content of the component
-   * @return $this for a fluent interface
-   */
-  public function setContent($content);
-
-  /**
    * Sets or unsets the hyperlink component as active
    * 
    * @param  boolean $active true for activation and false for deactivation

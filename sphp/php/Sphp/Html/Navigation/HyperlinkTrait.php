@@ -51,12 +51,12 @@ trait HyperlinkTrait {
    * **Notes:**
    *
    * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
+   * * If the href attribute is not present, the {@link self} is not a hyperlink.
    *
-   * @return string the value of the href attribute
+   * @return string|null the value of the href attribute
    * @link http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
-  public function getHref() {
+  public function getHref(): ?string {
     return $this->attributes()->getValue('href');
   }
 
@@ -88,25 +88,24 @@ trait HyperlinkTrait {
    * * The target attribute specifies where to open the linked document.
    * * Only used if the href attribute is present.
    *
-   * @return string the value of the target attribute
+   * @return string|null the value of the target attribute
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function getTarget() {
+  public function getTarget(): ?string {
     return $this->attributes()->getValue('target');
   }
 
   /**
-   * Returns the value of the target attribute
+   * Returns the relationship between the current document and the linked document
    *
    * **Notes:**
    *
-   * * The target attribute specifies where to open the linked document.
-   * * Only used if the href attribute is present.
+   * * Only used if the `href` attribute is present.
    *
-   * @return string the value of the target attribute
-   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @return string|null the relationship between the current document and the linked document
+   * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
-  public function getRelationship() {
+  public function getRelationship(): ?string {
     return $this->attributes()->getValue('rel');
   }
 
