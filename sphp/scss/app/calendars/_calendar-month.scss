@@ -37,6 +37,8 @@ $border-color: #555;
       }
     }
     div.sphp.calendar-day {
+
+
       height: rem-calc(80);
       border: solid 2px #666;
       @include border-radius(3px);
