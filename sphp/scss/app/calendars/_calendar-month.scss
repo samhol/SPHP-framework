@@ -38,9 +38,9 @@ $border-color: #555;
     }
     div.sphp.calendar-day {
 
-
-      height: rem-calc(80);
-      border: solid 2px #666;
+      @include shadow();
+      height: rem-calc(90);
+      border: solid 1px #666;
       @include border-radius(3px);
       text-align: center;
       background-color: rgba(#eee, .2);
@@ -48,13 +48,17 @@ $border-color: #555;
       color: #666;
       @include opacity(.65);
       time {
+        font-size: rem-calc(18);
         float: right;
-        margin-right: 2px;
+        margin: rem-calc(4);
         padding: rem-calc(4);
+        .day-number {
+          padding-left: rem-calc(10);
+        }
         .flag {
-          height: rem-calc(20);
           margin-right: rem-calc(4);
           svg {
+            height: rem-calc(20);
             padding: rem-calc(1);
             border: solid 1px #aaa;
             @include border-radius(2px);
@@ -97,6 +101,7 @@ $border-color: #555;
       }
 
       .icons {
+        display: none;
         .flag {
           height: rem-calc(20);
           margin-right: rem-calc(4);

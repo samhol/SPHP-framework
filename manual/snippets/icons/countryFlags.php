@@ -9,9 +9,9 @@ use Sphp\Html\Media\Icons\SvgLoader;
 use Sphp\Stdlib\Parsers\Parser;
 
 $data = Parser::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countrycodes.json');
-echo '<pre>';
-print_r($data);
-echo '</pre>';
+//echo '<pre>';
+//print_r($data);
+//echo '</pre>';
 
 function getCountry(string $iso): string {
   if (!array_key_exists($iso, $countries)) {

@@ -120,7 +120,8 @@ abstract class AbstractLinker implements LinkerInterface {
     }
     $a = new Hyperlink($url, $content);
     if ($title !== null) {
-      (new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');
+      $a->attributes()->title = $title;
+      //(new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');
     }
     $this->insertDefaultsTo($a);
     return $a;

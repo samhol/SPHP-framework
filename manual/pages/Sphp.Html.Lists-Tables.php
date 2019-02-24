@@ -63,6 +63,10 @@ MD
 );
 
 Manual\visualize('Sphp/Html/Lists/Dl.php', null, true);
+
+
+Manual\printPage('Sphp.Html.Tables');
+
 Manual\md(<<<MD
 ###References:
 

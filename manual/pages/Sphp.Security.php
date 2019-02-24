@@ -10,9 +10,10 @@ Manual\md(<<<MD
 #Web application security
 $ns
         
-Security is a process, not a product, and adopting a sound approach to security 
-during the process of application development will allow you to produce tighter, 
-more robust code.
+> Security is a process, not a product, and adopting a sound approach to security 
+  during the process of application development will allow you to produce tighter, 
+  more robust code.
+  <cite>https://www.sitepoint.com/php-security-blunders/</cite>
         
 **Good articles about PHP web application security:**
 

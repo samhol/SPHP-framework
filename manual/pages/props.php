@@ -13,7 +13,7 @@
 <div class="card-info primary">
   <div class="card-info-label">
     <div class="card-info-label-text">
-      Blue
+      <i class="fas fa-info-circle"></i>
     </div>
   </div>
   <div class="card-info-content">

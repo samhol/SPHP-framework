@@ -54,17 +54,13 @@ items:
       - link: Attribute management
         href: /Sphp.Html.Attributes
         title: HTML | Attribute management
-      - link: Meta data manipulation
-        href: /Sphp.Html.Head
-      - link: Client side scripting 
-        href: /Sphp.Html.Scripts
+      - link: HTML head & JavaScripts
+        href: /Sphp.Html.JS-META
+        title: HTML | HTML head & JavaScripts
       - ruler: 
-      - link: Lists
-        href: /Sphp.Html.Lists
-        title: HTML | Lists
-      - link: Tables
-        href: /Sphp.Html.Tables
-        title: HTML | Tables
+      - link: Lists and Tables
+        href: /Sphp.Html.Lists-Tables
+        title: HTML | Lists & Tables
       - ruler: 
       - link: Forms
         href: /Sphp.Html.Forms
