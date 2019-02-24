@@ -6,6 +6,24 @@ use Sphp\Manual;
 
 $gridIf = Manual\api()->classLinker(GridInterface::class);
 
+$rowIf = Manual\api()->classLinker(RowInterface::class);
+$colIf = Manual\api()->classLinker(Column::class);
+
+Manual\md(<<<MD
+##The $colIf <small>and its implementations</small>
+		
+A $colIf defines a single column of a $rowIf in a Grid layout.
+
+MD
+);
+Manual\md(<<<MD
+##The $rowIf <small>and its implementations</small>
+
+A $rowIf defines a horizontal block containing vertical $colIf components. 
+It forms a single row in a $gridIf layout, but it can be used as a individual component also.
+
+MD
+);
 Manual\md(<<<MD
 ##The $gridIf <small>and its implementations</small>
 

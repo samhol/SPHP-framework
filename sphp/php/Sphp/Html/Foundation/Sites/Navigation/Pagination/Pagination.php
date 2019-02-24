@@ -62,24 +62,22 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   private $linkLabelPattern = 'Page %d';
 
   /**
-   * @var Ul 
-   */
-  private $ul;
-
-  /**
    * Constructor
    * 
    * @param string $target
    */
-  public function __construct(string $target = '_self') {
+  public function __construct(string $target = null) {
     parent::__construct('nav');
     $this->attributes()->setAria('label', 'Pagination');
-    $this->ul = new Ul('ul');
-    $this->ul->cssClasses()->protectValue('pagination');
     $this->pages = [];
     $this->target = $target;
     $this->setPrevious();
     $this->setNext();
+  }
+
+  public function __destruct() {
+    unset($this->pages);
+    parent::__destruct();
   }
 
   /**
@@ -212,7 +210,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   public function contentToString(): string {
     $prevIndex = null;
     ksort($this->pages);
-    $this->ul->clear();
+    $ul = new Ul();
+    $ul->cssClasses()->protectValue('pagination');
     $first = null;
     foreach ($this->pages as $index => $page) {
       if ($first === null) {
@@ -222,21 +221,21 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
         $prevIndex = $index;
       } else if (($index - $prevIndex) > 1) {
-        $this->ul->append($this->createEllipsis());
+        $ul->append($this->createEllipsis());
       }
-      $this->ul->append($page);
+      $ul->append($page);
       $prevIndex = $index;
     }
-    if($first > 0) {
-        $this->ul->prepend($this->createEllipsis());
+    if ($first > 0) {
+      $ul->prepend($this->createEllipsis());
     }
     if (true) {
-      $this->ul->prepend($this->prev);
+      $ul->prepend($this->prev);
     }
     if (true) {
-      $this->ul->append($this->next);
+      $ul->append($this->next);
     }
-    return $this->ul->getHtml();
+    return $ul->getHtml();
   }
 
 }

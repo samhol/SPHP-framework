@@ -19,8 +19,6 @@ MD
 );
 
 Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.GridInterface');
-Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.RowInterface');
-Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.ColumnInterface');
 Manual\printPage('Sphp.Html.Foundation.Sites.Grids.XY.BlockGrid');
 
 
