@@ -17,27 +17,21 @@ $contentTrait = Manual\api()->classLinker(ContentTrait::class);
 $w3schools = Manual\w3schools();
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
+
 Manual\md(<<<MD
 #Introduction to HTML components{#html-intro}
+
 $nsbc
-        
-The content of this namespace enables the creation of the HTML documents in object oriented PHP.
-        
-HTML is the standard markup language used to create Web pages. 
-It is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
-HTML tags most commonly come in pairs like &lt;div&gt; and &lt;/div&gt;, although some tags represent
-empty elements and so are unpaired, for example &lt;img&gt;. <cite>[[Wikipedia]]</cite> 
- 
-[Wikipedia]: http://en.wikipedia.org/wiki/HTML
-
-SPHPlayground framework started first as an implementation of HTML tags in PHP language.
-Therefore build in PHP interfaces and implementations describe HTML properties quite extensively and this framework uses actual HTML tag names as dedicated class with the tag name as class name.
-
-**Links to HTML-resources:**
-
-* <a href="http://www.w3.org/MarkUp/Guide/">W3C's Getting started with HTML</a>
-* <a href="http://dev.w3.org/html5/spec/single-page.html">W3C's HTML 5 Specification</a>
-* <a href="http://validator.w3.org/">W3C Markup Validation Service</a>
+  
+The HTML namespace contains mobile friendly customizable UI 
+components compatibile with most web browsers and devices. Most UI components are 
+based on Foundation frontend framework.        
+  
+MD
+);
+include 'manual/pages/intros/HTML/orbit.php';
+Manual\md(<<<MD
+              
 
 ##The $contentInterface interface
 
@@ -62,16 +56,10 @@ It is implemented in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework.
 It also defines the tagname property in {$abstractTag->methodLink("__construct")}.
 
-##The $emptyTag class and empty `HTML` elements
-
-The $emptyTag class is usable when generating empty HTML elements like:
-{$w3schools->img}, {$w3schools->br}, {$w3schools->hr}, {$w3schools->input}, {$w3schools->wbr}, ...
-
-##The $container and $containerComponent interfaces
-
-The $container interface declares the properties
-for an HTML container. Such container can store anything that can be output as a
-PHP string.
+ * $emptyTag class implements empty `HTML` elements
+   * It is usefull when generating empty HTML elements like: {$w3schools->img}, {$w3schools->br}, {$w3schools->hr}, {$w3schools->input}, {$w3schools->wbr}, ...
+ * $container and $containerComponent interfaces
+   * $container interface declares the properties for an HTML container. Such container can store anything that can be output as a PHP string.
 MD
 );
 

@@ -8,7 +8,7 @@
 
 @mixin vendor-font-coloring($color) {
   a {
-    &:hover {
+    &:not(.button):hover {
       color: $color;
     }
   }
@@ -21,7 +21,7 @@
 @mixin vendor-watermark($path) {
   background: url(#{$path}) no-repeat center center;
 };
-.sphp.manual.vendor-readme-orbit {
+.sphp.manual.vendor-readme-orbit, .sphp.manual.intro-orbit {
   .orbit-previous, .orbit-next {
     @include border-radius(7px);
 
@@ -30,14 +30,29 @@
     .orbit-slide {
       min-height: 100%;
       a {
-        &:hover {
+        &:not(.button):hover {
           text-decoration: underline;
         }
       }
       code {
         @include border-radius(2px);
       }
-      &.scss {
+      &.svg {
+        @include vendor-font-coloring(#333);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?name=svg&opacity=0.2');
+        background-size: auto 80%;
+      }
+      &.html {
+        @include vendor-font-coloring(#E44D26);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=html5-original&opacity=0.3');
+        background-size: auto 80%;
+      }
+      &.js {
+        @include vendor-font-coloring(#F0DB4F);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=javascript-original&opacity=0.2');
+        background-size: auto 80%;
+      }
+      &.scss, &.sass {
         @include vendor-font-coloring(#CB6699);
         @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=sass-original&opacity=0.3');
         background-size: auto 80%;
@@ -100,6 +115,9 @@
       }
       table, thead {  
         background-color: rgba(#eee, .5);
+      }
+      >.button, >.button-group {
+        margin-left: rem-calc(25);
       }
     }
   }

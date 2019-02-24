@@ -25,7 +25,7 @@ $buttonGroup = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
 $buttonGroup->appendButton($b1);
 $buttonGroup->appendButton($b2);
 Manual\md(<<<MD
-## Client-side scripting <small>using JavaScript containers</small>
+## Client-side scripting <small>using JavaScript containers</small>{#js-h1}
 
 $ns
 

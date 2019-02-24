@@ -60,7 +60,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableMedia {
    * @param  string $ratio the ratio of the video
    * @return $this for a fluent interface
    */
-  public function setRatio($ratio) {
+  public function setRatio(string $ratio) {
     $this->cssClasses()->remove(['vjs-16-9', 'vjs-4-3']);
     if ($ratio === '16-9' || $ratio === '4-3') {
       $this->cssClasses()->add("vjs-$ratio");
