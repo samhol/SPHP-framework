@@ -24,7 +24,7 @@ use Sphp\Html\Div;
 class DivColumn extends Div implements Column {
 
   /**
-   * @var ColumnLayoutManager 
+   * @var BasicCellLayoutAdapter 
    */
   private $layoutManager;
 
@@ -42,11 +42,11 @@ class DivColumn extends Div implements Column {
    */
   public function __construct($content = null, array $layout = ['auto']) {
     parent::__construct($content);
-    $this->layoutManager = new ColumnLayoutManager($this);
+    $this->layoutManager = new BasicCellLayoutAdapter($this);
     $this->layout()->setLayouts($layout);
   }
 
-  public function layout(): ColumnLayoutManagerInterface {
+  public function layout(): CellLayoutAdapter {
     return $this->layoutManager;
   }
 

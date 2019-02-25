@@ -32,7 +32,7 @@ interface Column extends CssClassifiableContent {
   /**
    * Returns the layout manager
    * 
-   * @return ColumnLayoutManagerInterface the layout manager
+   * @return CellLayoutAdapter the layout adapter
    */
-  public function layout(): ColumnLayoutManagerInterface;
+  public function layout(): CellLayoutAdapter;
 }

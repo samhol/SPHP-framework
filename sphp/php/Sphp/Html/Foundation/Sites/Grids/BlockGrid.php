@@ -98,7 +98,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * @param  mixed $column column or column content
    * @return BlockGridColumn new column
    */
-  public function append($column): BlockGridColumn {
+  public function append($column): BlockGridCell {
     if (!$column instanceof BlockGridColumn) {
       $column = new HtmlBlockGridColumn($column);
     }
