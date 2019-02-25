@@ -27,6 +27,8 @@ use Sphp\Html\ContainerTag;
  */
 class ScriptCode extends ContainerTag implements ScriptTag {
 
+  use ScriptTagTrait;
+
   /**
    * Constructor
    * 
@@ -39,19 +41,6 @@ class ScriptCode extends ContainerTag implements ScriptTag {
   public function __construct($code = null) {
     parent::__construct('script', $code);
     $this->setType('application/javascript');
-  }
-
-  /**
-   * Sets the value of the type attribute
-   *
-   * Specifies the MIME type of the script
-   *
-   * @param  string $type the value of the type attribute (mime-type)
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
-   */
-  public function setType(string $type = null) {
-    return $this->setAttribute('type', $type);
   }
 
 }

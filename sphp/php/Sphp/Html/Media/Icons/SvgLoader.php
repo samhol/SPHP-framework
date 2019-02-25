@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Media\Icons;
 
-use Sphp\Stdlib\Networks\RemoteResource;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\InvalidArgumentException;
@@ -33,8 +32,8 @@ abstract class SvgLoader {
    * Returns a new SVG image object instance created from a remote source
    * 
    * @param  string $url
-   * @param  string $sreenreaderLabel
-   * @return Svg
+   * @return Svg new instance
+   * @throws InvalidArgumentException if the URL cannot be found or contains no valid SVG file
    */
   public static function fromUrl(string $url): Svg {
     if (!array_key_exists($url, self::$src)) {
@@ -85,7 +84,7 @@ abstract class SvgLoader {
     $doc = new \DOMDocument();
     $loaded = $doc->loadXML($source);
     if (!$loaded) {
-      throw new InvalidArgumentException("Input given is not valid SVG");
+      throw new InvalidArgumentException('Input given is not valid SVG');
     }
   }
 
