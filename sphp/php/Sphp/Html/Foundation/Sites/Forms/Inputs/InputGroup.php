@@ -47,7 +47,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    */
   public function __construct() {
     parent::__construct('div');
-    $this->cssClasses()->protectValue("input-group");
+    $this->cssClasses()->protectValue('input-group');
     $this->group = new PlainContainer;
   }
 

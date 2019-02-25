@@ -22,7 +22,14 @@ use Sphp\Html\Forms\Inputs\ValidableInput;
  */
 class Radioboxes extends Choiceboxes implements ValidableInput {
 
-  public function __construct(string $name = null, $values = array(), $legend = null) {
+  /**
+   * Constructor
+   *
+   * @param string $name
+   * @param array $values
+   * @param mixed $legend
+   */
+  public function __construct(string $name = null, array $values = [], $legend = null) {
     parent::__construct('radio', $name, $values, $legend);
   }
 

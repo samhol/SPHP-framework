@@ -22,7 +22,14 @@ use Sphp\Stdlib\Strings;
  */
 class Checkboxes extends Choiceboxes {
 
-  public function __construct(string $name = null, $values = array(), $legend = null) {
+  /**
+   * Constructor
+   *
+   * @param string $name
+   * @param array $values
+   * @param mixed $legend
+   */
+  public function __construct(string $name = null, array $values = [], $legend = null) {
     parent::__construct('checkbox', $name, $values, $legend);
   }
 
