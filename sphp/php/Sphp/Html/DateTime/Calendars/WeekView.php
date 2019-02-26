@@ -13,7 +13,7 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\Content;
 use Sphp\Html\Flow\Section;
 use Sphp\I18n\Datetime\CalendarUtils;
-use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
@@ -103,8 +103,8 @@ class WeekView implements Content {
     return $container;
   }
 
-  protected function createHead(): Row {
-    $row = new Row();
+  protected function createHead(): BasicRow {
+    $row = new BasicRow();
     $row->cssClasses()->protectValue('sphp', 'calendar-head');
     $cu = new CalendarUtils();
     foreach ($cu->getWeekdays() as $num => $day) {
@@ -118,15 +118,15 @@ class WeekView implements Content {
   /**
    * Returns a row containing weekday cells
    * 
-   * @return Row a row containing weekday cells
+   * @return BasicRow a row containing weekday cells
    */
-  public function createWeekRow(Date $weekday): Row {
+  public function createWeekRow(Date $weekday): BasicRow {
     if ($weekday->getWeekDay() !== 1) {
       $monday = $weekday->modify('last monday');
     } else {
       $monday = $weekday;
     }
-    $row = new Row();
+    $row = new BasicRow();
     $row->cssClasses()->protectValue('sphp', 'calendar-week');
     $row->append($this->createDayCell($monday));
     $next = $monday->nextDay();

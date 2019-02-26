@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Foundation\Sites\Grids\Column;
+use Sphp\Html\Foundation\Sites\Grids\Cell;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 
@@ -23,7 +23,7 @@ use Sphp\Html\Forms\Label;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface InputColumnInterface extends Column, Input {
+interface InputColumnInterface extends Cell, Input {
 
   /**
    * Returns the label of the component

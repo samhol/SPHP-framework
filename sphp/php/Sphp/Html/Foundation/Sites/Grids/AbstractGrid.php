@@ -25,7 +25,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractGrid extends AbstractComponent implements IteratorAggregate, GridInterface {
+class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -55,12 +55,12 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, GridI
   }
 
   public function getColumns(): TraversableContent {
-    return $this->getComponentsByObjectType(Column::class);
+    return $this->getComponentsByObjectType(Cell::class);
   }
 
   public function append($row) {
-    if (!($row instanceof RowInterface)) {
-      $row = new Row($row);
+    if (!($row instanceof Row)) {
+      $row = new BasicRow($row);
     }
     $this->content->append($row);
     return $this;
@@ -71,8 +71,8 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, GridI
   }
 
   public function prepend($row) {
-    if (!($row instanceof RowInterface)) {
-      $row = new Row($row);
+    if (!($row instanceof Row)) {
+      $row = new BasicRow($row);
     }
     $this->content->prepend($row);
     return $this;

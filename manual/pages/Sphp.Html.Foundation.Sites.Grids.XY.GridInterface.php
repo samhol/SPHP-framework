@@ -4,10 +4,10 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Manual;
 
-$gridIf = Manual\api()->classLinker(GridInterface::class);
+$gridIf = Manual\api()->classLinker(Grid::class);
 
-$rowIf = Manual\api()->classLinker(RowInterface::class);
-$colIf = Manual\api()->classLinker(Column::class);
+$rowIf = Manual\api()->classLinker(Row::class);
+$colIf = Manual\api()->classLinker(Cell::class);
 
 Manual\md(<<<MD
 ##The $colIf <small>and its implementations</small>

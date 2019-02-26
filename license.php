@@ -38,10 +38,10 @@ $html->useFontAwesome();
 Document::body()->addCssClass('mit-license');
 Document::html()->startBody();
 
-use Sphp\Html\Foundation\Sites\Grids\Grid;
+use Sphp\Html\Foundation\Sites\Grids\DivGrid;
 use Sphp\Stdlib\Parsers\Parser;
 
-$grid = Grid::from([
+$grid = DivGrid::from([
             Parser::md()->parseString(<<<MD
 #MIT License
 

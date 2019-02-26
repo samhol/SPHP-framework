@@ -10,8 +10,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use Sphp\Html\CssClassifiableContent;
+
 /**
- * Implements a Foundation framework based XY Row
+ * Defines a Foundation framework based XY Grid Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -19,37 +21,56 @@ namespace Sphp\Html\Foundation\Sites\Grids;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Row extends AbstractRow {
+interface Row extends CssClassifiableContent, \Traversable {
 
   /**
-   * Constructor
+   * Returns the layout manager
+   * 
+   * @return RowLayoutManager the layout manager
+   */
+  public function layout(): RowLayoutManager;
+
+  /**
+   * Sets the columns of the row (Removes existing content)
    *
-   * **Notes:**
+   * **Important:**
    * 
-   * * `mixed $columns` can be of any type that converts to a string or to a string[]
+   * * `$columns` can be of any type that converts to a string or to a string[]
    * * all values of `$columns` not extending {@link ColumnInterface} are wrapped with {@link Column} component
+   * * The widths of the `mixed $columns` extending {@link ColumnInterface} are kept
+   * * The sum of the {@link ColumnInterface} widths in a {@link self} should not exceed 12.
    * 
-   * @param  mixed|mixed[] $columns row columns
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @param  mixed|mixed[] $columns 
+   * @return $this for a fluent interface
    */
-  public function __construct($columns = null, array $sizes = null) {
-    parent::__construct('div');
-    if ($columns !== null) {
-      $this->setColumns($columns, $sizes);
-    }
-  }
+  public function setColumns($columns);
 
   /**
-   * 
-   * @param  iterable $columns
-   * @return Row new instance
+   * Appends a single {@link ColumnInterface} component to the row
+   *
+   * **Important:**
+   *
+   * Parameter `$content` can be of any type that converts to a string or to a string[]
+   *
+   * @param  mixed $content the content of the column
+   * @param  array $layout column layout parameters
+   * @return $this for a fluent interface
    */
-  public static function from(iterable $columns): Row {
-    $row = new static();
-    foreach ($columns as $column) {
-      $row->append($column);
-    }
-    return $row;
-  }
+  public function appendColumn($content, array $layout = ['auto']);
 
+  /**
+   * Prepends a Cell instance to the row
+   *
+   * @param  Cell $cell components
+   * @return $this for a fluent interface
+   */
+  public function prepend(Cell $cell);
+
+  /**
+   * Appends a Cell instance to the row
+   *
+   * @param  Cell $cell content component
+   * @return $this for a fluent interface
+   */
+  public function append(Cell $cell);
 }

@@ -108,7 +108,7 @@ class TableRowContainer extends AbstractComponent implements Iterator, Traversab
    * @return Row the row at given position
    * @throws OutOfBoundsException
    */
-  public function getRow(int $number): Row {
+  public function getRow(int $number): BasicRow {
     if (array_key_exists($number, $this->rows)) {
       return $this->rows[$number];
     } else {

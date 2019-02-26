@@ -8,7 +8,7 @@ use Sphp\Html\Div;
 class ColumnPropsTest extends TestCase {
 
   /**
-   * @var ColumnLayoutManager
+   * @var BasicCellLayoutAdapter
    */
   protected $col;
 
@@ -17,7 +17,7 @@ class ColumnPropsTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->col = new ColumnLayoutManager(new Div());
+    $this->col = new BasicCellLayoutAdapter(new Div());
   }
 
   /**
@@ -41,6 +41,7 @@ class ColumnPropsTest extends TestCase {
   public function widthValues(): array {
     $widths = range(1, 12);
     $widths[] = 'auto';
+    $widths[] = 'shrink';
     return $widths;
   }
 
@@ -51,19 +52,8 @@ class ColumnPropsTest extends TestCase {
    */
   public function testSetWidths() {
     foreach ($this->widthValues() as $i) {
-      $this->col->setWidths("small-$i", "medium-$i", "large-$i", "xlarge-$i", "xxlarge-$i");
-      $this->assertTrue($this->col->cssClasses()->contains("small-$i", "medium-$i", "large-$i", "xlarge-$i", "xxlarge-$i"));
-      foreach ($this->widthValues() as $j) {
-        if ($j === $i) {
-          $this->assertTrue($this->col->cssClasses()->contains("small-$j", "medium-$j", "large-$j", "xlarge-$j", "xxlarge-$j"));
-        } else {
-          $this->assertFalse($this->col->cssClasses()->contains("small-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("medium-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("large-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("xlarge-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("xxlarge-$j"));
-        }
-      }
+      $this->col->setWidth("small", $i);
+      $this->assertTrue($this->col->cssClasses()->contains("small-$i"));
     }
   }
 
@@ -72,19 +62,11 @@ class ColumnPropsTest extends TestCase {
    * @param string $type
    * @param int|boolean $size
    */
-  public function testUnsetWidth() {
-    $this->col->setWidths('small-3', 'large-3');
+  public function testResetWidths() {
+    $this->col->setLayouts('small-3', 'large-3');
     $this->assertTrue($this->col->cssClasses()->contains('small-3', 'large-3'));
-    $this->col->unsetWidths('small');
+    $this->col->unsetWidths();
     $this->assertFalse($this->col->cssClasses()->contains('small-3'));
-    $this->assertTrue($this->col->cssClasses()->contains('large-3'));
-    $this->col->unsetWidths('medium');
-    $this->assertFalse($this->col->cssClasses()->contains('small-3'));
-    $this->assertTrue($this->col->cssClasses()->contains('large-3'));
-    $this->col->unsetWidths('xlarge');
-    $this->assertFalse($this->col->cssClasses()->contains('small-3'));
-    $this->assertTrue($this->col->cssClasses()->contains('large-3'));
-    $this->col->unsetWidths('large');
     $this->assertFalse($this->col->cssClasses()->contains('large-3'));
   }
 
@@ -94,7 +76,7 @@ class ColumnPropsTest extends TestCase {
    * @param int|boolean $size
    */
   public function testUnsetAllWidths() {
-    $this->col->setWidths('small-3', 'large-3');
+    $this->col->setLayouts('small-3', 'large-3');
     $this->assertTrue($this->col->cssClasses()->contains('small-3', 'large-3'));
     $this->col->unsetWidths();
     $this->assertFalse($this->col->cssClasses()->contains('small-3'));
@@ -107,40 +89,12 @@ class ColumnPropsTest extends TestCase {
    * @param int|boolean $size
    */
   public function testAutoWidth() {
-    $this->col->setWidths('small-12', 'medium-3', 'large-11', 'xxlarge-3', 'auto');
+    $this->col->setLayouts('small-12', 'medium-3', 'large-11', 'xxlarge-3');
     //echo $this->col->cssClasses();
     $this->assertTrue($this->col->cssClasses()->contains('auto'));
     $this->assertTrue($this->col->cssClasses()->contains('xxlarge-3'));
     $this->assertTrue($this->col->cssClasses()->contains('medium-3'));
     $this->assertTrue($this->col->cssClasses()->contains('small-12'));
-  }
-
-  /**
-   * @return int[]
-   */
-  public function offsetValues(): array {
-    return range(1, 11);
-  }
-
-  /**
-   * 
-   */
-  public function testsetOffsets() {
-    foreach ($this->offsetValues() as $i) {
-      $this->col->setOffsets("small-offset-$i", "medium-offset-$i", "large-offset-$i", "xlarge-offset-$i", "xxlarge-offset-$i");
-      $this->assertTrue($this->col->cssClasses()->contains("small-offset-$i", "medium-offset-$i", "large-offset-$i", "xlarge-offset-$i", "xxlarge-offset-$i"));
-      foreach ($this->offsetValues() as $j) {
-        if ($j === $i) {
-          $this->assertTrue($this->col->cssClasses()->contains("small-offset-$j", "medium-offset-$j", "large-offset-$j", "xlarge-offset-$j", "xxlarge-offset-$j"));
-        } else {
-          $this->assertFalse($this->col->cssClasses()->contains("small-offset-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("medium-offset-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("large-offset-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("xlarge-offset-$j"));
-          $this->assertFalse($this->col->cssClasses()->contains("xxlarge-offset-$j"));
-        }
-      }
-    }
   }
 
   /**

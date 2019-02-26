@@ -10,35 +10,67 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use Sphp\Html\CssClassifiableContent;
+use Sphp\Html\TraversableContent;
+
 /**
- * Implements a Foundation framework based XY Grid container for rows
+ * Defines a Foundation framework based XY Grid element
  *
+ * **Important!**
+ *
+ * This component is mobile-first. Code for small screens first,
+ * and larger devices will inherit those styles. Customize for
+ * larger screens as necessary
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    https://foundation.zurb.com/sites/docs/xy-grid.html#grid-container XY Grid Container
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Grid extends AbstractGrid {
+interface Grid extends CssClassifiableContent, TraversableContent {
 
   /**
-   * Constructor
-   */
-  public function __construct() {
-    parent::__construct('div');
-  }
-
-  /**
+   * Returns the Grid layout manager
    * 
-   * @param  array $rows single or two dimensional array of column data
-   * @return Grid new instance containing given content as rows
+   * @return GridLayoutManagerInterface the layout manager
    */
-  public static function from(array $rows): Grid {
-    $grid = new Static();
-    foreach ($rows as $row) {
-      $grid->append($row);
-    }
-    return $grid;
-  }
+  public function layout(): GridLayoutManagerInterface;
 
+  /**
+   * Appends a new row to the grid
+   *
+   * **Important!**
+   *
+   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
+   *   using {@link self::toRow()} method.
+   *
+   * @param  mixed|Row $row the new row or the content of the new row
+   * @return $this for a fluent interface
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   */
+  public function append($row);
+
+  /**
+   * Prepends a new row to the grid
+   *
+   * **Important!**
+   *
+   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
+   *   using {@link self::toRow()} method.
+   * * The numeric keys of the content will be renumbered starting from zero 
+   *    and the index of the prepended row is 'int(0)' 
+   *
+   * @param  mixed|Row $row the new row or the content of the new row
+   * @return $this for a fluent interface
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   */
+  public function prepend($row);
+
+  /**
+   * Returns all column components from the grid
+   * 
+   * @return TraversableContent containing all the column components
+   */
+  public function getColumns(): TraversableContent;
 }

@@ -23,7 +23,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractRow extends AbstractComponent implements \IteratorAggregate, RowInterface {
+abstract class AbstractRow extends AbstractComponent implements \IteratorAggregate, Row {
 
   /**
    * @var PlainContainer
@@ -62,7 +62,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     $this->columns->clear();
     //print_r($sType);
     foreach ($columns as $column) {
-      if ($column instanceof Column) {
+      if ($column instanceof Cell) {
         $this->append($column);
       } else {
         $this->appendColumn($column, $sizes);
@@ -75,11 +75,11 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * Appends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return Column appended column
+   * @return Cell appended column
    */
-  public function append($column): Column {
-    if (!($column instanceof Column)) {
-      $column = new DivColumn($column);
+  public function append(Cell $column): Cell {
+    if (!($column instanceof Cell)) {
+      $column = new DivCell($column);
     }
     $this->columns->append($column);
     return $column;
@@ -89,24 +89,24 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    * Prepends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return Column prepended column
+   * @return Cell prepended column
    */
-  public function prepend($column): Column {
-    if (!($column instanceof Column)) {
-      $column = new DivColumn($column);
+  public function prepend($column): Cell {
+    if (!($column instanceof Cell)) {
+      $column = new DivCell($column);
     }
     $this->columns->prepend($column);
     return $column;
   }
 
   public function appendColumn($content, array $sizes = ['auto']) {
-    $this->append(new DivColumn($content, $sizes));
+    $this->append(new DivCell($content, $sizes));
     return $this;
   }
 
   public function appendMdColumn($content, array $sizes = ['auto']) {
     $p = new \ParsedownExtraPlugin();
-    $this->append(new DivColumn($p->parse($content), $sizes));
+    $this->append(new DivCell($p->parse($content), $sizes));
     return $this;
   }
 

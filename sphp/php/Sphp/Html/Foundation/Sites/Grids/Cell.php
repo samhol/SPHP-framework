@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\CssClassifiableContent;
+use Sphp\Html\Component;
 
 /**
  * Defines a Foundation framework based XY Grid Column
@@ -27,7 +27,7 @@ use Sphp\Html\CssClassifiableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Column extends CssClassifiableContent {
+interface Cell extends Component {
 
   /**
    * Returns the layout manager

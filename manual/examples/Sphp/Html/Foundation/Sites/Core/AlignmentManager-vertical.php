@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Foundation\Sites\Grids\DivColumn;
-use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Foundation\Sites\Grids\DivCell;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 
-$cols1[] = DivColumn::create('align-center', ['small-3']);
-$cols1[] = DivColumn::create('align-center', ['small-3']);
-$row1 = Row::from($cols1);
+$cols1[] = DivCell::create('align-center', ['small-3']);
+$cols1[] = DivCell::create('align-center', ['small-3']);
+$row1 = BasicRow::from($cols1);
 
 $alignmentManager = new AlingmentAdapter($row1);
 
@@ -19,7 +19,7 @@ $alignmentManager2 = new AlingmentAdapter($row1);
 
 $alignmentManager2->setHorizontalAlignment('align-right');
 
-$cols2[] = DivColumn::create('align-right', ['small-3']);
-$cols2[] = DivColumn::create('align-right', ['small-3']);
-$row2 = Row::from($cols2);
+$cols2[] = DivCell::create('align-right', ['small-3']);
+$cols2[] = DivCell::create('align-right', ['small-3']);
+$row2 = BasicRow::from($cols2);
 $row2->printHtml();

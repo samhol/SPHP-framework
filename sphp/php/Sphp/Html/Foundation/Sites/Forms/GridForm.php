@@ -13,12 +13,12 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 use IteratorAggregate;
 use Sphp\Html\Forms\TraversableForm;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\GridInterface;
+use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Html\Foundation\Sites\Grids\GridLayoutManagerInterface;
-use Sphp\Html\Foundation\Sites\Grids\RowInterface;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
-use Sphp\Html\Foundation\Sites\Grids\Grid;
+use Sphp\Html\Foundation\Sites\Grids\DivGrid;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\TraversableContent;
@@ -34,7 +34,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class GridForm extends AbstractComponent implements IteratorAggregate, GridInterface, TraversableForm {
+class GridForm extends AbstractComponent implements IteratorAggregate, Grid, TraversableForm {
 
   use TraversableFormTrait;
 
@@ -44,7 +44,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
   private $errorLabel;
 
   /**
-   * @var Grid
+   * @var DivGrid
    */
   private $gridContainer;
 
@@ -68,7 +68,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    */
   public function __construct(string $action = null, string $method = null, $content = null) {
     parent::__construct('form');
-    $this->gridContainer = new Grid();
+    $this->gridContainer = new DivGrid();
     $this->hiddenInputs = new HiddenInputs();
     if ($action !== null) {
       $this->setAction($action);
@@ -85,7 +85,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
     $this->errorLabel->attributes()->demand('data-abide-error');
   }
 
-  public function getGrid(): Grid {
+  public function getGrid(): DivGrid {
     return $this->gridContainer;
   }
 
@@ -139,11 +139,11 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    *
    * * `$row` not extending {@link RowInterface} is wrapped inside a {@link FormRow} component.
    *
-   * @param  mixed|RowInterface $row the new row or the content of the new row
-   * @return RowInterface for a fluent interface
+   * @param  mixed|Row $row the new row or the content of the new row
+   * @return Row for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function append($row): RowInterface {
+  public function append($row): Row {
     if (!($row instanceof RowInterface)) {
       // echo 'fooooooo'.$row;
       $row = new FormRow($row);
@@ -159,7 +159,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    *
    * * `$row` not extending {@link RowInterface} is wrapped inside a {@link FormRow} component.
    *
-   * @param  mixed|RowInterface $row the new row or the content of the new row
+   * @param  mixed|Row $row the new row or the content of the new row
    * @return $this for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
@@ -215,7 +215,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, GridInter
    * @return TraversableContent containing all the {@link ColumnInterface} components
    */
   public function getColumns(): TraversableContent {
-    return $this->getComponentsByObjectType(Column::class);
+    return $this->getComponentsByObjectType(Cell::class);
   }
 
   /**

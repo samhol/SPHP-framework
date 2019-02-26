@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 class RowTest extends TestCase {
 
   /**
-   * @var Row
+   * @var BasicRow
    */
   protected $row;
 
@@ -16,7 +16,7 @@ class RowTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->row = new Row();
+    $this->row = new BasicRow();
   }
 
   /**
@@ -49,10 +49,10 @@ class RowTest extends TestCase {
    */
   public function testConstructor(iterable $data) {
     $numCols = count($data);
-    $row = new Row($data);
+    $row = new BasicRow($data);
     $this->assertCount($numCols, $row);
     foreach ($row as $col) {
-      $this->assertTrue($col instanceof Column);
+      $this->assertTrue($col instanceof Cell);
       $this->assertTrue($col->hasCssClass('auto'));
     }
     $this->checkTypes($row);
@@ -66,11 +66,11 @@ class RowTest extends TestCase {
   public function testAppend(iterable $data) {
     $numCols = count($data);
     foreach ($data as $key => $val) {
-      $this->row->append($val);
+      $this->row->appendColumn($val);
     }
     $this->assertCount($numCols, $this->row);
     foreach ($this->row as $col) {
-      $this->assertTrue($col instanceof Column);
+      $this->assertTrue($col instanceof Cell);
       $this->assertTrue($col->hasCssClass('auto'));
     }
     $this->checkTypes($this->row);
@@ -92,11 +92,11 @@ class RowTest extends TestCase {
 
   /**
    * 
-   * @param RowInterface $row
+   * @param Row $row
    */
-  protected function checkTypes(RowInterface $row) {
+  protected function checkTypes(Row $row) {
     foreach ($row as $col) {
-      $this->assertTrue($col instanceof Column);
+      $this->assertTrue($col instanceof Cell);
     }
   }
 

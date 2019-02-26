@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 
 $colors = ['red', 'green', 'blue', 'white'];
 $ol = new Ol($colors);
@@ -13,4 +13,4 @@ $ol->prepend("purple");
 $olCopy = clone $ol;
 $olCopy->setListType('I');
 
-(new Row([$ol, $olCopy]))->printHtml();
+(new BasicRow([$ol, $olCopy]))->printHtml();

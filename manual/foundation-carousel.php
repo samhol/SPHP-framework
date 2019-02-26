@@ -51,7 +51,7 @@ $toolsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-$grid = \Sphp\Manual\api()->classLinker(Grid::class);
+$grid = \Sphp\Manual\api()->classLinker(DivGrid::class);
 $blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);
 $core = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 

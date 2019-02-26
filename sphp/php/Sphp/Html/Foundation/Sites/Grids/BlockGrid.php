@@ -85,7 +85,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
     $this->columns = [];
     foreach ($columns as $column) {
       if (!($column instanceof BlockGridColumnInterface)) {
-        $column = new HtmlBlockGridColumn($column);
+        $column = new HtmlBlockGridCell($column);
       }
       $this->append($column);
     }
@@ -100,7 +100,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    */
   public function append($column): BlockGridCell {
     if (!$column instanceof BlockGridColumn) {
-      $column = new HtmlBlockGridColumn($column);
+      $column = new HtmlBlockGridCell($column);
     }
     $this->columns[] = $column;
     return $column;
@@ -110,12 +110,12 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * Appends a parsed Mark Down string to the container
    * 
    * @param  string $md the path to the file
-   * @return HtmlBlockGridColumn new column
+   * @return HtmlBlockGridCell new column
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md): HtmlBlockGridColumn {
+  public function appendMd(string $md): HtmlBlockGridCell {
     try {
-      $column = new HtmlBlockGridColumn();
+      $column = new HtmlBlockGridCell();
       $column->appendMd($md);
       $this->append($column);
       return $column;
@@ -128,12 +128,12 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * Appends a parsed Mark Down file to the container
    * 
    * @param  string $path  the path to the file
-   * @return HtmlBlockGridColumn new column
+   * @return HtmlBlockGridCell new column
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMdFile(string $path): HtmlBlockGridColumn {
+  public function appendMdFile(string $path): HtmlBlockGridCell {
     try {
-      $column = new HtmlBlockGridColumn();
+      $column = new HtmlBlockGridCell();
       $column->appendMdFile($path);
       $this->append($column);
     } catch (\Exception $ex) {
@@ -146,12 +146,12 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * Appends a raw file to the container
    * 
    * @param  string $path path to the file
-   * @return HtmlBlockGridColumn new column
+   * @return HtmlBlockGridCell new column
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendRawFile(string $path): HtmlBlockGridColumn {
+  public function appendRawFile(string $path): HtmlBlockGridCell {
     try {
-      $column = new HtmlBlockGridColumn();
+      $column = new HtmlBlockGridCell();
       $column->appendRawFile($path);
       return $this->append($column);
     } catch (\Exception $ex) {
@@ -163,12 +163,12 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * Appends an executed PHP file to the container
    * 
    * @param  string $path  the path to the file
-   * @return HtmlBlockGridColumn new column
+   * @return HtmlBlockGridCell new column
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendPhpFile(string $path): HtmlBlockGridColumn {
+  public function appendPhpFile(string $path): HtmlBlockGridCell {
     try {
-      $column = new HtmlBlockGridColumn();
+      $column = new HtmlBlockGridCell();
       $column->appendPhpFile($path);
       return $this->append($column);
     } catch (\Exception $ex) {

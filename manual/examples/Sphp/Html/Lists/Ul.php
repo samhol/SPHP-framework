@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 
 $a_i = range('a', 'i');
 $ul = new Ul($a_i);
@@ -19,4 +19,4 @@ $ol1 = (new Ol($a_i))
         ->setStart(5)
         ->setReversed(TRUE);
 
-(new Row([$ul, $ul1, $ul2, $ul3, $ol, $ol1]))->printHtml();
+(new BasicRow([$ul, $ul1, $ul2, $ul3, $ol, $ol1]))->printHtml();

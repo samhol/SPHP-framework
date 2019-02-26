@@ -27,7 +27,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayoutAdapter{
+class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayoutAdapter {
 
   /**
    * @var ScreenSizes 
@@ -105,7 +105,7 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
 
    * @return $this for a fluent interface
    */
-  public function resetWidths() {
+  public function unsetWidths() {
     $this->cssClasses()->removePattern("/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto))|shrink|auto+$/");
     $this->cssClasses()->add('auto');
     return $this;
@@ -191,7 +191,7 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
    * @return $this for a fluent interface
    */
   public function reset() {
-    $this->resetWidths()->unsetOffsets()->unsetOrders();
+    $this->unsetWidths()->unsetOffsets()->unsetOrders();
     return $this;
   }
 
@@ -239,13 +239,14 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
   }
 
   public function shrink() {
-    $this->resetWidths();
+    $this->unsetWidths();
     $this->cssClasses()->add('shrink');
     return $this;
   }
 
   public function auto() {
-    $this->resetWidths();
+    $this->unsetWidths();
+    $this->cssClasses()->add('auto');
     return $this;
   }
 

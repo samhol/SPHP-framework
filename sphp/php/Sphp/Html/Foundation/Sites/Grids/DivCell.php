@@ -21,7 +21,7 @@ use Sphp\Html\Div;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DivColumn extends Div implements Column {
+class DivCell extends Div implements Cell {
 
   /**
    * @var BasicCellLayoutAdapter 
@@ -50,7 +50,7 @@ class DivColumn extends Div implements Column {
     return $this->layoutManager;
   }
 
-  public static function create($content, array $layout = ['auto']): DivColumn {
+  public static function create($content, array $layout = ['auto']): DivCell {
     return new static($content, $layout);
   }
 

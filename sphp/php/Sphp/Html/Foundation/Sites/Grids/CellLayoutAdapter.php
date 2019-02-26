@@ -37,7 +37,7 @@ interface CellLayoutAdapter {
 
    * @return $this for a fluent interface
    */
-  public function resetWidths();
+  public function unsetWidths();
 
   /**
    * Sets an offset for given screen size

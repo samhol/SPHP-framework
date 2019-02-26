@@ -13,7 +13,7 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Flow\Section;
 use Sphp\I18n\Datetime\CalendarUtils;
-use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\PlainContainer;
 use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
@@ -125,11 +125,11 @@ class MonthView extends AbstractComponent {
     return $container;
   }
 
-  protected function generateTop(): Row {
+  protected function generateTop(): BasicRow {
     $top = MonthSelector::fromDate($this->firstOf);
     //$top->attributes()->classes()->protect('sphp', 'month-selector');
     //$top->append($this->firstOf->format('F Y'));
-    $output = new Row();
+    $output = new BasicRow();
     $output->append($top);
     return $output;
   }
@@ -154,8 +154,8 @@ class MonthView extends AbstractComponent {
     return $container;
   }
 
-  protected function createHead(): Row {
-    $row = new Row();
+  protected function createHead(): BasicRow {
+    $row = new BasicRow();
     $cu = new CalendarUtils();
     foreach ($cu->getWeekdays() as $num => $day) {
       $div = new \Sphp\Html\Div;
@@ -171,10 +171,10 @@ class MonthView extends AbstractComponent {
    * Returns a row containing weekday cells
    * 
    * @param  Date $date
-   * @return Row a row containing weekday cells
+   * @return BasicRow a row containing weekday cells
    */
-  private function createWeekRow(Date $date): Row {
-    $row = new Row();
+  private function createWeekRow(Date $date): BasicRow {
+    $row = new BasicRow();
     $row->addCssClass('sphp', 'calendar-week-row');
     $row->append($this->createDayCell($date));
     $next = $date->nextDay();

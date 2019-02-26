@@ -10,11 +10,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Foundation\Sites\Grids\Row;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
 use Sphp\Html\NonVisualContent;
-use Sphp\Html\Foundation\Sites\Grids\Column;
+use Sphp\Html\Foundation\Sites\Grids\Cell;
 
 /**
  * Extends a Foundation Row for form components
@@ -23,7 +23,7 @@ use Sphp\Html\Foundation\Sites\Grids\Column;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FormRow extends Row {
+class FormRow extends BasicRow {
 
   public function __construct($columns = null, $sizes = null) {
     parent::__construct($columns, $sizes);
@@ -50,7 +50,7 @@ class FormRow extends Row {
   public function appendInput(Input $input, array $layout = ['auto']) {
     if ($input instanceof NonVisualContent) {
       $this->append($input);
-    } else if ($input instanceof ColumnInterface) {
+    } else if ($input instanceof Cell) {
       $input->layout()->setLayouts($layout);
       $this->append($input);
     } else {
