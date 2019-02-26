@@ -29,9 +29,9 @@ $carMenu = (new Select("cars[]"))
         ->selectMultiple()
         ->setSelectedValues(['audi', 'porsche', 'volvo']);
 
-$form = (new GridForm())
-        ->append([
+$form = new GridForm();
+$form->append([
     $carMenu,
     MenuFactory::rangeMenu(0, 15, 2, "range")->setSelectedValues(6)
-        ]);
+]);
 $form->printHtml();

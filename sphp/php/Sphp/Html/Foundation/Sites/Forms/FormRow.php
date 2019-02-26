@@ -25,19 +25,9 @@ use Sphp\Html\Foundation\Sites\Grids\Cell;
  */
 class FormRow extends BasicRow {
 
-  public function __construct($columns = null, $sizes = null) {
+  public function __construct($columns = null, $sizes = []) {
     parent::__construct($columns, $sizes);
     $this->layout()->usePadding(true);
-  }
-
-  public function appendColumn($content, array $layout = ['auto']) {
-    //echo "here " . $content;
-    if ($content instanceof InputInterface) {
-      $this->appendInput($content, $layout);
-    } else {
-      parent::appendColumn($content, $layout);
-    }
-    return $this;
   }
 
   /**
@@ -47,16 +37,16 @@ class FormRow extends BasicRow {
    * @param  array $layout
    * @return $this for a fluent interface
    */
-  public function appendInput(Input $input, array $layout = ['auto']) {
-    if ($input instanceof NonVisualContent) {
-      $this->append($input);
-    } else if ($input instanceof Cell) {
+  public function appendInput(Input $input, array $layout = ['auto']): Cell {
+    if ($input instanceof Cell) {
       $input->layout()->setLayouts($layout);
       $this->append($input);
     } else {
+      $input = new InputColumn($input);
+      $input->layout()->setLayouts($layout);
       $this->append(new InputColumn($input, $layout));
     }
-    return $this;
+    return $input;
   }
 
 }

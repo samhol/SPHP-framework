@@ -32,7 +32,7 @@ class BasicRow extends AbstractRow {
    * @param  mixed|mixed[] $columns row columns
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($columns = null, array $sizes = null) {
+  public function __construct($columns = null, array $sizes = []) {
     parent::__construct('div');
     if ($columns !== null) {
       $this->setColumns($columns, $sizes);

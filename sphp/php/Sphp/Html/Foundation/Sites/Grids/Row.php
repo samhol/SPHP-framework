@@ -46,17 +46,17 @@ interface Row extends CssClassifiableContent, \Traversable {
   public function setColumns($columns);
 
   /**
-   * Appends a single {@link ColumnInterface} component to the row
+   * Creates and appends a new Cell instance to the row
    *
    * **Important:**
    *
    * Parameter `$content` can be of any type that converts to a string or to a string[]
    *
-   * @param  mixed $content the content of the column
-   * @param  array $layout column layout parameters
-   * @return $this for a fluent interface
+   * @param  mixed $content the content of the cell
+   * @param  string[] $layout Cell layout parameters (CSS classes)
+   * @return Cell appended cell
    */
-  public function appendColumn($content, array $layout = ['auto']);
+  public function appendColumn($content, array $layout = ['auto']):Cell;
 
   /**
    * Prepends a Cell instance to the row

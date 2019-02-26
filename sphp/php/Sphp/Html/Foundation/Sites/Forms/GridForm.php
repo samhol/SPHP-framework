@@ -144,7 +144,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row): Row {
-    if (!($row instanceof RowInterface)) {
+    if (!($row instanceof Row)) {
       // echo 'fooooooo'.$row;
       $row = new FormRow($row);
     }
@@ -164,7 +164,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row) {
-    if (!($row instanceof RowInterface)) {
+    if (!($row instanceof Row)) {
       $row = new FormRow($row);
     }
     $this->getGrid()->prepend($row);

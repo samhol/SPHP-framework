@@ -50,13 +50,9 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     return $this->layoutManager;
   }
 
-  public function setColumns($columns, array $sizes = null) {
+  public function setColumns($columns, array $sizes = ['auto']) {
     if (!is_array($columns)) {
       $columns = [$columns];
-    }
-
-    if ($sizes === null) {
-      $sizes = ['auto'];
     }
 
     $this->columns->clear();
@@ -71,43 +67,28 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     return $this;
   }
 
-  /**
-   * Appends a new Column to the container
-   * 
-   * @param  mixed $column column or column content
-   * @return Cell appended column
-   */
-  public function append(Cell $column): Cell {
-    if (!($column instanceof Cell)) {
-      $column = new DivCell($column);
-    }
+  public function append(Cell $column) {
     $this->columns->append($column);
-    return $column;
+    return $this;
   }
 
-  /**
-   * Prepends a new Column to the container
-   * 
-   * @param  mixed $column column or column content
-   * @return Cell prepended column
-   */
-  public function prepend($column): Cell {
-    if (!($column instanceof Cell)) {
-      $column = new DivCell($column);
-    }
+  public function prepend(Cell $column) {
     $this->columns->prepend($column);
-    return $column;
-  }
-
-  public function appendColumn($content, array $sizes = ['auto']) {
-    $this->append(new DivCell($content, $sizes));
     return $this;
   }
 
-  public function appendMdColumn($content, array $sizes = ['auto']) {
-    $p = new \ParsedownExtraPlugin();
-    $this->append(new DivCell($p->parse($content), $sizes));
-    return $this;
+  public function appendColumn($content, array $sizes = ['auto']): Cell {
+    $cell = new DivCell($content, $sizes);
+    $this->append($cell);
+    return $cell;
+  }
+
+  public function appendMdColumn($md, array $sizes = ['auto']): Cell {
+    $cell = new DivCell();
+    $cell->layout()->setLayouts($sizes);
+    $cell->appendMd($md);
+    $this->append($cell);
+    return $cell;
   }
 
   /**

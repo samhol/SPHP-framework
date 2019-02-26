@@ -21,9 +21,10 @@ $distance = (new Slider(10, 1000, 10, 10))
         ->setName("distance")
         ->setSubmitValue(100);
 $bind = $distance->bindInput();
+$row = (new FormRow());
+$row->appendColumn($weight, ['shrink']);
+$row->appendColumn([$hours, $score, $distance, $bind], ['auto']);
 (new GridForm())
-        ->append((new FormRow())
-                ->appendColumn($weight, ['small-2'])
-                ->appendColumn([$hours, $score, $distance, $bind], ['small-10']))
+        ->append($row)
         ->printHtml();
 ?>
