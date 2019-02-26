@@ -27,6 +27,15 @@ try {
   $form->setLabelText(false);
   $form->setPlaceholder('Search Manual');
 
+
+  $bi = new \Sphp\Html\Media\Icons\BrandIcons();
+  $bi->github('https://github.com/samhol/SPHP-framework', 'Gihub repository');
+  $bi->facebook('https://www.facebook.com/Sami.Petteri.Holck.Playground/', 'Facebook page');
+  // $bi->googlePlus('https://plus.google.com/b/113942361282002156141/113942361282002156141', 'Google plus page');
+  $bi->twitter('https://twitter.com/SPHPframework', 'Twitter page');
+  $bi->addCssClass('smooth');
+
+  $navi->titleBar()->right()->append($bi);
   (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->topbar()->right());
   $navi->topbar()->right()->append('<ul class="menu"><li>' . $form . '</li></ul>');
 

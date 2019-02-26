@@ -91,6 +91,7 @@ class FA {
       'js' => 'fab fa-js-square',
       'python' => 'fab fa-python',
       'nodejs' => 'fab fa-node-js',
+      'npm' => 'fab fa-npm',
       'gulp' => 'fab fa-gulp',
       /**
        * Social
@@ -124,6 +125,8 @@ class FA {
       'stethoscope' => 'fas fa-stethoscope',
       'terminal' => 'fas fa-terminal',
       'flag' => 'fas fa-flag',
+      'compass' => 'far fa-compass',
+      'asterisk' => 'fas fa-asterisk',
       /**
        * Brands
        */

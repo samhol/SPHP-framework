@@ -13,7 +13,7 @@ $faLeft = (new FA())->pull('left')->fixedWidth(true);
 $grid = (new BlockGrid('small-up-1', 'medium-up-2', 'large-up-4'));
 
 $firstMenu = (new BasicMenu())->setVertical();
-$firstMenu->appendText('Who uses it?' . $faRight->users());
+$firstMenu->appendText('Who uses SPHPlayground?' . $faRight->users());
 $firstMenu->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi');
 $firstMenu->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;');
 $firstMenu->appendLink('http://playground.samiholck.com/', 'SPHPlayground manual');
@@ -29,6 +29,7 @@ $grid->append($firstMenu);
 $secondMenu = (new BasicMenu())->setVertical();
 $secondMenu->appendText('JavaScript ' . $faRight->js());
 $secondMenu->appendLink('https://nodejs.org/', 'Node.js' . $faLeft->nodejs());
+$secondMenu->appendLink('https://www.npmjs.com/', 'npm' . $faLeft->npm());
 $secondMenu->appendLink('https://gulpjs.com/', 'gulp.js' . $faLeft->gulp());
 $secondMenu->appendRuler();
 $secondMenu->appendLink('https://jquery.com/', DevIcons::jquery() . 'jQuery');
@@ -61,10 +62,10 @@ $fourthMenu->appendLink('https://www.w3.org/html/', 'HTML5 - <b>W3C</b>');
 $fourthMenu->appendLink('https://www.w3schools.com/js/', 'w3schools.com');
 $fourthMenu->appendText('SASS' . $faRight->sass());
 $fourthMenu->appendLink('http://sass-lang.com/', '<b>SASS</b> language');
-$fourthMenu->appendLink('http://sass-lang.com/guide', '<b>SASS</b> quide');
+$fourthMenu->appendLink('http://compass-style.org/', '<b style="color:#fb292d;">Compass</b> framework' . $faRight->compass());
 $fourthMenu->appendText('CSS' . $faRight->css3());
 $fourthMenu->appendLink('https://developer.mozilla.org/en-US/docs/Web/CSS', 'CSS - <b>MDN</b>');
-$fourthMenu->appendLink('https://www.w3.org/Style/CSS/Overview.en.html', 'CSS - <b>W3C</b>');
+$fourthMenu->appendLink('https://css-tricks.com/', 'CSS-TRICKS' . $faLeft->asterisk());
 
 $grid->append($fourthMenu);
 
