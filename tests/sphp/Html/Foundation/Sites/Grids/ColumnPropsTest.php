@@ -8,7 +8,7 @@ use Sphp\Html\Div;
 class ColumnPropsTest extends TestCase {
 
   /**
-   * @var BasicCellLayoutAdapter
+   * @var BasicCellLayout
    */
   protected $col;
 
@@ -17,7 +17,7 @@ class ColumnPropsTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->col = new BasicCellLayoutAdapter(new Div());
+    $this->col = new BasicCellLayout(new Div());
   }
 
   /**

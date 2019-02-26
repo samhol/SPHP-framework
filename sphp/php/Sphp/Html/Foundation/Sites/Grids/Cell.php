@@ -32,7 +32,7 @@ interface Cell extends Component {
   /**
    * Returns the layout manager
    * 
-   * @return CellLayoutAdapter the layout adapter
+   * @return CellLayout the layout adapter
    */
-  public function layout(): CellLayoutAdapter;
+  public function layout(): CellLayout;
 }

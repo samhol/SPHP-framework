@@ -27,6 +27,6 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface BlockGridCell extends Component {
+interface Block extends Component {
   
 }

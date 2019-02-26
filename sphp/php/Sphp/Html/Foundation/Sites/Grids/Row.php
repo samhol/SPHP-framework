@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\CssClassifiableContent;
 
 /**
- * Defines a Foundation framework based XY Grid Row
+ * Defines a XY Grid Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -26,9 +26,9 @@ interface Row extends CssClassifiableContent, \Traversable {
   /**
    * Returns the layout manager
    * 
-   * @return RowLayoutManager the layout manager
+   * @return RowLayout the layout manager
    */
-  public function layout(): RowLayoutManager;
+  public function layout(): RowLayout;
 
   /**
    * Sets the columns of the row (Removes existing content)
@@ -56,7 +56,7 @@ interface Row extends CssClassifiableContent, \Traversable {
    * @param  string[] $layout Cell layout parameters (CSS classes)
    * @return Cell appended cell
    */
-  public function appendColumn($content, array $layout = ['auto']):Cell;
+  public function appendColumn($content, array $layout = ['auto']): Cell;
 
   /**
    * Prepends a Cell instance to the row

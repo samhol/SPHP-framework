@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 /**
- * Implements Foundation XY Grid call layout adapter
+ * Defines a layuot object for a  XY Grid Call
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -19,12 +19,19 @@ namespace Sphp\Html\Foundation\Sites\Grids;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface CellLayoutAdapter {
+interface CellLayout {
 
+  /**
+   * Sets the Cell width associated with the given screen size
+   *  
+   * @param string $screen
+   * @param  string|int|null $value
+   * @return $this for a fluent interface
+   */
   public function setWidth(string $screen, $value);
 
   /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
+   * Unsets the Cell width associated with the given screen size
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
@@ -33,8 +40,8 @@ interface CellLayoutAdapter {
   public function unsetWidth(string $screenSize);
 
   /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
-
+   * Unsets all widths
+   * 
    * @return $this for a fluent interface
    */
   public function unsetWidths();
@@ -49,7 +56,7 @@ interface CellLayoutAdapter {
   public function setOffset(string $screenSize, int $value);
 
   /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
+   * Unsets an offset for given screen size
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
@@ -65,17 +72,39 @@ interface CellLayoutAdapter {
   public function unsetOffsets();
 
   /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
+   * Rsets the Cell layout
 
    * @return $this for a fluent interface
    */
   public function reset();
 
+  /**
+   * 
+   * 
+   * @param  string[]|... string $layouts
+   * @return $this for a fluent interface
+   */
   public function setLayouts(...$layouts);
 
+  /**
+   * 
+   * 
+   * @param  string $cssClass
+   * @return $this for a fluent interface
+   */
   public function fromCssClass(string $cssClass);
 
+  /**
+   * 
+   * 
+   * @return $this for a fluent interface
+   */
   public function shrink();
 
+  /**
+   * 
+   * 
+   * @return $this for a fluent interface
+   */
   public function auto();
 }

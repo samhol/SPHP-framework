@@ -19,7 +19,7 @@ use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Strings;
 
 /**
- * Implements Foundation XY Grid call layout adapter
+ * Implements a layuot object for a  XY Grid Call
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -27,7 +27,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayoutAdapter {
+class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
 
   /**
    * @var ScreenSizes 
@@ -89,7 +89,7 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
   }
 
   /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
+   * Unsets the Cell width associated with the given screen size
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
@@ -100,13 +100,9 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
     return $this;
   }
 
-  /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
-
-   * @return $this for a fluent interface
-   */
   public function unsetWidths() {
-    $this->cssClasses()->removePattern("/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto))|shrink|auto+$/");
+    $this->cssClasses()
+            ->removePattern("/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto|shrink))|shrink|auto+$/");
     $this->cssClasses()->add('auto');
     return $this;
   }
@@ -126,23 +122,11 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
     return $this;
   }
 
-  /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return $this for a fluent interface
-   */
   public function unsetOffset(string $screenSize) {
     $this->cssClasses()->removePattern("/^(($screenSize)-offset-([1-9]|(1[0-2])))+$/");
     return $this;
   }
 
-  /**
-   * Unsets the cell offsets
-   *
-   * @return $this for a fluent interface
-   */
   public function unsetOffsets() {
     $this->cssClasses()->removePattern("/^((small|medium|large|xlarge|xxlarge)-offset-([1-9]|(1[0-2])))+$/");
     return $this;
@@ -185,27 +169,8 @@ class BasicCellLayoutAdapter extends AbstractLayoutManager implements CellLayout
     return $this;
   }
 
-  /**
-   * Unsets the column width associated with the given screen size to be inherited from smaller screens
-
-   * @return $this for a fluent interface
-   */
   public function reset() {
     $this->unsetWidths()->unsetOffsets()->unsetOrders();
-    return $this;
-  }
-
-  /**
-   * Sets the column width values for all screen sizes
-   * 
-   * @param  ...string|string[] $widths column widths for different screens sizes
-   * @return $this for a fluent interface
-   */
-  public function setWidths(... $widths) {
-    $widths = Arrays::flatten($widths);
-    $this->unsetWidths();
-    $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $widths);
-    $this->cssClasses()->add($filtered);
     return $this;
   }
 

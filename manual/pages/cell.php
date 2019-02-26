@@ -26,10 +26,10 @@
 <?php
 
 use Sphp\Html\Tags;
-use Sphp\Html\Foundation\Sites\Grids\BasicCellLayoutAdapter;
+use Sphp\Html\Foundation\Sites\Grids\BasicCellLayout;
 
 $div = Tags::div();
-$mngr = new BasicCellLayoutAdapter($div);
+$mngr = new BasicCellLayout($div);
 $mngr->small('shrink');
 $mngr->medium('auto');
 $mngr->large(5);

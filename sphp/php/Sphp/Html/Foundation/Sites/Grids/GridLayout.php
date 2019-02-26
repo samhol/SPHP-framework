@@ -21,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Core\LayoutManager;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface GridLayoutManagerInterface extends LayoutManager {
+interface GridLayout extends LayoutManager {
 
   /**
    * Stretches the content to the full width of the available space

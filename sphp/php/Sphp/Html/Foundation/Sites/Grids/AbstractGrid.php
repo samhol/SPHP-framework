@@ -35,7 +35,7 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
   private $content;
 
   /**
-   * @var GridLayoutManager 
+   * @var BasicGridLayout 
    */
   private $layoutManager;
 
@@ -47,10 +47,10 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
   public function __construct(string $tagname) {
     parent::__construct($tagname);
     $this->content = new PlainContainer();
-    $this->layoutManager = new GridLayoutManager($this);
+    $this->layoutManager = new BasicGridLayout($this);
   }
 
-  public function layout(): GridLayoutManagerInterface {
+  public function layout(): GridLayout {
     return $this->layoutManager;
   }
 

@@ -14,7 +14,7 @@ use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\TraversableContent;
 
 /**
- * Defines a Foundation framework based XY Grid element
+ * Defines a XY Grid (Row container)
  *
  * **Important!**
  *
@@ -33,9 +33,9 @@ interface Grid extends CssClassifiableContent, TraversableContent {
   /**
    * Returns the Grid layout manager
    * 
-   * @return GridLayoutManagerInterface the layout manager
+   * @return GridLayout the layout manager
    */
-  public function layout(): GridLayoutManagerInterface;
+  public function layout(): GridLayout;
 
   /**
    * Appends a new row to the grid

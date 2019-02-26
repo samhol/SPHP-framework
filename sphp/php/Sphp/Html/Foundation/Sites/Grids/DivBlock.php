@@ -21,7 +21,7 @@ use Sphp\Html\Div;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HtmlBlockGridCell extends Div implements BlockGridCell {
+class DivBlock extends Div implements Block {
 
   public function __construct($content = null) {
     parent::__construct($content);

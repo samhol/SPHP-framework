@@ -17,8 +17,8 @@ use Sphp\Html\Span;
 use Sphp\Html\Flow\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
-use Sphp\Html\Foundation\Sites\Grids\BasicCellLayoutAdapter;
-use Sphp\Html\Foundation\Sites\Grids\CellLayoutAdapter;
+use Sphp\Html\Foundation\Sites\Grids\BasicCellLayout;
+use Sphp\Html\Foundation\Sites\Grids\CellLayout;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea;
 use Sphp\Html\Forms\Inputs\Menus\Select;
@@ -65,7 +65,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   private $reflector;
 
   /**
-   * @var BasicCellLayoutAdapter 
+   * @var BasicCellLayout 
    */
   private $layoutManager;
 
@@ -77,7 +77,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    */
   public function __construct(Input $input, array $layout = ['auto']) {
     parent::__construct('div');
-    $this->layoutManager = new BasicCellLayoutAdapter($this);
+    $this->layoutManager = new BasicCellLayout($this);
     $this->layout()->setLayouts($layout);
     $this->label = new Label();
     $this->input = $input;
@@ -198,7 +198,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this->label->getHtml() . $this->helper;
   }
 
-  public function layout(string ...$layout): CellLayoutAdapter {
+  public function layout(string ...$layout): CellLayout {
     if (!empty($layout)) {
       $this->layoutManager->setLayouts($layout);
     }

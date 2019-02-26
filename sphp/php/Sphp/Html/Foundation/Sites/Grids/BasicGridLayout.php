@@ -14,7 +14,7 @@ use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Html\CssClassifiableContent;
 
 /**
- * Implements a layout manager for a Foundation framework based XY Grid container
+ * Implements a layout object for a XY Grid 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -22,7 +22,7 @@ use Sphp\Html\CssClassifiableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManagerInterface {
+class BasicGridLayout extends AbstractLayoutManager implements GridLayout {
 
   /**
    * Constructor

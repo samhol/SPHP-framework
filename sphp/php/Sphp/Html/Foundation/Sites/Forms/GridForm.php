@@ -14,7 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\Forms\TraversableForm;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
-use Sphp\Html\Foundation\Sites\Grids\GridLayoutManagerInterface;
+use Sphp\Html\Foundation\Sites\Grids\GridLayout;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
@@ -110,7 +110,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
     return $this;
   }
 
-  public function layout(): GridLayoutManagerInterface {
+  public function layout(): GridLayout {
     return $this->getGrid()->layout();
   }
 

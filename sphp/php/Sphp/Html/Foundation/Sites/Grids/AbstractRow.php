@@ -31,7 +31,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
   private $columns;
 
   /**
-   * @var RowLayoutManager 
+   * @var RowLayout 
    */
   private $layoutManager;
 
@@ -42,11 +42,11 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
    */
   public function __construct(string $tagname = 'div') {
     parent::__construct($tagname);
-    $this->layoutManager = new RowLayoutManager($this);
+    $this->layoutManager = new RowLayout($this);
     $this->columns = new PlainContainer();
   }
 
-  public function layout(): RowLayoutManager {
+  public function layout(): RowLayout {
     return $this->layoutManager;
   }
 

@@ -16,8 +16,8 @@ use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Grids\Cell;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Foundation\Sites\Grids\BasicCellLayoutAdapter;
-use Sphp\Html\Foundation\Sites\Grids\CellLayoutAdapter;
+use Sphp\Html\Foundation\Sites\Grids\BasicCellLayout;
+use Sphp\Html\Foundation\Sites\Grids\CellLayout;
 use Sphp\Html\Forms\Inputs\Factory;
 
 /**
@@ -64,7 +64,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, Cell {
   private $labels = [];
 
   /**
-   * @var BasicCellLayoutAdapter
+   * @var BasicCellLayout
    */
   private $layout;
 
@@ -85,7 +85,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, Cell {
     foreach ($values as $value => $label) {
       $this->setOption($value, $label);
     }
-    $this->layout = new BasicCellLayoutAdapter($this);
+    $this->layout = new BasicCellLayout($this);
   }
 
   public function __destruct() {
@@ -93,7 +93,7 @@ abstract class Choiceboxes extends AbstractComponent implements Input, Cell {
     parent::__destruct();
   }
 
-  public function layout(): CellLayoutAdapter {
+  public function layout(): CellLayout {
     return $this->layout;
   }
 

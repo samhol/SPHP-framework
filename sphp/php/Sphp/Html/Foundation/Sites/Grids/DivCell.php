@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Div;
 
 /**
- * Implements a Foundation framework based XY Grid Column
+ * Implements a XY Grid Column
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -24,7 +24,7 @@ use Sphp\Html\Div;
 class DivCell extends Div implements Cell {
 
   /**
-   * @var BasicCellLayoutAdapter 
+   * @var BasicCellLayout 
    */
   private $layoutManager;
 
@@ -42,11 +42,11 @@ class DivCell extends Div implements Cell {
    */
   public function __construct($content = null, array $layout = ['auto']) {
     parent::__construct($content);
-    $this->layoutManager = new BasicCellLayoutAdapter($this);
+    $this->layoutManager = new BasicCellLayout($this);
     $this->layout()->setLayouts($layout);
   }
 
-  public function layout(): CellLayoutAdapter {
+  public function layout(): CellLayout {
     return $this->layoutManager;
   }
 

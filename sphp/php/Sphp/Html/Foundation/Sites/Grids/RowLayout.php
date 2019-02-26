@@ -15,7 +15,7 @@ use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
 /**
- * Implements a layout manager for a Foundation framework based XY Row
+ * Implements a layout manager for a XY Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation 6
@@ -23,7 +23,7 @@ use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class RowLayoutManager extends AlingmentAdapter {
+class RowLayout extends AlingmentAdapter {
 
   /**
    * Constructor

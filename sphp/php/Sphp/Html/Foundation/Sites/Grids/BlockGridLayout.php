@@ -24,7 +24,7 @@ use Sphp\Html\Foundation\Foundation;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BlockGridLayoutManager extends AbstractLayoutManager {
+class BlockGridLayout extends AbstractLayoutManager {
 
   /**
    * @var int 
