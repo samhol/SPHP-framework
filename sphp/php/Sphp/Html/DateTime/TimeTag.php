@@ -75,5 +75,17 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
     $this->attributes()->setAttribute('datetime', $this->dateTime->format($this->getFormat()));
     return $this;
   }
+  
+  
+  /**
+   * Creates a &lt;time&gt; tag object showing week number
+   * 
+   * @param  mixed $dateTime
+   * @return TimeTag new instance
+   */
+  public static function weekNumber($dateTime = null): TimeTag {
+    $dateTime = \Sphp\DateTime\DateTimes::dateTimeImmutable($dateTime);
+    return (new TimeTag($dateTime, $dateTime->format('W')))->setFormat(TimeTag::Y_W);
+  }
 
 }

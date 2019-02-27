@@ -15,6 +15,7 @@ use Sphp\Html\PlainContainer;
 use Sphp\Html\Media\Icons\SvgLoader;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\Tags;
+use Sphp\Html\DateTime\TimeTag;
 
 /**
  * Implements a weekday view for a calendar month
@@ -49,29 +50,7 @@ class WeekDayView extends AbstractComponent {
   private function generateContent(): PlainContainer {
     $content = new PlainContainer;
     $date = $this->diaryDay->getDate();
-    $vg = '<div class="grid-y" style="height: 90px;">
-  <div class="cell small-4">' .
-            $this->diaryDay->getDate()->format('j')
-            . '</div>
-  <div class="cell small-8">
-    6/4/10
-  </div>
-</div>';
-    $hg = '<div class="grid-x grid-margin-x medium-margin-collapse">
-  <div class="cell shrink">
-   ' . $this->diaryDay->getDate()->getWeek() . '
-  </div>
-  <div class="cell auto">' .
-            $vg . '
-  </div>
-</div>';
-    $content->append($hg);
-    return $content;
-    $leftCol = Tags::div()->addCssClass('left-column', 'show-for-medium');
-    if ($date->getWeekDay() === 1) {
-      $leftCol->append($this->diaryDay->getDate()->getWeek());
-    }
-    $content->append($leftCol);
+
     $timeTag = Tags::time($this->diaryDay->getDate()->getDateTime());
     if ($this->diaryDay->notEmpty()) {
       if ($this->diaryDay->isFlagDay()) {
@@ -80,6 +59,32 @@ class WeekDayView extends AbstractComponent {
     }
     $timeTag->append(Tags::span($this->diaryDay->getDate()->format('j'))->addCssClass('day-number'));
     $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l jS \of F Y'));
+    //$verticalGrid = Tags::div()->addCssClass('grid-y')->inlineStyles('height', '90px');
+    //$verticalGrid->append(new \Sphp\Html\Foundation\Sites\Grids\DivCell($this->diaryDay->getDate()->format('j'),['small-4']));
+    $vg = '<div class="grid-y">
+  <div class="cell small-4">' .
+            $date->format('j')
+            . '</div><div class="cell small-8">
+' . $timeTag . '</div></div>';
+    $hg = '<div class="grid-x cont">
+      <div class="cell shrink show-for-medium left-column">';
+    $week = TimeTag::weekNumber($date);
+    if ($date->getWeekDay() !== 1) {
+      $week->addCssClass('not-monday');
+    }
+    if ($date->isCurrentWeek()) {
+      $week->addCssClass('current-week');
+    }
+    $hg .= $week . '</div><div class="cell auto">' .
+            $vg . '</div></div>';
+    $content->append($hg);
+    return $content;
+    $leftCol = Tags::div()->addCssClass('left-column', 'show-for-medium');
+    if ($date->getWeekDay() === 1) {
+      $leftCol->append($this->diaryDay->getDate()->getWeek());
+    }
+    $content->append($leftCol);
+
     $content->append($timeTag);
     $content->append($this->createIcons());
     return $content;

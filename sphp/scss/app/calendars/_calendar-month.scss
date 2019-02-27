@@ -39,7 +39,11 @@ $border-color: #555;
     div.sphp.calendar-day {
 
       @include shadow();
+      overflow: hidden;
       height: rem-calc(90);
+      .grid-y {
+        height: rem-calc(88);
+      }
       border: solid 1px #666;
       @include border-radius(3px);
       text-align: center;
@@ -74,13 +78,21 @@ $border-color: #555;
         border: solid 2px #888;
       }
       .left-column {
-        font-size: rem-calc(12);
         border-right: solid 1px #888;
-        float: left;
-        padding: rem-calc(2 4 2 4);
+        time {
+          font-size: rem-calc(12);
+          padding: rem-calc(4 3 10 3);
+          min-width: rem-calc(32);
+          &.current-week {
+            color: #000;
+            text-decoration: underline;
+          }
+          &.not-monday {
+            color: #333;
+            @include opacity(.3);
+          }
+        }
         background-color: rgba(#aaa, .6);
-        height: 100%;
-        min-width: rem-calc(26);
 
       }
       &.holiday, &.sunday {

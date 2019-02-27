@@ -117,6 +117,17 @@ abstract class AbstractDate implements DateInterface {
     return $today === $thisDay;
   }
 
+  /**
+   * Checks whether the week is the current week
+   * 
+   * @return bool true if the week number is current, false otherwise
+   */
+  public function isCurrentWeek(): bool {
+    $today = date('Y-m-W');
+    $thisDay = $this->getDateTime()->format('Y-m-W');
+    return $today === $thisDay;
+  }
+
   public function dateEqualsTo($date): bool {
     try {
       $parsed = DateTimes::parseDateString($date);
