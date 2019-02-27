@@ -50,6 +50,17 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
     $this->layoutManager = new BasicGridLayout($this);
   }
 
+  public function __destruct() {
+    unset($this->content, $this->layoutManager);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    $this->content = clone $this->content;
+    $this->layoutManager = clone $this->layoutManager;
+    parent::__clone();
+  }
+
   public function layout(): GridLayout {
     return $this->layoutManager;
   }

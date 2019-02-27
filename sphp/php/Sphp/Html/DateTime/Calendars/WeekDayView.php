@@ -49,6 +49,49 @@ class WeekDayView extends AbstractComponent {
   private function generateContent(): PlainContainer {
     $content = new PlainContainer;
     $date = $this->diaryDay->getDate();
+    $vg = '<div class="grid-y" style="height: 90px;">
+  <div class="cell small-4">' .
+            $this->diaryDay->getDate()->format('j')
+            . '</div>
+  <div class="cell small-8">
+    6/4/10
+  </div>
+</div>';
+    $hg = '<div class="grid-x grid-margin-x medium-margin-collapse">
+  <div class="cell shrink">
+   ' . $this->diaryDay->getDate()->getWeek() . '
+  </div>
+  <div class="cell auto">' .
+            $vg . '
+  </div>
+</div>';
+    $content->append($hg);
+    return $content;
+    $leftCol = Tags::div()->addCssClass('left-column', 'show-for-medium');
+    if ($date->getWeekDay() === 1) {
+      $leftCol->append($this->diaryDay->getDate()->getWeek());
+    }
+    $content->append($leftCol);
+    $timeTag = Tags::time($this->diaryDay->getDate()->getDateTime());
+    if ($this->diaryDay->notEmpty()) {
+      if ($this->diaryDay->isFlagDay()) {
+        $timeTag->append(Tags::span(SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg'))->addCssClass('flag'));
+      }
+    }
+    $timeTag->append(Tags::span($this->diaryDay->getDate()->format('j'))->addCssClass('day-number'));
+    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l jS \of F Y'));
+    $content->append($timeTag);
+    $content->append($this->createIcons());
+    return $content;
+  }
+
+  /**
+   * 
+   * @return PlainContainer
+   */
+  private function generateContent1(): PlainContainer {
+    $content = new PlainContainer;
+    $date = $this->diaryDay->getDate();
     $leftCol = Tags::div()->addCssClass('left-column', 'show-for-medium');
     if ($date->getWeekDay() === 1) {
       $leftCol->append($this->diaryDay->getDate()->getWeek());

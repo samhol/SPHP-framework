@@ -161,7 +161,7 @@ class TagsTest extends TestCase {
     $this->assertInstanceOf($className, Tags::create($val));
     $this->assertInstanceOf($className, Tags::$val());
     $str = Tags::create($val);
-    $this->assertTrue(\Sphp\Stdlib\Strings::contains("$str", "<" . $str->getTagName()));
+    $this->assertTrue(\Sphp\Stdlib\Strings::contains("$str", '<' . $str->getTagName()));
   }
 
   public function testInvalidCreateMethodCall() {

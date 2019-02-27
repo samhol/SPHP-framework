@@ -20,6 +20,17 @@ use Sphp\Stdlib\Strings;
 
 /**
  * Implements a layout object for a  XY Grid Call
+ * 
+ * @method $this small(int|string $sizeOrVisibility) sets the visibility or the size for small screens
+ * @method $this medium(int|string $sizeOrVisibility) sets the visibility or the size for medium screens
+ * @method $this large(int|string $sizeOrVisibility) sets the visibility or the size for large screens
+ * @method $this xlarge(int|string $sizeOrVisibility) sets the visibility or the size for xlarge screens
+ * @method $this xxlarge(int|string $sizeOrVisibility) sets the visibility or the size for xxlarge screens
+ * @method $this smallOffset(int $offest = null) sets the offset for small screens
+ * @method $this mediumOffset(int $offest = null) sets the offset for medium screens
+ * @method $this largeOffset(int $offest = null) sets the offset for large screens
+ * @method $this xlargeOffset(int $offest = null) sets the offset for xlarge screens
+ * @method $this xxlargeOffset(int $offest = null) sets the offset for xxlarge screens
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -67,19 +78,32 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
    * @param  string $name
    * @param  array $arguments
    * @return $this for a fluent interface
-   * @throws BadMethodCallException
+   * @throws BadMethodCallException if the method does not exist or parameter is invalid
    */
   public function __call(string $name, array $arguments) {
+    if (count($arguments) !== 1) {
+      throw new BadMethodCallException("Wrong number of arguments for '$name' for Grid cell");
+    }
+    $parameter = $arguments[0];
     if (Strings::endsWith($name, 'Offset')) {
       $size = str_replace('Offset', '', $name);
-      $this->setOffset($size, $arguments[0]);
+      if (!is_int($parameter)) {
+        $type = gettype($parameter);
+        throw new BadMethodCallException("$type is invalid parameter type for $name method");
+      }
+      $this->setOffset($size, $parameter);
     } else if ($this->isScreenSize($name)) {
-      $this->setWidth($name, $arguments[0]);
-    } else if ($name === 'shrink') {
-      $this->setWidth($name, $arguments[0]);
+      if ($parameter === 'show') {
+        $this->showOnlyFor($name);
+      } else if ($parameter === 'hide') {
+        $this->hideOnlyFor($name);
+      } else {
+        $this->setWidth($name, $parameter);
+      }
     } else {
-      throw new BadMethodCallException("Wrong number of arguments foe '$name' for Grid cell");
+      throw new BadMethodCallException("'$name' is not valid method");
     }
+    return $this;
   }
 
   public function setWidth(string $screen, $value) {
@@ -108,12 +132,68 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
   }
 
   /**
-   * Sets an offset for given screen size
+   * Hides the component for the given screen sizes only
    * 
-   * @param  string $screenSize the target screen size
-   * @param  int $value
+   * Valid flags for `$size` parameter:
+   * 
+   * * `"small"`: screen widths 0px - 640px
+   * * `"medium"`: screen widths 641px - 1024px
+   * * `"large"`: screen widths 1025px - 1440px)
+   * * `"x-large"`: screen widths 1441px - 1920px
+   * * `"xx-large"`: all screen widths from 1921px...
+   * 
+   * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
+   * @param  string... $sizes the targeted screen sizes
    * @return $this for a fluent interface
+   * @throws InvalidArgumentException if a parameter is not a valid screen size
    */
+  public function hideOnlyFor(string... $sizes) {
+    foreach (Arrays::flatten($sizes) as $size) {
+      if (!$this->isScreenSize($size)) {
+        throw new InvalidArgumentException("Screen size '$size' was not recognized");
+      } else {
+        $this->cssClasses()->add("hide-for-$size-only");
+        $this->cssClasses()->remove("show-for-$size-only");
+      }
+    }
+    return $this;
+  }
+
+  /**
+   * Shows the Cell for the given screen sizes only
+   * 
+   * Valid values for `$sizes` parameter:
+   * 
+   * * `"small"`: screen widths 0px - 640px
+   * * `"medium"`: screen widths 641px - 1024px
+   * * `"large"`: screen widths 1025px - 1440px)
+   * * `"x-large"`: screen widths 1441px - 1920px
+   * * `"xx-large"`: all screen widths from 1921px...
+   * 
+   * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
+   * @param  string... $sizes the targeted screen sizes
+   * @return $this for a fluent interface
+   * @throws InvalidArgumentException if a parameter is not a valid screen size
+   */
+  public function showOnlyFor(string... $sizes) {
+    foreach (Arrays::flatten($sizes) as $size) {
+      if (!$this->isScreenSize($size)) {
+        throw new InvalidArgumentException("Screen size '$size' was not recognized");
+      } else {
+        $this->cssClasses()->add("show-for-$size-only");
+        $this->cssClasses()->remove("hide-for-$size-only");
+      }
+    }
+    return $this;
+  }
+
+  public function unsetVisibilitySettings() {
+    $this->cssClasses()
+            ->removePattern("/^(hide-for-(small|medium|large|xlarge|xxlarge)-only)+$/")
+            ->removePattern("/^(show-for-(small|medium|large|xlarge|xxlarge)-only)+$/");
+    return $this;
+  }
+
   public function setOffset(string $screenSize, int $value) {
     $this->unsetOffset($screenSize);
     if ($value > 0) {
@@ -140,7 +220,7 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
    * @return $this for a fluent interface
    */
   public function setOrder(string $screenSize, int $value) {
-    $this->unsetOffset($screenSize);
+    $this->unsetOrder($screenSize);
     if ($value > 0) {
       $this->cssClasses()->add("$screenSize-order-$value");
     }
@@ -155,7 +235,7 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
    * @return $this for a fluent interface
    */
   public function unsetOrder(string $screenSize) {
-    $this->cssClasses()->removePattern("/^(($screenSize)-order-([1-9]|(1[0-2])))+$/");
+    $this->cssClasses()->removePattern("/^($screenSize-order-([1-9]|(1[0-2])))+$/");
     return $this;
   }
 
