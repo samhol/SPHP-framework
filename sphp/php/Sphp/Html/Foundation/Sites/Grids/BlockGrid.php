@@ -19,7 +19,7 @@ use Sphp\Html\PlainContainer;
 use Sphp\Exceptions\RuntimeException;
 
 /**
- * Implements a Foundation framework based XY Block Grid
+ * Implements an XY Block Grid
  *
  * **Important!**
  *

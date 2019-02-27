@@ -17,7 +17,7 @@ use IteratorAggregate;
 use Traversable;
 
 /**
- * Implements an abstract Foundation framework based XY Grid container for rows
+ * Implements an abstract XY Grid Row container (a Grid)
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -54,7 +54,7 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
     return $this->layoutManager;
   }
 
-  public function getColumns(): TraversableContent {
+  public function getCells(): TraversableContent {
     return $this->getComponentsByObjectType(Cell::class);
   }
 

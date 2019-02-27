@@ -57,6 +57,11 @@ class Slider extends AbstractSlider {
     $this->setStepLength($step)->setSubmitValue($value);
   }
 
+  public function __destruct() {
+    unset($this->handle, $this->input);
+    parent::__destruct();
+  }
+
   /**
    * Returns the form element containing the value of the slider
    * 

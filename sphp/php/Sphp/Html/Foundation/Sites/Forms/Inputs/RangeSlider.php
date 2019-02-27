@@ -83,6 +83,11 @@ class RangeSlider extends AbstractSlider {
     }
   }
 
+  public function __destruct() {
+    unset($this->lowerHandle, $this->upperHandle, $this->lowerInput, $this->upperInput);
+    parent::__destruct();
+  }
+
   /**
    * Returns the form component containing the start value of the range
    * 

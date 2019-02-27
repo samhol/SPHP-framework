@@ -214,17 +214,17 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
    * 
    * @return TraversableContent containing all the {@link ColumnInterface} components
    */
-  public function getColumns(): TraversableContent {
+  public function getCells(): TraversableContent {
     return $this->getComponentsByObjectType(Cell::class);
   }
 
   /**
-   * Returns all {@link InputColumnInterface} components from the grid
+   * Returns all {@link InputCell} components from the grid
    * 
    * @return TraversableContent containing all the {@link InputColumn} components
    */
   public function getInputColumns(): TraversableContent {
-    return $this->getComponentsByObjectType(InputColumnInterface::class);
+    return $this->getComponentsByObjectType(InputCell::class);
   }
 
 }

@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Div;
 
 /**
- * Implements a XY Grid Column
+ * Implements an XY Grid Cell
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

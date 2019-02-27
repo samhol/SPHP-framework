@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 /**
- * Defines a layuot object for a  XY Grid Call
+ * Defines a layout object for a  XY Grid Call
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

@@ -19,16 +19,16 @@ $datetimeInput = (new AnyTimeInput('start'))->setLocale('fi_FI');
 $endInput = (new AnyTimeInput('end'))->setLocale('fi_FI');
 $types = ['Basketball', 'Work', 'School'];
 $yearMenu = \Sphp\Html\Forms\Inputs\Menus\Select::from('year', $types);
-$row->append((new InputColumn($yearMenu
+$row->append((new BasicInputCell($yearMenu
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setErrorField("You need to insert a task type")
                 ->setLabel("Task type:"));
-$row->append((new InputColumn($datetimeInput
+$row->append((new BasicInputCell($datetimeInput
                         ->setPlaceholder('yyyy-mm-dd hh:mm')
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setErrorField("You need to give start time")
                 ->setLabel("Start time:"));
-$row->append((new InputColumn($endInput
+$row->append((new BasicInputCell($endInput
                         ->setPlaceholder('yyyy-mm-dd hh:mm')
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setErrorField("You need to give end time")
@@ -36,7 +36,7 @@ $row->append((new InputColumn($endInput
 
 $form->append($row);
 
-$form->append(InputColumn::textarea("description", null, 5)
+$form->append(BasicInputCell::textarea("description", null, 5)
                 ->setRequired()
                 ->setPlaceholder("Description of the calendar task")
                 ->setErrorField("Please insert task description"));

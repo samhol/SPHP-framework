@@ -7,7 +7,7 @@ use Sphp\Html\Div;
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $exampleDiv = (new Div())->addCssClass("example-area")
-        ->appendPhpFile('manual/examples/Sphp/Html/Foundation/Sites/Forms/Inputs/InputColumnInterface.php');
+        ->appendPhpFile('manual/examples/Sphp/Html/Foundation/Sites/Forms/Inputs/InputCell.php');
 echo <<<MD
 ##Foundation Form components:
 

@@ -40,23 +40,10 @@ interface Row extends CssClassifiableContent, \Traversable {
    * * The widths of the `mixed $columns` extending {@link ColumnInterface} are kept
    * * The sum of the {@link ColumnInterface} widths in a {@link self} should not exceed 12.
    * 
-   * @param  mixed|mixed[] $columns 
+   * @param  mixed|mixed[] $cells 
    * @return $this for a fluent interface
    */
-  public function setColumns($columns);
-
-  /**
-   * Creates and appends a new Cell instance to the row
-   *
-   * **Important:**
-   *
-   * Parameter `$content` can be of any type that converts to a string or to a string[]
-   *
-   * @param  mixed $content the content of the cell
-   * @param  string[] $layout Cell layout parameters (CSS classes)
-   * @return Cell appended cell
-   */
-  public function appendColumn($content, array $layout = ['auto']): Cell;
+  public function setCells($cells);
 
   /**
    * Prepends a Cell instance to the row
@@ -73,4 +60,17 @@ interface Row extends CssClassifiableContent, \Traversable {
    * @return $this for a fluent interface
    */
   public function append(Cell $cell);
+
+  /**
+   * Creates and appends a new Cell instance to the row
+   *
+   * **Important:**
+   *
+   * Parameter `$content` can be of any type that converts to a string or to a string[]
+   *
+   * @param  mixed $content the content of the cell
+   * @param  string[] $layout Cell layout parameters (CSS classes)
+   * @return Cell appended cell
+   */
+  public function appendCell($content, array $layout = ['auto']): Cell;
 }

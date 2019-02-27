@@ -16,7 +16,7 @@ use Sphp\Stdlib\Arrays;
 use Sphp\Html\Foundation\Foundation;
 
 /**
- * Implements a layout manager for Foundation framework based XY Block Grid
+ * Implements a layout object for XY Block Grid
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

@@ -14,7 +14,7 @@ use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Html\CssClassifiableContent;
 
 /**
- * Implements a layout object for a XY Grid 
+ * Implements a layout object for a XY Grid (Row container)
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

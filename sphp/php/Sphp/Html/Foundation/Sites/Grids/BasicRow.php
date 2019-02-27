@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 /**
- * Implements a Foundation framework based XY Row
+ * Implements an XY Grid Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -29,17 +29,19 @@ class BasicRow extends AbstractRow {
    * * `mixed $columns` can be of any type that converts to a string or to a string[]
    * * all values of `$columns` not extending {@link ColumnInterface} are wrapped with {@link Column} component
    * 
-   * @param  mixed|mixed[] $columns row columns
+   * @param  mixed|mixed[] $cells row columns
+   * @param  string[] $layoutParams
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($columns = null, array $sizes = []) {
+  public function __construct($cells = null, array $layoutParams = []) {
     parent::__construct('div');
-    if ($columns !== null) {
-      $this->setColumns($columns, $sizes);
+    if ($cells !== null) {
+      $this->setCells($cells, $layoutParams);
     }
   }
 
   /**
+   * Creates a new Row from a collection of cells
    * 
    * @param  iterable $cells
    * @return BasicRow new instance
@@ -50,7 +52,7 @@ class BasicRow extends AbstractRow {
       if ($cell instanceof Cell) {
         $row->append($cell);
       } else {
-        $row->appendColumn($cell);
+        $row->appendCell($cell);
       }
     }
     return $row;

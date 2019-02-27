@@ -23,7 +23,7 @@ use Sphp\Html\Forms\Label;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface InputColumnInterface extends Cell, Input {
+interface InputCell extends Cell, Input {
 
   /**
    * Returns the label of the component

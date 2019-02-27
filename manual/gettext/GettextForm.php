@@ -7,7 +7,7 @@ use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\Checkboxes;
 use Iterator;
-use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\BasicInputCell;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 
 class GettextForm extends AbstractComponentGenerator {
@@ -55,13 +55,13 @@ class GettextForm extends AbstractComponentGenerator {
     $row = new FormRow();
     $typeSelector = new Checkboxes('type', [0b1 => 'singular', 0b10 => 'plural', 0b100 => 'original', 0b1000 => 'translation']);
     $typeSelector->setSubmitValue(['type' => 0b11]);
-    $row->appendColumn($typeSelector, ['small-12', 'large-4', 'xlarge-5']);
+    $row->appendCell($typeSelector, ['small-12', 'large-4', 'xlarge-5']);
 
     $form->append($row);
 
     $row1 = new FormRow();
-    $row->append(InputColumn::text('query', null, ['small-12', 'large-7', 'xlarge-6']));
-    $row->appendColumn(Button::submitter('submit'), ['small-12', 'large-1']);
+    $row->append(BasicInputCell::text('query', null, ['small-12', 'large-7', 'xlarge-6']));
+    $row->appendCell(Button::submitter('submit'), ['small-12', 'large-1']);
 
     $form->append($row1);
     $form->append($this->tableGenerator->generate());

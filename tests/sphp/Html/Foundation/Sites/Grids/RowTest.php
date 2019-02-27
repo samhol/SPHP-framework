@@ -66,7 +66,7 @@ class RowTest extends TestCase {
   public function testAppend(iterable $data) {
     $numCols = count($data);
     foreach ($data as $key => $val) {
-      $this->row->appendColumn($val);
+      $this->row->appendCell($val);
     }
     $this->assertCount($numCols, $this->row);
     foreach ($this->row as $col) {

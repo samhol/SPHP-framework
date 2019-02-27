@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Div;
 
 /**
- * Implements a Foundation framework based XY Block Grid Column
+ * Implements an XY Block Grid Column
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

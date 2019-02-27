@@ -15,7 +15,7 @@ use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
 /**
- * Implements a layout manager for a XY Row
+ * Implements a layout object for a XY Grid Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation 6

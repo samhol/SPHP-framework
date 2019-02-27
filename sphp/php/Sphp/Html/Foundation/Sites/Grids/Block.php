@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Component;
 
 /**
- * Defines a Foundation XY Block Grid cell
+ * Defines an XY Block Grid Cell
  *
  * **Important!**
  *

@@ -51,6 +51,11 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     $this->group = new PlainContainer;
   }
 
+  public function __destruct() {
+    unset($this->group);
+    parent::__destruct();
+  }
+
   /**
    * Appends a span label to the group
    *

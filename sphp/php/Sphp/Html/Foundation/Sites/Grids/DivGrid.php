@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 /**
- * Implements a XY Grid container
+ * Implements an XY Grid container
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

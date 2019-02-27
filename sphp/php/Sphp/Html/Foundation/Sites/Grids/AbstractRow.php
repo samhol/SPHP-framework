@@ -15,7 +15,7 @@ use Sphp\Html\PlainContainer;
 use Traversable;
 
 /**
- * Implements an abstract Foundation framework based XY Row
+ * Implements an XY Grid Row
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -50,7 +50,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     return $this->layoutManager;
   }
 
-  public function setColumns($columns, array $sizes = ['auto']) {
+  public function setCells($columns, array $sizes = ['auto']) {
     if (!is_array($columns)) {
       $columns = [$columns];
     }
@@ -61,7 +61,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
       if ($column instanceof Cell) {
         $this->append($column);
       } else {
-        $this->appendColumn($column, $sizes);
+        $this->appendCell($column, $sizes);
       }
     }
     return $this;
@@ -77,7 +77,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     return $this;
   }
 
-  public function appendColumn($content, array $sizes = ['auto']): Cell {
+  public function appendCell($content, array $sizes = ['auto']): Cell {
     $cell = new DivCell($content, $sizes);
     $this->append($cell);
     return $cell;

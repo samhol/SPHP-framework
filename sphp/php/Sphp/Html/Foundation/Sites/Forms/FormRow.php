@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\BasicInputCell;
 use Sphp\Html\NonVisualContent;
 use Sphp\Html\Foundation\Sites\Grids\Cell;
 
@@ -42,9 +42,9 @@ class FormRow extends BasicRow {
       $input->layout()->setLayouts($layout);
       $this->append($input);
     } else {
-      $input = new InputColumn($input);
+      $input = new BasicInputCell($input);
       $input->layout()->setLayouts($layout);
-      $this->append(new InputColumn($input, $layout));
+      $this->append(new BasicInputCell($input, $layout));
     }
     return $input;
   }

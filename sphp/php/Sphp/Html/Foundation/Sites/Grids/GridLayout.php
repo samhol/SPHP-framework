@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Foundation\Sites\Core\LayoutManager;
 
 /**
- * Defines a Grid container layout manager
+ * Defines a layout object for a XY Grid (Row container)
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

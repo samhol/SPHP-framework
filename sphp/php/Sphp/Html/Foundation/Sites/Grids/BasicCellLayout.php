@@ -19,7 +19,7 @@ use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Strings;
 
 /**
- * Implements a layuot object for a  XY Grid Call
+ * Implements a layout object for a  XY Grid Call
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

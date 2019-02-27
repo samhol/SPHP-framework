@@ -130,7 +130,7 @@ class MonthView extends AbstractComponent {
     //$top->attributes()->classes()->protect('sphp', 'month-selector');
     //$top->append($this->firstOf->format('F Y'));
     $output = new BasicRow();
-    $output->append($top);
+    $output->appendCell($top)->layout()->auto();
     return $output;
   }
 
@@ -162,7 +162,7 @@ class MonthView extends AbstractComponent {
       $div->addCssClass('sphp', 'calendar-head', 'day', strtolower($day));
       $div->append('<span class="show-for-small-only">' . $cu->getWeekdayName($num, 2) . '</span>');
       $div->append('<span class="hide-for-small-only">' . $day . '</span>');
-      $row->append($div);
+      $row->appendCell($div);
     }
     return $row;
   }
@@ -176,10 +176,10 @@ class MonthView extends AbstractComponent {
   private function createWeekRow(Date $date): BasicRow {
     $row = new BasicRow();
     $row->addCssClass('sphp', 'calendar-week-row');
-    $row->append($this->createDayCell($date));
+    $row->appendCell($this->createDayCell($date));
     $next = $date->nextDay();
     while ($next->getWeekDay() !== 1) {
-      $row->append($this->createDayCell($next));
+      $row->appendCell($this->createDayCell($next));
       $next = $next->nextDay();
     }
     return $row;

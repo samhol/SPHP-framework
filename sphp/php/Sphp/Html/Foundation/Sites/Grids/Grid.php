@@ -72,5 +72,5 @@ interface Grid extends CssClassifiableContent, TraversableContent {
    * 
    * @return TraversableContent containing all the column components
    */
-  public function getColumns(): TraversableContent;
+  public function getCells(): TraversableContent;
 }

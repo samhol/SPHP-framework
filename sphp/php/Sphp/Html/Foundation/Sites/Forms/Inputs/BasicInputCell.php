@@ -25,7 +25,7 @@ use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Forms\Inputs\EmailInput;
 
 /**
- * Implements framework based component to create  multi-device layouts
+ * Implements an XY Grid Cell for visible form inputs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -33,7 +33,7 @@ use Sphp\Html\Forms\Inputs\EmailInput;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InputColumn extends AbstractComponent implements InputColumnInterface {
+class BasicInputCell extends AbstractComponent implements InputCell {
 
   /**
    * @var Label
@@ -89,6 +89,11 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     $this->label->offsetSet('error', $this->errorField);
   }
 
+  public function __destruct() {
+    unset($this->input, $this->label);
+    parent::__destruct();
+  }
+
   /**
    * 
    * @return $this for a fluent interface
@@ -127,7 +132,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * 
    * @return Input the actual input component
    */
-  public function getInput() {
+  public function getInput(): Input {
     return $this->input;
   }
 
@@ -206,25 +211,26 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   }
 
   /**
+   * Creates a new instance containing an Email input
    * 
-   * @param type $name
-   * @param type $value
-   * @param array $layout
-   * @return \self
+   * @param  string $name
+   * @param  string $value
+   * @param  string[] $layout
+   * @return BasicInputCell a new instance containing an Email input
    */
-  public static function email($name, $value = null, array $layout = ['small-12']) {
+  public static function email(string $name, string $value = null, array $layout = ['small-12']): BasicInputCell {
     $input = new EmailInput($name, $value);
     return new self($input, $layout);
   }
 
   /**
    * 
-   * @param type $name
-   * @param type $value
-   * @param array $layout
-   * @return \self
+   * @param  string $name
+   * @param  string $value
+   * @param  array $layout
+   * @return BasicInputCell a new instance containing an Email input
    */
-  public static function text($name, $value = null, array $layout = ['small-12']) {
+  public static function text(string $name, string $value = null, array $layout = ['small-12']): BasicInputCell {
     $input = new TextInput($name, $value);
     return new self($input, $layout);
   }
@@ -235,11 +241,11 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @param type $opt
    * @param type $selectedValues
    * @param array $layout
-   * @return \self
+   * @return BasicInputCell a new instance containing an Email input
    */
-  public static function select($name, $opt, $selectedValues = null, array $layout = ['small-12']) {
+  public static function select(string $name, $opt, $selectedValues = null, array $layout = ['small-12']): BasicInputCell {
     $input = new Select($name, $opt, $selectedValues);
-    return new self($input, $layout);
+    return new static($input, $layout);
   }
 
   /**
@@ -252,10 +258,10 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @param  array $layout
    * @link   http://www.w3schools.com/tags/att_textarea_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
-   * @return self new instance containing a textarea component
+   * @return BasicInputCell new instance containing a textarea component
    * @link   Sphp\Html\Forms\Inputs\Textarea Textarea
    */
-  public static function textarea($name, $content = null, $rows = 4, array $layout = ['small-12']) {
+  public static function textarea(string $name, $content = null, $rows = 4, array $layout = ['small-12']): BasicInputCell {
     $input = new Textarea($name, $content, $rows);
     return new self($input, $layout);
   }

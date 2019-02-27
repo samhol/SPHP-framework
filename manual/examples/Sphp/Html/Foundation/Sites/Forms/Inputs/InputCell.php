@@ -11,25 +11,25 @@ $form = (new GridForm())
         ->useValidation(true);
 $usernameField = (new TextInput("username"))->setPlaceholder("Username");
 $row1 = new FormRow();
-$row1->append((new InputColumn((new TextInput("username"))
+$row1->append((new BasicInputCell((new TextInput("username"))
                         ->setPlaceholder("Username")
                         ->setRequired(), ['small-12', 'large-4']))
                 ->setHelperText("Insert username *")
                 ->setErrorField("You need to insert a username")
                 ->setLabel("Username:"));
-$row1->append((new InputColumn((new TextInput("fname"))
+$row1->append((new BasicInputCell((new TextInput("fname"))
                         ->setRequired()
                         ->setPlaceholder("First name"), ['small-12', 'large-4']))
                 ->setLabel("First name:")
                 ->setErrorField("You need to insert a username"));
-$row1->append((new InputColumn((new TextInput("lname"))
+$row1->append((new BasicInputCell((new TextInput("lname"))
                         ->setRequired()
                         ->setPlaceholder("Family name"), ['small-12', 'large-4']))
                 ->setErrorField("You need to insert a username")
                 ->setLabel("Family name:"));
 $form->append($row1);
 
-$form->append(InputColumn::textarea("description", null, 5)
+$form->append(BasicInputCell::textarea("description", null, 5)
                 ->setRequired()
                 ->setPlaceholder("Something about yourself")
                 ->setErrorField("Yuo need to write something about yourself"));

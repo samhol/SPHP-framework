@@ -12,7 +12,7 @@ $gridForm implements a validable Foundation framework based form.
 
 MD
 );
-\Sphp\Manual\example('Sphp/Html/Foundation/Sites/Forms/Inputs/InputColumnInterface.php')
+\Sphp\Manual\example('Sphp/Html/Foundation/Sites/Forms/Inputs/InputCell.php')
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
