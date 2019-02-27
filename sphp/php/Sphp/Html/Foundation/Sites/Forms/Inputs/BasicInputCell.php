@@ -90,7 +90,7 @@ class BasicInputCell extends AbstractComponent implements InputCell {
   }
 
   public function __destruct() {
-    unset($this->input, $this->label);
+    unset($this->layoutManager, $this->input, $this->label, $this->errorField);
     parent::__destruct();
   }
 
@@ -108,7 +108,7 @@ class BasicInputCell extends AbstractComponent implements InputCell {
   }
 
   /**
-   * Invokes the given method of {@link self} with the rest of the passed arguments.
+   * Invokes the given Input object method
    * 
    * @param  string $name the name of the called method
    * @param  mixed $arguments
@@ -127,11 +127,6 @@ class BasicInputCell extends AbstractComponent implements InputCell {
     }
   }
 
-  /**
-   * Returns the actual input component
-   * 
-   * @return Input the actual input component
-   */
   public function getInput(): Input {
     return $this->input;
   }
@@ -165,37 +160,6 @@ class BasicInputCell extends AbstractComponent implements InputCell {
   public function setHelperText($text) {
     $this->helper = new Paragraph($text);
     $this->helper->cssClasses()->protectValue('help-text');
-    return $this;
-  }
-
-  public function disable(bool $disabled = true) {
-    $this->input->disable($disabled);
-    return $this;
-  }
-
-  public function isEnabled(): bool {
-    return $this->input->isEnabled();
-  }
-
-  public function getName() {
-    return $this->input->getName();
-  }
-
-  public function setName(string $name = null) {
-    $this->input->setName($name);
-    return $this;
-  }
-
-  public function isNamed(): bool {
-    return $this->input->isNamed();
-  }
-
-  public function getSubmitValue() {
-    return $this->input->getSubmitValue();
-  }
-
-  public function setSubmitValue($value) {
-    $this->input->setSubmitValue($value);
     return $this;
   }
 
