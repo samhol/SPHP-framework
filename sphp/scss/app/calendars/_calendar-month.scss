@@ -22,9 +22,9 @@ $border-color: #555;
       margin: rem-calc(1);
       @include sphp-calendar-date();
     }
-    .date, .week-day-name {
+    .date, .week-day-name, span {
       @include transition-property(all);
-      @include transition-duration(0.3s);
+      @include transition-duration(0.5s);
       @include transition-timing-function(ease-in-out);
     }
   }
@@ -50,7 +50,7 @@ $border-color: #555;
   border: solid 1px #666;
   @include border-radius(3px);
   text-align: center;
-  background-color: rgba(#eee, .2);
+  background-color: rgba(#fff, 1);
   font-weight: bolder;
   color: #666;
   @include opacity(.65);
@@ -67,11 +67,8 @@ $border-color: #555;
       }
     }
     time {
-      //float: right;
-      //margin: rem-calc(4);
       padding: rem-calc(4);
       .day-number {
-        //padding-left: rem-calc(10);
         font-size: rem-calc(24);
       }
     }
@@ -80,7 +77,7 @@ $border-color: #555;
   &.has-info {
     cursor: pointer;
     .right-column {
-      border-left: solid 4px rgba(#009900, .5);
+      border-left: solid 4px rgba(#090, .5);
     }
     .grid-y {
       border-left: solid 1px #444;
@@ -89,14 +86,13 @@ $border-color: #555;
   &.not-selected-month {
     @include opacity(.4);
     background-color: rgba(#eee, .2);
-    border: solid 2px #888;
+    border-color: #888;
   }
   .left-column {
     border-right: solid 1px #888;
     time {
       font-size: rem-calc(12);
       padding: rem-calc(4 3 10 3);
-      //min-width: rem-calc(32);
       &.current-week {
         color: #000;
         text-decoration: underline;
@@ -110,7 +106,9 @@ $border-color: #555;
 
   }
   &.holiday, &.sunday {
-    background-color: rgba(#fbb, .5);
+    .right-column {
+      background-color: rgba(#fbb, .5);
+    }
     .left-column {
       background-color: rgba(#f77, .5);
     }
@@ -125,10 +123,18 @@ $border-color: #555;
       border-right: solid 2px #333;
     }
   }
-  &:hover {
+  &:hover , &.active {
     @include opacity(1);
-    &.has-info .day-number {
-      text-decoration: underline;
+    &.has-info {
+      border-color: #222;
+      /* margin: 0;
+       height: rem-calc(92);
+       .grid-y {
+         height: rem-calc(92);
+       }*/
+      .day-number {
+        text-decoration: underline;
+      }
     }
     &.not-selected-month {
       @include opacity(.85);
