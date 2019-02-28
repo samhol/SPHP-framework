@@ -42,7 +42,7 @@ $border-color: #555;
       overflow: hidden;
       height: rem-calc(90);
       .grid-y {
-        height: rem-calc(88);
+        height: rem-calc(90);
       }
       border: solid 1px #666;
       @include border-radius(3px);
@@ -71,6 +71,12 @@ $border-color: #555;
       }
       &.has-info {
         cursor: pointer;
+        .right-column {
+            border-left: solid 4px rgba(#009900, .5);
+        }
+        .grid-y {
+            border-left: solid 1px #444;
+        }
       }
       &.not-selected-month {
         @include opacity(.4);
@@ -82,7 +88,7 @@ $border-color: #555;
         time {
           font-size: rem-calc(12);
           padding: rem-calc(4 3 10 3);
-          min-width: rem-calc(32);
+          //min-width: rem-calc(32);
           &.current-week {
             color: #000;
             text-decoration: underline;

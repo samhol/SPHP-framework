@@ -16,6 +16,9 @@ use Sphp\Html\Media\Icons\SvgLoader;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\Tags;
 use Sphp\Html\DateTime\TimeTag;
+use Sphp\Html\Foundation\Sites\Grids\Cell;
+use Sphp\Html\Foundation\Sites\Grids\DivCell;
+use Sphp\DateTime\DateInterface;
 
 /**
  * Implements a weekday view for a calendar month
@@ -61,13 +64,36 @@ class WeekDayView extends AbstractComponent {
     $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l jS \of F Y'));
     //$verticalGrid = Tags::div()->addCssClass('grid-y')->inlineStyles('height', '90px');
     //$verticalGrid->append(new \Sphp\Html\Foundation\Sites\Grids\DivCell($this->diaryDay->getDate()->format('j'),['small-4']));
-    $vg = '<div class="grid-y">
-  <div class="cell small-4">' .
+    $vg = '<div class="grid-y"><div class="cell small-4">' .
             $date->format('j')
-            . '</div><div class="cell small-8">
-' . $timeTag . '</div></div>';
-    $hg = '<div class="grid-x cont">
-      <div class="cell shrink show-for-medium left-column">';
+            . '</div><div class="cell small-8">' . $timeTag . '</div></div>';
+    $hg = '<div class="grid-x">
+     ' . $this->createWeekNumberCell($date) . '<div class="cell auto right-column">' .
+            $vg . '</div></div>';
+    $content->append($hg);
+    return $content;
+  }
+
+  private function createDateDetails(): Cell {
+
+    $date = $this->diaryDay->getDate();
+    $timeTag = Tags::time($date);
+    if ($this->diaryDay->notEmpty()) {
+      
+    }
+    $timeTag->append(Tags::span($this->diaryDay->getDate()->format('j'))->addCssClass('day-number'));
+    $timeTag->setAttribute('title', $this->diaryDay->getDate()->format('l jS \of F Y'));
+    //$verticalGrid = Tags::div()->addCssClass('grid-y')->inlineStyles('height', '90px');
+    //$verticalGrid->append(new \Sphp\Html\Foundation\Sites\Grids\DivCell($this->diaryDay->getDate()->format('j'),['small-4']));
+    $vg = '<div class="grid-y"><div class="cell small-4">';
+
+    if ($this->diaryDay->isFlagDay()) {
+      $vg .= Tags::span(SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg'))->addCssClass('flag');
+    }
+    $vg .= '</div><div class="cell small-8">' . $timeTag . '</div></div>';
+  }
+
+  private function createWeekNumberCell(DateInterface $date): Cell {
     $week = TimeTag::weekNumber($date);
     if ($date->getWeekDay() !== 1) {
       $week->addCssClass('not-monday');
@@ -75,19 +101,10 @@ class WeekDayView extends AbstractComponent {
     if ($date->isCurrentWeek()) {
       $week->addCssClass('current-week');
     }
-    $hg .= $week . '</div><div class="cell auto">' .
-            $vg . '</div></div>';
-    $content->append($hg);
-    return $content;
-    $leftCol = Tags::div()->addCssClass('left-column', 'show-for-medium');
-    if ($date->getWeekDay() === 1) {
-      $leftCol->append($this->diaryDay->getDate()->getWeek());
-    }
-    $content->append($leftCol);
-
-    $content->append($timeTag);
-    $content->append($this->createIcons());
-    return $content;
+    $cell = DivCell::create($week);
+    $cell->layout()->shrink()->hideOnlyFor('small');
+    $cell->addCssClass('left-column');
+    return $cell;
   }
 
   /**
@@ -115,7 +132,7 @@ class WeekDayView extends AbstractComponent {
     return $content;
   }
 
-  public function createIcons() {
+  private function createIcons() {
     $div = Tags::div();
     $div->addCssClass('icons');
 
