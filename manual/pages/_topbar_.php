@@ -126,27 +126,30 @@ echo '</pre>';
       </ul>
     </div>
   </div>
-<div class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
-      <li>
-        <a href="#">One</a>
-        <ul class="menu vertical">
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="icon-link"><a href="#"><i class="fas fa-home"></i></a></li>
+        <li>
+          <a href="#">One</a>
+          <ul class="menu vertical">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <form method="get" target="_self" data-sphp-ss360-siteid="playground.samiholck.com">
+        <ul class="menu">
+          <li><input type="search" name="ss360Query" class="sphp-search-searchBox sphp-ss360-searchBox input-group-field" placeholder="Search Manual" autocomplete="off"></li>
+          <li> <button type="submit" class="button" data-sphp-qtip="" data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom right" data-sphp-qtip-viewport="#ZcqTiMaAEW4UR01S">
+              <i class="fas fa-search" aria-label="Search" aria-hidden="false"></i></button></li>
         </ul>
-      </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
-    </ul>
+      </form>
+    </div>
   </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
-    </ul>
-  </div>
-</div>
 </div>
