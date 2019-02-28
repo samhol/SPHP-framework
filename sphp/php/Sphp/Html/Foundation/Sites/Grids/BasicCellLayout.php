@@ -16,6 +16,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 use Sphp\Html\Foundation\Foundation;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\BadMethodCallException;
+use \Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -271,6 +272,8 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
     if (is_array($parts)) {
       $num = count($parts);
       if ($num === 3 && $parts[1] === 'offset') {
+        $this->setOffset($parts[0], $parts[2]);
+      }else if ($num === 4 && $parts[1] === 'show') {
         $this->setOffset($parts[0], $parts[2]);
       } else if ($num === 2) {
         $this->setWidth($parts[0], $parts[1]);
