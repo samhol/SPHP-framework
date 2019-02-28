@@ -19,6 +19,7 @@ use Sphp\DateTime\Date;
 use Sphp\DateTime\Calendars\Diaries\DiaryContainer;
 use Sphp\DateTime\Calendars\Diaries\DiaryInterface;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
+use Sphp\Html\Tags;
 
 /**
  * Implements a Month view for a Calendar
@@ -63,7 +64,7 @@ class MonthView extends AbstractComponent {
    */
   public function __construct(int $year = null, int $month = null) {
     parent::__construct('div');
-    $this->cssClasses()->protectValue('sphp', 'calendar-month');
+    $this->cssClasses()->protectValue('sphp', 'calendar', 'month');
     if ($year === null) {
       $year = (int) date('Y');
     }
@@ -156,10 +157,11 @@ class MonthView extends AbstractComponent {
 
   protected function createHead(): BasicRow {
     $row = new BasicRow();
+    $row->addCssClass('head');
     $cu = new CalendarUtils();
     foreach ($cu->getWeekdays() as $num => $day) {
-      $div = new \Sphp\Html\Div;
-      $div->addCssClass('sphp', 'calendar-head', 'day', strtolower($day));
+      $div = Tags::div();
+      $div->addCssClass('week-day-name', strtolower($day));
       $div->append('<span class="show-for-small-only">' . $cu->getWeekdayName($num, 2) . '</span>');
       $div->append('<span class="hide-for-small-only">' . $day . '</span>');
       $row->appendCell($div);
@@ -175,7 +177,7 @@ class MonthView extends AbstractComponent {
    */
   private function createWeekRow(Date $date): BasicRow {
     $row = new BasicRow();
-    $row->addCssClass('sphp', 'calendar-week-row');
+    $row->addCssClass('sphp', 'week-row');
     $row->appendCell($this->createDayCell($date));
     $next = $date->nextDay();
     while ($next->getWeekDay() !== 1) {

@@ -4,10 +4,10 @@ $day-background: #f3f3f3;
 $border-color: #555;
 
 @mixin sphp-calendar-month() { 
-
-  div.sphp.calendar-week-row, .sphp.calendar-month {
-    .cell {
-      > div.sphp.calendar-head {
+  .sphp.calendar.month {
+    .head {
+      .week-day-name {
+        margin: rem-calc(1);
         border: solid 2px #666;
         @include border-radius(3px);
         text-align: center;
@@ -17,130 +17,121 @@ $border-color: #555;
           @include opacity(.9);
         }
       }
-      > div {
-        margin: rem-calc(1);
-      }
+    }
+    .date {
+      margin: rem-calc(1);
+      @include sphp-calendar-date();
+    }
+    .date, .week-day-name {
+      @include transition-property(all);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(ease-in-out);
     }
   }
-  div.sphp.calendar-day, div.sphp.calendar-head {
-    @include transition-property(all);
-    @include transition-duration(0.3s);
-    @include transition-timing-function(ease-in-out);
-  }
-  div.sphp.calendar-week-row {
+
+  div.sphp.week-row {
     &:hover {
-      div.sphp.calendar-day {
+      div.sphp.calendar.date {
         @include opacity(.85);
         &.not-selected-month {
           @include opacity(.7);
         }
       }
     }
-    div.sphp.calendar-day {
+  }
+}
+@mixin sphp-calendar-date() {
+  @include shadow();
+  overflow: hidden;
+  height: rem-calc(90);
+  .grid-y {
+    height: rem-calc(90);
+  }
+  border: solid 1px #666;
+  @include border-radius(3px);
+  text-align: center;
+  background-color: rgba(#eee, .2);
+  font-weight: bolder;
+  color: #666;
+  @include opacity(.65);
+  .right-column {
+    text-align: right;
+    .flag {
+      display: inline-block;
+      margin: rem-calc(1);
+      svg {
+        height: rem-calc(20);
+        padding: rem-calc(1);
+        border: solid 1px #aaa;
+        @include border-radius(2px);
+      }
+    }
+    time {
+      //float: right;
+      //margin: rem-calc(4);
+      padding: rem-calc(4);
+      .day-number {
+        //padding-left: rem-calc(10);
+        font-size: rem-calc(24);
+      }
+    }
+  }
 
-      @include shadow();
-      overflow: hidden;
-      height: rem-calc(90);
-      .grid-y {
-        height: rem-calc(90);
-      }
-      border: solid 1px #666;
-      @include border-radius(3px);
-      text-align: center;
-      background-color: rgba(#eee, .2);
-      font-weight: bolder;
-      color: #666;
-      @include opacity(.65);
-      time {
-        font-size: rem-calc(18);
-        float: right;
-        margin: rem-calc(4);
-        padding: rem-calc(4);
-        .day-number {
-          padding-left: rem-calc(10);
-        }
-        .flag {
-          margin-right: rem-calc(4);
-          svg {
-            height: rem-calc(20);
-            padding: rem-calc(1);
-            border: solid 1px #aaa;
-            @include border-radius(2px);
-          }
-        }
-      }
-      &.has-info {
-        cursor: pointer;
-        .right-column {
-            border-left: solid 4px rgba(#009900, .5);
-        }
-        .grid-y {
-            border-left: solid 1px #444;
-        }
-      }
-      &.not-selected-month {
-        @include opacity(.4);
-        background-color: rgba(#eee, .2);
-        border: solid 2px #888;
-      }
-      .left-column {
-        border-right: solid 1px #888;
-        time {
-          font-size: rem-calc(12);
-          padding: rem-calc(4 3 10 3);
-          //min-width: rem-calc(32);
-          &.current-week {
-            color: #000;
-            text-decoration: underline;
-          }
-          &.not-monday {
-            color: #333;
-            @include opacity(.3);
-          }
-        }
-        background-color: rgba(#aaa, .6);
-
-      }
-      &.holiday, &.sunday {
-        background-color: rgba(#fbb, .5);
-        .left-column {
-          background-color: rgba(#f77, .5);
-        }
-      }
-      &.today {
-        time {
-          text-decoration: underline;
-          font-size: rem-calc(18);
-        }
-        border: solid 2px #333;
-        .left-column {
-          border-right: solid 2px #333;
-        }
-      }
-
-      .icons {
-        display: none;
-        .flag {
-          height: rem-calc(20);
-          margin-right: rem-calc(4);
-          svg {
-            padding: rem-calc(1);
-            border: solid 1px #aaa;
-            @include border-radius(2px);
-          }
-
-          left: 0;
-          svg, i, span {
-            margin: 1px;
-          }
-        }}
-      &:hover {
-        @include opacity(1);
+  &.has-info {
+    cursor: pointer;
+    .right-column {
+      border-left: solid 4px rgba(#009900, .5);
+    }
+    .grid-y {
+      border-left: solid 1px #444;
+    }
+  }
+  &.not-selected-month {
+    @include opacity(.4);
+    background-color: rgba(#eee, .2);
+    border: solid 2px #888;
+  }
+  .left-column {
+    border-right: solid 1px #888;
+    time {
+      font-size: rem-calc(12);
+      padding: rem-calc(4 3 10 3);
+      //min-width: rem-calc(32);
+      &.current-week {
+        color: #000;
         text-decoration: underline;
-        &.not-selected-month {
-          @include opacity(.85);
-        }
       }
+      &.not-monday {
+        color: #333;
+        @include opacity(.3);
+      }
+    }
+    background-color: rgba(#aaa, .6);
+
+  }
+  &.holiday, &.sunday {
+    background-color: rgba(#fbb, .5);
+    .left-column {
+      background-color: rgba(#f77, .5);
+    }
+  }
+  &.today {
+    time {
+      text-decoration: underline;
+      font-size: rem-calc(18);
+    }
+    border: solid 2px #333;
+    .left-column {
+      border-right: solid 2px #333;
+    }
+  }
+  &:hover {
+    @include opacity(1);
+    &.has-info .day-number {
+      text-decoration: underline;
+    }
+    &.not-selected-month {
+      @include opacity(.85);
     }
   }
 }
