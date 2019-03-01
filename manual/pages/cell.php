@@ -24,22 +24,13 @@
 </div>
 </div>
 <?php
+echo '<pre>';
 
-use Sphp\Html\Tags;
-use Sphp\Html\Foundation\Sites\Grids\ContainerCell;
+$settings = Sphp\Html\Foundation\Sites\Core\FoundationSettings::default();
+var_dump($settings->isValidCellSize(13));
 
-$div = Tags::div();
-$mngr = new ContainerCell();
-$mngr->small('shrink');
-$mngr->medium('auto');
-$mngr->large(5);
-$mngr->xlarge(6);
-$mngr->xxlarge(7);
-$mngr->smallOffset(0);
-$mngr->mediumOffset(1);
-$mngr->largeOffset(5);
-$mngr->xlargeOffset(6);
-$mngr->xxlargeOffset(7);
-print_r($div->cssClasses()->toArray());
-$mngr->setLayouts('small-3', 'large-offset-2');
-print_r($mngr->cssClasses()->toArray());
+var_dump($settings->getScreenSizes());
+
+
+var_dump(implode('|',$settings->getScreenSizes()));
+echo '</pre>';

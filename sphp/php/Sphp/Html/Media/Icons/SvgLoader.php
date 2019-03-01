@@ -50,7 +50,7 @@ abstract class SvgLoader {
       }
       self::$src[$url] = file_get_contents($url, false, $context);
     }
-    return $this->stringToObject(self::$src[$url]);
+    return static::stringToObject(self::$src[$url]);
   }
 
   /**
@@ -86,6 +86,7 @@ abstract class SvgLoader {
     if (!$loaded) {
       throw new InvalidArgumentException('Input given is not valid SVG');
     }
+    return new Svg($doc);
   }
 
 }

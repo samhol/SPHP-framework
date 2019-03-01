@@ -17,6 +17,7 @@ use Sphp\Html\Foundation\Foundation;
 use Sphp\Exceptions\BadMethodCallException;
 use \Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
 
 /**
  * Implements an XY Grid Cell
@@ -42,33 +43,28 @@ use Sphp\Stdlib\Strings;
 abstract class AbstractCell extends AbstractComponent implements Cell {
 
   /**
-   * @var ScreenSizes 
+   * @var FoundationSettings 
    */
-  private $screenSizes;
-
-  /**
-   * @var int 
-   */
-  private $maxSize = 12;
+  private $settings;
 
   /**
    * Constructor
    * 
-   * @param ScreenSizes $screenSizes
-   * @param int $maxSize
+   * @param string $tagName
+   * @param FoundationSettings $settings
    */
-  public function __construct(string $tagName = 'div', ScreenSizes $screenSizes = null, int $maxSize = 12) {
+  public function __construct(string $tagName = 'div', FoundationSettings $settings = null) {
     parent::__construct($tagName);
-    if ($screenSizes === null) {
-      $screenSizes = Foundation::screen();
+    if ($settings === null) {
+      $settings = FoundationSettings::default();
     }
-    $this->screenSizes = $screenSizes;
+    $this->settings = $settings;
     $this->cssClasses()->setValue('cell');
-    $this->maxSize = $maxSize;
+   // $this->maxSize = $maxSize;
   }
 
   public function __destruct() {
-    unset($this->screenSizes);
+    unset($this->settings);
     parent::__destruct();
   }
 
@@ -85,7 +81,8 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
       throw new BadMethodCallException("Wrong number of arguments for '$name' for Grid cell");
     }
     $parameter = $arguments[0];
-    if (Strings::endsWith($name, 'Offset')) {
+    $screens = implode('|',$this->settings->getScreenSizes());
+    if (Strings::match($name, "/^(($screens)Offset)+$/")) {
       $size = str_replace('Offset', '', $name);
       if (!is_int($parameter)) {
         $type = gettype($parameter);
@@ -126,7 +123,7 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
 
   public function unsetWidths() {
     $this->cssClasses()
-            ->removePattern("/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto|shrink))|shrink|auto+$/");
+            ->removePattern("/^((small|medium|large|xlarge|xxlarge)-\b([1-9]|(1[0-2])|auto|shrink))\b|(shrink|auto)+$/");
     $this->cssClasses()->add('auto');
     return $this;
   }
@@ -298,7 +295,7 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
   }
 
   public function isScreenSize(string $needle): bool {
-    return $this->screenSizes->sizeExists($needle);
+    return $this->settings->sizeExists($needle);
   }
 
 }
