@@ -60,7 +60,7 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
     }
     $this->settings = $settings;
     $this->cssClasses()->setValue('cell');
-   // $this->maxSize = $maxSize;
+    // $this->maxSize = $maxSize;
   }
 
   public function __destruct() {
@@ -81,7 +81,7 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
       throw new BadMethodCallException("Wrong number of arguments for '$name' for Grid cell");
     }
     $parameter = $arguments[0];
-    $screens = implode('|',$this->settings->getScreenSizes());
+    $screens = implode('|', $this->settings->getScreenSizes());
     if (Strings::match($name, "/^(($screens)Offset)+$/")) {
       $size = str_replace('Offset', '', $name);
       if (!is_int($parameter)) {
@@ -117,7 +117,10 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
    * @return $this for a fluent interface
    */
   public function unsetWidth(string $screenSize) {
-    $this->cssClasses()->removePattern("/^(($screenSize)-([1-9]|(1[0-2])|auto|shrink))+$/");
+    if (!$this->isScreenSize($screenSize)) {
+      throw new InvalidArgumentException("Invalid screen size '$screenSize' given");
+    }
+    $this->cssClasses()->removePattern("/^($screenSize-([1-9]|(1[0-2])|auto|shrink))+$/");
     return $this;
   }
 
@@ -192,6 +195,9 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
   }
 
   public function setOffset(string $screenSize, int $value) {
+    if (!$this->isScreenSize($screenSize)) {
+      throw new InvalidArgumentException("Invalid screen size '$screenSize' given");
+    }
     $this->unsetOffset($screenSize);
     if ($value > 0) {
       $this->cssClasses()->add("$screenSize-offset-$value");
@@ -200,7 +206,10 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
   }
 
   public function unsetOffset(string $screenSize) {
-    $this->cssClasses()->removePattern("/^(($screenSize)-offset-([1-9]|(1[0-2])))+$/");
+    if (!$this->isScreenSize($screenSize)) {
+      throw new InvalidArgumentException("Invalid screen size '$screenSize' given");
+    }
+    $this->cssClasses()->removePattern("/^($screenSize-offset-([1-9]|(1[0-2])))+$/");
     return $this;
   }
 

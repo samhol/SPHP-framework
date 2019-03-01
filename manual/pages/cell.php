@@ -1,11 +1,11 @@
 <div class="grid-example">
   <div class="grid-x">
-    <div class="cell auto small-4">One</div>
-    <div class="cell auto">Two</div>
-    <div class="cell shrink">Three</div>
-    <div class="cell auto">Four</div>
-    <div class="cell auto">Five</div>
-    <div class="cell auto">Six</div>
+    <div class="cell small-1">One</div>
+    <div class="cell small-1">Two</div>
+    <div class="cell small-1">Three</div>
+    <div class="cell small-1 small-offset-3">Four</div>
+    <div class="cell small-1">Five</div>
+    <div class="cell small-1">Six</div>
   </div>
     <div class="grid-x">
     <div class="cell small-2 small-order-2 medium-order-1">One</div>

@@ -80,6 +80,31 @@ interface Cell extends CssClassifiableContent {
   public function unsetOffsets();
 
   /**
+   * Sets cell order for given screen size
+   * 
+   * @param  string $screenSize the target screen size
+   * @param  int $value
+   * @return $this for a fluent interface
+   */
+  public function setOrder(string $screenSize, int $value);
+
+  /**
+   * Unsets the cell order for given screen size
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return $this for a fluent interface
+   */
+  public function unsetOrder(string $screenSize);
+
+  /**
+   * Unsets the cell orders
+   *
+   * @return $this for a fluent interface
+   */
+  public function unsetOrders();
+
+  /**
    * Rsets the Cell layout
 
    * @return $this for a fluent interface
