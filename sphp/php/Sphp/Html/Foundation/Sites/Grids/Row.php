@@ -23,12 +23,55 @@ use Sphp\Html\CssClassifiableContent;
  */
 interface Row extends CssClassifiableContent, \Traversable {
 
+  public function setLayouts(...$layout);
+
   /**
-   * Returns the layout manager
+   * Unsets all layout settings 
    * 
-   * @return RowLayout the layout manager
+   * @return $this for a fluent interface
    */
-  public function layout(): RowLayout;
+  public function unsetLayouts();
+
+  /**
+   * 
+   * @param  bool $margin
+   * @return $this for a fluent interface
+   */
+  public function useMargin(bool $margin = true);
+
+  /**
+   * 
+   * @param  bool $padding
+   * @return $this for a fluent interface
+   */
+  public function usePadding(bool $padding = true);
+
+  /**
+   * Sets the block grid value of the given target screen types
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return $this for a fluent interface
+   */
+  public function collapse(string $screenSize);
+
+  /**
+   * Sets the block grid value of the given target screen types
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return $this for a fluent interface
+   */
+  public function uncollapse(string $screenSize);
+
+  /**
+   * Unsets the block grid setting for the given screen widths
+   *
+   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return $this for a fluent interface
+   */
+  public function reset(string $screenSize);
 
   /**
    * Sets the columns of the row (Removes existing content)

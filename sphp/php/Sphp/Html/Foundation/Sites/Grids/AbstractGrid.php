@@ -35,11 +35,6 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
   private $content;
 
   /**
-   * @var BasicGridLayout 
-   */
-  private $layoutManager;
-
-  /**
    * Constructor
    *
    * @param  string $tagname the tag name of the component
@@ -47,22 +42,46 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
   public function __construct(string $tagname) {
     parent::__construct($tagname);
     $this->content = new PlainContainer();
-    $this->layoutManager = new BasicGridLayout($this);
+    $this->cssClasses()->protectValue('grid-container');
   }
 
   public function __destruct() {
-    unset($this->content, $this->layoutManager);
+    unset($this->content);
     parent::__destruct();
   }
 
   public function __clone() {
     $this->content = clone $this->content;
-    $this->layoutManager = clone $this->layoutManager;
     parent::__clone();
   }
 
-  public function layout(): GridLayout {
-    return $this->layoutManager;
+  public function setFluid(bool $fluid = false) {
+    if ($fluid) {
+      $this->cssClasses()->remove('full')->add('fluid');
+    } else {
+      $this->cssClasses()->remove('fluid');
+    }
+    return $this;
+  }
+
+  public function setFull(bool $full = false) {
+    if ($full) {
+      $this->cssClasses()->remove('fluid')->add('full');
+    } else {
+      $this->cssClasses()->remove('full');
+    }
+    return $this;
+  }
+
+  public function setLayouts(...$layouts) {
+    $this->cssClasses()->add($layouts);
+    $this->cssClasses()->add('grid-container');
+    return $this;
+  }
+
+  public function unsetLayouts() {
+    $this->setFluid(false)->setFull(false);
+    return $this;
   }
 
   public function getCells(): TraversableContent {

@@ -3,14 +3,12 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Div;
-use Sphp\Html\Component;
 use Sphp\Exceptions\BadMethodCallException;
 
 class CellLayoutTest extends TestCase {
 
   /**
-   * @var BasicCellLayout
+   * @var ContainerCell
    */
   protected $col;
 
@@ -19,18 +17,14 @@ class CellLayoutTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->col = new BasicCellLayout(new Div());
+    $this->col = new ContainerCell();
   }
 
   /**
-   * @param  Component $for
-   * @return CellLayout
+   * @return Cell
    */
-  public function createLayout(Component $for = null): CellLayout {
-    if ($for === null) {
-      $for = new Div();
-    }
-    return new BasicCellLayout($for);
+  public function createLayout(): Cell {
+    return new ContainerCell();
   }
 
   /**
@@ -132,11 +126,11 @@ class CellLayoutTest extends TestCase {
     $layout->{$screen . 'Offset'}('foo');
   }
 
-  protected function assertNotContainsCssClass(CellLayout $layout, string... $className) {
+  protected function assertNotContainsCssClass( $layout, string... $className) {
     $this->assertFalse($layout->cssClasses()->contains($className));
   }
 
-  protected function assertContainsCssClass(CellLayout $layout, string... $className) {
+  protected function assertContainsCssClass( $layout, string... $className) {
     $this->assertTrue($layout->cssClasses()->contains($className));
   }
 

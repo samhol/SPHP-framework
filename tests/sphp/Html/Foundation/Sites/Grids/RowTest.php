@@ -84,7 +84,7 @@ class RowTest extends TestCase {
   public function testPrepend($data) {
     $numCols = count($data);
     foreach ($data as $v) {
-      $this->row->prepend(new DivCell($v));
+      $this->row->prepend(new ContainerCell($v));
     }
     $this->assertCount($numCols, $this->row);
     $this->checkTypes($this->row);

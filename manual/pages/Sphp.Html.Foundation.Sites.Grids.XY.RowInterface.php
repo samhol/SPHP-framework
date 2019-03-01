@@ -10,7 +10,7 @@ $htmlCont = Manual\api()->classLinker(\Sphp\Html\PlainContainer::class);
 $row = Manual\api()->classLinker(BasicRow::class);
 $rowIf = Manual\api()->classLinker(Row::class);
 $colIf = Manual\api()->classLinker(Cell::class);
-$col = Manual\api()->classLinker(DivCell::class);
+$col = Manual\api()->classLinker(ContainerCell::class);
 $cols = Manual\api()->classLinker(Cell::class, 'Columns');
 
 Manual\md(<<<MD

@@ -11,13 +11,10 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Legend;
-use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Grids\Cell;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Foundation\Sites\Grids\BasicCellLayout;
-use Sphp\Html\Foundation\Sites\Grids\CellLayout;
 use Sphp\Html\Forms\Inputs\Factory;
 
 /**
@@ -29,7 +26,7 @@ use Sphp\Html\Forms\Inputs\Factory;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements Input, Cell {
+class Choiceboxes extends \Sphp\Html\Foundation\Sites\Grids\AbstractCell implements Input, Cell {
 
   /**
    * @var string
@@ -58,15 +55,9 @@ abstract class Choiceboxes extends AbstractComponent implements Input, Cell {
   private $options = [];
 
   /**
-   *
    * @var Label[]
    */
   private $labels = [];
-
-  /**
-   * @var BasicCellLayout
-   */
-  private $layout;
 
   /**
    * Constructor
@@ -85,16 +76,11 @@ abstract class Choiceboxes extends AbstractComponent implements Input, Cell {
     foreach ($values as $value => $label) {
       $this->setOption($value, $label);
     }
-    $this->layout = new BasicCellLayout($this);
   }
 
   public function __destruct() {
-    unset($this->legend, $this->layout, $this->options);
+    unset($this->legend, $this->options);
     parent::__destruct();
-  }
-
-  public function layout(): CellLayout {
-    return $this->layout;
   }
 
   /**

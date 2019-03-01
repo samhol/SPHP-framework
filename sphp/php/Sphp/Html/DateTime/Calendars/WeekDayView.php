@@ -17,7 +17,7 @@ use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\Tags;
 use Sphp\Html\DateTime\TimeTag;
 use Sphp\Html\Foundation\Sites\Grids\Cell;
-use Sphp\Html\Foundation\Sites\Grids\DivCell;
+use Sphp\Html\Foundation\Sites\Grids\ContainerCell;
 use Sphp\DateTime\DateInterface;
 
 /**
@@ -68,14 +68,14 @@ class WeekDayView extends AbstractComponent {
 
   private function createDateDetails() {
     $date = $this->diaryDay->getDate();
-    $topCell = new DivCell('', ['small-4']);
+    $topCell = new ContainerCell('', ['small-4']);
     if ($this->diaryDay->isFlagDay()) {
-      $topCell->append(Tags::span(SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg'))->addCssClass('flag'));
+      $topCell->appendContent(Tags::span(SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg'))->addCssClass('flag'));
     }
     $timeTag = Tags::time($date);
     $timeTag->append(Tags::span($date->format('j'))->addCssClass('day-number'));
     $timeTag->setAttribute('title', $date->format('l jS \of F Y'));
-    $dayNumberCell = new DivCell($timeTag, ['small-8']);
+    $dayNumberCell = new ContainerCell($timeTag, ['small-8']);
 
     $vg = '<div class="grid-y">';
     $vg .= $topCell . $dayNumberCell . '</div>';
@@ -90,8 +90,8 @@ class WeekDayView extends AbstractComponent {
     if ($date->isCurrentWeek()) {
       $week->addCssClass('current-week');
     }
-    $cell = DivCell::create($week);
-    $cell->layout()->shrink()->hideOnlyFor('small');
+    $cell = ContainerCell::create($week);
+    $cell->shrink()->hideOnlyFor('small');
     $cell->addCssClass('left-column');
     return $cell;
   }

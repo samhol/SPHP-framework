@@ -10,15 +10,13 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Flow\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
-use Sphp\Html\Foundation\Sites\Grids\BasicCellLayout;
-use Sphp\Html\Foundation\Sites\Grids\CellLayout;
+use Sphp\Html\Foundation\Sites\Grids\AbstractCell;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea;
 use Sphp\Html\Forms\Inputs\Menus\Select;
@@ -33,7 +31,7 @@ use Sphp\Html\Forms\Inputs\EmailInput;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BasicInputCell extends AbstractComponent implements InputCell {
+class BasicInputCell extends AbstractCell implements InputCell {
 
   /**
    * @var Label
@@ -64,10 +62,6 @@ class BasicInputCell extends AbstractComponent implements InputCell {
    */
   private $reflector;
 
-  /**
-   * @var BasicCellLayout 
-   */
-  private $layoutManager;
 
   /**
    * Constructor
@@ -76,9 +70,7 @@ class BasicInputCell extends AbstractComponent implements InputCell {
    * @param  string[] $layout the layout parameters
    */
   public function __construct(Input $input, array $layout = ['auto']) {
-    parent::__construct('div');
-    $this->layoutManager = new BasicCellLayout($this);
-    $this->layout()->setLayouts($layout);
+    parent::__construct();
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();
@@ -87,11 +79,37 @@ class BasicInputCell extends AbstractComponent implements InputCell {
     $this->label->offsetSet('labelText', '');
     $this->label->offsetSet('input', $this->input);
     $this->label->offsetSet('error', $this->errorField);
+    $this->setLayouts($layout);
   }
 
   public function __destruct() {
-    unset($this->layoutManager, $this->input, $this->label, $this->errorField);
+    unset($this->input, $this->label, $this->errorField);
     parent::__destruct();
+  }
+
+  /**
+   * Invokes the given Input object method
+   * 
+   * @param  string $name the name of the called method
+   * @param  mixed $arguments
+   * @return mixed
+   * @throws BadMethodCallException
+   */
+  public function __call($name, $arguments) {
+    try {
+      parent::__call($name, $arguments);
+    } catch (\Exception $ex) {
+
+      if (!$this->reflector->hasMethod($name)) {
+        throw new BadMethodCallException($name . ' is not a valid method for this type of input');
+      }
+      $result = \call_user_func_array(array($this->input, $name), $arguments);
+      if ($result === $this->input) {
+        return $this;
+      } else {
+        return $result;
+      }
+    }
   }
 
   /**
@@ -105,26 +123,6 @@ class BasicInputCell extends AbstractComponent implements InputCell {
 
   public function getErrorField() {
     return $this->errorField;
-  }
-
-  /**
-   * Invokes the given Input object method
-   * 
-   * @param  string $name the name of the called method
-   * @param  mixed $arguments
-   * @return mixed
-   * @throws BadMethodCallException
-   */
-  public function __call($name, $arguments) {
-    if (!$this->reflector->hasMethod($name)) {
-      throw new BadMethodCallException($name . ' is not a valid method for this type of input');
-    }
-    $result = \call_user_func_array(array($this->input, $name), $arguments);
-    if ($result === $this->input) {
-      return $this;
-    } else {
-      return $result;
-    }
   }
 
   public function getInput(): Input {
@@ -165,13 +163,6 @@ class BasicInputCell extends AbstractComponent implements InputCell {
 
   public function contentToString(): string {
     return $this->label->getHtml() . $this->helper;
-  }
-
-  public function layout(string ...$layout): CellLayout {
-    if (!empty($layout)) {
-      $this->layoutManager->setLayouts($layout);
-    }
-    return $this->layoutManager;
   }
 
   /**

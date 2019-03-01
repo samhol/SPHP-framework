@@ -31,11 +31,21 @@ use Sphp\Html\TraversableContent;
 interface Grid extends CssClassifiableContent, TraversableContent {
 
   /**
-   * Returns the Grid layout manager
+   * Stretches the content to the full width of the available space
    * 
-   * @return GridLayout the layout manager
+   * @param  boolean $fluid true for stretched false otherwise
+   * @return $this for a fluent interface
    */
-  public function layout(): GridLayout;
+  public function setFluid(bool $fluid = false);
+
+  /**
+   * Stretches the content to the full width of the available space and removes 
+   * grid container padding
+   * 
+   * @param  boolean $full true for stretched false otherwise
+   * @return $this for a fluent interface
+   */
+  public function setFull(bool $full = false);
 
   /**
    * Appends a new row to the grid

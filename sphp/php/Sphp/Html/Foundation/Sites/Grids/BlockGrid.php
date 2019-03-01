@@ -17,6 +17,8 @@ use Sphp\Html\TraversableContent;
 use Sphp\Html\ContentParser;
 use Sphp\Html\PlainContainer;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Stdlib\Arrays;
+use Sphp\Html\Foundation\Foundation;
 
 /**
  * Implements an XY Block Grid
@@ -50,29 +52,91 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   private $columns;
 
   /**
-   * @var BlockGridLayout 
+   * @var int 
    */
-  private $layoutManager;
+  private $maxSize = 8;
 
   /**
    * Constructor
    *
-   * @param  string $layout,... block grid layout parameters
+   * @param  string... $layout block grid layout parameters
    */
   public function __construct(...$layout) {
     $this->columns = [];
     parent::__construct('div');
-    $this->layoutManager = new BlockGridLayout($this);
-    $this->layout()->setLayouts($layout);
+    $this->setLayouts($layout);
+    $this->maxSize = 8;
+    $this->cssClasses()->protectValue('grid-x');
   }
 
   public function __destruct() {
-    unset($this->columns, $this->layoutManager);
+    unset($this->columns);
     parent::__destruct();
   }
 
-  public function layout(): BlockGridLayout {
-    return $this->layoutManager;
+  /**
+   * 
+   * @return int
+   */
+  public function getColumnCount(): int {
+    return $this->maxSize;
+  }
+
+  /**
+   * Sets the number of columns within the row for different screen sizes
+   * 
+   * @param  string|string[]... $layouts individual layout settings
+   * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function setLayouts(...$layouts) {
+    $this->setWidths($layouts);
+    return $this;
+  }
+
+  /**
+   * Sets the column width values for all screen sizes
+   * 
+   * @param  string|string[]... $widths column widths for different screens sizes
+   * @return $this for a fluent interface
+   */
+  public function setWidths(... $widths) {
+    $widths = Arrays::flatten($widths);
+    $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-up-([1-9]|(1[0-2])))+$/', $widths);
+    foreach ($filtered as $width) {
+      $parts = explode('-', $width);
+      $this->unsetGrid($parts[0]);
+      $this->cssClasses()->add($width);
+    }
+    return $this;
+  }
+
+  /**
+   * Unsets all layout settings 
+   * 
+   * @return $this for a fluent interface
+   */
+  public function unsetLayouts() {
+    foreach (Foundation::sizes() as $screenSize) {
+      $this->unsetGrid($screenSize);
+    }
+    return $this;
+  }
+
+  /**
+   * Unsets the block grid setting for the given screen widths
+   *
+   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return $this for a fluent interface
+   */
+  protected function unsetGrid(string $screenSize) {
+    $classes = [];
+    for ($i = 1; $i <= $this->getColumnCount(); $i++) {
+      $classes[] = "$screenSize-up-$i";
+    }
+    $this->cssClasses()->remove($classes);
+    return $this;
   }
 
   /**

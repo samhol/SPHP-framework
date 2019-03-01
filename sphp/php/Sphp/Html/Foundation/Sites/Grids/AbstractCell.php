@@ -10,17 +10,17 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
-use Sphp\Html\CssClassifiableContent;
+use Sphp\Stdlib\Arrays;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 use Sphp\Html\Foundation\Foundation;
-use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\BadMethodCallException;
 use \Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Strings;
 
 /**
- * Implements a layout object for a  XY Grid Call
+ * Implements an XY Grid Cell
+ *
  * 
  * @method $this small(int|string $sizeOrVisibility) sets the visibility or the size for small screens
  * @method $this medium(int|string $sizeOrVisibility) sets the visibility or the size for medium screens
@@ -32,14 +32,14 @@ use Sphp\Stdlib\Strings;
  * @method $this largeOffset(int $offest = null) sets the offset for large screens
  * @method $this xlargeOffset(int $offest = null) sets the offset for xlarge screens
  * @method $this xxlargeOffset(int $offest = null) sets the offset for xxlarge screens
- *
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
- * @link    https://foundation.zurb.com/sites/docs/xy-grid.html#basics XY Grid cell
+ * @link    https://foundation.zurb.com/sites/docs/xy-grid.html XY Grid
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
+abstract class AbstractCell extends AbstractComponent implements Cell {
 
   /**
    * @var ScreenSizes 
@@ -54,12 +54,11 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
   /**
    * Constructor
    * 
-   * @param CssClassifiableContent $component
    * @param ScreenSizes $screenSizes
    * @param int $maxSize
    */
-  public function __construct(CssClassifiableContent $component, ScreenSizes $screenSizes = null, int $maxSize = 12) {
-    parent::__construct($component);
+  public function __construct(string $tagName = 'div', ScreenSizes $screenSizes = null, int $maxSize = 12) {
+    parent::__construct($tagName);
     if ($screenSizes === null) {
       $screenSizes = Foundation::screen();
     }
@@ -273,7 +272,7 @@ class BasicCellLayout extends AbstractLayoutManager implements CellLayout {
       $num = count($parts);
       if ($num === 3 && $parts[1] === 'offset') {
         $this->setOffset($parts[0], $parts[2]);
-      }else if ($num === 4 && $parts[1] === 'show') {
+      } else if ($num === 4 && $parts[1] === 'show') {
         $this->setOffset($parts[0], $parts[2]);
       } else if ($num === 2) {
         $this->setWidth($parts[0], $parts[1]);

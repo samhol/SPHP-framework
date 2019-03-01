@@ -12,9 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 
 use IteratorAggregate;
 use Sphp\Html\Forms\TraversableForm;
-use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
-use Sphp\Html\Foundation\Sites\Grids\GridLayout;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
@@ -34,7 +32,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class GridForm extends AbstractComponent implements IteratorAggregate, Grid, TraversableForm {
+class GridForm extends \Sphp\Html\Foundation\Sites\Grids\AbstractGrid implements IteratorAggregate, Grid, TraversableForm {
 
   use TraversableFormTrait;
 
@@ -42,11 +40,6 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
    * @var ContentCallout
    */
   private $errorLabel;
-
-  /**
-   * @var DivGrid
-   */
-  private $gridContainer;
 
   /**
    * @var HiddenInputs
@@ -68,7 +61,6 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
    */
   public function __construct(string $action = null, string $method = null, $content = null) {
     parent::__construct('form');
-    $this->gridContainer = new DivGrid();
     $this->hiddenInputs = new HiddenInputs();
     if ($action !== null) {
       $this->setAction($action);
@@ -85,8 +77,9 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
     $this->errorLabel->attributes()->demand('data-abide-error');
   }
 
-  public function getGrid(): DivGrid {
-    return $this->gridContainer;
+  public function __destruct() {
+    unset($this->hiddenInputs, $this->errorLabel);
+    parent::__destruct();
   }
 
   public function useValidation(bool $validate = true) {
@@ -110,10 +103,6 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
     return $this;
   }
 
-  public function layout(): GridLayout {
-    return $this->getGrid()->layout();
-  }
-
   public function getHiddenInputs(): HiddenInputs {
     return $this->hiddenInputs;
   }
@@ -129,7 +118,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
   }
 
   public function contentToString(): string {
-    return $this->errorLabel . $this->gridContainer . $this->getHiddenInputs();
+    return $this->errorLabel . parent::contentToString() . $this->getHiddenInputs();
   }
 
   /**
@@ -148,7 +137,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
       // echo 'fooooooo'.$row;
       $row = new FormRow($row);
     }
-    $this->getGrid()->append($row);
+    parent::append($row);
     return $row;
   }
 
@@ -167,12 +156,8 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
     if (!($row instanceof Row)) {
       $row = new FormRow($row);
     }
-    $this->getGrid()->prepend($row);
+    parent::prepend($row);
     return $this;
-  }
-
-  public function getIterator(): \Traversable {
-    return $this->getGrid();
   }
 
   /**
@@ -188,7 +173,7 @@ class GridForm extends AbstractComponent implements IteratorAggregate, Grid, Tra
    */
   public function appendHiddenVariable($name, $value): HiddenInput {
     $input = new HiddenInput($name, $value);
-    $this->getGrid()->append($input);
+    $this->hiddenInputs()->append($input);
     return $input;
   }
 

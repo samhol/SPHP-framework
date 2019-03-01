@@ -131,7 +131,7 @@ class MonthView extends AbstractComponent {
     //$top->attributes()->classes()->protect('sphp', 'month-selector');
     //$top->append($this->firstOf->format('F Y'));
     $output = new BasicRow();
-    $output->appendCell($top)->layout()->auto();
+    $output->appendCell($top)->auto();
     return $output;
   }
 

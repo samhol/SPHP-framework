@@ -26,10 +26,10 @@
 <?php
 
 use Sphp\Html\Tags;
-use Sphp\Html\Foundation\Sites\Grids\BasicCellLayout;
+use Sphp\Html\Foundation\Sites\Grids\ContainerCell;
 
 $div = Tags::div();
-$mngr = new BasicCellLayout($div);
+$mngr = new ContainerCell();
 $mngr->small('shrink');
 $mngr->medium('auto');
 $mngr->large(5);
@@ -42,4 +42,4 @@ $mngr->xlargeOffset(6);
 $mngr->xxlargeOffset(7);
 print_r($div->cssClasses()->toArray());
 $mngr->setLayouts('small-3', 'large-offset-2');
-print_r($div->cssClasses()->toArray());
+print_r($mngr->cssClasses()->toArray());

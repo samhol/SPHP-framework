@@ -25,9 +25,9 @@ use Sphp\Html\Foundation\Sites\Grids\Cell;
  */
 class FormRow extends BasicRow {
 
-  public function __construct($columns = null, $sizes = []) {
+  public function __construct($columns = null, array $sizes = []) {
     parent::__construct($columns, $sizes);
-    $this->layout()->usePadding(true);
+    $this->usePadding(true);
   }
 
   /**
@@ -35,15 +35,15 @@ class FormRow extends BasicRow {
    * 
    * @param  Input $input the appended input 
    * @param  array $layout
-   * @return $this for a fluent interface
+   * @return Cell appended input 
    */
   public function appendInput(Input $input, array $layout = ['auto']): Cell {
     if ($input instanceof Cell) {
-      $input->layout()->setLayouts($layout);
+      $input->setLayouts($layout);
       $this->append($input);
     } else {
       $input = new BasicInputCell($input);
-      $input->layout()->setLayouts($layout);
+      $input->setLayouts($layout);
       $this->append(new BasicInputCell($input, $layout));
     }
     return $input;
