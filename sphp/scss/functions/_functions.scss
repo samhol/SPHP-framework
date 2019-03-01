@@ -6,9 +6,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
+@import "../settings/colors";
+
 @function sphp-color($name) { 
   @if map-has-key($sphp-palette, $name) {
-     @return #{map-get($breakpoints, $name)};
+     @return #{map-get($sphp-palette, $name)};
   }
 
   @else {

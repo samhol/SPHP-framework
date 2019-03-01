@@ -127,6 +127,7 @@ class FA {
       'flag' => 'fas fa-flag',
       'compass' => 'far fa-compass',
       'asterisk' => 'fas fa-asterisk',
+      'home' => 'fas fa-home',
       /**
        * Brands
        */

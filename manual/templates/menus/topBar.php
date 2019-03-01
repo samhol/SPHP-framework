@@ -2,12 +2,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 use Sphp\Html\Apps\Forms\SiteSearch360Form;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
-
+use Sphp\Html\Media\Icons\FA;
 try {
 
   $navi = new Bars\ResponsiveBar();
@@ -17,6 +16,7 @@ try {
   //$manual = (new SubMenu('Documentation'));
   $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
   $leftDrop = new DropdownMenu();
+  $leftDrop->appendLink('/', FA::home())->addCssClass('icon-link');
   $builder = new MenuBuilder(new MenuLinkBuilder(trim($redirect, '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));

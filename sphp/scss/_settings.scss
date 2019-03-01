@@ -75,6 +75,9 @@ $foundation-palette: (
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
+  menu-highlight: #FAA523,
+  menu-arrow: rgba(#FAA523, .6),
+  menu-background: #333,
   //devicon: #60be86,
   //fontawesome: #228ae6,
   //pdf: #ff9999,
@@ -394,8 +397,8 @@ $dropdown-sizes: (
 // -----------------
 
 $dropdownmenu-arrows: true;
-$dropdownmenu-arrow-color: $anchor-color;
-$dropdownmenu-arrow-size: 6px;
+$dropdownmenu-arrow-color: get-color(menu-arrow);
+$dropdownmenu-arrow-size: 5px;
 $dropdownmenu-arrow-padding: 1.5rem;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;

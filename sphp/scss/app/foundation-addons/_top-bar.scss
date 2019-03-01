@@ -88,6 +88,13 @@
             // @include background-image(linear-gradient(to right, #535353, #202020));
             background-color: smart-scale($bar-bg, 25%);
           }
+          &.icon-link {
+            a {
+              &:hover {
+                color: get-color(menu-highlight);
+              }
+            }
+          }
         }
         a {
           background: $bar-link-bg;
@@ -118,7 +125,7 @@
           }
         }
         //margin: rem-calc(2);
-        .input-group, ul.menu {
+        .input-group, ul.menu li {
           input {
             @include breakpoint(small only) {
               max-width: rem-calc(900);
