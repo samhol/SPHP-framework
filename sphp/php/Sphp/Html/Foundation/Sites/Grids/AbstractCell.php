@@ -120,13 +120,14 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
     if (!$this->isScreenSize($screenSize)) {
       throw new InvalidArgumentException("Invalid screen size '$screenSize' given");
     }
-    $this->cssClasses()->removePattern("/^($screenSize-([1-9]|(1[0-2])|auto|shrink))+$/");
+    $this->cssClasses()->removePattern("/^($screenSize-([1-9]|(1[0-2])|auto|shrink))$/");
     return $this;
   }
 
   public function unsetWidths() {
+    $screens = implode('|', $this->settings->getScreenSizes());
     $this->cssClasses()
-            ->removePattern("/^((small|medium|large|xlarge|xxlarge)-\b([1-9]|(1[0-2])|auto|shrink))\b|(shrink|auto)+$/");
+            ->removePattern("/^(($screens)-([1-9]|(1[0-2]))|(auto|shrink))|(shrink|auto)$/");
     $this->cssClasses()->add('auto');
     return $this;
   }
@@ -188,9 +189,10 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
   }
 
   public function unsetVisibilitySettings() {
+    $screens = implode('|', $this->settings->getScreenSizes());
     $this->cssClasses()
-            ->removePattern("/^(hide-for-(small|medium|large|xlarge|xxlarge)-only)+$/")
-            ->removePattern("/^(show-for-(small|medium|large|xlarge|xxlarge)-only)+$/");
+            ->removePattern("/^(hide-for-($screens)-only)+$/")
+            ->removePattern("/^(show-for-($screens)-only)+$/");
     return $this;
   }
 
@@ -209,12 +211,13 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
     if (!$this->isScreenSize($screenSize)) {
       throw new InvalidArgumentException("Invalid screen size '$screenSize' given");
     }
-    $this->cssClasses()->removePattern("/^($screenSize-offset-([1-9]|(1[0-2])))+$/");
+    $this->cssClasses()->removePattern("/^($screenSize-offset-([1-9]|(1[0-2])))$/");
     return $this;
   }
 
   public function unsetOffsets() {
-    $this->cssClasses()->removePattern("/^((small|medium|large|xlarge|xxlarge)-offset-([1-9]|(1[0-2])))+$/");
+    $screens = implode('|', $this->settings->getScreenSizes());
+    $this->cssClasses()->removePattern("/^(($screens)-offset-([1-9]|(1[0-2])))$/");
     return $this;
   }
 
@@ -251,7 +254,8 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
    * @return $this for a fluent interface
    */
   public function unsetOrders() {
-    $this->cssClasses()->removePattern("/^((small|medium|large|xlarge|xxlarge)-order-([1-9]|(1[0-2])))+$/");
+    $screens = implode('|', $this->settings->getScreenSizes());
+    $this->cssClasses()->removePattern("/^(($screens)-order-([1-9]|(1[0-2])))+$/");
     return $this;
   }
 

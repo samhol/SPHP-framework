@@ -50,7 +50,7 @@ function createPage(string $page): string {
     }
     $content = ob_get_contents();
   } catch (\Exception $e) {
-    $content .= (new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->buildCallout($e);
+    $content = (new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->buildCallout($e);
   }
   ob_end_clean();
   return '<section class="main">'.$content.'</section>';

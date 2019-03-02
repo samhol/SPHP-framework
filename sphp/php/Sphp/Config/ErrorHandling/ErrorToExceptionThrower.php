@@ -29,7 +29,7 @@ class ErrorToExceptionThrower {
   /**
    * @var ErrorToExceptionThrower[]
    */
-  private static $defaultInstance = [];
+  public static $defaultInstance = [];
 
   /**
    * @var string
@@ -77,7 +77,7 @@ class ErrorToExceptionThrower {
    */
   public function start(int $level = \E_ALL) {
     set_error_handler($this, $level);
-    register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
+    //register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
     return $this;
   }
 
@@ -143,7 +143,6 @@ class ErrorToExceptionThrower {
     if (!array_key_exists($exceptionType, self::$defaultInstance)) {
       self::$defaultInstance[$exceptionType] = new self($exceptionType);
     }
-    //print_r(self::$defaultInstance);
     return self::$defaultInstance[$exceptionType];
   }
 

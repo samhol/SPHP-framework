@@ -73,3 +73,6 @@ foreach ($daterange as $id => $date) {
 }
 
 $pagination->addCssClass('text-center')->printHtml();
+
+echo '<pre>';
+    print_r(\Sphp\Config\ErrorHandling\ErrorToExceptionThrower::$defaultInstance);

@@ -12,6 +12,8 @@ namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\LogicException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Utility class for multibyte string operations
@@ -32,14 +34,10 @@ abstract class Strings {
    * @return boolean true if string matches to the regular expression, false otherwise
    */
   public static function match(string $string, string $pattern, string $encoding = null): bool {
-    //$regexEncoding = mb_regex_encoding();
-    //echo "regexEncoding:($regexEncoding)\n";
-    //\mb_regex_encoding(self::getEncoding($encoding));
-    // $match = \mb_ereg_match($pattern, $string);
-    // echo "regexEncodingNow:($regexEncoding)\n";
-    //\mb_regex_encoding($regexEncoding);
-    return preg_match($pattern, $string) === 1;
-    // return $match === 1;
+    $e = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class)->start();
+    $result = preg_match($pattern, $string) === 1;
+     $e->stop();
+    return $result;
   }
 
   /**
