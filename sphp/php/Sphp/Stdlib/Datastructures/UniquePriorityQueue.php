@@ -12,7 +12,6 @@ namespace Sphp\Stdlib\Datastructures;
 
 use IteratorAggregate;
 use Countable;
-use Sphp\Stdlib\Arrays;
 use Traversable;
 use ArrayIterator;
 use Sphp\Exceptions\UnderflowException;
