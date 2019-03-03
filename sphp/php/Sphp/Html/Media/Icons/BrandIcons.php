@@ -12,7 +12,10 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Content;
-use Iterator;
+
+use IteratorAggregate;
+use Traversable;
+use Sphp\Html\Iterator;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
@@ -31,7 +34,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BrandIcons extends AbstractComponent implements Content, Iterator {
+class BrandIcons extends AbstractComponent implements Content, IteratorAggregate {
 
   /**
    * @var Hyperlink[]
@@ -78,53 +81,16 @@ class BrandIcons extends AbstractComponent implements Content, Iterator {
     return $hyperlink;
   }
 
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->icons);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->icons);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->icons);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->icons);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->icons);
-  }
-
   public function contentToString(): string {
     return implode($this->icons);
   }
 
+  /**
+   * Returns an external iterator
+   *
+   * @return Traversable external iterator
+   */
+  public function getIterator(): Traversable {
+    return new Iterator($this->rows);
+  }
 }

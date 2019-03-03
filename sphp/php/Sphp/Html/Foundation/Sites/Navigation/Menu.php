@@ -23,6 +23,8 @@ use Sphp\Html\Component;
  */
 interface Menu extends Component {
 
+  const VERTICAL = 'vertical';
+  CONST HORIZONTAL = 'horizontal';
   /**
    * Appends a menu item object to the menu
    *
