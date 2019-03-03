@@ -25,7 +25,8 @@ interface ExceptionListener {
   /**
    * Handles the throwable
    * 
-   * @param Throwable $e the throwable to handle
+   * @param  Throwable $e the throwable to handle
+   * @return void
    */
-  public function onException(Throwable $e);
+  public function onException(Throwable $e): void;
 }

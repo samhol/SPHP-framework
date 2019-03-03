@@ -59,12 +59,6 @@ class Group implements \Iterator {
     $this->data[$methodName] = new TagFactoryMethodData($factoryClass, $methodName, $value);
   }
 
-  public function offsetUnset($offset) {
-    if ($this->hasGroup($offset)) {
-      unset($this->data[$offset]);
-    }
-  }
-
   /**
    * Returns the current element
    * 

@@ -131,7 +131,7 @@ class ExceptionMailer implements ExceptionListener {
     return $mailBody;
   }
 
-  public function onException(Throwable $e) {
+  public function onException(Throwable $e): void {
     $this->send($e);
   }
 

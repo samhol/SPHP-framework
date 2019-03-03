@@ -35,6 +35,11 @@ use Sphp\Stdlib\Datastructures\ObjectStorage;
 class ShutDownRegister1 implements IteratorAggregate, Arrayable {
 
   /**
+   * @var bool
+   */
+  private $isRegistered = false;
+
+  /**
    * @var ObjectStorage
    */
   private $callbacks;
@@ -90,7 +95,10 @@ class ShutDownRegister1 implements IteratorAggregate, Arrayable {
    * @return System_ShutdownProcess $this instance
    */
   public function register() {
-    register_shutdown_function($this);
+    if (!$this->isRegistered) {
+      register_shutdown_function($this);
+    }
+    $this->isRegistered = true;
     return $this;
   }
 

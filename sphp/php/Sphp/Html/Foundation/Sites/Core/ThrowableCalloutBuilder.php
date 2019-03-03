@@ -244,7 +244,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
     return $callout;
   }
 
-  public function onException(Throwable $e) {
+  public function onException(Throwable $e): void {
     $this->buildCallout($e)->printHtml();
   }
 

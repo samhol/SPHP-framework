@@ -89,7 +89,7 @@ class Iterator implements NativeIterator, Content, TraversableContent {
    * 
    * @return void
    */
-  public function next() {
+  public function next(): void {
     next($this->components);
   }
 
@@ -107,7 +107,7 @@ class Iterator implements NativeIterator, Content, TraversableContent {
    * 
    * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     reset($this->components);
   }
 

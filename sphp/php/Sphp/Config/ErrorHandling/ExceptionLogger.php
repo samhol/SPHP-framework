@@ -7,6 +7,7 @@
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 namespace Sphp\Config\ErrorHandling;
 
 use Throwable;
@@ -60,7 +61,7 @@ class ExceptionLogger implements ExceptionListener {
     return $this;
   }
 
-  public function onException(Throwable $e) {
+  public function onException(Throwable $e): void {
     error_log($this->parseThrowable($e), 3, $this->getDestination());
   }
 

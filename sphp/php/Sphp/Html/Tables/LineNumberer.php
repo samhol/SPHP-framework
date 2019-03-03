@@ -195,7 +195,7 @@ class LineNumberer {
     $tbody = $table->tbody();
     $lineNumber = $this->getFirstLineNumber();
     foreach ($tbody as $row) {
-      if ($row instanceof BasicRow) {
+      if ($row instanceof Row) {
         $row->append($this->generateLineNumberCell($lineNumber++));
       }
     }
@@ -211,7 +211,7 @@ class LineNumberer {
     $tbody = $table->tbody();
     $lineNumber = $this->getStart();
     foreach ($tbody as $row) {
-      if ($row instanceof BasicRow) {
+      if ($row instanceof Row) {
         $row->prepend($this->generateLineNumberCell($lineNumber++));
       }
     }

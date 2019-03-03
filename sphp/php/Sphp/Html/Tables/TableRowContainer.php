@@ -11,7 +11,9 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractComponent;
-use Iterator;
+use IteratorAggregate;
+use Traversable;
+use Sphp\Html\Iterator;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Exceptions\OutOfBoundsException;
@@ -23,10 +25,13 @@ use Sphp\Exceptions\OutOfBoundsException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TableRowContainer extends AbstractComponent implements Iterator, TraversableContent, TableContent {
+class TableRowContainer extends AbstractComponent implements IteratorAggregate, TraversableContent, TableContent {
 
   use \Sphp\Html\TraversableTrait;
 
+  /**
+   * @var Row[]
+   */
   private $rows;
 
   /**
@@ -108,7 +113,7 @@ class TableRowContainer extends AbstractComponent implements Iterator, Traversab
    * @return Row the row at given position
    * @throws OutOfBoundsException
    */
-  public function getRow(int $number): BasicRow {
+  public function getRow(int $number): Row {
     if (array_key_exists($number, $this->rows)) {
       return $this->rows[$number];
     } else {
@@ -121,44 +126,12 @@ class TableRowContainer extends AbstractComponent implements Iterator, Traversab
   }
 
   /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
+   * Returns an external iterator
+   *
+   * @return Traversable external iterator
    */
-  public function current() {
-    return current($this->rows);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->rows);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->rows);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->rows);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->rows);
+  public function getIterator(): Traversable {
+    return new Iterator($this->rows);
   }
 
 }

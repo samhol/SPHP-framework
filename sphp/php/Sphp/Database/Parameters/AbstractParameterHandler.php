@@ -156,7 +156,7 @@ abstract class AbstractParameterHandler implements Iterator, ParameterHandler {
    * 
    * @return void
    */
-  public function next() {
+  public function next(): void {
     next($this->params);
   }
 
@@ -174,7 +174,7 @@ abstract class AbstractParameterHandler implements Iterator, ParameterHandler {
    * 
    * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     reset($this->params);
   }
 

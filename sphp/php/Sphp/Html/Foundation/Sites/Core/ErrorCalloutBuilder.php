@@ -139,7 +139,7 @@ class ErrorCalloutBuilder implements ErrorListener {
     return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $message);
   }
 
-  public function onError(int $errno, string $errstr, string $errfile, int $errline) {
+  public function onError(int $errno, string $errstr, string $errfile, int $errline): void {
     $callout = $this->buildCallout($errno);
     //$this->setClasses($callout, $errno);  fa-exclamation-circle
     $callout->append("<div class=\"type\"><span class='icon'>" . $this->getIcon($errno) . '</span> ' . $this->getTypeString($errno) . "</div>");

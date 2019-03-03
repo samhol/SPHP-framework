@@ -27,6 +27,7 @@ interface ErrorListener {
    * @param  string $errstr the error message
    * @param  string $errfile the filename that the error was raised in
    * @param  int $errline the line number the error was raised at
+   * @return void
    */
-  public function onError(int $errno, string $errstr, string $errfile, int $errline);
+  public function onError(int $errno, string $errstr, string $errfile, int $errline): void;
 }
