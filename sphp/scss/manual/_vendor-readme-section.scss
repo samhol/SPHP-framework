@@ -47,6 +47,11 @@
         @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=html5-original&opacity=0.3');
         background-size: auto 80%;
       }
+      &.foundation {
+        @include vendor-font-coloring(#333);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=foundation-original&opacity=0.2');
+        background-size: auto 80%;
+      }
       &.js {
         @include vendor-font-coloring(#F0DB4F);
         @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=javascript-original&opacity=0.2');

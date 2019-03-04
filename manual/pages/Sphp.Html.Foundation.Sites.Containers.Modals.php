@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $modal = Manual\api()->classLinker(Modal::class);
 Manual\md(<<<MD
-## The $modal component
+### The $modal component
 
 Modal dialogs, or pop-up windows, are handy for prototyping and production.
 

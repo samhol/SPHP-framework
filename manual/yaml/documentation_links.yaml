@@ -82,10 +82,8 @@ items:
       - ruler: 
       - link: Core components
         href: /Sphp.Html.Foundation.Sites.Core
-      - link: Grid systems
-        href: /Sphp.Html.Foundation.Sites.Grids.XY
-      - link: General Containers
-        href: /Sphp.Html.Foundation.Sites.Containers
+      - link: Grids and Containers
+        href: /Sphp.Html.Foundation.Sites.Grids.n.Containers
       - ruler: 
       - link: Navigation
         href: /Sphp.Html.Foundation.Sites.Navigation

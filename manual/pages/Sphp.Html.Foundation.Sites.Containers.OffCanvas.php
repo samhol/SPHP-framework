@@ -9,7 +9,7 @@ $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $offCanvas = \Sphp\Manual\api()->classLinker(OffCanvas::class);
 \Sphp\Manual\md(<<<MD
 
-##The $offCanvas component
+### The $offCanvas component
 
 $ns
         

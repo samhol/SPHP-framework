@@ -10,7 +10,7 @@ $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
         
-##The $accordion container for $paneInterface components
+### The $accordion container for $paneInterface components
 $ns
 > The graphical control element **accordion** is a vertically stacked list of items, 
 > such as labels or thumbnails. Each item can be "expanded" or "stretched" to reveal 

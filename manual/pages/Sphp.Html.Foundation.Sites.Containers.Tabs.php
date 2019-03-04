@@ -9,7 +9,7 @@ $tabs = Manual\api()->classLinker(Tabs::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-##The $tabs component
+### The $tabs component
         
 $ns
 

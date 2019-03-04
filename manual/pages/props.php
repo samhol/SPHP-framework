@@ -1,21 +1,13 @@
 <?php
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-$menu = new \Sphp\Html\Foundation\Sites\Navigation\BasicMenu();
-$menu->setVertical()->setAttribute('data-responsive-menu','drilldown medium-accordion');
-$menu->appendLink('/', 'foo');
-$menu->appendLink('/', 'foo');
-$menu->appendLink('/', 'foo');
-$submenu = $menu->appendSubMenu()->setRoot('Item 3');
-$submenu->appendLink("#Item3.1", "Item 3.1", "_self");
-$submenu->appendLink("#Item3.2", "Item 3.2", "_self");
-$submenu->appendLink("#Item3.3", "Item 3.3", "_self");
-$submenu->appendLink("#Item3.4", "Item 3.4", "_self");
-echo $menu;
+include 'Sphp/Html/Foundation/Sites/Navigation/ResponsiveMenu.php';
+
+\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Navigation/ResponsiveMenu.php', 'html5');
 ?>
 
-
-<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion large-dropdown">
+<h1>Foobar</h1>
+<ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown large-dropdown">
   <li>
     <a href="#">Item 1</a>
     <ul class="vertical menu">

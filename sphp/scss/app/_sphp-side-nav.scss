@@ -37,6 +37,9 @@ $side-nav-bg: #fefefe;
     //margin: rem-calc(5 0 20 0); /*top right bottom left*/
     a {
       color: #555;
+      &:after {
+        border-top-color: rgba(#222, .5) !important;
+      }
     }
     ul.menu.nested {
       margin-left: 0;

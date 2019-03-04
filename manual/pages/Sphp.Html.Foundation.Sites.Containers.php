@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-# Foundation containers
+## Foundation containers
 $ns
         
 Namespace contains implementations of Foundation based containers.

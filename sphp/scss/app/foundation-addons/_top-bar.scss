@@ -54,7 +54,7 @@
       .top-bar-left {
         @include breakpoint(medium) { 
           margin: rem-calc(0 0 0 3);
-        }
+        } 
         > ul {
           > li { 
             > a {
@@ -67,7 +67,7 @@
             }
             &:not(.icon-link)  {
               > a {
-               // min-width: rem-calc(120);
+                // min-width: rem-calc(120);
               }
             }
           }

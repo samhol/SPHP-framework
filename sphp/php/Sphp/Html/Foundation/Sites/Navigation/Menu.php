@@ -24,7 +24,11 @@ use Sphp\Html\Component;
 interface Menu extends Component {
 
   const VERTICAL = 'vertical';
-  CONST HORIZONTAL = 'horizontal';
+  const HORIZONTAL = 'horizontal';
+  
+  const ACCORDION = 'accordion';
+  const DRILLDOWN = 'drilldown';
+  const DROPDOWN = 'dropdown';
   /**
    * Appends a menu item object to the menu
    *

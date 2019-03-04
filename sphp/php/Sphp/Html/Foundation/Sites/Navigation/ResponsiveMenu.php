@@ -23,6 +23,9 @@ use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
  */
 class ResponsiveMenu extends AbstractMenu {
 
+  private $defaultType;
+  private $responsiveType;
+
   /**
    * Constructor
    * 
@@ -46,7 +49,8 @@ class ResponsiveMenu extends AbstractMenu {
     return $this;
   }
 
-  public function setOrientationFor(string $orientation, string $screenSize) {
+  public function setOrientationFor(string $screenSize, string $orientation) {
+    $this->unsetResponsiveOrientations();
     $this->cssClasses()->add("$screenSize-$orientation");
 
     return $this;
@@ -59,8 +63,49 @@ class ResponsiveMenu extends AbstractMenu {
    */
   public function unsetResponsiveOrientations() {
     $screens = implode('|', $this->settings->getScreenSizes());
-    $this->cssClasses()->removePattern("/^(($screens)-|vertical|horizontal))$/");
+    $this->cssClasses()->removePattern("/^($screens)-(vertical|horizontal)$/");
     return $this;
+  }
+
+  public function setDefaultType(string $defaultType, $screenSize, $type) {
+    $this->setAttribute('data-responsive-menu', "$defaultType $screenSize-$type");
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $screenSize
+   * @return ResponsiveMenu new menu object
+   */
+  public static function drilldownAccordion(string $screenSize = 'medium'): ResponsiveMenu {
+    $menu = new static();
+    $menu->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor($screenSize, Menu::HORIZONTAL);
+    $menu->setDefaultType(Menu::DRILLDOWN, $screenSize, Menu::ACCORDION);
+    return $menu;
+  }
+
+  /**
+   * 
+   * @param  string $screenSize
+   * @return ResponsiveMenu new menu object
+   */
+  public static function accordionDropdown(string $screenSize = 'medium'): ResponsiveMenu {
+    $menu = new static();
+    $menu->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor($screenSize, Menu::HORIZONTAL);
+    $menu->setDefaultType(Menu::ACCORDION, $screenSize, Menu::DROPDOWN);
+    return $menu;
+  }
+
+  /**
+   * 
+   * @param  string $screenSize
+   * @return ResponsiveMenu new menu object
+   */
+  public static function drilldownDropdown(string $screenSize = 'medium'): ResponsiveMenu {
+    $menu = new static();
+    $menu->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor($screenSize, Menu::HORIZONTAL);
+    $menu->setDefaultType(Menu::DRILLDOWN, $screenSize, Menu::DROPDOWN);
+    return $menu;
   }
 
 }
