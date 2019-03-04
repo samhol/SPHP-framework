@@ -6,7 +6,6 @@ $fail = function () {
   echo "<pre>";
   echo 'display_errors: ' . ini_get('display_errors') . "\n";
   echo "error_reporting: " . ini_get('error_reporting') . '</pre>';
-  echo $foo;
 };
 
 PHP::ini('show_errors')

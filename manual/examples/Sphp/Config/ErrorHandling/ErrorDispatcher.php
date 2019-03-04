@@ -5,10 +5,6 @@ namespace Sphp\Config\ErrorHandling;
 use Sphp\Html\Foundation\Sites\Core\ErrorCalloutBuilder;
 
 $ed = new ErrorDispatcher();
-$ed->addErrorListener(\E_USER_ERROR, function (int $errno, string $errstr, string $errfile, int $errline) {
-  echo "<p><b>User Error:</b> $errstr</p>";
-}, 1);
-
 $ed->addErrorListener(\E_ALL, new ErrorCalloutBuilder(true, true), 3);
 $ed->startErrorHandling();
 include_once('foobar');
@@ -18,3 +14,4 @@ trigger_error('Deprecated user features suck', E_USER_DEPRECATED);
 trigger_error('User defined Notes suck a bit', E_USER_NOTICE);
 
 echo $foo;
+

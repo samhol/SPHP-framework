@@ -46,11 +46,11 @@ github: #222,
 }
 
 .package-def {
-  @include box-shadow(#ccc 3px 0px 8px 4px);
-  @include box-shadow(#ccc 0px 3px 8px 4px);
-  border: solid 1px #aaa;
-  @include border-radius(5px);
-  margin: rem-calc(5 30);
+  //@include box-shadow(#ccc 3px 0px 8px 4px);
+  //@include box-shadow(#ccc 0px 3px 8px 4px);
+  border-bottom: solid 1px #aaa;
+  //@include border-radius(5px);
+ // margin: rem-calc(5 30);
   //padding: rem-calc(10 10);
   h2 {
     background-color: #eee;

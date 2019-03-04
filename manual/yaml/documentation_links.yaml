@@ -6,8 +6,6 @@ items:
     - ruler: 
     - link: Application configuration
       href: /Sphp.Config
-    - link: Error configuration
-      href: /Sphp.Config.ErrorHandling
     - link: Web application Security
       href: /Sphp.Security
     - menu: Standard library

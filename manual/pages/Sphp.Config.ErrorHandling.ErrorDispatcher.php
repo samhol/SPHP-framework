@@ -46,12 +46,14 @@ __NOTE:__ The following error types cannot be handled by $errorDispatcher
  * $e_compile 
  * $e_deprecated 
  * Usually $e_strict   
+
+
 MD
 );
-
+/*
 Manual\example('Sphp/Config/ErrorHandling/ErrorDispatcher.php')
         ->printHtml();
-
+*/
 Manual\md(<<<MD
 ###$errorDispatcher <small>as a Uncaught $throwable handler</small>
 In PHP 7, most errors are reported by throwing $error exceptions. Both $error and

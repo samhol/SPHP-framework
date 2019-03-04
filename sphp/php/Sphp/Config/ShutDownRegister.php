@@ -32,7 +32,7 @@ use Sphp\Stdlib\Datastructures\ObjectStorage;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ShutDownRegister1 implements IteratorAggregate, Arrayable {
+class ShutDownRegister implements IteratorAggregate {
 
   /**
    * @var bool
