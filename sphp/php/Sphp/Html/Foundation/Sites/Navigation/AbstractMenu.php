@@ -38,7 +38,7 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
    * @param AttributeManager $attrManager
    * @param Container $contentContainer
    */
-  public function __construct(string $tagname, AttributeManager $attrManager = null, Container $contentContainer = null) {
+  public function __construct(string $tagname = 'ul', AttributeManager $attrManager = null, Container $contentContainer = null) {
     if ($contentContainer === null) {
       $contentContainer = new PlainContainer();
     }

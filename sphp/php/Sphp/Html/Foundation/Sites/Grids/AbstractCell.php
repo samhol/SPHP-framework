@@ -12,8 +12,6 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
-use Sphp\Html\Foundation\Foundation;
 use Sphp\Exceptions\BadMethodCallException;
 use \Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Strings;
