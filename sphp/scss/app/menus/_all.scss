@@ -7,6 +7,7 @@
  */
 
 @import "sphp-brand-icon-menu";
+@import "foundation-menus";
 
 @mixin sphp-menus() { 
   @include sphp-brand-icon-menu;

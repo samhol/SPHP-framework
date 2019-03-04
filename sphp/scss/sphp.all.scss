@@ -8,7 +8,15 @@
 
 @charset "UTF-8";
 
-$menu-arrow-size: 5px;
+$sphp-menu-arrow-size: 5px;
+$sphp-menu-arrow-color: rgba(#FAA523, .6); 
+$sphp-menu-border-color: rgba(#FAA523, .6);
+$sphp-menu-background-color: #222; 
+$sphp-menuitem-background-color: #222; 
+$sphp-menuitem-color: #fff;
+$sphp-menuitem-color-active: #efefef;
+$sphp-menuitem-font-color: #f4f4f4;
+$sphp-menuitem-font-color-active: #fff;
 
 @import "compass/css3";
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);
@@ -54,7 +62,7 @@ $menu-arrow-size: 5px;
 @include foundation-tabs;
 @include foundation-thumbnail;
 @include foundation-title-bar;
-@include foundation-tooltip;
+//@include foundation-tooltip;
 @include foundation-top-bar;
 @include foundation-visibility-classes;
 @include foundation-float-classes;

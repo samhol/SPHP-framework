@@ -1,0 +1,31 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+$bar-bg: #111; 
+$bar-menu-bg: #222;
+$bar-link-bg: #222;
+$bar-link-bg-active: #2a2a2a;
+$bar-font-color: #f4f4f4;
+$bar-font-color-active: #fff;
+$bar-link-color: #f4f4f4;
+$bar-link-color-active: #fff;
+$root-border-color: #333;
+sphp.menu {
+  li.is-active > a {  
+    background: $bar-link-bg-active;
+    color: $bar-link-color-active;
+  }
+  a {
+    background: $bar-link-bg;
+    color: $bar-link-color;
+    &:hover {
+      background: $bar-link-bg-active;
+      color: $bar-link-color-active;
+    }
+  }
+}
