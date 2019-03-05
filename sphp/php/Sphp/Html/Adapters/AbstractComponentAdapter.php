@@ -19,7 +19,7 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractComponentAdapter implements Adapter {
+abstract class AbstractComponentAdapter implements Adapter {
 
   use \Sphp\Html\ContentTrait;
 

@@ -11,13 +11,11 @@ $hyperlinkIfLink = Manual\api()->classLinker(HyperlinkInterface::class);
 Manual\md(<<<MD
 #Foundation <small>navigation components</small>
 $ns
-        
-This namespace contains object oriented PHP implementations of Foundation navigation components.
+
+This namespace contains object oriented PHP implementations of Foundation navigation components. 
 
 MD
 );
-//\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Bars');
-Manual\example('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')->printHtml();
 
 Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.Menu');
 Manual\printPage('Sphp.Html.Foundation.Sites.Navigation.Bars');

@@ -14,6 +14,7 @@ use Sphp\Html\Adapters\AbstractComponentAdapter;
 use Sphp\Html\Component;
 use Sphp\Html\ContainerComponent;
 use Sphp\Html\Attributes\IdAttribute;
+
 /**
  * Implements a Foundation Equalizer.
  *
