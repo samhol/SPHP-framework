@@ -41,12 +41,9 @@ $error-bg: rgba(#FF7F50, 0.4);
 @import "api-stuff";
 @import "form-submission-viewer";
 @import "footer";
-//@import 'topbar';
 @import 'gettext-form';
 @import "forms"; 
 @import 'icon-examples';
-
-@import 'error-page';
 @import "logo-area"; 
 .manual {
   .sphp.sidenav {
@@ -82,38 +79,7 @@ $error-bg: rgba(#FF7F50, 0.4);
       background: #fafafa;
     }
     &.error {
-      .container {
-        background-image: url('http://data.samiholck.com/svg/crossbones.php?color=f00&opacity=.2');
-        background-position: center center;
-        background-size: auto 90%;
-        background-repeat: no-repeat;
-        h1 {
-          text-align: center;
-          font-size: rem-calc(100);
-          background-color: $error-bg;
-          small {
-            color: #555;
-            @include breakpoint(medium down) {  
-              display: inline-block;
-              clear:both;
-              font-size: rem-calc(40);
-            }
-          }
-        }
-        p {
-          text-align: center;
-          font-size: rem-calc(30);
-          &.large {
-            font-size: rem-calc(60);
-          }
-        }
-        input[type=search] {
-          background-color: rgba(#eee, .5);
-          &:focus {
-            background-color: rgba(#fafafa, .5);
-          }
-        }
-      }
+      @import "error-page";
     }
   }
 }

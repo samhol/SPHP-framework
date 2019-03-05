@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-$drilldownMenu = (new DrilldownMenu());
+$drilldownMenu = FlexibleMenu::createDrilldown();
 
 $drilldownMenu->appendLink("#Item1", "Item 1", "_self");
 $drilldownMenu->appendLink("#Item2", "Item 2", "_self");

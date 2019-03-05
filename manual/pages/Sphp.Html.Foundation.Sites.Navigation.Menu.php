@@ -6,11 +6,12 @@ use Sphp\Html\Navigation\HyperlinkInterface;
 
 $hyperlinkIfLink = \Sphp\Manual\api()->classLinker(HyperlinkInterface::class);
 $menuInterface = \Sphp\Manual\api()->classLinker(Menu::class);
-$drilldownMenu = \Sphp\Manual\api()->classLinker(DrilldownMenu::class);
-$dropdownMenu = \Sphp\Manual\api()->classLinker(DropdownMenu::class);
-$accordionMenu = \Sphp\Manual\api()->classLinker(AccordionMenu::class);
+$flexibleMenu = \Sphp\Manual\api()->classLinker(FlexibleMenu::class);
+$drilldownMenu = \Sphp\Manual\api()->classLinker(FlexibleMenu::class)->createDrilldown;
+$dropdownMenu = \Sphp\Manual\api()->classLinker(FlexibleMenu::class)->createDropdown;
+$accordionMenu = \Sphp\Manual\api()->classLinker(FlexibleMenu::class)->createAccordion;
 \Sphp\Manual\md(<<<MD
-##Navigation menus implementing $menuInterface
+## Navigation menus implementing $menuInterface
 
 The $drilldownMenu component is one of Foundation's three menu patterns, which converts a series of nested lists into a vertical drilldown menu.
 
@@ -30,11 +31,10 @@ $navExamples->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DrilldownMenu
 $navExamples->printHtml();
 
 
-$sideNavClass = \Sphp\Manual\api()->classLinker(AccordionMenu::class);
 \Sphp\Manual\md(<<<MD
-##The $sideNavClass component
+## The $flexibleMenu component
 
-The $sideNavClass component provides navigation for the entire site, or for sections of an individual page.
+The $flexibleMenu component provides navigation for the entire site, or for sections of an individual page.
 
 **Accessibility:** Using the `Tab` button, a user can navigate until
 they've reached the link below. (`Shift+Tab` to navigate back one step.)

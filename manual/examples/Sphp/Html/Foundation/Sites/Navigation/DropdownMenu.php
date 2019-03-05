@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-$menu = new DropdownMenu();
+$menu = FlexibleMenu::createDropdown();
 
 $submenu = $menu->appendSubMenu();
 $submenu->setRoot('dropdown');

@@ -12,7 +12,7 @@ try {
 
   $navi = new Bars\ResponsiveBar();
   $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
-  $leftDrop = new BasicMenu();
+  $leftDrop = new FlexibleMenu();
   $leftDrop->attributes();
   $leftDrop->addCssClass('vertical medium-horizontal menu');
   $leftDrop->setAttribute('data-responsive-menu','drilldown medium-dropdown');

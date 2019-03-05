@@ -8,7 +8,7 @@
 namespace Sphp\Manual\MVC;
 
 use Sphp\Html\Content;
-use Sphp\Html\Foundation\Sites\Navigation\AccordionMenu;
+use Sphp\Html\Foundation\Sites\Navigation\FlexibleMenu;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
 /**
@@ -51,14 +51,14 @@ class SideNavViewer implements Content {
 
   /**
    * 
-   * @return AccordionMenu
+   * @return FlexibleMenu
    */
-  public function getMenu(): AccordionMenu {
+  public function getMenu(): FlexibleMenu {
     return $this->nav;
   }
 
   protected function buildMenu() {
-    $this->nav = new AccordionMenu();
+    $this->nav = FlexibleMenu::createAccordion();
     $this->nav->appendText('Documentation');
     $builder = new MenuBuilder(new MenuLinkBuilder($this->currentPage));
     $builder->buildMenu($this->data, $this->nav);

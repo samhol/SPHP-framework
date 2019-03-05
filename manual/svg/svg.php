@@ -22,13 +22,7 @@ $colorOptions = [
         'regexp' => '/^([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b$/'
     ]
 ];
-$opacityOptions = [
-    'options' =>
-    [
-        'default' => 1,
-        'regexp' => '/^([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b$/'
-    ]
-];
+
 $rangeValidator = new Range(0, 1, true);
 
 $title = filter_input(INPUT_GET, 'title', FILTER_VALIDATE_FLOAT);

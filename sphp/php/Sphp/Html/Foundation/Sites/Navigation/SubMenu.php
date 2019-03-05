@@ -46,11 +46,17 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
    */
   public function __construct($root = null, Menu $menu = null) {
     if ($menu === null) {
-      $this->menu = new BasicMenu();
+      $this->menu = new FlexibleMenu();
     }
     parent::__construct('li');
     $this->setRoot($root);
   }
+
+  public function __destruct() {
+    unset($this->menu, $this->rootlink);
+    parent::__destruct();
+  }
+
 
   /**
    * Sets the root component of the menu

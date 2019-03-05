@@ -64,6 +64,9 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
    * @return $this for a fluent interface
    */
   public function append(MenuItem $item) {
+    if ($item instanceof SubMenu) {
+      $item->setVertical(true);
+    }
     $this->items->append($item);
     return $this;
   }
@@ -84,7 +87,7 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
     if ($subMenu === null) {
       $subMenu = new SubMenu();
     }
-    $subMenu->setVertical($this->isVertical());
+    //$subMenu->setVertical($this->isVertical());
     $this->append($subMenu);
     return $subMenu;
   }

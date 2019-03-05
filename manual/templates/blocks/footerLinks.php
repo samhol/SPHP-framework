@@ -4,7 +4,7 @@ namespace Sphp\Html;
 
 use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\Media\Icons\DevIcons;
-use Sphp\Html\Foundation\Sites\Navigation\BasicMenu;
+use Sphp\Html\Foundation\Sites\Navigation\FlexibleMenu;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $faRight = (new FA())->pull('right')->fixedWidth(true);
@@ -12,7 +12,7 @@ $faLeft = (new FA())->pull('left')->fixedWidth(true);
 
 $grid = (new BlockGrid('small-up-1', 'medium-up-2', 'large-up-4'));
 
-$firstMenu = (new BasicMenu())->setVertical();
+$firstMenu = (new FlexibleMenu())->setVertical();
 $firstMenu->appendText('Who uses SPHPlayground?' . $faRight->users());
 $firstMenu->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi');
 $firstMenu->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;');
@@ -26,7 +26,7 @@ $firstMenu->appendLink('https://mochajs.org/', DevIcons::mocha() . 'Mocha');
 
 $grid->append($firstMenu);
 
-$secondMenu = (new BasicMenu())->setVertical();
+$secondMenu = (new FlexibleMenu())->setVertical();
 $secondMenu->appendText('JavaScript ' . $faRight->js());
 $secondMenu->appendLink('https://nodejs.org/', 'Node.js' . $faLeft->nodejs());
 $secondMenu->appendLink('https://www.npmjs.com/', 'npm' . $faLeft->npm());
@@ -41,7 +41,7 @@ $secondMenu->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade;');
 
 $grid->append($secondMenu);
 
-$thirdMenu = (new BasicMenu())->setVertical();
+$thirdMenu = (new FlexibleMenu())->setVertical();
 $thirdMenu->appendText('PHP' . $faRight->php());
 $thirdMenu->appendLink('http://php.net/manual/en/', 'PHP Manual' . $faRight->php());
 $thirdMenu->appendRuler();
@@ -56,7 +56,7 @@ $thirdMenu->appendLink('https://sqlite.org/', 'SQLite');
 
 $grid->append($thirdMenu);
 
-$fourthMenu = (new BasicMenu())->setVertical();
+$fourthMenu = (new FlexibleMenu())->setVertical();
 $fourthMenu->appendText('HTML ' . $faRight->html5());
 $fourthMenu->appendLink('https://www.w3.org/html/', 'HTML5 - <b>W3C</b>');
 $fourthMenu->appendLink('https://www.w3schools.com/js/', 'w3schools.com');

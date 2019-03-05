@@ -20,7 +20,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class BasicMenu extends AbstractMenu {
+class FlexibleMenu extends AbstractMenu {
 
   /**
    * Constructor
@@ -46,6 +46,44 @@ class BasicMenu extends AbstractMenu {
         $this->appendText($item);
       }
     }
+  }
+
+  /**
+   * Creates a new Accordion down menu 
+   * 
+   * @return FlexibleMenu
+   */
+  public static function createAccordion(): FlexibleMenu {
+    $menu = new static();
+    $menu->cssClasses()->protectValue('accordion-menu');
+    $menu->setVertical(true);
+    $menu->attributes()->demand('data-accordion-menu');
+    return $menu;
+  }
+
+  /**
+   * Creates a new Drill down menu 
+   * 
+   * @return FlexibleMenu
+   */
+  public static function createDrilldown(): FlexibleMenu {
+    $menu = new static();
+    $menu->attributes()->demand('data-drilldown');
+    $menu->setVertical(true);
+    $menu->cssClasses()->protectValue('drilldown');
+    return $menu;
+  }
+
+  /**
+   * Creates a new Drop down menu 
+   * 
+   * @return FlexibleMenu
+   */
+  public static function createDropdown(): FlexibleMenu {
+    $menu = new static();
+    $menu->cssClasses()->protectValue('dropdown');
+    $menu->attributes()->demand('data-dropdown-menu');
+    return $menu;
   }
 
 }

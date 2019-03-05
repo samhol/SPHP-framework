@@ -25,7 +25,7 @@ class MenuBuilder {
   /**
    * @var string 
    */
-  private $menuType = BasicMenu::class;
+  private $menuType = FlexibleMenu::class;
 
   /**
    * @var MenuLinkBuilder 
@@ -72,7 +72,7 @@ class MenuBuilder {
    */
   private function insertIntoMenu(array $contentData, Menu $instance = null): Menu {
     if ($instance === null) {
-      $instance = new BasicMenu();
+      $instance = new FlexibleMenu();
     }
     foreach ($contentData as $item) {
       if (array_key_exists('link', $item)) {
@@ -116,26 +116,6 @@ class MenuBuilder {
     }
     $this->insertIntoMenu($data['items'], $instance);
     return $instance;
-  }
-
-  /**
-   * Builds a new drop down menu from given menu data
-   * 
-   * @param  array $data the menu data
-   * @return DropdownMenu new menu instance
-   */
-  public function buildDropdownMenu(array $data): DropdownMenu {
-    return $this->buildMenu($data, new DropdownMenu());
-  }
-
-  /**
-   * Builds a new accordion menu from given menu data
-   * 
-   * @param  array $data the menu data
-   * @return AccordionMenu new menu instance
-   */
-  public function buildAccordionMenu(array $data): AccordionMenu {
-    return $this->buildMenu($data, new AccordionMenu());
   }
 
 }
