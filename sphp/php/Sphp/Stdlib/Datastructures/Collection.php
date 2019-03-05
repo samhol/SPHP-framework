@@ -86,26 +86,24 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @param  mixed $offset the offset key
    * @param  mixed $value the value to set
-   * @return $this for a fluent interface
+   * @return void
    */
-  public function offsetSet($offset, $value) {
+  public function offsetSet($offset, $value): void {
     if (is_null($offset)) {
       $this->items[] = $value;
     } else {
       $this->items[$offset] = $value;
     }
-    return $this;
   }
 
   /**
    * Unset the item at a given offset
    *
    * @param  mixed $offset the offset key
-   * @return $this for a fluent interface
+   * @return void
    */
-  public function offsetUnset($offset) {
+  public function offsetUnset($offset): void {
     unset($this->items[$offset]);
-    return $this;
   }
 
   /**
@@ -184,7 +182,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  int $flag flag determining what arguments are sent to callback
    * @return self new filtered collection
    */
-  public function filter(callable $callback = null, $flag = 0): Collection {
+  public function filter(callable $callback = null, int $flag = 0): Collection {
     return new static(array_filter($this->items, $callback, $flag));
   }
 
@@ -247,7 +245,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @return mixed[] the keys of the collection items
    */
-  public function keys() {
+  public function keys(): array {
     return array_keys($this->items);
   }
 
@@ -261,8 +259,9 @@ class Collection implements Iterator, CollectionInterface {
   }
 
   /**
+   * Creates and returns new queue
    *
-   * @return Queue
+   * @return Queue new instance from the collection
    */
   public function toQueue(): Queue {
     $queue = new ArrayQueue();
@@ -273,8 +272,9 @@ class Collection implements Iterator, CollectionInterface {
   }
 
   /**
+   * Creates and returns new stack
    *
-   * @return StackInterface
+   * @return Stack new instance from the collection
    */
   public function toStack(): Stack {
     $stack = new ArrayStack();
@@ -295,8 +295,10 @@ class Collection implements Iterator, CollectionInterface {
 
   /**
    * Advance the internal pointer of the collection
+   *
+   * @return void
    */
-  public function next() {
+  public function next(): void {
     next($this->items);
   }
 
@@ -311,8 +313,10 @@ class Collection implements Iterator, CollectionInterface {
 
   /**
    * Rewinds the Iterator to the first element
+   *
+   * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     reset($this->items);
   }
 

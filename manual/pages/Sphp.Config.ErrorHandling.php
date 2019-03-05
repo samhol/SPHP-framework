@@ -10,10 +10,10 @@ $set_exception_handler = \Sphp\Manual\php()->functionLink('set_exception_handler
 $error = \Sphp\Manual\php()->classLinker(\Error::class);
 $exception = \Sphp\Manual\php()->classLinker(\Exception::class);
 \Sphp\Manual\md(<<<MD
-#PHP 7 <small>Error and Exception handling</small>
+## PHP 7 <small>Error and Exception handling</small>
 $ns
         
-In PHP 7 most errors are reported by throwing $error exceptions. These can be 
+In PHP 7.2+ most errors are reported by throwing $error exceptions. These can be 
 catched by using $try_catch blocks. If there are no matching blocks, then any 
 default exception handler installed with $set_exception_handler will be called, 
 and if there is no default exception handler, then the exception will be 

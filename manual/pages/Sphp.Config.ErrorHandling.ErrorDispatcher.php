@@ -31,12 +31,12 @@ MD
 );
 
 Manual\md(<<<MD
-###$errorDispatcher <small> as PHP Error manager</small>
+### $errorDispatcher <small> as PHP Error manager</small>
         
 An $errorDispatcher object replaces PHP's native error handler and sends PHP errors to its error listeners.
 An Error listener must be a $callable or of $errorListener type.
 
-__NOTE:__ The following error types cannot be handled by $errorDispatcher
+All of the following PHP error types cannot be handled by an $errorDispatcher instance
         
  * $e_fatal 
  * $e_error
@@ -50,10 +50,13 @@ __NOTE:__ The following error types cannot be handled by $errorDispatcher
 
 MD
 );
-/*
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 Manual\example('Sphp/Config/ErrorHandling/ErrorDispatcher.php')
         ->printHtml();
-*/
+
 Manual\md(<<<MD
 ###$errorDispatcher <small>as a Uncaught $throwable handler</small>
 In PHP 7, most errors are reported by throwing $error exceptions. Both $error and

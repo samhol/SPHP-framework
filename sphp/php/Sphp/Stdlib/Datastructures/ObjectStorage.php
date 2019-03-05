@@ -127,4 +127,30 @@ class ObjectStorage implements IteratorAggregate, Arrayable {
     return $this->objects;
   }
 
+  /**
+   * Creates and returns new queue
+   *
+   * @return Queue new instance from the collection
+   */
+  public function toQueue(): Queue {
+    $queue = new ArrayQueue();
+    foreach ($this->objects as $item) {
+      $queue->enqueue($item);
+    }
+    return $queue;
+  }
+
+  /**
+   * Creates and returns new stack
+   *
+   * @return Stack new instance from the collection
+   */
+  public function toStack(): Stack {
+    $stack = new ArrayStack();
+    foreach ($this->objects as $item) {
+      $stack->push($item);
+    }
+    return $stack;
+  }
+
 }
