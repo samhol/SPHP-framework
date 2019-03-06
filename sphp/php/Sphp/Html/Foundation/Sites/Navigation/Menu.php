@@ -35,7 +35,7 @@ interface Menu extends Component {
    * @param  MenuItem $item
    * @return $this for a fluent interface
    */
-  public function append(MenuItem $item);
+  public function append(MenuItem $item): MenuItem;
 
   /**
    * Appends a label text component to the menu

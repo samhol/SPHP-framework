@@ -1,13 +1,7 @@
-<?php
-namespace Sphp\Html\Foundation\Sites\Navigation;
 
-include 'Sphp/Html/Foundation/Sites/Navigation/ResponsiveMenu.php';
-
-\Sphp\Manual\visualize('Sphp/Html/Foundation/Sites/Navigation/ResponsiveMenu.php', 'html5');
-?>
 
 <h1>Foobar</h1>
-<ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown large-dropdown">
+<ul class="vertical medium-horizontal menu" data-responsive-menu="small-accordion medium-">
   <li>
     <a href="#">Item 1</a>
     <ul class="vertical menu">

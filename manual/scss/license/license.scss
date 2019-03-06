@@ -7,10 +7,7 @@
 @import "compass/css3";
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);
 
-//@import "../../vendor/zurb/foundation/scss/util/util";
-
 @import "settings";
-@import "../../../vendor/zurb/foundation/scss/foundation";
 
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
@@ -61,8 +58,9 @@ body.mit-license {
     margin: rem-calc(15 0);
     padding: rem-calc(15 10 30 10);
     background-color: #fafafa;
-    background-image: url('http://playground.samiholck.com/manual/pics/MIT.jpg');
+    background-image: url('http://playground.samiholck.com/manual/svg/svg.php?name=MIT&opacity=.1');
     background-position: right top;
+    background-size: auto 50%;
     background-repeat: no-repeat;
     h1, h2, h3, h4, h5, h6 {
       margin: rem-calc(5 5 10 5);
@@ -89,6 +87,12 @@ body.mit-license {
         background-color: #eee;
       }
     }
+    hr {
+      border: 0;
+      height: 1px;
+      @include background-image(linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)));
+      //background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
   }
   background-color: #000;
   background-image: url('http://data.samiholck.com/images/parquet/black.jpg');
@@ -96,4 +100,20 @@ body.mit-license {
   background-position: 0 0;
   background-attachment: fixed;
   background-size: initial;
+}
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    @include border-radius(3px);
+    svg {
+      margin-right: rem-calc(5);
+    }
+    &.button {
+     // background-color: rgba(#940, .7);
+    @include button-style(rgba(#765, .7), rgba(#432, .9), #fff);
+    }
+  }
+  
 }

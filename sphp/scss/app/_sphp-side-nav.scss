@@ -21,11 +21,11 @@ $side-nav-link-bg: hsla(0, 0, 0, 0.015);
 $side-nav-bg: #fefefe;
 
 @mixin sphp-sidenav() { 
-  .sphp.sidenav {
+  .menu.sphp.sidenav {
     min-width: rem-calc(250);
     padding: rem-calc(0 0 20 0); /* top right bottom left */
-    //border: solid 1px #333;
-    border: solid 1px #FF8000;
+    border: solid 1px #333;
+    //border: solid 1px #FF8000;
     @include border-bottom-left-radius(10px);
     overflow: hidden; 
     @include background-clip(border-box);

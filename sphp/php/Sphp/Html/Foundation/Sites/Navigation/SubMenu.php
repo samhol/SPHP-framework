@@ -81,13 +81,7 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
     return $this->menu;
   }
 
-  /**
-   * Appends a menu item object to the menu
-   *
-   * @param  MenuItem $item
-   * @return $this for a fluent interface
-   */
-  public function append(MenuItem $item) {
+  public function append(MenuItem $item): MenuItem {
     if ($item instanceof SubMenu) {
       $item->setVertical($this->isVertical());
     }
@@ -95,7 +89,7 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
     if ($item instanceof MenuLink && $item->isActive()) {
       $this->setActive(true);
     }
-    return $this;
+    return $item;
   }
 
   public function appendLink(string $href, string $content = '', string $target = '_self'): MenuLink {

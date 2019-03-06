@@ -39,13 +39,11 @@ Document::body()->addCssClass('mit-license');
 Document::html()->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\DivGrid;
-use Sphp\Stdlib\Parsers\Parser;
 
-$grid = DivGrid::from([
-            Parser::md()->parseString(<<<MD
-#MIT License
+$licenseText = <<<MD
+# MIT License
 
-Copyright (c) 2018 Sami Holck
+Copyright (c) 2011-2019 Sami Holck <sami.holc@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +64,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 MD
-)]);
+;
+$main = Tags::main();
+$main->appendSection()->appendMd($licenseText);
+$main->append('<hr>');
+$linkBar = new Foundation\Sites\Buttons\ButtonGroup();
+$linkBar->addCssClass('float-center');
+$linkBar->appendHyperlink('/', Media\Icons\FA::home()->setSize('lg') . ' Back to Manual');
+$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FA::github()->addCssClass('border')->setSize('lg') . ' repository');
+
+
+$main->append($linkBar);
+$grid = DivGrid::from([$main]);
 echo $grid;
 
 echo $html->getDocumentClose();

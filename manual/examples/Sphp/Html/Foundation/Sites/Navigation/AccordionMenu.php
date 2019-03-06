@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-$accordionMenu = FlexibleMenu::createAccordion('accordion');
+$accordionMenu = FlexibleMenu::createAccordion('accordion')->addCssClass('sphp');;
 
 $sub = $accordionMenu->appendSubMenu()->setRoot('Search Engines');
 $sub->nested();

@@ -12,7 +12,23 @@ $faLeft = (new FA())->pull('left')->fixedWidth(true);
 
 $grid = (new BlockGrid('small-up-1', 'medium-up-2', 'large-up-4'));
 
-$firstMenu = (new FlexibleMenu())->setVertical();
+
+$firstMenua = FlexibleMenu::createAccordion()->addCssClass('hide-for-medium');
+$m1Sub1 = $firstMenua->appendSubMenu();
+$m1Sub1->setRoot('Who uses SPHPlayground?' . $faRight->users());
+$m1Sub1->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi');
+$m1Sub1->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;');
+$m1Sub1->appendLink('http://playground.samiholck.com/', 'SPHPlayground manual');
+$m1Sub2 = $firstMenua->appendSubMenu();
+$m1Sub2->setRoot('Framework APIs' . $faRight->book());
+$m1Sub2->appendLink('http://playground.samiholck.com/API/sami/', $faLeft->php() . 'PHP API');
+$m1Sub2->appendLink('http://playground.samiholck.com/API/jsdoc/', $faLeft->js() . 'JavaScript API');
+$m1Sub3 = $firstMenua->appendSubMenu();
+$m1Sub3->setRoot('Unit Testing' . $faRight->stethoscope());
+$m1Sub3->appendLink('https://travis-ci.org/samhol/SPHP-framework', DevIcons::travis() . 'Travis CL');
+$m1Sub3->appendLink('https://mochajs.org/', DevIcons::mocha() . 'Mocha');
+
+$firstMenu = (new FlexibleMenu())->addCssClass('show-for-medium')->setVertical();
 $firstMenu->appendText('Who uses SPHPlayground?' . $faRight->users());
 $firstMenu->appendLink('http://raisionveneseura.fi', 'Raisionveneseura.fi');
 $firstMenu->appendLink('http://samiholck.com', '&lt;samiholck.com&gt;');
@@ -24,7 +40,7 @@ $firstMenu->appendText('Unit Testing' . $faRight->stethoscope());
 $firstMenu->appendLink('https://travis-ci.org/samhol/SPHP-framework', DevIcons::travis() . 'Travis CL');
 $firstMenu->appendLink('https://mochajs.org/', DevIcons::mocha() . 'Mocha');
 
-$grid->append($firstMenu);
+$grid->append($firstMenua.$firstMenu);
 
 $secondMenu = (new FlexibleMenu())->setVertical();
 $secondMenu->appendText('JavaScript ' . $faRight->js());

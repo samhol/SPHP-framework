@@ -57,18 +57,12 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
     parent::__clone();
   }
 
-  /**
-   * Appends a menu item object to the menu
-   *
-   * @param  MenuItem $item
-   * @return $this for a fluent interface
-   */
-  public function append(MenuItem $item) {
+  public function append(MenuItem $item): MenuItem {
     if ($item instanceof SubMenu) {
       $item->setVertical(true);
     }
     $this->items->append($item);
-    return $this;
+    return $item;
   }
 
   public function appendLink(string $href, string $content = '', string $target = null): MenuLink {
