@@ -109,7 +109,7 @@ class Router {
    * @return void
    * @throws IllegalStateException
    */
-  public function execute($url) {
+  public function execute($url): void {
     if ($this->isEmpty()) {
       throw new IllegalStateException('The router is empty and cannot be executed');
     }

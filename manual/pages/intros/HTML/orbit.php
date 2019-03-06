@@ -1,6 +1,5 @@
 <?php
 
-use Sphp\Html\Flow\Section;
 use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
 use Sphp\Html\Tags;
 

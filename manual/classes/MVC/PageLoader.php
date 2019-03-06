@@ -85,6 +85,18 @@ class PageLoader implements CssClassifiableContent {
     $this->load("manual/pages/vendors/$vendorName.php");
   }
 
+  public function loadIntros(string $path, string $introFor = null) {
+    $this->container->appendPhpFile("manual/pages/intros/links.php");
+    if ($introFor === null) {
+      $introFor = 'main';
+    } if (is_dir("manual/pages/intros/$introFor")) {
+      $this->container->appendPhpFile("manual/pages/intros/$introFor/orbit.php");
+      $this->printHtml();
+    } else {
+      $this->loadNotFound($path);
+    }
+  }
+
   public function cssClasses(): ClassAttribute {
     return $this->manual->cssClasses();
   }
