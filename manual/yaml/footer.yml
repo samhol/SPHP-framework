@@ -55,7 +55,6 @@ footer:
      text: ZeroClipboard
    - link: http://www.ama3.com/anytime/
      text: Any+Time&trade;
- 
  - title: PHP
    icon: <i class="fab fa-php"></i>
    links:
@@ -99,7 +98,7 @@ footer:
      text: <b>SASS</b> language
    - link: http://compass-style.org/
      text: "<b style=\"color:#fb292d;\">Compass</b> framework"
-     icon: $faRight->compass()
+     icon: <i class="far fa-compass"></i>
  - title: CSS
    icon: <i class="fab fa-css3"></i>
    links:
