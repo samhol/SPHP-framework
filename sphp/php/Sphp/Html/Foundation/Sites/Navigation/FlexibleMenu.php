@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
+
 /**
  * Implements a basic navigation menu
  *
@@ -22,6 +24,27 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  */
 class FlexibleMenu extends AbstractMenu {
 
+  private static $props = [
+      self::DROPDOWN => [
+          'disableHover',
+          'autoclose',
+          'hoverDelay',
+          'clickOpen',
+          'closingTime',
+          'alignment',
+          'closeOnClick',
+          'closeOnClickInside',
+          'verticalClass',
+          'rightClass',
+          'forceFollow',
+      ]
+  ];
+
+  /**
+   * @var PropertyCollectionAttribute 
+   */
+  private $options;
+
   /**
    * Constructor
    *
@@ -32,6 +55,12 @@ class FlexibleMenu extends AbstractMenu {
     if ($content !== null) {
       $this->appendContent($content);
     }
+    $this->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
+  }
+
+  public function setOption(string $name, $value) {
+     $this->options->setProperty($name, $value);
+     return $this;
   }
 
   /**
@@ -48,6 +77,39 @@ class FlexibleMenu extends AbstractMenu {
     }
   }
 
+  public function resetLayout() {
+    $this->removeCssClass('accordion
+
+  -menu', 'drilldown', 'dropdown');
+    $this->setAttribute('data-accordion-menu', false);
+    $this->setAttribute('data-dropdown-menu', false);
+    $this->setAttribute('data-drilldown', false);
+    $this->setVertical(false);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string|null $menuType
+   * @return $this
+   */
+  public function setLayout(string $menuType = null) {
+    $this->resetLayout();
+    if ($menuType === self::ACCORDION) {
+      $this->addCssClass('accordion-menu');
+      $this->setVertical(true);
+      $this->setAttribute('data-accordion-menu', true);
+    } else if ($menuType === self::DROPDOWN) {
+      $this->addCssClass('dropdown');
+      $this->setAttribute('data-dropdown-menu', true);
+    } else if ($menuType === self::DRILLDOWN) {
+      $this->addCssClass('drilldown');
+      $this->setVertical(true);
+      $this->setAttribute('data-drilldown', true);
+    }
+    return $this;
+  }
+
   /**
    * Creates a new Accordion down menu 
    * 
@@ -55,9 +117,7 @@ class FlexibleMenu extends AbstractMenu {
    */
   public static function createAccordion(): FlexibleMenu {
     $menu = new static();
-    $menu->cssClasses()->protectValue('accordion-menu');
-    $menu->setVertical(true);
-    $menu->attributes()->demand('data-accordion-menu');
+    $menu->setLayout(self::ACCORDION);
     return $menu;
   }
 
@@ -66,11 +126,10 @@ class FlexibleMenu extends AbstractMenu {
    * 
    * @return FlexibleMenu
    */
-  public static function createDrilldown(): FlexibleMenu {
+  public static function createDrilldown(bool $autoHeight = false, bool $outoHeight = false): FlexibleMenu {
     $menu = new static();
-    $menu->attributes()->demand('data-drilldown');
-    $menu->setVertical(true);
-    $menu->cssClasses()->protectValue('drilldown');
+    $menu->setLayout(self::DRILLDOWN);
+    // data-auto-height="true"
     return $menu;
   }
 
@@ -81,8 +140,7 @@ class FlexibleMenu extends AbstractMenu {
    */
   public static function createDropdown(): FlexibleMenu {
     $menu = new static();
-    $menu->cssClasses()->protectValue('dropdown');
-    $menu->attributes()->demand('data-dropdown-menu');
+    $menu->setLayout(self::DROPDOWN);
     return $menu;
   }
 

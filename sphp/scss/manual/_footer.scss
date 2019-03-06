@@ -34,13 +34,15 @@ $highlight-color: #FAA523;
       .cell {
         border-left: solid 1px $sitemap-border-color;
         border-right: solid 1px $sitemap-border-color;
+        padding: rem-calc(0 15 0 15);
         ul {  
           @include breakpoint(small) {
-            margin: rem-calc(0 15 0 15);
+            //margin: rem-calc(0 15 0 15);
           }
           li { 
             color: #e6e6e6;
             a {
+              background-color: transparent;
               color: #e6e6e6;
               font-size: rem-calc(14);
               border: solid 1px transparent; 
