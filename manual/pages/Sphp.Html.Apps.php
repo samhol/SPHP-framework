@@ -7,7 +7,7 @@ use Sphp\Manual;
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Manual\md(<<<MD
-#Miscellaneous HTML components and applications
+# Miscellaneous HTML components and applications
         
 $ns
 MD

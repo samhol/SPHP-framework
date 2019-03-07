@@ -8,10 +8,10 @@ $syntax1 = (new GeSHiSyntaxHighlighter())
 \Sphp\Manual\md(<<<MD
 
 ##The $syntaxHighligher component
-<div class="row"><div class="column small-12 large-5">
+<div class="grid-x"><div class="cell small-12 large-5">
 
 
 
-</div><div class="column small-12 medium-7">$syntax1</div></div>
+</div><div class="cell small-12 medium-7">$syntax1</div></div>
 MD
 );
