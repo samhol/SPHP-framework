@@ -13,7 +13,7 @@ namespace Sphp\Stdlib\Observers;
 use SplObjectStorage;
 
 /**
- * Trait implements the {@link Subject} class in observer pattern
+ * Trait implements Subject interface in observer pattern
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -31,9 +31,10 @@ trait ObservableSubjectTrait {
   /**
    * Attach an observer to the observable
    *
-   * @param Observer|callable $obs the attached observer
+   * @param  Observer|callable $obs the attached observer
+   * @return void
    */
-  public function attach($obs) {
+  public function attach($obs): void {
     if ($this->observers === null) {
       $this->observers = new SplObjectStorage();
     }
@@ -51,16 +52,19 @@ trait ObservableSubjectTrait {
   /**
    * Detaches an observer from the observable
    *
-   * @param Observer|callable $obs the detached observer
+   * @param  Observer|callable $obs the detached observer
+   * @return void
    */
-  public function detach($obs) {
+  public function detach($obs): void {
     $this->observers->detach($obs);
   }
 
   /**
    * Notifies all observers
+   * 
+   * @return void
    */
-  public function notify() {
+  public function notify(): void {
     if ($this->observers !== null) {
       foreach ($this->observers as $obs) {
         if ($obs instanceof Observer) {
