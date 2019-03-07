@@ -16,6 +16,8 @@ try {
   //$manual = (new SubMenu('Documentation'));
   $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
   $leftDrop = ResponsiveMenu::drilldownDropdown('medium');
+  $leftDrop->setOption('autoHeight', true);
+  $leftDrop->setAttribute('data-auto-height', 'true');
   $leftDrop->appendLink('/', FA::home())->addCssClass('icon-link');
   $builder = new MenuBuilder(new MenuLinkBuilder(trim($redirect, '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));

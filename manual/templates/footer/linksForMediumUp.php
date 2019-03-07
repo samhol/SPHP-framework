@@ -17,5 +17,5 @@ $grid->append($menus[1]);
 $grid->append($menus[2]);
 $grid->append($menus[3]);
 $grid->append($menus[4]);
+
 echo $grid;
-?>

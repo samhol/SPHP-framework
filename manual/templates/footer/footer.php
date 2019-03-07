@@ -115,7 +115,7 @@ $currentUrl = URL::getCurrentURL();
       ?>
       Copyright &copy; <?php echo date('Y'); ?> by <b>Sami Holck</b>.
       <span class="separator">||</span>
-      <a href="license.php"><b>MIT license</b></a>
+      <a href="/license.php" target="license" rel="copyright"><b>MIT license</b></a>
       <span class="separator">||</span>
       <b>Script executed in:</b>
       <i><?php echo number_format(StopWatch::getExecutionTime(), 2) ?> seconds</i>

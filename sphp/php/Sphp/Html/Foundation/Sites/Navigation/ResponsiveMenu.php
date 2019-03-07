@@ -21,10 +21,12 @@ use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ResponsiveMenu extends AbstractMenu {
+class ResponsiveMenu extends AbstractJsMenu {
 
-  private $defaultType;
-  private $responsiveType;
+  /**
+   * @var FoundationSettings 
+   */
+  private $settings;
 
   /**
    * Constructor
@@ -40,6 +42,27 @@ class ResponsiveMenu extends AbstractMenu {
     $this->settings = $settings;
   }
 
+  public function __destruct() {
+    unset($this->settings);
+    parent::__destruct();
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @param  scalar $value
+   * @return $this
+   */
+  public function setOption(string $name, $value) {
+    if (is_bool($value)) {
+      $value = $value ? 'true' : 'false';
+    }
+    $dataAttrName = preg_replace('/([A-Z])/', '-$1', $name);
+    //echo strtolower($dataAttrName);
+    $this->setAttribute(strtolower($dataAttrName), $value);
+    return $this;
+  }
+
   public function setDefaultrOrientation(string $orientation) {
     if ($orientation === Menu::VERTICAL) {
       $this->cssClasses()->add('vertical');
@@ -52,7 +75,6 @@ class ResponsiveMenu extends AbstractMenu {
   public function setOrientationFor(string $screenSize, string $orientation) {
     $this->unsetResponsiveOrientations();
     $this->cssClasses()->add("$screenSize-$orientation");
-
     return $this;
   }
 

@@ -10,8 +10,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Attributes\PropertyCollectionAttribute;
-
 /**
  * Implements a basic navigation menu
  *
@@ -22,65 +20,14 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FlexibleMenu extends AbstractMenu {
-
-  private static $props = [
-      self::DROPDOWN => [
-          'disableHover',
-          'autoclose',
-          'hoverDelay',
-          'clickOpen',
-          'closingTime',
-          'alignment',
-          'closeOnClick',
-          'closeOnClickInside',
-          'verticalClass',
-          'rightClass',
-          'forceFollow',
-      ]
-  ];
-
-  /**
-   * @var PropertyCollectionAttribute 
-   */
-  private $options;
-
-  /**
-   * Constructor
-   *
-   * @param mixed $content
-   */
-  public function __construct($content = null) {
-    parent::__construct('ul');
-    if ($content !== null) {
-      $this->appendContent($content);
-    }
-    $this->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
-  }
-
-  public function setOption(string $name, $value) {
-     $this->options->setProperty($name, $value);
-     return $this;
-  }
+class FlexibleMenu extends AbstractJsMenu {
 
   /**
    * 
-   * @param mixed $content
+   * @return $this
    */
-  protected function appendContent($content) {
-    foreach (is_array($content) ? $content : [$content] as $item) {
-      if ($item instanceof MenuItem) {
-        $this->append($item);
-      } else {
-        $this->appendText($item);
-      }
-    }
-  }
-
   public function resetLayout() {
-    $this->removeCssClass('accordion
-
-  -menu', 'drilldown', 'dropdown');
+    $this->removeCssClass('accordion-menu', 'drilldown', 'dropdown');
     $this->setAttribute('data-accordion-menu', false);
     $this->setAttribute('data-dropdown-menu', false);
     $this->setAttribute('data-drilldown', false);
