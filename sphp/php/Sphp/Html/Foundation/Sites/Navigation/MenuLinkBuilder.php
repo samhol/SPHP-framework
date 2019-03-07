@@ -38,10 +38,6 @@ class MenuLinkBuilder {
    */
   private $activator;
 
-  public function __construct() {
-    ;
-  }
-
   /**
    * 
    * @return type
@@ -84,10 +80,10 @@ class MenuLinkBuilder {
 
   /**
    * 
-   * @param type $activator
+   * @param  callable $activator
    * @return $this
    */
-  public function setActivator($activator) {
+  public function setActivator(callable $activator) {
     $this->activator = $activator;
     return $this;
   }
@@ -109,10 +105,29 @@ class MenuLinkBuilder {
   /**
    * 
    * @param  array $linkData
-   * @return string
+   * @return string|null
    */
-  protected function parseTarget(array $linkData) {
+  protected function parseTarget(array $linkData): ?string {
     return array_key_exists('target', $linkData) ? $linkData['target'] : $this->getDefaultTarget();
+  }
+
+  /**
+   * 
+   * 
+   * @param  array $linkData
+   * @return string
+   * @throws InvalidArgumentException
+   */
+  public function pareLinkText(array $linkData): string {
+    if (!array_key_exists('link', $linkData)) {
+      throw new InvalidArgumentException("Malformed link data given");
+    }
+    $text = '';
+    if (array_key_exists('icon', $linkData)) {
+      $text .= $linkData['icon'] . ' ';
+    }
+    $text .= $linkData['link'];
+    return $text;
   }
 
   /**
@@ -123,7 +138,8 @@ class MenuLinkBuilder {
   public function parseLink(array $linkData): MenuLink {
     $href = $this->parseHref($linkData);
     $target = $this->parseTarget($linkData);
-    $link = new MenuLink($href, $linkData['link'], $target);
+    $linkText = $this->pareLinkText($linkData);
+    $link = new MenuLink($href, $linkText, $target);
     if (is_callable($this->activator)) {
       $t = $this->getActivator();
       $link->setActive($t($linkData));

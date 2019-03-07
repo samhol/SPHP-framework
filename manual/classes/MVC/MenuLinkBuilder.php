@@ -30,7 +30,6 @@ class MenuLinkBuilder extends SphpMenuLinkBuilder {
    * @param string $currentPage
    */
   public function __construct(string $currentPage = null) {
-    parent::__construct();
     $this->currentPage = $currentPage;
   }
 

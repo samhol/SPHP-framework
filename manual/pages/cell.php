@@ -24,13 +24,15 @@
 </div>
 </div>
 <?php
-echo '<pre>';
 
-$settings = Sphp\Html\Foundation\Sites\Core\FoundationSettings::default();
-var_dump($settings->isValidCellSize(13));
-
-var_dump($settings->getScreenSizes());
-
-
-var_dump(implode('|',$settings->getScreenSizes()));
-echo '</pre>';
+$dd = \Sphp\Html\Foundation\Sites\Navigation\FlexibleMenu::createDrilldown()->addCssClass('sphp');
+$dd->setOption('autoHeight', 'true');
+$dd->setOption('animateHeight', 'true');
+$sub1 = $dd->appendSubMenu();
+$sub1->setRoot('sub1');
+for ($i = 1; $i < 5; $i++) {
+  $sub1->appendLink("#sub$i", "sub$i");
+}
+for ($i = 1; $i < 15; $i++) {
+  $dd->appendLink("#foo$i", "foo$i");
+}

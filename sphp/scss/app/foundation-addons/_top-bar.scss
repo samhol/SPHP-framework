@@ -65,11 +65,6 @@
                 border-right: 1px solid $root-border-color;
               }
             }
-            &:not(.icon-link)  {
-              > a {
-                // min-width: rem-calc(120);
-              }
-            }
           }
         }
         li { 

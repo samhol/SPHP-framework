@@ -15,7 +15,7 @@ $sitemap-border-color: rgba(70, 70, 70, 0.3);
 $sitemap-border-highlight-color: rgba(70, 70, 70, 0.5); 
 $highlight-color: #FAA523;
 
-.engadget-footer {
+.manual-footer {
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
@@ -29,62 +29,81 @@ $highlight-color: #FAA523;
     background-repeat: no-repeat,repeat;
     background-position: center center,0 0;
     .sitemap { 
-      @include grid-row();
+      //@include grid-row();
       padding: rem-calc(60) 0;
-      .cell {
-        border-left: solid 1px $sitemap-border-color;
-        border-right: solid 1px $sitemap-border-color;
-        padding: rem-calc(0 15 0 15);
-        ul {  
-          @include breakpoint(small) {
-            //margin: rem-calc(0 15 0 15);
-          }
-          li { 
-            color: #e6e6e6;
-            a {
-              background-color: transparent;
-              color: #e6e6e6;
-              font-size: rem-calc(14);
-              border: solid 1px transparent; 
-              padding: rem-calc(8 10 8 25);
-              &:hover {
-                color: #fff;
-                border-color: $sitemap-border-highlight-color; 
-                background: rgba(40, 40, 40, 0.4);
-              }
-              i, svg {
-                float: left;
-                margin-left: rem-calc(-20);
-                margin-right: rem-calc(5);
-                @include opacity(0.7);
-                &.local {
-                  height: 1em;
-                  vertical-align: -.125em;
-                  display: inline-block;
-                  path {
-                    fill: #e6e6e6;
-                  }
-                }
-              }
-            }
-            &.menu-text {
-              i, svg {
-                @include opacity(0.7);
-              }
-              font-size: rem-calc(17);
-              border: solid 1px $sitemap-border-color; 
-              @include border-radius(3px);
-              background: rgba(40, 40, 40, 0.3);
-              padding: rem-calc(8 15 8 8); // top right bottom left
-              margin: rem-calc(2 0 2 0);
-            }
-            &.menu-ruler {
-              height: 2px; 
-              background: $sitemap-border-highlight-color;
-              margin: rem-calc(2 0 2 0);
+      /*@include breakpoint(small) {
+        margin-left: rem-calc(17);
+        margin-right: rem-calc(17);
+      }*/
+      ul { 
+        i, svg {
+          @include opacity(0.7);
+        }
+        li.menu-text {
+          &.root {
+            padding-left: rem-calc(5);
+            i, svg {
+              float: right;
+              margin-left: rem-calc(-20);
+              margin-right: rem-calc(5);
+              @include opacity(0.7);
             }
           }
         }
+        li.is-accordion-submenu-parent > a {
+          padding-left: rem-calc(5);
+          font-size: rem-calc(17);
+          border: solid 1px $sitemap-border-color; 
+          @include border-radius(3px);
+          background: rgba(40, 40, 40, 0.3);
+          padding: rem-calc(8 15 8 8); // top right bottom left
+          margin: rem-calc(2 0 2 0);
+          &:after {
+            border-top-color: rgba(#efefef, .6);
+          }
+          i, svg {
+            padding-right: rem-calc(5);
+          }
+        }
+        &.accordion-menu{
+          margin-left: rem-calc(10);
+          margin-right: rem-calc(10);
+        }
+
+        li.menu-text, li.is-accordion-submenu-parent > a {
+          font-size: rem-calc(17);
+          border: solid 1px $sitemap-border-color; 
+          @include border-radius(3px);
+          background: rgba(40, 40, 40, 0.3);
+          padding: rem-calc(8 15 8 8); // top right bottom left
+          margin: rem-calc(2 0 2 0);
+        }
+        li { 
+          color: #e6e6e6;
+          a {
+            background-color: transparent;
+            color: #e6e6e6;
+            font-size: rem-calc(14);
+            border: solid 1px transparent; 
+            padding: rem-calc(8 10 8 25);
+            &:hover {
+              color: #fff;
+              border-color: $sitemap-border-highlight-color; 
+              background: rgba(40, 40, 40, 0.4);
+            }
+          }
+          &.menu-ruler {
+            height: 2px; 
+            background: $sitemap-border-highlight-color;
+            margin: rem-calc(2 0 2 0);
+          }
+        }
+      }
+      .grid-x.blocks > .cell {
+        border-left: solid 1px $sitemap-border-color;
+        border-right: solid 1px $sitemap-border-color;
+        padding: rem-calc(0 15 0 15);
+
       } 
     }
   }

@@ -89,13 +89,33 @@ class MenuBuilder {
   }
 
   /**
+   * 
+   * 
+   * @param  array $linkData
+   * @return string
+   * @throws InvalidArgumentException
+   */
+  public function parseSubMenuRootText(array $linkData): string {
+    if (!array_key_exists('menu', $linkData)) {
+      throw new InvalidArgumentException("Malformed submenu data given");
+    }
+    $text = '';
+    if (array_key_exists('icon', $linkData)) {
+      $text .= $linkData['icon'] . ' ';
+    }
+    $text .= $linkData['menu'];
+    return $text;
+  }
+  
+  /**
    * Builds a new sub menu from given menu data
    * 
    * @param  array $data the menu data
    * @return SubMenu new sub menu
    */
   public function buildSub(array $data): SubMenu {
-    $instance = new SubMenu($data['menu']);
+    $root = $this->parseSubMenuRootText($data);
+    $instance = new SubMenu($root);
     $this->buildMenu($data, $instance);
     return $instance;
   }
@@ -110,9 +130,6 @@ class MenuBuilder {
   public function buildMenu(array $data, Menu $instance = null): Menu {
     if ($instance === null) {
       $instance = new $this->menuType();
-    }
-    if (array_key_exists('defaultTarget', $data)) {
-      $instance->setDefaultTarget($data['defaultTarget']);
     }
     $this->insertIntoMenu($data['items'], $instance);
     return $instance;

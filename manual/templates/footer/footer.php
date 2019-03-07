@@ -7,12 +7,18 @@ use Sphp\Html\Media\Icons\FaIcon;
 $currentUrl = URL::getCurrentURL();
 ?>
 
-<div class="engadget-footer sitemap-container">
+<div class="manual-footer sitemap-container">
   <footer class="sitemap">
-<?php include 'manual/templates/blocks/footerLinks.php'; ?>
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell auto">
+          <?php include 'footerLinks.php'; ?>
+        </div>
+      </div>
+    </div>
   </footer>
 </div>
-<div class="engadget-footer social-container">
+<div class="manual-footer social-container">
   <footer class="social">
     <div class="footer-left">
       <div class="contact-details">
@@ -55,7 +61,7 @@ $currentUrl = URL::getCurrentURL();
     </div>
   </footer>
 </div>
-<div class="engadget-footer copyright-details-container">
+<div class="manual-footer copyright-details-container">
   <footer class="copyright-details">
     <ul class="tech-links-list">
       <li>

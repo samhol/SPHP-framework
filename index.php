@@ -42,7 +42,7 @@ if ($outputCache->start("$cacheSuffix-topbar") === false) {
 </div>
 <?php
 if ($outputCache->start('footer') === false) {
-  include('manual/templates/blocks/footer.php');
+  include('manual/templates/footer/footer.php');
   include('manual/templates/backToTopButton.php');
   $outputCache->end();
 }

@@ -1,110 +1,121 @@
 ## YAML Template.
 ---
-footer:
- - title: Who uses SPHPlayground?
+menu:
+items:
+ - menu: Who uses SPHPlayground?
+   key: 1
    icon: <i class="fas fa-users"></i>
-   links:
-   - link: http://raisionveneseura.fi
-     text: Raisionveneseura.fi
-   - link: http://samiholck.com
-     text: "&lt;samiholck.com&gt"
-   - link: http://playground.samiholck.com/
-     text: SPHPlayground manual
- - title: Framework APIs
+   items:
+   - link: Raisionveneseura.fi
+     href: http://raisionveneseura.fi
+   - link: "&lt;samiholck.com&gt"
+     href: http://samiholck.com
+   - link: SPHPlayground manual
+     href: http://playground.samiholck.com/
+ - menu: Framework APIs
+   key: 1
    icon: <i class="fas fa-book"></i>
-   links:
-   - link: http://playground.samiholck.com/API/sami/
-     text: PHP API
+   items:
+   - link: PHP API
+     href: http://playground.samiholck.com/API/sami/
      icon: <i class="fab fa-php"></i>
-   - link: http://playground.samiholck.com/API/jsdoc/
+     rel:  external
+   - link: JavaScript API
+     href: http://playground.samiholck.com/API/jsdoc/
      icon: <i class="fab fa-js"></i>
-     text: JavaScript API
- - title: Unit Testing
+ - menu: Unit Testing
+   key: 1
    icon: <i class="fas fa-stethoscope"></i>
-   links:
-   - link: https://travis-ci.org/samhol/SPHP-framework
+   items:
+   - link: Travis CL
+     href: https://travis-ci.org/samhol/SPHP-framework
      icon: <i class="devicon-travis-plain"></i>
-     text: Travis CL
-   - link: https://mochajs.org/
+   - link: Mocha 
+     href: https://mochajs.org/
      icon: <i class="devicon-mocha-plain"></i>
-     text: Mocha 
- - title: JavaScript
+ - menu: JavaScript
+   key: 2
    icon: <i class="fab fa-js"></i>
-   links:
-   - link: https://nodejs.org/
-     text: Node.js
+   items:
+   - link: Node.js
+     href: https://nodejs.org/
      icon: <i class="fab fa-node-js"></i>
-   - link: https://www.npmjs.com/
-     text: npm
+   - link: npm
+     href: https://www.npmjs.com/
      icon: <i class="fab fa-npm"></i>
-   - link: https://gulpjs.com/
-     text: gulp.js
+   - link: gulp.js
+     href: https://gulpjs.com/
      icon: <i class="fab fa-gulp"></i>
-   - ruler
-   - link: https://jquery.com/
+   - ruler:
+   - link: jQuery
+     href: https://jquery.com/
      icon: <i class="devicon-jquery-plain"></i>
-     text: jQuery
-   - link: http://foundation.zurb.com/
+   - link: Foundation
+     href: http://foundation.zurb.com/
      icon: <i class="devicon-foundation-plain"></i>
-     text: Foundation
-   - link: http://qtip2.com/
-     text: qTip<sup>2</sup>
-   - link: http://ressio.github.io/lazy-load-xt/
-     text: Lazy Load XT
-   - link: http://zeroclipboard.org/
-     text: ZeroClipboard
-   - link: http://www.ama3.com/anytime/
-     text: Any+Time&trade;
- - title: PHP
+   - link: qTip<sup>2</sup>
+     href: http://qtip2.com/
+   - link: Lazy Load XT
+     href: http://ressio.github.io/lazy-load-xt/
+   - link: ZeroClipboard
+     href: http://zeroclipboard.org/
+   - link: Any+Time&trade;
+     href: http://www.ama3.com/anytime/
+ - menu: PHP
+   key: 3
    icon: <i class="fab fa-php"></i>
-   links:
-   - link: http://php.net/manual/en/
-     text: PHP Manual
+   items:
+   - link: PHP Manual
+     href: http://php.net/manual/en/
      icon: <i class="fab fa-php"></i>
-   - ruler
-   - link: https://phpunit.de/
-     text: PHPUnit
-   - link: https://framework.zend.com/
+   - ruler:
+   - link: PHPUnit
+     href: https://phpunit.de/
+   - link: Zend
+     href: https://framework.zend.com/
      icon: <i class="devicon-zend-plain"></i>
-     text: Zend
-   - link: https://github.com/erusev/parsedown-extra
+   - link: Symfony
+     href: https://github.com/erusev/parsedown-extra
      icon: <i class="devicon-symfony-plain"></i>
-     text: Symfony
-   - link: http://www.doctrine-project.org/
+   - link: Doctrine
+     href: http://www.doctrine-project.org/
      icon: <i class="devicon-doctrine-plain"></i>
-     text: Doctrine
- - title: Databases
+ - menu: Databases
+   key: 3
    icon: <i class="fas fa-database"></i>
-   links:
-   - link: https://www.mysql.com/
+   items:
+   - link: MySQL
+     href: https://www.mysql.com/
      icon: <i class="devicon-mysql-plain"></i>
-     text: MySQL
-   - link: http://www.postgresql.org/
+   - link: PostgreSQL
+     href: http://www.postgresql.org/
      icon: <i class="devicon-postgresql-plain"></i>
-     text: PostgreSQL
-   - link: https://sqlite.org/
-     text: SQLite     
- - title: HTML
+   - link: SQLite     
+     href: https://sqlite.org/
+ - menu: HTML
+   key: 4
    icon: <i class="fab fa-html5"></i>
-   links:
-   - link: https://www.w3.org/html/
-     text: "HTML5 - <b>W3C</b>"
-   - link: https://www.w3schools.com/js/
-     text: w3schools.com
- - title : SASS
+   items:
+   - link: "HTML5 - <b>W3C</b>"
+     href: https://www.w3.org/html/
+   - link: w3schools.com
+     href: https://www.w3schools.com/js/
+ - menu : SASS
+   key: 4
    icon: <i class="fab fa-sass"></i>
-   links:
-   - link: http://sass-lang.com/
-     text: <b>SASS</b> language
-   - link: http://compass-style.org/
-     text: "<b style=\"color:#fb292d;\">Compass</b> framework"
+   items:
+   - link: <b>SASS</b> language
+     href: http://sass-lang.com/
+   - link: "<b style=\"color:#fb292d;\">Compass</b> framework"
+     href: http://compass-style.org/
      icon: <i class="far fa-compass"></i>
- - title: CSS
+ - menu: CSS
+   key: 4
    icon: <i class="fab fa-css3"></i>
-   links:
-   - link: https://developer.mozilla.org/en-US/docs/Web/CSS
-     text: "CSS - <b>MDN</b>"
-   - link: https://css-tricks.com/
-     text: "CSS-TRICKS"
+   items:
+   - link: "CSS - <b>MDN</b>"
+     href: https://developer.mozilla.org/en-US/docs/Web/CSS
+   - link: "CSS-TRICKS"
+     href: https://css-tricks.com/
      icon: <i class="fas fa-asterisk"></i>
      
