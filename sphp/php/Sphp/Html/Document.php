@@ -33,6 +33,7 @@ class Document {
    * Returns the &lt;html&gt; component pointed by the given name
    * 
    * @param  string|null $docName the name of the managed document
+   * @param  Html $template
    * @return Head the singleton instance pointed by the given name
    */
   public static function create(string $docName = null, Html $template = null): Html {

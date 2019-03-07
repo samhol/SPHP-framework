@@ -4,7 +4,7 @@ namespace Sphp\Stdlib\Observers;
 
 class Subject1 implements Subject {
 
-  use ObservableSubjectTrait;
+  use SubjectTrait;
 
   public $message;
 

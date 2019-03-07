@@ -45,13 +45,15 @@ class FoundationSettings {
    * Constructor
    * 
    * @param array $sizes
+   * @param int $gridMax
+   * @param type $blockGridMax
    */
-  public function __construct(array $sizes = null, int $gridMax = 12, $blockGridMAx = 8) {
+  public function __construct(array $sizes = null, int $gridMax = 12, int $blockGridMax = 8) {
     if ($sizes !== null) {
       $this->sizes = $sizes;
     }
     $this->gridMax = $gridMax;
-    $this->blockGridMax = $blockGridMAx;
+    $this->blockGridMax = $blockGridMax;
     $this->setGridSizes($gridMax);
   }
 

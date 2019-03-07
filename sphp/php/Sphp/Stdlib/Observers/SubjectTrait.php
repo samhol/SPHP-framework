@@ -19,7 +19,7 @@ use SplObjectStorage;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-trait ObservableSubjectTrait {
+trait SubjectTrait {
 
   /**
    * collection of individual observer objects

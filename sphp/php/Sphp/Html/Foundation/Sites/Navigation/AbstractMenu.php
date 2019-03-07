@@ -11,8 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Container;
-use Sphp\Html\PlainContainer;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements an abstract menu
@@ -27,7 +26,7 @@ use Sphp\Html\PlainContainer;
 abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem {
 
   /**
-   * @var Container
+   * @var MenuItem[]
    */
   private $items;
 
@@ -36,13 +35,9 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
    * 
    * @param string $tagname
    * @param AttributeManager $attrManager
-   * @param Container $contentContainer
    */
-  public function __construct(string $tagname = 'ul', AttributeManager $attrManager = null, Container $contentContainer = null) {
-    if ($contentContainer === null) {
-      $contentContainer = new PlainContainer();
-    }
-    $this->items = $contentContainer;
+  public function __construct(string $tagname = 'ul', AttributeManager $attrManager = null) {
+    $this->items = [];
     parent::__construct($tagname, $attrManager);
     $this->cssClasses()->protectValue('menu');
   }
@@ -53,7 +48,7 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
   }
 
   public function __clone() {
-    $this->items = clone $this->items;
+    $this->items = Arrays::copy($this->items);
     parent::__clone();
   }
 
@@ -61,7 +56,7 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
     if ($item instanceof SubMenu) {
       $item->setVertical(true);
     }
-    $this->items->append($item);
+    $this->items[] = $item;
     return $item;
   }
 
@@ -81,7 +76,6 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
     if ($subMenu === null) {
       $subMenu = new SubMenu();
     }
-    //$subMenu->setVertical($this->isVertical());
     $this->append($subMenu);
     return $subMenu;
   }
@@ -138,7 +132,7 @@ abstract class AbstractMenu extends AbstractComponent implements Menu, MenuItem 
   }
 
   public function contentToString(): string {
-    return $this->items->getHtml();
+    return implode($this->items);
   }
 
 }

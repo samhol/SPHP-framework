@@ -31,7 +31,6 @@ class ResponsiveMenu extends AbstractJsMenu {
   /**
    * Constructor
    * 
-   * @param string $tagName
    * @param FoundationSettings $settings
    */
   public function __construct(FoundationSettings $settings = null) {

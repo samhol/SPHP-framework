@@ -17,18 +17,6 @@ use Sphp\Html\Container;
 /**
  * Implements an XY Grid Cell
  *
- * 
- * @method $this small(int|string $sizeOrVisibility) sets the visibility or the size for small screens
- * @method $this medium(int|string $sizeOrVisibility) sets the visibility or the size for medium screens
- * @method $this large(int|string $sizeOrVisibility) sets the visibility or the size for large screens
- * @method $this xlarge(int|string $sizeOrVisibility) sets the visibility or the size for xlarge screens
- * @method $this xxlarge(int|string $sizeOrVisibility) sets the visibility or the size for xxlarge screens
- * @method $this smallOffset(int $offest = null) sets the offset for small screens
- * @method $this mediumOffset(int $offest = null) sets the offset for medium screens
- * @method $this largeOffset(int $offest = null) sets the offset for large screens
- * @method $this xlargeOffset(int $offest = null) sets the offset for xlarge screens
- * @method $this xxlargeOffset(int $offest = null) sets the offset for xxlarge screens
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @link    https://foundation.zurb.com/sites/docs/xy-grid.html XY Grid
@@ -45,9 +33,8 @@ class ContainerCell extends AbstractCell {
   /**
    * Constructor
    * 
-   * @param CssClassifiableContent $component
-   * @param ScreenSizes $screenSizes
-   * @param int $maxSize
+   * @param mixed $content
+   * @param array $opts
    */
   public function __construct($content = null, array $opts = []) {
     parent::__construct();

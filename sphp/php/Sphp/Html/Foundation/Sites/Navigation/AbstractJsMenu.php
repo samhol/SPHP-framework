@@ -35,14 +35,14 @@ abstract class AbstractJsMenu extends AbstractMenu {
    * 
    * @param string $tagname
    * @param AttributeManager $attrManager
-   * @param Container $contentContainer
    */
-  public function __construct(string $tagname = 'ul', AttributeManager $attrManager = null, Container $contentContainer = null) {
-    parent::__construct($tagname, $attrManager, $contentContainer);
+  public function __construct(string $tagname = 'ul', AttributeManager $attrManager = null) {
+    parent::__construct($tagname, $attrManager);
     $this->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
   }
 
   /**
+   * Sets
    * 
    * @param  string $name
    * @param  scalar $value
