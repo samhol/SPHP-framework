@@ -30,7 +30,7 @@ try {
   $form->setPlaceholder('Search Manual');
 
 
-  $bi = new \Sphp\Html\Media\Icons\BrandIcons();
+  $bi = new \Sphp\Html\Media\Icons\IconButtons();
   $bi->github('https://github.com/samhol/SPHP-framework', 'Gihub repository');
   $bi->facebook('https://www.facebook.com/Sami.Petteri.Holck.Playground/', 'Facebook page');
   // $bi->googlePlus('https://plus.google.com/b/113942361282002156141/113942361282002156141', 'Google plus page');

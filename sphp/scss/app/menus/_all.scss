@@ -6,9 +6,8 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-@import "sphp-brand-icon-menu";
 @import "foundation-menus";
 
 @mixin sphp-menus() { 
-  @include sphp-brand-icon-menu;
+  @include sphp-foundation-menu;
 }

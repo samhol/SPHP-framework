@@ -8,6 +8,7 @@
 
 @import "icon-buttons";
 
-@mixin sphp-foundation-buttons() { 
+@mixin sphp-icon-buttons() { 
+  @include icon-button;
   @include icon-buttons(); 
 }

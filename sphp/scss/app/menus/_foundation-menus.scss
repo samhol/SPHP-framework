@@ -16,37 +16,40 @@ $menu-link-color: #f4f4f4;
 $menu-link-color-active: #fff;
 $root-border-color: #333;
 $menu-font-size: rem-calc(13);
-.sphp.menu {
-  li {
-    font-size: $menu-font-size;
-    &.is-active > a {  
-      background: $menu-link-bg-active;
-      color: $menu-link-color-active;
-    }
-    &.menu-ruler {
-      @include background-image(linear-gradient(120deg, #222, #555, #222));
-      background-color: smart-scale($menu-bg, 25%);
-    }
-    &.menu-text {
-      background-color: smart-scale($menu-bg, 10%);
-      border-top: solid 1px #444;
-      border-bottom:  solid 1px #444;
-      padding-top: rem-calc(10);
-      padding-bottom: rem-calc(10);
-      color: $menu-font-color;
-    }
-    a {
-      background: $menu-link-bg;
-      color: $menu-link-color;
-      &:hover {
+@mixin sphp-foundation-menu() {
+
+  .sphp.menu {
+    li {
+      font-size: $menu-font-size;
+      &.is-active > a {  
         background: $menu-link-bg-active;
         color: $menu-link-color-active;
       }
+      &.menu-ruler {
+        @include background-image(linear-gradient(120deg, #222, #555, #222));
+        background-color: smart-scale($menu-bg, 25%);
+      }
+      &.menu-text {
+        background-color: smart-scale($menu-bg, 10%);
+        border-top: solid 1px #444;
+        border-bottom:  solid 1px #444;
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(10);
+        color: $menu-font-color;
+      }
+      a {
+        background: $menu-link-bg;
+        color: $menu-link-color;
+        &:hover {
+          background: $menu-link-bg-active;
+          color: $menu-link-color-active;
+        }
+      }
     }
-  }
-  &.dropdown .submenu {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    @include border-radius(2px);
-  }
+    &.dropdown .submenu {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      @include border-radius(2px);
+    }
+  }  
 }

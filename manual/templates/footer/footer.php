@@ -63,6 +63,20 @@ $currentUrl = URL::getCurrentURL();
 </div>
 <div class="manual-footer copyright-details-container">
   <footer class="copyright-details">
+    <p>
+      <?php
+
+      use Sphp\Stdlib\StopWatch;
+      ?>
+      Copyright &copy; <?php echo date('Y'); ?> by <b>Sami Holck</b>.
+      <span class="separator">||</span>
+      <a href="/license.php" target="license" rel="copyright"><b>MIT license</b></a>
+      <span class="separator">||</span>
+      <b>Script executed in:</b>
+      <i><?php echo number_format(StopWatch::getExecutionTime(), 2) ?> seconds</i>
+      <span class="separator">||</span> <b>PHP Peak memory:</b>
+      <i><?php echo number_format(memory_get_usage(true) / 1048576, 2) . " MB\n" ?></i>
+    </p>
     <ul class="tech-links-list">
       <li>
         <a href="http://www.php.net/" title="<?php echo 'PHP ' . phpversion(); ?>">
@@ -108,19 +122,5 @@ $currentUrl = URL::getCurrentURL();
       </li>
     </ul>
 
-    <p>
-      <?php
-
-      use Sphp\Stdlib\StopWatch;
-      ?>
-      Copyright &copy; <?php echo date('Y'); ?> by <b>Sami Holck</b>.
-      <span class="separator">||</span>
-      <a href="/license.php" target="license" rel="copyright"><b>MIT license</b></a>
-      <span class="separator">||</span>
-      <b>Script executed in:</b>
-      <i><?php echo number_format(StopWatch::getExecutionTime(), 2) ?> seconds</i>
-      <span class="separator">||</span> <b>PHP Peak memory:</b>
-      <i><?php echo number_format(memory_get_usage(true) / 1048576, 2) . " MB\n" ?></i>
-    </p>
   </footer>
 </div>

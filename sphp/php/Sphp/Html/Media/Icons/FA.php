@@ -97,7 +97,7 @@ class FA {
        * Social
        */
       'facebook' => 'fab fa-facebook-square',
-      'facebook-f' => 'fab fa-facebook-f',
+      'facebookF' => 'fab fa-facebook-f',
       'twitter' => 'fab fa-twitter-square',
       'googlePlus' => 'fab fa-google-plus-square',
       'githubSquare' => 'fab fa-github-square',
@@ -157,7 +157,7 @@ class FA {
   public function __construct() {
     $this->functions = [];
   }
-  
+
   /**
    * Destructor
    */
@@ -173,7 +173,9 @@ class FA {
    * @return FaIcon the corresponding component
    */
   public function __invoke(string $fileType, string $screenReaderText = null): FaIcon {
-    return static::get($fileType, $screenReaderText);
+    $icon = static::get($fileType, $screenReaderText);
+    $this->setCssClassesTo($icon);
+    return $icon;
   }
 
   /**
@@ -186,9 +188,7 @@ class FA {
   public function __call(string $fileType, array $arguments): FaIcon {
     $screenReaderText = array_shift($arguments);
     $icon = static::get($fileType, $screenReaderText);
-    foreach ($this->functions as $propertyName => $value) {
-      $icon->$propertyName($value);
-    }
+    $this->setCssClassesTo($icon);
     return $icon;
   }
 
@@ -210,6 +210,17 @@ class FA {
   }
 
   /**
+   * 
+   * @param  FaIcon $icon
+   * @return void
+   */
+  public function setCssClassesTo(FaIcon $icon): void {
+    foreach ($this->functions as $propertyName => $value) {
+      $icon->$propertyName($value);
+    }
+  }
+
+  /**
    * Creates an icon object
    *
    * @param  string $name the file type
@@ -222,7 +233,8 @@ class FA {
     } else {
       $classes = $name;
     }
-    return new FaIcon($classes, $screenReaderText);
+    $icon = new FaIcon($classes, $screenReaderText);
+    return $icon;
   }
 
   /**

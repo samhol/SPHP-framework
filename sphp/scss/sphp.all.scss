@@ -72,7 +72,7 @@ $sphp-menuitem-font-color-active: #fff;
 @import "app/apps";
 @import "manual/manual";
 
-//@include sphp-foundation-buttons();
+@include sphp-icon-buttons();
 @include sphp-error-handling-callouts;
 @include sphp-syntax-highlighting-modules;
 @include sphp-calendar-modules;

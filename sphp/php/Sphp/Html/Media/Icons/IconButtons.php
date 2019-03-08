@@ -12,7 +12,6 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Content;
-
 use IteratorAggregate;
 use Traversable;
 use Sphp\Html\Iterator;
@@ -34,7 +33,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BrandIcons extends AbstractComponent implements Content, IteratorAggregate {
+class IconButtons extends AbstractComponent implements Content, IteratorAggregate {
 
   /**
    * @var Hyperlink[]
@@ -42,13 +41,20 @@ class BrandIcons extends AbstractComponent implements Content, IteratorAggregate
   private $icons;
 
   /**
+   *
+   * @var FA
+   */
+  private $fa;
+
+  /**
    * Constructor
    */
   public function __construct() {
     parent::__construct('div');
     $this->icons = [];
-    $this->addCssClass('sphp', 'brand-icons', 'logo');
+    $this->addCssClass('sphp', 'icon-buttons');
     $this->fa = new FA();
+    $this->fa->fixedWidth(true);
   }
 
   /**
@@ -58,11 +64,12 @@ class BrandIcons extends AbstractComponent implements Content, IteratorAggregate
     unset($this->icons);
   }
 
-  public function __call($name, $arguments): Hyperlink {
+  public function __call(string $name, array $arguments): Hyperlink {
     $url = array_shift($arguments);
     $screenReaderText = array_shift($arguments);
     $target = array_shift($arguments);
-    $icon = $this->fa->$name($screenReaderText);
+    $fa = $this->fa;
+    $icon =$fa($name, $screenReaderText);
     return $this->appendIcon($url, $icon, $target)->addCssClass($name);
   }
 
@@ -76,7 +83,7 @@ class BrandIcons extends AbstractComponent implements Content, IteratorAggregate
    */
   protected function appendIcon(string $url, Icon $icon, string $target = null): Hyperlink {
     $hyperlink = new Hyperlink($url, $icon, $target);
-    $hyperlink->addCssClass('sphp', 'brand');
+    $hyperlink->addCssClass('sphp', 'icon-button');
     $this->icons[] = $hyperlink;
     return $hyperlink;
   }
@@ -93,4 +100,5 @@ class BrandIcons extends AbstractComponent implements Content, IteratorAggregate
   public function getIterator(): Traversable {
     return new Iterator($this->rows);
   }
+
 }
