@@ -40,7 +40,7 @@ $settings = [
 //print_r($settings);
 //echo "</pre>";
 $carousel = new Carousel();
-$carousel->setProperty($settings);
+$carousel->setProperties($settings);
 $carousel->addCssClass('manual-info-text');
 
 namespace Sphp\Html\Foundation;

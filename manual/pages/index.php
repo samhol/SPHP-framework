@@ -3,18 +3,25 @@
 namespace Sphp\Manual;
 
 md(<<<MD
-#SPHP <small>a framework for responsive web developement using PHP</small>
+# SPHPlayground <small>framework</small>
+
+SPHPlayground is a framework for responsive web developement.
 <div class="callout alert" markdown="1">
-##What is Responsive Web Design?
+## What is Responsive Web Design?
 Responsive Web Design makes a web page look good and be easy to use on all devices (desktops, tablets, and phones).
 Web pages should not leave out information to fit smaller devices, but rather adapt its content to fit any device:
 </div>     
 ## INTRODUCTION
 
-SPHP framework is an open source framework for developing interactive and responsive web applications
-and services in object oriented PHP.
+SPHPlayground is an open source framework for developing interactive web 
+applications and services in object oriented PHP. SPHPlayground can be used as a 
+part of full stack Web application development.
+
+Framework supports many aspects of full stack Web application development. It has 
+many of the web programming goodies under its hood, but generally deploying 
+framework requires no usage of other programming languages than PHP.
         
-##Somethings under the hood
+## Some terminology explained
 MD
 );
 printPage('tech-carousel');

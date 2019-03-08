@@ -46,6 +46,7 @@ $side-nav-bg: #fefefe;
     }
     li {
       &.menu-text {
+        color: #333;
         &:first-of-type {
           font-size: rem-calc(18);
         }

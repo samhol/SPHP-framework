@@ -38,7 +38,7 @@ class Carousel extends AbstractComponent {
     $this->attributes()
             ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
     if ($properties !== null) {
-      $this->setProperty($properties);
+      $this->setProperties($properties);
     }
   }
 
@@ -48,7 +48,7 @@ class Carousel extends AbstractComponent {
    * @param  array $props
    * @return $this for a fluent interface
    */
-  public function setProperty(array $props) {
+  public function setProperties(array $props) {
     $this->attributes()->getObject('data-slick')->setValue($props);
     return $this;
   }

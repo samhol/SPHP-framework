@@ -11,6 +11,7 @@ $orbit->attributes()->setAttribute('data-options', 'animInFromLeft:fade-in; anim
 $path = realpath('manual/pages/intros/Foundation/slides/');
 $slides = $orbit->slides();
 
+$slides->append(Tags::section()->appendMdFile("$path/front-slide.php"))->addCssClass('foundation');
 $slides->append(Tags::section()->appendMdFile("$path/Buttons.php"))->addCssClass('foundation');
 $slides->append(Tags::section()->appendMdFile("$path/Forms.php"))->addCssClass('foundation');
 $slides->append(Tags::section()->appendMdFile("$path/Grids.php"))->addCssClass('foundation');

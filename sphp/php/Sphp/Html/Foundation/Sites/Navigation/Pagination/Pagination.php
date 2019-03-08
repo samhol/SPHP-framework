@@ -151,13 +151,25 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return $page;
   }
 
+  /**
+   * 
+   * @param string $url
+   * @param string $label
+   * @return PageInterface
+   */
   public function setPrevious(string $url = null, string $label = null): PageInterface {
     $this->prev = new Page($url, $label, $this->target);
-    $this->next->setRelationship('prev');
+    $this->prev->setRelationship('prev');
     $this->prev->cssClasses()->protectValue('pagination-previous');
     return $this->prev;
   }
 
+  /**
+   * 
+   * @param  string $url
+   * @param  string $label
+   * @return PageInterface
+   */
   public function setNext(string $url = null, string $label = null): PageInterface {
     $this->next = new Page($url, $label, $this->target);
     $this->next->setRelationship('next');
@@ -200,9 +212,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   /**
-   * Count the number of inserted {@link Page} components
+   * Count the number of inserted Page components
    *
-   * @return int number of {@link Page} components
+   * @return int number of inserted Page components
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
