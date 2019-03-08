@@ -153,12 +153,14 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
   public function setPrevious(string $url = null, string $label = null): PageInterface {
     $this->prev = new Page($url, $label, $this->target);
+    $this->next->setRelationship('prev');
     $this->prev->cssClasses()->protectValue('pagination-previous');
     return $this->prev;
   }
 
   public function setNext(string $url = null, string $label = null): PageInterface {
     $this->next = new Page($url, $label, $this->target);
+    $this->next->setRelationship('next');
     $this->next->cssClasses()->protectValue('pagination-next');
     return $this->next;
   }

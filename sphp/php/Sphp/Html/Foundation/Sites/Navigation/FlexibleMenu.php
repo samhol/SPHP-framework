@@ -10,8 +10,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
+
 /**
- * Implements a basic navigation menu
+ * Implements a flexible navigation menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -20,7 +22,38 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FlexibleMenu extends AbstractJsMenu {
+class FlexibleMenu extends AbstractMenu implements JsMenu {
+
+  /**
+   * @var PropertyCollectionAttribute 
+   */
+  private $options;
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    parent::__construct();
+    $this->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
+  }
+
+  public function __destruct() {
+    unset($this->options);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    $this->options = $this->attributes()->getObject('data-options');
+    parent::__clone();
+  }
+
+  public function setOption(string $name, $value) {
+    if (is_bool($value)) {
+      $value = $value ? 'true' : 'false';
+    }
+    $this->options->setProperty($name, $value);
+    return $this;
+  }
 
   /**
    * 

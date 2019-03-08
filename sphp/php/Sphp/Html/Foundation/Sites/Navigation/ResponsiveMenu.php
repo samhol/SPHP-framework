@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use \Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
 
 /**
@@ -21,7 +20,7 @@ use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ResponsiveMenu extends AbstractJsMenu {
+class ResponsiveMenu extends AbstractMenu implements JsMenu {
 
   /**
    * @var FoundationSettings 
@@ -46,12 +45,6 @@ class ResponsiveMenu extends AbstractJsMenu {
     parent::__destruct();
   }
 
-  /**
-   * 
-   * @param  string $name
-   * @param  scalar $value
-   * @return $this
-   */
   public function setOption(string $name, $value) {
     if (is_bool($value)) {
       $value = $value ? 'true' : 'false';
