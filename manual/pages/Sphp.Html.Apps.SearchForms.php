@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $freefind  = Manual\api()->classLinker(FreefindSearchForm::class);
-$siteSearch360Form  = Manual\api()->classLinker(SiteSearch360Form::class);
+$siteSearch360Form  = Manual\api()->classLinker(SiteSearch360FormBuilder::class);
 
 \Sphp\Manual\md(<<<MD
 ##Search forms

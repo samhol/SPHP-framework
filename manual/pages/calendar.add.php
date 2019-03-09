@@ -38,7 +38,7 @@ $form->append($row);
 
 $form->append(BasicInputCell::textarea("description", null, 5)
                 ->setRequired()
-                ->setPlaceholder("Description of the calendar task")
+                ->setInputPlaceholder("Description of the calendar task")
                 ->setErrorField("Please insert task description"));
 
 $form->append(Button::submitter("Submit form", "submit"));

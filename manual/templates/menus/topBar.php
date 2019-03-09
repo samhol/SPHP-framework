@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
-use Sphp\Html\Apps\Forms\SiteSearch360Form;
+use Sphp\Html\Apps\Forms\SiteSearch360FormBuilder;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 use Sphp\Html\Media\Icons\FA;
@@ -25,9 +25,8 @@ try {
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
   $navi->topbar()->left()->append($leftDrop);
 
-  $form = new SiteSearch360Form('playground.samiholck.com');
-  $form->setLabelText(false);
-  $form->setPlaceholder('Search Manual');
+  $formBuilder = new SiteSearch360FormBuilder('playground.samiholck.com');
+  $formBuilder->getSearchField()->setPlaceholder('Search Manual');
 
 
   $bi = new \Sphp\Html\Media\Icons\IconButtons();
@@ -38,8 +37,8 @@ try {
   $bi->addCssClass('smooth');
 
   $navi->titleBar()->right()->append($bi);
-  (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->topbar()->right());
-  $navi->topbar()->right()->append('<ul class="menu"><li>' . $form . '</li></ul>');
+  (new QtipAdapter($formBuilder->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->topbar()->right());
+  $navi->topbar()->right()->append($formBuilder->buildMenuForm());
 
   $navi->printHtml();
 } catch (\Exception $e) {

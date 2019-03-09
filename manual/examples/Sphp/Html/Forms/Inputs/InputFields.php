@@ -15,9 +15,9 @@ $form[] = Factory::text("text")
 $form[] = Factory::email("email")
         ->setPlaceholder("Email field");
 $form[] = Factory::password("password")
-        ->setPlaceholder("Password field");
+        ->setInputPlaceholder("Password field");
 $form[] = Factory::textarea("textarea")
-        ->setPlaceholder("Textarea field")
+        ->setInputPlaceholder("Textarea field")
         ->setRows(5);
 
 $select = Factory::select("select");

@@ -15,7 +15,7 @@ $ruleMenu = (new Select\Select("rule"));
 $searchInput = (new Input\TextInput("search"))
 		->setSize(30)
 		->setRequired()
-		->setPlaceholder("Search for messages containing text");
+		->setInputPlaceholder("Search for messages containing text");
 		//->setLabel("A part of Message:");
 
 $perPageOptions = [];

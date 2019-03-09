@@ -13,24 +13,18 @@ echo \ParsedownExtra::instance()->text(<<<TEXT
 TEXT
 );
 
-$form = SiteSearch360Form::create('playground.samiholck.com');
-$form->setLabelText('Search manual:');
+$form = new SiteSearch360FormBuilder('playground.samiholck.com');
+$form->getSearchField()->setPlaceholder('keywords in documentation');
+$ss360Form = $form->buildInputGroupForm('Search manual:');
+(new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($ss360Form);
+echo $ss360Form;
+//echo $form->createResultComponent();
 
-$form->setPlaceholder('keywords in documentation');
+$samiFormBuilder = new SamiApiSearchFormBuilder('/API/sami/');
 
-(new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($form);
-$form->printHtml();
-echo $form->createResultComponent();
-
-$samiForm = new SamiApiSearchForm('http://playground.samiholck.com/API/sami/');
-$samiForm->setLabelText('Search PHP API:');
-
-$samiForm->setPlaceholder('namespaces, classes, interfaces, traits, functions, or methods');
-
-(new QtipAdapter($samiForm->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($samiForm);
-$samiForm->printHtml();
+$samiFormBuilder->getSearchField()->setPlaceholder('namespaces, classes, interfaces, traits, functions, or methods');
+$samiForm = $samiFormBuilder->buildInputGroupForm('Search PHP API:');
+(new QtipAdapter($samiFormBuilder->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($samiForm);
+echo $samiForm;
 
 \Sphp\Manual\md('Double check the URL or head back to the homepage. If you continue to get this page, email me at sami.holck@samiholck.com.');
-?>
-
-

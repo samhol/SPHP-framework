@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Apps\Forms;
 
-use Sphp\Html\Div;
 
 /**
  * Implements a SiteSearch360 search form
@@ -20,11 +19,7 @@ use Sphp\Html\Div;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class SiteSearch360Form extends AbstractSearchForm {
-
-  use \Sphp\Html\ContentTrait;
-
-  private static $instance;
+class SiteSearch360FormBuilder extends AbstractSearchFormBuilder {
 
   /**
    * Constructor
@@ -33,23 +28,18 @@ class SiteSearch360Form extends AbstractSearchForm {
    * @param string $initialValue
    */
   public function __construct(string $siteId, string $initialValue = null) {
-    parent::__construct(null, 'get');
+    parent::__construct();
+    $this->siteId = $siteId;
     $this->getSearchField()->setName('ss360Query')->setSubmitValue($initialValue);
     $this->getSearchField()->addCssClass('sphp-search-searchBox', 'sphp-ss360-searchBox');
-    $this->attributes()->protect('data-sphp-ss360-siteid', $siteId);
   }
 
-  public function createResultComponent(): Div {
-    $output = new Div();
-    $output->cssClasses()->protectValue('sphp-ss360-searchResults');
-    return $output;
-  }
 
-  public static function create(string $siteId, string $initialValue = null): SiteSearch360Form {
-    if (self::$instance === null) {
-      self::$instance = new static($siteId, $initialValue);
-    }
-    return self::$instance;
+  public function createEmptyForm(): \Sphp\Html\Forms\Form {
+    $form = new \Sphp\Html\Forms\Form();
+    $form->addCssClass('sphp', 'search-form');
+    $form->attributes()->protect('data-sphp-ss360-siteid', $this->siteId);
+    return $form;
   }
 
 }

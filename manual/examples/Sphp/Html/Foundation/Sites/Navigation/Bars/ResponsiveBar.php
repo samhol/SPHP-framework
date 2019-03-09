@@ -4,7 +4,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
-use Sphp\Html\Apps\Forms\SiteSearch360Form;
+use Sphp\Html\Apps\Forms\SiteSearch360FormBuilder;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 
@@ -21,12 +21,11 @@ try {
   $leftDrop->appendSubMenu()->setVertical(true)->setRoot('Baz')->appendLink('#foobar','FooBar');
   $navi->topbar()->left()->append($leftDrop);
 
-  $form = new SiteSearch360Form('playground.samiholck.com');
-  $form->setLabelText(false);
-  $form->setPlaceholder('Search Manual');
+  $form = new SiteSearch360FormBuilder('playground.samiholck.com');
+  $form->getSearchField()->setPlaceholder('Search Manual');
 
-  (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->topbar()->right());
-  $navi->topbar()->right()->append('<ul class="menu"><li>' . $form . '</li></ul>');
+  //(new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->topbar()->right());
+  $navi->topbar()->right()->append($form->buildMenuForm());
 
   $navi->printHtml();
 } catch (\Exception $e) {

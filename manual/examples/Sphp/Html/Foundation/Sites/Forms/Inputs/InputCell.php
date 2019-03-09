@@ -31,7 +31,7 @@ $form->append($row1);
 
 $form->append(BasicInputCell::textarea("description", null, 5)
                 ->setRequired()
-                ->setPlaceholder("Something about yourself")
+                ->setInputPlaceholder("Something about yourself")
                 ->setErrorField("Yuo need to write something about yourself"));
 
 $form->append(Button::submitter("Submit form", "submit"));

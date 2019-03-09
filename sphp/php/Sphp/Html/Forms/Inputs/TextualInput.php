@@ -35,7 +35,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  function __construct(string $type = 'text', string $name = null, $value = null, int $maxlength = null, int $size = null) {
+  public function __construct(string $type = 'text', string $name = null, $value = null, int $maxlength = null, int $size = null) {
     parent::__construct($type, $name, $value);
     if ($maxlength > 0) {
       $this->setMaxlength($maxlength);

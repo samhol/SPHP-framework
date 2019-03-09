@@ -18,6 +18,8 @@ use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Forms\Form;
+use Sphp\Html\Tags;
 
 /**
  * Implements an abstract search form
@@ -27,19 +29,12 @@ use Sphp\Html\AbstractComponent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-abstract class AbstractSearchForm extends AbstractComponent implements FormInterface {
-
-  use \Sphp\Html\Forms\FormTrait;
+abstract class AbstractSearchFormBuilder {
 
   /**
    * @var HiddenInputs
    */
   private $hiddenData;
-
-  /**
-   * @var string
-   */
-  private $label;
 
   /**
    * @var SearchInput
@@ -50,7 +45,6 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
    * @var Submitter
    */
   private $submitButton;
-  private $queryVisible = false;
 
   /**
    * Constructor
@@ -58,44 +52,43 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
    * @param string $action
    * @param string $method
    */
-  public function __construct(string $action = null, string $method = 'get') {
-    parent::__construct('form');
-    $this->setAction($action)
-            ->setMethod($method)
-            ->setTarget('_self');
+  public function __construct() {
     $this->setSubmitButton(new Submitter(FA::search('Search')));
     $this->hiddenData = new HiddenInputs();
     $this->searchField = new SearchInput();
   }
 
-  protected function build(): InputGroup {
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->hiddenData, $this->searchField, $this->submitButton);
+  }
+
+  abstract public function createEmptyForm(): Form;
+
+  public function buildInputGroupForm(string $label = null): Form {
+    $form = $this->createEmptyForm();
+    $form->append($this->hiddenData);
     $group = new InputGroup();
-    if ($this->label) {
-      $group->appendLabel($this->label);
+    if ($label !== null) {
+      $group->appendLabel($label);
     }
     $group->append($this->searchField);
     $group->append($this->submitButton);
-    return $group;
+    $form->append($group);
+    return $form;
   }
 
-  public function showCurrentQueryWords(bool $show) {
-    $this->queryVisible = $show;
-    return $this;
-  }
-
-  public function contentToString(): string {
-    return $this->hiddenData->getHtml() . $this->build();
-  }
-
-  /**
-   * Sets the placeholder text for the search field
-   *
-   * @param  string $placeholder the value of the placeholder attribute
-   * @return $this for a fluent interface
-   */
-  public function setPlaceholder(string $placeholder = null) {
-    $this->searchField->setPlaceholder($placeholder);
-    return $this;
+  public function buildMenuForm(): Form {
+    $form = $this->createEmptyForm();
+    $form->append($this->hiddenData);
+    $ul = Tags::ul();
+    $ul->addCssClass('menu');
+    $ul->append($this->searchField);
+    $ul->append($this->submitButton);
+    $form->append($ul);
+    return $form;
   }
 
   /**
@@ -107,11 +100,14 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
   }
 
   /**
+   * Creates a new submitter
    * 
    * @return SubmitterInterface
    */
   public function getSubmitButton(): SubmitterInterface {
-    return $this->submitButton;
+    $submitButton = new Submitter(FA::search('Search'));
+    $submitButton->cssClasses()->protectValue('button');
+    return $submitButton;
   }
 
   /**
@@ -122,11 +118,6 @@ abstract class AbstractSearchForm extends AbstractComponent implements FormInter
   public function setSubmitButton(SubmitterInterface $submitButton) {
     $this->submitButton = $submitButton;
     $this->submitButton->cssClasses()->protectValue('button');
-    return $this;
-  }
-
-  public function setLabelText(string $text = null) {
-    $this->label = $text;
     return $this;
   }
 
