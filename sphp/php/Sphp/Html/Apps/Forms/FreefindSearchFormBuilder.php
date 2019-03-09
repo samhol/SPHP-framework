@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Apps\Forms;
 
+use Sphp\Html\Forms\Form;
 /**
  * Implements a Freefind search form
  *
@@ -18,7 +19,7 @@ namespace Sphp\Html\Apps\Forms;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FreefindSearchForm extends AbstractSearchForm {
+class FreefindSearchFormBuilder extends AbstractSearchFormBuilder {
 
   /**
    * Constructor
@@ -26,11 +27,15 @@ class FreefindSearchForm extends AbstractSearchForm {
    * @param array $data
    */
   public function __construct(array $data = []) {
-    parent::__construct('http://search.freefind.com/find.html', 'get');
-    $this->setTarget('_self');
-    $this->addCssClass('freefind-form');
+    parent::__construct();
     $this->getSearchField()->setName('query');
     $this->setHiddenData($data);
+  }
+
+  public function createEmptyForm(): Form {
+    $form = new Form('http://search.freefind.com/find.html', 'get');
+    $form->addCssClass('sphp', 'search-form');
+    return $form;
   }
 
 }

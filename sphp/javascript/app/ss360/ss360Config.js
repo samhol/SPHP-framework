@@ -55,8 +55,16 @@
      * @param  {String} selector the selector to the search box(es)
      */
     setSearchSelector: function (selector) {
-      console.log('setSearchSelector: ' + selector);
-      this.config.searchBoxSelector = selector;
+      console.log('setSearchSelector: foo' + selector);
+      //this.config.searchBoxSelector = selector;
+
+      this.config.searchBox = {
+        placeholder: undefined,
+        autofocus: false, // if true, the search box will get focus after initialization
+        selector: selector, // the selector to the search box,
+        searchButton: undefined, // CSS selector of search buttons
+        focusLayer: false // if true, a layer will be shown when the user focuses on the search input
+      };
       return this;
     },
 
@@ -93,11 +101,11 @@
 
 
 
-  var ss360Config;
+var ss360Config;
 
-  var gen = new sphp.ss360ConfigGenerator('playground.samiholck.com', '.sphp-ss360-searchBox');
+var gen = new sphp.ss360ConfigGenerator('playground.samiholck.com', '.sphp-ss360-searchBox');
 
-  console.log(gen.create());
+console.log(gen.create());
 
-  ss360Config = gen.create();
+ss360Config = gen.create();
 

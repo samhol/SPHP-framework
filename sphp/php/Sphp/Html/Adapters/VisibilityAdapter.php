@@ -57,7 +57,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    */
   public function hide() {
-    $this->component->inlineStyles()->setProperties('display', 'none');
+    $this->component->inlineStyles()->setProperty('display', 'none');
     return $this;
   }
 

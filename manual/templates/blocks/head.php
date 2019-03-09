@@ -46,7 +46,8 @@ $body->addCssClass('manual');
 $html->scripts()->appendSrc('/manual/js/formTools.js');
 $html->scripts()->appendSrc('/manual/js/techs.js');
 $html->scripts()->appendSrc('/sphp/javascript/dist/ss360.min.js');
-$html->scripts()->appendSrc('https://sitesearch360.com/cdn/sitesearch360-v9.min.js');
+//$html->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.mjs');
+$html->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.min.js');
 $html->startBody();
 
 
