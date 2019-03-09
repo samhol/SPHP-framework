@@ -29,10 +29,10 @@ $row1->append((new BasicInputCell((new TextInput("lname"))
                 ->setLabel("Family name:"));
 $form->append($row1);
 
-$form->append(BasicInputCell::textarea("description", null, 5)
-                ->setRequired()
-                ->setInputPlaceholder("Something about yourself")
-                ->setErrorField("Yuo need to write something about yourself"));
+$form->append($ta = BasicInputCell::textarea("description", null, 5));
+$ta->getInput()->setRequired()
+        ->setPlaceholder("Something about yourself");
+$ta->setErrorField("Yuo need to write something about yourself");
 
 $form->append(Button::submitter("Submit form", "submit"));
 
