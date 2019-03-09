@@ -4,9 +4,10 @@ use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
 use Sphp\Html\Tags;
 
 $orbit = new Orbit();
-$orbit->addCssClass('sphp', 'manual', 'intro-orbit', 'html');
+$orbit->addCssClass('sphp', 'manual', 'intro-orbit');
 $orbit->autoplay(false);
-$orbit->attributes()->setAttribute('data-options', 'animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;');
+$orbit->setAnimIn('fade-in');
+$orbit->setAnimOut('fade-out');
 
 $path = realpath('manual/pages/intros/Foundation/slides/');
 $slides = $orbit->slides();

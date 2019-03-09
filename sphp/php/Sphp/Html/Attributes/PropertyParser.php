@@ -150,7 +150,7 @@ class PropertyParser {
     foreach ($props as $name => $value) {
       $strings[] = $this->propertyToString($name, $value);
     }
-    $output = implode($this->defSep, $strings);
+    $output = implode($this->defSep, $strings) . $this->defSep;
     return $output;
   }
 
