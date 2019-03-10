@@ -9,7 +9,7 @@ $container = new PlainContainer();
 $container["heading"] = (new H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");
 $container["paragraph"] = (new Paragraph())
         ->appendRawFile("manual/snippets/loremipsum.html");
-$container["paragraph"]->inlineStyles()->setProperties("text-align", "justify");
+$container["paragraph"]->inlineStyles()->setProperty("text-align", "justify");
 $container->append('foo');
 
 /**

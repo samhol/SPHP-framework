@@ -33,6 +33,24 @@
     // should results be grouped?
     this.config.groupResults = true;
     this.config.showErrors = true;
+    this.config.layout = {
+          mobile: { // below 992px
+             type: 'list', // can be either "grid" or "list", default: "list"
+             showImages: true, // whether to show images in search result, default: true
+             showSnippet: true, // whether to show text snippet in search result, default: true
+             showTitle: true, // whether to show title in search result, default: true
+             showDataPoints: true, // whether to show data points in search result, default: true
+             showUrl: false, // whether to show link in search result, default: false
+          },
+          desktop: { // 992 px and larger
+             type: 'list', // can be either "grid" or "list", default: "list"
+             showImages: true, // whether to show images in search result, default: true
+             showSnippet: true, // whether to show text snippet in search result, default: true
+             showTitle: true, // whether to show title in search result, default: true
+             showDataPoints: true, // whether to show data points in search result, default: true
+             showUrl: true, // whether to show link in search result, default: false
+          }
+        };
     return this;
   };
   sphp.ss360ConfigGenerator.prototype = {
@@ -41,7 +59,7 @@
      * Runs all the processess needed for the application
      * 
      * @protected
-     * @returns {sphp.PhotoAlbum} self for method chaining
+     * @returns {sphp.ss360ConfigGenerator} self for method chaining
      */
     create: function () {
       console.log('ss360Config creation');

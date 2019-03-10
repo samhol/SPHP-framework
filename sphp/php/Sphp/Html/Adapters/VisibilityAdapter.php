@@ -14,22 +14,12 @@ use Sphp\Html\Component;
 
 /**
  * Implements a Visibility Adapter
- 
+
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class VisibilityAdapter extends AbstractComponentAdapter {
-
-  /**
-   * Constructor
-   * 
-   * @param Component $component
-   */
-  public function __construct(Component $component) {
-    parent::__construct($component);
-    $this->component = $component;
-  }
 
   /**
    * Sets whether the component is in use or not
@@ -57,7 +47,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    */
   public function hide() {
-    $this->component->inlineStyles()->setProperty('display', 'none');
+    $this->getComponent()->inlineStyles()->setProperty('display', 'none');
     return $this;
   }
 
