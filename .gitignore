@@ -58,3 +58,4 @@ composer.lock
 build.xml
 /npm-debug.log
 /reports/
+.phpunit.result.cache

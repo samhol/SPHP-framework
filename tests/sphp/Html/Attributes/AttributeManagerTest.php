@@ -87,10 +87,10 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
         ["type", "text"],
         ["boolean", "true"],
         ["boolean", "false"],
-        ["data-var", "value"],
+        ['data-var', "value"],
         ["domain1", "obj"],
-        ["style", "border:solid 1px #aaa;left:30px"],
-        ["class", "a b c d"]
+        ['style', 'border:solid 1px #aaa;left:30px;'],
+        ['class', 'a b c d']
     ];
   }
 

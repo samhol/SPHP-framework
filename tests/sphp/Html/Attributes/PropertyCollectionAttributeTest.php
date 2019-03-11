@@ -37,8 +37,8 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
 
   public function basicValidValues(): array {
     return [
-        [['p1' => 'v1', 'p2' => 'v2'], 'p1:v1;p2:v2'],
-        [';p2:v2;p1:v1;', 'p2:v2;p1:v1'],
+        [['p1' => 'v1', 'p2' => 'v2'], 'p1:v1;p2:v2;'],
+        [';p2:v2;p1:v1;', 'p2:v2;p1:v1;'],
     ];
   }
 
@@ -90,7 +90,7 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
    */
   public function testSet(array $props) {
     $attribute = new PropertyCollectionAttribute('style');
-    $string = Arrays::implodeWithKeys($props, ';', ':');
+    $string = Arrays::implodeWithKeys($props, ';', ':') . ';';
     $attribute->setValue($string);
     $this->assertSame($string, $attribute->getValue());
     $this->assertTrue($attribute->hasProperty('a'));
@@ -177,7 +177,7 @@ class PropertyCollectionAttributeTest extends AbstractAttributeObjectTest {
     $attribute = new PropertyCollectionAttribute('style');
     $this->assertSame('', "$attribute");
     $attribute->setProperty('a', 'b');
-    $this->assertSame($attribute->getName() . '="a:b"', "$attribute");
+    $this->assertSame($attribute->getName() . '="a:b;"', "$attribute");
   }
 
   public function arrayData(): array {
