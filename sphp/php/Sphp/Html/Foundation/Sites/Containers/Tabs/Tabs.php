@@ -12,9 +12,12 @@ namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
 use IteratorAggregate;
 use Sphp\Html\Content;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\Div;
 use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
 use Traversable;
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
 /**
  * Implements Foundation Tabs
@@ -31,42 +34,54 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
       \Sphp\Html\TraversableTrait;
 
   /**
-   * @var TabContentContainer 
+   * @var Tab[] 
    */
-  private $tabs;
+  private $tabs = [];
 
   /**
-   * @var TabContentContainer 
+   * @var Div 
    */
-  private $tabsContent;
+  private $content;
+
+  /**
+   * @var Ul 
+   */
+  private $controllers;
+
+  /**
+   * @var PropertyCollectionAttribute 
+   */
+  private $options;
 
   /**
    * Constructor
-   * 
-   * @param TabControllerContainer $tabControllers
-   * @param TabContentContainer $content
    */
-  public function __construct(TabControllerContainer $tabControllers = null, TabContentContainer $content = null) {
-    if ($content === null) {
-      $content = new TabContentContainer();
+  public function __construct() {
+    $this->controllers = new Ul();
+    $this->controllers->identify();
+    $this->controllers->cssClasses()->protectValue('tabs');
+    $this->controllers->attributes()->demand('data-tabs');
+    $this->content = new Div();
+    $this->content->attributes()->setAttribute('data-tabs-content', $this->controllers->identify());
+    $this->controllers->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
+  }
+
+  public function setOption(string $name, $value) {
+    if (is_bool($value)) {
+      $value = $value ? 'true' : 'false';
     }
-    $this->tabsContent = $content;
-    if ($tabControllers === null) {
-      $tabControllers = new TabControllerContainer();
-    }
-    $this->tabs = $tabControllers;
-    $this->tabsContent->attributes()->setAttribute('data-tabs-content', $this->tabs->identify());
+    $this->options->setProperty($name, $value);
+    return $this;
   }
 
   /**
    * Appends the given tab instance to the container
    * 
-   * @param  TabInterface $tab the tab instance
+   * @param  Tab $tab the tab instance
    * @return $this for a fluent interface
    */
-  public function append(TabInterface $tab) {
-    $this->tabsContent->append($tab);
-    $this->tabs->append($tab->getTabButton());
+  public function append(Tab $tab) {
+    $this->tabs[] = $tab;
     return $this;
   }
 
@@ -75,10 +90,10 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    *
    * @param  mixed $title the label of the tab button
    * @param  mixed $content the content of the tab
-   * @return Tab the new appended tab 
+   * @return DivTab the new appended tab 
    */
-  public function appendTab($title, $content = null): Tab {
-    $tab = new Tab($title, $content);
+  public function appendTab($title, $content = null): DivTab {
+    $tab = new DivTab($title, $content);
     $this->append($tab);
     return $tab;
   }
@@ -90,22 +105,30 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @return boolean true if a tab exits at the given index
    */
   public function hasTab(int $index): bool {
-    return $this->tabsContent->hasTab($index);
+    return array_key_exists($index, $this->tabs);
+    //return $this->tabsContent->hasTab($index);
   }
 
   /**
    * Returns the tab at specified index
    * 
    * @param  int $index the index to retrieve
-   * @return TabInterface the tab at the given index
+   * @return Tab the tab at the given index
    * @throws OutOfBoundsException if the index is not set
    */
   public function getTab(int $index) {
-    return $this->tabsContent->getTab($index);
+    if ($this->hasTab($index)) {
+      return $this->tabs[$index];
+    }
+    return null;
   }
 
   public function getHtml(): string {
-    return $this->tabs->getHtml() . $this->tabsContent->getHtml();
+    foreach ($this->tabs as $tab) {
+      $this->controllers->append($tab->getTabButton());
+      $this->content->append($tab);
+    }
+    return $this->controllers->getHtml() . $this->content->getHtml();
   }
 
   /**
@@ -115,7 +138,7 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @return $this for a fluent interface
    */
   public function matchHeight(bool $match = true) {
-    $this->tabsContent->matchHeight($match);
+    $this->setOption('matchHeight', $match);
     return $this;
   }
 

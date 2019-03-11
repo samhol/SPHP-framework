@@ -27,12 +27,19 @@ class TabController extends AbstractContainerTag implements TabControllerInterfa
   /**
    * Constructor
    * 
-   * @param Tab $tabPanel
    * @param mixed $title
+   * @param mixed $target
    */
-  public function __construct(Tab $tabPanel, $title = null) {
+  public function __construct($title, $target) {
     $innerContainer = new ContainerTag('a', $title);
-    $innerContainer->attributes()->protect('href', '#' . $tabPanel->identify());
+    if ($target instanceof \Sphp\Html\Component) {
+      $id = $target->identify();
+    } else if (is_string($target)) {
+      $id = $target;
+    } else {
+      throw new InvalidArgumentException('Invalid targettype given');
+    }
+    $innerContainer->attributes()->protect('href', "#$id");
     parent::__construct('li', null, $innerContainer);
     $this->cssClasses()->protectValue('tabs-title');
   }
