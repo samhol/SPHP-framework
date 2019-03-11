@@ -23,3 +23,4 @@ $syntax1 = (new Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter())
 $tabs->appendTab('PHP code', $syntax1)->addCssClass('syntax-hl');
 echo $tabs;
 ?>
+

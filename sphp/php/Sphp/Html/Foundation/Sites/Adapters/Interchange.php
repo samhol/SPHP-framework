@@ -33,7 +33,7 @@ class Interchange extends AbstractComponentAdapter {
    * 
    * @param Component $component
    */
-  public function __construct(Component $component) {
+  public function __construct(Component $component, \Sphp\Html\Foundation\Sites\Core\FoundationSettings $foundation = null) {
     parent::__construct($component);
     $this->queries = [
         'portrait' => null,

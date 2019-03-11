@@ -6,7 +6,7 @@ require_once('manual/settings.php');
 
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
-$cacheSuffix = str_replace(['.', '/'], ['-', ''], $redirect) . "-cache";
+$cacheSuffix = str_replace(['.', '/', ':'], ['-', '', ''], $redirect) . "-cache";
 
 if ($outputCache->start("$cacheSuffix-head") === false) {
   require_once('manual/templates/blocks/head.php');
