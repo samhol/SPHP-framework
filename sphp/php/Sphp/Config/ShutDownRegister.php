@@ -12,7 +12,6 @@ namespace Sphp\Config;
 
 use IteratorAggregate;
 use Traversable;
-use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayIterator;
 use Sphp\Stdlib\Datastructures\ObjectStorage;
 

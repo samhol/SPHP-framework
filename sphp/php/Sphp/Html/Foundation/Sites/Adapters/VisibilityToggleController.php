@@ -31,7 +31,6 @@ class VisibilityToggleController extends AbstractComponentAdapter {
    * Constructor
    * 
    * @param Component $equalizer
-   * @param string|null $name
    */
   public function __construct(Component $equalizer) {
     parent::__construct($equalizer);

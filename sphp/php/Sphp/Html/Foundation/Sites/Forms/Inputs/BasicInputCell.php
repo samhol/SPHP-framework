@@ -62,7 +62,6 @@ class BasicInputCell extends AbstractCell implements InputCell {
    */
   private $reflector;
 
-
   /**
    * Constructor
    *
@@ -99,7 +98,6 @@ class BasicInputCell extends AbstractCell implements InputCell {
     try {
       parent::__call($name, $arguments);
     } catch (\Exception $ex) {
-
       if (!$this->reflector->hasMethod($name)) {
         throw new BadMethodCallException($name . ' is not a valid method for this type of input');
       }

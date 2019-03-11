@@ -48,9 +48,6 @@ abstract class AbstractSearchFormBuilder {
 
   /**
    * Constructor
-   * 
-   * @param string $action
-   * @param string $method
    */
   public function __construct() {
     $this->setSubmitButton(new Submitter(FA::search('Search')));
