@@ -15,7 +15,7 @@ $tab->appendMd(
 
 $syntax1 = (new Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter())
         ->loadFromFile('manual/snippets/example1.js');
-$tabs->appendTab('PHP code', $syntax1);
+$tabs->appendTab('PHP code', $syntax1)->addCssClass('syntax-hl');
 echo $tabs;
 
 ?>

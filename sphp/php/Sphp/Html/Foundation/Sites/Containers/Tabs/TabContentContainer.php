@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
 use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\Content;
 use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
 use Traversable;
@@ -25,29 +25,19 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TabContentContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableContent {
+class TabContentContainer extends \Sphp\Html\AbstractComponent {
 
-  use \Sphp\Html\TraversableTrait;
-
-  /**
-   *
-   * @var TabControllerContainer
-   */
-  private $tabs;
-
+  private $content;
   /**
    * Constructor
    * 
    * @param TabControllerContainer $tabs
    */
-  public function __construct(TabControllerContainer $tabs = null) {
+  public function __construct() {
     parent::__construct('div');
-    if ($tabs === null) {
-      $tabs = new TabControllerContainer();
-    }
-    $this->tabs = $tabs;
+    
+    $this->content = [];
     $this->cssClasses()->protectValue('tabs-content');
-    $this->attributes()->setAttribute('data-tabs-content', $this->tabs->identify());
   }
 
   /**
@@ -57,8 +47,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * @return $this for a fluent interface
    */
   public function append(TabInterface $tab) {
-    $this->getInnerContainer()->append($tab);
-    $this->tabs->append($tab->getTabButton());
+    $this->content[] = $tab;
     return $this;
   }
 
@@ -145,6 +134,11 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
         $tab->setActive(false);
       }
     }
+  }
+
+
+  public function contentToString(): string {
+    return implode($this->content);
   }
 
 }

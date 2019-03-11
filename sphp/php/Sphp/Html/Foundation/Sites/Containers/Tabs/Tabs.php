@@ -31,16 +31,43 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
       \Sphp\Html\TraversableTrait;
 
   /**
-   *
+   * @var TabContentContainer 
+   */
+  private $tabs;
+
+  /**
    * @var TabContentContainer 
    */
   private $tabsContent;
 
   /**
    * Constructor
+   * 
+   * @param TabControllerContainer $tabControllers
+   * @param TabContentContainer $content
    */
-  public function __construct() {
-    $this->tabsContent = new TabContentContainer();
+  public function __construct(TabControllerContainer $tabControllers = null, TabContentContainer $content = null) {
+    if ($content === null) {
+      $content = new TabContentContainer();
+    }
+    $this->tabsContent = $content;
+    if ($tabControllers === null) {
+      $tabControllers = new TabControllerContainer();
+    }
+    $this->tabs = $tabControllers;
+    $this->tabsContent->attributes()->setAttribute('data-tabs-content', $this->tabs->identify());
+  }
+
+  /**
+   * Appends the given tab instance to the container
+   * 
+   * @param  TabInterface $tab the tab instance
+   * @return $this for a fluent interface
+   */
+  public function append(TabInterface $tab) {
+    $this->tabsContent->append($tab);
+    $this->tabs->append($tab->getTabButton());
+    return $this;
   }
 
   /**
@@ -50,8 +77,10 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @param  mixed $content the content of the tab
    * @return Tab the new appended tab 
    */
-  public function appendTab($title, $content = null) {
-    return $this->tabsContent->appendTab($title, $content);
+  public function appendTab($title, $content = null): Tab {
+    $tab = new Tab($title, $content);
+    $this->append($tab);
+    return $tab;
   }
 
   /**
@@ -60,7 +89,7 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @param  int $index the index to check for
    * @return boolean true if a tab exits at the given index
    */
-  public function hasTab(int $index) {
+  public function hasTab(int $index): bool {
     return $this->tabsContent->hasTab($index);
   }
 
@@ -76,7 +105,7 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
   }
 
   public function getHtml(): string {
-    return $this->tabsContent->getTabButtons()->getHtml() . $this->tabsContent->getHtml();
+    return $this->tabs->getHtml() . $this->tabsContent->getHtml();
   }
 
   /**
@@ -96,7 +125,11 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @return $this for a fluent interface
    */
   public function setActive(int $index) {
-    $this->tabsContent->setActive($index);
+    if (!$this->hasTab($index)) {
+      throw new OutOfBoundsException("Tab at $index does not exist");
+    }
+    $tab = $this->getTab($index);
+    $tab->setActive(true);
     return $this;
   }
 
