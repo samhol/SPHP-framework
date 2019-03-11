@@ -2,7 +2,7 @@
 ---
 menu:
 items:
- - menu: Who uses SPHPlayground?
+ - menu: Who uses?
    key: 1
    icon: <i class="fas fa-users"></i>
    items:
@@ -104,16 +104,16 @@ items:
    key: 4
    icon: <i class="fab fa-sass"></i>
    items:
-   - link: <b>SASS</b> language
+   - link: <strong>SASS</strong> language
      href: http://sass-lang.com/
-   - link: "<b style=\"color:#fb292d;\">Compass</b> framework"
+   - link: "<strong style=\"color:#fb292d;\">Compass</strong> framework"
      href: http://compass-style.org/
      icon: <i class="far fa-compass"></i>
  - menu: CSS
    key: 4
    icon: <i class="fab fa-css3"></i>
    items:
-   - link: "CSS - <b>MDN</b>"
+   - link: "CSS - <strong>MDN</strong>"
      href: https://developer.mozilla.org/en-US/docs/Web/CSS
    - link: "CSS-TRICKS"
      href: https://css-tricks.com/

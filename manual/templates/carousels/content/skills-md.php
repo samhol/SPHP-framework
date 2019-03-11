@@ -1,8 +1,5 @@
 <?php
 
-//require_once '../../../settings.php';
-use Sphp\Html\Foundation\Sites\Foundation;
-use Samiholck\skillLevelBar as bar;
 ?>
 <div id="sphp-info" markdown="1">
   <h2>SPHPlayground framework</h2>
