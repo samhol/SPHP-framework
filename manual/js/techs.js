@@ -2,13 +2,13 @@ $(function () {
   //$('.sphp-tech-slick').children('svg').hide();
 
 
-  $('#skill-info').slick({
+  $('#tech-info').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     fade: true,
     adaptiveHeight: true,
-    asNavFor: '#skill-icons'
+    asNavFor: '#tech-icons'
   });
   /**
    $breakpoints: (
@@ -19,14 +19,14 @@ $(function () {
    xxlarge: 1440px,
    );
    */
-  var $slick = $('#skill-icons').slick({
+  var $slick = $('#tech-icons').slick({
     dots: true,
     infinite: true,
     //speed: 5000,
     //autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: '#skill-info',
+    asNavFor: '#tech-info',
     centerMode: true,
     focusOnSelect: true,
     //centerPadding: '60px',
@@ -79,3 +79,5 @@ $(function () {
   });*/
 
 });
+
+

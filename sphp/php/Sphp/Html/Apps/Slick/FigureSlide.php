@@ -59,6 +59,7 @@ class FigureSlide extends AbstractComponent implements Slide {
     $this->caption = $caption;
     $this->caption->cssClasses()
             ->protectValue('slick-caption');
+    $this->figure = new \Sphp\Html\Media\Figure($this->img, $this->caption);
   }
 
   /**
@@ -94,7 +95,7 @@ class FigureSlide extends AbstractComponent implements Slide {
   }
 
   public function contentToString(): string {
-    return $this->img . $this->caption;
+    return $this->figure->getHtml();
   }
 
 }

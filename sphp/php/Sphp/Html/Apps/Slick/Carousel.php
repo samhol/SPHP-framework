@@ -35,8 +35,6 @@ class Carousel extends AbstractComponent {
   public function __construct(array $properties = null) {
     parent::__construct('div');
     $this->slides = [];
-    $this->attributes()
-            ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
     if ($properties !== null) {
       $this->setProperties($properties);
     }
@@ -49,6 +47,10 @@ class Carousel extends AbstractComponent {
    * @return $this for a fluent interface
    */
   public function setProperties(array $props) {
+    if (!$this->attributes()->isInstantiated('data-slick')) {
+    $this->attributes()
+            ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
+    }
     $this->attributes()->getObject('data-slick')->setValue($props);
     return $this;
   }
@@ -87,6 +89,7 @@ class Carousel extends AbstractComponent {
     $this->slides[] = $slide;
     return $slide;
   }
+
   /**
    * Appends a new HTML slide component
    *
@@ -96,6 +99,19 @@ class Carousel extends AbstractComponent {
   public function appendMd(string $md): DivSlide {
     $slide = new DivSlide();
     $slide->appendMd($md);
+    $this->append($slide);
+    return $slide;
+  }
+
+  /**
+   * Appends a new HTML slide component
+   *
+   * @param  string $path 
+   * @return DivSlide appended instance
+   */
+  public function appendMdFile(string $path): DivSlide {
+    $slide = new DivSlide();
+    $slide->appendMdFile($path);
     $this->append($slide);
     return $slide;
   }
@@ -165,3 +181,5 @@ class Carousel extends AbstractComponent {
   }
 
 }
+
+
