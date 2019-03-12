@@ -10,11 +10,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use IteratorAggregate;
 use Sphp\Html\Content;
+use IteratorAggregate;
+use Sphp\Html\TraversableContent;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Div;
-use Sphp\Html\TraversableContent;
 use OutOfBoundsException;
 use Traversable;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
@@ -32,11 +32,6 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;
-
-  /**
-   * @var Tab[] 
-   */
-  private $tabs = [];
 
   /**
    * @var Div 
@@ -66,11 +61,29 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
     $this->controllers->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
   }
 
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->controllers, $this->content, $this->options);
+  }
+
   public function setOption(string $name, $value) {
     if (is_bool($value)) {
       $value = $value ? 'true' : 'false';
     }
     $this->options->setProperty($name, $value);
+    return $this;
+  }
+
+  /**
+   * Sets/unsets the heights of the tab content panes to match
+   * 
+   * @param  boolean $match true for matching heights
+   * @return $this for a fluent interface
+   */
+  public function matchHeight(bool $match = true) {
+    $this->setOption('matchHeight', $match);
     return $this;
   }
 
@@ -81,7 +94,8 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @return $this for a fluent interface
    */
   public function append(Tab $tab) {
-    $this->tabs[] = $tab;
+    $this->controllers->append($tab->getController());
+    $this->content->append($tab);
     return $this;
   }
 
@@ -105,7 +119,7 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @return boolean true if a tab exits at the given index
    */
   public function hasTab(int $index): bool {
-    return array_key_exists($index, $this->tabs);
+    return $this->content->offsetExists($index);
     //return $this->tabsContent->hasTab($index);
   }
 
@@ -118,42 +132,34 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    */
   public function getTab(int $index) {
     if ($this->hasTab($index)) {
-      return $this->tabs[$index];
+      return $this->content[$index];
     }
     return null;
   }
 
-  public function getHtml(): string {
-    foreach ($this->tabs as $tab) {
-      $this->controllers->append($tab->getTabButton());
-      $this->content->append($tab);
-    }
-    return $this->controllers->getHtml() . $this->content->getHtml();
-  }
-
   /**
-   * Sets/unsets the heights of the tab content panes to match
    * 
-   * @param  boolean $match true for matching heights
-   * @return $this for a fluent interface
-   */
-  public function matchHeight(bool $match = true) {
-    $this->setOption('matchHeight', $match);
-    return $this;
-  }
-
-  /**
    * 
    * @param  int $index of the Tab
    * @return $this for a fluent interface
+   * @throws OutOfBoundsException if a Tab at $index does not exist
    */
   public function setActive(int $index) {
     if (!$this->hasTab($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }
-    $tab = $this->getTab($index);
-    $tab->setActive(true);
+    foreach ($this->content as $pos => $tab) {
+      if ($pos === $index) {
+        $tab->setActive(true);
+      } else {
+        $tab->setActive(false);
+      }
+    }
     return $this;
+  }
+
+  public function getHtml(): string {
+    return $this->controllers->getHtml() . $this->content->getHtml();
   }
 
   /**
@@ -162,7 +168,7 @@ class Tabs implements Content, IteratorAggregate, TraversableContent {
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->tabsContent->getIterator();
+    return $this->content->getIterator();
   }
 
 }

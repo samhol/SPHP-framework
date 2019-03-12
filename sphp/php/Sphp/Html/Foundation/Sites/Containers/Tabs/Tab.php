@@ -25,9 +25,15 @@ interface Tab extends IdentifiableContent {
 
   /**
    * 
-   * @return TabController
+   * @return BasicController
    */
-  public function getTabButton(): TabController;
+  public function getController(): TabController;
 
-  public function setActive(bool $visibility = true);
+  /**
+   * Sets or unsets the Tab component as active
+   *
+   * @param  boolean $active true for activation and false for deactivation
+   * @return $this for a fluent interface
+   */
+  public function setActive(bool $active = true);
 }

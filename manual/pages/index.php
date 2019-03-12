@@ -24,7 +24,7 @@ framework requires no usage of other programming languages than PHP.
 ## Some terminology explained
 MD
 );
-printPage('tech-carousel');
+include 'manual/snippets/carousels/skills.php';
 md(<<<MD
 ## SYSTEM REQUIREMENTS and installation
 

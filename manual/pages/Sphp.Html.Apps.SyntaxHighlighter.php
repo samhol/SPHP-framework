@@ -1,17 +1,45 @@
 <?php
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
+
+use Sphp\Html\Foundation\Sites\Containers\Tabs\Tabs;
+//use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 use Sphp\Manual;
+use Sphp\Html\Foundation\Sites\Containers\Tabs\SyntaxHighlightingTab;
+
 $syntaxHighligher = Manual\api()->classLinker(GeSHiSyntaxHighlighter::class);
-$syntax1 = (new GeSHiSyntaxHighlighter())
-        ->loadFromFile('manual/snippets/example1.js');
+
 \Sphp\Manual\md(<<<MD
 
-##The $syntaxHighligher component
-<div class="grid-x"><div class="cell small-12 large-5">
+## The $syntaxHighligher component
+        
+Support for a wide range of popular languages
+Easy to add a new language for highlighting
+Highly customisable output formats
 
-
-
-</div><div class="cell small-12 medium-7">$syntax1</div></div>
 MD
 );
+
+$path = 'manual/snippets/syntaxhighlight';
+
+$tabs = new Tabs();
+$tabs->matchHeight(true);
+$cssTab = new SyntaxHighlightingTab('CSS');
+$cssTab->loadFromFile("$path/example.css");
+$tabs->append($cssTab);
+
+$jsonTab = new SyntaxHighlightingTab('JSON');
+$jsonTab->loadFromFile("$path/example.json");
+$tabs->append($jsonTab);
+
+$phpTab = new SyntaxHighlightingTab('PHP');
+$phpTab->loadFromFile("$path/example.php");
+$tabs->append($phpTab);
+
+$jsTab = new SyntaxHighlightingTab('JS');
+$jsTab->loadFromFile("$path/example.js");
+$tabs->append($jsTab);
+
+$tabs->setActive(0);
+echo $tabs;
+?>

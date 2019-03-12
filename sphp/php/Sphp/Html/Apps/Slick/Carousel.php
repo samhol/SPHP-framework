@@ -62,27 +62,39 @@ class Carousel extends AbstractComponent {
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
    *
-   * @param  mixed|Slide,... $slide
+   * @param  Slide $slide
    * @return $this for a fluent interface
    */
-  public function append(...$slide) {
-    foreach ($slide as $item) {
-      if (!($item instanceof Slide)) {
-        $item = new HtmlSlide($item);
-      }
-      $this->slides[] = $item;
-    }
+  public function append(Slide $slide) {
+    $this->slides[] = $slide;
     return $this;
   }
 
   /**
+   * Appends slide(s) to the orbit
+   *
+   * **Notes:**
+   *
+   * 1. `mixed $slides` can be of any type that converts to a PHP string
+   * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
+   * 3. All items of an array are treated according to note (2)
+   *
+   * @param  mixed $html
+   * @return $this for a fluent interface
+   */
+  public function appendHtml($html): DivSlide {
+    $slide = new DivSlide($html);
+    $this->slides[] = $slide;
+    return $slide;
+  }
+  /**
    * Appends a new HTML slide component
    *
    * @param  string $md 
-   * @return HtmlSlide appended instance
+   * @return DivSlide appended instance
    */
-  public function appendMd(string $md): HtmlSlide {
-    $slide = new HtmlSlide();
+  public function appendMd(string $md): DivSlide {
+    $slide = new DivSlide();
     $slide->appendMd($md);
     $this->append($slide);
     return $slide;

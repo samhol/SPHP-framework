@@ -4,24 +4,21 @@
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\Div;
-
+use Sphp\Html\Apps\Syntaxhighlighting\GeSHiSyntaxHighlighter;
 /**
- * Implements a Tab for Tabs
+ * Description of SyntaxHighlightingTab
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/tabs.html Foundation Tabs
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DivTab extends Div implements Tab {
+class SyntaxHighlightingTab extends GeSHiSyntaxHighlighter implements Tab {
 
   /**
    * @var BasicController 

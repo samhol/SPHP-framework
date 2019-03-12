@@ -46,12 +46,12 @@ Manual\md(<<<MD
 MD
 );
 
-Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityAdapter-showFromUp.php', 'html5')
+Manual\example('Sphp/Html/Foundation/Sites/Adapters/VisibilityAdapter-showFromUp.php', 'html5')
         ->setExamplePaneTitle('Showing content for specific screen sizes or larger')
         ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
         ->printHtml();
 
-Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityAdapter-showOnlyFor.php', 'html5')
+Manual\example('Sphp/Html/Foundation/Sites/Adapters/VisibilityAdapter-showOnlyFor.php', 'html5')
         ->setExamplePaneTitle('Showing content only for specific sceen size')
         ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
         ->printHtml();
@@ -60,7 +60,7 @@ Manual\md(<<<MD
 Hiding by Screen Size methods state which components should disappear based on the device's screen size.
 MD
 );
-Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityAdapter-hideOnlyFor.php', 'html5')
+Manual\example('Sphp/Html/Foundation/Sites/Adapters/VisibilityAdapter-hideOnlyFor.php', 'html5')
         ->setExamplePaneTitle('Hiding content only for specific sceen size')
         ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
         ->printHtml();
@@ -73,7 +73,7 @@ on mobile devices when the device is rotated. On desktop, the orientation is alm
 
 MD
 );
-Manual\example('Sphp/Html/Foundation/Sites/Adspters/VisibilityHandler-deviceOrientation.php', 'html5')
+Manual\example('Sphp/Html/Foundation/Sites/Adapters/VisibilityHandler-deviceOrientation.php', 'html5')
         ->setExamplePaneTitle('Showing content based on Orientation Detection')
         ->setOutputSyntaxPaneTitle('Resulting HTML5 code')
         ->printHtml();

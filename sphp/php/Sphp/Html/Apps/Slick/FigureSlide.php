@@ -24,8 +24,6 @@ use Sphp\Html\Media\FigCaption;
  */
 class FigureSlide extends AbstractComponent implements Slide {
 
-  use ActivationTrait;
-
   /**
    * the image component
    *
@@ -47,21 +45,20 @@ class FigureSlide extends AbstractComponent implements Slide {
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
   public function __construct($img, $caption = null) {
-    parent::__construct('li');
-    $this->cssClasses()
-            ->protectValue('orbit-slide');
+    parent::__construct('div');
+    $this->addCssClass('sphp', 'slick-slide');
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }
     $this->img = $img;
     $this->img->cssClasses()
-            ->protectValue('orbit-image');
+            ->protectValue('slick-image');
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }
     $this->caption = $caption;
     $this->caption->cssClasses()
-            ->protectValue('orbit-caption');
+            ->protectValue('slick-caption');
   }
 
   /**

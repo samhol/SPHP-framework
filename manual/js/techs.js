@@ -1,45 +1,63 @@
 $(function () {
   //$('.sphp-tech-slick').children('svg').hide();
-  $(".sphp-tech-slick svg").hide();
 
-  $('.sphp-tech-slick').on('init', function (event, slick) {
-   // console.log(event);
-   // console.log(slick);
-    console.log('init: ' + $(this).find('svg').length);
-    //console.log('init: ' + $(this).find('svg').length);
-    $('.sphp-tech-slick svg').toggle();
 
+  $('#skill-info').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    adaptiveHeight: true,
+    asNavFor: '#skill-icons'
   });
-  $('.sphp-tech-slick').slick({
+  /**
+   $breakpoints: (
+   small: 0,
+   medium: 640px,
+   large: 1024px,
+   xlarge: 1200px,
+   xxlarge: 1440px,
+   );
+   */
+  var $slick = $('#skill-icons').slick({
     dots: true,
     infinite: true,
-    speed: 300,
-    //slidesToShow: 4,
+    //speed: 5000,
+    //autoplay: true,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    //slidesToShow: 1,
+    asNavFor: '#skill-info',
     centerMode: true,
+    focusOnSelect: true,
+    //centerPadding: '60px',
+    //centerMode: true,
     variableWidth: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1440,
         settings: {
-          //slidesToShow: 3,
+          slidesToShow: 5,
           dots: true
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 1200,
         settings: {
-          //slidesToShow: 2,
+          slidesToShow: 4,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
           dots: false,
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 640,
         settings: {
-          //slidesToShow: 1,
+          slidesToShow: 1,
           dots: false,
         }
       }
@@ -48,23 +66,16 @@ $(function () {
       // instead of a settings object
     ]
   });
-  $(".sphp-tech-slick .sphp-info-button svg").show();
-  var $output = $("#ooo");
+  /*var $output = $("#explanation");
   $(".sphp-tech-slick .sphp-info-button").on("click", function () {
-    var $this = $(this),
+    var $this = $(this), $div,
             $obj = $this.attr("data-tech");
-    $output.load("manual/snippets/techs.php #" + $obj);
-    console.log($output.html());
+    $output.load("samiholck/templates/carousels/content/skills-parsed.php #" + $obj);
     $this.addClass('sphp-is-active');
     console.log('sphp-is-active : ' + $obj);
     $this.siblings().removeClass('sphp-is-active');
-  });
-  $(".sphp-slick svg.js").on("click", function () {
-    $output.load("manual/snippets/techs/js.php");
-  });
-  $("#contact").on("click", function () {
-    $output.load("../pages/theContactPage.html");
-  });
+    //$div = $('#info-modal');
+    //$div.centerTo($('body main'), true);
+  });*/
+
 });
-
-

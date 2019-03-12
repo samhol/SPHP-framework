@@ -11,6 +11,7 @@
 namespace Sphp\Html\Apps\Slick;
 
 use Sphp\Html\Div;
+
 /**
  * Implements a slide for Orbit
  *
@@ -19,7 +20,7 @@ use Sphp\Html\Div;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class HtmlSlide extends Div implements Slide {
+class DivSlide extends Div implements Slide {
 
   /**
    * Constructor
@@ -29,6 +30,7 @@ class HtmlSlide extends Div implements Slide {
    */
   public function __construct($content = null) {
     parent::__construct();
+    $this->addCssClass('sphp', 'slick-slide');
     if ($content !== null) {
       $this->append($content);
     }

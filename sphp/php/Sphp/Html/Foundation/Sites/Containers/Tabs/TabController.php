@@ -10,11 +10,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\ContainerTag;
+use Sphp\Html\Lists\StandardListItem;
 
 /**
- * Implements a Tab controller for Tabs
+ * Defines a Tab controller for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -22,37 +21,13 @@ use Sphp\Html\ContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TabController extends AbstractContainerTag implements TabControllerInterface {
+interface TabController extends StandardListItem {
 
   /**
-   * Constructor
+   * Sets the Tab controller active/inactive
    * 
-   * @param mixed $title
-   * @param mixed $target
+   * @param  boolean $active true for active and false for inactive
+   * @return $this for a fluent interface
    */
-  public function __construct($title, $target) {
-    $innerContainer = new ContainerTag('a', $title);
-    if ($target instanceof \Sphp\Html\Component) {
-      $id = $target->identify();
-    } else if (is_string($target)) {
-      $id = $target;
-    } else {
-      throw new InvalidArgumentException('Invalid targettype given');
-    }
-    $innerContainer->attributes()->protect('href', "#$id");
-    parent::__construct('li', null, $innerContainer);
-    $this->cssClasses()->protectValue('tabs-title');
-  }
-
-  public function setActive(bool $active = true) {
-    if ($active) {
-      $this->attributes()->setAria('aria-selected', 'true');
-      $this->addCssClass('is-active');
-    } else {
-      $this->attributes()->remove('aria-selected');
-      $this->removeCssClass('is-active');
-    }
-    return $this;
-  }
-
+  public function setActive(bool $active = true);
 }

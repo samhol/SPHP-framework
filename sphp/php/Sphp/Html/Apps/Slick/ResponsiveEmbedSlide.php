@@ -32,7 +32,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
    *
    * @var ResponsiveEmbed
    */
-  private $flex;
+  private $embed;
 
   /**
    * Constructor
@@ -45,19 +45,19 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
     if (!($embed instanceof ResponsiveEmbed)) {
       $embed = new ResponsiveEmbed($embed);
     }
-    $this->flex = $embed;
+    $this->embed = $embed;
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->flex);
+    unset($this->embed);
     parent::__destruct();
   }
 
   public function __clone() {
-    $this->flex = clone $this->flex;
+    $this->embed = clone $this->embed;
     parent::__clone();
   }
 
@@ -67,7 +67,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
    * @return ResponsiveEmbed the inner component
    */
   public function getFlex(): ResponsiveEmbed {
-    return $this->flex;
+    return $this->embed;
   }
 
   public function setAspectRatio(string $ratio) {
@@ -76,7 +76,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
   }
 
   public function contentToString(): string {
-    return $this->flex->getHtml();
+    return $this->embed->getHtml();
   }
 
   /**

@@ -18,6 +18,6 @@ namespace Sphp\Html\Apps\Slick;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface Slide {
+interface Slide extends \Sphp\Html\Component {
 
 }

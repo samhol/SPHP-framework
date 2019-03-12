@@ -1,0 +1,144 @@
+.sphp.slick-slide {
+  img {
+   // max-height: rem-calc(250);
+  }
+}
+.sphp-slick-container {
+  padding: rem-calc(1 10);
+}
+.sphp-tech-slick {
+  border-top: solid 1px #aaa;
+  div.sphp-info-button {
+    //outline : none;
+    cursor: pointer;
+    //padding: rem-calc(10 30);
+    //text-align:center;
+
+    @include opacity(.5);
+    @include transition-property(all);
+    @include transition-duration(1s);
+    @include transition-timing-function(ease-in-out);
+    .svg-container {
+      min-width:  rem-calc(220);
+      margin: rem-calc(5);
+      padding: rem-calc(5);
+      height: rem-calc(220);
+      //border: solid 1px #aaa;
+      display: inline-block;
+
+      svg {
+        display: block;
+        margin: auto;
+        height: rem-calc(200);
+      }
+
+    }
+    .small-svg-container  {
+      display: inline-block;
+      width: rem-calc(80);
+      .cell {
+        display: inlime-block;
+        width: rem-calc(40);
+        svg {
+          display: block;
+          margin: auto;
+          height: rem-calc(30);
+        }
+      }
+    }
+    &:hover, &.slick-current {
+      @include opacity(1);
+    }
+  }
+}
+
+#skill-info {
+  //@include box-shadow(#ccc 3px 0px 8px 4px);
+  // @include box-shadow(#ccc 0px 3px 8px 4px);
+  // border-top: solid 1px #aaa;
+  min-height: 350px;
+  //@include border-radius(5px);
+  //margin: rem-calc(5 30);
+  //padding: rem-calc(10 10);
+  @include background-image(linear-gradient(white, #fafafa 30%, #efefef 50%, #fefefe));
+  h2 {
+    background-color: rgba(230, 230, 230, .7);
+    font-size: rem-calc(30);
+    border-top: solid 1px #aaa;
+    border-bottom: solid 1px #aaa;
+    margin: rem-calc(1);  // top right bottom left
+    padding: rem-calc(3 5 3 10); // top right bottom left
+  }
+  h3 {
+    margin: rem-calc(10 20);
+  }
+
+  p {
+    margin: rem-calc(10 20);
+  }
+  ul {
+    margin: rem-calc(10 20);
+    list-style-position: inside;
+  }
+  .progress.skill {
+    .progress-meter {
+      background-color: #111;
+      .progress-meter-text {
+        color: $highlight-color;
+      }
+    }
+  }
+  .button-group {
+    margin: rem-calc(10 20 30 20);
+    a {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      &:first-child {
+        @include border-left-radius(4px);
+      }
+      &:last-child {
+        @include border-right-radius(4px);
+      } 
+      i, svg {
+        margin-right: rem-calc(6);
+      }
+      &.zend {
+        i {
+          color: #8be912;
+        } 
+        path {
+          fill: #8be912;
+        }
+      }
+      &.API {
+        font-weight: bolder;
+      }
+      &.w3schools {
+        path {
+          fill: #22bb11;
+        }
+        .com {
+          color: #22bb11;
+        }
+      }
+      &.js {
+        path {
+          fill: #fc1;
+        }
+        color: #fff;
+        .com {
+          color: #fc1;
+        }
+      }
+      &.wikibooks {
+        path {
+          fill: #0033cc;
+        }
+        .books {
+          color:  #0033cc;
+        }
+      }
+    }
+  }
+}
+

@@ -53,7 +53,6 @@ class JsonAttribute extends AbstractAttribute {
 
   public function __destruct() {
     unset($this->data, $this->parser);
-    parent::__destruct();
   }
 
   public function isVisible(): bool {
