@@ -1,11 +1,15 @@
 // including plugins
 var build, gulp = require('gulp'),
+        watch = require('gulp-watch'),
         uglify = require("gulp-uglify"),
         concat = require("gulp-concat"),
         jsdoc = require('gulp-jsdoc3'),
         rev = require('gulp-rev'),
         revReplace = require('gulp-rev-replace'),
+        sass = require('gulp-sass'),
         copy_scss_and_fonts;
+
+sass.compiler = require('node-sass');
 
 function build_js() {
   return gulp.src([
@@ -84,3 +88,14 @@ gulp.task('build', build);
 gulp.task('default', build);
 gulp.task('copy:scss+fonts', copy_scss_and_fonts);
 gulp.task('doc', doc);
+
+function sassToCss() {
+  return gulp.src('./sphp/scss/*.scss')
+          .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+          .pipe(gulp.dest('./sphp/css'));
+}
+gulp.task('sass', sassToCss);
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./sphp/scss/**/*.scss', ['sass']);
+});

@@ -45,11 +45,18 @@ $error-bg: rgba(#FF7F50, 0.4);
 @import "forms"; 
 @import 'icon-examples';
 @import "logo-area"; 
+
 .manual {
   .sphp.sidenav {
+    @include shadow(0px 3px 8px 4px rgba(#888,1));
     margin: rem-calc(20 20 20 20); /* top right bottom left */
     border: solid 1px #888;
   } 
+  .sphp.responsive-bar-container {
+    .top-bar, .title-bar {   
+      @include shadow(0px 3px 8px 4px #888);
+    }
+  }
   .mainContent {
     //max-width: rem-calc(1200);
     border: solid 1px #888;
@@ -57,10 +64,11 @@ $error-bg: rgba(#FF7F50, 0.4);
     //@include box-shadow(#888 3px 0px 8px 4px);
     padding: rem-calc(0 10 0 10);// top right bottom left
     margin: rem-calc(20 10 20 0); // top right bottom left
-    @include box-shadow(#888 0px 3px 8px 4px);
+    @include shadow(0px 3px 8px 4px rgba(#888,1));
+    //@include box-shadow1(-3px, -3px, 8px, #888);
+    //@include box-shadow1(-3px, 3px, 8px, #888);
+    //@include box-shadow1(3px, -3px, 8px, #888);
     background: #eaeaea;
-
-
     @include breakpoint(medium down) {  
       margin: rem-calc(5 0 20 0);
     }
@@ -121,4 +129,22 @@ $error-bg: rgba(#FF7F50, 0.4);
 }
 
 @import "body";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

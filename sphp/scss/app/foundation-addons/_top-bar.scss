@@ -41,8 +41,8 @@
   $root-border-color: #333;
   .sphp.responsive-bar-container {
     .title-bar, .top-bar {
-      @include single-box-shadow(0px, 3px, 8px, 4px, #888);
-      @include single-box-shadow(3px, 3px, 8px, 4px, #888);
+      //@include single-box-shadow(0px, 3px, 8px, 4px, #888);
+      //@include single-box-shadow(3px, 3px, 8px, 4px, #888);
       border-top: solid 1px $highlight-color;
       border-bottom: solid 1px $highlight-color;
       background-color: $bar-bg;
@@ -79,8 +79,8 @@
             color: $bar-font-color;
           }
           &.menu-ruler {
-            @include background-image(linear-gradient(120deg, #222, #555, #222));
-            // @include background-image(linear-gradient(to right, #535353, #202020));
+            $grad: #222 0%, #555 50%, #222 100%;
+            @include gradient(to right, $grad);
             background-color: smart-scale($bar-bg, 25%);
           }
           &.icon-link {
@@ -138,3 +138,4 @@
     }
   }
 }
+

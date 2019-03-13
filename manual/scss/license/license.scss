@@ -8,6 +8,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);
 
 @import "settings";
+@import "../../../sphp/scss/functions/functions";
 
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
@@ -90,8 +91,8 @@ body.mit-license {
     hr {
       border: 0;
       height: 1px;
-      @include background-image(linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)));
-      //background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+      $grad: #fafafa 0%,black 50%, #fafafa 100%;
+      @include gradient(to left, $grad);
     }
   }
   background-color: #000;
@@ -117,3 +118,10 @@ body.mit-license {
   }
   
 }
+
+
+
+
+
+
+

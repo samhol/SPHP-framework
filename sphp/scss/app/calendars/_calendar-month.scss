@@ -23,9 +23,7 @@ $border-color: #555;
       @include sphp-calendar-date();
     }
     .date, .week-day-name, span {
-      @include transition-property(all);
-      @include transition-duration(0.5s);
-      @include transition-timing-function(ease-in-out);
+      @include transition(all, 0.5s, ease-in-out);
     }
   }
 

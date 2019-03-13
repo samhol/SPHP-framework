@@ -29,11 +29,10 @@
       border: solid 1px #444;
       //@include border-radius(8px);
       @include opacity(.85);
-      @include box-shadow(rgba(gray, 0.4) 0 0 25px, rgba(black, 0.2) 0 0 2px 1px);
+      @include shadow();
       &:hover {
         border-color: #333;
         @include opacity(1);
-        @include box-shadow(rgba(gray, 0.6) 0 0 25px, rgba(black, 0.5) 0 0 2px 1px);
       }
       /*font-size: rem-calc(30);
       width: rem-calc(50);
@@ -51,11 +50,10 @@
     a.icon-button {
       border: solid 1px rgba(#6a4e31, .6);
       @include opacity(.85);
-      @include box-shadow(rgba(gray, 0.4) 0 0 25px, rgba(black, 0.2) 0 0 2px 1px);
+      @include shadow();
       &:hover {
         border: solid 1px rgba(#ff9933, .6);
         @include opacity(1);
-        @include box-shadow(rgba(gray, 0.6) 0 0 25px, rgba(black, 0.5) 0 0 2px 1px);
       }
 
       @include breakpoint(small) {
@@ -73,3 +71,5 @@
     } 
   }
 }
+
+

@@ -84,10 +84,7 @@ $devicons-color: #60be86;
       text-align: center;
     }
     .icon {
-      @include transition-property(all);
-      @include transition-duration(0.5s);
-      @include transition-timing-function(ease-in-out);
-      //@include border-top-radius(3px);
+      @include transition(all, 0.3s, ease-in-out);
       padding: rem-calc(2);
       background-color: #fff;
       &.font {
@@ -180,8 +177,5 @@ $devicons-color: #60be86;
     }
   }
 }
-.foo {
-  padding:rem-calc(5 10);
-  svg {
-  }
-}
+
+

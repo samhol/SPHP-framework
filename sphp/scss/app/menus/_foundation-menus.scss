@@ -26,7 +26,8 @@ $menu-font-size: rem-calc(13);
         color: $menu-link-color-active;
       }
       &.menu-ruler {
-        @include background-image(linear-gradient(120deg, #222, #555, #222));
+        $grad: #222 0%, #555 50%, #222 100%;
+        @include gradient(to right, $grad);
         background-color: smart-scale($menu-bg, 25%);
       }
       &.menu-text {

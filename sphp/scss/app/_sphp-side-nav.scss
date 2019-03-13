@@ -8,9 +8,6 @@
 
 @charset "UTF-8";
 
-@import "compass/css3";
-@import "compass/typography/links/link-colors";
-
 $side-nav-heading-color: #111;
 $side-nav-heading-font-size: rem-calc(16);
 $side-nav-link-color: #111;
@@ -26,14 +23,14 @@ $side-nav-bg: #fefefe;
     padding: rem-calc(0 0 20 0); /* top right bottom left */
     border: solid 1px #333;
     //border: solid 1px #FF8000;
-    @include border-bottom-left-radius(10px);
+    @include border-bottomleft-radius(10px);
     overflow: hidden; 
-    @include background-clip(border-box);
+    // @include background-clip(border-box);
     background-color: #fefefe;	
     // border: solid 1px #888; 
     // @include border-radius(4px);
-    @include box-shadow(#888 3px 0px 8px 4px);
-    @include box-shadow(#888 0px 3px 8px 4px);
+    //@include box-shadow(#888 3px 0px 8px 4px);
+    //@include box-shadow(#888 0px 3px 8px 4px);
     //margin: rem-calc(5 0 20 0); /*top right bottom left*/
     a {
       color: #555;
@@ -50,7 +47,8 @@ $side-nav-bg: #fefefe;
         &:first-of-type {
           font-size: rem-calc(18);
         }
-        @include background-image(linear-gradient(to right, #fff, #dfdfdf));
+        $grad: #fff 0%, #dfdfdf 100%;
+        @include gradient(to left, $grad);
         font: {
           size: $side-nav-heading-font-size;
           weight: bold;
@@ -59,7 +57,8 @@ $side-nav-bg: #fefefe;
         border-bottom: solid 1px #999; 
       }
       &.menu-ruler {
-        @include background-image(linear-gradient(to right, #eee, #ccc));
+        $grad: #eee 0%, #ccc 100%;
+        @include gradient(to right, $grad);
         background-color: #ccc;
         margin-left: 3px;
         margin-right: 3px;
@@ -71,8 +70,9 @@ $side-nav-bg: #fefefe;
           border-bottom: solid 1px #999;
           //background-color: #eee;
           font-weight: bold;
-          font-size: rem-calc(14);
-          @include background-image(linear-gradient(to right, #fff, #dfdfdf));
+          font-size: rem-calc(14);   
+          $grad: #fff 0%, #dfdfdf 100%;
+          @include gradient(to right, $grad);
           color: #333;
           padding-left: rem-calc(6);
         }
@@ -83,23 +83,24 @@ $side-nav-bg: #fefefe;
           border-bottom: 1px solid rgba(255, 255, 255, 0.6);
           background-color: #fff;
           font-size: rem-calc(13);
-          @include transition-property(background-color, color);
-          @include transition-duration(0.2s);
-          @include transition-timing-function(ease-in-out);
+          @include transition();
           &:hover {	
             color: #111;
           }
           &:hover { 
-            @include background-image(linear-gradient(to right, #fff, #eee));
+            $grad: #fff 0%, #eee 100%;
+            @include gradient(to right, $grad);
           }
         }
         &.active {
           a {
             color: #222;
-            @include background-image(linear-gradient(to right, #fff, #eee));
+            $grad: #fff 0%, #eee 100%;
+            @include gradient(to right, $grad);
             &:hover {
               color: #111;
-              @include background-image(linear-gradient(to right, #fdfdfd, #dcdcdc));
+              $grad: #fdfdfd 0%, #dcdcdc 100%;
+              @include gradient(to right, $grad);
             }
           }
         }

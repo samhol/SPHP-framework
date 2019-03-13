@@ -16,17 +16,17 @@ $sphp-menuitem-background-color: #222;
 $sphp-menuitem-color: #fff;
 $sphp-menuitem-color-active: #efefef;
 $sphp-menuitem-font-color: #f4f4f4;
-$sphp-menuitem-font-color-active: #fff;
-
-@import "compass/css3";
+$sphp-menuitem-font-color-active: #ffffff;
+//@import "compass/css3";
+@import "functions/functions";
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);
 @import "settings";
 @import "../../node_modules/foundation-sites/scss/foundation";
 
-@include foundation-everything($prototype: true);
+@include foundation-everything($prototype: true); 
 
 /*@include foundation-grid;
-@include foundation-global-styles;
+@include foundation-global-styles; 
 @include foundation-xy-grid-classes;
 @include foundation-grid;
 //@include foundation-flex-grid;
@@ -84,3 +84,8 @@ $sphp-menuitem-font-color-active: #fff;
 @include sphp-forms();
 
 @include sphp-code-example-accordion();
+
+
+
+
+

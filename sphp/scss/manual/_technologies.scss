@@ -26,9 +26,7 @@ github: #222,
 .sphp-tech-slick {
   div.sphp-info-button {
     @include opacity(.5);
-    @include transition-property(all);
-    @include transition-duration(1s);
-    @include transition-timing-function(ease-in-out);
+    @include transition(all, 1s, ease-in-out);
     outline : none;
     cursor: pointer;
     padding: rem-calc(10 30);
@@ -112,3 +110,4 @@ github: #222,
     @include border-radius(8px);
   }
 }
+

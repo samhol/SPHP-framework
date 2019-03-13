@@ -1,136 +1,180 @@
-
-.sphp-slick-container {
-  padding: rem-calc(1 10);
-}
-.sphp-tech-slick {
-  .sphp.slide {
-    display: none;
-  }
-  .sphp.slide:first-child {
-    display: block;
-  }
-  &.slick-initialized .sphp.slide {
-    display: block;
-  }
-  .slick-list {
-    border: solid 1px #ddd;
-    @include border-radius(2px);
-  }
+.sphp.slick-carousel {
   .sphp.slide {
     &:focus {
       outline: none;
     }
-    cursor: pointer;
-    @include opacity(.3);
-    @include transition-property(all);
-    @include transition-duration(.6s);
-    @include transition-timing-function(ease-in-out);
-    .svg {
-      svg {
-        display: block;
-        margin: auto;
-        height: rem-calc(200);
-      }
-      min-width:  rem-calc(200);
-      padding: rem-calc(8);
-      //height: rem-calc(200);
-    }
-    //border: solid 1px #aaa;
-    &:hover, &.slick-current {
-      @include opacity(1);
-    }
   }
 }
-
-#skill-info {
-  //@include box-shadow(#ccc 3px 0px 8px 4px);
-  // @include box-shadow(#ccc 0px 3px 8px 4px);
-  // border-top: solid 1px #aaa;
-  min-height: 350px;
-  //@include border-radius(5px);
-  //margin: rem-calc(5 30);
-  //padding: rem-calc(10 10);
-  @include background-image(linear-gradient(white, #fafafa 30%, #efefef 50%, #fefefe));
-  h2 {
-    background-color: rgba(230, 230, 230, .7);
-    font-size: rem-calc(30);
-    border-top: solid 1px #aaa;
-    border-bottom: solid 1px #aaa;
-    margin: rem-calc(1);  // top right bottom left
-    padding: rem-calc(3 5 3 10); // top right bottom left
-  }
-  h3 {
-    margin: rem-calc(10 20);
-  }
-
-  p {
-    margin: rem-calc(10 20);
-  }
-  ul {
-    margin: rem-calc(10 20);
-    list-style-position: inside;
-  }
-  .progress.skill {
-    .progress-meter {
-      background-color: #111;
-      .progress-meter-text {
-        color: $highlight-color;
+.sphp {
+  .tech-icon-carousel {
+    .sphp.slide {
+      display: none;
+    }
+    .sphp.slide:first-child {
+      display: block;
+    }
+    &.slick-initialized .sphp.slide {
+      display: block;
+    }
+    .slick-list {
+      border: solid 1px #ddd;
+      @include border-radius(2px);
+    }
+    .sphp.slide {
+      cursor: pointer;
+      @include opacity(.3);
+      @include transition(all, 0.6s, ease-in-out);
+      .svg {
+        svg {
+          display: block;
+          margin: auto;
+          height: rem-calc(200);
+        }
+        min-width:  rem-calc(200);
+        padding: rem-calc(8);
+        //height: rem-calc(200);
+      }
+      //border: solid 1px #aaa;
+      &:hover, &.slick-current {
+        @include opacity(1);
       }
     }
   }
-  .button-group {
-    margin: rem-calc(10 20 30 20);
-    a {
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-      &:first-child {
-        @include border-left-radius(4px);
+
+  .tech-descriptions {
+    .slick-list {
+      border: solid 1px #ddd;
+      @include border-radius(2px);
+    }
+    .sphp.slide {
+      &.sass {
+        .button {
+          background-color: #c6538c;
+        }
       }
-      &:last-child {
-        @include border-right-radius(4px);
-      } 
-      i, svg {
-        margin-right: rem-calc(6);
-      }
-      &.zend {
-        i {
-          color: #8be912;
+    }
+    h3 {
+      background-color: rgba(#eee, .7);
+      font-size: rem-calc(30);
+      //border-top: solid 1px #ddd;
+      border-bottom: solid 1px #ddd; 
+      margin: rem-calc(1);  // top right bottom left
+      padding: rem-calc(3 5 3 10); // top right bottom left
+    }
+    p {
+      margin: rem-calc(10 20);
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      $grad: #fafafa 0%,black 50%, #fafafa 100%;
+      @include gradient(to left, $grad);
+    }
+    ul {
+      margin: rem-calc(10 20);
+      list-style-position: inside;
+    }
+    .button-group {
+      margin: rem-calc(10 20 30 20);
+      a {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        &:first-child {
+          @include border-radii(4px, 0, 4px, 0);
+        }
+        &:last-child {
+          @include border-radii(0, 4px, 0, 4px);
         } 
-        path {
-          fill: #8be912;
+        i, svg {
+          //width: 20px;
+          margin-right: rem-calc(4);
         }
-      }
-      &.API {
-        font-weight: bolder;
-      }
-      &.w3schools {
-        path {
-          fill: #22bb11;
+        &.zend {
+          i {
+            color: #8be912;
+          } 
+          path {
+            fill: #8be912;
+          }
         }
-        .com {
-          color: #22bb11;
+        &.API {
+          font-weight: bolder;
         }
-      }
-      &.js {
-        path {
-          fill: #fc1;
+        &.w3schools {
+          path {
+            fill: #22bb11;
+          }
+          .com {
+            color: #22bb11;
+          }
         }
-        color: #fff;
-        .com {
-          color: #fc1;
+        &.js {
+          path {
+            fill: #fc1;
+          }
+          color: #fff;
+          .com {
+            color: #fc1;
+          }
         }
-      }
-      &.wikibooks {
-        path {
-          fill: #0033cc;
-        }
-        .books {
-          color:  #0033cc;
+        &.wikibooks {
+          path {
+            fill: #0033cc;
+          }
+          .books {
+            color:  #0033cc;
+          }
         }
       }
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

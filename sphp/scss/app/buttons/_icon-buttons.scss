@@ -45,10 +45,7 @@ github:     (color: $default-color, background: #231f20),
     height: rem-calc(50);
     text-align: center;
     text-decoration: none;
-    @include transition-property(all);
-    @include transition-duration(0.3s);
-    @include transition-timing-function(ease-in-out);
-
+    @include transition(all, 0.3s, ease-in-out);
     &.rounded {
       @include border-radius(50%);
     }

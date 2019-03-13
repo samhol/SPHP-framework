@@ -46,10 +46,9 @@
       &:first-child {
         border: none;
         border-bottom: solid 1px #666;
-        @include border-bottom-radius(0);
-        @include border-top-radius(4px);
+        @include border-radii(4px,4px,0,0);
       }
-    }
+    } 
     > p, > ul, > ol {
       margin: rem-calc(5 50);
       text-align: justify;
@@ -74,8 +73,7 @@
     &:first-child {
       border: none;
       border-bottom: solid 1px #666;
-      @include border-bottom-radius(0);
-      @include border-top-radius(4px);
+      @include border-radii(4px,4px,0,0);
     }
   }
   ul:not([class]) {
@@ -97,3 +95,7 @@
     }
   }
 }
+
+
+
+
