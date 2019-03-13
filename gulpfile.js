@@ -60,6 +60,15 @@ function copy_tipso() {
           .pipe(gulp.dest('./sphp/scss/vendor'));
 }
 
+function copyIonRangeLiderCss() {
+  return gulp.src('./node_modules/ion-rangeslider/css/ion.rangeSlider.css')
+          .pipe(rev())
+          .pipe(rename(function (file) {
+            file.extname = '_ion.rangeSlider.scss';
+          }))
+          .pipe(revReplace())
+          .pipe(gulp.dest('./sphp/scss/vendor'));
+}
 function build_ss360() {
   return gulp.src([
     './sphp/javascript/app/ss360/*.js'
@@ -82,12 +91,13 @@ function doc(cb) {
 
 build = gulp.series(build_js, build_ss360);
 build_docs = gulp.series(build, doc);
-copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts, copy_img, copy_tipso);
+copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts, copy_img, copy_tipso, copyIonRangeLiderCss);
 
 gulp.task('build', build);
 gulp.task('default', build);
 gulp.task('copy:scss+fonts', copy_scss_and_fonts);
 gulp.task('doc', doc);
+
 
 function sassToCss() {
   return gulp.src('./sphp/scss/*.scss')
