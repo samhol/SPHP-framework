@@ -1,4 +1,4 @@
-## Sass <small>stylesheet language</small>
+### Sass <small>stylesheet language</small>
 
 Sass is an extension of CSS that adds power and elegance to the basic 
 language. It allows you to use variables, nested rules, mixins, inline 

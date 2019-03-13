@@ -1,4 +1,4 @@
-## SPHPlayground framework
+### SPHPlayground framework
 
 **SPHPlayground** framework saw first daylight in 2009 or so. It was first 
 only a small sample of tools for creating HTML components with PHP language. 

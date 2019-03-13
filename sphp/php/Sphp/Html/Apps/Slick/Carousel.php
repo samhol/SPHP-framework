@@ -48,8 +48,8 @@ class Carousel extends AbstractComponent {
    */
   public function setProperties(array $props) {
     if (!$this->attributes()->isInstantiated('data-slick')) {
-    $this->attributes()
-            ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
+      $this->attributes()
+              ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
     }
     $this->attributes()->getObject('data-slick')->setValue($props);
     return $this;
@@ -176,10 +176,5 @@ class Carousel extends AbstractComponent {
     return implode($this->slides);
   }
 
-  public function getHtml(): string {
-    return '<div class="grid-x sphp-slick-container"><div class="cell auto">' . parent::getHtml() . '</div></div>';
-  }
-
 }
-
 

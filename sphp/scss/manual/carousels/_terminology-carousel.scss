@@ -1,51 +1,41 @@
-.sphp.slick-slide {
-  img {
-   // max-height: rem-calc(250);
-  }
-}
+
 .sphp-slick-container {
   padding: rem-calc(1 10);
 }
 .sphp-tech-slick {
-  border-top: solid 1px #aaa;
-  div.sphp-info-button {
-    //outline : none;
+  .sphp.slide {
+    display: none;
+  }
+  .sphp.slide:first-child {
+    display: block;
+  }
+  &.slick-initialized .sphp.slide {
+    display: block;
+  }
+  .slick-list {
+    border: solid 1px #ddd;
+    @include border-radius(2px);
+  }
+  .sphp.slide {
+    &:focus {
+      outline: none;
+    }
     cursor: pointer;
-    //padding: rem-calc(10 30);
-    //text-align:center;
-
-    @include opacity(.5);
+    @include opacity(.3);
     @include transition-property(all);
-    @include transition-duration(1s);
+    @include transition-duration(.6s);
     @include transition-timing-function(ease-in-out);
-    .svg-container {
-      min-width:  rem-calc(220);
-      margin: rem-calc(5);
-      padding: rem-calc(5);
-      height: rem-calc(220);
-      //border: solid 1px #aaa;
-      display: inline-block;
-
+    .svg {
       svg {
         display: block;
         margin: auto;
         height: rem-calc(200);
       }
-
+      min-width:  rem-calc(200);
+      padding: rem-calc(8);
+      //height: rem-calc(200);
     }
-    .small-svg-container  {
-      display: inline-block;
-      width: rem-calc(80);
-      .cell {
-        display: inlime-block;
-        width: rem-calc(40);
-        svg {
-          display: block;
-          margin: auto;
-          height: rem-calc(30);
-        }
-      }
-    }
+    //border: solid 1px #aaa;
     &:hover, &.slick-current {
       @include opacity(1);
     }
@@ -141,4 +131,24 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

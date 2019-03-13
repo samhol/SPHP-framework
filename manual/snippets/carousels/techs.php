@@ -28,29 +28,31 @@ $carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPat
 $carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/postgresql/postgresql-original.svg") . '</div>');
 $carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$root/sqlite-logo.svg") . '</div>');
 
-echo $carousel;
 
 $mdPath = 'manual/snippets/carousels/content/techs';
 $descriptions = new Carousel();
 $descriptions->setAttribute('id', 'tech-info');
-$descriptions->appendMdFile("$mdPath/sphp.md");
-$descriptions->appendMdFile("$mdPath/html5.md");
-$descriptions->appendMdFile("$mdPath/css.md");
-$descriptions->appendMdFile("$mdPath/sass.md");
-$descriptions->appendMdFile("$mdPath/js.md");
-$descriptions->appendMdFile("$mdPath/foundation.md");
-$descriptions->appendMdFile("$mdPath/nodejs.md");
-$descriptions->appendMdFile("$mdPath/npm.md");
-$descriptions->appendMdFile("$mdPath/gulp.md");
-$descriptions->appendMdFile("$mdPath/php.md");
-$descriptions->appendMdFile("$mdPath/zend.md");
-$descriptions->appendMdFile("$mdPath/symfony.md");
-$descriptions->appendMdFile("$mdPath/doctrine.md");
-$descriptions->appendMdFile("$mdPath/mysql.md");
-$descriptions->appendMdFile("$mdPath/postgresql.md");
-$descriptions->appendMdFile("$mdPath/sqlite.md");
+$descriptions->appendMdFile("$mdPath/sphp.md")->addCssClass('sphp');
+$descriptions->appendMdFile("$mdPath/html5.md")->addCssClass('html5');
+$descriptions->appendMdFile("$mdPath/css.md")->addCssClass('css');
+$descriptions->appendMdFile("$mdPath/sass.md")->addCssClass('sass');
+$descriptions->appendMdFile("$mdPath/js.md")->addCssClass('js');
+$descriptions->appendMdFile("$mdPath/foundation.md")->addCssClass('foundation');
+$descriptions->appendMdFile("$mdPath/nodejs.md")->addCssClass('nodejs');
+$descriptions->appendMdFile("$mdPath/npm.md")->addCssClass('npm');
+$descriptions->appendMdFile("$mdPath/gulp.md")->addCssClass('gulp');
+$descriptions->appendMdFile("$mdPath/php.md")->addCssClass('php');
+$descriptions->appendMdFile("$mdPath/zend.md")->addCssClass('zend');
+$descriptions->appendMdFile("$mdPath/symfony.md")->addCssClass('symfony');
+$descriptions->appendMdFile("$mdPath/doctrine.md")->addCssClass('doctrine');
+$descriptions->appendMdFile("$mdPath/mysql.md")->addCssClass('mysql');
+$descriptions->appendMdFile("$mdPath/postgresql.md")->addCssClass('postgresql');
+$descriptions->appendMdFile("$mdPath/sqlite.md")->addCssClass('sqlite');
 
-echo $descriptions;
+echo '<div class="grid-x sphp-slick-container"><div class="cell auto">' . $carousel . $descriptions . '</div></div>';
+
+
+
 
 
 

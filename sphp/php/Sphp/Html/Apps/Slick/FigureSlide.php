@@ -46,7 +46,7 @@ class FigureSlide extends AbstractComponent implements Slide {
    */
   public function __construct($img, $caption = null) {
     parent::__construct('div');
-    $this->addCssClass('sphp', 'slick-slide');
+    $this->addCssClass('sphp', 'slide');
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }

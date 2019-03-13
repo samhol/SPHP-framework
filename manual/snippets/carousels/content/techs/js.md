@@ -1,4 +1,4 @@
- ##JavaScript <small>language</small>
+### JavaScript <small>language</small>
 
 **JavaScript** (often shortened to **JS**) is a lightweight, interpreted, 
 object-oriented language with first-class functions, and is best known as the 

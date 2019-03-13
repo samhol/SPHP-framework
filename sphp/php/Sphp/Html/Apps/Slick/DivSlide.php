@@ -30,10 +30,11 @@ class DivSlide extends Div implements Slide {
    */
   public function __construct($content = null) {
     parent::__construct();
-    $this->addCssClass('sphp', 'slick-slide');
+    $this->addCssClass('sphp', 'slide');
     if ($content !== null) {
       $this->append($content);
     }
   }
 
 }
+

@@ -1,4 +1,4 @@
-## HTML5
+### HTML5 <small>markup language</small>
 
 HTML5 is a markup language used for structuring and presenting content on the 
 World Wide Web. It is the fifth and current major version of the HTML standard.

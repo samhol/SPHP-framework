@@ -7,57 +7,49 @@ $(function () {
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    adaptiveHeight: true,
-    //asNavFor: '#tech-icons'
+    cssEase: 'linear',
+    //adaptiveHeight: true,
+    asNavFor: '#tech-icons'
   });
-  /**
-   $breakpoints: (
-   small: 0,
-   medium: 640px,
-   large: 1024px,
-   xlarge: 1200px,
-   xxlarge: 1440px,
-   );
-   */
-  var $slick = $('#tech-icons').slick({
+
+  $('#tech-icons').slick({
     dots: true,
     infinite: true,
-    //speed: 5000,
+    speed: 300,
     //autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    //asNavFor: '#tech-info',
+    asNavFor: '#tech-info',
     centerMode: true,
     focusOnSelect: true,
     //centerPadding: '60px',
-    //centerMode: true,
     variableWidth: true,
     responsive: [
       {
         breakpoint: 1440,
         settings: {
-          slidesToShow: 5,
+          //slidesToShow: 5,
           dots: true
         }
       },
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 4,
+          //slidesToShow: 4,
           dots: true
         }
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          //slidesToShow: 3,
           dots: false,
         }
       },
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1,
+         // slidesToShow: 1,
           dots: false,
         }
       }
@@ -79,5 +71,13 @@ $(function () {
   });*/
 
 });
+
+
+
+
+
+
+
+
 
 

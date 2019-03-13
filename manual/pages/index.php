@@ -24,7 +24,7 @@ framework requires no usage of other programming languages than PHP.
 ## Some terminology explained
 MD
 );
-include 'manual/snippets/carousels/skills.php';
+include 'manual/snippets/carousels/techs.php';
 md(<<<MD
 ## SYSTEM REQUIREMENTS and installation
 
@@ -43,3 +43,4 @@ MD
 );
 
 ///printPage('Sphp-intro/orbit.php');
+

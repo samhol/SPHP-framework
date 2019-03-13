@@ -107,3 +107,4 @@ class Figure extends AbstractComponent {
 
 
 }
+
