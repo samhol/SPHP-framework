@@ -86,7 +86,7 @@ class Carousel extends AbstractComponent {
    */
   public function appendHtml($html): DivSlide {
     $slide = new DivSlide($html);
-    $this->slides[] = $slide;
+    $this->append($slide);
     return $slide;
   }
 
@@ -173,7 +173,7 @@ class Carousel extends AbstractComponent {
   }
 
   public function contentToString(): string {
-    return implode('', $this->slides);
+    return implode($this->slides);
   }
 
   public function getHtml(): string {

@@ -5,12 +5,13 @@
 use Sphp\Html\Apps\Slick\Carousel;
 
 
-$root = '/manual/svg';
+$root = '/home/int48291/public_html/playground//manual/svg';
 $deviconPath = "$root/devicons";
 $carousel = new Carousel();
 $carousel->setAttribute('id', 'tech-icons');
+use Sphp\Html\Media\Icons\SvgLoader;
 //$carousel->addCssClass('logos');
-$carousel->appendFigure("$root/s-logo.svg", 'SPHP');
+$carousel->appendHtml('<div>'.SvgLoader::fileToObject("$root/s-logo.svg", 'SPHP')->setWidth(300).'</div>');
 $carousel->appendFigure("$deviconPath/html5/html5-original.svg", 'SPHP');
 $carousel->appendFigure("$deviconPath/css3/css3-original.svg");
 $carousel->appendFigure("$deviconPath/sass/sass-original.svg");

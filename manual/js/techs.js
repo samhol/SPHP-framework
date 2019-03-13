@@ -8,7 +8,7 @@ $(function () {
     arrows: false,
     fade: true,
     adaptiveHeight: true,
-    asNavFor: '#tech-icons'
+    //asNavFor: '#tech-icons'
   });
   /**
    $breakpoints: (
@@ -26,7 +26,7 @@ $(function () {
     //autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: '#tech-info',
+    //asNavFor: '#tech-info',
     centerMode: true,
     focusOnSelect: true,
     //centerPadding: '60px',

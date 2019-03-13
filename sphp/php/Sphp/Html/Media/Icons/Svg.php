@@ -108,6 +108,20 @@ class Svg implements Content, Icon {
     return $this;
   }
 
+  /**
+   * Sets the width of the SVG image
+   * 
+   * @param  float $width
+   * @return $this for a fluent interface
+   */
+  public function setWidth(float $width = null) {
+    if ($width !== null) {
+      $this->svg->setAttribute('width', $width.'px');
+    } else {
+      $this->svg->removeAttribute('width');
+    }
+    return $this;
+  }
   public function getHtml(): string {
     return $this->doc->saveHTML($this->svg);
   }
