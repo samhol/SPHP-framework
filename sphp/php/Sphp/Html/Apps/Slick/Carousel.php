@@ -34,6 +34,7 @@ class Carousel extends AbstractComponent {
    */
   public function __construct(array $properties = null) {
     parent::__construct('div');
+    $this->addCssClass('sphp', 'slick-carousel');
     $this->slides = [];
     if ($properties !== null) {
       $this->setProperties($properties);
@@ -177,4 +178,5 @@ class Carousel extends AbstractComponent {
   }
 
 }
+
 

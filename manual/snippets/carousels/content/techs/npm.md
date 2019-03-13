@@ -1,4 +1,4 @@
-## npm <small>package manager</small>
+### npm <small>package manager</small>
 
 **npm** is a package manager for the JavaScript programming language. It is the 
 default package manager for the JavaScript runtime environment Node.js. It consists 

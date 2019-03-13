@@ -1,4 +1,4 @@
-## Zend <small>framework</small>
+### Zend <small>framework</small>
 
   **Zend** is an open source PHP framework. It is pure object-oriented and built 
   around the MVC design pattern. **Zend framework** contains collection of PHP 
