@@ -106,9 +106,10 @@ items:
    items:
    - link: <strong>SASS</strong> language
      href: http://sass-lang.com/
-   - link: "<strong style=\"color:#fb292d;\">Compass</strong> framework"
-     href: http://compass-style.org/
-     icon: <i class="far fa-compass"></i>
+     icon: <i class="fab fa-sass"></i>
+   - link: "<strong >LibSass</strong> Sass compiler"
+     href: https://github.com/sass/libsass
+     icon: <i class="fab fa-sass"></i>
  - menu: CSS
    key: 4
    icon: <i class="fab fa-css3"></i>

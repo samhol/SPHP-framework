@@ -43,7 +43,7 @@ class FormRow extends BasicRow {
     } else {
       $input = new BasicInputCell($input);
       $input->setLayouts($layout);
-      $this->append(new BasicInputCell($input, $layout));
+      $this->append($input);
     }
     return $input;
   }
