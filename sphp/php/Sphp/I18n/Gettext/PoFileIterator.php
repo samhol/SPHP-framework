@@ -12,8 +12,12 @@ namespace Sphp\I18n\Gettext;
 
 use Sepia\PoParser\SourceHandler\FileSystem;
 use Sepia\PoParser\Parser;
+use Sepia\PoParser\Catalog\Catalog;
+use Sepia\PoParser\Catalog\CatalogArray;
+use Sepia\PoParser\Catalog\Entry;
 use Sphp\Stdlib\Datastructures\Collection;
-
+use IteratorAggregate;
+use Traversable;
 /**
  * Iterator for *.po files
  * 
@@ -24,32 +28,27 @@ use Sphp\Stdlib\Datastructures\Collection;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PoFileIterator implements \Iterator {
+class PoFileIterator implements IteratorAggregate {
 
   /**
-   * @var Collection 
+   * @var Catalog 
    */
   private $objects;
 
   /**
    * Constructor
    * 
-   * @param Collection $entries
+   * @param Catalog $entries
    */
-  public function __construct(Collection $entries) {
+  public function __construct(Catalog $entries) {
     $this->objects = $entries;
   }
 
   public static function parseFrom(string $poFilePath): PoFileIterator {
     $fileHandler = new FileSystem($poFilePath);
     $poParser = new Parser($fileHandler);
-    $rawData = $poParser->parse();
-    //$this->entries = [];
-    $arr = [];
-    foreach ($rawData as $data) {
-      $arr[] = static::parseObject($data);
-    }
-    return new static(new Collection($arr));
+    $data = $poParser->parse();
+    return new static($data);
   }
 
   /**
@@ -154,7 +153,12 @@ class PoFileIterator implements \Iterator {
   }
 
   public function toArray(): array {
-    return $this->objects->toArray();
+    return $this->objects->getEntries();
   }
+  
+  public function getIterator():Traversable {
+    return new Collection($this->objects->getEntries());
+  }
+  
 
 }

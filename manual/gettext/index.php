@@ -23,7 +23,7 @@ $pos = PoFileIterator::parseFrom(Filesystem::getFullPath('sphp/locale/fi_FI/LC_M
     $filtered = $pos->filter(function(\Sphp\I18n\Gettext\GettextData $d) {
       return true;
     });
-    print_r($pos);
+    var_dump(Filesystem::getFullPath('sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po'),$pos);
     print_r($filtered);
     use Zend\Paginator\Paginator;
     use Zend\Paginator\Adapter\ArrayAdapter;

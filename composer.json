@@ -27,7 +27,7 @@
   "require": {
     "php": ">=7.2",
     "doctrine/orm": ">=2.5",
-    "sepia/po-parser": ">=4.2",
+    "sepia/po-parser": ">=5",
     "imagine/imagine": ">=0.7",
     "erusev/parsedown-extra": ">=0.7.0",
     "tovic/parsedown-extra-plugin": "*",
