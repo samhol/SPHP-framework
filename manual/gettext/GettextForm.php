@@ -10,7 +10,9 @@ use Iterator;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\BasicInputCell;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 
-class GettextForm extends AbstractComponentGenerator {
+class GettextForm {
+
+  use Html\ContentTrait;
 
   /**
    * @var Iterator 
@@ -47,7 +49,7 @@ class GettextForm extends AbstractComponentGenerator {
 
   public function generate(): Html\Content {
 
-    $form = new GridForm('manual/gettext/index.php', 'get');
+    $form = new GridForm('/gettext/', 'get');
 
     $form->addCssClass('sphp-gettext-form');
 
@@ -66,6 +68,10 @@ class GettextForm extends AbstractComponentGenerator {
     $form->append($row1);
     $form->append($this->tableGenerator->generate());
     return $form;
+  }
+
+  public function getHtml(): string {
+    return $this->generate()->getHtml();
   }
 
 }

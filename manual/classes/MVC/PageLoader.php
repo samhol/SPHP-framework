@@ -74,6 +74,9 @@ class PageLoader implements CssClassifiableContent {
   }
 
   public function loadGettextFinder($par) {
+    $this->load('manual/gettext/index.php');
+  }
+  public function loadGettextFinder1($par) {
     $this->load('manual/po/poViewer.php');
   }
 

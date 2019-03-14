@@ -8,7 +8,7 @@ use Sphp\Html\Tables\Table;
 use Sphp\Html\Tables\Tr;
 use Traversable;
 
-class GettextTable extends AbstractComponentGenerator {
+class GettextTable {
 
   /**
    * @var Traversable 
@@ -63,6 +63,9 @@ class GettextTable extends AbstractComponentGenerator {
       $i++;
     }
     return $table;
+  }
+  public function getHtml(): string {
+    return $this->generate()->getHtml();
   }
 
 }

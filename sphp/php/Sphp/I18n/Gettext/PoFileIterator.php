@@ -10,8 +10,8 @@
 
 namespace Sphp\I18n\Gettext;
 
-use Sepia\FileHandler;
-use Sepia\PoParser;
+use Sepia\PoParser\SourceHandler\FileSystem;
+use Sepia\PoParser\Parser;
 use Sphp\Stdlib\Datastructures\Collection;
 
 /**
@@ -41,8 +41,8 @@ class PoFileIterator implements \Iterator {
   }
 
   public static function parseFrom(string $poFilePath): PoFileIterator {
-    $fileHandler = new FileHandler($poFilePath);
-    $poParser = new PoParser($fileHandler);
+    $fileHandler = new FileSystem($poFilePath);
+    $poParser = new Parser($fileHandler);
     $rawData = $poParser->parse();
     //$this->entries = [];
     $arr = [];
