@@ -23,7 +23,7 @@ $side-nav-bg: #fefefe;
     padding: rem-calc(0 0 20 0); /* top right bottom left */
     border: solid 1px #333;
     //border: solid 1px #FF8000;
-    @include border-bottomleft-radius(10px);
+    @include border-bottom-left-radius(10px);
     overflow: hidden; 
     // @include background-clip(border-box);
     background-color: #fefefe;	

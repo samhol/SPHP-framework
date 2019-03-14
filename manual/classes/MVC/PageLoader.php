@@ -73,6 +73,10 @@ class PageLoader implements CssClassifiableContent {
     $this->load('manual/pages/calendar-app.php');
   }
 
+  public function loadGettextFinder($par) {
+    $this->load('manual/po/poViewer.php');
+  }
+
   public function loadPage($par, string $file = 'index') {
     $this->load("manual/pages/$file.php");
   }

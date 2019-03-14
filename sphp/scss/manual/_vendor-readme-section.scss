@@ -83,7 +83,7 @@
       h1, h2, h3 {
         background-color: rgba(#eee, .3);
         &:first-child {
-          @include border-radii(3px, 3px, 0, 0);
+          @include border-top-radius(3px);
           border-bottom: solid 1px #999;
         }
         &:not(:first-child) {

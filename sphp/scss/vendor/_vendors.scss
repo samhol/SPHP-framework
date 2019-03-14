@@ -1,15 +1,18 @@
 /**
- * vendors.scss (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 @charset "UTF-8";
 
-@import "ion.rangeSlider"; 
-//@import "ion.rangeSlider.skinFlat";
-//@import "ion.rangeSlider.skinNice";
 @import "GeSHi";
 @import "anytime.c"; 
 @import "jquery.qtip";
-@import "slick-carousel/slick";
-@import "slick-carousel/slick-theme";
-//@import "videojs";
+
+@import "../../../node_modules/slick-carousel/slick/slick.scss";
+@import "../../../node_modules/slick-carousel/slick/slick-theme.scss";
+@import "../../../node_modules/ion-rangeslider/css/ion.rangeSlider"; 
+

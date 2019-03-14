@@ -16,6 +16,7 @@
     "npm-check-updates": "^3.0.6",
     "slick-carousel": ">=1.8",
     "tipso": ">=1.0.8",
+    "video.js": "^7.4.1",
     "what-input": "^5.1.4"
   },
   "devDependencies": {

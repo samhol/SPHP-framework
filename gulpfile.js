@@ -29,11 +29,6 @@ function build_js() {
           .pipe(gulp.dest('./sphp/javascript/dist'));
 }
 
-function copy_scss() {
-  return gulp
-          .src(['./node_modules/slick-carousel/slick/*.scss'])
-          .pipe(gulp.dest('./sphp/scss/vendor/slick-carousel'));
-}
 function copy_fonts() {
   return gulp
           .src(['./node_modules/slick-carousel/slick/fonts/*'])
@@ -91,7 +86,7 @@ function doc(cb) {
 
 build = gulp.series(build_js, build_ss360);
 build_docs = gulp.series(build, doc);
-copy_scss_and_fonts = gulp.series(copy_scss, copy_fonts, copy_img, copy_tipso, copyIonRangeLiderCss);
+copy_scss_and_fonts = gulp.series(copy_fonts, copy_img, copy_tipso, copyIonRangeLiderCss);
 
 gulp.task('build', build);
 gulp.task('default', build);

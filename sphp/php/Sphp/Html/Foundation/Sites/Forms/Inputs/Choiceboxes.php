@@ -113,7 +113,7 @@ class Choiceboxes extends \Sphp\Html\Foundation\Sites\Grids\AbstractCell impleme
    *
    * @return Choicebox[] the option fields
    */
-  protected function getOptionFields() {
+  protected function getOptionFields(): array {
     return $this->options;
   }
 

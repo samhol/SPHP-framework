@@ -35,7 +35,7 @@
     padding: rem-calc(5 15 5 15);
     border: solid 1px #666;
     border-top: none;
-    @include border-radii(0, 0, 4px, 4px);
+    @include border-bottom-radius(4px);
     text-transform: uppercase;
     a, span {
       text-transform: none;
