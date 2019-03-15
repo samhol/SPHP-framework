@@ -6,7 +6,7 @@ use Sepia\PoParser\Catalog\Entry;
 use Sphp\Manual\MVC\Gettext\GettextForm;
 
 echo Sphp\Manual\md('# Gettext search engine');
-
+/*
 $form = new GettextForm();
 
 
@@ -41,3 +41,7 @@ $pos->sort($cond);
 echo $table->generate($pos);
 
 //echo '</pre>';
+//echo $table->generate($pos);*/
+$controller = new \Sphp\Manual\MVC\Gettext\Controller(PoFileIterator::parseFrom(Filesystem::getFullPath('sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po')));
+//echo '</pre>';
+$controller->buildView();
