@@ -37,6 +37,9 @@ msgstr "viikko"
 msgid "day"
 msgstr "päivä"
 
+msgid "date"
+msgstr "päivämäärä"
+
 # week day names
 msgid "Monday"
 msgstr "maanantai"

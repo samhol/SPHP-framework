@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
+use Sphp\Html\Foundation\Sites\Grids\AbstractCell;
 use Sphp\Html\Forms\Legend;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Grids\Cell;
@@ -26,7 +27,7 @@ use Sphp\Html\Forms\Inputs\Factory;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Choiceboxes extends \Sphp\Html\Foundation\Sites\Grids\AbstractCell implements Input, Cell {
+class Choiceboxes extends AbstractCell implements Input, Cell {
 
   /**
    * @var string

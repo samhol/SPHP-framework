@@ -21,7 +21,7 @@ namespace Sphp\Filters;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ArrayFilter extends AbstractFilter {
+class ArraySamitizer extends AbstractFilter {
 
   /**
    * @var mixed[]  

@@ -10,13 +10,13 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
+use Sphp\Html\Foundation\Sites\Grids\AbstractGrid;
 use IteratorAggregate;
 use Sphp\Html\Forms\TraversableForm;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
-use Sphp\Html\Foundation\Sites\Grids\DivGrid;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\TraversableContent;
@@ -32,7 +32,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class GridForm extends \Sphp\Html\Foundation\Sites\Grids\AbstractGrid implements IteratorAggregate, Grid, TraversableForm {
+class GridForm extends AbstractGrid implements IteratorAggregate, Grid, TraversableForm {
 
   use TraversableFormTrait;
 

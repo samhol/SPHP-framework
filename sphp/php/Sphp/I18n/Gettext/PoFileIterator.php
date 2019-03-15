@@ -18,6 +18,7 @@ use Sepia\PoParser\Catalog\Entry;
 use Sphp\Stdlib\Datastructures\Collection;
 use IteratorAggregate;
 use Traversable;
+
 /**
  * Iterator for *.po files
  * 
@@ -31,17 +32,20 @@ use Traversable;
 class PoFileIterator implements IteratorAggregate {
 
   /**
-   * @var Catalog 
+   * @var Entry[] 
    */
-  private $objects;
+  private $entries;
 
   /**
    * Constructor
    * 
-   * @param Catalog $entries
+   * @param Catalog|Entry[] $entries
    */
-  public function __construct(Catalog $entries) {
-    $this->objects = $entries;
+  public function __construct($entries) {
+    if ($entries instanceof Catalog) {
+      $entries = $entries->getEntries();
+    }
+    $this->entries = $entries;
   }
 
   public static function parseFrom(string $poFilePath): PoFileIterator {
@@ -51,14 +55,18 @@ class PoFileIterator implements IteratorAggregate {
     return new static($data);
   }
 
+  public function sort(callable $cond) {
+    usort($this->entries, $cond);
+  }
+
   /**
    * Filters components using the given callable
    * 
    * @param  callable $callback
    * @return PoFileIterator a subset of objects
    */
-  public function filter(callable $callback): PoFileIterator {
-    return new static($this->objects->filter($callback, 0));
+  public function filter(callable $callback, $flag = 0): PoFileIterator {
+    return new static(array_filter($this->entries, $callback, $flag));
   }
 
   /**
@@ -67,8 +75,8 @@ class PoFileIterator implements IteratorAggregate {
    * @return PoFileIterator
    */
   public function getById(string $id): PoFileIterator {
-    $idFilter = function(GettextData $entry) use ($id) {
-      return !$entry->getMessageId() === $id;
+    $idFilter = function(Entry $entry) use ($id) {
+      return !$entry->getMsgId() === $id;
     };
     return $this->filter($idFilter);
   }
@@ -79,8 +87,8 @@ class PoFileIterator implements IteratorAggregate {
    * @return PoFileIterator containing singular forms only
    */
   public function getSingulars(): PoFileIterator {
-    $singularFilter = function(GettextData $entry) {
-      return !$entry instanceof PluralGettextData;
+    $singularFilter = function(Entry $entry) {
+      return !$entry->isPlural();
     };
     return $this->filter($singularFilter);
   }
@@ -91,74 +99,22 @@ class PoFileIterator implements IteratorAggregate {
    * @return PoFileIterator containing plural forms only
    */
   public function getPlurals(): PoFileIterator {
-    $pluralFilter = function(GettextData $entry) {
-      return $entry instanceof PluralGettextData;
+    $pluralFilter = function(Entry $entry) {
+      return $entry->isPlural();
     };
     return $this->filter($pluralFilter);
   }
 
-  /**
-   * 
-   * @param  array $data
-   * @return GettextData
-   */
-  private static function parseObject(array $data): GettextData {
-    $flags = null;
-    if (array_key_exists('flags', $data)) {
-      $flags = $data['flags'][0];
-    }
-    $msgid = null;
-    if (array_key_exists('msgid', $data)) {
-      $msgid = $data['msgid'][0];
-    }
-    $msgstr = null;
-    if (array_key_exists('msgstr', $data)) {
-      $msgstr = $data['msgstr'][0];
-    }
-    if (array_key_exists('msgstr[0]', $data)) {
-      $msgstr = $data['msgstr[0]'][0];
-    }
-    if (array_key_exists('msgid_plural', $data) && array_key_exists('msgstr[1]', $data)) {
-      $pluralId = $data['msgid_plural'][0];
-      $pluralMessageString = $data['msgstr[1]'][0];
-      $object = new PluralGettextData($msgid, $msgstr, $pluralId, $pluralMessageString, $flags);
-    } else {
-      $object = new GettextData($msgid, $msgstr, $flags);
-    }
-    return $object;
-  }
-
-  public function current() {
-    return $this->objects->current();
-  }
-
-  public function key() {
-    return $this->objects->key();
-  }
-
-  public function next() {
-    $this->objects->next();
-  }
-
-  public function rewind() {
-    $this->objects->rewind();
-  }
-
-  public function valid(): bool {
-    return $this->objects->valid();
-  }
-
   public function count(): int {
-    return $this->objects->count();
+    return count($this->entries);
   }
 
   public function toArray(): array {
-    return $this->objects->getEntries();
+    return $this->entries;
   }
-  
-  public function getIterator():Traversable {
-    return new Collection($this->objects->getEntries());
+
+  public function getIterator(): Traversable {
+    return new Collection($this->entries);
   }
-  
 
 }

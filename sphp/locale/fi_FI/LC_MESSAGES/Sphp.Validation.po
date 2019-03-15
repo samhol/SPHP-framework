@@ -32,44 +32,23 @@ msgstr "Syötä %s-%s merkkiä"
 msgid "Please insert at most %d characters"
 msgstr "Syötä korkeintaan %d merkkiä"
 
-msgid "Please insert at most %s characters"
-msgstr "Syötä korkeintaan %s merkkiä"
-
 msgid "Please insert atleast %d characters"
 msgstr "Syötä vähintään %d merkkiä"
-
-msgid "Please insert atleast %s characters"
-msgstr "Syötä vähintään %s merkkiä"
 
 msgid "Please insert atleast %d numbers"
 msgstr "Syötä vähintään %d numeroa"
 
-msgid "Please insert atleast %s numbers"
-msgstr "Syötä vähintään %s numeroa"
-
 msgid "Please insert atleast %d alphabets"
 msgstr "Syötä vähintään %d kirjainta"
-
-msgid "Please insert atleast %s alphabets"
-msgstr "Syötä vähintään %s kirjainta"
 
 msgid "Please insert exactly %d characters"
 msgstr "Syötä tarkalleen %d merkkiä"
 
-msgid "Please insert exactly %s characters"
-msgstr "Syötä tarkalleen %s merkkiä"
-
 msgid "Please insert exactly %d numbers"
 msgstr "Syötä tarkalleen %d numetoa"
 
-msgid "Please insert exactly %s numbers"
-msgstr "Syötä tarkalleen %s numetoa"
-
 msgid "Please insert exactly %d alphabets"
 msgstr "Syötä tarkalleen %d kirjainta"
-
-msgid "Please insert exactly %s alphabets"
-msgstr "Syötä tarkalleen %s kirjainta"
 
 msgid "Please insert %s only"
 msgstr "Syötä ainoastaan %s"
@@ -94,67 +73,3 @@ msgstr "Syötä oikea kellonaika"
 
 msgid "Username is already reserved"
 msgstr "Käyttäjätunnus on jo varattu"
-
-# Number translations
-msgid "one"
-msgstr "yksi"
-
-msgid "first"
-msgstr "ensimmäinen"
-
-msgid "1st"
-msgstr "1."
-
-msgid "two"
-msgstr "kaksi"
-
-msgid "second"
-msgstr "toinen"
-
-msgid "2nd"
-msgstr "2."
-
-msgid "three"
-msgstr "kolme"
-
-msgid "third"
-msgstr "kolmas"
-
-msgid "3rd"
-msgstr "3."
-
-msgid "four"
-msgstr "neljä"
-
-msgid "fourth"
-msgstr "neljäs"
-
-msgid "4th"
-msgstr "4."
-
-msgid "five"
-msgstr "viisi"
-
-msgid "six"
-msgstr "kuusi"
-
-msgid "seven"
-msgstr "seitsemän"
-
-msgid "eight"
-msgstr "kahdeksan"
-
-msgid "nine"
-msgstr "yhdeksän"
-
-# type translations
-msgid "number"
-msgstr "numero"
-
-msgid "numbers"
-msgstr "numeroita"
-
-msgid "found %d fatal error"
-msgid_plural "found %d fatal errors"
-msgstr[0] "s'ha trobat %d error fatal"
-msgstr[1] "s'han trobat %d errors fatals"
