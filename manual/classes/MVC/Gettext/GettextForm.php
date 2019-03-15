@@ -26,6 +26,13 @@ class GettextForm {
     $this->fieldData = $fieldData;
   }
 
+  
+  public function buildMessageTypeSelector(): \Sphp\Html\Forms\Inputs\Input {
+    $typeSelector1 = new Radioboxes('msg_type', ['singular' => 'Singular', 'plural' => 'Plural', 'singular+plural' => 'Both']);
+    $typeSelector1->setLegend('Message type:');
+    $typeSelector1->setSubmitValue('singular+plural');
+    return $typeSelector1;
+  }
   public function generate(): GridForm {
 
     $form = new GridForm('/gettext/', 'get');
@@ -40,7 +47,7 @@ class GettextForm {
     $typeSelector = new Radioboxes('type', ['id' => 'ID', 'translation' => 'Translation', 'original+translation' => 'Both']);
     $typeSelector->setLegend('Search from:');
     $typeSelector->setSubmitValue(['type' => 0b11]);
-    $row1->appendCell($typeSelector1, ['small-12', 'medium-shrink']);
+    $row1->appendCell($this->buildMessageTypeSelector(), ['small-12', 'medium-shrink']);
     $row1->appendCell($typeSelector, ['small-12', 'medium-shrink']);
 
     $form->append($row1);

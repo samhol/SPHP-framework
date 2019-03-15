@@ -40,9 +40,6 @@ class Radioboxes extends Choiceboxes implements ValidableInput {
    * @return $this for a fluent interface
    */
   public function setSubmitValue($value) {
-    if (!is_array($value)) {
-      $value = array_pop($value);
-    }
     foreach ($this->getOptionFields() as $opt) {
       if ($opt->getAttribute('value') == $value) {
         $opt->setChecked(true);
