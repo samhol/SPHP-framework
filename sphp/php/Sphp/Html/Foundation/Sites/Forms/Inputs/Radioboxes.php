@@ -36,7 +36,7 @@ class Radioboxes extends Choiceboxes implements ValidableInput {
   /**
    * Sets the current submission set of the input component
    *
-   * @param string|string[] $value the current submission set of the input component
+   * @param  mixed $value the current submission set of the input component
    * @return $this for a fluent interface
    */
   public function setSubmitValue($value) {

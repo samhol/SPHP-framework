@@ -29,7 +29,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PoFileIterator implements IteratorAggregate {
+class PoFileIterator  implements IteratorAggregate {
 
   /**
    * @var Entry[] 
@@ -46,17 +46,21 @@ class PoFileIterator implements IteratorAggregate {
       $entries = $entries->getEntries();
     }
     $this->entries = $entries;
+    //print_r($entries);
   }
-
-  public static function parseFrom(string $poFilePath): PoFileIterator {
-    $fileHandler = new FileSystem($poFilePath);
-    $poParser = new Parser($fileHandler);
-    $data = $poParser->parse();
-    return new static($data);
+  
+  public function __destruct() {
+    unset($this->entries);
   }
 
   public function sort(callable $cond) {
     usort($this->entries, $cond);
+    return $this;
+  }
+  
+  public function append(Entry $e) {
+    $this->entries[] = $e;
+    return $this;
   }
 
   /**
@@ -105,6 +109,24 @@ class PoFileIterator implements IteratorAggregate {
     return $this->filter($pluralFilter);
   }
 
+  /**
+   * Returns a subset containing plural forms only
+   * 
+   * @return PoFileIterator containing plural forms only
+   */
+  public function filterByTranslation(string $needle): PoFileIterator {
+    $filter = function(Entry $entry) use ($needle): bool {
+      if ($entry->isPlural()) {
+        $plurals = $entry->getMsgStrPlurals();
+        //var_dump($plurals[0] === $needle || $plurals[1] === $needle);
+        return mb_strpos($plurals[0], $needle) !== false ||  mb_strpos($plurals[1], $needle) !== false;
+      } else {
+        return mb_strpos($entry->getMsgStr(), $needle) !== false;
+      }
+    };
+    return $this->filter($filter);
+  }
+
   public function count(): int {
     return count($this->entries);
   }
@@ -115,6 +137,13 @@ class PoFileIterator implements IteratorAggregate {
 
   public function getIterator(): Traversable {
     return new Collection($this->entries);
+  }
+
+  public static function parseFrom(string $poFilePath): PoFileIterator {
+    $fileHandler = new FileSystem($poFilePath);
+    $poParser = new Parser($fileHandler);
+    $data = $poParser->parse();
+    return new static($data);
   }
 
 }

@@ -22,8 +22,8 @@ use Sphp\Html\Forms\Buttons\ButtonInterface;
 use Sphp\Html\Forms\Inputs\Factory;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Component;
-use Sphp\Html\Forms\Inputs\Buttons\Submitter;
-use Sphp\Html\Forms\Inputs\Buttons\Resetter;
+use Sphp\Html\Forms\Buttons\Submitter;
+use Sphp\Html\Forms\Buttons\Resetter;
 
 /**
  * Class InputGroup
@@ -94,6 +94,8 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
       $this->appendLabel($content);
     } else if ($content instanceof ButtonInterface) {
       $this->group->append($content);
+    } else if ($content instanceof \Sphp\Html\Forms\Inputs\Input) {
+      $this->group->append($content);
     } else {
       throw new InvalidArgumentException("Content appended to inputgroup is invalid type");
     }
@@ -133,12 +135,12 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
   /**
    * Appends a submitter to the group
    *
-   * @param  string|null $value the value of value attribute
+   * @param  mixed $content the visual content of the button
    * @param  string|null $name the value of name attribute
    * @return Submitter appended instance
    */
-  public function appendSubmitter(string $value = null, string $name = null): Submitter {
-    $submitter = new Submitter($value, $name);
+  public function appendSubmitter($content = 'submit', string $name = null): Submitter {
+    $submitter = new Submitter($content, $name);
     $this->group->append($submitter);
     return $submitter;
   }
@@ -146,11 +148,11 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
   /**
    * Appends a submitter to the group
    *
-   * @param  string|null $value the value of value attribute
+   * @param  mixed $content the visual content of the button
    * @return Resetter appended instance
    */
-  public function appendResetter(string $value = null): Resetter {
-    $submitter = new Resetter($value);
+  public function appendResetter($content = 'reset'): Resetter {
+    $submitter = new Resetter($content);
     $this->group->append($submitter);
     return $submitter;
   }
