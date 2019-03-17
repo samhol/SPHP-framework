@@ -25,16 +25,21 @@
 .syntax-hl {
   padding: 0;
 }
+sphp.switch-board.callout {
 
+  .section {
+    border-top: solid 1px #778;
+    .switch-toggle-wrapper {
+      display: flex;
+      margin-bottom: 1rem;
+      justify-content: space-between;
+      align-items: center;
 
-.switch-toggle-wrapper {
-  display: flex;
-  margin-bottom: 1rem;
-  justify-content: space-between;
-  align-items: center;
+      .switch {
+        margin-bottom: 0;
+      }
+    }
 
-  .switch {
-    margin-bottom: 0;
   }
 }
 

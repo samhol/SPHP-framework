@@ -58,12 +58,12 @@ $(function () {
       // instead of a settings object
     ]
   });
-  var $allToggler = $('#switch-toggle-all [data-toggle-all]');
+  var $allToggler = $('div[data-switch-board] [data-toggle-all]');
   $allToggler.click(function () {
-    $('#switch-toggle-all input[type="checkbox"]').prop('checked', this.checked)
+    $('div[data-switch-board] input[type="checkbox"]').prop('checked', this.checked)
   })
-  $('#switch-toggle-all input[type="checkbox"]').click(function () {
-    if ($('#switch-toggle-all input[type="checkbox"]:checked').length === $('#switch-toggle-all input[type="checkbox"]').length) {
+  $('div[data-switch-board] section input[type="checkbox"]').click(function () {
+    if ($('div[data-switch-board] section input:checked').length === $('div[data-switch-board] section input[type="checkbox"]').length) {
       $allToggler.prop('checked', true);
       console.log('all checked');
     } else{
