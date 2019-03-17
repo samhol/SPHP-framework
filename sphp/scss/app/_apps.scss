@@ -21,7 +21,20 @@
 @import "sphp-back-to-top-button";
 @import "callouts/error-handling-callouts";
 @import "spinner";
-
+//tabs:
 .syntax-hl {
   padding: 0;
 }
+
+
+.switch-toggle-wrapper {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+
+  .switch {
+    margin-bottom: 0;
+  }
+}
+

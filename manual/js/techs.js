@@ -49,7 +49,7 @@ $(function () {
       {
         breakpoint: 640,
         settings: {
-         // slidesToShow: 1,
+          // slidesToShow: 1,
           dots: false,
         }
       }
@@ -58,18 +58,19 @@ $(function () {
       // instead of a settings object
     ]
   });
-  /*var $output = $("#explanation");
-  $(".sphp-tech-slick .sphp-info-button").on("click", function () {
-    var $this = $(this), $div,
-            $obj = $this.attr("data-tech");
-    $output.load("samiholck/templates/carousels/content/skills-parsed.php #" + $obj);
-    $this.addClass('sphp-is-active');
-    console.log('sphp-is-active : ' + $obj);
-    $this.siblings().removeClass('sphp-is-active');
-    //$div = $('#info-modal');
-    //$div.centerTo($('body main'), true);
-  });*/
-
+  var $allToggler = $('#switch-toggle-all [data-toggle-all]');
+  $allToggler.click(function () {
+    $('#switch-toggle-all input[type="checkbox"]').prop('checked', this.checked)
+  })
+  $('#switch-toggle-all input[type="checkbox"]').click(function () {
+    if ($('#switch-toggle-all input[type="checkbox"]:checked').length === $('#switch-toggle-all input[type="checkbox"]').length) {
+      $allToggler.prop('checked', true);
+      console.log('all checked');
+    } else{
+      $allToggler.prop('checked', false);    
+      console.log('not all checked');
+    }
+  })
 });
 
 

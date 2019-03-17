@@ -1,40 +1,57 @@
 <?php
+?>
+<div class="callout" id="switch-toggle-all">
 
-use Sphp\I18n\Gettext\PoFileIterator;
-use Sphp\Stdlib\Filesystem;
+  <div class="switch-toggle-wrapper">
+    <div class="switch">
+      <input class="switch-input" id="all" type="checkbox" name="all" data-toggle-all>
+      <label class="switch-paddle" for="all">
+        <span class="show-for-sr">Toggle All</span>
+      </label>
+    </div>
+    <label for="all">Toggle All</label>
+  </div>
 
-/*$form = new GettextForm();
+  <hr />
 
+  <div class="switch-toggle-wrapper">
+    <div class="switch">
+      <input class="switch-input" id="singular" type="checkbox" name="singular">
+      <label class="switch-paddle" for="singular">
+        <span class="show-for-sr">Singular</span>
+      </label>
+    </div>
+    <label for="singular">Singular</label>
+  </div>
 
-//echo $form->getHtml();
+  <div class="switch-toggle-wrapper">
+    <div class="switch">
+      <input class="switch-input" id="plural" type="checkbox" name="plural">
+      <label class="switch-paddle" for="plural">
+        <span class="show-for-sr">Plural</span>
+      </label>
+    </div>
+    <label for="plural">Plural</label>
+  </div>
+  <hr>
+  <div class="switch-toggle-wrapper">
+    <div class="switch">
+      <input class="switch-input" id="msg" type="checkbox" name="msg">
+      <label class="switch-paddle" for="msg">
+        <span class="show-for-sr">Messages</span>
+      </label>
+    </div>
+    <label for="msg">Messages</label>
+  </div>
 
+  <div class="switch-toggle-wrapper">
+    <div class="switch">
+      <input class="switch-input" id="id" type="checkbox" name="id">
+      <label class="switch-paddle" for="id">
+        <span class="show-for-sr">Message IDs</span>
+      </label>
+    </div>
+    <label for="id">Message IDs</label>
+  </div>
 
-$pos = PoFileIterator::parseFrom(Filesystem::getFullPath('sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po'));
-if (isset($_GET['msgid'])) {
-  $msgId = filter_input(INPUT_GET, 'msgid', FILTER_SANITIZE_SPECIAL_CHARS);
-  echo "Searching for : $msgId";
-  $cond1 = function(Entry $e) {
-    $msgId = filter_input(INPUT_GET, 'msgid');
-    return mb_strpos($e->getMsgId(), $msgId) !== false;
-  };
-  $pos = $pos->filter($cond1);
-}
-if (isset($_GET['msgstr'])) {
-  $msgstr = filter_input(INPUT_GET, 'msgstr', FILTER_SANITIZE_SPECIAL_CHARS);
-  echo "Searching for : $msgstr";
-  $cond1 = function(Entry $e) {
-    $msgId = filter_input(INPUT_GET, 'msgstr');
-    return mb_strpos($e->getMsgStr(), $msgId) !== false;
-  };
-  $pos = $pos->filter($cond1);
-}
-//echo '<pre>';
-$table = new Sphp\Manual\MVC\Gettext\GettextTable();
-$cond = function(Entry $a, Entry $b) {
-  return strcmp($a->getMsgId(), $b->getMsgId());
-};
-$pos->sort($cond);
-//echo $table->generate($pos);*/
-$controller = new \Sphp\Manual\MVC\Gettext\Controller(PoFileIterator::parseFrom(Filesystem::getFullPath('sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po')));
-//echo '</pre>';
-$controller->buildView();
+</div>
