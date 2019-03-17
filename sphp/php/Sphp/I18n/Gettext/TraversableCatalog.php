@@ -29,68 +29,46 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PoFileIterator  implements IteratorAggregate {
-
-  /**
-   * @var Entry[] 
-   */
-  private $entries;
+class TraversableCatalog extends CatalogArray implements IteratorAggregate {
 
   /**
    * Constructor
    * 
-   * @param Catalog|Entry[] $entries
+   * @param Catalog|Entry[]|iterable $entries
    */
   public function __construct($entries) {
     if ($entries instanceof Catalog) {
-      $entries = $entries->getEntries();
+      parent::__construct($entries->getEntries());
+    } else if (is_array($entries)) {
+      parent::__construct($entries);
+    } else if (is_iterable($entries)) {
+      parent::__construct(iterator_to_array($entries));
     }
-    $this->entries = $entries;
     //print_r($entries);
   }
-  
-  public function __destruct() {
-    unset($this->entries);
-  }
 
-  public function sort(callable $cond) {
-    usort($this->entries, $cond);
-    return $this;
-  }
-  
-  public function append(Entry $e) {
-    $this->entries[] = $e;
-    return $this;
+  public function sort(callable $cond): TraversableCatalog {
+    $entries = $this->entries;
+    usort($entries, $cond);
+    return new static($entries);
   }
 
   /**
    * Filters components using the given callable
    * 
    * @param  callable $callback
-   * @return PoFileIterator a subset of objects
+   * @return TraversableCatalog a subset of objects
    */
-  public function filter(callable $callback, $flag = 0): PoFileIterator {
-    return new static(array_filter($this->entries, $callback, $flag));
-  }
-
-  /**
-   * 
-   * @param  string $id
-   * @return PoFileIterator
-   */
-  public function getById(string $id): PoFileIterator {
-    $idFilter = function(Entry $entry) use ($id) {
-      return !$entry->getMsgId() === $id;
-    };
-    return $this->filter($idFilter);
+  public function filter(callable $callback): TraversableCatalog {
+    return new static(array_filter($this->entries, $callback, 0));
   }
 
   /**
    * Returns a subset containing singular forms only
    * 
-   * @return PoFileIterator containing singular forms only
+   * @return TraversableCatalog containing singular forms only
    */
-  public function getSingulars(): PoFileIterator {
+  public function getSingulars(): TraversableCatalog {
     $singularFilter = function(Entry $entry) {
       return !$entry->isPlural();
     };
@@ -100,9 +78,9 @@ class PoFileIterator  implements IteratorAggregate {
   /**
    * Returns a subset containing plural forms only
    * 
-   * @return PoFileIterator containing plural forms only
+   * @return TraversableCatalog containing plural forms only
    */
-  public function getPlurals(): PoFileIterator {
+  public function getPlurals(): TraversableCatalog {
     $pluralFilter = function(Entry $entry) {
       return $entry->isPlural();
     };
@@ -112,14 +90,14 @@ class PoFileIterator  implements IteratorAggregate {
   /**
    * Returns a subset containing plural forms only
    * 
-   * @return PoFileIterator containing plural forms only
+   * @return TraversableCatalog containing plural forms only
    */
-  public function filterByTranslation(string $needle): PoFileIterator {
+  public function filterByTranslation(string $needle): TraversableCatalog {
     $filter = function(Entry $entry) use ($needle): bool {
       if ($entry->isPlural()) {
         $plurals = $entry->getMsgStrPlurals();
         //var_dump($plurals[0] === $needle || $plurals[1] === $needle);
-        return mb_strpos($plurals[0], $needle) !== false ||  mb_strpos($plurals[1], $needle) !== false;
+        return mb_strpos($plurals[0], $needle) !== false || mb_strpos($plurals[1], $needle) !== false;
       } else {
         return mb_strpos($entry->getMsgStr(), $needle) !== false;
       }
@@ -131,6 +109,10 @@ class PoFileIterator  implements IteratorAggregate {
     return count($this->entries);
   }
 
+  /**
+   * 
+   * @return Entry[]
+   */
   public function toArray(): array {
     return $this->entries;
   }
@@ -139,7 +121,7 @@ class PoFileIterator  implements IteratorAggregate {
     return new Collection($this->entries);
   }
 
-  public static function parseFrom(string $poFilePath): PoFileIterator {
+  public static function parseFrom(string $poFilePath): TraversableCatalog {
     $fileHandler = new FileSystem($poFilePath);
     $poParser = new Parser($fileHandler);
     $data = $poParser->parse();

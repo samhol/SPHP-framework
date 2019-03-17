@@ -4,10 +4,7 @@ namespace Sphp\Manual\MVC\Gettext;
 
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
-use Sphp\Html\Foundation\Sites\Forms\Inputs\BasicInputCell;
 use Sphp\Html\Forms\Inputs\TextInput;
-use Sphp\Html\Foundation\Sites\Buttons\Button;
-use Sphp\Html\Foundation\Sites\Forms\Inputs\Radioboxes;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
@@ -57,21 +54,21 @@ class GettextForm {
   }
 
   public function buildMessageTypeSelector() {
-    $this->msgTypeSelector = new Select('msg_type');
-    $this->msgTypeSelector->addCssClass('input-group-field');
-    $this->msgTypeSelector->appendOption('singular', 'Singular form of');
-    $this->msgTypeSelector->appendOption('plural', 'Plural form of');
-    $this->msgTypeSelector->appendOption('singular+plural', 'Singular or Plural form of');
+    $this->msgTypeSelector = new Select('type');
+    //$this->msgTypeSelector->addCssClass('input-group-field');
+    $this->msgTypeSelector->appendOption('s', 'Singular form');
+    $this->msgTypeSelector->appendOption('p', 'Plural form');
+    $this->msgTypeSelector->appendOption('sp', 'Singular or Plural form');
 
-    $this->msgTypeSelector->setSubmitValue('singular+plural');
+    $this->msgTypeSelector->setSubmitValue('sp');
   }
 
   public function buildFieldTypeSelector() {
-    $this->fieldTypeSelector = new Select('type');
-    $this->fieldTypeSelector->addCssClass('input-group-field');
-    $this->fieldTypeSelector->appendOption('id', 'ID');
-    $this->fieldTypeSelector->appendOption('translation', 'Translation');
-    $this->fieldTypeSelector->appendOption('original+translation', 'ID or Translation');
+    $this->fieldTypeSelector = new Select('part');
+   //$this->fieldTypeSelector->addCssClass('input-group-field');
+    $this->fieldTypeSelector->appendOption('i', 'ID of');
+    $this->fieldTypeSelector->appendOption('t', 'Translation of');
+    $this->fieldTypeSelector->appendOption('it', 'ID or Translation of');
     $this->fieldTypeSelector->setSubmitValue('original+translation');
   }
 
@@ -87,8 +84,8 @@ class GettextForm {
     $inputGroup1 = new InputGroup();
     $inputGroup1->appendLabel('Search');
     $row2 = new FormRow();
-    $inputGroup1->append($this->msgTypeSelector);
     $inputGroup1->append($this->fieldTypeSelector);
+    $inputGroup1->append($this->msgTypeSelector);
 
     $form->append($inputGroup1);
     $inputrow = new FormRow();

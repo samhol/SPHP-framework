@@ -10,27 +10,35 @@
 
 namespace Sphp\Manual\MVC\Gettext;
 
-use Sphp\I18n\Gettext\PoFileIterator;
+use Sphp\I18n\Gettext\TraversableCatalog;
 use Sepia\PoParser\Catalog\Entry;
-
 
 class Controller {
 
   /**
-   *
-   * @var PoFileIterator
+   * @var TraversableCatalog
    */
   private $poFileParser;
 
-  public function __construct(PoFileIterator $poFileParser) {
-    $this->poFileParser = $poFileParser;
+  /**
+   * @var string
+   */
+  private $part, $msgType;
 
-    $this->msgType = filter_input(INPUT_GET, 'msg_type', FILTER_SANITIZE_STRING);
-    $this->msgType = filter_input(INPUT_GET, 'msg_type', FILTER_SANITIZE_STRING);
+  public function __construct(TraversableCatalog $poFileParser) {
+    $this->poFileParser = $poFileParser;
+    $typeRegex = ['options' => ['regexp' => "/^(s|p|sp)+$/", 'default' => 'sp']];
+    $this->msgType = filter_input(INPUT_GET, 'type', FILTER_VALIDATE_REGEXP, $typeRegex);
+    $partRegex = ['options' => ['regexp' => "/^(i|t|it)+$/", 'default' => 'it']];
+    $this->part = filter_input(INPUT_GET, 'part', FILTER_VALIDATE_REGEXP, $partRegex);
     $this->query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
   }
 
-  private function filterByMessageType(): PoFileIterator {
+  /**
+   * 
+   * @return TraversableCatalog
+   */
+  private function filterByMessageType(): TraversableCatalog {
     //$msgType = filter_input(INPUT_GET, 'msg_type', FILTER_SANITIZE_STRING);
     var_dump($this->msgType);
     if ($this->msgType === 'singular') {
@@ -44,7 +52,36 @@ class Controller {
     return $pos;
   }
 
-  public function filterData(): PoFileIterator {
+  private function doQuerySearchForTranslations() {
+    $pos = $this->filterByMessageType();
+    $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
+    foreach ($pos->toArray() as $entry) {
+      if ($entry->isPlural()) {
+        $plurals = $entry->getMsgStrPlurals();
+        //var_dump($plurals[0] === $needle || $plurals[1] === $needle);
+        return mb_strpos($plurals[0], $query) !== false || mb_strpos($plurals[1], $query) !== false;
+      } else {
+        return mb_strpos($entry->getMsgStr(), $query) !== false;
+      }
+    }
+  }
+
+  private function doQuerySearchForMessages() {
+    $pos = $this->filterByMessageType();
+    $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
+    foreach ($pos->toArray() as $entry) {
+      if ($entry instanceof Entry) {
+        if ($entry->isPlural()) {
+          //var_dump($plurals[0] === $needle || $plurals[1] === $needle);
+          return mb_strpos($entry->getMsgId(), $query) !== false || mb_strpos($entry->getMsgIdPlural(), $query) !== false;
+        } else {
+          return mb_strpos($entry->getMsgId(), $query) !== false;
+        }
+      }
+    }
+  }
+
+  public function filterData(): TraversableCatalog {
 
     $pos = $this->filterByMessageType();
     $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);

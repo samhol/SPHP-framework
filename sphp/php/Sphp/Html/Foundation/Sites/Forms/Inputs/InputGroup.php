@@ -11,8 +11,10 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\TextualInputInterface;
 use Sphp\Html\Forms\Inputs\NumberInput;
+use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Span;
 use Sphp\Html\PlainContainer;
 use IteratorAggregate;
@@ -63,7 +65,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @return Component appended instance
    */
   public function prepend($content): Component {
-    if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
+    if ($content instanceof Input && $content instanceof CssClassifiableContent) {
       $content->addCssClass('input-group-field');
       $this->group->prepend($content);
     } else if (is_string($content) || $content instanceof Span) {
@@ -87,14 +89,12 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @return Component appended instance
    */
   public function append($content): Component {
-    if ($content instanceof TextualInputInterface || $content instanceof NumberInput) {
+    if ($content instanceof Input && $content instanceof CssClassifiableContent) {
       $content->addCssClass('input-group-field');
       $this->group->append($content);
     } else if (is_string($content) || $content instanceof Span) {
       $this->appendLabel($content);
     } else if ($content instanceof ButtonInterface) {
-      $this->group->append($content);
-    } else if ($content instanceof \Sphp\Html\Forms\Inputs\Input) {
       $this->group->append($content);
     } else {
       throw new InvalidArgumentException("Content appended to inputgroup is invalid type");
