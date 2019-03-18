@@ -1,6 +1,6 @@
 // including plugins
 var build_all_js, gulp = require('gulp'),
-        watch = require('gulp-watch'),
+        //watch = require('gulp-watch'),
         uglify = require("gulp-uglify"),
         concat = require("gulp-concat"),
         jsdoc = require('gulp-jsdoc3'),
@@ -99,7 +99,13 @@ function sassToCss() {
           .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
           .pipe(gulp.dest('./sphp/css'));
 }
-gulp.task('sass', sassToCss);
+//gulp.task('sass', sassToCss);
+
+gulp.task('sass', function () {
+  return gulp.src('./sphp/scss/**/*.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('./sphp/css'));
+});
 
 gulp.task('sass:watch', function () {
   gulp.watch('./sphp/scss/**/*.scss', function () {
@@ -108,4 +114,7 @@ gulp.task('sass:watch', function () {
   gulp.watch('./sphp/javascript/**/*.js', function () {
     build_all_js();
   });
+});
+gulp.task('file:watch', function () {
+  gulp.watch('./sphp/scss/**/*.scss', ['sass']);
 });

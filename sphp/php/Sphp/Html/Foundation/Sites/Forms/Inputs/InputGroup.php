@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\TextualInputInterface;
-use Sphp\Html\Forms\Inputs\NumberInput;
+use Sphp\Html\Component;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Span;
 use Sphp\Html\PlainContainer;
@@ -23,7 +23,6 @@ use Traversable;
 use Sphp\Html\Forms\Buttons\ButtonInterface;
 use Sphp\Html\Forms\Inputs\Factory;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\Component;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\Resetter;
 
@@ -88,7 +87,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @param  mixed $content the content of the prefix
    * @return Component appended instance
    */
-  public function append($content): \Sphp\Html\Content {
+  public function append(Component $content) {
     if ($content instanceof Input && $content instanceof CssClassifiableContent) {
       $content->addCssClass('input-group-field');
       $this->group->append($content);
@@ -130,6 +129,12 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     return $input;
   }
 
+  public function appendButton(Component $button): Component {
+    $button->addCssClass('button');
+    $this->group->append($button);
+    return $button;
+  }
+
   /**
    * Appends a submitter to the group
    *
@@ -139,7 +144,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    */
   public function appendSubmitter($content = 'submit', string $name = null): Submitter {
     $submitter = new Submitter($content, $name);
-    $this->group->append($submitter);
+    $this->appendButton($submitter);
     return $submitter;
   }
 
@@ -151,15 +156,15 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    */
   public function appendResetter($content = 'reset'): Resetter {
     $submitter = new Resetter($content);
-    $this->group->append($submitter);
+    $this->group->appendButton($submitter);
     return $submitter;
   }
 
   public function contentToString(): string {
     $output = '';
-    foreach ($this as $component) {
-      if ($component instanceof ButtonInterface) {
-        $component->addCssClass('button');
+    foreach ($this->group as $component) {
+      if ($component instanceof Component && $component->hasCssClass('button')) {
+        echo "button:" . get_class($component);
         $output .= '<div class="input-group-button">' . $component . '</div>';
       } else {
         $output .= $component;

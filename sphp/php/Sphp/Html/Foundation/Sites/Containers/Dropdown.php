@@ -29,9 +29,9 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Dropdown implements Content {
+class Dropdown implements Component {
 
-  use \Sphp\Html\ContentTrait;
+  use \Sphp\Html\ContentTrait,\Sphp\Html\ComponentTrait;
 
   private static $sizes = [
       'tiny', 'small', 'large', 'xlarge', 'xxlarge'
@@ -215,6 +215,10 @@ class Dropdown implements Content {
   public function autoFocus(bool $flag = true) {
     $this->setOption('data-auto-focus', $flag);
     return $this;
+  }
+
+  public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager {
+    return $this->dropdown->attributes();
   }
 
 }

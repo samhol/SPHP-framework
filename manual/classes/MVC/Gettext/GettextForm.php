@@ -91,6 +91,7 @@ class GettextForm {
 
   public function buildQueryField() {
     $this->queryField = new TextInput('query');
+    $this->queryField->setPlaceholder('Search Gettext');
   }
 
   public function generate(): GridForm {
@@ -110,14 +111,14 @@ class GettextForm {
 
     $inputGroup = new InputGroup();
     $inputGroup->appendLabel('Search: ');
-    $inputGroup->append($this->buildOptionSelector());
-    $inputGroup->append($this->queryField)->setPlaceholder('Search Gettext');
+    $inputGroup->appendButton($this->buildOptionSelector());
+    $inputGroup->append($this->queryField);
     $inputGroup->appendSubmitter('<i class="fas fa-search"></i><span class="show-for-sr">search</span>');
     //$inputrow->appendResetter('<i class="fas fa-undo"></i><span class="show-for-sr">reset form</span>')->addCssClass('alert');
     //$row2->appendCell($inputrow);
     //$row2->append($this->queryField);
     //$row2->appendCell(Button::submitter('submit'), ['small-12', 'medium-shrink']);
-
+$row2->appendCell('Search');
     $inputrow->appendCell($inputGroup)->auto();
     $form->append($inputrow);
     return $form;

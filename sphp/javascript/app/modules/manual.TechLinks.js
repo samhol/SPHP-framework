@@ -26,5 +26,5 @@
 $(window).bind("load", function () {
   "use strict";
   manual.techLinksList();
-  
+
 });
