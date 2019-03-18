@@ -36,7 +36,7 @@ Sphp\Html\Forms\inputs\Factory:
     optgroup: 'An option group'
     option: 'An option in a drop-down list'
   Buttons: 
-    pushButton:
+    button:
        desc: 'A push button'
        attrs: 'type=button'
     reset:

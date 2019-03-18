@@ -12,6 +12,7 @@ namespace Sphp\Html\Forms\Inputs;
 
 use ReflectionClass;
 use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Html\Forms\Buttons as ButtonTags;
 
 /**
  * Implements an HTML form component factory
@@ -43,12 +44,12 @@ class Factory {
    * @var string[]
    */
   private static $components = [
-      'pushButton' => \Sphp\Html\Forms\Buttons\Button::class,
-      'resetButton' => \Sphp\Html\Forms\Buttons\Resetter::class,
-      'submitButton' => \Sphp\Html\Forms\Buttons\Submitter::class,
-      'push' => \Sphp\Html\Forms\Inputs\Buttons\Button::class,
-      'reset' => Buttons\Resetter::class,
-      'submit' => Buttons\Submitter::class,
+      'inputButton' => Buttons\InputButton::class,
+      'resetInput' => Buttons\ResetInput::class,
+      'submitInput' => Buttons\SubmitInput::class,
+      'reset' => ButtonTags\Resetter::class,
+      'submit' => ButtonTags\Submitter::class,
+      'button' => ButtonTags\Button::class,
       'input' => InputTag::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,

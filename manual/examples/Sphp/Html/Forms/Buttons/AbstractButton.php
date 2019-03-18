@@ -14,12 +14,12 @@ namespace Sphp\Html\Forms\Buttons;
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
 
-(new Submitter("input:submit", "submitter", "submit"))
+(new SubmitInput("input:submit", "submitter", "submit"))
         ->addCssClass("success", "button")
         ->printHtml();
-(new Resetter("input:reset"))
+(new ResetInput("input:reset"))
         ->addCssClass("alert", "button")
         ->printHtml();
-(new Button("input:push"))
+(new InputButton("input:push"))
         ->addCssClass("button")
         ->printHtml();

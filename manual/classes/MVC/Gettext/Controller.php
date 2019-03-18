@@ -32,6 +32,17 @@ class Controller {
     $partRegex = ['options' => ['regexp' => "/^(i|t|it)+$/", 'default' => 'it']];
     $this->part = filter_input(INPUT_GET, 'part', FILTER_VALIDATE_REGEXP, $partRegex);
     $this->query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
+    $args = array(
+        'singular' => FILTER_VALIDATE_BOOLEAN,
+        'plural' => FILTER_VALIDATE_BOOLEAN,
+        'msg' => FILTER_VALIDATE_BOOLEAN,
+        'msgid' => FILTER_VALIDATE_BOOLEAN,
+        'all' => FILTER_VALIDATE_BOOLEAN
+    );
+    $options = filter_input_array(INPUT_GET, $args);
+    $this->options = (object) $options;
+    echo '<pre>';
+    var_dump($this->options);
   }
 
   /**
@@ -41,13 +52,19 @@ class Controller {
   private function filterByMessageType(): TraversableCatalog {
     //$msgType = filter_input(INPUT_GET, 'msg_type', FILTER_SANITIZE_STRING);
     var_dump($this->msgType);
-    if ($this->msgType === 'singular') {
-      echo 'singular';
+    if ($this->options->all) {
       $pos = $this->poFileParser->getSingulars();
-    } else if ($this->msgType === 'plural') {
-      $pos = $this->poFileParser->getPlurals();
     } else {
-      $pos = $this->poFileParser;
+      if ($this->options->singular || !$this->options->plural) {
+        echo 'singular';
+        $pos = $this->poFileParser->getSingulars();
+      } else if (!$this->options->singular || $this->options->plural) {
+        echo 'plural';
+        $pos = $this->poFileParser->getPlurals();
+      } else {
+        echo 'nothing';
+        $pos = new TraversableCatalog;
+      }
     }
     return $pos;
   }

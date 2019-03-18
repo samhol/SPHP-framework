@@ -20,7 +20,7 @@ namespace Sphp\Html\Forms\Inputs\Buttons;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Button extends AbstractButton {
+class InputButton extends AbstractInputButton {
 
   /**
    * Constructor

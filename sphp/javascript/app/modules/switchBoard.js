@@ -24,16 +24,22 @@
       $toggler = $this.find('input[data-toggle-all]');
       $options = $this.find('.options input[type="checkbox"]');
       $optCount = $options.length;
+      if (allChecked()) {
+        $toggler.prop('checked', true);
+      }
       $toggler.click(function () {
         $options.prop('checked', this.checked);
       });
       $options.click(function () {
-        if ($this.find('.options input:checked').length === $optCount) {
+        if (allChecked()) {
           $toggler.prop('checked', true);
         } else {
           $toggler.prop('checked', false);
         }
       });
+      function allChecked() {
+        return $this.find('.options input:checked').length === $optCount;
+      }
     });
   };
 }(jQuery));

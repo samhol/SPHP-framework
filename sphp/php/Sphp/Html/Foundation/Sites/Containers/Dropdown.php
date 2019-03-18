@@ -31,7 +31,8 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  */
 class Dropdown implements Component {
 
-  use \Sphp\Html\ContentTrait,\Sphp\Html\ComponentTrait;
+  use \Sphp\Html\ContentTrait,
+      \Sphp\Html\ComponentTrait;
 
   private static $sizes = [
       'tiny', 'small', 'large', 'xlarge', 'xxlarge'
@@ -218,7 +219,7 @@ class Dropdown implements Component {
   }
 
   public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager {
-    return $this->dropdown->attributes();
+    return $this->trigger->attributes();
   }
 
 }

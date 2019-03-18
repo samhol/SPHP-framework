@@ -21,7 +21,7 @@ use Sphp\Html\Forms\Buttons\ResetterInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Resetter extends AbstractButton implements ResetterInterface {
+class ResetInput extends AbstractInputButton implements ResetterInterface {
 
   /**
    * Constructor

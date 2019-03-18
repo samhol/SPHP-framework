@@ -103,8 +103,8 @@ function sassToCss() {
 
 gulp.task('sass', function () {
   return gulp.src('./sphp/scss/**/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./sphp/css'));
+          .pipe(sass.sync().on('error', sass.logError))
+          .pipe(gulp.dest('./sphp/css'));
 });
 
 gulp.task('sass:watch', function () {
@@ -116,5 +116,10 @@ gulp.task('sass:watch', function () {
   });
 });
 gulp.task('file:watch', function () {
-  gulp.watch('./sphp/scss/**/*.scss', ['sass']);
+  gulp.watch('./sphp/scss/**/*.scss', function () {
+    sassToCss();
+  });
+  gulp.watch('./sphp/javascript/**/*.js', function () {
+    build_all_js();
+  });
 });

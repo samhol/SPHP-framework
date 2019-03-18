@@ -25,7 +25,7 @@ use Sphp\Html\Forms\Inputs\Input;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Submitter extends AbstractButton implements SubmitterInterface, Input {
+class SubmitInput extends AbstractInputButton implements SubmitterInterface, Input {
 
   use \Sphp\Html\Forms\Inputs\InputTagTrait;
 

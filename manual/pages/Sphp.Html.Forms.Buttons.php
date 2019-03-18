@@ -32,9 +32,9 @@ namespace Sphp\Html\Forms\Inputs\Buttons;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$submitter = Manual\api()->classLinker(Submitter::class);
-$reseter = Manual\api()->classLinker(Resetter::class);
-$button = Manual\api()->classLinker(Button::class);
+$submitter = Manual\api()->classLinker(SubmitInput::class);
+$reseter = Manual\api()->classLinker(ResetInput::class);
+$button = Manual\api()->classLinker(InputButton::class);
 $buttonTag = Manual\w3schools()->tag('input');
 Manual\md(<<<MD
 

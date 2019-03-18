@@ -27,7 +27,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractButton extends EmptyTag implements ButtonInterface {
+abstract class AbstractInputButton extends EmptyTag implements ButtonInterface {
 
   /**
    * Constructor

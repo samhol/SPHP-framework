@@ -24,7 +24,7 @@ use Sphp\Html\Forms\SubmitterInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SubmitterImage extends AbstractButton implements SubmitterInterface {
+class SubmitterImage extends AbstractInputButton implements SubmitterInterface {
 
   /**
    * Constructor

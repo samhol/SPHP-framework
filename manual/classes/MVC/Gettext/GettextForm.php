@@ -17,7 +17,7 @@ class GettextForm {
   /**
    * @var Input
    */
-  private $fieldTypeSelector;
+  private $options;
 
   /**
    * @var Input
@@ -30,8 +30,8 @@ class GettextForm {
   private $queryField;
 
   public function __construct() {
-    $this->buildMessageTypeSelector();
-    $this->buildFieldTypeSelector();
+    //$this->buildMessageTypeSelector();
+    $this->buildOptionSelector();
     $this->buildQueryField();
   }
 
@@ -39,19 +39,21 @@ class GettextForm {
     
   }
 
-  public function buildOptionSelector() {
+  private function buildOptionSelector() {
     $sb = new SwitchBoard;
-    $sb->appendNewSwitch('Singular', 's', 'foo');
-    $sb->appendNewSwitch('Plural', 'p', 'foobar');
-    $sb->appendNewSwitch('Messages', 'msg', null);
-    $sb->appendNewSwitch('Message IDs', 'id', null);
+    $sb->setToggler('Check all', 'all', 1);
+    $sb->appendNewSwitch('Singular', 'singular', 1);
+    $sb->appendNewSwitch('Plural', 'plural', 1);
+    $sb->appendNewSwitch('Messages', 'msg', 1);
+    $sb->appendNewSwitch('Message IDs', 'msgid', 1);
     $sb->setDescription('Select used Gettext fields');
-    $dd = new Dropdown('Options', $sb);
+    $dd = new Dropdown(new \Sphp\Html\Forms\Buttons\Button('Options'), $sb);
     $dd->closeOnBodyClick(true);
     $dd->setOption('data-v-offset', 3);
-    $dd->getTrigger()->addCssClass('button', 'radius', 'dropdown');
+    $dd->getTrigger()->addCssClass('button1', 'radius', 'dropdown');
     $dd->getDropdown()->addCssClass('shadow', 'radius');
     $sb->setInitialState($_GET);
+    $this->options = $sb;
     return $dd;
   }
 
@@ -60,8 +62,8 @@ class GettextForm {
     return $this;
   }
 
-  public function setSelectedMessageType(string $value = null) {
-    $this->msgTypeSelector->setInitialValue($value);
+  public function setOptions(array $opts = []) {
+    $this->options->setInitialValue($opts);
     return $this;
   }
 
@@ -70,26 +72,9 @@ class GettextForm {
     return $this;
   }
 
-  public function buildMessageTypeSelector() {
-    $this->msgTypeSelector = new Select('type');
-    //$this->msgTypeSelector->addCssClass('input-group-field');
-    $this->msgTypeSelector->appendOption('s', 'Singular form');
-    $this->msgTypeSelector->appendOption('p', 'Plural form');
-    $this->msgTypeSelector->appendOption('sp', 'Singular or Plural form');
 
-    $this->msgTypeSelector->setInitialValue('sp');
-  }
 
-  public function buildFieldTypeSelector() {
-    $this->fieldTypeSelector = new Select('part');
-    //$this->fieldTypeSelector->addCssClass('input-group-field');
-    $this->fieldTypeSelector->appendOption('i', 'ID of');
-    $this->fieldTypeSelector->appendOption('t', 'Translation of');
-    $this->fieldTypeSelector->appendOption('it', 'ID or Translation of');
-    $this->fieldTypeSelector->setInitialValue('original+translation');
-  }
-
-  public function buildQueryField() {
+  private function buildQueryField() {
     $this->queryField = new TextInput('query');
     $this->queryField->setPlaceholder('Search Gettext');
   }
@@ -98,16 +83,16 @@ class GettextForm {
     $form = new GridForm('/gettext/', 'get');
     $form->addCssClass('sphp', 'gettext-form');
     $row1 = new FormRow();
-    $row1->addCssClass();
-    $inputGroup1 = new InputGroup();
-    $inputGroup1->appendLabel('Search');
+   // $row1->addCssClass();
+    //$inputGroup1 = new InputGroup();
+    //$inputGroup1->appendLabel('Search');
     $row2 = new FormRow();
-    $inputGroup1->append($this->fieldTypeSelector);
-    $inputGroup1->append($this->msgTypeSelector);
+    //$inputGroup1->append($this->fieldTypeSelector);
+    //$inputGroup1->append($this->msgTypeSelector);
 
-    $form->append($inputGroup1);
+   // $form->append($inputGroup1);
     $inputrow = new FormRow();
-    $inputrow->addCssClass('foo');
+  //  $inputrow->addCssClass('foo');
 
     $inputGroup = new InputGroup();
     $inputGroup->appendLabel('Search: ');
