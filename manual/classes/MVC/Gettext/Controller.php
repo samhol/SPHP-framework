@@ -21,9 +21,14 @@ class Controller {
   private $poFileParser;
 
   /**
-   * @var string
+   * @var object
    */
-  private $part, $msgType;
+  private $options;
+
+  /**
+   * @var string|null 
+   */
+  private $query;
 
   public function __construct(TraversableCatalog $poFileParser) {
     $this->poFileParser = $poFileParser;
@@ -65,37 +70,9 @@ class Controller {
     return $pos;
   }
 
-  private function doQuerySearchForTranslations() {
-    $pos = $this->filterByMessageType();
-    $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-    foreach ($pos->toArray() as $entry) {
-      if ($entry->isPlural()) {
-        $plurals = $entry->getMsgStrPlurals();
-        //var_dump($plurals[0] === $needle || $plurals[1] === $needle);
-        return mb_strpos($plurals[0], $query) !== false || mb_strpos($plurals[1], $query) !== false;
-      } else {
-        return mb_strpos($entry->getMsgStr(), $query) !== false;
-      }
-    }
-  }
-
-  private function doQuerySearchForMessages() {
-    $pos = $this->filterByMessageType();
-    $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-    foreach ($pos->toArray() as $entry) {
-      if ($entry instanceof Entry) {
-        if ($entry->isPlural()) {
-          //var_dump($plurals[0] === $needle || $plurals[1] === $needle);
-          return mb_strpos($entry->getMsgId(), $query) !== false || mb_strpos($entry->getMsgIdPlural(), $query) !== false;
-        } else {
-          return mb_strpos($entry->getMsgId(), $query) !== false;
-        }
-      }
-    }
-  }
 
   private function entryTest(Entry $entry) {
-
+    $haystack = [];
     if ($this->options->msgid) {
       $haystack[] = $entry->getMsgId();
       $haystack[] = $entry->getMsgIdPlural();
@@ -103,10 +80,10 @@ class Controller {
       $haystack = array_merge($entry->getMsgStrPlurals(), $haystack);
       $haystack[] = $entry->getMsgStr();
     }
-    echo '<pre>';
-    var_dump($entry->isPlural());
-    print_r($haystack);
-    
+    //echo '<pre>';
+    //var_dump($entry->isPlural());
+    //'print_r($haystack);
+    return !empty(\Sphp\Stdlib\Arrays::getValuesLike($haystack, $this->query));
   }
 
   private function filterData(): TraversableCatalog {
@@ -116,11 +93,12 @@ class Controller {
     $res = new TraversableCatalog;
     if (!empty($this->query)) {
       foreach ($pos->toArray() as $entry) {
-       
-          $this->entryTest($entry);
-        
+
+        if (!$this->entryTest($entry)) {
+          $pos->removeEntry($entry->getMsgId());
+        }
       }
-      $pos = $pos->filterByTranslation($query);
+      //$pos = $pos->filterByTranslation($query);
     }
     $cond = function(Entry $a, Entry $b) {
       return strcmp($a->getMsgId(), $b->getMsgId());
