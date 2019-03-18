@@ -88,7 +88,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @param  mixed $content the content of the prefix
    * @return Component appended instance
    */
-  public function append($content): Component {
+  public function append($content): \Sphp\Html\Content {
     if ($content instanceof Input && $content instanceof CssClassifiableContent) {
       $content->addCssClass('input-group-field');
       $this->group->append($content);
@@ -97,7 +97,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     } else if ($content instanceof ButtonInterface) {
       $this->group->append($content);
     } else {
-      throw new InvalidArgumentException("Content appended to inputgroup is invalid type");
+      $this->group->append($content);
     }
     return $content;
   }

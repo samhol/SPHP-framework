@@ -8,7 +8,8 @@ use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
-
+use Sphp\Html\Foundation\Sites\Forms\Inputs\SwitchBoard;
+use Sphp\Html\Foundation\Sites\Containers\Dropdown;
 class GettextForm {
 
   use \Sphp\Html\ContentTrait;
@@ -38,6 +39,22 @@ class GettextForm {
     
   }
 
+  public function buildOptionSelector() {
+    $sb = new SwitchBoard;
+    $sb->appendNewSwitch('Singular', 's', 'foo');
+    $sb->appendNewSwitch('Plural', 'p', 'foobar');
+    $sb->appendNewSwitch('Messages', 'msg', null);
+    $sb->appendNewSwitch('Message IDs', 'id', null);
+    $sb->setDescription('Select used fields');
+    $dd = new Dropdown('Options', $sb);
+    $dd->closeOnBodyClick(true);
+    $dd->setOption('data-v-offset', 3);
+    $dd->getTrigger()->addCssClass('button', 'radius');
+    $dd->getDropdown()->addCssClass('shadow', 'radius');
+    $sb->setInitialState($_GET);
+    return $dd;
+  }
+
   public function setQueryFieldValue(string $value = null) {
     $this->queryField->setSubmitValue($value);
     return $this;
@@ -65,7 +82,7 @@ class GettextForm {
 
   public function buildFieldTypeSelector() {
     $this->fieldTypeSelector = new Select('part');
-   //$this->fieldTypeSelector->addCssClass('input-group-field');
+    //$this->fieldTypeSelector->addCssClass('input-group-field');
     $this->fieldTypeSelector->appendOption('i', 'ID of');
     $this->fieldTypeSelector->appendOption('t', 'Translation of');
     $this->fieldTypeSelector->appendOption('it', 'ID or Translation of');
@@ -93,6 +110,7 @@ class GettextForm {
 
     $inputGroup = new InputGroup();
     $inputGroup->appendLabel('Containing text');
+    $inputGroup->append($this->buildOptionSelector());
     $inputGroup->append($this->queryField)->setPlaceholder('Search Gettext');
     $inputGroup->appendSubmitter('<i class="fas fa-search"></i><span class="show-for-sr">search</span>');
     //$inputrow->appendResetter('<i class="fas fa-undo"></i><span class="show-for-sr">reset form</span>')->addCssClass('alert');

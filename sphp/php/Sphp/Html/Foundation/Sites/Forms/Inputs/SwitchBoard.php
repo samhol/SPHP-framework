@@ -54,8 +54,25 @@ class SwitchBoard extends AbstractComponent {
     parent::__destruct();
   }
 
+  /**
+   * 
+   * @param  mixed $description
+   * @return $this for a fluent interface
+   */
   public function setDescription($description) {
     $this->description->resetContent($description);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  array $state
+   * @return $this for a fluent interface
+   */
+  public function setInitialState(array $state = []) {
+    foreach ($this->switches as $switch) {
+      $switch->setChecked(array_key_exists($switch->getName(), $state)); //(array_key_exists($switch->getName(), $state)) {
+    }
     return $this;
   }
 
@@ -90,6 +107,13 @@ class SwitchBoard extends AbstractComponent {
     return $this;
   }
 
+  /**
+   * 
+   * @param  string $label
+   * @param  string $inputName
+   * @param  mixed $inputValue
+   * @return SwitchBox
+   */
   public function appendNewSwitch(string $label, string $inputName = null, $inputValue = null): SwitchBox {
     $switch = new SwitchBox($inputName, $inputValue);
     $switch->setScreenReaderLabel($label);
@@ -97,7 +121,12 @@ class SwitchBoard extends AbstractComponent {
     return $switch;
   }
 
-  protected function buildSwitchContainerFor(SwitchBox $switch): string {
+  /**
+   * 
+   * @param  SwitchBox $switch
+   * @return string
+   */
+  protected function switchToString(SwitchBox $switch): string {
     $output = '<div class="switch-toggle-wrapper">';
     $output .= $switch;
     $output .= new Label($switch->getScreenReaderLabel(), $switch->getInput());
@@ -106,11 +135,11 @@ class SwitchBoard extends AbstractComponent {
   }
 
   public function contentToString(): string {
-    $toggler = $this->buildSwitchContainerFor($this->toggler);
+    $toggler = $this->switchToString($this->toggler);
     $options = new Div();
     $options->addCssClass('options');
     foreach ($this->switches as $switch) {
-      $options->append($this->buildSwitchContainerFor($switch));
+      $options->append($this->switchToString($switch));
     }
     return $this->description . $toggler . '<hr>' . $options;
   }
