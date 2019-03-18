@@ -36,7 +36,7 @@ class TraversableCatalog extends CatalogArray implements IteratorAggregate {
    * 
    * @param Catalog|Entry[]|iterable $entries
    */
-  public function __construct($entries) {
+  public function __construct($entries = []) {
     if ($entries instanceof Catalog) {
       parent::__construct($entries->getEntries());
     } else if (is_array($entries)) {

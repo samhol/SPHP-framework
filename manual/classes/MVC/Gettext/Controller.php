@@ -27,22 +27,19 @@ class Controller {
 
   public function __construct(TraversableCatalog $poFileParser) {
     $this->poFileParser = $poFileParser;
-    $typeRegex = ['options' => ['regexp' => "/^(s|p|sp)+$/", 'default' => 'sp']];
-    $this->msgType = filter_input(INPUT_GET, 'type', FILTER_VALIDATE_REGEXP, $typeRegex);
-    $partRegex = ['options' => ['regexp' => "/^(i|t|it)+$/", 'default' => 'it']];
-    $this->part = filter_input(INPUT_GET, 'part', FILTER_VALIDATE_REGEXP, $partRegex);
     $this->query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-    $args = array(
-        'singular' => FILTER_VALIDATE_BOOLEAN,
-        'plural' => FILTER_VALIDATE_BOOLEAN,
-        'msg' => FILTER_VALIDATE_BOOLEAN,
-        'msgid' => FILTER_VALIDATE_BOOLEAN,
-        'all' => FILTER_VALIDATE_BOOLEAN
-    );
-    $options = filter_input_array(INPUT_GET, $args);
+
+    $options['all'] = filter_has_var(INPUT_GET, 'all');
+    $options['singular'] = filter_has_var(INPUT_GET, 'singular');
+    $options['plural'] = filter_has_var(INPUT_GET, 'plural');
+    $options['msg'] = filter_has_var(INPUT_GET, 'msg');
+    $options['msgid'] = filter_has_var(INPUT_GET, 'msgid');
+
     $this->options = (object) $options;
+    $this->options->allParts = $this->options->msg && $this->options->msgid || $this->options->all;
     echo '<pre>';
-    var_dump($this->options);
+    var_dump($this->options, $this->query);
+    echo '</pre>';
   }
 
   /**
@@ -51,9 +48,8 @@ class Controller {
    */
   private function filterByMessageType(): TraversableCatalog {
     //$msgType = filter_input(INPUT_GET, 'msg_type', FILTER_SANITIZE_STRING);
-    var_dump($this->msgType);
     if ($this->options->all) {
-      $pos = $this->poFileParser->getSingulars();
+      $pos = $this->poFileParser;
     } else {
       if ($this->options->singular || !$this->options->plural) {
         echo 'singular';
@@ -98,11 +94,32 @@ class Controller {
     }
   }
 
-  public function filterData(): TraversableCatalog {
+  private function entryTest(Entry $entry) {
+
+    if ($this->options->msgid) {
+      $haystack[] = $entry->getMsgId();
+      $haystack[] = $entry->getMsgIdPlural();
+    } if ($this->options->msg) {
+      $haystack = array_merge($entry->getMsgStrPlurals(), $haystack);
+      $haystack[] = $entry->getMsgStr();
+    }
+    echo '<pre>';
+    var_dump($entry->isPlural());
+    print_r($haystack);
+    
+  }
+
+  private function filterData(): TraversableCatalog {
 
     $pos = $this->filterByMessageType();
     $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-    if (!empty($query)) {
+    $res = new TraversableCatalog;
+    if (!empty($this->query)) {
+      foreach ($pos->toArray() as $entry) {
+       
+          $this->entryTest($entry);
+        
+      }
       $pos = $pos->filterByTranslation($query);
     }
     $cond = function(Entry $a, Entry $b) {

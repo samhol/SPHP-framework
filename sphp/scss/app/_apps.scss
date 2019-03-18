@@ -25,23 +25,3 @@
 .syntax-hl {
   padding: 0;
 }
-.sphp.switch-board { 
-  .description {
-    font-weight: bold;
-    font-size: rem-calc(15);
-    padding-bottom: 1rem;
-  } 
-  .switch-toggle-wrapper {
-    display: flex;
-    margin-bottom: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    .switch {
-      margin-bottom: 0;
-    }
-  }
-  .options {
-    padding-left: 1rem;
-  }
-}
-

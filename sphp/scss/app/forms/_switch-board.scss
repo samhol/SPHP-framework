@@ -1,0 +1,28 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+.sphp.switch-board { 
+  .description {
+    font-weight: bold;
+    font-size: rem-calc(15);
+    padding-bottom: 1rem;
+  } 
+  .switch-toggle-wrapper {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    .switch {
+      margin-bottom: 0;
+    }
+  }
+  .options {
+    padding-left: 1rem;
+  }
+}
+
