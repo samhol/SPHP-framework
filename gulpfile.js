@@ -1,5 +1,5 @@
 // including plugins
-var build, gulp = require('gulp'),
+var build_all_js, gulp = require('gulp'),
         watch = require('gulp-watch'),
         uglify = require("gulp-uglify"),
         concat = require("gulp-concat"),
@@ -84,23 +84,28 @@ function doc(cb) {
 }
 
 
-build = gulp.series(build_js, build_ss360);
-build_docs = gulp.series(build, doc);
+build_all_js = gulp.series(build_js, build_ss360);
+build_docs = gulp.series(build_all_js, doc);
 copy_scss_and_fonts = gulp.series(copy_fonts, copy_img, copy_tipso, copyIonRangeLiderCss);
 
-gulp.task('build', build);
-gulp.task('default', build);
+gulp.task('build:js', build_all_js);
+gulp.task('default', build_all_js);
 gulp.task('copy:scss+fonts', copy_scss_and_fonts);
 gulp.task('doc', doc);
 
 
 function sassToCss() {
-  return gulp.src('./sphp/scss/*.scss')
+  return gulp.src('./sphp/scss/**/*.scss')
           .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
           .pipe(gulp.dest('./sphp/css'));
 }
 gulp.task('sass', sassToCss);
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./sphp/scss/**/*.scss', ['sass']);
+  gulp.watch('./sphp/scss/**/*.scss', function () {
+    sassToCss();
+  });
+  gulp.watch('./sphp/javascript/**/*.js', function () {
+    build_all_js();
+  });
 });

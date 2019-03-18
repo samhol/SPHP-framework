@@ -182,6 +182,7 @@ if (!window.console.log) {
     //$(".sphp-viewport-size-viewer").viewportSizeViewer();
 
     $("[data-sphp-qtip]").qtips();
+    $('div[data-switch-board]').switchBoard();
     // $('.sphp-back-to-top-button').backToTopBtn();
     $("input[data-anytime]").SphpAnyTimeInput();
     $("[data-sphp-ion-slider]").ionRangeSlider({});

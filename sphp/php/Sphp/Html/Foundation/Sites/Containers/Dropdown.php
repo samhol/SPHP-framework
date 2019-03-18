@@ -12,6 +12,9 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Content;
 use Sphp\Html\Component;
+use Sphp\Html\Span;
+use Sphp\Html\Div;
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
 /**
  * Implements Dropdown HTML component
@@ -45,6 +48,11 @@ class Dropdown implements Content {
   private $dropdown;
 
   /**
+   * @var PropertyCollectionAttribute 
+   */
+  private $options;
+
+  /**
    * Constructor
    *
    * @param  Content|mixed $trigger the target component for the dropdown functionality
@@ -52,9 +60,10 @@ class Dropdown implements Content {
    */
   public function __construct($trigger, $dropdown) {
     if (!$dropdown instanceof Component) {
-      $dropdown = new \Sphp\Html\Div($dropdown);
+      $dropdown = new Div($dropdown);
     }
     $this->dropdown = $dropdown;
+    $this->dropdown->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
     $this->dropdown->identify();
     $this->dropdown->cssClasses()->protectValue('dropdown-pane');
     $this->dropdown->attributes()->demand('data-dropdown');
@@ -66,6 +75,15 @@ class Dropdown implements Content {
     $this->identify('Dropdown');
     $this->trigger = clone $this->trigger;
     $this->setTrigger($this->trigger);
+  }
+
+  public function setOption(string $name, $value) {
+    if (is_bool($value)) {
+      $value = $value ? 'true' : 'false';
+    }
+    $correctName = lcfirst(str_replace('-', '', ucwords(str_replace('data-', '', $name), '-')));
+    $this->options->setProperty($correctName, $value);
+    return $this;
   }
 
   public function getDropdown() {
@@ -144,7 +162,7 @@ class Dropdown implements Content {
    * @return $this for a fluent interface
    */
   public function setFloat($float = false) {
-    $this->trigger->cssClasses()->remove('float-left float-right');
+    $this->trigger->cssClasses()->remove('float-left', 'float-right');
     if ($float !== false) {
       $this->trigger->cssClasses()->add("float-$float");
     }
@@ -159,7 +177,7 @@ class Dropdown implements Content {
    */
   public function setTrigger($trigger) {
     if (!($trigger instanceof Component)) {
-      $trigger = new \Sphp\Html\Span($trigger);
+      $trigger = new Span($trigger);
     }
     $this->trigger = $trigger
             ->setAttribute('data-toggle', $this->dropdown->identify());
@@ -171,7 +189,7 @@ class Dropdown implements Content {
    *
    * @return Component the trigger component controlling this dropdown
    */
-  public function getTrigger() {
+  public function getTrigger(): Component {
     return $this->trigger;
   }
 
@@ -185,11 +203,7 @@ class Dropdown implements Content {
    * @return $this for a fluent interface
    */
   public function closeOnBodyClick(bool $flag = true) {
-    if ($flag) {
-      $this->dropdown->attributes()->setAttribute('data-close-on-click', 'true');
-    } else {
-      $this->dropdown->attributes()->setAttribute('data-close-on-click', 'false');
-    }
+    $this->setOption('data-close-on-click', $flag);
     return $this;
   }
 
@@ -199,11 +213,7 @@ class Dropdown implements Content {
    * @return $this for a fluent interface
    */
   public function autoFocus(bool $flag = true) {
-    if ($flag) {
-      $this->dropdown->attributes()->setAttribute('data-auto-focus', 'true');
-    } else {
-      $this->dropdown->attributes()->setAttribute('data-auto-focus', 'false');
-    }
+    $this->setOption('data-auto-focus', $flag);
     return $this;
   }
 

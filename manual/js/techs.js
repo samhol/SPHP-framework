@@ -1,6 +1,4 @@
 $(function () {
-  //$('.sphp-tech-slick').children('svg').hide();
-
 
   $('#tech-info').slick({
     slidesToShow: 1,
@@ -53,32 +51,9 @@ $(function () {
           dots: false,
         }
       }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ]
   });
-  var $allToggler = $('div[data-switch-board] [data-toggle-all]');
-  $allToggler.click(function () {
-    $('div[data-switch-board] input[type="checkbox"]').prop('checked', this.checked)
-  })
-  $('div[data-switch-board] section input[type="checkbox"]').click(function () {
-    if ($('div[data-switch-board] section input:checked').length === $('div[data-switch-board] section input[type="checkbox"]').length) {
-      $allToggler.prop('checked', true);
-      console.log('all checked');
-    } else{
-      $allToggler.prop('checked', false);    
-      console.log('not all checked');
-    }
-  })
+
 });
-
-
-
-
-
-
-
-
 
 

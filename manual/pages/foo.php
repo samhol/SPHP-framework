@@ -1,10 +1,19 @@
 <?php
-
 $sb = new Sphp\Html\Foundation\Sites\Forms\Inputs\SwitchBoard;
-$sb->appendSwitch($switch)
+$sb->appendNewSwitch('Singular', 's', null);
+$sb->appendNewSwitch('Plural', 'p', null);
+$sb->appendNewSwitch('Messages', 'msg', null);
+$sb->appendNewSwitch('Message IDs', 'id', null);
+$sb->setDescription('Select used fields');
+$dd = new Sphp\Html\Foundation\Sites\Containers\Dropdown('Options', $sb);
+$dd->closeOnBodyClick(true);
+$dd->setOption('data-v-offset', 3);
+$dd->getTrigger()->addCssClass('button', 'radius');
+$dd->getDropdown()->addCssClass('shadow', 'radius');
+echo $dd;
 ?>
 <div class="callout sphp switch-board" data-switch-board>
-
+  <p class="note">Select used fields</p>
   <div class="switch-toggle-wrapper">
     <div class="switch">
       <input class="switch-input" id="all" type="checkbox" name="all" data-toggle-all>
