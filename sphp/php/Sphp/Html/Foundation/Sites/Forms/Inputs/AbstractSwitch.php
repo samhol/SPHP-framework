@@ -97,6 +97,10 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     return $this;
   }
 
+  public function getScreenReaderLabel(): ?string {
+    return $this->screenReaderLabel;
+  }
+
   /**
    * Sets the size of the component
    *
@@ -140,6 +144,10 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     $this->active = $active;
     $this->inactive = $inactive;
     return $this;
+  }
+
+  public function getInput(): Choicebox {
+    return $this->input;
   }
 
   public function disable(bool $disabled = true) {

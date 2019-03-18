@@ -1,4 +1,8 @@
-<?php ?>
+<?php
+
+$sb = new Sphp\Html\Foundation\Sites\Forms\Inputs\SwitchBoard;
+$sb->appendSwitch($switch)
+?>
 <div class="callout sphp switch-board" data-switch-board>
 
   <div class="switch-toggle-wrapper">
