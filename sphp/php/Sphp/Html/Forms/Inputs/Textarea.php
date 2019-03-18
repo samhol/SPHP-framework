@@ -36,8 +36,8 @@ class Textarea extends SimpleTag implements TextareaInterface {
    */
   public function __construct(string $name = null, $content = null, int $rows = null, int $cols = null) {
     parent::__construct('textarea', $content);
-    $this->attributes()->getObjectMap()->mapType('rows', \Sphp\Html\Attributes\IntegerAttribute::class,0);
-    $this->attributes()->getObjectMap()->mapType('cols', \Sphp\Html\Attributes\IntegerAttribute::class,0);
+    $this->attributes()->getObjectMap()->mapType('rows', \Sphp\Html\Attributes\IntegerAttribute::class, 0);
+    $this->attributes()->getObjectMap()->mapType('cols', \Sphp\Html\Attributes\IntegerAttribute::class, 0);
     if ($name !== null) {
       $this->setName($name);
     }
@@ -75,7 +75,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
     return $this->getContent();
   }
 
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     $this->setContent($value);
     return $this;
   }

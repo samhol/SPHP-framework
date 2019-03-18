@@ -72,7 +72,7 @@ class FileUploadButton implements IdentifiableInput, ButtonInterface {
   }
 
   public function setSubmitValue($value) {
-    $this->fileInput->setSubmitValue($value);
+    $this->fileInput->setInitialValue($value);
     return $this;
   }
 

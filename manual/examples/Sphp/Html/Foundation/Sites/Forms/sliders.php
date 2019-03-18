@@ -14,12 +14,12 @@ $hours = (new Slider(0, 23, 1))
 
 $score = (new Slider(0, 100, 50, 2))
         ->setName("score")
-        ->setSubmitValue(12);
+        ->setInitialValue(12);
 //->showValue();
 
 $distance = (new Slider(10, 1000, 10, 10))
         ->setName("distance")
-        ->setSubmitValue(100);
+        ->setInitialValue(100);
 $bind = $distance->bindInput();
 $row = (new FormRow());
 $row->appendCell($weight, ['shrink']);

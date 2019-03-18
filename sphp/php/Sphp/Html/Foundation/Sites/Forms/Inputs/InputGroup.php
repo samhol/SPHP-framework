@@ -92,10 +92,8 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     if ($content instanceof Input && $content instanceof CssClassifiableContent) {
       $content->addCssClass('input-group-field');
       $this->group->append($content);
-    } else if (is_string($content) || $content instanceof Span) {
+    } else if (is_string($content)) {
       $this->appendLabel($content);
-    } else if ($content instanceof ButtonInterface) {
-      $this->group->append($content);
     } else {
       $this->group->append($content);
     }

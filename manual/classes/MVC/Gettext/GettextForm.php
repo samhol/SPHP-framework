@@ -45,28 +45,28 @@ class GettextForm {
     $sb->appendNewSwitch('Plural', 'p', 'foobar');
     $sb->appendNewSwitch('Messages', 'msg', null);
     $sb->appendNewSwitch('Message IDs', 'id', null);
-    $sb->setDescription('Select used fields');
+    $sb->setDescription('Select used Gettext fields');
     $dd = new Dropdown('Options', $sb);
     $dd->closeOnBodyClick(true);
     $dd->setOption('data-v-offset', 3);
-    $dd->getTrigger()->addCssClass('button', 'radius');
+    $dd->getTrigger()->addCssClass('button', 'radius', 'dropdown');
     $dd->getDropdown()->addCssClass('shadow', 'radius');
     $sb->setInitialState($_GET);
     return $dd;
   }
 
   public function setQueryFieldValue(string $value = null) {
-    $this->queryField->setSubmitValue($value);
+    $this->queryField->setInitialValue($value);
     return $this;
   }
 
   public function setSelectedMessageType(string $value = null) {
-    $this->msgTypeSelector->setSubmitValue($value);
+    $this->msgTypeSelector->setInitialValue($value);
     return $this;
   }
 
   public function setSelectedFieldType(string $value = null) {
-    $this->fieldTypeSelector->setSubmitValue($value);
+    $this->fieldTypeSelector->setInitialValue($value);
     return $this;
   }
 
@@ -77,7 +77,7 @@ class GettextForm {
     $this->msgTypeSelector->appendOption('p', 'Plural form');
     $this->msgTypeSelector->appendOption('sp', 'Singular or Plural form');
 
-    $this->msgTypeSelector->setSubmitValue('sp');
+    $this->msgTypeSelector->setInitialValue('sp');
   }
 
   public function buildFieldTypeSelector() {
@@ -86,7 +86,7 @@ class GettextForm {
     $this->fieldTypeSelector->appendOption('i', 'ID of');
     $this->fieldTypeSelector->appendOption('t', 'Translation of');
     $this->fieldTypeSelector->appendOption('it', 'ID or Translation of');
-    $this->fieldTypeSelector->setSubmitValue('original+translation');
+    $this->fieldTypeSelector->setInitialValue('original+translation');
   }
 
   public function buildQueryField() {
@@ -109,7 +109,7 @@ class GettextForm {
     $inputrow->addCssClass('foo');
 
     $inputGroup = new InputGroup();
-    $inputGroup->appendLabel('Containing text');
+    $inputGroup->appendLabel('Search: ');
     $inputGroup->append($this->buildOptionSelector());
     $inputGroup->append($this->queryField)->setPlaceholder('Search Gettext');
     $inputGroup->appendSubmitter('<i class="fas fa-search"></i><span class="show-for-sr">search</span>');

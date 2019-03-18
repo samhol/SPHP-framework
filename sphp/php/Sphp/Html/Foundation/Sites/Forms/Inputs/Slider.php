@@ -54,7 +54,7 @@ class Slider extends AbstractSlider {
             ->protect('role', 'slider')
             ->protect('tabindex', 1);
     $this->input = new HiddenInput();
-    $this->setStepLength($step)->setSubmitValue($value);
+    $this->setStepLength($step)->setInitialValue($value);
   }
 
   public function __destruct() {
@@ -118,11 +118,11 @@ class Slider extends AbstractSlider {
     return $this->getInput()->getSubmitValue();
   }
 
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new InvalidStateException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->getInput()->setSubmitValue($value);
+    $this->getInput()->setInitialValue($value);
     $this->attributes()->setAttribute('data-initial-start', $value);
     return $this;
   }

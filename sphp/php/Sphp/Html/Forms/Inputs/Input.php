@@ -58,11 +58,11 @@ interface Input extends FormController {
   public function getSubmitValue();
 
   /**
-   * Sets  the value of the input
+   * Sets the initial submit value of the input
    *
-   * @param  scalar $value the value of the input
+   * @param  mixed $value the value of the input
    * @return $this for a fluent interface
    * @throws InvalidStateException if value is not suitable for input
    */
-  public function setSubmitValue($value);
+  public function setInitialValue($value);
 }

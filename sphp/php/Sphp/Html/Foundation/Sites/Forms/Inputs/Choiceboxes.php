@@ -198,7 +198,7 @@ class Choiceboxes extends AbstractCell implements Input, Cell {
    * @param  string|string[] $value the current submission set of the input component
    * @return $this for a fluent interface
    */
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     if (!is_array($value)) {
       $value = [$value];
     }

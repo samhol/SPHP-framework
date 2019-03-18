@@ -91,14 +91,14 @@ class MonthSelector implements Content {
     $stopYear = $this->date->getYear() + 1;
     $years = range($startYear, $stopYear);
     $yearMenu = MenuFactory::getContentAsValueMenu($years, 'year');
-    $yearMenu->setSelectedValues($this->date->getYear());
+    $yearMenu->setInitialValue($this->date->getYear());
     if (!in_array($thisYear, $years)) {
       $yearMenu->prepend(new \Sphp\Html\Forms\Inputs\Menus\Option($thisYear, $thisYear));
     }
     $container->append($this->createPreviousMonth());
     // $container->append( $this->createMonthMenu());
     $container->append($yearMenu);
-    $container->append(MenuFactory::months('month')->setSelectedValues($this->date->getMonth()));
+    $container->append(MenuFactory::months('month')->setInitialValue($this->date->getMonth()));
     // $container->append(new Span($this->date->format('F Y')));
     $container->append($this->createNextMonth());
     return $container;

@@ -30,7 +30,7 @@ class SiteSearch360FormBuilder extends AbstractSearchFormBuilder {
   public function __construct(string $siteId, string $initialValue = null) {
     parent::__construct();
     $this->siteId = $siteId;
-    $this->getSearchField()->setName('ss360Query')->setSubmitValue($initialValue);
+    $this->getSearchField()->setName('ss360Query')->setInitialValue($initialValue);
     $this->getSearchField()->addCssClass('sphp-search-searchBox', 'sphp-ss360-searchBox');
   }
 

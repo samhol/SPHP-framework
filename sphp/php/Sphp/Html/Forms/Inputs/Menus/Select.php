@@ -99,7 +99,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     return array_unique($selected);
   }
 
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     return $this->setSelectedValues($value);
   }
 

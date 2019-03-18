@@ -43,7 +43,7 @@ class Submitter extends AbstractButton implements SubmitterInterface, Input {
       $this->setName($name);
     }
     if (isset($value)) {
-      $this->setSubmitValue($value);
+      $this->setInitialValue($value);
     }
   }
 

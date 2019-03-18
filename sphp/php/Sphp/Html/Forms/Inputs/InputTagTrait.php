@@ -111,7 +111,7 @@ trait InputTagTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     $this->attributes()->setAttribute('value', $value);
     return $this;
   }

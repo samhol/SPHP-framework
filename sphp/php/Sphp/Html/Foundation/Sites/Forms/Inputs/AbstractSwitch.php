@@ -172,8 +172,8 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     return $this->input->isNamed();
   }
 
-  public function setSubmitValue($value) {
-    $this->input->setSubmitValue($value);
+  public function setInitialValue($value) {
+    $this->input->setInitialValue($value);
     return $this;
   }
 

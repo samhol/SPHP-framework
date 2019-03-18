@@ -39,7 +39,7 @@ class Radioboxes extends Choiceboxes implements ValidableInput {
    * @param  mixed $value the current submission set of the input component
    * @return $this for a fluent interface
    */
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     foreach ($this->getOptionFields() as $opt) {
       if ($opt->getAttribute('value') == $value) {
         $opt->setChecked(true);
