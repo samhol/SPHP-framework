@@ -58,4 +58,13 @@ abstract class AbstractInputTest extends TestCase {
     $this->assertNull($this->input->getName());
   }
 
+  public function testInitialValue() {
+    $this->assertNull($this->input->getSubmitValue());
+    $this->input->setInitialValue('foo');
+    $this->assertSame($this->input, $this->input->setInitialValue('foo'));
+    $this->assertSame('foo', $this->input->getSubmitValue());
+    $this->input->setInitialValue(null);
+    $this->assertNull($this->input->getSubmitValue());
+  }
+
 }
