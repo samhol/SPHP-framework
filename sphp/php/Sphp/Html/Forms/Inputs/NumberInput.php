@@ -41,7 +41,7 @@ class NumberInput extends InputTag implements RangeInput, InputField {
     return $this;
   }
 
-  public function setRange(float $min, float $max) {
+  public function setRange(float $min = null, float $max = null) {
     $this->attributes()->setAttribute('min', $min);
     $this->attributes()->setAttribute('max', $max);
     return $this;

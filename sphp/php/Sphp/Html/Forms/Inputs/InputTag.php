@@ -28,4 +28,5 @@ class InputTag extends AbstractInputTag implements ValidableInput {
   public function isRequired(): bool {
     return $this->attributeExists('required');
   }
+
 }

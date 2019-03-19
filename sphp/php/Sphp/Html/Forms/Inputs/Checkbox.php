@@ -23,7 +23,6 @@ class Checkbox extends Choicebox {
   /**
    * Constructor
    *
-   * @postcondition   `attrLocked("type", "checkbox") === true`
    * @param  string|null $name the value of the name attribute
    * @param  string|null $value the value of the value attribute
    * @param  boolean $checked is component checked

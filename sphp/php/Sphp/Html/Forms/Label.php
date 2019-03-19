@@ -44,7 +44,7 @@ class Label extends ContainerTag implements LabelInterface {
   }
 
   public function setFor($for) {
-    if ($for instanceof IdentifiableInput) {
+    if ($for instanceof Inputs\Input && $for instanceof \Sphp\Html\IdentifiableContent) {
       $for = $for->identify();
     }
     $this->attributes()->setAttribute('for', $for);

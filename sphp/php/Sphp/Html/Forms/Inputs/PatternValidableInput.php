@@ -28,16 +28,16 @@ interface PatternValidableInput extends ValidableInput {
    * @param  string $pattern a regular expression pattern
    * @return $this for a fluent interface
    */
-  public function setPattern(string $pattern);
+  public function setPattern(string $pattern = null);
 
   /**
    * Returns the validation pattern string
    *
-   * @return string the regular expression pattern that the component's 
+   * @return string|null the regular expression pattern that the component's 
    *         value is checked against
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */
-  public function getPattern();
+  public function getPattern(): ?string;
 
   /**
    * Checks if validation pattern is set for the component

@@ -33,24 +33,24 @@ interface RangeInput extends Input {
   /**
    * Sets the minimum and maximum values
    *
-   * @param  float $min the start point
-   * @param  float $max the end point
+   * @param  float|null $min the start point
+   * @param  float|null $max the end point
    * @return $this for a fluent interface
    * @throws InvalidStateException if the range is not valid
    */
-  public function setRange(float $min, float $max);
+  public function setRange(float $min = null, float $max = null);
 
   /**
    * Returns the minimum value of the slider
    *
-   * @return float the minimum value of the slider
+   * @return float|null the minimum value of the slider
    */
-  public function getMin(): float;
+  public function getMin(): ?float;
 
   /**
    * Returns the maximum value of the slider
    *
-   * @return float the maximum value of the slider
+   * @return float|null the maximum value of the slider
    */
-  public function getMax(): float;
+  public function getMax(): ?float;
 }

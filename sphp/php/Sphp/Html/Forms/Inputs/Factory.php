@@ -119,7 +119,7 @@ class Factory {
       array_unshift($arguments, $name);
     }
     $reflectionClass = new ReflectionClass(static::$components[$name]);
-    if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
+    if ($reflectionClass->getName() == InputTag::class) {
       array_unshift($arguments, $name);
     }
     $instance = $reflectionClass->newInstanceArgs($arguments);

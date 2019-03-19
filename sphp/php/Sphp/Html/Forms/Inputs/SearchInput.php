@@ -40,4 +40,3 @@ class SearchInput extends TextualInput {
   }
 
 }
-
