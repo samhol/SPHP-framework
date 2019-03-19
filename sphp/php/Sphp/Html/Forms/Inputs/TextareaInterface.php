@@ -18,7 +18,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface TextareaInterface extends ValidableInput, InputField {
+interface TextareaInterface extends ValidableInput {
 
   /**
    * specifies how the contents is to be wrapped when submitted in a form
@@ -65,4 +65,3 @@ interface TextareaInterface extends ValidableInput, InputField {
    */
   public function setPlaceholder(string $placeholder = null);
 }
-

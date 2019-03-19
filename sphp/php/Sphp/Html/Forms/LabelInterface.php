@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\IdentifiableInput;
+use Sphp\Html\IdentifiableContent;
 
 /**
  * Implements an HTML &lt;label&gt; tag
@@ -35,11 +35,11 @@ interface LabelInterface {
    *
    * - For attribute specifies which form element a label is bound to.
    *
-   * @param  string|IdentifiableInput $for the value of the for attribute
+   * @param  string|IdentifiableContent|null $for the value of the for attribute
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
-  public function setFor($for);
+  public function setFor($for = null);
 
   /**
    * Returns the value of the for attribute

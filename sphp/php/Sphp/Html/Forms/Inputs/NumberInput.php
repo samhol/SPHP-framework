@@ -19,7 +19,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class NumberInput extends InputTag implements RangeInput, InputField {
+class NumberInput extends InputTag implements RangeInput {
 
   /**
    * Constructor

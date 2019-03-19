@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
+use Sphp\Html\IdentifiableContent;
+
 /**
  * Defines an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *
@@ -18,7 +20,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface TextualInputInterface extends InputField, PatternValidableInput {
+interface TextualInputInterface extends Input, IdentifiableContent, PatternValidableInput {
 
   /**
    * Sets the value of the size attribute

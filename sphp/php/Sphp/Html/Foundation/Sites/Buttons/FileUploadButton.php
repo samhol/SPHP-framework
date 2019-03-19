@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Forms\Inputs\IdentifiableInput;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Forms\Inputs\FileInput;
@@ -29,7 +29,7 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FileUploadButton implements IdentifiableInput, ButtonInterface {
+class FileUploadButton implements Input, ButtonInterface, \Sphp\Html\IdentifiableContent {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait,
@@ -71,7 +71,7 @@ class FileUploadButton implements IdentifiableInput, ButtonInterface {
     return $this->fileInput->getSubmitValue();
   }
 
-  public function setSubmitValue($value) {
+  public function setInitialValue($value) {
     $this->fileInput->setInitialValue($value);
     return $this;
   }

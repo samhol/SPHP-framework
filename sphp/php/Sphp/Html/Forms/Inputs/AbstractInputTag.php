@@ -25,7 +25,7 @@ use Sphp\Html\EmptyTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractInputTag extends EmptyTag implements IdentifiableInput {
+abstract class AbstractInputTag extends EmptyTag implements Input {
 
   use InputTagTrait;
 

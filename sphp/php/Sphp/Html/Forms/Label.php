@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\IdentifiableInput;
+use Sphp\Html\IdentifiableContent;
 use Sphp\Html\ContainerTag;
 
 /**
@@ -33,7 +33,7 @@ class Label extends ContainerTag implements LabelInterface {
    * Constructor
    *
    * @param mixed $content the content of the component
-   * @param string|IdentifiableInput|null $for the id of the element the label is bound to
+   * @param string|IdentifiableContent|null $for the id of the element the label is bound to
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function __construct($content = null, $for = null) {
@@ -43,8 +43,8 @@ class Label extends ContainerTag implements LabelInterface {
     }
   }
 
-  public function setFor($for) {
-    if ($for instanceof Inputs\Input && $for instanceof \Sphp\Html\IdentifiableContent) {
+  public function setFor($for = null) {
+    if ($for instanceof IdentifiableContent) {
       $for = $for->identify();
     }
     $this->attributes()->setAttribute('for', $for);

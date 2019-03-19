@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
-use Sphp\Html\Forms\Inputs\InputField;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Html\Span;
 use Sphp\Exceptions\InvalidStateException;
@@ -33,7 +33,7 @@ class Slider extends AbstractSlider {
   private $handle;
 
   /**
-   * @var InputField
+   * @var HiddenInput
    */
   private $input;
 
@@ -65,9 +65,9 @@ class Slider extends AbstractSlider {
   /**
    * Returns the form element containing the value of the slider
    * 
-   * @return HiddenInput the form element containing the value of the slider
+   * @return Input the form element containing the value of the slider
    */
-  private function getInput(): InputField {
+  private function getInput(): Input {
     return $this->input;
   }
 
@@ -134,10 +134,10 @@ class Slider extends AbstractSlider {
   /**
    * Binds input component for the slider value
    * 
-   * @param  InputField|null $input
-   * @return InputField
+   * @param  Input|null $input
+   * @return Input
    */
-  public function bindInput(InputField $input = null): InputField {
+  public function bindInput(Input $input = null): Input {
     if ($input === null) {
       $input = new NumberInput();
     }

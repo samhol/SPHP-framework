@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Span;
-use Sphp\Html\Forms\Inputs\InputField;
+use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Exceptions\InvalidStateException;
 
@@ -43,12 +43,12 @@ class RangeSlider extends AbstractSlider {
   private $upperHandle;
 
   /**
-   * @var InputField
+   * @var Input
    */
   private $lowerInput;
 
   /**
-   * @var InputField
+   * @var Input
    */
   private $upperInput;
 
@@ -91,18 +91,18 @@ class RangeSlider extends AbstractSlider {
   /**
    * Returns the form component containing the start value of the range
    * 
-   * @return InputField the form component containing the start value of the range
+   * @return Input the form component containing the start value of the range
    */
-  private function getStartInput(): InputField {
+  private function getStartInput(): Input {
     return $this->lowerInput;
   }
 
   /**
    * Returns the form component containing the end value of the range
    * 
-   * @return InputField the form component containing the end value of the range
+   * @return Input the form component containing the end value of the range
    */
-  private function getEndInput(): InputField {
+  private function getEndInput(): Input {
     return $this->upperInput;
   }
 
@@ -139,10 +139,10 @@ class RangeSlider extends AbstractSlider {
 
   /**
    * 
-   * @param  InputField $input
-   * @return InputField
+   * @param  Input $input
+   * @return Input
    */
-  public function bindStartValueInput(InputField $input = null): InputField {
+  public function bindStartValueInput(Input $input = null): Input {
     if ($input === null) {
       $input = new NumberInput();
     }
@@ -154,10 +154,10 @@ class RangeSlider extends AbstractSlider {
 
   /**
    * 
-   * @param  InputField $input
-   * @return InputField
+   * @param  Input $input
+   * @return Input
    */
-  public function bindStopValueInput(InputField $input = null): InputField {
+  public function bindStopValueInput(Input $input = null): Input {
     if ($input === null) {
       $input = new NumberInput();
     }

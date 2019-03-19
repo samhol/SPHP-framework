@@ -19,7 +19,7 @@ use Sphp\Html\NonVisualContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HiddenInput extends AbstractInputTag implements InputField, NonVisualContent {
+class HiddenInput extends AbstractInputTag implements NonVisualContent {
 
   /**
    * Constructor
