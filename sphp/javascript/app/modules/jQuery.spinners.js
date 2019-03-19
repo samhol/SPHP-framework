@@ -28,8 +28,6 @@
         css: {
           'z-index': $o.zIndex,
           position: 'relative',
-          //left: '0px',
-          //top: '0px'
         }
       });
       $loader.append('<img src="sphp/pics/spinner.gif" alt="Loading...">');

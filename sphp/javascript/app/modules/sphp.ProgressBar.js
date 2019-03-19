@@ -1,10 +1,11 @@
 /**
- * Sphp.Foundation.ProgressBar.js (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
- * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
- * 
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 (function ($) {
   'use strict';
 

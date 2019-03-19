@@ -5,8 +5,7 @@
    * The jQuery plugin namespace.
    * @external "jQuery.fn"
    * @see {@link http://learn.jquery.com/plugins/|jQuery Plugins}
-   */
-  /**
+   *
    * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
    * jQuery's Ajax capabilities and places the returned HTML into the object.
    * 
@@ -28,7 +27,7 @@
       });
       $content = $("<div>").load($url, function (response, status, xhr) {
         if (status === "error") {
-          $(".callout.error").html("<strong>ERROR</strong> while loading resource: " + xhr.status + " " + xhr.statusText);
+          $(".callout.error").html('<strong class="error">ERROR</strong> while loading resource: ' + xhr.status + " " + xhr.statusText);
           $content.html(
                   "<strong>ERROR</strong> while loading resource: '<u><var>"
                   + $url + "</var></u>'<br> <strong>"

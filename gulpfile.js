@@ -7,7 +7,8 @@ var build_all_js, gulp = require('gulp'),
         rev = require('gulp-rev'),
         revReplace = require('gulp-rev-replace'),
         sass = require('gulp-sass'),
-        copy_scss_and_fonts;
+        copy_scss_and_fonts,
+        sassToCss;
 
 sass.compiler = require('node-sass');
 
@@ -84,42 +85,45 @@ function doc(cb) {
 }
 
 
-build_all_js = gulp.series(build_js, build_ss360);
-build_docs = gulp.series(build_all_js, doc);
-copy_scss_and_fonts = gulp.series(copy_fonts, copy_img, copy_tipso, copyIonRangeLiderCss);
-
-gulp.task('build:js', build_all_js);
-gulp.task('default', build_all_js);
-gulp.task('copy:scss+fonts', copy_scss_and_fonts);
-gulp.task('doc', doc);
-
-
 function sassToCss() {
   return gulp.src('./sphp/scss/**/*.scss')
           .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
           .pipe(gulp.dest('./sphp/css'));
 }
-//gulp.task('sass', sassToCss);
+
+
+build_all_js = gulp.series(build_js, build_ss360);
+build_docs = gulp.series(build_all_js, doc);
+copy_scss_and_fonts = gulp.series(copy_fonts, copy_img, copy_tipso, copyIonRangeLiderCss);
+
+//gulp.task('build:js', build_all_js);
+gulp.task('default', build_all_js);
+gulp.task('copy:scss+fonts', copy_scss_and_fonts);
+gulp.task('doc', doc);
+
+gulp.task('build:js', function () {
+  return gulp.src([
+    './node_modules/jquery/dist/jquery.js',
+    './node_modules/clipboard-polyfill/build/clipboard-polyfill.promise.js',
+    './node_modules/slick-carousel/slick/slick.min.js',
+    './node_modules/foundation-sites/dist/js/foundation.js',
+    './node_modules/lazyloadxt/dist/jquery.lazyloadxt.extra.js',
+    './node_modules/ion-rangeslider/js/ion.rangeSlider.js',
+    './node_modules/tipso/src/tipso.js',
+    './sphp/javascript/vendor/*.js',
+    './sphp/javascript/app/modules/*.js',
+    './sphp/javascript/app/sphp.js'])
+          .pipe(concat('all.js'))
+          .pipe(uglify())
+          .pipe(gulp.dest('./sphp/javascript/dist'));
+});
 
 gulp.task('sass', function () {
   return gulp.src('./sphp/scss/**/*.scss')
-          .pipe(sass.sync().on('error', sass.logError))
+          .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
           .pipe(gulp.dest('./sphp/css'));
 });
-
-gulp.task('sass:watch', function () {
-  gulp.watch('./sphp/scss/**/*.scss', function () {
-    sassToCss();
-  });
-  gulp.watch('./sphp/javascript/**/*.js', function () {
-    build_all_js();
-  });
-});
 gulp.task('file:watch', function () {
-  gulp.watch('./sphp/scss/**/*.scss', function () {
-    sassToCss();
-  });
-  gulp.watch('./sphp/javascript/**/*.js', function () {
-    build_all_js();
-  });
+  gulp.watch('./sphp/scss/**/*.scss', gulp.series('sass'));
+  gulp.watch('./sphp/javascript/app/**/*.js', gulp.series('build:js'));
 });

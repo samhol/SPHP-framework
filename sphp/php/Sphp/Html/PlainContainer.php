@@ -66,10 +66,8 @@ class PlainContainer implements IteratorAggregate, Container, ContentParser {
     $this->components = Arrays::copy($this->components);
   }
 
-  public function append(...$content) {
-    foreach ($content as $cont) {
-      $this->components[] = $cont;
-    }
+  public function append($content) {
+    $this->components[] = $content;
     return $this;
   }
 

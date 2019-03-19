@@ -74,7 +74,7 @@ class AbstractContainerTag extends AbstractComponent implements IteratorAggregat
    * @return $this for a fluent interface
    */
   protected function setInnerContainer(Container $contentContainer = null) {
-    if (!($contentContainer instanceof Container)) {
+    if (!$contentContainer instanceof Container) {
       $this->content = new PlainContainer();
     } else {
       $this->content = $contentContainer;
@@ -95,10 +95,8 @@ class AbstractContainerTag extends AbstractComponent implements IteratorAggregat
     return $this->content->getHtml();
   }
 
-  public function append(...$content) {
-    foreach ($content as $item) {
-      $this->getInnerContainer()->append($item);
-    }
+  public function append($content) {
+    $this->getInnerContainer()->append($content);
     return $this;
   }
 
@@ -148,7 +146,7 @@ class AbstractContainerTag extends AbstractComponent implements IteratorAggregat
    * @param  mixed $value the value to set
    * @return void
    */
-  public function offsetSet($offset, $value) {
+  public function offsetSet($offset, $value): void {
     $this->getInnerContainer()->offsetSet($offset, $value);
   }
 
@@ -158,7 +156,7 @@ class AbstractContainerTag extends AbstractComponent implements IteratorAggregat
    * @param  mixed $offset offset to unset
    * @return void
    */
-  public function offsetUnset($offset) {
+  public function offsetUnset($offset): void {
     $this->getInnerContainer()->offsetUnset($offset);
   }
 

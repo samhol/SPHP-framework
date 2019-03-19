@@ -15,10 +15,10 @@
     }
     // Getter overload (no argument passed)
     if (!arg) {
-      return this[0].outerHTML ||
+      return this[0].outerHTML || 
               (ret = this.wrap('<div>').parent().html(), this.unwrap(), ret);
     }
-    // Setter overload
+    // Setter overload 
     $.each(this, function (i, el) {
       var fnRet,
               pass = el,
@@ -166,56 +166,6 @@
       }
     });
 
-  };
-  /**
-   * Peittää ruudun asettalla div.Fog-elementin annettuihin jQuery-objekteihin.
-   * Kaikki elementit, joiden z-indeksi on pienempi kuin $z_index-parametri
-   * jäävät piiloon.
-   *
-   * @author   Sami Holck <sami.holck@gmail.com>
-   * @memberOf jQuery.fn#
-   * @method   addFog
-   * @param    {Object} options {zIndex: int div.Fog-elementin z-indeksi (oletus 20000),
-   *                           delay: int esiintuloefektin kesto millisekunneissa (oletus 1000 ms)}
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.addFog = function (options) {
-    var opts = $.extend({}, $.fn.addFog.defaults, options);
-    return this.each(function () {
-      var $this = $(this), $fog, $o;
-      $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-      $fog = $('<div class="Fog"></div>');
-      $fog.css("zIndex", $o.zIndex);
-      $fog.appendTo($this);
-      $fog.fadeIn($o.delay);
-    });
-  };
-  $.fn.addFog.defaults = {
-    zIndex: 20000,
-    delay: 1000
-  };
-
-  /**
-   * Poistaa div.Fog-elementin annettuista jQuery-objekteista
-   *
-   * @author   Sami Holck <sami.holck@gmail.com>
-   * @memberOf jQuery.fn#
-   * @method   removeFog
-   * @param    {Object} options {delay: int postumisefektin kesto millisekunneissa (oletus 1000 ms)}
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.removeFog = function (options) {
-    var opts = $.extend({}, $.fn.removeFog.defaults, options);
-    return this.each(function () {
-      var $this = $(this), $fog = $this.find(".Fog"), $o;
-      $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-      $fog.fadeOut($o.delay, function () {
-        $fog.remove();
-      });
-    });
-  };
-  $.fn.removeFog.defaults = {
-    delay: 1000
   };
 
   /**

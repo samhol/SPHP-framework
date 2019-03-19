@@ -72,7 +72,7 @@ class ErrorCalloutBuilder implements ErrorListener {
   /**
    * Get error type string
    *
-   * @param int $errno PHP error number constant
+   * @param  int $errno PHP error number constant
    * @return string error type string
    */
   private function getTypeString(int $errno): string {

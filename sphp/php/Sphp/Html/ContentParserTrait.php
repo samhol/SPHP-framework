@@ -27,10 +27,10 @@ trait ContentParserTrait {
   /**
    * Appends a new value as the last element
    *
-   * @param  mixed,... $content element
+   * @param  mixed $content element
    * @return $this for a fluent interface
    */
-  abstract public function append(...$content);
+  abstract public function append($content);
 
   /**
    * Appends a raw file to the container

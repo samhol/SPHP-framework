@@ -22,10 +22,10 @@
      * 
      * @param   {$.fn} $input
      * @param   {Object} $opt
-     * @returns {undefined}
+     * @returns {undefined}  
      */
     function build($input, $opt) {
-      console.log("build:");
+      console.log("build: SphpAnyTimeInput");
       var $options = parseOptions($input);
       for (var key in $opt) {
         if ($opt.hasOwnProperty(key))
