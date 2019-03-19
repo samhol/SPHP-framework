@@ -27,7 +27,7 @@ interface Input extends FormController {
    *
    * @return string|null the name of the form input
    */
-  public function getName();
+  public function getName(): ?string;
 
   /**
    * Sets the name of the input

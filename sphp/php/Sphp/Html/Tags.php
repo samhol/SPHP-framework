@@ -83,7 +83,7 @@ abstract class Tags {
       'pushButton' => Forms\Buttons\Button::class,
       'resetButton' => Forms\Buttons\Resetter::class,
       'submitButton' => Forms\Buttons\Submitter::class,
-      'input' => Forms\Inputs\InputTag::class,
+      //'input' => Forms\Inputs\InputTag::class,
       'hiddenInput' => Forms\Inputs\HiddenInput::class,
       'textInput' => Forms\Inputs\TextInput::class,
       'emailInput' => Forms\Inputs\EmailInput::class,
@@ -199,6 +199,14 @@ abstract class Tags {
       'sup' => ContainerTag::class,
       'wbr' => EmptyTag::class,
   );
+
+  /**
+   * 
+   * @return string[]
+   */
+  public static function getTagMap() :array {
+    return static::$tags;
+  }
 
   /**
    * Creates a HTML object

@@ -133,23 +133,10 @@ class Choiceboxes extends AbstractCell implements Input, Cell {
     return $this;
   }
 
-  /**
-   * Returns the value of name attribute
-   *
-   * @return string the value of the name attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   */
-  public function getName() {
+  public function getName(): ?string {
     return $this->name;
   }
 
-  /**
-   * Sets the value of name attribute
-   *
-   * @param  string $name the value of the name attribute
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   */
   public function setName(string $name = null) {
     $this->name = $name;
     foreach ($this->options as $box) {
@@ -158,46 +145,18 @@ class Choiceboxes extends AbstractCell implements Input, Cell {
     return $this;
   }
 
-  /**
-   * Checks whether the slider has a name
-   *
-   * **Note:** Only form elements with a name attribute will have their values 
-   *  passed when submitting a form.
-   *
-   * @return boolean true if the input has a name , otherwise false
-   */
   public function isNamed(): bool {
     return $this->name !== null;
   }
 
-  /**
-   * Disables the input component
-   * 
-   * A disabled input component is unusable and un-clickable. 
-   * Disabled input components in a form will not be submitted.
-   *
-   * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return $this for a fluent interface
-   */
   public function disable(bool $disabled = true) {
     return $this->setAttribute("disabled", $disabled);
   }
 
-  /**
-   * Checks whether the option is enabled or not
-   * 
-   * @return boolean true if the option is enabled, otherwise false
-   */
   public function isEnabled(): bool {
     return !$this->attributeExists("disabled");
   }
 
-  /**
-   * Sets the current submission set of the input component
-   *
-   * @param  string|string[] $value the current submission set of the input component
-   * @return $this for a fluent interface
-   */
   public function setInitialValue($value) {
     if (!is_array($value)) {
       $value = [$value];

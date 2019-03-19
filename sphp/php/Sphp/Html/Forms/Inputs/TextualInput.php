@@ -45,12 +45,12 @@ class TextualInput extends InputTag implements TextualInputInterface {
     }
   }
 
-  public function setSize(int $size) {
+  public function setSize(int $size = null) {
     $this->attributes()->setAttribute('size', $size);
     return $this;
   }
 
-  public function setMaxlength(int $maxlength) {
+  public function setMaxlength(int $maxlength = null) {
     $this->attributes()->setAttribute('maxlength', $maxlength);
     return $this;
   }
@@ -65,13 +65,13 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this;
   }
 
-  public function setPattern(string $pattern) {
+  public function setPattern(string $pattern = null) {
     $this->attributes()->setAttribute('pattern', $pattern);
     return $this;
   }
 
-  public function getPattern(): string {
-    return (string) $this->attributes()->getValue('pattern');
+  public function getPattern(): ?string {
+    return $this->attributes()->getValue('pattern');
   }
 
   public function hasPattern(): bool {

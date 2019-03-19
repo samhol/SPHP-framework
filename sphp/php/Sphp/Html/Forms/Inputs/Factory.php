@@ -10,9 +10,14 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use ReflectionClass;
-use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Html\Forms\Buttons as ButtonTags;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\BadMethodCallException;
+use ReflectionClass;
+use Sphp\Html\Tag;
+use Sphp\Html\EmptyTag;
+use Sphp\Html\ContainerTag;
+use Sphp\Html\Component;
 
 /**
  * Implements an HTML form component factory
@@ -59,33 +64,66 @@ class Factory {
       'checkbox' => Checkbox::class,
       'search' => SearchInput::class,
       'number' => NumberInput::class,
+      'file' => FileInput::class,
       'optgroup' => Menus\Optgroup::class,
       'option' => Menus\Option::class,
       'textarea' => Textarea::class,
-      'keygen' => EmptyTag::class,
-      'menu' => ContainerTag::class,
-      'meter' => ContainerTag::class,
-      'output' => ContainerTag::class,
+      'color' => InputTag::class,
+      'date' => InputTag::class,
+      'datetime-local' => InputTag::class,
+      'range' => InputTag::class,
+      'tel' => InputTag::class,
+      'time' => InputTag::class,
+      'url' => InputTag::class,
+      'week' => InputTag::class,
       'select' => Menus\Select::class,
   ];
+
+  /**
+   * Return the object map used
+   * 
+   * @return string[]
+   */
+  public static function getObjectMap(): array {
+    return static::$components;
+  }
 
   /**
    * Creates a HTML object
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return Input the corresponding component
+   * @return Component the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments) {
+  public static function __callStatic(string $name, array $arguments): Component {
     if (!isset(static::$components[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
-    if (is_string(static::$components[$name])) {
-      static::$components[$name] = new ReflectionClass(static::$components[$name]);
+    return static::create($name, $arguments);
+  }
+
+  /**
+   * Creates a HTML object
+   *
+   * @param  string $name the name of the component
+   * @param  array $arguments 
+   * @return Component the corresponding component
+   * @throws InvalidArgumentException if the tag object does not exist
+   */
+  public static function create(string $name, array $arguments = []): Component {
+    if (!isset(static::$components[$name])) {
+      throw new InvalidArgumentException("Method $name does not exist");
     }
-    $reflectionClass = static::$components[$name];
+    if (static::$components[$name] === InputTag::class) {
+      array_unshift($arguments, $name);
+    }
+    $reflectionClass = new ReflectionClass(static::$components[$name]);
+    if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
+      array_unshift($arguments, $name);
+    }
     $instance = $reflectionClass->newInstanceArgs($arguments);
+
     return $instance;
   }
 

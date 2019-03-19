@@ -1,4 +1,7 @@
 <?php
+use Sphp\Html\Tags;
+Tags::getTagMap()['foobar'] = stdClass::class;
+var_dump(Tags::fooBar());
 $sb = new Sphp\Html\Foundation\Sites\Forms\Inputs\SwitchBoard;
 $sb->appendNewSwitch('Singular', 's', null);
 $sb->appendNewSwitch('Plural', 'p', null);

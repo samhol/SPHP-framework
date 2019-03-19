@@ -164,7 +164,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
     $output = '';
     foreach ($this->group as $component) {
       if ($component instanceof Component && $component->hasCssClass('button')) {
-        echo "button:" . get_class($component);
+        //echo "button:" . get_class($component);
         if ($component instanceof \Sphp\Html\Foundation\Sites\Containers\Dropdown) {
           $output .= '<div class="input-group-button">' . $component->getTrigger() . '</div>' . $component->getDropdown();
         } else {

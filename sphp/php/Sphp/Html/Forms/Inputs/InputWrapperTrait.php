@@ -37,7 +37,7 @@ trait InputWrapperTrait {
     return $this->getInput()->isEnabled();
   }
 
-  public function getName() {
+  public function getName(): ?string {
     return $this->getInput()->getName();
   }
 
@@ -54,7 +54,7 @@ trait InputWrapperTrait {
     return $this->getInput()->getSubmitValue();
   }
 
-  public function setValue($value) {
+  public function setInitialValue($value) {
     $this->getInput()->setInitialValue($value);
     return $this;
   }

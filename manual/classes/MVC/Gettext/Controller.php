@@ -42,9 +42,9 @@ class Controller {
 
     $this->options = (object) $options;
     $this->options->allParts = $this->options->msg && $this->options->msgid || $this->options->all;
-    echo '<pre>';
+   /* echo '<pre>';
     var_dump($this->options, $this->query);
-    echo '</pre>';
+    echo '</pre>';*/
   }
 
   /**
@@ -57,19 +57,18 @@ class Controller {
       $pos = $this->poFileParser;
     } else {
       if ($this->options->singular || !$this->options->plural) {
-        echo 'singular';
+        //echo 'singular';
         $pos = $this->poFileParser->getSingulars();
       } else if (!$this->options->singular || $this->options->plural) {
-        echo 'plural';
+        //echo 'plural';
         $pos = $this->poFileParser->getPlurals();
       } else {
-        echo 'nothing';
+        //echo 'nothing';
         $pos = new TraversableCatalog;
       }
     }
     return $pos;
   }
-
 
   private function entryTest(Entry $entry) {
     $haystack = [];
@@ -89,8 +88,7 @@ class Controller {
   private function filterData(): TraversableCatalog {
 
     $pos = $this->filterByMessageType();
-    $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-    $res = new TraversableCatalog;
+
     if (!empty($this->query)) {
       foreach ($pos->toArray() as $entry) {
 

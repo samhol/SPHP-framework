@@ -19,10 +19,6 @@ class GettextForm {
    */
   private $options;
 
-  /**
-   * @var Input
-   */
-  private $msgTypeSelector;
 
   /**
    * @var Input
@@ -82,7 +78,7 @@ class GettextForm {
   public function generate(): GridForm {
     $form = new GridForm('/gettext/', 'get');
     $form->addCssClass('sphp', 'gettext-form');
-    $row1 = new FormRow();
+    //$row1 = new FormRow();
    // $row1->addCssClass();
     //$inputGroup1 = new InputGroup();
     //$inputGroup1->appendLabel('Search');

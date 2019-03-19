@@ -54,7 +54,7 @@ class Checkboxes extends Choiceboxes {
    * @return string the value of the name attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function getName() {
+  public function getName(): ?string {
     $name = parent::getName();
     return str_replace('[]', '', $name);
   }

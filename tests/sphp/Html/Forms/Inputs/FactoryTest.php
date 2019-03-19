@@ -8,32 +8,34 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html;
+namespace Sphp\Tests\Html\Forms;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Forms\Inputs\Factory;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Strings;
 
-class TagsTest extends TestCase {
+class FactoryTest extends TestCase {
 
   public function testFactoring() {
-    foreach (Tags::getTagMap() as $call => $objectType) {
-      //echo "\ncall: $call";
-      $this->assertInstanceOf($objectType, Tags::create($call));
-      $this->assertInstanceOf($objectType, Tags::$call());
-      $str = Tags::create($call);
-      $this->assertTrue(\Sphp\Stdlib\Strings::contains("$str", '<' . $str->getTagName()));
+    foreach (Factory::getObjectMap() as $call => $objectType) {
+      //echo "\nMap: $call => $objectType";
+      $this->assertInstanceOf($objectType, Factory::create($call));
+      $this->assertInstanceOf($objectType, Factory::$call());
+      $str = Factory::create($call);
+      $this->assertTrue(Strings::startsWith("$str", '<' . $str->getTagName()));
     }
   }
 
   public function testInvalidCreateMethodCall() {
     $this->expectException(InvalidArgumentException::class);
-    Tags::create('foo');
+    Factory::create('foo');
   }
 
   public function testInvalidMagicCall() {
     $this->expectException(BadMethodCallException::class);
-    Tags::foo('foo');
+    Factory::foo('foo');
   }
 
 }

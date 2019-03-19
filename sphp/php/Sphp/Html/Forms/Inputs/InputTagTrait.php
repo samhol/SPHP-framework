@@ -34,8 +34,8 @@ trait InputTagTrait {
    *
    * @return string name attribute
    */
-  public function getName(): string {
-    return (string) $this->attributes()->getValue('name');
+  public function getName(): ?string {
+    return $this->attributes()->getValue('name');
   }
 
   /**
@@ -87,11 +87,11 @@ trait InputTagTrait {
   /**
    * Returns the type attribute value
    *
-   * @return string the type attribute value
+   * @return string|null the type attribute value
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    */
-  public function getType(): string {
-    return (string) $this->attributes()->getValue('type');
+  public function getType(): ?string {
+    return $this->attributes()->getValue('type');
   }
 
   /**

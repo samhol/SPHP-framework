@@ -113,7 +113,7 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  public function getName() {
+  public function getName(): ?string {
     return $this->name;
   }
 

@@ -40,6 +40,9 @@
     <testsuite name="html-attrs">
       <directory>./tests/sphp/Html/Attributes</directory>
     </testsuite>
+    <testsuite name="html-forms">
+      <directory>./tests/sphp/Html/Forms</directory>
+    </testsuite>
     <testsuite name="foundation">
       <directory>./tests/sphp/Html/Foundation</directory>
     </testsuite>
