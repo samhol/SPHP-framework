@@ -10,10 +10,8 @@
 
 namespace Sphp\Network\Headers;
 
-use Iterator;
 use ReflectionClass;
 use Sphp\Exceptions\BadMethodCallException;
-use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Utility class for PHP header operations
@@ -28,9 +26,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Headers implements Iterator {
-
-  private $headers = [];
+class Headers {
 
   /**
    * list of Header
@@ -47,11 +43,11 @@ class Headers implements Iterator {
   );
 
   /**
-   * Creates a HTML object
+   * Creates a Header object
    *
-   * @param  string $name the name of the component
+   * @param  string $name the name of the Header object
    * @param  array $arguments 
-   * @return HeaderInterface the corresponding component
+   * @return Header the corresponding component
    * @throws BadMethodCallException
    */
   public static function __callStatic(string $name, array $arguments): Header {
@@ -59,83 +55,8 @@ class Headers implements Iterator {
       throw new BadMethodCallException("Method $name does not exist");
     }
     $reflectionClass = new ReflectionClass(static::$typeMap[$name]);
-
     $instance = $reflectionClass->newInstanceArgs($arguments);
     return $instance;
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @return bool
-   */
-  public function contains(string $name): bool {
-    return array_key($name, $this->headers);
-  }
-
-  /**
-   * 
-   * @param  Header $header
-   * @return eader
-   * @throws InvalidArgumentException
-   */
-  public function set(Header $header): Header {
-    if ($this->contains($header->getName())) {
-      throw new InvalidArgumentException();
-    }
-    $this->headers[$header->getName()] = $header;
-    return $header;
-  }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->headers);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   * 
-   * @return void
-   */
-  public function next() {
-    next($this->headers);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->headers);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind() {
-    reset($this->headers);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->headers);
-  }
-
-  public function execute() {
-    foreach ($this as $header) {
-      $header->execute();
-    }
   }
 
   /**

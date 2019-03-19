@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib\Networks;
+namespace Sphp\Network;
 
 /**
  * Tools to work with remote files and directories

@@ -10,7 +10,7 @@
 
 namespace Sphp\MVC;
 
-use Sphp\Stdlib\Networks\URL;
+use Sphp\Network\URL;
 use Sphp\Stdlib\Datastructures\PriorityQueue;
 use Sphp\Exceptions\IllegalStateException;
 use Sphp\Exceptions\InvalidArgumentException;

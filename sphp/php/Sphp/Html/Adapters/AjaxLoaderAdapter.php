@@ -11,7 +11,7 @@
 namespace Sphp\Html\Adapters;
 
 use Sphp\Html\AjaxLoader;
-use Sphp\Stdlib\Networks\URL;
+use Sphp\Network\URL;
 use Sphp\Html\Component;
 
 /**

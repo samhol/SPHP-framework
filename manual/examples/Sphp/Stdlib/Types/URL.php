@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Stdlib\Networks;
+namespace Sphp\Network;
 
 $current = Url::getCurrent();
 $clone = clone $current;

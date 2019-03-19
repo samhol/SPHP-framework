@@ -97,7 +97,7 @@ class MenuLinkBuilder {
     if (array_key_exists('href', $linkData)) {
       $href = $linkData['href'];
     } else {
-      $href = \Sphp\Stdlib\Networks\URL::getRootAsString();
+      $href = \Sphp\Network\URL::getRootAsString();
     }
     return $href;
   }

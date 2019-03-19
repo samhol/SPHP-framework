@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib\Networks;
+namespace Sphp\Network;
 
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -41,7 +41,7 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @param \Sphp\Stdlib\Networks\URL $url
+   * @param \Sphp\Network\URL $url
    */
   public function testEmpty(URL $url = null) {
     if ($url === null) {
@@ -210,7 +210,7 @@ class FullURLTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
-   * @covers \Sphp\Stdlib\Networks\URL::equals
+   * @covers \Sphp\Network\URL::equals
    * @dataProvider equalUrlPairs
    */
   public function testEquals($urlString1, $urlString2) {

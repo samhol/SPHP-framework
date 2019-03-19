@@ -21,7 +21,7 @@ class Url extends AbstractValidator {
 
   public function isValid($value): bool {
     $this->setValue($value);
-    if (!is_string($value) && !$value instanceof \Sphp\Stdlib\Networks\URL) {
+    if (!is_string($value) && !$value instanceof \Sphp\Network\URL) {
       $this->errors()->appendErrorFromTemplate(self::INVALID);
     }
     if (filter_var($value, \FILTER_VALIDATE_URL) === false) {

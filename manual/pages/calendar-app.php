@@ -3,7 +3,7 @@
 declare(strict_types=1);
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\Stdlib\Networks\URL;
+use Sphp\Network\URL;
 
 $current = URL::getCurrent();
 $path = $current->getPath();

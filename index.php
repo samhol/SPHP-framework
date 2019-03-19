@@ -15,7 +15,7 @@ if ($outputCache->start("$cacheSuffix-page") === false) {
   echo '<div class="grid-container"><div class="grid-x"><div class="cell shrink show-for-large">';
   include('manual/templates/menus/sidenav.php');
   echo '</div><div class="cell auto">';
-  $router->execute(\Sphp\Stdlib\Networks\URL::getCurrentURL());
+  $router->execute(\Sphp\Network\URL::getCurrentURL());
   echo '</div></div></div>';
   include('manual/templates/footer/footer.php');
   include('manual/templates/backToTopButton.php');

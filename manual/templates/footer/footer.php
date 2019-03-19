@@ -1,6 +1,6 @@
 <?php
 
-use Sphp\Stdlib\Networks\URL;
+use Sphp\Network\URL;
 use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\Media\Icons\FaIcon;
 

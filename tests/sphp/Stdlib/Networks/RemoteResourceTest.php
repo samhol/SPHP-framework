@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Stdlib\Networks;
+namespace Sphp\Network;
 
 class RemoteResourceTest extends \PHPUnit\Framework\TestCase {
 

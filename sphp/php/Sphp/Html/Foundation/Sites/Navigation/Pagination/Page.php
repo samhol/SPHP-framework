@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Navigation\HyperlinkContainer;
-use Sphp\Stdlib\Networks\URL;
+use Sphp\Network\URL;
 
 /**
  * Implements a page button for a Pagination component

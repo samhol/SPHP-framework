@@ -11,7 +11,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Stdlib\Networks\URL;
+use Sphp\Network\URL;
 
 /**
  * Implements an abstract iframe based Video component
