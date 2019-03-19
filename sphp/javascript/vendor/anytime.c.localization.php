@@ -9,7 +9,7 @@ mb_internal_encoding('UTF-8');
 //echo mb_internal_encoding();
 include_once(__DIR__ . '/../../settings.php');
 
-Headers::setContentType('application/json');
+Headers::location('application/json');
 
 //namespace Sphp\I18n\Gettext;
 
