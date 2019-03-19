@@ -57,7 +57,8 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
 
   public function testInserting(): Container {
     $c = $this->createContainer();
-    $c->append('b', 'c');
+    $c->append('b');
+    $c->append('c');
     $c->prepend('a');
     $this->assertTrue($c->exists('a'));
     $this->assertTrue($c->exists('b'));
@@ -88,14 +89,17 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   public function testGetHtml() {
     $c = $this->createContainer();
     $this->assertSame('', $c->getHtml());
-    $c->append('a', 'b', 'c');
-    $this->assertSame('abc', $c->getHtml());
+    $c->append('b');
+    $c->append('c');
+    $c->append('d');
+    $c->prepend('a');
+    $this->assertSame('abcd', $c->getHtml());
     $c2 = $this->createContainer();
     $c->append($c2);
-    $this->assertSame('abc', $c->getHtml());
+    $this->assertSame('abcd', $c->getHtml());
     $c2->append(' is foo');
     $c->append([' and ', 'bar', ['!']]);
-    $this->assertSame('abc is foo and bar!', $c->getHtml());
+    $this->assertSame('abcd is foo and bar!', $c->getHtml());
     $this->expectException(\Exception::class);
     $c->append(new \ArrayObject([' Shell', ' is', ' not!']));
     $this->assertSame('abc is foo and bar! Shell is not!', $c->getHtml());
@@ -105,7 +109,9 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   }
 
   public function testToArray() {
-    $this->container->append('b', 'c', 'd');
+    $this->container->append('b');
+    $this->container->append('c');
+    $this->container->append('d');
     $this->container->prepend('a');
     $this->assertCount(4, $this->container);
   }

@@ -28,7 +28,7 @@ use Sphp\Html\Tags;
  */
 trait ContentCreatorTrait {
 
-  abstract protected function append(...$content);
+  abstract protected function append($content);
 
   /**
    * Appends an HTML &lt;p&gt; object
