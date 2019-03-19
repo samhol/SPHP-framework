@@ -8,20 +8,20 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 /**
- * Description of AllowMethod
+ * Description of ContentType
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AllowMethods extends GenericHeader {
+class ContentType extends GenericHeader {
 
-  public function __construct(string $value) {
-    parent::__construct('Access-Control-Allow-Methods', $value);
+  public function __construct($value) {
+    parent::__construct('Content-Type', $value);
   }
 
 }

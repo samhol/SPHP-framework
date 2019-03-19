@@ -8,19 +8,20 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 /**
- * Description of MaxAge
+ * Description of AllowMethod
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class MaxAge extends GenericHeader {
+class AllowMethods extends GenericHeader {
 
-  public function __construct(int $value) {
-    parent::__construct('Access-Control-Max-Age', $value);
+  public function __construct(string $value) {
+    parent::__construct('Access-Control-Allow-Methods', $value);
   }
 
 }

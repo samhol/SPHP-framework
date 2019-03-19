@@ -8,20 +8,24 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 /**
- * Description of ContentType
+ * Location header
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT MIT License
- * @link    https://github.com/samhol/SPHP-framework GitHub repository
+ * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ContentType extends GenericHeader {
+class Location extends GenericHeader {
 
-  public function __construct($value) {
-    parent::__construct('Content-Type', $value);
+  /**
+   * Constructor
+   * 
+   * @param string $value
+   */
+  public function __construct(string $value) {
+    parent::__construct('Location', $value);
   }
 
 }

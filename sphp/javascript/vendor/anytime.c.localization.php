@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -9,7 +9,7 @@ mb_internal_encoding('UTF-8');
 //echo mb_internal_encoding();
 include_once(__DIR__ . '/../../settings.php');
 
-Headers::location('application/json');
+Headers::contentType('application/json');
 
 //namespace Sphp\I18n\Gettext;
 

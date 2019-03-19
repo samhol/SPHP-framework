@@ -8,35 +8,19 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 /**
- * Defines a single header
+ * Description of AllowHeaders
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Header {
+class AllowHeaders {
 
-  /**
-   * Returns header name
-   * 
-   * @return string header name
-   */
-  public function getName(): string;
+  public function __construct(string $value) {
+    parent::__construct('Access-Control-Allow-Headers', $value);
+  }
 
-  /**
-   * Returns header value
-   * 
-   * @return string header value
-   */
-  public function getValue();
-
-  /**
-   * Returns header as a string
-   * 
-   * @return string header 
-   */
-  public function __toString(): string;
 }

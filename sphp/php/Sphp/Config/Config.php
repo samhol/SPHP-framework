@@ -77,23 +77,6 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
   }
 
   /**
-   * Returns named singleton instance of the configuration object
-   *
-   * @param  string $name name of the singleton instance
-   * @param  array $data the configuration data
-   * @return Config singleton instance
-   */
-  public static function instance(string $name = null, array $data = []): Config {
-    if ($name === null) {
-      $name = 0;
-    }
-    if (!isset(self::$instances[$name])) {
-      self::$instances[$name] = new static($data, false);
-    }
-    return self::$instances[$name];
-  }
-
-  /**
    * Returns whether the instance is read only or not
    * 
    * @return boolean true if the instance is read only and false otherwise
@@ -278,9 +261,10 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * 
    * @param  string $varname the name of the variable
    * @param  mixed $value the value to set
+   * @return void
    * @throws RuntimeException if the object is read only
    */
-  public function offsetSet($varname, $value) {
+  public function offsetSet($varname, $value): void {
     $this->set($varname, $value);
   }
 
@@ -288,10 +272,28 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * Unsets the specified variable
    * 
    * @param  string $varname the name of the variable
+   * @return void
    * @throws RuntimeException if the configuration object is read only
    */
-  public function offsetUnset($varname) {
+  public function offsetUnset($varname): void {
     $this->remove($varname);
+  }
+
+  /**
+   * Returns named singleton instance of the configuration object
+   *
+   * @param  string $name name of the singleton instance
+   * @param  array $data the configuration data
+   * @return Config singleton instance
+   */
+  public static function instance(string $name = null, array $data = []): Config {
+    if ($name === null) {
+      $name = 0;
+    }
+    if (!isset(self::$instances[$name])) {
+      self::$instances[$name] = new static($data, false);
+    }
+    return self::$instances[$name];
   }
 
 }

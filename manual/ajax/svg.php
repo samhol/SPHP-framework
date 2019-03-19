@@ -1,5 +1,5 @@
 <?php
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 //Headers::setContentType('image/svg+xml');
 header('Content-type: image/svg+xml');

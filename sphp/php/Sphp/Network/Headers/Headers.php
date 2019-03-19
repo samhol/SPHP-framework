@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 use Iterator;
 use ReflectionClass;
@@ -18,11 +18,11 @@ use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Utility class for PHP header operations
  *
- * @method \Sphp\Http\Headers\Location redirecdTo(string $content = null) creates nd inserts a header object
- * @method \Sphp\Http\Headers\Location location(string $content = null) creates nd inserts a header object
- * @method \Sphp\Http\Headers\AllowOrigin allowOrigin(string $content = null) creates nd inserts a header object
- * @method \Sphp\Http\Headers\AllowMethods allowMethods(string $content = null) creates nd inserts a header object
- * @method \Sphp\Http\Headers\MaxAge maxAge(int $maxAge) creates nd inserts a header object
+ * @method \Sphp\Network\Headers\Location redirecdTo(string $content = null) creates nd inserts a header object
+ * @method \Sphp\Network\Headers\Location location(string $content = null) creates nd inserts a header object
+ * @method \Sphp\Network\Headers\AllowOrigin allowOrigin(string $content = null) creates nd inserts a header object
+ * @method \Sphp\Network\Headers\AllowMethods allowMethods(string $content = null) creates nd inserts a header object
+ * @method \Sphp\Network\Headers\MaxAge maxAge(int $maxAge) creates nd inserts a header object
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -54,19 +54,13 @@ class Headers implements Iterator {
    * @return HeaderInterface the corresponding component
    * @throws BadMethodCallException
    */
-  public function __call(string $name, array $arguments): Header {
+  public static function __callStatic(string $name, array $arguments): Header {
     if (!isset(static::$typeMap[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
-    if (is_string(static::$typeMap[$name])) {
-      static::$typeMap[$name] = new ReflectionClass(static::$typeMap[$name]);
-    }
-    $reflectionClass = static::$typeMap[$name];
-    if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
-      array_unshift($arguments, $name);
-    }
-    $instance = static::$typeMap[$name]->newInstanceArgs($arguments);
-    $this->headers[$instance->getName()] = $instance;
+    $reflectionClass = new ReflectionClass(static::$typeMap[$name]);
+
+    $instance = $reflectionClass->newInstanceArgs($arguments);
     return $instance;
   }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 use Sphp\I18n\Zend\Translator;
 

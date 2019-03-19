@@ -8,19 +8,19 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Http\Headers;
+namespace Sphp\Network\Headers;
 
 /**
- * Description of AllowHeaders
+ * Description of MaxAge
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AllowHeaders {
+class MaxAge extends GenericHeader {
 
-  public function __construct(string $value) {
-    parent::__construct('Access-Control-Allow-Headers', $value);
+  public function __construct(int $value) {
+    parent::__construct('Access-Control-Max-Age', $value);
   }
 
 }
