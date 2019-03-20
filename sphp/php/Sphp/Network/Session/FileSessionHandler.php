@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Sessions;
+namespace Sphp\Network\Session;
 
 /**
  * Implements a session handler for file system storage

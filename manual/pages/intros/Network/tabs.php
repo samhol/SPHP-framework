@@ -4,10 +4,12 @@ $path = 'manual/pages/intros/Network/tabs/';
 
 use Sphp\Html\Foundation\Sites\Containers\Tabs\Tabs;
 use Sphp\Html\Foundation\Sites\Containers\Tabs\SyntaxHighlightingTab;
-use Sphp\Html\Foundation\Sites\Containers\Tabs\DivTab;
 
 $tabs = new Tabs();
 //$tabs->matchHeight(true);
+$sessionTab = new SyntaxHighlightingTab('Sesions');
+$sessionTab->loadFromFile("$path/session.php");
+$tabs->append($sessionTab);
 $headerTab = new SyntaxHighlightingTab('Headers');
 $headerTab->loadFromFile("$path/headers.php");
 $tabs->append($headerTab);

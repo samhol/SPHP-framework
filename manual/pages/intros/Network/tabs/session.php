@@ -1,14 +1,4 @@
 <?php
-
-/**
- * This script generates:
- *
- * - a Session object in variable $session
- * - an $currentUser variable that points to the currently logged in user
- *    (User object) or NULL
- * - $currentPermissions variable for current permissions
- */
-
 namespace Sphp\Core\Security;
 
 use Sphp\Objects\User;

@@ -11,7 +11,7 @@
 namespace Sphp\Network\Headers;
 
 /**
- * Description of MaxAge
+ * Implements a MaxAge header
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -19,6 +19,11 @@ namespace Sphp\Network\Headers;
  */
 class MaxAge extends GenericHeader {
 
+  /**
+   * Constructor
+   * 
+   * @param int $value
+   */
   public function __construct(int $value) {
     parent::__construct('Access-Control-Max-Age', $value);
   }
