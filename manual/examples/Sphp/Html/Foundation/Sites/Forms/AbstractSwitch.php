@@ -23,9 +23,17 @@ $boxes[] = (new SwitchBox("box[]", "d", false, "select alphabet d"))
 $radios[] = (new RadioSwitch("foo", "bar", true))->setInnerLabels("bar", "bar");
 $radios[] = (new RadioSwitch("foo", "foo", false))->setInnerLabels("foo", "foo");
 
+$sb = new SwitchBoard;
+$sb->appendNewSwitch('Singular', 's', null);
+$sb->appendNewSwitch('Plural', 'p', null);
+$sb->appendNewSwitch('Messages', 'msg', null);
+$sb->appendNewSwitch('Message IDs', 'id', null);
+$sb->setDescription('Select used fields');
 $form = new GridForm();
+$form->append($sb);
 $form->append($answer);
 $form->append($boxes);
 $form->append($radios);
 echo $form;
+
 ?>
