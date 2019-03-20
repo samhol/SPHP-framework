@@ -48,4 +48,3 @@ Manual\printPage('Sphp.Stdlib.Types.StringObject');
 Manual\printPage('Sphp.Stdlib.Types.Strings');
 Manual\printPage('Sphp.Stdlib.Types.Arrays');
 Manual\printPage('Sphp.Stdlib.Types.BitMask');
-Manual\printPage('Sphp.Stdlib.Types.URL');

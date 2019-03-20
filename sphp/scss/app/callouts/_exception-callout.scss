@@ -8,38 +8,41 @@
 
   .sphp-exception-callout {
     @include callout-base;
-    border: solid 2px rgba(70, 70, 70, 0.9); 
+    @include shadow;
+    border: solid 2px rgba(#511, 0.5); 
     @include border-radius(4px);
-    background-color: #f00;
-    background-position: center center, top left;
-    background-image: url('http://data.samiholck.com/svg/crossbones.php?color=add&opacity=.1'), url("../pics/diagonals.png");
-    background-repeat: no-repeat, repeat;
+    background-color: rgba(#fdd, .3);
+    background-position: center center;
+    background-image: url('/manual/svg/svg.php?name=crossbones&color=f00&opacity=.3');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
     //background: url("../pics/diagonals.png") 50% 50% repeat;
     //margin: rem-calc(3);
+    margin: rem-calc(3);
     padding: 0;
-    color: #fff;
+    color: #222;
+    font-size: rem-calc(16);
     h2, h3 {
-      color: #fafafa;
-      border-bottom: solid 2px rgba(70, 70, 70, 0.9); 
-      background-color: rgba(204,75,55,0.35);
+      color: #111;
+      border-bottom: solid 2px rgba(#511, 0.5); 
+      background-color: rgba(#CC4B37,0.35);
     }
     h2 {
-      padding: rem-calc(10 10 8 10);
-      font-size: rem-calc(30);
+      padding: rem-calc(10 10 8 15);
+      font-size: rem-calc(28);
     }
     h3 {
-      padding: rem-calc(4 10 4 10);
+      padding: rem-calc(6 10 6 15);
       font-size: rem-calc(25);
-      border-top: solid 2px rgba(70, 70, 70, 0.9); 
-      border-bottom: solid 2px rgba(70, 70, 70, 0.9); 
+      border-top: solid 2px rgba(#511, 0.5); 
+      border-bottom: solid 2px rgba(#511, 0.5); 
     }
     span {
-      font-size: rem-calc(14);
       &.line, &.note, &.path, &.method {
         font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
       }
       &.note {
-        font-size: rem-calc(15);
+        font-size: rem-calc(20);
         font-weight: bold;
       }
       &.path {
@@ -51,25 +54,19 @@
       }
 
       &.message {
-        font-size: rem-calc(18);
+        font-size: rem-calc(19);
         padding: rem-calc(2);
         margin: rem-calc(5 10 2 10);
-        color: #eee;
       }
     }
     ul {
       padding: rem-calc(3 5 5 7);
       font-size: rem-calc(17);
-      color: #fafafa;
       list-style-type: none;
-      li {
-
-      }
     }
     ol {
       padding: rem-calc(3 5 5 7);
-      font-size: rem-calc(17);
-      color: #fafafa;
+      font-size: rem-calc(19);
       li {
 
       }

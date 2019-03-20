@@ -9,7 +9,7 @@ $parse_url = Manual\php()->functionLink('parse_url');
 $arrayAccess = Manual\php()->classLinker(\ArrayAccess::class);
 
 \Sphp\Manual\md(<<<MD
-##URL manipulation with a $urlClass objects
+## URL manipulation with a $urlClass objects{#URL}
 
 The syntax for an URI string is: `scheme://[user:pass@]domain:port/path?query#fragment`
 		

@@ -101,7 +101,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
       $ul->append('<span class="note">File:</span> <span class="file">' . $this->parsePath($e->getFile()) . '</span>');
       $ul->append('<span class="note">Line:</span> <span class="number">#' . $e->getLine() . '</span>');
     }
-    return $heading. $ul;
+    return $heading . $ul;
   }
 
   /**
@@ -110,7 +110,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    * @param  Throwable $e throwable object 
    * @return string the file information of the previous exception
    */
-  private function buildPreviousException(Throwable $e):string {
+  private function buildPreviousException(Throwable $e): string {
     $prev = $e->getPrevious();
     $output = "";
     if ($prev instanceof \Throwable) {
@@ -170,10 +170,10 @@ class ThrowableCalloutBuilder implements ExceptionListener {
       $methodStr .= $this->parsePath($trRow['class']);
     }
     if (array_key_exists('type', $trRow)) {
-      $methodStr .= $trRow['type'];
+      $methodStr .= $this->parsePath($trRow['type']);
     }
     if (array_key_exists('function', $trRow)) {
-      $methodStr .= "{$trRow['function']}";
+      $methodStr .= $this->parsePath($trRow['function']);
     }
     if (array_key_exists('args', $trRow) && is_array($trRow['args'])) {
       $methodStr .= $this->parseParams($trRow['args']);
