@@ -11,6 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Adapters;
 
 use Sphp\Html\Adapters\AbstractComponentAdapter;
+use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
 use Sphp\Html\Component;
 
 /**
@@ -30,10 +31,11 @@ class Interchange extends AbstractComponentAdapter {
 
   /**
    * Constructor
-   * 
+   *
    * @param Component $component
+   * @param FoundationSettings $foundation
    */
-  public function __construct(Component $component, \Sphp\Html\Foundation\Sites\Core\FoundationSettings $foundation = null) {
+  public function __construct(Component $component, FoundationSettings $foundation = null) {
     parent::__construct($component);
     $this->queries = [
         'portrait' => null,
@@ -44,6 +46,11 @@ class Interchange extends AbstractComponentAdapter {
         'xlarge' => null,
         'xxlarge' => null,
     ];
+  }
+  
+  public function __destruct() {
+    unset($this->queries);
+    parent::__destruct();
   }
 
   /**

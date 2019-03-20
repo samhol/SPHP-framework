@@ -51,8 +51,7 @@ class Translator extends AbstractTranslator {
   /**
    * Constructor
    *
-   * @param string|null $lang optional translation language
-   * @param ZendTranslator $t
+   * @param ZendTranslator|null $t
    */
   public function __construct(ZendTranslator $t = null) {
     if ($t === null) {
@@ -80,7 +79,7 @@ class Translator extends AbstractTranslator {
    * @return mixed
    * @throws BadMethodCallException
    */
-  public function __call($name, array $arguments = []) {
+  public function __call(string $name, array $arguments = []) {
     try {
       $result = $this->reflector->getMethod($name)->invokeArgs($this->translator, $arguments);
     } catch (Exception $ex) {

@@ -15,7 +15,8 @@ Framework provides some additional networking functionality to PHP environment.
   
 MD
 );
-include 'manual/pages/intros/HTML/orbit.php';
+
+include 'manual/pages/intros/Network/tabs.php';
 
 Manual\printPage('Sphp.Network.URL.php');
 
