@@ -74,6 +74,7 @@ $sphp-menuitem-font-color-active: #ffffff;
 
 @include sphp-icon-buttons();
 @include sphp-error-handling-callouts;
+@include sphp-cookie-banner;
 @include sphp-syntax-highlighting-modules;
 @include sphp-calendar-modules;
 @include sphp-sidenav;

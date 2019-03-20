@@ -123,7 +123,14 @@ gulp.task('sass', function () {
           .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
           .pipe(gulp.dest('./sphp/css'));
 });
+
+gulp.task('manual:sass', function () {
+  return gulp.src('./manual/scss/**/*.scss')
+          .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+          .pipe(gulp.dest('./manual/css'));
+});
 gulp.task('file:watch', function () {
+  gulp.watch('./manual/scss/**/*.scss', gulp.series('manual:sass'));
   gulp.watch('./sphp/scss/**/*.scss', gulp.series('sass'));
   gulp.watch('./sphp/javascript/app/**/*.js', gulp.series('build:js'));
 });

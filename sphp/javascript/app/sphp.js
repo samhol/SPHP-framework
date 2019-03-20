@@ -141,6 +141,16 @@ if (!window.console.log) {
             });
     return this;
   };
+
+  sphp.historyBackButtons = function () {
+    $('[data-sphp-history-back]').click(function () { //on click event
+      //number of days to keep the cookie
+      var $this = $(this), $steps = 1;
+      $steps = $this.attr('data-sphp-history-back');
+      console.log("History steps: " + $steps);
+      window.history.go($steps);
+    });
+  };
   /**
    * Initializes back to top button functionality
    *    
@@ -163,6 +173,7 @@ if (!window.console.log) {
     sphp.preventFoundationFouc();
     console.log("sphp.initialize()");
     sphp.initClipboard().initBackToTopButtons();
+    sphp.historyBackButtons();
     //var $ajaxLoaders = $("[data-sphp-ajax-url]");
     console.log("loaded");
 
@@ -183,6 +194,7 @@ if (!window.console.log) {
 
     $("[data-sphp-qtip]").qtips();
     $('div[data-switch-board]').switchBoard();
+    $('.sphp.cookie-banner').cookieBanner();
     // $('.sphp-back-to-top-button').backToTopBtn();
     $("input[data-anytime]").SphpAnyTimeInput();
     $("[data-sphp-ion-slider]").ionRangeSlider({});

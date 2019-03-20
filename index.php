@@ -3,12 +3,14 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 require_once('manual/settings.php');
-
+  use Sphp\Network\Cookie;
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
 $cacheSuffix = str_replace(['.', '/', ':'], ['-', '', ''], $redirect) . "-cache";
 
 if ($outputCache->start("$cacheSuffix-page") === false) {
+
+    $cookie = (new Cookie("comply_cookie"))->delete();
   require_once('manual/templates/blocks/head.php');
   require_once('manual/templates/logo-area.php');
   require_once('manual/templates/menus/topBar.php');
