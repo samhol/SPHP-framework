@@ -2,31 +2,26 @@
 
 
   .sphp.cookie-banner { 
+    z-index: 1000000;
     display: block;
     position: fixed;
-    top: 0;
+    bottom: 0;
     width: 100%;
     left: 0px;
     padding: 0.5em 10%;
     background: rgba(86,86,86,0.95);
-    border-bottom: solid 2px rgba(#333, .7);
+    border-top: solid 2px rgba(#f91, .7);
     p {
-      font-family: sans-serif;
-      font-size: 14px;
+      font-size: rem-calc(15);
       font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
+      text-shadow: 0 -1px 0 rgba(#333,0.35);
       text-align: center; 
       color: rgb(255,255,250);
       margin: 4px;
       z-index: 999;
     }
-    .cookie-accept {
-      padding-left: 10px;
+    .button-group {
       cursor: pointer;
-      display: inline;
-      color: rgb(255,255,250);
-      text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
     }
   }
 }

@@ -37,9 +37,6 @@ class CookieBanner extends \Sphp\Html\AbstractComponent {
     $this->rejectButton('<i class="fas fa-ban"></i> Reject cookies');
   }
 
-  public function setPolicyLink(string $url, string $tlinkText = 'privacy policy'): Hyperlink {
-    $this->policy = new Hyperlink($url, $tlinkText);
-  }
 
   public function acceptButton(string $button) {
     $button = \Sphp\Html\Foundation\Sites\Buttons\Button::pushButton($button);
@@ -58,7 +55,6 @@ class CookieBanner extends \Sphp\Html\AbstractComponent {
   }
 
   public function contentToString(): string {
-
     $output = $this->text . '<div class=button-group text-center">' . $this->acceptBtn . $this->rejectBtn . '</div>';
     return $output;
   }
