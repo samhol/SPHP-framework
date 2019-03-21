@@ -23,7 +23,7 @@ interface ValidableInput extends Input {
   /**
    * Sets whether the input must have a value or not before form submission
    * 
-   * @param  boolean $required true if the input must have a value before form 
+   * @param  bool $required true if the input must have a value before form 
    *         submission, otherwise false
    * @return $this for a fluent interface
    */
@@ -32,7 +32,7 @@ interface ValidableInput extends Input {
   /**
    * Checks whether the input must have a value before form submission
    *
-   * @return boolean true if the input must have a value before form submission, 
+   * @return bool true if the input must have a value before form submission, 
    *         otherwise false
    */
   public function isRequired(): bool;

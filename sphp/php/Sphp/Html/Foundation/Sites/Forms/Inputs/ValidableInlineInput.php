@@ -11,17 +11,22 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\Input;
+use Sphp\Html\Forms\Inputs\ValidableInput;
+use Sphp\Html\Forms\Inputs\FormControls;
 use Sphp\Html\Forms\Label;
+use ReflectionClass;
 
 /**
- * Description of ValidableInput
+ * Implements a Validable Foundation based Inline Input
+ * 
+ * 
+ * @method \Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput select(string $name = null, $value = null) creates a new validable select input
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ValidableInlineInput extends AbstractComponent implements \Sphp\Html\Forms\Inputs\ValidableInput {
+class ValidableInlineInput extends AbstractComponent implements ValidableInput {
 
   use ValidableInputContainerTrait;
 
@@ -36,7 +41,7 @@ class ValidableInlineInput extends AbstractComponent implements \Sphp\Html\Forms
   private $inlineLabel;
 
   /**
-   * @var Input 
+   * @var ValidableInput 
    */
   private $input;
 
@@ -46,38 +51,63 @@ class ValidableInlineInput extends AbstractComponent implements \Sphp\Html\Forms
   private $errorMessage;
 
   /**
+   * @var ReflectionClass
+   */
+  private $inputReflector;
+
+  /**
    * Constructor
    * 
-   * @param Input $input
+   * @param ValidableInput $input
    * @param string $label
    * @param string $errorMessage
    */
-  public function __construct(Input $input, string $label, string $errorMessage) {
+  public function __construct(ValidableInput $input, string $label = null, string $errorMessage = null) {
     parent::__construct('div');
     $this->addCssClass('sphp');
     if (!$input instanceof \Sphp\Html\Component) {
       throw new InvalidArgumentException('Invalid input type');
     }
+    if ($label === null) {
+      $label = $input->getName();
+    }
     $this->input = $input;
-    $this->reflector = new \ReflectionClass($input);
-    $this->buildComponents($label, $errorMessage);
+    $this->input->addCssClass('input-group-field');
+    $this->inputReflector = new ReflectionClass($this->input);
+    $this->label = new Label($label);
+    $this->label->setFor($this->input);
+    $this->errorMessage = new Label($errorMessage);
+    $this->errorMessage->addCssClass('form-error');
+    $this->errorMessage->setFor($this->input);
+    $this->inlineLabel = new Label();
+    $this->inlineLabel->addCssClass('input-group-label');
+    $this->inlineLabel->setFor($this->input);
+    $this->errorMessage->setAttribute('data-form-error-for', $this->input->identify());
   }
 
   public function __destruct() {
-    unset($this->label, $this->inlineLabel, $this->errorMessage, $this->input);
+    unset($this->label, $this->inlineLabel, $this->errorMessage, $this->input, $this->inputReflector);
     parent::__destruct();
   }
 
-  private function buildComponents(string $label, string $errorMessage) {
-    $this->input->addCssClass('input-group-field');
-    $this->label = new Label($label);
-    $this->errorMessage = new Label($errorMessage);
-    $this->errorMessage->addCssClass('form-error');
-    $this->inlineLabel = new Label();
-    $this->inlineLabel->addCssClass('input-group-label');
-    $this->label->setFor($this->input);
-    $this->inlineLabel->setFor($this->input);
-    $this->errorMessage->setAttribute('data-form-error-for', $this->input->identify());
+  /**
+   * Invokes the given public Input object method
+   * 
+   * @param  string $name the name of the called method
+   * @param  array $arguments
+   * @return mixed
+   * @throws BadMethodCallException if the public method does not exixt
+   */
+  public function __call(string $name, array $arguments) {
+    if (!$this->inputReflector->hasMethod($name)) {
+      throw new BadMethodCallException($name . ' is not a valid method for this type of input');
+    }
+    $result = \call_user_func_array(array($this->input, $name), $arguments);
+    if ($result === $this->input) {
+      return $this;
+    } else {
+      return $result;
+    }
   }
 
   /**
@@ -91,7 +121,7 @@ class ValidableInlineInput extends AbstractComponent implements \Sphp\Html\Forms
     return $this;
   }
 
-  public function getInput(): Input {
+  public function getInput(): ValidableInput {
     return $this->input;
   }
 
@@ -163,32 +193,21 @@ class ValidableInlineInput extends AbstractComponent implements \Sphp\Html\Forms
     return $output .= $this->input . '</div>' . $this->errorMessage;
   }
 
-  public static function __callStatic(string $name, $arguments) {
-    ;
-  }
-
   /**
-   * Invokes the given Input object method
-   * 
-   * @param  string $name the name of the called method
-   * @param  mixed $arguments
-   * @return mixed
+   * Creates a HTML object
+   *
+   * @param  string $inputType input type
+   * @param  array $arguments 
+   * @return Tag the corresponding component
    * @throws BadMethodCallException
    */
-  public function __call($name, $arguments) {
+  public static function __callStatic(string $inputType, array $arguments): ValidableInlineInput {
     try {
-      parent::__call($name, $arguments);
+      $input = FormControls::create($inputType, $arguments);
     } catch (\Exception $ex) {
-      if (!$this->reflector->hasMethod($name)) {
-        throw new BadMethodCallException($name . ' is not a valid method for this type of input');
-      }
-      $result = \call_user_func_array(array($this->input, $name), $arguments);
-      if ($result === $this->input) {
-        return $this;
-      } else {
-        return $result;
-      }
+      
     }
+    return new static($input);
   }
 
 }

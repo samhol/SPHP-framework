@@ -28,6 +28,7 @@ use Sphp\Html\Forms\FormController;
  * @method \Sphp\Html\Forms\Inputs\Radiobox radio(string $name = null, $value = null) creates a new radio input
  * @method \Sphp\Html\Forms\Inputs\Checkbox checkbox(string $name = null, $value = null) creates a new checkbox input
  * @method \Sphp\Html\Forms\Inputs\PasswordInput password(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Inputs\Menus\Select select(string $name = null, $value = null) creates a new password input
  * 
  * 
  * @method \Sphp\Html\Forms\Buttons\Button pushButton(string $name = null, $value = null) creates a new password input

@@ -7,8 +7,18 @@ use Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput;
 $input = new ValidableInlineInput(\Sphp\Html\Forms\Inputs\FormControls::text('username'), 'username', 'required');
 $input->setInlineLabel('<i class="fa fa-user"></i>');
 $input->setLabel('Username');
+$input->setPlaceholder('Username');
 $input->setErrorMessage('Username is required!');
 $input->setRequired(true);
+
+$select = ValidableInlineInput::select('Favourite car');
+$select->appendOption(null);
+$select->appendOption('saab', 'Saab');
+$select->appendOption('volvo', 'Volvo');
+$select->appendOption('ferrari', 'Ferrari');
+$select->setErrorMessage('A car model is required');
+$select->setRequired(true);
+$select->setInlineLabel('<i class="fas fa-car"></i>');
 ?>
 <form data-abide novalidate>
   <h4>Register for an account</h4>
@@ -17,7 +27,7 @@ $input->setRequired(true);
   </div>
   <div>
     <?php
-    echo $input;
+    echo $input.$select;
     ?>
     <div class="grid-x">
 
