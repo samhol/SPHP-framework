@@ -1,9 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Foundation\Sites\Core;
@@ -18,20 +20,25 @@ namespace Sphp\Html\Foundation\Sites\Core;
  */
 class DataOptionTools {
 
-  public static function toOptionName(string $name): string {
-    $dataAttrName = preg_replace('/(-[A-Za-z])/', '-$1', $name);
-    if (!\Sphp\Stdlib\Strings::startsWith($dataAttrName, 'data-')) {
-      $dataAttrName = "data-$dataAttrName";
+  /**
+   * Transforms option name to data attribute name
+   * 
+   * @param  string $string
+   * @return string data attribute name
+   */
+  public static function toDataAttribute(string $string): string {
+    $kebab = strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/', '-$1', $string));
+    if (substr($kebab, 0, 5) !== 'data-') {
+      $kebab = "data-$kebab";
     }
-    return $dataAttrName;
+    return $kebab;
   }
 
-  public function parseDataName(string $name): string {
-    $dataAttrName = preg_replace('/([A-Z])/', '-$1', $name);
-    if (!\Sphp\Stdlib\Strings::startsWith($dataAttrName, 'data-')) {
-      $dataAttrName = "data-$dataAttrName";
+  public static function toOptionName(string $param): string {
+    if (substr($param, 0, 5) == 'data-') {
+      $param = substr($param, 5);
     }
-    return $dataAttrName;
+    return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $param))));
   }
 
 }

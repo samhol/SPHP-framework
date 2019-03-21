@@ -17,7 +17,7 @@
       <directory>./tests/</directory>
     </testsuite>
     <testsuite name="one">
-      <file>./tests/sphp/Html/Attributes/MultivalueParserTest.php</file>
+      <file>./tests/sphp/Html/Foundation/Core/DataOptionToolsTest.php</file>
     </testsuite>
     <testsuite name="config">
       <directory>./tests/sphp/Config</directory>
