@@ -51,6 +51,9 @@ class ResponsiveMenu extends AbstractMenu implements JsMenu {
     }
     $dataAttrName = preg_replace('/([A-Z])/', '-$1', $name);
     //echo strtolower($dataAttrName);
+    if(!\Sphp\Stdlib\Strings::startsWith($dataAttrName, 'data-')) {
+      $dataAttrName = "data-$dataAttrName";
+    }
     $this->setAttribute(strtolower($dataAttrName), $value);
     return $this;
   }

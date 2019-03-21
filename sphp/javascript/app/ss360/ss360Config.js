@@ -77,7 +77,7 @@
       //this.config.searchBoxSelector = selector;
 
       this.config.searchBox = {
-        placeholder: undefined,
+        placeholder: 'Sitesearch360',
         autofocus: false, // if true, the search box will get focus after initialization
         selector: selector, // the selector to the search box,
         searchButton: undefined, // CSS selector of search buttons

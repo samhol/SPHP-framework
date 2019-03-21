@@ -22,7 +22,7 @@ class ScriptTagTest extends TestCase {
     $this->assertSame('', $emptySrc->getSrc());
     $emptyCode = new ScriptCode();
     
-    $this->assertSame('<script type="application/javascript"></script>', "$emptyCode");
+    $this->assertSame('<script></script>', "$emptyCode");
   }
 
 }

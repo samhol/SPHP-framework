@@ -55,7 +55,7 @@ class CookieBanner extends \Sphp\Html\AbstractComponent {
   }
 
   public function contentToString(): string {
-    $output = $this->text . '<div class=button-group text-center">' . $this->acceptBtn . $this->rejectBtn . '</div>';
+    $output = $this->text . '<div class="button-group text-center">' . $this->acceptBtn . $this->rejectBtn . '</div>';
     return $output;
   }
 

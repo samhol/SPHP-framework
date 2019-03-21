@@ -41,7 +41,7 @@ class AbstractIcon extends EmptyTag implements Icon {
   public function setDecorative(bool $decorative = null) {
     if (is_bool($decorative)) {
     $decorative = ($decorative) ? 'true' : 'false';
-    $this->attributes()->setAttribute('aria-hidden', 'false');
+    $this->attributes()->setAttribute('aria-hidden', $decorative);
     }
     else {
       $this->removeAttribute('aria-hidden');

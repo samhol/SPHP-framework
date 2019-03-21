@@ -10,7 +10,6 @@
 
 namespace Sphp\Html\Apps\Forms;
 
-
 /**
  * Implements a SiteSearch360 search form
  *
@@ -33,7 +32,6 @@ class SiteSearch360FormBuilder extends AbstractSearchFormBuilder {
     $this->getSearchField()->setName('ss360Query')->setInitialValue($initialValue);
     $this->getSearchField()->addCssClass('sphp-search-searchBox', 'sphp-ss360-searchBox');
   }
-
 
   public function createEmptyForm(): \Sphp\Html\Forms\Form {
     $form = new \Sphp\Html\Forms\Form();
