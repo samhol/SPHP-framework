@@ -16,7 +16,7 @@ use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Grids\Cell;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Forms\Inputs\Factory;
+use Sphp\Html\Forms\Inputs\FormControls;
 
 /**
  * A component containing multiple radio or checkbox inputs
@@ -127,7 +127,7 @@ class Choiceboxes extends AbstractCell implements Input, Cell {
    * @return $this for a fluent interface
    */
   public function setOption(string $value, string $label, bool $checked = false) {
-    $input = Factory::{$this->type}($this->name, $value, $checked);
+    $input = FormControls::{$this->type}($this->name, $value, $checked);
     $this->options[$value] = $input;
     $this->labels[$value] = new Label($label, $input);
     return $this;

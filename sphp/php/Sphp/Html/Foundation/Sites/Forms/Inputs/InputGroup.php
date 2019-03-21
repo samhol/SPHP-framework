@@ -21,7 +21,7 @@ use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Traversable;
 use Sphp\Html\Forms\Buttons\ButtonInterface;
-use Sphp\Html\Forms\Inputs\Factory;
+use Sphp\Html\Forms\Inputs\FormControls;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\Resetter;
@@ -123,7 +123,7 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @return TextualInputInterface appended instance
    */
   public function appendInput(string $type, string $name = null, $value = null): TextualInputInterface {
-    $input = Factory::$type($name, $value);
+    $input = FormControls::$type($name, $value);
     $input->addCssClass('input-group-field');
     $this->group->append($input);
     return $input;

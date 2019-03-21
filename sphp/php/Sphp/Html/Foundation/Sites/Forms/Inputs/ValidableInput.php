@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\IdentifiableContent;
-use Sphp\Html\Forms\Inputs\Factory;
+use Sphp\Html\Forms\Inputs\FormControls;
 /**
  * Description of ValidableInput
  *

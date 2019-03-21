@@ -14,10 +14,7 @@ use Sphp\Html\Forms\Buttons as ButtonTags;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
 use ReflectionClass;
-use Sphp\Html\Tag;
-use Sphp\Html\EmptyTag;
-use Sphp\Html\ContainerTag;
-use Sphp\Html\Component;
+use Sphp\Html\Forms\FormController;
 
 /**
  * Implements an HTML form component factory
@@ -41,7 +38,7 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Factory {
+abstract class FormControls {
 
   /**
    * list of tags and their corresponding PHP classes
@@ -93,10 +90,10 @@ class Factory {
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return Component the corresponding component
+   * @return FormController the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): Component {
+  public static function __callStatic(string $name, array $arguments): FormController {
     if (!isset(static::$components[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
@@ -108,10 +105,10 @@ class Factory {
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return Component the corresponding component
+   * @return FormController the corresponding component
    * @throws InvalidArgumentException if the tag object does not exist
    */
-  public static function create(string $name, array $arguments = []): Component {
+  public static function create(string $name, array $arguments = []): FormController {
     if (!isset(static::$components[$name])) {
       throw new InvalidArgumentException("Method $name does not exist");
     }
@@ -123,7 +120,6 @@ class Factory {
       array_unshift($arguments, $name);
     }
     $instance = $reflectionClass->newInstanceArgs($arguments);
-
     return $instance;
   }
 

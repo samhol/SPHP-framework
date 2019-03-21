@@ -46,7 +46,8 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, Collect
   /**
    * Constructor
    *
-   * @param string $name the name of the attribute
+   * @param string $name
+   * @param MultiValueParser|null $properties
    */
   public function __construct(string $name, MultiValueParser $properties = null) {
     parent::__construct($name);

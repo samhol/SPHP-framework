@@ -12,7 +12,7 @@ namespace Sphp\Tests\Html\Forms;
 
 use Sphp\Html\Forms\Inputs\TextualInput;
 use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Forms\Inputs\Factory;
+use Sphp\Html\Forms\Inputs\FormControls;
 
 class TextualInputTest extends AbstractInputTest {
 

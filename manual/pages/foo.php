@@ -4,7 +4,7 @@ echo $cookieBanner;
 
 use Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInput;
 
-$input = new ValidableInput(\Sphp\Html\Forms\Inputs\Factory::text('username'), 'username', 'required');
+$input = new ValidableInput(\Sphp\Html\Forms\Inputs\FormControls::text('username'), 'username', 'required');
 $input->setInlineLabel('<i class="fa fa-user"></i>');
 ?>
 <form data-abide novalidate>

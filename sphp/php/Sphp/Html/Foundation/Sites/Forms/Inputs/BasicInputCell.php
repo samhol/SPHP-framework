@@ -204,18 +204,16 @@ class BasicInputCell extends AbstractCell implements InputCell {
   /**
    * Creates a new instance containing a textarea component
    * 
-   * @precondition  `$rows > 0 & $cols > 0`
    * @param  string $name name attribute value
    * @param  string $content the content of the component
-   * @param  string $rows the value of the rows attribute (visible height of a text area)
-   * @param  array $layout
+   * @param  string[] $layout
    * @link   http://www.w3schools.com/tags/att_textarea_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    * @return BasicInputCell new instance containing a textarea component
    * @link   Sphp\Html\Forms\Inputs\Textarea Textarea
    */
-  public static function textarea(string $name, $content = null, $rows = 4, array $layout = ['small-12']): BasicInputCell {
-    $input = new Textarea($name, $content, $rows);
+  public static function textarea(string $name, $content = null, array $layout = ['small-12']): BasicInputCell {
+    $input = new Textarea($name, $content);
     return new self($input, $layout);
   }
 
@@ -229,7 +227,7 @@ class BasicInputCell extends AbstractCell implements InputCell {
    */
   public static function __callStatic(string $inputType, array $arguments): Tag {
     try {
-      $input = \Sphp\Html\Forms\Inputs\Factory::__callStatic($arguments);
+      $input = \Sphp\Html\Forms\Inputs\FormControls::__callStatic($arguments);
     } catch (\Exception $ex) {
       
     }

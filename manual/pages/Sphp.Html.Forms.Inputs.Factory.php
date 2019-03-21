@@ -4,7 +4,7 @@ namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Manual;
 
-$factory = Manual\api()->classLinker(Factory::class);
+$factory = Manual\api()->classLinker(FormControls::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 Manual\md(<<<MD
 ##The $factory factory: <small>a factory for HTML form components</small>
