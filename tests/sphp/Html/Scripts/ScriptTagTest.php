@@ -14,9 +14,6 @@ use PHPUnit\Framework\TestCase;
 
 class ScriptTagTest extends TestCase {
 
-  /**
-   * @return Img
-   */
   public function testConstructors() {
     $emptySrc = new ScriptSrc();
     $this->assertSame('', $emptySrc->getSrc());
