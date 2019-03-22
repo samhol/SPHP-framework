@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-require_once('manual/settings.php');
+require_once('settings.php');
 
 use Sphp\Html\Head\Link;
 use Sphp\Html\Head\Meta;
@@ -16,16 +16,15 @@ $html->setLanguage('en');
 $head->set(Meta::charset('UTF-8'));
 $head->set(Meta::viewport('width=device-width, initial-scale=1.0'));
 $head->setDocumentTitle('License | SPHPlayground framework');
-$head->setBaseAddr('http://playground.samiholck.com/', '_self');
 
-$head->set(Link::stylesheet('http://playground.samiholck.com/manual/css/license/license.css'));
+$head->set(Link::stylesheet('/manual/css/license/license.css'));
 //$head->setCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
 
-$head->set(Link::appleTouchIcon('/apple-touch-icon.png'));
-$head->set(Link::icon('/favicon-32x32.png', '32x32'));
-$head->set(Link::icon('/favicon-16x16.png', '16x16'));
-$head->set(Link::manifest('/site.webmanifest'));
-$head->set(Link::maskIcon('/safari-pinned-tab.svg', '#5bbad5'));
+$head->set(Link::appleTouchIcon('../apple-touch-icon.png'));
+$head->set(Link::icon('../favicon-32x32.png', '32x32'));
+$head->set(Link::icon('../favicon-16x16.png', '16x16'));
+$head->set(Link::manifest('../site.webmanifest'));
+$head->set(Link::maskIcon('../safari-pinned-tab.svg', '#5bbad5'));
 $head->set(Meta::namedContent('msapplication-TileColor', '#f1f1f1'));
 $head->set(Meta::namedContent('theme-color', '#f1f1f1'));
 
@@ -66,13 +65,13 @@ SOFTWARE.
 MD
 ;
 $main = Tags::main();
-$main->appendSection()->appendMdFile('privacy_policy.md');
+$main->appendSection()->appendMd($licenseText);
 $main->append('<hr>');
 $linkBar = new Foundation\Sites\Buttons\ButtonGroup();
-$linkBar->addCssClass('float-center');
+$linkBar->setExtended(true);
 $linkBar->appendPushButton('<i class="fas fa-arrow-left fa-lg"></i> Back')->setAttribute('onclick', 'window.history.back();');
 $linkBar->appendHyperlink('/', Media\Icons\FA::home()->setSize('lg') . ' Back to Manual');
-$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FA::github()->addCssClass('border')->setSize('lg') . ' repository');
+$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FA::github()->setSize('lg') . ' repository');
 
 
 $main->append($linkBar);

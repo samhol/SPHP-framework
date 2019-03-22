@@ -122,6 +122,7 @@
         //margin: rem-calc(2);
         .input-group, ul.menu li {
           input {
+            border: $bar-bg solid 1px;
             @include breakpoint(small only) {
               max-width: rem-calc(900);
             }
@@ -132,6 +133,10 @@
               max-width: rem-calc(800);
             }
           }
+          button:hover {
+            color: #FAA523;
+          }
+          
           margin: 0;
         }
       }

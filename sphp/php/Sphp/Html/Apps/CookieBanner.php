@@ -30,13 +30,11 @@ class CookieBanner extends \Sphp\Html\AbstractComponent {
   public function __construct() {
     parent::__construct('div');
     $this->addCssClass('sphp', 'cookie-banner');
-    $this->text = Tags::p()->appendMd('This website uses cookies. By continuing we assume your 
-      permission to deploy cookies, as detailed in our [privacy policy](/privacy_policy.php).
-    ');
+    $this->text = Tags::p()->appendMd('**SPHPlayground** uses cookies. By continuing we assume your 
+      permission to deploy cookies, as detailed in our  [privacy policy](/manual/privacy_policy.php).');
     $this->acceptButton('<i class="far fa-check-circle"></i> Accept cookies');
     $this->rejectButton('<i class="fas fa-ban"></i> Reject cookies');
   }
-
 
   public function acceptButton(string $button) {
     $button = \Sphp\Html\Foundation\Sites\Buttons\Button::pushButton($button);
@@ -55,8 +53,9 @@ class CookieBanner extends \Sphp\Html\AbstractComponent {
   }
 
   public function contentToString(): string {
-    $output = $this->text . '<div class="button-group text-center">' . $this->acceptBtn . $this->rejectBtn . '</div>';
-    return $output;
+    $row = new \Sphp\Html\Foundation\Sites\Grids\BasicRow();
+    $row->appendCell($this->text . '<div class="button-group">' . $this->acceptBtn . $this->rejectBtn . '</div>')->shrink();
+    return $row->addCssClass('align-center-middle')->getHtml();
   }
 
   public function getHtml(): string {

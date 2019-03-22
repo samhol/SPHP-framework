@@ -14,7 +14,7 @@ items:
      href: http://playground.samiholck.com/
  - menu: Framework APIs
    key: 1
-   icon: <i class="fas fa-book"></i>
+   icon: <i class="fas fa-wrench"></i>
    items:
    - link: PHP API
      href: http://playground.samiholck.com/API/sami/

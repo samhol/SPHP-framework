@@ -25,7 +25,7 @@ $currentUrl = URL::getCurrentURL();
         <div class="media-object">
           <div class="media-object-section">
             <div class="thumbnail">
-              <img src="http://data.samiholck.com/images/face.jpg" width="74" height="100" alt="Photo of Sami Holck">
+              <img src="/manual/pics/face-modified.jpg" width="74" height="100" alt="Photo of Sami Holck">
             </div>
           </div>
           <div class="media-object-section main-section">
@@ -70,7 +70,7 @@ $currentUrl = URL::getCurrentURL();
       ?>
       Copyright &copy; <?php echo date('Y'); ?> by <b>Sami Holck</b>.
       <span class="separator">||</span>
-      <a href="/license.php" target="license" rel="copyright"><b>MIT license</b></a>
+      <a href="/manual/license.php" target="license" rel="copyright"><b>MIT license</b></a>
       <span class="separator">||</span>
       <b>Script executed in:</b>
       <i><?php echo number_format(StopWatch::getExecutionTime(), 2) ?> seconds</i>
