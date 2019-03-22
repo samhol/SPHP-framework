@@ -27,6 +27,13 @@ trait ComponentTrait {
   use CssClassifiableTrait;
 
   /**
+   * Returns the attribute manager attached to the component
+   *
+   * @return HtmlAttributeManager the attribute manager
+   */
+  abstract public function attributes(): HtmlAttributeManager;
+
+  /**
    * Identifies the element with an unique id attribute.
    *
    * **Notes:**
@@ -40,13 +47,6 @@ trait ComponentTrait {
   public function identify(int $length = 16): string {
     return $this->attributes()->identify($length);
   }
-
-  /**
-   * Returns the attribute manager attached to the component
-   *
-   * @return HtmlAttributeManager the attribute manager
-   */
-  abstract public function attributes(): HtmlAttributeManager;
 
   /**
    * Returns the class attribute object

@@ -56,4 +56,5 @@ class DataOptionToolsTest extends \PHPUnit\Framework\TestCase {
   public function testToOptionName(string $raw, string $dataAttrName) {
     $this->assertEquals($dataAttrName, DataOptionTools::toOptionName($raw));
   }
+
 }

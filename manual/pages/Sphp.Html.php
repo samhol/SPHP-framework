@@ -13,7 +13,7 @@ $component = Manual\api()->classLinker(Component::class);
 $emptyTag = Manual\api()->classLinker(EmptyTag::class);
 $container = Manual\api()->classLinker(Container::class);
 $containerComponent = Manual\api()->classLinker(ContainerComponent::class);
-$contentTrait = Manual\api()->classLinker(ContentTrait::class);
+$abstractContent = Manual\api()->classLinker(AbstractContent::class);
 $w3schools = Manual\w3schools();
 $nsbc = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
@@ -44,7 +44,7 @@ interface ensures that the component can be outputted to an HTML document via th
 3. {$contentInterface->printHtml} output the component as an HTML string or the exception description if the execution fails.
 
 
-Trait $contentTrait gives an implementation to the subsequent
+$abstractContent gives an implementation to the subsequent
 two of these methods leaving the implementation of the {$contentInterface->methodLink("getHtml")}
 to the inheritor. Using this trait ensures that {$contentInterface->methodLink("__toString")}
 will never throw any type of {$exeption} during execution.

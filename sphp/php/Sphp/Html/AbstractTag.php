@@ -12,6 +12,8 @@ namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Attributes\ClassAttribute;
+use Sphp\Html\Attributes\PropertyCollectionAttribute;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -23,8 +25,6 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @filesource
  */
 abstract class AbstractTag extends AbstractContent implements Tag {
-
-  use ComponentTrait;
 
   /**
    * the tag name of the component
@@ -92,17 +92,56 @@ abstract class AbstractTag extends AbstractContent implements Tag {
     return $this->attrs;
   }
 
-  /**
-   * Returns the attributes attached as a string
-   * 
-   * @return string the attributes attached as a string
-   */
+  public function identify(int $length = 16): string {
+    return $this->attributes()->identify($length);
+  }
+
+  public function cssClasses(): ClassAttribute {
+    return $this->attributes()->classes();
+  }
+
+  public function inlineStyles(): PropertyCollectionAttribute {
+    return $this->attributes()->styles();
+  }
+
+  public function setAttribute(string $name, $value = null) {
+    $this->attributes()->setAttribute($name, $value);
+    return $this;
+  }
+
+  public function removeAttribute(string $name) {
+    $this->attributes()->remove($name);
+    return $this;
+  }
+
+  public function getAttribute(string $name) {
+    return $this->attributes()->getValue($name);
+  }
+
+  public function attributeExists(string $name): bool {
+    return $this->attributes()->isVisible($name);
+  }
+
   protected function attributesToString(): string {
     $output = '';
     if ($this->attrs !== null && $this->attrs->containsAttributes()) {
       $output = " $this->attrs";
     }
     return $output;
+  }
+
+  public function addCssClass(...$cssClasses) {
+    $this->cssClasses()->add($cssClasses);
+    return $this;
+  }
+
+  public function removeCssClass(...$cssClasses) {
+    $this->cssClasses()->remove($cssClasses);
+    return $this;
+  }
+
+  public function hasCssClass(...$cssClasses): bool {
+    return $this->cssClasses()->contains($cssClasses);
   }
 
 }

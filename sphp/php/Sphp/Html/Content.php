@@ -7,8 +7,11 @@
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
+
 namespace Sphp\Html;
+
 use Sphp\Exceptions\SphpExceptionInterface;
+
 /**
  * Defines basic features for all HTML structures
  *

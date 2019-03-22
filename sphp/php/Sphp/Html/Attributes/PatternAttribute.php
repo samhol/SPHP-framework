@@ -41,7 +41,7 @@ class PatternAttribute extends AbstractScalarAttribute {
   public function filterValue($value) {
     $filtered = filter_var($value, \FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $this->pattern]]);
     if (!$filtered) {
-      throw new InvalidArgumentException("Invalid value for '{$this->getName()}' pattern attribute");
+      throw new InvalidArgumentException("Invalid value ($value) for '{$this->getName()}' pattern attribute");
     }
     return $value;
   }

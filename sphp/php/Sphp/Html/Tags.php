@@ -204,7 +204,7 @@ abstract class Tags {
    * 
    * @return string[]
    */
-  public static function getTagMap() :array {
+  public static function getTagMap(): array {
     return static::$tags;
   }
 

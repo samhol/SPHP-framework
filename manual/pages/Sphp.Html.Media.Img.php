@@ -14,7 +14,7 @@ $img component implements HTML {$w3c->img} tag 	via $imgInterface interface.
 
 MD
 );
-echo \Sphp\Manual\syntaxView('manual/pics/example.jpg.php');
+//echo \Sphp\Manual\syntaxView('manual/pics/example.jpg.php');
 \Sphp\Manual\visualize('Sphp/Images/Image-Cache.php', 'html5');
 \Sphp\Manual\visualize('Sphp/Html/Media/Img.php', null, true);
 $figureTag = \Sphp\Manual\w3schools()->figure;

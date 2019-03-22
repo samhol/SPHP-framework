@@ -3,8 +3,8 @@
 namespace Sphp\Html\Attributes;
 
 echo '<pre>';
-$p = new MultiValueParser();
-$p->setAtomicValidator(new \Sphp\Validators\Regex('/(#[\w]+)/'));
-var_dump($p->filter(['#a', '#4', '#_4-4']));
+$p = new PatternAttribute('coords', '/^([0-9]+,){2}[0-9]+$/');
+$p->setValue('2,0,34');
+echo $p;
 echo '</pre>';
 
