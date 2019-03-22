@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use ArrayAccess;
 use Iterator;
 
@@ -21,17 +21,22 @@ use Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HiddenInputs implements Content, ArrayAccess, Iterator {
-
-  use \Sphp\Html\ContentTrait;
+class HiddenInputs extends AbstractContent implements ArrayAccess, Iterator {
 
   /**
    * @var array
    */
   private $inputs;
 
+  /**
+   * Constructor
+   */
   public function __construct() {
     $this->inputs = [];
+  }
+  
+  public function __destruct() {
+    unset($this->inputs);
   }
 
   public function getHtml(): string {

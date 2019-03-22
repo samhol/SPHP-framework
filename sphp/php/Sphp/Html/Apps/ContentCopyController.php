@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Component;
 
 /**
@@ -26,9 +26,7 @@ use Sphp\Html\Component;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class ContentCopyController implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class ContentCopyController extends AbstractContent {
 
   private $target;
 

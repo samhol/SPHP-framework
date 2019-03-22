@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Div;
 use Sphp\DateTime\Date;
 use Sphp\Html\Navigation\Hyperlink;
@@ -26,9 +26,7 @@ use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class MonthSelector implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class MonthSelector extends AbstractContent {
 
   /**
    * @var Date

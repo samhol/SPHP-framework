@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Media\Icons;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use DOMDocument;
 use DOMNode;
 
@@ -21,9 +21,7 @@ use DOMNode;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Svg implements Content, Icon {
-
-  use \Sphp\Html\ContentTrait;
+class Svg extends AbstractContent implements Icon {
 
   /**
    * @var DOMDocument

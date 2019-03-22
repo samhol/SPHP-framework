@@ -22,10 +22,9 @@ use Sphp\Stdlib\Arrays;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Iterator implements NativeIterator, Content, TraversableContent {
+class Iterator extends AbstractContent implements NativeIterator, TraversableContent {
 
-  use ContentTrait,
-      TraversableTrait;
+  use TraversableTrait;
 
   /**
    * the content

@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 
@@ -24,9 +25,7 @@ use Sphp\Html\CssClassifiableContent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-abstract class AbstractLayoutManager implements LayoutManager {
-
-  use \Sphp\Html\ContentTrait;
+abstract class AbstractLayoutManager extends AbstractContent implements LayoutManager {
 
   /**
    * @var CssClassifiableContent

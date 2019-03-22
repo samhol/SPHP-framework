@@ -22,10 +22,9 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-abstract class AbstractTag implements Tag {
+abstract class AbstractTag extends AbstractContent implements Tag {
 
-  use ContentTrait,
-      ComponentTrait;
+  use ComponentTrait;
 
   /**
    * the tag name of the component

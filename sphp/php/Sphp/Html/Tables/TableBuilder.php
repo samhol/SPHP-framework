@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Tables;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Stdlib\Parsers\CsvFile;
 use Sphp\Stdlib\Arrays;
 
@@ -20,9 +21,7 @@ use Sphp\Stdlib\Arrays;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TableBuilder implements \Sphp\Html\Content {
-
-  use \Sphp\Html\ContentTrait;
+class TableBuilder extends AbstractContent {
 
   /**
    * @var array 

@@ -13,28 +13,15 @@ namespace Sphp\Html;
 use Throwable;
 
 /**
- * Trait implements parts of the Content interface
+ * Abstract implementation of the Content interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-trait ContentTrait {
+abstract class AbstractContent implements Content {
 
-  /**
-   * Returns the component as HTML markup string
-   *
-   * @return string HTML markup of the component
-   * @throws \Sphp\Exceptions\SphpException if HTML parsing fails
-   */
-  public abstract function getHtml(): string;
-
-  /**
-   * Returns the component as HTML markup string
-   *
-   * @return string HTML markup of the object
-   */
   public function __toString(): string {
     try {
       $output = $this->getHtml();
@@ -44,11 +31,6 @@ trait ContentTrait {
     return $output;
   }
 
-  /**
-   * Prints the component as HTML markup string
-   *
-   * @return $this for a fluent interface
-   */
   public function printHtml() {
     echo $this;
     return $this;

@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Adapters;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Attributes\ClassAttribute;
 
@@ -20,10 +21,9 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractCssClassAdapter implements CssClassifiableContent {
+class AbstractCssClassAdapter extends AbstractContent implements CssClassifiableContent {
 
-  use \Sphp\Html\CssClassifiableTrait,
-      \Sphp\Html\ContentTrait;
+  use \Sphp\Html\CssClassifiableTrait;
 
   /**
    * @var CssClassifiableContent

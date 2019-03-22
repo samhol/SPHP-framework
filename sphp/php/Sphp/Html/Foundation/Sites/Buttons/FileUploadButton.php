@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
 use Sphp\Html\Forms\Label;
@@ -29,10 +30,9 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FileUploadButton implements Input, ButtonInterface, \Sphp\Html\IdentifiableContent {
+class FileUploadButton extends AbstractContent implements Input, ButtonInterface, \Sphp\Html\IdentifiableContent {
 
-  use \Sphp\Html\ContentTrait,
-      \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait,
+  use \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait,
       \Sphp\Html\CssClassifiableTrait;
 
   /**

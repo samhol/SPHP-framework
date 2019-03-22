@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Core;
+namespace Sphp\Html\Foundation\Sites\Core\DataOptions;
 
 /**
  * Description of DataOptionTools
@@ -34,11 +34,30 @@ class DataOptionTools {
     return $kebab;
   }
 
+  /**
+   * Transforms data attribute name to option name
+   * 
+   * @param string $param
+   * @return string
+   */
   public static function toOptionName(string $param): string {
     if (substr($param, 0, 5) == 'data-') {
       $param = substr($param, 5);
     }
     return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $param))));
+  }
+
+  /**
+   * Parses an option value
+   * 
+   * @param  mixed $value raw option value
+   * @return string|float parsed option value
+   */
+  public static function parseValue($value) {
+    if (is_bool($value)) {
+      $value = $value ? 'true' : 'false';
+    }
+    return $value;
   }
 
 }

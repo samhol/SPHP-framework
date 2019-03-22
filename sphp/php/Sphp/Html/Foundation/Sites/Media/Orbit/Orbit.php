@@ -27,7 +27,8 @@ use Sphp\Html\TraversableContent;
  */
 class Orbit extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
-  use \Sphp\Html\TraversableTrait;
+  use \Sphp\Html\TraversableTrait,
+      \Sphp\Html\Foundation\Sites\Core\DataOptions\IndividualDataAttributesTrait;
 
   /**
    * @var boolean 
@@ -85,7 +86,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
    * @param  scalar $value the value of the option
    * @return $this for a fluent interface
    */
-  public function setOption(string $name, $value) {
+  public function setOptionDel(string $name, $value) {
     if (is_bool($value)) {
       $value = $value ? 'true' : 'false';
     }

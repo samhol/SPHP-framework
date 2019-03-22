@@ -139,8 +139,8 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
   public function useFontAwesome() {
-    $this->head()->set((new ScriptSrc('https://use.fontawesome.com/releases/v5.7.2/js/all.js'))
-                    ->setIntegrity('sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP')
+    $this->head()->set((new ScriptSrc('https://use.fontawesome.com/releases/v5.8.1/js/all.js'))
+                    ->setIntegrity('sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ')
                     ->setDefer(true));
     return $this;
   }

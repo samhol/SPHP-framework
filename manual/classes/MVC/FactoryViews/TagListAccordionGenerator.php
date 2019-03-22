@@ -7,9 +7,9 @@
 
 namespace Sphp\Manual\MVC\FactoryViews;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
-use Sphp\Html\Content;
 
 /**
  * Description of TagListAccordionGenerator
@@ -18,9 +18,7 @@ use Sphp\Html\Content;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagListAccordionGenerator implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class TagListAccordionGenerator extends AbstractContent {
 
   /**
    * @var Groups

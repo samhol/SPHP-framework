@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Flow\Section;
 use Sphp\I18n\Datetime\CalendarUtils;
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;
@@ -28,9 +28,7 @@ use Sphp\Html\Foundation\Sites\Containers\Popup;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class WeekView implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class WeekView extends AbstractContent {
 
   /**
    * @var DiaryContainer 

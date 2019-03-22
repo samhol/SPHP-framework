@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Content;
 use Sphp\Html\Component;
 use Sphp\Html\Span;
@@ -29,10 +30,9 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Dropdown implements Component {
+class Dropdown extends AbstractContent implements Component {
 
-  use \Sphp\Html\ContentTrait,
-      \Sphp\Html\ComponentTrait;
+  use \Sphp\Html\ComponentTrait;
 
   private static $sizes = [
       'tiny', 'small', 'large', 'xlarge', 'xxlarge'

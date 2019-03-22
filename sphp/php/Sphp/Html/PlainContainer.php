@@ -22,10 +22,9 @@ use Traversable;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class PlainContainer implements IteratorAggregate, Container, ContentParser {
+class PlainContainer extends AbstractContent implements IteratorAggregate, Container, ContentParser {
 
-  use ContentTrait,
-      ContentParserTrait,
+  use ContentParserTrait,
       TraversableTrait;
 
   /**

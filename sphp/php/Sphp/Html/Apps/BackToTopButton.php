@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Component;
 use Sphp\Html\Media\Icons\AbstractIcon;
 use Sphp\Html\Div;
@@ -23,9 +23,7 @@ use Sphp\Html\Div;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class BackToTopButton implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class BackToTopButton extends AbstractContent {
 
   /**
    * @var Component

@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Adapters;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Component;
 
 /**
@@ -19,12 +20,9 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractComponentAdapter implements Adapter {
-
-  use \Sphp\Html\ContentTrait;
+abstract class AbstractComponentAdapter extends AbstractContent implements Adapter {
 
   /**
-   *
    * @var Component
    */
   private $component;

@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Html\AbstractContent;
 use IteratorAggregate;
 use Traversable;
 use Sphp\Html\TraversableContent;
@@ -27,10 +28,9 @@ use Sphp\Exceptions\UnderflowException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class HeadContentContainer implements IteratorAggregate, TraversableContent, NonVisualContent {
+class HeadContentContainer extends AbstractContent implements IteratorAggregate, TraversableContent, NonVisualContent {
 
-  use \Sphp\Html\ContentTrait,
-      \Sphp\Html\TraversableTrait;
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * @var PlainContainer

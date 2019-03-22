@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
@@ -30,9 +30,7 @@ use Sphp\Html\Span;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class CodeExampleAccordionBuilder implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class CodeExampleAccordionBuilder extends AbstractContent {
 
   const HTMLFLOW = 'html';
   const OUTPUT_TEXT = 'text';

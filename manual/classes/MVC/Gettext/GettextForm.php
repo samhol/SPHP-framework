@@ -2,23 +2,21 @@
 
 namespace Sphp\Manual\MVC\Gettext;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\SwitchBoard;
 use Sphp\Html\Foundation\Sites\Containers\Dropdown;
-class GettextForm {
 
-  use \Sphp\Html\ContentTrait;
+class GettextForm extends AbstractContent {
 
   /**
    * @var Input
    */
   private $options;
-
 
   /**
    * @var Input
@@ -68,8 +66,6 @@ class GettextForm {
     return $this;
   }
 
-
-
   private function buildQueryField() {
     $this->queryField = new TextInput('query');
     $this->queryField->setPlaceholder('Search Gettext');
@@ -79,16 +75,15 @@ class GettextForm {
     $form = new GridForm('/gettext/', 'get');
     $form->addCssClass('sphp', 'gettext-form');
     //$row1 = new FormRow();
-   // $row1->addCssClass();
+    // $row1->addCssClass();
     //$inputGroup1 = new InputGroup();
     //$inputGroup1->appendLabel('Search');
     $row2 = new FormRow();
     //$inputGroup1->append($this->fieldTypeSelector);
     //$inputGroup1->append($this->msgTypeSelector);
-
-   // $form->append($inputGroup1);
+    // $form->append($inputGroup1);
     $inputrow = new FormRow();
-  //  $inputrow->addCssClass('foo');
+    //  $inputrow->addCssClass('foo');
 
     $inputGroup = new InputGroup();
     $inputGroup->appendLabel('Search: ');
@@ -99,7 +94,7 @@ class GettextForm {
     //$row2->appendCell($inputrow);
     //$row2->append($this->queryField);
     //$row2->appendCell(Button::submitter('submit'), ['small-12', 'medium-shrink']);
-$row2->appendCell('Search');
+    $row2->appendCell('Search');
     $inputrow->appendCell($inputGroup)->auto();
     $form->append($inputrow);
     return $form;

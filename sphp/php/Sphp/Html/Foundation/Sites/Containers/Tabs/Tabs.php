@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Lists\Ul;
@@ -28,10 +28,9 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Tabs implements Content, IteratorAggregate, TraversableContent {
+class Tabs extends AbstractContent implements IteratorAggregate, TraversableContent {
 
-  use \Sphp\Html\ContentTrait,
-      \Sphp\Html\TraversableTrait;
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * @var Div 

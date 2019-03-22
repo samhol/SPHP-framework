@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\Component;
 
@@ -26,9 +26,7 @@ use Sphp\Html\Component;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Modal implements Content, ClosableInterface {
-
-  use \Sphp\Html\ContentTrait;
+class Modal extends AbstractContent implements ClosableInterface {
 
   /**
    * the Modal reveal controller

@@ -10,7 +10,7 @@
 
 namespace Sphp\Manual\MVC;
 
-use Sphp\Html\Content;
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Foundation\Sites\Navigation\FlexibleMenu;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
@@ -20,9 +20,7 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SideNavViewer implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class SideNavViewer extends AbstractContent {
 
   /**
    * @var array 

@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Scripts;
 
+use Sphp\Html\AbstractContent;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Iterator;
@@ -22,10 +23,9 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ScriptsContainer implements Script, IteratorAggregate, TraversableContent {
+class ScriptsContainer extends AbstractContent implements Script, IteratorAggregate, TraversableContent {
 
-  use \Sphp\Html\ContentTrait,
-      \Sphp\Html\TraversableTrait;
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * scripts container
@@ -95,5 +95,5 @@ class ScriptsContainer implements Script, IteratorAggregate, TraversableContent 
   public function getIterator(): Traversable {
     return new Iterator($this->container);
   }
-  
+
 }

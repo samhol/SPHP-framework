@@ -4,10 +4,10 @@ namespace Sphp\Html;
 
 use PHPUnit\Framework\TestCase;
 
-class ContentTraitTest extends TestCase {
+class AbstractContentTest extends TestCase {
 
   public function testPrintHtml() {
-    $mock = $this->getMockForTrait(ContentTrait::class);
+    $mock = $this->getMockForAbstractClass(AbstractContent::class);
     $mock->expects($this->any())
             ->method('getHtml')
             ->will($this->returnValue('value'));
@@ -17,7 +17,7 @@ class ContentTraitTest extends TestCase {
 
   public function testException() {
     $exception = new \Exception;
-    $mock = $this->getMockForTrait(ContentTrait::class);
+    $mock = $this->getMockForAbstractClass(AbstractContent::class);
     $mock->expects($this->any())
             ->method('getHtml')
             ->willThrowException($exception);

@@ -10,6 +10,7 @@
 
 namespace Sphp\Manual\MVC;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 use Sphp\Html\Tags;
 use Sphp\Html\Div;
@@ -24,10 +25,9 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class PageLoader implements CssClassifiableContent {
+class PageLoader extends AbstractContent implements CssClassifiableContent {
 
-  use \Sphp\Html\CssClassifiableTrait,
-      \Sphp\Html\ContentTrait;
+  use \Sphp\Html\CssClassifiableTrait;
 
   /**
    * @var Div
@@ -76,6 +76,7 @@ class PageLoader implements CssClassifiableContent {
   public function loadGettextFinder($par) {
     $this->load('manual/gettext/index.php');
   }
+
   public function loadPo($par) {
     $this->load('manual/po/poViewer.php');
   }

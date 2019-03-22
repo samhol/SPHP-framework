@@ -29,7 +29,7 @@ $row1->append((new BasicInputCell((new TextInput("lname"))
                 ->setLabel("Family name:"));
 $form->append($row1);
 
-$form->append($ta = BasicInputCell::textarea("description", null, 5));
+$form->append($ta = BasicInputCell::textarea("description")->setRows(5));
 $ta->getInput()->setRequired()
         ->setPlaceholder("Something about yourself");
 $ta->setErrorField("Yuo need to write something about yourself");

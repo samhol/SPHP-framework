@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\Html\Apps\Syntaxhighlighting;
-
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Div;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
@@ -24,10 +24,9 @@ use Sphp\Html\Foundation\Sites\Containers\Popup;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class SyntaxHighlightingModalBuilder implements SyntaxHighlighter {
+class SyntaxHighlightingModalBuilder extends AbstractContent implements SyntaxHighlighter {
 
-  use \Sphp\Html\ContentTrait,
-      SyntaxhighlighterContainerTrait;
+  use SyntaxhighlighterContainerTrait;
 
   /**
    * @var SyntaxHighlighter

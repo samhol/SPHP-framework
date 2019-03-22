@@ -10,9 +10,9 @@
 
 namespace Sphp\Security;
 
+use Sphp\Html\AbstractContent;
 use Sphp\Html\Scripts\ScriptSrc;
 use Sphp\Html\Div;
-use Sphp\Html\Content;
 
 /**
  * Implements Google reCAPTCHA HTML component
@@ -22,9 +22,7 @@ use Sphp\Html\Content;
  * @link    https://developers.google.com/recaptcha/ Google reCAPTCHA
  * @filesource
  */
-class ReCaptcha implements Content {
-
-  use \Sphp\Html\ContentTrait;
+class ReCaptcha extends AbstractContent {
 
   /**
    * @var Div
