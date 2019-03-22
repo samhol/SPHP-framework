@@ -42,16 +42,6 @@ trait ComponentTrait {
   }
 
   /**
-   * Checks whether the identifying attribute is set or not
-   *
-   * @return boolean true if the identity is set, otherwise false
-   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
-   */
-  public function hasId(): bool {
-    return $this->attributes()->hasId();
-  }
-
-  /**
    * Returns the attribute manager attached to the component
    *
    * @return HtmlAttributeManager the attribute manager

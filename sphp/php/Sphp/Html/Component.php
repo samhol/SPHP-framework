@@ -77,7 +77,7 @@ interface Component extends IdentifiableContent, CssClassifiableContent {
    * Returns the value of a given attribute name or an empty string if attribute is not set
    *
    * @param  string $attrName the name of the attribute
-   * @return string the value of the attribute
+   * @return mixed the value of the attribute
    */
   public function getAttribute(string $attrName);
 

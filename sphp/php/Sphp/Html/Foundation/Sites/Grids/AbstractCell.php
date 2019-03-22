@@ -57,7 +57,7 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
       $settings = FoundationSettings::default();
     }
     $this->settings = $settings;
-    $this->cssClasses()->setValue('cell');
+    $this->cssClasses()->protectValue('cell');
     // $this->maxSize = $maxSize;
   }
 

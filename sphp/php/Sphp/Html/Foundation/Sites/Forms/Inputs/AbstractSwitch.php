@@ -117,7 +117,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
   public function setSize($size) {
     $this->resetSize();
     if (in_array($size, self::$sizes)) {
-      $this->cssClasses()->add($size);
+      $this->addCssClass($size);
     }
     return $this;
   }
@@ -128,8 +128,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
    * @return $this for a fluent interface
    */
   public function resetSize() {
-    $this->cssClasses()
-            ->remove(self::$sizes);
+    $this->removeCssClass(self::$sizes);
     return $this;
   }
 

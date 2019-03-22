@@ -34,12 +34,5 @@ interface IdentifiableContent extends Content {
    */
   public function identify(int $length = 16): string;
 
-  /**
-   * Checks whether the identifying attribute is set or not
-   *
-   * @return boolean true if the identity is set, otherwise false
-   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
-   */
-  public function hasId(): bool;
 }
 

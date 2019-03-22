@@ -102,10 +102,6 @@ class FileUploadButton extends AbstractContent implements Input, ButtonInterface
     return $this;
   }
 
-  public function hasId(): bool {
-    return $this->fileInput->hasId();
-  }
-
   public function identify(int $length = 16): string {
     return $this->fileInput->identify($length);
   }
