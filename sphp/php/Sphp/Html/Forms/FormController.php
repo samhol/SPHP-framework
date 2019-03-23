@@ -27,7 +27,7 @@ interface FormController extends Content {
    * A disabled form controller is unusable and un-clickable. 
    * Disabled input in a form will not be submitted.
    *
-   * @param  boolean $disabled true for disabled, otherwise false
+   * @param  bool $disabled true for disabled, otherwise false
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true);
@@ -35,7 +35,7 @@ interface FormController extends Content {
   /**
    * Checks whether the controller is enabled or not
    * 
-   * @return boolean true if enabled, otherwise false
+   * @return bool true if enabled, otherwise false
    */
   public function isEnabled(): bool;
 }

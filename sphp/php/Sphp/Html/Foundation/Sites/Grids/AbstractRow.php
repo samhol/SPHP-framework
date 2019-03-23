@@ -137,7 +137,6 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     $this->columns->clear();
     //print_r($sType);
     foreach ($columns as $column) {
-      echo get_class($column);
       if ($column instanceof Cell) {
         $this->append($column);
       } else {

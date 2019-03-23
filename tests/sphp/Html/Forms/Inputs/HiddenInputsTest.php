@@ -10,10 +10,10 @@
 
 namespace Sphp\Tests\Html\Forms;
 
-use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 
-class HiddenInputsTest extends AbstractArrayAccessIteratorCountableTest {
+class HiddenInputsTest extends TestCase {
 
   public function arrayData(): array {
     $arr['foo'] = 'bar';

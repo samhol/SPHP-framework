@@ -170,26 +170,7 @@ class GridForm extends AbstractForm implements IteratorAggregate, TraversableFor
    * @see    HiddenInput
    */
   public function appendHiddenVariable($name, $value): HiddenInput {
-    $input = new HiddenInput($name, $value);
-    $this->hiddenInputs()->append($input);
-    return $input;
-  }
-
-  /**
-   * Appends the hidden data to the form
-   *
-   * Appended <var>$key => $value</var> pairs are stored into 
-   *  {@link HiddenInput} components.
-   *
-   * @param  string[] $vars name => value pairs
-   * @return $this for a fluent interface
-   * @see    HiddenInput
-   */
-  public function appendHiddenVariables(array $vars) {
-    foreach ($vars as $name => $value) {
-      $this->appendHiddenVariable($name, $value);
-    }
-    return $this;
+    return $this->hiddenInputs->insertVariable($name, $value);
   }
 
   /**

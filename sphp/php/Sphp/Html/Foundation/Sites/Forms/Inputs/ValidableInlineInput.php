@@ -15,6 +15,7 @@ use Sphp\Html\Forms\Inputs\ValidableInput;
 use Sphp\Html\Forms\Inputs\FormControls;
 use Sphp\Html\Forms\Label;
 use ReflectionClass;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a Validable Foundation based Inline Input
@@ -100,7 +101,8 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
    */
   public function __call(string $name, array $arguments) {
     if (!$this->inputReflector->hasMethod($name)) {
-      throw new BadMethodCallException($name . ' is not a valid method for this type of input');
+      $inputType = get_class($this->input);
+      throw new BadMethodCallException("Method $name is not defined in '$inputType' input");
     }
     $result = \call_user_func_array(array($this->input, $name), $arguments);
     if ($result === $this->input) {

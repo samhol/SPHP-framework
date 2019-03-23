@@ -5,6 +5,7 @@ echo $cookieBanner;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;
+use Sphp\Html\Foundation\Sites\Buttons\ButtonGroup;
 
 $username = ValidableInlineInput::text('username');
 $username->setRequired(true);
@@ -31,7 +32,7 @@ $lname->setErrorMessage('Last name is required!');
 $lname->setRequired(true);
 
 $carSelector = ValidableInlineInput::select('Favourite car');
-$carSelector->appendOption(null);
+$carSelector->appendOption('', 'none');
 $carSelector->appendOption('saab', 'Saab');
 $carSelector->appendOption('volvo', 'Volvo');
 $carSelector->appendOption('ferrari', 'Ferrari');
@@ -42,6 +43,7 @@ $carSelector->setInlineLabel('<i class="fas fa-car"></i>');
 
 $carPrice = ValidableInlineInput::text('car_price');
 $carPrice->setRequired(true);
+$carPrice->setPattern('number');
 $carPrice->setInlineLabel('<i class="fa fa-user"></i>');
 $carPrice->setLabel('Suitable price');
 $carPrice->setPlaceholder('10.000');
@@ -63,6 +65,16 @@ $carRow->appendCell($carSelector)->small(12)->medium(6);
 $carRow->appendCell($carPrice)->small(12)->medium(6);
 $form->append($carRow);
 
+$form->appendHiddenVariable('hidden1', 'I am hidden!');
+
+$buttonRow = new BasicRow();
+$buttons = new ButtonGroup();
+$buttons->appendSubmitter('Submit')->addCssClass('success');
+$buttons->appendResetter('Reset form')->addCssClass('alert');
+$buttons->setExtended();
+$buttonRow->appendCell($buttons);
+$form->append($buttonRow);
+$form->liveValidate();
 echo $form;
 ?>
 <form data-abide novalidate>
@@ -103,11 +115,12 @@ echo $form;
 
     <div class="cell small-6">
       <label for="ee">Fullname</label>
-      <div class="input-group">
-        <label class="input-group-label" for="ee">
-          <i class="fa fa-user"></i>
-        </label>
-        <input class="input-group-field" placeholder="Fullname" id="ee" type="text" required pattern="alpha"/>
+      <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
+        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+        <span class="slider-fill" data-slider-fill></span>
+        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+        <input type="hidden">
+        <input type="hidden">
       </div>
       <label class="form-error" data-form-error-for="ee">Full name is required.</label>
     </div>

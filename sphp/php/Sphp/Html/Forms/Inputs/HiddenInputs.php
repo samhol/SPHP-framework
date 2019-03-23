@@ -11,8 +11,9 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\AbstractContent;
-use ArrayAccess;
-use Iterator;
+use IteratorAggregate;
+use Sphp\Html\Iterator;
+use Traversable;
 
 /**
  * Implements hidden data component for HTML forms
@@ -21,10 +22,10 @@ use Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HiddenInputs extends AbstractContent implements ArrayAccess, Iterator {
+class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\Html\Forms\FormController {
 
   /**
-   * @var array
+   * @var HiddenInput[]
    */
   private $inputs;
 
@@ -34,29 +35,26 @@ class HiddenInputs extends AbstractContent implements ArrayAccess, Iterator {
   public function __construct() {
     $this->inputs = [];
   }
-  
+
   public function __destruct() {
     unset($this->inputs);
   }
 
   public function getHtml(): string {
-    $output = '';
-    foreach ($this->inputs as $name => $value) {
-      $output .= new HiddenInput($name, $value);
-    }
-    return $output;
+    return implode($this->inputs);
   }
 
   /**
-   * Sets a hidden variable to the form
+   * Inserts a hidden variable to the form
    *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
-   * @return $this for a fluent interface
+   * @return HiddenInput inserted hidden input
    */
-  public function setVariable($name, $value) {
-    $this->inputs[$name] = $value;
-    return $this;
+  public function insertVariable(string $name, $value): HiddenInput {
+    $input = new HiddenInput($name, $value);
+    $this->inputs[] = $input;
+    return $input;
   }
 
   /**
@@ -67,78 +65,65 @@ class HiddenInputs extends AbstractContent implements ArrayAccess, Iterator {
    */
   public function setVariables(array $vars) {
     foreach ($vars as $name => $value) {
-      $this->setVariable($name, $value);
+      $this->insertVariable($name, $value);
     }
     return $this;
   }
 
-  public function offsetExists($offset): bool {
-    return array_key_exists($offset, $this->inputs);
+  public function contains(string $name): bool {
+    $contains = false;
+    foreach ($this->inputs as $input) {
+      if ($input->getName() === $name) {
+        $contains = true;
+        break;
+      }
+    }
+    return $contains;
   }
 
   /**
    * Returns the value of the hidden variable
    *
-   * @param  mixed $name the name of the hidden variable
-   * @return mixed the value of the hidden variable or `null`
+   * @param  string $name the name of the hidden variable
+   * @return Input[] the value of the hidden variable or `null`
    */
-  public function offsetGet($name) {
-    $result = null;
-    if ($this->offsetExists($name)) {
-      $result = $this->inputs[$name];
+  public function getByName(string $name) {
+    $result = [];
+    foreach ($this->inputs as $input) {
+      if ($input->getName() === $name) {
+        $result[] = $input;
+      }
     }
     return $result;
   }
 
-  public function offsetSet($offset, $value) {
-    $this->inputs[$offset] = $value;
+  public function getIterator(): Traversable {
+    return new Iterator($this->inputs);
   }
 
-  public function offsetUnset($offset) {
-    if ($this->offsetExists($offset)) {
-      unset($this->inputs[$offset]);
+  public function disable(bool $disabled = true): \this {
+    foreach ($this->inputs as $input) {
+      $input->disable($disabled);
     }
+    return $this;
   }
 
   /**
-   * Returns the current element
+   * Checks whether the controller is enabled or not
    * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->inputs);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->inputs);
-  }
-
-  /**
-   * Return the key of the current element
+   * Important: This controller is disabled only if all of its inputs are disabled.
    * 
-   * @return mixed the key of the current element
+   * @return bool true if enabled, otherwise false
    */
-  public function key() {
-    return key($this->inputs);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->inputs);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->inputs);
+  public function isEnabled(): bool {
+    $enabled = false;
+    foreach ($this->inputs as $input) {
+      $enabled = $input->isEnabled();
+      if ($enabled) {
+        break;
+      }
+    }
+    return $enabled;
   }
 
 }
