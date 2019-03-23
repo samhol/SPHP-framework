@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 
-$form = new Form();
+$form = new ContainerForm();
 $form[] = (new Slider("weight", 0, 100, 1))
         ->useGrid(true)
         ->setPostfix("kg")

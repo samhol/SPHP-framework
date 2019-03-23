@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 
-$form = new Form();
+$form = new ContainerForm();
 $form[] = "Number range between -10 and 10";
 $number = FormControls::number("number")
         ->setStepLength(5)

@@ -3,22 +3,67 @@ $cookieBanner = new Sphp\Html\Apps\CookieBanner();
 echo $cookieBanner;
 
 use Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput;
+use Sphp\Html\Foundation\Sites\Forms\GridForm;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 
-$input = new ValidableInlineInput(\Sphp\Html\Forms\Inputs\FormControls::text('username'), 'username', 'required');
-$input->setInlineLabel('<i class="fa fa-user"></i>');
-$input->setLabel('Username');
-$input->setPlaceholder('Username');
-$input->setErrorMessage('Username is required!');
-$input->setRequired(true);
+$username = ValidableInlineInput::text('username');
+$username->setRequired(true);
+$username->setInlineLabel('<i class="fa fa-user"></i>');
+$username->setLabel('Username');
+$username->setPlaceholder('Username');
+$username->setErrorMessage('Username is required!');
+$username->setRequired(true);
 
-$select = ValidableInlineInput::select('Favourite car');
-$select->appendOption(null);
-$select->appendOption('saab', 'Saab');
-$select->appendOption('volvo', 'Volvo');
-$select->appendOption('ferrari', 'Ferrari');
-$select->setErrorMessage('A car model is required');
-$select->setRequired(true);
-$select->setInlineLabel('<i class="fas fa-car"></i>');
+$fname = ValidableInlineInput::text('fname');
+$fname->setRequired(true);
+$fname->setInlineLabel('<i class="fa fa-user"></i>');
+$fname->setLabel('First name');
+$fname->setPlaceholder('First name');
+$fname->setErrorMessage('First name is required!');
+$fname->setRequired(true);
+
+$lname = ValidableInlineInput::text('lname');
+$lname->setRequired(true);
+$lname->setInlineLabel('<i class="fa fa-user"></i>');
+$lname->setLabel('Last name');
+$lname->setPlaceholder('Last name');
+$lname->setErrorMessage('Last name is required!');
+$lname->setRequired(true);
+
+$carSelector = ValidableInlineInput::select('Favourite car');
+$carSelector->appendOption(null);
+$carSelector->appendOption('saab', 'Saab');
+$carSelector->appendOption('volvo', 'Volvo');
+$carSelector->appendOption('ferrari', 'Ferrari');
+$carSelector->setErrorMessage('A car model is required');
+$carSelector->setRequired(true);
+$carSelector->setInlineLabel('<i class="fas fa-car"></i>');
+
+
+$carPrice = ValidableInlineInput::text('car_price');
+$carPrice->setRequired(true);
+$carPrice->setInlineLabel('<i class="fa fa-user"></i>');
+$carPrice->setLabel('Suitable price');
+$carPrice->setPlaceholder('10.000');
+$carPrice->setErrorMessage('Car price is required and must be a decimal number!');
+$carPrice->setRequired(true);
+
+$form = new GridForm();
+$form->validation(true);
+$form->append($username);
+
+$nameRow = new BasicRow();
+$nameRow->appendCell($fname)->small(12)->medium(6);
+$nameRow->appendCell($lname)->small(12)->medium(6);
+$form->append($nameRow);
+
+
+$carRow = new BasicRow();
+$carRow->appendCell($carSelector)->small(12)->medium(6);
+$carRow->appendCell($carPrice)->small(12)->medium(6);
+$form->append($carRow);
+
+echo $form;
 ?>
 <form data-abide novalidate>
   <h4>Register for an account</h4>
@@ -27,7 +72,7 @@ $select->setInlineLabel('<i class="fas fa-car"></i>');
   </div>
   <div>
     <?php
-    echo $input.$select;
+    echo $username . $carSelector;
     ?>
     <div class="grid-x">
 

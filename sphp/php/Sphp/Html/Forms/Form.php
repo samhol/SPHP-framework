@@ -10,129 +10,173 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\ContainerTag;
-use Sphp\Html\Forms\Inputs\HiddenInput;
-use Sphp\Html\TraversableContent;
+use Sphp\Html\Content;
 
 /**
- * Implements an HTML &lt;form&gt; tag
- *
- * The form element represents a collection of form-associated elements, some
- * of which can represent editable values that can be submitted to a server
- * for processing.
+ * Defines required properties for an HTML &lt;form&gt; component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Form extends ContainerTag implements TraversableForm {
+interface Form extends Content {
 
   /**
-   * Constructor
+   * Sets the value of the method attribute
    *
-   * **Important!**
+   * The method attribute specifies how to send form-data (the form-data is
+   * sent to the page specified in the action attribute)
    *
-   * Parameter `$content` can be of any type that converts to a
-   * string or to an array of strings. So also an object of any class that
-   * implements magic method `__toString()` is allowed.
+   * @precondition `$method == "get" | $method == "post"`
    *
-   *  **Note:** The method attribute specifies how to send form-data
-   *  (the form-data is sent to the page specified in the action attribute)
-   *
-   * @precondition `$method == "get|post"`
-   * @param  string|null $action where to send the form-data when the form is submitted
-   * @param  string|null $method how to send form-data
-   * @param  mixed $content tag's content
-   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
+   * @param  string|null $method the value of the method attribute
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function __construct(string $action = null, string $method = null, $content = null) {
-    parent::__construct('form');
-    if ($content !== null) {
-      $this->append($content);
-    }
-    if ($action !== null) {
-      $this->setAction($action);
-    }
-    if ($method !== null) {
-      $this->setMethod($method);
-    }
-  }
+  public function setMethod(string $method = null);
 
-  public function setMethod(string $method = null) {
-    $this->attributes()->setAttribute('method', $method);
-    return $this;
-  }
+  /**
+   * Returns the value of the method attribute
+   *
+   * The method attribute specifies how to send form-data (the form-data is
+   * sent to the page specified in the action attribute)
+   *
+   * @return string|null the value of the method attribute
+   * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
+   */
+  public function getMethod(): ?string;
 
-  public function getMethod(): ?string {
-    return $this->attributes()->getValue("method");
-  }
+  /**
+   * Sets the value of the action attribute
+   *
+   * The action attribute specifies where to send the form-data when a form
+   * is submitted
+   *
+   * @param  string $action the value of the action attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
+   */
+  public function setAction(string $action = null);
 
-  public function setAction(string $url = null) {
-    $this->attributes()->setAttribute('action', $url);
-    return $this;
-  }
+  /**
+   * Returns the value of the action attribute
+   *
+   * The action attribute specifies where to send the form-data when a form
+   * is submitted
+   *
+   * @return string|null the value of the action attribute
+   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
+   */
+  public function getAction(): ?string;
 
-  public function getAction(): ?string {
-    return $this->attributes()->getValue('action');
-  }
+  /**
+   * Sets the value of the enctype attribute
+   *
+   * The enctype attribute specifies how the form-data should be encoded when
+   * submitting it to the server.
+   *
+   * @param  string $enctype the value of the enctype attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
+   */
+  public function setEnctype(string $enctype = null);
 
-  public function setEnctype(string $enctype = null) {
-    $this->attributes()->setAttribute('enctype', $enctype);
-    return $this;
-  }
+  /**
+   * Returns the value of the enctype attribute
+   *
+   * The enctype attribute specifies how the form-data should be encoded when
+   * submitting it to the server.
+   *
+   * @return string|null the value of the enctype attribute
+   * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
+   */
+  public function getEnctype(): ?string;
 
-  public function getEnctype(): ?string {
-    return $this->attributes()->getValue('enctype');
-  }
+  /**
+   * Sets the value of the name attribute
+   *
+   * The name attribute specifies the name of the form. The name attribute is
+   * used to reference elements in a JavaScript, or to reference form data
+   * after a form is submitted.
+   *
+   * @param  string $name the value of the name attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
+   */
+  public function setName(string $name = null);
 
-  public function setName(string $name = null) {
-    $this->attributes()->setAttribute('name', $name);
-    return $this;
-  }
+  /**
+   * Returns the value of the name attribute
+   *
+   * The name attribute specifies the name of the form. The name attribute is
+   * used to reference elements in a JavaScript, or to reference form data
+   * after a form is submitted.
+   *
+   * @return string|null the value of the name attribute
+   * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
+   */
+  public function getName(): ?string;
 
-  public function getName(): ?string {
-    return $this->attributes()->getValue('name');
-  }
+  /**
+   * Sets the autocomplete on or off
+   *
+   * When autocomplete is on, the browser automatically complete values based on values that the user has entered before.
+   *
+   * Autocomplete allows the browser to predict the value. When a user starts to type in a field,
+   * the browser should display options to fill in the field, based on earlier typed values.
+   *
+   * @param  boolean $allow (allow the browser to predict the value)
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
+   */
+  public function autocomplete(bool $allow = true);
 
-  public function autocomplete(bool $allow = true) {
-    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
-    return $this;
-  }
+  /**
+   * Sets the form as validable
+   * 
+   * @param  boolean $validable
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
+   */
+  public function validation(bool $validable = true);
 
-  public function validation(bool $validate = true) {
-    $this->attributes()->setAttribute('novalidate', !$validate);
-    return $this;
-  }
+  /**
+   * Sets the value of the target attribute
+   *
+   * **Notes:**
+   *
+   * The target attribute specifies a name or a keyword that indicates where
+   * to display the response that is received after submitting the form. The
+   * target attribute defines a name of, or keyword for, a browsing context
+   * (e.g. tab, window, or inline frame).
+   *
+   * **<var>$target</var> values:**
+   *
+   * * <var>_blank</var>: The response is displayed in a new window or tab
+   * * <var>_self</var>: The response is displayed in the same frame (this is default)
+   * * <var>_parent</var>: The response is displayed in the parent frame
+   * * <var>_top</var>: The response is displayed in the full body of the window
+   * * <var>framename</var>: The response is displayed in a named iframe
+   * 
+   * @param  string $target the value of the target attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
+   */
+  public function setTarget(string $target = null);
 
-  public function setTarget(string $target = null) {
-    $this->attributes()->setAttribute('target', $target);
-    return $this;
-  }
-
-  public function getTarget(): ?string {
-    return $this->attributes()->getValue('target');
-  }
-
-  public function appendHiddenVariable($name, $value): HiddenInput {
-    $input = new HiddenInput($name, $value);
-    $this->append($input);
-    return $input;
-  }
-
-  public function getNamedInputComponents(): TraversableContent {
-    $search = function($element) {
-      $element instanceof InputInterface && $element->isNamed();
-    };
-    return $this->getComponentsBy($search);
-  }
-
-  public function getHiddenInputs(): Inputs\HiddenInputs {
-    $search = function($element) {
-      return $element instanceof HiddenInput;
-    };
-    return $this->getComponentsBy($search);
-  }
-
+  /**
+   * Returns the value of the target attribute
+   *
+   * **Notes:**
+   *
+   * The target attribute specifies a name or a keyword that indicates where
+   * to display the response that is received after submitting the form. The
+   * target attribute defines a name of, or keyword for, a browsing context
+   * (e.g. tab, window, or inline frame).
+   *
+   * @return string|null the value of the target attribute
+   * @link  http://www.w3schools.com/tags/att_form_target.asp target attribute
+   */
+  public function getTarget(): ?string;
 }

@@ -4,19 +4,20 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 
 $form = (new GridForm())
         ->useValidation(true);
 $usernameField = (new TextInput("username"))->setPlaceholder("Username");
-$row1 = new FormRow();
-$row1->append((new BasicInputCell((new TextInput("username"))
+$row1 = new BasicRow();
+$row1->append(ValidableInlineInput::text("username")
                         ->setPlaceholder("Username")
-                        ->setRequired(), ['small-12', 'large-4']))
+                        ->setRequired(), ['small-12', 'large-4'])
                 ->setHelperText("Insert username *")
                 ->setErrorField("You need to insert a username")
-                ->setLabel("Username:"));
+                ->setLabel("Username:");
 $row1->append((new BasicInputCell((new TextInput("fname"))
                         ->setRequired()
                         ->setPlaceholder("First name"), ['small-12', 'large-4']))

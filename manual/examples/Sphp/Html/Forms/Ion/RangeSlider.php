@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 
-$form = new Form();
+$form = new ContainerForm();
 $form->validation(false)
         ->append((new RangeSlider("weightRange", 0, 10, .5))
                 ->useGrid(true)

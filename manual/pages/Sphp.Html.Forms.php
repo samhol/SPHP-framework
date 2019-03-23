@@ -5,7 +5,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Manual;
 
-$formIfLink = Manual\api()->classLinker(FormInterface::class);
+$formIfLink = Manual\api()->classLinker(Form::class);
 $traversableFormInterface = Manual\api()->classLinker(TraversableForm::class);
 $inputInterface = Manual\api()->classLinker(Input::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

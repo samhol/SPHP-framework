@@ -30,7 +30,7 @@ use ReflectionClass;
  * @method \Sphp\Html\Media\ImageMap\Polygon polygon(array $coords = null, string $href = null, string $alt = null) creates a new &lt;area&gt; object
  * @method \Sphp\Html\Media\ImageMap\Circle circle(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) creates a new &lt;area&gt; object
  * 
- * @method \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a &lt;form&gt; object
+ * @method \Sphp\Html\Forms\ContainerForm form(string $action = null, string $method = null, $content = null) creates a &lt;form&gt; object
  * @method \Sphp\Html\Forms\Fieldset fieldset(mixed $content = null, $for = null) creates a &lt;fieldset&gt; object
  * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a &lt;label&gt; object
  * @method Sphp\Html\Forms\Inputs\HiddenInput hiddenInput(mixed $content = null, $for = null) creates a &lt;input type=hidden&gt; object
@@ -79,7 +79,7 @@ abstract class Tags {
       'aside' => Flow\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,
-      'form' => Forms\Form::class,
+      'form' => Forms\ContainerForm::class,
       'label' => Forms\Label::class,
       'legend' => Forms\Legend::class,
       'fieldset' => Forms\Fieldset::class,

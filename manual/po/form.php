@@ -31,7 +31,7 @@ $perPage = new Select('view', $perPageOptions);
 $row->appendInput($perPage)->shrink();
 $row->appendInput(new Submitter('Submit', 'submit', 'submitted'))->shrink();
 
-$form = new Form('/gettext', 'get');
+$form = new ContainerForm('/gettext', 'get');
 $form->appendHiddenVariable('page', 1);
 echo 'Search';
 $form->append($row)->printHtml();

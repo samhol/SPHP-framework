@@ -52,30 +52,26 @@ interface Grid extends CssClassifiableContent, TraversableContent {
    *
    * **Important!**
    *
-   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
-   *   using {@link self::toRow()} method.
+   * * `$row` content not extending {@link Row} is wrapped inside a {@link Row} component
    *
    * @param  mixed|Row $row the new row or the content of the new row
-   * @return $this for a fluent interface
+   * @return Row appended row
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function append($row);
+  public function append($row): Row;
 
   /**
    * Prepends a new row to the grid
    *
    * **Important!**
    *
-   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
-   *   using {@link self::toRow()} method.
-   * * The numeric keys of the content will be renumbered starting from zero 
-   *    and the index of the prepended row is 'int(0)' 
+   * * `$row` content not extending {@link Row} is wrapped inside a {@link Row} component
    *
    * @param  mixed|Row $row the new row or the content of the new row
-   * @return $this for a fluent interface
+   * @return Row prepended row
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function prepend($row);
+  public function prepend($row): Row;
 
   /**
    * Returns all column components from the grid

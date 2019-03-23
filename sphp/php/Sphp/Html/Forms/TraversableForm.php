@@ -22,7 +22,7 @@ use Sphp\Html\Forms\Inputs\HiddenInputs;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface TraversableForm extends FormInterface, TraversableContent {
+interface TraversableForm extends Form, TraversableContent {
 
   /**
    * Appends a hidden variable into the form

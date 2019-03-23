@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Forms\FormInterface as FormInterface;
+use Sphp\Html\Forms\Form as FormInterface;
 use Sphp\Manual;
 
 $formInterface = Manual\api()->classLinker(FormInterface::class);

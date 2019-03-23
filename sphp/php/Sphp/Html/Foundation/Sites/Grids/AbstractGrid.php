@@ -88,19 +88,19 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
     return $this->getComponentsByObjectType(Cell::class);
   }
 
-  public function append($row) {
+  public function append($row): Row {
     if (!($row instanceof Row)) {
       $row = new BasicRow($row);
     }
     $this->content->append($row);
-    return $this;
+    return $row;
   }
 
   public function contentToString(): string {
     return $this->content->getHtml();
   }
 
-  public function prepend($row) {
+  public function prepend($row): Row {
     if (!($row instanceof Row)) {
       $row = new BasicRow($row);
     }

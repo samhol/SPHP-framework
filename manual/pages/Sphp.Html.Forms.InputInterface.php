@@ -4,9 +4,9 @@ namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Manual;
 
-use Sphp\Html\Forms\FormInterface;
+use Sphp\Html\Forms\Form;
 
-$formIfLink = Manual\api()->classLinker(FormInterface::class);
+$formIfLink = Manual\api()->classLinker(Form::class);
 $inputInterface = Manual\api()->classLinker(Input::class);
 $formController = Manual\api()->classLinker(\Sphp\Html\Forms\FormController::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);

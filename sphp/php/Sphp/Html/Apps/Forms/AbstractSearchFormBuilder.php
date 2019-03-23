@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\Forms;
 
-use Sphp\Html\Forms\FormInterface;
+use Sphp\Html\Forms\Form;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
 use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\SubmitterInterface;
@@ -18,7 +18,7 @@ use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 use Sphp\Html\Tags;
 
 /**
@@ -62,9 +62,9 @@ abstract class AbstractSearchFormBuilder {
     unset($this->hiddenData, $this->searchField, $this->submitButton);
   }
 
-  abstract public function createEmptyForm(): Form;
+  abstract public function createEmptyForm(): ContainerForm;
 
-  public function buildInputGroupForm(string $label = null): Form {
+  public function buildInputGroupForm(string $label = null): ContainerForm {
     $form = $this->createEmptyForm();
     $form->append($this->hiddenData);
     $group = new InputGroup();
@@ -77,7 +77,7 @@ abstract class AbstractSearchFormBuilder {
     return $form;
   }
 
-  public function buildMenuForm(): Form {
+  public function buildMenuForm(): ContainerForm {
     $form = $this->createEmptyForm();
     $form->append($this->hiddenData);
     $ul = Tags::ul();

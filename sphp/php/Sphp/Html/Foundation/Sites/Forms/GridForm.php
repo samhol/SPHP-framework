@@ -10,7 +10,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
+use Sphp\Html\Forms\AbstractForm;
 use Sphp\Html\Foundation\Sites\Grids\AbstractGrid;
+use Sphp\Html\Foundation\Sites\Grids\DivGrid;
 use IteratorAggregate;
 use Sphp\Html\Forms\TraversableForm;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
@@ -32,9 +34,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class GridForm extends AbstractGrid implements IteratorAggregate, Grid, TraversableForm {
-
-  use TraversableFormTrait;
+class GridForm extends AbstractForm implements IteratorAggregate, TraversableForm {
 
   /**
    * @var ContentCallout
@@ -45,6 +45,11 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
    * @var HiddenInputs
    */
   private $hiddenInputs;
+
+  /**
+   * @var DivGrid 
+   */
+  private $grid;
 
   /**
    * Constructor
@@ -59,7 +64,7 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function __construct(string $action = null, string $method = null, $content = null) {
+  public function __construct(string $action = null, string $method = null) {
     parent::__construct('form');
     $this->hiddenInputs = new HiddenInputs();
     if ($action !== null) {
@@ -68,17 +73,15 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
     if ($method !== null) {
       $this->setMethod($method);
     }
-    if ($content !== null) {
-      $this->append($content);
-    }
     $this->errorLabel = new ContentCallout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
     $this->errorLabel->cssClasses()->protectValue('alert');
     $this->errorLabel->inlineStyles()->setProperty('display', 'none');
     $this->errorLabel->attributes()->demand('data-abide-error');
+    $this->grid = new DivGrid();
   }
 
   public function __destruct() {
-    unset($this->hiddenInputs, $this->errorLabel);
+    unset($this->hiddenInputs, $this->errorLabel, $this->grid);
     parent::__destruct();
   }
 
@@ -118,7 +121,11 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
   }
 
   public function contentToString(): string {
-    return $this->errorLabel . parent::contentToString() . $this->getHiddenInputs();
+    return $this->errorLabel . $this->getGrid()->getHtml() . $this->getHiddenInputs();
+  }
+
+  public function getGrid(): Grid {
+    return $this->grid;
   }
 
   /**
@@ -133,12 +140,7 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row): Row {
-    if (!($row instanceof Row)) {
-      // echo 'fooooooo'.$row;
-      $row = new FormRow($row);
-    }
-    parent::append($row);
-    return $row;
+    return $this->getGrid()->append($row);
   }
 
   /**
@@ -152,12 +154,8 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
    * @return $this for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function prepend($row) {
-    if (!($row instanceof Row)) {
-      $row = new FormRow($row);
-    }
-    parent::prepend($row);
-    return $this;
+  public function prepend($row): Row {
+    return $this->getGrid()->prepend($row);
   }
 
   /**
@@ -210,6 +208,30 @@ class GridForm extends AbstractGrid implements IteratorAggregate, Grid, Traversa
    */
   public function getInputColumns(): TraversableContent {
     return $this->getComponentsByObjectType(InputCell::class);
+  }
+
+  public function count(): int {
+    
+  }
+
+  public function getComponentsBy(callable $rules): TraversableContent {
+    
+  }
+
+  public function getComponentsByObjectType($typeName): TraversableContent {
+    
+  }
+
+  public function getIterator(): \Traversable {
+    
+  }
+
+  public function getNamedInputComponents(): TraversableContent {
+    
+  }
+
+  public function toArray(): array {
+    
   }
 
 }

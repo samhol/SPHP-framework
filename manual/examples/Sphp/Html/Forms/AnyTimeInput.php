@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 use Sphp\Html\Forms\Label;
 
 $datetimeInput = (new AnyTimeInput("datetime"))
@@ -10,7 +10,7 @@ $datetimeInput = (new AnyTimeInput("datetime"))
 $dateInput = (new AnyTimeInput("date"))->setDateTimeFormat('%Y-%m-%d')
         ->setPlaceholder("what ever time..."); //->setLocale('fi_FI');
 
-$form = (new Form());
+$form = (new ContainerForm());
 
 $form[] = new Label("what ever time...", $datetimeInput);
 $form[] = $datetimeInput;

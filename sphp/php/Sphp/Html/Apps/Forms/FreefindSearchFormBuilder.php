@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\Forms;
 
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 /**
  * Implements a Freefind search form
  *
@@ -32,8 +32,8 @@ class FreefindSearchFormBuilder extends AbstractSearchFormBuilder {
     $this->setHiddenData($data);
   }
 
-  public function createEmptyForm(): Form {
-    $form = new Form('http://search.freefind.com/find.html', 'get');
+  public function createEmptyForm(): ContainerForm {
+    $form = new ContainerForm('http://search.freefind.com/find.html', 'get');
     $form->addCssClass('sphp', 'search-form');
     return $form;
   }

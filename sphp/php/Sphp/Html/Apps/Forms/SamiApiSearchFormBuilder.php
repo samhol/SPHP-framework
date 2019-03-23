@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\Forms;
 
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\ContainerForm;
 
 /**
  * Implements a Sami PHP API search form
@@ -42,8 +42,8 @@ class SamiApiSearchFormBuilder extends AbstractSearchFormBuilder {
     $this->getSearchField()->setName('search');
   }
 
-  public function createEmptyForm(): Form {
-    $form = new Form($this->apiRoot, 'get');
+  public function createEmptyForm(): ContainerForm {
+    $form = new ContainerForm($this->apiRoot, 'get');
     $form->addCssClass('sphp', 'search-form');
     return $form;
   }
