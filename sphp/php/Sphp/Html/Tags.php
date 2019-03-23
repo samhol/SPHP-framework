@@ -17,6 +17,9 @@ use ReflectionClass;
 /**
  * Factory for basic HTML tag component creation
  *
+ * 
+ * @method \Sphp\Html\Html html(mixed $content = null) creates a new html tag component
+ * 
  * @method \Sphp\Html\Head\MetaTag meta(array $meta = []) creates a new span tag component
  * 
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
@@ -32,6 +35,7 @@ use ReflectionClass;
  * @method \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a &lt;label&gt; object
  * @method Sphp\Html\Forms\Inputs\HiddenInput hiddenInput(mixed $content = null, $for = null) creates a &lt;input type=hidden&gt; object
  * @method Sphp\Html\Forms\Inputs\TextInput textInput(mixed $content = null, $for = null) creates a &lt;input type=text&gt; object
+ * @method Sphp\Html\Forms\Inputs\Radiobox radio(mixed $content = null, $for = null) creates a &lt;input type=radio&gt; object
  * 
  * @method \Sphp\Html\Flow\Headings\H1 h1(mixed $content = null) creates a new HTML &lt;h1&gt; object
  * @method \Sphp\Html\Flow\Headings\H2 h2(mixed $content = null) creates a new HTML &lt;h2&gt; object
@@ -75,7 +79,6 @@ abstract class Tags {
       'aside' => Flow\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,
-      'br' => EmptyTag::class,
       'form' => Forms\Form::class,
       'label' => Forms\Label::class,
       'legend' => Forms\Legend::class,
@@ -88,7 +91,7 @@ abstract class Tags {
       'textInput' => Forms\Inputs\TextInput::class,
       'emailInput' => Forms\Inputs\EmailInput::class,
       'passwordInput' => Forms\Inputs\PasswordInput::class,
-      'radiobox' => Forms\Inputs\Radiobox::class,
+      'radio' => Forms\Inputs\Radiobox::class,
       'checkbox' => Forms\Inputs\Checkbox::class,
       'numberInput' => Forms\Inputs\NumberInput::class,
       'resetInput' => Forms\Inputs\Buttons\ResetInput::class,
@@ -99,35 +102,22 @@ abstract class Tags {
       'canvas' => ContainerTag::class,
       'caption' => Tables\Caption::class,
       'cite' => ContainerTag::class,
-      'code' => ContainerTag::class,
-      'command' => ContainerTag::class,
       'datalist' => ContainerTag::class,
       'dd' => Lists\Dd::class,
-      'del' => ContainerTag::class,
-      'details' => ContainerTag::class,
-      'dfn' => ContainerTag::class,
-      'dialog' => ContainerTag::class,
-      'dir' => ContainerTag::class,
       'div' => Div::class,
-      'em' => ContainerTag::class,
       'figure' => Media\Figure::class,
       'header' => ContainerTag::class,
       'main' => Flow\Main::class,
       'footer' => Flow\Footer::class,
-      'hgroup' => ContainerTag::class,
       'h1' => Flow\Headings\H1::class,
       'h2' => Flow\Headings\H2::class,
       'h3' => Flow\Headings\H3::class,
       'h4' => Flow\Headings\H4::class,
       'h5' => Flow\Headings\H5::class,
       'h6' => Flow\Headings\H6::class,
-      'hr' => EmptyTag::class,
       'html' => Html::class,
-      'ins' => ContainerTag::class,
-      'kbd' => ContainerTag::class,
       'keygen' => EmptyTag::class,
       'link' => Head\LinkTag::class,
-      'mark' => ContainerTag::class,
       'menu' => ContainerTag::class,
       'head' => Head\Head::class,
       'meta' => Head\MetaTag::class,
@@ -172,31 +162,12 @@ abstract class Tags {
       'colgroup' => Tables\Colgroup::class,
       'col' => Tables\Col::class,
       'time' => DateTime\TimeTag::class,
-      'var' => ContainerTag::class,
-      'xmp' => ContainerTag::class,
       'pre' => ContainerTag::class,
       'progress' => ContainerTag::class,
-      'q' => ContainerTag::class,
-      'rp' => ContainerTag::class,
-      'rt' => ContainerTag::class,
-      'ruby' => ContainerTag::class,
-      's' => ContainerTag::class,
-      'samp' => ContainerTag::class,
-      'u' => ContainerTag::class,
       'i' => ContainerTag::class,
-      'bdi' => ContainerTag::class,
-      'bdo' => ContainerTag::class,
-      'big' => ContainerTag::class,
       'blockquote' => ContainerTag::class,
-      'b' => ContainerTag::class,
-      'small' => ContainerTag::class,
-      'abbr' => ContainerTag::class,
       'address' => ContainerTag::class,
-      'strong' => ContainerTag::class,
       'style' => ContainerTag::class,
-      'sub' => ContainerTag::class,
-      'summary' => ContainerTag::class,
-      'sup' => ContainerTag::class,
       'wbr' => EmptyTag::class,
   );
 
@@ -236,14 +207,11 @@ abstract class Tags {
     if (!isset(static::$tags[$name])) {
       throw new InvalidArgumentException("Method $name does not exist");
     }
-    if (is_string(static::$tags[$name])) {
-      static::$tags[$name] = new ReflectionClass(static::$tags[$name]);
-    }
-    $reflectionClass = static::$tags[$name];
+    $reflectionClass = new ReflectionClass(static::$tags[$name]);
     if ($reflectionClass->getName() == EmptyTag::class || $reflectionClass->getName() == ContainerTag::class) {
       array_unshift($arguments, $name);
     }
-    $instance = static::$tags[$name]->newInstanceArgs($arguments);
+    $instance = $reflectionClass->newInstanceArgs($arguments);
     return $instance;
   }
 

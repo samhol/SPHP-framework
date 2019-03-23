@@ -1,5 +1,5 @@
 ---
-Sphp\Html\Forms\inputs\Factory:
+Sphp\Html\Forms\inputs\FormControls:
   Inputs: 
     hidden:
        desc: 'A hidden input'
