@@ -58,7 +58,7 @@ trait FormTrait {
    * @return string the value of the method attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function getMethod() {
+  public function getMethod(): ?string {
     return $this->attributes()->getValue("method");
   }
 
@@ -84,10 +84,10 @@ trait FormTrait {
   /**
    * Returns the value of the action attribute
    *
-   * @return string the value of the action attribute
+   * @return string|null the value of the action attribute
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
-  public function getAction() {
+  public function getAction(): ?string {
     return $this->attributes()->getValue('action');
   }
 
@@ -113,7 +113,7 @@ trait FormTrait {
    * @return string the value of the enctype attribute
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
-  public function getEnctype() {
+  public function getEnctype(): ?string {
     return $this->attributes()->getValue('enctype');
   }
 
@@ -143,7 +143,7 @@ trait FormTrait {
    * @return string the value of the name attribute
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function getName() {
+  public function getName(): ?string {
     return $this->attributes()->getValue('name');
   }
 
@@ -212,10 +212,10 @@ trait FormTrait {
    * target attribute defines a name of, or keyword for, a browsing context
    * (e.g. tab, window, or inline frame).
    *
-   * @return string the value of the target attribute
+   * @return string|null the value of the target attribute
    * @link  http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
-  public function getTarget() {
+  public function getTarget(): ?string {
     return $this->attributes()->getValue('target');
   }
 

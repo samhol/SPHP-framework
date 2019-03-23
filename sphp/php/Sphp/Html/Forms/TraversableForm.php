@@ -38,18 +38,6 @@ interface TraversableForm extends FormInterface, TraversableContent {
   public function appendHiddenVariable($name, $value): HiddenInput;
 
   /**
-   * Appends the hidden data to the form
-   *
-   * Appended `$key => $value` pairs are stored into 
-   *  {@link HiddenInput} components.
-   *
-   * @param  string[] $vars name => value pairs
-   * @return $this for a fluent interface
-   * @see    HiddenInput
-   */
-  public function appendHiddenVariables(array $vars);
-
-  /**
    * Returns all named input components in the form
    *
    * @return TraversableContent containing matching sub components

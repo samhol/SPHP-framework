@@ -30,7 +30,7 @@ interface FormInterface extends Content {
    *
    * @precondition `$method == "get" | $method == "post"`
    *
-   * @param  string $method the value of the method attribute
+   * @param  string|null $method the value of the method attribute
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
@@ -42,10 +42,10 @@ interface FormInterface extends Content {
    * The method attribute specifies how to send form-data (the form-data is
    * sent to the page specified in the action attribute)
    *
-   * @return string the value of the method attribute
+   * @return string|null the value of the method attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function getMethod();
+  public function getMethod(): ?string;
 
   /**
    * Sets the value of the action attribute
@@ -65,10 +65,10 @@ interface FormInterface extends Content {
    * The action attribute specifies where to send the form-data when a form
    * is submitted
    *
-   * @return string the value of the action attribute
+   * @return string|null the value of the action attribute
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
-  public function getAction();
+  public function getAction(): ?string;
 
   /**
    * Sets the value of the enctype attribute
@@ -88,10 +88,10 @@ interface FormInterface extends Content {
    * The enctype attribute specifies how the form-data should be encoded when
    * submitting it to the server.
    *
-   * @return string the value of the enctype attribute
+   * @return string|null the value of the enctype attribute
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
-  public function getEnctype();
+  public function getEnctype(): ?string;
 
   /**
    * Sets the value of the name attribute
@@ -113,10 +113,10 @@ interface FormInterface extends Content {
    * used to reference elements in a JavaScript, or to reference form data
    * after a form is submitted.
    *
-   * @return string the value of the name attribute
+   * @return string|null the value of the name attribute
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function getName();
+  public function getName(): ?string;
 
   /**
    * Sets the autocomplete on or off
@@ -175,9 +175,8 @@ interface FormInterface extends Content {
    * target attribute defines a name of, or keyword for, a browsing context
    * (e.g. tab, window, or inline frame).
    *
-   * @return string the value of the target attribute
+   * @return string|null the value of the target attribute
    * @link  http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
-  public function getTarget();
-
+  public function getTarget(): ?string;
 }

@@ -12,6 +12,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\ContainerTag;
 use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Html\TraversableContent;
 
 /**
  * Implements an HTML &lt;form&gt; tag
@@ -26,8 +27,6 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
  * @filesource
  */
 class Form extends ContainerTag implements TraversableForm {
-
-  use TraversableFormTrait;
 
   /**
    * Constructor
@@ -61,37 +60,79 @@ class Form extends ContainerTag implements TraversableForm {
     }
   }
 
-  /**
-   * Appends a hidden variable to the form
-   *
-   * The `$name => $value` pair is stored into a {@link HiddenInput} component.
-   *
-   * @param  string $name th name of the hidden variable
-   * @param  scalar $value the value of the hidden variable
-   * @return $this for a fluent interface
-   * @see    HiddenInput
-   */
-  public function appendHiddenVariable($name, $value):HiddenInput {
+  public function setMethod(string $method = null) {
+    $this->attributes()->setAttribute('method', $method);
+    return $this;
+  }
+
+  public function getMethod(): ?string {
+    return $this->attributes()->getValue("method");
+  }
+
+  public function setAction(string $url = null) {
+    $this->attributes()->setAttribute('action', $url);
+    return $this;
+  }
+
+  public function getAction(): ?string {
+    return $this->attributes()->getValue('action');
+  }
+
+  public function setEnctype(string $enctype = null) {
+    $this->attributes()->setAttribute('enctype', $enctype);
+    return $this;
+  }
+
+  public function getEnctype(): ?string {
+    return $this->attributes()->getValue('enctype');
+  }
+
+  public function setName(string $name = null) {
+    $this->attributes()->setAttribute('name', $name);
+    return $this;
+  }
+
+  public function getName(): ?string {
+    return $this->attributes()->getValue('name');
+  }
+
+  public function autocomplete(bool $allow = true) {
+    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
+    return $this;
+  }
+
+  public function validation(bool $validate = true) {
+    $this->attributes()->setAttribute('novalidate', !$validate);
+    return $this;
+  }
+
+  public function setTarget(string $target = null) {
+    $this->attributes()->setAttribute('target', $target);
+    return $this;
+  }
+
+  public function getTarget(): ?string {
+    return $this->attributes()->getValue('target');
+  }
+
+  public function appendHiddenVariable($name, $value): HiddenInput {
     $input = new HiddenInput($name, $value);
     $this->append($input);
     return $input;
   }
 
-  /**
-   * Appends the hidden data to the form
-   *
-   * Appended `$key => $value` pairs are stored into 
-   *  {@link HiddenInput} components.
-   *
-   * @param  string[] $vars name => value pairs
-   * @return $this for a fluent interface
-   * @see    HiddenInput
-   */
-  public function appendHiddenVariables(array $vars) {
-    foreach ($vars as $name => $value) {
-      $this->appendHiddenVariable($name, $value);
-    }
-    return $this;
+  public function getNamedInputComponents(): TraversableContent {
+    $search = function($element) {
+      $element instanceof InputInterface && $element->isNamed();
+    };
+    return $this->getComponentsBy($search);
+  }
+
+  public function getHiddenInputs(): Inputs\HiddenInputs {
+    $search = function($element) {
+      return $element instanceof HiddenInput;
+    };
+    return $this->getComponentsBy($search);
   }
 
 }
