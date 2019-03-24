@@ -11,7 +11,6 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\PlainContainer;
-use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 use Sphp\Html\Container;
 
 /**
@@ -63,7 +62,7 @@ class ContainerCell extends AbstractCell {
     return $this->content->getHtml();
   }
 
-  public static function create($content, array $layout = ['auto']): ContainerCell {
+  public static function create($content, array $layout = []): ContainerCell {
     return new static($content, $layout);
   }
 

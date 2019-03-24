@@ -127,7 +127,9 @@ abstract class AbstractSearchFormBuilder {
   }
 
   public function setHiddenData(array $hiddenData) {
-    $this->hiddenData->setVariables($hiddenData);
+    foreach ($hiddenData as $name => $value) {
+      $this->hiddenData->insertVariable($name, $value);
+    }
     return $this;
   }
 

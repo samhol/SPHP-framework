@@ -21,7 +21,10 @@ use Sphp\Exceptions\BadMethodCallException;
  * Implements a Validable Foundation based Inline Input
  * 
  * 
- * @method \Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput select(string $name = null, $value = null) creates a new validable select input
+ * @method \Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput number(string $name = null, $value = null) creates a new `number` input
+ * @method \Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput text(string $name = null, $value = null) creates a new `text` input
+ * @method \Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput textarea(string $name = null, $value = null) creates a new `textarea` input
+ * @method \Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput select(string $name = null, $value = null) creates a new `select` input
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -39,7 +42,12 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
   /**
    * @var Label 
    */
-  private $inlineLabel;
+  private $leftInlineLabel;
+
+  /**
+   * @var Label 
+   */
+  private $rightInlineLabel;
 
   /**
    * @var ValidableInput 
@@ -69,26 +77,35 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
     if (!$input instanceof \Sphp\Html\Component) {
       throw new InvalidArgumentException('Invalid input type');
     }
-    if ($label === null) {
-      $label = $input->getName();
-    }
     $this->input = $input;
     $this->input->addCssClass('input-group-field');
     $this->inputReflector = new ReflectionClass($this->input);
-    $this->label = new Label($label);
-    $this->label->setFor($this->input);
+    $this->buildLabel($label);
     $this->errorMessage = new Label($errorMessage);
     $this->errorMessage->addCssClass('form-error');
     $this->errorMessage->setFor($this->input);
-    $this->inlineLabel = new Label();
-    $this->inlineLabel->addCssClass('input-group-label');
-    $this->inlineLabel->setFor($this->input);
+    $this->leftInlineLabel = new Label();
+    $this->leftInlineLabel->addCssClass('input-group-label');
+    $this->leftInlineLabel->setFor($this->input);
+
+    $this->rightInlineLabel = new Label();
+    $this->rightInlineLabel->addCssClass('input-group-label');
+    $this->rightInlineLabel->setFor($this->input);
+
     $this->errorMessage->setAttribute('data-form-error-for', $this->input->identify());
   }
 
   public function __destruct() {
-    unset($this->label, $this->inlineLabel, $this->errorMessage, $this->input, $this->inputReflector);
+    unset($this->label, $this->leftInlineLabel, $this->errorMessage, $this->input, $this->inputReflector);
     parent::__destruct();
+  }
+
+  private function buildLabel(string $label = null) {
+    if ($label === null) {
+      $label = $this->getInput()->getName();
+    }
+    $this->label = new Label($label);
+    $this->label->setFor($this->getInput());
   }
 
   /**
@@ -123,6 +140,10 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
     return $this;
   }
 
+  /**
+   * 
+   * @return ValidableInput
+   */
   public function getInput(): ValidableInput {
     return $this->input;
   }
@@ -134,15 +155,6 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
    */
   public function getLabel(): Label {
     return $this->label;
-  }
-
-  /**
-   * Returns the inline input label
-   * 
-   * @return Label the inline input label
-   */
-  public function getInlineLabel(): Label {
-    return $this->inlineLabel;
   }
 
   /**
@@ -166,13 +178,42 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
   }
 
   /**
-   * Sets the inline label content
+   * Returns the left inline label
    * 
-   * @param  string|null $inlineLabel the inline label content
+   * @return Label the left inline label
+   */
+  public function getLeftInlineLabel(): Label {
+    return $this->leftInlineLabel;
+  }
+
+  /**
+   * Sets the left inline label content
+   * 
+   * @param  string|null $inlineLabel left inline label content
    * @return $this for a fluent interface
    */
-  public function setInlineLabel(string $inlineLabel = null) {
-    $this->inlineLabel->resetContent($inlineLabel);
+  public function setLeftInlineLabel(string $inlineLabel = null) {
+    $this->getLeftInlineLabel()->resetContent($inlineLabel);
+    return $this;
+  }
+
+  /**
+   * Returns the right inline label
+   * 
+   * @return Label the right inline label
+   */
+  public function getRightInlineLabel(): Label {
+    return $this->rightInlineLabel;
+  }
+
+  /**
+   * Sets the right inline label content
+   * 
+   * @param  string|null $content right inline label content
+   * @return $this for a fluent interface
+   */
+  public function setRightInlineLabel(string $content = null) {
+    $this->getRightInlineLabel()->resetContent($content);
     return $this;
   }
 
@@ -189,10 +230,14 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
 
   public function contentToString(): string {
     $output = $this->getLabel() . '<div class="input-group">';
-    if ($this->getInlineLabel()->contentToString() !== '') {
-      $output .= $this->inlineLabel;
+    if ($this->getLeftInlineLabel()->contentToString() !== '') {
+      $output .= $this->leftInlineLabel;
     }
-    return $output .= $this->input . '</div>' . $this->errorMessage;
+    $output .= $this->input->getHtml();
+    if ($this->getRightInlineLabel()->contentToString() !== '') {
+      $output .= $this->getRightInlineLabel();
+    }
+    return $output .= '</div>' . $this->errorMessage;
   }
 
   /**

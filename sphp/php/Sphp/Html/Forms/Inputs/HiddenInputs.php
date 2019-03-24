@@ -14,6 +14,7 @@ use Sphp\Html\AbstractContent;
 use IteratorAggregate;
 use Sphp\Html\Iterator;
 use Traversable;
+use Sphp\Html\Forms\FormController;
 
 /**
  * Implements hidden data component for HTML forms
@@ -22,7 +23,7 @@ use Traversable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\Html\Forms\FormController {
+class HiddenInputs extends AbstractContent implements IteratorAggregate, FormController {
 
   /**
    * @var HiddenInput[]
@@ -36,6 +37,9 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\H
     $this->inputs = [];
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->inputs);
   }
@@ -47,7 +51,7 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\H
   /**
    * Inserts a hidden variable to the form
    *
-   * @param  string $name th name of the hidden variable
+   * @param  string $name the name of the hidden variable
    * @param  scalar $value the value of the hidden variable
    * @return HiddenInput inserted hidden input
    */
@@ -55,19 +59,6 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\H
     $input = new HiddenInput($name, $value);
     $this->inputs[] = $input;
     return $input;
-  }
-
-  /**
-   * Sets the hidden data to the form
-   *
-   * @param  string[] $vars name => value pairs
-   * @return $this for a fluent interface
-   */
-  public function setVariables(array $vars) {
-    foreach ($vars as $name => $value) {
-      $this->insertVariable($name, $value);
-    }
-    return $this;
   }
 
   public function contains(string $name): bool {
@@ -101,7 +92,7 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\H
     return new Iterator($this->inputs);
   }
 
-  public function disable(bool $disabled = true): \this {
+  public function disable(bool $disabled = true) {
     foreach ($this->inputs as $input) {
       $input->disable($disabled);
     }
