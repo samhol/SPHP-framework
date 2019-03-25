@@ -13,5 +13,6 @@ $distance = (new RangeSlider("distance", 100, 200, .5))
         ->setInitialValue([120, 150]);
 
 $form = new GridForm();
-$form->append([$hours, $score, $distance]);
+$form->getGrid()->setFull();
+$form->append([$hours, $score, $distance])->useMargin(true);
 echo $form;
