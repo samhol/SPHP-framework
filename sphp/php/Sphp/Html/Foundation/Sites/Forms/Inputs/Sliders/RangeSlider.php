@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs\Sliders;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Span;
@@ -219,6 +219,10 @@ class RangeSlider extends AbstractSlider {
 
   public function contentToString(): string {
     return $this->lowerHandle . '<span class="slider-fill" data-slider-fill></span>' . $this->upperHandle . $this->lowerInput . $this->upperInput;
+  }
+  
+  public function buildValueViewer() {
+    return new ValueRangeViewer($this->lowerInput, $this->upperInput);
   }
 
 }

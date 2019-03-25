@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs\Sliders;
 
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs\Sliders;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Forms\Inputs\Input;

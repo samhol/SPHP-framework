@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs\Sliders;
 
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 
@@ -14,5 +14,5 @@ $distance = (new RangeSlider("distance", 100, 200, .5))
 
 $form = new GridForm();
 $form->getGrid()->setFull();
-$form->append([$hours, $score, $distance])->useMargin(true);
+$form->append([$hours, $score, $distance . $distance->buildValueViewer()])->useMargin(true);
 echo $form;
