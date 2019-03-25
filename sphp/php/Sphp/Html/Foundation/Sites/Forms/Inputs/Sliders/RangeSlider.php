@@ -222,7 +222,8 @@ class RangeSlider extends AbstractSlider {
   }
   
   public function buildValueViewer() {
-    return new ValueRangeViewer($this->lowerInput, $this->upperInput);
+    //$this->identify();
+    return new ValueRangeViewer($this->identify());
   }
 
 }

@@ -143,6 +143,6 @@ echo $form;
       <input class="input-group-field" type="text" placeholder="Password">
     </div>
   </div>
-
+<input type="range" min="1" max="100" step="1">
   <button class="button expanded">Sign Up</button>
 </form>

@@ -24,33 +24,25 @@ use Sphp\Html\Span;
  */
 class ValueRangeViewer extends AbstractComponent {
 
-  /**
-   * @var Input 
-   */
-  private $minViewer;
 
-  /**
-   * @var Input 
-   */
-  private $maxViewer;
-
-  public function __construct(Input $minInput, Input $maxInput) {
+  public function __construct(string $for) {
     parent::__construct('span');
-    $this->minViewer = new Span;
-    $this->maxViewer = new Span;
-    $this->minViewer->setAttribute('data-min', $minInput->identify());
-    $this->minViewer->resetContent($minInput->getSubmitValue());
-    $this->maxViewer->setAttribute('data-max', $maxInput->identify());
-    $this->maxViewer->resetContent($maxInput->getSubmitValue());
+    $this->setAttribute('data-sphp-sider-value-for', $for);
+    /*  $this->minViewer = new Span;
+      $this->maxViewer = new Span;
+      $this->minViewer->setAttribute('data-min', $minInput->identify());
+      $this->minViewer->resetContent($minInput->getSubmitValue());
+      $this->maxViewer->setAttribute('data-max', $maxInput->identify());
+      $this->maxViewer->resetContent($maxInput->getSubmitValue()); */
   }
 
-  public function __destruct() {
+  /* public function __destruct() {
     unset($this->minViewer, $this->maxViewer);
     parent::__destruct();
-  }
+    } */
 
   public function contentToString(): string {
-    return $this->minViewer->getHtml() . '-' . $this->maxViewer->getHtml();
+    return '';
   }
 
 }

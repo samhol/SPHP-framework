@@ -185,13 +185,13 @@ if (!window.console.log) {
     $("[data-sphp-ajax-append]").sphpAjaxAppend();
     $("[data-sphp-ajax-prepend]").sphpAjaxPrepend();
     $("[data-sphp-foundation-rangeslider]").sphpFoundationRangeSliderValueViewer();
+    $('.slider').sphpFoundationSliderValueViewer();
     /*$ajaxLoaders.on("sphp-ajax-loader-finished", function () {
      console.log("SPHP Ajax loader finished loaded...");
      $(this).foundation();
      //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
      });*/
     //$(".sphp-viewport-size-viewer").viewportSizeViewer();
-
     $("[data-sphp-qtip]").qtips();
     $('div[data-switch-board]').switchBoard();
     $('.sphp.cookie-banner').cookieBanner();
