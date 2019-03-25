@@ -49,24 +49,33 @@
       } else {
         slider();
       }
-      function center($handle, $minPaddleOutput) {
-        var $width = $handle.width(), $outputWidth = $minPaddleOutput.width();
-        $minPaddleOutput.css({
-          left: ($width / 2 - $outputWidth / 2) + 'px'
+      function center($handle, $value) {
+        var $width = $handle.width(), $output = $handle.find('.output'), $outputWidth = $handle.width();
+        console.log("$width: " + $width);
+        console.log("$outputWidth: " + $outputWidth);
+        $output.html($value);
+        $output.css({
+          left: Math.floor(($width / 2 - $outputWidth / 2)) + 'px'
         });
       }
       function rangeSlider() {
-        var $minInput, $maxInput, $handle1, $minPaddleOutput;
+        var $minInput, $maxInput, $handle1, $handle2, $minPaddleOutput, $maxPaddleOutput;
         $handle1 = $($slider.find('.slider-handle').get(0));
+        $handle2 = $($slider.find('.slider-handle').get(1));
         $minInput = $($inputs.get(0));
         $maxInput = $($inputs.get(1));
         $minPaddleOutput = $('<div class="output">');
         $handle1.html($minPaddleOutput);
+        $maxPaddleOutput = $('<div class="output">');
+        $handle2.html($maxPaddleOutput);
         $slider.on('moved.zf.slider', function () {
+          var $min = $minInput.val(), $max = $maxInput.val();
           //console.log("Inputs changed");
           $output.html('<samp>' + $minInput.val() + '</samp>-<samp>' + $maxInput.val() + '</samp>');
-          $minPaddleOutput.html($minInput.val());
-          center($handle1, $minPaddleOutput);
+          $minPaddleOutput.html($min);
+          $maxPaddleOutput.html($max);
+          center($handle1, $min);
+          center($handle2, $max);
         });
       }
       function slider() {
