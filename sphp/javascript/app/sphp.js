@@ -184,7 +184,7 @@ if (!window.console.log) {
     //$ajaxLoaders.sphpAjaxLoader();
     $("[data-sphp-ajax-append]").sphpAjaxAppend();
     $("[data-sphp-ajax-prepend]").sphpAjaxPrepend();
-    $("[data-sphp-foundation-rangeslider]").sphpFoundationRangeSliderValueViewer();
+    //$("[data-sphp-foundation-rangeslider]").sphpFoundationRangeSliderValueViewer();
     $('.slider').sphpFoundationSliderValueViewer();
     /*$ajaxLoaders.on("sphp-ajax-loader-finished", function () {
      console.log("SPHP Ajax loader finished loaded...");

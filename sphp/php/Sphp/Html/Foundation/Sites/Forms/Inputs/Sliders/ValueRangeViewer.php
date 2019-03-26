@@ -24,7 +24,6 @@ use Sphp\Html\Span;
  */
 class ValueRangeViewer extends AbstractComponent {
 
-
   public function __construct(string $for) {
     parent::__construct('span');
     $this->setAttribute('data-sphp-sider-value-for', $for);

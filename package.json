@@ -39,7 +39,7 @@
     "npm-check-updates": "^3.1.1"
   },
   "scripts": {
-    "postinstall": "gulp build_all"
+    "postinstall": "gulp default"
   },
   "homepage": "http://playground.samiholck.com/"
 }

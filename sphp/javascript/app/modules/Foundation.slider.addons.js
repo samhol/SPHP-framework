@@ -50,7 +50,7 @@
         slider();
       }
       function center($handle, $value) {
-        var $width = $handle.width(), $output = $handle.find('.output'), $outputWidth = $handle.width();
+        var $width = $handle.width(), $output = $handle.find('.output'), $outputWidth = $output.width();
         console.log("$width: " + $width);
         console.log("$outputWidth: " + $outputWidth);
         $output.html($value);
@@ -59,21 +59,44 @@
         });
       }
       function rangeSlider() {
-        var $minInput, $maxInput, $handle1, $handle2, $minPaddleOutput, $maxPaddleOutput;
-        $handle1 = $($slider.find('.slider-handle').get(0));
-        $handle2 = $($slider.find('.slider-handle').get(1));
-        $minInput = $($inputs.get(0));
-        $maxInput = $($inputs.get(1));
-        $minPaddleOutput = $('<div class="output">');
-        $handle1.html($minPaddleOutput);
-        $maxPaddleOutput = $('<div class="output">');
-        $handle2.html($maxPaddleOutput);
+        var $minInput, $maxInput, $handle1, $handle2;//, $minPaddleOutput, $maxPaddleOutput;
+        $handle2 = $slider.find('.slider-handle:last-of-type');
+        $handle1 = $slider.find('.slider-handle:first-of-type');
+        $minInput = $slider.find('input:nth-of-type(1)');
+        $maxInput = $slider.find('input:nth-of-type(2)');
+        // $minPaddleOutput = $('<div class="output">');
+        $handle2.on('focus', function () {
+          $handle1.addClass('show-value');
+          console.log('2 focus');
+        });
+        $handle2.on("blur", function () {
+          $handle1.removeClass('show-value');
+          console.log('2 blur');
+        });
+             $handle1.on('focus', function () {
+          $handle2.addClass('show-value');
+          console.log('1 focus');
+        });
+        $handle1.on("blur", function () {
+          $handle2.removeClass('show-value');
+          console.log('1 blur');
+        });
+        $handle1.html('<div class="output">');
+        // $maxPaddleOutput = $('<div class="output">');
+        $handle2.html('<div class="output">');
+        //console.log($handle2);
+        $handle1.css("background-color", "red")
+        $handle2.css("background-color", "red")
+        console.log($handle2.css("color", "red"));
+        console.log($handle2.attr('class'));
+        console.log($handle2.attr('class'));
+        console.log($handle2.attr('class'));
         $slider.on('moved.zf.slider', function () {
           var $min = $minInput.val(), $max = $maxInput.val();
           //console.log("Inputs changed");
-          $output.html('<samp>' + $minInput.val() + '</samp>-<samp>' + $maxInput.val() + '</samp>');
-          $minPaddleOutput.html($min);
-          $maxPaddleOutput.html($max);
+          $output.html('<samp>' + $min + '</samp>-<samp>' + $max + '</samp>');
+          // $minPaddleOutput.html($min);
+          // $maxPaddleOutput.html($max);
           center($handle1, $min);
           center($handle2, $max);
         });

@@ -70,7 +70,7 @@
 
     }
   } 
-  &:hover, .slider-handle:focus {
+  &:hover, .slider-handle:focus, .slider-handle.show-value {
     .output {
       display: block;
     } 
