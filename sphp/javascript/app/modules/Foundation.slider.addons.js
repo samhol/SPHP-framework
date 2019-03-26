@@ -87,10 +87,6 @@
         //console.log($handle2);
         $handle1.css("background-color", "red")
         $handle2.css("background-color", "red")
-        console.log($handle2.css("color", "red"));
-        console.log($handle2.attr('class'));
-        console.log($handle2.attr('class'));
-        console.log($handle2.attr('class'));
         $slider.on('moved.zf.slider', function () {
           var $min = $minInput.val(), $max = $maxInput.val();
           //console.log("Inputs changed");
