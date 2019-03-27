@@ -38,7 +38,7 @@
    * @memberOf jQuery.fn#
    * @returns  {jQuery.fn} object for method chaining
    */
-  $.fn.sphpFoundationSliderValueViewer = function () {
+  $.fn.sphpFoundationSlider = function () { 
     return this.each(function () {
       var $slider = $(this), $inputs, $output;
       console.log('Init sphpFoundationSliderValueViewer()');
@@ -73,7 +73,7 @@
           $handle1.removeClass('show-value');
           console.log('2 blur');
         });
-             $handle1.on('focus', function () {
+        $handle1.on('focus', function () {
           $handle2.addClass('show-value');
           console.log('1 focus');
         });
@@ -85,8 +85,8 @@
         // $maxPaddleOutput = $('<div class="output">');
         $handle2.html('<div class="output">');
         //console.log($handle2);
-        $handle1.css("background-color", "red")
-        $handle2.css("background-color", "red")
+        //$handle1.css("background-color", "red")
+        //$handle2.css("background-color", "red")
         $slider.on('moved.zf.slider', function () {
           var $min = $minInput.val(), $max = $maxInput.val();
           //console.log("Inputs changed");

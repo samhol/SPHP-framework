@@ -11,6 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
 
 /**
  * Description of ResponsiveMenu
@@ -20,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Core\FoundationSettings;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ResponsiveMenu extends AbstractMenu implements JsMenu {
+class ResponsiveMenu extends AbstractMenu implements JavaScriptComponent {
 
   /**
    * @var FoundationSettings 
@@ -51,7 +52,7 @@ class ResponsiveMenu extends AbstractMenu implements JsMenu {
     }
     $dataAttrName = preg_replace('/([A-Z])/', '-$1', $name);
     //echo strtolower($dataAttrName);
-    if(!\Sphp\Stdlib\Strings::startsWith($dataAttrName, 'data-')) {
+    if (!\Sphp\Stdlib\Strings::startsWith($dataAttrName, 'data-')) {
       $dataAttrName = "data-$dataAttrName";
     }
     $this->setAttribute(strtolower($dataAttrName), $value);

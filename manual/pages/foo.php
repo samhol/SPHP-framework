@@ -118,13 +118,13 @@ echo $form;
 
     <div class="cell small-6">
       <div class="sphp-foundation-slider" data-sphp-foundation-rangeslider>
-        <label>Price range: <span data-sphp-min="pmin"></span>-<span data-sphp-max="pmax"></span>€</label>
-        <div class="slider" data-slider data-start="0" data-step="500" data-end="100000" data-initial-start="25000" data-initial-end="75000">
+        <label>Price range: <span data-sphp-sider-value-for="shit"></span>€</label>
+        <div class="slider" id="shit" data-slider data-start="0" data-step="500" data-end="100000" data-initial-start="25000" data-initial-end="75000">
           <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
           <span class="slider-fill" data-slider-fill></span>
           <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-          <input name="price[min]" id="pmin" type="hidden">
-          <input name="price[max]" id="pmax" type="hidden">
+          <input name="price[min]" type="hidden">
+          <input name="price[max]" type="hidden">
         </div>
       </div>
     </div>
@@ -143,6 +143,6 @@ echo $form;
       <input class="input-group-field" type="text" placeholder="Password">
     </div>
   </div>
-<input type="range" min="1" max="100" step="1">
+  <input type="range" min="1" max="100" step="1">
   <button class="button expanded">Sign Up</button>
 </form>

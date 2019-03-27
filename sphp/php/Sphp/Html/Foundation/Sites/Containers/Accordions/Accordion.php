@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use IteratorAggregate;
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
 use Sphp\Html\Iterator;
@@ -25,7 +25,7 @@ use Sphp\Html\Iterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Accordion extends AbstractComponent implements IteratorAggregate, TraversableContent {
+class Accordion extends AbstractJavaScriptComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -100,7 +100,7 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
    * @return $this for a fluent interface
    */
   public function setSliderSpeed(int $speed) {
-    $this->attributes()->setAttribute('data-slide-speed', $speed);
+    $this->setOption('data-slide-speed', $speed);
     return $this;
   }
 
@@ -111,8 +111,7 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
    * @return $this for a fluent interface
    */
   public function allowMultiExpand(bool $allow = true) {
-    $value = $allow ? 'true' : 'false';
-    $this->attributes()->setAttribute('data-multi-expand', $value);
+    $this->setOption('data-multi-expand', $allow);
     return $this;
   }
 
@@ -123,8 +122,7 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
    * @return $this for a fluent interface
    */
   public function allowAllClosed(bool $allow = true) {
-    $value = $allow ? 'true' : 'false';
-    $this->attributes()->setAttribute('data-allow-all-closed', $value);
+    $this->setOption('data-allow-all-closed', $allow);
     return $this;
   }
 
@@ -135,11 +133,10 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
    * @return $this for a fluent interface
    */
   public function useDeepLinking(bool $deepLinking = true) {
-    $value = $deepLinking ? 'true' : 'false';
-    $this->attributes()->setAttribute('data-deep-link', $value);
-    $this->attributes()->setAttribute('data-update-history', $value);
-    $this->attributes()->setAttribute('data-deep-link-smudge', $value);
-    $this->attributes()->setAttribute('data-deep-link-smudge-delay', 500);
+    $this->setOption('data-deep-link', $deepLinking);
+    $this->setOption('data-update-history', $deepLinking);
+    $this->setOption('data-deep-link-smudge', $deepLinking);
+    $this->setOption('data-deep-link-smudge-delay', 500);
     return $this;
   }
 

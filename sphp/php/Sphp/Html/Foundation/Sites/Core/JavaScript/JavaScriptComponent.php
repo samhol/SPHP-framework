@@ -4,23 +4,23 @@
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Foundation\Sites\Navigation;
+namespace Sphp\Html\Foundation\Sites\Core\JavaScript;
 
 /**
- * Implements an abstract menu
+ * Defines a Foundation JavaScript component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
+ * @link    https://foundation.zurb.com/sites/docs/javascript.html#configuring-plugins Foundation Plugins
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface JsMenu extends Menu {
+interface JavaScriptComponent {
 
   /**
    * Sets a menu option used in a Foundation menu

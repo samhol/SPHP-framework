@@ -11,6 +11,8 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
 use Sphp\Html\AbstractContent;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
+use Sphp\Html\Foundation\Sites\Core\DataOptions\DataOptionTools;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Lists\Ul;
@@ -28,7 +30,7 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Tabs extends AbstractContent implements IteratorAggregate, TraversableContent {
+class Tabs extends AbstractContent implements JavaScriptComponent, IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -66,12 +68,10 @@ class Tabs extends AbstractContent implements IteratorAggregate, TraversableCont
   public function __destruct() {
     unset($this->controllers, $this->content, $this->options);
   }
-
-  public function setOption(string $name, $value) {
-    if (is_bool($value)) {
-      $value = $value ? 'true' : 'false';
-    }
-    $this->options->setProperty($name, $value);
+ public function setOption(string $name, $value) {
+    $optionName = DataOptionTools::toOptionName($name);
+    $optionValue = DataOptionTools::parseValue($value);
+    $this->options->setProperty($optionName, $optionValue);
     return $this;
   }
 

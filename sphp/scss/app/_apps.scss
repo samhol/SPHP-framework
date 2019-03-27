@@ -32,6 +32,7 @@
 .slider{
   @include transition(all, 0.5s, ease-in-out);
   .slider-handle {
+    @include border-radius(2px);
     &:focus {
       outline: none;
     } 
@@ -67,12 +68,18 @@
         margin-left: -5px;
         margin-top: -1px;
       }
-
     }
   } 
-  &:hover, .slider-handle:focus, .slider-handle.show-value {
+  .slider-handle:focus, .slider-handle.show-value {
+    background-color: #666;
     .output {
       display: block;
     } 
   }
+  &:hover {
+    .output {
+      display: block;
+    } 
+
+  } 
 }

@@ -10,9 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Attributes\PropertyCollectionAttribute;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 use IteratorAggregate;
-use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 
 /**
@@ -25,10 +24,9 @@ use Sphp\Html\TraversableContent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Orbit extends AbstractComponent implements IteratorAggregate, TraversableContent {
+class Orbit extends AbstractJavaScriptComponent implements IteratorAggregate, TraversableContent {
 
-  use \Sphp\Html\TraversableTrait,
-      \Sphp\Html\Foundation\Sites\Core\DataOptions\IndividualDataAttributesTrait;
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * @var boolean 
@@ -48,18 +46,12 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   private $bulletsVisible = true;
 
   /**
-   * @var PropertyCollectionAttribute 
-   */
-  private $options;
-
-  /**
    * Constructor
    *
    * @param  string|null $ariaLabel optional Aria label text
    */
   public function __construct(string $ariaLabel = null) {
     parent::__construct('div');
-    $this->attributes()->setInstance($this->options = new PropertyCollectionAttribute('data-options'));
     $this->slides = new SlideContainer();
     $this->cssClasses()
             ->protectValue('orbit');
@@ -77,22 +69,6 @@ class Orbit extends AbstractComponent implements IteratorAggregate, TraversableC
   public function __clone() {
     $this->slides = clone $this->slides;
     parent::__clone();
-  }
-
-  /**
-   * Sets a menu option used in a Foundation menu
-   * 
-   * @param  string $name the name of the option
-   * @param  scalar $value the value of the option
-   * @return $this for a fluent interface
-   */
-  public function setOptionDel(string $name, $value) {
-    if (is_bool($value)) {
-      $value = $value ? 'true' : 'false';
-    }
-    $correctName = lcfirst(str_replace('-', '', ucwords(str_replace('data-', '', $name), '-')));
-    $this->options->setProperty($correctName, $value);
-    return $this;
   }
 
   public function createOrbitConrols() {

@@ -17,10 +17,8 @@ use Sphp\DateTime\Calendars\Diaries\Sports\ExerciseSet;
 use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\Html\Tags;
 use Sphp\Html\PlainContainer;
-use Sphp\Html\Flow\Section;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Media\Icons\FaIcon;
-use Sphp\Stdlib\Strings;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -56,7 +54,7 @@ class WorkoutPaneBuilder {
     $title[] = $this->descriptionToIcon($exercise);
     $title[] = Tags::span($exercise->getName());
     if ($exercise->getDescription() !== '') {
-      $title->append(Tags::small(" ({$exercise->getDescription()})"));
+      $title->append(Tags::span(" ({$exercise->getDescription()})")->addCssClass('small'));
     }
     return $title;
   }
@@ -70,13 +68,13 @@ class WorkoutPaneBuilder {
     } else if ($exercise->getName() === 'Skiing') {
       $span->addCssClass('outdoors');
       $icon = new FaIcon('fas fa-skiing-nordic');
-    }else if ($exercise->getName() === 'Walking') {
+    } else if ($exercise->getName() === 'Walking') {
       $span->addCssClass('outdoors');
       $icon = new FaIcon('fas fa-walking');
     } else if ($exercise->getName() === 'Running (Outdoor)') {
       $span->addCssClass('outdoors');
       $icon = new FaIcon('fas fa-running');
-    }else if ($exercise->getName() === 'Swimming') {
+    } else if ($exercise->getName() === 'Swimming') {
       $span->addCssClass('outdoors');
       $icon = new FaIcon('fas fa-swimmer');
     } else if ($exercise->getName() === 'Cycling') {

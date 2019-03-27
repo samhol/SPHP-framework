@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs\Sliders;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 use Sphp\Html\Forms\Inputs\RangeInput;
 use Sphp\Exceptions\InvalidStateException;
 
@@ -23,8 +23,9 @@ use Sphp\Exceptions\InvalidStateException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractSlider extends AbstractComponent implements RangeInput {
+abstract class AbstractSlider extends AbstractJavaScriptComponent implements RangeInput {
 
+  //use Data
   /**
    * Constructor
    *

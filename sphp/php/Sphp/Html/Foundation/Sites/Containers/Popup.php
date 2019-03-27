@@ -13,6 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Component;
 use Sphp\Html\Div;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
 use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
 
 /**
@@ -26,7 +27,7 @@ use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Popup extends Div {
+class Popup extends Div implements JavaScriptComponent {
 
   /**
    * @var CloseButton
@@ -109,6 +110,10 @@ class Popup extends Div {
   public function createController(Component $content): Component {
     $content->setAttribute('data-open', $this->identify());
     return $content;
+  }
+
+  public function setOption(string $name, $value): \this {
+    
   }
 
 }

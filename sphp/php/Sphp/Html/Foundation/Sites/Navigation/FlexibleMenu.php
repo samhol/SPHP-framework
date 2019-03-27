@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
-
+use Sphp\Html\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
 /**
  * Implements a flexible navigation menu
  *
@@ -22,7 +22,7 @@ use Sphp\Html\Attributes\PropertyCollectionAttribute;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FlexibleMenu extends AbstractMenu implements JsMenu {
+class FlexibleMenu extends AbstractMenu implements JavaScriptComponent {
 
   /**
    * @var PropertyCollectionAttribute 

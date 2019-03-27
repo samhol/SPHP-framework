@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Network\URL;
@@ -50,8 +51,6 @@ $daterange = new \DatePeriod($begin, $interval, $end);
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Page;
 use Sphp\Html\Tags;
 
-
-
 //$exercises = FitNotes::fromCsv('manual/snippets/FitNotes.csv');
 function createUrl($date): string {
   return "/calendar/" . $date->format("Y/m");
@@ -59,7 +58,7 @@ function createUrl($date): string {
 
 foreach ($daterange as $id => $date) {
   $href = "/calendar/" . $date->format("Y/m");
-  $text = Tags::strong($date->format('m')) . $date->format('/Y');
+  $text = Tags::span($date->format('m'))->addCssClass('strong') . $date->format('/Y');
   $page = new Page(createUrl($date), $text);
   if ($date->format("Y") == $year && $date->format("m") == $month) {
     $prev = $date->modify('-1 month');
@@ -75,4 +74,4 @@ foreach ($daterange as $id => $date) {
 $pagination->addCssClass('text-center')->printHtml();
 
 echo '<pre>';
-    print_r(\Sphp\Config\ErrorHandling\ErrorToExceptionThrower::$defaultInstance);
+print_r(\Sphp\Config\ErrorHandling\ErrorToExceptionThrower::$defaultInstance);
