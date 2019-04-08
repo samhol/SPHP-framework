@@ -201,10 +201,14 @@ if (!window.console.log) {
     //$("[data-reveal]").sphpPopup();
     $('[data-slick]').slick();
     $('[data-accordion]').on('down.zf.accordion', function () {
-      var $accordion = $(this);
+      var $accordion = $(this), $sliders;
       console.log('Foundation Accordion opened!');
       $accordion.lazyLoadXT();
-      $accordion.find('.slider').show().foundation('_reflow');
+      $sliders = $accordion.find('.slider');
+      if ($sliders.length > 0) {
+        $sliders.find('.slider').show();
+        $sliders.find('.slider').foundation('_reflow');
+      }
     });
     $("[data-src]").lazyLoadXT();
 
@@ -214,6 +218,6 @@ if (!window.console.log) {
 
 //$(window).bind("load", function () {
 //  "use strict";
-  sphp.initialize();
+sphp.initialize();
 
 //});
