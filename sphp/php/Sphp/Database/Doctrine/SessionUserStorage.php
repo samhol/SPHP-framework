@@ -118,7 +118,7 @@ class SessionUserStorage extends AbstractObjectStorage {
    */
   public function findByUserPass($username, $password) {
     $candidate = $this->getRepository()->findOneBy(['username' => $username]);
-    if ($candidate !== null && $candidate->getPassword()->verify($password)) {
+    if ($candidate !== null && $candidate->getPassword()->getScoreFor($password)) {
       return $candidate;
     } else {
       return null;

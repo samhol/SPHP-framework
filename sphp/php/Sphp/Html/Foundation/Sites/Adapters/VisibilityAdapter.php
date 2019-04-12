@@ -13,7 +13,6 @@ namespace Sphp\Html\Foundation\Sites\Adapters;
 use Sphp\Html\Adapters\AbstractCssClassAdapter;
 use Sphp\Html\Foundation\Sites\Core\VisibilityChanger;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 

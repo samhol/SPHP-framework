@@ -42,7 +42,6 @@ class HiddenInputsTest extends TestCase {
     $input = $inputs->insertVariable('var', 1);
     $this->assertTrue($inputs->contains('var'));
     $this->assertCount(1, $inputs);
-    $this->assertSame($input, $inputs->getByName('var')[0]);
     $this->assertSame('var', $input->getName());
     $this->assertSame(1, $input->getSubmitValue());
     return $inputs;

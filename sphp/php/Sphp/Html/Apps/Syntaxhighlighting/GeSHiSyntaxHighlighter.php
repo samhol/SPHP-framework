@@ -170,8 +170,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    * @return $this for a fluent interface
    */
   public function useFooter(bool $use = true) {
-    $vis = new VisibilityAdapter($this->footer);
-    $vis->setHidden(!$use);
+    $this->footer->inlineStyles()->setProperty('display', $use);
     return $this;
   }
 

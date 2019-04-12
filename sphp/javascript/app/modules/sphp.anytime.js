@@ -25,7 +25,7 @@
      * @returns {undefined}  
      */
     function build($input, $opt) {
-      console.log("build: SphpAnyTimeInput");
+      //console.log("build: SphpAnyTimeInput");
       var $options = parseOptions($input);
       for (var key in $opt) {
         if ($opt.hasOwnProperty(key))
@@ -65,7 +65,7 @@
         $.getJSON("sphp/ajax/anytime.c.localization.php", {'lang': $lang}, function (data) {
           $options = data;
         }).fail(function () {
-          console.log("localization error");
+          console.error("localization error");
         }).always(function () {
           build($input, $options);
         });

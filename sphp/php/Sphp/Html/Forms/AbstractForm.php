@@ -11,8 +11,8 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Forms\Inputs\HiddenInput;
-use Sphp\Html\TraversableContent;
 
 /**
  * Implements an HTML &lt;form&gt; tag
@@ -29,25 +29,21 @@ use Sphp\Html\TraversableContent;
 abstract class AbstractForm extends AbstractComponent implements Form {
 
   /**
+   * @var HiddenInputs
+   */
+  private $hiddenInputs;
+
+  /**
    * Constructor
    *
-   *  **Note:** The method attribute specifies how to send form-data
-   *  (the form-data is sent to the page specified in the action attribute)
-   *
-   * @precondition `$method == "get|post"`
-   * @param  string|null $action where to send the form-data when the form is submitted
-   * @param  string|null $method how to send form-data
-   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
-   * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
+   * @param  HiddenInputs $hiddenInputs
    */
-  public function __construct(string $action = null, string $method = null) {
+  public function __construct(HiddenInputs $hiddenInputs = null) {
+    if ($hiddenInputs === null) {
+      $hiddenInputs = new HiddenInputs();
+    }
+    $this->hiddenInputs = $hiddenInputs;
     parent::__construct('form');
-    if ($action !== null) {
-      $this->setAction($action);
-    }
-    if ($method !== null) {
-      $this->setMethod($method);
-    }
   }
 
   public function setMethod(string $method = null) {
@@ -91,7 +87,7 @@ abstract class AbstractForm extends AbstractComponent implements Form {
     return $this;
   }
 
-  public function validation(bool $validate = true) {
+  public function useValidation(bool $validate = true) {
     $this->attributes()->setAttribute('novalidate', !$validate);
     return $this;
   }
@@ -103,6 +99,14 @@ abstract class AbstractForm extends AbstractComponent implements Form {
 
   public function getTarget(): ?string {
     return $this->attributes()->getValue('target');
+  }
+
+  public function appendHiddenVariable(string $name, $value): HiddenInput {
+    return $this->hiddenInputs->insertVariable($name, $value);
+  }
+
+  public function getHiddenInputs(): HiddenInputs {
+    return $this->hiddenInputs;
   }
 
 }

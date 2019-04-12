@@ -62,7 +62,7 @@ interface Component extends IdentifiableContent, CssClassifiableContent {
    * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute name or value is invalid
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttribute(string $name, $value = null);
+  public function setAttribute(string $name, $value = true);
 
   /**
    * Removes given attribute if it is not locked

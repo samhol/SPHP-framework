@@ -3,14 +3,16 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 require_once('manual/settings.php');
-  use Sphp\Network\Cookie;
+
+use Sphp\Network\Cookie;
+
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
 $cacheSuffix = str_replace(['.', '/', ':'], ['-', '', ''], $redirect) . "-cache";
 
 if ($outputCache->start("$cacheSuffix-page") === false) {
 
-    $cookie = (new Cookie("comply_cookie"))->delete();
+  $cookie = (new Cookie('comply_cookie'))->delete();
   require_once('manual/templates/blocks/head.php');
   require_once('manual/templates/logo-area.php');
   require_once('manual/templates/menus/topBar.php');
@@ -24,4 +26,14 @@ if ($outputCache->start("$cacheSuffix-page") === false) {
   $outputCache->end();
 }
 
-$html->documentClose();
+use Sphp\Html\Document;
+use Sphp\Stdlib\StopWatch;
+
+$mem = number_format(memory_get_usage(true) / 1048576, 2);
+$time = number_format(StopWatch::getExecutionTime(), 2);
+$phpScript = new \Sphp\Html\Scripts\ScriptCode();
+$phpScript[] = "var php={version: '" . phpversion() . "'};";
+$phpScript[] = "php.memory=" . $mem . ";";
+$phpScript[] = "php.execTime=" . $time . ";";
+Document::html()->scripts()->append($phpScript);
+Document::html()->documentClose();

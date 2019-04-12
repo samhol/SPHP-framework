@@ -39,7 +39,6 @@ class FormValidator extends AbstractValidator {
     parent::__destruct();
   }
 
-
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
@@ -62,7 +61,7 @@ class FormValidator extends AbstractValidator {
    * @param  string $inputName the name of the validable input
    * @return boolean true if the input name has validators attached to it, false if not
    */
-  public function hasValidator(string $inputName) {
+  public function hasValidator(string $inputName): bool {
     return isset($this->validators[$inputName]);
   }
 
@@ -89,6 +88,14 @@ class FormValidator extends AbstractValidator {
   public function setValidator(string $inputName, Validator $validator) {
     $this->validators[$inputName] = $validator;
     return $this;
+  }
+
+  public function getInputErrors(): array {
+    $output = [];
+    foreach ($this->validators as $inputName => $validator) {
+      $output[$inputName] = $validator->errorsToArray();
+    }
+    return $output;
   }
 
 }

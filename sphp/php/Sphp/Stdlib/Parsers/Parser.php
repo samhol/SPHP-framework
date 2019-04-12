@@ -115,7 +115,8 @@ abstract class Parser {
     if ($extension === null) {
       $pathinfo = pathinfo($fullPath);
       if (!isset($pathinfo['extension'])) {
-        throw new InvalidArgumentException(sprintf('Filename "%s" is missing an extension and cannot be auto-detected', $filepath));
+        throw new InvalidArgumentException(
+                sprintf('Filename "%s" is missing an extension and cannot be auto-detected', $filepath));
       }
       $extension = strtolower($pathinfo['extension']);
     }

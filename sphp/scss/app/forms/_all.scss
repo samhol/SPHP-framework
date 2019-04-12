@@ -8,9 +8,10 @@
 
 
 @import "inputs"; 
-@import "switch-board";
  
 @mixin sphp-forms() { 
   @include sphp-anytime-input;
   @include sphp-select;
+  @include sphp-validable-input;
+  @include sphp-switch-board;
 }

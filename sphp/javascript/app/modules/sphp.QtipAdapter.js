@@ -9,7 +9,7 @@
   'use strict';
 
   /**
-   * Shows the mouse coordinates when ever the mouse is onver the containing document
+   * Manages Qtips
    * 
    * @memberOf jQuery.fn#
    * @returns  {jQuery.fn} object for method chaining

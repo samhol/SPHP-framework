@@ -52,7 +52,7 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
   public function __construct() {
     parent::__construct('div');
     $this->icons = [];
-    $this->addCssClass('sphp', 'icon-buttons');
+    $this->addCssClass('sphp ', 'icon-buttons');
     $this->fa = new FA();
     $this->fa->fixedWidth(true);
   }

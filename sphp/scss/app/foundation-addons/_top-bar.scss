@@ -83,13 +83,6 @@
             @include gradient(to right, $grad);
             background-color: smart-scale($bar-bg, 25%);
           }
-          &.icon-link {
-            a {
-              &:hover {
-                color: get-color(menu-highlight);
-              }
-            }
-          }
         }
         a {
           background: $bar-link-bg;

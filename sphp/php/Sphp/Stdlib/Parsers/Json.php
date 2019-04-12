@@ -10,7 +10,6 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Exception;
 use Zend\Config\Reader\Json as JsonFormat;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
@@ -46,7 +45,7 @@ class Json implements Writer, Reader {
     return $data;
   }
 
-  public function write($data, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT | JSON_PRETTY_PRINT): string {
+  public function write($data, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT): string {
     $serialized = json_encode($data, $flags);
     if (false === $serialized) {
       throw new RuntimeException(json_last_error_msg());

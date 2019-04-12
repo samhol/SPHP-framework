@@ -17,10 +17,10 @@
       var $this = $(this),
               $url = $this.attr("data-sphp-ajax-prepend"),
               $content = $("<div>");
-      console.log("initializing Sphp ajax prepending...");
+      //console.log("initializing Sphp ajax prepending...");
       $this.appendSpinner();
       $this.on("sphp-ajax-prepend-finished", function () {
-        console.log("SPHP Ajax prepending finished...");
+        //console.log("SPHP Ajax prepending finished...");
         $(this).foundation();
         $this.removeSpinners({duration: 1000});
         $this.removeAttr("data-sphp-ajax-prepend");
@@ -52,7 +52,7 @@
       var $this = $(this),
               $url = $this.attr("data-sphp-ajax-append"),
               $content = $("<div>");
-      console.log("initializing Sphp ajax appending...");
+      //console.log("initializing Sphp ajax appending...");
       $this.appendSpinner();
       $this.on("sphp-ajax-append-finished", function () {
         console.log("SPHP Ajax appending finished...");

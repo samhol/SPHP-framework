@@ -36,7 +36,7 @@ class VariableFilterTest extends TestCase {
    * @param scalar $var
    * @param int $expected
    */
-  public function testIntFilter($var, int $expected) {
+  public function t1estIntFilter($var, int $expected) {
     $intFilter = Filters::int();
     $intFilter->options->min_range = -20;
     $intFilter->options['max_range'] = 20;

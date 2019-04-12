@@ -24,18 +24,6 @@ use Sphp\Html\Forms\Inputs\HiddenInputs;
  */
 interface TraversableForm extends Form, TraversableContent {
 
-  /**
-   * Appends a hidden variable into the form
-   *
-   * Appended `$name => $value` pair is stored into a
-   *  {@link HiddenInput} object
-   *
-   * @param  string $name th name of the hidden variable
-   * @param  scalar $value the value of the hidden variable
-   * @return HiddenInput appended input instance
-   * @see    HiddenInput
-   */
-  public function appendHiddenVariable($name, $value): HiddenInput;
 
   /**
    * Returns all named input components in the form
@@ -43,11 +31,4 @@ interface TraversableForm extends Form, TraversableContent {
    * @return TraversableContent containing matching sub components
    */
   public function getNamedInputComponents(): TraversableContent;
-
-  /**
-   * Returns all named {@link HiddenInput} components from the form
-   *
-   * @return HiddenInputs containing matching sub components
-   */
-  public function getHiddenInputs(): HiddenInputs;
 }

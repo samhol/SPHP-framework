@@ -46,3 +46,38 @@
     color: get-color(alert);
   }
 }
+@mixin sphp-validable-input() {
+  .sphp.validable-input {
+    &.required {
+      label.main-label {
+        &:after {
+          content: '*';
+          color: red;
+          font-weight: bold;
+          margin-left: rem-calc(5);
+        }
+      }
+    }
+  }
+}
+@mixin sphp-switch-board() { 
+  .sphp.switch-board { 
+    .description {
+      font-weight: bold;
+      font-size: rem-calc(15);
+      padding-bottom: 1rem;
+    } 
+    .switch-toggle-wrapper {
+      display: flex;
+      margin-bottom: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      .switch {
+        margin-bottom: 0;
+      }
+    }
+    .options {
+      padding-left: 1rem;
+    }
+  }
+}

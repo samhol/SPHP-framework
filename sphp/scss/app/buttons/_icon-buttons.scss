@@ -33,9 +33,25 @@ github:     (color: $default-color, background: #231f20),
 //soundcloud: (color: white, background: #ff3a00),
 //pdf:        (color: white, background: #ff3a00)
 );
-
+ 
 @mixin icon-button() {
   .sphp.icon-button {
+    @include transition(all, 0.3s, ease-in-out);
+    @include transition(all, 0.6s, ease-in-out);
+    @include shadow;
+    $burn-color: #ff3;
+    @include border-radius(6px);
+    border: rgba($burn-color, .7) solid 1px;
+    background: rgba(#000, .7);
+    text-align: center;
+    //width: 70px;
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      background: rgba(#000, .95);
+      color: rgba($burn-color, .9);
+      border: rgba($burn-color, .9) solid 1px;
+    }
     //padding: rem-calc(7);
     display: inline-block;
     margin: rem-calc(0 2 0 1);
@@ -45,14 +61,11 @@ github:     (color: $default-color, background: #231f20),
     height: rem-calc(50);
     text-align: center;
     text-decoration: none;
-    @include transition(all, 0.3s, ease-in-out);
     &.rounded {
       @include border-radius(50%);
     }
     /* Add a hover effect if you want */ 
-    &:hover {
-      opacity: 0.7;
-    }
+ 
     @each $brand, $icon in $brands {
       &.#{$brand} {
         background-color: map-get($icon, background);
@@ -63,6 +76,8 @@ github:     (color: $default-color, background: #231f20),
       }
     }
   }
+
+
 }
 @mixin icon-buttons() { 
   .sphp.icon-buttons {
@@ -75,7 +90,7 @@ github:     (color: $default-color, background: #231f20),
         @include border-radius(50%);
       }
     }
-    &.smooth {
+    &.radius {
       a.sphp.icon-button  {
         @include border-radius(5px);
       }

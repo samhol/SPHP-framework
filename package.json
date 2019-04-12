@@ -18,6 +18,7 @@
     "what-input": "^5.1.4"
   },
   "devDependencies": {
+    "motion-ui": "^2.0.3",
     "audit": ">=0.0.6",
     "fix": ">=0.0.6",
     "gulp": ">=4.0.0",

@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Implements a Foundation framework based menu builder
  * 
@@ -56,16 +58,6 @@ class MenuBuilder {
 
   /**
    * 
-   * @param  string|null $target
-   * @return $this for a fluent interface
-   */
-  public function setDefaultTarget(string $target = null) {
-    $this->linkBuilder->setDefaultTarget($target);
-    return $this;
-  }
-
-  /**
-   * 
    * @param  array $contentData
    * @param  Menu $instance
    * @return Menu
@@ -76,13 +68,18 @@ class MenuBuilder {
     }
     foreach ($contentData as $item) {
       if (array_key_exists('link', $item)) {
-        $instance->append($this->linkBuilder->parseLink($item));
+        $object = $instance->append($this->linkBuilder->parseLink($item));
       } else if (array_key_exists('menu', $item) && array_key_exists('items', $item)) {
-        $instance->append($this->buildSub($item));
+        $object = $instance->append($this->buildSub($item));
       } else if (array_key_exists('separator', $item)) {
-        $instance->appendText($item['separator']);
+        $object = $instance->appendText($item['separator']);
       } else if (array_key_exists('ruler', $item)) {
-        $instance->appendRuler();
+        $object = $instance->appendRuler();
+      } else {
+        throw new InvalidArgumentException('Invalid Menu data given cannot parse menu item');
+      }
+      if (array_key_exists('class', $item)) {
+        $object->addCssClass($item['class']);
       }
     }
     return $instance;
@@ -106,7 +103,7 @@ class MenuBuilder {
     $text .= $linkData['menu'];
     return $text;
   }
-  
+
   /**
    * Builds a new sub menu from given menu data
    * 

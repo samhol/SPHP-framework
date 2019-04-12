@@ -15,7 +15,8 @@ use Sphp\Html\Div;
 use Sphp\DateTime\Date;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Media\Icons\FaIcon;
-use Sphp\Html\Adapters\QtipAdapter;
+use Sphp\Html\Forms\Inputs\Menus\Option;
+use Sphp\Html\Adapters\TipsoAdapter;
 use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
 
 /**
@@ -76,8 +77,8 @@ class MonthSelector extends AbstractContent {
       $content = $monthText;
     }
     $link = new Hyperlink($href, $content);
-    $qtip = new QtipAdapter($link);
-    $qtip->setQtipPosition('top center', 'bottom center')->setQtip($monthText);
+    $tip= new TipsoAdapter($link);
+    $tip->setOption('titleContent', $monthText);
     return $link;
   }
 
@@ -91,7 +92,7 @@ class MonthSelector extends AbstractContent {
     $yearMenu = MenuFactory::getContentAsValueMenu($years, 'year');
     $yearMenu->setInitialValue($this->date->getYear());
     if (!in_array($thisYear, $years)) {
-      $yearMenu->prepend(new \Sphp\Html\Forms\Inputs\Menus\Option($thisYear, $thisYear));
+      $yearMenu->prepend(new Option($thisYear, $thisYear));
     }
     $container->append($this->createPreviousMonth());
     // $container->append( $this->createMonthMenu());

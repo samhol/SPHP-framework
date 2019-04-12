@@ -65,7 +65,13 @@ class Console {
     $obj->run()->clear();
   }
 
-  protected function createLog(string $type, $data) {
+  /**
+   * 
+   * @param  string $type
+   * @param  mixed $data
+   * @return string
+   */
+  protected function createLog(string $type, $data):string {
     if (is_array($data)) {
       $data = Parser::json()->write($data);
       //echo "console.$type($data);";

@@ -10,7 +10,9 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Content;
+use Sphp\Html\Component;
+use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Html\Forms\Inputs\HiddenInputs;
 
 /**
  * Defines required properties for an HTML &lt;form&gt; component
@@ -20,7 +22,7 @@ use Sphp\Html\Content;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Form extends Content {
+interface Form extends Component {
 
   /**
    * Sets the value of the method attribute
@@ -139,7 +141,7 @@ interface Form extends Content {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
    */
-  public function validation(bool $validable = true);
+  public function useValidation(bool $validable = true);
 
   /**
    * Sets the value of the target attribute
@@ -179,4 +181,21 @@ interface Form extends Content {
    * @link  http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function getTarget(): ?string;
+
+  /**
+   * Appends a hidden variable into the form
+   *
+   * @param  string $name the name of the hidden variable
+   * @param  scalar $value the value of the hidden variable
+   * @return $this for a fluent interface
+   * @see    HiddenInput
+   */
+  public function appendHiddenVariable(string $name, $value): HiddenInput;
+
+  /**
+   * Returns all named {@link HiddenInput} components from the form
+   *
+   * @return HiddenInputs containing matching sub components
+   */
+  public function getHiddenInputs(): HiddenInputs;
 }

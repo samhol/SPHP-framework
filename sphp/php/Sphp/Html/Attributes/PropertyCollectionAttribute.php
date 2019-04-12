@@ -182,6 +182,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    */
   public function setProperty(string $property, $value) {
     //echo "\n$property: $value;\n";
+
     if ($this->isProtected($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }

@@ -104,7 +104,7 @@ abstract class AbstractTag extends AbstractContent implements Tag {
     return $this->attributes()->styles();
   }
 
-  public function setAttribute(string $name, $value = null) {
+  public function setAttribute(string $name, $value = true) {
     $this->attributes()->setAttribute($name, $value);
     return $this;
   }

@@ -88,7 +88,7 @@ trait ComponentTrait {
    * @throws InvalidAttributeException if the attribute name or value is invalid
    * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttribute(string $name, $value = null) {
+  public function setAttribute(string $name, $value = true) {
     $this->attributes()->setAttribute($name, $value);
     return $this;
   }

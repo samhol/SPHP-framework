@@ -160,7 +160,7 @@ final class Cookie {
    *
    * @return string the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory
    */
-  public function getPath() {
+  public function getPath(): string {
     return $this->path;
   }
 
@@ -170,7 +170,7 @@ final class Cookie {
    * @param  string $path the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory
    * @return $this for a fluent interface
    */
-  public function setPath($path) {
+  public function setPath(string $path) {
     $this->path = $path;
 
     return $this;
@@ -191,7 +191,7 @@ final class Cookie {
    * @param string|null $domain the domain that the cookie will be valid for (including subdomains) or `null` for the current host (excluding subdomains)
    * @return $this for a fluent interface
    */
-  public function setDomain($domain = null) {
+  public function setDomain(string $domain = null) {
     $this->domain = self::normalizeDomain($domain);
 
     return $this;
@@ -202,7 +202,7 @@ final class Cookie {
    *
    * @return bool whether the cookie should be accessible through the HTTP protocol only and not through scripting languages
    */
-  public function isHttpOnly() {
+  public function isHttpOnly(): bool {
     return $this->httpOnly;
   }
 
@@ -212,7 +212,7 @@ final class Cookie {
    * @param bool $httpOnly indicates that the cookie should be accessible through the HTTP protocol only and not through scripting languages
    * @return $this for a fluent interface
    */
-  public function setHttpOnly($httpOnly) {
+  public function setHttpOnly(bool $httpOnly) {
     $this->httpOnly = $httpOnly;
 
     return $this;
@@ -223,7 +223,7 @@ final class Cookie {
    *
    * @return bool whether the cookie should be sent back by the client over secure HTTPS connections only
    */
-  public function isSecureOnly() {
+  public function isSecureOnly(): bool {
     return $this->secureOnly;
   }
 
@@ -233,7 +233,7 @@ final class Cookie {
    * @param bool $secureOnly indicates that the cookie should be sent back by the client over secure HTTPS connections only
    * @return $this for a fluent interface
    */
-  public function setSecureOnly($secureOnly) {
+  public function setSecureOnly(bool $secureOnly) {
     $this->secureOnly = $secureOnly;
 
     return $this;
@@ -244,7 +244,7 @@ final class Cookie {
    *
    * @return string|null whether the cookie should not be sent along with cross-site requests (either `null`, `Lax` or `Strict`)
    */
-  public function getSameSiteRestriction() {
+  public function getSameSiteRestriction(): ?string {
     return $this->sameSiteRestriction;
   }
 
@@ -254,7 +254,7 @@ final class Cookie {
    * @param string|null $sameSiteRestriction indicates that the cookie should not be sent along with cross-site requests (either `null`, `Lax` or `Strict`)
    * @return $this for a fluent interface
    */
-  public function setSameSiteRestriction($sameSiteRestriction) {
+  public function setSameSiteRestriction(string $sameSiteRestriction = null) {
     $this->sameSiteRestriction = $sameSiteRestriction;
 
     return $this;

@@ -17,7 +17,7 @@ namespace Sphp\Stdlib\Random;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class UUID {
+abstract class UUID {
 
   /**
    * Generates v4 UUID
@@ -41,10 +41,10 @@ class UUID {
    * valid UUID) and a value (the name). Given the same namespace and 
    * name, the output is always the same.
    * 
-   * @param	string	$namespace a valid UUID
-   * @param	string	$name
+   * @param	string $namespace a valid UUID
+   * @param	string $name
    */
-  public static function v5(string $namespace, string $name) {
+  public static function v5(string $namespace, string $name): string {
     if (!self::isValid($namespace)) {
       throw new \Sphp\Exceptions\InvalidArgumentException('Invalid namespace for v5 UUID');
     }

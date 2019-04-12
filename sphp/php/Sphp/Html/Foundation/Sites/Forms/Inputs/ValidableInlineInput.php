@@ -32,8 +32,6 @@ use Sphp\Exceptions\BadMethodCallException;
  */
 class ValidableInlineInput extends AbstractComponent implements ValidableInput {
 
-  use ValidableInputContainerTrait;
-
   /**
    * @var Label 
    */
@@ -73,7 +71,7 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
    */
   public function __construct(ValidableInput $input, string $label = null, string $errorMessage = null) {
     parent::__construct('div');
-    $this->addCssClass('sphp');
+    $this->addCssClass('sphp', 'validable-input');
     if (!$input instanceof \Sphp\Html\Component) {
       throw new InvalidArgumentException('Invalid input type');
     }
@@ -105,6 +103,7 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
       $label = $this->getInput()->getName();
     }
     $this->label = new Label($label);
+    $this->label->addCssClass('main-label');
     $this->label->setFor($this->getInput());
   }
 
@@ -136,7 +135,7 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
    * @return $this for a fluent interface
    */
   public function ignoreValidation(bool $ignored = true) {
-    $this->input->setAttribute('data-abide-ignore', $ignored);
+    $this->getInput()->setAttribute('data-abide-ignore', $ignored);
     return $this;
   }
 
@@ -225,6 +224,51 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
    */
   public function setErrorMessage(string $errorMessage) {
     $this->errorMessage->resetContent($errorMessage);
+    return $this;
+  }
+
+  public function disable(bool $disabled = true) {
+    $this->getInput()->disable($disabled);
+    return $this;
+  }
+
+  public function getName(): ?string {
+    return $this->getInput()->getName();
+  }
+
+  public function getSubmitValue() {
+    return $this->getInput()->getSubmitValue();
+  }
+
+  public function isEnabled(): bool {
+    return $this->getInput()->isEnabled();
+  }
+
+  public function isNamed(): bool {
+    return $this->getInput()->isNamed();
+  }
+
+  public function isRequired(): bool {
+    return $this->getInput()->isRequired();
+  }
+
+  public function setInitialValue($value) {
+    $this->getInput()->setInitialValue($value);
+    return $this;
+  }
+
+  public function setName(string $name = null) {
+    $this->getInput()->setName($name);
+    return $this;
+  }
+
+  public function setRequired(bool $required = true) {
+    $this->getInput()->setRequired($required);
+    if ($required) {
+      $this->addCssClass('required');
+    } else {
+      $this->removeCssClass('required');
+    }
     return $this;
   }
 

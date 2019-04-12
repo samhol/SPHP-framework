@@ -23,7 +23,7 @@ use Sphp\Stdlib\Readers\Json;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class JsonAttribute extends AbstractAttribute {
+class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
 
   /**
    * properties as a (name -> value) map
@@ -53,6 +53,18 @@ class JsonAttribute extends AbstractAttribute {
 
   public function __destruct() {
     unset($this->data, $this->parser);
+  }
+
+  public function __toString(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      if (!$this->isEmpty()) {
+        $value = $this->getValue();
+        $output .= "='$value'";
+      }
+    }
+    return $output;
   }
 
   public function isVisible(): bool {
@@ -107,6 +119,63 @@ class JsonAttribute extends AbstractAttribute {
    */
   public function getValue() {
     return json_encode($this->data, JSON_UNESCAPED_SLASHES);
+  }
+
+  /**
+   * Checks whether an option exists
+   * 
+   * @param  mixed $name option name
+   * @return bool true if option exists
+   */
+  public function offsetExists($name): bool {
+    return array_key_exists($name, $this->data);
+  }
+
+  /**
+   * Returns the option value
+   * 
+   * @param  mixed $name option name
+   * @return scalar|null option value or null if not present
+   */
+  public function offsetGet($name) {
+    if ($this->offsetExists($name)) {
+      return $this->data[$name];
+    }
+    return null;
+  }
+
+  /**
+   * Sets an option
+   * 
+   * @param  mixed $name option name
+   * @param  mixed $value option value
+   * @return void
+   * @throws InvalidArgumentException if the name or the value is invalid
+   */
+  public function offsetSet($name, $value): void {
+    if (!is_string($name)) {
+      throw new InvalidArgumentException('Invalid type given for option name');
+    }
+    if (!is_scalar($value) && $value !== null) {
+      throw new InvalidArgumentException('Invalid type given for option value');
+    }
+    if ($value === null) {
+      $this->offsetUnset($name);
+    } else {
+      $this->data[$name] = $value;
+    }
+  }
+
+  /**
+   * Removes an option
+   * 
+   * @param  mixed $name option name
+   * @return void
+   */
+  public function offsetUnset($name): void {
+    if ($this->offsetExists($name)) {
+      unset($this->data[$name]);
+    }
   }
 
 }

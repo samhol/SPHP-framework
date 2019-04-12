@@ -28,7 +28,7 @@
           $this.fadeOut($o.duration);
         }
       }
-      setVisibility(); 
+      setVisibility();
       $window.scroll(function () {
         setVisibility();
       });

@@ -10,6 +10,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
+use Sphp\Html\Adapters\TipsoAdapter;
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Description of MenuLinkBuilder
  *
@@ -28,7 +31,7 @@ class MenuLinkBuilder {
   private $defaultTarget = null;
 
   /**
-   * @var type 
+   * @var string 
    */
   private $currentPage;
 
@@ -37,6 +40,8 @@ class MenuLinkBuilder {
    * @var callable|null 
    */
   private $activator;
+
+  //public function set
 
   /**
    * 
@@ -90,14 +95,16 @@ class MenuLinkBuilder {
 
   /**
    * 
-   * @param  array $linkData
+   * 
+   * @param array $linkData
    * @return string
+   * @throws InvalidArgumentException
    */
   protected function parseHref(array $linkData): string {
     if (array_key_exists('href', $linkData)) {
       $href = $linkData['href'];
     } else {
-      $href = \Sphp\Network\URL::getRootAsString();
+      throw new InvalidArgumentException('href is missing');
     }
     return $href;
   }
@@ -108,7 +115,7 @@ class MenuLinkBuilder {
    * @return string|null
    */
   protected function parseTarget(array $linkData): ?string {
-    return array_key_exists('target', $linkData) ? $linkData['target'] : $this->getDefaultTarget();
+    return array_key_exists('target', $linkData) ? $linkData['target'] : null;
   }
 
   /**
@@ -130,10 +137,15 @@ class MenuLinkBuilder {
     return $text;
   }
 
+  public function setTipso() {
+    
+  }
+
   /**
+   * Creates a new menu link object from data
    * 
    * @param  array $linkData
-   * @return MenuLink
+   * @return MenuLink parsed menu link object
    */
   public function parseLink(array $linkData): MenuLink {
     $href = $this->parseHref($linkData);
@@ -143,6 +155,12 @@ class MenuLinkBuilder {
     if (is_callable($this->activator)) {
       $t = $this->getActivator();
       $link->setActive($t($linkData));
+    }
+    if (array_key_exists('tipso', $linkData)) {
+      $tip = new TipsoAdapter($link);
+      $tip['content'] = 'content';
+      $tip['position'] = 'bottom';
+      $tip->setTitle($linkData['tipso']['title']);
     }
     return $link;
   }

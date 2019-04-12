@@ -107,17 +107,6 @@ if (!window.console.log) {
     }
   };
 
-  /**
-   * Returns the Foundation framework version number
-   *
-   * @public
-   * @static
-   * @returns {sphp} for fluent interface
-   */
-  sphp.preventFoundationFouc = function () {
-    console.log("sphp.preventFoundationFouc()");
-    $('.sphp-hide-fouc-on-load').removeClass('sphp-hide-fouc-on-load');
-  };
 
   /**
    * Initializes the clipboard functionality
@@ -170,13 +159,12 @@ if (!window.console.log) {
    */
   sphp.initialize = function () {
     sphp.enableConsole(true);
-    sphp.preventFoundationFouc();
-    console.log("sphp.initialize()");
+    console.log("sphp.initialize() started");
     sphp.initClipboard().initBackToTopButtons();
     sphp.historyBackButtons();
     //var $ajaxLoaders = $("[data-sphp-ajax-url]");
-    console.log("loaded");
 
+    sphp.setFoundationAbideAddons();
     $(document).foundation();
     console.log("jQuery " + $.fn.jquery + " loaded...");
     console.log("Foundation " + Foundation.version + " loaded...");
@@ -202,7 +190,7 @@ if (!window.console.log) {
     $('[data-slick]').slick();
     $('[data-accordion]').on('down.zf.accordion', function () {
       var $accordion = $(this), $sliders;
-      console.log('Foundation Accordion opened!');
+      //console.log('Foundation Accordion opened!');
       $accordion.lazyLoadXT();
       $sliders = $accordion.find('.slider');
       if ($sliders.length > 0) {
@@ -211,6 +199,9 @@ if (!window.console.log) {
       }
     });
     $("[data-src]").lazyLoadXT();
+    sphp.initReCAPTCHAv3sForm();
+    $("[data-sphp-tipso]").sphpTipso();
+   // $("[data-sphp-php-info-tipso]").phpInfoTipso();
 
   };
 

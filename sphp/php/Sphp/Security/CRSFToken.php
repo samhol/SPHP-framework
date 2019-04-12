@@ -11,6 +11,10 @@
 namespace Sphp\Security;
 
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Stdlib\Random\UUID;
+use Sphp\Html\Forms\Form;
+
 
 /**
  * Implements a CRSF token generator and validator
@@ -72,10 +76,24 @@ class CRSFToken {
     if (array_key_exists($tokenName, $_SESSION)) {
       return $_SESSION[$tokenName];
     } else {
-      $token = md5(uniqid(microtime(), true));
+      $token = UUID::v5(UUID::v4(), $tokenName);
       $_SESSION[$tokenName] = $token;
       return $token;
     }
+  }
+
+  /**
+   * Creates a CRSF token to use
+   * 
+   * @param  string $tokenName the CRSF token name
+   * @return HiddenInput the CRSF token generated
+   */
+  public function generateTokenInput(string $tokenName): HiddenInput {
+    return new HiddenInput($tokenName, $this->generateToken($tokenName));
+  }
+
+  public function insertIntoForm(Form $form, string $tokenName) {
+    $form->appendHiddenVariable($tokenName, $this->generateToken($tokenName));
   }
 
   /**

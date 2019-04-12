@@ -15,7 +15,7 @@
     }
     // Getter overload (no argument passed)
     if (!arg) {
-      return this[0].outerHTML || 
+      return this[0].outerHTML ||
               (ret = this.wrap('<div>').parent().html(), this.unwrap(), ret);
     }
     // Setter overload 
@@ -151,7 +151,7 @@
           display: "block",
           position: "absolute"
         });
-        console.log($this.css("display") + ":" + $this.width());
+        //console.log($this.css("display") + ":" + $this.width());
         var pos = el.position(),
                 x = Math.floor(pos.left + (el.width() - $this.width()) / 2),
                 y = Math.floor(pos.top + (el.height() - $this.height()) / 2);
@@ -202,12 +202,19 @@
         var $popupId = $(this).attr("data-sphp-foundation-modal-close");
         $('#' + $popupId).foundation('reveal', 'close');
       });
-      console.log("data-sphp-modal-default-closer:" + $popup.attr("data-sphp-modal-default-closer"));
+      //console.log("data-sphp-modal-default-closer:" + $popup.attr("data-sphp-modal-default-closer"));
       if ($popup.attr("data-sphp-modal-default-closer") !== undefined) {
         $popup.append('<a class="close-reveal-modal" aria-label="Close">&#215;</a>');
       }
     });
     return this;
+  };
+  $.fn.hasAttr = function (name) {
+    var attr = this.attr(name);
+    if (typeof attr !== typeof undefined && attr !== false) {
+      console.log('has attribute ' + name);
+    }
+    return typeof attr !== typeof undefined && attr !== false;
   };
 
 }(jQuery));

@@ -49,7 +49,7 @@ $carPrice->setErrorMessage('Car price is required and must be a decimal number!'
 $carPrice->setRequired(true);
 
 $form = new GridForm();
-$form->validation(true);
+$form->useValidation(true);
 $form->append($username);
 
 $nameRow = new BasicRow();

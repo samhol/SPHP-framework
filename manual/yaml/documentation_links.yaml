@@ -2,7 +2,7 @@
 menu: Documentation
 items:
     - link: Getting Started
-      __INDEX__:
+      href: /
     - ruler: 
     - link: Application configuration
       href: /Sphp.Config
