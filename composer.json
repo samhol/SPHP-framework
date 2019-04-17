@@ -60,7 +60,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Sphp\\Tests\\": "tests/sphp"
+      "Sphp\\Tests\\": "sphp/php/tests/sphp"
     }
   }
 }

@@ -13,21 +13,20 @@ namespace Sphp\Stdlib\Parsers;
 use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
-use Sphp\Exceptions\InvalidArgumentException;
 
-class YamlTest extends TestCase {
+class MarkdownTest extends TestCase {
 
   /**
-   * @var Yaml
+   * @var Markdown
    */
-  protected $parser;
+  protected $md;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->parser = new Yaml();
+    $this->md = new Markdown();
   }
 
   /**
@@ -35,39 +34,26 @@ class YamlTest extends TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown(): void {
-    unset($this->parser);
+    unset($this->md);
   }
 
-  /**
-   * @return array
-   */
-  public function filepathMap(): array {
-    $map = [
-        ['./tests/files/test.Yaml', ['foo' => 'bar']],
-    ];
-    return $map;
-  }
-
-  public function testDecode() {
-    $raw = Filesystem::toString('./tests/files/test.yaml');
-    $fromFile = $this->parser->readFromFile('./tests/files/test.yaml');
-    $fromString = $this->parser->readFromString($raw);
+  public function testInline() {
+    $raw = Filesystem::toString('./sphp/php/tests/files/test.md');
+    $fromFile = $this->md->parseFile('./sphp/php/tests/files/test.md', true);
+    $fromString = $this->md->parseString($raw, true);
     $this->assertSame($fromFile, $fromString);
   }
 
-  public function testEncode() {
-    $string = $this->parser->write(['foo' => 'bar']);
-    $this->assertTrue(is_string($string));
-  }
-
-  public function testEncodeInvalidData() {
-    $this->expectException(InvalidArgumentException::class);
-    var_dump($this->parser->write('...'));
+  public function testBlock() {
+    $raw = Filesystem::toString('./sphp/php/tests/files/test.md');
+    $fromFile = $this->md->parseFile('./sphp/php/tests/files/test.md', false);
+    $fromString = $this->md->parseString($raw, false);
+    $this->assertSame($fromFile, $fromString);
   }
 
   public function testConverInvalidFile() {
     $this->expectException(FileSystemException::class);
-    $this->parser->readFromFile('foo.bar', false);
+    $this->md->parseFile('foo.bar', false);
   }
 
 }

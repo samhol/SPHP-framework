@@ -56,8 +56,8 @@ class IniTest extends TestCase {
   }
 
   public function testDecode() {
-    $raw = Filesystem::toString('./tests/files/test.ini');
-    $fromFile = $this->parser->readFromFile('./tests/files/test.ini');
+    $raw = Filesystem::toString('./sphp/php/tests/files/test.ini');
+    $fromFile = $this->parser->readFromFile('./sphp/php/tests/files/test.ini');
     $fromString = $this->parser->readFromString($raw);
     $this->assertSame($fromFile, $fromString);
   }

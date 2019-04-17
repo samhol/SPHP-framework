@@ -11,86 +11,86 @@
          processIsolation="false"
          stopOnFailure="false"
          verbose="true"
-         bootstrap="tests/bootstrap.php">
+         bootstrap="sphp/php/tests/bootstrap.php">
   <testsuites>
     <testsuite name="all">
-      <directory>./tests/</directory>
+      <directory>./sphp/php/tests/</directory>
     </testsuite>
     <testsuite name="one">
-      <file>./tests/sphp/Html/Foundation/Core/DataOptionToolsTest.php</file>
+      <file>./sphp/php/tests/sphp/Html/Foundation/Core/DataOptionToolsTest.php</file>
     </testsuite>
     <testsuite name="config">
-      <directory>./tests/sphp/Config</directory>
+      <directory>./sphp/php/tests/sphp/Config</directory>
     </testsuite>
     <testsuite name="dt">
-      <directory>./tests/sphp/DateTime</directory>
+      <directory>./sphp/php/tests/sphp/DateTime</directory>
     </testsuite>
     <testsuite name="filters">
-      <directory>./tests/sphp/Filters</directory>
+      <directory>./sphp/php/tests/sphp/Filters</directory>
     </testsuite>
     <testsuite name="html">
-      <directory>./tests/sphp/Html</directory>
+      <directory>./sphp/php/tests/sphp/Html</directory>
     </testsuite>
     <testsuite name="html-head">
-      <directory>./tests/sphp/Html/Head</directory>
+      <directory>./sphp/php/tests/sphp/Html/Head</directory>
     </testsuite>
     <testsuite name="html-media">
-      <directory>./tests/sphp/Html/Media</directory>
+      <directory>./sphp/php/tests/sphp/Html/Media</directory>
     </testsuite>
     <testsuite name="html-attrs">
-      <directory>./tests/sphp/Html/Attributes</directory>
+      <directory>./sphp/php/tests/sphp/Html/Attributes</directory>
     </testsuite>
     <testsuite name="html-forms">
-      <directory>./tests/sphp/Html/Forms</directory>
+      <directory>./sphp/php/tests/sphp/Html/Forms</directory>
     </testsuite>
     <testsuite name="foundation">
-      <directory>./tests/sphp/Html/Foundation</directory>
+      <directory>./sphp/php/tests/sphp/Html/Foundation</directory>
     </testsuite>
     <testsuite name="foundation-grids">
-      <directory>./tests/sphp/Html/Foundation/Sites/Grids</directory>
+      <directory>./sphp/php/tests/sphp/Html/Foundation/Sites/Grids</directory>
     </testsuite>
     <testsuite name="mvc">
-      <directory>./tests/sphp/MVC</directory>
+      <directory>./sphp/php/tests/sphp/MVC</directory>
     </testsuite>
     <testsuite name="stdlib">
-      <directory>./tests/sphp/Stdlib</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib</directory>
     </testsuite>
     <testsuite name="stdlib-events">
-      <directory>./tests/sphp/Stdlib/Events</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib/Events</directory>
     </testsuite>
     <testsuite name="stdlib-networks">
-      <directory>./tests/sphp/Stdlib/Networks</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib/Networks</directory>
     </testsuite>
     <testsuite name="stdlib-ds">
-      <directory>./tests/sphp/Stdlib/Datastructures</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib/Datastructures</directory>
     </testsuite>
     <testsuite name="stdlib-observers">
-      <directory>./tests/sphp/Stdlib/Observers</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib/Observers</directory>
     </testsuite>
     <testsuite name="stdlib-parsers">
-      <directory>./tests/sphp/Stdlib/Parsers</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib/Parsers</directory>
     </testsuite>
     <testsuite name="stdlib-str">
-      <file>./tests/sphp/Stdlib/StringManipulationTest.php</file>
-      <file>./tests/sphp/Stdlib/MbStringSpecificTest.php</file>
+      <file>./sphp/php/tests/sphp/Stdlib/StringManipulationTest.php</file>
+      <file>./sphp/php/tests/sphp/Stdlib/MbStringSpecificTest.php</file>
     </testsuite>
     <testsuite name="stdlib-bitmask">
-      <file>./tests/sphp/Stdlib/BitMaskTest.php</file>
+      <file>./sphp/php/tests/sphp/Stdlib/BitMaskTest.php</file>
     </testsuite>
     <testsuite name="stdlib-stopwatch">
-      <file>./tests/sphp/Stdlib/StopWatchTest.php</file>
+      <file>./sphp/php/tests/sphp/Stdlib/StopWatchTest.php</file>
     </testsuite>
     <testsuite name="stdlib-random">
-      <directory>./tests/sphp/Stdlib/Random</directory>
+      <directory>./sphp/php/tests/sphp/Stdlib/Random</directory>
     </testsuite>
     <testsuite name="stdlib-filesystem">
-      <file>./tests/sphp/Stdlib/FilesystemTest.php</file>
+      <file>./sphp/php/tests/sphp/Stdlib/FilesystemTest.php</file>
     </testsuite>
     <testsuite name="stdlib-arrays">
-      <file>./tests/sphp/Stdlib/ArraysTest.php</file>
+      <file>./sphp/php/tests/sphp/Stdlib/ArraysTest.php</file>
     </testsuite>
     <testsuite name="validators">
-      <directory>./tests/sphp/Validators</directory>
+      <directory>./sphp/php/tests/sphp/Validators</directory>
     </testsuite>
   </testsuites>
   

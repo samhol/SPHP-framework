@@ -13,18 +13,12 @@ namespace Sphp\Stdlib\Parsers;
 use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
+use Sphp\Exceptions\InvalidArgumentException;
 
-/**
- * Description of JsonTest
- *
- * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
- */
-class JsonTest extends TestCase {
+class YamlTest extends TestCase {
 
   /**
-   * @var Json
+   * @var Yaml
    */
   protected $parser;
 
@@ -33,7 +27,7 @@ class JsonTest extends TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->parser = new Json();
+    $this->parser = new Yaml();
   }
 
   /**
@@ -49,21 +43,26 @@ class JsonTest extends TestCase {
    */
   public function filepathMap(): array {
     $map = [
-        ['./tests/files/test.json', ['foo' => 'bar']],
+        ['./tests/files/test.Yaml', ['foo' => 'bar']],
     ];
     return $map;
   }
 
   public function testDecode() {
-    $raw = Filesystem::toString('./tests/files/test.json');
-    $fromFile = $this->parser->readFromFile('./tests/files/test.json');
+    $raw = Filesystem::toString('./sphp/php/tests/files/test.yaml');
+    $fromFile = $this->parser->readFromFile('./sphp/php/tests/files/test.yaml');
     $fromString = $this->parser->readFromString($raw);
     $this->assertSame($fromFile, $fromString);
   }
 
   public function testEncode() {
     $string = $this->parser->write(['foo' => 'bar']);
-    $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
+    $this->assertTrue(is_string($string));
+  }
+
+  public function testEncodeInvalidData() {
+    $this->expectException(InvalidArgumentException::class);
+    var_dump($this->parser->write('...'));
   }
 
   public function testConverInvalidFile() {

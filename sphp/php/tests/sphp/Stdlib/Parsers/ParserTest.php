@@ -63,12 +63,11 @@ class ParserTest extends TestCase {
    * @return array
    */
   public function filepathMap(): array {
-    $dir = __DIR__ . '/files/';
     $map = [
-        ['./tests/files/test.md', '<h1 foo="bar">test</h1>'],
-        ['./tests/files/test.yaml', ['foo' => 'bar']],
-        ['./tests/files/test.json', ['foo' => 'bar']],
-        ['./tests/files/test.ini', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/test.md', '<h1 foo="bar">test</h1>'],
+        ['./sphp/php/tests/files/test.yaml', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/test.json', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/test.ini', ['foo' => 'bar']],
     ];
     return $map;
   }
@@ -89,12 +88,12 @@ class ParserTest extends TestCase {
 
   public function testParsingFileWithoutExtension() {
     $this->expectException(InvalidArgumentException::class);
-    Parser::fromFile('./tests/files/test');
+    Parser::fromFile('./sphp/php/tests/files/test');
   }
 
   public function testParsingFileWithUnknownExtension() {
     $this->expectException(InvalidArgumentException::class);
-    Parser::fromFile('./tests/files/test.foo');
+    Parser::fromFile('./sphp/php/tests/files/test.foo');
   }
 
   /**

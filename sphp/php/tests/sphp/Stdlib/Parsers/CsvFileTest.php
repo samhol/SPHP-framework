@@ -30,13 +30,13 @@ class CsvFileTest extends TestCase {
   }
 
   public function testAppending() {
-    $spl = Filesystem::mkFile('./tests/temp/bar.csv');
-    $csvObj = new CsvFile('./tests/temp/bar.csv');
+    $spl = Filesystem::mkFile('./sphp/php/tests/temp/bar.csv');
+    $csvObj = new CsvFile('./sphp/php/tests/temp/bar.csv');
     $csvObj->appendRow(['foo', 'bar', 'baz']);
     $fileAsArray = $csvObj->toArray();
     $this->assertEquals(['foo', 'bar', 'baz'], $fileAsArray[0]);
     unset($spl, $csvObj);
-    Filesystem::rmFile('./tests/temp/bar.csv');
+    Filesystem::rmFile('./sphp/php/tests/temp/bar.csv');
   }
 
   public function testInvalidFileName() {
@@ -45,19 +45,19 @@ class CsvFileTest extends TestCase {
   }
 
   public function testGetHeaderRow() {
-    $fileObj = new \SplFileObject('./tests/files/test.csv');
+    $fileObj = new \SplFileObject('./sphp/php/tests/files/test.csv');
     $expected = $fileObj->fgetcsv();
-    $actual = (new CsvFile('./tests/files/test.csv'))->getHeaderRow();
+    $actual = (new CsvFile('./sphp/php/tests/files/test.csv'))->getHeaderRow();
     $this->assertEquals($expected, $actual);
   }
 
   public function testToArrayAndIterator() {
     $row = 0;
-    $fileObj = new \SplFileObject('./tests/files/test.csv');
-    $csvObj = new CsvFile('./tests/files/test.csv');
+    $fileObj = new \SplFileObject('./sphp/php/tests/files/test.csv');
+    $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
     $actual = $csvObj->toArray();
     //var_dump($actual);
-    if (($handle = fopen('./tests/files/test.csv', 'r')) !== false) {
+    if (($handle = fopen('./sphp/php/tests/files/test.csv', 'r')) !== false) {
       while (($data = fgetcsv($handle, 1000, ',')) !== false) {
         $this->assertEquals($data, $actual[$row]);
         $this->assertEquals($data, $actual[$row]);
@@ -76,7 +76,7 @@ class CsvFileTest extends TestCase {
   }
 
   public function testGetChunk() {
-    $csvObj = new CsvFile('./tests/files/test.csv');
+    $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
     $csvArray = $csvObj->toArray();
     $chunk = $csvObj->getChunk(2, 5);
     $this->assertEquals(array_slice($csvArray, 2, 5, true), $chunk);
@@ -101,13 +101,13 @@ class CsvFileTest extends TestCase {
 
   public function testOverflowSeek() {
     $this->expectException(OutOfRangeException::class);
-    $csvObj = new CsvFile('./tests/files/test.csv');
+    $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
     $csvObj->seek(100);
   }
 
   public function testNegativeSeek() {
     $this->expectException(LogicException::class);
-    $csvObj = new CsvFile('./tests/files/test.csv');
+    $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
     $csvObj->seek(-1);
   }
 

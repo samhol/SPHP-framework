@@ -57,7 +57,7 @@ class FilesystemTest extends TestCase {
   public function validFiles(): array {
     return [
         [__FILE__],
-        ['./tests/files/test.php']
+        ['./sphp/php/tests/files/test.php']
     ];
   }
 
@@ -85,21 +85,21 @@ class FilesystemTest extends TestCase {
   }
 
   public function testGetTextFileRows() {
-    $rows = Filesystem::getTextFileRows('./tests/files/test.php');
+    $rows = Filesystem::getTextFileRows('./sphp/php/tests/files/test.php');
     $this->assertCount(2, $rows);
     $this->expectException(FileSystemException::class);
     Filesystem::getTextFileRows('foo.bar');
   }
 
   public function testPhpFileExecution() {
-    $string = Filesystem::executePhpToString('./tests/files/test.php');
+    $string = Filesystem::executePhpToString('./sphp/php/tests/files/md.php');
     $this->assertEquals('#test{foo=bar}', $string);
     $this->expectException(FileSystemException::class);
     Filesystem::executePhpToString('foo.php');
   }
 
   public function testToStringExecution() {
-    $string = Filesystem::toString('./tests/files/test.ini');
+    $string = Filesystem::toString('./sphp/php/tests/files/test.ini');
     $this->assertEquals("foo = bar", trim($string));
     $this->expectException(FileSystemException::class);
     Filesystem::toString('foo.php');
