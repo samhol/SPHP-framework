@@ -11,6 +11,6 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - phpunit --verbose --bootstrap tests/bootstrap.php
+  - phpunit --verbose --bootstrap sphp/php/tests/bootstrap.php
 
 sudo: false
