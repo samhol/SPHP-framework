@@ -20,6 +20,7 @@ use Sphp\Stdlib\Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class Regex extends AbstractValidator {
@@ -37,6 +38,11 @@ class Regex extends AbstractValidator {
   private $pattern = "//";
 
   /**
+   * @var mixed
+   */
+  private $skipped = [];
+
+  /**
    * Constructor
    *
    *  **Note:** If the validable value matches the pattern => the validated
@@ -46,11 +52,16 @@ class Regex extends AbstractValidator {
    * @param string $errorMessage error message corresponding to the pattern
    */
   public function __construct(string $pattern = null, string $errorMessage = 'Invalid pattern given') {
-    parent::__construct('Invalid type given. String, integer or float expected');
+    parent::__construct('Value of %s type given. String, integer or float expected');
     if ($pattern !== null) {
       $this->setPattern($pattern);
     }
     $this->errors()->setTemplate(self::NOT_MATCH, $errorMessage);
+  }
+
+  public function skip(...$value) {
+    $this->skipped = $value;
+    return $this;
   }
 
   /**
@@ -70,9 +81,12 @@ class Regex extends AbstractValidator {
 
   public function isValid($value): bool {
     $this->setValue($value);
+    if (in_array($value, $this->skipped)) {
+      return true;
+    }
     if (!is_string($value) && !is_int($value) && !is_float($value)) {
       //echo 'Invalid type given. String, integer or float expected';
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->errors()->appendErrorFromTemplate(self::INVALID, [gettype($value)]);
       return false;
     }
     if (!Strings::match($value, $this->pattern)) {

@@ -17,6 +17,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class IsInstanceOf extends AbstractValidator {
@@ -31,8 +32,8 @@ class IsInstanceOf extends AbstractValidator {
    * 
    * @param string $className
    */
-  public function __construct(string $className) {
-    parent::__construct('Value is not instance of %s');
+  public function __construct(string $className, $error = 'Value is not instance of %s') {
+    parent::__construct($error);
     $this->setClassName($className);
   }
 

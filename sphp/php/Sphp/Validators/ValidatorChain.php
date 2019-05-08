@@ -10,13 +10,18 @@
 
 namespace Sphp\Validators;
 
+use Sphp\Exceptions\BadMethodCallException;
 use Countable;
+use Sphp\Stdlib\Arrays;
 
 /**
- * A validator container for validating a value against multiple validators
+ * A container for validating a value against multiple validators
+ * 
+ * @method \Sphp\Validators\Regexp regexp(mixed $content = null, $for = null) inserts a new Regexp validator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
 class ValidatorChain extends AbstractValidator implements Countable {
@@ -24,18 +29,24 @@ class ValidatorChain extends AbstractValidator implements Countable {
   /**
    * used validators
    *
-   * @var mixed[]
+   * @var Validator[]
    */
   private $validators;
+
+  /**
+   * @var bool
+   */
+  private $breaksOnFailure;
 
   /**
    * Constructor
    * 
    * @param string $error error message template
    */
-  public function __construct(string $error = 'Invalid value') {
+  public function __construct(bool $breaksOnFailure = true, string $error = 'Invalid value') {
     parent::__construct($error);
     $this->validators = [];
+    $this->breaksOnFailure = $breaksOnFailure;
   }
 
   /**
@@ -47,6 +58,24 @@ class ValidatorChain extends AbstractValidator implements Countable {
   }
 
   /**
+   * 
+   * @param  string $name
+   * @param  array $arguments
+   * @return Validator
+   * @throws BadMethodCallException
+   */
+  public function __call(string $name, array $arguments): Validator {
+    $validatorClass = '\\Sphp\\Validators\\' . ucfirst($name);
+    if (!is_a($validatorClass, Validator::class, true)) {
+      throw new BadMethodCallException(sprintf('%s is not a validator', $validatorClass));
+    }
+    $reflectionClass = new \ReflectionClass($validatorClass);
+    $v = $reflectionClass->newInstanceArgs($arguments);
+    $this->appendValidators($v);
+    return $v;
+  }
+
+  /**
    * Clones the object
    *
    * **Note:** Method cannot be called directly!
@@ -54,27 +83,19 @@ class ValidatorChain extends AbstractValidator implements Countable {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->validators = \Sphp\Stdlib\Arrays::copy($this->validators);
+    $this->validators = Arrays::copy($this->validators);
     parent::__clone();
-  }
-
-  public function setValue($value) {
-    parent::setValue($value);
-    foreach ($this->validators as $validator) {
-      
-    }
   }
 
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
     foreach ($this->validators as $validator) {
-      $v = $validator['validator'];
-      $break = $validator['break'];
-      if (!$v->isValid($value)) {
+      //var_dump($validator);
+      if (!$validator->isValid($value)) {
         $valid = false;
-        $this->errors()->mergeCollection($v->errors());
-        if ($break) {
+        $this->errors()->mergeCollection($validator->errors());
+        if ($this->breaksOnFailure) {
           break;
         }
       }
@@ -83,18 +104,15 @@ class ValidatorChain extends AbstractValidator implements Countable {
   }
 
   /**
-   * Appends a new validator to the chain
+   * Appends a new validator(s) to the chain
    * 
-   * @param  Validator $v new validator object
-   * @param  boolean $break
+   * @param  Validator... $validator new validator(s)
    * @return $this for a fluent interface
    */
-  public function appendValidator(Validator $v, bool $break = false) {
-    $data = [
-        'validator' => $v,
-        'break' => (bool) $break,
-    ];
-    $this->validators[] = $data;
+  public function appendValidators(Validator... $validator) {
+    foreach ($validator as $v) {
+      $this->validators[] = $v;
+    }
     return $this;
   }
 

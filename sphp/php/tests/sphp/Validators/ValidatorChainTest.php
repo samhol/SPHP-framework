@@ -35,8 +35,8 @@ class ValidatorChainTest extends ValidatorTest {
   public function testRangeValidation(ValidatorChain $validator) {
     $strLen = new StringLength(2, 6);
     $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
-    $validator->appendValidator($strLen, true);
-    $validator->appendValidator($patt);
+    $validator->appendValidators($strLen);
+    $validator->appendValidators($patt);
     $this->assertCount(2, $validator);
     $this->assertTrue($validator->isValid('foo'));
     return $validator;
@@ -46,8 +46,8 @@ class ValidatorChainTest extends ValidatorTest {
     $validator = new ValidatorChain();
     $strLen = new StringLength(2, 6);
     $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
-    $validator->appendValidator($strLen, true);
-    $validator->appendValidator($patt);
+    $validator->appendValidators($strLen);
+    $validator->appendValidators($patt);
     return $validator;
   }
 
