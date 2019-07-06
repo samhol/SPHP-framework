@@ -6,10 +6,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-@mixin sphp-badge() { 
-  .badge {
-    &.small {
-      font-size: rem-calc(10);
+@mixin sphp-remove-outlines() { 
+  .close-button, .close-button span {
+    &:focus {
+      outline: none;
     }
-  } 
+  }
 }

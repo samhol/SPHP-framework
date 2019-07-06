@@ -7,22 +7,24 @@
  */
 
 @charset "UTF-8";
-
-div.sphp-back-to-top-button {
-  cursor: pointer;
-  position: fixed;
-  bottom: rem-calc(15);
-  right: rem-calc(45);
-  text-decoration: none;
-  padding: 0;
-  display: none;
-  font-size: rem-calc(80); 
-  color: #555;
-  @include transition(all, 0.6s, ease-in-out);
-  @include opacity(0.6);
-  &:hover {
-    @include opacity(0.9);
-    @include transform(rotate(360deg) scale(1.1, 1.1));
-    color: #ff8000; 
-  } 
+@mixin sphp-back-to-top-button() {
+  div.sphp-back-to-top-button {
+    cursor: pointer;
+    position: fixed;
+    bottom: rem-calc(15);
+    right: rem-calc(45);
+    text-decoration: none;
+    padding: 0;
+    display: none;
+    font-size: rem-calc(80); 
+    color: #555;
+    @include transition(all, 0.6s, ease-in-out);
+    @include opacity(0.6);
+    &:hover {
+      @include opacity(0.9);
+      @include transform(rotate(360deg) scale(1.1, 1.1));
+      color: #ff8000; 
+    } 
+  }
 }
+

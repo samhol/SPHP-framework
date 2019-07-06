@@ -39,11 +39,9 @@ class AbstractIcon extends EmptyTag implements Icon {
    * @return $this for a fluent interface
    */
   public function setDecorative(bool $decorative = null) {
-    if (is_bool($decorative)) {
-    $decorative = ($decorative) ? 'true' : 'false';
-    $this->attributes()->setAttribute('aria-hidden', $decorative);
-    }
-    else {
+    if ($decorative === true) {
+      $this->attributes()->setAttribute('aria-hidden', 'true');
+    } else {
       $this->removeAttribute('aria-hidden');
     }
     return $this;
@@ -52,7 +50,7 @@ class AbstractIcon extends EmptyTag implements Icon {
   public function setAriaLabel(string $label = null) {
     $this->attributes()->setAria('label', $label);
     if ($label === null) {
-      $this->attributes()->setAttribute('aria-hidden', 'true');
+      $this->attributes()->remove('aria-hidden');
     } else {
       $this->attributes()->setAttribute('aria-hidden', 'false');
     }

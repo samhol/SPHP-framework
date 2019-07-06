@@ -127,6 +127,16 @@ abstract class AbstractDate implements DateInterface {
     $thisDay = $this->getDateTime()->format('Y-m-W');
     return $today === $thisDay;
   }
+  /**
+   * Checks whether the month is the current week
+   * 
+   * @return bool true if the month is current, false otherwise
+   */
+  public function isCurrentMonth(): bool {
+    $currentMonth = date('Y-m');
+    $thisMonth = $this->getDateTime()->format('Y-m');
+    return $currentMonth === $thisMonth;
+  }
 
   public function dateEqualsTo($date): bool {
     try {

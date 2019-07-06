@@ -143,7 +143,8 @@ class LineNumberer {
    * @return bool
    */
   public function manipulateHead(Table $table): bool {
-    try {
+    $result = false;
+    if ($table->thead() !== null) {
       $first = $table->thead()->getRow(0);
       $rowSpan = $table->thead()->count();
       if ($this->prependsLineNumbers()) {
@@ -152,10 +153,9 @@ class LineNumberer {
       if ($this->appendsLineNumbers()) {
         $first->append($this->generateTh($rowSpan));
       }
-      return true;
-    } catch (\Exception $ex) {
-      return false;
+      $result = true;
     }
+    return $result;
   }
 
   /**
@@ -163,8 +163,9 @@ class LineNumberer {
    * @param  Table $table
    * @return bool
    */
-  public function manipulateFooter(Table $table): bool  {
-   try {
+  public function manipulateFooter(Table $table): bool {
+    $result = false;
+    if ($table->tfoot() !== null) {
       $first = $table->tfoot()->getRow(0);
       $rowSpan = $table->tfoot()->count();
       if ($this->prependsLineNumbers()) {
@@ -173,10 +174,9 @@ class LineNumberer {
       if ($this->appendsLineNumbers()) {
         $first->append($this->generateTh($rowSpan));
       }
-      return true;
-    } catch (\Exception $ex) {
-      return false;
+      $result = true;
     }
+    return $result;
   }
 
   protected function generateLineNumberCell(int $number): Th {

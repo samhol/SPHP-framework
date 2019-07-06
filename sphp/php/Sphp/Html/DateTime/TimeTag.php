@@ -35,16 +35,16 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
   /**
    * @var string
    */
-  private $format = self::DATE_TIME;
+  private $format;
 
   /**
    * Constructor
    *
    * @param  mixed $dateTime the datetime object
-   * @param  mixed $content optional content of the component
    * @param  string $format the format of the outputted date string
+   * @param  mixed $content optional content of the components
    */
-  public function __construct($dateTime = null, $content = null, string $format = self::DATE_TIME) {
+  public function __construct($dateTime = null, string $format = 'c', $content = null) {
     parent::__construct('time', $content);
     $this->setDateTime($dateTime, $format);
   }
@@ -75,8 +75,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
     $this->attributes()->setAttribute('datetime', $this->dateTime->format($this->getFormat()));
     return $this;
   }
-  
-  
+
   /**
    * Creates a &lt;time&gt; tag object showing week number
    * 

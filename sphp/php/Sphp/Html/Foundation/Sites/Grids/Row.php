@@ -102,7 +102,7 @@ interface Row extends CssClassifiableContent, \Traversable {
    * @param  Cell $cell content component
    * @return $this for a fluent interface
    */
-  public function append(Cell $cell);
+  public function append(Cell $cell); 
 
   /**
    * Creates and appends a new Cell instance to the row
@@ -112,8 +112,7 @@ interface Row extends CssClassifiableContent, \Traversable {
    * Parameter `$content` can be of any type that converts to a string or to a string[]
    *
    * @param  mixed $content the content of the cell
-   * @param  string[] $layout Cell layout parameters (CSS classes)
    * @return Cell appended cell
    */
-  public function appendCell($content, array $layout = ['auto']): Cell;
+  public function appendCell($content): Cell;
 }

@@ -157,12 +157,13 @@ class MenuLinkBuilder {
       $link->setActive($t($linkData));
     }
     if (array_key_exists('tipso', $linkData)) {
-      $tip = new TipsoAdapter($link);
-      $tip['content'] = 'content';
-      $tip['position'] = 'bottom';
-      $tip->setTitle($linkData['tipso']['title']);
+      new TipsoAdapter($link, $linkData['tipso']);
     }
     return $link;
+  }
+
+  public function adapters(MenuLink $link, $linkData) {
+    
   }
 
 }

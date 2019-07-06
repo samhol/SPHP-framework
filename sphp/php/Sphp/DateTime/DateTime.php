@@ -259,4 +259,19 @@ class DateTime extends AbstractDate implements DateTimeInterface {
     return new static($input);
   }
 
+  /**
+   * 
+   * @param  string $format
+   * @param  string $time
+   * @param  \DateTimeZone $timezone
+   * @return DateTime|null
+   */
+  public static function createFromFormat(string $format, string $time, \DateTimeZone $timezone = null): ?DateTime {
+    $dti = DateTimeImmutable::createFromFormat($format, $time, $timezone);
+    if ($dti === false) {
+      return null;
+    }
+    return new static($dti);
+  }
+
 }

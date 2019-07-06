@@ -11,23 +11,12 @@
 namespace Sphp\Stdlib\Parsers;
 
 use PHPUnit\Framework\TestCase;
-use org\bovigo\vfs\vfsStreamWrapper;
-use org\bovigo\vfs\vfsStreamDirectory;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\OutOfRangeException;
 use Sphp\Exceptions\LogicException;
 
 class CsvFileTest extends TestCase {
-
-  protected function setUp(): void {
-    vfsStreamWrapper::register();
-    vfsStreamWrapper::setRoot(new vfsStreamDirectory('csvFiles'));
-  }
-
-  protected function tearDown(): void {
-    vfsStreamWrapper::unregister();
-  }
 
   public function testAppending() {
     $spl = Filesystem::mkFile('./sphp/php/tests/temp/bar.csv');

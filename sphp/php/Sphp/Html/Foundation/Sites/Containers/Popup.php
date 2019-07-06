@@ -13,8 +13,10 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Component;
 use Sphp\Html\Div;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
 use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
+use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 
 /**
  * Implements Reveal Modal 
@@ -27,8 +29,10 @@ use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Popup extends Div implements JavaScriptComponent {
+class Popup extends AbstractJavaScriptComponent {
 
+  
+  private $content;
   /**
    * @var CloseButton
    */
@@ -51,12 +55,13 @@ class Popup extends Div implements JavaScriptComponent {
    * @param  mixed|null $content added content
    */
   public function __construct($content = null) {
-    parent::__construct($content);
+    parent::__construct('div');
     $this->identify();
     $this->cssClasses()->protectValue('reveal');
     $this->attributes()->demand('data-reveal');
     $this->closeButton = new CloseButton();
     $this->layoutManager = new PopupLayoutManager($this);
+    $this->content = new PlainContainer($content);
   }
 
   /**
@@ -97,7 +102,7 @@ class Popup extends Div implements JavaScriptComponent {
   }
 
   public function contentToString(): string {
-    $output = parent::contentToString() . $this->getCloseButton()->getHtml();
+    $output = $this->content . $this->getCloseButton()->getHtml();
     return $output;
   }
 
@@ -110,10 +115,6 @@ class Popup extends Div implements JavaScriptComponent {
   public function createController(Component $content): Component {
     $content->setAttribute('data-open', $this->identify());
     return $content;
-  }
-
-  public function setOption(string $name, $value): \this {
-    
   }
 
 }

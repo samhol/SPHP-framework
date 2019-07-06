@@ -12,31 +12,16 @@ namespace Sphp\Html\Media\Icons;
 
 use SplFileInfo;
 use Sphp\Exceptions\InvalidArgumentException;
+use ArrayAccess;
 
 /**
- * File type icon factory
+ * File type icon name map
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon facebookSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon twitterSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FaIcon java(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon jar(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon class(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FaIcon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon php3(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon phtml(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon phar(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon json(string $screenReaderLabel = null) creates a new icon object
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Filetype {
+class FileIconMap implements ArrayAccess {
 
   /**
    * @var string[] 
@@ -367,12 +352,12 @@ class Filetype {
       'audio' => 'far fa-file-audio',
       'powerpoint' => 'far fa-file-powerpoint',
       'word' => 'far fa-file-word',
-      'excel' => 'fas fa-file-excel',
+      'excel' => 'far fa-file-excel',
       'css' => 'fab fa-css3-alt',
       'image' => 'far fa-file-image',
       'photoshop' => 'devicon-photoshop-plain',
       'illustrator' => 'devicon-illustrator-plain',
-      'text' => 'fas fa-file-alt',
+      'text' => 'far fa-file-alt',
       'html5' => 'fab fa-html5',
       'php' => 'fab fa-php',
       'js' => 'fab fa-js-square',
@@ -390,26 +375,16 @@ class Filetype {
   ];
 
   /**
-   * @var Filetype|null singleton instance 
+   * @var FileIconMap|null singleton instance 
    */
   private static $instance;
 
   /**
-   * @var array 
-   */
-  private $settings;
-
-  public function __construct(...$classes) {
-    $this->settings = [];
-    $this->settings['classes'] = $classes;
-  }
-
-  /**
    * Returns the singleton instance
    * 
-   * @return Filetype singleton instance
+   * @return FileIconMap singleton instance
    */
-  public static function instance(): Filetype {
+  public static function instance(): FileIconMap {
     if (self::$instance === null) {
       self::$instance = new static();
     }
@@ -421,63 +396,48 @@ class Filetype {
    *
    * @param  string $fileType the file type
    * @param  string $screenReaderText
-   * @return FaIcon new icon object
+   * @return string Font Awesome icon classes
    */
-  public function __invoke(string $fileType, string $screenReaderText = null): FaIcon {
-    return static::get($fileType, $screenReaderText);
+  public function __invoke(string $fileType): string {
+    return $this->mapExtension($fileType);
   }
 
-  /**
-   * Creates an icon object representing given file type
-   *
-   * @param  string $fileType the file type
-   * @param  array $arguments
-   * @return FaIcon new icon object
-   */
-  public function __call(string $fileType, array $arguments): FaIcon {
-    $screenReaderText = array_shift($arguments);
-    return static::get($fileType, $screenReaderText);
-  }
-
-  /**
-   * Creates an icon object representing given file type
-   *
-   * @param  string $fileType the file type
-   * @param  array $arguments 
-   * @return FaIcon new icon object
-   */
-  public static function __callStatic(string $fileType, array $arguments): FaIcon {
-    $screenReaderText = array_shift($arguments);
-    return static::get($fileType, $screenReaderText);
-  }
-
-  /**
-   * Creates an icon object representing given file or file type
-   *
-   * @param  string|SplFileInfo $fileOrExt a file or a file type
-   * @param  string $screenReaderText 
-   * @return FaIcon new icon object
-   */
-  public static function get($fileOrExt, string $screenReaderText = null): FaIcon {
-    if (array_key_exists($fileOrExt, static::$fileTypeMap)) {
-      $icon = static::$assosiations[static::$fileTypeMap[$fileOrExt]];
-    } else if (array_key_exists($fileOrExt, static::$assosiations)) {
-      $icon = static::$assosiations[$fileOrExt];
+  public function mapExtension(string $name): string {
+    if (array_key_exists($name, static::$fileTypeMap)) {
+      $icon = static::$assosiations[static::$fileTypeMap[$name]];
+    } else if (array_key_exists($name, static::$assosiations)) {
+      $icon = static::$assosiations[$name];
     } else {
-      if (is_string($fileOrExt)) {
-        $file = new SplFileInfo($fileOrExt);
-      }
-      if (!$file instanceof SplFileInfo) {
-        throw new InvalidArgumentException('File cannot be found');
-      }
-      $ext = $file->getExtension();
-      if (array_key_exists($ext, static::$fileTypeMap)) {
-        $icon = static::$fileTypeMap[$ext];
-      } else {
-        $icon = 'far fa-file';
-      }
+      $icon = 'far fa-file';
     }
-    return new FaIcon($icon, $screenReaderText);
+    return $icon;
+  }
+
+  public function mapFile($fileOrExt): string {
+    if (is_string($fileOrExt)) {
+      $file = new SplFileInfo($fileOrExt);
+    }
+    if (!$file instanceof SplFileInfo) {
+      throw new InvalidArgumentException('File cannot be found');
+    }
+    $ext = $file->getExtension();
+    return $this->mapExtension($ext);
+  }
+
+  public function offsetExists($offset): bool {
+    
+  }
+
+  public function offsetGet($offset) {
+    
+  }
+
+  public function offsetSet($offset, $value): void {
+    
+  }
+
+  public function offsetUnset($offset): void {
+    
   }
 
 }

@@ -14,7 +14,7 @@ $sphp-menu-border-color: rgba(#FAA523, .6);
 $sphp-menu-background-color: #222; 
 $sphp-menuitem-background-color: #222; 
 $sphp-menuitem-color: #fff;
-$sphp-menuitem-color-active: #efefef; 
+$sphp-menuitem-color-active: #efefef;
 $sphp-menuitem-font-color: #f4f4f4;
 $sphp-menuitem-font-color-active: #ffffff;
 //@import "compass/css3";
@@ -69,7 +69,7 @@ $sphp-menuitem-font-color-active: #ffffff;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 */
- 
+
 @import "app/apps";
 @import "manual/manual";
 
@@ -82,7 +82,13 @@ $sphp-menuitem-font-color-active: #ffffff;
 @include sphp-foundation-addons;
 @include sphp-menus();
 @include sphp-table-modules();
-@include sphp-geshi();
+//@include sphp-geshi();
 @include sphp-forms();
+@include sphp-back-to-top-button();
 
 @include sphp-code-example-accordion();
+
+
+
+
+

@@ -55,7 +55,7 @@ class Svg extends AbstractContent implements Icon {
    * 
    * @return DOMDocument the DOM document object
    */
-  protected function getDoc(): DOMDocument {
+  public function getDoc(): DOMDocument {
     return $this->doc;
   }
 
@@ -64,7 +64,7 @@ class Svg extends AbstractContent implements Icon {
    * 
    * @return DOMNode the SVG node
    */
-  protected function getSvg(): DOMNode {
+  public function getSvg(): DOMNode {
     return $this->svg;
   }
 

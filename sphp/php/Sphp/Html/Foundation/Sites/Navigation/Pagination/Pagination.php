@@ -12,15 +12,10 @@ namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\ContainerTag;
 use IteratorAggregate;
 use Countable;
-use ArrayIterator;
 use Sphp\Html\Iterator;
-use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Li;
-use Sphp\Stdlib\Arrays;
-use Sphp\Exceptions\OutOfRangeException;
 use Traversable;
 
 /**

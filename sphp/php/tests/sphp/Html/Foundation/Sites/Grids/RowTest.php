@@ -53,7 +53,7 @@ class RowTest extends TestCase {
     $this->assertCount($numCols, $row);
     foreach ($row as $col) {
       $this->assertTrue($col instanceof Cell);
-      $this->assertTrue($col->hasCssClass('auto'));
+     // $this->assertTrue($col->hasCssClass('auto'));
     }
     $this->checkTypes($row);
   }
@@ -71,7 +71,6 @@ class RowTest extends TestCase {
     $this->assertCount($numCols, $this->row);
     foreach ($this->row as $col) {
       $this->assertTrue($col instanceof Cell);
-      $this->assertTrue($col->hasCssClass('auto'));
     }
     $this->checkTypes($this->row);
   }

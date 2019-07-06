@@ -17,6 +17,7 @@ use Sphp\Html\Forms\Buttons\Resetter;
 use Sphp\Html\Forms\Buttons\Button as PushButton;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Span;
+use ReflectionClass;
 
 /**
  * Implements button styling adapter for Foundation Sites
@@ -33,6 +34,11 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Butt
       \Sphp\Html\ComponentTrait;
 
   /**
+   * @var ReflectionClass
+   */
+  private $reflector;
+
+  /**
    * Constructor
    * 
    * @param CssClassifiableContent|scalar $component
@@ -41,8 +47,30 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Butt
     if (!$component instanceof CssClassifiableContent) {
       $component = new Span($component);
     }
+    $this->reflector = new ReflectionClass($component);
     parent::__construct($component);
     $this->cssClasses()->add('button');
+  }
+
+  /**
+   * Invokes the given public inner object method
+   * 
+   * @param  string $name the name of the called method
+   * @param  array $arguments
+   * @return mixed
+   * @throws BadMethodCallException if the public method does not exixt
+   */
+  public function __call(string $name, array $arguments) {
+    if (!$this->reflector->hasMethod($name)) {
+      $inputType = get_class($this->getComponent());
+      throw new BadMethodCallException("Method $name is not defined in '$inputType' component");
+    }
+    $result = \call_user_func_array(array($this->getComponent(), $name), $arguments);
+    if ($result === $this->getComponent()) {
+      return $this;
+    } else {
+      return $result;
+    }
   }
 
   public function setLayouts(...$layouts) {

@@ -126,7 +126,7 @@ abstract class AbstractCell extends AbstractComponent implements Cell {
     $screens = implode('|', $this->settings->getScreenSizes());
     $this->cssClasses()
             ->removePattern("/^(($screens)-([1-9]|(1[0-2]))|(auto|shrink))|(shrink|auto)$/");
-    $this->cssClasses()->add('auto');
+    $this->cssClasses();
     return $this;
   }
 

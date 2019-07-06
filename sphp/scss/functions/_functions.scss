@@ -22,14 +22,14 @@
 }
 
 @mixin border-top-right-radius($radius: 3px) {
-  border-bottom-right-radius: $radius;
-  -webkit-border-bottom-right-radius: $radius;
-  -moz-border-radius-bottomright: $radius;
+  border-top-right-radius: $radius;
+  -webkit-top-right-radius: $radius;
+  -moz-border-radius-topright: $radius;
 }
 @mixin border-top-left-radius($radius: 3px) {
-  border-bottom-left-radius: $radius;
-  -webkit-border-bottom-left-radius: $radius;
-  -moz-border-radius-bottomleft: $radius;
+  border-top-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-radius-topleft: $radius;
 }
 
 /// Border Radius
@@ -51,6 +51,14 @@
   -moz-border-radius-bottomleft: $radius;
 }
 
+@mixin border-left-radius($radius: 3px) {
+  @include border-bottom-left-radius($radius); 
+  @include border-top-left-radius($radius);
+}
+@mixin border-right-radius($radius: 3px) {
+  @include border-bottom-right-radius($radius); 
+  @include border-top-right-radius($radius);
+}
 @mixin border-radii($topleft, $topright, $bottomright, $bottomleft) {
   border-top-left-radius: $topleft;
   border-top-right-radius: $topright;

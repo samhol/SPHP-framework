@@ -111,7 +111,7 @@ class PeriodicTask implements Task, IteratorAggregate {
   /**
    * 
    * @param  mixed $data
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function setData($data) {
     $this->data = $data;
@@ -155,7 +155,22 @@ class PeriodicTask implements Task, IteratorAggregate {
   }
 
   public function dateMatchesWith($date): bool {
+    $valid = true;
+    foreach ($this->period as $start) {
+      $imDate = DateTime::from($start);
+      //echo  $imDate->add($this->duration)->format('H:i:s')."\n";
+      //$task = new SingleTask($imDate, $imDate->add($this->duration));
+      $valid = (new \Sphp\DateTime\Constraints\Between($imDate, $imDate->add($this->duration)))->isValid($date);
+      //var_dump($valid);
+      if (!$valid) {
+        break;
+      }
+      //$task->setDescription($this->getDescription());
+      //$tasks[] = $task;
+      return $valid;
+    }
     return $this->period->containsDate($date);
+    
   }
 
 }

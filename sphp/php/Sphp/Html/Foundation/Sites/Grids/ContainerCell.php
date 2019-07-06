@@ -58,6 +58,11 @@ class ContainerCell extends AbstractCell {
     return $this;
   }
 
+  public function appendMd($content) {
+    $this->content->appendMd($content);
+    return $this;
+  }
+
   public function contentToString(): string {
     return $this->content->getHtml();
   }

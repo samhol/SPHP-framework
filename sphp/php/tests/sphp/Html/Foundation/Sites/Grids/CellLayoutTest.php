@@ -148,15 +148,10 @@ class CellLayoutTest extends TestCase {
     $this->assertNotContainsCssClass($layout, 'hide-for-small-only');
   }
 
-  /**
-   *
-   * @param string $type
-   * @param int|boolean $size
-   */
   public function testAutoWidth() {
     $this->col->setLayouts('small-12', 'medium-3', 'large-11', 'xxlarge-3');
     //echo $this->col->cssClasses();
-    $this->assertTrue($this->col->cssClasses()->contains('auto'));
+   // $this->assertTrue($this->col->cssClasses()->contains('auto'));
     $this->assertTrue($this->col->cssClasses()->contains('xxlarge-3'));
     $this->assertTrue($this->col->cssClasses()->contains('medium-3'));
     $this->assertTrue($this->col->cssClasses()->contains('small-12'));

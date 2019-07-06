@@ -44,7 +44,7 @@ class Paragraph extends ContainerTag implements AjaxLoader {
     return $this;
   }
   
-  public function appendMd(string $md) {
+  public function appendMd(string $md, bool $inlineOnly = false) {
     $parsed = \ParsedownExtraPlugin::instance()->line($md);
     $this->append($parsed);
     return $this;

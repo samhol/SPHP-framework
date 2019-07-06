@@ -122,7 +122,7 @@ class Modal extends AbstractContent implements ClosableInterface {
   }
 
   public function setClosable($closable = true) {
-    $this->getPopup()->setClosable($closable);
+    $this->getPopup()->setOption('closable',$closable);
     return $this;
   }
 

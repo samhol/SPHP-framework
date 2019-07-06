@@ -104,10 +104,10 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @return StandardListItem appended instance
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md): StandardListItem {
+  public function appendMd(string $md, bool $inlineOnly = false): StandardListItem {
     try {
       $li = new Li();
-      $li->appendMd($md);
+      $li->appendMd($md, $inlineOnly);
       $item = $this->append($li);
       return $item;
     } catch (\Exception $ex) {

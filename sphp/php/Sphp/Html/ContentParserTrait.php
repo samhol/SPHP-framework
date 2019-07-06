@@ -71,12 +71,12 @@ trait ContentParserTrait {
    * @return $this for a fluent interface
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md) {
+  public function appendMd(string $md, bool $inlineOnly = false) {
     try {
       if ($this instanceof InlineContainer) {
-        $content = Parser::md()->parseString($md, true);
+        $content = Parser::md()->parseString($md, $inlineOnly);
       } else {
-        $content = Parser::md()->parseString($md);
+        $content = Parser::md()->parseString($md, $inlineOnly);
       }
       $this->append($content);
     } catch (\Exception $ex) {
@@ -88,7 +88,7 @@ trait ContentParserTrait {
   /**
    * Appends a parsed Mark Down file to the container
    * 
-   * @param  string $path  the path to the file
+   * @param  string $path the path to the file
    * @return $this for a fluent interface
    * @throws RuntimeException if the parsing fails for any reason
    */

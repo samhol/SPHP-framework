@@ -16,7 +16,7 @@ use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
 use Sphp\Config\ErrorHandling\ExceptionListener;
 
 /**
- * Implements Foundation Callout for {@link \Exception} presentation
+ * Implements Foundation Callout for Exception presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/sites/docs/callout.html Foundation Callout
@@ -83,7 +83,6 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    */
   public function showPreviousException(bool $show = true) {
     $this->showPreviousThrowable = $show;
-    //$this->buildPreviousException();
     return $this;
   }
 
@@ -101,7 +100,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
       $ul->append('<span class="note">File:</span> <span class="file">' . $this->parsePath($e->getFile()) . '</span>');
       $ul->append('<span class="note">Line:</span> <span class="number">#' . $e->getLine() . '</span>');
     }
-    return $heading . $ul;
+    return $heading . $ul . "\n";
   }
 
   /**
@@ -112,7 +111,7 @@ class ThrowableCalloutBuilder implements ExceptionListener {
    */
   private function buildPreviousException(Throwable $e): string {
     $prev = $e->getPrevious();
-    $output = "";
+    $output = '';
     if ($prev instanceof \Throwable) {
       $output .= '<div class="previous-exeption"><h2 class="previous">Previous:</h2>';
       $output .= $this->buildCalloutContent($prev) . '</div>';

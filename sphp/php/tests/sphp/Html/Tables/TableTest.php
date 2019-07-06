@@ -50,12 +50,12 @@ class TableTest extends TestCase {
 
     $this->assertInstanceOf(Caption::class, $caption);
     $this->assertSame("$this->table", '<table><caption>caption</caption></table>');
-    $this->table->thead()->appendHeaderRow(range('a', 'b'));
+    $this->table->setThead(new Thead())->appendHeaderRow(range('a', 'b'));
     $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th><th>b</th></tr></thead></table>');
-    $this->table->tfoot()->appendBodyRow(range('c', 'd'));
+    $this->table->setTfoot(new Tfoot())->appendBodyRow(range('c', 'd'));
     $this->table->tbody()->appendBodyRow(range(1, 2));
     $this->assertEquals($this->table->count(), 3);
-    $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th><th>b</th></tr></thead><tfoot><tr><td>c</td><td>d</td></tr></tfoot><tbody><tr><td>1</td><td>2</td></tr></tbody></table>');
+    $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th><th>b</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr></tbody><tfoot><tr><td>c</td><td>d</td></tr></tfoot></table>');
   }
 
   /**

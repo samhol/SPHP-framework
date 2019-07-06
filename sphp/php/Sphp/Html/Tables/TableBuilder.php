@@ -26,17 +26,17 @@ class TableBuilder extends AbstractContent {
   /**
    * @var array 
    */
-  private $theadData = [];
+  private $theadData;
 
   /**
    * @var array 
    */
-  private $tbodyData = [];
+  private $tbodyData;
 
   /**
    * @var array 
    */
-  private $tfootData = [];
+  private $tfootData;
 
   /**
    * @var array 
@@ -92,7 +92,7 @@ class TableBuilder extends AbstractContent {
    * 
    * @return array the table header content data
    */
-  public function getTheadData() {
+  public function getTheadData():?array {
     return $this->theadData;
   }
 
@@ -101,7 +101,7 @@ class TableBuilder extends AbstractContent {
    * 
    * @return array the table body content data
    */
-  public function getTbodyData() {
+  public function getTbodyData():?array {
     return $this->tbodyData;
   }
 
@@ -110,7 +110,7 @@ class TableBuilder extends AbstractContent {
    * 
    * @return array the table footer content data
    */
-  public function getTfootData() {
+  public function getTfootData():?array {
     return $this->tfootData;
   }
 
@@ -125,7 +125,7 @@ class TableBuilder extends AbstractContent {
    * @param  array $data the cell data for table head
    * @return $this for a fluent interface
    */
-  public function setTheadData(array $data) {
+  public function setTheadData(array $data = null) {
     $this->theadData = Arrays::setSequential($data, 0, 1);
     return $this;
   }
@@ -136,7 +136,7 @@ class TableBuilder extends AbstractContent {
    * @param  array $data the cell data for table body
    * @return $this for a fluent interface
    */
-  public function setTbodyData(array $data) {
+  public function setTbodyData(array $data = null) {
     $this->tbodyData = $data;
     return $this;
   }
@@ -147,7 +147,7 @@ class TableBuilder extends AbstractContent {
    * @param  array $data the cell data for table footer
    * @return $this for a fluent interface
    */
-  public function setTfootData(array $data) {
+  public function setTfootData(array $data = null) {
     $this->tfootData = $data;
     return $this;
   }
@@ -189,9 +189,9 @@ class TableBuilder extends AbstractContent {
    */
   public function buildHead(Table $table): Table {
     if (!empty($this->theadData)) {
-      $foot = new Thead();
-      $foot->appendHeaderRow($this->theadData);
-      $table->thead($foot);
+      $head = new Thead();
+      $head->appendHeaderRow($this->theadData);
+      $table->setThead($head);
     }
     return $table;
   }
@@ -203,7 +203,7 @@ class TableBuilder extends AbstractContent {
    * @return Table modified table object
    */
   public function buildFoot(Table $table): Table {
-    if (!empty($this->tfootData)) {
+    if ($this->tfootData !== null) {
       $foot = new Tfoot();
       $foot->appendHeaderRow($this->tfootData);
       $table->tfoot($foot);
@@ -217,7 +217,6 @@ class TableBuilder extends AbstractContent {
    */
   public function buildTable(): Table {
     $table = new Table();
-    $table->addCssClass('responsive-card-table', 'unstriped');
     $this->buildTbody($table);
     $this->buildHead($table);
     $this->buildFoot($table);

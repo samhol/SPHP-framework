@@ -69,8 +69,13 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
     $screenReaderText = array_shift($arguments);
     $target = array_shift($arguments);
     $fa = $this->fa;
-    $icon =$fa($name, $screenReaderText);
+    $icon = $fa($name, $screenReaderText);
     return $this->appendIcon($url, $icon, $target)->addCssClass($name);
+  }
+
+  public function appendLink(string $url, string $icon, string $screenreaderText = null): Hyperlink {
+    $this->fa->get($icon, $screenreaderText);
+    return new Hyperlink($url, $icon);
   }
 
   /**

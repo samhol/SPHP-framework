@@ -13,10 +13,10 @@ namespace Sphp\Data;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 use IteratorAggregate;
-use ReflectionClass;
 use Traversable;
 use Sphp\Exceptions\OutOfRangeException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Abstract implementation of a Data object
@@ -27,28 +27,63 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAggregate {
 
-  /**
-   * @var ReflectionClass 
-   */
-  private $reflector;
+  private $data;
 
   /**
    * Constructor
    * 
    * @param array|null $data optional data
    */
-  public function __construct(array $data = null) {
-    $this->reflector = new ReflectionClass($this);
-    if ($data !== null) {
-      $this->fromArray($data);
-    }
+  public function __construct(array $data = []) {
+    $this->fromArray($data);
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->reflector);
+//unset($this->data);
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @param  array $arguments
+   * @return void|mixed
+   * @throws BadMethodCallException
+   */
+  public function __call(string $name, array $arguments) {
+    if (!$this->offsetExists($name)) {
+      throw new BadMethodCallException("Cannot call method: method $name does not exist");
+    }
+    $numArgs = count($arguments);
+    if ($numArgs === 1) {
+      $this->offsetSet($name, $arguments[0]);
+    } else if ($numArgs === 0) {
+      return $this->offsetGet($name);
+    } else {
+      throw new BadMethodCallException("Cannot call method $name: method invalid number of argumwents does not exist");
+    }
+  }
+
+  public function __isset($name): bool {
+    return $this->offsetExists($name);
+  }
+
+  public function __set($name, $value): void {
+    $this->offsetSet($name, $value);
+  }
+
+  public function __get($name) {
+    return $this->offsetGet($name);
+  }
+
+  public function __unset($name): void {
+    $this->offsetUnset($name);
+  }
+
+  public function __toString(): string {
+    return $this->toJson();
   }
 
   /**
@@ -58,12 +93,12 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
    */
   public abstract function fromArray(array $data);
 
-  public function toJson(): string {
-    return json_encode($this->toArray(), JSON_PRETTY_PRINT);
+  public function contains(string $name): bool {
+    return $this->offsetExists($name) && !empty($this->{$name});
   }
 
-  public function __toString(): string {
-    return $this->toJson();
+  public function toJson(): string {
+    return json_encode($this->toArray(), JSON_PRETTY_PRINT);
   }
 
   public function getIterator(): Traversable {
@@ -71,15 +106,12 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
   }
 
   public function offsetExists($offset): bool {
-    $getMethod = 'get' . ucfirst($offset);
-    $setMethod = 'set' . ucfirst($offset);
-    return $this->reflector->hasMethod($getMethod) && $this->reflector->hasMethod($setMethod);
+    return array_key_exists($offset, $this->data);
   }
 
   public function offsetGet($offset) {
     if ($this->offsetExists($offset)) {
-      $methodName = 'get' . ucfirst($offset);
-      return $this->$methodName();
+      return $this->data[$offset];
     } else {
       throw new OutOfRangeException("Offset '$offset' does not exist");
     }
@@ -87,22 +119,14 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
 
   /**
    * 
-   * @param  string $offset
+   * @param  mixed $offset
    * @param  mixed $value
    * @throws InvalidArgumentException
    * @throws OutOfRangeException
    */
-  public function offsetSet($offset, $value) {
+  public function offsetSet($offset, $value): void {
     if ($this->offsetExists($offset)) {
-      $methodName = 'set' . ucfirst($offset);
-      $f = $this->reflector->getMethod($methodName);
-      if ($f->getNumberOfParameters() === 1) {
-        $pars = $f->getParameters();
-        var_dump($pars[0]->hasType());
-        $f->invoke($this, $value);
-      } else {
-        throw new InvalidArgumentException("Offset '$offset' does not exist");
-      }
+      $this->data[$offset] = $value;
     } else {
       throw new OutOfRangeException("Setting member variable failed: '$offset' does not exist");
     }
@@ -111,23 +135,21 @@ abstract class AbstractDataObject implements ArrayAccess, Arrayable, IteratorAgg
   /**
    * 
    * @param  mixed $offset
-   * @throws InvalidArgumentException
-   * @throws OutOfRangeException
+   * @return void
    */
-  public function offsetUnset($offset) {
+  public function offsetUnset($offset): void {
     if ($this->offsetExists($offset)) {
-      $methodName = 'set' . ucfirst($offset);
-      $reflectionFunc = $this->reflector->getMethod($methodName);
-      $pars = $reflectionFunc->getParameters();
-      if (count($pars) == 1 && $pars[0]->allowsNull()) {
-        //echo 'unsetting';
-        $reflectionFunc->invoke($this, null);
-      } else {
-        throw new InvalidArgumentException("Unsetting member variable failed: '$offset' cannot be NULL");
-      }
-    } else {
-      throw new OutOfRangeException("Unsetting member variable failed: '$offset' does not exist");
+      unset($this->data[$offset]);
     }
+  }
+
+  /**
+   * 
+   * @param  array $data
+   * @return void
+   */
+  protected function setInitialData(array $data): void {
+    $this->data = $data;
   }
 
 }

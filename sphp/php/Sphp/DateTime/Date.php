@@ -140,4 +140,19 @@ class Date extends AbstractDate {
     return new static($date);
   }
 
+  /**
+   * 
+   * @param  string $format
+   * @param  string $time
+   * @param  \DateTimeZone $timezone
+   * @return Date|null
+   */
+  public static function createFromFormat(string $format, string $time, \DateTimeZone $timezone = null): ?Date {
+    $dti = DateTimeImmutable::createFromFormat($format, $time, $timezone);
+    if ($dti === false) {
+      return null;
+    }
+    return new static($dti);
+  }
+
 }

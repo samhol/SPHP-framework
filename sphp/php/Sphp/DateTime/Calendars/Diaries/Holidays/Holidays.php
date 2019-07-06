@@ -11,7 +11,6 @@
 namespace Sphp\DateTime\Calendars\Diaries\Holidays;
 
 use Sphp\DateTime\DateInterface;
-use Sphp\DateTime\Constraints;
 use Sphp\DateTime\Constraints\Unique;
 use Sphp\DateTime\Constraints\Annual;
 use Sphp\DateTime\Constraints\VaryingAnnual;
@@ -88,10 +87,10 @@ class Holidays {
     $person->setLname($parts[1]);
     if ($dod !== null) {
       try {
-      $person->setDateOfDeath($dod);
-    } catch (\Exception $ex) {
-      throw new InvalidArgumentException('Date Of death is not null or a correct date', $ex->getCode(), $ex);
-    }
+        $person->setDateOfDeath($dod);
+      } catch (\Exception $ex) {
+        throw new InvalidArgumentException('Date Of death is not null or a correct date', $ex->getCode(), $ex);
+      }
     }
     return new BirthDay($person);
   }

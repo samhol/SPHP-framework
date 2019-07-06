@@ -33,16 +33,18 @@ class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
    * Constructor
    * 
    * @param Component $component
-   * @param string|null $content the value of the title attribute
+   * @param iterable|null $settings the settings
    */
-  public function __construct(Component $component, string $content = null) {
+  public function __construct(Component $component, iterable $settings = null) {
     parent::__construct($component);
     $component->setAttribute('data-sphp-tipso');
     $this->config = new JsonAttribute('data-sphp-tipso-options');
     $component->attributes()
             ->setInstance($this->config);
-    if ($content !== null) {
-      $this->setTitle($content);
+    if ($settings !== null) {
+      foreach ($settings as $option => $value) {
+        $this[$option] = $value;
+      }
     }
   }
 

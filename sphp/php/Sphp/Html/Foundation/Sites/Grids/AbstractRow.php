@@ -129,7 +129,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     return $this;
   }
 
-  public function setCells($columns, array $sizes = ['auto']) {
+  public function setCells($columns) {
     if (!is_array($columns)) {
       $columns = [$columns];
     }
@@ -140,7 +140,7 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
       if ($column instanceof Cell) {
         $this->append($column);
       } else {
-        $this->appendCell($column, $sizes);
+        $this->appendCell($column);
       }
     }
     return $this;
@@ -156,15 +156,15 @@ abstract class AbstractRow extends AbstractComponent implements \IteratorAggrega
     return $this;
   }
 
-  public function appendCell($content, array $sizes = ['auto']): Cell {
-    $cell = new ContainerCell($content, $sizes);
+  public function appendCell($content): Cell {
+    $cell = new ContainerCell($content);
     $this->append($cell);
     return $cell;
   }
 
-  public function appendMdColumn($md, array $sizes = ['auto']): Cell {
+  public function appendMdColumn($md): Cell {
     $cell = new ContainerCell();
-    $cell->layout()->setLayouts($sizes);
+   // $cell->layout()->setLayouts($sizes);
     $cell->appendMd($md);
     $this->append($cell);
     return $cell;

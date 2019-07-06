@@ -15,7 +15,6 @@ use Sphp\Html\Component;
 use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;
-use Sphp\Html\Forms\Buttons\Button;
 use Sphp\Html\Tags;
 use Sphp\Html\Media\Icons\FA;
 use Sphp\Html\Apps\ContentCopyController;
@@ -119,6 +118,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     $this->geshi->enable_classes();
     $this->geshi->set_overall_class('syntax');
     $this->geshi->set_header_type(GESHI_HEADER_DIV);
+    $this->geshi->enable_line_numbers(\GESHI_FANCY_LINE_NUMBERS, 2);
     //$this->geshi->set_overall_id(\Sphp\Stdlib\Strings::random());
     return $this;
   }
@@ -156,9 +156,12 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    */
   public function showLineNumbers(bool $show = true) {
     if ($show) {
-      $this->geshi->enable_line_numbers(\GESHI_FANCY_LINE_NUMBERS, 2);
+      $this->addCssClass('show-linenumbers');
+      $this->removeCssClass('hide-linenumbers');
     } else {
-      $this->geshi->enable_line_numbers(\GESHI_NO_LINE_NUMBERS);
+      $this->addCssClass('hide-linenumbers');
+      $this->removeCssClass('show-linenumbers');
+      //$this->geshi->enable_line_numbers(\GESHI_NO_LINE_NUMBERS);
     }
     return $this;
   }

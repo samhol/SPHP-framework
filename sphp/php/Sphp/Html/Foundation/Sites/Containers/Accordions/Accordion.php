@@ -78,7 +78,7 @@ class Accordion extends AbstractJavaScriptComponent implements IteratorAggregate
    * @param  mixed $content the content of the actual pane
    * @return ContentPane appended instance
    */
-  public function appendPane($title, $content): ContentPane {
+  public function appendPane($title, $content = null): ContentPane {
     $pane = new ContentPane($title, $content);
     $this->append($pane);
     return $pane;

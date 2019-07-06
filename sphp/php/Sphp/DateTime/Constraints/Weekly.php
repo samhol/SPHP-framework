@@ -11,6 +11,7 @@
 namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Date;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a weekly date constraint
@@ -32,8 +33,8 @@ class Weekly implements DateConstraint {
    * 
    * @param int ...$weekday
    */
-  public function __construct(int... $weekday) {
-    $this->weekdays = $weekday;
+  public function __construct(... $weekday) {
+    $this->weekdays = Arrays::flatten($weekday);
   }
 
   /**

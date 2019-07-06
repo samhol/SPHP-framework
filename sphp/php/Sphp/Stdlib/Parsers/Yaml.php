@@ -10,7 +10,6 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Exception;
 use Sphp\Exceptions\RuntimeException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 use Sphp\Exceptions\InvalidArgumentException;
@@ -28,11 +27,15 @@ class Yaml implements Writer, Reader {
 
   public function readFromString(string $string): array {
     try {
-      $data = SymfonyYaml::parse($string);
-    } catch (Exception $ex) {
+      $parsed = SymfonyYaml::parse($string);
+      if (!is_array($parsed)) {
+        return [$parsed];
+      }
+      return $parsed;
+    } catch (\Exception $ex) {
+      //echo "wefwef\n".$ex->getCode();
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-    return $data;
   }
 
   public function write($data): string {

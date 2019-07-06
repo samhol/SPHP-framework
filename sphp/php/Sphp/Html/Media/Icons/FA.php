@@ -40,6 +40,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Html\Media\Icons\FaIcon dribbble(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon dropbox(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon digg(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FaIcon stackoverflow(string $screenReaderLabel = null) creates a new icon object
  *
  * @method \Sphp\Html\Media\Icons\FaIcon phone(string $screenReaderLabel = null) creates a new icon object
  * @method \Sphp\Html\Media\Icons\FaIcon envelope(string $screenReaderLabel = null) creates a new icon object
@@ -105,6 +106,7 @@ class FA {
       'chevronCircleUp' => 'fas fa-chevron-circle-up',
       'tumblr' => 'fab fa-tumblr-square',
       'stumbleupon' => 'fab fa-stumbleupon-circle',
+      'stackoverflow' => 'fab fa-stack-overflow ',
       'pinterest' => 'fab fa-pinterest-square',
       'blogger' => 'fab fa-blogger',
       'cc' => 'fab fa-creative-commons',

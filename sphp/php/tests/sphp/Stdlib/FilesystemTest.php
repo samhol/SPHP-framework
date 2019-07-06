@@ -11,20 +11,9 @@
 namespace Sphp\Stdlib;
 
 use PHPUnit\Framework\TestCase;
-use org\bovigo\vfs\vfsStreamWrapper;
-use org\bovigo\vfs\vfsStreamDirectory;
 use Sphp\Exceptions\FileSystemException;
 
 class FilesystemTest extends TestCase {
-
-  protected function setUp(): void {
-    vfsStreamWrapper::register();
-    vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
-  }
-
-  protected function tearDown(): void {
-    vfsStreamWrapper::unregister();
-  }
 
   /**
    * @return array
@@ -70,18 +59,27 @@ class FilesystemTest extends TestCase {
     $this->assertTrue(Filesystem::isFile($path));
   }
 
-  public function testMkdirAndRmdir() {
-    $spl = Filesystem::mkdir('foo');
+  public function testMkdir() {
+    $spl = Filesystem::mkdir('./sphp/php/tests/foo');
     $this->assertTrue($spl->isDir());
-    $this->assertFalse(Filesystem::rmDir('foo')->isDir());
   }
 
+  /**
+   * @depends testMkdir
+   */
   public function testMkfileAndRmfile() {
-    $spl = Filesystem::mkFile('foo/bar.txt');
+    $spl = Filesystem::mkFile('./sphp/php/tests/foo/bar.txt');
     $this->assertTrue($spl->isFile());
-    $this->assertFalse(Filesystem::rmFile('foo/bar.txt')->isFile());
+    $this->assertFalse(Filesystem::rmFile('./sphp/php/tests/foo/bar.txt')->isFile());
     $this->expectException(FileSystemException::class);
     Filesystem::mkFile('$gaR £');
+  }
+
+  /**
+   * @depends testMkfileAndRmfile
+   */
+  public function testRmdir() {
+    $this->assertFalse(Filesystem::rmDir('./sphp/php/tests/foo')->isDir());
   }
 
   public function testGetTextFileRows() {

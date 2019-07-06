@@ -7,10 +7,10 @@
  */
 
 @import "top-bar";
-@import "media";
+@import "fixes";
 
 @mixin sphp-foundation-addons() { 
   @include sphp-responsive-bar;
   @include sphp-top-bar;
-  @include sphp-badge;
+  @include sphp-remove-outlines;
 }

@@ -15,6 +15,7 @@ use Sphp\DateTime\Constraints\Annual;
 use Sphp\DateTime\Constraints\Before;
 use Sphp\DateTime\DateInterface;
 use Sphp\Data\Person;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a BirthDay log object for a Diary
@@ -25,12 +26,6 @@ use Sphp\Data\Person;
  * @filesource
  */
 class BirthDay extends Holiday {
-
-  /**
-   * @var int
-   */
-  private $year, $month, $day;
-  private $dateOfDeath;
 
   /**
    * @var Person
@@ -45,7 +40,7 @@ class BirthDay extends Holiday {
   public function __construct(Person $person) {
     $this->person = $person;
     if ($this->person->getDateOfBirth() === null) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('Person must have date of birth');
+      throw new InvalidArgumentException('Person must have date of birth');
     }
     $constraints = new Constraints();
     $constraints->dateIs(new Annual($this->person->getDateOfBirth()->getMonth(), $this->person->getDateOfBirth()->getMonthDay()));
@@ -53,6 +48,11 @@ class BirthDay extends Holiday {
     parent::__construct($constraints, $person->getFname());
 
     //$this->dateOfDeath = $dateOfDeath;
+  }
+
+  public function __destruct() {
+    unset($this->person);
+    parent::__destruct();
   }
 
   public function getDate(): DateInterface {

@@ -10,55 +10,62 @@
 
 namespace Sphp\DateTime\Calendars\Diaries\Schedules;
 
+use Sphp\DateTime\Calendars\Diaries\AbstractLog;
+use Sphp\DateTime\Constraints\DateConstraint;
+use Sphp\DateTime\Time;
 use Sphp\DateTime\DateTime;
-use Sphp\DateTime\Date;
+use Sphp\DateTime\Duration;
+use Sphp\DateTime\ImmutableDuration;
+use Sphp\DateTime\Interval;
+use Sphp\DateTime\DateTimeInterface;
 
 /**
- * Description of Task
+ * Description of RepeatingTask
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class SingleTask implements Task {
+class ATask extends AbstractLog implements Task {
 
   /**
-   * @var DateTime 
+   * @var DateTimeInterface 
    */
   private $start;
 
   /**
-   * @var DateTime 
+   * @var Time 
    */
   private $end;
 
   /**
-   * @var string
+   * @var string 
    */
   private $description;
 
   /**
-   * @var mixed
+   * @var Interval
    */
   private $data;
+  private $duration;
 
   /**
    * Constructor
    * 
-   * @param mixed $start
-   * @param mixed $end
+   * @param DateTimeInterface $start
+   * @param Interval $length
+   * @param DateConstraint $constraint
    */
-  public function __construct($start, $end) {
-    $this->start = DateTime::from($start);
-    $this->end = DateTime::from($end);
+  public function __construct(string $heading = null) {
+    $this->title = $heading;
+    parent::__construct();
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->start, $this->end, $this->data);
+    unset($this->duration);
   }
 
   public function __toString(): string {
@@ -66,43 +73,13 @@ class SingleTask implements Task {
     return $output;
   }
 
-  public function getDuration(): \Sphp\DateTime\Interval {
-    return $this->start->diff($this->end);
-  }
-
-
-  /**
-   * 
-   * @return DateTime
-   */
-  public function getStart(): DateTime {
-    return $this->start;
-  }
-
-  /**
-   * 
-   * @return DateTime
-   */
-  public function getEnd(): DateTime {
-    return $this->end;
-  }
-  /**
-   * 
-   * @return string
-   */
-  public function getName(): string {
-    return $this->name;
-  }
-
-  /**
-   * Sets the name of the log
-   * 
-   * @param  string $name the name of the log
-   * @return $this for a fluent interface
-   */
-  public function setName(string $name) {
-    $this->name = $name;
+  public function setDuration($duration) {
+    $this->duration = $duration;
     return $this;
+  }
+
+  public function compareTo(Task $task): int {
+    
   }
 
   /**
@@ -112,6 +89,14 @@ class SingleTask implements Task {
    */
   public function getDescription(): string {
     return "$this->description";
+  }
+
+  public function getStart(): Time {
+    return $this->start;
+  }
+
+  public function getEnd(): Time {
+    return $this->end;
   }
 
   /**
@@ -126,6 +111,7 @@ class SingleTask implements Task {
   }
 
   /**
+   * Sets the data
    * 
    * @return mixed
    */
@@ -143,11 +129,21 @@ class SingleTask implements Task {
     return $this;
   }
 
-  public function dateMatchesWith($date): bool {
-    if (!$date instanceof Date) {
-      $date = Date::from($date);
+  /**
+   * Creates a new task instance
+   * 
+   * @param  mixed $start
+   * @param  mixed $end
+   * @param  DateConstraint $constraint
+   * @return RepeatingTask a new task instance
+   */
+  public static function from($start, $end, DateConstraint $constraint = null): RepeatingTask {
+    if (!$start instanceof Time) {
+      $start = Time::from($start);
+    } if (!$end instanceof Time) {
+      $end = Time::from($end);
     }
-    return $date->compareTo($this->start) >= 0 && $date->compareTo($this->end) <= 0;
+    return new static($start, $end, $constraint);
   }
 
 }

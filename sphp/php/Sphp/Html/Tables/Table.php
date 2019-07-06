@@ -59,7 +59,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   private $tbody;
 
   /**
-   * @var Tfoot 
+   * @var Tfoot|null
    */
   private $tfoot;
 
@@ -95,7 +95,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   public function contentToString(): string {
-    return $this->caption . $this->colgroup . $this->thead . $this->tfoot . $this->tbody;
+    return $this->caption . $this->colgroup . $this->thead . $this->tbody . $this->tfoot;
   }
 
   /**
@@ -105,21 +105,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return Caption table caption component
    */
   public function setCaption($caption): Caption {
-    if (!$caption instanceof Caption) {
+    if (!$caption instanceof Caption && $caption !== null) {
       $caption = new Caption($caption);
     }
     $this->caption = $caption;
     return $this->caption;
-  }
-
-  /**
-   * Destroys the optional caption component
-   * 
-   * @return $this for a fluent interface
-   */
-  public function removeCaption() {
-    $this->caption = null;
-    return $this;
   }
 
   /**
@@ -170,28 +160,23 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   /**
-   * Returns the table header component
-   *
-   * @param  Thead|null $head
-   * @return Thead table header component
+   * Sets the header component
+   * 
+   * @param  Thead|null $thead
+   * @return Thead|null table header component or null if none set
    */
-  public function thead(Thead $head = null): Thead {
-    if ($head !== null) {
-      $this->thead = $head;
-    } else if ($this->thead === null) {
-      $this->thead = new Thead();
-    }
+  public function setThead(Thead $thead = null): ?Thead {
+    $this->thead = $thead;
     return $this->thead;
   }
 
   /**
-   * Destroys the optional table header component
-   * 
-   * @return $this for a fluent interface
+   * Returns the table header component
+   *
+   * @return Thead|null table header component or null if none set
    */
-  public function removeThead() {
-    $this->thead = null;
-    return $this;
+  public function thead(): ?Thead {
+    return $this->thead;
   }
 
   /**
@@ -220,28 +205,23 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   /**
-   * Returns footer component
+   * Sets the footer component
    * 
-   * @param  Tfoot $tfoot
-   * @return Tfoot table footer component
+   * @param  Tfoot|null $tfoot
+   * @return Tfoot|null for a fluent interface
    */
-  public function tfoot(Tfoot $tfoot = null): Tfoot {
-    if ($tfoot !== null) {
-      $this->tfoot = $tfoot;
-    } else if ($this->tfoot === null) {
-      $this->tfoot = new Tfoot();
-    }
+  public function setTfoot(Tfoot $tfoot = null): ?Tfoot {
+    $this->tfoot = $tfoot;
     return $this->tfoot;
   }
 
   /**
-   * Destroys the optional footer component
+   * Returns footer component
    * 
-   * @return $this for a fluent interface
+   * @return Tfoot|null
    */
-  public function removeTfoot() {
-    $this->tfoot = null;
-    return $this;
+  public function tfoot(): ?Tfoot {
+    return $this->tfoot;
   }
 
   /**
@@ -261,11 +241,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     if ($this->thead !== null) {
       $num += $this->thead->count($mode);
     }
-    if ($this->tfoot !== null) {
-      $num += $this->tfoot->count($mode);
-    }
     if ($this->tbody !== null) {
       $num += $this->tbody->count($mode);
+    }
+    if ($this->tfoot !== null) {
+      $num += $this->tfoot->count($mode);
     }
     return $num;
   }
@@ -286,11 +266,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     if ($this->thead !== null) {
       $it['thead'] = $this->thead;
     }
-    if ($this->tfoot !== null) {
-      $it['tfoot'] = $this->tfoot;
-    }
     if ($this->tbody !== null) {
       $it['tbody'] = $this->tbody;
+    }
+    if ($this->tfoot !== null) {
+      $it['tfoot'] = $this->tfoot;
     }
     return $it;
   }

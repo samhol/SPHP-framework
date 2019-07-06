@@ -67,7 +67,7 @@ class ValidatorChain extends AbstractValidator implements Countable {
   public function __call(string $name, array $arguments): Validator {
     $validatorClass = '\\Sphp\\Validators\\' . ucfirst($name);
     if (!is_a($validatorClass, Validator::class, true)) {
-      throw new BadMethodCallException(sprintf('%s is not a validator', $validatorClass));
+      throw new BadMethodCallException(sprintf('%s in not a validator', $validatorClass));
     }
     $reflectionClass = new \ReflectionClass($validatorClass);
     $v = $reflectionClass->newInstanceArgs($arguments);

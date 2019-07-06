@@ -135,12 +135,10 @@ class Interval extends DateInterval implements IntervalInterface {
    */
   public function add(DateInterval $interval) {
     if ($interval->invert) {
-
       foreach (str_split('ymdhis') as $prop) {
         $this->$prop -= $interval->$prop;
       }
     } else {
-
       foreach (str_split('ymdhis') as $prop) {
         $this->$prop += $interval->$prop;
       }
