@@ -38,7 +38,7 @@ class LaterThan extends AbstractDateTimeComparisonValidator {
     $this->setValue($value);
     if (!$value instanceof DateTime) {
       try {
-        $value = new DateTime($value);
+        $value = DateTime::from($value);
         $this->setValue($value);
       } catch (\Exception $ex) {
         $this->setValue($value);
