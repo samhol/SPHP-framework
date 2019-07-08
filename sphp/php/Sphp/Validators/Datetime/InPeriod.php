@@ -24,12 +24,12 @@ use Sphp\DateTime\DateTime;
 class InPeriod extends AbstractLimitValidator {
 
   /**
-   * @var float 
+   * @var DateTime 
    */
   private $min;
 
   /**
-   * @var float 
+   * @var DateTime 
    */
   private $max;
 
@@ -44,10 +44,21 @@ class InPeriod extends AbstractLimitValidator {
     parent::__construct($inclusive);
     $this->min = $min;
     $this->max = $max;
-    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
-    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
+    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in exclusive period (%s, %s)');
+    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive period (%s, %s)');
   }
 
+  public function __destruct() {
+    unset($this->min, $this->max);
+    parent::__destruct();
+  }
+
+  /**
+   * 
+   * @param  mixed $min
+   * @param  mixed $max
+   * @return $this
+   */
   public function setPeriod($min, $max) {
     if (!$min instanceof DateTime) {
       $min = new DateTime($min);
@@ -58,6 +69,14 @@ class InPeriod extends AbstractLimitValidator {
     $this->min = $min;
     $this->max = $max;
     return $this;
+  }
+
+  public function getMin(): DateTime {
+    return $this->min;
+  }
+
+  public function getMax(): DateTime {
+    return $this->max;
   }
 
   public function isValid($value): bool {

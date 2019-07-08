@@ -36,7 +36,6 @@ class EarlierThanTest extends ValidatorTest {
     $this->validator = $this->createValidator();
   }
 
-
   public function createValidator($limit = 'now', bool $inclusive = true): Validator {
     return new EarlierThan($limit, $inclusive);
   }

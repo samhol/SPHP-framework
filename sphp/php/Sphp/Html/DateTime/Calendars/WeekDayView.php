@@ -90,7 +90,7 @@ class WeekDayView extends AbstractComponent {
     if ($date->isCurrentWeek()) {
       $week->addCssClass('current-week');
     }
-    $cell = ContainerCell::create($week);
+    $cell = new ContainerCell($week);
     $cell->shrink()->hideOnlyFor('small');
     $cell->addCssClass('left-column');
     return $cell;
