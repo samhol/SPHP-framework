@@ -47,8 +47,8 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
    */
   public function __construct($dateTime = null, string $format = 'c', $content = null) {
     parent::__construct('time', $content);
-    $this->setDateTime($dateTime);
     $this->setFormat($format);
+    $this->setDateTime($dateTime);
   }
 
   public function __destruct() {
