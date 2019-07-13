@@ -14,17 +14,17 @@ use Sphp\Tests\Validators\ValidatorTest;
 use Sphp\Validators\Validator;
 
 /**
- * Implementation of EarlierThanTest
+ * Implementation of AbstractDateTimeValidatorTest
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class EarlierThanTest extends ValidatorTest {
+abstract class AbstractDateTimeValidatorTest extends ValidatorTest {
 
   /**
-   * @var EarlierThan
+   * @var LaterThan
    */
   protected $validator;
 
@@ -36,16 +36,12 @@ class EarlierThanTest extends ValidatorTest {
     $this->validator = $this->createValidator();
   }
 
-  public function createValidator($limit = 'now', bool $inclusive = true): Validator {
-    return new EarlierThan($limit, $inclusive);
-  }
-
-  public function getInvalidValue() {
-    return 'next monday';
-  }
-
-  public function getValidValue() {
-    return 'last monday';
+  /**
+   * Tears down the fixture, for example, closes a network connection.
+   * This method is called after a test is executed.
+   */
+  protected function tearDown(): void {
+    unset($this->validator);
   }
 
   public function invalidTypes(): array {
@@ -64,8 +60,7 @@ class EarlierThanTest extends ValidatorTest {
   public function testInvalidTypes($value) {
     $this->assertFalse($this->validator->isValid($value));
     $this->assertCount(1, $this->validator->errors());
-
-    $this->assertSame($this->validator->errors()->getTemplate(EarlierThan::INVALID), $this->validator->errors()->current());
+    $this->assertSame($this->validator->errors()->getTemplate(Validator::INVALID), $this->validator->errors()->current());
   }
 
   public function testInclusive() {

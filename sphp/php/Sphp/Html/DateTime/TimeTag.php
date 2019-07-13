@@ -13,6 +13,7 @@ namespace Sphp\Html\DateTime;
 use DateTimeInterface;
 use Sphp\DateTime\DateTime;
 use Sphp\Html\ContainerTag;
+use Sphp\DateTime\DateTimes;
 
 /**
  * Implements an HTML &lt;time&gt; tag
@@ -46,7 +47,8 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
    */
   public function __construct($dateTime = null, string $format = 'c', $content = null) {
     parent::__construct('time', $content);
-    $this->setDateTime($dateTime, $format);
+    $this->setFormat($format);
+    $this->setDateTime($dateTime);
   }
 
   public function __destruct() {
@@ -66,8 +68,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
     return $this->format;
   }
 
-  public function setDateTime($dateTime, string $format = self::DATE_TIME) {
-    $this->setFormat($format);
+  public function setDateTime($dateTime) {
     if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
       $dateTime = new DateTime($dateTime);
     }
@@ -83,8 +84,10 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
    * @return TimeTag new instance
    */
   public static function weekNumber($dateTime = null): TimeTag {
-    $dateTime = \Sphp\DateTime\DateTimes::dateTimeImmutable($dateTime);
-    return (new TimeTag($dateTime, $dateTime->format('W')))->setFormat(TimeTag::Y_W);
+    if ($dateTime === null) {
+      $dateTime = DateTimes::dateTimeImmutable($dateTime);
+    }
+    return (new TimeTag($dateTime, 'Y-\WW', $dateTime->format('W')));
   }
 
 }
