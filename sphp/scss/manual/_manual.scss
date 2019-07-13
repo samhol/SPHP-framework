@@ -43,7 +43,7 @@ $error-bg: rgba(#FF7F50, 0.4);
 @import "footer";
 @import 'gettext-form';
 @import "forms";
-@import 'icon-examples';
+//@import 'icon-examples';
 @import "logo-area";
 @import "social-icons";
 
@@ -123,29 +123,10 @@ main, main>section, main section.main {
   @import "technologies"; 
   @import "carousels";
   @import "styling-tags";
-  @import "examples"; 
+  @import "examples/examples"; 
   @import "quoting";
   @import "carousels/terminology-carousel";
   //@import "pagination";
 }
 
 @import "body";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
