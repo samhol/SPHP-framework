@@ -51,7 +51,7 @@ $carPrice->setErrorMessage('Car price is required and must be a decimal number!'
 $carPrice->setRequired(true);
 
 $form = new GridForm();
-$form->validation(true);
+$form->liveValidate(true);
 $form->append($username);
 
 $nameRow = new BasicRow();
@@ -70,7 +70,6 @@ $form->appendHiddenVariable('hidden1', 'I am hidden!');
 $buttonRow = new BasicRow();
 $buttons = new ButtonGroup();
 $buttons->appendSubmitter('Submit')->addCssClass('success');
-$buttons->appendResetter('Reset form')->addCssClass('alert');
 $buttons->setExtended();
 $buttonRow->appendCell($buttons);
 $form->append($buttonRow);
