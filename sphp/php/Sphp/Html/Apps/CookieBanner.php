@@ -10,7 +10,12 @@
 
 namespace Sphp\Html\Apps;
 
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Component;
 use Sphp\Html\Tags;
+use Sphp\Html\PlainContainer;
+use Sphp\Html\Foundation\Sites\Buttons\Button;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 
 /**
  * Implements a CookieBanner
@@ -20,12 +25,13 @@ use Sphp\Html\Tags;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class CookieBanner extends \Sphp\Html\AbstractComponent {
+class CookieBanner extends AbstractComponent {
 
   /**
-   * @var 
+   * @var PlainContainer
    */
   private $text;
+
   /**
    * @var Button 
    */
@@ -33,23 +39,35 @@ class CookieBanner extends \Sphp\Html\AbstractComponent {
 
   public function __construct() {
     parent::__construct('div');
-    $this->addCssClass('sphp', 'cookie-banner');
-    $this->text = Tags::p()->appendMd('**SPHPlayground** uses cookies. By continuing we assume your 
-      permission to deploy cookies, as detailed in our  [privacy policy](/manual/privacy_policy.php).');
-    $this->acceptButton('<i class="far fa-check-circle"></i> Accept cookies');
+    $this->addCssClass('sphp', 'cookie-banner', 'text-center');
+    $this->text = new PlainContainer();
+    $this->setAcceptButton('<i class="far fa-check-circle"></i> Accept cookies');
   }
 
-  public function acceptButton(string $button) {
-    $this->acceptBtn = \Sphp\Html\Foundation\Sites\Buttons\Button::pushButton($button);
-    $this->acceptBtn->addCssClass('button', 'accept');
-    $this->acceptBtn->setAttribute('data-sphp-accept-cookies', true);
-    return $this;
+  public function __destruct() {
+    unset($this->acceptBtn, $this->text);
+    parent::__destruct();
+  }
+
+  public function contentContainer(): PlainContainer {
+    return $this->text;
+  }
+
+  public function setAcceptButton($button): Component {
+    if (!$button instanceof Component) {
+      $button = Button::pushButton($button);
+      $button->addCssClass('button', 'accept');
+    }
+    $this->acceptBtn = $button;
+    $this->acceptBtn->setAttribute('data-sphp-accept-cookies-button', true);
+    return $this->acceptBtn;
   }
 
   public function contentToString(): string {
-    $row = new \Sphp\Html\Foundation\Sites\Grids\BasicRow();
-    $row->appendCell($this->text . $this->acceptBtn)->shrink();
-    return $row->addCssClass('align-center-middle')->getHtml();
+    $row = new BasicRow();
+    $row->appendCell($this->text);
+    $row->addCssClass('align-center-middle');
+    return $row . $this->acceptBtn;
   }
 
   public function getHtml(): string {

@@ -33,7 +33,7 @@ github:     (color: $default-color, background: #231f20),
 //soundcloud: (color: white, background: #ff3a00),
 //pdf:        (color: white, background: #ff3a00)
 );
- 
+
 @mixin icon-button() {
   .sphp.icon-button {
     @include transition(all, 0.3s, ease-in-out);
@@ -65,7 +65,7 @@ github:     (color: $default-color, background: #231f20),
       @include border-radius(50%);
     }
     /* Add a hover effect if you want */ 
- 
+
     @each $brand, $icon in $brands {
       &.#{$brand} {
         background-color: map-get($icon, background);

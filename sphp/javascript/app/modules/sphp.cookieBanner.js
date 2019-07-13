@@ -19,7 +19,7 @@
   $.fn.cookieBanner = function () {
     return this.each(function () {
       var $cookieBanner = $(this), $accept, $reject, $days = 182, $mydate;
-      $accept = $cookieBanner.find('button[data-sphp-accept-cookies]');
+      $accept = $cookieBanner.find('[data-sphp-accept-cookies-button]');
       $reject = $cookieBanner.find('button[data-sphp-reject-cookies]');
       $accept.click(function () { //on click event
         //number of days to keep the cookie

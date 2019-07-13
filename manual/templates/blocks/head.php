@@ -37,7 +37,7 @@ $head->set(Meta::keywords(['php', 'scss', 'css', 'html', 'html5', 'framework',
             'references', 'examples', 'source code', 'demos', 'tips']));
 $head->set(Meta::description('SPHP framework for web developement'));
 
-$html->useFontAwesome();
+$html->useFontAwesome('9e1f35bc72');
 $html->enableSPHP();
 if ($redirect === '/Sphp.Html.Media.Multimedia') {
   $html->useVideoJS();

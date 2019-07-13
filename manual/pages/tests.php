@@ -1,5 +1,9 @@
 <?php
+
 $cookieBanner = new Sphp\Html\Apps\CookieBanner();
+$cookieBanner->setAcceptButton('<i class="far fa-check-circle fa-"></i> Accept cookies')->addCssClass('radius');
+$cookieBanner->contentContainer()->appendMd('**SPHPlayground** uses cookies. By continuing we assume your 
+      permission to deploy cookies, as detailed in our  [privacy policy](/manual/privacy_policy.php).');
 echo $cookieBanner;
 
 use Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput;

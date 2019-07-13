@@ -45,6 +45,7 @@ $error-bg: rgba(#FF7F50, 0.4);
 @import "forms";
 @import 'icon-examples';
 @import "logo-area";
+@import "social-icons";
 
 .manual {
   .sphp.sidenav {
@@ -92,7 +93,7 @@ $error-bg: rgba(#FF7F50, 0.4);
   }
 }
 
-.mainContent .container , .mainContent .container>section  , .mainContent .container section.main {   
+main, main>section, main section.main {   
   @import "accordions"; 
 
   >.button-group, >.grid-x {

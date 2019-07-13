@@ -41,7 +41,7 @@ class PageLoader extends AbstractContent implements CssClassifiableContent {
 
   public function __construct() {
     $this->manual = Tags::div()->addCssClass('mainContent');
-    $this->container = Tags::div()->addCssClass('container');
+    $this->container = Tags::main()->addCssClass('container');
     $this->manual->append($this->container);
   }
 

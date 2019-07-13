@@ -10,5 +10,5 @@ $footerData = Parser::yaml()->readFromFile('/home/int48291/public_html/playgroun
  */
 $mb = new MenuBuilder();
 
-include 'manual/templates/footer/linksForSmall.php';
-include 'manual/templates/footer/linksForMediumUp.php';
+include './manual/templates/footer/linksForSmall.php';
+include './manual/templates/footer/linksForMediumUp.php';

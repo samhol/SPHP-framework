@@ -1,6 +1,4 @@
 @mixin sphp-cookie-banner() {
-
-
   .sphp.cookie-banner { 
     z-index: 1000000;
     display: block;
@@ -12,31 +10,32 @@
     background: rgba(#222, 0.95);
     border-top: solid 2px rgba(#f91, .7);
     p {
-      strong {
+      strong, a {
         font-size: rem-calc(20);
+        color: rgba(#fb6, .7);
+        text-shadow: 1px -1px 0 rgba(#fff,0.3);
+      } 
+      a {
+        border-bottom: solid 1px rgba(#fb6, .7);
+        text-decoration: none;
       }
       font-size: rem-calc(18);
       font-weight: 700;
       text-shadow: 0 -1px 0 rgba(#333,0.35);
       text-align: center; 
-      color: rgb(255,255,250);
+      color: #fff;
       margin: rem-calc(10);
-      a {
-        color: rgb(255,255,250);
-      }
     }
-    .button-group {
+    .button {
       cursor: pointer;
-      .button {
-        @include border-radius(3px);
-        border: solid 1px rgba(#f91, .5);
-        path {
-          color: rgba(#f91, .7);
-        }
-        i {
-          color: rgba(#f91, .7);
-          margin-right: rem-calc(5);
-        }
+      @include border-radius(3px);
+      border: solid 1px rgba(#f91, .5);
+      path {
+        color: rgba(#f91, .7);
+      }
+      i {
+        color: rgba(#f91, .7);
+        margin-right: rem-calc(5);
       }
     }
   }
