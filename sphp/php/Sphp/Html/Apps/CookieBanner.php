@@ -12,7 +12,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Component;
-use Sphp\Html\Tags;
+use Sphp\Network\Cookies\Cookies;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;
@@ -26,6 +26,11 @@ use Sphp\Html\Foundation\Sites\Grids\BasicRow;
  * @filesource
  */
 class CookieBanner extends AbstractComponent {
+
+  /**
+   * @var string
+   */
+  private $complyCookieName = 'comply_cookie';
 
   /**
    * @var PlainContainer
@@ -47,6 +52,11 @@ class CookieBanner extends AbstractComponent {
   public function __destruct() {
     unset($this->acceptBtn, $this->text);
     parent::__destruct();
+  }
+
+  public function setComplyCookieName(string $name = 'comply_cookie') {
+    $this->complyCookieName = $name;
+    return $this;
   }
 
   public function contentContainer(): PlainContainer {
@@ -71,7 +81,7 @@ class CookieBanner extends AbstractComponent {
   }
 
   public function getHtml(): string {
-    if (!filter_has_var(INPUT_COOKIE, 'comply_cookie')) {
+    if (!Cookies::exists($this->complyCookieName)) {
       return parent::getHtml();
     }
     return '';

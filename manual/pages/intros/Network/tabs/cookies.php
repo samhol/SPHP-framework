@@ -1,6 +1,7 @@
 <?php
 
-namespace Sphp\Network;
+namespace Sphp\Network\Cookies;
+
 $cookie = new Cookie('SID');
 $cookie->setValue('31d4d96e407aad42');
 $cookie->setMaxAge(60 * 60 * 24);

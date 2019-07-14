@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Network;
+namespace Sphp\Network\Cookies;
 
 /**
  * Modern cookie management for PHP
@@ -104,8 +104,8 @@ final class Cookie {
   /**
    * Sets the value for the cookie
    *
-   * @param mixed|null $value the value of the cookie that will be stored on the client's machine
-   * @return static this instance for chaining
+   * @param  mixed|null $value the value of the cookie that will be stored on the client's machine
+   * @return $this for a fluent interface
    */
   public function setValue($value) {
     $this->value = $value;
@@ -130,7 +130,6 @@ final class Cookie {
    */
   public function setExpiryTime(int $expiryTime) {
     $this->expiryTime = $expiryTime;
-
     return $this;
   }
 
@@ -151,7 +150,6 @@ final class Cookie {
    */
   public function setMaxAge(int $maxAge) {
     $this->expiryTime = \time() + $maxAge;
-
     return $this;
   }
 
@@ -160,7 +158,7 @@ final class Cookie {
    *
    * @return string the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory
    */
-  public function getPath() {
+  public function getPath(): string {
     return $this->path;
   }
 
@@ -170,7 +168,7 @@ final class Cookie {
    * @param  string $path the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory
    * @return $this for a fluent interface
    */
-  public function setPath($path) {
+  public function setPath(string $path) {
     $this->path = $path;
 
     return $this;
@@ -191,7 +189,7 @@ final class Cookie {
    * @param string|null $domain the domain that the cookie will be valid for (including subdomains) or `null` for the current host (excluding subdomains)
    * @return $this for a fluent interface
    */
-  public function setDomain($domain = null) {
+  public function setDomain(string$domain = null) {
     $this->domain = self::normalizeDomain($domain);
 
     return $this;
@@ -202,7 +200,7 @@ final class Cookie {
    *
    * @return bool whether the cookie should be accessible through the HTTP protocol only and not through scripting languages
    */
-  public function isHttpOnly() {
+  public function isHttpOnly(): bool {
     return $this->httpOnly;
   }
 
@@ -212,7 +210,7 @@ final class Cookie {
    * @param bool $httpOnly indicates that the cookie should be accessible through the HTTP protocol only and not through scripting languages
    * @return $this for a fluent interface
    */
-  public function setHttpOnly($httpOnly) {
+  public function setHttpOnly(bool $httpOnly) {
     $this->httpOnly = $httpOnly;
 
     return $this;
@@ -223,17 +221,17 @@ final class Cookie {
    *
    * @return bool whether the cookie should be sent back by the client over secure HTTPS connections only
    */
-  public function isSecureOnly() {
+  public function isSecureOnly(): bool {
     return $this->secureOnly;
   }
 
   /**
    * Sets whether the cookie should be sent over HTTPS only
    *
-   * @param bool $secureOnly indicates that the cookie should be sent back by the client over secure HTTPS connections only
+   * @param  bool $secureOnly indicates that the cookie should be sent back by the client over secure HTTPS connections only
    * @return $this for a fluent interface
    */
-  public function setSecureOnly($secureOnly) {
+  public function setSecureOnly(bool $secureOnly) {
     $this->secureOnly = $secureOnly;
 
     return $this;
@@ -244,7 +242,7 @@ final class Cookie {
    *
    * @return string|null whether the cookie should not be sent along with cross-site requests (either `null`, `Lax` or `Strict`)
    */
-  public function getSameSiteRestriction() {
+  public function getSameSiteRestriction(): ?string {
     return $this->sameSiteRestriction;
   }
 
@@ -320,7 +318,7 @@ final class Cookie {
    * @param string|null $sameSiteRestriction indicates that the cookie should not be sent along with cross-site requests (either `null`, `Lax` or `Strict`)
    * @return string the HTTP header
    */
-  public static function buildCookieHeader($name, $value = null, $expiryTime = 0, $path = null, $domain = null, $secureOnly = false, $httpOnly = false, $sameSiteRestriction = null) {
+  public static function buildCookieHeader(string $name, $value = null, $expiryTime = 0, $path = null, $domain = null, bool $secureOnly = false, bool $httpOnly = false, $sameSiteRestriction = null): string {
     if (self::isNameValid($name)) {
       $name = (string) $name;
     } else {
@@ -386,9 +384,9 @@ final class Cookie {
    * Parses the given cookie header and returns an equivalent cookie instance
    *
    * @param string $cookieHeader the cookie header to parse
-   * @return \Delight\Cookie\Cookie|null the cookie instance or `null`
+   * @return Cookie|null the cookie instance or `null`
    */
-  public static function parse($cookieHeader): ?Cookie {
+  public static function parse(string $cookieHeader): ?Cookie {
     if (empty($cookieHeader)) {
       return null;
     }
@@ -408,15 +406,15 @@ final class Cookie {
         foreach ($attributes as $attribute) {
           if (\strcasecmp($attribute, 'HttpOnly') === 0) {
             $cookie->setHttpOnly(true);
-          } elseif (\strcasecmp($attribute, 'Secure') === 0) {
+          } else if (\strcasecmp($attribute, 'Secure') === 0) {
             $cookie->setSecureOnly(true);
-          } elseif (\stripos($attribute, 'Expires=') === 0) {
+          } else if (\stripos($attribute, 'Expires=') === 0) {
             $cookie->setExpiryTime((int) \strtotime(\substr($attribute, 8)));
-          } elseif (\stripos($attribute, 'Domain=') === 0) {
+          } else if (\stripos($attribute, 'Domain=') === 0) {
             $cookie->setDomain(\substr($attribute, 7));
-          } elseif (\stripos($attribute, 'Path=') === 0) {
+          } else if (\stripos($attribute, 'Path=') === 0) {
             $cookie->setPath(\substr($attribute, 5));
-          } elseif (\stripos($attribute, 'SameSite=') === 0) {
+          } else if (\stripos($attribute, 'SameSite=') === 0) {
             $cookie->setSameSiteRestriction(\substr($attribute, 9));
           }
         }
@@ -426,16 +424,6 @@ final class Cookie {
     } else {
       return null;
     }
-  }
-
-  /**
-   * Checks whether a cookie with the specified name exists
-   *
-   * @param string $name the name of the cookie to check
-   * @return bool whether there is a cookie with the specified name
-   */
-  public static function exists($name): bool {
-    return isset($_COOKIE[$name]);
   }
 
   /**
@@ -453,9 +441,8 @@ final class Cookie {
     }
   }
 
-  private static function isNameValid($name) {
-    $name = (string) $name;
-
+  private static function isNameValid(string $name): bool {
+    // $name = (string) $name;
     // The name of a cookie must not be empty on PHP 7+ (https://bugs.php.net/bug.php?id=69523).
     if ($name !== '' || \PHP_VERSION_ID < 70000) {
       if (!\preg_match('/[=,; \\t\\r\\n\\013\\014]/', $name)) {
@@ -500,7 +487,7 @@ final class Cookie {
     }
   }
 
-  private static function formatMaxAge($expiryTime, $forceShow = false) {
+  private static function formatMaxAge($expiryTime, bool $forceShow = false) {
     if ($expiryTime > 0 || $forceShow) {
       return (string) self::calculateMaxAge($expiryTime);
     } else {
@@ -508,10 +495,9 @@ final class Cookie {
     }
   }
 
-  private static function normalizeDomain($domain = null) {
+  private static function normalizeDomain(string $domain = null): ?string {
     // make sure that the domain is a string
-    $domain = (string) $domain;
-
+    //$domain = (string) $domain;
     // if the cookie should be valid for the current host only
     if ($domain === '') {
       // no need for further normalization
