@@ -10,6 +10,8 @@
 
 namespace Sphp\Network\Cookies;
 
+use Sphp\Network\Headers\Header;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Network\Headers\Headers;
 
 /**
@@ -30,7 +32,7 @@ use Sphp\Network\Headers\Headers;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-final class Cookie {
+class Cookie implements Header {
 
   /** @var string name prefix indicating that the cookie must be from a secure origin (i.e. HTTPS) and the 'secure' attribute must be set */
   const PREFIX_SECURE = '__Secure-';
@@ -41,19 +43,31 @@ final class Cookie {
   const SAME_SITE_RESTRICTION_LAX = 'Lax';
   const SAME_SITE_RESTRICTION_STRICT = 'Strict';
 
-  /** @var string the name of the cookie which is also the key for future accesses via `$_COOKIE[...]` */
+  /**
+   * @var string the name of the cookie which is also the key for future accesses via `$_COOKIE[...]` 
+   */
   private $name;
 
-  /** @var mixed|null the value of the cookie that will be stored on the client's machine */
+  /**
+   * @var mixed|null the value of the cookie that will be stored on the client's machine 
+   */
   private $value;
 
-  /** @var int the Unix timestamp indicating the time that the cookie will expire at, i.e. usually `time() + $seconds` */
+  /**
+   * @var int the Unix timestamp indicating the time that the cookie will expire at, i.e. usually `time() + $seconds` 
+   */
   private $expiryTime;
 
-  /** @var string the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory */
+  /**
+   * the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory 
+   * 
+   * @var string 
+   */
   private $path;
 
-  /** @var string|null the domain that the cookie will be valid for (including subdomains) or `null` for the current host (excluding subdomains) */
+  /**
+   * @var string|null the domain that the cookie will be valid for (including subdomains) or `null` for the current host (excluding subdomains) 
+   */
   private $domain;
 
   /**
@@ -66,15 +80,23 @@ final class Cookie {
    */
   private $secureOnly;
 
-  /** @var string|null indicates that the cookie should not be sent along with cross-site requests (either `null`, `Lax` or `Strict`) */
+  /**
+   * indicates that the cookie should not be sent along with cross-site requests (either `null`, `Lax` or `Strict`) 
+   * 
+   * @var string|null 
+   */
   private $sameSiteRestriction;
 
   /**
    * Prepares a new cookie
    *
    * @param string $name the name of the cookie which is also the key for future accesses via `$_COOKIE[...]`
+   * @throws InvalidArgumentException
    */
   public function __construct(string $name) {
+    if (!Cookies::isNameValid($name)) {
+      throw new InvalidArgumentException('The name of the cookie is invalid');
+    }
     $this->name = $name;
     $this->value = null;
     $this->expiryTime = 0;
@@ -263,7 +285,9 @@ final class Cookie {
    * @return bool whether the cookie header has successfully been sent (and will *probably* cause the client to set the cookie)
    */
   public function save(): bool {
-    return Headers::addHttpHeader((string) $this);
+   return setcookie($this->name, $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
+
+    //return Headers::addHttpHeader((string) $this);
   }
 
   /**

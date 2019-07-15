@@ -43,7 +43,7 @@ class Cookies {
    * @return bool whether the cookie header has successfully been sent (and will *probably* cause the client to set the cookie)
    */
   public static function setcookie($name, $value = null, int $expiryTime = 0, string $path = null, string $domain = null, $secureOnly = false, $httpOnly = false, $sameSiteRestriction = null) {
-    return self::addHttpHeader(
+    return \Sphp\Network\Headers\Headers::addHttpHeader(
                     self::buildCookieHeader($name, $value, $expiryTime, $path, $domain, $secureOnly, $httpOnly, $sameSiteRestriction)
     );
   }
@@ -133,7 +133,7 @@ class Cookies {
     }
 
     if (\preg_match('/^' . self::HEADER_PREFIX . '(.*?)=(.*?)(?:; (.*?))?$/i', $cookieHeader, $matches)) {
-      $cookie = new self($matches[1]);
+      $cookie = new Cookie($matches[1]);
       $cookie->setPath(null);
       $cookie->setHttpOnly(false);
       $cookie->setValue(
@@ -185,7 +185,7 @@ class Cookies {
   public static function isNameValid(string $name): bool {
     // $name = (string) $name;
     // The name of a cookie must not be empty on PHP 7+ (https://bugs.php.net/bug.php?id=69523).
-    if ($name !== '' || \PHP_VERSION_ID < 70000) {
+    if ($name !== '') {
       if (!\preg_match('/[=,; \\t\\r\\n\\013\\014]/', $name)) {
         return true;
       }
