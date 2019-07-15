@@ -70,10 +70,16 @@ class Headers {
   /**
    * Sets (not replace) a raw HTTP header
    * 
-   * @param string $string
+   * @param string $header
    */
-  public static function setHeader(string $string) {
-    header($string, false);
+  public static function addHttpHeader(string $header) {
+    if (!\headers_sent()) {
+      if (!empty($header)) {
+        \header($header, false);
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
