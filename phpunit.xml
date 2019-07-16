@@ -52,6 +52,9 @@
     <testsuite name="mvc">
       <directory>./sphp/php/tests/sphp/MVC</directory>
     </testsuite>
+    <testsuite name="network">
+      <directory>./sphp/php/tests/sphp/Network</directory>
+    </testsuite>
     <testsuite name="stdlib">
       <directory>./sphp/php/tests/sphp/Stdlib</directory>
     </testsuite>
