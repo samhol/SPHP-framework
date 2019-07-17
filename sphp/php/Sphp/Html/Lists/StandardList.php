@@ -101,6 +101,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * Appends a parsed inline Mark Down string to the list
    * 
    * @param  string $md inline Mark Down string
+   * @param bool $inlineOnly
    * @return StandardListItem appended instance
    * @throws RuntimeException if the parsing fails for any reason
    */

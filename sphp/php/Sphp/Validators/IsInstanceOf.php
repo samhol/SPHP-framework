@@ -31,8 +31,10 @@ class IsInstanceOf extends AbstractValidator {
    * Constructor
    * 
    * @param string $className
+   * @param string $error
+   * @throws InvalidArgumentException if the class or interface is not defined
    */
-  public function __construct(string $className, $error = 'Value is not instance of %s') {
+  public function __construct(string $className, string $error = 'Value is not instance of %s') {
     parent::__construct($error);
     $this->setClassName($className);
   }
@@ -51,7 +53,7 @@ class IsInstanceOf extends AbstractValidator {
    * 
    * @param  string $className the name of the class 
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if the class is not defined
+   * @throws InvalidArgumentException if the class or interface is not defined
    */
   public function setClassName(string $className) {
     if (!class_exists($className) && !interface_exists($className)) {

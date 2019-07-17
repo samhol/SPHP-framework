@@ -260,16 +260,6 @@ class Cookies {
     return $domain;
   }
 
-  public static function addHttpHeader($header): bool {
-    if (!\headers_sent()) {
-      if (!empty($header)) {
-        \header($header, false);
-        return true;
-      }
-    }
-    return false;
-  }
-
   /**
    * Checks whether a cookie with the specified name exists
    *
