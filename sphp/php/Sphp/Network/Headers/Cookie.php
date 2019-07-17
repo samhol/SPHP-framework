@@ -8,9 +8,9 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Network\Cookies;
+namespace Sphp\Network\Headers;
 
-use Sphp\Network\Headers\Header;
+//use Sphp\Network\Headers\Header;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -108,11 +108,11 @@ class Cookie implements Header {
     $this->name = $name;
     $this->value = null;
     $this->expiryTime = 0;
-    $this->path = '/';
+    $this->path = '';
     $this->domain = null;
     $this->httpOnly = false;
     $this->secureOnly = false;
-    $this->sameSiteRestriction = 'Lax';
+    $this->sameSiteRestriction = null;
   }
 
   /**
@@ -171,7 +171,11 @@ class Cookie implements Header {
    * @return int the maximum age of the cookie in seconds
    */
   public function getMaxAge(): int {
-    return $this->expiryTime - \time();
+    $maxAge = $this->getExpiryTime() - \time();
+    if ($maxAge < 0) {
+      $maxAge = 0;
+    }
+    return $maxAge;
   }
 
   /**
@@ -181,7 +185,7 @@ class Cookie implements Header {
    * @return $this for a fluent interface
    */
   public function setMaxAge(int $maxAge) {
-    $this->expiryTime = \time() + $maxAge;
+    $this->setExpiryTime(\time() + $maxAge);
     return $this;
   }
 
@@ -291,9 +295,11 @@ class Cookie implements Header {
    * @return bool whether the cookie header has successfully been sent (and will *probably* cause the client to set the cookie)
    */
   public function save(): bool {
-    return setcookie($this->name, $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
-
-    //return Headers::addHttpHeader((string) $this);
+    if ($this->getSameSiteRestriction() === null) {
+      return setcookie($this->name, $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
+    } else {
+      return Headers::addHttpHeader((string) $this);
+    }
   }
 
   /**
@@ -312,7 +318,43 @@ class Cookie implements Header {
   }
 
   public function __toString(): string {
-    return Cookies::buildCookieHeader($this->name, $this->value, $this->expiryTime, $this->path, $this->domain, $this->secureOnly, $this->httpOnly, $this->sameSiteRestriction);
+    $forceShowExpiry = false;
+    $value = $this->getValue();
+    if ((string) $value === '') {
+      $value = 'deleted';
+      $expiryTime = 0;
+      $maxAge = 0;
+      $forceShowExpiry = true;
+    } else {
+      $expiryTime = $this->getExpiryTime();
+      $maxAge = $this->getMaxAge();
+    }
+
+    $headerStr = 'Set-Cookie: ' . $this->getName() . '=' . \urlencode($value);
+    $headerStr .= '; expires=' . \gmdate('D, d-M-Y H:i:s T', $expiryTime);
+    $headerStr .= '; Max-Age=' . $maxAge;
+
+    if ($this->getPath() !== null) {
+      $headerStr .= '; path=' . $this->getPath();
+    }
+
+    if ($this->getDomain() !== null) {
+      $headerStr .= '; domain=' . $this->getDomain();
+    }
+
+    if ($this->isSecureOnly()) {
+      $headerStr .= '; secure';
+    }
+
+    if ($this->isHttpOnly()) {
+      $headerStr .= '; httponly';
+    }
+    $sameSiteRestriction = $this->getSameSiteRestriction();
+    if ($sameSiteRestriction === 'Lax' || $sameSiteRestriction === 'Strict') {
+      $headerStr .= "; SameSite=$sameSiteRestriction";
+    }
+
+    return $headerStr;
   }
 
 }

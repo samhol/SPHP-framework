@@ -4,7 +4,7 @@
 
 require_once('manual/settings.php');
 
-use Sphp\Network\Cookies\Cookie;
+use Sphp\Network\Headers\Cookie;
 
 $cookie = (new Cookie('comply_cookie'))->delete();
 $cookie1 = new Cookie('blaa-cookie');
@@ -14,4 +14,5 @@ $cookie1->save();
 echo "<pre>";
 print_r($_COOKIE);
 var_dump($_COOKIE);
+var_dump(headers_list());
 echo "</pre>";

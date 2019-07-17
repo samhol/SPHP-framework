@@ -12,7 +12,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Component;
-use Sphp\Network\Cookies\Cookies;
+use Sphp\Network\Headers\Cookies;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Network\Cookies;
+namespace Sphp\Network\Headers;
 
 /**
  * Implementation of Cookies

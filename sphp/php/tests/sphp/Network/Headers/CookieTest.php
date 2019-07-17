@@ -10,7 +10,7 @@
 
 namespace Sphp\Network\Headers;
 
-use Sphp\Network\Cookies\Cookie;
+use Sphp\Network\Headers\Cookie;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,7 +45,7 @@ class CookieTest extends TestCase {
   }
 
   /**
-   * @depends testValue
+   * @depends testConstructor
    * @param   Cookie $cookie
    * @return  Cookie
    */
@@ -57,7 +57,7 @@ class CookieTest extends TestCase {
   }
 
   /**
-   * @depends testDomain
+   * @depends testConstructor
    * @param   Cookie $cookie
    * @return  Cookie
    */
@@ -65,23 +65,50 @@ class CookieTest extends TestCase {
     $this->assertSame(0, $cookie->getExpiryTime());
     $this->assertSame($cookie, $cookie->setExpiryTime(200));
     $this->assertSame(200, $cookie->getExpiryTime());
+    $this->assertSame(0, $cookie->getMaxAge());
     return $cookie;
   }
 
   /**
-   * @depends testExpiryTime
+   * @depends testConstructor
+   * @param   Cookie $cookie
+   * @return  Cookie
+   */
+  public function testMaxAge(Cookie $cookie): Cookie {
+    $this->assertSame(0, $cookie->getMaxAge());
+    $this->assertSame($cookie, $cookie->setMaxAge(200));
+    $this->assertSame(200, $cookie->getMaxAge());
+    return $cookie;
+  }
+
+  /**
+   * @depends testConstructor
    * @param   Cookie $cookie
    * @return  Cookie
    */
   public function testPath(Cookie $cookie): Cookie {
-    $this->assertSame('/', $cookie->getPath());
-    $this->assertSame($cookie, $cookie->setPath('/foo/bar'));
-    $this->assertSame('/foo/bar', $cookie->getPath());
+    $this->assertSame('', $cookie->getPath());
+    $this->assertSame($cookie, $cookie->setPath('/foo/bar/'));
+    $this->assertSame('/foo/bar/', $cookie->getPath());
     return $cookie;
   }
 
   /**
-   * @depends testPath
+   * @depends testConstructor
+   * @param   Cookie $cookie
+   * @return  Cookie
+   */
+  public function testSameSiteRestriction(Cookie $cookie): Cookie {
+    $this->assertSame(null, $cookie->getSameSiteRestriction());
+    $this->assertSame($cookie, $cookie->setSameSiteRestriction('Strict'));
+    $this->assertSame('Strict', $cookie->getSameSiteRestriction());
+    $this->assertSame($cookie, $cookie->setSameSiteRestriction('Lax'));
+    $this->assertSame('Lax', $cookie->getSameSiteRestriction());
+    return $cookie;
+  }
+
+  /**
+   * @depends testConstructor
    * @param   Cookie $cookie
    * @return  Cookie
    */
@@ -101,11 +128,16 @@ class CookieTest extends TestCase {
   public function testSave() {
     $cookie = new Cookie('foo');
     $cookie->setValue('bar');
-    $cookie->setExpiryTime(time() + 100000);
+    $cookie->setMaxAge(60 * 60);
     $this->assertTrue($cookie->save());
-    $headers = xdebug_get_headers();
-
-    print_r($headers);
+    $headers1 = xdebug_get_headers();
+    $this->assertRegExp("/foo=bar/", $headers1[0]);
+    $this->assertRegExp("/Max-Age=3600/", $headers1[0]);
+    $this->assertTrue($cookie->delete());
+    //$headers = xdebug_get_headers();
+    $headers2 = xdebug_get_headers();
+    print_r(xdebug_get_headers());
+    $this->assertRegExp("/Max-Age=0/", $headers2[1]);
     //$this->assertArrayHasKey('foo', $_COOKIE);
   }
 
