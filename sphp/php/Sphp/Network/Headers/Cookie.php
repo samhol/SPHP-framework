@@ -115,6 +115,41 @@ class Cookie implements Header {
     $this->sameSiteRestriction = null;
   }
 
+  public function __toString(): string {
+    $forceShowExpiry = false;
+    $value = $this->getValue();
+    if ((string) $value === '') {
+      $value = 'deleted';
+      $expiryTime = 0;
+      $maxAge = 0;
+      $forceShowExpiry = true;
+    } else {
+      $expiryTime = $this->getExpiryTime();
+      $maxAge = $this->getMaxAge();
+    }
+    $headerStr = 'Set-Cookie: ' . $this->getName() . '=' . \urlencode($value);
+    $headerStr .= '; expires=' . \gmdate('D, d-M-Y H:i:s T', $expiryTime);
+    $headerStr .= '; Max-Age=' . $maxAge;
+    if ($this->getPath() !== null) {
+      $headerStr .= '; path=' . $this->getPath();
+    }
+    if ($this->getDomain() !== null) {
+      $headerStr .= '; domain=' . $this->getDomain();
+    }
+    if ($this->isSecureOnly()) {
+      $headerStr .= '; secure';
+    }
+
+    if ($this->isHttpOnly()) {
+      $headerStr .= '; httponly';
+    }
+    $sameSiteRestriction = $this->getSameSiteRestriction();
+    if ($sameSiteRestriction === 'Lax' || $sameSiteRestriction === 'Strict') {
+      $headerStr .= "; SameSite=$sameSiteRestriction";
+    }
+    return $headerStr;
+  }
+
   /**
    * Returns the name of the cookie
    *
@@ -141,7 +176,6 @@ class Cookie implements Header {
    */
   public function setValue($value) {
     $this->value = $value;
-
     return $this;
   }
 
@@ -315,46 +349,6 @@ class Cookie implements Header {
 
     // save the copied "deletion" cookie
     return $copiedCookie->save();
-  }
-
-  public function __toString(): string {
-    $forceShowExpiry = false;
-    $value = $this->getValue();
-    if ((string) $value === '') {
-      $value = 'deleted';
-      $expiryTime = 0;
-      $maxAge = 0;
-      $forceShowExpiry = true;
-    } else {
-      $expiryTime = $this->getExpiryTime();
-      $maxAge = $this->getMaxAge();
-    }
-
-    $headerStr = 'Set-Cookie: ' . $this->getName() . '=' . \urlencode($value);
-    $headerStr .= '; expires=' . \gmdate('D, d-M-Y H:i:s T', $expiryTime);
-    $headerStr .= '; Max-Age=' . $maxAge;
-
-    if ($this->getPath() !== null) {
-      $headerStr .= '; path=' . $this->getPath();
-    }
-
-    if ($this->getDomain() !== null) {
-      $headerStr .= '; domain=' . $this->getDomain();
-    }
-
-    if ($this->isSecureOnly()) {
-      $headerStr .= '; secure';
-    }
-
-    if ($this->isHttpOnly()) {
-      $headerStr .= '; httponly';
-    }
-    $sameSiteRestriction = $this->getSameSiteRestriction();
-    if ($sameSiteRestriction === 'Lax' || $sameSiteRestriction === 'Strict') {
-      $headerStr .= "; SameSite=$sameSiteRestriction";
-    }
-
-    return $headerStr;
   }
 
 }

@@ -29,7 +29,7 @@ interface Header {
   /**
    * Returns header value
    * 
-   * @return string header value
+   * @return mixed header value
    */
   public function getValue();
 

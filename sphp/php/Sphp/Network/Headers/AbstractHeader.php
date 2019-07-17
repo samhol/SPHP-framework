@@ -11,38 +11,33 @@
 namespace Sphp\Network\Headers;
 
 /**
- * Implements a MaxAge header
- *
+ * Abstract base class for a single header
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class MaxAge extends AbstractHeader {
+abstract class AbstractHeader implements Header {
 
   /**
    * @var string 
    */
-  private $value;
-  /**
-   * Constructor
-   * 
-   * @param int $value
-   */
-  public function __construct(int $value) {
-    parent::__construct('Access-Control-Max-Age', $value);
-  }
-  /**
-   * 
-   * @param  string $value
-   * @return $this for a fluent interface
-   */
-  protected function setValue(int $value) {
-    $this->value = $value;
-    return $this;
+  private $name;
+
+  public function __construct(string $name) {
+    $this->name = $name;
   }
 
-  public function getValue() {
-    return $value;
+  public function getName(): string {
+    return $this->name;
+  }
+
+  public function __toString(): string {
+    return $this->getName() . ': ' . $this->getValue();
+  }
+
+  public function execute() {
+    header($this->__toString());
   }
 
 }
