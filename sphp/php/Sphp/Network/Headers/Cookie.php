@@ -101,12 +101,12 @@ class Cookie implements Header {
    * @param string $name the name of the cookie which is also the key for future accesses via `$_COOKIE[...]`
    * @throws InvalidArgumentException if The name of the cookie is invalid
    */
-  public function __construct(string $name) {
-    if (!Cookies::isNameValid($name)) {
+  public function __construct(string $name, $value = null) {
+    if ($name == '' || \preg_match('/[=,; \\t\\r\\n\\013\\014]/', $name)) {
       throw new InvalidArgumentException('The name of the cookie is invalid');
     }
     $this->name = $name;
-    $this->value = null;
+    $this->setValue($value);
     $this->expiryTime = 0;
     $this->path = '';
     $this->domain = null;
@@ -117,8 +117,8 @@ class Cookie implements Header {
 
   public function __toString(): string {
     $forceShowExpiry = false;
-    $value = $this->getValue();
-    if ((string) $value === '') {
+    $value = (string) $this->getValue();
+    if ($value === '') {
       $value = 'deleted';
       $expiryTime = 0;
       $maxAge = 0;
@@ -238,8 +238,8 @@ class Cookie implements Header {
    * @param  string $path the path on the server that the cookie will be valid for (including all sub-directories), e.g. an empty string for the current directory or `/` for the root directory
    * @return $this for a fluent interface
    */
-  public function setPath(string $path = '/') {
-    $this->path = $path;
+  public function setPath(string $path = null) {
+    $this->path = (string) $path;
     return $this;
   }
 
@@ -323,6 +323,11 @@ class Cookie implements Header {
     return $this;
   }
 
+  public function isDeleted(): bool {
+    $value = $this->getValue();
+    return $value === '' || $value === null || $this->getMaxAge() <= 0;
+  }
+
   /**
    * Saves the cookie
    *
@@ -332,7 +337,7 @@ class Cookie implements Header {
     if ($this->getSameSiteRestriction() === null) {
       return setcookie($this->name, $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
     } else {
-      return Headers::addHttpHeader((string) $this);
+      return parent::save((string) $this);
     }
   }
 

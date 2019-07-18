@@ -122,6 +122,35 @@ class CookieTest extends TestCase {
     return $cookie;
   }
 
+  public function cookieData(): array {
+    return [
+        ['foo', 'bar', time() + 30, '/', 'blaa.foo', true],
+        ['foo', '', time() + 30, '/', 'blaa.foo', true],
+        ['foo', 'bar', time() + 30, '/', 'blaa.foo', true],
+    ];
+  }
+
+  /**
+   * @dataProvider cookieData
+   * @param string $name
+   * @param scalar $value
+   * @param int $expiryTime
+   * @param string $path
+   */
+  public function testToString(string $name, $value, int $expiryTime, string $path = null) {
+
+    $cookie = new Cookie($name);
+    $cookie
+            ->setValue($value)
+            ->setExpiryTime($expiryTime)
+            ->setPath($path);
+    if ($cookie->isDeleted()) {
+      $this->assertRegExp("/Set-Cookie: $name=deleted;/", (string) $cookie);
+    } else {
+      $this->assertRegExp("/Set-Cookie: $name=$value;/", (string) $cookie);
+    }
+  }
+
   /**
    * @runInSeparateProcess
    */

@@ -17,25 +17,16 @@ namespace Sphp\Network\Headers;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class GenericHeader implements Header {
+class GenericHeader extends AbstractHeader {
 
   /**
-   * @var string 
-   */
-  private $name;
-
-  /**
-   * @var string 
+   * @var mixed 
    */
   private $value;
 
   public function __construct(string $name, $value) {
-    $this->name = $name;
+    parent::__construct($name);
     $this->setValue($value);
-  }
-
-  public function getName(): string {
-    return $this->name;
   }
 
   public function getValue() {
@@ -50,18 +41,6 @@ class GenericHeader implements Header {
   protected function setValue($value) {
     $this->value = $value;
     return $this;
-  }
-
-  public function toString() {
-    return $this->getName() . ': ' . $this->getValue();
-  }
-
-  public function __toString(): string {
-    return $this->toString();
-  }
-
-  public function execute() {
-    header($this->__toString());
   }
 
 }

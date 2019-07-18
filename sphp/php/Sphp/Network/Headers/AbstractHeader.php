@@ -11,7 +11,7 @@
 namespace Sphp\Network\Headers;
 
 /**
- * Abstract base class for a single header
+ * Abstract base class for a HTTP header
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -24,6 +24,11 @@ abstract class AbstractHeader implements Header {
    */
   private $name;
 
+  /**
+   * Constructor
+   * 
+   * @param string $name
+   */
   public function __construct(string $name) {
     $this->name = $name;
   }
@@ -36,8 +41,16 @@ abstract class AbstractHeader implements Header {
     return $this->getName() . ': ' . $this->getValue();
   }
 
-  public function execute() {
-    header($this->__toString());
+  public function delete(): bool {
+    header_remove($this->getName());
+  }
+
+  public function save(): bool {
+    if (!\headers_sent()) {
+      \header((string) $this);
+      return true;
+    }
+    return false;
   }
 
 }

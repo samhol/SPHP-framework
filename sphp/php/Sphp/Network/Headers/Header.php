@@ -39,4 +39,18 @@ interface Header {
    * @return string header 
    */
   public function __toString(): string;
+
+  /**
+   * Saves the cookie
+   *
+   * @return bool whether the header has successfully been sent
+   */
+  public function save(): bool;
+
+  /**
+   * Deletes the cookie
+   *
+   * @return bool whether the header has successfully been deleted
+   */
+  public function delete(): bool;
 }
