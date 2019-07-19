@@ -10,7 +10,7 @@ use Sphp\Network\Headers\Headers;
 $headers = new Headers;
 //$headers->location('cookie.php');
 //$headers->maxAge(60 * 60 * 24 * 7 * 5);
-$headers->{'blaa-blaa'}('shiit!');
+$headers->appendNewHeader('blaa-blaa','shiit!');
 $headers->save();
 //$cookie = (new Cookie('comply_cookie'))->delete();
 $cookie1 = $headers->setCookie('blaa-cookie','duh?');

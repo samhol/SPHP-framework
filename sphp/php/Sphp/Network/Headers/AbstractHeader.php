@@ -52,5 +52,15 @@ abstract class AbstractHeader implements Header {
     }
     return false;
   }
+  
+  
+  /**
+   * Replaces a raw HTTP header
+   * 
+   * @param string $string
+   */
+  public function replaceHeader(string $string) {
+    header((string) $this, true);
+  }
 
 }

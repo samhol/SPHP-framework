@@ -10,7 +10,6 @@
 
 namespace Sphp\Network\Headers;
 
-use Sphp\Network\Headers\Cookie;
 use PHPUnit\Framework\TestCase;
 
 /**
