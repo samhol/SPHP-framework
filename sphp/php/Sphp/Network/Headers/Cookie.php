@@ -120,7 +120,7 @@ class Cookie implements Header {
     $value = (string) $this->getValue();
     if ($value === '') {
       $value = 'deleted';
-      $expiryTime = 0;
+      $expiryTime = 1;
       $maxAge = 0;
       $forceShowExpiry = true;
     } else {
@@ -336,8 +336,11 @@ class Cookie implements Header {
   public function save(): bool {
     if ($this->getSameSiteRestriction() === null) {
       return setcookie($this->name, $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
+    } else if (!\headers_sent()) {
+      \header((string) $this);
+      return true;
     } else {
-      return parent::save((string) $this);
+      return false;
     }
   }
 
@@ -348,9 +351,10 @@ class Cookie implements Header {
    */
   public function delete(): bool {
     // create a temporary copy of this cookie so that it isn't corrupted
+    $this->setValue(null);
     $copiedCookie = clone $this;
     // set the copied cookie's value to an empty string which internally sets the required options for a deletion
-    $copiedCookie->setValue('');
+    $copiedCookie->setValue(null);
 
     // save the copied "deletion" cookie
     return $copiedCookie->save();

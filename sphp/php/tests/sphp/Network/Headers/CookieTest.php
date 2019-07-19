@@ -126,7 +126,8 @@ class CookieTest extends TestCase {
     return [
         ['foo', 'bar', time() + 30, '/', 'blaa.foo', true],
         ['foo', '', time() + 30, '/', 'blaa.foo', true],
-        ['foo', 'bar', time() + 30, '/', 'blaa.foo', true],
+        ['foo', 'bar', time() + 30, '/foo/bar', 'example.com', true],
+        ['foo', 'bar', time() + 30, '/', '12.44.22.100', true, true, 'Lax'],
     ];
   }
 
@@ -136,38 +137,113 @@ class CookieTest extends TestCase {
    * @param scalar $value
    * @param int $expiryTime
    * @param string $path
+   * @param string $domain
+   * @param bool $secureOnly
+   * @param bool $httpOnly
+   * @param string $sameSiteRestriction
    */
-  public function testToString(string $name, $value, int $expiryTime, string $path = null) {
-
+  public function testToString(string $name, $value, int $expiryTime, string $path = null, string $domain = null, bool $secureOnly = false, bool $httpOnly = false, string $sameSiteRestriction = null) {
     $cookie = new Cookie($name);
     $cookie
             ->setValue($value)
             ->setExpiryTime($expiryTime)
-            ->setPath($path);
+            ->setPath($path)
+            ->setDomain($domain)
+            ->setSecureOnly($secureOnly)
+            ->setHttpOnly($httpOnly)
+            ->setSameSiteRestriction($sameSiteRestriction);
+    $cookieStr = (string) $cookie;
+
+    $this->validateString($cookie, $cookieStr);
+  }
+
+  protected function validateString(Cookie $cookie, string $cookieStr) {
+    /// echo "$cookieStr\n";
+    $name = $cookie->getName();
+    $value = $cookie->getValue();
     if ($cookie->isDeleted()) {
-      $this->assertRegExp("/Set-Cookie: $name=deleted;/", (string) $cookie);
+      $this->assertRegExp("/^Set-Cookie: $name=deleted;/", $cookieStr);
     } else {
-      $this->assertRegExp("/Set-Cookie: $name=$value;/", (string) $cookie);
+      $this->assertRegExp("/^Set-Cookie: $name=$value;/", $cookieStr);
+    }
+    if ($cookie->isSecureOnly()) {
+      $this->assertRegExp("/; secure/", $cookieStr);
+    }
+    if ($cookie->isHttpOnly()) {
+      $this->assertRegExp("/; httponly/", $cookieStr);
+    }
+    $this->assertRegExp('/; domain=' . $cookie->getDomain() . '/', $cookieStr);
+    $sameSiteRestriction = $cookie->getSameSiteRestriction();
+    if ($sameSiteRestriction !== null) {
+      $this->assertRegExp("/; SameSite=$sameSiteRestriction/", $cookieStr);
     }
   }
 
   /**
-   * @runInSeparateProcess
+   * @dataProvider cookieData
+   * @param string $name
+   * @param scalar $value
+   * @param int $expiryTime
+   * @param string $path
+   * @param string $domain
+   * @param bool $secureOnly
+   * @param bool $httpOnly
+   * @param string $sameSiteRestriction
    */
-  public function testSave() {
-    $cookie = new Cookie('foo');
+  public function createCookie(string $name, $value, int $expiryTime, string $path = null, string $domain = null, bool $secureOnly = false, bool $httpOnly = false, string $sameSiteRestriction = null) {
+    $cookie = new Cookie($name);
+    $cookie
+            ->setValue($value)
+            ->setExpiryTime($expiryTime)
+            ->setPath($path)
+            ->setDomain($domain)
+            ->setSecureOnly($secureOnly)
+            ->setHttpOnly($httpOnly)
+            ->setSameSiteRestriction($sameSiteRestriction);
+    return $cookie;
+  }
+
+  /**
+   * @runInSeparateProcess
+   *
+   * @dataProvider cookieData
+   * @param string $name
+   * @param scalar $value
+   * @param int $expiryTime
+   * @param string $path
+   * @param string $domain
+   * @param bool $secureOnly
+   * @param bool $httpOnly
+   * @param string $sameSiteRestriction
+   */
+  public function testSave(string $name, $value, int $expiryTime, string $path = null, string $domain = null, bool $secureOnly = false, bool $httpOnly = false, string $sameSiteRestriction = null) {
+    $cookie = $this->createCookie($name, $value, $expiryTime, $path, $domain, $secureOnly, $httpOnly, $sameSiteRestriction);
     $cookie->setValue('bar');
     $cookie->setMaxAge(60 * 60);
     $this->assertTrue($cookie->save());
-    $headers1 = xdebug_get_headers();
-    $this->assertRegExp("/foo=bar/", $headers1[0]);
-    $this->assertRegExp("/Max-Age=3600/", $headers1[0]);
+    $headers = xdebug_get_headers();
+    $this->validateString($cookie, $headers[0]);
+  }
+
+  /**
+   * @runInSeparateProcess
+   *
+   * @dataProvider cookieData
+   * @param string $name
+   * @param scalar $value
+   * @param int $expiryTime
+   * @param string $path
+   * @param string $domain
+   * @param bool $secureOnly
+   * @param bool $httpOnly
+   * @param string $sameSiteRestriction
+   */
+  public function testDelete(string $name, $value, int $expiryTime, string $path = null, string $domain = null, bool $secureOnly = false, bool $httpOnly = false, string $sameSiteRestriction = null) {
+    $cookie = $this->createCookie($name, $value, $expiryTime, $path, $domain, $secureOnly, $httpOnly, $sameSiteRestriction);
     $this->assertTrue($cookie->delete());
-    //$headers = xdebug_get_headers();
-    $headers2 = xdebug_get_headers();
-    print_r(xdebug_get_headers());
-    $this->assertRegExp("/Max-Age=0/", $headers2[1]);
-    //$this->assertArrayHasKey('foo', $_COOKIE);
+    $headers1 = xdebug_get_headers();
+    //print_r(xdebug_get_headers());
+    $this->assertSame((string) $cookie, $headers1[0]);
   }
 
 }
