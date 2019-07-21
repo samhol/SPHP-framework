@@ -42,25 +42,31 @@ abstract class AbstractHeader implements Header {
   }
 
   public function delete(): bool {
-    header_remove($this->getName());
-  }
-
-  public function save(): bool {
     if (!\headers_sent()) {
-      \header((string) $this);
+      header_remove($this->getName());
       return true;
     }
     return false;
   }
-  
-  
+
+  public function save(): bool {
+    if (!\headers_sent()) {
+      \header((string) $this, false);
+      return true;
+    }
+    return false;
+  }
+
   /**
-   * Replaces a raw HTTP header
+   * Replaces a HTTP header
    * 
-   * @param string $string
    */
-  public function replaceHeader(string $string) {
-    header((string) $this, true);
+  public function reset() {
+    if (!\headers_sent()) {
+      \header((string) $this, true);
+      return true;
+    }
+    return false;
   }
 
 }

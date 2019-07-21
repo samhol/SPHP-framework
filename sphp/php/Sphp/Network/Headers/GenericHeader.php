@@ -35,10 +35,10 @@ class GenericHeader extends AbstractHeader {
 
   /**
    * 
-   * @param  string $value
+   * @param  mixed $value
    * @return $this for a fluent interface
    */
-  protected function setValue($value) {
+  public function setValue($value) {
     $this->value = $value;
     return $this;
   }
