@@ -83,8 +83,6 @@ class HeadersTest extends TestCase {
     $this->assertArrayHasKey(0, $headers2, 'Headers not send');
     $this->validateString($header, $headers2[0]);
     $this->assertTrue($header->delete());
-    $headers3 = xdebug_get_headers();
-    $this->assertfalse(headers_sent(), 'qtrqaerera');
   }
 
 }
