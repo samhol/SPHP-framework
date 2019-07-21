@@ -44,6 +44,9 @@ class HeadersTest extends TestCase {
     $this->assertSame('google.com', $header->getValue());
     $this->assertCount(1, $headers);
     $this->assertTrue($headers->containsHeader('Access-Control-Allow-Origin'));
+    $this->assertfalse($header->save());
+    $this->assertfalse($header->delete());
+    $this->assertfalse($header->reset());
     //$this->assertSame('foo-bar', $headers->getValue());
     return $headers;
   }
@@ -81,14 +84,7 @@ class HeadersTest extends TestCase {
     $this->validateString($header, $headers2[0]);
     $this->assertTrue($header->delete());
     $headers3 = xdebug_get_headers();
-    $this->assertTrue(headers_sent(), 'qtrqaerera');
-    //$this->assertArrayNotHasKey(0, $headers3, 'Headers not send');
-    print_r($headers1);
-    print_r($headers2);
-    print_r($headers3);
-    $this->assertfalse($header->save());
-    $this->assertfalse($header->delete());
-    $this->assertfalse($header->reset());
+    $this->assertfalse(headers_sent(), 'qtrqaerera');
   }
 
 }
