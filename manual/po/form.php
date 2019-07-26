@@ -29,7 +29,7 @@ for ($i = 10; $i <= 50; $i += 10) {
 
 $perPage = new Select('view', $perPageOptions);
 $row->appendInput($perPage)->shrink();
-$row->appendInput(new Submitter('Submit', 'submit', 'submitted'))->shrink();
+$row->appendInput(new Buttons\Submitter('Submit', 'submit', 'submitted'))->shrink();
 
 $form = new ContainerForm('/gettext', 'get');
 $form->appendHiddenVariable('page', 1);

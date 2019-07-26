@@ -24,7 +24,7 @@ foreach ($query as $row) {
 namespace Sphp\Html\Tables;
 
 $table = new Table();
-$table->thead()->append(["Username", "First name", "last name", "street address", "zipcode", "city", "country"]);
+$table->useThead(true)->useTbody(true)->thead()->append(["Username", "First name", "last name", "street address", "zipcode", "city", "country"]);
 $tbody = $table->tbody();
 foreach ($users as $row => $user) {
   $tds[] = $user->getFname();

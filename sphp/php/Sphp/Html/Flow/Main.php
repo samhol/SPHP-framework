@@ -10,8 +10,6 @@
 
 namespace Sphp\Html\Flow;
 
-use Sphp\Html\ContainerTag;
-
 /**
  * Implements an HTML &lt;main&gt; tag
  *
@@ -21,9 +19,7 @@ use Sphp\Html\ContainerTag;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Main extends ContainerTag {
-
-  use ContentCreatorTrait;
+class Main extends AbstractFlowContainer {
 
   /**
    * Constructor

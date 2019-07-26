@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Flow;
 
+use Sphp\Html\ContainerTag;
 use Sphp\Html\Flow\Headings\H1;
 use Sphp\Html\Flow\Headings\H2;
 use Sphp\Html\Flow\Headings\H3;
@@ -19,16 +20,15 @@ use Sphp\Html\Flow\Headings\H6;
 use Sphp\Html\Tags;
 
 /**
- * Description of ContentCreatorTrait
+ * Abstract implementation of a HTML flow container
  *
- * @author  Sami Holck <sami.holck@gmail.com>
+ * @author Sami Holck <sami.holck@gmail.com>
+ * @link    http://www.w3schools.com/tags/tag_main.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-trait ContentCreatorTrait {
-
-  abstract protected function append($content);
+abstract class AbstractFlowContainer extends ContainerTag {
 
   /**
    * Appends an HTML &lt;p&gt; object
@@ -142,24 +142,6 @@ trait ContentCreatorTrait {
     $component = new Section($content);
     $this->append($component);
     return $component;
-  }
-
-  /**
-   * Returns the heading components tag object
-   *
-   * @return HeadingInterface the body tag object
-   */
-  public function headings() {
-    return $this->getComponentsByObjectType(HeadingInterface::class);
-  }
-
-  /**
-   * Returns the paragraphs in this section
-   *
-   * @return Paragraph the body tag object
-   */
-  public function paragraphs() {
-    return $this->getComponentsByObjectType(Paragraph::class);
   }
 
 }

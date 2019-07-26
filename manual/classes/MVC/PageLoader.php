@@ -69,6 +69,10 @@ class PageLoader extends AbstractContent implements CssClassifiableContent {
     $this->load('manual/templates/error.php');
   }
 
+  public function loadContactForm() {
+    $this->load('./manual/form/form.php');
+  }
+
   public function loadCalendar($par, $foo) {
     $this->load('manual/pages/calendar-app.php');
   }

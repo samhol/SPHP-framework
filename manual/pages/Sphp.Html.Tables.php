@@ -10,8 +10,6 @@ $td = Manual\api()->classLinker(Td::class);
 $th = Manual\api()->classLinker(Th::class);
 $cell =  Manual\api()->classLinker(Cell::class);
 $caption = Manual\api()->classLinker(Caption::class);
-$colgroup = Manual\api()->classLinker(Colgroup::class);
-$col = Manual\api()->classLinker(Col::class);
 $thead =  Manual\api()->classLinker(Thead::class);
 $tbody =  Manual\api()->classLinker(Tbody::class);
 $tfoot =  Manual\api()->classLinker(Tfoot::class);
@@ -31,10 +29,6 @@ two-dimensional data table. Therefore <u>HTML tables should not be used as layou
 The structure of a $table object follows closely the specification of a HTML $w3schools->table.
 
  * The $caption class specifies the caption (or title) of a table
- * The $colgroup class defines a group of columns within a table
-   * The $col class defines a column within a table and is used for defining 
-   common semantics on all common cells. An instance of it is always within a 
-   $colgroup object.
  * The $thead class defines a set of rows defining the head of the columns of the table.
  * The $tbody class groups one or more rows as the body of a table.
  * The $tbody class groups one or more rows as the body of a table.

@@ -49,6 +49,7 @@ $accordion->allowAllClosed();
 foreach ($arr as $group => $data) {
   if (count($data) > 0) {
     $table = (new Table())->addCssClass("html-to-php");
+    $table->useTbody()->useThead();
     $table->thead()->append(Tr::fromThs(["row:", "Message", "Translation"]));
     $body = $table->tbody();
     if ($group !== "Month names") {

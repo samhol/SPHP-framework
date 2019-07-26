@@ -37,9 +37,18 @@ class OlTest extends StandardListTest {
    * 
    * @param mixed $data
    */
-  public function testSetListType($data) {
+  public function testListType(string $data) {
+    $this->assertSame(null, $this->list->getAttribute('type'));
+    $this->assertSame('1', $this->list->getListType());
     $this->list->setListType($data);
-    $this->assertSame($this->list->getAttribute('type'), $data);
+    $this->assertSame($data, $this->list->getAttribute('type'));
+    $this->assertSame($data, $this->list->getListType());
+  }
+  
+  public function testStart() {
+    $this->assertSame(1, $this->list->getStart());
+    $this->list ->setStart(10);
+    $this->assertSame(10, $this->list->getStart());
   }
 
 }

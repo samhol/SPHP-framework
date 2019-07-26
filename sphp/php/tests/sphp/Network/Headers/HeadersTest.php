@@ -85,4 +85,75 @@ class HeadersTest extends TestCase {
     $this->assertTrue($header->delete());
   }
 
+  public function magicData(): array {
+    $d = [
+        'AccessControlAllowOrigin' => 'Access-Control-Allow-Origin',
+        'AccessControlAllowCredentials' => 'Access-Control-Allow-Credentials',
+        'AccessControlExposeHeaders' => 'Access-Control-Expose-Headers',
+        'AccessControlMaxAge' => 'Access-Control-Max-Age',
+        'AccessControlAllowMethods' => 'Access-Control-Allow-Methods',
+        'AccessControlAllowHeaders' => 'Access-Control-Allow-Headers',
+        'AcceptPatch' => 'Accept-Patch',
+        'AcceptRanges' => 'Accept-Ranges',
+        'Age' => 'Age',
+        'Allow' => 'Allow',
+        'AltSvc' => 'Alt-Svc',
+        'CacheControl' => 'Cache-Control',
+        'Connection' => 'Connection',
+        'ContentDisposition' => 'Content-Disposition',
+        'ContentEncoding' => 'Content-Encoding',
+        'ContentLanguage' => 'Content-Language',
+        'ContentLength' => 'Content-Length',
+        'ContentLocation' => 'Content-Location',
+        'ContentRange' => 'Content-Range',
+        'ContentType' => 'Content-Type',
+        'Date' => 'Date',
+        'DeltaBase' => 'Delta-Base',
+        'ETag' => 'ETag',
+        'Expires' => 'Expires',
+        'IM' => 'IM',
+        'LastModified' => 'Last-Modified',
+        'Link' => 'Link',
+        'RedirectTo' => 'Location',
+        'Location' => 'Location',
+        'P3P' => 'P3P',
+        'Pragma' => 'Pragma',
+        'ProxyAuthenticate' => 'Proxy-Authenticate',
+        'PublicKeyPins' => 'Public-Key-Pins',
+        'RetryAfter' => 'Retry-After',
+        'Server' => 'Server',
+        'StrictTransportSecurity' => 'Strict-Transport-Security',
+        'Trailer' => 'Trailer',
+        'TransferEncoding' => 'Transfer-Encoding',
+        'Tk' => 'Tk',
+        'Upgrade' => 'Upgrade',
+        'Vary' => 'Vary',
+        'Via' => 'Via',
+        'Warning' => 'Warning',
+        'WWWAuthenticate' => 'WWW-Authenticate',
+        'XFrameOptions' => 'X-Frame-Options',
+    ];
+    return $d;
+  }
+
+  /**
+   * @depends testConstructor
+   * @param   Headers $headers
+   * @return  Headers
+   */
+  public function testMagicCall(Headers $headers) {
+    $headers = new Headers();
+    foreach ($this->magicData() as $callName => $value) {
+      if ($headers->containsHeader($value)) {
+        $headers->remove($value);
+      }
+      $this->assertFalse($headers->containsHeader($value), "'$value' exists in headers");
+      $call = "append$callName";
+      $instance = $headers->$call($value);
+      $this->assertInstanceOf(Header::class, $instance);
+      $this->assertTrue($headers->containsHeader($value), "'$value' does not exist in headers");
+    }
+    unset($headers);
+  }
+
 }

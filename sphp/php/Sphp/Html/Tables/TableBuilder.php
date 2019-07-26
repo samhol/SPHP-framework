@@ -26,7 +26,7 @@ class TableBuilder extends AbstractContent {
   /**
    * @var array 
    */
-  private $theadData;
+  private $theadData = [];
 
   /**
    * @var array 
@@ -164,7 +164,7 @@ class TableBuilder extends AbstractContent {
       foreach ($this->tbodyData as $row) {
         $tbody->append($this->buildRow($row));
       }
-      $table->tbody($tbody);
+      $table->setTbody($tbody);
     }
     return $table;
   }

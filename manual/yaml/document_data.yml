@@ -98,8 +98,6 @@ Sphp\Html\Tags:
   Tables:
     table: 'A table'
     caption: 'A table caption'
-    colgroup: 'Groups of table columns'
-    col: 'Attributes for table columns'
     thead: 'A table header'
     tbody: 'A table body'
     tfoot: 'A table footer'

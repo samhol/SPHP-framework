@@ -209,10 +209,12 @@ class LineNumberer {
    */
   public function prependLineNumbersTo(Table $table): Table {
     $tbody = $table->tbody();
-    $lineNumber = $this->getStart();
-    foreach ($tbody as $row) {
-      if ($row instanceof Row) {
-        $row->prepend($this->generateLineNumberCell($lineNumber++));
+    if ($tbody !== null) {
+      $lineNumber = $this->getStart();
+      foreach ($tbody as $row) {
+        if ($row instanceof Row) {
+          $row->prepend($this->generateLineNumberCell($lineNumber++));
+        }
       }
     }
     return $table;

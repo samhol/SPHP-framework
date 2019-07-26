@@ -44,11 +44,6 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   private $caption;
 
   /**
-   * @var Colgroup 
-   */
-  private $colgroup;
-
-  /**
    * @var Thead 
    */
   private $thead;
@@ -71,16 +66,13 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   public function __destruct() {
-    unset($this->caption, $this->colgroup, $this->thead, $this->tbody, $this->tfoot);
+    unset($this->caption, $this->thead, $this->tbody, $this->tfoot);
     parent::__destruct();
   }
 
   public function __clone() {
     if (is_object($this->caption)) {
       $this->caption = clone $this->caption;
-    }
-    if (is_object($this->colgroup)) {
-      $this->colgroup = clone $this->colgroup;
     }
     if (is_object($this->thead)) {
       $this->thead = clone $this->thead;
@@ -95,7 +87,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   public function contentToString(): string {
-    return $this->caption . $this->colgroup . $this->thead . $this->tbody . $this->tfoot;
+    return $this->caption . $this->thead . $this->tbody . $this->tfoot;
   }
 
   /**
@@ -119,9 +111,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * @return $this for a fluent interface
    */
   public function setContent(TableContent $content) {
-    if ($content instanceof Colgroup || $content instanceof Col) {
-      $this->setCols($content);
-    } else if ($content instanceof Caption) {
+    if ($content instanceof Caption) {
       $this->getInnerContainer()['caption'] = $content;
     } else if ($content instanceof Thead) {
       $this->thead = $content;
@@ -132,30 +122,6 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     } else if ($content instanceof Tr || $content instanceof AbstractCell) {
       $this->tbody->append($content);
     }
-    return $this;
-  }
-
-  /**
-   * Returns the colgroup component or null
-   *
-   * @param  Colgroup $colgroup
-   * @return Colgroup colgroup component
-   */
-  public function colgroup(Colgroup $colgroup = null): Colgroup {
-    if ($colgroup === null) {
-      $colgroup = new Colgroup();
-    }
-    $this->colgroup = $colgroup;
-    return $this->colgroup;
-  }
-
-  /**
-   * Destroys the optional colgroup component
-   * 
-   * @return $this for a fluent interface
-   */
-  public function removeColgroup() {
-    $this->colgroup = null;
     return $this;
   }
 
@@ -171,6 +137,20 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   }
 
   /**
+   * 
+   * @param  bool $use
+   * @return $this for a fluent interface
+   */
+  public function useThead(bool $use = true) {
+    if ($use && $this->thead() === null) {
+      $this->setThead(new Thead());
+    } else if (!$use) {
+      $this->setThead(null);
+    }
+    return $this;
+  }
+
+  /**
    * Returns the table header component
    *
    * @return Thead|null table header component or null if none set
@@ -182,25 +162,33 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Returns the table body component
    *
-   * @param  Tbody $tbody
-   * @return Tbody table body component
+   * @return Tbody|null table body component
    */
-  public function tbody(Tbody $tbody = null): Tbody {
-    if ($tbody !== null) {
-      $this->tbody = $tbody;
-    } else if ($this->tbody === null) {
-      $this->tbody = new Tbody();
-    }
+  public function tbody(): ?Tbody {
     return $this->tbody;
   }
 
   /**
-   * Destroys the optional table body component
+   * 
+   * @param  bool $use
+   * @return $this for a fluent interface
+   */
+  public function useTbody(bool $use = true) {
+    if ($use && $this->tbody() === null) {
+      $this->setTbody(new Tbody());
+    } else if (!$use) {
+      $this->setTbody(null);
+    }
+    return $this;
+  }
+
+  /**
+   * Sets the table body component
    * 
    * @return $this for a fluent interface
    */
-  public function removeTbody() {
-    $this->tbody = null;
+  public function setTbody(Tbody $tbody = null) {
+    $this->tbody = $tbody;
     return $this;
   }
 
@@ -213,6 +201,20 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   public function setTfoot(Tfoot $tfoot = null): ?Tfoot {
     $this->tfoot = $tfoot;
     return $this->tfoot;
+  }
+
+  /**
+   * 
+   * @param  bool $use
+   * @return $this for a fluent interface
+   */
+  public function useTfoot(bool $use = true) {
+    if ($use && $this->tfoot() === null) {
+      $this->setTfoot(new Tfoot());
+    } else if (!$use) {
+      $this->setTfoot(null);
+    }
+    return $this;
   }
 
   /**
@@ -259,9 +261,6 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
     $it = new PlainContainer();
     if ($this->caption !== null) {
       $it['caption'] = $this->caption;
-    }
-    if ($this->colgroup !== null) {
-      $it['colgroup'] = $this->colgroup;
     }
     if ($this->thead !== null) {
       $it['thead'] = $this->thead;

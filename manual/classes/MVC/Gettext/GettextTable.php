@@ -39,8 +39,8 @@ class GettextTable {
   public function generate(iterable $entries): Table {
     $i = $this->i;
     $this->table = new Table();
-    $this->table->addCssClass('po-table')
-            ->thead()->appendHeaderRow(['Type','id:', 'Translation:']);
+    $this->table->useThead(true)->useTbody(true)->addCssClass('po-table');
+           $this->table ->thead()->appendHeaderRow(['Type','id:', 'Translation:']);
     foreach ($entries as $entry) {
       $this->insertEntryTo($entry);
     }

@@ -35,54 +35,53 @@ class Headers implements IteratorAggregate {
    *
    * @var Header[]
    */
-  private static $typeMap = array(
+  private static $typeMap = [
       'AccessControlAllowOrigin' => 'Access-Control-Allow-Origin',
       'AccessControlAllowCredentials' => 'Access-Control-Allow-Credentials',
-      'AccessControlAllowCredentials' => 'Access-Control-Expose-Headers',
+      'AccessControlExposeHeaders' => 'Access-Control-Expose-Headers',
       'AccessControlMaxAge' => 'Access-Control-Max-Age',
       'AccessControlAllowMethods' => 'Access-Control-Allow-Methods',
       'AccessControlAllowHeaders' => 'Access-Control-Allow-Headers',
-      'AccessControlAllowCredentials' => 'Accept-Patch',
-      'AccessControlAllowCredentials' => 'Accept-Ranges',
-      'AccessControlAllowCredentials' => 'Age',
-      'AccessControlAllowCredentials' => 'Allow',
-      'AccessControlAllowCredentials' => 'Alt-Svc',
-      'AccessControlAllowCredentials' => 'Cache-Control',
-      'AccessControlAllowCredentials' => 'Connection',
-      'AccessControlAllowCredentials' => 'Content-Disposition',
-      'AccessControlAllowCredentials' => 'Content-Encoding',
-      'AccessControlAllowCredentials' => 'Content-Language',
-      'AccessControlAllowCredentials' => 'Content-Length',
-      'AccessControlAllowCredentials' => 'Content-Location',
-      'AccessControlAllowCredentials' => 'Content-Range',
-      'AccessControlAllowCredentials' => 'Content-Type',
-      'AccessControlAllowCredentials' => 'Date',
-      'AccessControlAllowCredentials' => 'Delta-Base',
-      'AccessControlAllowCredentials' => 'ETag',
-      'AccessControlAllowCredentials' => 'Expires',
-      'AccessControlAllowCredentials' => 'IM',
-      'AccessControlAllowCredentials' => 'Last-Modified',
-      'AccessControlAllowCredentials' => 'Link',
+      'AcceptPatch' => 'Accept-Patch',
+      'AcceptRanges' => 'Accept-Ranges',
+      'Age' => 'Age',
+      'Allow' => 'Allow',
+      'AltSvc' => 'Alt-Svc',
+      'CacheControl' => 'Cache-Control',
+      'Connection' => 'Connection',
+      'ContentDisposition' => 'Content-Disposition',
+      'ContentEncoding' => 'Content-Encoding',
+      'ContentLanguage' => 'Content-Language',
+      'ContentLength' => 'Content-Length',
+      'ContentLocation' => 'Content-Location',
+      'ContentRange' => 'Content-Range',
+      'ContentType' => 'Content-Type',
+      'Date' => 'Date',
+      'DeltaBase' => 'Delta-Base',
+      'ETag' => 'ETag',
+      'Expires' => 'Expires',
+      'IM' => 'IM',
+      'LastModified' => 'Last-Modified',
+      'Link' => 'Link',
       'RedirectTo' => 'Location',
       'Location' => 'Location',
-      'AccessControlAllowCredentials' => 'P3P',
-      'AccessControlAllowCredentials' => 'Pragma',
-      'AccessControlAllowCredentials' => 'Proxy-Authenticate	',
-      'AccessControlAllowCredentials' => 'Public-Key-Pins',
-      'AccessControlAllowCredentials' => 'Retry-After',
-      'AccessControlAllowCredentials' => 'Server',
-      'AccessControlAllowCredentials' => 'Strict-Transport-Security',
-      'AccessControlAllowCredentials' => 'Trailer',
-      'AccessControlAllowCredentials' => 'Transfer-Encoding',
-      'AccessControlAllowCredentials' => 'Transfer-Encoding',
-      'AccessControlAllowCredentials' => 'Tk',
-      'AccessControlAllowCredentials' => 'Upgrade',
-      'AccessControlAllowCredentials' => 'Vary',
-      'AccessControlAllowCredentials' => 'Via',
-      'AccessControlAllowCredentials' => 'Warning',
-      'AccessControlAllowCredentials' => 'WWW-Authenticate',
-      'AccessControlAllowCredentials' => 'X-Frame-Options',
-  );
+      'P3P' => 'P3P',
+      'Pragma' => 'Pragma',
+      'ProxyAuthenticate' => 'Proxy-Authenticate',
+      'PublicKeyPins' => 'Public-Key-Pins',
+      'RetryAfter' => 'Retry-After',
+      'Server' => 'Server',
+      'StrictTransportSecurity' => 'Strict-Transport-Security',
+      'Trailer' => 'Trailer',
+      'TransferEncoding' => 'Transfer-Encoding',
+      'Tk' => 'Tk',
+      'Upgrade' => 'Upgrade',
+      'Vary' => 'Vary',
+      'Via' => 'Via',
+      'Warning' => 'Warning',
+      'WWWAuthenticate' => 'WWW-Authenticate',
+      'XFrameOptions' => 'X-Frame-Options',
+  ];
 
   /**
    *
@@ -126,6 +125,15 @@ class Headers implements IteratorAggregate {
     return $contains;
   }
 
+  public function remove(string $name) {
+    foreach ($this->headers as $k => $n) {
+      if ($n->getName() === $name) {
+        unset($this->headers[$k]);
+      }
+    }
+    return $this;
+  }
+
   public function save(): bool {
     $success = true;
     foreach ($this->headers as $header) {
@@ -135,10 +143,6 @@ class Headers implements IteratorAggregate {
       }
     }
     return $success;
-  }
-
-  public function __set($name, $value) {
-    $this->appendNewHeader($name, $value);
   }
 
   public function __call(string $name, array $arguments): Header {

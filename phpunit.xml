@@ -34,6 +34,9 @@
     <testsuite name="html-head">
       <directory>./sphp/php/tests/sphp/Html/Head</directory>
     </testsuite>
+    <testsuite name="html-flow">
+      <directory>./sphp/php/tests/sphp/Html/Flow</directory>
+    </testsuite>
     <testsuite name="html-media">
       <directory>./sphp/php/tests/sphp/Html/Media</directory>
     </testsuite>
@@ -105,6 +108,9 @@
   <filter>
     <whitelist>
       <directory>./sphp/php/Sphp/</directory>
+       <exclude>
+      <directory suffix=".php">./sphp/php/Sphp/Database/</directory>
+    </exclude>
     </whitelist>
   </filter>
 </phpunit>

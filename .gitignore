@@ -59,3 +59,4 @@ build.xml
 /npm-debug.log
 /reports/
 .phpunit.result.cache
+manual/form/config/private-data.yml

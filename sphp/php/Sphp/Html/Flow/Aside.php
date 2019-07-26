@@ -7,9 +7,8 @@
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
-namespace Sphp\Html\Flow;
 
-use Sphp\Html\ContainerTag;
+namespace Sphp\Html\Flow;
 
 /**
  * Implements an HTML &lt;aside&gt; tag
@@ -23,7 +22,7 @@ use Sphp\Html\ContainerTag;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Aside extends ContainerTag {
+class Aside extends AbstractFlowContainer {
 
   /**
    * Constructor

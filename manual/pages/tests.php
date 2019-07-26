@@ -1,11 +1,5 @@
 <?php
 
-$cookieBanner = new Sphp\Html\Apps\CookieBanner();
-$cookieBanner->setAcceptButton('<i class="far fa-check-circle fa-"></i> Accept cookies')->addCssClass('radius');
-$cookieBanner->contentContainer()->appendMd('**SPHPlayground** uses cookies. By continuing we assume your 
-      permission to deploy cookies, as detailed in our  [privacy policy](/manual/privacy_policy.php).');
-echo $cookieBanner;
-
 use Sphp\Html\Foundation\Sites\Forms\Inputs\ValidableInlineInput;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;
@@ -39,9 +33,6 @@ $pwRow = new BasicRow();
 $pwRow->appendCell($pwField)->small(12);
 $form->append($pwRow);
 
-
-
-
 $form->appendHiddenVariable('hidden1', 'I am hidden!');
 
 $buttonRow = new BasicRow();
@@ -53,3 +44,44 @@ $form->append($buttonRow);
 $form->liveValidate();
 echo $form;
 ?>
+
+<?php
+if (isset($_POST['submit_pass']) && $_POST['pass']) {
+  $pass = $_POST['pass'];
+  if ($pass == "123") {
+    $_SESSION['password'] = $pass;
+  } else {
+    $error = "Incorrect Pssword";
+  }
+}
+
+if (isset($_POST['page_logout'])) {
+  unset($_SESSION['password']);
+}
+?>
+
+
+<div id="wrapper">
+
+  <?php
+  if ($_SESSION['password'] == "123") {
+    ?>
+    <h1>Create Password Protected Webpage Using PHP, HTML And CSS</h1>
+    <form method="post" action="" id="logout_form">
+      <input type="submit" name="page_logout" value="LOGOUT">
+    </form>
+    <?php
+  } else {
+    ?>
+    <form method="post" action="" id="login_form">
+      <h1>LOGIN TO PROCEED</h1>
+      <input type="password" name="pass" placeholder="*******">
+      <input type="submit" name="submit_pass" value="DO SUBMIT">
+      <p>"Password : 123"</p>
+      <p><font style="color:red;"><?php echo $error; ?></font></p>
+    </form>
+    <?php
+  }
+  ?>
+
+</div>
