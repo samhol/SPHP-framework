@@ -15,7 +15,6 @@ use IteratorAggregate;
 use Traversable;
 use Sphp\Html\Iterator;
 use Sphp\Html\TraversableContent;
-use Sphp\Exceptions\OutOfBoundsException;
 
 /**
  * Implements an HTML &lt;tr&gt; tag
@@ -34,9 +33,9 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var Cell 
+   * @var Cell[]
    */
-  private $tds = [];
+  private $cells = [];
 
   /**
    * Constructor
@@ -46,7 +45,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
   }
 
   public function append(Cell $cell) {
-    $this->tds[] = $cell;
+    $this->cells[] = $cell;
     return $this;
   }
 
@@ -95,7 +94,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @return $this for a fluent interface
    */
   public function prepend(Cell $cell): Cell {
-    array_unshift($this->tds, $cell);
+    array_unshift($this->cells, $cell);
     return $cell;
   }
 
@@ -104,20 +103,19 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
    * 
    * **Important:** Cells are numbered sequentially starting from 0
    * 
-   * @param  int $number
-   * @return Row the row at given position
-   * @throws OutOfBoundsException
+   * @param  int $position
+   * @return Cell|null the cell at given position
    */
-  public function getCell(int $number): Cell {
-    if (array_key_exists($number, $this->tds)) {
-      return $this->tds[$number];
+  public function getCell(int $position): ?Cell {
+    if (array_key_exists($position, $this->cells)) {
+      return $this->cells[$position];
     } else {
-      throw new OutOfBoundsException("Cell at position $number does not exists");
+      return null;
     }
   }
 
   public function contentToString(): string {
-    return implode($this->tds);
+    return implode($this->cells);
   }
 
   /**
@@ -126,7 +124,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @return Traversable external iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->tds);
+    return new Iterator($this->cells);
   }
 
   /**

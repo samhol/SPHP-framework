@@ -10,8 +10,19 @@
 
 namespace Sphp\Html\Tables;
 
-use PHPUnit\Framework\TestCase;
+/**
+ * Implements a line numberer for HTML tables
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license https://opensource.org/licenses/MIT The MIT License
+ * @filesource
+ */
+interface TableFilter {
 
-abstract class AbstractCellTests extends TestCase {
-  
+  /**
+   * 
+   * @param  Table $table
+   * @return Table
+   */
+  public function useInTable(Table $table): Table;
 }

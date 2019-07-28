@@ -168,7 +168,7 @@ if (!window.console.log) {
     $(document).foundation();
     console.log("jQuery " + $.fn.jquery + " loaded...");
     console.log("Foundation " + Foundation.version + " loaded...");
-   // console.log("AnyTime " + AnyTime.version + " loaded...");
+    // console.log("AnyTime " + AnyTime.version + " loaded...");
     //$ajaxLoaders.sphpAjaxLoader();
     $("[data-sphp-ajax-append]").sphpAjaxAppend();
     $("[data-sphp-ajax-prepend]").sphpAjaxPrepend();
@@ -184,8 +184,8 @@ if (!window.console.log) {
     $('div[data-switch-board]').switchBoard();
     $('.sphp.cookie-banner').cookieBanner();
     // $('.sphp-back-to-top-button').backToTopBtn();
-   // $("input[data-anytime]").SphpAnyTimeInput();
-   // $("[data-sphp-ion-slider]").ionRangeSlider({});
+    // $("input[data-anytime]").SphpAnyTimeInput();
+    // $("[data-sphp-ion-slider]").ionRangeSlider({});
     //$("[data-reveal]").sphpPopup();
     $('[data-slick]').slick();
     $('[data-accordion]').on('down.zf.accordion', function () {
@@ -201,7 +201,7 @@ if (!window.console.log) {
     $("[data-src]").lazyLoadXT();
     sphp.initReCAPTCHAv3sForm();
     $("[data-sphp-tipso]").sphpTipso();
-   // $("[data-sphp-php-info-tipso]").phpInfoTipso();
+    // $("[data-sphp-php-info-tipso]").phpInfoTipso();
 
   };
 

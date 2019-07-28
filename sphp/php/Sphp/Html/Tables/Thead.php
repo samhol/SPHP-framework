@@ -20,7 +20,7 @@ namespace Sphp\Html\Tables;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Thead extends TableRowContainer {
+class Thead extends RowContainer {
 
   /**
    * Constructor

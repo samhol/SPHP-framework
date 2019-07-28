@@ -21,7 +21,7 @@ namespace Sphp\Html\Tables;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Tbody extends TableRowContainer {
+class Tbody extends RowContainer {
 
 	/**
 	 * Constructs a new instance

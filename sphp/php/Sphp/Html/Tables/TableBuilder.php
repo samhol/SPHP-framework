@@ -26,7 +26,7 @@ class TableBuilder extends AbstractContent {
   /**
    * @var array 
    */
-  private $theadData = [];
+  private $theadData;
 
   /**
    * @var array 
@@ -39,51 +39,19 @@ class TableBuilder extends AbstractContent {
   private $tfootData;
 
   /**
-   * @var array 
+   * @var TableFilter 
    */
-  private $labels = [];
-
-  /**
-   * @var LineNumberer
-   */
-  private $lineNumberer;
-
-  /**
-   * Constructor
-   *
-   * @param LineNumberer|null $lineNumberer
-   */
-  public function __construct(LineNumberer $lineNumberer = null) {
-    if ($lineNumberer === null) {
-      $lineNumberer = new LineNumberer();
-    }
-    $this->setLineNumberer($lineNumberer);
-  }
+  private $tableFilters = [];
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->lineNumberer);
+    unset($this->tableFilters);
   }
 
-  /**
-   * Returns the line numberer object
-   * 
-   * @return LineNumberer
-   */
-  public function getLineNumberer(): LineNumberer {
-    return $this->lineNumberer;
-  }
-
-  /**
-   * Sets the line numberer object
-   * 
-   * @param  LineNumberer $lineNumberer line numberer to set
-   * @return $this
-   */
-  public function setLineNumberer(LineNumberer $lineNumberer) {
-    $this->lineNumberer = $lineNumberer;
+  public function addTableFilter(TableFilter $filter) {
+    $this->tableFilters[] = $filter;
     return $this;
   }
 
@@ -92,7 +60,7 @@ class TableBuilder extends AbstractContent {
    * 
    * @return array the table header content data
    */
-  public function getTheadData():?array {
+  public function getTheadData(): ?array {
     return $this->theadData;
   }
 
@@ -101,7 +69,7 @@ class TableBuilder extends AbstractContent {
    * 
    * @return array the table body content data
    */
-  public function getTbodyData():?array {
+  public function getTbodyData(): ?array {
     return $this->tbodyData;
   }
 
@@ -110,13 +78,8 @@ class TableBuilder extends AbstractContent {
    * 
    * @return array the table footer content data
    */
-  public function getTfootData():?array {
+  public function getTfootData(): ?array {
     return $this->tfootData;
-  }
-
-  public function useCellLabels(array $labels) {
-    $this->labels = $labels;
-    return $this;
   }
 
   /**
@@ -133,7 +96,7 @@ class TableBuilder extends AbstractContent {
   /**
    * Sets the cell data for table body
    * 
-   * @param  array $data the cell data for table body
+   * @param  mixed[][] $data the cell data for table body
    * @return $this for a fluent interface
    */
   public function setTbodyData(array $data = null) {
@@ -161,24 +124,12 @@ class TableBuilder extends AbstractContent {
   public function buildTbody(Table $table): Table {
     if (!empty($this->tbodyData)) {
       $tbody = new Tbody();
-      foreach ($this->tbodyData as $row) {
-        $tbody->append($this->buildRow($row));
+      foreach ($this->tbodyData as $rowData) {
+        $tbody->append(Tr::fromTds($rowData));
       }
       $table->setTbody($tbody);
     }
     return $table;
-  }
-
-  protected function buildRow(array $rowData) {
-    $tr = Tr::fromTds($rowData);
-    foreach ($this->theadData as $id => $label) {
-      try {
-        $tr->getCell($id)->setAttribute('data-label', $label);
-      } catch (\Exception $ex) {
-        
-      }
-    }
-    return $tr;
   }
 
   /**
@@ -206,7 +157,7 @@ class TableBuilder extends AbstractContent {
     if ($this->tfootData !== null) {
       $foot = new Tfoot();
       $foot->appendHeaderRow($this->tfootData);
-      $table->tfoot($foot);
+      $table->setTfoot($foot);
     }
     return $table;
   }
@@ -215,12 +166,16 @@ class TableBuilder extends AbstractContent {
    * 
    * @return Table
    */
-  public function buildTable(): Table {
-    $table = new Table();
+  public function buildTable(Table $table = null): Table {
+    if ($table === null) {
+      $table = new Table();
+    }
     $this->buildTbody($table);
     $this->buildHead($table);
     $this->buildFoot($table);
-    $this->lineNumberer->setLineNumbers($table);
+    foreach ($this->tableFilters as $filter) {
+      $filter->useInTable($table);
+    }
     return $table;
   }
 
@@ -250,7 +205,9 @@ class TableBuilder extends AbstractContent {
     }
     $builder->setTheadData($headData);
     $builder->setTbodyData($data);
-    $builder->getLineNumberer()->setFirstLineNumber($offset + 1)->prependLineNumbers(true);
+    $linenumberer = new LineNumberer();
+    $linenumberer->setFirstLineNumber($offset + 1)->prependLineNumbers(true);
+    $builder->addTableFilter($linenumberer);
     return $builder;
   }
 

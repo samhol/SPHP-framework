@@ -20,7 +20,7 @@ namespace Sphp\Html\Tables;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Tfoot extends TableRowContainer {
+class Tfoot extends RowContainer {
 
   /**
    * Constructor

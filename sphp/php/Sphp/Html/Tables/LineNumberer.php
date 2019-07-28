@@ -17,7 +17,7 @@ namespace Sphp\Html\Tables;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class LineNumberer {
+class LineNumberer implements TableFilter {
 
   /**
    * @var int
@@ -133,41 +133,20 @@ class LineNumberer {
     return $this->start;
   }
 
-  protected function generateTh(int $rowSpan): Th {
+  private function generateTh(int $rowSpan): Th {
     return (new Th($this->getLabel()))->setRowspan($rowSpan)->setScope('col');
   }
 
   /**
    * 
-   * @param  Table $table
+   * @param  Table $rowContainer
    * @return bool
    */
-  public function manipulateHead(Table $table): bool {
+  private function manipulateHeaderAndFooter(RowContainer $rowContainer): bool {
     $result = false;
-    if ($table->thead() !== null) {
-      $first = $table->thead()->getRow(0);
-      $rowSpan = $table->thead()->count();
-      if ($this->prependsLineNumbers()) {
-        $first->prepend($this->generateTh($rowSpan));
-      }
-      if ($this->appendsLineNumbers()) {
-        $first->append($this->generateTh($rowSpan));
-      }
-      $result = true;
-    }
-    return $result;
-  }
-
-  /**
-   * 
-   * @param  Table $table
-   * @return bool
-   */
-  public function manipulateFooter(Table $table): bool {
-    $result = false;
-    if ($table->tfoot() !== null) {
-      $first = $table->tfoot()->getRow(0);
-      $rowSpan = $table->tfoot()->count();
+    $first = $rowContainer->getRow(0);
+    if ($first !== null) {
+      $rowSpan = $rowContainer->count();
       if ($this->prependsLineNumbers()) {
         $first->prepend($this->generateTh($rowSpan));
       }
@@ -220,20 +199,19 @@ class LineNumberer {
     return $table;
   }
 
-  /**
-   * 
-   * @param  Table $table
-   * @return Table
-   */
-  public function setLineNumbers(Table $table): Table {
+  public function useInTable(Table $table): Table {
     if ($this->prependsLineNumbers()) {
       $this->prependLineNumbersTo($table);
     }
     if ($this->appendsLineNumbers()) {
       $this->appendLineNumbersTo($table);
     }
-    $this->manipulateHead($table);
-    $this->manipulateFooter($table);
+    if ($table->thead() !== null) {
+      $this->manipulateHeaderAndFooter($table->thead());
+    }
+    if ($table->tfoot() !== null) {
+      $this->manipulateHeaderAndFooter($table->tfoot());
+    }
     return $table;
   }
 

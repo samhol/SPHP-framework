@@ -18,7 +18,7 @@ namespace Sphp\Html\Tables;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Labeller {
+class Labeller implements TableFilter {
 
   private $labels = [];
 
@@ -30,6 +30,7 @@ class Labeller {
   public function __construct(array $labels = []) {
     $this->setLabels($labels);
   }
+
   public function setLabels(array $labels) {
     $this->labels = $labels;
     return $this;
@@ -49,12 +50,8 @@ class Labeller {
     }
   }
 
-  /**
-   * 
-   * @param  Table $table
-   * @return Table
-   */
-  public function insertLabelsTo(Table $table): Table {
+  public function useInTable(Table $table): Table {
+    $table->addCssClass('responsive-card-table');
     foreach ($table->tbody() as $row) {
       $this->insertLabelsToRow($row);
     }

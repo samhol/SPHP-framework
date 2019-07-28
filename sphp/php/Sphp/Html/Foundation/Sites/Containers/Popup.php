@@ -31,8 +31,8 @@ use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
  */
 class Popup extends AbstractJavaScriptComponent {
 
-  
   private $content;
+
   /**
    * @var CloseButton
    */
@@ -62,6 +62,14 @@ class Popup extends AbstractJavaScriptComponent {
     $this->closeButton = new CloseButton();
     $this->layoutManager = new PopupLayoutManager($this);
     $this->content = new PlainContainer($content);
+  }
+
+  /**
+   * 
+   * @return PlainContainer
+   */
+  public function getContent(): PlainContainer {
+    return $this->content;
   }
 
   /**

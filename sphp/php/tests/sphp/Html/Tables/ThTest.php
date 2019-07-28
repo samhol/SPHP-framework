@@ -18,7 +18,7 @@ class ThTest extends ContainerCellTests {
   protected function setUp(): void {
     $this->cell = new Th();
   }
-  
+
   /**
    * @return array
    */
@@ -30,13 +30,16 @@ class ThTest extends ContainerCellTests {
         ['colgroup'],
     ];
   }
+
   /**
    * @dataProvider scopeData
    */
   public function testScope(string $scope = null) {
-    $this->cell->setScope($scope);    
+    $this->cell->setScope($scope);
     $this->assertSame($scope, $this->cell->getScope());
-    $this->assertSame('<th scope="'.$scope.'">', $this->cell->getOpeningTag());
+    $this->assertSame('<th scope="' . $scope . '">', $this->cell->getOpeningTag());
+    $th = new Th('foo', 1, 1, $scope);
+    $this->assertSame($scope, $th->getScope());
   }
 
 }

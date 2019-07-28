@@ -16,7 +16,6 @@ use Traversable;
 use Sphp\Html\Iterator;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Exceptions\OutOfBoundsException;
 
 /**
  * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
@@ -25,7 +24,7 @@ use Sphp\Exceptions\OutOfBoundsException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TableRowContainer extends AbstractComponent implements IteratorAggregate, TraversableContent, TableContent {
+abstract class RowContainer extends AbstractComponent implements IteratorAggregate, TraversableContent, TableContent {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -109,15 +108,14 @@ class TableRowContainer extends AbstractComponent implements IteratorAggregate, 
    * 
    * **Important:** Rows are numbered sequentially starting from 0
    * 
-   * @param  int $number
-   * @return Row the row at given position
-   * @throws OutOfBoundsException
+   * @param  int $position
+   * @return Row|null the row at given position
    */
-  public function getRow(int $number): Row {
-    if (array_key_exists($number, $this->rows)) {
-      return $this->rows[$number];
+  public function getRow(int $position): ?Row {
+    if (array_key_exists($position, $this->rows)) {
+      return $this->rows[$position];
     } else {
-      throw new OutOfBoundsException("Row $number does not exists");
+      return null;
     }
   }
 

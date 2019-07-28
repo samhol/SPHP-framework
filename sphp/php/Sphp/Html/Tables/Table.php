@@ -94,33 +94,42 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * Sets the caption text of the table
    * 
    * @param  Caption|string|null $caption the caption object or the content of the caption
-   * @return Caption table caption component
+   * @return $this for a fluent interface
    */
-  public function setCaption($caption): Caption {
+  public function setCaption($caption) {
     if (!$caption instanceof Caption && $caption !== null) {
       $caption = new Caption($caption);
     }
     $this->caption = $caption;
+    return $this;
+  }
+
+  /**
+   * Sets the caption text of the table
+   * 
+   * @return Caption|null table caption component
+   */
+  public function caption(): ?Caption {
     return $this->caption;
   }
 
   /**
-   * Sets (replaces) a part of a table with the given {@link TableContentInterface} component
+   * Sets (replaces) a part of a table with the given component
    *
-   * @param TableContent $content the given part of a table
+   * @param  TableContent $content the given part of a table
    * @return $this for a fluent interface
    */
   public function setContent(TableContent $content) {
     if ($content instanceof Caption) {
-      $this->getInnerContainer()['caption'] = $content;
+      $this->setCaption($content);
     } else if ($content instanceof Thead) {
-      $this->thead = $content;
+      $this->setThead($content);
     } else if ($content instanceof Tbody) {
-      $this->tbody = $content;
+      $this->setTbody($content);
     } else if ($content instanceof Tfoot) {
-      $this->tfoot = $content;
-    } else if ($content instanceof Tr || $content instanceof AbstractCell) {
-      $this->tbody->append($content);
+      $this->setTfoot($content);
+    } else if ($content instanceof Row || $content instanceof Cell) {
+      $this->useTbody()->tbody()->append($content);
     }
     return $this;
   }
@@ -129,11 +138,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * Sets the header component
    * 
    * @param  Thead|null $thead
-   * @return Thead|null table header component or null if none set
+   * @return $this for a fluent interface
    */
-  public function setThead(Thead $thead = null): ?Thead {
+  public function setThead(Thead $thead = null) {
     $this->thead = $thead;
-    return $this->thead;
+    return $this;
   }
 
   /**
@@ -185,6 +194,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Sets the table body component
    * 
+   * @param  Tbody|null $tbody
    * @return $this for a fluent interface
    */
   public function setTbody(Tbody $tbody = null) {
@@ -196,11 +206,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    * Sets the footer component
    * 
    * @param  Tfoot|null $tfoot
-   * @return Tfoot|null for a fluent interface
+   * @return $this for a fluent interface
    */
-  public function setTfoot(Tfoot $tfoot = null): ?Tfoot {
+  public function setTfoot(Tfoot $tfoot = null) {
     $this->tfoot = $tfoot;
-    return $this->tfoot;
+    return $this;
   }
 
   /**
@@ -240,14 +250,14 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    */
   public function count(int $mode = self::COUNT_ROWS): int {
     $num = 0;
-    if ($this->thead !== null) {
-      $num += $this->thead->count($mode);
+    if ($this->thead() !== null) {
+      $num += $this->thead()->count($mode);
     }
-    if ($this->tbody !== null) {
-      $num += $this->tbody->count($mode);
+    if ($this->tbody() !== null) {
+      $num += $this->tbody()->count($mode);
     }
-    if ($this->tfoot !== null) {
-      $num += $this->tfoot->count($mode);
+    if ($this->tfoot() !== null) {
+      $num += $this->tfoot()->count($mode);
     }
     return $num;
   }

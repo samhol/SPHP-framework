@@ -75,4 +75,17 @@ class TrTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame($data, $th->offsetGet(0));
   }
 
+  public function testIteratorAndCounting() {
+    $this->assertNull($this->row->getCell(0));
+    $this->row->appendThs(range(1, 4));
+    $this->assertNull($this->row->getCell(4));
+    $this->assertCount(4, $this->row);
+    foreach ($this->row as $key => $th) {
+      $this->assertInstanceOf(Th::class, $th);
+      $val = (1 + $key);
+      $this->assertSame("<th>$val</th>", (string) $this->row->getCell($key));
+      $this->assertSame("<th>$val</th>", (string) $th);
+    }
+  }
+
 }

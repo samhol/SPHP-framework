@@ -75,8 +75,9 @@ class SyntaxHighlightingModalBuilder extends AbstractContent implements SyntaxHi
    */
   public function buildModal(): Modal {
     $popup = new Popup();
-    $popup->addCssClass('sphp-syntax-highlighting-modal')->append($this->title);
-    $popup->append($this->hl);
+    $popup->addCssClass('sphp-syntax-highlighting-modal');
+    $popup->getContent()->append($this->title);
+    $popup->getContent()->append($this->hl);
     $modal = new Modal($this->trigger, $popup);
     return $modal;
   }

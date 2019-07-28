@@ -46,6 +46,9 @@
     <testsuite name="html-forms">
       <directory>./sphp/php/tests/sphp/Html/Forms</directory>
     </testsuite>
+    <testsuite name="html-tables">
+      <directory>./sphp/php/tests/sphp/Html/Tables</directory>
+    </testsuite>
     <testsuite name="foundation">
       <directory>./sphp/php/tests/sphp/Html/Foundation</directory>
     </testsuite>

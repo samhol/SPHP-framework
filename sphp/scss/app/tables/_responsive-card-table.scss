@@ -11,9 +11,8 @@
   $responsive-card-table-border: 1px solid $black;
   $responsive-card-table-stack-point: 640px;
   $responsive-card-table-label-bg: $light-gray;
-  .responsive-card-table {
+  table.responsive-card-table {
     border-collapse: collapse;
-
     &.unstriped tbody {
       background-color: transparent;
     }
@@ -22,17 +21,15 @@
       background-color: $responsive-card-table-label-bg;
     }
 
-    tr,
-    th,
-    td {
+    tr, th, td {
       border: $responsive-card-table-border;
     }
 
     @include breakpoint(medium down) {
-      thead tr {
+      thead tr, tfoot tr {
         position: absolute;
         top: -9999em;
-        left: -9999em;
+        left: -9999em; 
       }
 
       tr {

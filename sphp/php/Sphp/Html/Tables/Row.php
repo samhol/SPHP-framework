@@ -91,9 +91,8 @@ interface Row extends TableContent, TraversableContent {
    * 
    * **Important:** Cells are numbered sequentially starting from 0
    * 
-   * @param  int $number
+   * @param  int $position
    * @return Row the row at given position
-   * @throws OutOfBoundsException
    */
-  public function getCell(int $number): Cell;
+  public function getCell(int $position): ?Cell;
 }
