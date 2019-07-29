@@ -143,7 +143,6 @@ class LineNumberer implements TableFilter {
   protected function generateLineNumberCell(int $number): Th {
     $th = new Th($number . '.');
     $th->setScope('row');
-    $th->setAttribute('data-label', $this->getLabel());
     return $th;
   }
 
