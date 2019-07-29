@@ -32,7 +32,7 @@ class LineNumberer implements TableFilter {
   /**
    * @var bool 
    */
-  private $left = false;
+  private $left = true;
 
   /**
    * @var bool 
@@ -48,24 +48,6 @@ class LineNumberer implements TableFilter {
   public function __construct(int $start = 1, string $label = '#') {
     $this->setFirstLineNumber($start);
     $this->setLabel($label);
-  }
-
-  /**
-   * Checks whether the line numbers are prepended 
-   * 
-   * @return bool true if line numbers are prepended to rows, false otherwise
-   */
-  public function prependsLineNumbers(): bool {
-    return $this->left;
-  }
-
-  /**
-   * Checks whether the line numbers are appended 
-   * 
-   * @return bool true if line numbers are appended to rows, false otherwise
-   */
-  public function appendsLineNumbers(): bool {
-    return $this->right;
   }
 
   /**
@@ -147,10 +129,10 @@ class LineNumberer implements TableFilter {
     $first = $rowContainer->getRow(0);
     if ($first !== null) {
       $rowSpan = $rowContainer->count();
-      if ($this->prependsLineNumbers()) {
+      if ($this->left) {
         $first->prepend($this->generateTh($rowSpan));
       }
-      if ($this->appendsLineNumbers()) {
+      if ($this->right) {
         $first->append($this->generateTh($rowSpan));
       }
       $result = true;
@@ -171,11 +153,13 @@ class LineNumberer implements TableFilter {
    * @return Table
    */
   public function appendLineNumbersTo(Table $table): Table {
-    $tbody = $table->tbody();
-    $lineNumber = $this->getFirstLineNumber();
-    foreach ($tbody as $row) {
-      if ($row instanceof Row) {
-        $row->append($this->generateLineNumberCell($lineNumber++));
+    if ($this->right) {
+      $tbody = $table->tbody();
+      $lineNumber = $this->getFirstLineNumber();
+      foreach ($tbody as $row) {
+        if ($row instanceof Row) {
+          $row->append($this->generateLineNumberCell($lineNumber++));
+        }
       }
     }
     return $table;
@@ -187,12 +171,14 @@ class LineNumberer implements TableFilter {
    * @return Table
    */
   public function prependLineNumbersTo(Table $table): Table {
-    $tbody = $table->tbody();
-    if ($tbody !== null) {
-      $lineNumber = $this->getStart();
-      foreach ($tbody as $row) {
-        if ($row instanceof Row) {
-          $row->prepend($this->generateLineNumberCell($lineNumber++));
+    if ($this->left) {
+      $tbody = $table->tbody();
+      if ($tbody !== null) {
+        $lineNumber = $this->getStart();
+        foreach ($tbody as $row) {
+          if ($row instanceof Row) {
+            $row->prepend($this->generateLineNumberCell($lineNumber++));
+          }
         }
       }
     }
@@ -200,10 +186,10 @@ class LineNumberer implements TableFilter {
   }
 
   public function useInTable(Table $table): Table {
-    if ($this->prependsLineNumbers()) {
+    if ($this->left) {
       $this->prependLineNumbersTo($table);
     }
-    if ($this->appendsLineNumbers()) {
+    if ($this->right) {
       $this->appendLineNumbersTo($table);
     }
     if ($table->thead() !== null) {

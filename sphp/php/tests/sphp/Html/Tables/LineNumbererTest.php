@@ -50,16 +50,30 @@ class LineNumbererTest extends TestCase {
     $this->assertSame($numberer, $numberer->setLabel('¤'));
     $this->assertSame('¤', $numberer->getLabel());
   }
-  
+
   public function getTable() {
-    
+    $bodyData = [
+        range(1, 3),
+        range('a', 'c'),
+    ];
+    $builder = new TableBuilder();
+    $builder->setTheadData(range('a', 'c'));
+    $builder->setTbodyData($bodyData);
+    $table = $builder->buildTable();
+    return $table;
   }
+
   /**
    * @depends testConstructor
    */
   public function testTableManipulation() {
-    
     $numberer = new LineNumberer();
+    $table = $this->getTable();
+    $numberer->useInTable($table);
+    foreach ($table->tbody() as $id => $row) {
+      $num = $id + 1;
+      $this->assertSame("<th scope=\"row\">$num</th>", (string) $row->getCell(0));
+    }
     $this->assertSame($numberer, $numberer->setFirstLineNumber(10));
     $this->assertSame(10, $numberer->getFirstLineNumber());
     $this->assertSame($numberer, $numberer->setLabel('¤'));
