@@ -60,7 +60,7 @@ class TableTest extends TestCase {
     $thead = new Thead();
     $thead->appendHeaderRow(['a']);
     $this->table->setContent($thead);
-    $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th></tr></thead></table>');
+    $this->assertSame("$this->table", "<table>{$caption}{$thead}</table>");
     $tbody = new Tbody();
     $tbody->appendBodyRow(['b']);
     $this->table->setContent($tbody);
@@ -69,7 +69,7 @@ class TableTest extends TestCase {
     $tfoot->appendBodyRow(['c']);
     $this->table->setContent($tfoot);
     $this->assertCount(3, $this->table);
-    $this->assertSame("$this->table", '<table><caption>caption</caption><thead><tr><th>a</th></tr></thead><tbody><tr><td>b</td></tr></tbody><tfoot><tr><td>c</td></tr></tfoot></table>');
+    $this->assertSame("$this->table", "<table>{$caption}{$thead}{$tbody}{$tfoot}</table>");
   }
 
   public function testTheadMethods() {

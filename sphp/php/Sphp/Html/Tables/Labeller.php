@@ -41,7 +41,7 @@ class Labeller implements TableFilter {
     return $this;
   }
 
-  protected function insertLabelsToRow(Row $row) {
+  private function insertLabelsToRow(Row $row) {
     foreach ($this->labels as $column => $label) {
       $cell = $row->getCell($column);
       if ($cell instanceof \Sphp\Html\Component) {

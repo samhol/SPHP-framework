@@ -40,8 +40,23 @@ class TableBuilderTest extends TestCase {
     $table = new Table();
     $this->assertSame($table, $tableBuilder->buildTbody($table));
     $this->assertCount(1, $table->tbody());
-    foreach ($table->tbody() as $row) {
-      
+    foreach ($table->tbody() as $index => $row) {
+      $this->assertSame($table->tbody()->getRow($index), $row);
+    }
+  }
+
+  /**
+   * @depends testConstructor
+   * @param  TableBuilder $tableBuilder
+   */
+  public function testTfootDataManipulation(TableBuilder $tableBuilder) {
+    $this->assertSame($tableBuilder, $tableBuilder->setTfootData([['a', 'b']]));
+    $this->assertEquals([['a', 'b']], $tableBuilder->getTfootData());
+    $table = new Table();
+    $this->assertSame($table, $tableBuilder->buildFoot($table));
+    $this->assertCount(1, $table->tfoot());
+    foreach ($table->tfoot() as $index => $row) {
+      $this->assertSame($table->tfoot()->getRow($index), $row);
     }
   }
 

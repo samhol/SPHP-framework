@@ -27,4 +27,22 @@ class TdTest extends ContainerCellTests {
     $this->cell = new Td();
   }
 
+  public function tdData(): array {
+    $data = [];
+    $data[] = ['foo', 1, 2];
+    $data[] = ['foo', 2, 3];
+    return $data;
+  }
+
+  /**
+   * @dataProvider tdData
+   * @param mixed $data
+   * @param int $colspan
+   * @param int $rowspan
+   */
+  public function testOutput($data, int $colspan, int $rowspan) {
+    $td = new Td($data, $colspan, $rowspan);
+    $this->assertSame("<td {$td->attributes()}>{$data}</td>", (string) $td);
+  }
+
 }

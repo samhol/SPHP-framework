@@ -70,6 +70,7 @@ class LineNumbererTest extends TestCase {
     $numberer = new LineNumberer();
     $table = $this->getTable();
     $numberer->useInTable($table);
+    $this->assertSame("<th scope=\"col\">#</th>", (string) $table->thead()->getRow(0)->getCell(0));
     foreach ($table->tbody() as $id => $row) {
       $num = $id + 1;
       $this->assertSame("<th scope=\"row\">$num.</th>", (string) $row->getCell(0));

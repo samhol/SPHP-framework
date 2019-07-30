@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractFlowContainerTest extends TestCase {
 
-  public function testPrintHtml() {
+  public function testDataTypes() {
     $mock = $this->getMockForAbstractClass(AbstractFlowContainer::class, ['foo']);
     $this->assertInstanceOf(Headings\H1::class, $mock->appendH1());
     $this->assertInstanceOf(Headings\H2::class, $mock->appendH2());
