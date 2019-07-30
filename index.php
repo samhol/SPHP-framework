@@ -23,16 +23,15 @@ if ($outputCache->start("$cacheSuffix-page") === false) {
   echo '</div></div></div>';
   include('manual/templates/footer/footer.php');
   include('manual/templates/backToTopButton.php');
-  
-$cookieBanner = new Sphp\Html\Apps\CookieBanner();
-$cookieBanner->setAcceptButton('<i class="far fa-check-circle fa-"></i> Accept cookies')->addCssClass('radius');
-$cookieBanner->contentContainer()->appendMd('**SPHPlayground** uses cookies. By continuing we assume your 
+
+  $cookieBanner = new Sphp\Html\Apps\CookieBanner();
+  $cookieBanner->setAcceptButton('<i class="far fa-check-circle fa-"></i> Accept cookies')->addCssClass('radius');
+  $cookieBanner->contentContainer()->appendMd('**SPHPlayground** uses cookies. By continuing we assume your 
       permission to deploy cookies, as detailed in our  [privacy policy](/manual/privacy_policy.php).');
-echo $cookieBanner;
+  echo $cookieBanner;
   $outputCache->end();
 }
 
-use Sphp\Html\Document;
 use Sphp\Stdlib\StopWatch;
 
 $mem = number_format(memory_get_usage(true) / 1048576, 2);
@@ -42,7 +41,11 @@ $phpScript[] = "var php={version: '" . phpversion() . "'};";
 $phpScript[] = "php.memory=" . $mem . ";";
 $phpScript[] = "php.execTime=" . $time . ";";
 
+use Sphp\Exceptions\RuntimeException;
 
-Document::html()->scripts()->append($phpScript);
-
-Document::html()->documentClose();
+if ($html instanceof \Sphp\Html\Html) {
+  $html->scripts()->append($phpScript);
+  $html->documentClose();
+} else {
+  throw new RuntimeException('Document is undefined');
+}

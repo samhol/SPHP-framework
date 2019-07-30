@@ -1,10 +1,10 @@
 <?php
 
 namespace Sphp\Html;
-
-$html = Document::html();
-$head = Document::head();
-$body = Document::body();
+$doc = new Doc();
+$html = $doc->insert()->html();
+$head = $html->head();
+$body = $html->body();
 
 $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
 

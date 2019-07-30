@@ -79,17 +79,6 @@ class Head extends AbstractComponent implements \IteratorAggregate, NonVisualCon
   }
 
   /**
-   * Removes the default URL and a default target for all links on a page
-   *
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
-   */
-  public function unsetBaseAddress() {
-    $this->base = null;
-    return $this;
-  }
-
-  /**
    * Adds content component to the object
    *
    * @param  HeadContent $component content the component to add
