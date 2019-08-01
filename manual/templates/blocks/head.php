@@ -1,16 +1,15 @@
 <?php
 
 namespace Sphp\Html;
-$doc = new Doc();
-$html = $doc->insert()->html();
-$head = $html->head();
-$body = $html->body();
 
 $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
 
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 $title = $titleGenerator->createTitleFor(trim($redirect, '/'));
-$html->setLanguage('en');
+$doc = SphpDocument::create($title, 'UTF-8', 'en');
+$html = $doc->html();
+$head = $doc->head();
+$body = $doc->body();
 
 use Sphp\Html\Head\Meta;
 use Sphp\Html\Head\Link;
