@@ -40,7 +40,7 @@ class HtmlTest extends TestCase {
 
   public function testConstructor() {
     $c = new Html();
-    $this->assertSame('<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body></body></html>', (string) $c);
+    $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $c);
   }
   
   
