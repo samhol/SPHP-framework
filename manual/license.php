@@ -7,15 +7,16 @@ require_once('settings.php');
 use Sphp\Html\Head\Link;
 use Sphp\Html\Head\Meta;
 
-$html = Document::html();
-$head = Document::head();
-$body = Document::body();
+$doc = SphpDocument::create();
+$html = $doc->html();
+$head = $doc->html()->head();
+$body = $doc->html()->body();
 
-$html->setLanguage('en');
+$doc->setLanguage('en');
 
 $head->set(Meta::charset('UTF-8'));
 $head->set(Meta::viewport('width=device-width, initial-scale=1.0'));
-$head->setDocumentTitle('License | SPHPlayground framework');
+$doc->setDocumentTitle('License | SPHPlayground framework');
 
 $head->set(Link::stylesheet('/manual/css/license/license.css'));
 //$head->setCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css');
@@ -33,9 +34,9 @@ $head->set(Meta::applicationName('SPHPlayground Framework'));
 $head->set(Meta::keywords(['MIT', 'license', 'SPHPlayground']));
 $head->set(Meta::description('License for SPHPlayground framework'));
 
-$html->useFontAwesome();
-Document::body()->addCssClass('mit-license');
-Document::html()->startBody();
+$doc->useFontAwesome();
+$body->addCssClass('mit-license');
+$html->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\DivGrid;
 
@@ -78,4 +79,4 @@ $main->append($linkBar);
 $grid = DivGrid::from([$main]);
 echo $grid;
 
-echo $html->getDocumentClose();
+echo $doc->getDocumentClose();

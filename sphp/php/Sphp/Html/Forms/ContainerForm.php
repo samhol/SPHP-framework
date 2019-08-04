@@ -10,9 +10,12 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\ContainerTag;
+use ArrayAccess;
+use Sphp\Html\Container;
+use Sphp\Html\PlainContainer;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\TraversableContent;
+use IteratorAggregate;
 
 /**
  * Implements an HTML &lt;form&gt; tag
@@ -26,7 +29,12 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ContainerForm extends ContainerTag implements TraversableForm {
+class ContainerForm extends AbstractForm implements IteratorAggregate, TraversableForm, ArrayAccess {
+
+  /**
+   * @var PlainContainer
+   */
+  private $container;
 
   /**
    * Constructor
@@ -48,7 +56,7 @@ class ContainerForm extends ContainerTag implements TraversableForm {
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct(string $action = null, string $method = null, $content = null) {
-    parent::__construct('form');
+    parent::__construct();
     if ($content !== null) {
       $this->append($content);
     }
@@ -58,67 +66,16 @@ class ContainerForm extends ContainerTag implements TraversableForm {
     if ($method !== null) {
       $this->setMethod($method);
     }
+    $this->container = new PlainContainer();
   }
 
-  public function setMethod(string $method = null) {
-    $this->attributes()->setAttribute('method', $method);
+  public function content(): \Sphp\Html\Container {
+    return $this->container;
+  }
+
+  public function append($value) {
+    $this->content()->append($value);
     return $this;
-  }
-
-  public function getMethod(): ?string {
-    return $this->attributes()->getValue("method");
-  }
-
-  public function setAction(string $url = null) {
-    $this->attributes()->setAttribute('action', $url);
-    return $this;
-  }
-
-  public function getAction(): ?string {
-    return $this->attributes()->getValue('action');
-  }
-
-  public function setEnctype(string $enctype = null) {
-    $this->attributes()->setAttribute('enctype', $enctype);
-    return $this;
-  }
-
-  public function getEnctype(): ?string {
-    return $this->attributes()->getValue('enctype');
-  }
-
-  public function setName(string $name = null) {
-    $this->attributes()->setAttribute('name', $name);
-    return $this;
-  }
-
-  public function getName(): ?string {
-    return $this->attributes()->getValue('name');
-  }
-
-  public function autocomplete(bool $allow = true) {
-    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
-    return $this;
-  }
-
-  public function useValidation(bool $validate = true) {
-    $this->attributes()->setAttribute('novalidate', !$validate);
-    return $this;
-  }
-
-  public function setTarget(string $target = null) {
-    $this->attributes()->setAttribute('target', $target);
-    return $this;
-  }
-
-  public function getTarget(): ?string {
-    return $this->attributes()->getValue('target');
-  }
-
-  public function appendHiddenVariable($name, $value): HiddenInput {
-    $input = new HiddenInput($name, $value);
-    $this->append($input);
-    return $input;
   }
 
   public function getNamedInputComponents(): TraversableContent {
@@ -128,11 +85,44 @@ class ContainerForm extends ContainerTag implements TraversableForm {
     return $this->getComponentsBy($search);
   }
 
-  public function getHiddenInputs(): Inputs\HiddenInputs {
-    $search = function($element) {
-      return $element instanceof HiddenInput;
-    };
-    return $this->getComponentsBy($search);
+  public function contentToString(): string {
+    return $this->container . $this->getHiddenInputs();
+  }
+
+  public function count(): int {
+    
+  }
+
+  public function getComponentsBy(callable $rules): TraversableContent {
+    
+  }
+
+  public function getComponentsByObjectType($typeName): TraversableContent {
+    
+  }
+
+  public function toArray(): array {
+    
+  }
+
+  public function getIterator(): \Traversable {
+    return $this->container;
+  }
+
+  public function offsetExists($offset): bool {
+    return $this->container->offsetExists($offset);
+  }
+
+  public function offsetGet($offset) {
+    return $this->container->offsetGet($offset);
+  }
+
+  public function offsetSet($offset, $value): void {
+    $this->container->offsetSet($offset, $value);
+  }
+
+  public function offsetUnset($offset): void {
+    $this->container->offsetUnset($offset);
   }
 
 }

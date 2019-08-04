@@ -36,7 +36,7 @@ class TagGroupTable extends AbstractContent {
   public function generateTagTable(): Table {
     $table = (new Table())
             ->addCssClass('factory-table', 'responsive-card-table', 'unstriped');
-    $table->useThead(true)
+    $table->useThead(true)->thead()
             ->appendHeaderRow(['HTML Tag', 'Factory call', 'Object type']);
     $body = $table->useTbody(true)->tbody();
     foreach ($this->data as $info) {

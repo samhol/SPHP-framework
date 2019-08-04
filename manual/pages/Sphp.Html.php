@@ -6,7 +6,7 @@ use Sphp\Manual;
 
 $abstractTag = Manual\api()->classLinker(AbstractTag::class);
 $ns = Manual\api()->namespaceLink(__NAMESPACE__);
-$documentLink = Manual\api()->classLinker(Document::class);
+$documentLink = Manual\api()->classLinker(SphpDocument::class);
 $contentInterface = Manual\api()->classLinker(Content::class);
 $exeption = Manual\php()->classLinker(\Exception::class);
 $component = Manual\api()->classLinker(Component::class);

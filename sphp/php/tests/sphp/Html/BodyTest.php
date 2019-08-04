@@ -90,4 +90,12 @@ class BodyTest extends TestCase {
     $this->assertSame((string) $this->body, (string) $cloned);
   }
 
+  public function testTraversing(): void {
+    $content = new Div();
+    $this->body->offsetSet(0, $content);
+    foreach ($this->body as $id => $item) {
+      $this->assertSame($content, $item);
+    }
+  }
+
 }

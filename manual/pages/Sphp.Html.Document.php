@@ -4,7 +4,7 @@ namespace Sphp\Html;
 
 use Sphp\Manual;
 
-$documentClass = Manual\api()->classLinker(Document::class);
+$documentClass = Manual\api()->classLinker(SphpDocument::class);
 $htmlClass = Manual\api()->classLinker(Html::class);
 Manual\md(<<<MD
 ##Component factories 

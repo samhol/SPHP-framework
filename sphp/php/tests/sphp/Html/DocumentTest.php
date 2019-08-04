@@ -11,7 +11,6 @@
 namespace Sphp\Html;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Head\Head;
 
 /**
  * Implementation of HtmlTest
@@ -21,19 +20,14 @@ use Sphp\Html\Head\Head;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class HtmlTest extends TestCase {
-
-  /**
-   * @var Html 
-   */
-  private $html;
+class DocumentTest extends TestCase {
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp(): void {
-    $this->html = new Html();
+    // $this->link = new LinkTag();
   }
 
   /**
@@ -41,31 +35,28 @@ class HtmlTest extends TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown(): void {
-    unset($this->html);
+    //unset($this->link);
   }
 
   public function testConstructor() {
-    $c = new Html();
-    $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $c);
-  }
-
-  public function testClone() {
+    $defaultDoc = new SphpDocument();
+    $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $defaultDoc);
     $html = new Html();
-    $cloned = clone $html;
-    $this->assertNotSame($html, $cloned);
-    $this->assertNotSame($cloned->head(), $html->head());
-    $this->assertNotSame($cloned->body(), $html->body());
+    $doc = new SphpDocument($html);
+    $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $defaultDoc);
+    $this->assertSame($html, $doc->html());
+    return $doc;
   }
 
-  public function testTraversing(): void {
-    $content = new Div();
-    $this->html->body()->offsetSet(0, $content);
-    $array = iterator_to_array($this->html);
-    $this->assertInstanceOf(Head::class, $array[0]);
-    $this->assertInstanceOf(Body::class, $array[1]);
-    foreach ($this->html as $id => $item) {
-      $this->assertSame($array[$id], $item);
-    }
+  /**
+   * @depends testConstructor
+   * @param SphpDocument $doc
+   */
+  public function testClone(SphpDocument $doc) {
+    $cloned = clone $doc;
+    $this->assertNotSame($doc, $cloned);
+    $this->assertNotSame($doc->head(), $cloned->head());
+    $this->assertNotSame($doc->body(), $cloned->body());
   }
 
 }

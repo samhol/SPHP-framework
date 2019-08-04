@@ -44,7 +44,7 @@ $phpScript[] = "php.execTime=" . $time . ";";
 use Sphp\Exceptions\RuntimeException;
 
 if ($html instanceof \Sphp\Html\Html) {
-  $html->scripts()->append($phpScript);
+  $html->body()->scripts()->append($phpScript);
   $html->documentClose();
 } else {
   throw new RuntimeException('Document is undefined');

@@ -36,17 +36,17 @@ $head->set(Meta::keywords(['php', 'scss', 'css', 'html', 'html5', 'framework',
             'references', 'examples', 'source code', 'demos', 'tips']));
 $head->set(Meta::description('SPHP framework for web developement'));
 
-$html->useFontAwesome('9e1f35bc72');
-$html->enableSPHP();
+$doc->useFontAwesome('9e1f35bc72');
+$doc->enableSPHP();
 if ($redirect === '/Sphp.Html.Media.Multimedia') {
-  $html->useVideoJS();
+  $doc->useVideoJS();
 }
 $body->addCssClass('manual');
-$html->scripts()->appendSrc('/manual/js/formTools.js');
-$html->scripts()->appendSrc('/manual/js/techs.js');
-$html->scripts()->appendSrc('/sphp/javascript/dist/ss360.min.js');
+$body->scripts()->appendSrc('/manual/js/formTools.js');
+$body->scripts()->appendSrc('/manual/js/techs.js');
+$body->scripts()->appendSrc('/sphp/javascript/dist/ss360.min.js');
 //$html->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.mjs');
-$html->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.min.js');
+$body->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.min.js');
 $html->startBody();
 
 

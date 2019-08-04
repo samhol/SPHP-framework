@@ -5,7 +5,7 @@ namespace Sphp\Html;
 $contentParserInterface = \Sphp\Manual\api()->classLinker(ContentParser::class);
 $contentParsingTrait = \Sphp\Manual\api()->classLinker(ContentParsingTrait::class);
 $ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
-$documentLink = \Sphp\Manual\api()->classLinker(Document::class);
+$documentLink = \Sphp\Manual\api()->classLinker(SphpDocument::class);
 $contentInterface = \Sphp\Manual\api()->classLinker(Content::class);
 $exeption = \Sphp\Manual\php()->classLinker(\Exception::class);
 $component = \Sphp\Manual\api()->classLinker(Component::class);

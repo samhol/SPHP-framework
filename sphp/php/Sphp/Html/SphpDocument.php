@@ -10,13 +10,10 @@
 
 namespace Sphp\Html;
 
-use IteratorAggregate;
 use Sphp\Html\Head\Head;
-use Sphp\Html\Scripts\ScriptsContainer;
 use Sphp\Html\Scripts\ScriptSrc;
 use Sphp\Html\Head\Meta;
 use Sphp\Html\Head\Link;
-use Traversable;
 
 /**
  * Implements an HTML &lt;html&gt; tag
@@ -40,7 +37,7 @@ class SphpDocument extends AbstractContent {
    * @param Html $html
    */
   public function __construct(Html $html = null) {
-    if ($html !== null) {
+    if ($html === null) {
       $html = new Html();
     }
     $this->html = $html;
@@ -157,6 +154,45 @@ class SphpDocument extends AbstractContent {
 
   public function getHtml(): string {
     return $this->html()->getHtml();
+  }
+
+  /**
+   * 
+   * @return string
+   */
+  public function getBodyStart(): string {
+    $output = $this->html()->getOpeningTag();
+    $output .= $this->head()->getHtml();
+    $output .= $this->body()->getOpeningTag();
+    return $output;
+  }
+
+  /**
+   * 
+   * @return $this for a fluent interface
+   */
+  public function startBody() {
+    echo $this->getBodyStart();
+    return $this;
+  }
+
+  /**
+   * Returns the document end
+   * 
+   * @return string the document end
+   */
+  public function getDocumentClose(): string {
+    return $this->body()->close() . $this->getClosingTag();
+  }
+
+  /**
+   * Prints the component as HTML markup string
+   * 
+   * @return $this for a fluent interface
+   */
+  public function documentClose() {
+    echo $this->getDocumentClose();
+    return $this;
   }
 
   /**

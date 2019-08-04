@@ -184,9 +184,9 @@ if (!window.console.log) {
     $('div[data-switch-board]').switchBoard();
     $('.sphp.cookie-banner').cookieBanner();
     // $('.sphp-back-to-top-button').backToTopBtn();
-    // $("input[data-anytime]").SphpAnyTimeInput();
-    // $("[data-sphp-ion-slider]").ionRangeSlider({});
-    //$("[data-reveal]").sphpPopup();
+    $("input[data-anytime]").SphpAnyTimeInput();
+    $("[data-sphp-ion-slider]").ionRangeSlider({});
+    //$("[data-reveal]").sphpPopup(); 
     $('[data-slick]').slick();
     $('[data-accordion]').on('down.zf.accordion', function () {
       var $accordion = $(this), $sliders;

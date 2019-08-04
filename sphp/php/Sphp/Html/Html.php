@@ -27,7 +27,7 @@ use Traversable;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Html extends AbstractComponent implements IteratorAggregate, TraversableContent, ContentParser {
+class Html extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use TraversableTrait;
 
@@ -96,17 +96,6 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   }
 
   /**
-   * Sets the title of the html page
-   *
-   * @param  string|Title $title the title of the html page
-   * @return $this for a fluent interface
-   */
-  public function setDocumentTitle($title) {
-    $this->head->setDocumentTitle($title);
-    return $this;
-  }
-
-  /**
    * Sets the language of the document 
    * 
    * **NOTE:** Sets the value of the `lang` attribute
@@ -120,60 +109,6 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
   public function setLanguage(string $language = null) {
     $this->attributes()->setAttribute('lang', $language);
     return $this;
-  }
-
-  /**
-   * 
-   * @param  string $viewport
-   * @return $this for a fluent interface
-   */
-  public function setViewport(string $viewport = 'width=device-width, initial-scale=1.0') {
-    $this->head()->set(Meta::viewport($viewport));
-    return $this;
-  }
-
-  /**
-   * Sets up the Font Awesome icons
-   *
-   * @return $this for a fluent interface
-   * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
-   */
-  public function useFontAwesome(string $id = null) {
-    $this->head()->set((new ScriptSrc("https://kit.fontawesome.com/$id.js"))
-                    ->setDefer(true));
-    return $this;
-  }
-
-  /**
-   * Sets the required CSS and JavaScript files for Video.js
-   *
-   * @return $this for a fluent interface
-   * @link   http://www.videojs.com/ Video.js
-   */
-  public function useVideoJS() {
-    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.3.0/video-js.css'));
-    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.3.0/video.js');
-    return $this;
-  }
-
-  /**
-   * Sets up the SPHP framework related JavaScript files to the end of the body
-   *
-   * @return $this for a fluent interface
-   */
-  public function enableSPHP() {
-    $this->body()->scripts()->appendSrc('/sphp/javascript/dist/all.js');
-    return $this;
-  }
-
-  /**
-   * Returns and optionally sets the inner script container
-   * 
-   * @param  ScriptsContainer|null $c optional new script container to set
-   * @return ScriptsContainer the script container
-   */
-  public function scripts(ScriptsContainer $c = null): ScriptsContainer {
-    return $this->body->scripts($c);
   }
 
   public function getOpeningTag(): string {
@@ -225,36 +160,12 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->body->getIterator();
+    $it = new Iterator([$this->head(), $this->body()]);
+    return $it;
   }
 
   public function contentToString(): string {
-    return $this->head . $this->body;
-  }
-
-  public function append(...$content) {
-    $this->body->append($content);
-    return $this;
-  }
-
-  public function appendMd(string $md) {
-    $this->body->appendMd($md);
-    return $this;
-  }
-
-  public function appendMdFile(string $path) {
-    $this->body->appendMdFile($path);
-    return $this;
-  }
-
-  public function appendPhpFile(string $path) {
-    $this->body->appendPhpFile($path);
-    return $this;
-  }
-
-  public function appendRawFile(string $path) {
-    $this->body->appendRawFile($path);
-    return $this;
+    return $this->head() . $this->body();
   }
 
 }

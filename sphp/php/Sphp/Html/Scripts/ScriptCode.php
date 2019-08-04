@@ -27,7 +27,6 @@ use Sphp\Html\ContainerTag;
  */
 class ScriptCode extends ContainerTag implements ScriptTag {
 
-
   /**
    * Constructor
    * 
@@ -40,6 +39,7 @@ class ScriptCode extends ContainerTag implements ScriptTag {
   public function __construct($code = null) {
     parent::__construct('script', $code);
   }
+
   /**
    * Specifies the MIME type of the script
    *

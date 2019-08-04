@@ -22,14 +22,14 @@ $links[] = $entityManagerDecorator->methodLink('getCache', false);
 
 $sphpApi = Factory::sami('http://playground.samiholck.com/API/sami');
 
-use Sphp\Html\Document;
+use Sphp\Html\SphpDocument;
 
-$document = $sphpApi->classLinker(Document::class);
+$document = $sphpApi->classLinker(SphpDocument::class);
 
 $links->appendMd('###SPHP framework:');
 $links[] = $document;
-$links[] = $document->methodLink('create');
-$links[] = $document->constantLink('HTML5');
+$links[] = $document->methodLink('__construct');
+$links[] = $document->constantLink('__destruct');
 $links[] = $document->classBreadGrumbs();
 $links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE', 'constant Sphp\Regex\FI\DATE');
 $links[] = $sphpApi->namespaceLink(__NAMESPACE__, true);

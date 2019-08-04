@@ -6,10 +6,10 @@ require_once('settings.php');
 
 use Sphp\Html\Head\Link;
 use Sphp\Html\Head\Meta;
-
-$html = Document::html();
-$head = Document::head();
-$body = Document::body();
+$doc = new SphpDocument();
+$html = $doc->html();
+$head = $doc->head();
+$body = $doc->body();
 
 $html->setLanguage('en');
 
@@ -32,9 +32,9 @@ $head->set(Meta::applicationName('SPHPlayground Framework'));
 $head->set(Meta::keywords(['privacy', 'policy', 'license', 'SPHPlayground']));
 $head->set(Meta::description('Privacy policy of SPHPlayground framework manual web site'));
 
-$html->useFontAwesome();
-Document::body()->addCssClass('mit-license');
-Document::html()->startBody();
+$doc->useFontAwesome();
+$doc->body()->addCssClass('mit-license');
+$doc->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\DivGrid;
 
