@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Forms\Inputs\TextualInputInterface;
+use Sphp\Html\Forms\Inputs\TextualInput;
 use Sphp\Html\Component;
 use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Span;
@@ -120,9 +120,9 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * @param  string $type
    * @param  string $name
    * @param  scalar $value
-   * @return TextualInputInterface appended instance
+   * @return TextualInput appended instance
    */
-  public function appendInput(string $type, string $name = null, $value = null): TextualInputInterface {
+  public function appendInput(string $type, string $name = null, $value = null): TextualInput {
     $input = FormControls::$type($name, $value);
     $input->addCssClass('input-group-field');
     $this->group->append($input);

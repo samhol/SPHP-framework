@@ -10,72 +10,70 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
+use Sphp\Html\IdentifiableContent;
+
 /**
- * Implements an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
+ * Defines an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class TextualInput extends InputTag implements TextualInputInterface {
+interface TextualInput extends Input, IdentifiableContent, PatternValidableInput {
 
   /**
-   * Constructor
+   * Sets the value of the size attribute
    *
-   * @precondition  `0 < $size <= $maxlength`
-   * @param  string $type the value of the type attribute
-   * @param  string|null $name the value of the  name attribute
-   * @param  string $value the value of the  value attribute
-   * @param  int $maxlength the value of the  maxlength attribute
-   * @param  int $size the value of the  size attribute
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
-   * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
+   *  **Preconditions:** <var>$size > 0</var>
+   *
+   * @param  int $size the value of the size attribute
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  public function __construct(string $type = 'text', string $name = null, $value = null, int $maxlength = null, int $size = null) {
-    parent::__construct($type, $name, $value);
-    if ($maxlength > 0) {
-      $this->setMaxlength($maxlength);
-    }
-    if ($size > 0) {
-      $this->setSize($size);
-    }
-  }
+  public function setSize(int $size);
 
-  public function setSize(int $size = null) {
-    $this->attributes()->setAttribute('size', $size);
-    return $this;
-  }
+  /**
+   * Sets the value of the maxlength attribute
+   *
+   *  **Preconditions:** <var>$maxlength > 0</var>
+   *
+   * @param  int $maxlength the value of the maxlength attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
+   */
+  public function setMaxlength(int $maxlength);
 
-  public function setMaxlength(int $maxlength = null) {
-    $this->attributes()->setAttribute('maxlength', $maxlength);
-    return $this;
-  }
+  /**
+   * Sets the value of the placeholder attribute
+   *
+   * The placeholder attribute specifies a short hint that describes the expected value of an input field
+   *  (e.g. a sample value or a short description of the expected format). The short hint is displayed in
+   * the input field before the user enters a value.
+   *
+   * **Note:** The placeholder attribute works with the following &lt;input&gt; types:
+   *  <var>text, search, url, tel, email, and password</var>.
+   *
+   * @param  string $placeholder the value of the placeholder attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
+   */
+  public function setPlaceholder(string $placeholder = null);
 
-  public function setPlaceholder(string $placeholder = null) {
-    $this->attributes()->setAttribute('placeholder', $placeholder);
-    return $this;
-  }
-
-  public function autocomplete(bool $allow = true) {
-    $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
-    return $this;
-  }
-
-  public function setPattern(string $pattern = null) {
-    $this->attributes()->setAttribute('pattern', $pattern);
-    return $this;
-  }
-
-  public function getPattern(): ?string {
-    return $this->attributes()->getValue('pattern');
-  }
-
-  public function hasPattern(): bool {
-    return $this->attributes()->isVisible('pattern');
-  }
-
+  /**
+   * Sets the autocomplete attribute's value on or off
+   *
+   * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
+   *
+   * Autocomplete allows the browser to predict the value. When a user starts to type in a field,
+   * the browser should display options to fill in the field, based on earlier typed values.
+   *
+   * **Note:** The autocomplete attribute works with the following &lt;input&gt; types:
+   *   <var>text, search, url, tel, email, password, datepickers, range, and color</var>.
+   *
+   * @param  boolean $allow (allow the browser to predict the value)
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
+   */
+  public function autocomplete(bool $allow = true);
 }

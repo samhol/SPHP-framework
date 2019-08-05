@@ -18,7 +18,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class EmailInput extends TextualInput {
+class EmailInput extends AbstractTextualInput {
 
   /**
    * Constructor

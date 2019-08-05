@@ -27,4 +27,3 @@ interface Tag extends Component {
    */
   public function getTagName(): string;
 }
-

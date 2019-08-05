@@ -14,7 +14,7 @@ use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
-use Sphp\Html\PlainContainer;
+use Sphp\Html\Iterator;
 
 /**
  * Abstract implementation of ann HTML &lt;option&gt; component container
@@ -35,12 +35,12 @@ use Sphp\Html\PlainContainer;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractOptionsContainer extends AbstractComponent implements IteratorAggregate, TraversableContent {
+abstract class AbstractOptionsContainer extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var PlainContainer 
+   * @var MenuComponent[] 
    */
   private $options;
 
@@ -60,10 +60,10 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    */
   public function __construct(string $tagname, $opt = null) {
     parent::__construct($tagname);
-    $this->options = new PlainContainer();
+    $this->options = [];
     if (is_array($opt)) {
       $this->appendArray($opt);
-    } else if ($opt instanceof SelectMenuContentInterface) {
+    } else if ($opt instanceof MenuComponent) {
       $this->append($opt);
     }
   }
@@ -75,7 +75,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    * @return $this for a fluent interface
    */
   public function prepend(MenuComponent $opt) {
-    $this->options->prepend($opt);
+    array_unshift($this->options, $opt);
     return $this;
   }
 
@@ -149,7 +149,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    * @return $this for a fluent interface
    */
   public function append(MenuComponent $opt) {
-    $this->options->append($opt);
+    $this->options[] = $opt;
     return $this;
   }
 
@@ -159,7 +159,7 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    * @return int the number of menu components
    */
   public function count(): int {
-    return $this->options->count();
+    return count($this->options);
   }
 
   /**
@@ -168,11 +168,11 @@ class AbstractOptionsContainer extends AbstractComponent implements IteratorAggr
    * @return Traversable external iterator
    */
   public function getIterator(): Traversable {
-    return $this->options->getIterator();
+    return new Iterator($this->options);
   }
 
   public function contentToString(): string {
-    return $this->options->getHtml();
+    return implode('', $this->options);
   }
 
 }
