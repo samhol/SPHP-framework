@@ -53,7 +53,6 @@ abstract class FormControls {
       'reset' => ButtonTags\Resetter::class,
       'submit' => ButtonTags\Submitter::class,
       'button' => ButtonTags\Button::class,
-      'input' => InputTag::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,
       'email' => EmailInput::class,
@@ -112,9 +111,6 @@ abstract class FormControls {
   public static function create(string $name, array $arguments = []): FormController {
     if (!isset(static::$components[$name])) {
       throw new InvalidArgumentException("Method $name does not exist");
-    }
-    if (static::$components[$name] === InputTag::class) {
-      array_unshift($arguments, $name);
     }
     $reflectionClass = new ReflectionClass(static::$components[$name]);
     if ($reflectionClass->getName() == InputTag::class) {

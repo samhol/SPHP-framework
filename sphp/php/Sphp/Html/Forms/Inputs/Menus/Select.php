@@ -122,8 +122,8 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
     return $this->attributeExists('required');
   }
 
-  public function getName(): string {
-    return (string) $this->attributes()->getValue('name');
+  public function getName(): ?string {
+    return $this->attributes()->getValue('name');
   }
 
   public function setName(string $name = null) {
@@ -145,7 +145,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public static function from(string $name = null, array $opt = null): Select {
-    
+
     return new Select($name, $opt);
   }
 

@@ -45,8 +45,28 @@ class HtmlTest extends TestCase {
   }
 
   public function testConstructor() {
-    $c = new Html();
-    $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $c);
+    $html = new Html();
+    $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $html);
+    $this->assertNull($html->getAttribute('lang'));
+  }
+
+  /**
+   * @return array
+   */
+  public function languageData(): array {
+    $data = [];
+    $data[] = [null];
+    $data[] = ['en'];
+    return $data;
+  }
+
+  /**
+   * @dataProvider languageData
+   * @param string $lang
+   */
+  public function testSetLanguage(string $lang = null) {
+    $this->assertSame($this->html, $this->html->setLanguage($lang));
+    $this->assertSame($lang, $this->html->getAttribute('lang'));
   }
 
   public function testClone() {
@@ -66,6 +86,29 @@ class HtmlTest extends TestCase {
     foreach ($this->html as $id => $item) {
       $this->assertSame($array[$id], $item);
     }
+  }
+
+  public function testOutputtingStart(): Html {
+    $html = new Html();
+    $content = new Div();
+    $html->body()->append($content);
+    $start = $html->getOpeningTag() . $html->head() . $html->body()->getOpeningTag();
+    $this->assertSame($start, $html->getBodyStart());
+    $this->expectOutputString($start);
+    $html->startBody();
+    return $html;
+  }
+
+  /**
+   * @depends testOutputtingStart
+   * @param Html $html
+   * @return void
+   */
+  public function testOutputtingEnd(Html $html): void {
+    $ending = $html->body()->scripts() . $html->body()->getClosingTag() . $html->getClosingTag();
+    $this->assertSame($ending, $html->getDocumentClose());
+    $this->expectOutputString($ending);
+    $html->documentClose();
   }
 
 }

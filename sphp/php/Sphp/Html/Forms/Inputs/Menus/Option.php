@@ -83,7 +83,7 @@ class Option extends SimpleTag implements MenuComponent {
   }
 
   public function disable(bool $enabled = true) {
-    $this->attributes()->setAttribute('disabled', !$enabled);
+    $this->attributes()->setAttribute('disabled', $enabled);
     return $this;
   }
 

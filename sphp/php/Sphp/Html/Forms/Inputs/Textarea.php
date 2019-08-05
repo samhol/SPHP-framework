@@ -38,9 +38,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
     parent::__construct('textarea', $content);
     $this->attributes()->getObjectMap()->mapType('rows', \Sphp\Html\Attributes\IntegerAttribute::class, 0);
     $this->attributes()->getObjectMap()->mapType('cols', \Sphp\Html\Attributes\IntegerAttribute::class, 0);
-    if ($name !== null) {
-      $this->setName($name);
-    }
+    $this->setName($name);
     if ($rows > 0) {
       $this->setRows($rows);
     }
@@ -58,8 +56,8 @@ class Textarea extends SimpleTag implements TextareaInterface {
     return !$this->attributes()->isVisible('disabled');
   }
 
-  public function getName(): string {
-    return (string) $this->attributes()->getValue('name');
+  public function getName(): ?string {
+    return $this->attributes()->getValue('name');
   }
 
   public function setName(string $name = null) {
