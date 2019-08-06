@@ -395,7 +395,6 @@ class FileIconMap implements ArrayAccess {
    * Creates an icon object representing given file type
    *
    * @param  string $fileType the file type
-   * @param  string $screenReaderText
    * @return string Font Awesome icon classes
    */
   public function __invoke(string $fileType): string {

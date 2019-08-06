@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\SimpleTag;
+use Sphp\Html\AbstractComponent;
 
 /**
  * Implements an HTML &lt;option&gt; tag
@@ -20,7 +20,12 @@ use Sphp\Html\SimpleTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Option extends SimpleTag implements MenuComponent {
+class Option extends AbstractComponent implements MenuComponent {
+
+  /**
+   * @var scalar
+   */
+  private $content;
 
   /**
    * Constructor
@@ -32,10 +37,11 @@ class Option extends SimpleTag implements MenuComponent {
    * @link  http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function __construct($value = null, $content = null, bool $selected = false) {
-    parent::__construct('option', $content);
+    parent::__construct('option');
     if ($value !== null) {
       $this->setValue($value);
     }
+    $this->setContent($content);
     $this->setSelected($selected);
   }
 
@@ -61,6 +67,15 @@ class Option extends SimpleTag implements MenuComponent {
     return $this;
   }
 
+  public function getContent() {
+    return $this->content;
+  }
+
+  public function setContent($content) {
+    $this->content = $content;
+    return $this;
+  }
+
   /**
    * Sets the option as selected or not
    *
@@ -82,13 +97,17 @@ class Option extends SimpleTag implements MenuComponent {
     return $this->attributes()->isVisible('selected') && $this->isEnabled();
   }
 
-  public function disable(bool $enabled = true) {
-    $this->attributes()->setAttribute('disabled', $enabled);
+  public function disable(bool $disabled = true) {
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 
   public function isEnabled(): bool {
     return !$this->attributes()->isVisible('disabled');
+  }
+
+  public function contentToString(): string {
+    return (string) $this->getContent();
   }
 
 }

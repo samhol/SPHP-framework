@@ -15,6 +15,7 @@ use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Iterator;
 use Traversable;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a JavaScript component container
@@ -32,13 +33,21 @@ class ScriptsContainer extends AbstractContent implements Script, IteratorAggreg
    *
    * @var Script[] 
    */
-  private $container = [];
+  private $script;
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->container = [];
+    $this->script = [];
+  }
+
+  public function __destruct() {
+    unset($this->script);
+  }
+
+  public function __clone() {
+    $this->script = Arrays::copy($this->script);
   }
 
   /**
@@ -48,7 +57,7 @@ class ScriptsContainer extends AbstractContent implements Script, IteratorAggreg
    * @return $this for a fluent interface
    */
   public function append(Script $script) {
-    $this->container[] = $script;
+    $this->script[] = $script;
     return $this;
   }
 
@@ -79,12 +88,47 @@ class ScriptsContainer extends AbstractContent implements Script, IteratorAggreg
     return $script;
   }
 
+  public function setAsync(bool $async = true) {
+    foreach ($this->script as $script) {
+      $script->setAsync($async);
+    }
+    return $this;
+  }
+
+  public function isAsync(): bool {
+    $isAsync = true;
+    foreach ($this->script as $script) {
+      if (!$script->isAsync()) {
+        $isAsync = false;
+        break;
+      }
+    }
+    return $isAsync;
+  }
+
+  public function setDefer(bool $defer = true) {
+    foreach ($this->script as $script) {
+      $script->setDefer($defer);
+    }
+    return $this;
+  }
+  public function isDefered(): bool {
+    $isAsync = true;
+    foreach ($this->script as $script) {
+      if (!$script->isDefered()) {
+        $isAsync = false;
+        break;
+      }
+    }
+    return $isAsync;
+  }
+
   public function contains(Script $script): bool {
-    return in_array($script, $this->container, true);
+    return in_array($script, $this->script, true);
   }
 
   public function getHtml(): string {
-    return implode($this->container);
+    return implode($this->script);
   }
 
   /**
@@ -93,7 +137,7 @@ class ScriptsContainer extends AbstractContent implements Script, IteratorAggreg
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->container);
+    return new Iterator($this->script);
   }
 
 }

@@ -49,4 +49,33 @@ class ScriptsContainerTest extends TestCase {
     return $scripts;
   }
 
+  /**
+   * @depends testAppending
+   * 
+   * @param  ScriptsContainer $scripts
+   * @return ScriptsContainer
+   */
+  public function testScriptProperties(ScriptsContainer $scripts) {
+    $this->assertSame($scripts, $scripts->setAsync(true));
+    $this->assertTrue($scripts->isAsync());
+    $this->assertFalse($scripts->isDefered());
+    foreach ($scripts as $s) {
+      $this->assertTrue($s->isAsync());
+      $this->assertFalse($s->isDefered());
+    }
+    $this->assertSame($scripts, $scripts->setAsync(false));
+    $this->assertFalse($scripts->isAsync());
+    $this->assertFalse($scripts->isDefered());
+    foreach ($scripts as $s) {
+      $this->assertFalse($s->isAsync());
+    }
+    $this->assertSame($scripts, $scripts->setDefer(true));
+    $this->assertTrue($scripts->isDefered());
+    $this->assertFalse($scripts->isAsync());
+    foreach ($scripts as $s) {
+      $this->assertTrue($s->isDefered());
+      $this->assertFalse($s->isAsync());
+    }
+  }
+
 }

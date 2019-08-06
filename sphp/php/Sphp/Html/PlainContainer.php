@@ -24,8 +24,7 @@ use Traversable;
  */
 class PlainContainer extends AbstractContent implements IteratorAggregate, Container, ContentParser {
 
-  use ContentParserTrait,
-      TraversableTrait;
+  use ContentParserTrait;
 
   /**
    * content
@@ -66,7 +65,7 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
   }
 
   public function append($content) {
-    $this->components[] = $content;
+    array_push($this->components, $content);
     return $this;
   }
 
@@ -159,6 +158,46 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
    */
   public function getIterator(): Traversable {
     return new Iterator($this->components);
+  }
+
+  public function getComponentsBy(callable $rules): TraversableContent {
+    $result = new PlainContainer();
+    foreach ($this->components as $value) {
+      if ($rules($value)) {
+        $result[] = $value;
+      }
+      if ($value instanceof TraversableContent) {
+        foreach ($value->getComponentsBy($rules) as $v) {
+          $result[] = $v;
+        }
+      }
+    }
+    return $result;
+  }
+
+  public function getComponentsByObjectType($type): TraversableContent {
+    $search = function($element) use ($type) {
+      $result = false;
+      if ($element instanceof $type) {
+        $result = true;
+      }
+      return $result;
+    };
+    return $this->getComponentsBy($search);
+  }
+
+  public function toArray(): array {
+    return $this->components;
+  }
+
+  /**
+   * Count the number of contained items 
+   *
+   * @return int number of items contained
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
+  public function count(): int {
+    return count($this->components);
   }
 
 }

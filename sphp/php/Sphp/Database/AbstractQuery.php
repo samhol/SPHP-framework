@@ -172,7 +172,7 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    * * **ALWAYS SANITIZE ALL USER INPUTS!**
    * * **If you are using multiple arguments; None of the arguments should be an array**
    *
-   * @param  string|string[] $cond condition(s) (accepts multiple arguments)
+   * @param  ... string|string[] $cond condition(s) (accepts multiple arguments)
    * @return $this for a fluent interface
    */
   public function having(... $rules) {

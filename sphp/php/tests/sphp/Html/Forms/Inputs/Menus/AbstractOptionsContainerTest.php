@@ -40,6 +40,12 @@ class AbstractOptionsContainerTest extends TestCase {
   public function insertionData(): array {
     $data = [];
     $data[] = [range('a', 'c')];
+    $data[] = [
+        [
+            Option::class => new Option('foo', 'select foo'),
+            'array' => [range('a', 'c')]
+        ]
+    ];
     return $data;
   }
 
@@ -52,6 +58,29 @@ class AbstractOptionsContainerTest extends TestCase {
     $this->assertCount(0, $obj);
     $obj->appendArray($options);
     $this->assertCount(count($options), $obj);
+  }
+
+  /**
+   * @param array $options
+   */
+  public function testObjectInsertion() {
+    $obj = $this->buildContainer();
+    $this->assertCount(0, $obj);
+    $opt = $obj->appendOption('foo', 'select foo');
+    $this->assertInstanceOf(Option::class, $opt);
+    $this->assertSame('select foo', $opt->getContent());
+    $this->assertSame('foo', $opt->getValue());
+    $this->assertCount(1, $obj);
+    $opt1 = new Option('bar', 'select bar');
+    $this->assertSame($obj, $obj->append($opt1));
+    $this->assertCount(2, $obj);
+    $opt2 = new Option('foobar', 'select foobar');
+    $this->assertSame($obj, $obj->prepend($opt2));
+    $this->assertCount(3, $obj);
+
+    $optGroup = $obj->appendOptgroup('foo', range('a', 'c'));
+    $this->assertInstanceOf(Optgroup::class, $optGroup);
+    return $obj;
   }
 
 }

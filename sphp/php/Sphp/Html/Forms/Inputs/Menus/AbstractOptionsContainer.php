@@ -15,6 +15,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
 use Sphp\Html\Iterator;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Abstract implementation of ann HTML &lt;option&gt; component container
@@ -66,6 +67,16 @@ abstract class AbstractOptionsContainer extends AbstractComponent implements Ite
     } else if ($opt instanceof MenuComponent) {
       $this->append($opt);
     }
+  }
+
+  public function __destruct() {
+    unset($this->options);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    $this->options = Arrays::copy($this->options);
+    parent::__clone();
   }
 
   /**

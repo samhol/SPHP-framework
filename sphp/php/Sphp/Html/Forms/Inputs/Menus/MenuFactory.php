@@ -32,7 +32,7 @@ class MenuFactory {
     if (count($content) > 0) {
       $content = array_combine($content, $content);
     }
-    return new Select($name, $content);
+    return Select::from($name, $content);
   }
 
   /**
@@ -46,7 +46,7 @@ class MenuFactory {
    */
   public static function rangeMenu($from, $to, $step = 1, $name = null): Select {
     $range = range($from, $to, $step);
-    return new Select($name, array_combine($range, $range));
+    return Select::from($name, array_combine($range, $range));
   }
 
   /**

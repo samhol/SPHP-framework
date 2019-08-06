@@ -10,8 +10,6 @@
 
 namespace Sphp\Html\Scripts;
 
-use Sphp\Html\ContainerTag;
-
 /**
  * Implements an HTML &lt;script&gt; tag having script code as its content
  *
@@ -25,7 +23,9 @@ use Sphp\Html\ContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ScriptCode extends ContainerTag implements ScriptTag {
+class ScriptCode extends AbstractScriptTag implements \ArrayAccess, \IteratorAggregate {
+
+  private $code = [];
 
   /**
    * Constructor
@@ -36,52 +36,72 @@ class ScriptCode extends ContainerTag implements ScriptTag {
    *
    * @param string $code the script code inside the script component or `null` for empty
    */
-  public function __construct($code = null) {
-    parent::__construct('script', $code);
+  public function __construct(string $code = null) {
+    parent::__construct();
+    $this->code = [];
+    if ($code !== null) {
+      $this->code[] = $code;
+    }
+  }
+
+  public function contentToString(): string {
+    return implode($this->code);
+  }
+
+  public function getIterator(): \Traversable {
+    return new \ArrayIterator($this->code);
+  }
+
+  public function append(string $code) {
+    array_push($this->code, $code);
+    return $this;
   }
 
   /**
-   * Specifies the MIME type of the script
+   * Checks whether an offset exists
    *
-   * @param  string $type the value of the type attribute (mime-type)
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
+   * @param  mixed $offset an offset to check for
+   * @return boolean true on success or false on failure
    */
-  public function setType(string $type = null) {
-    $this->attributes()->setAttribute('type', $type);
-    return $this;
+  public function offsetExists($offset): bool {
+    return isset($this->code[$offset]) || array_key_exists($offset, $this->code);
   }
 
   /**
-   * Sets whether the script is executed asynchronously
-   * 
-   * Asynchronous script will be executed as soon as it is available.
-   * 
-   * @param  boolean $async true for asynchronous execution, false otherwise
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
-   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
+   * Returns the content element at the specified offset
+   *
+   * @param  mixed $offset the index with the content element
+   * @return mixed content element or null
    */
-  public function setAsync(bool $async = true) {
-    $this->attributes()
-            ->remove('defer')
-            ->setAttribute('async', $async);
-    return $this;
+  public function offsetGet($offset) {
+    $result = null;
+    if ($this->offsetExists($offset)) {
+      $result = $this->code[$offset];
+    }
+    return $result;
   }
 
   /**
-   * Sets whether the script will not run until after the page has loaded
-   * 
-   * @param  boolean $defer true for deferred execution, false otherwise
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
+   * Assigns content to the specified offset
+   *
+   * @param  mixed $offset the offset to assign the value to
+   * @param  mixed $value the value to set
+   * @return void
    */
-  public function setDefer(bool $defer = true) {
-    $this->attributes()
-            ->remove('async')
-            ->setAttribute('defer', $defer);
-    return $this;
+  public function offsetSet($offset, $value): void {
+    $this->code[$offset] = $value;
+  }
+
+  /**
+   * Unsets an offset
+   *
+   * @param  mixed $offset offset to unset
+   * @return void
+   */
+  public function offsetUnset($offset): void {
+    if ($this->offsetExists($offset)) {
+      unset($this->code[$offset]);
+    }
   }
 
 }

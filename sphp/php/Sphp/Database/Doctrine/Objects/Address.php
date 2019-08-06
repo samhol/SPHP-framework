@@ -33,7 +33,6 @@ class Address extends AbstractArrayableObject implements GeographicalAddress {
   private $zipcode;
 
   /**
-   *
    * @var string|null
    * @Column(type = "string") 
    */
@@ -122,7 +121,7 @@ class Address extends AbstractArrayableObject implements GeographicalAddress {
     return $address;
   }
 
-  public function equals($object) {
+  public function equals($object): bool {
     return $object == $this;
   }
 

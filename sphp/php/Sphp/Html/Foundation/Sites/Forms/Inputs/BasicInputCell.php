@@ -197,7 +197,8 @@ class BasicInputCell extends AbstractCell implements InputCell {
    * @return BasicInputCell a new instance containing an Email input
    */
   public static function select(string $name, $opt, $selectedValues = null, array $layout = ['small-12']): BasicInputCell {
-    $input = new Select($name, $opt, $selectedValues);
+    $input = Select::from($name, $opt);
+    $input->setSelectedValues($selectedValues);
     return new static($input, $layout);
   }
 

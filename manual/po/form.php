@@ -27,7 +27,7 @@ for ($i = 10; $i <= 50; $i += 10) {
   $perPageOptions[$i] = "Show $i results per page";
 }
 
-$perPage = new Select('view', $perPageOptions);
+$perPage = Select::from('view', $perPageOptions);
 $row->appendInput($perPage)->shrink();
 $row->appendInput(new Buttons\Submitter('Submit', 'submit', 'submitted'))->shrink();
 

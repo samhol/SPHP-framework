@@ -48,7 +48,6 @@ class GridForm extends AbstractForm {
    * @precondition `$method == get|post`
    * @param  string $action where to send the form-data when the form is submitted
    * @param  string $method how to send form-data
-   * @param  mixed|null $content the content of the form or null for no content
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */

@@ -39,26 +39,13 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
   /**
    * Constructor
-   *
-   * **`$opt` types:**
-   * 
-   * 1. a {@link SelectContentInterface} is stored as such
-   * 2. a single dimensional array with $key => $val pairs corresponds to an 
-   *    array of new {@link Option}($key, $val) objects
-   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
-   *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
    * 
    * @param string|null $name name attribute
-   * @param MenuComponent|mixed[] $opt the content of the menu
-   * @param string|string[] $selectedValues the option values selected
    */
-  public function __construct(string $name = null, $opt = null, $selectedValues = null) {
-    parent::__construct('select', $opt);
-    if (isset($name)) {
+  public function __construct(string $name = null) {
+    parent::__construct('select');
+    if ($name !== null) {
       $this->setName($name);
-    }
-    if ($selectedValues !== null) {
-      $this->setSelectedValues($selectedValues);
     }
   }
 
@@ -145,8 +132,11 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
   }
 
   public static function from(string $name = null, array $opt = null): Select {
-
-    return new Select($name, $opt);
+    $select = new Select($name);
+    if ($opt !== null) {
+      $select->appendArray($opt);
+    }
+    return $select;
   }
 
 }

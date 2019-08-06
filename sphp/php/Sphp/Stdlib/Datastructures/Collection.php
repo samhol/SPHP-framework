@@ -113,7 +113,7 @@ class Collection implements Iterator, CollectionInterface {
    * @return $this for a fluent interface
    */
   public function append($value) {
-    $this->items[] = $value;
+    array_push($this->items, $value);
     return $this;
   }
 
