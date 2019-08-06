@@ -48,4 +48,8 @@ class Choicebox extends InputTag implements BooleanInput {
     return $this;
   }
 
+  public function isChecked(): bool {
+    return $this->attributeExists('checked');
+  }
+
 }
