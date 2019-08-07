@@ -32,7 +32,7 @@ class ScriptCodeTest extends TestCase {
       $this->assertArrayHasKey($k, $data);
       $this->assertSame($line, $data[$k]);
     }
-    $code[] = 'null';
+    $code[''] = 'null';
     $this->assertTrue(isset($code[null]));
     $this->assertTrue(isset($code['']));
     $this->assertSame('null', $code[null]);

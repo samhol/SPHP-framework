@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Html\Component;
-use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Lists\StandardListItem;
 
 /**
@@ -23,7 +23,7 @@ use Sphp\Html\Lists\StandardListItem;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface PageInterface extends Component, HyperlinkInterface, StandardListItem {
+interface PageInterface extends Component, Hyperlink, StandardListItem {
 
   /**
    * Sets or unsets the hyperlink component as active

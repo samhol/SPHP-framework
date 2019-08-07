@@ -24,7 +24,7 @@ use ReflectionClass;
  * 
  * @method \Sphp\Html\Span span(mixed $content = null) creates a new span tag component
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
- * @method \Sphp\Html\Navigation\Hyperlink a(mixed $content = null) creates a new HTML &lt;a&gt; object
+ * @method \Sphp\Html\Navigation\A a(mixed $content = null) creates a new HTML &lt;a&gt; object
  * 
  * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new &lt;area&gt; object
  * @method \Sphp\Html\Media\ImageMap\Polygon polygon(array $coords = null, string $href = null, string $alt = null) creates a new &lt;area&gt; object
@@ -73,7 +73,7 @@ abstract class Tags {
    * @var mixed[]
    */
   private static $tags = array(
-      'a' => Navigation\Hyperlink::class,
+      'a' => Navigation\A::class,
       'aside' => Flow\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,

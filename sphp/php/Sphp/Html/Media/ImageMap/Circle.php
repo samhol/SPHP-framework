@@ -29,14 +29,10 @@ class Circle extends AbstractArea {
    * @param string|null $alt
    */
   public function __construct(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) {
-    parent::__construct('circle', $href, $alt);
-    $parser = new \Sphp\Html\Attributes\MultiValueParser();
-    $parser->setRange(3,3);
-    $coords = new \Sphp\Html\Attributes\MultiValueAttribute('coords', $parser);
-    $this->attributes()->setInstance($coords);
+    parent::__construct('circle', '/^(\d+(,\d+){2})*$/');
+     $this->setHref($href)->setAlt($alt);
     $this->setCoordinates($x, $y, $radius);
   }
-
 
   /**
    * Sets the coordinates and the size of the circle region
@@ -47,7 +43,7 @@ class Circle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setCoordinates(int $x, int $y, int $radius) {
-    $this->attributes()->coords = [$x, $y, $radius];
+    $this->attributes()->coords = implode(',', [$x, $y, $radius]);
     return $this;
   }
 

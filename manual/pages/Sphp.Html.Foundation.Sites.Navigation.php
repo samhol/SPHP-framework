@@ -2,11 +2,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Manual;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$hyperlinkIfLink = Manual\api()->classLinker(HyperlinkInterface::class);
+$hyperlinkIfLink = Manual\api()->classLinker(Hyperlink::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
 Manual\md(<<<MD
 #Foundation <small>navigation components</small>

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Defines a Hyperlink object generator pointing to an online PHP API
@@ -25,31 +25,31 @@ interface ClassLinker extends LinkerInterface {
    * Returns a hyperlink object pointing to an API class page
    *
    * @param  null|string $name optional alternative class link content
-   * @return Hyperlink hyperlink object pointing to an API class page
+   * @return A hyperlink object pointing to an API class page
    */
-  public function getLink(string $name = null): Hyperlink;
+  public function getLink(string $name = null): A;
 
   /**
    * Returns a hyperlink object pointing to class method in the API documentation
    *
    * @param  string $method the method name
    * @param  boolean $full true for `Class::method()` and false for `method()`
-   * @return Hyperlink object pointing to class method in the API documentation
+   * @return A object pointing to class method in the API documentation
    */
-  public function methodLink(string $method, bool $full = false): Hyperlink;
+  public function methodLink(string $method, bool $full = false): A;
 
   /**
    * Returns a hyperlink object pointing to class constant in the API documentation
    *
    * @param  string $constName the constant name
-   * @return Hyperlink object pointing to class constant in the API documentation
+   * @return A object pointing to class constant in the API documentation
    */
-  public function constantLink(string $constName): Hyperlink;
+  public function constantLink(string $constName): A;
 
   /**
    * Returns a hyperlink object pointing to the namespace of the class in the API documentation
    *
-   * @return Hyperlink object pointing to the namespace of the class in the API documentation
+   * @return A object pointing to the namespace of the class in the API documentation
    */
-  public function namespaceLink(): Hyperlink;
+  public function namespaceLink(): A;
 }

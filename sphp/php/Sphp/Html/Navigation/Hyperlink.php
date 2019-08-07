@@ -10,15 +10,13 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\ContainerTag;
-
 /**
- * Implements an HTML &lt;a&gt; tag
+ * Defines the basic functionality of any HTML hyperlink
  *
- * If this component has an `href` attribute, then it represents a hyperlink
- * (a hypertext anchor). If the component has no `href` attribute, then the
- * component represents a placeholder for where a link might otherwise have
- * been placed, if it had been relevant.
+ * If a hyperlink component has an href attribute, then it
+ * represents a hyperlink (a hypertext anchor). If the component has no href
+ * attribute, then the component represents a placeholder for where a link might
+ * otherwise have been placed, if it had been relevant.
  *
  * The `target`, `rel`, `media`, `hreflang`, and `type` attributes must be omitted if
  * the `href` attribute is not present.
@@ -28,32 +26,84 @@ use Sphp\Html\ContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Hyperlink extends ContainerTag implements HyperlinkInterface {
-
-  use HyperlinkTrait;
+interface Hyperlink {
 
   /**
-   * Constructor
+   * Sets the value of the href attribute (The URL of the link)
    *
    * **Notes:**
    *
    * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
+   * * If the href attribute is not present, the {@link self} is not a hyperlink.
    *
-   * @param  string|null $href optional URL of the link
-   * @param  string|null $content optional the content of the component
-   * @param  string|null $target optional value of the target attribute
+   * @param  string|null $href the URL of the link
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
+   */
+  public function setHref(string $href = null);
+
+  /**
+   * Returns the value of the href attribute
+   *
+   * **Notes:**
+   *
+   * * The href attribute specifies the URL of the page the link goes to.
+   * * If the href attribute is not present, the {@link self} is not a hyperlink.
+   *
+   * @return string|null the value of the href attribute
+   * @link http://www.w3schools.com/tags/att_a_href.asp href attribute
+   */
+  public function getHref(): ?string;
+
+  /**
+   * Sets the value of the target attribute
+   *
+   * **Notes:**
+   *
+   * * The target attribute specifies where to open the linked document.
+   * * Only used if the href attribute is present.
+   *
+   * @param  string|null $target optional target frame of the hyperlink
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct(string $href = null, string $content = null, string $target = null) {
-    parent::__construct('a', $content);
-    if ($href !== null) {
-      $this->setHref($href);
-    }
-    if ($target !== null) {
-      $this->setTarget($target);
-    }
-  }
+  public function setTarget(string $target = null);
 
+  /**
+   * Returns the value of the target attribute
+   *
+   * **Notes:**
+   *
+   * * The target attribute specifies where to open the linked document.
+   * * Only used if the href attribute is present.
+   *
+   * @return string|null the value of the target attribute
+   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   */
+  public function getTarget(): ?string;
+
+  /**
+   * Sets the relationship between the current document and the linked document
+   *
+   * **Notes:**
+   *
+   * * Only used if the href attribute is present.
+   *
+   * @param  string|null $rel optional relationship between the current document and the linked document
+   * @return $this for a fluent interface
+   * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
+   */
+  public function setRelationship(string $rel = null);
+
+  /**
+   * Returns the relationship between the current document and the linked document
+   *
+   * **Notes:**
+   *
+   * * Only used if the `href` attribute is present.
+   *
+   * @return string|null the relationship between the current document and the linked document
+   * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
+   */
+  public function getRelationship(): ?string;
 }

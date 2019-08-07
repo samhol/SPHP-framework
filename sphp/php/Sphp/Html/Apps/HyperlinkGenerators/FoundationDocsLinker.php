@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Hyperlink generator pointing to online Foundation Documentation
@@ -32,9 +32,9 @@ class FoundationDocsLinker extends AbstractLinker {
    * Returns a hyperlink object pointing to the Foundation documentation
    * 
    * @param  string $object the name of the Foundation doc
-   * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function __get(string $object): Hyperlink {
+  public function __get(string $object): A {
     $page = str_replace('_', '-', $object) . '.html';
     $text = str_replace('_', ' ', $object);
     $title = 'Foundation sites: ' . str_replace('_', ' ', $object);

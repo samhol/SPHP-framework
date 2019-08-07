@@ -11,7 +11,7 @@
 namespace Sphp\Html\Lists;
 
 use Sphp\Html\Navigation\HyperlinkContainer;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Implements a hyperlink type menu item
@@ -39,7 +39,7 @@ class HyperlinkListItem extends HyperlinkContainer implements StandardListItem {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct(string $href = null, $content = null, string $target = null) {
-    parent::__construct('li', new Hyperlink($href, $content, $target));
+    parent::__construct('li', new A($href, $content, $target));
   }
 
 }

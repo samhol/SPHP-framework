@@ -27,7 +27,8 @@ class Polygon extends AbstractArea {
    * @param string|null $alt
    */
   public function __construct(array $coords = null, string $href = null, string $alt = null) {
-    parent::__construct('poly', $href, $alt);
+    parent::__construct('poly');
+    $this->setHref($href)->setAlt($alt);
     if ($coords !== null) {
       $this->setCoordinatesFromArray($coords);
     }
@@ -47,7 +48,7 @@ class Polygon extends AbstractArea {
     $this->attributes()->setAttribute('coords', $coords);
     return $this;
   }
-  
+
   /**
    * Sets the coordinates of the polygon
    * 
@@ -57,9 +58,9 @@ class Polygon extends AbstractArea {
   public function setCoordinatesFromArray(array $coords) {
     $count = count($coords);
     if ($count % 2 !== 0) {
-      throw new \Sphp\Exceptions\InvalidArgumentException("The sum of coordinates must divisible by 2");
+      throw new \Sphp\Exceptions\InvalidArgumentException('The number of coordinates must divisible by 2');
     }
-    $this->attributes()->setAttribute('coords', $coords);
+    $this->attributes()->setAttribute('coords', implode(',', $coords));
     return $this;
   }
 

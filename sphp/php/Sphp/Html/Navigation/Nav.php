@@ -37,10 +37,10 @@ class Nav extends ContainerTag {
   /**
    * Returns the hyperlink sub components
    *
-   * @return TraversableContent containing {@link HyperlinkInterface} sub components
+   * @return TraversableContent containing {@link Hyperlink} sub components
    */
   public function hyperlinks(): TraversableContent {
-    return $this->getComponentsByObjectType(HyperlinkInterface::class);
+    return $this->getComponentsByObjectType(Hyperlink::class);
   }
 
 }

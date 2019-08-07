@@ -13,7 +13,7 @@ namespace Sphp\Manual\MVC\FactoryViews;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use ReflectionClass;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Tag;
 
 /**
@@ -80,23 +80,23 @@ class TagFactoryMethodData implements Arrayable {
     return $this->componentReflector->getName();
   }
 
-  public function getW3cLink(): Hyperlink {
+  public function getW3cLink(): A {
     return Factory::w3schools()->tag($this->tag, "&lt;$this->name&gt;", $this->description);
   }
 
   /**
    * 
-   * @return Hyperlink
+   * @return A
    */
-  public function getFactoryCallLink(): Hyperlink {
+  public function getFactoryCallLink(): A {
     return Factory::sami()->classLinker($this->factory)->methodLink($this->method, true);
   }
 
   /**
    * 
-   * @return Hyperlink
+   * @return A
    */
-  public function getObjectTypeLink(): Hyperlink {
+  public function getObjectTypeLink(): A {
     //$componentReflector = new ReflectionClass($this->component);
     //$objectType = $componentReflector->getName();
     $this->getObjectType();

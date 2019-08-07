@@ -11,8 +11,8 @@
 namespace Sphp\Html\Navigation;
 
 use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
  * Implements a hyperlink container
@@ -21,7 +21,7 @@ use Sphp\Html\Navigation\HyperlinkInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterface {
+class HyperlinkContainer extends AbstractContainerTag implements Hyperlink {
 
   /**
    * Constructor
@@ -32,11 +32,11 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
    * @param  string $tagName the tag name of the component
-   * @param  Hyperlink|null $hyperlink the inner hyperlink object or null
+   * @param  A|null $hyperlink the inner hyperlink object or null
    */
-  public function __construct(string $tagName, Hyperlink $hyperlink = null) {
+  public function __construct(string $tagName, A $hyperlink = null) {
     if ($hyperlink === null) {
-      $hyperlink = new Hyperlink();
+      $hyperlink = new A();
     }
     parent::__construct($tagName, null, $hyperlink);
   }
@@ -44,9 +44,9 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
   /**
    * Returns the actual hyperlink component in the menu item component
    * 
-   * @return Hyperlink the actual hyperlink component in the menu item component
+   * @return A the actual hyperlink component in the menu item component
    */
-  public function getHyperlink(): Hyperlink {
+  public function getHyperlink(): A {
     return $this->getInnerContainer();
   }
 
@@ -54,7 +54,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getHyperlink()->getHref();
   }
 
-  public function setHref(string $href) {
+  public function setHref(string $href = null) {
     $this->getHyperlink()->setHref($href);
     return $this;
   }

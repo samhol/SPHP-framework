@@ -89,7 +89,11 @@ class ScriptCode extends AbstractScriptTag implements \ArrayAccess, \IteratorAgg
    * @return void
    */
   public function offsetSet($offset, $value): void {
-    $this->code[$offset] = $value;
+    if ($offset === null) {
+      $this->code[] = $value;
+    } else {
+      $this->code[$offset] = $value;
+    }
   }
 
   /**

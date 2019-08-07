@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Hyperlink generator pointing to online w3schools documentation
@@ -33,9 +33,9 @@ class W3schools extends AbstractLinker {
    * Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    * 
    * @param  string $tagname the HTML5 tag name
-   * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function __get(string $tagname): Hyperlink {
+  public function __get(string $tagname): A {
     return $this->tag($tagname);
   }
 
@@ -45,9 +45,9 @@ class W3schools extends AbstractLinker {
    * @param  string $tagname the HTML5 tag name
    * @param  string $linkText optional content of the link
    * @param  string $title
-   * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function tag(string $tagname, string $linkText = null, string $title = null): Hyperlink {
+  public function tag(string $tagname, string $linkText = null, string $title = null): A {
     if (preg_match('/^([h][1-6])$/', $tagname)) {
       $link = 'tags/tag_hn.asp';
     } else {
@@ -71,9 +71,9 @@ class W3schools extends AbstractLinker {
    * 
    * @param  string $attrName the HTML5 tag name
    * @param  string $linkText optional content of the link
-   * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function attr(string $attrName, string $linkText = null): Hyperlink {
+  public function attr(string $attrName, string $linkText = null): A {
     $link = "tags/att_$attrName.asp";
     if ($linkText === null) {
       $linkText = "$attrName Attribute";

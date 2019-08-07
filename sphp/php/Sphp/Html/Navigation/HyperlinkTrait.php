@@ -13,7 +13,7 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
- * Trait implements {@link HyperlinkInterface} for hyperlink functionality
+ * Trait implements Hyperlink interface for hyperlink functionality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -36,11 +36,11 @@ trait HyperlinkTrait {
    * * The href attribute specifies the URL of the page the link goes to.
    * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
-   * @param  string $href the URL of the link
+   * @param  string|null $href the URL of the link
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
-  public function setHref(string $href) {
+  public function setHref(string $href = null) {
     $this->attributes()->setAttribute('href', $href);
     return $this;
   }

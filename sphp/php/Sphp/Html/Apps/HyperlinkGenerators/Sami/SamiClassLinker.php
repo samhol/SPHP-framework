@@ -13,7 +13,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Exceptions\SphpException;
 
 /**
@@ -42,10 +42,10 @@ class SamiClassLinker extends AbstractClassLinker {
    * Returns a hyperlink object pointing to the API documentation of the given property or method
    * 
    * @param  string $name
-   * @return Hyperlink
+   * @return A
    * @throws SphpException
    */
-  public function __get(string $name): Hyperlink {
+  public function __get(string $name): A {
     if ($this->ref->hasMethod($name)) {
       return $this->methodLink($name);
     } else if ($this->ref->hasProperty($name)) {

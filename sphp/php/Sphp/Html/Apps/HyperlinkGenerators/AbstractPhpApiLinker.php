@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Exceptions\SphpException;
 
 /**
@@ -53,7 +53,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * Returns linker properties or hyperlinks
    * 
    * @param  string $name
-   * @return Hyperlink|Sami
+   * @return A|Sami
    * @throws SphpException
    */
   public function __get(string $name) {
@@ -95,7 +95,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
     return $classLinker;
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): A {
     if ($content === null) {
       $content = $url;
     }
@@ -107,9 +107,9 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    *
    * @param  string $function the name of the function
    * @param  string $linkText optional link text
-   * @return Hyperlink hyperlink object pointing to the documentation
+   * @return A hyperlink object pointing to the documentation
    */
-  public function functionLink(string $function, string $linkText = null): Hyperlink {
+  public function functionLink(string $function, string $linkText = null): A {
     if ($linkText === null) {
       $linkText = $function;
     }
@@ -123,9 +123,9 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * 
    * @param  string $constant the name of the constant
    * @param  string $linkText optional link text
-   * @return Hyperlink hyperlink object pointing to the documentation
+   * @return A hyperlink object pointing to the documentation
    */
-  public function constantLink(string $constant, string $linkText = null): Hyperlink {
+  public function constantLink(string $constant, string $linkText = null): A {
     if ($linkText === null) {
       $linkText = $constant;
     }

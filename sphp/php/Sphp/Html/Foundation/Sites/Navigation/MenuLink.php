@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Navigation\HyperlinkContainer;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Implements a hyperlink component for the menu component
@@ -41,7 +41,7 @@ class MenuLink extends HyperlinkContainer implements MenuItem {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct(string $href = '', $content = null, string $target = null) {
-    parent::__construct('li', new Hyperlink($href, $content, $target));
+    parent::__construct('li', new A($href, $content, $target));
   }
 
   /**

@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use ReflectionClass;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Hyperlink object generator pointing to an existing API documentation about a class
@@ -61,11 +61,11 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->getLink()->getHtml();
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): A {
     return parent::hyperlink($url, str_replace("\\", "\\<wbr>", $content), $title);
   }
 
-  public function getLink(string $name = null, string $title = null): Hyperlink {
+  public function getLink(string $name = null, string $title = null): A {
     if ($name === null) {
       $name = $this->ref->getShortName();
     }
@@ -84,7 +84,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->hyperlink($this->urls()->getClassUrl($longName), $name, $title);
   }
 
-  public function methodLink(string $method, bool $full = true): Hyperlink {
+  public function methodLink(string $method, bool $full = true): A {
     if ($full) {
       $text = $this->ref->getShortName() . "::$method()";
     } else {
@@ -106,13 +106,13 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->hyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title);
   }
 
-  public function constantLink(string $constName): Hyperlink {
+  public function constantLink(string $constName): A {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
     return $this->hyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title);
   }
 
-  public function namespaceLink(bool $full = true): Hyperlink {
+  public function namespaceLink(bool $full = true): A {
     $fullName = $this->ref->getNamespaceName();
     if (!$full) {
       $namespaceArray = explode('\\', $fullName);

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Defines a Hyperlink object generator pointing to an existing site 
@@ -57,7 +57,7 @@ interface LinkerInterface {
    * @param  string $content optional content of the link
    * @param  string $title optional title of the link
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   * @return Hyperlink hyperlink object pointing to an API page
+   * @return A hyperlink object pointing to an API page
    */
-  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink;
+  public function hyperlink(string $url = null, string $content = null, string $title = null): A;
 }

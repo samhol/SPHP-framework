@@ -10,8 +10,8 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Component;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Stdlib\Strings;
@@ -75,7 +75,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * @param  string $content optional content of the link
    * @param  string $title optional title of the link
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   * @return HyperlinkInterface hyperlink object pointing to an API page
+   * @return Hyperlink hyperlink object pointing to an API page
    */
   public function __invoke($url = null, $content = null, $title = null) {
     return $this->hyperlink($url, $content, $title);
@@ -111,14 +111,14 @@ abstract class AbstractLinker implements LinkerInterface {
     return $a;
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): A {
     if (!Strings::startsWith("$url", $this->urls()->getRoot())) {
       $url = $this->urls()->createUrl("$url");
     }
     if ($content === null) {
       $content = $url;
     }
-    $a = new Hyperlink($url, $content);
+    $a = new A($url, $content);
     if ($title !== null) {
       $a->attributes()->title = $title;
       //(new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');

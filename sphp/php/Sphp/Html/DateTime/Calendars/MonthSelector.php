@@ -13,7 +13,7 @@ namespace Sphp\Html\DateTime\Calendars;
 use Sphp\Html\AbstractContent;
 use Sphp\Html\Div;
 use Sphp\DateTime\Date;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Media\Icons\FaIcon;
 use Sphp\Html\Forms\Inputs\Menus\Option;
 use Sphp\Html\Adapters\TipsoAdapter;
@@ -50,7 +50,7 @@ class MonthSelector extends AbstractContent {
     $this->date = Date::from("$year-$month-1");
   }
 
-  public function createPreviousMonth(): Hyperlink {
+  public function createPreviousMonth(): A {
     $prev = $this->date->modify('-1 month');
     $monthText = "Go to {$prev->format('F Y')}";
     $content = new FaIcon('fas fa-chevron-left', $monthText);
@@ -60,7 +60,7 @@ class MonthSelector extends AbstractContent {
     return $link;
   }
 
-  public function createNextMonth(): Hyperlink {
+  public function createNextMonth(): A {
     $prev = $this->date->modify('+1 month');
     $monthText = "Go to {$prev->format('F Y')}";
     $content = new FaIcon('fas fa-chevron-right', $monthText);
@@ -70,13 +70,13 @@ class MonthSelector extends AbstractContent {
     return $link;
   }
 
-  public function createMonthLink(Date $month, $content = null): Hyperlink {
+  public function createMonthLink(Date $month, $content = null): A {
     $monthText = "Go to {$month->format('F Y')}";
     $href = "/calendar/" . $month->getYear() . "/" . $month->getMonth();
     if ($content === null) {
       $content = $monthText;
     }
-    $link = new Hyperlink($href, $content);
+    $link = new A($href, $content);
     $tip= new TipsoAdapter($link);
     $tip->setOption('titleContent', $monthText);
     return $link;

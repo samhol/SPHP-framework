@@ -15,19 +15,19 @@ use Sphp\Html\Content;
 use IteratorAggregate;
 use Traversable;
 use Sphp\Html\Iterator;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Implements brand icon links bar
  * 
- * @method \Sphp\Html\Navigation\Hyperlink facebook(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
- * @method \Sphp\Html\Navigation\Hyperlink twitter(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
- * @method \Sphp\Html\Navigation\Hyperlink googlePlus(string $url, string $screenReaderLabel = null) creates a hyperlink new icon object
- * @method \Sphp\Html\Navigation\Hyperlink github(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
- * @method \Sphp\Html\Navigation\Hyperlink tumblr(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
- * @method \Sphp\Html\Navigation\Hyperlink stumbleupon(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
- * @method \Sphp\Html\Navigation\Hyperlink pinterest(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
- * @method \Sphp\Html\Navigation\Hyperlink blogger(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A facebook(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A twitter(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A googlePlus(string $url, string $screenReaderLabel = null) creates a hyperlink new icon object
+ * @method \Sphp\Html\Navigation\A github(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A tumblr(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A stumbleupon(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A pinterest(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
+ * @method \Sphp\Html\Navigation\A blogger(string $url, string $screenReaderLabel = null) creates a new hyperlink icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -36,7 +36,7 @@ use Sphp\Html\Navigation\Hyperlink;
 class IconButtons extends AbstractComponent implements Content, IteratorAggregate {
 
   /**
-   * @var Hyperlink[]
+   * @var A[]
    */
   private $icons;
 
@@ -64,7 +64,7 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
     unset($this->icons);
   }
 
-  public function __call(string $name, array $arguments): Hyperlink {
+  public function __call(string $name, array $arguments): A {
     $url = array_shift($arguments);
     $screenReaderText = array_shift($arguments);
     $target = array_shift($arguments);
@@ -73,9 +73,9 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
     return $this->appendIcon($url, $icon, $target)->addCssClass($name);
   }
 
-  public function appendLink(string $url, string $icon, string $screenreaderText = null): Hyperlink {
+  public function appendLink(string $url, string $icon, string $screenreaderText = null): A {
     $this->fa->get($icon, $screenreaderText);
-    return new Hyperlink($url, $icon);
+    return new A($url, $icon);
   }
 
   /**
@@ -84,10 +84,10 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
    * @param  string $url the URL of the link
    * @param  Icon $icon the icon object acting as link
    * @param  string|null $target optional target of the hyperlink
-   * @return Hyperlink
+   * @return A
    */
-  protected function appendIcon(string $url, Icon $icon, string $target = null): Hyperlink {
-    $hyperlink = new Hyperlink($url, $icon, $target);
+  protected function appendIcon(string $url, Icon $icon, string $target = null): A {
+    $hyperlink = new A($url, $icon, $target);
     $hyperlink->addCssClass('sphp', 'icon-button');
     $this->icons[] = $hyperlink;
     return $hyperlink;

@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
 
 /**
@@ -36,7 +36,7 @@ class PHPManual extends AbstractPhpApiLinker {
     parent::__construct($urlGenerator, PHPManualClassLinker::class, $namespace);
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): A {
     if ($title === null) {
       $title = 'PHP manual';
     } else {
@@ -50,9 +50,9 @@ class PHPManual extends AbstractPhpApiLinker {
    *
    * @param  string $extName the name of the PHP extension (case insensitive)
    * @param  string $linkText optional link text
-   * @return Hyperlink hyperlink object pointing to the PHP documentation
+   * @return A hyperlink object pointing to the PHP documentation
    */
-  public function extensionLink(string $extName, $linkText = null): Hyperlink {
+  public function extensionLink(string $extName, $linkText = null): A {
     $path = strtolower($extName);
     if ($linkText === null) {
       $linkText = $extName;
@@ -65,9 +65,9 @@ class PHPManual extends AbstractPhpApiLinker {
    *
    * @param  mixed|string $type the PHP type or the name of the PHP type
    * @param  string $linkText optional link text
-   * @return Hyperlink hyperlink object pointing to the PHP documentation
+   * @return A hyperlink object pointing to the PHP documentation
    */
-  public function typeLink($type, string $linkText = null): Hyperlink {
+  public function typeLink($type, string $linkText = null): A {
     $typename = strtolower(gettype($type));
     if ($typename === 'string') {
       $typename = strtolower($type);
@@ -91,10 +91,10 @@ class PHPManual extends AbstractPhpApiLinker {
    * Returns a hyperlink object pointing to the PHP control structure in the PHP documentation
    *
    * @param  string $controlName the name of the PHP control structure (case insensitive)
-   * @return Hyperlink hyperlink object pointing to the PHP control structure in the PHP
+   * @return A hyperlink object pointing to the PHP control structure in the PHP
    *         documentation
    */
-  public function controlStructLink(string $controlName): Hyperlink {
+  public function controlStructLink(string $controlName): A {
     $path = strtolower($controlName);
     return $this->hyperlink($this->urls()->createUrl("control-structures.$path"), $controlName, $controlName);
   }

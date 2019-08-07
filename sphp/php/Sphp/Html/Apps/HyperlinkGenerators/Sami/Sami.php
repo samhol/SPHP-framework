@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 
 use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Adapters\QtipAdapter;
@@ -24,7 +24,7 @@ use Sphp\Exceptions\SphpException;
  * @link    https://github.com/FriendsOfPHP/Sami Sami: an API documentation generator
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
- * @see Hyperlink
+ * @see A
  */
 class Sami extends AbstractPhpApiLinker {
 
@@ -46,9 +46,9 @@ class Sami extends AbstractPhpApiLinker {
    *
    * @param  string $namespace namespace name
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
-   * @return Hyperlink hyperlink object pointing to an API namespace page1
+   * @return A hyperlink object pointing to an API namespace page1
    */
-  public function namespaceLink(string $namespace, bool $fullName = true): Hyperlink {
+  public function namespaceLink(string $namespace, bool $fullName = true): A {
     if ($fullName) {
       $name = $namespace;
     } else {

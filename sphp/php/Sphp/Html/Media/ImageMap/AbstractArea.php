@@ -12,6 +12,7 @@ namespace Sphp\Html\Media\ImageMap;
 
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Navigation\HyperlinkTrait;
+use Sphp\Html\Attributes\PatternAttribute;
 
 /**
  * Implements an HTML &lt;area&gt; tag
@@ -31,24 +32,12 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @param string|null $href the URL of the link
    * @param string|null $alt
    */
-  public function __construct(string $shape, string $href = null, string $alt = null) {
+  public function __construct(string $shape, string $pattern = '/^(\d+(,\d+)*)?$/') {
     parent::__construct('area');
-    $this->attributes()->setInstance(new CoordinateAttribute('coords'));
+    $this->attributes()->setInstance(new PatternAttribute('coords', $pattern));
     $this->attributes()->protect('shape', $shape);
-    if ($href !== null) {
-      $this->setHref($href);
-    }
-    if ($alt !== null) {
-      $this->setAlt($alt);
-    }
   }
 
-  /**
-   * Returns the shape of the area
-   * 
-   * @return string the shape of the area
-   * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
-   */
   public function getShape(): string {
     return $this->attributes()->getValue('shape');
   }
@@ -56,52 +45,23 @@ abstract class AbstractArea extends EmptyTag implements Area {
   /**
    * Returns the coordinates of the area
    * 
-   * @return CoordinateAttribute the coordinates of the area
+   * @return int[] the coordinates of the area
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
-  public function getCoordinates(): CoordinateAttribute {
-    return $this->attributes()->getObject('coords');
+  public function getCoordinates(): array {
+    $coordsString = $this->attributes()->getObject('coords');
+    if($coordsString !== null) {
+      return explode(',', $coordsString);
+    }
+    return [];
   }
 
-  /**
-   * Specifies the alternate text for the area, if the image cannot be displayed
-   *
-   * **Definition and Usage:**
-   *
-   *  The alt attribute specifies an alternate text for an area, if the image 
-   * cannot be displayed. The `alt` attribute provides alternative information for 
-   * an image if a user for some reason cannot view it (because of slow 
-   * connection, an error in the src attribute, or if the user uses a screen 
-   * reader). 
-   * 
-   * The `alt` attribute is required if the `href` attribute is present.
-   *
-   * @param  string $alt the alternate text for an image
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
-   */
-  public function setAlt($alt) {
+  public function setAlt(string $alt = null) {
     $this->attributes()->setAttribute('alt', $alt);
     return $this;
   }
 
-  /**
-   * Returns the alternate text for the area, if the image cannot be displayed
-   * 
-   * **Definition and Usage:**
-   *
-   *  The alt attribute specifies an alternate text for an area, if the image 
-   * cannot be displayed. The `alt` attribute provides alternative information for 
-   * an image if a user for some reason cannot view it (because of slow 
-   * connection, an error in the src attribute, or if the user uses a screen 
-   * reader). 
-   * 
-   * The `alt` attribute is required if the `href` attribute is present.
-   *
-   * @return string the value of the alt attribute
-   * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
-   */
-  public function getAlt() {
+  public function getAlt(): ?string {
     return $this->attributes()->getValue('alt');
   }
 

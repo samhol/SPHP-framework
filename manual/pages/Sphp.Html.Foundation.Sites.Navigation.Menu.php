@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Navigation\Hyperlink;
 $w3c = \Sphp\Manual\w3schools();
-$hyperlinkIfLink = \Sphp\Manual\api()->classLinker(HyperlinkInterface::class);
+$hyperlinkIfLink = \Sphp\Manual\api()->classLinker(Hyperlink::class);
 $menu = \Sphp\Manual\api()->classLinker(Menu::class);
 $flexibleMenu = \Sphp\Manual\api()->classLinker(FlexibleMenu::class);
 $drilldownMenu = \Sphp\Manual\api()->classLinker(FlexibleMenu::class)->createDrilldown;

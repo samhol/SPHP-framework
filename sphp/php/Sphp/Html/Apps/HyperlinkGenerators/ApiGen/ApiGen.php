@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\ApiGen;
 
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 
@@ -21,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
  * @link    http://www.apigen.org/ ApiGen
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
- * @see Hyperlink
+ * @see A
  */
 class ApiGen extends AbstractPhpApiLinker {
 
@@ -37,7 +37,7 @@ class ApiGen extends AbstractPhpApiLinker {
     parent::__construct($urlGenerator);
   }
 
-  public function constantLink(string $constant, string $linkText = null): Hyperlink {
+  public function constantLink(string $constant, string $linkText = null): A {
     if ($linkText === null) {
       $linkText = $constant;
     }
@@ -50,9 +50,9 @@ class ApiGen extends AbstractPhpApiLinker {
    *
    * @param  string $namespace namespace name
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
-   * @return Hyperlink hyperlink object pointing to an API namespace page
+   * @return A hyperlink object pointing to an API namespace page
    */
-  public function namespaceLink(string $namespace, string $fullName = true): Hyperlink {
+  public function namespaceLink(string $namespace, string $fullName = true): A {
     if ($fullName) {
       $name = $namespace;
     } else {

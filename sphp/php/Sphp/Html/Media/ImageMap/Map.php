@@ -14,6 +14,7 @@ use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Traversable;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements an HTML &lt;map&gt; tag
@@ -41,19 +42,13 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    * Constructor
    *
    * @param  string $name the value of the name attribute
-   * @param  null|Area|Area[] $areas the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
-  public function __construct(string $name = null, $areas = null) {
+  public function __construct(string $name = null) {
     parent::__construct('map');
     $this->attributes()->demand('name');
     if ($name !== null) {
       $this->setName($name);
-    }
-    if ($areas !== null) {
-      foreach (is_array($areas) ? $areas : [$areas] as $area) {
-        $this->append($area);
-      }
     }
   }
 
@@ -90,11 +85,11 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    *
    * @param  Area $area the to add
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the area object already exists in the map
+   * @throws InvalidArgumentException if the area object already exists in the map
    */
   public function append(Area $area) {
     if (in_array($area, $this->areas, true)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('Identical ' . $area->getShape() . ' object already exists in the map');
+      throw new InvalidArgumentException('Identical ' . $area->getShape() . ' object already exists in the map');
     }
     $this->areas[] = $area;
     return $this;
@@ -107,6 +102,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    * @param  string|null $href
    * @param  string|null $alt
    * @return Polygon new instance
+   * @throws InvalidArgumentException if the area object already exists in the map
    */
   public function appendPolygon(array $coords = null, string $href = null, string $alt = null): Polygon {
     $area = new Polygon($coords, $href, $alt);
@@ -121,6 +117,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    * @param  string|null $href
    * @param  string|null $alt
    * @return Circle new instance
+   * @throws InvalidArgumentException if the area object already exists in the map
    */
   public function appendCircle(array $coords = null, string $href = null, string $alt = null): Circle {
     $area = new Circle($coords, $href, $alt);
@@ -135,6 +132,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    * @param  string|null $href
    * @param  string|null $alt
    * @return Circle new instance
+   * @throws InvalidArgumentException if the area object already exists in the map
    */
   public function appendRectagle(array $coords = null, string $href = null, string $alt = null): Rectangle {
     $area = new Rectangle($coords, $href, $alt);

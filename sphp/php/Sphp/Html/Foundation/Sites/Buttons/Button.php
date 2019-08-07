@@ -15,7 +15,7 @@ use Sphp\Html\CssClassifiableContent;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\Resetter;
 use Sphp\Html\Forms\Buttons\Button as PushButton;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 use Sphp\Html\Span;
 use ReflectionClass;
 
@@ -96,7 +96,7 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Butt
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public static function hyperlink($href = null, $content = null, $target = null): Button {
-    return new static(new Hyperlink($href, $content, $target));
+    return new static(new A($href, $content, $target));
   }
 
   /**

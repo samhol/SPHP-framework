@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Defines the basic properties of an HTML &lt;area&gt; tag
@@ -19,7 +19,7 @@ use Sphp\Html\Navigation\HyperlinkInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Area extends HyperlinkInterface {
+interface Area extends Hyperlink {
 
   /**
    * Returns the shape of the area
@@ -42,11 +42,11 @@ interface Area extends HyperlinkInterface {
    * 
    * The `alt` attribute is required if the `href` attribute is present.
    *
-   * @param  string $alt the alternate text for an image
+   * @param  string|null $alt the alternate text for an image
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
-  public function setAlt($alt);
+  public function setAlt(string $alt = null);
 
   /**
    * Returns the alternate text for the area, if the image cannot be displayed
@@ -61,8 +61,8 @@ interface Area extends HyperlinkInterface {
    * 
    * The `alt` attribute is required if the `href` attribute is present.
    *
-   * @return string the value of the alt attribute
+   * @return string|null the value of the alt attribute
    * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
-  public function getAlt();
+  public function getAlt(): ?string;
 }

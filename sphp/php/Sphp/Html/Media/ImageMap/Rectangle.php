@@ -30,40 +30,9 @@ class Rectangle extends AbstractArea {
    * @param string $alt
    */
   public function __construct(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, string $href = null, string $alt = null) {
-    parent::__construct('area', $href, $alt);
+    parent::__construct('area', '/^(\d+(,\d+){3})*$/');
+     $this->setHref($href)->setAlt($alt);
     $this->setCoordinates($x1, $y1, $x2, $y2);
-  }
-
-  /**
-   * Sets the top left coordinates of the rectangle
-   * 
-   * @param  int $x the top left x-coordinate
-   * @param  int $y the top left y-coordinate
-   * @return $this for a fluent interface
-   */
-  public function setTopLeft(int $x, int $y) {
-    $coords = split(',', $this->getCoordinates());
-    $coords[0] = $x;
-    $coords[1] = $y;
-    $coordsString = implode(',', $coords);
-    $this->attributes()->setAttribute('coords', $coordsString);
-    return $this;
-  }
-
-  /**
-   * Sets the bottom right coordinates of the rectangle
-   * 
-   * @param  int $x the bottom right x-coordinate
-   * @param  int $y the bottom right y-coordinate
-   * @return $this for a fluent interface
-   */
-  public function setBottomRight(int $x, int $y) {
-    $coords = split(',', $this->getCoordinates());
-    $coords[2] = $x;
-    $coords[3] = $y;
-    $coordsString = implode(',', $coords);
-    $this->attributes()->setAttribute('coords', $coordsString);
-    return $this;
   }
 
   /**
@@ -76,8 +45,7 @@ class Rectangle extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function setCoordinates(int $x1, int $y1, int $x2, int $y2) {
-    $coords = [$x1, $y1, $x2, $y2];
-    $this->attributes()->getObject('coords')->setValue($coords);
+    $this->setAttribute('coords', "$x1,$y1,$x2,$y2");
     return $this;
   }
 

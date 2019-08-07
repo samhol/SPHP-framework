@@ -11,7 +11,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\A;
 
 /**
  * Implements a Foundation navigation submenu
@@ -29,7 +29,7 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
   /**
    * The root component
    *
-   * @var Hyperlink
+   * @var A
    */
   private $rootlink;
 
@@ -41,7 +41,7 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
   /**
    * Constructor
    *
-   * @param null|string|Hyperlink $root root content
+   * @param null|string|A $root root content
    * @param Menu $menu
    */
   public function __construct($root = null, Menu $menu = null) {
@@ -61,14 +61,14 @@ class SubMenu extends AbstractComponent implements MenuItem, Menu {
   /**
    * Sets the root component of the menu
    *
-   * @param string|Hyperlink $root root content
+   * @param string|A $root root content
    * @return $this for a fluent interface
    */
   public function setRoot($root) {
-    if ($root instanceof Hyperlink) {
+    if ($root instanceof A) {
       $this->rootlink = $root;
     } else {
-      $this->rootlink = new Hyperlink('#', $root);
+      $this->rootlink = new A('#', $root);
     }
     return $this;
   }

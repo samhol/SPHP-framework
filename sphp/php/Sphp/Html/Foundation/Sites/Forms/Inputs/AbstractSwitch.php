@@ -214,4 +214,8 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
     return $this;
   }
 
+  public function isChecked(): bool {
+    return $this->input->isChecked();
+  }
+
 }
