@@ -19,7 +19,7 @@ use Sphp\Html\Navigation\A;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface LinkerInterface {
+interface Linker {
 
   /**
    * Returns the component as HTML-markup string

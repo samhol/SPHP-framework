@@ -35,13 +35,6 @@ class UrlGenerator implements UrlGeneratorInterface {
     $this->root = $root;
   }
 
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->root);
-  }
-
   public function getRoot(): string {
     return $this->root;
   }

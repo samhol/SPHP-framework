@@ -13,7 +13,6 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Component;
-use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -23,7 +22,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractLinker implements LinkerInterface {
+abstract class AbstractLinker implements Linker {
 
   /**
    * the URL pointing to the API documentation root

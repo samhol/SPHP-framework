@@ -218,7 +218,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function objectData(): array {
     return [
-        [new MultiValueAttribute("data-foo")],
         [new PropertyCollectionAttribute("data-bar")],
         [new PropertyCollectionAttribute("style")],
         [(new ClassAttribute("class"))->add("a b c")],

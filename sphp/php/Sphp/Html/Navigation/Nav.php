@@ -34,13 +34,4 @@ class Nav extends ContainerTag {
     parent::__construct('nav', $content);
   }
 
-  /**
-   * Returns the hyperlink sub components
-   *
-   * @return TraversableContent containing {@link Hyperlink} sub components
-   */
-  public function hyperlinks(): TraversableContent {
-    return $this->getComponentsByObjectType(Hyperlink::class);
-  }
-
 }
