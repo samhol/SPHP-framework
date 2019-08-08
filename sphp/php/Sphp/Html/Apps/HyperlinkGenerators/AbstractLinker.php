@@ -64,7 +64,7 @@ abstract class AbstractLinker implements Linker {
   }
 
   public function __toString(): string {
-    return $this->hyperlink()->getHtml();
+    return (string) $this->hyperlink();
   }
 
   /**
@@ -73,10 +73,9 @@ abstract class AbstractLinker implements Linker {
    * @param  string $url optional path from the root to the resource
    * @param  string $content optional content of the link
    * @param  string $title optional title of the link
-   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    * @return Hyperlink hyperlink object pointing to an API page
    */
-  public function __invoke($url = null, $content = null, $title = null) {
+  public function __invoke(string $url = null, string $content = null, string $title = null): A {
     return $this->hyperlink($url, $content, $title);
   }
 
@@ -84,16 +83,12 @@ abstract class AbstractLinker implements Linker {
     return $this->urlGenerator;
   }
 
-  public function createUrl($relative) {
-    return $this->urlGenerator->createUrl($relative);
-  }
-
-  public function setDefaultHyperlinkAttributes(array $attributes) {
+  public function useAttributes(array $attributes) {
     $this->attributes = $attributes;
     return $this;
   }
 
-  public function getDefaultHyperlinkAttributes(): array {
+  public function getAttributes(): array {
     return $this->attributes;
   }
 
@@ -103,7 +98,7 @@ abstract class AbstractLinker implements Linker {
    * @param  Component $a the component to modify
    * @return Component returns the modified component
    */
-  public function insertDefaultsTo(Component $a): Component {
+  public function insertAttributesTo(Component $a): Component {
     if (!empty($this->attributes)) {
       $a->attributes()->merge($this->attributes);
     }
@@ -111,7 +106,7 @@ abstract class AbstractLinker implements Linker {
   }
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): A {
-    if (!Strings::startsWith("$url", $this->urls()->getRoot())) {
+    if (!Strings::startsWith("$url", (string) $this->urls()->getRoot())) {
       $url = $this->urls()->createUrl("$url");
     }
     if ($content === null) {
@@ -122,7 +117,7 @@ abstract class AbstractLinker implements Linker {
       $a->attributes()->title = $title;
       //(new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');
     }
-    $this->insertDefaultsTo($a);
+    $this->insertAttributesTo($a);
     return $a;
   }
 

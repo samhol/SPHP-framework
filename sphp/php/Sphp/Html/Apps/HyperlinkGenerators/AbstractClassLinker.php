@@ -31,14 +31,20 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
   protected $ref;
 
   /**
+   * @var ApiUrlGenerator
+   */
+  private $classUrlGenerator;
+
+  /**
    * Constructor
    *
    * @param string $class class name or object
-   * @param ApiUrlGeneratorInterface $pathParser
+   * @param ApiUrlGenerator $pathParser
    */
-  public function __construct(string $class, ApiUrlGeneratorInterface $pathParser) {
+  public function __construct(string $class, ApiUrlGenerator $pathParser) {
     parent::__construct($pathParser);
     $this->ref = new ReflectionClass($class);
+    $this->classUrlGenerator = $pathParser;
   }
 
   /**
@@ -61,27 +67,34 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->getLink()->getHtml();
   }
 
+  public function classUrlGenerator(): ApiUrlGenerator {
+    return $this->classUrlGenerator;
+  }
+
   public function hyperlink(string $url = null, string $content = null, string $title = null): A {
     return parent::hyperlink($url, str_replace("\\", "\\<wbr>", $content), $title);
   }
 
-  public function getLink(string $name = null, string $title = null): A {
+  public function getLink(string $name = null): A {
     if ($name === null) {
       $name = $this->ref->getShortName();
     }
     $longName = $this->ref->getName();
-    if ($title === null) {
-      if ($this->ref->isInterface()) {
-        $title = "Interface $longName";
-      } else if ($this->ref->isTrait()) {
-        $title = "Trait $longName";
-      } else if ($this->ref->isAbstract()) {
-        $title = "Abstract class $longName";
-      } else {
-        $title = "Class $longName";
-      }
+    $classes = [];
+    if ($this->ref->isInterface()) {
+      $title = "Interface $longName";
+      $classes[] = 'interface';
+    } else if ($this->ref->isTrait()) {
+      $title = "Trait $longName";
+      $classes[] = 'trait';
+    } else if ($this->ref->isAbstract()) {
+      $title = "Abstract class $longName";
+      $classes[] = 'abstract-class';
+    } else {
+      $title = "Class $longName";
+      $classes[] = 'instantiable-class';
     }
-    return $this->hyperlink($this->urls()->getClassUrl($longName), $name, $title);
+    return $this->hyperlink($this->urls()->getClassUrl($longName), $name, $title)->addCssClass($classes);
   }
 
   public function methodLink(string $method, bool $full = true): A {
@@ -91,19 +104,26 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
       $text = "$method()";
     }
     $fullClassName = $this->ref->getName();
+    $classes = ['php-class'];
     try {
       $reflectedMethod = $this->ref->getMethod($method);
       if ($reflectedMethod->isConstructor()) {
         $title = "The $fullClassName constructor";
+        $classes[] = 'constructor';
+      } else if ($reflectedMethod->isDestructor()) {
+        $title = "The $fullClassName destructor";
+        $classes[] = 'destructor';
       } else if ($reflectedMethod->isStatic()) {
         $title = "Static method: $fullClassName::$reflectedMethod->name()";
+        $classes[] = 'static-method';
       } else {
         $title = "Instance method: $fullClassName::$reflectedMethod->name()";
+        $classes[] = 'instance-method';
       }
     } catch (\Exception $ex) {
       $title = "Method: $fullClassName::$method()";
     }
-    return $this->hyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title);
+    return $this->hyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass($classes);
   }
 
   public function constantLink(string $constName): A {

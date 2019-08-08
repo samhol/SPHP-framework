@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators\Sami;
 
 use Sphp\Html\Apps\HyperlinkGenerators\UrlGenerator;
-use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGeneratorInterface;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGenerator;
 
 /**
  * URL string generator pointing to an existing Sami documentation
@@ -21,7 +21,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGeneratorInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SamiUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface {
+class SamiUrlGenerator extends UrlGenerator implements ApiUrlGenerator {
 
   public function getClassUrl(string $class): string {
     $path = str_replace('\\', '/', $class);

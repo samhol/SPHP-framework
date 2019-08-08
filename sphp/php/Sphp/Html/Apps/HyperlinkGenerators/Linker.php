@@ -34,14 +34,14 @@ interface Linker {
    * @param array $attributes the default attributes
    * @return $this for a fluent interface
    */
-  public function setDefaultHyperlinkAttributes(array $attributes);
+  public function useAttributes(array $attributes);
 
   /**
    * Returns the default attributes for generated hyperlink objects
    * 
    * @return array the default attributes for generated hyperlink objects
    */
-  public function getDefaultHyperlinkAttributes(): array;
+  public function getAttributes(): array;
 
   /**
    * Returns the URL generator pointing to the API documentation

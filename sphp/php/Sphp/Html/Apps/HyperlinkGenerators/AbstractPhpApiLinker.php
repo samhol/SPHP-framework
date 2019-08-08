@@ -35,12 +35,12 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
   /**
    * Constructor
    *
-   * @param  ApiUrlGeneratorInterface $urlGenerator
+   * @param  ApiUrlGenerator $urlGenerator
    * @param  string $classLinkerType
    * @param  string $namespace
    * @throws SphpException
    */
-  public function __construct(ApiUrlGeneratorInterface $urlGenerator, string $classLinkerType, string $namespace = null) {
+  public function __construct(ApiUrlGenerator $urlGenerator, string $classLinkerType, string $namespace = null) {
     $this->ns = $namespace;
     if (!is_a($classLinkerType, ClassLinker::class, true)) {
       throw new SphpException("$classLinkerType in not a subtype of " . ClassLinker::class);
@@ -67,7 +67,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
       return $this->constantLink($test);
     } else {
       $chain = new static($this->urls(), $this->ns . "\\$name");
-      $chain->setDefaultHyperlinkAttributes($this->getDefaultHyperlinkAttributes());
+      $chain->useAttributes($this->getAttributes());
       return $chain;
     }
   }
@@ -91,7 +91,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
         throw new SphpException("Class '$class' does not exist");
       }
     }
-    $classLinker->setDefaultHyperlinkAttributes($this->getDefaultHyperlinkAttributes());
+    $classLinker->useAttributes($this->getAttributes());
     return $classLinker;
   }
 

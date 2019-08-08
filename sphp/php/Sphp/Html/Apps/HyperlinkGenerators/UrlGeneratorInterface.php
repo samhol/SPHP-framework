@@ -22,9 +22,9 @@ interface UrlGeneratorInterface {
   /**
    * Returns the URL pointing to the root of the page
    *
-   * @return string the URL pointing to the API documentation
+   * @return string|null the URL pointing to the API documentation
    */
-  public function getRoot(): string;
+  public function getRoot(): ?string;
 
   /**
    * Creates an URL string pointing to the resource

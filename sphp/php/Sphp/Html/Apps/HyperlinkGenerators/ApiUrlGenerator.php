@@ -17,7 +17,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ApiUrlGeneratorInterface extends UrlGeneratorInterface {
+interface ApiUrlGenerator extends UrlGeneratorInterface {
 
   /**
    * Returns the URL pointing to the API page of the given class

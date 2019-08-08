@@ -73,8 +73,8 @@ class Sami extends AbstractPhpApiLinker {
       $currentNamespaceArray[] = $name;
       $path = implode("/", $currentNamespaceArray);
       $root = implode("\\", $currentNamespaceArray);
-      $breadCrumb = new BreadCrumb($this->createUrl("$path.html"), $name);
-      $this->insertDefaultsTo($breadCrumb);
+      $breadCrumb = new BreadCrumb($this->urls()->createUrl("$path.html"), $name);
+      $this->insertAttributesTo($breadCrumb);
       (new QtipAdapter($breadCrumb))->setQtip("$root Namespace")->setQtipPosition('bottom center', 'top center');
       //$breadCrumb->setTitle("$root Namespace");
       $breadGrumbs->append($breadCrumb);

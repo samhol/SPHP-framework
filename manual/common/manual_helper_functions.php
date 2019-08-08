@@ -53,7 +53,7 @@ function createPage(string $page): string {
     $content = (new ThrowableCalloutBuilder())->showInitialFile()->showTrace()->buildCallout($e);
   }
   ob_end_clean();
-  return '<section class="main">'.$content.'</section>';
+  return '<section class="main">' . $content . '</section>';
 }
 
 /**
@@ -78,7 +78,9 @@ use Sphp\Html\Apps\HyperlinkGenerators\FoundationDocsLinker;
  * @return Sami 
  */
 function api(): Sami {
-  return Factory::sami('http://playground.samiholck.com/API/sami/');
+  $instance = Factory::sami('http://playground.samiholck.com/API/sami/');
+  $instance->useAttributes(['class' => 'api sphp']);
+  return $instance;
 }
 
 /**
@@ -87,7 +89,9 @@ function api(): Sami {
  * @return PHPManual 
  */
 function php(): PHPManual {
-  return Factory::phpManual();
+  $instance = Factory::phpManual();
+  $instance->useAttributes(['class' => 'api php']);
+  return $instance;
 }
 
 /**
@@ -96,7 +100,9 @@ function php(): PHPManual {
  * @return W3schools 
  */
 function w3schools(): W3schools {
-  return Factory::w3schools();
+  $instance = Factory::w3schools();
+  $instance->useAttributes(['class' => 'api']);
+  return $instance;
 }
 
 /**

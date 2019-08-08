@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators\ApiGen;
 
 use Sphp\Html\Apps\HyperlinkGenerators\UrlGenerator;
-use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGeneratorInterface;
+use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGenerator;
 
 /**
  * ApiGen URL string generator pointing to an existing ApiGen documentation
@@ -21,7 +21,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGeneratorInterface;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface {
+class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGenerator {
 
   public function getClassUrl(string $class): string {
     $path = str_replace('\\', '.', $class);

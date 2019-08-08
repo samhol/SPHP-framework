@@ -31,11 +31,11 @@ class UrlGenerator implements UrlGeneratorInterface {
    *
    * @param string $root the URL pointing to the API documentation
    */
-  public function __construct(string $root = '') {
+  public function __construct(string $root = null) {
     $this->root = $root;
   }
 
-  public function getRoot(): string {
+  public function getRoot(): ?string {
     return $this->root;
   }
 
@@ -45,7 +45,7 @@ class UrlGenerator implements UrlGeneratorInterface {
    * @param  string $root the site root
    * @return $this for a fluent interface
    */
-  protected function setRoot(string $root) {
+  protected function setRoot(string $root = null) {
     $this->root = $root;
     return $this;
   }
