@@ -19,7 +19,7 @@ use Sphp\Html\Navigation\A;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface ClassLinker extends Linker {
+interface ClassLinker {
 
   /**
    * Returns a hyperlink object pointing to an API class page

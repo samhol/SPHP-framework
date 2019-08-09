@@ -12,6 +12,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use ReflectionClass;
 use Sphp\Html\Navigation\A;
+use Sphp\Html\Component;
 
 /**
  * Hyperlink object generator pointing to an existing API documentation about a class
@@ -21,7 +22,7 @@ use Sphp\Html\Navigation\A;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker {
+abstract class AbstractClassLinker implements ClassLinker {
 
   /**
    * class reflector
@@ -36,43 +37,69 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
   private $classUrlGenerator;
 
   /**
+   * @var array
+   */
+  private $attributes = [];
+
+  /**
    * Constructor
    *
    * @param string $class class name or object
    * @param ApiUrlGenerator $pathParser
    */
   public function __construct(string $class, ApiUrlGenerator $pathParser) {
-    parent::__construct($pathParser);
     $this->ref = new ReflectionClass($class);
     $this->classUrlGenerator = $pathParser;
   }
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Destructor
    */
   public function __destruct() {
-    unset($this->ref);
-    parent::__destruct();
+    unset($this->classUrlGenerator, $this->ref, $this->attributes);
   }
 
   public function __clone() {
     $this->ref = new ReflectionClass($this->ref->getName());
-    parent::__clone();
+    $this->classUrlGenerator = clone $this->classUrlGenerator;
   }
 
   public function __toString(): string {
     return $this->getLink()->getHtml();
   }
 
-  public function classUrlGenerator(): ApiUrlGenerator {
+  public function useAttributes(array $attributes) {
+    $this->attributes = $attributes;
+    return $this;
+  }
+
+  /**
+   * Sets the default attributes to a given component
+   * 
+   * @param  Component $a the component to modify
+   * @return Component returns the modified component
+   */
+  public function insertAttributesTo(Component $a): Component {
+    if (!empty($this->attributes)) {
+      $a->attributes()->merge($this->attributes);
+    }
+    return $a;
+  }
+
+  public function urls(): ApiUrlGenerator {
     return $this->classUrlGenerator;
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null): A {
-    return parent::hyperlink($url, str_replace("\\", "\\<wbr>", $content), $title);
+  protected function buildHyperlink(string $url, string $content, string $title): A {
+    if ($content === null) {
+      $content = $url;
+    }
+    $a = new A($url, str_replace("\\", "\\<wbr>", $content));
+    if ($title !== null) {
+      $a->attributes()->title = $title;
+    }
+    $this->insertAttributesTo($a);
+    return $a;
   }
 
   public function getLink(string $name = null): A {
@@ -94,7 +121,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
       $title = "Class $longName";
       $classes[] = 'instantiable-class';
     }
-    return $this->hyperlink($this->urls()->getClassUrl($longName), $name, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getClassUrl($longName), $name, $title)->addCssClass($classes);
   }
 
   public function methodLink(string $method, bool $full = true): A {
@@ -123,13 +150,14 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     } catch (\Exception $ex) {
       $title = "Method: $fullClassName::$method()";
     }
-    return $this->hyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass($classes);
   }
 
   public function constantLink(string $constName): A {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
-    return $this->hyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title);
+    $classes = ['php-class', 'constant'];
+    return $this->buildHyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title)->addCssClass($classes);
   }
 
   public function namespaceLink(bool $full = true): A {
@@ -141,7 +169,8 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
       $name = $fullName;
     }
     $title = "$fullName namespace";
-    return $this->hyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title);
+    $classes = ['php-class', 'namespace'];
+    return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass($classes);
   }
 
 }

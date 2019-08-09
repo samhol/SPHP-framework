@@ -30,7 +30,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * 
    * @param string $shape
    * @param string|null $href the URL of the link
-   * @param string|null $alt
+   * @param string $pattern
    */
   public function __construct(string $shape, string $pattern = '/^(\d+(,\d+)*)?$/') {
     parent::__construct('area');

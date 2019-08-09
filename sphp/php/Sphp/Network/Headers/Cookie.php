@@ -99,6 +99,7 @@ class Cookie implements Header {
    * Prepares a new cookie
    *
    * @param string $name the name of the cookie which is also the key for future accesses via `$_COOKIE[...]`
+   * @param mixed $value
    * @throws InvalidArgumentException if The name of the cookie is invalid
    */
   public function __construct(string $name, $value = null) {

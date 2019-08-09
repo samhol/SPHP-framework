@@ -13,7 +13,6 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Component;
-use Sphp\Stdlib\Strings;
 
 /**
  * Hyperlink generator pointing to an existing API documentation
@@ -106,16 +105,13 @@ abstract class AbstractLinker implements Linker {
   }
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): A {
-    if (!Strings::startsWith("$url", (string) $this->urls()->getRoot())) {
-      $url = $this->urls()->createUrl("$url");
-    }
+    $theUrl = $this->urls()->createUrl("$url");
     if ($content === null) {
-      $content = $url;
+      $content = $theUrl;
     }
-    $a = new A($url, $content);
+    $a = new A($theUrl, $content);
     if ($title !== null) {
       $a->attributes()->title = $title;
-      //(new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');
     }
     $this->insertAttributesTo($a);
     return $a;

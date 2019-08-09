@@ -98,10 +98,11 @@ class AbstractClassLinkerTest extends TestCase {
    */
   public function testClassLink(string $class, string $type) {
     $linker = $this->createLinker($class);
+    $linker->useAttributes(['foo' => 'bar']);
     $classLink = $linker->getLink();
     $this->assertTrue($classLink->attributeExists('title'));
     $this->assertSame('root/class', $classLink->getHref());
-   // echo "\n{$classLink->getAttribute('class')}\n";
+    // echo "\n{$classLink->getAttribute('class')}\n";
     $this->assertTrue($classLink->hasCssClass($type), "$class-API-link does not have '$type' as a cssclass");
   }
 
@@ -128,6 +129,43 @@ class AbstractClassLinkerTest extends TestCase {
     $this->assertTrue($classMethodLink->hasCssClass($type));
     $this->assertRegExp("/$methodName\(\)$/", $classMethodLink->contentToString());
     $this->assertRegExp("/^$methodName\(\)$/", $shortClassMethodLink->contentToString());
+  }
+
+  public function constants(): array {
+    $attrs = [];
+    $attrs[] = [\DateTime::class, 'ATOM', 'constant'];
+    $attrs[] = [\Sphp\Validators\NotEmpty::class, 'ANY_TYPE', 'constant'];
+    return $attrs;
+  }
+
+  /**
+   * @dataProvider constants
+   * @param string $constantName
+   * @param string $type
+   */
+  public function testClassConstantLink(string $class, string $constantName, string $type) {
+    $linker = $this->createLinker($class);
+    $link = $linker->constantLink($constantName);
+    $this->assertSame('root/class-constant', $link->getHref());
+    $this->assertTrue($link->attributeExists('title'));
+    $this->assertTrue($link->hasCssClass($type));
+    $this->assertRegExp("/::$constantName$/", $link->contentToString());
+  }
+
+  /**
+   * @dataProvider classTypes
+   * @param string $constantName
+   * @param string $type
+   */
+  public function testClassNamespaceLink(string $class) {
+    $linker = $this->createLinker($class);
+    $classRef = new \ReflectionClass($class);
+    $namespaceName = $classRef->getNamespaceName();
+    $link = $linker->namespaceLink();
+    $this->assertSame('root/namespace', $link->getHref());
+    $this->assertTrue($link->attributeExists('title'));
+    $this->assertSame("$namespaceName namespace", $link->getAttribute('title'));
+    $this->assertTrue($link->hasCssClass('namespace'));
   }
 
 }

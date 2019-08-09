@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * URL string generator pointing to an online site
  *
@@ -50,8 +52,11 @@ class UrlGenerator implements UrlGeneratorInterface {
     return $this;
   }
 
-  public function createUrl(string $relative = ''): string {
-    return $this->root . $relative;
+  public function createUrl(string $url = ''): string {
+    if (!Strings::startsWith($url, (string) $this->getRoot())) {
+      $url = $this->getRoot() . $url;
+    }
+    return $url;
   }
 
 }

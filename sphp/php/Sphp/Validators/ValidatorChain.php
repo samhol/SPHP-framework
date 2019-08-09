@@ -41,7 +41,8 @@ class ValidatorChain extends AbstractValidator implements Countable {
   /**
    * Constructor
    * 
-   * @param string $error error message template
+   * @param bool $breaksOnFailure
+   * @param string $error
    */
   public function __construct(bool $breaksOnFailure = true, string $error = 'Invalid value') {
     parent::__construct($error);
@@ -58,6 +59,7 @@ class ValidatorChain extends AbstractValidator implements Countable {
   }
 
   /**
+   * Magic call method
    * 
    * @param  string $name
    * @param  array $arguments

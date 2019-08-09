@@ -36,6 +36,9 @@ namespace Sphp\Validators;
  */
 class NotEmpty extends AbstractValidator {
 
+  /**
+   * Any type
+   */
   const ANY_TYPE = 0b0;
   const STRING_TYPE = 0b1;
   const SCALAR_TYPE = 0b10;
@@ -68,11 +71,14 @@ class NotEmpty extends AbstractValidator {
     }
     if ($this->type === self::STRING_TYPE) {
       $valid = is_string($value);
-    }if ($this->type === self::ARRAY_TYPE) {
+    }
+    if ($this->type === self::ARRAY_TYPE) {
       $valid = is_array($value);
-    }if ($this->type === self::TRAVERSABLE_TYPE) {
+    }
+    if ($this->type === self::TRAVERSABLE_TYPE) {
       $valid = $value instanceof \Traversable;
-    }if ($this->type === self::COUNTABLE_TYPE) {
+    }
+    if ($this->type === self::COUNTABLE_TYPE) {
       $valid = is_array($value) || $value instanceof \Countable;
     }
     if (!$valid) {

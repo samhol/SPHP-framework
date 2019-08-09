@@ -20,9 +20,9 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 interface UrlGeneratorInterface {
 
   /**
-   * Returns the URL pointing to the root of the page
+   * Returns the URL pointing to the API documentation root
    *
-   * @return string|null the URL pointing to the API documentation
+   * @return string|null the URL pointing to the API documentation root
    */
   public function getRoot(): ?string;
 
