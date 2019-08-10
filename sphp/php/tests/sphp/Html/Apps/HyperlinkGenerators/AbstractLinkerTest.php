@@ -23,12 +23,12 @@ use PHPUnit\Framework\TestCase;
 class AbstractLinkerTest extends TestCase {
 
   /**
-   * @param  HyperlinkGenerators\UrlGenerator $urlGen
-   * @return HyperlinkGenerators\AbstractLinker
+   * @param  BasicUrlGenerator $urlGen
+   * @return AbstractLinker
    */
-  public function createLinker(UrlGenerator $urlGen = null): AbstractLinker {
+  public function createLinker(BasicUrlGenerator $urlGen = null): AbstractLinker {
     if ($urlGen === null) {
-      $urlGen = new UrlGenerator();
+      $urlGen = new BasicUrlGenerator();
     }
     $linker = $this->getMockForAbstractClass(AbstractLinker::class, [$urlGen]);
     return $linker;
@@ -50,7 +50,7 @@ class AbstractLinkerTest extends TestCase {
    * @param string $title
    */
   public function test1(string $root = null, string $url = null, string $content = null, string $title = null, string $expectedContent = null) {
-    $urlGen = new UrlGenerator($root);
+    $urlGen = new BasicUrlGenerator($root);
     $linker = $this->createLinker($urlGen);
     $this->assertSame($urlGen, $linker->urls());
     $a = $linker->hyperlink($url, $content, $title);
@@ -72,7 +72,7 @@ class AbstractLinkerTest extends TestCase {
    * @param array $attrs
    */
   public function testDefaultAttributes(array $attrs) {
-    $urlGen = new UrlGenerator('/foo');
+    $urlGen = new BasicUrlGenerator('/foo');
     $linker = $this->createLinker($urlGen);
     $this->assertEmpty($linker->getAttributes());
     $this->assertSame($linker, $linker->useAttributes($attrs));
@@ -84,7 +84,7 @@ class AbstractLinkerTest extends TestCase {
   }
 
   public function testClone() {
-    $urlGen = new UrlGenerator('/foo');
+    $urlGen = new BasicUrlGenerator('/foo');
     $linker = $this->createLinker($urlGen);
     $linker->useAttributes(['data-foo' => 'bar']);
     $clone = clone $linker;
@@ -93,7 +93,7 @@ class AbstractLinkerTest extends TestCase {
   }
 
   public function testToString() {
-    $urlGen = new UrlGenerator('/');
+    $urlGen = new BasicUrlGenerator('/');
     $linker = $this->createLinker($urlGen);
     $this->assertSame((string) $linker->hyperlink(), (string) $linker);
   }

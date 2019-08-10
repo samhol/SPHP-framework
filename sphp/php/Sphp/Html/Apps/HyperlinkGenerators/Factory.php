@@ -10,9 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Html\Apps\HyperlinkGenerators\Sami\Sami;
 use Sphp\Html\Apps\HyperlinkGenerators\Sami\SamiUrlGenerator;
-use Sphp\Html\Apps\HyperlinkGenerators\ApiGen\ApiGen;
 use Sphp\Html\Apps\HyperlinkGenerators\ApiGen\ApiGenUrlGenerator;
 use Sphp\Html\Apps\HyperlinkGenerators\PHPManual\PHPManual;
 
@@ -26,12 +24,12 @@ use Sphp\Html\Apps\HyperlinkGenerators\PHPManual\PHPManual;
 class Factory {
 
   /**
-   * @var Sami[] 
+   * @var BasicPhpApiLinker[] 
    */
   private static $samis = [];
 
   /**
-   * @var ApiGen[] 
+   * @var BasicPhpApiLinker[] 
    */
   private static $apigens = [];
 
@@ -54,11 +52,11 @@ class Factory {
    * Returns a instance
    * 
    * @param  string $path
-   * @return Sami singleton API linker
+   * @return BasicPhpApiLinker singleton API linker
    */
-  public static function sami(string $path = 'API/sami/'): Sami {
+  public static function sami(string $path = 'API/sami/'): BasicPhpApiLinker {
     if (!array_key_exists($path, self::$samis)) {
-      $instance = new Sami(new SamiUrlGenerator($path));
+      $instance = new BasicPhpApiLinker(new SamiUrlGenerator($path));
       //$instance->setDefaultHyperlinkAttributes(['class' => 'api sphp']);
       self::$samis[$path] = $instance;
     } else {
@@ -71,14 +69,14 @@ class Factory {
    * Returns a singleton instance of ApiGen API linker
    * 
    * @param  string $path
-   * @return ApiGen singleton API linker
+   * @return BasicPhpApiLinker singleton API linker
    */
-  public static function apigen(string $path = null): ApiGen {
+  public static function apigen(string $path = null): BasicPhpApiLinker {
     if ($path === null) {
       $path = '';
     }
     if (!array_key_exists($path, self::$apigens)) {
-      $instance = new ApiGen(new ApiGenUrlGenerator($path));
+      $instance = new BasicPhpApiLinker(new ApiGenUrlGenerator($path));
       self::$apigens[$path] = $instance;
     } else {
       $instance = self::$apigens[$path];

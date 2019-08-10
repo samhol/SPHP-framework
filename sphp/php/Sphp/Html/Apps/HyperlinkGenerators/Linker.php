@@ -46,9 +46,9 @@ interface Linker {
   /**
    * Returns the URL generator pointing to the API documentation
    *
-   * @return UrlGeneratorInterface the URL generator pointing to the API documentation
+   * @return UrlGenerator the URL generator pointing to the API documentation
    */
-  public function urls(): UrlGeneratorInterface;
+  public function urls(): UrlGenerator;
 
   /**
    * Returns a hyperlink object pointing to a linked page

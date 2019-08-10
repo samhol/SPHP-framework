@@ -12,6 +12,8 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\A;
 use Sphp\Exceptions\SphpException;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 
 /**
  * Hyperlink generator pointing to an online PHP API documentation
@@ -20,7 +22,7 @@ use Sphp\Exceptions\SphpException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractPhpApiLinker extends AbstractLinker {
+class BasicPhpApiLinker extends AbstractLinker {
 
   /**
    * @var string
@@ -35,18 +37,18 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
   /**
    * Constructor
    *
-   * @param  ApiUrlGenerator $urlGenerator
+   * @param  ApiUrlGenerator $urlGen
    * @param  string $classLinkerType
    * @param  string $namespace
    * @throws SphpException
    */
-  public function __construct(ApiUrlGenerator $urlGenerator, string $classLinkerType, string $namespace = null) {
+  public function __construct(ApiUrlGenerator $urlGen, string $classLinkerType = BasicClassLinker::class, string $namespace = null) {
     $this->ns = $namespace;
     if (!is_a($classLinkerType, ClassLinker::class, true)) {
       throw new SphpException("$classLinkerType in not a subtype of " . ClassLinker::class);
     }
     $this->classLinkerType = $classLinkerType;
-    parent::__construct($urlGenerator);
+    parent::__construct($urlGen);
   }
 
   /**
@@ -95,11 +97,13 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
     return $classLinker;
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null): A {
-    if ($content === null) {
-      $content = $url;
+  protected function createHyperlink(string $url, string $content, string $title = null): A {
+    $a = new A($url, $content);
+    if ($title !== null) {
+      $a->attributes()->title = $title;
     }
-    return parent::hyperlink($url, str_replace('\\', '\\<wbr>', $content), $title);
+    $this->insertAttributesTo($a);
+    return $a;
   }
 
   /**
@@ -114,7 +118,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
       $linkText = $function;
     }
     $path = $this->urls()->getFunctionUrl($function);
-    return $this->hyperlink($path, $function, "function $function()")
+    return $this->createHyperlink($path, $function, "function $function()")
                     ->addCssClass('function');
   }
 
@@ -130,8 +134,49 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
       $linkText = $constant;
     }
     $path = $this->urls()->getConstantUrl($constant);
-    return $this->hyperlink($path, $linkText, "$constant constant")
+    return $this->createHyperlink($path, $linkText, "$constant constant")
                     ->addCssClass('constant');
+  }
+
+  /**
+   * Returns a hyperlink object pointing to an API namespace page
+   *
+   * @param  string $namespace namespace name
+   * @param  boolean $fullName true if the full namespace name is visible, false otherwise
+   * @return A hyperlink object pointing to an API namespace page1
+   */
+  public function namespaceLink(string $namespace, bool $fullName = true): A {
+    if ($fullName) {
+      $name = $namespace;
+    } else {
+      $nsArr = explode('\\', $namespace);
+      $name = array_pop($nsArr);
+    }
+    $url = $this->urls()->getNamespaceUrl($namespace);
+    return $this->createHyperlink($url, $name, "The $namespace namespace")->addCssClass('namespace');
+  }
+
+  /**
+   * Returns a BreadCrumbs component showing the trail of nested namespaces
+   * 
+   * @param  string $namespace namespace name
+   * @return BreadCrumbs breadcrumb showing the trail of nested namespaces
+   */
+  public function namespaceBreadGrumbs(string $namespace): BreadCrumbs {
+    $namespaceArray = explode('\\', $namespace);
+    $breadGrumbs = (new BreadCrumbs())->addCssClass('api', 'sphp', 'namespace');
+    $currentNamespaceArray = [];
+    foreach ($namespaceArray as $name) {
+      $currentNamespaceArray[] = $name;
+      $path = implode("/", $currentNamespaceArray);
+      $root = implode("\\", $currentNamespaceArray);
+      $breadCrumb = new BreadCrumb($this->urls()->createUrl("$path.html"), $name);
+      $this->insertAttributesTo($breadCrumb);
+      //(new QtipAdapter($breadCrumb))->setQtip("$root Namespace")->setQtipPosition('bottom center', 'top center');
+      $breadCrumb->getHyperlink()->setAttribute('title', "$root Namespace");
+      $breadGrumbs->append($breadCrumb);
+    }
+    return $breadGrumbs;
   }
 
 }

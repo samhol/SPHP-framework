@@ -67,7 +67,7 @@ function printPage(string $page) {
 }
 
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
-use Sphp\Html\Apps\HyperlinkGenerators\Sami\Sami;
+use Sphp\Html\Apps\HyperlinkGenerators\BasicPhpApiLinker;
 use Sphp\Html\Apps\HyperlinkGenerators\PHPManual\PHPManual;
 use Sphp\Html\Apps\HyperlinkGenerators\W3schools;
 use Sphp\Html\Apps\HyperlinkGenerators\FoundationDocsLinker;
@@ -75,9 +75,9 @@ use Sphp\Html\Apps\HyperlinkGenerators\FoundationDocsLinker;
 /**
  * Return the default SPHP framework API linker
  * 
- * @return Sami 
+ * @return BasicPhpApiLinker 
  */
-function api(): Sami {
+function api(): BasicPhpApiLinker {
   $instance = Factory::sami('http://playground.samiholck.com/API/sami/');
   $instance->useAttributes(['class' => 'api sphp']);
   return $instance;

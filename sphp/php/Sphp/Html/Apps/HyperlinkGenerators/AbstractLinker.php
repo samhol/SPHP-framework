@@ -26,7 +26,7 @@ abstract class AbstractLinker implements Linker {
   /**
    * the URL pointing to the API documentation root
    *
-   * @var UrlGeneratorInterface
+   * @var UrlGenerator
    */
   private $urlGenerator;
 
@@ -38,9 +38,9 @@ abstract class AbstractLinker implements Linker {
   /**
    * Constructor
    *
-   * @param UrlGeneratorInterface $urlGenerator the URL pointing to the API documentation
+   * @param UrlGenerator $urlGenerator the URL pointing to the API documentation
    */
-  public function __construct(UrlGeneratorInterface $urlGenerator) {
+  public function __construct(UrlGenerator $urlGenerator) {
     $this->urlGenerator = $urlGenerator;
   }
 
@@ -78,7 +78,7 @@ abstract class AbstractLinker implements Linker {
     return $this->hyperlink($url, $content, $title);
   }
 
-  public function urls(): UrlGeneratorInterface {
+  public function urls(): UrlGenerator {
     return $this->urlGenerator;
   }
 

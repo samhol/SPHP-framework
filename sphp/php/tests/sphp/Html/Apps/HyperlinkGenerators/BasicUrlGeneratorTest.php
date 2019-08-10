@@ -19,10 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class UrlGeneratorTest  extends TestCase {
+class BasicUrlGeneratorTest  extends TestCase {
 
   public function testConstructor() {
-    $gen = new UrlGenerator('/foo');
+    $gen = new BasicUrlGenerator('/foo');
     $this->assertSame('/foo', $gen->getRoot());
     $this->assertSame('/foo/bar', $gen->createUrl('/bar'));
   }

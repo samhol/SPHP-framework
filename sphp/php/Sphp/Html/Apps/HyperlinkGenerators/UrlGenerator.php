@@ -10,53 +10,27 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
-use Sphp\Stdlib\Strings;
-
 /**
- * URL string generator pointing to an online site
+ * Defines a URL string generator pointing to an online site
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class UrlGenerator implements UrlGeneratorInterface {
+interface  UrlGenerator {
 
   /**
-   * the URL pointing to the API documentation root
+   * Returns the URL pointing to the API documentation root
    *
-   * @var string
+   * @return string|null the URL pointing to the API documentation root
    */
-  private $root;
+  public function getRoot(): ?string;
 
   /**
-   * Constructor
+   * Creates an URL string pointing to the resource
    *
-   * @param string $root the URL pointing to the API documentation
+   * @param  string $relative path from the root to the resource
+   * @return string an URL string pointing to the resource
    */
-  public function __construct(string $root = null) {
-    $this->root = $root;
-  }
-
-  public function getRoot(): ?string {
-    return $this->root;
-  }
-
-  /**
-   * Sets the URL pointing to the API documentation
-   *
-   * @param  string $root the site root
-   * @return $this for a fluent interface
-   */
-  protected function setRoot(string $root = null) {
-    $this->root = $root;
-    return $this;
-  }
-
-  public function createUrl(string $url = ''): string {
-    if (!Strings::startsWith($url, (string) $this->getRoot())) {
-      $url = $this->getRoot() . $url;
-    }
-    return $url;
-  }
-
+  public function createUrl(string $relative = ''): string;
 }

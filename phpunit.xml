@@ -31,6 +31,9 @@
     <testsuite name="html">
       <directory>./sphp/php/tests/sphp/Html</directory>
     </testsuite>
+    <testsuite name="html-apps">
+      <directory>./sphp/php/tests/sphp/Html/Apps</directory>
+    </testsuite>
     <testsuite name="html-head">
       <directory>./sphp/php/tests/sphp/Html/Head</directory>
     </testsuite>

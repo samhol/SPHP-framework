@@ -26,7 +26,7 @@ class W3schools extends AbstractLinker {
    * Constructor
    */
   public function __construct() {
-    parent::__construct(new UrlGenerator('http://www.w3schools.com/'));
+    parent::__construct(new BasicUrlGenerator('http://www.w3schools.com/'));
   }
 
   /**

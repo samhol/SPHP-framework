@@ -13,6 +13,10 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 use ReflectionClass;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Component;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
+use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Hyperlink object generator pointing to an existing API documentation about a class
@@ -22,7 +26,7 @@ use Sphp\Html\Component;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractClassLinker implements ClassLinker {
+class BasicClassLinker implements ClassLinker {
 
   /**
    * class reflector
@@ -32,7 +36,7 @@ abstract class AbstractClassLinker implements ClassLinker {
   protected $ref;
 
   /**
-   * @var ApiUrlGenerator
+   * @var ClassUrlGenerator
    */
   private $classUrlGenerator;
 
@@ -45,9 +49,9 @@ abstract class AbstractClassLinker implements ClassLinker {
    * Constructor
    *
    * @param string $class class name or object
-   * @param ApiUrlGenerator $pathParser
+   * @param ClassUrlGenerator $pathParser
    */
-  public function __construct(string $class, ApiUrlGenerator $pathParser) {
+  public function __construct(string $class, ClassUrlGenerator $pathParser) {
     $this->ref = new ReflectionClass($class);
     $this->classUrlGenerator = $pathParser;
   }
@@ -68,6 +72,32 @@ abstract class AbstractClassLinker implements ClassLinker {
     return $this->getLink()->getHtml();
   }
 
+  /**
+   * Returns a hyperlink object pointing to the API documentation of the given property or method
+   * 
+   * @param  string $name
+   * @return A
+   * @throws BadMethodCallException
+   */
+  public function __get(string $name): A {
+    if ($this->ref->hasMethod($name)) {
+      return $this->methodLink($name);
+    } else if ($this->ref->hasProperty($name)) {
+      return $this->methodLink($name);
+    } else {
+      throw new BadMethodCallException("$name in not valid method, constat or variable name for " . $this->ref->getName());
+    }
+  }
+
+  /**
+   * Returns the name of the class being linked 
+   * 
+   * @return string the name of the class being linked 
+   */
+  public function getClassName(): string {
+    return $this->ref->getName();
+  }
+
   public function useAttributes(array $attributes) {
     $this->attributes = $attributes;
     return $this;
@@ -86,18 +116,13 @@ abstract class AbstractClassLinker implements ClassLinker {
     return $a;
   }
 
-  public function urls(): ApiUrlGenerator {
+  public function urls(): ClassUrlGenerator {
     return $this->classUrlGenerator;
   }
 
   protected function buildHyperlink(string $url, string $content, string $title): A {
-    if ($content === null) {
-      $content = $url;
-    }
     $a = new A($url, str_replace("\\", "\\<wbr>", $content));
-    if ($title !== null) {
-      $a->attributes()->title = $title;
-    }
+    $a->setAttribute('title', $title);
     $this->insertAttributesTo($a);
     return $a;
   }
@@ -147,8 +172,8 @@ abstract class AbstractClassLinker implements ClassLinker {
         $title = "Instance method: $fullClassName::$reflectedMethod->name()";
         $classes[] = 'instance-method';
       }
-    } catch (\Exception $ex) {
-      $title = "Method: $fullClassName::$method()";
+    } catch (\ReflectionException $ex) {
+      throw new InvalidArgumentException($ex->getMessage(), 0, $ex);
     }
     return $this->buildHyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass($classes);
   }
@@ -160,17 +185,46 @@ abstract class AbstractClassLinker implements ClassLinker {
     return $this->buildHyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title)->addCssClass($classes);
   }
 
-  public function namespaceLink(bool $full = true): A {
+  public function namespaceLink(string $linkContent = null): A {
     $fullName = $this->ref->getNamespaceName();
-    if (!$full) {
-      $namespaceArray = explode('\\', $fullName);
-      $name = array_pop($namespaceArray);
+    if ($linkContent !== null) {
+      $name = $linkContent;
     } else {
       $name = $fullName;
     }
     $title = "$fullName namespace";
     $classes = ['php-class', 'namespace'];
     return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass($classes);
+  }
+
+  public function shortNamespaceLink(): A {
+    $fullName = $this->ref->getNamespaceName();
+    $namespaceArray = explode('\\', $fullName);
+    $name = array_pop($namespaceArray);
+    $title = "$fullName namespace";
+    $classes = ['php-class', 'namespace'];
+    return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass($classes);
+  }
+
+  /**
+   * Creates a new BreadCrumbs component showing the class and the trail of nested namespaces leading to it
+   * 
+   * @return BreadCrumbs new instance
+   */
+  public function classBreadGrumbs(): BreadCrumbs {
+    $namespace = $this->ref->getNamespaceName();
+    $namespaceArray = explode('\\', $namespace);
+    $breadCrumbs = new BreadCrumbs();
+    $breadCrumbs->addCssClass('sami', 'class');
+    $currentNamespace = [];
+    foreach ($namespaceArray as $name) {
+      $currentNamespace[] = $name;
+      $path = implode("/", $currentNamespace);
+      $bc = new BreadCrumb($this->urls()->getNamespaceUrl($path), $name);
+      $breadCrumbs->append($bc);
+    }
+    $breadCrumbs->appendLink($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName());
+    return $breadCrumbs;
   }
 
 }

@@ -25,7 +25,7 @@ class FoundationDocsLinker extends AbstractLinker {
    * Constructor
    */
   public function __construct() {
-    parent::__construct(new UrlGenerator('http://foundation.zurb.com/sites/docs/'));
+    parent::__construct(new BasicUrlGenerator('http://foundation.zurb.com/sites/docs/'));
   }
 
   /**

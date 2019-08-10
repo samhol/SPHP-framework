@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\BasicPhpApiLinker;
 
 /**
  * Hyperlink object generator pointing to PHP manual
@@ -21,7 +21,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\AbstractPhpApiLinker;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PHPManual extends AbstractPhpApiLinker {
+class PHPManual extends BasicPhpApiLinker {
 
   /**
    * Constructor

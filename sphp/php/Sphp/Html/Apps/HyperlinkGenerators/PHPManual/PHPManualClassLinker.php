@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Apps\HyperlinkGenerators\AbstractClassLinker;
+use Sphp\Html\Apps\HyperlinkGenerators\BasicClassLinker;
 use Sphp\Html\Navigation\A;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\Html\Navigation\A;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PHPManualClassLinker extends AbstractClassLinker {
+class PHPManualClassLinker extends BasicClassLinker {
 
   /**
    * Constructor

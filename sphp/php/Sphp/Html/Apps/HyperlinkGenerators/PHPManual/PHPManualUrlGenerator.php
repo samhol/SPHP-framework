@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\Apps\HyperlinkGenerators\PHPManual;
 
-use Sphp\Html\Apps\HyperlinkGenerators\UrlGenerator;
+use Sphp\Html\Apps\HyperlinkGenerators\BasicUrlGenerator;
 use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGenerator;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\ApiUrlGenerator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGenerator {
+class PHPManualUrlGenerator extends BasicUrlGenerator implements ApiUrlGenerator {
 
   /**
    * Constructor

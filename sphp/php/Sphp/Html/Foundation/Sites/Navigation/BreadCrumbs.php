@@ -59,6 +59,11 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
     }
   }
 
+  public function __destruct() {
+    unset($this->items);
+    parent::__destruct();
+  }
+
   /**
    * Creates and prepends new {@link BreadCrumb} to the container
    *
