@@ -11,6 +11,8 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\A;
+use Sphp\Html\Tags;
+use Sphp\Stdlib\Strings;
 
 /**
  * Hyperlink generator pointing to online w3schools documentation
@@ -48,22 +50,21 @@ class W3schools extends AbstractLinker {
    * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function tag(string $tagname, string $linkText = null, string $title = null): A {
-    if (preg_match('/^([h][1-6])$/', $tagname)) {
+    if (Strings::match($tagname, '/^([h][1-6])$/')) {
       $link = 'tags/tag_hn.asp';
     } else {
       $link = "tags/tag_$tagname.asp";
     }
+    $text = Tags::span('&lt;')->addCssClass('brackets') .
+            Tags::span($tagname)->addCssClass('tagname') .
+            Tags::span('&gt;')->addCssClass('brackets');
     if ($linkText === null) {
-      if ($tagname === 'hn') {
-        $linkText = '&lt;h1|h2|...|h6&gt;';
-      } else {
-        $linkText = "&lt;$tagname&gt;";
-      }
+      $linkText = $text;
     }
     if ($title === null) {
       $title = "Link to w3schools.com $tagname documentation";
     }
-    return $this->hyperlink($this->urls()->createUrl($link), $linkText, $title);
+    return $this->hyperlink($this->urls()->createUrl($link), $linkText, $title)->addCssClass('w3schools');
   }
 
   /**
