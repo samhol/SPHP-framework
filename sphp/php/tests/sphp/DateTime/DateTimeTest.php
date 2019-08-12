@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -16,7 +18,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 
 class DateTimeTest extends TestCase {
 
-  public function testGetters() {
+  public function testGetters(): void {
     $timestamp = time();
     $date = new DateTime("@$timestamp");
     $im = new \DateTimeImmutable("@$timestamp");
@@ -36,14 +38,14 @@ class DateTimeTest extends TestCase {
     $this->assertEquals($im->format(\DateTime::ATOM), "$date");
   }
 
-  public function testJumping() {
+  public function testJumping(): void {
     $timestamp = time();
     $date = new DateTime("@$timestamp");
     $this->assertEquals($date, $date->jumpDays(1)->jumpDays(-1));
     $this->assertEquals($date, $date->jumpHours(1)->jumpHours(-1));
   }
 
-  public function testModificators() {
+  public function testModificators(): void {
     $timestamp = time();
     $date = new DateTime("@$timestamp");
     $this->assertEquals($date->modify('-1 day'), $date->previousDay());
@@ -52,7 +54,7 @@ class DateTimeTest extends TestCase {
     $this->assertEquals($date->modify('last day of this month'), $date->lastOfMonth());
   }
 
-  public function testComparison() {
+  public function testComparison(): void {
     $smaller = new DateTime('2018-01-01');
     $date = new DateTime('2018-01-02 12:30 EET');
     $bigger = new DateTime('2018-01-03');
@@ -72,23 +74,26 @@ class DateTimeTest extends TestCase {
     $this->assertTrue(DateTime::from()->isCurrentDate());
   }
 
-  public function testFrom() {
+  public function testFrom(): void {
     $fromString = DateTime::from('2018-01-01 12:00:15 EET');
     $this->assertSame(strtotime('2018-01-01 12:00:15 EET'), $fromString->getTimestamp());
     $fromString1 = DateTime::from('yesterday');
     $this->assertSame(strtotime('yesterday'), $fromString1->getTimestamp());
     $fromInt = DateTime::from(time());
-    $this->assertSame(time(), $fromInt->getTimestamp());
+    $timestamp = time();
+    $delta = $timestamp * 0.0001;
+
+    $this->assertEqualsWithDelta(time(), $fromInt->getTimestamp(), $delta);
     $fromObj = DateTime::from(new \DateTime('now'));
     $this->assertSame(strtotime("now"), $fromObj->getTimestamp());
   }
 
-  public function testFromWithInvalidStringInput() {
+  public function testFromWithInvalidStringInput(): void {
     $this->expectException(InvalidArgumentException::class);
     DateTime::from('foo');
   }
 
-  public function testFromWithInvalidInputType() {
+  public function testFromWithInvalidInputType(): void {
     $this->expectException(InvalidArgumentException::class);
     DateTime::from(new \stdClass());
   }

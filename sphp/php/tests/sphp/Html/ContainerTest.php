@@ -35,7 +35,7 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
     parent::tearDown();
   }
 
-  protected function arrayAccessTest(\ArrayAccess $component, array $data) {
+  protected function arrayAccessTest(\ArrayAccess $component, array $data): void {
     foreach ($data as $key => $value) {
       $component[$key] = $value;
       $this->assertTrue(isset($component[$key]));
@@ -45,7 +45,7 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
     }
   }
 
-  protected function traversableTest(\Traversable $component, array $data) {
+  protected function traversableTest(\Traversable $component, array $data): void {
     foreach ($data as $key => $value) {
       $component[$key] = $value;
       $this->assertTrue(isset($component[$key]));
@@ -74,7 +74,7 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
    * @depends testInserting
    * @param \Sphp\Html\Container $c
    */
-  public function testCountable(Container $c) {
+  public function testCountable(Container $c): void {
     $c->clear();
     $this->assertCount(0, $c);
     $c->append('b', 'c', 'd');
@@ -86,7 +86,7 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
    * @deprends testCountable
    * @param \Sphp\Html\Container $c
    */
-  public function testGetHtml() {
+  public function testGetHtml(): void {
     $c = $this->createContainer();
     $this->assertSame('', $c->getHtml());
     $c->append('b');
@@ -108,7 +108,7 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
     $c->getHtml();
   }
 
-  public function testToArray() {
+  public function testToArray(): void {
     $this->container->append('b');
     $this->container->append('c');
     $this->container->append('d');
@@ -145,9 +145,10 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   /**
    * 
    * @dataProvider appendData
-   * @param mixed $val
+   * @param  mixed $val
+   * @return void
    */
-  public function testAppend($val) {
+  public function testAppend($val): void {
     $this->container->append('foo');
     $this->assertSame($this->container[0], 'foo');
     $this->assertTrue($this->container->offsetExists(0));
@@ -162,8 +163,9 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
    * 
    * @dataProvider appendData
    * @param mixed $val
+   * @return void
    */
-  public function testPrepend($val) {
+  public function testPrepend($val): void {
     $this->container->append('foo');
     $this->container->prepend($val);
     $this->assertTrue($this->container->offsetExists(0));
