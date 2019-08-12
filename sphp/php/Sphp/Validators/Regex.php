@@ -51,31 +51,14 @@ class Regex extends AbstractValidator {
    * @param string|null $pattern regular expression pattern to validate against
    * @param string $errorMessage error message corresponding to the pattern
    */
-  public function __construct(string $pattern = null, string $errorMessage = 'Invalid pattern given') {
-    parent::__construct('Value of %s type given. String, integer or float expected');
-    if ($pattern !== null) {
-      $this->setPattern($pattern);
-    }
+  public function __construct(string $pattern, string $errorMessage = 'Invalid pattern given') {
+    parent::__construct('Value of %s type given. String, integer or float expected'); 
+    $this->pattern = $pattern;
     $this->errors()->setTemplate(self::NOT_MATCH, $errorMessage);
   }
 
   public function skip(...$value) {
     $this->skipped = $value;
-    return $this;
-  }
-
-  /**
-   * Sets a regular expression patterns to test.
-   * **Notes:** If all of the patterns is a matches => the checked string is valid
-   *
-   *  **Note:** If the validable value matches the pattern => the validated
-   *  data is valid.
-   *
-   * @param  string $pattern regular expression pattern to validate against
-   * @return $this for a fluent interface
-   */
-  public function setPattern(string $pattern) {
-    $this->pattern = $pattern;
     return $this;
   }
 

@@ -15,6 +15,7 @@ use Sphp\Validators\Validator;
 use Sphp\Validators\ValidatorChain;
 use Sphp\Validators\StringLength;
 use Sphp\Validators\Regex;
+use Sphp\Exceptions\BadMethodCallException;
 
 class ValidatorChainTest extends ValidatorTest {
 
@@ -30,13 +31,21 @@ class ValidatorChainTest extends ValidatorTest {
 
   /**
    * @depends testConstructor
+   * @return void
+   */
+  public function testInvalidValidatorInsertion(ValidatorChain $validator): void {
+    $this->expectException(BadMethodCallException::class);
+    $validator->foo('bar');
+  }
+
+  /**
+   * @depends testConstructor
    * @return StringLength
    */
-  public function testRangeValidation(ValidatorChain $validator) {
+  public function testValidation(ValidatorChain $validator) {
     $strLen = new StringLength(2, 6);
-    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
     $validator->appendValidators($strLen);
-    $validator->appendValidators($patt);
+    $validator->regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
     $this->assertCount(2, $validator);
     $this->assertTrue($validator->isValid('foo'));
     return $validator;
