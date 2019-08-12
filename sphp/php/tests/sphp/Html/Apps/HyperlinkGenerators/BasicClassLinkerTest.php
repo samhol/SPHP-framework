@@ -12,6 +12,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Description of AbstractClassLinkerTest
@@ -104,7 +105,10 @@ class BasicClassLinkerTest extends TestCase {
     $attrs[] = [BasicClassLinker::class, '__construct', 'constructor'];
     $attrs[] = [BasicClassLinker::class, '__destruct', 'destructor'];
     $attrs[] = [BasicClassLinker::class, '__clone', 'instance-method'];
+    $attrs[] = [\Sphp\Html\Tags::class, 'div', 'magic-static-method'];
+    $attrs[] = [\Sphp\Network\Headers\Headers::class, 'appendAge', 'magic-instance-method'];
     $attrs[] = [Factory::class, 'sami', 'static-method'];
+    $attrs[] = [\Sphp\Html\Media\Icons\Icons::class, 'pdf', 'magic-method'];
     return $attrs;
   }
 
@@ -115,12 +119,14 @@ class BasicClassLinkerTest extends TestCase {
    */
   public function testClassMethodLink(string $class, string $methodName, string $type) {
     $linker = $this->createLinker($class);
-    $classMethodLink = $linker->methodLink($methodName);
+    $link = $linker->methodLink($methodName);
+    $this->assertEquals($link, $linker($methodName));
+    $this->assertEquals($link, $linker->$methodName);
     $shortClassMethodLink = $linker->methodLink($methodName, false);
-    $this->assertSame('root/class-method', $classMethodLink->getHref());
-    $this->assertTrue($classMethodLink->attributeExists('title'));
-    $this->assertTrue($classMethodLink->hasCssClass($type));
-    $this->assertRegExp("/$methodName\(\)$/", $classMethodLink->contentToString());
+    $this->assertSame('root/class-method', $link->getHref());
+    $this->assertTrue($link->attributeExists('title'));
+    $this->assertTrue($link->hasCssClass($type));
+    $this->assertRegExp("/$methodName\(\)$/", $link->contentToString());
     $this->assertRegExp("/^$methodName\(\)$/", $shortClassMethodLink->contentToString());
   }
 
@@ -128,6 +134,19 @@ class BasicClassLinkerTest extends TestCase {
     $linker = $this->createLinker(\stdClass::class);
     $this->expectException(InvalidArgumentException::class);
     $linker->methodLink('foo');
+    echo 'foo';
+    $this->expectException(\Exception::class);
+    $linker->foo;
+  }
+  public function testInvalidCall() {
+    $linker = $this->createLinker(\stdClass::class);
+    $this->expectException(BadMethodCallException::class);
+    $linker->foo;
+  }
+  public function testInvalidInvoke() {
+    $linker = $this->createLinker(\stdClass::class);
+    $this->expectException(BadMethodCallException::class);
+    $linker('foo');
   }
 
   public function constants(): array {

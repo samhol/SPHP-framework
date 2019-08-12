@@ -66,18 +66,6 @@ abstract class AbstractLinker implements Linker {
     return (string) $this->hyperlink();
   }
 
-  /**
-   * Returns a hyperlink object pointing to a linked page
-   *
-   * @param  string $url optional path from the root to the resource
-   * @param  string $content optional content of the link
-   * @param  string $title optional title of the link
-   * @return Hyperlink hyperlink object pointing to an API page
-   */
-  public function __invoke(string $url = null, string $content = null, string $title = null): A {
-    return $this->hyperlink($url, $content, $title);
-  }
-
   public function urls(): UrlGenerator {
     return $this->urlGenerator;
   }

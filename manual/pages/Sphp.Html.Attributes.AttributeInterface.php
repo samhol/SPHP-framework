@@ -10,10 +10,10 @@ $abstractAttr = Manual\api()->classLinker(AbstractAttribute::class);
 $idAttr = Manual\api()->classLinker(IdAttribute::class);
 $attr= Manual\api()->classLinker(GeneralAttribute::class);
 $boolAttr = Manual\api()->classLinker(BooleanAttribute::class);
-$setMethod = $abstractAttr->methodLink('set');
-$clearMethod = $abstractAttr->methodLink('clear');
-$requireMethod = $abstractAttr->methodLink('demand');
-$lockMethod = $abstractAttr->methodLink('protect');
+$setMethod = $attributeInterface->methodLink('setValue');
+$clearMethod = $attributeInterface->methodLink('clear');
+$requireMethod = $attributeInterface->methodLink('forceVisibility');
+$lockMethod = $attributeInterface->methodLink('protectValue');
 
 Manual\md(<<<MD
 ##HTML attribute objects <small>implementing $attributeInterface</small>

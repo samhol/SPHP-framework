@@ -105,11 +105,9 @@ p a.api, ul a.api, ol a.api {
 
 a.api {
   font-family: "Source Code Pro", monospace !important; 
+  @include transition(background-color, 0.8s, ease-in-out);
   &.w3schools {
     @include border-radius(3px);
-    @include transition(background-color, 0.2s, ease-in-out);
-    @include transition(color, 0.2s, ease-in-out);
-    @include transition(border, 0.2s, ease-in-out);
     border: solid 1px rgba(#888, .5);
     background-color: rgba(#4CAF50, .1);
     margin-left: rem-calc(2);

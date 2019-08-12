@@ -28,7 +28,7 @@ class AbstractPhpApiLinkerTest extends TestCase {
    * @return BasicClassLinker
    */
   public function createLinker(string $className = BasicClassLinker::class): BasicPhpApiLinker {
-    $linker = new BasicPhpApiLinker($this->createUrlGen(), BasicClassLinker::class, __NAMESPACE__);
+    $linker = new BasicPhpApiLinker($this->createUrlGen(), $className, __NAMESPACE__);
     return $linker;
   }
 
@@ -84,7 +84,7 @@ class AbstractPhpApiLinkerTest extends TestCase {
    * @param string $type
    */
   public function testFunctionLink(string $functionName, string $type) {
-    $linker = $this->createLinker($functionName);
+    $linker = $this->createLinker();
     $linker->useAttributes(['foo' => 'bar']);
     $classLink = $linker->functionLink($functionName);
     $this->assertTrue($classLink->attributeExists('title'));
@@ -122,7 +122,6 @@ class AbstractPhpApiLinkerTest extends TestCase {
     $this->assertRegExp("/$constant/", $link->contentToString());
     $this->assertSame('foo', $namedLink->contentToString());
   }
-
 
   public function namespaceData(): array {
     $attrs = [];

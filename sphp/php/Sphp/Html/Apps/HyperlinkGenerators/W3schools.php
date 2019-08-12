@@ -28,7 +28,7 @@ class W3schools extends AbstractLinker {
    * Constructor
    */
   public function __construct() {
-    parent::__construct(new BasicUrlGenerator('http://www.w3schools.com/'));
+    parent::__construct(new BasicUrlGenerator('https://www.w3schools.com/'));
   }
 
   /**
@@ -38,6 +38,16 @@ class W3schools extends AbstractLinker {
    * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function __get(string $tagname): A {
+    return $this->tag($tagname);
+  }
+  
+  /**
+   * Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * 
+   * @param  string $tagname the HTML5 tag name
+   * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   */
+  public function __invoke(string $tagname): A {
     return $this->tag($tagname);
   }
 

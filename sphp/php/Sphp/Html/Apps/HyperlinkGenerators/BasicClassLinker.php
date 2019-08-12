@@ -80,12 +80,25 @@ class BasicClassLinker implements ClassLinker {
    * @throws BadMethodCallException
    */
   public function __get(string $name): A {
-    if ($this->ref->hasMethod($name)) {
+    try {
       return $this->methodLink($name);
-    } else if ($this->ref->hasProperty($name)) {
+    } catch (\Exception $ex) {
+      throw new BadMethodCallException("$name in not valid method for " . $this->ref->getName(), 0, $ex);
+    }
+  }
+
+  /**
+   * Returns a hyperlink object pointing to the API documentation of the given property or method
+   * 
+   * @param  string $name
+   * @return A
+   * @throws BadMethodCallException
+   */
+  public function __invoke(string $name): A {
+    try {
       return $this->methodLink($name);
-    } else {
-      throw new BadMethodCallException("$name in not valid method, constat or variable name for " . $this->ref->getName());
+    } catch (\Exception $ex) {
+      throw new BadMethodCallException("$name in not valid method for " . $this->ref->getName(), 0, $ex);
     }
   }
 
@@ -173,7 +186,20 @@ class BasicClassLinker implements ClassLinker {
         $classes[] = 'instance-method';
       }
     } catch (\ReflectionException $ex) {
-      throw new InvalidArgumentException($ex->getMessage(), 0, $ex);
+      $hasStatic = $this->ref->hasMethod('__callStatic');
+      $hasInstance = $this->ref->hasMethod('__call');
+      if ($hasStatic && $hasInstance) {
+        $title = "Magic method: $fullClassName::$method()";
+        $classes[] = 'magic-method';
+      } else if ($hasStatic) {
+        $title = "Magic static method: $fullClassName::$method()";
+        $classes[] = 'magic-static-method';
+      } else if ($hasInstance) {
+        $title = "Magic instance method: $fullClassName::$method()";
+        $classes[] = 'magic-instance-method';
+      } else {
+        throw new InvalidArgumentException($ex->getMessage(), 0, $ex);
+      }
     }
     return $this->buildHyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass($classes);
   }

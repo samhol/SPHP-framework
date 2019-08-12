@@ -11,7 +11,7 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\A;
-use Sphp\Exceptions\SphpException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 
@@ -75,25 +75,20 @@ class BasicPhpApiLinker extends AbstractLinker {
   }
 
   /**
-   * Returns the class property linker for the given class
+   * Returns a new class linker instance for the given class
    * 
    * @param  string $class class name or object
    * @return ClassLinker new instance
-   * @throws SphpException if the class name does not exist
+   * @throws InvalidArgumentException if the class name does not exist
    */
   public function classLinker(string $class): ClassLinker {
     $classLinkerType = $this->classLinkerType;
     if (class_exists($class) || interface_exists($class) || trait_exists($class)) {
       $classLinker = new $classLinkerType($class, $this->urls());
+      $classLinker->useAttributes($this->getAttributes());
     } else {
-      $test = $this->ns . "\\$class";
-      if (class_exists($test) || interface_exists($test) || trait_exists($test)) {
-        $classLinker = new $classLinkerType($test, $this->urls());
-      } else {
-        throw new SphpException("Class '$class' does not exist");
-      }
+      throw new InvalidArgumentException("Class '$class' does not exist");
     }
-    $classLinker->useAttributes($this->getAttributes());
     return $classLinker;
   }
 
