@@ -13,6 +13,7 @@ namespace Sphp\Stdlib\Parsers;
 use Exception;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a CSV data reader
@@ -32,10 +33,10 @@ class Csv implements ArrayParser {
    * @return array
    * @throws RuntimeException
    */
-  public function stringToArray(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
+  public function stringToArray(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = "\\"): array {
     try {
       return str_getcsv($string, $delimiter, $enclosure, $escape);
-    } catch (Exception $ex) {
+    } catch (\Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
@@ -59,17 +60,21 @@ class Csv implements ArrayParser {
   }
 
   public function toString(array $data, string $delimiter = ',', string $enclosure = '"'): string {
-    $handle = fopen('php://temp', 'r+');
-    foreach ($data as $line) {
-      fputcsv($handle, $line, $delimiter, $enclosure);
+    try {
+      $handle = fopen('php://temp', 'r+');
+      foreach ($data as $line) {
+        fputcsv($handle, $line, $delimiter, $enclosure);
+      }
+      rewind($handle);
+      $contents = '';
+      while (!feof($handle)) {
+        $contents .= fread($handle, 8192);
+      }
+      fclose($handle);
+      return $contents;
+    } catch (\Throwable $ex) {
+      throw new InvalidArgumentException($ex->getMessage());
     }
-    rewind($handle);
-    $contents = '';
-    while (!feof($handle)) {
-      $contents .= fread($handle, 8192);
-    }
-    fclose($handle);
-    return $contents;
   }
 
 }

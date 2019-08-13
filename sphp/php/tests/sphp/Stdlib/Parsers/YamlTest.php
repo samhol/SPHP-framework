@@ -80,4 +80,11 @@ class YamlTest extends AbstractParserTest {
     return $map;
   }
 
+  public function validFileToArrayData(): array {
+    $map = [
+        ['./sphp/php/tests/files/test.yaml', ['foo' => 'bar']],
+    ];
+    return $map;
+  }
+
 }

@@ -87,4 +87,11 @@ class JsonTest extends AbstractParserTest {
     return $data;
   }
 
+  public function validFileToArrayData(): array {
+        $map = [
+        ['./sphp/php/tests/files/valid.json', ['foo' => 'bar']],
+    ];
+    return $map;
+  }
+
 }

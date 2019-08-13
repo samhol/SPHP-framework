@@ -27,14 +27,55 @@ abstract class AbstractParserTest extends TestCase {
   /**
    * @return array
    */
+  abstract public function validFileToArrayData(): array;
+
+  /**
+   * @dataProvider validFileToArrayData
+   * @param  string $string
+   * @param  array $expected
+   * @return void
+   */
+  public function testStringToArray(string $string, array $expected): void {
+    $writer = $this->buildWriter();
+    $raw = \Sphp\Stdlib\Filesystem::toString($string);
+   // echo "\n$raw\n";
+   // print_r($writer->stringToArray($raw));
+    $this->assertIsArray( $writer->stringToArray($raw));
+  }
+
+  /**
+   * @dataProvider validFileToArrayData
+   * 
+   * @param string $path
+   * @param array $expected
+   * @return void
+   */
+  public function testFileToArray(string $path, array $expected): void {
+    $writer = $this->buildWriter();
+    $this->assertSame($expected, $writer->fileToArray($path));
+  }
+
+  /**
+   * @return void
+   */
+  public function testMissingFileToArray(): void {
+    $writer = $this->buildWriter();
+    $this->expectException(\Exception::class);
+    $writer->fileToArray('foo.file');
+  }
+
+  /**
+   * @return array
+   */
   abstract public function validWritingPairs(): array;
 
   /**
    * @dataProvider validWritingPairs
    * @param mixed $data
    * @param string $expected
+   * @return void
    */
-  public function testWrite($data, string $expected) {
+  public function testWrite($data, string $expected): void {
     $writer = $this->buildWriter();
     $this->assertSame($expected, $writer->toString($data));
   }
@@ -48,8 +89,9 @@ abstract class AbstractParserTest extends TestCase {
    * @dataProvider invalidWritingPairs
    * @param mixed $data
    * @param string $exceptionType
+   * @return void
    */
-  public function testInvalidWrite($data, string $exceptionType) {
+  public function testInvalidWrite($data, string $exceptionType): void {
     $writer = $this->buildWriter();
     $this->expectException($exceptionType);
     $writer->toString($data);
