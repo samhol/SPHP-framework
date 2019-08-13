@@ -57,34 +57,34 @@ class IniTest extends TestCase {
 
   public function testDecode() {
     $raw = Filesystem::toString('./sphp/php/tests/files/test.ini');
-    $fromFile = $this->parser->readFromFile('./sphp/php/tests/files/test.ini');
-    $fromString = $this->parser->readFromString($raw);
+    $fromFile = $this->parser->fileToArray('./sphp/php/tests/files/test.ini');
+    $fromString = $this->parser->stringToArray($raw);
     $this->assertSame($fromFile, $fromString);
   }
 
   public function testInvalidDecode() {
     $this->expectException(InvalidArgumentException::class);
-    \var_dump($this->parser->readFromString('foo: "'));
+    \var_dump($this->parser->stringToArray('foo: "'));
   }
 
   public function testEncode() {
-    $string = $this->parser->write(['foo' => 'bar']);
+    $string = $this->parser->toString(['foo' => 'bar']);
     $this->assertEquals("foo = \"bar\"\n", $string);
   }
 
   public function testEncodeInvalidData() {
     $this->expectException(InvalidArgumentException::class);
-    var_dump($this->parser->write('foo'));
+    var_dump($this->parser->toString('foo'));
   }
 
   public function testReadInvalidString() {
     $this->expectException(InvalidArgumentException::class);
-    \var_dump($this->parser->readFromString('?{}|&~!()^ = bar', false));
+    \var_dump($this->parser->stringToArray('?{}|&~!()^ = bar', false));
   }
 
   public function testConverInvalidFile() {
     $this->expectException(FileSystemException::class);
-    $this->parser->readFromFile('foo.bar', false);
+    $this->parser->fileToArray('foo.bar', false);
   }
 
 }

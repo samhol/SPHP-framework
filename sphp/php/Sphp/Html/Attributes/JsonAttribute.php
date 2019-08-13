@@ -12,7 +12,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Stdlib\Readers\Json;
 
 /**
@@ -44,7 +44,7 @@ class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
    * @param scalar|null $value optional value of the attribute
    */
   public function __construct(string $name, $value = null) {
-    $this->parser = Parser::json();
+    $this->parser = ParseFactory::json();
     parent::__construct($name);
     if (is_string($value) || is_array($value)) {
       $this->setValue($value);

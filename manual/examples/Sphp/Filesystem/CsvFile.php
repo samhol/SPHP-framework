@@ -6,7 +6,7 @@ use Sphp\Html\Tables\Table;
 
 $data = (new CsvFile("manual/snippets/example.csv"))->toArray();
 $table = new Table();
-$table->setCaption("Cars to buy:");
+$table->setCaption("Cars to buy:")->useThead()->useTbody();
 $table->thead()->appendHeaderRow(array_shift($data));
 foreach ($data as $row) {
 	$table->tbody()->appendBodyRow($row);

@@ -3,11 +3,11 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $phpArray = Manual\php()->typeLink('array');
-$parser = Manual\api()->classLinker(Parser::class);
+$parser = Manual\api()->classLinker(ParseFactory::class);
 Manual\md(<<<MD
 #PARSING  <small>reading, writing and transforming</small>
 $ns

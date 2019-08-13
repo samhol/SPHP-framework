@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Media\Icons\FA;
 $menu = new ResponsiveMenu();
 $menu->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor('medium', Menu::HORIZONTAL);
@@ -18,7 +18,7 @@ $submenu->appendLink("#Item3.3", "Item 3.3", "_self");
 $submenu->appendLink("#Item3.4", "Item 3.4", "_self");
 //echo $menu;
 
-$manualLinks = Parser::yaml()->readFromFile('/home/int48291/public_html/playground/manual/yaml/documentation_links.yaml');
+$manualLinks = ParseFactory::yaml()->fileToArray('/home/int48291/public_html/playground/manual/yaml/documentation_links.yaml');
 $m = new ResponsiveMenu();
 $m->appendLink('/', FA::home())->addCssClass('icon-link');
 $m->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor('medium', Menu::HORIZONTAL);

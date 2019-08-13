@@ -11,7 +11,7 @@
 namespace Sphp\Html;
 
 use Sphp\Stdlib\Filesystem;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Exceptions\RuntimeException;
 
 /**
@@ -74,9 +74,9 @@ trait ContentParserTrait {
   public function appendMd(string $md, bool $inlineOnly = false) {
     try {
       if ($this instanceof InlineContainer) {
-        $content = Parser::md()->parseString($md, $inlineOnly);
+        $content = ParseFactory::md()->parseString($md, $inlineOnly);
       } else {
-        $content = Parser::md()->parseString($md, $inlineOnly);
+        $content = ParseFactory::md()->parseString($md, $inlineOnly);
       }
       $this->append($content);
     } catch (\Exception $ex) {

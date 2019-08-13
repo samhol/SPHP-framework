@@ -48,15 +48,15 @@ class ParserTest extends TestCase {
    * @param string $classType
    */
   public function testReaderExists(string $type, string $classType) {
-    $this->assertTrue(Parser::readerExists($type));
-    $this->assertInstanceOf($classType, Parser::getReaderFor($type));
-    $this->assertInstanceOf($classType, Parser::$type());
+    $this->assertTrue(ParseFactory::readerExists($type));
+    $this->assertInstanceOf($classType, ParseFactory::getReaderFor($type));
+    $this->assertInstanceOf($classType, ParseFactory::$type());
   }
 
   public function testGetReaderFailure() {
 
     $this->expectException(BadMethodCallException::class);
-    Parser::foo();
+    ParseFactory::foo();
   }
 
   /**
@@ -78,22 +78,22 @@ class ParserTest extends TestCase {
    * @param boolean $expected
    */
   public function testFromFile($file, $expected) {
-    $this->assertSame(Parser::fromFile($file), $expected);
+    $this->assertSame(ParseFactory::fromFile($file), $expected);
   }
 
   public function testParsingFromInvalidFile() {
     $this->expectException(RuntimeException::class);
-    Parser::fromFile('foo.bar');
+    ParseFactory::fromFile('foo.bar');
   }
 
   public function testParsingFileWithoutExtension() {
     $this->expectException(InvalidArgumentException::class);
-    Parser::fromFile('./sphp/php/tests/files/test');
+    ParseFactory::fromFile('./sphp/php/tests/files/test');
   }
 
   public function testParsingFileWithUnknownExtension() {
     $this->expectException(InvalidArgumentException::class);
-    Parser::fromFile('./sphp/php/tests/files/test.foo');
+    ParseFactory::fromFile('./sphp/php/tests/files/test.foo');
   }
 
   /**
@@ -104,12 +104,12 @@ class ParserTest extends TestCase {
   public function testFromString(string $file, $expected) {
     $raw = file_get_contents($file);
     $type = pathinfo($file, PATHINFO_EXTENSION);
-    $this->assertSame(Parser::fromString($raw, $type), $expected);
+    $this->assertSame(ParseFactory::fromString($raw, $type), $expected);
   }
 
   public function testParsingUnknownStringType() {
     $this->expectException(RuntimeException::class);
-    Parser::fromString('foo', 'bar');
+    ParseFactory::fromString('foo', 'bar');
   }
 
 }

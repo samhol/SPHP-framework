@@ -22,7 +22,7 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Ini implements Writer, Reader {
+class Ini implements ArrayParser {
 
   use ReaderFromFileTrait;
 
@@ -38,7 +38,7 @@ class Ini implements Writer, Reader {
     $this->writer = new IniWriter();
   }
 
-  public function readFromString(string $string): array {
+  public function stringToArray(string $string): array {
     $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
     $data = parse_ini_string($string, true);
@@ -49,11 +49,11 @@ class Ini implements Writer, Reader {
     return $data;
   }
 
-  public function readFromFile(string $filename): array {
-    return parse_ini_file (\Sphp\Stdlib\Filesystem::getFullPath($filename), true);
+  public function fileToArray(string $filename): array {
+    return parse_ini_file(\Sphp\Stdlib\Filesystem::getFullPath($filename), true);
   }
 
-  public function write($array): string {
+  public function toString($array): string {
     try {
       return $this->writer->toString($array);
     } catch (Exception $ex) {

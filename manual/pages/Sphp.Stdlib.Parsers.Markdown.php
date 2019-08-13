@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonGroup;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -24,7 +24,7 @@ Manual\example('Sphp/Stdlib/Parsers/Markdown.php', 'html5', true)->setExamplePan
 
 $mdCode = Manual\codeModal('<i class="far fa-file-code"></i> Markdown file', 'manual/snippets/example.md', '**Markdown** example');
 $yamlCodeButton = $mdCode->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-$parsedMd = new Modal('<i class="fab fa-html5"></i> HTML code', Parser::fromFile('manual/snippets/example.md'));
+$parsedMd = new Modal('<i class="fab fa-html5"></i> HTML code', ParseFactory::fromFile('manual/snippets/example.md'));
 
 $tr1 = $parsedMd->getTrigger()->addCssClass('button', 'php', 'radius', 'small');
 

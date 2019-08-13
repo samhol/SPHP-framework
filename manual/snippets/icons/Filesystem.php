@@ -6,11 +6,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 
-$d = Parser::fromFile('../filetypes.yml');
+$d = ParseFactory::fromFile('../filetypes.yml');
 
 
 $section = Tags::section();

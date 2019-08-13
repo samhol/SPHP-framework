@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
 /**
  * 
@@ -14,7 +14,7 @@ use Sphp\Stdlib\Parsers\Parser;
  * @return void
  */
 function md(string $content) {
-  echo Parser::md()->parseString($content);
+  echo ParseFactory::md()->parseString($content);
 }
 
 /**
@@ -23,7 +23,7 @@ function md(string $content) {
  * @return string
  */
 function inlineMd(string $content, bool $echo = true): string {
-  $parsed = Parser::md()->parseString($content, true);
+  $parsed = ParseFactory::md()->parseString($content, true);
   if ($echo) {
     echo $parsed;
   }

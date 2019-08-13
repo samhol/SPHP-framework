@@ -4,11 +4,11 @@ namespace Sphp\Html\Media\Icons;
 
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 
-$faData = Parser::fromFile('font-awesome.yml');
+$faData = ParseFactory::fromFile('font-awesome.yml');
 $types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
 $typeMap = ['solid' => 'fas', 'regular' => 'far', 'brands' => 'fab'];
 $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => null]);

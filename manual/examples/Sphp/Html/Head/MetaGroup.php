@@ -2,6 +2,6 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
-echo HeadFactory::fromArray(Parser::yaml()->readFromFile("manual/examples/Sphp/Html/Head/meta.yaml"));
+echo HeadFactory::fromArray(ParseFactory::yaml()->fileToArray("manual/examples/Sphp/Html/Head/meta.yaml"));

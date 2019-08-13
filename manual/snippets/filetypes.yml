@@ -113,9 +113,3 @@ Word processor and text file formats:
   wks: Microsoft Works file
   wps: Microsoft Works file
   wpd: WordPerfect document
-Presentation file formats:
-  key: Keynote presentation
-  odp: OpenOffice Impress presentation file
-  pps: PowerPoint slide show
-  ppt: PowerPoint presentation
-  pptx: PowerPoint Open XML presentation

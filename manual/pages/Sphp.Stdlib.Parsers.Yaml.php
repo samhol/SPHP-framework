@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonGroup;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -22,9 +22,9 @@ MD
 
 Manual\example('Sphp/Stdlib/Parsers/Yaml.php', null, false)->setExamplePaneTitle('Examples of YAML data manipulation')->printHtml();
 
-$yamlCode = Manual\codeModal('<i class="fas fa-cogs"></i> YAML file', 'manual/snippets/example.yml', 'YAML file example');
+$yamlCode = Manual\codeModal('<i class="fas fa-cogs"></i> YAML file', 'manual/snippets/filetypes.yml', 'YAML file example');
 $yamlCodeButton = $yamlCode->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(Parser::yaml()->readFromFile('manual/snippets/example.yml'), true), 'text', 'YAML-file as parsed PHP array');
+$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(ParseFactory::yaml()->fileToArray('manual/snippets/filetypes.yml'), true), 'text', 'YAML-file as parsed PHP array');
 $tr1 = $parsedYaml->getTrigger()->addCssClass('button', 'php', 'radius', 'small');
 
 

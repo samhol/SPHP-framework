@@ -6,9 +6,9 @@ require_once 'country-flag-definitions.php';
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Html\Media\Icons\SvgLoader;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
-$data = Parser::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countrycodes.json');
+$data = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countrycodes.json');
 //echo '<pre>';
 //print_r($data);
 //echo '</pre>';

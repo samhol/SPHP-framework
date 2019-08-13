@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractParserTest extends TestCase {
 
-  abstract public function buildWriter(): Writer;
+  abstract public function buildWriter(): ArrayParser;
 
   /**
    * @return array
@@ -36,7 +36,7 @@ abstract class AbstractParserTest extends TestCase {
    */
   public function testWrite($data, string $expected) {
     $writer = $this->buildWriter();
-    $this->assertSame($expected, $writer->write($data));
+    $this->assertSame($expected, $writer->toString($data));
   }
 
   /**
@@ -52,7 +52,7 @@ abstract class AbstractParserTest extends TestCase {
   public function testInvalidWrite($data, string $exceptionType) {
     $writer = $this->buildWriter();
     $this->expectException($exceptionType);
-    $writer->write($data);
+    $writer->toString($data);
   }
 
 }

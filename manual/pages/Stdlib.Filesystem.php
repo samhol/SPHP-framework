@@ -4,7 +4,7 @@ namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
 
-$parser = Manual\api()->classLinker(Parser::class);
+$parser = Manual\api()->classLinker(ParseFactory::class);
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $fileSystem = Manual\api()->classLinker(Filesystem::class);
 /* $eventInterface = Manual\api()->classLinker(EventInterface::class);

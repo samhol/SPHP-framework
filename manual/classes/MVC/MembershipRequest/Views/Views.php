@@ -10,7 +10,7 @@
 
 namespace Sphp\Manual\MVC\MembershipRequest\Views;
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Lists\Ul;
 use Sphp\MVC\MembershipRequest\MembershipRequestData;
 

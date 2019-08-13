@@ -21,13 +21,13 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Yaml implements Writer, Reader {
+class Yaml implements ArrayParser {
 
   use ReaderFromFileTrait;
 
-  public function readFromString(string $string): array {
+  public function stringToArray(string $string): array {
     try {
-      $parsed = SymfonyYaml::parse($string);
+      $parsed = SymfonyYaml::parse($string, SymfonyYaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
       return $parsed;
     } catch (\Exception $ex) {
       //echo "wefwef\n".$ex->getCode();
@@ -35,11 +35,12 @@ class Yaml implements Writer, Reader {
     }
   }
 
-  public function write($data): string {
-    if (!is_array($data)) {
-      throw new InvalidArgumentException('Cannot write data to YAML format');
+  public function toString($data): string {
+    try {
+      return SymfonyYaml::dump($data, 2, 4, SymfonyYaml::DUMP_EXCEPTION_ON_INVALID_TYPE);
+    } catch (\Exception $ex) {
+      throw new InvalidArgumentException('Cannot write data to YAML format', 0, $ex);
     }
-    return SymfonyYaml::dump($data);
   }
 
 }

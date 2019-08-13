@@ -21,7 +21,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Csv implements Reader {
+class Csv implements ArrayParser {
 
   /**
    * 
@@ -32,7 +32,7 @@ class Csv implements Reader {
    * @return array
    * @throws RuntimeException
    */
-  public function readFromString(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
+  public function stringToArray(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
     try {
       return str_getcsv($string, $delimiter, $enclosure, $escape);
     } catch (Exception $ex) {
@@ -50,12 +50,26 @@ class Csv implements Reader {
    * @throws RuntimeException if CSV parsing fails
    * @throws RuntimeException if file is not readable
    */
-  public function readFromFile(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
+  public function fileToArray(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
     if (!Filesystem::isFile($filename)) {
       throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
     }
     $csv = new CsvFile($filename, $delimiter, $enclosure, $escape);
     return $csv->toArray();
+  }
+
+  public function toString(array $data, string $delimiter = ',', string $enclosure = '"'): string {
+    $handle = fopen('php://temp', 'r+');
+    foreach ($data as $line) {
+      fputcsv($handle, $line, $delimiter, $enclosure);
+    }
+    rewind($handle);
+    $contents = '';
+    while (!feof($handle)) {
+      $contents .= fread($handle, 8192);
+    }
+    fclose($handle);
+    return $contents;
   }
 
 }

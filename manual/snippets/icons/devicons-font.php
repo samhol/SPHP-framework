@@ -2,12 +2,12 @@
 
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Media\Icons\DevIcons;
 use Sphp\Html\Tags;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$data = Parser::fromFile('DevIcons.json');
+$data = ParseFactory::fromFile('DevIcons.json');
 
 $section = Tags::section();
 $section->addCssClass('container', 'devicons');

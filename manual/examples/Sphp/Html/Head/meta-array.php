@@ -1,6 +1,6 @@
 <?php
 
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Stdlib\Arrays;
 
 function rest(array $arr) {
@@ -15,6 +15,6 @@ function rest(array $arr) {
   return $output;
 }
 
-foreach (Parser::yaml()->readFromFile('manual/examples/Sphp/Html/Head/meta.yaml') as $v) {
+foreach (ParseFactory::yaml()->fileToArray('manual/examples/Sphp/Html/Head/meta.yaml') as $v) {
   echo '$head[] = ' . rest($v) . "\n";
 }

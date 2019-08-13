@@ -46,29 +46,29 @@ class JsonTest extends AbstractParserTest {
 
   public function testDecode() {
     $raw = Filesystem::toString('./sphp/php/tests/files/test.json');
-    $fromFile = $this->parser->readFromFile('./sphp/php/tests/files/test.json');
-    $fromString = $this->parser->readFromString($raw);
+    $fromFile = $this->parser->fileToArray('./sphp/php/tests/files/test.json');
+    $fromString = $this->parser->stringToArray($raw);
     $this->assertSame($fromFile, $fromString);
   }
 
   public function testEncode() {
-    $string = $this->parser->write(['foo' => 'bar']);
+    $string = $this->parser->toString(['foo' => 'bar']);
     $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
   }
 
   public function testInvalidEncode() {
     $this->expectException(RuntimeException::class);
-    $string = $this->parser->write(["f'ff" => "\xB1\x31"]);
+    $string = $this->parser->toString(["f'ff" => "\xB1\x31"]);
     echo $string;
     $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
   }
 
   public function testConverInvalidFile() {
     $this->expectException(FileSystemException::class);
-    $this->parser->readFromFile('foo.bar', false);
+    $this->parser->fileToArray('foo.bar', false);
   }
 
-  public function buildWriter(): Writer {
+  public function buildWriter(): ArrayParser {
     return new Json();
   }
 

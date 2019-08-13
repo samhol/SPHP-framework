@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Manual;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonGroup;
 
 $ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -25,9 +25,9 @@ MD
 
 Manual\example('Sphp/Stdlib/Parsers/Markdown.php', 'html5', true)->setExamplePaneTitle('Examples of JSON parsing')->printHtml();
 $jsonData = file_get_contents('http://data.samiholck.com/');
-$yamlCode = Manual\codeModal('<i class="fab fa-js-square"></i> JSON data', 'manual/snippets/example.json', 'JSON data');
+$yamlCode = Manual\codeModal('<i class="fab fa-js-square"></i> JSON data', 'manual/snippets/icons/DevIcons.json', 'JSON data');
 $yamlCodeButton = $yamlCode->getTrigger()->addCssClass('button', 'alert', 'radius', 'small');
-$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(Parser::json()->readFromFile('manual/snippets/example.json'), true), 'text', 'JSON data as parsed PHP array');
+$parsedYaml = Manual\codeModalFromString('<i class="fab fa-php"></i> PHP array', print_r(ParseFactory::json()->fileToArray('manual/snippets/icons/DevIcons.json'), true), 'text', 'JSON data as parsed PHP array');
 $tr1 = $parsedYaml->getTrigger()->addCssClass('button', 'php', 'radius', 'small');
 
 

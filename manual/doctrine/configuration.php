@@ -4,13 +4,13 @@ namespace Doctrine\ORM;
 
 use Doctrine\ORM\Configuration;
 use Sphp\Database\Doctrine\EntityManagerFactory;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
 $isDevMode = true;
 
 // the connection configuration
 
-$dbParams = Parser::fromFile('manual/config/db.yaml');
+$dbParams = ParseFactory::fromFile('manual/config/db.yaml');
 //echo '<pre>';
 //var_dump($dbParams);
 //echo '</pre>';

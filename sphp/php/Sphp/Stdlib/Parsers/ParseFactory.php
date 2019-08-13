@@ -29,7 +29,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class Parser {
+abstract class ParseFactory {
 
   /**
    * @var string[]
@@ -53,7 +53,7 @@ abstract class Parser {
   );
 
   /**
-   * @var Reader[]
+   * @var mixed[]
    */
   private static $instances = [];
 
@@ -71,7 +71,7 @@ abstract class Parser {
    * Returns a singleton reader instance of given data type
    *  
    * @param  string $type data type
-   * @return Reader a singleton reader instance of given data type
+   * @return mixed a singleton reader instance of given data type
    * @throws InvalidAttributeException
    */
   public static function getReaderFor(string $type) {
@@ -90,7 +90,7 @@ abstract class Parser {
    *
    * @param  string $name the name of the component
    * @param  array $arguments 
-   * @return Reader the corresponding singleton instance of reader object
+   * @return mixed the corresponding singleton instance of reader object
    * @throws BadMethodCallException if the parser does not exist
    */
   public static function __callStatic(string $name, array $arguments) {
@@ -121,8 +121,9 @@ abstract class Parser {
       $extension = strtolower($pathinfo['extension']);
     }
     $reader = static::getReaderFor($extension);
-    if ($reader instanceof Reader) {
-      $output = $reader->readFromFile($fullPath);
+    $output = '';
+    if ($reader instanceof ArrayParser) {
+      $output = $reader->fileToArray($fullPath);
     } else if ($reader instanceof StringConverter) {
       $output = $reader->parseFile($fullPath);
     }
@@ -140,8 +141,8 @@ abstract class Parser {
   public static function fromString(string $string, string $extension) {
     if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReaderFor($extension);
-      if ($reader instanceof Reader) {
-        return $reader->readFromString($string);
+      if ($reader instanceof ArrayParser) {
+        return $reader->stringToArray($string);
       } else if ($reader instanceof StringConverter) {
         return $reader->parseString($string);
       }

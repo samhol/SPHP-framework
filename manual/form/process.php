@@ -8,10 +8,10 @@ require_once('../settings.php');
 
 use Sphp\Manual\MVC\MembershipRequest\Controller;
 use Sphp\Stdlib\Datastructures\DataObject;
-use Sphp\Stdlib\Parsers\Parser;
+use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Network\Headers\Headers;
 
-$config = DataObject::fromArray(Parser::fromFile('config/private-data.yml'));
+$config = DataObject::fromArray(ParseFactory::fromFile('config/private-data.yml'));
 
 $controller = new Controller($config);
 $controller->process();

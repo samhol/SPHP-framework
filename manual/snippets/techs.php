@@ -3,5 +3,5 @@
 namespace Sphp\Stdlib;
 
 include '../settings.php';
-use Sphp\Stdlib\Parsers\Parser;
-echo Parser::fromFile('manual/snippets/techs.html', 'md');
+use Sphp\Stdlib\Parsers\ParseFactory;
+echo ParseFactory::fromFile('manual/snippets/techs.html', 'md');

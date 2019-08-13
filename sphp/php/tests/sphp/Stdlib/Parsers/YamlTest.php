@@ -10,12 +10,11 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\InvalidArgumentException;
 
-class YamlTest extends TestCase {
+class YamlTest extends AbstractParserTest {
 
   /**
    * @var Yaml
@@ -50,29 +49,35 @@ class YamlTest extends TestCase {
 
   public function testDecode() {
     $raw = Filesystem::toString('./sphp/php/tests/files/test.yaml');
-    $fromFile = $this->parser->readFromFile('./sphp/php/tests/files/test.yaml');
-    $fromString = $this->parser->readFromString($raw);
+    $fromFile = $this->parser->fileToArray('./sphp/php/tests/files/test.yaml');
+    $fromString = $this->parser->stringToArray($raw);
     $this->assertSame($fromFile, $fromString);
   }
 
   public function testEncode() {
-    $string = $this->parser->write(['foo' => 'bar']);
+    $string = $this->parser->toString(['foo' => 'bar']);
     $this->assertTrue(is_string($string));
-  }
-
-
-  public function testDecodeInvalidData() {
-    $this->expectException(InvalidArgumentException::class);
-    var_dump($this->parser->write('...'));
-  }
-  public function testEncodeInvalidData() {
-    $this->expectException(InvalidArgumentException::class);
-    var_dump($this->parser->write('...'));
   }
 
   public function testConverInvalidFile() {
     $this->expectException(FileSystemException::class);
-    $this->parser->readFromFile('foo.bar', false);
+    $this->parser->fileToArray('foo.bar', false);
+  }
+
+  public function buildWriter(): ArrayParser {
+    return new Yaml();
+  }
+
+  public function invalidWritingPairs(): array {
+    $data[] = [new \stdClass(), InvalidArgumentException::class];
+    return $data;
+  }
+
+  public function validWritingPairs(): array {
+    $map = [
+        [['foo' => 'bar'], "foo: bar\n"],
+    ];
+    return $map;
   }
 
 }
