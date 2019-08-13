@@ -62,6 +62,11 @@ class IniTest extends TestCase {
     $this->assertSame($fromFile, $fromString);
   }
 
+  public function testInvalidDecode() {
+    $this->expectException(InvalidArgumentException::class);
+    \var_dump($this->parser->readFromString('foo: "'));
+  }
+
   public function testEncode() {
     $string = $this->parser->write(['foo' => 'bar']);
     $this->assertEquals("foo = \"bar\"\n", $string);
@@ -74,7 +79,7 @@ class IniTest extends TestCase {
 
   public function testReadInvalidString() {
     $this->expectException(InvalidArgumentException::class);
-    var_dump($this->parser->readFromString('?{}|&~!()^ = bar', false));
+    \var_dump($this->parser->readFromString('?{}|&~!()^ = bar', false));
   }
 
   public function testConverInvalidFile() {

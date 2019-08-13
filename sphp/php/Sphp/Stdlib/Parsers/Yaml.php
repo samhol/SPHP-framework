@@ -28,9 +28,6 @@ class Yaml implements Writer, Reader {
   public function readFromString(string $string): array {
     try {
       $parsed = SymfonyYaml::parse($string);
-      if (!is_array($parsed)) {
-        return [$parsed];
-      }
       return $parsed;
     } catch (\Exception $ex) {
       //echo "wefwef\n".$ex->getCode();

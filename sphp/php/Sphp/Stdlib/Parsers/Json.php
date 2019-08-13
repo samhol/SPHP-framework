@@ -11,7 +11,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Zend\Config\Reader\Json as JsonFormat;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\RuntimeException;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
@@ -38,7 +38,7 @@ class Json implements Writer, Reader {
   }
 
   public function readFromString(string $string): array {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $thrower = ErrorToExceptionThrower::getInstance(RuntimeException::class);
     $thrower->start();
     $data = json_decode($string, JSON_BIGINT_AS_STRING);
     $thrower->stop();

@@ -60,6 +60,11 @@ class YamlTest extends TestCase {
     $this->assertTrue(is_string($string));
   }
 
+
+  public function testDecodeInvalidData() {
+    $this->expectException(InvalidArgumentException::class);
+    var_dump($this->parser->write('...'));
+  }
   public function testEncodeInvalidData() {
     $this->expectException(InvalidArgumentException::class);
     var_dump($this->parser->write('...'));

@@ -122,10 +122,11 @@ abstract class Parser {
     }
     $reader = static::getReaderFor($extension);
     if ($reader instanceof Reader) {
-      return $reader->readFromFile($fullPath);
+      $output = $reader->readFromFile($fullPath);
     } else if ($reader instanceof StringConverter) {
-      return $reader->parseFile($fullPath);
+      $output = $reader->parseFile($fullPath);
     }
+    return $output;
   }
 
   /**

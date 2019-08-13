@@ -36,7 +36,7 @@ abstract class Strings {
   public static function match(string $string, string $pattern, string $encoding = null): bool {
     $e = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class)->start();
     $result = preg_match($pattern, $string) === 1;
-     $e->stop();
+    $e->stop();
     return $result;
   }
 

@@ -10,9 +10,9 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\FileSystemException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Description of JsonTest
@@ -21,7 +21,7 @@ use Sphp\Exceptions\FileSystemException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class JsonTest extends TestCase {
+class JsonTest extends AbstractParserTest {
 
   /**
    * @var Json
@@ -56,9 +56,35 @@ class JsonTest extends TestCase {
     $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
   }
 
+  public function testInvalidEncode() {
+    $this->expectException(RuntimeException::class);
+    $string = $this->parser->write(["f'ff" => "\xB1\x31"]);
+    echo $string;
+    $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
+  }
+
   public function testConverInvalidFile() {
     $this->expectException(FileSystemException::class);
     $this->parser->readFromFile('foo.bar', false);
+  }
+
+  public function buildWriter(): Writer {
+    return new Json();
+  }
+
+  public function invalidWritingPairs(): array {
+    $data = [];
+    $data[] = [["fail" => "\xB1\x31"], RuntimeException::class];
+    return $data;
+  }
+
+  public function validWritingPairs(): array {
+    $data = [];
+    $data[] = [
+        ['foo', 'bar', 'baz', 'blong'],
+        '{"0":"foo","1":"bar","2":"baz","3":"blong"}'
+    ];
+    return $data;
   }
 
 }
