@@ -47,10 +47,10 @@ class ContentParserTraitTest extends TestCase {
   }
 
   public function testAppendMd() {
-    $mdString = file_get_contents(__DIR__ . '/../../files/test.md');
+    $mdString = file_get_contents(__DIR__ . '/../../files/valid.md');
     $mdToHtml = ParseFactory::md()->parseString($mdString);
     $this->container->appendMd($mdString);
-    $this->container->appendMdFile(__DIR__ . '/../../files/test.md');
+    $this->container->appendMdFile(__DIR__ . '/../../files/valid.md');
     // print_r($this->appendedStrings);
     $this->assertSame($mdToHtml, $this->appendedStrings[0]);
     $this->expectException(RuntimeException::class);
@@ -58,8 +58,8 @@ class ContentParserTraitTest extends TestCase {
   }
 
   public function testAppendRawFile() {
-    $mdString = file_get_contents(__DIR__ . '/../../files/test.md');
-    $this->container->appendRawFile(__DIR__ . '/../../files/test.md');
+    $mdString = file_get_contents(__DIR__ . '/../../files/valid.md');
+    $this->container->appendRawFile(__DIR__ . '/../../files/valid.md');
     // print_r($this->appendedStrings);
     $this->assertSame($mdString, $this->appendedStrings[0]);
     $this->expectException(RuntimeException::class);

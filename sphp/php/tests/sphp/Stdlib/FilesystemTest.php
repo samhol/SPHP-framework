@@ -97,7 +97,7 @@ class FilesystemTest extends TestCase {
   }
 
   public function testToStringExecution() {
-    $string = Filesystem::toString('./sphp/php/tests/files/test.ini');
+    $string = Filesystem::toString('./sphp/php/tests/files/valid.ini');
     $this->assertEquals("foo = bar", trim($string));
     $this->expectException(FileSystemException::class);
     Filesystem::toString('foo.php');

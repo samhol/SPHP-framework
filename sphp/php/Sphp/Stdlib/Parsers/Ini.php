@@ -24,8 +24,6 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  */
 class Ini implements ArrayParser {
 
-  use ReaderFromFileTrait;
-
   /**
    * @var IniWriter 
    */
