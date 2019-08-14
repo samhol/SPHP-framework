@@ -139,16 +139,18 @@ abstract class ParseFactory {
    * @throws RuntimeException
    */
   public static function fromString(string $string, string $extension) {
+    $output = '';
     if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReaderFor($extension);
       if ($reader instanceof ArrayParser) {
-        return $reader->stringToArray($string);
+        $output = $reader->stringToArray($string);
       } else if ($reader instanceof StringConverter) {
-        return $reader->parseString($string);
+        $output = $reader->parseString($string);
       }
     } else {
       throw new RuntimeException("Unsupported data type: .$extension");
     }
+    return $output;
   }
 
 }

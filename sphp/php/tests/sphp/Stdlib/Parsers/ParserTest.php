@@ -46,15 +46,18 @@ class ParserTest extends TestCase {
    * 
    * @param string $type
    * @param string $classType
+   * @return void
    */
-  public function testReaderExists(string $type, string $classType) {
+  public function testReaderExists(string $type, string $classType): void {
     $this->assertTrue(ParseFactory::readerExists($type));
     $this->assertInstanceOf($classType, ParseFactory::getReaderFor($type));
     $this->assertInstanceOf($classType, ParseFactory::$type());
   }
 
-  public function testGetReaderFailure() {
-
+  /**
+   * @return void
+   */
+  public function testGetReaderFailure(): void {
     $this->expectException(BadMethodCallException::class);
     ParseFactory::foo();
   }
@@ -64,10 +67,10 @@ class ParserTest extends TestCase {
    */
   public function filepathMap(): array {
     $map = [
-        ['./sphp/php/tests/files/test.md', '<h1 foo="bar">test</h1>'],
-        ['./sphp/php/tests/files/test.yaml', ['foo' => 'bar']],
-        ['./sphp/php/tests/files/test.json', ['foo' => 'bar']],
-        ['./sphp/php/tests/files/test.ini', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/valid.md', '<h1 foo="bar">test</h1>'],
+        ['./sphp/php/tests/files/valid.yaml', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/valid.json', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/valid.ini', ['foo' => 'bar']],
     ];
     return $map;
   }
@@ -76,22 +79,32 @@ class ParserTest extends TestCase {
    * @dataProvider filepathMap
    * @param string $file
    * @param boolean $expected
+   * @return void
    */
-  public function testFromFile($file, $expected) {
+  public function testFromFile($file, $expected): void {
     $this->assertSame(ParseFactory::fromFile($file), $expected);
   }
 
-  public function testParsingFromInvalidFile() {
+  /**
+   * @return void
+   */
+  public function testParsingFromInvalidFile(): void {
     $this->expectException(RuntimeException::class);
     ParseFactory::fromFile('foo.bar');
   }
 
-  public function testParsingFileWithoutExtension() {
+  /**
+   * @return void
+   */
+  public function testParsingFileWithoutExtension(): void {
     $this->expectException(InvalidArgumentException::class);
     ParseFactory::fromFile('./sphp/php/tests/files/test');
   }
 
-  public function testParsingFileWithUnknownExtension() {
+  /**
+   * @return void
+   */
+  public function testParsingFileWithUnknownExtension(): void {
     $this->expectException(InvalidArgumentException::class);
     ParseFactory::fromFile('./sphp/php/tests/files/test.foo');
   }
@@ -100,14 +113,18 @@ class ParserTest extends TestCase {
    * @dataProvider filepathMap
    * @param string $file
    * @param mixed $expected
+   * @return void
    */
-  public function testFromString(string $file, $expected) {
+  public function testFromString(string $file, $expected): void {
     $raw = file_get_contents($file);
     $type = pathinfo($file, PATHINFO_EXTENSION);
     $this->assertSame(ParseFactory::fromString($raw, $type), $expected);
   }
 
-  public function testParsingUnknownStringType() {
+  /**
+   * @return void
+   */
+  public function testParsingUnknownStringType(): void {
     $this->expectException(RuntimeException::class);
     ParseFactory::fromString('foo', 'bar');
   }

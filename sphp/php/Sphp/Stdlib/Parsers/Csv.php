@@ -10,9 +10,7 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Exception;
 use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -31,14 +29,14 @@ class Csv implements ArrayParser {
    * @param  string $enclosure
    * @param  string $escape
    * @return array
-   * @throws RuntimeException
    */
   public function stringToArray(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = "\\"): array {
-    try {
-      return str_getcsv($string, $delimiter, $enclosure, $escape);
-    } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    $rows = explode(PHP_EOL, $string);
+    $output = [];
+    foreach ($rows as $row) {
+      $output[] = str_getcsv($row, $delimiter, $enclosure, $escape);
     }
+    return $output;
   }
 
   /**
@@ -48,12 +46,11 @@ class Csv implements ArrayParser {
    * @param  string $enclosure
    * @param  string $escape
    * @return array
-   * @throws RuntimeException if CSV parsing fails
-   * @throws RuntimeException if file is not readable
+   * @throws InvalidArgumentException if CSV parsing fails
    */
   public function fileToArray(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\'): array {
-    if (!Filesystem::isFile($filename)) {
-      throw new RuntimeException(sprintf("File '%s' doesn't exist or is not readable", $filename));
+    if (!Filesystem::isAsciiFile($filename)) {
+      throw new InvalidArgumentException(sprintf("File '%s' doesn't exist or is not an Ascii file", $filename));
     }
     $csv = new CsvFile($filename, $delimiter, $enclosure, $escape);
     return $csv->toArray();

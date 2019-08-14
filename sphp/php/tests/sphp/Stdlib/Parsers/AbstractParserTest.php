@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractParserTest extends TestCase {
 
-  abstract public function buildWriter(): ArrayParser;
+  abstract public function buildArrayParser(): ArrayParser;
 
   /**
    * @return array
@@ -36,11 +36,11 @@ abstract class AbstractParserTest extends TestCase {
    * @return void
    */
   public function testStringToArray(string $string, array $expected): void {
-    $writer = $this->buildWriter();
+    $writer = $this->buildArrayParser();
     $raw = \Sphp\Stdlib\Filesystem::toString($string);
-   // echo "\n$raw\n";
-   // print_r($writer->stringToArray($raw));
-    $this->assertIsArray( $writer->stringToArray($raw));
+    // echo "\n$raw\n";
+    // print_r($writer->stringToArray($raw));
+    $this->assertSame($expected, $writer->stringToArray($raw));
   }
 
   /**
@@ -51,7 +51,7 @@ abstract class AbstractParserTest extends TestCase {
    * @return void
    */
   public function testFileToArray(string $path, array $expected): void {
-    $writer = $this->buildWriter();
+    $writer = $this->buildArrayParser();
     $this->assertSame($expected, $writer->fileToArray($path));
   }
 
@@ -59,40 +59,49 @@ abstract class AbstractParserTest extends TestCase {
    * @return void
    */
   public function testMissingFileToArray(): void {
-    $writer = $this->buildWriter();
+    $writer = $this->buildArrayParser();
     $this->expectException(\Exception::class);
     $writer->fileToArray('foo.file');
+  }
+  
+  /**
+   * @return void
+   */
+  public function testBinaryFileToArray(): void {
+    $writer = $this->buildArrayParser();
+    $this->expectException(\InvalidArgumentException::class);
+    $writer->fileToArray('./sphp/php/tests/files/image.gif');
   }
 
   /**
    * @return array
    */
-  abstract public function validWritingPairs(): array;
+  abstract public function validToStringData(): array;
 
   /**
-   * @dataProvider validWritingPairs
+   * @dataProvider validToStringData
    * @param mixed $data
    * @param string $expected
    * @return void
    */
   public function testWrite($data, string $expected): void {
-    $writer = $this->buildWriter();
+    $writer = $this->buildArrayParser();
     $this->assertSame($expected, $writer->toString($data));
   }
 
   /**
    * @return array
    */
-  abstract public function invalidWritingPairs(): array;
+  abstract public function invalidToStringData(): array;
 
   /**
-   * @dataProvider invalidWritingPairs
+   * @dataProvider invalidToStringData
    * @param mixed $data
    * @param string $exceptionType
    * @return void
    */
   public function testInvalidWrite($data, string $exceptionType): void {
-    $writer = $this->buildWriter();
+    $writer = $this->buildArrayParser();
     $this->expectException($exceptionType);
     $writer->toString($data);
   }

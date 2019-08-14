@@ -1,38 +1,20 @@
-<div class="grid-example">
-  <div class="grid-x">
-    <div class="cell small-1">One</div>
-    <div class="cell small-1">Two</div>
-    <div class="cell small-1">Three</div>
-    <div class="cell small-1 small-offset-3">Four</div>
-    <div class="cell small-1">Five</div>
-    <div class="cell small-1">Six</div>
-  </div>
-    <div class="grid-x">
-    <div class="cell small-2 small-order-2 medium-order-1">One</div>
-    <div class="cell small-2 small-order-1 medium-order-2">Two</div>
-    <div class="cell auto">Four</div>
-    <div class="cell auto">Five</div>
-    <div class="cell auto">Six</div>
-  </div>
-  <div class="grid-x grid-padding-x small-up-2 medium-up-4 large-up-6">
-  <div class="cell small-order-2 medium-order-1">1</div>
-  <div class="cell small-order-1 medium-order-2">2</div>
-  <div class="cell small-order-3">3</div>
-  <div class="cell small-order-4">4</div>
-  <div class="cell small-order-5">5</div>
-  <div class="cell">6</div>
-</div>
-</div>
-<?php
+<pre>
+  <?php
+  print_r(array_map('str_getcsv', file('./manual/snippets/example.csv')));
 
-$dd = \Sphp\Html\Foundation\Sites\Navigation\FlexibleMenu::createDrilldown()->addCssClass('sphp');
-$dd->setOption('autoHeight', 'true');
-$dd->setOption('animateHeight', 'true');
-$sub1 = $dd->appendSubMenu();
-$sub1->setRoot('sub1');
-for ($i = 1; $i < 5; $i++) {
-  $sub1->appendLink("#sub$i", "sub$i");
-}
-for ($i = 1; $i < 15; $i++) {
-  $dd->appendLink("#foo$i", "foo$i");
-}
+  //print_r(str_getcsv("1,2,3,4//1,2,3,4"));
+  $csv = new Sphp\Stdlib\Parsers\Csv();
+  $filename = './sphp/php/tests/files/image.gif';
+  $data = parse_ini_string('[a]
+b= 45
+?{}^=d
+e='
+          , true);
+  var_dump($data);
+  var_dump(Sphp\Stdlib\Filesystem::isAsciiFile($filename));
+  $filename = './sphp/php/tests/files/x.gif';
+  var_dump(Sphp\Stdlib\Filesystem::isAsciiFile($filename));
+  $filename = './sphp/php/tests/files/valid.csv';
+  var_dump(Sphp\Stdlib\Filesystem::isAsciiFile($filename), $csv->fileToArray($filename));
+  ?>
+</pre>

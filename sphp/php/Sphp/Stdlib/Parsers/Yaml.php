@@ -10,7 +10,6 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Sphp\Exceptions\RuntimeException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -30,8 +29,7 @@ class Yaml implements ArrayParser {
       $parsed = SymfonyYaml::parse($string, SymfonyYaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
       return $parsed;
     } catch (\Exception $ex) {
-      //echo "wefwef\n".$ex->getCode();
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
 

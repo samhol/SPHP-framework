@@ -10,6 +10,8 @@
 
 namespace Sphp\Stdlib\Parsers;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Implementation of ArrayParser
  *
@@ -25,7 +27,7 @@ interface ArrayParser {
    *
    * @param  string $filename file name
    * @return array output decoded array
-   * @throws RuntimeException if file is not readable
+   * @throws InvalidArgumentException if the file cannot be parsed
    */
   public function fileToArray(string $filename): array;
 
@@ -34,6 +36,7 @@ interface ArrayParser {
    *
    * @param  string $string date to decode to array
    * @return array output decoded array
+   * @throws InvalidArgumentException if the string cannot be parsed
    */
   public function stringToArray(string $string): array;
 

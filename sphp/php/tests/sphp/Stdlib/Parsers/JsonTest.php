@@ -10,9 +10,7 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\FileSystemException;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Description of JsonTest
@@ -23,62 +21,17 @@ use Sphp\Exceptions\RuntimeException;
  */
 class JsonTest extends AbstractParserTest {
 
-  /**
-   * @var Json
-   */
-  protected $parser;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->parser = new Json();
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->parser);
-  }
-
-  public function testDecode() {
-    $raw = Filesystem::toString('./sphp/php/tests/files/test.json');
-    $fromFile = $this->parser->fileToArray('./sphp/php/tests/files/test.json');
-    $fromString = $this->parser->stringToArray($raw);
-    $this->assertSame($fromFile, $fromString);
-  }
-
-  public function testEncode() {
-    $string = $this->parser->toString(['foo' => 'bar']);
-    $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
-  }
-
-  public function testInvalidEncode() {
-    $this->expectException(RuntimeException::class);
-    $string = $this->parser->toString(["f'ff" => "\xB1\x31"]);
-    echo $string;
-    $this->assertTrue(\Sphp\Stdlib\Strings::isJson($string));
-  }
-
-  public function testConverInvalidFile() {
-    $this->expectException(FileSystemException::class);
-    $this->parser->fileToArray('foo.bar', false);
-  }
-
-  public function buildWriter(): ArrayParser {
+  public function buildArrayParser(): ArrayParser {
     return new Json();
   }
 
-  public function invalidWritingPairs(): array {
+  public function invalidToStringData(): array {
     $data = [];
-    $data[] = [["fail" => "\xB1\x31"], RuntimeException::class];
+    $data[] = [["fail" => "\xB1\x31"], InvalidArgumentException::class];
     return $data;
   }
 
-  public function validWritingPairs(): array {
+  public function validToStringData(): array {
     $data = [];
     $data[] = [
         ['foo', 'bar', 'baz', 'blong'],
@@ -88,7 +41,7 @@ class JsonTest extends AbstractParserTest {
   }
 
   public function validFileToArrayData(): array {
-        $map = [
+    $map = [
         ['./sphp/php/tests/files/valid.json', ['foo' => 'bar']],
     ];
     return $map;

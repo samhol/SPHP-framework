@@ -10,9 +10,6 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use PHPUnit\Framework\TestCase;
-use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -22,69 +19,37 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class IniTest extends TestCase {
+class IniTest extends AbstractParserTest {
 
-  /**
-   * @var Ini
-   */
-  protected $parser;
+  use \Sphp\Tests\Stdlib\Parsers\InvalidStringToArrayTestTrait;
 
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->parser = new Ini();
+  public function buildArrayParser(): ArrayParser {
+    return new Ini();
   }
 
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->parser);
-  }
-
-  /**
-   * @return array
-   */
-  public function filepathMap(): array {
+  public function validToStringData(): array {
     $map = [
-        ['./tests/files/test.ini', ['foo' => 'bar']],
+        [['foo' => 'bar'], "foo = \"bar\"\n"],
     ];
     return $map;
   }
 
-  public function testDecode() {
-    $raw = Filesystem::toString('./sphp/php/tests/files/test.ini');
-    $fromFile = $this->parser->fileToArray('./sphp/php/tests/files/test.ini');
-    $fromString = $this->parser->stringToArray($raw);
-    $this->assertSame($fromFile, $fromString);
+  public function validFileToArrayData(): array {
+    $map = [
+        ['./sphp/php/tests/files/valid.ini', ['foo' => 'bar']],
+    ];
+    return $map;
   }
 
-  public function testInvalidDecode() {
-    $this->expectException(InvalidArgumentException::class);
-    \var_dump($this->parser->stringToArray('foo: "'));
+  public function invalidRawStrings(): array {
+    $data = [];
+    $data[] = ['?{}^=d'];
+    return $data;
   }
 
-  public function testEncode() {
-    $string = $this->parser->toString(['foo' => 'bar']);
-    $this->assertEquals("foo = \"bar\"\n", $string);
-  }
-
-  public function testEncodeInvalidData() {
-    $this->expectException(InvalidArgumentException::class);
-    var_dump($this->parser->toString('foo'));
-  }
-
-  public function testReadInvalidString() {
-    $this->expectException(InvalidArgumentException::class);
-    \var_dump($this->parser->stringToArray('?{}|&~!()^ = bar', false));
-  }
-
-  public function testConverInvalidFile() {
-    $this->expectException(FileSystemException::class);
-    $this->parser->fileToArray('foo.bar', false);
+  public function invalidToStringData(): array {
+    $data[] = [new \stdClass(), InvalidArgumentException::class];
+    return $data;
   }
 
 }

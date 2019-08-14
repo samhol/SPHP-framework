@@ -11,7 +11,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * A trait to parse array data from a specific file type
@@ -35,9 +35,12 @@ trait ReaderFromFileTrait {
    *
    * @param  string $filename file name
    * @return array output decoded array
-   * @throws RuntimeException if file is not readable
+   * @throws InvalidArgumentException if file cannot be parsed
    */
   public function fileToArray(string $filename): array {
+    if (!Filesystem::isAsciiFile($filename)) {
+      throw new InvalidArgumentException(sprintf("File '%s' doesn't exist or is not an Ascii file", $filename));
+    }
     return $this->stringToArray(Filesystem::toString($filename));
   }
 

@@ -11,7 +11,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Zend\Config\Reader\Json as JsonFormat;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
@@ -36,9 +36,16 @@ class Json implements ArrayParser {
   public function __construct() {
     $this->parser = new JsonFormat();
   }
+  
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->parser);
+  }
 
   public function stringToArray(string $string): array {
-    $thrower = ErrorToExceptionThrower::getInstance(RuntimeException::class);
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
     $data = json_decode($string, JSON_BIGINT_AS_STRING);
     $thrower->stop();
@@ -48,7 +55,7 @@ class Json implements ArrayParser {
   public function toString($data, int $flags = JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT): string {
     $serialized = json_encode($data, $flags);
     if (false === $serialized) {
-      throw new RuntimeException(json_last_error_msg());
+      throw new InvalidArgumentException(json_last_error_msg());
     }
     return $serialized;
   }

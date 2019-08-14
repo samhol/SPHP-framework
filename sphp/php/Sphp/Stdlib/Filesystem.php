@@ -40,6 +40,16 @@ abstract class Filesystem {
     }
   }
 
+  public static function isAsciiFile(string $filename): bool {
+    $isAscii = false;
+    if (static::isFile($filename)) {
+      $finfo = new \finfo(\FILEINFO_MIME);
+      $mime = $finfo->file($filename);
+      $isAscii = substr($mime, 0, 4) === 'text';
+    }
+    return $isAscii;
+  }
+
   /**
    * Solves the full path to file
    * 

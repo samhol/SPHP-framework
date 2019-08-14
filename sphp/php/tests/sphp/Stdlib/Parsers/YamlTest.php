@@ -10,70 +10,20 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 class YamlTest extends AbstractParserTest {
 
-  /**
-   * @var Yaml
-   */
-  protected $parser;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->parser = new Yaml();
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->parser);
-  }
-
-  /**
-   * @return array
-   */
-  public function filepathMap(): array {
-    $map = [
-        ['./tests/files/test.Yaml', ['foo' => 'bar']],
-    ];
-    return $map;
-  }
-
-  public function testDecode() {
-    $raw = Filesystem::toString('./sphp/php/tests/files/test.yaml');
-    $fromFile = $this->parser->fileToArray('./sphp/php/tests/files/test.yaml');
-    $fromString = $this->parser->stringToArray($raw);
-    $this->assertSame($fromFile, $fromString);
-  }
-
-  public function testEncode() {
-    $string = $this->parser->toString(['foo' => 'bar']);
-    $this->assertTrue(is_string($string));
-  }
-
-  public function testConverInvalidFile() {
-    $this->expectException(FileSystemException::class);
-    $this->parser->fileToArray('foo.bar', false);
-  }
-
-  public function buildWriter(): ArrayParser {
+  public function buildArrayParser(): ArrayParser {
     return new Yaml();
   }
 
-  public function invalidWritingPairs(): array {
+  public function invalidToStringData(): array {
     $data[] = [new \stdClass(), InvalidArgumentException::class];
     return $data;
   }
 
-  public function validWritingPairs(): array {
+  public function validToStringData(): array {
     $map = [
         [['foo' => 'bar'], "foo: bar\n"],
     ];
@@ -82,9 +32,27 @@ class YamlTest extends AbstractParserTest {
 
   public function validFileToArrayData(): array {
     $map = [
-        ['./sphp/php/tests/files/test.yaml', ['foo' => 'bar']],
+        ['./sphp/php/tests/files/valid.yaml', ['foo' => 'bar']],
     ];
     return $map;
+  }
+
+  public function invalidRawStrings(): array {
+    $data = [];
+    $data[] = ['!php/object \'O:8:"stdClass":1:{s:5:"foo";s:7:"bar";}\''];
+    return $data;
+  }
+
+  /**
+   * @dataProvider invalidRawStrings
+   * @param  string $string
+   * @param  array $expected
+   * @return void
+   */
+  public function testInvalidStringToArray(string $string): void {
+    $writer = $this->buildArrayParser();
+    $this->expectException(\Exception::class);
+    $writer->stringToArray($string);
   }
 
 }

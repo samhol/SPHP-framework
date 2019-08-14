@@ -22,16 +22,16 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class CsvTest extends AbstractParserTest {
 
-  public function buildWriter(): ArrayParser {
+  public function buildArrayParser(): ArrayParser {
     return new Csv();
   }
 
-  public function invalidWritingPairs(): array {
+  public function invalidToStringData(): array {
     $data[] = [[new \stdClass()], InvalidArgumentException::class];
     return $data;
   }
 
-  public function validWritingPairs(): array {
+  public function validToStringData(): array {
     $map = [
         [[['foo', 'bar']], "foo,bar\n"],
     ];

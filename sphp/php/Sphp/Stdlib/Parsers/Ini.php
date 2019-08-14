@@ -38,19 +38,27 @@ class Ini implements ArrayParser {
     $this->writer = new IniWriter();
   }
 
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->writer);
+  }
+
   public function stringToArray(string $string): array {
     $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
     $data = parse_ini_string($string, true);
-    if ($data === false) {
-      throw new InvalidArgumentException('Fuck the ini');
-    }
     $thrower->stop();
     return $data;
   }
 
   public function fileToArray(string $filename): array {
-    return parse_ini_file(\Sphp\Stdlib\Filesystem::getFullPath($filename), true);
+    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $thrower->start();
+    $output = parse_ini_file(\Sphp\Stdlib\Filesystem::getFullPath($filename), true);
+    $thrower->stop();
+    return $output;
   }
 
   public function toString($array): string {

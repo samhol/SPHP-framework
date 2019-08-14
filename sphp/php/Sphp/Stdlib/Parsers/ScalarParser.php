@@ -141,7 +141,7 @@ abstract class ScalarParser {
    * @throws InvalidArgumentException if the value cannot be parsed to Boolean
    */
   public static function parseBoolean($value): bool {
-    $validated = filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE);
+    $validated = filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
     if ($validated === null) {
       $message = sprintf('%s cannot be parsed to boolean', gettype($value));
       throw new InvalidArgumentException($message);
@@ -176,16 +176,20 @@ abstract class ScalarParser {
    * @throws InvalidArgumentException if the value cannot be parsed to string
    */
   public static function parseString($value, string $pattern = null): string {
-    if ($pattern !== null) {
-      $validated = filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $pattern]]);
-    } else {
-      $validated = $value;
+    $output = $value;
+    if (is_scalar($value) || $value === null) {
+      $output = (string) $value;
+    } else if (is_object($value) && method_exists($value, '__toString')) {
+      $output = "$value";
     }
-    if ($validated === null) {
-      $message = sprintf('%s cannot be parsed to boolean', gettype($value));
+    if (is_string($output) && $pattern !== null) {
+      $output = filter_var($output, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $pattern]]);
+    }
+    if (!is_string($output)) {
+      $message = sprintf('%s cannot be parsed to string', gettype($value));
       throw new InvalidArgumentException($message);
     }
-    return $validated;
+    return $output;
   }
 
 }

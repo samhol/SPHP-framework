@@ -164,15 +164,19 @@ class CsvFile implements Arrayable, Iterator {
 
   /**
    * Advance the internal pointer of the collection
+   *
+   * @return void
    */
-  public function next() {
+  public function next(): void {
     $this->file->next();
   }
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     $this->file->rewind();
   }
 
@@ -183,25 +187,6 @@ class CsvFile implements Arrayable, Iterator {
    */
   public function valid(): bool {
     return $this->file->valid() && $this->current() !== false;
-  }
-
-  /**
-   * 
-   * 
-   * @param  string $filename
-   * @param  array $lines
-   * @param  string $delimiter
-   * @param  string $enclosure
-   * @param  string $escape
-   * @return CsvFile
-   */
-  public static function fromArray(string $filename, array $lines, string $delimiter = ',', string $enclosure = '"', string $escape = "\\"): CsvFile {
-    Filesystem::mkFile($filename);
-    $csvObj = new CsvFile($filename, $delimiter, $enclosure, $escape);
-    foreach ($lines as $line) {
-      $csvObj->appendRow($line);
-    }
-    return $csvObj;
   }
 
 }

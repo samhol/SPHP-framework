@@ -171,4 +171,152 @@ class ScalarParserTest extends TestCase {
     ScalarParser::parseFloat($raw);
   }
 
+  public function validParseBooleanData(): array {
+    return [
+        ['on', true],
+        ['On', true],
+        ['ON', true],
+        ['off', false],
+        ['Off', false],
+        ['OFF', false],
+        ['yes', true],
+        ['Yes', true],
+        ['YES', true],
+        ['no', false],
+        ['No', false],
+        ['NO', false],
+        [0, false],
+        [1, true],
+        ['0', false],
+        ['1', true],
+        ['true', true],
+        ['True', true],
+        ['TRUE', true],
+        ['false', false],
+        ['False', false],
+        ['FALSE', false],
+        [true, true],
+        [false, false],
+        [null, false],
+    ];
+  }
+
+  /**
+   * @dataProvider validParseBooleanData
+   * 
+   * @param  mixed $raw
+   * @param  float $expected
+   * @return void
+   */
+  public function testValidParseBoolean($raw, bool $expected): void {
+    $this->assertEquals($expected, ScalarParser::parseBoolean($raw));
+  }
+
+  public function invalidParseBooleanData(): array {
+    return [
+        ['foo'],
+        [new \stdClass()],
+        [[]],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidParseBooleanData
+   * 
+   * @param  mixed $raw
+   * @return void
+   */
+  public function testInvalidParseBoolean($raw): void {
+    $this->expectException(InvalidArgumentException::class);
+    ScalarParser::parseBoolean($raw);
+  }
+
+  public function validParseScalarData(): array {
+    return [
+        ['on', 'on'],
+        ['On', 'On'],
+        [true, true],
+        [new \Sphp\Html\PlainContainer('foo'), 'foo'],
+        [false, false],
+        [-1, -1],
+        [1, 1],
+        ['1', '1'],
+    ];
+  }
+
+  /**
+   * @dataProvider validParseScalarData
+   * 
+   * @param  mixed $raw
+   * @param  scalar $expected
+   * @return void
+   */
+  public function testValidParseScalar($raw, $expected): void {
+    $this->assertEquals($expected, ScalarParser::parseScalar($raw));
+  }
+
+  public function invalidParseScalarData(): array {
+    return [
+        [null],
+        [new \stdClass()],
+        [[]],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidParseScalarData
+   * 
+   * @param  mixed $raw
+   * @return void
+   */
+  public function testInvalidParseScalar($raw): void {
+    $this->expectException(InvalidArgumentException::class);
+    ScalarParser::parseScalar($raw);
+  }
+
+  public function validParseStringData(): array {
+    return [
+        ['on', 'on'],
+        ['On', 'On'],
+        [true, '1'],
+        [new \Sphp\Html\PlainContainer('foo'), 'foo', "/foo/"],
+        [false, ''],
+        [-1, '-1'],
+        [1, '1'],
+        [null, ''],
+    ];
+  }
+
+  /**
+   * @dataProvider validParseStringData
+   * 
+   * @param  mixed $raw
+   * @param  scalar $expected
+   * @return void
+   */
+  public function testValidParseString($raw, $expected, string $pattern = null): void {
+    $this->assertEquals($expected, ScalarParser::parseString($raw, $pattern));
+  }
+  
+
+
+  public function invalidParseStringData(): array {
+    return [
+        [new \stdClass()],
+        [new \Sphp\Html\PlainContainer('foo'), "/bar/"],
+        [[]],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidParseStringData
+   * 
+   * @param  mixed $raw
+   * @return void
+   */
+  public function testInvalidParseString($raw, string $pattern = null): void {
+    $this->expectException(InvalidArgumentException::class);
+    ScalarParser::parseString($raw, $pattern);
+  }
+
 }
