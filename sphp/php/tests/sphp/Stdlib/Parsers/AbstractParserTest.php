@@ -36,11 +36,11 @@ abstract class AbstractParserTest extends TestCase {
    * @return void
    */
   public function testStringToArray(string $string, array $expected): void {
-    $writer = $this->buildArrayParser();
+    $parser = $this->buildArrayParser();
     $raw = \Sphp\Stdlib\Filesystem::toString($string);
-    // echo "\n$raw\n";
-    // print_r($writer->stringToArray($raw));
-    $this->assertSame($expected, $writer->stringToArray($raw));
+    //echo "\n" . get_class($parser) . "\n";
+    //var_dump($parser->stringToArray($raw),$expected);
+    $this->assertSame($expected, $parser->stringToArray($raw));
   }
 
   /**
@@ -63,7 +63,7 @@ abstract class AbstractParserTest extends TestCase {
     $this->expectException(\Exception::class);
     $writer->fileToArray('foo.file');
   }
-  
+
   /**
    * @return void
    */
@@ -86,7 +86,7 @@ abstract class AbstractParserTest extends TestCase {
    */
   public function testWrite($data, string $expected): void {
     $writer = $this->buildArrayParser();
-    $this->assertSame($expected, $writer->toString($data));
+    $this->assertSame(trim($expected), trim($writer->toString($data)));
   }
 
   /**

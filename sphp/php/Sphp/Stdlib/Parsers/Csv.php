@@ -31,9 +31,9 @@ class Csv implements ArrayParser {
    * @return array
    */
   public function stringToArray(string $string, string $delimiter = ',', string $enclosure = '"', string $escape = "\\"): array {
-    $rows = explode("\n", $string);
+    $Data = explode(PHP_EOL,$string); //parse the rows 
     $output = [];
-    foreach ($rows as $row) {
+    foreach ($Data as $row) {
       $output[] = str_getcsv($row, $delimiter, $enclosure, $escape);
     }
     return $output;

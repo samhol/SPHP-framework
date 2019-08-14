@@ -22,6 +22,9 @@
     <testsuite name="config">
       <directory>./sphp/php/tests/sphp/Config</directory>
     </testsuite>
+    <testsuite name="security">
+      <directory>./sphp/php/tests/sphp/Security</directory>
+    </testsuite>
     <testsuite name="dt">
       <directory>./sphp/php/tests/sphp/DateTime</directory>
     </testsuite>

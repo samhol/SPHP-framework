@@ -32,9 +32,8 @@ class CsvTest extends AbstractParserTest {
   }
 
   public function validToStringData(): array {
-    $map = [
-        [[['foo', 'bar']], "foo,bar\n"],
-    ];
+    $map = [];
+    $map[] = [[['foo', 'bar']], 'foo,bar' . PHP_EOL];
     return $map;
   }
 
