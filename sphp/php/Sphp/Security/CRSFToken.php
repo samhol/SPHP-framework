@@ -15,7 +15,6 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Stdlib\Random\UUID;
 use Sphp\Html\Forms\Form;
 
-
 /**
  * Implements a CRSF token generator and validator
  *
@@ -116,6 +115,33 @@ class CRSFToken {
    * @param  int $type input type
    * @return boolean true if the token value matches
    */
+
+  /**
+   * Verifies a named CRSF token from the input data
+   * 
+   * @param string $tokenName the CRSF token name
+   * @param array $data
+   * @return bool true if the token value matches
+   */
+  public function verifyToken(string $tokenName, array $data): bool {
+    $verified = false;
+    if (array_key_exists($tokenName, $data)) {
+      $token = $data[$tokenName];
+      if (array_key_exists($tokenName, $_SESSION) && $_SESSION[$tokenName] === $token) {
+        $verified = true;
+      }
+    }
+    return $verified;
+  }
+
+  /**
+   * Verifies a named CRSF token from the input data
+   * 
+   * @param  string $tokenName the CRSF token name
+   * @param  int $type input type
+   * @return boolean true if the token value matches
+   * @codeCoverageIgnore
+   */
   public function verifyInputToken(string $tokenName, int $type): bool {
     $token = filter_input($type, $tokenName, FILTER_SANITIZE_STRING);
     if (!isset($_SESSION[$tokenName])) {
@@ -133,6 +159,7 @@ class CRSFToken {
    * 
    * @param  string $tokenName the CRSF token name
    * @return boolean true if the token value matches
+   * @codeCoverageIgnore
    */
   public function verifyPostToken(string $tokenName): bool {
     return $this->verifyInputToken($tokenName, \INPUT_POST);
@@ -143,6 +170,7 @@ class CRSFToken {
    * 
    * @param  string $tokenName the CRSF token name
    * @return boolean true if the token value matches
+   * @codeCoverageIgnore
    */
   public function verifyGetToken(string $tokenName): bool {
     return $this->verifyInputToken($tokenName, \INPUT_GET);

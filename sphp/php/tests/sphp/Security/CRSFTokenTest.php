@@ -26,19 +26,22 @@ class CRSFTokenTest extends TestCase {
    * @runInSeparateProcess
    */
   public function testConstructor(): void {
-    $_POST = [];
-    $_GET = [];
+    $data = [];
     $tokenBuilder = new CRSFToken();
+
+    $this->assertSame(CRSFToken::instance(), CRSFToken::instance());
 
     $this->assertTrue(session_status() === PHP_SESSION_ACTIVE);
     $postToken = $tokenBuilder->generateToken('foo');
     $getToken = $tokenBuilder->generateToken('bar');
-    $_POST['foo'] = $postToken;
-    $_GET['bar'] = $getToken;
+    $data['foo'] = $postToken;
+    $data['bar'] = $getToken;
     $this->assertSame($tokenBuilder->generateToken('foo'), $postToken);
-    var_dump(filter_input(INPUT_POST, 'foo', FILTER_SANITIZE_STRING));
-    $this->assertTrue($tokenBuilder->verifyPostToken('foo'));
-    $this->assertFalse($tokenBuilder->verifyPostToken('bar'));
+    $this->assertTrue($tokenBuilder->verifyToken('foo', $data));
+    $this->assertTrue($tokenBuilder->verifyToken('bar', $data));
+    $this->assertFalse($tokenBuilder->verifyToken('baz', $data));
+    $this->assertSame($tokenBuilder, $tokenBuilder->unsetToken('bar', $data));
+    $this->assertFalse($tokenBuilder->verifyToken('bar', $data));
   }
 
 }
