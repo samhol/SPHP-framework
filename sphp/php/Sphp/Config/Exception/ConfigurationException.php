@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Config\Exceptions;
+namespace Sphp\Config\Exception;
 
 use Sphp\Exceptions\SphpExceptionInterface;
 use Exception as PHPException;

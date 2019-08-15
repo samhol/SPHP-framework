@@ -30,7 +30,7 @@ use ArrayIterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ObjectStorage implements IteratorAggregate, Arrayable {
+class ObjectStorage implements IteratorAggregate, Arrayable, \Countable {
 
   /**
    * @var object[]
@@ -151,6 +151,10 @@ class ObjectStorage implements IteratorAggregate, Arrayable {
       $stack->push($item);
     }
     return $stack;
+  }
+
+  public function count(): int {
+    return count($this->objects);
   }
 
 }

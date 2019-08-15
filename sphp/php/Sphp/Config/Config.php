@@ -14,7 +14,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 use IteratorAggregate;
 use Countable;
-use Sphp\Config\Exceptions\ConfigurationException;
+use Sphp\Config\Exception\ConfigurationException;
 use Sphp\Exceptions\RuntimeException;
 
 /**

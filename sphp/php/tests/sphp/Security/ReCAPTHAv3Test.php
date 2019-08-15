@@ -31,7 +31,7 @@ class ReCAPTHAv3Test extends TestCase {
   public function testScoreFailures(): void {
 
     $reCaptcha = new ReCAPTCHAv3('foo', 'bar');
-    $this->expectException(\Exception::class);
+    $this->expectException(Exception\ReCAPTCHAException::class);
     $reCaptcha->getScoreForResponse('foobar');
   }
 

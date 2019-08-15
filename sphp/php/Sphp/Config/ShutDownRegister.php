@@ -13,7 +13,7 @@ namespace Sphp\Config;
 use IteratorAggregate;
 use Traversable;
 use ArrayIterator;
-use Sphp\Stdlib\Datastructures\ObjectStorage;
+use Sphp\Stdlib\Datastructures\PriorityQueue;
 
 /**
  * Shutdown process handler, allows you to unregister a process (not supported natively in PHP)
@@ -31,7 +31,7 @@ use Sphp\Stdlib\Datastructures\ObjectStorage;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ShutDownRegister implements IteratorAggregate {
+class ShutDownRegister implements IteratorAggregate, \Countable {
 
   /**
    * @var bool
@@ -39,7 +39,7 @@ class ShutDownRegister implements IteratorAggregate {
   private $isRegistered = false;
 
   /**
-   * @var ObjectStorage
+   * @var PriorityQueue
    */
   private $callbacks;
 
@@ -47,7 +47,7 @@ class ShutDownRegister implements IteratorAggregate {
    * Constructor
    */
   public function __construct() {
-    $this->callbacks = new ObjectStorage();
+    $this->callbacks = new PriorityQueue();
   }
 
   /**
@@ -60,24 +60,14 @@ class ShutDownRegister implements IteratorAggregate {
   /**
    * Executed by the register_shutdown_function
    */
-  public function __invoke() {
+  public function __invoke(): void {
     foreach ($this->callbacks as $callback) {
       $callback();
     }
   }
 
-  public function addCallable(callable $object): string {
-    $id = spl_object_hash($object);
-    $this->callbacks->attach($object);
-    return $id;
-  }
-
-  public function contains(callable $object): string {
-    $this->callbacks->containsObject($object);
-  }
-
-  public function removeObject(callable $callback) {
-    $this->callbacks->remove($callback);
+  public function addCallable(callable $object, int $priority = 0) {
+    $this->callbacks->enqueue($object, $priority);
     return $this;
   }
 
@@ -85,7 +75,8 @@ class ShutDownRegister implements IteratorAggregate {
    * Unregisters the callbacks
    */
   public function unregisterall() {
-    $this->callbacks = new ObjectStorage();
+    $this->callbacks = new PriorityQueue();
+    return $this;
   }
 
   /**
@@ -101,23 +92,16 @@ class ShutDownRegister implements IteratorAggregate {
     return $this;
   }
 
-  /**
-   * Factory method for shutdown process
-   * 
-   * @param callable $callback
-   * @return System_ShutdownProcess $sd_process
-   */
-  public static function factory($callback) {
-    $obj = new self($callback);
-    return $obj;
-  }
-
   public function getIterator(): Traversable {
-    return new ArrayIterator($this->callbacks);
+    return $this->callbacks->getIterator();
   }
 
   public function toArray(): array {
-    return $this->callbacks;
+    return $this->callbacks->toArray();
+  }
+
+  public function count(): int {
+    return $this->callbacks->count();
   }
 
 }

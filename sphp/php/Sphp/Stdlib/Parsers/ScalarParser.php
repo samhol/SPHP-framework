@@ -117,6 +117,7 @@ abstract class ScalarParser {
    * @throws InvalidArgumentException if the value cannot be parsed to float
    */
   public static function parseFloat($value): float {
+    $validated = $value;
     if (is_bool($value)) {
       $validated = (float) $value;
     } else {

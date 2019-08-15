@@ -35,11 +35,11 @@ class Sequence implements Iterator {
    */
   private $maxLength;
 
-  
   public function __construct(int $maxLength = \PHP_INT_MAX) {
     $this->sequence = [];
     $this->maxLength = $maxLength;
   }
+
   /**
    * Destructor
    */
