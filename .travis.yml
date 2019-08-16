@@ -1,7 +1,11 @@
 language: php
-
+env:
+    global:
+        - LANG=fi_Fi.UTF-8
+        - LC_ALL=fi_Fi.UTF-8
 php:
   - 7.2
+  - 7.3
 # Cache composer packages
 cache:
   directories:
