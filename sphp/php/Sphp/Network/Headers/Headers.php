@@ -15,13 +15,13 @@ use ReflectionClass;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**
- * Operable PHP header collection
+ * Operable PHP header collection 
  *
  * @method \Sphp\Network\Headers\GenericHeader appendAccessControlAllowOrigin(string $content = null) appends a header object
  * @method \Sphp\Network\Headers\GenericHeader setAccessControlAllowOrigin(string $content = null) appends inserts a header object
  * @method \Sphp\Network\Headers\GenericHeader location(string $content = null) creates nd inserts a header object
  * @method \Sphp\Network\Headers\GenericHeader allowOrigin(string $content = null) creates nd inserts a header object
- * @method \Sphp\Network\Headers\GenericHeader allowMethods(string $content = null) creates nd inserts a header object
+ * @method \Sphp\Network\Headers\GenericHeader allowMethods(string $content = null) creates nd inserts a header object 
  * @method \Sphp\Network\Headers\GenericHeader maxAge(int $maxAge) creates nd inserts a header object
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -32,7 +32,7 @@ class Headers implements IteratorAggregate {
 
   /**
    * list of Header
-   *
+   * 
    * @var Header[]
    */
   private static $typeMap = [

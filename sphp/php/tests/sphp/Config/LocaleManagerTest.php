@@ -23,14 +23,13 @@ use PHPUnit\Framework\TestCase;
 class LocaleManagerTest extends TestCase {
 
   public function tes1tSuccessful(): void {
-
     $localeMngr = new LocaleManager();
     $this->assertSame($localeMngr, $localeMngr->setLocale('nl_NL.utf8'));
     $locales = $localeMngr->getLocales();
     $this->assertSame('nl_NL.utf8', setlocale(LC_ALL, 0));
     $this->assertSame('nl_NL.utf8', $localeMngr->getLocale(LC_ALL));
     $this->assertSame($localeMngr, $localeMngr->setLocale('fi_FI.utf8'));
-    $this->assertSame('fi_FI.utf8', setlocale(LC_ALL, '0'));
+    $this->assertSame('fi_FI.utf8', setlocale(LC_ALL, 0));
     $this->assertSame('fi_FI.utf8', $localeMngr->getLocale(LC_ALL));
     $this->assertSame($localeMngr, $localeMngr->restoreLocales());
     $this->assertSame($locales, $localeMngr->getLocales());
