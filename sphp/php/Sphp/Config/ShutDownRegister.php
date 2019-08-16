@@ -12,7 +12,6 @@ namespace Sphp\Config;
 
 use IteratorAggregate;
 use Traversable;
-use ArrayIterator;
 use Sphp\Stdlib\Datastructures\PriorityQueue;
 
 /**
