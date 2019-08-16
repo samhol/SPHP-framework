@@ -112,18 +112,26 @@ class Translator extends AbstractTranslator {
   }
 
   public function get(string $message): string {
-    $localeManager = new LocaleManager();
-    $localeManager->setLocale($this->getLang());
+    if ($this->getLang() !== null) {
+      $localeManager = new LocaleManager();
+      $localeManager->setLocale($this->getLang());
+    }
     $translation = dgettext($this->domain, $message);
-    $localeManager->restoreLocales();
+    if ($this->getLang() !== null) {
+      $localeManager->restoreLocales();
+    }
     return $translation;
   }
 
   public function getPlural(string $msgid1, string $msgid2, int $n): string {
-    $localeManager = new LocaleManager();
-    $localeManager->setLocale($this->getLang());
+    if ($this->getLang() !== null) {
+      $localeManager = new LocaleManager();
+      $localeManager->setLocale($this->getLang());
+    }
     $translation = dngettext($this->domain, $msgid1, $msgid2, $n);
-    $localeManager->restoreLocales();
+    if ($this->getLang() !== null) {
+      $localeManager->restoreLocales();
+    }
     return $translation;
   }
 

@@ -22,9 +22,9 @@ interface TranslatorInterface {
   /**
    * Returns the language used for translations
    * 
-   * @return string the name of the language used for translations
+   * @return string|null the name of the language used for translations
    */
-  public function getLang(): string;
+  public function getLang(): ?string;
 
   /**
    * Sets the language used for translations

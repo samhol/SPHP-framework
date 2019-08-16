@@ -30,10 +30,7 @@ abstract class AbstractTranslator implements TranslatorInterface {
    */
   private $lang;
 
-  public function getLang(): string {
-    if ($this->lang === null) {
-      return Locale::getMessageLocale();
-    }
+  public function getLang(): ?string {
     return $this->lang;
   }
 

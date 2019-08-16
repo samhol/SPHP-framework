@@ -10,8 +10,6 @@
 
 namespace Sphp\Config;
 
-use Sphp\Exceptions\BadMethodCallException;
-
 /**
  * Implementation of LocaleManager
  *
@@ -22,14 +20,16 @@ use Sphp\Exceptions\BadMethodCallException;
  */
 class LocaleManager {
 
+  /**
+   * @var string
+   */
   private $localeMap;
 
+  /**
+   * Constructor
+   */
   public function __construct() {
-    $this->localeMap = [];
-    $this->parseLocaleValues();
-  }
-
-  protected function parseLocaleValues() {
+    $this->localeMap;
     $this->localeMap = $this->getLocales();
   }
 
@@ -61,7 +61,9 @@ class LocaleManager {
 
   /**
    * 
-   * @param  callable $executable
+   * 
+   * @param callable $executable
+   * @param string $locale
    * @return $this for a fluent interface
    */
   public function run(callable $executable, string $locale) {

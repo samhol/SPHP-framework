@@ -41,7 +41,7 @@ class LocaleManagerTest extends TestCase {
     $localeMngr->setLocale('  ');
   }
 
-  public function testSeparateCategories(): void {
+  public function testRun(): void {
     $localeMngr = new LocaleManager();
     $locales = $localeMngr->getLocales();
     $translator = function () {
@@ -49,7 +49,7 @@ class LocaleManagerTest extends TestCase {
       textdomain("Sphp.Datetime");
       $this->assertSame("Valitse päivämäärä ja kellonaika", gettext("Select a Date and Time"));
     };
-    $this->assertSame($localeMngr, $localeMngr->run($translator, 'fi_FI.utf8'));
+    $this->assertSame($localeMngr, $localeMngr->run($translator, 'fi_FI'));
     $this->assertSame($locales, $localeMngr->getLocales());
   }
 
