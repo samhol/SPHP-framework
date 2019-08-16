@@ -22,27 +22,15 @@ use Sphp\Exceptions\BadMethodCallException;
  */
 class LocaleManager {
 
-  private static $localeMap = [
-      'All' => LC_ALL, // for all of the below
-      'Collate' => LC_COLLATE, // for string comparison, see strcoll()
-      'Ctype' => LC_CTYPE, // for character classification and conversion, for example strtoupper()
-      'Monetary' => LC_MONETARY, // for localeconv()
-      'Numeric' => LC_NUMERIC, // for decimal separator(See also localeconv())
-      'Time' => LC_TIME, // for date and time formatting with strftime()
-      'Messages' => LC_MESSAGES, // for system responses (available if PHP was compiled with libintl);
-  ];
+  private $localeMap;
 
-  public function __call(string $name, array $arguments) {
-    $locale = str_replace(['set', 'get'], '', $name);
-    if (!isset(static::$localeMap[$locale])) {
-      throw new BadMethodCallException("Method $name does not exist");
-    }
-    $category = static::$localeMap[$locale];
-    if (\Sphp\Stdlib\Strings::startsWith($name, 'set')) {
-      return $this->setLocale($category, $name);
-    } else if (\Sphp\Stdlib\Strings::startsWith($name, 'get')) {
-      return $this->getLocale($category, $name);
-    }
+  public function __construct() {
+    $this->localeMap = [];
+    $this->parseLocaleValues();
+  }
+
+  protected function parseLocaleValues() {
+    $this->localeMap = $this->getLocales();
   }
 
   /**
@@ -50,8 +38,8 @@ class LocaleManager {
    *
    * **`$category` constant values:**
    * <ul>
-   * <li> {@link LC_ALL} for all of the below </li>
-   * <li>{@link LC_COLLATE} for string comparison, see {@link strcoll()} </li>
+   * <li> {@link \LC_ALL} for all of the below </li>
+   * <li> {@link LC_COLLATE} for string comparison, see {@link strcoll()} </li>
    * <li> {@link LC_CTYPE} for character classification and conversion, for example {@link strtoupper()} </li>
    * <li> {@link LC_MONETARY} for localeconv() </li>
    * <li> {@link LC_NUMERIC} for decimal separator (See also {@link localeconv()}) </li>
@@ -64,10 +52,17 @@ class LocaleManager {
    * @return $this for a fluent interface
    * @throws Exception\ConfigurationException if locale setting failed
    */
-  public function setLocale(int $category, string $locale) {
-    if (!setLocale($category, $locale)) {
+  public function setLocale(string $locale) {
+    if (!setLocale(LC_ALL, $locale)) {
       throw new Exception\ConfigurationException('Locale setting failed');
     }
+    return $this;
+  }
+
+  public function run(callable $executable, string $locale) {
+    $this->setLocale($locale);
+    $executable();
+    $this->restoreLocales();
     return $this;
   }
 
@@ -89,6 +84,24 @@ class LocaleManager {
    */
   public function getLocale(int $category): string {
     return setLocale($category, '0');
+  }
+
+  public function getLocales(): array {
+    $raw = explode(';', setlocale(LC_ALL, 0));
+    $localeMap = [];
+    foreach ($raw as $entry) {
+      $pair = explode('=', $entry);
+      $localeMap[constant($pair[0])] = $pair[1];
+    }
+    //print_r($localeMap);
+    return $localeMap;
+  }
+
+  public function restoreLocales() {
+    foreach ($this->localeMap as $constant => $value) {
+      setLocale($constant, $value);
+    }
+    return $this;
   }
 
 }
