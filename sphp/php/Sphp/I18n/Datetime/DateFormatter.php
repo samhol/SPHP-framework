@@ -137,17 +137,10 @@ class DateFormatter {
    * @return string a formatted string 
    */
   public function strftime(string $format, string $lang = null): string {
-    $oldLang = Locale::getDatetimeLocale();
-    if ($lang === null) {
-      $lang = $oldLang;
-    }
-    if ($lang !== $oldLang) {
-      Locale::setLocale(LC_TIME, $lang);
-    }
+    $localeManager = new LocaleManager();
+    $localeManager->setLocale($lang);
     $output = strftime($format, $this->getTimestamp());
-    if ($lang !== $oldLang) {
-      Locale::setLocale(LC_TIME, $oldLang);
-    }
+    $localeManager->restoreLocales();
     return utf8_encode($output);
   }
 

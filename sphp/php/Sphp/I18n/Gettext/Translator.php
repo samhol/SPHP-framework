@@ -10,13 +10,9 @@
 
 namespace Sphp\I18n\Gettext;
 
-if (!defined('LC_MESSAGES')) {
-  define('LC_MESSAGES', 6);
-}
-
 use Sphp\I18n\AbstractTranslator;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Config\Locale;
+use Sphp\Config\LocaleManager;
 
 /**
  * Implements a natural language translator
@@ -116,24 +112,18 @@ class Translator extends AbstractTranslator {
   }
 
   public function get(string $message): string {
-    $lang = $this->getLang();
-    $tempLc = Locale::getMessageLocale();
-    if ($lang !== $tempLc) {
-      Locale::setMessageLocale($lang);
-    }
+    $localeManager = new LocaleManager();
+    $localeManager->setLocale($this->getLang());
     $translation = dgettext($this->domain, $message);
-    if ($lang !== $tempLc) {
-      Locale::setMessageLocale($tempLc);
-    }
+    $localeManager->restoreLocales();
     return $translation;
   }
 
   public function getPlural(string $msgid1, string $msgid2, int $n): string {
-    $lang = $this->getLang();
-    $tempLc = Locale::getMessageLocale();
-    Locale::setMessageLocale($lang);
+    $localeManager = new LocaleManager();
+    $localeManager->setLocale($this->getLang());
     $translation = dngettext($this->domain, $msgid1, $msgid2, $n);
-    Locale::setMessageLocale($tempLc);
+    $localeManager->restoreLocales();
     return $translation;
   }
 

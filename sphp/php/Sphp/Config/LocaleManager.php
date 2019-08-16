@@ -53,12 +53,17 @@ class LocaleManager {
    * @throws Exception\ConfigurationException if locale setting failed
    */
   public function setLocale(string $locale) {
-    if (!setLocale(LC_ALL, $locale)) {
+    if (!\setLocale(\LC_ALL, $locale)) {
       throw new Exception\ConfigurationException('Locale setting failed');
     }
     return $this;
   }
 
+  /**
+   * 
+   * @param  callable $executable
+   * @return $this for a fluent interface
+   */
   public function run(callable $executable, string $locale) {
     $this->setLocale($locale);
     $executable();
@@ -83,24 +88,15 @@ class LocaleManager {
    * @return string the name (filename) of the text domain
    */
   public function getLocale(int $category): string {
-    return setLocale($category, '0');
+    return setLocale($category, 0);
   }
 
-  public function getLocales(): array {
-    $raw = explode(';', setlocale(LC_ALL, 0));
-    $localeMap = [];
-    foreach ($raw as $entry) {
-      $pair = explode('=', $entry);
-      $localeMap[constant($pair[0])] = $pair[1];
-    }
-    //print_r($localeMap);
-    return $localeMap;
+  public function getLocales(): string {
+    return setlocale(LC_ALL, 0);
   }
 
   public function restoreLocales() {
-    foreach ($this->localeMap as $constant => $value) {
-      setLocale($constant, $value);
-    }
+    \setLocale(\LC_ALL, $this->localeMap);
     return $this;
   }
 
