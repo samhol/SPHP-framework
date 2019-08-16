@@ -1,11 +1,10 @@
 language: php
-env:
-    global:
-        - LANG=fi_Fi.UTF-8
-        - LC_ALL=fi_Fi.UTF-8
+
 php:
   - 7.2
   - 7.3
+  - hhvm
+  
 # Cache composer packages
 cache:
   directories:
@@ -17,4 +16,5 @@ before_script:
 script:
   - phpunit --verbose --bootstrap sphp/php/tests/bootstrap.php
 
-sudo: false
+notifications:
+ email: sami.holck@gmail.com
