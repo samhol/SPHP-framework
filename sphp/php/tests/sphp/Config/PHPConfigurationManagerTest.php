@@ -31,6 +31,7 @@ class PHPConfigurationManagerTest extends TestCase {
             ->setDefaultTimezone('Europe/Helsinki')
             ->setCharacterEncoding('UTF-8')
             ->insertIncludePaths('foo');
+    $this->assertSame(\E_ALL, error_reporting());
     $this->assertSame('UTF-8', mb_internal_encoding());
     $this->assertSame('Europe/Helsinki', date_default_timezone_get());
   }
@@ -39,6 +40,17 @@ class PHPConfigurationManagerTest extends TestCase {
     $phpConfMngr = new PHPConfig();
     $this->expectException(Exception\ConfigurationException::class);
     $phpConfMngr->setDefaultTimezone('foo');
+  }
+  public function testSetInvalidCharacterEncoding(): void {
+    $phpConfMngr = new PHPConfig();
+    $this->expectException(Exception\ConfigurationException::class);
+    $phpConfMngr->setCharacterEncoding('foo');
+  }
+  public function testSetInvalidIncludePaths(): void {
+    var_dump(set_include_path(''));
+    $phpConfMngr = new PHPConfig();
+    $this->expectException(Exception\ConfigurationException::class);
+    $phpConfMngr->insertIncludePaths('**');
   }
 
 }
