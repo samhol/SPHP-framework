@@ -41,16 +41,25 @@ class PHPConfigurationManagerTest extends TestCase {
     $this->expectException(Exception\ConfigurationException::class);
     $phpConfMngr->setDefaultTimezone('foo');
   }
+
   public function testSetInvalidCharacterEncoding(): void {
     $phpConfMngr = new PHPConfig();
     $this->expectException(Exception\ConfigurationException::class);
     $phpConfMngr->setCharacterEncoding('foo');
   }
+
+  /**
+   * @covers \Sphp\Config\PHPConfig::insertIncludePaths
+   * @covers \Sphp\Config\PHPConfig::getIncludePaths
+   * @covers \Sphp\Config\PHPConfig::containsIncludePath
+   * @return void
+   */
   public function testSetInvalidIncludePaths(): void {
-    var_dump(set_include_path(''));
     $phpConfMngr = new PHPConfig();
-    $this->expectException(Exception\ConfigurationException::class);
-    $phpConfMngr->insertIncludePaths('**');
+    $this->assertFalse($phpConfMngr->containsIncludePath('/fii/foo'));
+    $this->assertSame($phpConfMngr, $phpConfMngr->insertIncludePaths('/fii/foo'));
+    $this->assertContains('/fii/foo', $phpConfMngr->getIncludePaths());
+    $this->assertTrue($phpConfMngr->containsIncludePath('/fii/foo'));
   }
 
 }

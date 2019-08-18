@@ -10,9 +10,9 @@
 
 namespace Sphp\Config;
 
-use Sphp\Config\Exception\ConfigurationException;
 use Sphp\Stdlib\Arrays;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
+use Sphp\Config\Exception\ConfigurationException;
 
 /**
  * Implements class for managing PHP settings
@@ -31,11 +31,8 @@ class PHPConfig {
    * @throws ConfigurationException if character encoding setting fails
    */
   public function setCharacterEncoding(string $encoding = 'UTF-8') {
-      ErrorToExceptionThrower::getInstance(ConfigurationException::class)->start();
+    ErrorToExceptionThrower::getInstance(ConfigurationException::class)->start();
     $valid = mb_internal_encoding($encoding);
-    if (!$valid) {
-      throw new ConfigurationException("Failed setting character encoding to '$encoding'");
-    }
     ErrorToExceptionThrower::getInstance(ConfigurationException::class)->stop();
     return $this;
   }
@@ -78,12 +75,23 @@ class PHPConfig {
   }
 
   /**
+   * Returns all included paths as an array
    * 
-   * @return string[]
+   * @return string[] all included paths 
    */
   public function getIncludePaths(): array {
-    $pathString = get_include_path();
-    return array_unique(explode(\PATH_SEPARATOR, $pathString));
+    $pathString = \get_include_path();
+    return \array_unique(\explode(\PATH_SEPARATOR, $pathString));
+  }
+
+  /**
+   * Checks if given path exists in included paths
+   * 
+   * @return bool true if given path exists in included paths
+   */
+  public function containsIncludePath(string $path): bool {
+    $paths = $this->getIncludePaths();
+    return \in_array($path, $paths);
   }
 
   /**
@@ -96,9 +104,9 @@ class PHPConfig {
    */
   public function insertIncludePaths(...$paths) {
     $flatten = Arrays::flatten($paths);
-    $pathArray = array_unique(array_merge($this->getIncludePaths(), $flatten));
-    $newPaths = implode(\PATH_SEPARATOR, $pathArray);
-    $isset = set_include_path($newPaths);
+    $pathArray = \array_unique(\array_merge($this->getIncludePaths(), $flatten));
+    $newPaths = \implode(\PATH_SEPARATOR, $pathArray);
+    $isset = \set_include_path($newPaths);
     if (!$isset) {
       throw new ConfigurationException('Failed inserting given include paths');
     }
