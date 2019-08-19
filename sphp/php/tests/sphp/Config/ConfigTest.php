@@ -3,7 +3,6 @@
 namespace Sphp\Config;
 
 use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
-use Sphp\Exceptions\RuntimeException;
 
 class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
 
@@ -44,7 +43,8 @@ class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
   public function testFactorizing(): void {
     $zero = Config::instance();
     $this->assertSame($zero, Config::instance());
-    $this->assertSame($zero, Config::instance(0));
+    $this->assertSame($zero, Config::instance(''));
+    $this->assertSame($zero, Config::instance(null));
     $this->assertFalse($zero->isReadOnly());
     $foo = Config::instance('foo');
     $this->assertSame($foo, Config::instance('foo'));

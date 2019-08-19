@@ -20,7 +20,7 @@ namespace Sphp\Config;
 abstract class PHP {
 
   /**
-   * @var PHPConfig 
+   * @var PHPConfig
    */
   private static $configurator;
 

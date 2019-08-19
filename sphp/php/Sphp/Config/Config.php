@@ -295,7 +295,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    */
   public static function instance(string $name = null): Config {
     if ($name === null) {
-      $name = '0';
+      $name = '';
     }
     if (!isset(self::$instances[$name])) {
       self::$instances[$name] = new static([], false);

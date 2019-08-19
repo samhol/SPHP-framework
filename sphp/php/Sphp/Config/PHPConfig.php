@@ -32,7 +32,7 @@ class PHPConfig {
    */
   public function setCharacterEncoding(string $encoding = 'UTF-8') {
     ErrorToExceptionThrower::getInstance(ConfigurationException::class)->start();
-    $valid = mb_internal_encoding($encoding);
+    mb_internal_encoding($encoding);
     ErrorToExceptionThrower::getInstance(ConfigurationException::class)->stop();
     return $this;
   }
