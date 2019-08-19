@@ -19,10 +19,14 @@ use Sphp\Stdlib\Datastructures\PriorityQueue;
  *
  * Usage:
  * <pre>
- * $sd = new System_ShutdownProcess($callable);
- * $sd->register() /// $sd->unregister()
- * or via factory
- * $sd = System_ShutdownProcess::factory($callable)->register()
+ * $sd = new \Sphp\Config\ShutDownRegister();
+ * $sd->addCallable(function() {
+ *   echo 'foo';
+ * }, 10);
+ * $sd->addCallable(function() {
+ *   echo 'bar';
+ * }, 1);
+ * $sd->register();
  * </pre>
  * 
  * @author  Sami Holck <sami.holck@gmail.com>

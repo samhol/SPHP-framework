@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -22,28 +24,33 @@ use PHPUnit\Framework\TestCase;
  */
 class LocaleManagerTest extends TestCase {
 
-  public function tes1tSuccessful(): void {
+  public function testSuccessful(): void {
     $localeMngr = new LocaleManager();
-    $locales = $localeMngr->getLocales();
+    $locales = $localeMngr->__toString();
     $this->assertSame($localeMngr, $localeMngr->setLocale('nl_NL.utf8'));
     $this->assertSame('nl_NL.utf8', setlocale(LC_ALL, 0));
-    $this->assertSame('nl_NL.utf8', $localeMngr->getLocale(LC_ALL));
+    $this->assertSame('nl_NL.utf8', $localeMngr->getLocale('LC_ALL'));
     $this->assertSame($localeMngr, $localeMngr->setLocale('fi_FI.utf8'));
     $this->assertSame('fi_FI.utf8', setlocale(LC_ALL, 0));
-    $this->assertSame('fi_FI.utf8', $localeMngr->getLocale(LC_ALL));
+    $this->assertSame('fi_FI.utf8', $localeMngr->getLocale('LC_ALL'));
     $this->assertSame($localeMngr, $localeMngr->restoreLocales());
-    $this->assertSame($locales, $localeMngr->getLocales());
+    $this->assertSame($locales, (string) $localeMngr);
   }
 
-  public function test1Failure(): void {
+  public function testSettingFailure(): void {
     $localeMngr = new LocaleManager();
     $this->expectException(Exception\ConfigurationException::class);
-    $localeMngr->setLocale('  ');
+    $localeMngr->setLocale('LC_FOO=bar');
+  }
+  public function testGettingFailure(): void {
+    $localeMngr = new LocaleManager();
+    $this->expectException(Exception\ConfigurationException::class);
+    $localeMngr->getLocale('LC_FOO');
   }
 
   public function testRun(): void {
     $localeMngr = new LocaleManager();
-    $locales = $localeMngr->getLocales();
+    $locales = (string) $localeMngr;
     $translator = function () {
       bindtextdomain("Sphp.Datetime", "./sphp/locale");
       textdomain("Sphp.Datetime");
@@ -53,7 +60,7 @@ class LocaleManagerTest extends TestCase {
       $this->assertSame($localeMngr, $localeMngr->run($translator, 'fi_FI'));
     } catch (\Exception $ex) {
       $this->assertInstanceOf(Exception\ConfigurationException::class, $ex);
-      $this->assertSame($locales, $localeMngr->getLocales());
+      $this->assertSame($locales, (string) $localeMngr);
     }
   }
 
