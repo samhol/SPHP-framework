@@ -4,7 +4,53 @@ namespace Sphp\Config;
 
 use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
 use Sphp\Exceptions\RuntimeException;
+
 class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
+
+  public function constructorParams(): array {
+    $params = [];
+    $params[] = [[], true];
+    $params[] = [['foo' => 'bar'], true];
+    $params[] = [['foo' => 'bar'], false];
+    $params[] = [['foo' => new \stdClass()], false];
+    return $params;
+  }
+
+  /**
+   * @dataProvider constructorParams
+   * 
+   * @param array $config
+   * @param bool $readOnly
+   */
+  public function testConstructor(array $config, bool $readOnly) {
+    $conf1 = new Config($config, $readOnly);
+    $this->assertSame($readOnly, $conf1->isReadOnly());
+    $this->assertEquals($config, $conf1->toArray());
+    foreach ($config as $name => $value) {
+      $this->assertTrue($conf1->contains($name));
+      $this->assertSame($value, $conf1->get($name));
+      if ($conf1->isReadOnly()) {
+        $this->expectException(Exception\ConfigurationException::class);
+        $conf1->remove($name);
+      } else {
+        $this->assertSame($conf1, $conf1->remove($name));
+        $this->assertFalse($conf1->contains($name));
+      }
+    }
+    $this->expectException(Exception\ConfigurationException::class);
+    $conf1->get('notset');
+  }
+
+  public function testFactorizing(): void {
+    $zero = Config::instance();
+    $this->assertSame($zero, Config::instance());
+    $this->assertSame($zero, Config::instance(0));
+    $this->assertFalse($zero->isReadOnly());
+    $foo = Config::instance('foo');
+    $this->assertSame($foo, Config::instance('foo'));
+    $this->assertNotSame($zero, $foo);
+    $this->assertFalse($foo->isReadOnly());
+  }
 
   public function configData1(): array {
     return [
@@ -91,7 +137,7 @@ class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
     $this->assertTrue($conf->isReadOnly());
     $this->assertInstanceOf(Config::class, $conf['array']);
     $this->assertTrue($conf['array']->isReadOnly());
-    $this->expectException(RuntimeException::class);
+    $this->expectException(Exception\ConfigurationException::class);
     $conf->set('foo', 'bar');
   }
 
@@ -107,7 +153,7 @@ class ConfigTest extends AbstractArrayAccessIteratorCountableTest {
     $conf->setReadOnly();
     $this->assertTrue(isset($conf->array->foo));
     $this->assertSame('bar', $conf->array->foo);
-    $this->expectException(RuntimeException::class);
+    $this->expectException(Exception\ConfigurationException::class);
     $conf->foo = 'bar';
   }
 

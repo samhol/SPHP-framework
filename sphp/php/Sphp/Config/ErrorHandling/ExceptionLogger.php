@@ -36,7 +36,10 @@ class ExceptionLogger implements ExceptionListener {
    * @param string $destination the filename of the destination file
    */
   public function __construct(string $destination) {
-    $this->setDestination($destination);
+    if (!is_writable($destination)) {
+      Filesystem::mkFile($destination);
+    }
+    $this->destination = $destination;
   }
 
   /**
@@ -46,19 +49,6 @@ class ExceptionLogger implements ExceptionListener {
    */
   public function getDestination(): string {
     return $this->destination;
-  }
-
-  /**
-   * 
-   * @param  string $destination
-   * @return $this for a fluent interface
-   */
-  public function setDestination(string $destination) {
-    if (!is_writable($destination)) {
-      Filesystem::mkFile($destination);
-    }
-    $this->destination = $destination;
-    return $this;
   }
 
   public function onException(Throwable $e): void {

@@ -41,16 +41,11 @@ class PHPConfigurationManagerTest extends TestCase {
     $this->expectException(Exception\ConfigurationException::class);
     $phpConfMngr->setDefaultTimezone('foo');
   }
+
   public function testSetInvalidCharacterEncoding(): void {
     $phpConfMngr = new PHPConfig();
     $this->expectException(Exception\ConfigurationException::class);
     $phpConfMngr->setCharacterEncoding('foo');
-  }
-  public function testSetInvalidIncludePaths(): void {
-    var_dump(set_include_path(''));
-    $phpConfMngr = new PHPConfig();
-    $this->expectException(Exception\ConfigurationException::class);
-    $phpConfMngr->insertIncludePaths('**');
   }
 
 }

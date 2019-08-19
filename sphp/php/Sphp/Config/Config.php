@@ -15,7 +15,6 @@ use ArrayAccess;
 use IteratorAggregate;
 use Countable;
 use Sphp\Config\Exception\ConfigurationException;
-use Sphp\Exceptions\RuntimeException;
 
 /**
  * Application Configuration class for storing common application data
@@ -110,11 +109,18 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
     return $this->contains($varname);
   }
 
-  public function get(string $varName, $default = null) {
-    if (array_key_exists($varName, $this->data)) {
-      return $this->data[$varName];
+  /**
+   * Returns the configuration variable value
+   *
+   * @param  string $varname the name of the variable
+   * @return mixed content
+   * @throws ConfigurationException if the Configuration does not contain variable
+   */
+  public function get(string $varname) {
+    if (!array_key_exists($varname, $this->data)) {
+      throw new ConfigurationException('Configuration does not contain ' . $varname);
     }
-    return $default;
+    return $this->data[$varname];
   }
 
   /**
@@ -131,7 +137,8 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * Returns the configuration variable value
    *
    * @param  string $varname the name of the variable
-   * @return mixed content or `null`
+   * @return mixed content
+   * @throws ConfigurationException if the Configuration does not contain variable
    */
   public function __get(string $varname) {
     return $this->get($varname, null);
@@ -143,7 +150,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @param  string $varname the name of the variable
    * @param  mixed $value the value to set
    * @return $this for a fluent interface
-   * @throws RuntimeException if the object is read only
+   * @throws ConfigurationException if the Configuration is read only
    */
   public function set(string $varname, $value) {
     if (!$this->isReadOnly()) {
@@ -153,7 +160,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
         $this->data[$varname] = $value;
       }
     } else {
-      throw new RuntimeException('Configuration object is read only');
+      throw new ConfigurationException('Configuration object is read only');
     }
     return $this;
   }
@@ -163,7 +170,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    *
    * @param  Config $merged
    * @return $this for a fluent interface
-   * @throws RuntimeException if the object is read only
+   * @throws ConfigurationException if the object is read only
    */
   public function merge(Config $merged) {
     foreach ($merged as $varName => $value) {
@@ -177,7 +184,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * 
    * @param  string $varname the name of the variable
    * @param  mixed $value the value to set
-   * @throws RuntimeException if the object is read only
+   * @throws ConfigurationException if the object is read only
    */
   public function __set(string $varname, $value) {
     $this->set($varname, $value);
@@ -188,11 +195,11 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    *
    * @param  string $varname the name of the variable
    * @return $this for a fluent interface
-   * @throws RuntimeException if the object is read only
+   * @throws ConfigurationException if the object is read only
    */
   public function remove(string $varname) {
     if ($this->isReadOnly()) {
-      throw new RuntimeException('Configuration object is read only');
+      throw new ConfigurationException('Configuration object is read only');
     } else if (isset($this->data[$varname])) {
       unset($this->data[$varname]);
     }
@@ -251,6 +258,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * 
    * @param  string $varname the name of the variable
    * @return mixed the value of the given offset
+   * @throws ConfigurationException if the Configuration does not contain variable
    */
   public function offsetGet($varname) {
     return $this->get($varname);
@@ -262,7 +270,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @param  string $varname the name of the variable
    * @param  mixed $value the value to set
    * @return void
-   * @throws RuntimeException if the object is read only
+   * @throws ConfigurationException if the object is read only
    */
   public function offsetSet($varname, $value): void {
     $this->set($varname, $value);
@@ -273,7 +281,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * 
    * @param  string $varname the name of the variable
    * @return void
-   * @throws RuntimeException if the configuration object is read only
+   * @throws ConfigurationException if the configuration object is read only
    */
   public function offsetUnset($varname): void {
     $this->remove($varname);
@@ -283,15 +291,14 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * Returns named singleton instance of the configuration object
    *
    * @param  string $name name of the singleton instance
-   * @param  array $data the configuration data
    * @return Config singleton instance
    */
-  public static function instance(string $name = null, array $data = []): Config {
+  public static function instance(string $name = null): Config {
     if ($name === null) {
-      $name = 0;
+      $name = '0';
     }
     if (!isset(self::$instances[$name])) {
-      self::$instances[$name] = new static($data, false);
+      self::$instances[$name] = new static([], false);
     }
     return self::$instances[$name];
   }

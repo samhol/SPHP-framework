@@ -36,11 +36,12 @@ class ExceptionMailer implements ExceptionListener {
   /**
    * Constructor
    * 
-   * @param string $from optional senders email address 
+   * @param string $from senders email address 
    * @param string $to receivers email address
    */
   public function __construct(string $from, string $to) {
-    $this->setSender($from)->setReceiver($to);
+    $this->sender = $from;
+    $this->receiver = $to;
   }
 
   /**
@@ -59,28 +60,6 @@ class ExceptionMailer implements ExceptionListener {
    */
   public function getReceiver(): string {
     return $this->receiver;
-  }
-
-  /**
-   * Sets senders email address
-   * 
-   * @param  string $sender optional senders email address (null for none)
-   * @return $this for a fluent interface
-   */
-  public function setSender(string $sender) {
-    $this->sender = $sender;
-    return $this;
-  }
-
-  /**
-   * Sets receivers email address
-   * 
-   * @param  string $receiver receivers email address
-   * @return $this for a fluent interface
-   */
-  public function setReceiver(string $receiver) {
-    $this->receiver = $receiver;
-    return $this;
   }
 
   /**
