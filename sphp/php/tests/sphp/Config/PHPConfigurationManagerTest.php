@@ -47,8 +47,6 @@ class PHPConfigurationManagerTest extends TestCase {
     $this->expectException(Exception\ConfigurationException::class);
     $phpConfMngr->setCharacterEncoding('foo');
   }
-<<<<<<< HEAD
-=======
 
   /**
    * @covers \Sphp\Config\PHPConfig::insertIncludePaths
@@ -63,6 +61,5 @@ class PHPConfigurationManagerTest extends TestCase {
     $this->assertContains('/fii/foo', $phpConfMngr->getIncludePaths());
     $this->assertTrue($phpConfMngr->containsIncludePath('/fii/foo'));
   }
->>>>>>> 7306cc5991074ea49edbeb5a127fe94ebc6a82cc
 
 }
