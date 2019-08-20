@@ -37,4 +37,10 @@ class PHPTest extends TestCase {
     $this->assertSame($phpConf, PHP::config());
   }
 
+  public function testPHPIniInstance(): void {
+    $fooIni = PHP::ini('foo');
+    $this->assertSame($fooIni, PHP::ini('foo'));
+    $this->assertNotSame($fooIni, PHP::storeIni('foo', new PHPIni()));
+  }
+
 }

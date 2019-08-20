@@ -11,18 +11,17 @@
 namespace Sphp\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Config\Ini;
-use Sphp\Exceptions\RuntimeException;
-use Sphp\Exceptions\OutOfRangeException;
+use Sphp\Config\PHPIni;
+use Sphp\Config\Exception\ConfigurationException;
 
 class IniTest extends TestCase {
 
   /**
-   * @return Ini
+   * @return PHPIni
    */
-  public function testVariableSetting(): Ini {
+  public function testVariableSetting(): PHPIni {
     ini_set('display_errors', '1');
-    $ini = new Ini();
+    $ini = new PHPIni();
     $ini['display_errors'] = 0;
     $this->assertTrue(isset($ini['display_errors']));
     $this->assertEquals(0, $ini['display_errors']);
@@ -34,10 +33,10 @@ class IniTest extends TestCase {
   /**
    * @depends testVariableSetting
    * 
-   * @param  Ini $ini
-   * @return Ini
+   * @param  PHPIni $ini
+   * @return PHPIni
    */
-  public function testExecution(Ini $ini) {
+  public function testExecution(PHPIni $ini) {
     $f = function () {
       $this->assertEquals(0, ini_get('display_errors'));
     };
@@ -49,10 +48,10 @@ class IniTest extends TestCase {
   /**
    * @depends testExecution
    * 
-   * @param  Ini $ini
-   * @return Ini
+   * @param  PHPIni $ini
+   * @return PHPIni
    */
-  public function testInitAndReset(Ini $ini) {
+  public function testInitAndReset(PHPIni $ini) {
     $this->assertSame($ini, $ini->init());
     $this->assertEquals(0, ini_get('display_errors'));
     $this->assertSame($ini, $ini->reset());
@@ -63,10 +62,10 @@ class IniTest extends TestCase {
   /**
    * @depends testInitAndReset
    * 
-   * @param  Ini $ini
-   * @return Ini
+   * @param  PHPIni $ini
+   * @return PHPIni
    */
-  public function testUnset(Ini $ini) {
+  public function testUnset(PHPIni $ini) {
     unset($ini['display_errors']);
     unset($ini['error_reporting']);
     $this->assertFalse(isset($ini['display_errors']));
@@ -76,15 +75,15 @@ class IniTest extends TestCase {
   }
 
   public function testInvalidInit() {
-    $ini = new Ini();
+    $ini = new PHPIni();
     $this->assertSame($ini, $ini->set('foo', 'bar'));
-    $this->expectException(RuntimeException::class);
+    $this->expectException(ConfigurationException::class);
     $this->assertSame($ini, $ini->init());
   }
 
   public function testInvalidOffsetGet() {
-    $ini = new Ini();
-    $this->expectException(OutOfRangeException::class);
+    $ini = new PHPIni();
+    $this->expectException(ConfigurationException::class);
     $ini['foo'];
   }
 

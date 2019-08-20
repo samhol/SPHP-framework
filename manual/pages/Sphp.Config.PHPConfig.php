@@ -5,7 +5,7 @@ namespace Sphp\Config;
 use Sphp\Manual;
 
 $phpConfig = Manual\api()->classLinker(PHPConfig::class);
-$ini = Manual\api()->classLinker(Ini::class);
+$ini = Manual\api()->classLinker(PHPIni::class);
 
 Manual\md(<<<MD
 ###$phpConfig <small> is a runtime PHP environment manager </small>

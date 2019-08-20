@@ -9,6 +9,7 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 before_script:
+  - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-en language-pack-fi
   - travis_retry composer install --no-interaction
   - mkdir -p build/logs
 

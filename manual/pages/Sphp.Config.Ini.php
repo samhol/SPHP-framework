@@ -4,7 +4,7 @@ namespace Sphp\Config;
 
 use Sphp\Manual;
 
-$ini = Manual\api()->classLinker(Ini::class);
+$ini = Manual\api()->classLinker(PHPIni::class);
 $ini_set = Manual\php()->functionLink('ini_set');
 $iniList = Manual\php()->hyperlink('ini.list.php', 'List of php.ini directives');
 Manual\md(<<<MD

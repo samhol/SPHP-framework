@@ -11,9 +11,8 @@
 namespace Sphp\Config;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\Exceptions\OutOfRangeException;
-use Sphp\Exceptions\RuntimeException;
 use ArrayAccess;
+use Sphp\Config\Exception\ConfigurationException;
 
 /**
  * Implements class for managing PHP settings
@@ -22,7 +21,7 @@ use ArrayAccess;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Ini implements Arrayable, ArrayAccess {
+class PHPIni implements Arrayable, ArrayAccess {
 
   /**
    * previous INI values after init() call
@@ -68,6 +67,7 @@ class Ini implements Arrayable, ArrayAccess {
    * @link   http://php.net/manual/en/ini.list.php list of all available options
    */
   public function set(string $name, $value) {
+
     $this->ini[$name] = (string) $value;
     return $this;
   }
@@ -91,13 +91,13 @@ class Ini implements Arrayable, ArrayAccess {
    * @param  string $varname the name of the option
    * @return string the value of the option
    * @link   http://php.net/manual/en/function.ini-get.php ini_get
-   * @throws OutOfRangeException
+   * @throws ConfigurationException
    */
   public function get(string $varname) {
     if ($this->exists($varname)) {
       return $this->ini[$varname];
     }
-    throw new OutOfRangeException($varname . " is not set");
+    throw new ConfigurationException($varname . " is not set");
   }
 
   /**
@@ -106,13 +106,13 @@ class Ini implements Arrayable, ArrayAccess {
    * Previous settings are replaced
    * 
    * @return $this for a fluent interface
-   * @throws RuntimeException if unable to set INI
+   * @throws ConfigurationException if unable to set INI
    */
   public function init() {
     foreach ($this->ini as $name => $value) {
       $old = ini_set($name, $value);
       if ($old === false) {
-        throw new RuntimeException("Unable to set INI value '$name'.");
+        throw new ConfigurationException("Unable to set INI value '$name'.");
       }
       $this->pre[$name] = $old;
     }
@@ -167,7 +167,7 @@ class Ini implements Arrayable, ArrayAccess {
    * @param  string $offset the name of the option
    * @return string the value of the option
    * @link   http://php.net/manual/en/function.ini-get.php ini_get
-   * @throws OutOfRangeException
+   * @throws ConfigurationException
    */
   public function offsetGet($offset) {
     return $this->get($offset);

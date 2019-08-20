@@ -23,32 +23,13 @@ class LocaleManager {
   /**
    * @var string
    */
-  private $localeMap;
+  private $usedLocales;
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->localeMap = $this->__toString();
-    //$this->getCorrectLocales();
-  }
-
-  public static function getCurrenttLocalesAsArray(): array {
-    $localeNames = [
-        'LC_ALL',
-        'LC_COLLATE',
-        'LC_CTYPE',
-        'LC_MONETARY',
-        'LC_NUMERIC',
-        'LC_TIME',
-        'LC_MESSAGES'];
-    $locales = [];
-    foreach ($localeNames as $name) {
-      if (defined($name)) {
-        $locales[$name] = setlocale(constant($name), 0);
-      }
-    }
-    return $locales;
+    $this->usedLocales = setlocale(LC_ALL, '0');
   }
 
   /**
@@ -120,8 +101,30 @@ class LocaleManager {
   }
 
   public function restoreLocales() {
-    \setLocale(\LC_ALL, $this->localeMap);
+    \setLocale(\LC_ALL, $this->usedLocales);
     return $this;
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public static function getCurrenttLocalesAsArray(): array {
+    $localeNames = [
+        'LC_ALL',
+        'LC_COLLATE',
+        'LC_CTYPE',
+        'LC_MONETARY',
+        'LC_NUMERIC',
+        'LC_TIME',
+        'LC_MESSAGES'];
+    $locales = [];
+    foreach ($localeNames as $name) {
+      if (defined($name)) {
+        $locales[$name] = setlocale(constant($name), 0);
+      }
+    }
+    return $locales;
   }
 
 }

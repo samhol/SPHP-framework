@@ -25,7 +25,7 @@ abstract class PHP {
   private static $configurator;
 
   /**
-   * @var Ini[] 
+   * @var PHPIni[] 
    */
   private static $inis;
 
@@ -45,11 +45,11 @@ abstract class PHP {
    * Returns a named PHP INI configuration instance
    * 
    * @param  string $name the name of the instance
-   * @return Ini the instance (created if not present)
+   * @return PHPIni the instance (created if not present)
    */
-  public static function ini(string $name): Ini {
+  public static function ini(string $name): PHPIni {
     if (!isset(self::$inis[$name])) {
-      return self::storeIni($name, new Ini());
+      return self::storeIni($name, new PHPIni());
     }
     return self::$inis[$name];
   }
@@ -58,10 +58,10 @@ abstract class PHP {
    * Sets a named PHP INI configuration instance
    * 
    * @param  string $name the name of the instance
-   * @param  Ini $ini
-   * @return Ini the PHP INI configuration instance stored
+   * @param  PHPIni $ini
+   * @return PHPIni the PHP INI configuration instance stored
    */
-  public static function storeIni(string $name, Ini $ini): Ini {
+  public static function storeIni(string $name, PHPIni $ini): PHPIni {
     self::$inis[$name] = $ini;
     return self::$inis[$name];
   }

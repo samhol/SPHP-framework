@@ -12,6 +12,7 @@ namespace Sphp\Config;
 
 use IteratorAggregate;
 use Traversable;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Datastructures\PriorityQueue;
 
 /**
@@ -34,7 +35,7 @@ use Sphp\Stdlib\Datastructures\PriorityQueue;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ShutDownRegister implements IteratorAggregate, \Countable {
+class ShutDownRegister implements Arrayable, IteratorAggregate, \Countable {
 
   /**
    * @var bool
@@ -95,6 +96,11 @@ class ShutDownRegister implements IteratorAggregate, \Countable {
     return $this;
   }
 
+  /**
+   * Create a new iterator to iterate through inserted callables
+   *
+   * @return Traversable iterator
+   */
   public function getIterator(): Traversable {
     return $this->callbacks->getIterator();
   }
@@ -103,6 +109,12 @@ class ShutDownRegister implements IteratorAggregate, \Countable {
     return $this->callbacks->toArray();
   }
 
+  /**
+   * Count the number of contained callables 
+   *
+   * @return int number of callables
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
   public function count(): int {
     return $this->callbacks->count();
   }

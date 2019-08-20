@@ -72,12 +72,12 @@ class ErrorToExceptionThrower {
   /**
    * Starts redirecting PHP errors
    * 
-   * @param  int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
+   * @param  int $level PHP Error level to catch (Default = \E_ALL & ~\E_DEPRECATED)
    * @return $this for a fluent interface
    */
   public function start(int $level = \E_ALL) {
     set_error_handler($this, $level);
-    //register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
+    register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     return $this;
   }
 
