@@ -10,10 +10,10 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Exception;
+use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\UnderflowException;
 
-class StackTest extends \PHPUnit\Framework\TestCase {
+class StackTest extends TestCase {
 
   /**
    * @var StackInterface

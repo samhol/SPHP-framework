@@ -31,18 +31,6 @@ use stdClass;
  */
 class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAggregate {
 
-  public function __get(string $name) {
-    if (isset($this->$name)) {
-      return $this->$name;
-    } else {
-      return null;
-    }
-  }
-
-  public function __isset(string $name): bool {
-    return isset($this->$name) && $this->$name !== null;
-  }
-
   /**
    * Checks whether the specific configuration variable exists
    * 
@@ -61,7 +49,7 @@ class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAgg
    */
   public function offsetGet($varname) {
     if (!$this->offsetExists($varname)) {
-      $this->{$varname} = new self();
+      return null;
     }
     return $this->{$varname};
   }

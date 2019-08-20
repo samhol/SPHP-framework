@@ -49,4 +49,41 @@ class DataObjectTest extends TestCase {
     }
   }
 
+  public function arrayData(): array {
+    $data = [];
+    $data[] = [[range('a', 'f'), 'array' => range(0, 3)]];
+    return $data;
+  }
+
+  /**
+   * @dataProvider arrayData
+   * @param array $data
+   */
+  public function testFromArray(array $data) {
+    $dataObject = DataObject::fromArray($data);
+    foreach ($data as $key => $value) {
+      $this->assertTrue(isset($dataObject[$key]));
+      if (is_array($value)) {
+        $this->assertEquals($value, $dataObject[$key]->toArray());
+      } else {
+        $this->assertEquals($value, $dataObject[$key]);
+        $this->assertEquals($value, $dataObject->$key);
+      }
+    }
+  }
+
+  public function testArrayAccessAndMagicProperties(): void {
+    $data = new DataObject();
+    $this->assertFalse(isset($data[0]));
+    $this->assertFalse(isset($data->{0}));
+    $obj = new \stdClass();
+    $data[0] = $obj;
+    $this->assertTrue(isset($data[0]));
+    $this->assertTrue(isset($data->{0}));
+    $this->assertSame($obj, $data[0]);
+    $this->assertSame($obj, $data->{'0'});
+    unset($data[0]);
+    $this->assertFalse(isset($data[0]));
+  }
+
 }

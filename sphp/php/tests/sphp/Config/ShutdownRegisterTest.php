@@ -28,8 +28,8 @@ class ShutdownRegisterTest extends TestCase {
    */
   public function testConstructor(): ShutDownRegister {
     $srf = new ShutDownRegister();
-    $this->assertCount(0, $srf);
-    $this->assertCount(0, $srf->toArray());
+    $this->assertCount(0, $srf->getSequence());
+    $this->assertCount(0, $srf->getSequence()->toArray());
     return $srf;
   }
 
@@ -45,11 +45,11 @@ class ShutdownRegisterTest extends TestCase {
       echo 'fir';
     };
     $this->assertSame($srf, $srf->addCallable($f1, 1));
-    $this->assertCount(1, $srf);
-    $this->assertContains($f1, $srf);
-    $this->assertContains($f1, $srf->getIterator());
-    $this->assertContains($f1, $srf->toArray());
-    $this->assertSame($srf, $srf->addCallable($f10, 10));
+    $this->assertCount(1, $srf->getSequence());
+    $this->assertContains($f1, $srf->getSequence());
+    $this->assertContains($f1, $srf->getSequence()->getIterator());
+    $this->assertContains($f1, $srf->getSequence()->toArray());
+    $this->assertSame($srf->getSequence(), $srf->getSequence()->addCallable($f10, 10));
     $this->expectOutputString('first');
     $srf();
     unset($srf);

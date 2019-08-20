@@ -10,10 +10,7 @@
 
 namespace Sphp\Config;
 
-use IteratorAggregate;
-use Traversable;
-use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\Stdlib\Datastructures\PriorityQueue;
+use Sphp\Stdlib\Datastructures\ExecutionSequence;
 
 /**
  * Shutdown process handler, allows you to unregister a process (not supported natively in PHP)
@@ -35,7 +32,7 @@ use Sphp\Stdlib\Datastructures\PriorityQueue;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class ShutDownRegister implements Arrayable, IteratorAggregate, \Countable {
+class ShutDownRegister {
 
   /**
    * @var bool
@@ -43,43 +40,43 @@ class ShutDownRegister implements Arrayable, IteratorAggregate, \Countable {
   private $isRegistered = false;
 
   /**
-   * @var PriorityQueue
+   * @var ExecutionSequence
    */
-  private $callbacks;
+  private $sequence;
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->callbacks = new PriorityQueue();
+    $this->sequence = new ExecutionSequence();
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->callbacks);
+    unset($this->sequence);
+  }
+
+  public function getSequence(): ExecutionSequence {
+    return $this->sequence;
   }
 
   /**
    * Executed by the register_shutdown_function
    */
   public function __invoke(): void {
-    foreach ($this->callbacks as $callback) {
-      $callback();
-    }
-  }
-
-  public function addCallable(callable $object, int $priority = 0) {
-    $this->callbacks->enqueue($object, $priority);
-    return $this;
+    $this->sequence->__invoke();
   }
 
   /**
-   * Unregisters the callbacks
+   * 
+   * @param  callable $object
+   * @param  int $priority
+   * @return $this for a fluent interface
    */
-  public function unregisterall() {
-    $this->callbacks = new PriorityQueue();
+  public function addCallable(callable $object, int $priority = 0) {
+    $this->sequence->addCallable($object, $priority);
     return $this;
   }
 
@@ -94,29 +91,6 @@ class ShutDownRegister implements Arrayable, IteratorAggregate, \Countable {
     }
     $this->isRegistered = true;
     return $this;
-  }
-
-  /**
-   * Create a new iterator to iterate through inserted callables
-   *
-   * @return Traversable iterator
-   */
-  public function getIterator(): Traversable {
-    return $this->callbacks->getIterator();
-  }
-
-  public function toArray(): array {
-    return $this->callbacks->toArray();
-  }
-
-  /**
-   * Count the number of contained callables 
-   *
-   * @return int number of callables
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count(): int {
-    return $this->callbacks->count();
   }
 
 }
