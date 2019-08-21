@@ -27,15 +27,18 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @var array
    */
-  private $items = [];
+  private $items;
 
   /**
    * Constructor
    *
    * @param array $items optional initial values stored
    */
-  public function __construct(array $items = []) {
-    $this->items = $items;
+  public function __construct(iterable $items = null) {
+    $this->items = [];
+    if ($items !== null) {
+      $this->merge($items);
+    }
   }
 
   /**
@@ -139,11 +142,11 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Merge the collection with the given items
    *
-   * @param  mixed $items
+   * @param  iterable $items
    * @return $this for a fluent interface
    */
-  public function merge($items) {
-    foreach ($this->getArrayableItems($items) as $key => $value) {
+  public function merge(iterable $items) {
+    foreach ($items as $key => $value) {
       $this->items[$key] = $value;
     }
     return $this;

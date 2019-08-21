@@ -4,6 +4,47 @@ namespace Sphp\Stdlib\Datastructures;
 
 class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
 
+  public function testDefaultConstructor(): void {
+    $collection = new Collection();
+    $this->assertCount(0, $collection);
+    $this->assertCount(0, $collection->toArray());
+    $this->assertTrue(0 === $collection->count());
+    $this->assertTrue($collection->toQueue()->isEmpty());
+    $this->assertTrue($collection->toStack()->isEmpty());
+  }
+
+  public function constructorItems(): array {
+    $data = [];
+    $data[] = [range(0, 10)];
+    $data[] = [new \ArrayIterator(range(0, 10))];
+    return $data;
+  }
+
+  /**
+   * @dataProvider constructorItems
+   * @param  iterable $items
+   * @return void
+   */
+  public function testConstructorWithParameters(iterable $items): void {
+    $collection = new Collection($items);
+    $this->assertCount(count($items), $collection);
+    $this->assertCount(count($items), $collection->toArray());
+    $this->assertTrue(count($items) === $collection->count());
+    $this->assertFalse($collection->toQueue()->isEmpty());
+    $this->assertFalse($collection->toStack()->isEmpty());
+  }
+  /**
+   * @dataProvider constructorItems
+   * @param  iterable $items
+   * @return void
+   */
+  public function testClone(): void {
+    $collection = new Collection();
+    $obj1 = new \stdClass();
+    $collection->append($obj1);
+    $collection->append($obj1);
+  }
+
   /**
    * @var Collection
    */
