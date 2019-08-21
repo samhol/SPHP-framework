@@ -16,25 +16,52 @@ use Sphp\Exceptions\UnderflowException;
 
 class SequenceTest extends TestCase {
 
-  public function testInvalidInsertions() {
+  public function testInsertionsIntoNegativePosition(): void {
     $sequence = new Sequence();
     $this->expectException(OutOfBoundsException::class);
     $sequence->insert(-5, 'b');
   }
 
-  /**
-   * @return Sequence
-   */
-  public function testInsertOrdering(): Sequence {
+  public function testInsertionsIntoTooBigPosition(): void {
+    $sequence = new Sequence(5);
+    $this->expectException(OutOfBoundsException::class);
+    $sequence->insert(6, 'foo');
+  }
+
+  public function testDefaultConstructor(): Sequence {
     $sequence = new Sequence();
     $this->assertTrue($sequence->isEmpty());
     $this->assertSame(0, $sequence->count());
-    $sequence->insert(5, 'b');
-    $this->assertFalse($sequence->isEmpty());
-    $sequence->insert(0, 'a');
-    $this->assertCount(2, $sequence);
-    $this->assertSame(2, $sequence->count());
-    $this->assertSame($sequence->toArray(), [0 => 'a', 5 => 'b']);
+    return $sequence;
+  }
+
+  /**
+   * @depends testDefaultConstructor
+   * @param  Sequence $sequence
+   * @return Sequence
+   */
+  public function testInsertOrdering(Sequence $sequence): Sequence {
+    $array = [
+        5 => 'c',
+        0 => 'a',
+        2 => 'b',
+        100 => 'd',
+    ];
+    $count = 0;
+    foreach ($array as $index => $value) {
+      $sequence->insert($index, $value);
+      $this->assertTrue($sequence->contains($value));
+      $this->assertTrue($sequence->exists($index));
+      $this->assertFalse($sequence->isEmpty());
+      $this->assertCount( ++$count, $sequence);
+    }
+    $traversal = [];
+    foreach ($sequence as $index => $value) {
+      $traversal[$index] = $value;
+    }
+    ksort($array);
+    $this->assertSame($array, $traversal);
+    $this->assertSame($array, $sequence->toArray());
     return $sequence;
   }
 
@@ -44,9 +71,15 @@ class SequenceTest extends TestCase {
    * @return Sequence
    */
   public function testPushing(Sequence $sequence): Sequence {
-    $sequence->push('c', 'd');
-    $this->assertCount(4, $sequence);
-    $this->assertSame($sequence->toArray(), [0 => 'a', 5 => 'b', 'c', 'd']);
+    $this->assertSame($sequence, $sequence->clear());
+    $sequence->insert(50, 'foo');
+    $this->assertSame(51, $sequence->push('bar'));
+    $this->assertTrue($sequence->exists(51));
+    $this->assertTrue($sequence->contains('bar'));
+    $this->assertSame(52, $sequence->push('baz'));
+    $this->assertTrue($sequence->exists(52));
+    $this->assertTrue($sequence->contains('baz'));
+    $this->assertCount(3, $sequence);
     //$this->assertCount($count, $this->sequence);
     return $sequence;
   }

@@ -35,7 +35,10 @@ class OneOf implements DateConstraint {
   public function __construct(... $date) {
     $this->dates = [];
     foreach ($date as $d) {
-      $this->addDate($d);
+      $key = DateTimes::parseDateString($d);
+      if (!array_key_exists($key, $this->dates)) {
+        $this->dates[$key] = $date;
+      }
     }
   }
 
@@ -44,32 +47,6 @@ class OneOf implements DateConstraint {
    */
   public function __destruct() {
     unset($this->dates);
-  }
-
-  /**
-   * Adds new allowed dates
-   * 
-   * @param  mixed ...$date
-   * @return $this for a fluent interface
-   */
-  public function addDates(... $date) {
-    foreach ($date as $d) {
-      $this->addDate($d);
-    }
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  mixed $date
-   * @return $this for a fluent interface
-   */
-  public function addDate($date) {
-    $key = DateTimes::parseDateString($date);
-    if (!array_key_exists($key, $this->dates)) {
-      $this->dates[$key] = $date;
-    }
-    return $this;
   }
 
   public function isValid($date): bool {

@@ -25,10 +25,10 @@ abstract class ArrayAccessIteratorCountableTestCase extends \PHPUnit\Framework\T
                 ->andReturn($val);
         $mock->shouldReceive('offsetExists')
                 ->with($key)
-                ->andReturn(TRUE);
+                ->andReturn(true);
       }
       $mock->shouldReceive('offsetExists')
-              ->andReturn(FALSE);
+              ->andReturn(false);
     }
     if ($mock instanceof \Iterator) {
       $counter = 0;

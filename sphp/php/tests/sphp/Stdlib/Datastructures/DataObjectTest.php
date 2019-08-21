@@ -11,8 +11,9 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Exceptions\NullPointerException;
 
-class DataObjectTest extends TestCase {
+class DataObjectTest extends TestCase  {
 
   public function testArrayAccessAndIterator() {
     $mock = new DataObject();
@@ -85,5 +86,22 @@ class DataObjectTest extends TestCase {
     unset($data[0]);
     $this->assertFalse(isset($data[0]));
   }
+  
+
+  public function testOffsetGetUndefinedProperties(): void {
+    $data = new DataObject();
+    $this->assertFalse(isset($data['foo']));
+    $this->assertFalse(isset($data->{'foo'}));
+    $this->expectException(NullPointerException::class);
+    $foo = $data['foo'];
+  }
+  public function testPointingToUndefinedProperties(): void {
+    $data = new DataObject();
+    $this->assertFalse(isset($data['foo']));
+    $this->assertFalse(isset($data->{'foo'}));
+    $this->expectException(NullPointerException::class);
+    $foo = $data->foo;
+  }
+
 
 }

@@ -70,8 +70,8 @@ class ConstraintsTest extends TestCase {
   }
 
   public function testOneOf() {
-    $oneof = new OneOf('2018-1-1', '2018-2-1');
-    $this->assertSame($oneof, $oneof->addDates('2018-3-1', '2018-4-1'));
+    $oneof = new OneOf('2018-1-1', '2018-2-1','2018-3-1', '2018-4-1');
+    //$this->assertSame($oneof, $oneof->addDates('2018-3-1', '2018-4-1'));
     $this->assertTrue($oneof->isValid('2018-3-1'));
     $this->assertFalse($oneof->isValid('2018-5-1'));
   }

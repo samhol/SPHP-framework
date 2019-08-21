@@ -58,7 +58,7 @@ class Sequence implements Iterator {
   public function insert(int $index, $values) {
     if ($index < 0) {
       throw new OutOfBoundsException("Index ($index) must be zero or positive integer");
-    }if ($index > $this->maxLength) {
+    }if ($index > $this->maxLength - 1) {
       throw new OutOfBoundsException("Index ($index) must be smaller than $this->maxLength");
     }
     $this->sequence[$index] = $values;
@@ -72,22 +72,9 @@ class Sequence implements Iterator {
    * @param  mixed,... $value the value(s) to push
    * @return $this for a fluent interface
    */
-  public function push(...$value) {
-    $this->pushFromArray($value);
-    return $this;
-  }
-
-  /**
-   * Pushes values from given array to the end of the sequence
-   *
-   * @param  array $values an array of values to push
-   * @return $this for a fluent interface
-   */
-  public function pushFromArray(array $values) {
-    foreach ($values as $val) {
-      $this->sequence[] = $val;
-    }
-    return $this;
+  public function push($value): int {
+    $this->sequence[] = $value;
+    return max(array_keys($this->sequence));
   }
 
   /**
@@ -201,7 +188,7 @@ class Sequence implements Iterator {
    * 
    * @return void
    */
-  public function next() {
+  public function next(): void {
     next($this->sequence);
   }
 
@@ -219,7 +206,7 @@ class Sequence implements Iterator {
    * 
    * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     reset($this->sequence);
   }
 

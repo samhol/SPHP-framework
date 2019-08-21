@@ -15,6 +15,7 @@ use ArrayAccess;
 use IteratorAggregate;
 use Countable;
 use stdClass;
+use Sphp\Exceptions\NullPointerException;
 
 /**
  * Application Configuration class for storing common application data
@@ -29,29 +30,37 @@ use stdClass;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAggregate {
+class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAggregate, Countable {
+
+  /**
+   * Handles unset properties
+   * 
+   * @param  string $property the name of the property
+   * @throws NullPointerException if the property is undefined
+   */
+  public function __get(string $property) {
+    throw new NullPointerException(sprintf("Undefined property: %s::%s", __CLASS__, $property));
+  }
 
   /**
    * Checks whether the specific configuration variable exists
    * 
-   * @param  string $varname the name of the variable
+   * @param  string $property the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function offsetExists($varname): bool {
-    return isset($this->$varname);
+  public function offsetExists($property): bool {
+    return isset($this->$property);
   }
 
   /**
    * Assigns a value to the specified  configuration variable
    * 
-   * @param  string $varname the name of the variable
+   * @param  string $property the name of the variable
    * @return mixed the value at the 
+   * @throws NullPointerException if the property is undefined
    */
-  public function offsetGet($varname) {
-    if (!$this->offsetExists($varname)) {
-      return null;
-    }
-    return $this->{$varname};
+  public function offsetGet($property) {
+    return $this->{$property};
   }
 
   /**
@@ -67,11 +76,11 @@ class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAgg
   /**
    * Unsets the specified variable
    * 
-   * @param  string $varname the name of the variable
+   * @param  string $property the name of the variable
    */
-  public function offsetUnset($varname): void {
-    if ($this->offsetExists($varname)) {
-      unset($this->{$varname});
+  public function offsetUnset($property): void {
+    if (isset($this->$property)) {
+      unset($this->$property);
     }
   }
 
@@ -91,6 +100,15 @@ class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAgg
 
   public function getIterator(): \Traversable {
     return new \ArrayIterator($this->toArray());
+  }
+
+  /**
+   * Returns the number of set properties
+   * 
+   * @return int the number of set properties
+   */
+  public function count(): int {
+    return count(get_object_vars($this));
   }
 
   public static function fromArray(array $data): DataObject {

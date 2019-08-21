@@ -8,86 +8,68 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Stdlib\Datastructures;
+namespace Sphp\Tests\Stdlib\Datastructures;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Stdlib\Datastructures\Stack;
 use Sphp\Exceptions\UnderflowException;
 
-class StackTest extends TestCase {
+abstract class StackTest extends TestCase {
 
   /**
-   * @var StackInterface
+   * @return Stack
    */
-  protected $datastructure;
+  abstract public function createStack(): Stack;
 
-  /**
-   * 
-   * @return ArrayStack
-   */
-  public function createStack() {
-    return new ArrayStack();
-  }
-
-  protected function setUp(): void {
-    $this->datastructure = $this->createStack();
-  }
-
-  protected function tearDown(): void {
-    unset($this->datastructure);
+  public function testDefaultConstructor(): Stack {
+    $stack = $this->createStack();
+    $this->assertTrue($stack->isEmpty());
+    return $stack;
   }
 
   /**
-   * 
-   * @return array
+   * @depends testDefaultConstructor
+   * @param Stack $stack
    */
-  public function stackData() {
-    return [
-        [range(-2, 2)],
-        [[null, false, true, 1, 0, "string", "", "0", 3.14]]
-    ];
-  }
-
-  public function testPeekEmpty() {
+  public function testPeekEmpty(Stack $stack) {
     $this->expectException(UnderflowException::class);
-    $this->datastructure->peek();
-  }
-
-  public function testPopEmpty() {
-    $this->expectException(UnderflowException::class);
-    $this->datastructure->pop();
+    $stack->peek();
   }
 
   /**
-   * @dataProvider stackData
-   * @param array $values
+   * @depends testDefaultConstructor
+   * @param Stack $stack
    */
-  public function testPushPeekAndPop($values) {
-    foreach ($values as $value) {
-      $this->datastructure->push($value);
+  public function testPopEmpty(Stack $stack) {
+    $this->expectException(UnderflowException::class);
+    $stack->pop();
+  }
+
+  public function stackingData(): array {
+    $data = [];
+    $array = range('a', 'f');
+    $array['obj'] = new \stdClass();
+    $data[] = [$array];
+    return $data;
+  }
+
+  /**
+   * @dataProvider stackingData
+   * @param array $array
+   */
+  public function testStackMethods(array $array): void {
+    $stack = $this->createStack();
+    foreach ($array as $value) {
+      $this->assertSame($stack, $stack->push($value));
+      $this->assertFalse($stack->isEmpty());
+      $this->assertSame($value, $stack->peek());
     }
-    $reversed = array_reverse($values);
-    foreach ($reversed as $value) {
-      $this->assertSame($value, $this->datastructure->peek());
-      $this->assertSame($value, $this->datastructure->pop());
+    while (!empty($array)) {
+      $expected = array_pop($array);
+      $this->assertSame($expected, $stack->peek());
+      $this->assertSame($expected, $stack->pop());
     }
-  }
-
-  public function testEmpty1() {
-    $this->datastructure->push("value");
-    $this->assertFalse($this->datastructure->isEmpty());
-    $this->datastructure->pop();
-    $this->assertTrue($this->datastructure->isEmpty());
-    $this->expectException(UnderflowException::class);
-    $this->datastructure->pop();
-  }
-
-  public function testEmpty() {
-    $this->datastructure->push("value");
-    $this->assertFalse($this->datastructure->isEmpty());
-    $this->datastructure->pop();
-    $this->assertTrue($this->datastructure->isEmpty());
-    $this->expectException(UnderflowException::class);
-    $this->datastructure->pop();
+    $this->assertTrue($stack->isEmpty());
   }
 
 }

@@ -132,11 +132,16 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Gets the items in the collection that are not present in the given items
    *
-   * @param  mixed $items items to compare against
+   * @param  iterable $items items to compare against
    * @return Collection new instance containing the items that are not present in the given items
    */
-  public function diff($items): Collection {
-    return new static(array_diff($this->items, $this->getArrayableItems($items)));
+  public function diff(iterable $items): Collection {
+    if (!is_array($items)) {
+      $result = array_diff($this->items, iterator_to_array($items));
+    } else {
+      $result = array_diff($this->items, $items);
+    }
+    return new static($result);
   }
 
   /**
@@ -150,20 +155,6 @@ class Collection implements Iterator, CollectionInterface {
       $this->items[$key] = $value;
     }
     return $this;
-  }
-
-  /**
-   * Results array of items from Collection 
-   *
-   * @param  mixed $items
-   * @return array
-   */
-  protected function getArrayableItems($items): array {
-    if (is_array($items)) {
-      return $items;
-    } else {
-      return Arrays::toArray($items);
-    }
   }
 
   /**

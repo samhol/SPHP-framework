@@ -2,9 +2,10 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
+use PHPUnit\Framework\TestCase;
 use Sphp\Exceptions\UnderflowException;
 
-class QueueTest extends \PHPUnit\Framework\TestCase {
+class QueueTest extends TestCase {
 
   /**
    * @var ArrayQueue 

@@ -17,6 +17,7 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
     $data = [];
     $data[] = [range(0, 10)];
     $data[] = [new \ArrayIterator(range(0, 10))];
+    $data[] = [[1, 2, 3, new \ArrayIterator(range(0, 10))]];
     return $data;
   }
 
@@ -33,6 +34,7 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
     $this->assertFalse($collection->toQueue()->isEmpty());
     $this->assertFalse($collection->toStack()->isEmpty());
   }
+
   /**
    * @dataProvider constructorItems
    * @param  iterable $items
@@ -43,6 +45,35 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
     $obj1 = new \stdClass();
     $collection->append($obj1);
     $collection->append($obj1);
+    $cloned = clone $collection;
+    $this->assertNotSame($cloned, $collection);
+    $this->assertFalse($cloned->contains($obj1));
+    $this->assertCount(2, $cloned);
+  }
+
+  public function diffData(): array {
+    $data = [];
+    $data[] = [range(0, 10), range(3, 6)];
+    $data[] = [new \ArrayIterator(range(0, 10)), new \ArrayIterator(range(3, 6))];
+    return $data;
+  }
+
+  /**
+   * @dataProvider diffData
+   * @param iterable $items
+   * @param type $comp
+   */
+  public function testDiff(iterable $items, iterable $comp) {
+    $collection = new Collection($items);
+    $diff = $collection->diff($comp);
+    if (!is_array($items)) {
+      $items = iterator_to_array($items);
+    }
+    if (!is_array($comp)) {
+      $comp = iterator_to_array($comp);
+    }
+    $expected = array_diff($items, $comp);
+    $this->assertEquals($diff->toArray(), $expected);
   }
 
   /**

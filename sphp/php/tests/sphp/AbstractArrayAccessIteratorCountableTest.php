@@ -18,7 +18,7 @@ abstract class AbstractArrayAccessIteratorCountableTest extends TestCase {
 
   abstract public function createCollection(): \ArrayAccess;
 
-  public function testArrayIterator() {
+  public function testArrayIterator(): void {
     $collection = $this->createCollection();
     $data = $this->arrayData();
     foreach ($data as $key => $value) {
@@ -46,7 +46,7 @@ abstract class AbstractArrayAccessIteratorCountableTest extends TestCase {
         }
         $this->assertEquals($length, $i);
       }
-    } 
+    }
     foreach ($data as $key => $value) {
       $this->assertTrue(isset($collection[$key]));
       unset($collection[$key]);
