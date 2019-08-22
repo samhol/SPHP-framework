@@ -269,7 +269,7 @@ class CollectionTest extends \Sphp\Tests\ArrayAccessIteratorCountableTestCase {
     foreach ($values as $value) {
       $this->collection->remove($value);
       $this->assertFalse($this->collection->contains($value));
-      $this->assertCount( --$counter, $this->collection);
+      $this->assertCount(--$counter, $this->collection);
     }
     $this->assertCount(0, $this->collection);
   }
