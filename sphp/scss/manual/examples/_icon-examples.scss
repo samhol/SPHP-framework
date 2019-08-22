@@ -31,8 +31,11 @@ $devicons-color: #60be86;
   }
 }
 .icon-example-popup {
+  border: 4px solid rgba(#444, .8);
+}
+.icon-example-popup {
   padding: rem-calc(0);
-  .container {
+  section {
     &.devicons {
       background-color: rgba(#60be86, .08);
     }

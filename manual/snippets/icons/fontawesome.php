@@ -23,7 +23,7 @@ $section->appendH2("Font Awesome <small>$headingNote icons</small>")->addCssClas
 
 $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6', 'xlarge-up-8');
 $grid->addCssClass('sphp-icon-examples fontawesome');
-$fa = new FA();
+$fa = new FontAwesome();
 $fa->fixedWidth(true);
 foreach ($faData as $name => $data) {
   $content = Tags::div()->addCssClass('icon-container');

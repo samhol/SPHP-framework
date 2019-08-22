@@ -15,8 +15,6 @@ $arr = [
 ];
 $filters = new FilterAggregate();
 $filters->addFilter($stringFilters)
-        ->addFilter(new StringTrimmer("__"))
-        //->addFilter(new IntegerToRomanFilter())
         ->addFilter(new FilterAggregate(["mb_strtolower", "ucfirst"]));
 
 //print_r(Arrays::multiMap($filters, $arr));

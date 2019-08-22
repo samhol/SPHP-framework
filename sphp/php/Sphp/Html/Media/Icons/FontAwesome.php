@@ -15,41 +15,41 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a factory for Font Awesome icon objects
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon html5(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon sass(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon css3(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon python(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon nodejs(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon html5(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon sass(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon css3(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon php(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon python(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon nodejs(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon facebook(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon twitter(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon googlePlus(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon github(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon tumblr(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon stumbleupon(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon pinterest(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon blogger(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon apple(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon cc(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon android(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon apper(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon cpanel(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon angular(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon dribbble(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon dropbox(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon digg(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon stackoverflow(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon facebook(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon twitter(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon googlePlus(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon github(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon tumblr(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon stumbleupon(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon pinterest(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon blogger(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon apple(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon cc(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon android(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon apper(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon cpanel(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon angular(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon dribbble(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon dropbox(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon digg(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon stackoverflow(string $screenReaderLabel = null) creates a new icon object
  *
- * @method \Sphp\Html\Media\Icons\FaIcon phone(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon envelope(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon search(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon tags(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon phone(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon envelope(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon search(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon tags(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon exclamation(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon ban(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon stethoscope(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon exclamation(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon ban(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesome stethoscope(string $screenReaderLabel = null) creates a new icon object
  * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -57,7 +57,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @link    https://fontawesome.com/ Font Awesome
  * @filesource
  */
-class FA {
+class FontAwesome {
 
   /**
    * list of Font Awesome icons and corresponding PHP calls
@@ -172,9 +172,9 @@ class FA {
    *
    * @param  string $fileType the file type
    * @param  string $screenReaderText 
-   * @return FaIcon the corresponding component
+   * @return FontAwesomeIcon the corresponding component
    */
-  public function __invoke(string $fileType, string $screenReaderText = null): FaIcon {
+  public function __invoke(string $fileType, string $screenReaderText = null): FontAwesomeIcon {
     $icon = static::get($fileType, $screenReaderText);
     $this->setCssClassesTo($icon);
     return $icon;
@@ -185,9 +185,9 @@ class FA {
    *
    * @param  string $fileType the file type
    * @param  array $arguments 
-   * @return FaIcon the corresponding component
+   * @return FontAwesomeIcon the corresponding component
    */
-  public function __call(string $fileType, array $arguments): FaIcon {
+  public function __call(string $fileType, array $arguments): FontAwesomeIcon {
     $screenReaderText = array_shift($arguments);
     $icon = static::get($fileType, $screenReaderText);
     $this->setCssClassesTo($icon);
@@ -199,24 +199,24 @@ class FA {
    *
    * @param  string $name the name of the icon (function name)
    * @param  array $arguments 
-   * @return FaIcon the corresponding component
+   * @return FontAwesomeIcon the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): FaIcon {
+  public static function __callStatic(string $name, array $arguments): FontAwesomeIcon {
     if (!isset(static::$map[$name])) {
       throw new BadMethodCallException("Method $name does not exist");
     }
     $classes = static::$map[$name];
     $screenReaderText = array_shift($arguments);
-    return new FaIcon($classes, $screenReaderText);
+    return new FontAwesomeIcon($classes, $screenReaderText);
   }
 
   /**
    * 
-   * @param  FaIcon $icon
+   * @param  FontAwesomeIcon $icon
    * @return void
    */
-  public function setCssClassesTo(FaIcon $icon): void {
+  public function setCssClassesTo(FontAwesomeIcon $icon): void {
     foreach ($this->functions as $propertyName => $value) {
       $icon->$propertyName($value);
     }
@@ -227,15 +227,15 @@ class FA {
    *
    * @param  string $name the file type
    * @param  string $screenReaderText 
-   * @return FaIcon the corresponding component
+   * @return FontAwesomeIcon the corresponding component
    */
-  public static function get(string $name, string $screenReaderText = null): FaIcon {
+  public static function get(string $name, string $screenReaderText = null): FontAwesomeIcon {
     if (isset(static::$map[$name])) {
       $classes = static::$map[$name];
     } else {
       $classes = $name;
     }
-    $icon = new FaIcon($classes, $screenReaderText);
+    $icon = new FontAwesomeIcon($classes, $screenReaderText);
     return $icon;
   }
 

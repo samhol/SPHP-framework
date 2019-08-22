@@ -16,21 +16,21 @@ use Sphp\Exceptions\InvalidArgumentException;
 /**
  * File type icon factory
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon facebookSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon twitterSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon facebookSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon twitterSquare(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon java(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon jar(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon class(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon java(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon jar(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon class(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon php3(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon phtml(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon phar(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon php(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon php3(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon phtml(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon phar(string $screenReaderLabel = null) creates a new icon object
  * 
- * @method \Sphp\Html\Media\Icons\FaIcon js(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FaIcon json(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon js(string $screenReaderLabel = null) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontAwesomeIcon json(string $screenReaderLabel = null) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -421,9 +421,9 @@ class Filetype {
    *
    * @param  string $fileType the file type
    * @param  string $screenReaderText
-   * @return FaIcon new icon object
+   * @return FontAwesomeIcon new icon object
    */
-  public function __invoke(string $fileType, string $screenReaderText = null): FaIcon {
+  public function __invoke(string $fileType, string $screenReaderText = null): FontAwesomeIcon {
     return static::get($fileType, $screenReaderText);
   }
 
@@ -432,9 +432,9 @@ class Filetype {
    *
    * @param  string $fileType the file type
    * @param  array $arguments
-   * @return FaIcon new icon object
+   * @return FontAwesomeIcon new icon object
    */
-  public function __call(string $fileType, array $arguments): FaIcon {
+  public function __call(string $fileType, array $arguments): FontAwesomeIcon {
     $screenReaderText = array_shift($arguments);
     return static::get($fileType, $screenReaderText);
   }
@@ -444,9 +444,9 @@ class Filetype {
    *
    * @param  string $fileType the file type
    * @param  array $arguments 
-   * @return FaIcon new icon object
+   * @return FontAwesomeIcon new icon object
    */
-  public static function __callStatic(string $fileType, array $arguments): FaIcon {
+  public static function __callStatic(string $fileType, array $arguments): FontAwesomeIcon {
     $screenReaderText = array_shift($arguments);
     return static::get($fileType, $screenReaderText);
   }
@@ -456,9 +456,9 @@ class Filetype {
    *
    * @param  string|SplFileInfo $fileOrExt a file or a file type
    * @param  string $screenReaderText 
-   * @return FaIcon new icon object
+   * @return FontAwesomeIcon new icon object
    */
-  public static function get($fileOrExt, string $screenReaderText = null): FaIcon {
+  public static function get($fileOrExt, string $screenReaderText = null): FontAwesomeIcon {
     if (array_key_exists($fileOrExt, static::$fileTypeMap)) {
       $icon = static::$assosiations[static::$fileTypeMap[$fileOrExt]];
     } else if (array_key_exists($fileOrExt, static::$assosiations)) {
@@ -477,7 +477,7 @@ class Filetype {
         $icon = 'far fa-file';
       }
     }
-    return new FaIcon($icon, $screenReaderText);
+    return new FontAwesomeIcon($icon, $screenReaderText);
   }
 
 }

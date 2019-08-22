@@ -13,7 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Config\ErrorHandling\ErrorListener;
 use Sphp\Html\Foundation\Sites\Containers\ContentCallout;
 use Sphp\Html\Media\Icons\Icon;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 
 /**
  * Implements a callout builder for PHP error message presentation
@@ -107,9 +107,9 @@ class ErrorCalloutBuilder implements ErrorListener {
    */
   protected function getIcon(int $errno): Icon {
     if (\E_ERROR & $errno || \E_USER_ERROR & $errno) {
-      return FA::ban()->setSize('2x');
+      return FontAwesome::ban()->setSize('2x');
     } else {
-      return FA::exclamation()->setSize('2x');
+      return FontAwesome::exclamation()->setSize('2x');
     }
   }
 

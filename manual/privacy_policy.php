@@ -44,8 +44,8 @@ $main->append('<hr>');
 $linkBar = new Foundation\Sites\Buttons\ButtonGroup();
 $linkBar->addCssClass('float-center');
 $linkBar->appendPushButton('<i class="fas fa-arrow-left fa-lg"></i> Back')->setAttribute('onclick', 'window.history.back();');
-$linkBar->appendHyperlink('/', Media\Icons\FA::home()->setSize('lg') . ' Back to Manual');
-$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FA::github()->addCssClass('border')->setSize('lg') . ' repository');
+$linkBar->appendHyperlink('/', Media\Icons\FontAwesome::home()->setSize('lg') . ' Back to Manual');
+$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FontAwesome::github()->addCssClass('border')->setSize('lg') . ' repository');
 
 
 $main->append($linkBar);

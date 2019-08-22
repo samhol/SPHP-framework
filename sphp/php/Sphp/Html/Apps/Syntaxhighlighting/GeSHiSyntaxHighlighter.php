@@ -16,7 +16,7 @@ use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;
 use Sphp\Html\Tags;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\Apps\ContentCopyController;
 use Sphp\Html\Div;
 use Sphp\Exceptions\RuntimeException;
@@ -97,7 +97,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     $this->footer = (new Div($footerText))->addCssClass('foot-area');
     $this->showLineNumbers(true)
             ->useFooter()
-            ->setContentCopyController(Tags::span(FA::copy())->addCssClass('sphp', 'copy-button'));
+            ->setContentCopyController(Tags::span(FontAwesome::copy())->addCssClass('sphp', 'copy-button'));
   }
 
   public function __destruct() {

@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Stdlib\Parsers\ParseFactory;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 $menu = new ResponsiveMenu();
 $menu->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor('medium', Menu::HORIZONTAL);
 $menu->setDefaultType(Menu::DRILLDOWN, 'medium', Menu::DROPDOWN);
@@ -20,7 +20,7 @@ $submenu->appendLink("#Item3.4", "Item 3.4", "_self");
 
 $manualLinks = ParseFactory::yaml()->fileToArray('/home/int48291/public_html/playground/manual/yaml/documentation_links.yaml');
 $m = new ResponsiveMenu();
-$m->appendLink('/', FA::home())->addCssClass('icon-link');
+$m->appendLink('/', FontAwesome::home())->addCssClass('icon-link');
 $m->setDefaultrOrientation(Menu::VERTICAL)->setOrientationFor('medium', Menu::HORIZONTAL);
 $m->setDefaultType(Menu::DRILLDOWN, 'medium', Menu::DROPDOWN);
 $menuBuilder = new MenuBuilder();

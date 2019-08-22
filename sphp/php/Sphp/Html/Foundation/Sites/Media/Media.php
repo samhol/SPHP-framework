@@ -58,12 +58,12 @@ abstract class Media {
   public static function __callStatic($what, $arguments) {
     if (Strings::endsWith($what, 'Badge')) {
       $type = Strings::trimRight($what, 'Badge');
-      $icon = \Sphp\Html\Media\Icons\FA::get($type);
+      $icon = \Sphp\Html\Media\Icons\FontAwesome::get($type);
       $badge = Media::badge($icon)->addCssClass($type);
       return $badge;
     } else if (Strings::endsWith($what, 'Label')) {
       $type = Strings::trimRight($what, 'Label');
-      $icon = \Sphp\Html\Media\Icons\FA::get($type);
+      $icon = \Sphp\Html\Media\Icons\FontAwesome::get($type);
       $badge = Media::label($icon)->addCssClass($type);
       return $badge;
     }

@@ -108,7 +108,7 @@ class BasicClassLinkerTest extends TestCase {
     $attrs[] = [\Sphp\Html\Tags::class, 'div', 'magic-static-method'];
     $attrs[] = [\Sphp\Network\Headers\Headers::class, 'appendAge', 'magic-instance-method'];
     $attrs[] = [Factory::class, 'sami', 'static-method'];
-    $attrs[] = [\Sphp\Html\Media\Icons\Icons::class, 'pdf', 'magic-method'];
+    //$attrs[] = [\Sphp\Html\Media\Icons\Icons::class, 'pdf', 'magic-method'];
     return $attrs;
   }
 

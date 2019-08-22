@@ -16,7 +16,7 @@ use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\ContainerForm;
 use Sphp\Html\Tags;
@@ -50,7 +50,7 @@ abstract class AbstractSearchFormBuilder {
    * Constructor
    */
   public function __construct() {
-    $this->setSubmitButton(new Submitter(FA::search('Search')));
+    $this->setSubmitButton(new Submitter(FontAwesome::search('Search')));
     $this->hiddenData = new HiddenInputs();
     $this->searchField = new SearchInput();
   }
@@ -102,7 +102,7 @@ abstract class AbstractSearchFormBuilder {
    * @return SubmitterInterface
    */
   public function getSubmitButton(): SubmitterInterface {
-    $submitButton = new Submitter(FA::search('Search'));
+    $submitButton = new Submitter(FontAwesome::search('Search'));
     $submitButton->cssClasses()->protectValue('button');
     return $submitButton;
   }

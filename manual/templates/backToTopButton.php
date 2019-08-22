@@ -1,8 +1,8 @@
 <?php
 
 use Sphp\Html\Apps\BackToTopButton;
-use Sphp\Html\Media\Icons\FaIcon;
+use Sphp\Html\Media\Icons\FontAwesomeIcon;
 
-BackToTopButton::fromIcon((new FaIcon('fas fa-chevron-circle-up'))
+BackToTopButton::fromIcon((new FontAwesomeIcon('fas fa-chevron-circle-up'))
         ->setAttribute('title', 'Back to top'))
         ->printHtml();

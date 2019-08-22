@@ -14,7 +14,7 @@ use Sphp\Html\AbstractContent;
 use Sphp\Html\Div;
 use Sphp\DateTime\Date;
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Media\Icons\FaIcon;
+use Sphp\Html\Media\Icons\FontAwesomeIcon;
 use Sphp\Html\Forms\Inputs\Menus\Option;
 use Sphp\Html\Adapters\TipsoAdapter;
 use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
@@ -53,7 +53,7 @@ class MonthSelector extends AbstractContent {
   public function createPreviousMonth(): A {
     $prev = $this->date->modify('-1 month');
     $monthText = "Go to {$prev->format('F Y')}";
-    $content = new FaIcon('fas fa-chevron-left', $monthText);
+    $content = new FontAwesomeIcon('fas fa-chevron-left', $monthText);
     $content->setSize('sm');
     $link = $this->createMonthLink($prev, $content);
     $link->addCssClass('prev-month');
@@ -63,7 +63,7 @@ class MonthSelector extends AbstractContent {
   public function createNextMonth(): A {
     $prev = $this->date->modify('+1 month');
     $monthText = "Go to {$prev->format('F Y')}";
-    $content = new FaIcon('fas fa-chevron-right', $monthText);
+    $content = new FontAwesomeIcon('fas fa-chevron-right', $monthText);
     $content->setSize('sm');
     $link = $this->createMonthLink($prev, $content);
     $link->addCssClass('next-month');

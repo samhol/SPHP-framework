@@ -114,12 +114,13 @@ class Svg extends AbstractContent implements Icon {
    */
   public function setWidth(float $width = null) {
     if ($width !== null) {
-      $this->svg->setAttribute('width', $width.'px');
+      $this->svg->setAttribute('width', $width . 'px');
     } else {
       $this->svg->removeAttribute('width');
     }
     return $this;
   }
+
   public function getHtml(): string {
     return $this->doc->saveHTML($this->svg);
   }

@@ -25,24 +25,27 @@ Devicon is a set of icons representing programming languages, designing and deve
 
 MD
 );
-
+use Sphp\Html\Div;
 $devPopup = new Popup();
 $devPopup->layout()->setSize('large');
 $devPopup->addCssClass('icon-example-popup', 'devicons');
-$devPopup->ajaxAppend('manual/snippets/icons/devicons-font.php');
+$deviconsFontLoader = (new Div())->ajaxAppend('/manual/snippets/icons/devicons-font.php');
+$devPopup->getContent()->append($deviconsFontLoader);
 $devModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons icons', $devPopup);
 
 
 $devsvgPopup = new Popup();
 $devsvgPopup->layout()->setSize('large');
 $devsvgPopup->addCssClass('icon-example-popup', 'devicons');
-$devsvgPopup->ajaxAppend('manual/snippets/icons/devicons-svg.php');
+$deviconsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/devicons-svg.php');
+$devsvgPopup->getContent()->append($deviconsLoader);
 $devsvgModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons SVG', $devsvgPopup);
 
 $flagPopup = new Popup();
 $flagPopup->layout()->setSize('large');
 $flagPopup->addCssClass('icon-example-popup', 'country-flags');
-$flagPopup->ajaxAppend('manual/snippets/icons/countryFlags.php');
+$countryFlagsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/countryFlags.php');
+$flagPopup->getContent()->append($countryFlagsLoader);
 $flagModal = new Modal('<i class="far fa-flag fa-lg fa-fw"></i> Country flags', $flagPopup);
 //$flagModal->getTrigger()->addCssClass('small', 'fontawesome', 'shadow', 'radius', 'button');
 //echo $flagModal;
@@ -50,25 +53,30 @@ $flagModal = new Modal('<i class="far fa-flag fa-lg fa-fw"></i> Country flags', 
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
 $farPopup->addCssClass('icon-example-popup', 'fontawesome');
-$farPopup->ajaxAppend('manual/snippets/icons/fontawesome.php?type=regular');
+
+$regularLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=regular');
+$farPopup->getContent()->append($regularLoader);
 $farModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Regular icons', $farPopup);
 
 $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');
 $fasPopup->addCssClass('icon-example-popup', 'fontawesome');
-$fasPopup->ajaxAppend('manual/snippets/icons/fontawesome.php?type=solid');
+$solidLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=solid');
+$fasPopup->getContent()->append($solidLoader);
 $fasModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Solid icons', $fasPopup);
 
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
 $fabPopup->addCssClass('icon-example-popup', 'fontawesome');
-$fabPopup->ajaxAppend('manual/snippets/icons/fontawesome.php?type=brands');
+$brandsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=brands');
+$fabPopup->getContent()->append($brandsLoader);
 $fabModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Brand icons', $fabPopup);
 
 $filePopup = new Popup();
 $filePopup->layout()->setSize('large');
 $filePopup->addCssClass('icon-example-popup', 'filesystem');
-$filePopup->ajaxAppend('manual/snippets/icons/Filesystem.php');
+$fileIconLoader = (new Div())->ajaxAppend('/manual/snippets/icons/Filesystem.php');
+$filePopup->getContent()->append($fileIconLoader);
 $fileModal = new Modal('<i class="far fa-folder-open fa-lg fa-fw"></i> <b>Filesystem icons</b>', $filePopup);
 //$fileModal->getTrigger()->addCssClass('button', 'folder', 'radius', 'small', 'shadow');
 //$fileModal->printHtml();
@@ -93,7 +101,7 @@ $fabPopup->printHtml();
 $flagModal->getPopup()->printHtml();
 $fileModal->getPopup()->printHtml();
 
-$faIcon = \Sphp\Manual\api()->classLinker(FaIcon::class);
+$faIcon = \Sphp\Manual\api()->classLinker(FontAwesomeIcon::class);
 $setSize = $faIcon->methodLink('setSize');
 \Sphp\Manual\md(<<<MD
         

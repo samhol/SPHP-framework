@@ -17,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Media\Icons\Filetype;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\Span;
 
 /**
@@ -158,7 +158,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
    */
   public function buildIcons(string $lang, bool $code = false): Span {
     $span = new Span();
-    $fa = new FA();
+    $fa = new FontAwesome();
     $fa->fixedWidth(true);
     $span->addCssClass('icons');
     if ($lang === 'text') {
@@ -186,7 +186,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
     $outputSyntaxPane = new SyntaxHighlightingPane();
     if ($this->outputHl === 'text') {
       $outputSyntaxPane->useDefaultContentCopyController(false);
-      $icon = FA::terminal()->fixedWidth(true);
+      $icon = FontAwesome::terminal()->fixedWidth(true);
     } else {
       $outputSyntaxPane->useDefaultContentCopyController(true);
       $icon = Filetype::instance()->get($this->outputHl)->fixedWidth(true);
@@ -204,7 +204,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
    */
   public function buildHtmlFlow(): ContentPane {
     $outputPane = (new ContentPane())->addCssClass('html-output');
-    $icon = \Sphp\Html\Media\Icons\FA::html5()->fixedWidth(true);
+    $icon = \Sphp\Html\Media\Icons\FontAwesome::html5()->fixedWidth(true);
     $outputPane->setPaneTitle($icon . ' ' . $this->titles[self::HTMLFLOW]);
     $outputPane->append($this->data);
     return $outputPane;

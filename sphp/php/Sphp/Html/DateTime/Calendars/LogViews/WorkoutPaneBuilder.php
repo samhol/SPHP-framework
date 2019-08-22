@@ -18,7 +18,7 @@ use Sphp\DateTime\Calendars\Diaries\Sports\WeightLiftingExercise;
 use Sphp\Html\Tags;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Lists\Ol;
-use Sphp\Html\Media\Icons\FaIcon;
+use Sphp\Html\Media\Icons\FontAwesomeIcon;
 
 /**
  * Abstract implementation of exercise pane builder
@@ -64,30 +64,30 @@ class WorkoutPaneBuilder {
     $span->addCssClass('icon');
     if ($exercise instanceof WeightLiftingExercise) {
       $span->addCssClass('wr');
-      $icon = new FaIcon('fas fa-dumbbell');
+      $icon = new FontAwesomeIcon('fas fa-dumbbell');
     } else if ($exercise->getName() === 'Skiing') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-skiing-nordic');
+      $icon = new FontAwesomeIcon('fas fa-skiing-nordic');
     } else if ($exercise->getName() === 'Walking') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-walking');
+      $icon = new FontAwesomeIcon('fas fa-walking');
     } else if ($exercise->getName() === 'Running (Outdoor)') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-running');
+      $icon = new FontAwesomeIcon('fas fa-running');
     } else if ($exercise->getName() === 'Swimming') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-swimmer');
+      $icon = new FontAwesomeIcon('fas fa-swimmer');
     } else if ($exercise->getName() === 'Cycling') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-bicycle');
+      $icon = new FontAwesomeIcon('fas fa-bicycle');
     } else if ($exercise->getName() === 'Tinbersports') {
       $span->addCssClass('outdoors');
-      $icon = new FaIcon('fas fa-tree');
+      $icon = new FontAwesomeIcon('fas fa-tree');
     } else if ($exercise->getName() === 'Basketball') {
       $span->addCssClass('basketball');
-      $icon = new FaIcon('fas fa-basketball-ball');
+      $icon = new FontAwesomeIcon('fas fa-basketball-ball');
     } else {
-      $icon = new FaIcon('fas fa-bolt');
+      $icon = new FontAwesomeIcon('fas fa-bolt');
     }
     $icon->fixedWidth(true);
     $span->append($icon);

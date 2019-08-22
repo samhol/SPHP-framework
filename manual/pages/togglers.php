@@ -2,10 +2,10 @@
 
 use Sphp\Html\Foundation\Sites\Adapters\VisibilityToggleController;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\Tags;
 
-$fa = new FA();
+$fa = new FontAwesome();
 $fa->setSize('fa-5x');
 $controller = Button::pushButton('Toggle icons')->setColor('alert')->addCssClass('rounded');
 $toggleController = new VisibilityToggleController($controller);

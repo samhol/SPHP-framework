@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 use Sphp\Html\Apps\Forms\SiteSearch360FormBuilder;
 use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Foundation\Sites\Core\ThrowableCalloutBuilder;
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 try {
 
   $navi = new Bars\ResponsiveBar();
@@ -18,7 +18,7 @@ try {
   $leftDrop = ResponsiveMenu::drilldownDropdown('medium');
   $leftDrop->setOption('autoHeight', true);
   //$leftDrop->setAttribute('data-auto-height', 'true');
-  $leftDrop->appendLink('/', FA::home())->addCssClass('icon-link');
+  $leftDrop->appendLink('/', FontAwesome::home())->addCssClass('icon-link');
   $builder = new MenuBuilder(new MenuLinkBuilder(trim($redirect, '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));

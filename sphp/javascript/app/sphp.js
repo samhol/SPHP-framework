@@ -172,6 +172,7 @@ if (!window.console.log) {
     //$ajaxLoaders.sphpAjaxLoader();
     $("[data-sphp-ajax-append]").sphpAjaxAppend();
     $("[data-sphp-ajax-prepend]").sphpAjaxPrepend();
+    $("[data-sphp-ajax-replace]").sphpAjaxReplace();
     //$("[data-sphp-foundation-rangeslider]").sphpFoundationRangeSliderValueViewer();
     $('.slider').sphpFoundationSlider();
     /*$ajaxLoaders.on("sphp-ajax-loader-finished", function () {

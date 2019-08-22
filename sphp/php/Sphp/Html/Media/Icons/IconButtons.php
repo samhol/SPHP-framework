@@ -42,7 +42,7 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
 
   /**
    *
-   * @var FA
+   * @var FontAwesome
    */
   private $fa;
 
@@ -53,7 +53,7 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
     parent::__construct('div');
     $this->icons = [];
     $this->addCssClass('sphp ', 'icon-buttons');
-    $this->fa = new FA();
+    $this->fa = new FontAwesome();
     $this->fa->fixedWidth(true);
   }
 

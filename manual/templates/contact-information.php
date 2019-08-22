@@ -1,6 +1,6 @@
 <?php
 
-use Sphp\Html\Media\Icons\FA;
+use Sphp\Html\Media\Icons\FontAwesome;
 ?>
 <div class="grid-container">
   <div class="grid-x grid-margin-x grid-padding-x">
@@ -15,8 +15,8 @@ use Sphp\Html\Media\Icons\FA;
           </div>
           <div class="media-object-section main-section">
             <ul class="fa-ul">
-              <li><span class="fa-li"><?php FA::phone('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
-              <li><span class="fa-li"><?php FA::envelope('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
+              <li><span class="fa-li"><?php FontAwesome::phone('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
+              <li><span class="fa-li"><?php FontAwesome::envelope('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
               <li><span class="fa-li"><i class="fa fa-map-marker-alt"></i></span><a href="https://goo.gl/maps/YX5cY72aXgp">Rakuunatie 59 A3, Turku, Finland</a></li>
               <li><span class="fa-li"><i class="fab fa-whatsapp"></i></span><a href="https://api.whatsapp.com/send?phone=358442986738">whatsapp</a></li>
             </ul>
