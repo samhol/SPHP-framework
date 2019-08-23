@@ -1,6 +1,6 @@
 <?php
-  use Sphp\Html\Media\Icons\SvgLoader;
-  $compass = SvgLoader::fileToObject('/home/int48291/public_html/playground//manual/svg/compass.svg');
+  use Sphp\Html\Media\Image\SvgLoader;
+  $compass = SvgLoader::instance()->fileToObject('/home/int48291/public_html/playground//manual/svg/compass.svg');
   
 ?>
 ### Sass <small>stylesheet language</small>

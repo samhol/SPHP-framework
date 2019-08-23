@@ -10,7 +10,7 @@
 
 namespace Sphp\Html\DateTime\Calendars\LogViews;
 
-use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Html\Media\Image\SvgLoader;
 
 /**
  * 
@@ -23,7 +23,7 @@ use Sphp\Html\Media\Icons\SvgLoader;
 class ViewFactory {
 
   public static function flag(string $country): string {
-    return '<span class="national-flag">' . SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg') . "</span>";
+    return '<span class="national-flag">' . SvgLoader::instance()->fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg') . "</span>";
   }
 
 }

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Media\Icons;
+namespace Sphp\Html\Media\Image;
 
 use Sphp\Html\AbstractContent;
 use DOMDocument;
@@ -21,7 +21,7 @@ use DOMNode;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Svg extends AbstractContent implements Icon {
+class Svg extends AbstractContent {
 
   /**
    * @var DOMDocument
@@ -109,14 +109,35 @@ class Svg extends AbstractContent implements Icon {
   /**
    * Sets the width of the SVG image
    * 
-   * @param  float $width
+   * @param  float|string|null $width
    * @return $this for a fluent interface
    */
-  public function setWidth(float $width = null) {
-    if ($width !== null) {
-      $this->svg->setAttribute('width', $width . 'px');
+  public function setWidth($width = null) {
+    if (is_numeric($width)) {
+      $width .= 'px';
+    }
+    if (is_string($width)) {
+      $this->getSvg()->setAttribute('width', $width);
     } else {
-      $this->svg->removeAttribute('width');
+      $this->getSvg()->removeAttribute('width');
+    }
+    return $this;
+  }
+
+  /**
+   * Sets the height of the SVG image
+   * 
+   * @param  float|string $height
+   * @return $this for a fluent interface
+   */
+  public function setHeight($height = null) {
+    if (is_numeric($height)) {
+      $height .= 'px';
+    }
+    if (is_string($height)) {
+      $this->svg->setAttribute('height', $height);
+    } else {
+      $this->svg->removeAttribute('height');
     }
     return $this;
   }

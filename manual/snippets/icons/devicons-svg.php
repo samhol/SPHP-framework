@@ -4,7 +4,7 @@ require_once('/home/int48291/public_html/playground/manual/settings.php');
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
-use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Html\Media\Image\SvgLoader;
 
 $section = Tags::section();
 $section->addCssClass('container', 'devicons');
@@ -19,7 +19,7 @@ foreach ($objects as $name => $object) {
     $content = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon');
     $content->append($iconContainer);
-    $iconContainer->append(SvgLoader::fileToObject($object->getRealPath())->setTitle($name));
+    $iconContainer->append(SvgLoader::instance()->fileToObject($object->getRealPath())->setTitle($name));
     $ext = Tags::div($name)->addCssClass('ext', 'devicon');
     $content->append($ext);
     $grid->append($content);

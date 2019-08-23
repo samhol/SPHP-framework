@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
 use Sphp\Validators\Range;
-use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Html\Media\Image\SvgLoader;
 use Sphp\Exceptions\FileSystemException;
 use Sphp\Html\Media\Icons\Crossbones;
 
@@ -57,7 +57,7 @@ function getPath(): string {
 //var_dump($name);
 try {
   $path = getPath();
-  $object = SvgLoader::fileToObject($path);
+  $object = SvgLoader::instance()->fileToObject($path);
 } catch (\Exception $ex) {
   $object = new Crossbones();
   $object->setColor('#f00')->setOpacity(.4);
@@ -72,5 +72,5 @@ if ($title !== null) {
 }
 header('Content-type: image/svg+xml');
 
-echo $object;
+echo '<?xml version="1.0"?>' . $object;
 

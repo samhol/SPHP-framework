@@ -12,7 +12,7 @@ namespace Sphp\Html\DateTime\Calendars;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\PlainContainer;
-use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Html\Media\Image\SvgLoader;
 use Sphp\DateTime\Calendars\Diaries\DiaryDate;
 use Sphp\Html\Tags;
 use Sphp\Html\DateTime\TimeTag;
@@ -70,7 +70,7 @@ class WeekDayView extends AbstractComponent {
     $date = $this->diaryDay->getDate();
     $topCell = new ContainerCell('', ['small-4']);
     if ($this->diaryDay->isFlagDay()) {
-      $topCell->appendContent(Tags::span(SvgLoader::fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg'))->addCssClass('flag'));
+      $topCell->appendContent(Tags::span(SvgLoader::instance()->fileToObject('/home/int48291/public_html/playground/manual/svg/flags/fi.svg'))->addCssClass('flag'));
     }
     $timeTag = Tags::time($date);
     $timeTag->append(Tags::span($date->format('j'))->addCssClass('day-number'));

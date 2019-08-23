@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Html\Media\Image\SvgLoader;
 
-$skull = SvgLoader::fromUrl('http://playground.samiholck.com/manual/svg/human-skull.svg');
+$skull = SvgLoader::instance()->fromUrl('http://playground.samiholck.com/manual/svg/human-skull.svg');
 
 (new BlockGrid('small-up-2', 'large-up-4'))->setColumns([$skull, $skull, $skull, $skull])
         ->printHtml();

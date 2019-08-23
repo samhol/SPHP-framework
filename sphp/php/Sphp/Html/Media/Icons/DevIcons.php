@@ -10,6 +10,8 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * Implements a factory for Font Awesome icon objects
  * 
@@ -57,6 +59,17 @@ class DevIcons {
       'c#' => 'devicon-csharp-line',
       'c' => 'devicon-c-plain',
   ];
+
+  public function __invoke(string $name, string $screenreaderLabel = null): FontIcon {
+    return static::createIcon($name, $screenreaderLabel);
+  }
+
+  public static function createIcon(string $name, string $screenreaderLabel = null) {
+    if (Strings::startsWith($name, 'devicon')) {
+      $name = "devicon-$name";
+    }
+    return new FontIcon($name, $screenreaderLabel);
+  }
 
   /**
    * Creates an icon object

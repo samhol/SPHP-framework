@@ -8,25 +8,26 @@ $carousel = new Carousel();
 $carousel->addCssClass('tech-icon-carousel');
 $carousel->setAttribute('id', 'tech-icons');
 
-use Sphp\Html\Media\Icons\SvgLoader;
+use Sphp\Html\Media\Image\SvgLoader;
 
+$loader = SvgLoader::instance();
 //$carousel->addCssClass('logos');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$root/s-logo.svg") . '</div>')->addCssClass('svg-container');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/html5/html5-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/css3/css3-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/sass/sass-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/javascript/javascript-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/foundation/foundation-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/nodejs/nodejs-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/npm/npm-original-wordmark.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/gulp/gulp-plain.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/php/php-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/zend/zend-plain.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/symfony/symfony-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/doctrine/doctrine-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/mysql/mysql-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$deviconPath/postgresql/postgresql-original.svg") . '</div>');
-$carousel->appendHtml('<div class="svg">' . SvgLoader::fileToObject("$root/sqlite-logo.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$root/s-logo.svg") . '</div>')->addCssClass('svg-container');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/html5/html5-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/css3/css3-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/sass/sass-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/javascript/javascript-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/foundation/foundation-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/nodejs/nodejs-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/npm/npm-original-wordmark.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/gulp/gulp-plain.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/php/php-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/zend/zend-plain.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/symfony/symfony-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/doctrine/doctrine-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/mysql/mysql-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$deviconPath/postgresql/postgresql-original.svg") . '</div>');
+$carousel->appendHtml('<div class="svg">' . $loader->fileToObject("$root/sqlite-logo.svg") . '</div>');
 
 
 $mdPath = 'manual/snippets/carousels/content/techs';
