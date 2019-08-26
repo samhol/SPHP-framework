@@ -65,10 +65,10 @@ class DevIcons {
   }
 
   public static function createIcon(string $name, string $screenreaderLabel = null) {
-    if (Strings::startsWith($name, 'devicon')) {
+    if (!Strings::startsWith($name, 'devicon')) {
       $name = "devicon-$name";
     }
-    return new FontIcon($name, $screenreaderLabel);
+    return IconTag::i($name, $screenreaderLabel);
   }
 
   /**
@@ -86,7 +86,7 @@ class DevIcons {
       $h = preg_replace("/([A-Z])/", '-$1', $name);
       $h = strtolower($h);
       //echo "\nfoo$h\n";
-      $icon = new FontIcon("devicon-$h");
+      $icon = IconTag::i("devicon-$h");
     }
     $screenReaderText = array_shift($arguments);
     if ($screenReaderText !== null) {

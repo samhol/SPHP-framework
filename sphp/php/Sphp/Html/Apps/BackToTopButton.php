@@ -12,7 +12,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Html\Component;
-use Sphp\Html\Media\Icons\AbstractIcon;
+use Sphp\Html\Media\Icons\IconTag;
 use Sphp\Html\Div;
 
 /**
@@ -55,7 +55,7 @@ class BackToTopButton extends AbstractContent {
     return $this->component->getHtml();
   }
 
-  public static function fromIcon(AbstractIcon $icon): BackToTopButton {
+  public static function fromIcon(IconTag $icon): BackToTopButton {
     $div = new Div($icon);
     $div->cssClasses()->protectValue('sphp-back-to-top-button');
     return new static($div);

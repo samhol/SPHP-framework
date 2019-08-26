@@ -19,7 +19,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FontAwesomeIcon extends AbstractIcon {
+class FontAwesomeIcon extends IconTag {
 
   /**
    * Constructor

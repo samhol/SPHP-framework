@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class AbstractIcon extends EmptyTag implements Icon {
+class IconTag extends EmptyTag implements Icon {
 
   /**
    * Constructor
@@ -55,6 +55,20 @@ class AbstractIcon extends EmptyTag implements Icon {
       $this->attributes()->setAttribute('aria-hidden', 'false');
     }
     return $this;
+  }
+
+  public static function __callStatic(string $name, array $arguments): IconTag {
+    $icon = new self($name);
+
+    $iconClasses = array_shift($arguments);
+    if ($iconClasses !== null) {
+      $icon->cssClasses()->protectValue($iconClasses);
+    } 
+    $screenReaderText = array_shift($arguments);
+    if ($screenReaderText !== null) {
+      $icon->setAriaLabel($screenReaderText);
+    }
+    return $icon;
   }
 
 }
