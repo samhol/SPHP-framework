@@ -11,7 +11,7 @@
 namespace Sphp\Tests\Html\Media\Icons;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Media\Icons\DevIcons;
+use Sphp\Html\Media\Icons\IconFactory;
 use Sphp\Html\Media\Icons\FontAwesomeIcon;
 
 /**
@@ -22,13 +22,13 @@ use Sphp\Html\Media\Icons\FontAwesomeIcon;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class DeviconsTest extends TestCase {
+class IconFactoryTest extends TestCase {
 
   /**
    * @return DevIcons
    */
-  public function testInvoking(): DevIcons {
-    $factory = new DevIcons();
+  public function testInvoking(): IconFactory {
+    $factory = new IconFactory('i');
     $icon = $factory('devicon-github-plain');
     $this->assertTrue($icon->cssClasses()->contains('devicon-github-plain'));
     $this->assertSame('i', $icon->getTagName());
@@ -37,9 +37,9 @@ class DeviconsTest extends TestCase {
   /**
    * @return DevIcons
    */
-  public function testCallStatic(): DevIcons {
-    $factory = new DevIcons();
-    $icon = DevIcons::i('devicon-github-plain');
+  public function testCallStatic(): IconFactory {
+    $factory = new IconFactory();
+    $icon = IconFactory::i('devicon-github-plain');
     $this->assertTrue($icon->cssClasses()->contains('devicon-github-plain'));
     $this->assertSame('i', $icon->getTagName());
     return $factory;
@@ -49,7 +49,7 @@ class DeviconsTest extends TestCase {
    * @depends testInvoking
    * @param   DevIcons $icon
    */
-  public function testClone(DevIcons $icon) {
+  public function testClone(IconFactory $icon) {
     $cloned = clone $icon;
     $this->assertNotSame($icon, $cloned);
     $this->assertEquals($icon('fas fa-tree'), $cloned('fas fa-tree'));

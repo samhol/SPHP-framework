@@ -15,6 +15,9 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a factory for Font Awesome icon objects
  *
+ * @method \Sphp\Html\Media\Icons\FontIcon i(string $iconName) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\FontIcon span(string $iconName) creates a new icon object
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://fontawesome.com/ Font Awesome
@@ -22,7 +25,11 @@ use Sphp\Exceptions\BadMethodCallException;
  */
 class IconFactory {
 
+  /**
+   * @var string
+   */
   private $tagName;
+
   /**
    *  member function map 
    *
@@ -45,6 +52,15 @@ class IconFactory {
     unset($this->functions);
   }
 
+  public function getTagName(): string {
+    return $this->tagName;
+  }
+
+  public function setTagName(string $tagName) {
+    $this->tagName = $tagName;
+    return $this;
+  }
+
   /**
    * Creates an icon object
    *
@@ -52,9 +68,9 @@ class IconFactory {
    * @param  string $screenReaderText 
    * @return FontAwesomeIcon the corresponding component
    */
-  public function __invoke(string $fileType, string $screenReaderText = null): FontAwesomeIcon {
-    $icon = static::get($fileType, $screenReaderText);
-    $this->setCssClassesTo($icon);
+  public function __invoke(string $fileType, string $screenReaderText = null): IconTag {
+    $icon = new IconTag($fileType, $this->getTagName());
+    $icon->setAriaLabel($screenReaderText);
     return $icon;
   }
 
@@ -65,7 +81,7 @@ class IconFactory {
    * @param  array $arguments 
    * @return FontAwesomeIcon the corresponding component
    */
-  public function __call(string $fileType, array $arguments): FontAwesomeIcon {
+  public function __call(string $fileType, array $arguments): IconTag {
     $screenReaderText = array_shift($arguments);
     $icon = static::get($fileType, $screenReaderText);
     $this->setCssClassesTo($icon);
@@ -80,74 +96,21 @@ class IconFactory {
    * @return FontAwesomeIcon the corresponding component
    * @throws BadMethodCallException
    */
-  public static function __callStatic(string $name, array $arguments): FontAwesomeIcon {
-    if (!isset(static::$map[$name])) {
-      throw new BadMethodCallException("Method $name does not exist");
-    }
-    $classes = static::$map[$name];
-    $screenReaderText = array_shift($arguments);
-    return new FontAwesomeIcon($classes, $screenReaderText);
-  }
-
-  /**
-   * 
-   * @param  FontAwesomeIcon $icon
-   * @return void
-   */
-  public function setCssClassesTo(FontAwesomeIcon $icon): void {
-    foreach ($this->functions as $propertyName => $value) {
-      $icon->$propertyName($value);
-    }
+  public static function __callStatic(string $name, array $arguments): IconTag {
+    //$screenReaderText = array_shift($arguments);
+    return static::get($arguments[0], $name);
   }
 
   /**
    * Creates an icon object
    *
-   * @param  string $name the file type
-   * @param  string $screenReaderText 
-   * @return FontAwesomeIcon the corresponding component
+   * @param  string $iconName
+   * @param  string $tagName
+   * @return IconTag the corresponding component
    */
-  public static function get(string $name, string $screenReaderText = null): FontAwesomeIcon {
-    if (isset(static::$map[$name])) {
-      $classes = static::$map[$name];
-    } else {
-      $classes = $name;
-    }
-    $icon = new FontAwesomeIcon($classes, $screenReaderText);
+  public static function get(string $iconName, string $tagName = 'i'): IconTag {
+    $icon = new IconTag($iconName, $tagName);
     return $icon;
-  }
-
-  /**
-   * Optionally pulls the icon to left or right
-   * 
-   * @param  string|null $direction the direction of the pull
-   * @return $this for a fluent interface
-   */
-  public function pull(string $direction = null) {
-    $this->functions['pull'] = $direction;
-    return $this;
-  }
-
-  /**
-   * Sets/unsets the width of the icon fixed
-   * 
-   * @param bool $fixedWidth
-   * @return $this for a fluent interface
-   */
-  public function fixedWidth(bool $fixedWidth = true) {
-    $this->functions['fixedWidth'] = $fixedWidth;
-    return $this;
-  }
-
-  /**
-   * Sets the size of the icon
-   * 
-   * @param  string|null $size the size of the icon
-   * @return $this for a fluent interface
-   */
-  public function setSize(string $size = null) {
-    $this->functions['setSize'] = $size;
-    return $this;
   }
 
 }

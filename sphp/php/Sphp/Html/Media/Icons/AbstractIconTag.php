@@ -20,27 +20,50 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class IconTag extends AbstractIconTag {
+abstract class AbstractIconTag extends EmptyTag implements Icon {
 
   /**
    * Constructor
    * 
-   * @param  string $iconName
    * @param  string $tagName the tag name of the component
+   * @param  HtmlAttributeManager $attrManager
    * @throws InvalidArgumentException if the tag name of the component is not valid
    */
-  public function __construct(string $iconName, string $tagName = 'i') {
-    parent::__construct($tagName);
-    $this->cssClasses()->protectValue($iconName);
+  public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
+    parent::__construct($tagName, true, $attrManager);
+  }
+
+  /**
+   * 
+   * @param  bool $decorative
+   * @return $this for a fluent interface
+   */
+  public function setDecorative(bool $decorative = null) {
+    if ($decorative === true) {
+      $this->attributes()->setAttribute('aria-hidden', 'true');
+    } else {
+      $this->removeAttribute('aria-hidden');
+    }
+    return $this;
+  }
+
+  public function setAriaLabel(string $label = null) {
+    $this->attributes()->setAria('label', $label);
+    if ($label === null) {
+      $this->attributes()->remove('aria-hidden');
+    } else {
+      $this->attributes()->setAttribute('aria-hidden', 'false');
+    }
+    return $this;
   }
 
   public static function __callStatic(string $name, array $arguments): IconTag {
-    $icon = new self($arguments[0], $name);
+    $icon = new self($name);
 
     $iconClasses = array_shift($arguments);
     if ($iconClasses !== null) {
       $icon->cssClasses()->protectValue($iconClasses);
-    }
+    } 
     $screenReaderText = array_shift($arguments);
     if ($screenReaderText !== null) {
       $icon->setAriaLabel($screenReaderText);
