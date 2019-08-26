@@ -77,7 +77,7 @@ class IconFactory {
    */
   public function __call(string $tagname, array $arguments): IconTag {
     if (count($arguments) === 0) {
-      throw new BadMethodCallException('Icon name is missing');
+      throw new BadMethodCallException('Icon name is missing when calling ' . __CLASS__ . '::' . $tagname);
     }
     $icon = $this->createIcon($arguments[0], $tagname);
     return $icon;
@@ -123,19 +123,19 @@ class IconFactory {
   /**
    * Creates a new icon object
    *
-   * @param  string $name the name of the icon (function name)
+   * @param  string $tagName the name of the icon (function name)
    * @param  array $arguments 
    * @return IconTag the corresponding component
    * @throws BadMethodCallException if icon cannot be created
    */
-  public static function __callStatic(string $name, array $arguments): IconTag {
+  public static function __callStatic(string $tagname, array $arguments): IconTag {
     if (count($arguments) === 0) {
-      throw new BadMethodCallException('Icon name is missing');
+      throw new BadMethodCallException('Icon name is missing when calling ' . __CLASS__ . '::' . $tagname);
     }
     try {
-      return static::get($arguments[0], $name);
+      return static::get($arguments[0], $tagname);
     } catch (\Exception $ex) {
-      throw new BadMethodCallException('Cannot create icon ' . __CLASS__ . '::' . $name, $ex->getCode(), $ex);
+      throw new BadMethodCallException('Cannot create icon ' . __CLASS__ . '::' . $tagname, $ex->getCode(), $ex);
     }
   }
 
@@ -147,7 +147,8 @@ class IconFactory {
    * @return IconTag the corresponding component
    */
   public static function get(string $iconName, string $tagName = 'i'): IconTag {
-    $icon = new IconTag($iconName, $tagName);
+    $factory = new static($tagName);
+    $icon = $factory->createIcon($iconName, $tagName);
     return $icon;
   }
 

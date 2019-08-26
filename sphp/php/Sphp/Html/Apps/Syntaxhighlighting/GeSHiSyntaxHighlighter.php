@@ -97,7 +97,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
     $this->footer = (new Div($footerText))->addCssClass('foot-area');
     $this->showLineNumbers(true)
             ->useFooter()
-            ->setContentCopyController(Tags::span(FontAwesome::copy())->addCssClass('sphp', 'copy-button'));
+            ->setContentCopyController(Tags::span(FontAwesome::i('fas fa-copy'))->addCssClass('sphp', 'copy-button'));
   }
 
   public function __destruct() {

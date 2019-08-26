@@ -106,10 +106,12 @@ class ErrorCalloutBuilder implements ErrorListener {
    * @return Icon
    */
   protected function getIcon(int $errno): Icon {
+    $fa = new FontAwesome();
+    $fa ->setSize('2x');
     if (\E_ERROR & $errno || \E_USER_ERROR & $errno) {
-      return FontAwesome::ban()->setSize('2x');
+      return $fa('fas fa-ban');
     } else {
-      return FontAwesome::exclamation()->setSize('2x');
+      return $fa('fas fa-exclamation-triangle');
     }
   }
 

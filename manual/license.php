@@ -71,8 +71,8 @@ $main->append('<hr>');
 $linkBar = new Foundation\Sites\Buttons\ButtonGroup();
 $linkBar->setExtended(true);
 $linkBar->appendPushButton('<i class="fas fa-arrow-left fa-lg"></i> Back')->setAttribute('onclick', 'window.history.back();');
-$linkBar->appendHyperlink('/', Media\Icons\FontAwesome::home()->setSize('lg') . ' Back to Manual');
-$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FontAwesome::github()->setSize('lg') . ' repository');
+$linkBar->appendHyperlink('/', Media\Icons\FontAwesome::i('fas fa-home')->setSize('lg') . ' Back to Manual');
+$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FontAwesome::i('fab fa-github')->setSize('lg') . ' repository');
 
 
 $main->append($linkBar);

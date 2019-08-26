@@ -162,13 +162,13 @@ class CodeExampleAccordionBuilder extends AbstractContent {
     $fa->fixedWidth(true);
     $span->addCssClass('icons');
     if ($lang === 'text') {
-      $langIcon = $fa->terminal();
+      $langIcon = $fa->i('fas fa-terminal');
     } else {
-      $langIcon = $fa->{$lang}();
+      $langIcon = $fa->i($lang);
     }
     $span->append($langIcon);
     if ($code) {
-      $tag = $fa->code();
+      $tag = $fa->i('fas fa-code');
       $span->append($tag);
     }
     return $span;
@@ -186,7 +186,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
     $outputSyntaxPane = new SyntaxHighlightingPane();
     if ($this->outputHl === 'text') {
       $outputSyntaxPane->useDefaultContentCopyController(false);
-      $icon = FontAwesome::terminal()->fixedWidth(true);
+      $icon = FontAwesome::i('fas fa-terminal')->fixedWidth(true);
     } else {
       $outputSyntaxPane->useDefaultContentCopyController(true);
       $icon = Filetype::instance()->get($this->outputHl)->fixedWidth(true);
@@ -204,7 +204,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
    */
   public function buildHtmlFlow(): ContentPane {
     $outputPane = (new ContentPane())->addCssClass('html-output');
-    $icon = \Sphp\Html\Media\Icons\FontAwesome::html5()->fixedWidth(true);
+    $icon = \Sphp\Html\Media\Icons\FontAwesome::i('fab fa-html5')->fixedWidth(true);
     $outputPane->setPaneTitle($icon . ' ' . $this->titles[self::HTMLFLOW]);
     $outputPane->append($this->data);
     return $outputPane;

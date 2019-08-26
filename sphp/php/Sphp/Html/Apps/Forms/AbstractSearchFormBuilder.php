@@ -50,7 +50,7 @@ abstract class AbstractSearchFormBuilder {
    * Constructor
    */
   public function __construct() {
-    $this->setSubmitButton(new Submitter(FontAwesome::search('Search')));
+    $this->setSubmitButton(new Submitter(FontAwesome::i('fas fa-search')));
     $this->hiddenData = new HiddenInputs();
     $this->searchField = new SearchInput();
   }
@@ -102,7 +102,7 @@ abstract class AbstractSearchFormBuilder {
    * @return SubmitterInterface
    */
   public function getSubmitButton(): SubmitterInterface {
-    $submitButton = new Submitter(FontAwesome::search('Search'));
+    $submitButton = new Submitter(FontAwesome::i('fas fa-search'));
     $submitButton->cssClasses()->protectValue('button');
     return $submitButton;
   }

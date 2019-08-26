@@ -80,14 +80,15 @@ from the begining of the size class)
 
 MD
 );
-
+$fa = new FontAwesome();
+$fa->fixedWidth(true)->setSize('lg');
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
 $farPopup->addCssClass('icon-example-popup', 'fontawesome');
 
 $regularLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=regular');
 $farPopup->getContent()->append($regularLoader);
-$farModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Regular icons', $farPopup);
+$farModal = new Modal("{$fa('fab fa-font-awesome-alt')} Regular icons", $farPopup);
 
 $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');

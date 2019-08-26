@@ -6,6 +6,7 @@ require_once('settings.php');
 
 use Sphp\Html\Head\Link;
 use Sphp\Html\Head\Meta;
+
 $doc = new SphpDocument();
 $html = $doc->html();
 $head = $doc->head();
@@ -37,6 +38,7 @@ $doc->body()->addCssClass('mit-license');
 $doc->startBody();
 
 use Sphp\Html\Foundation\Sites\Grids\DivGrid;
+use Sphp\Html\Media\Icons\FontAwesome;
 
 $main = Tags::main();
 $main->appendSection()->appendMdFile('privacy_policy.md');
@@ -44,8 +46,8 @@ $main->append('<hr>');
 $linkBar = new Foundation\Sites\Buttons\ButtonGroup();
 $linkBar->addCssClass('float-center');
 $linkBar->appendPushButton('<i class="fas fa-arrow-left fa-lg"></i> Back')->setAttribute('onclick', 'window.history.back();');
-$linkBar->appendHyperlink('/', Media\Icons\FontAwesome::home()->setSize('lg') . ' Back to Manual');
-$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', Media\Icons\FontAwesome::github()->addCssClass('border')->setSize('lg') . ' repository');
+$linkBar->appendHyperlink('/', FontAwesome::i('fas fa-home')->setSize('lg') . ' Back to Manual');
+$linkBar->appendHyperlink('https://github.com/samhol/SPHP-framework', FontAwesome::i('fab fa-github')->addCssClass('border')->setSize('lg') . ' repository');
 
 
 $main->append($linkBar);
