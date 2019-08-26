@@ -9,13 +9,13 @@
  */
 
 namespace Sphp\Html\Media\Icons;
-
-use Sphp\Html\EmptyTag;
-use Sphp\Html\Attributes\HtmlAttributeManager;
-
+use Sphp\Exceptions\BadMethodCallException;
 /**
- * Abstract Implementation of an icon based on fonts and HTML tags
+ * Implementation of an HTML icon based on fonts or SVG
  *
+ * @method \Sphp\Html\Media\Icons\IconTag i(string $iconName) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\IconTag span(string $iconName) creates a new icon object
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -34,18 +34,22 @@ class IconTag extends AbstractIconTag {
     $this->cssClasses()->protectValue($iconName);
   }
 
+  /**
+   * 
+   * @param  string $name
+   * @param  array $arguments
+   * @return IconTag
+   * @throws BadMethodCallException
+   */
   public static function __callStatic(string $name, array $arguments): IconTag {
-    $icon = new self($arguments[0], $name);
-
-    $iconClasses = array_shift($arguments);
-    if ($iconClasses !== null) {
-      $icon->cssClasses()->protectValue($iconClasses);
+    if (count($arguments) === 0) {
+      throw new BadMethodCallException('Icon name is missing');
     }
-    $screenReaderText = array_shift($arguments);
-    if ($screenReaderText !== null) {
-      $icon->setAriaLabel($screenReaderText);
+    try {
+      return new static($arguments[0], $name);
+    } catch (\Exception $ex) {
+      throw new BadMethodCallException('Cannot create icon ' . __CLASS__ . '::' . $name, $ex->getCode(), $ex);
     }
-    return $icon;
   }
 
 }

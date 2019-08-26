@@ -15,8 +15,8 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a factory for Font Awesome icon objects
  *
- * @method \Sphp\Html\Media\Icons\FontIcon i(string $iconName) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontIcon span(string $iconName) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\IconTag i(string $iconName) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\IconTag span(string $iconName) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -35,21 +35,52 @@ class IconFactory {
    *
    * @var array[]
    */
-  private $functions = [];
+  private $attributes = [];
 
   /**
    * Constructor
+   * 
+   * @param string $defaultTagname
    */
-  public function __construct(string $tagName = 'i') {
-    $this->tagName = $tagName;
-    $this->functions = [];
+  public function __construct(string $defaultTagname = 'i') {
+    $this->setTagName($defaultTagname);
+    $this->attributes = [];
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->functions);
+    unset($this->attributes);
+  }
+
+  /**
+   * Creates an icon object
+   *
+   * @param  string $iconName the file type
+   * @param  string $screenReaderText 
+   * @return FontAwesomeIcon the corresponding component
+   */
+  public function __invoke(string $iconName, string $screenReaderText = null): IconTag {
+    $icon = $this->createIcon($iconName, $this->getTagName());
+    $icon->setAriaLabel($screenReaderText);
+    return $icon;
+  }
+
+  /**
+   * Creates an icon object
+   *
+   * @param  string $tagname the tagname of the generated icon
+   * @param  array $arguments 
+   * @return IconTag the corresponding component
+   * @throws BadMethodCallException
+   */
+  public function __call(string $tagname, array $arguments): IconTag {
+    if (count($arguments) === 0) {
+      throw new BadMethodCallException('Icon name is missing');
+    }
+    $icon = $this->createIcon($arguments[0], $tagname);
+    return $icon;
   }
 
   public function getTagName(): string {
@@ -61,31 +92,32 @@ class IconFactory {
     return $this;
   }
 
-  /**
-   * Creates an icon object
-   *
-   * @param  string $fileType the file type
-   * @param  string $screenReaderText 
-   * @return FontAwesomeIcon the corresponding component
-   */
-  public function __invoke(string $fileType, string $screenReaderText = null): IconTag {
-    $icon = new IconTag($fileType, $this->getTagName());
-    $icon->setAriaLabel($screenReaderText);
-    return $icon;
+  public function getIconAttributes(): array {
+    return $this->attributes;
+  }
+
+  public function setIconAttribute(string $name, $value) {
+    $this->attributes[$name] = $value;
+    return $this;
   }
 
   /**
-   * Creates an icon object
-   *
-   * @param  string $fileType the file type
-   * @param  array $arguments 
-   * @return FontAwesomeIcon the corresponding component
+   * Creates an icon instance
+   * 
+   * @param  string $iconName
+   * @param  string $tagname
+   * @return IconTag
    */
-  public function __call(string $fileType, array $arguments): IconTag {
-    $screenReaderText = array_shift($arguments);
-    $icon = static::get($fileType, $screenReaderText);
-    $this->setCssClassesTo($icon);
+  protected function createIcon(string $iconName, string $tagname = 'i'): IconTag {
+    $icon = new IconTag($iconName, $tagname);
+    $this->insertIconAttributesTo($icon);
     return $icon;
+  }
+
+  protected function insertIconAttributesTo(IconTag $icon): void {
+    foreach ($this->getIconAttributes() as $name => $value) {
+      $icon->setAttribute($name, $value);
+    }
   }
 
   /**
@@ -93,12 +125,18 @@ class IconFactory {
    *
    * @param  string $name the name of the icon (function name)
    * @param  array $arguments 
-   * @return FontAwesomeIcon the corresponding component
-   * @throws BadMethodCallException
+   * @return IconTag the corresponding component
+   * @throws BadMethodCallException if icon cannot be created
    */
   public static function __callStatic(string $name, array $arguments): IconTag {
-    //$screenReaderText = array_shift($arguments);
-    return static::get($arguments[0], $name);
+    if (count($arguments) === 0) {
+      throw new BadMethodCallException('Icon name is missing');
+    }
+    try {
+      return static::get($arguments[0], $name);
+    } catch (\Exception $ex) {
+      throw new BadMethodCallException('Cannot create icon ' . __CLASS__ . '::' . $name, $ex->getCode(), $ex);
+    }
   }
 
   /**

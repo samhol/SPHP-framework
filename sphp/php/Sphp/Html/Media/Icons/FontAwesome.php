@@ -15,136 +15,13 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a factory for Font Awesome icon objects
  * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon html5(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon sass(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon css3(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon js(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon python(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon nodejs(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon facebook(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon twitter(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon googlePlus(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon github(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon tumblr(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon stumbleupon(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon pinterest(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon blogger(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon apple(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon cc(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon android(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon apper(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon cpanel(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon angular(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon dribbble(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon dropbox(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon digg(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon stackoverflow(string $screenReaderLabel = null) creates a new icon object
- *
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon phone(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon envelope(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon search(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon tags(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon exclamation(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon ban(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesome stethoscope(string $screenReaderLabel = null) creates a new icon object
- * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://fontawesome.com/ Font Awesome
  * @filesource
  */
-class FontAwesome {
-
-  /**
-   * list of Font Awesome icons and corresponding PHP calls
-   *
-   * @var string[]
-   */
-  private static $map = array(
-      'archive' => 'far fa-file-archive',
-      'pdf' => 'far fa-file-pdf',
-      'video' => 'far fa-file-video',
-      'audio' => 'far fa-file-audio',
-      'powerpoint' => 'far fa-file-powerpoint',
-      'word' => 'far fa-file-word',
-      'excel' => 'far fa-file-excel',
-      'css' => 'fab fa-css3-alt',
-      'image' => 'far fa-file-image',
-      'text' => 'far fa-file-alt',
-      'html5' => 'fab fa-html5',
-      'php' => 'fab fa-php',
-      'js' => 'fab fa-js-square',
-      'font' => 'far fa-file',
-      'executable' => 'fas fa-cogs',
-      'database' => 'fas fa-database',
-      'windows' => 'fab fa-windows',
-      'code' => 'far fa-file-code',
-      'certificate' => 'fas fa-certificate',
-      'html5' => 'fab fa-html5',
-      'sass' => 'fab fa-sass',
-      'css3' => 'fab fa-css3',
-      'php' => 'fab fa-php',
-      'java' => 'fab fa-java',
-      'js' => 'fab fa-js-square',
-      'python' => 'fab fa-python',
-      'nodejs' => 'fab fa-node-js',
-      'npm' => 'fab fa-npm',
-      'gulp' => 'fab fa-gulp',
-      /**
-       * Social
-       */
-      'facebook' => 'fab fa-facebook-square',
-      'facebookF' => 'fab fa-facebook-f',
-      'twitter' => 'fab fa-twitter-square',
-      'googlePlus' => 'fab fa-google-plus-square',
-      'githubSquare' => 'fab fa-github-square',
-      'github' => 'fab fa-github',
-      'chevronCircleUp' => 'fas fa-chevron-circle-up',
-      'tumblr' => 'fab fa-tumblr-square',
-      'stumbleupon' => 'fab fa-stumbleupon-circle',
-      'stackoverflow' => 'fab fa-stack-overflow ',
-      'pinterest' => 'fab fa-pinterest-square',
-      'blogger' => 'fab fa-blogger',
-      'cc' => 'fab fa-creative-commons',
-      /**
-       * General
-       */
-      'phone' => 'fas fa-phone',
-      'envelope' => 'far fa-envelope',
-      'user' => 'far fa-user',
-      'users' => 'fas fa-users',
-      'book' => 'fas fa-book',
-      'database' => 'fas fa-database',
-      'search' => 'fas fa-search',
-      'copy' => 'far fa-copy',
-      'ban' => 'fas fa-ban',
-      'eraser' => 'fas fa-eraser',
-      'exclamation' => 'fas fa-exclamation-triangle',
-      'tags' => 'fas fa-tags',
-      'stethoscope' => 'fas fa-stethoscope',
-      'terminal' => 'fas fa-terminal',
-      'flag' => 'fas fa-flag',
-      'compass' => 'far fa-compass',
-      'asterisk' => 'fas fa-asterisk',
-      'home' => 'fas fa-home',
-      /**
-       * Brands
-       */
-      'apple' => 'fab fa-apple',
-      'android' => 'fab fa-android',
-      'angular' => 'fab fa-angular',
-      'apper' => 'fab fa-apper',
-      'blogger' => 'fab fa-blogger',
-      'cpanel' => 'fab fa-cpanel',
-      'digg' => 'fab fa-digg',
-      'dropbox' => 'fab fa-dropbox',
-      'dribbble' => 'fab fa-dribbble',
-      'eye' => 'far fa-eye',
-  );
+class FontAwesome extends IconFactory {
 
   /**
    *  member function map 
@@ -156,7 +33,8 @@ class FontAwesome {
   /**
    * Constructor
    */
-  public function __construct() {
+  public function __construct(string $defaultTagName = 'i') {
+    parent::__construct($defaultTagName);
     $this->functions = [];
   }
 
@@ -168,47 +46,17 @@ class FontAwesome {
   }
 
   /**
-   * Creates an icon object
-   *
-   * @param  string $fileType the file type
-   * @param  string $screenReaderText 
-   * @return FontAwesomeIcon the corresponding component
+   * Creates an icon instance
+   * 
+   * @param  string $iconName
+   * @param  string $tagname
+   * @return IconTag
    */
-  public function __invoke(string $fileType, string $screenReaderText = null): FontAwesomeIcon {
-    $icon = static::get($fileType, $screenReaderText);
+  protected function createIcon(string $iconName, string $tagname = 'i'): IconTag {
+    $icon = new FontAwesomeIcon($iconName, $tagname);
+    $this->insertIconAttributesTo($icon);
     $this->setCssClassesTo($icon);
     return $icon;
-  }
-
-  /**
-   * Creates an icon object
-   *
-   * @param  string $fileType the file type
-   * @param  array $arguments 
-   * @return FontAwesomeIcon the corresponding component
-   */
-  public function __call(string $fileType, array $arguments): FontAwesomeIcon {
-    $screenReaderText = array_shift($arguments);
-    $icon = static::get($fileType, $screenReaderText);
-    $this->setCssClassesTo($icon);
-    return $icon;
-  }
-
-  /**
-   * Creates a new icon object
-   *
-   * @param  string $name the name of the icon (function name)
-   * @param  array $arguments 
-   * @return FontAwesomeIcon the corresponding component
-   * @throws BadMethodCallException
-   */
-  public static function __callStatic(string $name, array $arguments): FontAwesomeIcon {
-    if (!isset(static::$map[$name])) {
-      throw new BadMethodCallException("Method $name does not exist");
-    }
-    $classes = static::$map[$name];
-    $screenReaderText = array_shift($arguments);
-    return new FontAwesomeIcon($classes, $screenReaderText);
   }
 
   /**
@@ -220,23 +68,6 @@ class FontAwesome {
     foreach ($this->functions as $propertyName => $value) {
       $icon->$propertyName($value);
     }
-  }
-
-  /**
-   * Creates an icon object
-   *
-   * @param  string $name the file type
-   * @param  string $screenReaderText 
-   * @return FontAwesomeIcon the corresponding component
-   */
-  public static function get(string $name, string $screenReaderText = null): FontAwesomeIcon {
-    if (isset(static::$map[$name])) {
-      $classes = static::$map[$name];
-    } else {
-      $classes = $name;
-    }
-    $icon = new FontAwesomeIcon($classes, $screenReaderText);
-    return $icon;
   }
 
   /**

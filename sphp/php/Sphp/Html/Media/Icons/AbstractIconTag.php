@@ -41,6 +41,7 @@ abstract class AbstractIconTag extends EmptyTag implements Icon {
   public function setDecorative(bool $decorative = null) {
     if ($decorative === true) {
       $this->attributes()->setAttribute('aria-hidden', 'true');
+      $this->attributes()->remove('aria-label');
     } else {
       $this->removeAttribute('aria-hidden');
     }
@@ -49,26 +50,10 @@ abstract class AbstractIconTag extends EmptyTag implements Icon {
 
   public function setAriaLabel(string $label = null) {
     $this->attributes()->setAria('label', $label);
-    if ($label === null) {
+    if ($label !== null) {
       $this->attributes()->remove('aria-hidden');
-    } else {
-      $this->attributes()->setAttribute('aria-hidden', 'false');
     }
     return $this;
-  }
-
-  public static function __callStatic(string $name, array $arguments): IconTag {
-    $icon = new self($name);
-
-    $iconClasses = array_shift($arguments);
-    if ($iconClasses !== null) {
-      $icon->cssClasses()->protectValue($iconClasses);
-    } 
-    $screenReaderText = array_shift($arguments);
-    if ($screenReaderText !== null) {
-      $icon->setAriaLabel($screenReaderText);
-    }
-    return $icon;
   }
 
 }

@@ -7,7 +7,7 @@ use Sphp\Html\Foundation\Sites\Containers\Popup;
 
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$icon = \Sphp\Manual\api()->classLinker(FontIcon::class);
+$icon = \Sphp\Manual\api()->classLinker(IconTag::class);
 $devIcons = \Sphp\Manual\api()->classLinker(DevIcons::class);
 
 

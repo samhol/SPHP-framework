@@ -18,7 +18,7 @@ try {
   $leftDrop = ResponsiveMenu::drilldownDropdown('medium');
   $leftDrop->setOption('autoHeight', true);
   //$leftDrop->setAttribute('data-auto-height', 'true');
-  $leftDrop->appendLink('/', FontAwesome::home())->addCssClass('icon-link');
+  $leftDrop->appendLink('/', FontAwesome::i('fas fa-home'))->addCssClass('icon-link');
   $builder = new MenuBuilder(new MenuLinkBuilder(trim($redirect, '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
