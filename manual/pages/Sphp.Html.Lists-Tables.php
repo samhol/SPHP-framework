@@ -29,7 +29,6 @@ $liInterface into a $li object.
 MD
 );
 
-Manual\visualize('Sphp/Html/Lists/Ul.php', null, true);
 
 Manual\md(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
@@ -48,7 +47,7 @@ This indexing can be numerical or alphabetical.
 MD
 );
 
-Manual\visualize('Sphp/Html/Lists/Ol.php', null, true);
+echo Manual\example('Sphp/Html/Lists/Standardlist.php', null, true)->setExamplePaneTitle('Examples of different list types');
 
 $dtLink = Manual\api()->classLinker(Dt::class);
 $ddLink = Manual\api()->classLinker(Dd::class);

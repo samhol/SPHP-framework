@@ -4,44 +4,30 @@
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Media\Icons;
 
-use SplFileInfo;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
- * File type icon factory
- * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon facebookSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon twitterSquare(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon googlePlusSquare(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon java(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon jar(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon class(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon php(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon php3(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon phtml(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon phar(string $screenReaderLabel = null) creates a new icon object
- * 
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon js(string $screenReaderLabel = null) creates a new icon object
- * @method \Sphp\Html\Media\Icons\FontAwesomeIcon json(string $screenReaderLabel = null) creates a new icon object
+ * Implementation of FileTypeIconMapper
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
+ * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Filetype {
+class FileTypeIconMapper {
 
   /**
-   * @var string[] 
+   * @var FileTypeIconMapper|null singleton instance 
    */
-  private static $fileTypeMap = [
+  private static $instance;
+  private $extToTypesMap = [
       'csv' => 'text',
       'db' => 'database',
       'dbf' => 'database',
@@ -67,7 +53,7 @@ class Filetype {
       /**
        * C++:
        */
-      'cpp' => 'c++',
+      'cpp' => 'cpp',
       'cc' => 'cpp',
       /**
        * Visual C#:
@@ -360,7 +346,7 @@ class Filetype {
       'otf' => 'font',
       'ttf' => 'font',
   ];
-  private static $assosiations = [
+  private $iconNameMap = [
       'archive' => 'far fa-file-archive',
       'pdf' => 'fas fa-file-pdf',
       'video' => 'far fa-file-video',
@@ -383,101 +369,62 @@ class Filetype {
       'database' => 'fas fa-database',
       'windows' => 'fab fa-windows',
       'code' => 'far fa-file-code',
-      'c++' => 'devicon-cplusplus-line',
+      'cpp' => 'devicon-cplusplus-line',
       'c#' => 'devicon-csharp-line',
       'c' => 'devicon-c-plain',
       'certificate' => 'fas fa-certificate',
   ];
 
-  /**
-   * @var Filetype|null singleton instance 
-   */
-  private static $instance;
+  public function __construct() {
+    //echo '__construct';
+  }
 
-  /**
-   * @var array 
-   */
-  private $settings;
+  public function getIconNameForExt(string $ext): ?string {
+    if (array_key_exists($ext, $this->extToTypesMap)) {
+      $type = $this->extToTypesMap[$ext];
+    } else {
+      $type = $ext;
+    }
 
-  public function __construct(...$classes) {
-    $this->settings = [];
-    $this->settings['classes'] = $classes;
+    return $this->getIconNameFor($type);
+  }
+
+  public function getIconNameFor(string $fileType): ?string {
+    if (array_key_exists($fileType, $this->extToTypesMap)) {
+      $fileType = $this->extToTypesMap[$fileType];
+    }
+    if (array_key_exists($fileType, $this->iconNameMap)) {
+      return $this->iconNameMap[$fileType];
+    } else {
+      return null;
+    }
+  }
+
+  public function isMapped(string $fileOrExt): bool {
+    if (array_key_exists($fileOrExt, $this->extToTypesMap)) {
+      $fileOrExt = $this->extToTypesMap[$fileOrExt];
+    }
+    return array_key_exists($fileOrExt, $this->iconNameMap);
+  }
+
+  public function toArray(): array {
+    $arr = $this->iconNameMap;
+    foreach ($this->extToTypesMap as $ext => $mime) {
+      $arr[$ext] = $this->getIconNameFor($ext);
+    }
+    return $arr;
   }
 
   /**
    * Returns the singleton instance
    * 
-   * @return Filetype singleton instance
+   * @return FileTypeIconMapper singleton instance
    */
-  public static function instance(): Filetype {
+  public static function instance(): FileTypeIconMapper {
     if (self::$instance === null) {
       self::$instance = new static();
     }
     return self::$instance;
-  }
-
-  /**
-   * Creates an icon object representing given file type
-   *
-   * @param  string $fileType the file type
-   * @param  string $screenReaderText
-   * @return FontAwesomeIcon new icon object
-   */
-  public function __invoke(string $fileType, string $screenReaderText = null): FontAwesomeIcon {
-    return static::get($fileType, $screenReaderText);
-  }
-
-  /**
-   * Creates an icon object representing given file type
-   *
-   * @param  string $fileType the file type
-   * @param  array $arguments
-   * @return FontAwesomeIcon new icon object
-   */
-  public function __call(string $fileType, array $arguments): FontAwesomeIcon {
-    $screenReaderText = array_shift($arguments);
-    return static::get($fileType, $screenReaderText);
-  }
-
-  /**
-   * Creates an icon object representing given file type
-   *
-   * @param  string $fileType the file type
-   * @param  array $arguments 
-   * @return FontAwesomeIcon new icon object
-   */
-  public static function __callStatic(string $fileType, array $arguments): FontAwesomeIcon {
-    $screenReaderText = array_shift($arguments);
-    return static::get($fileType, $screenReaderText);
-  }
-
-  /**
-   * Creates an icon object representing given file or file type
-   *
-   * @param  string|SplFileInfo $fileOrExt a file or a file type
-   * @param  string $screenReaderText 
-   * @return FontAwesomeIcon new icon object
-   */
-  public static function get($fileOrExt, string $screenReaderText = null): FontAwesomeIcon {
-    if (array_key_exists($fileOrExt, static::$fileTypeMap)) {
-      $icon = static::$assosiations[static::$fileTypeMap[$fileOrExt]];
-    } else if (array_key_exists($fileOrExt, static::$assosiations)) {
-      $icon = static::$assosiations[$fileOrExt];
-    } else {
-      if (is_string($fileOrExt)) {
-        $file = new SplFileInfo($fileOrExt);
-      }
-      if (!$file instanceof SplFileInfo) {
-        throw new InvalidArgumentException('File cannot be found');
-      }
-      $ext = $file->getExtension();
-      if (array_key_exists($ext, static::$fileTypeMap)) {
-        $icon = static::$fileTypeMap[$ext];
-      } else {
-        $icon = 'far fa-file';
-      }
-    }
-    return new FontAwesomeIcon($icon, $screenReaderText);
   }
 
 }

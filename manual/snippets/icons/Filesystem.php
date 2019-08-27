@@ -28,7 +28,7 @@ foreach ($d as $name => $group) {
     $content = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon', 'font', 'devicons');
     $content->append($iconContainer);
-    $icon = Filetype::$extension($description)->setAttribute('title', "$extension: $description");
+    $icon = FileIcons::$extension($description)->setAttribute('title', "$extension: $description");
     $iconContainer->append($icon);
     $ext = Tags::div($extension)->addCssClass('ext', 'devicons');
     $content->append($ext);

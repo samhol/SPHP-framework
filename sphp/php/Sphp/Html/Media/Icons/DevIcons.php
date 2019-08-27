@@ -22,11 +22,11 @@ use Sphp\Stdlib\Strings;
  */
 class DevIcons extends IconFactory {
 
-  public static function get(string $name, string $tagName = 'i'): IconTag {
+  public function createIcon(string $name, string $tagName = 'i'): IconTag {
     if (!Strings::startsWith($name, 'devicon')) {
       $name = "devicon-$name";
     }
-    return parent::get($name, $tagName);
+    return parent::createIcon($name, $tagName);
   }
 
 }

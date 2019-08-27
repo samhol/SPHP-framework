@@ -43,7 +43,7 @@ abstract class Media {
   }
 
   public static function fileTypeBadge($file): \Sphp\Html\Tag {
-    $icon = \Sphp\Html\Media\Icons\Filetype::get($file); //Icons::fileType($file);
+    $icon = \Sphp\Html\Media\Icons\FileIcons::get($file); //Icons::fileType($file);
     return static::badge($icon);
   }
 

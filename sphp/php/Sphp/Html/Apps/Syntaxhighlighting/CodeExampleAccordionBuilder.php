@@ -16,7 +16,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\ContentPane;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Html\Media\Icons\Filetype;
+use Sphp\Html\Media\Icons\FileIcons;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\Span;
 
@@ -189,7 +189,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
       $icon = FontAwesome::i('fas fa-terminal')->fixedWidth(true);
     } else {
       $outputSyntaxPane->useDefaultContentCopyController(true);
-      $icon = Filetype::instance()->get($this->outputHl)->fixedWidth(true);
+      $icon = FileIcons::instance()->iconFor($this->outputHl)->addCssClass('fa-fw');
     }
     $outputSyntaxPane->setPaneTitle($this->buildIcons($this->outputHl, true) . ' ' . $this->titles[self::OUTPUT_TEXT]);
     //$outputSyntaxPane->executeFromFile($this->path, $this->outputHl);
@@ -217,7 +217,7 @@ class CodeExampleAccordionBuilder extends AbstractContent {
    */
   public function buildCodePane(): SyntaxHighlightingPane {
     $codePane = new SyntaxHighlightingPane();
-    $icon = Filetype::instance()->get('php')->fixedWidth(true);
+    $icon = FileIcons::instance()->iconFor('php')->addCssClass('fa-fw');
     $codePane->setPaneTitle($icon . ' ' . $this->titles[self::EXAMPLECODE]);
     $codePane->loadFromFile($this->path);
     $codePane->addCssClass('code');

@@ -52,7 +52,7 @@ class FontAwesome extends IconFactory {
    * @param  string $tagname
    * @return IconTag
    */
-  protected function createIcon(string $iconName, string $tagname = 'i'): IconTag {
+  public function createIcon(string $iconName, string $tagname = 'i'): IconTag {
     $icon = new FontAwesomeIcon($iconName, $tagname);
     $this->insertIconAttributesTo($icon);
     $this->setCssClassesTo($icon);
