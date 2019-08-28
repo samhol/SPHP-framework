@@ -2,18 +2,18 @@
 
 namespace Sphp\Html\Media\Icons;
 
-$list = new \Sphp\Html\Div();
+$list = new \Sphp\Html\Lists\Ul();
 $list->addCssClass('fa-2x');
 $list->append(FileIcons::txt("Text file icon"));
 $list->append(FileIcons::html());
 $list->append(FileIcons::python());
+$list->append(FileIcons::video());
+$list->append(FileIcons::php("foo.php"));
+$list->append(FileIcons::java("Java icon"));
+$list->append(FileIcons::js("JavaScript icon"));
+$list->append(FileIcons::c("C icon"));
+$list->append(FileIcons::cpp("C++ icon"));
 echo $list;
-echo FileIcons::video() . " ";
-echo FileIcons::php("foo.php") . " ";
-echo FileIcons::java("Java icon") . " ";
-echo FileIcons::js("JavaScript icon") . " ";
-echo FileIcons::c("C icon") . " ";
-echo FileIcons::cpp("C++ icon") . " ";
 
 $fileIcons = FileIcons::instance();
 echo $fileIcons->cpp("C++ icon") . " ";
