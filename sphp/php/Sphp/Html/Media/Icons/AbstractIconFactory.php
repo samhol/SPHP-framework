@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**
@@ -60,7 +61,7 @@ abstract class AbstractIconFactory {
    */
   public function __invoke(string $iconName, string $screenReaderText = null): IconTag {
     $icon = $this->createIcon($iconName, $this->getTagName());
-    $icon->setAriaLabel($screenReaderText);
+    $icon->setTitle($screenReaderText);
     return $icon;
   }
 
@@ -119,6 +120,7 @@ abstract class AbstractIconFactory {
    * @param  string $iconName
    * @param  string $tagname
    * @return IconTag
+   * @throws InvalidArgumentException if icon cannot be created
    */
   abstract protected function createIcon(string $iconName, string $tagname = 'i'): IconTag;
 

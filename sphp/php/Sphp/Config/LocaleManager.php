@@ -46,7 +46,6 @@ class LocaleManager {
    * <li> {@link \LC_MESSAGES} for system responses (available if PHP was compiled with libintl) </li>
    * </ul>
    * 
-   * @param  int $category a named constant specifying the category of the functions affected by the locale setting:
    * @param  string ... $locale the name of the locale
    * @return $this for a fluent interface
    * @throws Exception\ConfigurationException if locale setting failed

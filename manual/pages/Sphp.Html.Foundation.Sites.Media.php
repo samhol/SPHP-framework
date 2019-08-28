@@ -18,4 +18,3 @@ MD
 Manual\printPage('Sphp.Html.Foundation.Sites.Media.ResponsiveEmbed');
 Manual\printPage('Sphp.Html.Foundation.Sites.Media.Orbit');
 Manual\printPage('Sphp.Html.Foundation.Sites.Media.ProgressBar');
-Manual\printPage('Sphp.Html.Foundation.Sites.Media.Media');

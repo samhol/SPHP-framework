@@ -12,6 +12,7 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
+use SplFileInfo;
 
 /**
  * Implementation of FileTypeIconMapper
@@ -380,24 +381,32 @@ class FileTypeIconMapper {
   }
 
   public function getIconNameForExt(string $ext): ?string {
-    if (array_key_exists($ext, $this->extToTypesMap)) {
-      $type = $this->extToTypesMap[$ext];
-    } else {
-      $type = $ext;
+    if(\Sphp\Stdlib\Strings::match($ext, '/^(\s)?$/')) {
+      throw new \Exception();
     }
-
-    return $this->getIconNameFor($type);
+    if (array_key_exists($ext, $this->extToTypesMap)) {
+      $ext = $this->extToTypesMap[$ext];
+    }
+    if (array_key_exists($ext, $this->iconNameMap)) {
+      return $this->iconNameMap[$ext];
+    } else {
+      return 'far fa-file';
+    }
   }
 
-  public function getIconNameFor(string $fileType): ?string {
-    if (array_key_exists($fileType, $this->extToTypesMap)) {
-      $fileType = $this->extToTypesMap[$fileType];
+  public function getIconNameFor($fileOrExt): ?string {
+    $iconName = null;
+    if ($fileOrExt instanceof SplFileInfo) {
+      $iconName = $this->getIconNameForExt($fileOrExt->getExtension());
+    } else if (is_string($fileOrExt)) {
+      if (is_file($fileOrExt)) {
+        $fileOrExt = new SplFileInfo($fileOrExt);
+        $iconName = $this->getIconNameForExt($fileOrExt->getExtension());
+      } else {
+        $iconName = $this->getIconNameForExt($fileOrExt);
+      }
     }
-    if (array_key_exists($fileType, $this->iconNameMap)) {
-      return $this->iconNameMap[$fileType];
-    } else {
-      return null;
-    }
+    return $iconName;
   }
 
   public function isMapped(string $fileOrExt): bool {

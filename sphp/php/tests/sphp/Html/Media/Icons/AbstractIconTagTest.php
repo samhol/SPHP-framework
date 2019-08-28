@@ -57,13 +57,13 @@ class AbstractIconTagTest extends TestCase {
   public function testSetAriaLabel(AbstractIconTag $icon):AbstractIconTag {
     $this->assertFalse($icon->attributeExists('aria-hidden'));
     $this->assertFalse($icon->attributeExists('aria-label'));
-    $this->assertSame($icon, $icon->setAriaLabel('foo'));
+    $this->assertSame($icon, $icon->setTitle('foo'));
     $this->assertSame('foo', $icon->getAttribute('aria-label'));
     $this->assertSame($icon, $icon->setDecorative(true));
     $this->assertFalse($icon->attributeExists('aria-label'));
-    $this->assertSame($icon, $icon->setAriaLabel('foo-bar'));
+    $this->assertSame($icon, $icon->setTitle('foo-bar'));
     $this->assertSame('foo-bar', $icon->getAttribute('aria-label'));
-    $this->assertSame($icon, $icon->setAriaLabel(null));
+    $this->assertSame($icon, $icon->setTitle(null));
     $this->assertFalse($icon->attributeExists('aria-label'));
     return $icon;
   }

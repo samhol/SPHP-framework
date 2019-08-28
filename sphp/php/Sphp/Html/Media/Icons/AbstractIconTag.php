@@ -48,9 +48,10 @@ abstract class AbstractIconTag extends EmptyTag implements Icon {
     return $this;
   }
 
-  public function setAriaLabel(string $label = null) {
-    $this->attributes()->setAria('label', $label);
-    if ($label !== null) {
+  public function setTitle(string $title = null) {
+    $this->attributes()->setAria('label', $title);
+    $this->attributes()->setAttribute('title', $title);
+    if ($title !== null) {
       $this->attributes()->remove('aria-hidden');
     }
     return $this;

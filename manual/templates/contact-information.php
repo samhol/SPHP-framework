@@ -15,8 +15,8 @@ use Sphp\Html\Media\Icons\FontAwesome;
           </div>
           <div class="media-object-section main-section">
             <ul class="fa-ul">
-              <li><span class="fa-li"><?php FontAwesome::i('fas fa-phone')->setAriaLabel('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
-              <li><span class="fa-li"><?php FontAwesome::i('far fa-envelope')->setAriaLabel('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
+              <li><span class="fa-li"><?php FontAwesome::i('fas fa-phone')->setTitle('phonenumber')->printHtml() ?></span> +358 44 298 6738</li>
+              <li><span class="fa-li"><?php FontAwesome::i('far fa-envelope')->setTitle('Email address')->printHtml() ?></span> sami.holck@gmail.com</li>
               <li><span class="fa-li"><i class="fa fa-map-marker-alt"></i></span><a href="https://goo.gl/maps/YX5cY72aXgp">Rakuunatie 59 A3, Turku, Finland</a></li>
               <li><span class="fa-li"><i class="fab fa-whatsapp"></i></span><a href="https://api.whatsapp.com/send?phone=358442986738">whatsapp</a></li>
             </ul>

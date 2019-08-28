@@ -24,13 +24,21 @@ class FontAwesomeIcon extends IconTag {
   /**
    * Constructor
    * 
-   * @param string|string[] $iconName the icon name
-   * @param string $screenreaderLabel
+   * @param string $iconName the icon name
+   * @param string $title
    */
-  public function __construct($iconName, string $screenreaderLabel = null) {
+  public function __construct(string $iconName, string $title = null) {
     parent::__construct('i');
     $this->cssClasses()->protectValue($iconName);
-    $this->setAriaLabel($screenreaderLabel);
+    $this->setTitle($title);
+  }
+
+  public function setTitle(string $title = null) {
+    $this->attributes()->set('title', $title);
+    if ($title !== null) {
+      $this->attributes()->remove('aria-hidden');
+    }
+    return $this;
   }
 
   /**

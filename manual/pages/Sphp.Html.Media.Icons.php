@@ -2,6 +2,7 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Manual;
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 
@@ -16,58 +17,24 @@ $devIcons = \Sphp\Manual\api()->classLinker(DevIcons::class);
 
 $ns
 
-These icons are available as fonts and svg images. They support assistive reading technologies.
-
-##Devicons <small>$devIcons factory</small> 
-
-Devicon is a set of icons representing programming languages, designing and development tools.
-
+Icon libraries represented here support assistive reading technologies.
 
 MD
 );
 
-use Sphp\Html\Div;
 
-$devPopup = new Popup();
-$devPopup->layout()->setSize('large');
-$devPopup->addCssClass('icon-example-popup', 'devicons');
-$deviconsFontLoader = (new Div())->ajaxAppend('/manual/snippets/icons/devicons-font.php');
-$devPopup->getContent()->append($deviconsFontLoader);
-$devModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons icons', $devPopup);
+Manual\printPage('Sphp.Html.Media.Icons.Devicons');
 
 
-$devsvgPopup = new Popup();
-$devsvgPopup->layout()->setSize('large');
-$devsvgPopup->addCssClass('icon-example-popup', 'devicons');
-$deviconsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/devicons-svg.php');
-$devsvgPopup->getContent()->append($deviconsLoader);
-$devsvgModal = new Modal('<i class="devicon-devicon-plain fa-lg fa-fw"></i> DevIcons SVG', $devsvgPopup);
-
-$devIconButtons = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
-
-$devIconButtons->setSize('small')->setExtended();
-$devIconButtons->appendButton($devsvgModal->getTrigger()->addCssClass('devicons', 'shadow', 'radius'));
-$devIconButtons->appendButton($devModal->getTrigger()->addCssClass('devicons', 'shadow', 'radius'));
-$devIconButtons->printHtml();
-
-//$flagModal->getTrigger()->addCssClass('small', 'fontawesome', 'shadow', 'radius', 'button');
-//echo $flagModal;
-
-
-$devsvgModal->getPopup()->printHtml();
-$devModal->getPopup()->printHtml();
-
-$faIcon = \Sphp\Manual\api()->classLinker(FontAwesomeIcon::class);
+$faIcon = Manual\api()->classLinker(FontAwesomeIcon::class);
 $setSize = $faIcon->methodLink('setSize');
-\Sphp\Manual\md(<<<MD
+Manual\md(<<<MD
         
 ## Font Awesome icons
 
 Font Awesome icons are a build feature of the framework. they can be used by 
 creating a $icon or a $faIcon object.
-MD
-);
-\Sphp\Manual\md(<<<MD
+
 $faIcon Icon size can be changed simply by calling $setSize method with a Font 
 Awesome CSS class (or a short hand version of it by simply removing the `fa-` 
 from the begining of the size class)
@@ -80,29 +47,32 @@ from the begining of the size class)
 
 MD
 );
+
+use Sphp\Html\Div;
+
 $fa = new FontAwesome();
 $fa->fixedWidth(true)->setSize('lg');
+$faIconAlt = $fa('fab fa-font-awesome-alt');
 $farPopup = new Popup();
 $farPopup->layout()->setSize('large');
 $farPopup->addCssClass('icon-example-popup', 'fontawesome');
-
 $regularLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=regular');
 $farPopup->getContent()->append($regularLoader);
-$farModal = new Modal("{$fa('fab fa-font-awesome-alt')} Regular icons", $farPopup);
+$farModal = new Modal("$faIconAlt Regular icons", $farPopup);
 
 $fasPopup = new Popup();
 $fasPopup->layout()->setSize('large');
 $fasPopup->addCssClass('icon-example-popup', 'fontawesome');
 $solidLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=solid');
 $fasPopup->getContent()->append($solidLoader);
-$fasModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Solid icons', $fasPopup);
+$fasModal = new Modal("$faIconAlt Solid icons", $fasPopup);
 
 $fabPopup = new Popup();
 $fabPopup->layout()->setSize('large');
 $fabPopup->addCssClass('icon-example-popup', 'fontawesome');
 $brandsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/fontawesome.php?type=brands');
 $fabPopup->getContent()->append($brandsLoader);
-$fabModal = new Modal('<i class="fab fa-font-awesome-alt fa-lg fa-fw"></i> Brand icons', $fabPopup);
+$fabModal = new Modal("$faIconAlt Brand icons", $fabPopup);
 
 $faButtons = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
 
@@ -120,7 +90,7 @@ $fabPopup->printHtml();
 
 \Sphp\Manual\md(<<<MD
         
-## Other icons
+## Other icon factories
   
 Filetype icons and SVG country flags
 
@@ -130,7 +100,6 @@ MD
 \Sphp\Manual\example('Sphp/Html/Media/Icons/FiletypeIcons.php')
         ->buildAccordion()
         ->printHtml();
-
 
 $filePopup = new Popup();
 $filePopup->layout()->setSize('large');

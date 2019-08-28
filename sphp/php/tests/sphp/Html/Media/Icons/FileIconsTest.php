@@ -48,18 +48,50 @@ class FileIconsTest extends TestCase {
     return $factory;
   }
 
-  public function testInvocationFailure() {
+  public function corretFilesAndExtensions(): array {
+    $data = [];
+    $data[] = ['exe'];
+    $data[] = ['tar.gz'];
+    $data[] = ['tar.gz'];
+    $data[] = ['./sphp/php/tests/files/image.gif'];
+    $data[] = [new \SplFileObject('./sphp/php/tests/files/image.gif')];
+    $data[] = [new \SplFileInfo('./sphp/php/tests/files/image.gif')];
+    return $data;
+  }
+
+  /**
+   * @dataProvider corretFilesAndExtensions
+   * @param  mixed $fileOrExt
+   * @return FileIcons
+   */
+  public function testCorrectFilesAndExtensions($fileOrExt): FileIcons {
+    $factory = new FileIcons();
+    $iconFor = $factory->iconFor($fileOrExt);
+    //$this->assertTrue($iconFor->cssClasses()->contains($iconName));
+    $this->assertSame('i', $iconFor->getTagName());
+    $invoked = $factory($fileOrExt);
+    //$this->assertTrue($invoked->cssClasses()->contains($iconName));
+    $this->assertSame('i', $invoked->getTagName());
+
+
+    return $factory;
+  }
+
+  public function testInvocationFailure(): void {
     $factory = new FileIcons();
     $this->expectException(InvalidArgumentException::class);
-    $factory('foo');
+    $factory(new \stdClass);
   }
-  public function testMagicCallFailure() {
+
+  public function testMagicCallFailure(): void {
     $factory = new FileIcons();
     $this->expectException(BadMethodCallException::class);
-    $factory->foo();
+    $factory->{''}();
   }
-  public function testMagicStaticCallFailure() {
+
+  public function testMagicStaticCallFailure(): void {
     $this->expectException(BadMethodCallException::class);
-    FileIcons::foo();
+    FileIcons::{''}();
   }
+
 }

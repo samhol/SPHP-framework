@@ -90,7 +90,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   private function setAriaLabelForPage($page, $index) {
-    $page->setAriaLabel(sprintf($this->linkLabelPattern, $index));
+    $page->setTitle(sprintf($this->linkLabelPattern, $index));
     return $this;
   }
 

@@ -19,7 +19,7 @@ foreach ($data as $item) {
   // echo "\n$name";
   foreach ($item['versions']['font'] as $version) {
     $method = $name . ucfirst($version);
-    $icon = DevIcons::i("$name-$version")->setAriaLabel("devicon-$name-$version icon")->setAttribute('title', "devicon-$name-$version icon");
+    $icon = DevIcons::i("$name-$version")->setTitle("devicon-$name-$version icon")->setAttribute('title', "devicon-$name-$version icon");
     $content = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon', 'font', 'devicons');
     $content->append($iconContainer);
