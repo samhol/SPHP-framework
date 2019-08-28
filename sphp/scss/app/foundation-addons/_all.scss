@@ -7,7 +7,8 @@
  */
 
 @import "top-bar";
-@import "fixes";
+@import "fixes"; 
+@import "card-reveal";
 
 @mixin sphp-foundation-addons() { 
   @include sphp-responsive-bar;

@@ -59,6 +59,16 @@
         $(this).foundation();
         $this.removeSpinners({duration: 1000});
         $this.removeAttr("data-sphp-ajax-append");
+        
+        $(this).find('.open-button').click(function () {
+          console.log('.open-button clicked');
+          $(this).siblings('.card-reveal').toggleClass('open');
+        });
+
+// Close Card Reveal Click
+        $(this).find('.close-button').click(function () {
+          $(this).parent().parent('.card-reveal').toggleClass('open');
+        });
       });
       $content = $("<div>").load($url, function (response, status, xhr) {
         if (status === "error") {
@@ -68,6 +78,7 @@
                   + $url + "</var></u>'<br> <strong>"
                   + xhr.status + " " + xhr.statusText + "</strong>");
         }
+
         $this.append($content.html());
         $this.trigger("sphp-ajax-append-finished");
       });
