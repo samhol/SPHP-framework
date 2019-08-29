@@ -150,6 +150,27 @@ if (!window.console.log) {
     $('[data-sphp-back-to-top-button]').backToTopController();
     return this;
   };
+  ;
+  /**
+   * Initializes back to top button functionality
+   *    
+   * @returns {sphp} 
+   */
+  sphp.initSphp = function () {
+    console.log("sphp init card-reveal()");
+
+    $('.card.card-reveal-wrapper').find('.open-button').click(function () {
+      console.log('.open-button clicked');
+      $(this).siblings('.card-reveal').toggleClass('open');
+    });
+
+// Close Card Reveal Click
+    $('.card.card-reveal-wrapper').find('.close-button').click(function () {
+      $(this).parent().parent('.card-reveal').toggleClass('open');
+    });
+    return this;
+  };
+
 
   /**
    * Initializes all sphp functionality
@@ -188,7 +209,7 @@ if (!window.console.log) {
     $("input[data-anytime]").SphpAnyTimeInput();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
     //$("[data-reveal]").sphpPopup(); 
-    $('[data-slick]').slick();
+    $('[data-slick]').slick(); 
     $('[data-accordion]').on('down.zf.accordion', function () {
       var $accordion = $(this), $sliders;
       //console.log('Foundation Accordion opened!');
@@ -202,6 +223,7 @@ if (!window.console.log) {
     $("[data-src]").lazyLoadXT();
     sphp.initReCAPTCHAv3sForm();
     $("[data-sphp-tipso]").sphpTipso();
+    sphp.initSphp();
     // $("[data-sphp-php-info-tipso]").phpInfoTipso();
 
   };

@@ -15,8 +15,8 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a factory for Font Awesome icon objects
  *
- * @method \Sphp\Html\Media\Icons\IconTag i(string $iconName) creates a new icon object
- * @method \Sphp\Html\Media\Icons\IconTag span(string $iconName) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\Icon i(string $iconName) creates a new icon object
+ * @method \Sphp\Html\Media\Icons\Icon span(string $iconName) creates a new icon object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
