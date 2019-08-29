@@ -68,7 +68,12 @@ class CardReveal extends AbstractComponent {
 
   public function __destruct() {
     parent::__destruct();
-    unset($this->top, $this->cardSection, $this->cardReveal, $this->revealTitleContent, $this->openButton, $this->closeButton);
+    unset($this->top, 
+            $this->cardSection, 
+            $this->cardReveal, 
+            $this->revealTitleContent, 
+            $this->openButton, 
+            $this->closeButton);
   }
 
   public function getTop(): PlainContainer {
@@ -90,12 +95,16 @@ class CardReveal extends AbstractComponent {
   public function setCloseIcon(Icon $icon) {
     $this->closeButton = $icon;
     $icon->addCssClass('close-button');
+    $icon->pull('right');
+    $icon->setSize('2x');
     return $this;
   }
 
   public function setOpenIcon(Icon $icon) {
     $this->openButton = $icon;
     $icon->addCssClass('open-button');
+    $icon->pull('right');
+    $icon->setSize('2x');
     return $this;
   }
 
