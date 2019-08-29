@@ -72,6 +72,21 @@ class FontAwesomeIcon extends IconTag {
   }
 
   /**
+   * Sets/unsets the borders around the icon
+   * 
+   * @param bool $borders
+   * @return $this for a fluent interface
+   */
+  public function useBorders(bool $borders = true) {
+    if ($borders) {
+      $this->cssClasses()->add('fa-border');
+    } else {
+      $this->cssClasses()->remove('fa-border');
+    }
+    return $this;
+  }
+
+  /**
    * Sets the size of the icon
    * 
    * @param  string|null $size the size of the icon

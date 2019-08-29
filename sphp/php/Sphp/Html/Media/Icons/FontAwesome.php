@@ -103,4 +103,14 @@ class FontAwesome extends IconFactory {
     return $this;
   }
 
+  /**
+   * Sets the size of the icon
+   * 
+   * @param  string|null $borders the size of the icon
+   * @return $this for a fluent interface
+   */
+  public function useBorsers(bool $borders = true) {
+    $this->functions['useBorders'] = $borders;
+    return $this;
+  }
 }
