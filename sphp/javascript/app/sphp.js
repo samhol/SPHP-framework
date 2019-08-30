@@ -157,15 +157,14 @@ if (!window.console.log) {
    * @returns {sphp} 
    */
   sphp.initSphp = function () {
-    console.log("sphp init card-reveal()");
+    console.log("sphp initSphp()");
 
-    $('.card.card-reveal-wrapper').find('.open-button').click(function () {
-      console.log('.open-button clicked');
+    $('.card.card-reveal-wrapper').find('.card-open-button').click(function () {
+      console.log('.card-open-button clicked');
       $(this).siblings('.card-reveal').toggleClass('open');
     });
 
-// Close Card Reveal Click
-    $('.card.card-reveal-wrapper').find('.close-button').click(function () {
+    $('.card.card-reveal-wrapper').find('.card-close-button').click(function () {
       $(this).parent().parent('.card-reveal').toggleClass('open');
     });
     return this;
@@ -209,7 +208,7 @@ if (!window.console.log) {
     $("input[data-anytime]").SphpAnyTimeInput();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
     //$("[data-reveal]").sphpPopup(); 
-    $('[data-slick]').slick(); 
+    $('[data-slick]').slick();
     $('[data-accordion]').on('down.zf.accordion', function () {
       var $accordion = $(this), $sliders;
       //console.log('Foundation Accordion opened!');

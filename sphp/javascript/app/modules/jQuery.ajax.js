@@ -60,13 +60,13 @@
         $this.removeSpinners({duration: 1000});
         $this.removeAttr("data-sphp-ajax-append");
         
-        $(this).find('.open-button').click(function () {
-          console.log('.open-button clicked');
+        $(this).find('.card-open-button').click(function () {
+          console.log('.card-open-button clicked');
           $(this).siblings('.card-reveal').toggleClass('open');
         });
 
 // Close Card Reveal Click
-        $(this).find('.close-button').click(function () {
+        $(this).find('.card-close-button').click(function () {
           $(this).parent().parent('.card-reveal').toggleClass('open');
         });
       });

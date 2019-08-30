@@ -56,7 +56,7 @@ class IdAttribute extends PatternAttribute {
     if (!$this->isProtected()) {
       $storage = IdStorage::get($this->getName());
       $value = $storage->generateRandom($length);
-      $this->protectValue($value);
+      $this->setValue($value);
     }
     return $this->getValue();
   }

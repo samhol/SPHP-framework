@@ -10,13 +10,15 @@ $card-reveal-transition-speed: 0.6s;
 
 .card-reveal-wrapper {
   position: relative;
-  .open-button,
-  .close-button {
-    &.fa-border {
-      border: 1px solid rgba(#444, 0.4);
+  .card-open-button,
+  .card-close-button {
+    .fa-border {
+      border: 1px solid rgba(#444, 0.7);
     }
     cursor: pointer;
-    //float: right;
+    position: absolute;
+    top: 2px;
+    right: 2px;
     //font-size: rem-calc(14);
     //padding-left: 0.5rem;
     //text-align: right;
@@ -24,7 +26,8 @@ $card-reveal-transition-speed: 0.6s;
   }
 
   .card-reveal {
-    background: $white;
+    border-top: 1px solid rgba(#444, 0.7);
+    background: rgba(#fff, .9);
     bottom: 0;
     display: block;
     left: 0;
@@ -39,5 +42,6 @@ $card-reveal-transition-speed: 0.6s;
   .card-reveal.open {
     top: 0;
     z-index: 1;
+    background: #fff;
   }
 }

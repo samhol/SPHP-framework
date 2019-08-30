@@ -23,7 +23,7 @@ use Sphp\Stdlib\Strings;
 class DevIcons extends IconFactory {
 
   public function createIcon(string $name, string $tagName = 'i'): IconTag {
-    if (!Strings::startsWith($name, 'devicon')) {
+    if (!Strings::startsWith($name, 'devicon') || !Strings::startsWith($name, 'devicon-plain')) {
       $name = "devicon-$name";
     }
     return parent::createIcon($name, $tagName);

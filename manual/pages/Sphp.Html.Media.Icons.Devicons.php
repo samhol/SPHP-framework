@@ -25,6 +25,7 @@ MD
 use Sphp\Html\Div;
 
 $devPopup = new Popup();
+$devPopup->setOption('multiple-opened', true);
 $devPopup->layout()->setSize('large');
 $devPopup->addCssClass('icon-example-popup', 'devicons');
 $deviconsFontLoader = (new Div())->ajaxAppend('/manual/snippets/icons/devicons-font.php');
@@ -33,6 +34,7 @@ $devModal = new Modal('<strong>DevIcons</strong> font icons', $devPopup);
 
 
 $devsvgPopup = new Popup();
+$devsvgPopup->setOption('multiple-opened', true);
 $devsvgPopup->layout()->setSize('large');
 $devsvgPopup->addCssClass('icon-example-popup', 'devicons');
 $deviconsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/devicons-svg.php');
@@ -48,3 +50,8 @@ $devIconButtons->printHtml();
 $devsvgModal->getPopup()->printHtml();
 $devModal->getPopup()->printHtml();
 
+
+$devFontinfopopup = new \Sphp\Html\Foundation\Sites\Containers\Popup('foo is loading');
+$devFontinfopopup->attributes()->setAttribute('id', 'dev-icons-font-version-info');
+$devFontinfopopup->setOption('multiple-opened', true);
+echo $devFontinfopopup;

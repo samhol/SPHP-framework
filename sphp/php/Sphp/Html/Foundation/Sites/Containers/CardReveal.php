@@ -68,15 +68,15 @@ class CardReveal extends AbstractComponent {
 
   public function __destruct() {
     parent::__destruct();
-    unset($this->top, 
-            $this->cardSection, 
-            $this->cardReveal, 
-            $this->revealTitleContent, 
-            $this->openButton, 
+    unset($this->top,
+            $this->cardSection,
+            $this->cardReveal,
+            $this->revealTitleContent,
+            $this->openButton,
             $this->closeButton);
   }
 
-  public function getTop(): PlainContainer {
+  public function getFront(): PlainContainer {
     return $this->top;
   }
 
@@ -94,25 +94,25 @@ class CardReveal extends AbstractComponent {
 
   public function setCloseIcon(Icon $icon) {
     $this->closeButton = $icon;
-    $icon->addCssClass('close-button');
-    $icon->pull('right');
+   // $icon->pull('right');
     $icon->setSize('2x');
+    $icon->useBorders(true);
     return $this;
   }
 
   public function setOpenIcon(Icon $icon) {
     $this->openButton = $icon;
-    $icon->addCssClass('open-button');
-    $icon->pull('right');
+    //$icon->pull('right');
     $icon->setSize('2x');
+    $icon->useBorders(true);
     return $this;
   }
 
   public function contentToString(): string {
-    $output = $this->top . '<div class="card-section">' . $this->openButton;
+    $output = $this->top . '<div class="card-section"><div class="card-open-button">' . $this->openButton . '</div>';
     $output .= $this->cardSection . '<div class="card-reveal"><div class="card-reveal-title"><div class="title-text">';
     $output .= $this->revealTitleContent . '</div>';
-    $output .= $this->closeButton . '</div>';
+    $output .= '<div class="card-close-button">'.$this->closeButton . '</div></div>';
     $output .= $this->cardReveal . '</div></div>';
     return $output;
   }

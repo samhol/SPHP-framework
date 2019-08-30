@@ -75,7 +75,7 @@ use Sphp\Html\Apps\HyperlinkGenerators\FoundationDocsLinker;
 /**
  * Return the default SPHP framework API linker
  * 
- * @return BasicPhpApiLinker 
+ * @return \Sphp\Html\Apps\HyperlinkGenerators\BasicPhpApiLinker 
  */
 function api(): BasicPhpApiLinker {
   $instance = Factory::sami('http://playground.samiholck.com/API/sami/');
