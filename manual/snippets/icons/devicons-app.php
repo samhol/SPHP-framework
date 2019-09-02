@@ -33,7 +33,7 @@ $devsvgModal->getPopup()->printHtml();
 $deviconFontPopup->printHtml();
 
 
-$devFontinfopopup = new \Sphp\Html\Foundation\Sites\Containers\Popup('<div id="icon-info">foo is loading');
+$devFontinfopopup = new \Sphp\Html\Foundation\Sites\Containers\Popup('<div id="icon-info">foo is loading</div>');
 $devFontinfopopup->attributes()->setAttribute('id', 'dev-icons-font-version-info');
 $devFontinfopopup->setOption('multiple-opened', true);
 echo $devFontinfopopup;
