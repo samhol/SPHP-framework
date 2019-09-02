@@ -32,7 +32,7 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Constructor
    *
-   * @param array $items optional initial values stored
+   * @param iterable $items optional initial values stored
    */
   public function __construct(iterable $items = null) {
     $this->items = [];
