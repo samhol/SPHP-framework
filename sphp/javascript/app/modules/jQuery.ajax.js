@@ -60,15 +60,7 @@
         $this.removeSpinners({duration: 1000});
         $this.removeAttr("data-sphp-ajax-append");
         
-        $(this).find('.card-open-button').click(function () {
-          console.log('.card-open-button clicked');
-          $(this).siblings('.card-reveal').toggleClass('open');
-        });
-
-// Close Card Reveal Click
-        $(this).find('.card-close-button').click(function () {
-          $(this).parent().parent('.card-reveal').toggleClass('open');
-        });
+        sphp.initIconLoaders();
       });
       $content = $("<div>").load($url, function (response, status, xhr) {
         if (status === "error") {

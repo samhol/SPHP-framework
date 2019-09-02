@@ -4,7 +4,7 @@ namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\Foundation\Sites\Containers\Modal;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
-
+include './manual/snippets/icons/devicons-app.php';
 $ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $icon = \Sphp\Manual\api()->classLinker(IconTag::class);

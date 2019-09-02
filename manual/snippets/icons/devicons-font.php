@@ -30,7 +30,7 @@ foreach ($data as $item) {
     $card->getRevealTitle()->append($method1);
     $link = Tags::span($icon)->addCssClass('text-center icon');
     $link->setAttribute('data-open', 'dev-icons-font-version-info');
-    $link->setAttribute('data-url', "/manual/snippets/icons/devicons/info.php?devicon-$name-$version");
+    $link->setAttribute('data-url', "/manual/snippets/icons/devicons/info.php?name=$name&version=$version&type=font");
     $card->getFront()->append($link);
     $content = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon', 'font', 'devicons');

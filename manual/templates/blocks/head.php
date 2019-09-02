@@ -44,6 +44,7 @@ if ($redirect === '/Sphp.Html.Media.Multimedia') {
 $body->addCssClass('manual');
 $body->scripts()->appendSrc('/manual/js/formTools.js');
 $body->scripts()->appendSrc('/manual/js/techs.js');
+$body->scripts()->appendSrc('/manual/js/icon-popup.js');
 $body->scripts()->appendSrc('/sphp/javascript/dist/ss360.min.js');
 //$html->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.mjs');
 $body->scripts()->appendSrc('https://cdn.sitesearch360.com/sitesearch360-v12.min.js');
