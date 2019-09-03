@@ -67,6 +67,7 @@ class StringManipulationTest extends TestCase {
         ['foo', '', true],
         ['foo', 'oo', false],
         ['foo', 'F', false],
+        ['devicon-devicon-plain', 'devicon-plain', false],
         ["\n", "\n", true],
         ["\t", "\t", true],
         ["0", "0", true],

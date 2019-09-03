@@ -20,7 +20,7 @@ use Sphp\Stdlib\Datastructures\Collection;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IconsData {
+class IconsData implements \IteratorAggregate {
 
   /**
    * @var IconsData[]
@@ -34,20 +34,25 @@ class IconsData {
   public function parseRaw(array $raw): array {
     $data = [];
     foreach ($raw as $iconData) {
-      $data[] = new IconsData($iconData);
+      $data[$iconData['name']] = new IconData($iconData);
     }
     return $data;
   }
 
-  public function filterByIconName(string $name) {
-    $nameFilter = function(IconData $value)use ($name) {
-      return $value->getName() === $name;
-    };
-    return new Static(array_filter($this->data, $nameFilter));
+  public function getIcon(string $name): ?IconData {
+    if (array_key_exists($name, $this->data)) {
+      return $this->data[$name];
+    } else {
+      return null;
+    }
   }
 
   public function toArray(): array {
     return $this->data;
+  }
+
+  public function getIterator(): \Traversable {
+    return new \ArrayIterator($this->data);
   }
 
 }

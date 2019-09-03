@@ -83,6 +83,19 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
   }
 
   /**
+   * Creates and appends a description to the list
+   *
+   * @param  iterable $content the description content
+   * @return Dt appended instance
+   */
+  public function appendDescriptions(iterable $content) {
+    foreach ($content as $dd) {
+      $this->appendDescription($dd);
+    }
+    return $this;
+  }
+
+  /**
    * Prepends an item to the object
    * 
    * @param  DlContent $it list element
@@ -94,9 +107,10 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
   }
 
   /**
+   * Checks whether an item exists in the list
    * 
    * @param  DlContent $item
-   * @return bool
+   * @return bool true if exists and false otherwise
    */
   public function contains(DlContent $item): bool {
     return in_array($item, $this->items, true);

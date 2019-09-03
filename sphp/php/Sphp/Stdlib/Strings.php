@@ -171,7 +171,7 @@ abstract class Strings {
    * @return boolean true if needle was found from the haystack string, false otherwise
    */
   public static function contains(string $haystack, string $needle, string $encoding = null): bool {
-    return (mb_stripos($haystack, $needle, 0, self::getEncoding($encoding)) !== false);
+    return (\mb_stripos($haystack, $needle, 0, self::getEncoding($encoding)) !== false);
   }
 
   /**
@@ -249,8 +249,8 @@ abstract class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return boolean true if the haystack starts with any of the given needles
    */
-  public static function startsWith(string $haystack, string $needle, $encoding = null): bool {
-    return $needle === '' || mb_strrpos($haystack, $needle, 0, self::getEncoding($encoding)) === 0;
+  public static function startsWith(string $haystack, string $needle, string $encoding = null): bool {
+    return $needle === '' || \mb_strrpos($haystack, $needle, 0, self::getEncoding($encoding)) === 0;
   }
 
   /**
@@ -262,7 +262,7 @@ abstract class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return boolean true if the haystack ends with any of the given needles
    */
-  public static function endsWith(string $haystack, $needle, $encoding = null): bool {
+  public static function endsWith(string $haystack, $needle, string $encoding = null): bool {
     if ($needle === '') {
       return true;
     } else {

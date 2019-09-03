@@ -29,6 +29,22 @@ class IconData {
     $this->data = $raw;
   }
 
+  public function getName() {
+    return $this->data['name'];
+  }
+
+  public function getVersionsFor(string $type): ?array {
+    if (array_key_exists($type, $this->data['versions'])) {
+      $result = [];
+      foreach ($this->data['versions'][$type] as $version) {
+        $result [] = "devicon-{$this->getName()}-$version";
+      }
+      return $result;
+    } else {
+      return null;
+    }
+  }
+
   public function toArray(): array {
     return $this->data;
   }
