@@ -119,7 +119,7 @@ class Cookie implements Header {
   public function __toString(): string {
     $forceShowExpiry = false;
     $value = (string) $this->getValue();
-    if ($value === '') {
+    if ($this->isDeleted()) {
       $value = 'deleted';
       $expiryTime = 1;
       $maxAge = 0;
