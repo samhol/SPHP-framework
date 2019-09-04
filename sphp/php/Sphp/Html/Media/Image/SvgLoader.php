@@ -35,10 +35,16 @@ class SvgLoader {
    */
   private $src = [];
 
+  /**
+   * Constructor
+   */
   public function __construct() {
     $this->src;
   }
 
+  /**
+   * Destructor
+   */
   public function __destruct() {
     unset($this->src);
   }

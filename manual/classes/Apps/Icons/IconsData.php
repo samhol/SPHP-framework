@@ -10,7 +10,9 @@
 
 namespace Sphp\Manual\Apps\Icons;
 
-use Sphp\Stdlib\Datastructures\Collection;
+use IteratorAggregate;
+use Traversable;
+use ArrayIterator;
 
 /**
  * Implementation of IconsData
@@ -20,26 +22,35 @@ use Sphp\Stdlib\Datastructures\Collection;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IconsData implements \IteratorAggregate {
+class IconsData implements IteratorAggregate {
 
   /**
-   * @var IconsData[]
+   * @var IconInformation[]
    */
   private $data;
 
+  /**
+   * Constructor
+   * 
+   * @param array $raw raw icon data
+   */
   public function __construct(array $raw) {
-    $this->data = $this->parseRaw($raw);
+    $this->data = $raw;
   }
 
-  public function parseRaw(array $raw): array {
-    $data = [];
-    foreach ($raw as $iconData) {
-      $data[$iconData['name']] = new IconData($iconData);
-    }
-    return $data;
+  /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->data);
   }
 
-  public function getIcon(string $name): ?IconData {
+  /**
+   * 
+   * @param  string $name
+   * @return IconInformation|null
+   */
+  public function getIcon(string $name): ?IconInformation {
     if (array_key_exists($name, $this->data)) {
       return $this->data[$name];
     } else {
@@ -47,12 +58,20 @@ class IconsData implements \IteratorAggregate {
     }
   }
 
+  /**
+   * 
+   * @return IconInformation[]
+   */
   public function toArray(): array {
     return $this->data;
   }
 
-  public function getIterator(): \Traversable {
-    return new \ArrayIterator($this->data);
+  /**
+   * 
+   * @return Traversable new instance of iterator containing the icon data
+   */
+  public function getIterator(): Traversable {
+    return new ArrayIterator($this->data);
   }
 
 }

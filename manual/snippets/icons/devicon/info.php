@@ -8,12 +8,12 @@ $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
 $version = filter_input(INPUT_GET, 'version', FILTER_SANITIZE_STRING);
 
 use Sphp\Stdlib\Parsers\ParseFactory;
-use Sphp\Manual\Apps\Icons\IconsData;
 use Sphp\Html\Lists\Dl;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Html\Media\Icons\DevIcons;
-$raw = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/DevIcons.json');
-$iconsData = new IconsData($raw);
+use Sphp\Manual\Apps\Icons\DataFactory;
+
+$iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 $iconData = $iconsData->getIcon($name);
 $classLinker = $method = Factory::sami()->classLinker(DevIcons::class);
 echo '<h3>Devicon information</h3>';
@@ -27,5 +27,5 @@ $dl->appendDescriptions($iconData->getVersionsFor('font'));
 echo $dl;
 //print_r($iconData->getVersionsFor('font'));
 //echo '</pre>';
-$link = $classLinker->getLink(DevIcons::class."::i('".$iconData->getName()."-plain')");
+$link = $classLinker->getLink(DevIcons::class . "::i('" . $iconData->getName() . "-plain')");
 echo "Font icon example: $link";

@@ -11,26 +11,36 @@
 namespace Sphp\Manual\Apps\Icons;
 
 /**
- * Implementation of IconData
+ * Implementation of FaIconInformation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IconData {
+class FaIconInformation implements IconInformation {
+
+  /**
+   * @var string
+   */
+  private $name;
 
   /**
    * @var array
    */
   private $data;
 
-  public function __construct(array $raw) {
+  public function __construct(string $name, array $raw) {
+    $this->name = $name;
     $this->data = $raw;
   }
 
-  public function getName() {
-    return $this->data['name'];
+  public function getName(): string {
+    return $this->name;
+  }
+
+  public function getSearchTerms(): array {
+    return $this->data['search']['terms'];
   }
 
   public function getVersionsFor(string $type): ?array {

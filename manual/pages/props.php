@@ -1,19 +1,35 @@
-<p><button class="button" data-open="exampleModal2">Click me for a modal</button></p>
+<?php
 
-<!-- This is the first modal -->
-<div class="reveal" data-multiple-opened="true" id="exampleModal2" data-reveal>
-  <h1>Awesome!</h1>
-  <p class="lead">I have another modal inside of me!</p>
-  <button class="button" data-open="exampleModal3">Click me for another modal!</button>
-  <button class="close-button" data-close aria-label="Close reveal" type="button">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+//require_once('/home/int48291/public_html/playground/manual/settings.php');
+$name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
+$type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
+$version = filter_input(INPUT_GET, 'version', FILTER_SANITIZE_STRING);
 
-<!-- This is the nested modal -->
-<div class="reveal" data-multiple-opened="true"  id="exampleModal3" data-reveal>
-  <h2>ANOTHER MODAL!!!</h2>
-  <button class="close-button" data-close aria-label="Close reveal" type="button">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+use Sphp\Stdlib\Parsers\ParseFactory;
+use Sphp\Manual\Apps\Icons\IconsData;
+use Sphp\Html\Lists\Dl;
+use Sphp\Html\Apps\HyperlinkGenerators\Factory;
+use Sphp\Html\Media\Icons\DevIcons;
+use Sphp\Manual\Apps\Icons\DataFactory;
+$devicons = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/DevIcons.json');
+$fa = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/font-awesome.yml');
+
+$faData = DataFactory::fontawesome($fa);
+$iconsData = DataFactory::devicons($devicons);
+$iconData = $iconsData->getIcon('devicon');
+$classLinker = $method = Factory::sami()->classLinker(DevIcons::class);
+echo '<h3>Devicon information</h3>';
+echo '<pre>';
+print_r($faData);
+$dl = new Dl();
+$dl->appendTerm('<strong>SVG</strong> versions:');
+$dl->appendDescriptions($iconData->getVersionsFor('svg'));
+$dl->appendTerm('<strong>FONT</strong> versions:');
+$dl->appendDescriptions($iconData->getVersionsFor('font'));
+echo $dl;
+//print_r($iconData->getVersionsFor('font'));
+echo '</pre>';
+$link = $classLinker->getLink(DevIcons::class . "::i('" . $iconData->getName() . "-plain')");
+echo "Font icon example: $link";
