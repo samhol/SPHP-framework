@@ -22,11 +22,21 @@ use Sphp\Stdlib\Parsers\ParseFactory;
  */
 class DataFactory {
 
+  /**
+   * 
+   * @param  string $path
+   * @return IconsData
+   */
   public static function deviconsFromJson(string $path): IconsData {
     $raw = ParseFactory::fromFile($path);
     return static::devicons($raw);
   }
 
+  /**
+   * 
+   * @param  array $raw
+   * @return IconsData
+   */
   public static function devicons(array $raw): IconsData {
     $data = [];
     foreach ($raw as $iconData) {
@@ -35,6 +45,20 @@ class DataFactory {
     return new IconsData($data);
   }
 
+  /**
+   * 
+   * @param  string $path
+   * @return IconsData
+   */
+  public static function fontawesomeFromYaml(string $path): IconsData {
+    return static::fontawesome(ParseFactory::yaml()->fileToArray($path));
+  }
+
+  /**
+   * 
+   * @param  array $raw
+   * @return IconsData
+   */
   public static function fontawesome(array $raw): IconsData {
     $data = [];
     foreach ($raw as $name => $iconData) {

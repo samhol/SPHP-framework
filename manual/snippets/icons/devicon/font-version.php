@@ -2,13 +2,10 @@
 
 require_once('/home/int48291/public_html/playground/manual/settings.php');
 
-use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Media\Icons\DevIcons;
 use Sphp\Html\Tags;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
-use Sphp\Html\Foundation\Sites\Containers\CardReveal;
 use Sphp\Manual;
-use Sphp\Manual\Apps\Icons\IconsData;
 use Sphp\Manual\Apps\Icons\DataFactory;
 
 $section = Tags::section();
@@ -17,8 +14,7 @@ $section->appendH2('Devicons <small>FONT versions</small>')->addCssClass('devico
 $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
 $classLinker = $method1 = Manual\api()->classLinker(DevIcons::class);
 
-$devicons = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
-$iconsData = DataFactory::devicons($devicons);
+$iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 foreach ($iconsData as $name => $item) {
   $name = $item->getName();
   $fontVersions = $item->getVersionsFor('font');

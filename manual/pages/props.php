@@ -1,35 +1,27 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-//require_once('/home/int48291/public_html/playground/manual/settings.php');
-$name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
-$type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
-$version = filter_input(INPUT_GET, 'version', FILTER_SANITIZE_STRING);
-
-use Sphp\Stdlib\Parsers\ParseFactory;
-use Sphp\Manual\Apps\Icons\IconsData;
-use Sphp\Html\Lists\Dl;
-use Sphp\Html\Apps\HyperlinkGenerators\Factory;
-use Sphp\Html\Media\Icons\DevIcons;
 use Sphp\Manual\Apps\Icons\DataFactory;
-$devicons = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/DevIcons.json');
-$fa = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/font-awesome.yml');
+use Sphp\Manual\Apps\Icons\IconInformation;
+use Sphp\Manual\Apps\Icons\FaIconInformation;
 
-$faData = DataFactory::fontawesome($fa);
-$iconsData = DataFactory::devicons($devicons);
-$iconData = $iconsData->getIcon('devicon');
-$classLinker = $method = Factory::sami()->classLinker(DevIcons::class);
-echo '<h3>Devicon information</h3>';
 echo '<pre>';
-print_r($faData);
-$dl = new Dl();
-$dl->appendTerm('<strong>SVG</strong> versions:');
-$dl->appendDescriptions($iconData->getVersionsFor('svg'));
-$dl->appendTerm('<strong>FONT</strong> versions:');
-$dl->appendDescriptions($iconData->getVersionsFor('font'));
-echo $dl;
-//print_r($iconData->getVersionsFor('font'));
+$iconsData = DataFactory::fontawesomeFromYaml('/home/int48291/public_html/playground/manual/snippets/icons/fontawesome/icons.yml');
+$controller = new \Sphp\Manual\Apps\Icons\FaGroupController($iconsData);
+$types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
+$typeMap = ['solid' => 'fas', 'regular' => 'far', 'brands' => 'fab'];
+$type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => 'regular']);
+if ($type === null) {
+  $type = 'regular';
+}
+$iconsData = $iconsData->filter(function(IconInformation $iconData) use ($type) {
+  if ($iconData instanceof FaIconInformation) {
+    return in_array($type, $iconData->getStyles());
+  }
+  return false;
+});
+var_dump($iconsData);
+$show = $typeMap[$type];
+
+$cells = new Sphp\Manual\Apps\Icons\Views\FaIconsView($iconsData);
 echo '</pre>';
-$link = $classLinker->getLink(DevIcons::class . "::i('" . $iconData->getName() . "-plain')");
-echo "Font icon example: $link";
+echo $cells->getHtmlFor($controller->getData($type));

@@ -42,17 +42,21 @@ class FaIconInformation implements IconInformation {
   public function getSearchTerms(): array {
     return $this->data['search']['terms'];
   }
+  public function getStyles(): array {
+    return $this->data['styles'];
+  }
+  public function getUnicode(): string {
+    return $this->data['unicode'];
+  }
 
-  public function getVersionsFor(string $type): ?array {
+  public function getVersionsFor(string $type): array {
+    $result = [];
     if (array_key_exists($type, $this->data['versions'])) {
-      $result = [];
       foreach ($this->data['versions'][$type] as $version) {
         $result [] = "devicon-{$this->getName()}-$version";
       }
-      return $result;
-    } else {
-      return null;
     }
+    return $result;
   }
 
   public function toArray(): array {
