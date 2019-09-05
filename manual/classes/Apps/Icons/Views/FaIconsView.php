@@ -40,11 +40,10 @@ class FaIconsView {
     $headingNote = ucfirst($show);
 
     $section = Tags::section();
-    $section->addCssClass('container', 'fontawesome');
-    $section->appendH2("Font Awesome <small>$headingNote icons</small>")->addCssClass('fontawesome');
+    $section->addCssClass('example icons', 'fontawesome');
+    $section->appendH2("Font Awesome <small>$headingNote icons</small>");
 
     $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
-    $grid->addCssClass('sphp-icon-examples fontawesome');
     $fa = new FontAwesome();
     $fa->fixedWidth(true);
     foreach ($this->data as $name => $data) {
@@ -52,7 +51,7 @@ class FaIconsView {
         throw new \Exception;
       }
       $content = Tags::div()->addCssClass('icon-container');
-      $iconContainer = Tags::div()->addCssClass('icon', 'font', 'fontawesome');
+      $iconContainer = Tags::div()->addCssClass('icon', 'font');
       $content->append($iconContainer);
       $ext = Tags::div()->addCssClass('ext');
       $content->append($ext);

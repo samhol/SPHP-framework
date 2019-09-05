@@ -1,0 +1,76 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+$fontawesome-color: #4dabf7;
+$devicons-color: #60be86;
+
+section.icons.example {
+  &.devicons {
+    background-color: rgba(#60be86, .08);
+  }
+  &.coutry-flags {
+    background-color: rgba(#60be86, .08);
+  } 
+  .grid-x {
+    margin: rem-calc(5);
+  }
+  .icon-container {
+    border: solid 1px #777;
+    @include border-radius(3px);
+    @include shadow();
+    margin: rem-calc(3);
+    padding: rem-calc(0);
+    overflow: hidden;
+    .icon, .ext {
+      flex: 1;
+      text-align: center;
+    }
+    .icon {
+      @include transition(all, 0.3s, ease-in-out);
+      padding: rem-calc(2);
+      background-color: #fff;
+      &.font {
+        font-size: rem-calc(60);
+        i {
+          margin: rem-calc(3);
+        }
+      }
+      &.svg {
+        &.national-flag {
+          background-color: #eee;
+          svg {
+            border-top: 1px solid rgba(#555, .7);
+            border-bottom: 1px solid rgba(#555, .5);
+          }
+        }
+      }
+      &:hover {
+        &.fontawesome {
+          background-color: $fontawesome-color;
+          color: #fff;
+        } 
+        &.devicons {
+          background-color: $devicons-color;
+          color: #fff;
+        }
+      }
+    }
+    .ext {
+      @include text-truncate();
+      border-top: rgba(#777, .6) solid 2px;
+      font-family: $font-family-monospace;
+      padding: rem-calc(3);
+      background-color: #eee;
+      font-size: rem-calc(12);
+      &.devicons {
+        background-color: rgba($devicons-color, .2);
+      }
+    }
+  }
+
+}
