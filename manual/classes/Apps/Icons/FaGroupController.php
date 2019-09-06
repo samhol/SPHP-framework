@@ -21,17 +21,17 @@ namespace Sphp\Manual\Apps\Icons;
 class FaGroupController {
 
   /**
-   * @var IconsData
+   * @var IconSetData
    */
   private $data;
 
-  public function __construct(IconsData $data) {
+  public function __construct(IconSetData $data) {
     $this->data = $data;
     $this->view = new Views\FaIconsView($data);
   }
 
   
-  public function getData(string $type): IconsData {
+  public function getData(string $type): IconSetData {
     return $this->data->filter(function(IconInformation $iconData) use ($type) {
               if ($iconData instanceof \Sphp\Manual\Apps\Icons\FaIconInformation) {
                 return in_array($type, $iconData->getStyles());

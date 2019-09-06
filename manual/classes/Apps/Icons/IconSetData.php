@@ -23,7 +23,7 @@ use Sphp\Stdlib\Datastructures\Collection;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IconsData implements IteratorAggregate {
+class IconSetData implements IteratorAggregate {
 
   /**
    * @var Collection

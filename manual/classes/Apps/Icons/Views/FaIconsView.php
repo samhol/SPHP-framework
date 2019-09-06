@@ -12,7 +12,7 @@ namespace Sphp\Manual\Apps\Icons\Views;
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
-use Sphp\Manual\Apps\Icons\IconsData;
+use Sphp\Manual\Apps\Icons\IconSetData;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Manual\Apps\Icons\FaIconInformation;
 
@@ -32,7 +32,7 @@ class FaIconsView {
     $this->data = $data;
   }
 
-  public function getHtmlFor(IconsData $data): string {
+  public function getHtmlFor(IconSetData $data): string {
     $types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
     $type = 'far';
     $show = $types[$type];

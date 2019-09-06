@@ -25,9 +25,9 @@ class DataFactory {
   /**
    * 
    * @param  string $path
-   * @return IconsData
+   * @return IconSetData
    */
-  public static function deviconsFromJson(string $path): IconsData {
+  public static function deviconsFromJson(string $path): IconSetData {
     $raw = ParseFactory::fromFile($path);
     return static::devicons($raw);
   }
@@ -35,36 +35,36 @@ class DataFactory {
   /**
    * 
    * @param  array $raw
-   * @return IconsData
+   * @return IconSetData
    */
-  public static function devicons(array $raw): IconsData {
+  public static function devicons(array $raw): IconSetData {
     $data = [];
     foreach ($raw as $iconData) {
       $data[$iconData['name']] = new DevIconData($iconData);
     }
-    return new IconsData($data);
+    return new IconSetData($data);
   }
 
   /**
    * 
    * @param  string $path
-   * @return IconsData
+   * @return IconSetData
    */
-  public static function fontawesomeFromYaml(string $path): IconsData {
+  public static function fontawesomeFromYaml(string $path): IconSetData {
     return static::fontawesome(ParseFactory::yaml()->fileToArray($path));
   }
 
   /**
    * 
    * @param  array $raw
-   * @return IconsData
+   * @return IconSetData
    */
-  public static function fontawesome(array $raw): IconsData {
+  public static function fontawesome(array $raw): IconSetData {
     $data = [];
     foreach ($raw as $name => $iconData) {
       $data[$name] = new FaIconInformation($name, $iconData);
     }
-    return new IconsData($data);
+    return new IconSetData($data);
   }
 
 }

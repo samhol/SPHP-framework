@@ -12,7 +12,7 @@ namespace Sphp\Manual\Apps\Icons\Views;
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
-use Sphp\Manual\Apps\Icons\IconsData;
+use Sphp\Manual\Apps\Icons\IconSetData;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Manual\Apps\Icons\FaIconInformation;
 use Sphp\Html\Media\Icons\IconFactory;
@@ -28,7 +28,7 @@ use Sphp\Html\Media\Icons\IconFactory;
 class IconsView {
 
   /**
-   * @var IconsData 
+   * @var IconSetData 
    */
   private $data;
 
@@ -37,7 +37,7 @@ class IconsView {
    */
   private $iconfactory;
 
-  public function __construct(IconsData $data) {
+  public function __construct(IconSetData $data) {
     $this->data = $data;
     $this->section = Tags::section();
     $this->heading = 'Iconset';
