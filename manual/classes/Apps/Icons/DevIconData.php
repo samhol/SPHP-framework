@@ -61,4 +61,16 @@ class DevIconData implements IconGroup {
     return $this->getVersionsFor('font');
   }
 
+  /**
+   * 
+   * @return IconData[]
+   */
+  public function getIcons(): array {
+    $icons = [];
+    foreach ($this->getIconNames() as $name) {
+      $icons[] = new IconData($name, $this->getLabel());
+    }
+    return $icons;
+  }
+
 }

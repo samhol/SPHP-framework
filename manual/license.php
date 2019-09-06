@@ -34,7 +34,7 @@ $head->set(Meta::applicationName('SPHPlayground Framework'));
 $head->set(Meta::keywords(['MIT', 'license', 'SPHPlayground']));
 $head->set(Meta::description('License for SPHPlayground framework'));
 
-$doc->useFontAwesome();
+$doc->useFontAwesome('9e1f35bc72');
 $body->addCssClass('mit-license');
 $html->startBody();
 
@@ -79,4 +79,4 @@ $main->append($linkBar);
 $grid = DivGrid::from([$main]);
 echo $grid;
 
-echo $doc->getDocumentClose();
+echo $html->getDocumentClose();

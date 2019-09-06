@@ -53,6 +53,13 @@
 
 
 body.mit-license {
+  margin: 0;
+  .grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
   .cell {
     @include border-radius(5px);
     border: solid 1px #FAA523;
@@ -112,8 +119,8 @@ body.mit-license {
       margin-right: rem-calc(5);
     }
     &.button {
-     // background-color: rgba(#940, .7);
-    @include button-style(rgba(#765, .7), rgba(#432, .9), #fff);
+      // background-color: rgba(#940, .7);
+      @include button-style(rgba(#765, .7), rgba(#432, .9), #fff);
     }
   }
 }

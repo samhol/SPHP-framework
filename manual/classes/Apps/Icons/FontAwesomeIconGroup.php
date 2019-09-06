@@ -61,10 +61,24 @@ class FontAwesomeIconGroup implements IconGroup {
 
   public function getIconNames(): array {
     $names = [];
-    foreach ($this->getStyles() as $style) {
+    $typeMap = ['solid' => 'fas', 'regular' => 'far', 'brands' => 'fab'];
+    foreach ($this->getStyles() as $styleName) {
+      $style = $typeMap[$styleName];
       $names[] = "$style fa-{$this->getGroupName()}";
     }
     return $names;
+  }
+
+  /**
+   * 
+   * @return IconData[]
+   */
+  public function getIcons(): array {
+    $icons = [];
+    foreach ($this->getIconNames() as $name) {
+      $icons[] = new IconData($name, $this->getLabel());
+    }
+    return $icons;
   }
 
 }

@@ -11,22 +11,42 @@
 namespace Sphp\Manual\Apps\Icons;
 
 /**
- * Implementation of IconInformation
+ * Implementation of IconData
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface IconGroup {
+class IconData {
 
-  public function getGroupName(): string;
+  /**
+   * @var string
+   */
+  private $name;
 
-  public function getLabel(): string;
+  /**
+   * @var string
+   */
+  private $label;
 
-  public function getIconNames(): array;
-  
-  public function getIcons(): array;
+  /**
+   * Constructor
+   * 
+   * @param string $name
+   * @param string $label
+   */
+  public function __construct(string $name, string $label = null) {
+    $this->name = $name;
+    $this->label = $label;
+  }
 
-  public function getSearchTerms(): array;
+  public function getName(): string {
+    return $this->name;
+  }
+
+  public function getLabel(): ?string {
+    return $this->label;
+  }
+
 }

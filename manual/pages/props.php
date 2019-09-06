@@ -23,7 +23,7 @@ $iconsData = $iconsData->filter(function(IconGroup $iconData) use ($type) {
 //var_dump($iconsData);
 //$show = $typeMap[$type];
 
-$cells = new Sphp\Manual\Apps\Icons\Views\FaIconsView($iconsData);
+$cells = new Sphp\Manual\Apps\Icons\Views\IconsView($iconsData);
 $devData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 echo $cells->getHtmlFor($controller->getData($type));
-echo (new Sphp\Manual\Apps\Icons\Views\IconsView($devData))->getHtmlFor($controller->getData($type));;
+echo (new Sphp\Manual\Apps\Icons\Views\IconsView($devData))->getHtmlFor();
