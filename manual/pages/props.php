@@ -13,15 +13,17 @@ $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => 'r
 if ($type === null) {
   $type = 'regular';
 }
+echo '</pre>';
 $iconsData = $iconsData->filter(function(IconInformation $iconData) use ($type) {
   if ($iconData instanceof FaIconInformation) {
     return in_array($type, $iconData->getStyles());
   }
   return false;
 });
-var_dump($iconsData);
-$show = $typeMap[$type];
+//var_dump($iconsData);
+//$show = $typeMap[$type];
 
 $cells = new Sphp\Manual\Apps\Icons\Views\FaIconsView($iconsData);
-echo '</pre>';
+$devData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 echo $cells->getHtmlFor($controller->getData($type));
+echo (new Sphp\Manual\Apps\Icons\Views\IconsView($devData))->getHtmlFor($controller->getData($type));;

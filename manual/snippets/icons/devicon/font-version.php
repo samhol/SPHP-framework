@@ -16,7 +16,7 @@ $classLinker = $method1 = Manual\api()->classLinker(DevIcons::class);
 
 $iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 foreach ($iconsData as $name => $item) {
-  $name = $item->getName();
+  $name = $item->getGroupName();
   $fontVersions = $item->getVersionsFor('font');
   $iconName = array_shift($fontVersions);
   $icon = DevIcons::i($iconName)->setTitle("devicon-$name icons")->setAttribute('title', "devicon-$name icon");

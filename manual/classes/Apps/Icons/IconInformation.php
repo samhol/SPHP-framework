@@ -20,7 +20,9 @@ namespace Sphp\Manual\Apps\Icons;
  */
 interface IconInformation {
 
-  public function getName(): string;
+  public function getGroupName(): string;
+
+  public function getIconNames(): array;
 
   public function getSearchTerms(): array;
 }

@@ -7,7 +7,6 @@ $name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
 $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
 $version = filter_input(INPUT_GET, 'version', FILTER_SANITIZE_STRING);
 
-use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Lists\Dl;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Html\Media\Icons\DevIcons;
@@ -27,5 +26,5 @@ $dl->appendDescriptions($iconData->getVersionsFor('font'));
 echo $dl;
 //print_r($iconData->getVersionsFor('font'));
 //echo '</pre>';
-$link = $classLinker->getLink(DevIcons::class . "::i('" . $iconData->getName() . "-plain')");
+$link = $classLinker->getLink(DevIcons::class . "::i('" . $iconData->getGroupName() . "-plain')");
 echo "Font icon example: $link";

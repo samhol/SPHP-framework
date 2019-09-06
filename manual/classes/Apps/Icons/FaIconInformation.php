@@ -35,32 +35,32 @@ class FaIconInformation implements IconInformation {
     $this->data = $raw;
   }
 
-  public function getName(): string {
+  public function getGroupName(): string {
     return $this->name;
   }
 
   public function getSearchTerms(): array {
     return $this->data['search']['terms'];
   }
+
   public function getStyles(): array {
     return $this->data['styles'];
   }
+
   public function getUnicode(): string {
     return $this->data['unicode'];
   }
 
-  public function getVersionsFor(string $type): array {
-    $result = [];
-    if (array_key_exists($type, $this->data['versions'])) {
-      foreach ($this->data['versions'][$type] as $version) {
-        $result [] = "devicon-{$this->getName()}-$version";
-      }
-    }
-    return $result;
-  }
-
   public function toArray(): array {
     return $this->data;
+  }
+
+  public function getIconNames(): array {
+    $names = [];
+    foreach ($this->getStyles() as $style) {
+      $names[] = "$style fa-{$this->getGroupName()}";
+    }
+    return $names;
   }
 
 }

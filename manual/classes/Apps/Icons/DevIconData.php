@@ -29,7 +29,7 @@ class DevIconData implements IconInformation {
     $this->data = $raw;
   }
 
-  public function getName(): string {
+  public function getGroupName(): string {
     return $this->data['name'];
   }
 
@@ -41,7 +41,7 @@ class DevIconData implements IconInformation {
     if (array_key_exists($type, $this->data['versions'])) {
       $result = [];
       foreach ($this->data['versions'][$type] as $version) {
-        $result [] = "devicon-{$this->getName()}-$version";
+        $result [] = "devicon-{$this->getGroupName()}-$version";
       }
       return $result;
     } else {
@@ -51,6 +51,10 @@ class DevIconData implements IconInformation {
 
   public function toArray(): array {
     return $this->data;
+  }
+
+  public function getIconNames(): array {
+    return $this->getVersionsFor('font');
   }
 
 }
