@@ -18,7 +18,7 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class DevIconData implements IconInformation {
+class DevIconData implements IconGroup {
 
   /**
    * @var array
@@ -31,6 +31,10 @@ class DevIconData implements IconInformation {
 
   public function getGroupName(): string {
     return $this->data['name'];
+  }
+
+  public function getLabel(): string {
+    return ucFirst($this->data['name']);
   }
 
   public function getSearchTerms(): array {

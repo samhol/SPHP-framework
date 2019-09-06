@@ -32,8 +32,8 @@ class FaGroupController {
 
   
   public function getData(string $type): IconSetData {
-    return $this->data->filter(function(IconInformation $iconData) use ($type) {
-              if ($iconData instanceof \Sphp\Manual\Apps\Icons\FaIconInformation) {
+    return $this->data->filter(function(IconGroup $iconData) use ($type) {
+              if ($iconData instanceof \Sphp\Manual\Apps\Icons\FontAwesomeIconGroup) {
                 return in_array($type, $iconData->getStyles());
               }
               return false;

@@ -62,7 +62,7 @@ class DataFactory {
   public static function fontawesome(array $raw): IconSetData {
     $data = [];
     foreach ($raw as $name => $iconData) {
-      $data[$name] = new FaIconInformation($name, $iconData);
+      $data[$name] = new FontAwesomeIconGroup($name, $iconData);
     }
     return new IconSetData($data);
   }

@@ -14,7 +14,7 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Manual\Apps\Icons\IconSetData;
 use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Manual\Apps\Icons\FaIconInformation;
+use Sphp\Manual\Apps\Icons\FontAwesomeIconGroup;
 
 /**
  * Implementation of FaIconsView
@@ -47,7 +47,7 @@ class FaIconsView {
     $fa = new FontAwesome();
     $fa->fixedWidth(true);
     foreach ($this->data as $name => $data) {
-      if (!$data instanceof FaIconInformation) {
+      if (!$data instanceof FontAwesomeIconGroup) {
         throw new \Exception;
       }
       $content = Tags::div()->addCssClass('icon-container');

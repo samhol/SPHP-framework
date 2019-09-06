@@ -18,7 +18,7 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FaIconInformation implements IconInformation {
+class FontAwesomeIconGroup implements IconGroup {
 
   /**
    * @var string
@@ -37,6 +37,10 @@ class FaIconInformation implements IconInformation {
 
   public function getGroupName(): string {
     return $this->name;
+  }
+
+  public function getLabel(): string {
+    return $this->data['label'];
   }
 
   public function getSearchTerms(): array {

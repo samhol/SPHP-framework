@@ -14,7 +14,6 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Manual\Apps\Icons\IconSetData;
 use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Manual\Apps\Icons\FaIconInformation;
 use Sphp\Html\Media\Icons\IconFactory;
 
 /**
@@ -57,11 +56,8 @@ class IconsView {
     $section = Tags::section();
     $section->addCssClass('example icons');
     $section->appendH2($this->heading);
-
     $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
-    $fa = new FontAwesome();
-    $fa->fixedWidth(true);
-    foreach ($this->data as $name => $iconGroup) {
+    foreach ($this->data as $iconGroup) {
       $content = Tags::div()->addCssClass('icon-container');
       $iconContainer = Tags::div()->addCssClass('icon', 'font');
       $content->append($iconContainer);
@@ -71,10 +67,8 @@ class IconsView {
       $iconName = array_shift($iconNames);
       $icon = $this->getIconFactory()->get($iconName);
       $iconContainer->append($icon);
-      $ext->append("$name");
-      //$iconContainer->setAttribute('title', 'Unicode: ' . $data->getUnicode());
+      $ext->append($iconGroup->getLabel());
       $grid->append($content);
-      //}
     }
     $section->append($grid);
     return (string) $section;

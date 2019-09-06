@@ -18,9 +18,11 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface IconInformation {
+interface IconGroup {
 
   public function getGroupName(): string;
+
+  public function getLabel(): string;
 
   public function getIconNames(): array;
 
