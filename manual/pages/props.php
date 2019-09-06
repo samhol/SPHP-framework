@@ -24,6 +24,7 @@ $iconsData = $iconsData->filter(function(IconGroup $iconData) use ($type) {
 //$show = $typeMap[$type];
 
 $cells = new Sphp\Manual\Apps\Icons\Views\IconsView($iconsData);
+$cells->setHeading('Fontawesome <small>Regular Icons</small>');
 $devData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 echo $cells->getHtmlFor($controller->getData($type));
 echo (new Sphp\Manual\Apps\Icons\Views\IconsView($devData))->getHtmlFor();
