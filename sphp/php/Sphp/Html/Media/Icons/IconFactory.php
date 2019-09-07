@@ -10,8 +10,6 @@
 
 namespace Sphp\Html\Media\Icons;
 
-use Sphp\Exceptions\BadMethodCallException;
-
 /**
  * Implements a factory for Font Awesome icon objects
  *

@@ -13,7 +13,7 @@ use Sphp\Html\Media\Icons\DevIcons;
 use Sphp\Manual\Apps\Icons\DataFactory;
 
 $iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
-$iconData = $iconsData->getIcon($name);
+$iconData = $iconsData->getGroup($name);
 $classLinker = $method = Factory::sami()->classLinker(DevIcons::class);
 echo '<h3>Devicon information</h3>';
 //echo '<pre>';

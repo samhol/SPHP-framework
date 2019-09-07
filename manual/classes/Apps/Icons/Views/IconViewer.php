@@ -10,7 +10,10 @@
 
 namespace Sphp\Manual\Apps\Icons\Views;
 
-use Sphp\Manual\Apps\Icons\IconGroup;
+use Sphp\Manual\Apps\Icons\IconData;
+use Sphp\Html\Component;
+use Sphp\Html\Tags;
+use Sphp\Html\Media\Icons\IconFactory;
 
 /**
  * Implementation of IconViewer
@@ -23,42 +26,34 @@ use Sphp\Manual\Apps\Icons\IconGroup;
 class IconViewer {
 
   /**
-   * @var IconGroup 
-   */
-  private $data;
-
-  /**
    * @var IconFactory 
    */
   private $iconfactory;
 
-  public function __construct(IconGroup $data) {
-    $this->data = $data;
-    $this->section = Tags::section();
-    $this->heading = 'Iconset';
-    $this->iconfactory = new IconFactory();
+  public function __construct(IconFactory $iconfactory = null) {
+    if ($iconfactory === null) {
+      $iconfactory = new IconFactory();
+    }
+    $this->iconfactory = $iconfactory;
   }
 
-  public function getHtml(): string {
-    $section = Tags::section();
-    $section->addCssClass('example icons');
-    $section->appendH2($this->heading);
-    $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
-    foreach ($this->data as $iconGroup) {
-      $content = Tags::div()->addCssClass('icon-container');
-      $iconContainer = Tags::div()->addCssClass('icon', 'font');
-      $content->append($iconContainer);
-      $ext = Tags::div()->addCssClass('ext');
-      $content->append($ext);
-      $iconNames = $iconGroup->getIconNames();
-      $iconName = array_shift($iconNames);
-      $icon = $this->getIconFactory()->get($iconName);
-      $iconContainer->append($icon);
-      $ext->append($iconGroup->getLabel());
-      $grid->append($content);
-    }
-    $section->append($grid);
-    return (string) $section;
+  public function __destruct() {
+    unset($this->iconfactory);
+  }
+
+  public function getIconFactory(): IconFactory {
+    return $this->iconfactory;
+  }
+
+  public function createComponent(IconData $iconData): Component {
+    $content = Tags::div()->addCssClass('icon-container');
+    $iconContainer = Tags::div()->addCssClass('icon', 'font');
+    $icon = $this->getIconFactory()->get($iconData->getName());
+    $iconContainer->append($icon);
+    $content->append($iconContainer);
+    $ext = Tags::div($iconData->getName())->addCssClass('ext');
+    $content->append($ext);
+    return $content;
   }
 
 }

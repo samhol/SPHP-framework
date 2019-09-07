@@ -22,9 +22,9 @@ $iconsData = $iconsData->filter(function(IconGroup $iconData) use ($type) {
 });
 //var_dump($iconsData);
 //$show = $typeMap[$type];
-
-$cells = new Sphp\Manual\Apps\Icons\Views\IconsView($iconsData);
+use Sphp\Manual\Apps\Icons\Views\IconsView;
+$cells = new IconsView();
 $cells->setHeading('Fontawesome <small>Regular Icons</small>');
 $devData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 echo $cells->getHtmlFor($controller->getData($type));
-echo (new Sphp\Manual\Apps\Icons\Views\IconsView($devData))->getHtmlFor();
+echo (new IconsView())->getHtmlFor($iconsData);

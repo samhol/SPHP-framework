@@ -51,7 +51,7 @@ class IconSetData implements IteratorAggregate {
    * @param  string $name
    * @return IconGroup|null
    */
-  public function getIcon(string $name): ?IconGroup {
+  public function getGroup(string $name): ?IconGroup {
     if ($this->data->offsetExists($name)) {
       return $this->data[$name];
     } else {
@@ -59,7 +59,7 @@ class IconSetData implements IteratorAggregate {
     }
   }
 
-  public function filter(callable $callback) {
+  public function filter(callable $callback): IconSetData {
     return new static($this->data->filter($callback)->toArray());
   }
 

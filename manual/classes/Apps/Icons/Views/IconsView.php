@@ -27,24 +27,24 @@ use Sphp\Html\Media\Icons\IconFactory;
 class IconsView {
 
   /**
-   * @var IconSetData 
+   * @var IconViewer 
    */
-  private $data;
+  private $iconViewer;
 
-  /**
-   * @var IconFactory 
-   */
-  private $iconfactory;
-
-  public function __construct(IconSetData $data) {
-    $this->data = $data;
-    $this->section = Tags::section();
+  public function __construct(IconViewer $iconViewer = null) {
     $this->heading = 'Iconset';
-    $this->iconfactory = new IconFactory();
+    if ($iconViewer === null) {
+      $iconViewer = new IconViewer();
+    }
+    $this->iconViewer = $iconViewer;
   }
 
-  public function getIconFactory(): IconFactory {
-    return $this->iconfactory;
+  public function __destruct() {
+    unset($this->iconViewer);
+  }
+
+  public function getIconViewer(): IconViewer {
+    return $this->iconViewer;
   }
 
   public function setHeading(string $heading) {
@@ -52,23 +52,15 @@ class IconsView {
     return $this;
   }
 
-  public function getHtmlFor(): string {
+  public function getHtmlFor(IconSetData $iconSetData): string {
     $section = Tags::section();
     $section->addCssClass('example icons');
     $section->appendH2($this->heading);
     $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
-    foreach ($this->data as $iconGroup) {
-      $content = Tags::div()->addCssClass('icon-container');
-      $iconContainer = Tags::div()->addCssClass('icon', 'font');
-      $content->append($iconContainer);
-      $ext = Tags::div()->addCssClass('ext');
-      $content->append($ext);
-      $iconNames = $iconGroup->getIconNames();
-      $iconName = array_shift($iconNames);
-      $icon = $this->getIconFactory()->get($iconName);
-      $iconContainer->append($icon);
-      $ext->append($iconGroup->getLabel());
-      $grid->append($content);
+    foreach ($iconSetData as $iconGroup) {
+      $icons = $iconGroup->getIcons();
+      $iconData = array_shift($icons);
+      $grid->append($this->getIconViewer()->createComponent($iconData));
     }
     $section->append($grid);
     return (string) $section;
