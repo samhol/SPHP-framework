@@ -53,7 +53,7 @@ class IdAttribute extends PatternAttribute {
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(int $length = 16): string {
-    if (!$this->isProtected()) {
+    if ($this->isEmpty()) {
       $storage = IdStorage::get($this->getName());
       $value = $storage->generateRandom($length);
       $this->setValue($value);

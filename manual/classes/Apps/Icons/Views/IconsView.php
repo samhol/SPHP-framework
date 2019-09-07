@@ -15,6 +15,7 @@ use Sphp\Html\Tags;
 use Sphp\Manual\Apps\Icons\IconSetData;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Html\Media\Icons\IconFactory;
+use Sphp\Html\Foundation\Sites\Containers\Popup;
 
 /**
  * Implementation of FaIconsView
@@ -56,13 +57,20 @@ class IconsView {
     $section = Tags::section();
     $section->addCssClass('example icons');
     $section->appendH2($this->heading);
+    $popup = new Popup('<div id="icon-info"><h3>Icongroup information loading...</h3></div>');
+    $popup->setOption('multiple-opened', true)->layout()->setSize('large');
     $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
     foreach ($iconSetData as $iconGroup) {
       $icons = $iconGroup->getIcons();
       $iconData = array_shift($icons);
-      $grid->append($this->getIconViewer()->createComponent($iconData));
+      $iconContainer = $this->getIconViewer()->createComponent($iconData);
+      $iconContainer->setAttribute('data-sphp-url', "/manual/snippets/icons/devicon/info.php?name={$iconGroup->getGroupName()}");
+      $iconContainer->setAttribute('data-sphp-target', $popup->identify());
+      $popup->createController($iconContainer);
+      $grid->append($iconContainer);
     }
     $section->append($grid);
+    $section->append($popup);
     return (string) $section;
   }
 
