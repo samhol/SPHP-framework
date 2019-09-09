@@ -28,7 +28,7 @@ class InfoVievs {
 
   public function __construct() {
     $this->map = [];
-    $this->default = IconGroupInfoViewBuilder;
+    $this->default = new IconGroupInfoViewBuilder;
   }
 
   public function associate(string $setName, IconGroupInfoViewBuilder $view) {
@@ -43,7 +43,7 @@ class InfoVievs {
     return $builder;
   }
 
-  public function getViewFor(IconGroup $iconGroup): Component {
+  public function createHtmlFor(IconGroup $iconGroup): Component {
     return $this->getViewerFor($iconGroup->getIconSetName())->createHtmlFor($iconGroup);
   }
 
