@@ -16,7 +16,7 @@ if (filter_has_var(INPUT_GET, 'name')) {
   if ($iconData === null) {
     echo 'Icongroup ' . $name . ' was not found!';
   } else {
-    $view = new IconGroupInfoViewBuilder();
+    $view = new \Sphp\Manual\Apps\Icons\Views\InfoVievs();
     echo $view->createHtmlFor($iconData);
   }
 } else {

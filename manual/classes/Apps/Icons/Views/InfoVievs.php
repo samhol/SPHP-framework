@@ -10,6 +10,9 @@
 
 namespace Sphp\Manual\Apps\Icons\Views;
 
+use Sphp\Manual\Apps\Icons\IconGroup;
+use Sphp\Html\Component;
+
 /**
  * Implementation of InfoVievs
  *
@@ -21,17 +24,27 @@ namespace Sphp\Manual\Apps\Icons\Views;
 class InfoVievs {
 
   private $map;
+  private $default;
 
   public function __construct() {
     $this->map = [];
+    $this->default = IconGroupInfoViewBuilder;
   }
 
   public function associate(string $setName, IconGroupInfoViewBuilder $view) {
     $this->map[$setName] = $view;
   }
 
-  public function getViewFor($setName): ?IconGroupInfoViewBuilder {
-    return $this->map[$setName];
+  public function getViewerFor(string $setName): IconGroupInfoViewBuilder {
+    $builder = $this->default;
+    if (array_key_exists($setName, $this->map)) {
+      $builder = $this->map[$setName];
+    }
+    return $builder;
+  }
+
+  public function getViewFor(IconGroup $iconGroup): Component {
+    return $this->getViewerFor($iconGroup->getIconSetName())->createHtmlFor($iconGroup);
   }
 
 }
