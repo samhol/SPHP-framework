@@ -7,8 +7,13 @@ use Sphp\Html\Tags;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Manual;
 use Sphp\Manual\Apps\Icons\DataFactory;
+use Sphp\Manual\Apps\Icons\Views\IconsView;
 
-$section = Tags::section();
+$iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
+
+$iconsView = new IconsView();
+echo $iconsView->getHtmlFor($iconsData);
+/*$section = Tags::section();
 $section->addCssClass('icons', 'devicons');
 $section->appendH2('Devicons <small>FONT versions</small>')->addCssClass('devicons');
 $grid = new BlockGrid('small-up-3', 'medium-up-5', 'large-up-8');
@@ -33,3 +38,4 @@ foreach ($iconsData as $name => $item) {
 
 $section->append($grid);
 echo $section;
+*/
