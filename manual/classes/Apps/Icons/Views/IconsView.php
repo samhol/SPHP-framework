@@ -64,7 +64,7 @@ class IconsView {
       $icons = $iconGroup->getIcons();
       $iconData = array_shift($icons);
       $iconContainer = $this->getIconViewer()->createComponent($iconData);
-      $iconContainer->setAttribute('data-sphp-url', "/manual/snippets/icons/devicon/info.php?name={$iconGroup->getGroupName()}");
+      $iconContainer->setAttribute('data-sphp-url', "/manual/snippets/icons/devicon/info.php?iconSet=devicon&name={$iconGroup->getGroupName()}");
       $iconContainer->setAttribute('data-sphp-target', $popup->identify());
       $popup->createController($iconContainer);
       $grid->append($iconContainer);

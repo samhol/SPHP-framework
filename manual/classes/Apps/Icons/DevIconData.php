@@ -73,4 +73,8 @@ class DevIconData implements IconGroup {
     return $icons;
   }
 
+  public function getIconSetName(): string {
+    return 'Devicon';
+  }
+
 }

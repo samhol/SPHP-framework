@@ -3,28 +3,22 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once('/home/int48291/public_html/playground/manual/settings.php');
-$name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
-$type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
-$version = filter_input(INPUT_GET, 'version', FILTER_SANITIZE_STRING);
 
-use Sphp\Html\Lists\Dl;
-use Sphp\Html\Apps\HyperlinkGenerators\Factory;
-use Sphp\Html\Media\Icons\DevIcons;
 use Sphp\Manual\Apps\Icons\DataFactory;
-
-$iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
-$iconData = $iconsData->getGroup($name);
-$classLinker = $method = Factory::sami()->classLinker(DevIcons::class);
-echo '<h3>Devicon information</h3>';
-//echo '<pre>';
-//print_r($iconsData->toArray());
-$dl = new Dl();
-$dl->appendTerm('<strong>SVG</strong> versions:');
-$dl->appendDescriptions($iconData->getVersionsFor('svg'));
-$dl->appendTerm('<strong>FONT</strong> versions:');
-$dl->appendDescriptions($iconData->getVersionsFor('font'));
-echo $dl;
-//print_r($iconData->getVersionsFor('font'));
-//echo '</pre>';
-$link = $classLinker->getLink(DevIcons::class . "::i('" . $iconData->getGroupName() . "-plain')");
-echo "Font icon example: $link";
+use Sphp\Manual\Apps\Icons\Views\IconGroupInfoViewBuilder;
+if (!filter_has_var(INPUT_GET, 'iconSet')) {
+  echo 'IconSet was not given!';
+}
+if (filter_has_var(INPUT_GET, 'name')) {
+  $name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
+  $iconsData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
+  $iconData = $iconsData->getGroup($name);
+  if ($iconData === null) {
+    echo 'Icongroup ' . $name . ' was not found!';
+  } else {
+    $view = new IconGroupInfoViewBuilder();
+    echo $view->createHtmlFor($iconData);
+  }
+} else {
+  echo 'IconName was not given!';
+}

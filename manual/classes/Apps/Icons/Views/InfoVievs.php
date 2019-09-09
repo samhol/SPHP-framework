@@ -8,27 +8,30 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Manual\Apps\Icons;
+namespace Sphp\Manual\Apps\Icons\Views;
 
 /**
- * Implementation of IconInformation
+ * Implementation of InfoVievs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface IconGroup {
+class InfoVievs {
 
-  public function getIconSetName(): string;
+  private $map;
 
-  public function getGroupName(): string;
+  public function __construct() {
+    $this->map = [];
+  }
 
-  public function getLabel(): string;
+  public function associate(string $setName, IconGroupInfoViewBuilder $view) {
+    $this->map[$setName] = $view;
+  }
 
-  public function getIconNames(): array;
+  public function getViewFor($setName): ?IconGroupInfoViewBuilder {
+    return $this->map[$setName];
+  }
 
-  public function getIcons(): array;
-
-  public function getSearchTerms(): array;
 }

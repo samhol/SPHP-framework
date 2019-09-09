@@ -81,4 +81,8 @@ class FontAwesomeIconGroup implements IconGroup {
     return $icons;
   }
 
+  public function getIconSetName(): string {
+    return 'Font Awesome';
+  }
+
 }
