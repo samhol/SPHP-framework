@@ -24,8 +24,8 @@ class DevIcons extends IconFactory {
 
   public function createIcon(string $name, string $tagName = 'i'): IconTag {
     if (!Strings::startsWith($name, 'devicon') || Strings::startsWith($name, 'devicon-plain')) {
-      var_dump((!Strings::startsWith($name, 'devicon')), Strings::startsWith($name, 'devicon-plain'));
-      echo $name;
+      //var_dump((!Strings::startsWith($name, 'devicon')), Strings::startsWith($name, 'devicon-plain'));
+      //echo $name;
       $name = "devicon-$name";
     }
     return parent::createIcon($name, $tagName);
