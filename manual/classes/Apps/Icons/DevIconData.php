@@ -77,4 +77,8 @@ class DevIconData implements IconGroup {
     return 'Devicon';
   }
 
+  public function count(): int {
+    return count($this->getIconNames()) ;
+  }
+
 }

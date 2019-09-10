@@ -35,7 +35,7 @@ class IconSetData implements IteratorAggregate {
    * 
    * @param array $raw raw icon data
    */
-  public function __construct(iterable $raw) {
+  public function __construct(iterable $raw = null) {
     $this->data = new Collection($raw);
   }
 

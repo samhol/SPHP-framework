@@ -18,7 +18,7 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FontAwesomeIconGroup implements IconGroup {
+class FaIconGroup implements IconGroup {
 
   /**
    * @var string
@@ -82,7 +82,11 @@ class FontAwesomeIconGroup implements IconGroup {
   }
 
   public function getIconSetName(): string {
-    return 'Font Awesome';
+    return 'FontAwesome';
+  }
+
+  public function count(): int {
+    return count($this->getIconNames());
   }
 
 }

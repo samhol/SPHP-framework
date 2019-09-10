@@ -9,6 +9,7 @@ use Sphp\Html\Media\Image\SvgLoader;
 use Sphp\Stdlib\Parsers\ParseFactory;
 
 $data = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countrycodes.json');
+
 //echo '<pre>';
 //print_r($data);
 //echo '</pre>';

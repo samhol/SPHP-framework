@@ -26,8 +26,12 @@ class InfoVievs {
   private $map;
   private $default;
 
+  /**
+   * 
+   */
   public function __construct() {
     $this->map = [];
+    $this->associate('FontAwesome', new FaIconGroupInfoViewBuilder());
     $this->default = new IconGroupInfoViewBuilder;
   }
 

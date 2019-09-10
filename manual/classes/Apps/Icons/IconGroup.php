@@ -10,6 +10,8 @@
 
 namespace Sphp\Manual\Apps\Icons;
 
+use Countable;
+
 /**
  * Implementation of IconInformation
  *
@@ -18,17 +20,41 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface IconGroup {
+interface IconGroup extends Countable {
 
+  /**
+   * 
+   * @return string
+   */
   public function getIconSetName(): string;
 
+  /**
+   * 
+   * @return string
+   */
   public function getGroupName(): string;
 
+  /**
+   * 
+   * @return string
+   */
   public function getLabel(): string;
 
+  /**
+   * 
+   * @return string[]
+   */
   public function getIconNames(): array;
 
+  /**
+   * 
+   * @return IconData[]
+   */
   public function getIcons(): array;
 
+  /**
+   * 
+   * @return string[]
+   */
   public function getSearchTerms(): array;
 }

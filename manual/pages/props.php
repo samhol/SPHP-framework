@@ -2,7 +2,7 @@
 
 use Sphp\Manual\Apps\Icons\DataFactory;
 use Sphp\Manual\Apps\Icons\IconGroup;
-use Sphp\Manual\Apps\Icons\FontAwesomeIconGroup;
+use Sphp\Manual\Apps\Icons\FaIconGroup;
 
 echo '<pre>';
 $iconsData = DataFactory::fontawesomeFromYaml('/home/int48291/public_html/playground/manual/snippets/icons/fontawesome/icons.yml');
@@ -15,7 +15,7 @@ if ($type === null) {
 }
 echo '</pre>';
 $iconsData = $iconsData->filter(function(IconGroup $iconData) use ($type) {
-  if ($iconData instanceof FontAwesomeIconGroup) {
+  if ($iconData instanceof FaIconGroup) {
     return in_array($type, $iconData->getStyles());
   }
   return false;

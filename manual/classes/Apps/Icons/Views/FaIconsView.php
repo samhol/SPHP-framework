@@ -47,7 +47,7 @@ class FaIconsView {
     $fa = new FontAwesome();
     $fa->fixedWidth(true);
     foreach ($this->data as $name => $data) {
-      if (!$data instanceof FontAwesomeIconGroup) {
+      if (!$data instanceof FaIconGroup) {
         throw new \Exception;
       }
       $content = Tags::div()->addCssClass('icon-container');

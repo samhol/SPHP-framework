@@ -4,9 +4,9 @@
 
 
   sphp.iconsFunc = function ($icons) {
-    console.log('iconsFunc....');
+    console.error('...iconsFunc....');
     var $popup = $('#' + $icons.attr('data-sphp-target')),
-    $popupContentContainer = $popup.find(".icon-info");
+            $popupContentContainer = $popup.find(".icon-info");
     $icons.click(function () {
       $popupContentContainer.html('<b>Loading information</b>');
       var $this = $(this),
@@ -28,23 +28,24 @@
    * @returns {String} the jQuery version number
    */
   sphp.initIconLoaders = function () {
-    console.log('initIconLoaders....');
-    var triggers = $('.icon-popup-trigger');
+    console.log('SPHP: initIconLoaders....');
+    var triggers = $('[data-sphp-iconset-url]');
+    console.log("\t" + triggers);
 
     triggers.click(function () {
-      var $this = $(this), $popup, $target,
-              $url = $this.attr("data-url");
+      var $this = $(this), $popup, $target, $url = $this.attr('data-sphp-iconset-url');
+      console.log("\tIconSet trigger clicked");
       $popup = $('#' + $this.attr('data-open'));
       $target = $popup.find('div.content');
       console.log('icon-popup-trigger: ' + $url);
-      if ($this.hasAttr("data-url")) {
+      if ($this.hasAttr('data-sphp-iconset-url')) {
         $target.load($url, function (response, status, xhr) {
           if (status === "error") {
             var msg = "Sorry but there was an error: ";
             $target.html(msg + xhr.status + " " + xhr.statusText);
           } else {
-            $this.removeAttr("data-url");
-            console.log("loading (" + $url + ") successfull");
+            $this.removeAttr('data-sphp-iconset-url');
+            console.log("loading URL(" + $url + ") successfull");
             $target.foundation();
             sphp.iconsFunc($target.find('[data-sphp-url]'));
           }
