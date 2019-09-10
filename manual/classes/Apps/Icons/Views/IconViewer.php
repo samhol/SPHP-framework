@@ -45,10 +45,14 @@ class IconViewer {
     return $this->iconfactory;
   }
 
+  public function createIcon(IconData $iconData): \Sphp\Html\Media\Icons\Icon {
+    return $this->getIconFactory()->get($iconData->getName());
+  }
+
   public function createComponent(IconData $iconData): Component {
     $content = Tags::div()->addCssClass('icon-container');
     $iconContainer = Tags::div()->addCssClass('icon', 'font');
-    $icon = $this->getIconFactory()->get($iconData->getName());
+    $icon = $this->createIcon($iconData);
     $iconContainer->append($icon);
     $content->append($iconContainer);
     $ext = Tags::div($iconData->getName())->addCssClass('ext');

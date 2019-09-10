@@ -48,4 +48,13 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     return $container;
   }
 
+  public function create(IconGroup $iconGroup): string {
+    $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
+    foreach ($iconGroup->getIcons() as $iconData) {
+      $iconContainer = $this->getIconViewer()->createIcon($iconData);
+      $grid->append($iconContainer);
+    }
+    return (string) $grid;
+  }
+
 }
