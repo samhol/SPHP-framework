@@ -27,8 +27,24 @@ use Sphp\Manual\Apps\Icons\IconGroup;
  */
 class IconGroupInfoViewBuilder {
 
-  public function __construct() {
-    ;
+  /**
+   * @var IconViewer 
+   */
+  private $iconfactory;
+
+  public function __construct(IconViewer $iconfactory = null) {
+    if ($iconfactory === null) {
+      $iconfactory = new IconViewer();
+    }
+    $this->iconfactory = $iconfactory;
+  }
+
+  public function __destruct() {
+    unset($this->iconfactory);
+  }
+
+  public function getIconViewer(): IconViewer {
+    return $this->iconfactory;
   }
 
 

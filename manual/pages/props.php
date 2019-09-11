@@ -20,6 +20,9 @@ $iconsData = $iconsData->filter(function(IconGroup $iconData) use ($type) {
   }
   return false;
 });
+$info = new Sphp\Manual\Apps\Icons\Views\InfoVievs();
+
+echo '<div class="icon-info-popup">'. $info->createHtmlFor($iconsData->getGroup('address-book'))."</div>";
 //var_dump($iconsData);
 //$show = $typeMap[$type];
 use Sphp\Manual\Apps\Icons\Views\IconsView;

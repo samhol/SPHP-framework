@@ -91,3 +91,21 @@ section.icons.example {
   }
 
 }
+
+.icon-info-popup {
+  border: solid 1px #777;
+  @include border-radius(3px);
+  padding: rem-calc(3);
+  .icon-cell {
+    // border: solid 1px #777;
+    // @include border-radius(3px);
+    //padding: rem-calc(6 15);
+    font-size: rem-calc(45);
+  }
+  .icon-info-cell {
+    ul {
+      padding: rem-calc(6 15);
+    }
+  }
+
+}

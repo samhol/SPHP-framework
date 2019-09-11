@@ -17,7 +17,11 @@ use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Manual\Apps\Icons\IconGroup;
 use Sphp\Manual\Apps\Icons\Views\IconViewer;
+use Sphp\Html\PlainContainer;
+use Sphp\Manual\Apps\Icons\IconData;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+
 /**
  * Implementation of IconGroupInfoViewBuilder
  *
@@ -28,30 +32,13 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
  */
 class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
 
-  /**
-   * @var IconViewer 
-   */
-  private $iconfactory;
-
   public function __construct(IconViewer $iconfactory = null) {
-    parent::__construct();
-    if ($iconfactory === null) {
-      $iconfactory = new IconViewer();
-    }
-    $this->iconfactory = $iconfactory;
-    ;
-  }
-
-  public function __destruct() {
-    unset($this->iconfactory);
-  }
-
-  public function getIconViewer(): IconViewer {
-    return $this->iconfactory;
+    parent::__construct($iconfactory);
   }
 
   public function createHtmlFor(IconGroup $iconGroup): Component {
     $container = new Section();
+    $container->addCssClass('icon-group-info');
     $classLinker = $method = Factory::sami()->classLinker(FontAwesome::class);
     if ($iconGroup->count() > 1) {
       $container->appendH3('Information for ' . $iconGroup->getLabel() . ' icon group');
@@ -68,13 +55,20 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     return $container;
   }
 
+  public function createIconInfo(IconData $iconData) {
+    $row = new \Sphp\Html\Flow\Section();
+    $icon = $this->getIconViewer()->createIcon($iconData);
+    $row->appendArticle($icon)->addCssClass('icon-cell');
+    $row->appendArticle($iconData->getName())->addCssClass('icon-info-cell');
+    return $row;
+  }
+
   public function create(IconGroup $iconGroup): string {
     $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
-    foreach ($iconGroup->getIcons() as $iconData) {
-      $iconContainer = $this->getIconViewer()->createIcon($iconData);
-      $grid->append($iconContainer);
+    foreach ($iconGroup->getIcons() as $icon) {
+      $grid->append($this->createIconInfo($icon));
     }
-    return (string) $grid;
+    return (string)'foo'. $grid;
   }
 
 }
