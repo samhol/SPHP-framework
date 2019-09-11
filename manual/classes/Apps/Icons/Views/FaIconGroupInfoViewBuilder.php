@@ -16,7 +16,8 @@ use Sphp\Html\Lists\Dl;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Manual\Apps\Icons\IconGroup;
-
+use Sphp\Manual\Apps\Icons\Views\IconViewer;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 /**
  * Implementation of IconGroupInfoViewBuilder
  *
@@ -27,8 +28,26 @@ use Sphp\Manual\Apps\Icons\IconGroup;
  */
 class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
 
-  public function __construct() {
+  /**
+   * @var IconViewer 
+   */
+  private $iconfactory;
+
+  public function __construct(IconViewer $iconfactory = null) {
+    parent::__construct();
+    if ($iconfactory === null) {
+      $iconfactory = new IconViewer();
+    }
+    $this->iconfactory = $iconfactory;
     ;
+  }
+
+  public function __destruct() {
+    unset($this->iconfactory);
+  }
+
+  public function getIconViewer(): IconViewer {
+    return $this->iconfactory;
   }
 
   public function createHtmlFor(IconGroup $iconGroup): Component {
@@ -43,6 +62,7 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     $dl->appendTerm('<strong>Icon</strong> versions:');
     $dl->appendDescriptions($iconGroup->getIconNames());
     $container->append($dl);
+    $container->append($this->create($iconGroup));
     $link = $classLinker->getLink(FontAwesome::class . "::i('" . $iconGroup->getGroupName() . "-plain')");
     $container->append("Font icon example: $link");
     return $container;
