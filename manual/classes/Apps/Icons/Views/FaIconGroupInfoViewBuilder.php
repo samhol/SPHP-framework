@@ -45,10 +45,7 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     } else {
       $container->appendH3('Information for ' . $iconGroup->getLabel() . ' icon');
     }
-    $dl = new Dl();
-    $dl->appendTerm('<strong>Icon</strong> versions:');
-    $dl->appendDescriptions($iconGroup->getIconNames());
-    $container->append($dl);
+    $container->appendH4('Icon <small>versions</small>');
     $container->append($this->create($iconGroup));
     $link = $classLinker->getLink(FontAwesome::class . "::i('" . $iconGroup->getGroupName() . "-plain')");
     $container->append("Font icon example: $link");
@@ -58,17 +55,17 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
   public function createIconInfo(IconData $iconData) {
     $row = new \Sphp\Html\Flow\Section();
     $icon = $this->getIconViewer()->createIcon($iconData);
-    $row->appendArticle($icon)->addCssClass('icon-cell');
-    $row->appendArticle($iconData->getName())->addCssClass('icon-info-cell');
+    $row->appendArticle($icon)->addCssClass('icon-cell text-center');
+    $row->appendArticle('<span class="icon-name">'.$iconData->getName().'</span>  <span class="fas fa-copy">copy</span>')->addCssClass('icon-info-cell');
     return $row;
   }
 
   public function create(IconGroup $iconGroup): string {
-    $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
+    $grid = new BlockGrid('small-up-2', 'medium-up-2', 'large-up-2');
     foreach ($iconGroup->getIcons() as $icon) {
       $grid->append($this->createIconInfo($icon));
     }
-    return (string)'foo'. $grid;
+    return (string) $grid;
   }
 
 }

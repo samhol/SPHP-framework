@@ -59,7 +59,7 @@ class IconsView {
     $section->appendH2($this->heading);
     $popup = new Popup('<div class="icon-info"><h3>Icongroup information loading...</h3></div>');
     $popup->addCssClass('icon-info-popup');
-    $popup->setOption('multiple-opened', true)->layout()->setSize('large');
+    $popup->setOption('multiple-opened', true)->layout()->setSize('small');
     $grid = new BlockGrid('small-up-3', 'medium-up-4', 'large-up-6');
     foreach ($iconSetData as $iconGroup) {
       $icons = $iconGroup->getIcons();

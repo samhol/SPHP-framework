@@ -15,7 +15,9 @@
       $popupContentContainer.load($url, function () {
         // $this.removeAttr("data-url");
         console.log("loading (" + $url + ") successfull");
+       var $copyStuff = $popupContentContainer.find('.icon-info-cell');
         //sphp.iconsFunc($target.find('[data-url]'));
+        console.log($copyStuff);
       });
     });
   };
@@ -27,7 +29,7 @@
    * @static
    * @returns {String} the jQuery version number
    */
-  sphp.initIconLoaders = function () {
+  sphp.initIconGroupLinks = function () {
     console.log('SPHP: initIconLoaders....');
     var triggers = $('[data-sphp-iconset-url]');
     console.log("\t" + triggers);
@@ -57,4 +59,4 @@
 
 }(window.sphp = window.sphp || {}, jQuery));
 
-sphp.initIconLoaders();
+sphp.initIconGroupLinks();

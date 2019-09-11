@@ -38,12 +38,6 @@ class ContentCopyController extends AbstractContent {
   /**
    * Constructor
    *
-   * **Important!**
-   *
-   * Parameter `mixed $content` can be of any type that converts to a
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
-   *
    * @param  Component $button the copier component
    * @param  Component|string $target the component or the id
    *         attribute of the target container
