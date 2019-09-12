@@ -9,12 +9,10 @@ $data = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/sni
 
 $section = Tags::section();
 $section->addCssClass('example icons');
-$section->appendH2('Country flags <small>as SVG icons</small>')->addCssClass('country-flags');
+$section->appendH2('Country flags <small>as SVG objects</small>');
 $grid = new BlockGrid('small-up-2', 'medium-up-4', 'large-up-5');
 $grid->addCssClass('country-flags', 'icon-examples');
-//$objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('/home/int48291/public_html/playground/manual/svg/flags'));
-//$array = iterator_to_array($objects);
-//ksort($array);
+
 $flagFactory = new NationalFlags('/home/int48291/public_html/playground/manual/svg/flags/');
 foreach ($data as $countryData) {
   $countryCode = $countryData['Code'];
