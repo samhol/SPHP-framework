@@ -58,6 +58,7 @@
             $this.removeAttr('data-sphp-iconset-url');
             console.log("loading URL(" + $url + ") successfull");
             $target.foundation();
+            $target.find("[data-src]").lazyLoadXT({scrollContainer:$popup.parent()});
             sphp.initIconGroupInfo($target.find('[data-sphp-url]'));
           }
         });

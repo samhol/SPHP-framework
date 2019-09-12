@@ -52,15 +52,16 @@ $fileModal = new Modal('<i class="far fa-folder-open fa-lg fa-fw"></i> <b>Filesy
 //$fileModal->printHtml();
 
 
-$flagPopup = new Popup();
+$flagPopup = new Popup('<div class="content"><h3>Icons are loading...</h3></div>');
 $flagPopup->layout()->setSize('large');
 $flagPopup->addCssClass('icon-example-popup', 'country-flags');
-$countryFlagsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/countryFlags.php');
-$flagPopup->getContent()->append($countryFlagsLoader);
+//$countryFlagsLoader = (new Div())->ajaxAppend('/manual/snippets/icons/countryFlags.php');
+//$flagPopup->getContent()->append($countryFlagsLoader);
 $flagModal = new Modal('<i class="far fa-flag fa-lg fa-fw"></i> Country flags', $flagPopup);
 $otherButtons = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
 
-$otherButtons->appendButton($flagModal->getTrigger()->addCssClass('flags', 'shadow', 'radius'));
+$otherButtons->appendButton($flagModal->getTrigger()->addCssClass('flags', 'shadow', 'radius') 
+        ->setAttribute('data-sphp-iconset-url', '/manual/snippets/icons/countryFlags.php'));
 
 $otherButtons->appendButton($fileModal->getTrigger()->addCssClass('folder', 'shadow', 'radius'));
 
