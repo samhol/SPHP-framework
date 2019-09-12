@@ -61,7 +61,7 @@ try {
 } catch (\Exception $ex) {
   $object = new Crossbones();
   $object->setColor('#f00')->setOpacity(.4);
-  $object->setText('SVG image not found!');
+  $object->setText('SVG image not found');
   $title = 'SVG image resource not found!';
 }
 if ($opacity !== null) {

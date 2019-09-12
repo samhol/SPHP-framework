@@ -17,18 +17,19 @@ $flagFactory = new NationalFlags('/home/int48291/public_html/playground/manual/s
 foreach ($data as $countryData) {
   $countryCode = $countryData['Code'];
   $countryName = $countryData['Name'];
-  $svg = $flagFactory->getFlagOf(strtolower($countryData['Code']));
+  $titleText = "$countryCode: $countryName";
+  $svg = $flagFactory->img(strtolower($countryData['Code']));
+  $svg->setAlt($titleText);
   //$svg->setHeight(100);
   $cellContent = Tags::div()->addCssClass('icon-container');
   $iconContainer = Tags::div()->addCssClass('icon', 'national-flag', 'svg');
   $cellContent->append($iconContainer);
   $iconContainer->append("<span>$svg</span>");
-  $ext = Tags::div()->addCssClass('ext');
+  $ext = Tags::div("<strong>$countryCode:</strong> $countryName")->addCssClass('ext');
   $cellContent->append($ext);
-  $ext->append("<strong>$countryCode:</strong>");
-  $iconContainer->setAttribute('title', $countryName);
-  $ext->append(" $countryName");
+  $iconContainer->setAttribute('title', $titleText);
   $grid->append($cellContent);
 }
 $section->append($grid);
 echo $section;
+echo Tags::img('/manual/svg/fi/?flag=fi');

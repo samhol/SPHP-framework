@@ -10,6 +10,7 @@
 
 namespace Sphp\Html\Media\Icons;
 
+use Sphp\Html\Media\Image\Svg;
 use DOMDocument;
 
 /**

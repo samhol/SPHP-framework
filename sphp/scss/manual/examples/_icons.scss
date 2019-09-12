@@ -48,7 +48,7 @@ section.icons.example {
       text-align: center;
     }
     .icon {
-      padding: rem-calc(2);
+      padding: rem-calc(3);
       background-color: #fff;
       &.font {
         font-size: rem-calc(60);
@@ -57,11 +57,25 @@ section.icons.example {
         }
       }
       &.svg {
-        background-color: #fee;
+        //background-color: rgba(#fa3, .3);
+        height: 110px;
         &.national-flag { 
+          background-color: rgba(#fa3, .2);
+          img {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            max-height: 100px;
+            position: relative;
+            // border: solid 1px rgba(#555, .4);
+            //@include border-radius(3px);
+            //@include shadow();
+            padding:1px;
+
+          }
           svg {
             height: 85px;
-            
+
           }
         }
 
@@ -86,6 +100,10 @@ section.icons.example {
         &.svg {
           background-color: #ddd;
         }
+        &.national-flag { 
+          background-color: rgba(#fa3, .4);
+        }
+
       }
       .ext {
         background-color: #ccc;
