@@ -2,7 +2,6 @@
 <clipPath id="nu-t">
 <path d="M0,0V15H70V30H60zM0,30V40H30V0H60z"/>
 </clipPath>
-<title>Flag of Niue</title>
 <rect width="120" height="60" fill="#002868"/>
 <g stroke="#cf142b" stroke-width="6">
 <path d="M0,0L60,30M60,0L0,30" stroke="#fff"/>

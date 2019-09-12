@@ -57,13 +57,14 @@ section.icons.example {
         }
       }
       &.svg {
-        &.national-flag {
-          background-color: #eee;
+        background-color: #fee;
+        &.national-flag { 
           svg {
-            border-top: 1px solid rgba(#555, .7);
-            border-bottom: 1px solid rgba(#555, .5);
+            height: 85px;
+            
           }
         }
+
       }
     }
     .ext {
@@ -81,7 +82,10 @@ section.icons.example {
     &:hover {
       .icon {
         background-color: $fontawesome-color;
-        color: #fff;
+        color: #eee;
+        &.svg {
+          background-color: #ddd;
+        }
       }
       .ext {
         background-color: #ccc;
