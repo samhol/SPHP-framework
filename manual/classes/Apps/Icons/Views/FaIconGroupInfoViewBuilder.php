@@ -12,14 +12,11 @@ namespace Sphp\Manual\Apps\Icons\Views;
 
 use Sphp\Html\Component;
 use Sphp\Html\Flow\Section;
-use Sphp\Html\Lists\Dl;
 use Sphp\Html\Apps\HyperlinkGenerators\Factory;
 use Sphp\Html\Media\Icons\FontAwesome;
 use Sphp\Manual\Apps\Icons\IconGroup;
 use Sphp\Manual\Apps\Icons\Views\IconViewer;
-use Sphp\Html\PlainContainer;
 use Sphp\Manual\Apps\Icons\IconData;
-use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 /**

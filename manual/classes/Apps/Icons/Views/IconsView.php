@@ -13,8 +13,6 @@ namespace Sphp\Manual\Apps\Icons\Views;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Manual\Apps\Icons\IconSetData;
-use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Html\Media\Icons\IconFactory;
 use Sphp\Html\Foundation\Sites\Containers\Popup;
 
 /**

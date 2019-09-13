@@ -17,7 +17,6 @@ use ReflectionClass;
 /**
  * Factory for basic HTML tag component creation
  *
- * 
  * @method \Sphp\Html\Html html(mixed $content = null) creates a new html tag component
  * 
  * @method \Sphp\Html\Head\MetaTag meta(array $meta = []) creates a new span tag component

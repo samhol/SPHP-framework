@@ -12,6 +12,7 @@ namespace Sphp\Log;
 
 use Sphp\Html\Scripts\ScriptCode;
 use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Parsers\ParseFactory;
 
 /**
@@ -51,6 +52,7 @@ class Console {
    * @param  string $name the name of the component
    * @param  array $arguments
    * @throws BadMethodCallException
+   * @throws InvalidArgumentException
    */
   public static function __callStatic(string $name, array $arguments) {
     if (!in_array($name, static::$types)) {
@@ -58,7 +60,7 @@ class Console {
     }
     $message = array_shift($arguments);
     if ($message === null) {
-      throw new \Sphp\Exceptions\InvalidArgumentException("Method $name does not exist");
+      throw new InvalidArgumentException("Method $name does not exist");
     }
     $obj = new static();
     $obj->add($name, $message);
@@ -71,7 +73,7 @@ class Console {
    * @param  mixed $data
    * @return string
    */
-  protected function createLog(string $type, $data):string {
+  protected function createLog(string $type, $data): string {
     if (is_array($data)) {
       $data = ParseFactory::json()->toString($data);
       //echo "console.$type($data);";

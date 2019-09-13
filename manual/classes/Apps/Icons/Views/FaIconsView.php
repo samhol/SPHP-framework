@@ -14,7 +14,6 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Html\Tags;
 use Sphp\Manual\Apps\Icons\IconSetData;
 use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Manual\Apps\Icons\FontAwesomeIconGroup;
 
 /**
  * Implementation of FaIconsView

@@ -1,7 +1,5 @@
 <?php
 
-//namespace Sphp\Html\Foundation\Sites\Core;
-
 require_once "../settings.php";
 
 function arrayPrinter(array $array) {
@@ -23,7 +21,3 @@ if (is_array($post) && count($post) > 0) {
 } else {
   echo "<h6>Form submission data:</h6><pre>No submission data found!</pre>";
 }
-/*echo "<pre>";
-print_r($_GET);
-print_r($_POST);
-echo "</pre>";*/
