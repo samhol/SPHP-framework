@@ -7,7 +7,7 @@ use Sphp\Html\Tags;
 use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Media\Icons\NationalFlags;
 
-$data = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countrycodes.json');
+$data = ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/countryFlags/countrycodes.json');
 
 $section = Tags::section();
 $section->addCssClass('example icons');

@@ -25,7 +25,7 @@ class FontAwesomeIcon extends IconTag {
    * Constructor
    * 
    * @param string $iconName the icon name
-   * @param string $title
+   * @param string $title the title of the icon
    */
   public function __construct(string $iconName, string $title = null) {
     parent::__construct('i');
@@ -33,6 +33,12 @@ class FontAwesomeIcon extends IconTag {
     $this->setTitle($title);
   }
 
+  /**
+   * Sets the title of the icon
+   * 
+   * @param  string $title the title of the icon
+   * @return $this for a fluent interface
+   */
   public function setTitle(string $title = null) {
     $this->attributes()->set('title', $title);
     if ($title !== null) {
@@ -44,7 +50,7 @@ class FontAwesomeIcon extends IconTag {
   /**
    * Optionally pulls the icon to left or right
    * 
-   * @param  string|null $direction the direction of th pull
+   * @param  string|null $direction the direction of the pull
    * @return $this for a fluent interface
    */
   public function pull(string $direction = null) {

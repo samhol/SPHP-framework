@@ -9,9 +9,6 @@
 $th-font-size: rem-calc(16);
 $td-font-size: rem-calc(14);
 
-
-// padding: rem-calc(1);
-
 table.factory-table {
   margin: 0; 
   border-collapse: collapse;
@@ -27,7 +24,7 @@ table.factory-table {
     tr {
       td {
         @include breakpoint(medium down) {
-         // padding: rem-calc(3);
+          // padding: rem-calc(3);
         }
       }
     }
@@ -40,17 +37,12 @@ table.factory-table {
 
     a.api {
       border-style: none;
-     // font-size: $td-font-size;
       color: #555; 
       background-color: transparent;   
       &:hover {
         color: #000;
-        //background-color: #fff;  
-        //border-bottom: 1px #000 solid;
         text-decoration: underline;
       }
     }
   }
 }
-
-

@@ -61,7 +61,7 @@ $flagModal = new Modal('<i class="far fa-flag fa-lg fa-fw"></i> Country flags', 
 $otherButtons = new \Sphp\Html\Foundation\Sites\Buttons\ButtonGroup();
 
 $otherButtons->appendButton($flagModal->getTrigger()->addCssClass('flags', 'shadow', 'radius') 
-        ->setAttribute('data-sphp-iconset-url', '/manual/snippets/icons/countryFlags.php'));
+        ->setAttribute('data-sphp-iconset-url', '/manual/snippets/icons/countryFlags/app.php'));
 
 $otherButtons->appendButton($fileModal->getTrigger()->addCssClass('folder', 'shadow', 'radius'));
 
