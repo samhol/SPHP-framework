@@ -36,18 +36,18 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     parent::__construct($iconfactory);
   }
 
-  public function build(IconGroup $iconGroup) {
-    $output = '<div class="icon-group">
-  <div class="add-people-header">
-    <h6 class="header-title">
-      '.$iconGroup->getIconSetName() .' '. $iconGroup->getLabel() . ' icons
-    </h6>
-  </div>';
-    foreach ($iconGroup->getIcons() as $icon) {
-      $output .= $this->buildIcon($icon);
+  public function createHtmlFor(IconGroup $iconGroup): Component {
+    $iconGroupContainer = new \Sphp\Html\Flow\Section();
+    $iconGroupContainer->addCssClass('icon-group');
+     if ($iconGroup->count() > 1) {
+      $iconGroupContainer->appendH3($iconGroup->getIconSetName() . ' ' . 'Information for ' . $iconGroup->getLabel() . ' icon group');
+    } else {
+      $iconGroupContainer->appendH3($iconGroup->getIconSetName() . ' ' . 'Information for ' . $iconGroup->getLabel() . ' icon');
     }
-    $output .= '</div>';
-    return $output;
+    foreach ($iconGroup->getIcons() as $icon) {
+      $iconGroupContainer->append($this->buildIcon($icon));
+    }
+    return $iconGroupContainer;
   }
 
   public function buildIcon(IconData $iconData) {
@@ -62,9 +62,9 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
 
   public function createIconInfo1(IconData $iconData): Ul {
     $ul = new Ul();
-   // $ul->append('<strong>Icon Set:</strong> ' . $iconData->getIconSetName())->addCssClass('icon-set-name');
+    // $ul->append('<strong>Icon Set:</strong> ' . $iconData->getIconSetName())->addCssClass('icon-set-name');
     //$ul->append('<strong>Label:</strong> ' . $iconData->getLabel())->addCssClass('icon-label');
-    
+
     $ul->append('<strong>CSS class:</strong> ' . $iconData->getName())->addCssClass('icon-name');
     $classLinker = $method = Factory::sami()->classLinker(FontAwesome::class);
     $link = $classLinker->getLink(FontAwesome::class . "::i('" . $iconData->getName() . "')");
@@ -72,7 +72,7 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     return $ul->addCssClass('no-bullet');
   }
 
-  public function createHtmlFor(IconGroup $iconGroup): Component {
+  public function createHtmlFor1(IconGroup $iconGroup): Component {
     $container = new Section();
     $container->addCssClass('icon-group-info');
     $classLinker = $method = Factory::sami()->classLinker(FontAwesome::class);

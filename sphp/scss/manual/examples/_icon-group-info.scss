@@ -7,32 +7,31 @@
  */
 
 .icon-group {
-  background-color: $white;
-  padding: 1rem 0 0;
-  border: 1px solid $medium-gray;
+  background-color: rgba(#fff, .85);
+  padding: 1rem 0 0 0;
+  // border: 1px solid $medium-gray;
   box-shadow: 0 0 rem-calc(50) rgba(0,0,0, 0.18);
 
-  .add-people-header {
+  h3 {
     padding: 0 0.9375rem;
     border-bottom: 0.0625rem solid $medium-gray;
-
-    .header-title {
-      font-weight: bold;
-    }
+    font-weight: bold;  
   }
 
   .icon-section {
     margin: 1rem 0 0;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(#222, .5);
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(#222, .5);
+    }
 
     .icon {
-      margin: rem-calc(10 30 10 20);
+      margin: rem-calc(0 30 10 20);
       font-size: rem-calc(50);
     }
-    
+
     .about-icon {
-     
+
     }
 
     .functionality {

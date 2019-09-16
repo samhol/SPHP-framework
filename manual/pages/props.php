@@ -33,7 +33,7 @@ $cells->setHeading('Fontawesome <small>Regular Icons</small>');
 $devData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
 //echo $cells->getHtmlFor($controller->getData($type));
 //echo (new IconsView())->getHtmlFor($iconsData);
-echo (new FaIconGroupInfoViewBuilder())->build($iconsData->getGroup('address-book'));
+echo (new FaIconGroupInfoViewBuilder())->createHtmlFor($iconsData->getGroup('address-book'));
 ?>
 
 <div class="icon-group">
