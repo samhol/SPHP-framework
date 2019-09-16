@@ -10,12 +10,13 @@
       "email": "sami.holck@gmail.com"
     }
   ],
+  "minimum-stability": "dev",
   "require": {
     "php": ">=7.2",
     "doctrine/orm": ">=2.5",
     "sepia/po-parser": ">=5",
     "imagine/imagine": ">=0.7",
-    "tovic/parsedown-extra-plugin": "*",
+    "tovic/parsedown-extra-plugin": "dev-master",
     "geshi/geshi": ">=1",
     "jdorn/sql-formatter": ">=1.2",
     "gajus/dindent": ">=2.0",
