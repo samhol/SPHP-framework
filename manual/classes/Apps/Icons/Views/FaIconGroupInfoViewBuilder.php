@@ -33,6 +33,55 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     parent::__construct($iconfactory);
   }
 
+  public function build(IconGroup $iconGroup) {
+    $output = '<div class="icon-group">
+  <div class="add-people-header">
+    <h6 class="header-title">
+      Facebook icons
+    </h6>
+  </div>';
+    foreach ($iconGroup->getIcons() as $icon) {
+      $output .= $this->buildIcon($icon);
+    }
+    $output .= '</div>';
+    return $output;
+  }
+
+  public function buildIcon(IconData $iconData) {
+    $output = '
+  <div class="grid-x icon-section">
+    <div class="small-12 medium-6 columns about-icon">
+      <div class="icon">
+        <i class="fab fa-facebook icon"></i>
+      </div>
+      <div class="about-icon-author">
+        <p class="author-name">
+          Facebook icon
+        </p>
+        <p class="icon-set">
+          <strong>Icon Set:</strong> FontAwesome
+        </p>
+        <p class="author-mutual">
+          <strong>Shahrukh Khan</strong> is a mutual friend.
+        </p>
+      </div>    
+    </div>
+    <div class="small-12 medium-6 cell functionality text-center">
+      <div class="add-friend-action">
+        <button class="button primary small">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          copy icon class
+        </button>
+        <button class="button secondary small">
+          <i class="fa fa-user-times" aria-hidden="true"></i>
+          copy PHP call
+        </button>
+      </div>
+    </div>
+  </div>';
+    return $output;
+  }
+
   public function createHtmlFor(IconGroup $iconGroup): Component {
     $container = new Section();
     $container->addCssClass('icon-group-info');
@@ -53,7 +102,7 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     $row = new \Sphp\Html\Flow\Section();
     $icon = $this->getIconViewer()->createIcon($iconData);
     $row->appendArticle($icon)->addCssClass('icon-cell text-center');
-    $row->appendArticle('<span class="icon-name">'.$iconData->getName().'</span>  <span class="fas fa-copy">copy</span>')->addCssClass('icon-info-cell');
+    $row->appendArticle('<span class="icon-name">' . $iconData->getName() . '</span>  <span class="fas fa-copy">copy</span>')->addCssClass('icon-info-cell');
     return $row;
   }
 
