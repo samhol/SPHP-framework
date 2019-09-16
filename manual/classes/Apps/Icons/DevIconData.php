@@ -18,7 +18,7 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class DevIconData implements IconGroup {
+class DevIconData extends AbstractIconGroup {
 
   /**
    * @var array
@@ -77,8 +77,5 @@ class DevIconData implements IconGroup {
     return 'Devicon';
   }
 
-  public function count(): int {
-    return count($this->getIconNames()) ;
-  }
 
 }

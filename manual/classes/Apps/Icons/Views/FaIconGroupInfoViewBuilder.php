@@ -18,6 +18,9 @@ use Sphp\Manual\Apps\Icons\IconGroup;
 use Sphp\Manual\Apps\Icons\Views\IconViewer;
 use Sphp\Manual\Apps\Icons\IconData;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BasicRow;
+use Sphp\Html\Tags;
+use Sphp\Html\Lists\Ul;
 
 /**
  * Implementation of IconGroupInfoViewBuilder
@@ -37,7 +40,7 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     $output = '<div class="icon-group">
   <div class="add-people-header">
     <h6 class="header-title">
-      Facebook icons
+      '.$iconGroup->getIconSetName() .' '. $iconGroup->getLabel() . ' icons
     </h6>
   </div>';
     foreach ($iconGroup->getIcons() as $icon) {
@@ -48,38 +51,25 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
   }
 
   public function buildIcon(IconData $iconData) {
-    $output = '
-  <div class="grid-x icon-section">
-    <div class="small-12 medium-6 columns about-icon">
-      <div class="icon">
-        <i class="fab fa-facebook icon"></i>
-      </div>
-      <div class="about-icon-author">
-        <p class="author-name">
-          Facebook icon
-        </p>
-        <p class="icon-set">
-          <strong>Icon Set:</strong> FontAwesome
-        </p>
-        <p class="author-mutual">
-          <strong>Shahrukh Khan</strong> is a mutual friend.
-        </p>
-      </div>    
-    </div>
-    <div class="small-12 medium-6 cell functionality text-center">
-      <div class="add-friend-action">
-        <button class="button primary small">
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          copy icon class
-        </button>
-        <button class="button secondary small">
-          <i class="fa fa-user-times" aria-hidden="true"></i>
-          copy PHP call
-        </button>
-      </div>
-    </div>
-  </div>';
-    return $output;
+    $grid = new BasicRow();
+    $grid->addCssClass('icon-section');
+    $icon = Tags::div($iconData->createIcon());
+    $icon->addCssClass('icon');
+    $grid->appendCell($icon)->shrink();
+    $grid->appendCell($this->createIconInfo1($iconData))->addCssClass('about-icon')->auto();
+    return $grid;
+  }
+
+  public function createIconInfo1(IconData $iconData): Ul {
+    $ul = new Ul();
+   // $ul->append('<strong>Icon Set:</strong> ' . $iconData->getIconSetName())->addCssClass('icon-set-name');
+    //$ul->append('<strong>Label:</strong> ' . $iconData->getLabel())->addCssClass('icon-label');
+    
+    $ul->append('<strong>CSS class:</strong> ' . $iconData->getName())->addCssClass('icon-name');
+    $classLinker = $method = Factory::sami()->classLinker(FontAwesome::class);
+    $link = $classLinker->getLink(FontAwesome::class . "::i('" . $iconData->getName() . "')");
+    $ul->append('<strong>PHP factory call:</strong> ' . $link);
+    return $ul->addCssClass('no-bullet');
   }
 
   public function createHtmlFor(IconGroup $iconGroup): Component {

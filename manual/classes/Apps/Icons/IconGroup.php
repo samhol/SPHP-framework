@@ -20,7 +20,7 @@ use Countable;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface IconGroup extends Countable {
+interface IconGroup extends Countable, \Traversable {
 
   /**
    * 
@@ -57,4 +57,10 @@ interface IconGroup extends Countable {
    * @return string[]
    */
   public function getSearchTerms(): array;
+
+  /**
+   * 
+   * @return string
+   */
+  public function getFactoryClass(): string;
 }

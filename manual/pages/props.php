@@ -43,7 +43,7 @@ echo (new FaIconGroupInfoViewBuilder())->build($iconsData->getGroup('address-boo
     </h6>
   </div>
   <div class="grid-x icon-section">
-    <div class="small-12 medium-6 columns about-icon">
+    <div class="small-12 medium-6 cell about-icon">
       <div class="icon">
         <i class="fab fa-facebook icon"></i>
       </div>

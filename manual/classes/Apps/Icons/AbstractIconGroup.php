@@ -11,53 +11,14 @@
 namespace Sphp\Manual\Apps\Icons;
 
 /**
- * Implementation of FaIconInformation
+ * Implementation of AbstractIconGroup
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FaIconGroup extends AbstractIconGroup {
-
-  /**
-   * @var string
-   */
-  private $name;
-
-  /**
-   * @var array
-   */
-  private $data;
-
-  public function __construct(string $name, array $raw) {
-    $this->name = $name;
-    $this->data = $raw;
-  }
-
-  public function getGroupName(): string {
-    return $this->name;
-  }
-
-  public function getLabel(): string {
-    return $this->data['label'];
-  }
-
-  public function getSearchTerms(): array {
-    return $this->data['search']['terms'];
-  }
-
-  public function getStyles(): array {
-    return $this->data['styles'];
-  }
-
-  public function getUnicode(): string {
-    return $this->data['unicode'];
-  }
-
-  public function toArray(): array {
-    return $this->data;
-  }
+abstract class AbstractIconGroup implements \IteratorAggregate, IconGroup{
 
   public function getIconNames(): array {
     $names = [];
@@ -69,13 +30,28 @@ class FaIconGroup extends AbstractIconGroup {
     return $names;
   }
 
+  /**
+   * 
+   * @return IconData[]
+   */
+  public function getIcons(): array {
+    $icons = [];
+    foreach ($this->getIconNames() as $name) {
+      $icons[] = new IconData($name, $this->getLabel(), $this->getFactoryClass());
+    }
+    return $icons;
+  }
 
-  public function getIconSetName(): string {
-    return 'FontAwesome';
+  public function count(): int {
+    return count($this->getIconNames());
+  }
+  
+  public function getIterator():\Traversable {
+    return new \ArrayIterator($this->getIcons());
   }
   
   public function getFactoryClass(): string {
-    return \Sphp\Html\Media\Icons\FontAwesome::class;
+    return \Sphp\Html\Media\Icons\IconFactory::class;
   }
 
 }
