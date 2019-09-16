@@ -3,25 +3,11 @@
   "homepage": "http://www.playground.samiholck.com/",
   "description": "Multipurpose PHP framework for web applications",
   "keywords": ["PHP", "HTML5", "WEB 2.0", "UI"],
-  "license": "GNU",
+  "license": "MIT",
   "authors": [
     {
       "name": "Sami Holck",
       "email": "sami.holck@gmail.com"
-    }
-  ],
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "tovic/parsedown-extra-plugin",
-        "version": "1.1.7",
-        "source": {
-          "url": "https://github.com/tovic/parsedown-extra-plugin",
-          "type": "git",
-          "reference": "origin/master"
-        }
-      }
     }
   ],
   "require": {
