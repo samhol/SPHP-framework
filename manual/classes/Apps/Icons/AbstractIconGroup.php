@@ -18,7 +18,7 @@ namespace Sphp\Manual\Apps\Icons;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-abstract class AbstractIconGroup implements \IteratorAggregate, IconGroup{
+abstract class AbstractIconGroup implements \IteratorAggregate, IconGroup {
 
   public function getIconNames(): array {
     $names = [];
@@ -45,11 +45,11 @@ abstract class AbstractIconGroup implements \IteratorAggregate, IconGroup{
   public function count(): int {
     return count($this->getIconNames());
   }
-  
-  public function getIterator():\Traversable {
+
+  public function getIterator(): \Traversable {
     return new \ArrayIterator($this->getIcons());
   }
-  
+
   public function getFactoryClass(): string {
     return \Sphp\Html\Media\Icons\IconFactory::class;
   }

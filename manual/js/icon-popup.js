@@ -63,7 +63,7 @@
      */
     initIconGroupInfo: function ($icons) {
       console.log('sphp.IconsViewer.initIconGroupInfo()');
-      var $container = $('#' + $icons.attr('data-sphp-target')).find(".icon-info"), $dt = this.dt;
+      var $container = $('#' + $icons.attr('data-sphp-target')).find(".icon-group-info"), $dt = this.dt;
       $icons.click(function () {
         $container.html('<h3>Icongroup information loading...</h3>');
         var $this = $(this),

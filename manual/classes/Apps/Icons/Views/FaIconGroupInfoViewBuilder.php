@@ -32,17 +32,14 @@ use Sphp\Html\Lists\Ul;
  */
 class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
 
-  public function __construct(IconViewer $iconfactory = null) {
-    parent::__construct($iconfactory);
-  }
 
   public function createHtmlFor(IconGroup $iconGroup): Component {
-    $iconGroupContainer = new \Sphp\Html\Flow\Section();
+    $iconGroupContainer = new Section();
     $iconGroupContainer->addCssClass('icon-group');
-     if ($iconGroup->count() > 1) {
-      $iconGroupContainer->appendH3($iconGroup->getIconSetName() . ' ' . 'Information for ' . $iconGroup->getLabel() . ' icon group');
+    if ($iconGroup->count() > 1) {
+      $iconGroupContainer->appendH3($iconGroup->getIconSetName() . ' ' . $iconGroup->getLabel() . ' icon group');
     } else {
-      $iconGroupContainer->appendH3($iconGroup->getIconSetName() . ' ' . 'Information for ' . $iconGroup->getLabel() . ' icon');
+      $iconGroupContainer->appendH3($iconGroup->getIconSetName() . ' ' . $iconGroup->getLabel() . ' icon');
     }
     foreach ($iconGroup->getIcons() as $icon) {
       $iconGroupContainer->append($this->buildIcon($icon));
@@ -60,39 +57,24 @@ class FaIconGroupInfoViewBuilder extends IconGroupInfoViewBuilder {
     return $grid;
   }
 
-  public function createIconInfo1(IconData $iconData): Ul {
+  public function createIconInfo1(IconData $iconData): Section {
+    $section = new Section();
+    $section->addCssClass('icon-group-info');
     $ul = new Ul();
-    // $ul->append('<strong>Icon Set:</strong> ' . $iconData->getIconSetName())->addCssClass('icon-set-name');
-    //$ul->append('<strong>Label:</strong> ' . $iconData->getLabel())->addCssClass('icon-label');
-
-    $ul->append('<strong>CSS class:</strong> ' . $iconData->getName())->addCssClass('icon-name');
+    $ul->addCssClass('no-bullet');
+    $section->append($ul);
+    $ul->append('<strong>CSS class:</strong> <span class="value">' . $iconData->getName() . '</span> <span class="fas fa-copy">copy</span>')->addCssClass('icon-name');
     $classLinker = $method = Factory::sami()->classLinker(FontAwesome::class);
-    $link = $classLinker->getLink(FontAwesome::class . "::i('" . $iconData->getName() . "')");
+    $link = $classLinker->getLink('\\'.FontAwesome::class . "::i('" . $iconData->getName() . "')")->addCssClass('value');
     $ul->append('<strong>PHP factory call:</strong> ' . $link);
-    return $ul->addCssClass('no-bullet');
-  }
-
-  public function createHtmlFor1(IconGroup $iconGroup): Component {
-    $container = new Section();
-    $container->addCssClass('icon-group-info');
-    $classLinker = $method = Factory::sami()->classLinker(FontAwesome::class);
-    if ($iconGroup->count() > 1) {
-      $container->appendH3('Information for ' . $iconGroup->getLabel() . ' icon group');
-    } else {
-      $container->appendH3('Information for ' . $iconGroup->getLabel() . ' icon');
-    }
-    $container->appendH4('Icon <small>versions</small>');
-    $container->append($this->create($iconGroup));
-    $link = $classLinker->getLink(FontAwesome::class . "::i('" . $iconGroup->getGroupName() . "-plain')");
-    $container->append("Font icon example: $link");
-    return $container;
+    return $section;
   }
 
   public function createIconInfo(IconData $iconData) {
-    $row = new \Sphp\Html\Flow\Section();
+    $row = new Section();
     $icon = $this->getIconViewer()->createIcon($iconData);
     $row->appendArticle($icon)->addCssClass('icon-cell text-center');
-    $row->appendArticle('<span class="icon-name">' . $iconData->getName() . '</span>  <span class="fas fa-copy">copy</span>')->addCssClass('icon-info-cell');
+    $row->appendArticle('<span class="icon-name">' . $iconData->getName() . '</span> <span class="fas fa-copy">copy</span>')->addCssClass('icon-info-cell');
     return $row;
   }
 

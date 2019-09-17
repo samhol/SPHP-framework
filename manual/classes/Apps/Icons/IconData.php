@@ -68,7 +68,7 @@ class IconData {
   }
 
   public function getIconSetName(): string {
-    return 'FontAwesome';
+    return 'Font Awesome';
   }
 
 }

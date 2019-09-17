@@ -19,21 +19,18 @@
   }
 
   .icon-section {
-    margin: 1rem 0 0;
-    padding-bottom: 1rem;
-    &:not(:last-child) {
-      border-bottom: 1px solid rgba(#222, .5);
-    }
-
+    margin: rem-calc(1);
+    padding: rem-calc(10 10 10 10);
+    border: 1px solid rgba(#888, .4);
+    background: rgba(#f3f3f3, .3);
     .icon {
       margin: rem-calc(0 30 10 20);
       font-size: rem-calc(50);
     }
-
-    .about-icon {
-
+    .i
+    .value {
+      margin-left: rem-calc(20);
     }
-
     .functionality {
       display: flex;
       align-items: center;

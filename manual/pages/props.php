@@ -3,74 +3,14 @@
 use Sphp\Manual\Apps\Icons\DataFactory;
 use Sphp\Manual\Apps\Icons\IconGroup;
 use Sphp\Manual\Apps\Icons\FaIconGroup;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
 echo '<pre>';
-$iconsData = DataFactory::fontawesomeFromYaml('/home/int48291/public_html/playground/manual/snippets/icons/fontawesome/icons.yml');
-$controller = new \Sphp\Manual\Apps\Icons\FaGroupController($iconsData);
-$types = ['fas' => 'Solid', 'far' => 'Regular', 'fab' => 'Brand'];
-$typeMap = ['solid' => 'fas', 'regular' => 'far', 'brands' => 'fab'];
-$type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING, ['default' => 'regular']);
-if ($type === null) {
-  $type = 'regular';
+$foo = [];
+foreach (ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/fontawesome/icons.yml') as $k => $data) {
+  $data['name'] = $k;
+  $data['searchTerms'] = $data['search']['terms'];
+  $data['factoryName'] = 'Font Awesome';
+  $foo[] = new \Sphp\Manual\Apps\Icons\Data\IconGroupData($data);
 }
-echo '</pre>';
-$iconsData = $iconsData->filter(function(IconGroup $iconData) use ($type) {
-  if ($iconData instanceof FaIconGroup) {
-    return in_array($type, $iconData->getStyles());
-  }
-  return false;
-});
-$info = new Sphp\Manual\Apps\Icons\Views\InfoVievs();
-
-//echo '<div class="icon-info-popup">' . $info->createHtmlFor($iconsData->getGroup('address-book')) . "</div>";
-//var_dump($iconsData);
-//$show = $typeMap[$type];
-use Sphp\Manual\Apps\Icons\Views\IconsView;
-use Sphp\Manual\Apps\Icons\Views\FaIconGroupInfoViewBuilder;
-
-$cells = new IconsView();
-$cells->setHeading('Fontawesome <small>Regular Icons</small>');
-$devData = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
-//echo $cells->getHtmlFor($controller->getData($type));
-//echo (new IconsView())->getHtmlFor($iconsData);
-echo (new FaIconGroupInfoViewBuilder())->createHtmlFor($iconsData->getGroup('address-book'));
-?>
-
-<div class="icon-group">
-  <div class="add-people-header">
-    <h6 class="header-title">
-      Facebook icons
-    </h6>
-  </div>
-  <div class="grid-x icon-section">
-    <div class="small-12 medium-6 cell about-icon">
-      <div class="icon">
-        <i class="fab fa-facebook icon"></i>
-      </div>
-      <div class="about-icon-author">
-        <p class="author-name">
-          Facebook icon
-        </p>
-        <p class="icon-set">
-          <strong>Icon Set:</strong> FontAwesome
-        </p>
-        <p class="author-mutual">
-          <strong>Shahrukh Khan</strong> is a mutual friend.
-        </p>
-      </div>    
-    </div>
-    <div class="small-12 medium-6 cell functionality text-center">
-      <div class="add-friend-action">
-        <button class="button primary small">
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          copy icon class
-        </button>
-        <button class="button secondary small">
-          <i class="fa fa-user-times" aria-hidden="true"></i>
-          copy PHP call
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
+print_r($foo);
