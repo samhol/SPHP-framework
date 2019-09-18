@@ -10,41 +10,30 @@
 
 namespace Sphp\Manual\Apps\Icons\Data;
 
+use Sphp\Html\Media\Icons\Icon;
+
 /**
- * Implementation of IconGroupData
+ * Implementation of DeviconData
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-abstract class IconGroupData {
+class DeviconData extends IconData {
 
-  /**
-   * @var array
-   */
-  private $props;
-
-  public function __construct(array $data) {
-    $this->props = $data;
+  public function isSvg() :bool {
+    return $this->getProperty('type') === 'svg';
+  }
+  
+  public function createIcon(): Icon {
+    $factory = $this->getProperty('factory');
+    return (new $factory)->get($this->getIconName());
   }
 
-  public function getProperty(string $name) {
-    if (!array_key_exists($name, $this->props)) {
-      throw new \Exception("$name not present");
-    }
-    return $this->props[$name];
+  public function getIconName(): string {
+
+    return $this->getProperty('font');
   }
-
-  public function __get(string $name) {
-    return $this->getProperty($name);
-  }
-
-  public function toArray(): array {
-    return $this->props;
-  }
-
-  public abstract function getIcons(): array;
-
 
 }

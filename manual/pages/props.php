@@ -1,16 +1,19 @@
 <?php
 
-use Sphp\Manual\Apps\Icons\DataFactory;
+use Sphp\Manual\Apps\Icons\Data\DataFactory;
 use Sphp\Manual\Apps\Icons\IconGroup;
 use Sphp\Manual\Apps\Icons\FaIconGroup;
 use Sphp\Stdlib\Parsers\ParseFactory;
 
 echo '<pre>';
-$foo = [];
-foreach (ParseFactory::fromFile('/home/int48291/public_html/playground/manual/snippets/icons/fontawesome/icons.yml') as $k => $data) {
-  $data['name'] = $k;
-  $data['searchTerms'] = $data['search']['terms'];
-  $data['factoryName'] = 'Font Awesome';
-  $foo[] = new \Sphp\Manual\Apps\Icons\Data\IconGroupData($data);
+$foo = DataFactory::deviconsFromJson('/home/int48291/public_html/playground/manual/snippets/icons/devicon/devicon.json');
+foreach ($foo as $name => $group) {
+  //print_r($group);
+  foreach ($group->getIcons() as $k => $icon) {
+    if ($icon->isSvg()) {
+      echo $icon->getProperty('name') . '-' . $icon->getProperty('style') . "\n";
+      //print_r($icon);
+    }
+    //echo $icon->createIcon();
+  }
 }
-print_r($foo);

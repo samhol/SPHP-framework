@@ -11,14 +11,14 @@
 namespace Sphp\Manual\Apps\Icons\Data;
 
 /**
- * Implementation of IconGroupData
+ * Implementation of AbstractData
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-abstract class IconGroupData {
+class AbstractData {
 
   /**
    * @var array
@@ -29,9 +29,16 @@ abstract class IconGroupData {
     $this->props = $data;
   }
 
+  public function __destruct() {
+    unset($this->props);
+  }
+  public function hasProperty(string $name):bool {
+    return array_key_exists($name, $this->props);
+  }
+
   public function getProperty(string $name) {
     if (!array_key_exists($name, $this->props)) {
-      throw new \Exception("$name not present");
+      throw new Exception("$name not present");
     }
     return $this->props[$name];
   }
@@ -39,12 +46,13 @@ abstract class IconGroupData {
   public function __get(string $name) {
     return $this->getProperty($name);
   }
+  
+  public function __isset(string $name):bool {
+    return $this->hasProperty($name);
+  }
 
   public function toArray(): array {
     return $this->props;
   }
-
-  public abstract function getIcons(): array;
-
 
 }
