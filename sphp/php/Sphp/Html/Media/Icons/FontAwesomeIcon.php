@@ -40,7 +40,7 @@ class FontAwesomeIcon extends IconTag {
    * @return $this for a fluent interface
    */
   public function setTitle(string $title = null) {
-    $this->attributes()->set('title', $title);
+    $this->attributes()->setAttribute('title', $title);
     if ($title !== null) {
       $this->attributes()->remove('aria-hidden');
     }
