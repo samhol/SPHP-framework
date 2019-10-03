@@ -6,9 +6,9 @@ Nowadays it is an open source framework for developing interactive web
 applications and services in object oriented PHP. SPHPlayground is used as 
 in all my latest PHP related projects.  
 
-<hr> 
+--- 
 
-<div class="button-group small align-right">
+<div class="stacked-for-small button-group small align-right">
   <a class="button" href="http://playground.samiholck.com/">
     <i class="fas fa-home"></i> Official site
   </a>
