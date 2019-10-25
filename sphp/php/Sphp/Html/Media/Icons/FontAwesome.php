@@ -53,7 +53,7 @@ class FontAwesome extends IconFactory {
    * @return IconTag
    */
   public function createIcon(string $iconName, string $tagname = 'i'): IconTag {
-    $icon = new FontAwesomeIcon($iconName, $tagname);
+    $icon = new FontAwesomeIcon($iconName);
     $this->insertIconAttributesTo($icon);
     $this->setCssClassesTo($icon);
     return $icon;

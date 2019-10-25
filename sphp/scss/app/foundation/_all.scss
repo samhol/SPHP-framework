@@ -6,16 +6,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-@mixin sphp-tech-list() {
-  .sphp-tech-list {	
-    @include auto-width(5, "a");
-    margin: 0px;
-    padding: 0px;
-    a {	
-      @include opacity(0.7);
-      &:hover {	
-        @include opacity(1);
-      }
-    }
-  } 
+@import "top-bar";
+@import "fixes"; 
+@import "card-reveal";
+@import "menu-ruler";
+
+@mixin sphp-foundation-addons() { 
+  @include sphp-responsive-bar;
+  @include sphp-top-bar;
+  @include sphp-remove-outlines;
 }

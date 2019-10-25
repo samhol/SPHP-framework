@@ -12,6 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Controllers\MenuButton;
+
 /**
  * Implements a responsive Foundation bar container
  *
@@ -32,6 +33,11 @@ class ResponsiveBar extends AbstractComponent {
    * @var TopBar 
    */
   private $topBar;
+
+  /**
+   * @var MenuButton
+   */
+  private $titleBarMenuButton;
 
   /**
    * Constructor
@@ -60,10 +66,15 @@ class ResponsiveBar extends AbstractComponent {
     parent::__destruct();
   }
 
+  public function getMenuButton(): MenuButton {
+    return $this->titleBarMenuButton;
+  }
+
   protected function pairBars() {
     $id = $this->topbar()->identify();
     $this->titleBar->attributes()->setAttribute('data-responsive-toggle', $id)->setAttribute('data-hide-for', 'medium');
-    $this->titleBar->left()->append((new MenuButton('Open left menu'))->setAttribute('data-toggle', true));
+    $this->titleBarMenuButton = (new MenuButton('Open left menu'))->setAttribute('data-toggle', true);
+    $this->titleBar->left()->append($this->titleBarMenuButton);
   }
 
   /**

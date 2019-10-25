@@ -9,6 +9,7 @@
   "dependencies": {
     "clipboard-polyfill": ">=2.7.0",
     "foundation-sites": ">=6.5.3",
+    "gulp-install": "^1.1.0",
     "ion-rangeslider": ">=2.3.0",
     "jquery": "^3.4.1",
     "lazyloadxt": ">=1.1.0",
@@ -36,7 +37,7 @@
     "gulp-watch": "^5.0.1",
     "motion-ui": "^2.0.3",
     "node-sass": "^4.11.0",
-    "npm": "^6.10.2",
+    "npm": "^6.12.0",
     "npm-check-updates": "^3.1.1"
   },
   "scripts": {

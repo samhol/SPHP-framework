@@ -14,6 +14,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Component;
 use Sphp\Network\Headers\Cookies;
 use Sphp\Html\PlainContainer;
+use Sphp\Html\Flow\Section;
 use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Grids\BasicRow;
 
@@ -33,7 +34,7 @@ class CookieBanner extends AbstractComponent {
   private $complyCookieName = 'comply_cookie';
 
   /**
-   * @var PlainContainer
+   * @var Section
    */
   private $text;
 
@@ -44,8 +45,8 @@ class CookieBanner extends AbstractComponent {
 
   public function __construct() {
     parent::__construct('div');
-    $this->addCssClass('sphp', 'cookie-banner', 'text-center');
-    $this->text = new PlainContainer();
+    $this->addCssClass('sphp', 'cookie-banner-container');
+    $this->text = new Section();
     $this->setAcceptButton('<i class="far fa-check-circle"></i> Accept cookies');
   }
 
@@ -59,7 +60,7 @@ class CookieBanner extends AbstractComponent {
     return $this;
   }
 
-  public function contentContainer(): PlainContainer {
+  public function contentContainer(): Section {
     return $this->text;
   }
 
@@ -74,10 +75,12 @@ class CookieBanner extends AbstractComponent {
   }
 
   public function contentToString(): string {
-    $row = new BasicRow();
-    $row->appendCell($this->text);
-    $row->addCssClass('align-center-middle');
-    return $row . $this->acceptBtn;
+    $row = new \Sphp\Html\Div();
+    $row->addCssClass('sphp cookie-banner text-center');
+    $row->append($this->text);
+    $row ->append($this->acceptBtn);
+   // $row->addCssClass('align-center-middle');
+    return "$row"; 
   }
 
   public function getHtml(): string {

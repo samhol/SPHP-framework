@@ -7,7 +7,8 @@ use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 
 $p = Tags::p();
 $adapter = new VisibilityAdapter($p);
+
 foreach (new ScreenSizes as $size) {
   $adapter->showFromUp($size);
-  echo $p($p->cssClasses()->getValue());
+  echo $p->resetContent($p->cssClasses());
 }

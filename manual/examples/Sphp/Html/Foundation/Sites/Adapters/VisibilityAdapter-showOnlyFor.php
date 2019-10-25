@@ -8,6 +8,6 @@ use Sphp\Html\Foundation\Sites\Core\ScreenSizes;
 $p = Tags::p();
 $adapter = new VisibilityAdapter($p);
 foreach (new ScreenSizes as $size) {
-  $adapter->showOnlyFor($size);
-  echo $p($p->cssClasses()->getValue());
+  $adapter->showOnlyFor($size); 
+  echo $p->resetContent($p->cssClasses());
 }

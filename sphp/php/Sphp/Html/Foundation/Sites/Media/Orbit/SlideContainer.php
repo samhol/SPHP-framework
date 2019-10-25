@@ -33,6 +33,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    * @var Slide[]
    */
   private $slides = [];
+  private $bullets;
 
   /**
    * Constructor
@@ -57,7 +58,6 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    * @return Slide appended instance
    */
   public function append($slide): Slide {
-
     if (!($slide instanceof Slide)) {
       $slide = new HtmlSlide($slide);
     }
@@ -73,7 +73,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    * @return FigureSlide appended instance
    */
   public function appendFigure($img, $caption = null): FigureSlide {
-    $slide = new FigureSlide($img, $caption);
+    $slide = FigureSlide::create($img, $caption);
     $this->append($slide);
     return $slide;
   }

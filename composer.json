@@ -20,19 +20,19 @@
     "geshi/geshi": ">=1",
     "jdorn/sql-formatter": ">=1.2",
     "gajus/dindent": ">=2.0",
-    "zendframework/zend-cache": "*",
-    "zendframework/zend-config": "*",
-    "zendframework/zend-i18n": "*",
-    "zendframework/zend-paginator": "*",
-    "zendframework/zend-mail": "*",
-    "symfony/yaml": ">=3.0",
+    "zendframework/zend-cache": "@stable",
+    "zendframework/zend-config": "@stable",
+    "zendframework/zend-i18n": "@stable",
+    "zendframework/zend-paginator": "@stable",
+    "zendframework/zend-mail": "@stable",
+    "symfony/yaml": "@stable",
     "mpdf/mpdf": "*"
   },
   "require-dev": {
     "phpunit/phpunit": ">=8",
-    "phpunit/php-code-coverage": "*",
+    "phpunit/php-code-coverage": "@stable",
     "mockery/mockery": "@stable",
-    "eloquent/phony-phpunit": "*",
+    "eloquent/phony-phpunit": "@stable",
     "mikey179/vfsstream": "~1"
   },
   "autoload": {

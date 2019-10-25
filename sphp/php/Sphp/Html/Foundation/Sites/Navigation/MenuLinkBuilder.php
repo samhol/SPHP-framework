@@ -152,9 +152,8 @@ class MenuLinkBuilder {
     $target = $this->parseTarget($linkData);
     $linkText = $this->pareLinkText($linkData);
     $link = new MenuLink($href, $linkText, $target);
-    if (is_callable($this->activator)) {
-      $t = $this->getActivator();
-      $link->setActive($t($linkData));
+    if ($this->currentPage === $href) {
+      $link->setActive(true);
     }
     if (array_key_exists('tipso', $linkData)) {
       new TipsoAdapter($link, $linkData['tipso']);

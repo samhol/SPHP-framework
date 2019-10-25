@@ -28,7 +28,7 @@ class FontAwesomeIcon extends IconTag {
    * @param string $title the title of the icon
    */
   public function __construct(string $iconName, string $title = null) {
-    parent::__construct('i');
+    parent::__construct($iconName);
     $this->cssClasses()->protectValue($iconName);
     $this->setTitle($title);
   }

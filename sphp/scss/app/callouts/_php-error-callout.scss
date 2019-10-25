@@ -1,6 +1,10 @@
-
-@charset "UTF-8";
-
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
 $error-bg: rgba(255,127,80, 0.40);
 
 @mixin sphp-php-callout($type, $color: $error-bg) { 

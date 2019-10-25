@@ -16,6 +16,7 @@ $menu-link-color: #f4f4f4;
 $menu-link-color-active: #fff;
 $root-border-color: #333;
 $menu-font-size: rem-calc(13);
+
 @mixin sphp-foundation-menu() {
 
   .sphp.menu {

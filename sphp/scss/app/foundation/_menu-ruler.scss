@@ -5,13 +5,14 @@
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
+@mixin menu-ruler() {
+  .menu {
+    &.vertical {
+      li.menu-ruler {
+        height: 2px; 
+        background: #ddd;
 
-@import "top-bar";
-@import "fixes"; 
-@import "card-reveal";
-
-@mixin sphp-foundation-addons() { 
-  @include sphp-responsive-bar;
-  @include sphp-top-bar;
-  @include sphp-remove-outlines;
+      }
+    }
+  }
 }

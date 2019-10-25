@@ -13,6 +13,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\Img;
 use Sphp\Html\Media\FigCaption;
+use Sphp\Html\Media\Figure;
 
 /**
  * Implements a figure slide for Orbit
@@ -29,74 +30,58 @@ class FigureSlide extends AbstractComponent implements Slide {
   use ActivationTrait;
 
   /**
-   * the image component
-   *
-   * @var Img 
-   */
-  private $img;
-
-  /**
    * the caption component
    *
-   * @var FigCaption
+   * @var Figure
    */
-  private $caption;
+  private $figure;
 
   /**
    * Constructor
    *
-   * @param  string|URL|Img $img the image path or the image component
-   * @param  mixed|FigCaption $caption the caption content or the caption component
+   * @param  FigCaption $figure the caption content or the caption component
    */
-  public function __construct($img, $caption = null) {
+  public function __construct(Figure $figure) {
     parent::__construct('li');
     $this->cssClasses()
             ->protectValue('orbit-slide');
-    if (!($img instanceof Img)) {
-      $img = new Img($img);
-    }
-    $this->img = $img;
-    $this->img->cssClasses()
-            ->protectValue('orbit-image');
-    if (!($caption instanceof FigCaption)) {
-      $caption = new FigCaption($caption);
-    }
-    $this->caption = $caption;
-    $this->caption->cssClasses()
+    $this->figure = $figure->addCssClass('orbit-figure');
+    $this->figure->getImg()->addCssClass('orbit-image');
+    $this->figure->getCaption()->cssClasses()
             ->protectValue('orbit-caption');
   }
 
   public function __destruct() {
-    unset($this->img, $this->caption);
+    unset($this->figure);
     parent::__destruct();
   }
 
   public function __clone() {
-    $this->img = clone $this->img;
-    $this->caption = clone $this->caption;
+    $this->figure = clone $this->figure;
     parent::__clone();
   }
 
   /**
    * Returns the image component
    *
-   * @return Img the image component
+   * @return Figure the image component
    */
-  public function getImg(): Img {
-    return $this->img;
-  }
-
-  /**
-   * Returns the caption component
-   *
-   * @return FigCaption the caption component
-   */
-  public function getCaption(): FigCaption {
-    return $this->caption;
+  public function getFigure(): Figure {
+    return $this->figure;
   }
 
   public function contentToString(): string {
-    return $this->img . $this->caption;
+    return $this->figure->getHtml();
   }
 
+  /**
+   * 
+   * @param  string $img
+   * @param  string $caption
+   * @return FigureSlide
+   */
+  public static function create(string $img, string $caption): FigureSlide {
+    $fig = new Figure($img, $caption);
+    return new static($fig);
+  }
 }

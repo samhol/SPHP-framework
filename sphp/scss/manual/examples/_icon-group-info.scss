@@ -7,30 +7,57 @@
  */
 
 .icon-group {
-  background-color: rgba(#fff, .85);
-  padding: 1rem 0 0 0;
-  // border: 1px solid $medium-gray;
+  background-color: $white;
+  padding: 1rem 0 0;
+  border: 1px solid $medium-gray;
   box-shadow: 0 0 rem-calc(50) rgba(0,0,0, 0.18);
 
-  h3 {
+  .add-people-header {
     padding: 0 0.9375rem;
     border-bottom: 0.0625rem solid $medium-gray;
-    font-weight: bold;  
+
+    .header-title {
+      font-weight: bold;
+    }
   }
 
   .icon-section {
-    margin: rem-calc(1);
-    padding: rem-calc(10 10 10 10);
-    border: 1px solid rgba(#888, .4);
-    background: rgba(#f3f3f3, .3);
-    .icon {
-      margin: rem-calc(0 30 10 20);
-      font-size: rem-calc(50);
+    margin: 1rem 0 0;
+    padding-bottom: 1rem;
+    border-bottom: 0.0625rem solid $medium-gray;
+
+    .about-icon {
+      display: flex;
+      align-items: flex-start;
+
+      .icon {
+        padding: 0.5rem;
+
+        .icon {
+          font-size: rem-calc(80);
+          i {    
+            font-size: rem-calc(80);
+          }
+        }
+      }
+
+      .about-icon-author {
+        flex: 1 0 0;
+
+        .author-name {
+          color: $black;
+          margin: 0.375rem 0 0;
+        }
+
+        .icon-set,
+        .author-mutual {
+          color: $dark-gray;
+          margin-bottom: 0;
+          font-size: 0.85em;
+        }
+      }
     }
-    .i
-    .value {
-      margin-left: rem-calc(20);
-    }
+
     .functionality {
       display: flex;
       align-items: center;

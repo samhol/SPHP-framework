@@ -124,9 +124,8 @@ class SphpDocument extends AbstractContent {
    * @return $this for a fluent interface
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
-  public function useFontAwesome(string $id = null, string $integrity = null) {
+  public function useFontAwesome(string $id = null) {
     $this->head()->set((new ScriptSrc("https://kit.fontawesome.com/$id.js"))
-                    ->setIntegrity($integrity, 'anonymous')
                     ->setDefer(true));
     return $this;
   }
@@ -192,7 +191,7 @@ class SphpDocument extends AbstractContent {
    * @return $this for a fluent interface
    */
   public function documentClose() {
-    echo $this->getDocumentClose();
+    echo $this->html()->getDocumentClose();
     return $this;
   }
 

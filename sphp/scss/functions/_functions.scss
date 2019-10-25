@@ -6,6 +6,17 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;       
+  box-shadow: $shadow;
+}
 
 @mixin border-radius($radius: 3px) {
   border-radius: $radius;
