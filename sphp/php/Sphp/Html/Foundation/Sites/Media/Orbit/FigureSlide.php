@@ -25,9 +25,8 @@ use Sphp\Html\Media\Figure;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FigureSlide extends AbstractComponent implements Slide {
+class FigureSlide extends AbstractSlide {
 
-  use ActivationTrait;
 
   /**
    * the caption component
@@ -39,12 +38,10 @@ class FigureSlide extends AbstractComponent implements Slide {
   /**
    * Constructor
    *
-   * @param  FigCaption $figure the caption content or the caption component
+   * @param  Figure $figure the caption content or the caption component
    */
   public function __construct(Figure $figure) {
-    parent::__construct('li');
-    $this->cssClasses()
-            ->protectValue('orbit-slide');
+    parent::__construct();
     $this->figure = $figure->addCssClass('orbit-figure');
     $this->figure->getImg()->addCssClass('orbit-image');
     $this->figure->getCaption()->cssClasses()
@@ -84,4 +81,5 @@ class FigureSlide extends AbstractComponent implements Slide {
     $fig = new Figure($img, $caption);
     return new static($fig);
   }
+
 }
