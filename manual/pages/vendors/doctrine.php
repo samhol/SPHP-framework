@@ -17,7 +17,7 @@ foreach ($objects as $name => $object) {
     $doctrineIntro->slides()->append($section)->addCssClass('doctrine');
   }
 }
-$section = new Section();
-$section->appendMdFile('manual/pages/Sphp-intro/libraries.php');
-$doctrineIntro->slides()->append($section);
+//$section = new Section();
+//$section->appendMdFile('manual/pages/Sphp-intro/libraries.php');
+//$doctrineIntro->slides()->append($section);
 $doctrineIntro->printHtml();

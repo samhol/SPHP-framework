@@ -24,9 +24,7 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class ResponsiveEmbedSlide extends AbstractComponent implements Slide, ResponsiveEmbedInterface {
-
-  use ActivationTrait;
+class ResponsiveEmbedSlide extends AbstractSlide implements ResponsiveEmbedInterface {
 
   /**
    * the flex component instance
@@ -41,8 +39,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements Slide, Responsiv
    * @param ResponsiveEmbedInterface $embed the inner component
    */
   public function __construct(ResponsiveEmbedInterface $embed = null) {
-    parent::__construct('li');
-    $this->cssClasses()->protectValue('orbit-slide');
+    parent::__construct();
     if (!($embed instanceof ResponsiveEmbed)) {
       $embed = new ResponsiveEmbed($embed);
     }
