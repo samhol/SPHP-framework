@@ -9,7 +9,7 @@
  */
 
 namespace Sphp\Network\Headers;
-
+use Sphp\Network\Utils;
 /**
  * Implementation of Cookies
  *
@@ -112,7 +112,7 @@ class Cookies {
     }
 
     // if the provided domain is actually an IP address
-    if (\filter_var($domain, \FILTER_VALIDATE_IP) !== false) {
+    if (Utils::isValidIp($domain)) {
       // let the cookie be valid for the current host
       return null;
     }

@@ -10,6 +10,8 @@ $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
 
 $cacheSuffix = str_replace(['.', '/', ':'], ['-', '', ''], $redirect) . "-cache";
 
+$controller = new \Sphp\Apps\Trackers\Controller('localhost','int48291_statistics', 'nO,pAS[4=tVv', 'int48291_statistics');
+$controller->run();
 if ($outputCache->start("$cacheSuffix-page") === false) {
 
   //$cookie = (new Cookie('comply_cookie'))->delete();

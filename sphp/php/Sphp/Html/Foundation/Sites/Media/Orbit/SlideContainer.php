@@ -140,7 +140,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    * @param  int $slideNo
    * @return Bullet
    */
-  public function getSlide(int $slideNo): ?Slide {
+  public function getSlide(int $slideNo): Slide {
     return $this->slides[$slideNo];
   }
 

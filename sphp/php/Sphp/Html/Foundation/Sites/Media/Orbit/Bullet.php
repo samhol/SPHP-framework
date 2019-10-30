@@ -49,8 +49,10 @@ class Bullet extends AbstractComponent {
    * @param string $slideText
    * @param string $currentSlideText
    */
-  public function __construct(string $slideText = null, string $currentSlideText = 'Current Slide') {
+  public function __construct(int $slideNo, $slideText = null, $currentSlideText = 'Current Slide') {
+    $this->number = $slideNo;
     parent::__construct('button');
+    $this->attributes()->protect('data-slide', $slideNo);
     $this->createSpans($slideText, $currentSlideText);
   }
 
@@ -90,19 +92,13 @@ class Bullet extends AbstractComponent {
     $this->currentDescriptor->resetContent($description);
     return $this;
   }
-  
-  public function setSlideIndex(int $index) {
-    $this->number = $index;
-    $this->attributes()->setAttribute('data-slide', $index);
-    return $this;
-  }
 
   /**
    * Returns the slide index
    * 
    * @return int slide index
    */
-  public function getSlideNo(): ?int {
+  public function getSlideNo(): int {
     return $this->number;
   }
 

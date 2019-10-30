@@ -20,7 +20,7 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method \Sphp\Database\Query query(string $dbName) Returns a new `SELECT` statement object for the named database
  * @method \Sphp\Database\Delete delete(string $dbName) Returns a new `DELETE` statement object for the named database
  * @method \Sphp\Database\Update update(string $dbName) Returns a new `UPDATE` statement object for the named database
- * @method \Sphp\Database\Insert insert(string $dbName) Returns a new `INSERT` statement object for the named database
+ * @method \Sphp\Database\Insert insertVisitor(string $dbName) Returns a new `INSERT` statement object for the named database
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

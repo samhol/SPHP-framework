@@ -20,7 +20,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface Slide extends \Sphp\Html\Component {
+interface Slide {
 
   /**
    * Sets the slide as active or not
@@ -36,6 +36,4 @@ interface Slide extends \Sphp\Html\Component {
    * @return boolean true if the slide component is set as active, otherwise false
    */
   public function isActive(): bool;
-  
-  public function getBullet($slideText, $currentSlideText): Bullet;
 }
