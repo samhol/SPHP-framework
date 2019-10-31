@@ -10,23 +10,23 @@
       "email": "sami.holck@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=7.2",
-    "doctrine/orm": ">=2.5",
-    "sepia/po-parser": ">=5",
-    "imagine/imagine": ">=0.7",
-    "tovic/parsedown-extra-plugin": "dev-master",
-    "geshi/geshi": ">=1",
-    "jdorn/sql-formatter": ">=1.2",
-    "gajus/dindent": ">=2.0",
+    "doctrine/orm": "2.6.4",
+    "sepia/po-parser": "5.1.7",
+    "imagine/imagine": "@stable",
+    "tovic/parsedown-extra-plugin": "1.1.6",
+    "geshi/geshi": "@stable",
+    "jdorn/sql-formatter": "@stable",
+    "gajus/dindent": "@stable",
     "zendframework/zend-cache": "@stable",
     "zendframework/zend-config": "@stable",
     "zendframework/zend-i18n": "@stable",
     "zendframework/zend-paginator": "@stable",
     "zendframework/zend-mail": "@stable",
     "symfony/yaml": "@stable",
-    "mpdf/mpdf": "*"
+    "mpdf/mpdf": "@stable",
+    "browscap/browscap-php": "@stable"
   },
   "require-dev": {
     "phpunit/phpunit": ">=8",
