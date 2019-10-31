@@ -39,8 +39,8 @@ class Controller {
 
     $current = time();
     $year = 31536000 + time();
-    $user->setData($this->db->getUserData($user));
     if ($user !== null && $this->db->contains($user)) {
+      $user->setData($this->db->getUserData($user));
       $change = $current - $user->getLastVisit();
       $delay = 160 * 60 * 3;
       if ($change > $delay) {//60 * 60 * 24
@@ -60,7 +60,8 @@ class Controller {
       // setcookie('lastVisit', $current, $year);
     } else {
       $user = User::generate();
-      // $id = $user->getId();
+      $user->setData($this->db->getUserData($user));
+      // $id = $user->getUID();
       //$id = $saver->insertVisitor();
       $this->db->insertVisitor($user);
       $outputs[] = "Welcome to our site!";
@@ -68,7 +69,7 @@ class Controller {
     }
 
     $this->db->addSiteRefresh($user, URL::getCurrent()->getPath());
-    setcookie('visitor_id', $user->getId(), $year);
+    setcookie('visitor_id', $user->getUID(), $year);
     setcookie('lastVisit', $current, $year);
     $outputs[] = "Total visits: " . $this->db->countVisits();
     $outputs[] = "Your visits: " . $this->db->countVisits($user);
@@ -92,10 +93,10 @@ class Controller {
     // echo $view->buildSiteTable();
   }
 
-  public function ViewData() {
+  public function vewData() {
     $view = new VisitsView($this->db);
     echo $view->buildTotals();
-    echo $view->buildSiteTable();
+    echo $view->buildSiteTable()->addCssClass('site-table');
   }
 
 }

@@ -9,6 +9,7 @@
 namespace Sphp\Apps\Trackers;
 
 use Sphp\Stdlib\Random\UUID;
+use Sphp\Network\Utils;
 
 /**
  * Description of User
@@ -26,15 +27,16 @@ class User {
    * @var int
    */
   private $lastVisit;
-  
+  private $visits;
   private $data;
 
   public function __construct(string $uid, int $last = null) {
     $this->uid = $uid;
     $this->updateLastVisit($last);
+    $this->data = new \stdClass();
   }
 
-  public function getId(): string {
+  public function getUID(): string {
     return $this->uid;
   }
 
@@ -49,8 +51,17 @@ class User {
   public function getLastVisit(): int {
     return $this->lastVisit;
   }
+
   public function getData() {
     return $this->data;
+  }
+
+  public function getIp(): string {
+    return Utils::getClientIp();
+  }
+
+  public function getUserAgent(): string {
+    return Utils::getHttpUserAgent();
   }
 
   public function setData($data) {
@@ -58,7 +69,7 @@ class User {
     return $this;
   }
 
-    public static function generate(): User {
+  public static function generate(): User {
     $token = UUID::v5(UUID::v4(), 'tracker');
     return new self($token);
   }

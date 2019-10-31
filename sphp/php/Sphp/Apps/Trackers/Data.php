@@ -24,6 +24,10 @@ use Sphp\Network\Utils;
  * @filesource
  */
 class Data {
+  
+  const IP = 'ip';
+  const USER_AGENT = 'browser';
+  const LAST_VISIT = 'lastVisit';
 
   /**
    * @var PDO
@@ -47,13 +51,27 @@ class Data {
 
   public function contains(User $u): bool {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM visitors WHERE uid = ? LIMIT 1');
-    $stmt->execute([$u->getId()]);
+    $stmt->execute([$u->getUID()]);
     return $stmt->fetchColumn() !== false;
   }
 
   public function getUserData(User $user): ?object {
     $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-    $stmt->execute([$user->getId()]);
+    $stmt->execute([$user->getUID()]);
+    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    if ($result === false) {
+      return null;
+    }
+    return $result;
+  }
+
+  public function updateUser(User $user) {
+    if ($this->contains($user)) {
+      $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
+      $stmt->execute([$user->getUID()]);
+    }
+    $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
+    $stmt->execute([$user->getUID()]);
     $result = $stmt->fetch(PDO::FETCH_OBJ);
     if ($result === false) {
       return null;
@@ -68,7 +86,7 @@ class Data {
         $stmt->execute();
       } else {
         $stmt = $this->gettPdo()->prepare("SELECT * FROM siteVisits WHERE uid = ?");
-        $stmt->execute([$user->getId()]);
+        $stmt->execute([$user->getUID()]);
       }
       //$result = $stmt->fetch(PDO::FETCH_OBJ);
     } catch (PDOException $e) {
@@ -80,12 +98,15 @@ class Data {
   public function insertVisitor(User $user): int {
     try {
       $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, lastVisit, ip, browser) VALUES (?, ?, ?, ?)');
-      $data = [$user->getId(), $user->getLastVisit(), Utils::getClientIp(), Utils::getHttpUserAgent()];
+      $data = [$user->getUID(), $user->getLastVisit(), $user->getIp(), $user->getUserAgent()];
       $success = $stmt->execute($data);
       if (!$success) {
         throw new RuntimeException('Data saving faled', 0, $e);
       }
+      //$id = $this->gettPdo()->lastInsertId();
+      // echo $this->gettPdo()->lastInsertId();
       $id = $this->gettPdo()->lastInsertId();
+      // $user->getData()->id = $id;
       // echo "New record created successfully";
       return $id;
     } catch (PDOException $e) {
@@ -96,7 +117,7 @@ class Data {
 
   public function containsUrl(User $u, string $url): bool {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM siteVisits, visitors WHERE visitors.uid = ? AND visitors.id = siteVisits.visitorID AND url = ? LIMIT 1');
-    $stmt->execute([$u->getId(), $url]);
+    $stmt->execute([$u->getUID(), $url]);
     return $stmt->fetchColumn() !== false;
   }
 
@@ -105,7 +126,7 @@ class Data {
 
       //$count = $userData->visits + 1;
       $stmt = $this->gettPdo()->prepare('UPDATE visitors SET visits = visits + 1, lastVisit = ? WHERE uid = ?');
-      $data = [$user->getLastVisit(), $user->getId()];
+      $data = [$user->getLastVisit(), $user->getUID()];
       $success = $stmt->execute($data);
       //$stmt = null;
       // echo "Site revisited successfully";
@@ -115,21 +136,23 @@ class Data {
     return $success;
   }
 
-  
   public function getDBIDFor(User $user) {
     $stmt = $this->gettPdo()->prepare('SELECT id FROM visitors WHERE uid = ?');
-    $stmt->execute([$user->getId()]);
-     $result = $stmt->fetch(PDO::FETCH_OBJ);
+    $stmt->execute([$user->getUID()]);
+    $result = $stmt->fetch(PDO::FETCH_OBJ);
     if ($result === false) {
       return null;
     }
     return $result->id;
   }
+
   public function addSiteRefresh(User $user, string $site) {
     try {
+
       if (!$this->containsUrl($user, $site)) {
+        $id = $this->getDBIDFor($user);
         $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, lastVisit) VALUES (?, ?, ?)');
-        $data = [$user->getData()->id, $site, $user->getLastVisit()];
+        $data = [$id, $site, $user->getLastVisit()];
         $success = $stmt->execute($data);
       } else {
         $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, lastVisit = ? WHERE visitorID = ? AND url = ?');
@@ -145,6 +168,28 @@ class Data {
       throw new RuntimeException('Data saving faled', 0, $e);
     }
     return $success;
+  }
+
+  public function countIps(): int {
+    try {
+      $stmt = $this->gettPdo()->prepare('SELECT COUNT(DISTINCT ip) as count FROM visitors');
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('IP counting failed', 0, $e);
+    }
+    return $result->count;
+  }
+
+  public function countUserAgents(): int {
+    try {
+      $stmt = $this->gettPdo()->prepare('SELECT COUNT(DISTINCT browser) as count FROM visitors');
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('IP counting failed', 0, $e);
+    }
+    return $result->count;
   }
 
   public function countUsers(): int {
@@ -165,7 +210,7 @@ class Data {
         $stmt->execute();
       } else {
         $stmt = $this->gettPdo()->prepare('SELECT SUM(visits) as visits FROM visitors WHERE uid = ?');
-        $stmt->execute([$user->getId()]);
+        $stmt->execute([$user->getUID()]);
       }
       $result = $stmt->fetch(PDO::FETCH_OBJ);
     } catch (PDOException $e) {
@@ -181,7 +226,7 @@ class Data {
         $stmt->execute();
       } else {
         $stmt = $this->gettPdo()->prepare('SELECT SUM(count) as refreshes FROM visitors, siteVisits WHERE visitors.uid = ? AND visitors.id = siteVisits.visitorID');
-        $stmt->execute([$user->getId()]);
+        $stmt->execute([$user->getUID()]);
       }
       $result = $stmt->fetch(PDO::FETCH_OBJ);
     } catch (PDOException $e) {

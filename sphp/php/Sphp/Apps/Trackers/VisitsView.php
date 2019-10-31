@@ -12,6 +12,7 @@ namespace Sphp\Apps\Trackers;
 
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\Navigation\A;
 
 /**
  * Description of VisitsView
@@ -41,14 +42,12 @@ class VisitsView {
   }
 
   public function buildTotals(): Ul {
-    $list = new Ul;
-    $list->append('Totals');
-
     $totals = new Ul;
-    $list->append($totals);
     $totals->appendMd("__Users:__`" . $this->data->countUsers() . '`', true);
+    $totals->appendMd("__Individual IPs:__`" . $this->data->countIps() . '`', true);
     $totals->appendMd("__User Visits:__`" . $this->data->countVisits() . '`', true);
     $totals->appendMd("__User Clicks:__`" . $this->data->countRefreshes() . '`', true);
+    $totals->appendMd("__Individual User Agents:__`" . $this->data->countUserAgents() . '`', true);
     return $totals;
   }
 
@@ -57,10 +56,14 @@ class VisitsView {
     $table->setCaption('Site data');
     $table->useThead()->thead()->appendHeaderRow(['URL:', 'Individual users:', 'total visits:']);
     foreach ($this->data->getUrlData() as $urlData) {
-      $table->useTbody()->tbody()->appendBodyRow([$urlData->url, $urlData->userCount, $urlData->visits]);
+      $table->useTbody()->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->visits]);
     }
     // $table->useTfoot()->tfoot()->appendHeaderRow(['foo']);
     return $table;
+  }
+
+  public function buildPathLink(string $path): A {
+    return new A($path, '<span class="icon"><i class="fas fa-link"></i></span> <span class="path">' . $path . '</span>');
   }
 
 }
