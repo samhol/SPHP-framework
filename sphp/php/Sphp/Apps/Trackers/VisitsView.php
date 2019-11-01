@@ -43,7 +43,7 @@ class VisitsView {
 
   public function buildTotals(): Ul {
     $totals = new Ul;
-    $totals->appendMd("__Users:__`" . $this->data->countUsers() . '`', true);
+    $totals->appendMd("__Individual Users:__`" . $this->data->countUsers() . '`', true);
     $totals->appendMd("__Individual IPs:__`" . $this->data->countIps() . '`', true);
     $totals->appendMd("__User Visits:__`" . $this->data->countVisits() . '`', true);
     $totals->appendMd("__User Clicks:__`" . $this->data->countRefreshes() . '`', true);

@@ -27,33 +27,50 @@ class User {
    * @var int
    */
   private $lastVisit;
-  private $visits;
-  private $data;
+  private $visits = 0;
+  private $firstVisit;
 
-  public function __construct(string $uid, int $last = null) {
+  public function __construct(string $uid, \DateTimeImmutable $last = null) {
     $this->uid = $uid;
-    $this->updateLastVisit($last);
-    $this->data = new \stdClass();
+    $this->setLastVisit($last);
   }
 
   public function getUID(): string {
     return $this->uid;
   }
 
-  public function updateLastVisit(int $last = null) {
+  public function setLastVisit(\DateTimeImmutable $last = null) {
     if ($last === null) {
-      $this->lastVisit = time();
+      $this->lastVisit = new \DateTimeImmutable();
     } else {
       $this->lastVisit = $last;
     }
+    return $this;
   }
 
-  public function getLastVisit(): int {
+  public function setFirstVisit(\DateTimeImmutable $timestamp) {
+    $this->firstVisit = $timestamp;
+    return $this;
+  }
+
+  public function getFirstVisit(): \DateTimeImmutable {
+    if ($this->firstVisit === null) {
+      $this->firstVisit = $this->getLastVisit();
+    }
+    return $this->firstVisit;
+  }
+
+  public function getLastVisit(): \DateTimeImmutable {
     return $this->lastVisit;
   }
 
-  public function getData() {
-    return $this->data;
+  public function getVisits(): int {
+    return $this->visits;
+  }
+
+  public function setVisits(int $visits) {
+    $this->visits = $visits;
+    return $this;
   }
 
   public function getIp(): string {
@@ -64,27 +81,10 @@ class User {
     return Utils::getHttpUserAgent();
   }
 
-  public function setData($data) {
-    $this->data = $data;
-    return $this;
-  }
-
   public static function generate(): User {
     $token = UUID::v5(UUID::v4(), 'tracker');
     return new self($token);
   }
 
-  public static function fromCookie(): ?User {
-    $instance = null;
-    if (isset($_COOKIE['visitor_id'])) {
-      $visitor_id = $_COOKIE['visitor_id'];
-      $instance = new self($visitor_id);
-
-      if (isset($_COOKIE['lastVisit'])) {
-        $instance->updateLastVisit((int) $_COOKIE['lastVisit']);
-      }
-    }
-    return $instance;
-  }
 
 }

@@ -24,9 +24,10 @@ use Sphp\Network\Utils;
  * @filesource
  */
 class Data {
-  
+
   const IP = 'ip';
   const USER_AGENT = 'browser';
+  const FIRST_VISIT = 'firstVisit';
   const LAST_VISIT = 'lastVisit';
 
   /**
@@ -49,18 +50,18 @@ class Data {
     return $this->pdo;
   }
 
-  public function contains(User $u): bool {
+  public function contains(User $user): bool {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM visitors WHERE uid = ? LIMIT 1');
-    $stmt->execute([$u->getUID()]);
+    $stmt->execute([$user->getUID()]);
     return $stmt->fetchColumn() !== false;
   }
 
-  public function getUserData(User $user): ?object {
-    $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
+  public function getUserData(User $user): array {
+    $stmt = $this->gettPdo()->prepare('SELECT id, uid, firstVisit, lastVisit, visits, INET_NTOA(ip) as ip, browser FROM visitors WHERE uid=?');
     $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result === false) {
-      return null;
+      return [];
     }
     return $result;
   }
@@ -97,8 +98,13 @@ class Data {
 
   public function insertVisitor(User $user): int {
     try {
-      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, lastVisit, ip, browser) VALUES (?, ?, ?, ?)');
-      $data = [$user->getUID(), $user->getLastVisit(), $user->getIp(), $user->getUserAgent()];
+      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
+      $data = [
+          $user->getUID(),
+          $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+          $user->getIp(),
+          $user->getUserAgent()];
       $success = $stmt->execute($data);
       if (!$success) {
         throw new RuntimeException('Data saving faled', 0, $e);
@@ -126,7 +132,9 @@ class Data {
 
       //$count = $userData->visits + 1;
       $stmt = $this->gettPdo()->prepare('UPDATE visitors SET visits = visits + 1, lastVisit = ? WHERE uid = ?');
-      $data = [$user->getLastVisit(), $user->getUID()];
+      $data = [
+          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+          $user->getUID()];
       $success = $stmt->execute($data);
       //$stmt = null;
       // echo "Site revisited successfully";
@@ -148,15 +156,21 @@ class Data {
 
   public function addSiteRefresh(User $user, string $site) {
     try {
-
       if (!$this->containsUrl($user, $site)) {
         $id = $this->getDBIDFor($user);
         $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, lastVisit) VALUES (?, ?, ?)');
-        $data = [$id, $site, $user->getLastVisit()];
+        $data = [
+            $id,
+            $site,
+            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s')];
         $success = $stmt->execute($data);
       } else {
+        ///$this->getDBIDFor($user);
         $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, lastVisit = ? WHERE visitorID = ? AND url = ?');
-        $data = [$user->getLastVisit(), $user->getData()->id, $site];
+        $data = [
+            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            $this->getDBIDFor($user),
+            $site];
         $success = $stmt->execute($data);
       }
       //$stmt = null;
