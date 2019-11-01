@@ -18,9 +18,14 @@ use Sphp\Network\Utils;
 echo '<pre>';
 echo 'IP:' . gethostbyaddr(Utils::getClientIp()) . "\n";
 $result = dns_get_record('91-152-225-73.elisa-laajakaista.fi');
-print_r($result); 
-$ua_info = parse_user_agent();
-print_r($ua_info);
+print_r($result);
+$fileCache = new \Doctrine\Common\Cache\FilesystemCache("./vendor/browscap/browscap-php/resources");
+$cache = new \Roave\DoctrineSimpleCache\SimpleCacheAdapter($fileCache);
+
+$logger = new \Monolog\Logger('name');
+$bc = new \BrowscapPHP\Browscap($cache, $logger);
+$current_browser = $bc->getBrowser('facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)');
+print_r($current_browser);
 echo '</pre>';
 //echo '<pre>';
 //print_r($_COOKIE);
