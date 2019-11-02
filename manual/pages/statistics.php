@@ -5,13 +5,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 use Sphp\Apps\Trackers\Controller;
+
 //echo '<pre>';
 $controller = Controller::instance();
 //$controller->run();
 
 echo "<h2>Totals</h2>";
 $controller->viewData();
+
 use Sphp\Network\Utils;
 
 echo '<pre>';
@@ -21,7 +24,7 @@ echo '<pre>';
 //print_r($result);
 $fileCache = new \Doctrine\Common\Cache\FilesystemCache("./vendor/browscap/browscap-php/resources");
 $cache = new \Roave\DoctrineSimpleCache\SimpleCacheAdapter($fileCache);
-
+ 
 $logger = new \Monolog\Logger('name');
 $bc = new \BrowscapPHP\Browscap($cache, $logger);
 $current_browser = $bc->getBrowser('facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)');
@@ -30,7 +33,6 @@ echo '</pre>';
 //echo '<pre>';
 //print_r($_COOKIE);
 //echo '</pre>';
-
 //$ip = gethostbyname('www.example.com');
 //$out = "The following URLs are equivalent:<br />\n";
 //$out .= 'http://www.example.com/, http://' . $ip . '/, and http://' . sprintf("%u", ip2long($ip)) . "/<br />\n";

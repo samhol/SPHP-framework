@@ -35,8 +35,12 @@ class Controller {
   private $currentUser;
 
   public function __construct($servername = "mysql05.domainhotelli.fi", $username = "cvcumjox_cvcumjox", $password = "nUj&UGZb3~?!", $dbname = "cvcumjox_db") {
-    $this->pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $this->db = new Data($this->pdo);
+   // $this->pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $this->db = new Data(new PDO("mysql:host=$servername;dbname=$dbname", $username, $password));
+  }
+  
+  public function __destruct() {
+    unset($this->db, $this->currentUser);
   }
 
   public function updateUserFromBatabase(User $user) {
@@ -119,6 +123,7 @@ class Controller {
     echo '<pre>';
     print_r($this->output);
     print_r($this->currentUser);
+    print_r($this->db->getUserAgents());
     //print_r($this->db->getUserData(User::fromCookie()));
     echo '</pre>';
   }

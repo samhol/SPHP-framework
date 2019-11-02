@@ -249,4 +249,15 @@ class Data {
     return (int) $result->refreshes;
   }
 
+  public function getUserAgents() {
+    try {
+      $stmt = $this->gettPdo()->prepare('SELECT SUM(visits),  ' . self::USER_AGENT . ' FROM visitors GROUP BY ' . self::USER_AGENT);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('Refresh counting failed', 0, $e);
+    }
+    return $result;
+  }
+
 }
