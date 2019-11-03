@@ -123,7 +123,7 @@ class Controller {
     echo '<pre>';
     print_r($this->output);
     print_r($this->currentUser);
-    print_r($this->db->getUserAgents());
+    print_r($this->db->getStatisticsFor(Data::USER_AGENT));
     //print_r($this->db->getUserData(User::fromCookie()));
     echo '</pre>';
   }

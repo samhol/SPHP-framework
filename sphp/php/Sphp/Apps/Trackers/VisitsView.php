@@ -43,11 +43,11 @@ class VisitsView {
 
   public function buildTotals(): Ul {
     $totals = new Ul;
-    $totals->appendMd("__Individual Users:__`" . $this->data->countUsers() . '`', true);
-    $totals->appendMd("__Individual IPs:__`" . $this->data->countIps() . '`', true);
-    $totals->appendMd("__User Visits:__`" . $this->data->countVisits() . '`', true);
-    $totals->appendMd("__User Clicks:__`" . $this->data->countRefreshes() . '`', true);
-    $totals->appendMd("__Individual User Agents:__`" . $this->data->countUserAgents() . '`', true);
+    $totals->appendMd("__Individual Users:__`" . $this->data->count(Data::UID) . '`', true);
+    $totals->appendMd("__Individual IPs:__`" . $this->data->count(Data::IP) . '`', true);
+    $totals->appendMd("__User Visits:__`" . $this->data->count(Data::NUM_VISITS) . '`', true);
+    $totals->appendMd("__User Clicks:__`" . $this->data->count(Data::CLICKS) . '`', true);
+    $totals->appendMd("__Individual User Agents:__`" . $this->data->count(Data::USER_AGENT) . '`', true);
     return $totals;
   }
 
