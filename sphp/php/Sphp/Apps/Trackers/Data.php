@@ -59,6 +59,10 @@ class Data implements \Countable {
     return $stmt->fetchColumn() !== false;
   }
 
+  public function getUserDataController(User $user): UserData {
+    return new UserData($this->gettPdo(), $user);
+  }
+
   public function getUserData(User $user): array {
     $stmt = $this->gettPdo()->prepare('SELECT id, uid, firstVisit, lastVisit, visits, INET_NTOA(ip) as ip, browser FROM visitors WHERE uid=?');
     $stmt->execute([$user->getUID()]);

@@ -11,7 +11,6 @@ namespace Sphp\Apps\Trackers;
 use PDO;
 use PDOException;
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Network\Utils;
 
 /**
  * Description of UserData
