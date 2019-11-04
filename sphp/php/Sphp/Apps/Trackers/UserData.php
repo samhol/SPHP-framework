@@ -54,9 +54,9 @@ class UserData {
     return $this->pdo;
   }
 
-  public function contains(User $user): bool {
+  public function contains(): bool {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM visitors WHERE uid = ? LIMIT 1');
-    $stmt->execute([$user->getUID()]);
+    $stmt->execute([$this->user->getUID()]);
     return $stmt->fetchColumn() !== false;
   }
 
@@ -68,6 +68,41 @@ class UserData {
       return [];
     }
     return $result;
+  }
+
+  public function storeUser(User $user): int {
+    try {
+      if (!$this->contains($user)) {
+        $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
+        $data = [
+            $user->getUID(),
+            $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            $user->getIp(),
+            $user->getUserAgent()];
+        $success = $stmt->execute($data);
+      }
+      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
+      $data = [
+          $user->getUID(),
+          $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+          $user->getIp(),
+          $user->getUserAgent()];
+      $success = $stmt->execute($data);
+      if (!$success) {
+        throw new RuntimeException('Data saving faled', 0, $e);
+      }
+      //$id = $this->gettPdo()->lastInsertId();
+      // echo $this->gettPdo()->lastInsertId();
+      $id = $this->gettPdo()->lastInsertId();
+      // $user->getData()->id = $id;
+      // echo "New record created successfully";
+      return $id;
+    } catch (PDOException $e) {
+      throw new RuntimeException('Data saving faled', 0, $e);
+    }
+    // return $success;
   }
 
   public function storeIp() {

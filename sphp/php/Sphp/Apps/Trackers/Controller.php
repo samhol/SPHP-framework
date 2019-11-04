@@ -123,11 +123,14 @@ class Controller {
     echo $view->buildTotals();
     echo $view->buildSiteTable()->addCssClass('site-table');
     $browsers = new BrowserDataViewer($this->db->getStatisticsFor(Data::USER_AGENT));
+    $browserDataController = new UserAgentDataController($this->db->gettPdo());
+    var_dump($browserDataController->containsUserAgent($this->currentUser->getUserAgent()));
+    var_dump($browserDataController->storeUserAgent($this->currentUser->getUserAgent()));
     echo $browsers->run();
     echo '<pre>';
     print_r($this->output);
-    print_r($this->currentUser);
-    print_r($this->db->getStatisticsFor(Data::USER_AGENT));
+   // print_r($this->currentUser);
+   // print_r($this->db->getStatisticsFor(Data::USER_AGENT));
     //print_r($this->db->getUserData(User::fromCookie()));
     echo '</pre>';
   }
