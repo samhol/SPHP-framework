@@ -284,27 +284,26 @@ class UserData {
         $stmt->execute([
             $this->user->getUserAgent(),
         ]);
-        //$this->uaId = $this->getPdo()->lastInsertId();
+        $uaId = $this->gettPdo()->lastInsertId();
+
+        $updateUaidQuery = "UPDATE visitors SET uaid=? WHERE uid = ?";
+        $updateUaidStmt = $this->gettPdo()->prepare($updateUaidQuery);
+        $updateUaidStmt->execute([
+            $uaId,
+            $this->user->getUID()
+        ]);
       } else {
         $sql = "UPDATE userAgents SET count=count+1 WHERE userAgent = ?";
         $stmt = $this->gettPdo()->prepare($sql);
         $stmt->execute([
             $this->user->getUserAgent(),
         ]);
+        $this->uaId = $this->gettPdo()->lastInsertId();
       }
 
-      //Query 1: Attempt to insert the payment record into our database.
-      //Query 2: Attempt to update the user's profile.
-      //We've got this far without an exception, so commit the changes.
       $this->gettPdo()->commit();
-    }
-//Our catch block will handle any exceptions that are thrown.
-    catch (Exception $e) {
-      //An exception has occured, which means that one of our database queries
-      //failed.
-      //Print out the error message.
+    } catch (Exception $e) {
       echo $e->getMessage();
-      //Rollback the transaction.
       $this->gettPdo()->rollBack();
     }
   }
