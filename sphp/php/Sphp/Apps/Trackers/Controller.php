@@ -112,6 +112,8 @@ class Controller {
       $this->updateUserFromBatabase($user);
       $this->currentUser = $user; */
     $this->db->addSiteRefresh($this->getCurrentUser(), URL::getCurrent()->getPath());
+    $this->db->getUserDataController($this->getCurrentUser())->storeIp();
+    $this->db->getUserDataController($this->getCurrentUser())->storeUserAgent();
     $this->output['addSiteRefresh'] = 'users:(' . $this->getCurrentUser()->getUID() . ') visit to this site refreshed';
     $this->writeCookieForCurrentUser();
   }
@@ -120,6 +122,8 @@ class Controller {
     $view = new VisitsView($this->db);
     echo $view->buildTotals();
     echo $view->buildSiteTable()->addCssClass('site-table');
+    $browsers = new BrowserDataViewer($this->db->getStatisticsFor(Data::USER_AGENT));
+    echo $browsers->run();
     echo '<pre>';
     print_r($this->output);
     print_r($this->currentUser);

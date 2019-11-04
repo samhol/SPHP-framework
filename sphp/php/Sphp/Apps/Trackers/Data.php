@@ -25,13 +25,15 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class Data implements \Countable {
 
+  const ROW_ID = 'uid';
   const UID = 'uid';
   const FIRST_VISIT = 'firstVisit';
   const LAST_VISIT = 'lastVisit';
   const NUM_VISITS = 'visits';
   const IP = 'ip';
-  const USER_AGENT = 'browser';
+  const USER_AGENT = 'userAgent';
   const CLICKS = 'count';
+  const VISITS = 'visits';
 
   /**
    * @var PDO
@@ -40,9 +42,6 @@ class Data implements \Countable {
 
   public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
-    $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
   }
 
   public function __destruct() {
@@ -50,6 +49,8 @@ class Data implements \Countable {
   }
 
   public function gettPdo(): PDO {
+    $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $this->pdo;
   }
 
@@ -64,7 +65,9 @@ class Data implements \Countable {
   }
 
   public function getUserData(User $user): array {
-    $stmt = $this->gettPdo()->prepare('SELECT id, uid, firstVisit, lastVisit, visits, INET_NTOA(ip) as ip, browser FROM visitors WHERE uid=?');
+    $rawQueryString = 'SELECT %1s, %2$s, %3$s, %4$s, %5$s, INET_NTOA(%6$s) as %6$s, %7$s FROM visitors WHERE %2$s=?';
+    $queryString = vsprintf($rawQueryString, [self::ROW_ID, self::UID, self::FIRST_VISIT, self::LAST_VISIT, self::VISITS, self::IP, self::USER_AGENT]);
+    $stmt = $this->gettPdo()->prepare($queryString); //'SELECT id, uid, firstVisit, lastVisit, visits, INET_NTOA(ip) as ip, browser FROM visitors WHERE uid=?');
     $stmt->execute([$user->getUID()]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result === false) {
@@ -105,7 +108,7 @@ class Data implements \Countable {
 
   public function insertVisitor(User $user): int {
     try {
-      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
+      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, userAgent) VALUES (?, ?, ?, INET_ATON(?), ?)');
       $data = [
           $user->getUID(),
           $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
@@ -132,6 +135,23 @@ class Data implements \Countable {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM siteVisits, visitors WHERE visitors.uid = ? AND visitors.id = siteVisits.visitorID AND url = ? LIMIT 1');
     $stmt->execute([$u->getUID(), $url]);
     return $stmt->fetchColumn() !== false;
+  }
+
+  public function updateIPData(User $user) {
+    try {
+
+      //$count = $userData->visits + 1;
+      $stmt = $this->gettPdo()->prepare('UPDATE visitors SET visits = visits + 1, lastVisit = ? WHERE uid = ?');
+      $data = [
+          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+          $user->getUID()];
+      $success = $stmt->execute($data);
+      //$stmt = null;
+      // echo "Site revisited successfully";
+    } catch (PDOException $e) {
+      throw new RuntimeException('Data saving faled', 0, $e);
+    }
+    return $success;
   }
 
   public function addRevisit(User $user) {

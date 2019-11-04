@@ -28,11 +28,17 @@ class BrowserDataViewer {
   public function __construct(iterable $browserData) {
     $this->browserData = $browserData;
   }
-  
+
   public function __destruct() {
     unset($this->browserData);
   }
-public function run() {
-  
-}
+
+  public function run() {
+    $ul = new \Sphp\Html\Lists\Ul;
+    foreach ($this->browserData as $key => $value) {
+      $ul->append("$value->userAgent: $value->count");
+    }
+    return $ul;
+  }
+
 }

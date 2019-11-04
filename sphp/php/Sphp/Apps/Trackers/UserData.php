@@ -35,10 +35,12 @@ class UserData {
    * @var User 
    */
   private $user;
+  private $dbid;
 
   public function __construct(PDO $pdo, User $user) {
     $this->pdo = $pdo;
     $this->user = $user;
+    $this->getDBID();
     $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -66,6 +68,51 @@ class UserData {
       return [];
     }
     return $result;
+  }
+
+  public function storeIp() {
+    try {
+
+      //We start our transaction.
+      $this->gettPdo()->beginTransaction();
+      if ($this->dbid === null) {
+        throw new \Exception();
+      }
+      $containsStmt = $this->gettPdo()->prepare(
+              'SELECT 1 FROM ips WHERE visitorId = ? AND ip = INET_ATON(?) LIMIT 1');
+      $containsStmt->execute([$this->dbid, $this->user->getIp()]);
+      //var_dump($containsStmt->fetchColumn());
+      if ($containsStmt->fetchColumn() === false) {
+        $sql = "INSERT INTO ips (visitorId, ip) VALUES (?, INET_ATON(?))";
+        $stmt = $this->gettPdo()->prepare($sql);
+        $stmt->execute([
+            $this->dbid,
+            $this->user->getIp(),
+        ]);
+      } else {
+        $sql = "UPDATE ips SET lastVisit=?, count=count+1 WHERE visitorId=? AND ip=INET_ATON(?)";
+        $stmt = $this->gettPdo()->prepare($sql);
+        $stmt->execute([
+            $this->user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            $this->dbid,
+            $this->user->getIp(),
+        ]);
+      }
+
+      //Query 1: Attempt to insert the payment record into our database.
+      //Query 2: Attempt to update the user's profile.
+      //We've got this far without an exception, so commit the changes.
+      $this->gettPdo()->commit();
+    }
+//Our catch block will handle any exceptions that are thrown.
+    catch (Exception $e) {
+      //An exception has occured, which means that one of our database queries
+      //failed.
+      //Print out the error message.
+      echo $e->getMessage();
+      //Rollback the transaction.
+      $this->gettPdo()->rollBack();
+    }
   }
 
   public function updateUser(User $user) {
@@ -142,14 +189,17 @@ class UserData {
     return $success;
   }
 
-  public function getDBIDFor(User $user) {
-    $stmt = $this->gettPdo()->prepare('SELECT id FROM visitors WHERE uid = ?');
-    $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
+  public function getDBID(): ?int {
+    if ($this->dbid === null) {
+      $stmt = $this->gettPdo()->prepare('SELECT id FROM visitors WHERE uid = ?');
+      $stmt->execute([$this->user->getUID()]);
+      $result = $stmt->fetch(PDO::FETCH_OBJ);
+      $this->dbid = $result->id;
+    }
     if ($result === false) {
       return null;
     }
-    return $result->id;
+    return $this->dbid;
   }
 
   public function addSiteRefresh(string $site) {
@@ -215,6 +265,48 @@ class UserData {
       throw new RuntimeException('Refresh counting failed', 0, $e);
     }
     return (int) $result->refreshes;
+  }
+
+  public function storeUserAgent() {
+    try {
+      //We start our transaction.
+      $this->gettPdo()->beginTransaction();
+      if ($this->dbid === null) {
+        throw new \Exception();
+      }
+      $containsStmt = $this->gettPdo()->prepare(
+              'SELECT 1 FROM userAgents WHERE userAgent = ? LIMIT 1');
+      $containsStmt->execute([$this->user->getUserAgent()]);
+      //var_dump($containsStmt->fetchColumn());
+      if ($containsStmt->fetchColumn() === false) {
+        $sql = "INSERT INTO userAgents (userAgent) VALUES (?)";
+        $stmt = $this->gettPdo()->prepare($sql);
+        $stmt->execute([
+            $this->user->getUserAgent(),
+        ]);
+        //$this->uaId = $this->getPdo()->lastInsertId();
+      } else {
+        $sql = "UPDATE userAgents SET count=count+1 WHERE userAgent = ?";
+        $stmt = $this->gettPdo()->prepare($sql);
+        $stmt->execute([
+            $this->user->getUserAgent(),
+        ]);
+      }
+
+      //Query 1: Attempt to insert the payment record into our database.
+      //Query 2: Attempt to update the user's profile.
+      //We've got this far without an exception, so commit the changes.
+      $this->gettPdo()->commit();
+    }
+//Our catch block will handle any exceptions that are thrown.
+    catch (Exception $e) {
+      //An exception has occured, which means that one of our database queries
+      //failed.
+      //Print out the error message.
+      echo $e->getMessage();
+      //Rollback the transaction.
+      $this->gettPdo()->rollBack();
+    }
   }
 
 }
