@@ -32,7 +32,7 @@ abstract class AbstractDataController {
     unset($this->pdo);
   }
 
-  public function gettPdo(): PDO {
+  public function getPdo(): PDO {
     $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $this->pdo;
