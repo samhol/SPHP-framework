@@ -34,9 +34,18 @@ class BrowserDataViewer {
   }
 
   public function run() {
+
+
+    $fileCache = new \Doctrine\Common\Cache\FilesystemCache("./vendor/browscap/browscap-php/resources");
+    $cache = new \Roave\DoctrineSimpleCache\SimpleCacheAdapter($fileCache);
+
+    $logger = new \Monolog\Logger('name');
+    $bc = new \BrowscapPHP\Browscap($cache, $logger);
     $ul = new \Sphp\Html\Lists\Ul;
     foreach ($this->browserData as $key => $value) {
-      $ul->append("$value->userAgent: $value->count");
+      $browser = $bc->getBrowser($value->userAgent);
+      print_r($browser);
+      $ul->append("$browser->browser_maker $browser->browser $browser->version: $value->count");
     }
     return $ul;
   }

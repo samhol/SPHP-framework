@@ -28,7 +28,7 @@ $cache = new \Roave\DoctrineSimpleCache\SimpleCacheAdapter($fileCache);
 $logger = new \Monolog\Logger('name');
 $bc = new \BrowscapPHP\Browscap($cache, $logger);
 $current_browser = $bc->getBrowser('facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)');
-//print_r($current_browser);
+print_r($current_browser);
 echo '</pre>';
 //echo '<pre>';
 //print_r($_COOKIE);

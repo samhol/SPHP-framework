@@ -66,6 +66,18 @@ class Data implements \Countable {
     unset($this->pdo, $this->usersController);
   }
 
+  public function userAgents(): UserAgentDataController {
+    return $this->uaStorage;
+  }
+
+  public function urls(): SiteDataController {
+    return $this->urlDataController;
+  }
+
+  public function users(): UserData {
+    return $this->usersController;
+  }
+
   public function gettPdo(): PDO {
     $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -76,10 +88,6 @@ class Data implements \Countable {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM visitors WHERE uid = ? LIMIT 1');
     $stmt->execute([$user->getUID()]);
     return $stmt->fetchColumn() !== false;
-  }
-
-  public function users(): UserData {
-    return $this->usersController;
   }
 
   public function getUserData(User $user): array {

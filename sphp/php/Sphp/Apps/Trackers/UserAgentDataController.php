@@ -11,7 +11,7 @@
 namespace Sphp\Apps\Trackers;
 
 use Sphp\Exceptions\RuntimeException;
-
+use PDO;
 /**
  * Description of UserAgentDataController
  *
@@ -67,6 +67,19 @@ class UserAgentDataController extends AbstractDataController {
       throw new RuntimeException('Storing User Agent failed', 0, $e);
     }
     return $uaId;
+  }
+
+  public function getStatistics(): array {
+    try {
+      $queryString = 'SELECT * FROM userAgents Order BY count DESC';
+      //$queryString = vsprintf($rawQueryString, [$dataField, $dataField]);
+      $stmt = $this->getPdo()->prepare($queryString);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('Statistics could not be fetched', 0, $e);
+    }
+    return $result;
   }
 
 }
