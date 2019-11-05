@@ -40,12 +40,30 @@ class Data implements \Countable {
    */
   private $pdo;
 
+  /**
+   * @var UserData
+   */
+  private $usersController;
+
+  /**
+   * @var SiteDataController
+   */
+  private $urlDataController;
+
+  /**
+   * @var UserAgentDataController
+   */
+  private $uaStorage;
+
   public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
+    $this->usersController = new UserData($pdo);
+    $this->urlDataController = new SiteDataController($pdo);
+    $this->uaStorage = new UserAgentDataController($pdo);
   }
 
   public function __destruct() {
-    unset($this->pdo);
+    unset($this->pdo, $this->usersController);
   }
 
   public function gettPdo(): PDO {
@@ -60,8 +78,8 @@ class Data implements \Countable {
     return $stmt->fetchColumn() !== false;
   }
 
-  public function getUserDataController(User $user): UserData {
-    return new UserData($this->gettPdo(), $user);
+  public function users(): UserData {
+    return $this->usersController;
   }
 
   public function getUserData(User $user): array {
@@ -240,6 +258,9 @@ class Data implements \Countable {
     } catch (PDOException $e) {
       $message = vsprintf('Cannot count using parameter value (%s)', [$field]);
       throw new RuntimeException($message, 0, $e);
+    }
+    if ($result->count === null) {
+      $result->count = 0;
     }
     return $result->count;
   }

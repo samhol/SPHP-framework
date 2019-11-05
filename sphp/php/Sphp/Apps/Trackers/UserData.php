@@ -36,14 +36,12 @@ class UserData {
    */
   private $user;
   private $dbid;
+  private $userAgents;
 
-  public function __construct(PDO $pdo, User $user) {
+  public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
-    $this->user = $user;
-    $this->getDBID();
-    $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+    // $this->getDBID();
+    $this->userAgents = new UserAgentDataController($pdo);
   }
 
   public function __destruct() {
@@ -51,12 +49,15 @@ class UserData {
   }
 
   public function gettPdo(): PDO {
+    $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     return $this->pdo;
   }
 
-  public function contains(): bool {
+  public function contains(User $user): bool {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM visitors WHERE uid = ? LIMIT 1');
-    $stmt->execute([$this->user->getUID()]);
+    $stmt->execute([$user->getUID()]);
     return $stmt->fetchColumn() !== false;
   }
 
@@ -70,74 +71,68 @@ class UserData {
     return $result;
   }
 
-  public function storeUser(User $user): int {
+  public function storeUser(User $user): bool {
     try {
+      $browserId = $this->userAgents->storeUserAgent($user->getUserAgent());
       if (!$this->contains($user)) {
-        $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
+        $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, uaid) VALUES (?, ?, ?, INET_ATON(?), ?)');
         $data = [
             $user->getUID(),
             $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
             $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
             $user->getIp(),
-            $user->getUserAgent()];
+            $browserId];
         $success = $stmt->execute($data);
+        //$dbId = $this->gettPdo()->lastInsertId();
+        $user->setDbId($this->gettPdo()->lastInsertId());
+        $this->storeUsersIp($user);
+      } else {
+        $success = $this->addRevisit($user);
       }
-      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
-      $data = [
-          $user->getUID(),
-          $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getIp(),
-          $user->getUserAgent()];
-      $success = $stmt->execute($data);
       if (!$success) {
-        throw new RuntimeException('Data saving faled', 0, $e);
+        throw new RuntimeException('User Data saving faled', 0, $e);
       }
-      //$id = $this->gettPdo()->lastInsertId();
-      // echo $this->gettPdo()->lastInsertId();
-      $id = $this->gettPdo()->lastInsertId();
-      // $user->getData()->id = $id;
-      // echo "New record created successfully";
-      return $id;
     } catch (PDOException $e) {
       throw new RuntimeException('Data saving faled', 0, $e);
     }
-    // return $success;
+    return $success;
   }
 
-  public function storeIp() {
+  public function storeUsersIp(User $user) {
     try {
-
+      if (!$this->getDBIDFor($user)) {
+        throw new RuntimeException('User not stored---ip saving faled');
+      }
       //We start our transaction.
       $this->gettPdo()->beginTransaction();
-      if ($this->dbid === null) {
-        throw new \Exception();
-      }
+
       $containsStmt = $this->gettPdo()->prepare(
               'SELECT 1 FROM ips WHERE visitorId = ? AND ip = INET_ATON(?) LIMIT 1');
-      $containsStmt->execute([$this->dbid, $this->user->getIp()]);
+      $containsStmt->execute([
+          $user->getDbId(),
+          $user->getIp()]);
       //var_dump($containsStmt->fetchColumn());
       if ($containsStmt->fetchColumn() === false) {
         $sql = "INSERT INTO ips (visitorId, ip) VALUES (?, INET_ATON(?))";
         $stmt = $this->gettPdo()->prepare($sql);
         $stmt->execute([
-            $this->dbid,
-            $this->user->getIp(),
+            $user->getDbId(),
+            $user->getIp(),
         ]);
       } else {
         $sql = "UPDATE ips SET lastVisit=?, count=count+1 WHERE visitorId=? AND ip=INET_ATON(?)";
         $stmt = $this->gettPdo()->prepare($sql);
         $stmt->execute([
-            $this->user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-            $this->dbid,
-            $this->user->getIp(),
+            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            $user->getDbId(),
+            $user->getIp(),
         ]);
       }
 
       //Query 1: Attempt to insert the payment record into our database.
       //Query 2: Attempt to update the user's profile.
       //We've got this far without an exception, so commit the changes.
-      $this->gettPdo()->commit();
+      return $this->gettPdo()->commit();
     }
 //Our catch block will handle any exceptions that are thrown.
     catch (Exception $e) {
@@ -148,32 +143,6 @@ class UserData {
       //Rollback the transaction.
       $this->gettPdo()->rollBack();
     }
-  }
-
-  public function updateUser(User $user) {
-    if ($this->contains($user)) {
-      $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-      $stmt->execute([$user->getUID()]);
-    }
-    $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-    $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
-    if ($result === false) {
-      return null;
-    }
-    return $result;
-  }
-
-  public function getUrlData(User $user): array {
-    try {
-
-      $stmt = $this->gettPdo()->prepare("SELECT * FROM siteVisits WHERE uid = ?");
-      $stmt->execute([$user->getUID()]);
-      //$result = $stmt->fetch(PDO::FETCH_OBJ);
-    } catch (PDOException $e) {
-      throw new RuntimeException('Refresh counting failed', 0, $e);
-    }
-    return $stmt->fetchAll(PDO::FETCH_OBJ);
   }
 
   public function insertVisitor(User $user): int {
@@ -207,7 +176,7 @@ class UserData {
     return $stmt->fetchColumn() !== false;
   }
 
-  public function addRevisit(User $user) {
+  public function addRevisit(User $user): bool {
     try {
 
       //$count = $userData->visits + 1;
@@ -216,6 +185,8 @@ class UserData {
           $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
           $user->getUID()];
       $success = $stmt->execute($data);
+
+      $this->storeUsersIp($user);
       //$stmt = null;
       // echo "Site revisited successfully";
     } catch (PDOException $e) {
@@ -224,35 +195,33 @@ class UserData {
     return $success;
   }
 
-  public function getDBID(): ?int {
-    if ($this->dbid === null) {
+  public function getDBIDFor(User $user): bool {
+    $result = true;
+    if ($user->getDbId() === null) {
       $stmt = $this->gettPdo()->prepare('SELECT id FROM visitors WHERE uid = ?');
-      $stmt->execute([$this->user->getUID()]);
+      $stmt->execute([$user->getUID()]);
       $result = $stmt->fetch(PDO::FETCH_OBJ);
-      $this->dbid = $result->id;
+      $user->setDbId($result->id);
     }
-    if ($result === false) {
-      return null;
-    }
-    return $this->dbid;
+    return $result !== false;
   }
 
-  public function addSiteRefresh(string $site) {
+  public function addSiteRefresh(User $user, string $site) {
     try {
-      if (!$this->containsUrl($site)) {
-        $id = $this->getDBIDFor($this->user);
+      $this->getDBIDFor($user);
+      if (!$this->containsUrl($user, $site)) {
         $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, lastVisit) VALUES (?, ?, ?)');
         $data = [
-            $id,
+            $user->getDbId(),
             $site,
-            $this->user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s')];
+            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s')];
         $success = $stmt->execute($data);
       } else {
         ///$this->getDBIDFor($user);
         $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, lastVisit = ? WHERE visitorID = ? AND url = ?');
         $data = [
-            $this->user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-            $this->getDBIDFor($this->user),
+            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            $user->getDbId(),
             $site];
         $success = $stmt->execute($data);
       }
@@ -267,7 +236,7 @@ class UserData {
     return $success;
   }
 
-  public function countDistinct(string $field): int {
+  public function count(string $field): int {
     try {
       if ($field === self::IP || $field === self::USER_AGENT) {
         $rawQueryString = 'SELECT COUNT(DISTINCT %s) as count FROM visitors WHERE uid = ?';
@@ -300,47 +269,6 @@ class UserData {
       throw new RuntimeException('Refresh counting failed', 0, $e);
     }
     return (int) $result->refreshes;
-  }
-
-  public function storeUserAgent() {
-    try {
-      //We start our transaction.
-      $this->gettPdo()->beginTransaction();
-      if ($this->dbid === null) {
-        throw new \Exception();
-      }
-      $containsStmt = $this->gettPdo()->prepare(
-              'SELECT 1 FROM userAgents WHERE userAgent = ? LIMIT 1');
-      $containsStmt->execute([$this->user->getUserAgent()]);
-      //var_dump($containsStmt->fetchColumn());
-      if ($containsStmt->fetchColumn() === false) {
-        $sql = "INSERT INTO userAgents (userAgent) VALUES (?)";
-        $stmt = $this->gettPdo()->prepare($sql);
-        $stmt->execute([
-            $this->user->getUserAgent(),
-        ]);
-        $uaId = $this->gettPdo()->lastInsertId();
-
-        $updateUaidQuery = "UPDATE visitors SET uaid=? WHERE uid = ?";
-        $updateUaidStmt = $this->gettPdo()->prepare($updateUaidQuery);
-        $updateUaidStmt->execute([
-            $uaId,
-            $this->user->getUID()
-        ]);
-      } else {
-        $sql = "UPDATE userAgents SET count=count+1 WHERE userAgent = ?";
-        $stmt = $this->gettPdo()->prepare($sql);
-        $stmt->execute([
-            $this->user->getUserAgent(),
-        ]);
-        $this->uaId = $this->gettPdo()->lastInsertId();
-      }
-
-      $this->gettPdo()->commit();
-    } catch (Exception $e) {
-      echo $e->getMessage();
-      $this->gettPdo()->rollBack();
-    }
   }
 
 }

@@ -66,13 +66,13 @@ class Controller {
       $user = new User($token);
       $this->output['basic-user-from-UUID-generated'] = $user->getUID();
     }
-    if (!$this->db->contains($user)) {
-      $this->db->insertVisitor($user);
-      $this->output['new-user-added'] = 'user  inserted ' . $user->getUID();
-    } else {
-      $this->db->addRevisit($user);
-      $this->output['user-revisit-added'] = 'user  revisited ' . $user->getUID();
-    }
+    //if (!$this->db->users()->contains($user)) {
+    $this->db->users()->storeUser($user);
+    $this->output['new-user-added'] = 'user  inserted ' . $user->getUID();
+    // } else {
+    $this->db->users()->addSiteRefresh($user, URL::getCurrent()->getPath());
+    $this->output['user-revisit-added'] = 'user  revisited ' . $user->getUID();
+    //  }
     $this->updateUserFromBatabase($user);
     $this->currentUser = $user;
     return $user;
@@ -111,9 +111,9 @@ class Controller {
       }
       $this->updateUserFromBatabase($user);
       $this->currentUser = $user; */
-    $this->db->addSiteRefresh($this->getCurrentUser(), URL::getCurrent()->getPath());
-    $this->db->getUserDataController($this->getCurrentUser())->storeIp();
-    $this->db->getUserDataController($this->getCurrentUser())->storeUserAgent();
+    //$this->db->addSiteRefresh($this->getCurrentUser(), URL::getCurrent()->getPath());
+    // $this->db->getUserDataController()->storeIp();
+    // $this->db->getUserDataController($this->getCurrentUser())->storeUserAgent();
     $this->output['addSiteRefresh'] = 'users:(' . $this->getCurrentUser()->getUID() . ') visit to this site refreshed';
     $this->writeCookieForCurrentUser();
   }
@@ -126,11 +126,13 @@ class Controller {
     $browserDataController = new UserAgentDataController($this->db->gettPdo());
     var_dump($browserDataController->containsUserAgent($this->currentUser->getUserAgent()));
     var_dump($browserDataController->storeUserAgent($this->currentUser->getUserAgent()));
+    $siteData = new SiteDataController($this->db->gettPdo());
     echo $browsers->run();
     echo '<pre>';
     print_r($this->output);
-   // print_r($this->currentUser);
-   // print_r($this->db->getStatisticsFor(Data::USER_AGENT));
+    print_r($siteData->getStatisticsFor());
+    // print_r($this->currentUser);
+    // print_r($this->db->getStatisticsFor(Data::USER_AGENT));
     //print_r($this->db->getUserData(User::fromCookie()));
     echo '</pre>';
   }

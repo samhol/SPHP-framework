@@ -22,6 +22,7 @@ class User {
    * @var string
    */
   private $uid;
+  private $dbId;
 
   /**
    * @var int
@@ -37,6 +38,15 @@ class User {
 
   public function getUID(): string {
     return $this->uid;
+  }
+
+  public function getDbId(): ?int {
+    return $this->dbId;
+  }
+
+  public function setDbId(int $dbId = null) {
+    $this->dbId = $dbId;
+    return $this;
   }
 
   public function setLastVisit(\DateTimeImmutable $last = null) {
@@ -85,6 +95,5 @@ class User {
     $token = UUID::v5(UUID::v4(), 'tracker');
     return new self($token);
   }
-
 
 }
