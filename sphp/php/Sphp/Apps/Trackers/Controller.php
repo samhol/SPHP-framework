@@ -69,13 +69,22 @@ class Controller {
     //if (!$this->db->users()->contains($user)) {
     $this->db->users()->storeUser($user);
     $this->output['new-user-added'] = 'user  inserted ' . $user->getUID();
-    // } else {
-    $this->db->users()->addSiteRefresh($user, URL::getCurrent()->getPath());
+    //$this->db->users()->addSiteRefresh($user, URL::getCurrent()->getPath(), $this->isValidHit());
+    $this->db->urls()->addSiteRefresh($user, URL::getCurrent()->getPath(), $this->isValidHit());
     $this->output['user-revisit-added'] = 'user  revisited ' . $user->getUID();
     //  }
     $this->updateUserFromBatabase($user);
     $this->currentUser = $user;
     return $user;
+  }
+  
+  private function isValidHit() :bool{
+    $code = http_response_code();
+    $valid = true;
+    if($code !== false && ($code < 200 || $code >= 300)) {
+      $valid = false;
+    }
+    return $valid;
   }
 
   private function writeCookieForCurrentUser() {
@@ -131,7 +140,7 @@ class Controller {
     echo $browsers->run();
     echo '<pre>';
 
-    print_r($_SERVER);
+    //print_r($_SERVER);
     //print_r($this->output);
     //print_r($siteData->getStatisticsFor());
     print_r($siteData->getUserStatistics($this->getCurrentUser()));

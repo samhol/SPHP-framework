@@ -7,11 +7,9 @@ require_once('manual/settings.php');
 use Sphp\Network\Cookies\Cookie;
 
 $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
+//md5($redirect);
+$cacheSuffix = md5($redirect) . "-cache";
 
-$cacheSuffix = str_replace(['.', '/', ':'], ['-', '', ''], $redirect) . "-cache";
-
-$controller = \Sphp\Apps\Trackers\Controller::instance();
-$controller->run();
 if ($outputCache->start("$cacheSuffix-page") === false) {
 
   //$cookie = (new Cookie('comply_cookie'))->delete();

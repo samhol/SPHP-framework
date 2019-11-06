@@ -12,13 +12,13 @@ namespace Sphp\Apps\Trackers;
 
 use Sphp\Exceptions\RuntimeException;
 use PDO;
+
 /**
  * Description of UserAgentDataController
  *
  * @author samih
  */
-class UserAgentDataController extends AbstractDataController {
-
+class UserAgentDataController extends AbstractDataController implements \Countable {
   public function containsUserAgent(string $userAgent): bool {
     $stmt = $this->getPdo()->prepare('SELECT 1 AS num FROM userAgents WHERE userAgent = ? LIMIT 1');
     $stmt->execute([$userAgent]);
@@ -80,6 +80,19 @@ class UserAgentDataController extends AbstractDataController {
       throw new RuntimeException('Statistics could not be fetched', 0, $e);
     }
     return $result;
+  }
+
+  public function count(): int {
+    try {
+      $queryString = 'SELECT count(*) AS count FROM userAgents';
+      //$queryString = vsprintf($rawQueryString, [$dataField, $dataField]);
+      $stmt = $this->getPdo()->prepare($queryString);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      return 0;
+    }
+    return $result->count;
   }
 
 }

@@ -10,12 +10,19 @@ namespace Sphp\Apps\Trackers;
 
 use PDO;
 use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Description of SiteDataController
  *
  * @author samih
  */
 class SiteDataController extends AbstractDataController {
+
+  public function containsUrl(User $u, string $url): bool {
+    $stmt = $this->getPdo()->prepare('SELECT 1 FROM siteVisits, visitors WHERE visitors.uid = ? AND visitors.id = siteVisits.visitorID AND url = ? LIMIT 1');
+    $stmt->execute([$u->getUID(), $url]);
+    return $stmt->fetchColumn() !== false;
+  }
 
   /**
    * 
@@ -25,26 +32,25 @@ class SiteDataController extends AbstractDataController {
    * @throws InvalidArgumentException
    * @throws RuntimeException
    */
-  public function addRefresh(User $user, string $url):bool {
-    if ($user->getDbId() === null) {
-      throw new InvalidArgumentException('Site refresh cannot be saved: User is not stored', 0, $e);
-    }
+  public function addSiteRefresh(User $user, string $site, bool $status = true) {
     try {
-      $this->getDBIDFor($user);
-      if (!$this->containsUrl($user, $url)) {
-        $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, lastVisit) VALUES (?, ?, ?)');
+      //$this->getDBIDFor($user);
+      if (!$this->containsUrl($user, $site)) {
+        $stmt = $this->getPdo()->prepare('INSERT INTO siteVisits (visitorID, url, validity, lastVisit) VALUES (?,?, ?, ?)');
         $data = [
             $user->getDbId(),
-            $url,
+            $site,
+            $status,
             $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s')];
         $success = $stmt->execute($data);
       } else {
         ///$this->getDBIDFor($user);
-        $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, lastVisit = ? WHERE visitorID = ? AND url = ?');
+        $stmt = $this->getPdo()->prepare('UPDATE siteVisits SET count = count + 1, validity=?, lastVisit = ? WHERE visitorID = ? AND url = ?');
         $data = [
+            $status,
             $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
             $user->getDbId(),
-            $url];
+            $site];
         $success = $stmt->execute($data);
       }
       //$stmt = null;
@@ -94,6 +100,22 @@ class SiteDataController extends AbstractDataController {
     return $result->count;
   }
 
+  public function getActuals(): array {
+    try {
+      $rawQueryString = 'SELECT url, SUM(count) as hits, count(visitorID) as userCount '
+              . 'FROM siteVisits '
+              . 'WHERE validity = 1 '
+              . 'GROUP BY url';
+      // $queryString = vsprintf($rawQueryString, [$dataField, $dataField]);
+      $stmt = $this->getPdo()->prepare($rawQueryString);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('Statistics could not be fetched', 0, $e);
+    }
+    return $result;
+  }
+
   public function getStatisticsFor(): array {
     try {
       $rawQueryString = 'SELECT url, SUM(count) as totalVisits, count(visitorID) as userCount FROM siteVisits GROUP BY url';
@@ -106,7 +128,7 @@ class SiteDataController extends AbstractDataController {
     }
     return $result;
   }
-  
+
   public function getUserStatistics(User $user): array {
     try {
       $rawQueryString = 'SELECT url, count FROM siteVisits WHERE visitorID=?';

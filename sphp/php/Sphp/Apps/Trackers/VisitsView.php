@@ -47,7 +47,7 @@ class VisitsView {
     $totals->appendMd("__Individual IPs:__`" . $this->data->count(Data::IP) . '`', true);
     $totals->appendMd("__User Visits:__`" . $this->data->count(Data::NUM_VISITS) . '`', true);
     $totals->appendMd("__User Clicks:__`" . $this->data->count(Data::CLICKS) . '`', true);
-    $totals->appendMd("__Individual User Agents:__`" . $this->data->count(Data::USER_AGENT) . '`', true);
+    $totals->appendMd("__Individual User Agents:__`" . $this->data->userAgents()->count() . '`', true);
     return $totals;
   }
 
@@ -56,8 +56,8 @@ class VisitsView {
     $table->setCaption('Site data');
     $table->useThead()->thead()->appendHeaderRow(['URL:', 'Individual users:', 'total visits:']);
     $table->useTbody();
-    foreach ($this->data->getUrlData() as $urlData) {
-      $table->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->visits]);
+    foreach ($this->data->urls()->getActuals() as $urlData) {
+      $table->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->hits]);
     }
     // $table->useTfoot()->tfoot()->appendHeaderRow(['foo']);
     return $table;

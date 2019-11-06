@@ -25,7 +25,6 @@ class IpDataController extends AbstractDataController {
   const NUM_VISITS = 'visits';
   const IP = 'ip';
 
-
   public function contains(string $ip): bool {
     $stmt = $this->gettPdo()->prepare('SELECT 1 FROM visitors WHERE uid = ? LIMIT 1');
     $stmt->execute([$ip]);
@@ -160,13 +159,5 @@ class IpDataController extends AbstractDataController {
     }
     // return $success;
   }
-
-  public function containsUrl(User $u, string $url): bool {
-    $stmt = $this->gettPdo()->prepare('SELECT 1 FROM siteVisits, visitors WHERE visitors.uid = ? AND visitors.id = siteVisits.visitorID AND url = ? LIMIT 1');
-    $stmt->execute([$u->getUID(), $url]);
-    return $stmt->fetchColumn() !== false;
-  }
-
-
 
 }

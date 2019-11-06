@@ -102,19 +102,6 @@ class Data implements \Countable {
     return $result;
   }
 
-  public function updateUser(User $user) {
-    if ($this->contains($user)) {
-      $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-      $stmt->execute([$user->getUID()]);
-    }
-    $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-    $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
-    if ($result === false) {
-      return null;
-    }
-    return $result;
-  }
 
   public function getUrlData(User $user = null): array {
     try {
@@ -132,110 +119,8 @@ class Data implements \Countable {
     return $stmt->fetchAll(PDO::FETCH_OBJ);
   }
 
-  public function insertVisitor(User $user): int {
-    try {
-      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, userAgent) VALUES (?, ?, ?, INET_ATON(?), ?)');
-      $data = [
-          $user->getUID(),
-          $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getIp(),
-          $user->getUserAgent()];
-      $success = $stmt->execute($data);
-      if (!$success) {
-        throw new RuntimeException('Data saving faled', 0, $e);
-      }
-      //$id = $this->gettPdo()->lastInsertId();
-      // echo $this->gettPdo()->lastInsertId();
-      $id = $this->gettPdo()->lastInsertId();
-      // $user->getData()->id = $id;
-      // echo "New record created successfully";
-      return $id;
-    } catch (PDOException $e) {
-      throw new RuntimeException('Data saving faled', 0, $e);
-    }
-    // return $success;
-  }
 
-  public function containsUrl(User $u, string $url): bool {
-    $stmt = $this->gettPdo()->prepare('SELECT 1 FROM siteVisits, visitors WHERE visitors.uid = ? AND visitors.id = siteVisits.visitorID AND url = ? LIMIT 1');
-    $stmt->execute([$u->getUID(), $url]);
-    return $stmt->fetchColumn() !== false;
-  }
 
-  public function updateIPData(User $user) {
-    try {
-
-      //$count = $userData->visits + 1;
-      $stmt = $this->gettPdo()->prepare('UPDATE visitors SET visits = visits + 1, lastVisit = ? WHERE uid = ?');
-      $data = [
-          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getUID()];
-      $success = $stmt->execute($data);
-      //$stmt = null;
-      // echo "Site revisited successfully";
-    } catch (PDOException $e) {
-      throw new RuntimeException('Data saving faled', 0, $e);
-    }
-    return $success;
-  }
-
-  public function addRevisit(User $user) {
-    try {
-
-      //$count = $userData->visits + 1;
-      $stmt = $this->gettPdo()->prepare('UPDATE visitors SET visits = visits + 1, lastVisit = ? WHERE uid = ?');
-      $data = [
-          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getUID()];
-      $success = $stmt->execute($data);
-      //$stmt = null;
-      // echo "Site revisited successfully";
-    } catch (PDOException $e) {
-      throw new RuntimeException('Data saving faled', 0, $e);
-    }
-    return $success;
-  }
-
-  public function getDBIDFor(User $user) {
-    $stmt = $this->gettPdo()->prepare('SELECT id FROM visitors WHERE uid = ?');
-    $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
-    if ($result === false) {
-      return null;
-    }
-    return $result->id;
-  }
-
-  public function addSiteRefresh(User $user, string $site) {
-    try {
-      if (!$this->containsUrl($user, $site)) {
-        $id = $this->getDBIDFor($user);
-        $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, lastVisit) VALUES (?, ?, ?)');
-        $data = [
-            $id,
-            $site,
-            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s')];
-        $success = $stmt->execute($data);
-      } else {
-        ///$this->getDBIDFor($user);
-        $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, lastVisit = ? WHERE visitorID = ? AND url = ?');
-        $data = [
-            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-            $this->getDBIDFor($user),
-            $site];
-        $success = $stmt->execute($data);
-      }
-      //$stmt = null;
-      if (!$success) {
-        throw new RuntimeException('Site refresh was not saved', 0, $e);
-      }
-      // echo "Site clicked successfully '$count'";
-    } catch (PDOException $e) {
-      throw new RuntimeException('Data saving faled', 0, $e);
-    }
-    return $success;
-  }
 
   /**
    * Counts statistics data values

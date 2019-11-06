@@ -210,7 +210,7 @@ class UserData {
     try {
       $this->getDBIDFor($user);
       if (!$this->containsUrl($user, $site)) {
-        $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, statusCode, lastVisit) VALUES (?, ?, ?)');
+        $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, statusCode, lastVisit) VALUES (?,?, ?, ?)');
         $data = [
             $user->getDbId(),
             $site,
@@ -219,7 +219,7 @@ class UserData {
         $success = $stmt->execute($data);
       } else {
         ///$this->getDBIDFor($user);
-        $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1,statusCode=?, lastVisit = ? WHERE visitorID = ? AND url = ?');
+        $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, statusCode=?, lastVisit = ? WHERE visitorID = ? AND url = ?');
         $data = [
             $status, 
             $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),

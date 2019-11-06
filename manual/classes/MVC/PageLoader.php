@@ -40,6 +40,7 @@ class PageLoader extends AbstractContent implements CssClassifiableContent {
   private $container;
 
   public function __construct() {
+    $this->tracker = \Sphp\Apps\Trackers\Controller::instance();
     $this->manual = Tags::div()->addCssClass('mainContent');
     $this->container = Tags::main()->addCssClass('container');
     $this->manual->append($this->container);
@@ -52,8 +53,11 @@ class PageLoader extends AbstractContent implements CssClassifiableContent {
   protected function load(string $path) {
     try {
       if (is_file($path)) {
+        $this->tracker->run();
         $this->container->appendPhpFile($path);
       } else {
+        http_response_code(404);
+        $this->tracker->run();
         $this->addCssClass('error');
         $this->container->appendPhpFile('manual/templates/error.php');
       }
@@ -64,8 +68,8 @@ class PageLoader extends AbstractContent implements CssClassifiableContent {
   }
 
   public function loadNotFound(string $path = null) {
+    http_response_code(404);
     $this->addCssClass('error');
-    //echo $path;
     $this->load('manual/templates/error.php');
   }
 
