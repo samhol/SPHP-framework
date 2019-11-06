@@ -55,8 +55,9 @@ class VisitsView {
     $table = new Table;
     $table->setCaption('Site data');
     $table->useThead()->thead()->appendHeaderRow(['URL:', 'Individual users:', 'total visits:']);
+    $table->useTbody();
     foreach ($this->data->getUrlData() as $urlData) {
-      $table->useTbody()->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->visits]);
+      $table->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->visits]);
     }
     // $table->useTfoot()->tfoot()->appendHeaderRow(['foo']);
     return $table;

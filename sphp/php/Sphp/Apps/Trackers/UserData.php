@@ -206,20 +206,22 @@ class UserData {
     return $result !== false;
   }
 
-  public function addSiteRefresh(User $user, string $site) {
+  public function addSiteRefresh(User $user, string $site, int $status = null) {
     try {
       $this->getDBIDFor($user);
       if (!$this->containsUrl($user, $site)) {
-        $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, lastVisit) VALUES (?, ?, ?)');
+        $stmt = $this->gettPdo()->prepare('INSERT INTO siteVisits (visitorID, url, statusCode, lastVisit) VALUES (?, ?, ?)');
         $data = [
             $user->getDbId(),
             $site,
+            $status, 
             $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s')];
         $success = $stmt->execute($data);
       } else {
         ///$this->getDBIDFor($user);
-        $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1, lastVisit = ? WHERE visitorID = ? AND url = ?');
+        $stmt = $this->gettPdo()->prepare('UPDATE siteVisits SET count = count + 1,statusCode=?, lastVisit = ? WHERE visitorID = ? AND url = ?');
         $data = [
+            $status, 
             $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
             $user->getDbId(),
             $site];

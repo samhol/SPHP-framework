@@ -10,6 +10,8 @@
 
 namespace Sphp\Apps\Trackers;
 
+use Sphp\Html\Tables\Table;
+
 /**
  * Description of BrowserDataViewer
  *
@@ -41,13 +43,27 @@ class BrowserDataViewer {
 
     $logger = new \Monolog\Logger('name');
     $bc = new \BrowscapPHP\Browscap($cache, $logger);
-    $ul = new \Sphp\Html\Lists\Ul;
+    $table = new Table();
+    $table->setCaption('Browser data');
+    $table->useThead()->thead()->appendHeaderRow(['Maker:', 'Browser:', 'Version:', 'Visits:']);
+    $table->useTbody();
+
+    $botTable = new Table();
+    $botTable->addCssClass('hover table-scroll')->setCaption('Bots:');
+    $botTable->useThead()->thead()->appendHeaderRow(['Maker:', 'Mark:', 'Version:', 'Visits:']);
+    $botTable->useTbody();
     foreach ($this->browserData as $key => $value) {
       $browser = $bc->getBrowser($value->userAgent);
-      print_r($browser);
-      $ul->append("$browser->browser_maker $browser->browser $browser->version: $value->count");
+      if($browser->browser === 'Default Browser') {
+        print_r($browser);
+      }
+      if ($browser->crawler) {
+        $botTable->tbody()->appendBodyRow([$browser->browser_maker, $browser->browser, $browser->version, $value->count]);
+      } else {
+        $table->tbody()->appendBodyRow([$browser->browser_maker, $browser->browser, $browser->version, $value->count]);
+      }
     }
-    return $ul;
+    return $table.$botTable;
   }
 
 }

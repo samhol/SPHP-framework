@@ -106,5 +106,18 @@ class SiteDataController extends AbstractDataController {
     }
     return $result;
   }
+  
+  public function getUserStatistics(User $user): array {
+    try {
+      $rawQueryString = 'SELECT url, count FROM siteVisits WHERE visitorID=?';
+      // $queryString = vsprintf($rawQueryString, [$dataField, $dataField]);
+      $stmt = $this->getPdo()->prepare($rawQueryString);
+      $stmt->execute([$user->getDbId()]);
+      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('Statistics could not be fetched', 0, $e);
+    }
+    return $result;
+  }
 
 }

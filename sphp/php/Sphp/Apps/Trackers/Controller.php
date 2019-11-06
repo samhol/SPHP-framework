@@ -127,11 +127,14 @@ class Controller {
     //var_dump($browserDataController->containsUserAgent($this->currentUser->getUserAgent()));
     //var_dump($browserDataController->storeUserAgent($this->currentUser->getUserAgent()));
     $siteData = new SiteDataController($this->db->gettPdo());
-    
-    echo '<pre>';
+
     echo $browsers->run();
-    print_r($this->output);
-    print_r($siteData->getStatisticsFor());
+    echo '<pre>';
+
+    print_r($_SERVER);
+    //print_r($this->output);
+    //print_r($siteData->getStatisticsFor());
+    print_r($siteData->getUserStatistics($this->getCurrentUser()));
     // print_r($this->currentUser);
     // print_r($this->db->getStatisticsFor(Data::USER_AGENT));
     //print_r($this->db->getUserData(User::fromCookie()));
