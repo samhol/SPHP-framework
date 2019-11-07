@@ -11,6 +11,10 @@
 namespace Sphp\Apps\Trackers;
 
 use Sphp\Html\Tables\Table;
+use Doctrine\Common\Cache\FilesystemCache;
+use Roave\DoctrineSimpleCache\SimpleCacheAdapter;
+use Monolog\Logger;
+use BrowscapPHP\Browscap;
 
 /**
  * Description of BrowserDataViewer
@@ -38,11 +42,11 @@ class BrowserDataViewer {
   public function run() {
 
 
-    $fileCache = new \Doctrine\Common\Cache\FilesystemCache("./vendor/browscap/browscap-php/resources");
-    $cache = new \Roave\DoctrineSimpleCache\SimpleCacheAdapter($fileCache);
+    $fileCache = new FilesystemCache("./vendor/browscap/browscap-php/resources");
+    $cache = new SimpleCacheAdapter($fileCache);
 
-    $logger = new \Monolog\Logger('name');
-    $bc = new \BrowscapPHP\Browscap($cache, $logger);
+    $logger = new Logger('name');
+    $bc = new Browscap($cache, $logger);
     $table = new Table();
     $table->setCaption('Browser data');
     $table->useThead()->thead()->appendHeaderRow(['Maker:', 'Browser:', 'Version:', 'Visits:']);
@@ -54,8 +58,10 @@ class BrowserDataViewer {
     $botTable->useTbody();
     foreach ($this->browserData as $key => $value) {
       $browser = $bc->getBrowser($value->userAgent);
-      if($browser->browser === 'Default Browser') {
-        print_r($browser);
+      if ($browser->crawler) {
+        echo '<pre>';
+        var_dump($browser);
+        echo '</pre>';
       }
       if ($browser->crawler) {
         $botTable->tbody()->appendBodyRow([$browser->browser_maker, $browser->browser, $browser->version, $value->count]);
@@ -63,7 +69,7 @@ class BrowserDataViewer {
         $table->tbody()->appendBodyRow([$browser->browser_maker, $browser->browser, $browser->version, $value->count]);
       }
     }
-    return $table.$botTable;
+    return $table . $botTable;
   }
 
 }

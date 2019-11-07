@@ -131,6 +131,7 @@ class Controller {
     $view = new VisitsView($this->db);
     echo $view->buildTotals();
     echo $view->buildSiteTable()->addCssClass('site-table');
+    echo $view->buildSiteTable(false)->addCssClass('site-table');
     $browsers = new BrowserDataViewer($this->db->userAgents()->getStatistics());
     //$browserDataController = new UserAgentDataController($this->db->gettPdo());
     //var_dump($browserDataController->containsUserAgent($this->currentUser->getUserAgent()));

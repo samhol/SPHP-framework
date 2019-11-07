@@ -31,51 +31,6 @@ class IpDataController extends AbstractDataController {
     return $stmt->fetchColumn() !== false;
   }
 
-  public function getUserData(User $user): array {
-    $stmt = $this->gettPdo()->prepare('SELECT id, uid, firstVisit, lastVisit, visits, INET_NTOA(ip) as ip, browser FROM visitors WHERE uid=?');
-    $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($result === false) {
-      return [];
-    }
-    return $result;
-  }
-
-  public function storeUser(User $user): int {
-    try {
-      if (!$this->contains($user)) {
-        $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
-        $data = [
-            $user->getUID(),
-            $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-            $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-            $user->getIp(),
-            $user->getUserAgent()];
-        $success = $stmt->execute($data);
-      }
-      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
-      $data = [
-          $user->getUID(),
-          $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getIp(),
-          $user->getUserAgent()];
-      $success = $stmt->execute($data);
-      if (!$success) {
-        throw new RuntimeException('Data saving faled', 0, $e);
-      }
-      //$id = $this->gettPdo()->lastInsertId();
-      // echo $this->gettPdo()->lastInsertId();
-      $id = $this->gettPdo()->lastInsertId();
-      // $user->getData()->id = $id;
-      // echo "New record created successfully";
-      return $id;
-    } catch (PDOException $e) {
-      throw new RuntimeException('Data saving faled', 0, $e);
-    }
-    // return $success;
-  }
-
   public function storeIp(string $ip) {
     if ($visited === null) {
       $visited = new \DateTimeImmutable();
@@ -107,57 +62,6 @@ class IpDataController extends AbstractDataController {
       $this->getPdo()->rollBack();
       throw new RuntimeException('Storing User Agent failed', 0, $e);
     }
-  }
-
-  public function updateUser(User $user) {
-    if ($this->contains($user)) {
-      $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-      $stmt->execute([$user->getUID()]);
-    }
-    $stmt = $this->gettPdo()->prepare('SELECT * FROM visitors WHERE uid=?');
-    $stmt->execute([$user->getUID()]);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
-    if ($result === false) {
-      return null;
-    }
-    return $result;
-  }
-
-  public function getUrlData(User $user): array {
-    try {
-
-      $stmt = $this->gettPdo()->prepare("SELECT * FROM siteVisits WHERE uid = ?");
-      $stmt->execute([$user->getUID()]);
-      //$result = $stmt->fetch(PDO::FETCH_OBJ);
-    } catch (PDOException $e) {
-      throw new RuntimeException('Refresh counting failed', 0, $e);
-    }
-    return $stmt->fetchAll(PDO::FETCH_OBJ);
-  }
-
-  public function insertVisitor(User $user): int {
-    try {
-      $stmt = $this->gettPdo()->prepare('INSERT INTO visitors (uid, firstVisit, lastVisit, ip, browser) VALUES (?, ?, ?, INET_ATON(?), ?)');
-      $data = [
-          $user->getUID(),
-          $user->getFirstVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getLastVisit()->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
-          $user->getIp(),
-          $user->getUserAgent()];
-      $success = $stmt->execute($data);
-      if (!$success) {
-        throw new RuntimeException('Data saving faled', 0, $e);
-      }
-      //$id = $this->gettPdo()->lastInsertId();
-      // echo $this->gettPdo()->lastInsertId();
-      $id = $this->gettPdo()->lastInsertId();
-      // $user->getData()->id = $id;
-      // echo "New record created successfully";
-      return $id;
-    } catch (PDOException $e) {
-      throw new RuntimeException('Data saving faled', 0, $e);
-    }
-    // return $success;
   }
 
 }

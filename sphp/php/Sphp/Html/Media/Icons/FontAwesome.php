@@ -49,11 +49,11 @@ class FontAwesome extends IconFactory {
    * Creates an icon instance
    * 
    * @param  string $iconName
-   * @param  string $tagname
+   * @param  string $title optional title
    * @return IconTag
    */
-  public function createIcon(string $iconName, string $tagname = 'i'): IconTag {
-    $icon = new FontAwesomeIcon($iconName);
+  public function createIcon(string $iconName, string $title = null): IconTag {
+    $icon = new FontAwesomeIcon($iconName, $title);
     $this->insertIconAttributesTo($icon);
     $this->setCssClassesTo($icon);
     return $icon;
@@ -109,8 +109,9 @@ class FontAwesome extends IconFactory {
    * @param  string|null $borders the size of the icon
    * @return $this for a fluent interface
    */
-  public function useBorsers(bool $borders = true) {
+  public function useBorders(bool $borders = true) {
     $this->functions['useBorders'] = $borders;
     return $this;
   }
+
 }

@@ -51,12 +51,11 @@ class VisitsView {
     return $totals;
   }
 
-  public function buildSiteTable(): Table {
+  public function buildSiteTable(bool $validUrls = true): Table {
     $table = new Table;
-    $table->setCaption('Site data');
     $table->useThead()->thead()->appendHeaderRow(['URL:', 'Individual users:', 'total visits:']);
     $table->useTbody();
-    foreach ($this->data->urls()->getActuals() as $urlData) {
+    foreach ($this->data->urls()->getstatsFor($validUrls) as $urlData) {
       $table->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->hits]);
     }
     // $table->useTfoot()->tfoot()->appendHeaderRow(['foo']);

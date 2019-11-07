@@ -116,6 +116,38 @@ class SiteDataController extends AbstractDataController {
     return $result;
   }
 
+  public function getstatsForValid(): array {
+    try {
+      $rawQueryString = 'SELECT url, SUM(count) as hits, count(visitorID) as userCount '
+              . 'FROM siteVisits '
+              . 'WHERE validity = 1 '
+              . 'GROUP BY url';
+      // $queryString = vsprintf($rawQueryString, [$dataField, $dataField]);
+      $stmt = $this->getPdo()->prepare($rawQueryString);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('Statistics could not be fetched', 0, $e);
+    }
+    return $result;
+  }
+
+  public function getstatsFor(bool $validUrl = true): array {
+    try {
+      $rawQueryString = 'SELECT url, SUM(count) as hits, count(visitorID) as userCount '
+              . 'FROM siteVisits '
+              . 'WHERE validity = ? '
+              . 'GROUP BY url';
+      // $queryString = vsprintf($rawQueryString, [$dataField, $dataField]);
+      $stmt = $this->getPdo()->prepare($rawQueryString);
+      $stmt->execute([$validUrl]);
+      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+      throw new RuntimeException('Statistics could not be fetched', 0, $e);
+    }
+    return $result;
+  }
+
   public function getStatisticsFor(): array {
     try {
       $rawQueryString = 'SELECT url, SUM(count) as totalVisits, count(visitorID) as userCount FROM siteVisits GROUP BY url';
