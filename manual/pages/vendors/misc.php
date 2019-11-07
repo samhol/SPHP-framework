@@ -16,7 +16,7 @@ $doctrineSection->appendMdFile('./manual/pages/vendors/data/misc/doctrine-orm.md
 $orbitIntro->slides()->append($doctrineSection)->addCssClass('doctrine');
 
 $phpunitSection = new Section();
-$phpunitSection->appendMdFile('./manual/pages/vendors/data/misc/phpunit.md');
+$phpunitSection->appendMdFile('./manual/pages/vendors/data/php-testing.php');
 $orbitIntro->slides()->append($phpunitSection)->addCssClass('php');
 
 $jsSection = new Section();
