@@ -14,7 +14,7 @@ $fa->fixedWidth(true);
 $fa->setSize('lg');
 foreach ($required as $component => $version) {
   $package = str_replace('zendframework/', '', $component);
-  $ul->appendLink("https://www.npmjs.com/package/$component", "{$fa->createIcon('fab fa-npm')} $package");
+  $ul->appendLink("https://www.npmjs.com/package/$component", '<span class="icon">'.$fa->createIcon('fab fa-npm'). "</span> $package");
 }
 ?>
 # JavaScript packages
