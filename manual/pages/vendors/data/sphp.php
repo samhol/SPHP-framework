@@ -18,13 +18,13 @@ foreach ($zends as $component => $version) {
   $ul->appendLink("https://github.com/$component", "{$fa->createIcon('fab fa-github')} $package");
 }
 ?>
-# Zend Framework
+# SPHPlayground SYSTEM REQUIREMENTS
+Framework requires minimum of PHP <?php echo getPHPVersion() ?>; it is recommended to use the latest stable PHP version whenever possible.
 
-Zend Framework is a collection of professional PHP packages. It can be used to 
-develop web applications and services using PHP 5.6+, and provides 100% 
-object-oriented code using a broad spectrum of language features.
+Download the framework package from [github](https://github.com/samhol/SPHP-framework) and Install dependencies with Composer:
 
-## Used Zend packages
+## Installation
 
-<?php
-echo $ul;
+1. Download the framework package from github
+2. Install PHP dependencies with Composer
+3. Install npm dependencies with npm

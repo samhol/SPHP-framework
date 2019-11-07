@@ -24,17 +24,10 @@ framework requires no usage of other programming languages than PHP.
 ## Some terminology explained
 MD
 );
-include 'manual/snippets/carousels/techs.php';
+include './manual/snippets/carousels/techs.php';
+
+include './manual/pages/vendors/orbit-carousel.php';
 md(<<<MD
-## SYSTEM REQUIREMENTS and installation
-
-Framework requires **PHP 7.0** or later; it is recommended to use the latest stable PHP version whenever possible.
-
-Download the framework package from [github](https://github.com/samhol/SPHP-framework) and Install dependencies with Composer:
-
-* [Composer installation](https://getcomposer.org/download/){target="_blank"}
-* [Composer Documentation](https://getcomposer.org/doc/){target="_blank"}
-
 ## Disclaimer
 
 It should go without saying, but any example code shown on this site is yours to use without obligation or warranty of any kind.

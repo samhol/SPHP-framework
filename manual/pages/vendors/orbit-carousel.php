@@ -7,6 +7,11 @@ $orbitIntro = new Orbit();
 $orbitIntro->addCssClass('sphp', 'manual', 'vendor-readme-orbit');
 $orbitIntro->setAnimIn('fade-in');
 $orbitIntro->setAnimOut('fade-out');
+
+$sphpSection = new Section();
+$sphpSection->appendMdFile('./manual/pages/vendors/data/sphp.php');
+$orbitIntro->slides()->append($sphpSection)->addCssClass('sphp');
+
 $zendSection = new Section();
 $zendSection->appendMdFile('./manual/pages/vendors/data/zend.php');
 $orbitIntro->slides()->append($zendSection)->addCssClass('zend');
