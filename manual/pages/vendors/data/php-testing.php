@@ -26,7 +26,7 @@ PHP unit testing is done with PHPUnit.
 > Sebastian Bergmann and its development is hosted on GitHub.
 > -- <cite>From Wikipedia, the free encyclopedia</cite>
 
-## Packages
+## Packages used
 
 <?php
 echo $ul;
