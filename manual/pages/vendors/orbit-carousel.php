@@ -2,7 +2,10 @@
 
 use Sphp\Html\Flow\Section;
 use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
-
+use Sphp\Manual\MVC\Intro\Packages;
+echo '<pre>';
+$p = new Packages();
+echo '</pre>';
 $orbitIntro = new Orbit();
 $orbitIntro->addCssClass('sphp', 'manual', 'vendor-readme-orbit');
 $orbitIntro->setAnimIn('fade-in');
@@ -33,4 +36,3 @@ $scssSection->appendMdFile('./manual/pages/vendors/data/js.php');
 $orbitIntro->slides()->append($scssSection)->addCssClass('js');
 
 $orbitIntro->printHtml();
-

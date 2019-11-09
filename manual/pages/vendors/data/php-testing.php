@@ -16,7 +16,7 @@ foreach ($required as $component => $version) {
   $ul->appendLink("https://github.com/$component", "{$fa->createIcon('fab fa-github')} $package");
 }
 ?>
-# Unit testing SPHPlayground
+# Unit testing PHP in SPHPlayground
 
 PHP unit testing is done with PHPUnit. 
 

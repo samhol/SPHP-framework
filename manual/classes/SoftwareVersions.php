@@ -7,8 +7,6 @@
 
 namespace Sphp\Manual;
 
-use Doctrine\Common\Cache\Version;
-
 /**
  * Description of SoftwareVersions
  *
@@ -17,6 +15,10 @@ use Doctrine\Common\Cache\Version;
  * @filesource
  */
 class SoftwareVersions {
+
+  public function getImagineVersion(): string {
+    return \Imagine\Image\ImagineInterface::VERSION;
+  }
 
   /**
    * 
@@ -55,7 +57,7 @@ class SoftwareVersions {
    * @return string
    */
   public static function doctrineCommonCache(): string {
-    return Version::VERSION;
+    return \Doctrine\Common\Cache\Version::VERSION;
   }
 
   /**

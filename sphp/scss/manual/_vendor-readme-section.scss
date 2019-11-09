@@ -81,36 +81,36 @@
       }
       &.svg {
         @include vendor-font-coloring(#333);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?name=svg&opacity=0.2');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?name=svg&opacity=0.2');
         background-size: auto 80%;
       }
       &.html {
         @include vendor-font-coloring(#E44D26);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=html5-original&opacity=0.3');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?devicon=html5-original&opacity=0.3');
         background-size: auto 80%;
       } 
       &.foundation {
         @include vendor-font-coloring(#333);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=foundation-original&opacity=0.2');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?devicon=foundation-original&opacity=0.2');
         background-size: auto 80%;
       }
       &.js {
         @include vendor-font-coloring(#786801);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=javascript-original&opacity=0.2');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?devicon=javascript-original&opacity=0.2');
         background-size: auto 80%;
       }
       &.scss, &.sass {
         @include vendor-font-coloring(#CB6699);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=sass-original&opacity=0.3');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?devicon=sass-original&opacity=0.3');
         background-size: auto 80%;
       }
       &.zend {
         @include vendor-font-coloring(#68B604);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=zend-plain&opacity=0.25');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?devicon=zend-plain&opacity=0.25');
       }
       &.php {
         @include vendor-font-coloring(#6181B6);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=php-original&opacity=0.13');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?devicon=php-original&opacity=0.13');
       }
       &.doctrine {
         @include vendor-font-coloring(#F56D39);
@@ -118,7 +118,7 @@
       }
       &.sphp {
         @include vendor-font-coloring(#F56D39);
-        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?name=s-logo&opacity=.1');
+        @include vendor-watermark('http://data.samiholck.com/svg/svg.php?name=s-logo&opacity=.1');
       }
     }
     margin: rem-calc(4);

@@ -137,8 +137,8 @@ class SphpDocument extends AbstractContent {
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.3.0/video-js.css'));
-    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.3.0/video.js');
+    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.6.5/video-js.css'));
+    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.6.5/video.js');
     return $this;
   }
 
