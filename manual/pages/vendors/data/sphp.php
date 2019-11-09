@@ -21,7 +21,7 @@ foreach ($zends as $component => $version) {
 # SPHPlayground SYSTEM REQUIREMENTS
 Framework requires minimum of PHP <?php echo getPHPVersion() ?>; it is recommended to use the latest stable PHP version whenever possible.
 
-Download the framework package from [github](https://github.com/samhol/SPHP-framework) and Install dependencies with Composer:
+Download the framework package from [github](https://github.com/samhol/SPHP-framework){.ext} and Install dependencies with Composer:
 
 ## Installation
 

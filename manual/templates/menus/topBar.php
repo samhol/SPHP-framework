@@ -21,7 +21,7 @@ try {
   $leftDrop->appendLink('/', FontAwesome::i('fas fa-home'))->addCssClass('icon-link');
   $builder = new MenuBuilder(new MenuLinkBuilder(trim($redirect, '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
-  $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
+  //$leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
   $navi->topbar()->left()->append($leftDrop);
 

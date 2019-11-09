@@ -28,35 +28,51 @@
   }
   .orbit-container {
     .orbit-slide {
-      //min-height: 100%;
-      .packages {
-        li {
-          margin: rem-calc(4);
+      min-height: 100%;
+      a.ext {
+        text-decoration: none;
+        @include transition(all, 0.4s, ease-in-out);
+        border-bottom: solid 1px #555;
+        &:hover {
+          text-decoration: none;
+          border-bottom-color: transparent;
         }
       }
-      a {
-        &:not(.button) {
-          .text , .icon {
-            display: inline-block;
-            @include transition(all, 0.4s, ease-in-out);
-          }
-          .icon {
-            color: #777;
-            background-color: #ddd;
-            //display: inline-block;
-            margin-right: rem-calc(10);
-            border: solid 1px #ccc;
-            @include border-radius(2px);
-            padding: rem-calc(2 6 2 6);
-          }
-          .text {
-            border-bottom: solid 1px #555;
-          }
-          &:hover {
+      ul.packages {
+        list-style: none;
+        li {
+          margin-bottom: rem-calc(2);
+          a {
             text-decoration: none;
-            .text {
-              border-bottom-color: transparent;
+            .text , .icon {
+              display: inline-block;
+              @include transition(all, 0.4s, ease-in-out);
             }
+            .icon {
+              color: #777;
+              background-color: #ddd;
+              //display: inline-block;
+              margin-right: rem-calc(10);
+              border: solid 1px #ccc;
+              @include border-radius(3px);
+              padding: rem-calc(2 4 2 4);
+            }
+            .text {
+              border-bottom: solid 1px #555;
+            }
+            &:hover {
+              text-decoration: none;
+              .text {
+                border-bottom-color: transparent;
+              }
+              .icon {
+                color: #444;
+                background-color: #eee;
+                //display: inline-block;
+                border-color: #999;
+              }
+            }
+
           }
         }
       }
@@ -79,7 +95,7 @@
         background-size: auto 80%;
       }
       &.js {
-        @include vendor-font-coloring(#F0DB4F);
+        @include vendor-font-coloring(#786801);
         @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=javascript-original&opacity=0.2');
         background-size: auto 80%;
       }
@@ -99,6 +115,10 @@
       &.doctrine {
         @include vendor-font-coloring(#F56D39);
         @include vendor-watermark('http://data.samiholck.com/svg/doctrine.php?opacity=.3');
+      }
+      &.sphp {
+        @include vendor-font-coloring(#F56D39);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?name=s-logo&opacity=.1');
       }
     }
     margin: rem-calc(4);

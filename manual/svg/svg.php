@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once('/home/int48291/public_html/playground/manual/settings.php');
+require_once('/home/int48291/public_html/playground/sphp/settings.php');
 
 use Sphp\Validators\Range;
 use Sphp\Html\Media\Image\SvgLoader;
