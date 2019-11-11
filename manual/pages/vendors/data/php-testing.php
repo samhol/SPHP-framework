@@ -1,21 +1,3 @@
-<?php
-
-namespace Sphp\Manual\Vendors;
-
-use Sphp\Html\Lists\Ul;
-use Sphp\Html\Media\Icons\FontAwesome;
-
-require_once __DIR__ . '/jsonParsing.php';
-$required = getComposerPackages('require-dev');
-$ul = new Ul();
-$ul->addCssClass('no-bullet');
-$fa = new FontAwesome();
-$fa->fixedWidth(true);
-foreach ($required as $component => $version) {
-  $package = str_replace('zendframework/', '', $component);
-  $ul->appendLink("https://github.com/$component", "{$fa->createIcon('fab fa-github')} $package");
-}
-?>
 # Unit testing PHP in SPHPlayground
 
 PHP unit testing is done with PHPUnit. 

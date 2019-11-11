@@ -12,13 +12,13 @@ $sphpSection = new Section();
 $sphpSection->appendMdFile('./manual/pages/vendors/data/sphp.php');
 $orbitIntro->slides()->append($sphpSection)->addCssClass('sphp');
 
+$packageSection = new Section();
+$packageSection->appendMdFile('./manual/pages/vendors/data/foo.php');
+$orbitIntro->slides()->append($packageSection)->addCssClass('zend');
+
 $zendSection = new Section();
 $zendSection->appendMdFile('./manual/pages/vendors/data/zend.php');
 $orbitIntro->slides()->append($zendSection)->addCssClass('zend');
-
-$doctrineSection = new Section();
-$doctrineSection->appendMdFile('./manual/pages/vendors/data/foo.php');
-$orbitIntro->slides()->append($doctrineSection)->addCssClass('doctrine');
 
 $phpunitSection = new Section();
 $phpunitSection->appendMdFile('./manual/pages/vendors/data/php-testing.php');
