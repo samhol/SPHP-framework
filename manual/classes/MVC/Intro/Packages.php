@@ -33,7 +33,7 @@ class Packages {
     $this->composer = new ComposerReader('./composer.json');
     $section = new RequireSection($this->composer);
 
-    foreach ($section as $package) {
+    foreach ($section as $k => $package) {
       echo "\n".$package->name . ' with ' . $package->constraint;
 
       // check if package version gerate then a version constraint.

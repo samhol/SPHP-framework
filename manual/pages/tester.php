@@ -1,38 +1,24 @@
 <?php
 
-echo "<pre>";
+use Sphp\Html\Flow\Section;
+use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
+use Sphp\Manual\MVC\Intro\PackageListBuilder;
+use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Parsers\ParseFactory;
 
-class UnitTransformer {
+echo '<pre>';
+//$p = new Packages();
 
-  private $unitMap = ['m' => 1, 'cm' => .1, 'km' => 1000];
+$all = ParseFactory::fromFile('./composer.json');
+$zends = Arrays::findKeysLike($all['require'], 'zendframework');
 
-  /**
-   * 
-   * @param string $from
-   * @return float
-   * @throws Sphp\Exceptions\InvalidArgumentException
-   */
-  public function getFactor(string $from): float {
-    if (!array_key_exists($from, $this->unitMap)) {
-      throw new Sphp\Exceptions\InvalidArgumentException("$from is not recognised");
-    } else {
-      return $this->unitMap[$from];
-    }
-  }
-
-  /**
-   * 
-   * @param float $value
-   * @param string $unit
-   * @param string $newUnit
-   * @return float
-   */
-  public function transform(float $value, string $unit, string $newUnit): float {
-    return $value * $this->getFactor($unit) / $this->getFactor($newUnit);
-  }
-
-}
-
-$foo = new UnitTransformer();
-var_dump($foo->transform(1, 'km', 'cm'));
-echo "</pre>";
+$plb = new PackageListBuilder();
+$plb->getLinkTextBuilder()->setIcon('fab fa-github');
+$plb->setUrlBuilder(function(string $package): string {
+  return "https://github.com/$package";
+});
+//foreach ($zends as $component => $version) {
+echo $plb->build($zends);
+//$package = str_replace('zendframework/', '', $component);
+ // $ul->appendLink("https://github.com/$component", Tags::span($fa->createIcon('fab fa-github'))->addCssClass('icon') . Tags::span($package)->addCssClass('text'));
+//}

@@ -8,6 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
+namespace Sphp\Manual\MVC\Intro;
+
+use Sphp\Html\Media\Icons\FontAwesome;
+use Sphp\Html\Tags;
+
 /**
  * Description of PackageListBuilder
  *
@@ -18,17 +23,56 @@
  */
 class PackageListBuilder {
 
-  public function build() {
-    $required = getComposerPackages();
-    $zends = Arrays::findKeysLike($required, 'zendframework');
-    $ul = new Ul();
-    $ul->addCssClass('packages');
-    $fa = new FontAwesome();
-    $fa->fixedWidth(true);
-    foreach ($zends as $component => $version) {
+  /**
+   * @var FontAwesome
+   */
+  private $fa;
+  private $linkTextBuilder;
+  private $urlBuilder;
+
+  public function __construct() {
+    $this->fa = new FontAwesome();
+    $this->fa->fixedWidth(true);
+    $this->setLinkTextBuilder(new LinkTextBuilder());
+    $this->setUrlBuilder(function(string $package): string {
+      return "https://github.com/$package";
+    });
+  }
+
+  public function buildLinkText($text) {
+    $builder = $this->linkTextBuilder;
+    return $builder($text);
+  }
+
+  public function builUrl($package) {
+    $builder = $this->urlBuilder;
+    return $builder($package);
+  }
+
+  public function setLinkTextBuilder($linkTextBuilder) {
+    $this->linkTextBuilder = $linkTextBuilder;
+    return $this;
+  }
+  public function getLinkTextBuilder():LinkTextBuilder {
+  return  $this->linkTextBuilder;
+  }
+
+  public function setUrlBuilder($urlBuilder) {
+    $this->urlBuilder = $urlBuilder;
+    return $this;
+  }
+
+  public function build(iterable $packages) {
+    $ul = Tags::ul()->addCssClass('packages');
+    foreach ($packages as $component => $version) {
       $package = str_replace('zendframework/', '', $component);
-      $ul->appendLink("https://github.com/$component", Tags::span($fa->createIcon('fab fa-github'))->addCssClass('icon') . Tags::span($package)->addCssClass('text'));
+      $ul->appendLink($this->builUrl($component), $this->buildLinkText($package));
     }
+    return $ul;
+  }
+
+  public function buildLinkText1(string $icon, string $package): string {
+    return Tags::span($this->fa->createIcon($icon))->addCssClass('icon') . Tags::span($package)->addCssClass('text');
   }
 
 }
