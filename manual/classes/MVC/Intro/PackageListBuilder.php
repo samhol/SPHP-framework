@@ -53,8 +53,9 @@ class PackageListBuilder {
     $this->linkTextBuilder = $linkTextBuilder;
     return $this;
   }
-  public function getLinkTextBuilder():LinkTextBuilder {
-  return  $this->linkTextBuilder;
+
+  public function getLinkTextBuilder(): LinkTextBuilder {
+    return $this->linkTextBuilder;
   }
 
   public function setUrlBuilder($urlBuilder) {

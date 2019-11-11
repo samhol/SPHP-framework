@@ -17,7 +17,7 @@ $zendSection->appendMdFile('./manual/pages/vendors/data/zend.php');
 $orbitIntro->slides()->append($zendSection)->addCssClass('zend');
 
 $doctrineSection = new Section();
-$doctrineSection->appendMdFile('./manual/pages/vendors/data/misc/doctrine-orm.md');
+$doctrineSection->appendMdFile('./manual/pages/vendors/data/foo.php');
 $orbitIntro->slides()->append($doctrineSection)->addCssClass('doctrine');
 
 $phpunitSection = new Section();

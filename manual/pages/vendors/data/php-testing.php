@@ -29,4 +29,12 @@ PHP unit testing is done with PHPUnit.
 ## Packages used
 
 <?php
-echo $ul;
+
+use Sphp\Stdlib\Parsers\ParseFactory;
+use Sphp\Manual\MVC\Intro\PackageLinkListBuilder;
+
+$composerArr = ParseFactory::fromFile('./composer.json');
+$composerArr['require-dev'];
+$plb = PackageLinkListBuilder::github();
+
+echo $plb->build($composerArr['require-dev']);
