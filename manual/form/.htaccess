@@ -1,4 +1,0 @@
-Order Allow,Deny
-<FilesMatch "^process\.php$">
-Allow from all
-</FilesMatch>
