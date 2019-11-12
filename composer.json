@@ -24,10 +24,7 @@
     "zendframework/zend-i18n": "@stable",
     "zendframework/zend-paginator": "@stable",
     "zendframework/zend-mail": "@stable",
-    "symfony/yaml": "@stable",
-    "mpdf/mpdf": "@stable",
-    "browscap/browscap-php": "@stable",
-    "nadar/php-composer-reader": "^1.3"
+    "symfony/yaml": "@stable"
   },
   "require-dev": {
     "phpunit/phpunit": ">=8",
@@ -37,10 +34,6 @@
     "mikey179/vfsstream": "~1"
   },
   "autoload": {
-    "psr-4": {
-      "Sphp\\": "sphp/php/Sphp",
-      "Sphp\\Manual\\": "manual/classes"
-    },
     "psr-0": {
       "": "vendor/tovic/parsedown-extra-plugin"
     }
