@@ -9,6 +9,7 @@
   "dependencies": {
     "clipboard-polyfill": ">=2.7.0",
     "foundation-sites": ">=6.5.3",
+    "https-proxy-agent": "^3.0.1",
     "ion-rangeslider": ">=2.3.0",
     "jquery": "^3.4.1",
     "lazyloadxt": ">=1.1.0",
