@@ -37,7 +37,7 @@
     "gulp-useref": ">=3.1.6",
     "gulp-watch": "^5.0.1",
     "motion-ui": "^2.0.3",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "npm": "^6.12.0",
     "npm-check-updates": "^3.1.1"
   },
