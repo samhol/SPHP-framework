@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,6 +13,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeValueException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Stdlib\Readers\Json;
@@ -23,14 +26,14 @@ use Sphp\Stdlib\Readers\Json;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
+class JsonAttribute extends AbstractMutableAttribute {
 
   /**
    * properties as a (name -> value) map
    *
-   * @var scalar[]
+   * @var mixed
    */
-  private $data = [];
+  private $data;
 
   /**
    * @var Json
@@ -46,9 +49,7 @@ class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
   public function __construct(string $name, $value = null) {
     $this->parser = ParseFactory::json();
     parent::__construct($name);
-    if (is_string($value) || is_array($value)) {
-      $this->setValue($value);
-    }
+    $this->setValue($value);
   }
 
   public function __destruct() {
@@ -59,8 +60,8 @@ class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
     $output = '';
     if ($this->isVisible()) {
       $output .= $this->getName();
-      if (!$this->isEmpty()) {
-        $value = $this->getValue();
+      $value = $this->getValue();
+      if (!$value !== null) {
         $output .= "='$value'";
       }
     }
@@ -68,41 +69,37 @@ class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
   }
 
   public function isVisible(): bool {
-    return $this->isDemanded() || !empty($this->data);
+    return $this->isDemanded() || $this->data !== null;
   }
 
   public function isEmpty(): bool {
     return empty($this->data);
   }
 
-  /**
-   * Sets the properties values
-   *
-   * **IMPORTANT!:** Does not alter locked properties
-   *
-   * @param  scalar $value the value of the attribute
-   * @return $this for a fluent interface
-   * @throws InvalidArgumentException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already locked
-   */
-  public function setValue($value) {
-    try {
-      $this->clear();
-      if (is_scalar($value)) {
-        $this->data = $this->parser->fromString($value);
-      } else if (is_array($value)) {
-        $this->data = $value;
-      }
-      //$this->setProperty($this->parser->parse($value));
-    } catch (\Exception $ex) {
-      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
+  public function isValidValue($value): bool {
+    $valid = false;
+    if (is_string($value) && (new \Sphp\Validators\JsonString())->isValid($value)) {
+      $valid = true;
+    } else if (is_array($value) || is_object($value)) {
+      $is = json_encode($value, JSON_NUMERIC_CHECK, 512);
+      $valid = $is !== null;
+    } else if (is_null($value)) {
+      $valid = true;
     }
+    return $valid;
+  }
+
+  public function setValue($value) {
+    if (!$this->isValidValue($value)) {
+      throw new InvalidAttributeValueException('Invalid data type for Json attribute');
+    }
+    $this->data = $value;
     return $this;
   }
 
   public function clear() {
     if (!$this->isProtected()) {
-      $this->data = [];
+      $this->data = null;
     }
     return $this;
   }
@@ -118,64 +115,13 @@ class JsonAttribute extends AbstractAttribute implements \ArrayAccess {
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    return json_encode($this->data, JSON_UNESCAPED_SLASHES);
-  }
-
-  /**
-   * Checks whether an option exists
-   * 
-   * @param  mixed $name option name
-   * @return bool true if option exists
-   */
-  public function offsetExists($name): bool {
-    return array_key_exists($name, $this->data);
-  }
-
-  /**
-   * Returns the option value
-   * 
-   * @param  mixed $name option name
-   * @return scalar|null option value or null if not present
-   */
-  public function offsetGet($name) {
-    if ($this->offsetExists($name)) {
-      return $this->data[$name];
+    $out = null;
+    if (is_string($this->data)) {
+      $out = $this->data;
+    } else if (is_array($this->data) || is_object($this->data)) {
+      $out = json_encode($this->data, JSON_NUMERIC_CHECK, 512);
     }
-    return null;
-  }
-
-  /**
-   * Sets an option
-   * 
-   * @param  mixed $name option name
-   * @param  mixed $value option value
-   * @return void
-   * @throws InvalidArgumentException if the name or the value is invalid
-   */
-  public function offsetSet($name, $value): void {
-    if (!is_string($name)) {
-      throw new InvalidArgumentException('Invalid type given for option name');
-    }
-    if (!is_scalar($value) && $value !== null) {
-      throw new InvalidArgumentException('Invalid type given for option value');
-    }
-    if ($value === null) {
-      $this->offsetUnset($name);
-    } else {
-      $this->data[$name] = $value;
-    }
-  }
-
-  /**
-   * Removes an option
-   * 
-   * @param  mixed $name option name
-   * @return void
-   */
-  public function offsetUnset($name): void {
-    if ($this->offsetExists($name)) {
-      unset($this->data[$name]);
-    }
+    return $out;
   }
 
 }

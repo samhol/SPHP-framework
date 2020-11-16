@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,10 +13,10 @@
 namespace Sphp\Html\Flow;
 
 /**
- * Implements an HTML &lt;aside&gt; tag
+ * Implementation of an HTML aside tag
  *
- *  This component defines sections in a document, such as chapters, headers, 
- *  footers, or any other sections of the document.
+ *  This component defines some content aside from the content it is placed in.
+ *  Component's content should be indirectly related to the surrounding content.
  * 
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_aside.asp w3schools HTML API

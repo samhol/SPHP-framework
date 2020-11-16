@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -19,7 +21,7 @@ namespace Sphp\Html\Foundation\Sites\Core\DataOptions;
  */
 trait DataOpitonTrait {
 
-  abstract public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager;
+  abstract public function attributes(): \Sphp\Html\Attributes\AttributeContainer;
 
   /**
    * Sets a menu option used in a Foundation menu

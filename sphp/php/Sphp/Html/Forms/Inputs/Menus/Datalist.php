@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -17,15 +19,13 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Datalist extends AbstractOptionsContainer {
+class Datalist extends AbstractOptionContainer {
 
   /**
    * Constructor
-   * 
-   * @param type $opt
    */
-  public function __construct($opt = null) {
-    parent::__construct('datalist', $opt);
+  public function __construct() {
+    parent::__construct('datalist');
   }
 
 }

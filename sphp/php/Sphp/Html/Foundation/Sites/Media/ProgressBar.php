@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -40,7 +42,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
    * @param int $progress
    * @param string|null $name the name of the bar
    */
-  public function __construct(int $progress, string $name = null) {
+  public function __construct(float $progress, string $name = null) {
     parent::__construct('div');
     $this->progressMeter = new Span();
     $this->progressMeter->cssClasses()->protectValue('progress-meter');
@@ -48,14 +50,11 @@ class ProgressBar extends AbstractComponent implements Colourable {
     $this->progressMeter["progress-meter-text"]->cssClasses()->protectValue('progress-meter-text');
     //$this->identify();
     $this->attributes()
-            ->setAttribute('data-sphp-progressbar', 'blaa')
+            //->setAttribute('data-sphp-progressbar', 'blaa')
             ->protect('tabindex', 0)
             ->protect('role', 'progressbar')
             ->protect('aria-valuemin', 0)
-            ->protect('aria-valuemax', 100)
-            ->demand('aria-valuenow')
-            ->demand('aria-valuenow')
-            ->demand('data-sphp-progressbar-name');
+            ->protect('aria-valuemax', 100);
     $this->cssClasses()->protectValue('progress');
     $this->setProgress($progress)->setBarName($name);
   }
@@ -68,9 +67,9 @@ class ProgressBar extends AbstractComponent implements Colourable {
    */
   public function showProgressText(bool $show = true) {
     if ($show) {
-      $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'visible');
+      $this->progressMeter['progress-meter-text']->css()->setProperty('visibility', 'visible');
     } else {
-      $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'hidden');
+      $this->progressMeter['progress-meter-text']->css()->setProperty('visibility', 'hidden');
     }
     return $this;
   }
@@ -93,7 +92,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
    * @param  string $progressText the optional screen reader text describing the current progress
    * @return $this for a fluent interface
    */
-  public function setProgress(int $progress, string $progressText = null) {
+  public function setProgress(float $progress, string $progressText = null) {
     if ($progressText === null) {
       $progressText = "$progress%";
     }
@@ -101,7 +100,7 @@ class ProgressBar extends AbstractComponent implements Colourable {
             ->setAttribute('aria-valuenow', $progress)
             ->setAttribute('aria-valuetext', $progressText);
     $this->attributes()->setAttribute('title', $progressText);
-    $this->progressMeter->inlineStyles()->setProperty('width', "$progress%");
+    $this->progressMeter->css()->setProperty('width', "$progress%");
     $this->progressMeter['progress-meter-text']->resetContent("$progress%");
     return $this;
   }

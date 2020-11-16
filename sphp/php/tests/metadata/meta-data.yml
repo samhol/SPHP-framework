@@ -1,0 +1,276 @@
+## Meta data
+---
+- title: page title
+- base: /base/address
+  target: _blank
+- name: keywords 
+  content: your, tags
+- name: description 
+  content: 150 words
+- name: subject 
+  content: your website's subject
+- name: copyright 
+  content: company name
+- name: language" 
+  content: ES
+- name: robots 
+  content: index,follow
+- name: revised 
+  content: Sunday, July 18th, 2010, 5:15 pm
+- name: abstract 
+  content: 
+- name: topic 
+  content: 
+- name: summary 
+  content: 
+- name: Classification 
+  content: Business
+- name: author 
+  content: name, email@hotmail.com
+- name: designer 
+  content:  
+- name: copyright 
+  content:  
+- name: reply-to 
+  content: email@hotmail.com
+- name: owner  
+  content: 
+- name: url 
+  content: http://www.websiteaddrress.com
+- name: identifier-URL 
+  content: http://www.websiteaddress.com
+- name: directory 
+  content: submission
+- name: category 
+  content: 
+- name: coverage
+  content: Worldwide
+- name: distribution 
+  content: Global
+- name: rating 
+  content: General
+- name: revisit-after 
+  content: 7 days
+- http-equiv: Expires 
+  content: 0
+- http-equiv: Pragma 
+  content: no-cache
+- http-equiv: Cache-Control 
+  content: no-cache
+
+
+
+- name: og:title 
+  content: The Rock
+- name: og:type 
+  content: movie
+- name: og:url 
+  content: http://www.imdb.com/title/tt0117500/
+- name: og:image 
+  content: http://ia.media-imdb.com/rock.jpg
+- name: og:site_name 
+  content: IMDb
+- name: og:description 
+  content: A group of U.S. Marines, under command of...
+
+- name: fb:page_id 
+  content: 43929265776
+
+- name: og:email 
+  content: me@example.com
+- name: og:phone_number
+  content: 650-123-4567
+- name: og:fax_number 
+  content: +1-415-123-4567
+
+- name: og:latitude 
+  content: 37.416343
+- name: og:longitude  
+  content: -122.153013
+- name: og:street-address  
+  content: 1601 S California Ave
+- name: og:locality  
+  content: Palo Alto
+- name: og:region  
+  content: CA
+- name: og:postal-code  
+  content: 94304
+- name: og:country-name  
+  content: USA
+
+- property: og:type  
+  content: game.achievement
+- property: og:points  
+  content: POINTS_FOR_ACHIEVEMENT
+
+- property: og:video  
+  content: http://example.com/awesome.swf
+- property: og:video:height  
+  content: 640
+- property: og:video:width  
+  content: 385
+- property: og:video:type  
+  content: application/x-shockwave-flash
+- property: og:video  
+  content: http://example.com/html5.mp4
+- property: og:video:type  
+  content: video/mp4
+- property: og:video  
+  content: http://example.com/fallback.vid
+- property: og:video:type  
+  content: text/html
+
+- property: og:audio  
+  content: http://example.com/amazing.mp3
+- property: og:audio:title  
+  content: Amazing Song
+- property: og:audio:artist  
+  content: Amazing Band
+- property: og:audio:album  
+  content: Amazing Album
+- property: og:audio:type  
+  content: application/mp3
+
+- name: google-analytics  
+  content: 1-AHFKALJ
+- name: disqus  
+  content: abcdefg
+- name: uservoice  
+  content: asdfasdf
+- name: mixpanel  
+  content: asdfasdf
+
+- name: microid  
+  content: mailto+http:sha1:e6058ed7fca4a1921cq91d7f1f3b8736cd3cc1g7
+
+- name: apple-mobile-web-app-capable  
+  content: yes
+- name: apple-touch-fullscreen  
+  content: yes
+- name: apple-mobile-web-app-status-bar-style  
+  content: black
+- name: format-detection  
+  content: telephone=no
+- name: viewport  
+  content: width = 320, initial-scale = 2.3, user-scalable = no
+
+- http-equiv: Page-Enter  
+  content: RevealTrans(Duration=2.0,Transition=2)
+- http-equiv: Page-Exit  
+  content: RevealTrans(Duration=3.0,Transition=12)
+- name: mssmarttagspreventparsing  
+  content: true
+- http-equiv: X-UA-Compatible  
+  content: chrome=1
+- name: msapplication-starturl  
+  content: http://blog.reybango.com/about/
+- name: msapplication-window  
+  content: width=800;height=600
+- name: msapplication-navbutton-color  
+  content: red
+- name: application-name  
+  content: Rey Bango Front-end Developer
+- name: msapplication-tooltip  
+  content: Launch Rey Bango's Blog
+- name: msapplication-task  
+  content: name=About;action-uri=/about/;icon-uri=/images/about.ico
+- name: msapplication-task 
+  content: name=The Big List;action-uri=/the-big-list-of-javascript-css-and-html-development-tools-libraries-projects-and-books/;icon-uri=/images/list_links.ico
+- name: msapplication-task 
+  content: name=jQuery Posts;action-uri=/category/jquery/;icon-uri=/images/jquery.ico
+- name: msapplication-task
+  content: name=Start Developing;action-uri=/category/javascript/;icon-uri=/images/script.ico
+- link: shortcut icon  
+  href: /images/favicon.ico
+
+- name: tweetmeme-title  
+  content: Retweet Button Explained
+
+- name: apple-mobile-web-app-capable  
+  content: yes
+- name: apple-mobile-web-app-status-bar-style  
+  content: black
+- name: format-detection  
+  content: telephone=no
+- name: viewport  
+  content: width = 320, initial-scale = 2.3, user-scalable = no
+- name: viewport 
+  content: width = device-width
+- name: viewport
+  content: initial-scale = 1.0
+- name: viewport 
+  content: initial-scale = 2.3, user-scalable = no
+- link: apple-touch-icon 
+  href: touch-icon-iphone.png
+- link: apple-touch-icon
+  sizes: 72x72 
+  href: touch-icon-ipad.png
+- link: apple-touch-icon
+  sizes: 114x114 
+  href: touch-icon-iphone4.png
+- link: apple-touch-startup-image 
+  href: /startup.png
+
+- link: apple-touch-icon
+  type: mage/png 
+  href: /apple-touch-icon.png
+
+- link: alternate
+  type: application/rss+xml 
+  title: RSS 
+  href: http://feeds.feedburner.com/martini
+- link: shortcut icon
+  type=: image/ico 
+  href: /favicon.ico
+- link: fluid-icon
+  type: image/png 
+  href: /fluid-icon.png
+- link: me
+  type: text/html 
+  href: http://google.com/profiles/thenextweb
+- link: shortlink
+  href: http://blog.unto.net/?p=353
+- link: archives
+  title: May 2003
+  href: http://blog.unto.net/2003/05/
+- link: index
+  title: DeWitt Clinton 
+  href: http://blog.unto.net/
+- link: start' title='Pattern Recognition 1' 
+  href: http://blog.unto.net/photos/pattern_recognition_1_about/
+- link: prev
+  title: OpenSearch and OpenID?  A sure way to get my attention.
+  href: http://blog.unto.net/opensearch/opensearch-and-openid-a-sure-way-to-get-my-attention/
+- link: next
+  title: Not blog
+  href: http://blog.unto.net/meta/not-blog/
+- link: search 
+  href: /search.xml
+  type: application/opensearchdescription+xml 
+  title: Viatropos
+
+- link: self" type="application/atom+xml 
+  href: http://www.syfyportal.com/atomFeed.php?page=3
+- link: first 
+  href: http://www.syfyportal.com/atomFeed.php
+- link: next 
+  href: http://www.syfyportal.com/atomFeed.php?page=4
+- link: previous 
+  href: http://www.syfyportal.com/atomFeed.php?page=2
+- link: last 
+  href: http://www.syfyportal.com/atomFeed.php?page=147
+
+- link: shortlink
+  href: http://smallbiztrends.com/?p=43625
+- link: canonical 
+  href: http://smallbiztrends.com/2010/06/9-things-to-do-before-entering-social-media.html
+- link: EditURI
+  type: application/rsd+xml
+  title: RSD 
+  href: http://smallbiztrends.com/xmlrpc.php?rsd
+- link: pingback
+  href: http://smallbiztrends.com/xmlrpc.php
+- link: stylesheet 
+  media: 'only screen and (max-device-width: 480px)'
+  href: http://wordpress.org/style/iphone.css
+  type: text/css

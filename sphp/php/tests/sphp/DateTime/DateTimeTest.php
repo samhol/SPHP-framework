@@ -35,7 +35,7 @@ class DateTimeTest extends TestCase {
     $this->assertSame((int) $im->format('s'), $date->getSeconds());
     $this->assertSame($im->getTimezone()->getName(), $date->getTimeZoneName());
     $this->assertSame((int) $im->getOffset(), $date->getTimeZoneOffset());
-    $this->assertEquals($im->format(\DateTime::ATOM), "$date");
+    $this->assertEquals($im->format('j.n.Y H:i:s T'), "$date");
   }
 
   public function testJumping(): void {

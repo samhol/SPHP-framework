@@ -77,7 +77,7 @@ class BasicClassLinkerTest extends TestCase {
 
   public function classTypes(): array {
     $attrs = [];
-    $attrs[] = [\Sphp\Html\AjaxLoaderTrait::class, 'trait'];
+    $attrs[] = [\Sphp\Html\TraversableTrait::class, 'trait'];
     $attrs[] = [AbstractLinker::class, 'abstract-class'];
     $attrs[] = [BasicUrlGenerator::class, 'instantiable-class'];
     $attrs[] = [ApiUrlGenerator::class, 'interface'];
@@ -126,8 +126,8 @@ class BasicClassLinkerTest extends TestCase {
     $this->assertSame('root/class-method', $link->getHref());
     $this->assertTrue($link->attributeExists('title'));
     $this->assertTrue($link->hasCssClass($type));
-    $this->assertRegExp("/$methodName\(\)$/", $link->contentToString());
-    $this->assertRegExp("/^$methodName\(\)$/", $shortClassMethodLink->contentToString());
+    $this->assertMatchesRegularExpression("/$methodName\(\)$/", $link->contentToString());
+    $this->assertMatchesRegularExpression("/^$methodName\(\)$/", $shortClassMethodLink->contentToString());
   }
 
   public function testInvalidMethodLink() {
@@ -167,7 +167,7 @@ class BasicClassLinkerTest extends TestCase {
     $this->assertSame('root/class-constant', $link->getHref());
     $this->assertTrue($link->attributeExists('title'));
     $this->assertTrue($link->hasCssClass($type));
-    $this->assertRegExp("/::$constantName$/", $link->contentToString());
+    $this->assertMatchesRegularExpression("/::$constantName$/", $link->contentToString());
   }
 
   /**

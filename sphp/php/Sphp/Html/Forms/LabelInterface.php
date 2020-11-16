@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\IdentifiableContent;
 
 /**
- * Implements an HTML &lt;label&gt; tag
+ * Defines an HTML label tag
  *
  * The label represents a caption in a user interface. The caption can be
  * associated with a specific form control, known as the label element's

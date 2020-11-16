@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -22,6 +24,6 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface CollectionAttribute extends Attribute, Countable, Traversable, Arrayable {
+interface CollectionAttribute extends MutableAttribute, Countable, Traversable, Arrayable {
   
 }

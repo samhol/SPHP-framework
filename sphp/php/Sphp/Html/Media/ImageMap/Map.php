@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -17,7 +19,7 @@ use Traversable;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements an HTML &lt;map&gt; tag
+ * Implementation of an HTML map tag
  * 
  * The &lt;map&gt; tag is used to define a client-side image-map. 
  * An image-map is an image with clickable areas.
@@ -73,7 +75,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function getName(): string {
-    return $this->attributes()->getValue('name');
+    return (string) $this->attributes()->getValue('name');
   }
 
   public function containsArea(Area $area): bool {
@@ -145,7 +147,7 @@ class Map extends AbstractComponent implements IteratorAggregate, TraversableCon
   }
 
   public function getIterator(): Traversable {
-    return new \Sphp\Html\Iterator($this->areas);
+    return new \Sphp\Html\ContentIterator($this->areas);
   }
 
 }

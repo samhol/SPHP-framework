@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -9,8 +11,6 @@
  */
 
 namespace Sphp\Html\Adapters;
-
-use Sphp\Html\Component;
 
 /**
  * Implements a Visibility Adapter
@@ -47,7 +47,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    */
   public function hide() {
-    $this->getComponent()->inlineStyles()->setProperty('display', 'none');
+    $this->getComponent()->css()->setProperty('display', 'none');
     return $this;
   }
 
@@ -62,8 +62,8 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    */
   public function unhide() {
-    if ($this->getComponent()->inlineStyles()->getProperty('display') === 'none') {
-      $this->getComponent()->inlineStyles()->unsetProperty('display');
+    if ($this->getComponent()->css()->getProperty('display') === 'none') {
+      $this->getComponent()->css()->unsetProperties('display');
     }
     return $this;
   }

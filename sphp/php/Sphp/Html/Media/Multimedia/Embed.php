@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -16,7 +18,7 @@ use Sphp\Html\Media\LazyMedia;
 use Sphp\Html\Media\SizeableMedia;
 
 /**
- * Implements an HTML &lt;embed&gt; tag
+ * embed tag
  *
  * This component defines a container for an external application or
  * interactive content (a plug-in).

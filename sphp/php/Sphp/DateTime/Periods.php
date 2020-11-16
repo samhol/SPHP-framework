@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -16,7 +18,7 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a date period factory
  *
- * @method \Sphp\DateTime\Period Period months(mixed $start, string|DateInterval $length, int $recurrences = 1) Creates a new monthly recurrence instance from input
+ * @method \Sphp\DateTime\Period months(mixed $start, string|DateInterval $length, int $recurrences = 1) Creates a new monthly recurrence instance from input
  * @method \Sphp\DateTime\Period m(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new monthly recurrence instance from input
  * @method \Sphp\DateTime\Period weeks(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
  * @method \Sphp\DateTime\Period w(mixed $start, string|DateInterval $interval, int $recurrences = 1) Creates a new weekly recurrences instance from input
@@ -93,12 +95,13 @@ abstract class Periods {
   /**
    * Creates a new instance from input
    * 
-   * @param int $month
-   * @param int $year
+   * @param  int $month
+   * @param  int $year
+   * @param  string $interval
    * @return Period new instance
    * @throws InvalidArgumentException if instance cannot be parsed from input
    */
-  public static function weeksOfMonth(int $month = null, int $year = null): Period {
+  public static function weeksOfMonth(int $month = null, int $year = null, string $interval = 'P1W'): Period {
     if ($year === null) {
       $year = Date('Y');
     }
@@ -108,9 +111,9 @@ abstract class Periods {
     $d = DateTime::from("$year-$month-1 00:00:00");
     $start = $d->modify('last monday');
 
-    $stop = $d->modify('last day of')->modify('next sunday');
+    $stop = $d->modify('last day of')->modify('next monday');
     //  echo 'foo..'. $start->format('Y-m-d D');
-    $p = new \DatePeriod($start->getDateTime(), new Interval('P1W'), $stop->getDateTime());
+    $p = new \DatePeriod($start->getDateTime(), new Interval($interval), $stop->getDateTime());
     return new Period($p);
   }
 

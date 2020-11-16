@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;dt&gt; tag
+ * Implementation of an HTML dt tag
  *
  * This component defines an term in an HTML definition list. It is used in 
  * conjunction with its definitions {@link Dd}

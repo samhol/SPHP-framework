@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\AjaxLoader;
 use Sphp\Html\ContentParser;
 use Sphp\Html\Lists\StandardListItem;
 
@@ -23,28 +24,18 @@ use Sphp\Html\Lists\StandardListItem;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ContentPane extends AbstractPane implements AjaxLoader, ContentParser, StandardListItem {
+class ContentPane extends AbstractPane implements  ContentParser, StandardListItem {
 
   use \Sphp\Html\ContentParserTrait;
 
   /**
    * Appends new content as the last element
    *
-   * @param  mixed,... $content new content
+   * @param  mixed ...$content new content
    * @return $this for a fluent interface
    */
   public function append(...$content) {
     $this->getContent()->append($content);
-    return $this;
-  }
-
-  public function ajaxAppend(string $url) {
-    $this->getContent()->ajaxAppend($url);
-    return $this;
-  }
-
-  public function ajaxPrepend(string $url) {
-    $this->getContent()->ajaxPrepend($url);
     return $this;
   }
 

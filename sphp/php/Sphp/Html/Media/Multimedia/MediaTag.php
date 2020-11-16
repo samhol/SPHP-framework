@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,6 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Tag;
-use Sphp\Html\TraversableContent;
 
 /**
  * Defines properties HTML multimedia tags

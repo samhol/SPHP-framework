@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -16,7 +18,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\DateTime\DateTimes;
 
 /**
- * Implements an HTML &lt;time&gt; tag
+ * Implementation of an HTML time tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_time.asp w3schools HTML API
@@ -78,7 +80,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
   }
 
   /**
-   * Creates a &lt;time&gt; tag object showing week number
+   * Creates a &lt;time tag object showing week number
    * 
    * @param  mixed $dateTime
    * @return TimeTag new instance

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Exceptions\FileSystemException;
-use ParsedownExtraPlugin;
+use ParsedownExtra;
 use Sphp\Stdlib\Filesystem;
 
 /**
@@ -25,9 +27,9 @@ class Markdown implements StringConverter {
 
   public function parseString(string $string, bool $inlineOnly = false): string {
     if ($inlineOnly) {
-      $data = ParsedownExtraPlugin::instance()->line($string);
+      $data = ParsedownExtra::instance()->line($string);
     } else {
-      $data = ParsedownExtraPlugin::instance()->text($string);
+      $data = ParsedownExtra::instance()->text($string);
     }
     return $data;
   }

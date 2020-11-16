@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -128,7 +130,7 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Butt
     return new static(new PushButton($content));
   }
 
-  public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager {
+  public function attributes(): \Sphp\Html\Attributes\AttributeContainer {
     return $this->getComponent()->attributes();
   }
 

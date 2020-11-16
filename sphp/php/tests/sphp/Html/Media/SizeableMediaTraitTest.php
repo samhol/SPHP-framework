@@ -1,31 +1,30 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Tests\Html\Media;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Media\SizeableMediaTrait;
+use Sphp\Html\Attributes\AttributeContainer;
 
 class SizeableMediaTraitTest extends TestCase {
 
-  protected $component;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->component = $this->getMockForTrait(SizeableMediaTrait::class);
-    $mngr = new HtmlAttributeManager();
-    $this->component->expects($this->any())
+  public function testSetSize(): void {
+    $trait = $this->getMockForTrait(SizeableMediaTrait::class);
+    $mngr = new AttributeContainer();
+    $trait->expects($this->any())
             ->method('attributes')
             ->will($this->returnValue($mngr));
-  }
-
-  public function testWidthAndHeightSetting() {
-    $this->assertSame($this->component, $this->component->setWidth(100));
-    $this->assertSame(100, $this->component->attributes()->getValue('width'));
-    $this->assertSame($this->component, $this->component->setHeight(200));
-    $this->assertSame(200, $this->component->attributes()->getValue('height'));
+    $this->assertSame(null, $trait->attributes()->getValue('width'));
+    $this->assertSame(null, $trait->attributes()->getValue('height'));
+    $this->assertSame($trait, $trait->setSize(100, 200));
+    $this->assertSame(100, $trait->attributes()->getValue('width'));
+    $this->assertSame(200, $trait->attributes()->getValue('height'));
+    $this->assertSame($trait, $trait->setSize(100, null));
+    $this->assertSame(100, $trait->attributes()->getValue('width'));
+    $this->assertSame(null, $trait->attributes()->getValue('height'));
+    $this->assertSame($trait, $trait->setSize(null, 200));
+    $this->assertSame(null, $trait->attributes()->getValue('width'));
+    $this->assertSame(200, $trait->attributes()->getValue('height'));
   }
 
 }

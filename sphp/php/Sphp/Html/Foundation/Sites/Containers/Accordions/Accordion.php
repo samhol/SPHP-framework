@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -14,7 +16,7 @@ use IteratorAggregate;
 use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 use Sphp\Html\TraversableContent;
 use Traversable;
-use Sphp\Html\Iterator;
+use Sphp\Html\ContentIterator;
 
 /**
  * Implements an Foundation Accordion
@@ -90,7 +92,7 @@ class Accordion extends AbstractJavaScriptComponent implements IteratorAggregate
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->panels);
+    return new ContentIterator($this->panels);
   }
 
   /**

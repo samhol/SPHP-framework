@@ -44,7 +44,6 @@
    * Poistaa div.WaitLoader-elementin annettuista jQuery-objekteista.
    *
    * @author   Sami Holck <sami.holck@gmail.com>
-   * @since    2012-09-23
    * @memberOf jQuery.fn#
    * @method   removeWaitLoader
    * @param    {Object} options {duration: int postumisefektin kesto millisekunneissa (oletus 1000 ms)}

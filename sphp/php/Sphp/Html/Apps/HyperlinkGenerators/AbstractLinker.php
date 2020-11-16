@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,6 @@
 namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Component;
 
 /**
@@ -99,7 +100,7 @@ abstract class AbstractLinker implements Linker {
     }
     $a = new A($theUrl, $content);
     if ($title !== null) {
-      $a->attributes()->title = $title;
+      $a->setAttribute('title', $title);
     }
     $this->insertAttributesTo($a);
     return $a;

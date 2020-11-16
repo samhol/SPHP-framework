@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,14 +14,10 @@ namespace Sphp\Html;
 
 use IteratorAggregate;
 use Sphp\Html\Head\Head;
-use Sphp\Html\Scripts\ScriptsContainer;
-use Sphp\Html\Scripts\ScriptSrc;
-use Sphp\Html\Head\Meta;
-use Sphp\Html\Head\Link;
 use Traversable;
 
 /**
- * Implements an HTML &lt;html&gt; tag
+ * Implementation of an HTML html tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API
@@ -160,7 +158,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    $it = new Iterator([$this->head(), $this->body()]);
+    $it = new ContentIterator([$this->head(), $this->body()]);
     return $it;
   }
 

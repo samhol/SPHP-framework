@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -29,7 +31,7 @@ class ErrorToExceptionThrower {
   /**
    * @var ErrorToExceptionThrower[]
    */
-  public static $defaultInstance = [];
+  private static $defaultInstance = [];
 
   /**
    * @var string
@@ -62,7 +64,7 @@ class ErrorToExceptionThrower {
    * @throws InvalidArgumentException if the given exception type is invalid
    */
   public function setExceptionType(string $exceptionType) {
-    if (!is_a($exceptionType, Exception::class, true)) {
+    if (!is_a($exceptionType, \Throwable::class, true)) {
       throw new InvalidArgumentException("'$exceptionType' is invalid exception type");
     }
     $this->exceptionType = $exceptionType;

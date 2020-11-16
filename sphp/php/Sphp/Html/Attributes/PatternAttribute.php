@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements a regular expression validable attribute
@@ -20,7 +22,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class PatternAttribute extends AbstractScalarAttribute {
+class PatternAttribute extends ScalarAttribute {
 
   /**
    * @var string
@@ -38,12 +40,8 @@ class PatternAttribute extends AbstractScalarAttribute {
     parent::__construct($name);
   }
 
-  public function filterValue($value) {
-    $filtered = filter_var($value, \FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => $this->pattern]]);
-    if (!$filtered) {
-      throw new InvalidArgumentException("Invalid value ($value) for '{$this->getName()}' pattern attribute");
-    }
-    return $value;
+  public function isValidValue($value): bool {
+    return parent::isValidValue($value) && Strings::match((string) $value, $this->pattern);
   }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -141,7 +143,7 @@ class Person {
 
   /**
    * 
-   * @return DateTime:null
+   * @return DateTime|null
    */
   public function getDateOfBirth(): DateTime {
     return $this->dob;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
@@ -29,9 +31,9 @@ trait ComponentTrait {
   /**
    * Returns the attribute manager attached to the component
    *
-   * @return HtmlAttributeManager the attribute manager
+   * @return AttributeContainer the attribute manager
    */
-  abstract public function attributes(): HtmlAttributeManager;
+  abstract public function attributes(): AttributeContainer;
 
   /**
    * Identifies the element with an unique id attribute.
@@ -40,12 +42,29 @@ trait ComponentTrait {
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
    * 
-   * @param  int $length the length of the identity value
+   * @param  bool $forceNewValue whether a new id value is created or not
    * @return string 
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function identify(int $length = 16): string {
-    return $this->attributes()->identify($length);
+  public function identify(bool $forceNewValue = false): string {
+    return $this->attributes()->id()->identify($forceNewValue);
+  }
+
+  /**
+   * Identifies the element with an unique id attribute.
+   *
+   * **Notes:**
+   *
+   * HTML id attribute is unique to every HTML-element. Therefore given id is 
+   * checked for its uniqueness.
+   * 
+   * @param  mixed $id the value of the id attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
+   */
+  public function setId(string $id): string {
+    $this->attributes()->setAttribute('id', $id);
+    return $this;
   }
 
   /**
@@ -62,7 +81,7 @@ trait ComponentTrait {
    *
    * @return PropertyCollectionAttribute the attribute object containing inline styles
    */
-  public function inlineStyles(): PropertyCollectionAttribute {
+  public function css(): PropertyCollectionAttribute {
     return $this->attributes()->styles();
   }
 

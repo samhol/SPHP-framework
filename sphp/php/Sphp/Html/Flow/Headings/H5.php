@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,8 +13,9 @@
 namespace Sphp\Html\Flow\Headings;
 
 /**
- * Implements a HTML heading of level 5
+ * Implementation of an HTML h5 heading
  *
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_hn.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-h1-h2-h3-h4-h5-and-h6-elements W3C API

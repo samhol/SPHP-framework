@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\EmptyTag;
 
 /**
- * Implements an HTML &lt;param&gt; tag
+ * Implementation of an HTML param tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

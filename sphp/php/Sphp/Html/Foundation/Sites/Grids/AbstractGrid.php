@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -84,7 +86,7 @@ class AbstractGrid extends AbstractComponent implements IteratorAggregate, Grid 
     return $this;
   }
 
-  public function getCells(): TraversableContent {
+  public function getCells(): iterable {
     return $this->getComponentsByObjectType(Cell::class);
   }
 

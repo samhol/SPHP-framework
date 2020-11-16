@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Media\ImageMap;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Defines the basic properties of an HTML &lt;area&gt; tag
+ * Defines the basic properties of an HTML &lt;area tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

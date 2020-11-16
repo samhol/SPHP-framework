@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -446,14 +448,15 @@ abstract class Strings {
   /**
    * Returns a random string for non cryptographic purposes
    *
-   * @param string $charset
-   * @param int $length
+   * @param  string $charset
+   * @param  int $length
    * @return string generated random string
+   * @throws InvalidArgumentException
+   * @throws LogicException
    */
   public static function randomize(string $charset = 'abcdefghijklmnopqrstuvwxyz', int $length = 32): string {
     if ($length < 1) {
-      // Just return an empty string. Any value < 1 is meaningless.
-      return '';
+      throw new InvalidArgumentException('Cannot generate zero length random string');
     }
 
     // Remove duplicate characters from $charset

@@ -13,12 +13,12 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Html\Iterator;
+use Sphp\Html\ContentIterator;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
- * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
+ * Implementation of an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -37,10 +37,10 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * Constructor
    * 
    * @param string $tagname
-   * @param HtmlAttributeManager|null $m
+   * @param AttributeContainer|null $attrs
    */
-  public function __construct(string $tagname, HtmlAttributeManager $m = null) {
-    parent::__construct($tagname, $m);
+  public function __construct(string $tagname, AttributeContainer $attrs = null) {
+    parent::__construct($tagname, $attrs);
     $this->rows = [];
   }
 
@@ -61,7 +61,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
   }
 
   /**
-   * Appends a &lt;tr&gt; object containing &lt;th&gt; objects
+   * Appends a tr object containing &lt;th&gt; objects
    *
    * **Notes:**
    * 
@@ -77,7 +77,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
   }
 
   /**
-   * Appends a &lt;tr&gt; object containing &lt;td&gt; objects
+   * Appends a tr object containing &lt;td&gt; objects
    *
    * **Notes:**
    * 
@@ -112,11 +112,11 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @return Row|null the row at given position
    */
   public function getRow(int $position): ?Row {
+    $row = null;
     if (array_key_exists($position, $this->rows)) {
-      return $this->rows[$position];
-    } else {
-      return null;
+      $row = $this->rows[$position];
     }
+    return $row;
   }
 
   public function contentToString(): string {
@@ -129,7 +129,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @return Traversable external iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->rows);
+    return new ContentIterator($this->rows);
   }
 
 }

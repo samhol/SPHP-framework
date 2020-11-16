@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -107,7 +109,7 @@ class Bullet extends AbstractComponent {
     if ($this->isActive()) {
       $content .= $this->currentDescriptor;
     }
-    return $content;
+    return (string) $content;
   }
 
 }

@@ -1,0 +1,4 @@
+## YAML Template.
+---
+- base: 
+  target: _blank

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -30,15 +32,13 @@ class Carousel extends AbstractComponent {
   /**
    * Constructor
    *
-   * @param  array|null $properties optional carousel properties
+   * @param  array $properties optional carousel properties
    */
-  public function __construct(array $properties = null) {
+  public function __construct(array $properties = []) {
     parent::__construct('div');
     $this->addCssClass('sphp', 'slick-carousel');
     $this->slides = [];
-    if ($properties !== null) {
-      $this->setProperties($properties);
-    }
+    $this->setProperties($properties);
   }
 
   /**
@@ -48,11 +48,12 @@ class Carousel extends AbstractComponent {
    * @return $this for a fluent interface
    */
   public function setProperties(array $props) {
-    if (!$this->attributes()->isInstantiated('data-slick')) {
+    if (!$this->attributes()->contains('data-slick')) {
       $this->attributes()
-              ->setInstance(new JsonAttribute('data-slick'))->demand('data-slick');
+              ->setInstance(new JsonAttribute('data-slick', $props))->demand('data-slick');
+    } else {
+       $this->attributes()->getAttribute('data-slick')->setValue($props);
     }
-    $this->attributes()->getObject('data-slick')->setValue($props);
     return $this;
   }
 
@@ -99,7 +100,7 @@ class Carousel extends AbstractComponent {
    */
   public function appendMd(string $md): DivSlide {
     $slide = new DivSlide();
-    $slide->appendMd($md);
+    $slide->appendMarkdown($md);
     $this->append($slide);
     return $slide;
   }
@@ -112,7 +113,7 @@ class Carousel extends AbstractComponent {
    */
   public function appendMdFile(string $path): DivSlide {
     $slide = new DivSlide();
-    $slide->appendMdFile($path);
+    $slide->appendMarkdownFile($path);
     $this->append($slide);
     return $slide;
   }
@@ -178,5 +179,3 @@ class Carousel extends AbstractComponent {
   }
 
 }
-
-

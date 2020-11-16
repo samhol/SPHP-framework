@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Security;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Scripts\ScriptSrc;
+use Sphp\Html\Scripts\ExternalScript;
 use Sphp\Html\Div;
 
 /**
@@ -104,10 +106,10 @@ class ReCaptcha extends AbstractContent {
   /**
    * Creates required script components
    * 
-   * @return ScriptSrc required script components
+   * @return ExternalScript required script components
    */
-  public static function createScripts(): ScriptSrc {
-    return (new ScriptSrc('https://www.google.com/recaptcha/api.js'))->setAsync()->setDefer();
+  public static function createScripts(): ExternalScript {
+    return (new ExternalScript('https://www.google.com/recaptcha/api.js'))->setAsync()->setDefer();
   }
 
   /**
@@ -124,7 +126,7 @@ class ReCaptcha extends AbstractContent {
     $div->setAttribute('data-callback', $callbackName);
     $output = $div->getHtml();
     if ($loadScript) {
-      $output .= (new ScriptSrc('https://www.google.com/recaptcha/api.js'))->setAsync()->setDefer();
+      $output .= (new ExternalScript('https://www.google.com/recaptcha/api.js'))->setAsync()->setDefer();
     }
     return $output;
   }

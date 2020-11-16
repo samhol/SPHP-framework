@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Implements an HTML &lt;input type="email"&gt; tag
+ * Implementation of an HTML input type="email" tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
@@ -40,9 +42,8 @@ class EmailInput extends AbstractTextualInput {
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multiple(bool $multiple = true) {
-    $this->attributes()->multiple($multiple);
+    $this->attributes()->setAttribute('multiple', $multiple);
     return $this;
   }
 
 }
-

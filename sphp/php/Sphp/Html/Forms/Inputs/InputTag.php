@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Implements an HTML &lt;input&gt; tag
+ * Implementation of an HTML input tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
@@ -21,7 +23,7 @@ namespace Sphp\Html\Forms\Inputs;
 class InputTag extends AbstractInputTag implements ValidableInput {
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->required = $required;
+    $this->attributes()->setAttribute('required', $required);
     return $this;
   }
 

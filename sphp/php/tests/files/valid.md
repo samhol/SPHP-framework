@@ -1,1 +1,1 @@
-#test{foo=bar}
+# test{.bar}

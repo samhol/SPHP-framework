@@ -127,11 +127,11 @@ class CellLayoutTest extends TestCase {
   }
 
   protected function assertNotContainsCssClass( $layout, string... $className) {
-    $this->assertFalse($layout->cssClasses()->contains($className));
+    $this->assertFalse($layout->cssClasses()->contains(...$className));
   }
 
   protected function assertContainsCssClass( $layout, string... $className) {
-    $this->assertTrue($layout->cssClasses()->contains($className));
+    $this->assertTrue($layout->cssClasses()->contains(...$className));
   }
 
   public function t2() {

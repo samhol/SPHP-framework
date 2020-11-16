@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -173,7 +175,7 @@ class GeSHiSyntaxHighlighter extends AbstractComponent implements SyntaxHighligh
    * @return $this for a fluent interface
    */
   public function useFooter(bool $use = true) {
-    $this->footer->inlineStyles()->setProperty('display', $use);
+    $this->footer->css()->setProperty('display', $use);
     return $this;
   }
 

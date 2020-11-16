@@ -1,0 +1,5 @@
+## YAML Template.
+---
+- meta:
+    foo: bar
+    content: baz

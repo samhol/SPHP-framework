@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Flow;
 
 /**
- * Implements an HTML &lt;main&gt; tag
+ * Implementation of an HTML  main tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_main.asp w3schools HTML API

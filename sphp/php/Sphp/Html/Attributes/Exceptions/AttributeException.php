@@ -10,17 +10,15 @@
 
 namespace Sphp\Html\Attributes\Exceptions;
 
-use Sphp\Exceptions\SphpExceptionInterface;
-use Exception;
-
+use Sphp\Html\Exceptions\HtmlException;
 /**
- * Implements an HTML attribute exception
+ * Implementation of an HTML attribute exception
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class AttributeException extends Exception implements SphpExceptionInterface {
+class AttributeException extends HtmlException {
   
 }

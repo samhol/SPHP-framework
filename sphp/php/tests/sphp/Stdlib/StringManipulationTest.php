@@ -558,7 +558,8 @@ class StringManipulationTest extends TestCase {
     $strObj = MbString::create($string);
     $randObj = $strObj->randomize($strLen);
     $this->assertEquals($strLen, $randObj->count());
-    $this->assertEquals('', Strings::randomize($string, 0));
+    $this->expectException(\Exception::class);
+    Strings::randomize($string, 0);
   }
 
   /**

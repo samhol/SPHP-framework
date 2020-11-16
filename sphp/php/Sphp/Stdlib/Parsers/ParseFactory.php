@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,6 @@ namespace Sphp\Stdlib\Parsers;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Filesystem;
-use Sphp\Exceptions\FileSystemException;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**

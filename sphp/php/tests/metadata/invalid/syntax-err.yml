@@ -1,0 +1,13 @@
+## YAML Template.
+---
+#meta-data
+---
+- link: apple-touch-icon: dd
+  href: touch-icon-iphone.png
+- link: apple-touch-icon
+  type: mage/png 
+  href: /apple-touch-icon.png
+- link:  alternate
+  type: application/rss+xml 
+  title: RSS 
+  href: http://feeds.feedburner.com/martini

@@ -8,9 +8,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Tests\Html\Media;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Media\Img;
+use Sphp\Html\Media\ImageMap\Map;
 
 class ImgTest extends TestCase {
 
@@ -34,10 +36,11 @@ class ImgTest extends TestCase {
    * @return Img
    */
   public function testUseMap(Img $img): Img {
-    $map = new ImageMap\Map('foo-map');
+    $map = new Map('foo-map');
     $img->useMap($map);
     $this->assertSame("#{$map->getName()}", $img->attributes()->getValue('usemap'));
     return $img;
   }
+
 
 }

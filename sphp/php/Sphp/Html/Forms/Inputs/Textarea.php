@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\SimpleTag;
 
 /**
- * Implements an HTML &lt;textarea&gt; tag
+ * Implementation of an HTML textarea tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_textarea.asp w3schools HTML API
@@ -36,8 +38,6 @@ class Textarea extends SimpleTag implements TextareaInterface {
    */
   public function __construct(string $name = null, $content = null, int $rows = null, int $cols = null) {
     parent::__construct('textarea', $content);
-    $this->attributes()->getObjectMap()->mapType('rows', \Sphp\Html\Attributes\IntegerAttribute::class, 0);
-    $this->attributes()->getObjectMap()->mapType('cols', \Sphp\Html\Attributes\IntegerAttribute::class, 0);
     $this->setName($name);
     if ($rows > 0) {
       $this->setRows($rows);
@@ -48,7 +48,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->disabled = $disabled;
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 
@@ -84,12 +84,12 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRows(int $rows = null) {
-    $this->attributes()->rows($rows);
+    $this->attributes()->setAttribute('rows', $rows);
     return $this;
   }
 
   public function setCols(int $cols = null) {
-    $this->attributes()->cols($cols);
+    $this->attributes()->setAttribute('cols', $cols);
     return $this;
   }
 
@@ -99,7 +99,7 @@ class Textarea extends SimpleTag implements TextareaInterface {
   }
 
   public function setRequired(bool $required = true) {
-    $this->attributes()->required = $required;
+    $this->attributes()->setAttribute('required', $required);
     return $this;
   }
 

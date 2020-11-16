@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -9,10 +11,6 @@
  */
 
 namespace Sphp\Html\Foundation\Sites\Core\JavaScript;
-
-use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Foundation\Sites\Core\DataOptions\DataOptionTools;
-use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
 /**
  * Implementation of JavaScriptOptionHandler

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -9,9 +11,6 @@
  */
 
 namespace Sphp\Html\Foundation\Sites\Navigation\Bars;
-
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Span;
 
 /**
  * Implements a Title Bar content area

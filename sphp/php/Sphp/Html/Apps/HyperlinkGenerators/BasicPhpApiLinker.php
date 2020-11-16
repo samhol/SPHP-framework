@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,7 +14,6 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
 
 use Sphp\Html\Navigation\A;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 
 /**
@@ -95,7 +96,7 @@ class BasicPhpApiLinker extends AbstractLinker {
   protected function createHyperlink(string $url, string $content, string $title = null): A {
     $a = new A($url, $content);
     if ($title !== null) {
-      $a->attributes()->title = $title;
+      $a->setAttribute('title', $title);
     }
     $this->insertAttributesTo($a);
     return $a;
@@ -165,11 +166,10 @@ class BasicPhpApiLinker extends AbstractLinker {
       $currentNamespaceArray[] = $name;
       $path = implode("/", $currentNamespaceArray);
       $root = implode("\\", $currentNamespaceArray);
-      $breadCrumb = new BreadCrumb($this->urls()->createUrl("$path.html"), $name);
+      $breadCrumb = $breadGrumbs->appendLink($this->urls()->createUrl("$path.html"), $name);
       $this->insertAttributesTo($breadCrumb);
       //(new QtipAdapter($breadCrumb))->setQtip("$root Namespace")->setQtipPosition('bottom center', 'top center');
       $breadCrumb->getHyperlink()->setAttribute('title', "$root Namespace");
-      $breadGrumbs->append($breadCrumb);
     }
     return $breadGrumbs;
   }

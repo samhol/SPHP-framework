@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -9,8 +11,6 @@
  */
 
 namespace Sphp\Html\Media\Icons;
-
-use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a factory for Font Awesome icon objects
@@ -49,11 +49,11 @@ class FontAwesome extends IconFactory {
    * Creates an icon instance
    * 
    * @param  string $iconName
-   * @param  string $title optional title
+   * @param  string $tagname
    * @return IconTag
    */
-  public function createIcon(string $iconName, string $title = null): IconTag {
-    $icon = new FontAwesomeIcon($iconName, $title);
+  public function createIcon(string $iconName, string $tagname = 'i'): IconTag {
+    $icon = new FontAwesomeIcon($iconName);
     $this->insertIconAttributesTo($icon);
     $this->setCssClassesTo($icon);
     return $icon;
@@ -109,7 +109,7 @@ class FontAwesome extends IconFactory {
    * @param  string|null $borders the size of the icon
    * @return $this for a fluent interface
    */
-  public function useBorders(bool $borders = true) {
+  public function useBorsers(bool $borders = true) {
     $this->functions['useBorders'] = $borders;
     return $this;
   }

@@ -1,0 +1,5 @@
+#meta-data
+---
+- link:  alternate
+  type: application/rss+xml 
+  title: RSS 

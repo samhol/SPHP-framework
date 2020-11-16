@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html;
 use Sphp\Html\Scripts\ScriptsContainer;
 
 /**
- * Implements an HTML &lt;body&gt; tag
+ * Implementation of an HTML body tag
  *
  * This component represents the main content of the HTML document.
  *

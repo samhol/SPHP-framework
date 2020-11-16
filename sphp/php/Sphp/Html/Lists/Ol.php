@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Lists;
 
 /**
- * Implements an ordered HTML-list &lt;ol&gt; tag
+ * Implements an ordered HTML-list &lt;ol tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API
@@ -31,15 +33,10 @@ class Ol extends StandardList {
    *    within {@link Li} component
    * 2. All items of an array are treated according to note (1)
    *
-   * @param  mixed|mixed[]|null $items optional content of the component
+   * @param  iterable|null $items the content of the component
    */
-  public function __construct($items = null) {
-    parent::__construct('ol');
-    if ($items !== null) {
-      foreach (is_array($items) ? $items : [$items] as $item) {
-        $this->append($item);
-      }
-    }
+  public function __construct(iterable $items = null) {
+    parent::__construct('ol', $items);
   }
 
   /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -8,10 +10,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html;
+namespace Sphp\Tests\Html;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Body;
 use Sphp\Html\Scripts\ScriptsContainer;
+use Sphp\Html\Div;
+use Sphp\Html\Scripts\InlineScript;
 
 /**
  * Description of BodyTest
@@ -22,27 +27,6 @@ use Sphp\Html\Scripts\ScriptsContainer;
  * @filesource
  */
 class BodyTest extends TestCase {
-
-  /**
-   * @var Body 
-   */
-  private $body;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->body = new Body();
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->body);
-  }
 
   public function validBodyContent(): array {
     $data = [];
@@ -59,41 +43,45 @@ class BodyTest extends TestCase {
     $body = new Body($content);
     $this->assertSame('', (string) $body->scripts());
     $this->assertSame("<body>" . $content . $body->scripts() . "</body>", (string) $body);
-    $code = new Scripts\ScriptCode('foo=0;');
+    $code = new InlineScript('foo=0;');
 
-    $body->scripts()->append($code);
+    $body->scripts()->insert($code);
     $this->assertSame((string) $code, (string) $body->scripts());
     $this->assertSame("<body>" . $content . $body->scripts() . "</body>", (string) $body);
   }
 
   public function testScripts() {
+    $body = new Body();
     $scripts = new ScriptsContainer();
-    $scripts->appendSrc('/foo.js');
-    $this->assertSame($scripts, $this->body->scripts($scripts));
-    $this->assertSame("<body>" . $this->body->scripts() . "</body>", (string) $this->body);
+    $scripts->insertExternal('/foo.js');
+    $this->assertSame($scripts, $body->scripts($scripts));
+    $this->assertSame("<body>" . $body->scripts() . "</body>", (string) $body);
   }
 
   public function testClose() {
+    $body = new Body();
     $content = new Div('foos');
-    $this->body->offsetSet(0, $content);
-    $this->body->scripts()->appendSrc('/foo.js');
-    $this->assertSame($this->body->scripts() . "</body>", (string) $this->body->close());
+    $body->offsetSet(0, $content);
+    $body->scripts()->insertExternal('/foo.js');
+    $this->assertSame($body->scripts() . "</body>", (string) $body->close());
   }
 
   public function testClone() {
+    $body = new Body();
     $content = new Div();
-    $this->body->offsetSet(0, $content);
-    $cloned = clone $this->body;
-    $this->assertNotSame($this->body->offsetGet(0), $cloned->offsetGet(0));
-    $this->assertNotSame($this->body->scripts(), $cloned->scripts());
-    $this->assertNotSame($this->body, $cloned);
-    $this->assertSame((string) $this->body, (string) $cloned);
+    $body->offsetSet(0, $content);
+    $cloned = clone $body;
+    $this->assertNotSame($body->offsetGet(0), $cloned->offsetGet(0));
+    $this->assertNotSame($body->scripts(), $cloned->scripts());
+    $this->assertNotSame($body, $cloned);
+    $this->assertSame((string) $body, (string) $cloned);
   }
 
   public function testTraversing(): void {
+    $body = new Body();
     $content = new Div();
-    $this->body->offsetSet(0, $content);
-    foreach ($this->body as $id => $item) {
+    $body->offsetSet(0, $content);
+    foreach ($body as $id => $item) {
       $this->assertSame($content, $item);
     }
   }

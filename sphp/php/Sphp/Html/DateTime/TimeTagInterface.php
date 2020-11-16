@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use DateTimeInterface;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Defines an HTML &lt;time&gt; tag
+ * Defines an HTML &lt;time tag
  *
  * This implements a human-readable date/time
  * 

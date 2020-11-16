@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -128,7 +130,7 @@ class AbstractSwitch extends AbstractComponent implements BooleanInput, ScreenRe
    * @return $this for a fluent interface
    */
   public function resetSize() {
-    $this->removeCssClass(self::$sizes);
+    $this->removeCssClass(...self::$sizes);
     return $this;
   }
 

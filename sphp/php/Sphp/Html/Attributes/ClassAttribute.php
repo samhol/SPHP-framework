@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,10 +14,11 @@ namespace Sphp\Html\Attributes;
 
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
-use Sphp\Stdlib\Arrays;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeValueException;
+use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 
 /**
  * An implementation of CSS class attribute
@@ -37,12 +40,22 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   private $values = [];
 
   /**
+   * @var CssClassParser 
+   */
+  private $parser;
+  private $required = false;
+
+  /**
    * Constructor
    * 
    * @param string $name the name of the attribute
    */
-  public function __construct(string $name = 'class') {
+  public function __construct(string $name = 'class', CssClassParser $parser = null) {
     parent::__construct($name);
+    if ($parser === null) {
+      $parser = CssClassParser::instance();
+    }
+    $this->parser = $parser;
   }
 
   /**
@@ -52,68 +65,26 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     unset($this->values);
   }
 
+  public function forceVisibility() {
+    $this->required = true;
+    return $this;
+  }
+
+  public function isDemanded(): bool {
+    return $this->required || $this->isProtected();
+  }
+
   public function __toString(): string {
     $output = '';
     if ($this->isVisible()) {
-      $output .= $this->getName();
+      $output = $this->getName();
       if (!$this->isEmpty()) {
         $output .= '="' . implode(' ', array_keys($this->values)) . '"';
+      } else {
+        $output .= '=""';
       }
     }
     return $output;
-  }
-
-  /**
-   * Returns an array of unique CSS class values parsed from the input
-   *
-   * **Important:** Parameter <var>$raw</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain a single atomic value
-   * 2. An array can be be multidimensional
-   * 3. Duplicate values are ignored
-   *
-   * @param  mixed $raw the value(s) to parse
-   * @param  bool $validate
-   * @return string[] separated unique atomic values in an array
-   * @throws InvalidAttributeException if validation is set and the input is not valid
-   */
-  protected function parse($raw, bool $validate = false): array {
-    $parsed = [];
-    if (is_array($raw)) {
-      $flat = Arrays::flatten($raw);
-      foreach ($flat as $item) {
-        if (!is_string($item)) {
-          throw new InvalidArgumentException('Invalid attribute value given');
-        }
-        $parsed = array_merge($parsed, $this->parseStringToArray($item));
-      }
-      //$vals = array_filter($parsed, 'is_string');
-    } else if (is_string($raw)) {
-      $parsed = $this->parseStringToArray($raw);
-    }
-    if ($validate) {
-      foreach ($parsed as $value) {
-        if (!$this->isValidAtomicValue($value)) {
-          throw new InvalidArgumentException("Invalid attribute value '$value'");
-        }
-      }
-    }
-    return array_unique($parsed);
-  }
-
-  protected function parseStringToArray(string $subject): array {
-    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
-    if (!$result) {
-      $result = [];
-    }
-    return $result;
-  }
-
-  protected function isValidAtomicValue($value): bool {
-    if (!is_string($value)) {
-      return false;
-    }
-    return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
   }
 
   public function isVisible(): bool {
@@ -129,16 +100,18 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *
    * **Important:** Parameter `$values` restrictions and rules
    * 
-   * 1. A string parameter can contain a single atomic value
+   * 1. A string parameter can contain multiple class names separated by spaces
    * 2. An array can be be multidimensional
    * 3. Duplicate values are ignored
    *
-   * @param  string|string[] $values the values to set
+   * @param  string|string[] ...$values the values to set
    * @return $this for a fluent interface
    */
   public function setValue($values) {
     $this->clear();
-    $this->add(func_get_args());
+    $parsed = $this->parser->parse(func_get_args());
+    $this->parser->isValidCollection($parsed);
+    $this->add(...$parsed);
     return $this;
   }
 
@@ -147,15 +120,14 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *
    * **Important:** Parameter ´$values´ restrictions and rules
    * 
-   * 1. A string parameter can contain a single atomic value (a class)
-   * 2. An array can be be multidimensional array of atomic string values
-   * 3. Duplicate values are ignored
+   * 1. A string parameter can contain multiple class names separated by spaces
+   * 2. Duplicate values are ignored
    *
-   * @param  string|string[],... $values the values to add
+   * @param  string ...$values the values to add
    * @return $this for a fluent interface
    */
-  public function add(...$values) {
-    $parsed = $this->parse($values, true);
+  public function add(string ...$values) {
+    $parsed = $this->parser->parse($values);
     foreach ($parsed as $class) {
       if (!isset($this->values[$class])) {
         $this->values[$class] = false;
@@ -169,11 +141,10 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain a single atomic value
-   * 2. An array can be be multidimensional
+   * 1. A string parameter can contain multiple class names separated by spaces
    * 3. Duplicate values are ignored
    *
-   * @param  null|scalar|scalar[] $values optional atomic values to check
+   * @param  null|string|string[] ...$values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
   public function isProtected($values = null): bool {
@@ -181,7 +152,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
       return in_array(true, $this->values);
     } else {
       $locked = false;
-      $values = $this->parse(func_get_args());
+      $values = $this->parser->parse(func_get_args());
       foreach ($values as $class) {
         $locked = isset($this->values[$class]) && $this->values[$class] === true;
         if (!$locked) {
@@ -197,15 +168,15 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain a single atomic value (a class)
+   * 1. A string parameter can contain multiple class names separated by spaces
    * 2. An array can be be multidimensional array of atomic string values
    * 3. Duplicate values are ignored
    *
-   * @param  scalar|scalar[] $content the atomic values to lock
+   * @param  null|string|string[] ...$content the atomic values to lock
    * @return $this for a fluent interface
    */
   public function protectValue($content) {
-    foreach ($this->parse(func_get_args()) as $class) {
+    foreach ($this->parser->parse(func_get_args(), true) as $class) {
       $this->values[$class] = true;
     }
     return $this;
@@ -219,12 +190,12 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * 1. A string parameter can contain multiple comma separated atomic values
    * 2. An array parameter can contain only one atomic value per array value
    * 
-   * @param  scalar|scalar[] $values the atomic values to remove
+   * @param  null|string|string[] ...$values the atomic values to remove
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove($values) {
-    foreach ($this->parse(func_get_args()) as $class) {
+    foreach ($this->parser->parse(func_get_args()) as $class) {
       if (isset($this->values[$class])) {
         if ($this->values[$class] === false) {
           unset($this->values[$class]);
@@ -250,41 +221,18 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *
    * **Important:** Parameter <var>$values</var> values (restrictions and rules)
    * 
-   * 1. A string parameter can contain multiple comma separated atomic values
+   * 1. A string parameter can contain multiple comma separated class names
    * 2. An array parameter can contain only one atomic value per array value
    *
-   * @param  scalar|scalar[],... $values the atomic values to search for
+   * @param  null|string|string[] ...$values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
-  public function contains(...$values): bool {
-    $needles = $this->parse($values);
+  public function contains(string ...$values): bool {
+    $needles = $this->parser->parse($values);
     $exists = false;
     foreach ($needles as $class) {
       $exists = isset($this->values[$class]);
       if (!$exists) {
-        break;
-      }
-    }
-    return $exists;
-  }
-
-  /**
-   * Determines whether the given atomic values exists
-   *
-   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
-   * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   *
-   * @param  string|string[],... $values the atomic values to search for
-   * @return boolean true if the given atomic values exists
-   */
-  public function containsOneOf(...$values): bool {
-    $needles = $this->parse($values);
-    $exists = false;
-    foreach ($needles as $class) {
-      $exists = isset($this->values[$class]);
-      if ($exists) {
         break;
       }
     }
@@ -326,34 +274,12 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
 
   /**
    * 
-   * @param  string $pattern
-   * @return string[]
-   */
-  public function parsePattern(string $pattern): array {
-    return preg_grep($pattern, $this->toArray());
-  }
-
-  /**
-   * 
    * @param string $pattern
    * @return $this
    */
   public function removePattern(string $pattern) {
     $filter = function($value) use ($pattern) {
       return !Strings::match($value, $pattern);
-    };
-    $this->filter($filter);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param string $pattern
-   * @return $this
-   */
-  public function filterPattern(string $pattern) {
-    $filter = function($value) use ($pattern) {
-      return Strings::match($value, $pattern);
     };
     $this->filter($filter);
     return $this;

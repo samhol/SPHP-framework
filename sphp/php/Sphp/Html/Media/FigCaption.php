@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;figcaption&gt; tag
+ * Implementation of an HTML figcaption tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_figcaption.asp w3schools API

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms\Buttons;
 use Sphp\Html\Forms\Inputs\Input;
 
 /**
- * Implements &lt;button type="submit"&gt; tag
+ * Implements &lt;button type="submit" tag
  *
  * A submit button is used to send form data to a server.
  * The data is sent to the page specified in the action attribute of the form.

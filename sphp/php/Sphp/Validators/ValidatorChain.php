@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -108,10 +110,10 @@ class ValidatorChain extends AbstractValidator implements Countable {
   /**
    * Appends a new validator(s) to the chain
    * 
-   * @param  Validator... $validator new validator(s)
+   * @param  Validator ...$validator new validator(s)
    * @return $this for a fluent interface
    */
-  public function appendValidators(Validator... $validator) {
+  public function appendValidators(Validator ...$validator) {
     foreach ($validator as $v) {
       $this->validators[] = $v;
     }

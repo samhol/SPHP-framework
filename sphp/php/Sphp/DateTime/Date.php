@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -153,6 +155,18 @@ class Date extends AbstractDate {
       return null;
     }
     return new static($dti);
+  }
+
+  /**
+   * 
+   * 
+   * @param  int $day
+   * @param  int $month
+   * @param  int $year
+   * @return Date
+   */
+  public static function mkDate(int $day, int $month, int $year): Date {
+    return new static(date('Y-m-d', mktime(0, 1, 0, $month, $day, $year)));
   }
 
 }

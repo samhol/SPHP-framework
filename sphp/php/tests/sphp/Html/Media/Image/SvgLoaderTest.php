@@ -59,7 +59,7 @@ class SvgLoaderTest extends TestCase {
 
   public function testLocalFileContainsNoSvg(): void {
     $loader = new SvgLoader();
-    $this->expectException(InvalidArgumentException::class);
+    $this->expectException(\Exception::class);
     $loader->fileToObject('./sphp/php/tests/files/image.gif');
   }
 

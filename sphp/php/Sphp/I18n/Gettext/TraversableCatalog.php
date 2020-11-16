@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -25,7 +27,6 @@ use Traversable;
  * Iterator parses a Gettext Portable file and acts as an iterator for all gettext instances in the file
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @uses    https://github.com/raulferras/PHP-po-parser Po Parser
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

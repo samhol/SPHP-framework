@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -20,9 +22,18 @@ namespace Sphp\Html\Tables;
 interface TableFilter {
 
   /**
+   * Applies the filter to the given table
    * 
    * @param  Table $table
-   * @return Table
+   * @return void
    */
-  public function useInTable(Table $table): Table;
+  public function useInTable(Table $table): void;
+  
+  /**
+   * Invokes the filter to the given table
+   * 
+   * @param  Table $table
+   * @return void
+   */
+  public function __invoke(Table $table): void;
 }

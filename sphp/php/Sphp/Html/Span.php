@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html;
 
 /**
- * Implements an HTML &lt;span&gt; tag
+ * Implementation of an HTML span tag
  *
  * The &lt;span&gt; tag is used to group inline-elements in a document. It
  * provides no visual change by itself. The &lt;span&gt; tag provides a

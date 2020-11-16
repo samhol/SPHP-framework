@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
  * Base for all simple container tags
@@ -32,26 +34,20 @@ class SimpleTag extends AbstractComponent {
   /**
    * the content of the component
    *
-   * @var mixed
+   * @var string|null
    */
   private $content;
 
   /**
    * Constructor
    * 
-   * **Important!**
-   *
-   * Parameter `mixed $content` can be of any type that converts to a string 
-   * or to an array of strings. So also objects of any type that implement magic 
-   * method `__toString()` are allowed.
-   *
    * @param  string $tagName the name of the tag
-   * @param  mixed $content the content of the component
-   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
+   * @param  string $content the content of the component
+   * @param  AttributeContainer|null $attrManager the attribute manager of the component
    * @throws \InvalidArgumentException if the tagname is not valid
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct(string $tagName, string $content = null, HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName, string $content = null, AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
       $this->setContent($content);
@@ -61,12 +57,21 @@ class SimpleTag extends AbstractComponent {
   /**
    * Sets the content of the component
    * 
-   * @param  string $content the inner content container of the component
+   * @param  string $content the content of the component
    * @return $this for a fluent interface
    */
   public function setContent(string $content = null) {
     $this->content = $content;
     return $this;
+  }
+
+  /**
+   * Returns the content of the component
+   * 
+   * @return string $content the content of the component
+   */
+  public function getContent(): ?string {
+    return $this->content;
   }
 
   /**

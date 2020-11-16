@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -25,15 +27,15 @@ interface Menu extends Component {
 
   const VERTICAL = 'vertical';
   const HORIZONTAL = 'horizontal';
-  
   const ACCORDION = 'accordion';
   const DRILLDOWN = 'drilldown';
   const DROPDOWN = 'dropdown';
+
   /**
    * Appends a menu item object to the menu
    *
    * @param  MenuItem $item
-   * @return $this for a fluent interface
+   * @return MenuItem appended instance
    */
   public function append(MenuItem $item): MenuItem;
 
@@ -90,6 +92,7 @@ interface Menu extends Component {
    * @return boolean true if the menu is vertical, otherwise false
    */
   public function isVertical(): bool;
+
   /**
    * Sets or unsets the menu as active
    *

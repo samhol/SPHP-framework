@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,17 +13,17 @@
 namespace Sphp\Html\Scripts;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Head\HeadContent;
+use Sphp\Html\Head\MetaData;
 
 /**
- * Implements an HTML &lt;noscript&gt; tag
+ * Implementation of an HTML noscript tag
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_noscript.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Noscript extends ContainerTag implements HeadContent {
+class Noscript extends ContainerTag implements MetaData {
 
   /**
    * Constructor
@@ -36,6 +38,10 @@ class Noscript extends ContainerTag implements HeadContent {
    */
   public function __construct($content = null) {
     parent::__construct('noscript', $content);
+  }
+
+  public function getHash(): string {
+    return spl_object_hash($this);
   }
 
 }

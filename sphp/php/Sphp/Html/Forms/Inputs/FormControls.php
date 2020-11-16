@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -17,7 +19,7 @@ use ReflectionClass;
 use Sphp\Html\Forms\FormController;
 
 /**
- * Implements an HTML form component factory
+ * Implementation of an HTML form component factory
  * 
  * @method \Sphp\Html\Forms\Inputs\Menus\Select select(string $name = null, $value = null) creates a new hidden input
  * @method \Sphp\Html\Forms\Inputs\HiddenInput hidden(string $name = null, $value = null) creates a new hidden input

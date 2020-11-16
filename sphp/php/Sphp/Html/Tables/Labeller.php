@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -44,18 +46,21 @@ class Labeller implements TableFilter {
   private function insertLabelsToRow(Row $row) {
     foreach ($this->labels as $column => $label) {
       $cell = $row->getCell($column);
-      if ($cell instanceof \Sphp\Html\Component) {
+      if ($cell !== null) {
         $row->getCell($column)->setAttribute('data-label', $label);
       }
     }
   }
 
-  public function useInTable(Table $table): Table {
+  public function __invoke(Table $table): void {
+    $this->useInTable($table);
+  }
+
+  public function useInTable(Table $table): void {
     $table->addCssClass('responsive-card-table');
     foreach ($table->tbody() as $row) {
       $this->insertLabelsToRow($row);
     }
-    return $table;
   }
 
 }

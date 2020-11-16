@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,9 +15,10 @@ namespace Sphp\Html\Scripts;
 use Sphp\Html\AbstractContent;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\Iterator;
+use Sphp\Html\ContentIterator;
 use Traversable;
 use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Datastructures\PriorityList;
 
 /**
  * Implements a JavaScript component container
@@ -24,55 +27,63 @@ use Sphp\Stdlib\Arrays;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ScriptsContainer extends AbstractContent implements Script, IteratorAggregate, TraversableContent {
+class ScriptsContainer extends AbstractContent implements IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
   /**
    * scripts container
    *
-   * @var Script[] 
+   * @var PriorityList
    */
-  private $script;
+  private $scripts;
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->script = [];
+    $this->scripts = new PriorityList(false);
   }
 
   public function __destruct() {
-    unset($this->script);
+    unset($this->scripts);
   }
 
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
   public function __clone() {
-    $this->script = Arrays::copy($this->script);
+    $this->scripts = clone $this->scripts;
   }
 
   /**
    * Appends a script component to the container
    * 
    * @param  Script $script
+   * @param  int $priority
    * @return $this for a fluent interface
    */
-  public function append(Script $script) {
-    $this->script[] = $script;
+  public function insert(Script $script, int $priority = 0) {
+    $name = $script->getHash();
+    $this->scripts->insert($name, $script, $priority);
     return $this;
   }
 
   /**
    * Appends a script component pointing to the given `src`
    * 
-   * @param  string $src the file path of the script file
-   * @param  boolean $async true for asynchronous execution, false otherwise
-   * @return ScriptSrc appended code component
+   * @param  string $src the file path of the script file 
+   * @param  int $priority
+   * @return ExternalScript appended code component
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function appendSrc(string $src, bool $async = false): ScriptSrc {
-    $script = new ScriptSrc($src, $async);
-    $this->append($script);
+  public function insertExternal(string $src, int $priority = 0): ExternalScript {
+    $script = new ExternalScript($src);
+    $this->insert($script, $priority);
     return $script;
   }
 
@@ -80,55 +91,52 @@ class ScriptsContainer extends AbstractContent implements Script, IteratorAggreg
    * Appends a script component containing script commands
    * 
    * @param  string $code script commands
-   * @return ScriptCode appended code component
+   * @param  int $priority
+   * @return InlineScript appended code component
    */
-  public function appendCode($code): ScriptCode {
-    $script = new ScriptCode($code);
-    $this->append($script);
+  public function insertInline(string $code, int $priority = 0): InlineScript {
+    $script = new InlineScript($code);
+    $this->insert($script, $priority);
     return $script;
   }
 
-  public function setAsync(bool $async = true) {
-    foreach ($this->script as $script) {
+  public function setExternalsAsync(bool $async = true) {
+    foreach ($this->getExternalScripts() as $script) {
       $script->setAsync($async);
     }
     return $this;
   }
 
-  public function isAsync(): bool {
-    $isAsync = true;
-    foreach ($this->script as $script) {
-      if (!$script->isAsync()) {
-        $isAsync = false;
-        break;
-      }
-    }
-    return $isAsync;
-  }
-
-  public function setDefer(bool $defer = true) {
-    foreach ($this->script as $script) {
+  public function setExternalsDefer(bool $defer = true) {
+    foreach ($this->getExternalScripts() as $script) {
       $script->setDefer($defer);
     }
     return $this;
   }
-  public function isDefered(): bool {
-    $isAsync = true;
-    foreach ($this->script as $script) {
-      if (!$script->isDefered()) {
-        $isAsync = false;
-        break;
-      }
-    }
-    return $isAsync;
-  }
 
   public function contains(Script $script): bool {
-    return in_array($script, $this->script, true);
+    return $this->scripts->contains($script->getHash());
+  }
+
+  public function containsExternal(string $src): bool {
+    $hash = (new ExternalScript($src))->getHash();
+    return $this->scripts->contains($hash);
+  }
+
+  public function getExternalScripts(): TraversableContent {
+    return $this->getComponentsByObjectType(ExternalScript::class);
+  }
+
+  public function getInlineScripts(): TraversableContent {
+    return $this->getComponentsByObjectType(InlineScript::class);
   }
 
   public function getHtml(): string {
-    return implode($this->script);
+    $out = '';
+    foreach ($this->scripts as $script) {
+      $out .= $script;
+    }
+    return $out;
   }
 
   /**
@@ -137,7 +145,7 @@ class ScriptsContainer extends AbstractContent implements Script, IteratorAggreg
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->script);
+    return new ContentIterator($this->scripts->toArray());
   }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -120,7 +122,7 @@ abstract class Arrays {
    * @param  string $needle the phrase to search for
    * @return string[] an array of values that contain the given phrase
    */
-  public static function getValuesLike(array $arr, $needle): array {
+  public static function getValuesLike(array $arr, string $needle): array {
     $strings = array_filter($arr, function($var) {
       return is_string($var) || is_numeric($var);
     });
@@ -132,16 +134,35 @@ abstract class Arrays {
   /**
    * Search a single dimensional array for keys that contain the given phrase
    * 
-   * @param  string[] $arr the array to search from
+   * @param  array $arr the array to search from
    * @param  string $needle the phrase to search for
    * @return string[] an array of values that have the matching keys
    */
-  public static function findKeysLike(array $arr, $needle): array {
+  public static function findKeysLike(array $arr, string $needle): array {
     $keys = array_keys($arr);
     $passed = self::getValuesLike($keys, $needle);
     $result = [];
     foreach ($passed as $key) {
       $result[$key] = $arr[$key];
+    }
+    return $result;
+  }
+
+  /**
+   * Checks if the array has a key starting with the needle
+   * 
+   * @param  array $arr the array to search from
+   * @param  string $needle the phrase to search for
+   * @return bool true if the array has a key starting with the needle, otherwise false
+   */
+  public static function hasKeysStartingWith(array $arr, string $needle): bool {
+    $keys = array_keys($arr);
+    $result = false;
+    foreach ($keys as $key) {
+      if (Strings::startsWith($key, $needle)) {
+        $result = true;
+        break;
+      }
     }
     return $result;
   }
@@ -301,7 +322,7 @@ abstract class Arrays {
    * 
    * @link https://paragonie.com/b/JvICXzh_jhLyt4y3
    * 
-   * @param &array $array reference to an array
+   * @param array $array reference to an array
    */
   public static function secureShuffle(&$array) {
     $size = count($array);

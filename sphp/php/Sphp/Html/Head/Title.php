@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,10 +13,9 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\SimpleTag;
-use Sphp\Html\NonVisualContent;
 
 /**
- * Implements an HTML &lt;title&gt; tag
+ * Implementation of an HTML title tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_title.asp w3schools HTML API
@@ -22,7 +23,7 @@ use Sphp\Html\NonVisualContent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Title extends SimpleTag implements OverlappingHeadContent, NonVisualContent {
+class Title extends SimpleTag implements MetaData {
 
   /**
    * Constructor
@@ -34,8 +35,12 @@ class Title extends SimpleTag implements OverlappingHeadContent, NonVisualConten
     $this->setContent($content);
   }
 
-  public function overlapsWith(HeadContent $other): bool {
-    return $other instanceof Title;
+  public function toArray(): array {
+    return ['title' => $this->getContent()];
+  }
+
+  public function getHash(): string {
+    return 'title';
   }
 
 }

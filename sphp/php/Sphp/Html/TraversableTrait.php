@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -26,17 +28,17 @@ trait TraversableTrait {
    * @param  callable $rules a lambda function for testing the sub components
    * @return TraversableContent containing matching sub components
    */
-  public function getComponentsBy(callable $rules): TraversableContent {
+  public function getComponentsBy(callable $rules): iterable {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
     $result = new PlainContainer();
-    foreach ($this as $value) {
+    foreach ($this as $key => $value) {
       //echo \Sphp\Tools\ClassUtils::getRealClass($value);
-      if ($rules($value)) {
+      if ($rules($value, $key)) {
         //echo " ok ";
         $result[] = $value;
       }
-      if ($value instanceof \Traversable) {
+      if ($value instanceof TraversableContent) {
         foreach ($value->getComponentsBy($rules) as $v) {
           $result[] = $v;
         }
@@ -54,7 +56,7 @@ trait TraversableTrait {
    * @param  string|\object $type the name of the searched PHP object type
    * @return TraversableContent containing matching sub components
    */
-  public function getComponentsByObjectType($type): TraversableContent {
+  public function getComponentsByObjectType($type): iterable {
     $search = function($element) use ($type) {
       $result = false;
       if ($element instanceof $type) {

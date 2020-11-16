@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -16,7 +18,7 @@ use Throwable;
  * Defines an Exception listener for Error dispatcher
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * $link    http://php.net/manual/en/function.set-exception-handler.php
+ * @link    http://php.net/manual/en/function.set-exception-handler.php
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -52,7 +54,7 @@ class Regex extends AbstractValidator {
    * @param string $errorMessage error message corresponding to the pattern
    */
   public function __construct(string $pattern, string $errorMessage = 'Invalid pattern given') {
-    parent::__construct('Value of %s type given. String, integer or float expected'); 
+    parent::__construct('Value of %s type given. String, integer or float expected');
     $this->pattern = $pattern;
     $this->errors()->setTemplate(self::NOT_MATCH, $errorMessage);
   }
@@ -72,7 +74,7 @@ class Regex extends AbstractValidator {
       $this->errors()->appendErrorFromTemplate(self::INVALID, [gettype($value)]);
       return false;
     }
-    if (!Strings::match($value, $this->pattern)) {
+    if (!Strings::match((string) $value, $this->pattern)) {
       //echo $value . $this->pattern;
       $this->errors()->appendErrorFromTemplate(self::NOT_MATCH);
       return false;

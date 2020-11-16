@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,6 +14,7 @@ namespace Sphp\Security;
 
 use Sphp\Html\Forms\Form;
 use Sphp\Security\Exception\ReCAPTCHAException;
+use Sphp\Html\Scripts\ExternalScript;
 
 /**
  * Implementation of Google reCAPTCHA v3
@@ -69,7 +72,7 @@ class ReCAPTCHAv3 {
    */
   public function insertIntoForm(Form $form, string $formId) {
     $form->setAttribute('id', $formId);
-    echo new \Sphp\Html\Scripts\ScriptSrc("https://www.google.com/recaptcha/api.js?render={$this->getClienId()}");
+    echo new ExternalScript("https://www.google.com/recaptcha/api.js?render={$this->getClienId()}");
     $form->setAttribute('data-sphp-grecaptcha-v3', 'g-recaptcha-response');
     $form->setAttribute('data-sphp-grecaptcha-v3-clientId', $this->getClienId());
     return $this;
@@ -82,11 +85,11 @@ class ReCAPTCHAv3 {
    * @return float the score for this request (0.0 - 1.0)
    * @throws ReCAPTCHAException if fetching fails
    */
-  public function getScoreForResponse(string $response): float {
+  public function getScoreForResponse(string $response = null): float {
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $data = [
         'secret' => $this->getSecret(),
-        'response' => $response
+        'response' => (string) $response
     ];
     $query = http_build_query($data);
     $options = [

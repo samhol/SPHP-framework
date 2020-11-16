@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\AbstractComponent;
 
 /**
- * Implements an HTML &lt;figure&gt; tag
+ * figure tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_figure.asp w3schools API
@@ -44,7 +46,7 @@ class Figure extends AbstractComponent {
       $img = new Img((string) $img);
     }
     $this->setImg($img);
-    if (!($caption instanceof FigCaption)) {
+    if ($caption !== null && !$caption instanceof FigCaption) {
       $caption = new FigCaption($caption);
     }
     $this->setCaption($caption);
@@ -80,13 +82,17 @@ class Figure extends AbstractComponent {
     return $this->img;
   }
 
+  public function hasCaption(): bool {
+    return $this->caption instanceof FigCaption;
+  }
+
   /**
    * Sets the caption component
    *
    * @param  FigCaption $caption the caption content or the caption component
    * @return $this for a fluent interface
    */
-  public function setCaption(FigCaption $caption) {
+  public function setCaption(FigCaption $caption = null) {
     $this->caption = $caption;
     return $this;
   }
@@ -94,17 +100,14 @@ class Figure extends AbstractComponent {
   /**
    * Returns the caption component
    *
-   * @return FigCaption the caption component
+   * @return FigCaption|null the caption component
    */
-  public function getCaption(): FigCaption {
+  public function getCaption(): ?FigCaption {
     return $this->caption;
   }
-
 
   public function contentToString(): string {
     return $this->img . $this->caption;
   }
 
-
 }
-

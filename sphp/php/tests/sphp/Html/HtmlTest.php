@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -8,10 +10,13 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html;
+namespace Sphp\Tests\Html;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Html;
 use Sphp\Html\Head\Head;
+use Sphp\Html\Body;
+use Sphp\Html\Div;
 
 /**
  * Implementation of HtmlTest
@@ -23,31 +28,36 @@ use Sphp\Html\Head\Head;
  */
 class HtmlTest extends TestCase {
 
-  /**
-   * @var Html 
-   */
-  private $html;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->html = new Html();
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->html);
-  }
-
-  public function testConstructor() {
+  public function testEmptyConstructor(): void {
     $html = new Html();
     $this->assertSame('<!DOCTYPE html><html><head></head><body></body></html>', (string) $html);
     $this->assertNull($html->getAttribute('lang'));
+  }
+
+  /**
+   * @return array
+   */
+  public function constructorParamsData(): array {
+    $data = [];
+    $data[] = ['title'];
+    $data[] = ['title', 'utf-16'];
+    $data[] = ['title', 'utf-16', 'fi'];
+    $data[] = [null, 'utf-16', 'fi'];
+    return $data;
+  }
+
+  /**
+   * @dataProvider constructorParamsData
+   * 
+   * @param string $title
+   * @param string $charset
+   * @param string $lang
+   */
+  public function testConstructorWithParams(string $title = null, string $charset = null, string $lang = null): void {
+    $htmlTag = new Html($title, $charset, $lang);
+    $head = new Head($title, $charset);
+    $this->assertSame($lang, $htmlTag->getAttribute('lang'));
+    $this->assertEquals($head, $htmlTag->head());
   }
 
   /**
@@ -62,14 +72,17 @@ class HtmlTest extends TestCase {
 
   /**
    * @dataProvider languageData
-   * @param string $lang
+   * 
+   * @param  string $lang
+   * @return void
    */
-  public function testSetLanguage(string $lang = null) {
-    $this->assertSame($this->html, $this->html->setLanguage($lang));
-    $this->assertSame($lang, $this->html->getAttribute('lang'));
+  public function testSetLanguage(string $lang = null): void {
+    $html = new Html();
+    $this->assertSame($html, $html->setLanguage($lang));
+    $this->assertSame($lang, $html->getAttribute('lang'));
   }
 
-  public function testClone() {
+  public function testClone(): void {
     $html = new Html();
     $cloned = clone $html;
     $this->assertNotSame($html, $cloned);
@@ -77,18 +90,19 @@ class HtmlTest extends TestCase {
     $this->assertNotSame($cloned->body(), $html->body());
   }
 
-  public function testTraversing(): void {
+  public function testTraversingContent(): void {
+    $html = new Html();
     $content = new Div();
-    $this->html->body()->offsetSet(0, $content);
-    $array = iterator_to_array($this->html);
+    $html->body()->offsetSet(0, $content);
+    $array = iterator_to_array($html);
     $this->assertInstanceOf(Head::class, $array[0]);
     $this->assertInstanceOf(Body::class, $array[1]);
-    foreach ($this->html as $id => $item) {
+    foreach ($html as $id => $item) {
       $this->assertSame($array[$id], $item);
     }
   }
 
-  public function testOutputtingStart(): Html {
+  public function testOutputtingStart(): void {
     $html = new Html();
     $content = new Div();
     $html->body()->append($content);
@@ -96,15 +110,22 @@ class HtmlTest extends TestCase {
     $this->assertSame($start, $html->getBodyStart());
     $this->expectOutputString($start);
     $html->startBody();
-    return $html;
   }
 
   /**
-   * @depends testOutputtingStart
-   * @param Html $html
    * @return void
    */
-  public function testOutputtingEnd(Html $html): void {
+  public function testContentToString(): void {
+    $html = new Html();
+    $string = $html->head() . $html->body();
+    $this->assertSame($string, $html->contentToString());
+  }
+
+  /**
+   * @return void
+   */
+  public function testOutputtingEnd(): void {
+    $html = new Html();
     $ending = $html->body()->scripts() . $html->body()->getClosingTag() . $html->getClosingTag();
     $this->assertSame($ending, $html->getDocumentClose());
     $this->expectOutputString($ending);

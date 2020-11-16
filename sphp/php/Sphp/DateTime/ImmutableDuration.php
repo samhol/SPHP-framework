@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -62,7 +64,7 @@ class ImmutableDuration implements Duration {
   }
 
   public function add(Duration $d): Duration {
-    return $this->addSeconds($d->toSeconds());
+    return $this->addSeconds((int) $d->toSeconds());
   }
 
   public function addSeconds(int $seconds): Duration {
@@ -70,7 +72,7 @@ class ImmutableDuration implements Duration {
   }
 
   public function addMinutes(float $minutes): Duration {
-    return $this->addSeconds($minutes * 60);
+    return $this->addSeconds((int) $minutes * 60);
   }
 
   public function addHours(float $hours): Duration {
@@ -101,7 +103,7 @@ class ImmutableDuration implements Duration {
     try {
       return $this->toSeconds() <=> static::from($duration)->toSeconds();
     } catch (\Exception $ex) {
-      throw new InvalidArgumentException('the duration cannot be parsed from input', $ex->getCode(), $ex);
+      throw new InvalidArgumentException('The duration cannot be parsed from input', $ex->getCode(), $ex);
     }
   }
 
@@ -111,7 +113,7 @@ class ImmutableDuration implements Duration {
    * @return ImmutableDuration
    */
   public static function from($time): ImmutableDuration {
-    return new static(Intervals::create($time)->toSeconds());
+    return new static((int) Intervals::create($time)->toSeconds());
   }
 
 }

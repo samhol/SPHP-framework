@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -9,7 +11,9 @@
  */
 
 namespace Sphp\Html;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+
+use Sphp\Html\Attributes\AttributeContainer;
+
 /**
  * Implements an empty tag
  *
@@ -32,9 +36,9 @@ class EmptyTag extends AbstractTag {
    * 
    * @param string $tagName
    * @param bool $useCloseTag
-   * @param HtmlAttributeManager $attrManager
+   * @param AttributeContainer $attrManager
    */
-  public function __construct(string $tagName, bool $useCloseTag = false, HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName, bool $useCloseTag = false, AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->close = $useCloseTag;
   }

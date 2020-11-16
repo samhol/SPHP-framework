@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -31,7 +33,7 @@ class DateTime {
   }
 
   /**
-   * Creates a &lt;time&gt; tag object showing week number
+   * Creates a &lt;time tag object showing week number
    * 
    * @param  mixed $dateTime
    * @return TimeTag new instance

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -17,7 +19,7 @@ namespace Sphp\Html\Apps\HyperlinkGenerators;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface  UrlGenerator {
+interface UrlGenerator {
 
   /**
    * Returns the URL pointing to the API documentation root

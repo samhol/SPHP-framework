@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,6 +12,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * Implements a unique id for an HTML element
  *
@@ -18,44 +22,52 @@ namespace Sphp\Html\Attributes;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IdAttribute extends PatternAttribute {
+class IdAttribute extends ScalarAttribute {
 
   /**
    * Constructor
    *
    * @param string $name the name of the attribute
-   * @param scalar $value
+   * @param string|null $value
    */
-  public function __construct(string $name = 'id', $value = null) {
-    parent::__construct($name, '/^[^\s]+$/');
+  public function __construct(string $name = 'id', string $value = null) {
+    parent::__construct($name);
     if ($value !== null) {
       $this->setValue($value);
     }
   }
 
+  public function isValidValue($value): bool {
+    return $value === null || $value === false || (is_string($value) && Strings::match($value, '/^[^\s]+$/'));
+  }
+
   public function __toString(): string {
-    if ($this->getValue() == '') {
-      return '';
-    } else {
-      return parent::__toString();
+    $output = '';
+    if ($this->isVisible()) {
+      $output = $this->getName() . '="' . $this->getValue() . '"';
     }
+    return $output;
+  }
+
+  public function isVisible(): bool {
+    return !$this->isEmpty();
   }
 
   /**
-   * Creates an unique identity value
+   * Returns/Creates an unique identity value
    *
    * **Notes:**
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
    * 
-   * @param  int $length the length of the identity value
+   * @param  bool $forceNewValue true for forsing a new unique id value, and false otherwise
    * @return string the identifier
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function identify(int $length = 16): string {
-    if ($this->isEmpty()) {
+  public function identify(bool $forceNewValue = false): string {
+    if ($forceNewValue || !$this->isVisible()) {
       $storage = IdStorage::get($this->getName());
-      $value = $storage->generateRandom($length);
+      $value = $storage->generateRandom();
       $this->setValue($value);
     }
     return $this->getValue();

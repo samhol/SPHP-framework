@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -18,7 +20,7 @@ use DateTimeImmutable;
 use DateTimeZone;
 
 /**
- * Implements a HTML based stamp-element that describes a {@link DateTimeInterface} object
+ * Implementation of an HTML based stamp-element that describes a {@link DateTimeInterface} object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

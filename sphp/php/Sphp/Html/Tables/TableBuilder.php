@@ -11,11 +11,9 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Stdlib\Parsers\CsvFile;
-use Sphp\Stdlib\Arrays;
 
 /**
- * Description of TableBuilder
+ * Implements aa HTML table factory
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -44,13 +42,29 @@ class TableBuilder extends AbstractContent {
   private $tableFilters = [];
 
   /**
+   * Constructor
+   */
+  public function __construct() {
+    $this->tableFilters = [];
+    $this->theadData = [];
+    $this->tbodyData = [];
+    $this->tfootData = [];
+  }
+
+  /**
    * Destructor
    */
   public function __destruct() {
     unset($this->tableFilters);
   }
 
-  public function addTableFilter(TableFilter $filter) {
+  /**
+   * Adds a Filter to further manipulate created tables
+   * 
+   * @param  callable $filter
+   * @return $this for a fluent interface
+   */
+  public function addTableFilter(callable $filter) {
     $this->tableFilters[] = $filter;
     return $this;
   }
@@ -85,21 +99,21 @@ class TableBuilder extends AbstractContent {
   /**
    * Sets the cell data for table head
    * 
-   * @param  array $data the cell data for table head
+   * @param  iterable $data the cell data for table head
    * @return $this for a fluent interface
    */
-  public function setTheadData(array $data = null) {
-    $this->theadData = Arrays::setSequential($data, 0, 1);
+  public function setTheadData(iterable $data = []) {
+    $this->theadData = $data;
     return $this;
   }
 
   /**
    * Sets the cell data for table body
    * 
-   * @param  mixed[][] $data the cell data for table body
+   * @param  iterable $data the cell data for table body
    * @return $this for a fluent interface
    */
-  public function setTbodyData(array $data = null) {
+  public function setTbodyData(iterable $data = null) {
     $this->tbodyData = $data;
     return $this;
   }
@@ -107,59 +121,53 @@ class TableBuilder extends AbstractContent {
   /**
    * Sets the cell data for table footer
    * 
-   * @param  array $data the cell data for table footer
+   * @param  iterable $data the cell data for table footer
    * @return $this for a fluent interface
    */
-  public function setTfootData(array $data = null) {
+  public function setTfootData(iterable $data = null) {
     $this->tfootData = $data;
     return $this;
   }
 
   /**
-   * Sets the body of the given table object
+   * Builds the tbody object using the data
    * 
-   * @param  Table $table modifiable table
-   * @return Table modified table object
+   * @return Tbody modified resulting tbody element
    */
-  public function buildTbody(Table $table): Table {
+  public function buildTbody(): Tbody {
+    $tbody = new Tbody();
     if (!empty($this->tbodyData)) {
-      $tbody = new Tbody();
       foreach ($this->tbodyData as $rowData) {
         $tbody->append(Tr::fromTds($rowData));
       }
-      $table->setTbody($tbody);
     }
-    return $table;
+    return $tbody;
   }
 
   /**
-   * Sets the head of the given table object
+   * Builds the Thead object using the data
    * 
-   * @param  Table $table modifiable table
-   * @return Table modified table object
+   * @return Thead modified resulting Thead element
    */
-  public function buildHead(Table $table): Table {
+  public function buildThead(): Thead {
+    $thead = new Thead();
     if (!empty($this->theadData)) {
-      $head = new Thead();
-      $head->appendHeaderRow($this->theadData);
-      $table->setThead($head);
+      $thead->appendHeaderRow($this->theadData);
     }
-    return $table;
+    return $thead;
   }
 
   /**
-   * Sets the footer of the given table object
+   * Builds the Tfoot object using the data
    * 
-   * @param  Table $table modifiable table
-   * @return Table modified table object
+   * @return Tfoot modified resulting Tfoot element
    */
-  public function buildFoot(Table $table): Table {
-    if ($this->tfootData !== null) {
-      $foot = new Tfoot();
-      $foot->appendHeaderRow($this->tfootData);
-      $table->setTfoot($foot);
+  public function buildTfoot(): Tfoot {
+    $tfoot = new Tfoot();
+    if (!empty($this->tfootData)) {
+      $tfoot->appendHeaderRow($this->tfootData);
     }
-    return $table;
+    return $tfoot;
   }
 
   /**
@@ -170,45 +178,23 @@ class TableBuilder extends AbstractContent {
     if ($table === null) {
       $table = new Table();
     }
-    $this->buildTbody($table);
-    $this->buildHead($table);
-    $this->buildFoot($table);
+    if (!empty($this->tbodyData)) {
+      $table->setContent($this->buildTbody());
+    }
+    if (!empty($this->theadData)) {
+      $table->setContent($this->buildThead());
+    }
+    if (!empty($this->tfootData)) {
+      $table->setContent($this->buildTfoot());
+    }
     foreach ($this->tableFilters as $filter) {
-      $filter->useInTable($table);
+      $filter($table);
     }
     return $table;
   }
 
   public function getHtml(): string {
     return $this->buildTable();
-  }
-
-  /**
-   * 
-   * @param  CsvFile $file
-   * @param  int $offset optional offset of the limit
-   * @param  int $count optional count of the limit
-   * @return TableBuilder
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
-  public static function fromCsvFile(CsvFile $file, $offset = 0, $count = -1): TableBuilder {
-    $builder = new TableBuilder();
-    if ($offset > 0 || $count !== -1) {
-      $data = $file->getChunk($offset, $count);
-    } else {
-      $data = $file->toArray();
-    }
-    if ($offset > 0) {
-      $headData = $file->getHeaderRow();
-    } else {
-      $headData = array_shift($data);
-    }
-    $builder->setTheadData($headData);
-    $builder->setTbodyData($data);
-    $linenumberer = new LineNumberer();
-    $linenumberer->setFirstLineNumber($offset + 1)->prependLineNumbers(true);
-    $builder->addTableFilter($linenumberer);
-    return $builder;
   }
 
 }

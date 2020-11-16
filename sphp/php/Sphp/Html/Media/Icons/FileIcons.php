@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -120,7 +122,7 @@ class FileIcons {
    *
    * @param  string $fileType the file type
    * @param  array $arguments
-   * @return $iconName new icon object
+   * @return IconTag new icon object
    */
   public function __call(string $fileType, array $arguments): IconTag {
     try {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -41,20 +43,20 @@ interface ContentParser extends Content {
   public function appendPhpFile(string $path);
 
   /**
-   * Appends a parsed Mark Down string to the container
+   * Appends a parsed Markdown string to the container
    * 
-   * @param  string $md the path to the file
+   * @param  string $markdown the path to the file
    * @return $this for a fluent interface
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md);
+  public function appendMarkdown(string $markdown);
 
   /**
-   * Appends a parsed Mark Down file to the container
+   * Appends a parsed Markdown file to the container
    * 
    * @param  string $path  the path to the file
    * @return $this for a fluent interface
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMdFile(string $path);
+  public function appendMarkdownFile(string $path);
 }

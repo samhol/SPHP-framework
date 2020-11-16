@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
@@ -9,9 +10,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Tables;
+namespace Sphp\Tests\Html\Tables;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Tables\RowContainer;
+use Sphp\Html\Tables\TableContent;
+use Sphp\Html\Tables\Tr;
 
 class RowContainerTest extends TestCase {
 
@@ -24,6 +28,7 @@ class RowContainerTest extends TestCase {
     $this->assertNull($rows->getRow(1));
     return $rows;
   }
+
   /**
    * @depends testConstructor
    * 
@@ -39,7 +44,6 @@ class RowContainerTest extends TestCase {
     $this->assertCount(2, $rows);
     $this->assertSame($prepended, $rows->getRow(0));
     $this->assertSame($appended, $rows->getRow(1));
-    
   }
 
 }

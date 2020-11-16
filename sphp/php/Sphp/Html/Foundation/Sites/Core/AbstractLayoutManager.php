@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -69,9 +71,9 @@ abstract class AbstractLayoutManager extends AbstractContent implements LayoutMa
    */
   protected function setOneOf(array $group, string $value = null) {
     if ($value === null) {
-      $this->cssClasses()->remove($group);
+      $this->cssClasses()->remove(...$group);
     } else if (in_array($value, $group)) {
-      $this->cssClasses()->remove($group)->add($value);
+      $this->cssClasses()->remove(...$group)->add($value);
     }
     return $this;
   }

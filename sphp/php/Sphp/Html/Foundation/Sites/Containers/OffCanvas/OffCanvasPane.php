@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,6 @@
 namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
 use Sphp\Html\Component;
-use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
 
 /**
  * An abstract implementation of on Off-canvas area

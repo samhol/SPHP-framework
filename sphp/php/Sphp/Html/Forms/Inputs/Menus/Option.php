@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,39 +12,31 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\SimpleTag;
 
 /**
- * Implements an HTML &lt;option&gt; tag
+ * option tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_option.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Option extends AbstractComponent implements MenuComponent {
-
-  /**
-   * @var scalar
-   */
-  private $content;
+class Option extends SimpleTag implements MenuComponent {
 
   /**
    * Constructor
    *
    * @param scalar|null $value value attribute
-   * @param scalar|null $content the content text of the option
-   * @param boolean $selected whether option is selected or not
+   * @param string|null $content the content text of the option
    * @link  http://www.w3schools.com/tags/att_option_value.asp value attribute
-   * @link  http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
-  public function __construct($value = null, $content = null, bool $selected = false) {
+  public function __construct($value = null, string $content = null) {
     parent::__construct('option');
     if ($value !== null) {
       $this->setValue($value);
     }
     $this->setContent($content);
-    $this->setSelected($selected);
   }
 
   /**
@@ -67,15 +61,6 @@ class Option extends AbstractComponent implements MenuComponent {
     return $this;
   }
 
-  public function getContent() {
-    return $this->content;
-  }
-
-  public function setContent($content) {
-    $this->content = $content;
-    return $this;
-  }
-
   /**
    * Sets the option as selected or not
    *
@@ -85,6 +70,7 @@ class Option extends AbstractComponent implements MenuComponent {
    */
   public function setSelected(bool $selected = true) {
     $this->attributes()->setAttribute('selected', $selected);
+    return $this;
   }
 
   /**
@@ -104,10 +90,6 @@ class Option extends AbstractComponent implements MenuComponent {
 
   public function isEnabled(): bool {
     return !$this->attributes()->isVisible('disabled');
-  }
-
-  public function contentToString(): string {
-    return (string) $this->getContent();
   }
 
 }

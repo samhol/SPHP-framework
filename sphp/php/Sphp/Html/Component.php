@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -29,16 +31,16 @@ interface Component extends IdentifiableContent, CssClassifiableContent {
   /**
    * Returns the attribute manager attached to the component
    * 
-   * @return HtmlAttributeManager the attribute manager
+   * @return AttributeContainer the attribute manager
    */
-  public function attributes(): HtmlAttributeManager;
+  public function attributes(): AttributeContainer;
 
   /**
    * Returns the attribute object containing inline styles
    * 
    * @return PropertyCollectionAttribute the attribute object containing inline styles
    */
-  public function inlineStyles(): PropertyCollectionAttribute;
+  public function css(): PropertyCollectionAttribute;
 
   /**
    * Sets an attribute name value pair

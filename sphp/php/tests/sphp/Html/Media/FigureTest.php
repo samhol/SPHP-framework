@@ -8,9 +8,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Tests\Html\Media;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Media\Figure;
+use Sphp\Html\Media\FigCaption;
+use Sphp\Html\Media\Img;
 
 class FigureTest extends TestCase {
 

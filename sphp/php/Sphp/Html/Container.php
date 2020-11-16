@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -72,5 +74,5 @@ interface Container extends TraversableContent, ArrayAccess {
    * @param  mixed $value mixed content to check for
    * @return boolean `true` on success or `false` on failure
    */
-  public function exists($value): bool;
+  public function contains($value): bool;
 }

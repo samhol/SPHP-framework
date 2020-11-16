@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,6 +13,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
+use Countable;
 
 /**
  * Implements a storage for HTML id attribute values
@@ -20,7 +23,7 @@ use Sphp\Stdlib\Strings;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class IdStorage {
+class IdStorage implements Countable {
 
   /**
    * @var self[]
@@ -30,13 +33,13 @@ class IdStorage {
   /**
    * @var string[]
    */
-  private $ids = [];
+  private $ids;
 
   /**
    * Constructor
    */
-  private function __construct() {
-    
+  public function __construct() {
+    $this->ids = [];
   }
 
   /**
@@ -52,17 +55,8 @@ class IdStorage {
     return static::$instances[$name];
   }
 
-  /**
-   * Checks whether the storage contains identifier value
-   *
-   * @param  string $value the value of the identifier
-   * @return boolean true on success or false on failure
-   */
-  public function getOwner(string $value): bool {
-    if ($this->contains($value)) {
-      return $this->ids[$value];
-    }
-    return null;
+  public function count(): int {
+    return count($this->ids);
   }
 
   /**
@@ -96,6 +90,31 @@ class IdStorage {
     }
     //print_r($this->ids);
     return false;
+  }
+
+  public function remove(string $id): bool {
+    $isRemoved = false;
+    if ($this->contains($id)) {
+      unset($this->ids[$id]);
+      $isRemoved = true;
+    }
+    return $isRemoved;
+  }
+
+  /**
+   * Tries to replace an old identifier with a new one
+   * 
+   * @param  string $oldId old identifier
+   * @param  string $newId new identifier
+   * @return boolean true if stored and `false` otherwise
+   */
+  public function replace(string $oldId, string $newId): bool {
+    $storedNew = false;
+    if ($this->store($newId)) {
+      $this->remove($oldId);
+      $storedNew = true;
+    }
+    return $storedNew;
   }
 
   /**

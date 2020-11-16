@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
  * Trait implements the LazyMedia interface
@@ -30,9 +32,9 @@ trait LazyMediaSourceTrait {
   /**
    * Returns the attribute manager attached to the component
    * 
-   * @return HtmlAttributeManager the attribute manager
+   * @return AttributeContainer the attribute manager
    */
-  abstract public function attributes(): HtmlAttributeManager;
+  abstract public function attributes(): AttributeContainer;
 
   /**
    * Sets or unsets the media source loading as lazy
@@ -43,11 +45,11 @@ trait LazyMediaSourceTrait {
   public function setLazy(bool $lazy = true) {
     $classes = ['lazy-hidden', 'lazy-loaded'];
     if ($lazy && !$this->isLazy()) {
-      $this->attributes()->classes()->add($classes);
+      $this->attributes()->classes()->add(...$classes);
       $this->attributes()->setAttribute('data-src', $this->attributes()->getValue('src'));
       $this->attributes()->remove('src');
     } else if (!$lazy && $this->isLazy()) {
-      $this->attributes()->classes()->remove($classes);
+      $this->attributes()->classes()->remove(...$classes);
       $this->attributes()->setAttribute('src', $this->attributes()->getValue('data-src'));
       $this->attributes()->remove('data-src');
     }
@@ -61,7 +63,7 @@ trait LazyMediaSourceTrait {
    */
   public function isLazy(): bool {
     return $this->attributes()->isVisible('data-src') &&
-            $this->attributes()->classes()->contains(['lazy-hidden', 'lazy-loaded']);
+            $this->attributes()->classes()->contains('lazy-hidden', 'lazy-loaded');
   }
 
   /**
@@ -70,7 +72,7 @@ trait LazyMediaSourceTrait {
    * @param  string $src the path to the image source (The URL of the image file)
    * @return $this for a fluent interface
    */
-  public function setSrc(string $src = null) {
+  public function setSrc(string $src = null, string $type = null) {
     if ($this->isLazy()) {
       $this->attributes()->setAttribute('data-src', $src);
       $this->attributes()->remove('src');

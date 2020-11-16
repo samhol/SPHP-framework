@@ -86,6 +86,3 @@ $sphp-menuitem-font-color-active: #ffffff;
 @include sphp-forms();
 @include sphp-back-to-top-button();
 @include sphp-code-example-accordion();
-@include api-linker-styles();
-@include sphp-sidenav();
-@include statistic-app();

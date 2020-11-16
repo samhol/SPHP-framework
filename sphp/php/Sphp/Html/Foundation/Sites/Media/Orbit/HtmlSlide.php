@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,8 +12,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Container;
-use Sphp\Html\PlainContainer;
+use Sphp\Html\AbstractContainerTag;
 
 /**
  * Implements a slide for Orbit
@@ -23,12 +24,9 @@ use Sphp\Html\PlainContainer;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class HtmlSlide extends AbstractSlide {
+class HtmlSlide extends AbstractContainerTag implements Slide {
 
-  /**
-   * @var PlainContainer 
-   */
-  private $htmlContent;
+  use ActivationTrait;
 
   /**
    * Constructor
@@ -37,24 +35,11 @@ class HtmlSlide extends AbstractSlide {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
-    parent::__construct();
-    $this->htmlContent = new PlainContainer();
+    parent::__construct('li');
     if ($content !== null) {
-      $this->getHtmlContent()->append($content);
+      $this->append($content);
     }
-  }
-
-  public function getHtmlContent(): Container {
-    return $this->htmlContent;
-  }
-
-  public function setHtmlContent(PlainContainer $htmlContent) {
-    $this->htmlContent = $htmlContent;
-    return $this;
-  }
-
-  public function contentToString(): string {
-    return $this->htmlContent->getHtml();
+    $this->cssClasses()->protectValue('orbit-slide');
   }
 
 }

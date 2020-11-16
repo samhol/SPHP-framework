@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;a&gt; tag
+ * Implementation of an HTML a tag
  *
  * If this component has an `href` attribute, then it represents a hyperlink
  * (a hypertext anchor). If the component has no `href` attribute, then the
@@ -46,7 +48,7 @@ class A extends ContainerTag implements Hyperlink {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct(string $href = null, string $content = null, string $target = null) {
+  public function __construct(string $href = null, $content = null, string $target = null) {
     parent::__construct('a', $content);
     if ($href !== null) {
       $this->setHref($href);

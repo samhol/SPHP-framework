@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -76,7 +78,7 @@ interface Grid extends CssClassifiableContent, TraversableContent {
   /**
    * Returns all column components from the grid
    * 
-   * @return TraversableContent containing all the column components
+   * @return iterable containing all the column components
    */
-  public function getCells(): TraversableContent;
+  public function getCells(): iterable;
 }

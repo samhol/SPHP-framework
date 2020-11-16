@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -8,9 +10,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Forms\Inputs\Menus;
+namespace Sphp\Tests\Html\Forms\Inputs\Menus;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Forms\Inputs\Menus\AbstractOptionContainer;
+use Sphp\Html\Forms\Inputs\Menus\Option;
 
 /**
  * Description of AbstractOptionsContainerTest
@@ -22,16 +26,16 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractOptionsContainerTest extends TestCase {
 
-  public function buildContainer(): AbstractOptionsContainer {
-    return $this->getMockForAbstractClass(AbstractOptionsContainer::class, ['foo']);
+  public function buildContainer(): AbstractOptionContainer {
+    return $this->getMockForAbstractClass(AbstractOptionContainer::class, ['foo']);
   }
 
-  public function testConstructor(): AbstractOptionsContainer {
-    $obj = $this->getMockForAbstractClass(AbstractOptionsContainer::class, ['foo']);
+  public function testConstructor(): AbstractOptionContainer {
+    $obj = $this->getMockForAbstractClass(AbstractOptionContainer::class, ['foo']);
 
     // $this->expectOutputString($Hidden->getHtml());
     //$mock->printHtml();
-    if ($obj instanceof AbstractOptionsContainer) {
+    if ($obj instanceof AbstractOptionContainer) {
       $this->assertSame('foo', $obj->getTagName());
     }
     return $obj;
@@ -43,7 +47,7 @@ class AbstractOptionsContainerTest extends TestCase {
     $data[] = [
         [
             Option::class => new Option('foo', 'select foo'),
-            'array' => [range('a', 'c')]
+            'a' => 'b'
         ]
     ];
     return $data;
@@ -53,7 +57,7 @@ class AbstractOptionsContainerTest extends TestCase {
    * @dataProvider insertionData
    * @param array $options
    */
-  public function testArrayAppending($options) {
+  public function testArrayAppending($options): void {
     $obj = $this->buildContainer();
     $this->assertCount(0, $obj);
     $obj->appendArray($options);
@@ -77,9 +81,6 @@ class AbstractOptionsContainerTest extends TestCase {
     $opt2 = new Option('foobar', 'select foobar');
     $this->assertSame($obj, $obj->prepend($opt2));
     $this->assertCount(3, $obj);
-
-    $optGroup = $obj->appendOptgroup('foo', range('a', 'c'));
-    $this->assertInstanceOf(Optgroup::class, $optGroup);
     return $obj;
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,10 +14,11 @@ namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\AbstractContent;
 use IteratorAggregate;
-use Sphp\Html\Iterator;
+use Sphp\Html\ContentIterator;
 use Traversable;
 use Sphp\Html\Forms\FormController;
 use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Implements hidden data component for HTML forms
@@ -24,7 +27,7 @@ use Sphp\Stdlib\Arrays;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\Html\TraversableContent, FormController {
+class HiddenInputs extends AbstractContent implements IteratorAggregate, Arrayable, \Countable, FormController {
 
   /**
    * @var HiddenInput[]
@@ -104,7 +107,7 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\H
   }
 
   public function getIterator(): Traversable {
-    return new Iterator($this->inputs);
+    return new ContentIterator($this->inputs);
   }
 
   public function disable(bool $disabled = true) {
@@ -134,14 +137,6 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, \Sphp\H
 
   public function count(): int {
     return count($this->inputs);
-  }
-
-  public function getComponentsBy(callable $rules): \Sphp\Html\TraversableContent {
-    
-  }
-
-  public function getComponentsByObjectType($typeName): \Sphp\Html\TraversableContent {
-    
   }
 
   public function toArray(): array {

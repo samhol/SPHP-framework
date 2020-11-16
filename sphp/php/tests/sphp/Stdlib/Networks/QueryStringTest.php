@@ -157,7 +157,7 @@ class QueryStringTests extends ArrayAccessIteratorCountableTestCase {
   public function testInvalidParams() {
     $object = new QueryString();
     $object['err'] = " onmouseover=\"alert('foo')";
-    $this->assertEquals('err=%20onmouseover%3D%22alert%28%27foo%27%29', "$object");
+    $this->assertEquals('err=+onmouseover%3D%22alert%28%27foo%27%29', "$object");
     $object['true'] = true;
     $object['false'] = false;
     $object['null'] = null;

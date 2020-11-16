@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,10 +13,9 @@
 namespace Sphp\Html\Lists;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\AjaxLoader;
 
 /**
- * Implements an HTML-list element &lt;li&gt; tag
+ * Implements an HTML-list element &lt;li tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_li.asp w3schools HTML API
@@ -22,9 +23,7 @@ use Sphp\Html\AjaxLoader;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Li extends ContainerTag implements StandardListItem, AjaxLoader {
-
-  use \Sphp\Html\AjaxLoaderTrait;
+class Li extends ContainerTag implements StandardListItem {
 
   /**
    * Constructor

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs\Buttons;
 use Sphp\Html\Forms\Buttons\ResetterInterface;
 
 /**
- * Implements an HTML &lt;input type="reset"&gt; tag
+ * Implementation of an HTML input type="reset" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API

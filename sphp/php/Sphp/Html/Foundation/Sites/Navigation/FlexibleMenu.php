@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -43,7 +45,7 @@ class FlexibleMenu extends AbstractMenu implements JavaScriptComponent {
   }
 
   public function __clone() {
-    $this->options = $this->attributes()->getObject('data-options');
+    $this->options = $this->attributes()->getAttribute('data-options');
     parent::__clone();
   }
 

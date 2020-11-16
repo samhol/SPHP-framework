@@ -1,30 +1,36 @@
 <?php
 
-namespace Sphp\Html\Flow;
+declare(strict_types=1);
+
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+namespace Sphp\Tests\Html\Flow;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Flow\AbstractFlowContainer;
 
 class AbstractFlowContainerTest extends TestCase {
 
-  public function testDataTypes() {
+  public function testDataTypes(): void {
     $mock = $this->getMockForAbstractClass(AbstractFlowContainer::class, ['foo']);
-    $components['h1'] = $mock->appendH1();
-    $this->assertInstanceOf(Headings\H1::class, $components['h1']);
-    $components['h2'] = $mock->appendH2();
-    $this->assertInstanceOf(Headings\H2::class, $components['h2']);
-    $components['h3'] = $mock->appendH3();
-    $this->assertInstanceOf(Headings\H3::class, $components['h3']);
-    $components['h4'] = $mock->appendH4();
-    $this->assertInstanceOf(Headings\H4::class, $components['h4']);
-    $components['h5'] = $mock->appendH5();
-    $this->assertInstanceOf(Headings\H5::class, $components['h5']);
-    $components['h6'] = $mock->appendH6();
-    $this->assertInstanceOf(Headings\H6::class, $components['h6']);
-    $components['p'] = $mock->appendParagraph();
-    $this->assertInstanceOf(Paragraph::class, $components['p']);
-    $components['article'] = $mock->appendArticle();
-    $this->assertInstanceOf(Article::class, $components['article']);
-    $components['section'] = $mock->appendSection();
+    $components['h1'] = $mock->appendH1('h1');
+    $components['h2'] = $mock->appendH2('h2');
+    $components['h3'] = $mock->appendH3('h3');
+    $components['h4'] = $mock->appendH4('h4');
+    $components['h5'] = $mock->appendH5('h5');
+    $components['h6'] = $mock->appendH6('h6');
+    $components['p'] = $mock->appendParagraph('p');
+    $components['article'] = $mock->appendArticle('article');
+    $components['section'] = $mock->appendSection('section');
+    $components['aside'] = $mock->appendAside('aside');
+    $components['hr'] = $mock->appendHr();
+    $components['a'] = $mock->appendHyperlink('/', 'a', '_blank');
     $this->assertSame("<foo>" . implode('', $components) . "</foo>", (string) $mock);
   }
 

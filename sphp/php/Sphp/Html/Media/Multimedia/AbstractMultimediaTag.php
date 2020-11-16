@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,11 +13,9 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\PlainContainer;
+use Sphp\Html\Attributes\AttributeContainer;
 use Traversable;
-use Sphp\Html\Iterator;
-use Sphp\Html\TraversableContent;
+use Sphp\Html\ContentIterator;
 
 /**
  * Implements an abstract HTML multimedia tag
@@ -37,10 +37,10 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    * Constructor
    *
    * @param string $tagname the name of the tag
-   * @param HtmlAttributeManager|null $attrManager optional attribute manager to use in the component
+   * @param AttributeContainer|null $attrManager optional attribute manager to use in the component
    * @param mixed $sources optional sources
    */
-  public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, $sources = null) {
+  public function __construct(string $tagname, AttributeContainer $attrManager = null, $sources = null) {
     parent::__construct($tagname, $attrManager);
     $this->sources = [];
     if ($sources !== null) {
@@ -61,8 +61,8 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
 
   public function contentToString(): string {
     return implode($this->sources)
-            . "<p>Your browser does not support the &lt;"
-            . $this->getTagName() . "&gt; tag!</p>";
+            . "Your browser does not support the "
+            . $this->getTagName() . " tag!";
   }
 
   public function addMediaSrc(MultimediaSource $src) {
@@ -126,15 +126,15 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->sources);
+    return new ContentIterator($this->sources);
   }
 
   public function getSources(): iterable {
-    return (new Iterator($this->sources))->getComponentsByObjectType(Source::class)->toArray();
+    return (new ContentIterator($this->sources))->getComponentsByObjectType(Source::class)->toArray();
   }
 
   public function getTracks(): iterable {
-    return (new Iterator($this->sources))->getComponentsByObjectType(Track::class)->toArray();
+    return (new ContentIterator($this->sources))->getComponentsByObjectType(Track::class)->toArray();
   }
 
 }

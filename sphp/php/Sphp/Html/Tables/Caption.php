@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\SimpleTag;
 
 /**
- * Implements an HTML &lt;caption&gt; tag
+ * Implementation of an HTML  caption tag
  *
  * **Note:** You can specify only one caption per table.
  *

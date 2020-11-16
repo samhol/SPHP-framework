@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,12 +15,12 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use IteratorAggregate;
-use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Iterator;
+use Sphp\Html\Attributes\AttributeContainer;
+use Sphp\Html\ContentIterator;
 use Traversable;
 
 /**
- * Implements an HTML &lt;dl&gt; tag
+ * Implementation of an HTML  dl tag
  *
  * The {@link self} component is used in conjunction with &lt;dt&gt; (defines the item in the list)
  * and &lt;dd&gt; (describes the item in the list).
@@ -41,9 +43,9 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
   /**
    * Constructor
    *
-   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
+   * @param  AttributeContainer|null $attrManager the attribute manager of the component
    */
-  public function __construct(HtmlAttributeManager $attrManager = null) {
+  public function __construct(AttributeContainer $attrManager = null) {
     parent::__construct('dl', $attrManager);
   }
 
@@ -64,7 +66,7 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @param  mixed $content the term content
    * @return Dt appended instance
    */
-  public function appendTerm($content): Dt {
+  public function appendTerm($content = null): Dt {
     $dt = new Dt($content);
     $this->append($dt);
     return $dt;
@@ -76,7 +78,7 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @param  mixed $content the description content
    * @return Dt appended instance
    */
-  public function appendDescription($content): Dd {
+  public function appendDescription($content = null): Dd {
     $dd = new Dd($content);
     $this->append($dd);
     return $dd;
@@ -121,7 +123,7 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
   }
 
   public function getIterator(): Traversable {
-    return new Iterator($this->items);
+    return new ContentIterator($this->items);
   }
 
   public function contentToString(): string {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,16 +12,14 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\NonVisualContent;
-
 /**
- * Implements an HTML &lt;input type="hidden"&gt; tag
+ * Implementation of an HTML input type="hidden" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HiddenInput extends AbstractInputTag implements NonVisualContent {
+class HiddenInput extends AbstractInputTag {
 
   /**
    * Constructor

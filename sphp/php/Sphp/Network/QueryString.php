@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -181,7 +183,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return string representation of the object
    */
   public function __toString(): string {
-    return $this->getHtml();
+    return $this->build('&');
   }
 
   /**

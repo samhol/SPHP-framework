@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -74,6 +76,9 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
     $this->addCssClass('sphp', 'validable-input');
     if (!$input instanceof \Sphp\Html\Component) {
       throw new InvalidArgumentException('Invalid input type');
+    }
+    if ($input->isNamed()) {
+      $input->setAttribute('id', $input->getName());
     }
     $this->input = $input;
     $this->input->addCssClass('input-group-field');
@@ -188,10 +193,10 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
   /**
    * Sets the left inline label content
    * 
-   * @param  string|null $inlineLabel left inline label content
+   * @param  mixed|null $inlineLabel left inline label content
    * @return $this for a fluent interface
    */
-  public function setLeftInlineLabel(string $inlineLabel = null) {
+  public function setLeftInlineLabel($inlineLabel = null) {
     $this->getLeftInlineLabel()->resetContent($inlineLabel);
     return $this;
   }
@@ -208,10 +213,10 @@ class ValidableInlineInput extends AbstractComponent implements ValidableInput {
   /**
    * Sets the right inline label content
    * 
-   * @param  string|null $content right inline label content
+   * @param  mixed|null $content right inline label content
    * @return $this for a fluent interface
    */
-  public function setRightInlineLabel(string $content = null) {
+  public function setRightInlineLabel($content = null) {
     $this->getRightInlineLabel()->resetContent($content);
     return $this;
   }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,9 +12,9 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\InvalidArgumentException;
-
+use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Stdlib\Strings;
 /**
  * Description of CssClassParser
  *
@@ -21,12 +23,26 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class CssClassParser implements AttributeValueParser {
+class CssClassParser {
 
   private static $instance;
 
-  public function __invoke($raw, bool $validate = false): array {
-    return $this->parse($raw, $validate);
+  public function parseString(string $string): array {
+    $result = preg_split('/[\s]+/', $string, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      $result = [];
+    }
+    return array_unique($result);
+  }
+
+  public function parseArray(array $raw): array {
+    // $parsed = array_map([$this, 'parseString'], $raw);
+    $parsed = [];
+    foreach ($raw as $value) {
+      $parsed = array_merge($parsed, $this->parse($value));
+    }
+    $unique = array_unique($parsed);
+    return $unique;
   }
 
   /**
@@ -39,39 +55,25 @@ class CssClassParser implements AttributeValueParser {
    * 3. Duplicate values are ignored
    *
    * @param  mixed $raw raw value(s) to parse
-   * @param  bool $validate
    * @return string[] separated unique atomic values in an array
-   * @throws InvalidArgumentException if validation is set and the input is not valid
+   * @throws AttributeException if the raw input is not valid
    */
-  public function parse($raw, bool $validate = false): array {
-    $parsed = [];
+  public function parse($raw): array {
+    $out = [];
+    if (is_object($raw) && method_exists($raw, '__toString')) {
+      $raw = "$raw";
+    } else if ($raw instanceof \Traversable) {
+      $raw = iterator_to_array($raw);
+    }
     if (is_array($raw)) {
-      $flat = Arrays::flatten($raw);
-      foreach ($flat as $item) {
-        $parsed = array_merge($parsed, $this->parse($item, $validate));
-      }
-      //$vals = array_filter($parsed, 'is_string');
-    } else if (is_scalar($raw)) {
-      $parsed = $this->explode("$raw");
+      $out = $this->parseArray($raw);
+    } else if (is_scalar($raw) || is_null($raw)) {
+      $out = $this->parseString((string) $raw);
     } else {
-      throw new InvalidArgumentException("Invalid attribute value");
+      $type = gettype($raw);
+      throw new AttributeException("PHP Type ($type) cannot be parsed to a valid class name");
     }
-    if ($validate) {
-      foreach ($parsed as $value) {
-        if (!$this->isValidAtomicValue($value)) {
-          throw new InvalidArgumentException("Invalid attribute value '$value'");
-        }
-      }
-    }
-    return $parsed;
-  }
-
-  public function explode(string $subject): array {
-    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
-    if (!$result) {
-      $result = [];
-    }
-    return $result;
+    return $out;
   }
 
   /**
@@ -80,23 +82,19 @@ class CssClassParser implements AttributeValueParser {
    * @return bool
    * @throws InvalidArgumentException
    */
-  public function validateCollection(array $value): bool {
+  public function isValidCollection(array $value): bool {
+    $isValid = true;
     foreach ($value as $value) {
-      if (!$this->isValidAtomicValue($value)) {
-        throw new InvalidArgumentException("Invalid attribute value '$value'");
+      $isValid = is_string($value) && $this->isValidClassName($value);
+      if (!$isValid) {
+        break;
       }
     }
+    return $isValid;
   }
 
-  public function isValidAtomicValue($value): bool {
-    if (!is_string($value)) {
-      return false;
-    }
-    return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
-  }
-
-  public function implode(array $subject): string {
-    return implode(' ', $subject);
+  public function isValidClassName(string $value) {
+    return !Strings::match($value, '/[\x00-\x1F\x80-\xFF]/');
   }
 
   /**

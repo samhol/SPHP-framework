@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,14 +13,12 @@
 namespace Sphp\Html\Forms;
 
 use ArrayAccess;
-use Sphp\Html\Container;
 use Sphp\Html\PlainContainer;
-use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\TraversableContent;
 use IteratorAggregate;
 
 /**
- * Implements an HTML &lt;form&gt; tag
+ * Implementation of an HTML form tag
  *
  * The form element represents a collection of form-associated elements, some
  * of which can represent editable values that can be submitted to a server
@@ -29,7 +29,7 @@ use IteratorAggregate;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ContainerForm extends AbstractForm implements IteratorAggregate, TraversableForm, ArrayAccess {
+class ContainerForm extends AbstractForm implements IteratorAggregate, ArrayAccess {
 
   /**
    * @var PlainContainer
@@ -69,12 +69,8 @@ class ContainerForm extends AbstractForm implements IteratorAggregate, Traversab
     $this->container = new PlainContainer();
   }
 
-  public function content(): \Sphp\Html\Container {
-    return $this->container;
-  }
-
   public function append($value) {
-    $this->content()->append($value);
+    $this->container->append($value);
     return $this;
   }
 
@@ -87,22 +83,6 @@ class ContainerForm extends AbstractForm implements IteratorAggregate, Traversab
 
   public function contentToString(): string {
     return $this->container . $this->getHiddenInputs();
-  }
-
-  public function count(): int {
-    
-  }
-
-  public function getComponentsBy(callable $rules): TraversableContent {
-    
-  }
-
-  public function getComponentsByObjectType($typeName): TraversableContent {
-    
-  }
-
-  public function toArray(): array {
-    
   }
 
   public function getIterator(): \Traversable {

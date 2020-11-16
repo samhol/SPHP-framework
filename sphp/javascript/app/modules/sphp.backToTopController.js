@@ -23,9 +23,14 @@
       $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
       function setVisibility() {
         if ($window.scrollTop() > $o.offset) {
-          $this.fadeIn($o.duration);
+          console.log("fade-in duration:"+$o.duration);
+          $this.fadeIn($o.duration, function () {
+            $this.removeClass('hidden').addClass('visible').css({'display': ''});
+          });
         } else {
-          $this.fadeOut($o.duration);
+          $this.fadeOut($o.duration, function () {
+            $this.removeClass('visible').addClass('hidden');
+          });
         }
       }
       setVisibility();

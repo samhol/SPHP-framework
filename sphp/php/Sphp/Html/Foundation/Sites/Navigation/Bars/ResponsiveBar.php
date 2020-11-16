@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -72,7 +74,7 @@ class ResponsiveBar extends AbstractComponent {
 
   protected function pairBars() {
     $id = $this->topbar()->identify();
-    $this->titleBar->attributes()->setAttribute('data-responsive-toggle', $id)->setAttribute('data-hide-for', 'medium');
+    $this->titleBar->attributes()->setAttribute('data-responsive-toggle', $id)->setAttribute('data-hide-for', 'large');
     $this->titleBarMenuButton = (new MenuButton('Open left menu'))->setAttribute('data-toggle', true);
     $this->titleBar->left()->append($this->titleBarMenuButton);
   }

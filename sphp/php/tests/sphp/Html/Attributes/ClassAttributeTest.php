@@ -1,18 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Tests\Html\Attributes;
 
-use Sphp\Html\Attributes\Attribute;
+use Sphp\Html\Attributes\MutableAttribute;
 use Sphp\Html\Attributes\ClassAttribute;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class ClassAttributeTest extends AbstractAttributeObjectTest {
+class ClassAttributeTest extends AbstractScalarAttributeTest {
 
-  public function createAttr(string $name = 'attr'): Attribute {
+  public function createAttr(string $name = 'attr'): MutableAttribute {
     return new ClassAttribute($name);
   }
 
   public function basicInvalidValues(): array {
     return [
+        //  [new \stdClass],
         [new \stdClass],
     ];
   }
@@ -20,8 +32,8 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
   public function basicValidValues(): array {
     return [
         ['a', 'a'],
-        ['a b c', 'a b c'],
-        [['a', 'b', 'c'], 'a b c']
+        ['a a', 'a'],
+        ['a b c a b c', 'a b c'],
     ];
   }
 
@@ -31,8 +43,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
   public function identicalSets(): array {
     return [
         [['a', 'b', 'c'], 'b c a'],
-        [['a', 'b', 'c'], ['a b', 'c']],
-        [['a', 'b', 'c'], [['a b'], 'c']],
+        [['a', 'b', 'c'], 'a b c '],
     ];
   }
 
@@ -41,17 +52,17 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
    * @param array $setA
    * @param string|array $setB
    */
-  public function testIdenticalSets(array $setA, $setB) {
-    $a = new ClassAttribute('a');
-    $a->setValue($setA);
+  public function testIdenticalSets(array $setA, string $setB): void {
+    $attr = new ClassAttribute('a');
+    $attr->setValue(...$setA);
     $b = new ClassAttribute('b');
     $b->setValue($setB);
-    $this->assertTrue($a->contains($setA));
-    $this->assertTrue($b->contains($setA));
-    $this->assertTrue($a->contains($setB));
+    $this->assertTrue($attr->contains(...$setA));
+    $this->assertTrue($b->contains(...$setA));
+    $this->assertTrue($attr->contains($setB));
     $this->assertTrue($b->contains($setB));
     foreach ($setA as $item) {
-      $this->assertTrue($a->contains($item));
+      $this->assertTrue($attr->contains($item));
       $this->assertTrue($b->contains($item));
     }
   }
@@ -102,28 +113,18 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
     ];
   }
 
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function lockingData(): array {
-    return [
-        ['c1'],
-        [["c1", 'c2']],
-        [['c1', 'c2', 'c3']]
-    ];
-  }
-
-  /**
-   * @dataProvider lockingData
-   */
-  public function testProtectMethod($value) {
-    $attribute = new ClassAttribute();
-    $attribute->protectValue($value);
-    $this->assertTrue($attribute->isProtected($value));
-    $this->assertTrue($attribute->isProtected());
-    $this->assertTrue($attribute->contains($value));
+  public function testProtectMethod(): void {
+    $attr = new ClassAttribute('class');
+    $this->assertFalse($attr->isProtected());
+    $attr->setValue('a b c');
+    $attr->protectValue('a b', 'e');
+    $this->assertTrue($attr->isProtected('a', 'b e'));
+    $this->assertTrue($attr->isProtected());
+    $attr->clear($attr->isProtected('a', 'b e'));
+    $this->assertTrue($attr->isProtected());
+    $this->assertFalse($attr->contains('c'));
+    $this->expectException(ImmutableAttributeException::class);
+    $attr->remove('a b c');
   }
 
   /**
@@ -136,39 +137,46 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
         [range('a', 'e')]
     ];
   }
+
   /**
    * 
    * @dataProvider addingData
    */
   public function testSelfContaining(array $values) {
-    $attribute = new ClassAttribute();
-    $attribute->add($values);
-    $this->assertTrue($attribute->contains($values));
+    $attribute = new ClassAttribute('class');
+    $attribute->add(...$values);
+    $this->assertTrue($attribute->contains(...$values));
     $this->assertEquals($values, $attribute->toArray());
-    $this->assertTrue($attribute->contains($attribute->toArray()));
+    $this->assertTrue($attribute->contains(...$attribute->toArray()));
     $itArray = iterator_to_array($attribute);
     $this->assertEquals($values, $itArray);
   }
 
   /**
    * 
-   * @param string $value numeric value
+   * @return void
+   */
+  public function testContains(): void {
+    $attribute = new ClassAttribute();
+    $this->assertFalse($attribute->contains('a b'));
+    $attribute->add('a b');
+    $this->assertFalse($attribute->contains('a b c'));
+    $this->assertTrue($attribute->contains('a b'));
+  }
+
+  /**
+   * 
+   * @param array $value numeric value
    * @param int $num
    * @dataProvider addingData
    */
-  public function testAddMethod($value) {
-    $attribute = new ClassAttribute();
-    $attribute->add($value);
-    $this->assertTrue($attribute->contains($value));
+  public function testAddMethod(array $value) {
+    $attribute = new ClassAttribute('class');
+    $attribute->add(...$value);
+    $this->assertTrue($attribute->contains(...$value));
     $this->assertCount(count($value), $attribute);
     $attribute->clear();
     $this->assertCount(0, $attribute);
-  }
-
-  protected function attrContains(MultiValueAttribute $attr, $values) {
-    foreach (is_array($values) ? $values : [$values] as $value) {
-      $this->assertTrue($attr->contains($value));
-    }
   }
 
   /**
@@ -186,7 +194,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
   /**
    */
   public function testClearMethod() {
-    $attribute = new ClassAttribute();
+    $attribute = new ClassAttribute('class');
     $attribute->add('a', 'b');
     $this->assertTrue($attribute->contains('a', 'b'));
     $attribute->clear();
@@ -217,7 +225,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
    * @param int $count
    */
   public function testRemoving() {
-    $attribute = new ClassAttribute();
+    $attribute = new ClassAttribute('class');
     $attribute->add("foo", "bar");
     $this->assertTrue($attribute->contains("foo", 'bar'));
     $attribute->remove("bar");
@@ -240,7 +248,7 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
    * @param  scalar $value
    */
   public function testValueProtecting() {
-    $attribute = new ClassAttribute();
+    $attribute = new ClassAttribute('class');
     $this->assertFalse($attribute->isProtected());
     $attribute->protectValue('a b');
     $attribute->protectValue('c', ['d']);
@@ -261,15 +269,28 @@ class ClassAttributeTest extends AbstractAttributeObjectTest {
   /**
    */
   public function testDemanding() {
-    $attribute = new ClassAttribute();
+    $attribute = new ClassAttribute('class');
     $attribute->forceVisibility();
     $this->assertTrue($attribute->isDemanded());
-    $this->assertEquals("$attribute", $attribute->getName());
+    $this->assertEquals($attribute->getName() . '=""', "$attribute");
     $attribute->setValue('a');
     $this->assertEquals("$attribute", 'class="a"');
     $attribute->clear();
     $this->assertTrue($attribute->isDemanded());
-    $this->assertEquals("$attribute", $attribute->getName());
+    $this->assertEquals($attribute->getName() . '=""', "$attribute");
+  }
+
+  /**
+   * 
+   * @return void
+   */
+  public function testRemovePattern(): void {
+    $attr = new ClassAttribute();
+    $attr->setValue(range('a', 'd'));
+    $attr->protectValue('b e abce');
+    $attr->removePattern("/^(a|b|c|e)$/");
+    $this->assertFalse($attr->contains('a c d'));
+    $this->assertTrue($attr->contains('b e abce'));
   }
 
 }

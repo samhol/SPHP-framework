@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -9,6 +11,8 @@
  */
 
 namespace Sphp\Html\Navigation;
+
+use Sphp\Html\Content;
 
 /**
  * Defines the basic functionality of any HTML hyperlink
@@ -26,7 +30,7 @@ namespace Sphp\Html\Navigation;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Hyperlink {
+interface Hyperlink extends Content {
 
   /**
    * Sets the value of the href attribute (The URL of the link)

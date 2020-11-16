@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\TraversableContent;
 
 /**
- * Interface is the base definition for all HTML &lt;tr&gt; table rows
+ * Interface is the base definition for all HTML tr table rows
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -8,32 +10,146 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Attributes\PropertyParser;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 class PropertyParserTest extends TestCase {
 
   /**
-   * @var PropertyParser
+   * @return scalar[]
    */
-  protected $parser;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->parser = new PropertyParser();
+  public function constructorParameters(): array {
+    return [
+        ['=', ','],
+        [':', ';'],
+    ];
   }
 
   /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
+   * @dataProvider constructorParameters
+   * 
+   * @param  string $delim
+   * @param  string $sep
+   * @return void
    */
-  protected function tearDown(): void {
-    $this->parser = null;
+  public function testConstructorWithParams(string $delim, string $sep): void {
+    $value = 'a' . $delim . 'b' . $sep . 'c' . $delim . 'd';
+    $parser = new PropertyParser($delim, $sep);
+    $this->assertEquals(['a' => 'b', 'c' => 'd'], $parser->parseStringToProperties($value));
+  }
+
+  /**
+   * @return scalar[]
+   */
+  public function invalidConstructorParameters(): array {
+    return [
+        [' ', ' '],
+        ['', ';'],
+        [':', ''],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidConstructorParameters
+   * 
+   * @param  string $delim
+   * @param  string $sep
+   * @return void
+   */
+  public function testConstructorWithInvalidParams(string $delim, string $sep): void {
+    $this->expectException(InvalidArgumentException::class);
+    new PropertyParser($delim, $sep);
+  }
+
+  /**
+   * @return void
+   */
+  public function testConstructorRecall(): void {
+    $parser = new PropertyParser();
+    $this->expectException(BadMethodCallException::class);
+    $parser->__construct();
+  }
+
+  /**
+   * @return array
+   */
+  public function validStrings(): array {
+    return [
+        [['a' => 'b', 'c' => 'd'], 'a:b;c:d;'],
+        [['a' => 'b', 'c' => 'd'], ';a:b;c:d;'],
+        [['a' => 'b'], 'a:b'],
+        [['a' => 'b'], 'a:b;'],
+    ];
+  }
+
+  /**
+   * @dataProvider validStrings
+   * 
+   * @param  array  $expected
+   * @param  string $value
+   * @return void
+   */
+  public function testParseStringToProperties(array $expected, string $value): void {
+    $parser = new PropertyParser();
+    $this->assertEquals($expected, $parser->parseStringToProperties($value));
+  }
+
+  /**
+   * @return array
+   */
+  public function invalidStrings(): array {
+    return [
+        ['a;b'],
+        ['a'],
+        ['a:b:'],
+        [':a'],
+        ['a:'],
+        [':;'],
+        [':'],
+        [';'],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidStrings
+   * 
+   * @param  array  $expected
+   * @param  string $value
+   * @return void
+   */
+  public function testParseInvalidStringToProperties(string $value): void {
+    $parser = new PropertyParser();
+    $this->expectException(AttributeException::class);
+    $parser->parseStringToProperties($value);
+  }
+
+  /**
+   * @return array
+   */
+  public function invalidArrays(): array {
+    return [
+        [['arr' => []]],
+        [[0 => '0']],
+        [[0 => new \stdClass()]],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidArrays
+   * 
+   * @param  array  $expected
+   * @param  string $value
+   * @return void
+   */
+  public function testParseInvalidArrayToProperties(array $value): void {
+    $parser = new PropertyParser();
+    $this->expectException(AttributeException::class);
+    $parser->parse($value);
   }
 
   /**
@@ -49,9 +165,11 @@ class PropertyParserTest extends TestCase {
 
   /**
    * @dataProvider validValues
-   * @param string|array $value
+   * 
+   * @param  string|array $value
+   * @return void
    */
-  public function testValidParsing($value) {
+  public function testValidParsing($value): void {
     $parser = new PropertyParser();
     $this->assertEquals($parser->parse($value), ['a' => 'b', 'c' => 'd']);
   }
@@ -69,23 +187,14 @@ class PropertyParserTest extends TestCase {
 
   /**
    * @dataProvider invalidValues
-   * @param scalar $value
+   * 
+   * @param  scalar $value
+   * @return void
    */
-  public function testInvalidParsing($value) {
+  public function testInvalidParsing($value): void {
     $parser = new PropertyParser();
-    $this->expectException(InvalidArgumentException::class);
+    $this->expectException(AttributeException::class);
     $parser->parse($value);
-  }
-
-  /**
-   * @return string[]
-   */
-  public function lockMethodData(): array {
-    return [
-        [true],
-        ['a'],
-        [' ä ']
-    ];
   }
 
 }

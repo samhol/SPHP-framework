@@ -11,7 +11,7 @@
 namespace Sphp\Stdlib\Parsers;
 
 use PHPUnit\Framework\TestCase;
-
+use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Implementation of AbstractParserTest
  *
@@ -69,7 +69,7 @@ abstract class AbstractParserTest extends TestCase {
    */
   public function testBinaryFileToArray(): void {
     $writer = $this->buildArrayParser();
-    $this->expectException(\InvalidArgumentException::class);
+    $this->expectException(InvalidArgumentException::class);
     $writer->fileToArray('./sphp/php/tests/files/image.gif');
   }
 

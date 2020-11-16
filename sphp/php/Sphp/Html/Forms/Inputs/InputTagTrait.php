@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
  * Trait implements the {@link Input} for input tags
@@ -25,9 +27,9 @@ trait InputTagTrait {
   /**
    * Returns the attribute manager attached to the component
    *
-   * @return HtmlAttributeManager the attribute manager
+   * @return AttributeContainer the attribute manager
    */
-  abstract public function attributes(): HtmlAttributeManager;
+  abstract public function attributes(): AttributeContainer;
 
   /**
    * Returns the value of the name attribute.
@@ -71,7 +73,7 @@ trait InputTagTrait {
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
-    $this->attributes()->disabled = $disabled;
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 

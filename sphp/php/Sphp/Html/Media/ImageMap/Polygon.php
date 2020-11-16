@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Media\ImageMap;
 
 /**
- * Implements an HTML &lt;area shape="poly"&gt; tag
+ * Implementation of an HTML area shape="poly" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -52,13 +54,13 @@ class Polygon extends AbstractArea {
   /**
    * Sets the coordinates of the polygon
    * 
-   * @param  array $coords coordinates as an array
+   * @param  int[] $coords coordinates as an array
    * @return $this for a fluent interface
    */
   public function setCoordinatesFromArray(array $coords) {
     $count = count($coords);
     if ($count % 2 !== 0) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('The number of coordinates must divisible by 2');
+      throw new \Sphp\Exceptions\InvalidArgumentException('The number of coordinates must be divisible by 2');
     }
     $this->attributes()->setAttribute('coords', implode(',', $coords));
     return $this;
@@ -67,10 +69,10 @@ class Polygon extends AbstractArea {
   /**
    * Sets the coordinates of the polygon
    * 
-   * @param  int... $coord coordinates as an array
+   * @param  int ...$coord coordinates as an array
    * @return $this for a fluent interface
    */
-  public function setCoordinates(int... $coord) {
+  public function setCoordinates(int ...$coord) {
     $this->setCoordinatesFromArray($coord);
     return $this;
   }

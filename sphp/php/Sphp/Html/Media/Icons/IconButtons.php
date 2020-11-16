@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -14,7 +16,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Content;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Html\Iterator;
+use Sphp\Html\ContentIterator;
 use Sphp\Html\Navigation\A;
 
 /**
@@ -189,7 +191,7 @@ class IconButtons extends AbstractComponent implements Content, IteratorAggregat
    * @return Traversable external iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->rows);
+    return new ContentIterator($this->rows);
   }
 
 }

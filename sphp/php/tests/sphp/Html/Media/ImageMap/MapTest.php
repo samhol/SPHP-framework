@@ -18,8 +18,8 @@ class MapTest extends TestCase {
    * @return Map
    */
   public function testConstructor(): Map {
-    $map = new Map();
-    $this->assertSame('', $map->getName());
+    $map = new Map('map-name');
+    $this->assertSame('map-name', $map->getName());
     $this->assertSame($map, $map->setName('foo-map'));
     $this->assertSame('foo-map', $map->getName());
     return $map;

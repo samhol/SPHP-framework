@@ -161,20 +161,20 @@ class CookieTest extends TestCase {
     $name = $cookie->getName();
     $value = $cookie->getValue();
     if ($cookie->isDeleted()) {
-      $this->assertRegExp("/^Set-Cookie: $name=deleted;/", $cookieStr);
+      $this->assertMatchesRegularExpression("/^Set-Cookie: $name=deleted;/", $cookieStr);
     } else {
-      $this->assertRegExp("/^Set-Cookie: $name=$value;/", $cookieStr);
+      $this->assertMatchesRegularExpression("/^Set-Cookie: $name=$value;/", $cookieStr);
     }
     if ($cookie->isSecureOnly()) {
-      $this->assertRegExp("/; secure/", $cookieStr);
+      $this->assertMatchesRegularExpression("/; secure/", $cookieStr);
     }
     if ($cookie->isHttpOnly()) {
-      $this->assertRegExp("/; httponly/", $cookieStr);
+      $this->assertMatchesRegularExpression("/; httponly/", $cookieStr);
     }
-    $this->assertRegExp('/; domain=' . $cookie->getDomain() . '/', $cookieStr);
+    $this->assertMatchesRegularExpression('/; domain=' . $cookie->getDomain() . '/', $cookieStr);
     $sameSiteRestriction = $cookie->getSameSiteRestriction();
     if ($sameSiteRestriction !== null) {
-      $this->assertRegExp("/; SameSite=$sameSiteRestriction/", $cookieStr);
+      $this->assertMatchesRegularExpression("/; SameSite=$sameSiteRestriction/", $cookieStr);
     }
   }
 
@@ -220,7 +220,7 @@ class CookieTest extends TestCase {
     $cookie->setValue('bar');
     $cookie->setMaxAge(60 * 60);
     $this->assertTrue($cookie->save());
-    $headers = xdebug_get_headers();
+    $headers = \xdebug_get_headers();
     $this->validateString($cookie, $headers[0]);
   }
 

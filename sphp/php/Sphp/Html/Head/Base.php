@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,10 +13,9 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\NonVisualContent;
 
 /**
- * Implements an HTML &lt;base&gt; tag
+ * Implementation of an HTML base tag
  *
  *  The &lt;base&gt; tag specifies the base URL/target for all relative URLs in 
  *  a document. There can be at maximum one &lt;base&gt; element in a document, 
@@ -25,7 +26,7 @@ use Sphp\Html\NonVisualContent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Base extends EmptyTag implements OverlappingHeadContent, NonVisualContent {
+class Base extends EmptyTag implements MetaData {
 
   /**
    * Constructor
@@ -72,8 +73,17 @@ class Base extends EmptyTag implements OverlappingHeadContent, NonVisualContent 
     return $this->setAttribute('target', $target);
   }
 
-  public function overlapsWith(HeadContent $other): bool {
-    return $other instanceof Base;
+  public function getHash(): string {
+    return 'base';
+  }
+
+  public function toArray(): array {
+    $out = [];
+    $out ['href'] = $this->getAttribute('href');
+    if ($this->attributeExists('target')) {
+      $out ['target'] = $this->getAttribute('target');
+    }
+    return $out;
   }
 
 }

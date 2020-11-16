@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -54,9 +56,9 @@ abstract class RemoteResource {
    * Returns the Mime type of the resource pointed by the given URL
    *
    * @param  string $url the pointing to the resource
-   * @return string the Mime type of the content pointed by the given URL
+   * @return string|null the Mime type of the content pointed by the given URL
    */
-  public static function getMimeType(string $url): string {
+  public static function getMimeType(string $url): ?string {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -66,6 +68,9 @@ abstract class RemoteResource {
     //curl_close($ch);
     $mime = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
     curl_close($ch);
+    if(!is_string($mime)) {
+      $mime =  null;
+    }
     return $mime;
   }
 

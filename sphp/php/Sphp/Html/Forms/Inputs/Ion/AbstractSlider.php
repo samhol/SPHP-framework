@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -34,7 +36,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
    */
   public function __construct(string $name = null, float $start = 0, float $end = 100, float $step = 1) {
     parent::__construct('text', $name);
-    $this->attributes()->demand('data-sphp-ion-slider');
+    $this->attributes()->protect('data-sphp-ion-slider', true);
     $this->setRange($start, $end)
             ->setStepLength($step);
   }

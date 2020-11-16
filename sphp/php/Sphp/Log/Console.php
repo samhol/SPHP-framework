@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Log;
 
-use Sphp\Html\Scripts\ScriptCode;
+use Sphp\Html\Scripts\InlineScript;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Parsers\ParseFactory;
@@ -109,7 +111,7 @@ class Console {
     $js .= 'console.error = console.error || function(){};';
     $js .= 'console.info = console.info || function(){};';
     $js .= 'console.debug = console.debug || function(){};';
-    $scriptTag = new ScriptCode();
+    $scriptTag = new InlineScript();
     $scriptTag->append($js);
     foreach ($this->rows as $row) {
       $scriptTag->append($this->createLog($row['type'], $row['message']));

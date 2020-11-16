@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -21,7 +23,8 @@ use Sphp\Exceptions\InvalidArgumentException;
  * a router is a web application between the URL and the function executed to 
  * perform a request. The router determines which function to execute for a given URL.
  *
- * <pre>
+ * ```php
+ * <?php
  * $router = new Router;
  *
  * // Adding a basic route
@@ -53,7 +56,8 @@ use Sphp\Exceptions\InvalidArgumentException;
  *
  * // Run the router
  * $router->execute();
- * </pre>
+ * ?>
+ * ```
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -85,6 +89,13 @@ class Router {
   }
 
   /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->routes, $this->defaultRoute);
+  }
+
+  /**
    * Sets the callback function for the default route
    * 
    * If the router cannot match the current URL to any of the given routes,
@@ -113,7 +124,7 @@ class Router {
     if ($this->isEmpty()) {
       throw new IllegalStateException('The router is empty and cannot be executed');
     }
-    $path = $this::getPath($url);
+    $path = self::getPath($url);
     // Whether or not we have matched the URL to a route
     $routeFound = false;
     // Loop through routes

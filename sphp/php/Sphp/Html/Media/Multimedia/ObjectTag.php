@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -16,7 +18,7 @@ use Sphp\Html\Media\SizeableMedia;
 use Sphp\Html\TraversableContent;
 
 /**
- * Description of Object
+ * Implementation of an HTML object tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -101,7 +103,7 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
   public function contentToString(): string {
     return implode($this->params)
             . "<p>Your browser does not support the &lt;"
-            . $this->getTagName() . "&gt; tag!</p>";
+            . $this->getTagName() . " tag!</p>";
   }
 
   public function insertParam(Param $src) {

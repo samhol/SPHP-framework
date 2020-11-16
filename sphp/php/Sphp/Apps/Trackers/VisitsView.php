@@ -12,7 +12,6 @@ namespace Sphp\Apps\Trackers;
 
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Navigation\A;
 
 /**
  * Description of VisitsView
@@ -42,28 +41,26 @@ class VisitsView {
   }
 
   public function buildTotals(): Ul {
+    $list = new Ul;
+    $list->append('Totals');
+
     $totals = new Ul;
-    $totals->appendMd("__Individual Users:__`" . $this->data->count(Data::UID) . '`', true);
-    $totals->appendMd("__Individual IPs:__`" . $this->data->count(Data::IP) . '`', true);
-    $totals->appendMd("__User Visits:__`" . $this->data->count(Data::NUM_VISITS) . '`', true);
-    $totals->appendMd("__User Clicks:__`" . $this->data->count(Data::CLICKS) . '`', true);
-    $totals->appendMd("__Individual User Agents:__`" . $this->data->userAgents()->count() . '`', true);
+    $list->append($totals);
+    $totals->appendMarkdown("__Users:__`" . $this->data->countUsers() . '`', true);
+    $totals->appendMarkdown("__User Visits:__`" . $this->data->countVisits() . '`', true);
+    $totals->appendMarkdown("__User Clicks:__`" . $this->data->countRefreshes() . '`', true);
     return $totals;
   }
 
-  public function buildSiteTable(bool $validUrls = true): Table {
+  public function buildSiteTable(): Table {
     $table = new Table;
+    $table->setCaption('Site data');
     $table->useThead()->thead()->appendHeaderRow(['URL:', 'Individual users:', 'total visits:']);
-    $table->useTbody();
-    foreach ($this->data->urls()->getstatsFor($validUrls) as $urlData) {
-      $table->tbody()->appendBodyRow([$this->buildPathLink($urlData->url), $urlData->userCount, $urlData->hits]);
+    foreach ($this->data->getUrlData() as $urlData) {
+      $table->useTbody()->tbody()->appendBodyRow([$urlData->url, $urlData->userCount, $urlData->visits]);
     }
     // $table->useTfoot()->tfoot()->appendHeaderRow(['foo']);
     return $table;
-  }
-
-  public function buildPathLink(string $path): A {
-    return new A($path, '<span class="icon"><i class="fas fa-link"></i></span> <span class="path">' . $path . '</span>');
   }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -25,7 +27,7 @@ use Sphp\Html\Attributes\JsonAttribute;
 class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
 
   /**
-   * @var JsonAttribute
+   * @var array
    */
   private $config = [];
 
@@ -38,9 +40,9 @@ class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
   public function __construct(Component $component, iterable $settings = null) {
     parent::__construct($component);
     $component->setAttribute('data-sphp-tipso');
-    $this->config = new JsonAttribute('data-sphp-tipso-options');
+    $this->config = [];
     $component->attributes()
-            ->setInstance($this->config);
+            ->setInstance(new JsonAttribute('data-sphp-tipso-options'));
     if ($settings !== null) {
       foreach ($settings as $option => $value) {
         $this[$option] = $value;
@@ -82,7 +84,7 @@ class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
    * @return bool
    */
   public function offsetExists($name): bool {
-    return $this->config->offsetExists($name);
+    return array_key_exists($name, $this->config);
   }
 
   /**
@@ -92,7 +94,11 @@ class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
    * @return scalar|null option value or null if not present
    */
   public function offsetGet($name) {
-    return $this->config->offsetGet($name);
+    $value = null;
+    if (array_key_exists($name, $this->config)) {
+      $value = $this->config[$name];
+    }
+    return $value;
   }
 
   /**
@@ -103,7 +109,7 @@ class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
    * @throws InvalidArgumentException if the name or the value is invalid
    */
   public function offsetSet($name, $value): void {
-    $this->config->offsetSet($name, $value);
+    $this->config[$name] = $value;
   }
 
   /**
@@ -113,7 +119,9 @@ class TipsoAdapter extends AbstractComponentAdapter implements \ArrayAccess {
    * @return void
    */
   public function offsetUnset($name): void {
-    $this->config->offsetUnset($name);
+    if (array_key_exists($name, $this->config)) {
+      unset($this->config[$name]);
+    }
   }
 
 }

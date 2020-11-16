@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * An abstract implementation of an HTML &lt;button type="submit|reset|button|image"&gt; tag
+ * An abstract implementation of an HTML &lt;button type="submit|reset|button|image" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API
@@ -41,7 +43,7 @@ abstract class AbstractButton extends ContainerTag implements ButtonInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->disabled = $disabled;
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 

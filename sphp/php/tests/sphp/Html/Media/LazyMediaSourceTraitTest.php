@@ -1,10 +1,11 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Tests\Html\Media;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\HtmlAttributeManager;
-
+use Sphp\Html\Media\LazyMediaSourceTrait;
+use Sphp\Html\Attributes\AttributeContainer;
+use Sphp\Html\Media\LazyMedia;
 class LazyMediaSourceTraitTest extends TestCase {
 
   protected $mock;
@@ -13,26 +14,33 @@ class LazyMediaSourceTraitTest extends TestCase {
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
-  protected function setUp(): void {
-    $this->mock = $this->getMockForTrait(LazyMediaSourceTrait::class);
-    $mngr = new HtmlAttributeManager();
-    $this->mock->expects($this->any())
+  public function testTraitBase() {
+    $trait = $this->getMockForTrait(LazyMediaSourceTrait::class);
+    $mngr = new AttributeContainer();
+    $trait->expects($this->any())
             ->method('attributes')
             ->will($this->returnValue($mngr));
+    $this->assertFalse($trait->isLazy());
+    return $trait;
   }
 
-  public function testConcreteMethod() {
-    $this->assertFalse($this->mock->isLazy());
-    $this->mock->setSrc('foo');
-    $this->mock->setLazy(true);
-    //print_r($this->mock->attributes()->toArray());
-    $this->assertTrue($this->mock->setLazy(true)->isLazy());
-    $this->srcSettingAndGetting('foo/bar');
-    $this->assertFalse($this->mock->setLazy(false)->isLazy());
-    $this->srcSettingAndGetting('foo/bar');
+  /**
+   * @depends testTraitBase
+   * 
+   * @param type $trait
+   */
+  public function testNotLazy($trait) {
+    $src = 'foo.bar';
+    $this->assertFalse($trait->isLazy());
+    $trait->setSrc($src);
+    $this->assertSame($trait, $trait->setLazy(true));
+    $this->assertTrue($trait->isLazy());
+    $this->assertSame($src, $trait->attributes()->getValue('data-src'));
+    $this->assertSame($src, $trait->getSrc());
+    $this->assertFalse($trait->attributes()->isVisible('src'));
   }
 
-  protected function srcSettingAndGetting(string $src) {
+  public function srcSettingAndGetting(string $src) {
     $this->assertSame($this->mock, $this->mock->setSrc($src));
     if ($this->mock->isLazy()) {
       $this->assertSame($src, $this->mock->attributes()->getValue('data-src'));
@@ -41,7 +49,7 @@ class LazyMediaSourceTraitTest extends TestCase {
     } else {
       $this->assertSame($src, $this->mock->attributes()->getValue('src'));
       $this->assertSame($src, $this->mock->getSrc());
-      $this->assertSame(false, $this->mock->attributes()->getValue('data-src'));
+      $this->assertSame(null, $this->mock->attributes()->getValue('data-src'));
     }
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,11 +12,11 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\NonVisualContent;
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\TraversableContent;
 
 /**
- * Implements an HTML &lt;head&gt; tag
+ * Implementation of an HTML head tag
  *
  * The &lt;head&gt; tag is a container for all the head elements.
  *
@@ -24,12 +26,12 @@ use Sphp\Html\AbstractComponent;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Head extends AbstractComponent implements \IteratorAggregate, NonVisualContent, \Sphp\Html\TraversableContent {
+class Head extends AbstractComponent implements \IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var HeadContentContainer
+   * @var MetaContainer
    */
   private $content;
 
@@ -41,52 +43,22 @@ class Head extends AbstractComponent implements \IteratorAggregate, NonVisualCon
    */
   public function __construct(string $title = null, string $charset = null) {
     parent::__construct('head');
-    $this->content = new HeadContentContainer();
+    $this->content = new MetaContainer();
     if ($title !== null) {
-      $this->setDocumentTitle($title);
+      $this->meta()->setTitle($title);
     }
     if ($charset !== null) {
-      $this->set(Meta::charset($charset));
+      $this->meta()->insert(MetaFactory::build()->charset($charset));
     }
   }
 
   /**
-   * Sets the title of the HTML page
-   *
-   * @param  string|Title $title the title of the HTML page
-   * @return Title instance set
+   * Returns the meta content container
+   * 
+   * @return MetaContainer
    */
-  public function setDocumentTitle($title): Title {
-    if (!$title instanceof Title) {
-      $title = new Title($title);
-    }
-    $this->set($title);
-    return $title;
-  }
-
-  /**
-   * Sets a default URL and a default target for all links on a page
-   *
-   * @param  string $baseAddr the base URL for all relative URLs in the page
-   * @param  string $target the default target for all hyperlinks and forms in the page
-   * @return Base instance set
-   * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
-   */
-  public function setBaseAddr(string $baseAddr, string $target = '_self'): Base {
-    $base = new Base($baseAddr, $target);
-    $this->content->set($base);
-    return $base;
-  }
-
-  /**
-   * Adds content component to the object
-   *
-   * @param  HeadContent $component content the component to add
-   * @return $this for a fluent interface
-   */
-  public function set(HeadContent $component) {
-    $this->content->set($component);
-    return $this;
+  public function meta(): MetaContainer {
+    return $this->content;
   }
 
   public function contentToString(): string {

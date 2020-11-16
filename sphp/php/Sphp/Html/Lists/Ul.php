@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Lists;
 
 /**
- * Implements an unordered HTML-list &lt;ul&gt; tag
+ * Implements an unordered HTML-list &lt;ul tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_ul.asp w3schools HTML API
@@ -24,15 +26,10 @@ class Ul extends StandardList {
   /**
    * Constructor
    *
-   * @param  mixed|null $items the content of the component
+   * @param  iterable|null $items the content of the component
    */
-  public function __construct($items = null) {
-    parent::__construct('ul');
-    if ($items !== null) {
-      foreach (is_array($items) ? $items : [$items] as $item) {
-        $this->append($item);
-      }
-    }
+  public function __construct(iterable $items = null) {
+    parent::__construct('ul', $items);
   }
 
 }

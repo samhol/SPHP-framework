@@ -8,8 +8,7 @@ class RemoteResourceTest extends \PHPUnit\Framework\TestCase {
    * @return array
    */
   public function remoteMimes(): array {
-    $url[] = ['irc://irc.example.com/channel', ''];
-    $url[] = ['http://www.example.com', 'text/html; charset=UTF-8'];
+    $url[] = ['irc://irc.example.com/channel', null];
     return $url;
   }
 
@@ -19,8 +18,8 @@ class RemoteResourceTest extends \PHPUnit\Framework\TestCase {
    * @param string $url
    * @param string $expected
    */
-  public function testGetMimeType(string $url, string $expected) {
-    $this->assertSame(RemoteResource::getMimeType($url), $expected);
+  public function testGetMimeType(string $url, string $expected = null): void {
+    $this->assertSame($expected, RemoteResource::getMimeType($url));
   }
 
   /**

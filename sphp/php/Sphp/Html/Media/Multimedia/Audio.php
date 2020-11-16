@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 /**
- * Implements an HTML &lt;audio&gt; tag
+ * Implementation of an HTML audio tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_audio.asp w3schools HTML API
@@ -27,7 +29,6 @@ class Audio extends AbstractMultimediaTag {
    */
   public function __construct($sources = null) {
     parent::__construct('audio', null, $sources);
-    //$this->showControls(true);
   }
 
   /**
@@ -46,7 +47,8 @@ class Audio extends AbstractMultimediaTag {
    * @link   http://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
   public function setPreload($preload) {
-    return $this->setAttribute('preload', $preload);
+    $this->setAttribute('preload', $preload);
+    return $this;
   }
 
   /**

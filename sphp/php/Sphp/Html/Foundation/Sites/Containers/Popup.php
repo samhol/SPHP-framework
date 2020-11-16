@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,8 +15,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Component;
 use Sphp\Html\Div;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
+use Sphp\Html\Flow\FlowContainer;
 use Sphp\Html\Foundation\Sites\Controllers\CloseButton;
 use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 
@@ -31,6 +32,9 @@ use Sphp\Html\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
  */
 class Popup extends AbstractJavaScriptComponent {
 
+  /**
+   * @var Div
+   */
   private $content;
 
   /**
@@ -61,14 +65,20 @@ class Popup extends AbstractJavaScriptComponent {
     $this->attributes()->demand('data-reveal');
     $this->closeButton = new CloseButton();
     $this->layoutManager = new PopupLayoutManager($this);
-    $this->content = new PlainContainer($content);
+    $this->content = new Div($content);
+    $this->content->addCssClass('content');
+  }
+
+  public function __destruct() {
+    unset($this->closeButton, $this->layoutManager, $this->content);
+    parent::__destruct();
   }
 
   /**
    * 
-   * @return PlainContainer
+   * @return FlowContainer
    */
-  public function getContent(): PlainContainer {
+  public function getContent(): FlowContainer {
     return $this->content;
   }
 

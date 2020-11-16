@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -18,6 +20,10 @@ namespace Sphp\Html\Tables;
  * @filesource
  */
 class LineNumberer implements TableFilter {
+
+  public const NONE = 0b0;
+  public const LEFT = 0b1;
+  public const RIGHT = 0b10;
 
   /**
    * @var int
@@ -38,42 +44,28 @@ class LineNumberer implements TableFilter {
    * @var bool 
    */
   private $right = false;
+  private $flags = 0;
 
   /**
    * Constructor
    * 
+   * @param int $side
    * @param int $start
    * @param string $label
    */
-  public function __construct(int $start = 1, string $label = '#') {
+  public function __construct(int $side = self::LEFT, int $start = 1, string $label = '#') {
+    $this->setSide($side);
     $this->setFirstLineNumber($start);
     $this->setLabel($label);
   }
 
-  /**
-   * Sets the numberer to prepend the line numbers to a HTML table
-   * 
-   * @param  bool $prepends true for prepending and false otherwise
-   * @return $this
-   */
-  public function prependLineNumbers(bool $prepends) {
-    $this->left = $prepends;
-    return $this;
+  public function getSide(): int {
+    return $this->flags;
   }
 
-  /**
-   * Sets the numberer to append the line numbers to a HTML table
-   * 
-   * @param  bool $appends true for appending and false otherwise
-   * @return $this for a fluent interface
-   */
-  public function appendLineNumbers(bool $appends) {
-    $this->right = $appends;
+  public function setSide(int $flags) {
+    $this->flags = $flags;
     return $this;
-  }
-
-  public function getStart(): int {
-    return $this->start;
   }
 
   /**
@@ -97,13 +89,18 @@ class LineNumberer implements TableFilter {
   }
 
   /**
+   * Sets the first line number
    * 
-   * @param  int $start
+   * @param  int $start the first line number
    * @return $this for a fluent interface
    */
   public function setFirstLineNumber(int $start) {
     $this->start = $start;
     return $this;
+  }
+
+  public function getStart(): int {
+    return $this->start;
   }
 
   /**
@@ -124,15 +121,15 @@ class LineNumberer implements TableFilter {
    * @param  Table $rowContainer
    * @return bool
    */
-  private function manipulateHeaderAndFooter(RowContainer $rowContainer): bool {
+  private function modifyHeadings(RowContainer $rowContainer): bool {
     $result = false;
     $first = $rowContainer->getRow(0);
     if ($first !== null) {
       $rowSpan = $rowContainer->count();
-      if ($this->left) {
+      if ($this->getSide() & self::LEFT) {
         $first->prepend($this->generateTh($rowSpan));
       }
-      if ($this->right) {
+      if ($this->getSide() & self::RIGHT) {
         $first->append($this->generateTh($rowSpan));
       }
       $result = true;
@@ -141,63 +138,43 @@ class LineNumberer implements TableFilter {
   }
 
   protected function generateLineNumberCell(int $number): Th {
-    $th = new Th($number . '.');
+    $th = new Th("$number.");
     $th->setScope('row');
     return $th;
   }
 
   /**
    * 
-   * @param  Table $table
-   * @return Table
+   * @param  Tbody $tbody
+   * @return void
    */
-  public function appendLineNumbersTo(Table $table): Table {
-    if ($this->right) {
-      $tbody = $table->tbody();
-      $lineNumber = $this->getFirstLineNumber();
-      foreach ($tbody as $row) {
-        if ($row instanceof Row) {
-          $row->append($this->generateLineNumberCell($lineNumber++));
-        }
+  protected function manipulateTbody(Tbody $tbody): void {
+    $lineNumber = $this->getStart();
+    foreach ($tbody as $row) {
+      if ($this->getSide() & self::LEFT) {
+        $row->prepend($this->generateLineNumberCell($lineNumber));
       }
+      if ($this->getSide() & self::RIGHT) {
+        $row->append($this->generateLineNumberCell($lineNumber));
+      }
+      $lineNumber++;
     }
-    return $table;
   }
 
-  /**
-   * 
-   * @param  Table $table
-   * @return Table
-   */
-  public function prependLineNumbersTo(Table $table): Table {
-    if ($this->left) {
-      $tbody = $table->tbody();
-      if ($tbody !== null) {
-        $lineNumber = $this->getStart();
-        foreach ($tbody as $row) {
-          if ($row instanceof Row) {
-            $row->prepend($this->generateLineNumberCell($lineNumber++));
-          }
-        }
-      }
-    }
-    return $table;
+  public function __invoke(Table $table): void {
+    $this->useInTable($table);
   }
 
-  public function useInTable(Table $table): Table {
-    if ($this->left) {
-      $this->prependLineNumbersTo($table);
-    }
-    if ($this->right) {
-      $this->appendLineNumbersTo($table);
+  public function useInTable(Table $table): void {
+    if ($table->tbody() !== null) {
+      $this->manipulateTbody($table->tbody());
     }
     if ($table->thead() !== null) {
-      $this->manipulateHeaderAndFooter($table->thead());
+      $this->modifyHeadings($table->thead());
     }
     if ($table->tfoot() !== null) {
-      $this->manipulateHeaderAndFooter($table->tfoot());
+      $this->modifyHeadings($table->tfoot());
     }
-    return $table;
   }
 
 }

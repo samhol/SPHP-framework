@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -36,22 +38,23 @@ abstract class DateTimes {
       $input = 'now';
     }
     if ($input instanceof DateTimeImmutable) {
-      return $input;
-    }
-    if (is_string($input)) {
+      $out = $input;
+    } else if (is_string($input)) {
       try {
-        return new DateTimeImmutable($input);
+        $out = new DateTimeImmutable($input);
       } catch (Exception $ex) {
         throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
       }
     } else if (is_int($input)) {
-      return new DateTimeImmutable("@$input");
+      $out = new DateTimeImmutable("@$input");
+      $out->setTimezone(new \DateTimeZone(date_default_timezone_get()));
     } else if ($input instanceof \DateTimeInterface || $input instanceof DateInterface) {
       $dateTimeString = $input->format('Y-m-d\TH:i:sP');
-      return new DateTimeImmutable($dateTimeString);
+      $out = new DateTimeImmutable($dateTimeString);
     } else {
       throw new InvalidArgumentException('Datetime object cannot be parsed from input type');
     }
+    return $out;
   }
 
   /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -47,8 +49,13 @@ class Utils {
     return \filter_var($domain, \FILTER_VALIDATE_IP) !== false;
   }
 
-  public static function getHttpUserAgent(): string {
-    return $_SERVER['HTTP_USER_AGENT'];
+  /**
+   * Returns the User Agent string
+   * 
+   * @return string|null the User Agent string
+   */
+  public static function getHttpUserAgent(): ?string {
+    return \filter_input(INPUT_SERVER, 'HTTP_USER_AGENT', FILTER_SANITIZE_STRING);
   }
 
   /**

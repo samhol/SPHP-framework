@@ -1,23 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Tests\Html\Lists;
 
 use Sphp\Html\Lists\Ol;
+use Sphp\Html\Lists\StandardList;
 
 class OlTest extends StandardListTest {
-
-  /**
-   * @var Ol
-   */
-  protected $list;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->list = new Ol();
-  }
 
   /**
    * @return array
@@ -38,17 +36,33 @@ class OlTest extends StandardListTest {
    * @param mixed $data
    */
   public function testListType(string $data) {
-    $this->assertSame(null, $this->list->getAttribute('type'));
-    $this->assertSame('1', $this->list->getListType());
-    $this->list->setListType($data);
-    $this->assertSame($data, $this->list->getAttribute('type'));
-    $this->assertSame($data, $this->list->getListType());
+    $list = new Ol();
+    $this->assertSame(null, $list->getAttribute('type'));
+    $this->assertSame('1', $list->getListType());
+    $list->setListType($data);
+    $this->assertSame($data, $list->getAttribute('type'));
+    $this->assertSame($data, $list->getListType());
   }
-  
+
   public function testStart() {
-    $this->assertSame(1, $this->list->getStart());
-    $this->list ->setStart(10);
-    $this->assertSame(10, $this->list->getStart());
+    $list = new Ol();
+    $this->assertSame(1, $list->getStart());
+    $list->setStart(10);
+    $this->assertSame(10, $list->getStart());
+  }
+
+  public function testReversed() {
+    $list = new Ol();
+    $this->assertFalse($list->attributeExists('reversed'));
+    $this->assertSame($list, $list->setReversed(true));
+    $this->assertSame(true, $list->getAttribute('reversed'));
+    $this->assertTrue($list->attributeExists('reversed'));
+    $this->assertSame($list, $list->setReversed(false));
+    $this->assertFalse($list->attributeExists('reversed'));
+  }
+
+  public function createList(iterable $value = null): StandardList {
+    return new Ol($value);
   }
 
 }

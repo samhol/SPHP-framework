@@ -18,11 +18,11 @@ class UUIDTest extends TestCase {
   public function testV4AndV5() {
     for ($i = 0; $i < 50; $i++) {
       $v4 = UUID::v4();
-      $this->assertRegExp('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $v4);
+      $this->assertMatchesRegularExpression('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $v4);
       $v5 = UUID::v5($v4, 'foo');
-      $this->assertRegExp('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $v5);
+      $this->assertMatchesRegularExpression('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $v5);
       $vCopy = UUID::v5($v4, 'foo');
-      $this->assertRegExp('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $vCopy);
+      $this->assertMatchesRegularExpression('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $vCopy);
       $this->assertEquals($v5, $vCopy);
     }
   }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -14,7 +16,7 @@ use Sphp\Html\IdentifiableContent;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;label&gt; tag
+ * Implementation of an HTML label tag
  *
  * The label represents a caption in a user interface. The caption can be
  * associated with a specific form control, known as the label element's

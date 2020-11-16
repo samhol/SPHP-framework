@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 
 /**
- * Implements an HTML &lt;form&gt; tag
+ * Implementation of an HTML form tag
  *
  * The form element represents a collection of form-associated elements, some
  * of which can represent editable values that can be submitted to a server

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Implements an HTML &lt;tbody&gt; tag.
+ * Implementation of an HTML tbody tag.
  *
  *  The {@link self} component is used to group body content in a
  *  {@link Table}.

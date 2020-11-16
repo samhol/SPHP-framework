@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -99,7 +101,7 @@ class Svg extends AbstractContent {
    */
   public function setOpacity(float $opacity = null) {
     if ($opacity !== null) {
-      $this->svg->setAttribute('opacity', $opacity);
+      $this->svg->setAttribute('opacity', (string) $opacity);
     } else {
       $this->svg->removeAttribute('opacity');
     }

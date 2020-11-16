@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -14,7 +16,6 @@ use ReflectionClass;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Component;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
-use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -159,7 +160,7 @@ class BasicClassLinker implements ClassLinker {
       $title = "Class $longName";
       $classes[] = 'instantiable-class';
     }
-    return $this->buildHyperlink($this->urls()->getClassUrl($longName), $name, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getClassUrl($longName), $name, $title)->addCssClass(...$classes);
   }
 
   public function methodLink(string $method, bool $full = true): A {
@@ -201,14 +202,14 @@ class BasicClassLinker implements ClassLinker {
         throw new InvalidArgumentException($ex->getMessage(), 0, $ex);
       }
     }
-    return $this->buildHyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title)->addCssClass(...$classes);
   }
 
   public function constantLink(string $constName): A {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
     $classes = ['php-class', 'constant'];
-    return $this->buildHyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title)->addCssClass(...$classes);
   }
 
   public function namespaceLink(string $linkContent = null): A {
@@ -220,7 +221,7 @@ class BasicClassLinker implements ClassLinker {
     }
     $title = "$fullName namespace";
     $classes = ['php-class', 'namespace'];
-    return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass(...$classes);
   }
 
   public function shortNamespaceLink(): A {
@@ -229,7 +230,7 @@ class BasicClassLinker implements ClassLinker {
     $name = array_pop($namespaceArray);
     $title = "$fullName namespace";
     $classes = ['php-class', 'namespace'];
-    return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass($classes);
+    return $this->buildHyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title)->addCssClass(...$classes);
   }
 
   /**
@@ -241,13 +242,12 @@ class BasicClassLinker implements ClassLinker {
     $namespace = $this->ref->getNamespaceName();
     $namespaceArray = explode('\\', $namespace);
     $breadCrumbs = new BreadCrumbs();
-    $breadCrumbs->addCssClass('sami', 'class');
+    $breadCrumbs->addCssClass('class');
     $currentNamespace = [];
     foreach ($namespaceArray as $name) {
       $currentNamespace[] = $name;
       $path = implode("/", $currentNamespace);
-      $bc = new BreadCrumb($this->urls()->getNamespaceUrl($path), $name);
-      $breadCrumbs->append($bc);
+      $breadCrumbs->appendLink($this->urls()->getNamespaceUrl($path), $name);
     }
     $breadCrumbs->appendLink($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName());
     return $breadCrumbs;

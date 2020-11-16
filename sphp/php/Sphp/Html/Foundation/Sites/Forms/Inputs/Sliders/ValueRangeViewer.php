@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,8 +13,6 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs\Sliders;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\Input;
-use Sphp\Html\Span;
 
 /**
  * Description of ValueViewer

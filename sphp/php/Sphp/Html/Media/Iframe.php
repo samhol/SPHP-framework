@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\EmptyTag;
 
 /**
- * Implements an HTML &lt;iframe&gt; tag (an inline frame)
+ * Implementation of an HTML iframe tag (an inline frame)
  *
  * This component represents a nested browsing context.
  *

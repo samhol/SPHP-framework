@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,14 +12,12 @@
 
 namespace Sphp\Html\Apps\Forms;
 
-use Sphp\Html\Forms\Form;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputGroup;
 use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\ContainerForm;
 use Sphp\Html\Tags;
 

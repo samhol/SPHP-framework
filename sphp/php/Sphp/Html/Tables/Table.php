@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -17,7 +19,7 @@ use Sphp\Html\PlainContainer;
 use Traversable;
 
 /**
- * Implements an HTML &lt;table&gt; tag.
+ * Implementation of an HTML  table tag.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_table.asp w3schools HTML API

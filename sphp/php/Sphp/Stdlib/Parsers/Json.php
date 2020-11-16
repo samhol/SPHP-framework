@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Zend\Config\Reader\Json as JsonFormat;
+use Laminas\Config\Reader\Json as JsonFormat;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
@@ -47,7 +49,7 @@ class Json implements ArrayParser {
   public function stringToArray(string $string): array {
     $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
     $thrower->start();
-    $data = json_decode($string, JSON_BIGINT_AS_STRING);
+    $data = json_decode($string, true, 512, JSON_BIGINT_AS_STRING);
     $thrower->stop();
     return $data;
   }

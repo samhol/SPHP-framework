@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -22,17 +24,29 @@ namespace Sphp\Html;
 interface IdentifiableContent extends Content {
 
   /**
-   * Identifies the element with an unique id attribute
+   * Identifies the element with an unique id attribute.
+   *
+   * **Notes:**
+   *
+   * HTML id attribute is unique to every HTML-element. Therefore given id is 
+   * checked for its uniqueness.
+   * 
+   * @param  mixed $id the value of the id attribute
+   * @return $this for a fluent interface
+   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
+   */
+  public function setId(string $id);
+
+  /**
+   * Identifies the element with an unique id attribute.
    *
    * **Notes:**
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
    * 
-   * @param  int $length the length of the identity value
-   * @return string the identifier
+   * @param  bool $forceNewValue whether a new id value is created or not
+   * @return string 
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function identify(int $length = 16): string;
-
+  public function identify(bool $forceNewValue = false): string;
 }
-

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -165,8 +167,8 @@ class AbstractContainerTag extends AbstractComponent implements IteratorAggregat
     return $this;
   }
 
-  public function exists($value): bool {
-    $this->getInnerContainer()->exists($value);
+  public function contains($value): bool {
+    return $this->getInnerContainer()->contains($value);
   }
 
 }

@@ -38,11 +38,11 @@ interface CssClassifiableContent extends Content {
    * 2. An array parameter can contain only one CSS class name per value
    * 3. Duplicate CSS class names are not stored
    *
-   * @param  string|string[],... $cssClasses CSS class names to add
+   * @param  string ...$cssClasses CSS class names to add
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function addCssClass(...$cssClasses);
+  public function addCssClass(string ...$cssClasses);
 
   /**
    * Removes given CSS class names
@@ -52,11 +52,11 @@ interface CssClassifiableContent extends Content {
    * 1. A string parameter can contain multiple comma separated CSS class names
    * 2. An array parameter can contain only one CSS class name per value
    *
-   * @param  string|string[],... $cssClasses CSS class names to remove
+   * @param  string ...$cssClasses CSS class names to remove
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function removeCssClass(...$cssClasses);
+  public function removeCssClass(string ...$cssClasses);
 
   /**
    * Determines whether the given CSS class names are stored into the manager
@@ -66,9 +66,9 @@ interface CssClassifiableContent extends Content {
    * 1. A string parameter can contain multiple comma separated CSS class names
    * 2. An array parameter can contain only one CSS class name per value
    *
-   * @param  string|string[],... $cssClasses CSS class names to search for
+   * @param  string ...$cssClasses CSS class names to search for
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function hasCssClass(...$cssClasses): bool;
+  public function hasCssClass(string ...$cssClasses): bool;
 }

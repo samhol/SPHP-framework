@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -44,6 +46,10 @@ class MenuBuilder {
       $linkBuilder = new MenuLinkBuilder();
     }
     $this->linkBuilder = $linkBuilder;
+  }
+
+  public function getLinkBuilder(): MenuLinkBuilder {
+    return $this->linkBuilder;
   }
 
   /**
@@ -94,7 +100,7 @@ class MenuBuilder {
    */
   public function parseSubMenuRootText(array $linkData): string {
     if (!array_key_exists('menu', $linkData)) {
-      throw new InvalidArgumentException("Malformed submenu data given");
+      throw new InvalidArgumentException('Malformed submenu data given');
     }
     $text = '';
     if (array_key_exists('icon', $linkData)) {
@@ -124,11 +130,13 @@ class MenuBuilder {
    * @param  Menu|null $instance
    * @return Menu new menu
    */
-  public function buildMenu(array $data, Menu $instance = null): Menu {
+  public function buildMenu(array $data = [], Menu $instance = null): Menu {
     if ($instance === null) {
       $instance = new $this->menuType();
     }
-    $this->insertIntoMenu($data['items'], $instance);
+    if (array_key_exists('items', $data)) {
+      $this->insertIntoMenu($data['items'], $instance);
+    }
     return $instance;
   }
 

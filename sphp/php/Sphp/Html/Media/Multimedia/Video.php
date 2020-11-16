@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use Sphp\Html\Media\SizeableMediaTrait;
 use Sphp\Html\Media\LazyMedia;
 
 /**
- * Implements an HTML &lt;video&gt; tag
+ * Implementation of an HTML video tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_video.asp w3schools HTML API

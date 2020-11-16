@@ -12,7 +12,7 @@ namespace Sphp\Tests\Html\Media\Icons;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Media\Icons\AbstractIconTag;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
  * Description of AbstractIconTagTest
@@ -28,7 +28,7 @@ class AbstractIconTagTest extends TestCase {
    * @return AbstractIconTag
    */
   public function testConstructor(): AbstractIconTag {
-    $attributeManager = new HtmlAttributeManager();
+    $attributeManager = new AttributeContainer();
     $icon = $this->getMockForAbstractClass(AbstractIconTag::class, ['i', $attributeManager]);
     $this->assertSame($attributeManager, $icon->attributes());
     $this->assertSame('i', $icon->getTagName());

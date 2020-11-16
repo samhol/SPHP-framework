@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\CssClassifiableContent;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Html\Iterator;
+use Sphp\Html\ContentIterator;
 use Sphp\Stdlib\Arrays;
 
 /**
@@ -160,7 +162,7 @@ class ButtonGroup extends AbstractComponent implements IteratorAggregate {
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->buttons);
+    return new ContentIterator($this->buttons);
   }
 
   /**

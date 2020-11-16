@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -24,7 +26,9 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class ResponsiveEmbedSlide extends AbstractSlide implements ResponsiveEmbedInterface {
+class ResponsiveEmbedSlide extends AbstractComponent implements Slide, ResponsiveEmbedInterface {
+
+  use ActivationTrait;
 
   /**
    * the flex component instance
@@ -39,7 +43,8 @@ class ResponsiveEmbedSlide extends AbstractSlide implements ResponsiveEmbedInter
    * @param ResponsiveEmbedInterface $embed the inner component
    */
   public function __construct(ResponsiveEmbedInterface $embed = null) {
-    parent::__construct();
+    parent::__construct('li');
+    $this->cssClasses()->protectValue('orbit-slide');
     if (!($embed instanceof ResponsiveEmbed)) {
       $embed = new ResponsiveEmbed($embed);
     }

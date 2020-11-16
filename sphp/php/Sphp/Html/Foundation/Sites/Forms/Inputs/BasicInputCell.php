@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -198,7 +200,7 @@ class BasicInputCell extends AbstractCell implements InputCell {
    */
   public static function select(string $name, $opt, $selectedValues = null, array $layout = ['small-12']): BasicInputCell {
     $input = Select::from($name, $opt);
-    $input->setSelectedValues($selectedValues);
+    $input->setInitialValue($selectedValues);
     return new static($input, $layout);
   }
 

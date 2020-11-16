@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\IdentifiableContent;
 
 /**
- * Defines an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
+ * Defines an HTML &lt;input type="text|password|email|tel| ...))" tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,6 @@
 
 namespace Sphp\Network\Headers;
 
-//use Sphp\Network\Headers\Header;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -336,7 +337,7 @@ class Cookie implements Header {
    */
   public function save(): bool {
     if ($this->getSameSiteRestriction() === null) {
-      return setcookie($this->name, $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
+      return setcookie($this->name, (string) $this->getValue(), $this->getExpiryTime(), $this->getPath(), $this->getDomain(), $this->isSecureOnly(), $this->isHttpOnly());
     } else if (!\headers_sent()) {
       \header((string) $this);
       return true;
@@ -355,7 +356,7 @@ class Cookie implements Header {
     $this->setValue(null);
     $copiedCookie = clone $this;
     // set the copied cookie's value to an empty string which internally sets the required options for a deletion
-    $copiedCookie->setValue(null);
+    $copiedCookie->setExpiryTime(time() - 3600);
 
     // save the copied "deletion" cookie
     return $copiedCookie->save();

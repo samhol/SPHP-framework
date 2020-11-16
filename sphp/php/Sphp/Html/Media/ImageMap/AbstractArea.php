@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use Sphp\Html\Navigation\HyperlinkTrait;
 use Sphp\Html\Attributes\PatternAttribute;
 
 /**
- * Implements an HTML &lt;area&gt; tag
+ * area tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -48,7 +50,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
   public function getCoordinates(): array {
-    $coordsString = $this->attributes()->getObject('coords');
+    $coordsString = $this->attributes()->getAttribute('coords');
     if($coordsString !== null) {
       return explode(',', $coordsString);
     }

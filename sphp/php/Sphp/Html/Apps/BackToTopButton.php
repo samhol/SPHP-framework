@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -36,7 +38,7 @@ class BackToTopButton extends AbstractContent {
    * @param Component $component
    */
   public function __construct(Component $component) {
-    $component->attributes()->demand('data-sphp-back-to-top-button');
+    $component->attributes()->protect('data-sphp-back-to-top-button', true);
     $this->component = $component;
   }
 

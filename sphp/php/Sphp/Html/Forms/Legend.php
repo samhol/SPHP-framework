@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;legend&gt; tag
+ * Implementation of an HTML legend tag
  *
  * **Note:** The legend element represents a caption for the rest of the
  * contents of the legend element's parent fieldset element, if any.

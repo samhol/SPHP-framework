@@ -3,20 +3,12 @@
 namespace Sphp\Tests\Html\Lists;
 
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\Lists\StandardList;
 
 class UlTest extends StandardListTest {
 
-  /**
-   * @var Ul
-   */
-  protected $list;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->list = new Ul();
+  public function createList(iterable $value = null): StandardList {
+    return new Ul($value);
   }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -37,7 +39,7 @@ class Whitelist extends AbstractValidator {
     $this->errors()->setTemplate(self::ILLEGAL_KEY, $errorText);
     $this->setWhitelist($whitelist);
   }
-  
+
   public function __destruct() {
     unset($this->whitelist);
     parent::__destruct();
@@ -54,17 +56,20 @@ class Whitelist extends AbstractValidator {
 
   public function isValid($value): bool {
     $this->setValue($value);
+    $valid = true;
     if (!is_array($value)) {
       $this->errors()->appendErrorFromTemplate(self::INVALID);
-      return false;
-    }
-    foreach (array_keys($value) as $key) {
-      if (!in_array($key, $this->whitelist, true)) {
-        $this->errors()->appendErrorFromTemplate(self::ILLEGAL_KEY);
-        return false;
+      $valid = false;
+    } else {
+      foreach (array_keys($value) as $key) {
+        if (!in_array($key, $this->whitelist, true)) {
+          $this->errors()->appendErrorFromTemplate(self::ILLEGAL_KEY);
+          $valid = false;
+          break;
+        }
       }
     }
-    return true;
+    return $valid;
   }
 
 }

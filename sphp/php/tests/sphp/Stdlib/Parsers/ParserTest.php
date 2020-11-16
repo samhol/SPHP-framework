@@ -67,7 +67,7 @@ class ParserTest extends TestCase {
    */
   public function filepathMap(): array {
     $map = [
-        ['./sphp/php/tests/files/valid.md', '<h1 foo="bar">test</h1>'],
+        ['./sphp/php/tests/files/valid.md', '<h1 class="bar">test</h1>'],
         ['./sphp/php/tests/files/valid.yaml', ['foo' => 'bar']],
         ['./sphp/php/tests/files/valid.json', ['foo' => 'bar']],
         ['./sphp/php/tests/files/valid.ini', ['foo' => 'bar']],

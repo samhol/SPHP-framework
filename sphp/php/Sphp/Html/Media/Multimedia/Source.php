@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,11 +13,10 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Media\LazyMedia;
-use Sphp\Html\Media\LazyMediaSourceTrait;
+use Sphp\Html\Utils\Mime;
 
 /**
- * Implements an HTML &lt;source&gt; tag
+ * Implementation of an HTML source tag
  *
  *  This component specifies media resources for {@link AbstractMediaTag} components.
  *
@@ -29,38 +30,59 @@ use Sphp\Html\Media\LazyMediaSourceTrait;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Source extends EmptyTag implements MultimediaSource, LazyMedia {
-
-  use LazyMediaSourceTrait;
+class Source extends EmptyTag implements MultimediaSource {
 
   /**
    * Constructor
    *
-   * @param  string|null $src the URL of the media file or null for none
+   * @param  string $src the URL of the media file or null for none
    * @param  string|null $type the media type of the media resource or null for none
-   * @param  boolean $lazy true for lazy loading and false otherwise
    * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function __construct(string $src = null, string $type = null, bool $lazy = false) {
+  public function __construct(string $src, string $type = null) {
     parent::__construct('source');
     if ($src !== null) {
       $this->setSrc($src);
     }
-    if ($type !== null) {
-      $this->setType($type);
+    if ($type === null) {
+      $type = Mime::getMime($src);
     }
-    $this->setLazy($lazy);
+    $this->setType($type);
+  }
+
+  /**
+   * Sets the path to the image source (The URL of the image file)
+   * 
+   * @param  string $src the path to the image source (The URL of the image file)
+   * @param  string|null $type the media type of the media resource or null for none
+   * @return $this for a fluent interface
+   */
+  public function setSrc(string $src, string $type = null) {
+    if ($type === null) {
+      $type = Mime::getMime($src);
+    }
+    $this->attributes()->setAttribute('src', $src);
+    return $this;
+  }
+
+  /**
+   * Returns the path to the image source (The URL of the image file)
+   *
+   * @return string the path to the image source (The URL of the image file)
+   */
+  public function getSrc(): string {
+    return (string) $this->attributes()->getValue('src');
   }
 
   /**
    * Sets the media type of the media resource
    *
-   * @param  string $type the media type of the media resource
+   * @param  string|null $type the media type of the media resource
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function setType(string $type) {
+  public function setType(string $type = null) {
     $this->attributes()->setAttribute('type', $type);
     return $this;
   }
@@ -68,10 +90,10 @@ class Source extends EmptyTag implements MultimediaSource, LazyMedia {
   /**
    * Returns the media type of the media resource
    *
-   * @return string the media type of the media resource
+   * @return string|null the media type of the media resource
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function getType() {
+  public function getType(): ?string {
     return $this->attributes()->getValue('type');
   }
 

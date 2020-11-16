@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -59,7 +61,7 @@ class ContainerCell extends AbstractCell {
   }
 
   public function appendMd($content) {
-    $this->content->appendMd($content);
+    $this->content->appendMarkdown($content);
     return $this;
   }
 

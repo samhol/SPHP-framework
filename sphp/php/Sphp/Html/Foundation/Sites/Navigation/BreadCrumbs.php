@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,9 +15,11 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Lists\Ul;
+use Sphp\Html\Lists\Li;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\TraversableTrait;
 use Traversable;
+use Sphp\Html\Lists\HyperlinkListItem;
 
 /**
  * Implements a Breadcrumbs component
@@ -38,6 +42,9 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
 
   use TraversableTrait;
 
+  /**
+   * @var Ul
+   */
   private $items;
 
   /**
@@ -47,11 +54,10 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
    */
   public function __construct($content = null) {
     parent::__construct('nav', null);
-    $this->cssClasses()->protectValue('breadcrumbs');
     $this->items = new Ul();
     $this->items->cssClasses()->protectValue('breadcrumbs');
     //$this->attributes()->lock('role', 'navigation');
-    $this->attributes()->setAttribute('aria-label', 'breadcrumbs');
+    //$this->attributes()->setAttribute('aria-label', 'breadcrumbs');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $breadcrumb) {
         $this->append($breadcrumb);
@@ -65,7 +71,21 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
   }
 
   /**
-   * Creates and prepends new {@link BreadCrumb} to the container
+   * Creates and appends new Breadcrumb link
+   *
+   *
+   * @param  mixed $content
+   * @return HyperlinkListItem appended instance
+   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   */
+  public function append($content): Li {
+    $item = $this->items->append($content);
+    return $item;
+  }
+
+  /**
+   * Creates and appends new Breadcrumb link
    *
    * **Notes:**
    * 
@@ -76,58 +96,22 @@ class BreadCrumbs extends AbstractComponent implements IteratorAggregate, Traver
    * @param  string $href the URL of the link
    * @param  string $content link text
    * @param  string|null $target optional target frame of the hyperlink
-   * @return BreadCrumb prepended instance
+   * @return HyperlinkListItem appended instance
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function prependNew(string $href, $content = null, string $target = null): BreadCrumb {
-    $item = new BreadCrumb($href, $content, $target);
-    $this->prepend($item);
+  public function appendLink(string $href, $content = null, string $target = null): HyperlinkListItem {
+    // $item = new BreadCrumb($href, $content, $target);
+    $item = $this->items->appendLink($href, $content, $target);
     return $item;
   }
 
-  /**
-   * Creates and appends new BreadCrumb link
-   *
-   * **Notes:**
-   * 
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
-   *
-   * @param  string $href the URL of the link
-   * @param  string $content link text
-   * @param  string|null $target optional target frame of the hyperlink
-   * @return BreadCrumb appended instance
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function appendLink(string $href, $content = null, string $target = null): BreadCrumb {
-    $item = new BreadCrumb($href, $content, $target);
-    $this->append($item);
-    return $item;
+  public function appendDisabled($content): Li {
+    return $this->items->append($content)->addCssClass('disabled');
   }
 
-  /**
-   * Prepends a BreadCrumb component to the container
-   *
-   * @param  BreadCrumb $breadcrumb component to append
-   * @return $this for a fluent interface
-   */
-  public function prepend(BreadCrumb $breadcrumb) {
-    $this->items->prepend($breadcrumb);
-    return $this;
-  }
-
-  /**
-   * Appends a BreadCrumb to the container
-   *
-   * @param  BreadCrumb $breadcrumb component to append
-   * @return $this for a fluent interface
-   */
-  public function append(BreadCrumb $breadcrumb) {
-    $this->items->append($breadcrumb);
-    return $this;
+  public function appendCurrent($content): Li {
+    return $this->items->append($content)->addCssClass('active');
   }
 
   public function getIterator(): Traversable {

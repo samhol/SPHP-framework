@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -71,6 +73,10 @@ class Dropdown extends AbstractContent implements Component {
     $this->setTrigger($trigger);
   }
 
+  public function __destruct() {
+    unset($this->dropdown, $this->trigger, $this->options);
+  }
+
   public function __clone() {
     parent::__clone();
     $this->identify('Dropdown');
@@ -124,7 +130,7 @@ class Dropdown extends AbstractContent implements Component {
    */
   public function resetSize() {
     $this->dropdown->cssClasses()
-            ->remove(static::$sizes);
+            ->remove(...static::$sizes);
     return $this;
   }
 
@@ -218,7 +224,7 @@ class Dropdown extends AbstractContent implements Component {
     return $this;
   }
 
-  public function attributes(): \Sphp\Html\Attributes\HtmlAttributeManager {
+  public function attributes(): \Sphp\Html\Attributes\AttributeContainer {
     return $this->trigger->attributes();
   }
 

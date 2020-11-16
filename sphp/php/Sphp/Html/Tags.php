@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -25,6 +27,7 @@ use ReflectionClass;
  * @method \Sphp\Html\Div div(mixed $content = null) creates a new div tag component
  * @method \Sphp\Html\Navigation\A a(mixed $content = null) creates a new HTML &lt;a&gt; object
  * 
+ * @method \Sphp\Html\Media\Canvas canvas() creates a new HTML &lt;canvas&gt; object
  * @method \Sphp\Html\Media\ImageMap\Rectangle rectangle(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) creates a new &lt;area&gt; object
  * @method \Sphp\Html\Media\ImageMap\Polygon polygon(array $coords = null, string $href = null, string $alt = null) creates a new &lt;area&gt; object
  * @method \Sphp\Html\Media\ImageMap\Circle circle(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) creates a new &lt;area&gt; object
@@ -55,7 +58,7 @@ use ReflectionClass;
  * @method \Sphp\Html\Tables\Thead thead() creates a new HTML &lt;thead&gt; object
  * @method \Sphp\Html\Tables\Tbody tbody() creates a new HTML &lt;tbody&gt; object
  * @method \Sphp\Html\Tables\Tfoot tfoot() creates a new HTML &lt;tfoot&gt; object
- * @method \Sphp\Html\Tables\Tr tr() creates a new HTML &lt;tr&gt; object
+ * @method \Sphp\Html\Tables\Tr tr() creates a new HTML tr object
  * @method \Sphp\Html\Tables\Th th(mixed $content = null, int $colspan = 1, int $rowspan = 1, string $scope = null) creates a new HTML &lt;th&gt; object
  * @method \Sphp\Html\Tables\Td td(mixed $content = null, int $colspan = 1, int $rowspan = 1) creates a new HTML &lt;td&gt; object
  * 
@@ -73,7 +76,6 @@ abstract class Tags {
    */
   private static $tags = array(
       'a' => Navigation\A::class,
-      'aside' => Flow\Aside::class,
       'base' => Head\Base::class,
       'body' => Body::class,
       'form' => Forms\ContainerForm::class,
@@ -112,9 +114,13 @@ abstract class Tags {
       'h4' => Flow\Headings\H4::class,
       'h5' => Flow\Headings\H5::class,
       'h6' => Flow\Headings\H6::class,
+      'p' => Flow\Paragraph::class,
+      'section' => Flow\Section::class,
+      'article' => Flow\Article::class,
+      'aside' => Flow\Aside::class,
       'html' => Html::class,
       'keygen' => EmptyTag::class,
-      'link' => Head\LinkTag::class,
+      'link' => Head\Links\LinkTag::class,
       'menu' => ContainerTag::class,
       'head' => Head\Head::class,
       'meta' => Head\MetaTag::class,
@@ -127,15 +133,13 @@ abstract class Tags {
       'dl' => Lists\Dl::class,
       'dt' => Lists\Dt::class,
       'output' => ContainerTag::class,
-      'p' => Flow\Paragraph::class,
-      'article' => Flow\Article::class,
-      'scriptCode' => Scripts\ScriptCode::class,
-      'scriptSrc' => Scripts\ScriptSrc::class,
+      'InlineScript' => Scripts\InlineScript::class,
+      'script' => Scripts\ExternalScript::class,
       'noscript' => Scripts\Noscript::class,
-      'section' => Flow\Section::class,
       'select' => Forms\Inputs\Menus\Select::class,
       'iframe' => Media\Iframe::class,
       'img' => Media\Img::class,
+      'canvas' => Media\Canvas::class,
       'map' => Media\ImageMap\Map::class,
       'rectangle' => Media\ImageMap\Rectangle::class,
       'polygon' => Media\ImageMap\Polygon::class,
@@ -165,14 +169,6 @@ abstract class Tags {
       'style' => ContainerTag::class,
       'wbr' => EmptyTag::class,
   );
-
-  /**
-   * 
-   * @return string[]
-   */
-  public static function getTagMap(): array {
-    return static::$tags;
-  }
 
   /**
    * Creates a HTML object

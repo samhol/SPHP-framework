@@ -8,44 +8,49 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Scripts;
+namespace Sphp\Tests\Html\Scripts;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Scripts\InlineScript;
 
-class ScriptCodeTest extends TestCase {
+class InlineScriptTest extends TestCase {
 
-  public function createScript(): ScriptCode {
-    return new ScriptCode();
+  public function contructorParameters(): array {
+    $data = [];
+    $data[] = ['var foo = 1;'];
+    $data[] = [''];
+    $data[] = [' '];
+    $data[] = [null];
+    return $data;
   }
 
-  public function testArrayAccessAndAppend() {
-    $data[1] = 1;
-    $data['foo'] = 'foo';
-    $data['bar'] = 'bar';
-    $code = new ScriptCode();
-    foreach ($data as $key => $val) {
-      $this->assertFalse(isset($code[$key]));
-      $code[$key] = $val;
-      $this->assertTrue(isset($code[$key]));
-    }
-    foreach($code as $k => $line) {
-      $this->assertArrayHasKey($k, $data);
-      $this->assertSame($line, $data[$k]);
-    }
-    $code[''] = 'null';
-    $this->assertTrue(isset($code[null]));
-    $this->assertTrue(isset($code['']));
-    $this->assertSame('null', $code[null]);
-    $this->assertSame('null', $code['']);
-    $code[1] = '1';
-    $code[0] = '0';
-    $this->assertSame($code, $code->append('last'));
-    $this->assertSame(implode($data) . 'null0last', (string) $code->contentToString());
-    foreach ($data as $key => $val) {
-      $this->assertTrue(isset($code[$key]));
-      unset($code[$key]);
-      $this->assertFalse(isset($code[$key]));
-    }
+  /**
+   * @dataProvider contructorParameters
+   * 
+   * @param string $code
+   */
+  public function testConstructor(string $code = null): void {
+    $script = new InlineScript($code);
+    $this->assertSame($code, $script->getContent());
+    $this->assertSame("<script>$code</script>", $script->getHtml());
+  }
+
+  public function testGetHash(): void {
+    $code1 = new InlineScript('var foo = 1;');
+    $code2 = new InlineScript('var foo = 1;');
+    $this->assertNotSame($code1->getHash(), $code2->getHash());
+  }
+
+  public function testScriptSettingAndOutput(): void {
+    $code = new InlineScript('var foo = 1;');
+    $this->assertSame('var foo = 1;', $code->getContent());
+    $this->assertSame($code->contentToString(), $code->getContent());
+    $code->setContent('var bar = 2');
+    $this->assertSame('var bar = 2', $code->getContent());
+    $this->assertSame($code->contentToString(), $code->getContent());
+    $code->setContent(null);
+    $this->assertSame(null, $code->getContent());
+    $this->assertSame($code->contentToString(), (string) $code->getContent());
   }
 
 }

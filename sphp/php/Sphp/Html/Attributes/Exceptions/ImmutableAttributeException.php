@@ -11,7 +11,7 @@
 namespace Sphp\Html\Attributes\Exceptions;
 
 /**
- * Description of ImmutableAttributeException
+ * Exception thrown if immutable attribute (value) is attempted to modify
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License

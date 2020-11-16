@@ -1,0 +1,14 @@
+## Meta data
+---
+- link:
+    rel: apple-touch-icon 
+    href: touch-icon-iphone.png
+- link:
+    rel: apple-touch-icon
+    type: mage/png 
+    href: /apple-touch-icon.png
+- link: 
+    rel: alternate
+    type: application/rss+xml 
+    title: RSS 
+    href: http://feeds.feedburner.com/martini

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -21,25 +23,12 @@ use Sphp\Html\Content;
  */
 interface SizeableMedia extends Content {
 
-
-
   /**
-   * Sets the width of the component (in pixels)
+   * Sets the width and the height of the component (in pixels)
    * 
    * @param  int $width the width of the component (in pixels))
-   * @return $this for a fluent interface
-   */
-  public function setWidth(int $width = null);
-
-
-
-
-  /**
-   * Sets the height of the component (in pixels)
-   * 
    * @param  int $height the height of the component (in pixels)
    * @return $this for a fluent interface
    */
-  public function setHeight(int $height = null);
-
+  public function setSize(int $width = null, int $height = null);
 }

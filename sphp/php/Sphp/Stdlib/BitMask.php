@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -235,7 +237,7 @@ class BitMask implements Arrayable, Iterator {
    * 
    * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     $this->index = 0;
   }
 
@@ -262,7 +264,7 @@ class BitMask implements Arrayable, Iterator {
    * 
    * @return void
    */
-  public function next() {
+  public function next(): void {
     $this->index++;
   }
 

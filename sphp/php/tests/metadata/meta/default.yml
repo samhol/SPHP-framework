@@ -1,0 +1,13 @@
+## Meta data
+---
+- meta:
+    charset: UTF-8
+- meta:
+    name: reply-to 
+    content: email@hotmail.com
+- meta:
+    property: og:points  
+    content: POINTS_FOR_ACHIEVEMENT
+- meta:
+    http-equiv: Page-Exit  
+    content: RevealTrans(Duration=3.0,Transition=12)

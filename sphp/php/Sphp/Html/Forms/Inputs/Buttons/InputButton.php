@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,7 +14,7 @@ namespace Sphp\Html\Forms\Inputs\Buttons;
 
 
 /**
- * Implements an HTML &lt;input type="button"&gt; tag
+ * Implementation of an HTML input type="button" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,11 +15,10 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Html\Iterator;
-use Sphp\Html\TraversableContent;
+use Sphp\Html\ContentIterator;
 
 /**
- * Implements an HTML &lt;tr&gt; tag
+ * Implementation of an HTML tr tag
  *
  *  This component represents a row of {@link CellInterface}
  *  components in a {@link Table}.
@@ -28,7 +29,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Tr extends AbstractComponent implements IteratorAggregate, TraversableContent, Row {
+class Tr extends AbstractComponent implements IteratorAggregate, Row {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -82,7 +83,11 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
    */
   public function appendTds(array $cells) {
     foreach ($cells as $td) {
-      $this->appendTd($td);
+      if ($td instanceof Cell) {
+        $this->append($td);
+      } else {
+        $this->appendTd($td);
+      }
     }
     return $this;
   }
@@ -124,24 +129,24 @@ class Tr extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @return Traversable external iterator
    */
   public function getIterator(): Traversable {
-    return new Iterator($this->cells);
+    return new ContentIterator($this->cells);
   }
 
   /**
-   * Creates a new &lt;tr&gt; component
+   * Creates a new tr component
    * 
    * @param  array $tds 
-   * @return Tr created &lt;tr&gt; component
+   * @return Tr created tr component
    */
   public static function fromTds(array $tds): Tr {
     return (new static())->appendTds($tds);
   }
 
   /**
-   * Creates a new &lt;tr&gt; component
+   * Creates a new tr component
    * 
    * @param  array $ths
-   * @return Tr created &lt;tr&gt; component
+   * @return Tr created tr component
    */
   public static function fromThs(array $ths): Tr {
     return (new static())->appendThs($ths);

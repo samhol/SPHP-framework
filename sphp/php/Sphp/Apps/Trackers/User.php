@@ -9,7 +9,6 @@
 namespace Sphp\Apps\Trackers;
 
 use Sphp\Stdlib\Random\UUID;
-use Sphp\Network\Utils;
 
 /**
  * Description of User
@@ -22,78 +21,49 @@ class User {
    * @var string
    */
   private $uid;
-  private $dbId;
 
   /**
    * @var int
    */
   private $lastVisit;
-  private $visits = 0;
-  private $firstVisit;
 
-  public function __construct(string $uid, \DateTimeImmutable $last = null) {
+  public function __construct(string $uid, int $last = null) {
     $this->uid = $uid;
-    $this->setLastVisit($last);
+    $this->updateLastVisit($last);
   }
 
-  public function getUID(): string {
+  public function getId(): string {
     return $this->uid;
   }
 
-  public function getDbId(): ?int {
-    return $this->dbId;
-  }
-
-  public function setDbId(int $dbId = null) {
-    $this->dbId = $dbId;
-    return $this;
-  }
-
-  public function setLastVisit(\DateTimeImmutable $last = null) {
+  public function updateLastVisit(int $last = null) {
     if ($last === null) {
-      $this->lastVisit = new \DateTimeImmutable();
+      $this->lastVisit = time();
     } else {
       $this->lastVisit = $last;
     }
-    return $this;
   }
 
-  public function setFirstVisit(\DateTimeImmutable $timestamp) {
-    $this->firstVisit = $timestamp;
-    return $this;
-  }
-
-  public function getFirstVisit(): \DateTimeImmutable {
-    if ($this->firstVisit === null) {
-      $this->firstVisit = $this->getLastVisit();
-    }
-    return $this->firstVisit;
-  }
-
-  public function getLastVisit(): \DateTimeImmutable {
+  public function getLastVisit(): int {
     return $this->lastVisit;
-  }
-
-  public function getVisits(): int {
-    return $this->visits;
-  }
-
-  public function setVisits(int $visits) {
-    $this->visits = $visits;
-    return $this;
-  }
-
-  public function getIp(): string {
-    return Utils::getClientIp();
-  }
-
-  public function getUserAgent(): string {
-    return Utils::getHttpUserAgent();
   }
 
   public static function generate(): User {
     $token = UUID::v5(UUID::v4(), 'tracker');
     return new self($token);
+  }
+
+  public static function fromCookie(): ?User {
+    $instance = null;
+    if (isset($_COOKIE['visitor_id'])) {
+      $visitor_id = $_COOKIE['visitor_id'];
+      $instance = new self($visitor_id);
+
+      if (isset($_COOKIE['lastVisit'])) {
+        $instance->updateLastVisit((int) $_COOKIE['lastVisit']);
+      }
+    }
+    return $instance;
   }
 
 }

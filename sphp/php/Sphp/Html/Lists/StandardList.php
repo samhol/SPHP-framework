@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,11 +15,12 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
 use IteratorAggregate;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\PlainContainer;
+use Sphp\Html\ContentIterator;
 use Traversable;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Html\Exceptions\HtmlException;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Abstract implementation of both ordered and unordered HTML-list
@@ -33,7 +36,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var PlainContainer 
+   * @var StandardListItem[] 
    */
   private $items;
 
@@ -41,12 +44,21 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * Constructor
    * 
    * @param  string $tagName the tag name of the component
-   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
+   * @param  iterable|null $items the content of the component
+   * @param  AttributeContainer|null $attrManager the attribute manager of the component
    * @throws InvalidArgumentException if the tag name of the component is not valid
    */
-  public function __construct(string $tagName, HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName, iterable $items = null, AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
-    $this->items = new PlainContainer();
+    $this->items = [];
+    if ($items !== null) {
+      if ($items instanceof StandardListItem) {
+        $items = [$items];
+      }
+      foreach ($items as $item) {
+        $this->append($item);
+      }
+    }
   }
 
   public function __destruct() {
@@ -55,7 +67,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   }
 
   public function __clone() {
-    $this->items = clone $this->items;
+    $this->items = Arrays::copy($this->items);
     parent::__clone();
   }
 
@@ -65,7 +77,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @return $this for a fluent interface
    */
   public function clear() {
-    $this->items->clear();
+    $this->items = [];
     return $this;
   }
 
@@ -79,7 +91,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
     if (!$item instanceof StandardListItem) {
       $item = new Li($item);
     }
-    $this->items->prepend($item);
+    array_unshift($this->items, $item);
     return $item;
   }
 
@@ -93,27 +105,37 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
     if (!$item instanceof StandardListItem) {
       $item = new Li($item);
     }
-    $this->items->append($item);
+    $this->items[] = $item;
     return $item;
   }
 
   /**
-   * Appends a parsed inline Mark Down string to the list
+   * Appends a parsed inline Markdown string to the list
    * 
-   * @param  string $md inline Mark Down string
+   * @param  string $md inline Markdown string
    * @param  bool $inlineOnly
    * @return Li appended instance
-   * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md, bool $inlineOnly = false): Li {
-    try {
-      $li = new Li();
-      $li->appendMd($md, $inlineOnly);
-      $item = $this->append($li);
-      return $item;
-    } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
+  public function appendMarkdown(string $md, bool $inlineOnly = false): Li {
+    $li = new Li();
+    $li->appendMarkdown($md, $inlineOnly);
+    $item = $this->append($li);
+    return $item;
+  }
+
+  /**
+   * Appends a parsed inline Markdown string to the list
+   * 
+   * @param  string $path inline Markdown string
+   * @param  bool $inlineOnly
+   * @return Li appended instance
+   * @throws HtmlException
+   */
+  public function appendMarkdownFile(string $path, bool $inlineOnly = false): Li {
+    $li = new Li();
+    $li->appendMarkdownFile($path, $inlineOnly);
+    $item = $this->append($li);
+    return $item;
   }
 
   /**
@@ -133,7 +155,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   }
 
   public function contentToString(): string {
-    return $this->items->getHtml();
+    return implode('', $this->items);
   }
 
   /**
@@ -142,7 +164,7 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @return Traversable iterator
    */
   public function getIterator(): Traversable {
-    return $this->items->getIterator();
+    return new ContentIterator($this->items);
   }
 
 }

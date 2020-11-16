@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -301,8 +303,8 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   /**
    * Returns the port number associated with this service and a given protocol
    *
+   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml IANA
    * @return int the port number; (`-1` if the port number can not be resolved)
-   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function getPort(): int {
@@ -527,7 +529,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @codeCoverageIgnore
    */
   public static function getCurrentURL(int $flags = 0): string {
-    $port = filter_input(INPUT_SERVER, 'SERVER_PORT', FILTER_SANITIZE_NUMBER_INT);
+    $port = filter_input(INPUT_SERVER, 'SERVER_PORT', FILTER_VALIDATE_INT);
     $httpsStatus = filter_input(INPUT_SERVER, 'HTTPS', FILTER_SANITIZE_STRING);
     $serverName = filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_STRING);
     $currentURL = ($httpsStatus === 'on') || $port === 443 ? 'https://' : 'http://';

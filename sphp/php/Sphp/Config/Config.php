@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -60,7 +62,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    */
   public function __construct(array $config = [], bool $readOnly = true) {
     foreach ($config as $k => $v) {
-      $this->__set($k, $v);
+      $this->set((string) $k, $v);
     }
     $this->readonly = $readOnly;
   }

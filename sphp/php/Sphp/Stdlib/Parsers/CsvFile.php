@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -127,7 +129,9 @@ class CsvFile implements Arrayable, Iterator {
     //var_dump($this->file->getCsvControl());
     foreach (new LimitIterator($this->file, $offset, $count) as $row => $line) {
       #save $line
-      $result[$row] = $line;
+      if (is_array($line)) {
+        $result[$row] = $line;
+      }
     }
     //var_dump($result);
     return $result;

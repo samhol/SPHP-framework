@@ -119,7 +119,7 @@ class AbstractPhpApiLinkerTest extends TestCase {
     $this->assertSame('root/constant', $link->getHref());
     $this->assertTrue($link->attributeExists('title'));
     $this->assertTrue($link->hasCssClass('constant'));
-    $this->assertRegExp("/$constant/", $link->contentToString());
+    $this->assertMatchesRegularExpression("/$constant/", $link->contentToString());
     $this->assertSame('foo', $namedLink->contentToString());
   }
 

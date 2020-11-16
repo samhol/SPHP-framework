@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,22 +12,10 @@
 
 namespace Sphp\Tests\Html\Tables;
 
+use Sphp\Html\Tables\Cell;
 use Sphp\Html\Tables\Td;
 
-class TdTest extends ContainerCellTests {
-
-  /**
-   * @var Td
-   */
-  protected $cell;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->cell = new Td();
-  }
+class TdTest extends CellTest {
 
   public function tdData(): array {
     $data = [];
@@ -36,13 +26,20 @@ class TdTest extends ContainerCellTests {
 
   /**
    * @dataProvider tdData
-   * @param mixed $data
-   * @param int $colspan
-   * @param int $rowspan
+   * 
+   * @param  mixed $data
+   * @param  int $colspan
+   * @param  int $rowspan
+   * @return void
    */
-  public function testOutput($data, int $colspan, int $rowspan) {
+  public function testConstructor($data, int $colspan, int $rowspan):void {
     $td = new Td($data, $colspan, $rowspan);
+    $this->assertSame('td',$td->getTagName());
     $this->assertSame("<td {$td->attributes()}>{$data}</td>", (string) $td);
+  }
+
+  public function createCell(): Cell {
+    return new Td();
   }
 
 }

@@ -1,26 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 
 /**
- * An abstract implementation of an HTML attribute object
+ * Class AbstractAttribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework GitHub repository
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
 abstract class AbstractAttribute implements Attribute {
@@ -33,38 +34,26 @@ abstract class AbstractAttribute implements Attribute {
   private $name;
 
   /**
-   * whether the attribute is required or not
-   *
-   * @var boolean
-   */
-  private $required = false;
-
-  /**
    * @var boolean 
    */
-  private $protected = false;
-
-  /**
-   * @var boolean 
-   */
-  private $mutable = true;
+  private $isInstantiated = false;
 
   /**
    * Constructor
    *
    * @param  string $name the name of the attribute
    * @throws BadMethodCallException if the constructor is recalled
-   * @throws InvalidArgumentException
+   * @throws AttributeException
    */
   public function __construct(string $name) {
-    if (false === $this->mutable) {
+    if (true === $this->isInstantiated) {
       throw new BadMethodCallException('Constructor called twice.');
     }
     if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
-      throw new InvalidArgumentException("Malformed Attribute name '$name'");
+      throw new AttributeException("Malformed Attribute name '$name'");
     }
     $this->name = $name;
-    $this->mutable = false;
+    $this->isInstantiated = true;
   }
 
   public function __toString(): string {
@@ -84,30 +73,8 @@ abstract class AbstractAttribute implements Attribute {
     return $output;
   }
 
-  public function isProtected(): bool {
-    return $this->protected;
-  }
-
-  public function protectValue($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $this->setValue($value);
-    $this->protected = true;
-    return $this;
-  }
-
   public function getName(): string {
     return $this->name;
-  }
-
-  public function forceVisibility() {
-    $this->required = true;
-    return $this;
-  }
-
-  public function isDemanded(): bool {
-    return $this->required || $this->isProtected();
   }
 
   public function isVisible(): bool {
@@ -116,7 +83,7 @@ abstract class AbstractAttribute implements Attribute {
 
   public function isEmpty(): bool {
     $val = $this->getValue();
-    return is_bool($val) || $val === null || $val === '';
+    return is_bool($val) || $val === null;
   }
 
 }

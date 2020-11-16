@@ -1,5 +1,7 @@
 <?php
 
+
+declare(strict_types=1);
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Flow;
 
 /**
- * Implements an HTML &lt;section&gt; tag
+ * Implementation of an HTML section tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_section.asp w3schools HTML API

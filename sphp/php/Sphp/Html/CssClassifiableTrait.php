@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -38,12 +40,12 @@ trait CssClassifiableTrait {
    * 2. An array parameter can contain only one CSS class name per value
    * 3. Duplicate CSS class names are not stored
    *
-   * @param  string|string[],... $cssClasses CSS class names to add
+   * @param  string ...$cssClasses CSS class names to add
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function addCssClass(...$cssClasses) {
-    $this->cssClasses()->add($cssClasses);
+  public function addCssClass(string ...$cssClasses) {
+    $this->cssClasses()->add(...$cssClasses);
     return $this;
   }
 
@@ -55,12 +57,12 @@ trait CssClassifiableTrait {
    * 1. A string parameter can contain multiple comma separated CSS class names
    * 2. An array parameter can contain only one CSS class name per value
    *
-   * @param  string|string[],... $cssClasses CSS class names to remove
+   * @param  string ...$cssClasses CSS class names to remove
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function removeCssClass(...$cssClasses) {
-    $this->cssClasses()->remove($cssClasses);
+  public function removeCssClass(string ...$cssClasses) {
+    $this->cssClasses()->remove(...$cssClasses);
     return $this;
   }
 
@@ -72,11 +74,11 @@ trait CssClassifiableTrait {
    * 1. A string parameter can contain multiple comma separated CSS class names
    * 2. An array parameter can contain only one CSS class name per value
    *
-   * @param  string|string[],... $cssClasses CSS class names to search for
+   * @param  string ...$cssClasses CSS class names to search for
    * @return boolean true if the given CSS class names exists
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function hasCssClass(...$cssClasses): bool {
+  public function hasCssClass(string ...$cssClasses): bool {
     return $this->cssClasses()->contains($cssClasses);
   }
 

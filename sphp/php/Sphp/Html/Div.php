@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html;
 
 /**
- * Implements an HTML &lt;div&gt; tag
+ * Implementation of an HTML div tag
  *
  * This component defines a division or a section in an HTML document. 
  * It is used to group block-elements to format them with CSS to layout a web page.
@@ -24,9 +26,7 @@ namespace Sphp\Html;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Div extends ContainerTag implements AjaxLoader {
-
-  use AjaxLoaderTrait;
+class Div extends Flow\AbstractFlowContainer {
 
   /**
    * Constructor

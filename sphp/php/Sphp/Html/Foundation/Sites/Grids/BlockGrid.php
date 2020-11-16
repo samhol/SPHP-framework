@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -135,7 +137,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
     for ($i = 1; $i <= $this->getColumnCount(); $i++) {
       $classes[] = "$screenSize-up-$i";
     }
-    $this->cssClasses()->remove($classes);
+    $this->cssClasses()->remove(...$classes);
     return $this;
   }
 
@@ -163,7 +165,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
    * @return BlockGridColumn new column
    */
   public function append($column): Block {
-    if (!$column instanceof BlockGridColumn) {
+    if (!$column instanceof Block) {
       $column = new DivBlock($column);
     }
     $this->columns[] = $column;
@@ -171,16 +173,16 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   }
 
   /**
-   * Appends a parsed Mark Down string to the container
+   * Appends a parsed Markdown string to the container
    * 
    * @param  string $md the path to the file
    * @return DivBlock new column
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md): DivBlock {
+  public function appendMarkdown(string $md): DivBlock {
     try {
       $column = new DivBlock();
-      $column->appendMd($md);
+      $column->appendMarkdown($md);
       $this->append($column);
       return $column;
     } catch (\Exception $ex) {
@@ -189,16 +191,16 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   }
 
   /**
-   * Appends a parsed Mark Down file to the container
+   * Appends a parsed Markdown file to the container
    * 
    * @param  string $path  the path to the file
    * @return DivBlock new column
    * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMdFile(string $path): DivBlock {
+  public function appendMarkdownFile(string $path): DivBlock {
     try {
       $column = new DivBlock();
-      $column->appendMdFile($path);
+      $column->appendMarkdownFile($path);
       $this->append($column);
     } catch (\Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
@@ -252,7 +254,7 @@ class BlockGrid extends AbstractComponent implements IteratorAggregate, ContentP
   }
 
   public function getIterator(): Traversable {
-    return new \Sphp\Html\Iterator($this->columns);
+    return new \Sphp\Html\ContentIterator($this->columns);
   }
 
   public function count(): int {

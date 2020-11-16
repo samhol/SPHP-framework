@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,10 +13,10 @@
 namespace Sphp\Html\Flow;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\AjaxLoader;
+use Sphp\Html\Navigation\A;
 
 /**
- * Implements an HTML &lt;p&gt; tag
+ * Implementation of an HTML  p tag
  *
  *  This component represents a paragraph in an HTML document.
  *
@@ -25,9 +27,7 @@ use Sphp\Html\AjaxLoader;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Paragraph extends ContainerTag implements AjaxLoader {
-
-  use \Sphp\Html\AjaxLoaderTrait;
+class Paragraph extends ContainerTag {
 
   /**
    * Constructor
@@ -39,10 +39,31 @@ class Paragraph extends ContainerTag implements AjaxLoader {
     parent::__construct('p', $content);
   }
 
-  public function appendMd(string $md, bool $inlineOnly = false) {
+  public function appendMarkdown(string $md, bool $inlineOnly = false) {
     $parsed = \ParsedownExtraPlugin::instance()->line($md);
     $this->append($parsed);
     return $this;
+  }
+
+  /**
+   * Appends an HTML &lt;a&gt; object
+   * 
+   * **Notes:**
+   *
+   * * The href attribute specifies the URL of the page the link goes to.
+   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
+   *
+   * @param  string|null $href optional URL of the link
+   * @param  string|null $content optional the content of the component
+   * @param  string|null $target optional value of the target attribute
+   * @return A appended object
+   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   */
+  public function appendHyperlink(string $href = null, $content = null, string $target = null): A {
+    $component = new A($href, $content, $target);
+    $this->append($component);
+    return $component;
   }
 
 }

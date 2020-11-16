@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,12 +13,11 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Head\Head;
-use Sphp\Html\Scripts\ScriptSrc;
-use Sphp\Html\Head\Meta;
-use Sphp\Html\Head\Link;
+use Sphp\Html\Scripts\ExternalScript;
+use Sphp\Html\Head\MetaFactory;
 
 /**
- * Implements an HTML &lt;html&gt; tag
+ * Implementation of an HTML html tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API
@@ -84,11 +85,11 @@ class SphpDocument extends AbstractContent {
   /**
    * Sets the title of the html page
    *
-   * @param  string|Title $title the title of the html page
+   * @param  string $title the title of the html page
    * @return $this for a fluent interface
    */
-  public function setDocumentTitle($title) {
-    $this->head()->setDocumentTitle($title);
+  public function setDocumentTitle(string $title) {
+    $this->head()->meta()->setTitle($title);
     return $this;
   }
 
@@ -104,17 +105,7 @@ class SphpDocument extends AbstractContent {
    * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage(string $language = null) {
-    $this->html()->attributes()->setAttribute('lang', $language);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $viewport
-   * @return $this for a fluent interface
-   */
-  public function setViewport(string $viewport = 'width=device-width, initial-scale=1.0') {
-    $this->head()->set(Meta::viewport($viewport));
+    $this->html()->setAttribute('lang', $language);
     return $this;
   }
 
@@ -125,7 +116,7 @@ class SphpDocument extends AbstractContent {
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
   public function useFontAwesome(string $id = null) {
-    $this->head()->set((new ScriptSrc("https://kit.fontawesome.com/$id.js"))
+    $this->head()->meta()->insert((new ExternalScript("https://kit.fontawesome.com/$id.js"))
                     ->setDefer(true));
     return $this;
   }
@@ -137,8 +128,8 @@ class SphpDocument extends AbstractContent {
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->head()->set(Link::stylesheet('https://vjs.zencdn.net/7.6.5/video-js.css'));
-    $this->body()->scripts()->appendSrc('https://vjs.zencdn.net/7.6.5/video.js');
+    $this->head()->meta()->insert(MetaFactory::build()->stylesheet('https://vjs.zencdn.net/7.8.4/video-js.css'));
+    $this->body()->scripts()->insertExternal('https://vjs.zencdn.net/7.8.4/video.js');
     return $this;
   }
 
@@ -148,7 +139,7 @@ class SphpDocument extends AbstractContent {
    * @return $this for a fluent interface
    */
   public function enableSPHP() {
-    $this->body()->scripts()->appendSrc('/sphp/javascript/dist/all.js');
+    $this->body()->scripts()->insertExternal('/sphp/javascript/dist/all.js', 1000)->setDefer(true);
     return $this;
   }
 
@@ -161,10 +152,7 @@ class SphpDocument extends AbstractContent {
    * @return string
    */
   public function getBodyStart(): string {
-    $output = $this->html()->getOpeningTag();
-    $output .= $this->head()->getHtml();
-    $output .= $this->body()->getOpeningTag();
-    return $output;
+    return $this->html()->getBodyStart();
   }
 
   /**
@@ -182,7 +170,7 @@ class SphpDocument extends AbstractContent {
    * @return string the document end
    */
   public function getDocumentClose(): string {
-    return $this->body()->close() . $this->getClosingTag();
+    return $this->html()->getDocumentClose();
   }
 
   /**
@@ -193,27 +181,6 @@ class SphpDocument extends AbstractContent {
   public function documentClose() {
     echo $this->html()->getDocumentClose();
     return $this;
-  }
-
-  /**
-   * Constructor
-   *
-   * **Common `$charset` values:**
-   *
-   * * `UTF-8`  - Character encoding for Unicode
-   * * `ISO-8859-1` - Character encoding for the Latin alphabet
-   *
-   * In theory, any character encoding can be used, but no browser understands
-   * all of them. The more widely a character encoding is used, the better the
-   * chance that a browser will understand it.
-   *
-   * @param string|null $title optional title of the document
-   * @param string|null $charset optional character encoding of the document (defaults to: "UTF-8")
-   * @param string|null $lang optional body content
-   */
-  public static function create(string $title = null, string $charset = null, string $lang = null) {
-    $html = new Html($title, $charset, $lang);
-    return new static($html);
   }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -15,7 +17,7 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 
 /**
- * Defines required properties for an HTML &lt;form&gt; component
+ * Defines required properties for an HTML form tag object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API

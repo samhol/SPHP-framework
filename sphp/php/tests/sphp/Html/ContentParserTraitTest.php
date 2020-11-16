@@ -12,7 +12,7 @@ namespace Sphp\Html;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Parsers\ParseFactory;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Html\Exceptions\HtmlException;
 
 class ContentParserTraitTest extends TestCase {
 
@@ -49,12 +49,12 @@ class ContentParserTraitTest extends TestCase {
   public function testAppendMd() {
     $mdString = file_get_contents(__DIR__ . '/../../files/valid.md');
     $mdToHtml = ParseFactory::md()->parseString($mdString);
-    $this->container->appendMd($mdString);
-    $this->container->appendMdFile(__DIR__ . '/../../files/valid.md');
+    $this->container->appendMarkdown($mdString);
+    $this->container->appendMarkdownFile(__DIR__ . '/../../files/valid.md');
     // print_r($this->appendedStrings);
     $this->assertSame($mdToHtml, $this->appendedStrings[0]);
-    $this->expectException(RuntimeException::class);
-    $this->container->appendMdFile('foo.md');
+    $this->expectException(HtmlException::class);
+    $this->container->appendMarkdownFile('foo.md');
   }
 
   public function testAppendRawFile() {
@@ -62,7 +62,7 @@ class ContentParserTraitTest extends TestCase {
     $this->container->appendRawFile(__DIR__ . '/../../files/valid.md');
     // print_r($this->appendedStrings);
     $this->assertSame($mdString, $this->appendedStrings[0]);
-    $this->expectException(RuntimeException::class);
+    $this->expectException(HtmlException::class);
     $this->container->appendRawFile('foo.bar');
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -61,7 +63,7 @@ class GridForm extends AbstractForm {
     }
     $this->errorLabel = new ContentCallout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
     $this->errorLabel->cssClasses()->protectValue('alert');
-    $this->errorLabel->inlineStyles()->setProperty('display', 'none');
+    $this->errorLabel->css()->setProperty('display', 'none');
     $this->errorLabel->attributes()->demand('data-abide-error');
     $this->grid = new DivGrid();
   }
@@ -103,8 +105,8 @@ class GridForm extends AbstractForm {
   }
 
   public function contentToString(): string {
-    $output = '<div class="grid-container"><div class="grid-x"><div class="cell">'.$this->errorLabel.'</div></div></div>';
-    return $output. $this->getGrid()->getHtml() . $this->getHiddenInputs();
+    $output = '<div class="grid-container"><div class="grid-x"><div class="cell">' . $this->errorLabel . '</div></div></div>';
+    return $output . $this->getGrid()->getHtml() . $this->getHiddenInputs();
   }
 
   public function getGrid(): Grid {

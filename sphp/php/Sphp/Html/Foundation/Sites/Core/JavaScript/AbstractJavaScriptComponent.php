@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,7 +14,7 @@ namespace Sphp\Html\Foundation\Sites\Core\JavaScript;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\Sites\Core\DataOptions\DataOptionTools;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
 /**
@@ -36,9 +38,9 @@ abstract class AbstractJavaScriptComponent extends AbstractComponent implements 
    * Constructor
    * 
    * @param string $tagName
-   * @param HtmlAttributeManager $attrManager
+   * @param AttributeContainer $attrManager
    */
-  public function __construct(string $tagName, HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName, AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->options = new PropertyCollectionAttribute('data-options');
     $this->attributes()->setInstance($this->options);

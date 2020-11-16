@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -70,7 +72,7 @@ class PHPConfig {
       error_reporting($level);
     }
     $display = ($level > 0) ? 1 : 0;
-    ini_set('display_errors', $display);
+    ini_set('display_errors', (string) $display);
     return $this;
   }
 
@@ -97,12 +99,12 @@ class PHPConfig {
   /**
    * Inserts new paths to the include_path configuration option
    * 
-   * @param  string|string[],... $paths new include paths
+   * @param  string ...$paths new include paths
    * @return $this for a fluent interface
    * @throws ConfigurationException if insertion of given include paths fails
    * @link   http://php.net/manual/en/function.set-include-path.php PHP manual
    */
-  public function insertIncludePaths(...$paths) {
+  public function insertIncludePaths(string ...$paths) {
     $flatten = Arrays::flatten($paths);
     $pathArray = \array_unique(\array_merge($this->getIncludePaths(), $flatten));
     $newPaths = \implode(\PATH_SEPARATOR, $pathArray);

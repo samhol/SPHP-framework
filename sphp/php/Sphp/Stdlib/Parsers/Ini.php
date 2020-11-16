@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,8 @@
 
 namespace Sphp\Stdlib\Parsers;
 
-use Zend\Config\Writer\Ini as IniWriter;
+use Laminas\Config\Reader\Ini as IniReader;
+use Laminas\Config\Writer\Ini as IniWriter;
 use Exception;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
@@ -33,6 +36,7 @@ class Ini implements ArrayParser {
    * Constructor
    */
   public function __construct() {
+    $this->reader = new IniReader();
     $this->writer = new IniWriter();
   }
 
@@ -44,19 +48,21 @@ class Ini implements ArrayParser {
   }
 
   public function stringToArray(string $string): array {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $thrower->start();
-    $data = parse_ini_string($string, true);
-    $thrower->stop();
-    return $data;
+    try {
+      $data = $this->reader->fromString($string);
+      return $data;
+    } catch (Exception $ex) {
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
   public function fileToArray(string $filename): array {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $thrower->start();
-    $output = parse_ini_file(\Sphp\Stdlib\Filesystem::getFullPath($filename), true);
-    $thrower->stop();
-    return $output;
+    try {
+      $output = $this->reader->fromFile(\Sphp\Stdlib\Filesystem::getFullPath($filename));
+      return $output;
+    } catch (Exception $ex) {
+      throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
   public function toString($array): string {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -60,7 +62,7 @@ abstract class AbstractInputButton extends EmptyTag implements ButtonInterface {
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->disabled = $disabled;
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 

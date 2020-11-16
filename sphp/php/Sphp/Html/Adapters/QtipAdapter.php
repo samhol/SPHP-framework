@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -45,7 +47,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setQtip(string $qtip = null) {
-    $this->getComponent()->attributes()
+    $this->getComponent()
             ->setAttribute('title', $qtip)
             ->setAttribute('data-sphp-qtip', true);
     return $this;
@@ -59,8 +61,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    * @return $this for a fluent interface
    */
   public function setQtipPosition(string $my, string $at) {
-    $this->getComponent()->attributes()
-            ->setAttribute('data-sphp-qtip', true)
+    $this->getComponent()->setAttribute('data-sphp-qtip', true)
             ->setAttribute('data-sphp-qtip-at', $at)
             ->setAttribute('data-sphp-qtip-my', $my);
     return $this;
@@ -68,14 +69,21 @@ class QtipAdapter extends AbstractComponentAdapter {
 
   /**
    * 
-   * @param IdentifiableContent $viewport
+   * @param  IdentifiableContent $viewport
    * @return $this for a fluent interface
    */
-  public function setViewport($viewport) {
-    if ($viewport instanceof IdentifiableContent) {
-      $id = $viewport->identify();
-    }
-    $this->attributes()->setAttribute('data-sphp-qtip-viewport', "#$id");
+  public function setViewport(IdentifiableContent $viewport) {
+    $this->setViewportFromId($viewport->identify());
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $viewportId
+   * @return $this for a fluent interface
+   */
+  public function setViewportFromId(string $viewportId) {
+    $this->setAttribute('data-sphp-qtip-viewport', "#$viewportId");
     return $this;
   }
 

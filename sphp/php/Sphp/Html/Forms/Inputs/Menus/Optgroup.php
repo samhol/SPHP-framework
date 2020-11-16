@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 /**
- * Implements an HTML &lt;optgroup&gt; tag
+ * optgroup tag
 
  * **Notes:**
  *
@@ -29,24 +31,15 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * @link    http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
  * @filesource
  */
-class Optgroup extends AbstractOptionsContainer implements MenuComponent {
+class Optgroup extends AbstractOptionContainer implements MenuComponent {
 
   /**
    * Constructor
    *
-   * **`$opt` types:**
-   * 
-   * 1. a {@link SelectMenuContentInterface} is stored as such
-   * 2. a single dimensional array with $key => $val pairs corresponds to an 
-   *    array of new {@link Option}($key, $val) objects
-   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
-   *    {@link Optgroup} components containing new {@link Option Option($key, $val)} objects
-   * 
    * @param string $label specifies a label for an option-group
-   * @param MenuComponent|mixed[] $opt the content
    */
-  public function __construct(string $label = null, $opt = null) {
-    parent::__construct('optgroup', $opt);
+  public function __construct(string $label = null) {
+    parent::__construct('optgroup');
     if ($label !== null) {
       $this->setLabel($label);
     }

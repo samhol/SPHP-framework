@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -88,15 +90,21 @@ class DateTime extends AbstractDate implements DateTimeInterface {
       $reflectionMethod = $this->reflector->getMethod($name);
       $result = $reflectionMethod->invokeArgs($this->getDateTime(), $args);
       if ($result instanceof DateTimeImmutable) {
-        return new static($result);
+        $out = new static($result);
       } else {
-        return $result;
+        $out = $result;
       }
+      return $out;
     }
   }
 
   public function __toString(): string {
-    return $this->format(\DateTime::ATOM);
+    return $this->format('j.n.Y H:i:s T');
+  }
+
+  public function useCurrentTimezone(): DateTime {
+    $ctz = new \DateTimeZone(date_default_timezone_get());
+    return static::from($this->getDateTime()->setTimezone($ctz));
   }
 
   public function diff($date, bool $absolute = false): Interval {

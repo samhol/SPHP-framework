@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -14,7 +16,7 @@ use Sphp\Html\EmptyTag;
 use Sphp\Stdlib\Strings;
 
 /**
- * Implements an HTML &lt;img&gt; tag
+ * Implementation of an HTML img tag
  *
  * This component represents an image. The image given by the src attribute is
  * the embedded content, and the value of the alt attribute is the img
@@ -37,10 +39,9 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Img extends EmptyTag implements ImgInterface {
+class Img extends EmptyTag implements MediaSource, SizeableMedia {
 
-  use SizeableMediaTrait,
-      LazyMediaSourceTrait;
+  use SizeableMediaTrait;
 
   /**
    * Constructor
@@ -111,18 +112,23 @@ class Img extends EmptyTag implements ImgInterface {
   }
 
   /**
-   * Returns the object as HTML-markup string.
-   *
-   * @return string HTML-markup of the object
+   * Sets the path to the image source (The URL of the image file)
+   * 
+   * @param  string $src the path to the image source (The URL of the image file)
+   * @return $this for a fluent interface
    */
-  public function getHtml(): string {
-    $output = parent::getHtml();
-    if ($this->isLazy()) {
-      $nonLazy = clone $this;
-      $nonLazy->setLazy(false);
-      $output .= "<noscript>$nonLazy</noscript>";
-    }
-    return $output;
+  public function setSrc(string $src = null) {
+    $this->attributes()->setAttribute('src', $src);
+    return $this;
+  }
+
+  /**
+   * Returns the path to the image source (The URL of the image file)
+   *
+   * @return string the path to the image source (The URL of the image file)
+   */
+  public function getSrc(): string {
+    return (string) $this->attributes()->getValue('src');
   }
 
 }

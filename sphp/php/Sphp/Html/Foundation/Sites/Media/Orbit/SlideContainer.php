@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,10 +12,14 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\AbstractContent;
+use IteratorAggregate;
+use Countable;
 use Sphp\Html\Media\Multimedia\VideoPlayer;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 use Traversable;
+use Sphp\Html\ContentIterator;
+use Sphp\Html\Media\Figure;
 
 /**
  * Implements a slide container for Foundation Orbit
@@ -25,24 +31,28 @@ use Traversable;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class SlideContainer extends AbstractComponent implements \IteratorAggregate, \Countable {
+class SlideContainer extends AbstractContent implements IteratorAggregate, Countable {
 
-  private $active = 0;
+  /**
+   * @var int
+   */
+  private $active;
 
   /**
    * @var Slide[]
    */
-  private $slides = [];
-  private $bullets;
+  private $slides;
 
   /**
    * Constructor
-   *
    */
   public function __construct() {
-    parent::__construct('ul');
-    $this->cssClasses()
-            ->protectValue('orbit-container');
+    $this->active = 0;
+    $this->slides = [];
+  }
+
+  public function __destruct() {
+    unset($this->slides);
   }
 
   /**
@@ -59,7 +69,7 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    */
   public function append($slide): Slide {
     if (!($slide instanceof Slide)) {
-      $slide = new HtmlSlide($slide);
+      $slide = new BasicSlide($slide);
     }
     $this->slides[] = $slide;
     return $slide;
@@ -69,13 +79,17 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
    * Appends a new figure slide component
    *
    * @param  string|Img $img the image path or the image component
-   * @param  mixed|mixed[] $caption the caption of the slide
-   * @return FigureSlide appended instance
+   * @param  mixed $caption the caption of the slide
+   * @return BasicSlide appended instance
    */
-  public function appendFigure($img, $caption = null): FigureSlide {
-    $slide = FigureSlide::create($img, $caption);
-    $this->append($slide);
-    return $slide;
+  public function appendFigure($img, $caption = null): BasicSlide {
+    $fig = new Figure($img, $caption);
+    $fig->addCssClass('orbit-figure');
+    $fig->getImg()->addCssClass('orbit-image');
+    if ($fig->hasCaption()) {
+      $fig->getCaption()->addCssClass('orbit-caption');
+    }
+    return $this->append($fig);
   }
 
   /**
@@ -122,23 +136,10 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
   }
 
   /**
-   * Returns the number of the slides in this orbit
-   * 
-   * @return int number of the slides in this orbit
-   */
-  public function count(): int {
-    return count($this->slides);
-  }
-
-  public function getIterator(): Traversable {
-    return new \Sphp\Html\Iterator($this->slides);
-  }
-
-  /**
    * Appends the given slide to the orbit component
    *
    * @param  int $slideNo
-   * @return Bullet
+   * @return Slide
    */
   public function getSlide(int $slideNo): Slide {
     return $this->slides[$slideNo];
@@ -162,8 +163,21 @@ class SlideContainer extends AbstractComponent implements \IteratorAggregate, \C
     return $this;
   }
 
-  public function contentToString(): string {
-    return implode('', $this->slides);
+  public function getHtml(): string {
+    return '<ul class="orbit-container">' . implode('', $this->slides) . '</ul>';
+  }
+
+  /**
+   * Returns the number of the slides in this orbit
+   * 
+   * @return int number of the slides in this orbit
+   */
+  public function count(): int {
+    return count($this->slides);
+  }
+
+  public function getIterator(): Traversable {
+    return new ContentIterator($this->slides);
   }
 
   /**

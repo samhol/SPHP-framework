@@ -22,8 +22,7 @@
 @import "spinner";
 @import "span";
 @import "api-linkers";
-@import "fa-addons";
-@import "statistics-app/all"; 
+@import "_fa-addons";
 
 @mixin sphp-slider() {
   .slider{

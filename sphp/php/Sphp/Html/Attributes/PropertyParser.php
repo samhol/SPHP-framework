@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,6 +14,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -24,24 +27,47 @@ use Sphp\Stdlib\Strings;
  */
 class PropertyParser {
 
+  /**
+   * @var PropertyParser
+   */
+  private static $instance;
+
+  /**
+   * @var string 
+   */
   private $defSep = ';';
+
+  /**
+   * @var string 
+   */
   private $propSep = ':';
-  private $mutable = true;
+
+  /**
+   * @var boolean 
+   */
+  private $isInstantiated = false;
 
   /**
    * Constructor
    * 
-   * @param string $delim
-   * @param string $sep
+   * @param  string $delim
+   * @param  string $sep
    * @throws BadMethodCallException
+   * @throws InvalidArgumentException
    */
   public function __construct(string $delim = ':', string $sep = ';') {
-    if (false === $this->mutable) {
-      throw new BadMethodCallException('Constructor called twice.');
+    if (true === $this->isInstantiated) {
+      throw new BadMethodCallException('Constructor called twice');
+    }
+    if ($delim === '' || $sep === '') {
+      throw new InvalidArgumentException('Either Delimeter or separator cannot be empty');
+    }
+    if ($delim === $sep) {
+      throw new InvalidArgumentException('Delimeter and separator cannot be the same');
     }
     $this->propSep = $delim;
     $this->defSep = $sep;
-    $this->mutable = false;
+    $this->isInstantiated = true;
   }
 
   /**
@@ -57,13 +83,12 @@ class PropertyParser {
     $parsed = [];
     if (is_array($properties)) {
       $parsed = $properties;
-      //$parsed = array_walk($properties, 'trim');
     } else if (is_string($properties)) {
       $parsed = $this->parseStringToProperties($properties);
     }
     foreach ($parsed as $property => $value) {
       if (!$this->isValidProperty($property, $value)) {
-        throw new InvalidArgumentException("Property $property => $value is not valid ");
+        throw new AttributeException("Property '$property' is not valid");
       }
     }
     return $parsed;
@@ -86,7 +111,7 @@ class PropertyParser {
    * @return boolean true if the property value is valid
    */
   public function isValidValue($value): bool {
-    return is_scalar($value) && $value !== '' && Strings::match($value, '/[^\s]+/');
+    return is_scalar($value) && $value !== '' && Strings::match((string) $value, '/[^\s]+/');
   }
 
   /**
@@ -101,27 +126,22 @@ class PropertyParser {
   }
 
   /**
+   * PArses a property string to an array containing propertyname => value pairs
    * 
-   * @param string $properties
+   * @param  string $properties
    * @return array
    * @throws InvalidArgumentException
    */
   public function parseStringToProperties(string $properties): array {
     $parsed = [];
-    //$properties = Strings::trim($properties, $this->defSep);
-    //var_dump($properties);
     $rows = explode($this->defSep, Strings::trim($properties, $this->defSep));
-    if (empty($rows)) {
-      $rows = [$properties];
-    }
-    //echo "rows:\n";
-    //print_r($rows);
     foreach ($rows as $row) {
       $data = explode($this->propSep, $row);
       if (count($data) !== 2) {
-        // echo "invalid data: \n";
-        // print_r($data);
-        throw new InvalidArgumentException("String '$properties' is not valid property string");
+        throw new AttributeException("String '$properties' is not valid property string");
+      }
+      if (!$this->isValidProperty($data[0], $data[1])) {
+        throw new AttributeException("Property $data[0] => $data[1] is not valid ");
       }
       $parsed[trim($data[0])] = trim($data[1]);
     }
@@ -152,6 +172,18 @@ class PropertyParser {
     }
     $output = implode($this->defSep, $strings) . $this->defSep;
     return $output;
+  }
+
+  /**
+   * Returns the singleton instance
+   * 
+   * @return PropertyParser singleton instance
+   */
+  public static function instance(): PropertyParser {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    }
+    return self::$instance;
   }
 
 }

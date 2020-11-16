@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\EmptyTag;
 
 /**
- * Implements an HTML &lt;track&gt; tag
+ * Implementation of an HTML track tag
  *
  *  This component specifies text tracks for {@link AbstractMediaTag} media 
  *  components. It is used to specify subtitles, caption files or other files 
@@ -35,11 +37,9 @@ class Track extends EmptyTag implements MultimediaSource {
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
    */
-  public function __construct(string $src = null, string $srclang = null) {
+  public function __construct(string $src, string $srclang = null) {
     parent::__construct('track');
-    if ($src !== null) {
-      $this->setSrc($src);
-    }
+    $this->attributes()->protect('src', $src);
     if ($srclang !== null) {
       $this->setSrcLang($srclang);
     }
@@ -69,17 +69,6 @@ class Track extends EmptyTag implements MultimediaSource {
    */
   public function isDefault(): bool {
     return $this->attributeExists('default');
-  }
-
-  /**
-   * Sets the path to the track source (The URL of the track file)
-   *
-   * @param  string $src the path to the track source (The URL of the track file)
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
-   */
-  public function setSrc(string $src) {
-    return $this->setAttribute('src', $src);
   }
 
   /**

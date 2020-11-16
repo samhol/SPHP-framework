@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
 namespace Sphp\Html;
 
 use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
@@ -60,13 +70,13 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
     $c->append('b');
     $c->append('c');
     $c->prepend('a');
-    $this->assertTrue($c->exists('a'));
-    $this->assertTrue($c->exists('b'));
-    $this->assertTrue($c->exists('c'));
-    $this->assertFalse($c->exists('d'));
+    $this->assertTrue($c->contains('a'));
+    $this->assertTrue($c->contains('b'));
+    $this->assertTrue($c->contains('c'));
+    $this->assertFalse($c->contains('d'));
     $c->resetContent('foobar');
-    $this->assertFalse($c->exists('a'));
-    $this->assertTrue($c->exists('foobar'));
+    $this->assertFalse($c->contains('a'));
+    $this->assertTrue($c->contains('foobar'));
     return $c;
   }
 
@@ -239,11 +249,11 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
    */
   public function testExists($val) {
     $this->container->append($val);
-    $this->assertTrue($this->container->exists($val));
-    $this->assertFalse($this->container->exists("foo"));
+    $this->assertTrue($this->container->contains($val));
+    $this->assertFalse($this->container->contains("foo"));
     $this->container->clear()->append((new PlainContainer())->append($val));
-    $this->assertTrue($this->container->exists($val));
-    $this->assertFalse($this->container->exists("foo"));
+    $this->assertTrue($this->container->contains($val));
+    $this->assertFalse($this->container->contains("foo"));
   }
 
   /**

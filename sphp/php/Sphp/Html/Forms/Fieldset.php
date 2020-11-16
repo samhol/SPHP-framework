@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -13,7 +15,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;fieldset&gt; tag
+ * fieldset tag
  *
  * The fieldset element is expected to establish a new block formatting context
  *
@@ -63,14 +65,14 @@ class Fieldset extends ContainerTag implements FormController {
   /**
    * Returns the legend of the fieldset component
    *
-   * @return Legend the legend of the fieldset component or null
+   * @return Legend|null the legend of the fieldset component or null
    */
-  public function getLegend(): Legend {
+  public function getLegend(): ?Legend {
     return $this->legend;
   }
 
   public function disable(bool $disabled = true) {
-    $this->attributes()->disabled = $disabled;
+    $this->attributes()->setAttribute('disabled', $disabled);
     return $this;
   }
 
@@ -79,7 +81,7 @@ class Fieldset extends ContainerTag implements FormController {
   }
 
   public function contentToString(): string {
-    return $this->legend . parent::contentToString();
+    return $this->getLegend() . parent::contentToString();
   }
 
 }

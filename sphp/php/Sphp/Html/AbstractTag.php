@@ -10,11 +10,12 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Exceptions\HtmlException;
 
 /**
  * Abstract Class is the base class for all HTML tag implementations
@@ -36,7 +37,7 @@ abstract class AbstractTag extends AbstractContent implements Tag {
   /**
    * attribute container
    *
-   * @var HtmlAttributeManager
+   * @var AttributeContainer
    */
   private $attrs;
 
@@ -46,19 +47,17 @@ abstract class AbstractTag extends AbstractContent implements Tag {
    * Constructor
    *
    * @param  string $tagName the tag name of the component
-   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
-   * @throws InvalidArgumentException if the tag name of the component is not valid
+   * @param  AttributeContainer|null $attrManager the attribute manager of the component
+   * @throws HtmlException if the tag name of the component is not valid
    */
-  public function __construct(string $tagName, HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName, AttributeContainer $attrManager = null) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {
-      throw new InvalidArgumentException("The tag name '$tagName' is malformed");
+      throw new HtmlException("The tag name '$tagName' is malformed");
     }
     $this->tagName = $tagName;
     if ($attrManager !== null) {
       $this->attrs = $attrManager;
     }
-    // self::$c++;
-    // echo "tag:" .self::$c."\n";
   }
 
   /**
@@ -85,22 +84,27 @@ abstract class AbstractTag extends AbstractContent implements Tag {
     return $this->tagName;
   }
 
-  public function attributes(): HtmlAttributeManager {
+  public function attributes(): AttributeContainer {
     if ($this->attrs === null) {
-      $this->attrs = new HtmlAttributeManager();
+      $this->attrs = new AttributeContainer();
     }
     return $this->attrs;
   }
 
-  public function identify(int $length = 16): string {
-    return $this->attributes()->identify($length);
+  public function setId(string $id) {
+    $this->attributes()->setAttribute('id', $id);
+    return $this;
+  }
+
+  public function identify(bool $forceNewValue = false): string {
+    return $this->attributes()->id()->identify($forceNewValue);
   }
 
   public function cssClasses(): ClassAttribute {
     return $this->attributes()->classes();
   }
 
-  public function inlineStyles(): PropertyCollectionAttribute {
+  public function css(): PropertyCollectionAttribute {
     return $this->attributes()->styles();
   }
 
@@ -124,24 +128,24 @@ abstract class AbstractTag extends AbstractContent implements Tag {
 
   protected function attributesToString(): string {
     $output = '';
-    if ($this->attrs !== null && $this->attrs->containsAttributes()) {
+    if ($this->attrs !== null && $this->attrs->count() > 0) {
       $output = " $this->attrs";
     }
     return $output;
   }
 
-  public function addCssClass(...$cssClasses) {
-    $this->cssClasses()->add($cssClasses);
+  public function addCssClass(string ...$cssClasses) {
+    $this->cssClasses()->add(...$cssClasses);
     return $this;
   }
 
-  public function removeCssClass(...$cssClasses) {
-    $this->cssClasses()->remove($cssClasses);
+  public function removeCssClass(string ...$cssClasses) {
+    $this->cssClasses()->remove(...$cssClasses);
     return $this;
   }
 
-  public function hasCssClass(...$cssClasses): bool {
-    return $this->cssClasses()->contains($cssClasses);
+  public function hasCssClass(string ...$cssClasses): bool {
+    return $this->cssClasses()->contains(...$cssClasses);
   }
 
 }

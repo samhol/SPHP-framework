@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -8,9 +10,11 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Tables;
+namespace Sphp\Tests\Html\Tables;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Html\Tables\LineNumberer;
+use Sphp\Html\Tables\Table;
 
 /**
  * Description of LineNumbererTest
@@ -24,6 +28,65 @@ class LineNumbererTest extends TestCase {
 
   public function constructorParameters(): array {
     return [
+        [LineNumberer::LEFT, 1, '#'],
+        [LineNumberer::RIGHT, 1, 'Row: '],
+        [LineNumberer::LEFT | LineNumberer::RIGHT, 1, '#'],
+        [LineNumberer::NONE, 1, '#'],
+    ];
+  }
+
+  /**
+   * @dataProvider constructorParameters
+   * 
+   * @param  int $side
+   * @param  int $start
+   * @param  string $label
+   * @return void
+   */
+  public function testConstructor(int $side, int $start, string $label): void {
+    $numberer = new LineNumberer($side, $start, $label);
+    $this->assertSame($side, $numberer->getSide());
+    $this->assertSame($start, $numberer->getStart());
+    $this->assertSame($label, $numberer->getLabel());
+  }
+
+  /**
+   * @return void
+   */
+  public function testOptionSetting(): void {
+    $numberer = new LineNumberer();
+    $this->assertSame($numberer, $numberer->setFirstLineNumber(10));
+    $this->assertSame(10, $numberer->getFirstLineNumber());
+    $this->assertSame($numberer, $numberer->setLabel('¤'));
+    $this->assertSame('¤', $numberer->getLabel());
+    $this->assertSame($numberer, $numberer->setSide(LineNumberer::LEFT));
+    $this->assertSame(LineNumberer::LEFT, $numberer->getSide());
+    $this->assertSame($numberer, $numberer->setSide(LineNumberer::RIGHT));
+    $this->assertSame(LineNumberer::RIGHT, $numberer->getSide());
+    $this->assertSame($numberer, $numberer->setSide(LineNumberer::LEFT | LineNumberer::RIGHT));
+    $this->assertSame(LineNumberer::LEFT | LineNumberer::RIGHT, $numberer->getSide());
+  }
+
+  public function buildTable(): Table {
+    $table = $this->buildTableWithBodyOnly();
+    $table->useThead();
+    $table->thead()->appendHeaderRow(range('a', 'e'));
+    $table->useTfoot();
+    $table->tfoot()->appendHeaderRow(range('a', 'e'));
+    return $table;
+  }
+
+  public function buildTableWithBodyOnly(): Table {
+    $table = new Table();
+    $table->useTbody();
+    $table->tbody()->appendBodyRow(range(1, 5));
+    $table->tbody()->appendBodyRow(range(1, 5));
+    $table->tbody()->appendBodyRow(range(1, 5));
+    return $table;
+  }
+
+  public function parameterSets(): array {
+    return [
         [1, 'Row '],
         [3, '*']
     ];
@@ -31,54 +94,55 @@ class LineNumbererTest extends TestCase {
 
   /**
    * @dataProvider constructorParameters
-   * @return LineNumberer
+   * 
+   * @param  int $side
+   * @param  int $start
+   * @param  string $label
+   * @return void
    */
-  public function testConstructor(int $start, string $label): LineNumberer {
-    $numberer = new LineNumberer($start, $label);
-    $this->assertSame($start, $numberer->getStart());
-    $this->assertSame($label, $numberer->getLabel());
-    return $numberer;
-  }
-
-  /**
-   * @depends testConstructor
-   */
-  public function testOptionSetting() {
-    $numberer = new LineNumberer();
-    $this->assertSame($numberer, $numberer->setFirstLineNumber(10));
-    $this->assertSame(10, $numberer->getFirstLineNumber());
-    $this->assertSame($numberer, $numberer->setLabel('¤'));
-    $this->assertSame('¤', $numberer->getLabel());
-  }
-
-  public function getTable() {
-    $bodyData = [
-        range(1, 3),
-        range('a', 'c'),
-    ];
-    $builder = new TableBuilder();
-    $builder->setTheadData(range('a', 'c'));
-    $builder->setTbodyData($bodyData);
-    $table = $builder->buildTable();
-    return $table;
-  }
-
-  /**
-   * @depends testConstructor
-   */
-  public function testTableManipulation() {
-    $numberer = new LineNumberer();
-    $table = $this->getTable();
+  public function testUseInTable(int $side, int $start, string $label) {
+    $numberer = new LineNumberer($side, $start, $label);
+    $table = $this->buildTable();
     $numberer->useInTable($table);
-    $this->assertSame("<th scope=\"col\">#</th>", (string) $table->thead()->getRow(0)->getCell(0));
-    foreach ($table->tbody() as $id => $row) {
-      $num = $id + 1;
-      $this->assertSame("<th scope=\"row\">$num.</th>", (string) $row->getCell(0));
+    if ($side & LineNumberer::LEFT) {
+      $row = $table->thead()->getRow(0);
+      $this->assertSame("<th scope=\"col\">$label</th>", (string) $row->getCell(0));
+    }
+    if ($side & LineNumberer::RIGHT) {
+      $row = $table->thead()->getRow(0);
+      $this->assertSame("<th scope=\"col\">$label</th>", (string) $row->getCell($row->count() - 1));
+    }
+    $num = $numberer->getFirstLineNumber();
+    foreach ($table->tbody() as $row) {
+      if ($side & LineNumberer::LEFT) {
+        $th = $row->getCell(0);
+        $this->assertInstanceOf(\Sphp\Html\Tables\Th::class, $th);
+        $this->assertSame("<th scope=\"row\">$num.</th>", (string) $th);
+      }
+      if ($side & LineNumberer::RIGHT) {
+        $th = $row->getCell($row->count() - 1);
+        $this->assertInstanceOf(\Sphp\Html\Tables\Th::class, $th);
+        $this->assertSame("<th scope=\"row\">$num.</th>", (string) $th);
+      }
+      ++$num;
     }
     $this->assertSame($numberer, $numberer->setFirstLineNumber(10));
     $this->assertSame(10, $numberer->getFirstLineNumber());
     $this->assertSame($numberer, $numberer->setLabel('¤'));
     $this->assertSame('¤', $numberer->getLabel());
+  }
+
+  /**
+   * @dataProvider constructorParameters
+   * 
+   * @param  int $side
+   * @param  int $start
+   * @param  string $label
+   * @return void
+   */
+  public function testInvoke(int $side, int $start, string $label) {
+    $numberer = new LineNumberer($side, $start, $label);
+    $this->assertEquals($numberer($this->buildTable()), $numberer->useInTable($this->buildTable()));
   }
 
 }

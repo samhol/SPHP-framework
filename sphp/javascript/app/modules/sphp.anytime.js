@@ -1,5 +1,5 @@
 /**
- * commonJqueryPlugins.js (UTF-8)
+ * sphp.anytime.js (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
  *
  * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>

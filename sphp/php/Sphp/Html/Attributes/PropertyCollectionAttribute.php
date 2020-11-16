@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -14,7 +16,11 @@ use ArrayAccess;
 use Iterator;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\NullPointerException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeValueException;
+use Sphp\Stdlib\Strings;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 
 /**
  * Implements an property attribute object
@@ -46,6 +52,13 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
   private $parser;
 
   /**
+   * whether the attribute is required or not
+   *
+   * @var boolean
+   */
+  private $required = false;
+
+  /**
    * Constructor
    * 
    * @param string $name the name of the attribute
@@ -54,7 +67,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
   public function __construct(string $name, PropertyParser $parser = null) {
     parent::__construct($name);
     if ($parser === null) {
-      $parser = new PropertyParser();
+      $parser = PropertyParser::instance();
     }
     $this->parser = $parser;
   }
@@ -73,6 +86,15 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
       }
     }
     return $output;
+  }
+
+  public function forceVisibility() {
+    $this->required = true;
+    return $this;
+  }
+
+  public function isDemanded(): bool {
+    return $this->required || $this->isProtected();
   }
 
   public function isVisible(): bool {
@@ -107,9 +129,11 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    */
   public function isProtected(string $property = null): bool {
     if ($property === null) {
-      return in_array(true, $this->lockedProps);
+      $isProtected = count($this->lockedProps) > 0;
+    } else {
+      $isProtected = array_key_exists($property, $this->lockedProps);
     }
-    return $this->hasProperty($property) && $this->lockedProps[$property] === true;
+    return $isProtected;
   }
 
   /**
@@ -128,7 +152,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is immutable");
     }
     $this->setProperty($property, $value);
-    $this->lockedProps[$property] = true;
+    $this->lockedProps[$property] = $value;
     return $this;
   }
 
@@ -155,17 +179,13 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
   /**
    * Locks either all or the given properties
    *
-   * @param  null|string|string[] $props optional property/properties to lock
+   * @param  string|string[] $props optional property/properties to lock
    * @return $this for PHP Method Chaining
    * @throws InvalidArgumentException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already immutable
    */
-  public function protectValue($props = null) {
-    if ($props === null) {
-      $this->lockedProps = array_keys($this->props);
-    } else {
-      $this->lockProperties($this->parser->parse($props));
-    }
+  public function protectValue($props) {
+    $this->lockProperties($this->parser->parse($props));
     return $this;
   }
 
@@ -177,7 +197,7 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @param  string $property the name of the property
    * @param  mixed $value the value of the property
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if the property name or value is invalid
+   * @throws InvalidAttributeValueException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function setProperty(string $property, $value) {
@@ -187,13 +207,12 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     if (!$this->parser->isValidPropertyName($property)) {
-      throw new InvalidArgumentException("Property name cannot be empty in the " . $this->getName() . " attribute");
+      throw new InvalidAttributeValueException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
     if (!$this->parser->isValidValue($value)) {
-      throw new InvalidArgumentException("Property value cannot be empty in the " . $this->getName() . " attribute");
+      throw new InvalidAttributeValueException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;
-    $this->lockedProps[$property] = false;
     return $this;
   }
 
@@ -220,38 +239,23 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
   /**
    * Removes given property
    *
-   * @param  string $name the name of the property to remove
+   * @param  string ...$propName the name of the property to remove
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function unsetProperty($name) {
-    if ($this->isProtected($name)) {
-      throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
-    } else {
-      unset($this->props[$name], $this->lockedProps[$name]);
-    }
-    return $this;
-  }
-
-  /**
-   * Removes given properties
-   *
-   * @param  string[] $names the names of the properties to remove
-   * @return $this for a fluent interface
-   * @throws ImmutableAttributeException if any of the properties are immutable
-   */
-  public function unsetProperties(array $names) {
-    foreach ($names as $name) {
-      $this->unsetProperty($name);
+  public function unsetProperties(string ...$propName) {
+    foreach ($propName as $name) {
+      if ($this->isProtected($name)) {
+        throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
+      } else {
+        unset($this->props[$name]);
+      }
     }
     return $this;
   }
 
   public function clear() {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $this->props = [];
+    $this->props = $this->lockedProps;
     return $this;
   }
 
@@ -292,10 +296,11 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    if ($this->isEmpty()) {
-      return null;
+    $value = null;
+    if (!$this->isEmpty()) {
+      $value = $this->parser->propertiesToString($this->props);
     }
-    return $this->parser->propertiesToString($this->props);
+    return $value;
   }
 
   /**
@@ -349,8 +354,8 @@ class PropertyCollectionAttribute extends AbstractAttribute implements ArrayAcce
    * @return void
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function offsetUnset($property) {
-    $this->unsetProperty($property);
+  public function offsetUnset($property): void {
+    $this->unsetProperties($property);
   }
 
   public function toArray(): array {

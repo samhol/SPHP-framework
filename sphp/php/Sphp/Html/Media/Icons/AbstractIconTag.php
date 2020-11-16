@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Media\Icons;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
  * Abstract Implementation of an icon based on fonts and HTML tags
@@ -26,10 +28,10 @@ abstract class AbstractIconTag extends EmptyTag implements Icon {
    * Constructor
    * 
    * @param  string $tagName the tag name of the component
-   * @param  HtmlAttributeManager $attrManager
+   * @param  AttributeContainer $attrManager
    * @throws InvalidArgumentException if the tag name of the component is not valid
    */
-  public function __construct(string $tagName = 'i', HtmlAttributeManager $attrManager = null) {
+  public function __construct(string $tagName = 'i', AttributeContainer $attrManager = null) {
     parent::__construct($tagName, true, $attrManager);
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,6 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\FileSystemException;
-use Sphp\Stdlib\Arrays;
 use Exception;
 use SplFileInfo;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
@@ -21,7 +22,7 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
- * @filesource
+ * @filesource 
  */
 abstract class Filesystem {
 
@@ -88,24 +89,28 @@ abstract class Filesystem {
    * if the executed php file has any side-effects it could mutate the state of 
    * the application even though it is not sending output to the browser.
    * 
-   * @param  string|string[],... $paths the path to the executable PHP script
+   * @param  string ...$paths the path to the executable PHP script
    * @return string the result of the script execution
    * @throws FileSystemException if the $paths points to no actual file
    * @throws Exception 
    */
-  public static function executePhpToString(...$paths): string {
+  public static function executePhpToString(string ...$paths): string {
     $content = '';
     ob_start();
-    foreach (Arrays::flatten($paths) as $path) {
+    foreach ($paths as $path) {
       if (!static::isFile($path)) {
         ob_end_clean();
         throw new FileSystemException("The path '$path' contains no executable PHP script");
       }
-      include($path);
+      try {
+        include($path);
+        $content .= ob_get_contents();
+        ob_end_clean();
+      } catch (\Throwable $ex) {
+        ob_end_clean();
+        throw new \LogicException("The path '$path' contains no executable PHP script", 0, $ex);
+      }
     }
-    $content .= ob_get_contents();
-
-    ob_end_clean();
     return $content;
   }
 

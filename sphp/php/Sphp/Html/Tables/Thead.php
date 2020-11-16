@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Implements an HTML &lt;thead&gt; tag
+ * Implementation of an HTML  thead tag
  *
  *  This component is used to group header content in a &lt;table&gt; component.
  *

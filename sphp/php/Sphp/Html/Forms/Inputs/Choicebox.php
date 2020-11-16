@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -11,7 +13,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Implements an HTML &lt;input type="radio|checkbox"&gt; tag
+ * Implementation of an HTML input type="radio|checkbox" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -44,7 +46,7 @@ class Choicebox extends InputTag implements BooleanInput {
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked(bool $checked = true) {
-    $this->attributes()->checked = $checked;
+    $this->setAttribute('checked', $checked);
     return $this;
   }
 

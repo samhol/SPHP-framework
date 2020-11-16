@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,11 +12,10 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\TraversableContent;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements an HTML &lt;nav&gt; tag
+ * Implementation of an HTML nav tag
  *
  * This object defines a set of navigation links.
  *
@@ -32,6 +33,31 @@ class Nav extends ContainerTag {
    */
   public function __construct($content = null) {
     parent::__construct('nav', $content);
+  }
+
+  /**
+   * Appends an HTML &lt;a&gt; object
+   * 
+   * **Notes:**
+   *
+   * * The href attribute specifies the URL of the page the link goes to.
+   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
+   *
+   * @param  string|null $href optional URL of the link
+   * @param  string|null $content optional the content of the component
+   * @param  string|null $target optional value of the target attribute
+   * @return A appended object
+   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   */
+  public function appendHyperlink(string $href = null, $content = null, string $target = null): A {
+    $component = new A($href, $content, $target);
+    $this->append($component);
+    return $component;
+  }
+  
+  public function getHyperlinks(): iterable {
+    return $this->getComponentsByObjectType(Hyperlink::class);
   }
 
 }

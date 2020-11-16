@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -35,6 +37,11 @@ class Sequence implements Iterator {
    */
   private $maxLength;
 
+  /**
+   * Constructor
+   * 
+   * @param int $maxLength
+   */
   public function __construct(int $maxLength = \PHP_INT_MAX) {
     $this->sequence = [];
     $this->maxLength = $maxLength;
@@ -50,7 +57,7 @@ class Sequence implements Iterator {
   /**
    * Inserts values at a given index
    *
-   * @param int $index the index at which to insert
+   * @param  int $index the index at which to insert
    * @param  mixed $values
    * @return $this for a fluent interface
    * @throws OutOfBoundsException
@@ -69,7 +76,7 @@ class Sequence implements Iterator {
   /**
    * Pushes given values to the end of the sequence
    *
-   * @param  mixed,... $value the value(s) to push
+   * @param  mixed ...$value the value(s) to push
    * @return $this for a fluent interface
    */
   public function push($value): int {
@@ -133,7 +140,7 @@ class Sequence implements Iterator {
   /**
    * Determines whether the given atomic values exists
    *
-   * @param  mixed,... $values the atomic values to search for
+   * @param  mixed ...$values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
   public function contains(...$values): bool {

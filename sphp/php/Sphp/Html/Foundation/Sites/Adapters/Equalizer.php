@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -35,13 +37,8 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function __construct(Component $equalizer, string $name = null) {
     parent::__construct($equalizer);
-    $this->attributes()->getObjectMap()->mapType('data-equalizer', IdAttribute::class);
-    $attr = $this->attributes()->setIdentifier('data-equalizer');
-    if ($name === null) {
-      $attr->identify();
-    } else {
-      $attr->setValue($name);
-    }
+    $attr = new IdAttribute('data-equalizer', $name);
+    $this->attributes()->setInstance($attr);
   }
 
   /**
@@ -91,7 +88,7 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function addObserver(Component $observer) {
     if ($observer->attributeExists('data-equalizer-watch') && $observer->attributes()->getValue('data-equalizer-watch') !== $this->getEqualizerName()) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('');
+      throw new \Sphp\Exceptions\InvalidArgumentException('Observer already watches an equalizer');
     }
     $observer->setAttribute('data-equalizer-watch', $this->getEqualizerName());
     return $this;

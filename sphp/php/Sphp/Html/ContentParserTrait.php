@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -12,7 +14,7 @@ namespace Sphp\Html;
 
 use Sphp\Stdlib\Filesystem;
 use Sphp\Stdlib\Parsers\ParseFactory;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Html\Exceptions\HtmlException;
 
 /**
  * Trait implements functionality of the {@link ContentParser}
@@ -37,13 +39,13 @@ trait ContentParserTrait {
    * 
    * @param  string $path path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeException if the parsing fails for any reason
+   * @throws HtmlException if the parsing fails for any reason
    */
   public function appendRawFile(string $path) {
     try {
       $this->append(Filesystem::toString($path));
     } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new HtmlException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }
@@ -53,50 +55,59 @@ trait ContentParserTrait {
    * 
    * @param  string $path  the path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeException if the parsing fails for any reason
+   * @throws HtmlException if the parsing fails for any reason
    */
   public function appendPhpFile(string $path) {
     try {
       $this->append(Filesystem::executePhpToString($path));
     } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new HtmlException($ex->getMessage(), (int) $ex->getCode(), $ex);
     }
     return $this;
   }
 
   /**
-   * Appends a parsed Mark Down string to the container
+   * Appends a parsed Markdown string to the container
    * 
    * @param  string $md the path to the file
    * @return $this for a fluent interface
-   * @throws RuntimeException if the parsing fails for any reason
    */
-  public function appendMd(string $md, bool $inlineOnly = false) {
-    try {
-      if ($this instanceof InlineContainer) {
-        $content = ParseFactory::md()->parseString($md, $inlineOnly);
-      } else {
-        $content = ParseFactory::md()->parseString($md, $inlineOnly);
-      }
-      $this->append($content);
-    } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
-    }
+  public function appendInlineMd(string $md) {
+    $content = ParseFactory::md()->parseString($md, true);
+    $this->append($content);
     return $this;
   }
 
   /**
-   * Appends a parsed Mark Down file to the container
+   * Appends a parsed Markdown string to the container
+   * 
+   * @param  string $markdown the path to the file
+   * @return $this for a fluent interface
+   * @throws HtmlException if the parsing fails for any reason
+   */
+  public function appendMarkdown(string $markdown, bool $inlineOnly = false) {
+    $content = ParseFactory::md()->parseString($markdown, $inlineOnly);
+    $this->append($content);
+    return $this;
+  }
+
+  /**
+   * Appends a parsed Markdown file to the container
    * 
    * @param  string $path the path to the file
+   * @param  bool $executePhp
    * @return $this for a fluent interface
-   * @throws RuntimeException if the parsing fails for any reason
+   * @throws HtmlException if the parsing fails for any reason
    */
-  public function appendMdFile(string $path) {
+  public function appendMarkdownFile(string $path, bool $executePhp = true) {
     try {
-      $this->appendMd(Filesystem::executePhpToString($path));
+      if ($executePhp) {
+        $this->appendMarkdown(Filesystem::executePhpToString($path));
+      } else {
+        $this->appendMarkdown(ParseFactory::md()->parseFile($path));
+      }
     } catch (\Exception $ex) {
-      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+      throw new HtmlException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }

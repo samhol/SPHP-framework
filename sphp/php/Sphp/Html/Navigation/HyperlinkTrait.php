@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 
 /**
  * Trait implements Hyperlink interface for hyperlink functionality
@@ -24,9 +26,9 @@ trait HyperlinkTrait {
   /**
    * Returns the attribute manager attached to the component
    *
-   * @return HtmlAttributeManager the attribute manager
+   * @return AttributeContainer the attribute manager
    */
-  abstract public function attributes(): HtmlAttributeManager;
+  abstract public function attributes(): AttributeContainer;
 
   /**
    * Sets the value of the href attribute (The URL of the link)

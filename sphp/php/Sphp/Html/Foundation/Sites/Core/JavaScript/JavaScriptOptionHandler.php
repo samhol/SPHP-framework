@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
@@ -10,7 +12,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core\JavaScript;
 
-use Sphp\Html\Attributes\HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Html\Foundation\Sites\Core\DataOptions\DataOptionTools;
 use Sphp\Html\Attributes\PropertyCollectionAttribute;
 
@@ -34,7 +36,7 @@ class JavaScriptOptionHandler implements OptionHandler {
    */
   private $options;
 
-  public function __construct(HtmlAttributeManager $attributes, int $type = self::ONE) {
+  public function __construct(AttributeContainer $attributes, int $type = self::ONE) {
     $this->attributes = $attributes;
     $this->attributes->setInstance(new PropertyCollectionAttribute('data-options'));
     $this->options = new PropertyCollectionAttribute('data-options');
