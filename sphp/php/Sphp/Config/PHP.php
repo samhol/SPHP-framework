@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,12 +24,12 @@ abstract class PHP {
   /**
    * @var PHPConfig
    */
-  private static $configurator;
+  private static ?PHPConfig $configurator = null;
 
   /**
    * @var PHPIni[] 
    */
-  private static $inis;
+  private static array $inis = [];
 
   /**
    * Returns the PHP configuration instance

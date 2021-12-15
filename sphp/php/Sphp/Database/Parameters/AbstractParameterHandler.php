@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -181,7 +181,7 @@ abstract class AbstractParameterHandler implements Iterator, ParameterHandler {
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return bool current iterator position is valid
    */
   public function valid(): bool {
     return false !== current($this->params);

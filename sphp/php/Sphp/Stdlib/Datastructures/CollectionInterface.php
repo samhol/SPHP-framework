@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,7 +20,7 @@ use Traversable;
  * Defines a general purpose collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.php.net/manual/en/arrayobject.php The ArrayObject class
+ * @link    https://www.php.net/manual/en/arrayobject.php The ArrayObject class
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -50,7 +50,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
   /**
    * Determine if the collection is empty or not
    *
-   * @return boolean true if the collection is empty, false otherwise
+   * @return bool true if the collection is empty, false otherwise
    */
   public function isEmpty(): bool;
 
@@ -66,7 +66,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * Checks whether a value exists in the collection
    *
    * @param  mixed $value the value to search for
-   * @return boolean `true` on success or `false` on failure
+   * @return bool `true` on success or `false` on failure
    */
   public function contains($value);
 

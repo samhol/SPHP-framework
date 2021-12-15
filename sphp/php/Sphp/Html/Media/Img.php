@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -34,8 +34,8 @@ use Sphp\Stdlib\Strings;
  * The alt attribute specifies an alternate text for an image, if the image cannot be displayed.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_img.asp w3schools API
- * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_img.asp w3schools API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -48,12 +48,12 @@ class Img extends EmptyTag implements MediaSource, SizeableMedia {
    *
    * @param  string $src specifies the URL of an image
    * @param  string $alt specifies an alternate text for an image
-   * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_img_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_img_src.asp src attribute
+   * @link   https://www.w3schools.com/tags/att_img_type.asp type attribute
    */
   public function __construct(string $src = '', string $alt = '') {
     parent::__construct('img');
-    $this->attributes()->demand('alt');
+    $this->attributes()->forceVisibility('alt');
     $this->setSrc($src)
             ->setAlt($alt);
   }
@@ -92,7 +92,7 @@ class Img extends EmptyTag implements MediaSource, SizeableMedia {
    *
    * @param  string $alt the alternate text for an image
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
+   * @link   https://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function setAlt(string $alt) {
     $this->attributes()->setAttribute('alt', $alt);
@@ -105,12 +105,31 @@ class Img extends EmptyTag implements MediaSource, SizeableMedia {
    * **Notes:** The alt attribute specifies an alternate text for an image.
    *
    * @return string the alternate text for the image
-   * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
+   * @link  https://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function getAlt(): string {
     return $this->attributes()->getValue('alt');
   }
 
+
+  /**
+   * Sets the loading attribute (an alternate text for an image).
+   *
+   * **Definition and Usage:**
+   *
+   *  The loading attribute specifies whether a browser should load an image 
+   *  immediately or to defer loading of off-screen images until for example the 
+   *  user scrolls near them
+   * 
+   * @param  string $loading the loading method
+   * @return $this for a fluent interface
+   * @link   https://www.w3schools.com/tags/att_img_loading.asp loading attribute
+   */
+  public function setLoading(?string $loading) {
+    $this->attributes()->setAttribute('loading', $loading);
+    return $this;
+  }
+  
   /**
    * Sets the path to the image source (The URL of the image file)
    * 

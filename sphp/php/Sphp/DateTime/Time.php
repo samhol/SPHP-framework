@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\DateTime;
 
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\DateTime\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a time of a day 
@@ -23,25 +23,46 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class Time {
 
-  private $hours, $minutes, $seconds;
+  /**
+   * @var int
+   */
+  private int $h;
+
+  /**
+   * @var int
+   */
+  private int $m;
+
+  /**
+   * @var float
+   */
+  private float $s;
+
+  /**
+   * @var int
+   */
+  private int $u = 0;
 
   /**
    * Constructor
    * 
    * @param int $hours
    * @param int $minutes
-   * @param int $seconds
+   * @param float $seconds
    */
-  public function __construct(int $hours = 0, int $minutes = 0, int $seconds = 0) {
+  public function __construct(int $hours, int $minutes, float $seconds = 0) {
     $this->setHours($hours)->setMinutes($minutes)->setSeconds($seconds);
   }
 
   public function __toString(): string {
-    $output = sprintf("%s:%02d", $this->hours, $this->minutes);
-    if ($this->seconds > 0) {
-      $output .= sprintf("%02d", $this->seconds);
+    $out = sprintf('%02d:%02d', $this->h, $this->m);
+    if ($this->s > 0) {
+      $out .= sprintf(':%02d', (int) $this->s);
+      if ($this->u > 0) {
+        $out .= sprintf('.%d', (int) $this->u);
+      }
     }
-    return $output;
+    return $out;
   }
 
   /**
@@ -49,13 +70,13 @@ class Time {
    * 
    * @param int $hours the hours
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if the hours are invalid
+   * @throws InvalidArgumentException if 0 <= $hours < 24
    */
   public function setHours(int $hours) {
     if (0 > $hours || $hours > 23) {
       throw new InvalidArgumentException("Hours must be between 0-23 ($hours given)");
     }
-    $this->hours = $hours;
+    $this->h = $hours;
     return $this;
   }
 
@@ -64,13 +85,13 @@ class Time {
    * 
    * @param  int $minutes the minutes
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException
+   * @throws InvalidArgumentException if 0 <= $minutes < 60
    */
   public function setMinutes(int $minutes) {
     if (0 > $minutes || $minutes > 59) {
       throw new InvalidArgumentException("Minutes must be between 0-59 ($minutes given)");
     }
-    $this->minutes = $minutes;
+    $this->m = $minutes;
     return $this;
   }
 
@@ -79,36 +100,80 @@ class Time {
    * 
    * @param  int $seconds
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException
+   * @throws InvalidArgumentException if 0 <= $seconds < 60
    */
-  public function setSeconds(int $seconds) {
-    if (0 > $seconds || $seconds > 59) {
+  public function setSeconds(float $seconds) {
+    if (0 > $seconds || $seconds >= 60) {
       throw new InvalidArgumentException("Seconds must be between 0-59 ($seconds given)");
     }
-    $this->seconds = $seconds;
+    $this->s = $seconds;
+
+    $decimal = strrchr((string) $this->s, '.');
+    $this->u = (int) str_replace('.', '', $decimal);
     return $this;
   }
 
   public function getHours(): int {
-    return $this->hours;
+    return $this->h;
   }
 
   public function getMinutes(): int {
-    return $this->minutes;
+    return $this->m;
   }
 
-  public function getSeconds(): int {
-    return $this->seconds;
+  public function getSeconds(): float {
+    return $this->s;
   }
 
-  public static function from(string $time = null): Time {
-    $pats = explode(':', $time);
-    $lenght = count($pats);
-    if ($lenght === 2) {
-      return new static((int) $pats[0], (int) $pats[1]);
-    } else if ($lenght === 3) {
-      return new static((int) $pats[0], (int) $pats[1], (int) $pats[2]);
+  public function getMicroSeconds(): int {
+    return $this->u;
+  }
+
+  /**
+   * 
+   * @param  mized $input
+   * @return Time
+   * @throws InvalidArgumentException if the input parameter cannot be converted to a time object
+   */
+  public static function from($input = null): Time {
+    if ($input === null) {
+      $input = new \DateTimeImmutable();
     }
+    if (is_string($input)) {
+      $out = static::fromString($input);
+    } else if ($input instanceof \DateTimeInterface || $input instanceof DateInterface) {
+      $out = new static((int) $input->format('H'), (int) $input->format('i'), (float) $input->format('s.u'));
+    } else {
+      throw new InvalidArgumentException("Invalid string given");
+    }
+    return $out;
+  }
+
+  /**
+   * 
+   * @param  string $input
+   * @return Time
+   * @throws InvalidArgumentException if the input parameter cannot be converted to a time object
+   */
+  public static function fromString(string $input): Time {
+    $parts = explode(':', $input);
+    $lenght = count($parts);
+    if ($lenght > 3) {
+      throw new InvalidArgumentException("Invalid input string ($input)");
+    }
+    $params = [];
+    foreach ($parts as $index => $value) {
+      if (!is_numeric($value)) {
+        throw new InvalidArgumentException("Invalid input string part ($value)");
+      }
+      if ($index < 2) {
+        $value = (int) $value;
+      } else if ($index === 2) {
+        $value = (float) $value;
+      }
+      $params[$index] = $value;
+    }
+    return new static(...$params);
   }
 
 }

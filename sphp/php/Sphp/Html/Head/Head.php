@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -21,7 +21,7 @@ use Sphp\Html\TraversableContent;
  * The &lt;head&gt; tag is a container for all the head elements.
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_head.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_head.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -33,7 +33,7 @@ class Head extends AbstractComponent implements \IteratorAggregate, TraversableC
   /**
    * @var MetaContainer
    */
-  private $content;
+  private MetaContainer $content;
 
   /**
    * Constructor

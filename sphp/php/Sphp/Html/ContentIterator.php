@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -30,13 +30,13 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    *
    * @var mixed[]
    */
-  private $content = [];
+  private array $content = [];
 
   /**
    * Constructor
    *
    * @param  iterable $content the content of the iterator
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct(iterable $content = []) {
     if (!is_array($content)) {
@@ -61,7 +61,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->content = Arrays::copy($this->content);
@@ -75,9 +75,9 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * Returns a collection of sub components that match the search
    *
    * @param  callable $rules a lambda function for testing the sub components
-   * @return iterable containing matching sub components
+   * @return TraversableContent containing matching sub components
    */
-  public function getComponentsBy(callable $rules): iterable {
+  public function getComponentsBy(callable $rules): TraversableContent {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
     $result = [];
@@ -103,9 +103,9 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * Returns a collection of sub components that are of the given PHP type
    *
    * @param  string|\object $type the name of the searched PHP object type
-   * @return iterable containing matching sub components
+   * @return TraversableContent containing matching sub components
    */
-  public function getComponentsByObjectType($type): iterable {
+  public function getComponentsByObjectType($type): TraversableContent {
     $search = function($element) use ($type): bool {
       return $element instanceof $type;
     };
@@ -125,7 +125,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * Count the number of contained items 
    *
    * @return int number of items contained
-   * @link   http://php.net/manual/en/class.countable.php Countable
+   * @link   https://www.php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
     return count($this->content);
@@ -170,7 +170,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return bool current iterator position is valid
    */
   public function valid(): bool {
     return null !== key($this->content);

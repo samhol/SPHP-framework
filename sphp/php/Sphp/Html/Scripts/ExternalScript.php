@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,7 +22,7 @@ use Sphp\Html\EmptyTag;
  * This component points to an external script file through the `src` attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link http://www.w3schools.com/tags/tag_script.asp w3schools API
+ * @link https://www.w3schools.com/tags/tag_script.asp w3schools API
  * @link http://dev.w3.org/html5/spec/Overview.html#script W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -37,7 +37,7 @@ class ExternalScript extends EmptyTag implements Script {
    * This component points to an external script file through the `src` attribute.
    * 
    * @param  string $src the URL of the script file
-   * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
+   * @link   https://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function __construct(string $src) {
     parent::__construct('script', true);
@@ -68,7 +68,7 @@ class ExternalScript extends EmptyTag implements Script {
    * Returns the URL of the script file
    *
    * @return string the URL of the script file
-   * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
+   * @link   https://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function getSrc(): ?string {
     return $this->attributes()->getValue('src');
@@ -79,10 +79,10 @@ class ExternalScript extends EmptyTag implements Script {
    * 
    * Asynchronous script will be executed as soon as it is available.
    * 
-   * @param  boolean $async true for asynchronous execution, false otherwise
+   * @param  bool $async true for asynchronous execution, false otherwise
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
-   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
+   * @link   https://www.w3schools.com/tags/att_script_async.asp async attribute
+   * @link   https://www.w3schools.com/tags/att_script_defer.asp defer attribute
    */
   public function setAsync(bool $async = true) {
     $this->attributes()
@@ -96,9 +96,9 @@ class ExternalScript extends EmptyTag implements Script {
    * 
    * Asynchronous script will be executed as soon as it is available.
    * 
-   * @return boolean true for asynchronous execution, false otherwise
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
-   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
+   * @return bool true for asynchronous execution, false otherwise
+   * @link   https://www.w3schools.com/tags/att_script_async.asp async attribute
+   * @link   https://www.w3schools.com/tags/att_script_defer.asp defer attribute
    */
   public function isAsync(): bool {
     return $this->attributeExists('async');
@@ -107,10 +107,10 @@ class ExternalScript extends EmptyTag implements Script {
   /**
    * Sets whether the script will not run until after the page has loaded
    * 
-   * @param  boolean $defer true for deferred execution, false otherwise
+   * @param  bool $defer true for deferred execution, false otherwise
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
+   * @link   https://www.w3schools.com/tags/att_script_defer.asp defer attribute
+   * @link   https://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function setDefer(bool $defer = true) {
     $this->attributes()
@@ -122,9 +122,9 @@ class ExternalScript extends EmptyTag implements Script {
   /**
    * Checks whether the script will not run until after the page has loaded
    * 
-   * @return boolean true for deferred execution, false otherwise
-   * @link   http://www.w3schools.com/tags/att_script_defer.asp defer attribute
-   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
+   * @return bool true for deferred execution, false otherwise
+   * @link   https://www.w3schools.com/tags/att_script_defer.asp defer attribute
+   * @link   https://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function isDefered(): bool {
     return $this->attributeExists('defer');

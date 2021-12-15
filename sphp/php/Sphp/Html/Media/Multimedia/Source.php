@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,8 +25,8 @@ use Sphp\Html\Utils\Mime;
  *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_source.asp w3schools API
- * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-source-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_source.asp w3schools API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-source-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -37,8 +37,8 @@ class Source extends EmptyTag implements MultimediaSource {
    *
    * @param  string $src the URL of the media file or null for none
    * @param  string|null $type the media type of the media resource or null for none
-   * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_source_src.asp src attribute
+   * @link   https://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function __construct(string $src, string $type = null) {
     parent::__construct('source');
@@ -80,7 +80,7 @@ class Source extends EmptyTag implements MultimediaSource {
    *
    * @param  string|null $type the media type of the media resource
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function setType(string $type = null) {
     $this->attributes()->setAttribute('type', $type);
@@ -91,7 +91,7 @@ class Source extends EmptyTag implements MultimediaSource {
    * Returns the media type of the media resource
    *
    * @return string|null the media type of the media resource
-   * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function getType(): ?string {
     return $this->attributes()->getValue('type');

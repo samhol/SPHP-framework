@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -30,7 +30,7 @@ interface ScriptTag extends Script, Tag {
    *
    * @param  string $type the value of the type attribute (mime-type)
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType(string $type);
 }

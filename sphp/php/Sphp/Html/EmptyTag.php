@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -29,7 +29,7 @@ class EmptyTag extends AbstractTag {
   /**
    * @var bool
    */
-  private $close = false;
+  private bool $close = false;
 
   /**
    * Constructor
@@ -38,7 +38,7 @@ class EmptyTag extends AbstractTag {
    * @param bool $useCloseTag
    * @param AttributeContainer $attrManager
    */
-  public function __construct(string $tagName, bool $useCloseTag = false, AttributeContainer $attrManager = null) {
+  public function __construct(string $tagName, bool $useCloseTag = false, ?AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->close = $useCloseTag;
   }

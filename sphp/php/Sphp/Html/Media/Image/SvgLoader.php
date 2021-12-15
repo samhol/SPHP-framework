@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -64,7 +64,7 @@ class SvgLoader {
    */
   public function fromUrl(string $url, bool $reload = false): Svg {
     if (!array_key_exists($url, $this->src) || $reload) {
-      $opts = ['http' =>
+      $opts = ['https' =>
           [
               'method' => 'GET',
               'timeout' => 5

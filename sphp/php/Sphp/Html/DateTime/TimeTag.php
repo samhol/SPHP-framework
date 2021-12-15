@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html\DateTime;
 
 use DateTimeInterface;
-use Sphp\DateTime\DateTime;
+use Sphp\DateTime\ImmutableDateTime;
 use Sphp\Html\ContainerTag;
 use Sphp\DateTime\DateTimes;
 
@@ -21,7 +21,7 @@ use Sphp\DateTime\DateTimes;
  * Implementation of an HTML time tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_time.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_time.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -31,7 +31,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
   /**
    * the datetime object
    *
-   * @var DateTime 
+   * @var ImmutableDateTime 
    */
   private $dateTime;
 
@@ -71,8 +71,8 @@ class TimeTag extends ContainerTag implements TimeTagInterface {
   }
 
   public function setDateTime($dateTime) {
-    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof DateTime) {
-      $dateTime = new DateTime($dateTime);
+    if (!$dateTime instanceof DateTimeInterface && !$dateTime instanceof ImmutableDateTime) {
+      $dateTime = ImmutableDateTime::from($dateTime);
     }
     $this->dateTime = $dateTime;
     $this->attributes()->setAttribute('datetime', $this->dateTime->format($this->getFormat()));

@@ -37,10 +37,10 @@ interface Input extends FormController {
    * **Note:** Only form elements with a name attribute will have their values 
    * passed when submitting a form.
    *
-   * @param  string $name the name of the input
+   * @param  string|null $name the name of the input
    * @return $this for a fluent interface
    */
-  public function setName(string $name = null);
+  public function setName(?string $name);
 
   /**
    * Checks whether the form input has a name
@@ -48,7 +48,7 @@ interface Input extends FormController {
    * **Note:** Only form elements with a name attribute will have their values 
    * passed when submitting a form.
    *
-   * @return boolean true if the input has a name, otherwise false
+   * @return bool true if the input has a name, otherwise false
    */
   public function isNamed(): bool;
 

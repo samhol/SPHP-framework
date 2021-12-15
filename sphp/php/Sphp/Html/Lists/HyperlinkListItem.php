@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -37,8 +37,8 @@ class HyperlinkListItem extends HyperlinkContainer implements StandardListItem {
    * @param  string|null $href the URL of the link
    * @param  string $content optional content of the component
    * @param  string|null $target optional value of the target attribute
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct(string $href = null, $content = null, string $target = null) {
     parent::__construct('li', new A($href, $content, $target));

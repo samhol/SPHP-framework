@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -31,28 +31,32 @@ use Countable;
  * * This component can be used in a form to collect user input.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_select.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_select.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Select extends AbstractComponent implements ValidableInput, IteratorAggregate, Countable {
+class Select extends AbstractComponent implements ValidableInput, IteratorAggregate, OptionsMenu {
 
   /**
    * @var MenuComponent[] 
    */
-  private $options;
+  private array $options;
 
   /**
    * Constructor
    * 
-   * @param string|null $name name attribute
+   * @param string|null $name the name attribute of the input
+   * @param iterable<MenuComponent>|null $options
    */
-  public function __construct(string $name = null) {
+  public function __construct(?string $name = null, ?iterable $options = null) {
     parent::__construct('select');
+    $this->options = [];
     if ($name !== null) {
       $this->setName($name);
     }
-    $this->options = [];
+    if ($options !== null) {
+      $this->appendOptions($options);
+    }
   }
 
   public function __destruct() {
@@ -82,7 +86,7 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
    * @param  string $value the value attribute of the option
    * @param  string $content the textual content of the option
    * @return Option appended instance
-   * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function appendOption($value, string $content = null): Option {
     $option = new Option($value, $content);
@@ -91,27 +95,23 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
   }
 
   /**
-   * Appends a new optgroup to the component
-   *
-   * **Recognized mixed $opt types:**
+   * Appends an array of content to the component
    * 
-   * 1. a  {@link SelectContentInterface} $opt is stored as such
-   * 2. a `scalar[]` $opt with $key => $val pairs corresponds to an array of new 
-   *    {@link Option}($key, $val) objects
-   * 3. nested arrays are converted to {@link Optgroup} objects having the root 
+   * <code>$options</code> with <code>$key => $val</code> pairs:
+   * 
+   * 1. an {@see Option} <code>$val</code> is stored as such
+   * 2. a scalar <code>$val</code> is stored as an {@see Option}($key, $val)
+   * 3. nested iterables are converted to {@see Optgroup} objects having the root 
    *    key of the nested array as a label of the group
    * 
-   * @param  string|null $label specifies a label for an option-group
-   * @param  Option|(Option|scalar)[]|null $opt the content
-   * @return Optgroup appended instance
+   * @param  string|null $label the label for the optgroup
+   * @param  iterable<string|int, scalar|MenuComponent> $options
+   * @return $this for a fluent interface
+   * @throws InvalidArgumentException
+   * @see    Option
    */
-  public function appendOptgroup(string $label = null, $opt = null): Optgroup {
-    $group = new Optgroup($label);
-    if (is_array($opt)) {
-      $group->appendArray($opt);
-    } else if ($opt instanceof Option) {
-      $group->append($opt);
-    }
+  public function appendOptgroup(?string $label = null, ?iterable $opt = null): Optgroup {
+    $group = new Optgroup($label, $opt);
     $this->append($group);
     return $group;
   }
@@ -127,11 +127,29 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
     return $this;
   }
 
-  public function appendArray(array $opts) {
+  /**
+   * Appends an array of content to the component
+   * 
+   * <code>$options</code> with <code>$key => $val</code> pairs:
+   * 
+   * 1. an {@see Option} <code>$val</code> is stored as such
+   * 2. a scalar <code>$val</code> is stored as an {@see Option}($key, $val)
+   * 3. nested arrays are converted to {@see Optgroup} objects having the root 
+   *    key of the nested array as a label of the group
+   * 3. all other data results to an exception thrown
+   * 
+   * @param  iterable<string|int, scalar|MenuComponent> $options
+   * @return $this for a fluent interface
+   * @throws InvalidArgumentException
+   * @see    MenuComponent
+   * @see    Option
+   * @see    Optgroup
+   */
+  public function appendOptions(iterable $opts) {
     foreach ($opts as $index => $option) {
-      if (is_array($option)) {
+      if (is_iterable($option)) {
         $optGroup = new Optgroup((string) $index);
-        $optGroup->appendArray($option);
+        $optGroup->appendOptions($option);
         $this->append($optGroup);
       } else {
         $this->append(new Option($index, (string) $option));
@@ -141,9 +159,9 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
   }
 
   /**
-   * Counts the number of menu components
+   * Counts the number of options
    * 
-   * @return int the number of menu components
+   * @return int the number of options
    */
   public function count(): int {
     return count($this->getOptions());
@@ -158,6 +176,11 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
     return new ContentIterator($this->options);
   }
 
+  /**
+   * Returns all the Option components
+   * 
+   * @return iterable<int, Option> all the Option components
+   */
   public function getOptions(): iterable {
     $opts = [];
     foreach ($this as $item) {
@@ -181,7 +204,7 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
         $selected[] = $option->getValue();
       }
     }
-    if (!$this->allowMultiple() && count($selected) > 1) {
+    if (!$this->attributeExists('multiple') && count($selected) > 1) {
       $selected = [array_pop($selected)];
     }
     return $selected;
@@ -210,7 +233,7 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
   /**
    * Specifies that multiple options can or cannot be selected at once
    * 
-   * @param  boolean $multiple true if multiple selections are allowed, 
+   * @param  bool $multiple true if multiple selections are allowed, 
    *         otherwise false
    * @return $this for a fluent interface
    */
@@ -219,20 +242,16 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
     return $this;
   }
 
-  public function allowMultiple(): bool {
-    return $this->attributeExists('multiple');
-  }
-
   /**
    * Sets the number of the visible &lt;option&gt; components
    * 
    * **Note:** In Chrome and Safari, this attribute may not work as 
    *  expected for size="2" and size="3".
    * 
-   * @param  int $size optional number of visible &lt;option&gt; components
+   * @param  int|null $size optional number of visible &lt;option&gt; components
    * @return $this for a fluent interface
    */
-  public function setSize(int $size = null) {
+  public function setSize(?int $size) {
     $this->attributes()->setAttribute('size', $size);
     return $this;
   }
@@ -250,7 +269,7 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
     return $this->attributes()->getValue('name');
   }
 
-  public function setName(string $name = null) {
+  public function setName(?string $name) {
     $this->attributes()->setAttribute('name', $name);
     return $this;
   }
@@ -270,14 +289,6 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
 
   public function toArray(): array {
     return $this->options;
-  }
-
-  public static function from(string $name = null, array $opts = []): Select {
-    $select = new Select($name);
-    if (count($opts) > 0) {
-      $select->appendArray($opts);
-    }
-    return $select;
   }
 
 }

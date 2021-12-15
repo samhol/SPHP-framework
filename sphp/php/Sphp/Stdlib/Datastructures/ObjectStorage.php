@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -103,11 +103,12 @@ class ObjectStorage implements IteratorAggregate, Arrayable, \Countable {
    * @return bool true if removed, false otherwise 
    */
   public function removeById(string $hash): bool {
+    $result = false;
     if ($this->containsHash($hash)) {
       unset($this->objects[$hash]);
-      return true;
+      $result = true;
     }
-    return false;
+    return $result;
   }
 
   /**

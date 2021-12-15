@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -39,12 +39,12 @@ class ShutDownRegister {
   /**
    * @var bool
    */
-  private $isRegistered = false;
+  private bool $isRegistered = false;
 
   /**
    * @var ExecutionSequence
    */
-  private $sequence;
+  private ExecutionSequence $sequence;
 
   /**
    * Constructor
@@ -85,7 +85,7 @@ class ShutDownRegister {
   /**
    * Register the callback
    * 
-   * @return System_ShutdownProcess $this instance
+   * @return $this instance
    */
   public function register() {
     if (!$this->isRegistered) {

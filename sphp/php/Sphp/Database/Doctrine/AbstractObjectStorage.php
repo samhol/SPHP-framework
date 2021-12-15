@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -72,7 +72,7 @@ class AbstractObjectStorage implements \IteratorAggregate, \Sphp\Stdlib\Datastru
    * Confirms the uniqueness of the location name in the repository
    *
    * @param  string $needle the location instance or the location name string
-   * @return boolean true, if field value is unique, false otherwise
+   * @return bool true, if field value is unique, false otherwise
    */
   public function propNotUsed(string $prop, $value): bool {
     $query = $this->getManager()

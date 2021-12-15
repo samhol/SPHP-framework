@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,26 +12,26 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
-use Traversable;
+use ArrayAccess;
 use Sphp\Html\ContentIterator;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Attributes\AttributeContainer;
 
 /**
- * Implementation of an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
+ * Abstract implementation of an HTML table row container
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class RowContainer extends AbstractComponent implements IteratorAggregate, TraversableContent, TableContent {
+abstract class RowContainer extends AbstractComponent implements IteratorAggregate, TraversableContent, TableContent, ArrayAccess {
 
   use \Sphp\Html\TraversableTrait;
 
   /**
    * @var Row[]
    */
-  private $rows;
+  private array $rows;
 
   /**
    * Constructor
@@ -119,6 +119,59 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
     return $row;
   }
 
+  /**
+   * Checks whether an offset exists
+   *
+   * @param mixed $offset an offset to check for
+   * @return bool true on success or false on failure
+   */
+  public function offsetExists($offset): bool {
+    return array_key_exists($offset, $this->rows);
+  }
+
+  /**
+   * Returns the content element at the specified offset
+   *
+   * @param  mixed $offset the index with the content element
+   * @return Row|null content element or null
+   */
+  public function offsetGet($offset): ?Row {
+    if ($this->offsetExists($offset)) {
+      return $this->rows[$offset];
+    }
+    return null;
+  }
+
+  /**
+   * Assigns content to the specified offset
+   *
+   * @param  mixed $offset the offset to assign the value to
+   * @param  mixed $value the value to set
+   * @return void
+   */
+  public function offsetSet($offset, $value): void {
+    if (!$value instanceof Row) {
+      $value = new Tr($value);
+    }
+    if ($offset === null) {
+      $this->rows[] = $value;
+    } else {
+      $this->rows[$offset] = $value;
+    }
+  }
+
+  /**
+   * Unsets an offset
+   *
+   * @param  mixed $offset offset to unset
+   * @return void
+   */
+  public function offsetUnset($offset): void {
+    if ($this->offsetExists($offset)) {
+      unset($this->rows[$offset]);
+    }
+  }
+
   public function contentToString(): string {
     return implode($this->rows);
   }
@@ -126,9 +179,9 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
   /**
    * Returns an external iterator
    *
-   * @return Traversable external iterator
+   * @return ContentIterator<Row> external iterator
    */
-  public function getIterator(): Traversable {
+  public function getIterator(): ContentIterator {
     return new ContentIterator($this->rows);
   }
 

@@ -1,0 +1,47 @@
+[18-Aug-2019 11:20:07 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[18-Aug-2019 11:20:07 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[18-Aug-2019 11:20:07 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 16
+[19-Aug-2019 23:40:16 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[19-Aug-2019 23:40:16 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[19-Aug-2019 23:40:16 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 16
+[20-Aug-2019 00:01:11 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[20-Aug-2019 00:01:11 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[20-Aug-2019 00:01:11 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 16
+[20-Aug-2019 00:02:23 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[20-Aug-2019 00:02:23 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[20-Aug-2019 00:02:23 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 16
+[20-Aug-2019 00:02:26 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[20-Aug-2019 00:02:26 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 15
+[20-Aug-2019 00:02:26 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 16
+[20-Aug-2019 00:03:00 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 8
+[20-Aug-2019 00:03:00 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 8
+[20-Aug-2019 00:03:00 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 17
+[20-Aug-2019 00:03:02 Europe/Helsinki] PHP Warning:  include_once(/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php): failed to open stream: No such file or directory in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 8
+[20-Aug-2019 00:03:02 Europe/Helsinki] PHP Warning:  include_once(): Failed opening '/home/int48291/public_html/playground/sphp/javascript/vendor/../settings.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 8
+[20-Aug-2019 00:03:02 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Sphp\Network\Headers\Headers' not found in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php on line 17
+[20-Aug-2019 00:04:50 Europe/Helsinki] PHP Fatal error:  Uncaught Sphp\Exceptions\FileSystemException: The path '/home/int48291/public_html/playground/sphp/javascript/vendor/../locale/' does not exist in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:63
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/javascript/vendor/anytime.c.localization.php(37): Sphp\Stdlib\Filesystem::getFullPath('/home/int48291/...')
+#1 {main}
+  thrown in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php on line 63

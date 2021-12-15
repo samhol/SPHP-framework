@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -27,15 +27,8 @@ use Sphp\Html\Scripts\ExternalScript;
  */
 class ReCAPTCHAv3 {
 
-  /**
-   * @var string 
-   */
-  private $secret;
-
-  /**
-   * @var string 
-   */
-  private $clienId;
+  private string $secret;
+  private string $clienId;
 
   /**
    * Constructor

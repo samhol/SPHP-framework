@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,7 +24,8 @@ interface Observer {
   /**
    * Receives an update from a subject
    * 
-   * @param Subject $subject
+   * @param  Subject $subject
+   * @return void
    */
-  public function update(Subject $subject);
+  public function update(Subject $subject): void;
 }

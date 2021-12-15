@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -55,7 +55,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->items = Arrays::copy($this->items);
@@ -65,7 +65,7 @@ class Collection implements Iterator, CollectionInterface {
    * Determines whether the given property exists
    *
    * @param  mixed $offset the offset key
-   * @return boolean true if the property exists and false otherwise
+   * @return bool true if the property exists and false otherwise
    */
   public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->items);
@@ -175,7 +175,7 @@ class Collection implements Iterator, CollectionInterface {
    * @precondition $flag === {@link ARRAY_FILTER_USE_KEY} || $flag === {@link ARRAY_FILTER_USE_BOTH}
    * @param  callable $callback the callback function to use; If no callback is 
    *         supplied, all entries of array equal to `false` will be removed.
-   * @param  int $flag flag determining what arguments are sent to callback
+   * @param  int $flag flag determining which arguments are sent to callback
    * @return self new filtered collection
    */
   public function filter(callable $callback = null, int $flag = 0): Collection {
@@ -199,7 +199,7 @@ class Collection implements Iterator, CollectionInterface {
    * Checks if the given value exists in the collection
    * 
    * @param  mixed $value the value to search
-   * @return boolean `true` if the given value exists, `false` otherwise
+   * @return bool `true` if the given value exists, `false` otherwise
    */
   public function contains($value): bool {
     return in_array($value, $this->items, true);
@@ -221,7 +221,7 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Determine if the collection is empty or not
    *
-   * @return boolean true if the collection is empty, false otherwise
+   * @return bool true if the collection is empty, false otherwise
    */
   public function isEmpty(): bool {
     return empty($this->items);
@@ -319,7 +319,7 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current if iterator position is valid
+   * @return bool current if iterator position is valid
    */
   public function valid(): bool {
     return null !== key($this->items);

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,10 +13,10 @@ declare(strict_types=1);
 namespace Sphp\Html\Tables;
 
 /**
- * Implements a &lt;td&gt; data cell for an HTML &lt;table&gt;
+ * Implementation of an HTML td tag
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_td.asp w3schools API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -36,8 +36,8 @@ class Td extends AbstractCell {
    * @param mixed $content the content of the component
    * @param int $colspan specifies the number of columns cell should span
    * @param int $rowspan specifies the number of rows cell should span
-   * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
-   * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
+   * @link  https://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
+   * @link  https://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    */
   public function __construct($content = null, int $colspan = 1, int $rowspan = 1) {
     parent::__construct('td', $content);

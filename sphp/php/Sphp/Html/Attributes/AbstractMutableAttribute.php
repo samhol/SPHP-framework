@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,40 +25,23 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 abstract class AbstractMutableAttribute extends AbstractAttribute implements MutableAttribute {
 
   /**
-   * whether the attribute is required or not
+   * whether the attribute is always visible or not
    *
    * @var boolean
    */
-  private $required = false;
-
-  /**
-   * @var boolean 
-   */
-  private $protected = false;
-
-  public function isProtected(): bool {
-    return $this->protected;
-  }
-
-  public function protectValue($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
-    $this->setValue($value);
-    $this->protected = true;
-    return $this;
-  }
+  private bool $alwaysVisible = false;
 
   public function forceVisibility() {
-    if (!$this->isVisible()) {
-      $this->setValue(true);
-    }
-    $this->required = true;
+    $this->alwaysVisible = true;
     return $this;
   }
 
-
-  public function isDemanded(): bool {
-    return $this->required;
+  public function isAlwaysVisible(): bool {
+    return $this->alwaysVisible;
   }
+
+  public function isVisible(): bool {
+    return $this->isAlwaysVisible() || ($this->getValue() !== false && $this->getValue() !== null);
+  }
+
 }

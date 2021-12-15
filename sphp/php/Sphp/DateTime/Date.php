@@ -6,68 +6,132 @@ declare(strict_types=1);
  * SPHPlayground Framework (http://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
- * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @copyright Copyright (c) 2021 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
 namespace Sphp\DateTime;
 
-use DateTimeImmutable;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
-
 /**
- * Implements a date object
+ * The Date Interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @license https://opensource.org/licenses/MIT The MIT License
- * @link    https://github.com/samhol/SPHP-framework GitHub repository
+ * @license https://opensource.org/licenses/MIT MIT License
+ * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class Date extends AbstractDate {
+interface Date {
 
   /**
-   * Constructor
+   * Returns the difference between two objects
    * 
-   * @param  mixed $date raw date data
-   * @throws InvalidArgumentException if date cannot be parsed from input
+   * @param  mixed $date The date to compare to
+   * @param  bool $absolute Should the interval be forced to be positive?
+   * @return Interval An instance representing the difference between the two dates
+   * @throws InvalidArgumentException if the datetime to compare to is invalid
    */
-  public function __construct($date = null) {
-    try {
-      $dateTime = new DateTimeImmutable(DateTimes::parseDateString($date));
-      parent::__construct($dateTime);
-    } catch (\Exception $ex) {
-      throw new InvalidArgumentException(static::class . ' object cannot be parsed from input type', $ex->getCode(), $ex);
-    }
-  }
-
-  public function __toString(): string {
-    return $this->format('Y-m-d');
-  }
-
-  public function diff($date, bool $absolute = false): Interval {
-    try {
-      $other = Date::from($date)->getDateTime();
-    } catch (\Exception $ex) {
-      throw new InvalidArgumentException('The date to compare to is invalid', $ex->getCode(), $ex);
-    }
-    $diff = $this->getDateTime()->diff($other, $absolute);
-    return Intervals::fromDateInterval($diff);
-  }
+  public function diff($date, bool $absolute = false): Interval;
 
   /**
-   * Returns the difference in days between this and another date
+   * Returns the string representation of the object
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return int the difference in days
-   * @throws InvalidArgumentException if date cannot be parsed from input
+   * @return string the string representation of the object
    */
-  public function compareTo($date): int {
-    $dt = Date::from($date)->format('Ymd');
-    $timeStamp = $this->format('Ymd');
-    $result = $timeStamp <=> $dt;
-    return $result;
-  }
+  public function __toString(): string;
+
+  /**
+   * Returns date formatted according to given format
+   * 
+   * @param  string $format the format of the outputted date string
+   * @return string date formatted according to given format 
+   */
+  public function format(string $format): string;
+
+  /**
+   * Returns the ISO-8601 numeric representation of the day of the week
+   * 
+   * @return int the number of the weekday
+   */
+  public function getWeekDay(): int;
+
+  /**
+   * Returns the name of the weekday
+   * 
+   * @return string the name of the weekday
+   */
+  public function getWeekDayName(): string;
+
+  /**
+   * Returns the week number 
+   * 
+   * @return int the week number 
+   */
+  public function getWeek(): int;
+
+  /**
+   * Returns the number of the month
+   * 
+   * @return int the number of the month
+   */
+  public function getMonth(): int;
+
+  /**
+   * Returns the name of the month
+   * 
+   * @return string the name of the month
+   */
+  public function getMonthName(): string;
+
+  /**
+   * Returns the day of the month
+   * 
+   * @return int the day of the month
+   */
+  public function getMonthDay(): int;
+
+  /**
+   * Returns the year
+   * 
+   * @return int the year
+   */
+  public function getYear(): int;
+
+  /**
+   * Checks whether the date is the current date
+   * 
+   * @return bool true if the date is the current date, false otherwise
+   */
+  public function isCurrentDate(): bool;
+
+  /**
+   * Checks whether the week is the current week
+   * 
+   * @return bool true if the week number is current, false otherwise
+   */
+  public function isCurrentWeek(): bool;
+
+  /**
+   * Checks whether the month is the current week
+   * 
+   * @return bool true if the month is current, false otherwise
+   */
+  public function isCurrentMonth(): bool;
+
+  /**
+   * Checks if the input matches the object 
+   * 
+   * @param  Date $date the date to match
+   * @return bool true if matches and false otherwise
+   */
+  public function dateEqualsTo(Date $date): bool;
+
+  /**
+   * Returns the difference between this and another date
+   * 
+   * @param  Date $date another date
+   * @return int the difference
+   */
+  public function compareDateTo(Date $date): int;
 
   /**
    * Advances given number of days and returns a new instance
@@ -75,98 +139,45 @@ class Date extends AbstractDate {
    * @param  int $days number of days to shift
    * @return Date new instance
    */
-  public function jumpDays(int $days): Date {
-    return $this->modify("$days day");
-  }
+  public function jumpDays(int $days): Date;
 
   /**
-   * Returns the next Date
+   * Advances given number of months and returns a new instance
    * 
-   * @return Date new instance
+   * @param  int $months number of months to shift
+   * @return ImmutableDate new instance
    */
-  public function nextDay(): Date {
-    return $this->modify('+ 1 day');
-  }
+  public function jumpMonths(int $months): Date;
 
   /**
-   * Returns the previous Date
+   * Advances given number of years and returns a new instance
    * 
-   * @return Date new instance
+   * @param  int $years number of years to shift
+   * @return ImmutableDate new instance
    */
-  public function previousDay(): Date {
-    return $this->modify('- 1 day');
-  }
+  public function jumpYears(int $years): Date;
 
   /**
    * Returns the date representing the first of the same month
    * 
    * @return Date new instance
    */
-  public function firstOfMonth(): Date {
-    return $this->modify('first day of this month');
-  }
+  public function firstOfMonth(): Date;
 
   /**
    * Returns the date representing the first of the same month
    * 
-   * @return DateTimeInterface new instance
-   */
-  public function lastOfMonth(): Date {
-    return $this->modify('last day of this month');
-  }
-
-  /**
-   * Creates a new object with modified timestamp
-   *  
-   * @param  string $modify a date/time string
    * @return Date new instance
-   * @throws InvalidArgumentException if formatting fails
-   * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
-  public function modify(string $modify): Date {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $thrower->start();
-    $new = $this->getDateTime()->modify($modify);
-    $thrower->stop();
-    return new Date($new);
-  }
+  public function lastOfMonth(): Date;
 
   /**
-   * Creates a new instance
+   * Sets the date
    * 
-   * @param  mixed $date raw date data
-   * @return Date new instance
-   * @throws InvalidArgumentException if date cannot be parsed from input
+   * @param  int $year Year of the date
+   * @param  int $month Month of the date
+   * @param  int $day Day of the date
+   * @return Date modified instance
    */
-  public static function from($date): Date {
-    return new static($date);
-  }
-
-  /**
-   * 
-   * @param  string $format
-   * @param  string $time
-   * @param  \DateTimeZone $timezone
-   * @return Date|null
-   */
-  public static function createFromFormat(string $format, string $time, \DateTimeZone $timezone = null): ?Date {
-    $dti = DateTimeImmutable::createFromFormat($format, $time, $timezone);
-    if ($dti === false) {
-      return null;
-    }
-    return new static($dti);
-  }
-
-  /**
-   * 
-   * 
-   * @param  int $day
-   * @param  int $month
-   * @param  int $year
-   * @return Date
-   */
-  public static function mkDate(int $day, int $month, int $year): Date {
-    return new static(date('Y-m-d', mktime(0, 1, 0, $month, $day, $year)));
-  }
-
+  public function setDate(int $year, int $month, int $day): Date;
 }

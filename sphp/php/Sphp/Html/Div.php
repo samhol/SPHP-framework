@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Html;
+
+use Sphp\Html\Sections\AbstractFlowContainer;
 
 /**
  * Implementation of an HTML div tag
@@ -21,12 +23,12 @@ namespace Sphp\Html;
  * By default, browsers always place a line break before and after the &lt;div&gt; element.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_div.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_div.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Div extends Flow\AbstractFlowContainer {
+class Div extends AbstractFlowContainer {
 
   /**
    * Constructor
@@ -35,6 +37,12 @@ class Div extends Flow\AbstractFlowContainer {
    */
   public function __construct($content = null) {
     parent::__construct('div', $content);
+  }
+
+  public function __call(string $name, array $arguments): Tag {
+    $tag = strtolower(str_replace('append', '', $name));
+    $this->append($content = Tags::create($tag, ...$arguments));
+    return $content;
   }
 
 }

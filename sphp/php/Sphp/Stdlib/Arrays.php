@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -15,8 +15,6 @@ namespace Sphp\Stdlib;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Traversable;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Utility class for PHP array operations
@@ -60,7 +58,7 @@ abstract class Arrays {
   public static function pointToValue(array &$array, $value) {
     $key = array_search($value, $array, true);
     if ($key === false) {
-      throw new OutOfBoundsException("Value does not exist in the array");
+      throw new OutOfBoundsException('Value does not exist in the array');
     }
     return static::pointToKey($array, $key);
   }
@@ -70,7 +68,7 @@ abstract class Arrays {
    * 
    * @param  mixed $needle the searched value
    * @param  array $haystack the array
-   * @return boolean true if the value exist and false otherwise
+   * @return bool true if the value exist and false otherwise
    */
   public static function inArray($needle, array $haystack): bool {
     $found = false;
@@ -123,7 +121,7 @@ abstract class Arrays {
    * @return string[] an array of values that contain the given phrase
    */
   public static function getValuesLike(array $arr, string $needle): array {
-    $strings = array_filter($arr, function($var) {
+    $strings = array_filter($arr, function ($var) {
       return is_string($var) || is_numeric($var);
     });
     $searched = preg_quote($needle, '/');
@@ -135,12 +133,12 @@ abstract class Arrays {
    * Search a single dimensional array for keys that contain the given phrase
    * 
    * @param  array $arr the array to search from
-   * @param  string $needle the phrase to search for
+   * @param  scalar $needle the phrase to search for
    * @return string[] an array of values that have the matching keys
    */
-  public static function findKeysLike(array $arr, string $needle): array {
+  public static function findKeysLike(array $arr, $needle): array {
     $keys = array_keys($arr);
-    $passed = self::getValuesLike($keys, $needle);
+    $passed = self::getValuesLike($keys, (string) $needle);
     $result = [];
     foreach ($passed as $key) {
       $result[$key] = $arr[$key];
@@ -171,7 +169,7 @@ abstract class Arrays {
    * Checks if each key is an integer value
    *
    * @param array $arr checked array
-   * @return boolean true if array is indexed and false otherwise
+   * @return bool true if array is indexed and false otherwise
    */
   public static function isIndexed(array $arr): bool {
     for (reset($arr); is_int(key($arr)); next($arr))
@@ -185,7 +183,7 @@ abstract class Arrays {
    *
    * @param array $arr checked array
    * @param int|null $base the starting index of the sequence
-   * @return boolean true if conditions hold and false otherwise
+   * @return bool true if conditions hold and false otherwise
    */
   public static function isSequential(array $arr, int $base = null): bool {
     if ($base === null) {
@@ -245,10 +243,11 @@ abstract class Arrays {
    * @throws InvalidArgumentException if the array cannot be converted to string
    */
   public static function recursiveImplode(array $arr, string $glue = ''): string {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $thrower->start();
-    $output = implode(static::flatten($arr), $glue);
-    $thrower->stop();
+    try {
+      $output = implode($glue, static::flatten($arr));
+    } catch (\Error $ex) {
+      throw new InvalidArgumentException($ex->getMessage());
+    }
     return $output;
   }
 
@@ -262,7 +261,7 @@ abstract class Arrays {
    *
    * @param  array $arr array to copy
    * @return array copied array
-   * @link   http://php.net/manual/en/language.oop5.cloning.php Object Cloning
+   * @link   https://www.php.net/manual/en/language.oop5.cloning.php Object Cloning
    */
   public static function copy(array $arr): array {
     $newArray = [];
@@ -288,7 +287,7 @@ abstract class Arrays {
    */
   public static function flatten(array $array): array {
     $return = [];
-    array_walk_recursive($array, function($a) use (&$return) {
+    array_walk_recursive($array, function ($a) use (&$return) {
       $return[] = $a;
     });
     return $return;
@@ -302,41 +301,15 @@ abstract class Arrays {
    */
   public static function toArray($object): array {
     if (is_array($object)) {
-      return $object;
-    }
-    if (!is_object($object)) {
-      throw new InvalidArgumentException('Object or array required: ' . gettype($object) . ' given');
-    }
-    if ($object instanceof Arrayable) {
-      $items = $object->toArray();
-    } else if ($object instanceof Traversable) {
-      $items = iterator_to_array($object);
+      $out = $object;
+    } else if (is_iterable($object)) {
+      $out = iterator_to_array($object);
+    } else if ($object instanceof Arrayable) {
+      $out = $object->toArray();
     } else {
-      throw new InvalidArgumentException('Object ' . get_class($object) . ' cannot be transformed to an array');
+      throw new InvalidArgumentException('Input type cannot be transformed to an array');
     }
-    return $items;
-  }
-
-  /**
-   * Shuffle an array using a CSPRNG
-   * 
-   * @link https://paragonie.com/b/JvICXzh_jhLyt4y3
-   * 
-   * @param array $array reference to an array
-   */
-  public static function secureShuffle(&$array) {
-    $size = count($array);
-    $keys = array_keys($array);
-    for ($i = $size - 1; $i > 0; --$i) {
-      $r = random_int(0, $i);
-      if ($r !== $i) {
-        $temp = $array[$keys[$r]];
-        $array[$keys[$r]] = $array[$keys[$i]];
-        $array[$keys[$i]] = $temp;
-      }
-    }
-    // Reset indices:
-    $array = array_values($array);
+    return $out;
   }
 
 }

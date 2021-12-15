@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -14,7 +14,6 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
-use Traversable;
 use Sphp\Html\ContentIterator;
 
 /**
@@ -24,7 +23,7 @@ use Sphp\Html\ContentIterator;
  *  components in a {@link Table}.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_tr.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-tr-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -36,7 +35,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
   /**
    * @var Cell[]
    */
-  private $cells = [];
+  private array $cells = [];
 
   /**
    * Constructor
@@ -56,13 +55,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
     return $th;
   }
 
-  /**
-   * Creates and appends &lt;th&gt; components to the row
-   *
-   * @param  mixed[] $cells cells of the table row
-   * @return $this for a fluent interface
-   */
-  public function appendThs(array $cells) {
+  public function appendThs(... $cells) {
     foreach ($cells as $th) {
       $this->appendTh($th);
     }
@@ -75,13 +68,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
     return $td;
   }
 
-  /**
-   * Creates and appends &lt;td&gt; components to the row
-   *
-   * @param  mixed[] $cells cells of the table row
-   * @return $this for a fluent interface
-   */
-  public function appendTds(array $cells) {
+  public function appendTds(... $cells) {
     foreach ($cells as $td) {
       if ($td instanceof Cell) {
         $this->append($td);
@@ -98,25 +85,9 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
    * @param  Cell $cell new cell object
    * @return $this for a fluent interface
    */
-  public function prepend(Cell $cell): Cell {
+  public function prepend(Cell $cell) {
     array_unshift($this->cells, $cell);
-    return $cell;
-  }
-
-  /**
-   * Returns the cell at given position
-   * 
-   * **Important:** Cells are numbered sequentially starting from 0
-   * 
-   * @param  int $position
-   * @return Cell|null the cell at given position
-   */
-  public function getCell(int $position): ?Cell {
-    if (array_key_exists($position, $this->cells)) {
-      return $this->cells[$position];
-    } else {
-      return null;
-    }
+    return $this;
   }
 
   public function contentToString(): string {
@@ -126,30 +97,93 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
   /**
    * Returns an external iterator
    *
-   * @return Traversable external iterator
+   * @return ContentIterator<Cell> external iterator
    */
-  public function getIterator(): Traversable {
+  public function getIterator(): ContentIterator {
     return new ContentIterator($this->cells);
+  }
+
+  /**
+   * Checks whether an offset exists
+   *
+   * @param mixed $offset an offset to check for
+   * @return bool true on success or false on failure
+   */
+  public function offsetExists($offset): bool {
+    return array_key_exists($offset, $this->cells);
+  }
+
+  /**
+   * Returns the content element at the specified offset
+   *
+   * @param  mixed $offset the index with the content element
+   * @return Cell|null content element or null
+   */
+  public function offsetGet($offset): ?Cell {
+    if ($this->offsetExists($offset)) {
+      return $this->cells[$offset];
+    }
+    return null;
+  }
+
+  /**
+   * Assigns content to the specified offset
+   *
+   * @param  mixed $offset the offset to assign the value to
+   * @param  mixed $value the value to set
+   * @return void
+   */
+  public function offsetSet($offset, $value): void {
+    if (!$value instanceof Cell) {
+      $value = new Td($value);
+    }
+    $this->cells[$offset] = $value;
+  }
+
+  /**
+   * Unsets an offset
+   *
+   * @param  mixed $offset offset to unset
+   * @return void
+   */
+  public function offsetUnset($offset): void {
+    if ($this->offsetExists($offset)) {
+      unset($this->cells[$offset]);
+    }
   }
 
   /**
    * Creates a new tr component
    * 
    * @param  array $tds 
-   * @return Tr created tr component
+   * @return Tr<Td> created tr component
    */
   public static function fromTds(array $tds): Tr {
-    return (new static())->appendTds($tds);
+    $tr = new static();
+    foreach ($tds as $key => $value) {
+      if (!$value instanceof Td) {
+        $value = new Td($value);
+      }
+      $tr[$key] = $value;
+    }
+    return $tr;
   }
 
   /**
    * Creates a new tr component
    * 
    * @param  array $ths
-   * @return Tr created tr component
+   * @return Tr<Th> created tr component
    */
   public static function fromThs(array $ths): Tr {
-    return (new static())->appendThs($ths);
+    $tr = new static();
+    foreach ($ths as $key => $value) {
+      if (!$value instanceof Th) {
+        $value = new Th($value);
+      }
+      $tr[$key] = $value;
+    }
+    return $tr;
   }
 
 }

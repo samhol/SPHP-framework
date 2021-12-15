@@ -10,11 +10,11 @@ $isDevMode = true;
 // the connection configuration
 $dbParams = array(
     'driver' => 'pdo_mysql',
-    'user' => 'root',
+    'user' => 'int48291_player',
     'password' => '',
-    'host' => '127.0.0.1;port=3306',
+    'host' => 'localhost',
     'charset' => 'utf8',
-    'dbname' => 'sphp',
+    'dbname' => 'int48291_workouts',
     'driverOptions' => [1002 => 'SET NAMES utf8']
 );
 

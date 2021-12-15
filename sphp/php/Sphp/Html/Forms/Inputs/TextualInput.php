@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -18,7 +18,7 @@ use Sphp\Html\IdentifiableContent;
  * Defines an HTML &lt;input type="text|password|email|tel| ...))" tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
+ * @link    https://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -31,20 +31,20 @@ interface TextualInput extends Input, IdentifiableContent, PatternValidableInput
    *
    * @param  int $size the value of the size attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
+   * @link   https://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  public function setSize(int $size);
+  public function setSize(?int $size);
 
   /**
    * Sets the value of the maxlength attribute
    *
    *  **Preconditions:** <var>$maxlength > 0</var>
    *
-   * @param  int $maxlength the value of the maxlength attribute
+   * @param  int|null $maxlength the value of the maxlength attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
+   * @link   https://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
-  public function setMaxlength(int $maxlength);
+  public function setMaxlength(?int $maxlength);
 
   /**
    * Sets the value of the placeholder attribute
@@ -56,11 +56,11 @@ interface TextualInput extends Input, IdentifiableContent, PatternValidableInput
    * **Note:** The placeholder attribute works with the following &lt;input&gt; types:
    *  <var>text, search, url, tel, email, and password</var>.
    *
-   * @param  string $placeholder the value of the placeholder attribute
+   * @param  string|null $placeholder the value of the placeholder attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
+   * @link   https://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
    */
-  public function setPlaceholder(string $placeholder = null);
+  public function setPlaceholder(?string $placeholder);
 
   /**
    * Sets the autocomplete attribute's value on or off
@@ -73,9 +73,9 @@ interface TextualInput extends Input, IdentifiableContent, PatternValidableInput
    * **Note:** The autocomplete attribute works with the following &lt;input&gt; types:
    *   <var>text, search, url, tel, email, password, datepickers, range, and color</var>.
    *
-   * @param  boolean $allow (allow the browser to predict the value)
+   * @param  bool $allow (allow the browser to predict the value)
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
+   * @link   https://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
    */
   public function autocomplete(bool $allow = true);
 }

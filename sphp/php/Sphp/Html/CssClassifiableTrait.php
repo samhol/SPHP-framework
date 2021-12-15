@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -42,7 +42,7 @@ trait CssClassifiableTrait {
    *
    * @param  string ...$cssClasses CSS class names to add
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
+   * @link   https://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function addCssClass(string ...$cssClasses) {
     $this->cssClasses()->add(...$cssClasses);
@@ -59,7 +59,7 @@ trait CssClassifiableTrait {
    *
    * @param  string ...$cssClasses CSS class names to remove
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
+   * @link   https://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass(string ...$cssClasses) {
     $this->cssClasses()->remove(...$cssClasses);
@@ -75,8 +75,8 @@ trait CssClassifiableTrait {
    * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string ...$cssClasses CSS class names to search for
-   * @return boolean true if the given CSS class names exists
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
+   * @return bool true if the given CSS class names exists
+   * @link   https://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function hasCssClass(string ...$cssClasses): bool {
     return $this->cssClasses()->contains($cssClasses);

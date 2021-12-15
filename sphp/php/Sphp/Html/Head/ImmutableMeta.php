@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -25,7 +25,7 @@ use Sphp\Html\Head\Exceptions\MetaDataException;
  */
 class ImmutableMeta extends AbstractContent implements MetaData {
 
-  private $attrs;
+  private array $attrs;
 
   /**
    * Constructor

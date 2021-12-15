@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,11 +22,7 @@ namespace Sphp\Validators;
  */
 abstract class AbstractValidator implements Validator {
 
-  /**
-   *
-   * @var ErrorMessages 
-   */
-  private $messages;
+  private MessageManager $messages;
 
   /**
    * @var mixed 
@@ -39,8 +35,8 @@ abstract class AbstractValidator implements Validator {
    * @param string $error error message template
    */
   public function __construct(string $error = 'Invalid value') {
-    $this->messages = new ErrorMessages();
-    $this->errors()->setTemplate(static::INVALID, $error);
+    $this->messages = new MessageManager();
+    $this->getErrors()->setTemplate(static::INVALID, $error);
   }
 
   /**
@@ -55,7 +51,7 @@ abstract class AbstractValidator implements Validator {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->messages = clone $this->messages;
@@ -65,9 +61,9 @@ abstract class AbstractValidator implements Validator {
    * Invoke validator as command
    *
    * @param  mixed $value
-   * @return boolean
+   * @return bool
    */
-  public function __invoke($value) {
+  public function __invoke($value): bool {
     return $this->isValid($value);
   }
 
@@ -87,17 +83,13 @@ abstract class AbstractValidator implements Validator {
    * @return $this for a fluent interface
    */
   public function setValue($value) {
-    $this->messages->setEmpty();
+    $this->messages->unsetMessages();
     $this->value = $value;
     return $this;
   }
 
-  public function errors(): ErrorMessages {
+  public function getErrors(): MessageManager {
     return $this->messages;
-  }
-
-  public function errorsToArray(): array {
-    return $this->messages->toArray();
   }
 
 }

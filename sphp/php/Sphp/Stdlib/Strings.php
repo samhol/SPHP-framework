@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -26,19 +26,19 @@ use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
  */
 abstract class Strings {
 
+  public const UPPER_CASE = \MB_CASE_UPPER;
+
   /**
    * Performs a regular expression match
    *
    * @param  string $string the input string
    * @param  string $pattern the pattern to search for, as a string
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if string matches to the regular expression, false otherwise
+   * @return bool true if string matches to the regular expression, false otherwise
    */
-  public static function match(string $string, string $pattern, string $encoding = null): bool {
-    $e = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class)->start();
+  public static function match(string $string, string $pattern): bool {
+    //$e = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class)->start();
     $result = preg_match($pattern, $string) === 1;
-    $e->stop();
+    //$e->stop();
     return $result;
   }
 
@@ -52,7 +52,7 @@ abstract class Strings {
    * @param  string $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return string|boolean the resultant string on success, or false on error
-   * @link   http://php.net/manual/en/function.mb-ereg-replace.php
+   * @link   https://www.php.net/manual/en/function.mb-ereg-replace.php
    */
   public static function regexReplace(string $string, string $pattern, string $replacement, $option = null, $encoding = null): string {
     $regexEncoding = mb_regex_encoding();
@@ -101,12 +101,12 @@ abstract class Strings {
    * string of characters to strip instead of the defaults.
    *
    * @param  string $string the input string
-   * @param  string  $charMask optional string of characters to strip
+   * @param  string|null  $charMask optional string of characters to strip
    * @param  string $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return string trimmed string 
    */
-  public static function trim(string $string, string $charMask = null, string $encoding = null): string {
+  public static function trim(string $string, ?string $charMask = null, string $encoding = null): string {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
     return static::regexReplace($string, "^[$chars]+|[$chars]+$", '', 'msr', static::getEncoding($encoding));
   }
@@ -168,11 +168,11 @@ abstract class Strings {
    *
    * @param  string $haystack the string being checked
    * @param  string $needle the substring to search for
-   * @param  string $encoding the encoding parameter is the character encoding.
+   * @param  string|null $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if needle was found from the haystack string, false otherwise
+   * @return bool true if needle was found from the haystack string, false otherwise
    */
-  public static function contains(string $haystack, string $needle, string $encoding = null): bool {
+  public static function contains(string $haystack, string $needle, ?string $encoding = null): bool {
     return (\mb_stripos($haystack, $needle, 0, self::getEncoding($encoding)) !== false);
   }
 
@@ -228,7 +228,7 @@ abstract class Strings {
    *
    * @param  string $string the string being checked
    * @param  string $substring     The substring to search for
-   * @param  boolean $caseSensitive Whether or not to enforce case-sensitivity
+   * @param  bool $caseSensitive Whether or not to enforce case-sensitivity
    * @param  string $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return int The number of $substring occurrences
@@ -247,12 +247,10 @@ abstract class Strings {
    *
    * @param  string $haystack the string being checked
    * @param  string $needle the start to compare with
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if the haystack starts with any of the given needles
+   * @return bool true if the haystack starts with any of the given needles
    */
-  public static function startsWith(string $haystack, string $needle, string $encoding = null): bool {
-    return $needle === '' || \mb_strrpos($haystack, $needle, 0, self::getEncoding($encoding)) === 0;
+  public static function startsWith(string $haystack, string $needle): bool {
+    return (string) $needle !== '' && strncmp($haystack, $needle, strlen($needle)) === 0;
   }
 
   /**
@@ -260,17 +258,10 @@ abstract class Strings {
    *
    * @param  string $haystack the string being checked
    * @param  string $needle the ending to compare with
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if the haystack ends with any of the given needles
+   * @return bool true if the haystack ends with any of the given needles
    */
-  public static function endsWith(string $haystack, $needle, string $encoding = null): bool {
-    if ($needle === '') {
-      return true;
-    } else {
-      $enc = static::getEncoding($encoding);
-      return \mb_substr($haystack, -\mb_strlen($needle, $enc), null, $enc) === $needle;
-    }
+  public static function endsWith(string $haystack, $needle): bool {
+    return $needle !== '' && substr($haystack, -strlen($needle)) === (string) $needle;
   }
 
   /**
@@ -331,7 +322,7 @@ abstract class Strings {
    * Checks whether the given string is empty
    * 
    * @param  string $string checked string
-   * @return boolean true if the string is empty, false otherwise
+   * @return bool true if the string is empty, false otherwise
    */
   public static function isEmpty(string $string): bool {
     return $string === '';
@@ -468,7 +459,7 @@ abstract class Strings {
     if ($char_max < 1) {
       // Avoid letting users do: random_str($int, 'a'); -> 'aaaaa...'
       throw new LogicException(
-              'random_str - Argument 2 - expected a string that contains at least 2 distinct characters'
+                      'random_str - Argument 2 - expected a string that contains at least 2 distinct characters'
       );
     }
     // Now that we have good data, this is the meat of our function:
@@ -523,7 +514,7 @@ abstract class Strings {
    * @param  string $string the input string
    * @param  int $flags a bitmask of one or more of the flags
    * @return string the encoded string
-   * $link   http://php.net/manual/en/function.htmlentities.php htmlentities (PHP)
+   * $link   https://www.php.net/manual/en/function.htmlentities.php htmlentities (PHP)
    */
   public static function htmlEncode(string $string, int $flags = ENT_COMPAT): string {
     $encoding = mb_detect_encoding($string, 'utf-8');

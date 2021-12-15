@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -40,7 +40,7 @@ interface CssClassifiableContent extends Content {
    *
    * @param  string ...$cssClasses CSS class names to add
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
+   * @link   https://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function addCssClass(string ...$cssClasses);
 
@@ -54,7 +54,7 @@ interface CssClassifiableContent extends Content {
    *
    * @param  string ...$cssClasses CSS class names to remove
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
+   * @link   https://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass(string ...$cssClasses);
 
@@ -68,7 +68,7 @@ interface CssClassifiableContent extends Content {
    *
    * @param  string ...$cssClasses CSS class names to search for
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
+   * @link   https://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function hasCssClass(string ...$cssClasses): bool;
 }

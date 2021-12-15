@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,34 +25,27 @@ class CollectionLength extends AbstractValidator {
   /**
    * `ID` for error message describing values not matching an inclusive limit
    */
-  const SMALLER_ERROR = 'SMALLER_ERROR';
+  public const SMALLER_ERROR = 'SMALLER_ERROR';
 
   /**
    * `ID` for error message describing values not matching an exclusive limit
    */
-  const LARGER_ERROR = 'LARGER_ERROR';
+  public const LARGER_ERROR = 'LARGER_ERROR';
 
-  /**
-   * @var int 
-   */
-  private $min;
-
-  /**
-   * @var int 
-   */
-  private $max;
+  private ?int $min;
+  private ?int $max;
 
   /**
    * Constructor
    * 
-   * @param int $min the minimum value
-   * @param int $max the maximum value
+   * @param int|null $min the minimum value
+   * @param int|null $max the maximum value
    */
-  public function __construct(int $min = null, int $max = null) {
+  public function __construct(?int $min = null, ?int $max = null) {
     parent::__construct('Array, Countable or Traversable object expected');
     $this->setMin($min)->setMax($max);
-    $this->errors()->setTemplate(static::SMALLER_ERROR, 'Collection is smaller than %d');
-    $this->errors()->setTemplate(static::LARGER_ERROR, 'Collection is larger than %d');
+    $this->getErrors()->setTemplate(static::SMALLER_ERROR, 'Collection is smaller than %d');
+    $this->getErrors()->setTemplate(static::LARGER_ERROR, 'Collection is larger than %d');
   }
 
   /**
@@ -80,7 +73,7 @@ class CollectionLength extends AbstractValidator {
   public function isValid($value): bool {
     $this->setValue($value);
     if (!is_array($value) && !$value instanceof \Traversable && !$value instanceof \Countable) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
       return false;
     } else {
       if (is_array($value) || $value instanceof \Countable) {
@@ -89,10 +82,10 @@ class CollectionLength extends AbstractValidator {
         $length = iterator_count($value);
       }
       if ($this->min !== null && $length < $this->min) {
-        $this->errors()->appendErrorFromTemplate(static::SMALLER_ERROR, [$this->min]);
+        $this->getErrors()->appendMessageFromTemplate(static::SMALLER_ERROR, $this->min);
         return false;
       } else if ($this->max !== null && $length > $this->max) {
-        $this->errors()->appendErrorFromTemplate(static::LARGER_ERROR, [$this->max]);
+        $this->getErrors()->appendMessageFromTemplate(static::LARGER_ERROR, $this->max);
         return false;
       }
     }

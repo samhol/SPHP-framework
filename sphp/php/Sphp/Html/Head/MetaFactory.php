@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -29,7 +29,7 @@ class MetaFactory {
   /**
    * @var MetaFactory 
    */
-  private static $instance;
+  private static ?MetaFactory $instance = null;
 
   /**
    * Creates a property meta data object attribute the corresponding content
@@ -44,7 +44,7 @@ class MetaFactory {
    * @link   http://ogp.me/ The Open Graph protocol
    * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
-   * @link   http://www.w3.org/MarkUp/2004/02/xhtml-rdf.html XHTML and RDF (W3C)
+   * @link   https://www.w3.org/MarkUp/2004/02/xhtml-rdf.html XHTML and RDF (W3C)
    */
   public function property(string $property, string $content): ImmutableMeta {
     return new ImmutableMeta(['property' => $property, 'content' => $content]);
@@ -64,7 +64,7 @@ class MetaFactory {
    *
    * @param  string $charset specifies the character encoding for the HTML document
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_charset.asp charset attribute
+   * @link   https://www.w3schools.com/tags/att_meta_charset.asp charset attribute
    */
   public function charset(string $charset): ImmutableMeta {
     return new ImmutableMeta(['charset' => $charset]);
@@ -82,8 +82,8 @@ class MetaFactory {
    * @param  string $name specifies a name for the metadata
    * @param  string|array $content the value of the content attribute
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function namedContent(string $name, $content): ImmutableMeta {
     if ($name === 'keywords') {
@@ -107,8 +107,8 @@ class MetaFactory {
    * @param  string $http_equiv provides an HTTP header for the information/value of the content attribute
    * @param  scalar $content the value of the content attribute
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function httpEquiv(string $http_equiv, $content): ImmutableMeta {
     return new ImmutableMeta(['http-equiv' => $http_equiv, 'content' => $content]);
@@ -119,8 +119,8 @@ class MetaFactory {
    *
    * @param  string $content the description of the web page
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function description(string $content): ImmutableMeta {
     return $this->namedContent('description', $content);
@@ -131,8 +131,8 @@ class MetaFactory {
    *
    * @param  string $author the name of the author of the document
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function author(string $author): ImmutableMeta {
     return $this->namedContent('author', $author);
@@ -159,8 +159,8 @@ class MetaFactory {
    *
    * @param  string $name the name of the Web application that the page represents
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function applicationName(string $name): ImmutableMeta {
     return $this->namedContent('application-name', $name);
@@ -174,10 +174,10 @@ class MetaFactory {
    * 
    * @param  string ...$keywords a list of keywords
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public function keywords(string...$keywords): ImmutableMeta {
+  public function keywords(string ...$keywords): ImmutableMeta {
     $keywords = implode(',', Arrays::flatten($keywords));
     return new ImmutableMeta(['name' => 'keywords', 'content' => $keywords]);
   }
@@ -187,8 +187,8 @@ class MetaFactory {
    *
    * @param  string $id id of link element of the preferred style sheet to use
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function defaultStyle(string $id): ImmutableMeta {
     return $this->httpEquiv('default-style', $id);
@@ -203,8 +203,8 @@ class MetaFactory {
    *
    * @param  int $interval time interval for the document to refresh itself
    * @return ImmutableMeta new meta data object
-   * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
-   * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
+   * @link   https://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
+   * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function refresh(int $interval): ImmutableMeta {
     return $this->httpEquiv('refresh', (string) $interval);
@@ -216,8 +216,8 @@ class MetaFactory {
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $media what media/device the target resource is optimized for
    * @return ImmutableLinkData new object
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function stylesheet(string $href, string $media = null): ImmutableLinkData {
     $type = Mime::getMime($href);
@@ -230,7 +230,7 @@ class MetaFactory {
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $sizes specifies the sizes of icons for visual media
    * @return ImmutableLinkData new object
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function icon(string $href, string $sizes = null): ImmutableLinkData {
     $type = Mime::getMime($href);
@@ -243,7 +243,7 @@ class MetaFactory {
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $sizes specifies the sizes of icons for visual media
    * @return ImmutableLinkData new object
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function appleTouchIcon(string $href, string $sizes = null): ImmutableLinkData {
     $type = Mime::getMime($href);
@@ -255,7 +255,7 @@ class MetaFactory {
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @return ImmutableLinkData new object
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function manifest(string $href): ImmutableLinkData {
     return new ImmutableLinkData(['rel' => 'manifest', 'href' => $href]);
@@ -267,7 +267,7 @@ class MetaFactory {
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $color specifies the sizes of icons for visual media
    * @return ImmutableLinkData new object
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function maskIcon(string $href, string $color = null): ImmutableLinkData {
     return new ImmutableLinkData(['rel' => 'mask-icon', 'href' => $href, 'color' => $color]);

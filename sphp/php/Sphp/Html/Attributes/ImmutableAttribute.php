@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -31,7 +31,7 @@ class ImmutableAttribute extends AbstractAttribute implements Attribute {
    * Constructor
    * 
    * @param string $name
-   * @param type $value
+   * @param scalar $value
    */
   public function __construct(string $name, $value) {
     parent::__construct($name);
@@ -70,6 +70,10 @@ class ImmutableAttribute extends AbstractAttribute implements Attribute {
 
   public function isProtected(): bool {
     return true;
+  }
+
+  public function isAlwaysVisible(): bool {
+    return $this->isVisible();
   }
 
 }

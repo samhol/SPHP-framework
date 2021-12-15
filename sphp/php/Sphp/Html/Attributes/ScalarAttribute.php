@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -65,9 +65,6 @@ class ScalarAttribute extends AbstractMutableAttribute {
   }
 
   public function setValue($value) {
-    if ($this->isProtected()) {
-      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
-    }
     if (!$this->isValidValue($value)) {
       throw new InvalidAttributeValueException("Invalid value for '{$this->getName()}' attribute");
     }
@@ -80,9 +77,7 @@ class ScalarAttribute extends AbstractMutableAttribute {
   }
 
   public function clear() {
-    if (!$this->isProtected()) {
-      $this->value = null;
-    }
+    $this->value = null;
     return $this;
   }
 

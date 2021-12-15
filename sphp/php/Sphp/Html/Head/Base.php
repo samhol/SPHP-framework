@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,7 +22,7 @@ use Sphp\Html\EmptyTag;
  *  and it must be inside the &lt;head&gt; element.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
@@ -33,8 +33,8 @@ class Base extends EmptyTag implements MetaData {
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $target specifies the default target for all hyperlinks and forms in the page
-   * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_base_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function __construct(string $href = null, string $target = null) {
     parent::__construct('base');
@@ -51,7 +51,7 @@ class Base extends EmptyTag implements MetaData {
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_base_href.asp href attribute
    */
   public function setHref(string $href) {
     return $this->setAttribute('href', $href);
@@ -67,7 +67,7 @@ class Base extends EmptyTag implements MetaData {
    *
    * @param  string $target target attribute's value
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function setTarget(string $target) {
     return $this->setAttribute('target', $target);

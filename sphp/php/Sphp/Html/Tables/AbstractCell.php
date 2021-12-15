@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -15,15 +15,15 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\ContainerTag;
 
 /**
- * Implements HTML table tag's cells
+ * Abstract implementation of HTML table cells
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractCell extends ContainerTag implements ContainerCell {
+abstract class AbstractCell extends ContainerTag implements Cell {
 
-  public function setColspan(int $value = null) {
+  public function setColspan(?int $value) {
     if ($value <= 1) {
       $this->attributes()->remove('colspan');
     } else {
@@ -40,7 +40,7 @@ abstract class AbstractCell extends ContainerTag implements ContainerCell {
     return $span;
   }
 
-  public function setRowspan(int $value = null) {
+  public function setRowspan(?int $value) {
     if ($value <= 1) {
       $this->attributes()->remove('rowspan');
     } else {

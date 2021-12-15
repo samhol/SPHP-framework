@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -35,7 +35,7 @@ abstract class AbstractStatement implements Statement {
    * Constructor
    *
    * @param PDO $pdo a connection object between PHP and a database server
-   * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link  https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function __construct(PDO $pdo) {
     $this->setPDO($pdo);

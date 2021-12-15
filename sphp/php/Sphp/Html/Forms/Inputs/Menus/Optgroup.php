@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
- * optgroup tag
+ * Implementation of an HTML optgroup tag
 
  * **Notes:**
  *
@@ -28,21 +30,52 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * recommended.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
  * @filesource
  */
-class Optgroup extends AbstractOptionContainer implements MenuComponent {
+class Optgroup extends AbstractOptions implements MenuComponent {
 
   /**
    * Constructor
-   *
-   * @param string $label specifies a label for an option-group
+   *  
+   * @param string|null $label specifies a label for an option-group
+   * @param iterable|null $data the data content
    */
-  public function __construct(string $label = null) {
+  public function __construct(?string $label = null, ?iterable $data = null) {
     parent::__construct('optgroup');
     if ($label !== null) {
       $this->setLabel($label);
     }
+    if ($data !== null) {
+      $this->appendOptions($data);
+    }
+  }
+
+  /**
+   * Appends menu components from iterable 
+   * 
+   * <code>$options</code> with <code>$key => $val</code> pairs:
+   * 
+   * 1. an {@see Option} <code>$val</code> is stored as such
+   * 2. a scalar <code>$val</code> is stored as an {@see Option}($key, $val)
+   * 3. all other data results to an exception thrown
+   * 
+   * @param  iterable<string|int, scalar|MenuComponent> $options
+   * @return $this for a fluent interface
+   * @throws InvalidArgumentException if the iteable contains invalid data
+   * @see    Option
+   */
+  public function appendOptions(iterable $options) {
+    foreach ($options as $index => $option) {
+      if ($option instanceof Option) {
+        $this->append($option);
+      } else if (is_scalar($option) || is_null($option)) {
+        $this->appendOption($index, (string) $option);
+      } else {
+        throw new InvalidArgumentException('Invalid option data at ' . $index);
+      }
+    }
+    return $this;
   }
 
   /**
@@ -50,9 +83,9 @@ class Optgroup extends AbstractOptionContainer implements MenuComponent {
    *
    * @param  string $label the label for the group
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
+   * @link   https://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
-  public function setLabel(string $label) {
+  public function setLabel(?string $label) {
     $this->attributes()->setAttribute('label', $label);
     return $this;
   }

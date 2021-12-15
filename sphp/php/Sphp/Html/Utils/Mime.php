@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html\Utils;
 
 /**
- * Class Mime
+ * Utility class for MIME type resolving
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -98,7 +98,7 @@ class Mime {
       '3gp' => ['video/3gpp', 'video'],
       '3g2' => ['video/3gpp2', 'video'],
       '7z' => ['application/x-7z-compressed'],
-  ]; 
+  ];
 
   public static function getMime(string $path): ?string {
     $ext = pathinfo($path, PATHINFO_EXTENSION);

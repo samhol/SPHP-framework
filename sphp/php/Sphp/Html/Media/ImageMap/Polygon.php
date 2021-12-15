@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Media\ImageMap;
 
+use Sphp\Html\Media\ImageMap\Exceptions\CoordinateException;
+
 /**
- * Implementation of an HTML area shape="poly" tag
+ * Implementation of a polygon shaped HTML area tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -24,16 +26,12 @@ class Polygon extends AbstractArea {
   /**
    * Constructor
    * 
-   * @param int[] $coords coordinates as an array
-   * @param string|null $href
-   * @param string|null $alt
+   * @param  int ...$coord coordinates
+   * @throws CoordinateException if the number of coordinates is not divisible by 2
    */
-  public function __construct(array $coords = null, string $href = null, string $alt = null) {
+  public function __construct(int ...$coord) {
     parent::__construct('poly');
-    $this->setHref($href)->setAlt($alt);
-    if ($coords !== null) {
-      $this->setCoordinatesFromArray($coords);
-    }
+    $this->setCoordinates(...$coord);
   }
 
   /**
@@ -45,35 +43,25 @@ class Polygon extends AbstractArea {
    */
   public function appendEdge(int $x, int $y) {
     $coords = $this->getCoordinates();
-    $coords .= ",$x";
-    $coords .= ",$y";
-    $this->attributes()->setAttribute('coords', $coords);
+    $coords[] = $x;
+    $coords[] = $y;
+    $this->setCoordinates(...$coords);
     return $this;
   }
 
   /**
    * Sets the coordinates of the polygon
    * 
-   * @param  int[] $coords coordinates as an array
+   * @param  int ...$coord coordinates
    * @return $this for a fluent interface
-   */
-  public function setCoordinatesFromArray(array $coords) {
-    $count = count($coords);
-    if ($count % 2 !== 0) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('The number of coordinates must be divisible by 2');
-    }
-    $this->attributes()->setAttribute('coords', implode(',', $coords));
-    return $this;
-  }
-
-  /**
-   * Sets the coordinates of the polygon
-   * 
-   * @param  int ...$coord coordinates as an array
-   * @return $this for a fluent interface
+   * @throws CoordinateException if the number of coordinates is not divisible by 2
    */
   public function setCoordinates(int ...$coord) {
-    $this->setCoordinatesFromArray($coord);
+    $count = count($coord);
+    if ($count % 2 !== 0) {
+      throw new CoordinateException('The number of coordinates must be divisible by 2');
+    }
+    parent::setCoordinates(...$coord);
     return $this;
   }
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -33,7 +33,7 @@ interface ObjectInterface extends Arrayable {
    * Determines whether the specified object is equal to the current object
    *
    * @param  mixed $object the object to compare with the current object
-   * @return boolean true if the specified object is equal to the current
+   * @return bool true if the specified object is equal to the current
    *         object; otherwise false
    */
   public function equals($object);

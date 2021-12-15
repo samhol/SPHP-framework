@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -18,7 +18,6 @@ use IteratorAggregate;
 use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\ContentIterator;
-use Traversable;
 use Sphp\Html\Exceptions\HtmlException;
 use Sphp\Stdlib\Arrays;
 
@@ -26,7 +25,7 @@ use Sphp\Stdlib\Arrays;
  * Abstract implementation of both ordered and unordered HTML-list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API
+ * @link https://www.w3schools.com/html/html_lists.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -38,27 +37,18 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
   /**
    * @var StandardListItem[] 
    */
-  private $items;
+  private array $items;
 
   /**
    * Constructor
    * 
    * @param  string $tagName the tag name of the component
-   * @param  iterable|null $items the content of the component
    * @param  AttributeContainer|null $attrManager the attribute manager of the component
    * @throws InvalidArgumentException if the tag name of the component is not valid
    */
-  public function __construct(string $tagName, iterable $items = null, AttributeContainer $attrManager = null) {
+  public function __construct(string $tagName, ?AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->items = [];
-    if ($items !== null) {
-      if ($items instanceof StandardListItem) {
-        $items = [$items];
-      }
-      foreach ($items as $item) {
-        $this->append($item);
-      }
-    }
   }
 
   public function __destruct() {
@@ -83,6 +73,11 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
 
   /**
    * Prepends a new list item to the list
+   * 
+   * **Note:**
+   *
+   * 1. Any `$item` not implementing {@see StandardListItem} is wrapped 
+   *    within {@link Li} component
    * 
    * @param  mixed $item the item or the content of it
    * @return StandardListItem prepended instance
@@ -145,8 +140,8 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
    * @return HyperlinkListItem appended instance
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function appendLink(string $href, $content = null, string $target = null): HyperlinkListItem {
     $item = new HyperlinkListItem($href, $content, $target);
@@ -154,16 +149,23 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
     return $item;
   }
 
+  public function getItem(int $index): ?StandardListItem {
+    if (!array_key_exists($index, $this->items)) {
+      return null;
+    }
+    return $this->items[$index];
+  }
+
   public function contentToString(): string {
     return implode('', $this->items);
   }
 
   /**
-   * Create a new iterator to iterate through the list items
+   * Returns a new iterator to iterate through the list items
    *
-   * @return Traversable iterator
+   * @return ContentIterator<int, StandardListItem> iterator
    */
-  public function getIterator(): Traversable {
+  public function getIterator(): ContentIterator {
     return new ContentIterator($this->items);
   }
 

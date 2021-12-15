@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -115,7 +115,7 @@ class CRSFToken {
    * 
    * @param  string $tokenName the CRSF token name
    * @param  int $type input type
-   * @return boolean true if the token value matches
+   * @return bool true if the token value matches
    */
 
   /**
@@ -141,7 +141,7 @@ class CRSFToken {
    * 
    * @param  string $tokenName the CRSF token name
    * @param  int $type input type
-   * @return boolean true if the token value matches
+   * @return bool true if the token value matches
    * @codeCoverageIgnore
    */
   public function verifyInputToken(string $tokenName, int $type): bool {
@@ -160,7 +160,7 @@ class CRSFToken {
    * Verifies a named CRSF token from the POST data
    * 
    * @param  string $tokenName the CRSF token name
-   * @return boolean true if the token value matches
+   * @return bool true if the token value matches
    * @codeCoverageIgnore
    */
   public function verifyPostToken(string $tokenName): bool {
@@ -171,7 +171,7 @@ class CRSFToken {
    * Verifies a named CRSF token from the GET data
    * 
    * @param  string $tokenName the CRSF token name
-   * @return boolean true if the token value matches
+   * @return bool true if the token value matches
    * @codeCoverageIgnore
    */
   public function verifyGetToken(string $tokenName): bool {

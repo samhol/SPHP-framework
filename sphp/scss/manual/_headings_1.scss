@@ -1,0 +1,65 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+> h2, > h3 {
+  padding: rem-calc(0 5 0 10); // top right bottom left
+  border: solid 1px #aaa;
+  @include border-radius(2px);
+}
+> h1, > h2, > h3 {
+  background-color: #eee;
+  &.error {
+    background-color: $error-bg;
+  }
+  padding: rem-calc(0 5 0 10); // top right bottom left
+  line-height: 1.6;
+}
+> h1, > h2, > h3, > h4, > h5, > h6 {
+  //font-weight: 600;
+  margin: rem-calc(0 5 15 5);  // top right bottom left
+  padding: rem-calc(3 5 3 10); // top right bottom left
+}
+> h1 {
+
+  &:first-child {
+    background-color: #eee;
+    &.error {
+      background-color: $error-bg;
+    }
+    //margin: rem-calc(0 0 5 0);
+    padding: rem-calc(5 15 5 15);
+    border: solid 1px #666;
+    border-top: none;
+    @include border-bottom-radius(4px);
+    text-transform: uppercase;
+    a, span {
+      text-transform: none;
+    }
+  }
+}
+> h1, > h2, > h3, > h4, > h5, > h6 {
+  a.api {
+    border: solid 1px #ccc;
+    line-height: 1.6;
+    @include border-radius(2px);
+    // @include box-shadow(rgba(gray, 0.4) 0px 0px 3px 2px);
+    display: inline-block;
+    //height: 100%;
+    margin-top: rem-calc(1);
+    margin-bottom: rem-calc(1);
+    background-color: #f3f3f3;
+    font-family: "Source Code Pro", monospace !important;
+    padding-left: rem-calc(4);
+    padding-right: rem-calc(4);
+    &:hover {
+      background-color: #fdfdfd;
+      border-color: #bbb;
+    }
+  }
+}
+

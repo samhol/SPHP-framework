@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Config\Exception;
 
-use Sphp\Exceptions\SphpExceptionInterface;
-use Exception as PHPException;
+use Sphp\Exceptions\SphpException;
 
 /**
  * Description of ConfigurationException
@@ -22,6 +21,6 @@ use Exception as PHPException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ConfigurationException extends PHPException implements SphpExceptionInterface {
+class ConfigurationException extends SphpException {
   
 }

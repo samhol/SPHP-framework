@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\I18n\Datetime;
 
-use Sphp\I18n\Gettext\Translator;
-use Sphp\I18n\TranslatorInterface;
+use Sphp\I18n\Exceptions\InvalidArgumentException;
 
 /**
  * Class localizes weekday and month names
@@ -85,25 +84,6 @@ class CalendarUtils {
   const DEC = 12;
 
   /**
-   * month names in english
-   *
-   * @var array[string]
-   */
-  private static $months = [
-      self::JAN => 'January',
-      self::FEB => 'February',
-      self::MAR => 'March',
-      self::APR => 'April',
-      self::MAY => 'May',
-      self::JUN => 'June',
-      self::JUL => 'July',
-      self::AUG => 'August',
-      self::SEP => 'September',
-      self::OCT => 'October',
-      self::NOV => 'November',
-      self::DEC => 'December'];
-
-  /**
    * Monday
    */
   const MON = 1;
@@ -153,60 +133,40 @@ class CalendarUtils {
       self::SUN => 'Sunday'];
 
   /**
-   * @var Translator|null 
-   */
-  private $translator;
-
-  /**
    * @var int 
    */
-  private $fwd = self::MON;
+  private int $fwd = self::MON;
+  private ?string $locale;
 
   /**
    * Constructor
-   *
-   * @param  Translator|null $translator the translator component
    */
-  public function __construct(TranslatorInterface $translator = null) {
-    if ($translator !== null) {
-      $this->translator = $translator;
-    } else {
-      $this->translator = new Translator();
-    }
+  public function __construct(?string $locale = null) {
+    $this->setLocale($locale);
   }
 
   /**
-   * Sets the translator
+   * Returns the locale settings used
    * 
-   * @param  Translator|null $translator the translator or `null` for no translator
+   * @return string|null the specific locale settings used (null if defaults)
+   */
+  public function getLocale(): ?string {
+    return $this->locale;
+  }
+
+  /**
+   * Sets the locale information
+   * 
+   * @param string|null $locale
    * @return $this for a fluent interface
    */
-  public function setTranslator(Translator $translator = null) {
-    $this->translator = $translator;
+  public function setLocale(?string $locale) {
+    $this->locale = $locale;
     return $this;
   }
 
   /**
-   * 
-   * @return bool
-   */
-  public function hasTranslator(): bool {
-    return $this->translator !== null;
-  }
-
-  protected function translate($items) {
-    if ($this->hasTranslator()) {
-      if (is_array($items)) {
-        $items = $this->translator->translateArray($items);
-      } else if (is_string($items)) {
-        $items = $this->translator->get($items);
-      }
-    }
-    return $items;
-  }
-
-  /**
-   * 
+   * Sets the daynmber
    * 
    * @param  int $wd optional number of the first weekday
    * @return $this for a fluent interface
@@ -222,9 +182,18 @@ class CalendarUtils {
    * @param  int $wd weekday number (1-7)
    * @param  int|null $length optional length of the weekday string
    * @return string the name or the abbreviation of the given weekday number
+   * @throws InvalidArgumentException if the weekday number number is incorrect 
+   *                                  or the length is not positive or null
    */
-  public function getWeekdayName($wd, $length = null) {
-    $day = $this->translate(self::$weekdays[$wd]);
+  public function getWeekdayName(int $wd, ?int $length = null): string {
+    if (!array_key_exists($wd, self::$weekdays)) {
+      throw new InvalidArgumentException('Not a weekday number', 0);
+    }
+    if ($length !== null && $length < 1) {
+      throw new InvalidArgumentException('Negative weekday name length given', 1);
+    }
+    $dayname = self::$weekdays[$wd];
+    $day = \IntlDateFormatter::formatObject(new \DateTimeImmutable("last {$dayname}"), 'cccc', $this->getLocale());
     if ($length > 0) {
       $day = substr($day, 0, $length);
     }
@@ -238,25 +207,19 @@ class CalendarUtils {
    *
    * @param  int|null $length optional length of a individual weekday string
    * @return string[] the names or the abbreviations of the weekday names
+   * @throws InvalidArgumentException if the length is not positive or null
    */
-  public function getWeekdays(int $length = null) {
-    $sequence = static::$weekdays;
+  public function getWeekdays(?int $length = null): array {
+    $sequence = [];
+    for ($d = 1; $d <= 7; $d++) {
+      $sequence[$d] = $this->getWeekdayName($d, $length);
+    }
     if ($this->fwd !== self::MON) {
-      $first = array_slice(self::$weekdays, $this->fwd - 1);
-      $last = array_slice(self::$weekdays, 0, (7 - count($first)));
+      $first = array_slice($sequence, $this->fwd - 1);
+      $last = array_slice($sequence, 0, (7 - count($first)));
       $sequence = array_merge($first, $last);
-      //$sequence = [];
-      //print_r($sequence);
-      //print_r($d);
-      //$days = $d;
     }
-    $translations = $this->translate($sequence);
-    if ($length > 0) {
-      foreach ($translations as $number => $day) {
-        $translations[$number] = substr($day, 0, $length);
-      }
-    }
-    return $translations;
+    return $sequence;
   }
 
   /**
@@ -265,12 +228,17 @@ class CalendarUtils {
    * @param  int $month month number (1-12)
    * @param  int|null $length optional length of the month string
    * @return string the name or the abbreviation of the given month number
+   * @throws InvalidArgumentException if the month number is incorrect or the 
+   *                                  length is not positive or null
    */
-  public function getMonthName(int $month = null, int $length = null) {
-    if ($month === null) {
-      $month = (int) date('m');
+  public function getMonthName(int $month, ?int $length = null): string {
+    if (($month < 1 || $month > 12)) {
+      throw new InvalidArgumentException('Not a month number', 0);
     }
-    $monthName = $this->translate(self::$months[$month]);
+    if ($length !== null && $length < 1) {
+      throw new InvalidArgumentException('Negative month name length given', 1);
+    }
+    $monthName = strftime('%B', mktime(0, 0, 0, $month, 10));
     if ($length > 0) {
       $monthName = mb_substr($monthName, 0, $length);
     }
@@ -284,13 +252,12 @@ class CalendarUtils {
    *
    * @param  int|null $length optional length of a individual month name string
    * @return string[] the names or the abbreviations of the month names
+   * @throws InvalidArgumentException if the length is negative or zero
    */
-  public function getMonths(int $length = null) {
-    $months = $this->translate(self::$months);
-    if ($length > 0) {
-      foreach ($months as $number => $month) {
-        $months[$number] = substr($month, 0, $length);
-      }
+  public function getMonths(?int $length = null): array {
+    $months = [];
+    for ($month = 1; $month <= 12; $month++) {
+      $months[$month] = $this->getMonthName($month, $length);
     }
     return $months;
   }

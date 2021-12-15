@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Exceptions;
 
-use OverflowException as SplOverflowException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Exception thrown when adding an element to a full container
@@ -21,6 +21,6 @@ use OverflowException as SplOverflowException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class OverflowException extends SplOverflowException implements SphpExceptionInterface {
+class OverflowException extends RuntimeException {
   
 }

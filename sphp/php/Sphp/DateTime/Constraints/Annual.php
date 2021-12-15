@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 
 namespace Sphp\DateTime\Constraints;
-
+ 
 use Sphp\DateTime\Date;
 
 /**
@@ -25,9 +25,9 @@ use Sphp\DateTime\Date;
 class Annual implements DateConstraint {
 
   /**
-   * @var int 
+   * @var string 
    */
-  private $day, $month;
+  private string $param;
 
   /**
    * Constructor
@@ -36,13 +36,11 @@ class Annual implements DateConstraint {
    * @param int $day
    */
   public function __construct(int $month, int $day) {
-    $this->day = $day;
-    $this->month = $month;
+    $this->param = "$month-$day";
   }
 
-  public function isValid($date): bool {
-    $dateObj = Date::from($date);
-    return $this->month === $dateObj->getMonth() && $this->day === $dateObj->getMonthDay();
+  public function isValid(Date $date): bool { 
+    return $this->param === $date->format('n-j');
   }
 
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,16 +24,16 @@ interface BooleanInput extends Input {
   /**
    * Checks/unchecks the choice
    *
-   * @param  boolean $checked true if chosen, false otherwise
+   * @param  bool $checked true if chosen, false otherwise
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
+   * @link   https://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked(bool $checked = true);
   /**
    * Checks if the choice is made
    *
-   * @return boolean true if chosen, false otherwise
-   * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
+   * @return bool true if chosen, false otherwise
+   * @link   https://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function isChecked():bool;
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -129,7 +129,7 @@ class Images {
    * Checks if the given path points to an image file
    *
    * @param string $imgSrc to the image file
-   * @return boolean true if the given path points to an image file; false otherwise
+   * @return bool true if the given path points to an image file; false otherwise
    */
   public static function isImage($imgSrc) {
     return @getimagesize($imgSrc) !== false;
@@ -139,7 +139,7 @@ class Images {
    * Checks if the given path points to an Imagine image file
    *
    * @param string $imgSrc to the image file
-   * @return boolean true if the given path points to an Imagine image file; false otherwise
+   * @return bool true if the given path points to an Imagine image file; false otherwise
    */
   public static function isImagineImage($imgSrc) {
     try {

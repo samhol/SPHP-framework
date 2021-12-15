@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,11 +12,9 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeValueException;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Stdlib\Parsers\ParseFactory;
-use Sphp\Stdlib\Readers\Json;
+use Sphp\Stdlib\Parsers\Json;
 
 /**
  * Implements an JSON attribute object
@@ -34,17 +32,13 @@ class JsonAttribute extends AbstractMutableAttribute {
    * @var mixed
    */
   private $data;
-
-  /**
-   * @var Json
-   */
-  private $parser;
+  private Json $parser;
 
   /**
    * Constructor
    * 
    * @param string $name the name of the attribute
-   * @param scalar|null $value optional value of the attribute
+   * @param mixed $value optional value of the attribute
    */
   public function __construct(string $name, $value = null) {
     $this->parser = ParseFactory::json();
@@ -69,7 +63,7 @@ class JsonAttribute extends AbstractMutableAttribute {
   }
 
   public function isVisible(): bool {
-    return $this->isDemanded() || $this->data !== null;
+    return $this->isAlwaysVisible() || $this->data !== null;
   }
 
   public function isEmpty(): bool {
@@ -98,9 +92,7 @@ class JsonAttribute extends AbstractMutableAttribute {
   }
 
   public function clear() {
-    if (!$this->isProtected()) {
-      $this->data = null;
-    }
+    $this->data = null;
     return $this;
   }
 
@@ -115,11 +107,12 @@ class JsonAttribute extends AbstractMutableAttribute {
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    $out = null;
     if (is_string($this->data)) {
       $out = $this->data;
     } else if (is_array($this->data) || is_object($this->data)) {
-      $out = json_encode($this->data, JSON_NUMERIC_CHECK, 512);
+      $out = json_encode($this->data, JSON_BIGINT_AS_STRING | JSON_NUMERIC_CHECK | JSON_HEX_TAG);
+    } else {
+      $out = null;
     }
     return $out;
   }

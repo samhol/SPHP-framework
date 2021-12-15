@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -36,11 +36,9 @@ abstract class AbstractLimitValidator extends AbstractValidator {
    * Whether to do inclusive comparisons, allowing equivalence to max
    *
    * If false, then strict comparisons are done, and the value may equal
-   * the min option
-   *
-   * @var boolean
+   * the min option 
    */
-  private $inclusive;
+  private bool $inclusive;
 
   /**
    * Constructor
@@ -55,7 +53,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
   /**
    * Checks whether the the limit is set as inclusive or not
    * 
-   * @return boolean true for inclusive limit and false for not
+   * @return bool true for inclusive limit and false for not
    */
   public function isInclusive(): bool {
     return $this->inclusive;
@@ -64,7 +62,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
   /**
    * Sets whether the the limit is inclusive or not
    * 
-   * @param  boolean $inclusive true for inclusive limit and false for exclusive
+   * @param  bool $inclusive true for inclusive limit and false for exclusive
    * @return $this for a fluent interface
    */
   public function setInclusive(bool $inclusive) {

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -28,11 +28,7 @@ class Identical extends AbstractValidator {
    * @var mixed
    */
   private $token;
-
-  /**
-   * @var boolean 
-   */
-  private $strict = true;
+  private bool $strict = true;
 
   /**
    * Constructor
@@ -82,7 +78,7 @@ class Identical extends AbstractValidator {
   /**
    * Sets whether the validation is strict 
    * 
-   * @param  boolean $strict true for strict validation and false otherwise
+   * @param  bool $strict true for strict validation and false otherwise
    * @return $this for a fluent interface
    */
   public function setStrict(bool $strict) {
@@ -109,7 +105,7 @@ class Identical extends AbstractValidator {
       }
     }
     if (!$valid) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
     }
     return $valid;
   }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -19,7 +19,7 @@ namespace Sphp\Filters;
  * * value is considered as an integer if it contains only numbers
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://php.net/manual/en/filter.filters.php filter_var
+ * @link    https://www.php.net/manual/en/filter.filters.php filter_var
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -55,8 +55,8 @@ class ArraySamitizer extends AbstractFilter {
    * 
    * @param mixed[] $definition an array defining the arguments
    * @param boolean $addEmpty
-   * @link  http://php.net/manual/en/function.filter-var-array.php filter_var_array
-   * @link  http://php.net/manual/en/filter.filters.php Types of filters
+   * @link  https://www.php.net/manual/en/function.filter-var-array.php filter_var_array
+   * @link  https://www.php.net/manual/en/filter.filters.php Types of filters
    */
   public function __construct(array $definition = [], bool $addEmpty = true) {
     $this->definition = $definition;

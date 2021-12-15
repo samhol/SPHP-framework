@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -34,7 +34,7 @@ class MenuFactory {
     if (count($content) > 0) {
       $content = array_combine($content, $content);
     }
-    return Select::from($name, $content);
+    return new Select($name, $content);
   }
 
   /**
@@ -46,9 +46,9 @@ class MenuFactory {
    * @param  string $name the value of the name attribute
    * @return Select component containing the range
    */
-  public static function rangeMenu($from, $to, $step = 1, $name = null): Select {
+  public static function rangeMenu($from, $to, $step = 1, string $name = null): Select {
     $range = range($from, $to, $step);
-    return Select::from($name, array_combine($range, $range));
+    return new Select($name, array_combine($range, $range));
   }
 
   /**
@@ -62,7 +62,7 @@ class MenuFactory {
     if ($calendar === null) {
       $calendar = new CalendarUtils();
     }
-    $menu = Select::from($name, $calendar->getMonths());
+    $menu = new Select($name, $calendar->getMonths());
     return $menu;
   }
 

@@ -71,6 +71,51 @@
   type: client
   message: Expectation Failed
   description: The server cannot meet the requirements of the Expect request-header field
+  
+418:
+  type: client
+  message: I'm a teapot (RFC 2324, RFC 7168)
+This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers. The RFC specifies this code should be returned by teapots requested to brew coffee.[53] This HTTP status is used as an Easter egg in some websites, such as Google.com's I'm a teapot easter egg.[54][55]
+421:
+  type: client
+  message: Misdirected Request (RFC 7540)
+The request was directed at a server that is not able to produce a response[56] (for example because of connection reuse).[57]
+422:
+  type: client
+  message: Unprocessable Entity (WebDAV; RFC 4918)
+The request was well-formed but was unable to be followed due to semantic errors.[16]
+423:
+  type: client
+  message: Locked (WebDAV; RFC 4918)
+The resource that is being accessed is locked.[16]
+424:
+  type: client
+  message: Failed Dependency (WebDAV; RFC 4918)
+The request failed because it depended on another request and that request failed (e.g., a PROPPATCH).[16]
+425:
+  type: client
+  message: Too Early (RFC 8470)
+Indicates that the server is unwilling to risk processing a request that might be replayed.
+426:
+  type: client
+  message: Upgrade Required
+The client should switch to a different protocol such as TLS/1.3, given in the Upgrade header field.[58]
+428:
+  type: client
+  message: Precondition Required (RFC 6585)
+The origin server requires the request to be conditional. Intended to prevent the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict.[59]
+429:
+  type: client
+  message: Too Many Requests (RFC 6585)
+The user has sent too many requests in a given amount of time. Intended for use with rate-limiting schemes.[59]
+431:
+  type: client
+  message: Request Header Fields Too Large (RFC 6585)
+The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.[59]
+451:
+  type: client
+  message: Unavailable For Legal Reasons (RFC 7725)
+A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource.[60] The code 451 was chosen as a reference to the novel Fahrenheit 451 (see the Acknowledgements in the RFC).
 500:
   type: server
   message: Internal Server Error

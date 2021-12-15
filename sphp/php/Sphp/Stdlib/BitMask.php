@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -17,6 +17,8 @@ use Iterator;
 use Sphp\Config\PHP;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
+use Sphp\Config\ErrorHandling\ErrorManager;
 
 /**
  * Implements a bitmask object
@@ -31,7 +33,7 @@ class BitMask implements Arrayable, Iterator {
   /**
    * @var int 
    */
-  private $index = 0;
+  private int $index = 0;
 
   /**
    * the binary value
@@ -39,7 +41,7 @@ class BitMask implements Arrayable, Iterator {
    * @var int
    * @Column(type = "integer")
    */
-  protected $mask;
+  protected int $mask;
 
   /**
    * Constructor
@@ -153,12 +155,10 @@ class BitMask implements Arrayable, Iterator {
    * **Notes:** a string <var>$bits</var> is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags
-   * @return boolean true if the object contains given flags and false otherwise
+   * @return bool true if the object contains given flags and false otherwise
    */
   public function contains($bitmask): bool {
     $parsedFlags = self::parseInt($bitmask);
-    //echo "\np=".$p."=".base_convert($p, 10, 2);
-    //echo "\nthis->permissions=".$this->permissions."=".base_convert($this->permissions, 10, 2)."\n";
     return ($this->mask & $parsedFlags) === $parsedFlags;
   }
 
@@ -271,7 +271,7 @@ class BitMask implements Arrayable, Iterator {
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return bool current iterator position is valid
    */
   public function valid(): bool {
     return $this->index < $this->length();
@@ -293,7 +293,20 @@ class BitMask implements Arrayable, Iterator {
    * @return BitMask new instance
    */
   public static function fromBinary(string $binary): BitMask {
-    return new static(bindec($binary));
+    $err = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $err->start(E_DEPRECATED);
+    $errorManager = new ErrorManager();
+    $errorManager->start(\E_DEPRECATED);
+    try {
+      $obj = new static(bindec($binary));
+    } catch (\Exception $ex) {
+      $err->stop();
+      $errorManager->stop();
+      throw $ex;
+    }
+    $err->stop();
+    $errorManager->stop();
+    return $obj;
   }
 
   /**
@@ -303,7 +316,24 @@ class BitMask implements Arrayable, Iterator {
    * @return BitMask new instance
    */
   public static function fromOctal(string $octal): BitMask {
-    return new static(octdec($octal));
+    $err = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
+    $err->start(E_DEPRECATED);
+    $errorManager = new ErrorManager();
+    $errorManager->start(\E_DEPRECATED);
+    //$old = error_reporting();
+    //error_reporting(E_DEPRECATED);
+    //var_dump($old, E_DEPRECATED);
+    try {
+      $obj = new static(octdec($octal));
+    } catch (\Exception $ex) {
+      $err->stop();
+      $errorManager->stop();
+      throw $ex;
+    }
+    $errorManager->stop();
+    $err->stop();
+    //error_reporting($old);
+    return $obj;
   }
 
   /**

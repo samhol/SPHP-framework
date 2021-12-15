@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,6 +20,7 @@ use Sphp\Exceptions\BadMethodCallException;
 /**
  * Implements a general parser factory
  * 
+ * @method \Sphp\Stdlib\Parsers\Markdown markdown() Returns singleton instance of `markdown` reader
  * @method \Sphp\Stdlib\Parsers\Markdown md() Returns singleton instance of `markdown` reader
  * @method \Sphp\Stdlib\Parsers\Yaml yaml() Returns singleton instance of `yaml` reader
  * @method \Sphp\Stdlib\Parsers\Ini ini() Returns singleton instance of `ini` reader
@@ -111,22 +112,21 @@ abstract class ParseFactory {
    * @throws RuntimeException
    * @throws InvalidArgumentException
    */
-  public static function fromFile(string $filepath, string $extension = null) {
-    $fullPath = Filesystem::getFullPath($filepath);
+  public static function fromFile(string $filepath, ?string $extension = null) {
     if ($extension === null) {
-      $pathinfo = pathinfo($fullPath);
+      $pathinfo = pathinfo($filepath);
       if (!isset($pathinfo['extension'])) {
         throw new InvalidArgumentException(
-                sprintf('Filename "%s" is missing an extension and cannot be auto-detected', $filepath));
+                        sprintf('Filename "%s" is missing an extension and cannot be auto-detected', $filepath));
       }
       $extension = strtolower($pathinfo['extension']);
     }
     $reader = static::getReaderFor($extension);
     $output = '';
     if ($reader instanceof ArrayParser) {
-      $output = $reader->fileToArray($fullPath);
+      $output = $reader->fileToArray($filepath);
     } else if ($reader instanceof StringConverter) {
-      $output = $reader->parseFile($fullPath);
+      $output = $reader->parseFile($filepath);
     }
     return $output;
   }

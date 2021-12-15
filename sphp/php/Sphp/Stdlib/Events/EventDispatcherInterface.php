@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -69,7 +69,7 @@ interface EventDispatcherInterface {
    * Checks whether the given event has listeners
    *
    * @param  string $eventName the name of the event
-   * @return boolean true if event has listeners, false otherwise
+   * @return bool true if event has listeners, false otherwise
    */
   public function hasListeners(string $eventName): bool;
 

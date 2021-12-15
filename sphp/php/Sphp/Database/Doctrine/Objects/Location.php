@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -117,7 +117,7 @@ class Location extends AbstractArrayableObject {
    * Confirms the uniqueness of the location name in the repository
    *
    * @param  EntityManagerInterface $em the entity manager
-   * @return boolean true, if location name is unique, false otherwise.
+   * @return bool true, if location name is unique, false otherwise.
 
     public function hasUniqueNameIn(EntityManagerInterface $em) {
     if ($this->isManagedBy($em)) {

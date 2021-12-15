@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Tables;
 
+use Sphp\Html\Container;
+
 /**
- * Interface is the base definition for all {@link Tr} content (table cells)
+ * Base definition for all {@link Tr} content (table cells)
  * 
  * An HTML table has two kinds of cells:
  *
@@ -24,14 +26,14 @@ namespace Sphp\Html\Tables;
  *  The text in &lt;td&gt; elements are regular and left-aligned by default.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_td.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API
- * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_th.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-th-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Cell extends TableContent {
+interface Cell extends TableContent, Container {
 
   /**
    * Sets the value of the colspan attribute
@@ -41,10 +43,10 @@ interface Cell extends TableContent {
    * (colgroup).
    *
    * @precondition  $value >= 1
-   * @param  int $value the value of the colspan attribute
+   * @param  int|null $value the value of the colspan attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
-   * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
+   * @link   https://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
+   * @link   https://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
    */
   public function setColspan(int $value);
 
@@ -52,8 +54,8 @@ interface Cell extends TableContent {
    * Returns the value of the colspan attribute
    *
    * @return int the value of the colspan attribute
-   * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
-   * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
+   * @link   https://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
+   * @link   https://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
    */
   public function getColspan(): int;
 
@@ -64,20 +66,20 @@ interface Cell extends TableContent {
    *  browser to span the cell to the last row of the table section 
    *  (thead, tbody, or tfoot).
    *
-   * @precondition  $value >= 1
-   * @param  int $value the value of the rowspan attribute
+   * @precondition  $value === null | $value >= 1
+   * @param  int|null $value the value of the rowspan attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
-   * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
+   * @link   https://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
+   * @link   https://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
    */
-  public function setRowspan(int $value);
+  public function setRowspan(?int $value);
 
   /**
    * Returns the value of the rowspan attribute
    *
    * @return int the value of the rowspan attribute
-   * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
-   * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
+   * @link   https://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
+   * @link   https://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
    */
   public function getRowspan(): int;
 }

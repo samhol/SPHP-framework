@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -185,7 +185,7 @@ class SessionUser extends AbstractArrayableObject implements UserInterface {
   /**
    * 
    * @param  EntityManagerInterface $em the entity manager
-   * @return boolean true if users username is already taken by another user entity
+   * @return bool true if users username is already taken by another user entity
    */
   public function usernameTaken(EntityManagerInterface $em) {
     if ($this->isManagedBy($em)) {
@@ -203,7 +203,7 @@ class SessionUser extends AbstractArrayableObject implements UserInterface {
   /**
    * 
    * @param  EntityManagerInterface $em
-   * @return boolean 
+   * @return bool 
    */
   public function emailTaken(EntityManagerInterface $em) {
     if ($this->isManagedBy($em)) {

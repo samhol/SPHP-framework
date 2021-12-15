@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -15,278 +15,254 @@ namespace Sphp\Network;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Exceptions\RuntimeException;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements an URL object for manipulation and comparison
- *
- * Keys for url manipulation via ArrayAccess interface: 
- * 
- * * PHP_URL_SCHEME
- * * PHP_URL_HOST
- * * PHP_URL_PORT
- * * PHP_URL_USER
- * * PHP_URL_PASS
- * * PHP_URL_PATH
- * * PHP_URL_QUERY
- * * PHP_URL_FRAGMENT
- * 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAccess {
+class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
 
-  const SCHEME = PHP_URL_SCHEME;
-  const HOST = PHP_URL_HOST;
-  const PORT = PHP_URL_PORT;
-  const USER = PHP_URL_USER;
-  const PASS = PHP_URL_PASS;
-  const PATH = PHP_URL_PATH;
-  const QUERY = PHP_URL_QUERY;
-  const FRAGMENT = PHP_URL_FRAGMENT;
-
-  private static $map = [
-      'scheme' => self::SCHEME,
-      'host' => self::HOST,
-      'port' => self::PORT,
-      'user' => self::USER,
-      'username' => self::USER,
-      'password' => self::PASS,
-      'pass' => self::PASS,
-      'path' => self::PATH,
-      'query' => self::QUERY,
-      'fragment' => self::FRAGMENT,
-  ];
+  private ?string $scheme = null;
+  private ?string $host = null;
+  private ?int $port = null;
+  private ?string $user = null;
+  private ?string $pass = null;
+  private ?string $path = null;
+  private QueryString $query;
+  private ?string $fragment = null;
 
   /**
    * the current URL object
    *
    * @var URL 
    */
-  private static $currUrl;
-
-  /**
-   * URL parts
-   *
-   * @var array
-   */
-  private $parts = [];
+  private static ?URL $currUrl = null;
 
   /**
    * Constructor
    *
    * @param string|null $url the URL string
    */
-  public function __construct(string $url = null) {
-    $this->parts = [
-        self::SCHEME => null,
-        self::HOST => null,
-        self::PORT => null,
-        self::USER => null,
-        self::PASS => null,
-        self::PATH => null,
-        self::QUERY => new QueryString(),
-        self::FRAGMENT => null,
-    ];
-
-    // var_dump(PHP_URL_PORT ,parse_url($url));
+  public function __construct(?string $url = null) {
     if ($url !== null) {
-      $this->parseURL($url);
-    }
-  }
-
-  protected function parseURL(string $url) {
-    $this->setPart(self::SCHEME, parse_url($url, PHP_URL_SCHEME));
-    $this->setPart(self::HOST, parse_url($url, PHP_URL_HOST));
-    $this->setPart(self::PORT, parse_url($url, PHP_URL_PORT));
-    $this->setPart(self::USER, parse_url($url, PHP_URL_USER));
-    $this->setPart(self::PASS, parse_url($url, PHP_URL_PASS));
-    $this->setPart(self::PATH, parse_url($url, PHP_URL_PATH));
-    $this->setPart(self::QUERY, parse_url($url, PHP_URL_QUERY));
-    $this->setPart(self::FRAGMENT, parse_url($url, PHP_URL_FRAGMENT));
-  }
-
-  public function __clone() {
-    $this->parts = \Sphp\Stdlib\Arrays::copy($this->parts);
-  }
-
-  public function partToString(int $part, bool $rawurlencode = false): string {
-    if (!array_key_exists($part, $this->parts)) {
-      throw new InvalidArgumentException("Unknown URL part constant value provided");
-    }
-    if (!$this->contains($part)) {
-      return '';
-    }
-    if ($part === self::QUERY) {
-      if ($rawurlencode) {
-        return $this->getQuery()->build('&amp;', PHP_QUERY_RFC3986);
-      } else {
-        return $this->getQuery()->build('&amp;', PHP_QUERY_RFC1738);
-      }
-    }
-    if ($rawurlencode) {
-      return rawurlencode($this->parts[$part]);
-    }
-    return (string) $this->parts[$part];
-  }
-
-  public function getPart(int $part, bool $rawurlencode = false) {
-    if (!array_key_exists($part, $this->parts)) {
-      throw new InvalidArgumentException("Unknown URL part constant value provided");
-    }
-    $value = $this->parts[$part];
-    if ($part === self::QUERY) {
-      if ($rawurlencode) {
-        return $value->build('&amp;', PHP_QUERY_RFC3986);
-      } else {
-        return $value->build('&amp;', PHP_QUERY_RFC1738);
-      }
-    }
-    if (!$this->contains($part)) {
-      return '';
-    }
-    if ($rawurlencode) {
-      return rawurlencode($this->parts[$part]);
-    }
-    return $this->parts[$part];
-  }
-
-  /**
-   * Checks whether the part of the URL is set or not
-   * 
-   * @param  int $part
-   * @return boolean true if the part is set and false otherwise
-   * @throws InvalidArgumentException
-   */
-  public function contains(int $part): bool {
-    if (!array_key_exists($part, $this->parts)) {
-      throw new InvalidArgumentException("Unknown URL part '$part'");
-    }
-    if ($part === self::QUERY) {
-      return !$this->getQuery()->isEmpty();
-    }
-    return $this->parts[$part] !== null;
-  }
-
-  /**
-   * Checks whether the part of the URL is set or not
-   * 
-   * @param  int $part
-   * @param  mixed $value
-   * @return $this for a fluent interface
-   * @throws InvalidArgumentException
-   */
-  public function setPart(int $part, $value) {
-    if (!array_key_exists($part, $this->parts)) {
-      throw new InvalidArgumentException("Unknown URL part constant provided'$part'");
-    }
-    if ($part === self::QUERY) {
-      $this->setQuery($value);
-    } else if ($part === self::PORT) {
-      if (!is_int($value) && $value !== null) {
-        throw new InvalidArgumentException("Invalid URL port $value");
-      }
-      $this->parts[$part] = $value;
-    } else if ($part === self::SCHEME) {
-      if ($value !== null) {
-        $value = strtolower($value);
-      }
-      $this->parts[self::SCHEME] = $value;
-    } else if (is_string($value) || $value === null) {
-      if ($value === '') {
-        $value = null;
-      }
-      $this->parts[$part] = $value;
+      $this->scheme = parse_url($url, PHP_URL_SCHEME);
+      $this->host = parse_url($url, PHP_URL_HOST);
+      $this->port = parse_url($url, PHP_URL_PORT);
+      $this->user = parse_url($url, PHP_URL_USER);
+      $this->pass = parse_url($url, PHP_URL_PASS);
+      $this->path = parse_url($url, PHP_URL_PATH);
+      $this->setQuery(parse_url($url, PHP_URL_QUERY));
+      $this->fragment = parse_url($url, PHP_URL_FRAGMENT);
     } else {
-      $v = var_export($value, true);
-      $partName = array_search($part, self::$map);
-      throw new InvalidArgumentException("Malformed URL $partName  $v");
+      $this->setQuery(null);
     }
+  }
+
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    $this->query = clone $this->query;
+  }
+
+  /**
+   * Sets the userinfo component 
+   * 
+   * @param  string|null $username
+   * @return $this for a fluent interface
+   */
+  public function setUsername(?string $username) {
+    $this->user = $username;
+    return $this;
+  }
+
+  /**
+   * Sets the path component
+   * 
+   * @param  string|null $password
+   * @return $this for a fluent interface
+   */
+  public function setPassword(?string $password) {
+    $this->pass = $password;
+    return $this;
+  }
+
+  /**
+   * Sets the path component 
+   * 
+   * @param  string|null $path
+   * @return $this for a fluent interface
+   */
+  public function setPath(?string $path) {
+    $this->path = $path;
+    return $this;
+  }
+
+  /**
+   * Sets the fragment component 
+   * 
+   * @param  string|null $fragment
+   * @return $this for a fluent interface
+   */
+  public function setFragment(?string $fragment) {
+    $this->fragment = $fragment;
+    return $this;
+  }
+
+  /**
+   * Sets the scheme component 
+   * 
+   * @param  string|null $scheme the scheme component 
+   * @return $this for a fluent interface
+   */
+  public function setScheme(?string $scheme) {
+    $this->scheme = $scheme;
     return $this;
   }
 
   /**
    * Returns the scheme name of the URL
    * 
+   * <b>URL:</b> <var><b>scheme</b>:[//authority]path[?query] [#fragment]</var>
+   * 
    * The scheme is usually the name of a protocol, defines how the resource 
    * will be obtained. Examples include `http`, `https`, `ftp`, `file` and many 
    * others. **All schemes are transformed to lowercase.**
    * 
-   * @return string the scheme name of the URL
+   * @return string|null the scheme name of the URL or null if the scheme is not set
    */
-  public function getScheme(): string {
-    return (string) $this->parts[self::SCHEME];
+  public function getScheme(): ?string {
+    return $this->scheme;
   }
 
   /**
-   * Returns the `host` part of the URL
+   * Checks if the scheme component is set
    * 
-   * @param  boolean $encode true if the value should be encoded
-   * @return string the host `part` of the URL
+   * @return bool true if the scheme component is set, false otherwise
    */
-  public function getHost(bool $encode = false): string {
-    if (!$this->contains(self::HOST)) {
-      return '';
-    }
-    $host = $this->parts[self::HOST];
-    if (preg_match('!^[\da-f]*:[\da-f.:]+$!ui', $host)) {
-      $host = '[' . $host . ']'; // IPv6
-    } else if ($encode) {
-      $host = rawurlencode($host); // IPv4 or name
-    }
+  public function containsScheme(): bool {
+    return $this->scheme !== null;
+  }
+
+  /**
+   * Sets the host component 
+   * 
+   * @param  string|null $host the host component 
+   * @return $this for a fluent interface
+   */
+  public function setHost(?string $host) {
+    $this->host = $host;
+    return $this;
+  }
+
+  /**
+   * Returns the host component
+   * 
+   * <b>URL:</b> <var>scheme:[//[userinfo@]<b>host</b>[:port]]path[?query][#fragment]</var>
+   *  
+   * @return string the host component
+   */
+  public function getHost(): ?string {
+    $host = $this->host;
     return $host;
   }
 
   /**
-   * Returns the user part of the URL
+   * Checks if the URL is IPv6
    * 
-   * @param  boolean $encode true if the value should be encoded
-   * @return string the user part of the URL
+   * @return bool true if the host is IPv6, false otherwise
    */
-  public function getUser(bool $encode = false): string {
-    return $this->partToString(self::USER, $encode);
+  public function isIPv6(): bool {
+    return $this->containsHost() &&
+            Strings::match($this->host, '!^[\da-f]*:[\da-f.:]+$!ui');
   }
 
   /**
-   * Returns the password part of the URL
+   * Checks if the host component is set
    * 
-   * @param  boolean $encode true if the value should be encoded
-   * @return string the password part of the URL
+   * @return bool true if the host component is set, false otherwise
    */
-  public function getPassword(bool $encode = false): string {
-    return $this->partToString(self::PASS, $encode);
+  public function containsHost(): bool {
+    return $this->host !== null;
   }
 
   /**
-   * Returns the path part of the URL
+   * Returns the user component
    * 
-   * @param  boolean $encode true if the value should be encoded
+   * <b>URL:</b> <var>scheme:[//[<b>userinfo</b>@]host[:port]]path[?query][#fragment]</var>
+   *  
+   * @return string the user component
+   */
+  public function getUser(): ?string {
+    return $this->user;
+  }
+
+  /**
+   * Checks if the user part of the URL is set
+   * 
+   * @return bool true if the user part is set, false otherwise
+   */
+  public function containsUser(): bool {
+    return $this->user !== null;
+  }
+
+  /**
+   * Returns the fragment component
+   * 
+   *  <var>scheme:[//authority]path[?query] [#<b>fragment</b>]</var>
+   *  
+   * @return string the fragment component
+   */
+  public function getPassword(): ?string {
+    return $this->pass;
+  }
+
+  /**
+   * Checks if the password component of the URL is set
+   * 
+   * @return bool true if the password component is set, false otherwise
+   */
+  public function containsPassword(): bool {
+    return $this->pass !== null;
+  }
+
+  /**
+   * Returns the path component of the URL
+   * 
    * @return string the path part of the URL
    */
-  public function getPath(bool $encode = false): string {
-    if (!$this->contains(self::PATH)) {
-      return '';
-    }
-    if ($encode) {
-      return preg_replace('!%2F!ui', '/', rawurlencode($this->parts[self::PATH]));
-    }
-    return $this->parts[self::PATH];
+  public function getPath(): ?string {
+    return $this->path;
   }
 
   /**
-   * Sets the query part of the URL
+   * Checks if the path component of the URL is set
    * 
-   * @param  string|QueryString $query the new query string
+   * @return bool true if the path component is set, false otherwise
+   */
+  public function containsPath(): bool {
+    return $this->path !== null;
+  }
+
+  /**
+   * Sets the query component of the URL
+   * 
+   * @param  string|iterable|QueryString|null $query the new query string
    * @return $this for a fluent interface
    */
-  public function setQuery($query = null) {
+  public function setQuery($query) {
     if ($query instanceof QueryString) {
-      $this->parts[self::QUERY] = $query;
+      $this->query = $query;
     } else {
-      $this->parts[self::QUERY] = new QueryString($query);
+      $this->query = new QueryString($query);
     }
     return $this;
   }
@@ -297,22 +273,41 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return QueryString the query object
    */
   public function getQuery(): QueryString {
-    return $this->parts[self::QUERY];
+    return $this->query;
+  }
+
+  /**
+   * Checks if the query part of the URL is set
+   * 
+   * @return bool true if the query part is set, false otherwise
+   */
+  public function containsQuery(): bool {
+    return $this->query !== null && !$this->query->isEmpty();
+  }
+
+  /**
+   * Sets the port subcomponent 
+   * 
+   * @param  int|null $port the port subcomponent (null for default port)
+   * @return $this for a fluent interface
+   */
+  public function setPort(?int $port) {
+    $this->port = $port;
+    return $this;
   }
 
   /**
    * Returns the port number associated with this service and a given protocol
    *
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml IANA
-   * @return int the port number; (`-1` if the port number can not be resolved)
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @return int|null the port number; (null if the port number can not be resolved) 
    */
-  public function getPort(): int {
-    $port = $this->parts[self::PORT];
-    if ($port === null) {
-      $port = getservbyname($this->getScheme(), 'tcp');
+  public function resolvePort(): ?int {
+    $port = $this->port;
+    if ($this->port === null && $this->scheme !== null) {
+      $port = getservbyname($this->scheme, 'tcp');
       if ($port === false) {
-        throw new RuntimeException('Cannot resolve port from the URL');
+        $port = null;
       }
     }
     return $port;
@@ -321,24 +316,86 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   /**
    * Returns the port number associated with this service and a given protocol
    *
-   * @return boolean true if the port number is the default for the scheme
-   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml IANA
+   * @return int|null the port number; (null if the port number can not be resolved) 
    */
-  public function hasDefaultPort(): bool {
-    if ($this->parts[self::PORT] === null) {
-      return true;
-    }
-    return getservbyname($this->getScheme(), 'tcp') === $this->getPort();
+  public function getPort(): ?int {
+    return $this->port;
   }
 
   /**
-   * Returns the fragment identifier of the URL
+   * Returns the authority component
    * 
-   * @param  boolean $encode true if the value should be encoded
-   * @return string the fragment identifier of the URL
+   *  <var>scheme:<b>[//authority]</b>path[?query] [#fragment]</var>
+   * 
+   *  The authority component divides into three subcomponents:
+   *  <var><b>authority</b> = [userinfo@]host[:port]</var>
+   * 
+   * @return string the authority component
    */
-  public function getFragment(bool $encode = false) {
-    return $this->partToString(self::FRAGMENT, $encode);
+  public function getAuthority(): string {
+    $output = '//';
+    if ($this->containsUser()) {
+      $output .= $this->getUser();
+      if ($this->containsPassword()) {
+        $output .= ':' . $this->getPassword();
+      }
+      $output .= '@';
+    }
+    if ($this->isIPv6()) {
+      $output .= '[' . $this->getHost() . ']';
+    } else {
+      $output .= $this->getHost();
+    }
+    if (!$this->hasDefaultPort()) {
+      $output .= ':' . $this->getPort();
+    }
+    return $output;
+  }
+
+  /**
+   * Checks if the port part of the URL is set
+   * 
+   * @return bool true if the port part is set, false otherwise
+   */
+  public function containsPort(): bool {
+    return $this->port !== null;
+  }
+
+  /**
+   * Returns the port number associated with this service and a given protocol
+   *
+   * @return bool true if the port number is the default for the scheme
+   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+   */
+  public function hasDefaultPort(): bool {
+    $out = false;
+    if ($this->port === null) {
+      $out = true;
+    } else if ($this->scheme !== null) {
+      $out = getservbyname($this->scheme, 'tcp') === $this->port;
+    }
+    return $out;
+  }
+
+  /**
+   * Returns the fragment component
+   * 
+   * <b>URL:</b> <var>scheme:[//authority]path[?query] [#<b>fragment</b>]</var>
+   *  
+   * @return string the fragment component
+   */
+  public function getFragment(): ?string {
+    return $this->fragment;
+  }
+
+  /**
+   * Checks if the fragment part of the URL is set
+   * 
+   * @return bool true if the fragment part is set, false otherwise
+   */
+  public function containsFragment(): bool {
+    return $this->fragment !== null;
   }
 
   /**
@@ -348,7 +405,6 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public function getIterator(): Traversable {
     $it = new \ArrayIterator($this->toArray());
-    $it['query'] = $this->parts[self::QUERY];
     return $it;
   }
 
@@ -356,15 +412,20 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * Determines whether the specified object is equal to the current object
    *
    * @param  string|URL $url the URL to compare with the current URL
-   * @return boolean true if the specified URL is equal to the current URL, otherwise false
+   * @return bool true if equals, otherwise false
    */
   public function equals($url): bool {
     if (!($url instanceof URL)) {
       $url = new URL($url);
     }
-    //print_r($this->toArray());
-    //print_r($url->toArray());
-    return $this->toArray() == $url->toArray();
+    $thisArray = $this->toArray();
+    $thisArray['port'] = $this->resolvePort();
+    $thisArray['query'] = $this->getQuery()->toArray();
+
+    $otherArray = $url->toArray();
+    $otherArray['port'] = $url->resolvePort();
+    $otherArray['query'] = $url->getQuery()->toArray();
+    return $thisArray == $otherArray;
   }
 
   /**
@@ -376,7 +437,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return string representation of the object
    */
   public function __toString(): string {
-    return $this->getHtml();
+    return $this->parseToString();
   }
 
   /**
@@ -387,63 +448,20 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    *
    * @return string representation of the object
    */
-  public function toString(bool $rawurlencode = false): string {
+  public function parseToString(int $queryEncoding = PHP_QUERY_RFC1738): string {
     $url = '';
-    if ($this->contains(self::SCHEME)) {
+    if ($this->containsScheme()) {
       $url .= $this->getScheme() . ':';
     }
-    $url .= $this->getAuthority($rawurlencode);
-    $url .= $this->getPath($rawurlencode);
-    if ($this->contains(self::QUERY)) {
-      $url .= '?' . $this->getQuery();
+    $url .= $this->getAuthority();
+    $url .= $this->getPath();
+    if ($this->containsQuery()) {
+      $url .= '?' . $this->getQuery()->build($queryEncoding);
     }
-    if ($this->contains(self::FRAGMENT)) {
-      $url .= '#' . $this->getFragment($rawurlencode);
+    if ($this->containsFragment()) {
+      $url .= '#' . $this->getFragment();
     }
     return $url;
-  }
-
-  public function getAuthority(bool $rawurlencode = false): string {
-    if (!$this->contains(self::HOST)) {
-      return '';
-    }
-    $output = '//';
-    if ($this->contains(self::USER)) {
-      $output .= $this->getUser($rawurlencode);
-      if ($this->contains(self::PASS)) {
-        $output .= ':' . $this->getPassword($rawurlencode);
-      }
-      $output .= '@';
-    }
-    $output .= $this->getHost($rawurlencode);
-    if (!$this->hasDefaultPort()) {
-      $output .= ':' . $this->parts[self::PORT];
-    }
-    return $output;
-  }
-
-  /**
-   * Returns the object as a HTML5 encoded string
-   *
-   * **String format:** 
-   * [scheme]://[user]:[pass]@[host]:[port]/[path]?[query]#[fragment]
-   *
-   * @return string representation of the object
-   */
-  public function getHtml(): string {
-    return $this->toString(true);
-  }
-
-  /**
-   * Returns the object as a raw unencoded string
-   *
-   * **String format:** 
-   * [scheme]://[user]:[pass]@[host]:[port]/[path]?[query]#[fragment]
-   *
-   * @return string representation of the object
-   */
-  public function getRaw(): string {
-    return $this->toString(false);
   }
 
   /**
@@ -465,61 +483,13 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
   }
 
   public function toArray(): array {
-    try {
-      $port = $this->getPort();
-    } catch (\Exception $ex) {
-      $port = null;
-    }
+    $out = get_object_vars($this);
     if ($this->getQuery()->isEmpty()) {
-      $query = null;
+      unset($out['query']);
     } else {
-      $query = $this->getQuery()->toArray();
+      $out['query'] = (string) $this->getQuery();
     }
-    return [
-        'scheme' => $this->parts[self::SCHEME],
-        'host' => $this->parts[self::HOST],
-        'port' => $port,
-        'user' => $this->parts[self::USER],
-        'pass' => $this->parts[self::PASS],
-        'path' => $this->parts[self::PATH],
-        'query' => $query,
-        'fragment' => $this->parts[self::FRAGMENT],
-    ];
-  }
-
-  private function getIndex($offset): int {
-    if (array_key_exists($offset, $this->parts)) {
-      return $offset;
-    } else if (is_string($offset) && array_key_exists($offset, self::$map)) {
-      return self::$map[$offset];
-    }
-    throw new InvalidArgumentException("Invalid index value $offset");
-  }
-
-  public function offsetExists($offset): bool {
-    $index = $this->getIndex($offset);
-    return $this->contains($index);
-  }
-
-  public function offsetGet($offset) {
-    $index = $this->getIndex($offset);
-    return $this->parts[$index];
-  }
-
-  public function offsetSet($offset, $value) {
-    $index = $this->getIndex($offset);
-    $this->setPart($index, $value);
-    //echo "$offset: $index = $value sets" . PHP_EOL;
-    //var_dump($this->parts[$index]);
-  }
-
-  public function offsetUnset($offset) {
-    $index = $this->getIndex($offset);
-    if ($index === self::QUERY) {
-      $this->setQuery(null);
-    } else {
-      $this->parts[$index] = null;
-    }
+    return array_filter($out, fn($x) => $x !== null);
   }
 
   /**
@@ -528,7 +498,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    * @return string the current URL
    * @codeCoverageIgnore
    */
-  public static function getCurrentURL(int $flags = 0): string {
+  public static function getCurrentAsString(int $flags = 0): string {
     $port = filter_input(INPUT_SERVER, 'SERVER_PORT', FILTER_VALIDATE_INT);
     $httpsStatus = filter_input(INPUT_SERVER, 'HTTPS', FILTER_SANITIZE_STRING);
     $serverName = filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_STRING);
@@ -564,7 +534,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable, \ArrayAcce
    */
   public static function getCurrent(): URL {
     if (self::$currUrl === null) {
-      $url = new static(static::getCurrentURL());
+      $url = new static(static::getCurrentAsString());
       self::$currUrl = $url;
     }
     return clone self::$currUrl;

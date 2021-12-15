@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -19,8 +19,10 @@ use Sphp\Stdlib\Arrays;
 /**
  * A container for validating a value against multiple validators
  * 
+ * @method \Sphp\Validators\CollectionLength collectionLength(?int $min = null, ?int $max = null) inserts a new Regexp validator
  * @method \Sphp\Validators\Regexp regexp(mixed $content = null, $for = null) inserts a new Regexp validator
- *
+ * @method \Sphp\Validators\Whitelist whitelist(iterable $haystack, string $defaultErrorMessage) Description
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
@@ -33,12 +35,8 @@ class ValidatorChain extends AbstractValidator implements Countable {
    *
    * @var Validator[]
    */
-  private $validators;
-
-  /**
-   * @var bool
-   */
-  private $breaksOnFailure;
+  private array $validators;
+  private bool $breaksOnFailure;
 
   /**
    * Constructor
@@ -84,11 +82,20 @@ class ValidatorChain extends AbstractValidator implements Countable {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->validators = Arrays::copy($this->validators);
     parent::__clone();
+  }
+
+  public function breaksOnFailure(): bool {
+    return $this->breaksOnFailure;
+  }
+
+  public function setBreaksOnFailure(bool $breaksOnFailure) {
+    $this->breaksOnFailure = $breaksOnFailure;
+    return $this;
   }
 
   public function isValid($value): bool {
@@ -98,8 +105,8 @@ class ValidatorChain extends AbstractValidator implements Countable {
       //var_dump($validator);
       if (!$validator->isValid($value)) {
         $valid = false;
-        $this->errors()->mergeCollection($validator->errors());
-        if ($this->breaksOnFailure) {
+        $this->getErrors()->mergeCollection($validator->getErrors());
+        if ($this->breaksOnFailure()) {
           break;
         }
       }

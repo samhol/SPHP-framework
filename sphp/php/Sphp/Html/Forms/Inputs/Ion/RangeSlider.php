@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -18,7 +18,7 @@ use Sphp\Exceptions\InvalidStateException;
  * Implements jQuery range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://ionden.com/a/plugins/ion.rangeSlider/en.html ion range slider
+ * @link    https://github.com/IonDen/ion.rangeSlider ion range slider
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -31,7 +31,7 @@ class ExecutionSequence implements Arrayable, IteratorAggregate, Countable {
   /**
    * @var PriorityQueue
    */
-  private $callbacks;
+  private PriorityQueue $callbacks;
 
   /**
    * Constructor
@@ -97,7 +97,7 @@ class ExecutionSequence implements Arrayable, IteratorAggregate, Countable {
    * Count the number of contained callables 
    *
    * @return int number of callables
-   * @link   http://php.net/manual/en/class.countable.php Countable
+   * @link   https://www.php.net/manual/en/class.countable.php Countable
    */
   public function count(): int {
     return $this->callbacks->count();

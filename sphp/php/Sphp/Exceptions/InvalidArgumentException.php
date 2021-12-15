@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Exceptions;
 
-use InvalidArgumentException as SplInvalidArgumentException;
 
 /**
  * SPHP-specific invalid argument exception
@@ -21,6 +20,6 @@ use InvalidArgumentException as SplInvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class InvalidArgumentException extends SplInvalidArgumentException implements SphpExceptionInterface {
-
+class InvalidArgumentException extends LogicException {
+  
 }

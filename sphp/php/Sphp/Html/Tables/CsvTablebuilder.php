@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -15,7 +15,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Stdlib\Parsers\CsvFile;
 
 /**
- * Class CsvTablebuilder
+ * Implementation of an HTML table builder from CSV data
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -27,27 +27,27 @@ class CsvTablebuilder {
   /**
    * @var bool 
    */
-  private $useHead;
+  private bool $useHead;
 
   /**
    * @var CsvFile 
    */
-  private $csvData;
+  private CsvFile $csvData;
 
   /**
    * @var int 
    */
-  private $offset;
+  private int $offset;
 
   /**
    * @var int|null
    */
-  private $rowCount;
+  private ?int $rowCount;
 
   /**
    * @var int 
    */
-  private $useLinenumbers;
+  private int $useLinenumbers;
 
   public function __construct(bool $useHead = false, int $offset = 0, int $count = -1, int $lineNumbers = LineNumberer::LEFT) {
     $this->setUseHead($useHead)->setRange($offset, $count);
@@ -66,7 +66,7 @@ class CsvTablebuilder {
    * @param  string $escape
    * @return $this for a fluent interface
    */
-  public function buildFromFile(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = "\\") {
+  public function useFile(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = "\\") {
     $this->setCsvData(new CsvFile($filename, $delimiter, $enclosure, $escape));
     return $this;
   }
@@ -74,10 +74,10 @@ class CsvTablebuilder {
   /**
    * 
    * @param  int $offset
-   * @param  int $rowCount
+   * @param  int|null $rowCount
    * @return $this for a fluent interface
    */
-  public function setRange(int $offset = 0, int $rowCount = null) {
+  public function setRange(int $offset = 0, ?int $rowCount = null) {
     $this->offset = $offset;
     $this->rowCount = $rowCount;
     return $this;
@@ -124,7 +124,7 @@ class CsvTablebuilder {
    */
   public function build(): Table {
     $builder = new TableBuilder();
-    if ($this->getOffset() > 0) {
+    if ($this->getOffset() > 0 || $this->rowCount > 0) {
       $data = $this->getCsvData()->getChunk($this->getOffset(), $this->getRowCount());
     } else {
       $data = $this->getCsvData()->toArray();
@@ -138,7 +138,7 @@ class CsvTablebuilder {
       $builder->setTheadData($headData);
     }
     $builder->setTbodyData($data);
-    if ($this->usesLinenumbers() !== LineNumberer::NONE)  {
+    if ($this->usesLinenumbers() !== LineNumberer::NONE) {
       $linenumberer = new LineNumberer();
       $linenumberer->setFirstLineNumber($this->getOffset() + 1);
       $builder->addTableFilter($linenumberer);

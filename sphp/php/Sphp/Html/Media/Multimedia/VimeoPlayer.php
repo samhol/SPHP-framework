@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Html\Media\Multimedia;
+
+use Sphp\Network\URL;
 
 /**
  * Implements an embeddable Vimeo Video component
@@ -28,7 +30,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @param  string $videoId the id of the Vimeo video
    */
   public function __construct($videoId) {
-    parent::__construct("https://player.vimeo.com/video/$videoId");
+    parent::__construct(new URL("https://player.vimeo.com/video/$videoId"));
   }
 
   /**
@@ -39,8 +41,12 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @param  string $color the hexadecimal color code string
    * @return $this for a fluent interface
    */
-  public function setControlsColor(string $color) {
-    $this->getUrl()->getQuery()->offsetSet('color', trim($color, '#'));
+  public function setControlsColor(string $color = null) {
+    if ($color !== null) {
+      $color = trim($color, '#');
+    }
+    $this->setOption('color', $color);
+    return $this;
   }
 
   /**
@@ -48,11 +54,12 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * 
    * **Default:** `true` the title is visible
    * 
-   * @param  boolean $show true if the title is visible and false otherwise
+   * @param  bool $show true if the title is visible and false otherwise
    * @return $this for a fluent interface
    */
   public function showVideoTitle(bool $show) {
-    $this->getUrl()->getQuery()->offsetSet('title', int($show));
+    $this->setOption('title', (int) $show);
+    return $this;
   }
 
 }

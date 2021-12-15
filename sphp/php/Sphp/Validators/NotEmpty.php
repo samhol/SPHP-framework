@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -48,7 +48,7 @@ class NotEmpty extends AbstractValidator {
   const COUNTABLE_TYPE = 0b1000;
   const TRAVERSABLE_TYPE = 0b10000;
 
-  private $type = self::ANY_TYPE;
+  private int $type = self::ANY_TYPE;
 
   /**
    * Constructor
@@ -84,7 +84,7 @@ class NotEmpty extends AbstractValidator {
       $valid = is_array($value) || $value instanceof \Countable;
     }
     if (!$valid) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
     }
     return $valid;
   }
@@ -107,7 +107,7 @@ class NotEmpty extends AbstractValidator {
       $valid = count($value) > 0;
     }
     if (!$valid) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
     }
     return $valid;
   }

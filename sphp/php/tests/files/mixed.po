@@ -1,0 +1,27 @@
+# Validation messages
+# Copyright (C) 2021 Sami Holck.
+# Sami Holck <sami.holck@gmail.com> 2021
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi_FI\n"
+"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, php-format
+msgid "%d foo"
+msgid_plural "%d foos"
+msgstr[0] "%d bar"
+msgstr[1] "%d bars"
+
+msgid "foo"
+msgstr "bar"

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -52,7 +52,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     return !$this->attributes()->isVisible('data-disable') && !$this->attributes()->isVisible('data-block');
   }
 
-  public function setStepLength(float $step = 1) {
+  public function setStepLength(?float $step) {
     $range = $this->getMax() - $this->getMin();
     if ($step < 0) {
       throw new InvalidStateException("Step value ($step) is below zero");
@@ -64,7 +64,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
     return $this;
   }
 
-  public function setRange(float $min = null, float $max = null) {
+  public function setRange(?float $min, ?float $max) {
     $this->attributes()->setAttribute('data-min', $min);
     $this->attributes()->setAttribute('data-max', $max);
     return $this;
@@ -81,7 +81,7 @@ abstract class AbstractSlider extends AbstractInputTag implements RangeInput {
   /**
    * Sets the unit of the slider value
    * 
-   * @param  boolean $grid the unit of the value
+   * @param  bool $grid the unit of the value
    * @return $this for a fluent interface
    */
   public function useGrid(bool $grid = true) {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -11,7 +11,7 @@
 namespace Sphp\Validators\Datetime;
 
 use Sphp\Validators\AbstractLimitValidator;
-use Sphp\DateTime\DateTime;
+use Sphp\DateTime\ImmutableDateTime;
 
 /**
  * Implementation of AbstractDateTimeComparisonValidator
@@ -24,7 +24,7 @@ use Sphp\DateTime\DateTime;
 abstract class AbstractDateTimeComparisonValidator extends AbstractLimitValidator {
 
   /**
-   * @var DateTime
+   * @var ImmutableDateTime
    */
   private $limit;
 
@@ -36,7 +36,7 @@ abstract class AbstractDateTimeComparisonValidator extends AbstractLimitValidato
    */
   public function __construct($dt = 'now', bool $inclusive = true) {
     parent::__construct($inclusive);
-    $this->errors()->setTemplate(static::INVALID, 'Invalid data type given: Cannot parse to DateTime');
+    $this->getErrors()->setTemplate(static::INVALID, 'Invalid data type given: Cannot parse to DateTime');
     $this->setLimit($dt);
   }
 
@@ -52,8 +52,8 @@ abstract class AbstractDateTimeComparisonValidator extends AbstractLimitValidato
    * @throws InvalidArgumentException if a datetime object cannot be parsed from input
    */
   public function setLimit($limit = 'now') {
-    if (!$limit instanceof DateTime) {
-      $limit = new DateTime($limit);
+    if (!$limit instanceof ImmutableDateTime) {
+      $limit = ImmutableDateTime::from($limit);
     }
     $this->limit = $limit;
     return $this;
@@ -61,9 +61,9 @@ abstract class AbstractDateTimeComparisonValidator extends AbstractLimitValidato
 
   /**
    * 
-   * @return DateTime
+   * @return ImmutableDateTime
    */
-  public function getLimit(): DateTime {
+  public function getLimit(): ImmutableDateTime {
     return $this->limit;
   }
 

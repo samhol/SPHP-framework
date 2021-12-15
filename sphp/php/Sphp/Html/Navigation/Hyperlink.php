@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -26,7 +26,7 @@ use Sphp\Html\Content;
  * the `href` attribute is not present.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_a.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -42,9 +42,9 @@ interface Hyperlink extends Content {
    *
    * @param  string|null $href the URL of the link
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_a_href.asp href attribute
    */
-  public function setHref(string $href = null);
+  public function setHref(?string $href);
 
   /**
    * Returns the value of the href attribute
@@ -55,7 +55,7 @@ interface Hyperlink extends Content {
    * * If the href attribute is not present, the {@link self} is not a hyperlink.
    *
    * @return string|null the value of the href attribute
-   * @link http://www.w3schools.com/tags/att_a_href.asp href attribute
+   * @link https://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function getHref(): ?string;
 
@@ -69,9 +69,9 @@ interface Hyperlink extends Content {
    *
    * @param  string|null $target optional target frame of the hyperlink
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function setTarget(string $target = null);
+  public function setTarget(?string $target);
 
   /**
    * Returns the value of the target attribute
@@ -82,7 +82,7 @@ interface Hyperlink extends Content {
    * * Only used if the href attribute is present.
    *
    * @return string|null the value of the target attribute
-   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link  https://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function getTarget(): ?string;
 
@@ -95,9 +95,9 @@ interface Hyperlink extends Content {
    *
    * @param  string|null $rel optional relationship between the current document and the linked document
    * @return $this for a fluent interface
-   * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
+   * @link  https://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
-  public function setRelationship(string $rel = null);
+  public function setRelationship(?string $rel);
 
   /**
    * Returns the relationship between the current document and the linked document
@@ -107,7 +107,7 @@ interface Hyperlink extends Content {
    * * Only used if the `href` attribute is present.
    *
    * @return string|null the relationship between the current document and the linked document
-   * @link  http://www.w3schools.com/tags/att_a_rel.asp rel attribute
+   * @link  https://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
   public function getRelationship(): ?string;
 }

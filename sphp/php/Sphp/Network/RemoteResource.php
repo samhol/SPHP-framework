@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -26,7 +26,7 @@ abstract class RemoteResource {
    * Checks whether the URL exists or not
    *
    * @param  string $url the pointing to the resource
-   * @return boolean true if the URL exists and false otherwise
+   * @return bool true if the URL exists and false otherwise
    */
   public static function exists(string $url): bool {
     $curl = curl_init($url);

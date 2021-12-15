@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -14,13 +14,11 @@ namespace Sphp\Config\ErrorHandling;
 
 use Throwable;
 use Sphp\Stdlib\Filesystem;
+use Sphp\Config\Exception\ConfigurationException;
 
 /**
  * Logs uncaught exceptions to a file for debugging
  * 
- * Updates the error_log with information about the uncaught Exception and echoes 
- * the exception in an ExceptionBox element
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -36,10 +34,15 @@ class ExceptionLogger implements ExceptionListener {
    * Constructor
    * 
    * @param string $destination the filename of the destination file
+   * @throws ConfigurationException if the costructor fails
    */
   public function __construct(string $destination) {
-    if (!is_writable($destination)) {
-      Filesystem::mkFile($destination);
+    try {
+      if (!is_writable($destination)) {
+        Filesystem::mkFile($destination);
+      }
+    } catch (\Exception $ex) {
+      throw new ConfigurationException('Setting up the Exception logging to file failed', 0, $ex);
     }
     $this->destination = $destination;
   }
@@ -63,7 +66,7 @@ class ExceptionLogger implements ExceptionListener {
    * @param  Throwable $t the throwable to log
    * @return string log message as a string
    */
-  protected function parseThrowable(Throwable $t): string {
+  public function parseThrowable(Throwable $t): string {
     $output = "\nDate: " . date(\DATE_RFC2822) . " " . get_class($t) . " was thrown\n";
     $output .= "With message: " . $t->getMessage() . ", (code " . $t->getCode() . ")\n";
     $output .= "----------------------\n";

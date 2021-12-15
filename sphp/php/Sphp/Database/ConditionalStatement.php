@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -93,7 +93,7 @@ interface ConditionalStatement extends Statement {
   /**
    * Checks if there are any `SQL` conditions set
    *
-   * @return boolean conditions are set
+   * @return bool conditions are set
    */
   public function hasConditions(): bool;
 }

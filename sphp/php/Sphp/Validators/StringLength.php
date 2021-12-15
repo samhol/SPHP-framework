@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -36,14 +36,14 @@ class StringLength extends AbstractValidator {
    *
    * @var int
    */
-  private $min;
+  private ?int $min;
 
   /**
    * maximum length of the valid string
    *
    * @var int
    */
-  private $max;
+  private ?int $max;
 
   /**
    * Constructs a new validator
@@ -62,10 +62,10 @@ class StringLength extends AbstractValidator {
     } else {
       throw new InvalidArgumentException("Paramaters are invalid: min: $min, max: $max given");
     }
-    $this->errors()->setTemplate(static::INVALID, 'Invalid type given. String expected');
-    $this->errors()->setTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
-    $this->errors()->setTemplate(static::TOO_LONG, 'The input is more than %d characters long');
-    $this->errors()->setTemplate(static::NOT_IN_RANGE, 'The input length is not in range %d-%d');
+    $this->getErrors()->setTemplate(static::INVALID, 'Invalid type given. String expected');
+    $this->getErrors()->setTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
+    $this->getErrors()->setTemplate(static::TOO_LONG, 'The input is more than %d characters long');
+    $this->getErrors()->setTemplate(static::NOT_IN_RANGE, 'The input length is not in range %d-%d');
   }
 
   /**
@@ -88,7 +88,7 @@ class StringLength extends AbstractValidator {
   /**
    * Checks whether the validator acts as a range validator or not
    * 
-   * @return boolean true if the validator acts as a range validator, false otherwise
+   * @return bool true if the validator acts as a range validator, false otherwise
    */
   public function isRangeValidator(): bool {
     return $this->min !== null && $this->max !== null;
@@ -112,7 +112,7 @@ class StringLength extends AbstractValidator {
   /**
    * Checks whether the validator acts as a lower bound validator or not
    * 
-   * @return boolean true if the validator acts as a lower bound validator, false otherwise
+   * @return bool true if the validator acts as a lower bound validator, false otherwise
    */
   public function isLowerBoundValidator(): bool {
     return $this->min >= 0 && $this->max === null;
@@ -140,7 +140,7 @@ class StringLength extends AbstractValidator {
   /**
    * Checks whether the validator acts as a upper bound validator or not
    * 
-   * @return boolean true if the validator acts as a upper bound validator, false otherwise
+   * @return bool true if the validator acts as a upper bound validator, false otherwise
    */
   public function isUpperBoundValidator(): bool {
     return $this->min === null && $this->max > 0;
@@ -153,13 +153,13 @@ class StringLength extends AbstractValidator {
     $length = $string->length();
     if ($this->isRangeValidator() && ($length < $this->min || $this->max < $length)) {
       $valid = false;
-      $this->errors()->appendErrorFromTemplate(self::NOT_IN_RANGE, [$this->min, $this->max]);
+      $this->getErrors()->appendMessageFromTemplate(self::NOT_IN_RANGE, $this->min, $this->max);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
-      $this->errors()->appendErrorFromTemplate(self::TOO_SHORT, [$this->min]);
+      $this->getErrors()->appendMessageFromTemplate(self::TOO_SHORT, $this->min);
     } else if ($this->isUpperBoundValidator() && $length > $this->max) {
       $valid = false;
-      $this->errors()->appendErrorFromTemplate(self::TOO_LONG, [$this->min]);
+      $this->getErrors()->appendMessageFromTemplate(self::TOO_LONG, $this->min);
     }
     return $valid;
   }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -109,7 +109,7 @@ class SimpleCache {
   /**
    * Returns the http path to the cached image
    * 
-   * @return boolean 
+   * @return bool 
    */
   public function isCached(Image $image): bool {
     return is_file($this->getFullCachePath($image));

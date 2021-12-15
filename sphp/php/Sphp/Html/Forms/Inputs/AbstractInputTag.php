@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -23,7 +23,7 @@ use Sphp\Html\EmptyTag;
  * that allow users to input data. 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
+ * @link    https://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -35,9 +35,9 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
    * @param  string|null $type the value of the type attribute
    * @param  string|null $name the value of the name attribute
    * @param  string|null $value the value of the value attribute
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_input_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function __construct(string $type = null, string $name = null, $value = null) {
     parent::__construct('input');
@@ -58,10 +58,10 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
   /**
    * Sets the value of the name attribute
    *
-   * @param  string $name the value of the name attribute
+   * @param  string|null $name the value of the name attribute
    * @return $this for a fluent interface
    */
-  public function setName(string $name = null) {
+  public function setName(?string $name) {
     $this->attributes()->setAttribute('name', $name);
     return $this;
   }
@@ -72,7 +72,7 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
    * **Note:** Only form elements with a name attribute will have their values 
    * passed when submitting a form.
    *
-   * @return boolean true if the input has a name, otherwise false
+   * @return bool true if the input has a name, otherwise false
    */
   public function isNamed(): bool {
     return $this->attributes()->isVisible('name');
@@ -84,7 +84,7 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
    * A disabled input component is unusable and un-clickable. 
    * Disabled input components in a form will not be submitted.
    *
-   * @param  boolean $disabled true if the component is disabled, otherwise false
+   * @param  bool $disabled true if the component is disabled, otherwise false
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
@@ -95,7 +95,7 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
   /**
    * Checks whether the input component is enabled or not
    * 
-   * @return boolean true if the input component is enabled, otherwise false
+   * @return bool true if the input component is enabled, otherwise false
    */
   public function isEnabled(): bool {
     return !$this->attributes()->isVisible('disabled');
@@ -105,7 +105,7 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
    * Returns the type attribute value
    *
    * @return string|null the type attribute value
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_input_type.asp type attribute
    */
   public function getType(): ?string {
     return $this->attributes()->getValue('type');
@@ -115,7 +115,7 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
    * Returns the value of the value attribute.
    *
    * @return string the value of the value attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function getSubmitValue() {
     return $this->attributes()->getValue('value');
@@ -126,7 +126,7 @@ abstract class AbstractInputTag extends EmptyTag implements Input {
    *
    * @param  scalar|null $value the value of the value attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function setInitialValue($value) {
     $this->attributes()->setAttribute('value', $value);

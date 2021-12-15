@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Sphp\Network\Session;
 
 use PDO;
-use Sphp\Db\DatabaseConnector;
 
 /**
  * Class handles a session that stored ist data to a database
@@ -24,12 +23,7 @@ use Sphp\Db\DatabaseConnector;
  */
 class PdoSessionHandler extends AbstractSessionHandler {
 
-  /**
-   * the PDO object used to access the database
-   *
-   * @var PDO
-   */
-  private $pdo = null;
+  private PDO $pdo = null;
 
   /**
    * Constructs a new session object
@@ -39,12 +33,8 @@ class PdoSessionHandler extends AbstractSessionHandler {
    *
    * @param PDO $pdo the PDO object used to access the database
    */
-  public function __construct(PDO $pdo = null) {
-    if ($pdo === null) {
-      $this->pdo = DatabaseConnector::obtain();
-    } else {
-      $this->pdo = $pdo;
-    }
+  public function __construct(PDO $pdo) {
+    $this->pdo = $pdo;
     parent::__construct();
   }
 
@@ -53,7 +43,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
     $user = $users->findByUserPass($username, $password);
     if ($user !== null) {
       //echo "handler->write($id, $sess_data)\n";
-      
+
       $update = "UPDATE sessions SET user_id = :uid
             WHERE id = :id;";
       $updateStmt = $this->pdo->prepare($update);
@@ -94,7 +84,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
    *
    * @param  string $save_path the save path
    * @param  string $session_name the name of the session
-   * @return boolean true on success, false on failure
+   * @return bool true on success, false on failure
    */
   public function open($save_path, $session_name) {
     if ($this->pdo !== null) {
@@ -129,7 +119,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
    *
    * @param  string $id the id of the current session
    * @param  string $sess_data the data of the session
-   * @return boolean true on success, false on failure
+   * @return bool true on success, false on failure
    */
   public function write($id, $sess_data) {
     //echo "handler->write($id, $sess_data)\n";
@@ -168,7 +158,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
    * **Note** this value is returned internally to PHP for processing.
    *
    * @param  string $id the id of the current session
-   * @return boolean true on success, false on failure
+   * @return bool true on success, false on failure
    */
   public function destroy($id) {
     //echo "handler->destroy($id)\n";
@@ -186,7 +176,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
    * **Note** this value is returned internally to PHP for processing.
    *
    * @param  int $maxlifetime the maximum session lifetime
-   * @return boolean true on success, false on failure
+   * @return bool true on success, false on failure
    */
   public function gc($maxlifetime) {
     //echo "handler->gc($maxlifetime)\n";

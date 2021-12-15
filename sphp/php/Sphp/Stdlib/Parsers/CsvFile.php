@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -32,28 +32,28 @@ class CsvFile implements Arrayable, Iterator {
   /**
    * @var SplFileObject 
    */
-  private $file;
+  private SplFileObject $file;
 
   /**
    * the field delimiter (one character only)
    * 
    * @var string 
    */
-  private $delimiter;
+  private string $delimiter;
 
   /**
    * the field enclosure character (one character only)
    *
    * @var string 
    */
-  private $enclosure = '"';
+  private string $enclosure = '"';
 
   /**
    * the field escape character (one character only)
    *
    * @var string 
    */
-  private $escape;
+  private string $escape;
 
   /**
    * Constructor
@@ -73,7 +73,7 @@ class CsvFile implements Arrayable, Iterator {
     $this->delimiter = $delimiter;
     $this->enclosure = $enclosure;
     $this->escape = $escape;
-    $this->file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY | SplFileObject::DROP_NEW_LINE);
+    $this->file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
     $this->file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
   }
 
@@ -111,7 +111,7 @@ class CsvFile implements Arrayable, Iterator {
    * Returns the header row (first row) of the CSV file
    * 
    * @return string[] indexed array containing the fields of the header row
-   * @see    http://php.net/manual/en/splfileobject.fgetcsv.php
+   * @see    https://www.php.net/manual/en/splfileobject.fgetcsv.php
    */
   public function getHeaderRow(): array {
     $this->file->rewind();
@@ -126,15 +126,7 @@ class CsvFile implements Arrayable, Iterator {
    */
   public function getChunk(int $offset = 0, int $count = -1): array {
     $this->file->rewind();
-    //var_dump($this->file->getCsvControl());
-    foreach (new LimitIterator($this->file, $offset, $count) as $row => $line) {
-      #save $line
-      if (is_array($line)) {
-        $result[$row] = $line;
-      }
-    }
-    //var_dump($result);
-    return $result;
+    return iterator_to_array(new LimitIterator($this->file, $offset, $count));
   }
 
   public function toArray(): array {
@@ -187,7 +179,7 @@ class CsvFile implements Arrayable, Iterator {
   /**
    * Checks whether EOF has been reached
    * 
-   * @return boolean true if not reached EOF, false otherwise.
+   * @return bool true if not reached EOF, false otherwise.
    */
   public function valid(): bool {
     return $this->file->valid() && $this->current() !== false;

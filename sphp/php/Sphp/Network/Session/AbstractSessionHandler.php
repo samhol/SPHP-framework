@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -44,7 +44,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
   /**
    * Starts the session if it is possible
    *
-   * @return boolean true on success, false on failure
+   * @return bool true on success, false on failure
    */
   public function startSession(): bool {
     if (session_status() !== PHP_SESSION_ACTIVE && !headers_sent()) {
@@ -95,7 +95,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
    *
    * **Note** this value is returned internally to PHP for processing.
    *
-   * @return boolean true on success, false on failure
+   * @return bool true on success, false on failure
    */
   public function close(): bool {
     $this->gc($this->maxlifetime);

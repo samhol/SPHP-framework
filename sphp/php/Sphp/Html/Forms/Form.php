@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,7 +20,7 @@ use Sphp\Html\Forms\Inputs\HiddenInputs;
  * Defines required properties for an HTML form tag object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_form.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -36,9 +36,9 @@ interface Form extends Component {
    *
    * @param  string|null $method the value of the method attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
+   * @link   https://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function setMethod(string $method = null);
+  public function setMethod(?string $method);
 
   /**
    * Returns the value of the method attribute
@@ -47,7 +47,7 @@ interface Form extends Component {
    * sent to the page specified in the action attribute)
    *
    * @return string|null the value of the method attribute
-   * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
+   * @link   https://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function getMethod(): ?string;
 
@@ -57,11 +57,11 @@ interface Form extends Component {
    * The action attribute specifies where to send the form-data when a form
    * is submitted
    *
-   * @param  string $action the value of the action attribute
+   * @param  string|null $action the value of the action attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
+   * @link   https://www.w3schools.com/tags/att_form_action.asp action attribute
    */
-  public function setAction(string $action = null);
+  public function setAction(?string $action);
 
   /**
    * Returns the value of the action attribute
@@ -70,7 +70,7 @@ interface Form extends Component {
    * is submitted
    *
    * @return string|null the value of the action attribute
-   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
+   * @link   https://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function getAction(): ?string;
 
@@ -82,9 +82,9 @@ interface Form extends Component {
    *
    * @param  string $enctype the value of the enctype attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
+   * @link   https://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
-  public function setEnctype(string $enctype = null);
+  public function setEnctype(?string $enctype);
 
   /**
    * Returns the value of the enctype attribute
@@ -93,7 +93,7 @@ interface Form extends Component {
    * submitting it to the server.
    *
    * @return string|null the value of the enctype attribute
-   * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
+   * @link   https://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function getEnctype(): ?string;
 
@@ -106,9 +106,9 @@ interface Form extends Component {
    *
    * @param  string $name the value of the name attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function setName(string $name = null);
+  public function setName(?string $name);
 
   /**
    * Returns the value of the name attribute
@@ -118,7 +118,7 @@ interface Form extends Component {
    * after a form is submitted.
    *
    * @return string|null the value of the name attribute
-   * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function getName(): ?string;
 
@@ -130,18 +130,18 @@ interface Form extends Component {
    * Autocomplete allows the browser to predict the value. When a user starts to type in a field,
    * the browser should display options to fill in the field, based on earlier typed values.
    *
-   * @param  boolean $allow (allow the browser to predict the value)
+   * @param  bool $allow (allow the browser to predict the value)
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
+   * @link   https://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
   public function autocomplete(bool $allow = true);
 
   /**
    * Sets the form as validable
    * 
-   * @param  boolean $validable
+   * @param  bool $validable
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
+   * @link   https://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
    */
   public function useValidation(bool $validable = true);
 
@@ -165,9 +165,9 @@ interface Form extends Component {
    * 
    * @param  string $target the value of the target attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_form_target.asp target attribute
    */
-  public function setTarget(string $target = null);
+  public function setTarget(?string $target);
 
   /**
    * Returns the value of the target attribute
@@ -180,7 +180,7 @@ interface Form extends Component {
    * (e.g. tab, window, or inline frame).
    *
    * @return string|null the value of the target attribute
-   * @link  http://www.w3schools.com/tags/att_form_target.asp target attribute
+   * @link  https://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function getTarget(): ?string;
 

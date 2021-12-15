@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,8 +22,8 @@ use Sphp\Html\EmptyTag;
  *  containing text, that should be visible when the media is playing.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_track.asp w3schools API
- * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-track-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_track.asp w3schools API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-track-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -33,16 +33,11 @@ class Track extends EmptyTag implements MultimediaSource {
    * Constructor
    *
    * @param  string $src the URL of the media file
-   * @param  string $srclang the language of the track text data
-   * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
+   * @link   https://www.w3schools.com/tags/att_track_src.asp src attribute
    */
-  public function __construct(string $src, string $srclang = null) {
+  public function __construct(string $src) {
     parent::__construct('track');
     $this->attributes()->protect('src', $src);
-    if ($srclang !== null) {
-      $this->setSrcLang($srclang);
-    }
   }
 
   /**
@@ -55,7 +50,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * **Note:** There must not be more than one {@link self} component with a 
    * default attribute per {@link AbstractMediaTag} component.
    *
-   * @param  boolean $default true if the track is default, otherwise false
+   * @param  bool $default true if the track is default, otherwise false
    * @return $this for a fluent interface
    */
   public function setDefault($default = true) {
@@ -65,7 +60,7 @@ class Track extends EmptyTag implements MultimediaSource {
   /**
    * Checks whether the option is enabled or not
    * 
-   * @return boolean true if the track is default, otherwise false
+   * @return bool true if the track is default, otherwise false
    */
   public function isDefault(): bool {
     return $this->attributeExists('default');
@@ -75,7 +70,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * Returns the URL of the track file
    * 
    * @return string the URL of the track file
-   * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
+   * @link   https://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function getSrc(): string {
     return (string) $this->getAttribute('src');
@@ -94,7 +89,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * 
    * @param  string $kind specifies the kind of text track
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_track_kind.asp kind attribute
+   * @link   https://www.w3schools.com/tags/att_track_kind.asp kind attribute
    */
   public function setKind(string $kind) {
     return $this->setAttribute('kind', $kind);
@@ -112,7 +107,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * * `subtitles`:	The track defines subtitles, used to display subtitles in a video
    *
    * @return string the kind of text track
-   * @link   http://www.w3schools.com/tags/att_track_kind.asp kind attribute
+   * @link   https://www.w3schools.com/tags/att_track_kind.asp kind attribute
    */
   public function getKind() {
     return $this->getAttribute('kind');
@@ -125,8 +120,8 @@ class Track extends EmptyTag implements MultimediaSource {
    * 
    * @param  string $srclang the language of the track text data
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
-   * @link   http://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
+   * @link   https://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
+   * @link   https://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
    */
   public function setSrcLang($srclang) {
     return $this->setAttribute('srclang', $srclang);
@@ -136,8 +131,8 @@ class Track extends EmptyTag implements MultimediaSource {
    * Returns the language of the track text data
    * 
    * @return string the language of the track text data
-   * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
-   * @link   http://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
+   * @link   https://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
+   * @link   https://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
    */
   public function getSrcLang() {
     return $this->getAttribute('srclang');
@@ -150,7 +145,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * 
    * @param  string $label the label of the track text data
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_track_label.asp label attribute
+   * @link   https://www.w3schools.com/tags/att_track_label.asp label attribute
    */
   public function setLabel($label) {
     return $this->setAttribute('label', $label);
@@ -160,7 +155,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * Returns the label of the track text data
    * 
    * @return string the label of the track text data
-   * @link   http://www.w3schools.com/tags/att_track_label.asp label attribute
+   * @link   https://www.w3schools.com/tags/att_track_label.asp label attribute
    */
   public function getLabel() {
     return $this->getAttribute('label');

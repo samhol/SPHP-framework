@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -23,7 +23,7 @@ use Sphp\Html\IdentifiableContent;
  * control inside the label element itself.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_label.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_label.asp w3schools HTML API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-label-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -39,7 +39,7 @@ interface LabelInterface {
    *
    * @param  string|IdentifiableContent|null $for the value of the for attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
+   * @link   https://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function setFor($for = null);
 
@@ -49,7 +49,7 @@ interface LabelInterface {
    * **Note:** for attribute specifies which form element a label is bound to.
    *
    * @return string the value of the for attribute
-   * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
+   * @link  https://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function getFor();
 
@@ -61,11 +61,11 @@ interface LabelInterface {
    * - Specifies a space-separated list of id's to one or more forms the label object belongs to.
    * - parameter can be an array of id's to one or more forms the object belongs to.
    *
-   * @param  string|string[] $formIds the value of the form attribute
+   * @param  string ... $formIds the value of the form attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_label_form.asp form attribute
+   * @link   https://www.w3schools.com/tags/att_label_form.asp form attribute
    */
-  public function setForms($formIds);
+  public function setForms(string ... $formIds);
 
   /**
    * Returns the value(s) of the form attribute
@@ -73,7 +73,7 @@ interface LabelInterface {
    * **Note:** Returns an array of id's to one or more forms the &lt;label&gt; object belongs to.
    *
    * @return string[] the value(s) of the form attribute
-   * @link  http://www.w3schools.com/tags/att_label_form.asp form attribute
+   * @link  https://www.w3schools.com/tags/att_label_form.asp form attribute
    */
   public function getForms(): array;
 }

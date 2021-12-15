@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -18,7 +18,7 @@ use Sphp\Html\AbstractComponent;
  * figure tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_figure.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_figure.asp w3schools API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -27,12 +27,12 @@ class Figure extends AbstractComponent {
   /**
    * @var Img 
    */
-  private $img;
+  private Img $img;
 
   /**
-   * @var FigCaption
+   * @var FigCaption|null
    */
-  private $caption;
+  private ?FigCaption $caption = null;
 
   /**
    * Constructor
@@ -80,10 +80,6 @@ class Figure extends AbstractComponent {
    */
   public function getImg(): Img {
     return $this->img;
-  }
-
-  public function hasCaption(): bool {
-    return $this->caption instanceof FigCaption;
   }
 
   /**

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,7 +20,7 @@ use Sphp\Html\Scripts\ScriptsContainer;
  * This component represents the main content of the HTML document.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_body.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_body.asp w3schools API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -32,7 +32,7 @@ class Body extends ContainerTag implements ContentParser {
   /**
    * @var ScriptsContainer 
    */
-  private $scripts;
+  private ScriptsContainer $scripts;
 
   /**
    * Constructor

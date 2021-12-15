@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -363,7 +363,7 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    *
    * @return array result rows as an array
    * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function toArray(): array {
     return $this->execute()->fetchAll(\PDO::FETCH_ASSOC);
@@ -374,7 +374,7 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    *
    * @return int the row count of the results
    * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function count(): int {
     $clone = clone $this;

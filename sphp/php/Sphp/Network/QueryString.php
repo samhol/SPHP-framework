@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -27,66 +27,105 @@ use ArrayAccess;
  */
 class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess {
 
-  /**
-   * @var array
-   */
-  private $query;
+  private array $query = [];
+  private string $separator;
 
   /**
    * Constructor
    *
-   * @param string|array|Traversable|null $query the URL string
+   * @param string|iterable|null $query the URL string
    */
-  public function __construct($query = null) {
+  public function __construct($query = null, ?string $separator = null) {
     if (is_string($query)) {
       parse_str($query, $this->query);
     } else if (is_array($query)) {
       $this->query = $query;
     } else if ($query instanceof Traversable) {
       $this->query = iterator_to_array($query, true);
+    } else if (is_object($query)) {
+      $this->query = (array) $query;
     } else {
       $this->query = [];
     }
+    $this->setSeparator($separator);
   }
 
   /**
    * Checks whether the query is empty
    * 
-   * @return boolean true if the query is empty and false otherwise
+   * @return bool true if the query is empty and false otherwise
    */
   public function isEmpty(): bool {
     return empty($this->query);
   }
 
   /**
+   * 
+   * @return string
+   */
+  public function getSeparator(): string {
+    return $this->separator;
+  }
+
+  /**
+   * 
+   * @param  string|null $separator
+   * @return $this for a fluent interface
+   */
+  public function setSeparator(?string $separator) {
+    if ($separator === null) {
+      $separator = ini_get('arg_separator.input');
+    }
+    $this->separator = $separator;
+    return $this;
+  }
+
+  /**
    * Checks whether a parameter exists in the query
    * 
-   * @param  mixed $name the name of the parameter
-   * @return boolean true if the parameter exists and false otherwise
+   * @param  string $name the name of the parameter
+   * @return bool true if the parameter exists and false otherwise
    */
-  public function contains($name): bool {
+  public function hasParameter(string $name): bool {
     return array_key_exists($name, $this->query);
   }
 
   /**
    * Return the value of the parameter
    *
-   * @param  mixed $name the name of the parameter
+   * @param  string $name the name of the parameter
    * @return mixed|null the value of the parameter or null if the parameter does not exist
    */
-  public function get($name) {
-    return $this->offsetGet($name);
+  public function getParameter(string $name) {
+    $val = null;
+    if ($this->hasParameter($name)) {
+      $val = $this->query[$name];
+    }
+    return $val;
   }
 
   /**
    * Sets or replaces a parameter in the query
    *
-   * @param  mixed $name the name of the parameter
+   * @param  string $name the name of the parameter
    * @param  mixed $value the value of the parameter
    * @return $this for a fluent interface
    */
-  public function set($name, $value) {
-    $this->offsetSet($name, $value);
+  public function setParameter(string $name, $value) {
+    $this->query[$name] = $value;
+    return $this;
+  }
+
+  /**
+   * Removes a parameter from the query
+   *
+   * @param  string $name the name of the parameter to remove
+   * @return $this for a fluent interface
+   */
+  public function removeParameter(string $name) {
+    if ($this->hasParameter($name)) {
+      unset($this->query[$name]);
+    }
     return $this;
   }
 
@@ -105,24 +144,13 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
   }
 
   /**
-   * Removes a parameter from the query
-   *
-   * @param  mixed $name the name of the parameter to remove
-   * @return $this for a fluent interface
-   */
-  public function delete($name) {
-    $this->offsetUnset($name);
-    return $this;
-  }
-
-  /**
    * Checks whether a parameter exists in the query
    * 
    * @param  mixed $name the name of the parameter
-   * @return boolean true if the parameter exists and false otherwise
+   * @return bool true if the parameter exists and false otherwise
    */
   public function offsetExists($name): bool {
-    return array_key_exists($name, $this->query);
+    return $this->hasParameter((string) $name, $this->query);
   }
 
   /**
@@ -132,11 +160,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return mixed|null the value of the parameter or null if the parameter does not exist
    */
   public function offsetGet($name) {
-    $val = null;
-    if ($this->offsetExists($name)) {
-      $val = $this->query[$name];
-    }
-    return $val;
+    return $this->getParameter((string) $name);
   }
 
   /**
@@ -144,11 +168,10 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    *
    * @param  mixed $name the name of the parameter
    * @param  mixed $value the value of the parameter
-   * @return $this for a fluent interface
+   * @return void
    */
-  public function offsetSet($name, $value) {
-    $this->query[$name] = $value;
-    return $this;
+  public function offsetSet($name, $value): void {
+    $this->setParameter((string) $name, $value);
   }
 
   /**
@@ -158,9 +181,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return $this for a fluent interface
    */
   public function offsetUnset($name) {
-    if (array_key_exists($name, $this->query)) {
-      unset($this->query[$name]);
-    }
+    $this->removeParameter((string) $name);
     return $this;
   }
 
@@ -168,10 +189,10 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * Determines whether the specified object is equal to the current object
    *
    * @param  string|QueryString $url the URL to compare with the current URL
-   * @return boolean true if the specified URL is equal to the current URL, otherwise false
+   * @return bool true if the specified URL is equal to the current URL, otherwise false
    */
   public function equals($url): bool {
-    if (!($url instanceof QueryString)) {
+    if (!$url instanceof QueryString) {
       $url = new QueryString($url);
     }
     return $this->toArray() == $url->toArray();
@@ -183,7 +204,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @return string representation of the object
    */
   public function __toString(): string {
-    return $this->build('&');
+    return $this->toRFC1738();
   }
 
   /**
@@ -192,34 +213,25 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * The query string contains data to be passed to software running on the 
    * server. It may contain name/value pairs separated by ampersands.
    * 
-   * @param  string $separator
    * @param  int $encode
    * @return string the query string of the URL
    */
-  public function build(string $separator = '&amp;', int $encode = \PHP_QUERY_RFC1738): string {
+  public function build(?int $encode = \PHP_QUERY_RFC1738): string {
     $val = '';
-    if (!$this->isEmpty()) {
-      $val = http_build_query($this->query, '', $separator, $encode);
+    if (!$this->isEmpty() && $encode !== null) {
+      $val = http_build_query($this->query, '', $this->getSeparator(), $encode);
+    } else {
+      
     }
     return trim($val, '=');
   }
 
-  /**
-   * Returns the object as a HTML5 encoded string
-   *
-   * @return string representation of the object
-   */
-  public function getHtml(): string {
-    return $this->build('&amp;', \PHP_QUERY_RFC3986);
+  public function toRFC1738(): string {
+    return $this->build(\PHP_QUERY_RFC1738);
   }
 
-  /**
-   * Returns the object as a raw unencoded string
-   *
-   * @return string representation of the object
-   */
-  public function getRaw(): string {
-    return $this->build('&', \PHP_QUERY_RFC3986);
+  public function toRFC3986(): string {
+    return $this->build(\PHP_QUERY_RFC3986);
   }
 
   public function jsonSerialize(): array {
@@ -248,7 +260,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @return void
    */
-  public function next() {
+  public function next(): void {
     next($this->query);
   }
 
@@ -266,29 +278,17 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @return void
    */
-  public function rewind() {
+  public function rewind(): void {
     reset($this->query);
   }
 
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return bool current iterator position is valid
    */
   public function valid(): bool {
     return null !== key($this->query);
-  }
-
-  /**
-   * Returns the current query string object
-   * 
-   * @param  int $filter
-   * @return QueryString new instance
-   * @codeCoverageIgnore
-   */
-  public static function getCurrent(int $filter = \FILTER_SANITIZE_STRING): QueryString {
-    $query = filter_input(\INPUT_SERVER, 'QUERY_STRING', $filter);
-    return new static($query);
   }
 
   /**
@@ -307,7 +307,6 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @param  string $url the URL 
    * @return QueryString new instance
-   * @codeCoverageIgnore
    */
   public static function fromURL(string $url): QueryString {
     return new static(parse_url($url, \PHP_URL_QUERY));

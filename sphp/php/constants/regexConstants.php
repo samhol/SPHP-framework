@@ -1,7 +1,11 @@
 <?php
 
 namespace Sphp\Regex;
-
+/**
+ * @constant NUMBERS_ONLY Numbers only constant
+ * 
+ * @var string
+ */
 const NUMBERS_ONLY = '/^[0-9]+$/';
 const TIME = '/^(([0-9])|([0-1][0-9])|([2][0-3]))[:.,;](([0-9])|([0-5][0-9]))$/';
 const YEAR = '/^(19|20)([0-9]{1,2})$/'; //
@@ -78,4 +82,3 @@ const ZIPCODE = '/^\d{5}$/';
  */
 const DATE = '/^([0-9]{1,2})[\.]([0-9]{1,2})[\.](19|20)([0-9]{1,2})$/';
 const PHONENUMBER = '/^\+?\d{2}[\d\ -]{3,14}$/';
-

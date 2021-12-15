@@ -1,0 +1,113 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+$icons: (
+sphp: #333,
+html5: #E44D26,
+gulp: #EB4A4B,
+css3: #1572B6,
+js: #fc1,
+postgresql: #336791,
+mysql: #00618A,
+node-js: #83CD29,
+doctrine: #F56D39,
+symfony: #1A171B,
+zend: #68B604,
+foundation: #008CBA,
+php: #6181B6,
+sass: #CB6699,
+github: #222,
+);
+.sphp-tech-slick {
+  div.sphp-info-button {
+    @include opacity(.5);
+    @include transition(all, 1s, ease-in-out);
+    outline : none;
+    cursor: pointer;
+    padding: rem-calc(10 30);
+    &:hover, &.sphp-is-active {
+      @include opacity(1);
+    }
+    svg {
+      height: rem-calc(200);
+      //position: absolute; 
+      &.sphp .left, &.sphp .right {
+        fill: #ce752d;
+      }
+    }
+  }
+}
+
+.package-def {
+  //@include box-shadow(#ccc 3px 0px 8px 4px);
+  //@include box-shadow(#ccc 0px 3px 8px 4px);
+  border-bottom: solid 1px #aaa;
+  //@include border-radius(5px);
+ // margin: rem-calc(5 30);
+  //padding: rem-calc(10 10);
+  h2 {
+    background-color: #eee;
+    border-bottom: solid 1px #aaa;
+    margin: rem-calc(1);  // top right bottom left
+    padding: rem-calc(3 5 3 10); // top right bottom left
+  }
+  p {
+    margin: rem-calc(10 20);
+  }
+  .menu {
+    margin: rem-calc(10 20);
+    li {
+      border:  solid 1px #fff;
+      @include border-radius(3px);
+    }
+    a {
+      border:  solid 1px #ccc;
+      @include border-radius(2px);
+      background-color: #e6e6e6;
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+}
+
+.tech {
+  display: inline-block;
+  margin-right: rem-calc(2);
+  padding: rem-calc(0);
+  @include border-radius(3px);
+  &.js {
+    border: solid 1px rgba(#563, .6);
+    background-color: rgba(#fc1, .6);
+    color: #333;
+  }
+  &.html5 {
+    border: solid 1px rgba(#563, .6);
+    background-color: rgba(#ff5632, .6);
+    color: #333;
+  }
+  &.css3 {
+    border: solid 1px rgba(#000033, .8);
+    background-color: rgba(#0072b1, .6);
+    color: rgba(#333, .9);
+  } 
+
+  &.php {
+    border: solid 1px rgba(#000033, .8);
+    background-color: rgba(#8892BF, .6);
+    @include border-radius(6px);
+    color: rgba(#333, .9);
+  }
+  &.sql {
+    border: solid 1px rgba(#000033, .8);
+    background-color: rgba(#004E66, .6);
+    color: rgba(#fff, .9);
+    @include border-radius(8px);
+  }
+}
+

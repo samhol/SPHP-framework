@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,12 +12,14 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Lists;
 
+use Sphp\Html\Attributes\PatternAttribute;
+
 /**
- * Implements an ordered HTML-list &lt;ol tag
+ * Implements an ordered HTML list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API
- * @link    http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-ol-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_ol.asp w3schools API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/semantics.html#the-ol-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -25,26 +27,44 @@ namespace Sphp\Html\Lists;
 class Ol extends StandardList {
 
   /**
-   * Constructor
-   *
-   * **Notes:**
-   *
-   * 1. Any `mixed $items` not implementing {@link LiInterface} is wrapped 
-   *    within {@link Li} component
-   * 2. All items of an array are treated according to note (1)
-   *
-   * @param  iterable|null $items the content of the component
+   * Decimal numbers (1, 2, 3, 4) Default
    */
-  public function __construct(iterable $items = null) {
-    parent::__construct('ol', $items);
+  public const DECIMAL = '1';
+
+  /**
+   * Alphabetically ordered list, lowercase (a, b, c, d)
+   */
+  public const LOWER_ALPHA = 'a';
+
+  /**
+   * Alphabetically ordered list, uppercase (A, B, C, D)
+   */
+  public const UPPER_ALPHA = 'A';
+
+  /**
+   * Roman numbers, lowercase (i, ii, iii, iv)
+   */
+  public const LOWER_ROMAN = 'i';
+
+  /**
+   * Roman numbers, uppercase (I, II, III, IV)
+   */
+  public const UPPER_ROMAN = 'I';
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    parent::__construct('ol');
+    $this->attributes()->setInstance(new PatternAttribute('type', '/^[1|a|A|i|I]$/'));
   }
 
   /**
    * Sets or unsets the list ordering reversed
    * 
-   * @param  boolean $reversed true if the list ordering is reversed, false otherwise
+   * @param  bool $reversed true if the list ordering is reversed, false otherwise
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
+   * @link   https://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
    */
   public function setReversed(bool $reversed = true) {
     $this->attributes()->setAttribute('reversed', $reversed);
@@ -59,7 +79,7 @@ class Ol extends StandardList {
    * 
    * @param  int $start the start value of the list ordering index
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
+   * @link   https://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
   public function setStart(int $start) {
     $this->attributes()->setAttribute('start', $start);
@@ -73,7 +93,7 @@ class Ol extends StandardList {
    * the {LiInterface} components in the container
    * 
    * @return int the start value of the list ordering index (defaults to 1)
-   * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
+   * @link   https://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
   public function getStart(): int {
     $start = 1;
@@ -86,11 +106,17 @@ class Ol extends StandardList {
   /**
    * Sets the kind of marker used in the list
    * 
+   *  * Ol::DECIMAL - `'1'`: Decimal numbers (1, 2, 3, 4) **Default**
+   *  * Ol::LOWER_ALPHA - `'a'`: Alphabetically ordered list, lowercase (a, b, c, d)
+   *  * Ol::UPPER_ALPHA - `'A'`: Alphabetically ordered list, uppercase (A, B, C, D)
+   *  * `'i'`: Roman numbers, lowercase (i, ii, iii, iv)
+   *  * `'I'`: Roman numbers, uppercase (I, II, III, IV)
+   * 
    * @param  string $type the kind of marker used in the list
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function setListType(string $type = '1') {
+  public function setListType(string $type = self::DECIMAL) {
     $this->attributes()->setAttribute('type', $type);
     return $this;
   }
@@ -99,10 +125,10 @@ class Ol extends StandardList {
    * Returns the kind of marker used in the list
    * 
    * @return string the kind of marker used in the list
-   * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
   public function getListType(): string {
-    $type = '1';
+    $type = static::DECIMAL;
     if ($this->attributes()->isVisible('type')) {
       $type = $this->attributes()->getValue('type');
     }

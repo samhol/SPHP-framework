@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Config;
 
-use Sphp\Stdlib\Arrays;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 use Sphp\Config\Exception\ConfigurationException;
 
 /**
@@ -33,9 +31,12 @@ class PHPConfig {
    * @throws ConfigurationException if character encoding setting fails
    */
   public function setCharacterEncoding(string $encoding = 'UTF-8') {
-    ErrorToExceptionThrower::getInstance(ConfigurationException::class)->start();
-    mb_internal_encoding($encoding);
-    ErrorToExceptionThrower::getInstance(ConfigurationException::class)->stop();
+    // $oldLevel = error_reporting(0);
+    $status = mb_internal_encoding($encoding);
+    if ($status === false) {
+      throw new ConfigurationException('Invalid character set name given');
+    }
+    //  error_reporting($oldLevel);
     return $this;
   }
 
@@ -47,15 +48,12 @@ class PHPConfig {
    * @throws ConfigurationException if given timezone is invalid
    */
   public function setDefaultTimezone(string $timezone) {
-    $old = date_default_timezone_get();
-    if ($timezone !== $old) {
-      ErrorToExceptionThrower::getInstance(ConfigurationException::class)->start();
-      $valid = date_default_timezone_set($timezone);
-      if (!$valid) {
-        throw new ConfigurationException("Given timezone string '$timezone' is invalid");
-      }
+    $oldLevel = error_reporting(0);
+    $status = date_default_timezone_set($timezone);
+    if ($status === false) {
+      throw new ConfigurationException('Invalid timezone given');
     }
-    ErrorToExceptionThrower::getInstance(ConfigurationException::class)->stop();
+    error_reporting($oldLevel);
     return $this;
   }
 
@@ -64,13 +62,13 @@ class PHPConfig {
    *
    * @param  int $level the new error reporting level
    * @return $this for a fluent interface
-   * @link   http://php.net/manual/en/function.error-reporting.php PHP error reporting
+   * @link   https://www.php.net/manual/en/function.error-reporting.php PHP error reporting
    */
   public function setErrorReporting(int $level) {
-    $old = error_reporting();
-    if ($level !== $old) {
-      error_reporting($level);
-    }
+    //  $old = error_reporting();
+    // if ($level !== $old) {
+    // }
+    error_reporting($level);
     $display = ($level > 0) ? 1 : 0;
     ini_set('display_errors', (string) $display);
     return $this;
@@ -102,12 +100,24 @@ class PHPConfig {
    * @param  string ...$paths new include paths
    * @return $this for a fluent interface
    * @throws ConfigurationException if insertion of given include paths fails
-   * @link   http://php.net/manual/en/function.set-include-path.php PHP manual
+   * @link   https://www.php.net/manual/en/function.set-include-path.php PHP manual
    */
   public function insertIncludePaths(string ...$paths) {
-    $flatten = Arrays::flatten($paths);
-    $pathArray = \array_unique(\array_merge($this->getIncludePaths(), $flatten));
-    $newPaths = \implode(\PATH_SEPARATOR, $pathArray);
+    $pathArray = \array_unique(\array_merge($this->getIncludePaths(), $paths));
+    $this->setIncludePaths(...$pathArray);
+    return $this;
+  }
+
+  /**
+   * Inserts new paths to the include_path configuration option
+   * 
+   * @param  string ...$paths new include paths
+   * @return $this for a fluent interface
+   * @throws ConfigurationException if insertion of given include paths fails
+   * @link   https://www.php.net/manual/en/function.set-include-path.php PHP manual
+   */
+  public function setIncludePaths(string ...$paths) { 
+    $newPaths = \implode(\PATH_SEPARATOR, \array_unique($paths));
     $isset = \set_include_path($newPaths);
     if (!$isset) {
       throw new ConfigurationException('Failed inserting given include paths');

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -181,7 +181,7 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    *
    * @return int the row count of the results
    * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function count(): int;
 
@@ -190,7 +190,7 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    *
    * @return mixed[] result rows as an array
    * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function fetchAll(int $fetch_style = PDO::FETCH_ASSOC): array;
 
@@ -208,7 +208,7 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    *
    * @return mixed[] result rows as an array
    * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function fetchFirstRow(): array;
 
@@ -217,7 +217,7 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    *
    * @return mixed[] result rows as an array
    * @throws \PDOException if there is no database connection or query execution fails
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function fetchColumn(int $colNum = 0): array;
 }

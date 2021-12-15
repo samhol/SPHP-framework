@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -10,7 +10,7 @@
 
 namespace Sphp\Validators\Datetime;
 
-use Sphp\DateTime\DateTime;
+use Sphp\DateTime\ImmutableDateTime;
 
 /**
  * Validates a datetime being later than the limit
@@ -30,19 +30,19 @@ class LaterThan extends AbstractDateTimeComparisonValidator {
    */
   public function __construct($dt = 'now', bool $inclusive = true) {
     parent::__construct($dt, $inclusive);
-    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not later than %s');
-    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not later than or equal to %s');
+    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not later than %s');
+    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not later than or equal to %s');
   }
 
   public function isValid($value): bool {
     $this->setValue($value);
-    if (!$value instanceof DateTime) {
+    if (!$value instanceof ImmutableDateTime) {
       try {
-        $value = DateTime::from($value);
+        $value = ImmutableDateTime::from($value);
         $this->setValue($value);
       } catch (\Exception $ex) {
         $this->setValue($value);
-        $this->errors()->appendErrorFromTemplate(static::INVALID);
+        $this->getErrors()->appendMessageFromTemplate(static::INVALID);
         return false;
       }
     }
@@ -56,12 +56,12 @@ class LaterThan extends AbstractDateTimeComparisonValidator {
       } */
     $date = $this->getLimit()->format('Y-m-d H:i:s T');
     if ($comp > 0 && $this->isInclusive()) {
-      $this->errors()->appendErrorFromTemplate(static::INCLUSIVE_ERROR, [$date]);
+      $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $date);
     }
     if ($comp >= 0 && !$this->isInclusive()) {
-      $this->errors()->appendErrorFromTemplate(static::EXCLUSIVE_ERROR, [$date]);
+      $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $date);
     }
-    return $this->errors()->count() === 0;
+    return $this->getErrors()->count() === 0;
   }
 
 }

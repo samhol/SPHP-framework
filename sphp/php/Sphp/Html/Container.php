@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -32,7 +32,7 @@ use ArrayAccess;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface Container extends TraversableContent, ArrayAccess {
+interface Container extends TraversableContent {
 
   /**
    * Appends a new value as the last element
@@ -72,7 +72,7 @@ interface Container extends TraversableContent, ArrayAccess {
    * Checks if a value exists in an container
    *
    * @param  mixed $value mixed content to check for
-   * @return boolean `true` on success or `false` on failure
+   * @return bool `true` on success or `false` on failure
    */
   public function contains($value): bool;
 }

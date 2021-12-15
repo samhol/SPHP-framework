@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Stdlib\Strings;
+
 /**
  * Description of CssClassParser
  *
@@ -25,24 +25,36 @@ use Sphp\Stdlib\Strings;
  */
 class CssClassParser {
 
-  private static $instance;
+  private static ?CssClassParser $instance = null;
 
-  public function parseString(string $string): array {
+  /**
+   * Explodes a string containing CSS class names separated by whitespace characters
+   * 
+   * @param  string $string a string to explode
+   * @return string[] an array containing separated CSS class names
+   */
+  protected function explodeString(string $string): array {
     $result = preg_split('/[\s]+/', $string, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];
     }
-    return array_unique($result);
+    return $result;
   }
 
-  public function parseArray(array $raw): array {
+  /**
+   * Parses a collection of raw CSS class names to an array of individual class names
+   * 
+   * @param  iterable $raw a collection of raw CSS class names
+   * @return string[] an array of individual class names
+   * @throws AttributeException if the raw input is not valid
+   */
+  protected function parseCollection(iterable $raw): array {
     // $parsed = array_map([$this, 'parseString'], $raw);
     $parsed = [];
     foreach ($raw as $value) {
       $parsed = array_merge($parsed, $this->parse($value));
     }
-    $unique = array_unique($parsed);
-    return $unique;
+    return $parsed;
   }
 
   /**
@@ -52,7 +64,7 @@ class CssClassParser {
    * 
    * 1. A string parameter can contain a single atomic value
    * 2. An array can be be multidimensional
-   * 3. Duplicate values are ignored
+   * 3. Duplicate values and empty strings are ignored
    *
    * @param  mixed $raw raw value(s) to parse
    * @return string[] separated unique atomic values in an array
@@ -60,32 +72,27 @@ class CssClassParser {
    */
   public function parse($raw): array {
     $out = [];
-    if (is_object($raw) && method_exists($raw, '__toString')) {
-      $raw = "$raw";
-    } else if ($raw instanceof \Traversable) {
-      $raw = iterator_to_array($raw);
-    }
-    if (is_array($raw)) {
-      $out = $this->parseArray($raw);
-    } else if (is_scalar($raw) || is_null($raw)) {
-      $out = $this->parseString((string) $raw);
+    if (is_iterable($raw)) {
+      $out = $this->parseCollection($raw);
+    } else if (is_string($raw)) {
+      $out = $this->explodeString($raw);
     } else {
       $type = gettype($raw);
       throw new AttributeException("PHP Type ($type) cannot be parsed to a valid class name");
     }
-    return $out;
+    return array_filter(array_unique($out), fn($x) => !Strings::match($x, '/[\s]+/'));
   }
 
   /**
+   * Checks if the collection contains only valid class names
    * 
-   * @param array $value
-   * @return bool
-   * @throws InvalidArgumentException
+   * @param  iterable $collection the class name collection to check
+   * @return bool true if the collection contains only valid class names, false otherwise 
    */
-  public function isValidCollection(array $value): bool {
+  public function isValidClassNameCollection(iterable $collection): bool {
     $isValid = true;
-    foreach ($value as $value) {
-      $isValid = is_string($value) && $this->isValidClassName($value);
+    foreach ($collection as $collection) {
+      $isValid = is_string($collection) && $this->isValidClassName($collection);
       if (!$isValid) {
         break;
       }
@@ -93,8 +100,14 @@ class CssClassParser {
     return $isValid;
   }
 
-  public function isValidClassName(string $value) {
-    return !Strings::match($value, '/[\x00-\x1F\x80-\xFF]/');
+  /**
+   * Checks if the class name is valid
+   * 
+   * @param string $className the class name to check
+   * @return bool true if the class name is valid, false otherwise 
+   */
+  public function isValidClassName(string $className): bool {
+    return Strings::match($className, '/^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$/');
   }
 
   /**
@@ -102,7 +115,7 @@ class CssClassParser {
    * 
    * @return CssClassParser singleton instance
    */
-  public static function instance(): CssClassParser {
+  public static function singelton(): CssClassParser {
     if (self::$instance === null) {
       self::$instance = new static();
     }

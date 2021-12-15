@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Filters;
 
-use Gajus\Dindent\Indenter;
+use tidy;
 
 /**
  * Filter formats an `HTML` code string
@@ -26,25 +26,23 @@ use Gajus\Dindent\Indenter;
  */
 class HTMLCodeFormatter extends AbstractFilter {
 
-  /**
-   * @var Indenter 
-   */
-  private static $formatter;
+  private tidy $tidy;
 
-  /**
-   * Constructor
-   */
   public function __construct() {
-    if (static::$formatter === null) {
-      static::$formatter = new Indenter();
-    }
+    $config = array(
+        'indent' => true,
+        'output-xhtml' => false,
+        'show-body-only' => true);
+    $this->tidy = new tidy(null, $config, 'utf8');
+  }
+
+  public function __destruct() {
+    unset($this->tidy);
   }
 
   public function filter($variable) {
-    if (is_string($variable)) {
-      return static::$formatter->indent($variable);
-    }
-    return $variable;
+    $this->tidy->parseString($variable);
+    return (string) $this->tidy;
   }
 
 }

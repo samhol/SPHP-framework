@@ -1,0 +1,23 @@
+## Finnish holidays
+---
+type: national-holidays
+country: Finland
+dates:
+  - easter:
+    - thursday: Maundy Thursday 
+    - friday: Good Friday
+      type: 
+        - public holiday 
+      
+    - sunday: Easter Sunday
+      type: 
+      - public holiday 
+      
+    - monday: Easter Monday 
+      type: 
+        - public holiday 
+    - ascension_day: Ascension Day 
+      type: 
+        - public holiday 
+      
+    - pentecost: Pentecost

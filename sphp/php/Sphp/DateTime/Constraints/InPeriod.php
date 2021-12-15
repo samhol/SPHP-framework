@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,8 +13,9 @@ declare(strict_types=1);
 namespace Sphp\DateTime\Constraints;
 
 use DatePeriod;
+use Sphp\DateTime\Date;
 use Sphp\DateTime\Period;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\DateTime\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a between two dates date constraint
@@ -28,7 +29,7 @@ class InPeriod implements DateConstraint {
   /**
    * @var Period
    */
-  private $period;
+  private Period $period;
 
   /**
    * Constructor
@@ -55,8 +56,8 @@ class InPeriod implements DateConstraint {
     unset($this->period);
   }
 
-  public function isValid($date): bool {
-    return $this->period->containsDate($date);
+  public function isValid(Date $date): bool {
+    return $this->period->contains($date);
   }
 
 }

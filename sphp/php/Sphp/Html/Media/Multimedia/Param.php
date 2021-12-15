@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -27,11 +27,11 @@ class Param extends EmptyTag {
    * Constructor
    *
    * @param  string $name the name of a parameter
-   * @param  string $value the value of a parameter
-   * @link   http://www.w3schools.com/tags/att_param_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_param_value.asp value attribute
+   * @param  scalar|null $value the value of a parameter
+   * @link   https://www.w3schools.com/tags/att_param_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_param_value.asp value attribute
    */
-  public function __construct(string $name = null, string $value = null) {
+  public function __construct(string $name = null, $value = null) {
     parent::__construct('param');
     if ($name !== null) {
       $this->setName($name);
@@ -55,7 +55,7 @@ class Param extends EmptyTag {
   /**
    * Sets the value of a parameter
    * 
-   * @param  scalar $value the value of a parameter
+   * @param  scalar|null $value the value of a parameter
    * @return $this for a fluent interface
    */
   public function setValue($value) {
@@ -67,8 +67,8 @@ class Param extends EmptyTag {
    * Returns the language of the track text data
    * 
    * @return string the language of the track text data
-   * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
-   * @link   http://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
+   * @link   https://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
+   * @link   https://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
    */
   public function getName() {
     return $this->getAttribute('name');
@@ -78,7 +78,7 @@ class Param extends EmptyTag {
    * Returns the label of the track text data
    * 
    * @return string the label of the track text data
-   * @link   http://www.w3schools.com/tags/att_track_label.asp label attribute
+   * @link   https://www.w3schools.com/tags/att_track_label.asp label attribute
    */
   public function getValue() {
     return $this->getAttribute('value');

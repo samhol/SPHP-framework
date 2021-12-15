@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,12 +25,12 @@ class InHaystack extends AbstractValidator {
   /**
    * @var array
    */
-  private $haystack;
+  private array $haystack;
 
   /**
    * @var boolean 
    */
-  private $strict = false;
+  private bool $strict = false;
 
   /**
    * Constructor
@@ -39,7 +39,7 @@ class InHaystack extends AbstractValidator {
    */
   public function __construct(array $haystack = []) {
     parent::__construct();
-    $this->errors()->setTemplate(static::INVALID, 'Value %s is not in collection');
+    $this->getErrors()->setTemplate(static::INVALID, 'Value %s is not in collection');
     $this->setHaystack($haystack);
   }
 
@@ -68,7 +68,7 @@ class InHaystack extends AbstractValidator {
    * * **Strict** `===` comparison 
    * * **Non strict** `==` comparison
    * 
-   * @return boolean true for strict false otherwise
+   * @return bool true for strict false otherwise
    */
   public function isStrict(): bool {
     return $this->strict;
@@ -80,7 +80,7 @@ class InHaystack extends AbstractValidator {
    * * **Strict** `===` comparison 
    * * **Non strict** `==` comparison
    * 
-   * @param  boolean $strict true for strict false otherwise
+   * @param  bool $strict true for strict false otherwise
    * @return $this for a fluent interface
    */
   public function setStrict(bool $strict) {
@@ -104,7 +104,7 @@ class InHaystack extends AbstractValidator {
       }
     }
     if (!$valid) {
-      $this->errors()->appendErrorFromTemplate(static::INVALID, [$this->getValue()]);
+      $this->getErrors()->appendMessageFromTemplate(static::INVALID, $this->getValue());
     }
     return $valid;
   }

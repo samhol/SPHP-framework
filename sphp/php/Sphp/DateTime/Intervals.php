@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -14,7 +14,7 @@ namespace Sphp\DateTime;
 
 use DateInterval;
 use Sphp\Stdlib\Strings;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\DateTime\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a factory for basic interval object creation
@@ -34,20 +34,16 @@ abstract class Intervals {
    * @throws InvalidArgumentException
    */
   public static function create($input): Interval {
-    try {
-      if ($input instanceof Interval) {
-        $interval = clone $input;
-      } else if ($input instanceof DateInterval) {
-        $interval = static::fromDateInterval($input);
-      } else if (is_numeric($input)) {
-        $interval = static::fromNumeric($input);
-      } else if (is_string($input)) {
-        $interval = static::fromString($input);
-      } else {
-        throw new InvalidArgumentException();
-      }
-    } catch (\Exception $ex) {
-      throw new InvalidArgumentException($ex->getMessage());
+    if ($input instanceof Interval) {
+      $interval = clone $input;
+    } else if ($input instanceof DateInterval) {
+      $interval = static::fromDateInterval($input);
+    } else if (is_numeric($input)) {
+      $interval = static::fromSeconds((float) $input);
+    } else if (is_string($input)) {
+      $interval = static::fromString($input);
+    } else {
+      throw new InvalidArgumentException('Cannot parse Interval from given input');
     }
     return $interval;
   }
@@ -55,19 +51,20 @@ abstract class Intervals {
   /**
    * Creates a new instance of interval from a string
    * 
-   * @param  string $time
+   * @param  string $input
    * @return Interval new instance
+   * @throws InvalidArgumentException
    */
-  public static function fromString(string $time): Interval {
-    if (Strings::match($time, "/^([0-9]+):([0-5][0-9])(:[0-5][0-9])?$/")) {
-      $parts = explode(':', $time);
+  public static function fromString(string $input): Interval {
+    if (Strings::match($input, "/^([0-9]+):([0-5][0-9])(:[0-5][0-9])?$/")) {
+      $parts = explode(':', $input);
       $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
       //echo "$dateint\n";
       $interval = new Interval($dateint);
-    } else if (Strings::match($time, "/^P([0-9]+(?:[,\.][0-9]+)?Y)?([0-9]+(?:[,\.][0-9]+)?M)?([0-9]+(?:[,\.][0-9]+)?D)?(?:T([0-9]+(?:[,\.][0-9]+)?H)?([0-9]+(?:[,\.][0-9]+)?M)?([0-9]+(?:[,\.][0-9]+)?S)?)?$/")) {
-      $interval = new Interval($time);
+    } else if (Strings::startsWith($input, "P")) {
+      $interval = new Interval($input);
     } else {
-      $interval = Interval::createFromDateString($time);
+      $interval = Interval::createFromDateString($input);
     }
     return $interval;
   }
@@ -75,21 +72,12 @@ abstract class Intervals {
   /**
    * Creates a new instance of interval from a numeric value
    * 
-   * @param  string|float $seconds 
+   * @param  float $seconds 
    * @return Interval new instance
-   * @throws InvalidArgumentException if the input value is not numeric
    */
-  public static function fromNumeric($seconds): Interval {
-    if (!is_numeric($seconds)) {
-      throw new InvalidArgumentException('Not numeric input');
-    }
-    $float = (int) $seconds;
-
-    $interval = Interval::createFromDateString($float . " seconds");
-    if ($float < 0) {
-      $interval->invert = 1;
-    }
-    return $interval;
+  public static function fromSeconds(float $seconds): Interval {
+    $interval = new Interval;
+    return $interval->addSeconds($seconds);
   }
 
   /**
@@ -105,38 +93,6 @@ abstract class Intervals {
       $output->$key = $value;
     }
     return $output;
-  }
-
-  /**
-   * 
-   * @param  DateInterval $input
-   * @return string
-   */
-  public static function toString(DateInterval $input): string {
-    $format = 'P';
-    if ($input->y > 0) {
-      $format .= $input->y . 'Y';
-    }
-    if ($input->m > 0) {
-      $format .= $input->m . 'M';
-    }
-    if ($input->m > 0) {
-      $format .= $input->d . 'D';
-    }
-    $time = '';
-    if ($input->h > 0) {
-      $time .= $input->h . 'H';
-    }
-    if ($input->i > 0) {
-      $time .= $input->i . 'M';
-    }
-    if ($input->s > 0) {
-      $time .= $input->s . 'S';
-    }
-    if ($time !== '') {
-      $format .= "T$time";
-    }
-    return $format;
   }
 
 }

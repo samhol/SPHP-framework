@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -15,10 +15,10 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 use Sphp\Html\SimpleTag;
 
 /**
- * option tag
+ * Implementation of an HTML option tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_option.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_option.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -29,9 +29,9 @@ class Option extends SimpleTag implements MenuComponent {
    *
    * @param scalar|null $value value attribute
    * @param string|null $content the content text of the option
-   * @link  http://www.w3schools.com/tags/att_option_value.asp value attribute
+   * @link  https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
-  public function __construct($value = null, string $content = null) {
+  public function __construct($value = null, ?string $content = null) {
     parent::__construct('option');
     if ($value !== null) {
       $this->setValue($value);
@@ -43,7 +43,7 @@ class Option extends SimpleTag implements MenuComponent {
    * Returns the value of the value attribute
    *
    * @return  string the value of the value attribute
-   * @link    http://www.w3schools.com/tags/att_option_value.asp value attribute
+   * @link    https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function getValue() {
     return $this->attributes()->getValue('value');
@@ -54,7 +54,7 @@ class Option extends SimpleTag implements MenuComponent {
    *
    * @param  string $value the value of the value attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function setValue($value) {
     $this->attributes()->setAttribute('value', $value);
@@ -64,9 +64,9 @@ class Option extends SimpleTag implements MenuComponent {
   /**
    * Sets the option as selected or not
    *
-   * @param  boolean $selected true if the option is selected, otherwise false
+   * @param  bool $selected true if the option is selected, otherwise false
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
+   * @link   https://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function setSelected(bool $selected = true) {
     $this->attributes()->setAttribute('selected', $selected);
@@ -76,8 +76,8 @@ class Option extends SimpleTag implements MenuComponent {
   /**
    * Checks whether the option is selected or not
    *
-   * @return boolean true if the option is selected, false otherwise
-   * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
+   * @return bool true if the option is selected, false otherwise
+   * @link   https://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function isSelected(): bool {
     return $this->attributes()->isVisible('selected') && $this->isEnabled();

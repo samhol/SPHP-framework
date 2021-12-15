@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -58,7 +58,7 @@ class Ini implements ArrayParser {
 
   public function fileToArray(string $filename): array {
     try {
-      $output = $this->reader->fromFile(\Sphp\Stdlib\Filesystem::getFullPath($filename));
+      $output = $this->reader->fromFile($filename);
       return $output;
     } catch (Exception $ex) {
       throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -44,7 +44,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    *
    * @param  string|null $qtip the value of the title attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
+   * @link   https://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setQtip(string $qtip = null) {
     $this->getComponent()

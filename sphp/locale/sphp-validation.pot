@@ -1,0 +1,79 @@
+# Validation messages
+# Copyright (C) 2021 Sami Holck.
+# Sami Holck <sami.holck@gmail.com> 2021
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, php-format
+msgid "Please insert a value"
+msgstr ""
+
+msgid "Please insert a correct email address"
+msgstr ""
+
+msgid "Please insert atleast %s of the following characters (%s)"
+msgstr ""
+
+msgid "Please insert %d-%d characters"
+msgstr ""
+
+msgid "Please insert %s-%s characters"
+msgstr ""
+
+msgid "Please insert at most %d characters"
+msgstr ""
+
+msgid "Please insert atleast %d characters"
+msgstr ""
+
+msgid "Please insert atleast %d numbers"
+msgstr ""
+
+msgid "Please insert atleast %d alphabets"
+msgstr ""
+
+msgid "Please insert exactly %d characters"
+msgstr ""
+
+msgid "Please insert exactly %d numbers"
+msgstr ""
+
+msgid "Please insert exactly %d alphabets"
+msgstr ""
+
+msgid "Please insert %s only"
+msgstr ""
+
+msgid "Please insert numbers only"
+msgstr ""
+
+msgid "Please insert alphabets only"
+msgstr ""
+
+msgid "Please insert alphabets and numbers only"
+msgstr ""
+
+msgid "Please insert correct date and time"
+msgstr ""
+
+msgid "Please insert correct date"
+msgstr ""
+
+msgid "Please insert correct time"
+msgstr ""
+
+msgid "Username is already reserved"
+msgstr ""

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,9 +12,11 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\TraversableContent;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\ContentIterator;
 
 /**
  * Implements a hyperlink container
@@ -23,7 +25,11 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class HyperlinkContainer extends AbstractContainerTag implements Hyperlink {
+class HyperlinkContainer extends AbstractComponent implements \IteratorAggregate, TraversableContent {
+
+  use \Sphp\Html\TraversableTrait;
+
+  private Hyperlink $hyperlink;
 
   /**
    * Constructor
@@ -34,49 +40,31 @@ class HyperlinkContainer extends AbstractContainerTag implements Hyperlink {
    * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
    * @param  string $tagName the tag name of the component
-   * @param  A|null $hyperlink the inner hyperlink object or null
+   * @param  Hyperlink|null $hyperlink the inner hyperlink object or null
    */
-  public function __construct(string $tagName, A $hyperlink = null) {
+  public function __construct(string $tagName, ?Hyperlink $hyperlink = null) {
     if ($hyperlink === null) {
       $hyperlink = new A();
     }
-    parent::__construct($tagName, null, $hyperlink);
+    $this->hyperlink = $hyperlink;
+    parent::__construct($tagName);
   }
 
   /**
    * Returns the actual hyperlink component in the menu item component
    * 
-   * @return A the actual hyperlink component in the menu item component
+   * @return Hyperlink the actual hyperlink component in the menu item component
    */
-  public function getHyperlink(): A {
-    return $this->getInnerContainer();
+  public function getHyperlink(): Hyperlink {
+    return $this->hyperlink;
   }
 
-  public function getHref(): ?string {
-    return $this->getHyperlink()->getHref();
+  public function contentToString(): string {
+    return $this->hyperlink->getHtml();
   }
 
-  public function setHref(string $href = null) {
-    $this->getHyperlink()->setHref($href);
-    return $this;
-  }
-
-  public function setTarget(string $target = null) {
-    $this->getHyperlink()->setTarget($target);
-    return $this;
-  }
-
-  public function getTarget(): ?string {
-    return $this->getHyperlink()->getTarget();
-  }
-
-  public function setRelationship(string $rel = null) {
-    $this->getHyperlink()->setRelationship($rel);
-    return $this;
-  }
-
-  public function getRelationship(): ?string {
-    return $this->getHyperlink()->getRelationship();
+  public function getIterator(): \Traversable {
+    return new ContentIterator($this->hyperlink);
   }
 
 }

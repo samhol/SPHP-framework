@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Media\ImageMap;
 
+use Sphp\Html\Media\ImageMap\Exceptions\CoordinateException;
+
 /**
- * Implementation of an HTML area shape="circle" tag
+ * Implementation of a circle shaped HTML area tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -27,25 +29,27 @@ class Circle extends AbstractArea {
    * @param int $x the x-coordinate of the circle center
    * @param int $y the y-coordinate of the circle center
    * @param int $radius the radius of the circle
-   * @param string|null $href the URL of the link
-   * @param string|null $alt
    */
-  public function __construct(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) {
+  public function __construct(int $x = 0, int $y = 0, int $radius = 0) {
     parent::__construct('circle', '/^(\d+(,\d+){2})*$/');
-     $this->setHref($href)->setAlt($alt);
     $this->setCoordinates($x, $y, $radius);
   }
 
   /**
-   * Sets the coordinates and the size of the circle region
+   * Sets the coordinates of the polygon
    * 
    * @param  int $x the x-coordinate of the circle center
    * @param  int $y the y-coordinate of the circle center
    * @param  int $radius the radius of the circle
    * @return $this for a fluent interface
+   * @throws CoordinateException if the number of coordinates is not 3
    */
-  public function setCoordinates(int $x, int $y, int $radius) {
-    $this->attributes()->coords = implode(',', [$x, $y, $radius]);
+  public function setCoordinates(int ...$coord) {
+    $count = count($coord);
+    if ($count !== 3) {
+      throw new CoordinateException('The number of coordinates must be divisible by 2');
+    }
+    parent::setCoordinates(...$coord);
     return $this;
   }
 

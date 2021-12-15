@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -19,7 +19,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * Filters a variable with a specified filter
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://php.net/manual/en/filter.filters.php filter_var
+ * @link    https://www.php.net/manual/en/filter.filters.php filter_var
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -40,8 +40,8 @@ class VariableFilter extends AbstractFilter {
    * 
    * @param int $filter
    * @param mixed[] $options
-   * @link  http://php.net/manual/en/filter.filters.php filter_var
-   * @link  http://php.net/manual/en/filter.filters.php Types of filters
+   * @link  https://www.php.net/manual/en/filter.filters.php filter_var
+   * @link  https://www.php.net/manual/en/filter.filters.php Types of filters
    */
   public function __construct(int $filter, $options = null) {
     $this->filter = $filter;

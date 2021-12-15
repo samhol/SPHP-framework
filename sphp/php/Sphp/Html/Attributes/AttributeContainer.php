@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -18,8 +18,6 @@ use IteratorAggregate;
 use Traversable;
 use ArrayIterator;
 use Sphp\Stdlib\Arrays;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\IllegalStateException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 
@@ -38,21 +36,17 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    *
    * @var MutableAttribute[]
    */
-  private $attrs = [];
-
-  /**
-   * @var AttributeFactory 
-   */
-  private $attrFactory;
+  private array $attrs = [];
+  private AttributeFactory $attrFactory;
 
   /**
    * Constructor
    * 
-   * @param AttributeFactory $gen
+   * @param AttributeFactory|null $gen
    */
-  public function __construct(AttributeFactory $gen = null) {
+  public function __construct(?AttributeFactory $gen = null) {
     if ($gen === null) {
-      $gen = AttributeFactory::instance();
+      $gen = AttributeFactory::singelton();
     }
     $this->attrFactory = $gen;
   }
@@ -69,11 +63,10 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->attrs = Arrays::copy($this->attrs);
-    //$this->gen = clone $this->gen;
   }
 
   /**
@@ -128,9 +121,6 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
       throw new AttributeException('Invalid attribute type (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->getAttributeFactory()->getValidType($name) . " expected");
     }
     if (!$this->isProtected($name)) {
-      if ($this->isDemanded($name)) {
-        $attr->forceVisibility();
-      }
       $this->attrs[$name] = $attr;
     } else {
       throw new AttributeException("Attribute '$name' is immutable");
@@ -160,15 +150,15 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if the attribute name or value is invalid
+   * @throws AttributeException if the attribute name or value is invalid
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function setAttribute(string $name, $value) {
     if (isset($this->attrs[$name])) {
-      if (!$this->attrs[$name]->isProtected()) {
+      if (!$this->isProtected($name)) {
         $this->attrs[$name]->setValue($value);
       } else {
-        throw new ImmutableAttributeException("$name is immutable attribute");
+        throw new ImmutableAttributeException("Attribute $name is immutable attribute");
       }
     } else {
       $this->attrs[$name] = $this->getAttributeFactory()->createObject($name, $value);
@@ -183,10 +173,10 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    *
    * @param  mixed[] $attrs an array of attribute name value pairs
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if any of the attributes is invalid
+   * @throws AttributeException if any of the attributes is invalid
    * @throws ImmutableAttributeException if the value of the attribute is already locked
    */
-  public function merge(array $attrs = []) {
+  public function merge(array $attrs) {
     foreach ($attrs as $name => $value) {
       $this->setAttribute($name, $value);
     }
@@ -201,7 +191,7 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * @param  string $name the name of the required attribute
    * @return $this for a fluent interface
    */
-  public function demand(string $name) {
+  public function forceVisibility(string $name) {
     $this->getAttribute($name)->forceVisibility();
     return $this;
   }
@@ -213,12 +203,12 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * attribute name is required.
    *
    * @param  string $name the name of the attribute
-   * @return boolean true if the attribute is required and false otherwise
+   * @return bool true if the attribute is required and false otherwise
    */
-  public function isDemanded(string $name): bool {
+  public function isAlwaysVisible(string $name): bool {
     $isDemanded = false;
     if (isset($this->attrs[$name])) {
-      $isDemanded = $this->attrs[$name]->isDemanded();
+      $isDemanded = $this->attrs[$name]->isAlwaysVisible();
     }
     return $isDemanded;
   }
@@ -229,14 +219,13 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * **Note!:** some attributes can have multiple locked values
    *
    * @param  string $name the name of the attribute
-   * @return boolean true if the attribute has a locked value on it and false otherwise
+   * @return bool true if the attribute has a locked value on it and false otherwise
    */
   public function isProtected(string $name): bool {
-    $isProtected = false;
-    if (isset($this->attrs[$name])) {
-      $isProtected = $this->attrs[$name]->isProtected();
+    if (!isset($this->attrs[$name])) {
+      return false;
     }
-    return $isProtected;
+    return $this->attrs[$name] instanceof ImmutableAttribute;
   }
 
   /**
@@ -251,19 +240,18 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
    * @return $this for a fluent interface
-   * @throws InvalidArgumentException if either the name or the value is invalid for the type of the attribute
+   * @throws AttributeException if either the name or the value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
   public function protect(string $name, $value) {
-    if (isset($this->attrs[$name])) {
-      $this->attrs[$name]->protectValue($value);
-    } else if ($this->getAttributeFactory()->isValidType($name, ImmutableAttribute::class)) {
+    if ($this->isProtected($name)) {
+      throw new ImmutableAttributeException("Attribute $name is immutable attribute");
+    }
+    if ($this->attrFactory->isValidType($name, ImmutableAttribute::class)) {
       $obj = $this->getAttributeFactory()->createImmutableAttribute($name, $value);
       $this->attrs[$name] = $obj;
-    } else {
-      $obj = $this->getAttributeFactory()->createObject($name);
-      $obj->protectValue($value);
-      $this->attrs[$name] = $obj;
+    } else if ($name === 'class') {
+      $this->classes()->protectValue($value);
     }
     return $this;
   }
@@ -272,7 +260,7 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * Checks whether the attribute represents an empty attribute
    * 
    * @param  string $name the name of the attribute
-   * @return boolean true if the attribute is empty and false otherwise
+   * @return bool true if the attribute is empty and false otherwise
    */
   public function isEmpty(string $name): bool {
     return $this->contains($name) && $this->getAttribute($name)->isEmpty();
@@ -304,6 +292,31 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    *  also return `null` values
    *
    * @param  string $name the name of the attribute
+   * @return string|null the string value of the attribute
+   */
+  public function getStringValue(string $name): ?string {
+    if (!isset($this->attrs[$name])) {
+      return null;
+    }
+    $value = $this->attrs[$name]->getValue();
+    if (is_bool($value)) {
+      $value = null;
+    }
+    if ($value !== null) {
+      $value = (string) $value;
+    }
+    return $value;
+  }
+
+  /**
+   * Returns the value of a given attribute name
+   *
+   * **IMPORTANT:**
+   *
+   *  Returns `null` if attribute is not present. However some attributes might 
+   *  also return `null` values
+   *
+   * @param  string $name the name of the attribute
    * @return null|bool|int|float|string the value of the attribute
    */
   public function getValue(string $name) {
@@ -318,7 +331,7 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
    * Checks if named attribute instance exists in the manager
    *
    * @param  string $name the name of the attribute
-   * @return boolean true if the attribute instance exists and false otherwise
+   * @return bool true if the attribute instance exists and false otherwise
    */
   public function contains(string $name): bool {
     return isset($this->attrs[$name]);
@@ -369,9 +382,9 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
   /**
    * Returns the style attribute object
    *
-   * @return PropertyCollectionAttribute the `style` attribute object
+   * @return MapAttribute the `style` attribute object
    */
-  public function styles(): PropertyCollectionAttribute {
+  public function styles(): MapAttribute {
     return $this->getAttribute('style');
   }
 
@@ -401,6 +414,11 @@ class AttributeContainer implements Countable, Arrayable, IteratorAggregate {
     return $this->getAttribute('id');
   }
 
+  /**
+   * Returns an external iterator
+   *
+   * @return Traversable<string, Attribute> external iterator
+   */
   public function getIterator(): Traversable {
     return new ArrayIterator($this->attrs);
   }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Sphp\Exceptions\InvalidArgumentException;
-use Exception;
+use Sphp\DateTime\Exceptions\InvalidArgumentException;
+use Exception; 
 
 /**
  * Implements a factory for basic datetime object creation
@@ -29,11 +29,15 @@ abstract class DateTimes {
   /**
    * Parses a datetime object from input
    * 
+   * 
+   * * int: treated as timestamps
+   * * float: treated as timestamps with microseconds fractions
+   * 
    * @param  mixed $input
    * @return DateTimeImmutable
    * @throws InvalidArgumentException
    */
-  public static function dateTimeImmutable($input): DateTimeImmutable {
+  public static function dateTimeImmutable($input = 'now'): DateTimeImmutable {
     if ($input === null) {
       $input = 'now';
     }
@@ -46,9 +50,17 @@ abstract class DateTimes {
         throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
       }
     } else if (is_int($input)) {
-      $out = new DateTimeImmutable("@$input");
-      $out->setTimezone(new \DateTimeZone(date_default_timezone_get()));
-    } else if ($input instanceof \DateTimeInterface || $input instanceof DateInterface) {
+      $out = DateTimeImmutable::createFromFormat('U', (string) $input);
+    } else if (is_float($input)) {
+      $out = DateTimeImmutable::createFromFormat('U.u', (string) $input);
+    } else if ($input instanceof \DateTime) {
+      $out = DateTimeImmutable::createFromMutable($input);
+    } else if ($input instanceof ImmutableDateTime) {
+      $dateTimeString = $input->getDateTime();
+      $out = $input->getDateTime();
+    } else if ($input instanceof ImmutableDate) {
+      $out = $input->getDateTime();
+    } else if ($input instanceof Date) {
       $dateTimeString = $input->format('Y-m-d\TH:i:sP');
       $out = new DateTimeImmutable($dateTimeString);
     } else {
@@ -65,17 +77,41 @@ abstract class DateTimes {
    * @throws InvalidArgumentException if parsing fails
    */
   public static function parseDateString($input): string {
-    if (is_null($input)) {
-      return date('Y-m-d');
-    } else if (is_string($input)) {
-      return (new DateTimeImmutable($input))->format('Y-m-d');
-    } else if (is_int($input)) {
-      return date('Y-m-d', $input);
-    } else if ($input instanceof DateInterface || $input instanceof \DateTimeInterface) {
-      return $input->format('Y-m-d');
-    } else {
-      throw new InvalidArgumentException('Date string cannot be parsed from the input');
+    return static::dateTimeImmutable($input)->format('Y-m-d');
+  }
+
+  /**
+   * 
+   * @param  mixed $date
+   * @param  int $months
+   * @return DateTimeImmutable
+   * @throws InvalidArgumentException on failure
+   */
+  public static function addMonths($date, int $months): DateTimeImmutable {
+    $date = self::dateTimeImmutable($date);
+    $years = floor(abs($months / 12));
+    $leap = 29 <= $date->format('d');
+    $m = 12 * (0 <= $months ? 1 : -1);
+    for ($a = 1; $a < $years; ++$a) {
+      $date = static::addMonths($date, $m);
     }
+    $months -= ($a - 1) * $m;
+    $init = clone $date;
+    if (0 != $months) {
+      $modifier = $months . ' months';
+
+      $date = $date->modify($modifier);
+      if ($date->format('m') % 12 != (12 + $months + $init->format('m')) % 12) {
+        $day = $date->format('d');
+        $init = $init->modify("-{$day} days");
+      }
+      $init = $init->modify($modifier);
+    }
+    $y = $init->format('Y');
+    if ($leap && ($y % 4) == 0 && ($y % 100) != 0 && 28 == $init->format('d')) {
+      $init = $init->modify('+1 day');
+    }
+    return $init;
   }
 
 }

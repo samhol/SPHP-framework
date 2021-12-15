@@ -1,0 +1,1 @@
+[18-Feb-2021 18:10:18 Europe/Helsinki] PHP Fatal error:  Declaration of Sphp\Apps\FitNotes\DB\DB::getDate(Sphp\DateTime\Date $date): array must be compatible with Sphp\Apps\Calendars\Diaries\DiaryInterface::getDate($date): Sphp\Apps\Calendars\Diaries\DiaryDateInterface in /home/int48291/public_html/sphp/php/Sphp/Apps/FitNotes/DB/DB.php on line 32

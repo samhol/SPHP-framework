@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -16,7 +16,7 @@ namespace Sphp\Html\Forms\Inputs;
  * Implementation of an HTML input type="number" tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
+ * @link    https://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @link    https://www.w3.org/TR/html-markup/input.number.html W3C reference
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -28,41 +28,45 @@ class NumberInput extends InputTag implements RangeInput {
    *
    * @param  string|null $name the value of the  name attribute
    * @param  scalar $value the value of the  value attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function __construct(string $name = null, $value = null) {
     parent::__construct('number', $name, $value);
   }
 
-  public function setValue($value) {
+  public function setInitialValue($value) {
     if ($value !== false) {
       $value = (float) $value;
     }
-    parent::setValue($value);
+    parent::setInitialValue($value);
     return $this;
   }
 
-  public function setRange(float $min = null, float $max = null) {
+  public function setRange(?float $min, ?float $max) {
     $this->attributes()->setAttribute('min', $min);
     $this->attributes()->setAttribute('max', $max);
     return $this;
   }
 
-  public function getMax(): float {
-    return (float) $this->attributes()->getValue('max');
+  public function getMax(): ?float {
+    $out = null;
+    if ($this->attributeExists('max')) {
+      $out = (float) $this->attributes()->getValue('max');
+    }
+    return $out;
   }
 
-  public function getMin(): float {
+  public function getMin(): ?float {
     return (float) $this->attributes()->getValue('min');
   }
 
-  public function setStepLength(float $step) {
+  public function setStepLength(?float $step) {
     $this->attributes()->setAttribute('step', $step);
     return $this;
   }
 
-  public function setPlaceholder(string $placeholder = null) {
+  public function setPlaceholder(?string $placeholder) {
     $this->attributes()->setAttribute('placeholder', $placeholder);
     return $this;
   }

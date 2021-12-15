@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -100,7 +100,7 @@ class ErrorDispatcher {
    * Restores the previously defined exception handler function
    *
    * @return $this for a fluent interface
-   * @link   http://php.net/manual/en/function.restore-exception-handler.php PHP manual
+   * @link   https://www.php.net/manual/en/function.restore-exception-handler.php PHP manual
    */
   public function stopExceptionHandling() {
     if ($this->handlesExceptions) {
@@ -150,8 +150,8 @@ class ErrorDispatcher {
    * @param  string $errstr the error message
    * @param  string $errfile the filename that the error was raised in
    * @param  int $errline the line number the error was raised at
-   * @return boolean
-   * @link   http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
+   * @return bool
+   * @link   https://www.php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
    */
   public function triggerError(int $errno, string $errstr, string $errfile, int $errline): bool {
     if (!(error_reporting() & $errno)) {

@@ -86,10 +86,10 @@
 }
 
 @mixin opacity($value){ 
-  //$IEValue: $value*100;
+  $IEValue: $value*100;
   opacity: $value;
-  //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
-  //filter: alpha(opacity=$IEValue);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
 }
 
 @mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
@@ -133,17 +133,7 @@
   -ms-transform-origin: $origin;
   transform-origin: $origin;
 }
-@mixin box-shadow1($top, $left, $blur, $color, $inset: false) {
-  @if $inset {
-    -webkit-box-shadow:inset $top $left $blur $color;
-    -moz-box-shadow:inset $top $left $blur $color;
-    box-shadow:inset $top $left $blur $color;
-  } @else {
-    -webkit-box-shadow: $top $left $blur $color;
-    -moz-box-shadow: $top $left $blur $color;
-    box-shadow: $top $left $blur $color;
-  }
-}
+
 @mixin gradient($direction, $list) { 
   background: -webkit-linear-gradient($direction, $list);
   background: -moz-linear-gradient($direction, $list);

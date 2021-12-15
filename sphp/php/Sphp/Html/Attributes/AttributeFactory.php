@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html\Attributes;
 
 use Dice\Dice;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 
 /**
  * Class AttributeFactory
@@ -24,15 +25,8 @@ use Dice\Dice;
  */
 class AttributeFactory {
 
-  /**
-   * @var Dice 
-   */
-  private $di;
-
-  /**
-   * @var string 
-   */
-  private $defaultType;
+  private Dice $di;
+  private string $defaultType;
 
   /**
    * Constructor
@@ -41,10 +35,13 @@ class AttributeFactory {
    */
   public function __construct(string $defaultType = ScalarAttribute::class) {
     $this->defaultType = $defaultType;
-    $this->rules = [
+    $rules = [
         IdStorage::class => ['shared' => true],
         CssClassParser::class => ['shared' => true],
         PropertyParser::class => ['shared' => true],
+        $this->defaultType => [
+            'shared' => false
+        ],
         'id' => [
             'shared' => false,
             'instanceOf' => IdAttribute::class
@@ -55,38 +52,68 @@ class AttributeFactory {
         ],
         'style' => [
             'shared' => false,
-            'instanceOf' => PropertyCollectionAttribute::class
+            'instanceOf' => StyleAttribute::class
         ],
     ];
     $this->di = new Dice;
-    $this->di = $this->di->addRules($this->rules);
+    $this->di = $this->di->addRules($rules);
+  }
+
+  public function __destruct() {
+    unset($this->di);
   }
 
   /**
    * 
-   * @param  string $name
-   * @return string
+   * @param  string $name the attribute name
+   * @return string the valid Attribute object type for the attribute name
    */
   public function getValidType(string $name): string {
-    $type = Attribute::class;
-    if (array_key_exists($name, $this->rules)) {
-      $type = $this->rules[$name]['instanceOf'];
+    if (!$this->hasMapping($name)) {
+      return Attribute::class;
     }
-    return $type;
+    return $this->di->getRule($name)['instanceOf'];
   }
 
   /**
    * 
-   * @param  string $name
+   * @param  string $name the attribute name
    * @param  string|object $new
-   * @return boolean
+   * @return bool
    */
   public function isValidType(string $name, $new): bool {
     return is_a($new, $this->getValidType($name), true);
   }
 
+  /**
+   * 
+   * 
+   * @param  string $name
+   * @param  string $pattern
+   * @param  mixed $value
+   * @return PatternAttribute
+   * @throws AttributeException
+   */
+  public function createPatternAttribute(string $name, string $pattern, $value = null): PatternAttribute {
+    if (!$this->isValidType($name, PatternAttribute::class)) {
+      throw new AttributeException("Cannot use pattern attribute for '$name' attribute");
+    }
+    return new PatternAttribute($name, $pattern, $value);
+  }
+
+  public function hasMapping(string $name): bool {
+    return !empty($this->di->getRule($name));
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @param  mixed $value
+   * @return Attribute
+   */
   public function createObject(string $name, $value = null): Attribute {
-    if (array_key_exists($name, $this->rules)) {
+    //  var_dump($name,$this->hasMapping($name));
+    if ($this->hasMapping($name)) {
       $instance = $this->di->create($name, [$name, $value]);
     } else {
       $instance = $this->di->create($this->defaultType, [$name, $value]);
@@ -97,13 +124,11 @@ class AttributeFactory {
     return $instance;
   }
 
-  public function createImmutableAttribute(string $name, $value): Attribute {
+  public function createImmutableAttribute(string $name, $value): ImmutableAttribute {
     if (!$this->isValidType($name, ImmutableAttribute::class)) {
-      $obj = $this->createObject($name, $value);
-      $obj->protectValue($value);
-    } else {
-      $obj = $this->di->create(ImmutableAttribute::class, [$name, $value]);
+      throw new AttributeException("Cannot use pattern attribute for '$name' attribute");
     }
+    $obj = $this->di->create(ImmutableAttribute::class, [$name, $value]);
     return $obj;
   }
 
@@ -111,9 +136,9 @@ class AttributeFactory {
     return $this->di->create(IdAttribute::class, [$name, $value]);
   }
 
-  private static $instance;
+  private static ?AttributeFactory $instance = null;
 
-  public static function instance(): AttributeFactory {
+  public static function singelton(): AttributeFactory {
     if (self::$instance === null) {
       self::$instance = new static();
     }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,188 +13,79 @@ declare(strict_types=1);
 namespace Sphp\DateTime;
 
 use DateTimeImmutable;
-use Exception;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
-use ReflectionClass;
-use Sphp\Exceptions\BadMethodCallException;
-use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements a datetime object
+ * Defines properties for a datetime
  *
- * @method \Sphp\DateTime\DateTime setTimestamp(int $unixtimestamp) Creates a new instance based on a Unix timestamp
- * @method \Sphp\DateTime\DateTime setTimezone(\DateTimeZone $timezone) Creates a new instance with given time zone
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class DateTime extends AbstractDate implements DateTimeInterface {
+interface DateTime extends Date {
 
   /**
-   * @var ReflectionClass 
-   */
-  private $reflector;
-
-  /**
-   * Constructor
+   * Returns the difference between this and another date
    * 
-   * @param  mixed $time datetime data
-   * @throws InvalidArgumentException if datetime cannot be parsed from input
+   * @param  Date $date another date
+   * @return int the difference
    */
-  public function __construct($time = null) {
-    if ($time instanceof DateTimeImmutable) {
-      parent::__construct($time);
-    } else {
-      try {
-        $dateTime = DateTimes::dateTimeImmutable($time);
-        parent::__construct($dateTime);
-      } catch (Exception $ex) {
-        throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
-      }
-    }
-  }
+  public function compareTo(Date $date): int;
 
-  /**
-   * Destructor
-   */
-  public function __destruct() {
-    unset($this->reflector);
-    parent::__destruct();
-  }
-
-  /**
-   * Clone method
-   */
-  public function __clone() {
-    $this->reflector = null;
-    parent::__clone();
-  }
-
-  /**
-   * Magic call method
-   *
-   * @param  string $name
-   * @param  array $args
-   * @return mixed
-   * @throws BadMethodCallException
-   */
-  public function __call(string $name, array $args) {
-    if ($this->reflector === null) {
-      $this->reflector = new ReflectionClass($this->getDateTime());
-    }
-    if (!$this->reflector->hasMethod($name)) {
-      throw new BadMethodCallException("Method $name does not exist");
-    } else {
-      $reflectionMethod = $this->reflector->getMethod($name);
-      $result = $reflectionMethod->invokeArgs($this->getDateTime(), $args);
-      if ($result instanceof DateTimeImmutable) {
-        $out = new static($result);
-      } else {
-        $out = $result;
-      }
-      return $out;
-    }
-  }
-
-  public function __toString(): string {
-    return $this->format('j.n.Y H:i:s T');
-  }
-
-  public function useCurrentTimezone(): DateTime {
-    $ctz = new \DateTimeZone(date_default_timezone_get());
-    return static::from($this->getDateTime()->setTimezone($ctz));
-  }
-
-  public function diff($date, bool $absolute = false): Interval {
-    if ($date instanceof DateInterface && !$date instanceof DateTimeInterface) {
-      return (new Date($this->format('Y-m-d')))->diff($date, $absolute);
-    } else {
-      $other = DateTimes::dateTimeImmutable($date);
-      $diff = $this->getDateTime()->diff($other, $absolute);
-      return Intervals::fromDateInterval($diff);
-    }
-  }
+  public function getDateTime(): DateTimeImmutable;
 
   /**
    * Returns the Unix timestamp
    * 
    * @return int the Unix timestamp
    */
-  public function getTimestamp(): int {
-    return $this->getDateTime()->getTimestamp();
-  }
+  public function getTimestamp(): int;
 
   /**
-   * Returns the difference in days between this and another date
+   * Returns the Unix timestamp with microseconds
    * 
-   * @param  DateInterface|DateTimeInteface|string|int|null $date raw date data
-   * @return int the difference in days
-   * @throws InvalidArgumentException if date cannot be parsed from input
+   * @return float the Unix timestamp with microseconds
    */
-  public function compareTo($date): int {
-    $dt = static::from($date)->getTimestamp();
-    $timeStamp = $this->getTimestamp();
-    $result = $timeStamp <=> $dt;
-    return $result;
-  }
+  public function getMicrotime(): float;
 
   /**
-   * Advances given number of days and returns a new instance
+   * Returns the number of hours
    * 
-   * @param  int $hours number of days to shift
-   * @return DateTime new instance
+   * @return int the number of hours
    */
-  public function jumpHours(int $hours): DateTime {
-    return $this->modify("$hours hours");
-  }
+  public function getHours(): int;
 
   /**
-   * Advances given number of days and returns a new instance
+   * Returns the number of minutes
    * 
-   * @param  int $days number of days to shift
-   * @return DateTime new instance
+   * @return int the number of minutes
    */
-  public function jumpDays(int $days): DateTime {
-    return $this->modify("$days day");
-  }
+  public function getMinutes(): int;
 
   /**
-   * Returns the next Date
+   * Returns the number of seconds
    * 
-   * @return DateTime new instance
+   * @return int the number of seconds
    */
-  public function nextDay(): DateTime {
-    return $this->modify('+ 1 day');
-  }
+  public function getSeconds(): int;
 
   /**
-   * Returns the previous Date
+   * Returns the number of microseconds
    * 
-   * @return DateTime new instance
+   * @return int the number of microseconds
    */
-  public function previousDay(): DateTime {
-    return $this->modify('- 1 day');
-  }
+  public function getMicroseconds(): int;
 
   /**
-   * Returns the date representing the first of the same month
+   * Sets the time
    * 
-   * @return DateTime new instance
+   * @param  int $hour Hour of the time
+   * @param  int $minute Minute of the time
+   * @param  int $second Second of the time
+   * @param  int $microsecond Microsecond of the time
+   * @return DateTime modified instance
    */
-  public function firstOfMonth(): DateTime {
-    return $this->modify('first day of this month');
-  }
-
-  /**
-   * Returns the date representing the first of the same month
-   * 
-   * @return DateTime new instance
-   */
-  public function lastOfMonth(): DateTime {
-    return $this->modify('last day of this month');
-  }
+  public function setTime(int $hour, int $minute, int $second = 0, int $microsecond = 0): DateTime;
 
   /**
    * Creates a new object with modified timestamp
@@ -202,15 +93,9 @@ class DateTime extends AbstractDate implements DateTimeInterface {
    * @param  string $modify a date/time string
    * @return DateTime new instance
    * @throws InvalidArgumentException if formatting fails
-   * @link   http://php.net/manual/en/datetime.formats.php Valid Date and Time Formats
+   * @link   https://www.php.net/manual/en/datetime.formats.php Valid Date and Time Formats
    */
-  public function modify(string $modify): DateTime {
-    $thrower = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $thrower->start();
-    $new = $this->getDateTime()->modify($modify);
-    $thrower->stop();
-    return new static($new);
-  }
+  public function modify(string $modify): DateTime;
 
   /**
    * Adds an amount of days, months, years, hours, minutes and seconds
@@ -219,10 +104,7 @@ class DateTime extends AbstractDate implements DateTimeInterface {
    * @return DateTime new instance
    * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
-  public function add($interval): DateTime {
-    $dt = $this->getDateTime()->add(Intervals::create($interval));
-    return new static($dt);
-  }
+  public function add($interval): DateTime;
 
   /**
    * Adds an amount of days, months, years, hours, minutes and seconds
@@ -231,55 +113,5 @@ class DateTime extends AbstractDate implements DateTimeInterface {
    * @return DateTime new instance
    * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
-  public function sub($interval): DateTime {
-    $dt = $this->getDateTime()->sub(Intervals::create($interval));
-    return new static($dt);
-  }
-
-  public function getHours(): int {
-    return (int) $this->getDateTime()->format('H');
-  }
-
-  public function getMinutes(): int {
-    return (int) $this->getDateTime()->format('i');
-  }
-
-  public function getSeconds(): int {
-    return (int) $this->getDateTime()->format('s');
-  }
-
-  public function getTimeZoneOffset(): int {
-    return $this->getDateTime()->getOffset();
-  }
-
-  public function getTimeZoneName(): string {
-    return $this->getDateTime()->getTimezone()->getName();
-  }
-
-  /**
-   * Creates a new instance from input
-   * 
-   * @param  mixed $input raw datetime data
-   * @return DateTime new instance
-   * @throws InvalidArgumentException if date cannot be parsed from input
-   */
-  public static function from($input = null): DateTime {
-    return new static($input);
-  }
-
-  /**
-   * 
-   * @param  string $format
-   * @param  string $time
-   * @param  \DateTimeZone $timezone
-   * @return DateTime|null
-   */
-  public static function createFromFormat(string $format, string $time, \DateTimeZone $timezone = null): ?DateTime {
-    $dti = DateTimeImmutable::createFromFormat($format, $time, $timezone);
-    if ($dti === false) {
-      return null;
-    }
-    return new static($dti);
-  }
-
+  public function sub($interval): DateTime;
 }

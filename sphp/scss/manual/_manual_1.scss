@@ -1,0 +1,131 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+@charset "UTF-8";
+
+$sphp6-topbar-bg: #121212; 
+$sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
+$sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
+$sphp6-topbar-font-color: #efefef;
+$sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
+$sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
+$sphp6-root-border-color: #333;
+
+$default-left-margin: rem-calc(35);
+$default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
+$error-bg: rgba(#FF7F50, 0.4);
+
+@mixin default-margin($margin: all) { 
+  @if $margin == all or map-has-key($default-margins, $margin) {
+    @if $margin == all {
+      margin: map-get($default-margins, top) 
+        map-get($default-margins, right) 
+        map-get($default-margins, bottom) 
+        map-get($default-margins, left);
+    } else {
+      margin-#{$margin}: map-get($default-margins, $margin);
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$margin}`. "
+    + "Please make sure it is defined in `$default-margins` map.";
+  }
+}
+
+@import "api-stuff";
+@import "form-submission-viewer";
+@import "footer";
+@import 'gettext-form';
+@import "forms";
+@import "logo-area";
+@import "social-icons";
+
+.manual {
+  .sphp.sidenav {
+    @include shadow(0px 3px 8px 4px rgba(#888,1));
+    margin: rem-calc(20 20 20 20); /* top right bottom left */
+    border: solid 1px #888;
+  } 
+  .sphp.responsive-bar-container {
+    .top-bar, .title-bar {   
+      @include shadow(0px 3px 8px 4px #888);
+    }
+  }
+  .mainContent {
+    //max-width: rem-calc(1200);
+    border: solid 1px #888;
+    @include border-radius(4px);
+    //@include box-shadow(#888 3px 0px 8px 4px);
+    padding: rem-calc(0 10 0 10);// top right bottom left
+    margin: rem-calc(20 10 20 0); // top right bottom left
+    @include shadow(0px 3px 8px 4px rgba(#888,1));
+    //@include box-shadow1(-3px, -3px, 8px, #888);
+    //@include box-shadow1(-3px, 3px, 8px, #888);
+    //@include box-shadow1(3px, -3px, 8px, #888);
+    background: #eaeaea;
+    @include breakpoint(medium down) {  
+      margin: rem-calc(5 0 20 0);
+    }
+    @include breakpoint(xlarge) {  
+      // margin-right: rem-calc(70);
+    }
+    .container {
+      // @import "example-accordion";
+      border-left: solid 1px #ccc;
+      border-right: solid 1px #ccc;
+      //@include border-radius(4px);
+      //@include box-shadow(#888 3px 0px 8px 4px);
+      //@include box-shadow(#888 0px 3px 8px 4px);
+      padding: rem-calc(0 3 40 3);// top right bottom left
+      //margin: rem-calc(5 0 20 0); // top right bottom left
+      background: #fafafa;
+    }
+    &.error {
+      @import "error-page";
+    }
+  }
+}
+
+main, main>section, main section.main {   
+  @import "accordions"; 
+
+  >.button-group, >.grid-x {
+    @include default-margin();
+  }
+  @import "sphp-factory-tables"; 
+  //@import "breadcrumbs";
+  > p, > ul, > ol, > .sphp-single-accordion {
+    margin-left: rem-calc(5);
+    margin-right: rem-calc(5); 
+  }
+  > .button {
+    @include default-margin();
+  }
+
+  @import "callouts"; 
+  > p:not([class]) {
+    @include default-margin();
+    //margin: rem-calc(5 25 15 35); // top right bottom left
+    text-align: justify;
+    padding: 0;
+  }
+  @import "headings"; 
+  @import "hyperlinks"; 
+  @import "lists"; 
+  @import "vendor-readme-section"; 
+  @import "technologies"; 
+  @import "carousels";
+  @import "styling-tags";
+  @import "quoting";
+  @import "carousels/terminology-carousel";
+  //@import "pagination";
+}
+@import "examples/examples"; 
+
+@import "body";

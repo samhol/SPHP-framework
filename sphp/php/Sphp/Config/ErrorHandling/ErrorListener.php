@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -16,7 +16,7 @@ namespace Sphp\Config\ErrorHandling;
  * Defines an Error listener for Error dispatcher
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://php.net/manual/en/function.set-error-handler.php
+ * @link    https://www.php.net/manual/en/function.set-error-handler.php
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

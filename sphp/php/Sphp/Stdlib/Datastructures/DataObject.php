@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -48,7 +48,7 @@ class DataObject extends stdClass implements ArrayAccess, Arrayable, IteratorAgg
    * Checks whether the specific configuration variable exists
    * 
    * @param  string $property the name of the variable
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function offsetExists($property): bool {
     return isset($this->$property);

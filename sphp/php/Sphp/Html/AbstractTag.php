@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,8 +13,7 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\Attributes\PropertyCollectionAttribute;
-use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\Attributes\MapAttribute;
 use Sphp\Html\Exceptions\HtmlException;
 
 /**
@@ -32,14 +31,14 @@ abstract class AbstractTag extends AbstractContent implements Tag {
    *
    * @var string
    */
-  private $tagName;
+  private string $tagName;
 
   /**
    * attribute container
    *
-   * @var AttributeContainer
+   * @var AttributeContainer|null
    */
-  private $attrs;
+  private ?AttributeContainer $attrs;
 
   //private static $c = 0;
 
@@ -50,14 +49,12 @@ abstract class AbstractTag extends AbstractContent implements Tag {
    * @param  AttributeContainer|null $attrManager the attribute manager of the component
    * @throws HtmlException if the tag name of the component is not valid
    */
-  public function __construct(string $tagName, AttributeContainer $attrManager = null) {
+  public function __construct(string $tagName, ?AttributeContainer $attrManager = null) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {
       throw new HtmlException("The tag name '$tagName' is malformed");
     }
     $this->tagName = $tagName;
-    if ($attrManager !== null) {
-      $this->attrs = $attrManager;
-    }
+    $this->attrs = $attrManager;
   }
 
   /**
@@ -72,7 +69,7 @@ abstract class AbstractTag extends AbstractContent implements Tag {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     if ($this->attrs !== null) {
@@ -91,20 +88,15 @@ abstract class AbstractTag extends AbstractContent implements Tag {
     return $this->attrs;
   }
 
-  public function setId(string $id) {
-    $this->attributes()->setAttribute('id', $id);
-    return $this;
-  }
-
-  public function identify(bool $forceNewValue = false): string {
-    return $this->attributes()->id()->identify($forceNewValue);
+  public function identify(?string $id = null): string {
+    return $this->attributes()->id()->identify($id);
   }
 
   public function cssClasses(): ClassAttribute {
     return $this->attributes()->classes();
   }
 
-  public function css(): PropertyCollectionAttribute {
+  public function css(): MapAttribute {
     return $this->attributes()->styles();
   }
 

@@ -1,0 +1,137 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+
+@mixin vendor-font-coloring($color) {
+  a {
+    &:not(.button):hover {
+      color: $color;
+    }
+  }
+  code {
+    border: solid 1px rgba($color, .6);
+    background-color: rgba($color, .3);
+  }
+};
+
+@mixin vendor-watermark($path) {
+  background: url(#{$path}) no-repeat center center;
+};
+.sphp.manual.vendor-readme-orbit, .sphp.manual.intro-orbit {
+  .orbit-previous, .orbit-next {
+    @include border-radius(7px);
+
+  }
+  .orbit-container {
+    .orbit-slide {
+      min-height: 100%;
+      a {
+        &:not(.button):hover {
+          text-decoration: underline;
+        }
+      }
+      code {
+        @include border-radius(2px);
+      }
+      &.svg {
+        @include vendor-font-coloring(#333);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?name=svg&opacity=0.2');
+        background-size: auto 80%;
+      }
+      &.html {
+        @include vendor-font-coloring(#E44D26);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=html5-original&opacity=0.3');
+        background-size: auto 80%;
+      }
+      &.foundation {
+        @include vendor-font-coloring(#333);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=foundation-original&opacity=0.2');
+        background-size: auto 80%;
+      }
+      &.js {
+        @include vendor-font-coloring(#F0DB4F);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=javascript-original&opacity=0.2');
+        background-size: auto 80%;
+      }
+      &.scss, &.sass {
+        @include vendor-font-coloring(#CB6699);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=sass-original&opacity=0.3');
+        background-size: auto 80%;
+      }
+      &.zend {
+        @include vendor-font-coloring(#68B604);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=zend-plain&opacity=0.25');
+      }
+      &.php {
+        @include vendor-font-coloring(#6181B6);
+        @include vendor-watermark('http://playground.samiholck.com/manual/svg/svg.php?devicon=php-original&opacity=0.13');
+      }
+      &.doctrine {
+        @include vendor-font-coloring(#F56D39);
+        @include vendor-watermark('http://data.samiholck.com/svg/doctrine.php?opacity=.3');
+      }
+    }
+    margin: rem-calc(4);
+    border: solid 1px #999;
+    @include border-radius(3px);
+    section {
+      padding: rem-calc(0 0 20 0);
+      h1, h2, h3 {
+        background-color: rgba(#eee, .3);
+        &:first-child {
+          @include border-top-radius(3px);
+          border-bottom: solid 1px #999;
+        }
+        &:not(:first-child) {
+          border-top: solid 1px #bbb;
+          border-bottom: solid 1px #bbb;
+        }
+        padding: rem-calc(3 5 2 10);
+      }
+      h1 {
+        //@include border-top-radius(3px);
+        //border-bottom: solid 1px #999;
+        padding: rem-calc(3 5 2 10);
+      }
+      h2 {
+        //border-top: solid 1px #bbb;
+        //border-bottom: solid 1px #bbb;
+        //background-color: rgba(#eee, .5);
+        padding: rem-calc(3 5 2 10);
+      }
+      p ,ul, pre {
+        margin: rem-calc(5 15 10 15);
+        padding: rem-calc(3 5 2 10);
+      }
+      ul, ol {
+        margin-left: rem-calc(25);
+        list-style-position: inside;
+
+      }
+      hr {
+        border: 0;
+        height: 1px;
+        $grad: rgba(0, 0, 0, 0),rgba(0, 0, 0, 0) 33%,rgba(0, 0, 0, 0) 66%,rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 0%;
+        @include gradient(to left, $grad);
+        //background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+      }
+      table, thead {  
+        background-color: rgba(#eee, .5);
+      }
+      >.button, >.button-group {
+        margin-left: rem-calc(25);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

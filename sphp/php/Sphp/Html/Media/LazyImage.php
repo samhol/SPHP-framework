@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -24,7 +24,7 @@ class LazyImage extends Img implements LazyMediaSource {
 
   public function __construct(string $src, string $alt = '') {
     parent::__construct($src, $alt);
-    $this->attributes()->classes()->protectValue('lazy-hidden', 'lazy-loaded');
+    $this->attributes()->classes()->protectValue('lozad');
   }
 
   public function setSrc(string $src = null) {

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,7 +24,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
   /**
    * Sets whether the component is in use or not
    *
-   * @param  boolean $hide true if the button is in use, false otherwise
+   * @param  bool $hide true if the button is in use, false otherwise
    * @return $this for a fluent interface
    */
   public function setHidden(bool $hide = true) {

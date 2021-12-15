@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,8 +24,8 @@ use Sphp\Stdlib\Strings;
  * The data is sent to the page specified in the form's action attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
- * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_input.asp w3schools API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -36,7 +36,7 @@ abstract class AbstractInputButton extends EmptyTag implements ButtonInterface {
    *
    * @param  string $type the type of the button
    * @param  string|null $content the content of the button
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_input_type.asp type attribute
    * @throws Sphp\Exceptions\InvalidArgumentException if the type parameter is invalid
    */
   public function __construct(string $type, string $content = null) {

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -19,10 +19,10 @@ use Sphp\Html\PlainContainer;
 use Traversable;
 
 /**
- * Implementation of an HTML  table tag.
+ * Implementation of an HTML table tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_table.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_table.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -31,34 +31,34 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * Counts the {@link RowInterface} components in the table
+   * Counts the {@see Row} components in the table
    */
-  const COUNT_ROWS = 1;
+  public const COUNT_ROWS = 1;
 
   /**
-   * Counts the {@link CellInterface} components in the table
+   * Counts the {@see Cell} components in the table
    */
-  const COUNT_CELLS = 2;
+  public const COUNT_CELLS = 2;
 
   /**
    * @var Caption 
    */
-  private $caption;
+  private ?Caption $caption = null;
 
   /**
    * @var Thead 
    */
-  private $thead;
+  private ?Thead $thead = null;
 
   /**
    * @var Tbody 
    */
-  private $tbody;
+  private ?Tbody $tbody = null;
 
   /**
    * @var Tfoot|null
    */
-  private $tfoot;
+  private ?Tfoot $tfoot = null;
 
   /**
    * Constructor
@@ -248,7 +248,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
    *
    * @param  int $mode defines the type of the objects to count
    * @return int number of elements in the html table
-   * @link   http://php.net/manual/en/class.countable.php Countable
+   * @link   https://www.php.net/manual/en/class.countable.php Countable
    */
   public function count(int $mode = self::COUNT_ROWS): int {
     $num = 0;

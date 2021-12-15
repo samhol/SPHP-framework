@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,16 +25,16 @@ use IteratorAggregate;
  * for processing.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_form.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ContainerForm extends AbstractForm implements IteratorAggregate, ArrayAccess {
+class ContainerForm extends AbstractForm implements IteratorAggregate {
 
   /**
    * @var PlainContainer
    */
-  private $container;
+  private PlainContainer $container;
 
   /**
    * Constructor
@@ -52,11 +52,12 @@ class ContainerForm extends AbstractForm implements IteratorAggregate, ArrayAcce
    * @param  string|null $action where to send the form-data when the form is submitted
    * @param  string|null $method how to send form-data
    * @param  mixed $content tag's content
-   * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
-   * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
+   * @link   https://www.w3schools.com/tags/att_form_action.asp action attribute
+   * @link   https://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct(string $action = null, string $method = null, $content = null) {
     parent::__construct();
+    $this->container = new PlainContainer();
     if ($content !== null) {
       $this->append($content);
     }
@@ -66,7 +67,6 @@ class ContainerForm extends AbstractForm implements IteratorAggregate, ArrayAcce
     if ($method !== null) {
       $this->setMethod($method);
     }
-    $this->container = new PlainContainer();
   }
 
   public function append($value) {
@@ -75,7 +75,7 @@ class ContainerForm extends AbstractForm implements IteratorAggregate, ArrayAcce
   }
 
   public function getNamedInputComponents(): TraversableContent {
-    $search = function($element) {
+    $search = function ($element) {
       $element instanceof InputInterface && $element->isNamed();
     };
     return $this->getComponentsBy($search);
@@ -88,21 +88,6 @@ class ContainerForm extends AbstractForm implements IteratorAggregate, ArrayAcce
   public function getIterator(): \Traversable {
     return $this->container;
   }
-
-  public function offsetExists($offset): bool {
-    return $this->container->offsetExists($offset);
-  }
-
-  public function offsetGet($offset) {
-    return $this->container->offsetGet($offset);
-  }
-
-  public function offsetSet($offset, $value): void {
-    $this->container->offsetSet($offset, $value);
-  }
-
-  public function offsetUnset($offset): void {
-    $this->container->offsetUnset($offset);
-  }
+ 
 
 }

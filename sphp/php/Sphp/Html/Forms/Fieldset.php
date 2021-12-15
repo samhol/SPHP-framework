@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,19 +20,14 @@ use Sphp\Html\ContainerTag;
  * The fieldset element is expected to establish a new block formatting context
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_fieldset.asp w3schools HTML API
- * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-fieldset-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_fieldset.asp w3schools HTML API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/forms.html#the-fieldset-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 class Fieldset extends ContainerTag implements FormController {
 
-  /**
-   * the legend of the fieldset component
-   *
-   * @var Legend
-   */
-  private $legend;
+  private ?Legend $legend = null;
 
   /**
    * Constructor
@@ -48,14 +43,19 @@ class Fieldset extends ContainerTag implements FormController {
     }
   }
 
+  public function __destruct() {
+    parent::__destruct();
+    unset($this->legend);
+  }
+
   /**
    * Sets the legend component
    *
-   * @param  string|Legend $legend the legend component
+   * @param  string|Legend|null $legend the legend component
    * @return Legend the legend
    */
-  public function setLegend($legend): Legend {
-    if (!($legend instanceof Legend)) {
+  public function setLegend($legend): ?Legend {
+    if ($legend !== null && !$legend instanceof Legend) {
       $legend = new Legend($legend);
     }
     $this->legend = $legend;

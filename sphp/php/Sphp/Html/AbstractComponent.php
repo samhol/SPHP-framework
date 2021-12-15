@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Html;
+
+use Sphp\Html\Exceptions\HtmlException;
 
 /**
  * Abstract Class provides a simple implementation of the component containing other components
@@ -35,7 +37,7 @@ abstract class AbstractComponent extends AbstractTag {
    * Returns the content of the component as a string
    *
    * @return string content as a string
-   * @throws \Sphp\Exceptions\RuntimeException if content parsing fails
+   * @throws HtmlException if content parsing fails
    */
   abstract public function contentToString(): string;
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -72,7 +72,7 @@ interface ParameterHandler extends ArrayAccess, Traversable, Countable, Arrayabl
    * @param  PDOStatement $statement the statement object
    * @return PDOStatement the statement object
    * @throws DatabaseException if the binding fails
-   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
+   * @link   https://www.php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function bindTo(PDOStatement $statement): PDOStatement;
 
@@ -82,7 +82,7 @@ interface ParameterHandler extends ArrayAccess, Traversable, Countable, Arrayabl
    * @param  PDOStatement $statement the statement object
    * @return PDOStatement the statement object
    * @throws DatabaseException if the execution fails
-   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
+   * @link   https://www.php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function executeIn(PDOStatement $statement): PDOStatement;
 }

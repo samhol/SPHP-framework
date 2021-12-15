@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,9 +13,12 @@ declare(strict_types=1);
 namespace Sphp\DateTime;
 
 use DatePeriod;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\DateTime\Constraints\Constraints;
 use IteratorAggregate;
-use Exception;
+use Traversable;
+use ArrayIterator;
+use Sphp\DateTime\Date;
 
 /**
  * Implements a date period
@@ -28,99 +31,99 @@ use Exception;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class Period implements IteratorAggregate, PeriodInterface {
+class Period implements IteratorAggregate, Arrayable {
 
   /**
    * @var DatePeriod 
    */
-  private $datePeriod;
+  private DatePeriod $datePeriod;
 
   /**
    * @var Constraints 
    */
-  private $constraints;
+  private Constraints $constraints;
 
+  /**
+   * Constructor
+   * 
+   * @param DatePeriod $period
+   */
   public function __construct(DatePeriod $period) {
     $this->datePeriod = $period;
     $this->constraints = new Constraints();
   }
 
   /**
+   * Destructor
+   */
+  public function __destruct() {
+    unset($this->datePeriod, $this->constraints);
+  }
+
+  /**
    * Checks if the given date is in the range
    * 
-   * @param  mixed $date the date to match
+   * @param  Date $date the date to match
    * @return bool true if given datetime is in the period
    */
-  public function containsDate($date): bool {
+  public function contains(Date $date): bool {
     $result = false;
-    try {
-      $dateObj = Date::from($date);
-      foreach ($this as $dateTime) {
-        if ($dateObj->compareTo($dateTime) === 0) {
-          $result = true;
-          break;
-        }
+    $isDateTime = $date instanceof DateTime;
+    foreach ($this as $dateTime) {
+      if ($isDateTime && $date->compareTo($dateTime) === 0) {
+        $result = true;
+        break;
+      } else if (!$isDateTime && $date->dateEqualsTo($dateTime)) {
+        $result = true;
+        break;
       }
-    } catch (Exception $ex) {
-      return false;
     }
     return $result;
   }
 
   public function restrictions(): Constraints {
-    return $this->constraint;
-  }
-
-  /**
-   * Checks if the given date is in the range
-   * 
-   * @param  mixed $date the date to match
-   * @return bool true if given datetime is in the period
-   */
-  public function contains($date): bool {
-    $result = false;
-    try {
-      $dateTime = DateTime::from($date)->getTimestamp();
-      foreach ($this as $d) {
-        if ($dateTime === $d->getTimestamp()) {
-          $result = true;
-          break;
-        }
-      }
-    } catch (Exception $ex) {
-      return false;
-    }
-    return $result;
+    return $this->constraints;
   }
 
   /**
    * 
-   * @return SingleTask[]
+   * @return DateTime[]
    */
   public function toArray(): array {
     $output = [];
     foreach ($this->datePeriod as $dateTime) {
-      if ($this->constraints->isValid($dateTime)) {
-        $output[] = DateTime::from($dateTime);
+      if ($this->constraints->isValid(ImmutableDate::from($dateTime))) {
+        $output[] = ImmutableDateTime::from($dateTime);
       }
     }
     return $output;
   }
 
-  public function getIterator(): \Traversable {
-    return new \ArrayIterator($this->toArray());
+  /**
+   * Create a new iterator to iterate through inserted elements in the container
+   *
+   * @return Traversable iterator
+   */
+  public function getIterator(): Traversable {
+    return new ArrayIterator($this->toArray());
   }
 
   public function getInterval(): Interval {
-    $this->datePeriod->getDateInterval();
+    return Intervals::fromDateInterval($this->datePeriod->getDateInterval());
   }
 
-  public function getStartDate(): DateTimeInterface {
-    return DateTime::from($this->datePeriod->getStartDate());
+  public function getStartDate(): DateTime {
+    return ImmutableDateTime::from($this->datePeriod->getStartDate());
   }
 
-  public function getEndDate(): DateTimeInterface {
-    return DateTime::from($this->datePeriod->getEndDate());
+  public function getEndDate(): DateTime {
+    $date = $this->datePeriod->getEndDate();
+    if ($date === null) {
+      $dts = $this->toArray();
+      // print_r($this->dts );
+      $date = array_pop($dts);
+    }
+    return $date;
   }
 
   public static function fromISO(string $isoString): Period {

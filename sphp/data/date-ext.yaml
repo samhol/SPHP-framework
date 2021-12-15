@@ -1,0 +1,5 @@
+exts:
+  - name: date
+    consts:
+     - name: SUNFUNCS_RET_TIMESTAMP
+       path: datetime.constants.php#constant.sunfuncs-ret-timestamp

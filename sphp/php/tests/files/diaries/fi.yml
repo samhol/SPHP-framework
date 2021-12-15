@@ -1,0 +1,153 @@
+## Finnish holidays
+---
+type: national-holidays
+country: Finland
+dates:
+  - annual: "New Year's Day"
+    type: 
+      - public holiday
+    month: 1
+    day: 1
+  - annual: Epiphany
+    type: 
+      - public holiday
+    month: 1
+    day: 6
+  - birthday:  Johan Ludvig, Runeberg
+    dob: 1804-02-05
+    dod: 1877-05-06
+    type: 
+      - flagday 
+  - annual: "Valentine's Day"
+    month: 2
+    day: 14
+  - annual: Day of Kalevala
+    month: 2
+    day: 28
+    type: 
+      - flagday 
+  - birthday: Minna, Canth
+    type: 
+      - flagday
+    dob: 1844-4-19
+    dod: 1897-5-12
+  - annual: Day of Equality
+    type: 
+      - flagday
+    month: 4
+    day: 19 
+    notBefore: 2007
+  - annual: "National War Veterans' Day"
+    type: 
+      - flagday
+    month: 4
+    day: 27
+  - annual: May Day
+    type: 
+      - flagday
+      - public holiday
+    month: 5
+    day: 1 
+  - annual: Europe Day
+    type:
+     - flagday
+    month: 5
+    day: 9
+  - varying_annual: "Mothers's Day"
+    type: 
+      - flagday
+    rule: 'May %d second sunday'  
+  - birthday: J. V. Snellman
+    type: 
+      - flagday
+    dob: 1806-5-12
+    dod: 1881-7-4
+  - varying_annual: Memorial day
+    type:
+     - flagday
+    rule: 'May %d third sunday'
+  - birthday: Carl Gustaf Emil, Mannerheim
+    type: 
+      - flagday
+    dob: 1867-6-4
+    dod: 1951-1-27
+  - annual: The Flag Day of the Finnish Defence Forces
+    type: 
+     - flagday
+    month: 6
+    day: 4
+  - varying_annual: "Midsummer's Eve"
+    type: 
+      - flagday
+      - public holiday
+    rule: '%d-6-19 next Saturday'
+  - birthday: Eino, Leino
+    type: 
+      - flagday
+    dob: 1878-7-6
+    dod: 1926-1-10
+  - birthday: Aleksis, Kivi
+    type: 
+      - flagday
+    dob: 1834-10-10
+    dod: 1872-12-31
+  - annual: Day of Finnish literature 
+    month: 10
+    day: 10
+  - annual: Day of Children's Rights
+    type: 
+      - flagday
+    month: 11
+    day: 20 
+  - varying_annual: All Saints Day
+    type: 
+      - public holiday
+    rule: '%d-11-30 next Saturday'
+  - varying_annual: "Father's Day"
+    type: 
+      - flagday
+    rule: 'November %d second sunday'
+  - annual: Independence Day of Finland
+    month: 12
+    day: 6 
+    notBefore: 1917
+  - birthday: Jean, Sibelius
+    type: 
+      - flagday
+    dob: 1865-12-8
+    dod: 1957-9-20
+  - annual: "St Lucy’s Day"
+    month: 12
+    day: 13
+  - annual: Christmas Eve
+    month: 12
+    day: 24
+  - annual: Christmas Day
+    type: 
+      - public holiday
+    month: 12
+    day: 25
+  - annual: Boxing Day
+    type: 
+      - public holiday
+    month: 12
+    day: 26
+
+  - easter:
+    - thursday: Maundy Thursday 
+    - friday: Good Friday
+      type: 
+        - public holiday 
+      
+    - sunday: Easter Sunday
+      type: 
+      - public holiday 
+      
+    - monday: Easter Monday 
+      type: 
+        - public holiday 
+    - ascension_day: Ascension Day 
+      type: 
+        - public holiday 
+      
+    - pentecost: Pentecost

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,8 +20,8 @@ use Sphp\Exceptions\InvalidArgumentException;
  * An abstract implementation of an HTML &lt;button type="submit|reset|button|image" tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API
- * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-button-element W3C API
+ * @link    https://www.w3schools.com/tags/tag_button.asp w3schools API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/forms.html#the-button-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

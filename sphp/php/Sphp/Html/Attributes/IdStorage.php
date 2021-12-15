@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -33,7 +33,7 @@ class IdStorage implements Countable {
   /**
    * @var string[]
    */
-  private $ids;
+  private array $ids;
 
   /**
    * Constructor
@@ -64,7 +64,7 @@ class IdStorage implements Countable {
    *
    * @param  string $value the value of the identifier
    * @param string $for
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function contains(string $value, $for = null): bool {
     if ($for === null) {
@@ -78,7 +78,7 @@ class IdStorage implements Countable {
    * 
    * @param  string $value the value of the identifier
    * @param  string $for
-   * @return boolean true if stored and `false` otherwise
+   * @return bool true if stored and `false` otherwise
    */
   public function store(string $value, $for = null): bool {
     if ($for === null) {
@@ -106,7 +106,7 @@ class IdStorage implements Countable {
    * 
    * @param  string $oldId old identifier
    * @param  string $newId new identifier
-   * @return boolean true if stored and `false` otherwise
+   * @return bool true if stored and `false` otherwise
    */
   public function replace(string $oldId, string $newId): bool {
     $storedNew = false;
@@ -125,7 +125,7 @@ class IdStorage implements Countable {
    */
   public function generateRandom(int $length = 16): string {
     $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $allChars = "0123456789$letters";
+    $allChars = "0123456789-$letters";
     $first = Strings::randomize($letters, 1);
     $value = $first . Strings::randomize($allChars, $length - 1);
     while (!$this->store($value)) {

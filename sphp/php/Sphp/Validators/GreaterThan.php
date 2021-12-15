@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,10 +22,7 @@ namespace Sphp\Validators;
  */
 class GreaterThan extends AbstractLimitValidator {
 
-  /**
-   * @var float 
-   */
-  private $min;
+  private float $min;
 
   /**
    * Constructs a new validator
@@ -36,22 +33,20 @@ class GreaterThan extends AbstractLimitValidator {
   public function __construct(float $min, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->min = $min;
-    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not larger than %d');
-    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not larger than or equal to %d');
+    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not larger than %d');
+    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not larger than or equal to %d');
   }
 
   public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value) {
-        $this->errors()->appendErrorFromTemplate(static::INCLUSIVE_ERROR, [$this->min]);
+        $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min);
         return false;
       }
-    } else {
-      if ($this->min >= $value) {
-        $this->errors()->appendErrorFromTemplate(static::EXCLUSIVE_ERROR, [$this->min]);
-        return false;
-      }
+    } else if ($this->min >= $value) {
+      $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min);
+      return false;
     }
     return true;
   }

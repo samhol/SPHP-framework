@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -121,7 +121,7 @@ class Sequence implements Iterator {
   /**
    * Determine if the queue is empty or not
    *
-   * @return boolean true if the queue is empty, false otherwise
+   * @return bool true if the queue is empty, false otherwise
    */
   public function isEmpty(): bool {
     return empty($this->sequence);
@@ -131,7 +131,7 @@ class Sequence implements Iterator {
    * Determines whether the given property exists
    *
    * @param  int $index the index
-   * @return boolean true if the property exists and false otherwise
+   * @return bool true if the property exists and false otherwise
    */
   public function exists(int $index): bool {
     return isset($this->sequence[$index]) || array_key_exists($index, $this->sequence);
@@ -141,7 +141,7 @@ class Sequence implements Iterator {
    * Determines whether the given atomic values exists
    *
    * @param  mixed ...$values the atomic values to search for
-   * @return boolean true if the given atomic values exists
+   * @return bool true if the given atomic values exists
    */
   public function contains(...$values): bool {
     $exists = false;
@@ -220,7 +220,7 @@ class Sequence implements Iterator {
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return bool current iterator position is valid
    */
   public function valid(): bool {
     return null !== key($this->sequence);

@@ -3,16 +3,14 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Exceptions;
-
-use OutOfRangeException as SplOutOfRangeException;
+namespace Sphp\Exceptions; 
 
 /**
  * Exception thrown when an illegal index was requested
@@ -23,6 +21,6 @@ use OutOfRangeException as SplOutOfRangeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class OutOfRangeException extends SplOutOfRangeException implements SphpExceptionInterface {
+class OutOfRangeException extends SphpException {
   
 }

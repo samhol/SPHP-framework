@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -14,11 +14,8 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\AbstractContent;
 use IteratorAggregate;
-use Traversable;
+use Sphp\Html\ContentIterator;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\PlainContainer;
-use Sphp\Html\Scripts\Script;
-use Sphp\Exceptions\UnderflowException;
 use Sphp\Stdlib\Datastructures\PriorityList;
 use Sphp\Html\Scripts\ExternalScript;
 
@@ -35,7 +32,7 @@ class MetaContainer extends AbstractContent implements IteratorAggregate, Traver
   use \Sphp\Html\TraversableTrait;
 
   /**
-   * @var PriorityList
+   * @var PriorityList<MetaData>
    */
   private $container;
 
@@ -58,7 +55,7 @@ class MetaContainer extends AbstractContent implements IteratorAggregate, Traver
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->container = clone $this->container;
@@ -152,10 +149,10 @@ class MetaContainer extends AbstractContent implements IteratorAggregate, Traver
   /**
    * Creates a new iterator to iterate through content
    *
-   * @return Traversable iterator
+   * @return ContentIterator<MetaData> iterator
    */
-  public function getIterator(): Traversable {
-    return $this->container;
+  public function getIterator(): ContentIterator {
+    return new ContentIterator($this->container);
   }
 
 }

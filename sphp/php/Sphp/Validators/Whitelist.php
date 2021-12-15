@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -21,12 +21,9 @@ namespace Sphp\Validators;
  */
 class Whitelist extends AbstractValidator {
 
-  const ILLEGAL_KEY = '_illegal_key_';
-
-  /**
-   * @var array
-   */
-  private $whitelist = [];
+  const ILLEGAL_KEY = 'INVALID_KEY';
+ 
+  private array $whitelist = [];
 
   /**
    * Constructs a new validator
@@ -36,7 +33,7 @@ class Whitelist extends AbstractValidator {
    */
   public function __construct(array $whitelist, string $errorText = 'An illegal key found') {
     parent::__construct('Array expected');
-    $this->errors()->setTemplate(self::ILLEGAL_KEY, $errorText);
+    $this->getErrors()->setTemplate(self::ILLEGAL_KEY, $errorText);
     $this->setWhitelist($whitelist);
   }
 
@@ -49,6 +46,11 @@ class Whitelist extends AbstractValidator {
     return $this->whitelist;
   }
 
+  /**
+   * 
+   * @param  array $whitelist
+   * @return $this
+   */
   public function setWhitelist(array $whitelist) {
     $this->whitelist = $whitelist;
     return $this;
@@ -58,12 +60,12 @@ class Whitelist extends AbstractValidator {
     $this->setValue($value);
     $valid = true;
     if (!is_array($value)) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->setMessageFromTemplate(self::INVALID, self::INVALID);
       $valid = false;
     } else {
       foreach (array_keys($value) as $key) {
         if (!in_array($key, $this->whitelist, true)) {
-          $this->errors()->appendErrorFromTemplate(self::ILLEGAL_KEY);
+          $this->getErrors()->setMessageFromTemplate(self::ILLEGAL_KEY, self::ILLEGAL_KEY);
           $valid = false;
           break;
         }

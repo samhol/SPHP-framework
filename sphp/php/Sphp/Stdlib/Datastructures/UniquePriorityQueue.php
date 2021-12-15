@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,7 +24,7 @@ use Sphp\Exceptions\UnderflowException;
  * Unique priority queue is a priority queue containing distinct values
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://php.net/manual/en/class.splpriorityqueue.php the SplPriorityQueue class
+ * @link    https://www.php.net/manual/en/class.splpriorityqueue.php the SplPriorityQueue class
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
@@ -95,7 +95,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, Queue, Arraya
    * Checks if the queue contains a specific value
    * 
    * @param  mixed $value
-   * @return boolean true if the value is in the queue, false otherwise
+   * @return bool true if the value is in the queue, false otherwise
    */
   public function contains($value): bool {
     $result = false;

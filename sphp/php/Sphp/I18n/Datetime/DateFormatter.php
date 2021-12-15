@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,12 +12,9 @@ declare(strict_types=1);
 
 namespace Sphp\I18n\Datetime;
 
-use Sphp\Config\Locale;
+use Sphp\Config\LocaleManager;
 use DateTimeInterface;
 use IntlDateFormatter;
-use DateTimeZone;
-use Sphp\DateTime\DateTime;
-use Sphp\DateTime\DateTimes;
 
 /**
  * Class localizes weekday and month names
@@ -28,15 +25,8 @@ use Sphp\DateTime\DateTimes;
  */
 class DateFormatter {
 
-  /**
-   * @var DateTimeInterface
-   */
-  private $date;
-
-  /**
-   * @var IntlDateFormatter
-   */
-  private $fmt;
+  private DateTimeInterface $date;
+  private ?string $locale = null;
 
   /**
    * Constructor
@@ -44,51 +34,49 @@ class DateFormatter {
    * @param DateTimeInterface|null $dateTime
    */
   public function __construct($dateTime = null) {
-    $this->setDate(\Sphp\DateTime\DateTimes::dateTimeImmutable($dateTime));
+    $this->date = \Sphp\DateTime\DateTimes::dateTimeImmutable($dateTime);
+  }
+
+  public function __destruct() {
+    unset($this->date);
+  }
+
+  public function getLocale(): ?string {
+    return $this->locale;
   }
 
   /**
    * 
-   * @return DateTimeInterface
-   */
-  public function getDate(): DateTimeInterface {
-    return $this->date;
-  }
-
-  /**
-   * 
-   * @param  DateTimeInterface $date
+   * @param  string $locale optional name of the language used for translations
    * @return $this for a fluent interface
    */
-  public function setDate(DateTimeInterface $date) {
-    $this->date = $date;
+  public function setLocale(?string $locale) {
+    $this->locale = $locale;
     return $this;
   }
 
   /**
    * Returns the name or the abbreviation of the weekday
    *
-   * @param  int $length optional length of the result string
-   * @param  string $lang optional name of the language used for translations
+   * @param  int|null $length optional length of the result string
    * @return string the name or the abbreviation of the weekday
    */
-  public function getWeekdayName(int $length = 0, string $lang = null): string {
-    $day = $this->strftime('%A', $lang);
+  public function getWeekdayName(?int $length = null): string {
+    $name = $this->formatICU('eeee');
     if ($length > 0) {
-      $day = mb_substr($day, 0, $length);
+      $name = mb_substr($name, 0, $length);
     }
-    return $day;
+    return $name;
   }
 
   /**
    * Returns the name or the abbreviation of the month
    *
-   * @param  int $length optional length of the result string
-   * @param  string $lang optional name of the language used for translations
+   * @param  int|null $length optional length of the result string
    * @return string the name or the abbreviation of the month
    */
-  public function getMonthName(int $length = 0, string $lang = null): string {
-    $monthName = $this->strftime('%B', $lang);
+  public function getMonthName(?int $length = null): string {
+    $monthName = $this->formatICU('MMMM');
     if ($length > 0) {
       $monthName = mb_substr($monthName, 0, $length);
     }
@@ -96,58 +84,34 @@ class DateFormatter {
   }
 
   /**
-   * Sets the class used for ICU date formatting functionality
-   * 
-   * @param IntlDateFormatter $fmt the class used for ICU date formatting functionality
-   */
-  public function setIntlDateFormatter(IntlDateFormatter $fmt) {
-    $this->fmt = $fmt;
-  }
-
-  public function getIntlFormatter(): IntlDateFormatter {
-    if ($this->fmt === null) {
-      $this->fmt = new IntlDateFormatter(
-              null, IntlDateFormatter::FULL, IntlDateFormatter::FULL, $this->getTimezone(), IntlDateFormatter::GREGORIAN
-      );
-    }
-    return $this->fmt;
-  }
-
-  /**
    * ICU stands for: International Components for Unicode
    * 
    * @param  string $format
-   * @param  string $lang optional name of the language used for translations
    * @return string
    * @link   http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax Internationalization patterns
    */
-  public function formatICU(string $format, string $lang = null): string {
-    if ($lang === null) {
-      $lang = Locale::getDatetimeLocale();
-    }
-    $fmt = new IntlDateFormatter(
-            $lang, IntlDateFormatter::FULL, IntlDateFormatter::FULL, $this->getTimezone(), IntlDateFormatter::GREGORIAN, $format
-    );
-    return $fmt->format($this->date);
+  public function formatICU(string $format): string {
+    $result = IntlDateFormatter::formatObject($this->date, $format, $this->getLocale());
+
+    return $result;
   }
 
   /**
    * Returns a formatted string 
    * 
    * @param  string $format
-   * @param  string $lang optional name of the language used for translations
    * @return string a formatted string 
    */
-  public function strftime(string $format, string $lang = null): string {
-    $localeManager = new LocaleManager();
-    $localeManager->setLocale($lang);
-    $output = strftime($format, $this->getTimestamp());
-    $localeManager->restoreLocales();
+  public function strftime(string $format): string {
+    if ($this->getLocale() !== null) {
+      $localeManager = new LocaleManager();
+      $localeManager->setLocale(\LC_TIME, $this->getLocale());
+    }
+    $output = strftime($format, $this->date->getTimestamp());
+    if ($this->getLocale() !== null) {
+      $localeManager->restoreLocales(\LC_TIME);
+    }
     return utf8_encode($output);
-  }
-
-  public function __toString(): string {
-    return $this->date->format('Y-m-d H:i:s, T');
   }
 
   /**
@@ -156,59 +120,16 @@ class DateFormatter {
    * @return int the week of year
    */
   public function getWeekOfYear(): int {
-    return $this->formatICU('w');
-  }
-
-  public function diff($object, $absolute = null) {
-    return $this->date->diff($object, $absolute);
+    return (int) $this->formatICU('w');
   }
 
   /**
-   * Returns the date formatted according to given format
+   * Returns the week of year
    * 
-   * @param  string $format the format of the outputted date string
-   * @return string a formatted date string
-   * @link   http://php.net/manual/en/function.date.php#refsect1-function.date-parameters formatting options
+   * @return int the week of year
    */
-  public function format(string $format): string {
-    return $this->date->format($format);
-  }
-
-  /**
-   * Returns the time zone offset
-   * 
-   * @return int the time zone offset
-   */
-  public function getOffset(): int {
-    return $this->date->getOffset();
-  }
-
-  /**
-   * Returns the Unix timestamp
-   * 
-   * @return int the Unix timestamp
-   */
-  public function getTimestamp(): int {
-    return $this->date->getTimestamp();
-  }
-
-  /**
-   * Return time zone relative to given DateTime
-   * 
-   * @return DateTimeZone time zone relative to given DateTime
-   */
-  public function getTimezone(): DateTimeZone {
-    return $this->date->getTimezone();
-  }
-
-  /**
-   * 
-   * @param  DateTime $seed
-   * @return DateFormatter new instance 
-   */
-  public static function from($seed = null): DateFormatter {
-    $dti = DateTimes::dateTimeImmutable($seed);
-    return new static($dti);
+  public function getDayOfYear(): int {
+    return (int) $this->formatICU('D');
   }
 
 }

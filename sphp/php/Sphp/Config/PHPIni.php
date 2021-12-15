@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Config;
 
-use Sphp\Stdlib\Datastructures\Arrayable;
-use ArrayAccess;
 use Sphp\Config\Exception\ConfigurationException;
 
 /**
@@ -23,21 +21,21 @@ use Sphp\Config\Exception\ConfigurationException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class PHPIni implements Arrayable, ArrayAccess {
+class PHPIni {
 
   /**
    * previous INI values after init() call
    *
    * @var string[]
    */
-  private $pre;
+  private array $pre;
 
   /**
    * stored INI values
    *
    * @var string[]
    */
-  private $ini;
+  private array $ini;
 
   /**
    * Constructor
@@ -65,12 +63,11 @@ class PHPIni implements Arrayable, ArrayAccess {
    * @param  string $name the name of the option
    * @param  scalar $value the new value for the option
    * @return $this for a fluent interface
-   * @link   http://php.net/manual/en/function.ini-set.php ini_set
-   * @link   http://php.net/manual/en/ini.list.php list of all available options
+   * @link   https://www.php.net/manual/en/function.ini-set.php ini_set
+   * @link   https://www.php.net/manual/en/ini.list.php list of all available options
    */
   public function set(string $name, $value) {
-
-    $this->ini[$name] = (string) $value;
+    $this->ini[$name] = $value;
     return $this;
   }
 
@@ -79,11 +76,11 @@ class PHPIni implements Arrayable, ArrayAccess {
    * 
    * 
    * @param  string $name the name of the option
-   * @return boolean true if the ini variable is set in this configuration
-   * @link   http://php.net/manual/en/function.ini-set.php ini_set
-   * @link   http://php.net/manual/en/ini.list.php list of all available options
+   * @return bool true if the ini variable is set in this configuration
+   * @link   https://www.php.net/manual/en/function.ini-set.php ini_set
+   * @link   https://www.php.net/manual/en/ini.list.php list of all available options
    */
-  public function exists(string $name): bool {
+  public function contains(string $name): bool {
     return isset($this->ini[$name]);
   }
 
@@ -92,11 +89,11 @@ class PHPIni implements Arrayable, ArrayAccess {
    * 
    * @param  string $varname the name of the option
    * @return string the value of the option
-   * @link   http://php.net/manual/en/function.ini-get.php ini_get
+   * @link   https://www.php.net/manual/en/function.ini-get.php ini_get
    * @throws ConfigurationException
    */
   public function get(string $varname) {
-    if ($this->exists($varname)) {
+    if ($this->contains($varname)) {
       return $this->ini[$varname];
     }
     throw new ConfigurationException($varname . " is not set");
@@ -112,11 +109,13 @@ class PHPIni implements Arrayable, ArrayAccess {
    */
   public function init() {
     foreach ($this->ini as $name => $value) {
-      $old = ini_set($name, $value);
+      $old = ini_set($name, (string) $value);
       if ($old === false) {
         throw new ConfigurationException("Unable to set INI value '$name'.");
       }
-      $this->pre[$name] = $old;
+      if (!array_key_exists($name, $this->pre)) {
+        $this->pre[$name] = $old;
+      }
     }
     return $this;
   }
@@ -145,44 +144,17 @@ class PHPIni implements Arrayable, ArrayAccess {
    */
   public function reset() {
     foreach ($this->pre as $varname => $value) {
-      if ($value !== false) {
-        ini_set($varname, $value);
-      } else {
-        ini_restore($varname);
-      }
+      ini_set($varname, $value);
     }
     $this->pre = [];
     return $this;
   }
 
-  public function toArray(): array {
-    return $this->ini;
-  }
-
-  public function offsetExists($offset): bool {
-    return $this->exists($offset);
-  }
-
-  /**
-   * Returns the stored value of a configuration option
-   * 
-   * @param  string $offset the name of the option
-   * @return string the value of the option
-   * @link   http://php.net/manual/en/function.ini-get.php ini_get
-   * @throws ConfigurationException
-   */
-  public function offsetGet($offset) {
-    return $this->get($offset);
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->set($offset, $value);
-  }
-
-  public function offsetUnset($offset) {
-    if ($this->offsetExists($offset)) {
+  public function remove(string $offset) {
+    if ($this->contains($offset)) {
       unset($this->ini[$offset]);
     }
+    return $this;
   }
 
 }

@@ -1,0 +1,47 @@
+## Finnish holidays
+---
+type: national-holidays
+country: Finland
+dates:
+
+  - birthday:  Johan Ludvig, Runeberg
+    dob: 1804-02-05
+    dod: 1877-05-06
+    type: 
+      - flagday 
+      
+  - birthday: Minna, Canth
+    type: 
+      - flagday
+    dob: 1844-4-19
+    dod: 1897-5-12
+    
+  - birthday: J. V. Snellman
+    type: 
+      - flagday
+    dob: 1806-5-12
+    dod: 1881-7-4
+    
+  - birthday: Carl Gustaf Emil, Mannerheim
+    type: 
+      - flagday
+    dob: 1867-6-4
+    dod: 1951-1-27
+    
+  - birthday: Eino, Leino
+    type: 
+      - flagday
+    dob: 1878-7-6
+    dod: 1926-1-10
+    
+  - birthday: Aleksis, Kivi
+    type: 
+      - flagday
+    dob: 1834-10-10
+    dod: 1872-12-31
+
+  - birthday: Jean, Sibelius
+    type: 
+      - flagday
+    dob: 1865-12-8
+    dod: 1957-9-20

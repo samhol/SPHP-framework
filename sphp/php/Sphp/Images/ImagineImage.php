@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -156,7 +156,7 @@ class ImagineImage extends AbstractImage {
   /**
    * Checks if the given path points to an Imagine image file
    *
-   * @return boolean true if the given path points to an Imagine image file; false otherwise
+   * @return bool true if the given path points to an Imagine image file; false otherwise
    */
   public function show(string $format = null) {
     if ($format !== null) {

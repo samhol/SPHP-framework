@@ -50,9 +50,9 @@ github: #222,
   //@include border-radius(5px);
  // margin: rem-calc(5 30);
   //padding: rem-calc(10 10);
-  h2 {
+  > h2 {
     background-color: #eee;
-    border-bottom: solid 1px #aaa;
+    border-bottom: solid 1px #aaa !important;
     margin: rem-calc(1);  // top right bottom left
     padding: rem-calc(3 5 3 10); // top right bottom left
   }

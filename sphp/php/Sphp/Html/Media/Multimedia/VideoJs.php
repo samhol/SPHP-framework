@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,9 +11,6 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Html\Media\Multimedia;
-
-use Sphp\Html\Media\SizeableMedia;
-use Sphp\Html\Media\SizeableMediaTrait;
 
 /**
  * Implements an VideoJs component
@@ -23,36 +20,16 @@ use Sphp\Html\Media\SizeableMediaTrait;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class VideoJs extends AbstractMultimediaTag implements SizeableMedia {
-
-  use SizeableMediaTrait;
+class VideoJs extends Video {
 
   /**
    * Constructor
-   *
-   * @param  Source|Source[] $sources defines a table caption
    */
-  public function __construct($sources = null) {
-    parent::__construct('video', null, $sources);
+  public function __construct() {
+    parent::__construct();
     $this->cssClasses()->protectValue('video-js');
     $this->identify();
-    $this->attributes()->demand('data-setup');
-  }
-
-  /**
-   * Sets the poster image for the video component
-   * 
-   * **Note:** The poster attribute specifies an image to be shown while 
-   * the video is downloading, or until the user hits the play button. If 
-   * this is not included, the first frame of the video will be used instead.
-   * 
-   * @param  string|URL $poster the poster image for the video component
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
-   */
-  public function setPoster(string $poster = null) {
-    $this->attributes()->setAttribute('poster', $poster);
-    return $this;
+    $this->attributes()->forceVisibility('data-setup');
   }
 
   /**

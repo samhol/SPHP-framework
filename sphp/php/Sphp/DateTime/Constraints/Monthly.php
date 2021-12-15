@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,21 +24,21 @@ use Sphp\DateTime\Date;
 class Monthly implements DateConstraint {
 
   /**
-   * @var int 
+   * @var int[]
    */
-  private $day;
+  private array $days;
 
   /**
    * Constructor
    * 
    * @param  int $day the day of the month
    */
-  public function __construct(int $day) {
-    $this->day = $day;
+  public function __construct(int ... $day) {
+    $this->days = $day;
   }
 
-  public function isValid($date): bool {
-    return $this->day === Date::from($date)->getMonthDay();
+  public function isValid(Date $date): bool {
+    return in_array($date->getMonthDay(), $this->days, true);
   }
 
 }

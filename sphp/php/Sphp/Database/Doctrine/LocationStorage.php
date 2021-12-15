@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -77,7 +77,7 @@ class LocationStorage extends AbstractObjectStorage implements \IteratorAggregat
    * Confirms the uniqueness of the location name in the repository
    *
    * @param  Location|string $needle the location instance or the location name string
-   * @return boolean true, if location name is unique, false otherwise.
+   * @return bool true, if location name is unique, false otherwise.
    */
   public function nameNotUsed($needle): bool {
     if ($needle instanceof Location) {

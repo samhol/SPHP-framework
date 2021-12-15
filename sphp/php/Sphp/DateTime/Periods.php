@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\DateTime;
 
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\BadMethodCallException;
+use Sphp\DateTime\Exceptions\{
+  InvalidArgumentException,
+  BadMethodCallException
+};
 
 /**
  * Implements a date period factory
@@ -77,14 +79,11 @@ abstract class Periods {
    * @throws InvalidArgumentException if instance cannot be parsed from input
    */
   public static function create($start, $interval, $length): Period {
-    try {
-      if (is_string($interval)) {
-        $interval = Intervals::create($interval);
-      }
+    try { 
       if (!is_int($length)) {
         $length = DateTimes::dateTimeImmutable($length);
       }
-      $dateTime = new \DatePeriod(DateTimes::dateTimeImmutable($start), $interval, $length);
+      $dateTime = new \DatePeriod(DateTimes::dateTimeImmutable($start), Intervals::create($interval), $length);
       $p = new Period($dateTime);
     } catch (\Exception $ex) {
       throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);
@@ -92,6 +91,10 @@ abstract class Periods {
     return $p;
   }
 
+  
+  public static function week($start): Period {
+    return self::create($start, 'P1D', 6);
+  }
   /**
    * Creates a new instance from input
    * 
@@ -101,15 +104,13 @@ abstract class Periods {
    * @return Period new instance
    * @throws InvalidArgumentException if instance cannot be parsed from input
    */
-  public static function weeksOfMonth(int $month = null, int $year = null, string $interval = 'P1W'): Period {
-    if ($year === null) {
-      $year = Date('Y');
+  public static function weeksOfMonth(int $month, int $year, string $interval = 'P1W'): Period {
+    $d = ImmutableDateTime::from("$year-$month-1 00:00:00");
+    if ($d->getWeekDay() !== 1) {
+      $start = $d->modify('last monday');
+    } else {
+      $start = $d;
     }
-    if ($month === null) {
-      $month = Date('m');
-    }
-    $d = DateTime::from("$year-$month-1 00:00:00");
-    $start = $d->modify('last monday');
 
     $stop = $d->modify('last day of')->modify('next monday');
     //  echo 'foo..'. $start->format('Y-m-d D');

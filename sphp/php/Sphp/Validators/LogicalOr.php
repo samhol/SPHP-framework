@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,15 +22,8 @@ namespace Sphp\Validators;
  */
 class LogicalOr extends AbstractValidator {
 
-  /**
-   * @var Validator
-   */
-  private $a;
-
-  /**
-   * @var Validator
-   */
-  private $b;
+  private Validator $a;
+  private Validator $b;
 
   /**
    * Constructor
@@ -57,7 +50,7 @@ class LogicalOr extends AbstractValidator {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->a = clone $this->a;
@@ -71,8 +64,8 @@ class LogicalOr extends AbstractValidator {
     $validB = $this->b->isValid($value);
     $valid = $validA || $validB;
     if (!$valid) {
-      $this->errors()->mergeCollection($this->a->errors());
-      $this->errors()->mergeCollection($this->b->errors());
+      $this->getErrors()->mergeCollection($this->a->getErrors());
+      $this->getErrors()->mergeCollection($this->b->getErrors());
     }
     return $valid;
   }

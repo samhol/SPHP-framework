@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,7 +24,7 @@ use Sphp\Html\ContainerTag;
  * control inside the label element itself.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_label.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_label.asp w3schools HTML API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-label-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
@@ -36,7 +36,7 @@ class Label extends ContainerTag implements LabelInterface {
    *
    * @param mixed $content the content of the component
    * @param string|IdentifiableContent|null $for the id of the element the label is bound to
-   * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
+   * @link  https://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function __construct($content = null, $for = null) {
     parent::__construct('label', $content);
@@ -53,22 +53,19 @@ class Label extends ContainerTag implements LabelInterface {
     return $this;
   }
 
-  public function getFor() {
-    return $this->attributes()->getValue('for');
+  public function getFor(): ?string {
+    return $this->attributes()->getStringValue('for');
   }
 
-  public function setForms($formIds) {
-    if (is_array($formIds)) {
-      $formIds = implode(' ', $formIds);
-    }
-    $this->attributes()->setAttribute('form', $formIds);
+  public function setForms(string ... $formIds) {
+    $this->attributes()->setAttribute('form', implode(' ', $formIds));
     return $this;
   }
 
   public function getForms(): array {
     $result = [];
     if ($this->attributes()->isVisible('form')) {
-      $result = explode(' ', $this->attributes()->getValue('form'));
+      $result = explode(' ', $this->attributes()->getStringValue('form'));
     }
     return $result;
   }

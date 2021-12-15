@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -31,18 +31,18 @@ class AnyTimeInput extends InputTag {
    * @param  string $name name attribute
    * @param  string $value the value of the attribute
    * @param  string $format used language and locale
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function __construct(string $name = null, $value = null, string $format = '%Y-%m-%d %H:%i') {
     parent::__construct('text', $name, $value);
     $this->attributes()->protect('data-anytime', true);
-    $this->cssClasses()->protectValue('sphp','AnyTimeInput');
+    $this->cssClasses()->protectValue('sphp', 'AnyTimeInput');
     $this->identify();
     $this->setDateTimeFormat($format);
   }
 
-  public function setPlaceholder(string $placeholder = null) {
+  public function setPlaceholder(?string $placeholder) {
     $this->attributes()->setAttribute('placeholder', $placeholder);
     return $this;
   }
@@ -50,10 +50,10 @@ class AnyTimeInput extends InputTag {
   /**
    * Sets used language.
    *
-   * @param  string $locale used language and locale
+   * @param  string|null $locale used language and locale
    * @return $this for a fluent interface
    */
-  public function setLocale(string $locale = null) {
+  public function setLocale(?string $locale) {
     $this->setAttribute('data-sphp-locale', $locale);
     return $this;
   }

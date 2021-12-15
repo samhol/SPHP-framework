@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -31,12 +31,7 @@ class ScriptsContainer extends AbstractContent implements IteratorAggregate, Tra
 
   use \Sphp\Html\TraversableTrait;
 
-  /**
-   * scripts container
-   *
-   * @var PriorityList
-   */
-  private $scripts;
+  private PriorityList $scripts;
 
   /**
    * Constructor
@@ -54,7 +49,7 @@ class ScriptsContainer extends AbstractContent implements IteratorAggregate, Tra
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->scripts = clone $this->scripts;
@@ -79,7 +74,7 @@ class ScriptsContainer extends AbstractContent implements IteratorAggregate, Tra
    * @param  string $src the file path of the script file 
    * @param  int $priority
    * @return ExternalScript appended code component
-   * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
+   * @link   https://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function insertExternal(string $src, int $priority = 0): ExternalScript {
     $script = new ExternalScript($src);
@@ -142,9 +137,9 @@ class ScriptsContainer extends AbstractContent implements IteratorAggregate, Tra
   /**
    * Creates a new iterator to iterate through content
    *
-   * @return Traversable iterator
+   * @return ContentIterator<Script> iterator
    */
-  public function getIterator(): Traversable {
+  public function getIterator(): ContentIterator {
     return new ContentIterator($this->scripts->toArray());
   }
 

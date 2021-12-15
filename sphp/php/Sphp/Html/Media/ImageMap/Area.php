@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -27,7 +27,7 @@ interface Area extends Hyperlink {
    * Returns the shape of the area
    * 
    * @return string the shape of the area
-   * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
+   * @link   https://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
   public function getShape(): string;
 
@@ -46,7 +46,7 @@ interface Area extends Hyperlink {
    *
    * @param  string|null $alt the alternate text for an image
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
+   * @link   https://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt(string $alt = null);
 
@@ -64,7 +64,7 @@ interface Area extends Hyperlink {
    * The `alt` attribute is required if the `href` attribute is present.
    *
    * @return string|null the value of the alt attribute
-   * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
+   * @link  https://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function getAlt(): ?string;
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -38,7 +38,7 @@ interface LinkInterface extends MetaData {
    *    (most often a style sheet file).
    * 
    * @return string the location of the linked document
-   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function getHref(): string;
 
@@ -65,7 +65,7 @@ interface LinkInterface extends MetaData {
    * * `stylesheet` URL to a style sheet to import
    *
    * @return string the relationship between the current document and the linked one
-   * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
+   * @link   https://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function getRel(): string;
 }

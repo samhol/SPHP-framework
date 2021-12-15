@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -26,11 +26,11 @@ interface RangeInput extends Input {
   /**
    * Sets the length of the individual step
    *
-   * @param  float $step the length of the slider step
+   * @param  float|null $step the length of the slider step
    * @return $this for a fluent interface
    * @throws InvalidStateException if the step value is below zero or bigger than maximum range
    */
-  public function setStepLength(float $step);
+  public function setStepLength(?float $step);
 
   /**
    * Sets the minimum and maximum values
@@ -40,7 +40,7 @@ interface RangeInput extends Input {
    * @return $this for a fluent interface
    * @throws InvalidStateException if the range is not valid
    */
-  public function setRange(float $min = null, float $max = null);
+  public function setRange(?float $min, ?float $max);
 
   /**
    * Returns the minimum value of the slider

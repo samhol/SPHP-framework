@@ -1,0 +1,40 @@
+/**
+ * SPHPlayground Framework (http://playgound.samiholck.com/)
+ *
+ * @link      https://github.com/samhol/SPHP-framework for the source repository
+ * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License
+ */
+ul.social-icons {
+  padding: 10px;
+  margin:10px;
+  list-style: none;
+  height: 100px;
+  display: block;
+  position: relative;
+  li {
+    float: left;
+    padding-right: 3px;
+    a {
+      @include transition(all, 0.6s, ease-in-out);
+      @include shadow;
+      @include border-radius(6px);
+      border: rgba($burn-color, .7) solid 1px;
+      background: rgba(#000, .7);
+      text-align: center;
+      padding: 12px 15px 12px 15px;
+      font-size: 25px;
+      //width: 70px;
+      color: #fff;
+      text-decoration: none;
+      svg, path {
+        stroke: $burn-color;
+      }
+      &:hover {
+        background: rgba(#000, .95);
+        color: rgba($burn-color, .9);
+        border: rgba($burn-color, .9) solid 1px;
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,19 +24,24 @@ interface Subject {
   /**
    * Attach an observer to the observable
    *
-   * @param Observer|callable $obs the attached observer
+   * @param  Observer|callable $o the attached observer
+   * @return void
    */
-  public function attach($obs);
+  public function attach(Observer $o): void;
+
+  public function contains(Observer $o): bool;
+
 
   /**
    * Detaches an observer from the observable
    *
-   * @param Observer|callable $obs the detached observer
+   * @param  Observer|callable $o the detached observer
+   * @return void
    */
-  public function detach($obs);
+  public function detach(Observer $o): void;
 
   /**
    * Notifies all observers
    */
-  public function notify();
+  public function notify(): void;
 }

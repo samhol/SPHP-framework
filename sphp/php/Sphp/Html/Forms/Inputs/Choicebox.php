@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,15 +25,15 @@ class Choicebox extends InputTag implements BooleanInput {
    * Constructor
    *
    * @param  string $type the value of the type attribute ('radio'|'checkbox')
-   * @param  string $name the value of the name attribute
+   * @param  string|null $name the value of the name attribute
    * @param  scalar $value the value of the value attribute
-   * @param  boolean $checked is component checked or not
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
-   * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
+   * @param  bool $checked is component checked or not
+   * @link   https://www.w3schools.com/tags/att_input_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   https://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct(string $type, string $name = null, $value = null, bool $checked = false) {
+  public function __construct(string $type, ?string $name = null, $value = null, bool $checked = false) {
     parent::__construct($type, $name, $value);
     $this->setChecked($checked);
   }
@@ -41,9 +41,9 @@ class Choicebox extends InputTag implements BooleanInput {
   /**
    * Checks/unchecks the choice
    *
-   * @param  boolean $checked true if chosen, false otherwise
+   * @param  bool $checked true if chosen, false otherwise
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
+   * @link   https://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked(bool $checked = true) {
     $this->setAttribute('checked', $checked);

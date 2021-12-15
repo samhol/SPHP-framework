@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,9 +13,12 @@ declare(strict_types=1);
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use IteratorAggregate;
+use Sphp\Html\Media\MediaSource;
 use Sphp\Html\Media\SizeableMedia;
+use IteratorAggregate;
 use Sphp\Html\TraversableContent;
+use Sphp\Html\Utils\Mime;
+use Sphp\Html\ContentIterator;
 
 /**
  * Implementation of an HTML object tag
@@ -24,7 +27,7 @@ use Sphp\Html\TraversableContent;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ObjectTag extends AbstractComponent implements IteratorAggregate, TraversableContent, SizeableMedia {
+class ObjectTag extends AbstractComponent implements MediaSource, SizeableMedia, IteratorAggregate, TraversableContent {
 
   use \Sphp\Html\TraversableTrait,
       \Sphp\Html\Media\SizeableMediaTrait;
@@ -32,24 +35,19 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
   /**
    * @var Param[]
    */
-  private $params = [];
+  private array $params = [];
 
   /**
    * Constructor
    *
    * @param string $src specifies the address of the external file to embed
-   * @param string $type specifies the MIME type of the embedded content
-   * @link  http://www.w3schools.com/tags/att_embed_src.asp src attribute
-   * @link  http://www.w3schools.com/tags/att_embed_type.asp type attribute
+   * @param string|null $type specifies the MIME type of the embedded content
+   * @link  https://www.w3schools.com/tags/att_embed_src.asp src attribute
+   * @link  https://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  public function __construct(string $src = null, string $type = null) {
+  public function __construct(string $src, string $type = null) {
     parent::__construct('object');
-    if ($src !== null) {
-      $this->setData($src);
-    }
-    if ($type !== null) {
-      $this->setType($type);
-    }
+    $this->setSrc($src, $type);
   }
 
   public function __destruct() {
@@ -63,13 +61,22 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
    * **Note:** The type attribute specifies the MIME type of the
    * embedded content.
    *
-   * @param  string $type the MIME type of the embedded component
+   * @param  string $url the MIME type of the embedded component
+   * @param  string|null $type the MIME type of the embedded component
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  public function setData(string $type) {
-    $this->attributes()->setAttribute('data', $type);
+  public function setSrc(string $url, string $type = null) {
+    $this->attributes()->setAttribute('data', $url);
+    if ($type === null) {
+      $type = Mime::getMime($url);
+    }
+    $this->setType($type);
     return $this;
+  }
+
+  public function getSrc(): string {
+    return $this->getAttribute('data');
   }
 
   /**
@@ -78,11 +85,11 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
    * **Note:** The type attribute specifies the MIME type of the
    * embedded content.
    *
-   * @param  string $type the MIME type of the embedded component
+   * @param  string|null $type the MIME type of the embedded component
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_object_type.asp type attribute
+   * @link   https://www.w3schools.com/tags/att_object_type.asp type attribute
    */
-  public function setType(string $type) {
+  public function setType(string $type = null) {
     $this->attributes()->setAttribute('type', $type);
     return $this;
   }
@@ -93,17 +100,17 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
    * **Note:** The type attribute specifies the MIME type of the
    * embedded content.
    *
-   * @return string The MIME type of the embedded component or null if the MIME type is not set
-   * @link  http://www.w3schools.com/tags/att_embed_type.asp type attribute
+   * @return string|null The MIME type of the embedded component or null if the MIME type is not set
+   * @link  https://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  public function getType(): string {
-    return (string) $this->attributes()->getValue('type');
+  public function getType(): ?string {
+    return $this->attributes()->getValue('type');
   }
 
   public function contentToString(): string {
     return implode($this->params)
-            . "<p>Your browser does not support the &lt;"
-            . $this->getTagName() . " tag!</p>";
+            . "Your browser does not support the "
+            . $this->getTagName() . " tag!";
   }
 
   public function insertParam(Param $src) {
@@ -111,8 +118,17 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
     return $this;
   }
 
-  public function addParam(string $src, string $type = null): Param {
-    $param = new Param($src, $type);
+  /**
+   * Adds a new parameter to the object
+   * 
+   * @param  string $name the name of a parameter
+   * @param  scalar|null $value the value of a parameter
+   * @link   https://www.w3schools.com/tags/att_param_name.asp name attribute
+   * @link   https://www.w3schools.com/tags/att_param_value.asp value attribute
+   * @return Param
+   */
+  public function addParam(string $name, $value = null): Param {
+    $param = new Param($name, $value);
     $this->insertParam($param);
     return $param;
   }
@@ -120,10 +136,10 @@ class ObjectTag extends AbstractComponent implements IteratorAggregate, Traversa
   /**
    * Create a new iterator to iterate through content
    *
-   * @return Traversable iterator
+   * @return ContentIterator<int, Param> iterator
    */
-  public function getIterator(): Traversable {
-    return new Iterator($this->params);
+  public function getIterator(): ContentIterator {
+    return new ContentIterator($this->params);
   }
 
 }

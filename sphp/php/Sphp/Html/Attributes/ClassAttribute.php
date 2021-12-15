@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -16,9 +16,7 @@ use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeValueException;
-use Sphp\Exceptions\BadMethodCallException;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Traversable;
 
 /**
  * An implementation of CSS class attribute
@@ -37,32 +35,32 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *
    * @var string[]
    */
-  private $values = [];
-
-  /**
-   * @var CssClassParser 
-   */
-  private $parser;
-  private $required = false;
+  private array $values = [];
+  private CssClassParser $parser;
+  private bool $required = false;
 
   /**
    * Constructor
    * 
    * @param string $name the name of the attribute
+   * @param CssClassParser|null $parser
    */
-  public function __construct(string $name = 'class', CssClassParser $parser = null) {
+  public function __construct(string $name = 'class', $value = null,?CssClassParser $parser = null ) {
     parent::__construct($name);
     if ($parser === null) {
-      $parser = CssClassParser::instance();
+      $parser = CssClassParser::singelton();
     }
     $this->parser = $parser;
+    if($value !== null) {
+      $this->setValue($value);
+    }
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->values);
+    unset($this->values, $this->parser);
   }
 
   public function forceVisibility() {
@@ -70,7 +68,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     return $this;
   }
 
-  public function isDemanded(): bool {
+  public function isAlwaysVisible(): bool {
     return $this->required || $this->isProtected();
   }
 
@@ -88,7 +86,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   }
 
   public function isVisible(): bool {
-    return $this->isDemanded() || !empty($this->values);
+    return $this->isAlwaysVisible() || !empty($this->values);
   }
 
   public function isEmpty(): bool {
@@ -109,9 +107,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    */
   public function setValue($values) {
     $this->clear();
-    $parsed = $this->parser->parse(func_get_args());
-    $this->parser->isValidCollection($parsed);
-    $this->add(...$parsed);
+    $this->add((string) $values);
     return $this;
   }
 
@@ -145,15 +141,15 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * 3. Duplicate values are ignored
    *
    * @param  null|string|string[] ...$values optional atomic values to check
-   * @return boolean true if the given values are locked and false otherwise
+   * @return bool true if the given values are locked and false otherwise
    */
-  public function isProtected($values = null): bool {
-    if ($values === null) {
+  public function isProtected(string ...$values): bool {
+    if (count($values) === 0) {
       return in_array(true, $this->values);
     } else {
       $locked = false;
-      $values = $this->parser->parse(func_get_args());
-      foreach ($values as $class) {
+      //$values = $this->parser->parse($values);
+      foreach ($this->parser->parse($values) as $class) {
         $locked = isset($this->values[$class]) && $this->values[$class] === true;
         if (!$locked) {
           break;
@@ -175,8 +171,8 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @param  null|string|string[] ...$content the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function protectValue($content) {
-    foreach ($this->parser->parse(func_get_args(), true) as $class) {
+  public function protectValue(string ...$values) {
+    foreach ($this->parser->parse($values, true) as $class) {
       $this->values[$class] = true;
     }
     return $this;
@@ -185,17 +181,14 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   /**
    * Removes given atomic values
    *
-   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
+   * <strong>NOTE:</strong> A string parameter can contain multiple comma separated class names 
    * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 
-   * @param  null|string|string[] ...$values the atomic values to remove
+   * @param  string ...$values the atomic values to remove
    * @return $this for a fluent interface
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
-  public function remove($values) {
-    foreach ($this->parser->parse(func_get_args()) as $class) {
+  public function remove(string ...$values) {
+    foreach ($this->parser->parse($values) as $class) {
       if (isset($this->values[$class])) {
         if ($this->values[$class] === false) {
           unset($this->values[$class]);
@@ -209,7 +202,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
 
   public function clear() {
     if (!empty($this->values)) {
-      $this->values = array_filter($this->values, function($locked) {
+      $this->values = array_filter($this->values, function ($locked) {
         return $locked;
       });
     }
@@ -218,19 +211,15 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
 
   /**
    * Determines whether the given atomic values exists
+   *  
+   * <strong>NOTE:</strong> A string parameter can contain multiple comma separated class names 
    *
-   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
-   * 
-   * 1. A string parameter can contain multiple comma separated class names
-   * 2. An array parameter can contain only one atomic value per array value
-   *
-   * @param  null|string|string[] ...$values the atomic values to search for
-   * @return boolean true if the given atomic values exists
+   * @param  string ...$value the atomic values to search for
+   * @return bool true if the given atomic values exists
    */
-  public function contains(string ...$values): bool {
-    $needles = $this->parser->parse($values);
+  public function contains(string ...$value): bool {
     $exists = false;
-    foreach ($needles as $class) {
+    foreach ($this->parser->parse($value) as $class) {
       $exists = isset($this->values[$class]);
       if (!$exists) {
         break;
@@ -243,7 +232,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     if (!empty($this->values)) {
       $value = implode(' ', array_keys($this->values));
     } else {
-      $value = $this->isDemanded();
+      $value = null;
     }
     return $value;
   }
@@ -261,6 +250,11 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     return array_keys($this->values);
   }
 
+  /**
+   * 
+   * @param  callable $filter
+   * @return $this for a fluent interface
+   */
   public function filter(callable $filter) {
     $result = [];
     foreach ($this->values as $class => $locked) {
@@ -274,18 +268,39 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
 
   /**
    * 
-   * @param string $pattern
-   * @return $this
+   * @param  string $pattern
+   * @return $this for a fluent interface
+   */
+  public function contaisPattern(string $pattern): bool {
+    $contains = false;
+    foreach ($this->toArray() as $class) {
+      if (Strings::match($class, $pattern)) {
+        $contains = true;
+        break;
+      }
+    }
+    return $contains;
+  }
+
+  /**
+   * 
+   * @param  string $pattern
+   * @return $this for a fluent interface
    */
   public function removePattern(string $pattern) {
-    $filter = function($value) use ($pattern) {
+    $filter = function ($value) use ($pattern) {
       return !Strings::match($value, $pattern);
     };
     $this->filter($filter);
     return $this;
   }
 
-  public function getIterator(): \Traversable {
+  /**
+   * Returns an external iterator
+   *
+   * @return Traversable<int, string> external iterator
+   */
+  public function getIterator(): Traversable {
     return new Collection(array_keys($this->values));
   }
 

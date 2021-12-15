@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,10 +25,10 @@ class Url extends AbstractValidator {
   public function isValid($value): bool {
     $this->setValue($value);
     if (!is_string($value) && !$value instanceof \Sphp\Network\URL) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
     }
     if (filter_var($value, \FILTER_VALIDATE_URL) === false) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
       return false;
     }
     return true;

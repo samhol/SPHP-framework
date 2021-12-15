@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -24,23 +24,20 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
  * for processing.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_form.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
 abstract class AbstractForm extends AbstractComponent implements Form {
 
-  /**
-   * @var HiddenInputs
-   */
-  private $hiddenInputs;
+  private HiddenInputs $hiddenInputs;
 
   /**
    * Constructor
    *
-   * @param  HiddenInputs $hiddenInputs
+   * @param  HiddenInputs|null $hiddenInputs
    */
-  public function __construct(HiddenInputs $hiddenInputs = null) {
+  public function __construct(?HiddenInputs $hiddenInputs = null) {
     if ($hiddenInputs === null) {
       $hiddenInputs = new HiddenInputs();
     }
@@ -48,40 +45,40 @@ abstract class AbstractForm extends AbstractComponent implements Form {
     parent::__construct('form');
   }
 
-  public function setMethod(string $method = null) {
+  public function setMethod(?string $method) {
     $this->attributes()->setAttribute('method', $method);
     return $this;
   }
 
   public function getMethod(): ?string {
-    return $this->attributes()->getValue("method");
+    return $this->attributes()->getValue('method');
   }
 
-  public function setAction(string $url = null) {
+  public function setAction(?string $url) {
     $this->attributes()->setAttribute('action', $url);
     return $this;
   }
 
   public function getAction(): ?string {
-    return $this->attributes()->getValue('action');
+    return $this->attributes()->getStringValue('action');
   }
 
-  public function setEnctype(string $enctype = null) {
+  public function setEnctype(?string $enctype) {
     $this->attributes()->setAttribute('enctype', $enctype);
     return $this;
   }
 
   public function getEnctype(): ?string {
-    return $this->attributes()->getValue('enctype');
+    return $this->attributes()->getStringValue('enctype');
   }
 
-  public function setName(string $name = null) {
+  public function setName(?string $name) {
     $this->attributes()->setAttribute('name', $name);
     return $this;
   }
 
   public function getName(): ?string {
-    return $this->attributes()->getValue('name');
+    return $this->attributes()->getStringValue('name');
   }
 
   public function autocomplete(bool $allow = true) {
@@ -94,7 +91,7 @@ abstract class AbstractForm extends AbstractComponent implements Form {
     return $this;
   }
 
-  public function setTarget(string $target = null) {
+  public function setTarget(?string $target) {
     $this->attributes()->setAttribute('target', $target);
     return $this;
   }

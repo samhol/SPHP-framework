@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,10 +12,11 @@ declare(strict_types=1);
 
 namespace Sphp\Stdlib;
 
-use Sphp\Exceptions\FileSystemException;
+use Sphp\Stdlib\Exceptions\FileSystemException;
 use Exception;
 use SplFileInfo;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
+use Sphp\Config\ErrorHandling\ErrorManager;
 
 /**
  * Tools to work with files and directories
@@ -30,15 +31,17 @@ abstract class Filesystem {
    * Checks whether the file exists and is an actual file
    * 
    * @param  string $filename the file to test 
-   * @return boolean true if the pile path point to a file
+   * @return bool true if the pile path point to a file
    */
   public static function isFile(string $filename): bool {
-    $path = stream_resolve_include_path($filename);
-    if ($path === false) {
-      return false;
-    } else {
-      return is_file($path);
+    $isFile = is_file($filename);
+    if (!$isFile) {
+      $path = stream_resolve_include_path($filename);
+      if ($path) {
+        $isFile = is_file($filename);
+      }
     }
+    return $isFile;
   }
 
   public static function isAsciiFile(string $filename): bool {
@@ -46,24 +49,11 @@ abstract class Filesystem {
     if (static::isFile($filename)) {
       $finfo = new \finfo(\FILEINFO_MIME);
       $mime = $finfo->file($filename);
-      $isAscii = substr($mime, 0, 4) === 'text';
+      $isAscii = substr($mime, 0, 4) === 'text' ||
+              str_contains($mime, 'charset=utf-8') ||
+              str_contains($mime, 'charset=us-ascii');
     }
     return $isAscii;
-  }
-
-  /**
-   * Solves the full path to file
-   * 
-   * @param  string $path  relative path to file
-   * @return string full path to file
-   * @throws FileSystemException if the file path cannot be resolved
-   */
-  public static function getFullPath(string $path): string {
-    $fullPath = stream_resolve_include_path($path);
-    if ($fullPath === false) {
-      throw new FileSystemException("The path '$path' does not exist");
-    }
-    return $fullPath;
   }
 
   /**
@@ -74,7 +64,10 @@ abstract class Filesystem {
    * @throws FileSystemException if the parsing fails for any reason
    */
   public static function toString(string $path): string {
-    $data = file_get_contents(static::getFullPath($path), false);
+    if (!self::isFile($path)) {
+      throw new FileSystemException("Parsing the file '$path' failed");
+    }
+    $data = file_get_contents($path, false);
     if ($data === false) {
       throw new FileSystemException("Parsing the file '$path' failed");
     }
@@ -89,28 +82,40 @@ abstract class Filesystem {
    * if the executed php file has any side-effects it could mutate the state of 
    * the application even though it is not sending output to the browser.
    * 
-   * @param  string ...$paths the path to the executable PHP script
+   * @param  string $path the path to the executable PHP script
    * @return string the result of the script execution
    * @throws FileSystemException if the $paths points to no actual file
    * @throws Exception 
    */
-  public static function executePhpToString(string ...$paths): string {
+  public static function executePhpToString(string $path): string {
+    $thrower = new ErrorToExceptionThrower(FileSystemException::class);
+    $thrower->start(\E_ALL);
     $content = '';
-    ob_start();
-    foreach ($paths as $path) {
-      if (!static::isFile($path)) {
-        ob_end_clean();
-        throw new FileSystemException("The path '$path' contains no executable PHP script");
-      }
-      try {
-        include($path);
-        $content .= ob_get_contents();
-        ob_end_clean();
-      } catch (\Throwable $ex) {
-        ob_end_clean();
-        throw new \LogicException("The path '$path' contains no executable PHP script", 0, $ex);
-      }
+    $level = ob_get_level();
+    if (!is_file($path)) {
+      throw new FileSystemException("The path '$path' contains no readable file");
     }
+    try {
+      ob_start();
+      include($path);
+      $content .= ob_get_clean();
+      while ($level < ob_get_level()) {
+        ob_end_clean();
+      }
+    } catch (FileSystemException $ex) {
+      while ($level < ob_get_level()) {
+        ob_end_clean();
+      }
+      $thrower->stop();
+      throw $ex;
+    } catch (\Throwable $ex) {
+      while ($level < ob_get_level()) {
+        ob_end_clean();
+      }
+      $thrower->stop();
+      throw new FileSystemException('Something went wrong while execting a PHP file', 0, $ex);
+    }
+    $thrower->stop();
     return $content;
   }
 
@@ -122,7 +127,10 @@ abstract class Filesystem {
    * @throws FileSystemException if the $path points to no actual file
    */
   public static function getTextFileRows(string $path): array {
-    $result = file(static::getFullPath($path), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if (!is_file($path)) {
+      throw new FileSystemException("The path '$path' contains no readable file");
+    }
+    $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
       throw new FileSystemException("The path '$path' contains no readable file");
     }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\AbstractContent;
 
 /**
- * Implements aa HTML table factory
+ * Implementation of an HTML table factory
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -24,22 +24,22 @@ class TableBuilder extends AbstractContent {
   /**
    * @var array 
    */
-  private $theadData;
+  private array $theadData;
 
   /**
    * @var array 
    */
-  private $tbodyData;
+  private array $tbodyData;
 
   /**
    * @var array 
    */
-  private $tfootData;
+  private array $tfootData;
 
   /**
-   * @var TableFilter 
+   * @var TableFilter[]
    */
-  private $tableFilters = [];
+  private array $tableFilters = [];
 
   /**
    * Constructor
@@ -55,7 +55,7 @@ class TableBuilder extends AbstractContent {
    * Destructor
    */
   public function __destruct() {
-    unset($this->tableFilters);
+    unset($this->tableFilters, $this->theadData, $this->tbodyData, $this->tfootData);
   }
 
   /**

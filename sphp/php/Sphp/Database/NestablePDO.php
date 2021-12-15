@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -40,7 +40,7 @@ class NestablePDO extends PDO {
   /**
    * Checks if the database engine supports nestable transactions 
    * 
-   * @return boolean true if the database engine supports nestable transactions 
+   * @return bool true if the database engine supports nestable transactions 
    *         or false otherwise
    */
   protected function nestable(): bool {
@@ -82,7 +82,7 @@ class NestablePDO extends PDO {
   /**
    * Initiates a transaction
    * 
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function beginTransaction() {
     if (!$this->nestable() || $this->transLevel == 0) {
@@ -97,7 +97,7 @@ class NestablePDO extends PDO {
   /**
    * Commits a transaction
    * 
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function commit() {
     $this->transLevel--;
@@ -112,7 +112,7 @@ class NestablePDO extends PDO {
   /**
    * Rolls back a transaction
    * 
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function rollBack() {
     $this->transLevel--;

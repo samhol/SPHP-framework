@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -31,12 +31,13 @@ class ErrorToExceptionThrower {
   /**
    * @var ErrorToExceptionThrower[]
    */
-  private static $defaultInstance = [];
+  private static array $defaultInstance = [];
 
   /**
    * @var string
    */
   private $exceptionType;
+  private ErrorManager $errormanager;
 
   /**
    * Constructor
@@ -45,6 +46,23 @@ class ErrorToExceptionThrower {
    */
   public function __construct(string $exceptionType = ErrorException::class) {
     $this->setExceptionType($exceptionType);
+    $this->errormanager = new ErrorManager();
+  }
+
+  /**
+   * Destroys the instance
+   */
+  public function __destruct() {
+    unset($this->errormanager);
+  }
+
+  public function getErrormanager(): ErrorManager {
+    return $this->errormanager;
+  }
+
+  public function setErrormanager(ErrorManager $errormanager) {
+    $this->errormanager = $errormanager;
+    return $this;
   }
 
   /**
@@ -64,7 +82,7 @@ class ErrorToExceptionThrower {
    * @throws InvalidArgumentException if the given exception type is invalid
    */
   public function setExceptionType(string $exceptionType) {
-    if (!is_a($exceptionType, \Throwable::class, true)) {
+    if (!is_a($exceptionType, \Exception::class, true)) {
       throw new InvalidArgumentException("'$exceptionType' is invalid exception type");
     }
     $this->exceptionType = $exceptionType;
@@ -74,12 +92,13 @@ class ErrorToExceptionThrower {
   /**
    * Starts redirecting PHP errors
    * 
-   * @param  int $level PHP Error level to catch (Default = \E_ALL & ~\E_DEPRECATED)
+   * @param  int $level PHP Error level to catch (Default = \E_ALL)
    * @return $this for a fluent interface
    */
   public function start(int $level = \E_ALL) {
     set_error_handler($this, $level);
-    register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
+    $this->errormanager->start(\E_ALL);
+    //register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     return $this;
   }
 
@@ -90,6 +109,7 @@ class ErrorToExceptionThrower {
    */
   public function stop() {
     restore_error_handler();
+    $this->errormanager->stop();
     return $this;
   }
 
@@ -99,10 +119,10 @@ class ErrorToExceptionThrower {
    * @throws ErrorException
    */
   public function fatalErrorShutdownHandler() {
-    $last_error = error_get_last();
-    if ($last_error['type'] === \E_ERROR) {
+    $error = error_get_last();
+    if ($error !== null && $error['type'] === \E_ERROR) {
       // fatal error
-      $this(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
+      $this(\E_ERROR, $error['message'], $error['file'], $error['line']);
     }
   }
 
@@ -121,7 +141,7 @@ class ErrorToExceptionThrower {
    * @throws Exception
    */
   public function __invoke(int $severity, string $message, string $file, int $line): bool {
-    if (!(error_reporting() & $severity)) {
+    if ((error_reporting() & $severity) !== $severity) {
       return false;
     }
     $type = $this->getExceptionType();

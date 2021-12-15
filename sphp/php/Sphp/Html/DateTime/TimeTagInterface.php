@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -22,7 +22,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * This implements a human-readable date/time
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_time.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_time.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -65,7 +65,7 @@ interface TimeTagInterface extends Tag {
    * @param  DateTimeInterface $dateTime the datetime object
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if formatting fails
-   * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
+   * @link   https://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
   public function setDateTime($dateTime);
 

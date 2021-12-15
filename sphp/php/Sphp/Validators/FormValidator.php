@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -32,14 +32,14 @@ class FormValidator extends AbstractValidator {
    * 
    * @var Validator[]
    */
-  private $validators;
+  private array $validators;
 
   /**
    * Constructs a new validator
    */
-  public function __construct() {
+  public function __construct( ) {
     parent::__construct('Invalid form data');
-    $this->errors()->setTemplate(self::INVALID_FORM_DATA, 'Value of %s type given. An array expected');
+    $this->getErrors()->setTemplate(self::INVALID_FORM_DATA, 'Value of %s type given. An array expected');
     $this->validators = [];
   }
 
@@ -53,7 +53,7 @@ class FormValidator extends AbstractValidator {
    *
    * **Note:** Method cannot be called directly!
    *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
     $this->validators = Arrays::copy($this->validators);
@@ -63,7 +63,7 @@ class FormValidator extends AbstractValidator {
   public function isValid($value): bool {
     $this->setValue($value);
     if (!is_array($value)) {
-      $this->errors()->appendErrorFromTemplate(self::INVALID_FORM_DATA, [gettype($value)]);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID_FORM_DATA, gettype($value));
       return false;
     }
     $valid = true;
@@ -71,11 +71,11 @@ class FormValidator extends AbstractValidator {
       $inputValue = $value[$inputName] ?? null;
       if (!$validator->isValid($inputValue)) {
         $valid = false;
-        $this->errors()[$inputName] = $validator->errorsToArray();
+        $this->getErrors()->setMessage($inputName, $validator->getErrors());
       }
     }
     if (!$valid) {
-     // $this->errors()->appendErrorFromTemplate(self::INVALID);
+      // $this->errors()->appendErrorFromTemplate(self::INVALID);
     }
     return $valid;
   }
@@ -84,7 +84,7 @@ class FormValidator extends AbstractValidator {
    * Checks whether any validators exists for the input name
    * 
    * @param  string $inputName the name of the validable input
-   * @return boolean true if the input name has validators attached to it, false if not
+   * @return bool true if the input name has validators attached to it, false if not
    */
   public function hasValidator(string $inputName): bool {
     return isset($this->validators[$inputName]);
@@ -115,26 +115,12 @@ class FormValidator extends AbstractValidator {
     return $this;
   }
 
-  /**
-   * Sets a validator object for the named input value
-   * 
-   * @param  string $inputName the name of the validable input
-   * @param  Validator $validator the validator object
-   * @return ValidatorChain for a fluent interface
-   */
-  public function setValidatorChain(string $inputName, Validator ...$validator): ValidatorChain {
-    $chain = new ValidatorChain();
-    $chain->appendValidator($validator);
-    $this->validators[$inputName] = $chain;
-    return $chain;
-  }
-
-  public function getInputErrors(): array {
-    $output = [];
+  public function getInputErrors(): MessageManager {
+    $errors = new MessageManager();
     foreach ($this->validators as $inputName => $validator) {
-      $output[$inputName] = $validator->errorsToArray();
+      $errors->setMessage($inputName, $validator->getErrors());
     }
-    return $output;
+    return $errors;
   }
 
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -14,7 +14,7 @@ namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeContainer;
 use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\Attributes\PropertyCollectionAttribute;
+use Sphp\Html\Attributes\MapAttribute;
 
 /**
  * Trait implements functionality of a Component Interface
@@ -44,7 +44,7 @@ trait ComponentTrait {
    * 
    * @param  bool $forceNewValue whether a new id value is created or not
    * @return string 
-   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
+   * @link   https://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(bool $forceNewValue = false): string {
     return $this->attributes()->id()->identify($forceNewValue);
@@ -60,7 +60,7 @@ trait ComponentTrait {
    * 
    * @param  mixed $id the value of the id attribute
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
+   * @link   https://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function setId(string $id): string {
     $this->attributes()->setAttribute('id', $id);
@@ -79,9 +79,9 @@ trait ComponentTrait {
   /**
    * Returns the attribute object containing inline styles
    *
-   * @return PropertyCollectionAttribute the attribute object containing inline styles
+   * @return MapAttribute the attribute object containing inline styles
    */
-  public function css(): PropertyCollectionAttribute {
+  public function css(): MapAttribute {
     return $this->attributes()->styles();
   }
 
@@ -142,7 +142,7 @@ trait ComponentTrait {
    * Checks if an attribute exists
    *
    * @param  string $name the name of the attribute
-   * @return boolean (attribute exists)
+   * @return bool (attribute exists)
    */
   public function attributeExists(string $name): bool {
     return $this->attributes()->isVisible($name);

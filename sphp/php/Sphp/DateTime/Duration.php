@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 
 namespace Sphp\DateTime;
+
+use DateInterval;
 
 /**
  * Defines a duration of time
@@ -31,47 +33,40 @@ interface Duration {
   /**
    * Formats the Duration
    * 
-   * @param string $format
+   * @param  string $format
    * @return string the formatted duration
    */
   public function format(string $format): string;
 
   /**
-   * Creates an interval object representing the duration
-   * 
-   * @return Interval created instance
-   */
-  public function toInterval(): Interval;
-
-  /**
    * Adds duration from string to the duration
    * 
    * @param  string $time
-   * @return Duration new immutable instance
+   * @return Duration new instance
    */
   public function addFromString(string $time): Duration;
 
   /**
    * Adds another duration object to the duration
    * 
-   * @param  Duration $d the duration to add
-   * @return Duration new immutable instance
+   * @param  DateInterval $d the duration to add
+   * @return Duration new instance
    */
-  public function add(Duration $d): Duration;
+  public function add(DateInterval $d): Duration;
 
   /**
    * Adds seconds to the duration
    * 
    * @param  int $seconds the seconds to add
-   * @return Duration new immutable instance
+   * @return Duration new instance
    */
-  public function addSeconds(int $seconds): Duration;
+  public function addSeconds(float $seconds): Duration;
 
   /**
    * Adds minutes to the duration
    * 
    * @param  float $minutes the seconds to add
-   * @return Duration new immutable instance
+   * @return Duration new instance
    */
   public function addMinutes(float $minutes): Duration;
 
@@ -79,7 +74,7 @@ interface Duration {
    * Adds hours to the duration
    * 
    * @param  float $hours the hours to add
-   * @return Duration new immutable instance
+   * @return Duration new instance
    */
   public function addHours(float $hours): Duration;
 
@@ -87,7 +82,7 @@ interface Duration {
    * Adds days to the duration
    * 
    * @param  float $days the days to add
-   * @return Duration new immutable instance
+   * @return Duration new instance
    */
   public function addDays(float $days): Duration;
 
@@ -126,5 +121,5 @@ interface Duration {
    * @return int the difference
    * @throws InvalidArgumentException if duration cannot be parsed from input
    */
-  public function compareTo($duration): int;
+  public function compareTo(Duration $duration): int;
 }

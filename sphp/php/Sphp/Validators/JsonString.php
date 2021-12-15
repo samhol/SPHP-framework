@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2020 Sami Holck <sami.holck@gmail.com>
@@ -35,10 +35,10 @@ class JsonString extends AbstractValidator {
     if (is_string($value)) {
       $isValid = (null !== json_decode($value, false, 512));
       if (!$isValid) {
-        $this->errors()->append('Invalid syntax in JSON string');
+        $this->getErrors()->append('Invalid syntax in JSON string');
       }
     } else {
-      $this->errors()->appendErrorFromTemplate(self::INVALID, [gettype($value)]);
+      $this->getErrors()->appendMessageFromTemplate(self::INVALID, gettype($value));
       $isValid = false;
     }
     return $isValid;

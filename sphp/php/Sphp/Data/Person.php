@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,10 +11,9 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Data;
-
-use DateTimeInterface;
+ 
 use Sphp\Data\Address;
-use Sphp\DateTime\DateTime;
+use Sphp\DateTime\ImmutableDateTime;
 use Sphp\Exceptions\InvalidStateException;
 use Sphp\DateTime\Interval;
 
@@ -44,14 +43,14 @@ class Person {
   /**
    * The last name of the user
    * 
-   * @var DateTime|null
+   * @var ImmutableDateTime|null
    */
   private $dob;
 
   /**
    * The last name of the user
    * 
-   * @var DateTime|null
+   * @var ImmutableDateTime|null
    */
   private $dod;
 
@@ -143,15 +142,15 @@ class Person {
 
   /**
    * 
-   * @return DateTime|null
+   * @return ImmutableDateTime|null
    */
-  public function getDateOfBirth(): DateTime {
+  public function getDateOfBirth(): ImmutableDateTime {
     return $this->dob;
   }
 
   public function setDateOfBirth($dob = null) {
     if ($dob !== null) {
-      $this->dob = DateTime::from($dob);
+      $this->dob = ImmutableDateTime::from($dob);
     } else {
       $this->dob = null;
     }
@@ -160,7 +159,7 @@ class Person {
 
   /**
    * 
-   * @return DateTime|null
+   * @return ImmutableDateTime|null
    */
   public function getDateOfDeath() {
     return $this->dod;
@@ -168,7 +167,7 @@ class Person {
 
   public function setDateOfDeath($dod = null) {
     if ($dod !== null) {
-      $this->dod = DateTime::from($dod);
+      $this->dod = ImmutableDateTime::from($dod);
     } else {
       $this->dod = null;
     }
@@ -257,11 +256,11 @@ class Person {
             ->setPhonenumber($person['phone']);
     if (isset($person['dob'])) {
       if (is_int($person['dob'])) {
-        $dob = new DateTime();
+        $dob = new ImmutableDateTime();
         $dob->setTimestamp($person['dob']);
         $this->setDateOfBirth($dob);
       } else {
-        $dob = DateTime::createFromFormat(DATE_ATOM, $person['dob']);
+        $dob = ImmutableDateTime::createFromFormat(DATE_ATOM, $person['dob']);
         if ($dob instanceof DateTimeInterface) {
           $this->setDateOfBirth($dob);
         }

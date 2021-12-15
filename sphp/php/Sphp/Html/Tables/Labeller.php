@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html\Tables;
 
 /**
- * Description of Labeller
+ * Implementation of an HTML table labeller
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -45,9 +45,9 @@ class Labeller implements TableFilter {
 
   private function insertLabelsToRow(Row $row) {
     foreach ($this->labels as $column => $label) {
-      $cell = $row->getCell($column);
+      $cell = $row[$column];
       if ($cell !== null) {
-        $row->getCell($column)->setAttribute('data-label', $label);
+        $row[$column]->setAttribute('data-label', $label);
       }
     }
   }

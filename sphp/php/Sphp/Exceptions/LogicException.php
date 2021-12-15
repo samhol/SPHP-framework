@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Exceptions;
 
-use LogicException as ParentException;
-
 /**
  * Description of LogicException
  *
@@ -21,6 +19,6 @@ use LogicException as ParentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class LogicException extends ParentException implements SphpExceptionInterface {
+class LogicException extends SphpException {
   
 }

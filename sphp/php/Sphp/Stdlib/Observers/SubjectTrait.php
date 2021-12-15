@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,8 +11,6 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Stdlib\Observers;
-
-use SplObjectStorage;
 
 /**
  * Trait implements Subject interface in observer pattern
@@ -26,39 +24,42 @@ trait SubjectTrait {
   /**
    * collection of individual observer objects
    *
-   * @var SplObjectStorage
+   * @var Observer[]
    */
-  private $observers;
+  private array $observers = [];
 
   /**
    * Attach an observer to the observable
    *
-   * @param  Observer|callable $obs the attached observer
+   * @param  Observer|callable $o the attached observer
    * @return void
    */
-  public function attach($obs): void {
-    if ($this->observers === null) {
-      $this->observers = new SplObjectStorage();
+  public function attach(Observer $o): void {
+    if (!$this->contains($o)) {
+      $this->observers[] = $o;
     }
-    $this->observers->attach($obs);
-    //var_dump($this->observers, $obs);
   }
 
-  public function contains($observer): bool {
-    if ($this->observers === null) {
-      $this->observers = new SplObjectStorage();
-    }
-    return $this->observers->contains($observer);
+  /**
+   * 
+   * @param  Observer $o the observer
+   * @return bool
+   */
+  public function contains(Observer $o): bool {
+    return in_array($o, $this->observers, true);
   }
 
   /**
    * Detaches an observer from the observable
    *
-   * @param  Observer|callable $obs the detached observer
+   * @param  Observer|callable $o the detached observer
    * @return void
    */
-  public function detach($obs): void {
-    $this->observers->detach($obs);
+  public function detach(Observer $o): void {
+    $key = array_search($o, $this->observers, true);
+    if ($key !== false) {
+      unset($this->observers[$key]);
+    }
   }
 
   /**
@@ -67,14 +68,8 @@ trait SubjectTrait {
    * @return void
    */
   public function notify(): void {
-    if ($this->observers !== null) {
-      foreach ($this->observers as $obs) {
-        if ($obs instanceof Observer) {
-          $obs->update($this);
-        } else {
-          $obs($this);
-        }
-      }
+    foreach ($this->observers as $obs) {
+      $obs->update($this);
     }
   }
 

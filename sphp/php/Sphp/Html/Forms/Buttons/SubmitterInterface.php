@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -19,8 +19,8 @@ namespace Sphp\Html\Forms\Buttons;
  * The data is sent to the page specified in the form's action attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_input.asp input tag in w3schools
- * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element input tag in W3C API
+ * @link    https://www.w3schools.com/tags/tag_input.asp input tag in w3schools
+ * @link    https://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element input tag in W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -38,7 +38,7 @@ interface Statement {
    * Returns the current connection object between PHP and a database server
    * 
    * @return PDO connection object between PHP and a database server
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function getPDO(): PDO;
 
@@ -54,7 +54,7 @@ interface Statement {
    *
    * @return PDOStatement the database statement object
    * @throws DatabaseException if execution fails
-   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
+   * @link   https://www.php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function getStatement(): PDOStatement;
 
@@ -70,7 +70,7 @@ interface Statement {
    *
    * @return PDOStatement the result set
    * @throws DatabaseException if execution fails
-   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
+   * @link   https://www.php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function execute(): PDOStatement;
 }

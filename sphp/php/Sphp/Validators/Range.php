@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,12 +25,12 @@ class Range extends AbstractLimitValidator {
   /**
    * @var float 
    */
-  private $min;
+  private float $min;
 
   /**
    * @var float 
    */
-  private $max;
+  private float $max;
 
   /**
    * Constructs a new validator
@@ -43,20 +43,20 @@ class Range extends AbstractLimitValidator {
     parent::__construct($inclusive);
     $this->min = $min;
     $this->max = $max;
-    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
-    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
+    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
+    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
   }
 
   public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->errors()->appendErrorFromTemplate(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min, $this->max);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->errors()->appendErrorFromTemplate(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min, $this->max);
         return false;
       }
     }

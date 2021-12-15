@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -27,7 +27,7 @@ class IsInstanceOf extends AbstractValidator {
   /**
    * @var string
    */
-  private $className;
+  private string $className;
 
   /**
    * Constructor
@@ -70,7 +70,7 @@ class IsInstanceOf extends AbstractValidator {
     if ($value instanceof $this->className) {
       return true;
     }
-    $this->errors()->appendErrorFromTemplate(self::INVALID, [$this->className]);
+    $this->getErrors()->appendMessageFromTemplate(self::INVALID, $this->className);
     return false;
   }
 

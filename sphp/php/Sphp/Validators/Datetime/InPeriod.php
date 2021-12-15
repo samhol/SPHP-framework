@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -11,7 +11,7 @@
 namespace Sphp\Validators\Datetime;
 
 use Sphp\Validators\AbstractLimitValidator;
-use Sphp\DateTime\DateTime;
+use Sphp\DateTime\ImmutableDateTime;
 
 /**
  * Implementation of InPeriod
@@ -24,12 +24,12 @@ use Sphp\DateTime\DateTime;
 class InPeriod extends AbstractLimitValidator {
 
   /**
-   * @var DateTime 
+   * @var ImmutableDateTime 
    */
   private $min;
 
   /**
-   * @var DateTime 
+   * @var ImmutableDateTime 
    */
   private $max;
 
@@ -44,8 +44,8 @@ class InPeriod extends AbstractLimitValidator {
     parent::__construct($inclusive);
     $this->min = $min;
     $this->max = $max;
-    $this->errors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in exclusive period (%s, %s)');
-    $this->errors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive period (%s, %s)');
+    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in exclusive period (%s, %s)');
+    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive period (%s, %s)');
   }
 
   public function __destruct() {
@@ -60,22 +60,22 @@ class InPeriod extends AbstractLimitValidator {
    * @return $this
    */
   public function setPeriod($min, $max) {
-    if (!$min instanceof DateTime) {
-      $min = new DateTime($min);
+    if (!$min instanceof ImmutableDateTime) {
+      $min = new ImmutableDateTime($min);
     }
-    if (!$max instanceof DateTime) {
-      $max = new DateTime($max);
+    if (!$max instanceof ImmutableDateTime) {
+      $max = new ImmutableDateTime($max);
     }
     $this->min = $min;
     $this->max = $max;
     return $this;
   }
 
-  public function getMin(): DateTime {
+  public function getMin(): ImmutableDateTime {
     return $this->min;
   }
 
-  public function getMax(): DateTime {
+  public function getMax(): ImmutableDateTime {
     return $this->max;
   }
 
@@ -83,12 +83,12 @@ class InPeriod extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->errors()->appendErrorFromTemplate(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min, $this->max);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->errors()->appendErrorFromTemplate(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
+        $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min, $this->max);
         return false;
       }
     }

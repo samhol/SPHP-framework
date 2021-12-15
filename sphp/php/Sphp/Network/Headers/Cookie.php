@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -40,7 +40,7 @@ class Cookie implements Header {
    * 
    * @var string
    */
-  private $name;
+  private string $name;
 
   /**
    * the value of the cookie that will be stored on the client's machine 
@@ -55,7 +55,7 @@ class Cookie implements Header {
    * 
    * @var int
    */
-  private $expiryTime;
+  private int $expiryTime;
 
   /**
    * the path on the server that the cookie will be valid for (including all 
@@ -64,7 +64,7 @@ class Cookie implements Header {
    * 
    * @var string 
    */
-  private $path;
+  private string $path;
 
   /**
    * the domain that the cookie will be valid for (including 
@@ -72,13 +72,13 @@ class Cookie implements Header {
    * 
    * @var string|null 
    */
-  private $domain;
+  private ?string $domain;
 
   /**
    * @var bool indicates that the cookie should be accessible through the HTTP 
    * protocol only and not through scripting languages 
    */
-  private $httpOnly;
+  private bool $httpOnly;
 
   /**
    * indicates that the cookie should be sent back by the client over 
@@ -86,7 +86,7 @@ class Cookie implements Header {
    * 
    * @var bool 
    */
-  private $secureOnly;
+  private bool $secureOnly;
 
   /**
    * indicates that the cookie should not be sent along with cross-site requests 
@@ -94,7 +94,7 @@ class Cookie implements Header {
    * 
    * @var string|null 
    */
-  private $sameSiteRestriction;
+  private ?string $sameSiteRestriction;
 
   /**
    * Prepares a new cookie

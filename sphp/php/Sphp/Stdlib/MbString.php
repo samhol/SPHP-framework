@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -21,7 +21,7 @@ use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
- * Implements a multi byte string class
+ * Implements a multibyte string class
  * 
  * @method bool isBinary() Checks whether or not the input string contains only binary chars
  * @method bool isHexadecimal() Checks whether or not the input string contains only hexadecimal chars
@@ -29,7 +29,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @method bool isAlphanumeric() Checks whether or not the input string contains only alphanumeric chars
  * @method bool caseIs(int $case) Checks the case folding
  * 
- * @method \Sphp\Stdlib\MbString convertCase(int $case) Perform a case folding returning a new instance
+ * @method \Sphp\Stdlib\MbString convertCase(int $case) Performs a case folding returning a new instance
  * @method \Sphp\Stdlib\MbString trim(string $charMask = null) Returns a new instance with whitespace removed from the start end the end
  * @method \Sphp\Stdlib\MbString trimLeft(string $charMask = null) Returns a new instance with whitespace removed from the start
  * @method \Sphp\Stdlib\MbString trimRight(string $charMask = null) Returns a new instance with whitespace removed from the end
@@ -42,17 +42,14 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  */
 class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
 
-  /**
-   * @var int
-   */
-  private $index = 0;
+  private int $index = 0;
 
   /**
    * An instance string
    *
    * @var string
    */
-  private $str;
+  private string $str;
 
   /**
    * The string's encoding, which should be one of the mbstring module's
@@ -60,7 +57,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    *
    * @var string
    */
-  private $encoding;
+  private string $encoding;
 
   /**
    * Constructor 
@@ -71,9 +68,9 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * without a __toString method.
    *
    * @param  string $str Value to modify, after being cast to string
-   * @param  string $encoding The character encoding
+   * @param  string|null $encoding The character encoding
    */
-  public function __construct(string $str = '', string $encoding = null) {
+  public function __construct(string $str = '', ?string $encoding = null) {
     $this->str = $str;
     $this->encoding = $encoding ?: \mb_internal_encoding();
   }
@@ -116,7 +113,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * Performs a regular expression match
    *
    * @param  string $pattern the pattern to search for, as a string
-   * @return boolean true if string matches to the regular expression, false otherwise
+   * @return bool true if string matches to the regular expression, false otherwise
    */
   public function match(string $pattern): bool {
     //$regexEncoding = mb_regex_encoding();
@@ -139,13 +136,26 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   }
 
   /**
+   * Perform a regular expression search and replace
+   *
+   * @param  string $pattern the pattern to search for, as a string
+   * @param  string $replacement the replacement text
+   * @param  int $limit
+   * @return MMbString new instance
+   */
+  public function pregReplace(string $pattern, string $replacement, int $limit = -1, int &$count = null): MbString {
+    $result = preg_replace($pattern, $replacement, $this->str, $limit, $count);
+    return new static($result, $this->encoding);
+  }
+
+  /**
    * Replaces a regular expression with multibyte support
    *
    * @param  string $pattern the pattern to search for, as a string
    * @param  string $replacement the replacement text.
    * @param  string $option
    * @return string|boolean the resultant string on success, or false on error
-   * @link   http://php.net/manual/en/function.mb-ereg-replace.php
+   * @link   https://www.php.net/manual/en/function.mb-ereg-replace.php
    */
   public function regexReplace(string $pattern, string $replacement, $option = null): MbString {
     $regexEncoding = mb_regex_encoding();
@@ -234,7 +244,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   /**
    * Checks if current iterator position is valid
    * 
-   * @return boolean current iterator position is valid
+   * @return bool current iterator position is valid
    */
   public function valid(): bool {
     return $this->index < $this->length();
@@ -244,7 +254,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * Checks whether a character exists in the query
    * 
    * @param  mixed $offset the name of the parameter
-   * @return boolean true if the parameter exists and false otherwise
+   * @return bool true if the parameter exists and false otherwise
    */
   public function offsetExists($offset): bool {
     return is_int($offset) && $offset >= 0 && $offset < $this->length();

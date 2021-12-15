@@ -7,9 +7,10 @@
  */
 
 @mixin sphp-remove-outlines() { 
-  .close-button, .close-button span {
+  .close-button, .close-button span, .orbit-container,.orbit-slide, .orbit-bullets button {
     &:focus {
       outline: none;
     }
   }
+
 }

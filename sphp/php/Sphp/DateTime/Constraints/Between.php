@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -26,22 +26,22 @@ class Between implements DateConstraint {
   /**
    * @var Date
    */
-  private $start;
+  private Date $start;
 
   /**
    * @var Date
    */
-  private $end;
+  private Date $end;
 
   /**
    * Constructor
    * 
-   * @param  mixed $start start of date range (null for no starting point)
-   * @param  mixed $stop end of date range (null for no ending point)
+   * @param Date $start start of date range (null for no starting point)
+   * @param Date $stop end of date range (null for no ending point)
    */
-  public function __construct($start = null, $stop = null) {
-    $this->start = Date::from($start);
-    $this->end = Date::from($stop);
+  public function __construct(Date $start, Date $stop) {
+    $this->start = $start;
+    $this->end = $stop;
   }
 
   /**
@@ -51,8 +51,16 @@ class Between implements DateConstraint {
     unset($this->start, $this->end);
   }
 
-  public function isValid($date): bool {
-    return $this->start->compareTo($date) <= 0 && $this->end->compareTo($date) >= 0;
+  /**
+   * Clones the instance
+   */
+  public function __clone() {
+    $this->start = clone $this->start;
+    $this->end = clone $this->end;
+  }
+
+  public function isValid(Date $date): bool {
+    return $this->start->compareDateTo($date) <= 0 && $this->end->compareDateTo($date) >= 0;
   }
 
 }

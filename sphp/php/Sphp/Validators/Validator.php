@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -25,13 +25,13 @@ interface Validator {
   /**
    * `ID` for default error message
    */
-  const INVALID = '_invalid_';
+  const INVALID = 'INVALID';
 
   /**
    * Validates given value
    *
    * @param  mixed $value the value to validate
-   * @return boolean true if validation was successful, false if not
+   * @return bool true if validation was successful, false if not
    */
   public function isValid($value): bool;
 
@@ -40,12 +40,5 @@ interface Validator {
    *
    * @return string[] error messages
    */
-  public function errors(): ErrorMessages;
-
-  /**
-   * Returns error messages
-   *
-   * @return string[] error messages
-   */
-  public function errorsToArray(): array;
+  public function getErrors(): MessageManager;
 }

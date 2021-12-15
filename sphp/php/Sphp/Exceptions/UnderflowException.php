@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -11,8 +11,6 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Exceptions;
-
-use UnderflowException as SplUnderflowException;
 
 /**
  * Exception thrown when an illegal index was requested
@@ -23,6 +21,6 @@ use UnderflowException as SplUnderflowException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class UnderflowException extends SplUnderflowException implements SphpExceptionInterface {
+class UnderflowException extends RuntimeException {
   
 }

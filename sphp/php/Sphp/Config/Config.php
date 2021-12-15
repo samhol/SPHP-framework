@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -38,21 +38,21 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    *
    * @var Configuration[]
    */
-  private static $instances;
+  private static array $instances;
 
   /**
    * the configuration variable name value pairs container
    *
    * @var array
    */
-  private $data = [];
+  private array $data = [];
 
   /**
    * readonly flag
    *
    * @var boolean
    */
-  private $readonly = false;
+  private bool $readonly = false;
 
   /**
    * Constructor
@@ -80,7 +80,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
   /**
    * Returns whether the instance is read only or not
    * 
-   * @return boolean true if the instance is read only and false otherwise
+   * @return bool true if the instance is read only and false otherwise
    */
   public function isReadOnly(): bool {
     return $this->readonly;
@@ -105,7 +105,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * Checks whether the specific configuration variable exists
    *
    * @param  string $varname the name of the variable
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function __isset(string $varname): bool {
     return $this->contains($varname);
@@ -129,7 +129,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * Checks whether the specific configuration variable exists
    *
    * @param  string $varname the name of the variable
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function contains(string $varname): bool {
     return isset($this->data[$varname]) || array_key_exists($varname, $this->data);
@@ -249,7 +249,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * Checks whether the specific configuration variable exists
    * 
    * @param  string $varname the name of the variable
-   * @return boolean true on success or false on failure
+   * @return bool true on success or false on failure
    */
   public function offsetExists($varname): bool {
     return $this->contains($varname);

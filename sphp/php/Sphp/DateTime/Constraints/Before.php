@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -27,15 +27,15 @@ class Before implements DateConstraint {
   /**
    * @var Date 
    */
-  private $limit;
+  private Date $limit;
 
   /**
    * Constructor
    * 
-   * @param mixed $limit the upper limit date
+   * @param Date $limit the upper limit date
    */
-  public function __construct($limit) {
-    $this->limit = new Date($limit);
+  public function __construct(Date $limit) {
+    $this->limit = $limit;
   }
 
   /**
@@ -45,8 +45,8 @@ class Before implements DateConstraint {
     unset($this->limit);
   }
 
-  public function isValid($date): bool {
-    return $this->limit->compareTo($date) > 0;
+  public function isValid(Date $date): bool {
+    return $this->limit->compareDateTo($date) > 0;
   }
 
 }

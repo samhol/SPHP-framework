@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -20,7 +20,7 @@ use Sphp\Html\Head\MetaFactory;
  * Implementation of an HTML html tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_html.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
@@ -30,14 +30,14 @@ class SphpDocument extends AbstractContent {
   /**
    * @var Html 
    */
-  private $html;
+  private Html $html;
 
   /**
    * Constructor
    * 
-   * @param Html $html
+   * @param Html|null $html
    */
-  public function __construct(Html $html = null) {
+  public function __construct(?Html $html = null) {
     if ($html === null) {
       $html = new Html();
     }
@@ -102,7 +102,7 @@ class SphpDocument extends AbstractContent {
    *
    * @param  string $language the language of the document 
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
+   * @link   https://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage(string $language = null) {
     $this->html()->setAttribute('lang', $language);

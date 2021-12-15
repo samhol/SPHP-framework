@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2019 Sami Holck <sami.holck@gmail.com>
@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Security\Exception;
 
-use Sphp\Exceptions\SphpExceptionInterface;
+use Sphp\Exceptions\SphpException;
 
 /**
  * Implementation of ReCAPTCHAException
@@ -22,6 +22,6 @@ use Sphp\Exceptions\SphpExceptionInterface;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class ReCAPTCHAException extends \Exception implements SphpExceptionInterface {
+class ReCAPTCHAException extends SphpException {
   
 }

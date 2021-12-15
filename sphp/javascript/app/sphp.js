@@ -237,17 +237,23 @@ if (!window.console.log) {
       console.log("jQuery.slick loaded...");
       $('[data-slick]').slick();
     }
+    const lozader = lozad('.lozad', {
+      loaded: function (el) {
+        console.log('Lazy loading element:' + el.tagName);
+      }
+    }); // lazy loads elements with default selector as '.lozad'
     $('[data-accordion]').on('down.zf.accordion', function () {
       var $accordion = $(this), $sliders;
       //console.log('Foundation Accordion opened!');
-      $accordion.lazyLoadXT();
+      lozader.observe();
       $sliders = $accordion.find('.slider');
       if ($sliders.length > 0) {
         $sliders.find('.slider').show();
         $sliders.find('.slider').foundation('_reflow');
       }
     });
-    $("[data-src]").lazyLoadXT();
+    //$("[data-src]").lazyLoadXT();
+    lozader.observe();
     sphp.initReCAPTCHAv3sForm();
     sphp.initSphp();
     // $("[data-sphp-php-info-tipso]").phpInfoTipso();

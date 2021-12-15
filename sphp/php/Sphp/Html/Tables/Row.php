@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,17 +13,18 @@ declare(strict_types=1);
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\TraversableContent;
+use ArrayAccess;
 
 /**
- * Interface is the base definition for all HTML tr table rows
+ * Base definition for all HTML tr table rows
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API
+ * @link    https://www.w3schools.com/tags/tag_tr.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-tr-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-interface Row extends TableContent, TraversableContent {
+interface Row extends TableContent, TraversableContent, ArrayAccess {
 
   /**
    * Appends a cell component to the row
@@ -43,9 +44,9 @@ interface Row extends TableContent, TraversableContent {
    * @param int $colspan specifies the number of columns cell should span
    * @param int $rowspan specifies the number of rows cell should span
    * @param string|null $scope the value of the scope attribute or null for none
-   * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
-   * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
-   * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
+   * @link  https://www.w3schools.com/tags/att_th_scope.asp scope attribute
+   * @link  https://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
+   * @link  https://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    * @return Th appended table cell component
    */
   public function appendTh($content, int $colspan = 1, int $rowspan = 1, string $scope = null): Th;
@@ -53,10 +54,10 @@ interface Row extends TableContent, TraversableContent {
   /**
    * Creates and appends &lt;th&gt; components to the row
    *
-   * @param  mixed[] $cells cells of the table row
+   * @param  mixed ... $cells cells of the table row
    * @return $this for a fluent interface
    */
-  public function appendThs(array $cells);
+  public function appendThs(... $cells);
 
   /**
    * Creates and appends a new &lt;td&gt; component to the row
@@ -66,8 +67,8 @@ interface Row extends TableContent, TraversableContent {
    * @param mixed $content the content of the component
    * @param int $colspan specifies the number of columns cell should span
    * @param int $rowspan specifies the number of rows cell should span
-   * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
-   * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
+   * @link  https://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
+   * @link  https://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    * @return Td appended table cell component
    */
   public function appendTd($content, int $colspan = 1, int $rowspan = 1): Td;
@@ -75,26 +76,16 @@ interface Row extends TableContent, TraversableContent {
   /**
    * Creates and appends &lt;td&gt; components to the row
    *
-   * @param  mixed[] $cells cells of the table row
+   * @param  mixed ... $cells cells of the table row
    * @return $this for a fluent interface
    */
-  public function appendTds(array $cells);
+  public function appendTds(... $cells);
 
   /**
    * Prepends a cell component to the row
    *
    * @param  Cell $cell new cell object
-   * @return Cell prepended table cell component
+   * @return $this for a fluent interface
    */
   public function prepend(Cell $cell);
-
-  /**
-   * Returns the cell at given position
-   * 
-   * **Important:** Cells are numbered sequentially starting from 0
-   * 
-   * @param  int $position
-   * @return Row the row at given position
-   */
-  public function getCell(int $position): ?Cell;
 }

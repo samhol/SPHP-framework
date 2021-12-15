@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -75,7 +75,7 @@ class SessionUserStorage extends AbstractObjectStorage {
    * Confirms the uniqueness of the users's username in the repository
    *
    * @param  User|string $needle the user instance or the username string
-   * @return boolean true, if username is unique, false otherwise.
+   * @return bool true, if username is unique, false otherwise.
    */
   public function uniqueUserName($needle) {
     $result = false;
@@ -94,7 +94,7 @@ class SessionUserStorage extends AbstractObjectStorage {
    * Confirms the uniqueness of the users's email in the repository
    *
    * @param  User|string $needle the user instance or the email address of the user
-   * @return boolean true if user's email is unique, otherwise false
+   * @return bool true if user's email is unique, otherwise false
    */
   public function uniqueEmail($needle) {
     $result = false;

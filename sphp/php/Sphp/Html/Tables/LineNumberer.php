@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html\Tables;
 
 /**
- * Implements a line numberer for HTML tables
+ * Implementation of a line numberer for HTML tables
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -28,23 +28,13 @@ class LineNumberer implements TableFilter {
   /**
    * @var int
    */
-  private $start = 1;
+  private int $start = 1;
 
   /**
    * @var string
    */
-  private $label;
-
-  /**
-   * @var bool 
-   */
-  private $left = true;
-
-  /**
-   * @var bool 
-   */
-  private $right = false;
-  private $flags = 0;
+  private string $label;
+  private int $flags = 0;
 
   /**
    * Constructor
@@ -118,7 +108,7 @@ class LineNumberer implements TableFilter {
 
   /**
    * 
-   * @param  Table $rowContainer
+   * @param  RowContainer $rowContainer
    * @return bool
    */
   private function modifyHeadings(RowContainer $rowContainer): bool {

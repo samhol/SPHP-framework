@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -14,6 +14,7 @@ namespace Sphp\DateTime;
 
 use DateInterval;
 use Sphp\Stdlib\Strings;
+use Sphp\DateTime\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a date interval
@@ -22,7 +23,7 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Interval extends DateInterval implements IntervalInterface {
+class Interval extends DateInterval implements Duration {
 
   /**
    * Constructor
@@ -45,7 +46,7 @@ class Interval extends DateInterval implements IntervalInterface {
    * @return string the string representation of the object
    */
   public function __toString(): string {
-    if ($this->invert === -1) {
+    if ($this->isNegative()) {
       $format = '-P';
     } else {
       $format = 'P';
@@ -75,27 +76,15 @@ class Interval extends DateInterval implements IntervalInterface {
     return $format;
   }
 
-  /**
-   * Recalculates the values
-   * 
-   * @return $this for a fluent interface
-   */
-  public function recalculate() {
-    $seconds = $this->toSeconds();
-    $this->y = floor($seconds / 60 / 60 / 24 / 365.2525);
-    $seconds -= $this->y * 31536000;
-    $this->m = floor($seconds / 60 / 60 / 24 / 30.4167);
-    $seconds -= $this->m * 2592000;
-    $this->d = floor($seconds / 60 / 60 / 24);
-    $seconds -= $this->d * 86400;
-    $this->h = floor($seconds / 60 / 60);
-    $seconds -= $this->h * 3600;
-    $this->i = floor($seconds / 60);
-    $seconds -= $this->i * 60;
-    $this->s = $seconds;
-    return $this;
+  public function format($format): string {
+    return parent::format($format);
   }
 
+  /**
+   * Returns the interval as seconds
+   * 
+   * @return float the interval as seconds
+   */
   public function toSeconds(): float {
     $days = $this->days;
     if ($days === false) {
@@ -103,39 +92,66 @@ class Interval extends DateInterval implements IntervalInterface {
       $days += floor($this->m * 30.4167);
       $days += $this->d;
     }
-    return ($days * 24 * 60 * 60 +
+    $abs = ($days * 24 * 60 * 60 +
             $this->h * 60 * 60 +
             $this->i * 60 +
-            $this->s) * ($this->invert ? -1 : 1);
+            $this->s) +
+            $this->f;
+    if ($this->invert) {
+      $out = -$abs;
+    } else {
+      $out = $abs;
+    }
+    return $out;
   }
 
+  /**
+   * Returns the interval in minutes
+   * 
+   * @return float the interval in minutes
+   */
   public function toMinutes(): float {
     return ($this->toSeconds() / 60);
   }
 
+  /**
+   * Returns the interval in minutes
+   * 
+   * @return float the interval in minutes
+   */
   public function toHours(): float {
     return ($this->toMinutes() / 60);
   }
 
+  /**
+   * Returns the interval in days
+   * 
+   * @return float the interval in days
+   */
   public function toDays(): float {
     return ($this->toSeconds() / 86400);
   }
 
+  /**
+   * Checks if the interval is inverted (negative)
+   * 
+   * @return bool true if the interval is inverted, false othervise
+   */
   public function isNegative(): bool {
     return $this->invert === 1;
   }
 
-  public function compareTo($interval) {
-    $i = Intervals::create($interval);
+  /**
+   * 
+   * @param  DateInterval $interval
+   * @return int
+   */
+  public function compareTo(Duration $interval): int {
+    $i = Intervals::fromDateInterval($interval);
     return $this->toSeconds() <=> $i->toSeconds();
   }
 
-  /**
-   * 
-   * @param DateInterval $interval
-   * @return $this for a fluent interface
-   */
-  public function add(DateInterval $interval) {
+  public function add(DateInterval $interval): Duration {
     if ($interval->invert) {
       foreach (str_split('ymdhis') as $prop) {
         $this->$prop -= $interval->$prop;
@@ -152,15 +168,53 @@ class Interval extends DateInterval implements IntervalInterface {
     return $this;
   }
 
+  public function addFromString(string $time): Duration {
+    return $this->add(Intervals::create($time));
+  }
+
+  public function addSeconds(float $seconds): Duration {
+    $interval = new Interval;
+    $totalSeconds = $this->toSeconds() + $seconds;
+    $interval->f = (float) strstr((string) $totalSeconds, '.');
+    $interval->invert = (int) ($totalSeconds < 0);
+    $fullSeconds = ($totalSeconds < 0) ? abs(ceil($totalSeconds)) : floor($totalSeconds);
+    $interval->d = floor($fullSeconds / 60 / 60 / 24);
+    $fullSeconds -= $interval->d * 86400;
+    $interval->h = floor($fullSeconds / 60 / 60);
+    $fullSeconds -= $interval->h * 3600;
+    $interval->i = floor($fullSeconds / 60);
+    $fullSeconds -= $interval->i * 60;
+    $interval->s = $fullSeconds;
+    return $interval;
+  }
+
+  public function addMinutes(float $minutes): Duration {
+    return $this->addSeconds($minutes * 60);
+  }
+
+  public function addHours(float $hours): Duration {
+    return $this->addMinutes($hours * 60);
+  }
+
+  public function addDays(float $days): Duration {
+    return $this->addHours(24 * $days);
+  }
+
   /**
    * 
    * 
-   * @param  string $time
+   * @param  string $input
    * @return Interval new instance
+   * @throws InvalidArgumentException
    */
-  public static function createFromDateString($time) {
-    $di = parent::createFromDateString($time);
-    return Intervals::FromDateInterval($di);
+  public static function createFromDateString($input): Interval {
+    $old = error_reporting(null);
+    $phpInterval = DateInterval::createFromDateString($input);
+    error_reporting($old);
+    if ($phpInterval === false) {
+      throw new InvalidArgumentException('Cannot parse Interval from given input');
+    }
+    return Intervals::FromDateInterval($phpInterval);
   }
 
 }

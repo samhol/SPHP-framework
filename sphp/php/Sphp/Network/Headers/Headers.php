@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -39,10 +39,13 @@ class Headers implements IteratorAggregate {
    */
   private static $typeMap = [
       'AccessControlAllowOrigin' => 'Access-Control-Allow-Origin',
+      'allowOrigin' => 'Access-Control-Allow-Origin',
       'AccessControlAllowCredentials' => 'Access-Control-Allow-Credentials',
       'AccessControlExposeHeaders' => 'Access-Control-Expose-Headers',
       'AccessControlMaxAge' => 'Access-Control-Max-Age',
+      'maxAge' => 'Access-Control-Max-Age',
       'AccessControlAllowMethods' => 'Access-Control-Allow-Methods',
+      'allowMethods' => 'Access-Control-Allow-Methods',
       'AccessControlAllowHeaders' => 'Access-Control-Allow-Headers',
       'AcceptPatch' => 'Accept-Patch',
       'AcceptRanges' => 'Accept-Ranges',

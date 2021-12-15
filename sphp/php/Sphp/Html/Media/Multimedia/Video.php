@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -12,44 +12,31 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Media\SizeableMedia;
-use Sphp\Html\Media\SizeableMediaTrait;
-use Sphp\Html\Media\LazyMedia;
-
 /**
  * Implementation of an HTML video tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://www.w3schools.com/tags/tag_video.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_video.asp w3schools HTML API
+ * @link    https://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Video extends AbstractMultimediaTag implements SizeableMedia, LazyMedia {
+class Video extends MediaTag implements VideoPlayer {
 
-  use SizeableMediaTrait;
+  public const SOURCES = 0b01;
+  public const TRACKS = 0b10;
+  public const ALL = 0b11;
 
   /**
    * Constructor
-   *
-   * @param mixed $sources optional sources
    */
-  public function __construct($sources = null) {
-    parent::__construct('video', null, $sources);
-    //$this->showControls(true);
+  public function __construct() {
+    parent::__construct('video');
   }
 
-  public function isLazy(): bool {
-    $lazy = false;
-    foreach ($this->getSources() as $source) {
-      $lazy &= $source->setLazy();
-    }
-    return $lazy;
-  }
-
-  public function setLazy(bool $lazy = true) {
-    foreach ($this->getSources() as $source) {
-      $source->setLazy($lazy);
-    }
+  public function setSize(int $width = null, int $height = null) {
+    $this->attributes()->setAttribute('width', $width);
+    $this->attributes()->setAttribute('height', $height);
     return $this;
   }
 
@@ -62,7 +49,7 @@ class Video extends AbstractMultimediaTag implements SizeableMedia, LazyMedia {
    * 
    * @param  string|null $poster the poster image for the video component
    * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
+   * @link   https://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
   public function setPoster(string $poster = null) {
     $this->attributes()->setAttribute('poster', $poster);

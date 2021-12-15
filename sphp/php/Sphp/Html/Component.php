@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * SPHPlayground Framework (http://playgound.samiholck.com/)
+ * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
  * @link      https://github.com/samhol/SPHP-framework for the source repository
  * @copyright Copyright (c) 2007-2018 Sami Holck <sami.holck@gmail.com>
@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeContainer;
-use Sphp\Html\Attributes\PropertyCollectionAttribute;
+use Sphp\Html\Attributes\MapAttribute;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -38,9 +38,9 @@ interface Component extends IdentifiableContent, CssClassifiableContent {
   /**
    * Returns the attribute object containing inline styles
    * 
-   * @return PropertyCollectionAttribute the attribute object containing inline styles
+   * @return MapAttribute the attribute object containing inline styles
    */
-  public function css(): PropertyCollectionAttribute;
+  public function css(): MapAttribute;
 
   /**
    * Sets an attribute name value pair
@@ -87,7 +87,7 @@ interface Component extends IdentifiableContent, CssClassifiableContent {
    * Checks if an attribute exists
    *
    * @param  string $attrName the name of the attribute
-   * @return boolean (attribute exists)
+   * @return bool (attribute exists)
    */
   public function attributeExists(string $attrName): bool;
 }
