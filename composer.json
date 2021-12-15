@@ -1,8 +1,8 @@
 {
-  "name": "sami_holck/sphp_framework",
-  "homepage": "http://www.playground.samiholck.com/",
-  "description": "Multipurpose PHP framework for web applications",
-  "keywords": ["PHP", "HTML5", "WEB 2.0", "UI"],
+  "name": "sami_holck/samiholck",
+  "homepage": "https://samiholck.fi/manual/index",
+  "description": "Homepage of Sami Holck",
+  "keywords": ["HTML5", "WEB 2.0", "UI"],
   "license": "MIT",
   "authors": [
     {
@@ -11,36 +11,29 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
-    "doctrine/orm": "2.6.4",
-    "sepia/po-parser": "5.1.7",
-    "imagine/imagine": "@stable",
-    "tovic/parsedown-extra-plugin": "1.1.6",
-    "geshi/geshi": "@stable",
-    "jdorn/sql-formatter": "@stable",
-    "gajus/dindent": "@stable",
-    "zendframework/zend-cache": "@stable",
-    "zendframework/zend-config": "@stable",
-    "zendframework/zend-i18n": "@stable",
-    "zendframework/zend-paginator": "@stable",
-    "zendframework/zend-mail": "@stable",
-    "symfony/yaml": "@stable"
+    "php": ">=7.4",
+    "symfony/yaml": "^5.2",
+    "erusev/parsedown-extra": "^0.8.1",
+    "level-2/dice": "^4.0",
+    "browscap/browscap-php": "^5.0",
+    "sepia/po-parser": "^6.0.1",
+    "geshi/geshi": "v1.0.9.1",
+    "psr/event-dispatcher": "^1.0",
+    "league/commonmark": "^2.0",
+    "laminas/laminas-config": "^3.4",
+    "laminas/laminas-mail": "^2.15"
   },
   "require-dev": {
-    "phpunit/phpunit": ">=8",
-    "phpunit/php-code-coverage": "@stable",
-    "mockery/mockery": "@stable",
-    "eloquent/phony-phpunit": "@stable",
-    "mikey179/vfsstream": "~1"
+    "phpunit/phpunit": ">=9"
   },
   "autoload": {
-    "psr-0": {
-      "": "vendor/tovic/parsedown-extra-plugin"
+    "psr-4": {
+      "Sphp\\": "sphp/php/Sphp"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Sphp\\Tests\\": "sphp/php/tests/sphp"
+      "Sphp\\Tests\\": "sphp/php/tests/classes/Sphp/Tests"
     }
   }
 }
