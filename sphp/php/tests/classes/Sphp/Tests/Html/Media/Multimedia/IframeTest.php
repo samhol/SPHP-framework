@@ -25,6 +25,8 @@ use Sphp\Html\Media\Multimedia\Iframe;
  */
 class IframeTest extends TestCase {
 
+  use \Sphp\Tests\Html\Media\SizeableMediaTestTrait;
+
   /**
    * @return string[]
    */

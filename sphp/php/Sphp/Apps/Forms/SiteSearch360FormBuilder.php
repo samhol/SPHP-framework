@@ -36,8 +36,8 @@ class SiteSearch360FormBuilder extends AbstractSearchFormBuilder {
     $this->getSearchField()->addCssClass('sphp-search-searchBox', 'sphp-ss360-searchBox');
   }
 
-  public function createEmptyForm(): \Sphp\Html\Forms\ContainerForm {
-    $form = new \Sphp\Html\Forms\ContainerForm();
+  public function createEmptyForm(): \Sphp\Html\Forms\Form {
+    $form = new \Sphp\Html\Forms\Form();
     $form->addCssClass('sphp', 'search-form');
     $form->attributes()->protect('data-sphp-ss360-siteid', $this->siteId);
     return $form;

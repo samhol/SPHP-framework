@@ -34,7 +34,7 @@ class Video extends MediaTag implements VideoPlayer {
     parent::__construct('video');
   }
 
-  public function setSize(int $width = null, int $height = null) {
+  public function setSize(?int $width, ?int $height) {
     $this->attributes()->setAttribute('width', $width);
     $this->attributes()->setAttribute('height', $height);
     return $this;
@@ -51,7 +51,7 @@ class Video extends MediaTag implements VideoPlayer {
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
-  public function setPoster(string $poster = null) {
+  public function setPoster(?string $poster = null) {
     $this->attributes()->setAttribute('poster', $poster);
     return $this;
   }

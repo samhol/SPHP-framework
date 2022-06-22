@@ -21,7 +21,7 @@ use Sphp\Html\Tags;
 use Sphp\Html\PlainContainer;
 use Sphp\Bootstrap\Components\Accordions\ContentPane;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * The ExerciseViews class

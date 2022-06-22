@@ -16,8 +16,8 @@ use Sphp\Html\AbstractContent;
 use Sphp\Html\Component;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Forms\Buttons\Button;
-use Sphp\Html\Div;
+use Sphp\Html\Forms\Buttons\PushButton;
+use Sphp\Html\Layout\Div;
 
 /**
  * The Dropdown class
@@ -47,7 +47,7 @@ class Dropdown extends AbstractContent {
    */
   public function __construct($toggler, array $items = []) {
     if (!$toggler instanceof Component) {
-      $toggler = new Button($toggler);
+      $toggler = new PushButton($toggler);
     }
     $this->initToggler($toggler);
     $this->items = $items;
@@ -165,7 +165,7 @@ class Dropdown extends AbstractContent {
   }
 
   public static function fromButton($content, string ...$class): Dropdown {
-    $button = new Button($content);
+    $button = new PushButton($content);
     $button->addCssClass(...$class);
     return new static($button);
   }

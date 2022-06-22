@@ -14,7 +14,7 @@ namespace Sphp\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Implements a switchboard

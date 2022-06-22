@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\ContainerTag;
 use Sphp\Html\ContainerTag;
 
 /**
@@ -24,7 +24,7 @@ use Sphp\Html\ContainerTag;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BasicController extends AbstractContainerTag implements TabController {
+class BasicController extends ContainerTag implements TabController {
 
   /**
    * Constructor

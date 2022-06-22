@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Apps\Trackers\Views\UserAgents;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Apps\Trackers\Views\Charts\Doughnut;
 use Sphp\Bootstrap\Layout\Container;
 /**

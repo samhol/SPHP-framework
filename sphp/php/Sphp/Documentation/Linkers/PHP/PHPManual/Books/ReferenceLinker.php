@@ -16,7 +16,7 @@ use Sphp\Documentation\Linkers\AbstractItemLinker;
 use Sphp\Documentation\Linkers\HyperlinkFactory;
 use Sphp\Html\Navigation\A;
 use Sphp\Documentation\Linkers\Exceptions\NonDocumentedFeatureException;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Description of BookLinker

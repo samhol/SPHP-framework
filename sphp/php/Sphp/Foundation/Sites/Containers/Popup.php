@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Sphp\Foundation\Sites\Containers;
 
 use Sphp\Html\Component;
-use Sphp\Html\Div;
-use Sphp\Html\Sections\FlowContainer;
+use Sphp\Html\Layout\Div;
+use Sphp\Html\Layout\FlowContainer;
 use Sphp\Foundation\Sites\Controllers\CloseButton;
 use Sphp\Foundation\Sites\Core\JavaScript\AbstractJavaScriptComponent;
 

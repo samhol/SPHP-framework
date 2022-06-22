@@ -39,10 +39,6 @@ class Console extends AbstractContent {
       'table',
       'group', 'groupCollapsed', 'groupEnd',
       'trace',];
-
-  /**
-   * @var string[] 
-   */
   private ?string $js = null;
   private int $groupLevel = 0;
 

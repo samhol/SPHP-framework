@@ -13,7 +13,8 @@ declare(strict_types=1);
 namespace Sphp\Tests\Html;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\ContentIterator; 
+use Sphp\Html\ContentIterator;
+use Sphp\Html\Text\Span;
 
 /**
  * Class IteratorTest
@@ -35,7 +36,7 @@ class ContentIteratorTest extends TestCase {
     $data = [];
     $data[] = [$range];
     $data[] = [[]];
-    $data[] = [[new \Sphp\Html\Span('foo')]];
+    $data[] = [[new Span('foo')]];
     $data[] = [new \ArrayIterator($range)];
     return $data;
   }

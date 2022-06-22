@@ -61,7 +61,7 @@ trait ContentParserTrait {
     try {
       $this->append(Filesystem::executePhpToString($path));
     } catch (\Exception $ex) {
-      throw new HtmlException($ex->getMessage(), (int) $ex->getCode(), $ex);
+      throw new HtmlException($ex->getMessage(), $ex->getCode(), $ex);
     }
     return $this;
   }

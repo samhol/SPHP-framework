@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Tests\DateTime;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\DateTime\Intervals;
+use Sphp\DateTime\Interval;
 use DateInterval;
 use Sphp\DateTime\Exceptions\InvalidArgumentException;
 
@@ -25,6 +25,7 @@ class IntervalsTest extends TestCase {
     $out[] = [(24 * 2 + 3) * 3600];
     $out[] = ['P2DT3H'];
     $out[] = [new DateInterval('P2DT3H')];
+    $out[] = [new Interval('P2DT3H')];
     return $out;
   }
 
@@ -34,8 +35,8 @@ class IntervalsTest extends TestCase {
    * @param  mixed $input
    * @return void
    */
-  public function testFrom($input): void {
-    $interval = Intervals::create($input);
+  public function testCreate($input): void {
+    $interval = Interval::create($input);
     $this->assertSame(51.0, $interval->toHours());
   }
 
@@ -59,7 +60,7 @@ class IntervalsTest extends TestCase {
    * @return void
    */
   public function testFromSeconds(float $seconds): void {
-    $interval = Intervals::fromSeconds($seconds);
+    $interval = Interval::fromSeconds($seconds);
     $this->assertSame((float) strstr((string) $seconds, '.'), $interval->f);
     $this->assertSame($seconds, $interval->toSeconds());
   }
@@ -83,8 +84,8 @@ class IntervalsTest extends TestCase {
    * @return void
    */
   public function testFromFormat(string $seconds, $expectedStr): void {
-    $actual = Intervals::fromString($seconds);
-    $expected = Intervals::fromString($expectedStr);
+    $actual = Interval::fromString($seconds);
+    $expected = Interval::fromString($expectedStr);
     $this->assertEquals($actual, $expected);
   }
 
@@ -93,7 +94,7 @@ class IntervalsTest extends TestCase {
    */
   public function testFromFormatFailure(): void {
     $this->expectException(InvalidArgumentException::class);
-    Intervals::fromString('foo');
+    Interval::fromString('foo');
   }
 
   public function fromFailureData(): array {
@@ -115,7 +116,7 @@ class IntervalsTest extends TestCase {
    */
   public function testFromFailure($input): void {
     $this->expectException(InvalidArgumentException::class);
-    Intervals::create($input);
+    Interval::create($input);
   }
 
 }

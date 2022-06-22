@@ -39,7 +39,7 @@ class Td extends AbstractCell {
    * @link  https://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
    * @link  https://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    */
-  public function __construct($content = null, int $colspan = 1, int $rowspan = 1) {
+  public function __construct(mixed $content = null, int $colspan = 1, int $rowspan = 1) {
     parent::__construct('td', $content);
     $this->setColspan($colspan);
     $this->setRowspan($rowspan);

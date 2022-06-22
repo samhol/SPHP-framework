@@ -21,107 +21,50 @@ use Sphp\Stdlib\Strings;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Address extends AbstractDataObject implements GeographicalAddress {
+class Address {
 
-  /**
-   * @var string|null
-   */
-  protected $street;
+  protected ?string $streetAddress;
+  protected ?string $zipcode;
+  protected ?string $city;
+  protected ?string $country;
 
-  /**
-   * @var string|null
-   */
-  protected $zipcode;
-
-  /**
-   *
-   * @var string|null
-   */
-  protected $city;
-
-  /**
-   * @var string|null
-   */
-  protected $country;
-
-  /**
-   * @var string|null
-   */
-  protected $maplinks = [];
-
-  public function getStreet() {
-    return (string) $this->street;
+  public function __construct(array $data = []) {
+    $this->streetAddress = $data['streetAddress'] ?? null;
+    $this->zipcode = $data['zipcode'] ?? null;
+    $this->city = $data['city'] ?? null;
+    $this->country = $data['country'] ?? null;
   }
 
-  /**
-   * Sets the street address
-   *
-   * @param  string $streetaddress the street address
-   * @return $this for a fluent interface
-   */
-  public function setStreet(string $streetaddress = null) {
-    $this->street = $streetaddress;
-    return $this;
+  public function setStreetAddress(?string $streetAddress): void {
+    $this->streetAddress = $streetAddress;
   }
 
-  public function getZipcode(): string {
-    return (string) $this->zipcode;
-  }
-
-  /**
-   * Sets the zipcode
-   *
-   * @param  string|null $zipcode the zipcode
-   * @return $this for a fluent interface
-   */
-  public function setZipcode(string $zipcode = null) {
+  public function setZipcode(?string $zipcode): void {
     $this->zipcode = $zipcode;
-    return $this;
   }
 
-  public function getCity(): string {
-    return (string) $this->city;
-  }
-
-  /**
-   * Sets the city or the district name
-   *
-   * @param  string|null $city the city or the district name
-   * @return $this for a fluent interface
-   */
-  public function setCity(string $city = null) {
+  public function setCity(?string $city): void {
     $this->city = $city;
-    return $this;
   }
 
-  public function getCountry(): string {
-    return (string) $this->country;
-  }
-
-  /**
-   * Sets the the country name
-   *
-   * @param  string|null $country the country name
-   * @return $this for a fluent interface
-   */
-  public function setCountry(string $country = null) {
+  public function setCountry(?string $country): void {
     $this->country = $country;
-    return $this;
   }
 
-  public function getMaplinks(): array {
-    return $this->maplinks;
+  public function getStreetAddress(): ?string {
+    return $this->streetAddress;
   }
 
-  /**
-   * Sets the map links
-   *
-   * @param  array $maplinks map links
-   * @return $this for a fluent interface
-   */
-  public function setMaplinks(array $maplinks = []) {
-    $this->maplinks = $maplinks;
-    return $this;
+  public function getZipcode(): ?string {
+    return $this->zipcode;
+  }
+
+  public function getCity(): ?string {
+    return $this->city;
+  }
+
+  public function getCountry(): ?string {
+    return $this->country;
   }
 
   public function fromArray(array $raw = []) {
@@ -130,19 +73,13 @@ class Address extends AbstractDataObject implements GeographicalAddress {
         'zip' => \FILTER_SANITIZE_STRING,
         'city' => \FILTER_SANITIZE_STRING,
         'country' => \FILTER_SANITIZE_STRING,
-        'maplinks' => [
-            'filter' => FILTER_REQUIRE_ARRAY,
-            'flags' => FILTER_FORCE_ARRAY,
-        ]
     ];
     $address = filter_var_array($raw, $args, true);
     $this->setStreet($address['street']);
     $this->setZipcode($address['zip']);
     $this->setCity($address['city']);
     $this->setCountry($address['country']);
-    if ($address['maplinks'] !== null) {
-      $this->setMaplinks($address['maplinks']);
-    }
+
     return $this;
   }
 
@@ -170,10 +107,6 @@ class Address extends AbstractDataObject implements GeographicalAddress {
       $output .= ", $this->country";
     }
     return $output;
-  }
-
-  public function equals($object) {
-    return $object == $this;
   }
 
 }

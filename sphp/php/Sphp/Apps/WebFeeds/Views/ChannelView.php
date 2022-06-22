@@ -17,7 +17,7 @@ use Sphp\Apps\WebFeeds\Readers\Feed;
 use Sphp\Apps\WebFeeds\Readers\Entry;
 use Sphp\Html\Lists\Ol;
 use Sphp\Bootstrap\Components\Navigation\Pagination;
-use Sphp\Html\Sections\Headings\Header;
+use Sphp\Html\Layout\Header;
 use Sphp\Html\Navigation\A;
 
 /**

@@ -17,7 +17,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
 
 /**
- * The Menu Interface
+ * The OptionsMenu Interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
@@ -37,17 +37,17 @@ interface OptionsMenu extends Traversable, Arrayable, Countable {
   /**
    * Appends a new option to the component
    * 
-   * @param  scalar|null $value the value attribute of the option
-   * @param  string $content the textual content of the option
+   * @param  string|int|float|null $value the value attribute of the option
+   * @param  string|int|float|null $content the textual content of the option
    * @return Option appended instance
    * @link   https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
-  public function appendOption($value, string $content = null): Option;
+  public function appendOption(string|int|float|null $value, string|int|float|null $content): Option;
 
   /**
    * Appends content to the component
    *
-   * @param  MenuComponent $opt the content
+   * @param  Option $opt the content
    * @return $this for a fluent interface
    */
   public function append(Option $opt);

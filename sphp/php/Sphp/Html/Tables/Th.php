@@ -42,7 +42,7 @@ class Th extends AbstractCell {
    * @link  https://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    * @link  https://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
-  public function __construct($content = null, int $colspan = 1, int $rowspan = 1, string $scope = null) {
+  public function __construct(mixed $content = null, int $colspan = 1, int $rowspan = 1, string $scope = null) {
     parent::__construct('th', $content);
     if ($scope !== null) {
       $this->setScope($scope);

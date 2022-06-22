@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\Documentation\SyntaxHighlighting;
 
-use Sphp\Stdlib\Strings;
-use Sphp\Html\Sections\Pre;
-use Sphp\Html\Sections\Code;
+use Sphp\Html\Code\Pre;
+use Sphp\Html\Code\Code;
+use Sphp\Html\ContainerTag;
+use Sphp\Stdlib\Filesystem;
 
 /**
  * The Prism class
@@ -26,15 +27,23 @@ use Sphp\Html\Sections\Code;
  */
 class Prism implements SyntaxHighlighter {
 
+  private bool $showLineNumbers = true;
+
+  public function showLineNumbers(bool $showLineNumbers) {
+    $this->showLineNumbers = $showLineNumbers;
+    return $this;
+  }
+
   public function blockFromFile(string $filename): string {
     $pre = new Pre();
-    if (Strings::endsWith($filename, '.php')) {
-      $file = new \SplFileObject($filename);
-      $source = \Sphp\Stdlib\Filesystem::toString($filename);
-      $pre->appendCode($this->parsePHP($source))->addCssClass('language-php');
+    if (str_ends_with($filename, '.php')) {
+      $source = Filesystem::toString($filename);
+      $pre = $this->tagFromSource($source, 'php');
     } else {
-      $file = new \SplFileInfo($filename);
       $pre->setAttribute('data-src', $filename);
+    }
+    if ($this->showLineNumbers) {
+      $pre->addCssClass('line-numbers');
     }
     return (string) $pre;
   }
@@ -43,23 +52,18 @@ class Prism implements SyntaxHighlighter {
     return preg_replace(['/<(\?|\%)\=?(php)?/', '/(\%|\?)>/'], ['&lt;?php', '?&gt;'], $source);
   }
 
-  public function blockFromString(string $source, string $language): string {
-    if ($language === 'html') {
+  private function tagFromSource(string $source, string $language): ContainerTag {
+    $tag = new ContainerTag('script', $source);
+    $tag->setAttribute('type', 'text/plain');
+    if ($language === 'html' || $language === 'html5' || $language === 'svg') {
       $language = 'markup';
     }
-    $tag = new Pre();
-    if ($language == 'php') {
-      $tag->appendCode($this->parsePHP($source))->addCssClass('language-php');
-    } else if ($language == 'markup') {
-      $tag = new \Sphp\Html\ContainerTag('script', $source);
-      $tag->setAttribute('type', 'text/plain');
-      $tag->addCssClass("language-markup");
-     //echo 'markup';
-      // $pre->appendCode(htmlentities($source))
-    } else {
-      $tag->appendCode($source)->addCssClass("language-$language");
-    }
-    return (string) $tag;
+    $tag->addCssClass("language-$language");
+    return $tag;
+  }
+
+  public function blockFromString(string $source, string $language): string {
+    return (string) $this->tagFromSource($source, $language);
   }
 
   public function inlineFromString(string $source, string $language): string {

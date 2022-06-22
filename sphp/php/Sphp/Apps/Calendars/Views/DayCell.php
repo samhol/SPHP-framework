@@ -14,8 +14,9 @@ namespace Sphp\Apps\Calendars\Views;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Apps\Calendars\Diaries\DiaryDate;
-use Sphp\Html\DateTime\TimeTag;
-use Sphp\Html\Div;
+use Sphp\DateTime\ImmutableDate;
+use Sphp\Html\Text\Time;
+use Sphp\Html\Layout\Div;
 use Sphp\Apps\Sports\Workouts\Workout;
 
 /**
@@ -80,15 +81,16 @@ class DayCell extends AbstractContent {
     if ($date->isCurrentDate()) {
       $div->addCssClass('today');
     }
-    if ($date->compareDateTo(\Sphp\DateTime\ImmutableDate::now()) > 0) {
+    if ($date->compareDateTo(ImmutableDate::now()) > 0) {
       $div->addCssClass('future');
     }
     return $div;
   }
 
-  protected function buildHeading(): TimeTag {
+  protected function buildHeading(): Time {
     $date = $this->diary->getDate();
-    $heading = new TimeTag($date, 'Y-m-d');
+    $heading = new Time();
+    $heading->setDateTime($date, 'Y-m-d');
     $heading->addCssClass('date-heading');
     $heading->append('<span class="date-number">' . $date->format('j') . '</span>');
     if ($this->diary->notEmpty()) {

@@ -26,9 +26,9 @@ interface SizeableMedia extends Content {
   /**
    * Sets the width and the height of the component (in pixels)
    * 
-   * @param  int $width the width of the component (in pixels))
-   * @param  int $height the height of the component (in pixels)
+   * @param  int|null $width the width of the component (in pixels))
+   * @param  int|null $height the height of the component (in pixels)
    * @return $this for a fluent interface
    */
-  public function setSize(int $width = null, int $height = null);
+  public function setSize(?int $width, ?int $height);
 }

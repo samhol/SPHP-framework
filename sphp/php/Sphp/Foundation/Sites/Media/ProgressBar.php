@@ -15,7 +15,7 @@ namespace Sphp\Foundation\Sites\Media;
 use Sphp\Html\AbstractComponent;
 use Sphp\Foundation\Sites\Core\Colourable;
 use Sphp\Foundation\Sites\Core\ColourableTrait;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Implements a Progress Bar

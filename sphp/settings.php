@@ -1,1 +1,1 @@
-<?phprequire_once __DIR__ . '/../vendor/autoload.php';require_once ('functions/functions.php');
+<?phprequire_once(__DIR__ . '/../vendor/autoload.php');require_once(__DIR__ . '/functions/functions.php');use Sphp\Config\PHP;PHP::config()        ->insertIncludePaths(__DIR__);define("Sphp\\FILE_ICON_MAP", __DIR__ . '/config/file-icon-map.yml');

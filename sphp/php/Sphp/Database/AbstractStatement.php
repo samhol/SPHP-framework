@@ -14,8 +14,7 @@ namespace Sphp\Database;
 
 use PDO;
 use PDOStatement;
-use PDOException;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Database\Exceptions\DatabaseException;
 
 /**
  * Abstract Base class for any executable `SQL` Statements
@@ -26,16 +25,12 @@ use Sphp\Exceptions\RuntimeException;
  */
 abstract class AbstractStatement implements Statement {
 
-  /**
-   * @var PDO
-   */
-  private $pdo;
+  private PDO $pdo;
 
   /**
    * Constructor
    *
-   * @param PDO $pdo a connection object between PHP and a database server
-   * @link  https://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @param PDO $pdo a connection object between PHP and a database server 
    */
   public function __construct(PDO $pdo) {
     $this->setPDO($pdo);
@@ -62,19 +57,22 @@ abstract class AbstractStatement implements Statement {
     return $this;
   }
 
-  public function getStatement(): PDOStatement {
+  public function prepare(): PDOStatement {
     try {
-      return $this->getPDO()->prepare($this->statementToString());
-    } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
+      return $this->getPDO()->prepare($this->getQueryString());
+    } catch (\Throwable $e) {
+      throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
     }
   }
 
   public function execute(): PDOStatement {
     try {
-      return $this->getParams()->executeIn($this->getStatement());
-    } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
+      $statement = $this->prepare();
+      $this->getParams()->bindTo($statement);
+      $statement->execute();
+      return $statement;
+    } catch (\Throwable $e) {
+      throw new DatabaseException($e->getMessage(), 0, $e);
     }
   }
 

@@ -25,7 +25,9 @@ use Sphp\Html\Media\Multimedia\Video;
  */
 class VideoTest extends TestCase {
 
-  public function testConstructor() {
+  use \Sphp\Tests\Html\Media\SizeableMediaTestTrait;
+
+  public function testConstructor(): Video {
     $video = new Video();
     $this->assertSame('video', $video->getTagName());
     $this->assertFalse($video->attributeExists('controls'));

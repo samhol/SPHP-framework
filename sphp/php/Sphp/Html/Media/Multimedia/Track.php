@@ -53,7 +53,7 @@ class Track extends EmptyTag implements MultimediaSource {
    * @param  bool $default true if the track is default, otherwise false
    * @return $this for a fluent interface
    */
-  public function setDefault($default = true) {
+  public function setDefault(bool $default = true) {
     return $this->setAttribute('default', (bool) $default);
   }
 

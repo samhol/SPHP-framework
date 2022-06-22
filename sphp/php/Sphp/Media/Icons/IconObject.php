@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Media\Icons;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Sections\I;
+use Sphp\Html\Text\I;
 
 /**
  * The IconObject class
@@ -32,6 +32,10 @@ class IconObject extends AbstractContent implements Icon {
     $this->icon->addCssClass($iconName);
   }
 
+  public function __destruct() {
+    unset($this->icon);
+  }
+
   public function createTag(): I {
     return clone $this->icon;
   }
@@ -40,12 +44,6 @@ class IconObject extends AbstractContent implements Icon {
     return $this->icon->getHtml();
   }
 
-  /**
-   * Sets the title of the icon
-   * 
-   * @param  string $title the title of the icon
-   * @return $this for a fluent interface
-   */
   public function setTitle(?string $title = null) {
     $this->icon->setAttribute('title', $title);
     if ($title !== null) {
@@ -54,12 +52,6 @@ class IconObject extends AbstractContent implements Icon {
     return $this;
   }
 
-  /**
-   * Set whether the icon is for decoration only
-   * 
-   * @param  bool $decorative
-   * @return $this for a fluent interface
-   */
   public function setDecorative(bool $decorative) {
     if ($decorative === true) {
       $this->icon->attributes()->setAttribute('aria-hidden', 'true');

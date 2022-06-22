@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Html;
 
-use ArrayAccess;
-
 /**
  * Defines the properties required from a traversable HTML component container with
  *

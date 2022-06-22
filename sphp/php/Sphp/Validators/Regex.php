@@ -33,9 +33,7 @@ class Regex extends AbstractValidator {
   const NOT_MATCH = '_regex_';
 
   /**
-   * regular expression pattern to validate against
-   *
-   * @var string
+   * regular expression pattern to validate against 
    */
   private string $pattern = "//";
 
@@ -64,7 +62,7 @@ class Regex extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (in_array($value, $this->skipped)) {
       return true;

@@ -154,7 +154,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @return $this for a fluent interface
    * @throws ConfigurationException if the Configuration is read only
    */
-  public function set(string $varname, $value) {
+  public function set(string $varname, mixed $value) {
     if (!$this->isReadOnly()) {
       if (is_array($value)) {
         $this->data[$varname] = new static($value, $this->isReadOnly());
@@ -188,7 +188,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @param  mixed $value the value to set
    * @throws ConfigurationException if the object is read only
    */
-  public function __set(string $varname, $value) {
+  public function __set(string $varname, mixed $value) {
     $this->set($varname, $value);
   }
 
@@ -251,7 +251,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @param  string $varname the name of the variable
    * @return bool true on success or false on failure
    */
-  public function offsetExists($varname): bool {
+  public function offsetExists(mixed $varname): bool {
     return $this->contains($varname);
   }
 
@@ -262,7 +262,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @return mixed the value of the given offset
    * @throws ConfigurationException if the Configuration does not contain variable
    */
-  public function offsetGet($varname) {
+  public function offsetGet(mixed $varname): mixed {
     return $this->get($varname);
   }
 
@@ -274,7 +274,7 @@ class Config implements Arrayable, IteratorAggregate, ArrayAccess, Countable {
    * @return void
    * @throws ConfigurationException if the object is read only
    */
-  public function offsetSet($varname, $value): void {
+  public function offsetSet(mixed $varname, mixed $value): void {
     $this->set($varname, $value);
   }
 

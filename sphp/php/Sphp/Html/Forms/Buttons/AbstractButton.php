@@ -17,7 +17,7 @@ use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * An abstract implementation of an HTML &lt;button type="submit|reset|button|image" tag
+ * An abstract implementation of an HTML button tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    https://www.w3schools.com/tags/tag_button.asp w3schools API
@@ -25,21 +25,34 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractButton extends ContainerTag implements ButtonInterface {
+abstract class AbstractButton extends ContainerTag implements Button {
 
   /**
    * Constructor
    *
    * @param string $tagname the tag name of the component
    * @param string $type button type (the value of type attribute)
-   * @param string|null $content the content of the button
+   * @param mixed $content the content of the button
    */
-  public function __construct(string $tagname, string $type, $content = null) {
+  public function __construct(string $tagname, string $type, mixed $content = null) {
     if (!Strings::match($type, "/^(submit|reset|button|image)$/")) {
       throw new InvalidArgumentException("Illegal form button type '$type'");
     }
     parent::__construct($tagname, $content);
     $this->attributes()->protect('type', $type);
+  }
+
+  public function getName(): ?string {
+    return $this->attributes()->getStringValue('name');
+  }
+
+  public function setName(?string $name) {
+    $this->attributes()->setAttribute('name', $name);
+    return $this;
+  }
+
+  public function isNamed(): bool {
+    return $this->attributes()->isVisible('name');
   }
 
   public function disable(bool $disabled = true) {
@@ -49,6 +62,28 @@ abstract class AbstractButton extends ContainerTag implements ButtonInterface {
 
   public function isEnabled(): bool {
     return !$this->attributes()->isVisible('disabled');
+  }
+
+  /**
+   * Returns the value of the value attribute.
+   *
+   * @return string the value of the value attribute
+   * @link   https://www.w3schools.com/tags/att_button_value.asp value attribute
+   */
+  public function getValue() {
+    return $this->attributes()->getValue('value');
+  }
+
+  /**
+   * Sets the value of the value attribute.
+   *
+   * @param  scalar|null $value the value of the value attribute
+   * @return $this for a fluent interface
+   * @link   https://www.w3schools.com/tags/att_button_value.asp value attribute
+   */
+  public function setValue($value) {
+    $this->attributes()->setAttribute('value', $value);
+    return $this;
   }
 
 }

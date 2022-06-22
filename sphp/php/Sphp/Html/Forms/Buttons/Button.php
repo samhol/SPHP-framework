@@ -12,24 +12,42 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Forms\Buttons;
 
+use Sphp\Html\Forms\FormController;
+
 /**
- * Implementation of an HTML button type="button" tag
- *
+ * Defines HTML buttons used in HTML forms
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    https://www.w3schools.com/tags/tag_button.asp w3schools API
- * @link    https://www.w3.org/html/wg/drafts/html/master/forms.html#the-button-element W3C API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Button extends AbstractButton {
+interface Button extends FormController {
+  
+  /**
+   * Returns the name of the form input
+   *
+   * @return string|null the name of the form input
+   */
+  public function getName(): ?string;
 
   /**
-   * Constructor
+   * Sets the name of the input
    *
-   * @param  mixed $content the content of the button tag
+   * **Note:** Only form elements with a name attribute will have their values 
+   * passed when submitting a form.
+   *
+   * @param  string|null $name the name of the input
+   * @return $this for a fluent interface
    */
-  public function __construct($content = null) {
-    parent::__construct('button', 'button', $content);
-  }
+  public function setName(?string $name);
 
+  /**
+   * Checks whether the form input has a name
+   *
+   * **Note:** Only form elements with a name attribute will have their values 
+   * passed when submitting a form.
+   *
+   * @return bool true if the input has a name, otherwise false
+   */
+  public function isNamed(): bool;
 }

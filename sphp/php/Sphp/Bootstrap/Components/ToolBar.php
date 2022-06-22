@@ -16,7 +16,8 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Bootstrap\Components\Forms\InputGroup;
-use Sphp\Html\Forms\Buttons\ButtonInterface;
+use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Forms\Buttons\PushButton;
 
 /**
  * The ToolBar class
@@ -31,7 +32,7 @@ class ToolBar extends AbstractComponent {
   /**
    * @var PlainContainer
    */
-  private $groups;
+  private PlainContainer $groups;
 
   public function __construct(string $ariaLabel = null) {
     parent::__construct('div');
@@ -91,18 +92,28 @@ class ToolBar extends AbstractComponent {
     return $this->groups->getHtml();
   }
 
-  public function appendButton(ButtonInterface $button): ButtonGroup {
+  public function appendButton(Button $button): ButtonGroup {
     $group = new ButtonGroup();
     $group->appendButton($button);
     $this->addGroup($group);
     return $group;
   }
 
-  public function append($content): ButtonGroup {
+  public function append($content = null): ButtonGroup {
     $group = new ButtonGroup();
-    $group->append($content);
+    if ($content !== null) {
+      $group->append($content);
+    }
     $this->groups->append($group);
     return $group;
   }
 
+  public function appendButtonGroup($content = null): ButtonGroup {
+    $group = new ButtonGroup();
+    if ($content !== null) {
+      $group->append($content);
+    }
+    $this->groups->append($group);
+    return $group;
+  }
 }

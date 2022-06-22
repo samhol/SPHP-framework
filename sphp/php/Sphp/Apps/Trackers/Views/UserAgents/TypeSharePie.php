@@ -15,7 +15,7 @@ namespace Sphp\Apps\Trackers\Views\UserAgents;
 use Sphp\Html\AbstractContent;
 use Sphp\Html\Scripts\Script;
 use Sphp\Html\Scripts\ExternalScript;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Class TypeSharePie

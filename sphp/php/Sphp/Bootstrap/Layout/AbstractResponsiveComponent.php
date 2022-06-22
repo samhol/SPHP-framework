@@ -109,7 +109,8 @@ abstract class AbstractResponsiveComponent extends AbstractComponent implements 
    */
   public function __call(string $name, array $arguments) {
     if (!in_array($name, $this->getBreakpoints())) {
-      throw new BadMethodCallException("'$name' is not a valid method");
+      print_r($arguments,true);
+      throw new BadMethodCallException("'$name' is not a valid method".print_r($arguments,true));
     }
     if (count($arguments) !== 1) {
       throw new BadMethodCallException("Invalid number of arguments given");
@@ -134,7 +135,7 @@ abstract class AbstractResponsiveComponent extends AbstractComponent implements 
    * @return $this for a fluent interface
    * @throws BootstrapException if invalid layout parameter was given
    */
-  public function setLayouts(... $layout) {
+  public function setLayouts(string|int ... $layout) {
     foreach ($layout as $seed) {
       $params = explode('-', (string) $seed);
       if (count($params) === 1) {

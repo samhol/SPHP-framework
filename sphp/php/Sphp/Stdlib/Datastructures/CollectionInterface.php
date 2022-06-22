@@ -33,7 +33,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * @param  mixed $value element
    * @return $this for a fluent interface
    */
-  public function append($value);
+  public function append(mixed $value);
 
   /**
    * Prepends a new value as the first element
@@ -45,7 +45,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * @param  mixed $value the value being prepended
    * @return $this for a fluent interface
    */
-  public function prepend($value);
+  public function prepend(mixed $value);
 
   /**
    * Determine if the collection is empty or not
@@ -68,7 +68,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * @param  mixed $value the value to search for
    * @return bool `true` on success or `false` on failure
    */
-  public function contains($value);
+  public function contains(mixed $value);
 
   /**
    * Removes all instances of the given value
@@ -77,5 +77,5 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * @param  mixed $value the value to remove
    * @return $this for a fluent interface
    */
-  public function remove($value);
+  public function remove(mixed $value);
 }

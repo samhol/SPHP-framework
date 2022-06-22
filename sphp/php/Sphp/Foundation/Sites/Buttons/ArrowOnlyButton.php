@@ -25,7 +25,7 @@ use Sphp\Foundation\Foundation;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, ScreenReaderLabelable {
+class ArrowOnlyButton extends AbstractComponent implements Button, ScreenReaderLabelable {
 
   use ButtonTrait;
 

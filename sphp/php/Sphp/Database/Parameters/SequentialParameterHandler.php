@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /**
  * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
@@ -10,101 +11,123 @@
 
 namespace Sphp\Database\Parameters;
 
-use ArrayAccess;
-use PDO;
+use IteratorAggregate;
 use Traversable;
-use Sphp\Exceptions\InvalidArgumentException;
+use PDOStatement;
+use PDOException;
+use Sphp\Database\Exceptions\DatabaseException;
 
 /**
- * Sequential parameter handler
+ * Abstract implementation of parameter handler
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class SequentialParameterHandler extends AbstractParameterHandler implements ArrayAccess {
+class SequentialParameterHandler implements IteratorAggregate, ParameterHandler {
+
+  /**
+   * @var Parameter[]
+   */
+  private array $parameters;
 
   /**
    * Constructor
-   * 
-   * @param mixed $params
    */
-  public function __construct($params = null) {
-    parent::__construct();
-    if ($params !== null) {
-      $this->appendParams($params);
-    }
+  public function __construct() {
+    $this->parameters = [];
   }
 
   /**
-   * 
-   * @param  mixed $value
-   * @param  int $type
-   * @return $this for a fluent interface
-   */
-  public function appendParam($value, int $type = PDO::PARAM_STR) {
-    $name = $this->count() + 1;
-    $this->setParam($name, $value, $type);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param array|Traversable $params
-   * @param int $type
-   * @return $this for a fluent interface
-   */
-  public function appendParams($params, int $type = PDO::PARAM_STR) {
-    foreach ($params as $value) {
-      $this->appendParam($value, $type);
-    }
-    return $this;
-  }
-
-  public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    if ($name !== null && (!is_int($name) || $name <= 0)) {
-      throw new InvalidArgumentException('Offset must be zero or a positive integer');
-    }
-    if ($name === null) {
-      $name = $this->count() + 1;
-    }
-    parent::setParam($name, $value, $type);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  array|Traversable $params
-   * @return $this for a fluent interface
-   * @throws InvalidArgumentException
-   */
-  public function mergeParams($params) {
-    if (!is_array($params) && !$params instanceof \Traversable) {
-      throw new InvalidArgumentException('Merged data must be an iterable object or an array');
-    }
-    foreach ($params as $name => $value) {
-      if (is_int($name)) {
-        $this[$name] = $value;
-      } else {
-        $this[] = $value;
-      }
-    }
-    return $this;
-  }
-
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
+   * Destroys the instance
    *
-   * @param  array $params
-   * @param  int $type
-   * @return $this for a fluent interface
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
    */
-  public function setParams(array $params, int $type = PDO::PARAM_STR) {
-    foreach ($params as $name => $value) {
-      $this->setParam($name, $value, $type);
+  public function __destruct() {
+    unset($this->parameters);
+  }
+
+  /**
+   * Clones the instance
+   */
+  public function __clone() {
+    foreach ($this->parameters as $index => $parameter) {
+      $this->parameters[$index] = clone $parameter;
+    }
+  }
+
+  /**
+   * Creates and appends new parameter(s) to the handler
+   * 
+   * @param  mixed $values value(s) for new parameter(s)
+   * @param  int|null $type optional PDO parameter type for new parameter(s)
+   * @return $this for a fluent interface
+   * @see    Parameter
+   */
+  public function appendNewParams(mixed $values, ?int $type = null) {
+    if (is_iterable($values)) {
+      foreach ($values as $value) {
+        $this->appendNewParams($value, $type);
+      }
+    } else {
+      $this->appendParam(new Parameter($values, $type));
     }
     return $this;
+  }
+
+  /**
+   * Appends new parameter(s) to the handler
+   * 
+   * @param  Parameter $p
+   * @return $this for a fluent interface
+   */
+  public function appendParam(Parameter $p) {
+    if ($this->isEmpty()) {
+      $this->parameters[1] = $p;
+    } else {
+      $this->parameters[] = $p;
+    }
+    return $this;
+  }
+
+  /**
+   * Appends parameter(s) from a collection
+   * 
+   * @param  iterable<Parameter> $params
+   * @return $this for a fluent interface
+   */
+  public function appendParams(iterable $params) {
+    foreach ($params as $value) {
+      $this->appendParam($value);
+    }
+    return $this;
+  }
+
+  public function isEmpty(): bool {
+    return empty($this->parameters);
+  }
+
+  public function count(): int {
+    return count($this->parameters);
+  }
+
+  public function bindTo(PDOStatement $statement): void {
+    try {
+      foreach ($this->parameters as $index => $param) {
+        $statement->bindValue($index, $param->getValue(), $param->getType());
+      }
+    } catch (PDOException $e) {
+      throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
+    }
+  }
+
+  /**
+   * 
+   * @return Traversable<int, Parameter>
+   */
+  public function getIterator(): Traversable {
+    yield from $this->parameters;
   }
 
 }

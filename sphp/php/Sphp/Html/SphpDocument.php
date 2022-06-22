@@ -117,7 +117,7 @@ class SphpDocument extends AbstractContent {
    */
   public function useFontAwesome(string $id = null) {
     $this->head()->meta()->insert((new ExternalScript("https://kit.fontawesome.com/$id.js"))
-                    ->setDefer(true));
+                    ->setIntegrity(null, 'anonymous')->setDefer(true));
     return $this;
   }
 

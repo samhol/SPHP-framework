@@ -79,7 +79,7 @@ class Router {
    *
    * @var PriorityQueue
    */
-  private $routes;
+  private PriorityQueue $routes;
 
   /**
    * Constructor
@@ -120,7 +120,7 @@ class Router {
    * @return void
    * @throws IllegalStateException
    */
-  public function execute($url): void {
+  public function execute($url = null): void {
     if ($this->isEmpty()) {
       throw new IllegalStateException('The router is empty and cannot be executed');
     }
@@ -136,21 +136,24 @@ class Router {
         // A routing rule was matched
         $routeFound = true;
         // Parameters to pass to the callback function
-        $params = [$path];
+        $params = [];
         // Get any named parameters from the route
         foreach ($matches as $key => $match) {
           if (is_string($key)) {
-            $params[] = $match;
+            $params[$key] = $match;
           }
         }
+
+        $routeData = new RouteData($path, $params);
         // execute the callback and stop
-        call_user_func_array($callback, $params);
+        call_user_func($callback, $routeData);
         break;
       }
     }
     // Was a match found or should we execute the default callback?
     if (!$routeFound && $this->defaultRoute !== null) {
-      call_user_func_array($this->defaultRoute, [$path]);
+      $routeData = new RouteData($path);
+      call_user_func($this->defaultRoute, $routeData);
       $routeFound = true;
     }
     if (!$routeFound) {
@@ -164,8 +167,7 @@ class Router {
    * @param  string   $route
    * @param  callable $callback
    * @param  integer  $priority
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @return $this for a fluent interface 
    */
   public function route(string $route, $callback, int $priority = 10) {
     // Make sure the route ends in a / since all of the URLs will

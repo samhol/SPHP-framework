@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Apps\Sports\Views;
 
-use Sphp\Html\Forms\ContainerForm;
+use Sphp\Html\Forms\Form;
 use Sphp\Bootstrap\Components\ToolBar;
 use Sphp\DateTime\ImmutableDate;
 use Sphp\Html\Forms\Inputs\TextInput;
@@ -32,7 +32,7 @@ class WorkoutSelectorForm {
     if ($date !== null) {
       $val = $date->format('Y-m-d');
     }
-    $form = new ContainerForm('/workouts', 'get');
+    $form = new Form('/workouts', 'get');
     $tb = new ToolBar('Daily Workouts selection tools');
     $tb->addCssClass('m-2');
     $prev = $date->jumpDays(-1)->format('Y-m-d');
@@ -46,7 +46,7 @@ class WorkoutSelectorForm {
 
     $next = $date->jumpDays(1)->format('Y-m-d');
     $tb->appendHyperlink("/workouts/?date=$next", '<i class="fas fa-caret-right fa-lg"></i>')->addCssClass('mr-1 mb-1');
-    $submitter = new \Sphp\Html\Forms\Buttons\Submitter('<i class="fas fa-search"></i> <strong>FIND</strong>');
+    $submitter = new \Sphp\Html\Forms\Buttons\SubmitButton('<i class="fas fa-search"></i> <strong>FIND</strong>');
     $submitter->addCssClass('btn-success');
     $tb->appendButton($submitter)->addCssClass('mr-1 mb-1');
     $form->append($tb);

@@ -75,7 +75,7 @@ abstract class MediaTag extends AbstractComponent implements MediaPlayer, Iterat
    * @link   https://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   https://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function addSource(string $src, string $type = null): Source {
+  public function addSource(string $src, ?string $type = null): Source {
     $source = new Source($src, $type);
     $this->addMultimediaSource($source);
     return $source;
@@ -174,7 +174,7 @@ abstract class MediaTag extends AbstractComponent implements MediaPlayer, Iterat
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
-  public function setPreload(string $preload = null) {
+  public function setPreload(?string $preload) {
     $this->setAttribute('preload', $preload);
     return $this;
   }

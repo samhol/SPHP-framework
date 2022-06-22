@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation;
 
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Foundation\Sites\Core\ScreenSizes;
 

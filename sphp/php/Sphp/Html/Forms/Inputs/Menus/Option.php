@@ -27,11 +27,11 @@ class Option extends SimpleTag implements MenuComponent {
   /**
    * Constructor
    *
-   * @param scalar|null $value value attribute
-   * @param string|null $content the content text of the option
+   * @param string|int|float|null $value value attribute
+   * @param string|int|float|null $content the content text of the option
    * @link  https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
-  public function __construct($value = null, ?string $content = null) {
+  public function __construct(string|int|float|null $value = null, string|int|float|null $content = null) {
     parent::__construct('option');
     if ($value !== null) {
       $this->setValue($value);
@@ -42,21 +42,21 @@ class Option extends SimpleTag implements MenuComponent {
   /**
    * Returns the value of the value attribute
    *
-   * @return  string the value of the value attribute
+   * @return  string|int|float|null the value of the value attribute
    * @link    https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
-  public function getValue() {
+  public function getValue():string|int|float|null {
     return $this->attributes()->getValue('value');
   }
 
   /**
    * Sets the value of the value attribute
    *
-   * @param  string $value the value of the value attribute
+   * @param  string|int|float|null $value the value of the value attribute
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
-  public function setValue($value) {
+  public function setValue(string|int|float|null $value) {
     $this->attributes()->setAttribute('value', $value);
     return $this;
   }

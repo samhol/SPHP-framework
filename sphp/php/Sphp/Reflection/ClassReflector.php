@@ -172,7 +172,7 @@ class ClassReflector extends ReflectionClass implements ExtensionReflectable {
    * 
    * @return array<string, ClassConstantReflector>
    */
-  public function getReflectionConstants(): array {
+  public function getReflectionConstants(?int $filter = null): array {
     $data = [];
     foreach (array_keys($this->getConstants()) as $constant) {
       $data[$constant] = new ClassConstantReflector($this->name, $constant);

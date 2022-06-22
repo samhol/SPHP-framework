@@ -16,7 +16,7 @@ use Sphp\Documentation\Linkers\AbstractItemLinker;
 use Sphp\Documentation\Linkers\HyperlinkFactory;
 use Sphp\Reflection\ClassReflector;
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Navigation\Nav;
 use Sphp\Stdlib\Strings;
 use Sphp\Reflection\Exceptions\ReflectionException;
@@ -71,9 +71,9 @@ final class ClassLinker extends AbstractItemLinker {
   public function __invoke(string $member): ?ItemLinker {
     try {
       $link = null;
-      if (Strings::endsWith($member, '()')) {
+      if (str_ends_with($member, '()')) {
         $link = $this->methodLink($member);
-      } else if (Strings::startsWith($member, '$')) {
+      } else if (str_starts_with($member, '$')) {
         $link = $this->propertyLink(Strings::replace($member, '$', ''));
       } else if ($this->ref->hasConstant($member)) {
         $link = $this->constantLink($member);
@@ -110,7 +110,7 @@ final class ClassLinker extends AbstractItemLinker {
    * @throws ReflectionException
    */
   public function methodLink(string $method): MethodLinker {
-    if (Strings::endsWith($method, '()')) {
+    if (str_ends_with($method, '()')) {
       $method = Strings::replace($method, '()', '');
     }
     return MethodLinker::create($this->getClassName(), $method, $this->urlGen, $this->cloneHyperlinkFactory());

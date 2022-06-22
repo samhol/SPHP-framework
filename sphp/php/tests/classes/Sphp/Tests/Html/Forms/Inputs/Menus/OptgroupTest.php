@@ -12,8 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Html\Forms\Inputs\Menus;
 
-use PHPUnit\Framework\TestCase;
-use Sphp\Html\Forms\Inputs\Menus\Select;
+use PHPUnit\Framework\TestCase; 
 use Sphp\Html\Forms\Inputs\Menus\Optgroup;
 use Sphp\Html\Forms\Inputs\Menus\Option;
 
@@ -37,10 +36,10 @@ class OptgroupTest extends TestCase {
   /**
    * @dataProvider constructorData
    * 
-   * @param  string $name
+   * @param  string|null $name
    * @return void
    */
-  public function testConstructor(string $name = null): void {
+  public function testConstructor(?string $name = null): void {
     $obj = new Optgroup($name);
     $this->assertSame($name, $obj->getAttribute('label'));
     $this->assertCount(0, $obj);

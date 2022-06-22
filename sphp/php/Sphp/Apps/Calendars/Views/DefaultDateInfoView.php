@@ -14,7 +14,7 @@ namespace Sphp\Apps\Calendars\Views;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Apps\Calendars\Diaries\DiaryDateInterface;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 
 /**
  * The DefaultDateInfoView class

@@ -62,7 +62,7 @@ class HyperlinkFactory {
   /**
    * Adds CSS class(es) to the factory
    * 
-   * @param  string,... $class
+   * @param  string ... $class
    * @return $this for a fluent interface
    */
   public function useCssClass(string ...$class) {
@@ -73,7 +73,7 @@ class HyperlinkFactory {
   /**
    * Add a CSS class(es) to the factory
    * 
-   * @param  string,... $class
+   * @param  string ... $class
    * @return $this for a fluent interface
    */
   public function removeCssClass(string ...$class) {

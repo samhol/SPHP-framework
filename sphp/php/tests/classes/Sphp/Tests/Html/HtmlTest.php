@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 use Sphp\Html\Html;
 use Sphp\Html\Head\Head;
 use Sphp\Html\Body;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Implementation of HtmlTest
@@ -39,8 +39,8 @@ class HtmlTest extends TestCase {
    */
   public function constructorParamsData(): array {
     $data = [];
-    $data[] = ['title'];
-    $data[] = ['title', 'utf-16'];
+    $data[] = ['title', null, null];
+    $data[] = ['title', 'utf-16', null];
     $data[] = ['title', 'utf-16', 'fi'];
     $data[] = [null, 'utf-16', 'fi'];
     return $data;
@@ -49,11 +49,12 @@ class HtmlTest extends TestCase {
   /**
    * @dataProvider constructorParamsData
    * 
-   * @param string $title
-   * @param string $charset
-   * @param string $lang
+   * @param string|null $title
+   * @param string|null $charset
+   * @param string|null $lang
+   * @return void
    */
-  public function testConstructorWithParams(string $title = null, string $charset = null, string $lang = null): void {
+  public function testConstructorWithParams(?string $title, ?string $charset, ?string $lang): void {
     $htmlTag = new Html($title, $charset, $lang);
     $head = new Head($title, $charset);
     $this->assertSame($lang, $htmlTag->getAttribute('lang'));

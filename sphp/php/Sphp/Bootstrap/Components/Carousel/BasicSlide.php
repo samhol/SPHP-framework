@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Bootstrap\Components\Carousel;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Container;
 
 /**
@@ -27,13 +27,15 @@ use Sphp\Html\Container;
 class BasicSlide extends AbstractContent implements Slide {
 
   private Div $content;
+  private ?string $name;
 
   /**
    * Constructor
    *
    * @param mixed $content the inner component
    */
-  public function __construct($content = null) {
+  public function __construct($content = null, ?string $name = null) {
+    $this->name = $name;
     $this->content = new Div();
     $this->content->addCssClass('carousel-item');
     if ($content !== null) {
@@ -56,19 +58,27 @@ class BasicSlide extends AbstractContent implements Slide {
 
   public function setActive(bool $active = true) {
     if ($active) {
-      $this->content->cssClasses()->add('active');
+      $this->content->addCssClass('active');
     } else {
-      $this->content->cssClasses()->remove('active');
+      $this->content->removeCssClass('active');
     }
     return $this;
   }
 
   public function isActive(): bool {
-    return $this->content->cssClasses()->contains('active');
+    return $this->content->hasCssClass('active');
   }
 
   public function getHtml(): string {
     return (string) $this->content;
+  }
+
+  public function getSlideName(): ?string {
+    return $this->name;
+  }
+
+  public function setTimeDelay(?int $delay) {
+    $this->content->setAttribute('data-bs-interval', $delay);
   }
 
 }

@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Apps\Forms;
 
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Forms\ContainerForm;
+use Sphp\Html\Forms\Form;
 
 /**
  * Implements a Sami PHP API search form
@@ -36,7 +36,7 @@ class SamiApiSearchFormBuilder extends AbstractSearchFormBuilder {
    * @param string $apiRoot
    */
   public function __construct(string $apiRoot) {
-    if (!Strings::endsWith($apiRoot, '/search.html')) {
+    if (!str_ends_with($apiRoot, '/search.html')) {
       $apiRoot = Strings::trimRight($apiRoot, '/') . '/search.html';
     }
     $this->apiRoot = $apiRoot;
@@ -44,8 +44,8 @@ class SamiApiSearchFormBuilder extends AbstractSearchFormBuilder {
     $this->getSearchField()->setName('search');
   }
 
-  public function createEmptyForm(): ContainerForm {
-    $form = new ContainerForm($this->apiRoot, 'get');
+  public function createEmptyForm(): Form {
+    $form = new Form($this->apiRoot, 'get');
     $form->addCssClass('sphp', 'search-form');
     return $form;
   }

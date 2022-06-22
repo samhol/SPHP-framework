@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Stdlib\Strings;
-
 /**
  * A component containing multiple {@link Checkbox} inputs
  *
@@ -43,7 +41,7 @@ class Checkboxes extends Choiceboxes {
    * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function setName(string $name = null) {
-    if (!Strings::endsWith($name, '[]')) {
+    if (!str_ends_with($name, '[]')) {
       $name .= '[]';
     }
     parent::setName($name);

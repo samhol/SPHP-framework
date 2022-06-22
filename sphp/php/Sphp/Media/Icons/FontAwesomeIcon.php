@@ -86,7 +86,7 @@ class FontAwesomeIcon extends IconObject {
   public function setSize(?string $size = null) {
     $this->icon->cssClasses()->removePattern('/^(fa-(xs|sm|lg|([2-9]|10)x))+$/');
     if ($size !== null) {
-      if (!Strings::startsWith($size, 'fa-')) {
+      if (!str_starts_with($size, 'fa-')) {
         $size = 'fa-' . $size;
       }
       if (Strings::match($size, '/^(fa-(xs|sm|lg|([2-9]|10)x))+$/')) {

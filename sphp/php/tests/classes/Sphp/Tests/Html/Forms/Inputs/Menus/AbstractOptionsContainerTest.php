@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Tests\Html\Forms\Inputs\Menus;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Forms\Inputs\Menus\AbstractOptions;
+use Sphp\Html\Forms\Inputs\Menus\AbstractOptionContainer;
 use Sphp\Html\Forms\Inputs\Menus\Option;
 
 /**
@@ -26,28 +26,29 @@ use Sphp\Html\Forms\Inputs\Menus\Option;
  */
 class AbstractOptionsContainerTest extends TestCase {
 
-  public function buildContainer(string $tagName = 'option'): AbstractOptions {
-    return $this->getMockForAbstractClass(AbstractOptions::class, [$tagName]);
+  public function buildContainer(string $tagName = 'option'): AbstractOptionContainer {
+    return $this->getMockForAbstractClass(AbstractOptionContainer::class, [$tagName]);
   }
 
-  public function testConstructor(): AbstractOptions {
+  public function testConstructor(): AbstractOptionContainer {
     $tagName = 'foo';
-    $obj = $this->getMockForAbstractClass(AbstractOptions::class, [$tagName]);
+    $obj = $this->getMockForAbstractClass(AbstractOptionContainer::class, [$tagName]);
 
     // $this->expectOutputString($Hidden->getHtml());
     //$mock->printHtml();
-    if ($obj instanceof AbstractOptions) {
+    if ($obj instanceof AbstractOptionContainer) {
       $this->assertSame($tagName, $obj->getTagName());
     }
     return $obj;
   }
 
-
   /**
-   * @param array $options
+   * @depends testConstructor
+   * 
+   * @param  AbstractOptionContainer $obj
+   * @return AbstractOptionContainer
    */
-  public function testObjectInsertion() {
-    $obj = $this->buildContainer();
+  public function testObjectInsertion(AbstractOptionContainer $obj): AbstractOptionContainer {
     $this->assertCount(0, $obj);
     $opt = $obj->appendOption('foo', 'select foo');
     $this->assertInstanceOf(Option::class, $opt);
@@ -61,6 +62,22 @@ class AbstractOptionsContainerTest extends TestCase {
     $this->assertSame($obj, $obj->prepend($opt2));
     $this->assertCount(3, $obj);
     return $obj;
+  }
+
+  /**
+   * @depends testObjectInsertion
+   * 
+   * @param AbstractOptionContainer $obj
+   * @return void
+   */
+  public function testCloning(AbstractOptionContainer $obj): void {
+    $clone = clone $obj;
+    $optArr = iterator_to_array($obj, true);
+    $this->assertEquals($obj, $clone);
+    foreach ($clone as $key => $value) {
+      $this->assertNotSame($value, $optArr[$key]);
+      $this->assertEquals($value, $optArr[$key]);
+    }
   }
 
 }

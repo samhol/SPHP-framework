@@ -33,10 +33,10 @@ abstract class Arrays {
    * 
    * @param  array $array the array to manipulate
    * @param  mixed $key the key of the new current element
-   * @return array manipulated array 
+   * @return void
    * @throws OutOfBoundsException if the key does not exist in the array
    */
-  public static function pointToKey(array &$array, $key) {
+  public static function pointToKey(array &$array, $key): void {
     reset($array);
     while (!in_array(key($array), [$key, null], true)) {
       next($array);
@@ -44,7 +44,6 @@ abstract class Arrays {
     if (key($array) === null) {
       throw new OutOfBoundsException("Key '$key' does not exist in the array");
     }
-    return $array;
   }
 
   /**
@@ -52,15 +51,15 @@ abstract class Arrays {
    * 
    * @param  array $array the array to manipulate
    * @param  mixed $value the value of the new current element
-   * @return array manipulated array 
+   * @return void
    * @throws OutOfBoundsException if the value does not exist in the array
    */
-  public static function pointToValue(array &$array, $value) {
+  public static function pointToValue(array &$array, $value): void {
     $key = array_search($value, $array, true);
     if ($key === false) {
       throw new OutOfBoundsException('Value does not exist in the array');
     }
-    return static::pointToKey($array, $key);
+    static::pointToKey($array, $key);
   }
 
   /**
@@ -147,25 +146,6 @@ abstract class Arrays {
   }
 
   /**
-   * Checks if the array has a key starting with the needle
-   * 
-   * @param  array $arr the array to search from
-   * @param  string $needle the phrase to search for
-   * @return bool true if the array has a key starting with the needle, otherwise false
-   */
-  public static function hasKeysStartingWith(array $arr, string $needle): bool {
-    $keys = array_keys($arr);
-    $result = false;
-    foreach ($keys as $key) {
-      if (Strings::startsWith($key, $needle)) {
-        $result = true;
-        break;
-      }
-    }
-    return $result;
-  }
-
-  /**
    * Checks if each key is an integer value
    *
    * @param array $arr checked array
@@ -226,6 +206,21 @@ abstract class Arrays {
       $string[] = "{$key}{$glue}{$val}";
     }
     return implode($separator, $string);
+  }
+
+  /**
+   * Checks if the array is multidimensional or not
+   * 
+   * @param  array $array an array to check
+   * @return bool true if multidimensional, otherwise false
+   */
+  public static function isMultidimensional(array $array): bool {
+    foreach ($array as $val) {
+      if (is_array($val)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -291,25 +286,6 @@ abstract class Arrays {
       $return[] = $a;
     });
     return $return;
-  }
-
-  /**
-   * 
-   * @param  mixed $object
-   * @return array
-   * @throws InvalidArgumentException if the type cannot be transformed to an array
-   */
-  public static function toArray($object): array {
-    if (is_array($object)) {
-      $out = $object;
-    } else if (is_iterable($object)) {
-      $out = iterator_to_array($object);
-    } else if ($object instanceof Arrayable) {
-      $out = $object->toArray();
-    } else {
-      throw new InvalidArgumentException('Input type cannot be transformed to an array');
-    }
-    return $out;
   }
 
 }

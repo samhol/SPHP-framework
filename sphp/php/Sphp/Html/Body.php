@@ -27,8 +27,6 @@ use Sphp\Html\Scripts\ScriptsContainer;
  */
 class Body extends ContainerTag implements ContentParser {
 
-  use ContentParserTrait;
-
   /**
    * @var ScriptsContainer 
    */

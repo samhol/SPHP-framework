@@ -33,21 +33,17 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @link    https://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
  * @filesource
  */
-class Optgroup extends AbstractOptions implements MenuComponent {
+class Optgroup extends AbstractOptionContainer implements MenuComponent {
 
   /**
    * Constructor
    *  
-   * @param string|null $label specifies a label for an option-group
-   * @param iterable|null $data the data content
+   * @param string|null $label specifies a label for an option-group 
    */
-  public function __construct(?string $label = null, ?iterable $data = null) {
+  public function __construct(?string $label = null) {
     parent::__construct('optgroup');
     if ($label !== null) {
       $this->setLabel($label);
-    }
-    if ($data !== null) {
-      $this->appendOptions($data);
     }
   }
 

@@ -37,7 +37,7 @@ class SmallerThan extends AbstractLimitValidator {
     $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not smaller than or equal to %d');
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->max < $value) {

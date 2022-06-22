@@ -28,7 +28,7 @@ use Sphp\Html\Forms\Inputs\HiddenInput;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class AbstractForm extends AbstractComponent implements Form {
+abstract class AbstractForm extends AbstractComponent implements HtmlForm {
 
   private HiddenInputs $hiddenInputs;
 
@@ -100,10 +100,24 @@ abstract class AbstractForm extends AbstractComponent implements Form {
     return $this->attributes()->getValue('target');
   }
 
-  public function appendHiddenVariable(string $name, $value): HiddenInput {
+  /**
+   * Appends a hidden variable into the form
+   *
+   * @param  string $name the name of the hidden variable
+   * @param  scalar $value the value of the hidden variable
+   * @return $this for a fluent interface
+   * @see    HiddenInput
+   */
+  public function appendHiddenInput(string $name, $value): HiddenInput {
     return $this->hiddenInputs->insertVariable($name, $value);
   }
 
+  /**
+   * Returns all {@link \Sphp\Html\Forms\Inputs\HiddenInput} components from the form
+   *
+   * @return HiddenInputs containing matching sub components
+   * @see    HiddenInput
+   */
   public function getHiddenInputs(): HiddenInputs {
     return $this->hiddenInputs;
   }

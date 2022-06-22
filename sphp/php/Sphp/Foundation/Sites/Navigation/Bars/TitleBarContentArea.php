@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation\Sites\Navigation\Bars;
 
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Implements a Title Bar content area

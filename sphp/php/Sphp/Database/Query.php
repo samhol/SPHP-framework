@@ -15,6 +15,8 @@ namespace Sphp\Database;
 use Traversable;
 use Countable;
 use PDO;
+use Sphp\Database\Clauses\Having;
+use Sphp\Database\Predicates\Predicate;
 
 /**
  * Defines a `SELECT` statement
@@ -31,7 +33,7 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    * @param  string $columns the column(s) to show (can have multiple string parameters)
    * @return $this for a fluent interface
    */
-  public function get(string ...$columns);
+  public function columns(string ...$columns);
 
   /**
    * Sets the table(s) from which data is to be retrieved
@@ -63,60 +65,11 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    *  A HAVING clause in SQL specifies that an SQL SELECT statement should only return rows
    *  where aggregate values meet the specified conditions. It was added to the SQL language
    *  because the WHERE keyword could not be used with aggregate functions.
-   *
-   * **Important!**
-   *
-   * * **ALWAYS SANITIZE ALL USER INPUTS!**
-   * * **If you are using multiple arguments; None of the arguments should be an array**
-   *
-   * @param  string|string[] $cond condition(s) (accepts multiple arguments)
-   * @return $this for a fluent interface
+   *   
+   * @param  Rule|string ... $rules
+   * @return Having having clause
    */
-  public function having(... $rules);
-
-  /**
-   * Adds rules to the HAVING conditions component
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * not evaluate to `true`.
-   */
-
-  /**
-   * Appends SQL conditions by using logical AND as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function andHaving(... $rules);
-
-  /**
-   * Appends SQL conditions by using AND NOT as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function andNotHaving(... $rules);
-
-  /**
-   * Appends SQL conditions by using logical OR as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function orHaving(... $rules);
-
-  /**
-   * Appends SQL conditions by using logical OR NOT as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function orNotHaving(... $rules);
+  public function having(Predicate|string ... $rules): Having;
 
   /**
    * Sets columns which are used to sort the resulting data
@@ -139,20 +92,6 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    * @example $select->orderBy('a DESC', 'b ASC', 'c ASC, d ASC');
    */
   public function orderBy(string ...$columns);
-
-  /**
-   * 
-   * @param  int $limit
-   * @return $this for a fluent interface
-   */
-  public function setLimit(int $limit);
-
-  /**
-   * 
-   * @param  int $offset
-   * @return $this for a fluent interface
-   */
-  public function setOffset(int $offset);
 
   /**
    * Limits the result rows
@@ -193,24 +132,6 @@ interface Query extends ConditionalStatement, Traversable, Countable {
    * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function fetchAll(int $fetch_style = PDO::FETCH_ASSOC): array;
-
-  /**
-   * Executes the SQL query in the given database and returns the result rows as an array
-   * 
-   * @param int $rowCount
-   * @param int $offset
-   * @return array
-   */
-  public function fetchRows(int $rowCount = null, int $offset = 0): array;
-
-  /**
-   * Executes the SQL query in the given database and returns the result rows as an array
-   *
-   * @return mixed[] result rows as an array
-   * @throws \PDOException if there is no database connection or query execution fails
-   * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   */
-  public function fetchFirstRow(): array;
 
   /**
    * Executes the SQL query in the given database and returns the result rows as an array

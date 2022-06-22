@@ -13,10 +13,8 @@ declare(strict_types=1);
 namespace Sphp\Stdlib;
 
 use Sphp\Stdlib\Exceptions\FileSystemException;
-use Exception;
 use SplFileInfo;
 use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
-use Sphp\Config\ErrorHandling\ErrorManager;
 
 /**
  * Tools to work with files and directories
@@ -67,7 +65,7 @@ abstract class Filesystem {
     if (!self::isFile($path)) {
       throw new FileSystemException("Parsing the file '$path' failed");
     }
-    $data = file_get_contents($path, false);
+    $data = file_get_contents($path, false, null, 0);
     if ($data === false) {
       throw new FileSystemException("Parsing the file '$path' failed");
     }
@@ -84,17 +82,16 @@ abstract class Filesystem {
    * 
    * @param  string $path the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws FileSystemException if the $paths points to no actual file
-   * @throws Exception 
+   * @throws FileSystemException if the $paths points to no actual file 
    */
   public static function executePhpToString(string $path): string {
+    if (!is_file($path)) {
+      throw new FileSystemException("The path '$path' contains no readable file");
+    }
     $thrower = new ErrorToExceptionThrower(FileSystemException::class);
     $thrower->start(\E_ALL);
     $content = '';
     $level = ob_get_level();
-    if (!is_file($path)) {
-      throw new FileSystemException("The path '$path' contains no readable file");
-    }
     try {
       ob_start();
       include($path);
@@ -102,18 +99,12 @@ abstract class Filesystem {
       while ($level < ob_get_level()) {
         ob_end_clean();
       }
-    } catch (FileSystemException $ex) {
-      while ($level < ob_get_level()) {
-        ob_end_clean();
-      }
-      $thrower->stop();
-      throw $ex;
     } catch (\Throwable $ex) {
       while ($level < ob_get_level()) {
         ob_end_clean();
       }
       $thrower->stop();
-      throw new FileSystemException('Something went wrong while execting a PHP file', 0, $ex);
+      throw new FileSystemException($ex->getMessage(), $ex->getCode(), $ex);
     }
     $thrower->stop();
     return $content;

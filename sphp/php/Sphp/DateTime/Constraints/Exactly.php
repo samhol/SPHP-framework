@@ -24,9 +24,6 @@ use Sphp\DateTime\Date;
  */
 class Exactly implements DateConstraint {
 
-  /**
-   * @var Date 
-   */
   private Date $expected;
 
   /**

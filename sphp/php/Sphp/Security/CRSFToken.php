@@ -15,7 +15,7 @@ namespace Sphp\Security;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Stdlib\Random\UUID;
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\HtmlForm;
 
 /**
  * Implements a CRSF token generator and validator
@@ -50,11 +50,6 @@ use Sphp\Html\Forms\Form;
 class CRSFToken {
 
   /**
-   * @var self
-   */
-  private static $instance;
-
-  /**
    * Constructor
    * 
    * @throws RuntimeException if there is no session
@@ -84,17 +79,17 @@ class CRSFToken {
   }
 
   /**
-   * Creates a CRSF token to use
+   * Creates a CRSF token input to use
    * 
    * @param  string $tokenName the CRSF token name
-   * @return HiddenInput the CRSF token generated
+   * @return HiddenInput the CRSF token input generated
    */
   public function generateTokenInput(string $tokenName): HiddenInput {
     return new HiddenInput($tokenName, $this->generateToken($tokenName));
   }
 
-  public function insertIntoForm(Form $form, string $tokenName) {
-    $form->appendHiddenVariable($tokenName, $this->generateToken($tokenName));
+  public function insertIntoForm(HtmlForm $form, string $tokenName) {
+    $form->appendHiddenInput($tokenName, $this->generateToken($tokenName));
   }
 
   /**
@@ -109,14 +104,6 @@ class CRSFToken {
     }
     return $this;
   }
-
-  /**
-   * Verifies a named CRSF token from the input data
-   * 
-   * @param  string $tokenName the CRSF token name
-   * @param  int $type input type
-   * @return bool true if the token value matches
-   */
 
   /**
    * Verifies a named CRSF token from the input data
@@ -178,16 +165,5 @@ class CRSFToken {
     return $this->verifyInputToken($tokenName, \INPUT_GET);
   }
 
-  /**
-   * Returns the singleton instance of a CRSF token generator
-   * 
-   * @return CRSFToken singleton instance
-   */
-  public static function instance(): CRSFToken {
-    if (static::$instance === null) {
-      static::$instance = new static();
-    }
-    return static::$instance;
-  }
 
 }

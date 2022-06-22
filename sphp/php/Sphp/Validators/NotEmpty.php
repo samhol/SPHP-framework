@@ -41,12 +41,12 @@ class NotEmpty extends AbstractValidator {
   /**
    * Any type
    */
-  const ANY_TYPE = 0b0;
-  const STRING_TYPE = 0b1;
-  const SCALAR_TYPE = 0b10;
-  const ARRAY_TYPE = 0b100;
-  const COUNTABLE_TYPE = 0b1000;
-  const TRAVERSABLE_TYPE = 0b10000;
+  public const ANY_TYPE = 0b0;
+  public const STRING_TYPE = 0b1;
+  public const SCALAR_TYPE = 0b10;
+  public const ARRAY_TYPE = 0b100;
+  public const COUNTABLE_TYPE = 0b1000;
+  public const TRAVERSABLE_TYPE = 0b10000;
 
   private int $type = self::ANY_TYPE;
 
@@ -89,7 +89,7 @@ class NotEmpty extends AbstractValidator {
     return $valid;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $valid = true;
     if (!$this->isValidType($value)) {

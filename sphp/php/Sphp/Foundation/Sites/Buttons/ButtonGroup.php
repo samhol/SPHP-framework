@@ -136,7 +136,7 @@ class ButtonGroup extends AbstractComponent implements IteratorAggregate {
    * @param  CssClassifiableContent $button the appended button
    * @return ButtonInterface created instance
    */
-  public function appendButton(CssClassifiableContent $button): ButtonInterface {
+  public function appendButton(CssClassifiableContent $button): Button {
     if (!$button instanceof ButtonInterface) {
       $button = new Button($button);
     }

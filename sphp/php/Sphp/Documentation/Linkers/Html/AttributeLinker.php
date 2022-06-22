@@ -26,19 +26,8 @@ use Sphp\Documentation\Linkers\HyperlinkFactory;
  */
 class AttributeLinker extends AbstractItemLinker {
 
-  /**
-   * @var string 
-   */
   private ?string $tagName;
-
-  /**
-   * @var string 
-   */
   private string $attrName;
-
-  /**
-   * @var HtmlUrlGenerator
-   */
   private HtmlUrlGenerator $urlGen;
 
   /**
@@ -64,7 +53,7 @@ class AttributeLinker extends AbstractItemLinker {
   /**
    * Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    * 
-   * @param  string $linkText optional link text
+   * @param  string|null $linkText optional link text
    * @return A hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function __invoke(?string $linkText = null): A {
@@ -97,6 +86,7 @@ class AttributeLinker extends AbstractItemLinker {
     $linkText .= $this->getAttributeName() . ' attribute';
     return $linkText;
   }
+
   public function getDefaultTitle(): string {
     $linkText = 'Documentation of the ';
     if (!$this->isGlobalAttribute()) {
@@ -109,6 +99,5 @@ class AttributeLinker extends AbstractItemLinker {
   public function getUrl(): string {
     return $this->urlGen->getUrl($this->tagName, $this->attrName);
   }
-
 
 }

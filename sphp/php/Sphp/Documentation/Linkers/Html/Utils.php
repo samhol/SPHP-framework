@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Documentation\Linkers\Html;
 
 use Sphp\Html\Tags;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Description of Utils

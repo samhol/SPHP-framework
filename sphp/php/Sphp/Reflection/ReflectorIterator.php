@@ -21,7 +21,6 @@ use ReflectionParameter;
 use ReflectionMethod;
 use ReflectionFunction;
 use ReflectionExtension;
-use Sphp\Stdlib\Strings;
 
 /**
  * Class AbstractPHPReflecetor
@@ -113,7 +112,7 @@ class ReflectorIterator implements Iterator, Arrayable {
             !$method->isStatic() &&
             !$method->isConstructor() &&
             !$method->isDestructor() &&
-            !Strings::startsWith($method->name, '__') &&
+            !str_starts_with($method->name, '__') &&
             $method->getNumberOfParameters() === 0 &&
             !in_array($method->name, $this->getSkipped($this->refRef->name));
   }
@@ -126,7 +125,7 @@ class ReflectorIterator implements Iterator, Arrayable {
       if (!$this->isValidMethod($method)) {
         continue;
       }
-      if (Strings::startsWith($methodName, 'get')) {
+      if (str_starts_with($methodName, 'get')) {
         $key = lcfirst(substr($methodName, 3));
       } else {
         $key = $methodName;
@@ -186,7 +185,7 @@ class ReflectorIterator implements Iterator, Arrayable {
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key():mixed {
     return key($this->data);
   }
 

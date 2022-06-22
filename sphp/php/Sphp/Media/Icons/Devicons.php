@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Sphp\Media\Icons;
 
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Strings;
-use Sphp\Media\SVG\Svg;
-use Sphp\Html\Media\Img;
+use Sphp\Exceptions\InvalidArgumentException; 
+use Sphp\Html\Media\Pictures\Svg;
+use Sphp\Html\Media\Pictures\Img;
 
 /**
  * Implements a factory for Devicons icon objects
@@ -46,9 +45,7 @@ class Devicons extends IconFactory {
   }
 
   private function parseIconName(string $name) {
-    if (!Strings::startsWith($name, 'devicon') || Strings::startsWith($name, 'devicon-plain')) {
-      //var_dump((!Strings::startsWith($name, 'devicon')), Strings::startsWith($name, 'devicon-plain'));
-      //echo $name;
+    if (!str_starts_with($name, 'devicon') || str_starts_with($name, 'devicon-plain')) {
       $name = "devicon-$name";
     }
     return $name;
@@ -82,7 +79,7 @@ class Devicons extends IconFactory {
     $iconType = preg_replace(['/^(devicons-)/', '/(.svg)$/'], '', $name);
     $iconName = preg_replace('/-(plain|original|wordmark|line)/', '', $iconType);
     $path = "$iconName/$iconType";
-    if (!Strings::endsWith($path, 'svg')) {
+    if (!str_ends_with($path, 'svg')) {
       $path .= '.svg';
     }
     return $path;
@@ -99,7 +96,7 @@ class Devicons extends IconFactory {
   }
 
   public function createSvg(string $name): Svg {
-    return Svg::fileToObject($this->getSvgPathFor($name));
+    return Svg::fromFile($this->getSvgPathFor($name));
   }
 
   public function createSvgImg(string $name, ?string $alt = null): Img {

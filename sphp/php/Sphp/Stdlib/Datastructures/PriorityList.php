@@ -41,27 +41,27 @@ class PriorityList implements Iterator, Countable, Arrayable {
    *
    * @var int
    */
-  private $serial = 0;
+  private int $serial = 0;
 
   /**
    * Serial order mode
    * @var integer
    */
-  private $isLIFO = 1;
+  private int $isLIFO = 1;
 
   /**
    * Internal counter to avoid usage of count().
    *
    * @var int
    */
-  private $count = 0;
+  private int $count = 0;
 
   /**
    * Whether the list was already sorted.
    *
    * @var bool
    */
-  private $sorted = false;
+  private bool $sorted = false;
 
   /**
    * Constructor
@@ -86,7 +86,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
    * @param  int     $priority
    * @return void
    */
-  public function insert(string $name, $value, int $priority = 0): void {
+  public function insert(string $name, mixed $value, int $priority = 0): void {
     if (!isset($this->items[$name])) {
       $this->count++;
     }
@@ -133,7 +133,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
    * @param  string $name
    * @return void
    */
-  public function remove(string $name):void {
+  public function remove(string $name): void {
     if (isset($this->items[$name])) {
       $this->count--;
     }
@@ -213,7 +213,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   /**
    * {@inheritDoc}
    */
-  public function current() {
+  public function current(): mixed {
     $this->sorted || $this->sort();
     $node = current($this->items);
     return $node ? $node['data'] : false;
@@ -222,7 +222,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   /**
    * {@inheritDoc}
    */
-  public function key() {
+  public function key(): mixed {
     $this->sorted || $this->sort();
     return key($this->items);
   }
@@ -252,8 +252,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   /**
    * Return list as array
    *
-   * @param int $flag
-   *
+   * @param  int $flag 
    * @return array
    */
   public function toArray($flag = self::EXTR_DATA): array {
@@ -265,8 +264,8 @@ class PriorityList implements Iterator, Countable, Arrayable {
 
     return array_map(
             function ($item) use ($flag) {
-      return ($flag == PriorityList::EXTR_PRIORITY) ? $item['priority'] : $item['data'];
-    },
+              return ($flag == PriorityList::EXTR_PRIORITY) ? $item['priority'] : $item['data'];
+            },
             $this->items
     );
   }

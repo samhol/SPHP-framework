@@ -60,10 +60,10 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, Arrayab
    * Inserts a hidden variable
    *
    * @param  string $name the name of the hidden variable
-   * @param  scalar $value the value of the hidden variable
+   * @param  string|int|float|null $value the value of the hidden variable
    * @return HiddenInput inserted instance
    */
-  public function insertVariable(string $name, $value): HiddenInput {
+  public function insertVariable(string $name, string|int|float|null $value): HiddenInput {
     $input = new HiddenInput($name, $value);
     return $this->insertHiddenInput($input);
   }
@@ -79,6 +79,12 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, Arrayab
     return $input;
   }
 
+  /**
+   * Checks whether a variable of given name exists in the collection
+   * 
+   * @param  string $name
+   * @return bool true if a variable exixts, false otherwise
+   */
   public function contains(string $name): bool {
     $contains = false;
     foreach ($this->inputs as $input) {
@@ -106,6 +112,10 @@ class HiddenInputs extends AbstractContent implements IteratorAggregate, Arrayab
     return $result;
   }
 
+  /**
+   * 
+   * @return Traversable<int, HiddenInput>
+   */
   public function getIterator(): Traversable {
     return new ContentIterator($this->inputs);
   }

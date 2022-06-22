@@ -79,7 +79,7 @@ class InPeriod extends AbstractLimitValidator {
     return $this->max;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {

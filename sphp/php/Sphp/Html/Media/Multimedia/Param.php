@@ -27,11 +27,11 @@ class Param extends EmptyTag {
    * Constructor
    *
    * @param  string $name the name of a parameter
-   * @param  scalar|null $value the value of a parameter
+   * @param  string|int|float|null $value the value of a parameter
    * @link   https://www.w3schools.com/tags/att_param_name.asp name attribute
    * @link   https://www.w3schools.com/tags/att_param_value.asp value attribute
    */
-  public function __construct(string $name = null, $value = null) {
+  public function __construct(string $name = null, string|int|float|null $value = null) {
     parent::__construct('param');
     if ($name !== null) {
       $this->setName($name);
@@ -55,10 +55,10 @@ class Param extends EmptyTag {
   /**
    * Sets the value of a parameter
    * 
-   * @param  scalar|null $value the value of a parameter
+   * @param  string|int|float|null  $value the value of a parameter
    * @return $this for a fluent interface
    */
-  public function setValue($value) {
+  public function setValue(string|int|float|null $value) {
     $this->attributes()->setAttribute('value', $value);
     return $this;
   }

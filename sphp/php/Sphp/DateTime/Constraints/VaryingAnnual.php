@@ -14,7 +14,7 @@ namespace Sphp\DateTime\Constraints;
 
 use Sphp\DateTime\Date;
 use Sphp\DateTime\ImmutableDate;
-use Sphp\DateTime\Exceptions\{ 
+use Sphp\DateTime\Exceptions\{
   InvalidArgumentException
 };
 
@@ -28,9 +28,6 @@ use Sphp\DateTime\Exceptions\{
  */
 class VaryingAnnual implements DateConstraint {
 
-  /**
-   * @var string 
-   */
   private string $format;
 
   /**

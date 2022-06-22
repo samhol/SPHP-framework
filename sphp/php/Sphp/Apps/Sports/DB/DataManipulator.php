@@ -36,6 +36,8 @@ class DataManipulator extends DB {
       }
       if ($this->insertRow($row)) {
         $added++;
+      } else {
+        echo 'not added<br>';
       }
     }
     return $added;
@@ -50,9 +52,11 @@ class DataManipulator extends DB {
     //$row[] = $this->parseType($row);
     try {
       // $pdo->beginTransaction();
-      print_r($row);
+      //echo '<pre>';
+      //print_r($row);
       $added = $stmt->execute($row);
-      var_dump($added);
+      //var_dump($added);
+      //echo '</pre>';
       // $pdo->commit();
     } catch (\Exception $e) {
       // $pdo->rollback();

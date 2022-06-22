@@ -310,7 +310,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @param  string $property the name of the property
    * @return bool true if the property exists and false otherwise
    */
-  public function offsetExists($property): bool {
+  public function offsetExists(mixed $property): bool {
     return $this->hasProperty($property);
   }
 
@@ -320,7 +320,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @param  string $property the name of the property
    * @return scalar|null the value of the property or null if the property does not exists
    */
-  public function offsetGet($property) {
+  public function offsetGet(mixed $property): mixed {
     return $this->getProperty($property);
   }
 
@@ -335,7 +335,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @throws InvalidArgumentException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function offsetSet($property, $value): void {
+  public function offsetSet(mixed $property, $value): void {
     $this->setProperty($property, $value);
   }
 
@@ -346,7 +346,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @return void
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function offsetUnset($property): void {
+  public function offsetUnset(mixed $property): void {
     $this->unsetProperties($property);
   }
 

@@ -26,9 +26,6 @@ use Sphp\Html\Attributes\AttributeContainer;
  */
 class EmptyTag extends AbstractTag {
 
-  /**
-   * @var bool
-   */
   private bool $close = false;
 
   /**

@@ -14,6 +14,8 @@ namespace Sphp\Database;
 
 use Sphp\Database\Parameters\ParameterHandler;
 use Sphp\Database\Parameters\SequentialParameterHandler;
+use Sphp\Database\Exceptions\InvalidStateException;
+use Sphp\Stdlib\Arrays;
 
 /**
  * An abstract implementation of an `INSERT` statement
@@ -25,40 +27,30 @@ use Sphp\Database\Parameters\SequentialParameterHandler;
 abstract class AbstractInsert extends AbstractStatement implements Insert {
 
   /**
-   * the table(s) that are updated
-   *
-   * @var string
+   * the table that is manipulated 
    */
-  private $table = '';
+  protected string $table;
 
   /**
-   * a list of column(s) to be included in the query
+   * an optional list of column(s) to be included in the query
    *
    * @var string[]
    */
-  private $names = [];
+  protected array $names = [];
 
   /**
    * a list of value(s) to be included in the query
    *
    * @var array[]
    */
-  private $params;
+  protected array $params = [];
 
   public function into(string $table) {
     $this->table = $table;
     return $this;
   }
 
-  protected function getTable(): string {
-    return $this->table;
-  }
-
-  protected function getNames(): array {
-    return $this->names;
-  }
-
-  public function values(... $values) {
+  public function values(mixed ... $values) {
     $this->valuesFromArray([$values]);
     return $this;
   }
@@ -75,18 +67,36 @@ abstract class AbstractInsert extends AbstractStatement implements Insert {
 
   protected function dataToStatement(): string {
     $rows = [];
-    foreach ($this->params as $row) {
-      $rows[] = Utils::createGroupOfQuestionMarks(count($row));
+    $groupMarker = static function (int $count): string {
+      return '(' . implode(', ', array_fill(0, $count, '?')) . ')';
+    };
+    if (Arrays::isMultidimensional($this->params)) {
+      foreach ($this->params as $id => $row) {
+        $count = count($row);
+        if ($count === 0) {
+          throw new InvalidStateException("Data row($id) has insufficient amount of parameterss");
+        }
+        $rows[] = $groupMarker($count);
+        $out = implode(', ', $rows); 
+      }
+    } else {
+      $out = $groupMarker(count($this->params));
     }
-    return implode(', ', $rows);
+    return $out;
   }
 
-  public function statementToString(): string {
-    $query = "INSERT INTO `$this->table`";
+  public function isValid(): bool {
+    return !empty($this->params) && isset($this->table);
+  }
+
+  public function getQueryString(): string {
+    if (!$this->isValid()) {
+      throw new InvalidStateException('INSERT query requires atleast a table name and data to insert');
+    }
+    $query = "INSERT INTO $this->table";
     if (!empty($this->names)) {
       $query .= ' (' . implode(', ', $this->names) . ') ';
     }
-
     return "$query VALUES " . $this->dataToStatement();
   }
 
@@ -97,7 +107,7 @@ abstract class AbstractInsert extends AbstractStatement implements Insert {
   public function getParams(): ParameterHandler {
     $p = new SequentialParameterHandler();
     foreach ($this->params as $row) {
-      $p->appendParams($row);
+      $p->appendNewParams($row);
     }
     return $p;
   }

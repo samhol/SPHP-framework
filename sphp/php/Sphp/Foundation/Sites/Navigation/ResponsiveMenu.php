@@ -14,7 +14,6 @@ namespace Sphp\Foundation\Sites\Navigation;
 
 use Sphp\Foundation\Sites\Core\FoundationSettings;
 use Sphp\Foundation\Sites\Core\JavaScript\JavaScriptComponent;
-use Sphp\Stdlib\Strings;
 
 /**
  * Description of ResponsiveMenu
@@ -55,7 +54,7 @@ class ResponsiveMenu extends AbstractMenu implements JavaScriptComponent {
     }
     $dataAttrName = preg_replace('/([A-Z])/', '-$1', $name);
     //echo strtolower($dataAttrName);
-    if (!Strings::startsWith($dataAttrName, 'data-')) {
+    if (!str_starts_with($dataAttrName, 'data-')) {
       $dataAttrName = "data-$dataAttrName";
     }
     $this->setAttribute(strtolower($dataAttrName), $value);

@@ -14,10 +14,9 @@ namespace Sphp\Bootstrap\Components;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Component;
-use Sphp\Html\Div;
-use Sphp\Html\Sections\Headings\H5;
+use Sphp\Html\Layout\Div;
+use Sphp\Html\Text\Headings\H5;
 use Sphp\Bootstrap\Exceptions\BootstrapException;
-use Sphp\Stdlib\Strings;
 
 /**
  * The Modal class
@@ -53,8 +52,9 @@ class Modal extends AbstractComponent {
 
   public function createTrigger($trigger): Component {
     if (!$trigger instanceof Component) {
-      $trigger = new \Sphp\Html\Forms\Buttons\Button($trigger);
-    }$this->initTrigger($trigger);
+      $trigger = new \Sphp\Html\Forms\Buttons\PushButton($trigger);
+    }
+    $this->initTrigger($trigger);
     return $trigger;
   }
 
@@ -96,14 +96,14 @@ class Modal extends AbstractComponent {
    * * small: 'sm' or 'modal-sm'
    * * large: 'lg' or 'modal-lg'
    * * default: 'default'
-   * * x-large: 'xl' or ''modal-xl'
+   * * x-large: 'xl' or 'modal-xl'
    * 
    * @param  string $size
    * @return $this for a fluent interface
    * @throws BootstrapException if the size parameter is invalid
    */
   public function setSize(string $size = 'default') {
-    if ($size !== 'default' && !Strings::startsWith($size, 'modal-')) {
+    if ($size !== 'default' && !str_starts_with($size, 'modal-')) {
       $size = "modal-$size";
     }
     $sizes = ['modal-sm', 'modal-lg', 'modal-xl'];

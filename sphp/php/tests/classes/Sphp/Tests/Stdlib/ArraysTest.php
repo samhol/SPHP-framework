@@ -53,19 +53,17 @@ class ArraysTest extends TestCase {
 
   public function testPointToKey() {
     $arr = ['a' => 'b', 44, 3 => 2, 'key' => 'value', 'fwe' => 's', 1];
-    $arr1 = Arrays::pointToKey($arr, 'key');
+    Arrays::pointToKey($arr, 'key');
     //echo "\n" . $arr1['key'] . " :  [" . key($arr1) .']'. current($arr1) . "\n";
     $this->assertSame($arr['key'], current($arr));
-    $this->assertSame(current($arr), current($arr1));
     $this->expectException(OutOfBoundsException::class);
     Arrays::pointToKey($arr, 'foo');
   }
 
   public function testPointToValue() {
     $arr = ['false' => false, 0, 1 => 1, 'key' => 'value', 'null' => null];
-    $arr1 = Arrays::pointToValue($arr, false);
+    Arrays::pointToValue($arr, false);
     $this->assertSame(false, current($arr));
-    $this->assertSame('false', key($arr1));
     Arrays::pointToValue($arr, null);
     $this->assertSame(null, current($arr));
     $this->assertSame('null', key($arr));
@@ -189,49 +187,21 @@ class ArraysTest extends TestCase {
     $this->assertSame($result[$base], reset($result));
   }
 
-  public function toArrayData(): array {
-    return [
-        [range('a', 'b')],
-        [new \ArrayObject(range('a', 'b'))],
-        [new ArrayStack(range('a', 'b'))]];
+  public function isMultidimensionalData(): iterable {
+    yield [[[]], true];
+    yield [[null, []], true];
+    yield [[1, 2], false];
   }
 
   /**
-   * @dataProvider toArrayData
-   * @param mixed $mixed
+   * @dataProvider isMultidimensionalData
+   * 
+   * @param  array $array
+   * @param  bool $isMulti
+   * @return void
    */
-  public function testToArray($mixed) {
-    $arrayed = Arrays::toArray($mixed);
-    if ($mixed instanceof Arrayable) {
-      $expected = $mixed->toArray();
-    } else if ($mixed instanceof \Traversable) {
-      $expected = iterator_to_array($mixed);
-    } else {
-      $expected = $mixed;
-    }
-    $this->assertSame($expected, $arrayed);
-  }
-
-  /**
-   * @return array
-   */
-  public function invalidToArray(): array {
-    return [
-        ['string'],
-        [0],
-        [false],
-        [null],
-        [new \stdClass()]
-    ];
-  }
-
-  /**
-   * @dataProvider invalidToArray
-   * @param mixed $mixed
-   */
-  public function testInvalidToArray($mixed) {
-    $this->expectException(InvalidArgumentException::class);
-    Arrays::toArray($mixed);
+  public function testIsMultidimensional(array $array, bool $isMulti): void {
+    $this->assertSame($isMulti, Arrays::isMultidimensional($array));
   }
 
   public function getValuesLikeData(): array {
@@ -244,11 +214,12 @@ class ArraysTest extends TestCase {
   /**
    * @dataProvider getValuesLikeData
    * 
-   * @param array $haystack
-   * @param scalar $needle
-   * @param int $count
+   * @param  array $haystack
+   * @param  scalar $needle
+   * @param  int $count
+   * @return void
    */
-  public function testGetValuesLike(array $haystack, string $needle, int $count) {
+  public function testGetValuesLike(array $haystack, string $needle, int $count): void {
     $result = Arrays::getValuesLike($haystack, $needle);
     $this->assertContainsOnly('scalar', $result);
     $this->assertCount($count, $result);
@@ -257,13 +228,16 @@ class ArraysTest extends TestCase {
     }
   }
 
+  /** 
+   * @return void
+   */
   public function testGetKeysLike(): void {
-    $haystack = [0 => 'zero', '0' => 'zero', 'f00' => 'zero', 1, 2, 'f11' => 10];
-    $result = Arrays::findKeysLike($haystack, 0);
-    $this->assertContainsOnly('scalar', $result);
-    $this->assertCount(2, $result);
+    $haystack = [' 1 ' => 1, 1 => 1, 10 => 1, ' 1.2 ' => 1, 2 => 2, '2' => 2];
+    $result = Arrays::findKeysLike($haystack, 1);
+    $this->assertCount(4, $result);
     foreach ($result as $key => $value) {
-      $this->assertTrue(strpos((string) $key, '0') !== false);
+      $this->assertArrayHasKey($key, $haystack);
+      $this->assertSame($value, $haystack[$key]);
     }
   }
 
@@ -296,7 +270,7 @@ class ArraysTest extends TestCase {
   public function recursiveImplodeData(): array {
     return [
         [['F' => 'Foobar', 'o' => 'is', 'a' => 'bar of foo'], ' ', 'Foobar is bar of foo'],
-        [['F' => new \Sphp\Html\PlainContainer('Foobar'), 'o' => ['is'], 'a' => 'bar of foo'], ' ', 'Foobar is bar of foo'],
+        [['F' => 'Foobar', 'o' => ['is'], 'a' => 'bar of foo'], ' ', 'Foobar is bar of foo'],
     ];
   }
 

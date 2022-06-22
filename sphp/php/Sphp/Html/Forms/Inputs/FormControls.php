@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Buttons as ButtonTags;
+use Sphp\Html\Forms\Buttons;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
 use ReflectionClass;
@@ -33,9 +33,9 @@ use Sphp\Html\Forms\FormController;
  * @method \Sphp\Html\Forms\Inputs\Menus\Select select(string $name = null, $value = null) creates a new password input
  * 
  * 
- * @method \Sphp\Html\Forms\Buttons\Button pushButton(string $name = null, $value = null) creates a new password input
- * @method \Sphp\Html\Forms\Buttons\Resetter reset(string $name = null, $value = null) creates a new password input
- * @method \Sphp\Html\Forms\Buttons\Submitter submit(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Buttons\PushButton pushButton(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Buttons\ResetButton reset(string $name = null, $value = null) creates a new password input
+ * @method \Sphp\Html\Forms\Buttons\SubmitButton submit(string $name = null, $value = null) creates a new password input
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -52,9 +52,9 @@ abstract class FormControls {
       'inputButton' => Buttons\InputButton::class,
       'resetInput' => Buttons\ResetInput::class,
       'submitInput' => Buttons\SubmitInput::class,
-      'reset' => ButtonTags\Resetter::class,
-      'submit' => ButtonTags\Submitter::class,
-      'button' => ButtonTags\Button::class,
+      'reset' => Buttons\ResetButton::class,
+      'submit' => Buttons\SubmitButton::class,
+      'button' => Buttons\PushButton::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,
       'email' => EmailInput::class,

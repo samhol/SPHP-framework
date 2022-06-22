@@ -152,7 +152,7 @@ class ImmutableDate implements Date {
     //echo "\nthis:". $this->getDateTime()->getTimezone()->getName();
     //echo "\nmut:". $mut->getTimezone()->getName();
     $diff = $this->getDateTime()->diff($mut, $absolute);
-    return Intervals::fromDateInterval($diff);
+    return Interval::fromDateInterval($diff);
   }
 
   public function compareDateTo(Date $date): int {

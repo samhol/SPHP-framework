@@ -12,7 +12,7 @@ namespace Sphp\Apps\Trackers\Views\UserAgents;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Apps\Trackers\Data\UserAgents\UserAgents;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Apps\Trackers\SearchEngine;
 use Sphp\Foundation\Sites\Navigation\BreadCrumbs;
 use ATC\Views\NaviViews;

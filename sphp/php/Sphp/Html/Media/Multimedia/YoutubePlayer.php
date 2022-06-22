@@ -46,6 +46,26 @@ class YoutubePlayer extends AbstractVideoPlayer {
     parent::__construct($url);
   }
 
+  public function displayControls(bool $visible = true) {
+    $this->setOption('controls', (int) $visible);
+    return $this;
+  }
+
+  public function autoplay(bool $autoplay = true) {
+    $this->setOption('autoplay', (int) $autoplay);
+    return $this;
+  }
+
+  public function mute(bool $mute = true) {
+    $this->setOption('mute', (int) $mute);
+    return $this;
+  }
+
+  public function loop(bool $loop = true) {
+    $this->setOption('loop', (int) $loop);
+    return $this;
+  }
+
   /**
    * Set the visibility of the player controls
    * 
@@ -57,7 +77,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @return $this for a fluent interface
    * @throws VideoPlayerException
    */
-  public function autohide(int $autohide = null) {
+  public function autohide(int $autohide = 2) {
     if ($autohide < 0 || $autohide > 2) {
       throw new VideoPlayerException("Invalid autohide option ($autohide) provided");
     }
@@ -72,7 +92,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param  int|null $end the end time measured from the beginning of the video 
    * @return $this for a fluent interface
    */
-  public function setTimeInterval(int $start = null, int $end = null) {
+  public function setTimeInterval(?int $start, ?int $end = null) {
     if ($start < 0 || $end < 0 || ($end !== null && $end < $start)) {
       throw new VideoPlayerException("Invalid time interval ($start, $end) given");
     }

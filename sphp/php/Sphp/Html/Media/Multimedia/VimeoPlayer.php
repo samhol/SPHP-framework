@@ -27,10 +27,30 @@ class VimeoPlayer extends AbstractVideoPlayer {
   /**
    * Constructor
    *
-   * @param  string $videoId the id of the Vimeo video
+   * @param  string|int $videoId the id of the Vimeo video
    */
-  public function __construct($videoId) {
+  public function __construct(string|int $videoId) { 
     parent::__construct(new URL("https://player.vimeo.com/video/$videoId"));
+  }
+
+  public function displayControls(bool $visible = true) {
+    $this->setOption('controls', (int) $visible);
+    return $this;
+  }
+
+  public function autoplay(bool $autoplay = true) {
+    $this->setOption('autoplay', (int) $autoplay);
+    return $this;
+  }
+
+  public function mute(bool $mute = true) {
+    $this->setOption('mute', (int) $mute);
+    return $this;
+  }
+
+  public function loop(bool $loop = true) {
+    $this->setOption('loop', (int) $loop);
+    return $this;
   }
 
   /**
@@ -41,7 +61,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @param  string $color the hexadecimal color code string
    * @return $this for a fluent interface
    */
-  public function setControlsColor(string $color = null) {
+  public function setControlsColor(?string $color = null) {
     if ($color !== null) {
       $color = trim($color, '#');
     }
@@ -58,7 +78,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @return $this for a fluent interface
    */
   public function showVideoTitle(bool $show) {
-    $this->setOption('title', (int) $show);
+    $this->setOption('title', $show);
     return $this;
   }
 

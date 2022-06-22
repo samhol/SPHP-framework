@@ -13,11 +13,8 @@ declare(strict_types=1);
 namespace Sphp\Documentation\CommonMark;
 
 use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
-use League\CommonMark\HtmlElement;
 
 /**
  * Description of InlineApiLinkRenderer

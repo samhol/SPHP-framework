@@ -36,7 +36,7 @@ interface ResponsiveLayoutComponent {
    * @return $this for a fluent interface
    * @throws BootstrapException if invalid layout parameter was given
    */
-  public function setLayouts(... $layout);
+  public function setLayouts(string|int ... $layout);
 
   /**
    *  

@@ -34,4 +34,24 @@ class DailyMotionPlayer extends AbstractVideoPlayer {
     parent::__construct(new URL('https://www.dailymotion.com/embed/video/' . $videoId));
   }
 
+  public function displayControls(bool $visible = true) {
+    $this->setOption('controls', (int) $visible);
+    return $this;
+  }
+
+  public function autoplay(bool $autoplay = true) {
+    $this->setOption('autoplay', (int) $autoplay);
+    return $this;
+  }
+
+  public function mute(bool $mute = true) {
+    $this->setOption('mute', (int) $mute);
+    return $this;
+  }
+
+  public function loop(bool $loop = true) {
+    $this->setOption('loop', (int) $loop);
+    return $this;
+  }
+
 }

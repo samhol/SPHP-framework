@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Forms\Inputs;
 
+use Sphp\Html\Forms\Inputs\Menus\Datalist;
+use Sphp\Html\Forms\Inputs\Menus\Option;
 /**
  * Implementation of an HTML input type="text|password|email|tel| ...))" tag
  *
@@ -21,6 +23,8 @@ namespace Sphp\Html\Forms\Inputs;
  * @filesource
  */
 abstract class AbstractTextualInput extends InputTag implements TextualInput {
+
+  private ?Datalist $datalist = null;
 
   /**
    * Constructor
@@ -47,6 +51,35 @@ abstract class AbstractTextualInput extends InputTag implements TextualInput {
     }
   }
 
+  /**
+   * 
+   * @param  Option|String|int|float $options
+   * @return $this for a fluent interface
+   */
+  public function useDatalist(Menus\Option|String|int|float ... $options) {
+    $this->setDataList(new Datalist(...$options));
+    return $this;
+  }
+
+  public function setDataList(Datalist|array|null $datalist): ?Datalist {
+    if ($datalist === null) {
+      $this->datalist = null;
+      $this->removeAttribute('list');
+    } else if (!$datalist instanceof Datalist) {
+      $this->datalist = new Datalist();
+      $this->datalist->appendData($datalist);
+      $this->setAttribute('list', $this->datalist->identify());
+    } else {
+      $this->datalist = $datalist;
+      $this->setAttribute('list', $this->datalist->identify());
+    }
+    return $this->datalist;
+  }
+
+  public function getHtml(): string {
+    return parent::getHtml() . $this->datalist;
+  }
+
   public function setSize(?int $size) {
     $this->attributes()->setAttribute('size', $size);
     return $this;
@@ -64,6 +97,11 @@ abstract class AbstractTextualInput extends InputTag implements TextualInput {
 
   public function autocomplete(bool $allow = true) {
     $this->attributes()->setAttribute('autocomplete', $allow ? 'on' : 'off');
+    return $this;
+  }
+
+  public function readOnly(bool $readOnly = true) {
+    $this->attributes()->setAttribute('readonly', $readOnly);
     return $this;
   }
 

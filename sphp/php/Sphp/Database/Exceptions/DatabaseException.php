@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
@@ -12,7 +14,6 @@ namespace Sphp\Database\Exceptions;
 
 use Sphp\Exceptions\RuntimeException;
 
-
 /**
  * Represents an error raised during database related code execution
  *
@@ -21,5 +22,5 @@ use Sphp\Exceptions\RuntimeException;
  * @filesource
  */
 class DatabaseException extends RuntimeException {
-
+  
 }

@@ -16,7 +16,7 @@ use Sphp\Foundation\Sites\Grids\BasicRow;
 use Sphp\DateTime\DateTime;
 use Sphp\DateTime\Date;
 use Sphp\Html\Tags;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Class Factory

@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Documentation\PackageManagers\Managers;
 
-use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Parsers\ParseFactory;
 use IteratorAggregate;
 use Traversable;

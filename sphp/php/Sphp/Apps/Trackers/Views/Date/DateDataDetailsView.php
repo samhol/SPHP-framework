@@ -14,7 +14,7 @@ namespace Sphp\Apps\Trackers\Views\Date;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Apps\Trackers\Data\Users\DateData;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Tags;
 use Sphp\Html\Lists\Ul; 
 

@@ -32,7 +32,7 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class FileUploadButton extends AbstractContent implements Input, ButtonInterface, \Sphp\Html\IdentifiableContent {
+class FileUploadButton extends AbstractContent implements Input, Button, \Sphp\Html\IdentifiableContent {
 
   use \Sphp\Foundation\Sites\Buttons\ButtonTrait,
       \Sphp\Html\CssClassifiableTrait;

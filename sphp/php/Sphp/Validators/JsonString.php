@@ -29,7 +29,7 @@ class JsonString extends AbstractValidator {
     parent::__construct('Value of %s type given. String expected');
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $isValid = true;
     if (is_string($value)) {

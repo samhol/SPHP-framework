@@ -17,11 +17,17 @@ use Sphp\Html\PlainContainer;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Component;
-use Sphp\Html\Forms\Inputs\Menus\Select;
+use Sphp\Html\Forms\Inputs\Menus\Select; 
+use Sphp\Html\Forms\Inputs\InputFactory;
+use Sphp\Bootstrap\Exceptions\BadMethodCallException;
 
 /**
  * The InputGroup class
  *
+ * 
+ * @method static self text(mixed $content = null, $for = null) creates a &lt;input type=hidden&gt; object
+ * @method static self search(mixed $content = null, $for = null) creates a search input
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
@@ -93,6 +99,21 @@ class InputGroup extends AbstractComponent {
 
   public function contentToString(): string {
     return $this->container->getHtml();
+  }
+ 
+  /**
+   * 
+   * @param  string $name
+   * @param  array $args
+   * @return InputGroup
+   * @throws BadMethodCallException
+   */
+  public static function __callStatic(string $name, array $args): InputGroup {
+    try {
+      return new InputGroup(InputFactory::$name(...$args));
+    } catch (\Error $ex) {
+      throw new BadMethodCallException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
 }

@@ -58,7 +58,7 @@ interface Grid extends CssClassifiableContent, TraversableContent {
    *
    * @param  mixed|Row $row the new row or the content of the new row
    * @return Row appended row
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row): Row;
 
@@ -71,7 +71,7 @@ interface Grid extends CssClassifiableContent, TraversableContent {
    *
    * @param  mixed|Row $row the new row or the content of the new row
    * @return Row prepended row
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row): Row;
 

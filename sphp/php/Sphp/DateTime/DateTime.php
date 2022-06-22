@@ -32,6 +32,11 @@ interface DateTime extends Date {
    */
   public function compareTo(Date $date): int;
 
+  /**
+   * Returns the native datetime object
+   * 
+   * @return DateTimeImmutable
+   */
   public function getDateTime(): DateTimeImmutable;
 
   /**

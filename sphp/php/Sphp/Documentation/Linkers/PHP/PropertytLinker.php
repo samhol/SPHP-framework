@@ -93,7 +93,7 @@ final class PropertytLinker extends AbstractClassItemLinker {
    */
   public static function create(string $class, string $property, ClassUrlGenerator $urlGen, ?HyperlinkFactory $hyperlinkFactory = null): self {
     try {
-      if (Strings::startsWith($property, '$')) {
+      if (str_starts_with($property, '$')) {
         $property = Strings::replace($property, '$', '');
       }
       $ref = new PropertyReflector($class, $property);

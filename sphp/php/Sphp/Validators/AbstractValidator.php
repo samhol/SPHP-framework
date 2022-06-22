@@ -58,7 +58,7 @@ abstract class AbstractValidator implements Validator {
   }
 
   /**
-   * Invoke validator as command
+   * Invoke validator as a command
    *
    * @param  mixed $value
    * @return bool
@@ -82,7 +82,7 @@ abstract class AbstractValidator implements Validator {
    * @param  mixed $value the validated value
    * @return $this for a fluent interface
    */
-  public function setValue($value) {
+  public function setValue(mixed $value) {
     $this->messages->unsetMessages();
     $this->value = $value;
     return $this;

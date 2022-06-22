@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Apps\Sports\Views\Utils;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Media\Icons\FontAwesomeIcon;
 use Sphp\Apps\Sports\Workouts\WeightLiftingExercise;
 use Sphp\Apps\Sports\Workouts\BodyWeightExercise;

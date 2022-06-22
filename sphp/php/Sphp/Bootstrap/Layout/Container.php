@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Bootstrap\Layout;
 
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Bootstrap\Exceptions\BootstrapException;
 use Sphp\Stdlib\Strings;
 
@@ -61,7 +61,7 @@ class Container extends Div {
     if ($type === null) {
       $type = 'container';
     }
-    if (!Strings::startsWith($type, 'container')) {
+    if (!str_starts_with($type, 'container')) {
       $type = "container-$type";
     }
     $bbStr = implode('|', $this->containerTypes);
@@ -74,6 +74,12 @@ class Container extends Div {
     return $this;
   }
 
+  /**
+   * Appends a Row
+   * 
+   * @param  mixed $content
+   * @return Row appended instance 
+   */
   public function appendRow($content = null): Row {
     $row = new Row();
     if ($content !== null) {

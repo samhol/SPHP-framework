@@ -43,11 +43,19 @@ interface Statement {
   public function getPDO(): PDO;
 
   /**
-   * Returns the SQL statement as a string
-   *
-   * @return string the SQL statement as a string
+   * Checks the basic validity of the statement
+   * 
+   * @return bool true for a valid statement, false otherwise
    */
-  public function statementToString(): string;
+  public function isValid(): bool;
+
+  /**
+   * Returns the SQL query as a string
+   *
+   * @return string the SQL query as a string 
+   * @throws InvalidStateException if the statement is not valid SQL
+   */
+  public function getQueryString(): string;
 
   /**
    * Returns the database statement object
@@ -56,7 +64,7 @@ interface Statement {
    * @throws DatabaseException if execution fails
    * @link   https://www.php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
-  public function getStatement(): PDOStatement;
+  public function prepare(): PDOStatement;
 
   /**
    * Returns the parameter handler

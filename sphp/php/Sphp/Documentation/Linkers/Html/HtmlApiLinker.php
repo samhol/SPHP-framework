@@ -26,18 +26,15 @@ use Sphp\Documentation\Linkers\ItemLinker;
  */
 class HtmlApiLinker extends AbstractDocumentationLinker {
 
-  /**
-   * @var HtmlUrlGenerator
-   */
   private HtmlUrlGenerator $urlGen;
 
   /**
    * Constructor
    *
    * @param HtmlUrlGenerator $gen
-   * @param HyperlinkFactory $hyperlinkFactory
+   * @param HyperlinkFactory|null $hyperlinkFactory
    */
-  public function __construct(HtmlUrlGenerator $gen, HyperlinkFactory $hyperlinkFactory = null) {
+  public function __construct(HtmlUrlGenerator $gen, ?HyperlinkFactory $hyperlinkFactory = null) {
     $this->urlGen = $gen;
     if ($hyperlinkFactory === null) {
       $hyperlinkFactory = new HyperlinkFactory();

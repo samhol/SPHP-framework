@@ -34,7 +34,7 @@ class LaterThan extends AbstractDateTimeComparisonValidator {
     $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not later than or equal to %s');
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!$value instanceof ImmutableDateTime) {
       try {

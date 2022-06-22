@@ -32,10 +32,10 @@ class Fieldset extends ContainerTag implements FormController {
   /**
    * Constructor
    *
-   * @param  string|Legend $legend the legend of the fieldset component
    * @param  mixed $content the content of the component
+   * @param  string|Legend $legend the legend of the fieldset component
    */
-  public function __construct($legend = null, $content = null) {
+  public function __construct(mixed $content = null, string|Legend|null $legend = null, ) {
     parent::__construct('fieldset', $content);
     //$this->legend = $legend;
     if ($legend !== null) {
@@ -54,7 +54,7 @@ class Fieldset extends ContainerTag implements FormController {
    * @param  string|Legend|null $legend the legend component
    * @return Legend the legend
    */
-  public function setLegend($legend): ?Legend {
+  public function setLegend(string|Legend|null $legend): ?Legend {
     if ($legend !== null && !$legend instanceof Legend) {
       $legend = new Legend($legend);
     }

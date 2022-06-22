@@ -29,9 +29,6 @@ use Traversable;
  */
 class Pagination extends AbstractComponent implements IteratorAggregate, TraversableContent {
 
-  /**
-   * @var Ul
-   */
   private Ul $links;
 
   /**
@@ -55,6 +52,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Travers
     parent::__clone();
     $this->links = clone $this->links;
   }
+
   public function prependLink(string $url, string $content, string $target = null): Link {
     $link = Link::create($url, $content, $target);
     $this->links->prepend($link);
@@ -66,6 +64,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Travers
     $this->links->append($link);
     return $link;
   }
+
   /**
    * 
    * @return Li 

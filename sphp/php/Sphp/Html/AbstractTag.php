@@ -26,21 +26,8 @@ use Sphp\Html\Exceptions\HtmlException;
  */
 abstract class AbstractTag extends AbstractContent implements Tag {
 
-  /**
-   * the tag name of the component
-   *
-   * @var string
-   */
   private string $tagName;
-
-  /**
-   * attribute container
-   *
-   * @var AttributeContainer|null
-   */
   private ?AttributeContainer $attrs;
-
-  //private static $c = 0;
 
   /**
    * Constructor
@@ -51,7 +38,7 @@ abstract class AbstractTag extends AbstractContent implements Tag {
    */
   public function __construct(string $tagName, ?AttributeContainer $attrManager = null) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {
-      throw new HtmlException("The tag name '$tagName' is malformed");
+      throw new HtmlException("The tag name '$tagName' is not valid");
     }
     $this->tagName = $tagName;
     $this->attrs = $attrManager;

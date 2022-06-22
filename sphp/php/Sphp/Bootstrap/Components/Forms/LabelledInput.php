@@ -16,12 +16,19 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Component;
-use Sphp\Html\Forms\Inputs\Menus\Select; 
+use Sphp\Html\Forms\Inputs\Menus\Select;
+use Sphp\Html\Forms\Inputs\InputFactory;
+use Sphp\Bootstrap\Exceptions\BadMethodCallException;
+use Sphp\Html\Tags;
+
 /**
  * The InputGroup class
- *
+ * 
+ * @method static self text(mixed $content = null, $for = null) creates a text input
+ * @method static self search(mixed $content = null, $for = null) creates a search input
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT MIT License
  * @link    https://github.com/samhol/SPHP-framework Github repository
@@ -31,6 +38,8 @@ class LabelledInput extends AbstractComponent {
 
   private PlainContainer $container;
   private Input $input;
+  private ?string $validTooltip = null;
+  private ?string $invalidTooltip = null;
 
   /**
    * Constructor
@@ -87,28 +96,61 @@ class LabelledInput extends AbstractComponent {
     return $label;
   }
 
-  public function prepend($content) {
-    $this->container->prepend($content);
+  /**
+
+    /**
+   * 
+   * @param  string|null $toolTip
+   * @return $this for a fluent interface
+   */
+  public function setValidTooltip(?string $toolTip) {
+    $this->validTooltip = $toolTip;
     return $this;
   }
 
-  public function append($content) {
-    $this->container->append($content);
+  /**
+   * 
+   * @param  string|null $toolTip
+   * @return $this for a fluent interface
+   */
+  public function setInvalidToolTip(?string $toolTip) {
+    $this->invalidTooltip = $toolTip;
     return $this;
   }
 
-  public function appendButton(Component $button): Component {
-    $button->addCssClass('btn');
-    $this->container->append($button);
-    return $button;
+  /**
+   * 
+   * @param  bool $required
+   * @return $this for a fluent interface
+   */
+  public function setRequired(bool $required) {
+    $this->input->setRequired($required);
+    return $this;
   }
 
   public function contentToString(): string {
-    return $this->container->getHtml();
+    $out = $this->container->getHtml();
+    if ($this->invalidTooltip !== null) {
+      $out .= Tags::div($this->invalidTooltip)->addCssClass('invalid-feedback');
+    } if ($this->validTooltip !== null) {
+      $out .= Tags::div($this->validTooltip)->addCssClass('valid-feedback');
+    }
+    return $out;
   }
 
+  /**
+   * 
+   * @param  string $name
+   * @param  array $args
+   * @return LabelledInput
+   * @throws BadMethodCallException
+   */
   public static function __callStatic(string $name, array $args): LabelledInput {
-    
+    try {
+      return new LabelledInput(InputFactory::$name(...$args));
+    } catch (\Error $ex) {
+      throw new BadMethodCallException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
 }

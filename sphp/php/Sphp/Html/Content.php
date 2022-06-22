@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Html;
 
+use Stringable;
 use Sphp\Html\Exceptions\HtmlException;
 
 /**
@@ -30,7 +31,7 @@ use Sphp\Html\Exceptions\HtmlException;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-interface Content {
+interface Content extends Stringable {
 
   /**
    * Returns the component as HTML markup string
@@ -44,7 +45,7 @@ interface Content {
    * Returns the component as HTML markup string
    *
    * @return string HTML markup of the object
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __toString(): string;
 

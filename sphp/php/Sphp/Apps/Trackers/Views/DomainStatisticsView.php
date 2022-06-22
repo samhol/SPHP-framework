@@ -14,9 +14,9 @@ namespace Sphp\Apps\Trackers\Views;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Apps\Trackers\Data\URLs\DomainStatistics;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Foundation\Sites\Containers\Popup;
-use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Forms\Buttons\PushButton;
 
 /**
  * Class DomainStatisticsView
@@ -72,7 +72,7 @@ class DomainStatisticsView extends AbstractContent {
     $group = new \Sphp\Html\Div();
     $group->addCssClass('btn-group');
     if ($this->domain->contaisPaths()) {
-      $okUrls = (new Button('<i class="fas fa-chart-pie fa-fw"></i> Path statistics'))->addCssClass('modal-trigger');
+      $okUrls = (new PushButton('<i class="fas fa-chart-pie fa-fw"></i> Path statistics'))->addCssClass('modal-trigger');
       $okUrls->setAttribute('data-traffic-stats-url', '/app/stats-app/ajax/urls.php?domain=' . $domain);
       $this->popup->createController($okUrls);
       $group->append($okUrls);

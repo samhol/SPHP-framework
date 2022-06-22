@@ -40,6 +40,7 @@ interface Row extends TableContent, TraversableContent, ArrayAccess {
    * @precondition  $scope == row|col|rowgroup|colgroup
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
+   * 
    * @param mixed $content the content of the tag
    * @param int $colspan specifies the number of columns cell should span
    * @param int $rowspan specifies the number of rows cell should span
@@ -49,7 +50,7 @@ interface Row extends TableContent, TraversableContent, ArrayAccess {
    * @link  https://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    * @return Th appended table cell component
    */
-  public function appendTh($content, int $colspan = 1, int $rowspan = 1, string $scope = null): Th;
+  public function appendTh(mixed $content, int $colspan = 1, int $rowspan = 1, ?string $scope = null): Th;
 
   /**
    * Creates and appends &lt;th&gt; components to the row
@@ -57,7 +58,7 @@ interface Row extends TableContent, TraversableContent, ArrayAccess {
    * @param  mixed ... $cells cells of the table row
    * @return $this for a fluent interface
    */
-  public function appendThs(... $cells);
+  public function appendThs(mixed ... $cells);
 
   /**
    * Creates and appends a new &lt;td&gt; component to the row
@@ -71,7 +72,7 @@ interface Row extends TableContent, TraversableContent, ArrayAccess {
    * @link  https://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    * @return Td appended table cell component
    */
-  public function appendTd($content, int $colspan = 1, int $rowspan = 1): Td;
+  public function appendTd(mixed $content, int $colspan = 1, int $rowspan = 1): Td;
 
   /**
    * Creates and appends &lt;td&gt; components to the row
@@ -79,7 +80,7 @@ interface Row extends TableContent, TraversableContent, ArrayAccess {
    * @param  mixed ... $cells cells of the table row
    * @return $this for a fluent interface
    */
-  public function appendTds(... $cells);
+  public function appendTds(mixed ... $cells);
 
   /**
    * Prepends a cell component to the row

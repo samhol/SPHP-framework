@@ -10,12 +10,12 @@ declare(strict_types=1);
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Html\Apps;
+namespace Sphp\Apps;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Component;
 use Sphp\Network\Headers\Cookies;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Foundation\Sites\Buttons\Button;
 
 /**
@@ -78,9 +78,9 @@ class CookieBanner extends AbstractComponent {
     $row = new \Sphp\Html\Div();
     $row->addCssClass('sphp cookie-banner text-center');
     $row->append($this->text);
-    $row ->append($this->acceptBtn);
-   // $row->addCssClass('align-center-middle');
-    return "$row"; 
+    $row->append($this->acceptBtn);
+    // $row->addCssClass('align-center-middle');
+    return "$row";
   }
 
   public function getHtml(): string {

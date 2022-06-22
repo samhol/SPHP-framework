@@ -16,7 +16,9 @@ use PDO;
 use IteratorAggregate;
 use Traversable;
 use ArrayIterator;
-use Sphp\Database\Rules\Clause;
+use Sphp\Database\Clauses\Having;
+use Sphp\Database\Predicates\Predicate;
+use Sphp\Database\Exceptions\InvalidStateException;
 
 /**
  * An abstract implementation of a `SELECT` statement
@@ -32,54 +34,53 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    *
    * @var string[]
    */
-  private $columns = ['*'];
+  protected array $columns = ['*'];
 
   /**
    * the table(s) from which data is to be retrieved
    *
    * @var string[]
    */
-  private $from = [];
+  protected array $from = [];
 
   /**
    * the HAVING clause
-   *
-   * @var Clause
    */
-  private $having;
+  private Having $having;
 
   /**
    * the GROUP BY clause
    *
    * @var string[]
    */
-  private $groupBy = [];
+  private array $groupBy = [];
 
   /**
    * result order
    *
    * @var string[]
    */
-  private $orderBy = [];
+  private array $orderBy = [];
 
   /**
-   * result limit
-   *
-   * @var int  
+   * result limit 
    */
-  private $limit = 0;
+  protected ?int $limit = null;
 
   /**
    * result offset
-   *
-   * @var int  
    */
-  private $offset = 0;
+  protected ?int $offset = null;
 
+  /**
+   * Constructor
+   * 
+   * @param PDO $db database connection
+   */
   public function __construct(PDO $db) {
     parent::__construct($db);
-    $this->get('*');
-    $this->having = new Clause();
+    $this->columns('*');
+    $this->having = new Having();
   }
 
   public function __clone() {
@@ -94,13 +95,12 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    *         string parameters)
    * @return $this for a fluent interface
    */
-  public function get(string ...$columns) {
+  public function columns(string ...$columns) {
+    if (empty($columns)) {
+      $columns = ['*'];
+    }
     $this->columns = $columns;
     return $this;
-  }
-
-  public function getColumns(): array {
-    return $this->columns;
   }
 
   /**
@@ -117,24 +117,8 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
     return $this;
   }
 
-  protected function fromToString(): string {
-    if (!empty($this->from)) {
-      return ' FROM ' . implode(', ', $this->from);
-    } else {
-      return '';
-    }
-  }
-
-  public function getFrom() {
-    return $this->from;
-  }
-
-  public function getGroupBy() {
-    return $this->groupBy;
-  }
-
-  public function getOrderBy() {
-    return $this->orderBy;
+  public function isValid(): bool {
+    return !empty($this->from);
   }
 
   /**
@@ -154,122 +138,25 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
     return $this;
   }
 
-  protected function groupByToString(): string {
-    if (!empty($this->groupBy)) {
-      return ' GROUP BY ' . implode(', ', $this->groupBy);
-    } else {
-      return '';
-    }
-  }
-
-  /**
-   * Sets a condition to the HAVING part of the query
-   *
-   *  A HAVING clause in SQL specifies that an SQL SELECT statement should only return rows
-   *  where aggregate values meet the specified conditions. It was added to the SQL language
-   *  because the WHERE keyword could not be used with aggregate functions.
-   *
-   * **Important!**
-   *
-   * * **ALWAYS SANITIZE ALL USER INPUTS!**
-   * * **If you are using multiple arguments; None of the arguments should be an array**
-   *
-   * @param  ... string|string[] $cond condition(s) (accepts multiple arguments)
-   * @return $this for a fluent interface
-   */
-  public function having(... $rules) {
-    $obj = new Clause($rules);
-    $this->having->fulfills($obj, 'AND');
-    return $this;
-  }
-
-  /**
-   * Sets The WHERE clause.
-   *
-   * The WHERE clause is used to filter records
-   *
-   * @param  Clause $c
-   * @return $this for a fluent interface
-   */
-  public function setHaving(Clause $c) {
-    $this->having = $c;
-    return $this;
-  }
-
-  /**
-   * 
-   * @return Clause
-   */
-  public function getHaving(): Clause {
+  public function having(Having|Predicate|string ... $rules): Having {
+    $this->having->andThese(...$rules);
     return $this->having;
   }
 
   /**
-   * Adds rules to the HAVING conditions component
+   * Resets The HAVING clause
    *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * not evaluate to `true`.
-   */
-
-  /**
-   * Appends SQL conditions by using logical AND as a conjunction
+   * The HAVING clause is used to filter records
    *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @param  Having|null $having
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function andHaving(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'AND');
-    return $this;
-  }
-
-  /**
-   * Appends SQL conditions by using AND NOT as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function andNotHaving(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'AND NOT');
-    return $this;
-  }
-
-  /**
-   * Appends SQL conditions by using logical OR as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function orHaving(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'OR');
-    return $this;
-  }
-
-  /**
-   * Appends SQL conditions by using logical OR NOT as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function orNotHaving(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'OR NOT');
-    return $this;
-  }
-
-  protected function havingToString(): string {
-    $output = '';
-    if ($this->getHaving()->notEmpty()) {
-      $output .= " HAVING $this->having";
+  public function resetHaving(?Having $having = null) {
+    if ($having === null) {
+      $having = new Having();
     }
-    return $output;
+    $this->having = $having;
+    return $this;
   }
 
   /**
@@ -297,36 +184,6 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
     return $this;
   }
 
-  protected function orderByToString(): string {
-    if (!empty($this->orderBy)) {
-      return ' ORDER BY ' . implode(', ', $this->orderBy);
-    } else {
-      return '';
-    }
-  }
-
-  public function getLimit() {
-    return $this->limit;
-  }
-
-  public function getOffset(): int {
-    return $this->offset;
-  }
-
-  public function setLimit(int $limit) {
-    $this->limit = $limit;
-    return $this;
-  }
-
-  public function setOffset(int $offset) {
-    $this->offset = $offset;
-    return $this;
-  }
-
-  public function hasLimit(): bool {
-    return $this->limit > 0;
-  }
-
   /**
    * Limits the result rows
    *
@@ -343,19 +200,42 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    * * Vertica
    * * Polyhedra
    *
-   * @param  int $limit the maximum number of rows to return
-   * @param  mixed $offset the offset of the initial row
+   * @param  int|null $limit the maximum number of rows to return
+   * @param  int|null $offset the offset of the initial row
    * @return $this for a fluent interface
    */
-  public function limit(int $limit, int $offset = 0) {
-    $this->limit = '';
-    if ($limit > 0) {
-      $this->limit .= " LIMIT $limit ";
-      if ($offset > 0) {
-        $this->limit .= " OFFSET $offset ";
+  public function limit(?int $limit = null, ?int $offset = null) {
+    $this->limit = $limit;
+    $this->offset = $offset;
+    return $this;
+  }
+
+  public function getQueryString(): string {
+    if (!$this->isValid()) {
+      throw new InvalidStateException('SELECT query requires atleast a table name');
+    }
+    $query = 'SELECT ';
+    $query .= implode(', ', $this->columns);
+    $query .= ' FROM ' . implode(', ', $this->from);
+    if ($this->where->notEmpty()) {
+      $query .= " $this->where";
+    }
+    if (!empty($this->groupBy)) {
+      $query .= ' GROUP BY ' . implode(', ', $this->groupBy);
+    }
+    if ($this->having->notEmpty()) {
+      $query .= " $this->having";
+    }
+    if (!empty($this->orderBy)) {
+      $query .= ' ORDER BY ' . implode(', ', $this->orderBy);
+    }
+    if ($this->limit !== null) {
+      $query .= " LIMIT $this->limit";
+      if ($this->offset !== null) {
+        $query .= " OFFSET $this->offset";
       }
     }
-    return $this;
+    return $query;
   }
 
   /**
@@ -378,7 +258,7 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
    */
   public function count(): int {
     $clone = clone $this;
-    $clone->setLimit(0)->setOffset(0);
+    $clone->limit(0, 0);
     $count = $clone->get("COUNT(*)")->execute()->fetchColumn(0);
     //echo $this->statementToString();
     //var_dump($count);
@@ -401,22 +281,12 @@ abstract class AbstractQuery extends AbstractConditionalStatement implements Ite
     return new ArrayIterator($data);
   }
 
-  public function fetchRows(int $rowCount = null, int $offset = 0): array {
-    if ($rowCount) {
-      $this->limit($rowCount, $offset);
-    }
-  }
-
   public function fetchAll(int $fetch_style = PDO::FETCH_ASSOC): array {
     return $this->execute()->fetchAll($fetch_style);
   }
 
   public function fetchColumn(int $colNum = 0): array {
     return $this->execute()->fetchColumn($colNum);
-  }
-
-  public function fetchFirstRow(): array {
-    return $this->execute()->fetch(PDO::FETCH_ASSOC);
   }
 
 }

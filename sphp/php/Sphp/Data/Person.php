@@ -11,8 +11,9 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Data;
- 
-use Sphp\Data\Address;
+
+use Sphp\Data\Geographical\Address;
+use Sphp\DateTime\Date;
 use Sphp\DateTime\ImmutableDateTime;
 use Sphp\Exceptions\InvalidStateException;
 use Sphp\DateTime\Interval;
@@ -26,65 +27,65 @@ use Sphp\DateTime\Interval;
  */
 class Person {
 
-  /**
-   * The first name of the user
-   *
-   * @var string|null
-   */
-  private $fname;
-
-  /**
-   * The last name of the user
-   * 
-   * @var string|null
-   */
-  private $lname;
-
-  /**
-   * The last name of the user
-   * 
-   * @var ImmutableDateTime|null
-   */
-  private $dob;
-
-  /**
-   * The last name of the user
-   * 
-   * @var ImmutableDateTime|null
-   */
-  private $dod;
-
-  /**
-   * The geographical address of the user
-   * 
-   * @var Address|null
-   */
-  private $address;
-
-  /**
-   * the email address of the user
-   * 
-   * @var string|null
-   */
-  private $email;
-
-  /**
-   * @var string
-   */
-  private $phonenumber;
+  protected ?string $fname;
+  protected ?string $lname;
+  protected ?string $email;
+  protected ?string $phone;
+  protected Address $address;
+  protected ?Date $dob = null;
+  protected ?Date $dod = null;
 
   /**
    * Constructor
+   * 
+   * @param array $data
    */
-  public function __construct() {
-    $this->address = new Address;
+  public function __construct(array $data = []) {
+    $this->fname = $data['fname'] ?? null;
+    $this->lname = $data['lname'] ?? null;
+    $this->phone = $data['phone'] ?? null;
+    $this->email = $data['email'] ?? null;
+    if (array_key_exists('dob', $data)) {
+      $this->dob = ImmutableDateTime::from($data['dod']);
+    } if (array_key_exists('dod', $data)) {
+      $this->dod = ImmutableDateTime::from($data['dod']);
+    }
+    $this->address = new Address($data);
   }
 
   /**
    * Destructor
    */
   public function __destruct() {
-    unset($this->address);
+    unset($this->address, $this->dob, $this->dod);
+  }
+
+  public function setFname(?string $fname): void {
+    $this->fname = $fname;
+  }
+
+  public function setLname(?string $lname): void {
+    $this->lname = $lname;
+  }
+
+  public function setEmail(?string $email): void {
+    $this->email = $email;
+  }
+
+  public function setPhone(?string $phone): void {
+    $this->phone = $phone;
+  }
+
+  public function setAddress(Address $address): void {
+    $this->address = $address;
+  }
+
+  public function setDob(?Date $dob): void {
+    $this->dob = $dob;
+  }
+
+  public function setDod(?Date $dod): void {
+    $this->dod = $dod;
   }
 
   /**
@@ -92,19 +93,8 @@ class Person {
    *
    * @return string the first name
    */
-  public function getFname(): string {
+  public function getFname(): ?string {
     return (string) $this->fname;
-  }
-
-  /**
-   * Sets the first name
-   *
-   * @param  string $fname the first name
-   * @return $this for a fluent interface
-   */
-  public function setFname(string $fname = null) {
-    $this->fname = $fname;
-    return $this;
   }
 
   /**
@@ -112,19 +102,8 @@ class Person {
    *
    * @return string the last (family) name
    */
-  public function getLname() {
+  public function getLname(): ?string {
     return $this->lname;
-  }
-
-  /**
-   * Sets the last (family) name
-   *
-   * @param  string $lname the last (family) name
-   * @return $this for a fluent interface
-   */
-  public function setLname(string $lname = null) {
-    $this->lname = $lname;
-    return $this;
   }
 
   /**
@@ -133,45 +112,23 @@ class Person {
    * @return string the full name
    */
   public function getFullname(): string {
-    if (!empty($this->fname) && !empty($this->lname)) {
-      return "$this->fname $this->lname";
-    } else {
-      return "$this->fname$this->lname";
-    }
+    return "$this->fname $this->lname";
   }
 
   /**
    * 
-   * @return ImmutableDateTime|null
+   * @return Date|null
    */
-  public function getDateOfBirth(): ImmutableDateTime {
+  public function getDateOfBirth(): ?Date {
     return $this->dob;
   }
 
-  public function setDateOfBirth($dob = null) {
-    if ($dob !== null) {
-      $this->dob = ImmutableDateTime::from($dob);
-    } else {
-      $this->dob = null;
-    }
-    return $this;
-  }
-
   /**
    * 
-   * @return ImmutableDateTime|null
+   * @return Date|null
    */
-  public function getDateOfDeath() {
+  public function getDateOfDeath(): ?Date {
     return $this->dod;
-  }
-
-  public function setDateOfDeath($dod = null) {
-    if ($dod !== null) {
-      $this->dod = ImmutableDateTime::from($dod);
-    } else {
-      $this->dod = null;
-    }
-    return $this;
   }
 
   public function isDead(): bool {
@@ -197,39 +154,17 @@ class Person {
    *
    * @return string the email address
    */
-  public function getEmail() {
+  public function getEmail(): ?string {
     return $this->email;
-  }
-
-  /**
-   * Sets the email address
-   *
-   * @param  string $email the email address
-   * @return $this for a fluent interface
-   */
-  public function setEmail(string $email = null) {
-    $this->email = $email;
-    return $this;
   }
 
   /**
    * Returns the email address
    *
-   * @return string the email address
+   * @return string|null the email address
    */
-  public function getPhonenumber() {
+  public function getPhonenumber(): ?string {
     return $this->phonenumber;
-  }
-
-  /**
-   * Sets the phone number
-   *
-   * @param  string $phonenumber the phone number
-   * @return $this for a fluent interface
-   */
-  public function setPhonenumber(string $phonenumber = null) {
-    $this->phonenumber = $phonenumber;
-    return $this;
   }
 
   /**
@@ -241,7 +176,7 @@ class Person {
     return $this->address;
   }
 
-  public function fromArray(array $raw) {
+  public static function fromArray(array $raw): Person {
     $args = [
         'fname' => \FILTER_SANITIZE_STRING,
         'lname' => \FILTER_SANITIZE_STRING,
@@ -250,7 +185,7 @@ class Person {
         'phone' => \FILTER_SANITIZE_STRING,
     ];
     $person = filter_var_array($raw, $args, true);
-    $this->setFname($person['fname'])
+    $person->setFname($person['fname'])
             ->setLname($person['lname'])
             ->setEmail($person['email'])
             ->setPhonenumber($person['phone']);
@@ -258,21 +193,21 @@ class Person {
       if (is_int($person['dob'])) {
         $dob = new ImmutableDateTime();
         $dob->setTimestamp($person['dob']);
-        $this->setDateOfBirth($dob);
+        $person->setDateOfBirth($dob);
       } else {
         $dob = ImmutableDateTime::createFromFormat(DATE_ATOM, $person['dob']);
         if ($dob instanceof DateTimeInterface) {
-          $this->setDateOfBirth($dob);
+          $person->setDateOfBirth($dob);
         }
       }
     }
     if (isset($raw['address'])) {
-      $this->setAddress(new Address($raw['address']));
+      $person->setAddress(new Address($raw['address']));
     } else {
-      $this->setAddress(new Address($raw));
+      $person->setAddress(new Address($raw));
     }
 
-    return $this;
+    return new Person($person);
   }
 
   public function toArray(): array {

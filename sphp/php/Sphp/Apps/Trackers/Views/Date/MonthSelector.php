@@ -17,16 +17,16 @@ use Sphp\DateTime\ImmutableDate;
 use Sphp\DateTime\Periods;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Media\Icons\FontAwesomeIcon;
-use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Forms\Buttons\PushButton;
+use Sphp\Html\Forms\HtmlForm;
 use Sphp\Html\Forms\Form;
-use Sphp\Html\Forms\ContainerForm;
-use Sphp\Html\Forms\Buttons\Submitter;
+use Sphp\Html\Forms\Buttons\SubmitButton;
 use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
 use Sphp\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Foundation\Sites\Forms\Inputs\SwitchBoard;
 use Sphp\Foundation\Sites\Containers\Dropdown;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Network\QueryString;
 use Sphp\Foundation\Sites\Navigation\BreadCrumbs;
@@ -205,8 +205,8 @@ class MonthSelector extends AbstractContent {
     return $menu;
   }
 
-  protected function buildForm(): Form {
-    $container = new ContainerForm('/stats/calendar', 'get');
+  protected function buildForm(): HtmlForm {
+    $container = new Form('/stats/calendar', 'get');
     $container->addCssClass('calendar-settings');
     $row = new FormRow();
     // $row->setLayouts('padding-x');
@@ -215,7 +215,7 @@ class MonthSelector extends AbstractContent {
     $container->append($row);
 
     $container->append($this->createDomainSelector());
-    $container->append(new Submitter('Go!'));
+    $container->append(new SubmitButton('Go!'));
     return $container;
   }
 
@@ -223,7 +223,7 @@ class MonthSelector extends AbstractContent {
     $div = new Div;
     $div->addCssClass('calendar-selection');
     $content = new FontAwesomeIcon('fas fa-sliders-h', 'Settings');
-    $trigger = new Button($content . ' settings');
+    $trigger = new PushButton($content . ' settings');
     $trigger->addCssClass('selection-trigger');
     $dropdown = new Dropdown($trigger, $div);
     $div->append($this->buildForm());

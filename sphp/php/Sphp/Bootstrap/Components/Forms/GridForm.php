@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Bootstrap\Components\Forms;
 
 use Sphp\Html\Forms\AbstractForm;
-use Sphp\Foundation\Sites\Grids\DivGrid;
+use Sphp\Bootstrap\Layout\Container;
 use Sphp\Foundation\Sites\Grids\Grid;
 use Sphp\Bootstrap\Layout\Row;
 use Sphp\Foundation\Sites\Containers\ContentCallout;
@@ -31,10 +31,7 @@ use Sphp\Foundation\Sites\Containers\ContentCallout;
  */
 class GridForm extends AbstractForm {
 
-  /**
-   * @var DivGrid 
-   */
-  private $grid;
+  private Container $container;
 
   /**
    * Constructor
@@ -56,20 +53,21 @@ class GridForm extends AbstractForm {
     if ($method !== null) {
       $this->setMethod($method);
     }
-    $this->errorLabel = new ContentCallout('<i class="fas fa-exclamation-triangle"></i> There are some errors in your form.');
-    $this->errorLabel->cssClasses()->protectValue('alert');
-    $this->errorLabel->css()->setProperty('display', 'none');
-    $this->errorLabel->attributes()->forceVisibility('data-abide-error');
-    $this->grid = new DivGrid();
+    $this->container = new Container();
   }
 
   public function __destruct() {
-    unset($this->errorLabel, $this->grid);
+    unset($this->container);
     parent::__destruct();
   }
 
   public function useValidation(bool $validate = true) {
-    $this->attributes()->setAttribute('novalidate', $validate)->setAttribute('data-abide', $validate);
+    parent::useValidation(!$validate);
+    if ($validate) {
+      $this->addCssClass('needs-validation');
+    } else {
+      $this->removeCssClass('needs-validation');
+    }
     return $this;
   }
 
@@ -81,31 +79,12 @@ class GridForm extends AbstractForm {
     return $this;
   }
 
-  public function liveValidate(bool $validate = true) {
-    if ($validate) {
-      $this->useValidation();
-    }
-    $this->attributes()->setAttribute('data-live-validate', $validate ? 'true' : 'false');
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $message
-   * @return $this for a fluent interface
-   */
-  public function setFormErrorMessage($message) {
-    $this->errorLabel->resetContent($message);
-    return $this;
-  }
-
   public function contentToString(): string {
-    $output = '<div class="grid-container"><div class="grid-x"><div class="cell">' . $this->errorLabel . '</div></div></div>';
-    return $output . $this->getGrid()->getHtml() . $this->getHiddenInputs();
+    return $this->getGrid()->getHtml() . $this->getHiddenInputs();
   }
 
-  public function getGrid(): Grid {
-    return $this->grid;
+  public function getGrid(): Container {
+    return $this->container;
   }
 
   /**
@@ -113,10 +92,10 @@ class GridForm extends AbstractForm {
    *
    * @param  mixed|Row $row the new row or the content of the new row
    * @return Row appended instance
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row): Row {
-    return $this->getGrid()->append($row);
+    return $this->getGrid()->appendRow($row);
   }
 
   /**
@@ -124,7 +103,7 @@ class GridForm extends AbstractForm {
    *
    * @param  mixed|Row $row the new row or the content of the new row
    * @return Row prepended instance
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row): Row {
     return $this->getGrid()->prepend($row);

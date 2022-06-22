@@ -13,12 +13,9 @@ declare(strict_types=1);
 namespace Sphp\Stdlib\Parsers;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Iterator;
+use IteratorAggregate;
 use SplFileObject;
-use LimitIterator;
 use Sphp\Exceptions\FileSystemException;
-use Sphp\Exceptions\LogicException;
-use Sphp\Exceptions\OutOfRangeException;
 
 /**
  * CSV file object
@@ -27,31 +24,22 @@ use Sphp\Exceptions\OutOfRangeException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CsvFile implements Arrayable, Iterator {
+class CsvFile implements Arrayable ,IteratorAggregate{
 
-  /**
-   * @var SplFileObject 
-   */
   private SplFileObject $file;
 
   /**
-   * the field delimiter (one character only)
-   * 
-   * @var string 
+   * the field delimiter (one character only) 
    */
   private string $delimiter;
 
   /**
-   * the field enclosure character (one character only)
-   *
-   * @var string 
+   * the field enclosure character (one character only) 
    */
   private string $enclosure = '"';
 
   /**
-   * the field escape character (one character only)
-   *
-   * @var string 
+   * the field escape character (one character only) 
    */
   private string $escape;
 
@@ -89,25 +77,6 @@ class CsvFile implements Arrayable, Iterator {
   }
 
   /**
-   * Sets the internal pointer to the given line number of the CSV file
-   * 
-   * @param  int $line the line number of the CSV file
-   * @return $this for a fluent interface
-   * @throws LogicException if the $line number is invalid
-   */
-  public function seek(int $line) {
-    try {
-      $this->file->seek($line);
-    } catch (\LogicException $ex) {
-      throw new LogicException($ex->getMessage(), $ex->getCode(), $ex);
-    }
-    if (!$this->file->valid()) {
-      throw new OutOfRangeException("Can't seek file {$this->file->getFilename()} to line $line");
-    }
-    return $this;
-  }
-
-  /**
    * Returns the header row (first row) of the CSV file
    * 
    * @return string[] indexed array containing the fields of the header row
@@ -126,63 +95,15 @@ class CsvFile implements Arrayable, Iterator {
    */
   public function getChunk(int $offset = 0, int $count = -1): array {
     $this->file->rewind();
-    return iterator_to_array(new LimitIterator($this->file, $offset, $count));
+    return array_slice($this->toArray(), $offset, $count, true);
   }
 
   public function toArray(): array {
-    $arr = [];
-    foreach ($this->file as $key => $row) {
-      if ($row !== false) {
-        $arr[$key] = $row;
-      }
-    }
-    $this->rewind();
-    return $arr;
+    return iterator_to_array($this->file);
   }
 
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return $this->file->current();
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return $this->file->key();
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   *
-   * @return void
-   */
-  public function next(): void {
-    $this->file->next();
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   * 
-   * @return void
-   */
-  public function rewind(): void {
-    $this->file->rewind();
-  }
-
-  /**
-   * Checks whether EOF has been reached
-   * 
-   * @return bool true if not reached EOF, false otherwise.
-   */
-  public function valid(): bool {
-    return $this->file->valid() && $this->current() !== false;
+  public function getIterator(): \Traversable {
+    yield from $this->file;
   }
 
 }

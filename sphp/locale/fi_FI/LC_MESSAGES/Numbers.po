@@ -1,0 +1,68 @@
+# Sami Holck, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: SPHP framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-13 16:00+0200\n"
+"PO-Revision-Date: 2017-09-08 14:33+0300\n"
+"Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
+"Language-Team: Sami Holck <sami.holck@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi_FI\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.3\n"
+
+# Number translations
+msgid "one"
+msgstr "yksi"
+
+msgid "first"
+msgstr "ensimmäinen"
+
+msgid "1st"
+msgstr "1."
+
+msgid "two"
+msgstr "kaksi"
+
+msgid "second"
+msgstr "toinen"
+
+msgid "2nd"
+msgstr "2."
+
+msgid "three"
+msgstr "kolme"
+
+msgid "third"
+msgstr "kolmas"
+
+msgid "3rd"
+msgstr "3."
+
+msgid "four"
+msgstr "neljä"
+
+msgid "fourth"
+msgstr "neljäs"
+
+msgid "five"
+msgstr "viisi"
+
+msgid "six"
+msgstr "kuusi"
+
+msgid "seven"
+msgstr "seitsemän"
+
+msgid "eight"
+msgstr "kahdeksan"
+
+msgid "nine"
+msgstr "yhdeksän"
+
+msgid "ninth"
+msgstr "yhdeksäs"

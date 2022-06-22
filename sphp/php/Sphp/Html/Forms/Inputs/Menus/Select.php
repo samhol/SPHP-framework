@@ -88,7 +88,7 @@ class Select extends AbstractComponent implements ValidableInput, IteratorAggreg
    * @return Option appended instance
    * @link   https://www.w3schools.com/tags/att_option_value.asp value attribute
    */
-  public function appendOption($value, string $content = null): Option {
+  public function appendOption(string|int|float|null $value, string|int|float|null $content): Option {
     $option = new Option($value, $content);
     $this->append($option);
     return $option;

@@ -29,7 +29,7 @@ class SearchInput extends AbstractTextualInput {
    * @Postconditions  `attrLocked("type", "search")`
    *
    * @param  string|null $name the value of the  name attribute
-   * @param  string|null $value the value of the  value attribute
+   * @param  string|int|float|null $value the value of the  value attribute
    * @param  int|null $maxlength the value of the  maximum length attribute
    * @param  int|null $size the value of the  size attribute
    * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
@@ -37,7 +37,7 @@ class SearchInput extends AbstractTextualInput {
    * @link   https://www.w3schools.com/tags/att_input_size.asp size attribute
    * @link   https://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
-  public function __construct(?string $name = null, $value = null, ?int $maxlength = null, ?int $size = null) {
+  public function __construct(?string $name = null, string|int|float|null $value = null, ?int $maxlength = null, ?int $size = null) {
     parent::__construct('search', $name, $value, $maxlength, $size);
   }
 

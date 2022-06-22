@@ -25,11 +25,11 @@ class HiddenInput extends AbstractInputTag {
    * Constructor
    *
    * @param  string|null $name name attribute
-   * @param  scalar|null $value value attribute
+   * @param  string|int|float|null $value value attribute
    * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function __construct(?string $name = null, $value = null) {
+  public function __construct(?string $name = null, string|int|float|null $value = null) {
     parent::__construct('hidden', $name, $value);
   }
 

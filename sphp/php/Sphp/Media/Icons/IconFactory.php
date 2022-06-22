@@ -47,10 +47,10 @@ class IconFactory {
    * Creates an icon object
    *
    * @param  string $iconName the file type
-   * @param  string $screenReaderText 
+   * @param  string|null $screenReaderText 
    * @return FontAwesomeIcon the corresponding component
    */
-  public function __invoke(string $iconName, string $screenReaderText = null): IconObject {
+  public function __invoke(string $iconName, ?string $screenReaderText = null): IconObject {
     $icon = $this->createIcon($iconName);
     $icon->setTitle($screenReaderText);
     return $icon;

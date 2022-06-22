@@ -20,29 +20,19 @@ use Traversable;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Exceptions\HtmlException;
-use Sphp\Html\Sections\Hr;
-use Sphp\Html\Sections\Article;
-use Sphp\Html\Sections\Aside;
-use Sphp\Html\Sections\Section;
-use Sphp\Html\Sections\Paragraph;
-use Sphp\Html\Sections\Headings\H1;
-use Sphp\Html\Sections\Headings\H2;
-use Sphp\Html\Sections\Headings\H3;
-use Sphp\Html\Sections\Headings\H4;
-use Sphp\Html\Sections\Headings\H5;
-use Sphp\Html\Sections\Headings\H6;
 use Sphp\Html\Navigation\A;
 
 /**
  * Implements a container for HTML components and other textual content
  * 
  * @method \Sphp\Html\Span appendSpan(mixed $content) Appends a span
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class PlainContainer extends AbstractContent implements IteratorAggregate, Container, ContentParser, Sections\FlowContainer, ArrayAccess {
+class PlainContainer extends AbstractContent implements IteratorAggregate, Container, ContentParser, ArrayAccess {
 
   /**
    * content
@@ -53,19 +43,9 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
 
   /**
    * Constructor
-   *
-   * @param  iterable $content the content of the iterator
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($content = null) {
-    if (is_scalar($content) || (is_object($content) && method_exists($content, '__toString'))) {
-      $content = [$content];
-    } else if ($content instanceof \Traversable) {
-      $content = iterator_to_array($content);
-    } else if (!is_array($content)) {
-      $content = [];
-    }
-    $this->components = $content;
+  public function __construct() {
+    $this->components = [];
   }
 
   /**
@@ -97,7 +77,7 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
   }
 
   public function __call(string $name, array $arguments) {
-    if (!\Sphp\Stdlib\Strings::startsWith($name, 'append')) {
+    if (!str_starts_with($name, 'append')) {
       throw new BadMethodCallException($name);
     }
     $tagName = strtolower(preg_replace("/^append/", '', $name));
@@ -108,86 +88,8 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
     return $out;
   }
 
-  public function appendParagraph($content = null): Paragraph {
-    $component = new Paragraph($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendH1($content = null): H1 {
-    $component = new H1();
-    $component->append($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendH2($content = null): H2 {
-    $component = new H2();
-    $component->append($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendH3($content = null): H3 {
-    $component = new H3();
-    $component->append($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendH4($content = null): H4 {
-    $component = new H4();
-    $component->append($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendH5($content = null): H5 {
-    $component = new H5();
-    $component->append($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendH6($content = null): H6 {
-    $component = new H6();
-    $component->append($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendHr(): Hr {
-    $component = new Hr();
-    $this->append($component);
-    return $component;
-  }
-
   public function appendHyperlink(string $href = null, $content = null, string $target = null): A {
     $component = new A($href, $content, $target);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendArticle($content = null): Article {
-    $component = new Article($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendSection($content = null): Section {
-    $component = new Section($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendAside($content = null): Aside {
-    $component = new Aside($content);
-    $this->append($component);
-    return $component;
-  }
-
-  public function appendDiv($content = null): Div {
-    $component = new Div($content);
     $this->append($component);
     return $component;
   }
@@ -269,7 +171,7 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
    * @param  mixed $offset an offset to check for
    * @return bool true on success or false on failure
    */
-  public function offsetExists($offset): bool {
+  public function offsetExists(mixed $offset): bool {
     return isset($this->components[$offset]) || array_key_exists($offset, $this->components);
   }
 
@@ -279,7 +181,7 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
    * @param  mixed $offset the index with the content element
    * @return mixed content element or null
    */
-  public function offsetGet($offset) {
+  public function offsetGet(mixed $offset): mixed {
     $result = null;
     if ($this->offsetExists($offset)) {
       $result = $this->components[$offset];
@@ -294,7 +196,7 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
    * @param  mixed $value the value to set
    * @return void
    */
-  public function offsetSet($offset, $value): void {
+  public function offsetSet(mixed $offset, $value): void {
     if (is_null($offset)) {
       $this->components[] = $value;
     } else {
@@ -308,7 +210,7 @@ class PlainContainer extends AbstractContent implements IteratorAggregate, Conta
    * @param  mixed $offset offset to unset
    * @return void
    */
-  public function offsetUnset($offset): void {
+  public function offsetUnset(mixed $offset): void {
     unset($this->components[$offset]);
   }
 

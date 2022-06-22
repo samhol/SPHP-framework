@@ -14,7 +14,7 @@ namespace Sphp\Security;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Html\Scripts\ExternalScript;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Implements Google reCAPTCHA HTML component

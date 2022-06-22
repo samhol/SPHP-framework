@@ -77,7 +77,7 @@ class MonthSelector extends AbstractContent {
     $group->appendInput($this->createYearMenu());
 
     $group->appendInput($this->createMonthMenu());
-    $group->appendButton((new \Sphp\Html\Forms\Buttons\Button('view'))->addCssClass('btn-success'));
+    $group->appendButton((new \Sphp\Html\Forms\Buttons\PushButton('view'))->addCssClass('btn-success'));
     return $group;
   }
 

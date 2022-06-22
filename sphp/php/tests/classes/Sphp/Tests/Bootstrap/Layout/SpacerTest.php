@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 use Sphp\Bootstrap\Layout\Container;
 use Sphp\Bootstrap\Exceptions\BootstrapException;
 use Sphp\Bootstrap\Layout\Spacer;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * The SpacerTest class

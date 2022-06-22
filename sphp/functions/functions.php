@@ -29,3 +29,17 @@ function inlineMarkdown(string $content, bool $echo = true): string {
   }
   return $parsed;
 }
+
+/**
+ * 
+ * @param  string $filePath
+ * @return string
+ */
+function markdownFile(string $filePath, bool $echo = true): string {
+  $parsed = ParseFactory::md()->parseFile($filePath);
+  if ($echo) {
+    echo $parsed;
+  }
+  return $parsed;
+}
+ 

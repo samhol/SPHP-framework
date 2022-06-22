@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Security;
 
-use Sphp\Html\Forms\Form;
+use Sphp\Html\Forms\HtmlForm;
 use Sphp\Security\Exception\ReCAPTCHAException;
 use Sphp\Html\Scripts\ExternalScript;
 
@@ -59,11 +59,11 @@ class ReCAPTCHAv3 {
 
   /**
    * 
-   * @param  Form $form
+   * @param  HtmlForm $form
    * @param  string $formId
    * @return $this for a fluent interface
    */
-  public function insertIntoForm(Form $form, string $formId) {
+  public function insertIntoForm(HtmlForm $form, string $formId) {
     $form->setAttribute('id', $formId);
     echo new ExternalScript("https://www.google.com/recaptcha/api.js?render={$this->getClienId()}");
     $form->setAttribute('data-sphp-grecaptcha-v3', 'g-recaptcha-response');
@@ -78,23 +78,39 @@ class ReCAPTCHAv3 {
    * @return float the score for this request (0.0 - 1.0)
    * @throws ReCAPTCHAException if fetching fails
    */
-  public function getScoreForResponse(string $response = null): float {
+  public function getScoreForResponse(string $response): float {
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $data = [
         'secret' => $this->getSecret(),
         'response' => (string) $response
     ];
     $query = http_build_query($data);
-    $options = [
-        'http' => [
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method' => 'POST',
-            'content' => $query
-        ]
-    ];
-    $context = stream_context_create($options);
-    $verify = file_get_contents($url, false, $context);
-    $responseData = json_decode($verify);
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $headers = array(
+        "Content-Type: application/x-www-form-urlencoded",
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $query);
+
+//for debug only!
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $resp = curl_exec($curl);
+    curl_close($curl);
+    var_dump($resp);
+
+    
+    
+    
+    $responseData = json_decode($resp);
 
     //$_SESSION['contact_form']['responseData'] = $responseData;
     if (!$responseData->success) {

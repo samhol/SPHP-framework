@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Html;
 
+use PHPUnit\Framework\Assert;
 use Sphp\Html\TraversableContent;
-use Sphp\Html\Span;
-use Sphp\Html\Div;
+use Sphp\Html\Text\Span;
+use Sphp\Html\Layout\Div;
 
 /**
  * Trait TraversableContentTestTrait
@@ -44,35 +45,39 @@ trait TraversableContentTestTrait {
   abstract public function create(iterable $content): TraversableContent;
 
   /**
-   * @return void
+   * @return TraversableContent
    */
-  public function testGetComponentsBy(): void {
+  public function testGetComponentsBy(): TraversableContent {
     $it = $this->create($this->traversableContent());
     $divs = $it->getComponentsBy(function ($value): bool {
       return $value instanceof Div;
     });
     $divs1 = $it->getComponentsByObjectType(Div::class);
-    $this->assertContainsOnly(Div::class, $divs);
-    $this->assertEquals($divs1, $divs);
+    Assert::assertContainsOnly(Div::class, $divs);
+    Assert::assertEquals($divs1, $divs);
     $strings = $it->getComponentsBy(function ($value): bool {
       return is_string($value);
     });
     foreach ($strings as $string) {
-      $this->assertIsString($string);
+      Assert::assertIsString($string);
     }
+    return $it;
   }
 
-  public function testToArray(): void {
-    $data = $this->traversableContent();
-    $it = $this->create($data);
-    $this->assertSame($data, $it->toArray());
-  }
-
-  public function testCount(): void {
-    $data = $this->traversableContent();
-    $it = $this->create($data);
-    $this->assertCount(count($data), $it);
-    $this->assertSame(count($it), $it->count());
+  /**
+   * @depends testGetComponentsBy
+   * 
+   * @param TraversableContent $it
+   * @return void
+   */
+  public function testToArrayAndCount(TraversableContent $it): void {
+    $content = $this->traversableContent();
+    Assert::assertEquals($content, $it->toArray());
+    $count = count($content);
+    Assert::assertCount($count, $it);
+    Assert::assertSame($count, $it->count());
+    Assert::assertSame($count, count($it));
+    Assert::assertCount(0, $this->create([]));
   }
 
 }

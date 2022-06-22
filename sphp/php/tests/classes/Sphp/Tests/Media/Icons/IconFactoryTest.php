@@ -30,10 +30,9 @@ class IconFactoryTest extends TestCase {
     $factory = new IconFactory('i');
     $icon = $factory('devicon-github-plain');
     $this->assertTrue($icon->createTag()->hasCssClass('devicon-github-plain'));
-    $this->assertSame('i', $icon->createTag()->getTagName()); 
+    $this->assertSame('i', $icon->createTag()->getTagName());
     return $factory;
   }
- 
 
   /**
    * @return DevIcons
@@ -45,7 +44,6 @@ class IconFactoryTest extends TestCase {
     $this->assertSame('i', $icon->createTag()->getTagName());
     return $factory;
   }
- 
 
   /**
    * @return DevIcons

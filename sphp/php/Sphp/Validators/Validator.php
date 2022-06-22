@@ -33,12 +33,12 @@ interface Validator {
    * @param  mixed $value the value to validate
    * @return bool true if validation was successful, false if not
    */
-  public function isValid($value): bool;
+  public function isValid(mixed $value): bool;
 
   /**
    * Returns error messages
    *
-   * @return string[] error messages
+   * @return MessageManager error messages
    */
   public function getErrors(): MessageManager;
 }

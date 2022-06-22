@@ -35,7 +35,7 @@ class Sequence implements Iterator {
   /**
    * @var int
    */
-  private $maxLength;
+  private int $maxLength;
 
   /**
    * Constructor
@@ -62,7 +62,7 @@ class Sequence implements Iterator {
    * @return $this for a fluent interface
    * @throws OutOfBoundsException
    */
-  public function insert(int $index, $values) {
+  public function insert(int $index, mixed $values) {
     if ($index < 0) {
       throw new OutOfBoundsException("Index ($index) must be zero or positive integer");
     }if ($index > $this->maxLength - 1) {
@@ -186,7 +186,7 @@ class Sequence implements Iterator {
    * 
    * @return mixed the current element
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->sequence);
   }
 
@@ -204,7 +204,7 @@ class Sequence implements Iterator {
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->sequence);
   }
 

@@ -18,7 +18,7 @@ use Sphp\Html\Lists\StandardListItem;
 use Sphp\Html\Lists\Li;
 use Sphp\Stdlib\Parsers\ParseFactory;
 use Sphp\Html\Exceptions\HtmlException;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Lists\HyperlinkListItem;
 

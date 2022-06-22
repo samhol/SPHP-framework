@@ -15,7 +15,6 @@ namespace Sphp\Stdlib;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\LogicException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Config\ErrorHandling\ErrorToExceptionThrower;
 
 /**
  * Utility class for multibyte string operations
@@ -164,19 +163,6 @@ abstract class Strings {
   }
 
   /**
-   * Tests whether the string contains the substring or not
-   *
-   * @param  string $haystack the string being checked
-   * @param  string $needle the substring to search for
-   * @param  string|null $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return bool true if needle was found from the haystack string, false otherwise
-   */
-  public static function contains(string $haystack, string $needle, ?string $encoding = null): bool {
-    return (\mb_stripos($haystack, $needle, 0, self::getEncoding($encoding)) !== false);
-  }
-
-  /**
    * Checks whether the haystack string contains all $needles
    *
    * @param  string $haystack the string being checked
@@ -190,7 +176,7 @@ abstract class Strings {
       return false;
     } else {
       foreach ($needles as $needle) {
-        if (!self::contains($haystack, (string) $needle, $encoding)) {
+        if (!str_contains($haystack, (string) $needle)) {
           return false;
         }
       }
@@ -203,16 +189,14 @@ abstract class Strings {
    *
    * @param  string $haystack the string being checked
    * @param  string[] $needles Substrings to look for
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
    * @return bool whether the string contains any of the needles
    */
-  public static function containsAny(string $haystack, array $needles, string $encoding = null): bool {
+  public static function containsAny(string $haystack, array $needles): bool {
     if (empty($needles)) {
       return false;
     } else {
       foreach ($needles as $needle) {
-        if (static::contains($haystack, (string) $needle, $encoding)) {
+        if (str_contains($haystack, (string) $needle)) {
           return true;
         }
       }
@@ -254,17 +238,6 @@ abstract class Strings {
   }
 
   /**
-   * Checks whether a haystack string ends with any of the given needles
-   *
-   * @param  string $haystack the string being checked
-   * @param  string $needle the ending to compare with
-   * @return bool true if the haystack ends with any of the given needles
-   */
-  public static function endsWith(string $haystack, $needle): bool {
-    return $needle !== '' && substr($haystack, -strlen($needle)) === (string) $needle;
-  }
-
-  /**
    * Returns the character at $index, with indexes starting at 0
    *
    * @param  string $string the input string
@@ -274,12 +247,12 @@ abstract class Strings {
    * @return string the character at $index or null if the index does not exist
    * @throws OutOfBoundsException if the index does not exist
    */
-  public static function charAt(string $string, int $index, string $encoding = null): string {
+  public static function charAt(string $string, int $index, ?string $encoding = null): string {
     $length = static::length($string, $encoding);
     if (($index >= 0 && $length <= $index) || $length < $index) {
       throw new OutOfBoundsException("No character exists at the index: ($index)");
     }
-    return \mb_substr($string, $index, 1, static::getEncoding($encoding));
+    return \mb_substr($string, $index, 1, $encoding);
   }
 
   /**
@@ -290,12 +263,11 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return array an array of string chars
    */
-  public static function toArray(string $string, string $encoding = null): array {
-    $enc = self::getEncoding($encoding);
-    $length = static::length($string, $enc);
+  public static function toArray(string $string, ?string $encoding = null): array {
+    $length = static::length($string, $encoding);
     $arr = [];
     for ($i = 0; $i < $length; $i += 1) {
-      $arr[] = mb_substr($string, $i, 1, $enc);
+      $arr[] = mb_substr($string, $i, 1, $encoding);
     }
     return $arr;
   }
@@ -313,9 +285,8 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return int|bool The occurrence's index if found, otherwise false
    */
-  public static function indexOf(string $string, string $needle, int $offset = 0, string $encoding = null) {
-    $enc = self::getEncoding($encoding);
-    return \mb_strpos($string, $needle, $offset, $enc);
+  public static function indexOf(string $string, string $needle, int $offset = 0, ?string $encoding = null) {
+    return \mb_strpos($string, $needle, $offset, $encoding);
   }
 
   /**
@@ -336,44 +307,38 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return int the length of the given string
    */
-  public static function length(string $str, string $encoding = null): int {
-    return mb_strlen($str, self::getEncoding($encoding));
+  public static function length(string $str, ?string $encoding = null): int {
+    return mb_strlen($str, $encoding);
   }
 
   /**
    * Checks whether or not the input string contains only alphabetic chars
    * 
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
+   * @param  string $string checked string 
    * @return bool returns true if the string contains only alphabetic chars, false otherwise.
    */
-  public static function isAlpha(string $string, string $encoding = null): bool {
-    return self::match($string, '/^[[:alpha:]]*$/', $encoding);
+  public static function isAlpha(string $string): bool {
+    return self::match($string, '/^[[:alpha:]]*$/');
   }
 
   /**
    * Checks whether or not the input string contains only alphanumeric chars
    *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
+   * @param  string $string checked string 
    * @return bool returns true if the string contains only alphanumeric chars, false otherwise
    */
-  public static function isAlphanumeric(string $string, string $encoding = null): bool {
-    return self::match($string, '/^[[:alnum:]]*$/', $encoding);
+  public static function isAlphanumeric(string $string): bool {
+    return self::match($string, '/^[[:alnum:]]*$/');
   }
 
   /**
    * Checks whether or not the input string contains only whitespace chars
    *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
+   * @param  string $string checked string 
    * @return bool returns true if the string contains only whitespace chars, false otherwise
    */
-  public static function isBlank(string $string, string $encoding = null): bool {
-    return self::match($string, '/^[[:space:]]{1,}$/', $encoding);
+  public static function isBlank(string $string): bool {
+    return self::match($string, '/^[[:space:]]{1,}$/');
   }
 
   /**
@@ -419,8 +384,8 @@ abstract class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return string A case folded version of string converted in the way specified by mode
    */
-  public static function convertCase(string $string, int $mode, string $encoding = null): string {
-    return \mb_convert_case($string, $mode, static::getEncoding($encoding));
+  public static function convertCase(string $string, int $mode, ?string $encoding = null): string {
+    return \mb_convert_case($string, $mode, $encoding);
   }
 
   /**

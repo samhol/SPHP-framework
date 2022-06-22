@@ -78,7 +78,7 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @param  mixed $content the term content
    * @return Dt appended instance
    */
-  public function appendTerm($content): Dt {
+  public function appendTerm(mixed $content): Dt {
     $dt = new Dt($content);
     $this->append($dt);
     return $dt;
@@ -90,7 +90,7 @@ class Dl extends AbstractComponent implements IteratorAggregate, TraversableCont
    * @param  mixed $content the description content
    * @return Dd appended instance
    */
-  public function appendDescription($content): Dd {
+  public function appendDescription(mixed $content): Dd {
     $dd = new Dd($content);
     $this->append($dd);
     return $dd;

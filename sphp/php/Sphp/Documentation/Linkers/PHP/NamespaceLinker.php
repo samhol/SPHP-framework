@@ -15,7 +15,7 @@ namespace Sphp\Documentation\Linkers\PHP;
 use Sphp\Documentation\Linkers\AbstractItemLinker;
 use Sphp\Documentation\Linkers\HyperlinkFactory;
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Navigation\Nav;
 use Sphp\Reflection\Utils\NamespaceUtils;
 use IteratorAggregate;

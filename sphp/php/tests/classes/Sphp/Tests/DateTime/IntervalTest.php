@@ -13,13 +13,12 @@ declare(strict_types=1);
 namespace Sphp\Tests\DateTime;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\DateTime\Intervals;
 use Sphp\DateTime\Interval;
 
 class IntervalTest extends TestCase {
 
   public function testdateString() {
-    $interval = Intervals::create('+2 days');
+    $interval = Interval::create('+2 days');
     $this->assertSame(2.0, $interval->toDays());
   }
 

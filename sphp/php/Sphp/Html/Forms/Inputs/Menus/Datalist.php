@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Description of Datalist
  *
@@ -19,16 +21,17 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Datalist extends AbstractOptions {
+class Datalist extends AbstractOptionContainer {
 
   /**
    * Constructor
+   * 
+   * @param string|int|float|Option $option options to append
+   * @see   Option
    */
-  public function __construct(?iterable $data = null) {
-    parent::__construct('datalist', $data);
-    if ($data !== null) {
-      $this->appendData($data);
-    }
+  public function __construct(string|int|float|Option ...$option) {
+    parent::__construct('datalist');
+    $this->appendOptions(...$option);
   }
 
   /**
@@ -48,10 +51,27 @@ class Datalist extends AbstractOptions {
     foreach ($data as $index => $option) {
       if ($option instanceof Option) {
         $this->append($option);
-      } else if (is_scalar($option) || is_null($option)) {
-        $this->appendOption((string) $option);
+      } else if (is_string($option) || is_float($option) || is_int($option)) {
+        $this->appendOption($option, null);
       } else {
         throw new InvalidArgumentException('Invalid option data at ' . $index);
+      }
+    }
+    return $this;
+  }
+
+  /**
+   * Appends datalist options
+   * 
+   * @param string|int|float|Option $option options to append
+   * @return $this for a fluent interface
+   */
+  public function appendOptions(string|int|float|Option ...$option) {
+    foreach ($option as $opt) {
+      if ($opt instanceof Option) {
+        $this->append($opt);
+      } else {
+        $this->appendOption($opt, null);
       }
     }
     return $this;

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Documentation\Linkers\PHP;
 
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Navigation\Nav;
 use Traversable;
 

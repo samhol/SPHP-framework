@@ -21,7 +21,7 @@ use Sphp\Html\Navigation\Nav;
 use Sphp\Html\ContentIterator;
 use Sphp\Html\PlainContainer;
 use Sphp\Html\Content;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Implements a link factory pointing to an external API documentation about a PHP class, interface or trait method

@@ -14,8 +14,8 @@ namespace Sphp\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Span;
-use Sphp\Html\Sections\Paragraph;
+use Sphp\Html\Text\Span;
+use Sphp\Html\Text\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
 use Sphp\Foundation\Sites\Grids\AbstractCell;

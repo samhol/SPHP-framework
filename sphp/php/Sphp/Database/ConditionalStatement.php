@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Database;
 
-use Sphp\Database\Rules\Clause;
-use Sphp\Database\Rules\RuleInterface;
+use Sphp\Database\Predicates\Predicate;
+use Sphp\Database\Clauses\Where;
 
 /**
  * Defines a conditional `SQL` statement
@@ -29,71 +29,20 @@ interface ConditionalStatement extends Statement {
    *
    * The `WHERE` clause is used to filter records
    *
-   * @param  Clause $c
+   * @param  Where|null $where
    * @return $this for a fluent interface
    */
-  public function setWhere(Clause $c);
+  public function resetWhere(?Where $where = null);
 
   /**
-   * Returns the `WHERE` clause
-   * 
-   * @return Clause the `WHERE` clause
+   * Adds rules to the `WHERE` conditions component and returns the WHERE clause
+   *  
+   * * The `WHERE` clause includes a comparison predicate, which restricts the rows returned by the query.
+   * * The `WHERE` clause eliminates all rows from the result set for which the comparison predicate does
+   *   not evaluate to `true`.
+   *
+   * @param  Predicate|string ... $rules `SQL` condition(s)
+   * @return Where
    */
-  public function getWhere(): Clause;
-
-  /**
-   * Adds rules to the `WHERE` conditions component
-   *
-   * **Important!**
-   *
-   * * **ALWAYS SANITIZE ALL USER INPUTS!**
-   * * **If you are using multiple arguments; None of the arguments should be an array**
-   *
-   *  The `WHERE` clause includes a comparison predicate, which restricts the rows returned by the query.
-   *  The `WHERE` clause eliminates all rows from the result set for which the comparison predicate does
-   *  not evaluate to `true`.
-   *
-   * @param  string|RuleInterface|array $rules `SQL` condition(s)
-   * @return $this for a fluent interface
-   */
-  public function where(... $rules);
-
-  /**
-   * Appends `SQL` conditions by using logical `AND` as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules `SQL` condition(s)
-   * @return $this for a fluent interface
-   */
-  public function andWhere(... $rules);
-
-  /**
-   * Appends `SQL` conditions by using `AND NOT` as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules `SQL` condition(s)
-   * @return $this for a fluent interface
-   */
-  public function andNotWhere(... $rules);
-
-  /**
-   * Appends `SQL` conditions by using logical `OR` as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules `SQL` condition(s)
-   * @return $this for a fluent interface
-   */
-  public function orWhere(... $rules);
-
-  /**
-   * Appends `SQL` conditions by using logical `OR NOT` as a conjunction
-   *
-   * @param  string|RuleInterface|array $rules `SQL` condition(s)
-   * @return $this for a fluent interface
-   */
-  public function orNotWhere(... $rules);
-
-  /**
-   * Checks if there are any `SQL` conditions set
-   *
-   * @return bool conditions are set
-   */
-  public function hasConditions(): bool;
+  public function where(Predicate|string ... $rules): Where;
 }

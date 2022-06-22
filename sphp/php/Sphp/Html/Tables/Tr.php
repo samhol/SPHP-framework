@@ -49,26 +49,26 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
     return $this;
   }
 
-  public function appendTh($content, int $colspan = 1, int $rowspan = 1, string $scope = null): Th {
+  public function appendTh(mixed $content, int $colspan = 1, int $rowspan = 1, string $scope = null): Th {
     $th = new Th($content, $colspan, $rowspan, $scope);
     $this->append($th);
     return $th;
   }
 
-  public function appendThs(... $cells) {
+  public function appendThs(mixed ... $cells) {
     foreach ($cells as $th) {
       $this->appendTh($th);
     }
     return $this;
   }
 
-  public function appendTd($content, int $colspan = 1, int $rowspan = 1): Td {
+  public function appendTd(mixed $content, int $colspan = 1, int $rowspan = 1): Td {
     $td = new Td($content, $colspan, $rowspan);
     $this->append($td);
     return $td;
   }
 
-  public function appendTds(... $cells) {
+  public function appendTds(mixed ... $cells) {
     foreach ($cells as $td) {
       if ($td instanceof Cell) {
         $this->append($td);
@@ -109,7 +109,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
    * @param mixed $offset an offset to check for
    * @return bool true on success or false on failure
    */
-  public function offsetExists($offset): bool {
+  public function offsetExists(mixed $offset): bool {
     return array_key_exists($offset, $this->cells);
   }
 
@@ -119,7 +119,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
    * @param  mixed $offset the index with the content element
    * @return Cell|null content element or null
    */
-  public function offsetGet($offset): ?Cell {
+  public function offsetGet(mixed $offset): ?Cell {
     if ($this->offsetExists($offset)) {
       return $this->cells[$offset];
     }
@@ -133,7 +133,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
    * @param  mixed $value the value to set
    * @return void
    */
-  public function offsetSet($offset, $value): void {
+  public function offsetSet(mixed $offset, mixed $value): void {
     if (!$value instanceof Cell) {
       $value = new Td($value);
     }
@@ -146,7 +146,7 @@ class Tr extends AbstractComponent implements IteratorAggregate, Row {
    * @param  mixed $offset offset to unset
    * @return void
    */
-  public function offsetUnset($offset): void {
+  public function offsetUnset(mixed $offset): void {
     if ($this->offsetExists($offset)) {
       unset($this->cells[$offset]);
     }

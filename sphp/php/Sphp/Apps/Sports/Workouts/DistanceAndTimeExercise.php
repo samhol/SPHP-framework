@@ -99,7 +99,7 @@ class DistanceAndTimeExercise extends Exercise {
     $totals['total duration'] = Utils::durationtoString($this->getTotalTime());
     $totals['average speed'] = $this->getAverageSpeed() . ' km/h';
     $ps = $this->getAveragePace();
-    $d = \Sphp\DateTime\Intervals::fromSeconds((int) round($ps));
+    $d = \Sphp\DateTime\Interval::fromSeconds((int) round($ps));
     $pm = round($ps / 60);
     $totals['average pace'] = $d->format('%i:%S') . ' min/km';
     return $totals;

@@ -14,10 +14,8 @@ namespace Sphp\Apps\Trackers;
 
 use Sphp\Config\Config;
 use Sphp\Apps\Trackers\Views\StatisticsView;
-use Sphp\Html\Sections\Section;
-use Sphp\Stdlib\Strings;
+use Sphp\Html\Layout\Section;
 use Sphp\Html\Content;
-use ATC\Views\NaviViews;
 use Sphp\Foundation\Sites\Navigation\BreadCrumbs;
 
 /**
@@ -48,11 +46,11 @@ class StatsView {
     $out = new Section;
     $out->addCssClass('statistics');
     $out->appendH1('Network Traffic statistics');
-    if (Strings::startsWith((string) $task, 'calendar')) {
+    if (str_starts_with((string) $task, 'calendar')) {
       $uaView = Config::instance()->dice->create(ViewCalendar::class);
       $uaView->setErrorView(new \ATC\MVC\ErrorPageView());
       $out = $uaView->run($task);
-    }else if (Strings::startsWith((string) $task, 'ua')) {
+    }else if (str_starts_with((string) $task, 'ua')) {
       $uaView = Config::instance()->dice->create(Views\UserAgents\UAView::class);
       //$uaView->setErrorView(new \ATC\MVC\ErrorPageView());
       $out = $uaView->run($task);

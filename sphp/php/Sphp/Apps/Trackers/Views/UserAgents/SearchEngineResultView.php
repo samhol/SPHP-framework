@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Apps\Trackers\Views\UserAgents;
 
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Html\AbstractContent;
 use ATC\Contact\DataObject;
 use Sphp\Html\Media\Icons\FontAwesome;

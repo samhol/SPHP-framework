@@ -23,7 +23,7 @@ namespace Sphp\Documentation\PackageManagers\Managers;
 class ComposerPackage extends AbstractPackage { 
 
   public function getUrl(): string {
-    return "https://packagist.org/packages/" . $this->getName();
+    return 'https://packagist.org/packages/' . $this->getName();
   }
 
 }

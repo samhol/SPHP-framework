@@ -65,7 +65,7 @@ class IsInstanceOf extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if ($value instanceof $this->className) {
       return true;

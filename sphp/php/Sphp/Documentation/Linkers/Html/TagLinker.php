@@ -25,14 +25,7 @@ use Sphp\Documentation\Linkers\HyperlinkFactory;
  */
 class TagLinker extends AbstractItemLinker {
 
-  /**
-   * @var string 
-   */
   private string $tagName;
-
-  /**
-   * @var HtmlUrlGenerator
-   */
   private HtmlUrlGenerator $urlGen;
 
   /**
@@ -84,11 +77,11 @@ class TagLinker extends AbstractItemLinker {
   }
 
   public function getDefaultContent(): string {
-    return Utils::createTagContent($this->tagName) . ' tag';
+    return (string) Utils::createTagContent($this->tagName);
   }
 
   public function getDefaultTitle(): string {
-    return 'Docmentation of the '.$this->tagName . ' tag';
+    return 'Docmentation of the ' . $this->tagName . ' tag';
   }
 
   public function getUrl(): string {

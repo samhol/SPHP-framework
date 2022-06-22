@@ -15,7 +15,7 @@ namespace Sphp\Apps;
 use Sphp\Html\AbstractContent;
 use Sphp\Html\Component;
 use Sphp\Html\Media\Icons\IconTag;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Implements a back to top button for the web page

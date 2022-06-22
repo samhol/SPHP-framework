@@ -15,8 +15,8 @@ namespace Sphp\Foundation\Sites\Containers;
 use Sphp\Html\AbstractContent;
 use Sphp\Html\Content;
 use Sphp\Html\Component;
-use Sphp\Html\Span;
-use Sphp\Html\Div;
+use Sphp\Html\Text\Span;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Attributes\MapAttribute;
 
 /**

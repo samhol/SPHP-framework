@@ -29,9 +29,6 @@ use DateTimeZone;
  */
 class ImmutableDateTime implements DateTime {
 
-  /**
-   * @var DateTimeImmutable 
-   */
   private DateTimeImmutable $dateTime;
 
   /**
@@ -150,7 +147,7 @@ class ImmutableDateTime implements DateTime {
   public function diff($date, bool $absolute = false): Interval {
     $other = DateTimes::dateTimeImmutable($date);
     $diff = $this->getDateTime()->diff($other, $absolute);
-    return Intervals::fromDateInterval($diff);
+    return Interval::fromDateInterval($diff);
   }
 
   public function setISODate(int $year, int $week, int $dayOfWeek = 1): ImmutableDateTime {
@@ -293,7 +290,7 @@ class ImmutableDateTime implements DateTime {
    * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function add($interval): DateTime {
-    $dt = $this->getDateTime()->add(Intervals::create($interval));
+    $dt = $this->getDateTime()->add(Interval::create($interval));
     return new static($dt);
   }
 
@@ -305,7 +302,7 @@ class ImmutableDateTime implements DateTime {
    * @throws InvalidArgumentException if the interval cannot be parsed from the input
    */
   public function sub($interval): DateTime {
-    $dt = $this->getDateTime()->sub(Intervals::create($interval));
+    $dt = $this->getDateTime()->sub(Interval::create($interval));
     return new static($dt);
   }
 

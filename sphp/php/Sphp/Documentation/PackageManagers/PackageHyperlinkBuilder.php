@@ -64,8 +64,7 @@ class PackageHyperlinkBuilder {
   }
 
   public function buildContent(Package $package): string {
-    $content = Tags::span($this->getIcon($package) . $this->buildText($package))
-            ->addCssClass('wrapper');
+    $content = Tags::span($this->getIcon($package) . $this->buildText($package));
     return (string) $content;
   }
 

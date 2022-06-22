@@ -23,14 +23,7 @@ use Sphp\DateTime\Date;
  */
 class Between implements DateConstraint {
 
-  /**
-   * @var Date
-   */
   private Date $start;
-
-  /**
-   * @var Date
-   */
   private Date $end;
 
   /**

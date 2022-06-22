@@ -96,10 +96,10 @@ class EntryFileFilter implements IteratorAggregate, Arrayable, Countable {
     $valid = true;
     if ($this->idSeed !== null) {
       if ($e->isPlural()) {
-        $valid = Strings::contains($e->getMsgId(), $this->idSeed) ||
-                Strings::contains($e->getMsgIdPlural(), $this->idSeed);
+        $valid = str_containss($e->getMsgId(), $this->idSeed) ||
+                str_containss($e->getMsgIdPlural(), $this->idSeed);
       } else {
-        $valid = Strings::contains($e->getMsgId(), $this->idSeed);
+        $valid = str_containss($e->getMsgId(), $this->idSeed);
       }
     }
     return $valid;

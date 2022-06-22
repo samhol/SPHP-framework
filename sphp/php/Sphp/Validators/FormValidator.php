@@ -37,7 +37,7 @@ class FormValidator extends AbstractValidator {
   /**
    * Constructs a new validator
    */
-  public function __construct( ) {
+  public function __construct() {
     parent::__construct('Invalid form data');
     $this->getErrors()->setTemplate(self::INVALID_FORM_DATA, 'Value of %s type given. An array expected');
     $this->validators = [];
@@ -60,7 +60,7 @@ class FormValidator extends AbstractValidator {
     parent::__clone();
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_array($value)) {
       $this->getErrors()->appendMessageFromTemplate(self::INVALID_FORM_DATA, gettype($value));

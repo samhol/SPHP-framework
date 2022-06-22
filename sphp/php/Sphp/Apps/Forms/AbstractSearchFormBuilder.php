@@ -14,11 +14,10 @@ namespace Sphp\Apps\Forms;
 
 use Sphp\Foundation\Sites\Forms\Inputs\InputGroup;
 use Sphp\Html\Forms\Inputs\SearchInput;
-use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
+use Sphp\Html\Forms\Buttons\SubmitButton;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Html\Forms\ContainerForm;
+use Sphp\Html\Forms\Form;
 use Sphp\Html\Tags;
 
 /**
@@ -42,7 +41,7 @@ abstract class AbstractSearchFormBuilder {
   private $searchField;
 
   /**
-   * @var Submitter
+   * @var SubmitButton
    */
   private $submitButton;
 
@@ -50,7 +49,7 @@ abstract class AbstractSearchFormBuilder {
    * Constructor
    */
   public function __construct() {
-    $this->setSubmitButton(new Submitter(FontAwesome::i('fas fa-search')));
+    $this->setSubmitButton(new SubmitButton('<i class="fas fa-search"></i>'));
     $this->hiddenData = new HiddenInputs();
     $this->searchField = new SearchInput();
   }
@@ -62,9 +61,9 @@ abstract class AbstractSearchFormBuilder {
     unset($this->hiddenData, $this->searchField, $this->submitButton);
   }
 
-  abstract public function createEmptyForm(): ContainerForm;
+  abstract public function createEmptyForm(): Form;
 
-  public function buildInputGroupForm(string $label = null): ContainerForm {
+  public function buildInputGroupForm(string $label = null): Form {
     $form = $this->createEmptyForm();
     $form->append($this->hiddenData);
     $group = new InputGroup();
@@ -77,7 +76,7 @@ abstract class AbstractSearchFormBuilder {
     return $form;
   }
 
-  public function buildMenuForm(): ContainerForm {
+  public function buildMenuForm(): Form {
     $form = $this->createEmptyForm();
     $form->append($this->hiddenData);
     $ul = Tags::ul();
@@ -99,20 +98,20 @@ abstract class AbstractSearchFormBuilder {
   /**
    * Creates a new submitter
    * 
-   * @return SubmitterInterface
+   * @return Submitter
    */
-  public function getSubmitButton(): SubmitterInterface {
-    $submitButton = new Submitter(FontAwesome::i('fas fa-search'));
+  public function getSubmitButton(): Submitter {
+    $submitButton = new SubmitButton('<i class="fas fa-search"></i>');
     $submitButton->cssClasses()->protectValue('button');
     return $submitButton;
   }
 
   /**
    * 
-   * @param  Submitter $submitButton
+   * @param  SubmitButton $submitButton
    * @return $this
    */
-  public function setSubmitButton(SubmitterInterface $submitButton) {
+  public function setSubmitButton(Submitter $submitButton) {
     $this->submitButton = $submitButton;
     $this->submitButton->cssClasses()->protectValue('button');
     return $this;

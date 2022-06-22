@@ -22,7 +22,7 @@ namespace Sphp\Validators;
 class Whitelist extends AbstractValidator {
 
   const ILLEGAL_KEY = 'INVALID_KEY';
- 
+
   private array $whitelist = [];
 
   /**
@@ -56,7 +56,7 @@ class Whitelist extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $valid = true;
     if (!is_array($value)) {

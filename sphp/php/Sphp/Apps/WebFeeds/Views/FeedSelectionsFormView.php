@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Apps\WebFeeds\Views;
 
-use Sphp\Html\Forms\ContainerForm;
+use Sphp\Html\Forms\Form;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Bootstrap\Components\Forms\InputGroup;
 use Sphp\Apps\WebFeeds\ViewData;
@@ -65,8 +65,8 @@ class FeedSelectionsFormView {
     return $group;
   }
 
-  private function buildForm(ViewData $data): ContainerForm {
-    $form = new ContainerForm('/feeds', 'get');
+  private function buildForm(ViewData $data): Form {
+    $form = new Form('/feeds', 'get');
     $tb = new ToolBar('RSS feed selection tools');
     $tb->addCssClass('m-2');
     $formT = new Views\FeedSelectionsFormView();
@@ -74,7 +74,7 @@ class FeedSelectionsFormView {
     $tb->appendInputGroup($s);
     $s1 = $formT->buildItemCountMenu($data->getSliceSizes(), $this->viewData->getCurrentSliceSize())->addCssClass('mr-1 mb-1');
     $tb->appendInputGroup($s1);
-    $submitter = new \Sphp\Html\Forms\Buttons\Submitter('<i class="fas fa-search"></i> <strong>FIND</strong>');
+    $submitter = new \Sphp\Html\Forms\Buttons\SubmitButton('<i class="fas fa-search"></i> <strong>FIND</strong>');
     $submitter->addCssClass('btn-success');
     $tb->appendButton($submitter)->addCssClass('mb-1');
     $form->append($tb);

@@ -86,7 +86,7 @@ class Identical extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $token = $this->getToken();
     $valid = false;

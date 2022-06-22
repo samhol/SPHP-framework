@@ -98,7 +98,7 @@ class ValidatorChain extends AbstractValidator implements Countable {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $valid = true;
     foreach ($this->validators as $validator) {

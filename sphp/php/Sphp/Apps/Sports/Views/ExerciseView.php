@@ -18,7 +18,7 @@ use Sphp\Apps\Sports\Workouts\WeightLiftingExercise;
 use Sphp\Html\Container;
 use Sphp\Html\Tags;
 use Sphp\Html\PlainContainer;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Html\Lists\Ul;
 
 /**

@@ -26,9 +26,6 @@ use Sphp\DateTime\Exceptions\InvalidArgumentException;
  */
 class InPeriod implements DateConstraint {
 
-  /**
-   * @var Period
-   */
   private Period $period;
 
   /**

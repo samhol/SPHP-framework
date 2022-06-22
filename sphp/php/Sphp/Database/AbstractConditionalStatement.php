@@ -13,7 +13,8 @@ declare(strict_types=1);
 namespace Sphp\Database;
 
 use PDO;
-use Sphp\Database\Rules\Clause;
+use Sphp\Database\Clauses\Where;
+use Sphp\Database\Predicates\Predicate;
 use Sphp\Database\Parameters\ParameterHandler;
 
 /**
@@ -26,24 +27,21 @@ use Sphp\Database\Parameters\ParameterHandler;
 abstract class AbstractConditionalStatement extends AbstractStatement implements ConditionalStatement {
 
   /**
-   * the conditions in the WHERE part of the SELECT, UPDATE and INSERT queries
-   *
-   * @var Clause
+   * The conditions in the WHERE part of the `SELECT`, `UPDATE` and `DELETE` queries 
    */
-  private $where;
+  protected Where $where;
 
   /**
    * Constructor
-   *
-   * @param PDO $db
-   * @param Clause $where
+   * 
+   * @param PDO $db database connection
+   * @param Where $where optional WHERE clause
    */
-  public function __construct(PDO $db, Clause $where = null) {
+  public function __construct(PDO $db, Where $where = null) {
     if ($where === null) {
-      $this->where = new Clause();
-    } else {
-      $this->where = $where;
+      $where = new Where();
     }
+    $this->where = $where;
     parent::__construct($db);
   }
 
@@ -59,9 +57,7 @@ abstract class AbstractConditionalStatement extends AbstractStatement implements
   }
 
   /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
+   * Clones the object 
    *
    * @link https://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
@@ -70,55 +66,17 @@ abstract class AbstractConditionalStatement extends AbstractStatement implements
     $this->where = clone $this->where;
   }
 
-  public function setWhere(Clause $c) {
-    $this->where = $c;
-    return $this;
-  }
-
-  public function getWhere(): Clause {
-    return $this->where;
-  }
-
-  public function where(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'AND');
-    return $this;
-  }
-
-  public function andWhere(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'AND');
-    return $this;
-  }
-
-  public function andNotWhere(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'AND NOT');
-    return $this;
-  }
-
-  public function orWhere(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'OR');
-    return $this;
-  }
-
-  public function orNotWhere(... $rules) {
-    $obj = new Clause($rules);
-    $this->where->fulfills($obj, 'OR NOT');
-    return $this;
-  }
-
-  public function hasConditions(): bool {
-    return $this->where->notEmpty();
-  }
-
-  protected function conditionsToString(): string {
-    $output = '';
-    if ($this->hasConditions()) {
-      $output .= " WHERE $this->where";
+  public function resetWhere(?Where $where = null) {
+    if ($where === null) {
+      $where = new Where();
     }
-    return $output;
+    $this->where = $where;
+    return $this;
+  }
+
+  public function where(Predicate|string ... $rules): Where {
+    $this->where->andThese(...$rules);
+    return $this->where;
   }
 
   public function getParams(): ParameterHandler {

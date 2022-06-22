@@ -34,7 +34,7 @@ class MetaContainer extends AbstractContent implements IteratorAggregate, Traver
   /**
    * @var PriorityList<MetaData>
    */
-  private $container;
+  private PriorityList $container;
 
   /**
    * Constructor

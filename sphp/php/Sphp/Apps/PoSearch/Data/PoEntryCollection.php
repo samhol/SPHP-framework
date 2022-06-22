@@ -14,7 +14,6 @@ namespace Sphp\Apps\PoSearch\Data;
 
 use Sepia\PoParser\SourceHandler\FileSystem;
 use Sepia\PoParser\Parser;
-use Sphp\Stdlib\Strings;
 use Sepia\PoParser\Catalog\Entry;
 use Iterator;
 use Countable;
@@ -73,7 +72,7 @@ class PoEntryCollection implements Countable, Iterator, Arrayable {
       $valid = false;
     }
     if ($valid && $this->idSeed !== null) {
-      $valid = Strings::contains($e->getMsgId(), $this->idSeed);
+      $valid = str_contains($e->getMsgId(), $this->idSeed);
     }
     return $valid;
   }
@@ -129,7 +128,7 @@ class PoEntryCollection implements Countable, Iterator, Arrayable {
    * 
    * @return mixed the current element
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->entries);
   }
 
@@ -147,7 +146,7 @@ class PoEntryCollection implements Countable, Iterator, Arrayable {
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->entries);
   }
 

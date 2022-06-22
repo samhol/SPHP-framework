@@ -25,10 +25,7 @@ use Sphp\Stdlib\Parsers\ParseFactory;
  * @filesource
  */
 class ComposerPackages implements IteratorAggregate, PackageManager {
-
-  /**
-   * @var array
-   */
+ 
   private array $composer;
 
   public function __construct(string $path) {

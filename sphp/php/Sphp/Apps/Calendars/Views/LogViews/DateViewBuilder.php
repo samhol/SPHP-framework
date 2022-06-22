@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Apps\Calendars\Views\LogViews;
 
 use Sphp\Apps\Calendars\Diaries\DiaryDate;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * The BasicDateLogs class

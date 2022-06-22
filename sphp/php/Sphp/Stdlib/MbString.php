@@ -126,6 +126,10 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     // return $match === 1;
   }
 
+  public function contains(string $needle): bool {
+    return str_contains($this->str, $needle);
+  }
+
   /**
    * Returns the length of the string
    *
@@ -268,7 +272,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws OutOfBoundsException if the offset does not exist
    * @throws InvalidArgumentException
    */
-  public function offsetGet($offset) {
+  public function offsetGet(mixed $offset): mixed {
     if (!$this->offsetExists($offset)) {
       throw new OutOfBoundsException('Offset must be between 0 and ' . ($this->count() - 1));
     }
@@ -284,7 +288,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws InvalidArgumentException
    * @throws OutOfBoundsException
    */
-  public function offsetSet($offset, $value) {
+  public function offsetSet(mixed $offset, mixed $value) {
     if ($offset === null) {
       $offset = $this->count();
     }
@@ -305,7 +309,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @throws InvalidArgumentException
    * @throws OutOfBoundsException
    */
-  public function offsetUnset($offset) {
+  public function offsetUnset(mixed $offset) {
     if (!$this->offsetExists($offset)) {
       throw new OutOfBoundsException('Offset must be between 0 and ' . ($this->count() - 1) . '');
     }

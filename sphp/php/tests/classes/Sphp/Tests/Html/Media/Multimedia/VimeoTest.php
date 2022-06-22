@@ -14,7 +14,6 @@ namespace Sphp\Tests\Html\Media\Multimedia;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Media\Multimedia\VimeoPlayer;
-use Sphp\Html\Media\Multimedia\Exceptions\VideoPlayerException;
 
 /**
  * Class VimeoTest
@@ -26,24 +25,13 @@ use Sphp\Html\Media\Multimedia\Exceptions\VideoPlayerException;
  */
 class VimeoTest extends TestCase {
 
-  public function sourceData(): array {
-    $data = [];
-    $data[] = ['Tn6FLYsKLzY'];
-    $data[] = ['iyh4Vo0qgAg'];
-    return $data;
-  }
+  use MediaPlayerTestTrait;
 
-  /**
-   * @dataProvider sourceData
-   * 
-   * @param string $videoId
-   */
-  public function testSourceTypes(string $videoId): void {
-    $player = new VimeoPlayer($videoId);
-    $iframe = $player->createIframe();
-    $url = $player->getUrlCopy();
-    $this->assertStringStartsWith("https://player.vimeo.com/video/$videoId", (string) $url);
-    $this->assertStringStartsWith("https://player.vimeo.com/video/$videoId", $iframe->getSrc());
+  public function testConstructor(): VimeoPlayer {
+    $id = 'foo';
+    $player = new VimeoPlayer($id);
+    $this->assertEquals("https://player.vimeo.com/video/$id", (string) $player->createPlayerUrl());
+    return $player;
   }
 
   /**
@@ -51,11 +39,11 @@ class VimeoTest extends TestCase {
    */
   public function testSetControlsColor(): VimeoPlayer {
     $player = new VimeoPlayer('Tn6FLYsKLzY');
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('color'));
+    $this->assertFalse($player->createPlayerUrl()->getQuery()->hasParameter('color'));
     $this->assertSame($player, $player->setControlsColor('#fff'));
-    $this->assertEquals('fff', $player->getUrlCopy()->getQuery()->getParameter('color'));
+    $this->assertEquals('fff', $player->createPlayerUrl()->getQuery()->getParameter('color'));
     $this->assertSame($player, $player->setControlsColor(null));
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('color'));
+    $this->assertFalse($player->createPlayerUrl()->getQuery()->hasParameter('color'));
     return $player;
   }
 
@@ -66,11 +54,11 @@ class VimeoTest extends TestCase {
    * @return VimeoPlayer
    */
   public function testShowVideoTitle(VimeoPlayer $player): VimeoPlayer {
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('title'));
+    $this->assertFalse($player->createPlayerUrl()->getQuery()->hasParameter('title'));
     $this->assertSame($player, $player->showVideoTitle(true));
-    $this->assertEquals('1', $player->getUrlCopy()->getQuery()->getParameter('title'));
+    $this->assertEquals(1, $player->createPlayerUrl()->getQuery()->getParameter('title'));
     $this->assertSame($player, $player->showVideoTitle(false));
-    $this->assertEquals('0', $player->getUrlCopy()->getQuery()->getParameter('title'));
+    $this->assertEquals(0, $player->createPlayerUrl()->getQuery()->getParameter('title'));
     return $player;
   }
 

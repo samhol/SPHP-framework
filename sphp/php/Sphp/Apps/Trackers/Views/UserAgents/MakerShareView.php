@@ -14,10 +14,9 @@ namespace Sphp\Apps\Trackers\Views\UserAgents;
 
 use Sphp\Apps\Trackers\Views\AbstractShareView;
 use Sphp\Apps\Trackers\Data\ShareData;
-use Sphp\Html\Sections\Section;
-use Sphp\Html\Sections\Aside;
-use Sphp\Foundation\Sites\Containers\Popup;
-use Sphp\Html\Tags;
+use Sphp\Html\Layout\Section;
+use Sphp\Html\Layout\Aside; 
+use Sphp\Foundation\Sites\Containers\Popup; 
 
 /**
  * Class MakerShareView
@@ -57,7 +56,7 @@ class MakerShareView extends AbstractShareView {
   }
 
   public function buildRow(int $rowNumber, ShareData $data): Aside {
-    $aside = Parent::buildRow($rowNumber, $data);
+    $aside = parent::buildRow($rowNumber, $data);
     if ($data->getVersionCount() > 1) {
       $this->getPopup()->createController($aside);
       $aside->addCssClass('has-multiple-versions');

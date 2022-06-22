@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Images;
 
 use Sphp\Objects\Datetime as Datetime;
+use Error;
 
 /**
  * Class contains some image manipulation tools
@@ -131,7 +132,7 @@ class Images {
    * @param string $imgSrc to the image file
    * @return bool true if the given path points to an image file; false otherwise
    */
-  public static function isImage($imgSrc) {
+  public static function isImage(string $imgSrc) {
     return @getimagesize($imgSrc) !== false;
   }
 
@@ -203,14 +204,21 @@ class Images {
    * Returns image file extension of the source
    *
    * @param  string $src path to the image file
-   * @return string image file extension of the source or `'unknown'` if file was not recognized as an image
+   * @return string|null image file extension of the source or null` if file was not recognized as an image
    */
-  public static function getImageTypeExt(string $src): string {
-    $ext = exif_imagetype($src);
-    if (!array_key_exists($ext, self::$extNames)) {
-      $type = "unknown";
-    } else {
-      $type = self::$extNames[$ext];
+  public static function getImageTypeExt(string $src): ?string {
+    if (!is_file($src)) {
+      return null;
+    }
+    try {
+      $ext = exif_imagetype($src);
+      if (!array_key_exists($ext, self::$extNames)) {
+        $type = null;
+      } else {
+        $type = self::$extNames[$ext];
+      }
+    } catch (Error $ex) {
+      $type = null;
     }
     return $type;
   }

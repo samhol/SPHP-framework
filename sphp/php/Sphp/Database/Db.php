@@ -14,15 +14,11 @@ namespace Sphp\Database;
 
 use PDO;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Database\Exceptions\BadMethodCallException;
 
 /**
  * Implements a Database statement factory
- *  
- * @method \Sphp\Database\Query query(string $dbName) Returns a new `SELECT` statement object for the named database
- * @method \Sphp\Database\Delete delete(string $dbName) Returns a new `DELETE` statement object for the named database
- * @method \Sphp\Database\Update update(string $dbName) Returns a new `UPDATE` statement object for the named database
- * @method \Sphp\Database\Insert insertVisitor(string $dbName) Returns a new `INSERT` statement object for the named database
+ *    
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -31,22 +27,13 @@ use Sphp\Exceptions\BadMethodCallException;
 class Db {
 
   /**
-   * @var Db[]
-   */
-  private static $instances = [];
-
-  /**
    * @var string[] 
    */
-  private $map = [
+  private array $map = [
       'mysql' => 'MySQL',
       'sqlsrv' => 'Microsoft'
   ];
-
-  /**
-   * @var PDO 
-   */
-  private $pdo;
+  private PDO $pdo;
 
   /**
    * Constructor
@@ -54,9 +41,8 @@ class Db {
    * @param  PDO $pdo connection object between PHP and a database server
    * @link   https://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(PDO $pdo = null) {
+  public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
-    //$this->strategy = new StatementStrategy($pdo);
   }
 
   /**
@@ -70,73 +56,91 @@ class Db {
 
   /**
    * 
-   * @param PDO $db the connection object between PHP and a database server
-   * @param string $name optional name of the instance created
-   */
-  public static function createFrom(PDO $db, string $name = null): Db {
-    $instance = new static($db);
-    if ($name === null) {
-      self::$instances[0] = $instance;
-    } else {
-      self::$instances[$name] = $instance;
-    }
-    return $instance;
-  }
-
-  /**
-   * 
-   * @param  string|null $name
-   * @return Db
-   * @throws InvalidArgumentException
-   * @deprecated
-   */
-  public static function instance(string $name = null): Db {
-    if ($name === null) {
-      $name = 0;
-    }
-    if (!array_key_exists($name, self::$instances)) {
-      throw new InvalidArgumentException("DB with name '$name' does not exist");
-    }
-    return self::$instances[$name];
-  }
-
-  /**
-   * 
-   * 
-   * @param  string $name
-   * @param  array $arguments
-   * @return Statement
-   */
-  public static function __callStatic(string $name, array $arguments = []) {
-    if (count($arguments) > 0) {
-      $instance = static::instance($arguments[0]);
-    } else {
-      $instance = static::instance();
-    }
-    return $instance->$name();
-  }
-
-  /**
-   * 
    * @param  string $className the type name of the instance created
    * @param  array $arguments
    * @return Statement
    * @throws BadMethodCallException
    */
-  public function __call(string $className, array $arguments = []) {
-    $result = __NAMESPACE__ . "\\Legacy\\" . ucfirst($className);
-    if (!class_exists($result)) {
-      throw new InvalidArgumentException("Statement ($className) cannot be created");
-    }
+  public function __call(string $className, array $arguments) {
+
+    $class = $this->getCorrectType($className);
+    return new $class($this->pdo);
+  }
+
+  private function getCorrectType(string $type): string {
     $driverName = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
     if (array_key_exists($driverName, $this->map)) {
-      $try = __NAMESPACE__ . "\\{$this->map[$driverName]}\\$className";
-      //var_dump($try);
-      if (class_exists($try)) {
-        $result = $try;
-      }
+      $nonLegacyTry = __NAMESPACE__ . "\\{$this->map[$driverName]}\\$type";
     }
-    return new $result($this->pdo);
+    $legacyTry = __NAMESPACE__ . "\\Legacy\\$type";
+    if (class_exists($nonLegacyTry)) {
+      $class = $nonLegacyTry;
+    } else if (class_exists($legacyTry)) {
+      $class = $legacyTry;
+    } else {
+      throw new BadMethodCallException("Statement ($type) cannot be created");
+    }
+    return $class;
+  }
+
+  /**
+   * Returns a new SELECT SQL statement instance
+   * 
+   * @param  string $rowset the source of a rowset
+   * @return Query new instance
+   */
+  public function query(string ... $rowset): Query {
+    $class = $this->getCorrectType('Query');
+    $query = new $class($this->pdo);
+    $query->from(...$rowset);
+    return $query;
+  }
+
+  /**
+   * Returns a new INSERT SQL statement instance
+   * 
+   * @param  string $table
+   * @param  iterable|null $data
+   * @return Insert new instance
+   */
+  public function insert(string $table, ?iterable $data = null): Insert {
+    $class = $this->getCorrectType('Insert');
+    $insert = new $class($this->pdo);
+    $insert->into($table);
+    if ($data !== null) {
+      $insert->valuesFromArray($data);
+    }
+    return $insert;
+  }
+
+  /**
+   * Returns a new DELETE SQL statement instance
+   * 
+   * @param  string $table 
+   * @return Delete new instance
+   */
+  public function delete(string $table): Delete {
+    $class = $this->getCorrectType('Delete');
+    $delete = new $class($this->pdo);
+    $delete->from($table);
+    return $delete;
+  }
+
+  /**
+   * Returns a new UPDATE SQL statement instance
+   * 
+   * @param  string $table
+   * @param  iterable|null $data
+   * @return Update new instance
+   */
+  public function update(string $table, ?iterable $data = null): Update {
+    $class = $this->getCorrectType('Update');
+    $update = new $class($this->pdo);
+    $update->table($table);
+    if ($data !== null) {
+      $update->setColumns($data);
+    }
+    return $update;
   }
 
 }

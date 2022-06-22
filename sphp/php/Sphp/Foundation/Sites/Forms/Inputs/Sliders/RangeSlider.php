@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Foundation\Sites\Forms\Inputs\Sliders;
 
 use Sphp\Html\Forms\Inputs\HiddenInput;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\NumberInput;
 use Sphp\Exceptions\InvalidStateException;

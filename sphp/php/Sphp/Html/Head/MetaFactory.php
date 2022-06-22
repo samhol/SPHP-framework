@@ -26,9 +26,6 @@ use Sphp\Stdlib\Arrays;
  */
 class MetaFactory {
 
-  /**
-   * @var MetaFactory 
-   */
   private static ?MetaFactory $instance = null;
 
   /**
@@ -211,47 +208,47 @@ class MetaFactory {
   }
 
   /**
-   * Adds an link which points to a CSS style sheet file to the object
+   * Creates an link which points to a CSS style sheet file to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @param  string $media what media/device the target resource is optimized for
+   * @param  string|null $media what media/device the target resource is optimized for
    * @return ImmutableLinkData new object
    * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   https://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function stylesheet(string $href, string $media = null): ImmutableLinkData {
+  public function stylesheet(string $href, ?string $media = null): ImmutableLinkData {
     $type = Mime::getMime($href);
     return new ImmutableLinkData(['rel' => 'stylesheet', 'href' => $href, 'media' => $media, 'type' => $type]);
   }
 
   /**
-   * Adds a shortcut icon to the object
+   * Creates a shortcut icon to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @param  string $sizes specifies the sizes of icons for visual media
+   * @param  string|null $sizes specifies the sizes of icons for visual media
    * @return ImmutableLinkData new object
    * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
-  public function icon(string $href, string $sizes = null): ImmutableLinkData {
+  public function icon(string $href, ?string $sizes = null): ImmutableLinkData {
     $type = Mime::getMime($href);
     return new ImmutableLinkData(['rel' => 'icon', 'href' => $href, 'sizes' => $sizes, 'type' => $type]);
   }
 
   /**
-   * Adds a shortcut icon to the object
+   * Creates a shortcut icon to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @param  string $sizes specifies the sizes of icons for visual media
+   * @param  string|null $sizes specifies the sizes of icons for visual media
    * @return ImmutableLinkData new object
    * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
-  public function appleTouchIcon(string $href, string $sizes = null): ImmutableLinkData {
+  public function appleTouchIcon(string $href, ?string $sizes = null): ImmutableLinkData {
     $type = Mime::getMime($href);
     return new ImmutableLinkData(['rel' => 'apple-touch-icon', 'href' => $href, 'sizes' => $sizes, 'type' => $type]);
   }
 
   /**
-   * Adds a shortcut icon to the object
+   * Creates a shortcut icon to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @return ImmutableLinkData new object
@@ -262,22 +259,24 @@ class MetaFactory {
   }
 
   /**
-   * Adds a shortcut icon to the object
+   * Creates a shortcut icon to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @param  string $color specifies the sizes of icons for visual media
+   * @param  string|null $color specifies the sizes of icons for visual media
    * @return ImmutableLinkData new object
    * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
-  public function maskIcon(string $href, string $color = null): ImmutableLinkData {
+  public function maskIcon(string $href, ?string $color = null): ImmutableLinkData {
     return new ImmutableLinkData(['rel' => 'mask-icon', 'href' => $href, 'color' => $color]);
   }
 
   /**
+   * Creates a link to a preloaded source
    * 
-   * @param  string $href
+   * @param  string $href an URL
    * @param  string $crossorigin
-   * @return ImmutableLinkData
+   * @return ImmutableLinkData new object
+   * @link   https://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function preload(string $href, string $crossorigin = 'anonymous'): ImmutableLinkData {
     $type = Mime::getMime($href);

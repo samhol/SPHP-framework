@@ -35,6 +35,11 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    *
    * @param string|iterable|null $query the URL string
    */
+  /**
+   * 
+   * @param Traversable $query query data
+   * @param string|null $separator
+   */
   public function __construct($query = null, ?string $separator = null) {
     if (is_string($query)) {
       parse_str($query, $this->query);
@@ -94,9 +99,9 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * Return the value of the parameter
    *
    * @param  string $name the name of the parameter
-   * @return mixed|null the value of the parameter or null if the parameter does not exist
+   * @return mixed the value of the parameter or null if the parameter does not exist
    */
-  public function getParameter(string $name) {
+  public function getParameter(string $name): mixed {
     $val = null;
     if ($this->hasParameter($name)) {
       $val = $this->query[$name];
@@ -135,7 +140,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @param  array|string|QueryString $params parameter name => value pairs or a query string
    * @return $this for a fluent interface
    */
-  public function merge($params) {
+  public function merge(mixed $params) {
     if (!$params instanceof QueryString) {
       $params = new static($params);
     }
@@ -149,7 +154,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @param  mixed $name the name of the parameter
    * @return bool true if the parameter exists and false otherwise
    */
-  public function offsetExists($name): bool {
+  public function offsetExists(mixed $name): bool {
     return $this->hasParameter((string) $name, $this->query);
   }
 
@@ -159,7 +164,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @param  mixed $name the name of the parameter
    * @return mixed|null the value of the parameter or null if the parameter does not exist
    */
-  public function offsetGet($name) {
+  public function offsetGet(mixed $name): mixed {
     return $this->getParameter((string) $name);
   }
 
@@ -170,7 +175,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * @param  mixed $value the value of the parameter
    * @return void
    */
-  public function offsetSet($name, $value): void {
+  public function offsetSet(mixed $name, mixed $value): void {
     $this->setParameter((string) $name, $value);
   }
 
@@ -178,11 +183,10 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * Removes a parameter from the query
    *
    * @param  mixed $name the name of the parameter to remove
-   * @return $this for a fluent interface
+   * @return void
    */
-  public function offsetUnset($name) {
-    $this->removeParameter((string) $name);
-    return $this;
+  public function offsetUnset(mixed $name):void {
+    $this->removeParameter((string) $name); 
   }
 
   /**
@@ -251,7 +255,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @return mixed the current element
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->query);
   }
 
@@ -269,7 +273,7 @@ class QueryString implements Arrayable, Iterator, JsonSerializable, ArrayAccess 
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->query);
   }
 

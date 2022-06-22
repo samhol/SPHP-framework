@@ -23,9 +23,8 @@ class ParserTest extends TestCase {
   /**
    * @return array
    */
-  public function readers():array {
+  public function readers(): array {
     $map = [
-        ['ini', \Sphp\Stdlib\Parsers\Ini::class],
         ['json', \Sphp\Stdlib\Parsers\Json::class],
         ['yaml', \Sphp\Stdlib\Parsers\Yaml::class],
         ['yml', \Sphp\Stdlib\Parsers\Yaml::class],
@@ -38,8 +37,7 @@ class ParserTest extends TestCase {
         ['mdwn', \Sphp\Stdlib\Parsers\Markdown::class],
         ['mdtxt', \Sphp\Stdlib\Parsers\Markdown::class],
         ['mdtext', \Sphp\Stdlib\Parsers\Markdown::class],
-        ['Rmd', \Sphp\Stdlib\Parsers\Markdown::class],
-        ['csv', \Sphp\Stdlib\Parsers\Csv::class]
+        ['Rmd', \Sphp\Stdlib\Parsers\Markdown::class], 
     ];
     return $map;
   }
@@ -73,7 +71,6 @@ class ParserTest extends TestCase {
         ['./sphp/php/tests/files/valid.md', '<h1 class="bar">test</h1>'],
         ['./sphp/php/tests/files/valid.yaml', ['foo' => 'bar']],
         ['./sphp/php/tests/files/valid.json', ['foo' => 'bar']],
-        ['./sphp/php/tests/files/valid.ini', ['foo' => 'bar']],
     ];
     return $map;
   }

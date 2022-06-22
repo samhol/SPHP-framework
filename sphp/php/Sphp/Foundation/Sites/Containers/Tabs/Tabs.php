@@ -18,7 +18,7 @@ use Sphp\Foundation\Sites\Core\DataOptions\DataOptionTools;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use OutOfBoundsException;
 use Traversable;
 use Sphp\Html\Attributes\MapAttribute;

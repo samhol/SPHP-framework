@@ -19,7 +19,7 @@ but generally deploying framework requires no usage of other programming languag
       
 ## SYSTEM REQUIREMENTS
 
-Framework requires **PHP 7.0** or later; it is recommended to use the latest stable PHP version whenever possible.
+Framework requires **PHP 8.0** or later; it is recommended to use the latest stable PHP version whenever possible.
 
 Download the framework package from [github](https://github.com/samhol/SPHP-framework) and Install dependencies with Composer:
 

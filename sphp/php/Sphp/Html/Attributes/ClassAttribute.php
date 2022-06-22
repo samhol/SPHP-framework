@@ -41,17 +41,18 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
 
   /**
    * Constructor
-   * 
+   *  
    * @param string $name the name of the attribute
+   * @param string|string[] $value
    * @param CssClassParser|null $parser
    */
-  public function __construct(string $name = 'class', $value = null,?CssClassParser $parser = null ) {
+  public function __construct(string $name = 'class', $value = null, ?CssClassParser $parser = null) {
     parent::__construct($name);
     if ($parser === null) {
       $parser = CssClassParser::singelton();
     }
     $this->parser = $parser;
-    if($value !== null) {
+    if ($value !== null) {
       $this->setValue($value);
     }
   }
@@ -165,8 +166,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
    * 1. A string parameter can contain multiple class names separated by spaces
-   * 2. An array can be be multidimensional array of atomic string values
-   * 3. Duplicate values are ignored
+   * 2. Duplicate values are ignored
    *
    * @param  null|string|string[] ...$content the atomic values to lock
    * @return $this for a fluent interface
@@ -181,7 +181,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   /**
    * Removes given atomic values
    *
-   * <strong>NOTE:</strong> A string parameter can contain multiple comma separated class names 
+   * <strong>NOTE:</strong> A string parameter can contain multiple space separated class names 
    * 
    * @param  string ...$values the atomic values to remove
    * @return $this for a fluent interface

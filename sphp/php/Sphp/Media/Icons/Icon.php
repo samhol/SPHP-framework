@@ -25,7 +25,7 @@ interface Icon extends Content {
   /**
    * Sets the title for the icon
    * 
-   * @param string|null $title the ARIA label text for the icon
+   * @param  string|null $title the ARIA label text for the icon
    * @return $this for a fluent interface
    */
   public function setTitle(?string $title = null);

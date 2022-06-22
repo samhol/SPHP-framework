@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Foundation\Sites\Media\Orbit;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 
 /**
  * Implements a bullet for Foundation framework based Orbit

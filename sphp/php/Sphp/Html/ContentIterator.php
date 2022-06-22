@@ -36,7 +36,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * Constructor
    *
    * @param  iterable $content the content of the iterator
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct(iterable $content = []) {
     if (!is_array($content)) {
@@ -106,7 +106,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * @return TraversableContent containing matching sub components
    */
   public function getComponentsByObjectType($type): TraversableContent {
-    $search = function($element) use ($type): bool {
+    $search = function ($element) use ($type): bool {
       return $element instanceof $type;
     };
     return $this->getComponentsBy($search);
@@ -136,7 +136,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * 
    * @return mixed the current element
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->content);
   }
 
@@ -154,7 +154,7 @@ class ContentIterator extends AbstractContent implements Iterator, TraversableCo
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->content);
   }
 

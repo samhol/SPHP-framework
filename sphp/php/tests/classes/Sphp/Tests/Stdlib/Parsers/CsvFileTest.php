@@ -70,37 +70,11 @@ class CsvFileTest extends TestCase {
   public function testGetChunk() {
     $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
     $csvArray = $csvObj->toArray();
-    $chunk = $csvObj->getChunk(2, 5);
-    $this->assertEquals(array_slice($csvArray, 2, 5, true), $chunk);
+    $chunk = $csvObj->getChunk(2, 1);
+    $expected = array_slice($csvArray, 2, 1, true);
+    $this->assertEquals($expected, $chunk);
     // print_r(array_slice($csvArray, 5, true));
     return $csvObj;
-  }
-
-  /**
-   * @depends testGetChunk
-   * @param   CsvFile $csvObj
-   */
-  public function testSeek(CsvFile $csvObj) {
-    $csvObj->rewind();
-    foreach ($csvObj->toArray() as $key => $row) {
-      //var_dump($key, $row);
-      if ($csvObj->valid()) {
-        $actualRow = $csvObj->seek($key)->current();
-        $this->assertEquals($row, $actualRow);
-      }
-    }
-  }
-
-  public function testOverflowSeek() {
-    $this->expectException(OutOfRangeException::class);
-    $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
-    $csvObj->seek(100);
-  }
-
-  public function testNegativeSeek() {
-    $this->expectException(LogicException::class);
-    $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
-    $csvObj->seek(-1);
   }
 
 }

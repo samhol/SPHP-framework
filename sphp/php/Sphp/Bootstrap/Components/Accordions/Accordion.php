@@ -14,7 +14,6 @@ namespace Sphp\Bootstrap\Components\Accordions;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\TraversableContent;
 use Traversable;
 use Sphp\Html\ContentIterator;
 
@@ -27,14 +26,14 @@ use Sphp\Html\ContentIterator;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Accordion extends AbstractComponent implements IteratorAggregate, TraversableContent {
-
-  use \Sphp\Html\TraversableTrait;
+class Accordion extends AbstractComponent implements IteratorAggregate {
 
   /**
    * @var Pane[] 
    */
-  private $panels;
+  private array $panels;
+ 
+  private bool $allwaysOpen = true;
 
   /**
    * Constructor
@@ -59,6 +58,9 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
    * @return $this for a fluent interface
    */
   public function prepend(Pane $pane) {
+    if (!$this->allwaysOpen) {
+      $pane->setAccordionParent($this);
+    }
     array_unshift($this->panels, $pane);
     return $this;
   }
@@ -70,7 +72,9 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
    * @return $this for a fluent interface
    */
   public function append(Pane $pane) {
-    $pane->setAccordionParent($this);
+    if (!$this->allwaysOpen) {
+      $pane->setAccordionParent($this);
+    }
     $this->panels[] = $pane;
     return $this;
   }
@@ -86,6 +90,17 @@ class Accordion extends AbstractComponent implements IteratorAggregate, Traversa
     $pane = new ContentPane($title, $content);
     $this->append($pane);
     return $pane;
+  }
+
+  public function allowAllOpen(bool $open) {
+    foreach ($this->panels as $pane) {
+      if ($open) {
+        $pane->setAccordionParent(null);
+      } else {
+
+        $pane->setAccordionParent($this);
+      }
+    }
   }
 
   /**

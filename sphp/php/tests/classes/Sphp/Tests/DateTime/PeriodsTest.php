@@ -18,7 +18,6 @@ use Sphp\DateTime\ImmutableDateTime;
 use Sphp\DateTime\Interval;
 use Sphp\DateTime\Periods;
 use Sphp\DateTime\DateTimes;
-use Sphp\DateTime\Intervals;
 use Sphp\DateTime\Exceptions\{
   InvalidArgumentException
 };
@@ -72,7 +71,7 @@ class PeriodsTest extends TestCase {
    */
   public function testCreate($start, $interval, $length): void {
     $startObj = DateTimes::dateTimeImmutable($start);
-    $intervalObj = Intervals::create($interval);
+    $intervalObj = Interval::create($interval);
     $period = Periods::create($start, $interval, $length);
     if (!is_int($length)) {
       $length = DateTimes::dateTimeImmutable($length);
@@ -111,7 +110,7 @@ class PeriodsTest extends TestCase {
     $period = Periods::week($monday);
     //echo DateTime::from('2000 first monday')->format('Y-m-d l W');
     $this->assertCount(7, $period);
-    $this->assertEquals(Intervals::create('P1D'), $period->getInterval());
+    $this->assertEquals(Interval::create('P1D'), $period->getInterval());
     $this->assertEquals($monday, $period->getStartDate());
     $this->assertEquals($monday->jumpDays(6), $period->getEndDate());
     $this->expectException(InvalidArgumentException::class);

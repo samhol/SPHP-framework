@@ -17,7 +17,7 @@ use Sphp\Html\Tags;
 use Sepia\PoParser\Catalog\Entry;
 use Sphp\Bootstrap\Components\ButtonGroup;
 use Sphp\Html\Lists\Dl;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Apps\PoSearch\Data\EntryContainerFile;
 use Sphp\Apps\PoSearch\Data\PoEntryCollection;
 use Sphp\Apps\PoSearch\Data\PoFile;

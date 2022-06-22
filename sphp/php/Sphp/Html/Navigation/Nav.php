@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\Layout\AbstractFlowContainer;
 use Sphp\Html\TraversableContent;
 
 /**
@@ -22,17 +22,19 @@ use Sphp\Html\TraversableContent;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    https://www.w3schools.com/tags/tag_nav.asp w3schools HTML API
+ * @link    https://www.w3schools.com/tags/tag_nav.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class Nav extends ContainerTag {
+class Nav extends AbstractFlowContainer {
 
   /**
    * Constructor
    *
    * @param  mixed $content optional content of the component
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($content = null) {
+  public function __construct(mixed $content = null) {
     parent::__construct('nav', $content);
   }
 

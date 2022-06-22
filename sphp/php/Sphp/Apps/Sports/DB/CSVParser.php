@@ -42,7 +42,7 @@ class CSVParser {
   /**
    * @var CsvFile
    */
-  private $csv;
+  private CsvFile $csv;
 
   /**
    * @var FitNotesRow

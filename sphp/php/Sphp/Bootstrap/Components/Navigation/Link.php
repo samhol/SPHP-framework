@@ -29,14 +29,14 @@ class Link extends AbstractComponent implements StandardListItem {
   /**
    * @var A
    */
-  private $hyperlink;
+  private A $hyperlink;
 
   /**
    * Constructor
    * 
    * @param A $a
    */
-  public function __construct(A $a = null) {
+  public function __construct(A $a) {
     parent::__construct('li');
     $this->addCssClass('page-item');
     $a->addCssClass('page-link');

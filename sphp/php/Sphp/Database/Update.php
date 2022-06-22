@@ -35,5 +35,5 @@ interface Update extends DataManipulationStatement, ConditionalStatement {
    * @param  array $data new data
    * @return $this for a fluent interface
    */
-  public function set(array $data);
+  public function setColumns(array $data);
 }

@@ -26,11 +26,18 @@ use Sphp\Html\Media\Multimedia\Exceptions\VideoPlayerException;
  */
 class YoutubePlayerTest extends TestCase {
 
-  public function sourceData(): array {
-    $data = [];
-    $data[] = ['Tn6FLYsKLzY', false];
-    $data[] = ['iyh4Vo0qgAg', true];
-    return $data;
+  use MediaPlayerTestTrait;
+
+  public function testConstructor(): YoutubePlayer {
+    $id = 'foo';
+    $player = new YoutubePlayer($id);
+    $this->assertEquals("https://www.youtube.com/embed/$id", (string) $player->createPlayerUrl());
+    return $player;
+  }
+
+  public function sourceData(): iterable {
+    yield ['Tn6FLYsKLzY', false];
+    yield ['iyh4Vo0qgAg', true];
   }
 
   /**
@@ -50,85 +57,65 @@ class YoutubePlayerTest extends TestCase {
     }
   }
 
-  public function autohideValue(): array {
-    $data = [];
-    $data[] = [-1];
-    $data[] = [null];
-    $data[] = [0];
-    $data[] = [1];
-    $data[] = [2];
-    $data[] = [4];
-    return $data;
+  public function autohideValue(): iterable {
+    yield [-1, false];
+    yield [0, true];
+    yield [1, true];
+    yield [2, true];
+    yield [3, false];
   }
 
   /**
    * @dataProvider autohideValue
-   * 
-   * @param  int|null $autohide
+   *  
+   * @param  int $autohide
+   * @param  bool $isValid
    * @return void
    */
-  public function testAutohide(int $autohide = null) {
+  public function testAutohide(int $autohide, bool $isValid): void {
     $player = new YoutubePlayer('Tn6FLYsKLzY');
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('autohide'));
-    if ($autohide < 0 || $autohide > 2) {
+    $this->assertFalse($player->createPlayerUrl()->getQuery()->hasParameter('autohide'));
+    if (!$isValid) {
       $this->expectException(VideoPlayerException::class);
     }
     $this->assertSame($player, $player->autohide($autohide));
-    if ($autohide === null) {
-      $this->assertNull($player->getUrlCopy()->getQuery()->getParameter('autohide'));
+    $this->assertEquals($autohide, $player->createPlayerUrl()->getQuery()->getParameter('autohide'));
+  }
+
+  public function timeIntervals(): iterable {
+    yield [null, null, true];
+    yield [null, 2, true];
+    yield [0, 2, true];
+    yield [1, null, true];
+    yield [-1, null, false];
+    yield [null, -2, false];
+    yield [3, 2, false];
+    yield [1, -1, false];
+    yield [-1, -1, false];
+  }
+
+  /**
+   * @dataProvider timeIntervals
+   * 
+   * @param  int|null $start
+   * @param  int|null $end
+   * @param  bool $isValid
+   * @return void
+   */
+  public function testsetTimeIterval(?int $start, ?int $end, bool $isValid): void {
+    $player = new YoutubePlayer('Tn6FLYsKLzY');
+    if (!$isValid) {
+      $this->expectException(VideoPlayerException::class);
+      $player->setTimeInterval($start, $end);
     } else {
-      $this->assertEquals($autohide, $player->getUrlCopy()->getQuery()->getParameter('autohide'));
+      $q1 = $player->createPlayerUrl()->getQuery();
+      $this->assertFalse($q1->hasParameter('start'));
+      $this->assertFalse($q1->hasParameter('end'));
+      $this->assertSame($player, $player->setTimeInterval($start, $end));
+      $q2 = $player->createPlayerUrl()->getQuery();
+      $this->assertEquals($start, $q2->getParameter('start'));
+      $this->assertEquals($end, $q2->getParameter('end'));
     }
-  }
-
-  public function validTimeIntervals(): array {
-    $data = [];
-    $data[] = [null, null];
-    $data[] = [null, 2];
-    $data[] = [0, 2];
-    $data[] = [1, null];
-    return $data;
-  }
-
-  /**
-   * @dataProvider validTimeIntervals
-   * 
-   * @param  int $start
-   * @param  int $end
-   * @return void
-   */
-  public function testsetTimeIterval(int $start = null, int $end = null): void {
-    $player = new YoutubePlayer('Tn6FLYsKLzY');
-    $q1 = $player->getUrlCopy()->getQuery();
-    $this->assertFalse($q1->hasParameter('start'));
-    $this->assertFalse($q1->hasParameter('end'));
-    $this->assertSame($player, $player->setTimeInterval($start, $end));
-    $q2 = $player->getUrlCopy()->getQuery();
-    $this->assertEquals($start, $q2->getParameter('start'));
-    $this->assertEquals($end, $q2->getParameter('end'));
-  }
-
-  public function invalidTimeIntervals(): array {
-    $data = [];
-    $data[] = [-1, null];
-    $data[] = [null, -2];
-    $data[] = [3, 2];
-    $data[] = [1, -1];
-    $data[] = [-4, -1];
-    return $data;
-  }
-
-  /**
-   * @dataProvider invalidTimeIntervals
-   * 
-   * @param  int $start
-   * @param  int $end
-   * @return void
-   */
-  public function testsetInvalidTimeIterval(int $start = null, int $end = null): void {
-    $player = new YoutubePlayer('Tn6FLYsKLzY');
-    $this->expectException(VideoPlayerException::class);
-    $player->setTimeInterval($start, $end);
   }
 
 }

@@ -14,8 +14,8 @@ namespace Sphp\Apps\Trackers\Views\UserAgents;
 
 use Sphp\Apps\Trackers\Views\AbstractShareView;
 use Sphp\Apps\Trackers\Data\ShareData;
-use Sphp\Html\Sections\Section;
-use Sphp\Html\Sections\Aside;
+use Sphp\Html\Layout\Section;
+use Sphp\Html\Layout\Aside;
 use Sphp\Foundation\Sites\Containers\Popup;
 use Sphp\Foundation\Sites\Navigation\BreadCrumbs;
 

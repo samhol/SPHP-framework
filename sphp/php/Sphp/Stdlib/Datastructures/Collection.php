@@ -78,7 +78,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $offset the offset key
    * @return mixed the value of the property or null
    */
-  public function offsetGet($offset) {
+  public function offsetGet(mixed $offset): mixed {
     $value = null;
     if ($this->offsetExists($offset)) {
       $value = $this->items[$offset];
@@ -93,7 +93,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $value the value to set
    * @return void
    */
-  public function offsetSet($offset, $value): void {
+  public function offsetSet(mixed $offset, $value): void {
     if (is_null($offset)) {
       $this->items[] = $value;
     } else {
@@ -107,7 +107,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $offset the offset key
    * @return void
    */
-  public function offsetUnset($offset): void {
+  public function offsetUnset(mixed $offset): void {
     unset($this->items[$offset]);
   }
 
@@ -117,7 +117,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $value
    * @return $this for a fluent interface
    */
-  public function append($value) {
+  public function append(mixed $value) {
     array_push($this->items, $value);
     return $this;
   }
@@ -126,7 +126,7 @@ class Collection implements Iterator, CollectionInterface {
    * {@inheritdoc}
    * @complexity O(n)
    */
-  public function prepend($value) {
+  public function prepend(mixed $value) {
     array_unshift($this->items, $value);
     return $this;
   }
@@ -201,7 +201,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $value the value to search
    * @return bool `true` if the given value exists, `false` otherwise
    */
-  public function contains($value): bool {
+  public function contains(mixed $value): bool {
     return in_array($value, $this->items, true);
   }
 
@@ -211,8 +211,8 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $value the value to remove
    * @return $this for a fluent interface
    */
-  public function remove($value) {
-    $this->items = array_filter($this->items, function($var) use ($value) {
+  public function remove(mixed $value) {
+    $this->items = array_filter($this->items, function ($var) use ($value) {
       return $var !== $value;
     });
     return $this;
@@ -285,7 +285,7 @@ class Collection implements Iterator, CollectionInterface {
    * 
    * @return mixed the current element
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->items);
   }
 
@@ -303,7 +303,7 @@ class Collection implements Iterator, CollectionInterface {
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->items);
   }
 

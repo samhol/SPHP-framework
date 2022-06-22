@@ -30,7 +30,7 @@ class EmailInput extends AbstractTextualInput {
    * @link   https://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   https://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function __construct(string $name = null, $value = null) {
+  public function __construct(?string $name = null, ?string $value = null) {
     parent::__construct('email', $name, $value);
   }
 

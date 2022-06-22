@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use Sphp\DateTime\Exceptions\InvalidArgumentException;
 use DateTimeZone;
-use Sphp\DateTime\Intervals;
+use Sphp\DateTime\Interval;
 use Sphp\DateTime\TimeZones;
 
 /**
@@ -88,7 +88,7 @@ class TimeZonesTest extends TestCase {
   public function testDateTimeZoneFromHours(float $hours): void {
     $utcTime = new DateTimeImmutable('2000-1-1 12:00 UTC');
     $offsetSecs = 3600 * $hours;
-    $interval = Intervals::fromSeconds($offsetSecs);
+    $interval = Interval::fromSeconds($offsetSecs);
     //   echo $offsetString = $interval->format("%R%H:%I");
     $tz = TimeZones::fromHours($hours);
     $this->assertEquals($offsetSecs, $tz->getOffset($utcTime));
@@ -128,7 +128,7 @@ class TimeZonesTest extends TestCase {
       $offsetSecs = $expected->getOffset($utcTime);
       $fromInt = TimeZones::fromSeconds($offsetSecs);
       $this->assertEquals($offsetSecs, $fromInt->getOffset($utcTime));
-      $interval = Intervals::fromSeconds($offsetSecs);
+      $interval = Interval::fromSeconds($offsetSecs);
 
       $offsetString = $interval->format("%R%H:%I");
       $fromOffset = TimeZones::fromString($offsetString);

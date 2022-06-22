@@ -14,7 +14,7 @@ namespace Sphp\Apps\Calendars\Views\LogViews\Events;
 
 use Sphp\Apps\Calendars\Diaries\DiaryDate;
 use Sphp\Apps\Calendars\Diaries\Events\SingleEvent;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 
 /**
  * Description of EventViewBuilder

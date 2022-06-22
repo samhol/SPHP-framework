@@ -14,8 +14,8 @@ namespace Sphp\Bootstrap\Components\Carousel;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Div;
-use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Layout\Div;
+use Sphp\Html\Forms\Buttons\PushButton;
 
 /**
  * Implements a Foundation framework based Orbit
@@ -31,8 +31,8 @@ class Carousel extends AbstractContent implements IteratorAggregate {
 
   private Div $carousel;
   private Div $slides;
-  private Button $prev;
-  private Button $next;
+  private PushButton $prev;
+  private PushButton $next;
 
   /**
    * @var boolean 
@@ -42,14 +42,13 @@ class Carousel extends AbstractContent implements IteratorAggregate {
   /**
    * @var boolean 
    */
-  private $bulletsVisible = true;
+  private $bulletsVisible = false;
 
   /**
    * Constructor
-   *
-   * @param  string|null $ariaLabel optional Aria label text
+   * 
    */
-  public function __construct(string $ariaLabel = null) {
+  public function __construct() {
     $this->carousel = new Div();
     $this->carousel->addCssClass('carousel slide');
     $this->carousel->setAttribute('data-bs-ride', 'carousel');
@@ -57,6 +56,7 @@ class Carousel extends AbstractContent implements IteratorAggregate {
     $this->slides = new Div();
     $this->slides->addCssClass('carousel-inner');
     $this->carousel->append($this->slides);
+
     $this->generateButtons();
   }
 
@@ -69,19 +69,37 @@ class Carousel extends AbstractContent implements IteratorAggregate {
     parent::__clone();
   }
 
-  public function generateButtons() {
-    $this->prev = new Button();
+  public function generateButtons(PushButton $left = null, PushButton $right = null) {
+    $this->prev = new PushButton();
     $this->prev->addCssClass("carousel-control-prev");
     $this->prev
             ->setAttribute('data-bs-target', "#{$this->carousel->identify()}")
             ->setAttribute('data-bs-slide', 'prev');
     $this->prev->append('<span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>');
+    $this->next = new PushButton();
+    $this->next->addCssClass("carousel-control-next");
+    $this->next
+            ->setAttribute('data-bs-target', "#{$this->carousel->identify()}")
+            ->setAttribute('data-bs-slide', 'next');
+    $this->next->append('<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>');
     $this->carousel->append($this->prev);
+    $this->carousel->append($this->next);
   }
 
-  public function createOrbitConrols() {
-    $controArea = new \Sphp\Html\Div();
+  public function createOrbitConrols(?string $content = null) {
+    $controArea = new Div();
+    $controArea->addCssClass('orbit-controls');
+    $prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
+    $next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
+    $controArea->append($prev);
+    $controArea->append($next);
+    return $controArea;
+  }
+
+  public function setRight(?string $content = null) {
+    $controArea = new Div();
     $controArea->addCssClass('orbit-controls');
     $prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
     $next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
@@ -116,13 +134,9 @@ class Carousel extends AbstractContent implements IteratorAggregate {
    * @param  bolean $visible true for autoplay and false otherwise
    * @return $this for a fluent interface
    */
-  public function showBullets(bool $visible = true) {
-    $this->bulletsVisible = (boolean) $visible;
-    if ($this->bulletsVisible) {
-      $this->setOption('data-bullets', 'true');
-    } else {
-      $this->setOption('data-bullets', 'false');
-    }
+  public function useIndicators(bool $visible = true) {
+    $this->bulletsVisible = $visible;
+
     return $this;
   }
 
@@ -143,13 +157,27 @@ class Carousel extends AbstractContent implements IteratorAggregate {
   }
 
   /**
+   * Sets the carousel to animate slides with a fade transition instead of a slide
+   * 
+   * @param  bool $use true for fading and false for siding 
+   * @return $this for a fluent interface
+   */
+  public function useCrossfade(bool $use = true) {
+     if ($use) {
+      $this->carousel->addCssClass('carousel-fade');
+    } else {
+      $this->carousel->removeCssClass('carousel-fade');
+    }
+    return $this; 
+  }
+  /**
    * Sets the amount of time, in ms, between slide transitions
    * 
    * @param  bolean $autoplay true for autoplay and false otherwise
    * @return $this for a fluent interface
    */
   public function autoplay(bool $autoplay = true) {
-    $this->setOption('data-auto-play', $autoplay);
+    $this->carousel->setAttribute('data-auto-play', $autoplay);
     return $this;
   }
 
@@ -160,8 +188,8 @@ class Carousel extends AbstractContent implements IteratorAggregate {
    * @param  int $value amount of time, in ms, between slide transitions
    * @return $this for a fluent interface
    */
-  public function setTimerDelay(int $value = null) {
-    $this->setOption('data-timer-delay', $value);
+  public function setTimerDelay(?int $value) {
+    $this->carousel->setAttribute('data-bs-interval', $value);
     return $this;
   }
 
@@ -171,19 +199,19 @@ class Carousel extends AbstractContent implements IteratorAggregate {
    * @param  bool $loop true for on and false for off
    * @return $this for a fluent interface
    */
-  public function loop(bool $loop = true) {
-    $this->setOption('data-infinite-wrap', $loop);
+  public function useWrap(bool $loop = true) {
+    $this->carousel->setAttribute('data-bs-wrap', $loop ? 'true' : 'false');
     return $this;
   }
 
   /**
-   * Sets the Orbit to bind keyboard events to the slider, to animate frames with arrow keys
+   * Sets Whether the carousel should react to keyboard events or not
    * 
-   * @param  bool $accessible true for accessibility and false for not
+   * @param  bool $use true for reacting and false for not
    * @return $this for a fluent interface
    */
-  public function accessibility(bool $accessible = true) {
-    $this->setOption('data-accessible', $accessible);
+  public function useKeyboardEvents(bool $use = true) {
+    $this->carousel->setAttribute('data-bs-keyboard', $use ? 'true' : 'false');
     return $this;
   }
 
@@ -193,8 +221,8 @@ class Carousel extends AbstractContent implements IteratorAggregate {
    * @param  bool $pause true for pausing and false for not pausing
    * @return $this for a fluent interface
    */
-  public function pauseOnHover(bool $pause = true) {
-    $this->setOption('data-pause-on-hover', $pause);
+  public function usePauseOnHover(bool $pause = true) {
+    $this->carousel->setAttribute('data-bs-pause', $pause ? 'true' : 'false');
     return $this;
   }
 
@@ -261,19 +289,34 @@ class Carousel extends AbstractContent implements IteratorAggregate {
     return $this->slides->getIterator();
   }
 
-  
   private function forceActive() {
     $valid = false;
-    foreach ($this->slides as $k =>$value) {
-      if($value->isActive()) {
+    foreach ($this->slides as $k => $value) {
+      if ($value->isActive()) {
         $valid = true;
         break;
       }
     }
-    if(!$valid) {
+    if (!$valid) {
       $this->slides->getIterator()[0]->setActive();
     }
+    if ($this->bulletsVisible) {
+      $indicators = new Div();
+      $indicators->addCssClass('carousel-indicators');
+      $this->carousel->append($indicators);
+      foreach ($this->slides as $k => $value) {
+        $button = new PushButton();
+        $slidenum = $k + 1;
+        $button->setAttribute('data-bs-slide-to', $k)
+                ->setAttribute('aria-label', "Slide {$slidenum}");
+        if ($value->isActive()) {
+          $button->addCssClass('active')->setAttribute('aria-current', 'true');
+        }
+        $indicators->append($button);
+      }
+    }
   }
+
   public function getHtml(): string {
     $output = '<div class="carousel-inner">';
     $output .= $this->slides;

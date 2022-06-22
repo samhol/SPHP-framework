@@ -79,11 +79,11 @@ class PhpApiLinker extends AbstractDocumentationLinker implements PhpApiLinkerIn
    */
   public function build(string $name): ItemLinker {
     try {
-      if (Strings::contains($name, '::')) {
+      if (str_contains($name, '::')) {
         $parts = explode('::', $name);
         list($class, $member) = $parts;
         $component = $this->classLinker($class)($member);
-      } else if (Strings::endsWith($name, '()') || function_exists($name)) {
+      } else if (str_ends_with($name, '()') || function_exists($name)) {
         $component = $this->functionLink($name);
       } else if (defined($name)) {
         $component = $this->constantLink($name);

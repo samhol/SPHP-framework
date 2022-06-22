@@ -33,21 +33,19 @@ class SimpleTag extends AbstractComponent {
 
   /**
    * the content of the component
-   *
-   * @var string|null
    */
-  private ?string $content;
+  private string|int|float|null $content;
 
   /**
    * Constructor
    * 
    * @param  string $tagName the name of the tag
-   * @param  string|null $content the content of the component
+   * @param  string|int|float|null $content the content of the component
    * @param  AttributeContainer|null $attrManager the attribute manager of the component
    * @throws \InvalidArgumentException if the tagname is not valid
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct(string $tagName, ?string $content = null, ?AttributeContainer $attrManager = null) {
+  public function __construct(string $tagName, string|int|float|null $content = null, ?AttributeContainer $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->setContent($content);
   }
@@ -55,10 +53,10 @@ class SimpleTag extends AbstractComponent {
   /**
    * Sets the content of the component
    * 
-   * @param  string|null $content the content of the component
+   * @param  string|int|float|null $content the content of the component
    * @return $this for a fluent interface
    */
-  public function setContent(?string $content) {
+  public function setContent(string|int|float|null $content) {
     $this->content = $content;
     return $this;
   }
@@ -66,9 +64,9 @@ class SimpleTag extends AbstractComponent {
   /**
    * Returns the content of the component
    * 
-   * @return string|null $content the content of the component
+   * @return string|int|float|null $content the content of the component
    */
-  public function getContent(): ?string {
+  public function getContent(): string|int|float|null {
     return $this->content;
   }
 

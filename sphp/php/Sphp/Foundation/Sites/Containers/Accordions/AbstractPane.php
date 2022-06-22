@@ -14,7 +14,7 @@ namespace Sphp\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\ContainerComponent;
 
 /**

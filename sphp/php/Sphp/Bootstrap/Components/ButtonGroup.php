@@ -18,9 +18,9 @@ use IteratorAggregate;
 use Traversable;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Component; 
-use Sphp\Html\Forms\Buttons\Button;
-use Sphp\Html\Forms\Buttons\Submitter;
-use Sphp\Html\Forms\Buttons\Resetter;
+use Sphp\Html\Forms\Buttons\PushButton;
+use Sphp\Html\Forms\Buttons\SubmitButton;
+use Sphp\Html\Forms\Buttons\ResetButton;
 
 /**
  * Implements a Button Group
@@ -104,12 +104,12 @@ class ButtonGroup extends AbstractComponent implements IteratorAggregate {
    * Creates and appends a new push button
    * 
    * @param  string|null $content the content of the button
-   * @return Button created instance
+   * @return PushButton created instance
    * @link   https://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   https://www.w3schools.com/tags/att_button_name.asp name attribute
    */
-  public function appendPushButton($content = null): Button {
-    $button = new Button($content);
+  public function appendPushButton($content = null): PushButton {
+    $button = new PushButton($content);
     $button->addCssClass('btn');
     $this->appendButton($button);
     return $button;
@@ -121,12 +121,12 @@ class ButtonGroup extends AbstractComponent implements IteratorAggregate {
    * @param  string|null $content the content of the button
    * @param  string|null $name the value of name attribute
    * @param  string|null $value the value of value attribute
-   * @return Submitter created instance
+   * @return SubmitButton created instance
    * @link   https://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   https://www.w3schools.com/tags/att_button_name.asp name attribute
    */
-  public function appendSubmitter($content = null, $name = null, $value = null): Submitter {
-    $button = new Submitter($content, $name, $value);
+  public function appendSubmitter($content = null, $name = null, $value = null): SubmitButton {
+    $button = new SubmitButton($content, $name, $value);
     $this->appendButton($button);
     return $button;
   }
@@ -135,10 +135,10 @@ class ButtonGroup extends AbstractComponent implements IteratorAggregate {
    * Creates and appends a new resetter 
    * 
    * @param  string|null $content the content of the button
-   * @return Resetter created instance
+   * @return ResetButton created instance
    */
-  public function appendResetter($content = null): Resetter {
-    $button = new Resetter($content);
+  public function appendResetter($content = null): ResetButton {
+    $button = new ResetButton($content);
     $this->appendButton($button);
     return $button;
   }
@@ -157,7 +157,7 @@ class ButtonGroup extends AbstractComponent implements IteratorAggregate {
 
   public function appendDropDown($toggler, array $items = []): Dropdown {
     if (!$toggler instanceof Component) {
-      $toggler = new Button($toggler);
+      $toggler = new PushButton($toggler);
       $toggler->addCssClass('btn');
     }
     $dropDown = new Dropdown($toggler, $items);

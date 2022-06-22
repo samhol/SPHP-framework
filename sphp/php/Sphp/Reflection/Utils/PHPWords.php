@@ -13,9 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Reflection\Utils;
 
 use Iterator;
-use Sphp\Reflection\Exceptions\ReflectionException;
 use Sphp\Exceptions\BadMethodCallException;
-use Sphp\Stdlib\Strings;
 
 /**
  * Class PHPLanguageWords
@@ -200,7 +198,7 @@ class PHPWords implements Iterator {
    * @throws BadMethodCallException
    */
   public function __call(string $name, array $arguments): bool {
-    if (!Strings::startsWith($name, 'is') || !method_exists(PHPWord::class, $name)) {
+    if (!str_starts_with($name, 'is') || !method_exists(PHPWord::class, $name)) {
       throw new BadMethodCallException("Bad Method call $name");
     }
     if (count($arguments) !== 1) {
@@ -234,7 +232,7 @@ class PHPWords implements Iterator {
    * 
    * @return PHPWord the current element
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->data);
   }
 
@@ -252,7 +250,7 @@ class PHPWords implements Iterator {
    * 
    * @return mixed the key of the current element
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->data);
   }
 

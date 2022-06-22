@@ -35,12 +35,8 @@ class PriorityQueue implements Queue, Arrayable, IteratorAggregate, Countable {
    *
    * @var int
    */
-  private $serial = PHP_INT_MAX;
-
-  /**
-   * @var SplPriorityQueue
-   */
-  private $innerQueue;
+  private int $serial = PHP_INT_MAX;
+  private SplPriorityQueue $innerQueue;
 
   /**
    * Constructor
@@ -57,9 +53,7 @@ class PriorityQueue implements Queue, Arrayable, IteratorAggregate, Countable {
   }
 
   /**
-   * Add support for deep cloning
-   *
-   * @return void
+   * Clones the object
    */
   public function __clone() {
     $this->innerQueue = clone $this->innerQueue;
@@ -81,7 +75,7 @@ class PriorityQueue implements Queue, Arrayable, IteratorAggregate, Countable {
    * @param int $priority the associated priority
    * @return $this for a fluent interface
    */
-  public function enqueue($value, int $priority = 0) {
+  public function enqueue(mixed $value, int $priority = 0) {
     $this->innerQueue->insert($value, [$priority, $this->serial--]);
     return $this;
   }

@@ -372,7 +372,7 @@ class BitMaskTest extends TestCase {
       $this->assertTrue($bin === 0 || $bin === 1);
       $this->assertSame($mask->getBit($index), $bin);
     }
-    $this->assertTrue(Strings::endsWith(Strings::reverse(implode($array)), $string));
+    $this->assertTrue(str_ends_with(Strings::reverse(implode($array)), $string));
   }
 
 }

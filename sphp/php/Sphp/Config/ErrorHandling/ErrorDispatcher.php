@@ -68,7 +68,6 @@ class ErrorDispatcher {
     if (is_array($prev) && array_shift($prev) === $this) {
       restore_exception_handler();
     }
-    
     return $this;
   }
 

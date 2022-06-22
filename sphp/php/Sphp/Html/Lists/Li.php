@@ -13,10 +13,17 @@ declare(strict_types=1);
 namespace Sphp\Html\Lists;
 
 use Sphp\Html\ContainerTag;
+use Sphp\Html\Tags;
+use Sphp\Html\Tag;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements an HTML-list element &lt;li tag
  *
+ * @method  \Sphp\Html\Text\Span appendSpan(mixed $content = null) creates a new span tag component
+ * @method  \Sphp\Html\Text\Strong appendStrong(mixed $content = null) creates a new strong tag component
+ * @method  \Sphp\Html\Text\Span appendVar(mixed $content = null) creates a new var tag component
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    https://www.w3schools.com/tags/tag_li.asp w3schools HTML API
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -35,7 +42,7 @@ class Li extends ContainerTag implements StandardListItem {
    * that implements magic method `__toString()` is allowed.
    *
    * @param  null|mixed|mixed[] $content optional content of the component
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
     parent::__construct('li', $content);

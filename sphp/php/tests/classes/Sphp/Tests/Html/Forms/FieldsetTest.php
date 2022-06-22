@@ -15,6 +15,7 @@ namespace Sphp\Tests\Html\Forms;
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Forms\Fieldset;
 use Sphp\Html\Forms\Legend;
+use Sphp\Html\Forms\Inputs\TextInput;
 
 /**
  * Class FieldsetTest
@@ -35,21 +36,22 @@ class FieldsetTest extends TestCase {
   }
 
   public function constructorDataProvider(): iterable {
-    yield [null, new \Sphp\Html\Forms\Inputs\TextInput()];
-    yield ['foo', new \Sphp\Html\Forms\Inputs\TextInput()];
-    yield ['foo', null];
-    yield ['foo', null];
+    yield [new TextInput(), null,];
+    yield [new TextInput(), new Legend('legend content'),];
+    yield ['legend content', null];
+    yield [null, 'legend content'];
+    yield [null, new Legend('legend content')];
   }
 
   /**
    * @dataProvider constructorDataProvider
    * 
-   * @param  mixed $legend
    * @param  mixed $content
+   * @param  string|Legend|null $legend
    * @return void
    */
-  public function testConstructorWithParams($legend, $content): void {
-    $fieldset = new Fieldset($legend, $content);
+  public function testConstructorWithParams(mixed $content, string|Legend|null $legend): void {
+    $fieldset = new Fieldset($content, $legend);
     if ($legend === null) {
       $this->assertNull($fieldset->getLegend());
     } else if ($legend instanceof Legend) {

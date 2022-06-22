@@ -22,7 +22,7 @@ namespace Sphp\Validators;
  */
 class Url extends AbstractValidator {
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_string($value) && !$value instanceof \Sphp\Network\URL) {
       $this->getErrors()->appendMessageFromTemplate(self::INVALID);

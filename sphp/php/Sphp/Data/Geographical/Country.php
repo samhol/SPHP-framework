@@ -45,7 +45,7 @@ class Country {
 
   public function __construct(array $data) {
     $this->data = $data;
-   // print_r($data);
+    // print_r($data);
     $this->parseData($data);
   }
 
@@ -61,7 +61,7 @@ class Country {
       $this->languages = array_values((array) $countryDataItem['languages']);
       $this->languageCodes = array_keys((array) $countryDataItem['languages']);
       $this->currencyCodes = $countryDataItem['currencies'];
-      $this->isIndependent = (bool)$countryDataItem['independent'];
+      $this->isIndependent = (bool) $countryDataItem['independent'];
       //$this->callingCodes = $countryDataItem['callingCode'];
       //$this->capital = $countryDataItem['capital'][0];
       if (count($countryDataItem['capital']) >= 1) {

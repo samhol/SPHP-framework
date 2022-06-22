@@ -36,7 +36,7 @@ abstract class AbstractPackage implements Package {
     $this->restriction = $restriction;
   }
 
-  public function getName(): string { 
+  public function getName(): string {
     return $this->name;
   }
 

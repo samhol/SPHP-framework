@@ -14,7 +14,7 @@ namespace Sphp\Apps\Trackers\Views\UserAgents;
 
 use Sphp\Apps\Trackers\Views\AbstractShareView;
 use Sphp\Apps\Trackers\Data\ShareData;
-use Sphp\Html\Sections\Aside;
+use Sphp\Html\Layout\Aside;
 use Sphp\Foundation\Sites\Containers\Popup;
 use Sphp\Apps\Trackers\Data\UserAgents\UserAgentModel;
 

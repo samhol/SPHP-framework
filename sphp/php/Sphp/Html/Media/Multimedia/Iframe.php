@@ -29,19 +29,17 @@ use Sphp\Html\Media\Embeddable;
  */
 class Iframe extends EmptyTag implements Embeddable, SizeableMedia {
 
-  use \Sphp\Html\Media\SizeableMediaTrait;
-
   /**
    * Constructor
    *
-   * @param  string $src the address of the document to embed in the object
-   * @param  string $name the name for the component
+   * @param  string|null $src the address of the document to embed in the object
    * @link   https://www.w3schools.com/tags/att_iframe_src.asp src attribute
-   * @link   https://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
-  public function __construct(string $src) {
+  public function __construct(?string $src = null) {
     parent::__construct('iframe', true);
-    $this->setSrc($src);
+    if ($src !== null) {
+      $this->setSrc($src);
+    }
   }
 
   /**
@@ -84,6 +82,30 @@ class Iframe extends EmptyTag implements Embeddable, SizeableMedia {
    */
   public function getName(): string {
     return (string) $this->attributes()->getValue('name');
+  }
+
+  public function setSize(?int $width, ?int $height) {
+    $this->setAttribute('width', $width);
+    $this->setAttribute('height', $height);
+    return $this;
+  }
+
+  /**
+   * Sets the loading method used in browser
+   *
+   * **Definition and Usage:**
+   *
+   *  The loading attribute specifies whether a browser should load a resource 
+   *  immediately or to defer loading of off-screen images until for example the 
+   *  user scrolls near them
+   * 
+   * @param  string $loading the loading method
+   * @return $this for a fluent interface
+   * @link   https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#images_and_iframes loading attribute
+   */
+  public function setLoading(?string $loading) {
+    $this->attributes()->setAttribute('loading', $loading);
+    return $this;
   }
 
   /**
@@ -139,6 +161,16 @@ class Iframe extends EmptyTag implements Embeddable, SizeableMedia {
    */
   public function getSandbox(): string {
     return (string) $this->getAttribute('sandbox');
+  }
+
+  /**
+   * 
+   * @param bool $allow
+   * @return $this
+   */
+  public function allowFullScreen(bool $allow) {
+    $this->attributes()->setAttribute('allowfullscreen', $allow);
+    return $this;
   }
 
 }

@@ -77,11 +77,11 @@ class Ol extends StandardList {
    * **Important:** this indexing is independent from the storing offsets of 
    * the {LiInterface} components in the container
    * 
-   * @param  int $start the start value of the list ordering index
+   * @param  int|null $start the start value of the list ordering index
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
-  public function setStart(int $start) {
+  public function setStart(?int $start) {
     $this->attributes()->setAttribute('start', $start);
     return $this;
   }
@@ -116,7 +116,7 @@ class Ol extends StandardList {
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function setListType(string $type = self::DECIMAL) {
+  public function setListType(?string $type = self::DECIMAL) {
     $this->attributes()->setAttribute('type', $type);
     return $this;
   }

@@ -15,15 +15,17 @@ namespace Sphp\Bootstrap\Components\Forms;
 use Sphp\Bootstrap\Layout\AbstractCol;
 use Sphp\Html\Forms\Inputs\ValidableInput;
 use Sphp\Html\Forms\Inputs\Menus\Select;
+use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Tags;
 use Sphp\Html\Forms\Inputs\InputFactory;
-use Sphp\Html\Forms\Inputs\TextInput;
+use Sphp\Bootstrap\Exceptions\BadMethodCallException;
 
 /**
  * The ValidableInputCol class
  * 
  * @method static self text(mixed $content = null, $for = null) creates a &lt;input type=hidden&gt; object
+ * @method static \Sphp\Html\Forms\Inputs\SearchInput textarea(?string $name = null, $for = null) creates an instance of Search Input
  * @method static self number(mixed $content = null, $for = null) creates a &lt;input type=text&gt; object
  * @method static \Sphp\Html\Forms\Inputs\Radiobox radio(mixed $content = null, $for = null) creates a &lt;input type=radio&gt; object
  * @method static \Sphp\Html\Forms\Inputs\SearchInput search(?string $name = null, $for = null) creates an instance of Search Input
@@ -38,9 +40,10 @@ use Sphp\Html\Forms\Inputs\TextInput;
 class ValidableInputCol extends AbstractCol {
 
   private ValidableInput $input;
+  private Label $label;
   private ?string $validTooltip = null;
   private ?string $invalidTooltip = null;
-  private Label $label;
+  private bool $floatLabels = false;
 
   /**
    * Constructor
@@ -50,17 +53,21 @@ class ValidableInputCol extends AbstractCol {
    */
   public function __construct(ValidableInput $input, ?string $label = null) {
     parent::__construct();
-    $this->addCssClass('position-relative');
+    //$this->addCssClass('position-relative');
+    $this->label = new Label($label, $input);
     if ($input instanceof Select) {
       $input->addCssClass('form-select');
+      $this->label->addCssClass('form-label');
+    } else if ($input instanceof Choicebox) {
+      $input->addCssClass('form-check-input');
+      $this->label->addCssClass('form-check-label');
     } else {
       $input->addCssClass('form-control');
+      $this->label->addCssClass('form-label');
     }
     $this->input = $input;
 
-    $this->input->addCssClass('form-control');
-    $this->label = new Label($label, $input);
-    $this->label->addCssClass('form-label');
+    //$this->input->addCssClass('form-control');
   }
 
   public function __destruct() {
@@ -68,13 +75,32 @@ class ValidableInputCol extends AbstractCol {
     unset($this->input, $this->formLabel);
   }
 
+  /**
+   * 
+   * @param  string|null $label
+   * @return $this for a fluent interface
+   */
+  public function setFloatingLabel(?string $label) {
+    if ($label !== null) {
+      $this->floatLabels = true;
+      $this->setLabelText($label);
+      $this->input->setPlaceHolder($label);
+    } else {
+      $this->floatLabels = false;
+    }
+
+    //$this->label->removeCssClass('form-label');
+    return $this;
+  }
+
   public function getInput(): ValidableInput {
     return $this->input;
   }
 
   /**
+   * Sets the label text
    * 
-   * @param  string|null $text
+   * @param  string|null $text label text
    * @return $this for a fluent interface
    */
   public function setLabelText(?string $text) {
@@ -107,17 +133,30 @@ class ValidableInputCol extends AbstractCol {
   }
 
   public function setRequired(bool $required) {
-    $this->input->setRequired();
+    $this->input->setRequired($required);
     return $this;
   }
 
   public function contentToString(): string {
-    $out = (string) $this->label;
-    $out .= (string) $this->input;
+    $out = '';
+    if ($this->floatLabels) {
+      $out = '<div class="form-floating">';
+      $out .= (string) $this->input;
+      $out .= (string) $this->label;
+    } else {
+      $out .= (string) $this->label;
+      $out .= (string) $this->input;
+    }
     if ($this->invalidTooltip !== null) {
-      $out .= Tags::div($this->invalidTooltip)->addCssClass('invalid-tooltip');
+      $out .= Tags::div($this->invalidTooltip)->addCssClass('invalid-feedback');
     } if ($this->validTooltip !== null) {
-      $out .= Tags::div($this->validTooltip)->addCssClass('valid-tooltip');
+      $out .= Tags::div($this->validTooltip)->addCssClass('valid-feedback');
+    }
+    if ($this->input instanceof \Sphp\Html\Forms\Inputs\Choicebox) {
+      $out = '<div class="form-check">' . $out . '</div>';
+    }
+    if ($this->floatLabels) {
+      $out .= '</div>';
     }
     return $out;
   }

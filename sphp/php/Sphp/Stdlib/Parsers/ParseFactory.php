@@ -22,10 +22,8 @@ use Sphp\Exceptions\BadMethodCallException;
  * 
  * @method \Sphp\Stdlib\Parsers\Markdown markdown() Returns singleton instance of `markdown` reader
  * @method \Sphp\Stdlib\Parsers\Markdown md() Returns singleton instance of `markdown` reader
- * @method \Sphp\Stdlib\Parsers\Yaml yaml() Returns singleton instance of `yaml` reader
- * @method \Sphp\Stdlib\Parsers\Ini ini() Returns singleton instance of `ini` reader
- * @method \Sphp\Stdlib\Parsers\Json json() Returns singleton instance of `json` reader
- * @method \Sphp\Stdlib\Parsers\Csv csv() Returns singleton instance of `csv` reader
+ * @method \Sphp\Stdlib\Parsers\Yaml yaml() Returns singleton instance of `yaml` reader 
+ * @method \Sphp\Stdlib\Parsers\Json json() Returns singleton instance of `json` reader 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License
@@ -36,8 +34,7 @@ abstract class ParseFactory {
   /**
    * @var string[]
    */
-  private static $readers = array(
-      'ini' => Ini::class,
+  private static $readers = array( 
       'json' => Json::class,
       'yaml' => Yaml::class,
       'yml' => Yaml::class,
@@ -50,8 +47,7 @@ abstract class ParseFactory {
       'mdtxt' => Markdown::class,
       'mdtext' => Markdown::class,
       'text' => Markdown::class,
-      'Rmd' => Markdown::class,
-      'csv' => Csv::class,
+      'Rmd' => Markdown::class, 
   );
 
   /**

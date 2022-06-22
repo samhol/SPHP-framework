@@ -15,7 +15,7 @@ namespace Sphp\Apps\PoSearch\View;
 use Sphp\Html\AbstractContent;
 use Sepia\PoParser\Catalog\Entry;
 use Sphp\Documentation\SyntaxHighlighting\GeSHiSyntaxHighlighter;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Lists\Dl;
 
 /**

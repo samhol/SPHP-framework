@@ -29,8 +29,7 @@ class ParamTest extends TestCase {
     $data = [];
     $data[] = ['foo', 'bar'];
     $data[] = ['foo', 1];
-    $data[] = ['foo', null];
-    $data[] = ['foo', true];
+    $data[] = ['foo', null]; 
     return $data;
   }
 

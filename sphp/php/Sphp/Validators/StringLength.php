@@ -146,7 +146,7 @@ class StringLength extends AbstractValidator {
     return $this->min === null && $this->max > 0;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $valid = true;
     $string = new MbString($value);

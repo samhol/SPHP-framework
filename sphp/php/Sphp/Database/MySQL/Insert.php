@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * SPHPlayground Framework (https://playgound.samiholck.com/)
  *
@@ -20,5 +22,5 @@ use Sphp\Database\AbstractInsert;
  * @filesource
  */
 class Insert extends AbstractInsert {
-
+  
 }

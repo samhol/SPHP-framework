@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\ContainerTag;
 
 /**
  * Implements a slide for Orbit
@@ -24,7 +24,7 @@ use Sphp\Html\AbstractContainerTag;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class HtmlSlide extends AbstractContainerTag implements Slide {
+class HtmlSlide extends ContainerTag implements Slide {
 
   use ActivationTrait;
 
@@ -32,7 +32,7 @@ class HtmlSlide extends AbstractContainerTag implements Slide {
    * Constructor
    *
    * @param  mixed $content the content of the slide
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
     parent::__construct('li');

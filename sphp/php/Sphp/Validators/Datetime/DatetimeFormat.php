@@ -53,7 +53,7 @@ class DatetimeFormat extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_string($value)) {
       $this->getErrors()->appendMessageFromTemplate(static::INVALID);

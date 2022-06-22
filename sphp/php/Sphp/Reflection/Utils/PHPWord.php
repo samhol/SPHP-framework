@@ -27,25 +27,20 @@ class PHPWord {
   /**
    * PHP keyword flag
    */
-  public const            KEYWORD = 0b00000000000001;
-  public const                OOP = 0b00000000000010; 
-  
-  public const      RESERVED_WORD = 0b00000000000100;
+  public const KEYWORD = 0b00000000000001;
+  public const OOP = 0b00000000000010;
+  public const RESERVED_WORD = 0b00000000000100;
   public const SOFT_RESERVED_WORD = 0b00000000001000;
-  
-  
-  public const       MAGIC_METHOD = 0b00000000100010;
-  public const        MAGIC_CONST = 0b00000000000101;
-  
-  public const               TYPE = 0b10000000000000;
-  public const     PRIMITIVE_TYPE = 0b11000000000100;
-  public const           OOP_TYPE = 0b11000000000010;
-  public const        PSEUDO_TYPE = 0b10100000000000;
-  
-  public const     PREDEFINED_VAR = 0b00010000000000;
-  public const           OPERATOR = 0b00000010000000;
-  public const   LOGIGAL_OPERATOR = 0b00000110000000;
-  public const  CONTROL_STRUCTURE = 0b00000001000001;
+  public const MAGIC_METHOD = 0b00000000100010;
+  public const MAGIC_CONST = 0b00000000000101;
+  public const TYPE = 0b10000000000000;
+  public const PRIMITIVE_TYPE = 0b11000000000100;
+  public const OOP_TYPE = 0b11000000000010;
+  public const PSEUDO_TYPE = 0b10100000000000;
+  public const PREDEFINED_VAR = 0b00010000000000;
+  public const OPERATOR = 0b00000010000000;
+  public const LOGIGAL_OPERATOR = 0b00000110000000;
+  public const CONTROL_STRUCTURE = 0b00000001000001;
 
   private string $name;
   private BitMask $type;
@@ -58,11 +53,11 @@ class PHPWord {
   public function __destruct() {
     unset($this->type);
   }
-  
+
   public function __toString(): string {
     return $this->name;
   }
-  
+
   public function getName(): string {
     return $this->name;
   }
@@ -132,11 +127,11 @@ class PHPWord {
   /**
    * Checks if given value is a logical operator name
    * 
-   * @param string $word
    * @return bool true if given value is a logical operator name, false otherwise
    * @see https://www.php.net/manual/en/language.operators.logical.php PHP Logical Operators
    */
-  public  function isLogicalOperator(): bool {
+  public function isLogicalOperator(): bool {
     return $this->is(self::LOGIGAL_OPERATOR);
   }
+
 }

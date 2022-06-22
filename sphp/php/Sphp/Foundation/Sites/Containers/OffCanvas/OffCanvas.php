@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Foundation\Sites\Containers\OffCanvas;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Implements Off-canvas navigation component

@@ -25,31 +25,22 @@ use Sphp\Html\Media\Multimedia\Track;
  */
 class TrackTest extends TestCase {
 
-  public function sourceData(): array {
-    $data = [];
-    $data[] = ['subtitles.vtt'];
-    return $data;
-  }
-
   /**
-   * @dataProvider sourceData
-   * 
-   * @param string $src
+   * @return Track
    */
-  public function testSourceTypes(string $src): void {
+  public function testConstructor(): Track {
+    $src = 'subtitles.vtt';
     $track = new Track($src);
     $this->assertEquals($src, $track->getAttribute('src'));
     $this->assertEquals($src, $track->getSrc());
     $this->assertEquals(null, $track->getKind());
-  }
-
-  public function settersData(): array {
-    $data = [];
-    $data[] = [['src' => 'subtitles.vtt', 'kind' => 'subtitles']];
-    return $data;
+    return $track;
   }
 
   /**
+   * @depends testConstructor
+   * 
+   * @param  Track $track
    * @return Track
    */
   public function testKind(): Track {

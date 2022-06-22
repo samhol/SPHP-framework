@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace Sphp\Apps\Trackers\Views;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Sections\Section;
-use Sphp\Html\Sections\Aside;
+use Sphp\Html\Layout\Section;
+use Sphp\Html\Layout\Aside;
 use Sphp\Foundation\Sites\Grids\BasicRow;
 use Sphp\Html\Tags;
 use Sphp\Foundation\Sites\Media\ProgressBar;

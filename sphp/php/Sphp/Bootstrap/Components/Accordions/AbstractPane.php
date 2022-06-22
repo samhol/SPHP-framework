@@ -13,10 +13,10 @@ declare(strict_types=1);
 namespace Sphp\Bootstrap\Components\Accordions;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\ContainerComponent;
-use Sphp\Html\Sections\Headings\H2;
-use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Text\Headings\H2;
+use Sphp\Html\Forms\Buttons\PushButton;
 
 /**
  * Abstract implementation of an Accordion Pane
@@ -63,8 +63,12 @@ abstract class AbstractPane extends AbstractContent implements Pane {
     unset($this->div, $this->bar, $this->body, $this->content);
   }
 
-  public function setAccordionParent(Accordion $accordion) {
-    $this->content->setAttribute('data-bs-parent', "#{$accordion->identify()}");
+  public function setAccordionParent(?Accordion $accordion) {
+    if ($accordion !== null) {
+      $this->content->setAttribute('data-bs-parent', "#{$accordion->identify()}");
+    } else {
+      $this->content->removeAttribute('data-bs-parent');
+    }
     return $this;
   }
 
@@ -72,7 +76,7 @@ abstract class AbstractPane extends AbstractContent implements Pane {
     $this->bar = $this->div->appendH2();
     $this->bar->identify();
     $this->bar->addCssClass('accordion-header');
-    $this->button = new Button($bar);
+    $this->button = new PushButton($bar);
     $this->button->addCssClass('accordion-button collapsed');
     $this->button->setAttribute('data-bs-toggle', 'collapse');
     $this->content = $this->div->appendDiv();

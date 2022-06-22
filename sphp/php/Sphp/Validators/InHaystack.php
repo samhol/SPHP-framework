@@ -22,14 +22,7 @@ namespace Sphp\Validators;
  */
 class InHaystack extends AbstractValidator {
 
-  /**
-   * @var array
-   */
   private array $haystack;
-
-  /**
-   * @var boolean 
-   */
   private bool $strict = false;
 
   /**
@@ -88,7 +81,7 @@ class InHaystack extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $valid = false;
     foreach ($this->haystack as $other) {

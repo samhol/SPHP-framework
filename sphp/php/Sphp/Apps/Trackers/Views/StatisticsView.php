@@ -14,8 +14,8 @@ namespace Sphp\Apps\Trackers\Views;
 
 use Sphp\Html\AbstractContent;
 use Sphp\Apps\Trackers\Data\DB;
-use Sphp\Html\Sections\Section;
-use Sphp\Html\Sections\Aside;
+use Sphp\Html\Layout\Section;
+use Sphp\Html\Layout\Aside;
 use Sphp\Html\Lists\Ul;
 use Sphp\Foundation\Sites\Grids\BlockGrid;
 use Sphp\Apps\Trackers\Data\URLs\DomainDb;

@@ -31,8 +31,6 @@ use Sphp\Html\Media\SizeableMedia;
  */
 class Embed extends EmptyTag implements Embeddable, SizeableMedia {
 
-  use \Sphp\Html\Media\SizeableMediaTrait;
-
   /**
    * Constructor
    *
@@ -102,6 +100,12 @@ class Embed extends EmptyTag implements Embeddable, SizeableMedia {
    */
   public function getType() {
     return $this->attributes()->getValue('type');
+  }
+
+  public function setSize(?int $width, ?int $height) {
+    $this->setAttribute('width', $width);
+    $this->setAttribute('height', $height);
+    return $this;
   }
 
 }

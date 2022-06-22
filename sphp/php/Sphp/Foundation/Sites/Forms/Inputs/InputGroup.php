@@ -17,16 +17,16 @@ use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Inputs\TextualInput;
 use Sphp\Html\Component;
 use Sphp\Html\CssClassifiableContent;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Html\PlainContainer;
 use IteratorAggregate;
 use Sphp\Html\TraversableContent;
 use Traversable;
-use Sphp\Html\Forms\Buttons\ButtonInterface;
+use Sphp\Html\Forms\Buttons\Button;
 use Sphp\Html\Forms\Inputs\FormControls;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\Forms\Buttons\Submitter;
-use Sphp\Html\Forms\Buttons\Resetter;
+use Sphp\Html\Forms\Buttons\SubmitButton;
+use Sphp\Html\Forms\Buttons\ResetButton;
 
 /**
  * Class InputGroup
@@ -142,10 +142,10 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    *
    * @param  mixed $content the visual content of the button
    * @param  string|null $name the value of name attribute
-   * @return Submitter appended instance
+   * @return SubmitButton appended instance
    */
-  public function appendSubmitter($content = 'submit', string $name = null): Submitter {
-    $submitter = new Submitter($content, $name);
+  public function appendSubmitter($content = 'submit', string $name = null): SubmitButton {
+    $submitter = new SubmitButton($content, $name);
     $this->appendButton($submitter);
     return $submitter;
   }
@@ -154,10 +154,10 @@ class InputGroup extends AbstractComponent implements IteratorAggregate, Travers
    * Appends a submitter to the group
    *
    * @param  mixed $content the visual content of the button
-   * @return Resetter appended instance
+   * @return ResetButton appended instance
    */
-  public function appendResetter($content = 'reset'): Resetter {
-    $submitter = new Resetter($content);
+  public function appendResetter($content = 'reset'): ResetButton {
+    $submitter = new ResetButton($content);
     $this->group->appendButton($submitter);
     return $submitter;
   }

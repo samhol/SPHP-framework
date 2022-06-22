@@ -15,7 +15,7 @@ namespace Sphp\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use Sphp\Foundation\Sites\Core\ScreenReaderLabelable;
 use Sphp\Html\Forms\Inputs\BooleanInput;
 use Sphp\Foundation\Foundation;

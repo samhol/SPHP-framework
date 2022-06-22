@@ -18,7 +18,7 @@ use Sphp\Apps\Sports\Workouts\DistanceAndTimeExercise;
 use Sphp\Apps\Sports\Workouts\BodyWeightExercise;
 use Sphp\Apps\Sports\Workouts\TimedExercise;
 use Sphp\Apps\Sports\Workouts\Exercise;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Apps\Sports\Views\WeightAndRepsExerciseView;
 use Sphp\Apps\Sports\Views\ExerciseView;
 use Sphp\Apps\Sports\Views\DistanceAndTimeExerciseView;

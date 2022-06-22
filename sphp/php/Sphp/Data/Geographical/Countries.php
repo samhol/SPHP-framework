@@ -110,7 +110,7 @@ class Countries implements IteratorAggregate, Countable {
 
   public function sortByRegion(): Countries {
     $copy = Arrays::copy($this->countries);
-    $cmp = function (Country  $a, Country  $b): int {
+    $cmp = function (Country $a, Country $b): int {
       return $a->region <=> $b->region;
     };
     uasort($copy, $cmp);
@@ -119,7 +119,7 @@ class Countries implements IteratorAggregate, Countable {
 
   public function sortByCommonName(): Countries {
     $copy = Arrays::copy($this->countries);
-    $cmp = function (Country  $a, Country  $b): int {
+    $cmp = function (Country $a, Country $b): int {
       return $a->name <=> $b->name;
     };
     uasort($copy, $cmp);
@@ -138,12 +138,12 @@ class Countries implements IteratorAggregate, Countable {
    * 
    * @return iterable<Country>
    */
-  public static function all(): Countries { 
-    $raw = ParseFactory::json()->fileToArray(__DIR__.'/../../../../../countries-app/data/countries.json');
+  public static function all(): Countries {
+    $raw = ParseFactory::json()->fileToArray(__DIR__ . '/../../../../../countries-app/data/countries.json');
     // print_r($raw);
     $c = [];
     foreach ($raw as $countryData) {
-      $c[] = new Country($countryData); 
+      $c[] = new Country($countryData);
     }
     return new Countries($c);
   }

@@ -12,22 +12,40 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Html;
 
-use Sphp\Tests\AbstractArrayAccessIteratorCountableTest;
+use PHPUnit\Framework\TestCase;
 use Sphp\Html\Container;
 use Sphp\Html\PlainContainer;
+use Sphp\Stdlib\Parsers\ParseFactory;
+use Sphp\Html\Exceptions\HtmlException;
+use Sphp\Stdlib\Filesystem;
+use Sphp\Html\Text\Span;
+use Sphp\Html\Layout\Div;
 
-class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
+class ContainerTest extends TestCase {
 
-  /**
-   * @var Container
-   */
-  protected $container;
+  use TraversableContentTestTrait,
+      \Sphp\Tests\ArrayAccessTestTrait;
 
-  /**
-   * @return PlainContainer
-   */
-  public function createContainer(): Container {
+  private PlainContainer $container;
+
+  public function createContainer(): PlainContainer {
     return new PlainContainer();
+  }
+
+  public function createArrayAccessObject(): PlainContainer {
+    return $this->createContainer();
+  }
+
+  public function arrayAccessTestData(): array {
+    return $this->traversableContent();
+  }
+
+  public function create(iterable $content): \Sphp\Html\TraversableContent {
+    $container = new PlainContainer();
+    foreach ($content as $key => $val) {
+      $container[$key] = $val;
+    }
+    return $container;
   }
 
   /**
@@ -47,28 +65,8 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
     parent::tearDown();
   }
 
-  protected function arrayAccessTest(\ArrayAccess $component, array $data): void {
-    foreach ($data as $key => $value) {
-      $component[$key] = $value;
-      $this->assertTrue(isset($component[$key]));
-      $this->assertSame($value, $component[$key]);
-      unset($component[$key]);
-      $this->assertFalse(isset($component[$key]));
-    }
-  }
-
-  protected function traversableTest(\Traversable $component, array $data): void {
-    foreach ($data as $key => $value) {
-      $component[$key] = $value;
-      $this->assertTrue(isset($component[$key]));
-      $this->assertSame($value, $component[$key]);
-      unset($component[$key]);
-      $this->assertFalse(isset($component[$key]));
-    }
-  }
-
   public function testInserting(): Container {
-    $c = $this->createContainer();
+    $c = new PlainContainer();
     $c->append('b');
     $c->append('c');
     $c->prepend('a');
@@ -96,14 +94,14 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   }
 
   public function testGetHtml(): void {
-    $c = $this->createContainer();
+    $c = new PlainContainer();
     $this->assertSame('', $c->getHtml());
     $c->append('b');
     $c->append('c');
     $c->append('d');
     $c->prepend('a');
     $this->assertSame('abcd', $c->getHtml());
-    $c2 = $this->createContainer();
+    $c2 = new PlainContainer();
     $c->append($c2);
     $this->assertSame('abcd', $c->getHtml());
     $c2->append(' is foo');
@@ -118,24 +116,33 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   }
 
   public function testToArray(): void {
-    $this->container->append('b');
-    $this->container->append('c');
-    $this->container->append('d');
-    $this->container->prepend('a');
-    $this->assertCount(4, $this->container);
+    $container = new PlainContainer();
+    $this->assertEquals([], $container->toArray());
+    $container->append('b');
+    $container->append('c');
+    $container->append('d');
+    $container->prepend('a');
+    $this->assertCount(4, $container);
+    $this->assertEquals(range('a', 'd'), $container->toArray());
   }
 
-  public function testFoo() {
-    $component = $this->createContainer();
-    if ($component instanceof \ArrayAccess) {
-      $this->arrayAccessTest($component, array(
-          'zero' => 3,
-          'one' => FALSE,
-          'two' => 'good job',
-          'three' => new \stdClass(),
-          'four' => array(),
-      ));
-    }
+  public function testArrayAccess(): void {
+    $container = new PlainContainer();
+    $this->assertNull($container[0]);
+    $this->assertFalse(isset($container[0]));
+    $container[] = 'foo';
+    $this->assertSame('foo', $container[0]);
+    $container[0] = 'bar';
+    $this->assertSame('bar', $container[0]);
+    $this->assertFalse(isset($container['foo']));
+    $container['foo'] = 'foobar';
+    $this->assertTrue(isset($container['foo']));
+    $this->assertSame('foobar', $container['foo']);
+    $container[] = 'baz';
+    $this->assertTrue(isset($container[1]));
+    $this->assertSame('baz', $container[1]);
+    unset($container[0]);
+    $this->assertFalse(isset($container[0]));
   }
 
   public function appendData() {
@@ -153,15 +160,29 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
    * @param  mixed $val
    * @return void
    */
-  public function testAppend($val): void {
-    $this->container->append('foo');
-    $this->assertSame($this->container[0], 'foo');
-    $this->assertTrue($this->container->offsetExists(0));
-    $this->assertFalse($this->container->offsetExists(1));
-    $this->container->append($val);
-    $this->assertTrue($this->container->offsetExists(1));
-    $this->assertEquals($this->container->count(), 2);
-    $this->assertEquals($this->container[1], $val);
+  public function testAppendVsArrayAccess($val): void {
+    $container = new PlainContainer();
+    $container->append('foo');
+    $this->assertSame($container[0], 'foo');
+    $this->assertTrue($container->offsetExists(0));
+    $this->assertFalse($container->offsetExists(1));
+    $container->append($val);
+    $this->assertTrue($container->offsetExists(1));
+    $this->assertEquals($container->count(), 2);
+    $this->assertEquals($container[1], $val);
+  }
+
+  /**
+   * @return void
+   */
+  public function testAppendSpecificTags(): void {
+    $container = new PlainContainer();
+    $hyperlink = $container->appendHyperlink('href', 'bar', 'baz');
+    $this->assertSame('bar', $hyperlink->contentToString());
+    $this->assertSame('href', $hyperlink->getHref());
+    $this->assertSame('baz', $hyperlink->getTarget());
+    $this->assertCount(1, $container);
+    $this->assertSame($hyperlink, $container[0]);
   }
 
   /**
@@ -200,20 +221,19 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
    * 
    * @return mixed[]
    */
-  public function arrayData(): array {
-    return [
-        [range("a", "e")],
-        [array_fill(0, 10, new PlainContainer())],
-        [range(1, 100)]
-    ];
+  public function arrayData(): iterable {
+    yield [range("a", "e")];
+    yield [array_fill(0, 3, new PlainContainer())];
+    yield [range(1, 5)];
   }
 
   /**
-   * 
    * @dataProvider arrayData
-   * @param mixed[] $data
+   * 
+   * @param  array $data
+   * @return void
    */
-  public function testClear(array $data) {
+  public function testClear(array $data): void {
     foreach ($data as $val) {
       $this->container->append($val);
     }
@@ -225,9 +245,11 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   /**
    * 
    * @dataProvider arrayData
-   * @param mixed[] $data
+   * 
+   * @param  array $data
+   * @return void
    */
-  public function testIterator(array $data) {
+  public function testIterator(array $data): void {
     foreach ($data as $val) {
       $this->container->append($val);
     }
@@ -245,25 +267,76 @@ class ContainerTest extends AbstractArrayAccessIteratorCountableTest {
   public function testExists($val) {
     $this->container->append($val);
     $this->assertTrue($this->container->contains($val));
-    $this->assertFalse($this->container->contains("foo"));
+    $this->assertFalse($this->container->contains('foo'));
     $this->container->clear()->append((new PlainContainer())->append($val));
     $this->assertTrue($this->container->contains($val));
-    $this->assertFalse($this->container->contains("foo"));
+    $this->assertFalse($this->container->contains('foo'));
   }
 
   public function testClone(): void {
-    $this->container->append(new PlainContainer("a"));
-    $clone = clone $this->container;
-    $this->container[0][0] = "b";
-    //$this->container->clear();
+    $container = new PlainContainer();
+    $span = $container->appendSpan('foo');
+    $clone = clone $container;
     $this->assertEquals($clone->count(), 1);
-    $this->assertEquals($clone[0][0], "a");
+    $this->assertEquals($container[0], $clone[0]);
+    $this->assertNotSame($container[0], $clone[0]);
 
-    $this->assertEquals($this->container[0][0], "b");
+    $this->assertNotSame($span, $clone[0]);
   }
 
-  public function createCollection(): \ArrayAccess {
-    return new PlainContainer();
+  public function testAppendMarkdown(): void {
+    $container1 = new PlainContainer();
+    $container1->append('md: ');
+    $container2 = new PlainContainer();
+    $container2->append('md: ');
+    $mdString = Filesystem::toString('./sphp/php/tests/files/valid.md');
+    $mdToHtml = ParseFactory::md()->parseFile('./sphp/php/tests/files/valid.md');
+    $container1->appendMarkdown($mdString);
+    $container2->appendMarkdownFile('./sphp/php/tests/files/valid.md');
+    $this->assertSame($mdToHtml, $container1[1]);
+    $this->assertSame($mdToHtml, $container2[1]);
+    $this->assertSame('md: ' . $mdToHtml, (string) $container1);
+    $this->assertSame((string) $container1, (string) $container2);
+    $this->expectException(HtmlException::class);
+    $container1->appendMarkdownFile('foo.md');
+  }
+
+  public function testAppendRawFile(): void {
+    $container = new PlainContainer();
+    $container->append('Raw: ');
+    $string = Filesystem::toString('./sphp/php/tests/files/valid.md');
+    $container->appendRawFile('./sphp/php/tests/files/valid.md');
+    // print_r($this->appendedStrings);
+    $this->assertSame('Raw: ', $container[0]);
+    $this->assertSame($string, $container[1]);
+    $this->assertSame('Raw: ' . $string, (string) $container);
+    $this->expectException(HtmlException::class);
+    $container->appendRawFile('foo.bar');
+  }
+
+  public function testAppendPhpFile(): void {
+    $container1 = new PlainContainer();
+    $container1->append('php: ');
+    $container2 = new PlainContainer();
+    $container2->append('php: ');
+    // var_dump(is_file('./sphp/php/tests/files/test.php'));
+    $phpExecuted = Filesystem::executePhpToString('./sphp/php/tests/files/test.php');
+    $this->assertSame('foo', $phpExecuted);
+    $container1->append($phpExecuted);
+    $container2->appendPhpFile('./sphp/php/tests/files/test.php');
+    $this->assertSame($phpExecuted, $container1[1]);
+    $this->assertSame($phpExecuted, $container2[1]);
+  }
+
+  /**
+   * @return void
+   */
+  public function testAppendInvalidPhpFileBuffers(): void {
+    $start_level = ob_get_level();
+    $container = new PlainContainer();
+    $this->expectException(HtmlException::class);
+    $container->appendPhpFile('./sphp/php/tests/files/invalid-php/invalid-syntax.php');
+    $this->assertSame($start_level, ob_get_level());
   }
 
 }

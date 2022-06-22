@@ -19,7 +19,7 @@ use Sphp\Apps\Calendars\Diaries\DiaryDateInterface;
 use Sphp\DateTime\ImmutableDate;
 use Sphp\DateTime\Date;
 use Sphp\Apps\Sports\Workouts\Workout;
-use Sphp\DateTime\Intervals;
+use Sphp\DateTime\Interval;
 use Sphp\Apps\Sports\Exceptions\FitNotesException;
 
 /**
@@ -36,10 +36,7 @@ class DB implements Countable, Diary {
   protected const T_EX = 2;
   protected const WR_EX = 3;
   protected const BWR_EX = 4;
-
-  /**
-   * @var PDO
-   */
+ 
   private PDO $pdo;
 
   /**
@@ -214,13 +211,13 @@ class DB implements Countable, Diary {
       }
       if ($type === self::DT_EX) {
         $ex = $workout->distanceAndTimeExercise($row['exercise'], $row['cat']);
-        $ex->addSet(Intervals::fromSeconds((float) $row['time']), (float) $row['dist']);
+        $ex->addSet(Interval::fromSeconds((float) $row['time']), (float) $row['dist']);
       } else if ($type === self::WR_EX) {
         $ex = $workout->weightLiftingExercise($row['exercise'], $row['cat']);
         $ex->addSet((float) $row['weight'], (int) $row['reps']);
       } else if ($type === self::T_EX) {
         $ex = $workout->timedExercise($row['exercise'], $row['cat']);
-        $ex->addSet(Intervals::fromSeconds((float) $row['time']));
+        $ex->addSet(Interval::fromSeconds((float) $row['time']));
       } else if ($type === self::BWR_EX) {
         $ex = $workout->bodyWeightExercise($row['exercise'], $row['cat']);
         $ex->addSet((int) $row['reps']);

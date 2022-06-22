@@ -20,6 +20,7 @@ use Sphp\Apps\Trackers\Views\Date\MonthSelector;
 use Sphp\DateTime\ImmutableDate;
 use ATC\Views\NaviViews;
 use Sphp\Foundation\Sites\Navigation\BreadCrumbs;
+use Sphp\Html\Text\Headings\H1;
 
 /**
  * Class CalendarController
@@ -122,7 +123,7 @@ class CalendarController {
     $selector->setCurrentMonth($this->month, $this->year);
     $selector->setCurrentDomain($this->domain);
     $selector->setDomains($this->db->getDomains());
-    $h1 = new \Sphp\Html\Sections\Headings\H1('User statistics for <small>' . $date->format('F Y') . '</small>');
+    $h1 = new H1('User statistics for <small>' . $date->format('F Y') . '</small>');
     // $script = new \Sphp\Html\Scripts\ScriptSrc('/app/stats-app/javascripts/ajax.js');
     return $h1 . $bc . $selector . $cal; // . $script;
   }

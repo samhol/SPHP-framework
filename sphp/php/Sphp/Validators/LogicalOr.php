@@ -58,7 +58,7 @@ class LogicalOr extends AbstractValidator {
     parent::__clone();
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     $validA = $this->a->isValid($value);
     $validB = $this->b->isValid($value);

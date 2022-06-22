@@ -53,7 +53,7 @@ abstract class TimeZones {
     if (-12 > $hours || $hours > 14) {
       throw new InvalidArgumentException('Invalid timezone offset hours paramater provided');
     }
-    $interval = Intervals::fromSeconds($hours * 3600);
+    $interval = Interval::fromSeconds($hours * 3600);
     $param = $interval->format("%R%H:%I");
     return self::fromString($param);
   }

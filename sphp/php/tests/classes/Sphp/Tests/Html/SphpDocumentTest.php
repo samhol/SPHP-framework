@@ -19,7 +19,7 @@ use Sphp\Html\Body;
 use Sphp\Html\Head\Head;
 use Sphp\Html\Scripts\ExternalScript;
 use Sphp\Html\Head\MetaFactory;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Head\Title;
 
 /**
@@ -111,7 +111,7 @@ class SphpDocumentTest extends TestCase {
     $head = new Head();
     $this->assertSame($doc, $doc->useFontAwesome('fa-id'));
     $head->meta()->insert((new ExternalScript("https://kit.fontawesome.com/fa-id.js"))
-                    ->setDefer(true));
+                    ->setIntegrity(null, 'anonymous')->setDefer(true));
     $this->assertSame($doc, $doc->useVideoJS());
     $head->meta()->insert(MetaFactory::build()->stylesheet('https://vjs.zencdn.net/7.8.4/video-js.css'));
     $body->scripts()->insertExternal('https://vjs.zencdn.net/7.8.4/video.js');

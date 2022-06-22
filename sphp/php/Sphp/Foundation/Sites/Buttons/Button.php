@@ -14,11 +14,11 @@ namespace Sphp\Foundation\Sites\Buttons;
 
 use Sphp\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Html\CssClassifiableContent;
-use Sphp\Html\Forms\Buttons\Submitter;
-use Sphp\Html\Forms\Buttons\Resetter;
-use Sphp\Html\Forms\Buttons\Button as PushButton;
+use Sphp\Html\Forms\Buttons\SubmitButton;
+use Sphp\Html\Forms\Buttons\ResetButton;
+use Sphp\Html\Forms\Buttons\PushButton as PushButton;
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Span;
+use Sphp\Html\Text\Span;
 use ReflectionClass;
 
 /**
@@ -30,7 +30,7 @@ use ReflectionClass;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, ButtonInterface {
+Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Button {
 
   use ButtonTrait,
       \Sphp\Html\ComponentTrait;
@@ -109,7 +109,7 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Butt
    * @return Button new instance
    */
   public static function submitter(string $content = null, $name = null, $value = null): Button {
-    return new static(new Submitter($content, $name, $value));
+    return new static(new SubmitButton($content, $name, $value));
   }
 
   /**
@@ -118,7 +118,7 @@ Class Button extends AbstractLayoutManager implements \Sphp\Html\Component, Butt
    * @return Button new instance for form resetting
    */
   public static function resetter($content = null): Button {
-    return new static(new Resetter($content));
+    return new static(new ResetButton($content));
   }
 
   /**

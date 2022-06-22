@@ -33,14 +33,7 @@ use Sphp\DateTime\Date;
  */
 class Period implements IteratorAggregate, Arrayable {
 
-  /**
-   * @var DatePeriod 
-   */
   private DatePeriod $datePeriod;
-
-  /**
-   * @var Constraints 
-   */
   private Constraints $constraints;
 
   /**
@@ -109,7 +102,7 @@ class Period implements IteratorAggregate, Arrayable {
   }
 
   public function getInterval(): Interval {
-    return Intervals::fromDateInterval($this->datePeriod->getDateInterval());
+    return Interval::fromDateInterval($this->datePeriod->getDateInterval());
   }
 
   public function getStartDate(): DateTime {

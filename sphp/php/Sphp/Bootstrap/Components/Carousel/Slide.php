@@ -38,4 +38,18 @@ interface Slide {
    * @return bool true if the slide component is set as active, otherwise false
    */
   public function isActive(): bool;
+
+  /**
+   * Return the name of the slide
+   * 
+   * @return string|null the name of the slide
+   */
+  public function getSlideName(): ?string;
+
+  /**
+   * Sets the time delay between automatically cycling to the next item
+   * 
+   * @param int|null $delay the amount of time to delay 
+   */
+  public function setTimeDelay(?int $delay);
 }

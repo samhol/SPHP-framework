@@ -42,10 +42,10 @@ class IconMapper {
     $this->setDefaultIcon($icon);
     $this->packageNameIconMap = [];
 //
-    $this->packageNameIconMap['/^(erusev\/parsedown)/'] = 'devicon-markdown-original';
-    $this->packageNameIconMap['/^(league\/commonmark)/'] = 'devicon-markdown-original';
+    $this->packageNameIconMap['/^(erusev\/parsedown)/'] = 'fa-brands fa-markdown';
+    $this->packageNameIconMap['/^(league\/commonmark)/'] = 'fa-brands fa-markdown';
     $this->packageNameIconMap['/^(gulp)/'] = 'fab fa-gulp';
-    $this->packageNameIconMap['/^(symfony)/'] = 'devicon-symfony-original';
+    $this->packageNameIconMap['/^(symfony)/'] = 'fa-brands fa-symfony';
     $this->packageNameIconMap['/^(bootstrap)$/'] = 'fab fa-bootstrap';
     $this->packageNameIconMap['/^(jquery)/'] = 'devicon-jquery-plain';
     $this->packageNameIconMap['/^(npm)/'] = 'fab fa-npm';

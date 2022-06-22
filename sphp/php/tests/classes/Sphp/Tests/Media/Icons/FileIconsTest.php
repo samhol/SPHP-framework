@@ -8,11 +8,12 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Tests\Html\Media\Icons;
+namespace Sphp\Tests\Media\Icons;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Media\Icons\FileIcons;
-use Sphp\Html\Media\Icons\FileTypeIconMapper;
+use Sphp\Media\Icons\FileIcons;
+use Sphp\Media\Icons\FileTypeIcons;
+use Sphp\Media\Icons\FileTypeIconMapper;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\BadMethodCallException;
 
@@ -26,26 +27,10 @@ use Sphp\Exceptions\BadMethodCallException;
  */
 class FileIconsTest extends TestCase {
 
-  public function testConstructor(): FileIcons {
-    $factory = new FileIcons();
-    $map = FileTypeIconMapper::instance();
-    //print_r($map->toArray());
-    foreach ($map->toArray() as $ext => $iconName) {
-      $iconFor = $factory->iconFor($ext);
-      $this->assertTrue($iconFor->cssClasses()->contains($iconName));
-      $this->assertSame('i', $iconFor->getTagName());
-      $invoked = $factory($ext);
-      $this->assertTrue($invoked->cssClasses()->contains($iconName));
-      $this->assertSame('i', $invoked->getTagName());
-      $call = $factory->$ext($ext);
-      $this->assertTrue($call->cssClasses()->contains($iconName));
-      $this->assertSame('i', $call->getTagName());
-      $static = FileIcons::$ext($ext);
-      $this->assertTrue($static->cssClasses()->contains($iconName));
-      $this->assertSame('i', $static->getTagName());
-    }
+  protected FileTypeIcons $icons;
 
-    return $factory;
+  protected function setUp(): void {
+    $this->icons = FileTypeIcons::defaultSet();
   }
 
   public function corretFilesAndExtensions(): array {
@@ -62,36 +47,16 @@ class FileIconsTest extends TestCase {
   /**
    * @dataProvider corretFilesAndExtensions
    * @param  mixed $fileOrExt
-   * @return FileIcons
+   * @return void
    */
-  public function testCorrectFilesAndExtensions($fileOrExt): FileIcons {
-    $factory = new FileIcons();
-    $iconFor = $factory->iconFor($fileOrExt);
+  public function testCorrectFilesAndExtensions($fileOrExt): void {
+    $iconFor = $this->icons->createIconFor($fileOrExt);
     //$this->assertTrue($iconFor->cssClasses()->contains($iconName));
-    $this->assertSame('i', $iconFor->getTagName());
+    $this->assertSame('i', $iconFor->createTag()->getTagName());
+    $factory = $this->icons;
     $invoked = $factory($fileOrExt);
     //$this->assertTrue($invoked->cssClasses()->contains($iconName));
-    $this->assertSame('i', $invoked->getTagName());
-
-
-    return $factory;
-  }
-
-  public function testInvocationFailure(): void {
-    $factory = new FileIcons();
-    $this->expectException(InvalidArgumentException::class);
-    $factory(new \stdClass);
-  }
-
-  public function testMagicCallFailure(): void {
-    $factory = new FileIcons();
-    $this->expectException(BadMethodCallException::class);
-    $factory->{''}();
-  }
-
-  public function testMagicStaticCallFailure(): void {
-    $this->expectException(BadMethodCallException::class);
-    FileIcons::{''}();
+    $this->assertSame('i', $invoked->createTag()->getTagName());
   }
 
 }

@@ -16,8 +16,8 @@ use Sphp\Bootstrap\Components\Forms\InputGroup;
 use Sphp\DateTime\ImmutableDate;
 use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Forms\Inputs\SearchInput;
-use Sphp\Html\Forms\Buttons\Submitter;
-use Sphp\Html\Forms\ContainerForm;
+use Sphp\Html\Forms\Buttons\SubmitButton;
+use Sphp\Html\Forms\Form;
 use Sphp\Apps\PoSearch\Data\RequestData;
 use Sphp\Apps\PoSearch\Data\FileBrowser;
 use Sphp\Bootstrap\Components\Forms\SwitchBoard;
@@ -59,7 +59,7 @@ class SearchForm extends AbstractContent {
     $tb->appendInputGroup($this->createSearchField());
     $tb->appendInputGroup($this->createPerPageMenu());
 
-    $tb->appendButton((new Submitter('<i class="fas fa-search"></i> <strong>FIND</strong>'))
+    $tb->appendButton((new SubmitButton('<i class="fas fa-search"></i> <strong>FIND</strong>'))
                     ->addCssClass('btn-success'))
             ->addCssClass('mb-1');
     return $tb;
@@ -171,7 +171,7 @@ class SearchForm extends AbstractContent {
   }
 
   public function getHtml(): string {
-    $form = new ContainerForm('/po', 'get');
+    $form = new Form('/po', 'get');
     $form->useValidation(false);
     $form->addCssClass('po my-1 py-2');
     $form->append(\Sphp\Html\Tags::h3());

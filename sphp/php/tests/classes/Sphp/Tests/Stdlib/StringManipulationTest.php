@@ -36,7 +36,7 @@ class StringManipulationTest extends TestCase {
         [true, 'UTF-8'],
         [false, 'UTF-8'],
         [0, 'UTF-8'],
-        [new \Sphp\Html\Span(), 'UTF-8']
+        [new \Sphp\Html\Text\Span(), 'UTF-8']
     ];
   }
 
@@ -79,32 +79,6 @@ class StringManipulationTest extends TestCase {
   public function testStartsWith(string $haystack, string $needle, bool $startsWith): void {
     $this->assertSame($startsWith, Strings::startsWith($haystack, $needle));
     $this->assertSame($startsWith, MbString::create($haystack)->startsWith($needle));
-  }
-
-  public function endsWith(): iterable {
-    yield ['', '', false];
-    yield ["\n\t", "\n\t", true];
-    yield ["åäö", '', false];
-    yield ["åäö", "ö", true];
-    yield ["åäö", "äö", true];
-    yield ["åäö", "åäö", true];
-    yield ['', ' ', false];
-    yield ["\n", "\t", false];
-    yield ['åäö', 'å', false];
-    yield ['åäö', 'Ö', false];
-  }
-
-  /**
-   * @dataProvider endsWith
-   * 
-   * @param  string $haystack
-   * @param  string $needle
-   * @param  bool $endsWith
-   * @return void
-   */
-  public function testEndsWith(string $haystack, string $needle, bool $endsWith): void {
-    $this->assertSame($endsWith, MbString::create($haystack)->endsWith($needle));
-    $this->assertSame($endsWith, Strings::endsWith($haystack, $needle));
   }
 
   public function trimData(): iterable {
@@ -361,7 +335,7 @@ class StringManipulationTest extends TestCase {
     $contained = range('a', 'f');
     foreach ($contained as $str) {
       $this->assertTrue($obj->contains($str));
-      $this->assertTrue(Strings::contains($seed, $str));
+      $this->assertTrue(str_contains($seed, $str));
     }
     $this->assertTrue($obj->containsAll($contained));
     $this->assertTrue(Strings::containsAll($seed, $contained));

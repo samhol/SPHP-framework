@@ -12,11 +12,11 @@ declare(strict_types=1);
 
 namespace Sphp\Apps\WebFeeds;
 
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Bootstrap\Components\Navigation\Pagination;
 use Sphp\Bootstrap\Components\ToolBar;
-use Sphp\Html\Div;
-use Sphp\Html\Forms\ContainerForm;
+use Sphp\Html\Layout\Div;
+use Sphp\Html\Forms\Form;
 
 /**
  * The Controller class
@@ -74,7 +74,7 @@ class Controller {
   }
 
   private function buildForm() {
-    $form = new ContainerForm('/feeds', 'get');
+    $form = new Form('/feeds', 'get');
     $tb = new ToolBar('RSS feed selection tools');
     $tb->addCssClass('m-2');
     $formT = new Views\FeedSelectionsFormView();
@@ -82,7 +82,7 @@ class Controller {
     $tb->appendInputGroup($s);
     $s1 = $formT->buildItemCountMenu($this->viewData->getSliceSizes(), $this->viewData->getCurrentSliceSize())->addCssClass('me-1 mb-1');
     $tb->appendInputGroup($s1);
-    $submitter = new \Sphp\Html\Forms\Buttons\Submitter('<i class="fas fa-search"></i> <strong>FIND</strong>');
+    $submitter = new \Sphp\Html\Forms\Buttons\SubmitButton('<i class="fas fa-search"></i> <strong>FIND</strong>');
     $submitter->addCssClass('btn-success');
     $tb->appendButton($submitter)->addCssClass('mb-1');
     $form->append($tb);

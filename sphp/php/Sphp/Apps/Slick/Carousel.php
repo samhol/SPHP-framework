@@ -13,8 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Apps\Slick;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\Multimedia\VideoPlayer;
-use Sphp\Foundation\Sites\Media\ResponsiveEmbed;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Attributes\JsonAttribute;
 
 /**
@@ -27,7 +26,10 @@ use Sphp\Html\Attributes\JsonAttribute;
  */
 class Carousel extends AbstractComponent {
 
-  private $slides = [];
+  /**
+   * @var Div[]
+   */
+  private array $slides = [];
 
   /**
    * Constructor
@@ -52,7 +54,7 @@ class Carousel extends AbstractComponent {
       $this->attributes()
               ->setInstance(new JsonAttribute('data-slick', $props))->forceVisibility('data-slick');
     } else {
-       $this->attributes()->getAttribute('data-slick')->setValue($props);
+      $this->attributes()->getAttribute('data-slick')->setValue($props);
     }
     return $this;
   }
@@ -66,28 +68,22 @@ class Carousel extends AbstractComponent {
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
    *
-   * @param  Slide $slide
+   * @param  Div $slide
    * @return $this for a fluent interface
    */
-  public function append(Slide $slide) {
+  public function append(Div $slide) {
     $this->slides[] = $slide;
     return $this;
   }
 
   /**
-   * Appends slide(s) to the orbit
+   * Appends a new HTML slide component
    *
-   * **Notes:**
-   *
-   * 1. `mixed $slides` can be of any type that converts to a PHP string
-   * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
-   * 3. All items of an array are treated according to note (2)
-   *
-   * @param  mixed $html
-   * @return $this for a fluent interface
+   * @param  string $content 
+   * @return Div appended slide
    */
-  public function appendHtml($html): DivSlide {
-    $slide = new DivSlide($html);
+  public function appendSlide(mixed $content): Div {
+    $slide = new Div($content);
     $this->append($slide);
     return $slide;
   }
@@ -98,8 +94,8 @@ class Carousel extends AbstractComponent {
    * @param  string $md 
    * @return DivSlide appended instance
    */
-  public function appendMd(string $md): DivSlide {
-    $slide = new DivSlide();
+  public function appendMd(string $md): Div {
+    $slide = new Div();
     $slide->appendMarkdown($md);
     $this->append($slide);
     return $slide;
@@ -111,67 +107,16 @@ class Carousel extends AbstractComponent {
    * @param  string $path 
    * @return DivSlide appended instance
    */
-  public function appendMdFile(string $path): DivSlide {
-    $slide = new DivSlide();
+  public function appendMarkdownFile(string $path): Div {
+    $slide = new Div();
     $slide->appendMarkdownFile($path);
     $this->append($slide);
     return $slide;
   }
 
-  /**
-   * Appends a new figure slide component
-   *
-   * @param  string|Img $img the image path or the image component
-   * @param  mixed|mixed[] $caption the caption of the slide
-   * @return FigureSlide appended instance
-   */
-  public function appendFigure($img, $caption = null): FigureSlide {
-    $slide = new FigureSlide($img, $caption);
-    $this->append($slide);
-    return $slide;
-  }
-
-  /**
-   * Appends a new embed slide
-   *
-   * @param  VideoPlayer|FlexVideo $player the image path or the image component
-   * @return ResponsiveEmbedSlide appended embeddable slide instance
-   */
-  public function appendEmbeddable($player): ResponsiveEmbedSlide {
-    $slide = new ResponsiveEmbedSlide($player);
-    $this->append($slide);
-    return $slide;
-  }
-
-  /**
-   * Appends a new slide component containing a {@link YoutubePlayer} instance
-   * 
-   * @param  string $videoId the id of the YouTube video or playlist
-   * @param  bool $isPlaylist whether the videoid is a playlist or a single video
-   * @return ResponsiveEmbedSlide appended YouTube video slide instance
-   */
-  public function appendYoutubeVideo($videoId, $isPlaylist = false): ResponsiveEmbedSlide {
-    return $this->appendEmbeddable(ResponsiveEmbed::youtube($videoId, $isPlaylist));
-  }
-
-  /**
-   * Appends a new slide component containing a Vimeo video
-   * 
-   * @param  string $videoId the id of the Vimeo video
-   * @return ResponsiveEmbedSlide appended Vimeo video slide instance
-   */
-  public function appendVimeoVideo($videoId): ResponsiveEmbedSlide {
-    return $this->appendEmbeddable(ResponsiveEmbed::vimeo($videoId));
-  }
-
-  /**
-   * Appends a new slide component containing a DailyMotionPlayer instance
-   * 
-   * @param  string $videoId the id of the DailyMotion video
-   * @return ResponsiveEmbedSlide appended DailyMotion video slide instance
-   */
-  public function appendDailymotionVideo($videoId): ResponsiveEmbedSlide {
-    return $this->appendEmbeddable(ResponsiveEmbed::dailymotion($videoId));
+  public function setSlidesToShow(?int $show) {
+    $this->setProperties('slidesToShow', $show);
+    return $this;
   }
 
   public function contentToString(): string {

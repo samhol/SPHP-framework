@@ -11,14 +11,13 @@ declare(strict_types=1);
  */
 
 namespace Sphp\Bootstrap\Layout;
- 
+
 use Sphp\Bootstrap\Exceptions\BootstrapException;
 use Sphp\Stdlib\Strings;
 use IteratorAggregate;
 use Traversable;
 use Sphp\Html\ContentIterator;
-use Sphp\Stdlib\Arrays; 
-
+use Sphp\Stdlib\Arrays;
 
 /**
  * The RowColumn class

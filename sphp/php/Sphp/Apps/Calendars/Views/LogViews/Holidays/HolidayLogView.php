@@ -14,7 +14,7 @@ namespace Sphp\Apps\Calendars\Views\LogViews\Holidays;
 
 use Sphp\Apps\Calendars\Diaries\DiaryDate;
 use Sphp\Apps\Calendars\Diaries\Holidays\BirthDay;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Html\Lists\Ul;
 use Sphp\Apps\Calendars\Diaries\BasicLog;
 

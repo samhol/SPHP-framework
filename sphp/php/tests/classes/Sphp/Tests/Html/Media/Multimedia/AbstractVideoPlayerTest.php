@@ -50,7 +50,7 @@ class AbstractVideoPlayerTest extends TestCase {
    */
   public function testSourceTypes(URL $url): void {
     $player = $this->createObject($url);
-    $urlCopy = $player->getUrlCopy();
+    $urlCopy = $player->createPlayerUrl();
     $this->assertEquals($url, $urlCopy);
     $this->assertNotSame($url, $urlCopy);
     $iframe1 = $player->createIframe();
@@ -59,71 +59,29 @@ class AbstractVideoPlayerTest extends TestCase {
     $this->assertNotSame($iframe1, $iframe2);
   }
 
-  public function validOptions(): array {
-    $data = [];
-    $data[] = ['foo', true];
-    $data[] = ['foo', false];
-    $data[] = ['foo', 0];
-    $data[] = ['foo', 'bar'];
-    return $data;
+  public function validOptions(): iterable {
+    yield ['foo', true];
+    yield ['foo', false];
+    yield ['foo', 0];
+    yield ['foo', 3.1415];
+    yield ['foo', 'bar'];
   }
 
   /**
    * @dataProvider validOptions
-   */
-  public function testSetOptions(string $name, $value): void {
-    $player = $this->createObject();
-    $this->assertSame($player, $player->setOption($name, $value));
-    $this->assertSame($value, $player->getUrlCopy()->getQuery()->getParameter($name));
-    $this->assertSame($player, $player->setOption($name, null));
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter($name));
-    $this->assertSame(null, $player->getUrlCopy()->getQuery()->getParameter($name));
-  }
-
-  public function invalidOptions(): array {
-    $data = [];
-    $data[] = ['object', new \stdClass()];
-    $data[] = ['array', []];
-    return $data;
-  }
-
-  /**
-   * @dataProvider invalidOptions
    *
    * @param  string $name
-   * @param  mixed $value
+   * @param  string|int|float|bool|null $value
    * @return void
    */
-  public function testSetInvalidOptions(string $name, $value): void {
+  public function testSetOptions(string $name, string|int|float|bool|null $value): void {
     $player = $this->createObject();
-    $this->expectException(VideoPlayerException::class);
-    $player->setOption($name, $value);
-  }
-
-  /**
-   * @return AbstractVideoPlayer
-   */
-  public function testAutoplay(): AbstractVideoPlayer {
-    $player = $this->createObject();
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('autoplay'));
-    $this->assertSame($player, $player->autoplay(true));
-    $this->assertEquals('1', $player->getUrlCopy()->getQuery()->getParameter('autoplay'));
-    $this->assertSame($player, $player->autoplay(false));
-    $this->assertEquals('0', $player->getUrlCopy()->getQuery()->getParameter('autoplay'));
-    return $player;
-  }
-
-  /**
-   * @return AbstractVideoPlayer
-   */
-  public function testLoop(): AbstractVideoPlayer {
-    $player = $this->createObject();
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('loop'));
-    $this->assertSame($player, $player->loop(true));
-    $this->assertEquals('1', $player->getUrlCopy()->getQuery()->getParameter('loop'));
-    $this->assertSame($player, $player->loop(false));
-    $this->assertEquals('0', $player->getUrlCopy()->getQuery()->getParameter('loop'));
-    return $player;
+    $this->assertSame($player, $player->setOption($name, $value));
+    $expected = is_bool($value) ? (int) $value : $value;
+    $this->assertSame($expected, $player->createPlayerUrl()->getQuery()->getParameter($name));
+    $this->assertSame($player, $player->setOption($name, null));
+    $this->assertFalse($player->createPlayerUrl()->getQuery()->hasParameter($name));
+    $this->assertSame(null, $player->createPlayerUrl()->getQuery()->getParameter($name));
   }
 
   public function sizeParameters(): array {
@@ -149,17 +107,15 @@ class AbstractVideoPlayerTest extends TestCase {
   /**
    * @dataProvider sizeParameters
    */
-  public function testLazy(): void {
+  public function testSetLoading(): void {
     $player = $this->createObject();
-    $this->assertFalse($player->isLazy());
-    $this->assertNotInstanceOf(LazyIframe::class, $notLazy = $player->createIframe());
-    $this->assertSame($player, $player->setLazy(true));
-    $this->assertTrue($player->isLazy());
-    $this->assertInstanceOf(LazyIframe::class, $lazy = $player->createIframe());
+    $this->assertFalse($player->createIframe()->attributeExists('loading'));
+    $this->assertSame($player, $player->setLoading('lazy'));
+    $this->assertSame('lazy', $player->createIframe()->getAttribute('loading'));
   }
 
   public function testOutput(): void {
-    $lazyPlayer = $this->createObject()->setLazy();
+    $lazyPlayer = $this->createObject()->setLoading('eager');
     $lazyFrame = $lazyPlayer->createIframe();
     $this->assertStringContainsString($lazyFrame->getHtml(), $lazyPlayer->getHtml());
     $player = $this->createObject();
@@ -183,41 +139,6 @@ class AbstractVideoPlayerTest extends TestCase {
     $data[] = ['foo', 0];
     $data[] = ['foo', 'bar'];
     return $data;
-  }
-
-  /**
-   * @dataProvider validIframeAttributes
-   * 
-   * @param  string $name
-   * @param  mixed $value
-   */
-  public function testSetIframeAttribute(string $name, $value): void {
-    $player = $this->createObject();
-    $this->assertSame($player, $player->setIframeAttribute($name, $value));
-    $this->assertSame($value, $player->createIframe()->getAttribute($name));
-    $this->assertSame($player, $player->setIframeAttribute($name, null));
-    $this->assertFalse($player->createIframe()->attributeExists($name));
-  }
-
-  public function invalidIframeAttributes(): array {
-    $data = [];
-    $data[] = ['object', new \stdClass()];
-    $data[] = ['array', []];
-    $data[] = ['src', 'foo'];
-    return $data;
-  }
-
-  /**
-   * @dataProvider invalidIframeAttributes
-   *
-   * @param  string $name
-   * @param  mixed $value
-   * @return void
-   */
-  public function testSetInvalidIframeAttributes(string $name, $value): void {
-    $player = $this->createObject();
-    $this->expectException(VideoPlayerException::class);
-    $player->setIframeAttribute($name, $value);
   }
 
 }

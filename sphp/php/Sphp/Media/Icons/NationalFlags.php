@@ -12,9 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Media\Icons;
 
-use Sphp\Media\Image\SvgLoader;
-use Sphp\Media\Image\Svg;
-use Sphp\Html\Media\Img;
+use Sphp\Html\Media\Pictures\Svg;
+use Sphp\Html\Media\Pictures\Img;
 
 /**
  * Implementation of NationalFlags
@@ -35,19 +34,19 @@ class NationalFlags {
   }
 
   public function getFlagOf(string $countryCode): Svg {
-    return SvgLoader::instance()->fileToObject("{$this->rootFolder}{$countryCode}.svg");
+    return Svg::fromFile("{$this->rootFolder}{$countryCode}.svg");
   }
 
   public function img(string $countryCode): Img {
- 
+
     $img = new Img("/svg-app/flags/$countryCode.svg", $countryCode);
     return $img;
   }
-
 
   public function imgFromISO3166(string $countryCode): Img {
     $code = strtolower($countryCode);
     $img = new Img("/countries-app/flags/$code.svg", $countryCode);
     return $img;
   }
+
 }

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Database;
 
+use Sphp\Database\Exceptions\InvalidStateException;
+
 /**
  * An abstract implementation of a `DELETE` statement
  *
@@ -23,10 +25,8 @@ abstract class AbstractDelete extends AbstractConditionalStatement implements De
 
   /**
    * the target table
-   *
-   * @var string
    */
-  private $table;
+  private string $table;
 
   /**
    * Sets the table from where the data is to be deleted
@@ -39,8 +39,19 @@ abstract class AbstractDelete extends AbstractConditionalStatement implements De
     return $this;
   }
 
-  public function statementToString(): string {
-    return "DELETE FROM `$this->table`" . $this->conditionsToString();
+  public function isValid(): bool {
+    return isset($this->table);
+  }
+
+  public function getQueryString(): string {
+    if (!$this->isValid()) {
+      throw new InvalidStateException('DELETE query requires atleast a table name');
+    }
+    $out = "DELETE FROM $this->table";
+    if ($this->where->notEmpty()) {
+      $out .= " $this->where";
+    }
+    return $out;
   }
 
   public function affectRows(): int {

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation\Sites\Containers\OffCanvas;
 
-use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\ContainerTag;
 use Sphp\Foundation\Sites\Controllers\CloseButton;
 use Sphp\Html\Component;
 use Sphp\Foundation\Sites\Controllers\MenuButton;
@@ -28,7 +28,7 @@ use Sphp\Foundation\Sites\Controllers\MenuButton;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class BasicOffCanvasPane extends AbstractContainerTag implements OffCanvasPane {
+class BasicOffCanvasPane extends ContainerTag implements OffCanvasPane {
 
   /**
    * @var CloseButton

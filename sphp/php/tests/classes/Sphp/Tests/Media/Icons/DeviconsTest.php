@@ -11,7 +11,7 @@
 namespace Sphp\Tests\Media\Icons;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Media\Icons\Devicons; 
+use Sphp\Media\Icons\Devicons;
 
 /**
  * Description of DeviconsTest
@@ -34,11 +34,12 @@ class DeviconsTest extends TestCase {
     $this->assertSame('i', $i->getTagName());
     return $factory;
   }
+
   /**
    * @depends testInvoking
    * @param   Devicons $factory
    */
-  public function testSetColored(Devicons $factory) { 
+  public function testSetColored(Devicons $factory) {
     $this->assertFalse($factory('devicon-github-plain')->createTag()->hasCssClass('colored'));
     $this->assertSame($factory, $factory->setColored(true));
     $this->assertTrue($factory('devicon-github-plain')->createTag()->hasCssClass('colored'));

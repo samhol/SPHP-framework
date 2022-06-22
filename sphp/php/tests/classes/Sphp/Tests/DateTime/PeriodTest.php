@@ -15,7 +15,7 @@ namespace Sphp\Tests\DateTime;
 use PHPUnit\Framework\TestCase;
 use Sphp\DateTime\Period;
 use Sphp\DateTime\ImmutableDateTime;
-use Sphp\DateTime\Intervals;
+use Sphp\DateTime\Interval;
 
 class PeriodTest extends TestCase {
 
@@ -54,7 +54,7 @@ class PeriodTest extends TestCase {
     $this->assertEquals(ImmutableDateTime::from('2012-01-01T19:00:00Z'), $period->getStartDate());
 
     $this->assertSame('2012-01-06 19:00:00', $period->getEndDate()->format('Y-m-d H:i:s'));
-    $this->assertEquals(Intervals::fromString('P1D'), $period->getInterval());
+    $this->assertEquals(Interval::fromString('P1D'), $period->getInterval());
   }
 
   public function isInPeriod(Period $p, $date): void {

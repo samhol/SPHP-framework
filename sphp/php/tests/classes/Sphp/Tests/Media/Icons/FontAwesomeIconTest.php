@@ -8,10 +8,10 @@
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Tests\Html\Media\Icons;
+namespace Sphp\Tests\Media\Icons;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Media\Icons\FontAwesomeIcon;
+use Sphp\Media\Icons\FontAwesomeIcon;
 
 /**
  * Implementation of FontAwesomeTest
@@ -21,15 +21,15 @@ use Sphp\Html\Media\Icons\FontAwesomeIcon;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class FontAwesomeIconTest extends TestCase {
+class FontAwesomeIconTest1 extends TestCase {
 
   /**
    * @return FontAwesomeIcon
    */
   public function testConstructor(): FontAwesomeIcon {
     $icon = new FontAwesomeIcon('fas fa-tree', 'foo bar');
-    $this->assertTrue($icon->cssClasses()->contains('fas fa-tree'));
-    $this->assertSame('i', $icon->getTagName());
+    $this->assertTrue($icon->createTag()->hasCssClass('fas fa-tree'));
+    $this->assertSame('i', $icon->createTag()->getTagName());
     return $icon;
   }
 
@@ -39,11 +39,11 @@ class FontAwesomeIconTest extends TestCase {
    * @return  FontAwesomeIcon
    */
   public function testSetFixedWidth(FontAwesomeIcon $icon): FontAwesomeIcon {
-    $this->assertFalse($icon->cssClasses()->contains('fa-fw'));
+    $this->assertFalse($icon->createTag()->hasCssClass('fa-fw'));
     $this->assertSame($icon, $icon->fixedWidth(true));
-    $this->assertTrue($icon->cssClasses()->contains('fa-fw'));
+    $this->assertTrue($icon->createTag()->hasCssClass('fa-fw'));
     $this->assertSame($icon, $icon->fixedWidth(false));
-    $this->assertFalse($icon->cssClasses()->contains('fa-fw'));
+    $this->assertFalse($icon->createTag()->hasCssClass('fa-fw'));
     return $icon;
   }
 
@@ -53,15 +53,15 @@ class FontAwesomeIconTest extends TestCase {
    * @return  FontAwesomeIcon
    */
   public function testPull(FontAwesomeIcon $icon): FontAwesomeIcon {
-    $this->assertFalse($icon->cssClasses()->contains('fa-pull-left', 'fa-pull-right'));
+    $this->assertFalse($icon->createTag()->hasCssClass('fa-pull-left', 'fa-pull-right'));
     $this->assertSame($icon, $icon->pull('left'));
-    $this->assertTrue($icon->cssClasses()->contains('fa-pull-left'));
-    $this->assertFalse($icon->cssClasses()->contains('fa-pull-right'));
+    $this->assertTrue($icon->createTag()->hasCssClass('fa-pull-left'));
+    $this->assertFalse($icon->createTag()->hasCssClass('fa-pull-right'));
     $this->assertSame($icon, $icon->pull('right'));
-    $this->assertTrue($icon->cssClasses()->contains('fa-pull-right'));
-    $this->assertFalse($icon->cssClasses()->contains('fa-pull-left'));
+    $this->assertTrue($icon->createTag()->hasCssClass('fa-pull-right'));
+    $this->assertFalse($icon->createTag()->hasCssClass('fa-pull-left'));
     $this->assertSame($icon, $icon->pull(null));
-    $this->assertFalse($icon->cssClasses()->contains('fa-pull-left', 'fa-pull-right'));
+    $this->assertFalse($icon->createTag()->hasCssClass('fa-pull-left', 'fa-pull-right'));
     return $icon;
   }
 
@@ -84,15 +84,15 @@ class FontAwesomeIconTest extends TestCase {
    */
   public function testSetSize(string $size): void {
     $icon = new FontAwesomeIcon('fas fa-tree', 'foo bar');
-    $this->assertFalse($icon->cssClasses()->contains("fa-$size"));
+    $this->assertFalse($icon->createTag()->hasCssClass("fa-$size"));
     $this->assertSame($icon, $icon->setSize("fa-$size"));
-    $this->assertTrue($icon->cssClasses()->contains("fa-$size"));
+    $this->assertTrue($icon->createTag()->hasCssClass("fa-$size"));
     $this->assertSame($icon, $icon->setSize(null));
-    $this->assertFalse($icon->cssClasses()->contains("fa-$size"));
+    $this->assertFalse($icon->createTag()->hasCssClass("fa-$size"));
     $this->assertSame($icon, $icon->setSize($size));
-    $this->assertTrue($icon->cssClasses()->contains("fa-$size"));
+    $this->assertTrue($icon->createTag()->hasCssClass("fa-$size"));
     $this->assertSame($icon, $icon->setSize(null));
-    $this->assertFalse($icon->cssClasses()->contains("fa-$size"));
+    $this->assertFalse($icon->createTag()->hasCssClass("fa-$size"));
   }
 
   /**

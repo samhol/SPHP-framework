@@ -15,7 +15,7 @@ namespace Sphp\Tests\Html;
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Body;
 use Sphp\Html\Scripts\ScriptsContainer;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 use Sphp\Html\Scripts\InlineScript;
 
 /**

@@ -25,6 +25,8 @@ use Sphp\Html\Media\Multimedia\Embed;
  */
 class EmbedTest extends TestCase {
 
+  use \Sphp\Tests\Html\Media\SizeableMediaTestTrait;
+
   /**
    * @return string[]
    */
@@ -44,6 +46,7 @@ class EmbedTest extends TestCase {
     $embed = new Embed($src);
     $this->assertSame($src, $embed->getSrc());
     $this->assertSame($src, $embed->getAttribute('src'));
+    $this->assertSame('embed', $embed->getTagName());
     return $embed;
   }
 

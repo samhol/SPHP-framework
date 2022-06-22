@@ -29,11 +29,12 @@ interface BooleanInput extends Input {
    * @link   https://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked(bool $checked = true);
+
   /**
    * Checks if the choice is made
    *
    * @return bool true if chosen, false otherwise
    * @link   https://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function isChecked():bool;
+  public function isChecked(): bool;
 }

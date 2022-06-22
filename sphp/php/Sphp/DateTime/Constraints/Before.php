@@ -24,9 +24,6 @@ use Sphp\DateTime\Date;
  */
 class Before implements DateConstraint {
 
-  /**
-   * @var Date 
-   */
   private Date $limit;
 
   /**

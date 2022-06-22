@@ -23,7 +23,7 @@ use Sphp\Html\Forms\{
 /**
  * Class InputFactory
  *
- * @method static \Sphp\Html\Forms\ContainerForm form(string $action = null, string $method = null, $content = null) creates a &lt;form&gt; object
+ * @method static \Sphp\Html\Forms\Form form(string $action = null, string $method = null, $content = null) creates a &lt;form&gt; object
  * @method static \Sphp\Html\Forms\Fieldset fieldset(mixed $content = null, $for = null) creates a &lt;fieldset&gt; object
  * @method static \Sphp\Html\Forms\Label label(mixed $content = null, $for = null) creates a &lt;label&gt; object
  * @method static \Sphp\Html\Forms\Inputs\HiddenInput hidden(mixed $content = null, $for = null) creates a &lt;input type=hidden&gt; object
@@ -49,13 +49,14 @@ abstract class InputFactory {
       'legend' => Legend::class,
       'fieldset' => Fieldset::class,
       
+      'file' => FileInput::class,
       'hidden' => HiddenInput::class,
       'text' => TextInput::class,
       'search' => SearchInput::Class,
       'email' => EmailInput::class,
       'password' => PasswordInput::class,
       'radio' => Radiobox::class,
-      'checkbox' => Forms\Inputs\Checkbox::class,
+      'checkbox' => Checkbox::class,
       'number' => NumberInput::class,
       'reset' => Buttons\ResetInput::class,
       'submit' => Buttons\SubmitInput::class,

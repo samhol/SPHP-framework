@@ -89,8 +89,8 @@ class CsvTableBuilderTest extends TestCase {
 
   public function buildParams(): array {
     $data = [];
-    $data[] = [true, LineNumberer::LEFT, 0, 10];
-    $data[] = [false, LineNumberer::LEFT, 2, 10];
+    $data[] = [true, LineNumberer::LEFT, 0, 9];
+    $data[] = [false, LineNumberer::LEFT, 2, 5];
     return $data;
   }
 

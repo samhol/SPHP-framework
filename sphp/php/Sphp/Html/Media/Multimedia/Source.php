@@ -40,7 +40,7 @@ class Source extends EmptyTag implements MultimediaSource {
    * @link   https://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   https://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function __construct(string $src, string $type = null) {
+  public function __construct(string $src, ?string $type = null) {
     parent::__construct('source');
     if ($src !== null) {
       $this->setSrc($src);
@@ -58,7 +58,7 @@ class Source extends EmptyTag implements MultimediaSource {
    * @param  string|null $type the media type of the media resource or null for none
    * @return $this for a fluent interface
    */
-  public function setSrc(string $src, string $type = null) {
+  public function setSrc(string $src, ?string $type = null) {
     if ($type === null) {
       $type = Mime::getMime($src);
     }
@@ -82,7 +82,7 @@ class Source extends EmptyTag implements MultimediaSource {
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function setType(string $type = null) {
+  public function setType(?string $type = null) {
     $this->attributes()->setAttribute('type', $type);
     return $this;
   }

@@ -23,24 +23,9 @@ use Sphp\DateTime\Exceptions\InvalidArgumentException;
  */
 class Time {
 
-  /**
-   * @var int
-   */
   private int $h;
-
-  /**
-   * @var int
-   */
   private int $m;
-
-  /**
-   * @var float
-   */
   private float $s;
-
-  /**
-   * @var int
-   */
   private int $u = 0;
 
   /**
@@ -102,14 +87,15 @@ class Time {
    * @return $this for a fluent interface
    * @throws InvalidArgumentException if 0 <= $seconds < 60
    */
-  public function setSeconds(float $seconds) {
+  public function setSeconds(float|int $seconds) {
     if (0 > $seconds || $seconds >= 60) {
       throw new InvalidArgumentException("Seconds must be between 0-59 ($seconds given)");
     }
     $this->s = $seconds;
-
     $decimal = strrchr((string) $this->s, '.');
-    $this->u = (int) str_replace('.', '', $decimal);
+    if ($decimal !== false) {
+      $this->u = (int) str_replace('.', '', $decimal);
+    }
     return $this;
   }
 

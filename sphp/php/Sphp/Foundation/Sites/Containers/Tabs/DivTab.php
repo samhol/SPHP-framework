@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Implements a Tab for Tabs

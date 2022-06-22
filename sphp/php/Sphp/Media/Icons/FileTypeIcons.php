@@ -41,7 +41,7 @@ class FileTypeIcons {
     return $this;
   }
 
-  public function createIconFor($fileOrExt): IconObject {
+  public function createIconFor(string|SplFileInfo $fileOrExt): IconObject {
     $name = $this->getIconNameFor($fileOrExt);
     try {
       $if = new IconFactory();
@@ -58,7 +58,7 @@ class FileTypeIcons {
    * @param  string $screenReaderText
    * @return IconObject new icon object
    */
-  public function __invoke($fileType, string $screenReaderText = null): IconObject {
+  public function __invoke(string|SplFileInfo $fileType, ?string $screenReaderText = null): IconObject {
     return $this->createIconFor($fileType, $screenReaderText);
   }
 
@@ -78,7 +78,7 @@ class FileTypeIcons {
     return $iconName;
   }
 
-  public function getIconNameFor($fileOrExt): ?string {
+  public function getIconNameFor(string|SplFileInfo $fileOrExt): ?string {
     $iconName = null;
     if ($fileOrExt instanceof SplFileInfo) {
       $iconName = $this->getIconForFileObject($fileOrExt);
@@ -94,7 +94,7 @@ class FileTypeIcons {
   }
 
   public static function defaultSet(): FileTypeIcons {
-    $data = ParseFactory::fromFile(__DIR__ . '/../../../../config/file-icon-map.yml');
+    $data = ParseFactory::fromFile(\Sphp\FILE_ICON_MAP);
     $map = [];
     foreach ($data as $group) {
       $iconName = $group['default'];

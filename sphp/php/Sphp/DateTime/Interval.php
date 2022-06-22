@@ -31,7 +31,7 @@ class Interval extends DateInterval implements Duration {
    * @param string $interval an interval specification.
    */
   public function __construct(string $interval = 'P0D') {
-    if (Strings::startsWith($interval, '-')) {
+    if (str_starts_with($interval, '-')) {
       $str = Strings::trimLeft($interval, '-');
       parent::__construct($str);
       $this->invert = true;
@@ -147,7 +147,7 @@ class Interval extends DateInterval implements Duration {
    * @return int
    */
   public function compareTo(Duration $interval): int {
-    $i = Intervals::fromDateInterval($interval);
+    $i = static::fromDateInterval($interval);
     return $this->toSeconds() <=> $i->toSeconds();
   }
 
@@ -169,7 +169,7 @@ class Interval extends DateInterval implements Duration {
   }
 
   public function addFromString(string $time): Duration {
-    return $this->add(Intervals::create($time));
+    return $this->add(static::create($time));
   }
 
   public function addSeconds(float $seconds): Duration {
@@ -208,13 +208,83 @@ class Interval extends DateInterval implements Duration {
    * @throws InvalidArgumentException
    */
   public static function createFromDateString($input): Interval {
-    $old = error_reporting(null);
-    $phpInterval = DateInterval::createFromDateString($input);
-    error_reporting($old);
-    if ($phpInterval === false) {
+    // $old = error_reporting(null);
+    try {
+      $phpInterval = DateInterval::createFromDateString($input);
+    } catch (\Throwable $ex) {
+      $phpInterval = false;
+      throw new InvalidArgumentException('Unknown or bad Interval format as input', $ex->getCode(), $ex);
+    }
+    return static::FromDateInterval($phpInterval);
+  }
+
+  /**
+   * Parses a new instance of interval from mixed input
+   * 
+   * @param  mixed $input input for a new interval
+   * @return Interval new instance
+   * @throws InvalidArgumentException
+   */
+  public static function create($input): Interval {
+    if ($input instanceof Interval) {
+      $interval = clone $input;
+    } else if ($input instanceof DateInterval) {
+      $interval = static::fromDateInterval($input);
+    } else if (is_numeric($input)) {
+      $interval = static::fromSeconds((float) $input);
+    } else if (is_string($input)) {
+      $interval = static::fromString($input);
+    } else {
       throw new InvalidArgumentException('Cannot parse Interval from given input');
     }
-    return Intervals::FromDateInterval($phpInterval);
+    return $interval;
+  }
+
+  /**
+   * Creates a new instance of interval from a string
+   * 
+   * @param  string $input
+   * @return Interval new instance
+   * @throws InvalidArgumentException
+   */
+  public static function fromString(string $input): Interval {
+    if (Strings::match($input, "/^([0-9]+):([0-5][0-9])(:[0-5][0-9])?$/")) {
+      $parts = explode(':', $input);
+      $dateint = 'PT' . $parts[0] . 'H' . $parts[1] . 'M' . $parts[2] . "S";
+      //echo "$dateint\n";
+      $interval = new Interval($dateint);
+    } else if (str_starts_with($input, "P")) {
+      $interval = new Interval($input);
+    } else {
+      $interval = static::createFromDateString($input);
+    }
+    return $interval;
+  }
+
+  /**
+   * Creates a new instance of interval from a numeric value
+   * 
+   * @param  float $seconds 
+   * @return Interval new instance
+   */
+  public static function fromSeconds(float $seconds): Interval {
+    $interval = new Interval;
+    return $interval->addSeconds($seconds);
+  }
+
+  /**
+   * 
+   * @param  DateInterval $input
+   * @return Interval new instance
+   */
+  public static function fromDateInterval(DateInterval $input): Interval {
+    $vars = get_object_vars($input);
+    //var_dump($vars);
+    $output = new Interval;
+    foreach ($vars as $key => $value) {
+      $output->$key = $value;
+    }
+    return $output;
   }
 
 }

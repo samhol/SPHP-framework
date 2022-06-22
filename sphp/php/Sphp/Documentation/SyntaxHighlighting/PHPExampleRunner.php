@@ -16,8 +16,6 @@ use Sphp\Html\AbstractContent;
 use Sphp\Bootstrap\Components\Accordions\ContentPane;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Html\Media\Icons\FontAwesome;
-use Sphp\Html\Span;
 use Sphp\Bootstrap\Components\Accordions\Accordion;
 use Sphp\Bootstrap\Components\Accordions\Pane;
 
@@ -50,11 +48,7 @@ class PHPExampleRunner extends AbstractContent {
   /**
    * Constructor
    *
-   * @param  string $path the file path of the presented example PHP code
-   * @param  string|null $highlightOutput the language name of the output code 
-   *         or `null` if highlighted output code should not be visible
-   * @param  bool $outputAsHtmlFlow true for showing executed HTML flow
-   * @throws RuntimeException if the code example path contains no file
+   * @param SyntaxHighlighter $hl 
    */
   public function __construct(SyntaxHighlighter $hl) {
     $this->hl = $hl;
@@ -70,13 +64,13 @@ class PHPExampleRunner extends AbstractContent {
   /**
    * 
    * @param  string $path the file path of the presented example PHP code
-   * @param  bool $highlightOutput true for highlighted program code as the 
+   * @param  string|null $highlightOutput 
    *         output presentation, false for html presentation
    * @param  bool $outputAsHtmlFlow true for showing executed HTML flow
    * @return Accordion
    * @throws RuntimeException if the code example path contains no file
    */
-  public function __invoke(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
+  public function __invoke(string $path, ?string $highlightOutput = null, bool $outputAsHtmlFlow = true) {
     $this->setPath($path)
             ->setOutpputHighlighting($highlightOutput)
             ->setHtmlFlowVisibility($outputAsHtmlFlow);
@@ -208,21 +202,6 @@ class PHPExampleRunner extends AbstractContent {
 
   public function getHtml(): string {
     return $this->buildAccordion()->getHtml();
-  }
-
-  /**
-   * Prints the PHP Example code and the preferred result
-   *
-   * @param  string $path the file path of the presented example PHP code
-   * @param  string|null $highlightOutput the language name of the output code 
-   *         or `null` if highlighted output code should not be visible
-   * @param  bool $outputAsHtmlFlow true for executed HTML result or false for no execution
-   * @throws RuntimeException if the code example path is given and contains no file
-   * @return PHPExampleRunner
-   */
-  public static function build(string $path, string $highlightOutput = null, bool $outputAsHtmlFlow = true): PHPExampleRunner {
-
-    return (new static($path, $highlightOutput, $outputAsHtmlFlow));
   }
 
 }

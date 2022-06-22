@@ -114,7 +114,7 @@ class Modal extends AbstractContent implements ClosableInterface {
    */
   public function createController($content) {
     if (!$content instanceof Component) {
-      $content = new \Sphp\Html\Span($content);
+      $content = new \Sphp\Html\Text\Span($content);
     }
     return $this->popup->createController($content);
   }

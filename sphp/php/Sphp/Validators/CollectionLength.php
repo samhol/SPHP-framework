@@ -70,7 +70,7 @@ class CollectionLength extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_array($value) && !$value instanceof \Traversable && !$value instanceof \Countable) {
       $this->getErrors()->appendMessageFromTemplate(self::INVALID);

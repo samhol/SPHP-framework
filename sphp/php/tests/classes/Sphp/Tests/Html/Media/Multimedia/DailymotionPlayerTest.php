@@ -26,51 +26,12 @@ use Sphp\Html\Media\Multimedia\Exceptions\VideoPlayerException;
  */
 class DailymotionPlayerTest extends TestCase {
 
-  public function sourceData(): array {
-    $data = [];
-    $data[] = ['x7tgad0'];
-    $data[] = ['x2kjiom'];
-    return $data;
-  }
+  use MediaPlayerTestTrait;
 
-  /**
-   * @dataProvider sourceData
-   * 
-   * @param string $id
-   */
-  public function testConstructor(string $id): void {
+  public function testConstructor(): DailyMotionPlayer {
+    $id = 'foo';
     $player = new DailyMotionPlayer($id);
-    $iframe = $player->createIframe();
-    $url = $player->getUrlCopy();
-    $this->assertStringStartsWith("https://www.dailymotion.com/embed/video/$id", (string) $url);
-    $this->assertSame((string) $url, (string) $iframe->getSrc());
-  }
-
-  /**
-   * @return DailyMotionPlayer
-   */
-  public function testMute(): DailyMotionPlayer {
-    $player = new DailyMotionPlayer('x7tgad0');
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('mute'));
-    $this->assertSame($player, $player->mute(true));
-    $this->assertEquals('1', $player->getUrlCopy()->getQuery()->getParameter('mute'));
-    $this->assertSame($player, $player->mute(false));
-    $this->assertEquals('0', $player->getUrlCopy()->getQuery()->getParameter('mute'));
-    return $player;
-  }
-
-  /**
-   * @depends testMute
-   * 
-   * @param  DailyMotionPlayer $player
-   * @return DailyMotionPlayer
-   */
-  public function testDisplayControls(DailyMotionPlayer $player): DailyMotionPlayer {
-    $this->assertFalse($player->getUrlCopy()->getQuery()->hasParameter('controls'));
-    $this->assertSame($player, $player->displayControls(true));
-    $this->assertEquals('1', $player->getUrlCopy()->getQuery()->getParameter('controls'));
-    $this->assertSame($player, $player->displayControls(false));
-    $this->assertEquals('0', $player->getUrlCopy()->getQuery()->getParameter('controls'));
+    $this->assertEquals("https://www.dailymotion.com/embed/video/$id", (string) $player->createPlayerUrl());
     return $player;
   }
 

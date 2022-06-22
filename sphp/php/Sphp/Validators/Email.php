@@ -31,7 +31,7 @@ class Email extends AbstractValidator {
     parent::__construct($errorMessage);
   }
 
-  public function isValid($value): bool {
+  public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
       $this->getErrors()->appendMessageFromTemplate(static::INVALID);

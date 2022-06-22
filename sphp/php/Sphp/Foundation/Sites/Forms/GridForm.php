@@ -118,7 +118,7 @@ class GridForm extends AbstractForm {
    *
    * @param  mixed|Row $row the new row or the content of the new row
    * @return Row appended instance
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row): Row {
     return $this->getGrid()->append($row);
@@ -129,7 +129,7 @@ class GridForm extends AbstractForm {
    *
    * @param  mixed|Row $row the new row or the content of the new row
    * @return Row prepended instance
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row): Row {
     return $this->getGrid()->prepend($row);

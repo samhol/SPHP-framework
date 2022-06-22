@@ -23,7 +23,7 @@ use Sphp\Html\Tags;
  * @filesource
  */
 class Ajax {
- 
+
   private string $tagName;
 
   public function __construct(string $tagName = 'div') {

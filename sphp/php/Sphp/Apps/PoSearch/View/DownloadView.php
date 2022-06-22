@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Apps\PoSearch\View;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Html\Sections\Section;
+use Sphp\Html\Layout\Section;
 use Sphp\Html\Tags;
 use Sphp\Apps\PoSearch\Data\FileBrowser;
 

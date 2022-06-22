@@ -14,7 +14,7 @@ namespace Sphp\Tests\Html\Scripts;
 
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Scripts\Noscript;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Div;
 
 /**
  * Class NoscriptTest

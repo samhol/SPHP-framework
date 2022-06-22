@@ -17,8 +17,8 @@ use Sphp\DateTime\Periods;
 use Sphp\I18n\Datetime\CalendarUtils;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Lists\Ol;
-use Sphp\Html\Sections\Headings\Header;
-use Sphp\Html\Div;
+use Sphp\Html\Layout\Header;
+use Sphp\Html\Layout\Div;
 use Sphp\Bootstrap\Components\Modal;
 use Sphp\DateTime\ImmutableDate;
 

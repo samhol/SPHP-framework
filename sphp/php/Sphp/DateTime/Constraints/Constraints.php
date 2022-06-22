@@ -47,7 +47,7 @@ class Constraints extends AbstractConstraintsAggregate {
   public function __call(string $name, array $arguments): DateConstraint {
     $key = strtolower(Strings::replace($name, 'not', ''));
     $constraint = Factory::instance()->$key(...$arguments);
-    if (Strings::startsWith($name, 'not')) {
+    if (str_starts_with($name, 'not')) {
       $this->isNot($constraint);
     } else {
       $this->is($constraint);

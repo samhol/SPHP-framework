@@ -15,6 +15,8 @@ namespace Sphp\Tests\Html\Forms\Inputs\Menus;
 use PHPUnit\Framework\TestCase;
 use Sphp\Html\Forms\Inputs\Menus\Datalist;
 use Sphp\Html\Forms\Inputs\Menus\Option;
+use Sphp\Exceptions\InvalidArgumentException;
+
 /**
  * Class DatalistTest
  *
@@ -25,14 +27,37 @@ use Sphp\Html\Forms\Inputs\Menus\Option;
  */
 class DatalistTest extends TestCase {
 
-
   /**
    * @return Datalist
    */
-  public function testConstructor(): Datalist {
+  public function testEmptyConstructor(): Datalist {
     $obj = new Datalist();
     $this->assertCount(0, $obj);
     return $obj;
+  }
+
+  public function constructorData(): iterable {
+    yield [...range('a', 'c')];
+    yield [...range(1, 4)];
+    yield [
+        new Option('foo', 'select foo'),
+        'a',
+        'b',
+        2,
+        1.3
+    ];
+  }
+
+  /**
+   * @dataProvider constructorData
+   * @return void
+   */
+  public function testConstructorWithParams(string|int|float|Option ...$option): void {
+    $obj = new Datalist(...$option);
+    $this->assertCount(count($option), $obj);
+    $obj1 = new Datalist();
+    $obj1->appendData($option);
+    $this->assertEquals($obj, $obj1);
   }
 
   public function insertionData(): iterable {
@@ -57,22 +82,24 @@ class DatalistTest extends TestCase {
     $this->assertCount(count($options), $obj);
   }
 
-  /**
-   * @depends methodName testConstructor
-   * 
-   * @param  Datalist $obj
-   * @return Datalist
-   */
-  public function testAppendArray(Datalist $obj): Datalist {
-    $opts = [];
-    $opts['foo'] = 'bar';
-    $opts['bar'] = 'baz';
-    $opts['null'] = null;
-    $opts['zap'] = new Option('boo', 'splat');
-    $obj->appendData($opts);
-    $this->assertCount(4, $obj);
-    $this->assertContainsOnly(Option::class, $obj);
-    return $obj;
+  public function invelidOptionData(): iterable {
+    yield [null];
+    yield [true];
+    yield [false];
+    yield [new Datalist];
   }
-  
+
+  /**
+   * @depends testEmptyConstructor
+   * @dataProvider invelidOptionData
+   * 
+   * @param  mixed ... $data
+   * @return void
+   */
+  public function testAppendInvaliddData(mixed ... $data): void {
+    $obj = new Datalist();
+    $this->expectException(InvalidArgumentException::class);
+    $obj->appendData($data);
+  }
+
 }

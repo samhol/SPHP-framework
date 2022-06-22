@@ -14,7 +14,7 @@ namespace Sphp\Database;
 
 use Sphp\Database\Parameters\ParameterHandler;
 use Sphp\Database\Parameters\SequentialParameterHandler;
-use PDO;
+use Sphp\Database\Parameters\Parameter;
 
 /**
  * An abstract implementation of an `UPDATE` statement
@@ -26,36 +26,14 @@ use PDO;
 abstract class AbstractUpdate extends AbstractConditionalStatement implements Update {
 
   /**
-   * the table that are updated
-   *
-   * @var string
+   * the table that is updated
    */
-  private $table = '';
+  private string $table;
 
-  /**
-   * a list of column(s) to be included in the query
-   *
-   * @var array
+  /** 
+   * @var array<string, Parameter>
    */
-  private $newData;
-
-  /**
-   * a list of column(s) to be included in the query
-   *
-   * @var array
-   */
-  private $cols = [];
-
-  /**
-   * Constructor
-   * 
-   * @param PDO $db
-   * @param Clause $where
-   */
-  public function __construct(PDO $db, Clause $where = null) {
-    parent::__construct($db, $where);
-    $this->newData = new SequentialParameterHandler();
-  }
+  private array $data = [];
 
   /**
    * Sets the table(s) which are updated
@@ -69,32 +47,53 @@ abstract class AbstractUpdate extends AbstractConditionalStatement implements Up
   }
 
   /**
+   * Sets the updating data for a single column
+   * 
+   * @param  string $name the name of the column
+   * @param  mixed $value new value the of the column
+   * @param  int|null $type optional PDO parameter type for a new parameter
+   * @return $this for a fluent interface
+   */
+  public function setColumn(string $name, mixed $value, ?int $type = null) {
+    $this->data[$name] = new Parameter($value, $type);
+    return $this;
+  }
+
+  /**
    * Sets the updating data
    *
    * @param  array $data new data
    * @return $this for a fluent interface
    */
-  public function set(array $data) {
-    $this->newData = new SequentialParameterHandler($data);
-    $this->cols = array_keys($data);
+  public function setColumns(array $data) {
+    foreach ($data as $name => $value) {
+      $this->setColumn($name, $value);
+    }
     return $this;
   }
 
   public function getParams(): ParameterHandler {
-    return $this->newData->appendParams(parent::getParams());
+    $params = new SequentialParameterHandler();
+    $params->appendParams($this->data);
+    $params->appendParams($this->where->getParams());
+    return $params;
   }
 
   protected function valuesToString(): string {
-    $names = array_map(function($name) {
-      return "$name = ?";
-    }, $this->cols);
-    return implode(', ', $names);
+    $cols = array_keys($this->data);
+    return implode(' = ?, ', $cols) . ' = ?';
   }
 
-  public function statementToString(): string {
-    $query = "UPDATE `$this->table` SET {$this->valuesToString()}";
-    $query .= $this->conditionsToString();
-    return $query;
+  public function isValid(): bool {
+    return isset($this->table) && !empty($this->data);
+  }
+
+  public function getQueryString(): string {
+    $out = "UPDATE $this->table SET {$this->valuesToString()}";
+    if ($this->where->notEmpty()) {
+      $out .= " $this->where";
+    }
+    return $out;
   }
 
   public function affectRows(): int {

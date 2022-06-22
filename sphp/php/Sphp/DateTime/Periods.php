@@ -65,7 +65,7 @@ abstract class Periods {
     if ($num > 0) {
       $intervalStr = "+$intervalStr";
     }
-    $interval = Intervals::create($intervalStr);
+    $interval = Interval::create($intervalStr);
     return static::create($arguments[0], $interval, $arguments[1]);
   }
 
@@ -83,7 +83,7 @@ abstract class Periods {
       if (!is_int($length)) {
         $length = DateTimes::dateTimeImmutable($length);
       }
-      $dateTime = new \DatePeriod(DateTimes::dateTimeImmutable($start), Intervals::create($interval), $length);
+      $dateTime = new \DatePeriod(DateTimes::dateTimeImmutable($start), Interval::create($interval), $length);
       $p = new Period($dateTime);
     } catch (\Exception $ex) {
       throw new InvalidArgumentException($ex->getMessage(), $ex->getCode(), $ex);

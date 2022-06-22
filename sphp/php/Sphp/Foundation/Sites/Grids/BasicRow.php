@@ -33,7 +33,7 @@ class BasicRow extends AbstractRow {
    * 
    * @param  mixed|mixed[] $cells row columns
    * @param  string[] $layoutParams
-   * @link   https://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($cells = null, array $layoutParams = []) {
     parent::__construct('div');

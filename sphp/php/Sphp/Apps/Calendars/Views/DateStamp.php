@@ -13,8 +13,9 @@ declare(strict_types=1);
 namespace Sphp\Apps\Calendars\Views;
 
 use Sphp\Html\Tags;
-use Sphp\Html\DateTime\TimeTag;
 use Sphp\DateTime\Date;
+use Sphp\Html\Text\Time;
+
 /**
  * The DateStamp class
  *
@@ -25,13 +26,14 @@ use Sphp\DateTime\Date;
  */
 class DateStamp {
 
-  public function create(Date $date) :TimeTag{
-    $timeTag = new TimeTag($date, 'Y-m-d');
+  public function create(Date|\DateTimeInterface $date): Time {
+    $timeTag = new Time;
     $timeTag->addCssClass('sphp-date-stamp');
     $timeTag->append(Tags::span($date->format('M'))->addCssClass('month'));
     $timeTag->append(Tags::span($date->format('l'))->addCssClass('weekday'));
     $timeTag->append(Tags::span($date->format('jS'))->addCssClass('day'));
     $timeTag->append(Tags::span($date->getYear())->addCssClass('year'));
+    $timeTag->setDateTime($date, 'Y-m-d');
     return $timeTag;
   }
 

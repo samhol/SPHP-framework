@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\SimpleTag;
+use Sphp\Html\Exceptions\HtmlException;
 
 /**
  * Implementation of an HTML textarea tag
@@ -29,22 +30,12 @@ class Textarea extends SimpleTag implements ValidableInput {
    *
    * @precondition  `$rows > 0 & $cols > 0`
    * @param  string $name name attribute value
-   * @param  string $content the content of the component
-   * @param  string $rows the value of the rows attribute (visible height of a text area)
-   * @param  string $cols the value of the cols attribute (visible width of a text area)
+   * @param  string|int|float|null $content the content of the component
    * @link   https://www.w3schools.com/tags/att_textarea_name.asp name attribute
-   * @link   https://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
-   * @link   https://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
-  public function __construct(?string $name = null, $content = null, ?int $rows = null, ?int $cols = null) {
+  public function __construct(?string $name = null, string|int|float|null $content = null) {
     parent::__construct('textarea', $content);
     $this->setName($name);
-    if ($rows > 0) {
-      $this->setRows($rows);
-    }
-    if ($cols > 0) {
-      $this->setCols($cols);
-    }
   }
 
   public function disable(bool $disabled = true) {
@@ -100,8 +91,12 @@ class Textarea extends SimpleTag implements ValidableInput {
    * @param  int|null $rows the value of the rows attribute
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
+   * @throws HtmlException if the parameter has a negative value
    */
   public function setRows(?int $rows) {
+    if ($rows !== null && $rows < 1) {
+      throw new HtmlException('Rows parameter for a textarea cannot be negative or zero');
+    }
     $this->attributes()->setAttribute('rows', $rows);
     return $this;
   }
@@ -113,8 +108,12 @@ class Textarea extends SimpleTag implements ValidableInput {
    * @param  int|null $cols the value of the cols attribute
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
+   * @throws HtmlException if the parameter has a negative value
    */
   public function setCols(?int $cols) {
+    if ($cols !== null && $cols < 1) {
+      throw new HtmlException('Cols parameter for a textarea cannot be negative or zero');
+    }
     $this->attributes()->setAttribute('cols', $cols);
     return $this;
   }
@@ -128,7 +127,7 @@ class Textarea extends SimpleTag implements ValidableInput {
    *
    * @param  string|null $placeholder the value of the placeholder attribute
    * @return $this for a fluent interface
-   * @link   https://www.w3schools.com/tags/att_textarea_placeholder.asp placeholder attribute
+   * @link   https://www.w3schools.com/tags/att_placeholder.asp placeholder attribute
    */
   public function setPlaceholder(?string $placeholder) {
     $this->attributes()->setAttribute('placeholder', $placeholder);

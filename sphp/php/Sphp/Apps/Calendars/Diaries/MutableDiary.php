@@ -161,7 +161,7 @@ class MutableDiary implements Diary, Iterator, EntryContainer {
    * 
    * @return mixed the current note
    */
-  public function current() {
+  public function current(): mixed {
     return current($this->logs);
   }
 
@@ -179,7 +179,7 @@ class MutableDiary implements Diary, Iterator, EntryContainer {
    * 
    * @return mixed the key of the current note
    */
-  public function key() {
+  public function key(): mixed {
     return key($this->logs);
   }
 
