@@ -13,10 +13,8 @@ declare(strict_types=1);
 namespace Sphp\Documentation\Linkers\PHP;
 
 use Sphp\Documentation\Linkers\AbstractDocumentationLinker;
-use Sphp\Documentation\Linkers\PHP\PHPManual\ExtensionLinkerInterface;
-use Sphp\Documentation\Linkers\PHP\PHPManual\BookLinker;
+use Sphp\Documentation\Linkers\PHP\PHPManual\Books\ReferenceLinker; 
 use Sphp\Documentation\Linkers\PHP\PHPManual\LanguageReferenceLinker;
-use Sphp\Stdlib\Strings;
 use Sphp\Documentation\Linkers\ItemLinker;
 use Sphp\Documentation\Linkers\HyperlinkFactory;
 use Sphp\Documentation\Linkers\Exceptions\NonDocumentedFeatureException;
@@ -104,8 +102,9 @@ class PhpApiLinker extends AbstractDocumentationLinker implements PhpApiLinkerIn
     return new NamespaceLinker($namespace, $this->urls(), $this->cloneHyperlinkFactory());
   }
 
-  public function extensionLink(string $extName): ExtensionLinkerInterface {
-    return BookLinker::create($extName, $this->cloneHyperlinkFactory());
+  public function extensionLink(string $extName): ReferenceLinker {
+    $references = new PHPManual\Books\ExtensionDataManager(); 
+    return new ReferenceLinker( $references->getReference($extName), $this->cloneHyperlinkFactory());
   }
 
   public function languageReference(string $controlName): LanguageReferenceLinker {

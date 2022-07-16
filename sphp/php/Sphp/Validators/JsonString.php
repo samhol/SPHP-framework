@@ -26,7 +26,7 @@ class JsonString extends AbstractValidator {
    * Constructor
    */
   public function __construct() {
-    parent::__construct('Value of %s type given. String expected');
+    parent::__construct('Value of :type type given. String expected');
   }
 
   public function isValid(mixed $value): bool {
@@ -35,10 +35,10 @@ class JsonString extends AbstractValidator {
     if (is_string($value)) {
       $isValid = (null !== json_decode($value, false, 512));
       if (!$isValid) {
-        $this->getErrors()->append('Invalid syntax in JSON string');
+        $this->getMessages()->append('Invalid syntax in JSON string');
       }
     } else {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID, gettype($value));
+      $this->setError(self::INVALID);
       $isValid = false;
     }
     return $isValid;

@@ -1,0 +1,23 @@
+@use "sass:color";
+@use 'sphp';
+
+$btn-color: #d0c081;
+$btn-color-hover: color.scale($btn-color, $lightness: 60%);
+.sphp-back-to-top-button {
+  display: none;
+  position: fixed;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: $btn-color;
+  color: white;
+  cursor: pointer;
+  padding: 1rem;
+  @include sphp.border-radius(8px);
+  font-size: 1.6rem;
+  &:hover {
+    background-color: $btn-color-hover; /* Add a dark-grey background on hover */
+  }
+}

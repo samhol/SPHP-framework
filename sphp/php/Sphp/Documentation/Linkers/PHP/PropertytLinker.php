@@ -15,8 +15,6 @@ namespace Sphp\Documentation\Linkers\PHP;
 use Sphp\Documentation\Linkers\HyperlinkFactory;
 use Sphp\Reflection\PropertyReflector;
 use Sphp\Html\Navigation\A;
-use Sphp\Html\Navigation\Nav;
-use Sphp\Stdlib\Strings;
 use Sphp\Reflection\Exceptions\ReflectionException;
 use Sphp\Documentation\Linkers\Exceptions\NonDocumentedFeatureException;
 
@@ -77,7 +75,7 @@ final class PropertytLinker extends AbstractClassItemLinker {
   }
 
   public function getNavBarTitle(): string {
-    $type = Strings::convertCase($this->ref->getModifierNames(), MB_CASE_TITLE);
+    $type = mb_convert_case($this->ref->getModifierNames(), MB_CASE_TITLE);
     return "$type Property";
   }
 
@@ -94,7 +92,7 @@ final class PropertytLinker extends AbstractClassItemLinker {
   public static function create(string $class, string $property, ClassUrlGenerator $urlGen, ?HyperlinkFactory $hyperlinkFactory = null): self {
     try {
       if (str_starts_with($property, '$')) {
-        $property = Strings::replace($property, '$', '');
+        $property = str_replace('$', '', $property);
       }
       $ref = new PropertyReflector($class, $property);
       return new self($ref, $urlGen, $hyperlinkFactory);

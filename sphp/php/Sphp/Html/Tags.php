@@ -84,6 +84,7 @@ abstract class Tags {
    */
   private static $tags = array(
       'a' => Navigation\A::class,
+      'hyperlink' => Navigation\A::class,
       'base' => Head\Base::class,
       'body' => Body::class,
       /**
@@ -228,11 +229,11 @@ abstract class Tags {
    * Creates a HTML object
    *
    * @param  string $name the name of the component
-   * @param  array $arguments 
+   * @param  mixed ... $arguments 
    * @return Tag the corresponding component
    * @throws InvalidArgumentException if the tag object does not exist
    */
-  public static function create(string $name, ...$arguments): Tag {
+  public static function create(string $name, mixed...$arguments): Tag {
     if (!isset(static::$tags[$name])) {
       throw new InvalidArgumentException("Method $name does not exist");
     }

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Validators;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * Validates that the field has a non empty value
  *
@@ -39,75 +41,30 @@ namespace Sphp\Validators;
 class NotEmpty extends AbstractValidator {
 
   /**
-   * Any type
-   */
-  public const ANY_TYPE = 0b0;
-  public const STRING_TYPE = 0b1;
-  public const SCALAR_TYPE = 0b10;
-  public const ARRAY_TYPE = 0b100;
-  public const COUNTABLE_TYPE = 0b1000;
-  public const TRAVERSABLE_TYPE = 0b10000;
-
-  private int $type = self::ANY_TYPE;
-
-  /**
    * Constructor
-   *
-   * @param int $type
+   * 
    * @param string $message
    */
-  public function __construct(int $type = self::ANY_TYPE, string $message = 'Value is empty') {
+  public function __construct(string $message = 'Value is empty') {
     parent::__construct($message);
-    $this->setType($type);
-  }
-
-  public function setType(int $type) {
-    $this->type = $type;
-    return $this;
-  }
-
-  protected function isValidType($value): bool {
-    $valid = true;
-    if ($this->type === self::ANY_TYPE) {
-      return true;
-    }
-    if ($this->type === self::STRING_TYPE) {
-      $valid = is_string($value);
-    }
-    if ($this->type === self::ARRAY_TYPE) {
-      $valid = is_array($value);
-    }
-    if ($this->type === self::TRAVERSABLE_TYPE) {
-      $valid = $value instanceof \Traversable;
-    }
-    if ($this->type === self::COUNTABLE_TYPE) {
-      $valid = is_array($value) || $value instanceof \Countable;
-    }
-    if (!$valid) {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
-    }
-    return $valid;
   }
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     $valid = true;
-    if (!$this->isValidType($value)) {
-      return false;
-    }
     if ($value === null) {
       $valid = false;
-    } else if (is_string($value)) {
-      $valid = $value !== '';
     } else if (is_array($value)) {
-      $valid = !empty($value);
-    } else if ($this->type === self::TRAVERSABLE_TYPE || $value instanceof \Traversable) {
+      $valid = $value !== [];
+    } else if ($value instanceof \Traversable) {
       $valid = count(iterator_to_array($value)) > 0;
-    } else if ($this->type === self::COUNTABLE_TYPE || $value instanceof \Countable) {
+    } else if ($value instanceof \Countable) {
       $valid = count($value) > 0;
+    } else if (is_string($value) || $value instanceof \Stringable) {
+      $valid = !Strings::match((string) $value, '/^\s*$/');
     }
     if (!$valid) {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
+      $this->setError(self::INVALID);
     }
     return $valid;
   }

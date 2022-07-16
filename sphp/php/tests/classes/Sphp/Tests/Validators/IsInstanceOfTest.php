@@ -12,8 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Validators;
 
-use Sphp\Validators\IsInstanceOf;
-use Sphp\Validators\Validator;
+use Sphp\Validators\IsInstanceOf; 
 use Sphp\Exceptions\InvalidArgumentException;
 
 class IsInstanceOfTest extends ValidatorTestCase {
@@ -40,8 +39,9 @@ class IsInstanceOfTest extends ValidatorTestCase {
   }
 
   public function testConstructor() {
-    $this->assertCount(0, $this->validator->getErrors());
-    $this->assertEquals(\stdClass::class, $this->validator->getClassName());
+    $validator = $this->createValidator();
+    $this->assertCount(0, $validator->getMessages());
+    $this->assertEquals(\Iterator::class, $validator->getClassName());
   }
 
   public function testChangeWhitelist() {
@@ -56,27 +56,30 @@ class IsInstanceOfTest extends ValidatorTestCase {
    */
   public function testValidValue() {
     $this->assertTrue($this->validator->isValid(new \stdClass()));
-    $this->assertCount(0, $this->validator->getErrors());
+    $this->assertCount(0, $this->validator->getMessages());
   }
 
   /**
    */
   public function testInvalidValue() {
     $this->assertFalse($this->validator->isValid(new \ArrayIterator()));
-    $errors = $this->validator->getErrors()->toArray();
+    $errors = $this->validator->getMessages()->toArray();
     $this->assertContains('Value is not instance of stdClass', $errors);
   }
 
-  public function createValidator(): Validator {
-    return new IsInstanceOf(\stdClass::class);
+  public function createValidator(): IsInstanceOf {
+    return new IsInstanceOf(\Iterator::class);
   }
 
-  public function getInvalidValue() {
-    return new \ArrayIterator();
+  public function invalidValuesProvider(): iterable {
+    yield [new \stdClass()];
+    yield ['foo'];
+    yield [null];
   }
 
-  public function getValidValue() {
-    return new \stdClass();
+  public function validValuesProvider(): iterable {
+    yield [new \ArrayIterator()];
+    yield [new \RecursiveArrayIterator()];
   }
 
 }

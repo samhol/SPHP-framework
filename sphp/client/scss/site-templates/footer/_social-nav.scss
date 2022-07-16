@@ -1,0 +1,39 @@
+
+@mixin social-icon($name, $color: #eff) {
+  a.#{$name} {
+    @include transition(all 0.4s ease-in-out);
+    color: #eee; 
+    &:hover {
+      transform: scale(1.3);
+      $scaled: color.scale($color, $lightness: 30%);
+      $dark: color.scale($color, $lightness: 70%);
+    //$dark:  color.adjust($color, $hue: 90);
+      color: $color; 
+      svg {   
+        stroke: $dark;
+      } 
+    }
+  }
+}
+nav.social-icons {
+  a {
+    display: inline-block;
+    svg {
+      //@include transition(all 0.4s ease-in-out);
+    }
+    text-decoration: none;
+    color: #eff;
+    &:hover {
+      color: #fff; 
+      svg {   
+        stroke-width: 5;
+      } 
+    }
+  }
+  @include social-icon("facebook", #3b5998);
+  @include social-icon("whatsapp", #25D366);
+  @include social-icon("twitter", #55acee);
+  @include social-icon("github", #333);
+  @include social-icon("stack-overflow", #f48024);
+  
+}

@@ -13,8 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\OutOfBoundsException;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Datastructures\Arrayable;
+use Sphp\Exceptions\InvalidArgumentException; 
 
 /**
  * Utility class for PHP array operations
@@ -26,7 +25,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class Arrays {
+final class Arrays {
 
   /**
    * Sets the internal array pointer to the given key value pair 
@@ -244,6 +243,20 @@ abstract class Arrays {
       throw new InvalidArgumentException($ex->getMessage());
     }
     return $output;
+  }
+
+  public static function recursiveFind(array $haystack, mixed $needle): mixed {
+    $iterator = new \RecursiveArrayIterator($haystack);
+    $recursive = new \RecursiveIteratorIterator(
+            $iterator,
+            \RecursiveIteratorIterator::SELF_FIRST
+    );
+    foreach ($recursive as $key => $value) {
+      if ($key === $needle) {
+        return $value;
+      }
+    }
+    return null;
   }
 
   /**

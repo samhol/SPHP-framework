@@ -109,7 +109,7 @@ class CsvTableBuilderTest extends TestCase {
     $this->assertSame($builder, $builder->useFile('./sphp/php/tests/files/10.csv'));
     $table = $builder->build();
     $csv = new CsvFile('./sphp/php/tests/files/10.csv');
-    $csvData = $csv->getChunk($from, $to);
+    $csvData = $csv->getSlice($from, $to);
     //  $csvData = $csv->toArray();
     if ($useHead) {
       //$headings = array_shift($csvData);

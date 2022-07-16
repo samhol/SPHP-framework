@@ -17,7 +17,7 @@ use Sphp\Html\PlainContainer;
 use Sphp\Html\Forms\Inputs\Input;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Component;
-use Sphp\Html\Forms\Inputs\Menus\Select; 
+use Sphp\Html\Forms\Inputs\Menus\Select;
 use Sphp\Html\Forms\Inputs\InputFactory;
 use Sphp\Bootstrap\Exceptions\BadMethodCallException;
 
@@ -36,10 +36,6 @@ use Sphp\Bootstrap\Exceptions\BadMethodCallException;
 class InputGroup extends AbstractComponent {
 
   private PlainContainer $container;
-
-  /**
-   * @var Input
-   */
   private ?Input $input = null;
 
   /**
@@ -100,7 +96,7 @@ class InputGroup extends AbstractComponent {
   public function contentToString(): string {
     return $this->container->getHtml();
   }
- 
+
   /**
    * 
    * @param  string $name

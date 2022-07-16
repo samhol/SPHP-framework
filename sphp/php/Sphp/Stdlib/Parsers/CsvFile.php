@@ -24,7 +24,7 @@ use Sphp\Exceptions\FileSystemException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class CsvFile implements Arrayable ,IteratorAggregate{
+class CsvFile implements Arrayable, IteratorAggregate {
 
   private SplFileObject $file;
 
@@ -36,7 +36,7 @@ class CsvFile implements Arrayable ,IteratorAggregate{
   /**
    * the field enclosure character (one character only) 
    */
-  private string $enclosure = '"';
+  private string $enclosure;
 
   /**
    * the field escape character (one character only) 
@@ -65,6 +65,14 @@ class CsvFile implements Arrayable ,IteratorAggregate{
     $this->file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
   }
 
+  public function __destruct() {
+    unset($this->file);
+  }
+
+  public function count(): int {
+    return count($this->toArray());
+  }
+
   /**
    * Writes a field array as a CSV line
    * 
@@ -74,6 +82,10 @@ class CsvFile implements Arrayable ,IteratorAggregate{
   public function appendRow(array $fields) {
     $this->file->fputcsv($fields, $this->delimiter, $this->enclosure, $this->escape);
     return $this;
+  }
+
+  public function getLast(int $count): array {
+    return array_slice($this->toArray(), -$count, null, true);
   }
 
   /**
@@ -90,10 +102,10 @@ class CsvFile implements Arrayable ,IteratorAggregate{
   /**
    * 
    * @param  int $offset optional offset of the limit
-   * @param  int $count optional count of the limit
+   * @param  int|null $count optional count of the limit
    * @return string[]
    */
-  public function getChunk(int $offset = 0, int $count = -1): array {
+  public function getSlice(int $offset = 0, ?int $count = null): array {
     $this->file->rewind();
     return array_slice($this->toArray(), $offset, $count, true);
   }

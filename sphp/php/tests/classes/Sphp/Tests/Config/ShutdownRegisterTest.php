@@ -54,7 +54,7 @@ class ShutdownRegisterTest extends TestCase {
     $this->assertContains($f1, $srf->getSequence());
     $this->assertContains($f1, $srf->getSequence()->getIterator());
     $this->assertContains($f1, $srf->getSequence()->toArray());
-    $this->assertSame($srf->getSequence(), $srf->getSequence()->addCallable($f10, 10));
+    $this->assertSame($srf->getSequence(), $srf->getSequence()->enqueue($f10, 10));
     $this->expectOutputString('first');
     $srf();
     unset($srf);

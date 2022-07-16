@@ -17,77 +17,56 @@ use Sphp\Validators\Validator;
 
 class WhitelistTest extends ValidatorTestCase {
 
-  /**
-   * @var Whitelist
-   */
-  protected Whitelist $validator;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->validator = new Whitelist(['a', '0', 0], 'An illegal key found');
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->validator);
+  public function testConstructor(): void {
+    $validator = $this->createValidator();
+    $this->assertCount(0, $validator->getMessages());
+    $this->assertEquals(['a', 'b', 0], $validator->getWhitelist());
   }
 
   /**
    */
-  public function testConstructor() {
-    $this->assertCount(0, $this->validator->getErrors());
-    $this->assertEquals(['a', '0', 0], $this->validator->getWhitelist());
+  public function testChangeWhitelist(): void {
+    $validator = $this->createValidator();
+    $validator->setWhitelist([1, 2]);
+    $this->assertEquals([1, 2], $validator->getWhitelist());
+  }
+
+  public function testInvalidValue(): void {
+    $validator = $this->createValidator();
+    $this->assertFalse($validator->isValid([1 => 'foo']));
+    $this->assertCount(1, $validator->getMessages());
+    $this->assertContains('An illegal key found', $validator->getMessages());
   }
 
   /**
    */
-  public function testChangeWhitelist() {
-    $this->validator->setWhitelist([1, 2]);
-    $this->assertEquals([1, 2], $this->validator->getWhitelist());
+  public function testInvalidValueType(): void {
+    $validator = $this->createValidator();
+    $this->assertFalse($validator->isValid('a'));
+    $this->assertCount(1, $validator->getMessages());
+    $this->assertContains('Array expected', $validator->getMessages());
   }
 
   /**
    */
-  public function testValidValue() {
-    $this->assertTrue($this->validator->isValid([0 => 'foo']));
-    $this->assertCount(0, $this->validator->getErrors());
-    $this->assertTrue($this->validator->isValid(['0' => 'foo']));
-    $this->assertTrue($this->validator->isValid(['a' => 'foo']));
-    $this->assertCount(0, $this->validator->getErrors());
+  public function testNotArray(): void {
+    $validator = $this->createValidator();
+    $this->assertFalse($validator->isValid(1));
+    $this->assertContains('Array expected', $validator->getMessages());
   }
 
-  /**
-   */
-  public function testInvalidValue() {
-    $this->assertFalse($this->validator->isValid([1 => 'foo']));
-    $errors = $this->validator->getErrors()->toArray();
-    $this->assertContains('An illegal key found', $errors);
+  public function createValidator(): Whitelist {
+    return new Whitelist(['a', 'b', 0], 'An illegal key found');
   }
 
-  /**
-   */
-  public function testNotArray() {
-    $this->assertFalse($this->validator->isValid(1));
-    $errors = $this->validator->getErrors()->toArray();
-    $this->assertContains('Array expected', $errors);
+  public function invalidValuesProvider(): iterable {
+    yield [range(1, 3)];
+    yield ['a'];
   }
 
-  public function createValidator(): Validator {
-    return new Whitelist(['a', 'b'], 'An illegal key found');
-  }
-
-  public function getInvalidValue() {
-    return [range(1, 3)];
-  }
-
-  public function getValidValue() {
-    return ['a' => 'a', 'b' => 'b'];
+  public function validValuesProvider(): iterable {
+    yield [['a' => 1, 'b' => 2]];
+    yield [['a' => null, 'b' => 2]];
   }
 
 }

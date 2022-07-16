@@ -18,26 +18,23 @@ use Sphp\Exceptions\InvalidArgumentException;
 
 class StringLengthTest extends TestCase {
 
-  /**
-   * @return StringLength
-   */
-  public function testRangeValidation(): StringLength {
-    $validator = new StringLength(0, 5);
+  public function testRangeValidation(): void {
+    $validator = new StringLength(0, 2);
     $this->assertTrue($validator->isRangeValidator());
     $this->assertFalse($validator->isLowerBoundValidator());
     $this->assertFalse($validator->isValid('foobar'));
     $this->assertTrue($validator->isValid(''));
-    $this->assertTrue($validator->isValid('     '));
+    $this->assertTrue($validator->isValid(' a'));
     $validator->setRangeValidation(1, 1);
     $this->assertTrue($validator->isValid('a'));
     $this->assertFalse($validator->isValid('ab'));
-    return $validator;
+    $this->assertFalse($validator->isValid(2));
   }
 
   /**
    * @return StringLength
    */
-  public function testLowerBoundValidation() {
+  public function testLowerBoundValidation(): void {
     //$this->assertSame($validator, $validator->setLowerBoundValidation(2));
 
     $validator = new StringLength(2, null);

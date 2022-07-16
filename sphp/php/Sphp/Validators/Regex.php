@@ -30,16 +30,12 @@ class Regex extends AbstractValidator {
   /**
    * `ID` for error message describing values not matching a given regular expression
    */
-  const NOT_MATCH = '_regex_';
+  const NOT_MATCH = 'NOT_MATCH';
 
   /**
    * regular expression pattern to validate against 
    */
   private string $pattern = "//";
-
-  /**
-   * @var mixed
-   */
   private array $skipped = [];
 
   /**
@@ -54,27 +50,28 @@ class Regex extends AbstractValidator {
   public function __construct(string $pattern, string $errorMessage = 'Invalid pattern given') {
     parent::__construct('Value of %s type given. String, integer or float expected');
     $this->pattern = $pattern;
-    $this->getErrors()->setTemplate(self::NOT_MATCH, $errorMessage);
+    $this->messages->setTemplate(self::NOT_MATCH, $errorMessage);
+    $this->messages->setTemplate(self::INVALID, 'Value of :type type given. String, integer or float expected');
   }
 
-  public function skip(...$value) {
+  public function skip(mixed ...$value) {
     $this->skipped = $value;
     return $this;
   }
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
-    if (in_array($value, $this->skipped)) {
+    if (in_array($value, $this->skipped, true)) {
       return true;
     }
     if (!is_string($value) && !is_int($value) && !is_float($value)) {
       //echo 'Invalid type given. String, integer or float expected';
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID, gettype($value));
+      $this->setError(self::INVALID);
       return false;
     }
     if (!Strings::match((string) $value, $this->pattern)) {
       //echo $value . $this->pattern;
-      $this->getErrors()->appendMessageFromTemplate(self::NOT_MATCH);
+      $this->setError(self::NOT_MATCH);
       return false;
     }
     return true;

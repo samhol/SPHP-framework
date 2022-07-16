@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Validators;
 
+use Sphp\Stdlib\MessageManager;
+
 /**
  * The base interface for a validator
  *
@@ -40,5 +42,5 @@ interface Validator {
    *
    * @return MessageManager error messages
    */
-  public function getErrors(): MessageManager;
+  public function getMessages(): MessageManager;
 }

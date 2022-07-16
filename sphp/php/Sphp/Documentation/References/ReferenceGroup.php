@@ -16,9 +16,7 @@ use Sphp\Html\AbstractContent;
 use ArrayAccess;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Html\Lists\Ol;
 use Sphp\Bootstrap\Layout\Col;
-use Sphp\DateTime\DateTimes;
 
 /**
  * The ReferenceGroup class
@@ -30,22 +28,21 @@ use Sphp\DateTime\DateTimes;
  */
 class ReferenceGroup extends AbstractContent implements ArrayAccess, IteratorAggregate {
 
-  private int $count = 1;
   private string $name;
 
   /**
    * @var Reference[]
    */
-  private array $links;
+  private array $refs;
 
   /**
    * Constructor
    */
   public function __construct(string $name, ?array $references = null) {
     $this->name = $name;
-    $this->links = [];
+    $this->refs = [];
     if ($references !== null) {
-      $this->appendReferences($references);
+      $this->setReferences($references);
     }
   }
 
@@ -53,25 +50,25 @@ class ReferenceGroup extends AbstractContent implements ArrayAccess, IteratorAgg
    * Destructor
    */
   public function __destruct() {
-    unset($this->links);
+    unset($this->refs);
   }
 
-  public function append(Reference $reference) {
-    $this->links[] = $reference;
+  public function set(Reference $reference) {
+    $this->refs[$reference->getHref()] = $reference;
   }
 
-  public function appendReference(string $href, string $content, ?string $retrieved = null): Reference {
-    $link = new Reference($href, $content, DateTimes::dateTimeImmutable($retrieved));
-    $this->append($link);
-    return $link;
+  public function setReference(string $href, string $content, string|\DateTimeInterface|null $retrieved = null): Reference {
+    $ref = new Reference($href, $content, $retrieved);
+    $this->set($ref);
+    return $ref;
   }
 
-  public function appendReferences(iterable $references) {
+  public function setReferences(iterable $references) {
     foreach ($references as $reference) {
       if ($reference instanceof Reference) {
-        $this->append($reference);
+        $this->set($reference);
       } else if (is_iterable($reference)) {
-        $this->appendReference(...$reference);
+        $this->setReference(...$reference);
       } else {
         echo 'err';
         echo "<pre>link:";
@@ -85,12 +82,12 @@ class ReferenceGroup extends AbstractContent implements ArrayAccess, IteratorAgg
   public function createCol(): Col {
     $out = new Col();
     $aside = $out->content()->appendDiv();
-    $aside->addCssClass('card h-100');
+    $aside->addCssClass('card h-100 reference-group');
     $aside->appendStrong($this->name)->addCssClass('p-2');
-    $list = new Ol();
-    $aside->append($list);
-    foreach ($this->links as $ref) {
-      $list->append($ref);
+    $linkContainer = $aside->appendDiv();
+    $linkContainer->addCssClass('mx-2 mb-3');
+    foreach ($this->refs as $ref) {
+      $linkContainer->append($ref);
     }
     return $out;
   }
@@ -100,11 +97,11 @@ class ReferenceGroup extends AbstractContent implements ArrayAccess, IteratorAgg
   }
 
   public function getIterator(): Traversable {
-    yield from $this->links;
+    yield from $this->refs;
   }
 
   public function offsetExists(mixed $offset): bool {
-    return array_key_exists($offset, $this->links);
+    return array_key_exists($offset, $this->refs);
   }
 
   public function offsetGet(mixed $offset): mixed {
@@ -117,6 +114,37 @@ class ReferenceGroup extends AbstractContent implements ArrayAccess, IteratorAgg
 
   public function offsetUnset(mixed $offset): void {
     
+  }
+
+  public static function parseGroupName(string $href): string {
+    $url = new \Sphp\Network\URL($href);
+    $host = $url->getHost();
+    $path = $url->getPath();
+    if ($host !== null) {
+      $name = str_replace('www.', '', $host);
+    } else {
+      $name = $url->getPath();
+    }
+    if ($name === 'playground.samiholck.fi') {
+      $name = 'SPHPlayground';
+    } else if ($name === 'developer.mozilla.org') {
+      $name = 'MDN Web Docs';
+    } else if ($name === 'github.com') {
+      $name = 'GitHub';
+    } else if ($name === 'gnu.org') {
+      $name = 'GNU Project';
+    } else if (str_ends_with($name, 'wikipedia.org')) {
+      $name = 'Wikipedia.org';
+    } else if ($name === 'postgresql.org') {
+      $name = 'PostgreSQL';
+    } else if ($name === 'w3schools.com') {
+      $name = 'w3schools.com';
+    } else if ($name === 'php.net' && str_contains($path, 'manual')) {
+      $name = 'PHP Manual';
+    } else {
+       $name = 'Misc';
+    }
+    return $name;
   }
 
 }

@@ -27,7 +27,7 @@ class JsonStringTest extends TestCase {
 
   public function testConstructor() {
     $validator = new JsonString;
-    $this->assertCount(0, $validator->getErrors());
+    $this->assertCount(0, $validator->getMessages());
   }
 
   public function validData(): array {

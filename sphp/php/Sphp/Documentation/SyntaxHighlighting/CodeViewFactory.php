@@ -37,7 +37,7 @@ class CodeViewFactory {
   public function createModal(string $path): Modal {
     $modal = new Modal();
     $modal->setFullScreen('lg-down')->setSize('xl');
-    $prism = new Prism();
+    $prism = new Prism(); 
     $modal->getBody()->append($prism->blockFromFile($path));
     $modal->getHeader()->append("{$this->getLanguageNameFromFile($path)} language");
     return $modal;

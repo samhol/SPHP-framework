@@ -46,7 +46,7 @@ class A extends ContainerTag implements Hyperlink {
    * @link   https://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct(?string $href = null, $content = null, ?string $target = null) {
+  public function __construct(?string $href = null, mixed $content = null, ?string $target = null) {
     parent::__construct('a', $content);
     if ($href !== null) {
       $this->setHref($href);
@@ -88,21 +88,9 @@ class A extends ContainerTag implements Hyperlink {
     return $this->attributes()->getStringValue('href');
   }
 
-  /**
-   * Sets the value of the target attribute
-   *
-   * **Notes:**
-   *
-   * * The target attribute specifies where to open the linked document.
-   * * Only used if the href attribute is present.
-   *
-   * @param  string|null $target optional target frame of the hyperlink
-   * @return $this for a fluent interface
-   * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function setTarget(?string $target) {
+  public function setTarget(?string $target, bool $secureBlank = true) {
     $this->attributes()->setAttribute('target', $target);
-    if ($this->getTarget() === '_blank') {
+    if ($this->getTarget() === '_blank' && $secureBlank) {
       $this->setRelationship('noopener noreferrer');
     }
     return $this;

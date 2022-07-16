@@ -104,21 +104,9 @@ abstract class AbstractArea extends EmptyTag implements Area {
     return $this->attributes()->getValue('alt');
   }
 
-  /**
-   * Sets the value of the target attribute
-   *
-   * **Notes:**
-   *
-   * * The target attribute specifies where to open the linked document.
-   * * Only used if the href attribute is present.
-   *
-   * @param  string|null $target optional target frame of the hyperlink
-   * @return $this for a fluent interface
-   * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function setTarget(string $target = null) {
+  public function setTarget(?string $target = null, bool $secureBlank = true) {
     $this->attributes()->setAttribute('target', $target);
-    if ($this->getTarget() === '_blank') {
+        if ($this->getTarget() === '_blank' && $secureBlank) {
       $this->setRelationship('noopener noreferrer');
     }
     return $this;
@@ -164,7 +152,7 @@ abstract class AbstractArea extends EmptyTag implements Area {
    * @return $this for a fluent interface
    * @link  https://www.w3schools.com/tags/att_a_rel.asp rel attribute
    */
-  public function setRelationship(string $rel = null) {
+  public function setRelationship(?string $rel = null) {
     $this->attributes()->setAttribute('rel', $rel);
     return $this;
   }

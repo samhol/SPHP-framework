@@ -13,17 +13,12 @@ declare(strict_types=1);
 namespace Sphp\Tests\Html\Attributes;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\Html\Attributes\MutableAttribute;
 use Sphp\Html\Attributes\MapAttribute;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeValueException;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 class PropertyCollectionAttributeTest extends TestCase {
-
-  public function createAttr(string $name = 'attr'): MutableAttribute {
-    return new MapAttribute($name);
-  }
 
   public function basicInvalidValues(): iterable {
     return [
@@ -33,6 +28,7 @@ class PropertyCollectionAttributeTest extends TestCase {
         ['p1:;p2;'],
         [':v'],
         ['p:'],
+            //[['"a"' => 'v']],
     ];
   }
 
@@ -45,8 +41,9 @@ class PropertyCollectionAttributeTest extends TestCase {
 
   public function basicTestData(): iterable {
     return [
-        ['foo', ['p1' => 'v1', 'p2' => 'v2'], 'p1:v1;p2:v2;'],
-        ['style', ';p2:v2;p1:v1;', 'p2:v2;p1:v1;'],
+        ['foo', ['a' => 'b', 'c' => 'd'], 'a:b;c:d;'],
+        ['style', [], null],
+        ['style', ['a' => 'b', 'c' => 'd'], 'a:b;c:d;'],
     ];
   }
 
@@ -57,14 +54,69 @@ class PropertyCollectionAttributeTest extends TestCase {
    * @param  mixed $value
    * @return void
    */
-  public function testConstructor(string $name, $value): void {
+  public function testConstructorWithParameters(string $name, $value, ?string $expected): void {
     $attr = new MapAttribute($name);
     $this->assertFalse($attr->isAlwaysVisible());
     $this->assertFalse($attr->isVisible());
     $this->assertNull($attr->getValue());
     $attr->setValue($value);
+    $this->assertSame($expected, $attr->getValue());
     //$this->expectException(BadMethodCallException::class);
     // $attr->__construct('foo');
+  }
+
+  public function singlePropertyDataProvider(): iterable {
+    return [
+        ['a', 'url(https://a.b)', 'a:url(https://a.b);'],
+        ['-c-b', 'rgba(#222, .2)', '-c-b:rgba(#222, .2);'],
+        ['n--n', 1, 'n--n:1;'],
+        ['n--n', 1.00, 'n--n:1;'],
+        ['n--n', -1.01, 'n--n:-1.01;'],
+    ];
+  }
+
+  /**
+   * @dataProvider singlePropertyDataProvider
+   * 
+   * @param  string $name
+   * @param  string|int|float $value
+   * @param  string $expected
+   * @return void
+   */
+  public function testSetProperty(string $name, string|int|float $value, string $expected): void {
+    $attr1 = new MapAttribute('style');
+    $this->assertFalse(isset($attr1[$name]));
+    $this->assertNull($attr1[$name]);
+    $this->assertFalse($attr1->hasProperty($name));
+    $this->assertNull($attr1->getProperty($name));
+    $this->assertSame($attr1, $attr1->setProperty($name, $value));
+
+    $arrayAccess = new MapAttribute('style');
+    $arrayAccess[$name] = $value;
+
+    $this->assertSame($value, $attr1[$name]);
+    $this->assertEquals($attr1, $arrayAccess);
+    $this->assertSame($value, $attr1->getProperty($name));
+    $this->assertTrue($attr1->hasProperty($name));
+    $this->assertSame($expected, $attr1->getValue());
+  }
+
+  public function invalidSinglePropertyDataProvider(): iterable {
+    yield ['"', 'url(https://a.b)'];
+    yield ['"', '"'];
+    yield ['foo', '" title="foo"'];
+  }
+
+  /**
+   * @dataProvider invalidSinglePropertyDataProvider
+   * 
+   * @param  string|array $props
+   * @return void
+   */
+  public function testSetInvalidProperty(string $name, string|int|float $value): void {
+    $attribute = new MapAttribute('style');
+    $this->expectException(InvalidAttributeValueException::class);
+    $attribute->setProperty($name, $value);
   }
 
   /**
@@ -138,29 +190,19 @@ class PropertyCollectionAttributeTest extends TestCase {
     $attribute->clear();
   }
 
-  public function testSetAndProtectAndUnsetProperties(): void {
-    $attr = new MapAttribute('style');
-    $attr->setProperty('a', 'b');
-    $attr->protectProperty('b', 'c');
-    $attr->setProperty('c', 'd');
-    $this->assertSame('a:b;b:c;c:d;', $attr->getValue());
-    $attr->unsetProperties('a', 'c');
-    $this->assertFalse($attr->hasProperty('a'));
-    $this->assertTrue($attr->hasProperty('b'));
-    $this->assertSame('b:c;', $attr->getValue());
-  }
-
-  public function testSetAndProtectPropertiesAndClear(): void {
+  public function testSetAndRemoveAndClear(): void {
     $attr = new MapAttribute('style');
 
-    $attr->setProperty('a', 'b');
-    $attr->protectProperty('b', 'c');
+    $this->assertSame($attr, $attr->setProperty('a', 'url(ftp://a.b)'));
     $this->assertTrue($attr->hasProperty('a'));
+    $this->assertSame('a:url(ftp://a.b);', $attr->getValue());
+    $this->assertFalse($attr->hasProperty('b'));
+    $attr->setProperty('b', 'c');
     $this->assertTrue($attr->hasProperty('b'));
+    $this->assertSame('a:url(ftp://a.b);b:c;', $attr->getValue());
     $attr->clear();
     $this->assertFalse($attr->hasProperty('a'));
-    $this->assertTrue($attr->hasProperty('b'));
-    $this->assertSame('b:c;', $attr->getValue());
+    $this->assertFalse($attr->hasProperty('b'));
   }
 
   /**
@@ -188,73 +230,12 @@ class PropertyCollectionAttributeTest extends TestCase {
    */
   public function testSingleProperty() {
     $attribute = new MapAttribute('style');
-    $attribute->setProperty('a', 'b');
+    $attribute->setProperty('a', 'url(ftp://a.b)');
     $this->assertTrue($attribute->hasProperty('a'));
-    $this->assertSame('b', $attribute->getProperty('a'));
+    $this->assertSame('url(ftp://a.b)', $attribute->getProperty('a'));
     $attribute->unsetProperties('a');
     $this->assertFalse($attribute->hasProperty('a'));
-    $attribute->protectProperty('a', 'b');
-    $this->assertTrue($attribute->hasProperty('a'));
-    $this->assertTrue($attribute->isProtected('a'));
-    $this->expectException(\Sphp\Html\Attributes\Exceptions\ImmutableAttributeException::class);
-    $this->assertFalse($attribute->setProperty('a', 'foo'));
-  }
-
-  /**
-   * 
-   * @return MapAttribute
-   */
-  public function testProtectValue(): MapAttribute {
-    $propName = 'a';
-    $propValue = 'b';
-    $attr = new MapAttribute('style');
-    $attr1 = new MapAttribute('style');
-    $attr->setValue(['s1' => 'v1']);
-    $attr->protectValue("$propName:$propValue;");
-    $this->assertSame($attr1, $attr1->protectProperty($propName, $propValue));
-    $this->assertSame("s1:v1;$propName:$propValue;", $attr->getValue());
-    $attr->clear();
-    $this->assertEquals($attr1, $attr);
-    $this->assertSame("$propName:$propValue;", $attr->getValue());
-    $this->assertTrue($attr->hasProperty($propName));
-    $this->assertTrue($attr->isProtected($propName));
-    $this->assertTrue($attr->isProtected());
-    $this->assertTrue($attr->isAlwaysVisible());
-    $this->assertSame('b', $attr->getProperty($propName));
-
-    return $attr;
-  }
-
-  /**
-   * @depends testProtectValue
-   * 
-   * @param MapAttribute $attr
-   * @return MapAttribute
-   */
-  public function testProtectProperties(MapAttribute $attr) {
-    $attr->protectProperty('c', 1);
-    $this->assertSame('a:b;c:1;', $attr->getValue());
-    $this->assertTrue($attr->hasProperty('a'));
-    $this->assertTrue($attr->isProtected('a'));
-    $this->assertTrue($attr->hasProperty('c'));
-    $this->assertTrue($attr->isProtected('c'));
-    $this->assertTrue($attr->isProtected());
-    $this->assertTrue($attr->isAlwaysVisible());
-    $this->assertSame('b', $attr->getProperty('a'));
-    $this->assertSame(1, $attr->getProperty('c'));
-
-    try {
-      $this->expectException(ImmutableAttributeException::class);
-      $attr->unsetProperties('a');
-    } catch (ImmutableAttributeException $ex) {
-
-      $this->expectException(ImmutableAttributeException::class);
-      $this->assertFalse($attr->protectProperty('a', 'foo'));
-    }
-
-    $this->expectException(ImmutableAttributeException::class);
-    $this->assertFalse($attr->setProperty('a', 'foo'));
-    return $attr;
+    $this->assertFalse($attribute->hasProperty('a'));
   }
 
   /**
@@ -267,17 +248,6 @@ class PropertyCollectionAttributeTest extends TestCase {
     $this->assertSame('style', "$attribute");
     $attribute->setProperty('a', 'b');
     $this->assertSame($attribute->getName() . '="a:b;"', "$attribute");
-  }
-
-  public function arrayData(): iterable {
-    return [
-        'a' => 'b',
-        'foo' => 1
-    ];
-  }
-
-  public function createCollection(): \ArrayAccess {
-    return $this->createAttr();
   }
 
 }

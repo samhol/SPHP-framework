@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Html\Attributes;
 
+use Stringable;
+
 /**
  * Interface AttributeInterface
  *
@@ -20,7 +22,7 @@ namespace Sphp\Html\Attributes;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-interface Attribute {
+interface Attribute extends Stringable {
 
   /**
    * Returns the instance of the object as a string

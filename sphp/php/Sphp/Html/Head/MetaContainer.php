@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace Sphp\Html\Head;
 
 use Sphp\Html\AbstractContent;
-use IteratorAggregate;
+use Sphp\Html\ContentIteratorAggregate;
+use Countable;
 use Sphp\Html\ContentIterator;
-use Sphp\Html\TraversableContent;
 use Sphp\Stdlib\Datastructures\PriorityList;
 use Sphp\Html\Scripts\ExternalScript;
 
@@ -27,9 +27,7 @@ use Sphp\Html\Scripts\ExternalScript;
  * @link    https://github.com/samhol/SPHP-framework Github repository
  * @filesource
  */
-class MetaContainer extends AbstractContent implements IteratorAggregate, TraversableContent {
-
-  use \Sphp\Html\TraversableTrait;
+class MetaContainer extends AbstractContent implements ContentIteratorAggregate, Countable {
 
   /**
    * @var PriorityList<MetaData>
@@ -146,13 +144,12 @@ class MetaContainer extends AbstractContent implements IteratorAggregate, Traver
     return $out;
   }
 
-  /**
-   * Creates a new iterator to iterate through content
-   *
-   * @return ContentIterator<MetaData> iterator
-   */
   public function getIterator(): ContentIterator {
     return new ContentIterator($this->container);
+  }
+
+  public function count(): int {
+    return $this->container->count();
   }
 
 }

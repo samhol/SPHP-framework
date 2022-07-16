@@ -36,6 +36,18 @@ class W3schoolsURLs extends ApiDocURLBuilder implements HtmlUrlGenerator {
     parent::__construct($root, $name);
   }
 
+  public function __invoke(string $raw): string {
+    if (str_starts_with($raw, '[') && str_ends_with($raw, ']')) {
+      $url = $this->getGlobalAttrUrl(str_replace(['[', ']'], '', $raw));
+    } else if (str_contains($raw, '[') && str_ends_with($raw, ']')) {
+      $p = explode(' ', str_replace(['[', ']'], [' ', ''], $raw));
+      $url = $this->getTagAttrUrl(...$p);
+    } else {
+      $url = $this->getTagUrl($raw);
+    }
+    return $url;
+  }
+
   public function getUrl(?string $tagName = null, ?string $attrName = null): string {
     $out = null;
     if ($tagName === null && $attrName === null) {

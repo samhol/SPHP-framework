@@ -67,10 +67,10 @@ class CsvFileTest extends TestCase {
     }
   }
 
-  public function testGetChunk() {
+  public function testGetSlice() {
     $csvObj = new CsvFile('./sphp/php/tests/files/test.csv');
     $csvArray = $csvObj->toArray();
-    $chunk = $csvObj->getChunk(2, 1);
+    $chunk = $csvObj->getSlice(2, 1);
     $expected = array_slice($csvArray, 2, 1, true);
     $this->assertEquals($expected, $chunk);
     // print_r(array_slice($csvArray, 5, true));

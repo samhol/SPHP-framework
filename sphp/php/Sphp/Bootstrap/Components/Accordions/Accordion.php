@@ -14,6 +14,7 @@ namespace Sphp\Bootstrap\Components\Accordions;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
+use Stringable;
 use Traversable;
 use Sphp\Html\ContentIterator;
 
@@ -32,7 +33,6 @@ class Accordion extends AbstractComponent implements IteratorAggregate {
    * @var Pane[] 
    */
   private array $panels;
- 
   private bool $allwaysOpen = true;
 
   /**
@@ -41,7 +41,6 @@ class Accordion extends AbstractComponent implements IteratorAggregate {
   public function __construct() {
     parent::__construct('div');
     $this->cssClasses()->protectValue('accordion');
-    // $this->attributes()->demand('data-accordion');
     $this->identify();
     $this->panels = [];
   }
@@ -82,11 +81,11 @@ class Accordion extends AbstractComponent implements IteratorAggregate {
   /**
    * Creates and appends a new HTML pane component
    * 
-   * @param  mixed $title the content of the pane title
+   * @param  string|Stringable $title the content of the pane title
    * @param  mixed $content the content of the actual pane
    * @return ContentPane appended instance
    */
-  public function appendPane($title, $content = null): ContentPane {
+  public function appendPane(string|Stringable $title, $content = null): ContentPane {
     $pane = new ContentPane($title, $content);
     $this->append($pane);
     return $pane;

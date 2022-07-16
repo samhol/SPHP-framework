@@ -37,7 +37,6 @@ class AttributeFactory {
     $this->defaultType = $defaultType;
     $rules = [
         IdStorage::class => ['shared' => true],
-        CssClassParser::class => ['shared' => true],
         PropertyParser::class => ['shared' => true],
         $this->defaultType => [
             'shared' => false

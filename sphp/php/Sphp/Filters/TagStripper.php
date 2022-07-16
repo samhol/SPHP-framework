@@ -38,7 +38,7 @@ class TagStripper extends AbstractFilter {
     $this->allowableTags = $allowableTags;
   }
 
-  public function filter($variable) {
+  public function filter(mixed $variable): mixed {
     if (is_string($variable)) {
       if ($this->allowableTags !== null) {
         $variable = strip_tags($variable, $this->allowableTags);

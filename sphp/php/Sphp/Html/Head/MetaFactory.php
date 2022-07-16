@@ -14,7 +14,6 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\Utils\Mime;
 use Sphp\Html\Head\Links\ImmutableLinkData;
-use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a Meta data object factory
@@ -175,7 +174,7 @@ class MetaFactory {
    * @link   https://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function keywords(string ...$keywords): ImmutableMeta {
-    $keywords = implode(',', Arrays::flatten($keywords));
+    $keywords = implode(',', $keywords);
     return new ImmutableMeta(['name' => 'keywords', 'content' => $keywords]);
   }
 

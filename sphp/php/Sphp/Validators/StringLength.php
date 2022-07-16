@@ -27,21 +27,17 @@ use Sphp\Exceptions\InvalidArgumentException;
  */
 class StringLength extends AbstractValidator {
 
-  const TOO_SHORT = 'TOO_SHORT';
-  const TOO_LONG = 'TOO_LONG';
-  const NOT_IN_RANGE = 'NOT_IN_RANGE';
+  public const TOO_SHORT = 'TOO_SHORT';
+  public const TOO_LONG = 'TOO_LONG';
+  public const NOT_IN_RANGE = 'NOT_IN_RANGE';
 
   /**
    * minimum length of the valid string
-   *
-   * @var int
    */
   private ?int $min;
 
   /**
    * maximum length of the valid string
-   *
-   * @var int
    */
   private ?int $max;
 
@@ -52,7 +48,7 @@ class StringLength extends AbstractValidator {
    * @param int $max maximum length of the valid string
    */
   public function __construct(int $min = null, int $max = null) {
-    parent::__construct();
+    parent::__construct('Invalid type given. String expected');
     if ($min !== null && $max !== null) {
       $this->setRangeValidation($min, $max);
     } else if ($min !== null) {
@@ -62,10 +58,12 @@ class StringLength extends AbstractValidator {
     } else {
       throw new InvalidArgumentException("Paramaters are invalid: min: $min, max: $max given");
     }
-    $this->getErrors()->setTemplate(static::INVALID, 'Invalid type given. String expected');
-    $this->getErrors()->setTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
-    $this->getErrors()->setTemplate(static::TOO_LONG, 'The input is more than %d characters long');
-    $this->getErrors()->setTemplate(static::NOT_IN_RANGE, 'The input length is not in range %d-%d');
+
+    $this->getMessages()->setParameter(':min', $this->min);
+    $this->getMessages()->setParameter(':max', $this->max);
+    $this->getMessages()->setTemplate(static::TOO_SHORT, 'String is less than :min characters long');
+    $this->getMessages()->setTemplate(static::TOO_LONG, 'The input is more than :max characters long');
+    $this->getMessages()->setTemplate(static::NOT_IN_RANGE, 'The input length is not in range (:min-:max)');
   }
 
   /**
@@ -82,6 +80,9 @@ class StringLength extends AbstractValidator {
     }
     $this->min = $min;
     $this->max = $max;
+    
+    $this->getMessages()->setParameter(':min', $this->min);
+    $this->getMessages()->setParameter(':max', $this->max);
     return $this;
   }
 
@@ -106,6 +107,8 @@ class StringLength extends AbstractValidator {
   public function setLowerBoundValidation(int $min) {
     $this->min = $min;
     $this->max = null;
+    $this->getMessages()->setParameter(':min', $this->min);
+    $this->getMessages()->setParameter(':max', $this->max);
     return $this;
   }
 
@@ -134,6 +137,8 @@ class StringLength extends AbstractValidator {
     }
     $this->min = null;
     $this->max = $max;
+    $this->getMessages()->setParameter(':min', $this->min);
+    $this->getMessages()->setParameter(':max', $this->max);
     return $this;
   }
 
@@ -148,18 +153,22 @@ class StringLength extends AbstractValidator {
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
+    if (!is_string($value)) {
+      $this->setError(self::INVALID);
+      return false;
+    }
     $valid = true;
     $string = new MbString($value);
-    $length = $string->length();
+    $length = $string->count();
     if ($this->isRangeValidator() && ($length < $this->min || $this->max < $length)) {
       $valid = false;
-      $this->getErrors()->appendMessageFromTemplate(self::NOT_IN_RANGE, $this->min, $this->max);
+      $this->setError(self::NOT_IN_RANGE);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
-      $this->getErrors()->appendMessageFromTemplate(self::TOO_SHORT, $this->min);
+      $this->setError(self::TOO_SHORT);
     } else if ($this->isUpperBoundValidator() && $length > $this->max) {
       $valid = false;
-      $this->getErrors()->appendMessageFromTemplate(self::TOO_LONG, $this->min);
+      $this->setError(self::TOO_LONG);
     }
     return $valid;
   }

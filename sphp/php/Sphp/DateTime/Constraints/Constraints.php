@@ -45,7 +45,7 @@ class Constraints extends AbstractConstraintsAggregate {
    * @throws InvalidArgumentException if the method call has invalid arguments
    */
   public function __call(string $name, array $arguments): DateConstraint {
-    $key = strtolower(Strings::replace($name, 'not', ''));
+    $key = strtolower(str_replace('not', '', $name));
     $constraint = Factory::instance()->$key(...$arguments);
     if (str_starts_with($name, 'not')) {
       $this->isNot($constraint);

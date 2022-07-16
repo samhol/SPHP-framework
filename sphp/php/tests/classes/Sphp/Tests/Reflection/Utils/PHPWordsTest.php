@@ -114,7 +114,7 @@ class PHPWordsTest extends TestCase {
       $this->assertSame($word->is(PHPWord::OOP), $word->isOop());
       $this->assertSame($word->is(PHPWord::OOP | PHPWord::KEYWORD), $word->isOopKeyword());
       $this->assertSame($word->is(PHPWord::PRIMITIVE_TYPE), $word->isPrimitiveTypeName());
-      if (\Sphp\Stdlib\Strings::startsWith($wordName, '$')) {
+      if (str_starts_with($wordName, '$')) {
         $this->assertTrue($word->isVariable());
       }
     }

@@ -29,7 +29,7 @@ class AbstractValidatorTest extends TestCase {
 
   public function testDefault(): AbstractValidator {
     $validator = $this->createValidator('Foo is broken');
-    $this->assertEquals('Foo is broken', $validator->getErrors()->getTemplate(Validator::INVALID));
+    $this->assertEquals('Foo is broken', $validator->getMessages()->getTemplate(Validator::INVALID));
     return $validator;
   }
 
@@ -41,9 +41,9 @@ class AbstractValidatorTest extends TestCase {
    */
   public function testClone(AbstractValidator $validator): void {
     $clone = clone $validator;
-    $clone->getErrors()->setTemplate(Validator::INVALID, 'Foo is fixed');
-    $this->assertEquals('Foo is fixed', $clone->getErrors()->getTemplate(Validator::INVALID));
-    $this->assertEquals('Foo is broken', $validator->getErrors()->getTemplate(Validator::INVALID));
+    $clone->getMessages()->setTemplate(Validator::INVALID, 'Foo is fixed');
+    $this->assertEquals('Foo is fixed', $clone->getMessages()->getTemplate(Validator::INVALID));
+    $this->assertEquals('Foo is broken', $validator->getMessages()->getTemplate(Validator::INVALID));
   }
 
 }

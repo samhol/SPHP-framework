@@ -33,13 +33,13 @@ class SiteSearch360FormBuilder extends AbstractSearchFormBuilder {
     parent::__construct();
     $this->siteId = $siteId;
     $this->getSearchField()->setName('ss360Query')->setInitialValue($initialValue);
-    $this->getSearchField()->addCssClass('sphp-search-searchBox', 'sphp-ss360-searchBox');
+   // $this->getSearchField()->addCssClass('sphp-search-searchBox', 'sphp-ss360-searchBox');
   }
 
   public function createEmptyForm(): \Sphp\Html\Forms\Form {
     $form = new \Sphp\Html\Forms\Form();
-    $form->addCssClass('sphp', 'search-form');
-    $form->attributes()->protect('data-sphp-ss360-siteid', $this->siteId);
+    $form->addCssClass('sphp ss360 search-form');
+   // $form->attributes()->protect('data-sphp-ss360-siteid', $this->siteId);
     return $form;
   }
 

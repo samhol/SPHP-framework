@@ -26,7 +26,7 @@ class FactoryTest extends AbstractFormControllerTest {
       $this->assertInstanceOf($objectType, $obj);
       $this->assertInstanceOf($objectType, FormControls::$call());
       $str = FormControls::create($call);
-      $this->assertTrue(Strings::startsWith("$str", '<' . $str->getTagName()));
+      $this->assertTrue(str_starts_with("$str", '<' . $str->getTagName()));
 
       $this->doObjectTests($obj);
     }

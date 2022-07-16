@@ -1,0 +1,20 @@
+section.error {
+  p.large, blockquote.large {
+    padding: 1.3rem 1rem;
+    font-size: 1.6rem;
+  }
+
+  h1, h2.error {
+    background-color: #f77;
+    background-image:
+      url("/css/imgs/small-bird.png"),
+      linear-gradient(
+      to top,
+      rgba(#222, .5) 0%, rgba(#cc3300, .4) 100%
+      );
+    color: #ffcc00;
+    background-repeat: no-repeat, repeat;
+    background-position: center right;
+    border-bottom: solid 2px #f00;
+  }
+}

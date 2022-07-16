@@ -15,6 +15,7 @@ namespace Sphp\Html\Tables;
 use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableContent;
+use Stringable;
 use Sphp\Html\PlainContainer;
 use Traversable;
 
@@ -95,10 +96,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableC
   /**
    * Sets the caption text of the table
    * 
-   * @param  Caption|string|null $caption the caption object or the content of the caption
+   * @param  Caption|Stringable|string|null $caption the caption object or the content of the caption
    * @return $this for a fluent interface
    */
-  public function setCaption($caption) {
+  public function setCaption(Caption|Stringable|string|null $caption) {
     if (!$caption instanceof Caption && $caption !== null) {
       $caption = new Caption($caption);
     }

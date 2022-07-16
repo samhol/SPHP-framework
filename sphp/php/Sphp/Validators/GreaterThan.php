@@ -33,19 +33,20 @@ class GreaterThan extends AbstractLimitValidator {
   public function __construct(float $min, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->min = $min;
-    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not larger than %d');
-    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not larger than or equal to %d');
+    $this->getMessages()->setParameter(':min', $this->min);
+    $this->getMessages()->setTemplate(static::EXCLUSIVE_ERROR, 'Not larger than :min');
+    $this->getMessages()->setTemplate(static::INCLUSIVE_ERROR, 'Not larger than or equal to :min');
   }
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value) {
-        $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min);
+        $this->setError(static::INCLUSIVE_ERROR);
         return false;
       }
     } else if ($this->min >= $value) {
-      $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min);
+      $this->setError(static::EXCLUSIVE_ERROR);
       return false;
     }
     return true;

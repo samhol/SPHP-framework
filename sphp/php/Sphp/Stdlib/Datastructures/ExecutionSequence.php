@@ -28,9 +28,6 @@ use Countable;
  */
 class ExecutionSequence implements Arrayable, IteratorAggregate, Countable {
 
-  /**
-   * @var PriorityQueue
-   */
   private PriorityQueue $callbacks;
 
   /**
@@ -53,9 +50,7 @@ class ExecutionSequence implements Arrayable, IteratorAggregate, Countable {
    * @return void
    */
   public function __invoke(): void {
-    foreach ($this->callbacks as $callback) {
-      $callback();
-    }
+    $this->execute();
   }
 
   /**
@@ -65,9 +60,20 @@ class ExecutionSequence implements Arrayable, IteratorAggregate, Countable {
    * @param  int $priority
    * @return $this for a fluent interface
    */
-  public function addCallable(callable $object, int $priority = 0) {
+  public function enqueue(callable $object, int $priority = 0) {
     $this->callbacks->enqueue($object, $priority);
     return $this;
+  }
+
+  /**
+   * Executed the sequence of callbacks
+   *
+   * @return void
+   */
+  public function execute(): void {
+    foreach ($this->callbacks as $callback) {
+      $callback();
+    }
   }
 
   /**

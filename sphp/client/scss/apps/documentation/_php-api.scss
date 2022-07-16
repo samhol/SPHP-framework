@@ -1,0 +1,14 @@
+
+@mixin php-api-link( ) {
+  a.php-api {
+    border: solid 1px rgba(#c1c173, .3);
+    @include border-radius(3px);
+    background: #f3f3e5;
+    padding: 1px 3px;
+    &:hover {
+      border: solid 1px rgba(#c1c173, .8);
+      background: rgba(#f3f3e5, .5);
+      padding: 1px 3px;
+    }
+  }
+}

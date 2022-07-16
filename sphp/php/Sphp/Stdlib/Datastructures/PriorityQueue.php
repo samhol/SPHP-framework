@@ -32,8 +32,6 @@ class PriorityQueue implements Queue, Arrayable, IteratorAggregate, Countable {
 
   /**
    * seed value to maintain insertion order
-   *
-   * @var int
    */
   private int $serial = PHP_INT_MAX;
   private SplPriorityQueue $innerQueue;
@@ -63,7 +61,7 @@ class PriorityQueue implements Queue, Arrayable, IteratorAggregate, Countable {
     return iterator_to_array(clone $this);
   }
 
-  public function dequeue() {
+  public function dequeue(): mixed {
     $this->innerQueue->setExtractFlags(SplPriorityQueue::EXTR_DATA);
     return $this->innerQueue->extract();
   }
@@ -84,7 +82,7 @@ class PriorityQueue implements Queue, Arrayable, IteratorAggregate, Countable {
     return $this->innerQueue->isEmpty();
   }
 
-  public function peek() {
+  public function peek(): mixed {
     $this->innerQueue->setExtractFlags(SplPriorityQueue::EXTR_DATA);
     return $this->innerQueue->top();
   }

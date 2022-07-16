@@ -1,0 +1,20 @@
+
+
+@use "main-menu";
+@use "navbar";
+@use "pages/all";
+@import "footer/all";
+
+header.sphp {
+  text-align: right;
+  background-color: rgba(#444, .3);
+  //background-image: 
+   // url("/man/pictures/logo-bg.jpg");
+   // url("/man/pictures/purty-wood.png");
+  background-repeat: repeat; 
+  background-position: 0 0;
+  margin-top: 65px;
+  border-top: 1px solid #b37;
+  padding: 3rem 1rem;
+  border-bottom: 1px solid rgba(#d53, .7);
+} 

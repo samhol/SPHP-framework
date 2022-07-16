@@ -62,7 +62,7 @@ class DateFormatter {
    * @return string the name or the abbreviation of the weekday
    */
   public function getWeekdayName(?int $length = null): string {
-    $name = $this->formatICU('eeee');
+    $name = $this->formatICU('cccc');
     if ($length > 0) {
       $name = mb_substr($name, 0, $length);
     }
@@ -76,7 +76,7 @@ class DateFormatter {
    * @return string the name or the abbreviation of the month
    */
   public function getMonthName(?int $length = null): string {
-    $monthName = $this->formatICU('MMMM');
+    $monthName = $this->formatICU('LLLL');
     if ($length > 0) {
       $monthName = mb_substr($monthName, 0, $length);
     }

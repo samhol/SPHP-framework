@@ -67,7 +67,7 @@ class CSVParser {
   }
 
   public function parseRawData(int $offset = 1, bool $clean = true): array {
-    $rawData = $this->csv->getChunk($offset);
+    $rawData = $this->csv->getSlice($offset);
     if ($clean) {
       foreach ($rawData as $key => $row) {
         $rawData[$key] = $this->rowParser->parseDatabaseRow($row);

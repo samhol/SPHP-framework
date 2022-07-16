@@ -343,7 +343,7 @@ final class ExtensionDataManager implements IteratorAggregate {
 
   /**
    * 
-   * @return Traversable<int, Book>
+   * @return Traversable<string, Book>
    */
   public function getIterator(): Traversable {
     foreach (self::$bookMap as $name => $description) {

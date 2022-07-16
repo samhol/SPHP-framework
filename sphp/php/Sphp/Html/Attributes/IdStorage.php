@@ -63,7 +63,7 @@ class IdStorage implements Countable {
    * Checks whether the storage contains identifier value
    *
    * @param  string $value the value of the identifier
-   * @param string $for
+   * @param  string $for
    * @return bool true on success or false on failure
    */
   public function contains(string $value, $for = null): bool {
@@ -80,7 +80,7 @@ class IdStorage implements Countable {
    * @param  string $for
    * @return bool true if stored and `false` otherwise
    */
-  public function store(string $value, $for = null): bool {
+  public function store(string $value, ?string $for = null): bool {
     if ($for === null) {
       $for = $value;
     }
@@ -88,7 +88,6 @@ class IdStorage implements Countable {
       $this->ids[$value] = $for;
       return true;
     }
-    //print_r($this->ids);
     return false;
   }
 

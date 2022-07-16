@@ -1,0 +1,61 @@
+@import "./node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/utilities";
+
+
+// 4. Include any optional Bootstrap components as you like
+@import "./node_modules/bootstrap/scss/root";
+@import "./node_modules/bootstrap/scss/reboot";
+@import "./node_modules/bootstrap/scss/type";
+@import "./node_modules/bootstrap/scss/containers";
+@import "./node_modules/bootstrap/scss/grid";
+@import "./node_modules/bootstrap/scss/buttons";
+@import "./node_modules/bootstrap/scss/transitions";
+@import "./node_modules/bootstrap/scss/popover";
+@import "./node_modules/bootstrap/scss/placeholders";
+@import "./node_modules/bootstrap/scss/helpers";
+@import "./node_modules/bootstrap/scss/utilities/api";
+// 5. Add additional custom code here
+
+@import "sphp";
+@import "fonts";
+
+body {
+  font-family: Regular;
+  background-image:
+    url("/manual-app/app/pictures/js-jode-minified.png"),
+    url("/manual-app/app/pictures/parquet.jpg");
+  background-repeat: no-repeat,repeat;
+  background-attachment: fixed;
+  background-position: center center,0 0;
+  main {
+    @include border-radius(5px);
+    border: solid 1px #FAA523;
+    margin: rem-calc(15 0);
+    padding: rem-calc(15 10 30 10);
+    background-color: #f1f2f1;
+    .license-text{
+      font-family: Mono;
+      font-size: 1.1rem;
+      border: solid 2px #999;
+      @include border-radius(5px);
+    background-color: #fafafa;
+    } 
+
+    hr {
+      border: 0;
+      height: 3px;
+      $grad: #fafafa 0%,black 50%, #fafafa 100%;
+      @include gradient(to left, $grad);
+    }
+    .btn {
+      padding: .8rem;
+    }
+  }
+  background-color: #556;
+}

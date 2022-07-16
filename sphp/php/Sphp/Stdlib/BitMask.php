@@ -30,9 +30,6 @@ use Sphp\Config\ErrorHandling\ErrorManager;
  */
 class BitMask implements Arrayable, Iterator {
 
-  /**
-   * @var int 
-   */
   private int $index = 0;
 
   /**
@@ -59,10 +56,10 @@ class BitMask implements Arrayable, Iterator {
    *
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
-   * @param int|string|BitMask $bitmask the flags to set
+   * @param  int|string|BitMask $bitmask the flags to set
    * @return BitMask new instance
    */
-  public function binAND($bitmask): BitMask {
+  public function binAND(int|string|BitMask $bitmask): BitMask {
     return new static($this->mask & self::parseInt($bitmask));
   }
 
@@ -71,10 +68,10 @@ class BitMask implements Arrayable, Iterator {
    *
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
-   * @param int|string|BitMask $bitmask the other bitmask
+   * @param  int|string|BitMask $bitmask the other bitmask
    * @return BitMask new instance
    */
-  public function binOR($bitmask): BitMask {
+  public function binOR(int|string|BitMask $bitmask): BitMask {
     return new static($this->mask | self::parseInt($bitmask));
   }
 
@@ -86,7 +83,7 @@ class BitMask implements Arrayable, Iterator {
    * @param int|string|BitMask $bitmask the flags to set
    * @return BitMask new instance
    */
-  public function binXOR($bitmask): BitMask {
+  public function binXOR(int|string|BitMask $bitmask): BitMask {
     return new static($this->mask ^ self::parseInt($bitmask));
   }
 
@@ -157,7 +154,7 @@ class BitMask implements Arrayable, Iterator {
    * @param int|string|BitMask $bitmask the flags
    * @return bool true if the object contains given flags and false otherwise
    */
-  public function contains($bitmask): bool {
+  public function contains(int|string|BitMask $bitmask): bool {
     $parsedFlags = self::parseInt($bitmask);
     return ($this->mask & $parsedFlags) === $parsedFlags;
   }
@@ -224,7 +221,7 @@ class BitMask implements Arrayable, Iterator {
     return $result;
   }
 
-  public function equals($object): bool {
+  public function equals(mixed $object): bool {
     try {
       return $this->toInt() === static::parseInt($object);
     } catch (\Exception $ex) {
@@ -291,49 +288,27 @@ class BitMask implements Arrayable, Iterator {
    * 
    * @param  string $binary binary input
    * @return BitMask new instance
+   * @throws InvalidArgumentException if the input is not valid binary string
    */
   public static function fromBinary(string $binary): BitMask {
-    $err = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $err->start(E_DEPRECATED);
-    $errorManager = new ErrorManager();
-    $errorManager->start(\E_DEPRECATED);
-    try {
-      $obj = new static(bindec($binary));
-    } catch (\Exception $ex) {
-      $err->stop();
-      $errorManager->stop();
-      throw $ex;
+    if (!Strings::typeIs($binary, Strings::TYPE_BINARY)) {
+      throw new InvalidArgumentException('String given is not valid binary string');
     }
-    $err->stop();
-    $errorManager->stop();
-    return $obj;
+    return new static(bindec($binary));
   }
 
   /**
    * Creates a new instance from octal input
-   * 
+   *  
    * @param  string $octal octal input
    * @return BitMask new instance
+   * @throws InvalidArgumentException if the input is not valid octal string
    */
   public static function fromOctal(string $octal): BitMask {
-    $err = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class);
-    $err->start(E_DEPRECATED);
-    $errorManager = new ErrorManager();
-    $errorManager->start(\E_DEPRECATED);
-    //$old = error_reporting();
-    //error_reporting(E_DEPRECATED);
-    //var_dump($old, E_DEPRECATED);
-    try {
-      $obj = new static(octdec($octal));
-    } catch (\Exception $ex) {
-      $err->stop();
-      $errorManager->stop();
-      throw $ex;
+    if (!Strings::typeIs($octal, Strings::TYPE_OCTAL)) {
+      throw new InvalidArgumentException('String given is not valid octal string');
     }
-    $errorManager->stop();
-    $err->stop();
-    //error_reporting($old);
-    return $obj;
+    return new static(octdec($octal));
   }
 
   /**
@@ -341,8 +316,12 @@ class BitMask implements Arrayable, Iterator {
    * 
    * @param  string $hex hexadecimal input
    * @return BitMask new instance
+   * @throws InvalidArgumentException if the input is not valid hexadecimal string
    */
   public static function fromHex(string $hex): BitMask {
+    if (!Strings::typeIs($hex, Strings::TYPE_HEX)) {
+      throw new InvalidArgumentException('String given is not valid hexadecimal string');
+    }
     $v = str_replace(['#', '0x'], '', $hex);
     return new static(hexdec($v));
   }
@@ -352,8 +331,9 @@ class BitMask implements Arrayable, Iterator {
    * 
    * @param  mixed $input
    * @return BitMask new instance
+   * @throws InvalidArgumentException if the value given can not be parsed
    */
-  public static function from($input): BitMask {
+  public static function from(int|string|BitMask $input): BitMask {
     return new static(static::parseInt($input));
   }
 
@@ -364,23 +344,23 @@ class BitMask implements Arrayable, Iterator {
    * @return int parsed flags value
    * @throws InvalidArgumentException if the value given can not be parsed
    */
-  public static function parseInt($flags): int {
-    if (!is_int($flags)) {
-      if (is_string($flags)) {
-        $obj = new MbString($flags);
-        if ($obj->startsWith('#') || $obj->startsWith('0x')) {
-          $flags = str_replace(['#', '0x'], '', $flags);
-          return hexdec($flags);
-        } else {
-          $flags = intval($flags);
-        }
-      } else if (is_scalar($flags)) {
-        $flags = intval($flags);
-      } else if ($flags instanceof BitMask) {
-        $flags = $flags->toInt();
+  public static function parseInt(int|string|BitMask $flags): int {
+    if (is_string($flags)) {
+      $obj = new MbString($flags);
+      if ($obj->match('/^[1-9]{1,}(\d){0,}$/')) {
+        return intval($flags);
+      } else if ($obj->is(Strings::TYPE_BINARY)) {
+        return bindec($flags);
+      } else if ($obj->is(Strings::TYPE_OCTAL)) {
+        return octdec($flags);
+      } else if ($obj->is(Strings::TYPE_HEX)) {
+        $flags = str_replace(['#', '0x'], '', $flags);
+        return hexdec($flags);
       } else {
-        throw new InvalidArgumentException("Value cannot be parsed to integer");
+        throw new InvalidArgumentException("String value cannot be parsed to integer");
       }
+    } else if ($flags instanceof BitMask) {
+      $flags = $flags->toInt();
     }
     return $flags;
   }

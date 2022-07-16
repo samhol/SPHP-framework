@@ -25,10 +25,10 @@ class Url extends AbstractValidator {
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_string($value) && !$value instanceof \Sphp\Network\URL) {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
+      $this->getMessages()->appendMessageFromTemplate(self::INVALID);
     }
     if (filter_var($value, \FILTER_VALIDATE_URL) === false) {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
+      $this->getMessages()->appendMessageFromTemplate(self::INVALID);
       return false;
     }
     return true;

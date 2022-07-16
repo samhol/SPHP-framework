@@ -23,9 +23,6 @@ use Sphp\Exceptions\UnderflowException;
  */
 class ArrayStack implements Stack, Arrayable {
 
-  /**
-   * @var array 
-   */
   private array $items;
 
   /**
@@ -44,19 +41,19 @@ class ArrayStack implements Stack, Arrayable {
     unset($this->items);
   }
 
-  public function peek() {
+  public function peek(): mixed {
     if ($this->isEmpty()) {
       throw new UnderflowException('Cannot peek empty Stack');
     }
     return end($this->items);
   }
 
-  public function push($value) {
+  public function push(mixed $value) {
     $this->items[] = $value;
     return $this;
   }
 
-  public function pop() {
+  public function pop(): mixed {
     if ($this->isEmpty()) {
       throw new UnderflowException('Cannot pop from empty stack');
     }

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Validators;
 
+use Sphp\Stdlib\MessageManager;
+
 /**
  * Abstract superclass for miscellaneous data validation
  *
@@ -22,12 +24,8 @@ namespace Sphp\Validators;
  */
 abstract class AbstractValidator implements Validator {
 
-  private MessageManager $messages;
-
-  /**
-   * @var mixed 
-   */
-  private $value;
+  protected MessageManager $messages;
+  private mixed $value = null;
 
   /**
    * Constructor
@@ -36,7 +34,7 @@ abstract class AbstractValidator implements Validator {
    */
   public function __construct(string $error = 'Invalid value') {
     $this->messages = new MessageManager();
-    $this->getErrors()->setTemplate(static::INVALID, $error);
+    $this->messages->setTemplate(static::INVALID, $error);
   }
 
   /**
@@ -85,10 +83,18 @@ abstract class AbstractValidator implements Validator {
   public function setValue(mixed $value) {
     $this->messages->unsetMessages();
     $this->value = $value;
+    if (is_scalar($value) || $value instanceof \Stringable) {
+      $this->messages->setParameter(':value', $value);
+    }
+    $this->messages->setParameter(':type', gettype($value));
     return $this;
   }
 
-  public function getErrors(): MessageManager {
+  public function setError(string|int $templateId) {
+    $this->messages->appendMessageFromTemplate($templateId);
+  }
+
+  public function getMessages(): MessageManager {
     return $this->messages;
   }
 

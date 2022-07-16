@@ -78,7 +78,7 @@ class ShutDownRegister {
    * @return $this for a fluent interface
    */
   public function addCallable(callable $object, int $priority = 0) {
-    $this->sequence->addCallable($object, $priority);
+    $this->sequence->enqueue($object, $priority);
     return $this;
   }
 

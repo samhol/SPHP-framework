@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Validators;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Validators\Email;
 
 /**
@@ -23,15 +22,29 @@ use Sphp\Validators\Email;
  * @link    https://github.com/samhol/SPHP-framework GitHub repository
  * @filesource
  */
-class EmailTest extends TestCase {
+class EmailTest extends ValidatorTestCase {
 
   public function testWithSkip() {
-    $validator = new Email('Email fails badly');
+    $validator = $this->createValidator();
     $this->assertTrue($validator->isValid('sami.holck@gmail.com'));
-    $this->assertCount(0, $validator->getErrors());
+    $validator->getValue();
+    $this->assertCount(0, $validator->getMessages());
     $this->assertFalse($validator->isValid('foo'));
-    $this->assertCount(1, $validator->getErrors());
-    $this->assertContains('Email fails badly', $validator->getErrors());
+    $this->assertCount(1, $validator->getMessages());
+    $this->assertContains('Email foo fails badly', $validator->getMessages());
+  }
+
+  public function createValidator(): Email {
+    return new Email('Email :value fails badly');
+  }
+
+  public function invalidValuesProvider(): iterable {
+    yield ['foo.fi'];
+    yield [null];
+  }
+
+  public function validValuesProvider(): iterable {
+    yield ['sami.holck@gmail.com'];
   }
 
 }

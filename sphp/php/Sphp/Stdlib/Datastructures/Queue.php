@@ -29,7 +29,7 @@ interface Queue {
    * @param  mixed $value the new item to add
    * @return $this for a fluent interface
    */
-  public function enqueue($value);
+  public function enqueue(mixed $value);
 
   /**
    * Dequeues a node from the queue
@@ -37,7 +37,7 @@ interface Queue {
    * @return mixed the item at the beginning of the queue
    * @throws UnderflowException when the data-structure is empty
    */
-  public function dequeue();
+  public function dequeue(): mixed;
 
   /**
    * Observes the first item of the queue without removing it
@@ -45,7 +45,7 @@ interface Queue {
    * @return mixed the item at the beginning of the queue
    * @throws UnderflowException when the data-structure is empty
    */
-  public function peek();
+  public function peek(): mixed;
 
   /**
    * Determine if the queue is empty or not

@@ -1,0 +1,41 @@
+@mixin sphp-syntax-highlighter() { 
+  .sphp-syntax-highlighter {
+    //position: relative;
+    border: solid 1px #aaa;
+    @include border-radius(3px);
+    margin: 10px;
+    .syntax {
+      font-family: "Source Code Pro", monospace;
+    }
+
+    .head-area {
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
+      text-align: right;
+      padding: rem-calc(5 10 5 10); /* top right bottom left */
+      background: #eee;
+      border-bottom: solid 1px #bbb;
+      .button-area {
+        display: inline-block;
+        margin: 1px;
+        float: right;
+        button {
+          margin: rem-calc(2);
+          font-size: rem-calc(13); 
+          @include border-radius(3px);
+          background-color: #aaa;
+          line-height: 1.3;
+          padding: rem-calc(5 10 5 10); /* top right bottom left */
+        }
+      }
+    };
+
+    .foot-area {
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
+      font-size: .7rem;
+      text-align: right;
+      padding: 5px 10px 5px 10px; /* top right bottom left */
+      background: #eee;
+      border-top: solid 1px #bbb;
+    };
+  }
+}

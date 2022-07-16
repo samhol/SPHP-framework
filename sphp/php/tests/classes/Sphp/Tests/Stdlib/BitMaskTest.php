@@ -20,12 +20,6 @@ class BitMaskTest extends TestCase {
     yield [-1];
   }
 
-  public function hexData(): iterable {
-    yield [0xf, 'f'];
-    yield [0xf, '#f'];
-    yield [0xf, '0xf'];
-  }
-
   public function binData(): iterable {
     yield [0b1, '1'];
     yield [0x0, '0'];
@@ -33,19 +27,42 @@ class BitMaskTest extends TestCase {
     yield [0x101, '0b101'];
   }
 
+  public function hexData(): iterable {
+    yield [0xfa1, 'fa1'];
+    yield [0xf1, '#f1'];
+    yield [0xf, '0xf'];
+  }
+
   /**
-   * @covers \Sphp\Stdlib\BitMask::fromHex
    * @dataProvider hexData
+   * 
    * @param int $bits
    * @param string $hex
    * @return void
    */
   public function testFromHex(int $bits, string $hex): void {
     $mask = new BitMask($bits);
+    $from = BitMask::from($hex);
     $fromHex = BitMask::fromHex($hex);
+    $this->assertEquals($mask, $from);
     $this->assertEquals($mask, $fromHex);
-    $this->assertEquals($mask->toInt(), $fromHex->toInt());
-    $this->assertTrue($mask == $fromHex);
+  }
+
+  public function invalidFromData(): iterable {
+    yield [''];
+    yield ['foo'];
+    yield ['# 0'];
+  }
+
+  /**
+   * @dataProvider invalidFromData
+   * 
+   * @param  string $hex 
+   * @return void
+   */
+  public function testFromInvalidHex(string $hex): void {
+    $this->expectException(InvalidArgumentException::class);
+    BitMask::fromHex($hex);
   }
 
   /**
@@ -104,7 +121,8 @@ class BitMaskTest extends TestCase {
 
   /**
    * @dataProvider bits
-   * @param int $bits
+   * 
+   * @param  int $bits
    * @return void
    */
   public function testIterating(int $bits): void {
@@ -114,111 +132,125 @@ class BitMaskTest extends TestCase {
     }
   }
 
-  public function containingPairs(): iterable {
-    yield [0, 0];
-    yield [0, 1];
-    yield [1, 1];
-    yield [0, PHP_INT_MAX];
-    yield [1, PHP_INT_MAX];
-    yield [PHP_INT_MAX, PHP_INT_MAX];
-    yield [0b010, 0b101];
-    yield [-1, 0];
-    yield [-1, 1];
-    yield [-1, -1];
+  public function arithmeticsData(): iterable {
+    yield [1, '0b10'];
+    yield ['0o0', -1];
+    yield [PHP_INT_MAX, -1];
   }
 
   /**
-   * @dataProvider containingPairs
+   * @dataProvider arithmeticsData
    * 
-   * @param int $first
-   * @param int $second
+   * @param  int|string $first
+   * @param  int|string $second
    * @return void
    */
-  public function testAND(int $first, int $second): void {
-    $m1 = new BitMask($first);
-    $m2 = new BitMask($second);
-    $and = $first & $second;
-    $m1ANDm2 = $m1->binAND($m2);
-    $m2ANDm1 = $m2->binAND($m1);
-    $m1ANDsecond = $m1->binAND($second);
-    $m2ANDfirst = $m2->binAND($first);
-    $this->assertSame($and, $m1ANDm2->toInt());
-    $this->assertSame($and, $m2ANDm1->toInt());
-    $this->assertSame($and, $m1ANDsecond->toInt());
-    $this->assertSame($and, $m2ANDfirst->toInt());
+  public function testAND(int|string $first, int|string $second): void {
+    $m1 = BitMask::from($first);
+    $m2 = BitMask::from($second);
+    $and = BitMask::parseInt($first) & BitMask::parseInt($second);
+    $this->assertNotSame($m1, $maskAnd = $m1->binAND($m2));
+    $this->assertSame($and, $maskAnd->toInt());
+    $this->assertEquals($maskAnd, $m1->binAND($second));
+    $this->assertEquals($maskAnd, $m2->binAND($first));
+    $this->assertEquals($maskAnd, $m2->binAND($m1));
   }
 
   /**
-   * @dataProvider containingPairs
+   * @dataProvider arithmeticsData
    * 
-   * @param int $first
-   * @param int $second
+   * @param  int|string $first
+   * @param  int|string $second
    * @return void
    */
-  public function testOR(int $first, int $second): void {
-    $m1 = new BitMask($first);
-    $m2 = new BitMask($second);
-    $or = $first | $second;
-    $m1ORm2 = $m1->binOR($m2);
-    $m2ORm1 = $m2->binOR($m1);
-    $m1ORsecond = $m1->binOR($second);
-    $m2ORfirst = $m2->binOR($first);
-    $this->assertSame($or, $m1ORm2->toInt());
-    $this->assertSame($or, $m2ORm1->toInt());
-    $this->assertSame($or, $m1ORsecond->toInt());
-    $this->assertSame($or, $m2ORfirst->toInt());
+  public function testOR(int|string $first, int|string $second): void {
+    $m1 = BitMask::from($first);
+    $m2 = BitMask::from($second);
+    $or = BitMask::parseInt($first) | BitMask::parseInt($second);
+    $this->assertNotSame($m1, $maskOr = $m1->binOR($m2));
+    $this->assertSame($or, $maskOr->toInt());
+    $this->assertEquals($maskOr, $m1->binOR($second));
+    $this->assertEquals($maskOr, $m2->binOR($first));
+    $this->assertEquals($maskOr, $m2->binOR($m1));
   }
 
   /**
-   * @dataProvider containingPairs
+   * @dataProvider arithmeticsData
    * 
-   * @param int $first
-   * @param int $second
+   * @param  int|string $first
+   * @param  int|string $second
    * @return void
    */
-  public function testXOR(int $first, int $second): void {
-    $m1 = new BitMask($first);
-    $m2 = new BitMask($second);
-    $xor = $first ^ $second;
-    $m1XORm2 = $m1->binXOR($m2);
-    $m2XORm1 = $m2->binXOR($m1);
-    $m1XORsecond = $m1->binXOR($second);
-    $m2XORfirst = $m2->binXOR($first);
-    $this->assertSame($xor, $m1XORm2->toInt());
-    $this->assertSame($xor, $m2XORm1->toInt());
-    $this->assertSame($xor, $m1XORsecond->toInt());
-    $this->assertSame($xor, $m2XORfirst->toInt());
+  public function testXOR(int|string $first, int|string $second): void {
+    $m1 = BitMask::from($first);
+    $m2 = BitMask::from($second);
+    $xor = BitMask::parseInt($first) ^ BitMask::parseInt($second);
+    $this->assertNotSame($m1, $maskXOR = $m1->binXOR($m2));
+    $this->assertSame($xor, $maskXOR->toInt());
+    $this->assertEquals($maskXOR, $m1->binXOR($second));
+    $this->assertEquals($maskXOR, $m2->binXOR($first));
+    $this->assertEquals($maskXOR, $m2->binXOR($m1));
   }
 
   /**
-   * @dataProvider containingPairs
+   * @dataProvider arithmeticsData
    * 
-   * @param int $first
-   * @param int $second
+   * @param  int|string $first
+   * @param  int|string $second
    * @return void
    */
-  public function testContains(int $first, int $second): void {
-    $m1 = new BitMask($first);
-    $m2 = new BitMask($second);
-    $l = ($first & $second) === $second;
-    $r = ($first & $second) === $first;
+  public function testContains(int|string $first, int|string $second): void {
+    $m1 = BitMask::from($first);
+    $m2 = BitMask::from($second);
+    $int1 = BitMask::parseInt($first);
+    $int2 = BitMask::parseInt($second);
+    $l = ($int1 & $int2) === $int2;
+    $r = ($int1 & $int2) === $int1;
     $this->assertSame($r, $m2->contains($m1));
     $this->assertSame($l, $m1->contains($m2));
   }
 
   public function equalPairs(): iterable {
-    yield [0, false];
-    yield [1, true];
-    yield [4, 4.2];
-    yield [42, '042'];
-    yield [42, '+42'];
-    yield [0, '0x0'];
+    yield [0, '0'];
+    yield [4, '4'];
+    yield [octdec('070'), '070'];
     yield [1, '0x1'];
-    yield [0xf, '0xf'];
     yield [0x1f, '#1f'];
-    yield [1, '0001'];
+    yield [1, '001'];
+    yield [octdec('0o12'), '0o12'];
     yield [1, '1'];
-    yield [1, new BitMask(1)];
+  }
+
+  /**
+   * @dataProvider equalPairs
+   * 
+   * @param  int $a
+   * @param  mixed $b
+   * @return void
+   */
+  public function testEquals(int $a, mixed $b): void {
+    $maskA = new BitMask($a);
+    $this->assertEquals($maskA, $mb = BitMask::from($b));
+    $this->assertTrue($maskA->equals($b));
+    $this->assertTrue($maskA->equals($mb));
+    $this->assertTrue($mb->equals($maskA));
+  }
+
+  public function nonEqualPairs(): iterable {
+    yield [PHP_INT_MAX, PHP_INT_MAX - 1];
+    yield [1, 'foo'];
+  }
+
+  /**
+   * @dataProvider nonEqualPairs
+   * 
+   * @param  int $a
+   * @param  mixed $b
+   * @return void
+   */
+  public function testNotEquals(int $a, int|string|Bitmask $b): void {
+    $maskA = new BitMask($a);
+    $this->assertFalse($maskA->equals($b));
   }
 
   /**
@@ -234,7 +266,7 @@ class BitMaskTest extends TestCase {
 
   public function testFromInvalid(): void {
     $this->expectException(InvalidArgumentException::class);
-    BitMask::from(new \stdClass());
+    BitMask::from('foo');
   }
 
   public function octalData(): iterable {
@@ -267,7 +299,7 @@ class BitMaskTest extends TestCase {
     yield ['0b01', true];
     yield ['000', true];
     yield ['010', true];
-    yield ['1', true];
+    yield ['101', true];
     yield ['-0', false];
     yield ['0b2', false];
     yield ['2', false];
@@ -283,44 +315,12 @@ class BitMaskTest extends TestCase {
   public function testFromBinary(string $a, bool $valid): void {
     if ($valid) {
       $dec = bindec($a);
-      $this->assertEquals(new Bitmask($dec), BitMask::fromBinary($a), "value: $a cannot be converted to a Bitmask");
+      $this->assertEquals(new Bitmask($dec), BitMask::fromBinary($a),
+              "value: $a cannot be converted to a Bitmask");
     } else {
       $this->expectException(InvalidArgumentException::class);
       BitMask::fromBinary($a);
     }
-  }
-
-  /**
-   * @dataProvider equalPairs
-   * 
-   * @param  int $a
-   * @param  mixed $b
-   * @return void
-   */
-  public function testEquals(int $a, $b): void {
-    $maskA = new BitMask($a);
-    $this->assertEquals($maskA, BitMask::from($b));
-    $this->assertTrue($maskA->equals($b));
-  }
-
-  public function nonEqualPairs(): iterable {
-    yield [1, false];
-    yield [0, true];
-    yield [PHP_INT_MAX, PHP_INT_MAX - 1];
-    yield [1, new \stdClass()];
-  }
-
-  /**
-   * @covers \Sphp\Stdlib\BitMask::equals
-   * @dataProvider nonEqualPairs
-   * @param int $a
-   * @param mixed $b
-   * @return void
-   */
-  public function testNotEquals(int $a, $b): void {
-    $maskA = new BitMask($a);
-    $this->assertFalse($maskA->equals($b));
-    //$this->assertNotEquals($maskA, BitMask::from($b));
   }
 
   public function intData(): iterable {
@@ -373,6 +373,27 @@ class BitMaskTest extends TestCase {
       $this->assertSame($mask->getBit($index), $bin);
     }
     $this->assertTrue(str_ends_with(Strings::reverse(implode($array)), $string));
+  }
+
+  public function parseIntData(): iterable {
+    yield [0, '0o0'];
+    yield [0, '0x0'];
+    yield [0, '#0'];
+    yield [0, '0'];
+    yield [783, '783'];
+    yield [1, '0x1'];
+    yield [0xf, '#f'];
+  }
+
+  /**
+   * @dataProvider parseIntData
+   *  
+   * @param  int $expected
+   * @param  string $str
+   * @return void
+   */
+  public function testParseInt(int $expected, string $str): void {
+    $this->assertSame($expected, BitMask::parseInt($str));
   }
 
 }

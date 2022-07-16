@@ -37,14 +37,14 @@ class PhotoValidator extends AbstractValidator {
       case UPLOAD_ERR_OK:
         break;
       case UPLOAD_ERR_NO_FILE:
-        $this->getErrors()->append('No file was uploaded.');
+        $this->getMessages()->append('No file was uploaded.');
         $out = false;
       case UPLOAD_ERR_INI_SIZE:
       case UPLOAD_ERR_FORM_SIZE:
-        $this->getErrors()->append('Exceeded filesize limit.');
+        $this->getMessages()->append('Exceeded filesize limit.');
         $out = false;
       default:
-        $this->getErrors()->append('Unknown errors.');
+        $this->getMessages()->append('Unknown errors.');
         $out = false;
     }
     return $out;
@@ -74,14 +74,14 @@ class PhotoValidator extends AbstractValidator {
     $valid = false;
     $this->setValue($value);
     if (!is_array($value)) {
-      $this->getErrors()->append('Not an array value');
+      $this->getMessages()->append('Not an array value');
     } else if (!array_key_exists($this->inputName, $value)) {
-      $this->getErrors()->append('Upload does not containt valid field');
+      $this->getMessages()->append('Upload does not containt valid field');
     } else if (!isset($value[$this->inputName]['error']) ||
             is_array($value[$this->inputName]['error'])) {
-      $this->getErrors()->append('Invalid parameters');
+      $this->getMessages()->append('Invalid parameters');
     } else if (!$this->checkFiletype($value[$this->inputName]['tmp_name'])) {
-      $this->getErrors()->append('invalid filetype.');
+      $this->getMessages()->append('invalid filetype.');
     } else {
       $valid = $this->checkErrorValue($value[$this->inputName]['error']);
     }

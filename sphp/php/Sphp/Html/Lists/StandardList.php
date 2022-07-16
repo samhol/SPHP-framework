@@ -96,8 +96,11 @@ abstract class StandardList extends AbstractComponent implements IteratorAggrega
    * @param  mixed $item the item or the content of it
    * @return StandardListItem appended instance
    */
-  public function append($item): StandardListItem {
-    if (!$item instanceof StandardListItem) {
+  public function append(mixed $item = null): StandardListItem {
+    if($item === null) {
+      $item = new Li();
+    }
+    else if (!$item instanceof StandardListItem) {
       $item = new Li($item);
     }
     $this->items[] = $item;

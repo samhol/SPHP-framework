@@ -25,15 +25,27 @@ use Sphp\Validators\Regex;
  */
 class RegexTest extends TestCase {
 
-  public function testWithSkip() {
-    $regex = new Regex('/foo/', 'Foo is bar');
+  public function testWithSkip(): void {
+    $regex = new Regex('/foo/', $message = 'Not a foo');
     $this->assertTrue($regex->isValid('foop'));
-    $this->assertCount(0, $regex->getErrors());
+    $this->assertCount(0, $regex->getMessages());
     $this->assertFalse($regex->isValid('fo op'));
-    $this->assertContains('Foo is bar', $regex->getErrors());
+    $this->assertCount(1, $regex->getMessages());
+    $this->assertContains($message, $regex->getMessages());
     $this->assertSame($regex, $regex->skip(null));
     $this->assertTrue($regex->isValid(null));
     $this->assertFalse($regex->isValid('fo op'));
+  }
+
+  public function testInvalidTypes(): void {
+    $regex = new Regex('/foo/', 'Foo is bar');
+    $this->assertFalse($regex->isValid($invalid = new \stdClass()));
+    $this->assertCount(1, $regex->getMessages());
+    $this->assertEquals(
+            $regex->getMessages()->buildMessageFromTemplate(Regex::INVALID, [':type' => gettype($invalid)]),
+            $regex->getMessages()->getFirstMessage());
+    $this->assertSame($regex, $regex->skip($invalid));
+    $this->assertTrue($regex->isValid($invalid));
   }
 
 }

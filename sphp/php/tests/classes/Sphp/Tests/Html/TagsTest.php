@@ -26,7 +26,7 @@ use Sphp\Html\ContainerTag;
 
 class TagsTest extends TestCase {
 
-  public function tags(): array {
+  public function tags(): iterable {
     return [
         ['html', \Sphp\Html\Html::class],
         ['base', \Sphp\Html\Head\Base::class],
@@ -123,39 +123,27 @@ class TagsTest extends TestCase {
     $this->assertEquals($obj1, $obj2);
     $this->assertSame($tagName, $obj1->getTagName());
   }
-
-  /**
-   * list of tags and their corresponding PHP classes
-   *
-   * @var mixed[]
-   */
-  public function tagList(): array {
-    return [
-        'a' => [Navigation\A::class, ['/foo']],
-        'InlineScript' => [Scripts\InlineScript::class, ['var foo;']],
-        'script' => [Scripts\ExternalScript::class, ['/foo.png']],
-        'img' => [Media\Img::class, ['/foo.png', 'alt']],
-        'style' => [ContainerTag::class, []],
-        'wbr' => [EmptyTag::class, []],
-        'track' => [Media\Multimedia\Track::class, ['/foo.vtt']],
-        'source' => [Media\Multimedia\Source::class, ['/foo.mp4']],
-        'p' => [Text\Paragraph::class, ['cont']],
-        'section' => [Layout\Section::class, ['cont']],
-        'article' => [Layout\Article::class, ['cont']],
-        'aside' => [Layout\Aside::class, ['cont']],
-        'main' => [Layout\Main::class, ['cont']],
-        'footer' => [Layout\Footer::class, ['cont']],
-    ];
+ 
+  public function withArgumentsData(): iterable {
+    yield ['track', ['/foo.vtt'], \Sphp\Html\Media\Multimedia\Track::class];
+    yield ['source', ['/foo.mp4'], \Sphp\Html\Media\Multimedia\Source::class];
   }
 
-  public function testFactoring(): void {
-    foreach ($this->tagList() as $call => $data) {
-      //echo "\ncall: $call";
-      $obj1 = Tags::create($call, ...$data[1]);
-      $this->assertInstanceOf($data[0], $obj1);
-      $this->assertInstanceOf($data[0], Tags::$call(...$data[1]));
-      $this->assertTrue(str_contains("$obj1", '<' . $obj1->getTagName()));
-    }
+  /**
+   * @dataProvider withArgumentsData
+   * 
+   * @param  string $call
+   * @param  array $arguments
+   * @param  string $expectedType
+   * @return void
+   */
+  public function testFactoringWithArguments(string $call,array $arguments, string $expectedType): void {
+      $obj = Tags::create($call, ...$arguments);
+      $obj1 = Tags::$call(...$arguments);
+      $expectedObj = new $expectedType(...$arguments);
+      $this->assertEquals($expectedObj, $obj);
+      $this->assertEquals($expectedObj, $obj1);  
+  
   }
 
   public function testInvalidCreateMethodCall(): void {

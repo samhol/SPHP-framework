@@ -28,21 +28,38 @@ use Sphp\DateTime\DateTimes;
  */
 class Reference extends AbstractContent {
 
-  private A $link;
-  private DateTimeInterface|Date $retrieved;
+  private string $groupName;
+  private string $href;
+  private string $linkText;
+  private DateTimeInterface|Date|null $retrieved = null;
 
-  public function __construct(string $href, ?string $linkText, \DateTimeInterface|string|null $retrieved = null) {
-    $this->link = new A($href, $linkText . ' <i class="fa-solid fa-arrow-up-right-from-square fa-fw"></i>');
-    $this->link->setRelationship('nofollow');
-    $this->retrieved = DateTimes::dateTimeImmutable($retrieved);
+  public function __construct(string $href, ?string $linkText, Date|DateTimeInterface|string|null $retrieved = null) {
+    $this->href = $href;
+    $this->linkText = $linkText;
+    $this->groupName = ReferenceGroup::parseGroupName($href);
+    if ($retrieved !== null) {
+      $this->retrieved = DateTimes::dateTimeImmutable($retrieved);
+    }
+  }
+
+  public function getGroup(): string {
+    return $this->groupName;
+  }
+
+  public function getHref(): string {
+    return $this->href;
   }
 
   public function getHtml(): string {
-    $out = $this->link->getHtml();
-    if (isset($this->retrieved)) {
-      $out .= '. <wbr> Retrieved: <code>' . $this->retrieved->format('Y-m-d') . '</code>';
+    $link = new A($this->href, '<span class="text">' . $this->linkText . '</span> <i class="fa-solid fa-arrow-up-right-from-square fa-fw"></i>');
+    $link->setRelationship('nofollow');
+    $link->addCssClass('d-block mx-2 ref');
+    if ($this->retrieved !== null) {
+      $timeTag = new \Sphp\Html\Text\Time($this->retrieved->format('F jS, Y'));
+      $timeTag->setDateTime($this->retrieved, 'Y-m-d');
+      $link->append('<div class="ps-4 retrieved">retrieved ' . $timeTag . '</div>');
     }
-    return $out;
+    return $link->getHtml();
   }
 
 }

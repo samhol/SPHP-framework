@@ -23,9 +23,23 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-abstract class Strings {
+final class Strings {
 
-  public const UPPER_CASE = \MB_CASE_UPPER;
+  public const TYPE_ALPHA = '/^[[:alpha:]]*$/';
+  public const TYPE_ALPHANUM = '/^[[:alnum:]]*$/';
+  public const TYPE_BINARY = '/^(0b)?[0-1]{1,}$/';
+
+  /**
+   * An octal number is a number that consists of the digits 0 to 7. The number 
+   * must either have at least one leading zero, or it must be prefixed with 0o
+   */
+  public const TYPE_OCTAL = '/^(0o|0){1}[0-7]*$/';
+  public const TYPE_HEX = '/^(#|0x){0,1}[[:xdigit:]]{1,}$/';
+  public const TYPE_BLANK = '/^[[:space:]]{1,}$/';
+  public const TYPE_NUM = '"/^\\d+$/"';
+  public const CASE_UPPER = MB_CASE_UPPER;
+  public const CASE_LOWER = MB_CASE_LOWER;
+  public const CASE_TITLE = MB_CASE_TITLE;
 
   /**
    * Performs a regular expression match
@@ -35,9 +49,7 @@ abstract class Strings {
    * @return bool true if string matches to the regular expression, false otherwise
    */
   public static function match(string $string, string $pattern): bool {
-    //$e = ErrorToExceptionThrower::getInstance(InvalidArgumentException::class)->start();
     $result = preg_match($pattern, $string) === 1;
-    //$e->stop();
     return $result;
   }
 
@@ -48,16 +60,16 @@ abstract class Strings {
    * @param  string $pattern the pattern to search for, as a string
    * @param  string $replacement the replacement text.
    * @param  string $option
-   * @param  string $encoding the encoding parameter is the character encoding.
+   * @param  string|null $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return string|boolean the resultant string on success, or false on error
    * @link   https://www.php.net/manual/en/function.mb-ereg-replace.php
    */
-  public static function regexReplace(string $string, string $pattern, string $replacement, $option = null, $encoding = null): string {
+  public static function regexReplace(string $string, string $pattern, string $replacement, ?string $option = null, string|null $encoding = null): string {
     $regexEncoding = mb_regex_encoding();
-    mb_regex_encoding(self::getEncoding($encoding));
+    mb_regex_encoding($encoding);
     if ($option === null) {
-      $option = 'msr';
+      //  $option = 'msr';
     }
     // echo "pattern:$pattern\n";
     $result = \mb_ereg_replace($pattern, $replacement, $string, $option);
@@ -66,30 +78,31 @@ abstract class Strings {
   }
 
   /**
-   * Replaces all occurrences of $search in $str by $replacement
-   *
-   * @param  string $string the input string
-   * @param  string $search      The needle to search for
-   * @param  string $replacement The string to replace with
-   * @return string the resulting string after the replacements
+   * 
+   * @param  string $string
+   * @param  string $replace
+   * @param  int $offset
+   * @param  int $length
+   * @param  string|null $encoding
+   * @return string
    */
-  public static function replace(string $string, string $search, string $replacement): string {
-    return static::regexReplace($string, preg_quote($search), $replacement);
+  public static function substringReplace(string $string, string $replace, int $offset, int $length, string|null $encoding = null): string {
+    return mb_substr($string, 0, $offset, $encoding) . $replace . mb_substr($string, $offset + $length, null, $encoding);
   }
 
   /**
    * Returns a reversed string
    *
    * @param  string $string the input string
-   * @param  string $encoding the encoding parameter is the character encoding.
+   * @param  string|null $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return string string reversed string 
    */
-  public static function reverse(string $string, string $encoding = null): string {
-    $strLength = static::length($string, $encoding);
+  public static function reverse(string $string, ?string $encoding = null): string {
+    $strLength = mb_strlen($string, $encoding);
     $reversed = '';
     for ($i = $strLength - 1; $i >= 0; $i--) {
-      $reversed .= \mb_substr($string, $i, 1, static::getEncoding($encoding));
+      $reversed .= \mb_substr($string, $i, 1, $encoding);
     }
     return $reversed;
   }
@@ -101,13 +114,13 @@ abstract class Strings {
    *
    * @param  string $string the input string
    * @param  string|null  $charMask optional string of characters to strip
-   * @param  string $encoding the encoding parameter is the character encoding.
+   * @param  string|null $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return string trimmed string 
    */
-  public static function trim(string $string, ?string $charMask = null, string $encoding = null): string {
+  public static function trim(string $string, ?string $charMask = null, ?string $encoding = null): string {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
-    return static::regexReplace($string, "^[$chars]+|[$chars]+$", '', 'msr', static::getEncoding($encoding));
+    return static::regexReplace($string, "^[$chars]+|[$chars]+$", '', 'msr', $encoding);
   }
 
   /**
@@ -117,14 +130,14 @@ abstract class Strings {
    * string of characters to strip instead of the defaults.
    *
    * @param  string $string the input string
-   * @param  string  $charMask optional string of characters to strip
-   * @param  string $encoding the encoding parameter is the character encoding.
+   * @param  string|null $charMask optional string of characters to strip
+   * @param  string|null $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return string trimmed string 
    */
-  public static function trimLeft(string $string, string $charMask = null, string $encoding = null): string {
+  public static function trimLeft(string $string, ?string $charMask = null, ?string $encoding = null): string {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
-    return static::regexReplace($string, "^[$chars]+", '', 'msr', static::getEncoding($encoding));
+    return static::regexReplace($string, "^[$chars]+", '', 'msr', $encoding);
   }
 
   /**
@@ -139,9 +152,9 @@ abstract class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return string trimmed string 
    */
-  public static function trimRight(string $string, string $charMask = null, string $encoding = null): string {
+  public static function trimRight(string $string, string $charMask = null, ?string $encoding = null): string {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
-    return static::regexReplace($string, "[$chars]+$", '', 'msr', static::getEncoding($encoding));
+    return static::regexReplace($string, "[$chars]+$", '', 'msr', $encoding);
   }
 
   /**
@@ -156,10 +169,9 @@ abstract class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return string the trimmed string
    */
-  public static function collapseWhitespace(string $string, string $encoding = null): string {
-    $enc = self::getEncoding($encoding);
-    $collapsed = static::regexReplace($string, '[[:space:]]+', ' ', 'msr', $enc);
-    return static::trim($collapsed, null, $enc);
+  public static function collapseWhitespace(string $string, ?string $encoding = null): string {
+    $collapsed = static::regexReplace($string, '[[:space:]]+', ' ', 'msr', $encoding);
+    return static::trim($collapsed, null, $encoding);
   }
 
   /**
@@ -205,39 +217,6 @@ abstract class Strings {
   }
 
   /**
-   * Returns the number of occurrences of $substring in the given string
-   * 
-   * By default, the comparison is case-sensitive, but can be made insensitive
-   * by setting $caseSensitive to false.
-   *
-   * @param  string $string the string being checked
-   * @param  string $substring     The substring to search for
-   * @param  bool $caseSensitive Whether or not to enforce case-sensitivity
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return int The number of $substring occurrences
-   */
-  public static function countSubstr(string $string, string $substring, bool $caseSensitive = true, string $encoding = null): int {
-    $enc = self::getEncoding($encoding);
-    if (!$caseSensitive) {
-      $string = \mb_strtoupper($string, $enc);
-      $substring = \mb_strtoupper($substring, $enc);
-    }
-    return \mb_substr_count($string, $substring, $enc);
-  }
-
-  /**
-   * Checks whether a $haystack string starts with any of the given needles
-   *
-   * @param  string $haystack the string being checked
-   * @param  string $needle the start to compare with
-   * @return bool true if the haystack starts with any of the given needles
-   */
-  public static function startsWith(string $haystack, string $needle): bool {
-    return (string) $needle !== '' && strncmp($haystack, $needle, strlen($needle)) === 0;
-  }
-
-  /**
    * Returns the character at $index, with indexes starting at 0
    *
    * @param  string $string the input string
@@ -248,8 +227,8 @@ abstract class Strings {
    * @throws OutOfBoundsException if the index does not exist
    */
   public static function charAt(string $string, int $index, ?string $encoding = null): string {
-    $length = static::length($string, $encoding);
-    if (($index >= 0 && $length <= $index) || $length < $index) {
+    $length = mb_strlen($string, $encoding);
+    if ($index < 0 || $length < $index) {
       throw new OutOfBoundsException("No character exists at the index: ($index)");
     }
     return \mb_substr($string, $index, 1, $encoding);
@@ -264,101 +243,7 @@ abstract class Strings {
    * @return array an array of string chars
    */
   public static function toArray(string $string, ?string $encoding = null): array {
-    $length = static::length($string, $encoding);
-    $arr = [];
-    for ($i = 0; $i < $length; $i += 1) {
-      $arr[] = mb_substr($string, $i, 1, $encoding);
-    }
-    return $arr;
-  }
-
-  /**
-   * Returns the index of the first occurrence of $needle in the string
-   * 
-   * Returns false if the needle was not found. Accepts an optional offset from 
-   * which to begin the search.
-   *
-   * @param  string $string input string
-   * @param  string $needle Substring to look for
-   * @param  int $offset Offset from which to search
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return int|bool The occurrence's index if found, otherwise false
-   */
-  public static function indexOf(string $string, string $needle, int $offset = 0, ?string $encoding = null) {
-    return \mb_strpos($string, $needle, $offset, $encoding);
-  }
-
-  /**
-   * Checks whether the given string is empty
-   * 
-   * @param  string $string checked string
-   * @return bool true if the string is empty, false otherwise
-   */
-  public static function isEmpty(string $string): bool {
-    return $string === '';
-  }
-
-  /**
-   * Returns the length of the given string
-   * 
-   * @param  string $str a string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return int the length of the given string
-   */
-  public static function length(string $str, ?string $encoding = null): int {
-    return mb_strlen($str, $encoding);
-  }
-
-  /**
-   * Checks whether or not the input string contains only alphabetic chars
-   * 
-   * @param  string $string checked string 
-   * @return bool returns true if the string contains only alphabetic chars, false otherwise.
-   */
-  public static function isAlpha(string $string): bool {
-    return self::match($string, '/^[[:alpha:]]*$/');
-  }
-
-  /**
-   * Checks whether or not the input string contains only alphanumeric chars
-   *
-   * @param  string $string checked string 
-   * @return bool returns true if the string contains only alphanumeric chars, false otherwise
-   */
-  public static function isAlphanumeric(string $string): bool {
-    return self::match($string, '/^[[:alnum:]]*$/');
-  }
-
-  /**
-   * Checks whether or not the input string contains only whitespace chars
-   *
-   * @param  string $string checked string 
-   * @return bool returns true if the string contains only whitespace chars, false otherwise
-   */
-  public static function isBlank(string $string): bool {
-    return self::match($string, '/^[[:space:]]{1,}$/');
-  }
-
-  /**
-   * Checks whether or not the input string contains only hexadecimal chars
-   *
-   * @param  string $string checked string
-   * @return bool returns true if the string contains only hexadecimal chars, false otherwise
-   */
-  public static function isHexadecimal(string $string): bool {
-    return self::match($string, '/^(#|0x){0,1}[[:xdigit:]]{1,}$/');
-  }
-
-  /**
-   * Checks whether or not the input string contains only binary chars
-   * 
-   * @param  string $string checked string
-   * @return bool returns true if the string contains only binary chars, false otherwise
-   */
-  public static function isBinary(string $string): bool {
-    return self::match($string, '/^[0-1]+$/');
+    return mb_str_split($string, 1, $encoding);
   }
 
   /**
@@ -370,35 +255,14 @@ abstract class Strings {
    * @param  string $string checked string
    * @return bool true if the string is in JSON format, false otherwise
    */
-  public static function isJson(string $string): bool {
-    json_decode($string);
-    return (json_last_error() === JSON_ERROR_NONE);
-  }
-
-  /**
-   * Perform a case folding on a string
-   *
-   * @param  string $string the input string
-   * @param  int $mode the mode of the conversion. It can be one of `MB_CASE_UPPER`, `MB_CASE_LOWER`, or `MB_CASE_TITLE`.
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return string A case folded version of string converted in the way specified by mode
-   */
-  public static function convertCase(string $string, int $mode, ?string $encoding = null): string {
-    return \mb_convert_case($string, $mode, $encoding);
-  }
-
-  /**
-   * Checks the case folding of a string
-   *
-   * @param  string $string checked string
-   * @param  int $mode the mode of the conversion. It can be one of `MB_CASE_UPPER`, `MB_CASE_LOWER`, or `MB_CASE_TITLE`.
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool returns true if the string is converted according to the way specified by mode
-   */
-  public static function caseIs(string $string, int $mode, string $encoding = null): bool {
-    return static::convertCase($string, $mode, $encoding) === $string;
+  public static function typeIs(string $string, int|string $type): bool {
+    $out = false;
+    if (is_string($type)) {
+      $out = self::match($string, $type);
+    } else {
+      $out = mb_convert_case($string, $type) === $string;
+    }
+    return $out;
   }
 
   /**
@@ -414,76 +278,13 @@ abstract class Strings {
     if ($length < 1) {
       throw new InvalidArgumentException('Cannot generate zero length random string');
     }
-
-    // Remove duplicate characters from $charset
-    // $charset = implode(array_unique(static::toArray($charset)));
-    $charArray = array_values(array_unique(static::toArray($charset)));
-    $char_max = count($charArray) - 1;
-    // This is the maximum index for all of the characters in the string $charset
-    // $charset_max = mb_strlen($charset) - 1;
-    if ($char_max < 1) {
-      // Avoid letting users do: random_str($int, 'a'); -> 'aaaaa...'
-      throw new LogicException(
-                      'random_str - Argument 2 - expected a string that contains at least 2 distinct characters'
-      );
+    $input_length = strlen($charset);
+    $random_string = '';
+    for ($i = 0; $i < $length; $i++) {
+      $random_character = $charset[mt_rand(0, $input_length - 1)];
+      $random_string .= $random_character;
     }
-    // Now that we have good data, this is the meat of our function:
-    $output = '';
-    for ($i = 0; $i < $length; ++$i) {
-      $r = random_int(0, $char_max);
-      $output .= $charArray[$r];
-    }
-    return $output;
-  }
-
-  /**
-   * 
-   * @param  string|null $encoding
-   * @return string
-   */
-  public static function getEncoding(string $encoding = null): string {
-    if ($encoding === null) {
-      $encoding = \mb_internal_encoding();
-    }
-    //echo "current encoding:(".$encoding.")\n";
-    return $encoding;
-  }
-
-  /**
-   * Convert all HTML entities to their applicable characters
-   *
-   * **Notes:**
-   *
-   * * Converts both double and single quotes as default
-   * * The default value for the encoding parameter is UTF-8 for all PHP versions
-   *
-   * @param  string $string the input string
-   * @param  int $flags a bitmask of one or more of the flags
-   * @return string the decoded string
-   * $link   http://fi1.php.net/manual/en/function.html-entity-decode.php html_entity_decode (PHP)
-   */
-  public static function htmlDecode(string $string, int $flags = ENT_COMPAT): string {
-    $encoding = mb_detect_encoding($string, 'utf-8');
-    return html_entity_decode($string, $flags, $encoding);
-  }
-
-  /**
-   * Convert all applicable characters to HTML entities
-   *
-   * **Notes:**
-   *
-   * * Converts both double and single quotes as default
-   * * The default value for the encoding parameter is UTF-8 for all PHP versions
-   * * Unlike the native PHP function; this method will not double encode existing html entities
-   *
-   * @param  string $string the input string
-   * @param  int $flags a bitmask of one or more of the flags
-   * @return string the encoded string
-   * $link   https://www.php.net/manual/en/function.htmlentities.php htmlentities (PHP)
-   */
-  public static function htmlEncode(string $string, int $flags = ENT_COMPAT): string {
-    $encoding = mb_detect_encoding($string, 'utf-8');
-    return htmlentities($string, $flags, $encoding);
+    return $random_string;
   }
 
 }

@@ -15,6 +15,7 @@ namespace Sphp\Documentation\Linkers\PHP\PHPManual;
 use Sphp\Documentation\Linkers\PHP\PHPApiUrlGenerator;
 use Sphp\Documentation\Linkers\PHP\PHPManual\Books\ExtensionDataManager;
 use Sphp\Documentation\Linkers\Exceptions\NonDocumentedFeatureException;
+use Sphp\Stdlib\Strings;
 
 /**
  * URL string generator pointing to online PHP Manual
@@ -41,6 +42,68 @@ class PHPManualURLs implements PHPApiUrlGenerator, ManualURL {
 
   public function __destruct() {
     unset($this->root);
+  }
+
+  /**
+   * Returns linker properties or hyperlinks
+   * 
+   * @param  string $name
+   * @return ItemLinker
+   * @throws NonDocumentedFeatureException
+   */
+  public function build(string $name): string {
+    try {
+      if (str_contains($name, '::')) {
+        $parts = explode('::', $name);
+        list($class, $member) = $parts;
+        $url = $this->parseClassMember($class, $member);
+      } else if (str_ends_with($name, '()') || function_exists($name)) {
+        $url = $this->getFunctionUrl(str_replace('()', '', $name));
+      } else if (defined($name)) {
+        $url = $this->getConstantUrl($name);
+      } else if (class_exists($name) || interface_exists($name) || trait_exists($name)) {
+        $url = $this->getClassUrl($name);
+      } else if (Strings::match($name, '/^[A-Z_\x7f-\xff][A-Z0-9_\x7f-\xff]*$/')) {
+        $url = $this->getConstantUrl($name);
+      } else if (str_starts_with($name, 'ext:')) {
+        $bookName = str_replace('ext:', '', $name);
+        $url = ExtensionDataManager::instance()->getReference($bookName)?->getURL();
+      }else if (PHPWords::fullCollection()->containsWord($name)) {
+        $url = $this->languageReference($name);
+      } else {
+        $url = $this->getNamespaceUrl($name);
+      }
+      return $url;
+    } catch (\Exception $ex) {
+      throw new NonDocumentedFeatureException("Invalid type name given ($name)", 0, $ex);
+    }
+  }
+
+  /**
+   * Returns a hyperlink object pointing to the API documentation of the given property or method
+   * 
+   * @param  string $member
+   * @return ItemLinker
+   * @throws NonDocumentedFeatureException if the class member not found in class
+   */
+  public function parseClassMember(string $class, string $member): ?string {
+
+    try {
+      $link = null;
+      if (str_ends_with($member, '()')) {
+        $link = $this->getClassMethodUrl($class, $member);
+      } else if (str_starts_with($member, '$')) {
+        $link = $this->getClassPropertyUrl($class, str_replace('$', '', $member));
+      } else if (Strings::match($member, '/^[A-Z_\x7f-\xff][A-Z0-9_\x7f-\xff]*$/')) {
+        $link = $this->getClassConstantUrl($class, $member);
+      }
+    } catch (\Exception $ex) {
+      throw new NonDocumentedFeatureException("Class member not found in class $class", 0, $ex);
+    }
+    if (!isset($link)) {
+      throw new NonDocumentedFeatureException("Class member not found in class");
+    }
+    return $link;
   }
 
   public function getConstantUrl(string $constant): string {

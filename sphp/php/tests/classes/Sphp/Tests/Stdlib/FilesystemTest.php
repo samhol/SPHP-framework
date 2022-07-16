@@ -99,6 +99,12 @@ class FilesystemTest extends TestCase {
   public function testPhpFileExecution1(): void {
     $string = Filesystem::executePhpToString('./sphp/php/tests/files/md.php');
     $this->assertEquals('#test{foo=bar}', $string);
+  }
+
+  /**
+   * @return void
+   */
+  public function testPhpFileExecutionForNotAFile(): void {
     $this->expectException(FileSystemException::class);
     Filesystem::executePhpToString('foo.php');
   }

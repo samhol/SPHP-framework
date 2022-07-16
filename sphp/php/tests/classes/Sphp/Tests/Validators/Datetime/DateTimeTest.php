@@ -14,7 +14,6 @@ namespace Sphp\Tests\Validators\Datetime;
 
 use Sphp\Tests\Validators\ValidatorTestCase;
 use Sphp\Validators\Datetime\DatetimeFormat;
-use Sphp\Validators\Validator;
 
 class DateTimeTest extends ValidatorTestCase {
 
@@ -37,30 +36,30 @@ class DateTimeTest extends ValidatorTestCase {
   }
 
   public function testConstructor(): void {
-    $this->assertCount(0, $this->validator->getErrors());
+    $this->assertCount(0, $this->validator->getMessages());
   }
 
   public function testValidValue(): void {
     $this->assertTrue($this->validator->isValid('2018-3-2 12:03:12'));
-    $this->assertCount(0, $this->validator->getErrors());
+    $this->assertCount(0, $this->validator->getMessages());
   }
 
   public function testInvalidValue(): void {
     $this->assertFalse($this->validator->isValid([]));
-    $errors = $this->validator->getErrors()->toArray();
+    $errors = $this->validator->getMessages()->toArray();
     $this->assertContains('Please insert correct date and time', $errors);
   }
 
-  public function createValidator(): Validator {
+  public function createValidator(): DatetimeFormat {
     return new DatetimeFormat();
   }
 
-  public function getInvalidValue() {
-    return 'foo';
+  public function invalidValuesProvider(): iterable {
+    yield ['foo'];
   }
 
-  public function getValidValue() {
-    return '2018-3-2 12:03:12';
+  public function validValuesProvider(): iterable {
+    yield ['2018-3-2 12:03:12'];
   }
 
 }

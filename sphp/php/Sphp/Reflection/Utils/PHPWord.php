@@ -27,20 +27,20 @@ class PHPWord {
   /**
    * PHP keyword flag
    */
-  public const KEYWORD = 0b00000000000001;
-  public const OOP = 0b00000000000010;
-  public const RESERVED_WORD = 0b00000000000100;
+  public const KEYWORD =            0b00000000000001;
+  public const OOP =                0b00000000000010;
+  public const RESERVED_WORD =      0b00000000000100;
   public const SOFT_RESERVED_WORD = 0b00000000001000;
-  public const MAGIC_METHOD = 0b00000000100010;
-  public const MAGIC_CONST = 0b00000000000101;
-  public const TYPE = 0b10000000000000;
-  public const PRIMITIVE_TYPE = 0b11000000000100;
-  public const OOP_TYPE = 0b11000000000010;
-  public const PSEUDO_TYPE = 0b10100000000000;
-  public const PREDEFINED_VAR = 0b00010000000000;
-  public const OPERATOR = 0b00000010000000;
-  public const LOGIGAL_OPERATOR = 0b00000110000000;
-  public const CONTROL_STRUCTURE = 0b00000001000001;
+  public const MAGIC_METHOD =       0b00000000100010;
+  public const MAGIC_CONST =        0b00000000000101;
+  public const TYPE =               0b10000000000000;
+  public const PRIMITIVE_TYPE =     0b11000000000100;
+  public const OOP_TYPE =           0b11000000000010;
+  public const PSEUDO_TYPE =        0b10100000000000;
+  public const PREDEFINED_VAR =     0b00010000000000;
+  public const OPERATOR =           0b00000010000000;
+  public const LOGIGAL_OPERATOR =   0b00000110000000;
+  public const CONTROL_STRUCTURE =  0b00000001000001;
 
   private string $name;
   private BitMask $type;

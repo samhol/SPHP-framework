@@ -12,11 +12,11 @@ declare(strict_types=1);
 
 namespace Sphp\Apps\ContactForm;
 
-use Sphp\Validators\FormValidator;
+use Sphp\Validators\MapValidator;
 use Sphp\Validators\Whitelist;
 use Sphp\Validators\ValidatorChain;
 use Sphp\Validators\NotEmpty;
-use Sphp\Validators\MessageManager;
+use Sphp\Stdlib\MessageManager;
 use Sphp\Validators\Regex;
 
 /**
@@ -29,7 +29,7 @@ use Sphp\Validators\Regex;
  */
 class ContactFormValidator implements \Sphp\Validators\Validator {
 
-  private FormValidator $formDataValidator;
+  private MapValidator $formDataValidator;
   private Whitelist $whitelistValidator;
 
   /**
@@ -45,7 +45,7 @@ class ContactFormValidator implements \Sphp\Validators\Validator {
         'message',
         'g-recaptcha-response',
         'contact-form-token'], 'Lomake sisältää virheitä');
-    $this->formDataValidator = new FormValidator();
+    $this->formDataValidator = new MapValidator();
     $this->formDataValidator->setValidator('name', $this->createNameValidator());
     $this->formDataValidator->setValidator('email', $this->createEmailValidator());
     $this->formDataValidator->setValidator('phone', $this->createPhonenumberValidator());
@@ -54,19 +54,19 @@ class ContactFormValidator implements \Sphp\Validators\Validator {
 
   private function createNameValidator(): ValidatorChain {
     $chain = new ValidatorChain(true);
-    $chain->notEmpty(NotEmpty::STRING_TYPE, 'Name is required');
+    $chain->notEmpty('Name is required');
     $chain->regex("/[a-zåäö]+/", 'A name must contain letters');
     return $chain;
   }
 
   private function createMessageValidator(): NotEmpty {
-    $chain = new NotEmpty(NotEmpty::STRING_TYPE, 'Message is required');
+    $chain = new NotEmpty('Message is required');
     return $chain;
   }
 
   private function createEmailValidator(): ValidatorChain {
     $chain = new ValidatorChain(true);
-    $chain->notEmpty(NotEmpty::STRING_TYPE, 'Email address is required');
+    $chain->notEmpty('Email address is required');
     $chain->email('Sähköpostiosoite on virheellinen');
     return $chain;
   }
@@ -88,14 +88,14 @@ class ContactFormValidator implements \Sphp\Validators\Validator {
     $valid = $this->whitelistValidator->isValid($value);
     if ($valid) {
       $valid = $this->formDataValidator->isValid($value);
-      $this->errors = $this->formDataValidator->getErrors();
+      $this->errors = $this->formDataValidator->getMessages();
     } else {
-      $this->errors = $this->whitelistValidator->getErrors();
+      $this->errors = $this->whitelistValidator->getMessages();
     }
     return $valid;
   }
 
-  public function getErrors(): MessageManager {
+  public function getMessages(): MessageManager {
     return $this->errors;
   }
 

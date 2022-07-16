@@ -21,20 +21,9 @@ use Sphp\Html\AbstractContent;
  */
 class TableBuilder extends AbstractContent {
 
-  /**
-   * @var array 
-   */
-  private array $theadData;
-
-  /**
-   * @var array 
-   */
-  private array $tbodyData;
-
-  /**
-   * @var array 
-   */
-  private array $tfootData;
+  private ?iterable $theadData;
+  private ?iterable $tbodyData;
+  private ?iterable $tfootData;
 
   /**
    * @var TableFilter[]
@@ -46,9 +35,9 @@ class TableBuilder extends AbstractContent {
    */
   public function __construct() {
     $this->tableFilters = [];
-    $this->theadData = [];
-    $this->tbodyData = [];
-    $this->tfootData = [];
+    $this->theadData = null;
+    $this->tbodyData = null;
+    $this->tfootData = null;
   }
 
   /**
@@ -72,7 +61,7 @@ class TableBuilder extends AbstractContent {
   /**
    * Returns the table header content data
    * 
-   * @return array the table header content data
+   * @return iterable|null the table header content data
    */
   public function getTheadData(): ?array {
     return $this->theadData;
@@ -81,7 +70,7 @@ class TableBuilder extends AbstractContent {
   /**
    * Returns the table body content data
    * 
-   * @return array the table body content data
+   * @return iterable|null the table body content data
    */
   public function getTbodyData(): ?array {
     return $this->tbodyData;
@@ -90,7 +79,7 @@ class TableBuilder extends AbstractContent {
   /**
    * Returns the table footer content data
    * 
-   * @return array the table footer content data
+   * @return iterable|null the table footer content data
    */
   public function getTfootData(): ?array {
     return $this->tfootData;
@@ -99,10 +88,10 @@ class TableBuilder extends AbstractContent {
   /**
    * Sets the cell data for table head
    * 
-   * @param  iterable $data the cell data for table head
+   * @param  iterable|null $data the cell data for table head
    * @return $this for a fluent interface
    */
-  public function setTheadData(iterable $data = []) {
+  public function setTheadData(?iterable $data = null) {
     $this->theadData = $data;
     return $this;
   }
@@ -110,10 +99,10 @@ class TableBuilder extends AbstractContent {
   /**
    * Sets the cell data for table body
    * 
-   * @param  iterable $data the cell data for table body
+   * @param  iterable|null $data the cell data for table body
    * @return $this for a fluent interface
    */
-  public function setTbodyData(iterable $data = null) {
+  public function setTbodyData(?iterable $data = null) {
     $this->tbodyData = $data;
     return $this;
   }
@@ -121,10 +110,10 @@ class TableBuilder extends AbstractContent {
   /**
    * Sets the cell data for table footer
    * 
-   * @param  iterable $data the cell data for table footer
+   * @param  iterable|null $data the cell data for table footer
    * @return $this for a fluent interface
    */
-  public function setTfootData(iterable $data = null) {
+  public function setTfootData(?iterable $data = null) {
     $this->tfootData = $data;
     return $this;
   }
@@ -136,7 +125,7 @@ class TableBuilder extends AbstractContent {
    */
   public function buildTbody(): Tbody {
     $tbody = new Tbody();
-    if (!empty($this->tbodyData)) {
+    if ($this->tbodyData !== null) {
       foreach ($this->tbodyData as $rowData) {
         $tbody->append(Tr::fromTds($rowData));
       }
@@ -151,7 +140,7 @@ class TableBuilder extends AbstractContent {
    */
   public function buildThead(): Thead {
     $thead = new Thead();
-    if (!empty($this->theadData)) {
+    if ($this->theadData !== null) {
       $thead->appendHeaderRow($this->theadData);
     }
     return $thead;
@@ -164,7 +153,7 @@ class TableBuilder extends AbstractContent {
    */
   public function buildTfoot(): Tfoot {
     $tfoot = new Tfoot();
-    if (!empty($this->tfootData)) {
+    if ($this->tfootData !== null) {
       $tfoot->appendHeaderRow($this->tfootData);
     }
     return $tfoot;

@@ -1,0 +1,128 @@
+.icon-container {
+  margin: 1px;
+  border: 1px solid #666;
+  text-align: center;
+  @include border-radius(3px);
+  .icon {
+    text-align: center;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    font-size: 6rem;
+    img, svg, i {
+      @include opacity(.8);
+    }
+    &:hover {
+      img, svg, i {
+        @include opacity(1);
+      }
+    }
+  }
+  .label {
+    font-weight: bold;
+    font-size: .9rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .detail {
+    font-size: .8rem;
+  }
+  &.filetype {
+    border: 1px solid #666;
+    .icon {
+      margin-top: 5px;
+      font-size: 3rem;
+      border-color: #aaa;
+      background-color: #dfdfdf;
+    }
+    &:hover {
+      .icon {
+        background-color: #f4f4f4;
+        border-color: #ccc;
+      }
+    }
+  }
+  &.fontawesome {
+    text-align: center;
+    background-color: rgba(#d8edf5, .3);
+    border-color: #006699;
+    .icon {
+      border-color: #006699;
+      background-color: #eef5f8;
+    }
+    .unicode, .class-name {
+      //text-align: center;
+      font-size: .8rem;
+    }
+    &:hover {
+      .icon {
+        background-color: #fafcff;
+      }
+    }
+  }
+  &.devicons {
+    background-color: rgba(#65d693, .3);
+    border-color: #368556;
+
+    .icon {
+      border-top: 1px solid #006699;
+      border-bottom: 1px solid #006699;
+      background-color: #c6e8d4;
+      &.svg {
+        background-color: #d4e9dd;
+        padding: 3px;
+      }
+      //border: 1px solid #006699;
+    }
+    &:hover {
+      .icon {
+        background-color: #e5f7ec;
+        &.svg {
+          img {
+            @include opacity(1);
+          }
+        }
+      }
+    }
+  } 
+}
+.country-flags {
+  //@include shadow(0 0 4px 2px rgba(#ddd, .6));
+  background-color: #eee;
+  border: 1px solid #777;
+  @include border-radius(3px);
+}
+.national-flag-container {
+  //min-height: 195px;
+  margin: 2px;
+  //padding-bottom: 4px;
+  //@include shadow(0 0 4px 2px rgba(#ddd, .6));
+  //background-color: #eee;
+  //border: 1px solid #777;
+  //@include border-radius(3px);
+  .icon {
+
+    text-align: center;
+    //border: 1px solid #666;
+    &.national-flag {
+      border: none;
+      img {
+        max-height: 160px;
+        border: 1px solid #666;
+        @include border-radius(3px);
+        @include shadow(0 0 6px 2px rgba(#ccc, .6));
+      }
+    }
+  }
+  .name, .version {
+    //@include border-top-radius(3px);
+    //background-color: #f4f4fc;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    //border-bottom:  1px solid #aaa;
+    text-align: center;
+    font-size: .9rem;
+    strong {
+      font-size: 1rem;
+    }
+  }
+}

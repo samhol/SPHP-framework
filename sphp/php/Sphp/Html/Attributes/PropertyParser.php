@@ -26,20 +26,17 @@ use Sphp\Stdlib\Strings;
  */
 class PropertyParser {
 
+  public const DEF_SEPARATOR = ';';
+  public const PROP_SEPARATOR = ':';
+  public const INVALID_PATTERN = '/(^[\s"]?$)|["]+/';
+
   /**
    * @var PropertyParser[]
    */
   private static array $instance = [];
-
-  /**
-   * @var string 
-   */
   private string $defSep = ';';
-
-  /**
-   * @var string 
-   */
   private string $propSep = ':';
+  private string $invalidPattern = '/[^\s"]+/';
 
   /**
    * Constructor
@@ -87,11 +84,11 @@ class PropertyParser {
   /**
    * Validates a given property name 
    * 
-   * @param  mixed $name the name of the property
+   * @param  string|int $name the name of the property
    * @return bool true if the property name is valid
    */
-  public function isValidPropertyName($name): bool {
-    return is_string($name) && $name !== '' && !Strings::match($name, '/^[\s]+$/');
+  public function isValidPropertyName(string|int $name): bool {
+    return is_string($name) && $name !== '' && !Strings::match($name, self::INVALID_PATTERN);
   }
 
   /**
@@ -101,7 +98,7 @@ class PropertyParser {
    * @return bool true if the property value is valid
    */
   public function isValidValue($value): bool {
-    return is_scalar($value) && $value !== '' && Strings::match((string) $value, '/[^\s]+/');
+    return is_scalar($value) && $value !== '' && !Strings::match((string) $value, self::INVALID_PATTERN);
   }
 
   /**
@@ -111,7 +108,7 @@ class PropertyParser {
    * @param  mixed $value the value of the property
    * @return bool true if the property name => value pair is valid
    */
-  public function isValidProperty($name, $value): bool {
+  public function isValidProperty(string $name, $value): bool {
     return $this->isValidValue($value) && $this->isValidPropertyName($name);
   }
 
@@ -124,14 +121,14 @@ class PropertyParser {
    */
   public function parseStringToProperties(string $css): array {
     try {
-      $attrs = explode($this->defSep, trim($css, $this->defSep));
+      $attrs = explode(static::DEF_SEPARATOR, trim($css, $this->defSep));
       $parsed = [];
       foreach ($attrs as $attr) {
-        $first_colon_pos = strpos($attr, $this->propSep);
+        $first_colon_pos = strpos($attr, static::PROP_SEPARATOR);
         $key = trim(substr($attr, 0, $first_colon_pos));
         $value = trim(substr($attr, $first_colon_pos + 1));
         if (!$this->isValidProperty($key, $value)) {
-          throw new AttributeException("Property $key => $value is not valid ");
+          throw new AttributeException("Property $key => $value is not valid");
         }
         $parsed[$key] = $value;
       }

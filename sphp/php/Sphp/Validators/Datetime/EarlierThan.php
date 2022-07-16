@@ -30,8 +30,8 @@ class EarlierThan extends AbstractDateTimeComparisonValidator {
    */
   public function __construct($dt = 'now', bool $inclusive = true) {
     parent::__construct($dt, $inclusive);
-    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not earlier than %s');
-    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not earlier than or equal to %s');
+    $this->getMessages()->setTemplate(static::EXCLUSIVE_ERROR, 'Not earlier than %s');
+    $this->getMessages()->setTemplate(static::INCLUSIVE_ERROR, 'Not earlier than or equal to %s');
   }
 
   public function isValid(mixed $value): bool {
@@ -42,18 +42,18 @@ class EarlierThan extends AbstractDateTimeComparisonValidator {
         $this->setValue($value);
       } catch (\Exception $ex) {
         $this->setValue($value);
-        $this->getErrors()->appendMessageFromTemplate(static::INVALID);
+        $this->setError(static::INVALID);
         return false;
       }
     }
     $comp = $this->getLimit()->compareTo($value);
     $date = $this->getLimit()->format('Y-m-d H:i:s T');
     if ($comp < 0 && $this->isInclusive()) {
-      $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $date);
+      $this->setError(static::INCLUSIVE_ERROR, [':value' => $date]);
     } else if ($comp <= 0 && !$this->isInclusive()) {
-      $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $date);
+      $this->setError(static::EXCLUSIVE_ERROR, [':value' => $date]);
     }
-    return $this->getErrors()->count() === 0;
+    return $this->getMessages()->count() === 0;
   }
 
 }

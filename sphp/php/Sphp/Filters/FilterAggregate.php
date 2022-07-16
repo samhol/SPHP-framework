@@ -35,13 +35,11 @@ class FilterAggregate extends AbstractFilter implements IteratorAggregate {
   /**
    * Constructor
    * 
-   * @param callable|callable[] $filters optional filters to add
+   * @param callable ... $filters optional filters to add
    */
-  public function __construct($filters = null) {
-    if ($filters !== null) {
-      foreach (is_array($filters) ? $filters : [$filters] as $filter) {
-        $this->addFilter($filter);
-      }
+  public function __construct(...$filters) {
+    foreach ($filters as $filter) {
+      $this->addFilter($filter);
     }
   }
 
@@ -53,14 +51,24 @@ class FilterAggregate extends AbstractFilter implements IteratorAggregate {
   }
 
   /**
+   * Executes the filter when the filter object is called as a function
+   * 
+   * @param  mixed $variable the data to filter
+   * @return mixed the filtered value
+   */
+  public function __invoke(mixed $value, mixed ... $param): mixed {
+    return $this->filter($value, ...$param);
+  }
+
+  /**
    * Executes the filter for the given value
    * 
    * @param  mixed $value the value to filter
    * @return mixed the filtered value
    */
-  public function filter($value) {
+  public function filter(mixed $value, mixed ... $param): mixed {
     foreach ($this->filters as $filter) {
-      $value = $filter($value);
+      $value = $filter($value, ...$param);
     }
     return $value;
   }
@@ -79,7 +87,7 @@ class FilterAggregate extends AbstractFilter implements IteratorAggregate {
   /**
    * Returns the iterator
    * 
-   * @return Traversable iterator over filters
+   * @return Traversable<Filter> iterator over filters
    */
   public function getIterator(): Traversable {
     return new ArrayIterator($this->filters);

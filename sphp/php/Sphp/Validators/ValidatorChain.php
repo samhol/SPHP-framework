@@ -63,8 +63,8 @@ class ValidatorChain extends AbstractValidator implements Countable {
    * 
    * @param  string $name
    * @param  array $arguments
-   * @return Validator
-   * @throws BadMethodCallException
+   * @return Validator 
+   * @throws BadMethodCallException if the validator does not exist
    */
   public function __call(string $name, array $arguments): Validator {
     $validatorClass = '\\Sphp\\Validators\\' . ucfirst($name);
@@ -104,8 +104,11 @@ class ValidatorChain extends AbstractValidator implements Countable {
     foreach ($this->validators as $validator) {
       //var_dump($validator);
       if (!$validator->isValid($value)) {
-        $valid = false;
-        $this->getErrors()->mergeCollection($validator->getErrors());
+        if ($valid) {
+          $this->setError(self::INVALID);
+          $valid = false;
+        }
+        $this->getMessages()->append(...$validator->getMessages());
         if ($this->breaksOnFailure()) {
           break;
         }

@@ -35,13 +35,5 @@ interface Filter {
    * @param  mixed $variable the data to filter
    * @return mixed the filtered value
    */
-  public function filter($variable);
-
-  /**
-   * Executes the filter when the filter object is called as a function
-   * 
-   * @param  mixed $variable the data to filter
-   * @return mixed the filtered value
-   */
-  public function __invoke($variable);
+  public function filter(mixed $variable): mixed;
 }

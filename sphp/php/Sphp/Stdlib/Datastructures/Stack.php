@@ -29,7 +29,7 @@ interface Stack {
    * @param  mixed $value the item to be pushed
    * @return $this for a fluent interface
    */
-  public function push($value);
+  public function push(mixed $value);
 
   /**
    * Removes the item at the top of the stack and returns that item as the value
@@ -37,7 +37,7 @@ interface Stack {
    * @return mixed the top-most element
    * @throws UnderflowException when the data-structure is empty
    */
-  public function pop();
+  public function pop(): mixed;
 
   /**
    * Observes the top-most element without removing it from the stack
@@ -45,7 +45,7 @@ interface Stack {
    * @return mixed the top-most element
    * @throws UnderflowException when the data-structure is empty
    */
-  public function peek();
+  public function peek(): mixed;
 
   /**
    * Determine if the stack is empty or not

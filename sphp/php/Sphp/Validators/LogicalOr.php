@@ -31,10 +31,10 @@ class LogicalOr extends AbstractValidator {
    * @param Validator $a
    * @param Validator $b
    */
-  public function __construct(Validator $a, Validator $b) {
+  public function __construct(Validator $a, Validator $b, string $errorMessage = 'Value is invalid') {
     $this->a = $a;
     $this->b = $b;
-    parent::__construct();
+    parent::__construct($errorMessage);
   }
 
   /**
@@ -64,8 +64,9 @@ class LogicalOr extends AbstractValidator {
     $validB = $this->b->isValid($value);
     $valid = $validA || $validB;
     if (!$valid) {
-      $this->getErrors()->mergeCollection($this->a->getErrors());
-      $this->getErrors()->mergeCollection($this->b->getErrors());
+      $this->setError(self::INVALID);
+      $this->getMessages()->append(...$this->a->getMessages());
+      $this->getMessages()->append(...$this->b->getMessages());
     }
     return $valid;
   }

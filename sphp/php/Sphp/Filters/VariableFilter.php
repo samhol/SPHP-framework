@@ -115,7 +115,7 @@ class VariableFilter extends AbstractFilter {
     }
   }
 
-  public function filter($variable) {
+  public function filter(mixed $variable): mixed {
     //var_dump($this->opts->toArray());
     if ($this->filter === FILTER_VALIDATE_INT && is_numeric($variable)) {
       //echo "original : $variable\n";

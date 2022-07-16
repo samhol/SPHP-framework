@@ -50,16 +50,6 @@ class ObserverSubjectTraitTest extends TestCase {
         \PHPUnit\Framework\Assert::assertSame($this->expected, $subject);
       }
     };
-
-    // Set up the expectation for the update() method
-    // to be called only once and with the string 'something'
-    // as its parameter.
-    /* $this->observer->expects($this->once())
-      ->method('update')
-      ->with($this->equalTo($this->subject)); */
-    //$this->observer->update->returns($this->subject);
-    // $this->observer->update->calledWith($this->subject);
-    // Configure the stub.
   }
 
   /**

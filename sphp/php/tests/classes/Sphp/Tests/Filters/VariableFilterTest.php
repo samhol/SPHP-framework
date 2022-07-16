@@ -10,9 +10,11 @@ declare(strict_types=1);
  * @license   https://opensource.org/licenses/MIT The MIT License
  */
 
-namespace Sphp\Filters;
+namespace Sphp\Tests\Filters;
 
 use PHPUnit\Framework\TestCase;
+use Sphp\Filters\Filters;
+use Sphp\Filters\VariableFilter;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 

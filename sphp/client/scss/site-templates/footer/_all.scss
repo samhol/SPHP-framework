@@ -1,0 +1,66 @@
+@use "sass:color";
+$footer-sect-border: rgba(#ededed, .9);
+$footer-color: #ffeebb;
+$footer-background-color: #999;
+footer {
+  @import "footer-links";
+ // @import "footer-contact";
+  //padding: 1.5rem 0 4rem 0;
+  border-top: solid 2px $footer-sect-border;  
+  background-color: $footer-background-color;
+  @include shadow(0 0px 7px 2px #222);
+  color: $footer-color;
+  .round-logo-photo {
+    display: inline-block;
+  }
+  .copyright {
+    font-size: 1.2rem;
+  } 
+  a {  
+    @include transitions(all, 0.6s, ease-in-out);
+    text-decoration: none; 
+    color: color.scale($footer-color, $lightness: -10%);
+    //display: inline-block;
+    &:hover {
+      color: color.scale($footer-color, $lightness: 20%);
+    }
+  } 
+  a.underline {
+    color: #f5f5e0;
+    //text-transform: uppercase;
+    text-decoration: none;
+    //letter-spacing: 0.15em;
+
+    display: inline-block;
+    padding: 0 0 4px 0;
+    position: relative;
+
+    &:after {    
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      background: #fff;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+    }
+    &:hover:after { 
+      width: 100%; 
+      left: 0; 
+    }
+  }
+
+  .web-master {
+    //margin-top: 10px;
+    //margin-bottom: 30px;  
+    background-color: #222;
+    text-align: center;
+    border-top: solid 1px #540;
+    .text {
+      font-size: .9rem;
+    }
+  }
+}

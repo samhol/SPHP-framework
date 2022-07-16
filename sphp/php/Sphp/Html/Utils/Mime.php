@@ -22,7 +22,7 @@ namespace Sphp\Html\Utils;
  */
 class Mime {
 
-  private static $map = [
+  private static array $map = [
       'aac' => ['audio/aac', 'audio'],
       'abw' => ['application/x-abiword',],
       'arc' => ['application/x-freearc',],

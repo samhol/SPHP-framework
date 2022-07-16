@@ -27,8 +27,8 @@ class ValidatorChainTest extends TestCase {
   public function testConstructor(): ValidatorChain {
     $validator = new ValidatorChain();
     $this->assertCount(0, $validator);
-    $this->assertCount(0, $validator->getErrors());
-    $this->assertTrue($validator->getErrors()->containsTemplate(Validator::INVALID));
+    $this->assertCount(0, $validator->getMessages());
+    $this->assertTrue($validator->getMessages()->containsTemplate(Validator::INVALID));
     $this->assertSame(null, $validator->getValue());
     $this->assertTrue($validator->isValid('foo'));
     return $validator;
@@ -42,7 +42,7 @@ class ValidatorChainTest extends TestCase {
    */
   public function testAddValidators(ValidatorChain $validator): ValidatorChain {
     $validator->collectionLength(1, 3);
-    $validator->whitelist(['a', 'b']);
+    $validator->isInstanceOf(\Iterator::class);
     $this->assertCount(2, $validator);
     return $validator;
   }
@@ -55,12 +55,14 @@ class ValidatorChainTest extends TestCase {
    */
   public function testSomeValidation(ValidatorChain $validator): ValidatorChain {
     $validator->setBreaksOnFailure(false);
-    $this->assertFalse($validator->isValid('foo'));
-    $this->assertCount(2, $validator->getErrors());
+    $this->assertFalse($validator->isValid([1, 2]));
+    $this->assertCount(2, $validator->getMessages());
+    $this->assertTrue($validator->isValid(new \ArrayIterator([1, 2])));
+    $this->assertCount(0, $validator->getMessages());
     $validator->setBreaksOnFailure(true);
     $this->assertFalse($validator->isValid('foo'));
-    $this->assertCount(1, $validator->getErrors());
-    $this->assertTrue($validator->isValid(['a' => 1]));
+    $this->assertCount(2, $validator->getMessages());
+    $this->assertTrue($validator->isValid(new \ArrayIterator([1, 2])));
     return $validator;
   }
 
@@ -96,11 +98,11 @@ class ValidatorChainTest extends TestCase {
    * @param \Sphp\Tests\Validators\AbstractValidator $validator
    */
   public function testClone(Validator $validator) {
-    $validator->getErrors()->setTemplate(Validator::INVALID, 'Foo is broken');
+    $validator->getMessages()->setTemplate(Validator::INVALID, 'Foo is broken');
     $clone = clone $validator;
-    $clone->getErrors()->setTemplate(Validator::INVALID, 'Foo is fixed');
-    $this->assertEquals('Foo is fixed', $clone->getErrors()->getTemplate(Validator::INVALID));
-    $this->assertEquals('Foo is broken', $validator->getErrors()->getTemplate(Validator::INVALID));
+    $clone->getMessages()->setTemplate(Validator::INVALID, 'Foo is fixed');
+    $this->assertEquals('Foo is fixed', $clone->getMessages()->getTemplate(Validator::INVALID));
+    $this->assertEquals('Foo is broken', $validator->getMessages()->getTemplate(Validator::INVALID));
   }
 
 }

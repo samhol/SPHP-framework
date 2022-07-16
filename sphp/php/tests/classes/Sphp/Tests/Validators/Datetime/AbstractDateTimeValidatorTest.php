@@ -62,8 +62,8 @@ abstract class AbstractDateTimeValidatorTest extends ValidatorTestCase {
    */
   public function testInvalidTypes($value) {
     $this->assertFalse($this->validator->isValid($value));
-    $this->assertCount(1, $this->validator->getErrors());
-    $this->assertSame($this->validator->getErrors()->getTemplate(Validator::INVALID), $this->validator->getErrors()->current());
+    $this->assertCount(1, $this->validator->getMessages());
+    $this->assertSame($this->validator->getMessages()->getTemplate(Validator::INVALID), $this->validator->getMessages()->current());
   }
 
   public function testInclusive() {

@@ -34,22 +34,16 @@ class Gettext implements Translator {
 
   /**
    * the name (filename) of the used text domain
-   *
-   * @var string
    */
   private string $domain;
 
   /**
    * the path of the translation file
-   *
-   * @var string
    */
   private string $directory;
 
   /**
    * the charset of the translation file
-   *
-   * @var string
    */
   private string $charset;
 

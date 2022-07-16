@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Tests\MVC;
 
 use PHPUnit\Framework\TestCase;
-use Sphp\MVC\Router;
+use Sphp\MVC\{Router, RouteData};
 use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\IllegalStateException;
 
@@ -80,25 +80,25 @@ class RouterTest extends TestCase {
     $router->execute($url);
   }
 
-  public function dir(string $string, string $folder): void {
-    $this->assertSame('/user/view/samhol/', $string);
-    $this->assertSame('samhol', $folder);
+  public function dir(RouteData $routeData): void {
+    $this->assertSame('/user/view/samhol/', $routeData->getPath());
+    $this->assertSame('samhol', $routeData->getParam(0));
   }
 
-  public function index(string $string): void {
-    $this->assertSame('/index.php/', $string);
+  public function index(RouteData $routeData): void {
+    $this->assertSame('/index.php/', $routeData->getPath());
   }
 
-  public function categories(string $path, string $capture): void {
-    $this->assertTrue(is_numeric($capture), "$capture is not numeric when using path '$path'");
+  public function categories(RouteData $routeData): void { 
+    $this->assertTrue(is_numeric($routeData->getParam(0)), "capture is not numeric when using path '{$routeData->getPath()}'");
   }
 
-  public function alphanum(string $path, string $capture): void {
-    $this->assertTrue(Strings::isAlphanumeric($capture), "$capture is not alphanumeric when using path '$path'");
+  public function alphanum(RouteData $routeData): void {
+    $this->assertMatchesRegularExpression('/^[[:alnum:]]*$/',$routeData->getParam(0), "capture is not alphanumeric when using path '{$routeData->getPath()}'");
   }
 
-  public function defaultRoute(string $path): void {
-    $this->assertTrue(is_string($path));
+  public function defaultRoute(RouteData $routeData): void {
+    $this->assertIsString($routeData->getPath());
   }
 
   /**

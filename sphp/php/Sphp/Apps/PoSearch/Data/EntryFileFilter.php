@@ -16,7 +16,6 @@ use IteratorAggregate;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Countable;
 use Sepia\PoParser\Catalog\Entry;
-use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\BitMask;
 
 /**
@@ -96,10 +95,10 @@ class EntryFileFilter implements IteratorAggregate, Arrayable, Countable {
     $valid = true;
     if ($this->idSeed !== null) {
       if ($e->isPlural()) {
-        $valid = str_containss($e->getMsgId(), $this->idSeed) ||
-                str_containss($e->getMsgIdPlural(), $this->idSeed);
+        $valid = str_contains($e->getMsgId(), $this->idSeed) ||
+                str_contains($e->getMsgIdPlural(), $this->idSeed);
       } else {
-        $valid = str_containss($e->getMsgId(), $this->idSeed);
+        $valid = str_contains($e->getMsgId(), $this->idSeed);
       }
     }
     return $valid;

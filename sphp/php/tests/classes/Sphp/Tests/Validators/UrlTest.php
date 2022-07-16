@@ -13,63 +13,34 @@ declare(strict_types=1);
 namespace Sphp\Tests\Validators;
 
 use Sphp\Validators\Url;
-use Sphp\Validators\Validator;
 
 class UrlTest extends ValidatorTestCase {
 
-  /**
-   * @var Url
-   */
-  protected $validator;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $this->validator = $this->createValidator();
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->validator);
+  public function testConstructor(): void {
+    $validator = $this->createValidator();
+    $this->assertCount(0, $validator->getMessages());
   }
 
   /**
    */
-  public function testConstructor() {
-    $this->assertCount(0, $this->validator->getErrors());
-  }
-
-  /**
-   */
-  public function testValidValue() {
-    $this->assertTrue($this->validator->isValid('http://www.google.com'));
-    $this->assertCount(0, $this->validator->getErrors());
-  }
-
-  /**
-   */
-  public function testInvalidValue() {
-    $this->assertFalse($this->validator->isValid([]));
-    $errors = $this->validator->getErrors()->toArray();
+  public function testInvalidValueType(): void {
+    $validator = $this->createValidator();
+    $this->assertFalse($validator->isValid('foo'));
+    $errors = $validator->getMessages()->toArray();
     $this->assertContains('URL is invalid', $errors);
   }
 
-
-  public function createValidator(): Validator {
+  public function createValidator(): Url {
     return new Url('URL is invalid');
   }
 
-  public function getInvalidValue() {
-    return 'a@';
+  public function invalidValuesProvider(): iterable {
+    yield ['a@'];
+    yield [new \stdClass()];
   }
 
-  public function getValidValue() {
-    return 'https://www.google.com';
+  public function validValuesProvider(): iterable {
+    yield ['https://www.google.com'];
   }
 
 }

@@ -12,7 +12,8 @@ declare(strict_types=1);
 
 namespace Sphp\Filters;
 
-use SqlFormatter;
+use Doctrine\SqlFormatter\NullHighlighter;
+use Doctrine\SqlFormatter\SqlFormatter as DoctrineFormatter;
 
 /**
  * Filter formats an SQL string
@@ -23,9 +24,9 @@ use SqlFormatter;
  */
 class SQLFormatter extends AbstractFilter {
 
-  public function filter($variable) {
+  public function filter(mixed $variable):mixed {
     if (is_string($variable)) {
-      return SqlFormatter::format($variable, false);
+      return (new DoctrineFormatter(new NullHighlighter()))->format($variable);
     }
     return $variable;
   }

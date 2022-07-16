@@ -100,11 +100,11 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableCo
    *
    * Specifies the MIME type of the script
    *
-   * @param  string $language the language of the document 
+   * @param  string|null $language the language of the document 
    * @return $this for a fluent interface
    * @link   https://www.w3schools.com/tags/att_lang.asp lang attribute
    */
-  public function setLanguage(string $language = null) {
+  public function setLanguage(?string $language = null) {
     $this->attributes()->setAttribute('lang', $language);
     return $this;
   }

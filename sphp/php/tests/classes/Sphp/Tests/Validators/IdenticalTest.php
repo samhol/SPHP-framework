@@ -12,31 +12,27 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Validators;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Validators\Identical;
 
-class IdenticalTest extends TestCase {
+class IdenticalTest extends ValidatorTestCase {
 
-  public function nonStrictValid(): iterable {
-    yield [1, 1, true];
+  public function nonStrictValidationDataProvider(): iterable { 
     yield [0, 0.000, true];
-    yield [PHP_INT_MAX, (string) PHP_INT_MAX, true];
-    yield ['1', '1', true];
-    yield ['0', 0, true];
     yield [0, '0', true];
+    yield ['1', '1', true];  
     yield [0, null, true];
-    yield ['1', 1, true];
+    yield ['1', 1.0, true];
     yield [true, 1, true];
     yield [new \stdClass, new \stdClass, true];
     yield [[0 => '0', [1]], [1 => [1], 0 => 0], true];
-    yield ['a', ' a', false];
+    yield ['', ' ', false];
   }
 
   /**
-   * @dataProvider nonStrictValid
+   * @dataProvider nonStrictValidationDataProvider
    * 
-   * @param mixed $token
-   * @param mixed $value
+   * @param  mixed $token
+   * @param  mixed $value
    * @return void
    */
   public function testNonStrictValid($token, $value, bool $valid): void {
@@ -46,29 +42,25 @@ class IdenticalTest extends TestCase {
     $this->assertSame($valid, $validator->isValid($value));
   }
 
-  public function strictData(): iterable {
+  public function strictValidationDataProvider(): iterable {
     $obj = new \stdClass();
-    yield [1, 1, true];
     yield [1, '1', false];
-    yield ['1', '1', true];
     yield ['', 0, false];
-    yield [0, '', false];
+    yield [null, null, true];
     yield [0, null, false];
     yield ['1', 1, false];
     yield [true, 1, false];
-    yield [true, true, true];
-    yield [false, false, true];
+    yield [false, 0, false];
     yield [true, '1', false];
     yield [$obj, new \stdClass(), false];
     yield [$obj, $obj, true];
-    yield [[], [], true];
     yield [[1], [1], true];
     yield [[1], [1 => 1], false];
   }
 
   /**
-   *
-   * @dataProvider strictData
+   * @dataProvider strictValidationDataProvider
+   * 
    * @param mixed $token
    * @param mixed $value
    * @param boolean $valid
@@ -78,10 +70,22 @@ class IdenticalTest extends TestCase {
     $validator->setStrict(true);
     $this->assertSame($valid, $validator->isValid($value));
     if (!$valid) {
-      $this->assertCount(1, $validator->getErrors());
+      $this->assertCount(1, $validator->getMessages());
     } else {
-      $this->assertCount(0, $validator->getErrors());
+      $this->assertCount(0, $validator->getMessages());
     }
+  }
+
+  public function createValidator(): Identical {
+    return new Identical('a');
+  }
+
+  public function invalidValuesProvider(): iterable {
+    yield ['b'];
+  }
+
+  public function validValuesProvider(): iterable {
+    yield ['a'];
   }
 
 }

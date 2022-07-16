@@ -22,6 +22,8 @@ namespace Sphp\Validators;
  */
 class Email extends AbstractValidator {
 
+  public const INVALID = 'Email address is invalid';
+
   /**
    * Constructor
    * 
@@ -34,7 +36,7 @@ class Email extends AbstractValidator {
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-      $this->getErrors()->appendMessageFromTemplate(static::INVALID);
+      $this->setError(static::INVALID);
       return false;
     }
     return true;

@@ -77,7 +77,7 @@ class PropertytLinkerTest extends TestCase {
     $hlf = new HyperlinkFactory;
     $ref = new PropertyReflector($class, $prop);
     $linker = new PropertytLinker($ref, $this->urlGen, $hlf);
-    $expected = Strings::convertCase($ref->getModifierNames(), MB_CASE_TITLE);
+    $expected = mb_convert_case($ref->getModifierNames(), MB_CASE_TITLE);
     $expected = "$expected Property";
     $this->assertEquals($expected, $linker->getNavBarTitle());
   }

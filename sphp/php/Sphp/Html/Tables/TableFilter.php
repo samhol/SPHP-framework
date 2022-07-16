@@ -28,7 +28,7 @@ interface TableFilter {
    * @return void
    */
   public function useInTable(Table $table): void;
-  
+
   /**
    * Invokes the filter to the given table
    * 

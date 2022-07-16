@@ -15,9 +15,7 @@ namespace Sphp\Tests\Stdlib;
 use PHPUnit\Framework\TestCase;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\OutOfBoundsException;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Stdlib\Datastructures\ArrayStack;
-use Sphp\Stdlib\Datastructures\Arrayable;
+use Sphp\Exceptions\InvalidArgumentException; 
 
 class ArraysTest extends TestCase {
 

@@ -1,6 +1,6 @@
 {
   "name": "sami_holck/samiholck",
-  "homepage": "https://samiholck.fi/manual/index",
+  "homepage": "https://samiholck.fi/",
   "description": "Homepage of Sami Holck",
   "keywords": ["HTML5", "WEB 2.0", "UI"],
   "license": "MIT",
@@ -11,24 +11,27 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
-    "symfony/yaml": "^5.2",
+    "php": ">=8.0",
+    "symfony/yaml": "^6",
     "erusev/parsedown-extra": "^0.8.1",
     "level-2/dice": "^4.0",
-    "browscap/browscap-php": "^5.0",
     "sepia/po-parser": "^6.0.1",
-    "geshi/geshi": "v1.0.9.1",
     "psr/event-dispatcher": "^1.0",
-    "league/commonmark": "^2.0",
-    "laminas/laminas-config": "^3.4",
-    "laminas/laminas-mail": "^2.15"
+    "psr/container": ">1.0",
+    "league/commonmark": "^2", 
+    "laminas/laminas-mail": "^2.16",
+    "laminas/laminas-di": "^3.7",
+    "gajus/dindent": "2.0.*",
+    "doctrine/sql-formatter": "1.1.*",
+    "browscap/browscap-php": "^7.0"
   },
   "require-dev": {
     "phpunit/phpunit": ">=9"
   },
   "autoload": {
     "psr-4": {
-      "Sphp\\": "sphp/php/Sphp"
+      "Sphp\\": "sphp/php/Sphp",
+      "Man\\": "manual-app/app/php/classes/Man"
     }
   },
   "autoload-dev": {

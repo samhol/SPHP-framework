@@ -23,8 +23,6 @@ class ApiDocURLBuilder implements ApiUrlGenerator {
 
   /**
    * the URL pointing to the API documentation root
-   *
-   * @var string|null
    */
   private ?string $root;
   private string $apiName;

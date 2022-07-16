@@ -143,8 +143,8 @@ class PropertyParserTest extends TestCase {
   public function invalidArrays(): array {
     return [
         [['arr' => []]],
-        [[0 => '0']],
-        [[0 => new \stdClass()]],
+        [['' => '0']],
+        [['obj' => new \stdClass()]],
     ];
   }
 

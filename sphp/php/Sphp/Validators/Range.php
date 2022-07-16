@@ -22,14 +22,7 @@ namespace Sphp\Validators;
  */
 class Range extends AbstractLimitValidator {
 
-  /**
-   * @var float 
-   */
   private float $min;
-
-  /**
-   * @var float 
-   */
   private float $max;
 
   /**
@@ -43,20 +36,22 @@ class Range extends AbstractLimitValidator {
     parent::__construct($inclusive);
     $this->min = $min;
     $this->max = $max;
-    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s, %s)');
-    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s, %s)');
+    $this->getMessages()->setParameter(':min', $this->min);
+    $this->getMessages()->setParameter(':max', $this->max);
+    $this->getMessages()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in range (:min, :max)');
+    $this->getMessages()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (:min, :max)');
   }
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min, $this->max);
+        $this->setError(static::INCLUSIVE_ERROR);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min, $this->max);
+        $this->setError(static::EXCLUSIVE_ERROR);
         return false;
       }
     }

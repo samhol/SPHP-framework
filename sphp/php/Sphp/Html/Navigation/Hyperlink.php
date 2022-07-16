@@ -62,16 +62,23 @@ interface Hyperlink extends Content {
   /**
    * Sets the value of the target attribute
    *
+   * **Important:** 
+   * 
+   *  An attack that exploits this vulnerability is the so-called 
+   *  "reverse tabnabbing." It is an attack where a page linked from the target 
+   *  page is able to replace that page with, for example, a phishing site.
+   * 
    * **Notes:**
    *
    * * The target attribute specifies where to open the linked document.
    * * Only used if the href attribute is present.
-   *
+   * 
    * @param  string|null $target optional target frame of the hyperlink
+   * @param  bool $secureBlank sets the relationship to 'noopener noreferrer' if taerget is`_blank`
    * @return $this for a fluent interface
-   * @link   https://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link   https://www.w3schools.com/tags/att_target.asp target attribute
    */
-  public function setTarget(?string $target);
+  public function setTarget(?string $target, bool $secureBlank = true);
 
   /**
    * Returns the value of the target attribute

@@ -16,9 +16,10 @@ use Sphp\Html\AbstractContent;
 use ArrayAccess;
 use IteratorAggregate;
 use Traversable;
-use Sphp\Html\Lists\Ol;
 use Sphp\Html\Navigation\Nav;
-use Sphp\DateTime\DateTimes;
+use Sphp\Documentation\Linkers\Html\W3schoolsURLs;
+use Sphp\DateTime\Date;
+use DateTimeInterface;
 
 /**
  * The References class
@@ -29,8 +30,6 @@ use Sphp\DateTime\DateTimes;
  * @filesource
  */
 class References extends AbstractContent implements ArrayAccess, IteratorAggregate {
-
-  private int $count = 1;
 
   /**
    * @var Reference[]
@@ -52,47 +51,57 @@ class References extends AbstractContent implements ArrayAccess, IteratorAggrega
   }
 
   public function appendFromData(array $references) {
-    foreach ($references as $key => $value) {
-      if (array_key_exists('group', $value) && array_key_exists('links', $value)) {
-        $this->appendGroupFromData($value['group'], $value['links']);
+    foreach ($references as $ref) {
+      if (is_iterable($ref)) {
+        $this->setRef(...$ref);
+      } else if ($ref instanceof Reference) {
+        $this->set($ref);
       }
     }
     return $this;
   }
 
-  public function appendGroupFromData(string $name, array $references): ReferenceGroup {
-    $group = new ReferenceGroup($name, $references);
-    $this->links[] = $group;
-
-    return $group;
+  public function groupExists(string $group): bool {
+    return array_key_exists($group, $this->links);
   }
 
-  public function appendReferences(array $references) {
-    $ol = new Ol();
-    $ol->setStart($this->count);
-    foreach ($references as $reference) {
-      $this->count++;
-      /* echo "<pre>link:";
-        print_r($reference);
-        echo "</pre>"; */
-      $link = new Reference(...$reference);
-      $ol->append($link);
+  public function setW3SchoolsReference(string $element, Date|DateTimeInterface|string|null $retrieved = null) {
+    $urlBuilder = new W3schoolsURLs();
+    if (str_starts_with($element, '[') && str_ends_with($element, ']')) {
+      $attr = trim($element, '[]');
+      $text = "HTML $attr attribute";
+    } else {
+      $text = "HTML &lt;$element&gt; tag";
     }
-    $this->links[] = $ol;
+    $ref = new Reference($urlBuilder($element), $text, $retrieved);
+    $this->set($ref);
     return $this;
   }
 
-  public function appendLink(string $href, string $content, ?string $retrieved): Reference {
-    $link = new Reference($href, $content, DateTimes::dateTimeImmutable($retrieved));
-    $this->links[] = $link;
-    return $link;
+  public function set(Reference $ref) {
+    if (!$this->groupExists($group = $ref->getGroup())) {
+      $this->links[$group] = new ReferenceGroup($group);
+    }
+    $this->links[$group]->set($ref);
+  }
+
+  public function setRef(string $href, string $content, Date|DateTimeInterface|string|null $retrieved = null): Reference {
+    $ref = new Reference($href, $content, $retrieved);
+    $this->set($ref);
+    return $ref;
+  }
+
+  public function setPHPManualRef(string $item, Date|DateTimeInterface|string|null $retrieved = null): Reference {
+    $php = new \Sphp\Documentation\Linkers\PHP\PHPManual\PHPManualURLs();
+    $url = $php->build($item);
+    return $this->setRef($url, $item, $retrieved);
   }
 
   public function getHtml(): string {
     $out = new Nav();
     $out->appendH2('References and Resources');
     $blockGrid = new \Sphp\Bootstrap\Layout\Row();
-    $blockGrid->sm(1);
+    $blockGrid->default(1);
     if (count($this->links) > 1) {
       $blockGrid->lg(2);
     }

@@ -22,12 +22,12 @@ namespace Sphp\Validators;
  */
 class Identical extends AbstractValidator {
 
+  public const NOT_IDENTICAL = 'NOT_IDENTICAL';
+
   /**
-   * maximum length of the valid string
-   *
-   * @var mixed
+   * the token to validate against
    */
-  private $token;
+  private mixed $token;
   private bool $strict = true;
 
   /**
@@ -36,9 +36,10 @@ class Identical extends AbstractValidator {
    * @param mixed $token the haystack
    * @param string $error error message
    */
-  public function __construct($token, string $error = 'Value and the token does not match') {
+  public function __construct(mixed $token, string $error = 'Value and the token does not match') {
     parent::__construct($error);
     $this->setToken($token);
+    $this->messages->setTemplate(self::NOT_IDENTICAL, $error);
   }
 
   public function __destruct() {
@@ -51,7 +52,7 @@ class Identical extends AbstractValidator {
    * 
    * @return mixed $token the token used
    */
-  public function getToken() {
+  public function getToken(): mixed {
     return $this->token;
   }
 
@@ -61,7 +62,7 @@ class Identical extends AbstractValidator {
    * @param  mixed $token the token used
    * @return $this for a fluent interface
    */
-  public function setToken($token) {
+  public function setToken(mixed $token) {
     $this->token = $token;
     return $this;
   }
@@ -91,21 +92,12 @@ class Identical extends AbstractValidator {
     $token = $this->getToken();
     $valid = false;
     if ($this->isStrict()) {
-      $valid = $this->getValue() === $token;
+      $valid = $value === $token;
     } else {
-      if (is_object($token)) {
-        $valid = $value == $token;
-      } else {
-        if (is_string($value) && (is_int($token) || is_float($token))) {
-          $token = (string) $token;
-        } else if (is_string($token) && (is_int($value) || is_float($value))) {
-          $value = (string) $value;
-        }
-        $valid = $value == $token;
-      }
+      $valid = $value == $token;
     }
     if (!$valid) {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
+      $this->setError(self::INVALID);
     }
     return $valid;
   }

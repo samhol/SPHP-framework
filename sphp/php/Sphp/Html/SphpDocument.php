@@ -26,10 +26,7 @@ use Sphp\Html\Head\MetaFactory;
  * @filesource
  */
 class SphpDocument extends AbstractContent {
-
-  /**
-   * @var Html 
-   */
+ 
   private Html $html;
 
   /**

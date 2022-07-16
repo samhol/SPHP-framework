@@ -38,9 +38,11 @@ class ExecutionSequenceTest extends TestCase {
 
   /**
    * @depends testConstructor
-   * @param ExecutionSequence $sequence
+   *  
+   * @param  xecutionSequence $sequence
+   * @return void
    */
-  public function testCallables(ExecutionSequence $sequence) {
+  public function testCallables(ExecutionSequence $sequence): void {
     $f1 = function () {
       $val = 'ce';
       echo $val;
@@ -56,20 +58,20 @@ class ExecutionSequenceTest extends TestCase {
       echo $val;
       return $val;
     };
-    $this->assertSame($sequence, $sequence->addCallable($f10_1, 10));
+    $this->assertSame($sequence, $sequence->enqueue($f10_1, 10));
     $this->assertCount(1, $sequence);
-    $this->assertSame($sequence, $sequence->addCallable($f1, 1));
+    $this->assertSame($sequence, $sequence->enqueue($f1, 1));
     $this->assertCount(2, $sequence);
     $this->assertContains($f1, $sequence);
     $this->assertContains($f1, $sequence->getIterator());
     $this->assertContains($f1, $sequence->toArray());
-    $this->assertSame($sequence, $sequence->addCallable($f10_2, 10));
+    $this->assertSame($sequence, $sequence->enqueue($f10_2, 10));
     $this->expectOutputString('sequence');
     $this->assertCount(3, $sequence);
     $sequence();
     $this->assertSame($sequence, $sequence->flushSequence());
     $this->assertCount(0, $sequence);
-    unset($sequence);
+    unset($f1, $f10_1, $f10_2, $sequence);
   }
 
 }

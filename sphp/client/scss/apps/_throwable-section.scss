@@ -1,0 +1,89 @@
+
+@mixin sphp-throwable-section() {
+  .sphp-throwable-section {
+    // border: solid 2px rgba(#511, 0.5);
+    // @include border-radius(4px);
+    // background-color: rgba(#fdd, .3);
+    background-position: top right;
+    background-image: url('/svg-app/svg.php?name=crossbones.svg&opacity=0.6');
+    background-repeat: no-repeat;
+    background-size: 40% auto;
+    color: #200;
+    .h1, .h2, .h3, h1, h2, h3 {
+      color: #000;
+      $ts: rgba(#ea7, .5);
+      $px: 1px;
+      text-shadow:
+        $px $px 0 $ts,
+        $px -$px 0 $ts,
+        -$px $px 0 $ts,
+        -$px -$px 0 $ts,
+        $px 0px 0 $ts,
+        0px $px 0 $ts,
+        -$px 0px 0 $ts,
+        0px -$px 0 $ts;
+    }
+    .h1 {
+      font-size: 2rem;
+      background-color: rgba(#955, .08);
+      padding: .3rem;
+      border: solid 1px rgba(#955, .2);
+      @include border-radius(2px);
+    }
+    .h2, .h3 {
+      font-size:1.7rem;
+      background-color: rgba(#955, .05);
+      padding: .3rem;
+      border: solid 1px rgba(#955, .16);
+      @include border-radius(2px);
+    }
+    strong, var {
+      font-family: "Source Code Pro", monospace;
+    }
+    strong {
+      font-size: 1.1rem;
+    }
+    var {
+      font-size: 1.0rem;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+      padding: 0;
+      list-style: none;
+      &.trace-line {
+        margin-left: .5rem;
+      }
+    }
+    ol {
+      margin-left: 1.5rem;
+      padding-left: 0;
+      &.arguments {
+        margin-left: 1rem;
+        padding-left: 2rem;
+      }
+    }
+    .previous-exeptions {
+      .h1 {
+        font-size: 1.8rem;
+        background-color: rgba(#955, .08);
+        padding: .3rem;
+        border: solid 1px rgba(#955, .2);
+        @include border-radius(2px);
+      }
+      .h2, .h3, .h4 {
+        font-size:1.5rem;
+        background-color: rgba(#955, .05);
+        padding: .3rem;
+        border: solid 1px rgba(#955, .16);
+        @include border-radius(2px);
+      }
+      .previous-exception {
+        border: solid 2px rgba(#633, .4);
+        @include border-radius(4px);
+        padding: .2rem;
+        margin: .2rem .4rem;
+      }
+    }
+  }
+}

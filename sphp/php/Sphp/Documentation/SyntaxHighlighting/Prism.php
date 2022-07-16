@@ -40,7 +40,7 @@ class Prism implements SyntaxHighlighter {
       $source = Filesystem::toString($filename);
       $pre = $this->tagFromSource($source, 'php');
     } else {
-      $pre->setAttribute('data-src', $filename);
+      $pre->setAttribute('data-src', ltrim($filename, '.'));
     }
     if ($this->showLineNumbers) {
       $pre->addCssClass('line-numbers');

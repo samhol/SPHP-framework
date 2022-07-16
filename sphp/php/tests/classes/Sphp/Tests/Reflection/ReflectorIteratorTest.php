@@ -86,7 +86,7 @@ class ReflectorIteratorTest extends TestCase {
     $this->assertArrayHasKey('isTrait', $array);
     $this->assertArrayHasKey('isAbstract', $array);
     $this->assertArrayHasKey('isFinal', $array);
-    $this->assertArrayHasKey('constants', $array);
+    //$this->assertArrayHasKey('constants', $array);
   }
 
   public function classConstantReflectors(): iterable {

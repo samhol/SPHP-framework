@@ -56,13 +56,13 @@ class DatetimeFormat extends AbstractValidator {
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_string($value)) {
-      $this->getErrors()->appendMessageFromTemplate(static::INVALID);
+      $this->getMessages()->appendMessageFromTemplate(static::INVALID);
       return false;
     }
     $obj = DateTime::createFromFormat($this->format, $value);
     //echo $obj->format('Y-m-d H:i:s');
     if ($obj == false || DateTime::getLastErrors()['warning_count'] != 0 || DateTime::getLastErrors()['error_count'] != 0) {
-      $this->getErrors()->appendMessageFromTemplate(static::INVALID);
+      $this->getMessages()->appendMessageFromTemplate(static::INVALID);
       return false;
     }
     return true;

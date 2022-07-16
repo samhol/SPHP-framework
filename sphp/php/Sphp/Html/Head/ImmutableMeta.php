@@ -42,15 +42,15 @@ class ImmutableMeta extends AbstractContent implements MetaData {
     if ($count !== 1 || (!isset($attrs['charset']) && !isset($attrs['content']))) {
       throw new MetaDataException('Incomplete or incorrect metadata attributes provided');
     }
-   /* if(isset($attrs['charset']) && !isset($attrs['content'])) {
+    /* if(isset($attrs['charset']) && !isset($attrs['content'])) {
       throw new MetaDataException('No metadata content attribute provided');
-    }
-    if(isset($attrs['charset']) && !is_string($attrs['charset'])) {
+      }
+      if(isset($attrs['charset']) && !is_string($attrs['charset'])) {
       throw new MetaDataException('Metadata charset attribute provided with no content');
-    }
-    if(!isset($attrs['content']) || !is_scalar($attrs['content'])) {
+      }
+      if(!isset($attrs['content']) || !is_scalar($attrs['content'])) {
       throw new MetaDataException('No metadata content attribute provided');
-    }*/
+      } */
     $this->attrs = $attrs;
     ksort($this->attrs);
   }

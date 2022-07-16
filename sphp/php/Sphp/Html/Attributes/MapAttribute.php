@@ -36,13 +36,6 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @var scalar[]
    */
   private array $props = [];
-
-  /**
-   * names of all locked properties
-   *
-   * @var boolean[]
-   */
-  private array $lockedProps = [];
   private PropertyParser $parser;
 
   /**
@@ -58,7 +51,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @param string $name the name of the attribute
    * @param PropertyParser $parser
    */
-  public function __construct(string $name, PropertyParser $parser = null) {
+  public function __construct(string $name, ?PropertyParser $parser = null) {
     parent::__construct($name);
     if ($parser === null) {
       $parser = PropertyParser::singelton();
@@ -67,7 +60,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
   }
 
   public function __destruct() {
-    unset($this->props, $this->lockedProps, $this->parser);
+    unset($this->props, $this->parser);
   }
 
   public function __toString(): string {
@@ -88,7 +81,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
   }
 
   public function isAlwaysVisible(): bool {
-    return $this->required || $this->isProtected();
+    return $this->required;
   }
 
   public function isVisible(): bool {
@@ -115,94 +108,18 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
   }
 
   /**
-   * Checks whether the value or the given property is locked
-   *
-   * @param  string $property optional name of the property; if none given
-   *         checks if any of the stored properties are locked
-   * @return bool true if locked and false otherwise
-   */
-  public function isProtected(string $property = null): bool {
-    if ($property === null) {
-      $isProtected = count($this->lockedProps) > 0;
-    } else {
-      $isProtected = array_key_exists($property, $this->lockedProps);
-    }
-    return $isProtected;
-  }
-
-  /**
-   * Locks an property name value pair to the attribute
-   *
-   * **Note:** Replaces old not locked property values with the new ones
-   *
-   * @param  string $property the name of the property
-   * @param  string $value the value of the property
-   * @return $this for a fluent interface
-   * @throws InvalidArgumentException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already locked
-   */
-  public function protectProperty(string $property, $value) {
-    if ($this->isProtected($property)) {
-      throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is immutable");
-    }
-    $this->setProperty($property, $value);
-    $this->lockedProps[$property] = $value;
-    return $this;
-  }
-
-  /**
-   * Stores multiple property value pairs
-   *
-   * **Notes:**
-   *
-   * * `$props` are defined as "property" => "value" pairs.
-   * * Replaces old not locked property values with the new ones
-   *
-   * @param  array $props properties as `name => value` pairs
-   * @return $this for PHP Method Chaining
-   * @throws InvalidArgumentException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already locked
-   */
-  public function protectProperties(array $props) {
-    foreach ($props as $property => $value) {
-      $this->protectProperty($property, $value);
-    }
-    return $this;
-  }
-
-  /**
-   * Locks either all or the given properties
-   *
-   * @param  string|string[] $props optional property/properties to lock
-   * @return $this for PHP Method Chaining
-   * @throws InvalidArgumentException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already immutable
-   */
-  public function protectValue($props) {
-    $this->protectProperties($this->parser->parse($props));
-    return $this;
-  }
-
-  /**
    * Sets an property name value pair
    *
    * **Note:** Replaces old mutable property value with the new one
    *
    * @param  string $property the name of the property
-   * @param  mixed $value the value of the property
+   * @param  string|int|float $value the value of the property
    * @return $this for a fluent interface
    * @throws InvalidAttributeValueException if the property name or value is invalid
-   * @throws ImmutableAttributeException if the property is immutable
    */
-  public function setProperty(string $property, $value) {
-    if ($this->isProtected($property)) {
-      throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
-    }
-    if (!$this->parser->isValidPropertyName($property)) {
-      throw new InvalidAttributeValueException("Property name cannot be empty in the " . $this->getName() . " attribute");
-    }
-    if (!$this->parser->isValidValue($value)) {
-      throw new InvalidAttributeValueException("Property value cannot be empty in the " . $this->getName() . " attribute");
+  public function setProperty(string $property, string|int|float $value) {
+    if (!$this->parser->isValidProperty($property, $value)) {
+      throw new InvalidAttributeValueException("Property ($property: $value) is not valid");
     }
     $this->props[$property] = $value;
     return $this;
@@ -219,7 +136,6 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @param  iterable<string, scalar> $props new property name value pairs
    * @return $this for PHP Method Chaining
    * @throws InvalidAttributeValueException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function setProperties(iterable $props) {
     foreach ($props as $property => $value) {
@@ -233,21 +149,16 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    *
    * @param  string ...$propName the name of the property to remove
    * @return $this for a fluent interface
-   * @throws ImmutableAttributeException if the property is immutable
    */
   public function unsetProperties(string ...$propName) {
     foreach ($propName as $name) {
-      if ($this->isProtected($name)) {
-        throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
-      } else {
-        unset($this->props[$name]);
-      }
+      unset($this->props[$name]);
     }
     return $this;
   }
 
   public function clear() {
-    $this->props = $this->lockedProps;
+    $this->props = [];
     return $this;
   }
 
@@ -265,10 +176,10 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * Returns the value of the property name
    *
    * @param  string $property the name of the property
-   * @return scalar the value of the property
+   * @return string|int|float|null the value of the property
    * @throws NullPointerException if the property does not exist
    */
-  public function getProperty(string $property) {
+  public function getProperty(string $property): string|int|float|null {
     if ($this->hasProperty($property)) {
       $value = $this->props[$property];
     } else {
@@ -335,7 +246,7 @@ class MapAttribute extends AbstractAttribute implements ArrayAccess, IteratorAgg
    * @throws InvalidArgumentException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
    */
-  public function offsetSet(mixed $property, $value): void {
+  public function offsetSet(mixed $property, mixed $value): void {
     $this->setProperty($property, $value);
   }
 

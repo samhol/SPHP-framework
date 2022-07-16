@@ -36,7 +36,7 @@ class IsInstanceOf extends AbstractValidator {
    * @param string $error
    * @throws InvalidArgumentException if the class or interface is not defined
    */
-  public function __construct(string $className, string $error = 'Value is not instance of %s') {
+  public function __construct(string $className, string $error = 'Value is not instance of :instance') {
     parent::__construct($error);
     $this->setClassName($className);
   }
@@ -62,16 +62,17 @@ class IsInstanceOf extends AbstractValidator {
       throw new InvalidArgumentException('Invalid class or interface name: ' . $className);
     }
     $this->className = $className;
+    $this->messages->setParameter(':instance', $className);
     return $this;
   }
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
-    if ($value instanceof $this->className) {
-      return true;
+    if (!$value instanceof $this->className) {
+      $this->setError(self::INVALID);
+      return false;
     }
-    $this->getErrors()->appendMessageFromTemplate(self::INVALID, $this->className);
-    return false;
+    return true;
   }
 
 }

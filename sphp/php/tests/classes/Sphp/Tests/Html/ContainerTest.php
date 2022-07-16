@@ -145,18 +145,16 @@ class ContainerTest extends TestCase {
     $this->assertFalse(isset($container[0]));
   }
 
-  public function appendData() {
-    return [
-        [null],
-        ['a'],
-        [new PlainContainer('bar')],
-        [0]
-    ];
+  public function contentData(): iterable {
+    yield [null];
+    yield ['a'];
+    yield [new PlainContainer('bar')];
+    yield [0];
   }
 
   /**
+   * @dataProvider contentData
    * 
-   * @dataProvider appendData
    * @param  mixed $val
    * @return void
    */
@@ -186,41 +184,39 @@ class ContainerTest extends TestCase {
   }
 
   /**
+   * @dataProvider contentData
    * 
-   * @dataProvider appendData
    * @param mixed $val
    * @return void
    */
-  public function testPrepend($val): void {
+  public function testPrepend(mixed $val): void {
     $this->container->append('foo');
     $this->container->prepend($val);
     $this->assertTrue($this->container->offsetExists(0));
     $this->assertTrue($this->container->offsetExists(1));
     $this->assertEquals($this->container->count(), 2);
     $this->assertEquals($this->container[0], $val);
+    $this->assertEquals("{$val}foo", $this->container->getHtml());
   }
 
   /**
    * 
-   * @dataProvider appendData
+   * @dataProvider contentData
    * @param mixed $val
    */
   public function testOffsetSet($val) {
-    $this->container->append("foo");
-    $this->container[] = $val;
-    $this->container["a"] = $val;
-    $this->assertTrue($this->container->offsetExists(0));
-    $this->assertTrue($this->container->offsetExists(1));
-    $this->assertTrue($this->container->offsetExists("a"));
-    $this->assertEquals($this->container->count(), 3);
-    $this->assertEquals($this->container[1], $val);
-    $this->assertEquals($this->container["a"], $val);
+    $container = new PlainContainer();
+    $container->append("foo");
+    $container[] = $val;
+    $container["a"] = $val;
+    $this->assertTrue($container->offsetExists(0));
+    $this->assertTrue($container->offsetExists(1));
+    $this->assertTrue($container->offsetExists("a"));
+    $this->assertEquals($container->count(), 3);
+    $this->assertEquals($container[1], $val);
+    $this->assertEquals($container["a"], $val);
   }
 
-  /**
-   * 
-   * @return mixed[]
-   */
   public function arrayData(): iterable {
     yield [range("a", "e")];
     yield [array_fill(0, 3, new PlainContainer())];
@@ -228,18 +224,14 @@ class ContainerTest extends TestCase {
   }
 
   /**
-   * @dataProvider arrayData
-   * 
-   * @param  array $data
    * @return void
    */
-  public function testClear(array $data): void {
-    foreach ($data as $val) {
-      $this->container->append($val);
-    }
-    $this->assertEquals($this->container->count(), count($data));
-    $this->container->clear();
-    $this->assertEquals($this->container->count(), 0);
+  public function testClear(): void {
+    $container = new PlainContainer();
+    $container->appendDiv('div');
+    $this->assertCount(1, $container);
+    $container->clear();
+    $this->assertCount(0, $container);
   }
 
   /**
@@ -260,17 +252,19 @@ class ContainerTest extends TestCase {
   }
 
   /**
+   * @dataProvider contentData
    * 
-   * @dataProvider appendData
-   * @param mixed $val
+   * @param  mixed $val
+   * @return void
    */
-  public function testExists($val) {
-    $this->container->append($val);
-    $this->assertTrue($this->container->contains($val));
-    $this->assertFalse($this->container->contains('foo'));
-    $this->container->clear()->append((new PlainContainer())->append($val));
-    $this->assertTrue($this->container->contains($val));
-    $this->assertFalse($this->container->contains('foo'));
+  public function testContains(mixed $val): void {
+    $container = new PlainContainer();
+    $container->append($val);
+    $this->assertTrue($container->contains($val));
+    $this->assertFalse($container->contains('foo'));
+    $container->clear()->append((new PlainContainer())->append($val));
+    $this->assertTrue($container->contains($val));
+    $this->assertFalse($container->contains('foo'));
   }
 
   public function testClone(): void {

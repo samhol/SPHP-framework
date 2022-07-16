@@ -25,16 +25,14 @@ use Iterator;
  */
 class PriorityList implements Iterator, Countable, Arrayable {
 
-  const EXTR_DATA = 0x00000001;
-  const EXTR_PRIORITY = 0x00000002;
-  const EXTR_BOTH = 0x00000003;
+  public const EXTR_DATA = 0x00000001;
+  public const EXTR_PRIORITY = 0x00000002;
+  public const EXTR_BOTH = 0x00000003;
 
   /**
-   * Internal list of all items.
-   *
-   * @var array[]
+   * Internal list of all items. 
    */
-  private $items = [];
+  private array $items = [];
 
   /**
    * Serial assigned to items to preserve LIFO.
@@ -57,9 +55,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   private int $count = 0;
 
   /**
-   * Whether the list was already sorted.
-   *
-   * @var bool
+   * Whether the list was already sorted. 
    */
   private bool $sorted = false;
 
@@ -79,7 +75,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   }
 
   /**
-   * Insert a new item.
+   * Insert a new item
    *
    * @param  string  $name
    * @param  mixed   $value
@@ -137,7 +133,6 @@ class PriorityList implements Iterator, Countable, Arrayable {
     if (isset($this->items[$name])) {
       $this->count--;
     }
-
     unset($this->items[$name]);
   }
 
@@ -154,12 +149,12 @@ class PriorityList implements Iterator, Countable, Arrayable {
   }
 
   /**
-   * Get a item.
+   * Get an item
    *
    * @param  string $name
    * @return mixed
    */
-  public function get(string $name) {
+  public function get(string $name): mixed {
     $item = null;
     if (isset($this->items[$name])) {
       $item = $this->items[$name]['data'];
@@ -168,7 +163,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   }
 
   /**
-   * Sort all items.
+   * Sort all items
    *
    * @return void
    */
@@ -230,7 +225,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
   /**
    * {@inheritDoc}
    */
-  public function next() {
+  public function next(): mixed {
     $node = next($this->items);
     return $node ? $node['data'] : false;
   }
@@ -255,7 +250,7 @@ class PriorityList implements Iterator, Countable, Arrayable {
    * @param  int $flag 
    * @return array
    */
-  public function toArray($flag = self::EXTR_DATA): array {
+  public function toArray(int $flag = self::EXTR_DATA): array {
     $this->sort();
 
     if ($flag == self::EXTR_BOTH) {

@@ -23,10 +23,7 @@ use Sphp\Exceptions\UnderflowException;
  */
 class ArrayQueue implements Queue {
 
-  /**
-   * @var array 
-   */
-  private $items;
+  private array $items;
 
   /**
    * Constructor
@@ -44,14 +41,14 @@ class ArrayQueue implements Queue {
     unset($this->items);
   }
 
-  public function dequeue() {
+  public function dequeue(): mixed {
     if ($this->isEmpty()) {
       throw new UnderflowException('Cannot dequeue from empty queue');
     }
     return array_shift($this->items);
   }
 
-  public function enqueue($value) {
+  public function enqueue(mixed $value) {
     $this->items[] = $value;
     return $this;
   }
@@ -60,7 +57,7 @@ class ArrayQueue implements Queue {
     return empty($this->items);
   }
 
-  public function peek() {
+  public function peek(): mixed {
     if ($this->isEmpty()) {
       throw new UnderflowException('Cannot peek empty queue');
     }

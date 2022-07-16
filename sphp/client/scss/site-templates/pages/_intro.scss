@@ -1,0 +1,18 @@
+.sphp.intro-carousel { 
+  .slick-track {
+    display: flex !important;
+  }
+
+  .slick-slide  {
+    height: inherit !important;
+    section {
+      //margin: 1rem;
+      padding: .4rem;
+      border: 1px solid rgba(#888, .4);
+      height: 100%;
+      &:hover {
+      border-color: rgba(#888, .8);
+      }
+    }
+  }
+}

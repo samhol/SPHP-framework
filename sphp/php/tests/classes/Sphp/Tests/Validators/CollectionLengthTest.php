@@ -32,6 +32,12 @@ class CollectionLengthTest extends TestCase {
     unset($this->validator);
   }
 
+  public function testConstructor(): CollectionLength {
+    $validator = new CollectionLength(1, 5);
+    $this->assertCount(0, $validator->getMessages());
+    return $validator;
+  }
+
   public function validData(): array {
     $data[] = [['a']];
     $data[] = [range(1, 5)];
@@ -43,9 +49,13 @@ class CollectionLengthTest extends TestCase {
 
   /**
    * @dataProvider validData
+   * 
+   * @param  iterable $data
+   * @return void
    */
-  public function testValid($data) {
+  public function testValid(iterable $data): void {
     $this->assertTrue($this->validator->isValid($data));
+    $this->assertCount(0, $this->validator->getMessages());
   }
 
   public function tooSmall(): array {
@@ -64,8 +74,9 @@ class CollectionLengthTest extends TestCase {
   public function testTooSmall($data) {
     $this->validator->setMin(3)->setMax(4);
     $this->assertFalse($this->validator->isValid($data));
-    $expected = vsprintf($this->validator->getErrors()->getTemplate(CollectionLength::SMALLER_ERROR), 3);
-    $errors = $this->validator->getErrors()->toArray();
+    $expected = $this->validator->getMessages()->buildMessageFromTemplate(CollectionLength::NOT_LARGER);
+    $errors = $this->validator->getMessages()->toArray();
+    //print_r($errors);
     $this->assertContains($expected, $errors);
   }
 
@@ -85,8 +96,8 @@ class CollectionLengthTest extends TestCase {
   public function testTooLarge($data): void {
     $this->validator->setMin(1)->setMax(4);
     $this->assertFalse($this->validator->isValid($data));
-    $expected = vsprintf($this->validator->getErrors()->getTemplate(CollectionLength::LARGER_ERROR), 4);
-    $errors = $this->validator->getErrors()->toArray();
+    $expected = $this->validator->getMessages()->buildMessageFromTemplate(CollectionLength::NOT_SMALLER);
+    $errors = $this->validator->getMessages()->toArray();
     $this->assertContains($expected, $errors);
   }
 
@@ -107,8 +118,8 @@ class CollectionLengthTest extends TestCase {
    */
   public function testInvalidType($data): void {
     $this->assertFalse($this->validator->isValid($data));
-    $expected = $this->validator->getErrors()->getTemplate(CollectionLength::INVALID);
-    $errors = $this->validator->getErrors()->toArray();
+    $expected = $this->validator->getMessages()->getTemplate(CollectionLength::INVALID);
+    $errors = $this->validator->getMessages()->toArray();
     $this->assertContains($expected, $errors);
   }
 

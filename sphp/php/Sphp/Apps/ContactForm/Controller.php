@@ -112,7 +112,7 @@ class Controller {
     if (!$this->validator->isValid($post)) {
       $this->data->validSubmission = false;
       $this->data->formData = $formData;
-      $this->data->errors = $this->validator->getErrors()->toArray();
+      $this->data->errors = $this->validator->getMessages()->toArray();
     }
     if ($this->data->validSubmission) {
       $this->data->formData = $formData;

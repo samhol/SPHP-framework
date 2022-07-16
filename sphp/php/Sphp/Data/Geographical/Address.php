@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Data\Geographical;
 
-use Sphp\Stdlib\Strings;
-
 /**
  * Implements a geographical address
  *
@@ -94,16 +92,16 @@ class Address {
    */
   public function __toString(): string {
     $output = '';
-    if ($this->street != '' && !Strings::isEmpty($this->street)) {
+    if ($this->street != '') {
       $output .= $this->street;
     }
-    if ($this->zipcode != '' && !Strings::isEmpty($this->zipcode)) {
+    if ($this->zipcode != '') {
       $output .= ", $this->zipcode";
     }
-    if ($this->city != '' && !Strings::isEmpty($this->city)) {
+    if ($this->city != '') {
       $output .= " $this->city";
     }
-    if ($this->country != '' && !Strings::isEmpty($this->country)) {
+    if ($this->country != '') {
       $output .= ", $this->country";
     }
     return $output;

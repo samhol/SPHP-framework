@@ -39,7 +39,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @param string $tagname
    * @param AttributeContainer|null $attrs
    */
-  public function __construct(string $tagname, AttributeContainer $attrs = null) {
+  public function __construct(string $tagname, ?AttributeContainer $attrs = null) {
     parent::__construct($tagname, $attrs);
     $this->rows = [];
   }
@@ -125,7 +125,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @param mixed $offset an offset to check for
    * @return bool true on success or false on failure
    */
-  public function offsetExists($offset): bool {
+  public function offsetExists(mixed $offset): bool {
     return array_key_exists($offset, $this->rows);
   }
 
@@ -135,7 +135,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @param  mixed $offset the index with the content element
    * @return Row|null content element or null
    */
-  public function offsetGet($offset): ?Row {
+  public function offsetGet(mixed $offset): ?Row {
     if ($this->offsetExists($offset)) {
       return $this->rows[$offset];
     }
@@ -149,7 +149,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @param  mixed $value the value to set
    * @return void
    */
-  public function offsetSet($offset, $value): void {
+  public function offsetSet(mixed $offset, mixed $value): void {
     if (!$value instanceof Row) {
       $value = new Tr($value);
     }
@@ -166,7 +166,7 @@ abstract class RowContainer extends AbstractComponent implements IteratorAggrega
    * @param  mixed $offset offset to unset
    * @return void
    */
-  public function offsetUnset($offset): void {
+  public function offsetUnset(mixed $offset): void {
     if ($this->offsetExists($offset)) {
       unset($this->rows[$offset]);
     }

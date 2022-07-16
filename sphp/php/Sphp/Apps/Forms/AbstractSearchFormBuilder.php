@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Sphp\Apps\Forms;
 
-use Sphp\Foundation\Sites\Forms\Inputs\InputGroup;
+use Sphp\Bootstrap\Components\Forms\InputGroup;
 use Sphp\Html\Forms\Inputs\SearchInput;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\SubmitButton;
@@ -30,20 +30,12 @@ use Sphp\Html\Tags;
  */
 abstract class AbstractSearchFormBuilder {
 
-  /**
-   * @var HiddenInputs
-   */
-  private $hiddenData;
+  private HiddenInputs $hiddenData;
 
-  /**
-   * @var SearchInput
-   */
-  private $searchField;
+  
+  private SearchInput $searchField;
 
-  /**
-   * @var SubmitButton
-   */
-  private $submitButton;
+  private SubmitButton $submitButton;
 
   /**
    * Constructor
@@ -113,7 +105,7 @@ abstract class AbstractSearchFormBuilder {
    */
   public function setSubmitButton(Submitter $submitButton) {
     $this->submitButton = $submitButton;
-    $this->submitButton->cssClasses()->protectValue('button');
+    $this->submitButton->addCssClass('btn btn-success');
     return $this;
   }
 

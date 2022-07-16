@@ -23,14 +23,14 @@ namespace Sphp\Validators;
 class CollectionLength extends AbstractValidator {
 
   /**
-   * `ID` for error message describing values not matching an inclusive limit
+   * `ID` for error message describing values not matching lower limit
    */
-  public const SMALLER_ERROR = 'SMALLER_ERROR';
+  public const NOT_LARGER = 'NOT_LARGER';
 
   /**
-   * `ID` for error message describing values not matching an exclusive limit
+   * `ID` for error message describing values not matching upper limit
    */
-  public const LARGER_ERROR = 'LARGER_ERROR';
+  public const NOT_SMALLER = 'NOT_SMALLER';
 
   private ?int $min;
   private ?int $max;
@@ -44,36 +44,38 @@ class CollectionLength extends AbstractValidator {
   public function __construct(?int $min = null, ?int $max = null) {
     parent::__construct('Array, Countable or Traversable object expected');
     $this->setMin($min)->setMax($max);
-    $this->getErrors()->setTemplate(static::SMALLER_ERROR, 'Collection is smaller than %d');
-    $this->getErrors()->setTemplate(static::LARGER_ERROR, 'Collection is larger than %d');
+    $this->getMessages()->setTemplate(static::NOT_LARGER, 'Collection size is smaller than :min');
+    $this->getMessages()->setTemplate(static::NOT_SMALLER, 'Collection size is larger than :max');
   }
 
   /**
    * Sets the minimum value
    * 
-   * @param  int $min the minimum value
+   * @param  int|null $min the minimum value
    * @return $this for a fluent interface
    */
-  public function setMin(int $min = null) {
+  public function setMin(?int $min = null) {
     $this->min = $min;
+    $this->messages->setParameter(':min', $min);
     return $this;
   }
 
   /**
    * Sets the maximum value
    * 
-   * @param  int $max the maximum value
+   * @param  int|null $max the maximum value
    * @return $this for a fluent interface
    */
-  public function setMax(int $max = null) {
+  public function setMax(?int $max = null) {
     $this->max = $max;
+    $this->messages->setParameter(':max', $max);
     return $this;
   }
 
   public function isValid(mixed $value): bool {
     $this->setValue($value);
     if (!is_array($value) && !$value instanceof \Traversable && !$value instanceof \Countable) {
-      $this->getErrors()->appendMessageFromTemplate(self::INVALID);
+      $this->getMessages()->appendMessageFromTemplate(self::INVALID);
       return false;
     } else {
       if (is_array($value) || $value instanceof \Countable) {
@@ -82,10 +84,10 @@ class CollectionLength extends AbstractValidator {
         $length = iterator_count($value);
       }
       if ($this->min !== null && $length < $this->min) {
-        $this->getErrors()->appendMessageFromTemplate(static::SMALLER_ERROR, $this->min);
+        $this->getMessages()->appendMessageFromTemplate(static::NOT_LARGER);
         return false;
       } else if ($this->max !== null && $length > $this->max) {
-        $this->getErrors()->appendMessageFromTemplate(static::LARGER_ERROR, $this->max);
+        $this->getMessages()->appendMessageFromTemplate(static::NOT_SMALLER);
         return false;
       }
     }

@@ -103,8 +103,7 @@ class PriorityListTest extends TestCase {
     return $data;
   }
 
-  /**
-   * @param array $sequence
+  /** 
    * @return void
    */
   public function testPrioritySequence(): void {

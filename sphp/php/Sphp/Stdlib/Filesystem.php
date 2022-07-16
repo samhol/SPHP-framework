@@ -63,7 +63,7 @@ abstract class Filesystem {
    */
   public static function toString(string $path): string {
     if (!self::isFile($path)) {
-      throw new FileSystemException("Parsing the file '$path' failed");
+      throw new FileSystemException("The ptah '$path' contains no file");
     }
     $data = file_get_contents($path, false, null, 0);
     if ($data === false) {

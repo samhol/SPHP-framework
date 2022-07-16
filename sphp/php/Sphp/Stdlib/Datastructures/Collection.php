@@ -24,12 +24,7 @@ use Sphp\Stdlib\Arrays;
  */
 class Collection implements Iterator, CollectionInterface {
 
-  /**
-   * stored values
-   *
-   * @var array
-   */
-  private $items;
+  private array $items;
 
   /**
    * Constructor
@@ -67,7 +62,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $offset the offset key
    * @return bool true if the property exists and false otherwise
    */
-  public function offsetExists($offset): bool {
+  public function offsetExists(mixed $offset): bool {
     return array_key_exists($offset, $this->items);
   }
 
@@ -93,7 +88,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $value the value to set
    * @return void
    */
-  public function offsetSet(mixed $offset, $value): void {
+  public function offsetSet(mixed $offset, mixed $value): void {
     if (is_null($offset)) {
       $this->items[] = $value;
     } else {
@@ -118,7 +113,7 @@ class Collection implements Iterator, CollectionInterface {
    * @return $this for a fluent interface
    */
   public function append(mixed $value) {
-    array_push($this->items, $value);
+    $this->items[] =  $value;
     return $this;
   }
 

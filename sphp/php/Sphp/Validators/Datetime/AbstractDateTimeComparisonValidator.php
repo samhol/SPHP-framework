@@ -36,7 +36,7 @@ abstract class AbstractDateTimeComparisonValidator extends AbstractLimitValidato
    */
   public function __construct($dt = 'now', bool $inclusive = true) {
     parent::__construct($inclusive);
-    $this->getErrors()->setTemplate(static::INVALID, 'Invalid data type given: Cannot parse to DateTime');
+    $this->getMessages()->setTemplate(static::INVALID, 'Invalid data type given: Cannot parse to DateTime');
     $this->setLimit($dt);
   }
 

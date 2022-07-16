@@ -37,19 +37,19 @@ class EarlierThanTest extends ValidatorTestCase {
     $this->validator = $this->createValidator();
   }
 
-  public function createValidator($limit = 'now', bool $inclusive = true): Validator {
+  public function createValidator($limit = 'now', bool $inclusive = true): EarlierThan {
     return new EarlierThan($limit, $inclusive);
   }
 
-  public function getInvalidValue() {
-    return 'next monday';
+  public function invalidValuesProvider(): iterable {
+    yield ['next monday'];
   }
 
-  public function getValidValue() {
-    return 'last monday';
+  public function validValuesProvider(): iterable {
+    yield ['last monday'];
   }
 
-  public function invalidTypes(): array {
+  public function invalidTypes(): iterable {
     $data[] = ['not a day'];
     $data[] = ['foo'];
     $data[] = [new \stdClass];
@@ -64,7 +64,7 @@ class EarlierThanTest extends ValidatorTestCase {
    */
   public function testInvalidTypes($value): void {
     $this->assertFalse($this->validator->isValid($value));
-    $this->assertCount(1, $this->validator->getErrors());
+    $this->assertCount(1, $this->validator->getMessages());
   }
 
   public function testInclusive(): void {

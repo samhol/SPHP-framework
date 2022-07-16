@@ -14,7 +14,6 @@ namespace Sphp\Html\Attributes;
 
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
-use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Traversable;
 
@@ -30,13 +29,15 @@ use Traversable;
  */
 class ClassAttribute extends AbstractAttribute implements IteratorAggregate, CollectionAttribute {
 
+  protected const DELIMETER_REGEX = '/[\s]+/';
+  protected const VALID_ATOMIC_VALUE = '/^(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)$/';
+
   /**
-   * stored individual classes
+   * stored atomic class names
    *
-   * @var string[]
+   * @var array<string, bool>
    */
   private array $values = [];
-  private CssClassParser $parser;
   private bool $required = false;
 
   /**
@@ -44,14 +45,11 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *  
    * @param string $name the name of the attribute
    * @param string|string[] $value
-   * @param CssClassParser|null $parser
    */
-  public function __construct(string $name = 'class', $value = null, ?CssClassParser $parser = null) {
+  public function __construct(string $name = 'class', $value = null) {
     parent::__construct($name);
-    if ($parser === null) {
-      $parser = CssClassParser::singelton();
-    }
-    $this->parser = $parser;
+
+    //this->parser = $parser;
     if ($value !== null) {
       $this->setValue($value);
     }
@@ -61,7 +59,52 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * Destructor
    */
   public function __destruct() {
-    unset($this->values, $this->parser);
+    unset($this->values);
+  }
+
+  /**
+   * Explodes a string containing CSS class names separated by whitespace characters
+   * 
+   * @param  string $string a string to explode
+   * @return string[] an array containing atomic CSS class names
+   */
+  protected function explodeClassNameString(string $string): array {
+    $result = preg_split(static::DELIMETER_REGEX, $string, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      $result = [];
+    }
+    return $result;
+  }
+
+  /**
+   * Parses a collection of raw class names to an array of atomic class names
+   * 
+   * @param  string ... $raw a collection of raw CSS class names
+   * @return string[] an array of atomic class names
+   * @throws AttributeException if the raw input is not valid
+   */
+  protected function parseClassNames(string ... $raw): array {
+    $parsed = [];
+    foreach ($raw as $value) {
+      $parsed = array_merge($parsed, $this->explodeClassNameString($value));
+    }
+    return array_unique($parsed);
+  }
+
+  /**
+   * Parses a collection of raw CSS class names to an array of atomic class names
+   * 
+   * @param  string ... $raw a collection of raw CSS class names
+   * @return string[] an array of individual class names
+   * @throws AttributeException if the raw input contains invalid class names
+   */
+  protected function parseAndValidateClassNames(string ... $raw): array {
+    $parsed = $this->parseClassNames(... $raw);
+    $invalid = preg_grep(static::VALID_ATOMIC_VALUE, $parsed, PREG_GREP_INVERT);
+    if (!empty($invalid)) {
+      throw new AttributeException('Invalid class names found (' . implode(', ', $invalid) . ')');
+    }
+    return $parsed;
   }
 
   public function forceVisibility() {
@@ -124,7 +167,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @return $this for a fluent interface
    */
   public function add(string ...$values) {
-    $parsed = $this->parser->parse($values);
+    $parsed = $this->parseAndValidateClassNames(...$values);
     foreach ($parsed as $class) {
       if (!isset($this->values[$class])) {
         $this->values[$class] = false;
@@ -150,7 +193,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     } else {
       $locked = false;
       //$values = $this->parser->parse($values);
-      foreach ($this->parser->parse($values) as $class) {
+      foreach ($this->parseClassNames(...$values) as $class) {
         $locked = isset($this->values[$class]) && $this->values[$class] === true;
         if (!$locked) {
           break;
@@ -168,11 +211,11 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * 1. A string parameter can contain multiple class names separated by spaces
    * 2. Duplicate values are ignored
    *
-   * @param  null|string|string[] ...$content the atomic values to lock
+   * @param  string ...$content the atomic values to lock
    * @return $this for a fluent interface
    */
   public function protectValue(string ...$values) {
-    foreach ($this->parser->parse($values, true) as $class) {
+    foreach ($this->parseAndValidateClassNames(...$values) as $class) {
       $this->values[$class] = true;
     }
     return $this;
@@ -188,7 +231,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove(string ...$values) {
-    foreach ($this->parser->parse($values) as $class) {
+    foreach ($this->parseClassNames(...$values) as $class) {
       if (isset($this->values[$class])) {
         if ($this->values[$class] === false) {
           unset($this->values[$class]);
@@ -202,7 +245,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
 
   public function clear() {
     if (!empty($this->values)) {
-      $this->values = array_filter($this->values, function ($locked) {
+      $this->values = array_filter($this->values, function ($locked): bool {
         return $locked;
       });
     }
@@ -214,12 +257,12 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    *  
    * <strong>NOTE:</strong> A string parameter can contain multiple comma separated class names 
    *
-   * @param  string ...$value the atomic values to search for
+   * @param  string ...$value the class names ans atomic values or comma separated
    * @return bool true if the given atomic values exists
    */
   public function contains(string ...$value): bool {
     $exists = false;
-    foreach ($this->parser->parse($value) as $class) {
+    foreach ($this->parseClassNames(...$value) as $class) {
       $exists = isset($this->values[$class]);
       if (!$exists) {
         break;
@@ -298,10 +341,10 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
   /**
    * Returns an external iterator
    *
-   * @return Traversable<int, string> external iterator
+   * @return Traversable<string> external iterator
    */
   public function getIterator(): Traversable {
-    return new Collection(array_keys($this->values));
+    return yield from array_keys($this->values);
   }
 
 }

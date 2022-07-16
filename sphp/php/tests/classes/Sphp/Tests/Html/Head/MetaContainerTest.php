@@ -26,7 +26,7 @@ class MetaContainerTest extends TestCase {
     $metaData = new MetaContainer();
     $this->assertCount(0, $metaData);
     $this->assertEmpty($metaData);
-    $this->assertEmpty($metaData->toArray());
+    //$this->assertEmpty($metaData->toArray());
     $this->assertSame('', $metaData->getHtml());
   }
 

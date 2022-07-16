@@ -22,12 +22,12 @@ namespace Sphp\Filters;
 abstract class AbstractFilter implements Filter {
 
   /**
-   * Executes the filter for the given value
+   * Executes the filter when the filter object is called as a function
    * 
-   * @param  mixed $value the value to filter
+   * @param  mixed $variable the data to filter
    * @return mixed the filtered value
    */
-  public function __invoke($value) {
+  public function __invoke(mixed $value): mixed {
     return $this->filter($value);
   }
 

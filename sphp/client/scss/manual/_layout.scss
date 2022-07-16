@@ -1,0 +1,43 @@
+@use 'sphp';
+
+main {
+  @include sphp.border-radius(4px);
+  border: solid 2px #666;
+  background-color: #fbfaf9;
+  -webkit-box-shadow: 0px 0px 4px 2px rgba(255,241,153,0.5);
+  box-shadow:         0px 0px 4px 2px rgba(#ccc, 0.5);
+  //padding: 1rem;
+  margin-top: -.3rem;
+  margin-bottom: 1.3rem;
+  padding-bottom: 1.3rem;
+  > section, > section > nav {
+    > h1 {
+      margin-left: .4rem;
+      margin-right: .4rem;
+      padding: 1rem 2rem;
+
+      border: solid 2px #bbb;
+      border-top: none 0px;
+      background-color: #eee;
+
+    }
+    > h2 {
+      padding: 1rem 0 .5rem .5rem;
+
+      border-bottom: solid 2px #bbb; 
+      background-color: #eee;
+
+    }
+  }
+}
+p {
+  margin: .3rem 20px 1rem 20px;
+  font-family: 'Roboto-Regular'
+}
+var, code, em {
+  font-family: 'Roboto-Mono', sans-serif;
+}
+.accordion h2  button {
+  border: 2px solid #bbb;
+  font-weight: bold;
+}

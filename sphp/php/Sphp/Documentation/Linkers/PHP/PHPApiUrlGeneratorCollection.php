@@ -111,7 +111,7 @@ class PHPApiUrlGeneratorCollection implements PHPApiUrlGenerator, \IteratorAggre
     return $gen;
   }
 
-  public function mapSami(string $namespace, string $path): SamiUrls {
+  public function mapSami(string $namespace, ?string $root = null, ?string $name = null): SamiUrls {
     $gen = new SamiUrls($root, $name);
     $this->mapNamespace($namespace, $gen);
     return $gen;

@@ -33,7 +33,7 @@ class Whitelist extends AbstractValidator {
    */
   public function __construct(array $whitelist, string $errorText = 'An illegal key found') {
     parent::__construct('Array expected');
-    $this->getErrors()->setTemplate(self::ILLEGAL_KEY, $errorText);
+    $this->getMessages()->setTemplate(self::ILLEGAL_KEY, $errorText);
     $this->setWhitelist($whitelist);
   }
 
@@ -60,12 +60,12 @@ class Whitelist extends AbstractValidator {
     $this->setValue($value);
     $valid = true;
     if (!is_array($value)) {
-      $this->getErrors()->setMessageFromTemplate(self::INVALID, self::INVALID);
+      $this->setError(self::INVALID);
       $valid = false;
     } else {
       foreach (array_keys($value) as $key) {
         if (!in_array($key, $this->whitelist, true)) {
-          $this->getErrors()->setMessageFromTemplate(self::ILLEGAL_KEY, self::ILLEGAL_KEY);
+          $this->setError(self::ILLEGAL_KEY);
           $valid = false;
           break;
         }

@@ -17,7 +17,6 @@ use Sphp\Html\Navigation\A;
 use Sphp\Reflection\ClassConstantReflector;
 use Sphp\Reflection\Exceptions\ReflectionException;
 use Sphp\Documentation\Linkers\Exceptions\NonDocumentedFeatureException;
-use Sphp\Stdlib\Strings;
 
 /**
  * Implements a link factory pointing to an external API documentation about a PHP class, interface or trait constant
@@ -74,7 +73,7 @@ final class ClassConstantLinker extends AbstractClassItemLinker {
   }
 
   public function getNavBarTitle(): string {
-    $type = Strings::convertCase($this->ref->getModifierNames(), MB_CASE_TITLE);
+    $type = mb_convert_case($this->ref->getModifierNames(), MB_CASE_TITLE);
     return "$type Class Constant";
   }
 

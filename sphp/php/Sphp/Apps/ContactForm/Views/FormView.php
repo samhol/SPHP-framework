@@ -11,7 +11,6 @@
 namespace Sphp\Apps\ContactForm\Views;
 
 use Sphp\Html\AbstractContent;
-use Sphp\Bootstrap\Components\Forms\ValidableInputCol;
 use Sphp\Bootstrap\Components\Forms\ValidableInput;
 use Sphp\Bootstrap\Components\Forms\GridForm;
 use Sphp\Bootstrap\Layout\Row;
@@ -111,7 +110,7 @@ class FormView extends AbstractContent {
   private function buildEmailField(): ValidableInput {
     $emailField = ValidableInput::email('email');
     $emailField->getInput()->setInitialValue($this->data['email']);
-    $emailField->setPreLabel($this->fa('fas fa-at'));
+    $emailField->setPreLabel($this->fa('fa-solid fa-envelope'));
     $emailField->setLabel('Email address <small class="required">required</small>');
     $emailField->getInput()->setPlaceholder('a@mail.com');
     $emailField->setValidToolTip('Email address is valid');

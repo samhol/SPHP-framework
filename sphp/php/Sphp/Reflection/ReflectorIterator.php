@@ -108,7 +108,8 @@ class ReflectorIterator implements Iterator, Arrayable {
   }
 
   protected function isValidMethod(MethodReflector $method) {
-    return $method->isPublic() &&
+    return !$method->isDeprecated() &&
+            $method->isPublic() &&
             !$method->isStatic() &&
             !$method->isConstructor() &&
             !$method->isDestructor() &&
@@ -185,7 +186,7 @@ class ReflectorIterator implements Iterator, Arrayable {
    * 
    * @return mixed the key of the current element
    */
-  public function key():mixed {
+  public function key(): mixed {
     return key($this->data);
   }
 

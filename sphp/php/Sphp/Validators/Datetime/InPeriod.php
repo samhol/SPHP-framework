@@ -44,8 +44,8 @@ class InPeriod extends AbstractLimitValidator {
     parent::__construct($inclusive);
     $this->min = $min;
     $this->max = $max;
-    $this->getErrors()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in exclusive period (%s, %s)');
-    $this->getErrors()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive period (%s, %s)');
+    $this->getMessages()->setTemplate(static::EXCLUSIVE_ERROR, 'Not in exclusive period (%s, %s)');
+    $this->getMessages()->setTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive period (%s, %s)');
   }
 
   public function __destruct() {
@@ -83,12 +83,12 @@ class InPeriod extends AbstractLimitValidator {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->getErrors()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min, $this->max);
+        $this->getMessages()->appendMessageFromTemplate(static::INCLUSIVE_ERROR, $this->min, $this->max);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->getErrors()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min, $this->max);
+        $this->getMessages()->appendMessageFromTemplate(static::EXCLUSIVE_ERROR, $this->min, $this->max);
         return false;
       }
     }

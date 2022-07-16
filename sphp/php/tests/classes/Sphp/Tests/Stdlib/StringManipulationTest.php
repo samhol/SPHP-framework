@@ -15,7 +15,7 @@ use Sphp\Stdlib\MbString;
 use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\OutOfBoundsException;
 
-class StringManipulationTest extends TestCase {
+class StringManipulationTest {
 
   public function testGetEncoding() {
     $this->assertEquals('UTF-8', MbString::create('')->getEncoding());
@@ -53,7 +53,6 @@ class StringManipulationTest extends TestCase {
     $this->assertSame($string->isEmpty(), ($count === 0));
     $this->assertEquals($count, $string->length());
     $this->assertEquals($count, $string->count());
-    $this->assertSame($count, Strings::length($plain, $encoding));
   }
 
   public function startsWithData(): iterable {
@@ -77,7 +76,6 @@ class StringManipulationTest extends TestCase {
    * @return void
    */
   public function testStartsWith(string $haystack, string $needle, bool $startsWith): void {
-    $this->assertSame($startsWith, Strings::startsWith($haystack, $needle));
     $this->assertSame($startsWith, MbString::create($haystack)->startsWith($needle));
   }
 
@@ -184,43 +182,6 @@ class StringManipulationTest extends TestCase {
   public function testMatch(string $string, string $pattern, bool $result) {
     $obj = MbString::create($string);
     $this->assertSame($obj->match($pattern), $result);
-  }
-
-  public function convertCaseData(): iterable {
-    return [
-        ["Τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ  κυνός", 'UTF-8'],
-        ["Ä", 'UTF-8'],
-        ["Ö", 'UTF-8'],
-        ["Å R E", 'UTF-8'],
-        ['', 'UTF-8'],
-        ['- * 1234567890', 'UTF-8'],
-    ];
-  }
-
-  /**
-   * @dataProvider convertCaseData
-   * @param string $string
-   * @param string $enc
-   */
-  public function testConvertCase(string $string, string $enc) {
-    $lower = \mb_convert_case($string, \MB_CASE_LOWER, $enc);
-    $upper = \mb_convert_case($string, \MB_CASE_UPPER, $enc);
-    $title = \mb_convert_case($string, \MB_CASE_TITLE, $enc);
-
-    $strObject = MbString::create($string, $enc);
-    $this->assertEquals($lower, Strings::convertCase($string, MB_CASE_LOWER, $enc));
-    $this->compareToString($lower, $strObject->convertCase(MB_CASE_LOWER));
-    $this->assertEquals($upper, Strings::convertCase($string, MB_CASE_UPPER, $enc));
-    $this->compareToString($upper, $strObject->convertCase(MB_CASE_UPPER));
-    $this->assertEquals($title, Strings::convertCase($string, MB_CASE_TITLE, $enc));
-    $this->compareToString($title, $strObject->convertCase(MB_CASE_TITLE));
-
-    $this->assertTrue(Strings::caseIs($lower, MB_CASE_LOWER, $enc));
-    $this->assertTrue(Strings::caseIs($upper, MB_CASE_UPPER, $enc));
-    $this->assertTrue(Strings::caseIs($title, MB_CASE_TITLE, $enc));
-    $this->assertTrue(MbString::create($lower, $enc)->caseIs(MB_CASE_LOWER));
-    $this->assertTrue(MbString::create($upper, $enc)->caseIs(MB_CASE_UPPER));
-    $this->assertTrue(MbString::create($title, $enc)->caseIs(MB_CASE_TITLE));
   }
 
   public function iterationTestData(): iterable {
@@ -374,34 +335,13 @@ class StringManipulationTest extends TestCase {
     $this->assertSame([], MbString::create('')->toArray());
   }
 
-  public function testCountSubstr(): void {
-    $strObj = MbString::create('This IS a test');
-    $this->assertEquals(1, $strObj->countSubstr('is'));
-    $this->assertEquals(1, Strings::countSubstr('This IS a test', 'is'));
-    $this->assertEquals(2, $strObj->countSubstr('is', false));
-    $this->assertEquals(2, Strings::countSubstr('This IS a test', 'is', false));
-  }
 
-  public function testIndexOf(): void {
-    $str = 'foobar is foo and bar';
-    $strObj = MbString::create($str);
-    $this->assertEquals(7, $strObj->indexOf('is'));
-    $this->assertEquals(7, Strings::indexOf($str, 'is'));
-    $this->assertEquals(0, $strObj->indexOf('foo'));
-    $this->assertEquals(0, Strings::indexOf($str, 'foo'));
-    $this->assertEquals(10, $strObj->indexOf('foo', 1));
-    $this->assertEquals(10, Strings::indexOf($str, 'foo', 1));
-  }
 
   public function testReplacing() {
     $string = 'a-b';
     $strObj = MbString::create($string);
-
-    $this->compareToString('-', $strObj->regexReplace('[A-Za-z0-9]', ''));
-    $this->compareToString('-b', $strObj->replace('a', ''));
-
+    $this->compareToString('-', $strObj->eregReplace('[A-Za-z0-9]', ''));
     $this->assertEquals('-', Strings::regexReplace($string, '[A-Za-z0-9]', ''));
-    $this->assertEquals('-b', Strings::replace($string, 'a', ''));
   }
 
   public function reverseData(): iterable {
@@ -428,18 +368,17 @@ class StringManipulationTest extends TestCase {
   }
 
   public function collapseWhitespaceData(): iterable {
-    return [
-        ["\n  \t", ''],
-        [" äa \n\t ", "äa"],
-    ];
+    yield ["\n  \t", ''];
+    yield  [" äa \n\t ", "äa"];
   }
 
   /**
    * @dataProvider collapseWhitespaceData
+   * 
    * @param string $string
    * @param string $expected
    */
-  public function testCollapseWhitespace($string, string $expected) {
+  public function testCollapseWhitespace($string, string $expected) :void{
     $this->assertEquals($expected, Strings::collapseWhitespace($string));
     $strObj = MbString::create($string);
     $collapsed = $strObj->collapseWhitespace();
@@ -480,7 +419,7 @@ class StringManipulationTest extends TestCase {
    */
   public function testIsAlphaOrAlphanum(string $string, bool $isAlpha, bool $isAlphanum) {
     $obj = MbString::create($string);
-    $this->assertSame($isAlpha, Strings::isAlpha($string));
+    //$this->assertSame($isAlpha, Strings::isAlpha($string));
     $this->assertSame($isAlpha, $obj->isAlpha());
     $this->assertSame($isAlphanum, Strings::isAlphanumeric($string));
     $this->assertSame($isAlphanum, $obj->isAlphanumeric());
@@ -492,17 +431,7 @@ class StringManipulationTest extends TestCase {
         ["foo", false],
     ];
   }
-
-  /**
-   * @dataProvider jsonData
-   * @param string $string
-   * @param bool $is
-   */
-  public function testIsJson(string $string, bool $is) {
-    $obj = MbString::create($string);
-    $this->assertSame($is, Strings::isJson($string));
-    $this->assertSame($is, $obj->isJson());
-  }
+ 
 
   public function htmlData(): iterable {
     return [

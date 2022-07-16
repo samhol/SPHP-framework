@@ -18,7 +18,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 
 class UUIDTest extends TestCase {
 
-  public function testV4AndV5():void {
+  public function testV4AndV5(): void {
     for ($i = 0; $i < 50; $i++) {
       $v4 = UUID::v4();
       $this->assertMatchesRegularExpression('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $v4);
@@ -30,7 +30,7 @@ class UUIDTest extends TestCase {
     }
   }
 
-  public function testV5GenarationFail():void {
+  public function testV5GenarationFail(): void {
     $this->expectException(InvalidArgumentException::class);
     UUID::v5(UUID::v4() . 'foo', 'foo');
   }

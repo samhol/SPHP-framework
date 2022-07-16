@@ -1,128 +1,246 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/3.7/phpunit.xsd"
-         backupGlobals="true"
-         backupStaticAttributes="false"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         verbose="true"
-         bootstrap="sphp/php/tests/bootstrap.php">
+<phpunit 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" 
+  backupGlobals="true" 
+  backupStaticAttributes="false" 
+  convertErrorsToExceptions="true" 
+  convertNoticesToExceptions="true" 
+  convertWarningsToExceptions="true" 
+  processIsolation="false" 
+  stopOnFailure="false" 
+  verbose="true"
+  colors="true" 
+  bootstrap="sphp/php/tests/bootstrap.php">
+  <logging> 
+    <testdoxHtml outputFile="testdox.html"/> 
+    <testdoxXml outputFile="testdox.xml"/> 
+  </logging>
+  <coverage cacheDirectory="reports/cache"
+            pathCoverage="false"
+            ignoreDeprecatedCodeUnits="true"
+            disableCodeCoverageIgnore="false">
+    <include>
+      <!--<directory>./sphp/php/Sphp/Apps</directory>
+      <directory>./sphp/php/Sphp/Stdlib</directory>
+      <directory>./sphp/php/Sphp/Network</directory>
+      <directory>./sphp/php/Sphp/Bootstrap</directory>-->
+      <directory>./sphp/php/Sphp/</directory>
+    </include>
+    <exclude>
+      <!--<<directory suffix=".php">./sphp/php/Sphp/Database/</directory>-->
+      <directory>./sphp/php/Sphp/Foundation/</directory>
+    </exclude>
+    <report>
+      <html outputDirectory="reports/coverage"/>
+    </report>
+  </coverage>
+  <php>
+    <ini name="error_reporting" value="-1" />
+    <ini name="xdebug.mode" value="coverage" />
+    <env name="XDEBUG_MODE" value="coverage" />
+  </php>
   <testsuites>
-    <testsuite name="all">
-      <directory>./sphp/php/tests/</directory>
-    </testsuite>
-    <testsuite name="one">
-      <file>./sphp/php/tests/sphp/Html/Foundation/Core/DataOptionToolsTest.php</file>
-    </testsuite>
-    <testsuite name="config">
-      <directory>./sphp/php/tests/sphp/Config</directory>
-    </testsuite>
-    <testsuite name="security">
-      <directory>./sphp/php/tests/sphp/Security</directory>
-    </testsuite>
-    <testsuite name="dt">
-      <directory>./sphp/php/tests/sphp/DateTime</directory>
+    <testsuite name="class-attr">
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/Attributes/ClassAttributeTest.php</file>
     </testsuite>
     <testsuite name="filters">
-      <directory>./sphp/php/tests/sphp/Filters</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Filters</directory>
+    </testsuite>
+    <testsuite name="all">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Config</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Bootstrap/Layout</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Documentation</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Validators</directory>
+      <exclude>./sphp/php/tests/classes/Sphp/Tests/Foundation</exclude>
+    </testsuite>
+    <testsuite name="I18n">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/I18n</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Config</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Documentation</directory>
+    </testsuite>   
+    <testsuite name="bootstrap">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Bootstrap/Layout</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/I18n</directory>
+    </testsuite>  
+    <testsuite name="db">
+      <!-- --> 
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Database</directory>  
+    </testsuite>  
+    <testsuite name="GettextFinder">
+      <!-- --> 
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Apps/GettextFinder</directory>  
+    </testsuite>
+    <testsuite name="doc">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Apps/Documentation</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html</directory>
+      <directory>./sphp/php/tests/Stdlib</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
+    </testsuite>
+    <testsuite name="media">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Media/</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Media</directory>
+    </testsuite>
+    <testsuite name="documentation">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Documentation</directory> 
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
+      <!-- <directory>./sphp/php/tests/classes/Sphp/Tests/Apps/Documentation/Linkers/PHP/PHPManual</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Stdlib/StringTemplateTest.php</file>-->
+    </testsuite>
+    <testsuite name="calendars">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/DateTime</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Apps/Calendars</directory>
+    </testsuite>
+    <testsuite name="reflection">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
+    </testsuite>
+    <testsuite name="config">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Config</directory>
+    </testsuite>
+    <testsuite name="security">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Security</directory>
+    </testsuite>
+    <testsuite name="datetime"> 
+      <!--<file>./sphp/php/tests/classes/Sphp/Tests/DateTime/DateTimesTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/DateTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/DateTimeTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/IntervalsTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/IntervalTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/PeriodTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/TimeTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/Constraints/ConstraintsTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/PeriodsTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/DateTime/TimeZonesTest.php</file>-->
+      <directory>./sphp/php/tests/classes/Sphp/Tests/DateTime</directory>
+    </testsuite>
+    <testsuite name="filters">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Filters</directory>
+    </testsuite> 
+    <testsuite name="tag-factory">
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/TagsTest.php</file>
+    </testsuite>
+    <testsuite name="time-tag">
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/Text/TimeTest.php</file>
     </testsuite>
     <testsuite name="html">
-      <directory>./sphp/php/tests/sphp/Html</directory>
-    </testsuite>
-    <testsuite name="html-apps">
-      <directory>./sphp/php/tests/sphp/Html/Apps</directory>
-    </testsuite>
-    <testsuite name="html-head">
-      <directory>./sphp/php/tests/sphp/Html/Head</directory>
-    </testsuite>
-    <testsuite name="html-flow">
-      <directory>./sphp/php/tests/sphp/Html/Flow</directory>
-    </testsuite>
-    <testsuite name="html-media">
-      <directory>./sphp/php/tests/sphp/Html/Media</directory>
-    </testsuite>
-    <testsuite name="html-icons">
-      <directory>./sphp/php/tests/sphp/Html/Media/Icons</directory>
+      <!--<file>./sphp/php/tests/classes/Sphp/Tests/Html/ContentIteratorTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/PlainContainerTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/HtmlTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/BodyTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/SphpDocumentTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/AbstractTagTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/AbstractContentTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/TagsTest.php</file>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Attributes</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Head</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Forms</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Scripts</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Navigation</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Lists</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Tables</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Layout</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Media</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Utils</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Text</directory>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/TagsTest.php</file>-->
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html</directory>
     </testsuite>
     <testsuite name="html-attrs">
-      <directory>./sphp/php/tests/sphp/Html/Attributes</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Attributes</directory>
+    </testsuite> 
+    <testsuite name="html-text">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Text</directory>
+    </testsuite>  
+    <testsuite name="html-meta">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Head</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Scripts</directory>
+    </testsuite>
+    <testsuite name="html-sections">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Sections</directory>
+    </testsuite>
+    <testsuite name="html-navigation">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Navigation</directory> 
+    </testsuite>
+    <testsuite name="html-media">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Media/</directory>
+    </testsuite>
+    <testsuite name="html-scripts">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Scripts</directory>
+    </testsuite>
+    <testsuite name="html-lists">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Lists</directory>
+    </testsuite>
+    <testsuite name="html-icons">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Media/Icons</directory>
     </testsuite>
     <testsuite name="html-forms">
-      <directory>./sphp/php/tests/sphp/Html/Forms</directory>
+      <!--<file>./sphp/php/tests/classes/Sphp/Tests/Html/Forms/Inputs/Menus/OptionTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/Forms/Inputs/Menus/SelectTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/Forms/Inputs/Menus/DatalistTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Html/Forms/Inputs/Menus/OptgroupTest.php</file>-->
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Forms</directory>
     </testsuite>
     <testsuite name="html-tables">
-      <directory>./sphp/php/tests/sphp/Html/Tables</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Html/Tables</directory>
     </testsuite>
     <testsuite name="foundation">
-      <directory>./sphp/php/tests/sphp/Html/Foundation</directory>
-    </testsuite>
-    <testsuite name="foundation-grids">
-      <directory>./sphp/php/tests/sphp/Html/Foundation/Sites/Grids</directory>
-    </testsuite>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Foundation</directory>
+    </testsuite> 
     <testsuite name="mvc">
-      <directory>./sphp/php/tests/sphp/MVC</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/MVC</directory>
     </testsuite>
     <testsuite name="network">
-      <directory>./sphp/php/tests/sphp/Network</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Network</directory>
     </testsuite>
     <testsuite name="stdlib">
-      <directory>./sphp/php/tests/sphp/Stdlib</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib</directory>
     </testsuite>
     <testsuite name="stdlib-events">
-      <directory>./sphp/php/tests/sphp/Stdlib/Events</directory>
-    </testsuite>
-    <testsuite name="stdlib-networks">
-      <directory>./sphp/php/tests/sphp/Stdlib/Networks</directory>
-    </testsuite>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib/Events</directory>
+    </testsuite> 
     <testsuite name="stdlib-ds">
-      <directory>./sphp/php/tests/sphp/Stdlib/Datastructures</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib/Datastructures</directory>
     </testsuite>
     <testsuite name="stdlib-observers">
-      <directory>./sphp/php/tests/sphp/Stdlib/Observers</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib/Observers</directory>
     </testsuite>
     <testsuite name="stdlib-parsers">
-      <directory>./sphp/php/tests/sphp/Stdlib/Parsers</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib/Parsers</directory>
     </testsuite>
     <testsuite name="stdlib-str">
-      <file>./sphp/php/tests/sphp/Stdlib/StringManipulationTest.php</file>
-      <file>./sphp/php/tests/sphp/Stdlib/MbStringSpecificTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Stdlib/StringManipulationTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Stdlib/MbStringSpecificTest.php</file>
     </testsuite>
     <testsuite name="stdlib-bitmask">
-      <file>./sphp/php/tests/sphp/Stdlib/BitMaskTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Stdlib/BitMaskTest.php</file>
     </testsuite>
     <testsuite name="stdlib-stopwatch">
-      <file>./sphp/php/tests/sphp/Stdlib/StopWatchTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Stdlib/StopWatchTest.php</file>
     </testsuite>
     <testsuite name="stdlib-random">
-      <directory>./sphp/php/tests/sphp/Stdlib/Random</directory>
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Stdlib/Random</directory>
     </testsuite>
     <testsuite name="stdlib-filesystem">
-      <file>./sphp/php/tests/sphp/Stdlib/FilesystemTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Stdlib/FilesystemTest.php</file>
+    </testsuite> 
+    <testsuite name="validation">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Validators</directory>
     </testsuite>
-    <testsuite name="stdlib-arrays">
-      <file>./sphp/php/tests/sphp/Stdlib/ArraysTest.php</file>
+   
+    <testsuite name="reflection-all">
+      <directory>./sphp/php/tests/classes/Sphp/Tests/Reflection</directory>
     </testsuite>
-    <testsuite name="validators">
-      <directory>./sphp/php/tests/sphp/Validators</directory>
+    
+    <testsuite name="url">
+      <file>./sphp/php/tests/classes/Sphp/Tests/Network/URLTest.php</file>
+      <file>./sphp/php/tests/classes/Sphp/Tests/Network/QueryStringTest.php</file>
     </testsuite>
   </testsuites>
-  
-  <logging>
-    <log type="coverage-html" target="reports/coverage"/>
-    <!--<log type="coverage-clover" target="reports/logs/clover.xml"/>-->
-  </logging>
-
-  <filter>
-    <whitelist>
-      <directory>./sphp/php/Sphp/</directory>
-       <exclude>
-      <directory suffix=".php">./sphp/php/Sphp/Database/</directory>
-    </exclude>
-    </whitelist>
-  </filter>
 </phpunit>

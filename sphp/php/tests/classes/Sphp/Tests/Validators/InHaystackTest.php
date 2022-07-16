@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Validators;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Validators\InHaystack;
 
-class InHaystackTest extends TestCase {
+class InHaystackTest extends ValidatorTestCase {
 
   public function arrayData() {
     return [[[0, 1, null, false, true, '', ' ', "\n", [], new \stdClass()]]];
@@ -26,7 +25,7 @@ class InHaystackTest extends TestCase {
    * @dataProvider arrayData
    * @param mixed $data
    */
-  public function testIdentical($data) {
+  public function testIdentical($data): void {
     $validator = new InHaystack($data);
     $validator->setStrict(true);
     foreach ($data as $k => $value) {
@@ -36,6 +35,18 @@ class InHaystackTest extends TestCase {
     foreach ($data as $k => $value) {
       $this->assertTrue($validator->isValid($value));
     }
+  }
+
+  public function createValidator(): InHaystack {
+    return new InHaystack(['a', 'b']);
+  }
+
+  public function invalidValuesProvider(): iterable {
+    yield ['c'];
+  }
+
+  public function validValuesProvider(): iterable {
+    yield ['a'];
   }
 
 }

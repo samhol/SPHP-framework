@@ -14,7 +14,7 @@ namespace Sphp\Documentation\Linkers\PHP;
 
 use Sphp\Documentation\Linkers\PHP\PHPManual\LanguageReferenceLinker;
 use Sphp\Exceptions\InvalidArgumentException;
-
+use Sphp\Documentation\Linkers\PHP\PHPManual\Books\ReferenceLinker;
 /**
  * URL string generator pointing to an existing Sami documentation
  *
@@ -29,9 +29,9 @@ interface PhpApiLinkerInterface {
    * Returns a hyperlink object pointing to the PHP extension in the PHP documentation
    *
    * @param  string $extName the name of the PHP extension (case insensitive)
-   * @return PHPManual\ExtensionLinkerInterface hyperlink object pointing to the PHP documentation
+   * @return ReferenceLinker hyperlink object pointing to the PHP documentation
    */
-  public function extensionLink(string $extName): PHPManual\ExtensionLinkerInterface;
+  public function extensionLink(string $extName): ReferenceLinker;
 
   /**
    * Returns a hyperlink object pointing to the PHP control structure in the PHP documentation

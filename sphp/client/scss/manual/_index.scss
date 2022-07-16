@@ -1,0 +1,13 @@
+@use "layout";
+@use "reference-block";
+
+.example-form, .form-example form {
+  margin: 1rem;
+  >input, >select, >textarea {
+    display: block;
+    margin-top: .5rem;
+  }
+  .form-submission-row {
+
+  }
+}

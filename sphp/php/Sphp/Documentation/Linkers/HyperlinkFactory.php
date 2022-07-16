@@ -24,10 +24,7 @@ use Sphp\Html\Navigation\A;
  * @filesource
  */
 class HyperlinkFactory {
-
-  /**
-   * @var AttributeContainer
-   */
+ 
   private AttributeContainer $attributes;
 
   /**

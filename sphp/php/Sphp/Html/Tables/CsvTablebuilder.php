@@ -125,7 +125,7 @@ class CsvTablebuilder {
   public function build(): Table {
     $builder = new TableBuilder();
     if ($this->getOffset() > 0 || $this->rowCount > 0) {
-      $data = $this->getCsvData()->getChunk($this->getOffset(), $this->getRowCount());
+      $data = $this->getCsvData()->getSlice($this->getOffset(), $this->getRowCount());
     } else {
       $data = $this->getCsvData()->toArray();
     }

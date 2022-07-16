@@ -18,7 +18,6 @@ use Sphp\Reflection\ClassReflector;
 use Sphp\Html\Navigation\A;
 use Sphp\Html\Text\Span;
 use Sphp\Html\Navigation\Nav;
-use Sphp\Stdlib\Strings;
 use Sphp\Reflection\Exceptions\ReflectionException;
 use Sphp\Documentation\Linkers\Exceptions\NonDocumentedFeatureException;
 use Sphp\Documentation\Linkers\ItemLinker;
@@ -74,7 +73,7 @@ final class ClassLinker extends AbstractItemLinker {
       if (str_ends_with($member, '()')) {
         $link = $this->methodLink($member);
       } else if (str_starts_with($member, '$')) {
-        $link = $this->propertyLink(Strings::replace($member, '$', ''));
+        $link = $this->propertyLink(str_replace('$', '', $member));
       } else if ($this->ref->hasConstant($member)) {
         $link = $this->constantLink($member);
       } else if ($this->ref->hasMethod($member)) {
@@ -111,7 +110,7 @@ final class ClassLinker extends AbstractItemLinker {
    */
   public function methodLink(string $method): MethodLinker {
     if (str_ends_with($method, '()')) {
-      $method = Strings::replace($method, '()', '');
+      $method = str_replace('()', '', $method);
     }
     return MethodLinker::create($this->getClassName(), $method, $this->urlGen, $this->cloneHyperlinkFactory());
   }
@@ -165,7 +164,7 @@ final class ClassLinker extends AbstractItemLinker {
   public function toNavBar(): Nav {
     $container = new Nav();
     $container->addCssClass('php', 'api', 'breadcrumbs');
-    $type = Strings::convertCase($this->ref->getModifierNames(), MB_CASE_TITLE);
+    $type = mb_convert_case($this->ref->getModifierNames(), MB_CASE_TITLE);
     $container->append('<span class="type-text">' . $type . "</span>");
     $trail = $this->toArray();
     $count = count($trail);

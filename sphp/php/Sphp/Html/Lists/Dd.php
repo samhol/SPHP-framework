@@ -34,7 +34,7 @@ class Dd extends ContainerTag implements DlContent {
    * @link   https://php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct(mixed $content = null) {
-    parent::__construct("dd", $content);
+    parent::__construct('dd', $content);
   }
 
 }

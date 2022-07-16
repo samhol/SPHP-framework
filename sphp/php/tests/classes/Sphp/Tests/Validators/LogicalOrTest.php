@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Sphp\Tests\Validators;
 
-use PHPUnit\Framework\TestCase;
 use Sphp\Validators\LogicalOr;
 use Sphp\Validators\Regex;
 use Sphp\Validators\InHaystack;
@@ -24,64 +23,30 @@ use Sphp\Validators\InHaystack;
  * @license https://opensource.org/licenses/MIT The MIT License
  * @filesource
  */
-class LogicalOrTest extends TestCase {
+class LogicalOrTest extends ValidatorTestCase {
 
-  /**
-   * @var LogicalOr
-   */
-  protected $validator;
-
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp(): void {
-    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
-    $group = new InHaystack([null]);
-    $this->validator = new LogicalOr($group, $patt);
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown(): void {
-    unset($this->validator);
-  }
-
-  /**
-   */
-  public function testConstructor(): void {
-    $this->assertCount(0, $this->validator->getErrors());
-  }
-
-  /**
-   */
   public function testClone(): void {
-    $a = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
-    $b = new InHaystack([null]);
-    $validator = new LogicalOr($a, $b);
+    $validator = $this->createValidator();
     $clone = clone $validator;
     $this->assertNotSame($validator, $clone);
   }
 
-  /**
-   */
-  public function testValidValue(): void {
-    $this->assertTrue($this->validator->isValid(null));
-    $this->assertCount(0, $this->validator->getErrors());
-    $this->assertTrue($this->validator->isValid('foo'));
-    $this->assertCount(0, $this->validator->getErrors());
+  public function createValidator(): LogicalOr {
+    $patt = new Regex('/^[a-zA-Z]+$/', 'Please insert alphabets only');
+    $group = new InHaystack([null, 3]);
+    return new LogicalOr($group, $patt);
   }
 
-  /**
-   */
-  public function testInvalidValue(): void {
-    $v = $this->validator;
-    $this->assertFalse($v(1));
-    $this->assertFalse($this->validator->isValid(1));
-    $errors = $this->validator->getErrors()->toArray();
-    $this->assertContains('Please insert alphabets only', $errors);
+  public function invalidValuesProvider(): iterable {
+    yield [2];
+    yield ['a2'];
+    yield [new \stdClass()];
+  }
+
+  public function validValuesProvider(): iterable {
+    yield ['a'];
+    yield [null];
+    yield [3];
   }
 
 }

@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Sphp\Ecommerce\Validators;
 
 use Sphp\Validators\Validator;
-use Sphp\Validators\FormValidator;
+use Sphp\Validators\MapValidator;
 use Sphp\Validators\Whitelist;
 use Sphp\Validators\ValidatorChain;
 use Sphp\Validators\NotEmpty;
@@ -52,7 +52,7 @@ class ProductDataValidator implements Validator {
         'description',
         'attrs'],
             'Lomake sisältää virheitä');
-    $this->formDataValidator = new FormValidator();
+    $this->formDataValidator = new MapValidator();
     $this->formDataValidator->setValidator('title', $this->createNameValidator());
   }
 
@@ -83,7 +83,7 @@ class ProductDataValidator implements Validator {
   }
 
   public function getInputErrors(): MessageManager {
-    return $this->formDataValidator->getInputErrors();
+    return $this->formDataValidator->getMapMessages();
   }
 
   public function isValid(mixed $value): bool {
@@ -93,20 +93,20 @@ class ProductDataValidator implements Validator {
     $this->errors = new MessageManager();
     $tokenInput = new CRSFToken();
     if (!$this->whitelistValidator->isValid($value)) {
-      $this->errors = $this->whitelistValidator->getErrors();
+      $this->errors = $this->whitelistValidator->getMessages();
       $valid = false;
     } else if (!$tokenInput->verifyInputToken('product-token', INPUT_POST)) {
       $this->errors->append('Session has expired or failed');
       echo 'token fail';
       $valid = false;
     } else if (!$this->formDataValidator->isValid($value)) {
-      $this->errors = $this->formDataValidator->getInputErrors();
+      $this->errors = $this->formDataValidator->getMapMessages();
       $valid = false;
     }
     return $valid;
   }
 
-  public function getErrors(): MessageManager {
+  public function getMessages(): MessageManager {
     return $this->errors;
   }
 
